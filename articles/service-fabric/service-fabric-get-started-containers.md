@@ -1,14 +1,14 @@
 ---
 title: Azure Service Fabric Container-alkalmazás létrehozása
-description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Egy Python-alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
+description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Hozzon létre egy Docker-rendszerképet egy Python-alkalmazással, küldje le a lemezképet egy tároló-beállításjegyzékbe, majd hozza létre és telepítse a tárolót az Azure Service Fabricba.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458009"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906245"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -16,7 +16,7 @@ ms.locfileid: "75458009"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk bemutatja, hogyan hozhat létre [egy Python-](http://flask.pocoo.org/) beli webalkalmazást tartalmazó Docker-rendszerképet, és hogyan helyezheti üzembe a helyi gépen futó Service Fabric-fürtön. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk bemutatja, hogyan hozhat létre [egy Python-](http://flask.pocoo.org/) alapú webalkalmazást tartalmazó Docker-rendszerképet, és hogyan helyezheti üzembe azt egy Azure Service Fabric-fürtön. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Ez a cikk a Windows fejlesztési környezetére vonatkozik.  A Service Fabric fürt futtatókörnyezetének és a Docker-futtatókörnyezetnek ugyanazon az operációs rendszeren kell futnia.  A Windows-tárolók nem futtathatók Linux-fürtön.

@@ -1,17 +1,17 @@
 ---
 title: Azure Key Vault integrálása Azure Policy
-description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet titkos kódokat egy Azure Key vaultban a .NET ügyféloldali kódtár (v4) használatával
+description: Ismerje meg, hogyan integrálhatja a Azure Key Vaultt Azure Policy
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 11/12/2019
+ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b59b367d38f95bafe7d3e1320d1365f708dc75dd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077371"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905865"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integrálása Azure Policy
 
@@ -149,7 +149,7 @@ A "megtagadás" hatású szabályzatok kiosztása akár 30 percig is eltarthat (
 - Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében.
 - Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében található tanúsítványokkal. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szolgáltatásról](../governance/policy/overview.md)
 - Tekintse meg a következő mintát: [Key Vault virtuális hálózati végpont nélküli](../governance/policy/samples/keyvault-no-vnet-rules.md) tárolók

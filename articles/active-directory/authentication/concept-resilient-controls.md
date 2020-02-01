@@ -6,17 +6,18 @@ author: martincoetzer
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/19/2018
+ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208554"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908734"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -117,7 +118,7 @@ A készenléti feltételes hozzáférési szabályzat olyan **letiltott szabály
 * Állítsa be a tartalék szabályzatok készletét, ha az egyik hitelesítőadat-típus vagy egy hozzáférés-vezérlési mechanizmus megszakad az alkalmazásokhoz való hozzáférés. Állítsa be a házirendet letiltott állapotba, amely megköveteli a tartományhoz való csatlakozást vezérlőként, egy olyan aktív házirend biztonsági mentését, amely harmadik féltől származó MFA-szolgáltatót igényel.
 * A [jelszóval kapcsolatos útmutatóban](https://aka.ms/passwordguidance) ismertetett eljárások követésével csökkentheti a nem kötelezően megjelenő jelszavak kialakulásának kockázatát, ha az MFA nem szükséges.
 * Az [Azure ad önkiszolgáló jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) és az [Azure ad jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
-* Használjon olyan házirendeket, amelyek korlátozzák a hozzáférést az alkalmazásokon belül, ha egy bizonyos hitelesítési szint nem érhető el ahelyett, hogy egyszerűen vissza kellene térnie a teljes hozzáféréshez. Például:
+* Használjon olyan házirendeket, amelyek korlátozzák a hozzáférést az alkalmazásokon belül, ha egy bizonyos hitelesítési szint nem érhető el ahelyett, hogy egyszerűen vissza kellene térnie a teljes hozzáféréshez. Példa:
   * Olyan biztonsági mentési szabályzatot konfigurálhat, amely a korlátozott munkamenet-jogcímet az Exchange és a SharePoint szolgáltatásba küldi
   * Ha a szervezet Microsoft Cloud App Security használ, érdemes lehet visszaesnie egy olyan házirendnek, amely a MCAS-t, majd a MCAS lehetővé teszi a csak olvasási hozzáférést, de a feltöltéseket nem.
 * Nevezze el a szabályzatokat, és győződjön meg róla, hogy könnyen megtalálhatja őket a megszakítás során. Adja meg a következő elemeket a szabályzat nevében:
@@ -259,7 +260,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
 >[!NOTE]
  > Az Azure MFA [megbízható IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)lehetséges.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információk
 
 * [Azure AD-hitelesítési dokumentáció](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

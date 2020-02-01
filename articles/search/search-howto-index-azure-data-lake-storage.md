@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112282"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905659"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Dokumentumok indexelése Azure Data Lake Storage Gen2
 
@@ -47,3 +47,10 @@ A Data Lake Storage Gen2 tartalmának indexelése azonos az Azure Blob Storage-b
 Azure Data Lake Storage Gen2 olyan hozzáférés- [vezérlési modellt](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen2ból származó tartalom indexelése során az Azure Cognitive Search nem fogja kibontani a RBAC és az ACL-információkat a tartalomból. Ennek eredményeképpen ezek az információk nem kerülnek bele az Azure Cognitive Search indexbe.
 
 Ha a hozzáférés-vezérlést az index minden dokumentuma esetében fontos fenntartani, akkor az alkalmazás fejlesztője a [biztonsági körülvágás](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)megvalósítására szolgál.
+
+## <a name="change-detection"></a>Változás észlelése
+
+A Data Lake Storage Gen2 indexelő támogatja a változások észlelését. Ez azt jelenti, hogy ha az indexelő fut, csak a blob `LastModified` időbélyeg által meghatározott módosított blobokat indexeli.
+
+> [!NOTE] 
+> Data Lake Storage Gen2 engedélyezi a címtárak átnevezett nevét. Ha egy címtárat átneveznek, akkor az abban a könyvtárban lévő Blobok időbélyegei nem frissülnek. Ennek eredményeképpen az indexelő nem fogja újraindexelni ezeket a blobokat. Ha egy címtárban lévő Blobok újraindexelésére van szükség a címtár átnevezése után, mert most már vannak új URL-címek, frissítenie kell a címtárban lévő összes blob `LastModified` időbélyegét, hogy az indexelő képes legyen újraindexelni őket egy későbbi futtatás során.

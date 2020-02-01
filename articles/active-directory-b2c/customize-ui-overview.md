@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841233"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908936"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -31,6 +31,9 @@ A felhasználó felhasználói FELÜLETét többféleképpen testreszabhatja az 
 Ha [felhasználói folyamatokat](user-flow-overview.md)használ, megváltoztathatja a felhasználói folyamatok lapjainak megjelenését a beépített lapelrendezés- *sablonokkal*, illetve a saját HTML-és CSS-fájl használatával. A cikk későbbi részében mindkét módszert tárgyaljuk.
 
 A [Azure Portal](tutorial-customize-ui.md) használatával konfigurálhatja a felhasználói folyamatok felhasználói felületének testreszabását.
+
+> [!TIP]
+> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, a cikk későbbi részében leírtak szerint kipróbálhatja a [vállalati arculat (előzetes verzió)](#company-branding-preview) szolgáltatást.
 
 ### <a name="custom-policies"></a>Egyéni szabályzatok
 
@@ -149,6 +152,60 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 | Egyesített regisztráció vagy bejelentkezés | A olyan ügyfelek regisztrációját és bejelentkezését kezeli, akik használhatják a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t vagy a helyi fiókokat. |
 | Többtényezős hitelesítés | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
 | Hiba | Információt nyújt az ügyfélnek. |
+
+## <a name="company-branding-preview"></a>Vállalati arculat (előzetes verzió)
+
+A felhasználói folyamatok lapjait szalagcím emblémával, háttérképgel és háttérszínsel testreszabhatja Azure Active Directory [vállalati arculat](../active-directory/fundamentals/customize-branding.md)használatával.
+
+A felhasználói folyamatok lapjain való testreszabáshoz először a vállalati arculatot kell konfigurálnia Azure Active Directoryban, majd a felhasználói folyamatokban lévő lapok elrendezésében Azure AD B2C.
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>Vállalati arculat konfigurálása
+
+Először állítsa be a szalagcím emblémáját, a háttérképet és a háttérszínt a **vállalati arculaton**belül.
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. A **kezelés**területen válassza a **vállalati védjegyezés**lehetőséget.
+1. Kövesse a [branding hozzáadása a szervezet Azure Active Directory bejelentkezési oldalához](../active-directory/fundamentals/customize-branding.md)című témakör lépéseit.
+
+Tartsa szem előtt ezeket a dolgokat, amikor a vállalati arculatot konfigurálja Azure AD B2Cban:
+
+* A Azure AD B2C vállalati arculata jelenleg a **háttérképre**, a **szalagcím emblémára**és a **háttérszínek** testreszabására korlátozódik. A vállalati arculati panel egyéb tulajdonságai, például a **speciális beállításokban**szereplő egyéb tulajdonságok *nem támogatottak*.
+* A felhasználói folyamatok oldalain a háttér színe látható a háttérkép betöltése előtt. Javasoljuk, hogy olyan háttérszínt válasszon, amely szorosan illeszkedik a háttérkép színeihez a zökkenőmentes betöltési élmény érdekében.
+* A szalagcím embléma a felhasználóknak küldött ellenőrző e-mailekben jelenik meg, amikor kezdeményeznek egy regisztrációs felhasználói folyamatot.
+
+### <a name="enable-branding-in-user-flow-pages"></a>Védjegyezés engedélyezése a felhasználói folyamatok oldalain
+
+Miután konfigurálta a vállalati arculatot, engedélyezze azt a felhasználói folyamatokban.
+
+1. A Azure Portal bal oldali menüjében válassza a **Azure ad B2C**lehetőséget.
+1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget.
+1. Válassza ki azt a felhasználói folyamatot, amely számára engedélyezni szeretné a vállalati arculatot. A vállalati védjegyezés **nem támogatott** a *Bejelentkezés v1* és a *Profil szerkesztése v1* felhasználói folyamatok típusainál.
+1. A **Testreszabás** **területen válassza a**lapelrendezések lehetőséget, majd válassza ki azt az elrendezést, amelyet a márka számára szeretne kijelölni. Válassza például az **egyesített regisztráció vagy a bejelentkezés lapot**.
+1. A lapelrendezés **verziója (előzetes verzió)** területen válassza a **1.2.0** vagy újabb verzió elemet.
+1. Kattintson a **Mentés** gombra.
+
+Ha a felhasználói folyamat összes lapját szeretné felvenni, állítsa be az oldalelrendezés verzióját a felhasználói folyamat minden egyes lapjához.
+
+![Az oldal elrendezésének kiválasztása Azure AD B2C a Azure Portal](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+Ez a jegyzett példa egy egyéni szalagcím emblémát és háttérképet mutat be egy olyan *regisztrációs és bejelentkezési* felhasználói folyamat oldalon, amely az Ocean Blue sablont használja:
+
+![A Azure AD B2C által kiszolgált márkás regisztrációs/bejelentkezési oldal](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>Vállalati arculati eszközök használata egyéni HTML-kódban
+
+Ha egyéni HTML-kódban szeretné használni a vállalati védjegyezési eszközöket, adja hozzá a következő címkéket a `<div id="api">` címkén kívül:
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+A képforrást a háttérkép és a szalagcím emblémája helyettesíti. Az [egyéni HTML és CSS használatának első lépései](#get-started-with-custom-html-and-css) című szakaszban leírtak szerint CSS-osztályokat használhat a stílushoz, és elhelyezheti az eszközöket az oldalon.
 
 ## <a name="localize-content"></a>Tartalom honosítása
 

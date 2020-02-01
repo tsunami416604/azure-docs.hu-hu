@@ -4,16 +4,16 @@ description: AzCopy konfigurálása, optimalizálása és megoldása.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371394"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905259"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -21,7 +21,7 @@ A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat máso
 
 > [!NOTE]
 > Ha olyan tartalmat keres, amely segítséget nyújt a AzCopy megkezdéséhez, tekintse meg a következő cikkeket:
-> - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+> - [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 > - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 > - [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
 > - [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
@@ -41,6 +41,14 @@ A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő 
 ## <a name="optimize-performance"></a>A teljesítmény optimalizálása
 
 A teljesítmény és az erőforrás-felhasználás közötti optimális kompromisszum megtalálásához használhatja a teljesítményt, majd parancsokat és környezeti változókat használhat.
+
+Ez a szakasz a következő optimalizálási feladatok elvégzéséhez nyújt segítséget:
+
+> [!div class="checklist"]
+> * Teljesítményteszt-tesztek futtatása
+> * Teljesítmény optimalizálása
+> * Memória használatának optimalizálása 
+> * Fájlok szinkronizálásának optimalizálása
 
 ### <a name="run-benchmark-tests"></a>Teljesítményteszt-tesztek futtatása
 
@@ -97,6 +105,14 @@ Ez az érték gigabájtban (GB) kifejezve.
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>Fájlok szinkronizálásának optimalizálása
+
+A [szinkronizálási](storage-ref-azcopy-sync.md) parancs azonosítja a célhelyen lévő összes fájlt, majd a szinkronizálási művelet megkezdése előtt összehasonlítja a fájlneveket és az utolsó módosítás időbélyegeket. Ha nagy számú fájlt használ, a teljesítmény javítása érdekében kiküszöbölheti ezt a kezdeti feldolgozást. 
+
+Ennek elvégzéséhez használja helyette az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot, és állítsa a `--overwrite` jelzőt `ifSourceNewer`re. A AzCopy össze fogja hasonlítani a fájlokat a másolásuk előtt, anélkül, hogy előzetes vizsgálatokat és összehasonlításokat végezne. Ez olyan teljesítményt biztosít, amelyben nagy mennyiségű fájlt kell összehasonlítani.
+
+A [azcopy másolási](storage-ref-azcopy-copy.md) parancs nem törli a célhelyről a fájlokat, ezért ha törölni szeretné a célhelyen lévő fájlokat, ha már nem léteznek a forrásnál, akkor a [azcopy Sync](storage-ref-azcopy-sync.md) parancsot `true` vagy `prompt`értékre állítja a `--delete-destination` jelzővel. 
 
 ## <a name="troubleshoot-issues"></a>Problémák elhárítása
 

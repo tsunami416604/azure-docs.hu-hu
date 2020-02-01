@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713310"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901524"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -397,7 +397,7 @@ További információ a speciális Kubernetes ütemezett funkcióinak használat
 Ebben a példában a--Node-tains parancs használatával alkalmazzon egy Taint a GPU-alapú csomópontra. Adja meg a GPU-alapú csomópont nevét az előző `kubectl get nodes` parancs kimenetében. A megfertőzés kulcsként van alkalmazva *: érték* , majd egy ütemezési beállítás. A következő példa az *SKU = GPU* párt használja, és a hüvelyek definiálása egyébként a nem *menetrendi* képességgel rendelkezik:
 
 ```console
-az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 A következő alapszintű példa YAML a tolerancia használatával lehetővé teszi, hogy a Kubernetes-ütemező egy NGINX Pod-t futtasson a GPU-alapú csomóponton. A Tensorflow-feladatok MNIST-adatkészleten való futtatásának megfelelőbb, de időigényes példáját a [GPU használata nagy számítási igényű munkaterhelésekhez az AK-][gpu-cluster]ban című témakörben tekintheti meg.

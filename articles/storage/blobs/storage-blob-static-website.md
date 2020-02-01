@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708162"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906590"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -81,22 +81,16 @@ Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét
 
 Azonban a `https://contosoblobaccount.blob.core.windows.net/$web/index.html` elsődleges blob Service-végponthoz való nyilvános hozzáférés a magánjellegűről nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) és Secure Socket Layer (SSL) támogatása
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Egyéni tartomány leképezése statikus webhely URL-címére
 
-Annak érdekében, hogy a statikus webhelyek fájljai elérhetők legyenek az egyéni tartományon és a HTTPS-en keresztül, tekintse meg a következőt: [a Azure CDN használata a Blobok egyéni tartományokkal](storage-https-custom-domain-cdn.md) Ennek a folyamatnak a részeként be kell mutatnia a CDN-t az elsődleges *statikus webhely* -végpontra, szemben az elsődleges *blob Service* -végponttal. Előfordulhat, hogy néhány percet várnia kell, amíg a tartalom látható lesz, mivel a CDN-konfiguráció nem kerül azonnal végrehajtásra.
+A statikus webhelyet egyéni tartományon keresztül is elérhetővé teheti. 
 
-A statikus webhely frissítésekor ügyeljen arra, hogy a CDN peremhálózati kiszolgálókon törölje a gyorsítótárazott tartalmat a CDN-végpont törlésével. További információkért lásd az [Azure CDN-végpontok végleges törléséről](../../cdn/cdn-purge-endpoint.md) szóló cikket.
+Könnyebben engedélyezhető a HTTP-hozzáférés az egyéni tartományhoz, mivel az Azure Storage natív módon támogatja azt. A HTTPS engedélyezéséhez Azure CDN kell használnia, mivel az Azure Storage még nem támogatja natív módon a HTTPS-t az egyéni tartományokkal. részletes útmutatásért lásd: [egyéni tartomány leképezése Azure Blob Storage végpontra](storage-custom-domain-name.md) .
 
-> [!NOTE]
-> A HTTPS a fiók webes végpontján keresztül natív módon támogatott, így a webes végpont a HTTP és a HTTPS protokollon keresztül érhető el. Ha azonban a Storage-fiók úgy van konfigurálva, hogy biztonságos átvitelt igényel a HTTPS protokollon keresztül, akkor a felhasználóknak a HTTPS-végpontot kell használniuk. További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md).
->
-> Az egyéni tartományok HTTPS-kapcsolaton keresztüli használata a Azure CDN jelenleg való használatát igényli.
+Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel](../common/storage-require-secure-transfer.md) a HTTPS protokollon keresztül, akkor a felhasználóknak a https-végpontot kell használniuk. 
 
-## <a name="custom-domain-names"></a>Egyéni tartománynevek
-
-A statikus webhelyet egyéni tartományon keresztül is elérhetővé teheti. További információ: [Egyéni tartománynév beállítása az Azure Storage-fiókhoz](storage-custom-domain-name.md).
-
-A tartomány Azure-beli üzemeltetésének részletes ismertetését a [tartomány üzemeltetése Azure DNSban](../../dns/dns-delegate-domain-azure-dns.md)című témakörben tekintheti meg.
+> [!TIP]
+> Érdemes lehet tartományt üzemeltetni az Azure-ban. További információ: [tartomány üzemeltetése Azure DNSban](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -111,8 +105,7 @@ A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [me
 ## <a name="next-steps"></a>Következő lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
-* [A Blobok egyéni tartományokkal való elérésének Azure CDN használata HTTPS-kapcsolaton keresztül](storage-https-custom-domain-cdn.md)
-* [Egyéni tartománynév beállítása a blob vagy a webes végpont számára](storage-custom-domain-name.md)
+* [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Az első kiszolgáló nélküli Webalkalmazás létrehozása](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

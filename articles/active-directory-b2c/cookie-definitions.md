@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 399b63cab2594610260997f8e5ecef9c3c05318f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712823"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908870"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>A Azure AD B2C cookie-definíciói
 
@@ -30,13 +30,16 @@ A webhelyekhez való hozzáférés védelme érdekében a böngészők egy új, 
 
 A fejlesztőknek az új cookie-beállítást kell használniuk, `SameSite=None`, hogy kijelölje a cookie-kat a helyek közötti hozzáféréshez. Ha a `SameSite=None` attribútum létezik, akkor további `Secure` attribútumot kell használni, hogy a helyek közötti cookie-k csak HTTPS-kapcsolatokon keresztül legyenek elérhetők. Érvényesítse és tesztelje az összes alkalmazást, beleértve a Azure AD B2Ct használó alkalmazásokat is.
 
-További információ: [az ügyfél webhelyein és a Microsoft-szolgáltatásokban és-termékeken a Chrome 80-es vagy újabb verziójának hatása](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome).
+További információ eléréséhez lásd:
+
+* [SameSite-cookie-változások kezelése a Chrome böngészőben](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
+* [Az ügyfelek webhelyeire és a Microsoft szolgáltatásaira és termékeire gyakorolt hatása a Chrome 80-es vagy újabb verziójában](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
 
 ## <a name="cookies"></a>Sütik
 
 A következő táblázat felsorolja a Azure AD B2C használt cookie-kat.
 
-| Név | Domain | Lejárati | Rendeltetés |
+| Name (Név) | Domain | Lejárati | Rendeltetés |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Böngésző- [munkamenet](session-behavior.md) vége | Felhasználói tagsági adattárolást tart fenn a bérlők között. A bérlők a felhasználók és a tagsági szint (rendszergazda vagy felhasználó) tagjai. |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A kérelmeknek a megfelelő éles példányra való továbbítására szolgál. |

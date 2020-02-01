@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 01adebbab1e39e2de5603be4c95335a5fe40ef06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f36b705d590f34a79aefe14355f25f7639562d2a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850208"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908972"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Gyors útmutató: Asztali alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
@@ -29,7 +29,7 @@ A Azure Active Directory B2C (Azure AD B2C) biztosítja az alkalmazások, a vál
 
 - A [Visual Studio 2019](https://www.visualstudio.com/downloads/) a **ASP.net és a webes fejlesztési** munkaterheléssel.
 - Facebook-, Google-vagy Microsoft-beli közösségi fiók.
-- [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
+- [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip) , vagy klónozott [Azure-Samples/Active-Directory-B2C-DotNet-Desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) adattárát a githubról.
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git

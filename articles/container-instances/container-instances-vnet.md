@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe tároló csoportokat egy új 
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845174"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901871"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Hálózati erőforrások törlése
-
-
-> [!NOTE]
-> Ha hibaüzenet jelenik meg a hálózati profil eltávolítására tett kísérlet során, engedélyezze a 3-4 nap elteltével, hogy a platform automatikusan csökkentse a problémát, és próbálkozzon újra a törléssel. Ha azonnal törölnie kell egy hálózati profilt, [Nyisson meg egy támogatási kérést, amely](https://azure.microsoft.com/support/create-ticket/) a Azure Container instances szolgáltatásra hivatkozik.
 
 Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat.
 

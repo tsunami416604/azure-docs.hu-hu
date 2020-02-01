@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771615"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906267"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -134,7 +134,7 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 > [!NOTE]
 > A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
 
-#### <a name="bursting"></a>Lökésszerű
+#### <a name="bursting"></a>Tele
 
 A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is *feltört.*
 
@@ -201,49 +201,14 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 ### <a name="regional-availability"></a>Regionális elérhetőség
 
-A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhetők el, ezek a régiók a következő táblázatban láthatók:
+Az 100 TiB kapacitási korláttal rendelkező standard fájlmegosztás globálisan elérhető az összes Azure-régióban –
 
-|Region (Régió) |Támogatott redundancia |
-|-------|---------|
-|Ausztrália középső régiója    |LRS     |
-|Ausztrália 2. középső régiója    |LRS     |
-|Ausztrália keleti régiója |LRS     |
-|Délkelet-Ausztrália|LRS |
-|Dél-Brazília    |LRS     |
-|Közép-Kanada  |LRS     |
-|Kelet-Kanada     |LRS     |
-|Közép-India  |LRS     |
-|USA középső régiója *   |LRS, ZRS    |
-|Kelet-Ázsia      |LRS     |
-|USA keleti régiója *        |LRS, ZRS|
-|USA 2. keleti régiója *      |LRS, ZRS     |
-|Közép-Franciaország |LRS, ZRS|
-|Dél-Franciaország   |LRS     |
-|Kelet-Japán     |LRS     |
-|Nyugat-Japán     |LRS     |
-|Korea középső régiója  |LRS     |
-|Korea déli régiója    |LRS     |
-|USA északi középső régiója |LRS   |
-|Észak-Európa   |LRS     |
-|Dél-India    |LRS     |
-|USA déli középső régiója |LRS     |
-|Délkelet-Ázsia |LRS, ZRS|
-|Észak-Svájc    |LRS     |
-|Nyugat-Svájc    |LRS     |
-|Egyesült Arab Emírségek középső régiója    |LRS     |
-|Egyesült Arab Emírségek északi régiója    |LRS     |
-|Egyesült Királyság északi régiója   |LRS, ZRS    |
-|Egyesült Királyság déli régiója    |LRS     |
-|Egyesült Királyság nyugati régiója    |LRS     |
-|USA nyugati középső régiója|LRS     |
-|Nyugat-Európa *    |LRS, ZRS|
-|Nyugat-India   |LRS     |
-|USA nyugati régiója        |LRS     |
-|USA 2. nyugati régiója      |LRS, ZRS|
+- LRS: minden régió, Dél-Afrika északi régiója és Dél-Afrika nyugati régiója kivételével.
+   - Az országos felhők (Government, Németország, Kína) a PowerShell és az Azure parancssori felület (CLI) használatával támogatottak. Nincs portál-támogatás. 
+   - USA keleti régiója, Kelet-RÉGIÓJA, Nyugat-Európa: minden új fiók támogatott. Néhány meglévő fiók nem végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
 
-az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
-
-Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/azurefilesatscalesurvey)az új régiók és szolgáltatások rangsorolása érdekében.
+- ZRS: minden régió, kivéve a Kelet-Japán, Észak-Európa, Dél-Afrika északi régióját.
+- GRS/GZRS: nem támogatott.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Nagyobb fájlmegosztás engedélyezése és létrehozása
 

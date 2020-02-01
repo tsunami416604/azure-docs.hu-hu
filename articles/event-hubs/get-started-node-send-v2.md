@@ -1,47 +1,53 @@
 ---
-title: Események küldése és fogadása a Node. js használatával – Azure Event Hubs
-description: Ez a cikk bemutatja, hogyan hozhat létre egy Node. js-alkalmazást, amely az Azure Event Hubsról küld eseményeket.
+title: Események küldése vagy fogadása az Azure Event Hubs a Node. js használatával (legújabb)
+description: Ez a cikk egy olyan Node. js-alkalmazás létrehozásának bemutatóját ismerteti, amely az Azure-Event Hubs az Azure-/Event-hubok 5-ös verziójának használatával küld/fogad eseményeket.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 01/09/2020
+ms.topic: quickstart
+ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: d4810c325acc42d5aa665002654cb01154cdc6bb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b523e4a7b463564cbfeb407c91b7bb05317f8166
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981619"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906368"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Események küldése vagy fogadása az Azure Event Hubs a Node. js használatával
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>Események küldése vagy fogadása az Event huboktól a Node. js használatával (Azure/Event-hubok 5-ös verzió)
 
-Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs egy olyan big data streaming platform és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event hubok feldolgozhatják és tárolhatják az elosztott szoftverekkel és eszközökkel előállított eseményeket, adatfájlokat vagy telemetria. Az Event hub-nak elküldett adatai bármilyen valós idejű elemzési szolgáltató vagy batch-vagy Storage-adapter használatával átalakíthatók és tárolhatók. További információ: [Event Hubs áttekintése](event-hubs-about.md) és [Event Hubs szolgáltatások](event-hubs-features.md).
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet Node. js-alkalmazásokat létrehozni események küldésére vagy események fogadására az Event hub-ból.
+Ez a rövid útmutató azt ismerteti, hogyan lehet olyan Node. js-alkalmazásokat létrehozni, amelyek események küldését és fogadását is elküldhetik az Event hub-ból.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az Azure Event Hubs Java script SDK 5. verzióját használja. A Java script SDK régi 2. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-node-get-started-send.md)találja. Ha az SDK 2-es verzióját használja, javasoljuk, hogy telepítse át a kódot a legújabb verzióra. Részletekért tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
+> Ez a rövid útmutató az Azure Event Hubs JavaScript SDK 5. verzióját használja. A JavaScript SDK 2. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-node-get-started-send.md)találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
-- A Node. js 8. x vagy újabb verziója. Töltse le a legújabb LTS-verziót [https://nodejs.org ról ](https://nodejs.org).
-- Visual Studio Code (ajánlott) vagy bármely más IDE
-- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást, majd folytassa az oktatóanyag következő lépéseivel. Ezután szerezze be a kapcsolati karakterláncot az Event hub-névtérhez a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében a kapcsolatok karakterláncát kell használnia.
+- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.  
+- A Node. js 8. x vagy újabb verziója. Töltse le a legújabb [hosszú távú támogatási (LTS) verziót](https://nodejs.org).  
+- Visual Studio Code (ajánlott) vagy bármely más integrált fejlesztési környezet (IDE).  
+- Aktív Event Hubs névtér és Event hub. A létrehozásához hajtsa végre a következő lépéseket: 
 
+   1. A [Azure Portal](https://portal.azure.com)hozzon létre egy *Event Hubs*típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyeket az alkalmazásnak az Event hub használatával kell kommunikálnia. 
+   1. A névtér és az Event hub létrehozásához kövesse az alábbi utasításokat [: az Event hub létrehozása a Azure Portal használatával](event-hubs-create.md).
+   1. Folytassa az ebben a rövid útmutatóban található utasításokat követve. 
+   1. Az Event hub-névtér kapcsolati karakterláncának lekéréséhez kövesse a [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakör utasításait. Jegyezze fel a kapcsolódási karakterláncot, hogy a rövid útmutatóban később használhassa.
 
-### <a name="install-npm-packages"></a>NPM-csomagok telepítése
-A [Event Hubs NPM-csomagjának](https://www.npmjs.com/package/@azure/event-hubs)telepítéséhez nyisson meg egy parancssort, amely az elérési útjában `npm` van, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
+### <a name="install-the-npm-package"></a>A NPM-csomag telepítése
+Ha Event Hubshoz szeretné telepíteni a [Node Package Manager-(NPM-) csomagot](https://www.npmjs.com/package/@azure/event-hubs), nyisson meg egy parancssort, amely az elérési út *NPM* rendelkezik, módosítsa a könyvtárat arra a mappára, ahol meg szeretné őrizni a mintákat, majd futtassa a következő parancsot:
 
 ```shell
 npm install @azure/event-hubs
 ```
 
-A fogadó oldalon két további csomagot kell telepítenie. Ebben a rövid útmutatóban az Azure Blob Storage fogja használni az ellenőrzőpontok megőrzéséhez, hogy a program ne olvassa be a már elolvasott eseményeket. Egy blobban rendszeres időközönként lefogadja a fogadott üzenetek metaadatait. Ezzel a módszerrel egyszerűen folytathatja az üzenetek fogadását, ahonnan később kilépett.
+A fogadó oldalon két további csomagot kell telepítenie. Ebben a rövid útmutatóban az Azure Blob Storage-t használja az ellenőrzőpontok megőrzéséhez, hogy a program ne olvassa be a már elolvasott eseményeket. Metaadat-ellenőrzőpontokat hajt végre a fogadott üzenetekben, rendszeres időközönként egy blobban. Ezzel a módszerrel egyszerűen folytathatja az üzenetek fogadását, ahonnan abbahagyta a kapcsolatot.
+
+Futtassa az alábbi parancsot:
 
 ```shell
 npm install @azure/storage-blob
@@ -53,10 +59,10 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>Események küldése
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást, amely eseményeket küld az Event hub-nak.
+Ebben a szakaszban egy Node. js-alkalmazást hoz létre, amely eseményeket küld az Event hub-nak.
 
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com)-ot.
-2. Hozzon létre egy `send.js` nevű fájlt, és illessze be a következő kódot.
+1. Hozzon létre egy *Send. js*nevű fájlt, és illessze be a következő kódot:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -66,19 +72,19 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást
 
     async function main() {
 
-      // create a producer client to send messages to the event hub
+      // Create a producer client to send messages to the event hub.
       const producer = new EventHubProducerClient(connectionString, eventHubName);
 
-      // prepare a batch of three events
+      // Prepare a batch of three events.
       const batch = await producer.createBatch();
       batch.tryAdd({ body: "First event" });
       batch.tryAdd({ body: "Second event" });
       batch.tryAdd({ body: "Third event" });    
 
-      // send the batch to the event hub
+      // Send the batch to the event hub.
       await producer.sendBatch(batch);
 
-      // close the producer client
+      // Close the producer client.
       await producer.close();
 
       console.log("A batch of three events have been sent to the event hub");
@@ -88,34 +94,37 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást
       console.log("Error occurred: ", err);
     });
     ```
-3. Ne felejtse el lecserélni a **kapcsolati sztringet** és az **Event hub-név** értékét a kódban.
-5. Futtassa a parancsot `node send.js` a fájl végrehajtásához. Ez a művelet három eseményből álló köteget küld az Event hub-nak
-6. A Azure Portalon ellenőrizheti, hogy az Event hub fogadta-e az üzeneteket. Váltson az **üzenetek** nézetre a **metrikák** szakaszban. Frissítse a lapot a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg meg nem jelenik az üzenetek fogadása.
+1. A kódban használja a valós értékeket a következők lecseréléséhez:
+    * `EVENT HUBS NAMESPACE CONNECTION STRING` 
+    * `EVENT HUB NAME`
+1. `node send.js` futtatása a fájl végrehajtásához. Ez a parancs három eseményből álló köteget küld az Event hub-nak.
+1. A Azure Portal ellenőrizze, hogy az Event hub fogadta-e az üzeneteket. A **metrikák** szakaszban váltson az **üzenetek** nézetre. Frissítse a lapot a diagram frissítéséhez. Ez eltarthat néhány másodpercig, hogy megjelenjen az üzenetek fogadása.
 
     [![annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js) .
+    > A teljes forráskódhoz, beleértve a további tájékoztató megjegyzéseket, lépjen a [GitHub sendEvents. js oldalára](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js).
 
 Gratulálunk! Már elvégezte az események elküldése az Event hubhoz.
 
 
 ## <a name="receive-events"></a>Események fogadása
-Ez a szakasz bemutatja, hogyan fogadhat eseményeket egy Event hub-ból egy Node. js-alkalmazásban található Azure Blob ellenőrzőpont-tároló használatával. A beérkező üzenetekre vonatkozó metaadatokat a Azure Storage Blob rendszeres időközönként áthelyezi. Ezzel a módszerrel egyszerűen folytathatja az üzenetek fogadását, ahonnan később kilépett.
+Ebben a szakaszban a Node. js-alkalmazásban egy Azure Blob Storage ellenőrzőpont-tároló használatával érkeznek események az Event hub-ból. Metaadat-ellenőrzőpontokat végez a fogadott üzenetekben, rendszeres időközönként egy Azure Storage-blobban. Ezzel a módszerrel egyszerűen folytathatja az üzenetek fogadását, ahonnan abbahagyta a kapcsolatot.
 
-### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
-Az alábbi lépéseket követve hozzon létre egy BLOB-tárolót az Azure Storage-fiókban.
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage-fiók és blob-tároló létrehozása
+Hozzon létre egy Azure Storage-fiókot és egy BLOB-tárolót a következő műveletekkel:
 
-1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)
-2. [BLOB-tároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
+2. [BLOB-tároló létrehozása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Jegyezze fel a kapcsolatok sztringjét és a tároló nevét. Ezeket a fogadási kódban fogja használni.
+A fogadási kódban jegyezze fel a kapcsolódási karakterláncot és a tároló nevét.
 
 ### <a name="write-code-to-receive-events"></a>Kód írása az események fogadására
 
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com)-ot.
-2. Hozzon létre egy `receive.js` nevű fájlt, és illessze be a következő kódot. Részletekért lásd a kód megjegyzéseit.
+1. Hozzon létre egy *Receive. js*nevű fájlt, és illessze be a következő kódot:
+
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");
     const { ContainerClient } = require("@azure/storage-blob");    
@@ -128,20 +137,20 @@ Az alábbi lépéseket követve hozzon létre egy BLOB-tárolót az Azure Storag
     const containerName = "BLOB CONTAINER NAME";
 
     async function main() {
-      // create a blob container client and a blob checkpoint store using the client
+      // Create a blob container client and a blob checkpoint store using the client.
       const containerClient = new ContainerClient(storageConnectionString, containerName);
       const checkpointStore = new BlobCheckpointStore(containerClient);
 
-      // create a consumer client for the event hub by specifying the checkpoint store
+      // Create a consumer client for the event hub by specifying the checkpoint store.
       const consumerClient = new EventHubConsumerClient(consumerGroup, connectionString, eventHubName, checkpointStore);
 
-      // subscribe for the events and specify handlers for processing the events and errors.
+      // Subscribe to the events, and specify handlers for processing the events and errors.
       const subscription = consumerClient.subscribe({
           processEvents: async (events, context) => {
             for (const event of events) {
               console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
             }
-            // update the checkpoint
+            // Update the checkpoint.
             await context.updateCheckpoint(events[events.length - 1]);
           },
 
@@ -151,7 +160,7 @@ Az alábbi lépéseket követve hozzon létre egy BLOB-tárolót az Azure Storag
         }
       );
 
-      // after 30 seconds, stop processing
+      // After 30 seconds, stop processing.
       await new Promise((resolve) => {
         setTimeout(async () => {
           await subscription.close();
@@ -165,17 +174,17 @@ Az alábbi lépéseket követve hozzon létre egy BLOB-tárolót az Azure Storag
       console.log("Error occurred: ", err);
     });    
     ```
-3. Ne felejtse el megadni a **következő értékeket** a kódban:
-    - A Event Hubs névtérhez tartozó kapcsolódási karakterlánc
-    - Az Event hub neve
-    - A kapcsolódási karakterlánc az Azure Storage-fiókhoz
-    - A blob-tároló neve
-5. Ezután futtassa a parancsot egy parancssorban a fájl végrehajtásához `node receive.js`. A fogadott eseményekről szóló üzeneteket az ablakban kell megtekinteni.
+1. A kódban használja a valós értékeket a következő értékek lecseréléséhez:
+    - `EVENT HUBS NAMESPACE CONNECTION STRING`
+    - `EVENT HUB NAME`
+    - `AZURE STORAGE CONNECTION STRING`
+    - `BLOB CONTAINER NAME`
+1. A fájl végrehajtásához futtassa `node receive.js` parancsot a parancssorban. Az ablakban a fogadott eseményekről származó üzeneteket kell megjeleníteni.
 
     > [!NOTE]
-    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js).
+    > A teljes forráskódhoz, beleértve a további tájékoztató megjegyzéseket, lépjen a [GitHub receiveEventsUsingCheckpointStore. js oldalára](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js).
 
-Gratulálunk! Most már fogadott eseményeket az Event hub-ból. A fogadó program az Event hub alapértelmezett fogyasztói csoportjának összes partícióján fogad eseményeket.
+Gratulálunk! Most már kapott eseményeket az Event hub-ból. A fogadó program az Event hub alapértelmezett fogyasztói csoportjának összes partíciójának eseményeit fogja fogadni.
 
 ## <a name="next-steps"></a>Következő lépések
 Tekintse meg ezeket a mintákat a GitHubon:

@@ -1,25 +1,23 @@
 ---
 title: Egyéni nyomkövetési sémák B2B-üzenetekhez
-description: Olyan egyéni nyomkövetési sémákat hozhat létre, amelyek a Azure Logic Apps integrációs fiókjaiban található B2B-üzeneteket figyelik Enterprise Integration Pack
+description: Egyéni nyomkövetési sémák létrehozása a B2B-üzenetek figyeléséhez Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 7d7c5ef9e9a86c8b061a56fe41c0c8bbfc5ddbb3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792794"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903052"
 ---
-# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>A végpontok közötti munkafolyamatokat figyelő egyéni nyomkövetési sémák létrehozása Azure Logic Apps
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>A végpontok közötti munkafolyamatokat figyelő egyéni követési sémák létrehozása az Azure Logic A-ben
 
-A beépített nyomon követési funkció lehetővé teszi a vállalat és az üzleti munkafolyamat különböző részeinek, például az AS2-vagy X12-üzenetek követését. Ha logikai alkalmazást, BizTalk Server, SQL Server vagy bármely más réteget tartalmazó munkafolyamatokat hoz létre, akkor engedélyezheti az olyan egyéni nyomkövetést, amely az eseményeket a munkafolyamata elejétől a végéig naplózza. 
-
-Ez a cikk egyéni kódot tartalmaz, amelyet a logikai alkalmazáson kívüli rétegekben is használhat. 
+A Azure Logic Apps beépített nyomon követésével engedélyezheti a munkafolyamat egyes részeit. Beállíthat azonban olyan egyéni követést is, amely az eseményeket a munkafolyamatok elejétől a végéig naplózza, például egy logikai alkalmazást, BizTalk Server, SQL Server vagy bármely más réteget tartalmazó munkafolyamatokat. Ez a cikk egyéni kódot tartalmaz, amelyet a logikai alkalmazáson kívüli rétegekben is használhat.
 
 ## <a name="custom-tracking-schema"></a>Egyéni követési séma
 
@@ -36,7 +34,7 @@ Ez a cikk egyéni kódot tartalmaz, amelyet a logikai alkalmazáson kívüli ré
       "operation": {
          "operationName": "",
          "repeatItemScopeName": "",
-         "repeatItemIndex": "",
+         "repeatItemIndex": ,
          "trackingId": "",
          "correlationId": "",
          "clientRequestId": ""
@@ -47,39 +45,37 @@ Ez a cikk egyéni kódot tartalmaz, amelyet a logikai alkalmazáson kívüli ré
          "eventLevel": "",
          "eventTime": "",
          "recordType": "",
-         "record": {                
-         }
+         "record": {}
       }
    ]
 }
 ```
 
 | Tulajdonság | Szükséges | Type (Típus) | Leírás |
-| --- | --- | --- | --- |
-| Forrás típusa | Igen |   | A futtatási forrás típusa. Az engedélyezett értékek: **Microsoft. Logic/munkafolyamatok** és **Egyéni**. |
-| source | Igen |   | Ha a forrás típusa **Microsoft. Logic/munkafolyamatok**, a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa **Egyéni**, a séma egy JToken. |
-| systemId | Igen | Sztring | Logikai alkalmazás rendszerazonosítója |
-| RunId | Igen | Sztring | Logikai alkalmazás futtatásának azonosítója. |
-| operationName | Igen | Sztring | A művelet neve (például művelet vagy trigger). |
-| repeatItemScopeName | Igen | Sztring | Adja meg az elem nevét, ha a művelet `foreach`/`until` hurokon belül van. |
-| repeatItemIndex | Igen | Egész szám | Azt jelzi, hogy a művelet egy `foreach`/`until` hurokon belül van-e. Az ismétlődő elemek indexét jelzi. |
-| trackingId | Nem | Sztring | Követési azonosító, amely az üzenetek korrelációját okozhatja. |
-| correlationId | Nem | Sztring | Korrelációs azonosító, amely az üzenetek korrelációját okozhatja. |
-| ügyfélkérelem | Nem | Sztring | Az ügyfél feltöltheti az üzenetek korrelációját. |
-| eventLevel | Igen |   | Az esemény szintje. |
-| eventTime | Igen |   | Az esemény időpontja, UTC formátumban, éééé-hh-NNTÓÓ: PP: SS. 00000Z. |
-| Rekordtípus | Igen |   | A nyomkövetési rekord típusa Az engedélyezett érték **Egyéni**. |
-| rekord | Igen |   | Egyéni bejegyzéstípus. Az engedélyezett formátum a JToken. |
-||||
+|----------|----------|------|-------------|
+| Forrás típusa | Igen | Sztring | A futtatási forrás típusa a következő megengedett értékekkel: `Microsoft.Logic/workflows`, `custom` |
+| source | Igen | Karakterlánc-vagy JToken | Ha a forrástípus `Microsoft.Logic/workflows`, a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa `custom`, a séma egy JToken. |
+| systemId | Igen | Sztring | Logic app-rendszerazonosító |
+| runId | Igen | Sztring | Logikai alkalmazás futtatásának azonosítója |
+| operationName | Igen | Sztring | A művelet neve, például művelet vagy trigger |
+| repeatItemScopeName | Igen | Sztring | Elem nevének ismétlése, ha a művelet `foreach`vagy `until` hurokban van |
+| repeatItemIndex | Igen | Egész szám | Azt jelzi, hogy a művelet egy `foreach` vagy `until` hurokban van, és az ismétlődő elem indexe. |
+| trackingId | Nem | Sztring | Nyomkövetési azonosító az üzenetek korrelációja érdekében |
+| correlationId | Nem | Sztring | Az üzenetek korrelációs azonosítója |
+| ügyfélkérelem | Nem | Sztring | Az ügyfél feltöltheti ezt a tulajdonságot az üzenetek korrelációja érdekében |
+| eventLevel | Igen | Sztring | Az esemény szintje |
+| EventTime | Igen | Dátum és idő | Az esemény időpontja UTC formátumban: *éééé-hh-NNTóó: PP: mm. 00000Z* |
+| Rekordtípus | Igen | Sztring | A nyomkövetési rekord típusa csak az alábbi megengedett értékkel: `custom` |
+| rekord | Igen | JToken | Egyéni bejegyzéstípus csak JToken formátumban |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák
 
 További információ a B2B protokoll-követési sémákkal kapcsolatban:
 
-* [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [B2B-üzenetek monitorozásáról](logic-apps-monitor-b2b-message.md)
-* Tudnivalók a [B2B-üzenetek nyomon követéséről Azure monitor naplókban](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* További információ a [B2B-üzenetek Azure monitor naplókkal való monitorozásáról](../logic-apps/monitor-b2b-messages-log-analytics.md)

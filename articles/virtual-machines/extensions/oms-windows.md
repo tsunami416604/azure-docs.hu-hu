@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969946"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907021"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 
@@ -36,8 +36,9 @@ A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekin
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Windows Azure Monitor virtuálisgép-bővítmény verziójának és Log Analytics ügynök csomagjának leképezését tartalmazza minden egyes kiadáshoz. 
 
-| Log Analytics Windows-ügynök csomagjának verziója | Azure Monitor Windowsos virtuálisgép-bővítmény verziója | Megjelenés dátuma | Kibocsátási megjegyzések |
+| Log Analytics Windows-ügynök csomagjának verziója | Azure Monitor Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | 2019. október | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019. július | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Megnövekedett MaxExpressionDepth – 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019. június | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Lehetővé tette az alapértelmezett hitelesítő adatok letiltását proxy-kapcsolatok létrehozásakor (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatása) </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019. március | <ul><li>Kisebb stabilizációs javítások </li></ul> |
@@ -84,10 +85,10 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 ```
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa |
+| Name (Név) | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| közzétevő | Microsoft. EnterpriseCloud. monitoring |
+| Publisher | Microsoft. EnterpriseCloud. monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | Munkaterület azonosítója (például) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
