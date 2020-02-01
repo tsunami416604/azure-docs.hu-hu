@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771563"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902699"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: kivételek és hibák naplózása a Logic apps esetében
 
@@ -122,7 +122,7 @@ A beteg rekord forrását (kérését) be kell jelentkezni a Dynamics CRM Online
 
 A következő logikai alkalmazás kódjának mintája a naplózás kezelését mutatja be.
 
-#### <a name="log-entry"></a>Naplóbejegyzés
+#### <a name="log-entry"></a>naplóbejegyzés
 
 Itt látható a logikai alkalmazás forráskódja egy naplóbejegyzés beszúrásához.
 
@@ -481,5 +481,5 @@ A Logic Apps kivételek kezelése API-alkalmazás forráskódja ebben a GitHub- 
 ## <a name="next-steps"></a>Következő lépések
 
 * [További példák és forgatókönyvek a Logic app szolgáltatásban](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Tudnivalók a logikai alkalmazások figyeléséről](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps.md)
 * [A logikai alkalmazások telepítésének automatizálása](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

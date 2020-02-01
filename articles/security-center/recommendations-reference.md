@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288982"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904129"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -32,9 +32,10 @@ A biztonságos pontszám azon alapul, hogy hány Security Center javasolt javasl
 |Ajánlás|Leírás & kapcsolódó szabályzat|Súlyosság|Gyors javítás engedélyezve? ([További információ](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Erőforrás típusa|
 |----|----|----|----|----|
 |**Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken**|Alkalmazzon igény szerinti (JIT) virtuálisgép-hozzáférés-vezérlést a kiválasztott portok elérésének végleges zárolásához, és engedélyezze, hogy a jogosult felhasználók csak korlátozott ideig nyissák meg őket a JIT használatával.<br>(Kapcsolódó házirend: az igény szerinti hálózati hozzáférés-vezérlést a virtuális gépeken kell alkalmazni)|Magas|N|Virtuális gép|
-|**Az alhálózat szintjén engedélyezni kell a hálózati biztonsági csoportokat.**|Engedélyezze a hálózati biztonsági csoportok számára az alhálózatokban üzembe helyezett erőforrások hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: az alhálózatokat hálózati biztonsági csoporttal kell társítani)|Magas/közepes|N|Alhálózat|
-|**A virtuális gépeket hálózati biztonsági csoporttal kell társítani**|Engedélyezze a hálózati biztonsági csoportok számára a virtuális gépek hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: a virtuális gépeket hálózati biztonsági csoporttal kell társítani)|Magas/közepes|N|Virtuális gép|
-|**A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak**|A meglévő engedélyezési szabályok elérésének korlátozásával megerősítheti az internetre irányuló virtuális gépek hálózati biztonsági csoportjait.<br>(Kapcsolódó házirend: az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani)|Magas|N|Virtuális gép|
+|**Az alhálózat szintjén engedélyezni kell a hálózati biztonsági csoportokat.**|Engedélyezze a hálózati biztonsági csoportok számára az alhálózatokban üzembe helyezett erőforrások hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: az alhálózatokat egy hálózati biztonsági csoporttal kell társítani.<br>Ez a házirend alapértelmezés szerint le van tiltva.)|Magas/közepes|N|Alhálózat|
+|**Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni**|Engedélyezze a hálózati biztonsági csoportok számára a virtuális gépek hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni)|Magas/közepes|N|Virtuális gép|
+|**Az összes hálózati portot korlátozni kell a virtuális géphez társított NSG**|A meglévő engedélyezési szabályok elérésének korlátozásával megerősítheti az internetre irányuló virtuális gépek hálózati biztonsági csoportjait.<br>Ez az ajánlás akkor aktiválódik, ha bármely portot megnyitnak *minden* forrás számára (a 22-es, 3389, 5985, 5986, 80 és 1443 portok kivételével).<br>(Kapcsolódó szabályzat: az internet felé irányuló végponton keresztüli hozzáférés korlátozása korlátozott)|Magas|N|Virtuális gép|
+|**Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni**|A standard szintű díjszabási csomag ügyfelei ezt a javaslatot fogják látni, ha az adaptív hálózat megerősítő funkciója túlságosan engedékeny NSG szabályt talál.<br>(Kapcsolódó szabályzat: az adaptív hálózat megerősítő javaslatainak alkalmazása szükséges az internetre irányuló virtuális gépeken)|Magas|N|Virtuális gép|
 |**A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni**|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG) olyan NSG-szabályokkal, amelyek túlzottan engedékenyek a webalkalmazási portok tekintetében.<br>(Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)|Magas|N|Virtuális gép|
 |**A App Serviceshoz való hozzáférést korlátozni kell**|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a App Services elérését korlátozni kell)|Magas|N|App Service|
 |**A felügyeleti portokat be kell zárni a virtuális gépeken**|A felügyeleti portokhoz való hozzáférés korlátozása érdekében a virtuális gépek hálózati biztonsági csoportjának megerősítése.<br>(Kapcsolódó szabályzat: a felügyeleti portokat be kell zárni a virtuális gépeken)|Magas|N|Virtuális gép|

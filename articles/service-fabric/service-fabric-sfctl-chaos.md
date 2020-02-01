@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl káosz
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A káosz kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b91c11dfb9b1249420429bee20f12439fffa4853
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646177"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906163"
 ---
 # <a name="sfctl-chaos"></a>sfctl-káosz
 Indítsa el, állítsa le és jelentse a Chaos test Service-t.
@@ -24,9 +24,9 @@ Indítsa el, állítsa le és jelentse a Chaos test Service-t.
 |Parancs|Leírás|
 | --- | --- |
 | események | Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján. |
-| elérés | A káosz állapotának beolvasása. |
+| Get | A káosz állapotának beolvasása. |
 | start | Elindítja a káoszt a fürtben. |
-| leállítás | Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet. |
+| állj | Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet. |
 
 ## <a name="sfctl-chaos-events"></a>sfctl Chaos-események
 Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján.

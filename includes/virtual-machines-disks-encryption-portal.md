@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973458"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909120"
 ---
 ### <a name="portal"></a>Portál
 
@@ -77,6 +77,7 @@ Két értesítésnek kell megjelennie, és sikeresnek kell lennie. Ezzel lehető
 Most, hogy létrehozta és beállította a kulcstartót és a lemez titkosítási készletét, a titkosítás használatával üzembe helyezhet egy virtuális gépet.
 A virtuális gép telepítési folyamata hasonló a normál telepítési folyamathoz, az egyetlen különbség, hogy a virtuális gépet ugyanabban a régióban kell telepíteni, mint a többi erőforrást, és Ön úgy dönt, hogy az ügyfél által felügyelt kulcsot használja.
 
+1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
 1. Keressen rá **Virtual Machines** , és válassza a **+ Hozzáadás** elemet a virtuális gép létrehozásához.
 1. Az **alapszintű** lapon válassza ki ugyanazt a régiót, mint a lemez titkosítási készletét, és Azure Key Vault.
 1. Adja meg a többi értéket az **Alap** lapon, ahogy szeretné.
@@ -96,6 +97,7 @@ A lemezek titkosításának kezeléséhez és konfigurálásához a meglévő le
 > [!CAUTION]
 > A virtuális géphez csatlakoztatott lemezeken a lemez titkosításának engedélyezéséhez le kell állítania a virtuális gépet.
 
+1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
 1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
 1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
 

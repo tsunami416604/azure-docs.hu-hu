@@ -3,24 +3,26 @@ title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaS
 description: Blobok és tárolók létrehozása, feltöltése és törlése a Node. js-ben az Azure Storage ügyféloldali kódtár v10 a JavaScripthez
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862849"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906468"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaScripthez
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rövid útmutató: Blobok kezelése a JavaScript v10 SDK-val a Node. js-ben
 
-Ebből a rövid útmutatóból megtudhatja, hogyan lehet a [JavaScripthez készült Azure Storage SDK 10-es verziójának](https://github.com/Azure/azure-sdk-for-js) használatával a Node.js-ben a blobokat fel- és letölteni, listázni és törölni, valamint a tárolókat kezelni.
+Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Node. js használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti, listázhatja és törölheti a blobokat, és kezelheti a tárolókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Storage-fiók. [Tárfiók létrehozása](../common/storage-account-create.md).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
+Az API által kezdeményezett kérelmek egy adott intervallum után időkorlátra állíthatók be. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Ahogy a tároló, úgy még a blokkblob sem létezik. A *blockBlobURL* változó
 
 ### <a name="using-the-aborter-class"></a>Az Aborter osztály használata
 
-Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. A *megszakítási* osztály feladata a kérelmek időkorlátjának kezelése. A következő kód egy olyan környezetet hoz létre, amelyben a kérelmek halmaza 30 percet vesz igénybe.
+Az API által kezdeményezett kérelmek egy adott intervallum után időkorlátra állíthatók be. A *megszakítási* osztály feladata a kérelmek időkorlátjának kezelése. A következő kód egy olyan környezetet hoz létre, amelyben a kérelmek halmaza 30 percet vesz igénybe.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

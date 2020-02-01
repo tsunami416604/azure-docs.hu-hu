@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112127"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906727"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Partíciók és replikák vertikális felskálázása az Azure-beli lekérdezési és indexelési feladatok kapacitásának növeléséhez Cognitive Search
 
@@ -24,7 +24,7 @@ Az erőforrás-konfiguráció akkor érhető el, ha az [alapszintű](https://aka
 Ha kevesebb SUs-eredményt kíván használni, egy arányosan alacsonyabb számlán kell lennie. A számlázás mindaddig érvényes, amíg a szolgáltatás be van állítva. Ha átmenetileg nem használ szolgáltatást, a számlázás elkerülésének egyetlen módja, ha törli a szolgáltatást, majd újra létrehozza azt, amikor szüksége van rá.
 
 > [!Note]
-> A szolgáltatás törlésével mindent töröl. Az Azure Cognitive Searchon belül nem áll rendelkezésre a megőrzött keresési adatbiztonsági mentés és helyreállítás. Egy meglévő index új szolgáltatáson való újbóli üzembe helyezéséhez futtassa az eredeti létrehozásához és betöltéséhez használt programot. 
+> Egy szolgáltatás törlése során minden azon lévő adat törlődik. Az Azure Cognitive Search nem biztosít lehetőséget a megőrzött keresési adatok biztonsági mentésére és visszaállítására. Egy meglévő index új szolgáltatáson való újbóli üzembe helyezéséhez futtassa az eredeti létrehozásához és betöltéséhez használt programot. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
 A replikák és partíciók a keresési szolgáltatást támogató elsődleges erőforrások.
@@ -89,10 +89,10 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 replika** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
+| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
+| **12 replika** |12 SU |24 SU |36 SU |– |– |– |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 
@@ -123,7 +123,7 @@ Az Azure Cognitive Search magas rendelkezésre állása olyan lekérdezésekre �
 > [!NOTE]
 > Az index újraépítése nélkül új mezőket adhat hozzá egy Azure Cognitive Search indexhez. Az új mező értéke NULL lesz az indexben már szereplő összes dokumentum esetében.
 
-Ahhoz, hogy az index rendelkezésre álljon az Újraépítés során, az index egy másik névvel kell rendelkeznie ugyanazon a szolgáltatáson, vagy az index egy másolata ugyanazzal a névvel egy másik szolgáltatáson, majd a kódban át kell adni az átirányítási vagy feladatátvételi logikát.
+Az index újraépítésekor az új indexbe kerülő adatmennyiség időszaka lesz. Ha továbbra is elérhetővé kívánja tenni a régi indexet, akkor a régi indexnek egy másik névvel kell rendelkeznie ugyanazon a szolgáltatáson, vagy az index egy másik szolgáltatásban azonos néven található másolata. , majd adja meg az átirányítási vagy feladatátvételi logikát a kódban.
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
 Jelenleg nincs beépített mechanizmus a vész-helyreállításhoz. Partíciók vagy replikák hozzáadása nem megfelelő stratégiát jelentene a vész-helyreállítási célkitűzések teljesítéséhez. A leggyakoribb módszer a redundancia a szolgáltatási szinten való hozzáadása egy másik régióban található második keresési szolgáltatás beállításával. Az indexek újraépítése során a rendelkezésre álláshoz hasonlóan az átirányítás vagy a feladatátvételi logikának a kódból kell származnia.
@@ -141,6 +141,6 @@ A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a 
 A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Válasszon árképzési szintet az Azure Cognitive Search](search-sku-tier.md)

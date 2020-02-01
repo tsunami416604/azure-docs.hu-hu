@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl Mesh kötet
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A kötetek erőforrásainak beolvasására és törlésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: e77c98bf384278b0bf27bb0f30f425375093ffab
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645310"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905910"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh kötete
 Mennyiségi erőforrások beolvasása és törlése.
@@ -21,7 +21,7 @@ Mennyiségi erőforrások beolvasása és törlése.
 | --- | --- |
 | delete | Törli a kötet erőforrását. |
 | lista | Felsorolja az összes kötet erőforrását. |
-| megjelenítés | Lekéri a kötet erőforrását a megadott névvel. |
+| megjelenítése | Lekéri a kötet erőforrását a megadott névvel. |
 
 ## <a name="sfctl-mesh-volume-delete"></a>sfctl Mesh kötetének törlése
 Törli a kötet erőforrását.

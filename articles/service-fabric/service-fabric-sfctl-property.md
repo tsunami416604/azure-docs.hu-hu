@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI – sfctl tulajdonság
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szövegegység-és lekérdezési tulajdonságok listáját tartalmazza.
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A tulajdonságok tárolására és lekérdezésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639105"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905831"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
 Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
@@ -20,7 +20,7 @@ Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
 |Parancs|Leírás|
 | --- | --- |
 | delete | Törli a megadott Service Fabric tulajdonságot. |
-| elérés | Lekéri a megadott Service Fabric tulajdonságot. |
+| Get | Lekéri a megadott Service Fabric tulajdonságot. |
 | lista | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
 | Put | Létrehoz vagy frissít egy Service Fabric tulajdonságot. |
 
@@ -105,7 +105,7 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric\:" URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A Service Fabric tulajdonság neve. |
-| --Value [kötelező] | Egy Service Fabric tulajdonság értékét ismerteti. Ez egy JSON-karakterlánc. <br><br> A JSON-karakterlánc két mezőből áll: az adat "Kind", valamint az adat "értéke". A "Kind" értéknek az első elemnek kell lennie, amely megjelenik a JSON-karakterláncban, és a "Binary", "Int64", "Double", "string" vagy "GUID" érték lehet. Az értéknek szerializálva kell lennie, hogy az adott típus legyen. A "Kind" és az "adatok" értékeket karakterláncként kell megadni. |
+| --Value [kötelező] | Egy Service Fabric tulajdonság értékét ismerteti. Ez egy JSON-karakterlánc. <br><br> A JSON-karakterláncnak két mezője van, az adat "Kind" értéke, valamint az adat "adat" formájában megadott érték. A "Kind" értéknek az első elemnek kell lennie, amely megjelenik a JSON-karakterláncban, és a "Binary", "Int64", "Double", "string" vagy "GUID" érték lehet. Az értéknek szerializálva kell lennie, hogy az adott típus legyen. A "Kind" és az "adatok" értékeket karakterláncként kell megadni. |
 | – Egyéni azonosító – típus | A tulajdonság egyéni típusának azonosítója. Ennek a tulajdonságnak a használatával a felhasználó megcímkézheti a tulajdonság értékének típusát. |
 | --időtúllépés-t | Alapértelmezett\: 60. |
 

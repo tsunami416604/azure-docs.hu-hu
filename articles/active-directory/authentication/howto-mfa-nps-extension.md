@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712527"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908853"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
 
@@ -192,6 +192,23 @@ Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett
 
 > [!NOTE]
 > Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN =\<TenantID\>, OU = Microsoft NPS bővítménynek**kell lennie. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
+
+Azure Government felhőt használó ügyfelek esetén a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon:
+
+1. Nyissa meg a **Rendszerleíróadatbázis-szerkesztőt** az NPS-kiszolgálón.
+1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcs értékeit:
+
+    | Beállításkulcs       | Value (Díj) |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Ismételje meg az előző két lépést az egyes NPS-kiszolgálók beállításkulcs-értékeinek beállításához.
+1. Indítsa újra a hálózati házirend-kiszolgáló szolgáltatást az egyes NPS-kiszolgálókon.
+
+    A minimális hatás érdekében minden hálózati házirend-kiszolgálót ki kell kapcsolni az NLB-rotációból, és várnia kell, amíg az összes kapcsolat el nem telik.
 
 ### <a name="certificate-rollover"></a>Tanúsítvány-rollover
 

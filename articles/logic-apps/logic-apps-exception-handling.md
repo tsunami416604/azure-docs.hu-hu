@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965934"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906697"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -32,7 +32,7 @@ Az újrapróbálkozási szabályzatok típusai:
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
 | **Rögzített intervallum**  | Ez a házirend a következő kérelem elküldése előtt megvárja a megadott intervallumot. |
-| **Nincs**  | Ne küldje újra a kérelmet. |
+| **NEz egy**  | Ne küldje újra a kérelmet. |
 |||
 
 További információ az újrapróbálkozási házirend korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#request-limits).
@@ -67,7 +67,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 }
 ```
 
-*Kötelező*
+*Szükséges*
 
 | Value (Díj) | Type (Típus) | Leírás |
 |-------|------|-------------|
@@ -76,7 +76,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 | *újrapróbálkozási kísérletek* <> | Egész szám | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie |
 ||||
 
-*Nem kötelező*
+*Választható*
 
 | Value (Díj) | Type (Típus) | Leírás |
 |-------|------|-------------|
@@ -360,9 +360,9 @@ Hivatkozásként Íme egy `@result()` elem, amely az előző példában elemzett
 
 A különböző kivételek kezelésére szolgáló mintázatok végrehajtásához használhatja a cikkben korábban ismertetett kifejezéseket. Dönthet úgy is, hogy egyetlen kivétel-kezelési műveletet hajt végre a hatókörön kívül, amely elfogadja a hibák teljes szűrt tömbjét, és eltávolítja a `For_each` műveletet. Más hasznos tulajdonságokat is megadhat a korábban leírt `\@result()` válaszból.
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics és mérőszámok
+## <a name="set-up-azure-monitor-logs"></a>Azure Monitor naplók beállítása
 
-Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy futtatáson belül, de a futtatástól függetlenül is azonosíthatók és reagálnak a hibákra. A [Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) egyszerű módot biztosít az összes munkafolyamat-esemény, beleértve az összes futtatási és művelet állapotát, egy Azure Storage-fiókba vagy egy azure- [Event Hubs](../event-hubs/event-hubs-about.md)létrehozott Event hub küldésére.
+Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy futtatáson belül, de a futtatástól függetlenül is azonosíthatók és reagálnak a hibákra. A [Azure monitor](../azure-monitor/overview.md) egyszerű módot biztosít az összes munkafolyamat-esemény, beleértve a futtatási és a műveleti állapotok elküldését egy [log Analytics-munkaterületre](../azure-monitor/platform/data-platform-logs.md), [Azure Storage-fiókra](../storage/blobs/storage-blobs-overview.md)vagy [Azure-Event Hubsre](../event-hubs/event-hubs-about.md).
 
 A futtatási állapotok kiértékeléséhez nyomon követheti a naplókat és a metrikákat, vagy közzéteheti azokat bármely figyelési eszközön. Az egyik lehetséges lehetőség az, hogy az összes eseményt Event Hubs-ba [Azure stream Analyticsba](https://azure.microsoft.com/services/stream-analytics/)továbbítsa. Stream Analytics élő lekérdezéseket írhat a diagnosztikai naplókból származó rendellenességek, átlagok vagy hibák alapján. A Stream Analytics használatával adatokat küldhet más adatforrásoknak, például várólistákat, témaköröket, SQL-, Azure Cosmos DB-vagy Power BI.
 

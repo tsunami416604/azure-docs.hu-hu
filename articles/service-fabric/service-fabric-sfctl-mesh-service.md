@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl Mesh szolgáltatás
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazás-erőforrások szolgáltatás részleteinek beolvasására szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1ae04d054a254746d59b85f4fe366cebf19e3faf
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646092"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905924"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh szolgáltatás
 Szolgáltatás részleteinek beolvasása és az alkalmazás-erőforrások listázása.
@@ -20,7 +20,7 @@ Szolgáltatás részleteinek beolvasása és az alkalmazás-erőforrások listá
 |Parancs|Leírás|
 | --- | --- |
 | lista | Felsorolja az összes szolgáltatás-erőforrást. |
-| megjelenítés | Lekéri a szolgáltatás erőforrását a megadott névvel. |
+| megjelenítése | Lekéri a szolgáltatás erőforrását a megadott névvel. |
 
 ## <a name="sfctl-mesh-service-list"></a>sfctl Mesh-szolgáltatás listája
 Felsorolja az összes szolgáltatás-erőforrást.

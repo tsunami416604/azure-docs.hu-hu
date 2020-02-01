@@ -3,12 +3,12 @@ title: Azure-erőforrások – QnA Maker
 description: QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja a kombinációkat, így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843498"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902066"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -112,6 +112,10 @@ A QnA Maker erőforrás hozzáférést biztosít a szerzői és közzétételi A
 
 A második rangsor olyan intelligens szűrőket alkalmaz, amelyek metaadatokat és követő utasításokat is tartalmazhatnak.
 
+#### <a name="qna-maker-resource-configuration-settings"></a>Erőforrás-konfigurációs beállítások QnA Maker
+
+Amikor új tudásbázist hoz létre a QnA Maker- [portálon](https://qnamaker.ai), a **nyelvi** beállítás az egyetlen beállítás, amely az erőforrás szintjén lesz alkalmazva. Az erőforrás első tudásbázisának létrehozásakor ki kell választania a nyelvet. 
+
 ### <a name="app-service-and-app-service-plan"></a>App Service-és app Service-csomag
 
 Az [ügyfélalkalmazás a közzétett](../../../app-service/index.yml) tudásbázisokat a futásidejű végponton keresztül éri el.
@@ -156,7 +160,7 @@ Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgálta
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Név|Földrajzi egység|Rendeltetés|
+|Name (Név)|Földrajzi egység|Rendeltetés|
 |--|--|--|
 |Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
 |Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|

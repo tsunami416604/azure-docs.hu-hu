@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs rögzített adatok beolvasása a Python-alkalmazásból | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan írhat Python-kódot az Event hub számára elküldett adatok rögzítéséhez, és beolvashatja a rögzített események adatait egy Azure-tárolóból.
+title: Az Azure Event Hubs rögzített adatok beolvasása egy Python-alkalmazásból (legújabb)
+description: Ebből a cikkből megtudhatja, hogyan írhat Python-kódot az Event hub számára elküldett adatok rögzítéséhez, és beolvashatja az Azure Storage-fiókból a rögzített események adatait.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -9,23 +9,24 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/05/2019
+ms.topic: quickstart
+ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293538"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906402"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Az Azure Storage-ban tárolt Event Hubs-információk rögzítése és beolvasása a Python használatával 
-Használhatja az Event hub konfigurálását is, hogy az Event hub-nak elküldett adattárolók egy Azure Storage-ban vagy Azure Data Lake Storageban legyenek rögzítve. Ez a cikk bemutatja, hogyan lehet az írási Python-kód használatával eseményeket küldeni az Event hub-ba, és beolvasni a rögzített adatok egy Azure Blob Storage-ból való beolvasását. A szolgáltatással kapcsolatos további információkért tekintse meg a [Event Hubs rögzítési funkcióinak áttekintése](event-hubs-capture-overview.md)című témakört.
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs-információk rögzítése az Azure Storage-ban és a Python használatával (Azure-eventhub 5-ös verzió)
 
-Ez a példa az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A sender.py program a szimulált környezeti telemetria JSON formátumban küldi Event Hubs. Az Event hub úgy van konfigurálva, hogy a rögzítési funkció használatával írja ezeket az adattárakba a blob Storage-ba. A capturereader.py alkalmazás beolvassa ezeket a blobokat, és létrehoz egy hozzáfűzési fájlt egy eszközön. Az alkalmazás ezután a. csv-fájlokba írja az adatot.
+Az Event hub-t konfigurálhatja úgy, hogy az Event hub számára eljuttatott adattárolók egy Azure Storage-fiókban vagy Azure Data Lake Storage legyenek rögzítve. Ez a cikk bemutatja, hogyan írhat Python-kódokat események küldéséhez az Event hub-ba, és beolvashatja a rögzített adatok Azure Blob Storage-ból való beolvasását. További információ erről a szolgáltatásról: [Event Hubs rögzítési funkciók áttekintése](event-hubs-capture-overview.md).
+
+Ez a rövid útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* alkalmazás a szimulált környezeti telemetria JSON formátumban küldi az Event hubokba. Az Event hub úgy van konfigurálva, hogy a rögzítési funkció használatával írja ezeket az adattárakba a blob Storage-ba. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, és létrehoz egy hozzáfűzési fájlt az egyes eszközökhöz. Az alkalmazás ezután a CSV-fájlokba írja az adatot.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK régi 1. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-capture-python.md)találja. Ha az SDK 1. verzióját használja, javasoljuk, hogy telepítse át a kódot a legújabb verzióra. Részletekért tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
+> Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK 1. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](event-hubs-capture-python.md). 
 
 Ebben a rövid útmutatóban a következőket hajtja végre: 
 
@@ -38,23 +39,24 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Python 2,7 és 3,5 vagy újabb, `pip` telepítve és frissítve.
-- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- [Hozzon létre egy Event Hubs névteret és egy Event hubot a névtérben](event-hubs-create.md). Jegyezze fel a Event Hubs névtér nevét, az Event hub nevét és a névtér elsődleges elérési kulcsát. A hozzáférési kulcs lekéréséhez kövesse a következő cikk utasításait: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**. Az oktatóanyaghoz nem szükséges a kapcsolatok karakterlánca. Csak az elsődleges kulcsra van szükség. 
-- Az alábbi lépéseket követve hozzon létre egy **Azure Storage-fiókot** és egy **BLOB-tárolót**:
-    1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Hozzon létre egy BLOB-tárolót a tárolóban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [Szerezze be a kapcsolódási karakterláncot a Storage-fiókhoz](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
+- Python 2,7 és 3,5 vagy újabb, a PIP telepítve és frissítve.  
+- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.  
+- Aktív Event Hubs névtér és Event hub.
+[Hozzon létre egy Event Hubs névteret és egy Event hubot a névtérben](event-hubs-create.md). Jegyezze fel a Event Hubs névtér nevét, az Event hub nevét és a névtér elsődleges elérési kulcsát. A hozzáférési kulcs beszerzéséhez tekintse meg [Event Hubs kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakört. Az alapértelmezett kulcsnév a *RootManageSharedAccessKey*. Ebben a rövid útmutatóban csak az elsődleges kulcsra van szükség. Nincs szüksége a kapcsolatok karakterláncára.  
+- Egy Azure Storage-fiók, egy blob-tároló a Storage-fiókban, valamint egy kapcsolódási sztring a Storage-fiókhoz. Ha nem rendelkezik ezekkel az elemekkel, tegye a következőket:  
+    1. [Azure Storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+    1. [BLOB-tároló létrehozása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
+    1. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
 
-        Jegyezze fel a **kapcsolatok sztringjét** és a **tároló nevét**. Ezeket később a kódban fogja használni. 
-- Az Event hub **rögzítési** funkciójának engedélyezéséhez kövesse az alábbi utasításokat: [Event Hubs Capture engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md). Válassza ki a Storage-fiókot és az előző lépésben létrehozott BLOB-tárolót. Az Event hub létrehozásakor is engedélyezheti a szolgáltatást. 
+    Ügyeljen arra, hogy a rövid útmutató későbbi használatához a kapcsolódási karakterláncot és a tároló nevét jegyezze fel.  
+- Az Event hub rögzítési funkciójának engedélyezése. Ehhez kövesse a [Event Hubs rögzítés engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md)című témakör utasításait. Válassza ki a Storage-fiókot és az előző lépésben létrehozott BLOB-tárolót. Az Event hub létrehozásakor is engedélyezheti a szolgáltatást.  
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Hozzon létre egy Python-szkriptet az események az Event hub-ba való küldéséhez
-Ebben a szakaszban egy Python-szkriptet hoz létre, amely 200 eseményt küld (10 eszköz * 20 eseményt) az Event hub-ba. Ezek az események JSON formátumban továbbított környezeti olvasások. 
+Ebben a szakaszban egy Python-szkriptet hoz létre, amely 200 eseményt küld (10 eszköz * 20 eseményt) az Event hub-ba. Ezek az események JSON formátumban eljuttatott környezeti beolvasási példák. 
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code][Visual Studio Code]-ot.
-2. Hozzon létre egy **Sender.py**nevű szkriptet. 
-3. Illessze be a következő kódot a sender.py. A részletekért tekintse meg a kód megjegyzéseit. 
+2. Hozzon létre egy *Sender.py*nevű szkriptet. 
+3. Illessze be a következő kódot a *Sender.py*. 
    
     ```python
     import time
@@ -66,39 +68,39 @@ Ebben a szakaszban egy Python-szkriptet hoz létre, amely 200 eseményt küld (1
     
     from azure.eventhub import EventHubProducerClient, EventData
     
-    # this scripts simulates production of events for 10 devices
+    # This script simulates the production of events for 10 devices.
     devices = []
     for x in range(0, 10):
         devices.append(str(uuid.uuid4()))
     
-    # create a producer client to produce/publish events to the event hub
+    # Create a producer client to produce and publish events to the event hub.
     producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESAPCE CONNECTION STRING", eventhub_name="EVENT HUB NAME")
     
-    for y in range(0,20):    # for each device, produce 20 events 
-        event_data_batch = producer.create_batch() # create a batch. you will add events to the batch later. 
+    for y in range(0,20):    # For each device, produce 20 events. 
+        event_data_batch = producer.create_batch() # Create a batch. You will add events to the batch later. 
         for dev in devices:
-            # create a dummy reading
+            # Create a dummy reading.
             reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
-            s = json.dumps(reading) # convert reading into a JSON string
-            event_data_batch.add(EventData(s)) # add event data to the batch
-        producer.send_batch(event_data_batch) # send the batch of events to the event hub
+            s = json.dumps(reading) # Convert the reading into a JSON string.
+            event_data_batch.add(EventData(s)) # Add event data to the batch.
+        producer.send_batch(event_data_batch) # Send the batch of events to the event hub.
     
-    # close the producer    
+    # Close the producer.    
     producer.close()
     ```
-4. Cserélje le a következő értékeket a parancsfájlokban:
-    1. Cserélje le a `EVENT HUBS NAMESPACE CONNECTION STRING`t a Event Hubs névtérhez tartozó kapcsolatok karakterláncára.
-    2. Cserélje le a `EVENT HUB NAME`t az Event hub nevére. 
-5. Futtassa a szkriptet az események az Event hubhoz való küldéséhez. 
-6. A Azure Portalon ellenőrizheti, hogy az Event hub fogadta-e az üzeneteket. Váltson az **üzenetek** nézetre a **metrikák** szakaszban. Frissítse a lapot a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg meg nem jelenik az üzenetek fogadása. 
+4. Cserélje le a következő értékeket a parancsfájlokban:  
+    * Cserélje le a `EVENT HUBS NAMESPACE CONNECTION STRING`t a Event Hubs névtérhez tartozó kapcsolatok karakterláncára.  
+    * Cserélje le a `EVENT HUB NAME`t az Event hub nevére.  
+5. Futtassa a szkriptet az események az Event hubhoz való küldéséhez.  
+6. A Azure Portalon ellenőrizheti, hogy az Event hub fogadta-e az üzeneteket. Váltson az **üzenetek** nézetre a **metrikák** szakaszban. Frissítse a lapot a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg az oldal megjeleníti az üzenetek fogadását. 
 
     [![annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>Python-szkript létrehozása a rögzítési fájlok olvasásához
-Ebben a példában a rögzített adattárolást az Azure Blob Storage tárolja. Az ebben a szakaszban található szkript beolvassa az adatfájlokat az Azure Storage-ból, és CSV-fájlokat hoz létre, így egyszerűen megnyithatja és megtekintheti a tartalmat. Az alkalmazás aktuális munkakönyvtárában 10 fájl jelenik meg. Ezek a fájlok a 10 eszközre vonatkozó környezeti beolvasásokat fogják tartalmazni. 
+Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-ban történik. Az ebben a szakaszban található szkript beolvassa a rögzített adatfájlokat az Azure Storage-fiókjából, és CSV-fájlokat hoz létre, amelyekkel egyszerűen megnyithatja és megtekintheti azokat. Az alkalmazás aktuális munkakönyvtárában 10 fájl jelenik meg. Ezek a fájlok a 10 eszközre vonatkozó környezeti beolvasásokat fogják tartalmazni. 
 
-1. A Python-szerkesztőben hozzon létre egy **capturereader.py**nevű szkriptet. Ez a szkript beolvassa a rögzített fájlokat, és az eszközön létrehoz egy fájlt, hogy csak az adott eszközre írja az adatokat.
-2. Illessze be a következő kódot a capturereader.py. A részletekért tekintse meg a kód megjegyzéseit. 
+1. A Python-szerkesztőben hozzon létre egy *capturereader.py*nevű szkriptet. Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt minden eszköz számára, hogy csak az adott eszközre írja az adatokat.
+2. Illessze be a következő kódot a *capturereader.py*. 
    
     ```python
     import os
@@ -134,28 +136,28 @@ Ebben a példában a rögzített adattárolást az Azure Blob Storage tárolja. 
     
     def startProcessing():
         print('Processor started using path: ' + os.getcwd())
-        # create a blob container client
+        # Create a blob container client.
         container = ContainerClient.from_connection_string("AZURE STORAGE CONNECTION STRING", container_name="BLOB CONTAINER NAME")
-        blob_list = container.list_blobs() # list all the blobs in the container
+        blob_list = container.list_blobs() # List all the blobs in the container.
         for blob in blob_list:
-            #content_length == 508 is an empty file, so only process content_length > 508 (skip empty files)        
+            # Content_length == 508 is an empty file, so process only content_length > 508 (skip empty files).        
             if blob.size > 508:
                 print('Downloaded a non empty blob: ' + blob.name)
-                # create a blob client for the blob
+                # Create a blob client for the blob.
                 blob_client = ContainerClient.get_blob_client(container, blob=blob.name)
-                # construct a file name based on the blob name
+                # Construct a file name based on the blob name.
                 cleanName = str.replace(blob.name, '/', '_')
                 cleanName = os.getcwd() + '\\' + cleanName 
-                with open(cleanName, "wb+") as my_file: # open the file to write. create if it doesn't exist. 
-                    my_file.write(blob_client.download_blob().readall()) # write blob contents into the file
-                processBlob2(cleanName) # convert the file into a CSV file
-                os.remove(cleanName) # remove the original downloaded file
-                # delete the blob from the container after it's read
+                with open(cleanName, "wb+") as my_file: # Open the file to write. Create it if it doesn't exist. 
+                    my_file.write(blob_client.download_blob().readall()) # Write blob contents into the file.
+                processBlob2(cleanName) # Convert the file into a CSV file.
+                os.remove(cleanName) # Remove the original downloaded file.
+                # Delete the blob from the container after it's read.
                 container.delete_blob(blob.name)
     
     startProcessing()    
     ```
-4. Cserélje le a `<AZURE STORAGE CONNECTION STRING>`t az Azure Storage-fiókhoz tartozó kapcsolatok karakterláncára. Az oktatóanyagban létrehozott tároló neve: **Capture**. Ha a tárolóhoz más nevet használt, cserélje le a `capture` nevet a Storage-fiókban található tároló nevére. 
+3. Cserélje le a `AZURE STORAGE CONNECTION STRING`t az Azure Storage-fiókhoz tartozó kapcsolatok karakterláncára. Az ebben a rövid útmutatóban létrehozott tároló neve *rögzítve*lesz. Ha más nevet használt a tárolóhoz, a *rögzítés* helyére írja be a Storage-fiókban található tároló nevét. 
 
 ## <a name="run-the-scripts"></a>Parancsfájlok futtatása
 1. Nyisson meg egy parancssort, amely a Python elérési útjában található, majd futtassa ezeket a parancsokat a Python előfeltételként szükséges csomagok telepítéséhez:
@@ -165,23 +167,23 @@ Ebben a példában a rögzített adattárolást az Azure Blob Storage tárolja. 
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. Módosítsa a könyvtárat, ahol a sender.py és a capturereader.py mentette, majd futtassa a következő parancsot:
+2. Módosítsa a könyvtárat arra a könyvtárba, ahová a *Sender.py* és a *capturereader.py*mentette, majd futtassa a következő parancsot:
    
    ```
    python sender.py
    ```
    
    Ez a parancs egy új Python-folyamatot indít el a küldő futtatásához.
-3. Várjon néhány percet, amíg a rögzítés fut. Ezután írja be a következő parancsot az eredeti parancssorablakba:
+3. Várjon néhány percet a rögzítés futtatására, majd írja be az alábbi parancsot az eredeti parancssorablakba:
    
    ```
    python capturereader.py
    ```
 
-   Ez a rögzítési processzor a helyi könyvtár használatával tölti le az összes blobot a Storage-fiókból/tárolóból. Feldolgozza azokat, amelyek nem üresek, és az eredményeket. csv-fájlként írja a helyi könyvtárba.
+   Ez a rögzítési processzor a helyi könyvtár használatával tölti le az összes blobot a Storage-fiókból és-tárolóból. Feldolgozza azokat, amelyek nem üresek, és az eredményeket CSV-fájlként írja a helyi könyvtárba.
 
 ## <a name="next-steps"></a>Következő lépések
-Tekintse meg a Python-mintákat [a githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
+Tekintse [meg a Python-mintákat a githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
 
 [Azure portal]: https://portal.azure.com/

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772601"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905728"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -48,12 +48,12 @@ Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más c�
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehet az Azure ML-folyamatok?
 
-Az Azure Machine Learning folyamat egy teljes gépi tanulási feladat egymástól független végrehajtható munkafolyamata. Az altevékenységek a folyamat lépéseinek sorozata alá vannak ágyazva. Egy Azure Machine Learning folyamat olyan egyszerű lehet, amely egy Python-szkriptet hív meg, _így bármit elvégezhet._ A folyamatoknak a gépi tanulási feladatokra _kell_ összpontosítaniuk, például:
+Az Azure Machine Learning folyamat egy teljes gépi tanulási feladat egymástól független végrehajtható munkafolyamata. Az alfeladatok lépések sorozataként vannak beágyazva a folyamatba. Egy Azure Machine Learning folyamat olyan egyszerű lehet, amely egy Python-szkriptet hív meg, _így bármit elvégezhet._ A folyamatoknak a gépi tanulási feladatokra _kell_ összpontosítaniuk, például:
 
-+ Adatelőkészítés, beleértve az importálást, az érvényesítést és a tisztítást, a munging és az átalakítást, a normalizálás és az előkészítést
-+ Betanítási konfiguráció, beleértve a parameterizing argumentumokat, a filepaths és a naplózási/jelentéskészítési konfigurációkat
++ Adat-előkészítés, beleértve az importálást, az érvényesítést és a tisztítást, a kezelést és az átalakítást, a normalizálást és az előkészítést
++ Betanítás konfigurálása, beleértve az argumentumok, a fájlok elérési útvonalai és a naplózási/jelentéskészítési konfigurációk paraméterezését
 + Hatékonyan és ismételten betaníthat és érvényesítheti azokat, amelyek tartalmazhatnak konkrét adatrészhalmazokat, különböző hardveres számítási erőforrásokat, elosztott feldolgozást és előrehaladás-figyelést.
-+ Üzembe helyezés, beleértve a verziószámozást, a skálázást, a létesítést és a hozzáférés-vezérlést 
++ Üzembe helyezés, beleértve a verziószámozást, a méretezést, a kiépítést és a hozzáférés-vezérlést 
 
 A független lépések lehetővé teszik, hogy több adatszakértő egyszerre működjön ugyanazon a folyamaton, és ne legyenek túlterhelő számítási erőforrások. A külön lépések azt is megkönnyítik, hogy az egyes lépésekhez különböző számítási típusokat/méreteket lehessen használni.
 
@@ -203,6 +203,20 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 |**Nyomon követés és verziószámozás**|Az adatok és az eredmények elérési útjának manuális nyomon követése helyett használja a folyamatok SDK-t az adatforrások, bemenetek és kimenetek explicit elnevezéséhez és verziójának megkereséséhez. A szkriptek és az információk külön is kezelhetők a hatékonyság növelése érdekében.|
 | **Modularitás** | Az érintett területek elkülönítése és a változások elkülönítése lehetővé teszi, hogy a szoftverek gyorsabb ütemben, magasabb színvonalú minőségben fejlődjenek. | 
 |**Együttműködés**|A folyamatok lehetővé teszik az adatszakértők számára, hogy működjenek együtt a gépi tanulási tervezési folyamat minden területén, miközben egyidejűleg dolgozhatnak a folyamat lépésein.|
+
+## <a name="modules"></a>Modulok
+
+Míg a folyamat lépései lehetővé teszik egy korábbi Futtatás eredményeinek újrafelhasználását, sok esetben a lépés felépítése feltételezi, hogy a szükséges parancsfájloknak és a függő fájloknak helyileg elérhetőnek kell lenniük. Ha egy adattudós már meglévő kód alapján kíván felépíteni, a szkripteket és a függőségeket gyakran külön tárházból kell klónozott.
+
+A modulok a folyamat lépéseihez hasonlóan hasonlóak, de a munkaterületen elérhető verziószámozást biztosítanak, amely lehetővé teszi az együttműködés és a nagy léptékű használhatóság használatát. A modulok úgy lettek kialakítva, hogy több folyamaton újra felhasználhatók legyenek, és egy adott számítást különböző használati esetekhez igazítanak. A felhasználók a következő feladatokat végezhetik el a munkaterületen, külső adattárak használata nélkül:
+
+* Új modulok létrehozása és a meglévő modulok új verzióinak közzététele
+* Meglévő verziók elavulttá nyilvánítása
+* Letiltott verziók megjelölése annak megakadályozása érdekében, hogy a felhasználók az adott verziót használják
+* Alapértelmezett verziók kijelölése
+* Modulok beolvasása a munkaterületről verzió alapján, annak biztosítása érdekében, hogy a csapatok ugyanazt a kódot használják
+
+Az Azure Machine Learning-folyamatok moduljainak létrehozásához, összekapcsolásához és használatához szükséges példákért tekintse meg a [notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) .
 
 ## <a name="next-steps"></a>Következő lépések
 

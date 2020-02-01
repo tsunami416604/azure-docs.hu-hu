@@ -1,28 +1,28 @@
 ---
 title: Az Azure IoT Hub Device Provisioning Service áttekintése | Microsoft Docs
 description: Az eszközök üzembe helyezését ismerteti az Azure-ban az eszközök kiépítési szolgáltatásával (DPS) és IoT Hub
-author: nberdy
-ms.author: nberdy
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+manager: eliotgra
+ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772951"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904867"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
-A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
+A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgáltatása, amely lehetővé teszi, hogy az emberi beavatkozás nélkül, a megfelelő IoT hub-ra való leválasztást, valamint a jobb oldali üzembe helyezést. A DPS lehetővé teszi, hogy több millió eszköz biztonságos és skálázható módon legyen kiépítve.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Mikor érdemes használni a Device Provisioning Service-t?
-A Device Provisioning Service sokféle kiépítési forgatókönyv esetében kiváló választás az eszközök IoT Hubhoz való csatlakoztatása és konfigurálása céljából, mint például:
+Számos üzembe helyezési forgatókönyv van, amelyekben a DPS kiváló választás a IoT Hubhoz csatlakoztatott és konfigurált eszközök beszerzéséhez, például:
 
 * Érintésmentes kiépítés egyetlen IoT-megoldásra, az IoT Hub-kapcsolati adatok gyári kódolása nélkül (kezdeti telepítés)
-* Eszközök terheléselosztása több hubon
+* Eszközök terheléselosztása több hubok között
 * Eszközök csatlakoztatása a tulajdonosuk IoT-megoldásához az értékesítési tranzakciós adatok alapján (több-bérlős mód)
 * Eszközök csatlakoztatása egy adott IoT-megoldáshoz a használati esettől függően (megoldáselkülönítés)
 * Az eszközök legkisebb mértékű késleltetéssel rendelkező IoT Hubhoz való csatlakoztatása (földrajzi horizontális skálázás)
@@ -30,31 +30,31 @@ A Device Provisioning Service sokféle kiépítési forgatókönyv esetében kiv
 * Az eszköz által az IoT Hubhoz való csatlakozáshoz használt kulcsok váltása (nem X.509-tanúsítványokkal történő csatlakozás esetében)
 
 ## <a name="behind-the-scenes"></a>A színfalak mögött
-Az előző szakaszban felsorolt összes forgatókönyv megvalósítható az érintésmentes üzembe helyezés üzembehelyezési szolgáltatásával, ugyanazzal a folyamattal. A Device Provisioning Service az üzembe helyezés hagyományosan manuális lépései közül sokat automatizál, csökkentve az IoT-eszközök üzembehelyezési idejét és a manuális jellegű hibák bekövetkeztének kockázatát. A következő szakasz azt ismerteti, hogy mi történik a színfalak mögött az eszközök regisztrálása során. Az első lépés manuális, az összes további lépés pedig automatizált.
+Az előző szakaszban felsorolt összes forgatókönyv a DPS használatával nulla érintéses kiépítés esetén ugyanazzal a folyamattal végezhető el. A kiépítés során hagyományosan felmerülő kézi lépések számos része automatikusan együttműködik a DPS szolgáltatással, hogy csökkentse a IoT-eszközök üzembe helyezésének idejét, és csökkentse a manuális hibák kockázatát. A következő szakasz azt ismerteti, hogy mi történik a színfalak mögött az eszközök regisztrálása során. Az első lépés manuális, az összes további lépés pedig automatizált.
 
 ![Alapszintű üzembehelyezési folyamat](./media/about-iot-dps/dps-provisioning-flow.png)
 
 1. Az eszközgyártó hozzáadja az eszköz regisztrációs adatait az Azure portál regisztrációs listájához.
-2. Az eszköz kapcsolatba lép a gyárilag beállított üzembehelyezési szolgáltatásvégponttal. Az eszköz továbbítja az azonosító adatait az üzembehelyezési szolgáltatásnak, identitásának bizonyítása céljából.
-3. Az üzembehelyezési szolgáltatás érvényesíti az eszköz identitását azáltal, hogy összehasonlítja a regisztrációs azonosítót és kulcsot a regisztrációs lista bejegyzésével, egyszeri kulcsos ellenőrzéssel ([platformmegbízhatósági modul](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) vagy szabványos X.509-ellenőrzéssel (X.509).
-4. Az üzembehelyezési szolgáltatás regisztrálja az eszközt egy IoT Hubban, és feltölti az eszköz [kívánt ikerállapotát](../iot-hub/iot-hub-devguide-device-twins.md).
-5. Az IoT Hub visszaküldi az eszköz azonosító adatait az üzembehelyezési szolgáltatásnak.
-6. Az üzembehelyezési szolgáltatás visszaküldi az IoT Hub kapcsolatadatait az eszköznek. Ezután az eszköz már képes adatokat küldeni közvetlenül az IoT Hubnak.
+2. Az eszköz kapcsolatba lép a gyárban beállított DPS-végponttal. Az eszköz átadja az azonosító adatokat a DPS-nek, hogy igazolja személyazonosságát.
+3. A DPS érvényesíti az eszköz identitását úgy, hogy a regisztrációs azonosítót és a kulcsot egy egyszeres ([platformmegbízhatósági modul](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) vagy egy szabványos x. 509 ellenőrzés (x. 509) használatával ellenőrzi a beléptetési lista bejegyzésén.
+4. A DPS regisztrálja az eszközt egy IoT hub-ban, és feltölti az eszköz [kívánt kettős állapotát](../iot-hub/iot-hub-devguide-device-twins.md).
+5. Az IoT hub az eszköz azonosító adatait adja vissza a DPS-nek.
+6. A DPS a IoT hub kapcsolódási adatait adja vissza az eszköznek. Ezután az eszköz már képes adatokat küldeni közvetlenül az IoT Hubnak.
 7. Az eszköz csatlakozik az IoT Hubhoz.
 8. Az eszköz fogadja az IoT Hubban található ikereszköz kívánt állapotát.
 
 ## <a name="provisioning-process"></a>A regisztráció folyamata
-Az eszközök telepítési folyamata, amelyben a Device Provisioning Service részt vesz, két különálló lépésből áll, amelyek egymástól függetlenül végezhetők el:
+Két különböző lépés található egy olyan eszköz telepítési folyamatában, amelyben a DPS egy olyan részt vesz igénybe, amely egymástól függetlenül végezhető el:
 
 * A **gyártási lépés**, amely során az eszközt előállítják és előkészítik a gyárban, valamint
 * A **felhőalapú telepítési lépés**, amelynek keretében a Device Provisioning Service-t automatikus üzembe helyezésre konfigurálják.
 
-Mindkét lépés zökkenőmentesen illeszkedik a létező gyártási és üzembehelyezési folyamatokba. A Device Provisioning Service le is egyszerűsít néhány olyan üzembehelyezési folyamatot, amelyek keretében nagy mennyiségű manuális munkára van szükség a kapcsolatadatoknak az eszközre való eljuttatásához.
+Mindkét lépés zökkenőmentesen illeszkedik a létező gyártási és üzembehelyezési folyamatokba. A DPS még egyszerűbbé teszi néhány olyan üzembe helyezési folyamatot, amely manuális munkát tartalmaz a kapcsolódási adatoknak az eszközre való beszerzéséhez.
 
 ### <a name="manufacturing-step"></a>Gyártási lépés
 Ez a lépés a gyártósoron történő műveletekről szól. Az ebben a lépésben részt vevő szerepkörök közé tartozik a lapkatervező, a lapkagyártó, az integrátor és/vagy az eszköz véggyártója. Ez a lépés magának a hardvernek a gyártásáról szól.
 
-A Device Provisioning Service nem vezet be új lépést a gyártási folyamatba; ehelyett ahhoz a létező lépéshez kapcsolódik, amelynek során a kezdeti szoftvereket és (ideális esetben) a HSM-et telepítik az eszközre. Az eszközazonosító ebben a lépésben történő létrehozása helyett az eszközbe az üzembehelyezési szolgáltatás adatait programozzák bele, lehetővé téve a számára az üzembehelyezési szolgáltatás meghívását bekapcsoláskor, a kapcsolatadatok/IoT-megoldáshozzárendelés lekérése céljából.
+A DPS nem vezet be új lépést a gyártási folyamatba; Ehelyett összekapcsolja a meglévő lépést, amely telepíti a kezdeti szoftvert és (ideális esetben) a HSM-t az eszközön. Az eszközazonosító ebben a lépésben történő létrehozása helyett az eszközbe az üzembehelyezési szolgáltatás adatait programozzák bele, lehetővé téve a számára az üzembehelyezési szolgáltatás meghívását bekapcsoláskor, a kapcsolatadatok/IoT-megoldáshozzárendelés lekérése céljából.
 
 Szintén ebben a lépésben látja el a gyártó az eszköz telepítőjét/kezelőjét azonosítókulcs-adatokkal. Ezen adatok átadása lehet egyszerű, mint például annak megerősítése, hogy mindegyik eszköz a telepítője/kezelője által biztosított aláíró tanúsítványból létrehozott X.509-tanúsítvánnyal rendelkezik, illetve bonyolult, mint például a TPM-ellenőrzőkulcs nyilvános részének kinyerése mindegyik TPM-eszközből. Ezek a szolgáltatások ma már sok lapkagyártó kínálatában szerepelnek.
 
@@ -71,22 +71,22 @@ Az *üzembe helyezés* különféle jelentéseket takarhat attól függően, mel
 1. Az első lépés a kezdeti kapcsolat létesítése az eszköz és az IoT-megoldás között az eszköz regisztrálása révén.
 2. A második lépés a megfelelő konfiguráció alkalmazása az eszközre annak a megoldásnak az egyéni követelményei alapján, amelyre az eszközt regisztrálták.
 
-Ha mindkét lépés befejeződött, az eszköz teljesen üzembe helyezettnek tekinthető. Egyes felhőszolgáltatások csak az üzembehelyezési folyamat első lépését, az eszközök IoT-megoldásvégponton való regisztrációját biztosítják, a kezdeti konfigurációt viszont nem. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
+Ha mindkét lépés befejeződött, az eszköz teljesen üzembe helyezettnek tekinthető. Egyes felhőszolgáltatások csak az üzembehelyezési folyamat első lépését, az eszközök IoT-megoldásvégponton való regisztrációját biztosítják, a kezdeti konfigurációt viszont nem. A DPS mindkét lépést automatizálja az eszköz zökkenőmentes kiépítési élményének biztosításához.
 
 ## <a name="features-of-the-device-provisioning-service"></a>A Device Provisioning Service funkciói
-A Device Provisioning Service számos funkciójának köszönhetően ideális az eszközök üzembe helyezéséhez.
+A DPS számos funkcióval rendelkezik, így ideális megoldás az eszközök kiépítési célokra.
 
 * **Biztonságos állapotigazolás** X.509- és a TPM-alapú identitásokhoz is.
 * Az esetleg regisztráló eszközök/eszközcsoportok teljes rekordját tartalmazó **regisztrációs lista**. A regisztrációs lista tartalmazza az eszköz kívánt konfigurációjára vonatkozó adatokat, amint az regisztrál, és bármikor frissíthető.
-* **Több kiosztási szabályzat** annak szabályozására, hogy az eszköz kiépítési szolgáltatása hogyan rendeljen eszközöket az IoT-hubokhoz a forgatókönyvek támogatása érdekében: a legalacsonyabb késés, a egyenletesen súlyozott eloszlás (alapértelmezett) és a statikus konfiguráció a beléptetési listán keresztül. Vegye figyelembe, hogy a késleltetést ugyanazzal a módszerrel határozzák meg, mint a [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
+* **Több kiosztási szabályzat** annak szabályozására, hogy a DPS hogyan rendeljen eszközöket az IoT-hubokhoz a forgatókönyvek támogatása érdekében: a legalacsonyabb késés, a páros mértékben súlyozott eloszlás (alapértelmezett) és a statikus konfiguráció a beléptetési listán keresztül. A késés meghatározása a [Traffic managerével](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)megegyező módszerrel történik.
 * A **Naplózás monitorozása és hibakeresése** segít biztosítani, hogy minden jól működjön.
-* A **többközpontos támogatás** lehetővé teszi, hogy a Device kiépítési szolgáltatás a IoT hub-hoz késői kötésű eszközöket hozzon létre futásidőben. A Device Provisioning Service tud kommunikálni a több Azure-előfizetést felölelő központokkal.
-* A **Régiófüggetlen támogatás** lehetővé teszi a Device Provisioning Service számára, hogy más régiókban lévő IoT Hubokhoz is hozzárendeljen eszközöket.
+* A **többközpontos támogatás** lehetővé teszi, hogy a DPS késői kötésű eszközöket hozzon létre egy IoT hubhoz futásidőben. A DPS több Azure-előfizetésen keresztül tud kommunikálni a hubokkal.
+* A régiók **közötti támogatás** lehetővé teszi, hogy a DPS más régiókban is rendeljen eszközöket az IoT-hubokhoz.
 
 Az eszközkiépítéssel kapcsolatban felmerülő alapelvekről és szolgáltatásokról az [eszközzel kapcsolatos alapelvek](concepts-device.md), [szolgáltatással kapcsolatos alapelvek](concepts-service.md) és [biztonsági alapelvek](concepts-security.md) szakaszokban szerezhet további információkat.
 
 ## <a name="cross-platform-support"></a>Platformközi támogatás
-A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, számos különböző operációs rendszeren működik. Az Azure számos [nyelven](https://github.com/Azure/azure-iot-sdks) kínál nyílt forráskódú SDK-kat az eszközök csatlakoztatásához és a szolgáltatás felügyeletéhez. A Device Provisioning Service az alábbi protokollokat támogatja az eszközök csatlakoztatásához:
+Az összes Azure IoT-szolgáltatáshoz hasonlóan a DPS több különböző operációs rendszerrel is együttműködik a platformmal. Az Azure számos [nyelven](https://github.com/Azure/azure-iot-sdks) kínál nyílt forráskódú SDK-kat az eszközök csatlakoztatásához és a szolgáltatás felügyeletéhez. A DPS a következő protokollokat támogatja az eszközök csatlakoztatásához:
 
 * HTTPS
 * AMQP
@@ -94,16 +94,16 @@ A Device Provisioning Service, akárcsak az összes Azure IoT-szolgáltatás, sz
 * MQTT
 * MQTT WebSocketen keresztül
 
-A Device Provisioning Service csak HTTPS-kapcsolatokat támogat szolgáltatási műveletekhez.
+A DPS csak a HTTPS-kapcsolatokat támogatja a szolgáltatási műveletekhez.
 
 ## <a name="regions"></a>Térségek
-Device Provisioning Service számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
+A DPS számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
 
 > [!NOTE]
-> A Device Provisioning Service globális, és nem helyhez kötött. Meg kell adnia azonban egy régiót, ahol a Device Provisioning Service-profiljához társuló metaadatok lesznek találhatók.
+> A DPS globális, és nem egy helyhez van kötve. Azonban meg kell adnia egy régiót, amelyben a DPS-profilhoz tartozó metaadatok lesznek tárolva.
 
 ## <a name="availability"></a>Elérhetőség
-A Device Provisioning Service-hez 99,9%-os szolgáltatói szerződés érhető el, amely [el is olvasható](https://azure.microsoft.com/support/legal/sla/iot-hub/). Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
+A DPS esetében 99,9% szolgáltatói szerződés van, és [elolvashatja az SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)-t. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
 
 ## <a name="quotas"></a>Kvóták
 Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. A jelenlegi határérték előfizetésenként 10 Device Provisioning Service.
@@ -114,7 +114,7 @@ További információ a kvótakorlátozásokról:
 * [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
-A Device Provisioning Service az eszközkiépítést az Azure IoT Hub segítségével automatizálja. További információk az [IoT Hubról](https://docs.microsoft.com/azure/iot-hub/).
+A DPS automatizálja az eszköz kiépítési folyamatát az Azure IoT Hub. További információk az [IoT Hubról](https://docs.microsoft.com/azure/iot-hub/).
 
 ## <a name="next-steps"></a>Következő lépések
 Mostanra nagyjából átlátja az IoT-eszközök Azure-ban való kiépítését. A következő lépés egy teljes körű IoT-forgatókönyv kipróbálása.

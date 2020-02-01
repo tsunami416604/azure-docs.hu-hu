@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl Mesh hálózat
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Service Fabric Mesh hálózati erőforrások beolvasására és törlésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 2d9d86d41dc031cca2730011c2322e9feb30c827
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646126"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905993"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh hálózata
 Háló hálózati erőforrásainak beolvasása és törlése.
@@ -21,7 +21,7 @@ Háló hálózati erőforrásainak beolvasása és törlése.
 | --- | --- |
 | delete | A hálózati erőforrás törlése. |
 | lista | Felsorolja az összes hálózati erőforrást. |
-| megjelenítés | Lekéri a megadott nevű hálózati erőforrást. |
+| megjelenítése | Lekéri a megadott nevű hálózati erőforrást. |
 
 ## <a name="sfctl-mesh-network-delete"></a>sfctl Mesh hálózat törlése
 A hálózati erőforrás törlése.

@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666652"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905433"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
 
@@ -125,7 +125,7 @@ A BizTalk Servicestól eltérően ezek a műveletek az átviteli protokolloktól
 
 ## <a name="manage-and-monitor"></a>Kezelés és monitorozás
 
-BizTalk Services egy dedikált portálon nyomon követheti a problémák figyelésére és elhárítására szolgáló funkciókat. A Logic Apps a [Azure Portalon](../logic-apps/logic-apps-monitor-your-logic-apps.md)keresztül gazdagabb nyomon követési és figyelési képességeket biztosít, és tartalmaz egy mobil alkalmazást, amely figyelemmel kíséri az áthelyezés során felhasználható dolgokat.
+BizTalk Services egy dedikált portálon nyomon követheti a problémák figyelésére és elhárítására szolgáló funkciókat. A Logic Apps sokoldalú nyomon követési és figyelési képességeket biztosít [a logikai alkalmazások figyeléséhez a Azure Portalban](../logic-apps/monitor-logic-apps.md), és tartalmaz egy mobil alkalmazást, amely figyelemmel kíséri az áthelyezés során felhasználható dolgokat.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 

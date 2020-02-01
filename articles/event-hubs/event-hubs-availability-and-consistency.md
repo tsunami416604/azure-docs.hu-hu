@@ -1,10 +1,9 @@
 ---
-title: Rendelkezésre állás és konzisztencia – Azure Event Hubs |} A Microsoft Docs
-description: Adja meg a legnagyobb rendelkezésre állás és konzisztencia az Azure Event Hubs partíciók használatával hogyan lehet.
+title: Rendelkezésre állás és konzisztencia – Azure Event Hubs | Microsoft Docs
+description: Hogyan biztosítható a maximális rendelkezésre állás és konzisztencia az Azure Event Hubs partíciók használatával.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
 ms.service: event-hubs
@@ -12,57 +11,93 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/29/2020
 ms.author: shvija
-ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273683"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904483"
 ---
-# <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubs
+# <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia a Event Hubsban
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Event Hubs használ egy [modell particionálás](event-hubs-scalability.md#partitions) jobb rendelkezésre állás és ezerszer belül ugyanabba az eseményközpontba. Például egy eseményközpontba négy partícióval rendelkezik, és a egy adott partíciók kerül egyik kiszolgálóról a másikra terheléselosztási művelet, akkor is továbbra is küldhet és fogadhat három más partíciókból. Ezenkívül további partíció lehetővé teszi, hogy az összesített átviteli sebesség növelése az adatfeldolgozás, több egyidejű olvasók. Megoldásterv kritikus fontosságú tényezője ismertetése a particionálási és az elosztott rendszerekben rendezése következményei.
+Az Azure Event Hubs [particionáló modellt](event-hubs-scalability.md#partitions) használ a rendelkezésre állás és a párhuzamos egyetlen Event hub-n belüli fejlesztéséhez. Ha például egy Event hub négy partícióval rendelkezik, és az egyik partíció az egyik kiszolgálóról a másikra kerül egy terheléselosztási műveletben, akkor továbbra is küldhet és fogadhat három további partíciót. Emellett a további partíciók lehetővé teszik, hogy több egyidejű olvasó dolgozza fel az adatokat, és ezzel javítva legyen az összesített átviteli sebesség. Az elosztott rendszerekben a particionálás és a rendezés következményeinek megértése a megoldás kialakításának kritikus aspektusa.
 
-A rendezés és a rendelkezésre állási közötti kompromisszum magyarázatának elősegítésére, tekintse meg a [CAP-tétel](https://en.wikipedia.org/wiki/CAP_theorem), más néven sörgyár a tétel. Ez a tétel konzisztencia, a rendelkezésre állás és a partíció tolerancia közötti választás ismerteti. Megállapítja, hogy a hálózati dokumentumtárolási rendszerek esetén mindig van közötti konzisztencia és a rendelkezésre állás.
+A rendezés és a rendelkezésre állás közötti kompromisszum elmagyarázása érdekében tekintse meg a [Cap-tétel](https://en.wikipedia.org/wiki/CAP_theorem)(más néven Brewer-tétel) című témakört. Ez a tétel a konzisztencia, a rendelkezésre állás és a partíciós tolerancia közötti választást ismerteti. Ez azt jelzi, hogy a hálózatban particionált rendszerek esetében mindig fennáll a konzisztencia és a rendelkezésre állás közötti kompromisszum.
 
-Sörgyár a tétel határozza meg konzisztencia és a rendelkezésre állás a következő:
-* Tolerancia partícióazonosító: a képessége, adatfeldolgozási folytatja az adatok feldolgozását, még akkor is, ha a partíció hiba történik.
-* Rendelkezésre állás: nem hibás csomópont választ ésszerű (a nem hibák vagy időtúllépés) ésszerű időn belül.
-* Konzisztencia: a olvasási garantált, hogy a legújabb írása az adott ügyfél adja vissza.
+A Brewer-tétel a következőképpen határozza meg a következetességet és a rendelkezésre állást:
+* Partíciós tolerancia: az adatfeldolgozó rendszer azon képessége, hogy továbbra is dolgozza fel az adatfeldolgozást, még akkor is, ha a partíció meghibásodik.
+* Rendelkezésre állás: egy nem meghibásodott csomópont ésszerű választ ad vissza ésszerű időn belül (hiba vagy időtúllépés nélkül).
+* Konzisztencia: az olvasás garantált, hogy egy adott ügyfél legutóbbi írását adja vissza.
 
-## <a name="partition-tolerance"></a>Partíció tolerancia
-Az Event Hubs egy particionált adatok modell épül. Konfigurálhatja a partíciók száma az eseményközpont telepítés során, de ezt az értéket később nem módosítható. Mivel a partíciók az Event hubs szolgáltatást kell használnia, akkor rendelkezésre állás és konzisztencia az alkalmazás kapcsolatos döntéseket.
+## <a name="partition-tolerance"></a>Partíciós tolerancia
+A Event Hubs particionált adatmodellre épül. A telepítés során beállíthatja a partíciók számát az Event hub-ban, de később nem módosíthatja ezt az értéket. Mivel a partíciókat Event Hubs használatával kell használnia, döntéseket kell hoznia az alkalmazás rendelkezésre állásával és konzisztenciájával kapcsolatban.
 
-## <a name="availability"></a>Rendelkezésre állás
-Event Hubs használatának első lépései a legegyszerűbb módja, hogy használja az alapértelmezett viselkedést. Ha létrehoz egy új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumra, és használja a **[küldése](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** módot, az eseményeket a rendszer automatikusan terjeszt között a partíciók az eseményközpont. Ez a viselkedés lehetővé teszi, hogy a lehető legnagyobb mennyisége óta eltelt idő.
+## <a name="availability"></a>Elérhetőség
+A Event Hubs használatának legegyszerűbb módja az alapértelmezett viselkedés használata. Ha létrehoz egy új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumot, és a **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metódust használja, az események automatikusan el lesznek osztva az Event hub partíciói között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű időt.
 
-A maximális időt szentelhet igénylő használati esetek Ez a modell használata ajánlott.
+A maximális Felskálázási időt igénylő használati esetekben ez a modell javasolt.
 
 ## <a name="consistency"></a>Konzisztencia
-Bizonyos esetekben az események sorrendjének befolyásolása fontos lehet. Például érdemes lehet a Törlés parancs előtt egy frissítés parancs végrehajtásához háttérrendszereknek. Ebben a példában a partíciókulcs meg egy eseményt, vagy is használja a `PartitionSender` objektum csak küldhet eseményeket egy adott partíció. Ez biztosítja, hogy ezek az események olvasása a partícióból, olvasott sorrendben.
+Bizonyos helyzetekben fontos lehet az események rendezése. Előfordulhat például, hogy azt szeretné, hogy a háttérrendszer a DELETE parancs előtt dolgozza fel a frissítési parancsot. Ebben az esetben beállíthatja a partíciós kulcsot egy eseményen, vagy használhat egy `PartitionSender` objektumot, hogy csak egy adott partíción küldjön eseményeket. Így biztosíthatja, hogy ha ezek az események beolvashatók a partícióból, a rendszer a sorrendben olvassa be őket.
 
-Ezzel a konfigurációval vegye figyelembe, hogy ha az adott partíció, amelyhez küld nem érhető el, kapni fog egy hibaválasz. Összehasonlítási pontként Ha nem rendelkezik egy adott partíció kapcsolatot az Event Hubs szolgáltatás elküldi az esemény a következő elérhető partíció.
+Ha ezt a konfigurációt használja, vegye figyelembe, hogy ha az adott partíció, amely számára a Küldés nem érhető el, hibaüzenetet fog kapni. Ha összehasonlítási pontként nem rendelkezik egyetlen partícióval, a Event Hubs szolgáltatás elküldi az eseményt a következő rendelkezésre álló partíciónak.
 
-Egy lehetséges megoldást győződjön meg arról, rendezése, is növelhető a óta eltelt idő, az események összesítése az Eseményfeldolgozási alkalmazás részeként lenne. Ehhez a legegyszerűbb módja, hogy az esemény blokk: egy egyéni feladatütemezési szám tulajdonsággal. Az alábbi kód példa erre:
+Az egyik lehetséges megoldás a rendezés biztosítására, ugyanakkor a maximális idő maximalizálása az eseményeknek az Event Processing-alkalmazás részeként való összesítése lenne. Ennek a legegyszerűbb módja, ha az eseményt egy egyéni sorszám tulajdonsággal pecsételi. Az alábbi kód példa erre:
+
+#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[Azure. Messaging. EventHubs (5.0.0 vagy újabb)](#tab/latest)
 
 ```csharp
-// Get the latest sequence number from your application
-var sequenceNumber = GetNextSequenceNumber();
-// Create a new EventData object by encoding a string as a byte array
-var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
-// Set a custom sequence number property
-data.Properties.Add("SequenceNumber", sequenceNumber);
-// Send single message async
-await eventHubClient.SendAsync(data);
+// create a producer client that you can use to send events to an event hub
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    // get the latest sequence number from your application
+    var sequenceNumber = GetNextSequenceNumber();
+
+    // create a batch of events 
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
+
+    // create a new EventData object by encoding a string as a byte array
+    var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
+    // set a custom sequence number property
+    data.Properties.Add("SequenceNumber", sequenceNumber);
+
+    // add events to the batch. An event is a represented by a collection of bytes and metadata. 
+    eventBatch.TryAdd(data);
+
+    // use the producer client to send the batch of events to the event hub
+    await producerClient.SendAsync(eventBatch);
+}
 ```
 
-Ebben a példában az eseményt küld egy, a rendelkezésre álló partíciók az eseményközpont, és beállítja a megfelelő sorszám az alkalmazásból. Ez a megoldás állapota a feldolgozási alkalmazás által megőrizni igényel, de lehetővé teszi a feladók egy végpontot, amely nagyobb valószínűséggel érhető el.
+#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[Microsoft. Azure. EventHubs (4.1.0 vagy korábbi)](#tab/old)
+```csharp
+// Create an Event Hubs client
+var client = new EventHubClient(connectionString, eventHubName);
 
-## <a name="next-steps"></a>További lépések
+//Create a producer to produce events
+EventHubProducer producer = client.CreateProducer();
+
+// Get the latest sequence number from your application 
+var sequenceNumber = GetNextSequenceNumber();
+
+// Create a new EventData object by encoding a string as a byte array
+var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
+// Set a custom sequence number property
+data.Properties.Add("SequenceNumber", sequenceNumber);
+
+// Send single message async
+await producer.SendAsync(data);
+```
+---
+
+Ez a példa az eseményt az Event hub egyik elérhető partíciójában küldi el, és beállítja az alkalmazáshoz tartozó sorozatszámot. Ehhez a megoldáshoz a feldolgozó alkalmazásnak meg kell őriznie az állapotot, de a küldők számára nagyobb valószínűséggel elérhetőnek kell lennie.
+
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs szolgáltatás áttekintése](event-hubs-what-is-event-hubs.md)

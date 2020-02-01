@@ -1,38 +1,38 @@
 ---
 title: AS2-követési sémák B2B-üzenetekhez
-description: Olyan AS2 nyomkövető sémákat hozhat létre, amelyek a Azure Logic Apps integrációs fiókjaiban található B2B-üzeneteket figyelik Enterprise Integration Pack
+description: Nyomkövetési sémák létrehozása az AS2-üzenetek figyeléséhez Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792812"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906971"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Sémák létrehozása az AS2-üzenetek és a MDNs követéséhez Azure Logic Apps integrációs fiókjaiban
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Sémák létrehozása az AS2-üzenetek követéséhez Azure Logic Apps
 
 Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikerességének, hibáinak és üzenetének figyeléséhez, használhatja az alábbi AS2-követési sémákat az integrációs fiókjában:
 
 * AS2-üzenet követési sémája
-* AS2 MDN-követési séma
+* AS2-üzenetek törlésére vonatkozó értesítés (MDN) követési sémája
 
 ## <a name="as2-message-tracking-schema"></a>AS2-üzenet követési sémája
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -43,10 +43,8 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -54,28 +52,28 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
 }
 ```
 
-| Tulajdonság | Type (Típus) | Leírás |
-| --- | --- | --- |
-| senderPartnerName | Sztring | AS2-üzenet küldője partnerének neve. Választható |
-| receiverPartnerName | Sztring | AS2-üzenet fogadójának partnere neve. Választható |
-| as2To | Sztring | Az AS2-üzenet fogadójának neve az AS2-üzenet fejlécében. Kötelező |
-| as2From | Sztring | AS2-üzenet feladójának neve az AS2-üzenet fejlécében. Kötelező |
-| agreementName | Sztring | Azon AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva. Választható |
-| irány | Sztring | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
-| messageId | Sztring | AS2-üzenet azonosítója az AS2-üzenet fejlécében (nem kötelező) |
-| dispositionType |Sztring | Az üzenet-törlési értesítés (MDN) megírási típusának értéke. Választható |
-| fileName | Sztring | A fájl neve az AS2-üzenet fejlécében. Választható |
-| isMessageFailed |Logikai | Az AS2-üzenet sikertelen volt-e. Kötelező |
-| isMessageSigned | Logikai | Azt jelzi, hogy az AS2-üzenet aláírt-e. Kötelező |
-| isMessageEncrypted | Logikai | Azt jelzi, hogy az AS2-üzenet titkosított volt-e. Kötelező |
-| isMessageCompressed |Logikai | Azt jelzi, hogy az AS2-üzenet tömörített-e. Kötelező |
-| CorrelationMessageId | Sztring | AS2-üzenet azonosítója az üzenetek MDNs-vel való összekapcsolásához. Választható |
-| incomingHeaders |JToken szótár | Bejövő AS2-üzenet fejlécének részletei. Választható |
-| outgoingHeaders |JToken szótár | Kimenő AS2-üzenet fejlécének részletei. Választható |
-| isNrrEnabled | Logikai | Ha az érték nem ismert, használja az alapértelmezett értéket. Kötelező |
-| isMdnExpected | Logikai | Ha az érték nem ismert, használja az alapértelmezett értéket. Kötelező |
-| mdnType | Felsorolás | Az engedélyezett értékek a következők: **NotConfigured**, **Sync**és **aszinkron**. Kötelező |
-||||
+| Tulajdonság | Szükséges | Type (Típus) | Leírás |
+|----------|----------|------|-------------|
+| senderPartnerName | Nem | Sztring | AS2-üzenet küldője partnerének neve |
+| receiverPartnerName | Nem | Sztring | AS2-üzenet fogadójának partnere neve |
+| as2To | Igen | Sztring | AS2-üzenet fogadójának neve az AS2-üzenet fejlécében |
+| as2From | Igen | Sztring | AS2-üzenet feladójának neve az AS2-üzenet fejlécében |
+| agreementName | Nem | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
+| irány | Igen | Sztring | Az üzenet folyamatának iránya, amely vagy `receive` vagy `send` |
+| messageId | Nem | Sztring | AS2-üzenet azonosítója az AS2-üzenet fejlécében |
+| dispositionType | Nem | Sztring | Üzenet-törlési értesítés (MDN) – típus értéke |
+| fileName | Nem | Sztring | A fájl neve az AS2-üzenet fejlécében |
+| isMessageFailed | Igen | Logikai | Az AS2-üzenet sikertelen volt-e |
+| isMessageSigned | Igen | Logikai | Az AS2-üzenet aláírása |
+| isMessageEncrypted | Igen | Logikai | Azt jelzi, hogy az AS2-üzenet titkosított-e |
+| isMessageCompressed | Igen | Logikai | Azt jelzi, hogy az AS2-üzenet tömörítve lett-e |
+| CorrelationMessageId | Nem | Sztring | AS2-üzenet azonosítója az üzenetek MDNs-vel való korrelációhoz |
+| incomingHeaders | Nem | JToken szótár | Bejövő AS2-üzenetek fejlécének részletei |
+| outgoingHeaders | Nem | JToken szótár | Kimenő AS2-üzenetek fejlécének részletei |
+| isNrrEnabled | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| isMdnExpected | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| mdnType | Igen | Felsorolás | Megengedett értékek: `NotConfigured`, `Sync`és `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN-követési séma
 
@@ -86,7 +84,7 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -107,26 +105,26 @@ Ha segítségre van szüksége a vállalatok közötti (B2B) tranzakciók sikere
 }
 ```
 
-| Tulajdonság | Type (Típus) | Leírás |
-| --- | --- | --- |
-| senderPartnerName | Sztring | AS2-üzenet küldője partnerének neve. Választható |
-| receiverPartnerName | Sztring | AS2-üzenet fogadójának partnere neve. Választható |
-| as2To | Sztring | Az AS2-üzenetet fogadó partner neve. Kötelező |
-| as2From | Sztring | Az AS2-üzenetet küldő partner neve. Kötelező |
-| agreementName | Sztring | Azon AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva. Választható |
-| irány |Sztring | Az üzenet folyamatának, fogadásának vagy küldésének iránya. Kötelező |
-| messageId | Sztring | AS2-üzenet azonosítója. Választható |
-| originalMessageId |Sztring | AS2 eredeti üzenet azonosítója. Választható |
-| dispositionType | Sztring | MDN-törlési típus értéke Választható |
-| isMessageFailed |Logikai | Az AS2-üzenet sikertelen volt-e. Kötelező |
-| isMessageSigned |Logikai | Azt jelzi, hogy az AS2-üzenet aláírt-e. Kötelező |
-| isNrrEnabled | Logikai | Ha az érték nem ismert, használja az alapértelmezett értéket. Kötelező |
-| StatusCode | Felsorolás | Az engedélyezett értékek **elfogadása**, **elutasítása**és **AcceptedWithErrors**. Kötelező |
-| micVerificationStatus | Felsorolás | Az engedélyezett értékek: **NotApplicable**, **sikeres**és **sikertelen**. Kötelező |
-| CorrelationMessageId | Sztring | Korrelációs azonosító. Az eredeti üzenetbe állított azonosító (az üzenet azonosítója, amelyhez az MDN konfigurálva van). Választható |
-| incomingHeaders | JToken szótár | Megadja a bejövő üzenetek fejlécének részleteit. Választható |
-| outgoingHeaders |JToken szótár | Megadja a kimenő üzenetek fejlécének részleteit. Választható |
-||||
+| Tulajdonság | Szükséges | Type (Típus) | Leírás |
+|----------|----------|------|-------------|
+| senderPartnerName | Nem | Sztring | AS2-üzenet küldője partnerének neve |
+| receiverPartnerName | Nem | Sztring | AS2-üzenet fogadójának partnere neve |
+| as2To | Igen | Sztring | Az AS2-üzenetet fogadó partner neve |
+| as2From | Igen | Sztring | Az AS2-üzenetet küldő partner neve |
+| agreementName | Nem | Sztring | Az AS2-egyezmény neve, amelybe az üzenetek fel lesznek oldva |
+| irány | Igen | Sztring | Az üzenet folyamatának iránya, amely vagy `receive` vagy `send` |
+| messageId | Nem | Sztring | AS2-üzenet azonosítója |
+| originalMessageId | Nem | Sztring | AS2 eredeti üzenet azonosítója |
+| dispositionType | Nem | Sztring | MDN-törlési típus értéke |
+| isMessageFailed | Igen | Logikai | Az AS2-üzenet sikertelen volt-e |
+| isMessageSigned | Igen | Logikai | Az AS2-üzenet aláírása |
+| isNrrEnabled | Igen | Logikai | Azt határozza meg, hogy az alapértelmezett értéket kell-e használni, ha az érték nem ismert |
+| statusCode | Igen | Felsorolás | Megengedett értékek: `Accepted`, `Rejected`és `AcceptedWithErrors` |
+| micVerificationStatus | Igen | Felsorolás | Megengedett értékek:`NotApplicable`, `Succeeded`és `Failed` |
+| CorrelationMessageId | Nem | Sztring | Korrelációs azonosító, amely a MDN konfigurált eredeti üzenet azonosítója |
+| incomingHeaders | Nem | JToken szótár | Bejövő üzenetek fejlécének részletei |
+| outgoingHeaders | Nem | JToken szótár | Kimenő üzenetek fejlécének részletei |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák
 
@@ -137,5 +135,4 @@ További információ a B2B protokoll-követési sémákkal kapcsolatban:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudnivalók a [B2B-üzenetek monitorozásáról](logic-apps-monitor-b2b-message.md)
-* Tudnivalók a [B2B-üzenetek nyomon követéséről Azure monitor naplókban](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* [B2B-üzenetek figyelése Azure Monitor-naplókkal](../logic-apps/monitor-b2b-messages-log-analytics.md)

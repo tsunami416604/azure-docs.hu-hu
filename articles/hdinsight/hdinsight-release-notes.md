@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844683"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905229"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -68,7 +68,7 @@ Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 a
 
 ## <a name="known-issues"></a>Ismert problémák
 
-2020. január 24-én egy aktív probléma merül fel, amelyben a Jupyter-Jegyzetfüzet használatának megkísérlése során hibaüzenet jelenhet meg. A probléma megoldásához kövesse az alábbi lépéseket. Ezt az [MSDN-bejegyzést](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) vagy ezt a [StackOverflow bejegyzést](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) is megtekintheti naprakész információkkal, vagy további kérdéseket is feltehet. Ez a lap a probléma kijavítása után frissül.
+2020. január 29-én egy aktív probléma merül fel, amelyben a Jupyter-Jegyzetfüzet használatának megkísérlése során hibaüzenet jelenhet meg. A probléma megoldásához kövesse az alábbi lépéseket. Ezt az [MSDN-bejegyzést](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) vagy ezt a [StackOverflow bejegyzést](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) is megtekintheti naprakész információkkal, vagy további kérdéseket is feltehet. Ez a lap a probléma kijavítása után frissül.
 
 **Hibák**
 
@@ -77,22 +77,26 @@ Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 a
 
 **Ok** 
 
-A fürt _version. a fájlja 5. x. x-re frissült a 4.4. x helyett. # #.
+A fürtön lévő _version. a fájlt 5. x. x-re frissítették a 4.4. x. # # helyett, vagy a Ambari újra kell indítani.
 
 **Megoldás**
 
 Ha új Jupyter-jegyzetfüzetet hoz létre, és a fent felsorolt hibák valamelyikét fogadja, a probléma megoldásához hajtsa végre a következő lépéseket.
 
-1. Nyissa meg a Ambari egy böngészőben a https://CLUSTERNAME.azurehdinsight.net, ahol a CLUSTERNAME a fürt neve.
+1. Nyissa meg a Ambari egy böngészőben a `https://CLUSTERNAME.azurehdinsight.net`, ahol a CLUSTERNAME a fürt neve.
 1. A Ambari bal oldali menüjében kattintson a **Jupyter**, majd a **szolgáltatási műveletek**elemre, végül a **Leállítás**gombra.
 1. SSH-t a fürt átjárócsomóponthoz, ahol a Jupyter szolgáltatás fut.
 1. Nyissa meg a következő fájlt a _version./usr/bin/anaconda/lib/python2.7/site-Packages/nbformat/fájlból sudo módban.
-1. A meglévő bejegyzésnek a következő kódhoz hasonlóhoz kell mutatnia: 
+1. Version_info értékének bejelölése.
+1. Ha a version_info értéke a következőre van beállítva: 
 
     version_info = (5, 0, 3)
 
-    Módosítsa a bejegyzést a következőre: 
+    Ezután módosítsa a bejegyzést a következőre: 
     
     version_info = (4, 4, 0)
-1. Mentse a fájlt.
+
+    És mentse a fájlt. 
+
+    Ha version_info már be van állítva (4, 4, 0), akkor folytassa a következő lépéssel, mert csak a Ambari újraindítása szükséges, nincs szükség további módosításokra.
 1. Lépjen vissza a Ambari, és a **szolgáltatási műveletek**területen kattintson az **összes újraindítása**elemre.

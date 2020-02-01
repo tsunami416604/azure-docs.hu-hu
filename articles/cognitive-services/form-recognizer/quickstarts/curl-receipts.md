@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b0e7d717ed5c06600adf261f7ce5b44f572adf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6e9eddbec3cdc46c04f9c9ae78f937e20bfa8270
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774262"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901981"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API és a cURL használatával kinyerheti és azonosíthatja a releváns információkat az USA értékesítési nyugtáján.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-> [!IMPORTANT]
-> Ez a rövid útmutató az űrlap felismerő v 2.0 API-ját használja. Ha az előfizetése nem a `West US 2` vagy `West Europe` régióban található, akkor a v 1.0 API-t kell használnia. Ehelyett kövesse az [1.0](./curl-train-extract-v1.md) -s verziót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

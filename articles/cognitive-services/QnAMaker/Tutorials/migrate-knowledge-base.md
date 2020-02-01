@@ -1,66 +1,65 @@
 ---
-title: Tudásbázisok – QnA Maker áttelepítése
+title: Tudásbázisok migrálása – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy másik való importálásakor.
+description: A Tudásbázis áttelepítéséhez az egyik Tudásbázisból kell exportálni, majd importálni egy másikba.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 04ee592122d7c76396f091f8d249518976682004
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b441eb1e6531030a998fe628ae833b29a5d9fe5a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446596"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902056"
 ---
-# <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
+# <a name="migrate-a-knowledge-base-using-export-import"></a>Tudásbázis migrálása export-import használatával
 
-Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy másik való importálásakor. 
+A Tudásbázis áttelepítéséhez az egyik Tudásbázisból kell exportálni, majd importálni egy másikba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
-* Helyezzen üzembe egy új [QnA Maker szolgáltatást](../How-To/set-up-qnamaker-service-azure.md)
+* Mielőtt elkezdené, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Új [QnA Maker szolgáltatás](../How-To/set-up-qnamaker-service-azure.md) beállítása
 
-## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Tudásbázis át a QnA Maker
-1. Jelentkezzen be a [QnA Maker portal](https://qnamaker.ai).
-1. Válassza ki a migrálni kívánt Tudásbázis.
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Tudásbázis migrálása a QnA Makerból
+1. Jelentkezzen be [QnA Maker portálra](https://qnamaker.ai).
+1. Válassza ki az áttelepíteni kívánt forrás-tudásbázist.
 
-1. Az a **beállítások** lapon jelölje be **Tudásbázis exportálása** a Tudásbázis - tartalmat .tsv-fájl letöltésére kérdések, válaszok, metaadatokat, és neveket, amelyeket az adatforrás ki kell olvasni.
+1. A **Beállítások** lapon válassza a **Tudásbázis exportálása** lehetőséget egy. TSV fájl letöltéséhez, amely a forrásként szolgáló Tudásbázis – kérdések, válaszok, metaadatok, követő kérések és a kinyert adatforrások nevét tartalmazza.
 
-1. Válassza ki **Tudásbázis létrehozása** a felső menüben majd hozzon létre egy üres Tudásbázis. 
+1. Válassza a **Tudásbázis létrehozása** lehetőséget a felső menüben, majd hozzon létre egy _üres_ tudásbázist. Üres, mert a létrehozásakor nem lesz URL-cím vagy fájl hozzáadása. Ezeket a rendszer az importálási lépés során adja hozzá a létrehozás után.
 
-    ![Set-adatforrások](../media/qnamaker-how-to-create-kb/set-data-sources.png)
+    Konfigurálja a tudásbázist. Állítsa be az új tudásbázis nevét. Az ismétlődő nevek támogatottak, és a speciális karakterek is támogatottak.
 
-    - Adja meg a szolgáltatás egy **nevét.** Duplikált nevek használata támogatott, és speciális karaktereket is támogatottak.
+    Ne válassza a 4. lépésből származó semmit, mert ezek az értékek felül lesznek írva a fájl importálásakor.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Az 5. lépésben válassza a **Létrehozás**elemet.
 
-    ![Tudásbázis létrehozása](../media/qnamaker-how-to-create-kb/create-kb.png)
+1. Ebben az új Tudásbázisban nyissa meg a **Beállítások** lapot, és válassza a **Tudásbázis importálása**lehetőséget. Ezzel importálja a kérdéseket, a válaszokat, a metaadatokat, a követő utasításokat, és megőrzi a kinyert adatforrások nevét.
 
-1. Az új Tudásbázis, nyissa meg a **beállítások** lapra, és válassza **importálás Tudásbázis**. Importálja a kérdések, válaszok és metaadatokat, és megőrzi az adatforrásnevek, amelyből könyvtárban találhatók.
+   > [!div class="mx-imgBorder"]
+   > [![Tudásbázis importálása](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-   ![Importálás Tudásbázis](../media/qnamaker-how-to-migrate-kb/Import.png)
+1. **Tesztelje** az új tudásbázist a teszt panel használatával. Ismerje meg, hogyan [tesztelheti tudásbázisát](../How-To/test-knowledge-base.md).
+1. **Tegye közzé** a tudásbázist. Ismerje meg, hogyan [teheti közzé a tudásbázist](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+1. Használja a végpontot az alkalmazás vagy a robot kódjában. Itt megtudhatja, hogyan [hozhat létre QnA robotot](../Tutorials/create-qna-bot.md).
 
-1. **Teszt** az új Tudásbázis a teszt panelt. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
-1. **Közzététel** a Tudásbázis. Ismerje meg, hogyan [közzéteheti a tudásbázist](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
-1. A végpontot használja az alkalmazás vagy robot kódjában. Itt látható, hogyan [hozzon létre egy QnA robotot](../Tutorials/create-qna-bot.md).
+    ![Értékek QnA Maker](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
-    ![A QnA Maker értékek](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
+    Ezen a ponton az összes Tudásbázis-tartalom – kérdés, válasz és metaadatok, valamint a forrásfájlok és URL-címek nevei – az új tudásbázisba lesznek importálva.
 
-    Ezen a ponton minden a Tudásbázis-tartalmat – kérdések, válaszok és metaadatokat, és a forrásfájlok az URL-címeket, nevét és az új Tudásbázis importálásakor. 
+## <a name="chat-logs-and-alterations"></a>Csevegési naplók és változtatások
+Kis-és nagybetűket nem megkülönböztető változtatások (szinonimák) nem lesznek automatikusan importálva. A [v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) -k használatával áthelyezheti az új tudásbázisban található módosításokat.
 
-## <a name="chat-logs-and-alterations"></a>Csevegési naplók és változásokból
-Kis-és változásokból (szinonimák) nem lesznek automatikusan importálva. Használja a [V4 API-k](https://go.microsoft.com/fwlink/?linkid=2092179) áthelyezése a módosításokat a új Tudásbázis.
+A csevegési naplók nem telepíthetők át, mivel az új Tudásbázis Application Insightst használ a csevegési naplók tárolásához.
 
-Nincs semmilyen módon nem lehet áttelepíteni a csevegési naplók, mivel az új Tudásbázis az Application Insights a csevegési naplók tárolásához. 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-To/edit-knowledge-base.md)

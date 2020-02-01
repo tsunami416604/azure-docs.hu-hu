@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792139"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906670"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók Azure Logic Apps
 
@@ -75,15 +75,15 @@ A Logic apps többek között a speciális vezérlési folyamat, például a fel
 * [Műveletek csoportosítása hatókörökkel együtt](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Szerzői hibák és kivételek feldolgozása egy munkafolyamatban](../logic-apps/logic-apps-exception-handling.md)
 * [Használati eset: hogyan használja az egészségügyi vállalat a Logic app-kivételeket a HL7 FHIR-munkafolyamatok kezeléséhez](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Meglévő logikai alkalmazások figyelésének, naplózásának és riasztásának bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [A monitorozási és diagnosztikai naplózás bekapcsolása logikai alkalmazások létrehozásakor](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [Meglévő logikai alkalmazások figyelésének, naplózásának és riasztásának bekapcsolása](../logic-apps/monitor-logic-apps.md)
+* [A monitorozási és diagnosztikai naplózás bekapcsolása logikai alkalmazások létrehozásakor](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>Logikai alkalmazások üzembe helyezése és kezelése
 
 A Visual Studióval, az Azure DevOps vagy bármely más verziókövetés és automatizált Build eszközzel teljes mértékben fejlesztheti és telepítheti a Logic apps-alkalmazásokat. Az erőforrás-sablonban a munkafolyamatok és a függő kapcsolatok üzembe helyezésének támogatásához a Logic apps Azure erőforrás-telepítési sablonokat használ. A Visual Studio-eszközök automatikusan létrehozzák ezeket a sablonokat, amelyek bejelentkezhetnek a verziókövetés verziókövetésba.
 
 * [Logikai alkalmazások létrehozása és üzembe helyezése a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [Meglévő logikai alkalmazások figyelésének, naplózásának és riasztásának bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Meglévő logikai alkalmazások figyelésének, naplózásának és riasztásának bekapcsolása](../logic-apps/monitor-logic-apps.md)
 * [A logikai alkalmazások telepítésének automatizálása](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezés az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

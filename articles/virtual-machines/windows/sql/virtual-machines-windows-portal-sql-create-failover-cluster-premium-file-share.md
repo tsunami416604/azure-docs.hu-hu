@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772607"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906800"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -185,7 +185,7 @@ A virtuális gépek létrehozása és konfigurálása után beállíthatja a pr�
   > - Érdemes lehet külön fájlmegosztást használni a biztonságimásolat-fájlokhoz, hogy mentse a megosztás IOPS és tárterületét az adatfájlok és a naplófájlok számára. A biztonsági másolati fájlok prémium vagy standard fájlmegosztást is használhatnak.
   > - Ha Windows 2012 R2 vagy régebbi operációs rendszert használ, kövesse ugyanezen lépéseket a tanúsító fájlmegosztásként használni kívánt fájlmegosztás csatlakoztatásához. 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>3\. lépés: a feladatátvevő fürt konfigurálása a fájlmegosztás segítségével
+## <a name="step-3-configure-the-failover-cluster"></a>3\. lépés: a feladatátvevő fürt konfigurálása
 
 A következő lépés a feladatátvevő fürt konfigurálása. Ebben a lépésben a következő allépéseket hajtja végre:
 

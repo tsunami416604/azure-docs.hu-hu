@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl partíció
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szolgáltatáshoz tartozó partíciók kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646058"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905836"
 ---
 # <a name="sfctl-partition"></a>sfctl-partíció
 Bármely szolgáltatás partícióinak lekérdezése és kezelése.
@@ -28,7 +28,7 @@ Bármely szolgáltatás partícióinak lekérdezése és kezelése.
 | betöltés – alaphelyzetbe állítás | Visszaállítja egy Service Fabric partíció aktuális terhelését. |
 | kvórum – veszteség | Egy adott állapot-nyilvántartó szolgáltatásbeli partíció Kvórumának elvesztését okozhatja. |
 | kvórum – veszteség – állapot | Lekérdezi a kvórum elvesztése műveletének előrehaladását a StartQuorumLoss API használatával megkezdett partíción. |
-| helyreállítás | Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt. |
+| Visszaszerez | Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt. |
 | összes helyreállítása | Azt jelzi, hogy a Service Fabric-fürtön olyan szolgáltatásokat (beleértve a rendszerszolgáltatásokat is) kell helyreállítani, amelyek jelenleg a kvórum elvesztése miatt megakadnak. |
 | jelentés – állapot | Állapotjelentés küldése a Service Fabric partíción. |
 | restart | Ez az API újraindítja a megadott partíció néhány vagy összes replikáját vagy példányát. |
@@ -38,10 +38,13 @@ Bármely szolgáltatás partícióinak lekérdezése és kezelése.
 ## <a name="sfctl-partition-data-loss"></a>sfctl partíciós adatvesztés
 Ez az API a megadott partíció adatvesztését fogja okozni.
 
-Elindítja a partíció OnDataLossAsync API-ját.  Ez az API a megadott partíció adatvesztését fogja okozni. Elindítja a partíció OnDataLoss API-ját. A tényleges adatvesztés a megadott Datalossmode objektum függ.  <br> -PartialDataLoss – csak a replikák kvórumát távolítja el a rendszer, és a rendszer OnDataLoss indít el a partícióhoz, de a tényleges adatvesztés a repülés közbeni replikáció jelenlétén múlik.  <br> -FullDataLoss – minden replika törlődik, ezért a rendszer minden adatvesztést és OnDataLoss indít el. Ezt az API-t csak a célként megadott állapot-nyilvántartó szolgáltatással hívhatja. Az API meghívása Rendszerszolgáltatással, mivel a cél nem ajánlott.
+Elindítja a partíció OnDataLossAsync API-ját.  Ez az API a megadott partíció adatvesztését fogja okozni. Elindítja a partíció OnDataLoss API-ját. A tényleges adatvesztés a megadott Datalossmode objektum függ.
+- PartialDataLoss: a rendszer csak a replikák kvórumát távolítja el, és a partícióra vonatkozóan OnDataLoss vált ki, a tényleges adatvesztés azonban a repülés közbeni replikációtól függ.  
+- FullDataLoss: a rendszer eltávolítja az összes replikát, ezért az összes adatvesztés történik, és a rendszer elindítja a OnDataLoss. Ezt az API-t csak a célként megadott állapot-nyilvántartó szolgáltatással hívhatja. Az API meghívása Rendszerszolgáltatással, mivel a cél nem ajánlott.
 
 > [!NOTE]   
 > Az API meghívása után az nem vonható vissza. A CancelOperation hívása csak a végrehajtás leállítását és a belső rendszerállapot tisztítását eredményezi. Nem állítja vissza az adatvesztést, ha a parancs elég messzire ért, hogy adatvesztést okozzon. Hívja meg a GetDataLossProgress API-t ugyanazzal a OperationId, hogy az API-val megkezdett művelettel kapcsolatos információkat kérjen vissza.
+
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|

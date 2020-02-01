@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl szolgáltatás
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szolgáltatások, a szolgáltatások típusai és a szolgáltatási csomagok kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639071"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906235"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Szolgáltatás, szolgáltatások típusai és szolgáltatási csomagok létrehozása, törlése és kezelése.
@@ -30,12 +30,12 @@ Szolgáltatás, szolgáltatások típusai és szolgáltatási csomagok létrehoz
 | egészségügy | Lekéri a megadott Service Fabric szolgáltatás állapotát. |
 | információ | A Service Fabric alkalmazáshoz tartozó adott szolgáltatás információinak beolvasása. |
 | lista | Az alkalmazás-azonosító által megadott alkalmazáshoz tartozó összes szolgáltatás információinak beolvasása. |
-| manifest | Lekéri a szolgáltatás típusát leíró jegyzékfájlt. |
+| nyilvánvaló | Lekéri a szolgáltatás típusát leíró jegyzékfájlt. |
 | csomag üzembe helyezése | A megadott szolgáltatási jegyzékfájlhoz társított csomagok letöltése a megadott csomóponton lévő rendszerkép-gyorsítótárba. |
 | csomag – állapot | Egy Service Fabric csomóponthoz és alkalmazáshoz telepített adott alkalmazáshoz tartozó szervizcsomag állapotával kapcsolatos információk beolvasása. |
 | csomag – információ | Egy Service Fabric csomóponton telepített szervizcsomagok listájának beolvasása pontosan a megadott névvel egyezően. |
 | csomagok listája | Lekéri a Service Fabric csomóponton telepített szervizcsomagok listáját. |
-| helyreállítás | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálnia a megadott szolgáltatás helyreállítását, amely jelenleg a kvórum elvesztése miatt megakad. |
+| Visszaszerez | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálnia a megadott szolgáltatás helyreállítását, amely jelenleg a kvórum elvesztése miatt megakad. |
 | jelentés – állapot | Állapotjelentést küld a Service Fabric szolgáltatásról. |
 | megoldásához | Service Fabric partíció feloldása. |
 | típus – lista | Beolvassa a Service Fabric-fürtben egy kiépített alkalmazás által támogatott szolgáltatási típusokkal kapcsolatos információkat tartalmazó listát. |
@@ -110,7 +110,7 @@ Létrehozza a megadott Service Fabric szolgáltatást.
 | --int-Scheme – alacsony | A kulcs egész tartományának kezdete, ha egységes egész partíciós sémát használ. |
 | --Load-metrikák | A csomópontok közötti terheléselosztási szolgáltatásokban használt metrikák JSON-kódolású listája. |
 | --min-replika-készlet-méret | A replikakészlet minimális mérete számként. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
-| --Move-Cost | Meghatározza a szolgáltatás áthelyezési költségeit. A lehetséges értékek:\: "Zero", "Low", "medium", "High". |
+| --Move-Cost | Meghatározza a szolgáltatás áthelyezési költségeit. A lehetséges értékek:\: "Zero", "Low", "medium", "High", "VeryHigh". |
 | --named-Scheme | Azt jelzi, hogy a szolgáltatásnak több elnevezett partícióval kell rendelkeznie. |
 | --named-Scheme-List | A JSON-kódolású nevek listája a szolgáltatás közötti particionáláshoz a nevesített partíciós séma használata esetén. |
 | --nem tartott-állapot | Ha az értéke igaz, ez azt jelzi, hogy a szolgáltatás nem rendelkezik állandó állapottal a helyi lemezen, vagy csak az állapotot tárolja a memóriában. |
@@ -118,6 +118,7 @@ Létrehozza a megadott Service Fabric szolgáltatást.
 | --kvórum – veszteség – várakozás | Az a maximális időtartam (másodpercben), ameddig a partíciók kvórum elvesztésének állapota engedélyezett. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --replika-újraindítás-várakozás | Az az időtartam (másodpercben), amikor egy replika leáll, és új replika jön létre. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --skálázás – házirendek | A szolgáltatás skálázási házirendjeinek JSON-kódolású listája. |
+| --szolgáltatás – elhelyezési idő | Az az időtartam, ameddig a replikák inépítve maradhatnak a Build beragadása előtt. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --egyedi-séma | Azt jelzi, hogy a szolgáltatásnak egyetlen partícióval kell rendelkeznie, vagy nem particionált szolgáltatásnak kell lennie. |
 | --stand-by-replika-Keep | Az a maximális időtartam (másodpercben), ameddig a rendszer az Eltávolítás előtt megőrzi a készenléti replikákat. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | – állapot-nyilvántartó | Azt jelzi, hogy a szolgáltatás állapot-nyilvántartó szolgáltatás. |
@@ -562,11 +563,12 @@ Frissíti a megadott szolgáltatást az adott frissítés leírása alapján.
 | – példányok száma | A példányok száma. Ez csak az állapot nélküli szolgáltatásokra vonatkozik. |
 | --Load-metrikák | A csomópontok közötti terheléselosztás során használt metrikák JSON-kódolású listája. |
 | --min-replika-készlet-méret | A replikakészlet minimális mérete számként. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
-| --Move-Cost | Meghatározza a szolgáltatás áthelyezési költségeit. A lehetséges értékek:\: "Zero", "Low", "medium", "High". |
+| --Move-Cost | Meghatározza a szolgáltatás áthelyezési költségeit. A lehetséges értékek:\: "Zero", "Low", "medium", "High", "VeryHigh". |
 | --elhelyezés-szabályzat-lista | A szolgáltatáshoz tartozó elhelyezési házirendek, valamint a hozzájuk tartozó tartománynevek JSON-kódolású listája. A házirendek egy vagy több\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain`, `RequireDomainDistribution`közül választhatnak. |
 | --kvórum – veszteség – várakozás | Az a maximális időtartam (másodpercben), ameddig a partíciók kvórum elvesztésének állapota engedélyezett. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --replika-újraindítás-várakozás | Az az időtartam (másodpercben), amikor egy replika leáll, és új replika jön létre. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --skálázás – házirendek | A szolgáltatás skálázási házirendjeinek JSON-kódolású listája. |
+| --szolgáltatás – elhelyezési idő | Az az időtartam, ameddig a replikák inépítve maradhatnak a Build beragadása előtt. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | --stand-by-replika-Keep | Az a maximális időtartam (másodpercben), ameddig a rendszer az Eltávolítás előtt megőrzi a készenléti replikákat. Ez csak az állapot-nyilvántartó szolgáltatásokra vonatkozik. |
 | – állapot-nyilvántartó | Azt jelzi, hogy a célként megadott szolgáltatás állapot-nyilvántartó szolgáltatás. |
 | – állapot nélküli | Azt jelzi, hogy a célként megadott szolgáltatás állapot nélküli szolgáltatás. |

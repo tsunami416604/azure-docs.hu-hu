@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl Chaos-ütemterv
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Chaos-ütemezéshez tartozó parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639173"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906184"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
 A Chaos-ütemterv beolvasása és beállítása.
@@ -19,7 +19,7 @@ A Chaos-ütemterv beolvasása és beállítása.
 
 |Parancs|Leírás|
 | --- | --- |
-| elérés | Szerezze be a káosz-ütemtervet, amely meghatározza, hogy mikor és hogyan kell futtatni a káoszt. |
+| Get | Szerezze be a káosz-ütemtervet, amely meghatározza, hogy mikor és hogyan kell futtatni a káoszt. |
 | halmaz | Állítsa be a káosz által használt ütemtervet. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl Chaos-ütemterv Get
@@ -71,9 +71,10 @@ A Chaos automatikusan ütemezni fogja a futtatásokat a Chaos-ütemterv alapján
 
 ### <a name="examples"></a>Példák
 
-A következő parancs egy ütemtervet állít be (feltételezve, hogy az aktuális ütemezett verzió 0), amely 2016-01-01-kor kezdődik, és 2038-01-01 a Chaos 24 órányi nap, a hét 7 napján fut le. A káosz a fürtön lesz ütemezve.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+A következő parancs egy ütemtervet állít be (feltételezve, hogy az aktuális ütemezett verzió 0), amely 2016-01-01-kor kezdődik, és 2038-01-01 a Chaos 24 órányi nap, a hét 7 napján fut le.
+A káosz a fürtön lesz ütemezve.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ A következő parancs egy ütemtervet állít be (feltételezve, hogy az aktuál
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Következő lépések

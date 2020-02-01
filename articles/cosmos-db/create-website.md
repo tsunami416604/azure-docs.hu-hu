@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719336"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901920"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB-és Azure App Service-Web Apps üzembe helyezése Azure Resource Manager sablon használatával
 Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe és integrálhat [Microsoft Azure Cosmos DBT](https://azure.microsoft.com/services/cosmos-db/), [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) webalkalmazást és egy minta webalkalmazást egy Azure Resource Manager sablon használatával.
@@ -69,7 +69,7 @@ Most végezze el az első sablon üzembe helyezését.
    ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment6.png)
 7. Az üzembe helyezés befejezésekor megnyílik az erőforráscsoport panel.
    ![képernyőkép az erőforráscsoport panelről](./media/create-website/TemplateDeployment7.png)  
-8. Az alkalmazás használatához navigáljon a webalkalmazás URL-címére (a fenti példában az URL-cím http://mydemodocdbwebapp.azurewebsites.net).  A következő webalkalmazás jelenik meg:
+8. Az alkalmazás használatához navigáljon a webalkalmazás URL-címére (a fenti példában az URL-cím `http://mydemodocdbwebapp.azurewebsites.net`).  A következő webalkalmazás jelenik meg:
    
    ![Példa Todo-alkalmazásra](./media/create-website/image2.png)
 9. Lépjen tovább, és hozzon létre néhány feladatot a webalkalmazásban, majd térjen vissza a Azure Portal erőforráscsoport ablaktáblájához. Kattintson a Azure Cosmos DB fiók erőforrására az erőforrások listában, majd kattintson az **adatkezelő**elemre.

@@ -1,19 +1,19 @@
 ---
 title: Fürthöz tartozó hiba szótárának létrehozása
 description: Megtudhatja, hogyan hozhat létre fürtbeli hibákat a szótárban.
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156862"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905482"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
 
@@ -210,7 +210,7 @@ Ez a hiba általában akkor jön létre, ha átmeneti probléma merül fel, vagy
 
 ### <a name="resolution"></a>Felbontás
 
-Győződjön meg arról, hogy minden olyan Azure- [leállást](https://status.azure.com/status) tartalmaz, amely hatással lehet a fürt üzembe helyezésére. Ha nincsenek kimaradások, próbálja megismételni a fürt üzembe helyezését.
+Győződjön meg arról, hogy minden olyan Azure- [leállást](https://status.azure.com) tartalmaz, amely hatással lehet a fürt üzembe helyezésére. Ha nincsenek kimaradások, próbálja megismételni a fürt üzembe helyezését.
 
 ## <a name="next-steps"></a>Következő lépések
 

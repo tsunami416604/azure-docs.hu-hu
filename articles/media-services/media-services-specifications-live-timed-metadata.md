@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514238"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905243"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
@@ -237,11 +237,11 @@ A következő szakasz az RTMP "Simple" (egyszerű) üzemmódját mutatja be, ame
 
 ## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 RTMP ad Cue-jelzés "onAdCue" – egyszerű mód
 
-| Mezőnév | Mező típusa | Kötelező? | Leírás                                                                                                                                                                                                                                                                        |
+| Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type       | Sztring     | Szükséges  | Az esemény üzenete.  A "SpliceOut" értékkel kell kijelölni egy egyszerű üzemmód összekötését.                                                                                                                                                                                                         |
 | id         | Sztring     | Szükséges  | A összefonást vagy szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja.                                                                                                                                                                                       |
-| duration   | Szám     | Szükséges  | A Összefonás időtartama. Az egységek töredékes másodpercek.                                                                                                                                                                                                                           |
+| időtartama   | Szám     | Szükséges  | A Összefonás időtartama. Az egységek töredékes másodpercek.                                                                                                                                                                                                                           |
 | elapsed    | Szám     | Választható  | Ha a rendszer megismétli a jelet a hangolásának támogatásához, ez a mező a Kiindulás óta eltelt bemutatási idő mennyiségét jelöli. Az egységek töredékes másodpercek. Egyszerű mód használata esetén ez az érték nem lépheti túl a kötés eredeti időtartamát. |
 | time       | Szám     | Szükséges  | A összekötés időpontjának kell lennie a bemutató időpontjában. Az egységek töredékes másodpercek.                                                                                                                                                                                                |
 
@@ -249,7 +249,7 @@ A következő szakasz az RTMP "Simple" (egyszerű) üzemmódját mutatja be, ame
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Példa az MPEG DASH jegyzékfájl kimenetére az Adobe RTMP egyszerű üzemmódjának használatakor
 
-Lásd: példa [3.3.2.1 for MPEG Dash. mpd EventStream az Adobe Simple Mode használatával](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Lásd például [az 3.3.2.1 MPEG Dash. mpd EventStream az Adobe Simple Mode használatával](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 Lásd például [a 3.3.3.1 Dash manifestt egyetlen időszakra és az Adobe Simple Mode-](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals) ra
 
@@ -265,12 +265,12 @@ Ha olyan speciális szórási üzemi munkafolyamattal dolgozik, amelyhez a telje
 
 Ebben az esetben a következő adattartalomot kell elküldeni a helyszíni kódolóból az **"onAdCue"** [AMF0] típusú üzenet használatával.
 
-| Mezőnév | Mező típusa | Kötelező? | Leírás                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cue        | Sztring     | Szükséges  | Az esemény üzenete.  A [SCTE-35] üzenetek esetében ennek a Base64-kódolású [RFC4648] bináris splice_info_section () értéknek kell lennie ahhoz, hogy üzeneteket lehessen elküldeni a HLS, a Smooth és a Dash ügyfeleknek.                                                                                                                                                                                                                               |
 | type       | Sztring     | Szükséges  | Az üzenet sémáját azonosító URN vagy URL-cím. A (z) [SCTE-35] üzenetek **esetében ennek a** **"scte35"** értékűnek kell lennie ahhoz, hogy üzeneteket lehessen elküldeni a HLS, a Smooth és a Dash ügyfeleknek az [Adobe-főkiszolgálói] verziónak megfelelően. Szükség esetén az "urn: SCTE: scte35:2013: bin" nevű URN is használható a [SCTE-35] üzenet jelzésére.                                                                                                        |
 | id         | Sztring     | Szükséges  | A összefonást vagy szegmenst leíró egyedi azonosító. Az üzenet ezen példányát azonosítja.  Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük.                                                                                                                                                                                                                                                       |
-| duration   | Szám     | Szükséges  | Az esemény vagy az ad összekötésének időtartama (ha ismert). Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie.                                                                                                                                                                                                                                                                                                                    |
+| időtartama   | Szám     | Szükséges  | Az esemény vagy az ad összekötésének időtartama (ha ismert). Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie.                                                                                                                                                                                                                                                                                                                    |
 | elapsed    | Szám     | Választható  | Amikor a [SCTE-35] ad-jelet megismétlik a behangolásához, ez a mező a Kiindulás óta eltelt megjelenítési idő mennyiségét mutatja. Az egységek töredékes másodpercek. A [SCTE-35] módban ez az érték túllépheti a Összefonás vagy a szegmens eredeti megadott időtartamát.                                                                                                                   |
 | time       | Szám     | Szükséges  | Az esemény vagy az ad összekötésének megjelenítési ideje.  A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint. A kimenő HLS esetében az időt és az időtartamot a szegmens határaihoz **kell** igazítani. Az azonos esemény-adatfolyamon belüli különböző események megjelenítési ideje és időtartama nem lehet átfedésben. Az egységek töredékes másodpercek. |
 
@@ -280,7 +280,7 @@ Ebben az esetben a következő adattartalomot kell elküldeni a helyszíni kódo
 Lásd: [3.3.3.2 – példa Dash manifest – SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Példa HLS manifest. m3u8 SCTE-35 módú jellel
-Tekintse meg [a példa 3.3.1.1 példa HLS jegyzékfájlt a SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Lásd: [3.2.1.1, példa: HLS manifest, SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP ad-jelzés a "onCuePoint" elemmel élő
 
@@ -435,7 +435,7 @@ A "Moov" mezőnek tartalmaznia **kell** egy **TrackHeaderBox ("tkhd")** , az [IS
 
 | **Mezőnév** | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 bites előjel nélküli egész szám | Szükséges      | 0 értékűnek **kell lennie** , mivel a Track Box nulla mintákat tartalmaz, a számok teljes időtartama pedig 0. |
+| időtartama       | 64 bites előjel nélküli egész szám | Szükséges      | 0 értékűnek **kell lennie** , mivel a Track Box nulla mintákat tartalmaz, a számok teljes időtartama pedig 0. |
 
 ---
 
@@ -767,7 +767,7 @@ Az "örökölt" EXT-X-CUE címke az alábbi módon van definiálva, és az [Adob
 | CUE                | idézett karakterlánc                 | Szükséges                                  | Az üzenet Base64 kódolású karakterláncként van kódolva a következővel: [RFC4648]. A [SCTE-35] üzenetek esetében ez a Base64 kódolású splice_info_section ().                                                                                                                                      |
 | TÍPUS               | idézett karakterlánc                 | Szükséges                                  | Az üzenet sémáját azonosító URN vagy URL-cím. A (z) [SCTE-35] üzenetek esetében a típus a következő speciális értéket veszi fel: "scte35".                                                                                                                                                                          |
 | ID (Azonosító)                 | idézett karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha az üzenet betöltése után nincs megadva az azonosító, Azure Media Services egyedi azonosítót fog előállítani.                                                                                                                                              |
-| IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartama. Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie. Az egységek a frakciós másodpercek.                                                                                                                                                                                           |
+| IDŐTARTAMA           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartama. Ha ismeretlen, **az értéknek** 0 értékűnek kell lennie. Az egységek a frakciós másodpercek.                                                                                                                                                                                           |
 | ELTELT            | decimális lebegőpontos szám | Nem kötelező, de kötelező a csúszó ablakhoz | Ha a rendszer megismétli a jelet a csúszó bemutató ablakának támogatásához, akkor ebben **a mezőben az** esemény megkezdése óta eltelt bemutatási idő mennyiségének kell lennie. Az egységek töredékes másodpercek. Ez az érték túllépheti a Összefonás vagy a szegmens eredeti megadott időtartamát. |
 | TIME               | decimális lebegőpontos szám | Szükséges                                  | Az esemény megjelenítési időpontja. Az egységek töredékes másodpercek.                                                                                                                                                                                                                        |
 
@@ -1170,7 +1170,7 @@ Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "
 
 ---
 
-## <a name="change-history"></a>Változások nyomon követése
+## <a name="change-history"></a>Módosítási előzmények
 
 | Dátum     | Változások                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |

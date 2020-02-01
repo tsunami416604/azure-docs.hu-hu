@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549346"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909040"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -29,6 +29,9 @@ Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz 
 - Globális rendszergazdai fiók az Azure AD-bérlőhöz.
 - Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.
 - Helyszíni tűzfal-konfigurációk.
+
+>[!NOTE]
+>A kiépítési ügynök jelenleg csak angol nyelvű kiszolgálókon telepíthető. Egy angol nyelvi csomag nem angol nyelvű kiszolgálón való telepítése nem érvényes Áthidaló megoldás, ezért az ügynök nem lesz telepítve. 
 
 A dokumentum további részében részletes útmutatót talál az előfeltételekhez.
 

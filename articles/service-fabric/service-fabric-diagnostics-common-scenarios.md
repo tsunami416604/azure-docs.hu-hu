@@ -1,16 +1,14 @@
 ---
 title: Az Azure Service Fabric gyakori forgatókönyvek diagnosztizálására
 description: Ismerje meg az Azure Service Fabric-alkalmazásokon belüli általános figyelési és diagnosztikai forgatókönyvek hibaelhárítását.
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645786"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906948"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Gyakori forgatókönyvek diagnosztizálása Service Fabric
 
@@ -134,6 +132,7 @@ A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-dia
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [Gyakori programkód-aktiválási hibák megkeresése](./service-fabric-diagnostics-code-package-errors.md)
 * [Riasztások beállítása az AI-ben](../azure-monitor/app/alerts.md) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) az AI által küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákra
 * További információ Azure Monitor naplók [riasztásáról](../log-analytics/log-analytics-alerts.md) az észlelés és a diagnosztika támogatásához.
