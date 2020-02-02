@@ -2,17 +2,17 @@
 title: Mi az Azure Private DNS?
 description: Ebből a cikkből megtudhatja, hogyan tekintheti át a Microsoft Azure privát DNS-üzemeltetési szolgáltatásának áttekintését.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: allensu
-ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210652"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939289"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
 
@@ -33,7 +33,7 @@ Az Azure saját DNS a következő előnyöket biztosítja:
 
 * **Eltávolítja az egyéni DNS-megoldások szükségességét**. Korábban számos ügyfél hozott létre egyéni DNS-megoldásokat a virtuális hálózat DNS-zónáinak kezeléséhez. Mostantól a natív Azure-infrastruktúrával kezelheti a DNS-zónákat, ami eltávolítja az egyéni DNS-megoldások létrehozásának és kezelésének terheit.
 
-* **Használja az összes általános DNS-rekord típust**. Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.
+* **Használja az összes általános DNS-rekord típust**. Azure DNS támogatja A, AAAA, CNAME, MX, PTR, SOA, SRV és TXT rekordokat.
 
 * **Automatikus állomásnév-nyilvántartás kezelése**. Az egyéni DNS-rekordok üzemeltetése mellett az Azure automatikusan a megadott virtuális hálózatokban lévő virtuális gépek gazdagép-rekordjait is fenntartja. Ebben az esetben optimalizálhatja a használt tartományneveket anélkül, hogy egyéni DNS-megoldásokat kellene létrehoznia, vagy alkalmazásokat kellene módosítania.
 
@@ -45,7 +45,7 @@ Az Azure saját DNS a következő előnyöket biztosítja:
 
 * **Minden Azure-régióban elérhető**. Az Azure DNS Private Zones szolgáltatás az Azure nyilvános felhőben található összes Azure-régióban elérhető.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Azure DNS a következő képességeket biztosítja:
 

@@ -8,29 +8,30 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 6773b5d4635089d0977dfa0699549ad22e00aead
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 96590faae26892771ce27c539bb6e71c84b65b10
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770730"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938948"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Node. js használatával kapcsolódhat és lekérdezheti Azure Database for MySQL
-Ez a rövid útmutató ismerteti, hogyan használható a [Node.js](https://nodejs.org/) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör azt feltételezi, hogy a Node.js használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
+
+Ebben a rövid útmutatóban a Node. js használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
+
+Ez a témakör azt feltételezi, hogy már ismeri a Node. js használatával végzett fejlesztést, de most ismerkedik a Azure Database for MySQLával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
-- [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-Emellett a következőket kell elvégezni:
-- Telepítse a [Node.js](https://nodejs.org)-futtatókörnyezetet.
-- Telepítse a [MySQL](https://www.npmjs.com/package/mysql) -csomagot a MySQL-hez a Node. js-alkalmazásból való kapcsolódáshoz. 
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>A Node.js és a MySQL-összekötő telepítése
-A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításokat a platformtól függően. A NPM használatával telepítse a MySQL-csomagot és annak függőségeit a projekt mappájába.
+
+A [Node. js](https://nodejs.org)telepítéséhez kövesse a megfelelő szakaszban található utasításokat a platformtól függően. A NPM használatával telepítse a [MySQL](https://www.npmjs.com/package/mysql) -csomagot és annak függőségeit a projekt mappájába.
 
 ### <a name="windows"></a>**Windows**
+
 1. Látogasson el a [Node.js letöltési oldalára](https://nodejs.org/en/download/), majd válassza ki a kívánt Windows-telepítési lehetőséget.
 2. Hozzon létre egy helyi projektmappát, például: `nodejsmysql`. 
 3. Nyissa meg a parancssort, majd módosítsa a könyvtárat a Project mappába, például `cd c:\nodejsmysql\`
@@ -45,6 +46,7 @@ A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításoka
 5. Ellenőrizze a telepítést a `npm list` kimeneti szövegének ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
 1. A **Node.js** és az **npm**, a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
 
    ```bash
@@ -62,6 +64,7 @@ A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításoka
 3. Ellenőrizze a telepítést a NPM-lista kimeneti szövegének ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
 ### <a name="mac-os"></a>**Mac OS**
+
 1. A **brew**, egy Mac OS X-szel és a **Node.js**-vel kompatibilis, egyszerűen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
 
    ```bash
@@ -80,21 +83,24 @@ A Node.js telepítéséhez kövesse a megfelelő szakaszban leírt utasításoka
 3. Ellenőrizze a telepítést a `npm list` kimeneti szövegének ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
 3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
+
 1. Illessze be a JavaScript-kódot szövegfájlokba, és mentse őket egy projektmappába .js kiterjesztéssel (például: C:\nodejsmysql\createtable.js vagy /home/username/nodejsmysql/createtable.js).
 2. Nyissa meg a parancssort vagy a bash rendszerhéjat, majd módosítsa a könyvtárat a Project mappába `cd nodejsmysql`.
 3. Az alkalmazás futtatásához írja be a Node parancsot, majd a fájlnevet, például `node createtable.js`.
 4. Ha Windows rendszeren nem található a Node.js-alkalmazás a path környezeti változóban, előfordulhat, hogy a teljes elérési utat kell használnia a Node.js-alkalmazás elindításához, például: `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
+
 A következő kóddal csatlakozhat, és betöltheti az adatokat a **CREATE TABLE** és az **INSERT INTO** SQL-utasításokkal.
 
 A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metódus a MySQL-kiszolgálóhoz való csatlakozásra szolgál. A [connect()](https://github.com/mysqljs/mysql#establishing-connections) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [query()](https://github.com/mysqljs/mysql#performing-queries) függvény az SQL-lekérdezés MySQL-adatbázison való végrehajtására szolgál. 
@@ -162,6 +168,7 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
+
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
 
 A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metódus a MySQL-kiszolgálóhoz való csatlakozásra szolgál. A [connect()](https://github.com/mysqljs/mysql#establishing-connections) metódus a kiszolgálóval való kapcsolat létesítésére szolgál. A [query()](https://github.com/mysqljs/mysql#performing-queries) metódus az SQL-lekérdezés MySQL-adatbázison való végrehajtására szolgál. Az eredménytömb a lekérdezés eredményeinek tárolására használható.
@@ -214,6 +221,7 @@ function readData(){
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
+
 A következő kóddal csatlakozhat, és beolvashatja az adatokat az **UPDATE** SQL-utasítással. 
 
 A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metódus a MySQL-kiszolgálóhoz való csatlakozásra szolgál. A [connect()](https://github.com/mysqljs/mysql#establishing-connections) metódus a kiszolgálóval való kapcsolat létesítésére szolgál. A [query()](https://github.com/mysqljs/mysql#performing-queries) metódus az SQL-lekérdezés MySQL-adatbázison való végrehajtására szolgál. 
@@ -262,6 +270,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>Adat törlése
+
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
 A [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metódus a MySQL-kiszolgálóhoz való csatlakozásra szolgál. A [connect()](https://github.com/mysqljs/mysql#establishing-connections) metódus a kiszolgálóval való kapcsolat létesítésére szolgál. A [query()](https://github.com/mysqljs/mysql#performing-queries) metódus az SQL-lekérdezés MySQL-adatbázison való végrehajtására szolgál. 
@@ -310,5 +319,6 @@ function deleteData(){
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

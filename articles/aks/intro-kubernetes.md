@@ -1,5 +1,5 @@
 ---
-title: Az Azure Kubernetes Service bemutatása
+title: Bevezetés az Azure Kubernetes Service-be
 description: Megismerheti az Azure Kubernetes Service funkcióit és előnyeit, amelyekkel tárolóalapú alkalmazásokat helyezhet üzembe és felügyelhet az Azure-ban.
 services: container-service
 author: mlearned
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c98e67d174c3c8b7fc426e1dd2c5ebafd6760969
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615162"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932608"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -24,6 +24,8 @@ Létrehozhat AKS-fürtöket a Microsoft Azure Portalon az Azure CLI-vel, vagy sa
 A Kubernetes alapjaival kapcsolatos további információkért lásd: [Kubernetes alapfogalmak az AK][concepts-clusters-workloads]-hoz.
 
 Első lépésként végezze el az AK gyors üzembe helyezését [a Azure Portal][aks-portal] vagy [Az Azure CLI-vel][aks-cli].
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>Hozzáférés, biztonság és monitoring
 
@@ -39,7 +41,7 @@ Az AK-fürtök biztonságossá tételéhez lásd: [Azure Active Directory integr
 
 ### <a name="integrated-logging-and-monitoring"></a>Integrált naplózás és monitorozás
 
-Az AKS-fürtök és az üzembe helyezett alkalmazások teljesítményének megismeréséhez a tárolóállapothoz használt Azure Monitor memória- és processzorhasználati mérőszámokat gyűjt a tárolókból, csomópontokból és vezérlőkből. A tároló naplói elérhetők, és áttekintheti [a Kubernetes fő naplóit][aks-master-logs]is. A rendszer egy Log Analytics-munkaterületen tárolja monitorozási adatokat, amelyek a Microsoft Azure Portalon, az Azure CLI-n vagy a REST-végponton keresztül érhetők el.
+Az AKS-fürtök és az üzembe helyezett alkalmazások teljesítményének megismeréséhez a tárolóállapothoz használt Azure Monitor memória- és processzorhasználati mérőszámokat gyűjt a tárolókból, csomópontokból és vezérlőkből. A tároló naplói elérhetők, és [áttekintheti a Kubernetes fő naplóit][aks-master-logs]is. A rendszer egy Log Analytics-munkaterületen tárolja monitorozási adatokat, amelyek a Microsoft Azure Portalon, az Azure CLI-n vagy a REST-végponton keresztül érhetők el.
 
 További információ: az [Azure Kubernetes Service Container Health figyelése][container-health].
 
@@ -111,7 +113,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 

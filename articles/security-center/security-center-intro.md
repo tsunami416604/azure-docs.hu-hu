@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558637"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939433"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 
@@ -42,6 +42,8 @@ Ha segítségre van szüksége a kihívások elleni védelemben, Security Center
 -   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és a veszélyforrások észlelésére vonatkozó riasztásokat.
 
 -   **Gyorsabb biztonság**: Security Centerban minden a Felhőbeli sebességgel történik. Mivel natív módon van integrálva, az Security Center egyszerű üzembe helyezése, amely az Azure-szolgáltatásokkal való kiépítést és védelmet biztosít.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>Architektúra
 

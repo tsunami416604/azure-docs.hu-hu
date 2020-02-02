@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892855"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937785"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával
 
@@ -45,13 +45,14 @@ Az Azure Portalon a következő lépések végrehajtásával tölthet fel egy bl
 
 1. Az Azure Portalon lépjen az előző szakaszban létrehozott tárolóhoz.
 2. Válassza ki a tárolót a benne lévő blobok listájának megtekintéséhez. Mivel ez a tároló új, még nem tartalmaz blobokat.
-3. A **Feltöltés** gombot választva tölthet fel egy blobot a tárolóba.
-4. A helyi fájlrendszerben keresse meg tallózással a blokkblobként feltölteni kívánt fájlt, és válassza a **Feltöltés** elemet.
+3. Kattintson a **feltöltés** gombra a feltöltés panel megnyitásához.
+4. Tallózás a helyi fájlrendszerben a blokkos blobként feltöltendő fájl kereséséhez
      
     ![A blobok helyi meghajtóról történő feltöltését bemutató képernyőkép](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Válassza a **Hitelesítés típusa** elemet. Az alapértelmezett beállítás az **SAS**.
-6. Ezzel a módszerrel tetszőleges számú blobot tölthet fel. Látni fogja, hogy az új blobok már fel vannak sorolva a tárolóban.
+5. A speciális szakasz kibontásával más beállításokat is meghatározhat, például a hitelesítési típust, a hozzáférési szintet vagy a virtuális mappa elérési útját.
+6. A feltöltés végrehajtásához kattintson a **feltöltés** gombra.
+7. Ezzel a módszerrel tetszőleges számú blobot tölthet fel. Látni fogja, hogy az új blobok már fel vannak sorolva a tárolóban.
 
 ## <a name="download-a-block-blob"></a>Blokkblob letöltése
 

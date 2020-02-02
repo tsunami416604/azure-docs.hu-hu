@@ -3,17 +3,17 @@ title: 'Gyors útmutató: DNS-zóna és-rekord létrehozása – Azure Portal'
 titleSuffix: Azure DNS
 description: Ezzel a részletes útmutatóval megtudhatja, hogyan hozhat létre Azure DNS zónát és rekordot a Azure Portal használatával.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082921"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937134"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása a Azure Portal használatával
 
@@ -89,7 +89,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Például:
+   Példa:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

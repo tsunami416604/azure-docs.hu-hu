@@ -2,7 +2,7 @@
 title: 'Gyors útmutató: profil létrehozása az alkalmazások számára – Azure Portal – Azure Traffic Manager'
 description: A rövid útmutató bemutatja, hogyan hozhat létre Traffic Manager-profilokat magas rendelkezésre állású webalkalmazások készítéséhez.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483675"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934769"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Gyors útmutató: Traffic Manager profil létrehozása a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,13 +63,13 @@ Hozzon létre egy Traffic Manager profilt, amely a végponti prioritás alapján
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Traffic Manager profil**lehetőséget.
 2. A **Traffic Manager profil létrehozása**lapon adja meg a következő beállításokat, vagy válassza ki ezeket:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | --------| ----- |
-    | Név | Adjon meg egy egyedi nevet a Traffic Manager profilhoz.|
+    | Name (Név) | Adjon meg egy egyedi nevet a Traffic Manager profilhoz.|
     | Útválasztási metódus | Válassza a **Priority (prioritás**) lehetőséget.|
-    | Előfizetés | Válassza ki azt az előfizetést, amelyre a Traffic Manager-profilt alkalmazni kívánja. |
+    | Előfizetést | Válassza ki azt az előfizetést, amelyre a Traffic Manager-profilt alkalmazni kívánja. |
     | Erőforráscsoport | Válassza a *myResourceGroupTM1*lehetőséget.|
-    | Hely |Ez a beállítás az erőforráscsoport helyét jelöli. Nincs hatása a globálisan telepítendő Traffic Manager-profilra.|
+    | Földrajzi egység |Ez a beállítás az erőforráscsoport helyét jelöli. Nincs hatása a globálisan telepítendő Traffic Manager-profilra.|
 
 3. Kattintson a **Létrehozás** gombra.
 
@@ -82,10 +82,10 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 3. **Traffic Manager profilban**a **Beállítások** szakaszban válassza a **végpontok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 4. Adja meg vagy válassza ki a következő beállításokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ------|
-    | Típus | Válassza ki az **Azure-végpontot**. |
-    | Név | Adja meg a *myPrimaryEndpoint*. |
+    | Type (Típus) | Válassza ki az **Azure-végpontot**. |
+    | Name (Név) | Adja meg a *myPrimaryEndpoint*. |
     | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
     | Célerőforrás | Válassza **az App Service kiválasztása > az** **USA keleti**régiója lehetőséget. |
     | Prioritás | Válassza az **1** lehetőséget. Az összes forgalom állapota erre a végpontra kerül, amikor kifogástalan állapotú. |
@@ -95,10 +95,10 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 5. Kattintson az **OK** gombra.
 6. Ha feladatátvételi végpontot szeretne létrehozni a második Azure-régióhoz, ismételje meg a 3. és a 4. lépést a következő beállításokkal:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ------|
-    | Típus | Válassza ki az **Azure-végpontot**. |
-    | Név | Adja meg a *myFailoverEndpoint*. |
+    | Type (Típus) | Válassza ki az **Azure-végpontot**. |
+    | Name (Név) | Adja meg a *myFailoverEndpoint*. |
     | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
     | Célerőforrás | Válassza **az App Service** - > **Nyugat-Európa**lehetőséget. |
     | Prioritás | Válassza a **2**lehetőséget. Az összes forgalom erre a feladatátvételi végpontra kerül, ha az elsődleges végpont állapota nem megfelelő. |
@@ -141,7 +141,7 @@ Az elsődleges végpont nem érhető el, ezért a rendszer átirányítja a fela
 
 Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást. Ehhez jelölje ki az egyes elemeket az irányítópulton, és válassza a **Törlés** lehetőséget az egyes oldalak tetején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt. Lehetővé teszi a felhasználói forgalom közvetlen használatát a magas rendelkezésre állású webalkalmazásokhoz. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 

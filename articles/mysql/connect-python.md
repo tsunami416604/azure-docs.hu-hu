@@ -8,24 +8,26 @@ ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 1550d8748d6c7c0e35796d2950d02d774fe52822
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896234"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938936"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Rövid útmutató: a Python használatával csatlakozhat és lekérdezheti az Azure Database for MySQL
-Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban Mac OS, Ubuntu Linux és Windows platformokról. 
 
-Ez a cikk azt feltételezi, hogy már ismeri a fejlesztést a Python használatával, de most ismerkedik a Azure Database for MySQLával.
+Ebben a rövid útmutatóban a Python használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
 
-## <a name="create-an-azure-database-for-mysql"></a>Azure Database for MySQL létrehozása 
-Hozzon létre egy Azure Database for MySQL-kiszolgálót és-adatbázist a következő címen található utasításokat követve: 
-- [Azure Database for MySQL-kiszolgáló létrehozása Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) vagy 
-- [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md) 
+Ez a témakör azt feltételezi, hogy már ismeri a fejlesztést a Python használatával, de most ismerkedik a Azure Database for MySQLával.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="install-python-and-the-mysql-connector"></a>A Python és a MySQL-összekötő telepítése
+
 Telepítse a Pythont és a Pythonhoz készült MySQL-összekötőt a számítógépre a következő lépések végrehajtásával: 
 
 > [!NOTE]
@@ -48,6 +50,7 @@ Telepítse a Pythont és a Pythonhoz készült MySQL-összekötőt a számítóg
    A [MySQL.com](https://dev.mysql.com/downloads/connector/python/)-ből is telepítheti a MySQL-hez készült Python-összekötőt. További információ a Pythonhoz készült MySQL-összekötőről: [MySQL Connector/Python fejlesztői útmutató](https://dev.mysql.com/doc/connector-python/en/). 
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+
 Szerezze be a Azure Database for MySQLhoz való kapcsolódáshoz szükséges kapcsolati adatokat a Azure Portalból. Szüksége lesz a kiszolgáló nevére, az adatbázis nevére és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
@@ -61,6 +64,7 @@ Szerezze be a Azure Database for MySQLhoz való kapcsolódáshoz szükséges kap
    ![Azure Database for MySQL-kiszolgáló neve](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
 ## <a name="run-the-python-examples"></a>A Python-példák futtatása
+
 A cikkben szereplő kódok mindegyike esetében:
 
 1. Hozzon létre egy új fájlt egy szövegszerkesztőben.
@@ -72,6 +76,7 @@ A cikkben szereplő kódok mindegyike esetében:
    > Windows rendszeren, ha a *Python. exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *Python. exe*teljes elérési útját, például `C:\python27\python.exe createtable.py`.
 
 ## <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
+
 A következő kód használatával csatlakozhat a kiszolgálóhoz és az adatbázishoz, létrehozhat egy táblát, és betöltheti az adatok betöltését egy **Insert** SQL-utasítás használatával. 
 
 A kód importálja a MySQL. Connector függvénytárat, és a [csatlakozás ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) függvénnyel csatlakozik Azure Database for MySQLhoz a konfigurációs gyűjtemény [argumentumai](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) segítségével. A kód egy kurzort használ a kapcsolatban, és a [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) metódus hajtja végre az SQL-lekérdezést a MySQL-adatbázison. 
@@ -126,6 +131,7 @@ else:
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
+
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
 
 A kód importálja a MySQL. Connector függvénytárat, és a [csatlakozás ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) függvénnyel csatlakozik Azure Database for MySQLhoz a konfigurációs gyűjtemény [argumentumai](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) segítségével. A kód egy kurzort használ a kapcsolatban, és a [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) metódus hajtja végre az SQL-lekérdezést a MySQL-adatbázison. 
@@ -175,6 +181,7 @@ else:
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
+
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok módosítását egy **UPDATE** SQL-utasítás segítségével. 
 
 A kód importálja a MySQL. Connector függvénytárat, és a [csatlakozás ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) függvénnyel csatlakozik Azure Database for MySQLhoz a konfigurációs gyűjtemény [argumentumai](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) segítségével. A kód egy kurzort használ a kapcsolatban, és a [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) metódus hajtja végre az SQL-lekérdezést a MySQL-adatbázison. 
@@ -217,6 +224,7 @@ else:
 ```
 
 ## <a name="delete-data"></a>Adat törlése
+
 A következő kód használatával csatlakozhat, és eltávolíthatja az adatokat a **DELETE** SQL-utasítással. 
 
 A kód importálja a MySQL. Connector függvénytárat, és a [csatlakozás ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) függvénnyel csatlakozik Azure Database for MySQLhoz a konfigurációs gyűjtemény [argumentumai](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) segítségével. A kód egy kurzort használ a kapcsolatban, és a [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) metódus hajtja végre az SQL-lekérdezést a MySQL-adatbázison. 
@@ -259,5 +267,6 @@ else:
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261867"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939116"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
@@ -37,17 +37,17 @@ Az Azure Sentinel az egész vállalatra kiterjedő, az egyre kifinomultabb táma
 
 - Az **incidensekre való gyors reagálás** a közös feladatok beépített összehangolása és automatizálása révén.
 
-
 ![Azure Sentinel alapképességek](./media/overview/core-capabilities.png)
 
 A meglévő Azure-szolgáltatások teljes skáláját kiépítve az Azure Sentinel natív módon tartalmazza a bevált alapokat, például a Log Analytics és a Logic Apps. Az Azure Sentinel az AI-vel gazdagítja a nyomozást és az észlelést, és biztosítja a Microsoft fenyegetés-felderítési streamjét, és lehetővé teszi a saját veszélyforrások felderítését. 
 
- 
 ## <a name="connect-to-all-your-data"></a>Kapcsolódás az összes adattal
 
 Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos, a Microsoft-megoldások számára elérhető összekötővel rendelkezik, és valós idejű integrációt biztosít, beleértve a Microsoft veszélyforrások elleni védelmi megoldásait és Microsoft 365 forrásait, beleértve az Office 365, az Azure AD, az Azure ATP és a Microsoft Cloud App Security és így tovább. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
 
 ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Munkafüzetek
 
