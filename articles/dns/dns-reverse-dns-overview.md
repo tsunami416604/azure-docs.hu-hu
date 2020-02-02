@@ -3,7 +3,7 @@ title: Fordított DNS áttekintése az Azure-ban – Azure DNS
 description: Ebből a képzési tervből megtudhatja, hogyan működik a fordított DNS, és hogyan használható az Azure-ban
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: KumuD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: allensu
-ms.openlocfilehash: 2788cc3957e9822e61c10f5f06a29802e225bcbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211029"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932294"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>A fordított DNS és a támogatás áttekintése az Azure-ban
 
@@ -48,9 +48,9 @@ Ha például egy fordított zónát hoz létre a 192.0.2.0/24 előtaggal rendelk
 
 |Alhálózat osztálya|Hálózati előtag  |Fordított hálózati előtag  |Szabványos utótag  |Fordított zóna neve |
 |-------|----------------|------------|-----------------|---------------------------|
-|A. osztály|203.0.0.0/8     | 203        | .in-addr.arpa   | `203.in-addr.arpa`        |
-|B. osztály|198.51.0.0/16   | 51.198     | .in-addr.arpa   | `51.198.in-addr.arpa`     |
-|C osztály|192.0.2.0/24    | 2.0.192    | .in-addr.arpa   | `2.0.192.in-addr.arpa`    |
+|A. osztály|203.0.0.0/8     | 203        | . in-addr. arpa   | `203.in-addr.arpa`        |
+|B. osztály|198.51.0.0/16   | 51,198     | . in-addr. arpa   | `51.198.in-addr.arpa`     |
+|C osztály|192.0.2.0/24    | 2.0.192    | . in-addr. arpa   | `2.0.192.in-addr.arpa`    |
 
 ### <a name="classless-ipv4-delegation"></a>Osztály nélküli IPv4-delegálás
 
@@ -94,8 +94,8 @@ Például:. Ha fordított zónát hoz létre a 2001: DB8:1000: ABDC::/64 előtag
 
 |Hálózati előtag  |Kibontott és fordított hálózati előtag |Szabványos utótag |Fordított zóna neve  |
 |---------|---------|---------|---------|
-|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
-|2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
+|2001: DB8: ABDC::/64    | 0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2        | . IP6. arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
+|2001: DB8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8. b. d. 0.1.0.0.2        | . IP6. arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
 ## <a name="azure-support-for-reverse-dns"></a>Azure-támogatás fordított DNS-hez

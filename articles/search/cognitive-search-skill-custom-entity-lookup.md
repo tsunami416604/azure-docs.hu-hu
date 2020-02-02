@@ -1,0 +1,303 @@
+---
+title: Egyéni entitás keresési kognitív keresési képességei
+titleSuffix: Azure Cognitive Search
+description: Kinyerheti a különböző egyéni entitásokat egy Azure Cognitive Search kognitív keresési folyamat szövege alapján. Ez a képesség jelenleg nyilvános előzetes verzióban érhető el.
+manager: nitinme
+author: luiscabrer
+ms.author: luisca
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 01/30/2020
+ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76960606"
+---
+#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
+
+> [!IMPORTANT] 
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
+
+Az **egyéni entitás keresési** képessége szövegeket keres a szavak és kifejezések egyéni, felhasználó által definiált listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható.  
+
+Ez a képesség nem kötődik Cognitive Services API-hoz, és az előzetes verzió időtartama alatt díjmentesen használható. A napi alkoholtartalom-növelési korlát felülbírálásához azonban továbbra is [csatolni kell egy Cognitive Services erőforrást](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services). A napi korlát arra az esetre vonatkozik, ha az Azure Cognitive Search keresztül éri el Cognitive Services ingyenes hozzáférését.
+
+## <a name="odatatype"></a>@odata.type  
+Microsoft. Skills. Text. CustomEntityLookupSkill 
+
+## <a name="data-limits"></a>Adatkorlátok
++ A maximálisan támogatott bemeneti rekordok mérete 256 MB. Ha meg kell szüntetnie az adatokat, mielőtt elküldené az egyéni entitás keresési képességeinek, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
++ A maximális entitások definíciós táblázata 10 MB, ha a *entitiesDefitionUri* paraméter használatával van megadva. 
++ Ha az entitások beágyazottként vannak definiálva, a *inlineEntitiesDefinition* paraméter használatával a maximálisan támogatott méret 10 kb.
+
+## <a name="skill-parameters"></a>Szakértelem paraméterei
+
+A paraméterek megkülönböztetik a kis-és nagybetűket.
+
+| Paraméter neve     | Leírás |
+|--------------------|-------------|
+| entitiesDefinitionUri | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
+|inlineEntitiesDefinition | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
+|defaultLanguageCode |  Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (`en`). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
+
+
+## <a name="skill-inputs"></a>Szaktudás bemenetei
+
+| Bemeneti név      | Leírás                   |
+|---------------|-------------------------------|
+| szöveg          | Az elemezni kívánt szöveg.          |
+| languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
+
+
+## <a name="skill-outputs"></a>Szaktudás kimenetei
+
+
+| Kimenet neve     | Leírás                   |
+|---------------|-------------------------------|
+| szervezetek | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
+  |
+
+## <a name="custom-entity-definition-format"></a>Egyéni entitás definíciós formátuma
+
+Az egyéni entitások keresési képességeinek megjelenítéséhez 3 különböző módszer áll rendelkezésre. Megadhatja a listát a alkalmazásban. CSV-fájl, a. JSON-fájl vagy beágyazott definícióként a szaktudás definíciójának részeként.  
+
+Ha a definíciós fájl egy. CSV vagy. JSON-fájl, a fájl elérési útját kell megadni a *entitiesDefitionUri* paraméter részeként. Ebben az esetben a fájl minden indexelő futtatásának elején le lesz töltve. A fájlnak elérhetőnek kell lennie, feltéve, hogy az indexelő futtatni kívánja.
+
+Ha a definíciót beágyazottként adták meg, akkor azt a *inlineEntitiesDefinition* skill paraméter tartalmának megfelelően kell megadni. 
+
+### <a name="csv-format"></a>CSV-formátum
+
+A vesszővel tagolt (CSV) fájlokban megkeresheti az egyéni entitások definícióját, ha megadja a fájl elérési útját, és beállítja azt a *entitiesDefitionUri* skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+
+A CSV formátum egyszerű. Minden sor egy egyedi entitást képvisel, ahogy az alábbi ábrán látható:
+
+```
+Bill Gates, BillG, William H. Gates
+Microsoft, MSFT
+Satya Nadella 
+```
+
+Ebben az esetben három entitást lehet visszaadni, mint a talált entitások (Bill Gates, a Microsoft), de azonosítva lesznek, ha a (z) sorban (aliasok) található feltételek bármelyike megfelel a szövegnek. Ha például a "William H. Gates" karakterlánc szerepel a dokumentumban, a rendszer a "Bill Gates" entitáshoz tartozó egyezést adja vissza.
+
+### <a name="json-format"></a>JSON formátum
+
+Megadhatja a JSON-fájlokban megkeresni kívánt egyéni entitások definícióját is. A JSON formátuma valamivel nagyobb rugalmasságot biztosít, mivel lehetővé teszi az egyeztetési szabályok megadását a feltételek szerint. Például megadhatja az egyes feltételekhez tartozó fuzzy megfeleltetési távolságot (Damerau-Levenshtein távolságot), illetve azt, hogy a megfeleltetés megkülönbözteti-e a kis-és nagybetűket. 
+
+ Akárcsak a CSV-fájlokhoz, meg kell adnia a JSON-fájl elérési útját, és be kell állítania a *entitiesDefitionUri* skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+
+Az alapszintű JSON egyéni entitások listájának definíciója az egyeztetendő entitások listája lehet:
+
+```json
+[ 
+    { 
+        "name" : "Bill Gates"
+    }, 
+    { 
+        "name" : "Microsoft"
+    }, 
+    { 
+        "name" : "Satya Nadella"
+    }
+]
+```
+
+A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes entitások azonosítóját, leírását, típusát és altípusát, valamint más *aliasokat*is. Ha egy alias-kifejezés egyezik, a rendszer az entitást is visszaadja:
+
+```json
+[ 
+    { 
+        "name" : "Bill Gates",
+        "description" : "Microsoft founder." ,
+        "aliases" : [ 
+            { "text" : "William H. Gates", "caseSensitive" : false },
+            { "text" : "BillG", "caseSensitive" : true }
+        ]
+    }, 
+    { 
+        "name" : "Xbox One", 
+        "type": "Harware",
+        "subtype" : "Gaming Device",
+        "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
+        "description" : "The Xbox One product"
+    }, 
+    { 
+        "name" : "LinkedIn" , 
+        "description" : "The LinkedIn company", 
+        "id" : "differentIdentifyingScheme123", 
+        "fuzzyEditDistance" : 0 
+    }, 
+    { 
+        "name" : "Microsoft" , 
+        "description" : "Microsoft Corporation", 
+        "id" : "differentIdentifyingScheme987", 
+        "defaultCaseSensitive" : false, 
+        "defaultFuzzyEditDistance" : 1, 
+        "aliases" : [ 
+            { "text" : "MSFT", "caseSensitive" : true }
+        ]
+    } 
+] 
+```
+
+Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs paramétereket, amelyekkel meghatározhatja az entitások egyeztetését:
+
+|  Mező neve  |        Leírás  |
+|--------------|----------------------|
+| név | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
+| leírás  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| type | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| Altípus | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| id | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
+| caseSensitive | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az entitás nevével való összehasonlításnak érzékenynek kell lennie a karakterkészletre. Példa a kis-és nagybetűket megkülönböztető "Microsoft" találatokra: Microsoft, microSoft, MICROSOFT |
+| fuzzyEditDistance | Választható Az alapértelmezett érték 0. A maximális érték 5. Annak az eltérő karaktereknek az elfogadható számát jelöli, amelyek továbbra is egyeznek az entitás nevével. A rendszer a megadott egyezések legkisebb lehetséges bizonytalanság adja vissza.  Ha például a szerkesztési távolság értéke 3, a "Windows 10" továbbra is egyezik a "Windows", a "Windows10" és a "Windows 7" értékkel. <br/> Ha a kis-és nagybetűk megkülönböztetése hamis értékre van állítva, a kis-és nagybetűk nem számítanak bele a bizonytalanság-tűrésbe, de máskülönben |
+| defaultCaseSensitive | Választható Az entitás alapértelmezett érzékenységi értékének módosítása. Az összes alias caseSensitive értékének alapértelmezett értékének módosítására szolgál. |
+| defaultFuzzyEditDistance | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
+| aliasok | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
+
+| Alias tulajdonságai | Leírás |
+|------------------|-------------|
+| szöveg  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
+| caseSensitive | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |
+| fuzzyEditDistance | Választható Ugyanaz, mint a legfelső szintű "fuzzyEditDistance" paraméter, de csak erre az aliasra vonatkozik. |
+
+
+### <a name="inline-format"></a>Beágyazott formátum
+
+Bizonyos esetekben érdemes lehet megadnia az egyéni entitások listáját, amelyek közvetlenül a szakértelem-definícióba illeszkednek. Ebben az esetben a fentiekben ismertetett módon hasonló JSON-formátumot használhat, de a szaktudás definíciójában szerepel.
+Csak a 10 KB-nál kevesebb konfiguráció (szerializált méret) lehet definiálva. 
+
+##  <a name="sample-definition"></a>Minta definíciója
+
+Az alábbi példa egy beágyazott formátumot használó minta-képzettségi definíciót mutat be:
+
+```json
+  {
+    "@odata.type": "#Microsoft.Skills.Text.CustomEntityLookupSkill",
+    "context": "/document",
+    "inlineEntitiesDefinition": 
+    [
+      { 
+        "name" : "Bill Gates",
+        "description" : "Microsoft founder." ,
+        "aliases" : [ 
+            { "text" : "William H. Gates", "caseSensitive" : false },
+            { "text" : "BillG", "caseSensitive" : true }
+        ]
+      }, 
+      { 
+        "name" : "Xbox One", 
+        "type": "Harware",
+        "subtype" : "Gaming Device",
+        "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
+        "description" : "The Xbox One product"
+      }
+    ],    
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entities",
+        "targetName": "matchedEntities"
+      }
+    ]
+  }
+```
+Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a entitiesDefinitionUri formátumot használó minta-képzettségi definíciót alább látható:
+
+```json
+  {
+    "@odata.type": "#Microsoft.Skills.Text.CustomEntityLookupSkill",
+    "context": "/document",
+    "entitiesDefinitionUri": "https://myblobhost.net/keyWordsConfig.csv",    
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entities",
+        "targetName": "matchedEntities"
+      }
+    ]
+  }
+
+```
+
+##  <a name="sample-input"></a>Minta bemenet
+
+```json
+{
+    "values": [
+      {
+        "recordId": "1",
+        "data":
+           {
+             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "languageCode": "en"
+           }
+      }
+    ]
+}
+```
+
+##  <a name="sample-output"></a>Példa kimenet
+
+```json
+  { 
+    "values" : 
+    [ 
+      { 
+        "recordId": "1", 
+        "data" : { 
+          "entities": [
+            { 
+              "name" : "Microsoft", 
+              "description" : "This document refers to Microsoft the company", 
+              "id" : "differentIdentifyingScheme987", 
+              "matches" : [ 
+                { 
+                  "text" : "microsoft", 
+                  "offset" : 13, 
+                  "length" : 9, 
+                  "matchDistance" : 0 
+                }, 
+                { 
+                  "text" : "Microsoft",
+                  "offset" : 49, 
+                  "length" : 9, 
+                  "matchDistance" : 0
+                }
+              ] 
+            },
+            { 
+              "name" : "Bill Gates",
+              "description" : "William Henry Gates III, founder of Microsoft.", 
+              "matches" : [
+                { 
+                  "text" : "Bill Gates",
+                  "offset" : 37, 
+                  "length" : 10,
+                  "matchDistance" : 0 
+                }
+              ]
+            }
+          ] 
+        } 
+      } 
+    ] 
+  } 
+```
+
+## <a name="see-also"></a>Lásd még:
+
++ [Beépített szaktudás](cognitive-search-predefined-skills.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Entitás-felismerési szakértelem (a jól ismert entitások kereséséhez)](cognitive-search-skill-entity-recognition.md)

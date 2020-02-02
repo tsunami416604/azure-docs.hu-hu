@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911287"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933668"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Buborék réteg hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból egy Térkép buborék rétegének használatával. A buborék rétegek a térképbeli körökként jelenítik meg a rögzített képpont sugarú pontokat. 
+Ez a cikk bemutatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból egy Térkép buborék rétegében. A buborék rétegek a térképbeli körökként jelenítik meg a rögzített képpont sugarú pontokat. 
 
 > [!TIP]
 > A buborék rétegek alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriai funkcióit jeleníti meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']` vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, ha a multipoint-szolgáltatásokat is fel szeretné venni.
 
 ## <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
 
-A következő kód egy tömböt tölt be egy adatforrásba, és csatlakoztatja egy [buborékdiagram-réteghez](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). A buborék réteg az egyes buborékok sugarának megjelenítésére szolgál öt képpontban, a fehér szín kitöltési színe, a kék színű körvonal színe, valamint a 6 képpont vastagsága. 
+A következő kód egy tömböt tölt be egy adatforrásba. Ezután az adatpontok egy [buborék réteghez](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)csatlakoznak. A buborék réteg az egyes buborékokat ábrázolja öt képponttal, a fehér szín kitöltésével, a kék körvonal színével és a hat képpont vastagságú ecsetvonásokkal. 
 
 ```javascript
 //Add point locations.

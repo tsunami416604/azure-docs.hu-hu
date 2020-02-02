@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425433"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931232"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: kimenő erdőszintű megbízhatósági kapcsolat létrehozása helyi tartományhoz Azure Active Directory Domain Services (előzetes verzió)
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy Azure AD DS felügyelt tartományt hoz létre egy *erőforrás* -erdő használatával. Az alapértelmezett beállítás egy *felhasználói* erdőt hoz létre. Csak az erőforrás-erdők hozhatnak létre megbízhatósági kapcsolatot a helyszíni AD DS környezetekben.
+    > Győződjön meg arról, hogy Azure AD DS felügyelt tartományt hoz létre egy *erőforrás* -erdő használatával. Az alapértelmezett beállítás egy *felhasználói* erdőt hoz létre. Csak az erőforrás-erdők hozhatnak létre megbízhatósági kapcsolatot a helyszíni AD DS környezetekben. Emellett legalább a *vállalati* SKU-t kell használnia a felügyelt tartományhoz. Ha szükséges, [módosítsa az SKU-t egy Azure AD DS felügyelt tartományhoz][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -188,7 +188,7 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra**.
 1. Válassza a **megosztás** fület, majd kattintson a speciális megosztás elemre. **..**
 1. Válassza a **mappa megosztása**lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
-1. Válassza az **Engedélyek** lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
+1. Válassza az **engedélyek**lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
 1. Kattintson kétszer **az OK** , majd a **Bezárás**gombra.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Erdők közötti hitelesítés ellenőrzése erőforráshoz
@@ -220,3 +220,4 @@ Az Azure AD DS erdők típusaival kapcsolatos további információk: Mik az [er
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

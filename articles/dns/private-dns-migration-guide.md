@@ -3,17 +3,17 @@ title: Örökölt Azure DNS Private Zones áttelepítése új erőforrás-modell
 titleSuffix: Azure DNS
 description: Ez az útmutató lépésről lépésre bemutatja, hogyan telepítheti át a régi magánhálózati DNS-zónákat a legújabb erőforrás-modellre
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: allensu
-ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076729"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939350"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 
@@ -116,7 +116,7 @@ Ha automatizálást használ, beleértve a sablonokat, a PowerShell-parancsfájl
 
 Hozzon létre egy támogatási jegyet, ha további segítségre van szüksége az áttelepítési folyamathoz, vagy valamilyen okból kifolyólag a fenti felsorolt lépések nem működnek. Adja meg a PowerShell-parancsfájl által a támogatási jegyhez létrehozott átirat-fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNS a [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

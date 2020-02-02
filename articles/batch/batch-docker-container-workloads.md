@@ -1,6 +1,6 @@
 ---
-title: Tároló munkaterhelések – Azure Batch | Microsoft Docs
-description: Ismerje meg, hogyan futtathat alkalmazásokat a tároló rendszerképeiből Azure Batchon.
+title: Tároló munkaterhelések – Azure Batch
+description: Megtudhatja, hogyan futtathatja és méretezheti az alkalmazásokat a Azure Batch tároló lemezképei között. Hozzon létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 493c9b30f6c7f735d69e113f3f1efe26ca6c1576
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029721"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935050"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
 

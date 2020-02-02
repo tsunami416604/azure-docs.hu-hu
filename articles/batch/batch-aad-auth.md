@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory használata Azure Batch szolgáltatási megoldások hitelesítéséhez | Microsoft Docs
-description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történő hitelesítéshez.
+title: Azure Batch szolgáltatások hitelesítése Azure Active Directory
+description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történő hitelesítéshez. Megtudhatja, hogyan végezheti el a hitelesítést két módszer egyikével.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c855293a64ed63fdcb8a5ce797497dec428ab5ae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842537"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935293"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703696"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931269"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -93,6 +93,9 @@ Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablak�
 
     Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azure platform automatikusan kezeli az erőforrások zónájának eloszlását. További információért és a régiók rendelkezésre állásának megtekintéséhez lásd: [Mi a Availability Zones az Azure-ban?][availability-zones]
 
+1. Az **SKU** meghatározza a létrehozható erdőszintű megbízhatósági kapcsolatok teljesítményét, biztonsági mentési gyakoriságát és maximális számát. Az SKU-t a felügyelt tartomány létrehozása után is módosíthatja, ha az üzleti igények vagy követelmények megváltoznak. További információ: [Azure AD DS SKU-fogalmak][concepts-sku].
+
+    Ebben az oktatóanyagban válassza ki a *szabványos* SKU-t.
 1. Az *erdők* egy Active Directory tartományi szolgáltatások által az egy vagy több tartomány csoportosításához használt logikai szerkezetek. Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.
 
     Ebben az oktatóanyagban válassza a *felhasználói* erdő létrehozása lehetőséget.
@@ -105,7 +108,7 @@ Azure AD DS felügyelt tartomány gyors létrehozásához válassza a **felülvi
 * Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.1.0/24*IP-címtartomány használatával.
 * Szinkronizálja az Azure AD *összes* felhasználóját az Azure AD DS felügyelt tartományba.
 
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához.
+Válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához.
 
 ## <a name="deploy-the-managed-domain"></a>A felügyelt tartomány üzembe helyezése
 
@@ -200,6 +203,7 @@ A tartományhoz csatlakozó virtuális gépek és az Azure AD DS felügyelt tart
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

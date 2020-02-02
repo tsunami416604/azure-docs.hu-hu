@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186263"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934691"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
@@ -28,7 +28,11 @@ Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmakat, hoz
 > [!NOTE]
 > Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért olvassa el a [médiafeldolgozás méretezését](media-reserved-units-cli-how-to.md) ismertető cikket.
 
-## <a name="built-in-presets"></a>Beépített készletek
+## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
+
+Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának összes vonatkozó törvényének, és előfordulhat, hogy nem használja Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy más személyeknek is ártalmas lehet. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban szereplő személy (ek) hoz. A megfelelőségről, az adatvédelemről és a biztonságról Video Indexer a Microsoft [Cognitive Services feltételeiben](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)olvashat. A Microsoft adatvédelmi kötelezettségei és az adatok kezelése érdekében tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit ("Ost")](https://www.microsoft.com/licensing/product-licensing/products) és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti magát.
+
+## <a name="built-in-presets"></a>Beépített beállításkészletek
 
 A Media Services jelenleg a következő beépített analizátor-beállításkészleteket támogatja:  
 
@@ -292,7 +296,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 ]
 ```
 
-### <a name="labels"></a>címkék
+### <a name="labels"></a>Címkék
 
 |Name (Név)|Leírás|
 |---|---|
@@ -350,7 +354,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
   ] 
 ```
 
-### <a name="keywords"></a>a kulcsszavak
+### <a name="keywords"></a>Kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|

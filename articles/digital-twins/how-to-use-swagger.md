@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863529"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934612"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure digitális ikrek – dokumentáció
 
@@ -104,7 +104,7 @@ A példák olyan hibakódokat is tartalmaznak, amelyek segítenek a hibakeresés
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Név  | Csere erre | Példa |
+    | Name (Név)  | Csere erre | Példa |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | A felügyeleti REST API dokumentációjának URL-címe megtalálható a portálon  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 

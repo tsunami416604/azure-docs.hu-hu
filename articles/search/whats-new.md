@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844972"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934866"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -29,13 +29,15 @@ A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükr
 
 ### <a name="february-2020"></a>Február 2020
 
-+ A személyes adatok [észlelése](cognitive-search-skill-pii-detection.md) olyan kognitív képesség, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből gyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon.
++ A személyes adatok [észlelése (előzetes verzió)](cognitive-search-skill-pii-detection.md) az indexelés során használt kognitív képesség, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon.
+
++ Az [egyéni entitások keresése (előzetes verzió)](cognitive-search-skill-custom-entity-lookup.md ) szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. 
 
 ### <a name="january-2020"></a>2020. január
 
 + Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-t használ, `api-version=2019-05-06`használatával érheti el a szolgáltatást. A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
 
-+ A keresési szolgáltatásokhoz való privát hozzáférés két mechanizmuson keresztül érhető el:
++ A keresési szolgáltatásokhoz való privát hozzáférés két, jelenleg előzetes verzióban elérhető mechanizmuson keresztül érhető el:
 
   + A szolgáltatás létrehozásához a felügyeleti REST API `api-version=2019-10-01-Preview` használatával korlátozhatja a hozzáférést adott IP-címekhez. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 

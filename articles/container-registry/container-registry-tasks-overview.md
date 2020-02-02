@@ -3,12 +3,12 @@ title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840765"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938881"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -56,7 +56,7 @@ Hozzon létre egy tároló-rendszerkép Build vagy többlépéses feladatot a k�
 
 Az ACR-feladatok a következő eseményindítókat támogatják, amikor a git-tárházat a feladat kontextusa szerint állítja be:
 
-| Eseményindító | Alapértelmezés szerint engedélyezett |
+| Eseményindító | Alapértelmezés szerint engedélyezve |
 | ------- | ------------------ |
 | Véglegesítés | Igen |
 | Lekéréses kérelem | Nem |
@@ -122,6 +122,7 @@ Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott k�
 | GitHub-főkiszolgáló ág | Egy nyilvános vagy privát GitHub-tárház főkiszolgálójának (vagy más alapértelmezett) ágában lévő fájljai.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-ág | Nyilvános vagy privát GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-almappa | Egy nyilvános vagy privát GitHub-tárház almappájába tartozó fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub-véglegesítés | Konkrét véglegesítés nyilvános vagy privát GitHub-tárházban. Példa a commit hash (SHA) és az almappák specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps almappa | Egy nyilvános vagy privát Azure-tárház almappájába tartozó fájlok. Példa az ág és az almappa specifikációjának kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Távoli Fez | Tömörített archívumban található fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
 
@@ -134,7 +135,7 @@ Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux ope
 
 | Operációs rendszer | Architektúra|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Linux | amd64<br/>kar<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Feladatütemezés megtekintése

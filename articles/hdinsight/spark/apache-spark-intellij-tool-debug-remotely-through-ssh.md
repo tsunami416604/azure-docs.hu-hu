@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 6e3cf8fa70d6abe8005fe2d2de059c0a3944ff81
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905315"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934749"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
@@ -25,7 +25,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 * Windows-felhasználók esetén: a helyi Spark Scala-alkalmazás Windows rendszerű számítógépen való futtatásakor kivételt jelenthet a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint. A kivétel oka, hogy a WinUtils. exe fájl hiányzik a Windows rendszerből.
 
-    A hiba elhárításához töltse le `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe`t egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME**környezeti változót, és állítsa a változó értékét **C:\WinUtils**értékre.
+    A hiba elhárításához töltse le a [Winutils. exe fájlt](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME**környezeti változót, és állítsa a változó értékét **C:\WinUtils**értékre.
 
 * [INTELLIJ Idea](https://www.jetbrains.com/idea/download/#section=windows) (a Community Edition ingyenes.)
 

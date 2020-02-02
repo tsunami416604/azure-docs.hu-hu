@@ -1,17 +1,18 @@
 ---
-title: Központi telepítési adataik titkosítása
+title: Üzembehelyezési adatok titkosítása
 description: Ismerje meg a tároló-példány erőforrásainak megőrzött adatainak titkosítását, valamint az adattitkosítást az ügyfél által felügyelt kulccsal
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904210"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934302"
 ---
-# <a name="encrypt-deployment-data"></a>Központi telepítési adataik titkosítása
+# <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
 Amikor a felhőben Azure Container Instances (ACI) erőforrásait futtatja, az ACI szolgáltatás összegyűjti és megőrzi a tárolókkal kapcsolatos adatokat. Az ACI automatikusan titkosítja ezeket az adatfájlokat, amikor a felhőben is megmarad. Ezzel a titkosítással megvédheti adatait, hogy megfeleljen a szervezete biztonsági és megfelelőségi kötelezettségvállalásainak. Az ACI lehetővé teszi az adatok saját kulccsal történő titkosítását is, így az ACI-környezetekhez kapcsolódó adatok nagyobb mértékben szabályozhatók.
 
@@ -23,7 +24,7 @@ Az ACI-ban tárolt adatai titkosítva vannak, és a 256 bites AES-titkosítássa
 
 A Microsoft által felügyelt kulcsokat a tároló adatai titkosítására használhatja, vagy a titkosítást a saját kulcsaival is kezelheti. A következő táblázat összehasonlítja ezeket a beállításokat: 
 
-|    |    Microsoft által felügyelt kulcsok     |     Ügyfél által felügyelt kulcsok     |
+|    |    Microsoft által felügyelt kulcsok     |     Felhasználó által kezelt kulcsok     |
 |----|----|----|
 |    Titkosítási/visszafejtési műveletek    |    Azure    |    Azure    |
 |    Kulcstároló    |    Microsoft Key Store    |    Azure Key Vault    |
@@ -87,15 +88,18 @@ A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáféré
 > [!IMPORTANT]
 > A központi telepítési adatai ügyfél által felügyelt kulccsal történő titkosítása a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg ki van vezetve. Adja meg ezt az API-verziót a telepítési sablonban. Ha problémája merül fel, forduljon az Azure ügyfélszolgálatához.
 
-A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságot az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről az oktatóanyagban található sablonnal [: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* A `resources`alatt állítsa be a `apiVersion` a `2012-12-01`re.
+* A telepítési sablon tároló csoport tulajdonságai szakaszában adjon hozzá egy `encryptionProperties`, amely a következő értékeket tartalmazza:
+  * `vaultBaseUrl`: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
+  * `keyName`: a korábban generált kulcs neve
+  * `keyVersion`: a kulcs jelenlegi verziója. Ez úgy érhető el, ha magára a kulcsra kattint (a Key Vault-erőforrás beállítások szakaszában a "kulcsok" alatt)
+* A tároló csoport tulajdonságai területen adjon hozzá egy `sku` tulajdonságot `Standard`értékkel. A `sku` tulajdonságot az API 2019-12-01-es verziójában kell megadni.
 
-Konkrétan a telepítési sablon Container Group (tároló csoport) tulajdonságai szakaszában adjon hozzá egy "encryptionProperties" értéket, amely a következő értékeket tartalmazza:
-* vaultBaseUrl: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
-* Kulcsnév: a korábban generált kulcs neve
-* főverzió: a kulcs jelenlegi verziója. Ez úgy érhető el, ha magára a kulcsra kattint (a Key Vault-erőforrás beállítások szakaszában a "kulcsok" alatt)
-
+A következő kódrészlet ezeket a további tulajdonságokat jeleníti meg a központi telepítési információk titkosításához:
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ Konkrétan a telepítési sablon Container Group (tároló csoport) tulajdonság
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+A következő egy teljes sablon, amely a sablon alapján van adaptálva [: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>Az erőforrások üzembe helyezése

@@ -3,18 +3,18 @@ title: Azure Traffic Manager alhálózat felülbírálása az Azure CLI használ
 description: Ez a cikk segít megérteni, hogy Traffic Manager alhálózat felülbírálásával hogyan bírálhatja felül a Traffic Manager-profilok útválasztási módszerét, hogy a végfelhasználói IP-cím alapján, előre meghatározott IP-címeken keresztül irányítsa át a forgalmat a végpont-hozzárendelések számára.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351177"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938467"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Alhálózat Traffic Manager felülbírálása az Azure CLI használatával
 
@@ -35,7 +35,7 @@ Az alhálózatok felülbírálásait két típusú útválasztási profil támog
 
 Traffic Manager alhálózat felülbírálásának létrehozásához az Azure CLI használatával adhatja hozzá a felülbírálás alhálózatait a Traffic Manager végponthoz.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -76,7 +76,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Traffic Manager [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md).
 
 Tudnivalók az [alhálózat forgalmáról – útválasztási módszer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

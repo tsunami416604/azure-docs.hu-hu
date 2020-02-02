@@ -2,13 +2,13 @@
 title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896035"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934942"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -36,6 +36,18 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 ## <a name="updates-january-2020"></a>Frissítések (január 2020)
 
+### <a name="update-rollup-44"></a>44-es kumulatív frissítés
+A 44-es [kumulatív frissítés](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) a következő frissítéseket tartalmazza.
+
+**Update** | **Részletek**
+--- | ---
+**Hibajavítások/javítások** | Site Recovery ügynökök és szolgáltatók frissítéseinek száma (a kumulatív részletezés szerint).
+
+### <a name="azure-vmware-disaster-recovery"></a>Azure VMware vész-helyreállítás
+
+Az Azure Virtual Machines mostantól támogatja a virtuális gépek számára a titkosítást az ügyfél által felügyelt kulcsokkal. [További információk](azure-to-azure-how-to-enable-replication-cmk-disks.md).
+
+
 ### <a name="update-rollup-43"></a>43-es kumulatív frissítés
 
 A 43-es [kumulatív frissítés](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) a következő frissítéseket tartalmazza.
@@ -58,7 +70,7 @@ A 42-es [kumulatív frissítés](https://support.microsoft.com/help/4531426/upda
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Azure-beli virtuális gép vész-helyreállítási
+### <a name="azure-vm-disaster-recovery"></a>Azure-beli virtuális gép vész-helyreállítási
 
 Az Azure-beli virtuális gép vész-helyreállításának új funkciói a táblázatban vannak összegezve.
 

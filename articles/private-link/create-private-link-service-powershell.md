@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453122"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932082"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
 Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Azure-ban Azure PowerShell használatával.
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Az
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ez a cikk a legújabb Azure PowerShell modul verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A privát hivatkozás létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestCentralUS* helyen:
 
@@ -109,7 +109,7 @@ A [Get-AzPrivateLinkService által](/powershell/module/az.network/get-azprivatel
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a Private link Service PowerShell használatával történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha szeretné megtekinteni a végpontok közötti adatforgalom folyamatát, azt javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja. 
+Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a Private link Service PowerShell használatával történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha meg szeretné tekinteni a végpontok közötti forgalmat, javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja. 
 
 A következő lépésben bemutatjuk, hogyan képezhető le a szolgáltatás a különböző VNet lévő privát végpontokra a PowerShell használatával. Ez a példa a privát végpont létrehozására és a fent létrehozott privát kapcsolati szolgáltatáshoz való csatlakozásra korlátozódik. Létrehozhat Virtual Machineseket a Virtual Network a forgatókönyv létrehozásához a privát végpont felé irányuló adatforgalom küldéséhez/fogadásához. 
 

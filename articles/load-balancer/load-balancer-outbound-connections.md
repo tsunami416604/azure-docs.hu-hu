@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225282"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934550"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -40,7 +40,7 @@ Több [kimenő forgatókönyv](#scenarios)is létezik. Ezeket a forgatókönyvek
 
 A Azure Load Balancer és a kapcsolódó erőforrások explicit módon vannak meghatározva a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használatakor.  Az Azure jelenleg három különböző módszert biztosít a kimenő kapcsolatok eléréséhez Azure Resource Manager erőforrásokhoz. 
 
-| SKUs | Forgatókönyv | Módszer | IP-protokollok | Leírás |
+| SKUs | Alkalmazási helyzet | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- | --- |
 | Standard, alapszintű | [1. nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. A standard Load Balancer használatakor a kimenő kapcsolatok explicit módon történő megadásakor a [kimeneti szabályokat](load-balancer-outbound-rules-overview.md) kell használni |
 | Standard, alapszintű | [2. a virtuális géphez társított nyilvános Load Balancer (nincs nyilvános IP-cím a példányon)](#lb) | SNAT a Load Balancer előtérrel (PAT) rendelkező portokkal | TCP, UDP |Az Azure megosztja a nyilvános Load Balancer a több magánhálózati IP-címmel rendelkező előtér nyilvános IP-címét. Az Azure a frontendek ideiglenes portjait használja a PAT számára. |
@@ -160,7 +160,7 @@ A következő táblázat a SNAT portok előfoglalásait mutatja be a háttérbel
 
 | Készlet mérete (VM-példányok) | Az előlefoglalt SNAT-portok száma IP-konfiguráció alapján|
 | --- | --- |
-| 1-50 | 1,024 |
+| 1-50 | 1 024 |
 | 51–100 | 512 |
 | 101–200 | 256 |
 | 201–400 | 128 |
@@ -237,7 +237,7 @@ Ha felskálázást végez a következő nagyobb háttérrendszer-készlet méret
 
 ### <a name="idletimeout"></a>A kimenő Üresjárati időkorlát alaphelyzetbe állítása a Keepalives használatával
 
-A kimenő kapcsolatok 4 perces üresjárati időkorláttal rendelkeznek. Ez az időkorlát nem állítható be. Azonban a Transport (például a TCP Keepalives) vagy az alkalmazás-réteg Keepalives segítségével frissítheti az üresjárati folyamatokat, és szükség esetén visszaállíthatja ezt az üresjárati időkorlátot.  
+A kimenő kapcsolatok 4 perces üresjárati időkorláttal rendelkeznek. Ez az időkorlát a [kimenő szabályokon](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)keresztül állítható be. A Transport (például TCP Keepalives) vagy az alkalmazás-réteg Keepalives használatával is frissítheti az üresjárati folyamatokat, és szükség esetén visszaállíthatja ezt az üresjárati időkorlátot.  
 
 A TCP-Keepalives használata esetén elegendő a csatlakozás egyik oldalán való engedélyezése. Például elegendő, ha csak a kiszolgáló oldalon engedélyezi őket, hogy alaphelyzetbe állítsa a folyamat üresjárati időzítőjét, és nem szükséges mindkét fél számára a TCP-Keepalives kezdeményezni.  Hasonló fogalmak léteznek az alkalmazási réteghez, beleértve az adatbázis-ügyfél-kiszolgáló konfigurációkat is.  Tekintse meg a kiszolgáló oldalát, hogy milyen lehetőségek léteznek az alkalmazás-specifikus Keepalives.
 

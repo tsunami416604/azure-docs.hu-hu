@@ -2,24 +2,24 @@
 title: 'Oktatóanyag: forgalom átirányítása súlyozott végpontokra – Azure Traffic Manager'
 description: Ez az oktatócikk azt ismerteti, hogyan irányíthatja át a forgalmat súlyozott végpontokra a Traffic Manager használatával.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037918"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939477"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Oktatóanyag: A forgalom-útválasztás szabályozása súlyozott végpontokkal a Traffic Manager használatával
 
 Ez az oktatóanyag azt ismerteti, hogyan szabályozhatja a végpontok közötti felhasználói adatforgalom útválasztását az Azure Traffic Managerrel a súlyozott útválasztási móddal. Ezzel az útválasztási móddal a Traffic Manager-profil konfigurációjában súlyt rendel minden végponthoz. A felhasználói adatforgalom ezután az egyes végpontokhoz rendelt súly alapján továbbítódik. A súlyok 1 és 1000 közötti egész számok. Minél nagyobb a végponthoz hozzárendelt súlyérték, annál nagyobb a prioritása.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Két, alapszintű webhelyet futtató virtuális gép létrehozása az IIS-en.
@@ -40,7 +40,7 @@ A Traffic Manager működés közbeni megtekintéséhez helyezze üzembe az alá
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Webhelyek létrehozása
 
@@ -54,7 +54,7 @@ Ebben a szakaszban két webhelypéldányt hoz létre, amelyek a két szolgáltat
 Ebben a szakaszban két virtuális gépet hoz létre (*myIISVMEastUS* és *MYIISVMWESTEUROPE*) az USA keleti régiójában és a Nyugat-európai Azure-régióban.
 
 1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása** > **számítási** > a **Windows Server 2019 Datacenter**elemet.
-2. A **hozzon létre egy virtuális gépet**adja meg a következő értékeket a **alapjai** lapon:
+2. A **virtuális gép létrehozása**területen írja be vagy válassza ki a következő értékeket az **alapok** lapon:
 
    - **Előfizetés** > **erőforráscsoport**: válassza az **új létrehozása** elemet, majd írja be a **myResourceGroupTM1**.
    - **Példány részletei** > **virtuális gép neve**: Type *myIISVMEastUS*.
@@ -64,7 +64,7 @@ Ebben a szakaszban két virtuális gépet hoz létre (*myIISVMEastUS* és *MYIIS
    - **Bejövő portszabályok** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
    - **Bejövő portszabályok** > a **bejövő portok kiválasztása**: válassza az **RDP** és a **http** elemet a legördülő listából.
 
-3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**állítsa be **rendszerindítási diagnosztika** való **ki**.
+3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myIISVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myIISVMEastUS*.
@@ -114,7 +114,7 @@ A Traffic Manager a szolgáltatásvégpontok DNS-neve alapján irányítja a fel
 Ebben a szakaszban létrehoz egy virtuális gépet (*myVMEastUS* és *myVMWestEurope*) minden egyes Azure-régióban (az**USA keleti** régiójában és **Nyugat-Európában**). Ezeket a virtuális gépeket fogja használni annak tesztelésére, hogy Traffic Manager hogyan irányítja át a forgalmat a webhely-végpontra, amely a magasabb súlyozási értéket használja.
 
 1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása** > **számítási** > a **Windows Server 2019 Datacenter**elemet.
-2. A **hozzon létre egy virtuális gépet**adja meg a következő értékeket a **alapjai** lapon:
+2. A **virtuális gép létrehozása**területen írja be vagy válassza ki a következő értékeket az **alapok** lapon:
 
    - **Előfizetés** > **erőforráscsoporthoz**: válassza a **myResourceGroupTM1**lehetőséget.
    - **Példány részletei** > **virtuális gép neve**: Type *myVMEastUS*.
@@ -124,7 +124,7 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*myVMEastUS* és *myVMWestEu
    - **Bejövő portszabályok** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
    - **Bejövő portszabályok** > a **bejövő portok kiválasztása**: válassza az **RDP** elemet a legördülő listából.
 
-3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**állítsa be **rendszerindítási diagnosztika** való **ki**.
+3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myVMEastUS*.
@@ -137,7 +137,7 @@ Hozzon létre egy Traffic Manager-profilt a **Súlyozott** útválasztási mód 
 1. A képernyő bal felső részén válassza az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** elemet.
 2. A **Traffic Manager-profil létrehozása** területen adja meg vagy válassza ki a következő információkat. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Létrehozás** elemet.
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value (Díj)                                              |
     | ---                     | ---                                                |
     | Name (Név)                   | Adjon meg egy egyedi nevet a trafficmanager.net zónában. Ez a trafficmanager.net DNS-nevet eredményezi, amellyel a Traffic Manager-profil elérhető.                                   |
     | Útválasztási metódus          | Válassza a **Súlyozott** útválasztási módot.                                       |
@@ -155,9 +155,9 @@ Adja hozzá az IIS-kiszolgálókat futtató két virtuális gépet a myIISVMEast
 2. A **Traffic Manager-profil** panel **Beállítások** szakaszában válassza a **Végpontok** > **Hozzáadás** elemet.
 3. Adja meg vagy válassza ki a következő információkat. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza az **OK** elemet.
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value (Díj)                                              |
     | ---                     | ---                                                |
-    | Típus                    | Adja meg az Azure-végpontot.                                   |
+    | Type (Típus)                    | Adja meg az Azure-végpontot.                                   |
     | Name (Név)           | Adja meg a **myEastUSEndpoint** nevet.                                        |
     | Célerőforrás típusa           | Válassza a **Nyilvános IP-cím** elemet.                          |
     | Célerőforrás          | Válasszon egy nyilvános IP-címet, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a **myIISVMEastUS-ip** nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|

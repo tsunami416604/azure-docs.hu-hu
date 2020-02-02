@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147835"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939326"
 ---
 # <a name="get-started-with-device-management-net"></a>Ismerkedés az eszközkezelés (.NET) szolgáltatással
 
@@ -74,14 +74,14 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le a korábban a [IoT hub](#get-the-iot-hub-connection-string)-beli kapcsolatok karakterláncának lekérése során másolt IoT hubi kapcsolatok karakterlánccá. `{iot hub connection string}`
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a `{iot hub connection string}` helyőrző értékét a korábban átmásolt IoT Hub- [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)elemre.
 
    ```csharp
    static RegistryManager registryManager;
@@ -126,7 +126,7 @@ Ebben a szakaszban egy, a használatával C#létrehozott .net-konzol alkalmazás
    Console.ReadLine();
    ```
 
-1. Válassza a **Build** > **Build megoldás**lehetőséget.
+1. Válassza a **build** > **Build megoldás**elemet.
 
 > [!NOTE]
 > Ez az oktatóanyag csak egyetlen lekérdezést hajt végre az eszköz jelentett tulajdonságaihoz. Az éles kódban javasolt a lekérdezés a jelentett tulajdonságok változásainak észlelésére.
@@ -157,14 +157,14 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le `{device connection string}` a helyőrző értékét a korábban feljegyzett eszköz-összekapcsolási sztringre az [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)részében.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a `{device connection string}` helyőrző értékét a korábban feljegyzett eszköz-összekapcsolási sztringre az [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)részében.
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -200,7 +200,7 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```
@@ -234,9 +234,9 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
 
 1. A Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
 
-1. A **gyakori tulajdonságok** > **indítási projekt**esetében válassza az **egyetlen indítási projekt**lehetőséget, majd válassza ki a **SimulateManagedDevice** projektet. Válassza ki **OK** a módosítások mentéséhez.
+1. **Általános tulajdonságok** > **indítási projekt**esetében válassza az **egyetlen indítási projekt**lehetőséget, majd válassza ki a **SimulateManagedDevice** projektet. A módosítások mentéséhez kattintson **az OK gombra** .
 
-1. Válassza a **Build** > **Build megoldás**lehetőséget.
+1. Válassza a **build** > **Build megoldás**elemet.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. A termelési kódban az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló újrapróbálkozási házirendeket (például exponenciális leállítási) kell végrehajtania.

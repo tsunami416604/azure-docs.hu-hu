@@ -1,24 +1,26 @@
 ---
-title: Új Service Fabric-fürt üzembe helyezése felügyelt identitással
-description: Ez a cikk bemutatja, hogyan hozhat létre olyan új Service Fabric-fürtöt, amelyen engedélyezve van a felügyelt identitás
+title: Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz
+description: A következőképpen engedélyezheti a felügyelt identitások támogatását egy új Azure Service Fabric-fürtben
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.custom: sfrev
+ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614859"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930462"
 ---
-# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Új Azure Service Fabric-fürt létrehozása felügyelt identitás-támogatással (előzetes verzió)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz (előzetes verzió)
 
-Az Azure Service Fabric-alkalmazások felügyelt identitás funkciójának eléréséhez először engedélyeznie kell a felügyelt Identity token szolgáltatást a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy az egyéb rendszerszolgáltatások mellett a **háló:/System/ManagedIdentityTokenService** néven fut.
+Ha a Service Fabric-alkalmazásokban [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) szeretne használni az Azure-erőforrásokhoz, először engedélyezze a *felügyelt Identity token szolgáltatást* a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy az egyéb rendszerszolgáltatások mellett a **háló:/System/ManagedIdentityTokenService** néven fut.
 
 > [!NOTE]
 > A **felügyelt Identity token szolgáltatás**engedélyezéséhez Service Fabric futtatókörnyezet 6.5.658.9590 vagy újabb verziója szükséges.  
 
-## <a name="enable-the-managed-identity-token-service"></a>Felügyelt Identity token szolgáltatás engedélyezése 
-Ha engedélyezni szeretné a felügyelt identitás-jogkivonat szolgáltatást a fürt létrehozási időpontjában, akkor a következő kódrészletet használhatja egy Azure Resource Manager sablonban:
+## <a name="enable-the-managed-identity-token-service"></a>Felügyelt Identity token szolgáltatás engedélyezése
+
+Ha engedélyezni szeretné a felügyelt identitás-jogkivonat szolgáltatást a fürt létrehozási idején, adja hozzá a következő kódrészletet a fürthöz Azure Resource Manager sablonhoz:
 
 ```json
 "fabricSettings": [
@@ -39,7 +41,6 @@ Ha engedélyezni szeretné a felügyelt identitás-jogkivonat szolgáltatást a 
 Ha az üzembe helyezés ezzel az üzenettel meghiúsul, az azt jelenti, hogy a fürt nincs a szükséges Service Fabric-verzióban (a minimális támogatott futtatókörnyezet 6,5 CU2):
 
 
-
 ```json
 {
     "code": "ParameterNotAllowed",
@@ -47,13 +48,14 @@ Ha az üzembe helyezés ezzel az üzenettel meghiúsul, az azt jelenti, hogy a f
 }
 ```
 
-
 ## <a name="related-articles"></a>Kapcsolódó cikkek
+
 * [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric
 
 * [Felügyelt identitás támogatásának engedélyezése meglévő Azure Service Fabric-fürtben](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
 ## <a name="next-steps"></a>Következő lépések
+
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Service Fabric alkalmazás felügyelt identitásának kihasználása a szolgáltatási kódból](./how-to-managed-identity-service-fabric-app-code.md)

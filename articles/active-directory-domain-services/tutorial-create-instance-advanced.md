@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703673"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931646"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása speciális konfigurációs beállításokkal
 
@@ -94,6 +94,9 @@ Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablak�
 
     Nem kell konfigurálnia az Azure AD DS a zónák közötti elosztására. Az Azure platform automatikusan kezeli az erőforrások zónájának eloszlását. További információért és a régiók rendelkezésre állásának megtekintéséhez lásd: [Mi a Availability Zones az Azure-ban?][availability-zones]
 
+1. Az **SKU** meghatározza a létrehozható erdőszintű megbízhatósági kapcsolatok teljesítményét, biztonsági mentési gyakoriságát és maximális számát. Az SKU-t a felügyelt tartomány létrehozása után is módosíthatja, ha az üzleti igények vagy követelmények megváltoznak. További információ: [Azure AD DS SKU-fogalmak][concepts-sku].
+
+    Ebben az oktatóanyagban válassza ki a *szabványos* SKU-t.
 1. Az *erdők* egy Active Directory tartományi szolgáltatások által az egy vagy több tartomány csoportosításához használt logikai szerkezetek. Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.
 
     Ebben az oktatóanyagban válassza a *felhasználói* erdő létrehozása lehetőséget.
@@ -102,9 +105,9 @@ Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablak�
 
 1. További beállítások manuális konfigurálásához válassza a **következő hálózat**lehetőséget. Ellenkező esetben válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához, majd ugorjon a [felügyelt tartomány üzembe helyezését](#deploy-the-managed-domain)ismertető szakaszra. A létrehozási lehetőség kiválasztása esetén a következő alapértelmezett beállítások vannak konfigurálva:
 
-* Létrehoz egy *aadds-vnet* nevű virtuális hálózatot, amely a *10.0.1.0/24*IP-címtartományt használja.
-* Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.1.0/24*IP-címtartomány használatával.
-* Szinkronizálja az Azure AD *összes* felhasználóját az Azure AD DS felügyelt tartományba.
+    * Létrehoz egy *aadds-vnet* nevű virtuális hálózatot, amely a *10.0.1.0/24*IP-címtartományt használja.
+    * Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.1.0/24*IP-címtartomány használatával.
+    * Szinkronizálja az Azure AD *összes* felhasználóját az Azure AD DS felügyelt tartományba.
 
 ## <a name="create-and-configure-the-virtual-network"></a>A virtuális hálózat létrehozása és konfigurálása
 
@@ -125,7 +128,7 @@ A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
     1. Ha úgy dönt, hogy létrehoz egy virtuális hálózatot, adjon meg egy nevet a virtuális hálózatnak (például *myVnet*), majd adjon meg egy címtartományt, például *10.0.1.0/24*.
     1. Hozzon létre egy dedikált alhálózatot egy tiszta névvel, például *DomainServices*. Adjon meg egy címtartományt, például *10.0.1.0/24*.
 
-    ![Virtuális hálózat és alhálózat létrehozása a Azure AD Domain Services-vel való használatra](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Ügyeljen arra, hogy olyan címtartományt válasszon, amely a magánhálózati IP-címtartomány része. Azok az IP-címtartományok, amelyek nem a nyilvános címtartomány alá tartoznak, hibákat okozhatnak az Azure AD DSon belül.
 
@@ -248,5 +251,6 @@ A felügyelt tartomány működés közbeni megtekintéséhez hozzon létre egy 
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

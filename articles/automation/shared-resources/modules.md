@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786469"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930428"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation-modulok kezelése
 
@@ -60,11 +60,11 @@ A PowerShell-galéria modulokat közvetlenül az Automation-fiókjából is impo
 
 ## <a name="delete-modules"></a>Modulok törlése
 
-Ha problémája van egy modullal, vagy vissza kell állítania egy modul egy korábbi verzióját, akkor törölheti az Automation-fiókjából. Az Automation-fiók létrehozásakor importált [alapértelmezett modulok](#default-modules) eredeti verzióját nem lehet törölni. Ha a törölni kívánt modul a telepített [alapértelmezett modulok](#default-modules) egyikének újabb verziója, az Automation-fiókkal telepített verzióra visszakerül. Ellenkező esetben az Automation-fiókból törölt modulok el lesznek távolítva.
+Ha problémája van egy modullal, vagy vissza kell állítania egy modul egy korábbi verzióját, akkor törölheti az Automation-fiókjából. Az Automation-fiók létrehozásakor importált [alapértelmezett modulok](#default-modules) eredeti verziója nem törölhető. Ha a törölni kívánt modul a telepített [alapértelmezett modulok](#default-modules) egyikének újabb verziója, az Automation-fiókkal telepített verzióra kerül vissza. Ellenkező esetben az Automation-fiókból törölt modulok el lesznek távolítva.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok** elemet a **megosztott erőforrások**területen. Válassza ki az eltávolítani kívánt modult. A modul lapon clcick a **delete (Törlés**) **elemre** . Ha ez a modul az egyik [alapértelmezett modul](#default-modules), a rendszer visszaállítja az Automation-fiók létrehozásakor megjelenő verzióra.
+A Azure Portal navigáljon az Automation-fiókjához, és válassza a **modulok** elemet a **megosztott erőforrások**területen. Válassza ki az eltávolítani kívánt modult. A **modul** lapon válassza a **Törlés**lehetőséget. Ha ez a modul az egyik [alapértelmezett modul](#default-modules), a rendszer visszaállítja az Automation-fiók létrehozásakor megjelenő verzióra.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,10 +79,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 A következő lista felsorolja a belső `Orchestrator.AssetManagement.Cmdlets` modulban lévő parancsmagokat, amelyeket minden Automation-fiókba importálnak. Ezek a parancsmagok elérhetők a runbookok és a DSC-konfigurációkban, és lehetővé teszik, hogy az Automation-fiókján belül kommunikáljon az eszközeivel. Emellett a belső parancsmagok lehetővé teszik a titkos **változók** , a **hitelesítő adatok**és a titkosított **kapcsolódási** mezők titkainak beolvasását. A Azure PowerShell-parancsmagok nem tudják beolvasni ezeket a titkokat. Ezek a parancsmagok nem igénylik az Azure-hoz való implicit csatlakozást a használatakor, például futtató fiók használatával az Azure-ban való hitelesítéshez.
 
 >[!NOTE]
->Ezek a belső parancsmagok nem érhetők el hibrid Runbook-feldolgozón, csak az Azure-ban futó runbookok érhetők el. Használja a megfelelő [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) vagy az az- [modulokat](../az-modules.md) a runbookok közvetlenül a számítógépen vagy a környezet erőforrásain. 
+>Ezek a belső parancsmagok Windows hibrid Runbook-feldolgozón érhetők el, de nem érhetők el Linux-alapú hibrid Runbook-feldolgozón. Használja a megfelelő [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) vagy az az- [modulokat](../az-modules.md) a runbookok közvetlenül a számítógépen vagy a környezet erőforrásain. 
 >
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -250,7 +250,7 @@ Adja hozzá `[OutputType([<MyOutputType>])]`, ahol a MyOutputType érvényes tí
 
 ## <a name="default-modules"></a>Alapértelmezett modulok
 
-A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint importált modulokat. Az alább felsorolt modulok importálhatók újabb verziókkal, de az eredeti verzió nem távolítható el az Automation-fiókjából, még akkor is, ha töröl egy újabb verziót is.
+A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint importált modulokat. Az alább felsorolt modulok importálhatók újabb verziókkal, de az eredeti verzió nem távolítható el az Automation-fiókjából, még akkor is, ha töröl egy újabb verziót.
 
 |Modul neve|Verzió|
 |---|---|

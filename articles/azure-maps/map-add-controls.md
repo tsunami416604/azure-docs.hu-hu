@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911271"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933280"
 ---
 # <a name="add-controls-to-a-map"></a>Vezérlőelemek hozzáadása térképhez
 
-Ez a cikk bemutatja, hogyan adhat hozzá vezérlőket térképekhez. Azt is megtudhatja, hogyan hozhat létre egy térképet az összes vezérlővel és egy [Style választóval](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
+Ez a cikk bemutatja, hogyan adhat hozzá vezérlőket térképekhez. Azt is megtudhatja, hogyan hozhat létre térképet az összes vezérlővel és a [Style Picker](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
 
 ## <a name="add-zoom-control"></a>Nagyítási vezérlő hozzáadása
 
@@ -39,7 +39,7 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 ## <a name="add-pitch-control"></a>Pitch vezérlőelem hozzáadása
 
-A Pitch vezérlő gombok hozzáadásával megdöntheti, hogy a szurok a horizonthoz viszonyítva legyen-e leképezve. A következő mintakód létrehozza a [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) osztály egy példányát, és hozzáadja a Térkép jobb felső sarkához.
+A Pitch vezérlő gombok hozzáadásával megdöntheti, hogy a szurok a horizonthoz viszonyítva legyen-e leképezve. A következő mintakód a [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) osztály egy példányát hozza létre. Hozzáadja a PitchControl a Térkép jobb felső sarkához.
 
 ```javascript
 //Construct a pitch control and add it to the map.

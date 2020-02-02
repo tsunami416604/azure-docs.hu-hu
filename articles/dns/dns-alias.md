@@ -2,17 +2,17 @@
 title: Alias-rekordok áttekintése – Azure DNS
 description: Ez a cikk a Microsoft Azure DNS-ben található alias-rekordok támogatását ismerteti.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: allensu
-ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212326"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937329"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-aliasrekordok áttekintése
 
@@ -27,7 +27,7 @@ Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott a
 > [!NOTE]
 > Ha egy [Azure Traffic Manager-profilra](../traffic-manager/quickstart-create-traffic-manager-profile.md) mutató alias-rekordot szeretne használni az a vagy AAAA bejegyzéstípushoz, meg kell győződnie arról, hogy a Traffic Manager-profil csak [külső végpontokkal](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)rendelkezik. Meg kell adnia az IPv4-vagy IPv6-címeket a Traffic Manager külső végpontjai számára. A végpontokban nem használhatók teljes tartománynevek (FQDN-EK). Ideális esetben statikus IP-címeket használjon.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 - **Mutasson egy nyilvános IP-erőforrásra egy DNS-A/AAAA-rekorddal.** Létrehozhat egy/AAAA-rekordot, és egy alias-rekordot állíthat be úgy, hogy egy nyilvános IP-erőforrásra mutasson (standard vagy alapszintű). A DNS-rekordtípus automatikusan megváltozik, ha a nyilvános IP-cím megváltozik vagy törölve lett. A helytelen IP-címekre mutató DNS-rekordokat nem lehet elkerülni.
 
@@ -37,7 +37,7 @@ Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott a
 - **Mutasson egy Azure Content Delivery Network (CDN) végpontra**. Ez akkor hasznos, ha statikus webhelyeket hoz létre az Azure Storage és a Azure CDN használatával.
 - **Mutasson egy másik DNS-rekordhalmazra ugyanazon a zónán belül.** Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Egy DNS CNAME-rekord például lehet egy másik CNAME-rekord aliasa. Ez a megoldás akkor hasznos, ha azt szeretné, hogy bizonyos rekordhalmazok aliasok és néhány nem alias legyen.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Néhány gyakori forgatókönyv az alias-rekordokhoz.
 
@@ -73,7 +73,7 @@ Az előzőekben leírtak szerint a CNAME rekordok nem támogatottak a zóna csú
 > [!NOTE]
 > Az Akamai-től Azure CDN CDN-végpontokra mutató, a zónákhoz tartozó csúcsok jelenleg nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alias-rekordokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

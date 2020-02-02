@@ -2,17 +2,17 @@
 title: Altartomány delegálása – Azure PowerShell – Azure DNS
 description: Ezzel a képzési útvonallal megkezdheti a Azure DNS altartomány delegálását Azure PowerShell használatával.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: b6023adb65469dedeeba664a51917306e634146f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212504"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937711"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure DNS altartomány delegálása Azure PowerShell használatával
 
@@ -39,7 +39,7 @@ Először hozza létre a zónát a **mérnöki** altartományhoz.
 
 ## <a name="note-the-name-servers"></a>Jegyezze fel a névkiszolgálók nevét
 
-Next, note the four name servers for the engineering subdomain.
+Ezután jegyezze fel a mérnöki altartomány négy névkiszolgálói kiszolgálóját.
 
 `Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
 
@@ -47,7 +47,7 @@ Next, note the four name servers for the engineering subdomain.
 
 Hozzon létre **egy rekordot a** mérnöki zónában a teszteléshez.
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
+   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)` kérdésre adott válaszban foglalt lépéseket.
 
 ## <a name="create-an-ns-record"></a>NS-rekord létrehozása
 

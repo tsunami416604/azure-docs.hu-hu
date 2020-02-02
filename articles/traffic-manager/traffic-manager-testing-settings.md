@@ -2,20 +2,20 @@
 title: Az Azure Traffic Manager beállításainak ellenőrzése
 description: Ebből a cikkből megtudhatja, hogyan ellenőrizheti a Traffic Manager beállításait, és tesztelheti a forgalom-útválasztási módszert.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: ad74e5c51d5939218ebb546993d416b3df1cd04b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 94ab5e550f0053fa19b9b93f1d67690211543325
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023525"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938380"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager-beállítások ellenőrzése
 

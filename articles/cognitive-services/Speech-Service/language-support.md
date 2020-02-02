@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845333"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935345"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Nyelvi és területi támogatás a Speech Service-hez
 
@@ -240,8 +240,10 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Hmong DAW      | `mww`          |
 | magyar      | `hu`          |
 | indonéz      | `id`          |
+| ír      | `ga`          |
 | olasz      | `it`          |
 | japán      | `ja`          |
+| kannada      | `kn`          |
 | Kiswahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | litván      | `lt`          |
 | Malgas      | `mg`          |
 | maláj      | `ms`          |
+| malajálam      | `ml`          |
 | máltai      | `mt`          |
 | norvég      | `nb`          |
 | perzsa      | `fa`          |
 | lengyel      | `pl`          |
-| portugál      | `pt`          |
+| Portugál (brazíliai)      | `pt-br`          |
+| Portugál (portugáliai)      | `pt-pt`          |
+| pandzsábi      | `pa`          |
 | Queretaro otomi      | `otq`          |
 | román      | `ro`          |
 | orosz      | `ru`          |

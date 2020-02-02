@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a4140ffc0d4e97afabb1c3080951eeb75c792a8c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887582"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961376"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -53,7 +53,7 @@ További információ a Windows vagy [Linux](../articles/virtual-machines/linux/
 A rendelkezésre állási csoportok egy másik adatközpont-konfiguráció, amely biztosítja a virtuális gépek redundanciát és rendelkezésre állását. Ez az adatközponton belüli konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os Azure SLA-nak. További információkért lásd [a virtuális gépek esetében érvényes SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) részleteit.
 
 > [!IMPORTANT]
-> Ha lehet, önmagában ne helyezzen egyetlen különálló virtuális gépet egy rendelkezésre állási csoportba. Az ebben a konfigurációban lévő virtuális gépek nem felelnek meg SLA-garanciának és az Azure tervezett karbantartási események során felmerülő állásidőnek, kivéve, ha egyetlen virtuális gép használja az [Azure Premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd)-ket. A prémium SSD-ket használó önálló virtuális gépek esetében az Azure SLA érvényes.
+> Egy, a rendelkezésre állási csoportba tartozó egypéldányos virtuális gépnek prémium SSD vagy ultravékony lemezt kell használnia az összes operációsrendszer-lemez és adatlemez számára, hogy az SLA-t legalább 99,9%-os virtuális géphez lehessen csatlakoztatni.
 
 A mögöttes Azure platform a rendelkezésre állási csoportban lévő mindegyik virtuális gépnek kioszt egy **frissítési tartományt** és egy **tartalék tartományt**. Minden eges rendelkezésre állási csoportnak öt, felhasználó által nem konfigurálható frissítési tartományt oszt ki a rendszer alapértelmezés szerint (a Resource Manager-környezetek ezután akár 20 frissítési tartományig növelhetőek), és így kijelöli azokat a virtuális gépeket és mögöttes fizikai hardvereszközöket magukba foglaló csoportokat, amelyek egy időben újraindíthatóak. Ha egy rendelkezésre állási csoportba ötnél több virtuális gép van konfigurálva, a hatodik virtuális gép az elsővel azonos frissítési tartományba kerül, a hetedik a másodikkal és így tovább. A frissítési tartományok újraindítása nem haladhat szekvenciálisan a tervezett karbantartás során, hanem csak egyetlen frissítési tartományt lehet újraindítani egyszerre. Az újraindított frissítési tartománynak 30 perce van, hogy helyreálljon, mielőtt a karbantartás elkezdődik egy másik frissítési tartományon.
 

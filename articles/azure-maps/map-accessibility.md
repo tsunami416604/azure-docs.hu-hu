@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 739322feb8e844a197f2943f4ff050cacc0f2274
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911291"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933306"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
@@ -72,8 +72,8 @@ A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térk
 | `Tab` | Navigáljon a térképen a vezérlők és az előugró ablakok között. |
 | `ESC` | Mozgassa a fókuszt a Térkép bármely eleméről a legfelső szintű Térkép elemre. |
 | `Ctrl` + `Shift` + `D` | Képernyő-olvasó részletességi szintjének bekapcsolása.  |
-| Balra nyíl | A Térkép pásztázása balra 100 képpont |
-| Jobbra nyíl | A Térkép jobb 100 képpontban való pásztázása |
+| Balra nyíl gomb | A Térkép pásztázása balra 100 képpont |
+| Jobb nyíl gomb | A Térkép jobb 100 képpontban való pásztázása |
 | Lefelé nyíl gomb | A Térkép pásztázása lefelé 100 képpont |
 | Felfelé nyíl gomb | A Térkép pásztázása 100 képpont |
 | `Shift` + felfelé mutató nyíl | A Térkép szurok növelésének mértéke 10 fokkal |
@@ -84,7 +84,7 @@ A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térk
 | Mínusz jel, kötőjel (`-`) vagy <sup>*</sup>aláhúzás (`_`) | Kicsinyítés | 
 | `Shift` + egérrel húzza a térképet a terület rajzolásához | Terület nagyítása |
 
-<sup>*</sup> Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a felhasználói élmény javításához lettek hozzáadva, így nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
+<sup>*</sup> Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a parancsikonok a felhasználói élmény javításához lettek hozzáadva. Emellett nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
 
 ## <a name="screen-reader-support"></a>Képernyőolvasó-támogatás
 
@@ -94,9 +94,9 @@ Az alaptérképre helyezett további információknak megfelelő szöveges infor
 
 ## <a name="make-popups-keyboard-accessible"></a>Felugró ablakok billentyűzetének elérhetővé tétele
 
-Egy jelölőt vagy szimbólumot gyakran használnak a térképen egy hely ábrázolására. A hellyel kapcsolatos további információ általában egy előugró ablakban jelenik meg, amikor a felhasználó a jelölővel kommunikál. A legtöbb alkalmazás előugró ablaka akkor jelenik meg, ha a felhasználó egy jelölőre kattint vagy koppint, azonban a felhasználónak egeret vagy érintőképernyőt kell használnia. Jó megoldás, ha billentyűzet használatakor elérhetővé teszi a felugró ablakokat. Ez úgy érhető el, hogy létrehoz egy előugró ablakokat az egyes adatpontokhoz, és hozzáadja azt a térképhez. 
+Egy jelölőt vagy szimbólumot gyakran használnak a térképen egy hely ábrázolására. A hellyel kapcsolatos további információ általában egy előugró ablakban jelenik meg, amikor a felhasználó a jelölővel kommunikál. A legtöbb alkalmazás előugró ablaka akkor jelenik meg, amikor egy felhasználó egy jelölőre kattint vagy koppint, azonban a felhasználónak egeret vagy érintőképernyőt kell használnia. Jó megoldás, ha billentyűzet használatakor elérhetővé teszi a felugró ablakokat. Ez a funkció úgy érhető el, hogy létrehoz egy előugró ablakokat az egyes adatpontokhoz, és hozzáadja azt a térképhez. 
 
-A következő példa egy szimbólum réteget használ a Térkép érdeklődési pontjainak betöltésére, és felugró ablakokat helyez el a térképhez minden egyes hasznos ponthoz. Az egyes előugró ablakokra mutató hivatkozást az egyes adatpontok tulajdonságaiban tároljuk, így a jelölőhöz is beolvashatók, például ha egy jelölőre kattintanak. A térképre fókuszálva a TAB billentyű lenyomásával lehetővé válik, hogy a felhasználó átlépjen a térképen lévő összes előugró ablakon.
+A következő példa egy szimbólum réteget használ a Térkép érdeklődési pontjainak betöltésére, és felugró ablakokat helyez el a térképhez minden egyes hasznos ponthoz. Az egyes előugró ablakokra mutató hivatkozást az egyes adatpontok tulajdonságaiban tárolja a rendszer. Lekérhető egy jelölőre is, például ha egy jelölőre kattintanak. A térképre fókuszálva a TAB billentyű lenyomásával lehetővé válik, hogy a felhasználó átlépjen a térképen lévő összes előugró ablakon.
 
 <br/>
 
@@ -106,23 +106,23 @@ A következő példa egy szimbólum réteget használ a Térkép érdeklődési 
 
 ## <a name="additional-accessibility-tips"></a>További kisegítő lehetőségek
 
-Íme néhány további tipp, amellyel elérhetővé teheti a webes leképezési alkalmazást.
+Íme néhány további tipp, amelyekkel könnyebben elérhetővé teheti webes leképezési alkalmazását.
 
-- Ha sok interaktív pont adatai jelennek meg a térképen, érdemes lehet csökkenteni a zsúfoltságot és használni a fürtözést. 
+- Ha sok interaktív pontot jelenít meg a térképen, érdemes lehet csökkenteni a zsúfoltságot és használni a fürtözést. 
 - Győződjön meg róla, hogy a szöveg/szimbólumok és a háttérszínek közötti színkontraszt arány 4.5:1 vagy több.
 - A képernyőolvasó (ARIA, ALT és title attribútumok) rövid, leíró és értelmes maradjon. Kerülje a szükségtelen zsargont és mozaikszavakat.
-- Próbálja meg optimalizálni a képernyőolvasónak küldött üzeneteket, hogy rövid, hasznos információkat nyújtson a felhasználó számára a kivonatoló művelethez. Ha például nagy gyakorisággal szeretné frissíteni a képernyőolvasót, például a Térkép áthelyezésekor, vegye figyelembe a következőket:
+- Próbálja meg optimalizálni a képernyőolvasónak küldött üzeneteket, hogy rövid, hasznos információkat nyújtson a felhasználó számára a kivonatoló művelethez. Ha például nagy gyakorisággal szeretné frissíteni a képernyőolvasót, például a Térkép áthelyezésekor, akkor a következő szempontokat kell figyelembe vennie:
     - Várjon, amíg a Térkép befejezte a képernyőolvasó frissítését.
     - A frissítések szabályozása néhány másodpercenként egyszer. 
     - Az üzenetek összevonása logikai módon. 
-- Ne a szín legyen az információközlés egyetlen eszköze. Szöveg, ikonok vagy mintázatok használata a szín kiegészítéséhez vagy cseréjéhez. Néhány szempont:
+- Kerülje a színek használatát kizárólag az adatok továbbítására. Szöveg, ikonok vagy mintázatok használata a szín kiegészítéséhez vagy cseréjéhez. Néhány szempont:
     - Ha buborék réteget használ az adatpontok közötti relatív érték megjelenítéséhez, érdemes megfontolnia az egyes buborékok sugarának skálázását, illetve a színezésük alternatívájaként. 
     - A különböző metrikák, például a háromszögek, a csillagok és a négyzetek különböző ikonjait tartalmazó szimbólum-réteget használjon. A szimbólum réteg az ikon méretének méretezését is támogatja. Egy szöveges címke is megjeleníthető.
     - A sorokban lévő értékek megjelenítéséhez a vastagságot és a méretet is felhasználhatja. A kötőjel-tömb minta a sorok különböző kategóriáinak ábrázolására használható. A szimbólum réteg a vonal mentén átfedésben lévő ikonokkal együtt is használható. A nyíl ikon használata hasznos a vonal folyamatának vagy irányának megjelenítéséhez.
     - A sokszögek adatainak megjelenítésekor a mintázat (például a sávok) a szín alternatívájaként is használható. 
 - Bizonyos vizualizációk, például a intenzitástérképei, a csempe rétegei és a képrétegek nem érhetők el a látássérültekkel rendelkező felhasználók számára. Néhány szempont:
     - A képernyő-olvasó leírja, hogy a réteg hogyan jelenjen meg a térképhez való hozzáadáskor. Ha például egy időjárási radar csempe réteg jelenik meg, a képernyőolvasóhoz hasonló "időjárási radar-adatelemek tartoznak a térképen."
-- Korlátozza az egérmutatót igénylő funkciók mennyiségét. Ezek nem lesznek elérhetők azokhoz a felhasználókhoz, akik billentyűzetet vagy érintőképernyős eszközt használnak az alkalmazással való kommunikációhoz. Vegye figyelembe, hogy az interaktív tartalmak (például a kattintható ikonok, hivatkozások és gombok) esetében továbbra is jó az egérmutató stílusa.
+- Korlátozza az egérmutatót igénylő funkciók mennyiségét. Ezek a funkciók nem lesznek elérhetők azon felhasználók számára, akik billentyűzetet vagy érintőképernyős eszközt használnak az alkalmazással való kommunikációhoz. Vegye figyelembe, hogy az interaktív tartalmak, például a kattintható ikonok, hivatkozások és gombok láthatók.
 - Próbálja megnavigálni az alkalmazást a billentyűzet használatával. Győződjön meg arról, hogy a tabulátorok sorrendje logikai.
 - Ha billentyűparancsokat hoz létre, próbálja meg korlátozni két vagy kevesebb kulcsra. 
 

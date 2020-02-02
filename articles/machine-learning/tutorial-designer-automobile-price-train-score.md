@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720170"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934048"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebben a kétrészes oktatóanyagban megtudhatja, hogyan hozhat létre és helyezhet üzembe egy prediktív elemzési megoldást a Azure Machine Learning Designer használatával, amely előre jelezheti a személygépkocsik árát.
+Ebben a kétrészes oktatóanyagban megtudhatja, hogyan használhatja a Azure Machine Learning designert a gépi tanulási modellek betanítására és üzembe helyezésére, ami előre jelezheti a személygépkocsik árát. A Designer egy húzással elválasztó eszköz, amely lehetővé teszi, hogy a gépi tanulási modellek egyetlen soros kód nélkül legyenek létrehozva.
 
 Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
 
@@ -45,13 +45,15 @@ Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkate
 
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
+A tervező használatához először Azure Machine Learning munkaterületre van szükség. A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központi helyet biztosít a Azure Machine Learningban létrehozott összes összetevővel való együttműködéshez.
+
 Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel rendelkezik, [ugorjon a következő szakaszra](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
-1. Jelentkezzen be a [ml.Azure.com](https://ml.azure.com)-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
+1. Jelentkezzen be a <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
 
 1. Válassza a **tervező**lehetőséget.
 
@@ -60,6 +62,30 @@ Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel ren
 1. Válassza **a könnyen használható előre elkészített modulok**elemet.
 
 1. A vászon tetején válassza ki az alapértelmezett folyamat neve **folyamat – létrehozva**lehetőséget. Nevezze át az *autó árának előrejelzésére*. A névnek nem kell egyedinek lennie.
+
+## <a name="set-the-default-compute-target"></a>Az alapértelmezett számítási cél beállítása
+
+Egy folyamat egy számítási célra fut, amely a munkaterülethez csatolt számítási erőforrás. A számítási cél létrehozása után újból felhasználhatja azt későbbi futtatásokhoz.
+
+Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , ami azt jelzi, hogy az összes modul ugyanazt a számítási célt használja alapértelmezettként. A számítási célokat azonban modul alapján is megadhatja.
+
+1. A folyamat neve mellett válassza a **fogaskerék ikont** a vászon tetején lévő fogaskerék](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) ikon ![képernyőképen a **Beállítások** panel megnyitásához.
+
+1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
+
+    Ha már van elérhető számítási cél, akkor kiválaszthatja a folyamat futtatásához.
+
+    > [!NOTE]
+    > A tervező csak Azure Machine Learning számítási célokon futtathat kísérleteket. Más számítási célok nem jelennek meg.
+
+1. Adja meg a számítási erőforrás nevét.
+
+1. Kattintson a **Mentés** gombra.
+
+    > [!NOTE]
+    > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
+    >
+    > A számítási erőforrás kiszámítja a nulla csomópontot, ha a költségeket nem lehet megtakarítani. Ha a késést követően ismét felhasználja, előfordulhat, hogy a várakozási idő körülbelül öt percet vesz igénybe.
 
 ## <a name="import-data"></a>Adatok importálása
 
@@ -77,7 +103,7 @@ Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet
 
 1. Válassza ki a **személygépkocsi-árlista (RAW)** modult.
 
-1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza a **kimenetek**lehetőséget.
+1. A vászontól jobbra található modul részletei ablaktáblán válassza a **kimenetek**lehetőséget.
 
 1. Válassza ki a Graph ikont az adatmegjelenítéshez.
 
@@ -93,9 +119,9 @@ Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés el
 
 ### <a name="remove-a-column"></a>Oszlop eltávolítása
 
-A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop sok értéket tartalmaz, ezért a modellből kizárhatja az adott oszlopot.
+A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop sok értéket tartalmaz, így a modellből teljes egészében ki kell zárnia ezt az oszlopot.
 
-1. A paletta tetején található keresőmezőbe írja be a **Kiválasztás elemet** , hogy megtalálja a **Select Columns elemet az adatkészlet** modulban.
+1. A vászon bal oldalán található modul palettán bontsa ki az **adatátalakítás** szakaszt, és keresse meg az **Oszlopok kiválasztása az adatkészlet** modulban.
 
 1. Húzza az **Oszlopok kiválasztása az adatkészlet** modulban elemet a vászonra. Dobja el a modult az adatkészlet modul alatt.
 
@@ -109,7 +135,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
-1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza az **összes oszlop**lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **összes oszlop**lehetőséget.
 
 1. Új szabály hozzáadásához válassza ki a **+** .
 
@@ -123,7 +149,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget. 
 
-1. A Tulajdonságok ablaktáblán válassza a **Megjegyzés** szövegmezőt, és adja meg a *normalizált veszteségek kizárása*elemet.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** szövegmezőt, és adja meg a *normalizált veszteségek kizárása*lehetőséget.
 
     A diagramon megjegyzések jelennek meg, amelyek segítenek a folyamat rendszerezésében.
 
@@ -134,13 +160,15 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 > [!TIP]
 > A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a Designerben való használatához.
 
-1. A **tiszta hiányzó** adatmodul megtalálásához a keresőmezőbe írja be a **tisztítás** kifejezést.
+1. A vászon bal oldalán található modul palettán bontsa ki az **adatátalakítás**szakaszt, és keresse meg a **tiszta hiányzó** adatmodult.
 
 1. Húzza a **tiszta hiányzó** adatmodult a folyamat vászonra. Kapcsolódjon az **adathalmaz-modul Select oszlopaihoz** . 
 
-1. A Tulajdonságok panelen válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
+1. Válassza ki a **tiszta hiányzó** adatmodult.
 
-1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be a *hiányzó érték sorok eltávolítása értéket*. 
+1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
+
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, és írja be a *hiányzó értékek eltávolítása sorokat*. 
 
     A folyamatnak ekkor a következőhöz hasonlóan kell kinéznie:
     
@@ -156,26 +184,28 @@ Mivel előre jelezni szeretné az árat, ami egy szám, regressziós algoritmust
 
 Az adatok felosztása gyakori feladat a gépi tanulásban. Az adatokat két külön adatkészletbe kell bontania. Az egyik adatkészlet betanítja a modellt, a másik pedig teszteli, hogy a modell milyen jól van elvégezve.
 
-1. Az **Adatfelosztási** modul megkereséséhez írja be a **feldarabolt** adatelemet a keresőmezőbe. A **tiszta hiányzó** adatmodul bal oldali portjának összekötése az **adatfelosztási** modulba.
+1. A modul palettáján bontsa ki az **adatátalakítás** szakaszt, és keresse meg az **adatfelosztási** modult.
+
+1. Húzza az **Adatfelosztási** modult a folyamat vászonra.
+
+1. A **tiszta hiányzó** adatmodul bal oldali portjának összekötése az **adatfelosztási** modulba.
 
     > [!IMPORTANT]
     > Ügyeljen arra, hogy a **tiszta hiányzó adatokat** tartalmazó bal oldali kimeneti portok a **felosztott adatokat**csatlakoztassa. A bal oldali port a megtisztított adathalmazokat tartalmazza. A megfelelő port tartalmazza a lefoglalt adatlemezeket.
 
 1. Válassza ki az **Adatfelosztási** modult.
 
-1. A Tulajdonságok ablaktáblában állítsa az **első kimeneti adatkészletben lévő sorok töredékét** 0,7-re.
+1. A vászon jobb oldalán található modul részletei ablaktáblán állítsa az **első kimeneti adatkészletben lévő sorok töredékét** 0,7-re.
 
     Ez a beállítás az adatmennyiség 70 százalékát felbontja a modell betanításához, valamint 30 százalékot a teszteléshez. A 70 százalékos adatkészlet a bal oldali kimeneti porton keresztül lesz elérhető. A fennmaradó adatokat a megfelelő kimeneti porton keresztül érheti el a rendszer.
 
-1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, majd adja meg *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
 
 ### <a name="train-the-model"></a>A modell tanítása
 
 A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algoritmus létrehoz egy modellt, amely ismerteti a funkciók és a betanítási információ által bemutatott ár közötti kapcsolatot.
 
-1. A tanulási algoritmus kiválasztásához törölje a modul-paletta keresési mezőjét.
-
-1. **Machine learning algoritmusok**kibontása.
+1. A modul palettáján bontsa ki a **Machine learning algoritmusok**elemet.
     
     Ez a beállítás számos, a tanulási algoritmusok inicializálására használható modul-kategóriát jelenít meg.
 
@@ -192,9 +222,11 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. A modul palettáján bontsa ki a **modul betanítása**szakaszt, majd húzza a **Train Model** modult a vászonra.
+
 1. Válassza ki a **Train Model** modult.
 
-1. A Tulajdonságok ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
 
 1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
 
@@ -204,7 +236,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     ![Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>A Machine learning-modell pontszáma
+### <a name="add-the-score-model-module"></a>A pontszám modell modul hozzáadása
 
 Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalékra kiterjedően megtekintheti, hogy a modell milyen jól működik.
 
@@ -212,7 +244,7 @@ Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalé
 
 1. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az **adatforráshoz** tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
 
-## <a name="evaluate-a-machine-learning-model"></a>Gépi tanulási modell kiértékelése
+### <a name="add-the-evaluate-model-module"></a>A modell kiértékelése modul hozzáadása
 
 A **modell kiértékelése** modul használatával kiértékelheti, hogy a modell milyen jól szerezte be a teszt adatkészletet.
 
@@ -226,7 +258,20 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+Most, hogy elvégezte a folyamat összes beállítását, elküldheti a folyamat futtatását.
+
+1. A vászon tetején válassza a **Futtatás**lehetőséget.
+
+1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **+ új kísérlet** a **kísérlethez**lehetőséget.
+
+    > [!NOTE]
+    > A kísérletek csoport hasonló folyamata együtt fut. Ha többször is futtat egy folyamatot, kiválaszthatja ugyanazt a kísérletet egymást követő futtatásokhoz.
+
+    1. Adjon meg egy leíró nevet a **kísérlet neveként**.
+
+    1. Válassza a **Futtatás** lehetőséget.
+    
+    A futtatási állapot és a részletek a vászon jobb felső sarkában tekinthetők meg.
 
 ### <a name="view-scored-labels"></a>Pontozásos címkék megtekintése
 
@@ -234,7 +279,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
 1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > gráf ikon ![megjelenítés ikon](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek** > gráf ikon ![megjelenítés ikon](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
@@ -246,7 +291,7 @@ A **kiértékelési modell** használatával megtekintheti, hogy a betanított m
 
 1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
 
-1. A Tulajdonságok ablaktáblán válassza ki a **kimenet** > gráf ikont ![megjeleníteni az ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenet** > gráf ikon ![megjelenítés ikon](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
 A modellhez a következő statisztikák láthatók:
 
@@ -260,16 +305,11 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
+Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, és [telepítse a modelleket](tutorial-designer-automobile-price-deploy.md).
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-
-Az oktatóanyag első részében a következő feladatokat végezte el:
-
-* Folyamat létrehozása
-* Az adatok előkészítése
-* A modell tanítása
-* A modell pontszáma és kiértékelése
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -3,20 +3,20 @@ title: Végpontok kezelése az Azure Traffic Managerben | Microsoft Docs
 description: Ez a cikk a végpontok Azure Traffic Managerben végzett felvételében, eltávolításában, engedélyezésében és letiltásában segít.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071087"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939139"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -61,7 +61,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
-4. Kattintson a végpontra, amelyet engedélyezni szeretne.
+4. Kattintson az engedélyezni kívánt végpontra.
 5. A **Végpont** panelen állítsa a végpontot **Engedélyezve** állapotba, majd kattintson a **Mentés** gombra.
 6. Az ügyfelek az élettartam (TTL) végéig továbbítják az adatforgalmat a végpont felé. Az élettartamot a Traffic Manager profil konfigurációs panelén módosíthatja.
 
@@ -70,11 +70,11 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
-4. Kattintson a törölni kívánt végpontot.
-5. Az a **végpont** panelen kattintson a **törlése**
+4. Kattintson a törölni kívánt végpontra.
+5. A **végpont** panelen kattintson a **Törlés** elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Traffic Manager-profilok kezelése](traffic-manager-manage-profiles.md)
 * [Útválasztási módszerek konfigurálása](traffic-manager-configure-routing-method.md)

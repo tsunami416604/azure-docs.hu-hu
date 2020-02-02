@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770458"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935463"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -36,7 +36,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 | Szolgáltatásiszint-szerződés (SLA)                | A 99,99%-os rendelkezésre állást biztosító SLA-t kínál| Akár 99,95%-os rendelkezésre állást biztosít két vagy több példányban ugyanabban a rendelkezésre állási csoporton belül.<br/><br/>99,9%-os rendelkezésre állás egyetlen példányos virtuális géppel Premium Storage használatával.<br/><br/>99,99% a több rendelkezésre állási csoport több példányával rendelkező Availability Zones használatával.<br/><br/>Lásd a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)-t. |
 | Operációs rendszer javítása        | Automatikus  | Ügyfelek által felügyelt |
 | MySQL-javítás     | Automatikus  | Ügyfelek által felügyelt |
-| Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek többek között a feladatátvételi fürtszolgáltatás, a folyamatos replikálás, a naplózás vagy a tranzakciós replikáció.|
+| Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek fürtözés, replikálás stb.|
 | Zóna redundancia | Jelenleg nem támogatott | Az Azure-beli virtuális gépek különböző rendelkezésre állási zónákban való futtatásra állíthatók be. Helyszíni megoldás esetén az ügyfeleknek saját másodlagos adatközpontot kell létrehozniuk, kezelnie és karbantartani.|
 | Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
 | Biztonsági mentés és helyreállítás | A automatikusan létrehozza a [kiszolgáló biztonsági másolatait](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) , és tárolja azokat a helyileg redundáns vagy földrajzilag redundáns, felhasználó által konfigurált tárolóban. A szolgáltatás teljes, differenciális és tranzakciónapló-alapú biztonsági mentéseket tart | Ügyfelek által felügyelt |

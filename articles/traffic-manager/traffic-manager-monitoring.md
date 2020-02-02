@@ -2,22 +2,22 @@
 title: Azure Traffic Manager végpontok figyelése | Microsoft Docs
 description: Ez a cikk segít megérteni, hogyan használja a Traffic Manager a végpontok monitorozását és az automatikus végpont-feladatátvételt, hogy az Azure-ügyfelek magas rendelkezésre állású alkalmazásokat telepítsenek
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: allensu
-ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: rohink
+ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333812"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938562"
 ---
-# <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
+# <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
 
 Az Azure Traffic Manager beépített végpontok figyelését és automatikus végpont-feladatátvételt tartalmaz. Ez a funkció segít olyan magas rendelkezésre állású alkalmazások továbbításában, amelyek rugalmasan használhatók a végponti hibákhoz, beleértve az Azure-régió meghibásodását.
 
@@ -34,13 +34,13 @@ A végpontok figyelésének konfigurálásához a következő beállításokat k
 * **Tolerált hibák száma**. Ez az érték határozza meg, hogy a Traffic Manager-szondázás ügynöke hány hibát észlel, mielőtt a végpontot nem Kifogástalan állapotba kívánja megjelölni. Értéke 0 és 9 között lehet. A 0 érték azt jelenti, hogy egyetlen figyelési hiba miatt a végpont nem megfelelőként van megjelölve. Ha nincs megadva érték, a rendszer az alapértelmezett 3 értéket használja.
 * Mintavételi **időkorlát**. Ez a tulajdonság határozza meg azt az időtartamot, ameddig a Traffic Manager szondázás ügynöknek várnia kell, mielőtt fontolóra venné a hibát, amikor egy állapot-ellenőrzési mintavételt küld a végpontnak. Ha a szondázás időköze 30 másodpercre van beállítva, akkor az időtúllépési értéket 5 és 10 másodperc között állíthatja be. Ha nincs megadva érték, a rendszer 10 másodperces alapértelmezett értéket használ. Ha a szondázás időköze 10 másodpercre van beállítva, akkor az időtúllépési értéket 5 és 9 másodperc között állíthatja be. Ha nincs megadva időtúllépési érték, a rendszer a 9 másodperces alapértelmezett értéket használja.
 
-    ![Traffic Manager végpont figyelése](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Traffic Manager-végpontmonitorozás](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Ábra  Traffic Manager végpont figyelése**
+    **Ábra: Traffic Manager végpont figyelése**
 
 ## <a name="how-endpoint-monitoring-works"></a>A végpont-figyelés működése
 
-Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200 – OK választ kap, vagy a  **\*várt állapotkód-tartományban**konfigurált válaszokat, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
+Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200-OK választ kap, vagy a várt állapotkód bármelyik válasza **\*tartományban**, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
 
 Ha a figyelési protokoll TCP, akkor a Traffic Manager szondázás ügynök TCP-kapcsolati kérelmet kezdeményez a megadott port használatával. Ha a végpont válaszként válaszol a kapcsolat létesítésére, az állapot-ellenőrzés sikeresként van megjelölve, és a Traffic Manager szondázás ügynök visszaállítja a TCP-kapcsolatot. Ha a válasz eltérő érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a Traffic Manager-szondázás ügynök újrapróbálkozik a sikertelen hibák beállításának megfelelően (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint az észlelt hibák száma, akkor a végpont állapota nem kifogástalan.
 
@@ -69,12 +69,12 @@ A Endpoint monitor állapota egy Traffic Manager által generált érték, amely
 
 | Profil állapota | Végpont állapota | Endpoint monitor állapota | Megjegyzések |
 | --- | --- | --- | --- |
-| Letiltva |Enabled |Inaktív |A profil le lett tiltva. Bár a végpont állapota engedélyezve van, a profil állapota (letiltva) elsőbbséget élvez. A letiltott profilokban lévő végpontok nincsenek figyelve. A DNS-lekérdezéshez egy NXDOMAIN-hibakódot ad vissza. |
+| Letiltva |Engedélyezve |Inaktív |A profil le lett tiltva. Bár a végpont állapota engedélyezve van, a profil állapota (letiltva) elsőbbséget élvez. A letiltott profilokban lévő végpontok nincsenek figyelve. A DNS-lekérdezéshez egy NXDOMAIN-hibakódot ad vissza. |
 | &lt;bármely&gt; |Letiltva |Letiltva |A végpont le van tiltva. A letiltott végpontok figyelése nem történik meg. A végpont nem része a DNS-válaszoknak, ezért nem kap forgalmat. |
-| Enabled |Enabled |Online |A végpont figyelése és állapota Kifogástalan. A DNS-válaszok részét képezi, és képes fogadni a forgalmat. |
-| Enabled |Enabled |Csökkentett teljesítmény |A végpont-figyelés állapotának ellenőrzése sikertelen. A végpont nem szerepel a DNS-válaszokban, és nem kap forgalmat. <br>Ez alól kivételt képez, ha az összes végpontot csökkentik, és ebben az esetben a lekérdezési válaszban az összeset visszaadja a rendszer.</br>|
-| Enabled |Enabled |CheckingEndpoint |A rendszer figyeli a végpontot, de az első mintavétel eredményei még nem érkeztek meg. A CheckingEndpoint olyan ideiglenes állapot, amely általában közvetlenül a profilhoz tartozó végpont hozzáadása vagy engedélyezése után azonnal megtörténik. Ebben az állapotban egy végpont szerepel a DNS-válaszokban, és képes fogadni a forgalmat. |
-| Enabled |Enabled |Leállítva |Az a webalkalmazás, amelyre a végpont mutat, nem fut. Keresse meg a webalkalmazás beállításait. Ez akkor is előfordulhat, ha a végpont beágyazott végpont típusú, és a gyermek profil le van tiltva vagy inaktív. <br>A leállított állapotú végpontok nem figyelhetők meg. Nem szerepel a DNS-válaszokban, és nem kap forgalmat. Ez alól kivételt képez, ha az összes végpontot csökkentik, és ebben az esetben a rendszer a lekérdezési válaszban visszaadottnak tekinti őket.</br>|
+| Engedélyezve |Engedélyezve |Online |A végpont figyelése és állapota Kifogástalan. A DNS-válaszok részét képezi, és képes fogadni a forgalmat. |
+| Engedélyezve |Engedélyezve |Csökkentett teljesítményű |A végpont-figyelés állapotának ellenőrzése sikertelen. A végpont nem szerepel a DNS-válaszokban, és nem kap forgalmat. <br>Ez alól kivételt képez, ha az összes végpontot csökkentik, és ebben az esetben a lekérdezési válaszban az összeset visszaadja a rendszer.</br>|
+| Engedélyezve |Engedélyezve |CheckingEndpoint |A rendszer figyeli a végpontot, de az első mintavétel eredményei még nem érkeztek meg. A CheckingEndpoint olyan ideiglenes állapot, amely általában közvetlenül a profilhoz tartozó végpont hozzáadása vagy engedélyezése után azonnal megtörténik. Ebben az állapotban egy végpont szerepel a DNS-válaszokban, és képes fogadni a forgalmat. |
+| Engedélyezve |Engedélyezve |Leállítva |Az a webalkalmazás, amelyre a végpont mutat, nem fut. Keresse meg a webalkalmazás beállításait. Ez akkor is előfordulhat, ha a végpont beágyazott végpont típusú, és a gyermek profil le van tiltva vagy inaktív. <br>A leállított állapotú végpontok nem figyelhetők meg. Nem szerepel a DNS-válaszokban, és nem kap forgalmat. Ez alól kivételt képez, ha az összes végpontot csökkentik, és ebben az esetben a rendszer a lekérdezési válaszban visszaadottnak tekinti őket.</br>|
 
 További információ a végpontok figyelő állapotának a beágyazott végpontokra való kiszámításáról: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
 
@@ -87,11 +87,11 @@ A Profil figyelő állapota a konfigurált profil állapotának és a végpontok
 
 | Profil állapota (konfiguráltként) | Endpoint monitor állapota | Profil figyelő állapota | Megjegyzések |
 | --- | --- | --- | --- |
-| Letiltva |&lt;bármely&gt; vagy egy profil, amely nem rendelkezik definiált végpontokkal. |Letiltva |A profil le lett tiltva. |
-| Enabled |Legalább egy végpont állapota csökken. |Csökkentett teljesítmény |Tekintse át az egyes végpontok állapotának értékeit annak meghatározásához, hogy mely végpontok igényelnek további figyelmet. |
-| Enabled |Legalább egy végpont állapota online állapotban van. A végpontok nem rendelkeznek csökkentett teljesítményű állapottal. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
-| Enabled |Legalább egy végpont állapota CheckingEndpoint. Nem található végpont online vagy csökkentett teljesítményű állapotban. |CheckingEndpoints |Ez az átmeneti állapot akkor fordul elő, ha a profilt létrehozták vagy engedélyezik. A végpont állapota első alkalommal van bejelölve. |
-| Enabled |A profilban lévő összes végpont állapota letiltva vagy leállítva, vagy a profil nem rendelkezik meghatározott végpontokkal. |Inaktív |Nincsenek aktív végpontok, de a profil továbbra is engedélyezve van. |
+| Letiltva |&lt;minden olyan&gt; vagy profilt, amely nem rendelkezik definiált végpontokkal. |Letiltva |A profil le lett tiltva. |
+| Engedélyezve |Legalább egy végpont állapota csökken. |Csökkentett teljesítményű |Tekintse át az egyes végpontok állapotának értékeit annak meghatározásához, hogy mely végpontok igényelnek további figyelmet. |
+| Engedélyezve |Legalább egy végpont állapota online állapotban van. A végpontok nem rendelkeznek csökkentett teljesítményű állapottal. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
+| Engedélyezve |Legalább egy végpont állapota CheckingEndpoint. Nem található végpont online vagy csökkentett teljesítményű állapotban. |CheckingEndpoints |Ez az átmeneti állapot akkor fordul elő, ha a profilt létrehozták vagy engedélyezik. A végpont állapota első alkalommal van bejelölve. |
+| Engedélyezve |A profilban lévő összes végpont állapota letiltva vagy leállítva, vagy a profil nem rendelkezik meghatározott végpontokkal. |Inaktív |Nincsenek aktív végpontok, de a profil továbbra is engedélyezve van. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Végpont feladatátvétele és helyreállítása
 
@@ -100,7 +100,7 @@ Traffic Manager rendszeresen ellenőrzi az összes végpont állapotát, beleér
 A végpont állapota nem kifogástalan, ha a következő események bármelyike előfordul:
 
 - Ha a figyelési protokoll HTTP vagy HTTPS:
-    - Nem 200 válasz, vagy olyan válasz, amely nem tartalmazza a **várt állapotkód** -tartományokban megadott állapotjelző tartományt (beleértve egy másik 2xx-kódot vagy egy 301/302-átirányítást).
+    - Nem 200 válasz, vagy olyan válasz, amely nem tartalmazza a **várt állapotkód-tartományokban** megadott állapotjelző tartományt (beleértve egy másik 2xx-kódot vagy egy 301/302-átirányítást).
 - Ha a figyelési protokoll TCP: 
     - A Traffic Manager által küldött SYN-kérelemre válaszul az ACK vagy a SYN-ACK típusú válasz érkezik a kapcsolódási létesítmény megkísérlése érdekében.
 - Időtúllépés. 
@@ -112,15 +112,15 @@ Az alábbi ábrán látható idősor részletesen leírja Traffic Manager végpo
 
 ![Traffic Manager végpont feladatátvételi és feladat-visszavételi folyamata](./media/traffic-manager-monitoring/timeline.png)
 
-**Ábra  Traffic Manager-végpont feladatátvételi és helyreállítási folyamata**
+**Ábra: a Traffic Manager-végpont feladatátvételi és helyreállítási folyamata**
 
-1. BEOLVASÁS. Az egyes végpontok esetében a Traffic Manager monitorozási rendszer a figyelési beállítások között megadott elérési úton hajt végre GET kérelmet.
+1. **Beolvasás**. Az egyes végpontok esetében a Traffic Manager monitorozási rendszer a figyelési beállítások között megadott elérési úton hajt végre GET kérelmet.
 2. **200 OK vagy egyéni kód megadott tartomány Traffic Manager profil figyelési beállításai** . A figyelési rendszer a HTTP 200 OK vagy az vagy az egyéni kód megadott tartományát várja, Traffic Manager a profil figyelési beállításainak üzenetét 10 másodpercen belül vissza kell adni. Amikor megkapja ezt a választ, felismeri, hogy a szolgáltatás elérhető.
 3. **30 másodperc az ellenőrzések között**. A végpont állapotának ellenőrzését 30 másodpercenként megismétli.
 4. A **szolgáltatás nem érhető el**. A szolgáltatás elérhetetlenné válik. A Traffic Manager nem fogja tudni a következő állapot-ellenőrzését.
 5. **Megpróbál hozzáférni a figyelési útvonalhoz**. A figyelési rendszer végrehajt egy GET kérelmet, de nem kap választ a 10 másodperces időkorláton belül (másik lehetőségként nem 200 választ kaphat). Ezután három alkalommal próbálkozik, 30 másodperces időközönként. Ha a próbálkozások egyike sikeres, akkor a próbálkozások száma alaphelyzetbe áll.
 6. **Az állapot értéke csökkentett teljesítményű**. A negyedik egymást követő hiba után a figyelési rendszer a nem elérhető végpontok állapotát lecsökkentettként jelöli meg.
-7. **A forgalom más végpontokra van**átirányítva. A Traffic Manager DNS-névkiszolgálók frissülnek, és Traffic Manager a továbbiakban nem adja vissza a végpontot a DNS-lekérdezésekre adott válaszként. Az új kapcsolatok más, elérhető végpontokra vannak irányítva. A végpontot tartalmazó korábbi DNS-válaszokat azonban továbbra is gyorsítótárazhatja a rekurzív DNS-kiszolgálók és a DNS-ügyfelek. Az ügyfelek továbbra is a végpontot használják, amíg a DNS-gyorsítótár lejár. Ahogy a DNS-gyorsítótár lejár, az ügyfelek új DNS-lekérdezéseket végeznek, és különböző végpontokra irányítják őket. A gyorsítótár időtartamát a Traffic Manager profil TTL beállítása vezérli, például 30 másodperc.
+7. **A forgalom más végpontokra van átirányítva**. A Traffic Manager DNS-névkiszolgálók frissülnek, és Traffic Manager a továbbiakban nem adja vissza a végpontot a DNS-lekérdezésekre adott válaszként. Az új kapcsolatok más, elérhető végpontokra vannak irányítva. A végpontot tartalmazó korábbi DNS-válaszokat azonban továbbra is gyorsítótárazhatja a rekurzív DNS-kiszolgálók és a DNS-ügyfelek. Az ügyfelek továbbra is a végpontot használják, amíg a DNS-gyorsítótár lejár. Ahogy a DNS-gyorsítótár lejár, az ügyfelek új DNS-lekérdezéseket végeznek, és különböző végpontokra irányítják őket. A gyorsítótár időtartamát a Traffic Manager profil TTL beállítása vezérli, például 30 másodperc.
 8. Az **állapot-ellenőrzések folytatódnak**. Traffic Manager továbbra is a végpont állapotát vizsgálja, miközben az állapota csökkentett. A Traffic Manager észleli, ha a végpont állapota állapotba kerül.
 9. A **szolgáltatás ismét online állapotba kerül**. A szolgáltatás elérhetővé válik. A végpont megőrzi a csökkentett teljesítményű állapotát Traffic Manager amíg a figyelési rendszer elvégzi a következő állapot-ellenőrzést.
 10. **A szolgáltatás felé irányuló forgalom folytatódik**. Traffic Manager elküld egy GET-kérést, és 200 OK állapotú választ kap. A szolgáltatás kifogástalan állapotba került. A Traffic Manager névkiszolgálók frissülnek, és a DNS-válaszokban elkezdik kiadni a szolgáltatás DNS-nevét. A forgalom visszaadja a végpontnak a többi végpontot visszaadó gyorsítótárazott DNS-válaszokat, és a többi végponthoz való meglévő kapcsolatokat leállítja.
@@ -193,7 +193,7 @@ További információ a sikertelen állapot-ellenőrzésekkel kapcsolatos hibák
 
 * [Hogyan kaphatok értesítést, ha az egyik végpontom leáll?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [Traffic Manager működéséről](traffic-manager-how-it-works.md)
 

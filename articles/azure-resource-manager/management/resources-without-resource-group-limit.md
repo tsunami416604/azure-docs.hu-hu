@@ -2,13 +2,13 @@
 title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715624"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937938"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -89,6 +89,10 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * szoftver
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsoftinsights"></a>Microsoft. bepillantások
+
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft. Logic
 
@@ -179,10 +183,6 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * apiManagementAccounts/API-k
 * helyek
-
-## <a name="microsoftinsights"></a>Microsoft. bepillantások
-
-* metricalerts
 
 ## <a name="next-steps"></a>Következő lépések
 

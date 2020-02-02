@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543562"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932380"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
 
-## <a name="connect-to-your-workspace"></a>Csatlakozás a munkaterülethez
+## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
 
 A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning munkaterülethez a helyi fejlesztési környezetbe gyorsítótárazott információk használatával:
 
@@ -220,17 +220,23 @@ A következő táblázat a telepített modellek számától függően AZUREML_MO
 | Egyetlen modell | A modellt tartalmazó mappa elérési útja. |
 | Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók (`$MODEL_NAME/$VERSION`) |
 
-A modellben lévő fájl elérési útjának lekéréséhez a környezeti változót a keresett fájlnévvel kell kombinálni.
-A rendszer a regisztráció és az üzembe helyezés során megőrzi a modell fájljainak fájlneveit. 
+A modell regisztrálása és üzembe helyezése során a rendszer a modelleket a AZUREML_MODEL_DIR útvonalon helyezi el, és az eredeti fájlnevek megmaradnak.
+
+Ha szeretné beolvasni a parancsfájl elérési útját a bejegyzési parancsfájlban, akkor a környezeti változót a keresett fájl elérési útjával kell egyesíteni.
 
 **Példa egyetlen modellre**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **Több modell – példa**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965925"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935318"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Nyilvános alapszintű Load Balancer naplók Azure Monitor
 
@@ -51,7 +51,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rend
    * **Stream az Event hub-ba**
    * **Küldés Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiválás tárfiókba
+    ### <a name="archive-to-a-storage-account"></a>Archiválás egy Storage-fiókba
     Ehhez a folyamathoz már létre kell hoznia egy Storage-fiókot.  A Storage-fiók létrehozásával kapcsolatban tekintse meg [a Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) című témakört.
 
     1. Jelölje be az archiválás elem melletti jelölőnégyzetet a **Storage-fiókhoz**.
@@ -60,7 +60,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rend
     4. A legördülő listában válassza ki a Storage-fiók nevét a **Storage-fiók** területen.
     5. Kattintson az OK gombra.
 
-    ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
+    ### <a name="stream-to-an-event-hub"></a>Stream az Event hub-ba
     Ehhez a folyamathoz már létrehozott Event hub szükséges.  Az Event hub létrehozásával kapcsolatban tekintse meg az [Event hub létrehozása Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) című témakört.
 
     1. Jelölje be a stream elem melletti jelölőnégyzetet az **Event hubhoz**
@@ -156,11 +156,11 @@ Ez a napló csak akkor jön létre, ha a fentiekben részletezett módon engedé
 
 A JSON-kimenet a tulajdonságok mezőben a mintavételi állapot állapotának alapvető információit jeleníti meg. A *dipDownCount* tulajdonság a háttérbeli példányok teljes számát jeleníti meg, amelyek a sikertelen mintavételi válaszok miatt nem kapják meg a hálózati forgalmat.
 
-### <a name="view-and-analyze-the-audit-log"></a>A napló megtekintése és elemzése
+### <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
-A naplózási napló adatai a következő módszerek bármelyikével megtekinthetők és elemezhetők:
+A következő módszerek bármelyikével megtekintheti és elemezheti a tevékenység-naplózási adataikat:
 
-* **Azure-eszközök:** Információk beolvasása a naplókból a Azure PowerShell, az Azure parancssori felület (CLI), az Azure REST API vagy a Azure Portal használatával. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
+* **Azure-eszközök:** A Azure PowerShellon, az Azure parancssori felületen (CLI), az Azure REST API vagy a Azure Portalon keresztül kérhet le adatokat a tevékenység naplóból. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
 * **Power bi:** Ha még nem rendelkezik [Power bi](https:// .microsoft.com/pricing) -fiókkal, ingyenes kipróbáláshoz is kipróbálhatja. Az [Azure-naplók a Power BIhez készült tartalomkezelő csomag](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)használatával az adatokat előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Az állapot-mintavétel és az Eseménynapló megtekintése és elemzése
@@ -170,7 +170,7 @@ Kapcsolódjon a Storage-fiókhoz, és kérje le az Event és Health mintavételi
 > [!TIP]
 > Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
 
-## <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
+## <a name="stream-to-an-event-hub"></a>Stream az Event hub-ba
 Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a központi naplózási elemzéshez használható egy harmadik féltől származó SIEM-eszközben Azure Monitor integrációval. További információ: az [Azure monitoring-adatok továbbítása az Event hub-hoz](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek

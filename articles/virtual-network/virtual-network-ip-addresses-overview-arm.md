@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 56e02d5723fefe45f5df15a4889a35fc55d8da3b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: abfd96eae38bf7c0ad145c2c262efc044b741cea
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842384"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936721"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -75,7 +75,7 @@ A standard termékváltozatú nyilvános IP-címek jellemzői:
 - Mindig használjon statikus kiosztási módszert.
 - Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
-- A hálózati adapterekhez, a standard nyilvános Load Balancerekhez, az Application Gatewayhez vagy a VPN-átjáróhoz van rendelve. További információ a standard Load Balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load Balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - A zóna alapértelmezés szerint redundáns, és opcionálisan a zonay (egy adott rendelkezésre állási zónában is létrehozható és garantált). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
@@ -106,7 +106,7 @@ Statikus nyilvános IP-címeket általában a következő esetekben szoktak hasz
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-állomásnév feloldása
-Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso***domainnamelabel* értékkel a **West US***Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel.
+Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, amely hozzárendelést hoz létre a *domainnamelabel*.*location*.cloudapp.azure.com és a nyilvános IP-cím között az Azure által felügyelt DNS-kiszolgálókon. Ha például nyilvános IP-cím erőforrást hoz létre a **contoso***domainnamelabel* értékkel a **USA nyugati régiója***Azure-helyen*, akkor a rendszer a **contoso.westus.cloudapp.azure.com** teljes tartománynevet (FQDN) az erőforrás nyilvános IP-címére oldja fel.
 
 > [!IMPORTANT]
 > Minden egyes létrehozott tartománynév-címkének egyedinek kell lennie az Azure-helyen.  

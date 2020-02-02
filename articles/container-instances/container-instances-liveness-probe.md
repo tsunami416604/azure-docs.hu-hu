@@ -2,13 +2,13 @@
 title: Az élettartam mintavételének beállítása a Container-példányon
 description: Megtudhatja, hogyan konfigurálhat élő mintavételt a nem megfelelő állapotú tárolók újraindításához Azure Container Instances
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901892"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934162"
 ---
 # <a name="configure-liveness-probes"></a>Üzemelési tesztek konfigurálása
 
@@ -63,41 +63,41 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Start parancs
 
-Az üzemelő példány egy kiindulási parancsot határoz meg, amely akkor fut le, amikor a tároló először fut, a `command` tulajdonság határozza meg, amely karakterláncok tömbjét fogadja el. Ebben a példában egy bash-munkamenetet indít el, és létrehoz egy `healthy` nevű fájlt a `/tmp` könyvtárban a következő parancs átadásával:
+Az üzemelő példány egy `command` tulajdonságot határoz meg, amely a tároló első indításakor futtatott indítási parancsot határozza meg. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs szimulálja a tárolót, és nem megfelelő állapotba kerül.
+
+Először egy bash-munkamenetet indít el, és létrehoz egy `healthy` nevű fájlt a `/tmp` könyvtárán belül. Ezután 30 másodpercig alvó állapotba kerül, mielőtt törölné a fájlt, majd 10 perces alvó állapotba lép:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Ezután 30 másodpercig alvó állapotba kerül, mielőtt törölné a fájlt, majd 10 perces alvó állapotba lép.
-
 ### <a name="liveness-command"></a>Az élettartam parancs
 
-Ez az üzemelő példány olyan `livenessProbe`t határoz meg, amely támogatja az élő ellenőrzések során `exec` életbe lépő parancsot. Ha a parancs nullától eltérő értékkel kilép, a rendszer leállítja és újraindítja a tárolót, és a `healthy` fájl nem található. Ha a parancs sikeresen kilép a 0. kilépési kóddal, a rendszer nem végez műveletet.
+Ez az üzemelő példány olyan `livenessProbe`t határoz meg, amely támogatja az élő ellenőrzések során `exec` életbe lépő parancsot. Ha a parancs nem nulla értékkel kilép, a rendszer leállítja és újraindítja a tárolót, és jelzi, hogy a `healthy` fájl nem található. Ha a parancs sikeresen kilép a 0. kilépési kóddal, semmilyen műveletet nem végez.
 
 Az `periodSeconds` tulajdonság meghatározza, hogy a Lives parancs 5 másodpercenként legyen végrehajtva.
 
 ## <a name="verify-liveness-output"></a>Az élettartam kimenetének ellenőrzése
 
-Az első 30 másodpercen belül a Start parancs által létrehozott `healthy` fájl létezik. Ha az élettartam parancs ellenőrzi a `healthy` fájl létezését, az állapotkód nulla értéket ad vissza, ami sikeres, ezért nincs újraindítás.
+Az első 30 másodpercen belül a Start parancs által létrehozott `healthy` fájl létezik. Ha az élettartam parancs megkeresi a `healthy` fájl létezését, az állapotkód 0 értéket ad vissza, ami sikeres, ezért nem történik újraindítás.
 
-30 másodperc elteltével a `cat /tmp/healthy` sikertelen lesz, ami nem megfelelő állapotot okoz, és az események megölése történik.
+30 másodperc elteltével a `cat /tmp/healthy` parancs megkezdi a hibát, ami nem megfelelő állapotot okoz, és az események megölése történik.
 
 Ezek az események a Azure Portal vagy az Azure CLI-ből is megtekinthetők.
 
 ![Portál sérült eseménye][portal-unhealthy]
 
-A Azure Portal eseményeinek megtekintésével a rendszer a `Unhealthy` típusú eseményeket az élettartam parancs végrehajtása után indítja el. A következő esemény `Killing`típusú lesz, amely a tároló törlését jelzi, hogy az újraindítás megkezdődhet. A tároló újraindítási száma az esemény bekövetkezésekor növekszik.
+A Azure Portal eseményeinek megtekintésével a rendszer a `Unhealthy` típusú eseményeket az élettartam parancs végrehajtása után indítja el. A következő esemény `Killing`típusú, amely a tároló törlését jelzi, hogy az újraindítás megkezdődhet. A tároló újraindítási száma az esemény bekövetkezésekor növekszik.
 
-Az újraindítások helyben, így az erőforrások, például a nyilvános IP-címek és a csomópont-specifikus tartalmak is megmaradnak.
+Az újraindítások helyben, így az erőforrások, például a nyilvános IP-címek és a csomópont-specifikus tartalmak megmaradnak.
 
 ![Portál újraindítási számlálója][portal-restart]
 
-Ha az élettartam-mintavétel folyamatosan leáll, és túl sok újraindítást indít el, a tároló exponenciális visszalépési késleltetést ad meg.
+Ha az élettartam-mintavétel folyamatosan leáll, és túl sok újraindítást indít el, a tároló exponenciális visszatartási késleltetést ad vissza.
 
 ## <a name="liveness-probes-and-restart-policies"></a>Élettartam-vizsgálatok és újraindítási szabályzatok
 
-Az újraindítási szabályzatok felülírják az élő tesztek által aktivált újraindítási viselkedést. Ha például beállít egy `restartPolicy = Never`t *és* egy élő mintavételt, a tároló csoport nem indul újra, mert sikertelen az élettartam-ellenőrzési művelet. A tároló csoport Ehelyett a tároló csoport újraindítási szabályzatát fogja betartani `Never`.
+Az újraindítási szabályzatok felülírják az élő tesztek által aktivált újraindítási viselkedést. Ha például beállít egy `restartPolicy = Never`t *és* egy élő mintavételt, a tároló csoport nem indul újra, mert sikertelen az élettartam-ellenőrzési művelet. Ehelyett a tároló csoport a `Never`újraindítási házirendjét követi.
 
 ## <a name="next-steps"></a>Következő lépések
 

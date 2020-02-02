@@ -2,17 +2,17 @@
 title: 'Oktatóanyag: a tartomány és az altartomány üzemeltetése – Azure DNS'
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure DNS a DNS-zónák üzemeltetéséhez.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212199"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937318"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
 
@@ -21,7 +21,7 @@ Az Azure DNS használatával saját DNS-tartományt üzemeltethet, és kezelheti
 Tegyük fel, hogy megvette a „contoso.net” tartományt egy tartományregisztrálótól, majd létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. Mivel Ön a tartomány tulajdonosa, a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálói rekordjait. A regisztráló ezeket a névkiszolgálói rekordokat a „.net” szülőzónában tárolja. Az internetes felhasználók ezután a Azure DNS zónában lesznek átirányítva a tartományba, amikor megpróbálják feloldani a DNS-rekordokat a contoso.net-ben.
 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy DNS-zónát.

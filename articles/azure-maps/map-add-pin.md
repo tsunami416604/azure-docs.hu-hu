@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911159"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933127"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
 
-Egy szimbólum egy adatforráshoz is csatlakoztatható, és egy ikon és/vagy szöveg megjelenítésére szolgál egy adott ponton. A szimbólumok rétegei a WebGL használatával jelennek meg, és a térképeken nagy gyűjteményeket lehet megjeleníteni. Ez a réteg sokkal több pont-adat megjelenítését teszi lehetővé a térképen, jó teljesítménnyel, mint a HTML-jelölők használatával. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
+Egy adatforráshoz csatlakozó szimbólum, amely egy ikon és/vagy egy adott pont szövegének megjelenítésére szolgál. A szimbólumok rétegei a WebGL használatával jelennek meg, és a térképeken a pontok nagy gyűjteményeit teszik lehetővé. A HTML-jelölőhöz képest a szimbólum réteg nagy számú pontot jelenít meg a térképen a jobb teljesítmény érdekében. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
 
 > [!TIP]
-> A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriai funkcióit jeleníti meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']` vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, ha a multipoint-szolgáltatásokat is fel szeretné venni.
+> A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha korlátozni szeretné a réteget úgy, hogy az csak a pont geometriai funkcióit jelenítse meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']`re vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`ra, ha kívánja, a multipoint-funkciókat is befoglalhatja.
 
-A Maps Image sprite Manager, amely a Symbol réteg által használt egyéni rendszerképek betöltésére használatos, a következő képformátumokat támogatja:
+A Maps Image sprite Manager betölti a szimbólum réteg által használt egyéni lemezképeket. A következő képformátumokat támogatja:
 
 - JPEG
 - PNG
@@ -33,7 +33,7 @@ A Maps Image sprite Manager, amely a Symbol réteg által használt egyéni rend
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ha szimbólum réteget szeretne hozzáadni a térképhez és az adatmegjelenítéshez, először létre kell hoznia egy adatforrást, és hozzá kell adnia a térképet. Ezután létrehozhatja és átadhat egy szimbólum réteget az adatforrásban az adatok lekéréséhez. Végül fel kell venni az adatforrásba az adatforrást, hogy meg lehessen jeleníteni valamit. A következő kód azt a kódot mutatja be, amelyet a térképhez kell hozzáadni, miután betöltötte azt, hogy a Térkép egyetlen pontját jeleníti meg egy szimbólum réteg használatával. 
+Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány lépést végre kell hajtania. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Ezután létrehozhatja és átadhat egy szimbólum réteget az adatforrásban az adatok lekéréséhez az adatforrásból. Végül fel kell venni az adatforrásba az adatforrást, hogy meg lehessen jeleníteni valamit. A következő kód a betöltését követően a térképhez hozzáadni kívánt kódot mutatja. A kód egyetlen pontot jelenít meg a térképen egy szimbólum réteg használatával. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -53,11 +53,11 @@ dataSource.add(new atlas.data.Point([0, 0]));
 A térképhez négy különböző típusú pont-adattípust lehet hozzáadni:
 
 - GeoJSON pont geometriája – ez az objektum csak egy pont koordinátáit tartalmazza, semmi más. Az `atlas.data.Point` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- GeoJSON multipoint geometria – Ez az objektum több pont koordinátáit tartalmazza, de semmi mást nem. Az `atlas.data.MultiPoint` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
+- GeoJSON multipoint geometria – Ez az objektum több pont koordinátáit tartalmazza, és semmi mást nem. Az `atlas.data.MultiPoint` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
 - GeoJSON funkció – ez az objektum bármilyen GeoJSON geometriát és olyan tulajdonságokat tartalmaz, amelyek a geometriához társított metaadatokat tartalmaznak. Az `atlas.data.Feature` Helper osztály használatával egyszerűen hozhatók létre ezek az objektumok.
-- `atlas.Shape` osztály hasonló a GeoJSON szolgáltatáshoz, amely egy GeoJSON geometriából és a geometriához tartozó metaadatokat tartalmazó készletből áll. Ha egy GeoJSON objektumot ad hozzá egy adatforráshoz, könnyen megjeleníthető egy rétegben, azonban ha a GeoJSON objektum koordináták tulajdonsága frissül, akkor az adatforrás és a leképezés nem változik, mert a JSON-objektumban nincs olyan mechanizmus, amely egy frissítést indít el. Az Shape osztály a benne foglalt adatok frissítésére, valamint a módosítás megváltozására szolgáló funkciókat biztosít, az adatforrást és a leképezést automatikusan értesíti és frissíti. 
+- `atlas.Shape` osztály hasonló a GeoJSON szolgáltatáshoz. Mindkettő egy GeoJSON geometriából és a geometriai metaadatokat tartalmazó készletből áll. Ha egy GeoJSON objektumot ad hozzá egy adatforráshoz, akkor könnyen megjeleníthető egy rétegben. Ha azonban a GeoJSON objektum koordináták tulajdonsága frissül, az adatforrás és a leképezés nem változik. Ennek az az oka, hogy a JSON-objektumban nincs olyan mechanizmus, amely egy frissítést indít el. Az Shape osztály a benne található adatok frissítésére szolgáló függvényeket biztosít. Módosítás esetén az adatforrás és a Térkép automatikusan értesítést kap és frissül. 
 
-Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja a `atlas.Shape` osztálynak, hogy könnyen frissíthető legyen. A Térkép középpontját kezdetben egy szimbólum megjelenítéséhez használjuk. A térképhez egy kattintást jelző eseményt adnak hozzá, amely azt jelzi, hogy az egérrel való kattintások koordinátáit a rendszer az alakzatokat `setCoordinates` függvénnyel használja, amely frissíti a szimbólum helyét a térképen.
+Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja a `atlas.Shape` osztálynak, hogy könnyen frissíthető legyen. A Térkép középpontja kezdetben egy szimbólum megjelenítésére szolgál. A térképhez egy kattintást jelző eseményt adnak hozzá, amely az egér koordinátáit használja a SHAPES `setCoordinates` függvénnyel. Az egér koordinátáit a click esemény időpontjában rögzítjük. Ezután a `setCoordinates` frissíti a szimbólum helyét a térképen.
 
 <br/>
 
@@ -65,11 +65,11 @@ Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja a `atlas.Shape` 
 </iframe>
 
 > [!TIP]
-> A teljesítmény érdekében a szimbólum-rétegek alapértelmezés szerint az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. Ahogy a rejtett szimbólumok nagyítása láthatóvá válik. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa a `iconOptions` beállítások `allowOverlap` tulajdonságát `true`értékre.
+> Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa a `iconOptions` beállítások `allowOverlap` tulajdonságát `true`értékre.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása egy szimbólum réteghez
 
-A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz, majd használhatja azt a Térkép egyéni szimbólumának megjelenítéséhez. A szimbólum réteg `textField` tulajdonságához meg kell adni egy kifejezést. Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni, de mivel ez egy szám, karakterlánccá kell alakítani. Emellett szeretnénk hozzáfűzni a "°F"-t is. Ezt a kifejezést használhatja; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz. Ezt az ikont ezután a rendszer a Térkép egyéni szimbólumával jeleníti meg. A szimbólum réteg `textField` tulajdonságához meg kell adni egy kifejezést. Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni. Mivel a hőmérséklet egy szám, azt karakterlánccá kell konvertálni. Emellett szeretnénk hozzáfűzni a "°F" kifejezést. Ehhez az összefűzéshez kifejezés használható. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -77,7 +77,7 @@ A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően
 </iframe>
 
 > [!TIP]
-> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket a szimbólum rétegben használhat. További részletekért lásd a [képsablonokkal](how-to-use-image-templates-web-sdk.md) kapcsolatos dokumentum használatát ismertető témakört.
+> A Azure Maps web SDK számos testreszabható képsablont biztosít, amelyeket a szimbólum rétegben használhat. További információ: a [képsablonokkal](how-to-use-image-templates-web-sdk.md) kapcsolatos dokumentum használata.
 
 ## <a name="customize-a-symbol-layer"></a>Szimbólum réteg testreszabása 
 
@@ -89,7 +89,7 @@ A szimbólum rétegben számos lehetőség áll rendelkezésre. Az alábbi eszk�
 </iframe>
 
 > [!TIP]
-> Ha csak szimbólum réteggel kívánja megjeleníteni a szöveget, elrejtheti a ikont úgy, hogy az ikon beállításainak `image` tulajdonságát `'none'`értékre állítja.
+> Ha csak szimbólum réteget szeretne megjeleníteni, elrejtheti a ikont úgy, hogy az ikon beállításainak `image` tulajdonságát `'none'`értékre állítja.
 
 ## <a name="next-steps"></a>Következő lépések
 

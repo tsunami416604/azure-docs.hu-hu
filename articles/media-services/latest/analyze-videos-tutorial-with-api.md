@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/30/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f803bcafb1966e32e894b4caeaa8fafb5f73e8e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7497e226589689497ce572193017dc7fc31042b1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186285"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934528"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
@@ -37,6 +37,10 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Erőforrások karbantartása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
+ 
+Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának összes vonatkozó törvényének, és előfordulhat, hogy nem használja Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy más személyeknek is ártalmas lehet. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban szereplő személy (ek) hoz. A megfelelőségről, az adatvédelemről és a biztonságról Video Indexer a Microsoft [Cognitive Services feltételeiben](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)olvashat. A Microsoft adatvédelmi kötelezettségei és az adatok kezelése érdekében tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit ("Ost")](https://www.microsoft.com/licensing/product-licensing/products) és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti magát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +62,7 @@ Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>A megadott videót elemző kód vizsgálata
 
-Ez a szakasz az [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) projekt *Program.cs* nevű fájljában megadott függvényeket mutatja be.
+Ez a szakasz az *AnalyzeVideos* projekt [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) nevű fájljában megadott függvényeket mutatja be.
 
 A minta a következő műveleteket hajtja végre:
 
@@ -102,7 +106,7 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 
 A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak**nevezzük. További információkat az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet a megadott videó elemzésére.
 
-#### <a name="transform"></a>átalakítási
+#### <a name="transform"></a>Átalakítás
 
 Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának (`new VideoAnalyzerPreset("en-US")`). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
 
@@ -174,7 +178,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

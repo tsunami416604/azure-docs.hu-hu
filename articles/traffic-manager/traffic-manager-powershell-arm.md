@@ -3,20 +3,20 @@ title: Traffic Manager kezelése a PowerShell használatával az Azure-ban
 description: Ez a képzési terv a Traffic Manager Azure PowerShell használatának első lépéseiben nyújt segítséget.
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038124"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938501"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell használatával
 
@@ -38,7 +38,7 @@ Minden Traffic Manager-profilt egy "TrafficManagerProfiles" típusú erőforrás
 
 Ezek az utasítások a Microsoft Azure PowerShell. A következő cikk a Azure PowerShell telepítésének és konfigurálásának módját ismerteti.
 
-* [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
 
 A cikkben szereplő példák azt feltételezik, hogy van egy meglévő erőforráscsoport. Hozzon létre egy erőforráscsoportot a következő parancs használatával:
 

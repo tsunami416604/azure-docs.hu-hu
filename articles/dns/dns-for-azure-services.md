@@ -3,7 +3,7 @@ title: Azure DNS használata más Azure-szolgáltatásokkal
 description: Ebből a képzési tervből megtudhatja, hogyan használhatja a Azure DNSt más Azure-szolgáltatások neveinek feloldásához
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: allensu
-ms.openlocfilehash: 142157273bd24912311383785d08177abfd04398
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211884"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937251"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Hogyan működik a Azure DNS más Azure-szolgáltatásokkal?
 
@@ -37,6 +37,6 @@ Az alábbi táblázat a különböző Azure-szolgáltatásokhoz használható t�
 | Azure Load Balancer |[Előtér-nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Létrehozhat egy DNS-vagy CNAME-rekordot is. A Load Balancer a dinamikusan hozzárendelt IPv6 nyilvános IP-címmel rendelkezhet. Hozzon létre egy CNAME-rekordot egy IPv6-cím számára. |
 | Azure Traffic Manager |Nyilvános név |Létrehozhat egy olyan alias-rekordot, amely leképezi a Traffic Manager-profilhoz rendelt trafficmanager.net-nevet. További információ: [oktatóanyag: alias-rekord konfigurálása a APEX-tartománynevek támogatásához a Traffic Manager használatával](tutorial-alias-tm.md). |
 | Azure Cloud Services |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Statikusan lefoglalt IP-címek esetén létrehozhat egy rekordot a DNS-ben. A dinamikusan lefoglalt IP-címekhez létre kell hoznia egy CNAME rekordot, amely leképezi a *cloudapp.net* nevét.|
-| Azure App Service | [Külső IP-cím](dns-custom-domain.md#app-service-web-apps) |For external IP addresses, you can create a DNS A record. Ellenkező esetben létre kell hoznia egy CNAME rekordot, amely leképezi a azurewebsites.net nevét. További információ: [Egyéni tartománynév hozzárendelése egy Azure-alkalmazáshoz](../app-service/app-service-web-tutorial-custom-domain.md). |
+| Azure App Service | [Külső IP-cím](dns-custom-domain.md#app-service-web-apps) |Külső IP-címek esetén létrehozhat egy rekordot a DNS-ben. Ellenkező esetben létre kell hoznia egy CNAME rekordot, amely leképezi a azurewebsites.net nevét. További információ: [Egyéni tartománynév hozzárendelése egy Azure-alkalmazáshoz](../app-service/app-service-web-tutorial-custom-domain.md). |
 | Azure Resource Manager virtuális gépek |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A Resource Manager-alapú virtuális gépek rendelkezhetnek nyilvános IP-címekkel. Egy nyilvános IP-címmel rendelkező virtuális gép is lehet egy terheléselosztó mögött. Létrehozhat egy DNS-, CNAME-vagy alias-rekordot a nyilvános címekhez. Ezt az egyéni nevet használhatja a virtuális IP-cím kihagyása érdekében a terheléselosztó használatával. |
 | A klasszikus virtuális gépeket |[Nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |A PowerShell vagy a CLI használatával létrehozott klasszikus virtuális gépeket dinamikus vagy statikus (fenntartott) virtuális címekkel lehet konfigurálni. Létrehozhat egy DNS-CNAME vagy egy rekordot is. |

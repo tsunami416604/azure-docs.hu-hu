@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7fbb4c6f30754569b0aeea60f10d4a10e792ba7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425886"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933926"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alhálózati delegálás hozzáadása vagy eltávolítása
 
@@ -38,9 +38,9 @@ Ebben a szakaszban létrehoz egy virtuális hálózatot és azt az alhálózatot
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *MyVirtualNetwork*. |
+    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.0.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
     | Földrajzi egység | Válassza a **EastUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
@@ -76,7 +76,7 @@ Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja e
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **EastUS** helyen:
@@ -116,8 +116,8 @@ Az [az Network vnet subnet Update](https://docs.microsoft.com/cli/azure/network/
 ```azurecli-interactive
   az network vnet subnet update \
   --resource-group myResourceGroup \
-  --name mySubnet
-  --vnet-name myVnet
+  --name mySubnet \
+  --vnet-name myVnet \
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
@@ -127,7 +127,7 @@ A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](http
   az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
-  --vnet-name myVnet
+  --vnet-name myVnet \
   --query delegations
 ```
 
@@ -154,9 +154,9 @@ Az az [Network vnet subnet Update](https://docs.microsoft.com/cli/azure/network/
 
 ```azurecli-interactive
   az network vnet subnet update \
-  --resource-group myResourceGroup
-  --name mySubnet
-  --vnet-name myVnet
+  --resource-group myResourceGroup \
+  --name mySubnet \
+  --vnet-name myVnet \
   --remove delegations
 ```
 A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás el lett-e távolítva az alhálózatból a **szolgáltatásnév**tulajdonság alatt:
@@ -165,7 +165,7 @@ A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](http
   az network vnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
-  --vnet-name myVnet
+  --vnet-name myVnet \
   --query delegations
 ```
 A parancs kimenete null értékű zárójel:
@@ -183,7 +183,7 @@ A parancs kimenete null értékű zárójel:
   Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:

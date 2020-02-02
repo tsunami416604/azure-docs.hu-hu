@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f0975aceeb55c8f184ebe4e6a44d819b4a8bf38
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837860"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933365"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg-és képfeldolgozáshoz az indexelés során (Azure Cognitive Search)
 
@@ -31,6 +31,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 
 | Ügyességi | Leírás |
 |-------|-------------|
+|[Microsoft. Skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából.|
 | [Microsoft. Skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Ez a képesség egy előképzett modellt használ a fontos kifejezések elhelyezésére, a nyelvi szabályokra, a más feltételekhez való közelségre, valamint arra, hogy a kifejezés milyen szokatlanul legyen a forrásadatok között. |
 | [Microsoft. Skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Ez a képesség egy előképzésen alapuló modellt használ a használt nyelv észleléséhez (dokumentum-azonosító egy nyelven). Ha az azonos szöveges szegmensekben több nyelv is használatos, a kimenet a túlnyomórészt használt nyelv LCID-je.|
 | [Microsoft. Skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Egy mezőkből álló gyűjteményből származó szöveget egyesít egyetlen mezőbe.  |

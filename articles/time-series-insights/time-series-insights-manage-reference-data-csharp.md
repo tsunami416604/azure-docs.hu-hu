@@ -9,20 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772829"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935123"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése a használatávalC#
 
 Ez a cikk bemutatja, hogyan egyesítheti C#, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és Azure Active Directoryhatja a programozott API-kéréseket a Azure Time Series Insights ga [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-ra.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="summary"></a>Összefoglalás
+
+Az alábbi mintakód a következő funkciókat mutatja be:
+
+* Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**használatával.
+* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek a GA [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
+* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
+    
+    A Reference adatkezelés API egyenként dolgozza fel az egyes elemeket, és egy adott elemmel kapcsolatos hiba miatt nem akadályozza meg, hogy a többi sikeres befejezést hajtson végre. Ha például a kérelem 100 elemet tartalmaz, és egy elem hibát tartalmaz, akkor a 99-es elemek írása megtörténik, és a rendszer elutasítja az egyiket.
+
+## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>Összefoglalás
-
-A fenti mintakód a következő funkciókat mutatja be:
-
-* Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**használatával.
-* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek a GA [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
-* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
-    A Reference adatkezelés API egyenként dolgozza fel az egyes elemeket, és egy adott elemmel kapcsolatos hiba miatt nem akadályozza meg, hogy a többi sikeres befejezést hajtson végre. Ha például a kérelem 100 elemet tartalmaz, és egy elem hibát tartalmaz, akkor a 99-es elemek írása megtörténik, és a rendszer elutasítja az egyiket.
 
 ## <a name="next-steps"></a>Következő lépések
 

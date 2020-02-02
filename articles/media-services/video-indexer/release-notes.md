@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832305"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933866"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -28,7 +28,25 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * A legújabb kiadások
 * Ismert problémák
 * Hibajavítások
-* Elavult funkció
+* Elavult funkciók
+
+## <a name="january-2020"></a>2020. január
+ 
+### <a name="custom-language-support-for-additional-languages"></a>Egyéni nyelvi támogatás további nyelvekhez
+
+A Video Indexer mostantól támogatja a `ar-SY`, a `en-UK`és a `en-AU` egyéni nyelvi modelljeit (csak API).
+ 
+### <a name="delete-account-timeframe-action-update"></a>Fiók időkeretének törlése művelet frissítése
+
+A fiók törlése művelettel mostantól 90 napon belül törli a fiókot, 48 óra helyett.
+ 
+### <a name="new-video-indexer-github-repository"></a>Új Video Indexer GitHub-adattár
+
+Mostantól elérhető egy új Video Indexer GitHub különböző projektekkel, az első lépéseket ismertető útmutatók és a kód példákkal: https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Hencegő frissítés
+
+Az egységes **hitelesítések** és **műveletek** egyetlen [video Indexer OpenAPI-specifikációba (hencegő)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)video Indexer. A Develpers az API-kat [video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/)találhatja meg.
 
 ## <a name="december-2019"></a>2019. december
 

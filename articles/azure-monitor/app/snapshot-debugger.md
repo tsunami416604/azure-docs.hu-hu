@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
-ms.reviewer: brahmnes
-ms.openlocfilehash: 681190a23fd09402ae96c328b7d98044baf3444e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: cweining
+ms.openlocfilehash: 44b4a7bb5910f7f2d89a9f76e21ccfcacda667fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406396"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932572"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Pillanatképek hibakeresése a .NET-alkalmazásokban lévő kivételekről
-Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. A Snapshot Debugger (előzetes verzió) az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és opcionálisan konfigurálja a gyűjtemény paramétereit a [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.
+Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és opcionálisan konfigurálja a gyűjtemény paramétereit a [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.
 
 A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. Ha hatékonyabb hibakeresési élményt szeretne kapni a forráskódtal, nyissa meg a pillanatképeket a Visual Studio 2019 Enterprise használatával. A Visual Studióban úgy is beállíthatja a Snappoints, hogy a rendszer kivétel nélkül is [interaktívan készítsen pillanatképeket](https://aka.ms/snappoint) .
 
@@ -33,7 +33,7 @@ A következő környezetek támogatottak:
 * Az operációsrendszer-család 4-es vagy újabb verzióját futtató [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 vagy újabb rendszerű [Azure Service Fabric-szolgáltatások](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Azure-Virtual Machines és Windows Server 2012 R2 vagy újabb rendszert futtató [virtuálisgép-méretezési készletek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* Windows Server 2012 R2 vagy újabb rendszert futtató helyszíni [virtuális vagy fizikai gépek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 vagy újabb, vagy Windows 8,1 vagy újabb rendszert futtató helyszíni [virtuális vagy fizikai gépek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > Az ügyfélalkalmazások (például WPF, Windows Forms vagy UWP) nem támogatottak.

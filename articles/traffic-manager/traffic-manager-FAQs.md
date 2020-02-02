@@ -3,20 +3,20 @@ title: Azure Traffic Manager – gyakori kérdések
 description: Ez a cikk a Traffic Managerekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: allensu
-ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.author: rohink
+ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045312"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938815"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -499,7 +499,7 @@ A következő táblázat ismerteti a beágyazott végpontok Traffic Manager áll
 
 | Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Megjegyzések |
 | --- | --- | --- |
-| Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
+| Tiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |
 | Online. Legalább egy alárendelt profil végpontja online állapotú. Egy végpont nem csökkentett teljesítményű állapotban van. |Lásd fentebb. | |
 | CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Ugyanaz, mint a fenti. | |

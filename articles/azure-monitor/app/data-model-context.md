@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677460"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933070"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetria kontextus: Application Insights adatmodell
 
@@ -96,7 +96,7 @@ Maximális hossz: 1024
 
 ## <a name="account-id"></a>Fiókazonosító
 
-Több-bérlős alkalmazásokban ez a fiók azonosítója vagy neve, amelyet a felhasználó alkalmaz. Ilyen lehet például az Azure Portal vagy a blog neve blogging platform előfizetés-azonosítója.
+Több-bérlős alkalmazásokban ez a fiók azonosítója vagy neve, amelyet a felhasználó alkalmaz. Ilyen lehet például az előfizetés azonosítója a blogírás platform Azure Portal vagy blogjának nevéhez.
 
 Maximális hossz: 1024
 

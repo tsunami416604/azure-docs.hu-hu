@@ -3,7 +3,7 @@ title: Az Azure Traffic Manager működése | Microsoft Docs
 description: Ez a cikk segít megérteni, hogyan Traffic Manager irányítja a forgalmat a webalkalmazások nagy teljesítményének és rendelkezésre állásának biztosítása érdekében
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312152"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938623"
 ---
 # <a name="how-traffic-manager-works"></a>A Traffic Manager működése
 
@@ -26,7 +26,7 @@ Az Azure Traffic Manager segítségével szabályozhatja az alkalmazás-végpont
 Traffic Manager két fő előnyt biztosít:
 
 - Forgalom eloszlása a különböző [forgalom-útválasztási módszerek](traffic-manager-routing-methods.md) egyike szerint
-- Végpontok állapotának és automatikus feladatátvételének [folyamatos figyelése](traffic-manager-monitoring.md) , ha a végpontok meghiúsulnak
+- [Végpontok állapotának](traffic-manager-monitoring.md) és automatikus feladatátvételének folyamatos figyelése, ha a végpontok meghiúsulnak
 
 Amikor egy ügyfél megpróbál csatlakozni egy szolgáltatáshoz, először fel kell oldania a szolgáltatás DNS-nevét egy IP-címhez. Az ügyfél ezután csatlakozik ehhez az IP-címhez a szolgáltatás eléréséhez.
 
@@ -34,7 +34,7 @@ Amikor egy ügyfél megpróbál csatlakozni egy szolgáltatáshoz, először fel
 
 ## <a name="traffic-manager-example"></a>Traffic Manager példa
 
-A contoso Corp egy új Partner portált fejlesztett ki. A portál https://partners.contoso.com/login.aspx URL-címe:. Az alkalmazás az Azure három régiójában fut. A rendelkezésre állás javítása és a globális teljesítmény maximalizálása érdekében a Traffic Manager segítségével terjesztik az ügyfelek forgalmát a legközelebbi elérhető végpontra.
+A contoso Corp egy új Partner portált fejlesztett ki. A portál URL-címe https://partners.contoso.com/login.aspx. Az alkalmazás az Azure három régiójában fut. A rendelkezésre állás javítása és a globális teljesítmény maximalizálása érdekében a Traffic Manager segítségével terjesztik az ügyfelek forgalmát a legközelebbi elérhető végpontra.
 
 Ennek a konfigurációnak a megvalósításához a következő lépéseket kell végrehajtania:
 
@@ -49,7 +49,7 @@ Ennek a konfigurációnak a megvalósításához a következő lépéseket kell 
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Hogyan csatlakozhatnak az ügyfelek a Traffic Manager
 
-Az előző példát követve, amikor egy ügyfél a lapot https://partners.contoso.com/login.aspx kéri, az ügyfél a következő lépéseket hajtja végre a DNS-név feloldásához és a kapcsolat létesítéséhez:
+Az előző https://partners.contoso.com/login.aspx példából való továbblépés után az ügyfél a következő lépéseket hajtja végre a DNS-név feloldásához és a kapcsolat létesítéséhez:
 
 ![Traffic Manager használó kapcsolatok létrehozása][2]
 
@@ -67,7 +67,7 @@ Az előző példát követve, amikor egy ügyfél a lapot https://partners.conto
 7. A rekurzív DNS szolgáltatás összevonja az eredményeket, és egyetlen DNS-választ ad vissza az ügyfélnek.
 8. Az ügyfél megkapja a DNS-eredményeket, és csatlakozik a megadott IP-címhez. Az ügyfél közvetlenül kapcsolódik az Application Service-végponthoz, és nem a Traffic Manageron keresztül. Mivel ez egy HTTPS-végpont, az ügyfél elvégzi a szükséges SSL/TLS-kézfogást, majd egy HTTP GET kérelmet tesz elérhetővé az "/login.aspx" oldalon.
 
-A rekurzív DNS szolgáltatás gyorsítótárazza a kapott DNS-válaszokat. Az ügyféleszközök DNS-feloldója is gyorsítótárazza az eredményt. A gyorsítótárazás lehetővé teszi, hogy a további DNS-lekérdezések gyorsabban megválaszolják a gyorsítótárból származó adatok használatával, nem pedig más névkiszolgálók lekérdezését. A gyorsítótár időtartamát az egyes DNS-rekordok élettartam (TTL) tulajdonsága határozza meg. A rövidebb értékek a gyorsítótár lejárati idejét eredményezik, így a Traffic Manager névkiszolgálók felé irányuló több időpontot is igénybe vehet. A hosszabb értékek azt jelentik, hogy hosszabb időt vehet igénybe a sikertelen végpontról érkező forgalom. Traffic Manager lehetővé teszi, hogy a Traffic Manager DNS-válaszokban használt TTL-t a 0 másodpercnél alacsonyabb értékre konfigurálja, és az 2 147 483 647 másodpercet (az [RFC-1035-es](https://www.ietf.org/rfc/rfc1035.txt)verziónak megfelelő maximális tartományt) adja meg, így kiválaszthatja az igényeinek legmegfelelőbb egyensúlyt az alkalmazás.
+A rekurzív DNS szolgáltatás gyorsítótárazza a kapott DNS-válaszokat. Az ügyféleszközök DNS-feloldója is gyorsítótárazza az eredményt. A gyorsítótárazás lehetővé teszi, hogy a további DNS-lekérdezések gyorsabban megválaszolják a gyorsítótárból származó adatok használatával, nem pedig más névkiszolgálók lekérdezését. A gyorsítótár időtartamát az egyes DNS-rekordok élettartam (TTL) tulajdonsága határozza meg. A rövidebb értékek a gyorsítótár lejárati idejét eredményezik, így a Traffic Manager névkiszolgálók felé irányuló több időpontot is igénybe vehet. A hosszabb értékek azt jelentik, hogy hosszabb időt vehet igénybe a sikertelen végpontról érkező forgalom. Traffic Manager lehetővé teszi, hogy a Traffic Manager DNS-válaszokban használt TTL-t a 0 másodpercnél kisebb értékre konfigurálja, és az 2 147 483 647 másodpercet (az [RFC-1035-es](https://www.ietf.org/rfc/rfc1035.txt)verziónak megfelelő maximális tartományt) adja meg, így kiválaszthatja az alkalmazás igényeinek legmegfelelőbb egyensúlyt.
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -93,7 +93,7 @@ A rekurzív DNS szolgáltatás gyorsítótárazza a kapott DNS-válaszokat. Az �
 
 * [Hogyan tudom megismerni a profilhoz tartozó lekérdezések mennyiségét?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Traffic Manager [végpont monitorozásáról és az automatikus feladatátvételről](traffic-manager-monitoring.md).
 

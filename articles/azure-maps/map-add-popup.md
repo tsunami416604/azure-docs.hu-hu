@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911154"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933352"
 ---
 # <a name="add-a-popup-to-the-map"></a>Felugró ablak hozzáadása a térképhez
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy előugró pontot egy térképen.
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A következő kód egy pont funkciót helyez el, amely `name` és `description` tulajdonságokkal rendelkezik a térképhez egy szimbólum réteg használatával. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az egérmutató a szimbólum rétegbe kerül, és az előugró ablak megnyitására és bezárására szolgál, amikor az egérmutató a szimbólum jelölője fölé vagy lefelé mutat. Ha a jelölő szimbólum látható, akkor a rendszer az előugró ablak `position` tulajdonságát a jelölő pozíciójának megfelelően frissíti, és a `content` lehetőség frissül, és egy olyan HTML-kódot tartalmaz, amely betakarja a pont szolgáltatás `name` és `description` tulajdonságait. Ekkor megjelenik az előugró ablak a térképen a `open` függvény használatával.
+A következő kód egy pont funkciót helyez el, amely `name` és `description` tulajdonságokkal rendelkezik a térképhez egy szimbólum réteg használatával. Az [előugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) egy példánya jön létre, de nem jelenik meg. Az Egérgombok az előugró ablak megnyitásának és bezárásának elindításához lesznek hozzáadva a szimbólum réteghez. Ha a jelölő szimbólum látható, az előugró ablak `position` tulajdonsága a jelölő pozíciójának megfelelően frissül, és a `content` lehetőség frissül, és egy olyan HTML-kódot tartalmaz, amely betakarja a pont szolgáltatás `name` és `description` tulajdonságait. Ekkor megjelenik az előugró ablak a térképen a `open` függvény használatával.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Felugró ablak újrahasználata több ponttal
 
-Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb módszer egy előugró ablak létrehozása és újbóli használata, mint az egyes pontokhoz tartozó előugró ablakok létrehozása. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
+Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jelenik meg, a legjobb megoldás egy előugró ablak létrehozása és újbóli használata. A felugró ablak újrafelhasználásával az alkalmazás által létrehozott DOM-elemek száma jelentősen csökkent, ami jobb teljesítményt nyújt. Az alábbi minta 3 pontos funkciókat hoz létre. Ha bármelyikre kattint, megjelenik egy előugró ablak, amely az adott pont funkciójának tartalmát jeleníti meg.
 
 <br/>
 
@@ -94,7 +94,7 @@ Ha nagy számú ponttal rendelkezik, és egyszerre csak egy előugró ablak jele
 
 ## <a name="customizing-a-popup"></a>Felugró ablak testreszabása
 
-Alapértelmezés szerint az előugró ablak fehér háttérrel, egy mutató nyilat tartalmaz az alján, valamint egy Bezárás gombot a jobb felső sarokban. Az alábbi minta a háttérszínt feketére módosítja a felugró ablak `fillColor` lehetőségével. A Bezárás gomb a `shoCloseButton` beállítás hamis értékre állításával távolítható el. A felugró ablak HTML-tartalma a felugró ablak széleitől számított 10 képpontot használ, és a szöveg fehér színűvé válik, így szépen jelenik meg a fekete háttéren.  
+Alapértelmezés szerint az előugró ablak fehér háttérrel, egy mutató nyilat tartalmaz az alján, valamint egy Bezárás gombot a jobb felső sarokban. Az alábbi minta a háttérszínt feketére módosítja a felugró ablak `fillColor` lehetőségével. A Bezárás gomb a `CloseButton` beállítás hamis értékre állításával távolítható el. Az előugró ablak HTML-tartalma 10 képpont kitöltését használja az előugró ablak széleiből. A szöveg fehér színű, így szépen megjelenik a fekete háttéren.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Tekintse meg a Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 
 ## <a name="popup-events"></a>Felugró események
 
-Az előugró ablakok megnyithatók, lezárhatók és áthúzhatók. Az előugró osztály olyan eseményeket biztosít, amelyek segítségével a fejlesztők reagálni tudnak ezekre a műveletekre. Az alábbi példa kiemeli, hogy az előugró ablak megnyitásakor, zárásakor vagy húzásakor milyen események égetése következik be. 
+Az előugró ablakok megnyithatók, lezárhatók és áthúzhatók. Az előugró osztály olyan eseményeket biztosít, amelyek segítségével a fejlesztők reagálni tudnak ezekre az eseményekre. Az alábbi példa azt mutatja be, hogy a felhasználó mikor nyitja meg, zárja be vagy húzza az előugró ablakokat. 
 
 <br/>
 
@@ -117,7 +117,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>felugró 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Lakosság](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)

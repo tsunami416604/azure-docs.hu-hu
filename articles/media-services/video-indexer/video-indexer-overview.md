@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6d03e66d125c4234a95e5a79f212bc81e7cea560
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892702"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933392"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -26,6 +26,10 @@ Az Video Indexerekkel való kinyerésének megkezdéséhez létre kell hoznia eg
 A következő ábra egy illusztráció, nem pedig technikai magyarázat arról, hogy a Video Indexer hogyan működik a háttérben.
 
 ![Azure Media Services Video Indexer folyamatábrája](./media/video-indexer-overview/model-chart.png)
+
+## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
+ 
+Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának összes vonatkozó törvényének, és előfordulhat, hogy nem használja Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy más személyeknek is ártalmas lehet. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban szereplő személy (ek) hoz. A megfelelőségről, az adatvédelemről és a biztonságról Video Indexer a Microsoft [Cognitive Services feltételeiben](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)olvashat. A Microsoft adatvédelmi kötelezettségei és az adatok kezelése érdekében tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit ("Ost")](https://www.microsoft.com/licensing/product-licensing/products) és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti magát.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Mire használhatom a Video Indexer?
 

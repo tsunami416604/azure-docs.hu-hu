@@ -1,69 +1,71 @@
 ---
 title: Az Azure Backup támogatási mátrixa
-description: Provides a summary of support settings and limitations for the Azure Backup service.
+description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705377"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936246"
 ---
-# <a name="support-matrix-for-azure-backup"></a>Support matrix for Azure Backup
+# <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
-You can use [Azure Backup](backup-overview.md) to back up data to the Microsoft Azure cloud platform. This article summarizes the general support settings and limitations for Azure Backup scenarios and deployments.
+A [Azure Backup](backup-overview.md) használatával biztonsági mentést készíthet az Microsoft Azure Cloud platformra. Ez a cikk a Azure Backup forgatókönyvek és központi telepítések általános támogatási beállításait és korlátozásait foglalja össze.
 
-Other support matrices are available:
+További támogatási mátrixok érhetők el:
 
-- Support matrix for [Azure virtual machine (VM) backup](backup-support-matrix-iaas.md)
-- Support matrix for backup by using [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md)
-- Support matrix for backup by using the [Microsoft Azure Recovery Services (MARS) agent](backup-support-matrix-mars-agent.md)
+- Az [Azure virtuális gép (VM) biztonsági mentésének](backup-support-matrix-iaas.md) támogatási mátrixa
+- A biztonsági mentéshez használható mátrix a [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md) használatával
+- A biztonsági mentéshez használható mátrix a [Microsoft Azure Recovery Services-(MARS-) ügynök](backup-support-matrix-mars-agent.md) használatával
 
-## <a name="vault-support"></a>Vault support
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-Azure Backup uses Recovery Services vaults to orchestrate and manage backups. It also uses vaults to store backed-up data.
+## <a name="vault-support"></a>Tár támogatása
 
-The following table describes the features of Recovery Services vaults:
+A Azure Backup Recovery Services-tárolókat használ a biztonsági másolatok előkészítéséhez és kezeléséhez. A tárolókat is használ a biztonsági másolatok tárolásához.
+
+A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerteti:
 
 **Funkció** | **Részletek**
 --- | ---
-**Vaults in subscription** | Up to 500 Recovery Services vaults in a single subscription.
-**Machines in a vault** | Up to 1,000 Azure VMs in a single vault.<br/><br/> Up to 50 MABS servers can be registered in a single vault.
-**Data sources in vault storage** | Maximum 54,400 GB. There's no limit for Azure VM backups.
-**Backups to vault** | **Azure VMs:** Once a day.<br/><br/>**Machines protected by DPM/MABS:** Twice a day.<br/><br/> **Machines backed up directly by using the MARS agent:** Three times a day.
-**Backups between vaults** | Backup is within a region.<br/><br/> You need a vault in every Azure region that contains VMs you want to back up. You can't back up to a different region.
-**Move vaults** | You can [move vaults](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) across subscriptions or between resource groups in the same subscription. However, moving vaults across regions isn’t supported.
-**Move data between vaults** | Moving backed-up data between vaults isn't supported.
-**Modify vault storage type** | You can modify the storage replication type (either geo-redundant storage or locally redundant storage) for a vault before backups are stored. After backups begin in the vault, the replication type can't be modified.
+**Tárolók az előfizetésben** | Akár 500 Recovery Services-tároló egyetlen előfizetésben.
+**Tárolóban lévő gépek** | Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
+**Adatforrások a tárolóban** | Maximális 54 400 GB. Az Azure-beli virtuális gépek biztonsági mentései nem megengedettek.
+**Biztonsági mentések a tárba** | **Azure-beli virtuális gépek:** Naponta egyszer.<br/><br/>**DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A közvetlenül a Mars-ügynök használatával biztonsági mentést készít a gépekről:** Naponta háromszor.
+**Tárolók közötti biztonsági másolatok** | A biztonsági mentés egy régión belül található.<br/><br/> Minden olyan Azure-régióban szüksége van egy tárolóra, amely tartalmazza a biztonsági mentésre használni kívánt virtuális gépeket. Nem lehet biztonsági másolatot készíteni egy másik régióra.
+**Tárolók áthelyezése** | A tárolókat [áthelyezheti](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is. A tárolók különböző régiók közötti áthelyezése azonban nem támogatott.
+**Adatáthelyezés a tárolók között** | A biztonsági másolatok tárolók közötti áthelyezése nem támogatott.
+**Tár tárolási típusának módosítása** | A tároló replikációs típusát (vagy a Geo-redundáns tárterületet vagy a helyileg redundáns tárolást) a biztonsági másolatok tárolása előtt módosíthatja. Miután a biztonsági mentések megkezdődnek a tárolóban, a replikálás típusa nem módosítható.
 
-## <a name="on-premises-backup-support"></a>On-premises backup support
+## <a name="on-premises-backup-support"></a>Helyszíni biztonsági mentési támogatás
 
-Here's what's supported if you want to back up on-premises machines:
+A következő mi támogatott, ha biztonsági mentést szeretne készíteni a helyszíni gépekről:
 
-**Gép** | **What's backed up** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
 --- | --- | --- | ---
-**Direct backup of Windows machine with MARS agent** | Fájlok, mappák, rendszerállapot | Back up to Recovery Services vault. | Back up three times a day<br/><br/> No app-aware backup<br/><br/> Restore file, folder, volume
-**Direct backup of Linux machine with MARS agent** | Backup not supported
-**Back up to DPM** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Back up to local DPM storage. A DPM ezután biztonsági mentést készít a tárból. | App-aware snapshots<br/><br/> Full granularity for backup and recovery<br/><br/> Linux supported for VMs (Hyper-V/VMware)<br/><br/> Oracle not supported
-**Back up to MABS** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Back up to MABS local storage. A MABS ezután biztonsági mentést készít a tárba. | App-aware snapshots<br/><br/> Full granularity for backup and recovery<br/><br/> Linux supported for VMs (Hyper-V/VMware)<br/><br/> Oracle not supported
+**Windows rendszerű gép közvetlen biztonsági mentése a MARS-ügynökkel** | Fájlok, mappák, rendszerállapot | Biztonsági mentés Recovery Services-tárolóba. | Napi három alkalommal történő biztonsági mentés<br/><br/> Nincs alkalmazás-kompatibilis biztonsági másolat<br/><br/> Fájl, mappa, kötet visszaállítása
+**A Linux-gép közvetlen biztonsági mentése a MARS-ügynökkel** | A biztonsági mentés nem támogatott
+**Biztonsági mentés a DPM** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Biztonsági mentés a helyi DPM-tárolóba. A DPM ezután biztonsági mentést készít a tárból. | Alkalmazás-kompatibilis Pillanatképek<br/><br/> A biztonsági mentés és a helyreállítás teljes részletessége<br/><br/> Virtuális gépekhez támogatott Linux (Hyper-V/VMware)<br/><br/> Az Oracle nem támogatott
+**Biztonsági mentés a MABS** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Biztonsági mentés a MABS helyi tárolóba. A MABS ezután biztonsági mentést készít a tárba. | Alkalmazás-kompatibilis Pillanatképek<br/><br/> A biztonsági mentés és a helyreállítás teljes részletessége<br/><br/> Virtuális gépekhez támogatott Linux (Hyper-V/VMware)<br/><br/> Az Oracle nem támogatott
 
-## <a name="azure-vm-backup-support"></a>Azure VM backup support
+## <a name="azure-vm-backup-support"></a>Azure-beli virtuális gépek biztonsági mentésének támogatása
 
-### <a name="azure-vm-limits"></a>Azure VM limits
+### <a name="azure-vm-limits"></a>Azure-beli virtuális gépek korlátai
 
 **Korlát** | **Részletek**
 --- | ---
-**Azure VM data disks** | Limit of 16 <br> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com
-**Azure VM data disk size** | Individual disk size can be up to 32 TB and a maximum of 256 TB combined for all disks in a VM.
+**Azure-beli VM-adatlemezek** | Legfeljebb 16 <br> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com
+**Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 
-### <a name="azure-vm-backup-options"></a>Azure VM backup options
+### <a name="azure-vm-backup-options"></a>Azure virtuális gépek biztonsági mentési lehetőségei
 
-Here's what's supported if you want to back up Azure VMs:
+Ha az Azure-beli virtuális gépek biztonsági mentését kívánja végezni, a következők támogatottak:
 
-**Gép** | **What's backed up** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
 --- | --- | --- | ---
-**Azure VM backup by using VM extension** | Entire VM | Biztonsági mentés a tárba. | Extension installed when you enable backup for a VM.<br/><br/> Back up once a day.<br/><br/> App-Aware Backup a Windows rendszerű virtuális gépekhez; fájl-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez. A Linux rendszerű gépekhez egyéni parancsfájlok használatával is konfigurálhatja az alkalmazások konzisztenciáját.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági mentést készíteni egy Azure-beli virtuális gépről egy helyszíni helyre.
+**Azure virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | Teljes virtuális gép | Biztonsági mentés a tárba. | A bővítmény akkor lett telepítve, ha engedélyezi a virtuális gép biztonsági mentését.<br/><br/> Naponta egyszer készít biztonsági mentést.<br/><br/> App-Aware Backup a Windows rendszerű virtuális gépekhez; fájl-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez. A Linux rendszerű gépekhez egyéni parancsfájlok használatával is konfigurálhatja az alkalmazások konzisztenciáját.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági mentést készíteni egy Azure-beli virtuális gépről egy helyszíni helyre.
 **Azure virtuális gépek biztonsági mentése a MARS-ügynök használatával** | Fájlok, mappák, rendszerállapot | Biztonsági mentés a tárba. | Naponta három alkalommal készíthet biztonsági másolatot.<br/><br/> Ha a teljes virtuális gép helyett adott fájlokról vagy mappákról szeretne biztonsági másolatot készíteni, a MARS-ügynök a virtuálisgép-bővítmény mellett is futhat.
 **Azure-beli virtuális gép DPM** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Biztonsági mentés a DPM-t futtató Azure-beli virtuális gép helyi tárolójába. A DPM ezután biztonsági mentést készít a tárból. | Az alkalmazással kompatibilis Pillanatképek.<br/><br/> A biztonsági mentés és a helyreállítás teljes részletessége.<br/><br/> Virtuális gépekhez támogatott Linux (Hyper-V/VMware).<br/><br/> Az Oracle nem támogatott.
 **Azure-beli virtuális gép MABS** | Fájlok, mappák, kötetek, rendszerállapot, alkalmazásadatok | Biztonsági mentés a MABS-t futtató Azure-beli virtuális gép helyi tárolójába. A MABS ezután biztonsági mentést készít a tárba. | Az alkalmazással kompatibilis Pillanatképek.<br/><br/> A biztonsági mentés és a helyreállítás teljes részletessége.<br/><br/> Virtuális gépekhez támogatott Linux (Hyper-V/VMware).<br/><br/> Az Oracle nem támogatott.

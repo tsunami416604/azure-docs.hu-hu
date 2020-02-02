@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843922"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935479"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
-Ez az oldal a gyakori Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a következők: 
+Ez az oldal az alapszintű és standard Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a következők: 
+
 - A Load Balancer mögötti virtuális gépek nem válaszolnak az állapot-mintavételre 
 - A Load Balancer mögötti virtuális gépek nem válaszolnak a konfigurált porton lévő forgalomra
 
@@ -124,6 +127,10 @@ Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpró
 Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](concepts-limitations.md#limitations) .
 
 **Megoldás** A forgatókönyv feloldásának számos módja van, beleértve a proxy használatát is. Értékelje ki Application Gateway vagy más harmadik féltől származó proxyt (például Nginx vagy HAProxy). További információ a Application Gatewayról: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Tünet: nem módosítható a háttér-port egy olyan terheléselosztó meglévő LB-szabályához, amely a háttér-készletben üzembe helyezett virtuálisgép-méretezési csoporttal rendelkezik. 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Ok: a háttér-port nem módosítható olyan terheléselosztási szabály esetében, amelyet egy, a virtuálisgép-méretezési csoport által hivatkozott Load Balancer számára használ.
+**Megoldás** A port módosításához távolítsa el az állapot-mintavételt a virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapot-mintavételt.
 
 ## <a name="additional-network-captures"></a>További hálózati rögzítések
 Ha úgy dönt, hogy megnyit egy támogatási esetet, a következő információkat kell összegyűjtenie a gyorsabb megoldás érdekében. A következő tesztek végrehajtásához válasszon egyetlen háttérbeli virtuális gépet:

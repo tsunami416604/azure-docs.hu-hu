@@ -1,6 +1,6 @@
 ---
-title: Feladatok és tevékenységek kimenetének megőrzése az Azure Storage-ban a .NET-Azure Batch fájl-konvenciók könyvtárával | Microsoft Docs
-description: Megtudhatja, hogyan használható a .NET-hez készült Azure Batch file Conventions Library a Batch-feladat és a feladat kimenetének Azure Storage-ba való megőrzéséhez, valamint a megőrzött kimenet megtekintéséhez a Azure Portal.
+title: Kimeneti adatokat az Azure Storage-ba .NET file Conventions Library-Azure Batch
+description: Ismerje meg, hogyan használhatja Azure Batch file Conventions Library for .NET-t a Batch-feladatok & feladat kimenetének Azure Storage-ba való megőrzéséhez, és megtekintheti a kimenetet a Azure Portalban.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842733"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935272"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
 

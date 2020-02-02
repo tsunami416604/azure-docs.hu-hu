@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állás és vész-helyreállítás – Azure Batch | Microsoft Docs
-description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális leállás esetén
+title: Magas rendelkezésre állás és vész-helyreállítási Azure Batch
+description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális leállás esetén. A munkaterheléseknek egy másik régióba kell átállniuk, vagy két vagy több régió között kell szétosztani.
 services: batch
 documentationcenter: ''
 author: ju-shim
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: jushiman
-ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 11546a6a664e6fb185a32d8e6cd593a850803fe8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029553"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930130"
 ---
 # <a name="design-your-application-for-high-availability"></a>Magas rendelkezésre állású alkalmazás tervezése
 

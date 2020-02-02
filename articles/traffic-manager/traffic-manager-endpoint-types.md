@@ -3,7 +3,7 @@ title: Traffic Manager végpontok típusai | Microsoft Docs
 description: Ez a cikk az Azure Traffic Manager használható különböző típusú végpontokat ismerteti.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: rohink
+ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981056"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938663"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 
@@ -25,7 +25,7 @@ Microsoft Azure Traffic Manager lehetővé teszi a hálózati forgalom elosztás
 
 A Traffic Manager három típusú végpontot támogat:
 
-* Az Azure-végpontok az Azure-ban üzemeltetett szolgáltatásokhoz használatosak.
+* Az Azure- **végpontok** az Azure-ban üzemeltetett szolgáltatásokhoz használatosak.
 * A **külső végpontok** IPv4/IPv6-címekhez, teljes tartománynevek vagy az Azure-on kívül üzemeltetett szolgáltatásokhoz használhatók, amelyek lehetnek a helyszínen vagy más szolgáltatóval is.
 * A **beágyazott végpontok** a Traffic Manager profilok összevonásával rugalmasabb forgalom-útválasztási sémákat hozhatnak létre, amelyek támogatják a nagyobb és összetettebb központi telepítések igényeit.
 
@@ -38,7 +38,7 @@ Az alábbi szakaszok részletesebben ismertetik az egyes végpontok típusait.
 Az Azure-végpontok a Traffic Manager Azure-alapú szolgáltatásaihoz használatosak. A következő Azure-erőforrástípusok támogatottak:
 
 * Pásti Cloud Services.
-* Web Apps
+* Webalkalmazások
 * Webalkalmazás-tárolóhelyek
 * PublicIPAddress-erőforrások (amelyek közvetlenül vagy egy Azure Load Balancer használatával csatlakoztathatók a virtuális gépekhez. A publicIpAddress hozzá kell rendelni egy Traffic Manager-profilban használandó DNS-nevet.
 
@@ -103,7 +103,7 @@ Ha egy profil összes végpontja le van tiltva, vagy ha maga a profil le van til
 
 * [Hogyan az Traffic Manager-profil Azure-végpontját egy másik erőforráscsoporthoz helyezi át?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [Hogyan működik a Traffic Manager](traffic-manager-how-it-works.md).
 * Ismerkedjen meg Traffic Manager [végpontok figyelésével és az automatikus feladatátvételsel](traffic-manager-monitoring.md).

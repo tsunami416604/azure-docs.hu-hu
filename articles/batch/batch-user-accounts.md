@@ -1,6 +1,6 @@
 ---
-title: Feladatok futtatása a felhasználói fiókok területen – Azure Batch | Microsoft Docs
-description: Felhasználói fiókok konfigurálása a feladatok futtatásához Azure Batch
+title: Feladatok futtatása a felhasználói fiókok alatt – Azure Batch
+description: Hasznos lehet konfigurálni azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/18/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029600"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937963"
 ---
 > [!NOTE] 
 > A cikkben tárgyalt felhasználói fiókok nem különböznek a RDP protokoll (RDP) vagy a Secure Shell (SSH) számára biztonsági okokból használt felhasználói fióktól. 

@@ -1,5 +1,5 @@
 ---
-title: A bot Protection beállítása a WAF az Azure bejárati ajtóval (előzetes verzió)
+title: A bot Protection konfigurálása a webalkalmazási tűzfalhoz az Azure bejárati ajtaján (előzetes verzió)
 description: A webalkalmazási tűzfal (WAF) megismerése.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,17 +7,15 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186715"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934652"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>A webalkalmazási tűzfal robot-védelmének konfigurálása (előzetes verzió)
-Ez a cikk bemutatja, hogyan konfigurálhatja a bot Protection-szabályt az Azure Web Application Firewall (WAF) szolgáltatásban az Azure CLI, Azure PowerShell vagy Azure Resource Manager sablon használatával.
-
-A felügyelt robot védelmi szabálykészlet beállítható úgy, hogy a WAF egyéni műveleteket hajtson végre az ismert kártékony IP-címekről érkező kérésekre. Az IP-címek forrása a Microsoft Threat Intelligence-hírcsatorna. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure webalkalmazási tűzfal (WAF) robot Protection-szabályát Azure Portal használatával. A bot Protection-szabály parancssori felülettel, Azure PowerShell vagy Azure Resource Manager sablonnal is konfigurálható.
 
 > [!IMPORTANT]
 > A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel van ellátva. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -28,10 +26,9 @@ Hozzon létre egy alapszintű WAF-szabályzatot a bejárati ajtóhoz a [Azure Po
 
 ## <a name="enable-bot-protection-rule-set"></a>Robot Protection-szabály beállításának engedélyezése
 
-1. A fenti szakaszban létrehozott alapszintű szabályzat lapon kattintson a **Beállítások**elemre, majd a **szabályok**elemre.
-2. A Részletek lapon, a **szabályok kezelése** szakaszban, a legördülő menüben jelölje be a **BotProtection-Preview-0,1**szabály előtt található jelölőnégyzetet, majd kattintson a fenti **Mentés** gombra.
-    
-   ![Robot védelmi szabály](.././media/waf-front-door-configure-bot-protection/botprotect2.png)
+A **felügyelt szabályok** lapon a webalkalmazási tűzfal házirendjének létrehozásakor először a **felügyelt szabály beállítása** szakaszban jelölje be a jelölőnégyzetet a szabály előtt **Microsoft_BotManager_1.0** a legördülő menüből, majd válassza a **felülvizsgálat + létrehozás**elemet.
+
+   ![Robot védelmi szabály](.././media/waf-front-door-configure-bot-protection/botmanager112019.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165888"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930152"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Gyors útmutató: Face ügyféloldali kódtár a .NET-hez
 
@@ -22,7 +22,6 @@ Ismerkedés a .NET-hez készült Face ügyféloldali kódtáraval. Az alábbi l�
 
 A .NET-hez készült Face ügyféloldali kódtár a következőhöz használható:
 
-* [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Képeken lévő arcok észlelése](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
@@ -105,7 +104,7 @@ A következő osztályok és felületek kezelik a Face .NET SDK főbb funkcióit
 |[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző **személyre** kiterjedő objektumok készletét tárolják. |
 |[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Ez az osztály kezeli a pillanatkép funkcióit. A használatával ideiglenesen mentheti az összes felhőalapú Arcfelismerés, és áttelepítheti az adott adatait egy új Azure-előfizetésbe. |
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a .NET-hez készült Face ügyféloldali kódtár használatával:
 
@@ -122,7 +121,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 > [!NOTE]
 > Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az arc kulcsához és a végponthoz, amelynek neve `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`.
 
-Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) objektum létrehozásához.
+Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektum létrehozásához.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ Opcionálisan kiválaszthatja, hogy melyik AI-modellt használja az észlelt arc
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-A végső észlelési művelet egy [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) objektumot, egy képurl-címet és egy felismerési modellt fog elkészíteni.
+A végső észlelési művelet egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektumot, egy képurl-címet és egy felismerési modellt fog elkészíteni.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Észlelt Arcfelismerés-objektumok
 
-A kód következő blokkjában a `DetectFaceExtract` metódus észleli az adott URL-címen található képek három képét, és létrehoz egy listát a [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) objektumokról a program memóriájában. A [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékek listája határozza meg a kinyerni kívánt szolgáltatásokat. 
+A kód következő blokkjában a `DetectFaceExtract` metódus észleli az adott URL-címen található képek három képét, és létrehoz egy listát a **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** objektumokról a program memóriájában. A **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** értékek listája határozza meg a kinyerni kívánt szolgáltatásokat. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Észlelt Arcfelismerés
 
-A többi `DetectFaceExtract` metódus elemzi és kinyomtatja az összes észlelt arc attribútum-adatát. Minden attribútumot külön kell megadni az eredeti Arcfelismerés API-hívásban (a [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) listában). A következő kód dolgozza fel az összes attribútumot, de valószínűleg csak egy vagy néhányat kell használnia.
+A többi `DetectFaceExtract` metódus elemzi és kinyomtatja az összes észlelt arc attribútum-adatát. Minden attribútumot külön kell megadni az eredeti Arcfelismerés API-hívásban (a **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listában). A következő kód dolgozza fel az összes attribútumot, de valószínűleg csak egy vagy néhányat kell használnia.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

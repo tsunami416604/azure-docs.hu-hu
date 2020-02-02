@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8ad542a3614253e11331e9b49513a887aff65890
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 130cb973f2de1de0d4c4636a4752a06e22edf65b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512928"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932561"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -64,13 +64,13 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Csatlakozás fürthöz a kubectl használatával
 
-A `kubectl` konfigurálásához a Kubernetes-fürthöz való kapcsolódáshoz használja az az [AK Get-hitelesítőadats][] parancsot. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
+Ha `kubectl` szeretne konfigurálni a Kubernetes-fürthöz való kapcsolódáshoz, használja az az [AK Get-hitelesítőadats][] parancsot. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A fürthöz való kapcsolódás ellenőrzéséhez futtassa a [kubectl Get Nodes][kubectl-get] parancsot:
+A fürthöz való kapcsolódás ellenőrzéséhez futtassa a [kubectl Get Nodes][kubectl-get] parancsot a fürtcsomópontok listájának visszaküldéséhez:
 
 ```
 $ kubectl get nodes

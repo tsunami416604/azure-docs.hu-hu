@@ -3,7 +3,7 @@ title: Metrikák és riasztások – Azure DNS
 description: Ennek a képzési útnak a megismeréséhez Azure DNS mérőszámok és riasztások.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: allensu
-ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212400"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937455"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Metrikák és riasztások Azure DNS
 A Azure DNS olyan DNS-tartományok üzemeltetési szolgáltatása, amelyek névfeloldást biztosítanak a Microsoft Azure-infrastruktúra használatával. Ez a cikk a Azure DNS szolgáltatás metrikáit és riasztásait ismerteti.
@@ -64,5 +64,5 @@ A rekordhalmaz *kapacitás-kihasználtsági* mérőszáma Azure DNS a DNS-zóná
 ## <a name="alerts-in-azure-dns"></a>Riasztások Azure DNS
 A Azure Monitor lehetővé teszi az elérhető metrikai értékek elleni riasztás lehetőségét. A DNS-metrikák a riasztások új konfigurációs felületén érhetők el. A [Azure monitor riasztások dokumentációjában](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)részletesen leírtak szerint kiválaszthatja a DNS-zónát erőforrásként, kiválaszthatja a metrikai jel típusát, valamint konfigurálhatja a riasztási logikát és egyéb paramétereket, például az **időtartamot** és a **gyakoriságot**. A riasztási feltétel teljesülése esetén tovább definiálhat egy [műveleti csoportot](../azure-monitor/platform/action-groups.md) , amely a riasztást a kiválasztott műveleteken keresztül továbbítja. A Azure Monitor metrikákkal kapcsolatos riasztások konfigurálásával kapcsolatos további információkért lásd: [riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure DNSról](dns-overview.md).

@@ -1,7 +1,7 @@
 ---
 title: Biztonságos Azure AD-webalkalmazás fejlesztése | Microsoft Docs
 description: Ez az egyszerű minta alkalmazás olyan ajánlott biztonsági eljárásokat valósít meg, amelyek javítják az alkalmazást és a szervezete biztonsági helyzetét az Azure-ban való fejlesztés során.
-keywords: –
+keywords: Na
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771274"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937986"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Biztonságos alkalmazás fejlesztése Azure AD-alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -55,7 +55,7 @@ Az architektúra ezekből az összetevőkből áll
 - [Azure Domain Name System](../../dns/dns-overview.md). Adja meg a szolgáltatást a tartomány üzemeltetéséhez.
 - [Azure Load Balancer](../../load-balancer/load-balancer-overview.md). Lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozását.
 - [Azure-webalkalmazás](../../app-service/overview.md).  HTTP-alapú szolgáltatást biztosít a webalkalmazások üzemeltetéséhez.
-- az [Azure Security Centerben](../../security-center/index.yml). komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz.
+- [Azure Security Center](../../security-center/index.yml). komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz.
 - [Azure Policy](../../governance/policy/overview.md). Biztosítja az erőforrások kiértékelését a hozzárendelt szabályzatok nem megfelelősége érdekében.
 
 ## <a name="threat-model"></a>Veszélyforrások modellje
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -412,7 +413,7 @@ Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhaszn�
    - Adattároló-hozzáférési kulcs
    - Kapcsolati sztring
    - Adattábla neve
-   - Felhasználó hitelesítő adatai
+   - Felhasználói hitelesítő adatok
    - A speciális hozzáférési szabályzatok igény szerint vannak konfigurálva
    - Key Vault hozzáférési szabályzatok minimálisan szükséges engedélyekkel rendelkeznek a kulcsok és a titkos kulcsokhoz
    - A Key Vault összes kulcsának és titkának lejárati dátuma
@@ -465,7 +466,7 @@ Az MFA engedélyezése rendszergazdai bejelentkezésekhez
    1. Lépjen a **Azure Active Directory** lapra a Azure Portal
    2. A biztonság kategóriában válassza a feltételes hozzáférés lehetőséget. Ezt a képernyőt látja
 
-       ![Feltételes hozzáférés – szabályzatok](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Feltételes hozzáférés – házirendek](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Ha nem tud új szabályzatot létrehozni
 
@@ -558,6 +559,6 @@ A munkaterület létrehozása
 ## <a name="next-steps"></a>Következő lépések
    A következő cikkek segíthetnek a biztonságos alkalmazások megtervezésében, fejlesztésében és üzembe helyezésében.
 
-- [Kialakítás](secure-design.md)
+- [Tervezési](secure-design.md)
 - [Fejlesztés](secure-develop.md)
 - [Üzembe helyezés](secure-deploy.md)

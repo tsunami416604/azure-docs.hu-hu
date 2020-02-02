@@ -9,34 +9,76 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3729bedf7591ffecc558b88660486f7e336fa717
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5cb435b38a776ba652854592bdc7d3e833742d1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705911"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935080"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights GA-környezetből a következő használatával:C#
 
-Ez C# a példa azt szemlélteti, hogyan lehet lekérdezni az Azure Time Series Insights GA-környezet adatait.
+Ez C# a példa azt mutatja be, hogyan használható a [GA lekérdezési api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) -k Azure Time Series Insights GA-környezetek adatainak lekérdezéséhez.
 
-A minta számos alapszintű példát is tartalmat a Query API használatára:
+## <a name="summary"></a>Összefoglalás
 
-1. Előkészítési lépésként szerezze be a hozzáférési jogkivonatot a Azure Active Directory API-n keresztül. Adja át ezt a tokent minden lekérdezési API-kérelem `Authorization` fejlécében. Nem interaktív alkalmazások beállításával kapcsolatban lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md). Győződjön meg arról is, hogy a minta elején definiált összes állandó megfelelően van beállítva.
-1. Azon környezetek listája, amelyekhez a felhasználónak hozzáférése van. Az egyik környezet a fontos környezet, a további adatlekérdezések pedig erre a környezetre vannak lekérdezve.
-1. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
-1. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
+Az alábbi mintakód a következő funkciókat mutatja be:
+
+* Hozzáférési token beszerzése Azure Active Directory a [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)használatával.
+
+* A beszerzett hozzáférési token átadása a következő lekérdezési API-kérelmek `Authorization` fejlécében. 
+
+* A minta meghívja a GA lekérdezési API-kat, amely bemutatja, hogyan történik a HTTP-kérések elvégzése:
+    * A [környezetek API beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) azon környezetek visszaküldéséhez, amelyekhez a felhasználónak hozzáférése van
+    * [Környezet rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [Környezeti metaadatok](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) beolvasása a környezeti metaadatok lekéréséhez
+    * [Környezetek eseményeinek beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [Környezeti összesítések beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+    
+* A GA lekérdezési API-k használata a WSS használatával a következő üzenettel:
+
+   * [Környezeti események beolvasása – adatfolyamként továbbított API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Környezet összesített adatfolyamának beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
 > [!NOTE]
 > A példában szereplő kód a következő címen érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
+## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás
+
+A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
+
+1. [GA Azure Time Series Insights környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
+
+1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. 
+
+1. Telepítse a szükséges projekt-függőségeket.
+
+1. Szerkessze az alábbi mintakód összes **#DUMMY #** helyére a megfelelő környezeti azonosítóval.
+
+1. Futtassa a kódot a Visual Studióban.
+
+> [!TIP]
+> * Tekintse meg C# a többi GA-kódrészletet a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+
 ## <a name="project-dependencies"></a>Projekt függőségei
 
-Adja hozzá a NuGet-csomagokat `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json`.
+Javasoljuk, hogy a Visual Studio legújabb verzióját használja:
 
-## <a name="c-example"></a>C#például
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – 16.4.2 + verzió
+
+A mintakód két kötelező függőséggel rendelkezik:
+
+* [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9 csomag.
+* [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 csomag.
+
+Adja hozzá a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával:
+
+* `dotnet add package Newtonsoft.Json --version 9.0.1`
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
+
+## <a name="c-sample-code"></a>C#mintakód
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 

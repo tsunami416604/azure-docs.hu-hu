@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940579"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935416"
 ---
 # <a name="what-is-workload-management"></a>Mi az a számítási feladatok kezelése?
 
@@ -31,7 +31,7 @@ Az adatraktár-munkaterhelések az adatraktárral kapcsolatban áttekintett öss
 - Adatok exportálása az adatraktárból
 
 Az adatraktár teljesítménybeli kapacitását az [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)határozzák meg.
-- Az összes teljesítmény profilhoz lefoglalt erőforrások megtekintéséhez lásd: [memória és egyidejűségi korlátok] memória – Egyidejűség – limits.md).
+- Az összes teljesítménnyel kapcsolatos profilhoz lefoglalt erőforrások megtekintéséhez lásd: [memória és egyidejűségi korlátok](memory-concurrency-limits.md).
 - A kapacitás módosításához vertikális [fel-vagy leskálázást](quickstart-scale-compute-portal.md)végez.
 
 

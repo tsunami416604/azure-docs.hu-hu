@@ -2,17 +2,17 @@
 title: Elosztott terhelésű Azure Web Apps a zóna csúcsán
 description: Azure DNS alias rekord használata elosztott terhelésű webalkalmazások üzemeltetéséhez a zóna csúcsán
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212370"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937365"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure Web Apps a zóna csúcsán
 
@@ -43,7 +43,7 @@ Hozzon létre egy erőforráscsoportot, amely az ebben a cikkben használt össz
 Hozzon létre két webes App Service sémát az erőforráscsoporthoz az alábbi táblázat alapján a konfigurációs információkhoz. App Service terv létrehozásával kapcsolatos további információkért lásd: [app Service-terv kezelése az Azure-ban](../app-service/app-service-plan-manage.md).
 
 
-|Name (Név)  |Operációs rendszer  |Hely  |Tarifacsomag  |
+|Name (Név)  |Operációs rendszer  |Földrajzi egység  |Díjcsomag  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|USA keleti régiója|Fejlesztési/tesztelési D1 – közös|
 |ASP-02     |Windows|USA középső régiója|Fejlesztési/tesztelési D1 – közös|
@@ -58,7 +58,7 @@ Hozzon létre két webalkalmazást, egyet az egyes App Service-csomagokban.
 4. Kattintson a **Létrehozás** gombra.
 5. Fogadja el az alapértelmezett értékeket, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
 
-   |Name (Név)<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futásidejű verem|Régió|App Service csomag/hely
+   |Name (Név)<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futásidejű verem|Region (Régió)|App Service csomag/hely
    |---------|---------|-|-|-------|
    |App-01|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|USA keleti régiója|ASP-01 (D1)|
    |App-02|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|USA középső régiója|ASP-02 (D1)|
@@ -87,10 +87,10 @@ Most már létrehozhatja a két webalkalmazáshoz tartozó végpontokat.
 3. Válassza a **Hozzáadás** lehetőséget.
 4. A végpontok konfigurálásához használja a következő táblázatot:
 
-   |Típus  |Name (Név)  |Cél  |Hely  |Egyéni fejléc beállításai|
+   |Type (Típus)  |Name (Név)  |Cél  |Földrajzi egység  |Egyéni fejléc beállításai|
    |---------|---------|---------|---------|---------|
-   |Külső végpont     |End-01|Az App-01-ben rögzített IP-cím|USA keleti régiója|gazdagép:\<az App-01\> rögzített URL-címet<br>Példa: **Host: app-01.azurewebsites.net**|
-   |Külső végpont     |End-02|Az App-02-hez rögzített IP-cím|USA középső régiója|gazdagép:\<az App-02\> rögzített URL-címet<br>Példa: **Host: app-02.azurewebsites.net**
+   |Külső végpont     |Vége – 01|Az App-01-ben rögzített IP-cím|USA keleti régiója|gazdagép:\<az App-01\> rögzített URL-címet<br>Példa: **Host: app-01.azurewebsites.net**|
+   |Külső végpont     |Záró 02|Az App-02-hez rögzített IP-cím|USA középső régiója|gazdagép:\<az App-02\> rögzített URL-címet<br>Példa: **Host: app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zóna létrehozása
 
@@ -104,7 +104,7 @@ Ha egyéni állomásnevet ad hozzá a webalkalmazásokhoz, az egy adott TXT-reko
 2. Válassza a **Rekordhalmaz** elemet.
 3. Adja hozzá a rekordot a következő táblázat használatával. Az értéknél használja a korábban rögzített webalkalmazás URL-címét:
 
-   |Name (Név)  |Típus  |Érték|
+   |Name (Név)  |Type (Típus)  |Value (Díj)|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Most adjon hozzá egy alias-rekordot a zóna csúcsához.
 2. Válassza a **Rekordhalmaz** elemet.
 3. Adja hozzá a rekordot a következő táblázat használatával:
 
-   |Name (Név)  |Típus  |Alias-rekord készlete  |Alias típusa  |Azure-erőforrás|
+   |Name (Név)  |Type (Típus)  |Alias-rekord készlete  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
    |@     |A|Igen|Azure-erőforrás|Traffic Manager – a profil|
 

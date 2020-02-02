@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260953"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939242"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -348,9 +348,9 @@ Ebből a példából megtudhatja, hogyan válthat a `container1/foo` vagy `conta
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Adatok archiválása betöltéskor
+### <a name="archive-data-after-ingest"></a>Adatok archiválása betöltés után
 
-Egyes adatforgalom üresjáratban marad a felhőben, és ritkán, ha még egyszer is hozzáfér a tárolóhoz. A következő életciklus-házirend úgy van konfigurálva, hogy a betöltés után archiválja az adatok archiválását. Ez a példa a tárolóban lévő Blobok `archivecontainer` egy archiválási szintre való áttérését eredményezi. Az áttérést az utolsó módosítás időpontja után 0 nappal a Blobok alapján hajtja végre a rendszer:
+Egyes adatforgalom üresjáratban marad a felhőben, és ritkán, ha még egyszer is hozzáfér a tárolóhoz. A következő életciklus-házirend úgy van konfigurálva, hogy a betöltés után röviddel az adatok archiválását. Ez a példa a tárolóban lévő Blobok `archivecontainer` egy archiválási szintre való áttérését eredményezi. Az áttérést az utolsó módosítás időpontja után 0 nappal a Blobok alapján hajtja végre a rendszer:
 
 > [!NOTE] 
 > Javasoljuk, hogy a blobokat közvetlenül az archív szintre töltse fel, hogy hatékonyabb legyen. Az x-MS-Aces-réteg fejléce a [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) vagy a [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) esetében használható a REST-es verzió 2018-11-09-es vagy újabb verziójával, vagy a blob Storage-beli legújabb kódtárakkal. 

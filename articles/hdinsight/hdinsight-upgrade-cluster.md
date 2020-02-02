@@ -1,28 +1,29 @@
 ---
-title: HDInsight-fürt frissítése újabb verzióra – Azure
-description: Útmutató az Azure HDInsight-fürt újabb verzióra való frissítéséhez.
-author: omidm1
-ms.author: omidm
+title: Fürt átmigrálása újabb verzióra
+titleSuffix: Azure HDInsight
+description: Útmutató az Azure HDInsight-fürt újabb verzióra való átváltásához.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951156"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935493"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt frissítése újabb verzióra
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt migrálása egy újabb verzióra
 
-A legújabb HDInsight funkciók kihasználásához javasoljuk, hogy a HDInsight-fürtök frissítése a legújabb verzióra történjen. A HDInsight-fürt verzióinak frissítéséhez kövesse az alábbi irányelveket.
+A legújabb HDInsight funkciók kihasználása érdekében javasoljuk, hogy a HDInsight-fürtöket rendszeresen telepítse át a legújabb verzióra. A HDInsight nem támogatja a helyben történő frissítést, ha egy meglévő fürtöt egy újabb verzióra frissítenek. Létre kell hoznia egy új fürtöt a kívánt összetevő-és platform-verzióval, majd át kell telepítenie az alkalmazásokat az új fürt használatára. Az alábbi útmutatást követve áttelepítheti a HDInsight-fürtök verzióját.
 
 > [!NOTE]  
 > A HDInsight támogatott verzióival kapcsolatos információkért lásd: a [HDInsight-összetevők verziói](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-## <a name="upgrade-tasks"></a>Frissítési feladatok
+## <a name="migration-tasks"></a>Áttelepítési feladatok
 
 A HDInsight-fürt frissítésének munkafolyamata a következő.
 ![HDInsight-frissítési munkafolyamat-diagram](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ Miután meggyőződött róla, hogy minden a várt módon működik, ütemezze a
 1. Hozzon létre egy fürtöt ugyanabban a VNET-alhálózatban, amely a legújabb (vagy támogatott) HDI-verziót használja ugyanazzal az alapértelmezett adattárral, amelyet az előző fürt használ. Ez lehetővé teszi, hogy az új fürt folytassa a munkát a meglévő termelési adataival.
 1. Importálja a biztonsági mentés alatt lévő összes átmeneti adatkészletet.
 1. Feladatok indítása/a feldolgozás folytatása az új fürt használatával.
+
+## <a name="workload-specific-guidance"></a>Munkaterhelés-specifikus útmutató
+
+A következő dokumentumok útmutatást nyújtanak bizonyos számítási feladatok áttelepítéséhez:
+
+* [HBase migrálása](/hbase/apache-hbase-migrate-new-version.md)
+* [Kafka migrálása](/kafka/migrate-versions.md)
+* [Struktúra/interaktív lekérdezés migrálása](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
+
+Az adatbázis biztonsági mentésével és visszaállításával kapcsolatos további információkért lásd: [Az Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel](../sql-database/sql-database-recovery-using-backups.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

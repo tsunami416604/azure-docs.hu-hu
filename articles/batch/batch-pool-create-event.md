@@ -1,6 +1,6 @@
 ---
-title: Azure Batch készlet létrehozása esemény | Microsoft Docs
-description: A Batch-készlet létrehozási eseményének hivatkozása.
+title: Azure Batch készlet létrehozási eseménye
+description: A Batch-készlet létrehozási eseményének hivatkozása, amely a készlet létrehozása után lett kibocsátva. A napló tartalma a készlet általános információit fogja közzétenni.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: b804d828d276c39febf7fdd9347bce04a062676a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cb109daee20300d4564ecd40c0a3c14de0f3de1c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026745"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929867"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 
@@ -69,9 +69,9 @@ ms.locfileid: "76026745"
 |`resizeTimeout`|Idő|A számítási csomópontok kiosztásának időtúllépése a készlet utolsó átméretezési műveletéhez megadott készletre.  (A készlet létrehozásakor a kezdeti méretezés átméretezésnek számít.)|
 |`targetDedicatedNodes`|Int32|A készlethez igényelt dedikált számítási csomópontok száma.|
 |`targetLowPriorityNodes`|Int32|A készlethez igényelt alacsony prioritású számítási csomópontok száma.|
-|`enableAutoScale`|Logikai|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
-|`enableInterNodeCommunication`|Logikai|Megadja, hogy a készlet be van-e állítva a csomópontok közötti közvetlen kommunikációhoz.|
-|`isAutoPool`|Logikai|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
+|`enableAutoScale`|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
+|`enableInterNodeCommunication`|Bool|Megadja, hogy a készlet be van-e állítva a csomópontok közötti közvetlen kommunikációhoz.|
+|`isAutoPool`|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
 |`maxTasksPerNode`|Int32|A készlet egyetlen számítási csomópontján egyszerre futtatható feladatok maximális száma.|
 |`vmFillType`|Sztring|Azt határozza meg, hogyan osztja el a Batch szolgáltatás a feladatokat a készlet számítási csomópontjai között. Az érvényes értékek: spread vagy Pack.|
 

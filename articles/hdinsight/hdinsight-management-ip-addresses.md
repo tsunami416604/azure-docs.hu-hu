@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435479"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929885"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-felügyeleti IP-címek
 
 > [!Important]
-> A hálózati biztonsági csoportokhoz tartozó [szolgáltatási címke](hdinsight-service-tags.md) funkció használata. Az új régiók csak a szolgáltatási címkékhez lesznek hozzáadva, és a statikus IP-címek végül elavultak lesznek.
+> A legtöbb esetben mostantól használhatja a hálózati biztonsági csoportokhoz tartozó [Service tag](hdinsight-service-tags.md) funkciót az IP-címek manuális hozzáadása helyett. Az új régiók csak a szolgáltatási címkékhez lesznek hozzáadva, és a statikus IP-címek végül elavultak lesznek.
 
 Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure-beli állapot-és felügyeleti szolgáltatásokkal.  A szolgáltatások egyes IP-címei a régióra jellemzőek, és némelyikük az összes Azure-régióra vonatkozik. Ha nem egyéni DNS-t használ, akkor engedélyeznie kell az Azure DNS szolgáltatástól érkező forgalmat is.
 

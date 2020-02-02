@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481011"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931565"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Felügyeleti fogalmak a felhasználói fiókokhoz, jelszavakhoz és felügyelethez Azure Active Directory Domain Services
 
@@ -34,7 +34,7 @@ A felhasználói fiókok több módon is létrehozhatók az Azure AD DSban. A le
 * A felhasználói fiók szinkronizálható az Azure AD-ből. Ez magában foglalja a közvetlenül az Azure AD-ben létrehozott felhőalapú felhasználói fiókokat, valamint a helyi AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókokat.
     * Az Azure AD DS felhasználói fiókjainak többsége az Azure AD szinkronizálási folyamatán keresztül jön létre.
 * A felhasználói fiók manuálisan is létrehozható egy Azure AD DS felügyelt tartományban, és nem létezik az Azure AD-ben.
-    * Ha olyan alkalmazásokhoz kell szolgáltatásfiókot létrehoznia, amelyek csak az Azure AD DSban futnak, manuálisan is létrehozhatja őket a felügyelt tartományban. Mivel az Azure AD-vel való szinkronizálás egyirányú, az Azure AD DSban létrehozott felhasználói fiókok nincsenek szinkronizálva az Azure AD-vel.
+    * Ha olyan alkalmazásokhoz kell szolgáltatásfiókot létrehoznia, amelyek csak az Azure AD DSban futnak, manuálisan is létrehozhatja őket a felügyelt tartományban. Mivel a szinkronizálás az Azure AD egyik módja, az Azure AD DSban létrehozott felhasználói fiókok nincsenek szinkronizálva az Azure AD-vel.
 
 ## <a name="password-policy"></a>Jelszóházirend
 
@@ -74,6 +74,36 @@ Egy Azure-AD DS *erőforrás* -erdőben a felhasználók egy egyirányú erdősz
 
 További információ az Azure AD DS erdők típusairól: Mik az [erőforrás-erdők?][concepts-forest] és [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
+## <a name="azure-ad-ds-skus"></a>Azure AD DS SKU-i
+
+Az Azure AD DS a rendelkezésre álló teljesítmény és szolgáltatások az SKU-on alapulnak. A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti követelmények változása után átválthat a SKU-ra a felügyelt tartomány telepítése után. Az alábbi táblázat a rendelkezésre álló SKU-ket és a köztük lévő különbségeket ismerteti:
+
+| SKU neve   | Objektumok maximális száma | Biztonsági mentés gyakorisága | Kimenő erdőszintű Megbízhatóságok maximális száma |
+|------------|----------------------|------------------|----|
+| Standard   | Korlátlan            | 7 naponta     | 0  |
+| Enterprise | Korlátlan            | 3 naponta     | 5  |
+| Prémium    | Korlátlan            | Napi            | 10 |
+
+Az Azure AD DS SKU-nak az Azure AD DS felügyelt tartományában lévő objektumok (felhasználói és számítógépfiókok) száma alapján elszámolási modellt használtak. A felügyelt tartomány objektumainak száma alapján már nem változik a díjszabás.
+
+További információkért tekintse meg az [Azure AD DS díjszabását ismertető oldalt][pricing].
+
+### <a name="managed-domain-performance"></a>Felügyelt tartomány teljesítménye
+
+A tartomány teljesítménye attól függően változik, hogy a hitelesítés Hogyan valósul meg az alkalmazáshoz. A további számítási erőforrások segíthetnek a lekérdezési válaszidő javításában és a szinkronizálási műveletekben eltöltött idő csökkentésében. Az SKU szintjének növekedésével a felügyelt tartomány számára elérhető számítási erőforrások megnövekednek. Figyelje az alkalmazások teljesítményét, és tervezze meg a szükséges erőforrásokat.
+
+Ha a vállalat vagy az alkalmazás megváltoztatást igényel, és további számítási teljesítményre van szüksége az Azure AD DS felügyelt tartományához, átválthat egy másik SKU-ra.
+
+### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
+
+A biztonsági mentés gyakorisága határozza meg, hogy a rendszer milyen gyakran készítsen pillanatképet a felügyelt tartományról. A biztonsági mentések az Azure platform által felügyelt automatizált folyamatok. Ha a felügyelt tartománnyal kapcsolatos probléma merül fel, az Azure-támogatás segíthet a biztonsági mentésből való visszaállításban. Mivel a szinkronizálás csak az Azure AD *egyik módja,* ha az Azure AD DS felügyelt tartomány bármely problémája nem befolyásolja az Azure ad-t vagy a helyszíni AD DS környezeteket és funkciókat.
+
+Az SKU szintjének növekedésével a biztonsági mentési Pillanatképek gyakorisága növekszik. A felügyelt tartomány szükséges biztonsági mentési gyakoriságának meghatározásához tekintse át az üzleti követelmények és a helyreállítási pont célkitűzését (RPO). Ha az üzleti vagy az alkalmazásra vonatkozó követelmények változnak, és több gyakori biztonsági mentésre van szüksége, átválthat egy másik SKU-ra.
+
+### <a name="outbound-forests"></a>Kimenő erdők
+
+Az előző szakasz az egyirányú kimenő erdő megbízhatóságát egy Azure AD DS felügyelt tartományból egy helyszíni AD DS környezetbe (jelenleg előzetes verzióban). Az SKU meghatározza az Azure AD DS felügyelt tartományhoz létrehozható erdőszintű megbízhatósági kapcsolatok maximális számát. Tekintse át az üzleti és az alkalmazásra vonatkozó követelményeket, hogy meghatározza, hány megbízhatónak kell lennie, és válassza ki a megfelelő Azure AD DS SKU-t. Ha az üzleti követelmények megváltoznak, és további erdőszintű megbízhatósági kapcsolatokat kell létrehoznia, váltson át egy másik SKU-ra.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [hozzon létre egy Azure AD DS felügyelt tartományt][create-instance].
@@ -87,3 +117,6 @@ Első lépésként [hozzon létre egy Azure AD DS felügyelt tartományt][create
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

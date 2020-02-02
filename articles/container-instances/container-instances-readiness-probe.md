@@ -2,13 +2,13 @@
 title: Készültségi mintavétel beállítása a tároló-példányon
 description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárolók Azure Container Instances fogadása csak akkor legyen elérhető, amikor készen állnak
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901852"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935686"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
 
@@ -23,7 +23,7 @@ A Azure Container Instances támogatja az [élettartam](container-instances-live
 
 ## <a name="yaml-configuration"></a>YAML-konfiguráció
 
-Például hozzon létre egy `readiness-probe.yaml` fájlt a következő kódrészlettel, amely tartalmazza a készültségi vizsgálatot. Ez a fájl olyan tároló csoportot határoz meg, amely egy kisméretű webalkalmazást futtató tárolóból áll. Az alkalmazás üzembe helyezése a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` lemezképből történik. Ez a tároló alkalmazás olyan gyors útmutatókban is látható, mint például [Az Azure CLI-vel történő üzembe helyezés az Azure-ban](container-instances-quickstart.md).
+Például hozzon létre egy `readiness-probe.yaml` fájlt a következő kódrészlettel, amely tartalmazza a készültségi vizsgálatot. Ez a fájl olyan tároló csoportot határoz meg, amely egy kisméretű webalkalmazást futtató tárolóból áll. Az alkalmazás üzembe helyezése a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` lemezképből történik. Ez a tároló alkalmazás az Azure CLI-vel és más gyors útmutatókkal is mutatja be [a Container példány üzembe helyezését az Azure](container-instances-quickstart.md) -ban.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Start parancs
 
-A YAML fájl tartalmazza a tároló indításakor futtatandó indítási parancsot, amely a `command` tulajdonság által definiált karakterláncok tömbjét fogadja el. Ez a parancs egy olyan időpontot szimulál, amikor a webalkalmazás fut, de a tároló nem áll készen. Először indít egy rendszerhéj-munkamenetet, és futtat egy `node` parancsot a webalkalmazás elindításához. Azt is elindítja, hogy a parancs 240 másodpercig alvó állapotba kerül, majd létrehoz egy `ready` nevű fájlt a `/tmp` könyvtárában:
+Az üzemelő példány egy `command` tulajdonságot határoz meg, amely a tároló első indításakor futtatott indítási parancsot határozza meg. Ez a tulajdonság karakterláncok tömbjét fogadja el. Ez a parancs egy olyan időpontot szimulál, amikor a webalkalmazás fut, de a tároló nem áll készen. 
+
+Először indít egy rendszerhéj-munkamenetet, és futtat egy `node` parancsot a webalkalmazás elindításához. Azt is elindítja, hogy a parancs 240 másodpercig alvó állapotba kerül, majd létrehoz egy `ready` nevű fájlt a `/tmp` könyvtárában:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

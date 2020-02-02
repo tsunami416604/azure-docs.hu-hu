@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890449"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937760"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -49,6 +49,24 @@ Az alábbi táblázat az egyes támogatott nyelvekre mutató hivatkozásokat tar
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Alapértelmezés szerint mindig támogatja a MQTT |
+
+### <a name="default-keep-alive-timeout"></a>Alapértelmezett életben tartási időkorlát 
+
+Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben maradjanak, a szolgáltatás és az ügyfél is rendszeresen küld egy *életben tartási* pingelést. A IoT SDK-t használó ügyfél a következő táblázatban meghatározott időközönként elküld egy életben tartást:
+
+|Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
+|---------|---------|---------|
+|Node.js     |   180 másodperc      |     Nem    |
+|Java     |    230 másodperc     |     Nem    |
+|C#     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (v2)   | 60 másodperc |  Nem   |
+
+A következő [MQTT spec](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), IoT hub Keep-Alive ping intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
+
+Egy Java SDK-t használó eszköz például a Keep-Alive ping üzenetet küldi, majd elveszíti a hálózati kapcsolatot. 230 másodperccel később az eszköz elmulasztja a Keep-Alive pingelést, mert offline állapotban van. IoT Hub azonban nem kapcsolja le azonnal a kapcsolatot – megvárja egy másik `(230 * 1.5) - 230 = 115` másodpercet, mielőtt leválasztja az eszközt a [404104](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)-as hiba miatti DeviceConnectionClosedRemotely. 
+
+A maximálisan beállítható ügyfél életben tartási értéke `1767 / 1.5 = 1177` másodperc. Minden forgalom alaphelyzetbe állítja a Keep-Alive-t. Egy sikeres SAS-jogkivonat frissítése például alaphelyzetbe állítja a Keep-Alive állapotot.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Eszköz alkalmazás migrálása a AMQP-ből a MQTT-be
 
@@ -230,10 +248,6 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 Az eszköz tanúsítványának használatával történő hitelesítéshez frissítse a fenti kódrészletet a következő módosításokkal (lásd: [X. 509 hitelesítésszolgáltatói tanúsítvány beszerzése](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) a tanúsítványalapú hitelesítés előkészítéséhez):
 
 ```python
@@ -256,7 +270,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` használatával küldhetnek üzeneteket IoT Hub a **témakör neveként**. A `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Például:
+A sikeres kapcsolódást követően az eszközök `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` használatával küldhetnek üzeneteket IoT Hub a **témakör neveként**. A `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -309,7 +323,7 @@ A válasz törzse a Twin eszköz tulajdonságok szakaszát tartalmazza, ahogy az
 
 A lehetséges állapotkódok a következők:
 
-|status | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
 | 204 | Sikeres (a rendszer nem ad vissza tartalmat) |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
@@ -329,7 +343,7 @@ A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tul
 
 3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}`. Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy `null`re beállított tag törli a tagot a tartalmazó objektumból. Például:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy `null`re beállított tag törli a tagot a tartalmazó objektumból. Példa:
 
 ```json
 {
@@ -340,7 +354,7 @@ A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tu
 
 A lehetséges állapotkódok a következők:
 
-|status | Leírás |
+|Állapot | Leírás |
 | ----- | ----------- |
 | 200 | Sikeres |
 | 400 | Hibás kérelem. Helytelen formátumú JSON |
@@ -367,7 +381,7 @@ További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakör `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Például:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakör `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Példa:
 
 ```json
 {
@@ -396,7 +410,7 @@ További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-
 
 Végső megfontolásként, ha testre kell szabnia a MQTT protokoll viselkedését a felhős oldalon, tekintse át az [Azure IoT Protocol Gatewayt](iot-hub-protocol-gateway.md). Ez a szoftver lehetővé teszi egy olyan nagy teljesítményű egyéni protokoll-átjáró üzembe helyezését, amely közvetlenül a IoT Hub. Az Azure IoT Protocol Gateway lehetővé teszi, hogy testreszabja az eszköz protokollját, hogy az rozsdaövezetek rehabilitálása MQTT-telepítések vagy más egyéni protokollok is megfeleljenek. Ez a megközelítés azonban megköveteli, hogy egy egyéni protokoll-átjárót futtasson és működtessen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
 

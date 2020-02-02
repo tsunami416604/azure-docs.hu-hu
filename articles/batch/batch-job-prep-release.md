@@ -1,5 +1,5 @@
 ---
-title: Feladatok létrehozása a feladatok előkészítéséhez és feladatok elvégzéséhez a számítási csomópontokon – Azure Batch | Microsoft Docs
+title: Feladatok létrehozása & teljes feladatok előkészítéséhez a számítási csomópontokon – Azure Batch
 description: Az adatátvitelt az Azure Batch számítási csomópontokra, valamint a feladat befejezésekor a csomópont-karbantartási feladatok kiadására szolgáló feladat-előkészítési feladatokkal csökkentheti.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ed3b96ff7f1117b1185159cfa4e4b03aa80d6b02
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027121"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935037"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
 

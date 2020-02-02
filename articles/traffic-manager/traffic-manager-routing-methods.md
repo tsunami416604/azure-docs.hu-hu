@@ -2,20 +2,20 @@
 title: Azure Traffic Manager – forgalom-útválasztási módszerek
 description: Ez a cikk segítséget nyújt az Traffic Manager által használt különböző forgalom-útválasztási módszerek megismerésében.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: 824fabf6e694b7148486d6593cf17f741d9e5c9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483791"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938455"
 ---
 # <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módjai
 
@@ -88,7 +88,7 @@ Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-i
 Traffic Manager rendszeresen frissíti az Internet késési táblázatát a globális Internet és az új Azure-régiók változásainak figyelembevétele érdekében. Az alkalmazás teljesítménye azonban a terhelésnek az interneten keresztüli valós idejű változásai alapján változhat. Teljesítmény-forgalom – az Útválasztás nem figyeli a terhelést egy adott szolgáltatási végponton. Ha azonban egy végpont elérhetetlenné válik, Traffic Manager nem tartalmazza a DNS-lekérdezések válaszait.
 
 
-Tudnivalók:
+Megjegyzés:
 
 * Ha a profil több végpontot is tartalmaz ugyanabban az Azure-régióban, akkor a Traffic Manager egyenletesen osztja el a forgalmat az adott régióban elérhető végpontok között. Ha egy régión belül más adatforgalom-eloszlást szeretne használni, használhat [beágyazott Traffic Manager profilokat](traffic-manager-nested-profiles.md)is.
 * Ha a legközelebbi Azure-régióban az összes engedélyezett végpont csökken, Traffic Manager áthelyezi a forgalmat a legközelebbi Azure-régióban lévő végpontokra. Ha szeretne megadni egy előnyben részesített feladatátvételi sorozatot, használjon [beágyazott Traffic Manager profilokat](traffic-manager-nested-profiles.md).
@@ -102,7 +102,7 @@ A Traffic Manager profilok úgy konfigurálhatók, hogy a földrajzi útválaszt
 Ha egy profil földrajzi útválasztásra van konfigurálva, a profilhoz társított összes végponthoz hozzá kell rendelni egy földrajzi régiót. A földrajzi régió a részletesség szintjének következő szintjein lehet 
 - Világ – bármely régió
 - Regionális csoportosítás – például Afrika, Közel-Kelet, Ausztrália/csendes-óceáni térség stb. 
-- Ország vagy régió – például Írországban Perui, Hongkong KKT stb. 
+- Ország/régió – például Írország, Peru, Hongkong (KKT) stb. 
 - Állam/megye – például USA – Kalifornia, Ausztrália – Queensland, Kanada – Alberta stb. (Megjegyzés: Ez a részletességi szint csak az Ausztráliában, Kanadában és az USA-beli Államokban/tartományokban támogatott.)
 
 Ha egy régiót vagy régiót rendel hozzá egy végponthoz, az ezekből a régiókból érkező kéréseket csak az adott végpontra irányítja a rendszer. A Traffic Manager a DNS-lekérdezés forrás IP-címét használja annak meghatározásához, hogy a felhasználó melyik régióból kérdezi le – ez általában a felhasználó nevében a lekérdezés végrehajtásakor a helyi DNS-feloldó IP-címe.  

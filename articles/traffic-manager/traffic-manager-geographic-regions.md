@@ -3,7 +3,7 @@ title: Földrajzi útválasztás által használt ország/régió-hierarchia –
 description: Ez a cikk felsorolja az Azure Traffic Manager földrajzi útválasztási típus által használt ország/régió hierarchiát
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,23 +11,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: allensu
-ms.openlocfilehash: 13f4101c17d78a59e8cde724863d237ba888e6a4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037210"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938649"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Az Azure Traffic Manager által a földrajzi forgalom útválasztási módszeréhez használt ország/régió-hierarchia
 
 Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi** forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)meghívásával. 
 
-- WORLD(World)
+- VILÁG (világ)
 
     - GEO-EU (Európa)
 
-        - AD(Andorra)
+        - AD (Andorra)
 
         - AL (Albánia)
 
@@ -37,7 +37,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - BA (Bosznia-Hercegovina)
 
-        - BE(Belgium)
+        - BE (Belgium)
 
         - BG (Bulgária)
 
@@ -51,7 +51,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - NÉMET (németországi)
 
-        - DK(Denmark)
+        - DK (Dánia)
 
         - EE (Észtország)
 
@@ -65,7 +65,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - GB (Egyesült Királyság)
 
-        - GG(Guernsey)
+        - GG (Guernsey)
 
         - GI (Gibraltár)
 
@@ -75,7 +75,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - HU (Magyarország)
 
-        - IE(Ireland)
+        - IE (Írország)
 
         - IM (Man-sziget)
 
@@ -83,25 +83,25 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - IT (Olaszország)
 
-        - JE(Jersey)
+        - JE (Jersey)
 
-        - LI(Liechtenstein)
+        - LI (Liechtenstein)
 
         - LT (Litvánia)
 
         - LU (Luxemburg)
 
-        - LV(Latvia)
+        - LV (Lettország)
 
-        - MC(Monaco)
+        - MC (Monaco)
 
-        - MD(Moldova)
+        - MD (Moldova)
 
         - ME (Montenegró)
 
         - MK (Észak-Macedónia)
 
-        - MT(Malta)
+        - MT (Málta)
 
         - NL (Hollandia)
 
@@ -113,17 +113,17 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - RO (Románia)
 
-        - RS(Serbia)
+        - RS (Szerbia)
 
         - RU (Oroszország)
 
-        - SE(Sweden)
+        - SE (Svédország)
 
         - SI (Szlovénia)
 
-        - SJ(Svalbard)
+        - SJ (Svalbard)
 
-        - SK(Slovakia)
+        - SK (Szlovákia)
 
         - SM (San Marino)
 
@@ -132,9 +132,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - VA (Vatikánváros)
 
-        - XJ(Jan Mayen)
+        - XJ (Jan Mayen)
 
-        - XK(Kosovo)
+        - XK (Koszovó)
 
     - GEO-ME (közel-Kelet)
 
@@ -150,9 +150,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - JO (Jordánia)
 
-        - KW(Kuwait)
+        - KW (Kuvait)
 
-        - LB(Lebanon)
+        - LB (Libanon)
 
         - OM (Omán)
 
@@ -160,9 +160,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - QA (Katar)
 
-        - SY(Syria)
+        - SY (Szíria)
 
-        - SA(Saudi Arabia)
+        - SA (Szaúd-Arábia)
 
         - TR (Törökország)
 
@@ -174,23 +174,23 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - AI (Anguilla)
 
-        - AW(Aruba)
+        - AW (Aruba)
 
-        - BB(Barbados)
+        - BB (Barbados)
 
         - BL (Saint Barthélemy)
 
-        - BM(Bermuda)
+        - BM (Bermuda)
 
-        - BQ(Bonaire)
+        - BQ (Bonaire)
 
-        - BS(Bahamas)
+        - BS (Bahama-szigetek)
 
-        - BZ(Belize)
+        - BZ (Belize)
 
         - CA (Kanada)
 
-            - CA-AB(Alberta)
+            - CA-AB (Alberta)
 
             - CA-BC (British Columbia)
 
@@ -200,7 +200,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
             - CA-NL (Fundland és Labrador)
 
-            - CA-NS(Nova Scotia)
+            - CA-NS (Nova Scotia)
 
             - CA-NT (északnyugati területek)
 
@@ -210,7 +210,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
             - CA-PE (Prince Edward-sziget)
 
-            - CA-QC(Québec)
+            - CA-QC (Québec)
 
             - CA-SK (Saskatchewan)
 
@@ -220,9 +220,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - CU (Kuba)
 
-        - CW(CuraÃ§ao)
+        - CW (CuraÃ § Ao)
 
-        - DM(Dominica)
+        - DM (Dominikai)
 
         - DO (Dominikai Köztársaság)
 
@@ -230,33 +230,33 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - GL (Grönland)
 
-        - GP(Guadeloupe)
+        - GP (Guadeloupe)
 
-        - GT(Guatemala)
+        - GT (Guatemala)
 
-        - HN(Honduras)
+        - HN (Honduras)
 
-        - HT(Haiti)
+        - HT (Haiti)
 
-        - JM(Jamaica)
+        - JM (Jamaica)
 
         - KN (Saint Kitts és Nevis)
 
         - KY (Kajmán-szigetek)
 
-        - LC(Saint Lucia)
+        - LC (Saint Lucia)
 
         - MF (Saint Martin)
 
-        - MQ(Martinique)
+        - MQ (Martinique)
 
-        - MS(Montserrat)
+        - MS (Montserrat)
 
-        - MX(Mexico)
+        - MX (Mexikó)
 
-        - NI(Nicaragua)
+        - NI (Nicaragua)
 
-        - PA(Panama)
+        - PA (Panama)
 
         - MINISZTERELNÖK (Saint-Pierre és Miquelon)
 
@@ -274,65 +274,65 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - Egyesült Államok (Egyesült Államok)
 
-            - US-AK(Alaska)
+            - USA – AK (Alaszka)
 
-            - US-AL(Alabama)
+            - USA – AL (Alabama)
 
             - USA – AR (Arkansas)
 
-            - US-AZ(Arizona)
+            - USA – AZ (Arizona)
 
             - USA – CA (Kalifornia)
 
-            - US-CO(Colorado)
+            - USA – CO (Colorado)
 
             - USA – CT (Connecticut)
 
             - US-DC (Columbia körzet)
 
-            - US-DE(Delaware)
+            - USA – DE (Delaware)
 
-            - US-FL(Florida)
+            - US-FL (Florida)
 
-            - US-GA(Georgia)
+            - USA – GA (Georgia)
 
-            - US-HI(Hawaii)
+            - USA – HI (Hawaii)
 
-            - US-IA(Iowa)
+            - USA – IA (Iowa)
 
-            - US-ID(Idaho)
+            - US-ID (Idaho)
 
             - USA – IL (Illinois)
 
-            - US-IN(Indiana)
+            - US-IN (Indiana)
 
-            - US-KS(Kansas)
+            - USA – KS (Kansas)
 
             - USA – KY (Kentucky)
 
             - USA – LA (Louisiana)
 
-            - US-MA(Massachusetts)
+            - USA – MA (Massachusetts)
 
             - US-MD (Maryland)
 
-            - US-ME(Maine)
+            - USA – ME (Maine)
 
-            - US-MI(Michigan)
+            - USA – MI (Michigan)
 
-            - US-MN(Minnesota)
+            - USA – MN (Minnesota)
 
-            - US-MO(Missouri)
+            - USA – MO (Missouri)
 
-            - US-MS(Mississippi)
+            - USA – MS (Mississippi)
 
-            - US-MT(Montana)
+            - USA – MT (Montana)
 
             - USA – NC (Észak-Karolina)
 
             - USA – ND (Észak-Dakota)
 
-            - US-NE(Nebraska)
+            - USA – NE (Nebraska)
 
             - USA – NH (New Hampshire)
 
@@ -344,33 +344,33 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
             - USA – NY (New York)
 
-            - US-OH(Ohio)
+            - USA – OH (Ohio)
 
-            - US-OK(Oklahoma)
+            - USA – OK (Oklahoma)
 
             - USA – vagy (Oregon)
 
-            - US-PA(Pennsylvania)
+            - USA – PA (Pennsylvania)
 
             - USA – RI (Rhode Island)
 
-            - US-SC(South Carolina)
+            - USA – SC (Dél-Karolina)
 
             - USA – SD (Dél-Dakota)
 
             - USA – TN (Tennessee)
 
-            - US-TX(Texas)
+            - USA – TX (Texas)
 
             - USA – UT (Utah)
 
             - USA – VA (Virginia)
 
-            - US-VT(Vermont)
+            - USA – VT (Vermont)
 
-            - US-WA(Washington)
+            - USA – WA (Washington)
 
-            - US-WI(Wisconsin)
+            - USA – WI (Wisconsin)
 
             - USA – WV (Nyugat-Virginia)
 
@@ -384,9 +384,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - XE (Sint Eustatius)
 
-        - XS(Saba)
+        - XS (Saba)
 
-    - GEO-AS(Asia)
+    - GEO-AS (Ázsia)
 
         - AF (Afganisztán)
 
@@ -396,13 +396,13 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - BD (Banglades)
 
-        - BN(Brunei)
+        - BN (Brunei)
 
         - BT (Bhután)
 
         - CC (Kókusz-szigetek)
 
-        - CN(China)
+        - CN (Kína)
 
         - CX (Karácsony-sziget)
 
@@ -412,7 +412,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - AZONOSÍTÓ (Indonézia)
 
-        - IN(India)
+        - (India)
 
         - IO (brit indiai-óceáni terület)
 
@@ -424,13 +424,13 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - KP (Észak-Korea)
 
-        - KR(Korea)
+        - KR (Korea)
 
-        - KZ(Kazakhstan)
+        - KZ (Kazahsztán)
 
-        - LA(Laos)
+        - LA (Laosz)
 
-        - LK(Sri Lanka)
+        - LK (Sri Lanka)
 
         - PP (Mianmar)
 
@@ -438,7 +438,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - MO (Makaó KKT)
 
-        - MV(Maldives)
+        - MV (Maldív-szigetek)
 
         - SAJÁT (Malajzia)
 
@@ -448,31 +448,31 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - PK (Pakisztán)
 
-        - SG(Singapore)
+        - SG (Szingapúr)
 
         - TH (Thaiföld)
 
-        - TJ(Tajikistan)
+        - TJ (Tádzsikisztán)
 
-        - TL(Timor_Leste)
+        - TL (Timor_Leste)
 
         - TM (Türkmenisztán)
 
-        - TW(Taiwan)
+        - TW (Tajvan)
 
         - UZ (Üzbegisztán)
 
-        - VN(Vietnam)
+        - VN (Vietnam)
 
     - GEO-AF (Afrika)
 
-        - AO(Angola)
+        - AO (Angola)
 
-        - BF(Burkina Faso)
+        - BF (Burkina Faso)
 
-        - BI(Burundi)
+        - BI (Burundi)
 
-        - BJ(Benin)
+        - BJ (Benin)
 
         - BV (Bouvet-sziget)
 
@@ -482,77 +482,77 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - CF (Közép-afrikai Köztársaság)
 
-        - CI(Côte d’Ivoire)
+        - CI (Elefántcsontpart)
 
         - CM (Kamerun)
 
         - CV (Cabo Verde)
 
-        - DJ(Djibouti)
+        - DJ (Dzsibuti)
 
-        - DZ(Algeria)
+        - DZ (Algéria)
 
         - PÉLDÁUL (Egyiptom)
 
-        - ER(Eritrea)
+        - ER (Eritrea)
 
         - ET (Etiópia)
 
-        - GA(Gabon)
+        - GA (Gabon)
 
         - GH (Ghána)
 
-        - GM(Gambia)
+        - GM (Gambia)
 
-        - GN(Guinea)
+        - GN (Guinea)
 
         - GQ (Egyenlítői-Guinea)
 
-        - GW(Guinea_Bissau)
+        - GW (Guinea_Bissau)
 
-        - KE(Kenya)
+        - KE (Kenya)
 
         - KM (Comore-szigetek)
 
-        - LR(Liberia)
+        - LR (Libéria)
 
-        - LS(Lesotho)
+        - LS (Lesotho)
 
         - LY (Líbia)
 
-        - MA(Morocco)
+        - MA (Marokkó)
 
-        - MG(Madagascar)
+        - MG (Madagaszkár)
 
-        - ML(Mali)
+        - ML (Mali)
 
         - Úr (Mauritánia)
 
         - MU (Mauritius)
 
-        - MW(Malawi)
+        - MW (Malawi)
 
-        - MZ(Mozambique)
+        - MZ (Mozambik)
 
         - NA (Namíbia)
 
-        - NE(Niger)
+        - NE (Niger)
 
-        - NG(Nigeria)
+        - NG (Nigéria)
 
-        - RE(Réunion)
+        - ÚJRA (Réunion)
 
         - RW (Ruanda)
 
         - SC (Seychelle-szigetek)
 
-        - SD(Sudan)
+        - SD (Szudán)
 
         - SH (Szent Ilona, Ascension, Tristan da Cunha)
 
-        - SL(Sierra Leone)
+        - SL (Sierra Leone)
 
-        - SN(Senegal)
+        - SOROZATSZÁM (Szenegál)
 
         - Tehát (Szomália)
 
@@ -560,7 +560,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - ST (São Tomé és Príncipe)
 
-        - SZ(Swaziland)
+        - SZ (Szváziföld)
 
         - TD (Csád)
 
@@ -570,7 +570,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - TN (Tunézia)
 
-        - TZ(Tanzania)
+        - TZ (Tanzánia)
 
         - UG (Uganda)
 
@@ -578,13 +578,13 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - ZA (Dél-Afrika)
 
-        - ZM(Zambia)
+        - ZM (Zambia)
 
-        - ZW(Zimbabwe)
+        - ZW (Zimbabwe)
 
-    - GEO-AN(Antarctica)
+    - GEO-AN (Antarktisz)
 
-        - AQ(Antarctica)
+        - AQ (Antarktisz)
 
     - GEO-SA (Dél-Amerika)
 
@@ -606,17 +606,17 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - GS (Dél-Georgia és Déli-Sandwich-szigetek)
 
-        - GY(Guyana)
+        - GY (Guyana)
 
-        - PE(Peru)
+        - PE (Peru)
 
         - (Paraguay)
 
-        - SR(Suriname)
+        - SR (Suriname)
 
-        - UY(Uruguay)
+        - UY (Uruguay)
 
-        - VE(Venezuela)
+        - VE (Venezuela)
 
     - GEO-AP (Ausztrália/csendes-óceáni régió)
 
@@ -634,19 +634,19 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
             - AU-SA (Dél-Ausztrália)
 
-            - AU-TAS(Tasmania)
+            - AU-TAS (Tasmania)
 
-            - AU-VIC(Victoria)
+            - AU-VIC (Victoria)
 
             - AU-WA (Nyugat-Ausztrália)
 
         - CK (Cook-szigetek)
 
-        - FJ(Fiji)
+        - FJ (Fidzsi)
 
         - FM (Mikronézia)
 
-        - GU(Guam)
+        - GU (Guam)
 
         - HM (Heard-sziget és McDonald-szigetek)
 
@@ -660,9 +660,9 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - NF (Norfolk-sziget)
 
-        - NR(Nauru)
+        - NR (Nauru)
 
-        - NU(Niue)
+        - NU (Niue)
 
         - NZ (új-zélandi)
 
@@ -672,13 +672,13 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - PN (Pitcairn-szigetek)
 
-        - PW(Palau)
+        - PW (Palau)
 
         - SB (Salamon-szigetek)
 
-        - TK(Tokelau)
+        - TK (Tokelau)
 
-        - TO(Tonga)
+        - – (Tonga)
 
         - TV (Tuvalu)
 
@@ -686,7 +686,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - WF (Wallis és Futuna)
 
-        - WS(Samoa)
+        - WS (Szamoa)
 
 ## <a name="next-steps"></a>Következő lépések
 

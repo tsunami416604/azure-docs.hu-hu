@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887634"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961598"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -429,7 +429,7 @@ Igen.
 
 **Melyek a Azure Backup és Azure Site Recovery szolgáltatás által támogatott legnagyobb méretű lemezek?**
 
-A Azure Backup és Azure Site Recovery szolgáltatás által támogatott legnagyobb méretű lemez 4 TiB. A nagyobb lemezek támogatása akár 32 TiB-ig még nem érhető el.
+Azure Backup által támogatott legnagyobb méretű lemez mérete 32 TiB (4 TiB titkosított lemezekhez). Azure Site Recovery által támogatott legnagyobb méretű lemez 8 TiB. A nagyobb lemezek támogatása a 32 TiB-ig még nem érhető el Azure Site Recoveryban.
 
 **Az optimalizált lemezes IOPS és a sávszélesség eléréséhez az ajánlott virtuálisgép-méretek (> 4 TiB) standard SSD és standard HDD lemezek esetében**
 
