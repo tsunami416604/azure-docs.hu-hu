@@ -423,6 +423,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Magas rendelkezésre állás
           href: manage-availability.md
+        - name: Rendelkezésre állási csoport módosítása
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Közelségi elhelyezési csoport létrehozása
           items:
             - name: parancssori felület
