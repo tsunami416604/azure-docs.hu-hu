@@ -138,11 +138,11 @@ A fiók rendszergazdája az a felhasználó, aki először regisztrált az Azure
 
 A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-1. Kattintson a **Tulajdonságok** elemre.
+1. Kattintson a **Tulajdonságok** lehetőségre.
 
     Az előfizetés fiókjának rendszergazdája megjelenik a **fiók** adminisztrátora mezőben.
 

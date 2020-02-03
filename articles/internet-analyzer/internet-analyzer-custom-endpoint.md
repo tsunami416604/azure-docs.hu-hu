@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan állíthat be egyéni végpontot az Internet Analyze
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy létrehoz egy Internet Analyzer-erőforrást, és válassza az "egyéni végpont" lehetőséget. Az Internet Analyzer feltételezi, hogy az egyéni végpont internetes elérhető. További információt az [Internet Analyzer-erőforrás létrehozása](internet-analyzer-create-test-portal.md)című témakörben talál.
 

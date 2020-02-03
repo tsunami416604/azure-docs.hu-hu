@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan küldhet szöveges üzeneteket a Azure Functions
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
 A Twilio-kötések a [Microsoft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomagban, az 1. x verzióban érhetők el. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub-tárházban található.
 
@@ -176,7 +176,7 @@ Példa a function. JSON fájlra:
 }
 ```
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, myQueueItem) {

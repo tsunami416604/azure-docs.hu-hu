@@ -27,9 +27,9 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * Végezze el a telepítést a `npm install @azure/cognitiveservices-imagesearch` paranccsal
+    * Végezze el a telepítést az `npm install @azure/cognitiveservices-imagesearch` paranccsal.
 * A [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modul
-    * Végezze el a telepítést a `npm install ms-rest-azure` paranccsal
+    * Végezze el a telepítést az `npm install ms-rest-azure` paranccsal.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -96,11 +96,11 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
 * [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Node.js-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

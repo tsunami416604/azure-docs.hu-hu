@@ -44,7 +44,7 @@ Ha a tartalom Media Services dinamikus titkosítással való védelemmel való e
 
 A streaming-ügyfél a következő HLS-formátumokat adhatja meg:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
@@ -54,7 +54,7 @@ A streaming-ügyfél a következő HLS-formátumokat adhatja meg:
 
 A streaming-ügyfél a következő MPEG-DASH formátumokat adhatja meg:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
@@ -63,7 +63,7 @@ A streaming-ügyfél a következő MPEG-DASH formátumokat adhatja meg:
 
 A folyamatos átviteli ügyfél a következő Smooth Streaming formátumokat adhatja meg:
 
-|Protocol (Protokoll)|Megjegyzések/példák| 
+|Protokoll|Megjegyzések/példák| 
 |---|---|
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2,0 (örökölt jegyzékfájl)|Alapértelmezés szerint Smooth Streaming jegyzékfájl formátuma az ismétlés címkét (r-tag) tartalmazza. Bizonyos játékosok azonban nem támogatják a `r-tag`. Az ezekkel a játékosokkal rendelkező ügyfelek használhatnak olyan formátumot, amely letiltja az r-címkét:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
@@ -181,7 +181,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-#### <a name="mpeg-dash"></a>MPEG-KÖTŐJEL
+#### <a name="mpeg-dash"></a>MPEG-DASH
 
 Íme egy példa egy MPEG-DASH manifest-fájlra, más néven MPEG-DASH Media Presentation Description (MPD):
 
@@ -296,7 +296,7 @@ A *dinamikus titkosítás* használatával az élő vagy igény szerinti tartalm
 
 Tekintse meg [Azure Media Services közösségét](media-services-community.md) , hogy különböző módokon lásson kérdéseket, visszajelzést küldjön, és frissítéseket kérjen a Media Servicesról.
 
-## <a name="need-help"></a>Segítség
+## <a name="need-help"></a>Segítségre van szüksége?
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 

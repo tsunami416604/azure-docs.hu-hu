@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blob Storage-ban tárolt adatelemzés a pandák-Team adatelemzési folyamattal
-description: Az Azure Blob-tárolóban tárolt, a pandák Python-csomaggal tárolt adatelemzések.
+title: Az adatok Azure blob storage-pandas – csoportos adatelemzési folyamat megismerése
+description: Annak megismerése a pandas Python-csomag használatával az Azure blob-tárolóban tárolt adatokat.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,22 +18,22 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722186"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Adatgyűjtés az Azure Blob Storage-ban a pandák
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az adatok Azure blob storage-pandas megismerése
 
 Ez a cikk bemutatja, hogyan vizsgálhatja meg az Azure Blob-tárolóban tárolt, a [pandák](https://pandas.pydata.org/) Python-csomaggal tárolt adatelemzést.
 
 Ez a feladat a [csoportos adatelemzési folyamat](overview.md)egyik lépése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy rendelkezik a következővel:
+Ez a cikk feltételezi, hogy rendelkezik:
 
-* Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
-* Az adatait egy Azure Blob Storage-fiókban tárolta. Ha útmutatásra van szüksége, olvassa el az [adatok áthelyezése az Azure Storage-ba és az-ból](../../storage/common/storage-moving-data.md)
+* Létrehozott egy Azure storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
+* Tárolja az adatokat egy Azure blob storage-fiókot. Ha útmutatásra van szüksége, olvassa el az [adatok áthelyezése az Azure Storage-ba és az-ból](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Az adatgyűjtés egy Panda DataFrame
-Az adatkészletek feltárásához és kezeléséhez először le kell töltenie a blob-forrásból egy helyi fájlba, amelyet aztán egy Panda DataFrame lehet betölteni. A következő lépéseket kell követnie ehhez az eljáráshoz:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Az adatok betöltése a pandas DataFrame-be
+Vizsgálata, és a egy adatkészlet módosítására, akkor kell először le kell a blob-forrás egy helyi fájlt, amely majd tölthető be a pandas DataFrame. Ez az eljárás követéséhez lépései a következők:
 
-1. Töltse le az Azure Blob adatait az alábbi Python-mintakód használatával Blob service segítségével. Cserélje le a változót a következő kódban az adott értékekre:
+1. Töltse le az Azure Blob adatait az alábbi Python-mintakód használatával Blob service segítségével. Cserélje le a konkrét értékek a változót a következő kódot:
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -53,17 +53,17 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-1. Az adatok beolvasása egy Panda DataFrame a letöltött fájlból.
+1. Az adatok olvashatók be egy pandas DataFrame a letöltött fájl.
 
 ```python
 # LOCALFILE is the file path
 dataframe_blobdata = pd.read_csv(LOCALFILE)
 ```
 
-Most már készen áll arra, hogy felderítse az adatokat, és létrehozza az adatkészlet funkcióit.
+Most már készen áll az adatok, és hozzon létre ehhez az adatkészlethez funkcióinak.
 
 ## <a name="blob-dataexploration"></a>Példák az adatfeltárásra a pandák használatával
-Íme néhány példa arra, hogyan lehet az adatelemzést használni a pandák használatával:
+Íme néhány példa többféle módon lehet adatokat pandas használatával:
 
 1. **Sorok és oszlopok számának** vizsgálata
 
@@ -92,7 +92,7 @@ for col in dataframe_blobdata.columns:
 dataframe_blobdata.describe()
 ```
 
-1. Tekintse meg az egyes oszlopok értékeinek számát a következőképpen:
+1. A következő tekintse meg a minden oszlop értékét a bejegyzések száma
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
@@ -112,7 +112,7 @@ dataframe_blobdata_noNA = dataframe_blobdata.dropna()
 dataframe_blobdata_noNA.shape
 ```
 
-A hiányzó értékek cseréjének másik módja a Mode függvény:
+Cserélje le a hiányzó értékek másik módja, a függvény a mód:
 
 ```python
 dataframe_blobdata_mode = dataframe_blobdata.fillna(

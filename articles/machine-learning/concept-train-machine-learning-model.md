@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721115"
 ---
-# <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
+# <a name="train-models-with-azure-machine-learning"></a>Az Azure Machine Learning-modellek betanításához
 
 A Azure Machine Learning számos lehetőséget kínál a modellek betanítására, az SDK-t az SDK-t használó alacsony kódú megoldások, például az automatizált gépi tanulás és a vizuális tervező használatával. Az alábbi lista segítségével meghatározhatja, hogy melyik betanítási módszer legyen a legmegfelelőbb:
 
@@ -43,7 +43,7 @@ A Pythonhoz készült Azure Machine Learning SDK lehetővé teszi a gépi tanul�
 * [Az SDK telepítése/frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * [Fejlesztési környezet konfigurálása Azure Machine Learninghoz](how-to-configure-environment.md)
 
-### <a name="run-configuration"></a>Konfiguráció futtatása
+### <a name="run-configuration"></a>Futtatási konfigurációt
 
 Azure Machine Learning használatával általános betanítási feladatok határozhatók meg a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py). A rendszer ezt követően a futtatási konfigurációt, valamint a betanítási parancsfájl (oka) t használja a modell számítási célra való betanításához.
 
@@ -101,7 +101,7 @@ A Designer lehetővé teszi a modellek betanítását egy fogd és vidd felület
 + [Besorolás egyéni R-parancsfájllal: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
 + [Szöveg besorolása: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>parancssori felület
 
 A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platformfüggetlen CLI-parancsokat biztosít a Azure Machine Learning használatához. Általában a CLI segítségével automatizálhatja a feladatokat, például a gépi tanulási modellek betanítását.
 

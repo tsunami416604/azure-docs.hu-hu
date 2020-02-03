@@ -19,7 +19,7 @@ ms.locfileid: "76719891"
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása két felügyelt példány és SQL Server között
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > - Felügyelt példány konfigurálása replikációs Közzétevőként. 
@@ -135,7 +135,7 @@ Miután létrejött a VPN-kapcsolat, tesztelje a kapcsolatot SQL Server Manageme
 A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt példányok és a SQL Server között. 
 
 ### <a name="create-private-dns-zone"></a>Privát DNS-zóna létrehozása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget. 
 1. `private dns zone` keresése az Azure Marketplace-en. 
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához. 

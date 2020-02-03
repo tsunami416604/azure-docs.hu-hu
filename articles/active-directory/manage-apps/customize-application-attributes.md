@@ -277,9 +277,9 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
 ## <a name="provisioning-a-multi-value-attribute"></a>Többértékű attribútum kiépítés
 Bizonyos attribútumok, például a phoneNumbers és az e-mailek olyan többértékű attribútumok, amelyekben különböző típusú telefonszámokat vagy e-maileket kell megadnia. Használja az alábbi kifejezést a többértékű attribútumok esetében. Lehetővé teszi az attribútum típusának és leképezésének megadását az értékhez tartozó Azure AD felhasználói attribútumhoz. 
 
-* phoneNumbers [type EQ "work"]. Value
-* phoneNumbers [type EQ "Mobile"]. Value
-* phoneNumbers [type EQ "fax"]. Value
+* phoneNumbers [típus eq "work"] .value
+* phoneNumbers [típus eq "mobileszköz"] .value
+* phoneNumbers [típus eq "fax"] .value
 
    ```json
    "phoneNumbers": [

@@ -27,9 +27,9 @@ Ha ezt az új réteget (a beállításokkal), és helyileg tesztelte, akkor a t�
 
 A dokumentumban szereplő `docker run` példákban egy `^` vonal folytatási karakterrel rendelkező Windows-konzolra kerül sor. Saját használatra a következőket vegye figyelembe:
 
-* Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+* Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 * Ha a Windows rendszertől eltérő operációs rendszert használ, vagy a Windows-konzoltól eltérő konzolt használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappa szintaxisát, valamint a konzol és a rendszer vonal folytatási karakterét.  Mivel a Cognitive Services tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
-* `docker run` példákban a `c:` meghajtón lévő könyvtárat használja, hogy elkerülje az engedélyek ütközését a Windows rendszeren. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét.
+* `docker run` példákban a `c:` meghajtón lévő könyvtárat használja, hogy elkerülje az engedélyek ütközését a Windows rendszeren. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel.
 
 ## <a name="store-no-configuration-settings-in-image"></a>A rendszerkép nem tárolja a konfigurációs beállításokat
 

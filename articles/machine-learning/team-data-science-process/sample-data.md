@@ -1,6 +1,6 @@
 ---
 title: Mintaadatok különböző Azure Storage-helyszíneken – csoportos adatelemzési folyamat
-description: Mintaadatok az Azure Blob-tárolókban, a SQL Server és a kaptár-táblákban, így kisebb, de reprezentatív és felügyelhető méretre csökkenthetők.
+description: Adatmintavétel az Azure blobtárolókban, az SQL Server, és Hive-táblákban egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -20,7 +20,7 @@ ms.locfileid: "76718603"
 ---
 # <a name="heading"></a>Mintaadatok az Azure Blob-tárolókban, a SQL Server és a kaptár táblákban
 
-A következő cikkek a három különböző Azure-hely egyikében tárolt adatmintavételezést ismertetik:
+Az alábbi cikkek ismertetik, hogyan lehet az adatokat három különböző Azure-helyen tárolt:
 
 * Az [**Azure Blob Container**](sample-data-blob.md) -adatmintavételt úgy kell megtervezni, hogy programozott módon letölti, majd a minta Python-kóddal végzi a mintavételezést.
 * [**SQL Server adatokat**](sample-data-sql-server.md) az SQL és a Python programozási nyelv használatával kell mintát venni. 
@@ -30,5 +30,5 @@ Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://do
 
 **Miért érdemes a mintaadatok?**
 
-Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A leépítés lehetővé teszi az adatfelismerést, a feltárást és a szolgáltatások fejlesztését. Ez a mintavételi szerepkör a Cortana Analytics-folyamatban az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
+Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. A leépítés lehetővé teszi az adatfelismerést, a feltárást és a szolgáltatások fejlesztését. Ez a mintavételi szerepkör a Cortana Analytics-folyamatban az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
 

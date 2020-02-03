@@ -34,8 +34,8 @@ Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási v�
 
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
 
-* Egy Azure Machine Learning munkaterület, egy helyi könyvtár, amely tartalmazza a parancsfájlokat, és a Azure Machine Learning SDK for Python telepítve van. Az előfeltételek beszerzéséről a [fejlesztési környezet konfigurálása](how-to-configure-environment.md) című cikkben olvashat bővebben.
-* Az Azure Kubernetes Service (ak) vagy az Azure Container instance (ACI) számára üzembe helyezett, betanított gépi tanulási modell. Ha még nem rendelkezik ilyennel, tekintse meg a következő témakört: a [rendszerképek besorolási modellje](tutorial-train-models-with-aml.md) oktatóanyaga
+* Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Az előfeltételek beszerzéséről a [fejlesztési környezet konfigurálása](how-to-configure-environment.md) című cikkben olvashat bővebben.
+* Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) vagy az Azure Container Instance (aci) Szolgáltatásban üzembe helyezhető. Ha még nem rendelkezik ilyennel, tekintse meg a következő témakört: a [rendszerképek besorolási modellje](tutorial-train-models-with-aml.md) oktatóanyaga
 
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
 
@@ -79,9 +79,9 @@ Az Azure-Application Insights engedélyezheti és letilthatja a Azure Portal.
  
 ## <a name="use-python-sdk-to-configure"></a>A Python SDK használata a konfiguráláshoz 
 
-### <a name="update-a-deployed-service"></a>Központilag telepített szolgáltatás frissítése
+### <a name="update-a-deployed-service"></a>Telepített szolgáltatások frissítésével
 
-1. Azonosítsa a szolgáltatást a munkaterületen. A `ws` értéke a munkaterület neve.
+1. A munkaterület a szolgáltatás azonosítására. A `ws` értéke a munkaterület neve.
 
     ```python
     from azureml.core.webservice import Webservice
@@ -93,7 +93,7 @@ Az Azure-Application Insights engedélyezheti és letilthatja a Azure Portal.
     aks_service.update(enable_app_insights=True)
     ```
 
-### <a name="log-custom-traces-in-your-service"></a>Egyéni Nyomkövetések naplózása a szolgáltatásban
+### <a name="log-custom-traces-in-your-service"></a>A szolgáltatási egyéni nyomkövetési naplók
 
 Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyezési folyamatot az AK vagy ACI esetében a dokumentum [üzembe helyezése és helye témakörben](how-to-deploy-and-where.md) . Ezután kövesse az alábbi lépéseket:
 
@@ -111,7 +111,7 @@ Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyez�
 
 3. Hozzon létre egy rendszerképet, és telepítse azt [AK-ra vagy ACI-](how-to-deploy-and-where.md)ra.
 
-### <a name="disable-tracking-in-python"></a>A nyomkövetés letiltása a Pythonban
+### <a name="disable-tracking-in-python"></a>Tiltsa le a Pythonban nyomon követése
 
 Az Azure Application Insights letiltásához használja a következő kódot:
 
@@ -120,9 +120,9 @@ Az Azure Application Insights letiltásához használja a következő kódot:
 <service_name>.update(enable_app_insights=False)
 ```
 
-## <a name="evaluate-data"></a>Az adatértékelés
+## <a name="evaluate-data"></a>Adatok kiértékelése
 A szolgáltatás adatait a rendszer az Azure Application Insights-fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.
-A megtekintéshez:
+A megtekintéséhez:
 
 1. Lépjen a Azure Machine Learning munkaterületre a [Azure Machine learning Studióban](https://ml.azure.com) , és kattintson Application Insights hivatkozásra
 
@@ -156,7 +156,7 @@ A Azure Data Factory, az Azure ML-feldolgozási folyamatai vagy más adatfeldolg
    [Folyamatos exportálás ![](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
 
 
-## <a name="example-notebook"></a>Példa jegyzetfüzetre
+## <a name="example-notebook"></a>Példa notebook
 
 Az [enable-app-Insight-in-producting-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook bemutatja a cikkben szereplő fogalmakat. 
  

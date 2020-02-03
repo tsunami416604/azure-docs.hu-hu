@@ -29,7 +29,7 @@ Ebben a szakaszban megtudhatja, hogyan használhatja a **havi becsült költség
 
 A havi becsült költség trend diagram megtekintéséhez kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A Labs listából válassza ki a labort.  
 4. Válassza a **konfiguráció és szabályzatok** lehetőséget a bal oldali menüben.  
@@ -39,7 +39,7 @@ A havi becsült költség trend diagram megtekintéséhez kövesse az alábbi l�
 
     A **becsült költségérték** az aktuális naptári hónap becsült költséghatékony értéke. A **tervezett költségek** a teljes aktuális naptári hónap becsült díja, amelyet az előző öt nap Lab-díja alapján számítunk fel.
 
-    A rendszer a következő egész számra kerekíti a költségeket. Példa: 
+    A rendszer a következő egész számra kerekíti a költségeket. Például: 
 
    * 5,01 legfeljebb 6 
    * 5,50 legfeljebb 6
@@ -85,7 +85,7 @@ A DevTest Labs segítségével hatékonyabban kezelheti a laborban felmerülő k
 ## <a name="view-cost-by-resource"></a>Ár megtekintése erőforrás szerint 
 A Labs havi költség trend szolgáltatásával megtekintheti, hogy mennyit költött el az aktuális naptári hónapban. Azt is mutatja, hogy a kiadások kivetítése a hónap végéig, az elmúlt hét napban megadott költségek alapján történik. Annak megismeréséhez, hogy a laborban töltött kiadások miért nem teljesítik a küszöbértékeket, használhatja a **Cost by Resource** funkciót, amely megjeleníti a tábla **erőforrásainak** havi költségeit.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A laborok listájából válassza ki a kívánt labort.  
 4. Válassza a **konfiguráció és szabályzatok** lehetőséget a bal oldali menüben.

@@ -1,6 +1,6 @@
 ---
 title: Az adatok megismerése a csoportos adatelemzési folyamattal
-description: A különböző tárolási környezetekben található, jellemzően a csoportos adatelemzési folyamat során használt adatelemzés.
+description: Fedezze fel az adatokat különböző tárolási olyan környezetekben, amelyek jellemzően a csoportos adatelemzési folyamat.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -22,7 +22,7 @@ ms.locfileid: "76721268"
 
 Az adatelemzés a [csoportos adatelemzési folyamat](overview.md)egyik lépése.
 
-Az alábbi cikkek azt ismertetik, hogyan lehet az adatelemzési folyamat során általában használt három különböző tárolási környezetben található adatvizsgálatot elsajátítani:
+Az alábbi cikkek ismertetik, hogyan fedezheti fel az adatok három különböző tároló környezetekben, amelyek jellemzően a adatelemzési folyamat:
 
 * Ismerkedjen meg az [Azure Blob Container](explore-data-blob.md) -adataival a [Panda](https://pandas.pydata.org/) Python-csomag használatával.
 * Ismerkedjen meg [SQL Server](explore-data-sql-server.md) adatokat az SQL használatával és egy programozási nyelv, például a Python használatával.

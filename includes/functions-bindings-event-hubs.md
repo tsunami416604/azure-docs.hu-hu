@@ -118,7 +118,7 @@ Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mu
 }
 ```
 
-A C# szkript kódja:
+Íme a C#-szkriptkódot:
 
 ```cs
 using System;
@@ -199,7 +199,7 @@ Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mu
 }
 ```
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -240,7 +240,7 @@ Ha egy kötegben szeretne eseményeket fogadni, állítsa a `cardinality` `many`
 }
 ```
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -353,19 +353,19 @@ A Java [functions futtatókörnyezet könyvtárában](https://docs.microsoft.com
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger – konfiguráció
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | – | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | – | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
+|**type** | n/a | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
+|**direction** | n/a | `in`értékre kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Hivatkozhatók a (z)% eventHubName% alkalmazás beállításain keresztül |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a rendszer a `$Default` fogyasztói csoportot használja. |
-|**számosság** | – | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva, vagy a `one`értékre van állítva, a függvény egyetlen üzenetet ad át. |
+|**számosság** | n/a | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva, vagy a `one`értékre van állítva, a függvény egyetlen üzenetet ad át. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -374,10 +374,10 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 
 A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. A metaadatok tulajdonságai más kötésekben vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztályból származnak.
 
-|Tulajdonság|Type (Típus)|Leírás|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
-|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő időpontja (UTC).|
 |`Offset`|`string`|Az adateltolás az Event hub-partíciós adatfolyamhoz viszonyítva. Az eltolás a Event Hubs streamen belüli esemény jelölője vagy azonosítója. Az azonosító egyedi az Event Hubs stream egy partícióján belül.|
 |`PartitionKey`|`string`|Az a partíció, amelybe az eseményt el kell juttatni.|
 |`Properties`|`IDictionary<String,Object>`|Az eseményhez tartozó adatértékek felhasználói tulajdonságai|
@@ -386,7 +386,7 @@ A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functio
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#trigger) .
 
-## <a name="trigger---hostjson-properties"></a>Trigger-Host. JSON tulajdonságok
+## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
 A [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek a Event Hubs trigger viselkedését vezérlik.
 
@@ -472,7 +472,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-Az alábbi C# szkript-kód több üzenetet hoz létre:
+Az alábbiakban C#-szkriptkódot, amely több üzenetet hoz létre:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -620,15 +620,15 @@ A [Java functions runtime library](https://docs.microsoft.com/java/api/overview/
 
 ---
 
-## <a name="output---configuration"></a>Kimenet – konfiguráció
+## <a name="output---configuration"></a>Kimenete – konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és a `EventHub` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | "EventHub" értékre kell állítani. |
-|**direction** | – | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
-|**név** | – | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**type** | n/a | "EventHub" értékre kell állítani. |
+|**direction** | n/a | Állítsa "out". Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
@@ -667,15 +667,15 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Kötés | Leírások |
+| Kötés | Referencia |
 |---|---|
-| Event Hubs-eseményközpontok | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
 Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példa a Host. JSON fájlt tartalmazza, csak a 2. x + beállításokat a kötéshez. További információ a 2. x verzióban található globális konfigurációs beállításokról: a [Host. JSON dokumentációja Azure functions](../articles/azure-functions/functions-host-json.md).
 

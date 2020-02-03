@@ -42,7 +42,7 @@ A labor-fiók létrehozása után a következő feladatokat végezheti el:
 - Megosztott képgyűjtemény leválasztása a labor-fiókból
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Megosztott Képtár létrehozása és csatolása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza a **labor Services** elemet a **DEVOPS** szakaszban. Ha a **Lab szolgáltatások**mellett a csillag (`*`) lehetőséget választja, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
 
     ![Minden szolgáltatás – > labor Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

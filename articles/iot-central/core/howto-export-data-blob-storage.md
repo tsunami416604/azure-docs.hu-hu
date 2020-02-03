@@ -134,7 +134,7 @@ Ha a folyamatos adatexportálás be van kapcsolva, az összes eszközön egyetle
 - az eszköz `name`
 - `deviceId` a [Device kiépítési szolgáltatásból](/azure/iot-central/core/howto-connect-nodejs)
 - Eszköz sablonjának adatai
-- Tulajdonságértékek
+- Tulajdonságok értékei
 - Értékek beállítása
 
 Az új Pillanatképek percenként egyszer írhatók. A pillanatkép a következőket tartalmazza:

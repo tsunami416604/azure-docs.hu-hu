@@ -27,7 +27,7 @@ A recept bármilyen Cognitive Services tárolóval működik. A recept használa
 
 * A Azure Portalban létrehozott kognitív szolgáltatási erőforrás.
 * A kognitív szolgáltatás **végpontjának URL-címe** – tekintse át az adott szolgáltatás "a telepítésének" módját a tároló számára, hogy megtudja, hol található a végpont URL-címe a Azure Portalon, és hogy az URL-cím helyes példája a következőképpen néz ki:. A pontos formátum a szolgáltatásról a szolgáltatásra változhat.
-* Kognitív szolgáltatás **kulcsa** – a kulcsok az Azure-erőforrás **kulcsok** oldalán találhatók. Csak a két kulcs egyikét kell megadnia. A kulcs 32 alfanumerikus karakterekből álló karakterlánc.
+* Kognitív szolgáltatás **kulcsa** – a kulcsok az Azure-erőforrás **kulcsok** oldalán találhatók. Csak akkor kell egyik két kulcsot. A kulcs 32 alfanumerikus karakterekből álló karakterlánc.
 * Egyetlen Cognitive Services tároló a helyi gazdagépen (a számítógépen). Győződjön meg arról, hogy a következőket teheti:
   * Húzza le a rendszerképet egy `docker pull` paranccsal.
   * Futtassa a helyi tárolót sikeresen az összes szükséges konfigurációs beállítással `docker run` paranccsal.

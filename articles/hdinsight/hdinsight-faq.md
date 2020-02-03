@@ -202,7 +202,7 @@ A virtuális gépek tartományhoz való csatlakoztatásához tartományvezérlő
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Használhatok önaláírt tanúsítványt egy HRE-DS Secure LDAP-beállításban, és kiépíteni egy ESP-fürtöt?
 
-A hitelesítésszolgáltató által kiállított tanúsítvány használata ajánlott, de önaláírt tanúsítvány használata is támogatott az ESP-ben. További információ eléréséhez lásd:
+A hitelesítésszolgáltató által kiállított tanúsítvány használata ajánlott, de önaláírt tanúsítvány használata is támogatott az ESP-ben. További információkért lásd:
 
 - [Azure Active Directory Domain Services engedélyezése](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -237,7 +237,7 @@ ESP Spark-fürtökön a LLAP biztonsági okokból (pl. Apache Ranger) van enged�
 Ez kétféleképpen valósítható meg: 1 – a fürt újból létrehozható, és a fürt létrehozásakor a további csoport is hozzáadható. Ha hatókörön belüli szinkronizálást használ a HRE-DS-ben, győződjön meg arról, hogy a B csoport szerepel a hatókörön belüli szinkronizálásban.
 2 – a csoport hozzáadása az ESP-fürt létrehozásához használt előző csoport beágyazott alcsoportjaként. Ha például egy `A`csoporttal rendelkező ESP-fürtöt hozott létre, később a csoport hozzáadása `B` beágyazott alcsoportként `A` és körülbelül egy óra elteltével a rendszer automatikusan szinkronizálja és elérhetővé teszi azokat a fürtben. 
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Tárterület
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Hozzáadhatok Azure Data Lake Storage Gen2 egy meglévő HDInsight-fürthöz további Storage-fiókként?
 
@@ -249,7 +249,7 @@ A beállításokat a fürt tulajdonságai között, a Azure Portalban találhatj
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Hogyan számítható ki a Storage-fiókok és a blob-tárolók használata a HDInsight-fürtökhöz?
 
-Tegye a következők egyikét:
+Tegye a következők valamelyikét:
 
 - [A PowerShell használata](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
@@ -279,7 +279,7 @@ done
 
 Jelenleg nem létezik Ranger beépülő modul a blob Storage-hoz és Azure Data Lake Storage Gen1 vagy Gen2. Az ESP-fürtök esetében Azure Data Lake Storaget kell használnia, mert a fájlrendszer szintjén legalább a HDFS-eszközök használatával manuálisan is beállíthatja a részletes kiőrlési engedélyeket. Emellett a Azure Data Lake Storage használatakor az ESP-fürtök a fájlrendszer-hozzáférés-vezérlést Azure Active Directory használatával hajtják végre a fürt szintjén. 
 
-Az adathozzáférési szabályzatokat a Azure Storage Explorer használatával rendelheti hozzá a felhasználók biztonsági csoportjaihoz. További információ eléréséhez lásd:
+Az adathozzáférési szabályzatokat a Azure Storage Explorer használatával rendelheti hozzá a felhasználók biztonsági csoportjaihoz. További információkért lásd:
 
 - [Hogyan az Azure AD-felhasználók számára a kaptár vagy más szolgáltatások használatával történő adatlekérdezésre vonatkozó engedélyeket Data Lake Storage Gen2.](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)

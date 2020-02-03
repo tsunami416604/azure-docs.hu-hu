@@ -1,6 +1,6 @@
 ---
-title: Mintaadatok az Azure HDInsight-struktúra tábláiban – csoportos adatelemzési folyamat
-description: Az Azure HDInsight-struktúra tábláiban tárolt, struktúra-lekérdezéseket használó adatmennyiség, amely az adatmennyiséget az elemzéshez könnyebben kezelhető méretre csökkenti.
+title: Adatmintavétel az Azure HDInsight Hive-táblák – csoportos adatelemzési folyamat
+description: Lefelé-minta használatával Hive-lekérdezések csökkentése érdekében az adatok könnyebben kezelhető elemzéshez méretre Azure HDInsight Hive-táblákban tárolt adatokat.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -19,22 +19,22 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719993"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
-Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure HDInsight-struktúra tábláiban tárolt adatmintákat a kaptár-lekérdezések használatával, hogy az elemzéshez könnyebben kezelhető méretre csökkentse. Három népszerű használatú mintavételi módszert foglal magában:
+Ez a cikk bemutatja, hogyan való Hive-lekérdezések segítségével könnyebben kezelhető elemzéshez méretre csökkenteni az Azure HDInsight Hive-táblákban tárolt adatokat. Három népszerű használatú mintavételi módszert foglal magában:
 
 * Egységes véletlenszerű mintavétel
-* Véletlenszerű mintavételezés csoportok szerint
-* Rétegzett mintavételezés
+* A csoportok véletlenszerű mintavétel
+* Rétegzett mintavétel
 
 **Miért érdemes felvenni az adatait?**
-Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A leállási mintavételezés megkönnyíti az adatfelismerést, a feltárást és a szolgáltatások fejlesztését. A csapat adatelemzési folyamatának szerepe az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
+Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. Alsó-mintavétel segíti az adatok megértését, feltárási és funkciófejlesztési. A csoportos adatelemzési folyamat szerepét, hogy az adatokat feldolgozó függvények és a gépi tanulási modellek gyors prototípus-készítés engedélyezése.
 
 Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
 
-## <a name="how-to-submit-hive-queries"></a>Struktúra-lekérdezések beküldése
-A kaptár lekérdezéseit a Hadoop parancssori konzolról lehet elküldeni a Hadoop-fürt fő csomópontján.  Jelentkezzen be a Hadoop-fürt fő csomópontjára, nyissa meg a Hadoop parancssori konzolt, és küldje el innen a kaptár-lekérdezéseket. A kaptár-lekérdezések a Hadoop parancssori konzolon való elküldésével kapcsolatos utasításokért lásd: [a struktúra-lekérdezések elküldése](move-hive-tables.md#submit).
+## <a name="how-to-submit-hive-queries"></a>Hogyan lehet elküldeni a Hive-lekérdezések
+Hive-lekérdezések a Hadoop parancssori konzolból, az a Hadoop-fürt fő csomópontjának küldheti.  Jelentkezzen be a Hadoop-fürt fő csomópontjára, nyissa meg a Hadoop parancssori konzolt, és küldje el innen a kaptár-lekérdezéseket. A kaptár-lekérdezések a Hadoop parancssori konzolon való elküldésével kapcsolatos utasításokért lásd: [a struktúra-lekérdezések elküldése](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a>Egységes véletlenszerű mintavétel
-Az egységes véletlenszerű mintavételezés azt jelenti, hogy az adatkészletben lévő minden egyes sor a mintavétel során egyenlő eséllyel szerepel. Ezt egy extra mező () a belső "Select" lekérdezésben megadott adatkészletbe, a külső "Select" lekérdezésen belül, az adott véletlenszerű mezőre való felvételével lehet megvalósítani.
+Egységes véletlenszerű mintavételi jelenti, hogy a készlet minden egyes sorára mintavételezése egyenlő esélye. Adja hozzá egy kiegészítő mezőt rand() az adatkészletben a belső "kijelölése" lekérdezésben, és a külső "kijelölése" lekérdezésben a feltételhez véletlenszerű mező hajtható végre.
 
 Itt láthat egy példalekérdezést:
 
@@ -52,9 +52,9 @@ Itt láthat egy példalekérdezést:
 Itt `<sample rate, 0-1>` megadja a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
 
 ## <a name="group"></a>Véletlenszerű mintavételezés csoportok szerint
-A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
+Ha kategorikus adatok mintavételekor érdemes vagy vagy kizárja az összes példányainak néhány a kategorikus változó értékét. Az ilyen mintavételi "csoport által mintavételi" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
 
-Íme egy példa a Group:
+Itt láthat egy példalekérdezést, hogy a minták csoport szerint:
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -81,7 +81,7 @@ A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizá
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Rétegzett mintavételezés
-A véletlenszerű mintavételezés egy kategorikus változóra vonatkozik, ha a beszerzett minták olyan kategorikus értékekkel rendelkeznek, amelyek ugyanabban az arányban találhatók, mint a szülő populációban. Ha ugyanezt a példát használja, tegyük fel, hogy az adatai a következő állapotok szerint jelennek meg: NJ 100 észrevételt tartalmaz, a NY 60 megfigyelésekkel rendelkezik, és a WA rendelkezik 300-megjegyzésekkel. Ha azt adja meg, hogy a rétegzett mintavételezés sebessége 0,5, akkor a beszerzett minta a NJ, NY és WA megközelítőleg 50, 30 és 150 megfigyeléssel rendelkezik.
+A szúrópróbaszerű műanyaggal vonatkozóan egy kategorikus változó rétegezett Ha kapott mintákat, amelyek szerepelnek a méretarány, a szülő feltöltése a kategorikus értékeket. Ugyanebben a példában használja a fenti, tegyük fel, hogy az adatok a következő megfigyeléseken rendelkezik állapot szerinti: Jersey 100 megfigyelések, NY rendelkezik 60 megfigyelések, pedig WA 300 megfigyeléseket. Ha megadja a 0.5-ös lennie rétegzett mintavételi aránya, akkor a mintát a kell körülbelül 50, 30 és 150 megfigyelések Jersey, NY és WA jelölik.
 
 Itt láthat egy példalekérdezést:
 

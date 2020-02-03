@@ -1,5 +1,5 @@
 ---
-title: PowerShell-parancsok
+title: PowerShell-parancsmagok
 description: Keresse meg a Azure SQL Data Warehouse legfontosabb PowerShell-parancsmagokat, beleértve az adatbázisok szüneteltetését és folytatását.
 services: sql-data-warehouse
 author: kevinvngo

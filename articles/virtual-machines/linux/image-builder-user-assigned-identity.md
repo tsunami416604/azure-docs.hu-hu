@@ -57,7 +57,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni.
 

@@ -80,7 +80,7 @@ A naplózási adat a következő mezőkön szűrhető:
 - Szolgáltatás
 - Kategória
 - Tevékenység
-- Állapot
+- status
 - Cél
 - Kezdeményező (Szereplő)
 - Dátumtartomány
@@ -89,7 +89,7 @@ A naplózási adat a következő mezőkön szűrhető:
 
 A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltatások legördülő listájából válasszon ki:
 
-- Mind
+- Összes
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -97,7 +97,7 @@ A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltat�
 - B2C
 - Feltételes hozzáférés
 - Alapvető könyvtár
-- Jogosultságkezelés
+- Jogosultságok kezelése
 - Identity Protection
 - Meghívott felhasználók
 - PIM
@@ -107,12 +107,12 @@ A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltat�
 
 A **Kategória** szűrővel a következő szűrők közül választhat:
 
-- Mind
+- Összes
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Hitelesítés
 - Engedélyezés
-- Kapcsolatfelvétel
+- Kapcsolattartó
 - Eszköz
 - DeviceConfiguration
 - DirectoryManagement
@@ -130,8 +130,8 @@ Az összes naplózási tevékenység listáját a Graph API használatával érh
 
 Az **állapot** szűrő lehetővé teszi a szűrést egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 
-- Mind
-- Sikeres
+- Összes
+- Siker
 - Hiba
 
 A **célként** megadott szűrő lehetővé teszi egy adott cél keresését név vagy egyszerű felhasználónév (UPN) alapján. A cél neve és az UPN megkülönbözteti a kis-és nagybetűket. 

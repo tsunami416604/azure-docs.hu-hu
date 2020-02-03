@@ -103,10 +103,10 @@ A témakör-végpontra való közzététel után választ kap. A válasz egy sza
 
 |Eredmény  |Válasz  |
 |---------|---------|
-|Sikeres  | 200 OK  |
+|Siker  | 200 OK  |
 |Az esemény adatformátuma helytelen formátumú | 400 hibás kérelem |
 |Érvénytelen hozzáférési kulcs | 401 jogosulatlan |
-|Helytelen végpont | 404 – Nem található |
+|Helytelen végpont | 404 nem található |
 |Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
 Hibák esetén az üzenet törzsének formátuma a következő:

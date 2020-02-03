@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719806"
 ---
-# <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
+# <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL Database naplózási szolgáltatásával
 
 Az Azure [SQL Database](sql-database-technical-overview.md) naplózása és a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban, log Analytics munkaterületen vagy Event Hubsban naplózza a naplóba. Naplózás is:
 
@@ -70,7 +70,7 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz vagy alapért
 
 A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal használatával.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Az SQL Database/Server (biztonság) fejléc alatt navigáljon a **naplózás** elemre.
 
     <a id="auditing-screenshot"></a>![navigációs ablaktábla][1]
@@ -95,7 +95,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 
     ![tárolási beállítások](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
-6. A naplók a Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget, és nyissa meg a **tároló adatait**. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időtartamot. A rendszer törli a régi naplókat. Ezután kattintson az **OK** gombra.
+6. A naplók a Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget, és nyissa meg a **tároló adatait**. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időtartamot. A rendszer törli a régi naplókat. Végül kattintson az **OK** gombra.
 
    > [!IMPORTANT]
    > - A megőrzési időtartam alapértelmezett értéke 0 (korlátlan megőrzés). Ezt az értéket módosíthatja úgy, hogy a Storage-fiók konfigurálásakor áthelyezi a tárolási **Beállítások** **megőrzés (nap)** csúszkáját a naplózáshoz.
@@ -111,7 +111,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 
     ![Eseményközpont](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Kattintson a **Save** (Mentés) gombra.
 10. Ha testre szeretné szabni a naplózott eseményeket, ezt [PowerShell-parancsmagok](#subheading-7) vagy a [REST API](#subheading-9)használatával végezheti el.
 11. A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](sql-database-threat-detection-get-started.md).
 
@@ -224,7 +224,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 3. Lépjen vissza a naplózási konfiguráció lapra, váltson másodlagosról elsődlegesre a Storage-hozzáférési kulcsra, majd kattintson **az OK**gombra. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
 4. Lépjen vissza a tárolási konfiguráció lapra, és generálja újra a másodlagos elérési kulcsot (felkészülés a következő kulcs frissítési ciklusára).
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -253,7 +253,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
     > A védett hozzáfűzési Blobok írási beállítása az időalapú megőrzés alatt jelenleg elérhető, és csak a következő régiókban látható:
     > - USA keleti régiója
     > - USA déli középső régiója
-    > - USA 2. nyugati régiója
+    > - USA nyugati régiója, 2.
 
 
 ## <a id="subheading-7"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure PowerShell használatával

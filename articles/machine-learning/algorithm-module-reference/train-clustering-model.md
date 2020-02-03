@@ -45,7 +45,7 @@ A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelye
 
 7. Futtassa a folyamatot, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása**lehetőséget.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 

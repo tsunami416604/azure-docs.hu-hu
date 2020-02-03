@@ -1,5 +1,5 @@
 ---
-title: Hálózati szempontok
+title: Hálózati megfontolások
 description: Ismerkedjen meg a bevezető hálózati forgalommal, valamint a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak beállításával a bevezetővel.
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
@@ -53,7 +53,7 @@ Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méret�
 
 Ahhoz, hogy a bejelentési funkció működjön, a beadáshoz a következő portok megnyitása szükséges:
 
-| Használat | Kezdő ár | – |
+| Használat | Forrás | Végpont |
 |-----|------|----|
 | Felügyelet | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
 |  Belső belső kommunikáció | Bekapcsolási alhálózat: minden port | Bekapcsolási alhálózat: minden port
@@ -84,13 +84,13 @@ A kimenő hozzáféréshez a kiszervezet több külső rendszertől függ. A ren
 
 A beadás a következő portokon keresztül kommunikál az internettel elérhető címekkel:
 
-| Használati területek | Portok |
+| Használja | Portok |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
 | CRL, Windows-frissítések, Linux-függőségek, Azure-szolgáltatások | 80/443 |
 | Azure SQL | 1433 | 
-| Monitoring | 12000 |
+| Figyelés | 12000 |
 
 A kimenő függőségek az [app Service Environment kimenő forgalom zárolását](./firewall-integration.md)ismertető dokumentumban találhatók. Ha a beszállító nem fér hozzá a függőségeihez, a működése leáll. Ha ez elég hosszú, a beadás felfüggesztve. 
 
@@ -114,7 +114,7 @@ A központilag működő működési függőségek mellett a portál felületén
 -   Kudu
 -   Bővítmények
 -   Process Explorer
--   Console
+-   Konzol
 
 Ha ILB-beadást használ, az SCM-hely nem érhető el a VNet kívülről. Bizonyos funkciók nem fognak működni az alkalmazás-portálon, mert hozzáférést igényelnek egy alkalmazás SCM-helyéhez. A portál használata helyett közvetlenül is csatlakozhat az SCM-webhelyhez. 
 
@@ -142,7 +142,7 @@ A külső kiegészítő szolgáltatással IP-címeket rendelhet az egyes alkalma
 
 Ha egy alkalmazás saját IP-alapú SSL-címmel rendelkezik, a beadási osztály két portot rendel az adott IP-címhez. Egy port a HTTP-forgalomhoz, a másik pedig a HTTPS. Ezek a portok az IP-címek szakaszban lévő betekintő felhasználói felületen vannak felsorolva. A forgalomnak képesnek kell lennie a portok elérésére a VIP-címről, vagy az alkalmazások nem érhetők el. Ezt a követelményt fontos megjegyezni a hálózati biztonsági csoportok (NSG) konfigurálásakor.
 
-## <a name="network-security-groups"></a>Hálózati biztonsági csoportok ##
+## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok) ##
 
 A [hálózati biztonsági csoportok][NSGs] lehetővé teszik a hálózati hozzáférés vezérlését egy VNet belül. Ha a portált használja, a legalacsonyabb prioritású implicit megtagadási szabályt kell megtagadnia minden adat megtagadásához. A buildek az engedélyezési szabályok.
 
@@ -210,7 +210,7 @@ Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi
 
     ![NSG és útvonalak][7]
 
-## <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont ##
+## <a name="service-endpoints"></a>Szolgáltatási végpontok ##
 
 A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatási végpontokról a [Virtual Network szolgáltatási végpontok][serviceendpoints] dokumentációjában olvashat bővebben. 
 
@@ -218,7 +218,7 @@ Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes t
 
 Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal rendelkező alhálózaton, akkor az erről az alhálózatról elért összes Azure SQL-példányhoz engedélyezve kell lennie a szolgáltatásvégpontoknak. Ha több Azure SQL-példányt szeretne elérni ugyanarról az alhálózatról, nem engedélyezheti a szolgáltatásvégpontokat csak az egyik Azure SQL-példányon, egy másikon pedig nem. Nincs más Azure-szolgáltatás, mint az Azure SQL, a szolgáltatási végpontok tekintetében. Amikor az Azure Storage szolgáltatáshoz engedélyezi a szolgáltatásvégpontokat, azzal zárolja az erőforráshoz való hozzáférést az alhálózatról, de továbbra is elérhet más Azure Storage-fiókokat, még akkor is, ha azokon nincsenek engedélyezve a szolgáltatásvégpontok.  
 
-![Service Endpoints – szolgáltatásvégpont][8]
+![Szolgáltatási végpontok][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png

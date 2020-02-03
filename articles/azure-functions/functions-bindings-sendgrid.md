@@ -18,7 +18,7 @@ Ez a cikk azt ismerteti, hogyan küldhet e-mailt [SendGrid](https://sendgrid.com
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
 A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) tárházban található.
 
@@ -122,7 +122,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 
 A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-A C# szkript kódja:
+Íme a C#-szkriptkódot:
 
 ```csharp
 #r "SendGrid"
@@ -175,7 +175,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 
 A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, input) {
@@ -346,15 +346,15 @@ A [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/ma
 
 A következő táblázat a *function. JSON* fájlban és a `SendGrid` attribútumban/jegyzetben elérhető kötési konfigurációs tulajdonságokat sorolja fel.
 
-| *function. JSON* -tulajdonság | Attribútum/Megjegyzés tulajdonság | Leírás | Választható |
+| *function. JSON* -tulajdonság | Attribútum/Megjegyzés tulajdonság | Leírás | Optional |
 |--------------------------|-------------------------------|-------------|----------|
-| type |–| `sendGrid`értékre kell állítani.| Nem |
-| irány |–| `out`értékre kell állítani.| Nem |
-| név |–| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
-| apiKey | apiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
-| erre:| – | A címzett e-mail-címe. | Igen |
-| a| Kezdő ár | A feladó e-mail-címe. |  Igen |
-| Tulajdonos| Tárgy | Az e-mail tárgya. | Igen |
+| típus |n/a| `sendGrid`értékre kell állítani.| Nem |
+| irány |n/a| `out`értékre kell állítani.| Nem |
+| név |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
+| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
+| a következőig:| Végpont | A címzett e-mail-címe. | Igen |
+| from| Forrás | A feladó e-mail-címe. |  Igen |
+| subject| Tárgy | Az e-mail tárgya. | Igen |
 | szöveg| Szöveg | Az e-mail tartalma. | Igen |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
@@ -363,7 +363,7 @@ A választható tulajdonságok rendelkezhetnek a kötésben definiált alapérte
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
 
 Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példa a Host. JSON fájlt tartalmazza, csak a 2. x + beállításokat a kötéshez. További információ a 2. x verzióban található globális konfigurációs beállításokról: a [Host. JSON dokumentációja Azure functions](functions-host-json.md).
 
@@ -383,7 +383,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|a|–|A küldő e-mail-címe az összes függvényen belül.| 
+|from|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

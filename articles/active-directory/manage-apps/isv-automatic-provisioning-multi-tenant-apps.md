@@ -52,7 +52,7 @@ Azok az alkalmazások, amelyek megkövetelik, hogy egy felhasználói rekord meg
 
 * Csökkentheti a saját fejlesztésű üzembe helyezési megoldások üzemeltetésének és karbantartásának költségeit.
 
-## <a name="choose-a-provisioning-method"></a>Üzembe helyezési módszer kiválasztása
+## <a name="choose-a-provisioning-method"></a>Az üzembe helyezési módszer kiválasztása
 
 Az Azure AD számos integrációs elérési utat biztosít, amelyek lehetővé teszik az alkalmazás automatikus felhasználó általi üzembe helyezését.
 
@@ -67,7 +67,7 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 | Az automatikus kiépítés által engedélyezett vagy továbbfejlesztett képességek| Azure AD-kiépítési szolgáltatás (SCIM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JIT |
 |---|---|---|---|
 | Felhasználók és csoportok kezelése az Azure AD-ben| √| √| Csak felhasználó |
-| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √| √| Csak felhasználó * |
+| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √*| √*| Csak felhasználó * |
 | A felhasználók és csoportok feletti adathozzáférés a O365-alapú adathozzáféréshez (csapatok, SharePoint, E-mail, naptár, dokumentumok stb.) való kiépítés során történik.| X +| √| X |
 | Felhasználók létrehozása, olvasása és frissítése üzleti szabályok alapján| √| √| √ |
 | Felhasználók törlése üzleti szabályok alapján| √| √| X |
@@ -113,7 +113,7 @@ Ha csak az első bejelentkezés alkalmával szeretné kiépíteni a felhasznál�
 
 Az SAML JIT az SAML-jogkivonat jogcím-információi alapján hozza létre és frissíti a felhasználói adatokat az alkalmazásban. Az ügyfelek igény szerint konfigurálhatják ezeket a szükséges jogcímeket az Azure AD-alkalmazásban. Időnként az JIT-kiépítés engedélyezése szükséges az alkalmazás oldaláról, hogy az ügyfél használhassa ezt a funkciót. Az SAML JIT hasznos a felhasználók létrehozásához és frissítéséhez, de nem tudja törölni vagy inaktiválni a felhasználókat az alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](isv-sso-content.md)
 

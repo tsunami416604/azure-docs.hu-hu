@@ -1,5 +1,5 @@
 ---
-title: Csoportos adatelemzési folyamat csoport-kezelő feladatai
+title: Adatelemzési folyamat manager feladatok csapata
 description: Kövesse ezt a részletes útmutatót a Group Manager egy adatelemzési csapat projekten végzett feladatairól.
 author: marktab
 manager: marktab
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721353"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Csoportos adatelemzési folyamat csoport-kezelő feladatai
+# <a name="team-data-science-process-group-manager-tasks"></a>Adatelemzési folyamat manager feladatok csapata
 
 Ez a cikk azokat a feladatokat ismerteti, amelyekkel egy *csoport-kezelő* befejeződik egy adatelemző szervezet számára. A Group Manager a teljes adatelemzési egységet egy vállalaton belül kezeli. Az adatelemzési egységek több csapattal is rendelkezhetnek, amelyek mindegyike különböző üzleti vertikális adatelemzési projekteken dolgozik. A Group Manager célja egy együttműködésen alapuló csoportos környezet létrehozása, amely a csoportos [adatelemzési folyamat](overview.md) (TDSP) szabványosítására szolgál. Az adatelemzési csapat által a TDSP szabványosított, az összes személyzeti szerepkör és kapcsolódó feladat áttekintését lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa a következő két parancsot:
+> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa az alábbi két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 

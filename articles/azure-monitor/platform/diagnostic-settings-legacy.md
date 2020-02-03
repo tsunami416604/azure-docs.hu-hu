@@ -20,7 +20,7 @@ Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform
 
 ## <a name="differences-between-methods"></a>A módszerek közötti különbségek
 
-### <a name="advantages"></a>Előnyei
+### <a name="advantages"></a>Előnyök
 A diagnosztikai beállítások használata a következő előnyökkel jár az aktuális módszereknél:
 
 - Konzisztens módszer az összes platform naplójának összegyűjtéséhez.
@@ -29,7 +29,7 @@ A diagnosztikai beállítások használata a következő előnyökkel jár az ak
 - Az összes műveletnapló-kategória összegyűjtése. Egyes kategóriák gyűjtése nem a régi metódussal történik.
 - Gyorsabb késés a naplók betöltéséhez. Az előző metódus körülbelül 15 percet vesz igénybe, míg a diagnosztikai beállítások csak 1 percet vesznek fel.
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 A funkció engedélyezése előtt vegye figyelembe a következő részleteket a tevékenység naplóinak gyűjtéséhez a diagnosztikai beállítások használatával.
 
 - A tevékenység naplójának az Azure Storage-ba való gyűjtésének megőrzési beállítása el lett távolítva, ami azt jelenti, hogy az adatok határozatlan ideig lesznek tárolva, amíg el nem távolítja.
@@ -43,7 +43,7 @@ A következő oszlopok el lettek távolítva. Ezeknek az oszlopoknak a pótlása
 
 | Oszlop eltávolítva | Helyettesítő oszlop |
 |:---|:---|
-| ActivityStatus    | Oszlopazonosítón    |
+| ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |

@@ -23,7 +23,7 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Face](../face-how-t
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
+## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

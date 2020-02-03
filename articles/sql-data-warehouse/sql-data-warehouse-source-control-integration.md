@@ -21,7 +21,7 @@ ms.locfileid: "76720027"
 
 Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat kiépítéséhez SQL Data Warehousesal. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 - Regisztráció [Azure DevOps-szervezetre](https://azure.microsoft.com/services/devops/)
 - A [Létrehozás és összekapcsolás](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal) oktatóanyag átugrása
@@ -37,7 +37,7 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Kapcsolatok kezelése](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-   ![Kapcsolódás](media/sql-data-warehouse-source-control-integration/3-connect.png "Kapcsolódás")
+   ![Kapcsolódás](media/sql-data-warehouse-source-control-integration/3-connect.png "Csatlakozás")
 
 3. Az Azure-tárház klónozása a projektből a helyi gépre
 

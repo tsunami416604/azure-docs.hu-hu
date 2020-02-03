@@ -22,7 +22,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan, mint az eszköz fejlesztői, hog
 
 Az oktatóanyagban szereplő szakasz azt ismerteti, hogyan kell felépíteni a generált csontváz kódját, feltételezi, hogy a Windowst használja.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Eszköz-képesség modell létrehozása

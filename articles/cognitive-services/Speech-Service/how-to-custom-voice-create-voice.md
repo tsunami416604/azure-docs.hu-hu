@@ -44,11 +44,11 @@ Az adatkészletek automatikusan érvényesítve lesznek a feltöltés gomb megny
 
 Az alábbi táblázat az importált adatkészletek feldolgozási állapotait mutatja be:
 
-| Állami | Jelentés |
+| Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet beérkezett, és feldolgozás alatt áll. |
 | Sikeres | Az adatkészlet érvényesítve lett, és most már használható hangmodell létrehozásához. |
-| Meghiúsult | Az adatkészletet számos ok miatt meghiúsult a feldolgozás során, például a hibák, az adatproblémák vagy a hálózati problémák miatt. |
+| Sikertelen | Az adatkészletet számos ok miatt meghiúsult a feldolgozás során, például a hibák, az adatproblémák vagy a hálózati problémák miatt. |
 
 Az ellenőrzés befejezését követően a **hosszúságú kimondott szöveg** oszlopban megtekintheti az egyes adatkészletek egyező hosszúságú kimondott szöveg teljes számát. Ha a kiválasztott adattípus hosszú hangú szegmentálást igényel, ez az oszlop csak az Ön által az átiratok alapján vagy a Speech transzkripció Service-ben szegmentált hosszúságú kimondott szöveg tükrözi. A sikeresen importált hosszúságú kimondott szöveg és a hozzájuk tartozó leképezési átiratok részletes eredményeinek megtekintéséhez továbbra is letöltheti az érvényesített adatkészletet. Tipp: a hosszú hangú szegmentálás több mint egy órát is igénybe vehet az adatok feldolgozásának befejezéséhez.
 
@@ -86,11 +86,11 @@ A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az ú
 
 A megjelenített állapot az adatkészlet hangmodellre alakításának folyamatát tükrözi, ahogy az itt látható.
 
-| Állami | Jelentés |
+| Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | A hangmodell létrehozása folyamatban van. |
 | Sikeres | A hangmodell létrehozása megtörtént, és üzembe helyezhető. |
-| Meghiúsult | A hangmodell sok ok miatt sikertelen volt a képzésben, például a láthatatlan adatproblémákkal vagy a hálózati problémákkal kapcsolatban. |
+| Sikertelen | A hangmodell sok ok miatt sikertelen volt a képzésben, például a láthatatlan adatproblémákkal vagy a hálózati problémákkal kapcsolatban. |
 
 A betanítási idő a feldolgozott hangadatok mennyiségétől függően változhat. Az átlagos időintervallum körülbelül 30 percet vesz igénybe, több száz hosszúságú kimondott szöveg 40 óráig 20 000 hosszúságú kimondott szöveg. Ha a modell betanítása sikeres volt, elkezdheti a tesztelést.
 
@@ -117,7 +117,7 @@ A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használat�
     > [!NOTE]
     > A szöveg nyelvének meg kell egyeznie a hang betűkészletének nyelvével. Csak a sikeresen betanított modellek tesztelése lehetséges. Ebben a lépésben csak egyszerű szöveg támogatott.
 
-5.  Kattintson a **Create** (Létrehozás) gombra.
+5.  Kattintson a **Létrehozás** gombra.
 
 A tesztelési kérelem elküldése után vissza fog térni a teszt lapra. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új kérésnek és az állapot oszlopnak. Néhány percet is igénybe vehet a beszédfelismerés. Ha az Állapot oszlopban a **sikeres**művelet látható, lejátszhatja a hangot, vagy letöltheti a szövegbeviteli szöveget (egy. txt fájlt) és hangkimenetet (egy. wav fájlt), és az utóbbit a minőségre is meghallgathatja.
 

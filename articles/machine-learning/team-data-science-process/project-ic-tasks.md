@@ -1,5 +1,5 @@
 ---
-title: A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
+title: A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
 description: Az adatelemzési csapat projektjein az egyes közreműködők feladatainak részletes áttekintése.
 author: marktab
 manager: marktab
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721251"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
 
 Ez a témakör azokat a feladatokat ismerteti, amelyeket az *egyes közreműködők* a [csoportos adatelemzési folyamat](overview.md) (TDSP) projekt beállításához végeznek. A cél a TDSP szabványosított együttműködési csoportmunka-környezet használata. A TDSP célja az együttműködés és a csapatmunka fejlesztése. A munkatársak szerepköreinek és az adatelemzési csapat által a TDSP szabványosított feladatainak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 

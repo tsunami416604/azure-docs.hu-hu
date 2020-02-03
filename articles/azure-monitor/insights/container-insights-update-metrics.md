@@ -22,7 +22,7 @@ A szolgáltatás részeként a következő metrikák engedélyezettek:
 
 | Metrikai névtér | Metrika | Leírás |
 |------------------|--------|-------------|
-| bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
+| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
 | bepillantást nyerhet. tároló/hüvely | podCount | Ezek a *Pod* mérőszámok, és a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
 
 A fürt frissítése az új képességek támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. A Azure PowerShell és a CLI használatával engedélyezheti ezt a fürtön vagy az előfizetésben lévő összes fürtön. Az AK új üzemelő példányai automatikusan tartalmazzák ezt a konfigurációs változást és képességet.
@@ -36,7 +36,7 @@ Mielőtt elkezdené, erősítse meg a következőket:
 * Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listáját [itt](../platform/metrics-custom-overview.md#supported-regions)dokumentáljuk.
 * Az AK-fürterőforrás **[tulajdonosi](../../role-based-access-control/built-in-roles.md#owner)** szerepkörének tagja, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét. 
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Fürt frissítése a Azure Portal
 
@@ -58,7 +58,7 @@ A következő lépésekkel frissítheti az előfizetésben lévő összes fürt�
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -327,7 +327,7 @@ A következő lépések végrehajtásával frissítheti az előfizetésben lév�
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -578,7 +578,7 @@ A következő lépések végrehajtásával frissítheti egy adott fürtöt a Azu
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

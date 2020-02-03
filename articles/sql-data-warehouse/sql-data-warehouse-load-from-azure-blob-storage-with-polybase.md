@@ -28,13 +28,13 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 2. Nyilvános adattárolás betöltése az adatbázisba
 3. Optimalizálások végrehajtása a betöltés befejeződése után.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik SQL Analytics-adattárházral. Ha nincs kiépítve adattárház, tekintse [meg az adattárház létrehozása és a kiszolgálói szintű tűzfalszabály beállítása](create-data-warehouse-portal.md)című témakört.
 
 ## <a name="1-configure-the-data-source"></a>1. az adatforrás konfigurálása
 A Base T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektumok definícióit az SQL Analytics-adattárházban tárolja a rendszer. Az adattárolást külsőleg tárolja a rendszer.
 
-### <a name="11-create-a-credential"></a>1,1. Hitelesítő adat létrehozása
+### <a name="11-create-a-credential"></a>1.1. Hitelesítő adat létrehozása
 **Hagyja ki ezt a lépést** , ha betölti a contoso nyilvános információit. Nem szükséges biztonságos hozzáférést biztosítani a nyilvános adatbázishoz, mert már mindenki számára elérhető.
 
 **Ne ugorja át ezt a lépést** , ha az oktatóanyagot sablonként használja a saját adatai betöltéséhez. Az adatok hitelesítésen keresztüli eléréséhez használja az alábbi parancsfájlt egy adatbázis-hatókörű hitelesítő adat létrehozásához. Ezután használja az adatforrás helyének meghatározásakor.
@@ -107,7 +107,7 @@ WITH
 ## <a name="3-create-the-external-tables"></a>3. a külső táblák létrehozása
 Most, hogy megadta az adatforrás és a fájl formátumát, készen áll a külső táblák létrehozására. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3,1. Hozzon létre egy sémát az adatkezeléshez.
+### <a name="31-create-a-schema-for-the-data"></a>3.1. Hozzon létre egy sémát az adatkezeléshez.
 Ha létre szeretne hozni egy helyet a contoso-adatbázis tárolására, hozzon létre egy sémát.
 
 ```sql
@@ -115,7 +115,7 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3,2. Hozza létre a külső táblákat.
+### <a name="32-create-the-external-tables"></a>3.2. Hozza létre a külső táblákat.
 Futtassa a következő szkriptet a DimProduct és a FactOnlineSales külső táblák létrehozásához. Itt csak az oszlopnevek és az adattípusok vannak meghatározva, és az Azure Blob Storage-fájlok helyére és formátumára kell kötni őket. A definíció tárolása az SQL Analytics-adattárházban történik, és az adatmennyiség továbbra is a Azure Storage Blob.
 
 A **Location** paraméter a Azure Storage blob gyökérkönyvtárában található mappa. Minden táblázat egy másik mappában található.
@@ -205,7 +205,7 @@ WITH
 ## <a name="4-load-the-data"></a>4. töltse be az adattárolót
 A külső adatforrásokhoz többféleképpen férhet hozzá.  Az adatok közvetlenül a külső táblákból is lefoglalhatók, az adatok betölthetők az adatraktár új tábláiba, vagy külső adatok is hozzáadhatók a meglévő adattárház-táblákhoz.  
 
-### <a name="41-create-a-new-schema"></a>4,1. Új séma létrehozása
+### <a name="41-create-a-new-schema"></a>4.1. Új séma létrehozása
 A CTAS egy új táblát hoz létre, amely tartalmaz egy adatkészletet.  Először hozzon létre egy sémát a contoso-adatkészlethez.
 
 ```sql
@@ -213,7 +213,7 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4,2. Az adatgyűjtés új táblákba
+### <a name="42-load-the-data-into-new-tables"></a>4.2. Az adatgyűjtés új táblákba
 Az Azure Blob Storage-ból származó adatok az adatraktár táblájába való betöltéséhez használja a [CREATE TABLE as Select (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) utasítást. Az [CTAS](sql-data-warehouse-develop-ctas.md) -be való betöltéssel a létrehozott, szigorúan beírt külső táblákat használja. Az adatok új táblákba való betöltéséhez használjon egy CTAS utasítást egy táblában. 
  
 A CTAS létrehoz egy új táblát, és feltölti azt egy SELECT utasítás eredményeivel. A CTAS határozza meg, hogy az új tábla ugyanazokat az oszlopokat és adattípusokat tartalmazza, mint a SELECT utasítás eredményei. Ha az összes oszlopot kiválasztja egy külső táblából, az új tábla a külső tábla oszlopainak és adattípusának replikája lesz.

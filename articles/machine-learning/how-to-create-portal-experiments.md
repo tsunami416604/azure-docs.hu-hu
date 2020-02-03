@@ -31,7 +31,7 @@ ms.locfileid: "76720401"
 
 * Egy **nagyvállalati kiadású**Azure Machine learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  Ha egy meglévő munkaterületet nagyvállalati kiadásra szeretne frissíteni, tekintse meg [a frissítés az Enterprise Edition](how-to-manage-workspace.md#upgrade)rendszerre című
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com). 
 
@@ -67,7 +67,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
         Mező| Leírás
         ----|----
         Fájl formátuma| Meghatározza a fájlban tárolt adatelrendezést és-típust.
-        Elválasztó| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
+        Elválasztó karakter| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
         Encoding| Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).
         Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.
@@ -115,14 +115,14 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Választható Hozzáadási konfigurációk: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
-    További konfigurációk|Leírás
+    További beállítások|Leírás
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
     Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az előfeldolgozásról](#preprocess).
     Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
     Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)* : meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
     Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
-    Párhuzamosság| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Magok maximális száma iterációban*: válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
+    Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Magok maximális száma iterációban*: válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
 
 <a name="profile"></a>
 
@@ -135,20 +135,20 @@ Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy
 
 statisztika|Leírás
 ------|------
-Szolgáltatás| Az összesíteni kívánt oszlop neve.
+Funkció| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
-Type (Típus)|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
+Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
 Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyeknek a típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
-Maximum| Az oszlop maximális értéke. 
-Mennyiség| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
+Max| Az oszlop maximális értéke. 
+Darabszám| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
 Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
 Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
-értem| Az oszlop számtani középértéke vagy átlaga.
+középérték| Az oszlop számtani középértéke vagy átlaga.
 Szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
 Variancia| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 
-Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
-Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
+Döntés| Az oszlop adatainak normál eloszlásból való megmérése.
+Értékek| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
 
 
 <a name="preprocess"></a>
@@ -165,9 +165,9 @@ A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `fe
 
 |&nbsp;lépések előfeldolgozása| Leírás |
 | ------------- | ------------- |
-|A nagyfokú és a variancia nélküli funkciók eldobása|Ezeket a betanítási és érvényesítési csoportokból is elhúzhatja, beleértve az összes hiányzó értékkel rendelkező szolgáltatásokat, az összes sorban lévő és a rendkívül magas fokú (például kivonatok, azonosítók vagy GUID azonosítók) értékeket.|
-|Hiányzó értékek imputált értéke|Numerikus funkciók esetében az oszlopban szereplő értékek átlaga.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell beszámítani az imputált funkciókat.|
-|További funkciók előállítása|A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br/><br/>A szöveges funkciókhoz: unigrams, bi-gramm és Tri-Character-gramm alapján történő kifejezés gyakorisága.|
+|Nagy számosságú dobja el vagy nem eltérés szolgáltatások|Ezeket a betanítási és érvényesítési csoportokból is elhúzhatja, beleértve az összes hiányzó értékkel rendelkező szolgáltatásokat, az összes sorban lévő és a rendkívül magas fokú (például kivonatok, azonosítók vagy GUID azonosítók) értékeket.|
+|Hiányzó imputálására|Numerikus funkciók esetében az oszlopban szereplő értékek átlaga.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell beszámítani az imputált funkciókat.|
+|További funkciók létrehozása|Dátum és idő funkciók: év, hónap, nap, hét napja, nap, év, negyedév, az év, óra, perc, másodperc.<br/><br/>A szöveges funkciókhoz: unigrams, bi-gramm és Tri-Character-gramm alapján történő kifejezés gyakorisága.|
 |Átalakítás és kódolás |A kevés egyedi értékkel rendelkező numerikus funkciók a kategorikus funkciókba lesznek átalakítva.<br/><br/>A rendszer egy gyors kódolást végez az alacsony szintű a magas fokú, egy gyors kivonatolású kódolás.|
 |Word-beágyazások|Szöveges Képtulajdonság, amely egy előre betanított modell használatával átalakítja a szöveges tokenek vektorait a mondatokra. A dokumentumokban lévő összes Word beágyazási vektora össze van összesítve egy dokumentum-szolgáltatás vektorának létrehozásához.|
 |Cél kódolások|A kategorikus funkciók esetében az egyes kategóriákat a regressziós problémák átlagos céljának megfelelően leképezi, valamint az osztály valószínűségét az egyes osztályok számára a besorolási problémák esetén. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza a leképezések és a ritka adatkategóriák által okozott zaj csökkentése érdekében.|
@@ -181,10 +181,10 @@ Az automatizált gépi tanulás olyan adatok guardrails, amelyek segítségével
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint azokat a társított állapotokat, amelyeket a felhasználók a kísérlet elküldésekor megkaphatnak.
 
-Guardrail|Állapot|&nbsp;trigger feltétele&nbsp;
+Guardrail|status|&nbsp;trigger feltétele&nbsp;
 ---|---|---
 Hiányzó&nbsp;érték&nbsp;imputálási |**Telt** <br> <br> **Rögzített**|    Nincs hiányzó érték a bemeneti&nbsp;oszlopaiban <br> <br> Egyes oszlopokban hiányoznak értékek
-Több érvényesítés|**Tenni**|Ha nincs megadva explicit ellenőrzési készlet
+Keresztellenőrzés|**Tenni**|Ha nincs megadva explicit ellenőrzési készlet
 Magas&nbsp;kardinális&nbsp;funkció&nbsp;észlelése|  **Telt** <br> <br>**Tenni**|   A rendszer nem észlelt magas szintű sarkalatos funkciókat <br><br> A rendszer a magas kardinális bemeneti oszlopokat észlelte
 Osztályok egyenlegének észlelése |**Telt** <br><br><br>**Riasztást kap** |Az osztályok a betanítási adatként vannak kiegyenlítettek; Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számának és arányának alapján mérve <br> <br> A betanítási adatkészletek osztályai kiegyensúlyozva vannak
 Időbeli adatsorozat-konzisztencia|**Telt** <br><br><br><br> **Rögzített** |<br> A kiválasztott {Horizon, lag, Rolling Window} érték elemzése megtörtént, és a rendszer nem észlelt memóriabeli problémákat. <br> <br>A kiválasztott {Horizon, lag, Rolling Window} értékek elemzése megtörtént, és a kísérlet valószínűleg kifogy a memóriából. A késés vagy a legördülő ablak ki van kapcsolva.
@@ -224,7 +224,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
 1. Töltse ki a **modell üzembe helyezése** ablaktáblát.
 
-    Mező| Value (Díj)
+    Mező| Érték
     ----|----
     Név| Adja meg a központi telepítés egyedi nevét.
     Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.

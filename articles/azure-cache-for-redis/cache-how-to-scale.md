@@ -31,11 +31,11 @@ Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás 
 ## <a name="scale-a-cache"></a>Gyorsítótár skálázása
 A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben**.
 
-![Méretezés](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Beosztás](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Válassza ki a kívánt díjszabási szintet a **Select díjszabási csomag kiválasztása** panelen, és kattintson a **kiválasztás**elemre.
 
-![Díjcsomag][redis-cache-pricing-tier-blade]
+![Tarifacsomag][redis-cache-pricing-tier-blade]
 
 
 A következő korlátozásokkal méretezheti át egy másik díjszabási szintet:

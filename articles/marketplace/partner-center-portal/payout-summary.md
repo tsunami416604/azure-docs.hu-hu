@@ -32,7 +32,7 @@ Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetés
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>A kifizetési jelentés eléréséhez szükséges szerepkörök és engedélyek
 
-| Jelentések/lapok    | Fióktulajdonos    | Manager  | Fejlesztői | Üzleti közreműködő |  Pénzügyi közreműködő | Marketingszakértő |
+| Jelentések/lapok    | Fióktulajdonos    | Manager  | Fejlesztő | Üzleti közreműködő |  Pénzügyi közreműködő | Marketingszakértő |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Beszerzési jelentés (beleértve a közel valós idejű adatfeldolgozást) | Megtekinthető | Megtekinthető | Nincs hozzáférés | Nincs hozzáférés | Megtekinthető | Nincs hozzáférés |
 | Visszajelzési jelentés/válaszok | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Nincs hozzáférés | Nincs hozzáférés | Megtekintheti és elküldheti a visszajelzést |
@@ -44,7 +44,7 @@ Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetés
 
 ## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Kifizetési jelentés: a Cloud Partner Portal és a partneri központ közötti különbség
 
-| | Felhőpartnerportál | Partnerközpont |
+| | Felhőpartnerportál | Partneri központ |
 |---------|---------|---------|
 | Hivatkozások | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) és [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Navigáció | A bejelentések kifizetésében megadott kifizetési jelentések | A partner Centerben megadott kifizetési jelentés – kifizetési ikon |
@@ -87,7 +87,7 @@ Például, ha az ügyfél bankkártyával vásárol.
 |Rendelési időszak | Augusztus 15., 2019-augusztus 30., 2019 | **Korrelációs attribútumok rendelései** <br> <ul> <li>Rendeléskód</li> <li>Vevőkód</li> </ul> <br> **Használati jelentés** <br> <ul> <li>Vevőkód </li> <li>Ügyfél neve</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Becsült kiterjesztett díj <br> Becsült kifizetés (számítógép) </li> </ul> | |
 |Befejezési időszak (negyedév) | Szeptember 30., 2019 | | |
 |Számlázási dátum | Október 15., 2019 | | |
-|Letéti időszak (csak bankkártyák, 30 nap) | – | | |
+|Letéti időszak (csak bankkártyák, 30 nap) | n/a | | |
 |Gyűjtési időszak kezdete | Október 15., 2019 | | |
 |Csak bankkártyák, 30 nap | November 1, 2019 – november 30, 2019 | | |
 |Gyűjtési időszak vége (maximum, 90 nap) | Jan. január 15., 2020 | | |
@@ -107,7 +107,7 @@ Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus,
 | participantName                | A jövedelemszerzési partner neve                                                                                                              |
 | partnerCountryCode             | A kereső partner helye/országa                                                                                                  |
 | Programnév                    | Ösztönző/tároló program neve                                                                                                             |
-| Tranzakcióazonosító                  | A tranzakció egyedi azonosítója                                                                                                    |
+| transactionId                  | A tranzakció egyedi azonosítója                                                                                                    |
 | transactionCurrency            | A pénznem, amelyben az eredeti ügyfél-tranzakció történt (nem a partner helyének pénzneme)                                     |
 | transactionDate                | A tranzakció dátuma. Olyan programok esetében hasznos, amelyekben sok tranzakció járul hozzá egy adott keresethez                                           |
 | transactionExchangeRate        | A megfelelő tranzakció USD-értékének megjelenítésére használt árfolyam                                                                 |

@@ -1,6 +1,6 @@
 ---
-title: Azure Blob-alapú adatfeldolgozás speciális elemzésekkel – csoportos adatelemzési folyamat
-description: Az adatok megismerése és szolgáltatások készítése az Azure Blob Storage-ban tárolt adatokból speciális elemzések használatával.
+title: Azure Blobadatok feldolgozása bővített analitikával – csoportos adatelemzési folyamat
+description: Adatok feltárása és szolgáltatások készítése a fejlett analitika használata az Azure Blob storage-ban tárolt adatok alapján.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -19,12 +19,12 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721098"
 ---
 # <a name="heading"></a>Azure Blob-adatfeldolgozás speciális analitikai szolgáltatásokkal
-Ez a dokumentum az Azure Blob Storage-ban tárolt adatokkal kapcsolatos adatok feltárását és funkcióinak generálását ismerteti. 
+Ez a dokumentum ismerteti a megismerését adatok és az Azure Blob storage-ban tárolt adatok alapján előállító szolgáltatások. 
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>Az adatgyűjtés egy Panda-adatkeretbe
-Az adatkészletek feltárásához és kezeléséhez le kell tölteni a blob-forrásból egy helyi fájlba, amelyet azután be lehet tölteni egy Panda-adatkeretbe. A következő lépéseket kell követnie ehhez az eljáráshoz:
+## <a name="load-the-data-into-a-pandas-data-frame"></a>Az adatok betöltése az adatok Pandas keret
+Az adatkészletek feltárásához és kezeléséhez le kell tölteni a blob-forrásból egy helyi fájlba, amelyet azután be lehet tölteni egy Panda-adatkeretbe. Ez az eljárás követéséhez lépései a következők:
 
-1. Töltse le az Azure Blob adatait az alábbi Python-kóddal Blob service használatával. Cserélje le a változót az alábbi kódban az adott értékekre: 
+1. Töltse le az Azure Blob adatait az alábbi Python-kóddal Blob service használatával. Az adott értékeket cserélje le az alábbi kódot a változót: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -41,52 +41,52 @@ Az adatkészletek feltárásához és kezeléséhez le kell tölteni a blob-forr
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Az adatok beolvasása a letöltött fájlból a pandák adatkeretbe.
+2. Az adatokat olvas be egy Pandas-adatkeretbe a letöltött fájl.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Most már készen áll arra, hogy felderítse az adatokat, és létrehozza az adatkészlet funkcióit.
+Most már készen áll az adatok, és hozzon létre ehhez az adatkészlethez funkcióinak.
 
 ## <a name="blob-dataexploration"></a>Adatelemzés
-Íme néhány példa arra, hogyan lehet az adatelemzést használni a pandák használatával:
+Íme néhány példa többféle módon lehet adatokat Pandas használatával:
 
-1. Sorok és oszlopok számának vizsgálata 
+1. Vizsgálja meg a sorok és oszlopok száma 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. Vizsgálja meg az adatkészlet első vagy utolsó néhány sorát az alábbi módon:
+2. Vizsgálja meg az első vagy utolsó néhány sort az adatkészletben, az alábbi:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Az egyes oszlopok adattípusának ellenőrzését az alábbi mintakód használatával importálja.
+3. Ellenőrizze az adattípust, minden oszlop lett importálva, a következő mintakód segítségével
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. A következőképpen tekintse meg az adathalmaz oszlopainak alapvető statisztikáit
+4. Az alapszintű statisztikák az oszlopok az adatkészlet a következő ellenőrzése
    
         dataframe_blobdata.describe()
-5. Tekintse meg az egyes oszlopok értékeinek számát a következőképpen:
+5. A következő tekintse meg a minden oszlop értékét a bejegyzések száma
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. A hiányzó értékeket és az egyes oszlopokban lévő bejegyzések tényleges számát az alábbi mintakód alapján számítja ki.
+6. Hiányzó értékek száma és az egyes oszlopokban a következő mintakód segítségével bejegyzések tényleges száma
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Ha hiányoznak az adatok egy adott oszlopához tartozó értékek, a következőképpen húzhatja őket:
+7. Ha egy adott oszlop a hiányzó értékek az adatokban, akkor is el kell dobni ezeket a következő:
    
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
    
-   A hiányzó értékek cseréjének másik módja a Mode függvény:
+   Cserélje le a hiányzó értékek másik módja, a függvény a mód:
    
         dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Hisztogram-ábra létrehozása változó számú raktárhely használatával a változó eloszlásának ábrázolásához    
+8. Dobozok száma változó segítségével jeleníti meg a változó terjesztési hisztogram rajzot létrehozása    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Megtekintheti a változók közötti korrelációkat egy scatterplot vagy a beépített korrelációs függvény használatával.
+9. Tekintse meg változókat a teszteredményekből, vagy pedig a beépített korrelációs függvény közötti összefüggéseket
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -95,48 +95,48 @@ Most már készen áll arra, hogy felderítse az adatokat, és létrehozza az ad
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
 ## <a name="blob-featuregen"></a>Szolgáltatás létrehozása
-A Python használatával a következőképpen hozhatunk ki szolgáltatásokat:
+Azt is készítése a Python használatával a következő funkciók:
 
 ### <a name="blob-countfeature"></a>Kijelző érték-alapú funkciójának generálása
-A kategorikus funkciókat a következőképpen lehet létrehozni:
+Kategorikus funkciók módon hozhatók létre:
 
-1. Vizsgálja meg a kategorikus oszlop eloszlását:
+1. Vizsgálja meg a terjesztési a kategorikus oszlopok:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Jelölő értékek előállítása minden egyes oszlop értékéhez
+2. Kijelző értékek készítése az oszlop értékeit tartalmazza
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Csatlakozás a kijelző oszlophoz az eredeti adatkerettel 
+3. Csatlakozzon a kijelző oszlopot az eredeti adathalmaz 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Távolítsa el magát az eredeti változót:
+4. Távolítsa el az eredeti változó maga:
    
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
 ### <a name="blob-binningfeature"></a>Dobozolási szolgáltatás létrehozása
-A dobozolni funkcióinak generálásához a következő lépések szükségesek:
+Binned szolgáltatások létrehozásához, hogy folytassa a következőképpen:
 
-1. Oszlopok sorrendjének hozzáadása a bin numerikus oszlophoz
+1. Adja hozzá az oszlopok egy numerikus oszlopot bin sorozata
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Dobozolási konvertálása logikai változók sorozatából
+2. A logikai változók a feladatütemezési dobozolás konvertálása
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Végül csatlakoztassa a próbabábu változóit az eredeti adatkerethez
+3. Végül csatlakoztassa a helyőrző változók térjen vissza az eredeti adathalmaz
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Az Azure blobba való visszaírás és a Azure Machine Learning
 Az adatok vizsgálatát és a szükséges funkciók létrehozását követően feltöltheti az adatok (minta vagy featurized) egy Azure-blobba, és felhasználhatja azokat Azure Machine Learning a következő lépések végrehajtásával: további funkciók hozhatók létre a Azure Machine Learning Studio (klasszikus) is. 
 
-1. Az adatkeret írása helyi fájlba
+1. Helyi fájl az adathalmaz írása
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Töltse fel az adatok az Azure blobba az alábbi módon:
+2. Töltse fel az adatokat az Azure-blobba a következőképpen:
    
         from azure.storage.blob import BlobService
         import tables

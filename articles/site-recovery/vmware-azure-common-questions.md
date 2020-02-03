@@ -103,7 +103,7 @@ Minden replikálni kívánt virtuális gépen telepítse a szolgáltatást több
 - [Manuális telepítés](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) a felhasználói felületen vagy a PowerShellben
 - Üzembe helyezés egy központi telepítési eszköz használatával, például [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Felügyelt lemezek
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Hová Site Recovery az adatreplikálás?
 
@@ -188,7 +188,7 @@ Nem, Site Recovery nem támogatja az Azure Storage-ba való replikálást a virt
 
 ## <a name="component-upgrade"></a>Összetevő frissítése
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mi a teendő?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mit tegyek?
 
 Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr_support_statement) információ a nagyon régi verziókról való frissítésről.
 

@@ -60,7 +60,7 @@ Az alábbi lépéseket követve hozhatja elő a fenti információkat: (kérjük
 
 8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
 
-9. Futtassa az alábbi szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+9. Futtassa a következő szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
 
     ```azurepowershell-interactive 
 

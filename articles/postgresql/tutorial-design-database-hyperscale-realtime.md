@@ -196,7 +196,7 @@ A függvény helyett hajtsa végre az adatösszesítést:
 SELECT rollup_http_request();
 ```
 
-Az adatokat pedig előre összevont formában is lekérdezheti a kumulatív táblázatból, hogy ugyanazt a jelentést kapja, mint korábban. Futtassa a következő lekérdezést:
+Az adatokat pedig előre összevont formában is lekérdezheti a kumulatív táblázatból, hogy ugyanazt a jelentést kapja, mint korábban. Futtassa az alábbi lekérdezést:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,

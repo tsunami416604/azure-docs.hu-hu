@@ -93,7 +93,7 @@ Csak 1 nyilvános IP-cím vagy 1 magánhálózati IP-cím támogatott. Az előt�
 
 Az előtér-IP-cím egy *figyelőhöz*van társítva, amely az ELŐTÉR-IP-címen érkező kérelmeket ellenőrzi.
 
-## <a name="listeners"></a>Figyelők
+## <a name="listeners"></a>Hallgatók
 
 A figyelő olyan logikai entitás, amely a port, a protokoll, a gazdagép és az IP-cím használatával ellenőrzi a bejövő kapcsolati kérelmeket. A figyelő konfigurálásakor meg kell adnia azokat az értékeket, amelyek megfelelnek az átjárón bejövő kérelemben szereplő megfelelő értékeknek.
 
@@ -121,7 +121,7 @@ Válassza ki azt az előtér-IP-címet, amelyet hozzá szeretne rendelni ehhez a
 
 Válassza ki az előtér-portot. Válasszon ki egy meglévő portot, vagy hozzon létre egy újat. Válassza ki a [portok megengedett tartományának](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)tetszőleges értékét. Nem csak a jól ismert portok, például a 80 és a 443, de a megfelelő egyéni portok is használhatók. Egy port használható nyilvános figyelők vagy magánjellegű figyelők számára.
 
-### <a name="protocol"></a>Protocol (Protokoll)
+### <a name="protocol"></a>Protokoll
 
 HTTP vagy HTTPS kiválasztása:
 
@@ -241,7 +241,7 @@ További információ az átirányítással kapcsolatban:
 
 #### <a name="rewrite-the-http-header-setting"></a>A HTTP-fejléc beállításának újraírása
 
-Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információ eléréséhez lásd:
+Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információkért lásd:
 
  - [HTTP-fejlécek újraírása – áttekintés](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [HTTP-fejléc újraírásának konfigurálása](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
@@ -258,7 +258,7 @@ Ez a funkció akkor hasznos, ha ugyanazon a kiszolgálón szeretné megőrizni a
 
 A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a példányok deregisztrációja az átjáró által felügyelt munkamenet-affinitás miatt, és a rendszer továbbra is továbbítja őket a deregistering példányokra. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
 
-### <a name="protocol"></a>Protocol (Protokoll)
+### <a name="protocol"></a>Protokoll
 
 A Application Gateway a HTTP-t és a HTTPS-t is támogatja a háttér-kiszolgálókra irányuló útválasztási kérelmek esetében. Ha a HTTP lehetőséget választja, a háttér-kiszolgálókra irányuló forgalom titkosítatlan. Ha a titkosítatlan kommunikáció nem elfogadható, válassza a HTTPS lehetőséget.
 
@@ -325,7 +325,7 @@ Olyan egyéni tartomány esetében, amelynek meglévő egyéni DNS-neve az App S
 
 Ez a funkció a megadott állomásnévvel helyettesíti az Application Gateway bejövő kérelmében szereplő *állomásfejléc* -fejlécet.
 
-Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, akkor az eredeti kérelem * https://appgw.eastus.cloudapp.azure.com/path1 módosul a * https://www.contoso.com/path1 ra, amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
+Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, akkor az eredeti kérelem * https://appgw.eastus.cloudapp.azure.com/path1 módosul a * https://www.contoso.com/path1ra, amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
 
 ## <a name="back-end-pool"></a>Háttérkészlet
 

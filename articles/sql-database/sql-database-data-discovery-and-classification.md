@@ -76,7 +76,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
 ## <a name="classify-your-sql-database"></a>A SQL Database besorolása
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 2. A Azure SQL Database panel biztonsági fejléce alatt navigáljon a **speciális adatbiztonság** elemre. Kattintson ide a speciális adatbiztonság engedélyezéséhez, majd kattintson az **adatfelderítési & besorolási** kártyára.
 

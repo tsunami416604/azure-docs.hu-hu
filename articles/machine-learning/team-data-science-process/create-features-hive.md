@@ -1,6 +1,6 @@
 ---
 title: Szolgáltatások létrehozása egy Azure HDInsight Hadoop-fürtben lévő adatelemzési folyamathoz
-description: Példák a Azure HDInsight Hadoop-fürtben tárolt adatszolgáltatásokat létrehozó kaptár-lekérdezésekre.
+description: Funkciók létrehozása az Azure HDInsight Hadoop-fürtben tárolt adatok Hive-lekérdezések példái.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,25 +18,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721778"
 ---
-# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával
-Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Azure HDInsight Hadoop-fürtön tárolt adatszolgáltatásokat a kaptár-lekérdezések használatával. Ezek a kaptár-lekérdezések a beágyazott kaptár felhasználó által definiált függvényeit (UDF), a megadott parancsfájlokat használják.
+# <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével Hadoop-fürt
+Ez a dokumentum bemutatja, hogyan funkciók létrehozása az Azure HDInsight Hadoop-fürtben Hive-lekérdezések segítségével tárolt adatokat. A Hive-lekérdezések használata beágyazott Hive User-Defined funkciókat (UDF), a parancsfájlok, amelynek biztosított.
 
-A funkciók létrehozásához szükséges műveletek memória-igényesek lehetnek. A kaptár-lekérdezések teljesítménye az ilyen esetekben nagyobb jelentőséggel bír, és bizonyos paraméterek hangolásával javítható. A paraméterek finomhangolását a végső szakaszban tárgyaljuk.
+A szolgáltatások létrehozásához szükséges műveletek memóriaigényes is lehet. Hive-lekérdezések teljesítményének válik a kritikus fontosságú ezekben az esetekben, és javítani lehet bizonyos paraméterek beállításával. Ezek a paraméterek beállítása a következő cikkben az utolsó szakaszban.
 
-A bemutatott lekérdezésekre jellemző példák a New York-i [taxi Trip](https://chriswhong.com/open-data/foil_nyc_taxi/) adatforgatókönyvek esetében is elérhetők a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeknek a lekérdezéseknek már van megadott adatsémája, és készen állnak a futtatásra. Az utolsó szakaszban a felhasználók által beállítható paraméterek is megtalálhatók a kaptár-lekérdezések teljesítményének növelése érdekében.
+A bemutatott lekérdezésekre jellemző példák a New York-i [taxi Trip](https://chriswhong.com/open-data/foil_nyc_taxi/) adatforgatókönyvek esetében is elérhetők a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeket a lekérdezéseket már rendelkezik az adatok séma van megadva, és készen áll hamarosan futtatásához. Paraméterek, amelyeket a felhasználók hangolhassa a Hive-lekérdezések teljesítményének javítása érdekében, hogy az utolsó szakaszban is ismertetik.
 
 Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy rendelkezik a következővel:
+Ez a cikk feltételezi, hogy rendelkezik:
 
-* Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
-* Testreszabott Hadoop-fürt kiépítve a HDInsight szolgáltatással.  Ha útmutatásra van szüksége, tekintse meg [a Azure HDInsight Hadoop-fürtök testreszabása speciális elemzésekhez](customize-hadoop-cluster.md)című témakört.
-* Az adatfeltöltés Azure HDInsight Hadoop fürtök struktúrájának tábláiba történt. Ha még nem tette meg, kövesse az [adatok létrehozása és betöltése a kaptár-táblákba](move-hive-tables.md) lehetőséget, hogy először töltse fel az adatok a kaptár-táblákba.
-* Engedélyezve van a távoli hozzáférés a fürthöz. Ha útmutatásra van szüksége, tekintse meg [a Hadoop-fürt fő csomópontjának elérését](customize-hadoop-cluster.md)ismertető témakört.
+* Létrehozott egy Azure storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
+* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése.  Ha útmutatásra van szüksége, tekintse meg [a Azure HDInsight Hadoop-fürtök testreszabása speciális elemzésekhez](customize-hadoop-cluster.md)című témakört.
+* Az adatok Hive-táblák az Azure HDInsight Hadoop-fürtök lett feltöltve. Ha még nem tette meg, kövesse az [adatok létrehozása és betöltése a kaptár-táblákba](move-hive-tables.md) lehetőséget, hogy először töltse fel az adatok a kaptár-táblákba.
+* Távoli hozzáférés a fürthöz engedélyezett. Ha útmutatásra van szüksége, tekintse meg [a Hadoop-fürt fő csomópontjának elérését](customize-hadoop-cluster.md)ismertető témakört.
 
 ## <a name="hive-featureengineering"></a>Szolgáltatás létrehozása
-Ebben a szakaszban számos példát láthat arra, hogyan hozhatók létre a szolgáltatások a kaptár-lekérdezések használatával. Ha további funkciókat hozott létre, azokat oszlopként hozzáadhatja a meglévő táblához, vagy létrehozhat egy új táblát a további funkciókkal és elsődleges kulccsal, amelyek ezután az eredeti táblával is összekapcsolhatók. Az alábbi példákat mutatjuk be:
+Ez a szakasz néhány ötletet a, amelyben funkciókat is lehet létrehozása Hive-lekérdezések segítségével ismerteti. További funkciók hoztak létre, ha oszlopként, azokat hozzá a meglévő tábla, vagy hozzon létre egy új táblát a további funkciók és az elsődleges kulcsa, amelyet majd összekapcsolható az eredeti tábla a. Az alábbiakban bemutatott példák:
 
 1. [Gyakoriság-alapú szolgáltatás létrehozása](#hive-frequencyfeature)
 2. [A kategorikus változók kockázatai a bináris besorolásban](#hive-riskfeature)
@@ -45,7 +45,7 @@ Ebben a szakaszban számos példát láthat arra, hogyan hozhatók létre a szol
 5. [A GPS-koordináták közötti távolság kiszámítása](#hive-gpsdistance)
 
 ### <a name="hive-frequencyfeature"></a>Gyakoriság-alapú szolgáltatás létrehozása
-Gyakran hasznos kiszámítani egy kategorikus változó szintjeinek gyakoriságát, vagy a szintek bizonyos kombinációinak gyakoriságát több kategorikus változóból. A felhasználók a következő parancsfájl használatával számíthatják ki a gyakoriságokat:
+Gyakran hasznos kiszámítása a kategorikus változó szintek gyakoriságát, vagy az egyes szintek több kategorikus változó kombinációi gyakoriságát. Felhasználók a következő parancsfájl segítségével kiszámíthatja az e:
 
         select
             a.<column_name1>, a.<column_name2>, a.sub_count/sum(a.sub_count) over () as frequency
@@ -59,7 +59,7 @@ Gyakran hasznos kiszámítani egy kategorikus változó szintjeinek gyakoriság�
 
 
 ### <a name="hive-riskfeature"></a>A kategorikus változók kockázatai a bináris besorolásban
-A bináris besorolásban a nem numerikus kategorikus változókat numerikus funkciókba kell konvertálni, ha a használt modellek csak numerikus funkciókat vesznek igénybe. Ezt a konverziót úgy végezheti el, hogy az egyes nem numerikus szinteket numerikus kockázattal váltja fel. Ez a szakasz néhány általános kaptár-lekérdezést mutat be, amely egy kategorikus változó kockázati értékeit (log Odds) számítja ki.
+Bináris osztályozás, a nem numerikus kategorikus változók konvertálni kell numerikus funkciókat, ha a modell csak használt numerikus funkciók. Ez a konverzió nem numerikus szintenként cserélje le a numerikus kockázata végezhető el. Ez a szakasz bemutatja néhány általános Hive-lekérdezések, amelyek egy kategorikus változó (napló zajok) kockázati értékek kiszámítása.
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -79,24 +79,24 @@ A bináris besorolásban a nem numerikus kategorikus változókat numerikus funk
             group by <column_name1>, <column_name2>
             )b
 
-Ebben a példában a változók `smooth_param1` és `smooth_param2` az adatokból kiszámított kockázati értékek simítására vannak beállítva. A kockázatok az-INF és az INF közötti tartománnyal rendelkeznek. A kockázati > 0 azt jelzi, hogy a cél értéke 1, nagyobb, mint 0,5.
+Ebben a példában a változók `smooth_param1` és `smooth_param2` az adatokból kiszámított kockázati értékek simítására vannak beállítva. Kockázatok kapott -Inf és Inf között. A kockázati > 0 azt jelzi, hogy 0,5-nél nagyobb a valószínűsége, hogy a célként megadott egyenlő 1.
 
-A kockázati tábla kiszámítását követően a felhasználók a kockázati táblához csatlakozva kockázati értékeket rendelhetnek egy táblához. A struktúra-csatlakozás lekérdezése az előző szakaszban lett megadva.
+A kockázat után tábla számítható ki, felhasználókat rendelhet kockázati értékek egy táblát a kockázati tábla csatlakoztatásával. A csatlakozó Hive-lekérdezést az előző szakaszban lett megadva.
 
 ### <a name="hive-datefeatures"></a>Szolgáltatások kinyerése a DateTime mezőkből
-A kaptár UDF-készletet tartalmaz a DateTime mezők feldolgozásához. A kaptárban az alapértelmezett datetime formátum: éééé-hh-nn 00:00:00 (például "1970-01-01 12:21:32"). Ez a szakasz azokat a példákat mutatja be, amelyek kinyerik a hónap napját, a hónapot egy datetime mezőből, és más példákat is, amelyek az alapértelmezett formátumtól eltérő formátumú datetime karakterláncot alakítanak ki alapértelmezett formátumban.
+Hive tartalmaz egy UDF-EK a datetime mezők feldolgozás céljából. A Hive, az alapértelmezett dátum és idő formátumban van "éééé-hh-nn 00:00:00" ("1970-01-01 12:21:32: például). Ez a szakasz bemutatja, amely egy hónap, az a dátum/idő mezőt a hónap napját kinyerése példák és további példák, amelyek a dátum/idő karakterlánc formátuma nem az alapértelmezett formátum dátum/idő karakterlánc az alapértelmezett formázása.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
 Ez a kaptár-lekérdezés feltételezi, hogy a *\<datetime mező >* az alapértelmezett datetime formátumban van.
 
-Ha egy datetime mező nem az alapértelmezett formátumban van, akkor először a dátum és idő típusú mezőt kell konvertálnia a UNIX-időbélyegre, majd a UNIX-időbélyeget egy alapértelmezett formátumú datetime karakterlánccá kell alakítania. Ha a DateTime alapértelmezett formátumban van, a felhasználók a beágyazott datetime UDF alkalmazhatják a funkciók kinyeréséhez.
+Ha egy dátum/idő mezőt nem az alapértelmezett formátumban, először a datetime mező átalakítása Unix-időbélyegző, és majd a Unix-időbélyeg konvertálása dátum/idő karakterlánc, amely az alapértelmezett formátuma szüksége. Ha a dátumot/időt, az alapértelmezett formátum felhasználók alkalmazhat UDF szolgáltatások kinyerése beágyazott dátuma és időpontja.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Ebben a lekérdezésben, ha a *\<datetime (dátum* és idő) mezőben > az *03/26/2015 12:04:39*-as mintával, a *datetime > mező\<mintáját* `'MM/dd/yyyy HH:mm:ss'`kell megadni. A teszteléshez a felhasználók futtathatnak
+Ebben a lekérdezésben, ha a *\<datetime (dátum* és idő) mezőben > az *03/26/2015 12:04:39*-as mintával, a *datetime > mező\<mintáját* `'MM/dd/yyyy HH:mm:ss'`kell megadni. Tesztelje, hogy a felhasználók futtathatja
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -104,15 +104,15 @@ Ebben a lekérdezésben, ha a *\<datetime (dátum* és idő) mezőben > az *03/2
 A lekérdezésben szereplő *hivesampletable* alapértelmezés szerint az összes Azure HDInsight Hadoop-fürtön előre telepítve van, amikor a fürtöket kiépítik.
 
 ### <a name="hive-textfeatures"></a>Szolgáltatások kinyerése szöveges mezőkből
-Ha a kaptár tábla olyan szövegmezővel rendelkezik, amely szóközökből álló karakterláncot tartalmaz, a következő lekérdezés kibontja a karakterlánc hosszát és a karakterláncban szereplő szavak számát.
+A Hive-táblában van egy szövegmező, hogy szóközök vannak elválasztva karakterláncot tartalmazó, amikor a következő lekérdezést a karakterláncot, és a karakterlánc szavak számát adja eredményül.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
 ### <a name="hive-gpsdistance"></a>Távolságok kiszámítása a GPS-koordináták készletei között
-Az ebben a szakaszban megadott lekérdezés közvetlenül alkalmazható a New York-i taxis-adatra. A lekérdezés célja, hogy bemutassa, hogyan alkalmazhat egy beágyazott matematikai függvényt a kaptárban funkciók létrehozásához.
+Az ebben a szakaszban megadott lekérdezést közvetlenül a NYC Taxi Útadatok alkalmazhatók. Ez a lekérdezés az a célja, hogy szemléltetik a alkalmazni egy beágyazott matematikai függvény a Hive-szolgáltatások létrehozásához.
 
-A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a *pickup\_hosszúság*, a *pickup\_szélesség*, a *lemorzsolódási\_hosszúság*és a *lemorzsolódási\_szélesség*. A felvételi és lemorzsolódási koordináták közötti közvetlen távolságot kiszámító lekérdezések a következők:
+A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a *pickup\_hosszúság*, a *pickup\_szélesség*, a *lemorzsolódási\_hosszúság*és a *lemorzsolódási\_szélesség*. A lekérdezések, amelyek a közvetlen távolsága a begyűjtés és dropoff koordináták kiszámítása a következők:
 
         set R=3959;
         set pi=radians(180);
@@ -137,17 +137,17 @@ A két GPS-koordináták közötti távolságot kiszámító matematikai egyenle
 A kaptár beágyazott UDF teljes listája megtalálható a <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> **beépített függvények** szakaszában.  
 
 ## <a name="tuning"></a>Speciális témakörök: a struktúra paramétereinek finomhangolása a lekérdezési sebesség javítása érdekében
-Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai nem megfelelőek a kaptár-lekérdezésekhez és a lekérdezések által feldolgozott adatmennyiségekhez. Ez a szakasz azokat a paramétereket ismerteti, amelyeket a felhasználók a kaptár-lekérdezések teljesítményének javítására tudnak hangolni. A felhasználóknak az adatfeldolgozási lekérdezések előtt hozzá kell adni a paraméter-hangolási lekérdezéseket.
+A Hive-fürt alapértelmezett paraméterbeállítások nem alkalmas a Hive-lekérdezések és a lekérdezések-e feldolgozni az adatokat. Ez a szakasz bemutatja néhány paraméter, amely a felhasználók hangolhassa a Hive-lekérdezések teljesítményének javítása érdekében. Felhasználók kell hozzáadnia a paramétert, a lekérdezések, az adatfeldolgozás előtt a Lekérdezések finomhangolása.
 
 1. **Java-halom területe**: a nagyméretű adatkészletek csatlakoztatását, illetve a hosszú rekordok feldolgozását végző lekérdezések esetében az egyik gyakori hiba az, hogy kifogyott a **rendelkezésre álló terület** . Ezt a hibát el lehet kerülni a paraméterek *MapReduce. map. Java. dönt* és *MapReduce. Task. IO. sort. MB* és a kívánt értékek megadásával. Például:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Ez a paraméter 4 GB memóriát foglal le a Java kupac területéhez, és hatékonyabbá teszi a rendezést azáltal, hogy több memóriát foglal le. Érdemes lehet lejátszani ezeket a foglalásokat, ha a rendszer feladattal kapcsolatos hibákat észlelt a heap területtel kapcsolatban.
+    Ez a paraméter 4 GB memóriát foglal le a Java kupac területéhez, és hatékonyabbá teszi a rendezést azáltal, hogy több memóriát foglal le. Érdemes tesztelni a megoldást, ha minden olyan feladat sikertelen hibák halommemória terület kapcsolódó.
 
-1. **DFS-blokk mérete**: Ez a paraméter a fájlrendszer által tárolt adatmennyiség legkisebb egységét állítja be. Ha például az elosztott fájlrendszerbeli blokk mérete 128 MB, akkor a méretnél kisebb és legfeljebb 128 MB méretű adatmennyiség egyetlen blokkban tárolódik. A 128 MB-nál nagyobb adatmennyiség további blokkokat is kiosztott. 
-2. A kis blokk méretének kiválasztásakor a Hadoop nagy méretűek lehetnek, mivel a név csomópontnak több kérést kell feldolgoznia, hogy megtalálja a fájlhoz tartozó megfelelő blokkot. A gigabájt (vagy nagyobb) adatmennyiség esetén ajánlott beállítás:
+1. **DFS-blokk mérete**: Ez a paraméter a fájlrendszer által tárolt adatmennyiség legkisebb egységét állítja be. Például ha az elosztott Fájlrendszerbeli blokkméret a 128 MB, majd bármilyen típusú és méretű kisebb, mint és legfeljebb 128 MB tárolódik egyetlen blokkot. 128 MB-nál nagyobb méretű adatok extra blokkok engedélyezett. 
+2. Egy kis blokkméretet kiválasztása hatására nagy terhek Hadoop, mert a név csomópont található a releváns blokkot a fájlhoz tartozó számos további kérelmeket feldolgozni. A javasolt beállítás foglalkozó gigabájt (vagy nagyobb) adatok:
 
         set dfs.block.size=128m;
 
@@ -159,13 +159,13 @@ Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai n
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Az alapértelmezett érték általában:
+    Általában az alapértelmezett érték:
     
    - a *mapred. min. Split. size* értéke 0, a
    - a *mapred. max. Split. size* **hossza. max** és a 
    - az *elosztott fájlrendszer. Block. size* értéke 64 MB.
 
-     Ahogy láthatjuk, az adatok méretének megfelelően hangolja ezeket a paramétereket "beállítás" értékre, így beállíthatja, hogy a használt leképezések száma módosítható legyen.
+     Ahogy láthatjuk, az adatok mérete, adott ezeket a paramétereket "beállítás" finomhangolás őket lehetővé teszi számunkra finomhangolása használt leképező száma.
 
 4. Íme néhány további **speciális lehetőség** a struktúra teljesítményének optimalizálásához. Ezekkel a beállításokkal megadhatja a leképezési és a feladatokhoz lefoglalt memóriát, és hasznos lehet a teljesítmény finomhangolásához. Ne feledje, hogy a *MapReduce. csökkentse a memóriát. MB* nem lehet nagyobb, mint a Hadoop-fürtben lévő egyes munkavégző csomópontok fizikai memóriájának mérete.
    

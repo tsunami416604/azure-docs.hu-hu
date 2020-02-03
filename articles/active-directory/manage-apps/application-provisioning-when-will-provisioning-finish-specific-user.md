@@ -74,13 +74,13 @@ Az alábbi táblázat összefoglalja a gyakori kiépítési forgatókönyvek szi
 | Hatókör-konfiguráció | A hatókörben lévő felhasználók, csoportok és tagok | Kezdeti ciklus ideje | Növekményes ciklus ideje |
 | -------- | -------- | -------- | -------- |
 | Csak a hozzárendelt felhasználók és csoportok szinkronizálása |  < 1 000 |  < 30 perc | < 30 perc |
-| Csak a hozzárendelt felhasználók és csoportok szinkronizálása |  1000–10 000 | 142 – 708 perc | < 30 perc |
+| Csak a hozzárendelt felhasználók és csoportok szinkronizálása |  1 000 – 10 000 | 142 – 708 perc | < 30 perc |
 | Csak a hozzárendelt felhasználók és csoportok szinkronizálása |   10 000 – 100 000 | 1 170 – 2 340 perc | < 30 perc |
 | Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  < 1 000 | < 30 perc  | < 30 perc |
-| Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  1000–10 000 | < 30-120 perc | < 30 perc |
+| Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  1 000 – 10 000 | < 30-120 perc | < 30 perc |
 | Az összes felhasználó és csoport szinkronizálása az Azure AD-ben |  10 000 – 100 000  | 713 – 1 425 perc | < 30 perc |
 | Az Azure AD összes felhasználójának szinkronizálása|  < 1 000  | < 30 perc | < 30 perc |
-| Az Azure AD összes felhasználójának szinkronizálása | 1000–10 000  | 43 – 86 perc | < 30 perc |
+| Az Azure AD összes felhasználójának szinkronizálása | 1 000 – 10 000  | 43 – 86 perc | < 30 perc |
 
 
 Csak a konfigurációs **szinkronizáláshoz hozzárendelt felhasználók és csoportok**esetében a következő képletek segítségével meghatározhatja a **kezdeti ciklus** várt minimális és maximális idejét:

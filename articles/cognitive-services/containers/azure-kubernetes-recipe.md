@@ -126,7 +126,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
     A tároló-beállításjegyzék verziójának nyomon követéséhez adja hozzá a címkét a verzió formátumával, például `v1`.
 
-1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. Ez eltarthat néhány percig.
+1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. A művelet eltarthat néhány percig.
 
     ```console
     docker push pattyregistry.azurecr.io/language-frontend:v1
@@ -150,7 +150,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
 ## <a name="get-language-detection-docker-image"></a>Nyelvfelismerés Docker-rendszerkép lekérése
 
-1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa `1.1.006770001-amd64-preview` értékét az újabb verzióra.
+1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. A művelet eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa `1.1.006770001-amd64-preview` értékét az újabb verzióra.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -162,7 +162,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
     ```
 
-1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. Ez eltarthat néhány percig.
+1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. A művelet eltarthat néhány percig.
 
     ```console
     docker push pattyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -313,14 +313,14 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
 1. A következő táblázat alapján módosíthatja a `language.yml` Language-frontend központi telepítési sorait, hogy felvegye a saját tároló beállításjegyzékbeli rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
-    Nyelv – előtér-telepítési beállítások|Rendeltetés|
+    Nyelv – előtér-telepítési beállítások|Cél|
     |--|--|
     |32. sor<br> `image` tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
     |44. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet egy korábbi szakaszban `<client-secret>`nak nevezünk.|
 
 1. Módosítsa a `language.yml` nyelvi telepítési sorait az alábbi táblázat alapján, és adja hozzá a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
-    |Nyelvi telepítési beállítások|Rendeltetés|
+    |Nyelvi telepítési beállítások|Cél|
     |--|--|
     |78. sor<br> `image` tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |95. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet egy korábbi szakaszban `<client-secret>`nak nevezünk.|

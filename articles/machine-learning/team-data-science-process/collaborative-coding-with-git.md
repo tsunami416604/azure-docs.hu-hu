@@ -1,6 +1,6 @@
 ---
-title: Együttműködésen alapuló kódolás a git-Team adatelemzési folyamattal
-description: Együttműködésen alapuló programkód fejlesztése adatelemzési projektekhez a git és az agilis tervezés használatával.
+title: Együttműködésen alapuló kódolás a Git - csoportos adatelemzési folyamat
+description: Együttműködési kód fejlesztés a Git használata az Agilis tervezéshez adatelemzési projektek módjáról.
 author: marktab
 manager: marktab
 editor: marktab
@@ -55,7 +55,7 @@ Az alábbi ábrán a TDSP ajánlott elágazási stratégiája látható. Előfor
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-Munkaelemet egy meglévő ágra is csatolhat. A munkaelem **részletek** lapján válassza a **hivatkozás hozzáadása**elemet. Ezután válasszon ki egy meglévő ágat, hogy összekapcsolja a munkaelemet, majd kattintson **az OK gombra**. 
+Egy meglévő ágban is hozzárendelhet egy munkaelemet. A munkaelem **részletek** lapján válassza a **hivatkozás hozzáadása**elemet. Ezután válasszon ki egy meglévő ágat, hogy összekapcsolja a munkaelemet, majd kattintson **az OK gombra**. 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 

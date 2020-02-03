@@ -35,4 +35,4 @@ A TLS-kézfogás során csak a következő titkosítások engedélyezettek:
 
 ## <a name="customer-feedback"></a>Felhasználói visszajelzés
 
-Noha a TLS 1.2 kötelezővé tétele a teljes iparágra jellemző, és célja a legmagasabb szintű titkosítási megoldás használata, és ezért azt a tervezett módon megvalósítjuk, szeretnénk megtudni, hogy ügyfeleink milyen üzemelő példányokkal milyen nehézségekkel találkoznak a TLS 1.2 bevezetése során. Erre a célra a megjegyzéseit [iot_tls1_deprecation@microsoft.comba ](mailto:iot_tls1_deprecation@microsoft.com)küldheti.
+Míg a TLS 1,2-kényszerítés az iparági szintű legjobb titkosítási megoldás, és a tervezett módon lesz engedélyezve, továbbra is hallani kell az ügyfelektől az adott üzembe helyezésekkel és a TLS 1,2 bevezetésével kapcsolatos nehézségekkel. Erre a célra a megjegyzéseit [iot_tls1_deprecation@microsoft.comba ](mailto:iot_tls1_deprecation@microsoft.com)küldheti.

@@ -22,7 +22,7 @@ ms.locfileid: "76721047"
 Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 
 ## <a name="connecting"></a>Csatlakozás
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
 | A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikket. |
@@ -31,14 +31,14 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | SQL Data Warehouse a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [a SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)vagy a [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) használatát javasolja az adatai lekérdezéséhez. Az illesztőprogramokkal és a SQL Data Warehousehoz való csatlakozással kapcsolatos további információkért lásd: [illesztőprogramok Azure SQL Data Warehouse](sql-data-warehouse-connection-strings.md) és [Csatlakozás Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md) cikkekhez. |
 
 ## <a name="tools"></a>Eszközök
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A Visual Studio Object Explorerből hiányzik a HRE-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)felhasználóit.  A Azure Active Directory és a SQL Data Warehouse használatával kapcsolatos további tudnivalókért tekintse meg a [Azure SQL Data Warehouse hitelesítés](sql-data-warehouse-authentication.md) című témakört. |
 | A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure SQL Data Warehouse Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
 | A szkriptek előállítása meghiúsul a SSMS                               | A SQL Data Warehouse parancsfájl létrehozása meghiúsul, ha a "függő objektumok létrehozásához szükséges parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az **eszközök-> Options-> SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false** értékre kell állítani. |
 
 ## <a name="performance"></a>Teljesítmény
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A lekérdezés teljesítményével kapcsolatos hibaelhárítás                            | Ha egy adott lekérdezést próbál elhárítani, kezdje a [megtanulni a lekérdezések figyelését](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution). |
 | TempDB lemezterülettel kapcsolatos problémák | [Figyelje a tempdb](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb) terület használatát.  A TempDB-területek futtatásának gyakori okai a következők:<br>– Nincs elég erőforrás a lekérdezés számára, ami az adatvesztést okozó TempDB.  Lásd: [munkaterhelés-kezelés](resource-classes-for-workload-management.md) <br>– A statisztikák hiányoznak vagy elavultak, ami túlzott adatáthelyezést okoz.  A statisztikák létrehozásával kapcsolatos részletekért tekintse meg a [táblák statisztikáinak fenntartását](sql-data-warehouse-tables-statistics.md) ismertető témakört.<br>– A TempDB terület kiosztása szolgáltatási szintenként történik.  [A SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute) nagyobb DWU-beállításra méretezése több tempdb területet foglal le.|
@@ -49,7 +49,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | Gyenge lekérdezési teljesítmény a gyenge index minősége miatt     | Bizonyos időpontokban a lekérdezések lelassulnak a [gyenge oszlopcentrikus indexe](../sql-data-warehouse/sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)miatt.  Ebből a cikkből megtudhatja, hogyan [hozhat létre az indexeket a szegmensek minőségének javítása érdekében](../sql-data-warehouse/sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality). |
 
 ## <a name="system-management"></a>Rendszerkezelés
-| Probléma                                                        | Felbontás                                                   |
+| Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: nem végezhető el a művelet, mert a kiszolgáló túllépi az engedélyezett adatbázis-tranzakciós egység (45000) kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) vagy a [kvóta növelését](sql-data-warehouse-get-started-create-support-ticket.md). |
 | A terület kihasználtságának vizsgálata                              | A rendszerek lemezterület-kihasználtságának megismeréséhez tekintse meg a [táblázat méretét]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) . |
@@ -58,7 +58,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 
 
 ## <a name="differences-from-sql-database"></a>Különbségek a SQL Database
-| Probléma                                 | Felbontás                                                   |
+| Probléma                                 | Megoldás:                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nem támogatott SQL Database funkciók     | Lásd: nem [támogatott táblázatos funkciók](../sql-data-warehouse/sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott adattípusok](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |

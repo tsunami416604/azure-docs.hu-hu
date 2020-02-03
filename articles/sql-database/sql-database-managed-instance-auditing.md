@@ -31,7 +31,7 @@ A [felügyelt példányok](sql-database-managed-instance.md) naplózása nyomon 
 
 A következő szakasz ismerteti a felügyelt példány naplózásának konfigurációját.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 1. Hozzon létre egy Azure Storage- **tárolót** , amelyben a naplók tárolása történik.
 
    1. Navigáljon az Azure Storage-ba, ahol a naplókat tárolni szeretné.
@@ -171,7 +171,7 @@ A felügyelt példányokból származó naplókat még hubokba vagy Azure Monito
 
 5. Válassza ki a naplózási események (Event hub, Azure Monitor naplók vagy mindkettő) célhelyét. Konfigurálja az egyes célkitűzésekhez a szükséges paramétereket (például Log Analytics munkaterület).
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
     ![Diagnosztikai beállítások konfigurálása](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

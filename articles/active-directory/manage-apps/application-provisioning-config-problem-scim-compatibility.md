@@ -61,7 +61,7 @@ Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezé
 1. Jelentkezzen be a Azure Portal https://portal.azure.com.
 2. A Azure Portal **Azure Active Directory > vállalati alkalmazások** szakaszában keresse meg és válassza ki a meglévő scim alkalmazást.
 3. A meglévő SCIM-alkalmazás **Tulajdonságok** szakaszában másolja át az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorer t, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot a kiépítési feladatok AZONOSÍTÓjának megkereséséhez. Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -101,7 +101,7 @@ Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kó
 1. Jelentkezzen be a Azure Portal https://portal.azure.com.
 2. a **Azure Active Directory > vállalati alkalmazások > alkalmazás létrehozása** című Azure Portal szakaszában hozzon létre egy új, **nem** katalógusbeli alkalmazást.
 3. Az új egyéni alkalmazás **Tulajdonságok** szakaszában másolja ki az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorer t, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot az alkalmazás létesítési konfigurációjának inicializálásához.
    Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
 

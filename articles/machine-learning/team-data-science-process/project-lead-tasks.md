@@ -1,5 +1,5 @@
 ---
-title: A projekthez vezető feladatok a csoportos adatelemzési folyamat során
+title: A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 description: Egy projekt feladatainak részletes bemutatása egy csoportos adatelemzési folyamat munkacsoportján
 author: marktab
 manager: marktab

@@ -27,7 +27,7 @@ A Azure Active Directory (Azure AD) automatikus felhasználó-kiépítés leegys
 
 A funkciók jobb megismeréséhez lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md) segítségével.
 
-## <a name="learn"></a>Oktatóanyagok
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz, és javítja a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -43,7 +43,7 @@ Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a köv
 
 * **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -67,16 +67,16 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| Segédanyagok és eszközök| Hivatkozás és leírás |
+| Erőforrások| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| Online képzések| SkillUp online: [Identitások kezelése](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Ismerje meg, hogyan integrálhatja az Azure AD-t számos SaaS-alkalmazással, és hogyan biztosíthatja a felhasználók hozzáférését az alkalmazásokhoz. |
+| Online tanfolyamok| SkillUp online: [Identitások kezelése](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Ismerje meg, hogyan integrálhatja az Azure AD-t számos SaaS-alkalmazással, és hogyan biztosíthatja a felhasználók hozzáférését az alkalmazásokhoz. |
 | Könyvek| [Modern hitelesítés a Azure Active Directory for web Applications (fejlesztői segédlet) első kiadása](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Ez egy mérvadó, részletes útmutató, amellyel Active Directory hitelesítési megoldásokat hozhat létre az új környezetekhez. |
-| Oktatóanyagok| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](../saas-apps/tutorial-list.md)kapcsolatban tekintse meg az oktatóanyagok listáját. |
-| Gyakori kérdések| [Gyakori kérdések](user-provisioning.md) az automatikus felhasználó-kiépítési folyamatról |
+| oktatóanyagokat| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](../saas-apps/tutorial-list.md)kapcsolatban tekintse meg az oktatóanyagok listáját. |
+| GYIK| [Gyakori kérdések](user-provisioning.md) az automatikus felhasználó-kiépítési folyamatról |
 
-### <a name="solution-architectures"></a>Megoldásarchitektúrák
+### <a name="solution-architectures"></a>Megoldási architektúrák
 
 Az Azure AD-kiépítési szolgáltatás a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az egyes alkalmazások gyártói által biztosított felhasználói felügyeleti API-végpontokhoz való csatlakozással. Ezek a felhasználói felügyeleti API-végpontok lehetővé teszik az Azure AD számára a felhasználók programozott módon történő létrehozását, frissítését és eltávolítását.
 
@@ -228,14 +228,14 @@ A telepítés minden fázisában ellenőrizze, hogy az eredmények a várt módo
 
 Miután beállította az automatikus felhasználó-kiépítést az alkalmazáshoz, a tesztelési eseteket futtatva ellenőrizheti, hogy a megoldás megfelel-e a szervezet követelményeinek.
 
-| Alkalmazási helyzetek| Várt eredmények |
+| Forgatókönyvek| Várt eredmények |
 | - | - |
 | A felhasználó hozzá lett adva a célként megadott rendszerhez rendelt csoporthoz | A felhasználói objektum kiépítve a célként megadott rendszerbe. <br>A felhasználó be tud jelentkezni a célcsoportba, és végrehajtja a kívánt műveleteket. |
 | A felhasználó el lett távolítva a célként megadott rendszerhez rendelt csoportból. | A felhasználói objektumot a rendszer kiépíti a célszámítógépen.<br>A felhasználó nem tud bejelentkezni a célként megadott rendszerbe. |
 | A felhasználói adatok az Azure AD-ben bármilyen módon frissülnek | A frissített felhasználói attribútumok a célként megadott rendszeren a növekményes ciklust követően jelennek meg |
 | A felhasználó hatókörön kívül van | A felhasználói objektum le van tiltva vagy törölve van. <br>Megjegyzés: Ez a viselkedés felül van bírálva a [munkanap kiépítés](skip-out-of-scope-deletions.md)során. |
 
-### <a name="plan-security"></a>A biztonság megtervezése
+### <a name="plan-security"></a>Biztonságának megtervezése
 
 Az üzembe helyezés részeként gyakran előfordul, hogy biztonsági felülvizsgálatra van szükség. Ha biztonsági felülvizsgálatra van szüksége, tekintse meg a számos Azure AD-tanulmányt [, amely](https://www.microsoft.com/download/details.aspx?id=36391) áttekintést nyújt az identitásról szolgáltatásként.
 
@@ -319,7 +319,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Segédanyagok és eszközök
+#### <a name="resources"></a>Erőforrások
 
 * [Termékkel kapcsolatos visszajelzések megadása](https://feedback.azure.com/forums/169401-azure-active-directory)
 

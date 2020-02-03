@@ -27,16 +27,16 @@ Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókk�
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Laborfiók létrehozása
+> * Tesztkörnyezetfiók létrehozása
 > * Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
 > * A tesztkörnyezet-tulajdonosok számára elérhető rendszerképek megadása a Marketplace-en
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-lab-account"></a>Laborfiók létrehozása
+## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza a **labor Services** elemet a **DEVOPS** szakaszban. Ha a **Lab szolgáltatások**mellett a csillag (`*`) lehetőséget választja, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
 
     ![Minden szolgáltatás – > labor Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

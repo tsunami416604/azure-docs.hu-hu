@@ -42,7 +42,7 @@ Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepít
 <sup>1</sup> a [manuális trigger-szinkronizálást](#trigger-syncing)igénylő üzembe helyezési technológia.  
 <sup>2</sup> a portálon történő szerkesztés csak a http-és időzítő-eseményindítók esetében engedélyezett a Linux-függvények prémium és dedikált csomagok használatával.
 
-## <a name="key-concepts"></a>Alapfogalmak
+## <a name="key-concepts"></a>Fő fogalmak
 
 Néhány kulcsfontosságú fogalom fontos, hogy megértsük, hogyan működnek a központi telepítések Azure Functions.
 
@@ -114,7 +114,7 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 Telepítheti a Function alkalmazást tartalmazó Linux-tároló lemezképét.
 
->__Használat:__ Hozzon létre egy Linux-függvény alkalmazást a prémium vagy a dedikált csomagban, és adja meg, melyik tárolót szeretné futtatni. Ezt kétféleképpen teheti meg:
+>__Használat:__ Hozzon létre egy Linux-függvény alkalmazást a prémium vagy a dedikált csomagban, és adja meg, melyik tárolót szeretné futtatni. Ezt két módon teheti meg:
 >
 >* Hozzon létre egy Linux-függvény alkalmazást egy Azure App Service csomaggal a Azure Portal. A **közzétételhez**válassza a **Docker-rendszerkép**lehetőséget, majd konfigurálja a tárolót. Adja meg azt a helyet, ahol a rendszerkép található.
 >* Hozzon létre egy Linux-függvény alkalmazást egy App Service csomagon az Azure CLI használatával. További információ: [függvény létrehozása Linux rendszeren egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
@@ -188,7 +188,7 @@ A következő táblázat a portál szerkesztését támogató operációs rendsz
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (előzetes verzió) | | | | | | |
 | PowerShell (előzetes verzió) |✔|✔|✔| | | |
-| Írógéppel (node. js) | | | | | | |
+| TypeScript (Node.js) | | | | | | |
 
 <sup>*</sup> A portál szerkesztése csak a HTTP-és időzítő-eseményindítók esetében engedélyezett a Linux-és prémium szintű és dedikált csomagok használatával.
 

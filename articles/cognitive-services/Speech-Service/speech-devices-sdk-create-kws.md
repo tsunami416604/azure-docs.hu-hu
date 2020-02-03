@@ -53,7 +53,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
     ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. Mentse a. zip fájlt a számítógépére. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
+1. Mentse a .zip-fájlt a számítógépre. Erre a fájlra szüksége lesz az egyéni kulcsszó üzembe helyezéséhez az eszközön.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -53,7 +53,7 @@ Az oldalszámozási eredményekhez `$top` és `$skip`is szükség van, ahol a `$
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Elrendezés
 
 A keresési eredmények lapon lehet, hogy meg szeretné jeleníteni a miniatűr képét, a mezők egy részhalmazát, valamint egy teljes termékre mutató hivatkozást.
 

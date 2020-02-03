@@ -58,7 +58,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 
 1.  Kapcsolódjon egy olyan virtuális GÉPHEZ, amely az RDP-kapcsolat használatával nem elérhető virtuális géppel azonos virtuális hálózaton található.
 
-2.  Nyisson meg egy PowerShell-konzolablak ablakát.
+2.  Nyisson meg egy PowerShell-konzolablakot.
 
 3.  Futtassa az alábbi parancsot:
 
@@ -120,7 +120,7 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
 
 1.  [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.
+2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 
 3.  Győződjön meg arról, hogy a lemez online állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott rendszerlemezhez rendelt meghajtóbetűjelet.
 
@@ -162,4 +162,4 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
 
 10. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Győződjön meg arról, hogy a probléma megoldódott-e.
+11. Ellenőrizze, hogy a probléma megoldódott.

@@ -21,7 +21,7 @@ Az [Azure App Service](app-service-linux-intro.md) egy hatékonyan méretezhető
 
 ![Python Django-webalkalmazás a Azure App Serviceban](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure Database for PostgreSQL adatbázist, és kapcsolódjon hozzá az alkalmazáshoz
@@ -153,7 +153,7 @@ A cikk hátralévő lépéseinek többsége az Azure CLI-parancsokat használja 
 
 Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót és egy adatbázist hoz létre, és a webalkalmazást hozzá kell kötnie. Ha Azure App Servicere telepíti a webalkalmazást, az alkalmazás ezt a felhőalapú adatbázist használja. 
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Létrehozhat egy új erőforráscsoportot a Azure Database for PostgreSQL-kiszolgálóhoz, vagy használhat meglévő erőforráscsoportot is. 
 

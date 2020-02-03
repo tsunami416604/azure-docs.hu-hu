@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Kötések 
 A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
 
-### <a name="inputs"></a>Bemenetek
+### <a name="inputs"></a>Bevitelek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és az egyéb bemeneti kötések (`direction === "in"`) a függvények által háromféle módon olvashatók:
  - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek a *function. JSON*fájlban megadott sorrendben adják át őket. A *function. JSON* fájlban definiált `name` tulajdonságnak nem kell megegyeznie a paraméter nevével, bár az értéknek kell lennie.
  
@@ -574,7 +574,7 @@ Az transpiled (. TS) a `dist` kimeneti könyvtárában található JavaScript-f�
 
 A helyi fejlesztés és üzembe helyezés módja a fejlesztői eszköztől függ.
 
-### <a name="visual-studio-code"></a>Visual Studio-kód
+### <a name="visual-studio-code"></a>Visual Studio Code
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) bővítményhez készült Azure functions lehetővé teszi a függvények fejlesztését a géppel. Az alapvető eszközök a Azure Functions bővítmény követelménye.
 

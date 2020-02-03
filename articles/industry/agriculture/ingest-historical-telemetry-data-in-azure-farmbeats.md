@@ -18,7 +18,7 @@ Ez a cikk azt ismerteti, hogyan lehet bevezetni a korábbi érzékelőkre vonatk
 
 Az eszközök internetes hálózata (IoT) erőforrások, például az eszközök és érzékelők korábbi adatainak betöltése gyakori forgatókönyv a FarmBeats-ben. Metaadatokat hozhat létre az eszközök és érzékelők számára, majd a korábbi adatokat kanonikus formátumban FarmBeats.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a FarmBeats-t, és összegyűjtötte a korábbi adatokat a IoT-eszközökről.
 A partnerek hozzáférését is engedélyeznie kell a következő lépésekben leírtak szerint.
@@ -59,7 +59,7 @@ Kövesse az alábbi lépéseket.
 
 8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
 
-9. Futtassa az alábbi szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+9. Futtassa a következő szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket.
 - /**érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.  
 
 
-|        deviceModel   |  Javaslatok   |
+|        DeviceModel   |  Javaslatok   |
 | ------- | -------             |
 |     Típus (csomópont, átjáró)        |          Az eszköz – csomópont vagy átjáró típusa      |
 |          Gyártó            |         A gyártó neve    |
@@ -93,7 +93,7 @@ Kövesse az alábbi lépéseket.
 |   DeviceModelId     |     A társított eszköz-modell azonosítója.  |
 |  HardwareId          | Az eszköz egyedi azonosítója, például a MAC-címe.
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc).
-|  Földrajzi egység            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).   
+|  Hely            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
 |    Név            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes leírást. |
@@ -113,9 +113,9 @@ Kövesse az alábbi lépéseket.
 |    **Érzékelő**      |          |
 | HardwareId          |   A gyártó által beállított érzékelő egyedi azonosítója. |
 |  SensorModelId     |    A társított érzékelő modell azonosítója.   |
-| Földrajzi egység          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
+| Hely          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
-|    deviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
+|    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
 | Név            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
 |    Leírás      | Adjon meg egy értelmes leírást. |
 |    Tulajdonságok        |További tulajdonságok a gyártótól. |
@@ -126,7 +126,7 @@ További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDat
 
 API-kérelem létrehozásához össze kell kapcsolni a HTTP-(POST-) metódust, az API szolgáltatás URL-címét és az erőforráshoz tartozó URI-t, amely lekérdezi, beküldi a kérelmet, létrehoz vagy töröl egy kérést. Ezután adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz a Datahub URL-cím (https://\<yourdatahub >. azurewebsites. net).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A FarmBeats Datahub tulajdonosi hitelesítést használ, amelyhez az alábbi, az előző szakaszban létrehozott hitelesítő adatok szükségesek:
 
@@ -172,7 +172,7 @@ Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amik
 
 ### <a name="input-payload-to-create-metadata"></a>A metaadatok létrehozására szolgáló bemeneti adattartalom
 
-deviceModel
+DeviceModel
 
 
 ```json

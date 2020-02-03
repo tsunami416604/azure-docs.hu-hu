@@ -46,7 +46,7 @@ Ha szeretné megtekinteni az esemény-előfizetés mérőszámait, kereshet az e
 
 Ha az esemény-előfizetés típusa szerint szeretne keresni, válassza a **minden szolgáltatás**lehetőséget.
 
-![Minden szolgáltatás kiválasztása](./media/monitor-event-delivery/all-services.png)
+![Válassza ki az összes szolgáltatás](./media/monitor-event-delivery/all-services.png)
 
 Keressen az **Event Grid** kifejezésre, és válassza ki **Event Grid előfizetéseket** az elérhető lehetőségek közül.
 
@@ -85,5 +85,5 @@ Megadhatja a riasztásokat a témakörben és a tartományi szintű mérőszámo
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
-* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

@@ -24,11 +24,11 @@ Ha Event Grid-előfizetést szeretne létrehozni bármelyik támogatott [esemén
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-   ![Minden szolgáltatás kiválasztása](./media/subscribe-through-portal/select-all-services.png)
+   ![Válassza ki az összes szolgáltatás](./media/subscribe-through-portal/select-all-services.png)
 
 1. Keressen **Event Grid előfizetéseket** , és válassza ki az elérhető lehetőségek közül.
 
-   ![Search](./media/subscribe-through-portal/search.png)
+   ![Keresés](./media/subscribe-through-portal/search.png)
 
 1. Válassza a **+ Esemény-előfizetés** lehetőséget.
 
@@ -67,5 +67,5 @@ A portálon megtekintheti az adott forráshoz kapcsolódó esemény-előfizetés
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
-* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

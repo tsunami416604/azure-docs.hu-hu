@@ -53,7 +53,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Oktatóanyagok
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -74,7 +74,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -90,13 +90,13 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| **Forrásanyagok** | **Hivatkozás és leírás** |
+| **Erőforrások** | **Hivatkozás és leírás** |
 |:-|:-|
 | Videók | [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) |
 | | [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) |
-| Oktatóanyagok | [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md) |
+| oktatóanyagokat | [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md) |
 | | [Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Gyakori kérdések | [Automatikus felhasználó-kiépítés](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| GYIK | [Automatikus felhasználó-kiépítés](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Kiépítés a munkanapokból az Azure AD-be](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Megoldásarchitektúra
@@ -165,7 +165,7 @@ A Cloud HR-alkalmazás és Active Directory közötti kiépítési integrációh
 - Cloud HR-alkalmazás bérlője
 - Összekötő-alkalmazás üzembe helyezése
 - Azure AD Connect kiépítési ügynök
-- Active Directory tartomány
+- Active Directory-tartomány
 
 A Azure AD Connect kiépítési ügynök üzembe helyezési topológiája a felhőalapú HR-alkalmazások bérlői számától és az integrálni kívánt, Active Directory alárendelt tartományokból függ. Ha több Active Directory tartománya van, attól függ, hogy a Active Directory tartományok folytonos vagy [különállóak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)-e.
 
@@ -336,7 +336,7 @@ Az üzembe helyezés minden egyes fázisában a kezdeti tesztelésen keresztül 
 
 Miután beállította a Cloud HR-alkalmazást az Azure AD-felhasználók üzembe helyezéséhez, futtasson tesztelési eseteket annak ellenőrzéséhez, hogy a megoldás megfelel-e a szervezet követelményeinek.
 
-|Alkalmazási helyzetek|Várt eredmények|
+|Forgatókönyvek|Várt eredmények|
 |:-|:-|
 |Új alkalmazott a Cloud HR alkalmazásban.| – A felhasználói fiók Active Directory van kiépítve.</br>– A felhasználó be tud jelentkezni Active Directory tartományi alkalmazásokba, és végrehajthatja a kívánt műveleteket.</br>– Ha a Azure AD Connect Sync konfigurálva van, a felhasználói fiók is létrejön az Azure AD-ben.
 |A felhasználó leáll a Cloud HR-alkalmazásban.|– A felhasználói fiók le van tiltva Active Directoryban.</br>– A felhasználó nem tud bejelentkezni Active Directory által védett vállalati alkalmazásba.
@@ -350,7 +350,7 @@ Az előző eredmények alapján meghatározhatja, hogyan alakíthatja át az aut
 > [!TIP]
 > Használjon olyan technikákat, mint például az adatok csökkentése és az adattisztítás, amikor a tesztkörnyezetben frissíti a környezeti adatokat a bizalmas személyes adatok eltávolításához vagy maszkolásához, hogy azok megfeleljenek az adatvédelmi és biztonsági előírásoknak. 
 
-### <a name="plan-security"></a>A biztonság megtervezése
+### <a name="plan-security"></a>Biztonságának megtervezése
 
 Egy új szolgáltatás üzembe helyezésének részeként gyakran előfordul, hogy biztonsági felülvizsgálatra van szükség. Ha egy biztonsági felülvizsgálatra van szükség vagy nem történt meg, tekintse meg a számos [Azure ad-tanulmányt](https://www.microsoft.com/download/details.aspx?id=36391) , amely áttekintést nyújt az identitásról szolgáltatásról.
 

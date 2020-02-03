@@ -49,10 +49,10 @@ Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs 
 
 Alább látható a támogatott adattípusok listája.
 
-| Data type | Leírás |
+| Adattípus | Leírás |
 |-----------|------------------|-------------|
-| logikai      |   A következő két állapot egyike: true vagy FALSE.       |
-| dateTime    |   Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum/idő értékének ISO 8601 formátumúnak kell lennie.      |
+| bool      |   A következő két állapot egyike: true vagy FALSE.       |
+| Dátum és idő    |   Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum/idő értékének ISO 8601 formátumúnak kell lennie.      |
 | double    |   Kétszeres pontosságú 64 bites IEEE 754 lebegőpontos pont
 | sztring    |   Szöveges értékek, amelyek Unicode-karakterből állnak.          |
 

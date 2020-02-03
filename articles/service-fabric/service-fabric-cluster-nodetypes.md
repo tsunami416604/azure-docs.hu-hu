@@ -30,7 +30,7 @@ Méretezési csoport skálázásakor létrejön egy új példány. Az új méret
 
 Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB-&lt;Node Type name&gt;** . Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
 
-![Segédanyagok és eszközök][Resources]
+![Erőforrások][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Virtuálisgép-bővítmény Service Fabric
 
@@ -73,15 +73,15 @@ A tulajdonságok leírása a következő:
 | **Name (Név)** | **Megengedett értékek** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 | név | sztring | kiterjesztés egyedi neve |
-| type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | Meghatározza, hogy az operációs rendszer Service Fabric |
-| autoUpgradeMinorVersion | Igaz vagy hamis | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
-| Publisher | Microsoft. Azure. ServiceFabric | Az Service Fabric-bővítmény közzétevőének neve |
+| típus | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | Meghatározza, hogy az operációs rendszer Service Fabric |
+| autoUpgradeMinorVersion | true vagy false | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
+| publisher | Microsoft.Azure.ServiceFabric | Az Service Fabric-bővítmény közzétevőének neve |
 | clusterEndpont | sztring | URI: PORT – felügyeleti végpont |
 | nodeTypeRef | sztring | nodeType neve |
-| durabilityLevel | bronz, ezüst, arany, platina | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
-| enableParallelJobs | Igaz vagy hamis | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
+| durabilityLevel | bronze, silver, gold, platinum | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
+| enableParallelJobs | true vagy false | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
 | nicPrefixOverride | sztring | Alhálózat-előtag, például "10.0.0.0/24" |
-| commonNames | karakterlánc [] | Telepített fürtözött tanúsítványok köznapi nevei |
+| commonNames | string[] | Telepített fürtözött tanúsítványok köznapi nevei |
 | x509StoreName | sztring | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
 | typeHandlerVersion | 1.1 | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
 | dataPath | sztring | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja.

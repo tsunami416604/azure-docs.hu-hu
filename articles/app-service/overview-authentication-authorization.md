@@ -13,7 +13,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715107"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés Azure App Service
 
 > [!NOTE]
 > Jelenleg a HRE v2 (beleértve az MSAL-t is) nem támogatott az Azure App Services és Azure Functions esetén. Tekintse át a frissítéseket.
@@ -31,7 +31,7 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A hitelesítési és engedélyezési modul ugyanazon a Sandboxon fut, mint az alkalmazás kódja. Ha engedélyezve van, minden bejövő HTTP-kérelem áthalad az alkalmazás kódjának kezelése előtt.
 
@@ -98,7 +98,7 @@ A hitelesítési folyamat az összes szolgáltató esetében azonos, de attól f
 
 Az alábbi táblázat a hitelesítési folyamat lépéseit mutatja be.
 
-| Lépés: | Szolgáltatói SDK nélkül | Szolgáltatói SDK-val |
+| Lépés | Szolgáltatói SDK nélkül | Szolgáltatói SDK-val |
 | - | - | - |
 | 1. Jelentkezzen be a felhasználóba | Átirányítja az ügyfelet `/.auth/login/<provider>`ra. | Az ügyfél kódja közvetlenül a szolgáltató SDK-val aláírja a felhasználót, és hitelesítési jogkivonatot kap. További információt a szolgáltató dokumentációjában talál. |
 | 2. hitelesítés utáni | A szolgáltató átirányítja az ügyfelet `/.auth/login/<provider>/callback`ba. | Az ügyfél kódja a [szolgáltatótól kapott jogkivonatot](app-service-authentication-how-to.md#validate-tokens-from-providers) az ellenőrzéshez `/.auth/login/<provider>`. |
@@ -132,7 +132,7 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 > [!CAUTION]
 > A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban.
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 [Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  

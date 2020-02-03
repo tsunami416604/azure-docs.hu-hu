@@ -28,7 +28,7 @@ A gyors kezdéshez a következő lépéseket javasoljuk:
 6. A jelen cikk **értesítési séma** szakaszának utasításait követve elemezheti az értesítési kérelmeket, és az értesítés alapján megvalósíthatja az üzleti logikát.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Service Catalog alkalmazás-definíciós értesítések hozzáadása
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 Első lépésként tekintse meg [a Service Catalog-alkalmazás közzététele Azure Portal segítségével](./publish-portal.md)című témakört.
 
 ![A Service Catalog alkalmazás-definíciós értesítései a Azure Portal](./media/publish-notifications/service-catalog-notifications.png)
@@ -69,13 +69,13 @@ A következő táblázat a EventType és a ProvisioningState lehetséges kombin�
 
 EventType | ProvisioningState | Értesítési trigger
 ---|---|---
-PUT | Elfogadott | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen befejeződött (a felügyelt erőforráscsoporthoz való központi telepítés elindítását megelőzően).
+PUT | Elfogadva | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen befejeződött (a felügyelt erőforráscsoporthoz való központi telepítés elindítását megelőzően).
 PUT | Sikeres | A felügyelt alkalmazás teljes kiépítés sikerült egy PUT után.
-PUT | Meghiúsult | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
+PUT | Sikertelen | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
 JAVÍTÁS | Sikeres | A felügyelt alkalmazás példányának sikeres JAVÍTÁSát követően a címkék, a JIT hozzáférési házirend vagy a felügyelt identitás frissítése sikerült.
-DELETE | Törlés folyamatban | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
+DELETE | Törlése | Amint a felhasználó elindít egy felügyelt alkalmazás példányának TÖRLÉSét.
 DELETE | Törölve | A felügyelt alkalmazás teljes és sikeres törlése után.
-DELETE | Meghiúsult | A törlést blokkoló megszüntetési folyamat során felmerülő bármilyen hiba.
+DELETE | Sikertelen | A törlést blokkoló megszüntetési folyamat során felmerülő bármilyen hiba.
 ## <a name="notification-schema"></a>Értesítési séma
 Amikor felgyorsítja a webhook-végpontot az értesítések kezeléséhez, elemezni kell a hasznos adatokat, hogy a fontos tulajdonságok beolvasása után az értesítésre reagáljon. A Service Catalog és az Azure Marketplace által felügyelt alkalmazások értesítései számos azonos tulajdonságot biztosítanak. A mintákat követő táblázatban két kis különbség szerepel.
 
@@ -178,8 +178,8 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 Paraméter | Leírás
 ---|---
-EventType | Az értesítést kiváltó esemény típusa. (Például PUT, PATCH, DELETE.)
-ApplicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett.
+eventType | Az értesítést kiváltó esemény típusa. (Például PUT, PATCH, DELETE.)
+applicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett.
 EventTime | Az értesítést kiváltó esemény időbélyegzője. (Dátum és idő UTC ISO 8601 formátumban)
 ProvisioningState | A felügyelt alkalmazás példányának kiépítési állapota. (Például sikeres, sikertelen, törlés, törölt.)
 error | *Csak akkor van megadva, ha a ProvisioningState sikertelen*. A hibát okozó probléma kódját, üzenetét és részleteit tartalmazza.

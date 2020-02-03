@@ -52,7 +52,7 @@ experiment_name = "MyExperiment"
 pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
 ```
 
-## <a name="create-a-schedule"></a>Ütemterv létrehozása
+## <a name="create-a-schedule"></a>Ütemezés létrehozása
 
 Egy folyamat ismétlődő futtatásához létre kell hoznia egy ütemtervet. A `Schedule` egy folyamatot, egy kísérletet és egy triggert társít. Az trigger lehet egy`ScheduleRecurrence`, amely leírja a futtatások közötti várakozást, vagy egy adattár elérési útját, amely megadja a módosításokat bemutató könyvtárat. Mindkét esetben szüksége lesz a folyamat azonosítójára és annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet.
 
@@ -134,7 +134,7 @@ Ha ezután újra futtatja `Schedule.list(ws)`, akkor egy üres listát kell kapn
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Végezetül megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson.
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)

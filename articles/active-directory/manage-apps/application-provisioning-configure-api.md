@@ -30,7 +30,7 @@ A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfig
 **A kiépítési konfiguráció automatizálásához Microsoft Graph API-k használatával kapcsolatos lépések áttekintése**
 
 
-|Lépés:  |Részletek  |
+|Lépés  |Részletek  |
 |---------|---------|
 |[1. lépés. A Gallery-alkalmazás létrehozása](#step-1-create-the-gallery-application)     |Bejelentkezés az API-ügyfélbe <br> A katalógus alkalmazás sablonjának beolvasása <br> A Gallery-alkalmazás létrehozása         |
 |[2. lépés. Kiépítési feladatok létrehozása sablon alapján](#step-2-create-the-provisioning-job-based-on-the-template)     |A létesítési összekötő sablonjának beolvasása <br> A kiépítési feladatok létrehozása         |

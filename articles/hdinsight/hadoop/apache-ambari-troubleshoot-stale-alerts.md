@@ -34,7 +34,7 @@ A Ambari-ügynökök folyamatosan végrehajtják az állapot-ellenőrzéseket a 
 
 * A fürt néhány gazdagépe számos összetevőt tartalmazhat, ezért számos riasztás futtatásához szükséges. Ha az összetevők száma nagy, lehetséges, hogy a riasztási feladatok nem tudják lemaradni az ütemezett időközöket
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
 ### <a name="increase-alert-interval-time"></a>Riasztási időköz növelésének időpontja
 

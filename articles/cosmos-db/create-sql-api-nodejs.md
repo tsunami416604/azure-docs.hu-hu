@@ -56,7 +56,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható Node. js-alkalmazás 
 
 Most hozzon létre egy Node. js-alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -68,7 +68,7 @@ Most hozzon létre egy Node. js-alkalmazást a GitHubról, állítsa be a kapcso
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
@@ -136,27 +136,27 @@ Most lépjen vissza a Azure Portalra az Azure Cosmos-fiók kapcsolati sztring ad
 
 1. A [Azure Portal](https://portal.azure.com/)az Azure Cosmos-fiókban a bal oldali navigációs sávon kattintson a **kulcsok**elemre, majd kattintson az **írási/olvasási kulcsok**elemre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `config.js` fájlba.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
 
 2. Nyissa meg a `config.js` fájlt. 
 
-3. A másolási gomb használatával másolja ki az URI érteket a Portalról, és azt adja meg a végpont kulcs értékeként a `config.js`-ben. 
+3. Másolja ki az URI érteket a Portalról (a másolási gomb használatával), és adja meg a végpont kulcs értékeként a `config.js`-ben. 
 
     `config.endpoint = "<Your Azure Cosmos account URI>"`
 
-4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.key` értékeként a `config.js`-ben. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.key` értékeként a `config.js`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
     `config.key = "<Your Azure Cosmos account key>"`
     
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. Futtassa a `npm install` parancsot egy terminálban a szükséges npm-modulok telepítéséhez
+1. Futtassa az `npm install` parancsot a terminálban a szükséges npm-modulok telepítéséhez
 
-2. Futtassa a `node app.js` parancsot egy terminálban a node-alkalmazás elindításához.
+2. Futtassa a `node app.js` parancsot a terminálban a node-alkalmazás elindításához.
 
 Most visszatérhet az új adattal Adatkezelő, módosíthat és dolgozhat.
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

@@ -69,7 +69,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Entitás összekapcsolása](#entity-linking)
 * [Fő kifejezés kibontása](#key-phrase-extraction)
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 > [!NOTE]
 > Az alábbi kód az érzelmek elemzése v3, amely nyilvános előzetes verzióban érhető el.
@@ -305,7 +305,7 @@ Linked Entities:
         Score: 0.281    Offset:  89     Length: 5
 ```
 
-## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
+## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 Hozzon létre egy új, `key_phrase_extraction_example()` nevű függvényt, amely a végpontot és a kulcsot argumentumként veszi fel, majd meghívja a `single_extract_key_phrases()` függvényt. Ha a művelet sikeres, az eredmény tartalmazni fogja a `key_phrases` észlelt kulcsos kifejezéseket, és egy `error`, ha nem. Minden észlelt kulcs kifejezésének nyomtatása.
 

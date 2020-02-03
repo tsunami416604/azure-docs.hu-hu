@@ -1,5 +1,5 @@
 ---
-title: Adatelemzési projektek gyors fejlesztése – csoportos adatelemzési folyamat
+title: Az adatelemzési projektek - csoportos adatelemzési folyamat rugalmas fejlesztés
 description: Az adatelemzési projektet a csoportos adatelemzési folyamat segítségével szisztematikus, vezérelt, és együttműködési módon hajthatja végre a projektcsapat keretében.
 author: marktab
 manager: marktab
@@ -17,11 +17,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722101"
 ---
-# <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
+# <a name="agile-development-of-data-science-projects"></a>Hatékony adatelemzési projektek fejlesztését
 
 Ez a dokumentum azt ismerteti, hogyan futtathatják a fejlesztők az adatelemzési projekteket a [csoportos adatelemzési folyamat](overview.md) (TDSP) használatával, a projekt-csoportokon belüli, szisztematikus, vezérelt és együttműködési módon. A TDSP a Microsoft által kifejlesztett keretrendszer, amely strukturált tevékenységeket biztosít a felhőalapú, prediktív elemzési megoldások hatékony végrehajtásához. Az adatelemzési csapat által a TDSP szabványosított szerepkörök és feladatok áttekintését lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md). 
 
-Ez a cikk útmutatást nyújt a következőkhöz: 
+Ez a cikk útmutatást tartalmazza: 
 
 - A *Sprint* a projektben résztvevő munkaelemeket tervezi.
 - *Munkaelemek* hozzáadása a sprinthez.
@@ -62,7 +62,7 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
 
 ## <a name='SprintPlanning-2'></a>A Sprint tervezése
 
-Számos adattudós több projekthez is felhasználható, amely hónapokig eltarthat, és különböző ütemekben végezhető el. A Sprint tervezése hasznos a projektek rangsorolásához, valamint az erőforrások tervezéséhez és kiosztásához. Az Azure-táblákban egyszerűen létrehozhatja, kezelheti és nyomon követheti a projektek munkaelemeit, és a Sprint tervezésével biztosíthatja, hogy a projektek a várt módon haladnak előre.
+Számos adattudós több projekthez is felhasználható, amely hónapokig eltarthat, és különböző ütemekben végezhető el. Sprint tervezési hasznos projekt rangsorolási, és az erőforrás-tervezés és lefoglalás. Az Azure-táblákban egyszerűen létrehozhatja, kezelheti és nyomon követheti a projektek munkaelemeit, és a Sprint tervezésével biztosíthatja, hogy a projektek a várt módon haladnak előre.
 
 A Sprint tervezésével kapcsolatos további információkért lásd: [dulakodás Sprint](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint). 
 

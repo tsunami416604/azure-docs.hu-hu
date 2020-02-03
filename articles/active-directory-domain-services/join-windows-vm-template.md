@@ -84,11 +84,11 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
 1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
 1. Az **Egyéni telepítés** lapon adja meg a következő adatokat egy Windows Server rendszerű virtuális gép Azure AD DS felügyelt tartományhoz való létrehozásához és csatlakoztatásához:
 
-    | Beállítás                   | Value (Díj) |
+    | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki a virtuális géphez tartozó erőforráscsoportot. |
-    | Földrajzi egység                  | Válassza ki a virtuális gép helyét. |
+    | Hely                  | Válassza ki a virtuális gép helyét. |
     | Meglévő VNET neve        | Annak a meglévő virtuális hálózatnak a neve, amelyhez a virtuális gépet (például *myVnet*) szeretné kapcsolni. |
     | Létező alhálózat neve      | A meglévő virtuális hálózat alhálózatának neve, például *munkaterhelések*. |
     | DNS-címke előtagja          | Adja meg a virtuális gép számára használandó DNS-nevet (például *myvm*). |
@@ -117,11 +117,11 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
 1. Az **Egyéni telepítés** lapon adja meg a következő információkat a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához:
 
-    | Beállítás                   | Value (Díj) |
+    | Beállítás                   | Érték |
     |---------------------------|-------|
-    | Előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
+    | -előfizetés              | Válassza ki ugyanazt az Azure-előfizetést, amelyben engedélyezte a Azure AD Domain Services. |
     | Erőforráscsoport            | Válassza ki az erőforráscsoportot a meglévő virtuális géppel. |
-    | Földrajzi egység                  | Válassza ki a meglévő virtuális gép helyét. |
+    | Hely                  | Válassza ki a meglévő virtuális gép helyét. |
     | VIRTUÁLIS gépek listája                   | Adja meg az Azure AD DS felügyelt tartományhoz (például *myVM1, myVM2*) való csatlakozáshoz használandó meglévő virtuális gép (ek) vesszővel tagolt listáját. |
     | Tartományhoz való csatlakozás felhasználóneve     | Az Azure AD DS felügyelt tartomány felhasználói fiókja, amelyet a virtuális gép a felügyelt tartományhoz való csatlakoztatásához kell használni, például `contosoadmin@aadds.contoso.com`. Ennek a fióknak az *Azure ad DC-rendszergazdák* csoport tagjának kell lennie. |
     | Tartományhoz való csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |

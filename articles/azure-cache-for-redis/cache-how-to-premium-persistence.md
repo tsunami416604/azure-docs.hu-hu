@@ -166,7 +166,7 @@ A skálázással kapcsolatos további információkért lásd: [Mi történik, h
 
 A AOF-fájlokban tárolt adatmennyiségek csomóponton több blobra vannak osztva, így növelhetik az adattárolóba való mentés teljesítményét. Az alábbi táblázat azt mutatja, hogy az egyes díjszabási szintek hány oldal blobot használnak:
 
-| Premium szint | Blobok |
+| Premium szintű csomag | Blobok |
 |--------------|-------|
 | P1           | 4/szilánk    |
 | P2           | 8/szilánk    |

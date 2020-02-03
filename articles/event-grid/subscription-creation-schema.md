@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid előfizetési séma
+title: Az Azure Event Grid előfizetési séma
 description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozás tulajdonságait ismerteti. Event Grid előfizetési séma.
 services: event-grid
 author: banisadr
@@ -16,7 +16,7 @@ ms.locfileid: "76720758"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
 
-Event Grid előfizetés létrehozásához küld egy kérést az esemény-előfizetés létrehozása művelethez. Használja a következő formátumot:
+Event Grid-előfizetés létrehozásához, egy kérelmet küld az esemény létrehozása az előfizetési műveletre. Használja a következő formátumot:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -28,33 +28,33 @@ Ha például egy `examplegroup`nevű erőforráscsoporthoz `examplestorage` nev�
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak a-z, A-Z, 0-9 és a "-" karaktereket tartalmazhat. A cikk a kérelem törzsének tulajdonságait és sémáját ismerteti.
+Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és tartalmazhat a – z, A-Z, 0 – 9 és "-". A cikk ismerteti a tulajdonságok és a kérelem törzsében sémáját.
  
 ## <a name="event-subscription-properties"></a>Esemény-előfizetés tulajdonságai
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| cél | objektum | A végpontot meghatározó objektum. |
-| szűrő | objektum | Egy választható mező az események típusának szűréséhez. |
+| cél | objektum | Az objektum, amely meghatározza a végpontot. |
+| szűrő | objektum | Eseménytípusok szűrése a választható mező. |
 
-### <a name="destination-object"></a>célobjektum
+### <a name="destination-object"></a>Célobjektum
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| EndpointType | sztring | Az előfizetés végpontjának típusa (webhook/HTTP, Event hub vagy üzenetsor). | 
-| endpointUrl | sztring | Az esemény-előfizetésben szereplő események céljának URL-címe. | 
+| endpointType | sztring | Az előfizetés (a HTTP/webhook, Event Hub vagy üzenetsor) végpont típusa. | 
+| endpointUrl | sztring | Az Eseményelőfizetés események cél URL-CÍMÉT. | 
 
-### <a name="filter-object"></a>objektum szűrése
+### <a name="filter-object"></a>szűrő objektum
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| includedEventTypes | tömb | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
-| subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 
-| subjectEndsWith | sztring | Utótag – az esemény üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. |
-| isSubjectCaseSensitive | sztring | A kis-és nagybetűk megkülönböztetését szabályozza a szűrőkhöz. |
+| includedEventTypes | tömb | Egyezés, ha az esemény típusa az eseményüzenetben pontos egyezés az egyik ezek az események típus neve. Hibát jelez, amikor az esemény neve nem egyezik meg a regisztrált esemény típusa az eseményforrás nevét. Alapértelmezett illeszkedik az összes eseménytípust. |
+| subjectBeginsWith | sztring | Előtag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. | 
+| subjectEndsWith | sztring | Utótag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. |
+| isSubjectCaseSensitive | sztring | Kis-és nagybetűket szűrőknek megfelelő szabályozza. |
 
 
-## <a name="example-subscription-schema"></a>Példa előfizetési sémára
+## <a name="example-subscription-schema"></a>Példa előfizetési séma
 
 ```json
 {

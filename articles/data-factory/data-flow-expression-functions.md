@@ -485,7 +485,7 @@ NULL értéket ad vissza. Ha van "NULL" nevű oszlop, használja a Function szin
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logikai vagy operátor. Ugyanaz, mint | | * ``or(true, false) -> true``
+Logikai VAGY operátor. Ugyanaz, mint | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>

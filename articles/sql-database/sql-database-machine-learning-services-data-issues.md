@@ -194,7 +194,7 @@ Az R most egyetlen értéket ad vissza eredményként.
 |---|
 |1542|
 
-Miért? Ebben az esetben, mivel a két argumentum ugyanolyan hosszúságú vektorként kezelhető, az R a belső terméket mátrixként adja vissza.  A lineáris algebra szabályainak megfelelően ez a várt viselkedés. Azonban problémákat okozhat, ha az alsóbb rétegbeli alkalmazás a kimeneti sémát soha nem változtatja meg!
+Hogy miért? Ebben az esetben, mivel a két argumentum ugyanolyan hosszúságú vektorként kezelhető, az R a belső terméket mátrixként adja vissza.  A lineáris algebra szabályainak megfelelően ez a várt viselkedés. Azonban problémákat okozhat, ha az alsóbb rétegbeli alkalmazás a kimeneti sémát soha nem változtatja meg!
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>Eltérő hosszúságú oszlopok egyesítése vagy szorzása
 
@@ -291,7 +291,7 @@ STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 1
 - A DateTime oszlop az R adattípussal, a **POSIXct**lett feldolgozva.
 - A "ProductSeries" szöveges oszlop a következő **tényezőként**lett azonosítva: kategorikus változó. A karakterlánc-értékek alapértelmezés szerint tényezőként vannak kezelve. Ha az R karakterláncot adja át, a rendszer a belső használatra egész számra konvertálja, majd visszaképezi a kimenetre a karakterláncot.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Akár ezekből a rövid példákból is láthatja, hogy az SQL-lekérdezések bemenetként való átadásakor szükség van az adatkonverzió hatásának vizsgálatára. Mivel az R egyes SQL-adattípusokat nem támogat, vegye figyelembe a hibák elkerülésének módját:
 

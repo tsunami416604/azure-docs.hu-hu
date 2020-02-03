@@ -69,7 +69,7 @@ Az objektumazonosító a következő általános formátumú:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Helyszín:  
+Az elemek magyarázata:  
 
 |||  
 |-|-|  
@@ -363,14 +363,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| – |
-|DecipherOnly|visszafejteni| –  |
+|DataEncipherment|titkosítás, visszafejtés| N.A. |
+|DecipherOnly|visszafejteni| N.A.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| – |
-|KeyCertSign|aláírás, ellenőrzés|–|
+|EncipherOnly|encrypt| N.A. |
+|KeyCertSign|aláírás, ellenőrzés|N.A.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| – |
-|crlsign|aláírás, ellenőrzés| – |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
+|crlsign|aláírás, ellenőrzés| N.A. |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

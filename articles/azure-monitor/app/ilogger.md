@@ -502,7 +502,7 @@ Ez a kód csak önálló naplózási szolgáltató használata esetén szükség
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információk:
+További információk az alábbiakról:
 
 * [Bejelentkezés ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
 * [.NET-nyomkövetési naplók a Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)

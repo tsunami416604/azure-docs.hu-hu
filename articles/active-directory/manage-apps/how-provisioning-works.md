@@ -60,7 +60,7 @@ A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat
 
 Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](customize-application-attributes.md).
 
-Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attribútumok egyike egy kifejezés-hozzárendelés. Ezen hozzárendelések esetében olyan parancsfájl-szerű kifejezést kell írnia, amely lehetővé teszi a felhasználói adatai átalakítását olyan formátumokra, amelyek az SaaS-alkalmazás számára elfogadhatóak. Részletekért lásd: [kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md).
+Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezen hozzárendelések esetében olyan parancsfájl-szerű kifejezést kell írnia, amely lehetővé teszi a felhasználói adatai átalakítását olyan formátumokra, amelyek az SaaS-alkalmazás számára elfogadhatóak. Részletekért lásd: [kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md).
 
 ## <a name="scoping"></a>Tartalmazó 
 ### <a name="assignment-based-scoping"></a>Hozzárendelés-alapú hatókör
@@ -188,7 +188,7 @@ Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támo
 
 Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát határozza meg, valamint azt, hogy az aktív = false értékkel rendelkező frissítési kérést szeretné-e elküldeni a felhasználó számára. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A felhasználók automatikus üzembe helyezésének megtervezése](plan-auto-user-provisioning.md)
 

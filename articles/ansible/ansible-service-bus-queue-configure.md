@@ -21,7 +21,7 @@ ms.locfileid: "76713222"
 
 > [!div class="checklist"]
 >
-> * Üzenetsor létrehozása
+> * Várólista létrehozása
 > * SAS-plicy létrehozása
 > * Névtér adatainak beolvasása
 > * Várólista-információk lekérése

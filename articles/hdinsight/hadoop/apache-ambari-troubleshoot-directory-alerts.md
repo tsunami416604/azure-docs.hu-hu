@@ -31,7 +31,7 @@ Az Apache Ambari az alábbihoz hasonló hibákat kap:
 
 Az érintett munkavégző csomópont (ok) ból a Ambari-riasztásból említett könyvtárak hiányoznak.
 
-## <a name="resolution"></a>Felbontás
+## <a name="resolution"></a>Megoldás:
 
 Manuálisan hozza létre a hiányzó könyvtárakat az érintett munkavégző csomópont (ok) hoz.
 

@@ -25,8 +25,8 @@ Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési és tesztel�
 Ha felhasználót szeretne hozzáadni a laborhoz, adja hozzá a felhasználót az **DevTest Labs felhasználói** szerepköréhez a laborhoz. Ez a cikk bemutatja, hogyan lehet automatizálni a felhasználókat a laborhoz a következő módszerek egyikével:
 
 - Azure Resource Manager-sablonok
-- PowerShell-parancsmagok az Azure-hoz 
-- Azure CLI-vel.
+- Azure PowerShell-parancsmagok 
+- Azure CLI.
 
 ## <a name="use-azure-resource-manager-templates"></a>Használjon Azure Resource Manager-sablonokat
 A következő minta Resource Manager-sablon meghatározza a labor **DevTest Labs felhasználói** szerepköréhez hozzáadandó felhasználót. 
@@ -176,7 +176,7 @@ Ha többször szeretné használni a sablont, hogy több Active Directory objekt
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
-## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 Ahogy az a bevezetésben is szerepel, egy új Azure-szerepkör-hozzárendelést hoz létre, amely hozzáad egy felhasználót a **DevTest Labs felhasználói** szerepköréhez a laborhoz. A PowerShellben ezt a [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) parancsmag használatával teheti meg. A parancsmag számos opcionális paraméterrel rendelkezik, amelyek lehetővé teszik a rugalmasságot. A `ObjectId`, `SigninName`vagy `ServicePrincipalName` megadható, mert az objektum engedélyeket kap.  
 
 Íme egy példa Azure PowerShell parancs, amely felvesz egy felhasználót az DevTest Labs felhasználói szerepkörbe a megadott laborban.

@@ -1,6 +1,6 @@
 ---
-title: A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
-description: Az adatelemzési projektek vevői elfogadási szakaszának célja, feladatai és termékei
+title: Felhasználói elfogadás szakasza a csoportos adatelemzési folyamat életciklusa
+description: A célok, feladatok és a felhasználói elfogadás szakaszra a data-adatelemzési projektek le
 services: machine-learning
 author: marktab
 manager: marktab
@@ -18,9 +18,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720520"
 ---
-# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Felhasználói elfogadás szakasza a csoportos adatelemzési folyamat életciklusa
 
-Ez a cikk a csoportos adatelemzési folyamat (TDSP) ügyfél-elfogadási szakaszához kapcsolódó célokat, feladatokat és teljesítéseket ismerteti. Ez a folyamat egy javasolt életciklust biztosít, amely segítségével strukturálhatja az adatelemzési projekteket. Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
+Ez a cikk ismerteti a célokat, feladatok és a felhasználói elfogadás szakaszban, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
 
    1. **Üzleti ismeretek**
    2. **Adatgyűjtés és-megértés**
@@ -28,29 +28,29 @@ Ez a cikk a csoportos adatelemzési folyamat (TDSP) ügyfél-elfogadási szakasz
    4. **Üzembe helyezés**
    5. **Ügyfél-elfogadás**
 
-Itt látható a TDSP életciklus vizuális ábrázolása: 
+A TDSP életciklus ábrázolása a következő: 
 
-![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cél
 **Projekt-végtermékek véglegesítése**: Ellenőrizze, hogy a folyamat, a modell és az üzemi környezetben való üzembe helyezése megfelel-e az ügyfél célkitűzéseinek.
 
-## <a name="how-to-do-it"></a>Útmutató
-Ebben a szakaszban két fő feladat foglalkozik:
+## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
+Nincsenek az ebben a szakaszban tárgyalt két fő feladat:
 
    * **Rendszer-ellenőrzés**: Ellenőrizze, hogy az üzembe helyezett modell és a folyamat megfelel-e az ügyfél igényeinek.
    * **Projekt-kikapcsolás**: kapcsolja ki a projektet arra az entitásra, amelyen a rendszer éles környezetben fog futni.
 
-Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igényeknek, és hogy a megfelelő pontossággal válaszol-e a rendszer éles környezetben való üzembe helyezésére az ügyfél alkalmazása általi használatra. Az összes dokumentáció véglegesítése és felülvizsgálata megtörténik. A projekt átadásra kerül a műveletekért felelős entitás számára. Ez az entitás lehet például egy IT vagy Customer adattudományi csapat, vagy az ügyfélnek a rendszer éles környezetben való futtatásért felelős ügynöke. 
+Az ügyfél ellenőrizni kell, hogy a rendszer megfelel-e a saját üzleti igényeinek megfelelően, és a kérdések megválaszolja az elfogadható pontosságú üzembe helyezéséhez a rendszer az ügyfélalkalmazás által az éles környezetben való használatra. Teljes dokumentáció fejeződik be, és tekintse át. A projekt a gyorsítási értéknek, átadná-off műveletekért felelős az entitáshoz. Ehhez az entitáshoz lehet például az informatikai vagy ügyfél-adatelemzési csapatával, vagy az ügyfél felelős a rendszer az éles üzemben futó ügynök. 
 
-## <a name="artifacts"></a>Artifacts
-Az ebben az utolsó szakaszban létrehozott fő összetevő az **ügyfélre vonatkozó projekt kilépési jelentése**. Ez a technikai jelentés tartalmazza a teljes projekt részletes ismertetését, amely a rendszer működésének megismeréséhez hasznos. A TDSP egy [kilépési jelentési](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) sablont biztosít. A sablont használhatja, vagy testre is szabhatja az ügyfél igényeihez. 
+## <a name="artifacts"></a>Összetevők
+Az ebben az utolsó szakaszban létrehozott fő összetevő az **ügyfélre vonatkozó projekt kilépési jelentése**. Ez a műszaki jelentés tartalmazza a projekt összes a részleteit, amelyek hasznosak a rendszer működtetésének módját ismertető. A TDSP egy [kilépési jelentési](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) sablont biztosít. A sablonnal, mert, vagy testre is szabhatja az adott ügyfél igényeinek megfelelően. 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
+Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
 
    1. [Üzleti ismeretek](lifecycle-business-understanding.md)
    2. [Adatgyűjtés és-megértés](lifecycle-data.md)
@@ -58,6 +58,6 @@ Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásoka
    4. [Üzembe helyezés](lifecycle-deployment.md)
    5. [Ügyfél-elfogadás](lifecycle-acceptance.md)
 
-Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
+Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
 A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

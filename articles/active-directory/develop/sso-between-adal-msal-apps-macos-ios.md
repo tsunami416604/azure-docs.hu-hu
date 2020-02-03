@@ -52,8 +52,8 @@ A következő táblázat összefoglalja a ADAL és a MSAL közötti fiókazonos�
 | Fiókazonosító                | MSAL                                                         | ADAL 2.7. x      | Régebbi ADAL (az ADAL 2.7. x előtt) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | nem játszható azonosító            | `username`                                                   | `userId`        | `userId`                       |
-| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | –                            |
-| Nem ismert fiókazonosító               | Az összes fiók lekérdezése `allAccounts:` API-n keresztül `MSALPublicClientApplication` | –             | –                            |
+| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | N.A.                            |
+| Nem ismert fiókazonosító               | Az összes fiók lekérdezése `allAccounts:` API-n keresztül `MSALPublicClientApplication` | N.A.             | N.A.                            |
 
 Ez az azonosítókat biztosító `MSALAccount` felület:
 
@@ -207,7 +207,7 @@ Mivel a `homeAccountId` régebbi ADAL-verziókban nem érhető el, a `username`h
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Példa:
+Például:
 
 Objective-C:
 

@@ -60,7 +60,7 @@ Az alábbi ábra és lépések a CI/CD folyamat architektúráját írják le:
 10. Az alkalmazásra vonatkozó felhasználói kérések a DNS-kiszolgálón haladnak át.
 11. A DNS-kiszolgáló továbbítja a kéréseket egy terheléselosztó számára, és visszaküldi a válaszokat a felhasználóknak.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Csoportos adatelemzési folyamat (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (pénzmosás)](/azure/machine-learning/)

@@ -22,7 +22,7 @@ ms.locfileid: "76717838"
 Ha problémája merül fel a SQL Data Warehouseával kapcsolatban, hozzon létre egy támogatási jegyet, hogy a mérnöki támogatási csapat segítséget nyújtson Önnek.
 
 ## <a name="create-a-support-ticket"></a>Támogatási jegy létrehozása
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
 2. A kezdőképernyőn kattintson a **Súgó és támogatás** fülre.
    
     ![Súgó és támogatás](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
@@ -31,7 +31,7 @@ Ha problémája merül fel a SQL Data Warehouseával kapcsolatban, hozzon létre
    Jelölje ki az [Azure támogatási csomagot](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/).
    
    * A **számlázással, kvótával és az előfizetés kezelésével** kapcsolatos támogatás minden támogatási szinten elérhető.
-   * A **hibajavítási** támogatás a [fejlesztői](https://azure.microsoft.com/support/plans/developer/), a standard, a [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)vagy a [Premier](https://azure.microsoft.com/support/plans/premier/) [szintű](https://azure.microsoft.com/support/plans/standard/)támogatáson keresztül érhető el. Az eseti hibajavítás körébe olyan problémák tartoznak, amelyeket ügyfeleink az Azure használata közben tapasztalnak, és okkal feltételezhető, hogy a Microsoft okozta őket.
+   * A **hibajavítási** támogatás a [fejlesztői](https://azure.microsoft.com/support/plans/developer/), a standard, a [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)vagy a [Premier](https://azure.microsoft.com/support/plans/premier/) [szintű](https://azure.microsoft.com/support/plans/standard/)támogatáson keresztül érhető el. A javítás/csere típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
    * A **fejlesztői mentorálás** és a **tanácsadási szolgáltatás**[Közvetlen professzionális támogatás](https://azure.microsoft.com/support/plans/prodirect/) és [Premier](https://azure.microsoft.com/support/plans/premier/) esetén érhető el. 
      
      Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon](https://premier.microsoft.com/). Tekintse meg az [Azure-támogatási terveket](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) a különböző támogatási csomagokról, beleértve a hatókört, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdésekért tekintse meg az [Azure-támogatással](https://azure.microsoft.com/support/faq/)kapcsolatos gyakori kérdéseket.  
@@ -59,7 +59,7 @@ A támogatási kérelem elküldését követően az Azure-támogatási csapat ka
 
 ![Állapot ellenőrzése](./media/sql-data-warehouse-get-started-create-support-ticket/Monitor_ticket.PNG)
 
-## <a name="other-resources"></a>Egyéb háttéranyagok
+## <a name="other-resources"></a>Egyéb erőforrások
 A SQL Data Warehouse Közösséggel is csatlakozhat [stack overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/) vagy a [Azure SQL Data Warehouse MSDN fórumán](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/)keresztül.
 
  

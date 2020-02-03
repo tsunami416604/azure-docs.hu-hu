@@ -30,20 +30,20 @@ A fürtözés nem fokozza a fürtözött gyorsítótár számára elérhető kap
 
 Az Azure-ban a Redis-fürt elsődleges/replika modellként érhető el, ahol az egyes szegmensek olyan elsődleges/replika párokkal rendelkeznek, ahol a replikálást a Redis szolgáltatáshoz tartozó Azure cache felügyeli. 
 
-## <a name="clustering"></a>Fürtözés
+## <a name="clustering"></a>Fürtszolgáltatás
 A fürtözés engedélyezve van a **Redis panel új Azure-gyorsítótárában** a gyorsítótár létrehozásakor. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 A fürtözés a **Redis-fürt** panelen van konfigurálva.
 
-![Fürtözés][redis-cache-clustering]
+![Fürtszolgáltatás][redis-cache-clustering]
 
 A fürtben legfeljebb 10 szegmens lehet. Kattintson az **engedélyezve** elemre, és csúsztassa a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** mezőbe, és kattintson **az OK**gombra.
 
 Az egyes szegmensek az Azure által kezelt elsődleges/replika gyorsítótár-párok, a gyorsítótár teljes mérete pedig a díjszabási szinten kiválasztott gyorsítótár-méret szorzatával számítható ki. 
 
-![Fürtözés][redis-cache-clustering-selected]
+![Fürtszolgáltatás][redis-cache-clustering-selected]
 
 Miután létrehozta a gyorsítótárat, csatlakozik hozzá, és ugyanúgy használható, mint a nem fürtözött gyorsítótár, és a Redis elosztja az összes gyorsítótár-szegmenst. Ha a diagnosztika [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics)van, a metrikák külön lesznek rögzítve az egyes szegmensekhez, és megtekinthetők a Redis panelhez készült Azure cache [-ben.](cache-how-to-monitor.md) 
 

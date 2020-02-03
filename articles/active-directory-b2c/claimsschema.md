@@ -42,7 +42,7 @@ A **ClaimsSchema** elem határozza meg azokat a jogcímeket, amelyeket a szabál
 
 A **claimType** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
 
@@ -50,7 +50,7 @@ A **claimType** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| displayName | 0:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
+| DisplayName | 0:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai, dátum, dateTime, int, Long, string, StringCollection stb és alternativeSecurityIdCollection adattípusok használhatók. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcím-típusai, amelyeket egy adott protokollhoz kell használni. Az érték felülírható a **InputClaim** vagy a **OutputClaim** elemekben megadott **PartnerClaimType** . Ezzel az elemmel adhatja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | A jogcímek megjelenítésekor alkalmazható maszkolási karakterek nem kötelező karakterlánca. Például a 324-232-4343-as telefonszám a XXX-XXX-4343 lehet. |
@@ -65,11 +65,11 @@ A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Protocol (Protokoll) | 0: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
+| Protokoll | 0: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
 A **protokoll** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Név | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
 | PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
@@ -104,7 +104,7 @@ Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat **a ne
 
 A **maszk** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot alkalmaz a rendszer egy karakterlánc-jogcím vezető részére. A `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha meg van adva a `Regex` értéke, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
 | `Regex` | Nem | Ha **`Type`** `Regex`re van beállítva, adja meg a használni kívánt reguláris kifejezést.
@@ -144,7 +144,7 @@ Az Identity Experience Framework csak az e-mail-cím és az e-mail tartományné
 
 A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`vagy `ReplaceAll`. A `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. A `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. A `ReplaceAll` érték a szülő házirendben megadott adatgyűjtemény, amelyet figyelmen kívül kell hagyni. |
 
@@ -159,10 +159,10 @@ A **korlátozási** elem a következő elemeket tartalmazza:
 
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Szöveg | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
-|Value (Díj) | Igen | A beállítás kiválasztásához társított jogcím értéke. |
+|Érték | Igen | A beállítás kiválasztásához társított jogcím értéke. |
 | SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
 
 Az alábbi **példa egy legördülő lista** jogcímet konfigurál egy alapértelmezett értékkel `New York`:
@@ -188,9 +188,9 @@ A legördülő lista alapértelmezett értéke New York:
 
 A **minta** elem a következő attribútumokat tartalmazhatja:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Válaszban | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
+| RegularExpression | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
 | HelpText | Nem | A jogcím mintája vagy reguláris kifejezése. |
 
 Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezéses beviteli ellenőrzéssel és a Súgó szöveggel:

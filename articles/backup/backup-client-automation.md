@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 Az elérhető lehetőségek a következők:
 
-| Lehetőség | Részletek | Alapértelmezett |
+| Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
 | /p: "location" |A Azure Backup ügynök telepítési mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services ügynök |

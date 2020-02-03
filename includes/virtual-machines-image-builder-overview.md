@@ -20,7 +20,7 @@ Az Azure VM Image Builder (Azure Image Builder) segítségével elkezdheti a Win
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Előzetes verziók
+## <a name="preview-features"></a>Előzetes verziójú funkciók
 
 Az előzetes verzióban ezek a funkciók támogatottak:
 
@@ -33,13 +33,13 @@ Az előzetes verzióban ezek a funkciók támogatottak:
 - Lemezképek létrehozása VHD formátumban.
  
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 Az Azure rendszerkép-szerkesztő szolgáltatás elérhető lesz az előzetes verzióban ezekben a régiókban. A képeket ezen régiókon kívül is el lehet osztani.
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 ## <a name="os-support"></a>Operációs rendszer támogatása
 A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatni:
@@ -60,7 +60,7 @@ A AIB a következők forrásaként támogatja a RHEL ISO-t:
 
 A RHEL 7,6 ISOs nem támogatott, de tesztelés alatt állnak.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 
 ![Az Azure rendszerkép-készítő fogalmi rajza](./media/virtual-machines-image-builder-overview/image-builder.png)

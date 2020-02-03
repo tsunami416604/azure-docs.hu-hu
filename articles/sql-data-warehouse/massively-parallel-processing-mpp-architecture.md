@@ -19,7 +19,7 @@ ms.locfileid: "76720316"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája 
 
-Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint.
+Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához.
 
  Az Azure szinapszis négy összetevőből áll:
 - SQL Analytics: teljes T-SQL-alapú elemzés 
@@ -53,7 +53,7 @@ A leválasztott tárolással és számítással az SQL Analytics használata ese
 Az SQL Analytics kihasználja az Azure Storage-t, hogy a felhasználói adatai biztonságban maradjanak.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
-* Ciklikus időszeletelés
+* Ciklikus multiplexelés
 * Replikálás
 
 ### <a name="control-node"></a>Vezérlő csomópont

@@ -54,7 +54,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Parancs  |Támogatott |
 |---------|---------|
 |authenticate    |   Igen      |
-|kijelentkezés    |      Igen   |
+|logout    |      Igen   |
 |getnonce   |    Igen     |
 
 
@@ -97,7 +97,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |dbStats     |   Igen      |
 |megmagyarázni     | Nem        |
 |magyarázat: executionStats     |     Nem    |
-|funkciókkal     |    Nem     |
+|szolgáltatások     |    Nem     |
 |hostInfo     |   Nem      |
 |listDatabases       |   Igen      |
 |Parancslista elemre     |  Nem       |
@@ -330,12 +330,12 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Duplán |Igen    |
+|Dupla |Igen    |
 |Sztring |Igen    |
 |Objektum |Igen    |
 |Tömb  |Igen    |
-|Bináris adatértékek    |Igen|   
-|objectId   |Igen    |
+|Binary Data    |Igen|   
+|ObjectId   |Igen    |
 |Logikai    |Igen    |
 |Dátum   |Igen    |
 |Null   |Igen    |
@@ -348,7 +348,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Reguláris kifejezés |Igen|
 |JavaScript |Igen|
 |JavaScript (hatókörrel)|   Igen |
-|Nem definiált  |Igen    |
+|Meghatározatlan  |Igen    |
 
 ## <a name="indexes-and-index-properties"></a>Indexek és index tulajdonságai
 
@@ -368,8 +368,8 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|TTL|   Igen |
-|Unique |Igen|
+|Élettartam|   Igen |
+|Egyedi |Igen|
 |Részleges|   Nem|
 |Kis-és nagybetűk megkülönböztetése   |Nem|
 |Ritka |Nem |
@@ -408,7 +408,7 @@ A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé tesz
 
 Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni. Ha például a következő eredeti lekérdezést adta meg: ```find({x:{$regex: /^abc$/})```, azt a következőképpen kell módosítani:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})``` kérdésre adott válaszban foglalt lépéseket.
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 
 Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket. A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 

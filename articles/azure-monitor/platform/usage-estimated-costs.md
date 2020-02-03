@@ -1,6 +1,6 @@
 ---
-title: A használat és a becsült költségek figyelése Azure Monitor
-description: A Azure Monitor használati és becsült költségek oldal használatának folyamatának áttekintése
+title: Figyelési használat és becsült költségek az Azure monitorban
+description: Az Azure Monitor-használat és becsült költségek lapot a folyamat áttekintése
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715775"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>A használat és a becsült költségek figyelése Azure Monitor
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Figyelési használat és becsült költségek az Azure monitorban
 
 > [!NOTE]
 > Ez a cikk bemutatja, hogyan tekintheti meg a használati és becsült költségeket több Azure-figyelési szolgáltatás között. A Azure Monitor adott összetevőivel kapcsolatos kapcsolódó cikkek a következők:
@@ -60,7 +60,7 @@ Ezután az elmúlt 30 nap Azure Monitor költségeinek megtekintéséhez kattint
 1. Azure Monitor
 2. Application Insights
 3. Log Analytics
-4. Insight and Analytics
+4. Betekintések és elemzés
 
 Ez a következő nézetet eredményezi:
 
@@ -73,23 +73,23 @@ A használatról részletesebben is tájékozódhat, ha [letölti a használatot
 > [!NOTE]
 > A **Cost Management** használata a **Azure Cost Management + számlázási** központban az előnyben részesített módszer a figyelési költségek széles körű megismerésére.  A **használat és a becsült költségek** a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) és a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) számára egyaránt lehetővé teszik a Azure monitor egyes részeinek mélyebb elemzését.
 
-Egy másik lehetőség a Azure Monitor használatának megtekintésére a figyelő központ **használati és becsült költségek** lapja. Ez az alapvető figyelési funkciók, például a [riasztások, a metrikák](https://azure.microsoft.com/pricing/details/monitor/), az értesítések, az [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)és az [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)használatát mutatja be. A 2018. április előtt elérhető díjszabási csomaggal rendelkező ügyfelek esetében az elemzések és az elemzési ajánlat keretében vásárolt Log Analytics használat is szerepel.
+Egy másik lehetőség a Azure Monitor használatának megtekintésére a figyelő központ **használati és becsült költségek** lapja. Ez az alapvető figyelési funkciók, például a [riasztások, a metrikák](https://azure.microsoft.com/pricing/details/monitor/), az értesítések, az [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)és az [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)használatát mutatja be. A 2018 április előtt elérhető díjcsomagok az ügyfelek is magában foglalja az Insights keretében vásárolt Log Analytics-használat és elemzési ajánlat.
 
-Ezen a lapon a felhasználók megtekinthetik az elmúlt 31 napra vonatkozó erőforrás-használatot, az előfizetések összesített száma alapján. `Drill-ins` a 31 napos időszakon belüli használati trendeket mutatják. Ehhez a becsléshez nagy mennyiségű adatra van szükség, ezért kérjük, legyen türelemmel az oldal betöltésekor.
+Ezen a lapon felhasználók megtekinthetik az erőforrás-használat az elmúlt 31 napra vonatkozó összesített száma előfizetésenként. `Drill-ins` a 31 napos időszakon belüli használati trendeket mutatják. Nagy mennyiségű adatot kell együtt az ezt a becslést, ezért legyen türelmes, ahogy az oldal megfelelően töltődik be.
 
-Ez a példa a figyelési használatot és az eredményül kapott költségek becslését mutatja be:
+Ez a példa bemutatja a figyelési használat és becsült költségeit:
 
-![A használati és becsült költségek portál képernyőképe](./media/usage-estimated-costs/001.png)
+![Használat és becsült költségek portál képernyőképe](./media/usage-estimated-costs/001.png)
 
-Válassza ki a havi használati oszlop hivatkozását egy olyan diagram megnyitásához, amely az elmúlt 31 napos időszakban a használati trendeket mutatja: 
+Válassza ki a hivatkozás megnyitásához egy diagram, amely az elmúlt 31 napos időszakban Alkalmazáshasználati trendek a havi használati oszlopban: 
 
-![Node Bar-diagramhoz tartozó képernyőkép](./media/usage-estimated-costs/002.png)
+![Keret csomópontonként sáv diagram képernyőképe](./media/usage-estimated-costs/002.png)
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Az Operations Management Suite előfizetési jogosultságai
 
-Azok az ügyfelek, akik megvásárolták a Microsoft Operations Management Suite E1-et és az E2-t, a [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) és a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)esetében a csomóponton belüli adatfeldolgozási jogosultságok A jogosultságok Log Analytics-munkaterületekhez vagy Application Insights erőforrásokhoz való fogadásához egy adott előfizetésben: 
+Azok az ügyfelek, akik megvásárolták a Microsoft Operations Management Suite E1-et és az E2-t, a [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) és a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)esetében a csomóponton belüli adatfeldolgozási jogosultságok Ezeket a jogosultságokat a Log Analytics-munkaterületek és Application Insights-erőforrások fogadásához egy adott előfizetésben: 
 
-- Log Analytics munkaterületek esetében a "node (OMS)" árképzési szintet kell használni.
+- Log Analytics-munkaterületek a "csomópontonként (OMS)" tarifacsomag kell használnia.
 - Application Insights erőforrásoknak a "vállalati" árképzési szintet kell használniuk.
 
 A szervezet által megvásárolt csomag csomópontjainak számától függően érdemes lehet egy előfizetést áthelyezni egy utólagos elszámolású (GB-os) díjszabási rétegre, de ez gondos figyelmet igényel.

@@ -60,7 +60,7 @@ A TLS 1,2 használatát igénylő IoT-hubok a következő régiókban hozhatók 
 
 * USA keleti régiója
 * USA déli középső régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 
 > [!NOTE]
 > Feladatátvétel esetén a IoT Hub `minTlsVersion` tulajdonsága továbbra is érvényben marad a feladatátvételt követően a Geo-párosítási régióban.
@@ -80,7 +80,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 
 | Nyelv | TLS 1,2 támogatott | Dokumentáció |
 |----------|-------------------|---------------|
-| C#        | Igen               | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| Ü        | Igen               | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | Igen               | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | Igen               | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | Igen               | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
