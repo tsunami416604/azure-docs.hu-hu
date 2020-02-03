@@ -330,16 +330,13 @@
     - name: Figyelés
       items:
         - name: Logikai alkalmazások figyelése
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: Logikai alkalmazások monitorozása Azure Monitor-naplókkal
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: B2B-üzenetek monitorozása Azure Monitor-naplókkal
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: B2B-üzenetek nyomon követése Azure Monitor-naplókkal
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: B2B-üzenetek lekérdezéseinek létrehozása Azure Monitor-naplókkal
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: Monitorozási és nyomkövetési lekérdezések létrehozása
+          href: create-monitoring-tracking-queries.md
     - name: 'Példák, forgatókönyvek és útmutatók'
       href: logic-apps-examples-and-scenarios.md
       items:

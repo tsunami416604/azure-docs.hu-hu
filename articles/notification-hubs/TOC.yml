@@ -6,7 +6,7 @@
       href: notification-hubs-push-notification-overview.md
     - name: App Service Mobile Apps-integráció
       href: notification-hubs-app-service.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Értesítési központ létrehozása – Azure Portal
@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Alapelvek
   items:
+    - name: Transport Layer Security (TLS)
+      href: notification-hubs-tls12.md
     - name: Útmutató a vállalati leküldési architektúrákhoz
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Eszközregisztrációk

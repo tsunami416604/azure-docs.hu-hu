@@ -82,11 +82,7 @@
             - name: 4 – Átviteli sebességgel és késéssel kapcsolatos metrikák ellenőrzése
               href: storage-blob-scalable-app-verify-metrics.md
         - name: Statikus webhely üzemeltetése
-          items:
-            - name: 1 – Statikus webhely létrehozása
-              href: storage-blob-static-website-host.md
-            - name: 2 – Egyéni tartomány engedélyezése SSL-lel
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: Magas rendelkezésre állású alkalmazások tervezése
           items:
             - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
@@ -383,10 +379,12 @@
             - name: Az Azure Storage Emulator használata
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Statikus webhely üzemeltetése
-          href: storage-blob-static-website-how-to.md
-        - name: Az Azure CDN leképezése egyéni tartományra HTTPS-en keresztüli hozzáféréshez
-          href: storage-https-custom-domain-cdn.md
-        - name: Egyéni tartomány konfigurálása
+          items:
+            - name: Statikus webhely üzemeltetése
+              href: storage-blob-static-website-how-to.md
+            - name: Integrálás az Azure CDN-nel
+              href: static-website-content-delivery-network.md
+        - name: Egyéni tartomány használata
           href: storage-custom-domain-name.md
         - name: Események átirányítása egyéni végponthoz
           href: storage-blob-event-quickstart.md

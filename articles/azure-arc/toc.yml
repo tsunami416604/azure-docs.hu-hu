@@ -5,12 +5,12 @@
   items:
     - name: Mi az az Azure Arc for Servers?
       href: ./servers/overview.md
-- name: Gyors útmutatók
+- name: Csatlakozás az Azure Archoz
   expanded: true
   items:
-    - name: Gépek csatlakoztatása az Azure-hoz az Azure Arc for Servers használatával – Portal
+    - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
       href: ./servers/quickstart-onboard-portal.md
-    - name: Gépek csatlakoztatása nagy méretekben az Azure Arc for Servers használatával – PowerShell
+    - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
       href: ./servers/quickstart-onboard-powershell.md
 - name: Referencia
   items:

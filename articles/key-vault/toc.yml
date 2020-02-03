@@ -118,6 +118,8 @@
       href: event-grid-logicapps.md
     - name: Integrálás az Azure Policy szolgáltatással
       href: azure-policy.md
+    - name: Integrálás az Azure Private Link szolgáltatással (előzetes verzió)
+      href: private-link-service.md
     - name: Az Azure Key Vault naplózása
       href: key-vault-logging.md
     - name: Tűzfal mögötti hozzáférés

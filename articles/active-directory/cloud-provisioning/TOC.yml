@@ -34,6 +34,8 @@
           href: how-to-install.md
         - name: Felhőalapú jogosultságkiosztás konfigurálása
           href: how-to-configure.md
+        - name: Egyszeri bejelentkezés használata
+          href: how-to-sso.md
     - name: Tervezés és kialakítás
       items:
         - name: Topológiák és forgatókönyvek az Azure AD Connect felhőalapú jogosultságkiosztáshoz

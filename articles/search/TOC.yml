@@ -64,15 +64,15 @@
 - name: Példák
   items:
     - name: 'C#-minták'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java-példák
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: JavaScript-minták
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Python-példák
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-minták
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: Képzés
   items:
     - name: Bevezetés (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: API-verziók
           href: search-api-versions.md
+        - name: Előzetes verziójú funkciók listája
+          href: search-api-preview.md
         - name: Fejlesztés .NET-ben
           href: search-howto-dotnet-sdk.md
         - name: Az SDK frissítése
@@ -149,7 +151,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: A REST API frissítése
           href: search-api-migration.md
-    - name: Indexek létrehozása
+    - name: Index létrehozása
       items:
         - name: Alapszintű index létrehozása
           href: search-what-is-an-index.md
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: Relációs adatok modellezése
           href: index-sql-relational-data.md
-    - name: Importálás (indexelés)
+    - name: Indexelés (importálás)
       items:
         - name: Adatimportálás áttekintése
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: Egyidejű frissítések kezelése
           href: search-howto-concurrency.md
-    - name: Azure-blobadatok indexelése
+    - name: Indexelő használata
       items:
-        - name: AI használata blobadatokkal
-          href: search-blob-ai-integration.md
-        - name: Teljes szöveges keresés hozzáadása
-          href: search-blob-storage-integration.md
-        - name: Blobindexelő beállítása
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Azure Data Lake Storage Gen2-indexelő beállítása
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: Egy-a-többhöz típusú blobok indexelése
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV-blobok indexelése
-          href: search-howto-index-csv-blobs.md
-        - name: JSON-blobok indexelése
-          href: search-howto-index-json-blobs.md
-    - name: Indexelés „indexelőkkel”
-      items:
-        - name: Az indexelők áttekintése
+        - name: Indexelők konfigurálása
           href: search-indexer-overview.md
-        - name: Azure Table Storage-indexelő
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL DB-indexelő
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB-indexelő
-          href: search-howto-index-cosmosdb.md
-        - name: Indexelők ütemezése
-          href: search-howto-schedule-indexers.md
         - name: Mezők leképezése
           href: search-indexer-field-mappings.md
-        - name: Csatlakozás felügyelt SQL-példányhoz
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: Csatlakozás az SQL Server virtuális gépeihez
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Indexelők monitorozása
           href: search-howto-monitor-indexers.md
-    - name: Bővítés mesterséges intelligenciával
+        - name: Indexelők ütemezése
+          href: search-howto-schedule-indexers.md
+        - name: Adatforrások
+          items:
+            - name: Azure Blobs
+              items:
+                - name: Keresés blobokban
+                  href: search-blob-storage-integration.md
+                - name: A mesterséges intelligenciát használó blobok ismertetése
+                  href: search-blob-ai-integration.md
+                - name: Blobindexelő konfigurálása
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: Egy-a-többhöz típusú blobok indexelése
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: CSV-blobok indexelése
+                  href: search-howto-index-csv-blobs.md
+                - name: JSON-blobok indexelése
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: 2. generációs Azure Data Lake Storage
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: Azure SQL Database
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure Table Storage
+              href: search-howto-indexing-azure-tables.md
+            - name: Felügyelt SQL-példányok
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Servert futtató virtuális gépek
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: MI-bővítés
       items:
         - name: Cognitive Services-erőforrás csatolása
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: Referencia
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (Felügyelet)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (Felügyelet)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (Management)
-      href: /rest/api/searchmanagement
-    - name: REST (előzetes verzió)
-      items:
-        - name: API-verzió (2019-05-06) előnézete
-          href: search-api-preview.md
-        - name: Reset Skills API
-          href: preview-api-resetskills.md
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: Search 2019-05-06
+          href: /rest/api/searchservice
+        - name: Reset Skills (api-version=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: Management 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: Management 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: Felügyeleti API
+          href: /python/api/overview/azure/search?view=azure-python
     - name: OData nyelvi referencia
       items:
         - name: Áttekintés
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: OData-nyelvtan
           href: search-query-odata-syntax-reference.md
-    - name: Kognitív képességek referenciája
-      href: cognitive-search-predefined-skills.md
+    - name: Képességek referenciája
       items:
-        - name: Kulcskifejezések kinyerése
-          href: cognitive-search-skill-keyphrases.md
-        - name: Nyelvfelismerés
-          href: cognitive-search-skill-language-detection.md
-        - name: Entitások felismerése
-          href: cognitive-search-skill-entity-recognition.md
-        - name: Szövegegyesítő
-          href: cognitive-search-skill-textmerger.md
-        - name: Szöveg felosztása
-          href: cognitive-search-skill-textsplit.md
-        - name: Hangulat
-          href: cognitive-search-skill-sentiment.md
-        - name: Szövegfordítás
-          href: cognitive-search-skill-text-translation.md
-        - name: Képelemzés
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: Formázó
-          href: cognitive-search-skill-shaper.md
-        - name: Feltételes
-          href: cognitive-search-skill-conditional.md
-        - name: Dokumentumkinyerés
-          href: cognitive-search-skill-document-extraction.md
-        - name: PII-észlelés
-          href: cognitive-search-skill-pii-detection.md
-    - name: Egyéni készségek
-      items:
-        - name: Egyéni webes API
-          href: cognitive-search-custom-skill-web-api.md
-    - name: Elavult készségek
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: Megnevezett entitások felismerése
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Beépített képességek
+          items:
+            - name: Áttekintés
+              href: cognitive-search-predefined-skills.md
+            - name: Feltételes
+              href: cognitive-search-skill-conditional.md
+            - name: Dokumentumkinyerés
+              href: cognitive-search-skill-document-extraction.md
+            - name: Entitások felismerése
+              href: cognitive-search-skill-entity-recognition.md
+            - name: Képelemzés
+              href: cognitive-search-skill-image-analysis.md
+            - name: Kulcskifejezések kinyerése
+              href: cognitive-search-skill-keyphrases.md
+            - name: Nyelvfelismerés
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII-észlelés
+              href: cognitive-search-skill-pii-detection.md
+            - name: Hangulat
+              href: cognitive-search-skill-sentiment.md
+            - name: Formázó
+              href: cognitive-search-skill-shaper.md
+            - name: Szövegegyesítő
+              href: cognitive-search-skill-textmerger.md
+            - name: Szöveg felosztása
+              href: cognitive-search-skill-textsplit.md
+            - name: Szövegfordítás
+              href: cognitive-search-skill-text-translation.md
+        - name: Egyéni készségek
+          items:
+            - name: Egyéni webes API
+              href: cognitive-search-custom-skill-web-api.md
+        - name: Elavult képességek
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: Megnevezett entitások felismerése
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: További források
   items:
     - name: Azure közösségi támogatás

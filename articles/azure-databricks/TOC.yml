@@ -888,13 +888,19 @@
             - name: Nyomon követés külső hozzáférése
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: Irányítópultok létrehozása az MLflow Search API-val
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: 'Modellek mentése, betöltése és üzembe helyezése'
           items:
             - name: 'A mentés, a betöltés és az üzembe helyezés áttekintése'
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
-            - name: Példák MLflow-modellekre
-              href: /azure/databricks/applications/mlflow/  model-examples
+            - name: Példa MLflow-modellekre
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Scikit Learn modell-üzembehelyezés az Azure-ban
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: Futtatások reprodukálása MLflow-projektekkel
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: Fürt létrehozása az Anacondával
+            - name: Fürt létrehozása a Condával
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: A Cython telepítése és lefordítása
@@ -1465,6 +1471,9 @@
           items:
             - name: C++ kód futtatása Scalában
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: Az egyidejű Spark JAR-feladatok sikertelenek
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

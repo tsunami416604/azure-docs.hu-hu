@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Azure-erőforrások felügyelt identitásai
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: A Microsoft Identitásplatformot bemutató videók
+      href: identity-videos.md

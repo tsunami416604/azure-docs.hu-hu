@@ -5,7 +5,7 @@
   items:
     - name: A Service Fabric Mesh névjegye
       href: service-fabric-mesh-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: A Hello World üzembe helyezése
       href: service-fabric-mesh-quickstart-deploy-container.md
@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: Titkos kulcsok kezelése
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: Alkalmazás áthelyezése másik Azure-régióba
+      href: move-across-regions.md
     - name: Minták keresése
       href: service-fabric-mesh-howto-find-samples.md
 - name: Referencia
