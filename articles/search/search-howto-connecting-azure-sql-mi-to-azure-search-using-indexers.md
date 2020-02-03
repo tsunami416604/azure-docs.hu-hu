@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863121"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964889"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search indexelő és SQL felügyelt példány közötti kapcsolatok konfigurálása
 
@@ -35,11 +35,14 @@ Győződjön meg arról, hogy a hálózati biztonsági csoport rendelkezik a meg
    ![NSG – bejövő biztonsági szabály](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG – bejövő biztonsági szabály")
 
 > [!NOTE]
-> A felügyelt SQL-példányhoz való bejövő hozzáférésnél szigorúbb korlátozást is megadhat, ha az aktuális szabályt (`public_endpoint_inbound`) 2 szabállyal helyettesíti:
+> Az indexelő továbbra is megköveteli, hogy az SQL felügyelt példánya nyilvános végponttal legyen konfigurálva az adatolvasás érdekében.
+> Lehetősége van azonban arra is, hogy az aktuális szabályt (`public_endpoint_inbound`) a következő két szabállyal lecserélve korlátozza az adott nyilvános végponthoz való bejövő hozzáférést:
 >
-> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch`)
+> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch`, "név" = `cognitive_search_inbound`)
 >
-> * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például `<your-search-service-name>.search.windows.net`) pingelésével lehet beszerezni. ("Forrás" = `IP address`)
+> * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például `<your-search-service-name>.search.windows.net`) pingelésével lehet beszerezni. ("Forrás" = `IP address`, "név" = `search_service_inbound`)
+>
+> Mindegyik 2 szabály esetében állítsa be a "PORT" = `3342`, "protokoll" = `TCP`, "cél" = `Any`, "művelet" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Nyilvános végponti kapcsolatok karakterláncának beolvasása
 Győződjön meg arról, hogy a **nyilvános végpont** (3342-as port, nem a 1433-es port) csatlakozási karakterláncát használja.

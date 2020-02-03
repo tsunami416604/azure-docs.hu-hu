@@ -1,14 +1,14 @@
 ---
-title: Az architektúra áttekintése
+title: Architektúra – áttekintés
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450196"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963937"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -57,7 +57,7 @@ A Azure Backup különböző biztonsági mentési ügynököket biztosít, attó
 **MARS-ügynök** | <ul><li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az egyes helyszíni Windows Server-gépeken fut.</li> <li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az Azure-beli virtuális gépeken fut.</li> <li>A DPM/MABS-kiszolgálókon futtatja a DPM/MABS helyi tároló lemezét az Azure-ba történő biztonsági mentéshez.</li></ul>
 **Azure VM-bővítmény** | Az Azure-beli virtuális gépeken futtatja őket egy tárolóba.
 
-## <a name="backup-types"></a>A biztonsági mentés típusai
+## <a name="backup-types"></a>Biztonsági másolatok típusai
 
 A következő táblázat ismerteti a különböző típusú biztonsági mentéseket és azok használatát:
 
@@ -101,6 +101,23 @@ Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![
 Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében.
 
 ![Tábla kulcsa](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>Biztonsági mentési szabályzat alapjai
+
+- A biztonsági mentési szabályzatot tárolóként hozza létre a rendszer.
+- Biztonsági mentési szabályzat hozható létre a következő számítási feladatok biztonsági mentéséhez
+  - Azure VM
+  - SQL az Azure-beli virtuális gépen
+  - Azure-fájlmegosztás
+- Egy szabályzat több erőforráshoz is hozzárendelhető. Az Azure-beli virtuális gépek biztonsági mentési szabályzata számos Azure-beli virtuális gép biztosítására használható.
+- A szabályzat két összetevőből áll
+  - Ütemezett: Mikor kell biztonsági másolatot készíteni
+  - Megőrzöttség: az egyes biztonsági másolatok megőrzésének idejére.
+- Az ütemterv "napi" vagy "hetente" is definiálható egy adott időpontra.
+- A megőrzés a "napi", a "hetente", a "havi", az "éves" biztonsági mentési pontok esetében adható meg.
+- a "hetente" a hét egy adott napján egy biztonsági mentésre utal, a "havonta" a hónap egy adott napján történő biztonsági mentést, az "éves" pedig az év adott napján biztonsági mentést jelent.
+- A "havi", "éves" biztonsági mentési pontok megőrzése "LongTermRetention".
+- A tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy" nevű Azure-beli virtuális gép biztonsági mentésére vonatkozó szabályzatot is, amely az Azure-beli virtuális gépek biztonsági mentéséhez használható.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektúra: beépített Azure-beli virtuális gépek biztonsági mentése
 

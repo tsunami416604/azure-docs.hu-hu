@@ -5,25 +5,25 @@ description: Ezt a besorolási példát követve előre megjósolhatja a Azure M
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311116"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963366"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>A megnövelt döntési fa használata a forgalom előrejelzésére Azure Machine Learning Designer használatával
 
-**Designer minta 5**
+**Designer (előzetes verzió) 5. minta**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot anélkül, hogy egyetlen sor kódot kellene írnia a Designer használatával.
+Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot anélkül, hogy a Designer (előzetes verzió) használatával egyetlen sor kódot kellene írnia.
 
 Ez a folyamat 2 **kétosztályos kibővített döntési** faminősítést biztosít az Ügyfélkapcsolat-kezelési (CRM) rendszerek általános feladatainak előrejelzéséhez – ügyfél-adatforgalom. Az adatértékek és a címkék több adatforráson oszlanak el, és névtelenség az ügyfelek adataival, azonban továbbra is használhatjuk a tervezőt az adathalmazok egyesítéséhez és a modell betanításához a rejtett értékek használatával.
 

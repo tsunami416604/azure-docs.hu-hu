@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895891"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964872"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Előzetes verzió: a frissítések kezelése a karbantartási ellenőrzés és az Azure CLI használatával
 
@@ -31,13 +31,13 @@ A karbantartási ellenőrzéssel a következőket teheti:
 > [!IMPORTANT]
 > A karbantartási vezérlő jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
+>
 
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](./linux/isolation.md)kell létrehozni.
 - 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
-- A felhasználónak **erőforrás-tulajdonosi** hozzáféréssel kell rendelkeznie.
+- A felhasználónak **erőforrás-közreműködői** hozzáféréssel kell rendelkeznie.
 
 
 ## <a name="install-the-maintenance-extension"></a>A karbantartási bővítmény telepítése
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 A `az maintenance update list` használatával ellenőrizze, hogy vannak-e függőben lévő frissítések. Frissítés – az előfizetés a virtuális gépet tartalmazó előfizetés AZONOSÍTÓjának kell lennie.
 
+Ha nincsenek frissítések, a parancs egy hibaüzenetet ad vissza, amely a következő szöveget fogja tartalmazni: `Resource not found...StatusCode: 404`.
+
+Ha vannak frissítések, akkor is csak egy lesz visszaadva, még akkor is, ha folyamatban van több frissítés. A frissítéshez tartozó adatértékek egy objektumban lesznek visszaadva:
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
 A függőben lévő frissítések keresése egy elkülönített virtuális géphez. Ebben a példában a kimenet táblázatként van formázva az olvashatóság érdekében.
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-A függőben lévő frissítések keresése egy dedikált gazdagépen. Ebben a példában a kimenet táblázatként van formázva az olvashatóság érdekében. Cserélje le az erőforrások értékeit a saját adataira.
+A függőben lévő frissítések keresése egy dedikált gazdagépen (ADH). Ebben a példában a kimenet táblázatként van formázva az olvashatóság érdekében. Cserélje le az erőforrások értékeit a saját adataira.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Frissítések alkalmazása
 
-A függőben lévő frissítések alkalmazásához használja a `az maintenance apply update`.
+A függőben lévő frissítések alkalmazásához használja a `az maintenance apply update`. Sikeres művelet esetén a parancs a frissítés részleteit tartalmazó JSON-t ad vissza.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
@@ -191,7 +208,7 @@ Hozzon létre egy, az elkülönített virtuális gépre vonatkozó frissítések
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ Frissítések alkalmazása dedikált gazdagépre.
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 A frissítések állapotát a `az maintenance applyupdate get`használatával tekintheti meg. 
 
-### <a name="isolated-vm"></a>Elkülönített virtuális gép
+A frissítés neveként a `default` használhatja a legutóbbi frissítés eredményeinek megjelenítéséhez, vagy lecserélheti a `myUpdateName`t annak a frissítésnek a nevére, amelyet `az maintenance applyupdate create`futtatásakor adott vissza.
 
-A `myUpdateName` helyére írja be annak a frissítésnek a nevét, amelyet a `az maintenance applyupdate create`futtatásakor adott vissza.
+### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

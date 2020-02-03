@@ -740,18 +740,18 @@
   items:
     - name: Szószedet
       href: developer-glossary.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Videók
+      href: identity-videos.md
     - name: Azure AD blog
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: A Microsoft Identitásplatform fejlesztői blogja
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Próbálja ki a Microsofttal való bejelentkezést
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Azure-erőforrások felügyelt identitásai
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Segítség kérése
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Azure-erőforrások felügyelt identitásai
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: A Microsoft Identitásplatformot bemutató videók
-      href: identity-videos.md

@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845402"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964013"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -79,6 +79,8 @@ A functions bővítmény lehetővé teszi egy Function app-projekt létrehozás�
 
     ![HTTP által aktivált függvények sablonja a Visual Studio Code-ban](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>Létrehozott projektfájlok
+
 A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a szükséges függőségeket. Az új projekt bármilyen nyelven rendelkezik a következő fájlokkal:
 
 * **Host. JSON**: lehetővé teszi a functions gazdagép konfigurálását. Ezek a beállítások akkor lépnek érvénybe, ha a functions szolgáltatást helyileg futtatja, és az Azure-ban futtatja őket. További információ: [Host. JSON-dokumentáció](functions-host-json.md).
@@ -87,6 +89,30 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
     >[!IMPORTANT]
     >Mivel a local. Settings. JSON fájl tartalmazhat titkos kódokat, ki kell zárnia azt a projekt forrásának vezérlőjéből.
+
+A nyelvtől függően ezek a többi fájl is létrejön:
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* Egy Package. JSON fájl a gyökérkönyvtárban.
+
+* Egy HttpExample mappa, amely tartalmazza a [function. JSON definíciós fájlt](functions-reference-node.md#folder-structure) és az [index. js fájlt](functions-reference-node.md#exporting-a-function), amely a függvény kódját tartalmazó Node. js fájlt tartalmaz.
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [function. JSON fájl módosításával](#add-a-function-to-your-project) vagy egy, a [ C# Class Library függvényhez tartozó paraméter hozzáadásával](#add-a-function-to-your-project).
 

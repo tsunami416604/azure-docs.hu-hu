@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b2af392dc4dc848a099b8297bb58e7d4a7104fa6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543885"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964039"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -99,7 +99,7 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Válassza a **Frissítés** lehetőséget.
+1. Válassza a **frissítés**lehetőséget.
 
 #### <a name="step-2-runtime-settings"></a>2\. lépés: futtatókörnyezet beállításai
 
@@ -167,9 +167,9 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
    
-   | Name (Név) | RENDSZERKÉP |
+   | Name (Név) | LEMEZKÉP |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
    

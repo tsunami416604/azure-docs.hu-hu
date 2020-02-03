@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696640"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962091"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -39,7 +39,7 @@ Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különb
  
 Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
  
-|Flow | Szükséges | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Flow | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -64,7 +64,7 @@ További információ a MSAL.NET és a jogkivonatok interaktív beszerzéséről
 
 A MSAL. js-ben található interaktív hívásokkal kapcsolatos további információkért lásd: [MSAL. js interaktív kérések esetén a prompt viselkedése](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Implicit engedélyezés
+## <a name="implicit-grant"></a>Implicit támogatás
 
 A MSAL támogatja a [OAuth 2 implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md), amely lehetővé teszi, hogy az alkalmazás jogkivonatokat szerezzen be a Microsoft Identity platformról a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.
 
@@ -74,7 +74,7 @@ Számos modern webalkalmazást ügyféloldali, egyoldalas alkalmazásként, Java
 
 Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az Electron-et és a reakciós Natívt, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
-## <a name="authorization-code"></a>Engedélyezési kód
+## <a name="authorization-code"></a>engedélyezési kód
 
 A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
@@ -101,7 +101,7 @@ A MSAL támogatja a [2. OAuth a hitelesítési folyamathoz](v2-oauth2-on-behalf-
 
 ![A folyamaton belüli adatforgalom diagramja](media/msal-authentication-flows/on-behalf-of.png)
 
-A fenti diagram elemei:
+Az előző ábrán:
 
 1. Az alkalmazás egy hozzáférési jogkivonatot vásárol a webes API-hoz.
 2. Egy ügyfél (web, Desktop, mobil vagy egylapos alkalmazás) egy védett webes API-t hív meg, amely a hozzáférési tokent tulajdonosi jogkivonatként adja hozzá a HTTP-kérelem hitelesítési fejlécéhez. A webes API hitelesíti a felhasználót.
@@ -149,7 +149,7 @@ Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamato
 
 ![Az eszköz kódjának folyamatábrája](media/msal-authentication-flows/device-code.png)
 
-A fenti diagram elemei:
+Az előző ábrán:
 
 1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont) az URL-címre való ugráshoz (például https://microsoft.com/devicelogin). A rendszer ezután megkéri a felhasználót a kód megadására, és a normál hitelesítési felülettel folytatja, beleértve a hozzájárulási kéréseket és a többtényezős hitelesítést, ha szükséges.
 

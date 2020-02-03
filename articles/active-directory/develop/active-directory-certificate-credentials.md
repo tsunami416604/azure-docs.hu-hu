@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 15fa6b9c7b9c84cd17b67c53dd65acd54ea63910
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699223"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962118"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
@@ -130,6 +130,6 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 ## <a name="code-sample"></a>Kódminta
 
 > [!NOTE]
-> A X5T fejlécét a tanúsítvány kivonatának használatával kell kiszámítani, és azt Base64 karakterlánccá kell átalakítani. A C# (z) a következőhöz hasonlóan néz ki: `System.Convert.ToBase64String(cert.GetCertHash());`
+> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A következőként C# végrehajtandó kód: `System.Convert.ToBase64String(cert.GetCertHash());`
 
 A [Microsoft Identity platformhoz tartozó Daemon-alkalmazásokban a tanúsítványokat tartalmazó](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) kód minta azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.

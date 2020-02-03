@@ -3,12 +3,12 @@ title: A fogyasztási terv költségeinek becslése Azure Functions
 description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás Azure-beli használati tervben való futtatásakor felmerülő költségeket.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890321"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963988"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
@@ -47,7 +47,7 @@ A Function app és a kapcsolódó szolgáltatások általános költségeinek ki
 
 | Kapcsolódó díj | Leírás |
 | ------------ | ----------- |
-| **Storage-fiók** | Az egyes functions-alkalmazásokhoz hozzá kell rendelni egy általános célú [Azure Storage-fiókot](../storage/common/storage-introduction.md#types-of-storage-accounts), amely [külön számlázható](https://azure.microsoft.com/pricing/details/storage/). Ezt a fiókot a functions futtatókörnyezet belsőleg használja, de a tároló-eseményindítók és-kötések esetében is használható. Ha nincs Storage-fiókja, akkor a rendszer létrehoz egyet a Function alkalmazás létrehozásakor. További információ: a [Storage-fiókra vonatkozó követelmények](functions-scale.md#storage-account-requirements).|
+| **Storage-fiók** | Az egyes functions-alkalmazásokhoz hozzá kell rendelni egy általános célú [Azure Storage-fiókot](../storage/common/storage-introduction.md#types-of-storage-accounts), amely [külön számlázható](https://azure.microsoft.com/pricing/details/storage/). Ezt a fiókot a functions futtatókörnyezet belsőleg használja, de a tároló-eseményindítók és-kötések esetében is használható. Ha nincs Storage-fiókja, akkor a rendszer létrehoz egyet a Function alkalmazás létrehozásakor. További információ: a [Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | A függvények a [Application Insightson](../azure-monitor/app/app-insights-overview.md) támaszkodnak, hogy nagy teljesítményű figyelési élményt nyújtsanak a Function alkalmazásai számára. Habár nem kötelező, engedélyeznie kell [Application Insights integrációt](functions-monitoring.md#enable-application-insights-integration). Minden hónapban ingyenes telemetria-adatmennyiség szerepel. További információkért tekintse meg [a Azure monitor díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Hálózati sávszélesség** | Az azonos régióban található Azure-szolgáltatások közötti adatátvitelért nem kell fizetnie. Egy másik régióba vagy az Azure-on kívül is felmerülhetnek a kimenő adatátvitelek költségei. További tudnivalókért tekintse meg a [sávszélesség-díjszabás részleteit](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
@@ -78,7 +78,7 @@ A [Azure monitor mérőszámok Explorerrel](../azure-monitor/platform/metrics-ge
       
     |Beállítás  |Ajánlott érték  |Leírás  |
     |---------|---------|---------|
-    | Előfizetés    |  Az Ön előfizetése  | Az előfizetés a Function alkalmazással.  |
+    | Előfizetést    |  Az Ön előfizetése  | Az előfizetés a Function alkalmazással.  |
     | Erőforráscsoport     | Az erőforráscsoport  | A Function alkalmazást tartalmazó erőforráscsoport.   |
     | Erőforrás típusa     |  App Services | A Function apps App Services példányként jelenik meg a figyelőben. |
     | Erőforrás     |  A Function alkalmazás  | A figyelni kívánt Function alkalmazás.        |
@@ -208,12 +208,12 @@ Az eredmények a következő példához hasonlóan jelennek meg:
 
 | időbélyeg \[UTC\]          | név          | érték       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Saját [nem megosztható] memória (bájt) | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 AM | Saját [nem megosztható] memória (bájt) | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 AM | Saját [nem megosztható] memória (bájt) | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 AM | Saját [nem megosztható] memória (bájt) | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 AM | Saját [nem megosztható] memória (bájt) | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 AM | Saját [nem megosztható] memória (bájt) | 235 806 720 |
+| 9/12/2019, 1:05:14\.947 AM | Saját bájtok | 209 932 288 |
+| 9/12/2019, 1:06:14\.994 AM | Saját bájtok | 212 189 184 |
+| 9/12/2019, 1:06:30\.010 AM | Saját bájtok | 231 714 816 |
+| 9/12/2019, 1:07:15\.040 AM | Saját bájtok | 210 591 744 |
+| 9/12/2019, 1:12:16\.285 AM | Saját bájtok | 216 285 184 |
+| 9/12/2019, 1:12:31\.376 AM | Saját bájtok | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Függvény szintű mérőszámok
 

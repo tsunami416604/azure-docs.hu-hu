@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973526"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964770"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -47,9 +47,9 @@ A következő táblázat és diagram hasonlítja össze a virtuális mag-alapú 
 
 A kiépített számítási szinten a számítási díj az alkalmazás számára kiépített teljes számítási kapacitást tükrözi.
 
-Az üzleti szempontból kritikus szolgáltatási szinten a rendszer automatikusan legalább 3 replikát foglal le. A számítási erőforrások további kiosztásának megjelenítéséhez a virtuális mag-alapú vásárlási modell ára körülbelül 2,7 x, ami az üzleti szempontból kritikus szolgáltatási szinten meghaladja az általános célú szolgáltatási szintet. Hasonlóképpen, az üzleti szempontból kritikus szolgáltatási szinten az egyes GB-nál nagyobb tárolási díj az SSD-tároló magas I/O-és kis késését tükrözi.
+A üzletileg kritikus szolgáltatási szinten a rendszer automatikusan legalább 3 replikát foglal le. A számítási erőforrások ezen további kiosztásának megjelenítéséhez a virtuális mag-alapú vásárlási modell ára körülbelül 2,7 x a üzletileg kritikus szolgáltatási szinten, mint a általános célú szolgáltatási szinten. Hasonlóképpen, a üzletileg kritikus szolgáltatási szinten lévő GB-nál nagyobb tárolási díj a magasabb i/o-korlátokat és az SSD-tároló alacsonyabb késését tükrözi.
 
-A biztonsági mentési tár díja ugyanaz, mint az üzleti szempontból kritikus szolgáltatási szint és az általános célú szolgáltatási szint esetében, mivel mindkét szint szabványos tárterületet használ.
+A biztonsági mentési tár díja ugyanaz, mint a üzletileg kritikus szolgáltatási szint és a általános célú szolgáltatási szint esetében, mivel mindkét szint szabványos tárolót használ a biztonsági mentésekhez.
 
 ### <a name="serverless-compute-costs"></a>Kiszolgáló nélküli számítási költségek
 
@@ -67,7 +67,7 @@ A tárolási díjszabással kapcsolatos további információkért tekintse meg 
 
 A virtuális mag (virtuális mag) a logikai CPU-t jelöli, és lehetőséget nyújt a hardver és a hardver fizikai jellemzőinek (például a magok, a memória és a tárterület méretének) a kiválasztására. A virtuális mag-alapú vásárlási modell rugalmasságot, irányítást, átláthatóságot biztosít az egyes erőforrások fogyasztása terén, és egy egyszerű módszert kínál a helyszíni munkaterhelés-követelmények felhőbe való lefordítására. Ez a modell lehetővé teszi a számítási, a memória-és a tárolási erőforrások kiválasztását a munkaterhelés igényei alapján.
 
-A virtuális mag-alapú vásárlási modellben választhat az [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és az [üzleti szempontból kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) szolgáltatási szintek közül az [önálló adatbázisok](sql-database-single-database-scale.md), a [rugalmas készletek](sql-database-elastic-pool.md)és a [felügyelt példányok](sql-database-managed-instance.md)között. Önálló adatbázisok esetén a [nagy kapacitású szolgáltatási szintet](sql-database-service-tier-hyperscale.md)is kiválaszthatja.
+A virtuális mag-alapú vásárlási modellben választhat az [önálló adatbázisok](sql-database-single-database-scale.md), [rugalmas készletek](sql-database-elastic-pool.md)és [felügyelt példányok](sql-database-managed-instance.md) [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és [üzletileg kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) szolgáltatási szintjei közül. Önálló adatbázisok esetén a [nagy kapacitású szolgáltatási szintet](sql-database-service-tier-hyperscale.md)is kiválaszthatja.
 
 A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. A virtuális mag-alapú vásárlási modellben a következőket kell fizetnie:
 
@@ -83,8 +83,8 @@ Ha az önálló adatbázis vagy a rugalmas készlet több mint 300 DTU használ,
 
 A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modellre való áttéréshez válassza ki a számítási méretet a következő hüvelykujj-szabályok használatával:
 
-- A standard szint 100 DTU legalább 1 virtuális mag kell rendelkeznie az általános célú szolgáltatási szinten.
-- A prémium szintű csomag 125 DTU legalább 1 virtuális mag kell lennie az üzleti szempontból kritikus szolgáltatási szinten.
+- A standard szinten minden 100 DTU legalább 1 virtuális mag igényel a általános célú szolgáltatási szinten.
+- A prémium szintű csomag 125 DTU legalább 1 virtuális mag kell lennie a üzletileg kritikus szolgáltatási szinten.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -125,7 +125,19 @@ Hozzáadhat további Edtu az adatbázis-leállás nélküli meglévő készletek
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés által igényelt DTU számának meghatározása
 
-Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni Azure SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő Azure SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) a dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenként.
+Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni Azure SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő Azure SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenként.
+
+### <a name="determine-dtu-utilization"></a>DTU kihasználtságának meghatározása
+
+Egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátjának (DTU/eDTU-kihasználtság) átlagos százalékos arányának meghatározásához használja a következő képletet:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+A képlet bemeneti értékei a [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), a [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és a [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV szerezhetők be. Más szóval, ha meg szeretné határozni, hogy a DTU/eDTU kihasználtsága hány százalékban van egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátja felé, válassza ki a legnagyobb százalékos értéket a következők közül: `avg_cpu_percent`, `avg_data_io_percent`és `avg_log_write_percent` egy adott időpontban.
+
+> [!NOTE]
+> Az adatbázisok DTU-korlátját CPU, olvasás, írás és memória határozza meg az adatbázis számára. Mivel azonban a SQL Server adatbázismotor a teljesítmény javítása érdekében általában az összes rendelkezésre álló memóriát használja az adat-gyorsítótárazáshoz, a `avg_memory_usage_percent` érték általában 100%-ra csökken, függetlenül a jelenlegi adatbázis-terheléstől. Ezért annak ellenére, hogy a memória indirekt módon befolyásolja a DTU korlátot, a rendszer nem használja a DTU-kihasználtsági képletben.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Rugalmas készletből kihasználható munkaterhelések
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: e7770a3faef0ccf7ca0f5b8c56f98007b8d89436
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719840"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962943"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -36,6 +36,13 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 
 További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="january-2020"></a>2020. január
+
+### <a name="improvements-in-media-processors"></a>A Media processors fejlesztése
+
+- Továbbfejlesztett támogatás az összefűzött források számára a videó-elemzésben – az ilyen tartalmak mostantól megfelelően vannak összefűzött, mielőtt a rendszer elküldje őket a következtetések elvégzésére.
+- Ha a miniatűröket a "legjobb" móddal hozza létre, a kódoló a 30 másodpercnél hosszabb időt keres a nem monokróm keret kiválasztásához.
+ 
 ## <a name="november-2019"></a>2019. november
 
 ### <a name="live-transcription-preview"></a>Élő átirat előzetes verzió
@@ -295,7 +302,7 @@ A következő Event Grid-támogatással kapcsolatos fejlesztési funkciók láth
 
 A CMAF és a "CBCS" titkosítási támogatása az Apple HLS (iOS 11 +) és az MPEG-DASH-lejátszók számára, amelyek támogatják a CMAF.
 
-### <a name="video-indexer"></a>Video Indexer
+### <a name="video-indexer"></a>Videóindexelő
 
 A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 

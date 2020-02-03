@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895384"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964617"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Az Apache Ambari szívverési problémái az Azure HDInsight
 
@@ -82,6 +82,21 @@ A riasztások oka a Ambari-ügynök nem fut.
     ```
 
     Ha a feladatátvételi vezérlő szolgáltatásai nem futnak, valószínűleg egy probléma okozza, hogy a hdinsight-ügynök nem indítja el a feladatátvételi vezérlőt. Hdinsight-ügynök naplójának megtekintése `/var/log/hdinsight-agent/hdinsight-agent.out` fájlból.
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Forgatókönyv: elveszett szívverés a Ambari esetében
+
+### <a name="issue"></a>Probléma
+
+A Ambari szívverés ügynöke megszakadt.
+
+### <a name="cause"></a>Ok
+
+A OMS-naplók nagy CPU-kihasználtságot okoznak.
+
+### <a name="resolution"></a>Felbontás
+
+* Tiltsa le a OMS naplózását a [disable-AzHDInsightOperationsManagementSuite PowerShell-](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) modullal. 
+* A `mdsd.warn` naplófájl törlése
 
 ---
 

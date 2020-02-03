@@ -11,16 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935123"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76961999"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése a használatávalC#
 
 Ez a cikk bemutatja, hogyan egyesítheti C#, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és Azure Active Directoryhatja a programozott API-kéréseket a Azure Time Series Insights ga [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-ra.
+
+> [!TIP]
+> A GA C# -kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -52,9 +55,6 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 1. Szerkessze az alábbi mintakód összes **#PLACEHOLDER #** helyére a megfelelő környezeti azonosítóval.
 
 1. `dotnet run` futtatása a projekt gyökérkönyvtárában. Ha a rendszer kéri, használja a felhasználói profilját az Azure-ba való bejelentkezéshez. 
-
-> [!TIP]
-> * Tekintse meg C# a többi GA-kódrészletet a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 

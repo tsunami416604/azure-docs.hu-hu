@@ -4,33 +4,18 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet bi
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554891"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963852"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
 
 Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](/rest/api/backup/protectionpolicies/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
 
-## <a name="backup-policy-essentials"></a>Biztonsági mentési szabályzat alapjai
-
-- A biztonsági mentési szabályzatot tárolóként hozza létre a rendszer.
-- Biztonsági mentési szabályzat hozható létre a következő számítási feladatok biztonsági mentéséhez
-  - Azure VM
-  - SQL az Azure-beli virtuális gépen
-  - Azure-fájlmegosztás
-- Egy szabályzat több erőforráshoz is hozzárendelhető. Az Azure-beli virtuális gépek biztonsági mentési szabályzata számos Azure-beli virtuális gép biztosítására használható.
-- A szabályzat két összetevőből áll
-  - Ütemezett: Mikor kell biztonsági másolatot készíteni
-  - Megőrzöttség: az egyes biztonsági másolatok megőrzésének idejére.
-- Az ütemterv "napi" vagy "hetente" is definiálható egy adott időpontra.
-- A megőrzés a "napi", a "hetente", a "havi", az "éves" biztonsági mentési pontok esetében adható meg.
-- a "hetente" a hét egy adott napján egy biztonsági mentésre utal, a "havonta" a hónap egy adott napján történő biztonsági mentést, az "éves" pedig az év adott napján biztonsági mentést jelent.
-- A "havi", "éves" biztonsági mentési pontok megőrzése "LongTermRetention".
-- A tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy" nevű Azure-beli virtuális gép biztonsági mentésére vonatkozó szabályzatot is, amely az Azure-beli virtuális gépek biztonsági mentéséhez használható.
+## <a name="create-or-update-a-policy"></a>Szabályzat létrehozása vagy frissítése
 
 Azure Backup szabályzat létrehozásához vagy frissítéséhez használja a következő *put* műveletet
 
@@ -44,7 +29,7 @@ A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzséb
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Név  |Szükséges  |Type (Típus)  |Leírás  |
+|Name (Név)  |Szükséges  |Type (Típus)  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   Igaz      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
 |tags     |         | Objektum        |  Erőforráscímkék       |
@@ -152,7 +137,7 @@ A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művele
 
 Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Type (Típus)  |Leírás  |
+|Name (Név)  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [Védelem PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |

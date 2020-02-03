@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906995"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962509"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -748,7 +748,7 @@ A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel tag
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
 ```
 
 **Válasz**
@@ -1054,7 +1054,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Hogyan kap támogatást a szolgáltatáshoz?
    * A szolgáltatás támogatásának megszerzéséhez hozzon létre egy támogatási problémát a virtuális gép Azure Portaljában, ahol a hosszú újrapróbálkozás után nem tud metaadatokat kapni.
 9. Időtúllépést kapok a kérésem a szolgáltatáshoz való meghívásakor?
-   * A metaadatokat a virtuális gép hálózati kártyához rendelt elsődleges IP-címről kell megadnia, továbbá arra az esetre, ha módosította az útvonalakat, a hálózati kártyán kívüli 169.254.0.0/16 cím elérési útvonalát is el kell végezni.
+   * A metaadatokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell végrehajtani, továbbá abban az esetben, ha módosította az útvonalakat, a hálózati kártyán kívüli útvonalnak kell lennie a 169.254.0.0/16-címhez.
 10. Frissítettem a címkéket a virtuálisgép-méretezési csoportokban, de nem jelennek meg a példányokban a virtuális gépektől eltérően?
     * A ScaleSets-címkék esetében jelenleg csak a virtuális gép jelenik meg újraindítás/rendszerkép/lemezkép/vagy a példány lemezre váltásakor.
 

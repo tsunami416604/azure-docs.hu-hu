@@ -3,12 +3,12 @@ title: Alkalmazásbeállítások referenciája Azure Functions
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921093"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963699"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Alkalmazásbeállítások referenciája Azure Functions
 
@@ -32,14 +32,14 @@ A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű kö
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók tárolásához és megjelenítéséhez a portál **figyelés** lapján. A Storage-fióknak olyan általános célúnak kell lennie, amely támogatja a blobokat, a várólistákat és a táblákat. Lásd a [Storage-fiókra](functions-infrastructure-as-code.md#storage-account) és a [Storage-fiókra vonatkozó követelményeket](functions-create-function-app-portal.md#storage-account-requirements).
+Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók tárolásához és megjelenítéséhez a portál **figyelés** lapján. Ez a beállítás csak olyan alkalmazások esetén érvényes, amelyek az Azure Functions futtatókörnyezet 1. x verzióját célozzák meg. A Storage-fióknak olyan általános célúnak kell lennie, amely támogatja a blobokat, a várólistákat és a táblákat. További információ: a [Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).
 
 |Jelmagyarázat|Mintaérték|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [név]; AccountKey = [kulcs]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName =<name>; AccountKey =<key>|
 
-> [!TIP]
-> A teljesítmény és a tapasztalat érdekében ajánlott APPINSIGHTS_INSTRUMENTATIONKEY és az alkalmazás-megállapításokat használni a figyeléshez a AzureWebJobsDashboard helyett.
+> [!NOTE]
+> A jobb teljesítmény és a használhatóság érdekében a Runtime 2. x és újabb verziói a `AzureWebJobsDashboard`helyett APPINSIGHTS_INSTRUMENTATIONKEY és alkalmazás-bepillantást használnak a figyeléshez.
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-A Azure Functions futtatókörnyezet ezt a Storage-fiókhoz tartozó kapcsolatok sztringjét használja az összes függvényhez, kivéve a HTTP által aktivált függvények esetében. A Storage-fióknak olyan általános célúnak kell lennie, amely támogatja a blobokat, a várólistákat és a táblákat. Lásd a [Storage-fiókra](functions-infrastructure-as-code.md#storage-account) és a [Storage-fiókra vonatkozó követelményeket](functions-create-function-app-portal.md#storage-account-requirements).
+A Azure Functions futtatókörnyezet ezt a Storage-fiókhoz tartozó kapcsolatok sztringjét használja az összes függvényhez, kivéve a HTTP által aktivált függvények esetében. A Storage-fióknak olyan általános célúnak kell lennie, amely támogatja a blobokat, a várólistákat és a táblákat. Lásd a [Storage-fiókra](functions-infrastructure-as-code.md#storage-account) és a [Storage-fiókra vonatkozó követelményeket](storage-considerations.md#storage-account-requirements).
 
 |Jelmagyarázat|Mintaérték|
 |---|------------|
@@ -137,7 +137,7 @@ A Function alkalmazásban betölteni kívánt nyelvi feldolgozó futtatókörnye
 
 |Jelmagyarázat|Mintaérték|
 |---|------------|
-|FUNCTIONs\_WORKer\_RUNTIME|dotnet|
+|FUNCTIONs\_WORKer\_RUNTIME|DotNet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -192,7 +192,7 @@ Alapértelmezés szerint a függvények proxyi olyan parancsikont használnak, a
 |Jelmagyarázat|Value (Díj)|Leírás|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|igaz|A helyi függvényalkalmazás függvényére mutató háttér-URL-címmel rendelkező hívások a továbbiakban nem lesznek közvetlenül a függvénynek elküldve, és helyette a függvényalkalmazás a HTTP-kezelőfelületre lesznek irányítva.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -202,7 +202,7 @@ Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbe
 |Jelmagyarázat|Value (Díj)|Leírás|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|igaz|A kódolt perjelekkel ellátott útválasztási paraméterek dekódolva lesznek. `example.com/api%2ftest` lesz `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
 
 ### <a name="example"></a>Példa
 
@@ -224,7 +224,7 @@ Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbe
 |URL-dekódolás|Input (Bemenet)|Kimenet|
 |-|-|-|
 |igaz|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
+|hamis|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Következő lépések

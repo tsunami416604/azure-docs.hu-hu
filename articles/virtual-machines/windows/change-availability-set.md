@@ -1,32 +1,25 @@
 ---
 title: Virtuális gépek rendelkezésre állási csoportjának módosítása
-description: Megtudhatja, hogyan módosíthatja a virtuális gépek rendelkezésre állási csoportját a Azure PowerShell és a Resource Manager-alapú üzemi modell használatával.
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+description: Megtudhatja, hogyan módosíthatja a virtuális gép rendelkezésre állási csoportját Azure PowerShell használatával.
+ms.service: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 7d03d684edfded1450043b943fc188c7aa07dc16
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039566"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964923"
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>Windows rendszerű virtuális gép rendelkezésre állási csoportjának módosítása
+# <a name="change-the-availability-set-for-a-vm"></a>Virtuális gép rendelkezésre állási csoportjának módosítása
 A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
+
+Ez a cikk a Linux és a Windows rendszerű virtuális gépekre is vonatkozik.
 
 Ez a cikk [Azure Cloud Shell](https://shell.azure.com/powershell) a 2/12/2019-es és az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0.
 
- 
 
 ## <a name="change-the-availability-set"></a>A rendelkezésre állási csoport módosítása 
 
@@ -61,12 +54,13 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
 # Remove the original VM
     Remove-AzVM -ResourceGroupName $resourceGroup -Name $vmName    
 
-# Create the basic configuration for the replacement VM
+# Create the basic configuration for the replacement VM. 
     $newVM = New-AzVMConfig `
        -VMName $originalVM.Name `
        -VMSize $originalVM.HardwareProfile.VmSize `
        -AvailabilitySetId $availSet.Id
-  
+ 
+# For a Linux VM, change the last parameter from -Windows to -Linux 
     Set-AzVMOSDisk `
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `

@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 12/23/2019
-ms.openlocfilehash: 8754b2ef9727b5526cc9bcf756085f2f05f6a398
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 48d4df5684c84e195810439912dd610f5af364d4
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552100"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964481"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Saját üzemeltetésű IR konfigurálása az ADF-Azure-SSIS IR proxyként
 
@@ -70,6 +70,40 @@ A saját üzemeltetésű IR-és Azure Blob Storage társított szolgáltatás el
 
    ![Speciális beállítások önkiszolgáló IR-vel](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
+Az új/meglévő Azure-SSIS IR saját üzemeltetésű IR-ként is konfigurálhatja a PowerShell használatával.
+
+```powershell
+$ResourceGroupName = "[your Azure resource group name]"
+$DataFactoryName = "[your data factory name]"
+$AzureSSISName = "[your Azure-SSIS IR name]"
+# Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
+$DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
+
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
+{
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+        -DataFactoryName $DataFactoryName `
+        -Name $AzureSSISName `
+        -DataProxyIntegrationRuntimeName $DataProxyIntegrationRuntimeName `
+        -DataProxyStagingLinkedServiceName $DataProxyStagingLinkedServiceName
+
+    if(![string]::IsNullOrEmpty($DataProxyStagingPath))
+    {
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -DataProxyStagingPath $DataProxyStagingPath
+    }
+}
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+    -DataFactoryName $DataFactoryName `
+    -Name $AzureSSISName `
+    -Force
+```
+
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS-csomagok engedélyezése proxy alapján való csatlakozásra
 
 A SSIS projects bővítménnyel a Visual studióhoz készült legújabb SSDT használatával letölthető [innen vagy önálló](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) telepítőként, amely innen tölthető le, és [itt](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)talál egy új **ConnectByProxy** -tulajdonságot, amely az OLEDB/Flat file ügyfélkapcsolat-kezelőben lett hozzáadva.  
@@ -78,7 +112,7 @@ Amikor az OLEDB/Flat file sources használatával olyan új csomagokat tervez, a
 
 ![ConnectByProxy tulajdonság engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség érhető el:
+Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség közül választhat:
 - A csomagokat tartalmazó projekt megnyitása, újraépítése és újbóli üzembe helyezése a legújabb SSDT a Azure-SSIS IRon való futtatáshoz: ezt követően a tulajdonság értéke **true (igaz** ) értékre állítható be, ha a SSMS-ból csomagokat futtat, és a **Csatlakozáskezelő** lapon megjelenő kapcsolódó ügyfélkapcsolat-kezelők.
 
   ![ConnectByProxy property2 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)

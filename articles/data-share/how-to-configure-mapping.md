@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490623"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964243"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Adatkészlet-hozzárendelés konfigurálása egy fogadott megosztáshoz az Azure-adatmegosztásban
 
-Ez a cikk azt ismerteti, hogyan lehet konfigurálni egy adatkészlet-hozzárendelést egy fogadott megosztáshoz az Azure-adatmegosztás használatával. Ezt akkor érdemes megtenni, ha elfogadta az adatmegosztási meghívást, de az "elfogadás és konfigurálás később" lehetőséget választotta. Ha módosítani szeretné az Önnel megosztott adatokat, vagy ha az adatokat egy SQL Server szeretné fogadni, érdemes lehet konfigurálnia az adatkészlet-leképezést. 
+Ez a cikk azt ismerteti, hogyan lehet konfigurálni egy adatkészlet-hozzárendelést egy fogadott megosztáshoz az Azure-adatmegosztás használatával. Ezt akkor érdemes megtenni, ha elfogadta az adatmegosztási meghívást, de az "elfogadás és konfigurálás később" beállítást választotta, vagy ha az adatmegosztás helyben történik. Ha módosítani szeretné az Önnel megosztott adatokat, vagy ha az adatokat egy SQL Server szeretné fogadni, érdemes lehet konfigurálnia az adatkészlet-leképezést. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Nyisson meg egy fogadott adatmegosztást
 
@@ -27,9 +27,9 @@ Jelölje be azon adatkészlet melletti jelölőnégyzetet, amelyhez hozzá szere
 
 ![Leképezés célhelyre](./media/dataset-map-target.png "Leképezés célhelyre") 
 
-## <a name="select-a-new-destination-store"></a>Új célhely kiválasztása
+## <a name="select-a-new-target-store"></a>Új tároló kiválasztása
 
-Válassza ki a célként használni kívánt adattípust. Vegye figyelembe, hogy a korábban leképezett Storage-fiókokban már létező összes adattal a rendszer nem helyezi át automatikusan az új célhelyre.
+Válassza ki a célként használni kívánt adattípust. A pillanatkép-alapú megosztáshoz a korábban leképezett tárolási fiókokban már létező adatok nem lesznek automatikusan áthelyezve az új tárolóba. A helyi megosztáshoz válasszon egy adattárat a megadott helyen. A hely az az Azure-adatközpont, ahol az adatszolgáltató forrás-adattára található.
 
 ![Cél Storage-fiók](./media/dataset-map-target-sql.png "Cél tárterülete") 
 
@@ -39,7 +39,7 @@ Ha a forrásadatok SQL-alapú forrásból származnak, kiválaszthatja, hogy mel
 
 ![Formátum kiválasztása](./media/sql-file-formats.png "SQL-fájlformátumok")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

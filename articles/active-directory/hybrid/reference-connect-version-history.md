@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756300"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963206"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -39,7 +39,7 @@ Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik m
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
 
 >[!IMPORTANT]
-> 2020 november 1-től kezdődően megkezdjük egy elavult folyamat megvalósítását, amelynek során a több mint 18 hónappal ezelőtt kiadott Azure AD Connect verziók elavultak lesznek. Ekkor megkezdjük ezt a folyamatot, ha elavulttá válik a (4/12/2018-es verzióban kiadott) 1.1.751.0-verzióval rendelkező Azure AD Connect összes kiadása, és az új verziók kiadásakor a rendszer minden alkalommal kiértékeli Azure AD Connect régebbi verzióinak elavult verzióját.
+> 2020 november 1-től kezdődően megkezdjük egy elavult folyamat megvalósítását, amelynek során a több mint 18 hónappal ezelőtt kiadott Azure AD Connect verziók elavultak lesznek. Ekkor megkezdjük ezt a folyamatot, ha elavulttá válik a (4/24/2019-es verzióban kiadott) 1.3.20.0-verzióval rendelkező Azure AD Connect összes kiadása, és az új verziók kiadásakor a rendszer minden alkalommal kiértékeli Azure AD Connect régebbi verzióinak elavult verzióját.
 >
 > Győződjön meg arról, hogy a Azure AD Connect legújabb verzióját futtatja, hogy optimális támogatási élményt kapjon. 
 >
@@ -496,7 +496,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Type (Típus)     | Név                          | Hozzáférés               | A következőkre vonatkozik
+Type (Típus)     | Name (Név)                          | Hozzáférés               | A következőkre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |

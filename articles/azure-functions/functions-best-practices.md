@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433299"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963656"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -74,7 +74,9 @@ Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell h
 
 ### <a name="avoid-sharing-storage-accounts"></a>A Storage-fiókok megosztásának elkerülése
 
-Egy Function-alkalmazás létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. A teljesítmény maximalizálása érdekében használjon külön Storage-fiókot minden egyes Function alkalmazáshoz. Ez különösen akkor fontos, ha Durable Functions vagy Event hub által aktivált függvények vannak, amelyek nagy mennyiségű tárolási tranzakciót eredményeznek. Ha az alkalmazás logikája az Azure Storage-t használja közvetlenül (a Storage SDK használatával) vagy a tárolási kötések valamelyikével, használjon dedikált Storage-fiókot. Ha például egy Event hub által aktivált függvény a blob Storage-ba ír néhány adatát, akkor két Storage-fiókot kell használnia,&mdash;egyet a Function alkalmazáshoz, és egy másikat a függvény által tárolt Blobok számára.
+Egy Function-alkalmazás létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztet és a termelési kódot ugyanabban a Function alkalmazásban
 

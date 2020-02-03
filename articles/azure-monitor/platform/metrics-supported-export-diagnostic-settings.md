@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152952"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963478"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
 
@@ -24,6 +24,19 @@ Az Azure monitor folyamatának platform metrikáit kétféleképpen exportálhat
 2. A [metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) használata
 
 A Azure Monitor-háttér bonyolult jellemzői miatt nem minden metrika exportálható a diagnosztikai beállítások használatával. Az alábbi táblázat felsorolja, hogy mely és nem exportálható a diagnosztikai beállítások használatával.
+
+A tábla a következő oszlopokat tartalmazza. 
+- Exportálható diagnosztikai beállításokkal? 
+- ResourceType 
+- Metrika 
+- MetricDisplayName
+- Unit (Egység) 
+- AggregationType
+
+
+> [!NOTE]
+> Az alábbi táblázat a lenti vízszintes görgetősávot tartalmazhatja. Ha úgy véli, hogy hiányzik az információ, ellenőrizze, hogy a görgetősáv a bal oldalon van-e.  
+
 
 Exportálható diagnosztikai beállításokkal? | ResourceType | Metrika | MetricDisplayName | Unit (Egység) | AggregationType
 |----|-----|------|----|----|-----|
@@ -43,13 +56,13 @@ Igen | Microsoft. AnalysisServices/kiszolgálók | mashup_engine_private_bytes_m
 Igen | Microsoft. AnalysisServices/kiszolgálók | mashup_engine_qpu_metric | M motor QPU | Mennyiség | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | mashup_engine_virtual_bytes_metric | M motor virtuális bájtjai | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | memory_metric | Memória | Bájt | Átlag
-Igen | Microsoft. AnalysisServices/kiszolgálók | memory_thrashing_metric | Memóriaakadozás | Százalék | Átlag
+Igen | Microsoft. AnalysisServices/kiszolgálók | memory_thrashing_metric | Memória-Kiverés | Százalék | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | MemoryLimitHard | Memória: rögzített memória | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | MemoryLimitHigh | Memória: magas a memória korlátozása | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | MemoryLimitLow | Memória: kevés a memória korlátja | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | MemoryLimitVertiPaq | Memória: VertiPaq korlátja | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | MemoryUsage | Memória: memóriahasználat | Bájt | Átlag
-Igen | Microsoft. AnalysisServices/kiszolgálók | private_bytes_metric | Saját [nem megosztható] memória (bájt) | Bájt | Átlag
+Igen | Microsoft. AnalysisServices/kiszolgálók | private_bytes_metric | Saját bájtok | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | ProcessingPoolBusyIOJobThreads | Szálak: feldolgozási készlet – foglalt I/O-feladatok szálai | Mennyiség | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | ProcessingPoolBusyNonIOThreads | Szálak: feldolgozási készlet – nem I/O-szálak elfoglalva | Mennyiség | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | ProcessingPoolIdleIOJobThreads | Szálak: feldolgozási készlet – üresjárati I/O-feladatok szálai | Mennyiség | Átlag
@@ -73,10 +86,10 @@ Igen | Microsoft. AnalysisServices/kiszolgálók | TotalConnectionFailures | Ös
 Igen | Microsoft. AnalysisServices/kiszolgálók | TotalConnectionRequests | Kapcsolatkérelmek teljes száma | Mennyiség | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | VertiPaqNonpaged | Memória: VertiPaq, nem lapozható | Bájt | Átlag
 Igen | Microsoft. AnalysisServices/kiszolgálók | VertiPaqPaged | Memória: VertiPaq lapozható | Bájt | Átlag
-Igen | Microsoft. AnalysisServices/kiszolgálók | virtual_bytes_metric | Felhasznált virtuális memória jelenlegi mérete (bájt) | Bájt | Átlag
-Igen | Microsoft.ApiManagement/service | BackendDuration | A háttérbeli kérelmek időtartama | Ezredmásodperc | Átlag
+Igen | Microsoft. AnalysisServices/kiszolgálók | virtual_bytes_metric | Virtuális bájtok | Bájt | Átlag
+Igen | Microsoft.ApiManagement/service | BackendDuration | A háttérbeli kérelmek időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft.ApiManagement/service | Kapacitás | Kapacitás | Százalék | Átlag
-Igen | Microsoft.ApiManagement/service | Időtartam | Az átjárók kéréseinek teljes időtartama | Ezredmásodperc | Átlag
+Igen | Microsoft.ApiManagement/service | Időtartam | Az átjárók kéréseinek teljes időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft.ApiManagement/service | EventHubDroppedEvents | Eldobott EventHub események | Mennyiség | Összes
 Igen | Microsoft.ApiManagement/service | EventHubRejectedEvents | EventHub-események visszautasítva | Mennyiség | Összes
 Igen | Microsoft.ApiManagement/service | EventHubSuccessfulEvents | Sikeres EventHub események | Mennyiség | Összes
@@ -96,21 +109,21 @@ Igen | Microsoft. AppPlatform/Spring | AppMemoryCommitted | Az alkalmazáshoz ho
 Igen | Microsoft. AppPlatform/Spring | AppMemoryMax | Az alkalmazás memóriájának maximális száma | Bájt | Maximum
 Igen | Microsoft. AppPlatform/Spring | AppMemoryUsed | Használt alkalmazás memóriája | Bájt | Átlag
 Igen | Microsoft. AppPlatform/Spring | GCPauseTotalCount | GC-szüneteltetések száma | Mennyiség | Összes
-Igen | Microsoft. AppPlatform/Spring | GCPauseTotalTime | GC felfüggesztésének teljes ideje | Ezredmásodperc | Összes
+Igen | Microsoft. AppPlatform/Spring | GCPauseTotalTime | GC felfüggesztésének teljes ideje | Ezredmásodpercben | Összes
 Igen | Microsoft. AppPlatform/Spring | MaxOldGenMemoryPoolBytes | A rendelkezésre álló régi generációs adatméret maximális száma | Bájt | Átlag
 Igen | Microsoft. AppPlatform/Spring | OldGenMemoryPoolBytes | A régi generációs adatméret | Bájt | Átlag
 Igen | Microsoft. AppPlatform/Spring | OldGenPromotedBytes | Előléptetés a régi generációs adatméretre | Bájt | Maximum
 Igen | Microsoft. AppPlatform/Spring | SystemCpuUsagePercentage | CPU-használat százalékos aránya | Százalék | Átlag
 Igen | Microsoft. AppPlatform/Spring | TomcatErrorCount | Tomcat globális hiba | Mennyiség | Összes
 Igen | Microsoft. AppPlatform/Spring | TomcatReceivedBytes | Tomcat összesen fogadott bájtok | Bájt | Összes
-Igen | Microsoft. AppPlatform/Spring | TomcatRequestMaxTime | Tomcat-kérelem maximális ideje | Ezredmásodperc | Maximum
+Igen | Microsoft. AppPlatform/Spring | TomcatRequestMaxTime | Tomcat-kérelem maximális ideje | Ezredmásodpercben | Maximum
 Igen | Microsoft. AppPlatform/Spring | TomcatRequestTotalCount | Tomcat-kérelem összesített száma | Mennyiség | Összes
-Igen | Microsoft. AppPlatform/Spring | TomcatRequestTotalTime | Tomcat-kérelem teljes ideje | Ezredmásodperc | Összes
-Igen | Microsoft. AppPlatform/Spring | TomcatResponseAvgTime | Tomcat-kérelem átlagos ideje | Ezredmásodperc | Átlag
+Igen | Microsoft. AppPlatform/Spring | TomcatRequestTotalTime | Tomcat-kérelem teljes ideje | Ezredmásodpercben | Összes
+Igen | Microsoft. AppPlatform/Spring | TomcatResponseAvgTime | Tomcat-kérelem átlagos ideje | Ezredmásodpercben | Átlag
 Igen | Microsoft. AppPlatform/Spring | TomcatSentBytes | Tomcat összesen eljuttatott bájtok száma | Bájt | Összes
 Igen | Microsoft. AppPlatform/Spring | TomcatSessionActiveCurrentCount | Tomcat-munkamenet élő száma | Mennyiség | Összes
 Igen | Microsoft. AppPlatform/Spring | TomcatSessionActiveMaxCount | Tomcat-munkamenet maximális aktív száma | Mennyiség | Összes
-Igen | Microsoft. AppPlatform/Spring | TomcatSessionAliveMaxTime | Tomcat-munkamenet maximális élettartama | Ezredmásodperc | Maximum
+Igen | Microsoft. AppPlatform/Spring | TomcatSessionAliveMaxTime | Tomcat-munkamenet maximális élettartama | Ezredmásodpercben | Maximum
 Igen | Microsoft. AppPlatform/Spring | TomcatSessionCreatedCount | Tomcat-munkamenet létrehozva szám | Mennyiség | Összes
 Igen | Microsoft. AppPlatform/Spring | TomcatSessionExpiredCount | A Tomcat-munkamenet lejárt | Mennyiség | Összes
 Igen | Microsoft. AppPlatform/Spring | TomcatSessionRejectedCount | A Tomcat-munkamenet elutasította a darabszámot | Mennyiség | Összes
@@ -118,37 +131,37 @@ Igen | Microsoft. AppPlatform/Spring | YoungGenPromotedBytes | Népszerűsítse 
 Igen | Microsoft. Automation/automationAccounts | TotalJob | Feladatok összesen | Mennyiség | Összes
 Igen | Microsoft. Automation/automationAccounts | TotalUpdateDeploymentMachineRuns | Összes frissítés központi telepítési gép futtatása | Mennyiség | Összes
 Igen | Microsoft. Automation/automationAccounts | TotalUpdateDeploymentRuns | Összes frissítés központi telepítési futtatása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | CoreCount | Dedikált mag száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | CreatingNodeCount | Csomópontok számának létrehozása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | IdleNodeCount | Tétlen csomópontok száma | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobDeleteCompleteEvent | Feladatok törlése – befejezett események | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobDeleteStartEvent | Feladatok törlésének indítási eseményei | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobDisableCompleteEvent | A feladatok letiltják a teljes eseményeket | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobDisableStartEvent | Feladatok letiltásának indítási eseményei | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobStartEvent | Feladatok indítási eseményei | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobTerminateCompleteEvent | A feladatokhoz tartozó befejezett események befejezése | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | JobTerminateStartEvent | Feladatokból indított események leállítása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | LeavingPoolNodeCount | A készlet-csomópontok számának elhagyása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | LowPriorityCoreCount | LowPriority mag száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | OfflineNodeCount | Offline csomópontok száma | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | PoolCreateEvent | Készlet-létrehozási események | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | PoolDeleteCompleteEvent | Készlet törlése – befejezett események | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | PoolDeleteStartEvent | Készlet törlése – indítási események | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | PoolResizeCompleteEvent | Készlet átméretezése – befejezett események | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | PoolResizeStartEvent | Készlet átméretezésének indítási eseményei | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | PreemptedNodeCount | Előzik-csomópontok száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | RebootingNodeCount | Csomópontok számának újraindítása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | ReimagingNodeCount | Csomópontok rendszerképének alaphelyzetbe állítása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | RunningNodeCount | Csomópontok száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | StartingNodeCount | Csomópontok számának indítása | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | StartTaskFailedNodeCount | Indítási feladat sikertelen csomópontok száma | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | TaskCompleteEvent | Feladat teljes eseményei | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | TaskFailEvent | Feladat sikertelen eseményei | Mennyiség | Összes
-Igen | Microsoft.Batch/batchAccounts | TaskStartEvent | Tevékenységek indítási eseményei | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | TotalLowPriorityNodeCount | Alacsony prioritású csomópontok száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | TotalNodeCount | Dedikált csomópontok száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | UnusableNodeCount | Nem használható csomópontok száma | Mennyiség | Összes
-Nem | Microsoft.Batch/batchAccounts | WaitingForStartTaskNodeCount | Várakozás a feladat-csomópontok számának megkezdésére | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | CoreCount | Dedikált mag száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | CreatingNodeCount | Csomópontok számának létrehozása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | IdleNodeCount | Tétlen csomópontok száma | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobDeleteCompleteEvent | Feladatok törlése – befejezett események | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobDeleteStartEvent | Feladatok törlésének indítási eseményei | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobDisableCompleteEvent | A feladatok letiltják a teljes eseményeket | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobDisableStartEvent | Feladatok letiltásának indítási eseményei | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobStartEvent | Feladatok indítási eseményei | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobTerminateCompleteEvent | A feladatokhoz tartozó befejezett események befejezése | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | JobTerminateStartEvent | Feladatokból indított események leállítása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | LeavingPoolNodeCount | A készlet-csomópontok számának elhagyása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | LowPriorityCoreCount | LowPriority mag száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | OfflineNodeCount | Offline csomópontok száma | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | PoolCreateEvent | Készlet-létrehozási események | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | PoolDeleteCompleteEvent | Készlet törlése – befejezett események | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | PoolDeleteStartEvent | Készlet törlése – indítási események | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | PoolResizeCompleteEvent | Készlet átméretezése – befejezett események | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | PoolResizeStartEvent | Készlet átméretezésének indítási eseményei | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | PreemptedNodeCount | Előzik-csomópontok száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | RebootingNodeCount | Csomópontok számának újraindítása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | ReimagingNodeCount | Csomópontok rendszerképének alaphelyzetbe állítása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | RunningNodeCount | Csomópontok száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | StartingNodeCount | Csomópontok számának indítása | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | StartTaskFailedNodeCount | Indítási feladat sikertelen csomópontok száma | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | TaskCompleteEvent | Feladat teljes eseményei | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | TaskFailEvent | Feladat sikertelen eseményei | Mennyiség | Összes
+Igen | Microsoft. batch/batchAccounts | TaskStartEvent | Tevékenységek indítási eseményei | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | TotalLowPriorityNodeCount | Alacsony prioritású csomópontok száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | TotalNodeCount | Dedikált csomópontok száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | UnusableNodeCount | Nem használható csomópontok száma | Mennyiség | Összes
+Nem | Microsoft. batch/batchAccounts | WaitingForStartTaskNodeCount | Várakozás a feladat-csomópontok számának megkezdésére | Mennyiség | Összes
 Igen | Microsoft. BatchAI/munkaterületek | Aktív magok | Aktív magok | Mennyiség | Átlag
 Igen | Microsoft. BatchAI/munkaterületek | Aktív csomópontok | Aktív csomópontok | Mennyiség | Átlag
 Igen | Microsoft. BatchAI/munkaterületek | Üresjárati magok | Üresjárati magok | Mennyiség | Átlag
@@ -224,7 +237,7 @@ Igen | Microsoft. cache/Redis | cacheWrite6 | Gyorsítótár írása (szegmens 6
 Igen | Microsoft. cache/Redis | cacheWrite7 | Gyorsítótár-írás (szegmens 7) | BytesPerSecond | Maximum
 Igen | Microsoft. cache/Redis | cacheWrite8 | Gyorsítótár-írás (szegmens 8) | BytesPerSecond | Maximum
 Igen | Microsoft. cache/Redis | cacheWrite9 | Gyorsítótár-írás (szegmens 9) | BytesPerSecond | Maximum
-Igen | Microsoft. cache/Redis | connectedclients | Csatlakozott ügyfelek | Mennyiség | Maximum
+Igen | Microsoft. cache/Redis | connectedclients | Csatlakoztatott ügyfelek | Mennyiség | Maximum
 Igen | Microsoft. cache/Redis | connectedclients0 | Csatlakoztatott ügyfelek (0. szegmens) | Mennyiség | Maximum
 Igen | Microsoft. cache/Redis | connectedclients1 | Csatlakoztatott ügyfelek (1. szegmens) | Mennyiség | Maximum
 Igen | Microsoft. cache/Redis | connectedclients2 | Csatlakoztatott ügyfelek (2. szegmens) | Mennyiség | Maximum
@@ -302,7 +315,7 @@ Igen | Microsoft. cache/Redis | serverLoad6 | Kiszolgáló betöltése (szegmens
 Igen | Microsoft. cache/Redis | serverLoad7 | Kiszolgáló terhelése (7. szegmens) | Százalék | Maximum
 Igen | Microsoft. cache/Redis | serverLoad8 | Kiszolgáló betöltése (szegmens 8) | Százalék | Maximum
 Igen | Microsoft. cache/Redis | serverLoad9 | Kiszolgáló terhelése (szegmens 9) | Százalék | Maximum
-Igen | Microsoft. cache/Redis | setcommands | Készletek | Mennyiség | Összes
+Igen | Microsoft. cache/Redis | setcommands | Beállítja | Mennyiség | Összes
 Igen | Microsoft. cache/Redis | setcommands0 | Készletek (0. szegmens) | Mennyiség | Összes
 Igen | Microsoft. cache/Redis | setcommands1 | Készletek (1. szegmens) | Mennyiség | Összes
 Igen | Microsoft. cache/Redis | setcommands2 | Készletek (2. szegmens) | Mennyiség | Összes
@@ -375,19 +388,19 @@ Igen | Microsoft. ClassicCompute/virtualMachines | Százalékos processzorhaszn�
 Igen | Microsoft. ClassicStorage/storageAccounts | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
 Igen | Microsoft. ClassicStorage/storageAccounts | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. ClassicStorage/storageAccounts | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Nem | Microsoft. ClassicStorage/storageAccounts | UsedCapacity | Felhasznált kapacitás | Bájt | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | Elérhetőség | Elérhetőség | Százalék | Átlag
-Nem | Microsoft. ClassicStorage/storageAccounts/blobServices | BlobCapacity | Blob-kapacitása | Bájt | Átlag
+Nem | Microsoft. ClassicStorage/storageAccounts/blobServices | BlobCapacity | BLOB kapacitása | Bájt | Átlag
 Nem | Microsoft. ClassicStorage/storageAccounts/blobServices | BlobCount | Blobok száma | Mennyiség | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | ContainerCount | Blobtárolók száma | Mennyiség | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | ContainerCount | BLOB-tárolók száma | Mennyiség | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
-Nem | Microsoft. ClassicStorage/storageAccounts/blobServices | IndexCapacity | Indexkapacitás | Bájt | Átlag
+Nem | Microsoft. ClassicStorage/storageAccounts/blobServices | IndexCapacity | Index kapacitása | Bájt | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/blobServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
@@ -398,8 +411,8 @@ Nem | Microsoft. ClassicStorage/storageAccounts/fileServices | FileShareQuota | 
 Nem | Microsoft. ClassicStorage/storageAccounts/fileServices | FileShareSnapshotCount | Fájlmegosztás pillanatképének száma | Mennyiség | Átlag
 Nem | Microsoft. ClassicStorage/storageAccounts/fileServices | FileShareSnapshotSize | Fájlmegosztás pillanatképének mérete | Bájt | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/fileServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
@@ -407,14 +420,14 @@ Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | Belépő | Bel�
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | QueueCapacity | Várólista kapacitása | Bájt | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | QueueCount | Várólista száma | Mennyiség | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | QueueMessageCount | Üzenetsor-üzenetek száma | Mennyiség | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/queueServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | TableCapacity | Tábla kapacitása | Bájt | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | TableCount | Táblák száma | Mennyiség | Átlag
 Igen | Microsoft. ClassicStorage/storageAccounts/tableServices | TableEntityCount | Tábla entitások száma | Mennyiség | Átlag
@@ -423,8 +436,8 @@ Igen | Microsoft. CognitiveServices/fiókok | BlockedCalls | Blokkolt hívások 
 Igen | Microsoft. CognitiveServices/fiókok | CharactersTrained | Betanított karakterek | Mennyiség | Összes
 Igen | Microsoft. CognitiveServices/fiókok | CharactersTranslated | Lefordított karakterek | Mennyiség | Összes
 Igen | Microsoft. CognitiveServices/fiókok | ClientErrors | Ügyfél-hibák | Mennyiség | Összes
-Igen | Microsoft. CognitiveServices/fiókok | DataIn | Bejövő adatforgalom | Bájt | Összes
-Igen | Microsoft. CognitiveServices/fiókok | DataOut | Kimenő adatforgalom | Bájt | Összes
+Igen | Microsoft. CognitiveServices/fiókok | DataIn | A-ben tárolt adatértékek | Bájt | Összes
+Igen | Microsoft. CognitiveServices/fiókok | DataOut | Kimenő adatvesztés | Bájt | Összes
 Igen | Microsoft. CognitiveServices/fiókok | Késés | Késés | Ezredmásodpercben | Átlag
 Igen | Microsoft. CognitiveServices/fiókok | Kiszolgálóhibái | Kiszolgálói hibák | Mennyiség | Összes
 Igen | Microsoft. CognitiveServices/fiókok | SpeechSessionDuration | Beszédfelismerési munkamenet időtartama | másodperc | Összes
@@ -435,7 +448,7 @@ Igen | Microsoft. CognitiveServices/fiókok | TotalTokenCalls | Jogkivonat-hív�
 Igen | Microsoft. CognitiveServices/fiókok | TotalTransactions | Tranzakciók összesen | Mennyiség | Összes
 Igen | Microsoft.Compute/virtualMachines | Felhasznált CPU-kreditek | Felhasznált CPU-kreditek | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachines | Fennmaradó CPU-kreditek | Fennmaradó CPU-kreditek | Mennyiség | Átlag
-Igen | Microsoft.Compute/virtualMachines | Adatlemez várakozási sorának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachines | Adatlemez várólistájának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachines | Adatlemez-olvasási sebesség (bájt/s) | Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | Adatlemez olvasási műveletei (művelet/s) | Adatlemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | Adatlemez-írási sebesség (bájt/s) | Adatlemez-írási sebesség (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -444,13 +457,13 @@ Igen | Microsoft.Compute/virtualMachines | Lemez olvasási bájtjai | Lemez olva
 Igen | Microsoft.Compute/virtualMachines | Lemez olvasási művelete/mp | Lemez olvasási művelete/mp | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | Lemez írási bájtjai | Lemez írási bájtjai | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachines | Lemez írási műveletei/mp | Lemez írási műveletei/mp | CountPerSecond | Átlag
-Igen | Microsoft.Compute/virtualMachines | Bejövő forgalomfolyamok | Bejövő forgalomfolyamok | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachines | Bejövő folyamatok | Bejövő folyamatok | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachines | Bejövő folyamatok maximális létrehozási aránya | Bejövő folyamatok maximális létrehozási aránya (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | Bejövő hálózat | Számlázandó hálózat (elavult) | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachines | Teljes hálózat | Teljes hálózat | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachines | Kimenő hálózat | Hálózati kimenő számlázandó (elavult) | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachines | Kimenő hálózat összesen | Kimenő hálózat összesen | Bájt | Összes
-Igen | Microsoft.Compute/virtualMachines | OS-lemez várakozási sorának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachines | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachines | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | OPERÁCIÓSRENDSZER-lemez olvasási művelete/s | OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachines | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -474,7 +487,7 @@ Igen | Microsoft.Compute/virtualMachines | Prémium operációsrendszer-lemez gy
 Igen | Microsoft.Compute/virtualMachines | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió) | Százalék | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Felhasznált CPU-kreditek | Felhasznált CPU-kreditek | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Fennmaradó CPU-kreditek | Fennmaradó CPU-kreditek | Mennyiség | Átlag
-Igen | Microsoft.Compute/virtualMachineScaleSets | Adatlemez várakozási sorának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachineScaleSets | Adatlemez várólistájának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Adatlemez-olvasási sebesség (bájt/s) | Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Adatlemez olvasási műveletei (művelet/s) | Adatlemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Adatlemez-írási sebesség (bájt/s) | Adatlemez-írási sebesség (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -483,13 +496,13 @@ Igen | Microsoft.Compute/virtualMachineScaleSets | Lemez olvasási bájtjai | Le
 Igen | Microsoft.Compute/virtualMachineScaleSets | Lemez olvasási művelete/mp | Lemez olvasási művelete/mp | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Lemez írási bájtjai | Lemez írási bájtjai | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachineScaleSets | Lemez írási műveletei/mp | Lemez írási műveletei/mp | CountPerSecond | Átlag
-Igen | Microsoft.Compute/virtualMachineScaleSets | Bejövő forgalomfolyamok | Bejövő forgalomfolyamok | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachineScaleSets | Bejövő folyamatok | Bejövő folyamatok | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Bejövő folyamatok maximális létrehozási aránya | Bejövő folyamatok maximális létrehozási aránya (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | Bejövő hálózat | Számlázandó hálózat (elavult) | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachineScaleSets | Teljes hálózat | Teljes hálózat | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachineScaleSets | Kimenő hálózat | Hálózati kimenő számlázandó (elavult) | Bájt | Összes
 Igen | Microsoft.Compute/virtualMachineScaleSets | Kimenő hálózat összesen | Kimenő hálózat összesen | Bájt | Összes
-Igen | Microsoft.Compute/virtualMachineScaleSets | OS-lemez várakozási sorának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft.Compute/virtualMachineScaleSets | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | OPERÁCIÓSRENDSZER-lemez olvasási művelete/s | OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft.Compute/virtualMachineScaleSets | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -513,7 +526,7 @@ Igen | Microsoft.Compute/virtualMachineScaleSets | Prémium operációsrendszer-
 Igen | Microsoft.Compute/virtualMachineScaleSets | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió) | Százalék | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Felhasznált CPU-kreditek | Felhasznált CPU-kreditek | Mennyiség | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Fennmaradó CPU-kreditek | Fennmaradó CPU-kreditek | Mennyiség | Átlag
-Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Adatlemez várakozási sorának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Adatlemez várólistájának mélysége | Adatlemez-várólista mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Adatlemez-olvasási sebesség (bájt/s) | Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Adatlemez olvasási műveletei (művelet/s) | Adatlemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Adatlemez-írási sebesség (bájt/s) | Adatlemez-írási sebesség (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -522,13 +535,13 @@ Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Lemez ol
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Lemez olvasási művelete/mp | Lemez olvasási művelete/mp | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Lemez írási bájtjai | Lemez írási bájtjai | Bájt | Összes
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Lemez írási műveletei/mp | Lemez írási műveletei/mp | CountPerSecond | Átlag
-Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Bejövő forgalomfolyamok | Bejövő forgalomfolyamok | Mennyiség | Átlag
+Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Bejövő folyamatok | Bejövő folyamatok | Mennyiség | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Bejövő folyamatok maximális létrehozási aránya | Bejövő folyamatok maximális létrehozási aránya (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Bejövő hálózat | Számlázandó hálózat (elavult) | Bájt | Összes
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Teljes hálózat | Teljes hálózat | Bájt | Összes
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Kimenő hálózat | Hálózati kimenő számlázandó (elavult) | Bájt | Összes
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Kimenő hálózat összesen | Kimenő hálózat összesen | Bájt | Összes
-Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | OS-lemez várakozási sorának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
+Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége | OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | OPERÁCIÓSRENDSZER-lemez olvasási művelete/s | OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió) | CountPerSecond | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) | OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió) | CountPerSecond | Átlag
@@ -550,11 +563,11 @@ Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Prémium
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás | Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió) | Százalék | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Prémium operációsrendszer-lemez gyorsítótárának olvasási találata | Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió) | Százalék | Átlag
 Igen | Microsoft. számítás/virtualMachineScaleSets/virtualMachines | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása | Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió) | Százalék | Átlag
-Igen | Microsoft. ContainerInstance/containerGroups | CpuUsage | Processzorhasználat | Mennyiség | Átlag
+Igen | Microsoft. ContainerInstance/containerGroups | CpuUsage | CPU-használat | Mennyiség | Átlag
 Igen | Microsoft. ContainerInstance/containerGroups | MemoryUsage | Memóriahasználat | Bájt | Átlag
 Igen | Microsoft. ContainerInstance/containerGroups | NetworkBytesReceivedPerSecond | Másodpercenként fogadott hálózati bájtok száma | Bájt | Átlag
 Igen | Microsoft. ContainerInstance/containerGroups | NetworkBytesTransmittedPerSecond | Másodpercenként továbbított hálózati bájtok száma | Bájt | Átlag
-Igen | Microsoft. ContainerRegistry/nyilvántartók | RunDuration | Futtatás időtartama | Ezredmásodperc | Összes
+Igen | Microsoft. ContainerRegistry/nyilvántartók | RunDuration | Futtatás időtartama | Ezredmásodpercben | Összes
 Igen | Microsoft. ContainerRegistry/nyilvántartók | SuccessfulPullCount | Sikeres lekérések száma | Mennyiség | Átlag
 Igen | Microsoft. ContainerRegistry/nyilvántartók | SuccessfulPushCount | Sikeres leküldések száma | Mennyiség | Átlag
 Igen | Microsoft. ContainerRegistry/nyilvántartók | TotalPullCount | Lekérések száma összesen | Mennyiség | Átlag
@@ -664,31 +677,31 @@ Igen | Microsoft. Devices/Account | digitaltwins. telemetria. csomópontok | Dig
 Igen | Microsoft. Devices/IotHubs | C2D. commands. kimenő. elhagyása. sikeres | C2D üzenetek elhagyva | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | C2D. commands. kimenő. Complete. success | C2D-üzenetek kézbesítésének befejezése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | C2D. commands. kimenő. elutasítás. sikeres | C2D-üzenetek elutasítva | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | C2D. Methods. failure | Sikertelen közvetlen metódushívások | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | C2D. Methods. requestSize | Közvetlen metódushívások kérelmeinek mérete | Bájt | Átlag
-Igen | Microsoft. Devices/IotHubs | C2D. Methods. responseSize | Közvetlen metódushívások válaszainak mérete | Bájt | Átlag
+Igen | Microsoft. Devices/IotHubs | C2D. Methods. failure | Sikertelen közvetlen metódusok meghívása | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | C2D. Methods. requestSize | A közvetlen metódus meghívásának mérete | Bájt | Átlag
+Igen | Microsoft. Devices/IotHubs | C2D. Methods. responseSize | A közvetlen metódus-meghívások válaszának mérete | Bájt | Átlag
 Igen | Microsoft. Devices/IotHubs | C2D. Methods. success | Közvetlen metódusok sikeres meghívása | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | C2D. Twin. Read. failure | Sikertelen ikerolvasások a háttérrendszerből | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | C2D. Twin. Read. size | Ikereszköz-olvasások válaszmérete a háttérrendszerből | Bájt | Átlag
+Igen | Microsoft. Devices/IotHubs | C2D. Twin. Read. failure | Sikertelen dupla olvasások a háttérből | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | C2D. Twin. Read. size | Dupla olvasások válaszának mérete a háttérből | Bájt | Átlag
 Igen | Microsoft. Devices/IotHubs | C2D. Twin. Read. success | Sikeres dupla olvasások a háttérből | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | C2D. Twin. Update. failure | Sikertelen ikereszköz-frissítések a háttérrendszerből | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | C2D. Twin. Update. failure | Sikertelen dupla frissítések a háttérből | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | C2D. Twin. Update. size | Dupla frissítések mérete a háttérből | Bájt | Átlag
-Igen | Microsoft. Devices/IotHubs | C2D. Twin. Update. success | Sikeres ikereszköz-frissítések a háttérrendszerből | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | C2D. Twin. Update. success | Sikeres dupla frissítések a háttérből | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | C2DMessagesExpired | C2D-üzenetek lejárt (előzetes verzió) | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | konfigurációk | Konfigurációs metrikák | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | konfigurációk | Konfigurációs mérőszámok | Mennyiség | Összes
 Nem | Microsoft. Devices/IotHubs | connectedDeviceCount | Csatlakoztatott eszközök (előzetes verzió) | Mennyiség | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. beépített. események | Útválasztás: üzenetek/események küldésére küldött üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. eventHubs | Útválasztás: az Event hub számára továbbított üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. serviceBusQueues | Útválasztás: Service Bus üzenetsor számára továbbított üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. serviceBusTopics | Útválasztás: Service Bus témakörbe küldött üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. Storage | Útválasztás: a tárolóba küldött üzenetek | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. Storage. Blobok | Útválasztás: tárba továbbított blobok | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. Storage. Bytes | Útválasztás: tárba továbbított adatok | Bájt | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. beépített. események | Útválasztás: üzenetek/események üzenetének késése | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. eventHubs | Útválasztás: Event Hub üzeneteinek késése | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusQueues | Útválasztás: Service Bus-üzenetsor üzeneteinek késése | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusTopics | Útválasztás: Service Bus témakör üzenetének késése | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | D2C. endpoints. látencia. Storage | Útválasztás: üzenetek késése a tároláshoz | Ezredmásodperc | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. Storage. Blobok | Útválasztás: tárolóba szállított Blobok | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. kimenő. Storage. Bytes | Útválasztás: a tárolóba szállított adatmennyiség | Bájt | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. beépített. események | Útválasztás: üzenetek/események üzenetének késése | Ezredmásodpercben | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. eventHubs | Útválasztás: az Event hub üzenetének késése | Ezredmásodpercben | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusQueues | Útválasztás: Service Bus üzenetsor üzenet-késése | Ezredmásodpercben | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusTopics | Útválasztás: Service Bus témakör üzenetének késése | Ezredmásodpercben | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. endpoints. látencia. Storage | Útválasztás: üzenetek késése a tároláshoz | Ezredmásodpercben | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. eldobott | Útválasztás: telemetria üzenetek elvetve  | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. tartalék | Útválasztás: tartalékként továbbított üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. érvénytelen | Útválasztás: Inkompatibilis telemetria-üzenetek | Mennyiség | Összes
@@ -696,11 +709,11 @@ Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. árva | Útválasz
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. sikeres | Útválasztás: telemetria üzenetek kézbesítése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. allProtocol | Telemetria üzenetek küldése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. sendThrottle | Szabályozási hibák száma | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. sikeres | Elküldött telemetriai üzenetek | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. Twin. Read. failure | Sikertelen ikerolvasások az eszközökről | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. Twin. Read. size | Ikereszköz-olvasások válaszmérete az eszközökből | Bájt | Átlag
+Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. sikeres | Telemetria üzenetek elküldése | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. Twin. Read. failure | Sikertelen dupla olvasások az eszközökről | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. Twin. Read. size | Az eszközökről érkező kettős olvasások válaszának mérete | Bájt | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. Twin. Read. success | Sikeres dupla olvasások az eszközökről | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. Twin. Update. failure | Sikertelen ikereszköz-frissítések az eszközökből | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. Twin. Update. failure | Sikertelen dupla frissítések az eszközökről | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. Twin. Update. size | Az eszközökből származó kettős frissítések mérete | Bájt | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. Twin. Update. success | Sikeres dupla frissítések az eszközökről | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | dailyMessageQuotaUsed | A felhasznált üzenetek teljes száma | Mennyiség | Átlag
@@ -709,21 +722,21 @@ Igen | Microsoft. Devices/IotHubs | deviceDataUsageV2 | Az eszköz összes adatf
 Igen | Microsoft. Devices/IotHubs | Devices. connectedDevices. allProtocol | Csatlakoztatott eszközök (elavult)  | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | Devices. totalDevices | Összes eszköz (elavult) | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | EventGridDeliveries | Event Grid kézbesítések (előzetes verzió) | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | EventGridLatency | Event Grid késés (előzetes verzió) | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | feladatok. cancelJob. hiba | Sikertelen feladatlemondások | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | EventGridLatency | Event Grid késés (előzetes verzió) | Ezredmásodpercben | Átlag
+Igen | Microsoft. Devices/IotHubs | feladatok. cancelJob. hiba | Sikertelen feladatok megszakítása | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. cancelJob. sikeres | Sikeres feladatok törlése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. kész | Befejezett feladatok | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | feladatok. createDirectMethodJob. hiba | Sikertelen metódusmeghívási feladat-létrehozások | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | feladatok. createDirectMethodJob. hiba | Nem sikerült létrehozni a metódus Meghívási feladatait | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. createDirectMethodJob. sikeres | Metódus-Meghívási feladatok sikeres létrehozása | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | feladatok. createTwinUpdateJob. hiba | Sikertelen ikereszköz-frissítési feladat-létrehozások | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | feladatok. createTwinUpdateJob. hiba | A kettős frissítési feladatok sikertelen létrehozása | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. createTwinUpdateJob. sikeres | A kettős frissítési feladatok sikeres létrehozása | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. sikertelen | Sikertelen feladatok | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. listJobs. hiba | Sikertelen hívások a feladatok listázásához | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. listJobs. sikeres | Sikeres hívások a feladatok listázásához | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | feladatok. queryJobs. hiba | Sikertelen feladatlekérdezések | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | feladatok. queryJobs. hiba | Sikertelen feladatok lekérdezése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | feladatok. queryJobs. sikeres | Sikeres feladatok lekérdezése | Mennyiség | Összes
 Nem | Microsoft. Devices/IotHubs | totalDeviceCount | Összes eszköz (előzetes verzió) | Mennyiség | Átlag
-Igen | Microsoft. Devices/IotHubs | twinQueries. hiba | Sikertelen ikerlekérdezések | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | twinQueries. hiba | Sikertelen dupla lekérdezések | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | twinQueries.resultSize | Dupla lekérdezések eredményének mérete | Bájt | Átlag
 Igen | Microsoft. Devices/IotHubs | twinQueries. success | Sikeres Twin-lekérdezések | Mennyiség | Összes
 Igen | Microsoft. Devices/provisioningServices | AttestationAttempts | Igazolási kísérletek | Mennyiség | Összes
@@ -751,14 +764,14 @@ Igen | Microsoft. DocumentDB/databaseAccounts | ReplicationLatency | P99 replik�
 Nem | Microsoft. DocumentDB/databaseAccounts | ServiceAvailability | Szolgáltatás rendelkezésre állása | Százalék | Átlag
 Igen | Microsoft. DocumentDB/databaseAccounts | TotalRequests | Összes kérelem | Mennyiség | Mennyiség
 Igen | Microsoft. DocumentDB/databaseAccounts | TotalRequestUnits | Kérelmek összes egysége | Mennyiség | Összes
-Nem | Microsoft. EnterpriseKnowledgeGraph/szolgáltatások | FailureCount | Hibásak száma | Mennyiség | Mennyiség
+Nem | Microsoft. EnterpriseKnowledgeGraph/szolgáltatások | FailureCount | Hibák száma | Mennyiség | Mennyiség
 Nem | Microsoft. EnterpriseKnowledgeGraph/szolgáltatások | SuccessCount | Sikeres műveletek száma | Mennyiség | Mennyiség
 Nem | Microsoft. EnterpriseKnowledgeGraph/szolgáltatások | SuccessLatency | Sikeres késés | Ezredmásodpercben | Átlag
 Nem | Microsoft. EnterpriseKnowledgeGraph/szolgáltatások | TransactionCount | Tranzakciók száma | Mennyiség | Mennyiség
 Igen | Microsoft. EventGrid/tartományok | DeadLetteredCount | Kézbesítetlen levelek eseményei | Mennyiség | Összes
 Nem | Microsoft. EventGrid/tartományok | DeliveryAttemptFailCount | Sikertelen kézbesítések eseményei | Mennyiség | Összes
 Igen | Microsoft. EventGrid/tartományok | DeliverySuccessCount | Kézbesítési események | Mennyiség | Összes
-Nem | Microsoft. EventGrid/tartományok | DestinationProcessingDurationInMs | Cél feldolgozási időtartama | Ezredmásodperc | Átlag
+Nem | Microsoft. EventGrid/tartományok | DestinationProcessingDurationInMs | Cél feldolgozási időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft. EventGrid/tartományok | DroppedEventCount | Eldobott események | Mennyiség | Összes
 Igen | Microsoft. EventGrid/tartományok | MatchedEventCount | Egyeztetett események | Mennyiség | Összes
 Igen | Microsoft. EventGrid/tartományok | PublishFailCount | Sikertelen események közzététele | Mennyiség | Összes
@@ -767,7 +780,7 @@ Igen | Microsoft. EventGrid/tartományok | PublishSuccessLatencyInMs | Sikeres k
 Igen | Microsoft. EventGrid/eventSubscriptions | DeadLetteredCount | Kézbesítetlen levelek eseményei | Mennyiség | Összes
 Nem | Microsoft. EventGrid/eventSubscriptions | DeliveryAttemptFailCount | Sikertelen kézbesítések eseményei | Mennyiség | Összes
 Igen | Microsoft. EventGrid/eventSubscriptions | DeliverySuccessCount | Kézbesítési események | Mennyiség | Összes
-Nem | Microsoft. EventGrid/eventSubscriptions | DestinationProcessingDurationInMs | Cél feldolgozási időtartama | Ezredmásodperc | Átlag
+Nem | Microsoft. EventGrid/eventSubscriptions | DestinationProcessingDurationInMs | Cél feldolgozási időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft. EventGrid/eventSubscriptions | DroppedEventCount | Eldobott események | Mennyiség | Összes
 Igen | Microsoft. EventGrid/eventSubscriptions | MatchedEventCount | Egyeztetett események | Mennyiség | Összes
 Igen | Microsoft. EventGrid/extensionTopics | PublishFailCount | Sikertelen események közzététele | Mennyiség | Összes
@@ -855,7 +868,7 @@ Nem | Microsoft. bepillantások/összetevők | kivételek/kiszolgáló | Kiszolg
 Igen | Microsoft. bepillantások/összetevők | Oldalmegtekintések/darabszám | Lapok nézetei | Mennyiség | Mennyiség
 Igen | Microsoft. bepillantások/összetevők | Oldalmegtekintések/időtartam | Oldal nézet betöltési ideje | Ezredmásodpercben | Átlag
 Igen | Microsoft. bepillantások/összetevők | performanceCounters/exceptionsPerSecond | Kivételek aránya | CountPerSecond | Átlag
-Igen | Microsoft. bepillantások/összetevők | performanceCounters/memoryAvailableBytes | Igénybe vehető memória | Bájt | Átlag
+Igen | Microsoft. bepillantások/összetevők | performanceCounters/memoryAvailableBytes | Rendelkezésre álló memória | Bájt | Átlag
 Igen | Microsoft. bepillantások/összetevők | performanceCounters/processCpuPercentage | Processzor feldolgozása | Százalék | Átlag
 Igen | Microsoft. bepillantások/összetevők | performanceCounters/processIOBytesPerSecond | Folyamat i/o-sebessége | BytesPerSecond | Átlag
 Igen | Microsoft. bepillantások/összetevők | performanceCounters/processorCpuPercentage | Processzoridő | Százalék | Átlag
@@ -867,9 +880,9 @@ Nem | Microsoft. bepillantások/összetevők | kérelmek/darabszám | Kiszolgál
 Igen | Microsoft. bepillantások/összetevők | kérelmek/időtartam | Kiszolgáló válaszideje | Ezredmásodpercben | Átlag
 Nem | Microsoft. bepillantások/összetevők | kérelmek/sikertelen | Sikertelen kérelmek | Mennyiség | Mennyiség
 Nem | Microsoft. bepillantások/összetevők | kérelmek/díjszabás | Kiszolgálói kérelmek gyakorisága | CountPerSecond | Átlag
-Igen | Microsoft. bepillantások/összetevők | nyomkövetés/darabszám | Hívásláncok | Mennyiség | Mennyiség
+Igen | Microsoft. bepillantások/összetevők | nyomkövetés/darabszám | Nyomok | Mennyiség | Mennyiség
 Igen | Microsoft. kulcstartó/tárolók | ServiceApiHit | Összes szolgáltatási API-találat | Mennyiség | Mennyiség
-Igen | Microsoft. kulcstartó/tárolók | ServiceApiLatency | Általános szolgáltatás API-késése | Ezredmásodperc | Átlag
+Igen | Microsoft. kulcstartó/tárolók | ServiceApiLatency | Általános szolgáltatás API-késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. kulcstartó/tárolók | ServiceApiResult | Összes szolgáltatás API-eredményei | Mennyiség | Mennyiség
 Igen | Microsoft. Kusto/fürtök | CacheUtilization | Gyorsítótár kihasználtsága | Százalék | Átlag
 Igen | Microsoft. Kusto/fürtök | ContinuousExportMaxLatenessMinutes | Folyamatos exportálás maximális késői percben | Mennyiség | Maximum
@@ -884,10 +897,10 @@ Igen | Microsoft. Kusto/fürtök | IngestionResult | Betöltés eredménye | Men
 Igen | Microsoft. Kusto/fürtök | IngestionUtilization | Betöltés kihasználtsága | Százalék | Átlag
 Igen | Microsoft. Kusto/fürtök | IngestionVolumeInMB | Betöltési mennyiség (MB) | Mennyiség | Összes
 Igen | Microsoft. Kusto/fürtök | KeepAlive | Életben tartása | Mennyiség | Átlag
-Igen | Microsoft. Kusto/fürtök | QueryDuration | Lekérdezés időtartama | Ezredmásodperc | Átlag
+Igen | Microsoft. Kusto/fürtök | QueryDuration | Lekérdezés időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft. Kusto/fürtök | SteamingIngestRequestRate | Folyamatos átviteli kérelmek gyakorisága | Mennyiség | RateRequestsPerSecond
 Igen | Microsoft. Kusto/fürtök | StreamingIngestDataRate | Adatforgalom adatátviteli sebessége | Mennyiség | Átlag
-Igen | Microsoft. Kusto/fürtök | StreamingIngestDuration | Folyamatos átvitel időtartama | Ezredmásodperc | Átlag
+Igen | Microsoft. Kusto/fürtök | StreamingIngestDuration | Folyamatos átvitel időtartama | Ezredmásodpercben | Átlag
 Igen | Microsoft. Kusto/fürtök | StreamingIngestResults | Folyamatos átvitel eredménye | Mennyiség | Átlag
 Igen | Microsoft. Logic/integrationServiceEnvironments | ActionLatency | Művelet késése  | másodperc | Átlag
 Igen | Microsoft. Logic/integrationServiceEnvironments | ActionsCompleted | Befejezett műveletek  | Mennyiség | Összes
@@ -992,9 +1005,9 @@ Igen | Microsoft. Media/Mediaservices | StreamingPolicyQuota | Streaming Policy-
 Igen | Microsoft. Media/Mediaservices | StreamingPolicyQuotaUsedPercentage | Adatfolyam-házirend kvótájának kihasználtsága (%) | Százalék | Átlag
 Igen | Microsoft. Media/Mediaservices/streamingEndpoints | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
 Igen | Microsoft. Media/Mediaservices/streamingEndpoints | Kérelmek | Kérelmek | Mennyiség | Összes
-Igen | Microsoft. Media/Mediaservices/streamingEndpoints | SuccessE2ELatency | A Befejezés végének késése | Ezredmásodperc | Átlag
+Igen | Microsoft. Media/Mediaservices/streamingEndpoints | SuccessE2ELatency | A Befejezés végének késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. Microservices4Spring/appClusters | GCPauseTotalCount | GC-szüneteltetések száma | Mennyiség | Összes
-Igen | Microsoft. Microservices4Spring/appClusters | GCPauseTotalTime | GC felfüggesztésének teljes ideje | Ezredmásodperc | Összes
+Igen | Microsoft. Microservices4Spring/appClusters | GCPauseTotalTime | GC felfüggesztésének teljes ideje | Ezredmásodpercben | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | MaxOldGenMemoryPoolBytes | A rendelkezésre álló régi generációs adatméret maximális száma | Bájt | Átlag
 Igen | Microsoft. Microservices4Spring/appClusters | OldGenMemoryPoolBytes | A régi generációs adatméret | Bájt | Átlag
 Igen | Microsoft. Microservices4Spring/appClusters | OldGenPromotedBytes | Előléptetés a régi generációs adatméretre | Bájt | Maximum
@@ -1005,14 +1018,14 @@ Igen | Microsoft. Microservices4Spring/appClusters | ServiceMemoryUsed | Szolgá
 Igen | Microsoft. Microservices4Spring/appClusters | SystemCpuUsagePercentage | CPU-használat százalékos aránya | Százalék | Átlag
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatErrorCount | Tomcat globális hiba | Mennyiség | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatReceivedBytes | Tomcat összesen fogadott bájtok | Bájt | Összes
-Igen | Microsoft. Microservices4Spring/appClusters | TomcatRequestMaxTime | Tomcat-kérelem maximális ideje | Ezredmásodperc | Maximum
+Igen | Microsoft. Microservices4Spring/appClusters | TomcatRequestMaxTime | Tomcat-kérelem maximális ideje | Ezredmásodpercben | Maximum
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatRequestTotalCount | Tomcat-kérelem összesített száma | Mennyiség | Összes
-Igen | Microsoft. Microservices4Spring/appClusters | TomcatRequestTotalTime | Tomcat-kérelem teljes ideje | Ezredmásodperc | Összes
-Igen | Microsoft. Microservices4Spring/appClusters | TomcatResponseAvgTime | Tomcat-kérelem átlagos ideje | Ezredmásodperc | Átlag
+Igen | Microsoft. Microservices4Spring/appClusters | TomcatRequestTotalTime | Tomcat-kérelem teljes ideje | Ezredmásodpercben | Összes
+Igen | Microsoft. Microservices4Spring/appClusters | TomcatResponseAvgTime | Tomcat-kérelem átlagos ideje | Ezredmásodpercben | Átlag
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSentBytes | Tomcat összesen eljuttatott bájtok száma | Bájt | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionActiveCurrentCount | Tomcat-munkamenet élő száma | Mennyiség | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionActiveMaxCount | Tomcat-munkamenet maximális aktív száma | Mennyiség | Összes
-Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionAliveMaxTime | Tomcat-munkamenet maximális élettartama | Ezredmásodperc | Maximum
+Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionAliveMaxTime | Tomcat-munkamenet maximális élettartama | Ezredmásodpercben | Maximum
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionCreatedCount | Tomcat-munkamenet létrehozva szám | Mennyiség | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionExpiredCount | A Tomcat-munkamenet lejárt | Mennyiség | Összes
 Igen | Microsoft. Microservices4Spring/appClusters | TomcatSessionRejectedCount | A Tomcat-munkamenet elutasította a darabszámot | Mennyiség | Összes
@@ -1101,16 +1114,16 @@ Igen | Microsoft. Network/networkWatchers/connectionMonitors | ChecksFailedPerce
 Igen | Microsoft. Network/networkWatchers/connectionMonitors | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag
 Igen | Microsoft. Network/networkWatchers/connectionMonitors | RoundTripTimeMs | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag
 Igen | Microsoft.Network/publicIPAddresses | ByteCount | Bájtok száma | Mennyiség | Összes
-Igen | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Eldobott bejövő bájtok DDoS | BytesPerSecond | Maximum
-Igen | Microsoft.Network/publicIPAddresses | BytesForwardedDDoS | Továbbított bejövő bájtok DDoS | BytesPerSecond | Maximum
+Igen | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Bejövő bájtok elvetve DDoS | BytesPerSecond | Maximum
+Igen | Microsoft.Network/publicIPAddresses | BytesForwardedDDoS | Bejövő bájtok továbbított DDoS | BytesPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | BytesInDDoS | Bejövő bájtok DDoS | BytesPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | DDoSTriggerSYNPackets | Bejövő SYN-csomagok a DDoS-elhárítás elindításához | CountPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | DDoSTriggerTCPPackets | Bejövő TCP-csomagok a DDoS-mérséklés indításához | CountPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | DDoSTriggerUDPPackets | Bejövő UDP-csomagok a DDoS-elhárítás elindításához | CountPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | IfUnderDDoSAttack | DDoS-támadás alatt vagy nem | Mennyiség | Maximum
 Igen | Microsoft.Network/publicIPAddresses | PacketCount | Csomagok száma | Mennyiség | Összes
-Igen | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | Eldobott bejövő csomagok DDoS | CountPerSecond | Maximum
-Igen | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | Továbbított bejövő csomagok DDoS | CountPerSecond | Maximum
+Igen | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | Bejövő csomagok eldobott DDoS | CountPerSecond | Maximum
+Igen | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | Bejövő csomagok továbbított DDoS | CountPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | PacketsInDDoS | Bejövő csomagok DDoS | CountPerSecond | Maximum
 Igen | Microsoft.Network/publicIPAddresses | SynCount | SYN-szám | Mennyiség | Összes
 Igen | Microsoft.Network/publicIPAddresses | TCPBytesDroppedDDoS | Bejövő TCP-bájtok elvetve DDoS | BytesPerSecond | Maximum
@@ -1207,15 +1220,15 @@ Igen | Microsoft. OperationalInsights/munkaterületek | Average_ rendelkezésre 
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_%-os előjegyzett bájtok használatban | Előjegyzett memória%-ban használatban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_% DPC idő | % DPC idő | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_ szabad inode (%) | Szabad inode%-ban | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_ szabad terület (%) | Szabad terület százalékos aránya | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_ szabad terület (%) | Szabad terület százalékos aránya | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_ üresjárati idő%-ban | Üresjáratban eltöltött időhányad (%) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_ szabad terület (%) | Szabad terület (%) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_ szabad terület (%) | Szabad terület (%) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_ üresjárati idő%-ban | Üresjárati idő%-ban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_%-os megszakítási idő | Megszakítási idő%-ban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_% IO várakozási idő | I/o várakozási idő%-ban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_%-os szép idő | % Nice idő | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_%-os privilegizált idő | %-Os privilegizált idő | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_ processzoridő | A processzor kihasználtsága (%) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_ processzoridő | A processzor kihasználtsága (%) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_ processzoridő | Processzoridő (%) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_ processzoridő | Processzoridő (%) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_ használt inode | Felhasznált inode%-ban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Felhasznált memória Average_%-ban | Felhasznált memória (%) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_ felhasznált terület%-ban | Felhasznált terület (%) | Mennyiség | Átlag
@@ -1224,32 +1237,32 @@ Igen | Microsoft. OperationalInsights/munkaterületek | Average_%-os felhasznál
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Available MB-ban | Rendelkezésre álló memória (MB) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Available MB memória | Rendelkezésre álló memória (MB) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Available MB-ban való swap | Rendelkezésre álló memória (MB) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz. | Átlagos írási idő (mp/olvasás) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz. | Átlagos írási idő (mp/olvasás) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. teljesítmény mp/átvitelben | Átlagos műveleti idő (mp/átvitel) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz. | Átlagos írási idő (mp/írás) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz. | Átlagos írási idő (mp/írás) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. Írási idő (mp/olvasás) | Átlagos írási idő (mp/olvasás) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. Írási idő (mp/olvasás) | Átlagos írási idő (mp/olvasás) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. Lemez (mp/átvitel) | Átlagos műveleti idő (mp/átvitel) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. Írási idő (mp/írás) | Átlagos írási idő (mp/írás) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Avg. Írási idő (mp/írás) | Átlagos írási idő (mp/írás) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Fogadott Average_Bytes/mp | Fogadott bájtok/s | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Küldési Average_Bytes másodpercenként | Küldési sebesség (bájt/s) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Bytes összesen/mp | Összes bájt/mp | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Current a lemez várólistájának hossza | Lemez aktuális várólistájának hossza | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási sebesség (bájt/s) Average_Disk | Lemezolvasás sebessége bájt/mp-ben | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Disk másodpercenként | Lemezolvasások/mp | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Disk másodpercenként | Lemezolvasások/mp | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási sebesség (bájt/s) Average_Disk | Lemez olvasási sebessége (bájt/s) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Disk másodpercenként | Olvasási sebesség (lemez/mp) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Disk másodpercenként | Olvasási sebesség (lemez/mp) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Disk adatátvitel másodpercenként | Lemez átvitele másodpercenként | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Disk adatátvitel másodpercenként | Lemez átvitele másodpercenként | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Írási sebesség (bájt/s) Average_Disk | Lemezírás sebessége bájt/mp-ben | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Disk | Lemezírások/mp | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Disk | Lemezírások/mp | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Írási sebesség (bájt/s) Average_Disk | Lemez írási sebessége (bájt/s) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Disk | Írási sebesség (írás/mp) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Disk | Írási sebesség (írás/mp) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Free megabájt | Szabad terület (MB) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Free megabájt | Szabad terület (MB) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Fizikai memória Average_Free | Szabad fizikai memória | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Free lemezterület a Lapozófájlokban | Szabad terület a Lapozófájlokban | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Free virtuális memória | Szabad virtuális memória | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Logical lemez sebessége (bájt/s) | Logikai lemez sebessége (bájt/s) | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Page másodpercenként | Olvasott lap/mperc | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Page | Írt lap/mperc | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Pages előállított/másodperc | Mozgatott lapok (lap/sec) | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Olvasási Average_Page másodpercenként | Olvasott lap/mp | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Írás/mp Average_Page | Írási idő/mp | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Pages előállított/másodperc | Lap/mp | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Pct emelt szintű idő | PCT rendszerjogosultságú idő | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Pct felhasználói idő | PCT felhasználói idő | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Physical lemez sebessége (bájt/s) | Fizikai lemez sebessége (bájt/s) | Mennyiség | Átlag
@@ -1264,7 +1277,7 @@ Igen | Microsoft. OperationalInsights/munkaterületek | Average_Total fogadott c
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Total továbbított csomagok | Továbbított csomagok összesen | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Rx-hibák Average_Total | Rx-hibák összesen | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Total TX-hibák | TX-hibák összesen | Mennyiség | Átlag
-Igen | Microsoft. OperationalInsights/munkaterületek | Average_Uptime | Hasznos üzemidő | Mennyiség | Átlag
+Igen | Microsoft. OperationalInsights/munkaterületek | Average_Uptime | Üzemidő | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Used MB-ban felcserélt terület | Felhasznált memória (MB) – lapozófájl | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Used memória kilobájtban | Felhasznált memória (kilobájt) | Mennyiség | Átlag
 Igen | Microsoft. OperationalInsights/munkaterületek | Average_Used memória MB-ban | Felhasznált memória (MB) | Mennyiség | Átlag
@@ -1275,8 +1288,8 @@ Igen | Microsoft. OperationalInsights/munkaterületek | Szívverés | Szívveré
 Igen | Microsoft. OperationalInsights/munkaterületek | Frissítés | Frissítés | Mennyiség | Átlag
 Igen | Microsoft. PowerBIDedicated/kapacitások | memory_metric | Memória | Bájt | Átlag
 Igen | Microsoft. PowerBIDedicated/kapacitások | memory_thrashing_metric | Memória-Kiverés (adathalmazok) | Százalék | Átlag
-Igen | Microsoft. PowerBIDedicated/kapacitások | qpu_high_utilization_metric | QPU magas kihasználtság | Mennyiség | Összes
-Igen | Microsoft. PowerBIDedicated/kapacitások | QueryDuration | Lekérdezés időtartama (adatkészletek) | Ezredmásodperc | Átlag
+Igen | Microsoft. PowerBIDedicated/kapacitások | qpu_high_utilization_metric | QPU magas kihasználtsága | Mennyiség | Összes
+Igen | Microsoft. PowerBIDedicated/kapacitások | QueryDuration | Lekérdezés időtartama (adatkészletek) | Ezredmásodpercben | Átlag
 Igen | Microsoft. PowerBIDedicated/kapacitások | QueryPoolJobQueueLength | Lekérdezési készlet nyomtatási várólistájának hossza (adatkészletek) | Mennyiség | Átlag
 Nem | Microsoft. Relay/névterek | Aktív kapcsolatai | Aktív kapcsolatai | Mennyiség | Összes
 Nem | Microsoft. Relay/névterek | ActiveListeners | ActiveListeners | Mennyiség | Összes
@@ -1395,7 +1408,7 @@ Igen | Microsoft. SQL/kiszolgálók/elasticPools | eDTU_used | használt eDTU | 
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | log_write_percent | Naplózási IO-százalék | Százalék | Átlag
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | physical_data_read_percent | Adat IO kihasználtsága (%) | Százalék | Átlag
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | sessions_percent | Munkamenetek százalékos aránya | Százalék | Átlag
-Igen | Microsoft. SQL/kiszolgálók/elasticPools | storage_limit | Adatok maximális mérete | Bájt | Átlag
+Igen | Microsoft. SQL/kiszolgálók/elasticPools | storage_limit | Az adatmaximális méret | Bájt | Átlag
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | storage_percent | Felhasznált adatterület százalékos aránya | Százalék | Átlag
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | storage_used | Felhasznált adatterület | Bájt | Átlag
 Igen | Microsoft. SQL/kiszolgálók/elasticPools | tempdb_data_size | Tempdb adatfájl mérete (kilobájt) | Mennyiség | Maximum
@@ -1406,19 +1419,19 @@ Igen | Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent | Memóri
 Igen | Microsoft.Storage/storageAccounts | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft.Storage/storageAccounts | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
 Igen | Microsoft.Storage/storageAccounts | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft.Storage/storageAccounts | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft.Storage/storageAccounts | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft.Storage/storageAccounts | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft.Storage/storageAccounts | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft.Storage/storageAccounts | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Nem | Microsoft.Storage/storageAccounts | UsedCapacity | Felhasznált kapacitás | Bájt | Átlag
 Igen | Microsoft. Storage/storageAccounts/blobServices | Elérhetőség | Elérhetőség | Százalék | Átlag
-Nem | Microsoft. Storage/storageAccounts/blobServices | BlobCapacity | Blob-kapacitása | Bájt | Átlag
+Nem | Microsoft. Storage/storageAccounts/blobServices | BlobCapacity | BLOB kapacitása | Bájt | Átlag
 Nem | Microsoft. Storage/storageAccounts/blobServices | BlobCount | Blobok száma | Mennyiség | Átlag
-Igen | Microsoft. Storage/storageAccounts/blobServices | ContainerCount | Blobtárolók száma | Mennyiség | Átlag
+Igen | Microsoft. Storage/storageAccounts/blobServices | ContainerCount | BLOB-tárolók száma | Mennyiség | Átlag
 Igen | Microsoft. Storage/storageAccounts/blobServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
-Nem | Microsoft. Storage/storageAccounts/blobServices | IndexCapacity | Indexkapacitás | Bájt | Átlag
+Nem | Microsoft. Storage/storageAccounts/blobServices | IndexCapacity | Index kapacitása | Bájt | Átlag
 Igen | Microsoft. Storage/storageAccounts/blobServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. Storage/storageAccounts/blobServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. Storage/storageAccounts/blobServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. Storage/storageAccounts/blobServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. Storage/storageAccounts/blobServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. Storage/storageAccounts/blobServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. Storage/storageAccounts/fileServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. Storage/storageAccounts/fileServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
@@ -1429,8 +1442,8 @@ Nem | Microsoft. Storage/storageAccounts/fileServices | FileShareQuota | Fájlme
 Nem | Microsoft. Storage/storageAccounts/fileServices | FileShareSnapshotCount | Fájlmegosztás pillanatképének száma | Mennyiség | Átlag
 Nem | Microsoft. Storage/storageAccounts/fileServices | FileShareSnapshotSize | Fájlmegosztás pillanatképének mérete | Bájt | Átlag
 Igen | Microsoft. Storage/storageAccounts/fileServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. Storage/storageAccounts/fileServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. Storage/storageAccounts/fileServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. Storage/storageAccounts/fileServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. Storage/storageAccounts/fileServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. Storage/storageAccounts/fileServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. Storage/storageAccounts/queueServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. Storage/storageAccounts/queueServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
@@ -1438,20 +1451,20 @@ Igen | Microsoft. Storage/storageAccounts/queueServices | Belépő | Belépő | 
 Igen | Microsoft. Storage/storageAccounts/queueServices | QueueCapacity | Várólista kapacitása | Bájt | Átlag
 Igen | Microsoft. Storage/storageAccounts/queueServices | QueueCount | Várólista száma | Mennyiség | Átlag
 Igen | Microsoft. Storage/storageAccounts/queueServices | QueueMessageCount | Üzenetsor-üzenetek száma | Mennyiség | Átlag
-Igen | Microsoft. Storage/storageAccounts/queueServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. Storage/storageAccounts/queueServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. Storage/storageAccounts/queueServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. Storage/storageAccounts/queueServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. Storage/storageAccounts/queueServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. Storage/storageAccounts/tableServices | Elérhetőség | Elérhetőség | Százalék | Átlag
 Igen | Microsoft. Storage/storageAccounts/tableServices | Kimenő forgalom | Kimenő forgalom | Bájt | Összes
 Igen | Microsoft. Storage/storageAccounts/tableServices | Belépő | Belépő | Bájt | Összes
-Igen | Microsoft. Storage/storageAccounts/tableServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodperc | Átlag
-Igen | Microsoft. Storage/storageAccounts/tableServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodperc | Átlag
+Igen | Microsoft. Storage/storageAccounts/tableServices | SuccessE2ELatency | Sikeres E2E késés | Ezredmásodpercben | Átlag
+Igen | Microsoft. Storage/storageAccounts/tableServices | SuccessServerLatency | Sikerességi kiszolgáló késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. Storage/storageAccounts/tableServices | TableCapacity | Tábla kapacitása | Bájt | Átlag
 Igen | Microsoft. Storage/storageAccounts/tableServices | TableCount | Táblák száma | Mennyiség | Átlag
 Igen | Microsoft. Storage/storageAccounts/tableServices | TableEntityCount | Tábla entitások száma | Mennyiség | Átlag
 Igen | Microsoft. Storage/storageAccounts/tableServices | Tranzakciók | Tranzakciók | Mennyiség | Összes
 Igen | Microsoft. StorageCache/gyorsítótárak | ClientIOPS | Ügyfél teljes IOPS | Mennyiség | Átlag
-Igen | Microsoft. StorageCache/gyorsítótárak | ClientLatency | Ügyfél átlagos késése | Ezredmásodperc | Átlag
+Igen | Microsoft. StorageCache/gyorsítótárak | ClientLatency | Ügyfél átlagos késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | ClientLockIOPS | Ügyfél-zárolási IOPS | CountPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | ClientMetadataReadIOPS | Ügyfél metaadatainak olvasása IOPS | CountPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | ClientMetadataWriteIOPS | Ügyfél metaadatainak írási IOPS | CountPerSecond | Átlag
@@ -1463,7 +1476,7 @@ Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetAsyncWriteThrough
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetFillThroughput | StorageTarget-kitöltési sebesség | BytesPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetHealth | Tárolási cél állapota | Mennyiség | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetIOPS | Összes StorageTarget-IOPS | Mennyiség | Átlag
-Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetLatency | StorageTarget késés | Ezredmásodperc | Átlag
+Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetLatency | StorageTarget késés | Ezredmásodpercben | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetMetadataReadIOPS | StorageTarget-metaadatok IOPS olvasása | CountPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetMetadataWriteIOPS | StorageTarget-metaadatok írási IOPS | CountPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetReadAheadThroughput | StorageTarget – olvasási sebesség | BytesPerSecond | Átlag
@@ -1472,7 +1485,7 @@ Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetSyncWriteThroughp
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetTotalReadThroughput | StorageTarget összesen olvasási átviteli sebesség | BytesPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetTotalWriteThroughput | StorageTarget összes írási sebessége | BytesPerSecond | Átlag
 Igen | Microsoft. StorageCache/gyorsítótárak | StorageTargetWriteIOPS | StorageTarget írási IOPS | Mennyiség | Átlag
-Igen | Microsoft. StorageCache/gyorsítótárak | Hasznos üzemidő | Hasznos üzemidő | Mennyiség | Átlag
+Igen | Microsoft. StorageCache/gyorsítótárak | Üzemidő | Üzemidő | Mennyiség | Átlag
 Igen | Microsoft. storagesync/storageSyncServices | ServerSyncSessionResult | Szinkronizálási munkamenet eredménye | Mennyiség | Átlag
 Igen | Microsoft. storagesync/storageSyncServices | StorageSyncBatchTransferredFileBytes | Szinkronizált bájtok száma | Bájt | Összes
 Igen | Microsoft. storagesync/storageSyncServices | StorageSyncRecalledNetworkBytesByApplication | Felhőbeli rétegek felidézésének mérete alkalmazás szerint | Bájt | Összes
@@ -1490,17 +1503,17 @@ Igen | Microsoft. storagesync/storageSyncServices/syncGroups | SyncGroupSyncSess
 Igen | Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints | ServerEndpointBatchTransferredFileBytes | Szinkronizált bájtok száma | Bájt | Összes
 Igen | Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints | ServerEndpointSyncSessionAppliedFilesCount | Szinkronizált fájlok | Mennyiség | Összes
 Igen | Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints | ServerEndpointSyncSessionPerItemErrorsCount | Nem szinkronizált fájlok | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutFailedRequests | Sikertelen függvénykérések | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutInputEvents | Függvényesemények | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutRequests | Függvénykérések | Mennyiség | Összes
+Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutFailedRequests | Sikertelen függvények kérései | Mennyiség | Összes
+Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutInputEvents | Függvények eseményei | Mennyiség | Összes
+Igen | Microsoft. StreamAnalytics/streamingjobs | AMLCalloutRequests | Függvények kérései | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | ConversionErrors | Adatátalakítási hibák | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | DeserializationError | Bemenet-deszerializálási hibák | Mennyiség | Összes
+Igen | Microsoft. StreamAnalytics/streamingjobs | DeserializationError | Bemeneti deszerializálási hibák | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | DroppedOrAdjustedEvents | Megrendelési események | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | EarlyInputEvents | Korai bemeneti események | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | Hibák | Futásidejű hibák | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | InputEventBytes | Bemeneti eseménybájtok | Bájt | Összes
+Igen | Microsoft. StreamAnalytics/streamingjobs | InputEventBytes | Bemeneti esemény bájtjai | Bájt | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | InputEvents | Bemeneti események | Mennyiség | Összes
-Igen | Microsoft. StreamAnalytics/streamingjobs | InputEventsSourcesBacklogged | Várakozó bemeneti események | Mennyiség | Maximum
+Igen | Microsoft. StreamAnalytics/streamingjobs | InputEventsSourcesBacklogged | Várakozó bemeneti eseményei | Mennyiség | Maximum
 Igen | Microsoft. StreamAnalytics/streamingjobs | InputEventsSourcesPerSecond | Fogadott bemeneti források | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | LateInputEvents | Késői bemeneti események | Mennyiség | Összes
 Igen | Microsoft. StreamAnalytics/streamingjobs | OutputEvents | Kimeneti események | Mennyiség | Összes
@@ -1511,10 +1524,10 @@ Igen | Microsoft. VMwareCloudSimple/virtualMachines | Lemez olvasási művelete/
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | Lemez írási bájtjai | Lemez írási bájtjai | Bájt | Összes
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | Lemez írási műveletei/mp | Lemez írási műveletei/mp | CountPerSecond | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskReadBytesPerSecond | Lemez olvasási sebessége (bájt/s) | BytesPerSecond | Átlag
-Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskReadLatency | Lemez olvasási késése | Ezredmásodperc | Átlag
+Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskReadLatency | Lemez olvasási késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskReadOperations | Lemezes olvasási műveletek | Mennyiség | Összes
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskWriteBytesPerSecond | Lemez írási sebessége (bájt/s) | BytesPerSecond | Átlag
-Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskWriteLatency | Lemez írási késése | Ezredmásodperc | Átlag
+Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskWriteLatency | Lemez írási késése | Ezredmásodpercben | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | DiskWriteOperations | Lemez írási műveletei | Mennyiség | Összes
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | MemoryActive | Memória aktív | Bájt | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | MemoryGranted | Megadott memória | Bájt | Átlag
@@ -1524,11 +1537,11 @@ Igen | Microsoft. VMwareCloudSimple/virtualMachines | Kimenő hálózat | Kimen�
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | NetworkInBytesPerSecond | Hálózat bájt/mp-ben | BytesPerSecond | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | NetworkOutBytesPerSecond | Hálózati kimenő bájtok/s | BytesPerSecond | Átlag
 Igen | Microsoft. VMwareCloudSimple/virtualMachines | Százalékos processzorhasználat | Százalékos processzorhasználat | Százalék | Átlag
-Igen | Microsoft. VMwareCloudSimple/virtualMachines | PercentageCpuReady | CPU-készültség százalékos aránya | Ezredmásodperc | Összes
+Igen | Microsoft. VMwareCloudSimple/virtualMachines | PercentageCpuReady | CPU-készültség százalékos aránya | Ezredmásodpercben | Összes
 Igen | Microsoft. Web/hostingEnvironments/multiRolePools | ActiveRequests | Aktív kérések | Mennyiség | Összes
 Igen | Microsoft. Web/hostingEnvironments/multiRolePools | AverageResponseTime | Átlagos válaszidő | másodperc | Átlag
-Igen | Microsoft. Web/hostingEnvironments/multiRolePools | BytesReceived | Bejövő adatforgalom | Bájt | Összes
-Igen | Microsoft. Web/hostingEnvironments/multiRolePools | BytesSent | Kimenő adatforgalom | Bájt | Összes
+Igen | Microsoft. Web/hostingEnvironments/multiRolePools | BytesReceived | A-ben tárolt adatértékek | Bájt | Összes
+Igen | Microsoft. Web/hostingEnvironments/multiRolePools | BytesSent | Kimenő adatvesztés | Bájt | Összes
 Igen | Microsoft. Web/hostingEnvironments/multiRolePools | CpuPercentage | Processzorhasználat (%) | Százalék | Átlag
 Igen | Microsoft. Web/hostingEnvironments/multiRolePools | DiskQueueLength | Lemezvezérlő-várólista hossza | Mennyiség | Átlag
 Igen | Microsoft. Web/hostingEnvironments/multiRolePools | Http101 | Http 101 | Mennyiség | Összes
@@ -1552,8 +1565,8 @@ Igen | Microsoft. Web/hostingEnvironments/workerPools | MemoryPercentage | Memó
 Igen | Microsoft. Web/hostingEnvironments/workerPools | WorkersAvailable | Rendelkezésre álló munkavégzők | Mennyiség | Átlag
 Igen | Microsoft. Web/hostingEnvironments/workerPools | WorkersTotal | Alkalmazottak összesen | Mennyiség | Átlag
 Igen | Microsoft. Web/hostingEnvironments/workerPools | WorkersUsed | Használt feldolgozók | Mennyiség | Átlag
-Igen | Microsoft.Web/serverfarms | BytesReceived | Bejövő adatforgalom | Bájt | Összes
-Igen | Microsoft.Web/serverfarms | BytesSent | Kimenő adatforgalom | Bájt | Összes
+Igen | Microsoft.Web/serverfarms | BytesReceived | A-ben tárolt adatértékek | Bájt | Összes
+Igen | Microsoft.Web/serverfarms | BytesSent | Kimenő adatvesztés | Bájt | Összes
 Igen | Microsoft.Web/serverfarms | CpuPercentage | Processzorhasználat (%) | Százalék | Átlag
 Igen | Microsoft.Web/serverfarms | DiskQueueLength | Lemezvezérlő-várólista hossza | Mennyiség | Átlag
 Igen | Microsoft.Web/serverfarms | HttpQueueLength | Http-várólista hossza | Mennyiség | Átlag
@@ -1570,8 +1583,8 @@ Igen | Microsoft.Web/serverfarms | TcpTimeWait | TCP-idő várakozása | Mennyis
 Igen | Microsoft.Web/sites | AppConnections | Connections (Kapcsolatok) | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | AverageMemoryWorkingSet | Memória átlagos munkakészlete | Bájt | Átlag
 Igen | Microsoft.Web/sites | AverageResponseTime | Átlagos válaszidő | másodperc | Átlag
-Igen | Microsoft.Web/sites | BytesReceived | Bejövő adatforgalom | Bájt | Összes
-Igen | Microsoft.Web/sites | BytesSent | Kimenő adatforgalom | Bájt | Összes
+Igen | Microsoft.Web/sites | BytesReceived | A-ben tárolt adatértékek | Bájt | Összes
+Igen | Microsoft.Web/sites | BytesSent | Kimenő adatvesztés | Bájt | Összes
 Igen | Microsoft.Web/sites | CpuTime | CPU-idő | másodperc | Összes
 Igen | Microsoft.Web/sites | CurrentAssemblies | Aktuális szerelvények | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | FunctionExecutionCount | Függvény végrehajtásának száma | Mennyiség | Összes
@@ -1579,7 +1592,7 @@ Igen | Microsoft.Web/sites | FunctionExecutionUnits | Függvények végrehajtás
 Igen | Microsoft.Web/sites | Gen0Collections | 0\. generációs Garbage-gyűjtemények | Mennyiség | Összes
 Igen | Microsoft.Web/sites | Gen1Collections | 1\. generációs Garbage gyűjtemények | Mennyiség | Összes
 Igen | Microsoft.Web/sites | Gen2Collections | 2\. generációs Garbage gyűjtemények | Mennyiség | Összes
-Igen | Microsoft.Web/sites | Kezeli | Leírók száma | Mennyiség | Átlag
+Igen | Microsoft.Web/sites | Kezeli | Kezelők száma | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | HealthCheckStatus | Állapot-ellenőrzési állapot | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | Http101 | Http 101 | Mennyiség | Összes
 Igen | Microsoft.Web/sites | Http2xx | Http-2xx | Mennyiség | Összes
@@ -1597,18 +1610,18 @@ Igen | Microsoft.Web/sites | IoReadBytesPerSecond | IO olvasási bájtok másodp
 Igen | Microsoft.Web/sites | IoReadOperationsPerSecond | I/o-olvasási műveletek másodpercenként | BytesPerSecond | Összes
 Igen | Microsoft.Web/sites | IoWriteBytesPerSecond | IO írási bájtok másodpercenként | BytesPerSecond | Összes
 Igen | Microsoft.Web/sites | IoWriteOperationsPerSecond | IO írási műveletek másodpercenként | BytesPerSecond | Összes
-Igen | Microsoft.Web/sites | MemoryWorkingSet | A memória-munkakészlet | Bájt | Átlag
-Igen | Microsoft.Web/sites | PrivateBytes | Saját [nem megosztható] memória (bájt) | Bájt | Átlag
+Igen | Microsoft.Web/sites | MemoryWorkingSet | Memória munkakészlete | Bájt | Átlag
+Igen | Microsoft.Web/sites | PrivateBytes | Saját bájtok | Bájt | Átlag
 Igen | Microsoft.Web/sites | Kérelmek | Kérelmek | Mennyiség | Összes
 Igen | Microsoft.Web/sites | RequestsInApplicationQueue | Kérelmek az alkalmazás-várólistán | Mennyiség | Átlag
-Igen | Microsoft.Web/sites | Témák | Szálak száma | Mennyiség | Átlag
+Igen | Microsoft.Web/sites | Szálak | Szálak száma | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | TotalAppDomains | Alkalmazás összes tartománya | Mennyiség | Átlag
 Igen | Microsoft.Web/sites | TotalAppDomainsUnloaded | Összes kitöltött alkalmazás-tartomány | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | AppConnections | Connections (Kapcsolatok) | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | AverageMemoryWorkingSet | Memória átlagos munkakészlete | Bájt | Átlag
 Igen | Microsoft. Web/Sites/Slots | AverageResponseTime | Átlagos válaszidő | másodperc | Átlag
-Igen | Microsoft. Web/Sites/Slots | BytesReceived | Bejövő adatforgalom | Bájt | Összes
-Igen | Microsoft. Web/Sites/Slots | BytesSent | Kimenő adatforgalom | Bájt | Összes
+Igen | Microsoft. Web/Sites/Slots | BytesReceived | A-ben tárolt adatértékek | Bájt | Összes
+Igen | Microsoft. Web/Sites/Slots | BytesSent | Kimenő adatvesztés | Bájt | Összes
 Igen | Microsoft. Web/Sites/Slots | CpuTime | CPU-idő | másodperc | Összes
 Igen | Microsoft. Web/Sites/Slots | CurrentAssemblies | Aktuális szerelvények | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | FunctionExecutionCount | Függvény végrehajtásának száma | Mennyiség | Összes
@@ -1616,7 +1629,7 @@ Igen | Microsoft. Web/Sites/Slots | FunctionExecutionUnits | Függvények végre
 Igen | Microsoft. Web/Sites/Slots | Gen0Collections | 0\. generációs Garbage-gyűjtemények | Mennyiség | Összes
 Igen | Microsoft. Web/Sites/Slots | Gen1Collections | 1\. generációs Garbage gyűjtemények | Mennyiség | Összes
 Igen | Microsoft. Web/Sites/Slots | Gen2Collections | 2\. generációs Garbage gyűjtemények | Mennyiség | Összes
-Igen | Microsoft. Web/Sites/Slots | Kezeli | Leírók száma | Mennyiség | Átlag
+Igen | Microsoft. Web/Sites/Slots | Kezeli | Kezelők száma | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | HealthCheckStatus | Állapot-ellenőrzési állapot | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | Http101 | Http 101 | Mennyiség | Összes
 Igen | Microsoft. Web/Sites/Slots | Http2xx | Http-2xx | Mennyiség | Összes
@@ -1634,10 +1647,10 @@ Igen | Microsoft. Web/Sites/Slots | IoReadBytesPerSecond | IO olvasási bájtok 
 Igen | Microsoft. Web/Sites/Slots | IoReadOperationsPerSecond | I/o-olvasási műveletek másodpercenként | BytesPerSecond | Összes
 Igen | Microsoft. Web/Sites/Slots | IoWriteBytesPerSecond | IO írási bájtok másodpercenként | BytesPerSecond | Összes
 Igen | Microsoft. Web/Sites/Slots | IoWriteOperationsPerSecond | IO írási műveletek másodpercenként | BytesPerSecond | Összes
-Igen | Microsoft. Web/Sites/Slots | MemoryWorkingSet | A memória-munkakészlet | Bájt | Átlag
-Igen | Microsoft. Web/Sites/Slots | PrivateBytes | Saját [nem megosztható] memória (bájt) | Bájt | Átlag
+Igen | Microsoft. Web/Sites/Slots | MemoryWorkingSet | Memória munkakészlete | Bájt | Átlag
+Igen | Microsoft. Web/Sites/Slots | PrivateBytes | Saját bájtok | Bájt | Átlag
 Igen | Microsoft. Web/Sites/Slots | Kérelmek | Kérelmek | Mennyiség | Összes
 Igen | Microsoft. Web/Sites/Slots | RequestsInApplicationQueue | Kérelmek az alkalmazás-várólistán | Mennyiség | Átlag
-Igen | Microsoft. Web/Sites/Slots | Témák | Szálak száma | Mennyiség | Átlag
+Igen | Microsoft. Web/Sites/Slots | Szálak | Szálak száma | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | TotalAppDomains | Alkalmazás összes tartománya | Mennyiség | Átlag
 Igen | Microsoft. Web/Sites/Slots | TotalAppDomainsUnloaded | Összes kitöltött alkalmazás-tartomány | Mennyiség | Átlag

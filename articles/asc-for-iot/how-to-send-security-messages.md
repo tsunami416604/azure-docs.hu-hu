@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937130"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963818"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetek SDK küldése
 
@@ -46,7 +46,7 @@ A IoT-Azure Security Center a következő feltételekkel határozzák meg a bizt
 - Ha az üzenet megfelel a [biztonsági üzenet sémájának](https://aka.ms/iot-security-schemas)
 - Ha az üzenet a küldés előtt biztonsági üzenetként lett beállítva
 
-Minden biztonsági üzenet tartalmazza a küldő metaadatait, például `AgentId`a `MessageSchemaVersion` , `AgentVersion`és a biztonsági események listáját.
+Minden biztonsági üzenet tartalmazza a küldő metaadatait, például `AgentId`, `AgentVersion`, `MessageSchemaVersion` és a biztonsági események listáját.
 A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdonságait, beleértve az események típusait is.
 
 >[!Note]
@@ -57,7 +57,7 @@ A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdon
 
 ## <a name="valid-message-example"></a>Érvényes üzenet – példa
 
-Az alábbi példa egy érvényes biztonsági üzenet objektumot mutat be. A példa tartalmazza az üzenet metaadatait és `ProcessCreate` egy biztonsági eseményt.
+Az alábbi példa egy érvényes biztonsági üzenet objektumot mutat be. A példa tartalmazza az üzenet metaadatait és egy `ProcessCreate` biztonsági eseményt.
 
 Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üzenetet, a IoT Azure Security Center fogja feldolgozni.
 
@@ -91,7 +91,7 @@ Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üz
 
 ## <a name="send-security-messages"></a>Biztonsági üzenetek küldése 
 
-Biztonsági üzenetek küldése a IoT-ügynök Azure Security Center használata *nélkül* , az [Azure IOT C Device SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), az [Azure IoT C# Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), az [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)vagy az [Azure IoT Java SDK használatával ](https://github.com/Azure/azure-iot-sdk-java).
+Az Azure [IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)eszközoldali SDK, az [Azure C# IoT Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), az [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)vagy az [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával küldhet biztonsági üzeneteket a IoT-ügynök Azure Security Center használata *nélkül* .
 
 Ha az eszköz adatait az eszközökről a IoT Azure Security Center történő feldolgozásra szeretné elküldeni, a következő API-k egyikével kell megjelölnie az üzeneteket a megfelelő útválasztáshoz, hogy a IoT feldolgozási folyamathoz Azure Security Center. 
 
@@ -192,14 +192,21 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
+A Python API használatához telepítenie kell az [Azure-IOT-Device](https://pypi.org/project/azure-iot-device/)csomagot.
+
+A Python API használatakor a biztonsági üzenetet elküldheti a modulon keresztül, vagy az eszközön keresztül az egyedi eszköz vagy modul kapcsolódási karakterláncát használva. Ha a következő Python-parancsfájlt használja például egy eszközön, használja a **IoTHubDeviceClient**-t, és egy modullal használja a **IoTHubModuleClient**. 
+
 ```python
+from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
+from azure.iot.device import Message
+
 async def send_security_message_async(message_content):
     conn_str = os.getenv("<connection_string>")
     device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
     await device_client.connect()
     security_message = Message(message_content)
     security_message.set_as_security_message()
-    await device_client.send_d2c_message(security_message)
+    await device_client.send_message(security_message)
     await device_client.disconnect()
 ```
 
@@ -218,7 +225,7 @@ public void SendSecurityMessage(string message)
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
 - További információ a IoT- [architektúra](architecture.md) Azure Security Center
 - A [szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
