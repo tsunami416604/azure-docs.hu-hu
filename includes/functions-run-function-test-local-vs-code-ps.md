@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/16/2020
 ms.author: glenga
-ms.openlocfilehash: c54145cf48912d3911a39e681d85cb6907be8e52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842316"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964112"
 ---
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -28,11 +28,17 @@ A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé tes
     Hello PowerShell
     ```
 
-    A GET kérést egy böngészőből is végrehajthatja.
+    A GET kérést egy böngészőből is végrehajthatja a következő URL-címről:
 
-    Ha a HttpTrigger-végpontot úgy hívja meg, hogy `name` paramétert nem egy lekérdezési paraméterként vagy a törzsben adja át, a függvény egy [HttpStatusCode]:: BadRequest hibát ad vissza. Amikor a Run. ps1 kódban áttekinti a kódot, láthatja, hogy ez a hiba a tervezés szerint történik.
+    <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-1. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
+    Ha a HttpTrigger végpontot úgy hívja meg, hogy a `name` paramétert nem a lekérdezési paraméterként, sem pedig a törzsben küldi el, a függvény `BadRequest` hibát ad vissza. Amikor a Run. ps1 kódban áttekinti a kódot, láthatja, hogy ez a hiba a tervezés szerint történik.
+
+1. A kérésre vonatkozó információk a **terminál** panelen jelennek meg.
+
+    ![Függvény végrehajtása a terminál panelen](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+
+1. A hibakeresés leállításához nyomja le a CTRL + C billentyűkombinációt az alapvető eszközök leállításához.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 

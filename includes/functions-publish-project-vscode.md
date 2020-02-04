@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842195"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964115"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
@@ -21,29 +21,24 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    ::: zone pivot="programming-language-csharp,programming-language-powershell"
+    + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    | Kérdés | Value (Díj) | Leírás |
-    | ------ | ----- | ----- |
-    | Előfizetés kiválasztása | Az Ön előfizetése | Több előfizetés esetén jelenik meg. |
-    | függvényalkalmazás kiválasztása az Azure-ban | + Új függvényalkalmazás létrehozása | Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. |
-    | Adja meg a Function alkalmazás globálisan egyedi nevét | Egyedi név | A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
-    | Válasszon helyet az új erőforrásokhoz | Region (Régió) | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). | 
-
+    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a `+ Create new Function App` (nem `Advanced`) lehetőséget. Ez a cikk nem támogatja a [speciális közzétételi folyamatot](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
+    
+    >[!IMPORTANT]
+    > Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. 
+    
+    + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
+    
+    ::: zone pivot="programming-language-python"
+    + **Válasszon egy futtatókörnyezetet**: válassza ki, hogy a Python melyik verzióját helyileg futtatja. Az `python --version` parancs használatával megtekintheti a verziót.
     ::: zone-end
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
-
-    | Kérdés | Value (Díj) | Leírás |
-    | ------ | ----- | ----- |
-    | Előfizetés kiválasztása | Az Ön előfizetése | Több előfizetés esetén jelenik meg. |
-    | függvényalkalmazás kiválasztása az Azure-ban | + Új függvényalkalmazás létrehozása | Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. |
-    | Adja meg a Function alkalmazás globálisan egyedi nevét | Egyedi név | A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
-    | Futtatókörnyezet kiválasztása | Az Ön verziója | Válassza ki a helyileg futtatott nyelvi verziót. |
-    | Válasszon helyet az új erőforrásokhoz | Region (Régió) | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). | 
-
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **Válassza ki a kívánt futtatókörnyezetet**: válassza ki a helyileg futtatott Node. js-verziót. Az `node --version` parancs használatával megtekintheti a verziót.
     ::: zone-end
 
+    + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 
     
 1.  Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben:
 
@@ -55,10 +50,6 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés. 
     
-1. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is.
+1. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is. Ha kihagyja az értesítést, válassza a jobb alsó sarokban található harang ikont az újbóli megjelenítéshez.
 
     ![Teljes értesítés létrehozása](media/functions-publish-project-vscode/function-create-notifications.png)
-
-1. Vissza az **Azure: functions** területen az oldal sávján bontsa ki az új Function alkalmazást az előfizetés alatt. Bontsa ki a **függvények**elemet, kattintson a jobb gombbal (Windows) vagy a CTRL + kattintás (MacOS) elemre a **HttpExample**, majd válassza a **függvény URL-címének másolása**lehetőséget.
-
-    ![A függvény URL-címének másolása az új HTTP-triggerhez](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

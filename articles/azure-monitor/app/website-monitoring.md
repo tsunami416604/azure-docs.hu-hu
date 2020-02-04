@@ -1,6 +1,6 @@
 ---
-title: Webhelyek figyelése Azure Monitor Application Insights
-description: Ez a cikk ismerteti, hogyan helyezhető gyorsan üzembe az ügyfél-/böngészőoldali webhely-monitorozás az Azure Monitor Application Insights használatával
+title: 'Gyors útmutató: webhelyek figyelése Azure Monitor Application Insights'
+description: A rövid útmutató útmutatást nyújt az ügyfél/böngésző oldali webhely figyeléséhez Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,36 +8,30 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 54bd12db9a85cf237d6c22ad63e6f20f7d2b713a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770220"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963619"
 ---
-# <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
+# <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
 
-Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja webhelye rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az Application Insights kiszolgálóoldali és ügyfél-/böngészőoldali monitorozási képességeket is biztosít.
+Ebből a rövid útmutatóból megtudhatja, hogyan adhatja hozzá a nyílt forráskódú Application Insights JavaScript SDK-t a webhelyéhez. Azt is megtudhatja, hogyan lehet jobban megismerni a webhelye látogatói számára az ügyfél/böngésző oldali élményt.
 
-Ez a rövid útmutató végigvezeti Önt a [nyílt forráskódú Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) hozzáadásán, amely lehetővé teszi, hogy megismerje a webhely látogatói számára az ügyfél-és böngészőbeli élményt.
+Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja webhelye rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Application Insights a kiszolgálóoldali figyelést, valamint az ügyfél-és böngésző-oldali figyelési képességeket is biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
-
-- Rendelkeznie kell Azure-előfizetéssel.
-
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Egy webhely, amelyhez hozzá lehet adni a Application Insights JavaScript SDK-t.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
 Az Application Insights bármely, az internethez csatlakozó alkalmazásról képes telemetria-adatokat gyűjteni, akár a helyszínen, akár a felhőben fut. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Válassza az **Erőforrás létrehozása** > **Kezelőeszközök** > **Application Insights** elemet.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. Válassza az **Erőforrás létrehozása** > **Kezelőeszközök** > **Application Insights** elemet.
 
    > [!NOTE]
    >Ha első alkalommal hoz létre Application Insights-erőforrást, további információt az [Application Insights-erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) című cikkben talál.
@@ -47,10 +41,10 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
     | Beállítások        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
+   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve, amely az Application Insights-adathalmazt tárolja. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
@@ -70,11 +64,11 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
     </html>
     ```
 
-## <a name="configure-app-insights-sdk"></a>Az App Insights SDK konfigurálása
+## <a name="configure-application-insights-sdk"></a>Application Insights SDK konfigurálása
 
 1. Válassza az **Áttekintés** > **Alapvető erőforrások** elemet, és másolja ki az alkalmazás **Kialakítási kulcsát**.
 
-   ![Új App Insights-erőforrás űrlap](media/website-monitoring/instrumentation-key-001.png)
+   ![Új Application Insights-erőforrás űrlap](media/website-monitoring/instrumentation-key-001.png)
 
 2. Adja hozzá az alábbi szkriptet a ``hello_world.html`` fájlhoz a záró ``</head>`` címke előtt:
 
@@ -90,13 +84,13 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 3. Szerkessze a ``hello_world.html`` fájlt, és adja hozzá az eszközkulcsát.
 
-4. Nyissa meg a ``hello_world.html`` fájlt egy helyi böngésző-munkamenetben. Ez egy egyszeri oldalmegtekintést hoz létre. A böngésző frissítésével több teszt oldalmegtekintést is létrehozhat.
+4. Nyissa meg a ``hello_world.html`` fájlt egy helyi böngésző-munkamenetben. Ez a művelet egyetlen oldalmegtekintést hoz létre. A böngésző frissítésével több teszt oldalmegtekintést is létrehozhat.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
-1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez. Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél-/böngészőoldali interakció kialakítását végezzük a JavaScript SDK-val, ez az adott nézet most nem releváns, hacsak nincs egy kiszolgálóoldali SDK is telepítve.
+1. Most újra megnyithatja a Azure Portal Application Insights **Áttekintés** lapját, ahol megtekintheti az aktuálisan futó alkalmazás részleteit. Az **Áttekintés** oldalon beolvasta a kialakítási kulcsot. Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél/böngésző oldali interakciókat a JavaScript SDK-val alakítjuk ki, ez az adott nézet nem érvényes, kivéve, ha egy kiszolgálóoldali SDK is telepítve van.
 
-2. Kattintson ![alkalmazás-Térkép ikon](media/website-monitoring/006.png) **Analytics**elemre.  Megnyílik az **Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
+2. Kattintson ![alkalmazás-Térkép ikon](media/website-monitoring/006.png) **Analytics**elemre.  Ez a művelet megnyitja az **elemzést**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
 
     ```kusto
     // average pageView duration by name
@@ -115,11 +109,11 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/website-monitoring/analytics-query.png)
 
-3. Térjen vissza az **Áttekintés** oldalra. Kattintson a **Böngészés** elemre a **Vizsgálat** fejléc alatt, majd válassza a **Teljesítmény** lehetőséget. Ezen a felületen találja a webhely teljesítményével kapcsolatos metrikákat. Emellett egy megfelelő nézetet is talál itt a webhelyen található hibák és kivételek elemzéséhez. A **Minták** elemre kattintva megtekintheti az egyes tranzakciók részleteit. Innen pedig elérheti a [tranzakciók részletes adatait tartalmazó](../../azure-monitor/app/transaction-diagnostics.md) felületet.
+3. Térjen vissza az **Áttekintés** oldalra. Kattintson a **Böngészés** elemre a **Vizsgálat** fejléc alatt, majd válassza a **Teljesítmény** lehetőséget. Ezen a felületen találja a webhely teljesítményével kapcsolatos metrikákat. A hibák és kivételek elemzése a webhelyén is megfelelő nézet. A **Minták** elemre kattintva megtekintheti az egyes tranzakciók részleteit. Innen pedig elérheti a [tranzakciók részletes adatait tartalmazó](../../azure-monitor/app/transaction-diagnostics.md) felületet.
 
    ![Kiszolgálómetrikák diagram](./media/website-monitoring/browser-performance.png)
 
-4. A [felhasználói viselkedést elemző eszközök](../../azure-monitor/app/usage-overview.md) megismeréséhez az Application Insights fő menüjében válassza a [**Felhasználók**](../../azure-monitor/app/usage-segmentation.md) elemet a **Használat** fejléc alatt. Mivel a tesztelést egyetlen gépről végezzük, csak egy felhasználó adatait fogjuk látni. Egy élő webhely esetében a felhasználók eloszlása az alábbihoz hasonlóan nézhet ki:
+4. A [felhasználói viselkedést elemző eszközök](../../azure-monitor/app/usage-overview.md) megismeréséhez az Application Insights fő menüjében válassza a [**Felhasználók**](../../azure-monitor/app/usage-segmentation.md) elemet a **Használat** fejléc alatt. Mivel egyetlen gépről próbálunk tesztelni, csak egy felhasználó adatait fogjuk látni. Egy élő webhely esetében a felhasználók eloszlása az alábbihoz hasonlóan nézhet ki:
 
      ![Felhasználók diagram](./media/website-monitoring/usage-users.png)
 
@@ -131,7 +125,7 @@ A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [Java
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha azonban nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+Ha azt tervezi, hogy további rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ellenkező esetben, ha nem folytatja a műveletet, a következő lépésekkel törölheti a rövid útmutatóban létrehozott összes erőforrást a Azure Portal.
 
 > [!NOTE]
 > Ha meglévő erőforráscsoportot használt, az alábbi utasítások nem fognak működni, és csak törölni kell az egyéni Application Insights erőforrást. Ne feledje, hogy bármikor törli az erőforráscsoportot az összes olyan underyling-erőforrást, amely tagja a csoportnak.
