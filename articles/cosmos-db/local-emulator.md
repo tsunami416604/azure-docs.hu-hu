@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 311a174b1af4d6fe5a5b9325e10e0a4c2c89d18e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760572"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901802"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -419,23 +419,7 @@ Az Adatkezelő megnyitásához nyissa meg a következő URL-címet a böngésző
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-Ha a .NET-ügyfélalkalmazás Linux Docker-tárolón fut, és ha az Azure Cosmos emulatort egy gazdagépen futtatja, akkor ebben az esetben nem tud csatlakozni az emulátorból az Azure Cosmos-fiókhoz. Mivel az alkalmazás nem fut a gazdagépen, az emulátor végpontjának megfelelő Linux-tárolóban regisztrált tanúsítvány nem adható hozzá. 
-
-Megkerülő megoldásként letilthatja a kiszolgáló SSL-tanúsítványának érvényesítését az ügyfélalkalmazás használatával egy `HttpClientHandler`-példány átadásával, ahogy az a következő .net-kódban látható. Ez a megkerülő megoldás csak akkor alkalmazható, ha a `Microsoft.Azure.DocumentDB` Nuget csomagot használja, és nem támogatja a `Microsoft.Azure.Cosmos` Nuget csomagot:
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-Az SSL-tanúsítvány ellenőrzésének letiltása mellett fontos, hogy az emulátort az `/allownetworkaccess` lehetőséggel indítsa el, és az emulátor végpontja a gazdagép IP-címéről, nem pedig `host.docker.internal` DNS-ről legyen elérhető.
+Ha a .NET-ügyfélalkalmazás Linux Docker-tárolón fut, és ha egy gazdagépen futtatja az Azure Cosmos emulatort, kövesse az alábbi, Linux rendszerű szakaszt a tanúsítvány Linux Docker-tárolóba való importálásához.
 
 ## Futtatás Mac vagy Linux rendszeren<a id="mac"></a>
 
@@ -447,47 +431,43 @@ A Windows rendszerű virtuális gépen futtassa az alábbi parancsot, és jegyez
 ipconfig.exe
 ```
 
-Az alkalmazásban módosítania kell a DocumentClient objektum URI-JÁT úgy, hogy az `ipconfig.exe`által visszaadott IPv4-címet használja. A következő lépés a HITELESÍTÉSSZOLGÁLTATÓ érvényesítésének megkerülés a DocumentClient objektum létrehozásakor. Ehhez meg kell adnia egy HttpClientHandler a DocumentClient konstruktorhoz, amely a ServerCertificateCustomValidationCallback saját implementációja.
+Az alkalmazásban módosítania kell a végpontként használt URI-t, hogy a `localhost`helyett a `ipconfig.exe` által visszaadott IPv4-címet használja.
 
-Alább látható egy példa arra, hogy a kódnak milyen módon kell kinéznie.
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-Végül a Windows rendszerű virtuális gépen a következő lehetőségek használatával indítsa el a Cosmos emulatort a parancssorból.
+A következő lépés a Windows rendszerű virtuális gépen belül a következő lehetőségek használatával indítsa el a Cosmos emulatort a parancssorból.
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+Végezetül importálnia kell az emulátor HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát a Linux vagy a Mac környezetbe.
+
+Ha Linux rendszeren dolgozik, a .NET-továbbítókat az OpenSSL-ben végezheti el az ellenőrzés elvégzéséhez:
+
+1. [Exportálja a tanúsítványt pfx formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a pfx elérhető a titkos kulcs exportálásának kiválasztásakor). 
+2. Másolja a PFX-fájlt a linuxos környezetbe.
+3. PFX-fájl konvertálása CRT-fájlba
+```bash
+openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+```
+4. Másolja a CRT-fájlt arra a mappára, amely a Linux-disztribúcióban egyéni tanúsítványokat tartalmaz. A Debian-disztribúciók általában `/usr/local/share/ca-certificates/`találhatóak.
+```bash
+cp YourCTR.crt /usr/local/share/ca-certificates/
+```
+5. Frissítse a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, amelyek frissítik a `/etc/ssl/certs/` mappát.
+```bash
+update-ca-certificates
+```
+
+Ha Mac gépen dolgozik:
+
+1. [Exportálja a tanúsítványt pfx formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a pfx elérhető a titkos kulcs exportálásának kiválasztásakor). 
+2. Másolja a PFX-fájlt a Mac-környezetbe.
+3. Nyissa meg a *kulcstartó-hozzáférési* alkalmazást, és importálja a pfx-fájlt.
+4. Nyissa meg a tanúsítványok listáját, és azonosítsa az `localhost`nevű nevet.
+5. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság* > a *tanúsítvány használatakor* lehetőséget, válassza a *mindig megbízható*lehetőséget. 
+![nyissa meg az adott elemhez tartozó helyi menüt, válassza az elem beolvasása és a megbízhatóság alatt – ezen tanúsítvány használata esetén a mindig megbízható lehetőséget](./media/local-emulator/mac-trust-certificate.png)
+
+Az alábbi lépések elvégzése után a környezet megbízik az emulátor által használt tanúsítványban, amikor az az IP-címhez csatlakozik `/AllowNetworkAccess`.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
