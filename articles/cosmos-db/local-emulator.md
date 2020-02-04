@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 311a174b1af4d6fe5a5b9325e10e0a4c2c89d18e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901802"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939171"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -441,31 +441,47 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 Végezetül importálnia kell az emulátor HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát a Linux vagy a Mac környezetbe.
 
+### <a name="linux"></a>Linux
+
 Ha Linux rendszeren dolgozik, a .NET-továbbítókat az OpenSSL-ben végezheti el az ellenőrzés elvégzéséhez:
 
 1. [Exportálja a tanúsítványt pfx formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a pfx elérhető a titkos kulcs exportálásának kiválasztásakor). 
-2. Másolja a PFX-fájlt a linuxos környezetbe.
-3. PFX-fájl konvertálása CRT-fájlba
-```bash
-openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
-```
-4. Másolja a CRT-fájlt arra a mappára, amely a Linux-disztribúcióban egyéni tanúsítványokat tartalmaz. A Debian-disztribúciók általában `/usr/local/share/ca-certificates/`találhatóak.
-```bash
-cp YourCTR.crt /usr/local/share/ca-certificates/
-```
-5. Frissítse a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, amelyek frissítik a `/etc/ssl/certs/` mappát.
-```bash
-update-ca-certificates
-```
 
-Ha Mac gépen dolgozik:
+1. Másolja a PFX-fájlt a linuxos környezetbe.
 
-1. [Exportálja a tanúsítványt pfx formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a pfx elérhető a titkos kulcs exportálásának kiválasztásakor). 
-2. Másolja a PFX-fájlt a Mac-környezetbe.
-3. Nyissa meg a *kulcstartó-hozzáférési* alkalmazást, és importálja a pfx-fájlt.
-4. Nyissa meg a tanúsítványok listáját, és azonosítsa az `localhost`nevű nevet.
-5. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság* > a *tanúsítvány használatakor* lehetőséget, válassza a *mindig megbízható*lehetőséget. 
-![nyissa meg az adott elemhez tartozó helyi menüt, válassza az elem beolvasása és a megbízhatóság alatt – ezen tanúsítvány használata esetén a mindig megbízható lehetőséget](./media/local-emulator/mac-trust-certificate.png)
+1. PFX-fájl konvertálása CRT-fájlba
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. Másolja a CRT-fájlt arra a mappára, amely a Linux-disztribúcióban egyéni tanúsítványokat tartalmaz. A Debian-disztribúciók általában `/usr/local/share/ca-certificates/`találhatóak.
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. Frissítse a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat, amelyek frissítik a `/etc/ssl/certs/` mappát.
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+Ha Mac gépen dolgozik, kövesse az alábbi lépéseket:
+
+1. [Exportálja a tanúsítványt pfx formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a pfx elérhető a titkos kulcs exportálásának kiválasztásakor).
+
+1. Másolja a PFX-fájlt a Mac-környezetbe.
+
+1. Nyissa meg a *kulcstartó-hozzáférési* alkalmazást, és importálja a pfx-fájlt.
+
+1. Nyissa meg a tanúsítványok listáját, és azonosítsa az `localhost`nevű nevet.
+
+1. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság* > a *tanúsítvány használatakor* lehetőséget, válassza a *mindig megbízható*lehetőséget. 
+
+   ![Nyissa meg az adott elemhez tartozó helyi menüt, válassza az elem beolvasása és a megbízhatóság alatt – ezen tanúsítvány használata esetén válassza a mindig megbízható lehetőséget.](./media/local-emulator/mac-trust-certificate.png)
 
 Az alábbi lépések elvégzése után a környezet megbízik az emulátor által használt tanúsítványban, amikor az az IP-címhez csatlakozik `/AllowNetworkAccess`.
 
