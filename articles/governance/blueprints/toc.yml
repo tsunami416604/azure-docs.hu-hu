@@ -63,6 +63,17 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: FedRAMP High
+      items:
+        - name: Áttekintés
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/index.md
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/deploy.md
     - name: HIPAA HITRUST
       items:
         - name: Áttekintés

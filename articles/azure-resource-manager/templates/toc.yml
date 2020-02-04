@@ -64,8 +64,6 @@
         - name: Folyamatos integráció az Azure Pipelinesszal
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: VS üzembehelyezési szkript frissítése az Az Powershellre
-          href: update-visual-studio-deployment-script.md
         - name: Biztonságos üzembehelyezési gyakorlatok
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -145,6 +143,8 @@
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: VS üzembehelyezési szkript frissítése az Az modulba
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: Sablonok üzembe helyezése

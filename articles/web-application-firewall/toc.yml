@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: Egyéni szabályok áttekintése
           href: ./ag/custom-waf-rules-overview.md
+        - name: Földrajzi egyeztetéses egyéni szabályok
+          href: ./ag/geomatch-custom-rules.md
         - name: Kérelmek méretkorlátai és kizárási listái
           href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF-szabályzatok áttekintése
+          href: ./ag/policy-overview.md
     - name: Front Door
       items:
         - name: Egyéni szabályok

@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: Feltételes
               href: cognitive-search-skill-conditional.md
+            - name: Egyéni entitás keresése
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: Dokumentumkinyerés
               href: cognitive-search-skill-document-extraction.md
             - name: Entitások felismerése

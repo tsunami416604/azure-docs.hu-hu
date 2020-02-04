@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Hibák elhárítása
       href: troubleshoot-errors.md
+    - name: Egy témakör diagnosztikai naplóinak engedélyezése
+      href: enable-diagnostic-logs-topic.md
 - name: Referencia
   items:
     - name: Azure CLI

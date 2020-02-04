@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 12/05/2019
+ms.date: 01/10/2020
 ms.topic: sample
-ms.openlocfilehash: a0be956037f6b1ee5229ecde7b1491f552113866
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa5f02af6a0e59359d6bc3c2d24515fea535a0fa
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436564"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938297"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -21,6 +21,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Védőkorlátokat biztosít a Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM) szabványnak való megfeleléshez. |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Szabályzatkészletet biztosít a CIS Microsoft Azure Foundations Benchmark ajánlásainak való megfelelőséghez. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Szabályzatkészletet biztosít a FedRAMP Moderate előírásainak való megfeleléshez. |
+| [FedRAMP High](./fedramp-h/index.md) | Szabályzatkészletet biztosít a FedRAMP High előírásainak való megfeleléshez. |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | Szabályzatkészletet biztosít a HIPAA HITRUST előírásainak való megfeleléshez. |
 | [IRS 1075](./irs-1075/index.md) | Védőkorlátokat biztosít az IRS 1075 szabványnak való megfelelőséghez.|
 | [ISO 27001](./iso27001/index.md) | Védőkorlátokat biztosít az ISO 27001 szabványnak való megfelelőséghez. |
@@ -38,11 +39,11 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 ![Tervminta-stratégia](../media/blueprint-samples-strategy.png)
 
 A felhőbevezetési keretrendszer alaprendszere és a felhőbevezetési keretrendszer célzónájának terve azt feltételezi, hogy az ügyfél egy meglévő üres előfizetést készít elő a helyszíni objektumok vagy számítási feladatok Azure-ba történő migrálására.
-(Az A és B régió a fenti ábrán).  
+(Az A és B régió az ábrán.)  
 
 Lehetőség van a tervminták iterálására és az ügyfél által alkalmazott testreszabásokban történő mintakeresésre. Lehetőség van az olyan iparág-specifikus tervek proaktív kezelésére is, mint a pénzügyi szolgáltatások és az e-kereskedelem (a B régió felső része). Hasonlóképpen képzeljük el az olyan összetett architekturális szempontok terveinek létrehozását, mint a több előfizetés, a magas rendelkezésre állás, a régiók közötti erőforrások, valamint a vezérlőket meglévő előfizetésekben és erőforrásokban implementáló ügyfelek (C és D régió).
 
-Léteznek tervminták azon ügyfélforgatókönyvek kezelésére, amelyekben a megfelelőségi követelmények magasak és az architekturális összetettség is jelentős (a fenti ábra E régiója). A fenti F régiót az ügyfelek és a partnerek tervminták használatával és azok egyedi igényekre történő testreszabásával fogják kezelni.
+Léteznek tervminták azon ügyfélforgatókönyvek kezelésére, amelyekben a megfelelőségi követelmények magasak, és az architekturális összetettség is jelentős (az ábra E régiója). Az ábra F régióját az ügyfelek és a partnerek tervminták használatával és azok egyedi igényekre történő testreszabásával fogják kezelni.
 
 ## <a name="next-steps"></a>További lépések
 

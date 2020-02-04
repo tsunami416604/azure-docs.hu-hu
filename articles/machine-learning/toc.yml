@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Az Azure parancssori felület használatával
           href: how-to-manage-workspace-cli.md
+        - name: A REST használata
+          href: how-to-manage-rest.md
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Címkézett adathalmazok létrehozása
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: DevOps használata adatfeldolgozáshoz
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Modellek betanítása
       items:
         - name: A tervező használata

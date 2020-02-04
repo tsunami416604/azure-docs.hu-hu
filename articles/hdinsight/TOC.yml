@@ -517,6 +517,8 @@
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
             - name: Portütközés a szolgáltatások indításakor
               href: ./hadoop/troubleshoot-port-conflict.md
+            - name: Elveszett Key Vault-hozzáférés
+              href: ./hadoop/troubleshoot-lost-key-vault-access.md
 - name: Apache Kafka
   items:
     - name: Áttekintés

@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata | Microsoft Docs
 description: A Java használatával csatlakozhat egy IoT Plug and Play előnézeti eszközhöz, amely az Azure IoT-megoldáshoz csatlakozik.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 217dfe125dcacae5d50645275b20421a23169cb9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550873"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964634"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: interakció egy IoT Plug and Play a megoldáshoz csatlakoztatott előnézeti eszközzel (Java)
 

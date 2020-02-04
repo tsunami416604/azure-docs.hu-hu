@@ -174,12 +174,28 @@
               href: manage-cluster-vertical-scaling.md
             - name: Fürt állapotának ellenőrzése
               href: check-cluster-health.md
+            - name: Fürttag hozzáadása
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure Resource Manager-sablon
+                  href: cluster-principal-resource-manager.md
         - name: Adatbázis
           items:
             - name: Követő adatbázisok
               href: follower.md
             - name: Adatbázis-engedélyek kezelése
               href: manage-database-permissions.md
+            - name: Adatbázistag hozzáadása
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure Resource Manager-sablon
+                  href: database-principal-resource-manager.md
             - name: Házirendek
               items:
                 - name: 'C#'
