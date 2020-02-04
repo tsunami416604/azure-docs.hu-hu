@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514119"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845487"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 
    Ha bármilyen probléma merülne fel, forduljon a Data Box ázsiai részlegéhez a következő címen: adbo@microsoft.com. Adja meg a feladat nevét a tárgy fejlécében, valamint az észlelt problémát.
 
-3. Adja át a csomagot a futárnak. 
+3. Adja át a csomagot a futárnak.
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[Egyénileg kezelt szállítással](#tab/in-selfmanaged)
+
+Ha a Data Box Disket Japánban, Szingapúrban, Koreában vagy Nyugat-Európában használja, és a rendelés létrehozása során kiválasztotta az Egyénileg kezelt szállítás lehetőséget, kövesse az alábbi utasításokat. 
+
+1. Az Azure Portalon lépjen a rendeléséhez tartozó **Áttekintés** panelre. Az **Átvétel ütemezése** lehetőség kiválasztásakor tekintse át a megjelenő utasításokat. Egy hitelesítési kódot fog látni, amelyre a rendelés feladásakor lesz szüksége.
+
+2. Ha készen áll az eszköz visszaküldésére, az alábbi sablon használatával küldjön e-mailt az Azure Data Box üzemeltetési csapatának.
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Az Azure Data Box üzemeltetési csapata Önnel együttműködésben fogja előkészíteni az Azure-adatközpont számára történő feladást.
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>További lépések
 
