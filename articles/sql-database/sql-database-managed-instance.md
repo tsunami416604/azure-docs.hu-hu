@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514555"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935204"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -45,7 +45,7 @@ A felügyelt példány ötvözi a Azure SQL Database és SQL Server adatbázismo
 | **Pásti előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
 |Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>[Automatizált biztonsági mentéssel](sql-database-automated-backups.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
-|**Biztonság és megfelelőség** | **Kezelés**|
+|**Biztonság és megfelelőség** | **Felügyeleti**|
 |Elszigetelt környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure ad-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint az Azure SQL Database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Adatáttelepítési szolgáltatás
 
 > [!IMPORTANT]
@@ -258,7 +258,7 @@ A felügyelt példány központi telepítési lehetősége támogatja a hagyomá
 
 A felügyelt példányok központi telepítésének beállításával központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](sql-database-aad-authentication.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. Az Azure Active Directory a [többtényezős hitelesítés](sql-database-ssms-mfa-authentication-configure.md) (MFA) támogatásával javítja az adatok és alkalmazások biztonságát, miközben támogatja az egyszeri bejelentkezést.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A felügyelt példányok hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:  
 
@@ -299,11 +299,11 @@ A felügyelt példány központi telepítési lehetősége támogatja az SQL 200
   
 Az alábbi ábrán a felügyelt példányok felületének kompatibilitása látható:  
 
-![áttelepítés](./media/sql-database-managed-instance/migration.png)
+![áttelepítési](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>SQL Server helyszíni és felügyelt példány közötti fő különbségek
 
-A felügyelt példány központi telepítési lehetőségének előnye, hogy mindig naprakészek a felhőben, ami azt jelenti, hogy a helyszíni SQL Server egyes funkciói elavultak, kivonhatók vagy alternatívák lehetnek. Bizonyos esetekben szükség van arra, hogy az eszközök tisztában legyenek azzal, hogy egy adott funkció némileg eltérő módon működik, vagy a szolgáltatás nem fut olyan környezetben, amely nem teljes mértékben szabályozható:
+A felügyelt példány központi telepítési lehetőségének előnye, hogy mindig naprakészek a felhőben, ami azt jelenti, hogy a helyszíni SQL Server egyes funkciói elavultak, kivonhatók vagy alternatívák lehetnek. Bizonyos esetekben szükség van arra, hogy az eszközök tisztában legyenek azzal, hogy egy adott funkció némileg eltérő módon működik, vagy ha a szolgáltatás olyan környezetben fut, amely nem teljes mértékben felügyelhető:
 
 - A magas rendelkezésre állás az [Always On rendelkezésre állási csoportokhoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)hasonló technológiával beépített és előre konfigurált.
 - Automatizált biztonsági mentések és időpontok visszaállítása. Az ügyfél olyan `copy-only` biztonsági mentéseket kezdeményezhet, amelyek nem akadályozzák az automatikus biztonsági mentési láncot.
@@ -328,7 +328,7 @@ A következő táblázat több, a Transact SQL szolgáltatáson keresztül elér
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez az érték ugyanaz, mint a SQL Databaseban. Ez **nem** jelzi az SQL Engine 12-es verzióját (SQL Server 2014). A felügyelt példány mindig a legújabb, stabil SQL Engine-verziót futtatja, amely egyenlő vagy magasabb, mint a legutolsó elérhető RTM-verzió SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>`.`<dnsPrefix>`.database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>`.`<dnsPrefix>`. database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Következő lépések
 

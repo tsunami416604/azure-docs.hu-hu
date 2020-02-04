@@ -25,7 +25,7 @@ A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőme
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? Vegye figyelembe a következő lehetőségeket:
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 <a id="direct-connection"></a>
 
 1. **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
@@ -46,7 +46,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
      |Csatlakoztatási mód  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
      |---------|---------|---------|---------|
-     |Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), Mongo (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443)    |
+     |Átjáró  |   HTTPS    |  Minden SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
      |Direct    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
 
      Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A TCP protokoll SSL protokollt használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
@@ -165,7 +165,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
    > [!NOTE] 
    > A maxItemCount tulajdonságot nem szabad kizárólag tördelési célra használni. Ez a legfontosabb használat a lekérdezések teljesítményének javítására azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-   Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A FeedOptions [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) tulajdonsága lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi a legoptimálisabb értéket a dokumentum méretétől függően. Példa:
+   Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A FeedOptions [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) tulajdonsága lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi a legoptimálisabb értéket a dokumentum méretétől függően. Például:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -204,7 +204,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Adatforgalom
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 1. **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**

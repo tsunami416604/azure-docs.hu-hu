@@ -83,6 +83,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Hálózatok közötti kapcsolatok
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+    - name: Klasszikus üzembe helyezés
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: Útmutatók
   items:
     - name: Felkészülés
@@ -317,6 +319,8 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Azure-beli virtuális gép csatlakozási problémáinak elhárítása
           href: troubleshoot-vm-connectivity.md
+    - name: Klasszikus üzembe helyezés
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Referencia
   items:
     - name: Azure CLI
