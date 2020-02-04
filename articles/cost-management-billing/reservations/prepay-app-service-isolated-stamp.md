@@ -1,5 +1,5 @@
 ---
-title: Mentés Azure App Service számára fenntartott kapacitással
+title: Azure App Service-díjak csökkentése fenntartott kapacitással
 description: Megtudhatja, hogyan csökkentheti az Azure App Service-beli izolált bélyegek díjait fenntartott kapacitással.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995883"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Az Azure App Service-beli izolált bélyegek díjainak csökkentése fenntartott kapacitással
@@ -47,7 +47,7 @@ Izolált bélyeghez az [Azure Portalon](https://portal.azure.com/#blade/Microsof
 **A vásárláshoz:**
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Válasszon előfizetést. Az **Előfizetés** listából válassza ki a fenntartott kapacitás kifizetéséhez használt előfizetést. Az előfizetésnél megadott fizetési mód szerint lesznek számlázva a fenntartott példány költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P) vagy CSP-előfizetés.
+1. Válasszon egy előfizetést. Az **Előfizetés** listából válassza ki a fenntartott kapacitás kifizetéséhez használt előfizetést. Az előfizetésnél megadott fizetési mód szerint lesznek számlázva a fenntartott példány költségei. Az előfizetés kétféle típusú lehet: nagyvállalati szerződés (ajánlatszám: MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses (ajánlatszám: MS-AZR-0003P vagy MS-AZR-0023P) vagy CSP-előfizetés.
     - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
     - Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.
 1. Az előfizetés hatókörének kiválasztásához válasszon ki egy **Hatókört**.
@@ -57,7 +57,7 @@ Izolált bélyeghez az [Azure Portalon](https://portal.azure.com/#blade/Microsof
 1. A fenntartott kapacitás által fedezett Azure-régió kiválasztásához válasszon ki egy **Régiót**, és adja hozzá a foglalást a kosárhoz.
 1. Válassza ki az izolált csomagok egyik típusát, majd kattintson a **Kiválasztás** lehetőségre.  
     ![Példa ](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Adja meg az App Service-beli izolált bélyegek lefoglalni kívánt mennyiségét. Ha például hármat ad meg mennyiségként, akkor három lefoglalt bélyeget kap a régióban. Kattintson a **Tovább gombra: felülvizsgálat + vásárlás**.
+1. Adja meg az App Service-beli izolált bélyegek lefoglalni kívánt mennyiségét. Ha például hármat ad meg mennyiségként, akkor három lefoglalt bélyeget kap a régióban. Kattintson a **Tovább: Áttekintés + vásárlás** lehetőségre.
 1. Tekintse át a beállításokat, és kattintson a **Vásárlás** lehetőségre.
 
 A vásárlás után a [Foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) terület megnyitásával bármikor megtekintheti és monitorozhatja a vásárlás állapotát.
@@ -72,7 +72,7 @@ A használati adatok ára nulla azon használat esetében, amelyre érvényes a 
 
 A foglalási kedvezmény a használati adatokban történő megjelenésével kapcsolatos további információkért tekintse meg [a Nagyvállalati Szerződés foglalási költségeit és használati adatait](understand-reserved-instance-usage-ea.md) ismertető cikket, ha Ön Nagyvállalati Szerződéssel rendelkező (EA-) ügyfél. Minden más esetben tekintse meg a [használatalapú fizetéses egyedi előfizetés Azure-beli foglalási használatát](understand-reserved-instance-usage.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
   - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)

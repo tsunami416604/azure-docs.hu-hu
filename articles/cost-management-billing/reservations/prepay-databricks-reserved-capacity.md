@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995870"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Azure Databricks-költségek optimalizálása előzetes vásárlással
@@ -21,7 +21,7 @@ Pénzt takaríthat meg az Azure Databricks-egységeinek (DBU) költségein, ha k
 
 Az előre megvásárolt DBU-kból való levonás automatikusan megtörténik az Azure Databricks használata esetén. Az előzetes vásárlásért járó kedvezmények igénybevételéhez nem szükséges újból üzembe helyeznie vagy hozzárendelnie egy előzetesen vásárolt csomagot az Azure Databricks-munkaterületeihez a DBU-használathoz.
 
-Az előzetes vásárlásért járó kedvezmény csak a DBU-használatra vonatkozik. Az egyéb (pl. számítási, tárolási és hálózatkezelési) költségek számlázása külön történik.
+Az előzetes vásárlásért járó kedvezmény csak a DBU-használatra vonatkozik. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 
 ## <a name="determine-the-right-size-to-buy"></a>A vásárolni kívánt megfelelő méret meghatározása
 
@@ -41,14 +41,14 @@ A vásárlás előtt számítsa ki a különböző számítási feladatokhoz és
 
 Databricks-csomagokat az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) vásárolhat. Lefoglalt kapacitás vásárlásához legalább egy nagyvállalati előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 
-- Legalább egy Nagyvállalati Szerződés tulajdonosi szerepkörének kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy Microsoft Customer Agreement vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P).
-- Az EA-előfizetések esetében engedélyezni kell a fenntartott példányok hozzáadása beállítást az EA portálon. Ha ez a beállítás le van tiltva, akkor az előfizetés EA-rendszergazdájának kell lennie.
+- Legalább egy nagyvállalati szerződés tulajdonosi szerepkörével kell rendelkeznie (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P), vagy Microsoft-ügyfélszerződés szükséges, vagy egy egyéni előfizetés használatalapú fizetéssel (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P).
+- Nagyvállalati előfizetések esetében engedélyezni kell a Fenntartott példányok hozzáadása beállítást az EA Portalon. Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 
 **A vásárláshoz:**
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Válasszon előfizetést. Az **Előfizetés** lista használatával válassza ki a lefoglalt kapacitás kifizetéséhez használt előfizetést. Az előfizetés fizetési módjának használatával megtörténik a lefoglalt kapacitás után fizetett előzetes költségek levonása. A díjak a regisztrációhoz tartozó pénzügyi keretek egyenlegeiből lesznek levonva, illetve kerettúllépésként lesznek számlázva.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
+1. Válasszon egy előfizetést. Az **Előfizetés** lista használatával válassza ki a lefoglalt kapacitás kifizetéséhez használt előfizetést. Az előfizetés fizetési módjának használatával megtörténik a lefoglalt kapacitás után fizetett előzetes költségek levonása. A díjak a regisztrációhoz tartozó pénzügyi keretek egyenlegeiből lesznek levonva, illetve kerettúllépésként lesznek számlázva.
 1. Válassza ki a hatókört. A **Hatókör** lista használatával válassza ki az előfizetés hatókörét.
     - **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
     - **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.
@@ -71,11 +71,11 @@ Előzetes vásárlás esetén nem oszthat fel vagy egyesíthet kötött Databric
 
 A lemondás és a csere az előzetesen vásárolt Databricks-csomagok esetében nem támogatott. Minden vásárlás végleges.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
   - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)

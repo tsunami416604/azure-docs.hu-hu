@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993595"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Regisztrálás Office 365-előfizetésre Azure-fiókkal
@@ -54,7 +54,7 @@ Ha létrehozta az Office 365-előfizetést a szervezet számára, az alábbi lé
 A regisztráció után az Office 365-előfizetés ugyanahhoz az Azure Active Directory-példányhoz lesz hozzáadva, amelyhez az Azure-előfizetés tartozik. További információkért lásd [az Azure- és az Office 365-előfizetésekkel kapcsolatos további tudnivalókat](office-365-account-for-azure-subscription.md#more-about-subs) és [az Azure-előfizetések az Azure Active Directoryhoz társítását](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) ismertető cikket.
 
 ## <a id="RoleInAzureAD"></a>Fiókengedélyek ellenőrzése az Azure AD-ben
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Active Directoryt**.
 
     ![Képernyőkép az Active Directoryról az Azure Portalon](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)
@@ -70,6 +70,6 @@ A regisztráció után az Office 365-előfizetés ugyanahhoz az Azure Active Dir
 
     ![Képernyőkép az Azure Portalon található Számlázási adminisztrátor címtárszerepkörről](./media/azure-account-for-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 06/30/2019
 ms.author: banders
 ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995415"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
@@ -33,7 +33,7 @@ A Marketplace díjai a használati adatokban vannak összevonva. A díjakat megt
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Az Azure használati adatainak foglalási díjai
 
-Az adatok két külön adatkészletre oszlanak: a _tényleges költségeket_ és az _amortizációs költségeket_. A két adathalmaz különbségei a következők:
+Az adatok két különböző adathalmazra vannak felosztva: _Tényleges költség_ és _Amortizált költség_. A két adathalmaz különbségei a következők:
 
 **Tényleges költség** – Olyan adatokat szolgáltat, amelyeket összevethet a havi számlájával. Ezek az adatok tartalmazzák a foglalás vételárát és a foglalás alkalmazásának részleteit. Az adatokból megtudhatja, hogy egy adott napon mely előfizetés, erőforráscsoport vagy erőforrás részesült foglalási kedvezményben. A foglalási kedvezményben részesülő használat tényleges ára (EffectivePrice) nulla.
 
@@ -65,9 +65,9 @@ Az adatokat lekérheti az API használatával, vagy letöltheti azokat az Azure 
 
 Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list). A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](../understand/understand-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
 
-Vegye figyelembe, hogy ezek az adatok nem érhetők el a [Reporting API-k vállalati ügyfelek számára – használati adatok](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Vegye figyelembe, hogy az adatok nem érhetők el az [Enterprise-ügyfelek számára elérhető jelentéskészítő API-k – Használati adatok ](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) alatt.
 
-Íme egy példa a használati adatok API-ra:
+Itt látható egy példahívás a Usage Details API-hoz:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ A mérőket és szűrőket tartalmazó következő táblázat segítséget nyúj
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az EA portálról (ea.azure.com), a használati fájlt le kell tölteni Azure Portalról (portal.azure.com) az új adatok megtekintéséhez.
+Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
 
 Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 
@@ -111,7 +111,7 @@ A foglalásvásárlási költségek elérhetők a Tényleges költségadatokban.
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>Az alulhasznált foglalások mennyiségének és költségeinek lekérése
 
-A _ChargeType_ _= UnusedReservation_esetében az elszámolt költségadatok és szűrők beolvasása. Megkapja a napi fel nem használt foglalások mennyiségét és költségeit. Az adatokat szűrheti foglalás vagy foglalási rendelés szerint a _ReservationId_ (Foglalásazonosító), illetve a _ProductOrderId_ (Termékrendelési azonosító) mezők használatával. Ha egy foglalás kihasználtsága 100%-os, az érték mennyisége 0.
+Kérje le az amortizált költségeket, és szűrjön _ChargeType_ _= UnusedReservation_ (díjtípus = fel nem használt foglalás) szerint. Megkapja a napi fel nem használt foglalások mennyiségét és költségeit. Az adatokat szűrheti foglalás vagy foglalási rendelés szerint a _ReservationId_ (Foglalásazonosító), illetve a _ProductOrderId_ (Termékrendelési azonosító) mezők használatával. Ha egy foglalás kihasználtsága 100%-os, az érték mennyisége 0.
 
 ### <a name="amortize-reservation-costs"></a>Amortizálhatja a foglalási költségeket
 
@@ -148,13 +148,13 @@ A foglalási költségek elérhetők a [költségelemzésben](https://aka.ms/cos
 
 ![Példa, hogy hol választható ki az amortizált költség a költségelemzésen belül](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Csoportosítás díjtípus szerint a használat, a vásárlások és a visszatérítések, illetve foglalás szerint a foglalás és az igény szerinti díjak lebontásának megtekintéséhez. Ne feledje, hogy a vásárlások tényleges költségeinek megvizsgálása esetén csak a foglalás költségeit kell megtekinteni, a költségek azonban az elszámolt költségek alapján lesznek kiosztva az egyes erőforrásokhoz. Az amortizált költségeknél egy új díjtípus is megjelenik **UnusedReservation** (Fel nem használt foglalás) néven.
+Csoportosítás díjtípus szerint a használat, a vásárlások és a visszatérítések, illetve foglalás szerint a foglalás és az igény szerinti díjak lebontásának megtekintéséhez. Ne feledje, hogy a tényleges költségeknél csak a vásárlások vannak feltüntetve foglalási költségként, az amortizált költségeknél azonban a költségek azokhoz az erőforrásokhoz vannak elosztva, amelyek kedvezményben részesültek. Az amortizált költségeknél egy új díjtípus is megjelenik **UnusedReservation** (Fel nem használt foglalás) néven.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

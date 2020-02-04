@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988135"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Az Azure-előfizetés bejelentkezési hibáinak elhárítása
 
 Ez az útmutató segítséget nyújt az Azure Portalra vagy az Azure Fiókközpontba való bejelentkezéssel kapcsolatos hibák megoldásában.
 
-## <a name="issues"></a>Problémák
+## <a name="issues"></a>Hibák
 
 ### <a name="page-hangs-in-the-loading-status"></a>Az oldal betöltési állapotban lefagy
 
@@ -32,7 +32,7 @@ Ha az internetböngésző oldala lefagy, próbálkozzon az alábbi lépésekkel,
 
 - Frissítse az oldalt.
 - Használjon másik internetböngészőt.
-- Használjon privát böngészési módot a böngészőben. Internet Explorer esetén: kattintson az **eszközök** > **biztonsági** > **InPrivate-böngészés**lehetőségre, majd keresse meg és jelentkezzen be a [Azure Portal](https://portal.azure.com/) vagy az [Azure Account Center webhelyre](https://account.azure.com/Subscriptions).
+- Használjon privát böngészési módot a böngészőben. Internet Explorer esetén: Kattintson az **Eszközök** > **Biztonság** > **InPrivate-böngészés** elemre, majd a böngészőben lépjen az [Azure Portalra](https://portal.azure.com/) vagy az [Azure Fiókközpontba](https://account.azure.com/Subscriptions), és jelentkezzen be.
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Automatikusan egy másik felhasználóként jelentkezik be
 
@@ -42,20 +42,20 @@ A hiba elhárításához próbálkozzon az alábbi módszerekkel:
 
 - Ürítse ki a gyorsítótárat, és törölje az internetes cookie-kat. Az Internet Explorerben kattintson **Eszközök** > **Internetbeállítások** > **Törlés** elemre. Ügyeljen arra, hogy az átmeneti fájlok, cookie-k, a jelszó és a böngészési előzmények jelölőnégyzete be legyen jelölve, majd kattintson a Törlés gombra.
 - Az Internet Explorer beállításainak alaphelyzetbe állításával visszaállíthatja az Ön által megadott személyes beállításokat. Kattintson az **Eszközök** > **Internetbeállítások** > **Speciális**, elemre, majd válassza a **Személyes beállítások törlése** >  **Alaphelyzetbe állítás** elemet.
-- Használjon privát böngészési módot a böngészőben. Internet Explorer esetén: kattintson az **eszközök** > **biztonsági** > **InPrivate-böngészés**lehetőségre, majd keresse meg és jelentkezzen be a [Azure Portal](https://portal.azure.com/) vagy az [Azure Account Center webhelyre](https://account.azure.com/Subscriptions).
+- Használjon privát böngészési módot a böngészőben. Internet Explorer esetén:  Kattintson az **Eszközök** > **Biztonság** > **InPrivate-böngészés** elemre, majd a böngészőben lépjen az [Azure Portalra](https://portal.azure.com/) vagy az [Azure Fiókközpontba](https://account.azure.com/Subscriptions), és jelentkezzen be.
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Be tudok jelentkezni, de a *Nem található előfizetés* hiba jelenik meg
 
 Ez a probléma akkor fordul elő, ha nem a megfelelő címtárat választotta ki, vagy ha a fiókja nem rendelkezik megfelelő engedélyekkel.
 
-**1. forgatókönyv:** Hibaüzenet érkezik a [Azure Portal](https://portal.azure.com/)
+**1. forgatókönyv:** A hibaüzenet az [Azure Portalon](https://portal.azure.com/) jelenik meg
 
 A probléma megoldása:
 
 - A jobb felső sarokban kattintson a fiókjára, és ellenőrizze, hogy a megfelelő Azure-címtárat választotta-e ki.
 - Ha a megfelelő Azure-címtár van kiválasztva, de továbbra is megjelenik a hibaüzenet, adja hozzá a fiókot [Tulajdonosként](add-change-subscription-administrator.md).
 
-**2. forgatókönyv:** Hibaüzenet érkezik a [Azure Fiókközpont](https://account.windowsazure.com/Subscriptions)
+**2. forgatókönyv:** A hibaüzenet az [Azure Fiókközpontban](https://account.windowsazure.com/Subscriptions) jelenik meg
 
 Ellenőrizze, hogy az Ön által használt fiók a Fiókadminisztrátor. Annak ellenőrzéséhez, hogy ki a Fiókadminisztrátor, kövesse az alábbi lépéseket:
 
@@ -78,6 +78,6 @@ Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhár�
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-számlázás dokumentációja](../../billing/index.md)

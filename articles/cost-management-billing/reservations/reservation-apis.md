@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 992e46cd8f10ff3c434f34a9f90c777870f3ada4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995818"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k az Azure-foglalás automatizálásához
@@ -38,7 +38,7 @@ A REST API-kkal programozott módon vásárolhat Azure-foglalásokat és szoftve
 PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
 ```
 
-Kérelem törzse:
+Kérés törzse:
 
 ```
 {
@@ -108,9 +108,9 @@ A foglalás hatóköre kiterjedhet egyetlen előfizetésre, egyetlen erőforrás
 
 A hatókör programozott módon történő módosításához használja a [Foglalás – Frissítés](/rest/api/reserved-vm-instances/reservation/update) API-t.
 
-## <a name="learn-more"></a>További információk
+## <a name="learn-more"></a>Részletek
 
-- [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
+- [Mik azok az Azure-beli foglalások?](save-compute-costs-reservations.md)
 - [A virtuális gépek foglalására vonatkozó kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)
 - [A SUSE Linux Enterprise szoftvercsomag kedvezményei alkalmazásának ismertetése](understand-suse-reservation-charges.md)
 - [Az egyéb foglalási kedvezmények alkalmazásának ismertetése](understand-reservation-charges.md)

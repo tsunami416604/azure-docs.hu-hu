@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995181"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure Reservations megtekintése az Azure Portalon
@@ -31,7 +31,7 @@ További információk [a foglalást kezelő felhasználók hozzáadásáról va
 
 Foglalás megtekintése Tulajdonosként vagy Olvasóként:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keressen a **Foglalások** kifejezésre.
     ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-reservation-search.png)  
 3. A listán szerepel az összes olyan foglalás, amelyhez Tulajdonos vagy Olvasó szerepkörben hozzáfér. Mindegyik foglalás mellett a kihasználtság legutóbb ismert százalékos értéke látható.  
@@ -48,7 +48,7 @@ Ha módosítania kell a foglalás hatókörét, fel kell osztania a foglalást, 
 
 Foglalási tranzakciók megtekintése az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
     ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-cm-billing-search.png)
@@ -61,7 +61,7 @@ Foglalási tranzakciók megtekintése az Azure Portalon:
 
 Ha az adatokat egy API használatával kérné le, tekintse meg [a fenntartott példány tranzakciós díjainak vállalati ügyfelek esetén történő lekérését](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 
@@ -85,6 +85,6 @@ A kihasználtság ismertetése:
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
 - [A foglalási kihasználtság ismertetése CSP-előfizetésnél](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

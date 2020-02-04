@@ -1,5 +1,5 @@
 ---
-title: Feltételek a Microsoft Customer Agreement árlista – Azure
+title: A Microsoft-ügyfélszerződés árlistáján szereplő kifejezések – Azure
 description: Ismerje meg, hogyan olvashatók le és értelmezhetők a Microsoft-ügyfélszerződésre vonatkozó használati adatok és a hozzá tartozó számlák.
 author: bandersmsft
 manager: jureid
@@ -12,15 +12,15 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994479"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>A Microsoft-ügyfélszerződés árlistáján szereplő kifejezések
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure-beli számlázási fiókra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 Ha Ön egy számlázási profil tulajdonosa, közreműködője, olvasója vagy számlakezelője, letöltheti a szervezet árlistáját az Azure Portalról. Lásd [A cég vagy intézmény díjszabásának megtekintése és letöltése](ea-pricing.md) című részt.
 
@@ -48,22 +48,22 @@ A következő szakasz ismerteti a Microsoft-ügyfélszerződés árlistáján sz
 | meterSubCategory  | A fogyasztásmérő osztályozási alkategóriájának neve.  |
 | meterType  |  A fogyasztásmérő típusának neve. |
 | meterRegion  | Azon régió neve, ahol a szolgáltatáshoz tartozó fogyasztásmérő elérhető. Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.    |
-| Termék  | A díjat felszámító termék neve. Pl.: alapszintű SQL-adatbázis vs standard SQL-adatbázis  |
+| Product  | Annak a terméknek a neve, amelyre vonatkozóan a díjak keletkeznek. Pl.: Basic SQL DB vagy Standard SQL DB  |
 | productId  | Annak a terméknek az egyedi azonosítója, amelynek fogyasztásmérője igénybe lett véve. |
 | productOrderName  | A megvásárolt termékcsomag neve. |
-| serviceFamily  | Az Azure-szolgáltatás típusa. Pl.: számítás, elemzés, biztonság |
+| serviceFamily  | Az Azure-szolgáltatás típusa. Például: Compute, Analytics, Security |
 | tierMinimumUnits  | Meghatározza a szintek azon tartományának alsó határát, amelyek alapján az árakat meghatározták. Ha például a tartomány 0-tól 100-ig terjed, a tierMinimumUnits 0 lenne.  |
 | unitOfMeasure  | A szolgáltatás számlázásának mértékegységét adja meg. A számítási szolgáltatások számlázása például óraalapú. |
-| unitPrice  | A számlázás időpontjában érvényes egységár (nem a tényleges kevert ár), amely egy fogyasztásmérőre és egy termékrendelésnévre vonatkozik.  Megjegyzés: az egység ára nem egyezik meg a használati adatokban szereplő érvényes díjszabással, ha olyan szolgáltatások esetén, amelyek eltérő díjszabással rendelkeznek a rétegek között.  A többszintes árképzésű szolgáltatások esetében a tényleges díj a különböző szintekre vonatkozó kevert összeg, és nem jelenít meg az egyes szintekre vonatkozó egységárat. A kevert ár vagy a tényleges ár a felhasznált mennyiség több szintre kiterjedő nettó díja (ahol minden egyes szinthez adott egységár tartozik). |
+| unitPrice  | A számlázás időpontjában érvényes egységár (nem a tényleges kevert ár), amely egy fogyasztásmérőre és egy termékrendelésnévre vonatkozik.  Megjegyzés: Az egységár nem azonos a használat részleteit tartalmazó letöltött adatokban szereplő érvényes árral olyan szolgáltatások esetén, amelyek eltérő díjszabással rendelkeznek a különböző szinteken.  A többszintes árképzésű szolgáltatások esetében a tényleges díj a különböző szintekre vonatkozó kevert összeg, és nem jelenít meg az egyes szintekre vonatkozó egységárat. A kevert ár vagy a tényleges ár a felhasznált mennyiség több szintre kiterjedő nettó díja (ahol minden egyes szinthez adott egységár tartozik). |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A cég vagy intézmény díjszabásának megtekintése és letöltése](ea-pricing.md)

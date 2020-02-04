@@ -17,10 +17,10 @@ ms.date: 12/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991437"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Az Azure-beli számlázási információkhoz való hozzáférés kezelése
@@ -109,11 +109,11 @@ A Számlázási olvasó funkció előzetes verzióként érhető el, és még ne
 ## <a name="check-the-type-of-your-billing-account"></a>A számlázási fiók típusának megtekintése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A más (például tulajdonosi vagy közreműködői) szerepkörrel rendelkező felhasználók nemcsak a számlázási adatokhoz, hanem az Azure-szolgáltatásokhoz is hozzáférhetnek. A szerepkörök kezelésével kapcsolatban lásd a [hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 - A szerepkörökkel kapcsolatos további információkért lásd az [Azure-erőforrások beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

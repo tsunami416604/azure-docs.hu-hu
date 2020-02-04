@@ -1,5 +1,5 @@
 ---
-title: A Microsoft ügyfél-szerződés számlázásának beállítása – Azure
+title: Számlázás beállítása a Microsoft-ügyfélszerződéshez – Azure
 description: Megtudhatja, hogyan állíthatja be számlázási fiókját egy Microsoft-ügyfélszerződéshez.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994635"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Számlázási fiók beállítása Microsoft-ügyfélszerződéshez
@@ -126,13 +126,13 @@ A nagyvállalati szerződéses regisztrációban a részlegekhez beállított k�
 
 A Nagyvállalati Szerződés regisztrációjának Azure-előfizetéseinél beállított költséghelyek továbbítódnak az új számlázási fiókba. A részlegek és a nagyvállalati szerződéses fiókok esetében azonban nem támogatottak a költséghelyek.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 A következő szakaszok további információval szolgálnak a számlázási fiók beállításáról.
 
 ### <a name="no-service-downtime"></a>Nincs szolgáltatáskiesés
 
-Az előfizetésében meglévő Azure-szolgáltatások megszakítás nélkül futnak tovább. Csak az Azure-előfizetései számlázási kapcsolatait állítjuk át. Meglévő erőforrásait, erőforráscsoportjait vagy felügyeleti csoportjait ez nem érinti.
+Az előfizetésében lévő Azure-szolgáltatások megszakítás nélkül futnak tovább. Csak az Azure-előfizetései számlázási kapcsolatát állítjuk át. Meglévő erőforrásait, erőforráscsoportjait vagy felügyeleti csoportjait ez nem érinti.
 
 ### <a name="user-access-to-azure-resources"></a>Felhasználói hozzáférés az Azure-erőforrásokhoz
 
@@ -140,7 +140,7 @@ Az Azure RBAC (szerepköralapú hozzáférés-vezérlés) használatával beáll
 
 ### <a name="azure-reservations"></a>Azure Reservations
 
-A Nagyvállalati Szerződésben foglalt összes Azure Reserved VM Instances-példány is át lesz helyezve az új számlázási fiókba. Az átállás alatt az előfizetéseiben érvényesített foglalási kedvezményekre nem lesz díj felszámolva.
+A Nagyvállalati Szerződésben foglalt összes Azure Reserved VM Instances-példány is át lesz helyezve az új számlázási fiókba. Az átállás alatt az előfizetéseiben érvényesített foglalási kedvezmények nem módosulnak.
 
 ### <a name="azure-marketplace-products"></a>Azure Marketplace-termékek
 
@@ -186,7 +186,7 @@ A beállítás befejezéséhez hozzá kell férnie az új számlázási fiókhoz
 
     - A Nagyvállalati Szerződés hierarchiának megfelelő számlázási hierarchia jön létre az új számlázási fiókban. További információért lásd: [A számlázási hierarchia változásainak megismerése](#understand-changes-to-your-billing-hierarchy).
     - A nagyvállalati szerződéses regisztráció rendszergazdái hozzáférést kapnak az új számlázási fiókhoz, így továbbra is kezelhetik a szervezet számlázását.
-    - Az Azure-előfizetései számlázása az új fiókon történik. Az **áttérés során nem lesz hatással az Azure-szolgáltatásokra. A működés megszakítás nélkül is megmaradnak**.
+    - Az Azure-előfizetései számlázása az új fiókon történik. **Az átváltás folyamata nem lesz hatással az Azure-szolgáltatásaira. Továbbra is problémamentesen fognak futni**.
     - Ha rendelkezik Azure Reserved VM Instances-példányokkal, akkor az új számlázási fiókra kerülnek ugyanazzal a kedvezménnyel és időtartammal.
 
 4. Az **átváltás állapotát** jelző lapon figyelheti az átváltás állapotát.
@@ -199,7 +199,7 @@ A beállítás befejezéséhez hozzá kell férnie az új számlázási fiókhoz
 
 ### <a name="azure-subscriptions"></a>Azure-előfizetések
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -213,13 +213,13 @@ A beállítás befejezéséhez hozzá kell férnie az új számlázási fiókhoz
 
 Azok az Azure-előfizetések, amelyek a nagyvállalati szerződéses regisztrációról lettek átváltva az új számlázási fiókra, az Azure-előfizetések lapon jelennek meg. Ha úgy gondolja, hogy valamelyik előfizetés hiányzik, manuálisan váltsa át az előfizetés számlázását az Azure Portalon. További információért lásd az [Azure-előfizetések számlázási tulajdonjogának beszerzése más felhasználóktól](mca-request-billing-ownership.md) című részt.
 
-### <a name="azure-reservations"></a>Azure-foglalások
+### <a name="azure-reservations"></a>Azure Reserved Virtual Machine Instances
 
 A Nagyvállalati Szerződés regisztrációjába foglalt Azure Reserved Virtual Machine Instances-példányok is át lesznek helyezve az új számlázási fiókba ugyanazzal a kedvezménnyel és időtartammal. Az átadás előtti tranzakciók nem fognak megjelenni az új számlázási fiókban. Ha felkeresi az [Azure Reserved Virtual Machine Instances oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade), ellenőrizheti, hogy a példányok kedvezményeit alkalmazza-e a rendszer az előfizetéseire.
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>A vállalati rendszergazdák hozzáférése a számlázási fiókban
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -235,7 +235,7 @@ A vállalati rendszergazdák számlázásifiók-tulajdonosokként vannak felsoro
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>A vállalati rendszergazdák hozzáférése a számlázási profilon
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -251,7 +251,7 @@ A vállalati rendszergazdák számlázásiprofil-tulajdonosokként vannak felsor
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>A vállalati rendszergazdák, a részlegszintű rendszergazdák és a fióktulajdonosok hozzáférése a számlaszakaszokhoz
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -267,11 +267,11 @@ A vállalati rendszergazdák számlázásiprofil-tulajdonosokként vannak felsor
 
 A vállalati rendszergazdák és a részlegszintű rendszergazdák a számlaszakasz tulajdonosaiként vagy a számlaszakasz olvasóiként, míg a részlegben lévő fiókok tulajdonosai az Azure-előfizetések létrehozóiként vannak feltüntetve. Ismételje meg a lépéseket az összes számlaszakasz esetén, hogy leellenőrizze a nagyvállalati szerződéses regisztráció részlegeinek hozzáférését. Azok a fióktulajdonosok, akik egyetlen részlegnek sem voltak részei, az **Alapértelmezett számlaszakasz** nevű számlaszakaszhoz kapnak hozzáférést. Ha úgy gondolja, hogy hiányzik valamelyik rendszergazda hozzáférése, hozzáférést adhat neki az Azure Portalon. További információért lásd [a számlázási szerepkörök az Azure Portalon történő kezelését](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Új számlázási fiók – első lépések](../understand/mca-overview.md)
 

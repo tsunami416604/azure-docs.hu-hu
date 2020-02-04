@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992139"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API-k
@@ -68,7 +68,7 @@ Amennyiben olyan személyeknek szeretné megadni az API hozzáférési kulcsokat
 
 Adja át az API-kulcsokat minden hitelesítési és engedélyezési híváshoz. Adja meg a következő tulajdonságot a HTTP-fejlécekben:
 
-| Kérelemfejléc kulcsa | Value (Díj) |
+| Kérelemfejléc kulcsa | Érték |
 | --- | --- |
 | Engedélyezés | Adja meg az értéket ebben a formátumban: **tulajdonos {API\_-KULCS}**
 Példa: bearer \&lt;APIKey\&gt; |
@@ -122,21 +122,21 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Subscription Name | SubscriptionName | SubscriptionName |   |
 | Dátum | Dátum | Dátum | Azt a dátumot jeleníti meg, amikor a szolgáltatáskatalógus jelentése futott. A formátum egy időbélyeg nélküli dátumsztring. |
-| Hónap | Hónap | Hónap |   |
-| Nap | Nap | Nap |   |
-| Év | Év | Év |   |
-| Termék | BillableItemName | Termék |   |
+| Month | Month | Month |   |
+| Day | Day | Day |   |
+| Year | Year | Year |   |
+| Product | BillableItemName | Product |   |
 | Meter ID (Mérési azonosító) | ResourceGUID | MeterId |   |
-| Mérőkategória | Szolgáltatás | MeterCategory | A szolgáltatások keresésében segít. Olyan szolgáltatásokhoz használható, amelyeknek több szolgáltatástípusa van. Például Virtual Machines. |
-| Mérő-alkategória | ServiceType | MeterSubCategory | Második szintű információkat nyújt a szolgáltatásokról. Például A1 méretű VM (nem Windows).  |
+| Meter Category (Mérési kategória) | Szolgáltatás | MeterCategory | A szolgáltatások keresésében segít. Olyan szolgáltatásokhoz használható, amelyeknek több szolgáltatástípusa van. Például Virtual Machines. |
+| Meter Sub-Category (Mérési alkategória) | ServiceType | MeterSubCategory | Második szintű információkat nyújt a szolgáltatásokról. Például A1 méretű VM (nem Windows).  |
 | Meter Region (Mérési régió) | ServiceRegion | MeterRegion | Harmadik szintű információ a szolgáltatásokhoz. Segít megtalálni a ResourceGUID régiókörnyezetét. |
-| Mérő neve | ServiceResource | MeterName | A szolgáltatás neve. |
+| Meter Name (Mérés neve) | ServiceResource | MeterName | A szolgáltatás neve. |
 | Consumed Quantity (Felhasznált mennyiség) | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
 | Resource Location (Erőforrás helye) | ServiceSubRegion | ResourceLocation |   |
 | Consumed Service (Használt szolgáltatás) | ServiceInfo | ConsumedService |   |
-| Instance ID (Példányazonosító) | Component (Összetevő) | InstanceId |   |
+| Instance ID (Példányazonosító) | Összetevő | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
@@ -144,7 +144,7 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
 | Department Name | DepartmentName | DepartmentName |   |
 | Cost Center | CostCenter | CostCenter |   |
-| Mértékegység | UnitOfMeasure | UnitOfMeasure | Értékek: óra, GB, események, leküldések, egység, Egységórák, MB, napi egység |
+| Mértékegység | UnitOfMeasure | UnitOfMeasure | Példaértékek: Óra, GB, Események, Leküldések, Egység, Egységórák, MB, Napi egységek |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace-jelentés
@@ -157,19 +157,19 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Subscription Name | SubscriptionName |  SubscriptionName |
 | Dátum | BillingCycle |  Dátum (Csak dátumsztring. Nincs időbélyeg)
-| Hónap | Hónap |  Hónap |
-| Nap | Nap |  Nap |
-| Év | Év |  Év |
+| Month | Month |  Month |
+| Day | Day |  Day |
+| Year | Year |  Year |
 | Meter ID (Mérési azonosító) | MeterResourceId |  MeterId |
 | Publisher Name | PublisherFriendlyName |  Közzétevő neve |
-| Csomag neve | OfferFriendlyName |  OfferName |
+| Offer Name | OfferFriendlyName |  OfferName |
 | Plan Name | PlanFriendlyName |  PlanName |
 | Consumed Quantity (Felhasznált mennyiség) | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Mértékegység | UnitOfMeasure | UnitOfMeasure |
 | Instance ID (Példányazonosító) | InstanceId | InstanceId |
-| Additional Info (Megjegyzés) oszlop | AdditionalInfo | AdditionalInfo |
+| Additional Info (További információ) | AdditionalInfo | AdditionalInfo |
 | Címkék | Címkék | Címkék |
 | Order Number | OrderNumber | OrderNumber |
 | Department Name | DepartmentNames | DepartmentName |
@@ -208,7 +208,7 @@ Ha időtúllépési hibát tapasztal, megoldhatja azt az időtúllépési küsz�
 
 Az API-hívásokból 400-as és 404-es (nem érhető el) hibaüzenetek jelenhetnek meg, ha a kiválasztott dátumtartományhoz nem érhető el aktuális adat. Ez a hiba például akkor fordulhat elő, ha nemrég fiókátvitelt kezdeményeztek. Az adatok egy adott dátumtól kezdve egy új regisztrációban találhatók. A hiba akkor is előfordulhat, ha új regisztrációs számot használ a régi regisztrációban található információk lekéréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure EA Portal rendszergazdáinak érdemes elolvasniuk [a nagyvállalati szerződéses Azure Portal adminisztrációjáról](ea-portal-administration.md) szóló cikket a gyakori adminisztratív feladatok megismeréséhez.
 - Ha segítségre van szüksége az Azure EA Portallal kapcsolatos hibák elhárításához, olvassa el a következő részt: [A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása](ea-portal-troubleshoot.md).

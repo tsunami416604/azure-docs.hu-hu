@@ -13,10 +13,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 14346ceda9574d18050108e585d5ff4cdb133e31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992022"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>A cég vagy intézmény Azure-díjszabásának megtekintése és letöltése
@@ -36,7 +36,7 @@ A vállalati rendszergazda által a szervezet számára beállított szabályzat
 
    ![Képernyőkép a Számlázás területen szereplő használati adatokról és díjakról](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Válassza ki ![képernyőképet, amely a hónap Azure Portal keresés](./media/ea-pricing/download-icon.png) **letöltését** jeleníti meg.
+1. Válassza a ![Képernyőkép az Azure Portal keresőmezőjéről](./media/ea-pricing/download-icon.png) **Letöltés** lehetőséget az adott hónapban.
 
 1. Az **Árlistán** belül válassza a **CSV letöltésére** szolgáló elemet.
 
@@ -91,7 +91,7 @@ A szervezete díjszabásának használatával megbecsülheti a költségeket az 
 ## <a name="check-your-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön EA-ügyfél, tekintse meg a következő cikkeket:
 

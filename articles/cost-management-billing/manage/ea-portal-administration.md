@@ -8,12 +8,12 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547574"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769674"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -21,7 +21,7 @@ Ez a cikk a rendszergazdák Azure EA Portalon (https://ea.azure.com) ) elvégzen
 
 ## <a name="add-a-new-enterprise-administrator"></a>Új vállalati rendszergazda hozzáadása
 
-Az Azure EA-regisztrációk kezelésénél a vállalati rendszergazdák rendelkeznek a legtöbb jogosultsággal. Az első Azure EA-rendszergazdát a nagyvállalati szerződés megkötésekor hozták létre. Viszont bármikor hozzá lehet adni új rendszergazdákat, vagy el is lehet távolítani őket. Az új rendszergazdákat csak a meglévő rendszergazdák adhatják hozzá. További információ a vállalati rendszergazdák hozzáadásáról: [másik vállalati rendszergazda létrehozása](ea-portal-get-started.md#create-another-enterprise-admin). A számlázási profil szerepköreivel és feladataival kapcsolatos további információkért lásd a [Számlázási profilok szerepkörei és feladatai](understand-mca-roles.md#billing-profile-roles-and-tasks)című témakört.
+Az Azure EA-regisztrációk kezelésénél a vállalati rendszergazdák rendelkeznek a legtöbb jogosultsággal. Az első Azure EA-rendszergazdát a nagyvállalati szerződés megkötésekor hozták létre. Viszont bármikor hozzá lehet adni új rendszergazdákat, vagy el is lehet távolítani őket. Az új rendszergazdákat csak a meglévő rendszergazdák adhatják hozzá. A vállalati rendszergazdák hozzáadásával kapcsolatos további információkért lásd az [új vállalati rendszergazda létrehozását](ea-portal-get-started.md#create-another-enterprise-administrator) ismertető részt. A számlázási profil szerepköreivel és feladataival kapcsolatos további információkért lásd [a számlázási profil szerepköreinek és azok feladatainak ismertetését](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-user-state-from-pending-to-active"></a>A felhasználói állapot frissítése Függőben értékről Aktív értékre
 
@@ -31,7 +31,7 @@ Amikor először hozzáadják az új fióktulajdonosokat (AO) egy Azure EA-regis
 
 Ha az egyik Azure EA-rendszergazda létrehozott egy részleget, az Azure vállalati rendszergazda részlegszintű rendszergazdákat adhat hozzá, és hozzárendelheti őket egy-egy részleghez. A részlegszintű rendszergazdák új fiókokat hozhatnak létre. Az Azure EA-előfizetések létrehozásához új fiókokra van szükség.
 
-A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](ea-portal-get-started.md#add-a-department-admin) ismertető témakört.
+A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](ea-portal-get-started.md#add-a-department-administrator) ismertető témakört.
 
 ## <a name="associate-an-account-to-a-department"></a>Fiókok részlegekhez történő hozzárendelésére
 
@@ -44,7 +44,7 @@ A vállalati rendszergazdák a részlegekhez társíthatják a regisztrációban
 1. Kattintson a **Részleg** elemre.
 1. Vigye az egérmutatót a kívánt fiókot tartalmazó sor fölé, és kattintson a jobbra található ceruza ikonra.
 1. Válassza ki a kívánt részleget a legördülő menüből.
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="department-spending-quotas"></a>Részleg költségkvótái
 
@@ -63,7 +63,7 @@ A részlegszintű rendszergazda megtekintheti a költségkvótát, de csak a vá
     - Jelenleg a Részleg neve és a Költséghely is szerkeszthető.
  1. Kattintson a **Mentés** gombra.
 
-A részlegek költségkerete mostantól a részleg lap részleg listájának nézetében jelenik meg. A jelenlegi kötelezettségvállalás végén az Azure EA portál a következő kötelezettségvállalási időszakra vonatkozó költségkeretet fogja fenntartani.
+A részleg költségkvótája mostantól megjelenik a Részleg fül részlegek listáját tartalmazó nézetében. A jelenlegi kötelezettségvállalási időszak végén az Azure EA Portal fenntartja a költségkvótákat a következő kötelezettségvállalási időszakra.
 
 A részlegkvóta összege független az aktuális pénzügyi kötelezettségvállalástól, és a kvóta összege és a riasztások csak belső használatra szolgálnak. A részleg költségkvótái csak tájékoztató jellegűek, és nem kényszerítenek a költségkeretek betartására.
 
@@ -208,7 +208,7 @@ Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az
 
 Ha a címzettnek korlátoznia kell a hozzáférését az Azure-erőforrásokhoz, érdemes megfontolnia a szolgáltatáshoz társított titkok frissítését. A legtöbb erőforrást a következő lépésekkel lehet frissíteni:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A központi menüben válassza a **Minden erőforrás** elemet.
 3. Válassza ki az erőforrást.
 4. Az erőforrás oldalon kattintson a **Beállítások** elemre a meglévő titkos kulcsok megtekintéséhez és frissítéséhez.
@@ -250,7 +250,7 @@ Kapcsolattartó hozzáadása:
 
 1. Kattintson a **+Kapcsolattartó hozzáadása** elemre.
 2. Írja be az e-mail-címet, majd erősítse meg.
-3. Kattintson a **Mentés** gombra.
+3. Kattintson a **Save** (Mentés) gombra.
 
 Az új értesítési kapcsolattartó megjelenik az **Értesítendő fél** területen. Az értesítés gyakoriságának módosításához válassza ki az értesítendő felet, majd kattintson a kiválasztott sor jobb oldalán található ceruza szimbólumra. Állítsa be a gyakorisághoz a **naponta**, **hetente**, **havonta** vagy a **nincs** értéket.
 
@@ -293,7 +293,7 @@ Ha a felhasználó nem kap értesítést, a következő lépésekkel ellenőrizz
 4. Az értesítési beállítások szerkesztéséhez vigye a mutatót a megfelelő rendszergazda fölé, és kattintson a ceruza szimbólumra.
 5. Állítsa be igény szerint az értesítési gyakoriságot és az életciklus-értesítéseket.
 6. Szükség esetén adjon hozzá egy kapcsolattartót, és kattintson a **Hozzáadás** gombra.
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Save** (Mentés) gombra.
 
 ![A Kapcsolattartó hozzáadása panelt mutató példa ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 
@@ -365,7 +365,7 @@ Nagyvállalati Azure-előfizetés létrehozása előtt a fiókját az EA-regiszt
 
 Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdonosi szerepkörrel kell rendelkeznie az [EA Portalon](https://ea.azure.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el, hogyan takaríthat meg pénzt a [virtuális gépek lefoglalásával](ea-portal-vm-reservations.md).
 - Ha segítségre van szüksége az Azure EA Portallal kapcsolatos hibák elhárításához, olvassa el a következő részt: [A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása](ea-portal-troubleshoot.md).

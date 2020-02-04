@@ -12,10 +12,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 5ac0918fcd8c5a1eb9242d603a7e3433d0f709ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988460"
 ---
 # <a name="azure-consumption-api-overview"></a>Az Azure-használati API áttekintése
@@ -31,7 +31,7 @@ Az Azure használati API-k a következőkhöz biztosítanak hozzáférést:
     - Foglalási összegzések
 - Csak vállalati ügyfelek számára
     - Árlista
-    - Költségkeret
+    - Költségvetések
     - Egyenlegek
 
 ## <a name="usage-details-api"></a>Usage Details API
@@ -92,7 +92,7 @@ Az API a következőket tartalmazza:
 -   **Szűrés** – A költségvetést az erőforrások kisebb halmazára szűrheti a következő konfigurálható szűrőkkel
     - Erőforráscsoport
     - Erőforrás neve
-    - Forgalmi díj
+    - Mérő
 -   **Konfigurálható költségvetési időszakok** – Itt adhatja meg, hogy milyen gyakran kell alaphelyzetbe állítani a költségvetést, és hogy mennyi ideig érvényes a költségvetés.
 
 További információt a [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) műszaki specifikációjában talál.
@@ -148,7 +148,7 @@ Az API a következőket tartalmazza:
 
 További információt a [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) műszaki specifikációjában talál.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Néhány forgatókönyv, amelyek a használati API-kkal válnak lehetségessé:
 

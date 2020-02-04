@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992841"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban
@@ -35,7 +35,7 @@ Ha rendelkezik [Microsoft-ügyfélszerződéssel](#check-access-to-a-microsoft-c
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/change-credit-card/search.png)
+    ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
 
 1. Válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
 1. Válassza a **Fizetési módok** elemet.
@@ -60,7 +60,7 @@ Ha a hitelkártya megújul, és a szám változatlan marad, frissítheti a megl�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/change-credit-card/search.png)
+    ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
 
 1. Válassza a **Fizetési módok** elemet.
 
@@ -80,7 +80,7 @@ Ha egynél több, ugyanazt az aktív fizetési módot használó előfizetéssel
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/change-credit-card/search.png)
+    ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
 
 1. Válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
 1. Válassza a **Fizetési módok** elemet.
@@ -96,7 +96,7 @@ Ha egynél több, ugyanazt az aktív fizetési módot használó előfizetéssel
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 1. Válassza ki a **Költségkezelés + számlázás** lehetőséget a lap bal oldalán.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/change-credit-card/search.png)
+    ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
 
 1. A **Számlázás** területen válassza a **Fizetési módok** elemet.
 
@@ -113,7 +113,7 @@ A számlázási profilhoz tartozó fizetési mód megváltoztatásához Önnek k
 
 Az alapértelmezett fizetési mód csekkre/átutalásra váltásához lásd [a számlázási profil csekkre/átutalásra váltását](pay-by-invoice.md) ismertető szakaszt.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 1. A bal oldali menüben kattintson a **Számlázási profilok** elemre.
 
@@ -163,9 +163,9 @@ Adóazonosító hozzáadásához vagy frissítéséhez módosítsa a profilját 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További tudnivalók az [Azure Reservations](../reservations/save-compute-costs-reservations.md) szolgáltatás költségtakarékos megoldásairól.

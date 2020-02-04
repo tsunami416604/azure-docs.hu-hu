@@ -1,5 +1,5 @@
 ---
-title: EA-feladatok egy Microsoft-ügyfél szerződésben – Azure
+title: A Microsoft-ügyfélszerződés EA-feladatai – Azure
 description: Megtudhatja, hogyan végezheti el a nagyvállalati szerződéses feladatokat az új számlázási fiókjában.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991242"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Nagyvállalati szerződéses feladatok elvégzése a Microsoft-ügyfélszerződés számlázási fiókjában
@@ -29,7 +29,7 @@ Az alábbi ábra az új számlázási fiók számlázási rendszerét mutatja be
 
 ![Az ea-mca-post-transition-hierarchy képe](./media/mca-enterprise-operations/mca-post-transition-hierarchy.png)
 
-| Nagyvállalati szerződés   | Microsoft Ügyfélszerződés    |
+| Nagyvállalati Szerződés   | Microsoft-ügyfélszerződés    |
 |------------------------|--------------------------------------------------------|
 | Regisztráció            | A számlázási profillal a nagyvállalati szerződéses regisztrációhoz hasonlóan kezelheti a szervezet számlázását. A vállalati rendszergazdák a számlázási profil tulajdonosai lesznek. A számlázási profilokkal kapcsolatos további információkért lásd [a számlázási profilok ismertetését](../understand/mca-overview.md#billing-profiles).
 | Részleg            | A költségek rendszerezését a nagyvállalati szerződéses regisztráció részlegeihez hasonlóan a számlázási szakaszokkal teheti meg. A részlegekből számlázási szakaszok lesznek, a részlegszintű rendszergazdákból pedig a megfelelő számlázási szakaszok tulajdonosai. A számlázási szakaszokkal kapcsolatos további információkért lásd [a számlázási szakaszok ismertetését](../understand/mca-overview.md#invoice-sections). |
@@ -144,11 +144,11 @@ A fiókhoz tartozó előfizetések költségeinek megtekintéséhez lépjen az A
 
 Az előfizetések költségeit az [Előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy az Azure költségelemzési szolgáltatásával tekintheti meg. Az Azure költségelemzési szolgáltatásával kapcsolatos további információkért lásd a [költségek a költségelemzési szolgáltatás használatával történő feltérképezését és elemzését](../costs/quick-acm-cost-analysis.md) ismertető cikket.
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft-ügyfélszerződéshez tartozó számlázási fiók ismertetése](../understand/mca-overview.md)
 - [A számla értelmezése](../understand/review-individual-bill.md)

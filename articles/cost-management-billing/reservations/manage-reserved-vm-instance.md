@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994050"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
@@ -28,7 +28,7 @@ Ha Azure Reserved Virtual Machine Instances-példányokat vásárolt, módosíth
 
 ## <a name="reservation-order-and-reservation"></a>A foglalási rendelés és a foglalás
 
-A foglalás megvásárlásakor két objektum jön létre: **foglalási rendelés** és **foglalás**.
+Egy foglalás megvásárlásakor két objektum jön létre: A **foglalási rendelés** és a **foglalás**.
 
 A vásárláskor a foglalási rendelés alá egy foglalás tartozik. Az olyan műveletek, mint például a felosztás, az egyesítés, a részleges visszatérítés vagy a csere, új foglalásokat hoznak létre a **foglalási rendelés** alatt.
 
@@ -44,7 +44,7 @@ A foglalások az engedélyeket a foglalási rendelésektől öröklik.
 
 Egy foglalás hatókörének frissítése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza ki a foglalást.
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
@@ -65,7 +65,7 @@ A csere vagy a visszatérítés végrehajtásához a felhasználónak hozzáfér
 
 Egy foglalás hozzáférés-kezelésének delegálása:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **Minden szolgáltatás** > **Foglalások** lehetőséget azoknak a foglalásoknak a megtekintéséhez, amelyekhez hozzáféréssel rendelkezik.
 3. Válassza ki azt a foglalást, amelyhez való hozzáférést delegálni szeretné más felhasználóknak.
 4. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
@@ -120,7 +120,7 @@ Az egyszeres hatókörű foglalások a kapacitás priorizálására is optimaliz
 
 A foglalás optimalizálási beállításának frissítése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza ki a foglalást.
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
@@ -134,7 +134,7 @@ Az Azure-foglalások használatából eredő megtakarítások kizárólag a tart
 
 A foglalás kihasználtságának megtekintésére az egyik mód az Azure Portal használata.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a **Minden szolgáltatás** > [**Reservations**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) lehetőséget, és figyelje meg egy adott foglalás **Kihasználtság (%)** mutatóját.  
   ![Kép a foglalások listájáról](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Válasszon ki egy foglalást.
@@ -157,11 +157,11 @@ Ha azt tapasztalja, hogy a szervezet foglalásai nincsenek kihasználva:
 - Fontolja meg, hogy becseréli a nem használt mennyiséget. További információk: [Lemondások és cserék](#cancel-exchange-or-refund-reservations).
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991476"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Hogyan kerülheti el a váratlan költségeket az Azure-számlázás és -költségkezelés használatával
@@ -32,9 +32,9 @@ Az Azure-ra való regisztráció során sokat tehet azért, hogy jobban megismer
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Becsült költségek lekérése az Azure-szolgáltatások hozzáadása előtt
 
 Az alábbi eszközöket használhatja az Azure-szolgáltatások költségeinek megbecsléséhez:
-- Azure díjkalkulátor
+- Azure-díjkalkulátor
 - Azure-árlista
-- Azure portál
+- Azure Portal
 
 A következő szakaszokban található képek példa díjszabásokat jelenítenek meg amerikai dollárban kifejezve.
 
@@ -82,7 +82,7 @@ Az Azure-szolgáltatások elindítása után rendszeresen tekintse meg a költs�
 
 4. A szűrést különböző tulajdonságok, például címkék, erőforrástípus, és időtartomány alapján végezheti el. Kattintson a **Szűrő hozzáadása** elemre egy szűrő tulajdonsághoz való hozzáadásához, majd válassza ki a szűrendő értékeket. Kattintson az **Exportálás** elemre a nézet vesszővel tagolt (.csv kiterjesztésű) fájlba való exportálásához.
 
-5. Emellett a diagram címkéire kattintva megtekintheti a napi kiadások előzményeit az adott címkére vonatkozóan. Az alábbi képernyőképen a Virtual Machines (virtuális gépek) lehetőségre kattintva megjelenik a virtuális gépek futtatásának napi díja.
+5. Emellett a diagram címkéire kattintva megtekintheti a napi kiadások előzményeit az adott címkére vonatkozóan. Például: Ahogy az alábbi képernyőképen látható, a virtuális gépek lehetőségre kattintva megjelenik a virtuális gépek futtatásának napi költsége.
 
     ![A költési előzmények nézet képernyőképe az Azure Portalon](./media/getting-started/costhistory.png)
 
@@ -128,11 +128,11 @@ Használja az Azure [számlázási](https://docs.microsoft.com/rest/api/billing/
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- és Sponsorship-ügyfelek
 Az induláshoz lépjen kapcsolatba fiókja kezelőjével vagy Azure-partnerével.
 
-| Ajánlat | Segédanyagok és eszközök |
+| Ajánlat | További források |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Nagyvállalati Szerződés (EA) | [EA Portal](https://ea.azure.com/), [súgódokumentumok](https://ea.azure.com/helpdocs) és [Power BI-jelentések](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (Felhőszolgáltató) | Beszéljen szolgáltatójával |
-| Azure-szponzorálás | [Sponsorship Portal](https://www.microsoftazuresponsorships.com/) |
+| Felhőszolgáltató (CSP) | Beszéljen szolgáltatójával |
+| Azure Sponsorship | [Sponsorship Portal](https://www.microsoftazuresponsorships.com/) |
 
 Ha egy nagy méretű szervezet informatikai működését felügyeli, javasoljuk az [Azure Enterprise-szerkezet](/azure/architecture/cloud-adoption-guide/subscription-governance) és a [nagyvállalati informatikai tanulmány](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) elolvasását (letölthető .pdf-ként, csak angol nyelven).
 
@@ -162,11 +162,11 @@ Amennyiben az Azure-t Microsoft-ügyfélszerződéssel (MCA) rendelkező száml�
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Szolgáltatói szerződési jóváírás kérelmezése egy szolgáltatási esemény miatt
 
-A szolgáltatói szerződések (SLA-k) rögzítik a Microsoft elkötelezettségét a folyamatos rendelkezésre állás és stabil kapcsolatok iránt. A szolgáltatási eseményeket a rendszer akkor jelenti, ha az Azure-szolgáltatások olyan problémát tapasztalnak, amely hatással van az üzemidőre vagy a kapcsolatra. Ezt gyakran *kimaradásnak* is nevezik. Ha nem érjük el és nem tartjuk fenn az egyes szolgáltatásokhoz tartozó, az SLA-ban leírt szolgáltatási szinteket, akkor Ön jogosult lehet a havi szolgáltatási díjak egy részének jóváírására.
+A szolgáltatási szerződés (SLA) ismerteti a Microsoft az üzemidővel és hálózati elérhetőséggel kapcsolatos vállalásait. A szolgáltatási eseményeket a rendszer akkor jelenti, ha az Azure-szolgáltatások olyan problémát tapasztalnak, amely hatással van az üzemidőre vagy a kapcsolatra. Ezt gyakran *kimaradásnak* is nevezik. Ha nem érjük el és nem tartjuk fenn az egyes szolgáltatásokhoz tartozó, az SLA-ban leírt szolgáltatási szinteket, akkor Ön jogosult lehet a havi szolgáltatási díjak egy részének jóváírására.
 
 Jóváírás kérése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/). Ha több fiókja is van, ügyeljen arra, hogy azt a fiókot használja, amelyet az Azure-állásidő érintett.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ha több fiókja is van, ügyeljen arra, hogy azt a fiókot használja, amelyet az Azure-állásidő érintett.
 2. Hozzon létre egy új támogatási kérést.
 3. A **Probléma típusa** területen válassza a **Számlázás** lehetőséget.
 4. A **Probléma típusa** területen válassza a **Visszatérítési kérelem** lehetőséget.
@@ -179,10 +179,10 @@ Egyes szolgáltatások esetében az SLA alkalmazása előfeltételektől is füg
 
 További információkért tekintse meg a [Szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) és az [Azure-szolgáltatások SLA-jának összegzése](https://azure.microsoft.com/support/legal/sla/summary/) dokumentációt.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A túlköltekezés elkerülése érdekében ismerkedjen meg a [költségkeretekkel](spending-limit.md).
 - Indítson [Azure-költségelemzést](../costs/quick-acm-cost-analysis.md).

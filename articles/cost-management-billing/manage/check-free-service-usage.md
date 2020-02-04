@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992828"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Tekintse meg az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használati adatait
@@ -24,7 +24,7 @@ Az ingyenes Azure-fiókjához tartozó ingyenes szolgáltatásokat díjmentesen 
 
 ## <a name="check-usage-in-the-azure-portal"></a>A használati adatok ellenőrzése az Azure Portalon
 
-1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2.  Keressen rá az **Előfizetések** kifejezésre.
 
@@ -38,21 +38,21 @@ Az ingyenes Azure-fiókjához tartozó ingyenes szolgáltatásokat díjmentesen 
 
     A táblázat az alábbi oszlopokat tartalmazza:
 
-* **Fogyasztásmérő:** Meghatározza a felhasznált szolgáltatás mértékegységét.
-* **Használat/korlát:** Az aktuális havi használat és korlát a mérőhöz.
+* **Mérő:** Azonosítja a mértékegységet a használt szolgáltatás esetében.
+* **Használat/korlát:** A mérőszám aktuális havi használata és korlátja.
 * **Állapot:** A szolgáltatás használati állapota. A használati adatai alapján a következő állapotok egyike lehet:
-  * **Nincs használatban:** Nem használta a mérőszámot, vagy a mérő használata nem érte el a számlázási rendszerét.
-  * **Túllépte a \<dátum >:** Túllépte a (z) \<dátum > a mérőre vonatkozó korlátot.
-  * Nem **valószínű, hogy meghaladja a** következőt: Nem valószínű, hogy túllépi a mérő korlátját.
-  * **Meghaladja a \<dátumot >:** Valószínű, hogy túllépi a mérőszám határértékét \<dátum >.
+  * **Nincs használatban:** Nem használta a mérőt, vagy a mérő használata nem érte el a számlázási rendszer szintjét.
+  * **Túllépés időpontja: \<dátum>:** A megadott \<dátumon> túllépte a mérőszám korlátját.
+  * **Valószínűleg nem lépi túl:** Valószínűleg nem fogja túllépni a mérőszám korlátját.
+  * **Túllépés: \<dátum>:** Valószínűleg a megadott \<dátumon> túl fogja lépni a mérőszám korlátját.
 
 > [!IMPORTANT]
 >
 > Az ingyenes szolgáltatások csak ahhoz az előfizetéshez érhetők el, amelyet az ingyenes Azure-fiókja regisztrációjakor hozott létre. Ha nem látja az ingyenes szolgáltatások táblázatát az előfizetés áttekintési oldalán, nem érhetők el ingyenes szolgáltatások az előfizetéshez.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Ingyenes Azure-fiók frissítése](upgrade-azure-subscription.md)

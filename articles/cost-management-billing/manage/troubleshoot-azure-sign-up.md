@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989292"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Az Azure-regisztráció hibaelhárítása
@@ -32,7 +32,7 @@ Előfordulhat, hogy problémába ütközik, amikor új fiókot próbál meg regi
 
 A probléma megoldásához válassza ki a problémát, amely az Azure-ba való regisztráció során jelentkezik.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Hiba: *a fiókkal kapcsolatos probléma miatt nem folytatható a regisztráció. Kérjük, forduljon a számlázási támogatási szolgálathoz.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Hiba: *A regisztrációt nem lehet folytatni a fiókkal kapcsolatos probléma miatt. Forduljon a számlázási ügyfélszolgálathoz.*
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
@@ -98,7 +98,7 @@ Ellenőrizze, hogy a megfelelő bejelentkezési hitelesítő adatokat használja
 - MSDN
   - Az [MSDN-fiók lapján](https://msdn.microsoft.com/subscriptions/manage/default.aspx) ellenőrizze a jogosultsági állapotát.
   - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN-előfizetések ügyfélszolgálati központjához](https://msdn.microsoft.com/library/aa493452.aspx).
-- Microsoft Startupoknak
+- Microsoft for Startups
   - Microsoft for Startups-jogosultsági állapotának ellenőrzéséhez jelentkezzen be a [Microsoft for Startups portáljára](https://startups.microsoft.com/#start-two).
   - Ha nem tudja ellenőrizni az állapotát, kérjen segítséget a [Microsoft for Startups fórumain](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
@@ -109,7 +109,7 @@ Ellenőrizze, hogy a megfelelő bejelentkezési hitelesítő adatokat használja
 
 Azure in Open-előfizetés létrehozásához rendelkeznie kell egy olyan érvényes, online szolgáltatás aktiválására szolgáló (OSA-) kulccsal, amelyhez legalább egy Azure in Open-jogkivonat hozzá van rendelve. Ha nem rendelkezik OSA-kulccsal, lépjen kapcsolatba a [Microsoft Pinpointban](https://pinpoint.microsoft.com/) felsorolt valamelyik Microsoft-partnerrel.
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Hiba: *Ön nem jogosult Azure-előfizetésre*
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Hiba: *Jelenleg nem jogosult Azure-előfizetésre*
 
 A probléma megoldásához ellenőrizze, hogy az alábbiak teljesülnek-e:
 
@@ -117,7 +117,7 @@ A probléma megoldásához ellenőrizze, hogy az alábbiak teljesülnek-e:
 - A hitelkártyaadatok helyesek.
 - Ugyanezekkel az adatokkal még nem hozott létre Microsoft-fiókot.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Hiba: *az aktuális fiók típusa nem támogatott*
+### <a name="error-your-current-account-type-is-not-supported"></a>Hiba: *A jelenlegi fióktípus nem támogatott*
 
 Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/users-groups-roles/directory-self-service-signup.md), amely nem a szervezet Azure AD-címtára.
 
@@ -136,6 +136,6 @@ Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhár�
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-számlázás dokumentációja](../../billing/index.md)

@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991996"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
@@ -29,7 +29,7 @@ A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott m
 * **Az API-kulcs létrehozása vagy lekérése** – Jelentkezzen be az Enterprise Portalra, és lépjen a Jelentések > Használati adatok letöltése > API-hozzáférési kulcs területre az API-kulcs létrehozásához vagy lekéréséhez.
 * **Kulcsok átadása az API-ban** – Az API-kulcsot minden hitelesítési és engedélyezési híváshoz át kell adni. A következő tulajdonságnak kell szerepelnie a HTTP-fejlécekben
 
-|Kérelemfejléc kulcsa | Value (Díj)|
+|Kérelemfejléc kulcsa | Érték|
 |-|-|
 |Engedélyezés| Adja meg az értéket ebben a formátumban: **bearer {API-KULCS}** <br/> Példa: bearer eyr....09|
 

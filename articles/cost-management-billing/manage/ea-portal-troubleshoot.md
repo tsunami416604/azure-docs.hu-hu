@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992126"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
@@ -41,7 +41,7 @@ A hitelesítési szint frissítése:
 3. Kattintson a **Regisztráció** fülre.
 4. A **Regisztráció részletei** alatt válassza a **Hitelesítési szint** elemet.
 5. Kattintson a ceruza szimbólumra.
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
 ![Hitelesítési szinteket bemutató példa ](./media/ea-portal-troubleshoot/create-ea-authentication-level-types.png)
 
@@ -146,9 +146,9 @@ Ha a fenti hibaelhárítási lépésekkel sem sikerült megoldani a problémát,
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>Mi a különbség a munkahelyi/iskolai fiók és a Microsoft-fiók között?
 
-**Microsoft-fiók:** A [https://signup.live.com](https://signup.live.com)élő azonosítóhoz társított fiókok.
+**Microsoft-fiók:** Olyan fiókok, amelyek a Live ID-hoz lettek társítva a következő webhelyen: [https://signup.live.com](https://signup.live.com).
 
-**Munkahelyi/iskolai fiók:** Csak olyan vállalatok számára érhető el, amelyek az Active Directoryt beállították a felhőhöz, és az összes fiók egyetlen bérlőn van. A felhasználók akkor adhatóak hozzá munkahelyi vagy iskolai hitelesítési módszerrel, ha a szervezet belső Active Directoryja a felhőben van összevonva.
+**Munkahelyi/iskolai fiók:** Csak olyan szervezetek számára érhető el, amelyek felhőbeli összevonással telepítették az Active Directoryt, és amelyek esetében az összes fiók egyetlen bérlőn található. A felhasználók akkor adhatóak hozzá munkahelyi vagy iskolai hitelesítési módszerrel, ha a szervezet belső Active Directoryja a felhőben van összevonva.
 
   2016. szeptemberétől a Microsoft nem engedélyezi a munkahelyi vagy iskolai e-mail-címek Microsoft-fiókokként történő regisztrációját. További részletekért tekintse meg a következő anyagokat: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 
@@ -164,6 +164,6 @@ Ha elfelejtette a munkahelyi jelszavát, forduljon a vállalat rendszergazdájá
 
 Ha más bérlőhöz tartozó munkahelyi vagy iskolai fiókkal rendelkezik, módosítsa az engedélyezési szintet a regisztráció részletei oldalon „Munkahelyi vagy iskolai fiókok több bérlőn” értékre. Ezután hozzá fogja tudni adni a fiókot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure EA Portal rendszergazdáinak érdemes elolvasniuk [a nagyvállalati szerződéses Azure Portal adminisztrációjáról](ea-portal-administration.md) szóló cikket a gyakori adminisztratív feladatok megismeréséhez.

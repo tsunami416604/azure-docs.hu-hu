@@ -1,5 +1,5 @@
 ---
-title: Azure App Service foglalási kedvezményei
+title: Foglalási kedvezmények az Azure App Service-hez
 description: Megtudhatja, hogyan érvényesülnek a foglalási kedvezmények az Azure App Service izolált tranzakcióin.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995792"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Foglalási kedvezmények alkalmazása az Azure App Service izolált tranzakcióira
@@ -39,12 +39,12 @@ Linux-alapú tranzakciófoglalást csak akkor érdemes vásárolnia, ha a tranza
 
 Az alábbi példák bemutatják, hogyan érvényesül a fenntartott példányokra vonatkozó izolált tranzakciódíj-kedvezmény az üzemelő példányoktól függően.
 
-- **1. példa**: egy elkülönített, fenntartott bélyegző kapacitása egy példányának megvásárlása izolált app Service Stamp nélküli régióban. Új tranzakciót helyez üzembe a régióban, és a foglalásnak megfelelő díjszabás szerint fizet a tranzakcióért.
-- **2. példa**: az elkülönített fenntartott bélyegző kapacitása egy példányának megvásárlása egy olyan régióban, amelyen már telepítve van egy izolált app Service Stamp. Az üzembe helyezett tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet.
-- **3. példa**: az elkülönített fenntartott bélyegző kapacitásának egy példányát vásárolhatja meg egy olyan régióban, amelyen már telepítve van egy izolált app Service Stamp. Az üzembe helyezett tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet. Később törli a tranzakciót, és újat helyez üzembe. Az új tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet. Az üzembe helyezett tranzakciók nélküli időtartamok esetében a kedvezmények nem vihetők át.
-- **4. példa**: egy adott régióban egy elszigetelt linuxos fenntartott Stamp kapacitás egy példányát vásárolja meg, majd egy új bélyegzőt helyez üzembe a régióba. Amikor a tranzakciót kezdetben feldolgozók nélkül helyezi üzembe, az a Windows-tranzakciómérőszámot bocsátja ki. Ekkor nem részesül kedvezményben. Amint az első Linux-feldolgozót üzembe helyezi a tranzakción, az a Linux-tranzakciómérőszámot bocsátja ki, és a foglalási kedvezmény érvénybe lép. Ha később Windows-feldolgozót helyez üzembe a tranzakción, a tranzakció-mérőszám Windowsra vált vissza. Ettől fogva nem részesül kedvezményben a Linux-alapú izolálttranzakció-foglalásért.
+- **1. példa**: A lefoglalt izolálttranzakció-kapacitás egy példányát vásárolja meg egy App Service izolált tranzakcióval nem rendelkező régióban. Új tranzakciót helyez üzembe a régióban, és a foglalásnak megfelelő díjszabás szerint fizet a tranzakcióért.
+- **2. példa**: A lefoglalt izolálttranzakció-kapacitás egy példányát vásárolja meg egy üzembe helyezett App Service izolált tranzakcióval már rendelkező régióban. Az üzembe helyezett tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet.
+- **3. példa**: A lefoglalt izolálttranzakció-kapacitás egy példányát vásárolja meg egy üzembe helyezett App Service izolált tranzakcióval már rendelkező régióban. Az üzembe helyezett tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet. Később törli a tranzakciót, és újat helyez üzembe. Az új tranzakcióért innentől a foglalásnak megfelelő díjszabás szerint fizet. Az üzembe helyezett tranzakciók nélküli időtartamok esetében a kedvezmények nem vihetők át.
+- **4. példa**: A lefoglalt Linux-alapú izolálttranzakció-kapacitás egy példányát vásárolja meg egy régióban, majd új tranzakciót helyez üzembe a régióban. Amikor a tranzakciót kezdetben feldolgozók nélkül helyezi üzembe, az a Windows-tranzakciómérőszámot bocsátja ki. Ekkor nem részesül kedvezményben. Amint az első Linux-feldolgozót üzembe helyezi a tranzakción, az a Linux-tranzakciómérőszámot bocsátja ki, és a foglalási kedvezmény érvénybe lép. Ha később Windows-feldolgozót helyez üzembe a tranzakción, a tranzakció-mérőszám Windowsra vált vissza. Ettől fogva nem részesül kedvezményben a Linux-alapú izolálttranzakció-foglalásért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](manage-reserved-vm-instance.md) szakaszt.
 - Ha többet szeretne tudni a lefoglalt App Service izolálttranzakció-kapacitás takarékossági céllal történő előzetes megvásárlásáról, tekintse meg az [az Azure App Service izolált tranzakciódíjért lefoglalt kapacitással történő előzetes fizetést](prepay-app-service-isolated-stamp.md) ismertető szakaszt.

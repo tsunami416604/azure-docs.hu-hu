@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992074"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
@@ -54,7 +54,7 @@ Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>A fenntartott példányok vásárlásával kapcsolatos részletek megtekintése
 
-A fenntartott példányok vásárlásának részleteit az [Azure Portal](https://aka.ms/reservations) vagy az [Azure EA Portal](https://ea.azure.com/) bal oldalán található _Foglalások_ menüben tekintheti meg. Válassza a bal oldali menüben a **jelentések** lehetőséget, majd görgessen le a _díjak_ a _használat összegzése_ lapon. görgessen a szakasz aljára, és a fenntartott példányok vásárlása és használata a szolgáltatás neve melletti "1 év" vagy "3 év" megjelöléssel jelenik meg, például: Standard_DS1_v2 eastus 1 év vagy Standard_D2s_v3 eastus2 3 év.
+A fenntartott példányok vásárlásának részleteit az [Azure Portal](https://aka.ms/reservations) vagy az [Azure EA Portal](https://ea.azure.com/) bal oldalán található _Foglalások_ menüben tekintheti meg. Válassza a bal oldali menüben a **Jelentések** lehetőséget, majd görgessen le a _Használati adatok összegzése_ lapon a _Díjak szolgáltatások szerint_ szakaszhoz. Görgessen a szakasz aljára, és láthatja a fenntartott példányok vásárlásának és használati adatainak listáját a szolgáltatás neve melletti „1 év” vagy „3 év” jelöléssel, például: Standard_DS1_v2 eastus 1 év vagy Standard_D2s_v3 eastus2 3 év.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hogyan változtathatom meg a fenntartott példányhoz társított előfizetést, vagy hogyan vihetem át a fenntartott példány előnyeit egy ugyanazon fiókhoz tartozó előfizetésre?
 
@@ -65,7 +65,7 @@ Egy adott időpontban csak egy előfizetés kaphatja meg a fenntartott példány
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>A fenntartott példányok használatával kapcsolatos részletek megtekintése
 
-A fenntartott példányok használatával kapcsolatos részleteket az [Azure Portalon](https://aka.ms/reservations) vagy az [Azure EA Portalon](https://ea.azure.com/) tekintheti meg (olyan nagyvállalati szerződéssel rendelkező ügyfelek esetén, akik hozzáférnek a számlázási adatok megtekintéséhez) a _Jelentések_ > _Használati adatok összegzése_ > _Díjak szolgáltatások szerint_ területen. A fenntartott példányok a "foglalás" nevet tartalmazó szolgáltatásnévként azonosíthatók, például: Alap VM fenntartott példányai vagy Virtual Machines foglalás – Windows példányai (1 mag).
+A fenntartott példányok használatával kapcsolatos részleteket az [Azure Portalon](https://aka.ms/reservations) vagy az [Azure EA Portalon](https://ea.azure.com/) tekintheti meg (olyan nagyvállalati szerződéssel rendelkező ügyfelek esetén, akik hozzáférnek a számlázási adatok megtekintéséhez) a _Jelentések_ > _Használati adatok összegzése_ > _Díjak szolgáltatások szerint_ területen. A fenntartott példányok a „Reservation” szót tartalmazó szolgáltatásnevekként azonosíthatók, például: Reservation-Base VM vagy Virtual Machines Reservation-Windows Svr (1 Core).
 
 A használattal kapcsolatos részletek és a speciális jelentés letölthető CSV-fájlja további használati információt tartalmaz a fenntartott példánnyal kapcsolatban. Az _Additional Info_ (További információ) mező segít azonosítani a fenntartott példány használatát.
 
@@ -79,9 +79,9 @@ Az olyan forgatókönyvekben, ahol az Azure nagyvállalati szerződéssel rendel
 
 ### <a name="reserved-instance-expiration"></a>Fenntartott példány lejárata
 
-A fenntartás előtt 30 nappal és annak lejártakor e-mail-értesítéseket kap. Ha a foglalás lejár, az üzemelő virtuális gépek továbbra is futnak majd, és a későbbiekben használatalapú fizetési díjszabás vonatkozik rájuk. További információ: [Fenntartott virtuálisgép-példányok ajánlata](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+A fenntartás előtt 30 nappal és annak lejártakor e-mail-értesítéseket kap. Ha a fenntartás lejár, az üzemelő virtuális gépek továbbra is futnak majd, és a későbbiekben használatalapú fizetési díjszabás vonatkozik rájuk. További információ: [Fenntartott virtuálisgép-példányok ajánlata](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az Azure fenntartott példányokról: [Mi az az Azure Reservations?](../reservations/save-compute-costs-reservations.md).
 - A vállalati foglalási költségekkel és használati adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati szerződés foglalási költségeinek és kihasználtságának lekérése](../reservations/understand-reserved-instance-usage-ea.md) szakaszt.
 - A díjszabással kapcsolatos további információkért tekintse meg a [Linux rendszerű virtuális gépek díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) oldalát vagy a [Windows rendszerű virtuális gépek díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) oldalát.

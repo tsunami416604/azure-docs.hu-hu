@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989773"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ingyenes Azure-fiók vagy Azure for Students Starter-fiók frissítése
@@ -30,12 +30,12 @@ Ha [Azure for Students Starter-fiókkal](https://azure.microsoft.com/offers/ms-a
 
 ## <a name="upgrade-your-azure-free-account"></a>Ingyenes Azure-fiók frissítése
 
-Az ingyenes Azure-fiók frissítésekor a fennmaradó kreditek a regisztrációtól számított 30 teljes napig megmaradnak. Például: Ha november 1-jén regisztrált, és november 5-én frissít, a fel nem használt kreditek november 30-ig lesznek elérhetők. Emellett az ingyenes szolgáltatásokhoz a frissítést követően további 12 hónapig lesz hozzáférése.
+Az ingyenes Azure-fiók frissítésekor a fennmaradó kreditek a regisztrációtól számított 30 teljes napig megmaradnak. Például: Ha november 1-jén regisztrált, és november 5-én frissít, a fel nem használt kreditek november 30-ig elérhetőek lesznek. Emellett az ingyenes szolgáltatásokhoz a frissítést követően további 12 hónapig lesz hozzáférése.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Keressen rá az **előfizetések** kifejezésre.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    ![A keresést megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. Válassza ki azt az előfizetést, amelyet az ingyenes Azure-fiók regisztrációjakor hozott létre.
 1. Az előfizetés áttekintésénél kattintson a **Magasabb szintű előfizetésre váltás** lehetőségre a parancssávon. Ha nem látja a magasabb szintű előfizetésre váltás gombját, kattintson a frissítés szalagra a lap tetején.
@@ -65,7 +65,7 @@ Ha jogosult a frissítésre, kövesse az alábbi lépéseket az ingyenes Azure-f
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Keressen rá az **előfizetések** kifejezésre.
 
-    ![A keresőmezőt megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    ![A keresést megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. Válassza ki azt az előfizetést, amely az Azure for Students Starter-fiók regisztrációjakor jött létre.
 1. Az előfizetés áttekintésénél kattintson a **Magasabb szintű előfizetésre váltás** lehetőségre a parancssávon.
@@ -80,6 +80,6 @@ Ha jogosult a frissítésre, kövesse az alábbi lépéseket az ingyenes Azure-f
 1. Válasszon támogatási csomagot az előfizetéshez. További információt a támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/us/support/plans/) ismertetésében talál.
 1. Kattintson a **Frissítés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy frissítette a fiókját, tekintse meg, [hogyan kerülheti el a váratlan költségeket az Azure-számlázással és -költségkezeléssel](getting-started.md).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995727"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Az előzetes Azure Databricks-vásárlásért járó kedvezmény alkalmazásának módja
@@ -21,7 +21,7 @@ Az előre megvásárolt kötött Azure Databricks-egységeket (DBCU) a vásárl�
 
 A virtuális gépektől eltérően az előre megvásárolt egységek nem járnak le óránként. Az egységek a vásárlási időtartam során bármikor felhasználhatók. Az előzetes vásárlásért járó kedvezmények igénybevételéhez nem szükséges újból üzembe helyeznie vagy hozzárendelnie egy előzetesen vásárolt csomagot az Azure Databricks-munkaterületeihez a használathoz.
 
-Az előzetes vásárlásért járó kedvezmény csak az Azure Databricks-egységek (DBU) használatára vonatkozik. Az egyéb (pl. számítási, tárolási és hálózatkezelési) költségek számlázása külön történik.
+Az előzetes vásárlásért járó kedvezmény csak az Azure Databricks-egységek (DBU) használatára vonatkozik. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 
 ## <a name="pre-purchase-discount-application"></a>Az előzetes vásárlásért járó kedvezmény alkalmazása
 
@@ -43,11 +43,11 @@ A DBCU-csomaghasználat meghatározásához lépjen az Azure Portal > **Foglalá
 
 Ha előzetes vásárlási kedvezmény vonatkozik a Databricks-használatra, a használati adatokban az igénybevétel szerinti költségek nullaként jelennek meg. A foglalási költségekkel és használati adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati szerződés foglalási költségeinek és kihasználtságának lekérése](understand-reserved-instance-usage-ea.md) szakaszt.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](manage-reserved-vm-instance.md) szakaszt.
 - Az Azure Databricks-egységek előzetes vásárlásával történő megtakarításra vonatkozó információkért tekintse meg az [Azure Databricks-költségek előzetes vásárlással történő optimalizálását](prepay-databricks-reserved-capacity.md) ismertető szakaszt.

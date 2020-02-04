@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a Microsoft ügyfél-szerződés számlázásával – Azure
+title: Bevezetés a Microsoft-ügyfélszerződéshez tartozó számlázásba – Azure
 description: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók
 author: bandersmsft
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995116"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Bevezetés a Microsoft-ügyfélszerződéshez tartozó számlázási fiók használatába
@@ -51,7 +51,7 @@ Az Azure Portalon megtekintheti a számlát, letöltheti a dokumentumokat, és m
 
 Minden számlázási profilhoz saját fizetési mód adható meg a számlák kiegyenlítéséhez. A következő fizetési módok támogatottak:
 
-| Type (Típus)             | Meghatározás  |
+| Típus             | Meghatározás  |
 |------------------|-------------|
 |Azure-kreditek    |  A rendszer automatikusan alkalmazza a krediteket a számlán szereplő, arra jogosult díjakra, ezáltal csökkenti a fizetendő összeget. További információkért lásd [a számlázási profilhoz tartozó Azure-kreditek egyenlegének nyomon követését](../manage/mca-check-azure-credits-balance.md) ismertető cikket. |
 |Csekk vagy átutalás | Abban az esetben, ha a fiókjához jóvá lett hagyva a csekkel vagy átutalással történő fizetés. A számlán szereplő fizetendő összeget kifizetheti csekkel vagy átutalással. A fizetési utasításokat a számlán találja. |
@@ -81,11 +81,11 @@ A számlaszakasz szerepkörei jogosultak szabályozni, ki hozhat létre Azure-el
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

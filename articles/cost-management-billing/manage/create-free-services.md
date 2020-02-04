@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 99ceebe0825c868e40f6a68f44ca55eee91f087c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992776"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiókhoz tartozó szolgáltatások létrehozása
@@ -34,10 +34,10 @@ A régiónként elérhető Azure-szolgáltatások megtekintéséért lásd a [r�
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>Több szolgáltatáspéldány létrehozása a megengedett korláton belül
 Több szolgáltatáspéldányt is létrehozhat ingyenesen, ha a használat összesített mennyisége a használati korláton belül esik. Például az ingyenes Azure-fiókjával a B1S sorozatú, Windows rendszerű virtuális gépek minden hónapban 750 órán keresztül díjmentesen használhatók. A 750 órát úgy használhatja fel, ahogy csak szeretné. Létrehozhat például öt B1S sorozatú, Windows rendszerű virtuális gépet, ha mindegyiket 150 óráig használja.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használata ellenőrzésének](check-free-service-usage.md) módját.
 - Tudja meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes Azure-fiókja használatakor](avoid-charges-free-account.md).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: dfff02c554c94daf1dd7fd844cea461fd76589d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995714"
 ---
 # <a name="automatically-renew-reservations"></a>A foglalások automatikus megújítása
@@ -91,5 +91,5 @@ Az e-maileket a rendszer a vásárlási módszertől függően különböző sze
 - Egyéni előfizetéssel rendelkező, használatalapú fizetéses ügyfelek – Az e-maileket a rendszer a fiókadminisztrátorként beállított felhasználóknak küldi.
 - Felhőszolgáltató-ügyfelek – Az e-maileket a rendszer a partner értesítési kapcsolattartójának küldi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ha többet szeretne tudni az Azure Reservationsről, tekintse meg a [Mi az az Azure Reservations?](save-compute-costs-reservations.md) szakaszt.

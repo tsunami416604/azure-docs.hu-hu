@@ -1,5 +1,5 @@
 ---
-title: Egyéni előfizetés Azure-foglalásának használata
+title: Egyéni előfizetés Azure-beli foglalásának használata
 description: Megtanulhatja értelmezni a használati adatokat annak megismeréséhez, hogyan lesz alkalmazva az Azure-foglalás a használatalapú fizetéses egyedi előfizetésre.
 author: bandersmsft
 manager: yashr
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995363"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
@@ -30,12 +30,12 @@ Ez a cikk azt feltételezi, hogy a foglalás egyetlen előfizetésre van alkalma
 
 Az alábbi szakaszokban azt feltételezzük, hogy egy Standard_DS1_v2 Windows rendszerű virtuális gépet futtat az USA keleti régiójában, és a fenntartott virtuálisgép-példány adatai az alábbi táblázathoz hasonlóak:
 
-| Mező | Value (Díj) |
+| Mező | Érték |
 |---| :---: |
-|Foglalásazonosító |8117adfb-1d94-4675-be2b-f3c1bca808b6|
+|ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Mennyiség |1|
-|SKU (Cikkszám) | Standard_DS1_v2|
-|Region (Régió) | eastus |
+|SKU | Standard_DS1_v2|
+|Régió | eastus |
 
 A virtuális gép hardveres része fedezve van, mivel az üzembe helyezett virtuális gép egyezik a foglalási attribútumokkal. A fenntartott virtuálisgép-példány által nem fedezett Windows-szoftverek megtekintéséhez tekintse meg [az Azure Reserved VM Instances Windows-szoftvereinek költségeit](reserved-instance-windows-software-costs.md)
 
@@ -55,7 +55,7 @@ Szűrjön az **Additional Info** mezőre, és adja meg a **foglalásazonosítót
 
 1. Az **Additional Info** mező **ReservationId** értéke a virtuális gépre alkalmazott foglalást jelöli.
 2. A **ConsumptionMeter** érték a virtuális gép fogyasztásmérő-azonosítója.
-3. A **Alap VM fenntartott példányai** **mérési alkategória** sor a $0 Cost in utasítás szakaszt jelöli. A virtuális gép futtatásának költségét már kifizette a foglalás.
+3. A **Reservation-Base VM** **Meter Subcategory** sor a $0 költséget jelöli a Statement szakaszban. A virtuális gép futtatásának költségét már kifizette a foglalás.
 4. A **Meter ID** a foglalás fogyasztásmérő-azonosítóját jelöli. A fogyasztásmérő költsége $0. Ez a fogyasztásmérő-azonosító minden olyan virtuális gép esetében megjelenik, amely jogosult a foglalási kedvezményre.
 5. A Standard_DS1_v2 egy olyan virtuális gép, amely egy virtuális processzorral rendelkezik, és az Azure Hybrid Benefit nélkül van üzembe helyezve. Így ez a fogyasztásmérő fedezi a Windows-szoftver többletköltségét. A D sorozatú, 1 magos virtuális gépekhez tartozó fogyasztásmérő megkereséséhez tekintse meg [az Azure Reserved VM Instances Windows-szoftvereinek költségeit](reserved-instance-windows-software-costs.md). Ha rendelkezik az Azure Hybrid Benefittel, ez a többletköltség nem érvényes Önre.
 
@@ -65,12 +65,12 @@ Az alábbi szakaszok az Azure SQL Database példáján keresztül ismertetik a h
 
 Tegyük fel, hogy egy 4. generációs SQL Database-adatbázist futtat az USA keleti régiójában, és a foglalási adatok az alábbi táblázathoz hasonlóan néznek ki:
 
-| Mező | Value (Díj) |
+| Mező | Érték |
 |---| --- |
 |Foglalásazonosító |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|
-|Termék| SQL Database Gen 4 (2 Core)|
-|Region (Régió) | eastus |
+|Product| SQL Database Gen 4 (2 Core)|
+|Régió | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>A CSV-fájl Statement szakasza
 
@@ -90,11 +90,11 @@ Szűrjön az **Additional Info** mezőre, és adja meg a **foglalásazonosítót
 2. A **ConsumptionMeter** érték az SQL Database-erőforrás fogyasztómérő-azonosítóját jelöli.
 3. A **Meter Id** a foglalás fogyasztásmérőjét jelöli. A fogyasztásmérő költsége $0. Ez a fogyasztómérő-azonosító minden olyan SQL Database-erőforrás CSV-fájljában megjelenik, amely jogosult a foglalási kedvezményre.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

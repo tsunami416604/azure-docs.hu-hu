@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991918"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
@@ -28,11 +28,11 @@ A Microsoft-partnerek olyan szolgáltatásokat biztosítanak, amelyek segítség
 
 A partnerazonosító csatolása előtt ügyfelének hozzáférést kell adnia Önnek az Azure-erőforrásokhoz a következő lehetőségek valamelyikének használatával:
 
-- **Vendég felhasználó**: az ügyfél felveheti Önt vendég felhasználóként, és hozzárendelhet bármely szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) szakaszt.
+- **Vendégfelhasználó**: Ügyfele hozzáadhatja Önt vendégfelhasználóként, és bármilyen szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört hozzárendelhet. További információkért tekintse meg a [Vendégfelhasználók hozzáadása másik címtárból](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) szakaszt.
 
-- **Directory-fiók**: az ügyfél létrehozhat egy felhasználói fiókot saját címtárában, és HOZZÁRENDELHET bármilyen RBAC-szerepkört.
+- **Címtárfiók**: Az ügyfél létrehozhat egy felhasználói fiókot az Ön számára a saját címtárában, és bármilyen RBAC-szerepkört hozzárendelhet.
 
-- **Egyszerű szolgáltatásnév**: az ügyfél hozzáadhat egy alkalmazást vagy parancsfájlt a szervezetében a címtárában, és HOZZÁRENDELHET bármilyen RBAC-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
+- **Egyszerű szolgáltatás**: Az ügyfél a címtárában hozzáadhat az Ön szervezetéből származó alkalmazást vagy szkriptet, és hozzárendelhet bármilyen RBAC-szerepkört. Az alkalmazás vagy szkript identitása szolgáltatásnévként ismert.
 
 ## <a name="link-to-a-partner-id"></a>Csatolás partnerazonosítóhoz
 
@@ -116,7 +116,7 @@ C:\ az managementpartner update --partner-id 12345
 C:\ az managementpartner delete --partner-id 12345
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hírekért és visszajelzések küldéséhez csatlakozzon a [Microsoft-partnerközösség](https://aka.ms/PALdiscussion) vitafórumához.
 

@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995623"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>A foglalási kedvezmény alkalmazása az Azure Data Explorerre
@@ -36,7 +36,7 @@ A foglalási kedvezmény az Azure Data Explorer árréshasználatára való alka
 ## <a name="examples"></a>Példák
 
 Az alábbi példák bemutatják, hogyan lesz alkalmazva a fenntartott Azure Data Explorer-kapacitásra érvényes kedvezmény a megvásárolt árrésegységek száma alapján, és az alapján, mikor futnak.
-Például a motor fürtjének mérete: **2 D11_v2 virtuális gépek**esetében a teljes igény szerint felszámított díj az Azure-adatkezelő négyjegyű adategysége óránként. 
+Például a **2 D11_v2 virtuális gép esetén** motorfürtméret esetében a teljes igény szerinti díj óránként négy Azure Data Explorer-árrésmérő egységre vonatkozik. 
 
 **1. forgatókönyv** 
 
@@ -58,16 +58,16 @@ Egy 16 magos Azure Data Explorer-motorfürtöt futtat 13:00 és 13:45 között. 
 
 Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](understand-reserved-instance-usage-ea.md) cikket.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 
 * [Előre fizetés fenntartott Azure Data Explorer-kapacitással rendelkező Azure Data Explorer számítási erőforrásokért](../../data-explorer/pricing-reserved-capacity.md)  
-* [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)  
+* [Mik azok az Azure-beli foglalások?](save-compute-costs-reservations.md)  
 * [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)  
 * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989747"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>A Microsoft-partnerszerződés számláin szereplő kifejezések
@@ -26,7 +26,7 @@ A számla tartalmazza a díjak összesítését, valamint a fizetésre vonatkoz�
 
 A következő szakaszokban a számlán látható fontos kifejezések és azok leírásai szerepelnek.
 
-## <a name="billing-period"></a>Billing period (Számlázási időszak)
+## <a name="billing-period"></a>Számlázási időszak
 
 A számlázás havi rendszerességgel történik. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
 
@@ -36,12 +36,12 @@ A **Számlaösszesítő** az első oldal tetején található, és a számlázá
 
 <!-- add screenshot -->
 
-| Időtartam | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | Sold to (Vevő) |A jogi személy címe, amely a számlázási fiók tulajdonságaiban található|
 | Bill to (Számlázási cím) |A számlát fogadó számlázási profil számlázási címe, amely a számlázási profil tulajdonságaiban található|
 | Számlázási profil |A számlát fogadó számlázási profil neve |
-| Rendelési szám |Egy választható rendelési szám, amelyet Ön rendel hozzá nyomkövetés céljából. |
+| Rendelési szám |Egy választható rendelési szám, amelyet Ön rendel hozzá nyomkövetés céljából |
 | Számlaszám |Egy egyedi, a Microsoft által létrehozott, nyomkövetési célokra használt számlaszám |
 | Invoice Date (Számla dátuma) |A számla kiállításának dátuma, amely általában 5–12 nappal követi a számlázási ciklus végét. A számla dátumát a számlázási profil tulajdonságaiban ellenőrizheti.|
 | Fizetési feltételek |A Microsoft-számla fizetési módja. A *60 nap* azt jelenti, hogy a számláját a számla dátumától számított 60 napon belül egyenlíti ki. |
@@ -52,7 +52,7 @@ Az **Összesítő elszámolás** az előző számlázási időszak óta a száml
 
 <!-- add screenshot -->
 
-| Időtartam | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | Díjak|Az utolsó számlázási időszak óta felmerült Microsoft-díjak száma összesen. |
 | Kreditek |Visszatérítésekből kapott kreditek |
@@ -77,11 +77,11 @@ Ha a számlán harmadik féltől származó szolgáltatások szerepelnek, az egy
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A számlázási profil számláján szereplő díjak ismertetése](review-customer-agreement-bill.md)
 - [Az Azure számlázási és napi használati adatainak beszerzése](../manage/download-azure-invoice-daily-usage-date.md)

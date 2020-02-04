@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/14/2019
 ms.author: banders
 ms.openlocfilehash: 7807129061328d1c6d563b9058987388e84c6e4c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995688"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure-beli fenntartott VM-példányok által nem tartalmazott szoftverköltségek
@@ -65,7 +65,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 
 Az Azure RateCard API-n keresztül minden mérő díját lekérheti. Az Azure-beli mérők díjainak lekéréséhez szükséges információkért lásd az [Azure-előfizetésben használt erőforrások ár- és metaadat-információinak lekérése](/previous-versions/azure/reference/mt219004(v=azure.100)) részben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli foglalásokkal kapcsolatos további információkért olvassa el a következő cikkeket:
 
 - [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
@@ -75,6 +75,6 @@ Az Azure-beli foglalásokkal kapcsolatos további információkért olvassa el a
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

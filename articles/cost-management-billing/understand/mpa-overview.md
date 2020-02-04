@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
 ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76122151"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Bevezetés a Microsoft Partnerszerződéshez tartozó számlázási fiók használatába
@@ -53,7 +53,7 @@ Szabályzattal vezérelheti, hogy az ügyfelek vállalatának felhasználói meg
 
 Szabályzat bekapcsolása:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
@@ -76,11 +76,11 @@ A CSP [kétrétegű modelljében](https://docs.microsoft.com/partner-center) a k
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

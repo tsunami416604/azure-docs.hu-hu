@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995558"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>A foglalási kedvezmény alkalmazása az Azure Cosmos DB-re
@@ -37,7 +37,7 @@ A foglalás megvásárlásakor a rendszer a regionális, igény szerinti díjsza
 ## <a name="reservation-discount-per-region"></a>Foglalási kedvezmények régiónként
 A foglalási kedvezmény óránkénti alapon lesz alkalmazva az Azure Cosmos DB-beli átviteli sebesség költségeire. A kedvezmény alkalmazása egy önálló előfizetés vagy a regisztrált fiók hatókörében történik. A foglalási kedvezmény a különböző régiókban a következő arányban érvényes a fogyasztásmérő szerinti használatra:
 
-|Fogyasztásmérő leírása  |Region (Régió) |Arány  |
+|Fogyasztásmérő leírása  |Régió |Arány  |
 |---------|---------|---------|
 |Azure Cosmos DB – 100 RU/s/óra – Ázsia és a Csendes-óceáni térség délkeleti régiója  |  Ázsia és a Csendes-óceáni térség délkeleti régiója    |   1      |
 |Azure Cosmos DB – 100 RU/s/óra – Ázsia és a Csendes-óceáni térség keleti régiója |   Ázsia és a Csendes-óceáni térség keleti régiója   |    1     |
@@ -45,10 +45,10 @@ A foglalási kedvezmény óránkénti alapon lesz alkalmazva az Azure Cosmos DB-
 |Azure Cosmos DB – 100 RU/s/óra – Korea déli régiója|    Korea déli régiója     |     1    |
 |Azure Cosmos DB – 100 RU/s/óra – Nyugat-Európa|    Nyugat-Európa     |      1   |
 |Azure Cosmos DB – 100 RU/s/óra – Korea középső régiója|   Korea középső régiója    |       1  |
-|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság déli régiója|   Egyesült Királyság déli régiója      |     1    |
-|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság nyugati régiója|   Egyesült Királyság nyugati régiója      |    1     |
-|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság északi régiója |   Egyesült Királyság északi régiója    |     1    |
-|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság 2. déli régiója|   Egyesült Királyság 2. déli régiója      |     1    |
+|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság déli régiója|   Az Egyesült Királyság déli régiója      |     1    |
+|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság nyugati régiója|   Az Egyesült Királyság nyugati régiója      |    1     |
+|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság északi régiója |   Az Egyesült Királyság északi régiója    |     1    |
+|Azure Cosmos DB – 100 RU/s/óra – Az Egyesült Királyság 2. déli régiója|   Az Egyesült Királyság 2. déli régiója      |     1    |
 |Azure Cosmos DB – 100 RU/s/óra – USA 2. keleti régiója|  USA 2. keleti régiója     |     1    |
 |Azure Cosmos DB – 100 RU/s/óra – USA északi középső régiója|   USA északi középső régiója      |     1    |
 |Azure Cosmos DB – 100 RU/s/óra – USA nyugati régiója|   USA nyugati régiója      |     1    |
@@ -77,7 +77,7 @@ A foglalási kedvezmény óránkénti alapon lesz alkalmazva az Azure Cosmos DB-
 Vegye figyelembe a következő foglalási követelményeket:
 
 * Szükséges átviteli sebesség: 50 000 RU/s  
-* Felhasznált régiók: 2
+* Használati régiók: 2
 
 Ebben az esetben a teljes, igény szerinti díj a két régióban 500 darab 100 RU/s átviteli sebességű fogyasztásmérőre vonatkozik. A teljes RU/s fogyasztás óránként 100 000.
 
@@ -85,9 +85,9 @@ Ebben az esetben a teljes, igény szerinti díj a két régióban 500 darab 100 
 
 Tegyük fel például, hogy az USA északi középső régiójában és az USA nyugati régiójában van szüksége üzemelő Azure Cosmos DB-példányokra. Mindkét régió 50 000 RU/s átvitelisebesség-fogyasztással rendelkezik. Egy 100 000 RU/s átviteli sebességgel rendelkező foglalás megvásárlása teljesen kiegyenlítené az igény szerinti díjakat.
 
-A foglalás által fedezett kedvezmény kiszámítása a következőképpen történik: átvitelisebesség-fogyasztás * a régió foglalási kedvezményének aránya. Az USA északi középső régiója és USA nyugati régiója esetében a foglalási kedvezmény aránya 1. Tehát a kedvezményes RU/s összesen 100 000. Ezt az értéket a következőképpen számítjuk ki: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. A normál használatalapú díjak esetében semmilyen további díjat nem kell fizetnie.
+A foglalás által fedezett kedvezmény kiszámítása a következőképpen történik: átvitelisebesség-fogyasztás * a régió foglalási kedvezményének aránya. Az USA északi középső régiója és USA nyugati régiója esetében a foglalási kedvezmény aránya 1. Tehát a kedvezményes RU/s összesen 100 000. Ennek az értéknek a kiszámítása a következőképpen történik: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. A normál használatalapú díjak esetében semmilyen további díjat nem kell fizetnie.
 
-|Fogyasztásmérő leírása | Region (Régió) |Átvitelisebesség-fogyasztás (RU/s) |Az RU/s értékre alkalmazott foglalási kedvezmény |
+|Fogyasztásmérő leírása | Régió |Átvitelisebesség-fogyasztás (RU/s) |Az RU/s értékre alkalmazott foglalási kedvezmény |
 |---------|---------|---------|---------|
 |Azure Cosmos DB – 100 RU/s/óra – USA északi középső régiója  |   USA északi középső régiója  | 50 000  | 50 000  |
 |Azure Cosmos DB – 100 RU/s/óra – USA nyugati régiója  |  USA nyugati régiója   |  50 000  |  50 000 |
@@ -96,24 +96,24 @@ A foglalás által fedezett kedvezmény kiszámítása a következőképpen tör
 
 Tegyük fel például, hogy Ausztrália 2. középső régiójában és Dél-Franciaországban van szüksége üzemelő Azure Cosmos DB-példányokra. Mindkét régió 50 000 RU/s átvitelisebesség-fogyasztással rendelkezik. Egy 100 000 RU/s átviteli sebességű foglalás megvásárlása lenne célszerű az alábbiak szerint (feltéve, hogy a kedvezmény az Ausztrália 2. középső régiójában mért használatra lett alkalmazva először):
 
-|Fogyasztásmérő leírása | Region (Régió) |Átvitelisebesség-fogyasztás (RU/s) |Az RU/s értékre alkalmazott foglalási kedvezmény |
+|Fogyasztásmérő leírása | Régió |Átvitelisebesség-fogyasztás (RU/s) |Az RU/s értékre alkalmazott foglalási kedvezmény |
 |---------|---------|---------|---------|
 |Azure Cosmos DB – 100 RU/s/óra – Ausztrália 2. középső régiója  |  Ausztrália 2. középső régiója   |  50 000  |  50 000   |
 |Azure Cosmos DB – 100 RU/s/óra – Dél-Franciaország  |  Dél-Franciaország   |  50 000 |  15 384  |
 
-Ausztrália 2. középső régiójában 50 000 egységnyi használat 75 000 RU/s számlázható használatnak (vagy normalizált használatnak) felel meg. Ennek az értéknek a kiszámítása a következőképpen történik: átvitelisebesség-fogyasztás * a régió foglalási kedvezményének aránya. A számítás eredménye 75 000 RU/s számlázható vagy normalizált használat. Ezt az értéket a következőképpen számítjuk ki: 50 000 * 1,5 = 75 000 RU/s.
+Ausztrália 2. középső régiójában 50 000 egységnyi használat 75 000 RU/s számlázható használatnak (vagy normalizált használatnak) felel meg. Ennek az értéknek a kiszámítása a következőképpen történik: átvitelisebesség-fogyasztás * a régió foglalási kedvezményének aránya. A számítás eredménye 75 000 RU/s számlázható vagy normalizált használat. Ennek az értéknek a kiszámítása a következőképpen történik: 50 000 * 1,5 = 75 000 RU/s.
 
-Az 100 000 RU/s értékű foglalás vásárlása fedezi Ausztrália 2. középső régiójának 75 000 RU/s értékét, és meghagy 25 000 RU/s-ot a Dél-Franciaország régió számára. A fennmaradó 25 000 RU/s-ból a rendszer 15 384 RU/s foglalási kedvezményt alkalmaz a Dél-Franciaország régióra. A kedvezmény értéke a következő: 25 000/1,625 = 15 384 RU/s. A Dél-Franciaország régióban fennmaradó 34 616 RU/s-ért normál használatalapú díjat kell fizetnie.
+Az 100 000 RU/s értékű foglalás vásárlása fedezi Ausztrália 2. középső régiójának 75 000 RU/s értékét, és meghagy 25 000 RU/s-ot a Dél-Franciaország régió számára. A fennmaradó 25 000 RU/s-ból a rendszer 15 384 RU/s foglalási kedvezményt alkalmaz a Dél-Franciaország régióra. A kedvezmény kiszámítása a következőképpen történik: 25 000 / 1,625 = 15 384 RU/s. A Dél-Franciaország régióban fennmaradó 34 616 RU/s-ért normál használatalapú díjat kell fizetnie.
 
 Az Azure számlázási rendszere hozzárendeli a foglalási számlázási kedvezményt az első feldolgozott példányhoz, amely egyezik a foglalási konfigurációval. Ebben az esetben ez Ausztrália 2. középső régiója.
 
 Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](understand-reserved-instance-usage-ea.md) cikket.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 

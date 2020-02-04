@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993049"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Az Azure-fiók profilinformációinak módosítsa
@@ -76,7 +76,7 @@ A következő módszerek egyikével megváltoztathatja kapcsolattartási e-mail-
 
 * Az Azure Portalon lépjen a [Kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területre, és írjon be egy e-mail-címet. Az Ön által megadott címre szolgáltatási és marketingkommunikációt érkezik. Az Azure fiókközpontbeli profilban lévő e-mail-cím automatikusan frissül. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
 
-* Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Ezután válassza a helyi menüt ( **..** .). Ezután válassza a **saját kapcsolattartási adatok** lehetőséget a menüből, és adjon meg egy e-mail-címet. Az Ön által megadott címre szolgáltatási és marketingkommunikációt érkezik. Az Azure fiókközpontbeli profiljában lévő e-mail-cím automatikusan frissül. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
+* Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassz **Kapcsolattartási adataim** lehetőséget a menüből, és írja be az e-mail-címet. Az Ön által megadott címre szolgáltatási és marketingkommunikációt érkezik. Az Azure fiókközpontbeli profiljában lévő e-mail-cím automatikusan frissül. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
 
 ![Példa az Azure-beli e-mail cím frissítésére](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -98,9 +98,9 @@ Ha kikapcsolja a marketingkommunikációt, a fiókja alapján továbbra is megka
     ![Példa az Azure-előfizetés átnevezésére](./media/change-azure-account-profile/rename-sub.png)
 1. Miután megváltoztatta a nevet, kattintson a **Mentés** lehetőségre.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Számlázási fiókok megtekintése](view-all-accounts.md)

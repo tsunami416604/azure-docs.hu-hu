@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: banders
 ms.openlocfilehash: a35d7d4ef24218c96e305abf623f746c92c8aa87
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993699"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása
@@ -70,13 +70,13 @@ Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, a
 
     Néhány pillanat múlva a rendszer hozzárendeli a felhasználót a Tulajdonos szerepkörhöz az előfizetés hatókörében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md)
 * [A különböző Azure-beli szerepkörök ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Útmutató: Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Útmutató: Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

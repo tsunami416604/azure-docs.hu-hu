@@ -1,7 +1,7 @@
 ---
 title: Az Azure számlázási és napi használati adatainak letöltése | Microsoft Docs
 description: A cikk azt ismerteti, hogyan töltheti le vagy tekintheti meg az Azure számlázási és napi használati adatait.
-keywords: számlázás,számla,számla letöltése,azure-számla,azure-használat
+keywords: számla,számla letöltése,azure számla,azure használat
 services: billing
 documentationcenter: ''
 author: genlin
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992555"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése
@@ -100,7 +100,7 @@ További címzetteket is engedélyezhet és konfigurálhat, akik e-mailben megka
 
 Ha a lépések végrehajtása után nem kap e-mailt, ellenőrizze, hogy az e-mail-címe helyesen szerepel-e a [profil kommunikációs beállításai között](https://account.windowsazure.com/profile).
 
-### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Az előfizetése számláinak e-mailben történő kézbesítésének lemondása
+### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Az előfizetése számláinak e-mailes kézbesítésének lemondása
 
 Lemondhatja a számlák e-mailes kézbesítését az alábbi lépések követésével, és a **számlák e-mailben történő küldésének lemondására** való kattintással. Ez a beállítás eltávolít minden olyan e-mail-címet, amelyre be volt állítva a számlák küldése e-mailben. Ha újból jóváhagyja a szolgáltatást, újrakonfigurálhatja a címzetteket.
 
@@ -119,7 +119,7 @@ Ha rendelkezik Microsoft-ügyfélszerződéssel, engedélyezheti a számlák e-m
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>A számlázási profil számláinak e-mailes kézbesítésének lemondása
 
-A fenti lépések végrehajtásával letilthatja a számla e-mailben történő beszerzését, és rákattinthat a **Letiltás**lehetőségre. Az összes tulajdonos, közreműködő, olvasó és számlázási kezelő kikerül a számla e-mailben való beszerzésére. Ha Ön olvasó, nem tudja megváltoztatni az e-mailes számlaküldés beállításait.
+Lemondhatja a számlák e-mailes kézbesítését az alábbi lépések követésével, és az **elutasítási** lehetőségre való kattintással. Egyik tulajdonos, közreműködő, olvasó és számlakezelő sem fogja e-mailben megkapni a számlát. Ha Ön olvasó, nem tudja megváltoztatni az e-mailes számlaküldés beállításait.
 
 ## <a name="download-usage-in-azure-portal"></a>Használati adatok letöltése az Azure Portalon
 
@@ -139,7 +139,7 @@ A fenti lépések végrehajtásával letilthatja a számla e-mailben történő 
 
 A használati adatok EA-ügyfélként történő megtekintéséhez és letöltéséhez vállalati rendszergazdának, fióktulajdonosnak vagy részlegszintű rendszergazdának kell lennie, és engedélyezni kell a költségek megtekintésére vonatkozó szabályzatot.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 
     ![Képernyőkép az Azure Portal keresőmezőjéről](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
@@ -171,11 +171,11 @@ Letöltheti a jelenlegi számlázási időszak aktuális hónapjának használat
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlájával és a díjakkal kapcsolatos további információkért lásd:
 

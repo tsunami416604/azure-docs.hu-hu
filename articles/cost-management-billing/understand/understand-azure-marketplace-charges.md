@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989422"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
@@ -54,10 +54,10 @@ Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (
 
 Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások díjairól külön számlát kap. Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 1. A bal oldali menüben válassza a **Számlák** elemet.
-1. Kattintson az **Azure piactér és a foglalások** fülre.  Az Azure Marketplace és a Reservations lap ![képe](./media/understand-azure-marketplace-charges/invoice-tabs.png)
+1. Kattintson az **Azure Marketplace és foglalások** lapra.  ![Kép az Azure Marketplace és foglalások lapról](./media/understand-azure-marketplace-charges/invoice-tabs.png)
 1. Az előfizetéseket tartalmazó legördülő listából válassza ki az azon külső szolgáltatásokat tartalmazó előfizetést, amelyek számláit meg szeretné tekinteni.
 
 ## <a name="external-spending-for-ea-customers"></a>Külső költségek EA-ügyfelek esetén
@@ -68,7 +68,7 @@ Az EA-ügyfelek megtekinthetik a külső szolgáltatások költségeit, és jele
 
 Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az erőforráshoz. A külső szolgáltatás fizetési módja azonos lesz a kiválasztott Azure-előfizetésével. A külső szolgáltatás fizetési módjának módosításához [módosítania kell annak az Azure-előfizetésnek a fizetési módját](../manage/change-credit-card.md), amely a külső szolgáltatáshoz kapcsolódik. Ha szeretné kideríteni, hogy a külső szolgáltatás melyik előfizetéshez kapcsolódik, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
      ![képernyőkép a menü Minden erőforrás eleméről](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Keresse meg a külső szolgáltatást.
@@ -97,7 +97,7 @@ Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az er�
 ## <a name="cancel-an-external-service-order"></a>Külső szolgáltatás lemondása
 Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az [Azure Portalon](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
     ![Képernyőkép a menü Minden erőforrás eleméről](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Keresse meg a külső szolgáltatást.
@@ -111,9 +111,9 @@ Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az 
 ## <a name="check-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md)

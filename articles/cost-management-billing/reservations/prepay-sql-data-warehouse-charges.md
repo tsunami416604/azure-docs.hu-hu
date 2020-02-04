@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse díjak mentése az Azure-ban fenntartott kapacitással
+title: Az SQL Data Warehouse költségeinek csökkentése fenntartott Azure-kapacitással
 description: Megtudhatja, hogyan csökkentheti az SQL Data Warehouse költségeit fenntartott kapacitásokkal megtakarítás céljából.
 services: billing
 author: yashesvi
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995844"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Az SQL Data Warehouse költségeinek csökkentése fenntartott kapacitással
 
-Pénzt takaríthat meg az Azure SQL Data Warehouse-zal, ha egy vagy három évre előre lefoglalja a cDWU-használatot. Fenntartott SQL Data Warehouse-kapacitás vásárlásához ki kell választania az Azure-régiót és az időszakot. Ezután hozzá kell adni az SQL Data Warehouse termékváltozatát a kosárhoz, majd ki kell választani a megvásárolni kívánt cDWU-egységek számát.
+Pénzt takaríthat meg az Azure SQL Data Warehouse-zal, ha egy vagy három évre előre lefoglalja a cDWU-használatot. Fenntartott SQL Data Warehouse-kapacitás vásárlásához ki kell választania az Azure-régiót és az időszakot. Ezután hozzá kell adnia az SQL Data Warehouse-termékváltozatot a kosárhoz, és ki kell választania a cDWU-egységek megvásárolni kívánt mennyiségét.
 
-Foglalás vásárlásakor a foglalás attribútumainak megfelelő SQL Data Warehouse-használatra már nem használatalapú díjszabást alkalmazunk.
+Foglalás vásárlásakor a foglalás jellemzőivel megegyező SQL Data Warehouse-használatért a továbbiakban nem fizet használatalapú díjakat.
 
-A foglalások nem foglalják magukban az SQL Data Warehouse-használat tárolási és hálózatkezelési díjait.
+A foglalások nem fedezik az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 
-A foglalt kapacitás lejártakor az SQL Data Warehouse-példányok tovább futnak, azonban használatalapú díjszabást alkalmaznak. A foglalások nem újulnak meg automatikusan.
+A fenntartott kapacitás lejáratakor az SQL Data Warehouse-példányok tovább futnak, azonban használatalapú díjjal lesznek számlázva. A foglalások nem újulnak meg automatikusan.
 
 A díjszabással kapcsolatos információkért tekintse meg a [fenntartott SQL Data Warehouse-kapacitáshoz kapcsolódó ajánlatot](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/) ismertető cikket.
 
@@ -43,9 +43,9 @@ Tegyünk fel például, hogy a teljes SQL Data Warehouse-felhasználás DW3000c.
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Fenntartott SQL Data Warehouse-kapacitás vásárlása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
-3. Válasszon előfizetést. Az Előfizetés listából válassza ki a fenntartott kapacitás kifizetéséhez használt előfizetést. Az előfizetésnél megadott fizetési mód szerint lesznek számlázva a fenntartott példány költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P).
+3. Válasszon egy előfizetést. Az Előfizetés listából válassza ki a fenntartott kapacitás kifizetéséhez használt előfizetést. Az előfizetésnél megadott fizetési mód szerint lesznek számlázva a fenntartott példány költségei. Az előfizetés kétféle típusú lehet: nagyvállalati szerződés (ajánlatszám: MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses (ajánlatszám: MS-AZR-0003P vagy MS-AZR-0023P).
    - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
    - Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.
 4. Válassza ki a hatókört. A Hatókör listából válassza ki az előfizetés hatókörét.
@@ -67,11 +67,11 @@ Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréj
 
 A rendszer automatikusan alkalmazza a foglalási kedvezményt a fenntartott SQL Data Warehouse-kapacitás hatókörével és régiójával egyező SQL Data Warehouse-példányokra. A fenntartott SQL Data Warehouse-kapacitás hatókörét az [Azure Portal](https://portal.azure.com/), a PowerShell, a parancssori felület és az API használatával frissítheti.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A foglalási kedvezmények Azure SQL Data Warehouse-ra történő alkalmazásával kapcsolatos további információkért lásd [a foglalási kedvezmények alkalmazását az Azure SQL Data Warehouse-ban](prepay-sql-data-warehouse-charges.md) bemutató cikket.
 

@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 3abfac5f915b5c1c6020701feaa356d7a043ef8d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991827"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Az Enterprise költségnézeteinek hibaelhárítása
@@ -45,5 +45,5 @@ Ha olyan hibaüzenetet kap, amikor megpróbál hozzáférni egy előfizetéshez 
 
 Kérjen hozzáférést az Azure-előfizetés vagy a felügyeleti csoport rendszergazdájától. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

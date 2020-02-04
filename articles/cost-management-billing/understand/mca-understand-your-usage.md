@@ -1,5 +1,5 @@
 ---
-title: Microsoft Customer szerződés – Azure használati feltételek
+title: A Microsoft-ügyfélszerződéshez tartozó, Azure-használati adatokat és -díjakat tartalmazó fájl
 description: A számlázási profiljához tartozó, az Azure használati adatait és díjait tartalmazó CSV-fájl szakaszainak ismertetése.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990904"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>A Microsoft-ügyfélszerződéshez tartozó, az Azure használati adatait és díjait tartalmazó fájlban foglalt kifejezések
@@ -35,10 +35,10 @@ Ha Ön nagyvállalati ügyfél volt, látni fogja, hogy az Azure számlázási p
 | Az Azure Nagyvállalati Szerződés használati adatait tartalmazó CSV-fájl | A Microsoft-ügyfélszerződéshez tartozó, Azure-használati adatokat és -díjakat tartalmazó CSV-fájl |
 | --- | --- |
 | Dátum | dátum |
-| Hónap| dátum |
-| Nap | dátum |
-| Év | dátum |
-| Termék | product |
+| Month| dátum |
+| Day | dátum |
+| Year | dátum |
+| Product | product |
 | MeterId | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
@@ -53,8 +53,8 @@ Ha Ön nagyvállalati ügyfél volt, látni fogja, hogy az Azure számlázási p
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| Címkék | címkét |
-| StoreServiceIdentifier | – |
+| Címkék | tags |
+| StoreServiceIdentifier | N/A |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -65,7 +65,7 @@ Ha Ön nagyvállalati ügyfél volt, látni fogja, hogy az Azure számlázási p
 
 A következő kifejezések jelennek meg az Azure használati adatait és díjait tartalmazó fájlban.
 
-Időtartam | Leírás
+Időszak | Leírás
 --- | ---
 invoiceId | A számla PDF-fájlján látható egyedi dokumentumazonosító
 previousInvoiceId | Hivatkozás az eredeti számlára, ha ez a számla visszatérítésről lett kiállítva
@@ -107,12 +107,12 @@ resourceLocation | Megadja az adatközpont helyét, ahol az erőforrás fut.
 location | Az erőforrás normalizált helye, ha különböző erőforráshelyek vannak konfigurálva ugyanazokhoz a régiókhoz
 quantity | A megvásárolt vagy igénybe vett egységek száma
 unitOfMeasure | A szolgáltatás számlázásának mértékegysége. A számítási szolgáltatások számlázása például óraalapú.
-chargeType | A díj típusa. Értékek: <ul><li>AsCharged – használat: az Azure-szolgáltatások használata alapján felhalmozódott díjak. Ez magában foglalja a fenntartott példányok miatt nem felszámított virtuális gépeken való használatot.</li><li>AsCharged-PurchaseMarketplace: a Piactéri vásárlások egyszeri vagy rögzített ismétlődő díjai</li><li>AsCharged-UsageMarketplace: a Marketplace-szolgáltatások díjszabása a használati egységek alapján</li></ul>
-isAzureCreditEligible | Jelző, amely azt jelzi, hogy az Azure-kreditek használatára jogosult-e a szolgáltatásért fizetendő díj (Values: true, false)
+chargeType | A díj típusa. Értékek: <ul><li>AsCharged-Usage: Az Azure-szolgáltatások használatából keletkező díjak. Ez magában foglalja a fenntartott példányok miatt nem felszámított virtuális gépeken való használatot.</li><li>AsCharged-PurchaseMarketplace: A Marketplace-en végzett vásárlásokra vonatkozó egyszeri vagy állandó, időszakos díjak</li><li>AsCharged-UsageMarketplace: A fogyasztási egységeken alapuló díjszabású Marketplace-szolgáltatások díjai</li></ul>
+isAzureCreditEligible | Jelző, amely azt adja meg, hogy a szolgáltatás díja fizethető-e Azure-kreditekkel (értékek: True, False)
 serviceInfo1 | Szolgáltatásspecifikus metaadatok
 serviceInfo2 | Örökölt mező, amelyben a nem kötelező szolgáltatásspecifikus metaadatok rögzíthetők.
 additionalInfo | További szolgáltatásspecifikus metaadatok.
-címkét | Az erőforráshoz hozzárendelt címkék
+tags | Az erőforráshoz hozzárendelt címkék
 
 ### <a name="make-sure-that-charges-are-correct"></a>A díjak helyességének ellenőrzése
 
@@ -121,11 +121,11 @@ Ha meg szeretne győződni arról, hogy a részletes használati adatokat tartal
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md)
 - [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](download-azure-daily-usage.md)

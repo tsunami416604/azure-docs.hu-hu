@@ -1,5 +1,5 @@
 ---
-title: A Red Hat foglalási csomagjának kedvezményei – Azure
+title: A Red Hat foglalási csomag kedvezményei – Azure
 description: Tudnivalók a Red Hat-csomagkedvezmények alkalmazásáról a virtuális gépeken található Red Hat szoftveren.
 services: billing
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
 ms.openlocfilehash: 280764d3b9185abd1d8112f641007a7dc1861b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995324"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Tudnivalók a Red Hat Linux Enterprise szoftver foglalásicsomag-kedvezményeinek alkalmazásáról az Azure-ban
@@ -154,17 +154,17 @@ Azure Portal Marketplace-en szereplő nevek:
 |96 virtuális processzorral rendelkező virtuális gép licence|b13895fc-0d06-4de9-b860-627c471cd247|2,166666667||
 |128 virtuális processzorral rendelkező virtuális gép licence|6e67ac0b-19d3-4289-96df-05d0093d4b3b|2,166666667| M128ms|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A foglalással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
+- [Mik azok az Azure-beli foglalások?](save-compute-costs-reservations.md)
 - [Előre fizetés Azure Reservationsbeli Red Hat-szoftvercsomagokért](../../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Foglalások kezelése az Azure-ban](manage-reserved-vm-instance.md)
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

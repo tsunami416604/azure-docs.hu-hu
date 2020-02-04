@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989994"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Fizetéssel kapcsolatos problémák elhárítása az Azure-ban
@@ -50,7 +50,7 @@ A hiba elhárításához tekintse meg a [Nem található előfizetés bejelentke
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Az előfizetés díjának befizetése meghiúsul
 
-Ha a következő hibaüzenet jelenik meg: a *fizetési határidő lejárt. Probléma merült fel a fizetési móddal kapcsolatban* , vagy *Sajnáljuk, az adatok nem menthetők. Zárjuk be a böngészőt, és próbálkozzon újra.* a kártyán egy függőben lévő fizetés van, mivel a kártyát a pénzügyi intézmény megtagadta.
+Előfordulhat, hogy a következő hibaüzeneteket kapja: *Lejárt a kifizetés esedékessége. Probléma van a fizetési móddal* vagy *Az információ nem menthető. Zárja be a böngészőt, majd próbálkozzon újra.* Ez azt jelenti, hogy a kártyán függőben lévő fizetési kérelem van, mert a kifizetést a pénzintézet megtagadta.
 
 Győződjön meg arról, hogy az egyenlege elegendő a kifizetéshez. Ha nem, használjon egy másik kártyát a fizetéshez, vagy lépjen kapcsolatba a pénzintézettel a probléma megoldása érdekében.
 
@@ -95,6 +95,6 @@ Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhár�
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-számlázás dokumentációja](../../billing/index.md)

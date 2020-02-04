@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992360"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
@@ -72,16 +72,16 @@ A Microsoft semmilyen célból sem férhet hozzá a megadott árréshez és a ka
 
 ### <a name="how-the-calculation-works"></a>A számítás működése
 
-Az LSP megad egy százalékos arányt az EA Portalon.  A portálon található összes kereskedelmi információ az LSP által megadott százalékos arányban lesz felemelve. Példa:
+Az LSP megad egy százalékos arányt az EA Portalon.  A portálon található összes kereskedelmi információ az LSP által megadott százalékos arányban lesz megemelve. Példa:
 
 - Az ügyfél aláír egy 100 000 dollár értékű pénzügyi kerettel rendelkező EA-szerződést.
 - Az A szolgáltatás fogyasztási díja 10 dollár/óra.
 - Az LSP az EA Portalon 10%-os árrést állít be.
 - Az alábbi példában látható, hogy az ügyfél hogyan látja a kereskedelmi információkat:
-    - Pénzügyi egyenleg: 110 000 USD.
-    - Az A szolgáltatás mérési sebessége: 11 USD/óra.
-    - Használati/üzemeltetési információk az A szolgáltatáshoz, ha 100 órán keresztül használják: 1 100 USD.
-    - Az ügyfél számára elérhető pénzügyi egyenleg a szolgáltatás fogyasztásának levonása után: 108 900 USD.
+    - Pénzügyi egyenleg: 110 000 dollár.
+    - Az A szolgáltatás fogyasztási díja: 11 dollár / óra.
+    - Az A szolgáltatás használati/üzemeltetési információi 100 órás használat esetén: 1100 dollár.
+    - Az ügyfél számára elérhető pénzügyi egyenleg az A szolgáltatás fogyasztásának levonása után: 108 900 dollár.
 
 ### <a name="when-to-use-a-markup"></a>Mikor érdemes árrést használni?
 
@@ -101,7 +101,7 @@ Kérjük, tekintse át a kereskedelmi információkat – pénzügyi egyenleggel
 
 ### <a name="how-to-add-a-price-markup"></a>Árrés hozzáadása
 
-**Első lépés: árlista hozzáadása**
+**Első lépés: Árrés hozzáadása**
 
 1. Az Enterprise Portalon kattintson a bal oldali navigációs menüben található **Jelentések** elemre.
 1. A _Használati adatok összegzése_ lapon kattintson a kék **Árrés** kifejezésre.
@@ -116,7 +116,7 @@ Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ l
 1. A közzététel előtt elvégezheti a módosításokat, ha kiválasztja a **Szerkesztés** lehetőséget a _Használati adatok összegzése > Ügyfélnézet_ lapján.  
   A szolgáltatási árak és a pénzügyi egyenlegek azonos százalékkal lesznek megemelve. Ha eltérő százalékos arány van megadva a pénzügyi egyenlegnél és a fogyasztási árnál, vagy eltérő százalékos arányok vonatkoznak a különböző szolgáltatásokra, ne használja ezt a funkciót.
 
-**Harmadik lépés: közzététel**
+**Harmadik lépés: Közzététel**
 
 A díjszabás áttekintése és ellenőrzése után kattintson **Közzététel** elemre.
   
@@ -124,7 +124,7 @@ Az árréssel ellátott díjszabás a Közzététel lehetőség kiválasztása u
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Mely regisztrációk esetén engedélyezett az árrés használata?
 
-Ha szeretné megnézni, hogy van-e közzétett korrektúrával rendelkező regisztráció, kattintson a **kezelés** gombra a bal oldali navigációs sávon, majd kattintson a **Beléptetés** lapra. jelölje ki a beléptetési mezőt, és tekintse meg a kód állapotát a _regisztráció részletei_között. Az árrés szolgáltatás aktuális állapota Letiltott, Előzetes verzió vagy Közzétett lehet.
+Ha szeretné megnézni, hogy egy regisztrációban van-e közzétett árrés, kattintson a bal oldali navigációs menüben található **Kezelés** elemre, majd a **Regisztráció** fülre. Jelölje ki a regisztrációs mezőt, és tekintse meg az árrés állapotát a _Regisztráció részletei_ szakaszban. Az árrés szolgáltatás aktuális állapota Letiltott, Előzetes verzió vagy Közzétett lehet.
 
 ### <a name="how-can-the-customer-download-usage-estimates"></a>Hogyan töltheti le az ügyfél a becsült használati adatait?
 
@@ -145,8 +145,8 @@ A partnerek a csatornapartner módosítása után használhatják az árrés szo
 | Microsoft Azure Hosted Services | 6 üzemeltetett szolgáltatás | Az üzemeltetett szolgáltatások ezen korlátja nem növelhető előfizetésenként hatnál többre. Ha további üzemeltetett szolgáltatásokra van szüksége, adjon hozzá további előfizetéseket. |
 | Microsoft Azure Storage | 5 tárfiók, egyenként 100 TB-os maximális méretűek. | A tárfiókok számát előfizetésenként legfeljebb 20-ra növelheti. Ha további tárfiókokra van szüksége, adjon hozzá további előfizetéseket. |
 | SQL Azure | 149, bármelyik típusú adatbázis (Web Edition vagy Business Edition). |   |
-| Access Control | 50 névtér fiókonként. 100 millió hozzáférés-vezérlési tranzakció havonta |   |
-| Szolgáltatásbusz | 50 névtér fiókonként. 40 Service Bus-kapcsolat | Azok az ügyfelek, akik csatlakozási csomagokon keresztül vásárolnak Service Bus-kapcsolatokat, a megvásárolt csatlakozási csomag és a következő legmagasabb csatlakozási csomag közötti középponttal megegyező kvótaszámmal fognak rendelkezni. Az 500-as csomagokat választó ügyfeleknek 750-es kvótája lesz. |
+| Hozzáférés-vezérlés | 50 névtér fiókonként. 100 millió hozzáférés-vezérlési tranzakció havonta |   |
+| Service Bus | 50 névtér fiókonként. 40 Service Bus-kapcsolat | Azok az ügyfelek, akik csatlakozási csomagokon keresztül vásárolnak Service Bus-kapcsolatokat, a megvásárolt csatlakozási csomag és a következő legmagasabb csatlakozási csomag közötti középponttal megegyező kvótaszámmal fognak rendelkezni. Az 500-as csomagokat választó ügyfeleknek 750-es kvótája lesz. |
 
 ## <a name="resource-commitment"></a>Erőforrásokra vonatkozó kötelezettségvállalás
 
@@ -228,7 +228,7 @@ A vállalati rendszergazdák hozzáadhatnak új fióktulajdonosokat, hozzárende
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Új előfizetések létrehozása meglévő/új fióktulajdonosként
 
-**Első lépés: bejelentkezés a fiókba**
+**Első lépés: Bejelentkezés a fiókba**
 1. Az Azure EA Portalon válassza a **Kezelés** fület, majd a felső menüben navigáljon az **Előfizetés** elemre.
 1. Ellenőrizze, hogy a fiók tulajdonosaként jelentkezett-e be.
 1. Kattintson az **+Előfizetés hozzáadása** elemre.
@@ -238,7 +238,7 @@ Amikor első alkalommal ad hozzá egy előfizetést a fiókjához, meg kell adni
 
 Amikor első alkalommal ad előfizetést a fiókjához, el kell fogadnia a MOSA-szerződést és egy díjkonstrukciót. Ezek a szakaszok nem vonatkoznak a Nagyvállalati Szerződéssel rendelkező ügyfelekre, de jelenleg szükségesek az Ön előfizetésének létrehozásához. A Microsoft Azure Nagyvállalati Szerződés regisztrációs kiegészítése felülírja a fenti elemeket, így az Ön szerződéses jogviszonya nem módosul. Jelölje be a feltételek elfogadását jelző jelölőnégyzetet.
 
-**Második lépés: előfizetés nevének frissítése**
+**Második lépés: Előfizetés nevének frissítése**
 
 Minden új előfizetés az alapértelmezett Microsoft Azure Enterprise előfizetésnévvel jön létre. Fontos, hogy frissítse az előfizetés nevét, hogy megkülönböztesse a vállalati regisztráción belüli többi előfizetéstől, és gondoskodjon arról, hogy a vállalati szintű jelentéseken felismerhető legyen.
 
@@ -259,17 +259,17 @@ Amikor az új fióktulajdonosokat (AO) hozzáadják a regisztrációhoz, mindig 
 
 Ez a forgatókönyv akkor fordul elő, ha az ügyfél nem megfelelő regisztrációs szám alatt telepített szolgáltatásokat, vagy nem megfelelő szolgáltatásokat választott.
 
-Annak ellenőrzéséhez, hogy a megfelelő regisztráció alatt végzi-e az üzembe helyezést, megtekintheti a belefoglalt egységekre vonatkozó adatokat az árlistán. Jelentkezzen be vállalati rendszergazdaként, majd kattintson a **jelentések** elemre a bal oldali navigációs sávon, és válassza az **árlista** fület. kattintson a jobb felső sarokban található Letöltés ikonra, és keresse meg a "szolgáltatási keret" oszlop szűrőjét, és válassza a "0" értéknél nagyobb értéket.
+Annak ellenőrzéséhez, hogy a megfelelő regisztráció alatt végzi-e az üzembe helyezést, megtekintheti a belefoglalt egységekre vonatkozó adatokat az árlistán. Jelentkezzen be vállalati rendszergazdaként, kattintson a bal oldali navigációs sávon lévő **Jelentések** elemre, és válassza az **Árlista** fület. Kattintson a Letöltés ikonra a jobb felső sarokban, keresse meg a megfelelő csomag termékváltozatainak cikkszámait a Szolgáltatási keret oszlop szűrőjével, és válassza a 0-nál nagyobb értékeket.
 
 Győződjön meg arról, hogy az OMS-csomagja látható az árlista belefoglalt egységek területén. Ha az OMS-csomaghoz nem tartoznak belefoglalt egységek az Ön regisztrációjában, akkor lehetséges, hogy az OMS-csomag egy másik regisztrációban található. Forduljon az Azure Enterprise Portal ügyfélszolgálatához itt: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
-Ha az árlista szolgáltatásainak belefoglalt egységei nem egyeznek a központilag telepített szolgáltatásokkal, például Operational Insights a prémium szintű adatok elemzése és a Operational Insights standard adatok elemzése, akkor előfordulhat, hogy olyan központilag telepített szolgáltatásokat is használhat, amelyeket a csomag nem tartalmaz, forduljon az Azure Enterprise Portal ügyfélszolgálatához [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) , így továbbra is segítségünkre lehet.
+Ha az árlistán szereplő szolgáltatások belefoglalt egységei nem egyeznek a telepített szolgáltatásokkal, például az Operational Insights Premium Data Analyzed vagy az Operational Insights Standard Data Analyzed szolgáltatással, akkor lehetséges, hogy olyan szolgáltatásokat telepíthetett, amelyeket nem fed le a bővítmény. További segítségért forduljon az Azure Enterprise Portal ügyfélszolgálatához itt: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
 **Rossz regisztrációban kiépített csomagtermékváltozat-szolgáltatások**
 
 Ha több regisztrációval rendelkezik, és olyan regisztrációs szám alatt telepítette a szolgáltatásokat, amely nem rendelkezik OMS-csomaggal, vegye fel a kapcsolatot az Azure Enterprise Portal ügyfélszolgálatával itt: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure EA Portal használatának kezdő lépéseit az [Ismerkedés az Azure EA Portallal](ea-portal-get-started.md) című rész írja le.
 - Az Azure EA Portal rendszergazdáinak érdemes elolvasniuk [a nagyvállalati szerződéses Azure Portal adminisztrációjáról](ea-portal-administration.md) szóló cikket a gyakori adminisztratív feladatok megismeréséhez.

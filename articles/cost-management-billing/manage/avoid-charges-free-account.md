@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990059"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Díjak elkerülése az ingyenes Azure-fiókkal
@@ -41,7 +41,7 @@ Miután frissítette a fiókját, az olyan szolgáltatások használatáért, am
 
 Az ingyenes szolgáltatások és mennyiségek igénybevételi joga a 12 hónap elteltével lejár. Az Azure Portalon megtekintheti az ingyenes szolgáltatások lejáratának dátumát.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A navigációs terület bal oldalán válassza ki a **Minden szolgáltatás** elemet.
 
@@ -56,9 +56,9 @@ Az ingyenes szolgáltatások és mennyiségek igénybevételi joga a 12 hónap e
 
 Az ingyenes szolgáltatások és mennyiségek lejárata után az esetlegesen használt szolgáltatások díját használatalapú díjszabással számítjuk fel. Az Azure Portal használatával törölheti a nem használt szolgáltatások erőforrásait. Ha nem szándékozik Azure-szolgáltatásokat használni, [megszüntetheti az előfizetését](cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Ingyenes Azure-fiók frissítése](upgrade-azure-subscription.md)

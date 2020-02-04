@@ -1,5 +1,5 @@
 ---
-title: A Microsoft ügyfél-szerződések számlázási szerepkörei – Azure
+title: A Microsoft-ügyfélszerződéshez tartozó számlázási szerepkörök – Azure
 description: Megismerheti a Microsoft-ügyfélszerződéshez tartozó számlázási szerepköröket az Azure-beli számlázási fiókok esetében.
 author: amberbhargava
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987940"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban
@@ -180,7 +180,7 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Számlázási szerepkörök kezelése az Azure Portalon
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -203,10 +203,10 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

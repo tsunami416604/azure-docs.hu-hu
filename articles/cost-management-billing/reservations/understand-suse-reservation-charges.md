@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f3d0c123fcbd16f3a4125ad74f0502863b6ce6d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995259"
 ---
 # <a name="azure-software-plan-discount"></a>Azure-szoftvercsomag-kedvezmények
@@ -71,7 +71,7 @@ Azure Portal Marketplace-en szereplő név:
 
 - SLES 12 SP3 for HPC (Priority)
 
-|SUSE rendszerű virtuális gép | MeterId| Arány| Példa virtuálisgép-méretre|
+|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója| Arány| Példa virtuálisgép-méretre|
 | -------| ------------------------| --- |--- |
 |SLES for HPC, 1–2 virtuális processzor|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
 |SLES for HPC, 3–4 virtuális processzor|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
@@ -83,7 +83,7 @@ Azure Portal Marketplace-en szereplő név:
 
 - SLES 12 SP3 for HPC
 
-|SUSE rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- | --- | ------------------------| --- |
 |SLES for HPC, 1–2 virtuális processzor |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |SLES for HPC, 3–4 virtuális processzor|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1,92308|D4s_v3|
@@ -97,7 +97,7 @@ Azure Portal Marketplace-en szereplő nevek:
 - SLES for SAP 12 SP3 (Priority)
 - SLES for SAP 12 SP2 (Priority)
 
-|SUSE rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- | --- |
 |SLES for SAP Priority, 1–2 virtuális processzor|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |SLES for SAP Priority, 3–4 virtuális processzor |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
@@ -111,7 +111,7 @@ Azure Portal Marketplace-en szereplő nevek:
 - SLES 12 SP3 (Priority)
 - SLES 11 SP4 (Priority)
 
-|SUSE rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- |--- |
 |SLES, 1 virtuális processzor|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
 |SLES, 2–4 virtuális processzor |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
@@ -137,17 +137,17 @@ Azure Portal Marketplace-en szereplő nevek:
 - SLES 15 (Standard)
 - SLES 12 SP3 (Standard)
 
-|SUSE rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|SUSE rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- |--- |
 |SLES, 1–2 magos virtuális processzor |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES, 3–4 magos virtuális processzor |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
 |SLES, 5 vagy több virtuális processzor |7b349b65-d906-42e5-833f-b2af38513468|2,30769| D8s_v3|
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A foglalással kapcsolatos további információkért tekintse meg a következő cikkeket:
 

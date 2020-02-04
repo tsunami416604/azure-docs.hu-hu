@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76121097"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
@@ -50,7 +50,7 @@ Az [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=a
 * **Azure-beli szerepköralapú hozzáférés-vezérlés** – a hozzáférési szabályzatok konfigurálása az [Azure Portalon](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá a RateCard-adatokhoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót az olvasó, a tulajdonos vagy a közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetés használati adataihoz.
 * **A használatalapú fizetéshez, MSDN-hez, pénzügyi kerethez és pénzügyi kredithez kapcsolódó ajánlatok támogatása (a Nagyvállalati Szerződés és a [CSP](https://docs.microsoft.com/partner-center) nem támogatott)** – ez az API az Azure ajánlatszintű díjszabásairól nyújt információt.  Az API hívójának át kell adnia az ajánlat adatait az erőforrás részleteinek és díjszabásának lekéréséhez. Jelenleg nem tudjuk megadni a Nagyvállalati Szerződés díjait, mert az ilyen ajánlatoknak regisztrációnként testreszabott díjszabásai vannak.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 Néhány forgatókönyv, amelyek a Usage- és RateCard API-k kombinációjával válnak lehetségessé:
 
 * **Azure-költségek a hónap folyamán** – a Usage- és RateCard API-k kombinációjával jobb betekintést kaphat a hónap folyamán felmerülő felhőköltségekbe. Elemezheti az óránkénti és napi használatiadat-gyűjtőket és a díjbecsléseket.
@@ -63,7 +63,7 @@ Néhány forgatókönyv, amelyek a Usage- és RateCard API-k kombinációjával 
   * Azt is meghatározhatja, hogy egy másik Azure-ajánlat jobb díjszabást biztosít-e az Azure-erőforráshoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A GitHubon elérhető kódminták megtekintése:
   * [Számlázási API kódmintája](https://go.microsoft.com/fwlink/?linkid=845124)
 

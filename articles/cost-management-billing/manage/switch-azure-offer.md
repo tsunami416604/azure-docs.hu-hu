@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 8e083391a04188345143f8fdf9a5a945abcd9eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994284"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure-előfizetés egy másik ajánlatra történő módosítása
@@ -111,9 +111,9 @@ A váltás napján létrejön egy számla a fennálló tartozásokról. Ezután 
 * Az erőforrásokat közvetlenül az új előfizetésbe migrálhatja. Ehhez tekintse meg az [erőforrások új erőforráscsoportba vagy előfizetésbe történő áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető cikket.
 * Az Azure-előfizetések tulajdonjogának és tartalmának átadásával kapcsolatos információkért tekintse meg az [Azure-előfizetés tulajdonjogának másik fióknak történő átadását](billing-subscription-transfer.md) ismertető cikket.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md)
