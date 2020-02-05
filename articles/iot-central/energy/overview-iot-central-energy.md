@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581505"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016562"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Energiaipari megoldások létrehozása az IoT Centrallal 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Az intelligens mérőszámok és a napelemes panelek fontos szerepet játszanak az energetikai átalakításban. Az intelligens mérőszámok további szabályozást és valós idejű elemzéseket biztosítanak az energiafogyasztással és a napelemek növekedésével kapcsolatban a megújuló energia-létrehozásban. Az intelligens fogyasztásmérő és a napelemek figyelésére szolgáló alkalmazások példák a különböző funkciók megjelenítésére. A partnerek kihasználhatják ezeket a sablonokat úgy, hogy az adott igényeknek megfelelően IoT Central energiát hozzanak létre. Nincsenek új kódolások, és az alkalmazások telepítéséhez és használatához nincs szükség további díjakra. További információ az energetikai alkalmazások sablonjairól és képességeiről.
@@ -64,7 +64,7 @@ Az alkalmazás üzembe helyezése után az alábbi irányítópulton látható, 
 > ![napelemes alkalmazás irányítópultja](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az energetikai megoldások létrehozásának megkezdéséhez:
 * Ingyenes alkalmazás-sablonok létrehozása: [intelligens fogyasztásmérő alkalmazás](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [napelemes](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) alkalmazás
 * További tudnivalók az [intelligens fogyasztásmérő monitorozási alkalmazásával kapcsolatos fogalmakról](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)

@@ -64,8 +64,6 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes Service (AKS) használata
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-    - name: A Text Analytics csatlakoztatott szolgáltatás használata
-      href: vs-text-connected-service.md
 - name: Referencia
   items:
     - name: Parancssori felülettel kapcsolatos referencia

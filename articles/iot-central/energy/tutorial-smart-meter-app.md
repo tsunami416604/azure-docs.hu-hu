@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7b04251211e716ef8e5f8c77aa3a2e74f6e9ef77
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982497"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016000"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
@@ -50,10 +50,11 @@ Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
     * **URL**: válasszon egy IoT Central URL-címet, a platform ellenőrzi annak egyediségét.
     * **7 napos ingyenes próbaverzió**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
     * **Számlázási információ**: maga az alkalmazás ingyenes. Az alkalmazás erőforrásainak kiépítéséhez a címtár, az Azure-előfizetés és a régió részletei szükségesek.
-    * Kattintson a lap alján található **Létrehozás** gombra, és az alkalmazás egy percen belül létrejön.     
-         ![új alkalmazás űrlapja](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * Kattintson a lap alján található **Létrehozás** gombra, és az alkalmazás egy percen belül létrejön.
 
-         ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+        ![Új alkalmazás űrlapja](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatértékek ellenőrzése

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021855"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025996"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -44,7 +44,7 @@ A **megfelelőség és az irányítás** – a Privileged Identity Management ü
 
 **Csökkentse a költségeket** – csökkentse a hatékonyságot, az emberi hibákat és a biztonsági problémákat a Privileged Identity Management megfelelő üzembe helyezésével. A nettó eredmény az emelt szintű identitásokkal kapcsolatos számítógépes bűncselekmények csökkentése, ami költséges és nehézkes a helyreállításhoz. A Privileged Identity Management a szervezet számára is segít csökkenteni a hozzáférés-naplózási információkhoz kapcsolódó költségeket, amikor megfelel a szabályozásoknak és szabványoknak.
 
-További információkért lásd: [Mi az Azure AD Privileged Identity Management?](pim-configure.md).
+További információ: [Mi az Azure ad Privileged Identity Management?](pim-configure.md)
 
 ### <a name="licensing-requirements"></a>Licencelési követelmények
 
@@ -75,7 +75,7 @@ További információ: [terminológia](pim-configure.md#terminology).
 1. Miután a felhasználó sikeresen aktiválta a szerepkört, egy előre konfigurált időszakot kapnak a szerepkörhöz.
 1. A rendszergazdák megtekinthetik az összes Privileged Identity Management tevékenység előzményeit a naplóban. Emellett az Azure AD-szervezeteket továbbra is biztonságossá tehetik, és Privileged Identity Management-funkciókkal, például hozzáférési felülvizsgálatokkal és riasztásokkal teljesítik a megfelelőséget.
 
-További információkért lásd: [Mi az Azure AD Privileged Identity Management?](pim-configure.md).
+További információ: [Mi az Azure ad Privileged Identity Management?](pim-configure.md)
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>A Privileged Identity Management felügyelhető szerepkörök
 
@@ -120,7 +120,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 A tervezési folyamat részeként először el kell fogadnia a Privileged Identity Managementt, és engedélyeznie kell az [Privileged Identity Management cikk használatának](pim-getting-started.md) első lépéseit. A Privileged Identity Management engedélyezése olyan funkciók elérését teszi lehetővé, amelyek kifejezetten az üzemelő példány segítségére lettek kialakítva.
 
-Ha a cél az Azure-erőforrásokhoz való Privileged Identity Management üzembe helyezése, kövesse az [Azure-erőforrások felderítése Privileged Identity Management cikkben való felügyeletét](pim-resource-roles-discover-resources.md) ismertető cikket. Csak az egyes erőforrások, erőforráscsoportok és előfizetések tulajdonosai tudják felderíteni őket Privileged Identity Managementon belül. Ha Ön a globális rendszergazda, aki az Azure-erőforrások Privileged Identity Management telepítését kísérli meg, az [összes Azure-előfizetés kezeléséhez megemelheti a hozzáférést](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , hogy az összes Azure-erőforráshoz hozzáférhessen a felderítéshez. Azt javasoljuk azonban, hogy az egyes előfizetésekhez tartozó tulajdonosok jóváhagyása előtt az erőforrásaikat Privileged Identity Management-mel kezelhesse.
+Ha a cél az Azure-erőforrásokhoz való Privileged Identity Management üzembe helyezése, kövesse az [Azure-erőforrások felderítése Privileged Identity Management cikkben való felügyeletét](pim-resource-roles-discover-resources.md) ismertető cikket. Csak az előfizetések és a felügyeleti csoportok tulajdonosai tudják felderíteni és bevezetni ezeket az erőforrásokat Privileged Identity Managementba. A bevezetést követően a PIM funkció minden szinten elérhető a tulajdonosok számára, beleértve a felügyeleti csoportot, az előfizetést, az erőforráscsoportot és az erőforrást. Ha Ön a globális rendszergazda, aki az Azure-erőforrások Privileged Identity Management telepítését kísérli meg, az [összes Azure-előfizetés kezeléséhez megemelheti a hozzáférést](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , hogy az összes Azure-erőforráshoz hozzáférhessen a felderítéshez. Azt javasoljuk azonban, hogy az egyes előfizetésekhez tartozó tulajdonosok jóváhagyása előtt az erőforrásaikat Privileged Identity Management-mel kezelhesse.
 
 ### <a name="enforce-principle-of-least-privilege"></a>A legalacsonyabb jogosultsági szint betartatásának elve
 
@@ -198,7 +198,7 @@ Ha vannak olyan szerepkörök, amelyekhez vendég felhasználó van rendelve, k�
 > [!TIP]
 > : heavy_check_mark: a **Microsoft azt javasolja** , hogy az Privileged Identity Management segítségével minden szerepkört kezelje a vendég felhasználókkal, hogy csökkentse a feltört vendég felhasználói fiókokkal kapcsolatos kockázatokat.
 
-Az olvasói szerepkörök, például a címtár-olvasó, az üzenetsor-olvasó és a biztonsági olvasó úgy vélik, hogy kevésbé fontosak a más szerepkörökhöz képest, mert nem rendelkeznek írási engedéllyel. Azonban láttuk, hogy egyes ügyfelek is védik ezeket a szerepköröket, mert az ilyen fiókokhoz hozzáférő támadók képesek lehetnek bizalmas adatok (például személyazonosításra alkalmas adatok) olvasására. Ezt figyelembe kell vennie annak eldöntése során, hogy a cégen belüli olvasói szerepköröket Privileged Identity Management használatával kell-e felügyelni.
+Az olvasói szerepkörök, például a címtár-olvasó, az üzenetsor-olvasó és a biztonsági olvasó úgy vélik, hogy kevésbé fontosak a más szerepkörökhöz képest, mert nem rendelkeznek írási engedéllyel. Azonban láttuk, hogy egyes ügyfelek is védik ezeket a szerepköröket, mert az ilyen fiókokhoz hozzáférő támadók bizalmas adatokat, például személyes adatokat is beolvashatnak. Ezt figyelembe kell vennie annak eldöntése során, hogy a cégen belüli olvasói szerepköröket Privileged Identity Management használatával kell-e felügyelni.
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
 
@@ -350,7 +350,7 @@ Ha Privileged Identity Management az éles környezetben nem tudott megfelelően
 
 #### <a name="azure-ad-roles"></a>Azure AD-szerepkörök
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 1. Kattintson az **Azure ad-szerepkörök** elemre, majd a **szerepkörök**elemre.
 1. Minden konfigurált szerepkörnél kattintson a három pontra ( **..** .) a jogosult hozzárendeléssel rendelkező összes felhasználó esetében.
@@ -358,7 +358,7 @@ Ha Privileged Identity Management az éles környezetben nem tudott megfelelően
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 1. Kattintson az **Azure-erőforrások** elemre, majd kattintson egy előfizetésre vagy erőforrásra, amelyet vissza szeretne állítani.
 1. Kattintson a **szerepkörök**elemre.
@@ -373,7 +373,7 @@ A Privileged Identity Management éles környezetben történő üzembe helyezé
 
 A bérlők hatékonyabb védelme érdekében a Privileged Identity Management beépített riasztási funkcióit kell használnia. További információ: [biztonsági riasztások](pim-how-to-configure-security-alerts.md#security-alerts). Ezek a riasztások a következők: a rendszergazdák nem Kiemelt szerepköröket használnak, a szerepköröket a Privileged Identity Managementon kívül kell kiosztani, a szerepköröket túl gyakran aktiválják. A szervezet teljes körű védelem érdekében rendszeresen menjen végig a riasztások listáján, és javítsa ki a problémákat. A riasztásokat a következő módon tekintheti meg és javíthatja:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 1. Kattintson az **Azure ad-szerepkörök** elemre, majd a **riasztások**elemre.
 

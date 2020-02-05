@@ -3,12 +3,12 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynökkel
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Azure Backup Microsoft Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290869"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025537"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Windowsos gépek biztonsági mentése az Azure Backup MARS-ügynök használatával
 
@@ -49,7 +49,7 @@ A biztonsági mentés attól függ, hogy hol van telepítve az ügynök.
 
 Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások lehetővé teszik az alábbi URL-címek és IP-címek használatát:
 
-#### <a name="urls"></a>URL-címek
+#### <a name="urls"></a>URLs
 
 * www\.msftncsi.com
 * *.Microsoft.com
@@ -68,7 +68,7 @@ A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt has
 
 A Recovery Services-tároló tárolja az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat, és tartalmazza a biztonsági mentési szabályzatot, amely a biztonsági mentést végző gépekre vonatkozik. Hozzon létre egy tárolót az alábbiak szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetésével.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/) Azure-előfizetése használatával.
 
 2. Keresse meg és válassza ki **Recovery Services**tárolókat.
 
@@ -215,10 +215,10 @@ Hozzon létre egy szabályzatot az alábbiak szerint:
         -   A hónap utolsó hetében szombaton, éjfélkor és 6:00 ÓRAKOR készített biztonsági másolatok 12 hónapig tartanak.
         -   A március utolsó hetében szombatonként készített biztonsági másolatok 10 évig tartanak.
 
-    ![Adatmegőrzési példa](./media/backup-configure-vault/retention-example.png)
+        ![Adatmegőrzési példa](./media/backup-configure-vault/retention-example.png)
 
 
-11. A **kezdeti biztonsági mentés típusának kiválasztása beállításnál** döntse el, hogy szeretné-e a kezdeti biztonsági mentést a hálózaton keresztül vagy offline biztonsági mentést használni (az offline biztonsági mentésről további információt ebben a [cikkben](backup-azure-backup-import-export.md)talál). Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza az **automatikusan a hálózaton keresztül** lehetőséget, és kattintson a **tovább**gombra.
+11. A **kezdeti biztonsági mentés típusának kiválasztása beállításnál** döntse el, hogy szeretné-e a kezdeti biztonsági mentést a hálózaton keresztül vagy offline biztonsági mentést használni (az offline biztonsági mentésről további információt ebben a [cikkben](offline-backup-azure-data-box.md)talál). Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza az **automatikusan a hálózaton keresztül** lehetőséget, és kattintson a **tovább**gombra.
 
     ![kezdeti biztonsági mentés típusa](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ A kezdeti biztonsági mentést automatikusan a hálózaton keresztül, vagy offl
 5. Az adatközpontban a lemezre vonatkozó Adatmásolás egy Azure Storage-fiókba történik.
 6. Azure Backup átmásolja az adatokat a Storage-fiókból a tárolóba, és a növekményes biztonsági mentések ütemezve lesznek.
 
-[További](backup-azure-backup-import-export.md) információ az offline előkészítésről.
+[További](offline-backup-azure-data-box.md) információ az offline előkészítésről.
 
 ### <a name="enable-network-throttling"></a>Hálózati sávszélesség-szabályozás engedélyezése
 

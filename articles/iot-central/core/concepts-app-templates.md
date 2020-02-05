@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867454"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019043"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
@@ -26,33 +26,16 @@ Az alkalmazás sablonjai a következőkből állnak:
 - Előre konfigurált szabályok és feladatok
 - Részletes dokumentáció, beleértve az oktatóanyagokat és a TOS
 
-## <a name="preview-templates"></a>Előnézeti sablonok
+Az alkalmazás létrehozásakor kiválaszthatja az alkalmazás sablonját. Az alkalmazás létrehozása után a sablon nem módosítható.
 
-Az Ön által választott alkalmazás-sablon meghatározza, hogy az alkalmazás a IoT Central előzetes verziójának funkcióit használja-e, például Plug and Play az eszközökhöz.
+## <a name="custom-templates"></a>Egyéni sablonok
 
-Az _általánosan elérhető_ szolgáltatásokat használó alkalmazás-sablon jelenleg a következőket használja:
+Ha teljesen új alkalmazást szeretne létrehozni, válassza ki a két egyéni alkalmazás-sablon egyikét:
 
-- Custom App > örökölt alkalmazás
+- Egyéni alkalmazás
+- Egyéni alkalmazás (örökölt)
 
-
-Jelenleg a _nyilvános előzetes_ verzió funkcióit használó alkalmazás-sablonok a következők:
-
-- Egyéni alkalmazás > előzetes verziójának alkalmazása
-- Lakossági > kapcsolódó logisztika
-- Kereskedelmi > Digital Distribution Center
-- Kiskereskedelmi > áruházbeli elemzések – feltételek figyelése
-- Kiskereskedelmi > áruházbeli elemzés – pénztár
-- Kiskereskedelmi > Micro-teljesítési központ
-- Kiskereskedelmi > intelligens leltár kezelése
-- Energia > Intelligens Fogyasztásmérők figyelése
-- Energia > napelemek figyelése
-- Kormányzati > csatlakoztatott hulladékgazdálkodás
-- Kormányzati > a víz felhasználásának monitorozása
-- Kormányzati > a víz minőségének monitorozása
-- Egészségügyi > folyamatos beteg monitorozása
-
-> [!NOTE]
-> Az **örökölt alkalmazási** sablonok jelenleg a **Egyesült Államokban**, **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**vagy az **Európa** helyein érhetők el, míg más sablonok jelenleg csak **Európában** és **USA** -beli helyszíneken érhetők el.
+Válassza ki az **egyéni alkalmazás** sablont, hacsak nem rendelkezik a régi sablon használatának konkrét okáról.
 
 ## <a name="industry-focused-templates"></a>Iparági fókuszált sablonok
 
@@ -63,7 +46,7 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
   - Digitális elosztási központ
   - Tárolt elemzési állapot figyelése
   - Tárolt elemzések – pénztár
-  - Intelligens leltár kezelése
+  - Intelligens készletkezelés
 - [Energiafogyasztás](../energy/overview-iot-central-energy.md)
   - Intelligens fogyasztásmérő monitorozása
   - Napelempanel monitorozása

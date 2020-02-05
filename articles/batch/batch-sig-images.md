@@ -2,18 +2,18 @@
 title: Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával – Azure Batch | Microsoft Docs
 description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: jushiman
-ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029647"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022936"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
 

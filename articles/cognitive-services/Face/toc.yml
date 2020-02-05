@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: A Container Instances használata
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: A Face csatlakoztatott szolgáltatás használata
-      href: vs-face-connected-service.md
 - name: Referencia
   items:
     - name: Face API

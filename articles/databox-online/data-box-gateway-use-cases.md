@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure Data Box Gateway használati esetek |} A Microsoft Docs
-description: A használati esetek ismerteti az Azure Data Box Gateway, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átvitele az Azure
+title: Microsoft Azure Data Box Gateway használati esetek | Microsoft Docs
+description: Ismerteti az Azure-ba való adatátvitelt lehetővé Azure Data Box Gateway virtuális készülék tárolási megoldásának használati eseteit.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,92 +8,92 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754176"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022681"
 ---
-# <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
+# <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway használati esetei
 
-Az Azure Data Box átjáró egy felhőalapú tárolási átjáróeszköz, amely a helyszínen található, és a rendszerkép, média és egyéb adatokat küld az Azure-bA. A felhőalapú tárolási átjáróra a hipervizor kiépített virtuális gépet. A virtuális eszköz, amely ezután elküldi az Azure-bA az NFS és az SMB protokoll használatával történő adatírást. Ez a cikk a forgatókönyvek, ahol telepítheti az eszköz részletes leírását.
+Azure Data Box Gateway egy felhőalapú Storage Gateway-eszköz, amely a helyszínen található, és a képet, adathordozót és más adatokat elküldi az Azure-nak. Ez a felhőalapú tároló-átjáró egy virtuális gép, amely a hypervisorban van kiépítve. A virtuális eszközre az NFS-és SMB-protokollok használatával írhat adatokat, amelyeket aztán az Azure-nak küld. Ez a cikk részletes leírást nyújt a forgatókönyvekről, amelyekkel telepítheti az eszközt.
 
-Data Box-átjáró a következő esetekben használja:
+Használja Data Box Gateway a következő esetekben:
 
-- Folyamatosan a nagy mennyiségű adat betöltését.
-- A felhőbe archiválási adatok biztonságos és hatékony módon.
-- Növekményes adatátvitel után a kezdeti tömeges a hálózaton keresztül történik, átviteli Data Box használatával.
+- Nagy mennyiségű adatot folyamatosan kell betölteni.
+- Az adatfelhő-archiválás biztonságos és hatékony módon.
+- A növekményes adatátvitel a hálózaton keresztül, miután a kezdeti csoportos átvitel a Data Box használatával történik.
 
-Az ezt követő szakaszokban részletesen ismertetett egyes forgatókönyvek esetében.
+A következő szakaszokban részletesen ismertetjük ezeket a forgatókönyveket.
 
 
-## <a name="continuous-data-ingestion"></a>Folyamatos adatbetöltés
+## <a name="continuous-data-ingestion"></a>Folyamatos adatfeldolgozás
 
-A Data Box Gateway elsődleges előnyeit egyik folyamatosan betölteni az adatokat az az eszköz másolása a felhőbe, az adatok méretétől függetlenül lehetővé teszi.
+A Data Box Gateway egyik elsődleges előnye, hogy az adatmérettől függetlenül folyamatosan betöltheti az eszközről a felhőbe való másoláshoz szükséges adatmennyiséget.
 
-Mivel az adatok írása az átjáróeszközhöz, az eszköz feltölti az adatokat az Azure Storage. Az eszköz automatikusan kezeli a storage, a fájlokat helyileg eltávolítja a metaadatok megőrzése, ha elér egy bizonyos küszöbértéket. Helyi megőrizni a metaadatok lehetővé teszi, hogy az átjáró eszköz csak töltse fel a módosításokat, a fájl frissítésekor. Az átjáró eszköz feltöltött adatok kell lennie a irányelveknek megfelelően [adatfeltöltés figyelmeztetések](data-box-gateway-limits.md#data-upload-caveats).
+Ahogy az adatok az átjáró eszközre íródnak, az eszköz feltölti az Azure Storage-ba. Az eszköz automatikusan kezeli a tárolót a fájlok helyi eltávolításával, miközben a metaadatok megmaradnak egy bizonyos küszöbérték elérésekor. A metaadatok helyi másolatának megőrzése lehetővé teszi, hogy az átjáró eszköz csak a fájl frissítésekor töltse fel a módosításokat. Az átjáró-eszközre feltöltött adatoknak az [adatfeltöltési kikötésekkel](data-box-gateway-limits.md#data-upload-caveats)kapcsolatos irányelvek szerint kell szerepelniük.
 
-Adatok megtelik az eszközt, az elkezdi az szabályozás a bejövő forgalom (igény szerint) a sebesség, amellyel adatokat a felhőbe feltöltött megfelelően. Az eszközön a folyamatos bevitelt monitorozásához riasztásokat használja. Ezek a riasztások aktiválódnak a szabályozás elindul, és törlődik, miután a szabályozás leállt.
+Ahogy az eszköz feltölti az adatforgalmat, megkezdi a bejövő forgalom arányának szabályozását (szükség szerint), hogy megfeleljen az adatfelhőbe való feltöltési aránynak. Az eszköz folyamatos betöltésének figyeléséhez riasztásokat kell használni. Ezek a riasztások a szabályozás megkezdése után következnek be, és törlődnek a szabályozás leállítása után.
 
-## <a name="cloud-archival-of-data"></a>A felhőbe archiválási adatok
+## <a name="cloud-archival-of-data"></a>Az adatfelhő archiválása
 
-Használja a Data Box-átjáró, ha szeretné megőrizni az adatokat hosszú távon a felhőben. Használhatja a **archív** hosszú távú megőrzésének tárolási szint.
+Akkor használja a Data Box Gateway, ha hosszú távon szeretné megőrizni az adatait a felhőben. A hosszú távú megőrzéshez használhatja a tárterület **archiválási** rétegét.
 
-Archív tárolási szintről legalább 180 napig store ritkán hozzáfért adatok van optimalizálva. A **archív** szint a legalacsonyabb tárolási költségeket biztosít, de a legmagasabb hozzáférési költségekkel rendelkezik. További információért ugorjon [archivált adatok hozzáférési szintje](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
+Az archiválási szint legalább 180 napig a ritkán használt adatok tárolására van optimalizálva. Az **archiválási** szint a legalacsonyabb tárolási költségeket kínálja, de a legmagasabb hozzáférési költségekkel rendelkezik. További információ: [archív hozzáférési szint](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
-### <a name="move-data-to-archive-tier"></a>Adatok áthelyezése az archív szinten
+### <a name="move-data-to-archive-tier"></a>Adatok áthelyezése az archiválási szintre
 
-Mielőtt elkezdené, győződjön meg arról, hogy a Data Box futó átjáróeszköz. Kövesse a lépéseket, a részletes [oktatóanyag: Az üzembe helyezés az Azure Data Box Gateway előkészítése](data-box-gateway-deploy-prep.md) és tartsa használható a következő oktatóanyaggal, mindaddig, amíg a egy működési eszközzel rendelkezik.
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik egy futó Data Box Gateway eszközzel. Kövesse az [oktatóanyag: Felkészülés a Azure Data Box Gateway üzembe helyezése](data-box-gateway-deploy-prep.md) című témakörben leírt lépéseket, és folytassa a következő oktatóanyaggal, amíg nem rendelkezik operatív eszközzel.
 
-- Adatok feltöltése az Azure-bA a szokásos átviteli eljáráson keresztül leírtak szerint használja a Data Box átjáróeszköz [data Transfer Data Box-átjárón keresztül](data-box-gateway-deploy-add-shares.md).
-- Az adatok követően kell helyezze át az archív tárolási szintről. A blob szintjének két módon állíthatja be: Az Azure PowerShell-parancsfájl vagy egy Azure Storage életciklus-felügyeleti szabályzat.  
-    - Ha az Azure powershellel, kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) az adatok áthelyezése az archív tárolási szintről.
-    - Ha használja az Azure-életciklus-felügyelet, kövesse az alábbi lépéseket az adatok áthelyezése az archív tárolási szintről.
-        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts) előzetes verziójának Blob életciklus management szolgáltatás használatához az archív szinten.
-        - A következő házirendet, amellyel [az archívum az adatok betöltését](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
-- A blobok archív vannak megjelölve, ha azok már nem módosítható az átjáró, kivéve, ha gyakori vagy ritka elérésű szintre áthelyezett. Ha a fájl a helyi tárolóban, a helyi példány (beleértve a törlések) végzett módosítások nem frissíti a rendszer archív szint.
-- A blob szintről gyakori vagy ritka elérésű módosításával rehydrated kell lennie az archív tárolóban lévő adatok olvasása. [A megosztás frissítése](data-box-gateway-manage-shares.md#refresh-shares) az átjáró nem rehidratálási a blobot.
+- Az Data Box Gateway eszköz használatával az adatok az Azure- [on Data Box Gateway keresztül történő átvitele](data-box-gateway-deploy-add-shares.md)című témakörben leírtak szerint tölthetők fel az Azure-ba.
+- Az adatok feltöltése után át kell helyeznie az archiválási szintre. A blob szintjét kétféleképpen állíthatja be: Azure PowerShell parancsfájl vagy egy Azure Storage életciklus-kezelési házirend.  
+    - Azure PowerShell használata esetén kövesse az alábbi [lépéseket](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) az adatok archiválási szintre való áthelyezéséhez.
+    - Ha az Azure Lifecycle managementet használja, kövesse az alábbi lépéseket az adatok archiválási szintre való áthelyezéséhez.
+        - [Regisztráljon](/azure/storage/common/storage-lifecycle-management-concepts) a blob Lifecycle Management szolgáltatás előzetes verziójára az archiválási szint használatához.
+        - A következő szabályzat használatával [archiválhatja az adatok](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)betöltését.
+- Ha a Blobok archiválásra vannak megjelölve, a továbbiakban nem módosíthatók az átjárók, kivéve, ha a gyors vagy a hideg szintre vannak helyezve. Ha a fájl a helyi tárolóban található, a helyi másolaton (beleértve a törléseket is) végrehajtott módosítások nem lesznek feltöltve az archiválási szintre.
+- Az archív tárolóban lévő adatok olvasásához a blob rétegének gyors vagy ritka elérésű értékre történő módosításával kell kiszáradni. Az átjárón lévő [megosztás frissítése](data-box-gateway-manage-shares.md#refresh-shares) nem történik meg a blob újraszárítása.
 
-További információt tudjon meg többet a [kezelése az Azure Blob Storage életciklus](/azure/storage/common/storage-lifecycle-management-concepts).
+További információkért tekintse meg az [Azure Blob Storage életciklusának felügyeletét](/azure/storage/common/storage-lifecycle-management-concepts)ismertető témakört.
 
-## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Kezdeti tömeges adatátviteli növekményes átviteli követ
+## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Kezdeti tömeges átvitel, növekményes átvitel után
 
-Data Box és a Data Box-Gateway használja együtt, ha szeretne egy tömeges feltöltés egy nagy mennyiségű adat növekményes átvitelt követ. Használja a Data Boxot egy kapcsolat nélküli módban (kezdeti kezdőérték) és a Data Box Gateway tömeges átviteli a növekményes átvitelt (folyamatban lévő hírcsatorna) a hálózaton keresztül.
+A Data Box és a Data Box Gateway együttes használata, ha nagy mennyiségű adatok tömeges feltöltését szeretné elvégezni, majd növekményes átviteleket hajt végre. Használjon Data Box a tömeges átvitelhez kapcsolat nélküli módban (kezdeti mag), és Data Box Gateway a növekményes átvitelek (folyamatos adatcsatorna) számára a hálózaton keresztül.
 
-### <a name="seed-the-data-with-data-box"></a>Rendezze az adatokat a Data Box
+### <a name="seed-the-data-with-data-box"></a>Az adatmag Data Box
 
-Kövesse az alábbi lépéseket az adatok másolásához a Data Box-és feltöltése az Azure Storage.
+Az alábbi lépéseket követve másolja az adatok Data Box és töltse fel az Azure Storage-ba.
 
-1. [A Data Box ORDER](/azure/databox/data-box-deploy-ordered).
-2. [Állítsa be a Data Box](/azure/databox/data-box-deploy-set-up).
-3. [Adatmásolás a Data Boxba SMB-n keresztül](/azure/databox/data-box-deploy-copy-data).
-4. [A Data Box visszaadása, ellenőrizze az adatok feltöltése az Azure-bA](/azure/databox/data-box-deploy-picked-up).
-5. Miután befejeződött az adatok feltöltése az Azure-ba, az Azure storage-tárolók összes adatot kell lennie. A storage-fiókban lévő Data Box nyissa meg a Blob (és fájl) tároló, győződjön meg arról, hogy a rendszer az összes az adatokat másolja. Jegyezze fel a tároló neve, ugyanis ez a név később fogja használni. Például a következő képernyőképen `databox` tároló a növekményes átviteli használható.
+1. [Rendeljen Data Box](/azure/databox/data-box-deploy-ordered).
+2. [A Data Box beállítása](/azure/databox/data-box-deploy-set-up).
+3. [Adatmásolás Data Box SMB-n keresztül](/azure/databox/data-box-deploy-copy-data).
+4. [A Data Box visszaadása, az adatok feltöltése az Azure](/azure/databox/data-box-deploy-picked-up)-ba.
+5. Miután az adatok feltöltése az Azure-ba befejeződött, az összes adattal az Azure Storage-tárolókban kell lennie. A Data Box Storage-fiókjában nyissa meg a blob (és file) tárolót, és győződjön meg arról, hogy az összes fájl másolása megtörtént. Jegyezze fel a tároló nevét, mert később ezt a nevet fogja használni. A következő képernyőképen például `databox` tároló lesz használva a növekményes átvitelhez.
 
-    ![Az adatok Data Box-tárolóban](media/data-box-gateway-use-cases/data-container1.png)
+    ![Adattároló Data Box](media/data-box-gateway-use-cases/data-container1.png)
 
-A tömeges átvitele akkor ér véget a kezdeti kiindulási fázisban.
+Ez a tömeges átvitel befejezi a kezdeti előkészítési fázist.
 
-### <a name="ongoing-feed-with-data-box-gateway"></a>Folyamatban lévő mezőbe adatátjáróval hírcsatorna
+### <a name="ongoing-feed-with-data-box-gateway"></a>Folyamatos adatcsatorna Data Box Gateway
 
-Kövesse az alábbi lépéseket a folyamatban lévő Adatbetöltési Data Box-átjáró.
+A Data Box Gateway folyamatos betöltéséhez kövesse az alábbi lépéseket.
 
-1. Felhőalapú megosztás létrehozása a Data Box-átjárón. Ez a megosztás automatikusan feltölti az adatokat az Azure Storage-fiókba. Lépjen a **megosztások** a Data Box-Gateway-erőforráshoz, és kattintson a **+ Hozzáadás megosztás**.
+1. Hozzon létre egy felhőalapú megosztást Data Box Gateway. Ez a megosztás automatikusan feltölti az összes adattárat az Azure Storage-fiókba. Nyissa meg a Data Box Gateway erőforrásban található **megosztásokat** , és kattintson a **+ megosztás hozzáadása**lehetőségre.
 
-    ![Kattintson a + Megosztás hozzáadása](media/data-box-gateway-use-cases/add-share1.png)
+    ![Kattintson a + megosztás hozzáadása lehetőségre](media/data-box-gateway-use-cases/add-share1.png)
 
-2. Ellenőrizze, hogy a megosztás képez le a tároló, amely az előkészített adatokat tartalmaz. A **válassza blob-tároló**, válassza a **meglévő** , és keresse meg a tároló, amelyben az adatok Data Box átruházták.
+2. Győződjön meg arról, hogy ez a megosztás a magot tartalmazó tárolóra mutat. A **blob-tároló kiválasztása**területen válassza a **meglévő használata** lehetőséget, és tallózással keresse meg azt a tárolót, ahol a Data Box adatok átvitele megtörtént.
 
-    ![Megosztás beállításai](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
+    ![Megosztási beállítások](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 
-3. A megosztás létrehozása után frissítse a megosztást. Ez a művelet frissíti a tartalmat az Azure-ból a helyszíni megosztás.
+3. A megosztás létrehozása után frissítse a megosztást. Ez a művelet frissíti a helyszíni megosztást az Azure-ból származó tartalommal.
 
     ![Megosztás frissítése](media/data-box-gateway-use-cases/refresh-share1.png)
 
-    Ha a megosztás szinkronizálva van, a Box átjáró a fájlokat az ügyfél sikeresen módosítva. Ha a növekményes változásokat feltöltése.
+    A megosztás szinkronizálása után a Data Box Gateway feltölti a növekményes módosításokat, ha a fájlokat módosították az ügyfélen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box Gateway rendszerkövetelményeinek](data-box-gateway-system-requirements.md) áttekintése.
 - A [Data Box Gateway korlátainak](data-box-gateway-limits.md) megismerése.

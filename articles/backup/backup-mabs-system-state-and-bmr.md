@@ -3,12 +3,12 @@ title: Rendszerállapot és operációs rendszer nélküli helyreállítás véd
 description: A Azure Backup Server használatával biztonsági mentést készíthet a rendszerállapotról, és operációs rendszer nélküli helyreállítást (BMR) biztosíthat.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172265"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025503"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Rendszerállapot biztonsági mentése és visszaállítása operációs rendszer nélküli számítógépre Azure Backup Server
 
@@ -23,7 +23,7 @@ Azure Backup Server biztonsági mentést készít a rendszerállapotról, és op
 
 Az alábbi táblázat összefoglalja, hogy a biztonsági mentést és helyreállítást hogyan végezheti el. A rendszerállapot-és BMR védelemmel ellátott alkalmazás-verziókkal kapcsolatos részletes információkért lásd: [Mi a Azure Backup Server biztonsági másolat?](backup-mabs-protection-matrix.md).
 
-|Backup|Probléma|Helyreállítás Azure Backup Server biztonsági másolatból|Helyreállítás rendszerállapotról biztonsági másolatból|BMR|
+|Biztonsági mentés|Probléma|Helyreállítás Azure Backup Server biztonsági másolatból|Helyreállítás rendszerállapotról biztonsági másolatból|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Fájlinformációk**<br /><br />Rendszeres adatbiztonsági mentés<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett fájlok|I|N|N|
 |**Fájlinformációk**<br /><br />A fájlinformációk Azure Backup Server biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
@@ -88,9 +88,9 @@ A biztonsági mentés befejezésekor a rendszer átviszi a fájlt a biztonsági 
 
     Ha a BMR-védelemről rendszerállapot-védelemre vált, a védett számítógépen helyre kell állítania a helyet. Ennek az az oka, hogy a rendszerállapot-védelem először a helyi számítógépre írja a replikát, majd átviszi a biztonsági mentési kiszolgáló számítógépére.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-1. **Azure Backup Server üzembe helyezése**. Ellenőrizze, hogy a biztonsági mentési kiszolgáló megfelelően van-e telepítve. További információkért lásd:
+1. **Azure Backup Server üzembe helyezése**. Ellenőrizze, hogy a biztonsági mentési kiszolgáló megfelelően van-e telepítve. További információ eléréséhez lásd:
     * [A Azure Backup Server rendszerkövetelményei](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [A Backup Server védelmi mátrixa](backup-mabs-protection-matrix.md)
 
@@ -140,7 +140,7 @@ Hozzon létre egy védelmi csoportot a [védelmi csoportok telepítése](https:/
 
 12. Az **online adatmegőrzési szabály megadása** lapon válassza ki, hogy a napi, heti, havi és éves biztonsági másolatok alapján létrehozott helyreállítási pontok megmaradjanak az Azure-ban.
 
-13. Az **online replikáció kiválasztása** lapon válassza ki, hogyan történjen az adatkezdeti teljes replikálás. Replikálhatja a hálózaton keresztül, vagy elvégezheti az offline biztonsági mentést (kapcsolat nélküli előkészítés). Az offline biztonsági mentés az Azure importálási szolgáltatását használja. További információ: [Offline biztonsági mentési munkafolyamat Azure Backup-ben](backup-azure-backup-import-export.md).
+13. Az **online replikáció kiválasztása** lapon válassza ki, hogyan történjen az adatkezdeti teljes replikálás. Replikálhatja a hálózaton keresztül, vagy elvégezheti az offline biztonsági mentést (kapcsolat nélküli előkészítés). Az offline biztonsági mentés az Azure importálási szolgáltatását használja. További információ: [Offline biztonsági mentési munkafolyamat Azure Backup-ben](offline-backup-azure-data-box.md).
 
 14. Az **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása**lehetőséget, az adatműveletek kezdeti replikálása történik. Az adatreplikálás befejeződése után az **állapot** lapon a védelmi csoport állapota **OK**. A biztonsági mentés a védelmi csoport beállításai szerint történik.
 

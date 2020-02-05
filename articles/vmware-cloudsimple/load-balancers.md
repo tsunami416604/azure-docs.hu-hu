@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – válasszon egy terheléselosztási megoldást a CloudSimple privát felhők számára
-description: Ismerteti az alkalmazások privát felhőben való üzembe helyezésének terheléselosztási beállításait.
+title: Azure VMware-megoldások (AVS) – Válasszon egy terheléselosztási megoldást az AVS privát Felhőkhöz
+description: Az alkalmazás egy AVS Private-felhőben való üzembe helyezésének terheléselosztási beállításait ismerteti
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045734"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014878"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Terheléselosztási megoldás kiválasztása a privát felhők CloudSimple
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Terheléselosztási megoldás kiválasztása az AVS privát Felhőkhöz
 
-Ha egy CloudSimple privát felhőben helyez üzembe egy alkalmazást, a terheléselosztáshoz több beállítást is választhat.
+Egy alkalmazás egy AVS Private-felhőben való telepítésekor a terheléselosztás számos lehetőség közül választhat.
 
-A CloudSimple saját felhőben is kiválaszthatja a virtuális vagy szoftveres terheléselosztó szolgáltatást, vagy akár az Azure-előfizetésében futó Azure L7 Load balancert is használhatja, hogy a webes rétegbeli virtuális gépek a CloudSimple privát felhőben fussanak. Itt felsorolunk néhány lehetőséget:
+Az AVS Private Cloud-ban virtuális vagy szoftveres terheléselosztó közül választhat, vagy akár az Azure-előfizetésben futtatott Azure L7 Load balancert is használhatja az AVS Private Cloud-on futó webes rétegbeli virtuális gépek előfizetéséhez. Itt felsorolunk néhány lehetőséget:
 
 ## <a name="virtual-load-balancers"></a>Virtuális Load Balancer
 
@@ -29,13 +29,13 @@ Néhány népszerű gyártó: NginX: http://nginx.org/en/docs/http/load_balancin
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7 Load Balancer
 
-Ha az Azure Application Gatewayt L7 terheléselosztóként használja a privát felhőben futó alkalmazáshoz, nem kell kezelnie a terheléselosztó szoftverét. A terheléselosztó szoftverét az Azure felügyeli. A magánhálózati felhőben lévő összes webes virtuális gép magánhálózati IP-címeket használ, és nincs szükség további NAT-szabályokra vagy nyilvános IP-címekre a nevek feloldásához. A webes rétegbeli virtuális gépek privát, kis késleltetésű, nagy sávszélességű kapcsolaton keresztül kommunikálnak az Azure Application Gateway.
+Ha az Azure Application Gatewayt használja L7 terheléselosztóként az alkalmazáshoz, amely egy AVS Private-felhőben fut, nem kell kezelnie a terheléselosztó szoftverét. A terheléselosztó szoftverét az Azure felügyeli. Az AVS Private-felhőben lévő összes webszintű virtuális gép magánhálózati IP-címeket használ, és nincs szükség további NAT-szabályokra vagy nyilvános IP-címekre a nevek feloldásához. A webes rétegbeli virtuális gépek privát, kis késleltetésű, nagy sávszélességű kapcsolaton keresztül kommunikálnak az Azure Application Gateway.
 
 Ha többet szeretne megtudni a megoldás konfigurálásáról, tekintse meg a megoldási útmutatót az Azure Application Gateway L7 Load Balancer használatával történő használatáról.
 
 ## <a name="azure-internal-load-balancer"></a>Azure belső terheléselosztó
 
-Ha úgy dönt, hogy az alkalmazást egy hibrid telepítésben futtatja, ahol a webes előtér-réteg az Azure-előfizetésben található Azure-vNet belül fut, és az alkalmazás adatbázis-rétege VMware virtuális gépeken fut a CloudSimple privát felhőben, az Azure belső terhelését is használhatja Balancer (L4 Load Balancer) az adatbázis-réteg virtuális gépei előtt a Traffic Management szolgáltatáshoz.
+Ha úgy dönt, hogy az alkalmazást egy hibrid telepítésben futtatja, ahol a webes előtér-réteg az Azure-előfizetésben található Azure-vNet belül fut, és az alkalmazás adatbázis-szintje VMware virtuális gépeken fut az AVS Private Cloud szolgáltatásban, használhatja az Azure belső Load balancert (L 4 Load Balancer – a forgalom kezeléséhez használt adatbázis-szintű virtuális gépek előtt.
 
 További információt az Azure [belső Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) dokumentációjában talál.
 

@@ -2,31 +2,38 @@
 title: A saját alkalmazások portálon található alkalmazások & használatának megkeresése az Azure AD-ben
 description: Megtudhatja, hogyan keresheti meg a saját alkalmazások portált, és hogyan érheti el a szervezet felhőalapú alkalmazásait.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705003"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022305"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>A saját alkalmazások portálon megkeresheti és használhatja a szervezet felhőalapú alkalmazásait
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálon, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, a profil-és fiókadatok frissítését, a **csoportok** adatainak megtekintését, valamint az alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzését. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján a következőre:
+
+- Számos felhőalapú alkalmazás megtekintése és elindítása
+- A profil és a fiókadatok frissítése
+- A **csoportok** adatainak megjelenítése
+- Alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzése
+
+Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérjen engedélyt az ügyfélszolgálattól.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Ez a tartalom a saját alkalmazások felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 
@@ -66,7 +73,8 @@ Töltse le és telepítse a bővítményt az Ön által használt böngésző al
 
 A **címsor** jobb oldalán megjelenik egy ikon, amely lehetővé teszi a bejelentkezést, és testreszabja a bővítményt.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Saját alkalmazások portál módosítása a bővítmény használatával
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>Saját alkalmazások portál módosítása a bővítmény használatával
+
 Kiválaszthatja, hogy hány alkalmazást szeretne megtekinteni a **legutóbb használt** szakaszban, és döntse el, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását.
 
 1. Válassza az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikont ![bővítmény ikont](media/my-apps-portal/my-apps-portal-extension-icon.png) a **címsortól** jobbra, majd válassza a bejelentkezés lehetőséget a **kezdéshez**.
@@ -78,18 +86,20 @@ Kiválaszthatja, hogy hány alkalmazást szeretne megtekinteni a **legutóbb has
     ![A bővítmény beállítások lapja, amely az elérhető testreszabásokat mutatja](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>A My apps portál elérése és használata eszköz szerint
+
 Elérheti és használhatja a saját alkalmazások portált a számítógépén, egy Intune által felügyelt böngészőből vagy egy iOS vagy Android rendszerű mobileszközön.
 
 ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>A saját alkalmazások portál elérése és használata a számítógépen
+
 Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak eléréséhez és használatához, a **saját alkalmazások** portálon érheti el őket.
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a számítógépén.
 
-2. Nyissa meg a webböngészőt, és lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Egy támogatott webböngészőben nyissa meg a https://myapps.microsoft.com t, vagy használja a szervezet által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például `https://myapps.microsoft.com/contoso.com`.
 
-    Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
+    Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
 3. Az **alkalmazások** lapon válassza ki a használni kívánt alkalmazást.
 
@@ -101,7 +111,7 @@ Az iOS-és Android-eszközökön Intune Managed Browser megtekintheti és haszn�
 
 1. A mobileszközön töltse le és telepítse a Intune Managed Browser alkalmazást az [Apple App Store áruházból](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) és a [Google Play áruházból](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.com lehetőségre, vagy használja a szervezete által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -111,13 +121,13 @@ Az iOS-és Android-eszközökön Intune Managed Browser megtekintheti és haszn�
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>A My apps portál elérése és használata iOS-eszközön
 
-Az iOS 7-es vagy újabb verzióját futtató iPhone-vagy iPad-eszközön megtekintheti és használhatja a **My apps** portált. Telepítheti a [saját alkalmazások Mobile alkalmazást](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) is, hogy hozzáférjen a szervezet alkalmazásaihoz az iOS-eszközökön. 
+Az iOS 7-es vagy újabb verzióját futtató iPhone-vagy iPad-eszközön megtekintheti és használhatja a **My apps** portált. Telepítheti a [saját alkalmazások Mobile alkalmazást](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) is, hogy hozzáférjen a szervezet alkalmazásaihoz az iOS-eszközökön.
 
 1. A mobileszközön indítson el egy webböngészőt, például a Safari alkalmazást.
 
-2. Lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Válassza a https://myapps.microsoft.com lehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com ) irányítja őket.
 
-    Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
+    Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
 3. Az **alkalmazások** lapon válassza ki a használni kívánt alkalmazást.
 
@@ -129,7 +139,7 @@ A **My apps** portál megtekintése és használata Android-eszközön.
 
 1. A mobileszközön indítsa el a webböngésző alkalmazást, például a Google Chrome-ot.
 
-2. Lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Válassza a https://myapps.microsoft.com lehetőséget, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott lapra (például https://myapps.microsoft.com/contoso.com ) irányítja őket.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -141,17 +151,39 @@ A **My apps** portál megtekintése és használata Android-eszközön.
 
 Ha a rendszergazda engedélyt adott Önnek, új alkalmazást adhat hozzá az **alkalmazások** laphoz.
 
-1. Az **alkalmazások** lapon válassza az **alkalmazás hozzáadása**lehetőséget.
+1. Az **alkalmazások** lapon tegye a következők egyikét:
+    - Ha az eredeti saját alkalmazások felületén van, válassza az **alkalmazás hozzáadása** lehetőséget az ábrán látható módon.
 
-    Megjelenik az **Alkalmazások hozzáadása** lap.
+      ![Alkalmazások hozzáadása lap a saját alkalmazások portálján](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![Alkalmazások hozzáadása lap a saját alkalmazások portálján](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - Ha a frissített saját alkalmazások felületén van, válassza az **önkiszolgáló alkalmazások hozzáadása**lehetőséget.
+
+       ![Alkalmazások hozzáadása lap a saját alkalmazások portálján a myapplications.microsoft.com címen](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. Válassza ki a hozzáadni kívánt alkalmazást a megadott listából, majd válassza a **Hozzáadás**lehetőséget.
 
 3. Az alkalmazás hozzá lesz adva a listához az **alkalmazások** oldalon.
 
     Egyes alkalmazásokhoz a Hozzáadás előtt rendszergazdai jóváhagyásra lehet szükség. Ebben az esetben az alkalmazás nem kerül be az **alkalmazások** oldalra, amíg a rendszergazda jóvá nem hagyja.
+
+## <a name="start-a-cloud-based-app"></a>Felhőalapú alkalmazás elindítása
+
+Az elérhető felhőalapú alkalmazások bármelyikét elindíthatja a **saját alkalmazások** portálján. Csak azok az alkalmazások jelennek meg, amelyekhez engedéllyel rendelkezik.
+
+- Az **alkalmazások** lapon válassza ki a használni kívánt alkalmazást.
+
+    Megnyílik egy új lap az alkalmazáshoz, ahol bejelentkezhet (ha szükséges), vagy megkezdheti az alkalmazás használatát.
+
+## <a name="activities-in-the-my-apps-portal"></a>Tevékenységek a saját alkalmazások portálon
+
+Miután elvégezte a **saját alkalmazások** portált, a következőket teheti:
+
+- Az alkalmazásokat a szervezet által létrehozott és biztosított különböző kategóriákba rendezheti. További információ: [a saját alkalmazások portálon található gyűjtemények elérése és használata](my-applications-portal-workspaces.md).
+
+- Az alkalmazásoknak biztosított engedélyek felülvizsgálata, frissítése vagy visszavonása. További információ: [alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálon](my-applications-portal-permissions-saved-accounts.md).
+
+>[!Note]
+>Ha nem látja az elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda még nem állította be és nem osztotta meg Önnel a t. Ha további segítségre vagy engedélyekre van a megosztott gyűjtemények megtekintéséhez, forduljon a szervezet ügyfélszolgálatához.
 
 ## <a name="next-steps"></a>Következő lépések
 

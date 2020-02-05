@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: df663861010177ba54c56ee4495458ea1b928359
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985713"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018992"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -61,30 +61,24 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-A szkript először létrehoz egy erőforráscsoportot az alkalmazás keleti régiójában. A **New-AzIotCentralApp** paranccsal használt paramétereket a következő táblázat ismerteti:
+A szkript először egy erőforráscsoportot hoz létre az USA keleti régiójában az alkalmazáshoz. A **New-AzIotCentralApp** paranccsal használt paramétereket a következő táblázat ismerteti:
 
 |Paraméter         |Leírás |
 |------------------|------------|
 |ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-|Földrajzi egység |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre a **Egyesült Államok**, **Ausztráliában**, **Ázsia és a csendes-óceáni térség**vagy az **Európa** helyein.  |
+|Földrajzi egység |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak-Európában**vagy Nyugat- **Európai** régióban, illetve **Ausztráliában** vagy **Ázsia és a csendes-óceáni térség** földrajzi régióban.  |
 |Name (Név)              |Az alkalmazás neve a Azure Portalban. |
 |altartomány         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
 |Termékváltozat               |Jelenleg használhatja a **ST1** vagy a **ST2**. Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
 |displayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Az általánosan elérhető funkciókkal rendelkező alkalmazás sablonja**
+**Alkalmazás-sablonok**
 
 | Sablon neve            | Leírás |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el.
-
-
-**Nyilvános előzetes funkciókkal rendelkező alkalmazás-sablonok**
-
-| Sablon neve            | Leírás |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Létrehoz egy üres Plug and Play előnézeti alkalmazást, amellyel feltöltheti a saját eszközök sablonjait és eszközeit. |
+| iotc-pnp-preview@1.0.0   | Létrehoz egy üres Plug and Play (előzetes verzió) alkalmazást, amely a saját eszközök sablonjaival és eszközeivel tölthető fel. |
 | iotc-condition@1.0.0     | Létrehoz egy alkalmazást egy áruházbeli elemzés – feltétel-figyelési sablonnal. Ezzel a sablonnal csatlakozhat és figyelheti a tárolási környezetet. |
 | iotc-consumption@1.0.0   | Létrehoz egy alkalmazást a víz-felhasználási megfigyelési sablonnal. Ezzel a sablonnal figyelheti és szabályozhatja a víz áramlását. |
 | iotc-distribution@1.0.0  | Létrehoz egy alkalmazást egy digitális terjesztési sablonnal. Ezzel a sablonnal a fő eszközök és műveletek digitalizing javíthatja a raktár kimeneti hatékonyságát. |
@@ -96,9 +90,6 @@ A szkript először létrehoz egy erőforráscsoportot az alkalmazás keleti ré
 | iotc-quality@1.0.0       | Létrehoz egy alkalmazást a vízminőség-figyelési sablonnal. Ez a sablon a víz minőségének digitális figyelésére használható.|
 | iotc-store@1.0.0         | Létrehoz egy alkalmazást egy áruházbeli elemzés – pénztár sablonnal. Ezzel a sablonnal figyelheti és kezelheti a pénztári folyamatot a tárolón belül. |
 | iotc-waste@1.0.0         | Egy csatlakoztatott hulladékkezelési sablonnal rendelkező alkalmazást hoz létre. Ezzel a sablonnal figyelhetők a hulladéktároló tárolók és a küldő mezők operátorai. |
-
-> [!NOTE]
-> Az előzetes verziójú alkalmazás sablonjai jelenleg csak az **Európa** és **Egyesült Államok** helyen érhetők el.
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central-alkalmazások megtekintése
 

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple – a CloudSimple DNS konfigurálása a privát felhőhöz
-description: Ismerteti, hogyan állítható be a DNS-névfeloldás a vCenter-kiszolgálóhoz való hozzáféréshez a helyszíni munkaállomásokról származó CloudSimple-alapú privát felhőben
+title: Azure VMware-megoldások (AVS) – DNS konfigurálása AVS Private Cloud-hoz
+description: Ismerteti, hogyan állítható be a DNS-névfeloldás a vCenter-kiszolgálóhoz való hozzáféréshez a helyszíni munkaállomásokról származó AVS privát felhőben
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108799"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019604"
 ---
-# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
+# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS beállítása a névfeloldáshoz az AVS Private Cloud vCenter hozzáférés a helyszíni munkaállomásokról
 
-Ha a vCenter-kiszolgálót a helyszíni munkaállomásokról származó CloudSimple privát felhőben szeretné elérni, konfigurálnia kell a DNS-címek feloldását, hogy a vCenter-kiszolgálót az állomásnév és az IP-cím is megcélozhatja.
+Ha a vCenter-kiszolgálót egy, a helyszíni munkaállomásokról származó AVS Private-felhőben szeretné elérni, konfigurálnia kell a DNS-cím feloldását, hogy a vCenter-kiszolgálót az állomásnév, valamint az IP-cím is megcélozhatja.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>A saját felhőhöz tartozó DNS-kiszolgáló IP-címének beszerzése
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>Szerezze be a DNS-kiszolgáló IP-címét az AVS Private Cloud-hoz
 
-1. Jelentkezzen be a [CloudSimple-portálra](access-cloudsimple-portal.md).
+1. Jelentkezzen be az [AVS-portálra](access-cloudsimple-portal.md).
 
-2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrásokhoz** > az **AVS privát felhők** elemre, és válassza ki azt az AVS privát felhőt, amelyhez csatlakozni szeretne.
 
-3. Az **alapszintű információ**területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
+3. Az AVS Private Cloud **alapszintű információk** **Összefoglaló** lapján másolja az AVS Private Cloud DNS-kiszolgáló IP-címét.
 
-    ![Privát Felhőbeli DNS-kiszolgálók](media/private-cloud-dns-server.png)
+    ![AVS Private Cloud DNS-kiszolgálók](media/private-cloud-dns-server.png)
 
 
 A DNS-konfigurációhoz használja a következő lehetőségek egyikét.
 
-* [Zóna létrehozása a (z) *. cloudsimple.io DNS-kiszolgálón](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [Feltételes továbbító létrehozása a helyszíni DNS-kiszolgálón a *. cloudsimple.io](#create-a-conditional-forwarder)
+* [Hozzon létre egy zónát a DNS-kiszolgálón a * számára. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [A megoldáshoz hozzon létre egy feltételes továbbítót a helyszíni DNS-kiszolgálón. AVS.io](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Zóna létrehozása a (z) *. cloudsimple.io DNS-kiszolgálón
+## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Hozzon létre egy zónát a DNS-kiszolgálón a * számára. AVS.io
 
 Létrehozhat egy zónát helyettes zónáként, és a saját felhőben lévő DNS-kiszolgálókra irányíthatja a névfeloldást. Ez a szakasz a kötési DNS-kiszolgáló vagy a Microsoft Windows DNS-kiszolgáló használatával kapcsolatos információkat tartalmaz.
 
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. Adja meg a zóna nevét, és kattintson a **tovább**gombra.
 
     ![Új zóna](media/DNS05.png)
-6. Adja meg azon DNS-kiszolgálók IP-címeit, amelyeket a CloudSimple-portálról beszerzett saját felhőhöz.
+6. Adja meg azon DNS-kiszolgálók IP-címeit, amelyek az AVS-portálról beszerzett AVS Private Cloud-felhőben vannak.
 
     ![Új zóna](media/DNS06.png)
 7. A varázsló telepítésének befejezéséhez kattintson a **tovább** gombra.
 
 ## <a name="create-a-conditional-forwarder"></a>Feltételes továbbító létrehozása
 
-A feltételes továbbító továbbítja a DNS-névfeloldási kérelmeket a kijelölt kiszolgálóra. Ezzel a beállítással a *. cloudsimple.io-re irányuló kérések a privát felhőben található DNS-kiszolgálókra lesznek továbbítva. Az alábbi példák bemutatják, hogyan állíthat be továbbítókat különböző típusú DNS-kiszolgálókon.
+A feltételes továbbító továbbítja a DNS-névfeloldási kérelmeket a kijelölt kiszolgálóra. Ezzel a beállítással a *. A rendszer továbbítja a AVS.io az AVS Private Cloud-on található DNS-kiszolgálókra. Az alábbi példák bemutatják, hogyan állíthat be továbbítókat különböző típusú DNS-kiszolgálókon.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Feltételes továbbító létrehozása egy kötési DNS-kiszolgálón
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. Kattintson a jobb gombbal a **feltételes továbbítók** elemre, és válassza az új feltételes továbbító hozzáadásának lehetőségét.
 
     ![Feltételes továbbító 1 Windows DNS](media/DNS08.png)
-3. Adja meg a DNS-tartományt és a DNS-kiszolgálók IP-címét a privát felhőben, majd kattintson **az OK**gombra.
+3. Adja meg a DNS-tartományt és a DNS-kiszolgálók IP-címét az AVS Private-felhőben, majd kattintson **az OK**gombra.

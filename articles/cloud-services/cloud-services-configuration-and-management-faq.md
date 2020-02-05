@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845374"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019417"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -174,11 +174,11 @@ További információ [: Azure Load Balancer konfigurálható Üresjárati idők
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hogyan statikus IP-címet rendelni a felhőalapú szolgáltatáshoz?
 Statikus IP-cím beállításához létre kell hoznia egy fenntartott IP-címet. Ez a fenntartott IP-cím társítható egy új felhőalapú szolgáltatáshoz vagy egy meglévő üzembe helyezéshez is. A részletekért tekintse meg a következő dokumentumokat:
-* [Fenntartott IP-cím létrehozása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Fenntartott IP-cím hozzárendelése egy új felhőalapú szolgáltatáshoz](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Fenntartott IP-cím hozzárendelése futó központi telepítéshez](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Fenntartott IP-cím létrehozása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Fenntartott IP-cím hozzárendelése egy új felhőalapú szolgáltatáshoz](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Fenntartott IP-cím hozzárendelése futó központi telepítéshez](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Milyen funkciókat és képességeket biztosít az Azure alapszintű IP-címei/AZONOSÍTÓi és a DDOS?
 Az Azure az adatközpont-fizikai kiszolgálók IP-címeivel és AZONOSÍTÓkkal rendelkezik a fenyegetések elleni védelemhez. Emellett az ügyfelek telepíthetnek harmadik féltől származó biztonsági megoldásokat, például a webalkalmazási tűzfalakat, a hálózati tűzfalakat, a kártevő szoftvereket, a behatolás észlelését, a megelőzési rendszereket (AZONOSÍTÓk/IP-címek) és egyebeket. További információkért tekintse [meg az adatok és eszközök védelme és a globális biztonsági szabványok betartása](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)című témakört.

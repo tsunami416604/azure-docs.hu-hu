@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544021"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023123"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
@@ -164,7 +164,7 @@ A jelszavakat a következő helyzetekben *nem* írja vissza a rendszer:
    * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 > [!WARNING]
-> A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)című cikket.
+> A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)című cikket.
 
 ## <a name="next-steps"></a>Következő lépések
 

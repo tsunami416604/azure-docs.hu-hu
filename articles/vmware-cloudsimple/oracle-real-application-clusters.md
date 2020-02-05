@@ -1,5 +1,5 @@
 ---
-title: Azure VMware-megoldás CloudSimple – optimalizálja saját CloudSimple az Oracle RAC-hoz
+title: Azure VMware-megoldások (AVS) – az AVS Private Cloud optimalizálása Oracle RAC-hoz
 description: Leírja, hogyan helyezhet üzembe egy új fürtöt, és hogyan optimalizálhat egy virtuális gépet az Oracle Real Application Clusters (RAC) telepítéséhez és konfigurálásához
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fe4f7bf71b4836404a4f878b37c3ea7fab138588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972411"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016017"
 ---
-# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
+# <a name="optimize-your-avs-private-cloud-for-installing-oracle-rac"></a>Az AVS Private Cloud optimalizálása Oracle RAC telepítéséhez
 
-Az Oracle Real Application Clusters (RAC) üzembe helyezése a CloudSimple saját felhőalapú környezetében végezhető el. Ez az útmutató ismerteti, hogyan helyezhet üzembe egy új fürtöt, és hogyan optimalizálhat egy virtuális gépet az Oracle RAC megoldáshoz. A témakör lépéseinek elvégzése után telepítheti és konfigurálhatja az Oracle RAC-t.
+Az Oracle Real Application fürtöket (RAC) üzembe helyezheti az AVS Private Cloud-környezetben. Ez az útmutató ismerteti, hogyan helyezhet üzembe egy új fürtöt, és hogyan optimalizálhat egy virtuális gépet az Oracle RAC megoldáshoz. A témakör lépéseinek elvégzése után telepítheti és konfigurálhatja az Oracle RAC-t.
 
 ## <a name="storage-policy"></a>Tárolási házirend
 
-Az Oracle RAC sikeres megvalósítása elegendő számú csomópontot igényel a fürtben.  A vSAN tárolási házirendjében az elviselni kívánt adatlemezek az adatbázis, a napló és a lemez-visszaállítási lemezek tárolására használt adatlemezekre vonatkoznak.  A hibák hatékony elvégzéséhez szükséges csomópontok száma 2N + 1, ahol N a tranzakciós adó értéke.
+Az Oracle RAC sikeres megvalósítása elegendő számú csomópontot igényel a fürtben. A vSAN tárolási házirendjében az elviselni kívánt adatlemezek az adatbázis, a napló és a lemez-visszaállítási lemezek tárolására használt adatlemezekre vonatkoznak. A hibák hatékony elvégzéséhez szükséges csomópontok száma 2N + 1, ahol N a tranzakciós adó értéke.
 
-Példa: Ha a kívánt TRANZAKCIÓs szolgáltatás 2, akkor a fürtben lévő csomópontok teljes száma csak 2 * 2 + 1 = 5 lehet.
+Példa: Ha a kívánt pénzügyi adó 2, akkor a fürtben lévő csomópontok teljes száma csak 2 * 2 + 1 = 5 lehet.
 
 ## <a name="overview-of-deployment"></a>Az üzembe helyezés áttekintése
 
-Az alábbi szakaszok azt ismertetik, hogyan állíthatja be az CloudSimple saját felhőalapú környezetét az Oracle RAC-hoz.
+Az alábbi szakaszok azt ismertetik, hogyan állíthatja be az AVS Private Cloud Environment for Oracle RAC-t.
 
 1. Ajánlott eljárások a lemezek konfigurálásához
-2. A CloudSimple Private Cloud vSphere-fürt üzembe helyezése
+2. Az AVS Private Cloud vSphere-fürt üzembe helyezése
 3. Az Oracle RAC hálózatkezelésének beállítása
 4. VSAN-tárolási házirendek beállítása
 5. Oracle-alapú virtuális gépek létrehozása és megosztott virtuálisgép-lemezek létrehozása
@@ -38,15 +38,15 @@ Az alábbi szakaszok azt ismertetik, hogyan állíthatja be az CloudSimple sajá
 
 ## <a name="best-practices-for-disk-configuration"></a>Ajánlott eljárások a lemezek konfigurálásához
 
-Az Oracle RAC virtuális gépek több lemezzel rendelkeznek, amelyek adott függvényhez használatosak.  A megosztott lemezek az Oracle RAC-fürt által használt összes virtuális gépre vannak csatlakoztatva.  Az operációs rendszer és a szoftver telepítési lemezei csak az egyes virtuális gépekre vannak csatlakoztatva.  
+Az Oracle RAC virtuális gépek több lemezzel rendelkeznek, amelyek adott függvényhez használatosak. A megosztott lemezek az Oracle RAC-fürt által használt összes virtuális gépre vannak csatlakoztatva. Az operációs rendszer és a szoftver telepítési lemezei csak az egyes virtuális gépekre vannak csatlakoztatva. 
 
 ![Az Oracle RAC virtuálisgép-lemezek áttekintése](media/oracle-vm-disks-overview.png)
 
 A következő példa az alábbi táblázatban definiált lemezeket használja.
 
-| Lemez                                      | Cél                                       | Megosztott lemez |
+| Lemez                                      | Rendeltetés                                       | Megosztott lemez |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | Operációsrendszer-lemez                         | Nem          |
+| Operációs rendszer                                        | Operációsrendszer-lemez                         | Nem          |
 | RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | Nem          |
 | ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | Nem          |
 | ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | Nem          |
@@ -68,44 +68,44 @@ A következő példa az alábbi táblázatban definiált lemezeket használja.
 
 ### <a name="operating-system-and-software-disk-configuration"></a>Operációs rendszer és szoftver lemezének konfigurációja
 
-Minden Oracle-virtuális gép több lemezzel van konfigurálva a gazda operációs rendszer, a swap, a Szoftvertelepítés és más operációsrendszer-funkciók számára.  Ezeket a lemezeket a rendszer nem osztja meg a virtuális gépek között.  
+Minden Oracle-virtuális gép több lemezzel van konfigurálva a gazda operációs rendszer, a swap, a Szoftvertelepítés és más operációsrendszer-funkciók számára. Ezeket a lemezeket a rendszer nem osztja meg a virtuális gépek között. 
 
 * Az egyes virtuális gépek három lemeze virtuális lemezként van konfigurálva, és az Oracle RAC virtuális gépekre van csatlakoztatva.
     * Operációsrendszer-lemez
     * Az Oracle Grid tárolására szolgáló lemez fájlok telepítése
     * Az Oracle Database telepítési fájljainak tárolására szolgáló lemez
-* A lemezek dinamikusan kiosztottként konfigurálhatók.
-* Az egyes lemezek az első SCSI-vezérlőre (SCSI0) vannak csatlakoztatva.  
+* A lemezek dinamikusan **kiosztottként**konfigurálhatók.
+* Az egyes lemezek az első SCSI-vezérlőre (SCSI0) vannak csatlakoztatva. 
 * A megosztás beállítása **nem megosztás**.
-* A redundancia a vSAN szabályzatok használatával van definiálva a tárolón.  
+* A redundancia a vSAN szabályzatok használatával van definiálva a tárolón. 
 
 ![Az Oracle RAC adatlemez-csoportjának konfigurációja](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Adatlemez-konfiguráció
 
-Az adatlemezeket elsődlegesen az adatbázisfájlok tárolására használják.  
+Az adatlemezeket elsődlegesen az adatbázisfájlok tárolására használják. 
 
 * Négy lemez virtuális lemezként van konfigurálva, és minden Oracle RAC virtuális gépen csatlakoztatva van.
 * Minden lemez egy másik SCSI-vezérlőre van csatlakoztatva.
-* Minden virtuális lemez sűrűn kiépítve, **türelmetlenül**van konfigurálva.  
-* A megosztás a **többszörös író**értékre van állítva.  
-* A lemezeket automatikus Storage Management-(ASM-) lemezcsoportként kell konfigurálni.  
-* A redundancia a vSAN szabályzatok használatával van definiálva a tárolón.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva. 
+* A megosztás a **többszörös író**értékre van állítva. 
+* A lemezeket automatikus Storage Management-(ASM-) lemezcsoportként kell konfigurálni. 
+* A redundancia a vSAN szabályzatok használatával van definiálva a tárolón. 
 * Az ASM-redundancia **külső** redundanciára van beállítva.
 
 ![Az Oracle RAC adatlemez-csoportjának konfigurációja](media/oracle-vm-data-disks.png)
 
 ### <a name="redo-log-disk-configuration"></a>A naplózási lemez konfigurációjának visszaállítása
 
-A naplófájlok az adatbázison végrehajtott módosítások másolatának tárolására szolgálnak.  A naplófájlokat akkor használja a rendszer, amikor a hibák után vissza kell állítani az adathelyreállítást.
+A naplófájlok az adatbázison végrehajtott módosítások másolatának tárolására szolgálnak. A naplófájlokat akkor használja a rendszer, amikor a hibák után vissza kell állítani az adathelyreállítást.
 
-* A naplófájlok visszaállítását több lemezcsoport-csoportként kell konfigurálni.  
+* A naplófájlok visszaállítását több lemezcsoport-csoportként kell konfigurálni. 
 * A rendszer hat lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek különböző SCSI-vezérlőkhöz vannak csatlakoztatva
-* Minden virtuális lemez sűrűn kiépítve, **türelmetlenül**van konfigurálva.
-* A megosztás a **többszörös író**értékre van állítva.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
+* A megosztás a **többszörös író**értékre van állítva. 
 * A lemezeket két ASM-lemez csoportként kell konfigurálni.
-* Minden ASM-lemez csoport három lemezt tartalmaz, amelyek különböző SCSI-vezérlőkön találhatók.  
+* Minden ASM-lemez csoport három lemezt tartalmaz, amelyek különböző SCSI-vezérlőkön találhatók. 
 * Az ASM-redundancia **normál** redundanciára van beállítva.
 * A rendszer öt visszaadott naplófájlt hoz létre az ASM-visszaadott naplófájlban
 
@@ -130,7 +130,7 @@ A szavazó lemezek további kommunikációs csatornaként biztosítják a kvóru
 
 * A rendszer öt lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek egy SCSI-vezérlőhöz vannak csatlakoztatva
-* Minden virtuális lemez sűrűn kiépítve, **türelmetlenül**van konfigurálva.
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
 * A megosztás a **többszörös író**értékre van állítva.  
 * A lemezeket ASM-lemez csoportként kell konfigurálni.  
 * Az ASM-redundancia **magas** redundanciára van beállítva.
@@ -139,49 +139,49 @@ A szavazó lemezek további kommunikációs csatornaként biztosítják a kvóru
 
 ### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Oracle gyors helyreállítási körzet – lemez konfigurációja (nem kötelező)
 
-A gyors helyreállítási területet (FRA) az Oracle ASM-lemez csoport által kezelt fájlrendszer.  Az FRA megosztott tárolási helyet biztosít a biztonsági mentési és helyreállítási fájlok számára. Az Oracle archivált naplókat és flashback naplókat hoz létre a gyors helyreállítás területén. Az Oracle Recovery Manager (Oláh Anna) opcionálisan képes tárolni a biztonságimásolat-készleteket és a képmásolatokat a gyors helyreállítási területen, és a fájlok a média helyreállítása során történő visszaállításakor használja azt.
+A gyors helyreállítási területet (FRA) az Oracle ASM-lemez csoport által kezelt fájlrendszer. Az FRA megosztott tárolási helyet biztosít a biztonsági mentési és helyreállítási fájlok számára. Az Oracle archivált naplókat és flashback naplókat hoz létre a gyors helyreállítás területén. Az Oracle Recovery Manager (Oláh Anna) opcionálisan képes tárolni a biztonságimásolat-készleteket és a képmásolatokat a gyors helyreállítási területen, és a fájlok a média helyreállítása során történő visszaállításakor használja azt.
 
 * A rendszer két lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek különböző SCSI-vezérlőkhöz vannak csatlakoztatva
-* Minden virtuális lemez sűrűn kiépítve, **türelmetlenül**van konfigurálva.
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
 * A megosztás a **többszörös író**értékre van állítva.  
 * A lemezeket ASM-lemez csoportként kell konfigurálni.  
 * Az ASM-redundancia **külső** redundanciára van beállítva.
 
 ![Oracle-RAC szavazó lemez csoportjának konfigurációja](media/oracle-vm-fra-disks.png)
 
-## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>A CloudSimple Private Cloud vSphere-fürt üzembe helyezése
+## <a name="deploy-avs-private-cloud-vsphere-cluster"></a>Az AVS Private Cloud vSphere-fürt üzembe helyezése
 
-A vSphere-fürt saját felhőben történő üzembe helyezéséhez kövesse az alábbi eljárást:
+Ha vSphere-fürtöt szeretne üzembe helyezni az AVS Private-felhőben, kövesse az alábbi eljárást:
 
-1. [Hozzon létre egy privát felhőt](create-private-cloud.md)a CloudSimple portálon. A CloudSimple létrehoz egy "cloudowner" nevű alapértelmezett vCenter-felhasználót az újonnan létrehozott privát felhőben. A saját felhőalapú felhasználói és engedélyezési modellel kapcsolatos részletekért tekintse [meg a privát felhőalapú engedélyezési modell megismerése](learn-private-cloud-permissions.md)című témakört.  Ez a lépés létrehozza az elsődleges felügyeleti fürtöt a saját felhőhöz.
+1. Az AVS-portálon [hozzon létre egy AVS Private-felhőt](create-private-cloud.md). Az AVS létrehoz egy "cloudowner" nevű alapértelmezett vCenter-felhasználót az újonnan létrehozott AVS privát felhőben. Az alapértelmezett AVS Private Cloud felhasználói és engedélyezési modell részletes ismertetését lásd: [az AVS Private Cloud engedélyezési modell megismerése](learn-private-cloud-permissions.md). Ez a lépés létrehozza az elsődleges felügyeleti fürtöt az AVS Private Cloud számára.
 
-2. A CloudSimple-portálon [bontsa ki a privát felhőt](expand-private-cloud.md) egy új fürttel.  Ezt a fürtöt fogja használni az Oracle RAC telepítéséhez.  Válassza ki a csomópontok számát a kívánt hibatűrés (legalább három csomópont) alapján.
+2. Az AVS-portálon [bontsa ki az AVS Private Cloud](expand-private-cloud.md) elemet egy új fürttel. Ezt a fürtöt fogja használni az Oracle RAC telepítéséhez. Válassza ki a csomópontok számát a kívánt hibatűrés (legalább három csomópont) alapján.
 
 ## <a name="set-up-networking-for-oracle-rac"></a>Az Oracle RAC hálózatkezelésének beállítása
 
-1. A saját felhőben [hozzon létre két VLAN](create-vlan-subnet.md)-t, egyet az Oracle nyilvános hálózatához, egyet pedig az Oracle-magánhálózat számára, és rendelje hozzá a megfelelő alhálózati CIDRs.
-2. A VLAN-ok létrehozása után hozza létre az [elosztott portok csoportjait a saját felhő vCenter](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
+1. Az AVS Private Cloud-ban [hozzon létre két VLAN](create-vlan-subnet.md)-t, egyet az Oracle Public Network számára, egyet pedig az Oracle private Network számára, és rendelje hozzá a megfelelő alhálózati CIDRs.
+2. A VLAN-ok létrehozása után hozza létre az [elosztott portok csoportjait az AVS Private Cloud vCenter](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
 3. Állítsa be a [DHCP-és DNS-kiszolgáló virtuális gépet](dns-dhcp-setup.md) a felügyeleti fürtön az Oracle-környezethez.
-4. [Konfigurálja a DNS-továbbítást](on-premises-dns-setup.md#create-a-conditional-forwarder) a privát felhőbe telepített DNS-kiszolgálón.
+4. [Konfigurálja a DNS-továbbítást az](on-premises-dns-setup.md#create-a-conditional-forwarder) AVS Private Cloud-ban telepített DNS-kiszolgálón.
 
 ## <a name="set-up-vsan-storage-policies"></a>VSAN-tárolási házirendek beállítása
 
-a vSAN-szabályzatok meghatározzák a virtuálisgép-lemezeken tárolt adattárolási és lemezes csíkozási hibákat.  A létrehozott tárolási szabályzatot a virtuális gép létrehozásakor kell alkalmazni a virtuálisgép-lemezeken.
+a vSAN-szabályzatok meghatározzák a virtuálisgép-lemezeken tárolt adattárolási és lemezes csíkozási hibákat. A létrehozott tárolási szabályzatot a virtuális gép létrehozásakor kell alkalmazni a virtuálisgép-lemezeken.
 
-1. Jelentkezzen be a privát felhő [vSphere-ügyfelébe](https://docs.azure.cloudsimple.com/vsphere-access) .
+1. [Jelentkezzen be az AVS Private Cloud vSphere-ügyfelébe](https://docs.azure.cloudsimple.com/vsphere-access) .
 2. A felső menüben válassza a **házirendek és profilok**lehetőséget.
 3. A bal oldali menüben válassza ki a virtuálisgép- **tárolási házirendek** elemet, majd válassza **a virtuális gép tárolási házirendjének létrehozása**lehetőséget.
 4. Írjon be egy értelmes nevet a Szabályzathoz, majd kattintson a **tovább**gombra.
 5. A **házirend szerkezete** szakaszban válassza a **vSAN-tárolás szabályainak engedélyezése** lehetőséget, és kattintson a **tovább**gombra.
-6. A **vSAN** > **rendelkezésre állása** szakaszban válassza a **nincs lehetőséget** a hely vész-tűréshatára elemnél. Az elviselni kívánt meghibásodások esetén válassza ki a **RAID-tükrözés** lehetőséget a kívánt pénzügyi tranzakcióhoz.
-    ![vSAN beállításai](media/oracle-rac-storage-wizard-vsan.png).
+6. A **vSAN** > **rendelkezésre állása** szakaszban válassza a **nincs** lehetőséget a hely vész-tűréshatára elemnél. Az elviselni kívánt meghibásodások esetén válassza ki a **RAID-tükrözés** lehetőséget a kívánt pénzügyi tranzakcióhoz.
+    ![vSAN-beállítások](media/oracle-rac-storage-wizard-vsan.png).
 7. A **speciális** szakaszban válassza ki a csíkozott lemezek számát. Az objektum területének foglalásához válassza a **vastag kiosztott**lehetőséget. Jelölje be az **objektum ellenőrzőösszegének letiltása**jelölőnégyzetet. Kattintson a **tovább**gombra.
 8. Kövesse a képernyőn megjelenő utasításokat a kompatibilis vSAN-adattárolók listájának megtekintéséhez, tekintse át a beállításokat, és fejezze be a telepítést.
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Oracle-alapú virtuális gépek létrehozása és megosztott VM-lemezek létrehozása az Oracle-hoz
 
-Ha Oracle-alapú virtuális gépet szeretne létrehozni, klónozott egy meglévő virtuális gépet, vagy újat létrehozni.  Ez a szakasz azt ismerteti, hogyan hozhat létre egy új virtuális gépet, majd klónozással hozzon létre egy másodikat az alapszintű operációs rendszer telepítése után.  A virtuális gépek létrehozása után létrehozhat lemezeket.  Az Oracle-fürt megosztott lemezeket használ a naplók tárolásához, feldolgozásához, naplózásához és visszaállításához.
+Ha Oracle-alapú virtuális gépet szeretne létrehozni, klónozott egy meglévő virtuális gépet, vagy újat létrehozni. Ez a szakasz azt ismerteti, hogyan hozhat létre egy új virtuális gépet, majd klónozással hozzon létre egy másodikat az alapszintű operációs rendszer telepítése után. A virtuális gépek létrehozása után létrehozhat lemezeket. Az Oracle-fürt megosztott lemezeket használ a naplók tárolásához, feldolgozásához, naplózásához és visszaállításához.
 
 ### <a name="create-vms"></a>Virtuális gépek létrehozása
 
@@ -205,7 +205,7 @@ Az operációs rendszer telepítése után egy második virtuális gépet is kl�
 
 ### <a name="create-shared-disks-for-vms"></a>Megosztott lemezek létrehozása virtuális gépekhez
 
-Az Oracle megosztott lemezt használ az adatfájlok, a naplók és a naplófájlok tárolásához.  Létrehozhat egy megosztott lemezt a vCenter, és csatlakoztathatja a virtuális gépeken is.  A nagyobb teljesítmény érdekében helyezze el az adatlemezeket a különböző SCSI-vezérlőkben az alábbi lépésekben azt mutatja, hogyan kell létrehozni egy megosztott lemezt a vCenter, majd csatlakoztatni azt egy virtuális géphez. a virtuális gép tulajdonságainak módosítására a vCenter Flash-ügyfél használható.
+Az Oracle megosztott lemezt használ az adatfájlok, a naplók és a naplófájlok tárolásához. Létrehozhat egy megosztott lemezt a vCenter, és csatlakoztathatja a virtuális gépeken is. A nagyobb teljesítmény érdekében helyezze el az adatlemezeket a különböző SCSI-vezérlőkben az alábbi lépésekben azt mutatja, hogyan kell létrehozni egy megosztott lemezt a vCenter, majd csatlakoztatni azt egy virtuális géphez. a virtuális gép tulajdonságainak módosítására a vCenter Flash-ügyfél használható.
 
 #### <a name="create-disks-on-the-first-vm"></a>Lemezek létrehozása az első virtuális gépen
 
@@ -241,10 +241,10 @@ Ismételje meg a 2 – 7. lépést minden olyan új lemez esetében, amely az Or
 
 ## <a name="set-up-vm-host-affinity-rules"></a>Virtuálisgép-gazda affinitási szabályok beállítása
 
-A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtuális gép a kívánt gazdagépen fusson.  Megadhat szabályokat a vCenter annak biztosításához, hogy az Oracle-alapú virtuális gép a megfelelő erőforrásokkal rendelkező gazdagépen fusson, és kielégítse az adott licencelési követelményeket.
+A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtuális gép a kívánt gazdagépen fusson. Megadhat szabályokat a vCenter annak biztosításához, hogy az Oracle-alapú virtuális gép a megfelelő erőforrásokkal rendelkező gazdagépen fusson, és kielégítse az adott licencelési követelményeket.
 
-1. A CloudSimple-portálon [](escalate-private-cloud-privileges.md) a cloudowner-felhasználó jogosultságait is kiterjesztheti.
-2. Jelentkezzen be a privát felhő [vSphere-ügyfelébe](https://docs.azure.cloudsimple.com/vsphere-access) .
+1. Az AVS-portálon a cloudowner-felhasználó [jogosultságait is kiterjesztheti](escalate-private-cloud-privileges.md) .
+2. [Jelentkezzen be az AVS Private Cloud vSphere-ügyfelébe](https://docs.azure.cloudsimple.com/vsphere-access) .
 3. Az vSphere-ügyfélen válassza ki azt a fürtöt, amelyen az Oracle virtuális gépek telepítve vannak, majd kattintson a **Konfigurálás**gombra.
 4. A konfigurálás területen válassza a **virtuális gép/gazda csoportok**lehetőséget.
 5. Kattintson az **+** elemre.
@@ -259,7 +259,7 @@ A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtu
 13. Válassza ki a létrehozott gazda csoportot.
 14. A szabály létrehozásához kattintson az **OK** gombra.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 
 * [Tudnivalók a vSAN-szabályzatokról](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer attribútum megosztott VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

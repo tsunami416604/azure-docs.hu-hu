@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901539"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013994"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -123,7 +123,7 @@ Amikor beállítja a replikációs berendezést az Azure Migrate központban meg
 
 - Ismerje meg a VMware-hez készült [replikációs berendezések követelményeit](migrate-replication-appliance.md#appliance-requirements) .
 - A készülékre telepíteni kell a MySQL-t. Tudnivalók a [telepítési lehetőségekről](migrate-replication-appliance.md#mysql-installation).
-- A replikációs berendezés eléréséhez szükséges [URL-címek](migrate-replication-appliance.md#url-access) és [portok]() ismertetése.
+- A replikációs berendezés eléréséhez szükséges [URL-címek](migrate-replication-appliance.md#url-access) és [portok](migrate-replication-appliance.md#port-access) ismertetése.
 
 ## <a name="agent-based-ports"></a>Ügynök-alapú portok
 

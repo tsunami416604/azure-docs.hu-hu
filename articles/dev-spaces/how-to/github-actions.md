@@ -1,17 +1,17 @@
 ---
 title: GitHub-műveletek & Azure Kubernetes Service-ben
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: Lekéréses kérelem módosításainak áttekintése és tesztelése közvetlenül az Azure Kubernetes Service-ben a GitHub-műveletek és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771121"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026098"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -58,7 +58,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos.
 
-
 Az az [AK show][az-aks-show] paranccsal jelenítheti meg az AK-fürt *azonosítóját* :
 
 ```cmd
@@ -93,7 +92,6 @@ Navigáljon az elágazó tárházhoz, és kattintson a *Beállítások*elemre. K
 1. *CLUSTER_NAME*: az AK-fürt neve, amely ebben a példában a *MyAKS*.
 1. *CONTAINER_REGISTRY*: az ACR *lekéréséhez* .
 1. *Gazdagép*: a fejlesztői terület gazdagépe, amely az űrlapot *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , amely ebben a példában a *dev.bikesharingweb.fedcab0987.EUs.azds.IO*.
-1. *HOST_SUFFIX*: a fejlesztői terület állomásneve, amely ebben a példában a *fedcab0987.EUs.azds.IO*.
 1. *IMAGE_PULL_SECRET*: a használni kívánt titok neve, például *demo-Secret*.
 1. *MASTER_SPACE*: a szülő fejlesztői terület neve, amely ebben a példában a *dev*.
 1. *REGISTRY_USERNAME*: az egyszerű *clientId* származó JSON-kimenetből származó adatok.
@@ -101,6 +99,8 @@ Navigáljon az elágazó tárházhoz, és kattintson a *Beállítások*elemre. K
 
 > [!NOTE]
 > Az összes ilyen titkot a GitHub-művelet használja, és a [. GitHub/munkafolyamatok/Bikes. YML][github-action-yaml]-ben vannak konfigurálva.
+
+Ha szeretné frissíteni a főtárhelyet a PR-összefésülés után, adja hozzá a *GATEWAY_HOST* titkot, amely az űrlapot *< MASTER_SPACE >. Gateway. <* HOST_SUFFIX >, amely ebben a példában a *dev.Gateway.fedcab0987.EUs.azds.IO*. Miután összevonta a módosításokat az elágazásban található Master ágra, egy másik művelet fog futni, és futtatja a teljes alkalmazást a fő fejlesztői térben. Ebben a példában a fő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Új ág létrehozása a kód módosításaihoz
 

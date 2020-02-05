@@ -2,21 +2,21 @@
 title: Párhuzamos R-szimuláció az Azure Batch segítségével
 description: Oktatóanyag – részletes útmutató Monte Carlo pénzügyi szimulációjának futtatásához az Azure Batchben az R doAzureParallel csomag használatával
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029208"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025843"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 

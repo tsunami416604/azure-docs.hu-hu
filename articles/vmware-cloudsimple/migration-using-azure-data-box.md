@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552909"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019757"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Az Azure VMware-megoldásba való Migrálás Azure Data Box használatával
 
 A Microsoft Azure Data Box Cloud megoldás lehetővé teszi, hogy gyorsan, olcsóan és megbízhatóan küldjön terabájtos (TBs) adatmennyiséget az Azure-ba. A biztonságos adatátvitelt egy saját fejlesztésű Data Box tárolóeszköz küldésével gyorsítjuk fel. Minden tárolóeszköz 80 TB-os maximális felhasználható tárolókapacitással rendelkezik, és az adatközpontba egy regionális Szolgáltató szállítja. Az eszköz robusztus burkolattal rendelkezik, amely védelmet nyújt az adatai számára az átvitel során.
 
-A Data Box használatával tömegesen áttelepítheti a VMware-adatait a saját felhőbe. A helyszíni VMware vSphere környezetből származó adatok a hálózati fájlrendszer (NFS) protokollon keresztül Data Boxra kerülnek. A tömeges adatáttelepítés magában foglalja a virtuális gépek, a konfiguráció és a kapcsolódó adatData Box időponthoz tartozó másolatának mentését, majd az Azure-ba történő manuális szállítását.
+A Data Box használatával tömegesen áttelepítheti VMware-adatait a saját AVS-felhőbe. A helyszíni VMware vSphere környezetből származó adatok a hálózati fájlrendszer (NFS) protokollon keresztül Data Boxra kerülnek. A tömeges adatáttelepítés magában foglalja a virtuális gépek, a konfiguráció és a kapcsolódó adatData Box időponthoz tartozó másolatának mentését, majd az Azure-ba történő manuális szállítását.
 
 Ez a cikk a következőket ismerteti:
 
@@ -27,7 +27,7 @@ Ez a cikk a következőket ismerteti:
 * Adatok másolása a helyszíni VMware-környezetből a Data Boxba az NFS-en keresztül.
 * Data Box visszaküldésének előkészítése.
 * BLOB-adatok előkészítése az Azure VMware-megoldásba való másoláshoz.
-* Adatok másolása az Azure-ból a saját felhőbe.
+* Az Azure-ból származó adatok másolása az AVS Private-felhőbe.
 
 ## <a name="scenarios"></a>Alkalmazási helyzetek
 
@@ -44,11 +44,11 @@ A tömeges adatáttelepítéshez a következő esetekben használjon Data Box:
 
 * Hozzon létre egy virtuális hálózatot és egy Storage-fiókot ugyanabban a régióban, ahol az Azure VMware-megoldás van kiépítve.
 
-* Hozzon létre egy Azure-beli [virtuális hálózati kapcsolatot](cloudsimple-azure-network-connection.md) a saját felhőből a virtuális hálózatba, ahol a Storage-fiókot az [Azure Virtual Network és a ExpressRoute CloudSimple használatával történő csatlakoztatásához](virtual-network-connection.md)szükséges lépéseket követve hozza létre.
+* Hozzon létre egy Azure-beli [virtuális hálózati kapcsolatot](cloudsimple-azure-network-connection.md) az AVS Private-felhőből a virtuális hálózatba, ahol a Storage-fiók létrehozása az [Azure Virtual Network az AVS-hez való csatlakoztatása a ExpressRoute használatával](virtual-network-connection.md)című témakör lépéseit követve.
 
 ## <a name="set-up-data-box-for-nfs"></a>NFS-Data Box beállítása
 
-Kapcsolódjon a Data Box helyi webes felhasználói felületéhez a következő oktatóanyagban található "kapcsolódás az eszközhöz" szakaszának lépéseit követve [: kábel és kapcsolódás a Azure Data boxhoz](../databox/data-box-deploy-set-up.md).  Data Box konfigurálása az NFS-ügyfelek elérésének engedélyezéséhez:
+Kapcsolódjon a Data Box helyi webes felhasználói felületéhez a következő oktatóanyagban található "kapcsolódás az eszközhöz" szakaszának lépéseit követve [: kábel és kapcsolódás a Azure Data boxhoz](../databox/data-box-deploy-set-up.md). Data Box konfigurálása az NFS-ügyfelek elérésének engedélyezéséhez:
 
 1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolódás és másolás** lapra. Az **NFS-beállítások**területen válassza az **NFS-ügyfél-hozzáférés**lehetőséget. 
 
@@ -95,7 +95,7 @@ Az adatok NFS-adattárba való másolásához a Data Box NFS-megosztását a hel
 
    ![Új adattár – NFS-konfiguráció hozzáadása](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. A varázsló 4. lépésében válassza ki azokat az ESXi-gazdagépeket, amelyekhez csatlakoztatni szeretné az adattárat, majd kattintson a **tovább**gombra.  A fürtben válassza a minden gazdagép lehetőséget a virtuális gépek áttelepítésének biztosításához.
+6. A varázsló 4. lépésében válassza ki azokat az ESXi-gazdagépeket, amelyekhez csatlakoztatni szeretné az adattárat, majd kattintson a **tovább**gombra. A fürtben válassza a minden gazdagép lehetőséget a virtuális gépek áttelepítésének biztosításához.
 
    ![Új adattár hozzáadása – gazdagépek kiválasztása](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ Az adatok NFS-adattárba való másolásához a Data Box NFS-megosztását a hel
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>Adatmásolás a Data Box NFS-adattárba
 
-A virtuális gépek áttelepíthetők vagy klónozottak az új adattárba.  Az áttelepíteni kívánt használaton kívüli virtuális gépek áttelepíthetők a Data Box NFS-adattárba a **Storage vMotion** kapcsoló használatával. Az aktív virtuális gépek klónozása a Data Box NFS-adattárba történhet.
+A virtuális gépek áttelepíthetők vagy klónozottak az új adattárba. Az áttelepíteni kívánt használaton kívüli virtuális gépek áttelepíthetők a Data Box NFS-adattárba a **Storage vMotion** kapcsoló használatával. Az aktív virtuális gépek klónozása a Data Box NFS-adattárba történhet.
 
 * Azonosítsa és sorolja fel az **áthelyezhető**virtuális gépeket.
 * Azonosítsa és sorolja fel azokat a virtuális gépeket, amelyeknek **klónozottnak**kell lennie.
@@ -133,7 +133,7 @@ A rendszer áttelepíti a virtuális gépet a Data Box NFS-adattárára. Az öss
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Virtuális gép vagy virtuálisgép-sablon klónozása a Data Box adattárba
 
-1. Kattintson a jobb gombbal a klónozáshoz használni kívánt virtuális gépre vagy virtuálisgép-sablonra. Válassza a **klónozás**  > **klónozás a virtuális gépre**lehetőséget.
+1. Kattintson a jobb gombbal a klónozáshoz használni kívánt virtuális gépre vagy virtuálisgép-sablonra. Válassza a **klónozás** > **klónozás a virtuális gépre**lehetőséget.
 
     ![Virtuális gép klónozása](media/databox-migration-vm-clone.png)
 
@@ -157,7 +157,7 @@ A virtuális gépek klónozása és tárolása a Data Box NFS-adattárán tört�
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>ISO-fájlok másolása a Data Box adattárba
 
-1. A helyszíni vCenter webes felhasználói felületén nyissa meg a **Storage**lapot.  Válassza ki a **Databox-adattár** elemet, majd válassza a **fájlok**lehetőséget. Hozzon létre egy új mappát az ISO-fájlok tárolásához.
+1. A helyszíni vCenter webes felhasználói felületén nyissa meg a **Storage**lapot. Válassza ki a **Databox-adattár** elemet, majd válassza a **fájlok**lehetőséget. Hozzon létre egy új mappát az ISO-fájlok tárolásához.
 
     ![ISO másolása – új mappa létrehozása](media/databox-migration-create-folder.png)
 
@@ -213,28 +213,28 @@ Hajtsa végre a következő cikkben ismertetett lépéseket: [Azure Data Box vis
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Adatok másolása az Azure Storage-ból az Azure VMware-megoldásba
 
-A Data Box eszközre másolt adatmennyiség elérhető lesz az Azure Storage-fiókban, miután a Data Box a befejezett állapotot jeleníti meg. Az adatai mostantól átmásolhatók az Azure VMware-megoldásba. A Storage-fiókban lévő adatait az NFS protokoll használatával át kell másolni a privát felhő vSAN adattárba. 
+A Data Box eszközre másolt adatmennyiség elérhető lesz az Azure Storage-fiókban, miután a Data Box a befejezett állapotot jeleníti meg. Az adatai mostantól átmásolhatók az Azure VMware-megoldásba. A Storage-fiókban lévő adatait az NFS protokoll használatával kell átmásolni az AVS Private Cloud vSAN adattárba. 
 
-Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azure-beli linuxos virtuális gépen a **AzCopy**használatával. Tegye elérhetővé a felügyelt lemezt az NFS-en keresztül, csatlakoztassa az NFS-megosztást adattárként a saját felhőben, majd másolja az adatait. Ez a módszer lehetővé teszi az adatmennyiség gyors másolását a privát felhőbe.
+Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azure-beli linuxos virtuális gépen a **AzCopy**használatával. Tegye elérhetővé a felügyelt lemezt az NFS-en keresztül, csatlakoztassa az NFS-megosztást adattárként az AVS Private-felhőben, majd másolja az adatait. Ez a módszer lehetővé teszi az adatmennyiség gyorsabb másolását az AVS Private-felhőbe.
 
-### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Másolja az adatait a saját felhőbe linuxos virtuális géppel és felügyelt lemezekkel, majd exportálja NFS-megosztásként
+### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Másolja az adatait az AVS Private-felhőbe linuxos virtuális gép és felügyelt lemezek használatával, majd exportálja NFS-megosztásként
 
-1. Hozzon létre egy [Linux virtuális gépet](../virtual-machines/linux/quick-create-portal.md) az Azure-ban ugyanabban a régióban, ahol a Storage-fiókot létrehozta, és rendelkezik egy Azure-beli virtuális hálózati kapcsolatban a saját felhővel.
+1. Hozzon létre egy [Linux virtuális gépet](../virtual-machines/linux/quick-create-portal.md) az Azure-ban ugyanabban a régióban, ahol a Storage-fiókot létrehozta, és rendelkezik egy Azure-beli virtuális hálózati kapcsolatban az AVS Private Cloud szolgáltatással.
 
-2. Hozzon létre egy felügyelt lemezt, amelynek tárolókapacitása nagyobb a blob-adatmennyiségnél, és [csatolja a linuxos virtuális géphez](../virtual-machines/linux/attach-disk-portal.md).  Ha a blob-adatmennyiség nagyobb, mint az elérhető legnagyobb felügyelt lemez kapacitása, az adatátvitelt több lépésben vagy több felügyelt lemez használatával kell átmásolni.
+2. Hozzon létre egy felügyelt lemezt, amelynek tárolókapacitása nagyobb a blob-adatmennyiségnél, és [csatolja a linuxos virtuális géphez](../virtual-machines/linux/attach-disk-portal.md). Ha a blob-adatmennyiség nagyobb, mint az elérhető legnagyobb felügyelt lemez kapacitása, az adatátvitelt több lépésben vagy több felügyelt lemez használatával kell átmásolni.
 
 3. Kapcsolódjon a Linux rendszerű virtuális géphez, és csatlakoztassa a felügyelt lemezt.
 
 4. Telepítse a AzCopy-t a [linuxos virtuális gépre](../storage/common/storage-use-azcopy-v10.md).
 
-5. Töltse le az Azure Blob Storage-ból származó adatait a felügyelt lemezre a AzCopy használatával.  Parancs szintaxisa: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Cserélje le a `<storage-account-name>`t az Azure Storage-fiókja nevére, és `<container-name>` az Data Boxon keresztül átmásolt adattárolóval.
+5. Töltse le az Azure Blob Storage-ból származó adatait a felügyelt lemezre a AzCopy használatával. Parancs szintaxisa: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`. Cserélje le a `<storage-account-name>`t az Azure Storage-fiókja nevére, és `<container-name>` az Data Boxon keresztül átmásolt adattárolóval.
 
 6. Telepítse az NFS-kiszolgálót a linuxos virtuális gépre:
 
     - Ubuntu/Debian disztribúcióban: `sudo apt install nfs-kernel-server`.
     - Vállalati Linux-disztribúcióban: `sudo yum install nfs-utils`.
 
-7. Módosítsa a felügyelt lemezen lévő azon mappa engedélyét, amelyen az Azure Blob Storage-ból másolt adatok másolása megtörtént.  Módosítsa az NFS-megosztásként exportálni kívánt összes mappa engedélyeit.
+7. Módosítsa a felügyelt lemezen lévő azon mappa engedélyét, amelyen az Azure Blob Storage-ból másolt adatok másolása megtörtént. Módosítsa az NFS-megosztásként exportálni kívánt összes mappa engedélyeit.
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
@@ -247,7 +247,7 @@ Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azur
     sudo vi /etc/exports
     ```
     
-    Adja meg a következő sorokat a fájlban a privát felhő összes ESXi-gazdagépének IP-címéhez.  Ha több mappára is hoz létre megosztásokat, adja hozzá az összes mappát.
+    Adja meg a következő sorokat a fájlban az AVS Private Cloud összes ESXi-gazdagépének IP-címéhez. Ha több mappára is hoz létre megosztásokat, adja hozzá az összes mappát.
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -261,11 +261,11 @@ Először másolja a blob Storage-beli adataikat egy felügyelt lemezre egy Azur
 10. Indítsa újra az NFS kernel-kiszolgálót a `sudo systemctl restart nfs-kernel-server` parancs használatával.
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Csatlakoztassa a linuxos virtuális gép NFS-megosztását adattárként egy privát felhőalapú vCenter-fürtön, majd másolja az Adatmásolás
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>A Linux rendszerű virtuális gép NFS-megosztásának csatlakoztatása adattárolóként egy AVS Private Cloud vCenter-fürtön, majd az Adatmásolás
 
-A linuxos virtuális gépről származó NFS-megosztást a saját felhőalapú vCenter-fürtön lévő adattárként kell csatlakoztatni. A csatlakoztatása után az adatok átmásolhatók az NFS-adattárból a Private Cloud vSAN adattárba.
+A linuxos virtuális gépről származó NFS-megosztást az AVS Private Cloud vCenter-fürtön lévő adattárként kell csatlakoztatni. A csatlakoztatása után az adatok átmásolhatók az NFS-adattárból az AVS Private Cloud vSAN adattárba.
 
-1. Jelentkezzen be a saját felhőalapú vCenter-kiszolgálójára.
+1. Jelentkezzen be az AVS Private Cloud vCenter-kiszolgálóra.
 
 2. Kattintson a jobb gombbal az **adatközpont**elemre, válassza a **tárolás**lehetőséget, válassza az **új adattár**lehetőséget, majd válassza a **tovább**lehetőséget.
 
@@ -279,11 +279,11 @@ A linuxos virtuális gépről származó NFS-megosztást a saját felhőalapú v
 
    ![Új adattár hozzáadása – NFS-verzió](media/databox-migration-add-datastore-nfs-version.png)
 
-5. A varázsló 3. lépésében adja meg az adattár nevét, az elérési utat és a kiszolgálót.  Használhatja a linuxos virtuális gép IP-címét a-kiszolgálóhoz.  A mappa elérési útja a `/<folder>/<subfolder>/` formátumban jelenik meg.
+5. A varázsló 3. lépésében adja meg az adattár nevét, az elérési utat és a kiszolgálót. Használhatja a linuxos virtuális gép IP-címét a-kiszolgálóhoz. A mappa elérési útja a `/<folder>/<subfolder>/` formátumban jelenik meg.
 
    ![Új adattár – NFS-konfiguráció hozzáadása](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. A varázsló 4. lépésében válassza ki azokat az ESXi-gazdagépeket, amelyekhez csatlakoztatni szeretné az adattárat, majd kattintson a **tovább**gombra.  A fürtben válassza a minden gazdagép lehetőséget a virtuális gépek áttelepítésének biztosításához.
+6. A varázsló 4. lépésében válassza ki azokat az ESXi-gazdagépeket, amelyekhez csatlakoztatni szeretné az adattárat, majd kattintson a **tovább**gombra. A fürtben válassza a minden gazdagép lehetőséget a virtuális gépek áttelepítésének biztosításához.
 
    ![Új adattár hozzáadása – gazdagépek kiválasztása](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ A linuxos virtuális gépről származó NFS-megosztást a saját felhőalapú v
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>Virtuális gépek és virtuálisgép-sablonok hozzáadása egy NFS-adattárból a leltárba
 
-1. A saját felhőalapú vCenter webes felhasználói felületén nyissa meg a **Storage**lapot.  Válassza ki a Linux rendszerű virtuális gép NFS-adattárát, majd válassza a **fájlok**lehetőséget.
+1. Az AVS Private Cloud vCenter webes felhasználói felületén nyissa meg a **Storage**lapot. Válassza ki a Linux rendszerű virtuális gép NFS-adattárát, majd válassza a **fájlok**lehetőséget.
 
     ![NFS-adattárból származó fájlok kiválasztása](media/databox-migration-datastore-select-files.png)
 
-2. Válasszon olyan mappát, amely tartalmaz egy virtuális gépet vagy egy virtuálisgép-sablont.  A részleteket tartalmazó ablaktáblán válassza ki a virtuális gép vagy a. vmtx fájl. VMX fájlját egy virtuálisgép-sablonhoz.
+2. Válasszon olyan mappát, amely tartalmaz egy virtuális gépet vagy egy virtuálisgép-sablont. A részleteket tartalmazó ablaktáblán válassza ki a virtuális gép vagy a. vmtx fájl. VMX fájlját egy virtuálisgép-sablonhoz.
 
-3. Válassza a **VM regisztrálása** lehetőséget a virtuális gép saját Felhőbeli vCenter való regisztrálásához.
+3. Válassza a **VM regisztrálása** lehetőséget a virtuális gép az AVS Private Cloud vCenter való regisztrálásához.
 
     ![Virtuális gép regisztrálása](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ A linuxos virtuális gépről származó NFS-megosztást a saját felhőalapú v
 
 4. Ismételje meg a 3. és a 4. lépést az összes virtuális gép és virtuálisgép-sablon esetében.
 
-5. Nyissa meg az ISO-fájlokat tartalmazó mappát.  Válassza ki az ISO-fájlokat, majd a **Másolás gombra** kattintva másolja a fájlokat egy mappába a vSAN adattárba.
+5. Nyissa meg az ISO-fájlokat tartalmazó mappát. Válassza ki az ISO-fájlokat, majd a **Másolás gombra** kattintva másolja a fájlokat egy mappába a vSAN adattárba.
 
-A virtuális gépek és a virtuálisgép-sablonok mostantól elérhetők a saját felhőalapú vCenter. Ezeket a virtuális gépeket a bekapcsolása előtt át kell helyezni az NFS-adattárból a vSAN adattárba. Használhatja a **Storage vMotion** kapcsolót, és kiválaszthatja a virtuális gépek céljaként szolgáló vSAN adattárt.
+A virtuális gépek és a virtuálisgép-sablonok mostantól elérhetők az AVS Private Cloud vCenter. Ezeket a virtuális gépeket a bekapcsolása előtt át kell helyezni az NFS-adattárból a vSAN adattárba. Használhatja a **Storage vMotion** kapcsolót, és kiválaszthatja a virtuális gépek céljaként szolgáló vSAN adattárt.
 
 A virtuálisgép-sablonokat a linuxos virtuális gép NFS-adattáráról a vSAN adattárba kell klónozott.
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>A linuxos virtuális gép karbantartása
 
-Miután az összes fájlt átmásolta a saját felhőbe, eltávolíthatja az NFS-adattárt a saját felhőből:
+Miután az összes fájlt átmásolta az AVS Private-felhőbe, eltávolíthatja az NFS-adattárt az AVS Private Cloud-ból:
 
 1. Győződjön meg arról, hogy az összes virtuális gép és sablon át lett helyezve és klónozott a vSAN adattárba.
 
 2. Az NFS-adattárból származó összes virtuálisgép-sablon eltávolítása a készletből.
 
-3. Válassza le a linuxos virtuális gép adattárát a saját felhőalapú vCenter.
+3. Válassza le a linuxos virtuális gép adattárát az AVS Private Cloud vCenter.
 
 4. Törölje a virtuális gépet és a felügyelt lemezt az Azure-ból.
 
-5. Ha nem szeretné megőrizni a Storage-fiókban Data Box által átvitt adatait, törölje az Azure Storage-fiókot.  
+5. Ha nem szeretné megőrizni a Storage-fiókban Data Box által átvitt adatait, törölje az Azure Storage-fiókot. 
     
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Data Boxról](../databox/data-box-overview.md).
-* További információ a [számítási feladatok saját felhőbe való áttelepítésének](migrate-workloads.md)különböző lehetőségeiről.
+* További információ a [számítási feladatok az AVS Private-felhőbe való áttelepítésének](migrate-workloads.md)különböző lehetőségeiről.

@@ -3,23 +3,23 @@ title: Az Azure IoT Central felhasználói felületének testreszabása | Micros
 description: Az Azure IoT Central-alkalmazás témájának és súgójának testreszabása
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953589"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018431"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Az Azure IoT Central felhasználói felületének testreszabása
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+Ez a cikk leírja, hogyan szabhatja testre az alkalmazás felhasználói felületét egyéni témák alkalmazásával, és módosíthatja a Súgó hivatkozásait úgy, hogy az egyéni súgó erőforrásaira mutasson. 
 
-Ez a cikk leírja, hogyan szabhatja testre az alkalmazás felhasználói felületét egyéni témák alkalmazásával, és módosíthatja a Súgó hivatkozásait úgy, hogy az egyéni súgó erőforrásaira mutasson.
+
 
 Az alábbi képernyőképen egy oldal látható a standard téma használatával:
 
@@ -41,7 +41,7 @@ Ezen az oldalon testreszabhatja az alkalmazás következő aspektusait:
 
 Egy 1 MB-nál nem nagyobb PNG-rendszerkép átlátszó háttérrel. Ez az embléma a IoT Central alkalmazás címsorának bal oldalán jelenik meg.
 
-Ha az embléma képe tartalmazza az alkalmazás nevét, akkor elrejtheti az alkalmazásnév szövegét. További információ: [az alkalmazás kezelése](./howto-administer.md#change-application-name-and-url).
+Ha az embléma képe tartalmazza az alkalmazás nevét, akkor elrejtheti az alkalmazásnév szövegét. További információ: [az alkalmazás kezelése](howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Böngésző ikonja (favicon)
 
@@ -78,4 +78,4 @@ A Súgó hivatkozásainak módosításához navigáljon a **Súgó testreszabás
 Most, hogy megismerte, hogyan szabhatja testre a felhasználói felületet a IoT Central alkalmazásban, néhány javasolt lépés:
 
 - [Az alkalmazás felügyelete](./howto-administer.md)
-- [Csempék hozzáadása az irányítópulthoz](./howto-add-tiles-to-your-dashboard.md)
+- [Csempék hozzáadása az irányítópulthoz](howto-add-tiles-to-your-dashboard.md)

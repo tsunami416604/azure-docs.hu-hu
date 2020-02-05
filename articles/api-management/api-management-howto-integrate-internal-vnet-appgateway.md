@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442706"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017599"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 
@@ -185,6 +185,9 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 A fenti parancs sikeres végrehajtásához tekintse meg a [belső VNET eléréséhez szükséges DNS-konfigurációt API Management szolgáltatás](api-management-using-with-internal-vnet.md#apim-dns-configuration) eléréséhez. Ez a lépés több mint fél óráig is eltarthat.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Egyéni tartománynév beállítása API Management
+
+> [!IMPORTANT]
+> Az [új fejlesztői portálhoz](api-management-howto-developer-portal.md) az alábbi lépéseken felül a API Management felügyeleti végpontjának való kapcsolódás engedélyezése is szükséges.
 
 ### <a name="step-1"></a>1\. lépés
 
