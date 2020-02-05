@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911012"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988549"
 ---
 # <a name="get-shape-data"></a>Formázott adatok lekérése
 
-Ebből a cikkből megtudhatja, hogyan kérhet le a térképen rajzolt alakzatokat a [Draw Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) **drawingManager. getSource ()** függvény használatával. Különböző forgatókönyvek lehetnek, amelyekben érdemes kinyerni egy rajzolt alakzat geojson-mennyiségét, és azt máshol is használni.  
+Ez a cikk bemutatja, hogyan kérheti le a térképre rajzolt alakzatok mennyiségét. A **drawingManager. getSource ()** függvényt használjuk a [rajzolási kezelőn](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)belül. A rajzolt alakzatok geojson-adatok kinyerése és a máshol való használata különböző forgatókönyveket mutat be.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Adatok lekérése rajzolt alakzatból
 
-A következő függvény lekéri a rajzolt alakzat forrásául szolgáló adatokat, és megjeleníti a képernyőn. 
+A következő függvény beolvassa a rajzolt alakzat forrásául szolgáló adatokat, és megjeleníti a képernyőre. 
 
 ```Javascript
 function getDrawnShapes() {

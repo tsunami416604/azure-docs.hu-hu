@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905206"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986189"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -831,7 +831,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|karakterlánc, az alapértelmezett érték: ""| Statikus |A hálózati név, amelyet a Container Network beállításakor kell használni.|
-|ContainerNetworkSetup|bool, az alapértelmezett érték FALSE| Statikus |Azt határozza meg, hogy a tároló hálózatot kell-e beállítani.|
+|ContainerNetworkSetup|bool, az alapértelmezett érték a FALSE (Linux) és az alapértelmezett érték TRUE (Windows)| Statikus |Azt határozza meg, hogy a tároló hálózatot kell-e beállítani.|
 |FabricDataRoot |Sztring | Nem engedélyezett |Service Fabric az adatgyökérkönyvtárat. Az Azure alapértelmezett értéke d:\svcfab |
 |FabricLogRoot |Sztring | Nem engedélyezett |Service Fabric-napló gyökérkönyvtára. Itt vannak elhelyezve az SF-naplók és-Nyomkövetések. |
 |NodesToBeRemoved|karakterlánc, az alapértelmezett érték: ""| Dinamikus |Azok a csomópontok, amelyeket el kell távolítani a konfiguráció frissítésének részeként. (Csak önálló telepítés esetén)|

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 35bcf822b97d5e4028ec99c417ec1f54952350a4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966867"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987775"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966867"
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 1. Kattintson a [Létrehozás gombra **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Adja meg az összes szükséges beállítást a futásidejű kulcshoz:
+1. Adja meg az összes szükséges beállítást a **futásidejű** kulcshoz:
 
     |Beállítás|Value (Díj)|
     |--|--|
@@ -50,7 +50,7 @@ A Python segítségével lekérdezheti az [előrejelzési végpontot](https://ak
 
     try:
 
-        key = 'YOUR-KEY'
+        key = 'YOUR-KEY' # your Runtime key
         endpoint = 'YOUR-ENDPOINT' # such as 'your-resource-name.api.cognitive.microsoft.com'
         appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
         utterance = 'turn on all lights'
@@ -75,11 +75,11 @@ A Python segítségével lekérdezheti az [előrejelzési végpontot](https://ak
         print(f'{e}')
     ```
 
-1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési kulcsával és végpontával.
+1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési **futtatókörnyezeti** kulccsal és végponttal.
 
     |Információ|Rendeltetés|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres előrejelzési kulcs.|
+    |`YOUR-KEY`|Az 32 karakteres előrejelzési **futtatókörnyezet** kulcsa.|
     |`YOUR-ENDPOINT`| Az előrejelzési URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Telepítse a `requests` függőséget. A HTTP-kérések elvégzésére szolgál:

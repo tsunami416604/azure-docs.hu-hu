@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927153"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990521"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -48,7 +48,7 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 
 ![Különböző típusú integrációs modulok](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
+## <a name="azure-integration-runtime"></a>Azure integrációs modul
 Egy Azure-beli integrációs modul a következőkre képes:
 
 - Adatfolyamatok futtatása az Azure-ban 
@@ -141,9 +141,9 @@ Ha adatmozgás végrehajtásához használja, a saját üzemeltetésű integrác
 ### <a name="azure-ssis-ir-location"></a>Az Azure-SSIS integrációs modul helye
 Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása az ETL folyamatokban létfontosságú a magas teljesítmény eléréséhez.
 
-- A Azure-SSIS IR helyének nem kell megegyeznie az adatgyár helyével, de meg kell egyeznie a saját Azure SQL Database/felügyelt példány-kiszolgálójának helyével, ahol a SSISDB-t üzemeltetni kell. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
-- Ha nem rendelkezik meglévő Azure SQL Database/felügyelt példány-kiszolgálóval a SSISDB üzemeltetéséhez, de helyszíni adatforrásokkal/célhelyekkel rendelkezik, akkor egy új Azure SQL Database/felügyelt kiszolgálópéldány-kiszolgálót kell létrehoznia a helyszíni hálózathoz csatlakoztatott virtuális hálózattal azonos helyen.  Így a Azure-SSIS IRt az új Azure SQL Database/felügyelt példány-kiszolgálóval hozhatja létre, és a virtuális hálózathoz is csatlakozhat, amelyek mindegyike ugyanazon a helyen található, ami gyakorlatilag minimalizálja a különböző helyek közötti adatáthelyezést.
-- Ha a meglévő Azure SQL Database/felügyelt példány-kiszolgáló helye, ahol a SSISDB található, nem ugyanaz, mint a helyszíni hálózathoz csatlakoztatott virtuális hálózat helye, először hozza létre a Azure-SSIS IR egy meglévő Azure SQL Database/felügyelt példány-kiszolgáló használatával, és csatlakozzon egy másik virtuális hálózathoz ugyanazon a helyen, majd konfigurálja a virtuális hálózatot a virtuális hálózati kapcsolatra a különböző helyek között.
+- A Azure-SSIS IR helyének nem kell megegyeznie a saját adatgyárának helyével, de meg kell egyeznie a saját Azure SQL Database vagy a felügyelt példány-kiszolgáló helyével, ahol a SSISDB üzemeltetve van. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
+- Ha nem rendelkezik meglévő Azure SQL Database vagy felügyelt példány-kiszolgálóval a SSISDB üzemeltetéséhez, de helyszíni adatforrásokkal/célhelyekkel rendelkezik, hozzon létre egy új Azure SQL Database vagy felügyelt kiszolgálópéldány-kiszolgálót a helyszíni hálózathoz csatlakoztatott virtuális hálózattal azonos helyen.  Így a Azure-SSIS IR az új Azure SQL Database vagy a felügyelt példány-kiszolgáló használatával hozhatja létre, és az ugyanazon a helyen található virtuális hálózathoz csatlakozik, ami gyakorlatilag minimalizálja a különböző helyek közötti adatáthelyezést.
+- Ha a meglévő Azure SQL Database vagy felügyelt példány-kiszolgáló helye, ahol a SSISDB fut, nem egyezik meg a helyszíni hálózathoz csatlakoztatott virtuális hálózat helyével, először hozza létre a Azure-SSIS IR egy meglévő Azure SQL Database használatával, vagy Felügyelt példány-kiszolgáló és egy másik virtuális hálózat összekapcsolása ugyanazon a helyen, majd a virtuális hálózat beállítása a különböző helyek közötti virtuális hálózati kapcsolatra.
 
 Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beállításai találhatók:
 
@@ -163,13 +163,13 @@ A másolási tevékenységhez szükséges egy forrás és fogadó társított sz
 
 A keresési és metaadat-beolvasási tevékenységet a rendszer az adattár társított szolgáltatásához rendelt integrációs modulon hajtja végre.
 
-### <a name="transformation-activity"></a>Átalakítási tevékenység
+### <a name="external-transformation-activity"></a>Külső átalakítási tevékenység
 
-Minden átalakítási tevékenységhez tartozik egy cél számítási társított szolgáltatás, amely egy integrációs modulra mutat. Ez az integrációsmodul-példány az, ahonnan a rendszer küldi az átalakítási tevékenységet.
+A külső számítási motort használó minden külső átalakítási tevékenységhez tartozik egy cél számítási társított szolgáltatás, amely egy integrációs modulra mutat. Ez az Integration Runtime-példány meghatározza azt a helyet, ahol a külső, kézzel kódolt átalakítási tevékenység elküldése megtörténik.
 
 ### <a name="data-flow-activity"></a>Adatfolyam-tevékenység
 
-Az adatfolyam tevékenysége az ahhoz társított integrációs modulon fut. 
+Az adatfolyam-tevékenységek végrehajtása a hozzá társított Azure Integration Runtime-on történik. Az adatfolyamatok által használt Spark-számításokat a Azure Integration Runtime adatáramlási tulajdonságai határozzák meg, és teljes mértékben az ADF kezelik.
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:

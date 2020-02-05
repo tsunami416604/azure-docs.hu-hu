@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702028"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990639"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -80,6 +80,8 @@ Az előzetes verziójú funkciókat használó új, áruházbeli elemzési pénz
 1. Kattintson a **Létrehozás** gombra.
 
     ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
+
+    ![Azure IoT Central alkalmazás számlázási adatainak létrehozása](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Alkalmazásbeállítások testreszabása
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához. Ebben a szakaszban egy előre definiált alkalmazási témát fogunk kijelölni. Megtudhatja, hogyan hozhat létre egyéni témákat, és hogyan frissítheti az alkalmazás rendszerképét. Az egyéni témák lehetővé teszik az alkalmazás böngészője színeinek, a böngésző ikonjának és a fejlécben megjelenő alkalmazás emblémájának megadását.

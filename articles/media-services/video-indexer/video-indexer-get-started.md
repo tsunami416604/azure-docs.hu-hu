@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941561"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989807"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
 
@@ -49,15 +49,17 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
 
     Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még:
 
 További részletekért tekintse meg a [videók feltöltése és indexelése](upload-index-videos.md) című témakört.
 
 A videók feltöltése és indexelése után megkezdheti [video Indexer](video-indexer-view-edit.md) webhely használatát, vagy [video Indexer fejlesztői portálon](video-indexer-use-apis.md) megtekintheti a videóban bekövetkező eredményeket. 
 
-## <a name="see-also"></a>Lásd még:
+[Az API-k használatának megkezdése](video-indexer-use-apis.md)
 
-[A Video Indexer áttekintése](video-indexer-overview.md)
+## <a name="next-steps"></a>Következő lépések
 
-[Ismerkedés az API-kkal](video-indexer-use-apis.md).
+A részletes bevezetést a [bevezető laborban](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)tekintheti meg. 
+
+A workshop végén jól megértette a videó-és hangtartalomból kinyerhető információk természetét, így jobban felkészült a tartalmi intelligenciával, a Pitch video AI-vel kapcsolatos lehetőségek azonosítására az Azure-ban, és számos bemutató forgatókönyvek Video Indexer.
 

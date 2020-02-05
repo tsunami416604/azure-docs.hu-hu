@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823666"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987022"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
 
@@ -81,7 +81,7 @@ A könyvtár telepítéséhez nyissa meg a [Microsoft. Azure. SqlDatabase. Elast
 
 A minta letöltéséhez és futtatásához kövesse az alábbi lépéseket: 
 
-1. Töltse le az [Azure SQL-első lépések minta rugalmas adatbázis-eszközeit](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) az MSDN-ből. Bontsa ki a mintát egy kiválasztott helyre.
+1. Töltse le az [Azure SQL-első lépések minta rugalmas adatbázis-eszközeit](https://github.com/Azure/elastic-db-tools). Bontsa ki a mintát egy kiválasztott helyre.
 
 2. Projekt létrehozásához nyissa meg a *ElasticScaleStarterKit. SLN* megoldást a *C#* címtárból.
 
@@ -91,7 +91,7 @@ A minta letöltéséhez és futtatásához kövesse az alábbi lépéseket:
 
 5. Ha többet szeretne megtudni az ügyféloldali kódtár képességeiről, kísérletezzen a különböző lehetőségekkel. Figyelje meg, hogy az alkalmazás hogyan veszi át a konzol kimenetét, és nyugodtan vizsgálja meg a jelenetek mögötti kódot.
    
-    ![haladás][4]
+    ![Haladás][4]
 
 Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalmazást a SQL Database Elastic Database eszközeinek használatával. A Visual Studio vagy a SQL Server Management Studio használatával csatlakozhat az SQL-adatbázishoz, és gyorsan megtekintheti a minta által létrehozott szegmenseket. Ekkor megjelenik az új, példaként használt szegmens-adatbázisok és a minta által létrehozott szegmens Map Manager-adatbázis.
 
@@ -114,7 +114,7 @@ Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalma
 
 * A meglévő szegmensek **egyesítése**: a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md).   
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 
 A Elastic Database-eszközök könyvtára ingyenes. Elastic Database-eszközök használatakor az Azure-használat költségein túl semmilyen további díjat nem kell fizetnie. 
 
@@ -122,12 +122,12 @@ Például a minta alkalmazás új adatbázisokat hoz létre. Ennek a képességn
 
 A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elastic Database eszközökkel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * Kód mintái: 
-  * Eszközök Elastic Database ([.net](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Eszközök Elastic Database ([.net](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Az Azure SQL-Entity Framework integrációs eszközeinek Elastic Database](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Szilánkok rugalmassága a script Centerben](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [rugalmas skálázási közlemény](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

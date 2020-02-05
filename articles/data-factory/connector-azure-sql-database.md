@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: 1268dc0d78bf64e0a4b79592c28a9c1e70db7bf3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/28/2020
+ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892924"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991005"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure SQL Database adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -223,7 +223,7 @@ Azure SQL Database adatkészlet esetében a következő tulajdonságok támogato
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **tulajdonsága azuresqltable**értékre kell állítani. | Igen |
 | séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nem, forrás, igen, fogadó |
 
 #### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai – példa
@@ -590,6 +590,10 @@ A Azure SQL Database vonatkozó beállítások a fogadó átalakítás **Beáll�
 
 **Frissítési módszer:** Meghatározza, hogy mely műveletek engedélyezettek az adatbázis célhelyén. Az alapértelmezett érték a beszúrások engedélyezése. Sorok frissítéséhez, upsert vagy törléséhez módosítani kell az Alter-Row transzformációt a műveletek sorainak címkézéséhez. A frissítések, upsert és törlések esetében meg kell adni a kulcs oszlopát vagy oszlopait annak meghatározásához, hogy melyik sort kell megváltoztatni.
 
+![Kulcsok oszlopai](media/data-flow/keycolumn.png "Kulcsok oszlopai")
+
+Az ADF a következő frissítés, upsert, törlés részeként használt oszlop nevét fogja használni. Ezért ki kell választania egy oszlopot, amely szerepel a fogadó leképezésében. Ha nem szeretné írni az értéket a kulcs oszlopba, kattintson a "kulcs oszlopainak kihagyása" elemre.
+
 **Tábla művelete:** Meghatározza, hogy a rendszer az összes sort újra létrehozza vagy eltávolítja a célhelyről az írás előtt.
 * Nincs: a rendszer nem hajt végre műveletet a táblán.
 * Újból létrehozva: a tábla eldobása és újbóli létrehozása megtörténik. Új tábla dinamikus létrehozásakor szükséges.
@@ -608,16 +612,16 @@ Az adatoknak a vagy a Azure SQL Databaseba való másolásakor a rendszer a köv
 | Azure SQL Database adattípus | Azure Data Factory időközi adattípus |
 |:--- |:--- |
 | bigint |Int64 |
-| binary |Bájt [] |
-| bit |Logikai |
+| Bináris |Bájt [] |
+| Bites |Logikai |
 | char |Karakterlánc, char [] |
 | dátum |Dátum és idő |
-| Dátum/idő |Dátum és idő |
+| Datetime |Dátum és idő |
 | datetime2 |Dátum és idő |
 | DateTimeOffset |DateTimeOffset |
 | Decimális |Decimális |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Lebegőpontos szám |Double |
+| Float |Duplán |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Decimális |
@@ -625,16 +629,16 @@ Az adatoknak a vagy a Azure SQL Databaseba való másolásakor a rendszer a köv
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimális |
 | nvarchar |Karakterlánc, char [] |
-| real |Önálló |
+| valós |Önálló |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |Dátum és idő |
 | smallint |Int16 |
 | túlcsordulási |Decimális |
 | sql_variant |Objektum |
 | szöveg |Karakterlánc, char [] |
-| time |időtartam |
+| time |TimeSpan |
 | időbélyeg |Bájt [] |
-| tinyint |Bájt |
+| tinyint |byte |
 | uniqueidentifier |GUID |
 | varbinary |Bájt [] |
 | varchar |Karakterlánc, char [] |

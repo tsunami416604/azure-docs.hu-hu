@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dad6a517341f83f693e1e7e1f7d27e899e00f7e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498356"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990487"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Kapcsolódás Windowsos virtuális géphez az Azure Bastion használatával
 
@@ -20,13 +20,22 @@ Ebből a cikkből megtudhatja, hogyan lehet biztonságosan és zökkenőmentesen
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Győződjön meg arról, hogy beállította az Azure-beli megerősített gazdagépet ahhoz a virtuális hálózathoz, amelyben a virtuális gép található. További információ: [Azure Bastion-gazdagép létrehozása](bastion-create-host-portal.md). A megerősített szolgáltatás a virtuális hálózatban való üzembe helyezése és telepítése után a használatával csatlakozhat a virtuális hálózat bármely virtuális GÉPHEZ. A Bastion feltételezi, hogy RDP-t használ egy Windows rendszerű virtuális géphez való kapcsolódáshoz, és az SSH-t a linuxos virtuális gépekhez való kapcsolódáshoz. További információ a Linux rendszerű virtuális gépekhez való kapcsolódásról: [Kapcsolódás virtuális géphez – Linux](bastion-connect-vm-ssh.md).
+Győződjön meg arról, hogy beállította az Azure-beli megerősített gazdagépet ahhoz a virtuális hálózathoz, amelyben a virtuális gép található. További információ: [Azure Bastion-gazdagép létrehozása](bastion-create-host-portal.md). A megerősített szolgáltatás a virtuális hálózatban való üzembe helyezése és telepítése után a használatával csatlakozhat a virtuális hálózat bármely virtuális GÉPHEZ.
 
+A Bastion feltételezi, hogy RDP-t használ egy Windows rendszerű virtuális géphez való kapcsolódáshoz, és az SSH-t a linuxos virtuális gépekhez való kapcsolódáshoz. További információ a Linux rendszerű virtuális gépekhez való kapcsolódásról: [Kapcsolódás virtuális géphez – Linux](bastion-connect-vm-ssh.md).
+
+### <a name="required-roles"></a>Szükséges szerepkörök
 A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
 * Olvasó szerepkör a virtuális gépen
 * Olvasó szerepkör a virtuális gép magánhálózati IP-címével rendelkező hálózati adapteren
 * Olvasói szerepkör az Azure-beli megerősített erőforráson
+
+### <a name="ports"></a>Portok
+
+Ha a Windows rendszerű virtuális géphez RDP-n keresztül szeretne csatlakozni, a következő portokat kell megnyitnia a Windows rendszerű virtuális gépen:
+
+* Bejövő portok: RDP (3389)
 
 ## <a name="rdp"></a>Kapcsolat RDP használatával
 
@@ -40,6 +49,6 @@ A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
    ![VM-kapcsolat](./media/bastion-connect-vm-rdp/443rdp.png)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [megerősített GYIK](bastion-faq.md) áttekintése

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980143"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989841"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
+
 A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszámolású (TB) vagy a saját előfizetéses (Red Hat Gold image) modellen keresztül érhetők el az Azure-ban. Ez a dokumentum áttekintést nyújt az Azure Red Hat Gold images-képeiről.
 
 ## <a name="important-points-to-consider"></a>Megfontolandó fontos szempontok
@@ -170,25 +171,41 @@ A következő példa egy parancsfájlt mutat be. Az erőforráscsoport, a hely, 
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Titkosítás Red Hat Enterprise Linux saját előfizetés – Gold images
+
+Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-képeket [Azure Disk Encryption](../../linux/disk-encryption-overview.md)használatával biztosíthatja. A titkosítás engedélyezése előtt azonban **regisztrálni kell az előfizetést** .  A RHEL BYOS Gold-képek regisztrálásával kapcsolatos részletek a Red Hat webhelyen érhetők el. Lásd: a [rendszer regisztrálása és előfizetése a Red Hat Customer Portalra a Red Hat Subscription-Manager használatával](https://access.redhat.com/solutions/253273). Ha aktív Red Hat-előfizetéssel rendelkezik, akkor olvassa el a [Red Hat Customer Portal aktiválási kulcsainak létrehozását](https://access.redhat.com/articles/1378093)is.
+
+A Azure Disk Encryption [Red Hat egyéni rendszerképeken](/linux/redhat-create-upload-vhd)nem támogatott. A [Linux rendszerű virtuális gépekhez Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements)további ade-követelmények és előfeltételek vannak dokumentálva.
+
+A Azure Disk Encryption alkalmazására vonatkozó lépések a [Linux rendszerű virtuális gépeken és a kapcsolódó cikkeken Azure Disk Encryption forgatókönyvekben](../../linux/disk-encryption-linux.md) érhetők el.  
+
 ## <a name="additional-information"></a>További információk
-- Ha olyan előfizetésre próbál virtuális gépet kiépíteni, amely nincs engedélyezve ehhez az ajánlathoz, a következő hibaüzenet jelenik meg, és a Microsoft vagy a Red Hat használatával kapcsolatba kell lépnie az előfizetés engedélyezésével.
+
+- Ha olyan előfizetésre próbál létrehozni egy virtuális gépet, amely nincs engedélyezve ehhez az ajánlathoz, a következő hibaüzenetet kapja:
+
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
+    
+    Ebben az esetben forduljon a Microsoft vagy a Red Hat szolgáltatáshoz, és engedélyezze az előfizetését.
 
-- Ha a RHEL BYOS rendszerképből hoz létre pillanatképet, és közzéteszi a rendszerképet a [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő díjcsomag-információt. A parancs például a következőhöz hasonló lehet: (jegyezze fel a terv paramétereit az utolsó sorban):
+- Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:
+
     ```azurecli
     az vm create –image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+    Jegyezze fel a terv paramétereit a fenti utolsó sorban.
 
-- Ha automatizálást használ a virtuális gépek RHEL BYOS-lemezképből való kiépítéséhez, meg kell adnia a fentebb láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
+    A [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) egyéni lemezképeken nem támogatott.
+
+- Ha automatizálást használ a virtuális gépek RHEL BYOS-lemezképből való kiépítéséhez, meg kell adnia a fentebb láthatóhoz hasonló díjcsomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
 ## <a name="next-steps"></a>Következő lépések
-* A Felhőbeli hozzáférés részletes útmutatói és program részletei a [Red Hat Cloud Access dokumentációjában találhatók.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
-* További információ az [Azure Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
-* Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./redhat-images.md).
-* A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
-* A RHEL Gold images-ről további dokumentáció található a [Red Hat dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+- A Felhőbeli hozzáférés részletes útmutatói és program részletei a [Red Hat Cloud Access dokumentációjában találhatók.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
+- További információ az [Azure Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
+- Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./redhat-images.md).
+- A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
+- A RHEL Gold images-ről további dokumentáció található a [Red Hat dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Promapp |} A Microsoft Docs'
-description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez Promapp és az Azure Active Directory között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Nintex Promapp | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Nintex Promapp között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093601"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984456"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Promapp
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Nintex-Promapp
 
-Ebben az oktatóanyagban elsajátíthatja a Promapp integrálása az Azure Active Directory (Azure AD) lesz.
-Ez az integráció ezeket az előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Nintex-Promapp a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Nintex Promapp, a következőket teheti:
 
-* Az Azure AD, hogy ki férhet hozzá Promapp is használhatja.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Promapp (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Nintex Promapp.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Nintex Promapp az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Promapp, szüksége lesz:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, akkor regisztráljon egy [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/).
-* Promapp előfizetés, amely egyszeri bejelentkezés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Nintex Promapp egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Promapp SP által kezdeményezett, és az identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést támogatja.
+* A Nintex Promapp támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A Nintex Promapp **csak időben támogatja a** felhasználók üzembe helyezését
 
-* Promapp támogatja a felhasználókiépítés just-in-time.
+## <a name="adding-nintex-promapp-from-the-gallery"></a>Nintex-Promapp hozzáadása a gyűjteményből
 
-## <a name="add-promapp-from-the-gallery"></a>Promapp hozzáadása a katalógusból
+A Nintex-Promapp Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Nintex-Promapp a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Promapp integrálása az Azure AD beállításához, hozzá kell Promapp a galériából a felügyelt SaaS-alkalmazások listájára.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Nintex Promapp** kifejezést a keresőmezőbe.
+1. Válassza ki a **Nintex Promapp** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Nintex Promapp
 
-    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Nintex Promapp egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Nintex Promapp.
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+Az Azure AD SSO Nintex-Promapp való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Nintex-PROMAPP SSO konfigurálása](#configure-nintex-promapp-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Nintex-Promapp-teszt felhasználó létrehozása](#create-nintex-promapp-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon Nintex-Promapp rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Válassza ki az új alkalmazás](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A Keresés mezőbe írja be a **Promapp**. Válassza ki **Promapp** a keresési eredmények, és válassza ki a **Hozzáadás**.
+1. A [Azure Portal](https://portal.azure.com/) **Nintex Promapp** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Keresési eredmények](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az Promapp Britta Simon nevű tesztfelhasználó használatával.
-Egyszeri bejelentkezés engedélyezéséhez szüksége Promapp az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
+    1. Az **azonosító** mezőbe írjon be egy URL-címet ebben a mintában:
 
-Az Azure AD egyszeri bejelentkezés az Promapp tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
-
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
-2. **[Promapp egyszeri bejelentkezés konfigurálása](#configure-promapp-single-sign-on)**  az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Promapp, ezeket a lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás integrációs Promapp oldalán válassza **egyszeri bejelentkezési**:
-
-    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
-
-    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
-
-    ![Szerkesztés ikon](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel, ha azt szeretné, konfigurálja az alkalmazás identitásszolgáltató által kezdeményezett módban, a következő lépéseket.
-
-    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/idp-intiated.png)
-
-    1. Az a **azonosító** mezőbe írjon be egy URL-címe ebben a mintában:
-
-       | |
+        | |
         |--|
         | `https://go.promapp.com/TENANTNAME/`|
         | `https://au.promapp.com/TENANTNAME/`|
@@ -117,129 +94,101 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Promapp, ezeket a l�
         |   |
 
        > [!NOTE]
-       > Az Azure AD integrációja az Promapp jelenleg csak a hitelesítési szolgáltatás által van konfigurálva. (Azt jelenti, egy Promapp URL-címet is lesz a hitelesítési folyamatot kezdeményez.) De a **válasz URL-cím** mező megadása kötelező.
+       > Az Azure AD-integráció a Nintex Promapp jelenleg csak a szolgáltatás által kezdeményezett hitelesítéshez van konfigurálva. (Azaz a Nintex Promapp URL-címe kezdeményezi a hitelesítési folyamatot.) A **Válasz URL-címe** mező azonban kötelező mező.
 
-    1. Az a **válasz URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+    1. A **Válasz URL-címe** mezőbe írjon be egy URL-címet ebben a mintában:
 
        `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
-5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani**. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
-
-    ![Promapp tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
-
-   
+    A **bejelentkezési URL** -cím mezőben adjon meg egy URL-címet a következő mintában: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE]
-    > Ezeket az értékeket a helyőrzők. Tényleges azonosítóját használja, válasz URL-cím és a sign-on URL-címet kell. Forduljon a [Promapp támogatási csapatának](https://www.promapp.com/about-us/contact-us/) értékének lekéréséhez. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
+    > Ezek az értékek helyőrzők. A tényleges azonosítót, a válasz URL-címét és a bejelentkezési URL-címet kell használnia. Az értékek lekéréséhez lépjen kapcsolatba a [Nintex Promapp támogatási csapatával](https://www.promapp.com/about-us/contact-us/) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **tanúsítvány (Base64)** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. Az a **Promapp beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
+1. A **Nintex Promapp beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    1. **Bejelentkezési URL-cím**.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    1. **Az Azure AD-azonosító**.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    1. **Kijelentkezési URL-címe**.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="configure-promapp-single-sign-on"></a>Promapp egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-1. A Promapp vállalati hely jelentkezzen be rendszergazdaként.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Nintex Promapp.
 
-2. Válassza az ablak tetején lévő menüben **rendszergazdai**:
-   
-    ![Válassza ki a rendszergazda][12]
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Nintex Promapp**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-3. Válassza ki **konfigurálása**:
-   
-    ![Válassza ki a konfigurálása][13]
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Az a **biztonsági** párbeszédpanel mezőbe az alábbi lépéseket.
-   
-    ![Rendszerbiztonság párbeszédpanel][14]
-    
-    1. Illessze be a **bejelentkezési URL-cím** be az Azure Portalról másolt a **SSO-bejelentkezési URL-cím** mezőbe.
-    
-    1. Az a **SSO - egyszeri bejelentkezési mód** listáról válassza ki **nem kötelező**. Kattintson a **Mentés** gombra.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-nintex-promapp-sso"></a>Nintex Promapp SSO konfigurálása
+
+1. Jelentkezzen be a Nintex Promapp vállalati webhelyre rendszergazdaként.
+
+2. Az ablak tetején található menüben válassza a **rendszergazda**elemet:
+
+    ![Rendszergazda kiválasztása][12]
+
+3. Válassza a **Konfigurálás**lehetőséget:
+
+    ![Konfigurálás kiválasztása][13]
+
+4. A **Biztonság** párbeszédpanelen hajtsa végre az alábbi lépéseket.
+
+    ![Biztonság párbeszédpanel][14]
+
+    1. Illessze be a Azure Portalból másolt **bejelentkezési URL-címet** az **SSO-login URL-cím** mezőbe.
+
+    1. Az **egyszeri bejelentkezés – egyszeri bejelentkezési mód** listán válassza a nem **kötelező**lehetőséget. Kattintson a **Mentés** gombra.
 
        > [!NOTE]
-       > Nem kötelező módja csak teszteléshez. Amikor elégedett a konfigurációt, válassza a **szükséges** a a **SSO - egyszeri bejelentkezési mód** lista kényszerítése minden felhasználó számára az Azure AD-hitelesítést.
+       > A választható mód csak tesztelésre szolgál. Miután elégedett a konfigurációval, válassza a **kötelező** lehetőséget az egyszeri bejelentkezéses **bejelentkezési mód** listában, hogy az összes felhasználóra kikényszerítse az Azure ad-hitelesítést.
 
-    1. A Jegyzettömbben nyissa meg a tanúsítványt, amelyet az előző szakaszban töltött le. Másolja a tartalmat a tanúsítvány nélkül az első sort ( **---BEGIN CERTIFICATE---** ) vagy az utolsó sort ( **---END CERTIFICATE---** ). Illessze be a tartalmakat a tanúsítványt a **egyszeri bejelentkezés – x.509-tanúsítvány** mezőbe, majd válassza ki **mentése**.
+    1. Nyissa meg az előző szakaszban letöltött tanúsítványt a Jegyzettömbben. Másolja a tanúsítvány tartalmát az első sor nélkül ( **-----BEGIN certificate-----** ) vagy az utolsó sort ( **-----END Certificate-----** ). Illessze be a tanúsítvány tartalmát az **SSO-x. 509 tanúsítvány** mezőbe, majd kattintson a **Mentés**gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-nintex-promapp-test-user"></a>Nintex Promapp-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Nintex Promapp. A Nintex Promapp támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a Nintex Promapp, a hitelesítés után létrejön egy új.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-    ![Válassza ki az összes felhasználó](common/users.png)
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-2. Válassza ki **új felhasználó** a képernyő tetején:
-
-    ![Válassza ki az új felhasználó](common/new-user.png)
-
-3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
-
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
-
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
-
-    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
-
-    1. Kattintson a **Létrehozás** gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával a Promapp Azure egyszeri bejelentkezés használatához engedélyeznie kell.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Promapp**.
-
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában jelölje ki a **Promapp**.
-
-    ![Alkalmazások listája](common/all-applications.png)
-
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
-
-    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
-
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
-
-    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
-
-6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
-
-### <a name="just-in-time-user-provisioning"></a>Felhasználókiépítés igény
-
-Promapp támogatja a felhasználókiépítés just-in-time. Ez a funkció alapértelmezés szerint engedélyezve van. Ha a felhasználó már nem létezik az Promapp, egy új jön létre a hitelesítés után.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-
-Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
-
-A Promapp csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a Promapp példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. A hozzáférési panelen kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Nintex Promapp csempére kattint, automatikusan be kell jelentkeznie arra a Nintex-Promapp, amelyhez be szeretné állítani az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálja ki a Nintex Promapp az Azure AD-vel](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644307"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984370"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -32,8 +32,8 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft. AzureStack | mag |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft. számlázás | [Számlázás](/azure/billing/) |
-| Microsoft. BingMaps | [Bing Térképek](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
+| Microsoft. számlázás | [Cost Management és számlázás](/azure/billing/) |
+| Microsoft. BingMaps | [Bing Maps](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. Blockchain | [Azure Blockchain szolgáltatás](/azure/blockchain/workbench/) |
 | Microsoft. Blueprint | [Azure-tervrajzok](/azure/governance/blueprints/) |
 | Microsoft. BotService | [Azure Bot Service](/azure/bot-service/) |
@@ -111,7 +111,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. Migrálás | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure térbeli horgonyok](/azure/spatial-anchors/) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Virtuális hálózat](../../virtual-network/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Application Gateway](../../application-gateway/index.yml)<br />[Azure DNS](../../dns/index.yml)<br />[ExpressRoute](../../expressroute/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure-bástya](/azure/bastion/) |
+| Microsoft.Network | [Virtual Network](../../virtual-network/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Application Gateway](../../application-gateway/index.yml)<br />[Azure DNS](../../dns/index.yml)<br />[ExpressRoute](../../expressroute/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure-bástya](/azure/bastion/) |
 | Microsoft. NotificationHubs | [Értesítési központ](../../notification-hubs/index.yml) |
 | Microsoft. OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
@@ -132,7 +132,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. Security | [Security Center](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](/azure/sentinel/) |
 | Microsoft. SerialConsole | [Azure soros konzol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
-| Microsoft.ServiceBus | [Szolgáltatásbusz](/azure/service-bus/) |
+| Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. ServiceFabricMesh | [Service Fabric rácsvonal](../../service-fabric-mesh/index.yml) |
 | Microsoft. SignalRService | [Azure Signaler szolgáltatás](../../azure-signalr/index.yml) |

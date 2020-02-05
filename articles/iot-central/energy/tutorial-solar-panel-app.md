@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1f04bc18405c5a5a9612c0de6dd76f22450c7f04
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112510"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990382"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: létrehozás és útmutató a napelemek figyelésére szolgáló alkalmazás sablonja 
 
@@ -52,8 +52,9 @@ Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
     * **7 napos ingyenes próbaverzió**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
     * **Számlázási információ**: maga az alkalmazás ingyenes. Az alkalmazás erőforrásainak kiépítéséhez a címtár, az Azure-előfizetés és a régió részletei szükségesek.
     * Kattintson a lap alján található **Létrehozás** gombra, és az alkalmazás egy percen belül létrejön.
-        > [!div class="mx-imgBorder"]
-        > ![új alkalmazás űrlapja](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![új alkalmazás űrlapja](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatértékek ellenőrzése

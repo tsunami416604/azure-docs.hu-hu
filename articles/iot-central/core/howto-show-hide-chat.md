@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: d861a5d1da6ebc9cedbe2dff764cd5b6e7dd04e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f858e0dd475361ff097f5a05ae01df2af00e4eca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827406"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989994"
 ---
 # <a name="toggle-live-chat"></a>Élő csevegés ki-/bekapcsolása
 
 Ez a cikk bemutatja, hogyan válthat az élő csevegés a IoT Central alkalmazásban. A technikai támogatás eléréséhez élő csevegést használhat.
 
 > [!NOTE]
-> A csevegési lehetőség csak próbaverziós előfizetések esetén érhető el.
+> A csevegési lehetőség csak az ingyenes díjszabási csomag használatával létrehozott alkalmazásokhoz érhető el.
 
 ## <a name="chat-with-us"></a>Csevegés velünk
 
@@ -44,7 +44,7 @@ A csevegés megjelenítéséhez válassza a **csevegés megjelenítése** lehet�
 
  ![Csevegés megjelenítése](media/howto-show-hide-chat/show-chat.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan válthat az élő csevegés az Azure IoT Centralban, itt látható a következő lépés:
 

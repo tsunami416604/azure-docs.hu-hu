@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435033"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987628"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
@@ -39,7 +39,7 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Fizetési terv | Utólagos, használatalapú fizetés |
+| Díjszabási csomag | Standard |
 | Alkalmazássablon | Örökölt alkalmazás |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
@@ -59,9 +59,9 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Név    | Adja meg a névtér nevét |
+| Name (Név)    | Adja meg a névtér nevét |
 | Díjcsomag | Basic |
-| Előfizetés | Az Ön előfizetése |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
 | Földrajzi egység | USA keleti régiója |
 | Adatkapacitás-egységek | 1 |
@@ -73,7 +73,7 @@ A [Azure Portal használatával hozzon létre egy Azure Databricks szolgáltatá
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | Munkaterület neve    | Válassza ki a munkaterület nevét |
-| Előfizetés | Az Ön előfizetése |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
 | Földrajzi egység | USA keleti régiója |
 | Díjcsomag | Standard |
@@ -112,7 +112,7 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Eseményközpont | centralexport |
     | Mérések | Be |
     | Eszközök | Ki |
-    | Eszközsablonok | Ki |
+    | Eszközök sablonjai | Ki |
 
 ![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -132,13 +132,13 @@ A fürt létrehozásához használja a következő táblázatban található inf
 | ------- | ----- |
 | Fürt neve | centralanalysis |
 | Fürt üzemmód | Standard |
-| A Databricks futtatókörnyezeti verziója | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Databricks Runtime verziója | 5,3 (Scala 2,11, Spark 2.4.0) |
 | Python-verzió | 3 |
 | Automatikus skálázás engedélyezése | Nem |
 | Megszakítás ennyi perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
 | Feldolgozók | 1 |
-| Illesztőprogram típusa | Megegyezik a feldolgozóval |
+| Illesztőprogram típusa | Ugyanaz, mint a feldolgozó |
 
 A fürt létrehozása több percet is igénybe vehet, amíg a folytatás előtt várnia kell, hogy a fürt létrehozása befejeződjön.
 

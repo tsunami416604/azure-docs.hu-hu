@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911813"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989059"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Azure Maps eseményekre való reagálás Event Grid használatával 
 
-A Azure Maps a Azure Event Grid segítségével integrálható, így értesítéseket küldhet más szolgáltatásoknak, és az alsóbb rétegbeli folyamatokat is elindíthatja. Ennek a cikknek a célja, hogy segítséget nyújtson az üzleti alkalmazások konfigurálásában Azure Maps események figyelésére, hogy megbízható, méretezhető és biztonságos módon reagáljon a kritikus eseményekre. Létrehozhat például egy olyan alkalmazást, amely több műveletet hajt végre, például egy adatbázis frissítését, egy jegy létrehozását és egy e-mail-értesítés kézbesítését minden alkalommal, amikor egy eszköz bekerül egy geokerítésen.
+A Azure Maps a Azure Event Gridsal integrálódik, így a felhasználók más szolgáltatásoknak is küldhetnek esemény-értesítéseket, és alsóbb rétegbeli folyamatokat indíthatnak. Ennek a cikknek a célja, hogy segítséget nyújtson az üzleti alkalmazások konfigurálásában Azure Maps események figyelésére. Ez a szolgáltatás lehetővé teszi, hogy megbízható, méretezhető és biztonságos módon reagáljon a kritikus eseményekre. A felhasználók például létrehozhatnak egy alkalmazást egy adatbázis frissítéséhez, egy jegy létrehozásához és egy e-mail-értesítés kézbesítéséhez, valahányszor egy eszköz bekerül egy geokerítésen.
 
-A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](https://docs.microsoft.com/azure/azure-functions/functions-overview) és a [Azure Logic Appshoz](https://docs.microsoft.com/azure/azure-functions/functions-overview), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](https://docs.microsoft.com/azure/event-grid/overview)című témakört.
+A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. A Event Grid beépített támogatást nyújt az Azure-szolgáltatások, például a [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) és a [Azure Logic apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)számára. A webhookok használatával az események riasztásait nem Azure-szolgáltatásokhoz is kézbesítheti. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](https://docs.microsoft.com/azure/event-grid/overview)című témakört.
 
 
 ![Azure Event Grid funkcionális modell](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -30,7 +30,7 @@ A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolg
 
 Az Event Grid [esemény-előfizetések](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Egy Azure Maps fiók a következő típusú eseményeket bocsátja ki: 
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
 | Microsoft. maps. GeofenceEntered | Akkor következik be, amikor a kapott koordináták egy adott geokerítésen kívülre kerültek a következőn belül: |
 | Microsoft. maps. GeofenceExited | Akkor következik be, amikor a kapott koordináták egy adott geokerítésen kívülre kerültek |
@@ -38,7 +38,7 @@ Az Event Grid [esemény-előfizetések](https://docs.microsoft.com/azure/event-g
 
 ## <a name="event-schema"></a>Eseményséma
 
-Az alábbi példa a GeofenceResult sémáját mutatja be
+A következő példa a GeofenceResult sémáját mutatja be:
 
 ```JSON
 {   

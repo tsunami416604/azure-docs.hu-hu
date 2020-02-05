@@ -1,18 +1,18 @@
 ---
-title: 'Másolás és beillesztés egy virtuális gépről: Azure-megerősített | Microsoft Docs'
+title: 'Másolás és beillesztés egy virtuális gépről: Azure Bastion'
 description: Ebből a cikkből megtudhatja, hogyan másolhat és illeszthet be egy Azure-beli virtuális gépről a Bastion használatával.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519355"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989535"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Másolás és beillesztés virtuális gépre: Azure Bastion
 
@@ -54,6 +54,6 @@ Miután a [Azure Portal ](https://portal.azure.com)használatával kapcsolódott
 
    ![illessze be](./media/bastion-vm-manage/local2.png)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

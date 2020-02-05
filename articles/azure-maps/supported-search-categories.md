@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910414"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988287"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps támogatott kategóriák
 
-Ha egy [kategóriára keres rá](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) , több mint száz támogatott kategória szerepel. Az alábbi lista a támogatott kategóriájú nevek kategóriáit sorolja fel. A kategória kódok a legfelső szintű kategóriákhoz jönnek létre. Minden alkategória ugyanazt a kategóriát használja. Vegye figyelembe, hogy a kategóriák listája új adatkiadásokkal változhat.
+Ha egy [kategóriára keres rá](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) , több mint száz támogatott kategória szerepel. Az alábbi lista a támogatott kategóriájú nevek kategóriáit sorolja fel. A rendszer a legfelső szintű kategóriákhoz generál kategóriákat. Minden alkategória ugyanazt a kategóriát használja. Ebben a kategóriában a lista új adatkiadásokkal is változhat.
 
 <br/>
 
@@ -86,7 +86,7 @@ Ha egy [kategóriára keres rá](https://docs.microsoft.com/rest/api/maps/search
 | ÉJSZAKAI | Bar, karaoke Club, Jazz Club, Private Club, Wine Bar, Comedy Club, koktél bár, diszkó, éjszakai élet |
 | NEM\_kormányzati\_szervezet | nem kormányzati szervezet |
 | NYISSa meg\_\_a PARKOLÓt | nyitott parkoló, parkoló |
-| EGYÉB | helység, ingyenes kereskedelmi zóna, forgalmi kör, ismeretlen |
+| MÁS | helység, ingyenes kereskedelmi zóna, forgalmi kör, ismeretlen |
 | PARKOLÓ\_garázs | parkolóház |
 | PARK\_REKREÁCIÓs\_térség | történelmi hely, Tópart, tengerpart, River Scenic terület, halászati vadászati terület, Csatatér, téli sport, hajó indítása rámpa, megőrzés, erdő terület, rekreációs terület, síközpont, temető, Historical Park, Parkway, Memorial, vásár, Piknik terület, Wilderness terület, Park rekreációs terület, erdő (k), fosszilizálódott erdő, kert (ek), Wildlife Reserve, természetvédelmi terület, erdő állomás, vadászati tartalék, erdő-tartalék, Park |
 | BENZIN\_állomás | benzin-állomás |

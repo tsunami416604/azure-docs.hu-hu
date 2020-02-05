@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933591"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986240"
 ---
 # <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,14 +108,12 @@ A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codep
 
 > [!TIP]
 > Ha engedélyezi a fürtözést az adatforráson, akkor a egymáshoz közeledő pontok fürtözött pontként vannak csoportosítva. Az egyes fürtökhöz tartozó pontok számát használhatja a Heat Map súlyozási kifejezésének. Ez jelentősen csökkentheti a megjelenítendő pontok számát. A fürt pontjának számát a pont funkció `point_count` tulajdonsága tárolja: 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
-> Ha a fürtözési sugár csak néhány képpont, a renderelés kisebb vizualizációs különbséget eredményez. A nagyobb RADIUS-csoportok több pontot mutatnak az egyes fürtökre, és javítják a hő teljesítményét.
+> Ha a fürtözési sugár csak néhány képpont, a renderelés kisebb vizualizációs különbséget eredményezne. A nagyobb RADIUS-csoportok több pontot mutatnak az egyes fürtökre, és javítják a hő teljesítményét.
 
 ## <a name="next-steps"></a>Következő lépések
 

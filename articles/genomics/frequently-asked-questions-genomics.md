@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476436"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986036"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: gyakori kérdések
 
@@ -24,6 +24,8 @@ Ez a cikk a Microsoft Genomicshöz kapcsolódó leggyakoribb lekérdezéseket so
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Hogyan GATK4-munkafolyamatokat futtathat a Microsoft Genomicson?
 A Microsoft Genomics szolgáltatás config. txt fájljában válassza ki a `gatk4`process_name. Vegye figyelembe, hogy a számlázás a szokásos számlázási díjszabás szerint történik.
 
+## <a name="how-do-i-enable-output-compression"></a>Hogyan engedélyezi a kimeneti tömörítést?
+A kimeneti vcf vagy gvcf nem kötelező argumentumot használva tömörítheti a kimeneti tömörítést. Ez egyenértékű a `-bgzip` futtatásával, amelyet `-tabix` a vcf vagy gvcf kimeneten, `.gz` (bgzip output) és `.tbi` (tabix output) fájlok létrehozásához. `bgzip` tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Az argumentum egy logikai érték, amely a vcf kimenethez alapértelmezés szerint `false`ra van beállítva, és alapértelmezés szerint `true` a gcvf kimenetéhez. A parancssorban való használathoz adja meg a `-bz` vagy `--bgzip-output` `true`ként (futtassa a bgzip és a tabix) vagy a `false`. Ha ezt az argumentumot a config. txt fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy `bgzip_output: false` a fájlhoz.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Mi a Microsoft Genomics SLA-ja?
 Garantáljuk, hogy az idő Microsoft Genomics szolgáltatásának 99,9%-a elérhetővé válik a munkafolyamat API-kéréseinek fogadásához. További információ: [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
@@ -82,7 +84,7 @@ a msgen a következő formátumban értelmezi a konfigurációs fájlokat:
   |`-k/--access-key KEY`            | *access_key: kulcs*              |      
   |`-pa/--process-args R=B37m1`     | *process_args: R-b37m1*        |  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Genomics használatának megkezdéséhez használja az alábbi forrásokat:
 - Első lépésként futtassa az első munkafolyamatot a Microsoft Genomics szolgáltatáson keresztül. [Munkafolyamat futtatása a Microsoft Genomics szolgáltatással](quickstart-run-genomics-workflow-portal.md)

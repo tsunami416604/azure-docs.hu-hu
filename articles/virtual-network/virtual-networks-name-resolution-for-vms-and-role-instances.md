@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368035"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991031"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Az Azure Virtual Networks erőforrásainak névfeloldása
 
@@ -31,13 +31,13 @@ A virtuális hálózatokon üzembe helyezett erőforrások két metódust haszn�
 A használt névfeloldási típus attól függ, hogy az erőforrásoknak hogyan kell kommunikálniuk egymással. Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldási megoldásokat szemlélteti:
 
 > [!NOTE]
-> A forgatókönyvtől függően érdemes lehet használni a Azure DNS Private Zones funkciót, amely jelenleg nyilvános előzetes verzióban érhető el. További információkat az [Azure DNS privát tartományokhoz való használatát](../dns/private-dns-overview.md) ismertető cikkben olvashat.
+> A forgatókönyvtől függően előfordulhat, hogy Azure DNS privát zónákat szeretne használni. További információkat az [Azure DNS privát tartományokhoz való használatát](../dns/private-dns-overview.md) ismertető cikkben olvashat.
 >
 
 | **Forgatókönyv** | **Megoldás** | **Utótag** |
 | --- | --- | --- |
-| Az azonos virtuális hálózatban található virtuális gépek és az Azure Cloud Services szerepkör példányai közötti névfeloldás ugyanazon a felhőalapú szolgáltatásban. | [Azure DNS Private Zones](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás |Állomásnév vagy FQDN |
-| Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek és a különböző felhőalapú szolgáltatások szerepkör-példányai között. |[Azure DNS Private Zones](../dns/private-dns-overview.md) vagy, az ügyfél által felügyelt DNS-kiszolgálók a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
+| Az azonos virtuális hálózatban található virtuális gépek és az Azure Cloud Services szerepkör példányai közötti névfeloldás ugyanazon a felhőalapú szolgáltatásban. | [Azure DNS privát zónák](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás |Állomásnév vagy FQDN |
+| Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek és a különböző felhőalapú szolgáltatások szerepkör-példányai között. |[Azure DNS privát zónák](../dns/private-dns-overview.md) vagy az ügyfél által felügyelt DNS-kiszolgálók a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Névfeloldás egy Azure App Serviceból (webalkalmazás, függvény vagy bot) virtuális hálózati integráció használatával egy adott virtuális hálózatban lévő szerepkör-példányokhoz vagy virtuális gépekhez. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | A App Service Web Apps névfeloldása ugyanazon a virtuális hálózaton lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Az egyik virtuális hálózatban található App Service Web Apps névfeloldása egy másik virtuális hálózatban lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
@@ -58,7 +58,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 ### <a name="features"></a>Jellemzők
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
-* Egyszerű használat. Nem igényel konfigurálást.
+* Egyszerű használat. Nincs szükség konfigurációra.
 * Magas rendelkezésre állás. A saját DNS-kiszolgálók fürtjének létrehozása és kezelése nem szükséges.
 * A szolgáltatást a saját DNS-kiszolgálóival együtt használhatja a helyszíni és az Azure-beli állomásnevek feloldásához.
 * A névfeloldást a virtuális gépek és a szerepkör-példányok között lehet használni ugyanazon a felhőalapú szolgáltatáson belül anélkül, hogy teljes tartománynevet kellene használnia.

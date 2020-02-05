@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925638"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989858"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -27,7 +27,7 @@ A Azure Stream Analytics jelenleg három kompatibilitási szintet támogat:
 
 * 1,0 – korábbi viselkedés
 * 1,1 – alapértelmezett viselkedés
-* 1,2 (előzetes verzió) – a legújabb működés a kiértékelés legutóbbi tökéletesítésével
+* 1,2 – a legújabb fejlemények a legújabb megoldásokkal
 
 Az eredeti 1,0 kompatibilitási szint számos éve Azure Stream Analytics általánosan elérhető.
 
@@ -47,9 +47,9 @@ A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
 ![Stream Analytics kompatibilitási szintje Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-A kompatibilitási szint frissítésekor a T-SQL Compiler a kiválasztott kompatibilitási szintnek megfelelő szintaxissal ellenőrzi a feladatot.
+A kompatibilitási szint frissítésekor a T-Compiler érvényesíti a feladatot a kiválasztott kompatibilitási szintnek megfelelő szintaxissal.
 
-## <a name="compatibility-level-12-preview"></a>Kompatibilitási szint 1,2 (előzetes verzió)
+## <a name="compatibility-level-12"></a>Kompatibilitási szint 1.2
 
 A kompatibilitási szint 1,2-as verziójában a következő jelentős változások következnek be:
 

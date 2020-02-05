@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889003"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984025"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató intelligens leltár-kezelési alkalmazás sablonja
 
@@ -33,21 +33,24 @@ Ebből az oktatóanyagból megtudhatja, hogyan,
 Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
-> [!div class="mx-imgBorder"]
-> ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
-2. Válassza a **kereskedelem** fület, és válassza az **alkalmazás létrehozása** elemet * * intelligens leltár kezelése * *
+2. Válassza a **kereskedelem** fület, és válassza az **alkalmazás létrehozása** az **intelligens leltár kezelése** alatt elemet.
 
 3. Az alkalmazás **létrehozásakor** megnyílik az új alkalmazás űrlapja, és az alább látható módon töltse ki a kért adatokat.
    **Alkalmazás neve**: az alapértelmezett javasolt nevet használhatja, vagy megadhatja a felhasználóbarát alkalmazás nevét.
-   **URL**: használhatja a javasolt alapértelmezett URL-címet, vagy megadhatja a felhasználóbarát egyedi emlékezetes URL-címét. Ezt követően az alapértelmezett beállítás akkor javasolt, ha már rendelkezik Azure-előfizetéssel, vagy ha van, akkor a hét napos ingyenes próbaverzióval kezdheti meg, és az ingyenes nyomvonal lejárata előtt bármikor elvégezheti a váltást.
+   **URL**: használhatja a javasolt alapértelmezett URL-címet, vagy megadhatja a felhasználóbarát egyedi emlékezetes URL-címét. Ezt követően az alapértelmezett beállítás akkor ajánlott, ha már rendelkezik Azure-előfizetéssel. Elkezdheti a 7 napos ingyenes próbaverzió díjszabását, és úgy is dönthet, hogy az ingyenes nyomvonal lejárta előtt bármikor standard díjszabási csomagra vált.
    **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
    **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
-> [!div class="mx-imgBorder"]
-> ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > [!div class="mx-imgBorder"]
+    > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
-## <a name="walk-through-the-application"></a>az alkalmazás végigvezeti 
+    > [!div class="mx-imgBorder"]
+    > ![intelligens leltár kezelése számlázási adatok](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+
+## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti 
 
 ### <a name="dashboard"></a>Irányítópult 
 Az alkalmazás sablonjának sikeres üzembe helyezése után az alapértelmezett irányítópult egy intelligens leltározási felügyeleti operátorok célzott portálja. A Northwind Trader egy fiktív intelligens leltározási szolgáltató, amely a (z) Bluetooth alacsony energiafogyasztású, valamint a kereskedelmi tárolót rádiófrekvenciás azonosítással (RFID) kezeli. Ebben az irányítópultban két különböző átjáró jelenik meg, amelyek a leltárral kapcsolatos telemetria biztosítanak, valamint a hozzájuk tartozó parancsokat, feladatokat és műveleteket is. Ez az irányítópult előre konfigurálva van a kritikus intelligens leltár felügyeleti eszköz műveleti tevékenységének megjelenítéséhez.
@@ -106,7 +109,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 > [!div class="mx-imgBorder"]
 > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az intelligens leltár felügyeletének [intelligens leltár-kezelési koncepcióról](./architecture-smart-inventory-management-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)

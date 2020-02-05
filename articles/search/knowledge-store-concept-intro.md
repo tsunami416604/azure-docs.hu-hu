@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754109"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988634"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
 
@@ -133,147 +133,11 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 ## <a name="api-reference"></a>API-leírások
 
-Ez a szakasz a [create készségkészlet (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) Reference doc egyik verziója, amely úgy lett módosítva, hogy tartalmazza a `knowledgeStore` definícióját. 
+A REST API verzió `2019-05-06-Preview` a szakértelmével további definíciói segítségével biztosít a Tudásbázisban. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Példa – beágyazott knowledgeStore egy Készségkészlet
++ [Készségkészlet létrehozása (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Készségkészlet frissítése (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-Az alábbi példa egy készségkészlet-definíció alján lévő `knowledgeStore` mutatja be. 
-
-* A **post** vagy a **put** paranccsal alakítsa ki a kérést.
-* Használja a REST API `api-version=2019-05-06-Preview` verzióját a Knowledge Store funkcióinak eléréséhez. 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-A kérelem törzse egy JSON-dokumentum, amely meghatározza a `knowledgeStore`t tartalmazó készségkészlet.
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa  
-
-A következő JSON egy olyan `knowledgeStore`t határoz meg, amely egy [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)részét képezi, amelyet egy `indexer` hív meg (nem látható). Ha már ismeri a mesterséges intelligenciát, a készségkészlet határozza meg a dúsított dokumentumok összetételét. A készségkészlet tartalmaznia kell legalább egy képességet, amely valószínűleg egy formáló képesség, ha az adatstruktúrákat modulálja.
-
-A kérelem adattartalma strukturálása a következő:
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-A `knowledgeStore` két tulajdonsággal rendelkeznek: az Azure Storage-fiókhoz `storageConnectionString` és a fizikai tárterületet meghatározó `projections`. Használhat bármilyen Storage-fiókot, de költséghatékonyan használhatja a szolgáltatásokat ugyanabban a régióban.
-
-Egy `projections` gyűjtemény kivetítési objektumokat tartalmaz. Minden leképezési objektumnak rendelkeznie kell `tables`, `objects`, `files` (az egyik), amelyek vagy Null értékűek. A fenti szintaxis két objektumot mutat be, amelyek közül egy teljesen meg van adva, a másik pedig teljesen null. A kivetítési objektumon belül, ha a tárolóban van kifejezve, az adatkapcsolatok közötti kapcsolatok megmaradnak. 
-
-Hozzon létre annyi kivetítési objektumot, amennyire csak szüksége van az elkülönítés és az adott forgatókönyvek (például a feltáráshoz használt adatszerkezetek, illetve az adatelemzési számítási feladatokhoz szükséges adatok) támogatásához. Bizonyos forgatókönyvek elkülönítését és testreszabását úgy érheti el, ha `source` és `storageContainer` vagy `table` egy objektumon belüli különböző értékekre állítja be. További információért és példákért tekintse [meg a kivetítések használata a Tudásbázisban](knowledge-store-projection-overview.md)című témakört.
-
-|Tulajdonság      | A következőkre vonatkozik | Leírás|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | Kötelező. Ebben a formátumban: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | Kötelező. `tables`, `objects`, `files` és a hozzájuk tartozó tulajdonságokat tartalmazó tulajdonság-objektumok gyűjteménye. A fel nem használt kivetítések NULL értékre állíthatók be.|  
-|`source`| Összes vetület| A kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja. Ez a csomópont a készségkészlet egyik szaktudásának kimenete. Az elérési utak `/document/`kal kezdődnek, a dúsított dokumentumot jelképezve, de kiterjeszthetők `/document/content/`re vagy a dokumentum fáján belüli csomópontokra is. Példák: `/document/countries/*` (minden ország) vagy `/document/countries/*/states/*` (az összes állam az összes országban). A dokumentumok elérési útjaival kapcsolatos további információkért lásd: [készségkészlet-fogalmak és-összeállítás](cognitive-search-working-with-skillsets.md).|
-|`tableName`| `tables`| Az Azure Table Storage-ban létrehozandó tábla. |
-|`storageContainer`| `objects`, `files`| Az Azure Blob Storage-ban létrehozandó tároló neve. |
-|`generatedKeyName`| `tables`| A táblázatban létrehozott oszlop, amely egyedileg azonosít egy dokumentumot. A dúsítási folyamat a generált értékekkel tölti fel ezt az oszlopot.|
-
-
-### <a name="response"></a>Válasz  
-
- Sikeres kérés esetén a "201 created" állapotkódot kell megjelennie. Alapértelmezés szerint a válasz törzse a létrehozott készségkészlet-definíció JSON-fájlját fogja tartalmazni. Ne felejtse el, hogy a rendszer nem hozza létre a tudásbázist, amíg meg nem hívja a készségkészlet hivatkozó indexelő.
 
 ## <a name="next-steps"></a>Következő lépések
 

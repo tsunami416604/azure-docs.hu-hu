@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: c7354ecce9873cd65580dc2a9d79f9f3b8ac37db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966923"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987777"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966923"
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 1. Kattintson a [Létrehozás gombra **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Adja meg az összes szükséges beállítást a futásidejű kulcshoz:
+1. Adja meg az összes szükséges beállítást a **futásidejű** kulcshoz:
 
     |Beállítás|Value (Díj)|
     |--|--|
@@ -89,11 +89,11 @@ A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési kulcsával és végpontával.
+1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési **futtatókörnyezeti** kulccsal és végponttal.
 
     |Információ|Rendeltetés|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres előrejelzési kulcs.|
+    |`YOUR-KEY`|Az 32 karakteres előrejelzési **futtatókörnyezet** kulcsa.|
     |`YOUR-ENDPOINT`| Az előrejelzési URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Telepítse a `request`, `request-promise`és `querystring` függőségeket a következő paranccsal:

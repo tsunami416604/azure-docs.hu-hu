@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769101"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984846"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
 
@@ -27,7 +27,7 @@ Számítási példányt használhat a felhőben teljes mértékben konfigurált 
 A számítási példányokat általában fejlesztési környezetként használják.  A fejlesztéshez és a teszteléshez is használható számítási célként.  A nagyméretű feladatokhoz a többcsomópontos skálázási képességekkel rendelkező [Azure Machine learning számítási fürt](how-to-set-up-training-targets.md#amlcompute) jobb számítási célként szolgál.
 
 > [!NOTE]
-> A számítási példányok jelenleg csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületek számára érhetők el, és hamarosan további régiókat is támogatnak.
+> A számítási példányok jelenleg csak az **USA északi középső**régiójában, az **USA 2. keleti**régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található régióban érhetők el, és hamarosan más régiókat is támogatnak.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 ## <a name="why-use-a-compute-instance"></a>Miért érdemes számítási példányt használni?

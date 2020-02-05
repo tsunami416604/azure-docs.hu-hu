@@ -1,27 +1,33 @@
 ---
 title: Azure Service Fabric-szolgáltatás futtatása gMSA-fiókkal
-description: Megtudhatja, hogyan futtathat szolgáltatást gMSA egy Service Fabric Windows önálló fürtön.
+description: Megtudhatja, hogyan futtathat egy szolgáltatást csoportosan felügyelt szolgáltatásfiók (gMSA) használatával egy Service Fabric Windows önálló fürtön.
 author: dkkapur
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464257"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988396"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
-Egy Windows Server önálló fürtön futtathatja a szolgáltatást egy csoportosan felügyelt szolgáltatásfiók (gMSA) használatával futtató házirenddel.  Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. Az alkalmazások különböző fiókokban való futtatása, még egy megosztott környezetben is, biztonságosabbá teszi őket egymástól. Vegye figyelembe, hogy ez Active Directory a helyi tartományon belül, és nem Azure Active Directory (Azure AD). GMSA használatával nincs jelszó vagy titkosított jelszó az alkalmazás jegyzékfájljában.  A szolgáltatásokat [Active Directory felhasználóként vagy csoportként](service-fabric-run-service-as-ad-user-or-group.md)is futtathatja.
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy *SVC-test $* nevű gMSA-fiókot. a felügyelt szolgáltatásfiók üzembe helyezése a fürt csomópontjain; és az egyszerű felhasználónév konfigurálása.
+Egy Windows Server önálló fürtön futtathatja a szolgáltatást egy *csoportosan felügyelt szolgáltatásfiók* (gMSA) használatával *futtató házirenddel.*  Alapértelmezés szerint Service Fabric alkalmazások azon a fiókon futnak, amelyen a `Fabric.exe` folyamat fut. Az alkalmazások különböző fiókokban való futtatása, még egy megosztott környezetben is, biztonságosabbá teszi őket egymástól. GMSA használatával nincs jelszó vagy titkosított jelszó az alkalmazás jegyzékfájljában.  A szolgáltatásokat [Active Directory felhasználóként vagy csoportként](service-fabric-run-service-as-ad-user-or-group.md)is futtathatja.
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy *SVC-test $* nevű gMSA-fiókot, hogyan helyezheti üzembe a felügyelt szolgáltatásfiókot a fürtcsomópontok között, és hogyan konfigurálhatja a rendszerbiztonsági tag konfigurációját.
+
+> [!NOTE]
+> Ha önálló Service Fabric-fürttel rendelkező gMSA használ, a tartományon belül Active Directory kell lennie (nem Azure Active Directory (Azure AD)).
 
 Előfeltételek:
+
 - A tartománynak szüksége van egy KDS-gyökér kulcsra.
 - A tartományban legalább egy Windows Server 2012 (vagy R2) tartományvezérlőnek kell lennie.
 
-1. Active Directory tartományi rendszergazdával hozzon létre egy csoportosan felügyelt szolgáltatásfiókot a `New-ADServiceAccount` parancsmagot, és győződjön meg arról, hogy a `PrincipalsAllowedToRetrieveManagedPassword` tartalmazza az összes Service Fabric-fürtcsomópont csomópontot. a `AccountName`nak, `DnsHostName`nak és `ServicePrincipalName`nak egyedinek kell lennie.
+1. Active Directory tartományi rendszergazdának létre kell hoznia egy csoportosan felügyelt szolgáltatásfiókot a `New-ADServiceAccount` parancsmaggal, és gondoskodnia kell arról, hogy a `PrincipalsAllowedToRetrieveManagedPassword` tartalmazza az összes Service Fabric fürtcsomópont használatát. a `AccountName`nak, `DnsHostName`nak és `ServicePrincipalName`nak egyedinek kell lennie.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
@@ -35,7 +41,7 @@ Előfeltételek:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Konfigurálja az egyszerű felhasználónevet, és konfigurálja a RunAsPolicy a felhasználóra való hivatkozáshoz.
+3. Konfigurálja az egyszerű felhasználónevet, és konfigurálja a `RunAsPolicy` a [felhasználóra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)való hivatkozáshoz.
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -55,14 +61,14 @@ Előfeltételek:
     </ApplicationManifest>
     ```
 
-> [!NOTE] 
-> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
+> [!NOTE]
+> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md).
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Következő lépésként olvassa el a következő cikkeket:
-* [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
-* [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
-* [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
+A következő cikkek végigvezetik a következő lépéseken:
+
+- [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
+- [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
+- [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

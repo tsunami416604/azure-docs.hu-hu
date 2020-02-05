@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981598"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988464"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
 
@@ -119,8 +119,6 @@ Hozzon létre egy webhookot az újonnan létrehozott runbook elindításához.
 ## <a name="create-an-event-grid-subscription"></a>Event Grid-előfizetés létrehozása
 
 Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com)használatával.
-
-1.  Nyissa meg az [Azure portált](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
 
 1.  Nyissa meg a Key vaultot, és válassza az **események** lapot. Ha nem látja, ellenőrizze, hogy a [portál előzetes verzióját](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)használja-e.
 

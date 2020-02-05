@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899078"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989977"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -347,12 +347,13 @@ A mintavételből befoglalható vagy kizárható telemetria-típusok a következ
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Rögzített arányú mintavételezés konfigurálása a OpenCensus Python-alkalmazásokhoz
 
-1. Az alkalmazást a legújabb [OpenCensus Azure monitor-exportőrökkel](../../azure-monitor/app/opencensus-python.md)alakíthatja ki.
+Az alkalmazást a legújabb [OpenCensus Azure monitor-exportőrökkel](../../azure-monitor/app/opencensus-python.md)alakíthatja ki.
 
 > [!NOTE]
-> A rögzített arányú mintavételezés csak a trace exportőr használatával érhető el. Ez azt jelenti, hogy a bejövő és a kimenő kérelmek az egyetlen telemetria, ahol a mintavétel konfigurálható.
+> A metrikai exportőrök nem vehetik igénybe a rögzített arányú mintavételezést. Ez azt jelenti, hogy az egyéni metrikák az egyetlen olyan telemetria, ahol a mintavételezés nem konfigurálható. A metrikák exportőre a nyomon követett összes telemetria elküldi.
 
-2. Megadhat egy `sampler` elemet is a(z) `Tracer` konfigurációja részeként. Ha nincs megadva explicit sampler, a rendszer alapértelmezés szerint a `ProbabilitySampler` fogja használni. A `ProbabilitySampler` alapértelmezés szerint a 1/10000-as sebességet fogja használni, ami azt jelenti, hogy a 10000-kérelmek közül egyet nem küldi el a rendszer Application Insights. A továbbiakban megtudhatja, hogyan adhat meg mintavételezési frekvenciát.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Rögzített sebességű mintavételezés a nyomkövetéshez ####
+Megadhat egy `sampler` elemet is a(z) `Tracer` konfigurációja részeként. Ha nincs megadva explicit sampler, a rendszer alapértelmezés szerint a `ProbabilitySampler` fogja használni. A `ProbabilitySampler` alapértelmezés szerint a 1/10000-as sebességet fogja használni, ami azt jelenti, hogy a 10000-kérelmek közül egyet nem küldi el a rendszer Application Insights. A továbbiakban megtudhatja, hogyan adhat meg mintavételezési frekvenciát.
 
 A mintavételezési sebesség megadásához ellenőrizze, hogy a `Tracer` a 0,0 és 1,0 közötti mintavételi sebességgel rendelkező mintavevőt határoz meg. A 1,0-es mintavételi sebesség a 100%-ot jelöli, ami azt jelenti, hogy az összes kérést a rendszer telemetria fogja elküldeni Application Insights.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Rögzített arányú mintavételezés a naplókhoz ####
+A `logging_sampling_rate` nem kötelező argumentum módosításával konfigurálhatja a `AzureLogHandler` rögzített arányú mintavételezését. Ha nem ad meg argumentumot, a rendszer 1,0 mintavételezési sebességet fog használni. A 1,0-es mintavételi sebesség a 100%-ot jelöli, ami azt jelenti, hogy az összes kérést a rendszer telemetria fogja elküldeni Application Insights.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453975"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987662"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -39,9 +39,11 @@ Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben
 
 ![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Fizetési terv
+![Alkalmazás-oldal létrehozása a CSP számlázási adataihoz](media/howto-create-application-csp/image4-2.png)
 
-Az utólagos elszámolású alkalmazásokat csak CSP-ként lehet létrehozni. Ahhoz, hogy az Azure IoT Central bemutassa az ügyfélnek, külön próbaverziós alkalmazást hozhat létre. További információ az [Azure IoT Central díjszabási oldalán](https://azure.microsoft.com/pricing/details/iot-central/)elérhető próbaverziós és utólagos elszámolású alkalmazásokról.
+## <a name="pricing-plan"></a>Díjszabási csomag
+
+A standard díjszabási csomagot használó alkalmazásokat csak CSP-ként lehet létrehozni. Ahhoz, hogy az Azure IoT Central bemutassa az ügyfelet, létrehozhat egy alkalmazást, amely az ingyenes díjszabási csomagot külön használja. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat.
 
 ## <a name="application-name"></a>Alkalmazásnév
 
@@ -63,7 +65,7 @@ További információ: [Azure Active Directory](https://docs.microsoft.com/azure
 
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
-Az Azure-előfizetéssel Azure-szolgáltatások példányait hozhatja létre. Az Azure IoT Central automatikusan megkeresi az ügyfél összes olyan Azure-előfizetését, amelyhez hozzáférése van, és megjeleníti őket az **alkalmazás létrehozása** lap legördülő menüjében. Válasszon egy Azure-előfizetést új Azure IoT Central-alkalmazás létrehozásához.
+Az Azure-előfizetések lehetővé teszik az Azure-szolgáltatások példányainak létrehozását. Az Azure IoT Central automatikusan megkeresi az ügyfél összes olyan Azure-előfizetését, amelyhez hozzáférése van, és megjeleníti őket az **alkalmazás létrehozása** lap legördülő menüjében. Válasszon egy Azure-előfizetést új Azure IoT Central-alkalmazás létrehozásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet a Microsoft partner Centerben. Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 

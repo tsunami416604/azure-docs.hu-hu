@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957768"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987611"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -71,7 +71,7 @@ Minden oldalon megjelenik a felső menü:
 - Az eszközök sablonjainak és eszközeinek kereséséhez adjon meg egy **keresési** értéket.
 - A felhasználói felület nyelvének vagy témájának módosításához válassza a **Beállítások** ikont.
 - Az alkalmazásból való kijelentkezéshez válassza a **fiók** ikont.
-- Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. A próbaverziós alkalmazásokban a támogatási erőforrások közé tartozik az [élő csevegéshez](howto-show-hide-chat.md)való hozzáférés.
+- Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. Az ingyenes díjszabási csomag alkalmazásaiban a támogatási források az [élő csevegéshez](howto-show-hide-chat.md)is hozzáférést biztosítanak.
 
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 

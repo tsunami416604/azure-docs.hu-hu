@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327484"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989909"
 ---
 # <a name="animated-character-detection-preview"></a>Animált karakterfelismerés (előzetes verzió)
 
@@ -81,7 +81,7 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 1. Válassza a **kapcsolat Custom Vision fiók (előzetes verzió)** lehetőséget, majd kattintson a **kipróbálás**gombra.
 1. Töltse ki a kötelező mezőket, valamint a hozzáférési jogkivonatot, és kattintson a **Küldés**gombra. 
 
-    A Video Indexer hozzáférési token beszerzésével kapcsolatos további információkért látogasson el a [fejlesztői portálra](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?), és tekintse meg a [kapcsolódó dokumentációt](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
+    A Video Indexer hozzáférési token beszerzésével kapcsolatos további információkért látogasson el a [fejlesztői portálra](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?), és tekintse meg a [kapcsolódó dokumentációt](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
 1. Ha a hívás visszaadja a 200 OK választ, a fiókja csatlakoztatva van.
 1. A kapcsolódás ellenőrzéséhez keresse fel a [video Indexer](https://vi.microsoft.com/)) portált:
 1. Kattintson a **tartalmi modell testreszabása** gombra a jobb felső sarokban.

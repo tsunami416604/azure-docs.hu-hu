@@ -7,22 +7,22 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 96f5ecc0fb675835f129f40d83c592f42d222ce4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938334"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989491"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
 Az Azure Bastion szolgáltatás egy új, teljes körűen felügyelt, a virtuális hálózaton belül kiépített, teljesen platform által felügyelt Pásti szolgáltatás. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül a Azure Portal SSL-en keresztül. Az Azure Bastion használatával történő csatlakozásokhoz nincs szükség nyilvános IP-címekre.
 
- A Bastion biztonságos RDP-és SSH-kapcsolatot biztosít a virtuális hálózatban lévő összes virtuális géphez. Az Azure Bastion használatával megvédheti a virtuális gépeket, hogy az RDP/SSH-portokat kitegye a külvilágtól, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. Az Azure Bastion használatával közvetlenül a Azure Portal csatlakozhat a virtuális géphez. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre.
+A Bastion biztonságos RDP-és SSH-kapcsolatot biztosít annak a virtuális hálózatnak az összes virtuális géphez, amelyben kiépítve van. Az Azure Bastion használatával megvédheti a virtuális gépeket az RDP/SSH-portok a külvilág felé való kitéve, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. Az Azure Bastion használatával közvetlenül a Azure Portal csatlakozhat a virtuális géphez. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre.
 
 ## <a name="architecture"></a>Architektúra
 
-Az Azure Bastion üzembe helyezése a virtuális hálózaton történik, és a telepítés után a biztonságos RDP/SSH-élményt biztosít a virtuális hálózatban lévő összes virtuális géphez. Miután kiépített egy Azure-beli megerősített szolgáltatást a virtuális hálózatában, az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető. A központi telepítés virtuális hálózatonként, nem előfizetés/fiók vagy virtuális gép esetén történik.
+Az Azure Bastion üzembe helyezése virtuális hálózatonként történik, nem pedig előfizetés/fiók vagy virtuális gép esetében. Miután kiépített egy Azure-beli megerősített szolgáltatást a virtuális hálózatában, az RDP/SSH-élmény az azonos virtuális hálózatban lévő összes virtuális gép számára elérhető.
 
 Az RDP és az SSH egy olyan alapvető eszköz, amellyel az Azure-ban futó számítási feladatokhoz kapcsolódhat. Az RDP/SSH-portok az interneten keresztül nem kívánatosak, és jelentős veszélyforrásnak tekinthetők. Ez gyakran a protokollok biztonsági rései miatt fordul elő. Ennek a veszélyforrásnak a felszínének a megtalálása érdekében a peremhálózaton nyilvános oldalán a megerősített gazdagépeket (más néven ugrás-kiszolgálókat) is üzembe helyezheti. A megerősített gazdagép-kiszolgálók úgy lettek kialakítva és konfigurálva, hogy ellenálljanak a támadásoknak. A megerősített kiszolgálók RDP-és SSH-kapcsolatot is biztosítanak a megerősített munkaterhelésekhez, valamint a hálózaton belül.
 

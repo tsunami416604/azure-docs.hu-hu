@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981891"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990980"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
 
@@ -124,7 +124,7 @@ A kulcshoz való hozzáférés visszaállítását követően az adatbázis viss
 
 - Ha a kulcs-hozzáférés 8 órán belül helyreáll, az adatbázis a következő órában automatikusan meggyógyítható.
 
-- Ha a kulcs-hozzáférés 8 óránál hosszabb idő elteltével helyreáll, az automatikus gyógyulás nem lehetséges, és az adatbázis visszaállítása jelentős időt vehet igénybe az adatbázis méretétől függően, és egy támogatási jegyet kell megnyitnia. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig elvesznek. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
+- Ha a kulcshoz való hozzáférés 8 óránál hosszabb idő után helyreáll, az automatikus gyógyulás nem lehetséges, és az adatbázis visszaállítása további lépéseket igényel a portálon, és az adatbázis méretétől függően jelentős időt vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek**. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Véletlen TDE-védő hozzáférés visszavonása
 

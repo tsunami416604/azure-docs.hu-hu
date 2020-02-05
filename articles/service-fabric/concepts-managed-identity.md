@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934961"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986750"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az Azure-hoz készült felügyelt identitások számos kulcsfontosságú koncepc
 
 - **Egyszerű szolgáltatásnév** – egy Azure Active Directory objektum, amely egy adott bérlő HRE-alkalmazásának vetületét jelöli (az [egyszerű szolgáltatásnév](../active-directory/develop/developer-glossary.md#service-principal-object)is látható).
 
-A a felügyelt identitások két típusa:
+A felügyelt identitásoknak két típusa létezik:
 
 - Egy **rendszerhez rendelt felügyelt identitás** közvetlenül van engedélyezve egy Azure-beli szolgáltatási példányon.  A rendszerhez rendelt identitás életciklusa egyedi az Azure-beli szolgáltatás azon példányán, amelyen engedélyezve van.
 - A **felhasználó által hozzárendelt felügyelt identitás** különálló Azure-erőforrásként jön létre. Az identitás hozzárendelhető egy vagy több Azure-szolgáltatási példányhoz, és az adott példányok életciklusa külön felügyelhető.

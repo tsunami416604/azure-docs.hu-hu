@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028824"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990742"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -31,15 +31,15 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Letöltési formátum** | . OVA 
 **Letöltési hivatkozás** | https://aka.ms/migrate/appliance/vmware 
 **Letöltési méret** | 11,2 GB
-**Licenc** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
-**Üzembe helyezés** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.<br/><br/> A készülék egyetlen vCenter Serverhoz tud csatlakozni.
+**Engedély** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+**Üzembe helyezés** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és külső virtuális kapcsolóval.<br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A készülék egyetlen vCenter Serverhoz tud csatlakozni.
 **Hardver** | A vCenter erőforrásai a 32 GB-os RAM 8 vCPU, a 80 GB és egy külső virtuális kapcsoló használatával foglalják el a virtuális gépeket. 
 **Kivonat értéke** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter-kiszolgáló/-gazdagép** | A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.<br/><br/> vCenter Server fut 5,5, 6,0, 6,5 vagy 6,7.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
-**Felderítés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
+**Felfedezés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
 **Berendezés összetevői** | Felügyeleti alkalmazás: webalkalmazás a berendezésben felhasználói bevitelhez a telepítés során.<br/> Felderítési ügynök: a számítógép konfigurációs adatainak összegyűjtése.<br/> Assessment Agent: teljesítményadatokat gyűjt.<br/> DRA: a virtuális gépek replikálását és a számítógépek/Azure közötti kommunikáció koordinálását koordinálja.<br/> Átjáró: replikált adatokat küld az Azure-nak.<br/> Automatikus frissítési szolgáltatás: összetevők frissítése (24 óránként fut).
-**VDDK (ügynök nélküli áttelepítés)** | Ha ügynök nélküli áttelepítést futtat Azure Migrate kiszolgáló áttelepítésével, az VMware vSphere VDDK telepítve kell lennie a berendezés virtuális gépén).
+**VDDK (ügynök nélküli áttelepítés)** | Ha ügynök nélküli áttelepítést futtat Azure Migrate kiszolgáló áttelepítésével, az VMware vSphere VDDK telepítve kell lennie a készülék virtuális gépén.
 
 
 ## <a name="appliance---hyper-v"></a>Készülék – Hyper-V
@@ -49,13 +49,13 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Letöltési formátum** | Tömörített mappa (VHD-vel)
 **Letöltési hivatkozás** | https://aka.ms/migrate/appliance/hyperv 
 **Letöltési méret** | 10 GB
-**Licenc** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+**Engedély** | A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **Berendezések üzembe helyezése**   |  A berendezést Hyper-V virtuális gépként kell üzembe helyezni.<br/> Az Azure Migrate által biztosított Appliance VM a Hyper-V VM 5,0-es verziója.<br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia.<br/> A gazdagépnek elegendő helyet kell biztosítania 16 GB RAM, 8 vCPU, körülbelül 80 GB tárterület és egy külső kapcsoló lefoglalásához a készülék virtuális gépe számára.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
 **Hardver** | A Hyper-V-gazdagépen található erőforrások 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglalnak le a készülék virtuális géphez.
 **Kivonat értéke** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V gazdagép** | Windows Server 2012 R2 vagy újabb operációs rendszer fut.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
-**Felderítés** | A készülékek akár 5000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
+**Felfedezés** | A készülékek akár 5000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **Berendezés összetevői** | Felügyeleti alkalmazás: webalkalmazás a berendezésben felhasználói bevitelhez a telepítés során.<br/> Felderítési ügynök: a számítógép konfigurációs adatainak összegyűjtése.<br/> Assessment Agent: teljesítményadatokat gyűjt.<br/>  Automatikus frissítési szolgáltatás: összetevők frissítése (24 óránként fut).
 
 
@@ -66,14 +66,12 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Letöltési formátum** | Tömörített mappa (PowerShell-telepítő parancsfájllal)
 **Letöltési hivatkozás** | [Letöltési hivatkozás](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Letöltési méret** | 59,7 MB
-**Hardver** | Dedikált fizikai számítógép vagy virtuális gép. A készüléket futtató gépnek 16 GB RAM-mal, 8 vCPU, körülbelül 80 GB tárhellyel és külső kapcsolóval kell rendelkeznie.<br/><br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
-**Kivonat értéke** | MD5:96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+**Hardver** | Dedikált fizikai számítógép vagy virtuális gép. A készüléket futtató gépnek 16 GB RAM-mal, 8 vCPU, körülbelül 80 GB tárhellyel és külső kapcsolóval kell rendelkeznie.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
+**Kivonat értéke** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 **Szoftver** | A készülék számítógépének a Windows Server 2016-et kell futtatnia. 
 **Berendezések üzembe helyezése**   |  A készülék telepítőjének parancsfájlját a rendszer letölti a portálról (tömörített mappában). <br/> Bontsa ki a mappát, és futtassa a PowerShell-szkriptet (AzureMigrateInstaller. ps1).
-**Felderítés** | A berendezések akár 250 fizikai kiszolgálót is felfedezhetnek.
+**Felfedezés** | A berendezések akár 250 fizikai kiszolgálót is felfedezhetnek.
 **Berendezés összetevői** | Felügyeleti alkalmazás: webalkalmazás a berendezésben felhasználói bevitelhez a telepítés során.<br/> Felderítési ügynök: a számítógép konfigurációs adatainak összegyűjtése.<br/> Assessment Agent: teljesítményadatokat gyűjt.<br/>  Automatikus frissítési szolgáltatás: összetevők frissítése (24 óránként fut).
-**Port-hozzáférés** | Miután konfigurálta a készüléket, a 3389-as TCP-porton bejövő kapcsolatok használatával engedélyezheti a távoli asztali kapcsolatokat a készülékhez.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez a következő URL-címen keresztül: "https://< Appliance-IP-vagy-Name >: 44368.<br/><br/> A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
-
 
 
 ## <a name="url-access"></a>URL-hozzáférés
@@ -85,17 +83,17 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 
 **URL-cím** | **Részletek**  
 --- | --- |
-*.portal.azure.com  | Lépjen az Azure Portalra.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésbe.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat, hogy a készülék kommunikáljon a Azure Migrateokkal.
+*.portal.azure.com  | Navigáljon a Azure Portal.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésbe.
+*.microsoftonline.com <br/> *. microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat, hogy a készülék kommunikáljon a Azure Migrateokkal.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.
 aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz. Azure Migrate berendezés frissítéseihez használatos.
 download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltéséről.
-*.servicebus.windows.net | A VMware ügynök nélküli áttelepítéshez használatos.<br/><br/> A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | A VMware ügynök nélküli áttelepítéshez használatos.<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*.blob.core.windows.net |  A VMware ügynök nélküli áttelepítéshez használatos.<br/><br/>Adatok feltöltése a tárolóba.
+*.servicebus.windows.net | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
+*.blob.core.windows.net |  **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/>Adatok feltöltése a tárolóba.
 
 
 
@@ -128,7 +126,7 @@ Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM
 **Adatok** | **Számláló**
 --- | --- 
 **Gép részletei** | 
-A virtuális gép azonosítója | VM. Config. értékű 
+VIRTUÁLIS GÉP AZONOSÍTÓJA | VM. Config. értékű 
 a virtuális gép neve | VM. Config.Name
 vCenter Server azonosítója | VMwareClient. instance. UUID
 Virtuális gép leírása | VM. Summary. config. Megjegyzés
@@ -154,13 +152,13 @@ Olvasási sebesség (MB/s) | virtualDisk. Read. Average
 Írási sebesség (MB/s) | virtualDisk. Write. Average
 **Hálózati adapter adatai** | 
 Hálózati adapter neve | hálózati. Kulcs
-MAC-cím | ((VirtualEthernetCard) NIC). MacAddress
+MAC-címe | ((VirtualEthernetCard) NIC). MacAddress
 IPv4-címek | VM. Guest.Net
 IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Név | tároló. GetType (). név
+Name (Név) | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent

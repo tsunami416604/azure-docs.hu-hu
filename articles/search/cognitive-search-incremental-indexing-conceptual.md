@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028511"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988651"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Bevezetés a növekményes bővítés és a gyorsítótárazás az Azure-ban Cognitive Search
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet módosít, amelyet az indexelő nem érzékel (például egy másikat a külső kódban, például egy egyéni képességet).
 
-Ebben az esetben a [képességek alaphelyzetbe állításával](preview-api-resetskills.md) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
+Ebben az esetben a [képességek alaphelyzetbe állításával](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
 
 ## <a name="change-detection"></a>Változás észlelése
 
@@ -109,7 +109,7 @@ Az érvénytelenítési változás egy olyan esetben, amikor a teljes gyorsító
 
 * Váltás az adatforrás típusára
 * Váltás az adatforrás-tárolóra
-* Adatforráshoz tartozó hitelesítő adatok
+* Adatforrás hitelesítő adatai
 * Adatforrás-változás észlelési házirendje
 * Adatforrások törlésének észlelési szabályzata
 * Indexelő mező-hozzárendelések
@@ -136,39 +136,27 @@ A növekményes feldolgozás kiértékeli a készségkészlet-definícióját, �
 * A Knowledge Store-kivetítések módosításai, a dokumentumok újravetítésének eredményei
 * A kimeneti mezők leképezése módosult egy indexelő esetében, így a dokumentumok újravetítése az indexbe
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>API-referenciák a növekményes dúsításhoz
+## <a name="api-reference"></a>API-leírások
 
-A REST `api-version=2019-05-06-Preview` lehetővé teszi az API-k növekményes bővítését, az indexelő, a szakértelmével és az adatforrások hozzáadásával. A [hivatalos dokumentáció](https://docs.microsoft.com/rest/api/searchservice/) az általánosan elérhető API-kra vonatkozik, és nem tartalmazza az előzetes verzió funkcióit. A következő szakasz az érintett API-k hivatkozási tartalmát tartalmazza.
+A REST API verzió `2019-05-06-Preview` az indexelő, a szakértelmével és az adatforrások további tulajdonságai révén növekményes dúsítást biztosít. A dokumentáción kívül az API-k meghívásával kapcsolatos részletekért lásd: a [gyorsítótárazás konfigurálása a növekményes](search-howto-incremental-index.md) bővítéshez.
 
-A használati adatokat és példákat a [gyorsítótárazás konfigurálása a növekményes](search-howto-incremental-index.md)bővítéshez című részben találja.
++ [Indexelő létrehozása (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>Indexelők
++ [Indexer frissítése (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-Az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer) és az [Indexelő](https://docs.microsoft.com/rest/api/searchservice/update-indexer) mostantól elérhetővé teszi a gyorsítótárral kapcsolatos új tulajdonságokat:
++ [Készségkészlet frissítése (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (új URI-paraméter a kérésen)
 
-+ `StorageAccountConnectionString`: a köztes eredmények gyorsítótárazásához használt Storage-fiókhoz tartozó kapcsolódási karakterlánc.
++ [Képességek alaphelyzetbe állítása (API-Version = 2019-05 -06 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`: alapértelmezés szerint `true`re van állítva, ha a `false`értékre van állítva, a dokumentumok továbbra is a gyorsítótárba lesznek írva, de a gyorsítótár-beállítások alapján a rendszer nem dolgozza fel újra a meglévő dokumentumokat.
++ Adatbázis-indexelő (Azure SQL, Cosmos DB). Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat a kérések **ignoreResetRequirement**, amelyet `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat. 
 
-+ `ID` (csak olvasható): a `ID` a `annotationCache` Storage-fiókban lévő tároló azonosítója, amelyet a rendszer gyorsítótárként fog használni az indexelő számára. Ez a gyorsítótár egyedi lesz az indexelő számára, és ha az indexelő törölve lett, és ugyanazzal a névvel lett létrehozva, akkor a `ID` újból létrejön. A `ID` nem állítható be, mindig a szolgáltatás hozza létre.
-
-### <a name="skillsets"></a>Készségek
-
-+ A [Készségkészlet frissítése](https://docs.microsoft.com/rest/api/searchservice/update-skillset) a kérelemben szereplő új paramétert támogatja: `disableCacheReprocessingChangeDetection`, amelyet `true` kell beállítani, ha a jelenlegi művelet alapján nem kívánja frissíteni a meglévő dokumentumokat.
-
-+ A [képességek alaphelyzetbe állítása](preview-api-resetskills.md) egy új művelet, amellyel érvényteleníthető egy készségkészlet.
-
-### <a name="datasources"></a>Adatforrások
-
-+ Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat egy kérés `ignoreResetRequirement`ján, amelyet `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat.
-
-Az `ignoreResetRequirement`t takarékosan használhatja, mivel az olyan nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
+  A **ignoreResetRequirement** takarékosan használható, mert nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A növekményes bővítés egy hatékony szolgáltatás, amely kibővíti a változások követését a szakértelmével és a mesterséges intelligenciával. A szakértelmével fejlődése során a növekményes gazdagodás biztosítja a lehető legkisebb munkát, miközben továbbra is a dokumentumokat a végleges konzisztencia érdekében hajtja végre.
+A növekményes bővítés egy hatékony szolgáltatás, amely kibővíti a változások követését a szakértelmével és a mesterséges intelligenciával. A AIncremental-bővítés lehetővé teszi a meglévő feldolgozott tartalom újbóli használatát a készségkészlet-kialakítás megismétlése során.
 
-Első lépésként adjon hozzá egy meglévő indexelő gyorsítótárat, vagy adja hozzá a gyorsítótárat egy új indexelő definiálásához.
+A következő lépésként engedélyezze a gyorsítótárazást egy meglévő indexelő esetében, vagy adjon hozzá egy gyorsítótárat egy új indexelő definiálásához.
 
 > [!div class="nextstepaction"]
 > [A növekményes dúsítás gyorsítótárazásának konfigurálása](search-howto-incremental-index.md)

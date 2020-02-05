@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911055"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988566"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
 
-Ebből a cikkből megtudhatja, hogyan használhatja a sokszög kihúzási rétegét `Polygon` és `MultiPolygon` szolgáltatásbeli geometriák megjelenítésére a Térkép kihúzott alakzataiként. A Azure Maps web SDK támogatja a kör alakú geometriák létrehozását is a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)definiált módon. Ezeket a köröket a rendszer sokszögekre alakítja át a térképen való megjelenítéskor. Az Atlas használatával az összes funkció geometriája is könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztálya
-
+Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteget a `Polygon` és a `MultiPolygon` szolgáltatásbeli geometriák kihúzott alakzatként való megjelenítéséhez. A Azure Maps web SDK támogatja a kör geometriáinak megjelenítését a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)meghatározottak szerint. Ezek a körök a térképen való megjelenítéskor sokszögekre alakíthatók. Az Atlas becsomagolásakor az összes funkció geometriája könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztálya
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Sokszög kihúzási rétegének használata
 
-Ha egy [sokszög-kihúzási réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) csatlakozik az adatforráshoz, és betöltődik a térképre, akkor a `Polygon` és `MultiPolygon` funkciók területét kihúzott alakzatként jeleníti meg. A sokszög kihúzási rétegének `height` és `base` tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozhat létre egy sokszöget, hogyan adhat hozzá egy adatforráshoz, és hogyan jelenítheti meg a sokszög kihúzási réteg osztályának használatával.
+A [sokszög kihúzási rétegének](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege lenyomott alakzatként jeleníti meg egy `Polygon` és `MultiPolygon` szolgáltatás területeit. A sokszög kihúzási rétegének `height` és `base` tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
 
 > [!Note]
 > A sokszög-kihúzási rétegben definiált `base` érték nem lehet kisebb, mint a `height`.
@@ -34,9 +33,9 @@ Ha egy [sokszög-kihúzási réteg](https://docs.microsoft.com/javascript/api/az
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>extrudált sokszögét</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Adatvezérelt többsokszögű tárolók hozzáadása
+## <a name="add-data-driven-polygons"></a>Adatvezérelt sokszögek hozzáadása
 
-A choropleth-leképezés a sokszög-kihúzási réteg használatával jeleníthető meg, ha a `height` és a `fillColor` tulajdonságokat a `Polygon` és `MultiPolygon` szolgáltatás geometriájában lévő statisztikai változó mértékének megfelelően állítja be. A következő mintakód egy extrudált choropleth-Térképet mutat be az U. S alapján, amely a populáció sűrűségének az állapot szerinti mérésén alapul.
+A choropleth-leképezések a sokszög kihúzási réteg használatával állíthatók be. Állítsa be a kihúzási réteg `height` és `fillColor` tulajdonságait a `Polygon` és `MultiPolygon` szolgáltatás geometriájában található statisztikai változó mértékére. A következő mintakód egy extrudált choropleth-Térképet mutat be az U. S alapján, amely a populáció sűrűségének az állapot szerinti mérésén alapul.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [i
 } 
 ```
 
-A Azure Maps web SDK ezeket a `Point` funkciókat a motorháztető alatt lévő `Polygon` funkciókra konvertálja, és a térképen a sokszög kihúzási rétegének használatával jeleníthető meg, ahogy az alábbi mintakód is mutatja.
+A Azure Maps web SDK ezeket a `Point` funkciókat a motorháztető alatti `Polygon` funkciókra konvertálja. Ezek a `Point` funkciók a térképen a sokszög-kihúzási réteg használatával jeleníthetők meg, ahogy az alábbi mintakód is mutatja.
 
 <br/>
 
@@ -72,7 +71,7 @@ A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codep
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>Sokszög kihúzási rétegének testreszabása
 
-A sokszög kihúzási rétege több stílust is megadhat. Itt látható egy eszköz, amellyel kipróbálhatja őket.
+A sokszög kihúzási rétegének számos stílusa van. Itt látható egy eszköz, amellyel kipróbálhatja őket.
 
 <br/>
 

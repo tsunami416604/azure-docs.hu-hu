@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833895"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013647"
 ---
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
+- A következő virtuálisgép-sorozatok támogatottak: DSv3, ESv3 és Fsv2. 
 
 ## <a name="benefits"></a>Előnyök 
 
@@ -73,7 +73,7 @@ A virtuális gépeket támogató infrastruktúra esetenként frissíthető a meg
 A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyhatják a dedikált gazdagépeken ütemezett rendszeres szoftverfrissítéseket, majd egy 35 napos időszakon belül alkalmazza azt a választásuk időpontjában.
 
 > [!NOTE]
->  A karbantartási szabályozás jelenleg korlátozott előzetes verzióban érhető el, és bevezetési folyamatra van szükség. Az előzetes verzióra vonatkozó [nevezési kérdőív](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)beküldésével érvényes.
+>  A karbantartási vezérlő jelenleg nyilvános előzetes verzióban érhető el. További információ: **frissítések kezelése a karbantartási vezérléssel a [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) vagy a [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)használatával**.
 
 ## <a name="capacity-considerations"></a>Kapacitással kapcsolatos megfontolások
 

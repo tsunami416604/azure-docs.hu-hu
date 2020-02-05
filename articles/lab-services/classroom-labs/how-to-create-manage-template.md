@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584869"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989042"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tantermi sablon létrehozása és kezelése Azure Lab Services
 A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezután közzéteszi a sablont, hogy a sablonban lévő virtuális gép példányai elérhetővé tegyék a tesztkörnyezet felhasználói számára. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -39,17 +39,15 @@ A következő lépésekkel állíthatja be a címet és a leírást az első alk
 ## <a name="update-a-template-vm"></a>Sablonos virtuális gép frissítése
 A sablon virtuális gép frissítéséhez kövesse az alábbi lépéseket.  
 
-1. A **sablon** lapon válassza a **sablon testreszabása** lehetőséget az eszköztáron. 
-2. A **sablon testreszabása** párbeszédpanelen válassza a **Folytatás**lehetőséget. A sablon elindítása és a módosítások elvégzése után már nem lesz ugyanaz a beállítás, mint a virtuális gépek a felhasználók számára legutóbb közzétéve. A sablon módosításait a rendszer addig nem jeleníti meg a felhasználók meglévő virtuális gépein, amíg újra nem teszi közzé.
-
-    ![Testreszabás párbeszédpanel](../media/how-to-create-manage-template/customize-template-dialog.png)
 1. Várjon, amíg a sablon virtuális gépe elindult, majd válassza a **Kapcsolódás sablonhoz** lehetőséget az eszköztáron a sablon virtuális géphez való kapcsolódáshoz, és kövesse az utasításokat. Ha ez egy Windows rendszerű gép, megjelenik egy lehetőség az RDP-fájl letöltéséhez. 
+1. Miután kapcsolódott a sablonhoz, és módosításokat hajt végre, a továbbiakban nem lesz ugyanazzal a beállítással, mint a virtuális gépek a felhasználók számára utoljára közzétéve. A sablon módosításait a rendszer addig nem jeleníti meg a felhasználók meglévő virtuális gépein, amíg újra nem teszi közzé.
 
     ![Csatlakozás a virtuálisgép-sablonhoz](../media/how-to-create-manage-template/connect-template-vm.png)
+    
 1. Telepítse a diákok számára a tesztkörnyezet használatához szükséges szoftvereket (például Visual Studio, Azure Storage Explorer stb). 
-2. Szakítsa meg a kapcsolatot a virtuálisgép-sablonnal (zárja be a távoli asztali munkamenetet). 
-3. **Állítsa le** a sablon virtuális gépet a **sablon leállítása**lehetőség kiválasztásával. 
-4. Kövesse a következő szakaszban leírt lépéseket a sablon frissített virtuális gépe **közzétételéhez** . 
+1. Szakítsa meg a kapcsolatot a virtuálisgép-sablonnal (zárja be a távoli asztali munkamenetet). 
+1. **Állítsa le** a sablon virtuális gépet a **sablon leállítása**lehetőség kiválasztásával. 
+1. Kövesse a következő szakaszban leírt lépéseket a sablon frissített virtuális gépe **közzétételéhez** . 
 
 ## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele  
 Ha nem teszi közzé a sablont a labor létrehozása során, akkor később közzéteheti. A közzététel előtt érdemes lehet csatlakozni a sablonhoz a virtuális géphez, és frissíteni azt bármilyen szoftverrel. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. Az ebben a folyamatban létrehozott virtuális gépek száma az első közzétételekor vagy a virtuálisgép-készlet lapon megadott számú virtuális gép száma. A virtuális gépek konfigurációja megegyezik a sablonéval. 
@@ -61,7 +59,7 @@ Ha nem teszi közzé a sablont a labor létrehozása során, akkor később köz
 
     > [!IMPORTANT]
     > Miután a sablon közzé lett téve, a közzétételt nem lehet visszavonni. A sablon ismételt közzétételét azonban megteheti. 
-4. A közzétételi folyamat állapotát a sablon lapon tekintheti meg. Várjon, amíg a sablon állapota **közzétettre**változik. 
+1. A közzétételi folyamat állapotát a sablon lapon tekintheti meg. Várjon, amíg a sablon állapota **közzétettre**változik. 
 
     ![Közzététel állapota](../media/how-to-create-manage-template/publish-status.png)
 1. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy vannak-e ott **Nem hozzárendelt** állapotú virtuális gépek. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. Várja meg, amíg befejeződik a virtuális gépek létrehozása. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. Elindíthatja őket ezen az oldalon, vagy engedélyezheti a diákoknak a virtuális gépek indítását. 
@@ -69,7 +67,7 @@ Ha nem teszi közzé a sablont a labor létrehozása során, akkor később köz
     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

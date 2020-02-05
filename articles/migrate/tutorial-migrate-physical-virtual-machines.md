@@ -1,27 +1,23 @@
 ---
-title: Helyszíni fizikai gépek vagy virtualizált gépek migrálása az Azure-ba Azure Migrate Server Migration használatával | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan telepíthet át helyszíni fizikai gépeket vagy virtualizált gépeket az Azure-ba Azure Migrate Server áttelepítéssel.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Telepítse át a gépeket fizikai kiszolgálóként az Azure-ba Azure Migrate használatával.
+description: Ez a cikk bemutatja, hogyan telepíthet át fizikai gépeket az Azure-ba Azure Migrate használatával.
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028801"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989756"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fizikai vagy virtualizált kiszolgálók migrálása az Azure-ba 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
-Ez a cikk bemutatja, hogyan telepíthet át fizikai vagy virtualizált kiszolgálókat az Azure-ba. Az Azure Migrate Server áttelepítési eszköz a fizikai és virtualizált kiszolgálók áttelepítését is biztosítja az ügynök-alapú replikáció használatával. Az eszköz használatával számos gépet telepíthet át az Azure-ba:
+Ez a cikk bemutatja, hogyan telepítheti át a gépeket fizikai kiszolgálóként az Azure-ba a Azure Migrate: Server áttelepítési eszköz használatával. A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos esetben hasznos:
 
 - Telepítse át a helyszíni fizikai kiszolgálókat.
 - Virtuális gépek migrálása virtualizált platformokkal, például Xen, KVM.
-- Telepítse át a Hyper-V-t vagy a VMware virtuális gépeket. Ez akkor hasznos, ha valamilyen okból nem tudja használni a szabványos áttelepítési folyamatot, amely Azure Migrate kiszolgáló áttelepítési ajánlatait a [Hyper-V](tutorial-migrate-hyper-v.md)-hez, a [VMware ügynök](tutorial-migrate-vmware.md) nélküli áttelepítéshez vagy a [VMware-ügynökön alapuló](tutorial-migrate-vmware-agent.md) áttelepítéshez.
+- A Hyper-V-vagy VMware-alapú virtuális gépek áttelepítése, ha valamilyen okból kifolyólag nem tudja használni a [Hyper-v](tutorial-migrate-hyper-v.md)normál áttelepítési folyamatát vagy a [VMware](server-migrate-overview.md) -áttelepítést.
 - Privát felhőben futó virtuális gépek áttelepítésére.
 - Nyilvános felhőkben (például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP) futó virtuális gépek áttelepítésére.
 
@@ -175,7 +171,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Töl
 
 ### <a name="download-the-replication-appliance-installer"></a>A replikációs berendezés telepítőjének letöltése
 
-1. A Azure Migrate projekt > **kiszolgálók**elemnél, a ***Azure Migrate: kiszolgáló áttelepítése**területen kattintson a **felderítés**elemre.
+1. A Azure Migrate projekt > **kiszolgálók** **Azure Migrate: kiszolgáló áttelepítése**területen kattintson a **felderítés**elemre.
 
     ![Virtuális gépek felderítése](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -266,8 +262,7 @@ Most válassza ki a gépeket az áttelepítéshez.
 
 2. A **replikálás**során > a **forrás beállításai** > **a gépek virtualizálva?** , válassza a **nem virtualizált/egyéb**lehetőséget.
 3. A helyszíni **készülék**területen válassza ki a beállított Azure Migrate berendezés nevét.
-4. A **vCenter-kiszolgáló**lapon adja meg a virtuális gépeket kezelő vCenter-kiszolgáló nevét, vagy azt a vSphere-kiszolgálót, amelyen a virtuális gépek futnak.
-5. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
+4. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
 6. A **vendég hitelesítő adataiban**meg kell adnia egy virtuálisgép-rendszergazdai fiókot, amelyet a mobilitási szolgáltatás leküldéses telepítéséhez fog használni. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást, így bármilyen dummy-fiókot hozzáadhat. Ezután kattintson a **Tovább gombra: Virtual Machines**.
 
     ![Virtuális gépek replikálása](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

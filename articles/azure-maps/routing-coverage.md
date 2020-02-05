@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910616"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988940"
 ---
 # <a name="azure-maps-routing-coverage"></a>Útválasztási lefedettség Azure Maps
 
-Ez a cikk a Azure Maps útválasztásának lefedettségi információit tartalmazza. Ha az A helyről a B helyre keres optimális útvonalat, Azure Maps a pontos utazási idő, az élő frissített utazási információk és az útvonal-utasítások megadását is lehetővé teszi. Az útvonal figyelembe veszi a további keresési kifejezéseket, például a jelenlegi forgalmat, a jármű típusát és a kerülendő feltételeket. Az útvonal optimalizálásának lehetősége a régiótól függ, mivel Azure Maps különböző szintű információkkal és pontossággal rendelkezik a különböző régiókban. A következő táblázat felsorolja a régiókat és a rájuk vonatkozó információkat.
+Ez a cikk a Azure Maps útválasztásának lefedettségi információit tartalmazza. Keresési lekérdezés esetén a Azure Maps egy optimális útvonalat ad vissza az A helyről a B helyre. A pontos utazási idő, az utazási információk élő frissítései és az útvonalra vonatkozó utasítások is elérhetők. További keresési paramétereket is hozzáadhat, például az aktuális forgalmat, a jármű típusát és a kerülendő feltételeket. Az útvonal optimalizálása a régiótól függ. Ennek oka, hogy Azure Maps különböző szintű információkkal és pontossággal rendelkezik a különböző régiókban. A következő táblázat felsorolja a régiókat és a rájuk vonatkozó információkat.
  
 Tekintse meg a [**helymeghatározáshoz**](geocoding-coverage.md)lefedettségét.       
 Tekintse meg a [**forgalom**](traffic-coverage.md)lefedettségét.  
@@ -69,7 +69,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Nigéria                        |        ✓       |         ✓            |             |
 | Ruanda                         |        ✓       |                       |             |
 | Szenegál                        |        ✓       |                       |             |
-| Seychelle-szigetek                     |        ✓       |                       |             |
+| Seychelle                     |        ✓       |                       |             |
 | Dél-Afrika                   |        ✓       ||         ✓            |             |
 | Szváziföld                      |        ✓       |                       |             |
 | Tanzánia                       |        ✓       |                       |             |
@@ -135,13 +135,13 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Kambodzsa                       |        ✓       |                      |             |
 | Fidzsi                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hongkong KKT                  |        ✓       |         ✓            |             |
+| Hongkong (KKT)                  |        ✓       |         ✓            |             |
 | India                          |        ✓       |         ✓            |             |
 | Indonézia                      |        ✓       |         ✓            |             |
 | Kazahsztán                |        ✓       |                     |             |
 | Dél-Korea                          |        Ø       |                      |             |
 | Laosz                           |        ✓       |                      |             |
-| Makaó (KKT)                      |        ✓       |         ✓            |             |
+| Makaó KKT                      |        ✓       |         ✓            |             |
 | Malajzia                       |        ✓       |         ✓            |             |
 | Mianmar                        |        ✓       |                      |             |
 | Új-Zéland                    |        ✓       |         ✓            |     ✓       | 
@@ -223,7 +223,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | \+ Gibraltár                     |        ✓       |         ✓            |             | 
 | \+ Montserrat                    |        ✓       |                      |             |
 | \+ Turks-és Caicos-szigetek      |        ✓       |                      |             |
-| Vatikán                   |        ✓       |         ✓            |             |
+| Vatikáni Városállam                   |        ✓       |         ✓            |             |
 | Man-sziget                    |        ✓       |                      |             |
 
 

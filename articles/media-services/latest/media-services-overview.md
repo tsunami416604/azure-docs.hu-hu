@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186061"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987713"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 – áttekintés
 
@@ -32,6 +32,14 @@ A Media Services v3 SDK [-k Media Services v3 OpenAPI-specifikáción (henceg)](
 
 > [!NOTE]
 > Jelenleg nem használhatja a Azure Portalt a v3-erőforrások kezeléséhez. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
+
+## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
+ 
+Fontos megjegyezni, hogy meg kell felelnie az összes vonatkozó törvénynek, a Azure Media Services használata során, és Ön nem használhatja Azure Media Services vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy ártalmas lehet másoknak. 
+
+A videók/képek, beleértve a biometrikus adatokat, a feldolgozáshoz és a tároláshoz Media Services való feltöltés előtt (1) minden megfelelő jogosultsággal kell rendelkeznie a videókhoz/lemezképekhez; a (z) és (2) a videókban található azon személy (ek) nek megfelelő hozzájárulásokat tartalmaz, amelyek lehetővé teszik a biometrikus adatok használatát és tárolását Media Servicesban. 
+
+A megfelelőségről, az adatvédelemről és arról, hogy a Microsoft Hogyan védi és biztosítja az adatait Azure Media Servicesban, látogasson el az Azure adatvédelmi [központba](https://www.microsoft.com/trust-center/?rtc=1). A Microsoft adatvédelmi kötelezettségeivel és az adatok kezelésével kapcsolatban tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). A felhasználói adatok megőrzésére és törlésére vonatkozó információk a DPA-ban érhetők el. Azure Media Services használatával Ön vállalja, hogy az OST, a DPA és az adatvédelmi nyilatkozat köti.
 
 ## <a name="what-can-i-do-with-media-services"></a>Mire használhatom a Media Services szolgáltatást?
 
@@ -76,7 +84,7 @@ Az oktatóanyagok a leggyakoribb Media Services feladatokhoz tartozó forgatók�
 * [A videó elemzése – .NET](analyze-videos-tutorial-with-api.md)
 * [AES-128 dinamikus titkosítás – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Példák
+### <a name="samples"></a>Minták
 
 Használja [ezt a minta böngészőt](https://docs.microsoft.com/samples/browse/?products=azure-media-services) Azure Media Services kódok tallózásához.
 
@@ -95,7 +103,7 @@ A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a fela
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók az alapvető fogalmakról](concepts-overview.md)
 

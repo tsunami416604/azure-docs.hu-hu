@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466499"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013947"
 ---
 ## <a name="what-is-table-storage"></a>A Table Storage ismertetése
 Az Azure Table Storage nagy mennyiségű strukturált adat tárolására alkalmas. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőből és azon kívülről érkező hitelesített hívásokat fogadja. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. A Table Storage gyakori használati módjai:
@@ -31,7 +31,7 @@ A Table Storage a következő összetevőkből áll:
   Az Azure Cosmos DB Table API-fiókok formátuma a következő: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Az Azure-táblákat közvetlenül is elérheti, ha a fenti címet használja az OData protokollal. További információ: [OData.org][OData.org].
-* **Fiókok:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. További információ a Storage-fiókokról: [Storage-fiók áttekintése] [.. /articles/storage/common/storage-account-overview.md].
+* **Fiókok:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A Storage-fiókokkal kapcsolatos további információkért lásd: a [Storage-fiók áttekintése](../articles/storage/common/storage-account-overview.md).
 
     Minden Azure Cosmos DB-hozzáférés Table API-fiókon keresztül valósítható meg. A Table API-fiókok létrehozásával kapcsolatos információkért lásd a [Table API-fiók létrehozását](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account) ismertető témakört.
 * **Tábla:** A tábla az entitások gyűjteményét tartalmazza. A táblák nem kényszerítenek sémát az entitásokra, ami azt jelenti, hogy egyetlen tábla különböző tulajdonságkészletekkel rendelkező entitásokat is tartalmazhat.  

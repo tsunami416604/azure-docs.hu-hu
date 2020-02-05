@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027443"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986424"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
 
@@ -36,14 +36,15 @@ Navigáljon az [Azure IoT Central Application Manager webhelyére](https://apps.
 
 A **create app (alkalmazás létrehozása** ) gombra kattintva megkezdheti az alkalmazás létrehozását, majd bejelentkezhet a Microsoft személyes, munkahelyi vagy iskolai fiókjával. Ekkor az **új alkalmazás** lapra kerül.
 
->[!div class="mx-imgBorder"] 
->![alkalmazás-egészségügyi](media/app-manager-health-create.png) létrehozása
+![Alkalmazás-egészségügyi ellátás létrehozása](media/app-manager-health-create.png)
+
+![Alkalmazás-egészségügyi számlázási adatok létrehozása](media/app-manager-health-create-billinginfo.png)
 
 Az alkalmazás létrehozása:
 
 1. Az Azure IoT Central automatikusan javaslatot tesz az alkalmazás nevére a kiválasztott sablon alapján. Elfogadhatja ezt a nevet, vagy megadhatja a saját felhasználóbarát alkalmazásának nevét, például a **folyamatos beteg monitorozását**. Az Azure IoT Central egy egyedi URL-előtagot is létrehoz az alkalmazás neve alapján. Ha szeretné, megváltoztathatja ezt az URL-előtagot valami emlékezetre.
 
-2. Kiválaszthatja, hogy **próbaverziós** alkalmazást **vagy utólagos elszámolású alkalmazást szeretne** -e létrehozni. A **próbaverziós** alkalmazások a lejáratuk előtt hét napig ingyenesen használhatók, és akár öt ingyenes eszközt is lehetővé tesznek. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá. Ha létrehoz egy próbaverziós alkalmazást, meg kell adnia a kapcsolattartási adatait, és el kell döntenie, hogy szeretne-e információkat és tippeket kapni a Microsofttól. Az **utólagos elszámolású alkalmazások akár** két ingyenes eszközt is támogatnak, és az Azure-előfizetések adatait is be kell állítani.
+2. Kiválaszthatja, hogy szeretné-e létrehozni az alkalmazást az *ingyenes* díjszabási csomag vagy az egyik *standard* díjszabási csomag használatával. Az ingyenes csomaggal létrehozott alkalmazások a lejáratuk előtt hét napig ingyenesen használhatók, és legfeljebb öt ingyenes eszközt tudnak használni. Az alkalmazásokat az ingyenes csomagból egy standard díjszabási csomagba helyezheti át, mielőtt lejár. Ha az ingyenes csomagot választja, meg kell adnia a kapcsolattartási adatait, és ki kell választania, hogy szeretne-e információkat és tippeket kapni a Microsofttól. A standard csomag használatával létrehozott alkalmazások akár két ingyenes eszközt is támogatnak, és az Azure-előfizetési adatok megadását igénylik a számlázáshoz.
 
 3. Az alkalmazás üzembe helyezéséhez kattintson a lap alján található **Létrehozás** gombra.
 

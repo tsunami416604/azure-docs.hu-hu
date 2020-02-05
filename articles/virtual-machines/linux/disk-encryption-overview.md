@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896350"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988420"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
-Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. 
+Azure Disk Encryption segíti az adatai védelmét és védelmét a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítése érdekében. A Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. 
 
 Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer riasztást küld, ha nem titkosított virtuális gépek vannak. A riasztások magas súlyosságot mutatnak, és a javasolt a virtuális gépek titkosítása.
 
@@ -58,18 +58,18 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | Ubuntu | 18,04| Operációs rendszer és az adatlemez |
 | Ubuntu | 16,04| Operációs rendszer és az adatlemez |
 | Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | Operációs rendszer és az adatlemez |
-| RHEL | 7.7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7,7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7,6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7,5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RHEL | 7,4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.3 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
-| CentOS | 7.7 | Operációs rendszer és az adatlemez |
-| CentOS | 7.6 | Operációs rendszer és az adatlemez |
-| CentOS | 7.5 | Operációs rendszer és az adatlemez |
-| CentOS | 7.4 | Operációs rendszer és az adatlemez |
+| CentOS | 7,7 | Operációs rendszer és az adatlemez |
+| CentOS | 7,6 | Operációs rendszer és az adatlemez |
+| CentOS | 7,5 | Operációs rendszer és az adatlemez |
+| CentOS | 7,4 | Operációs rendszer és az adatlemez |
 | CentOS | 7.3 | Operációs rendszer és az adatlemez |
 | CentOS | 7.2 n | Operációs rendszer és az adatlemez |
 | CentOS | 6.8 | Adatlemez |
@@ -78,7 +78,9 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | SLES | 12 – SP3 | Adatlemez |
 
 > [!NOTE]
-> Az új ADE-implementáció a RHEL operációs rendszer és az adatlemez RHEL7-elszámolású lemezképekhez való használata esetén támogatott. Az ADE jelenleg nem támogatott a RHEL saját előfizetéses (BYOS) lemezképek esetében. 
+> Az új Azure Disk Encryption implementációja RHEL operációs rendszer és adatlemez esetén támogatott a RHEL7 utólagos elszámolású lemezképekhez.  
+>
+> Az ADE-t a saját előfizetéssel rendelkező RHEL is támogatja, de csak az előfizetés regisztrálása **után** . További információkért lásd: az [Azure-beli saját előfizetéssel rendelkező Gold-lemezképek Red Hat Enterprise Linux](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>További virtuális gépekre vonatkozó követelmények
 

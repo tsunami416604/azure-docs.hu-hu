@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962016"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987971"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights GA-környezetből a következő használatával:C#
 
@@ -50,13 +50,9 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
 1. [GA Azure Time Series Insights környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
-
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint. 
-
 1. Telepítse a szükséges projekt-függőségeket.
-
 1. Szerkessze az alábbi mintakód összes **#DUMMY #** helyére a megfelelő környezeti azonosítóval.
-
 1. Futtassa a kódot a Visual Studióban.
 
 ## <a name="project-dependencies"></a>Projekt függőségei
@@ -70,7 +66,9 @@ A mintakód két kötelező függőséggel rendelkezik:
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9 csomag.
 * [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 csomag.
 
-Adja hozzá a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával:
+Töltse le a csomagokat a Visual Studio 2019-ben a **build** > **Build Solution (megoldás** létrehozása) lehetőség kiválasztásával.
+
+Azt is megteheti, hogy hozzáadja a csomagokat a [NuGet 2.12 +](https://www.nuget.org/)használatával:
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

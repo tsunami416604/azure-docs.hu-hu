@@ -9,22 +9,25 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249142"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991082"
 ---
 # <a name="version-release-history"></a>Verziókiadások előzményei
 A Microsoft Genomics csapat rendszeresen frissíti a Microsoft Genomics Python-ügyfelet javítások és új funkciók számára. 
 
 ## <a name="latest-release"></a>Legújabb kiadás
-Az aktuális Python-ügyfél a 0.8.1 verziója. Ez a 3 2018 decemberében jelent meg, és a GATK 3,5 és a GATK4 futtatásával támogatja a futó munkafolyamatokat. Emellett támogatja az gVCF-kimenetet is.
+Az aktuális Python-ügyfél a 0.9.0 verziója. A 6 2019 februárjában megjelent, és támogatja a futó munkafolyamatokat a GATK 3,5 és a GATK4. Támogatja a gVCF kimenetét, és nem kötelező argumentumot fogadni a kimeneti tömörítéshez.
 
 
 ## <a name="release-history"></a>Kiadási előzmények 
-A Microsoft Genomics Python-ügyfél új verziói évente kétszer jelennek meg. Ahogy megjelent a Microsoft Genomics Python-ügyfél új verziói, a javítások és szolgáltatások listája itt frissül. Új verziók felszabadításakor a korábbi verziókat továbbra is legalább 90 napig támogatni kell. Ha a korábbi verziók már nem támogatottak, a rendszer ezen az oldalon fogja jelezni. 
+A Microsoft Genomics Python-ügyfél új verziói évente egyszer jelennek meg. Ahogy megjelent a Microsoft Genomics Python-ügyfél új verziói, a javítások és szolgáltatások listája itt frissül. Új verziók felszabadításakor a korábbi verziókat továbbra is legalább 90 napig támogatni kell. Ha a korábbi verziók már nem támogatottak, a rendszer ezen az oldalon fogja jelezni. 
+
+### <a name="version-090"></a>0\.9.0 verziója
+A 0.9.0 verziója a kimeneti tömörítést is támogatja. Ez egyenértékű a `-bgzip` futtatásával, majd `-tabix` a vcf vagy a gvcf kimenetén. További információt a [Gyakori kérdések](frequently-asked-questions-genomics.md)című témakörben talál. 
 
 ### <a name="version-081"></a>0\.8.1 verziója
 A 0.8.1 verziója másodlagos hibajavításokat tartalmaz.  

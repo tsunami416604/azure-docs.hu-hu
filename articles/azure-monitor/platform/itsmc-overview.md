@@ -4,15 +4,15 @@ description: Ez a cikk áttekintést nyújt a IT-szolgáltatásmenedzsmenti csat
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289135"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990674"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -152,7 +152,7 @@ Az irányítópult információt nyújt az összekötő állapotáról is, amely
 
 Az érintett számítógépeken szinkronizált incidenseket is megjelenítheti a Service Map megoldáson belül.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információk](../../azure-monitor/insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat úgy tekintse meg, ahogy azokra gondol – olyan összekapcsolt rendszerekhez, amelyek kritikus szolgáltatásokat biztosítanak. Service Map a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat mutatja bármely olyan TCP-kapcsolattal rendelkező architektúrán, amely nem igényel semmilyen konfigurálást, mint az ügynök telepítése. [További információk](../../azure-monitor/insights/service-map.md).
 
 Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
 
@@ -180,21 +180,21 @@ ServiceDeskWorkItemType_s = "incidens"
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
 - Állami
-- Sürgősség
+- Sürgős
 - Hatás
 - Prioritás
 - Eszkalálás
 - Létrehozta
-- Megoldó
+- Feloldotta:
 - Lezárta
 - Forrás
-- Hozzárendelve
+- A jog birtokosa
 - Kategória
 - Cím
 - Leírás
 - Létrehozás dátuma
-- Lezárás dátuma
-- Megoldás dátuma
+- Lezárt dátum
+- Megoldott dátum
 - Utolsó módosítás dátuma
 - Computer
 
@@ -209,20 +209,20 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Létrehozta
 - Lezárta
 - Forrás
-- Hozzárendelve
+- A jog birtokosa
 - Cím
 - Type (Típus)
 - Kategória
 - Állami
 - Eszkalálás
 - Ütközési állapot
-- Sürgősség
+- Sürgős
 - Prioritás
 - Kockázat
 - Hatás
-- Hozzárendelve
+- A jog birtokosa
 - Létrehozás dátuma
-- Lezárás dátuma
+- Lezárt dátum
 - Utolsó módosítás dátuma
 - Kért dátum
 - Tervezett kezdési dátum
@@ -238,21 +238,21 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
 | IncidentState_s | Állami |
-| Urgency_s |Sürgősség |
+| Urgency_s |Sürgős |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
 | CreatedBy_s | Megnyitva |
 | ResolvedBy_s | Feloldotta:|
 | ClosedBy_s  | Lezárta |
 | Source_s| Kapcsolattartó típusa |
-| AssignedTo_s | Felelős  |
+| AssignedTo_s | Hozzárendelve  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
-| CreatedDate_t|  Nyitott |
-| ClosedDate_t| lezárva|
-| ResolvedDate_t|Feloldva|
-| Computer  | Konfigurációelem |
+| CreatedDate_t|  Megnyitott |
+| ClosedDate_t| zárt|
+| ResolvedDate_t|Oldható|
+| Computer  | Konfigurációs tétel |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow-módosítási kérelem kimeneti adatkészlete
 
@@ -261,23 +261,23 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | ServiceDeskId_s| Szám |
 | CreatedBy_s | Kérelmező |
 | ClosedBy_s | Lezárta |
-| AssignedTo_s | Felelős  |
+| AssignedTo_s | Hozzárendelve  |
 | Title_s|  Rövid leírás |
 | Type_s|  Type (Típus) |
 | Category_s|  Kategória |
 | CRState_s|  Állami|
-| Urgency_s|  Sürgősség |
+| Urgency_s|  Sürgős |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
 | Impact_s| Hatás|
 | RequestedDate_t  | Kérelem dátuma szerint |
-| ClosedDate_t | Lezárás dátuma |
+| ClosedDate_t | Lezárt dátum |
 | PlannedStartDate_t  |     Tervezett kezdési dátum |
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
 | Description_s | Leírás |
-| Computer  | Konfigurációelem |
+| Computer  | Konfigurációs tétel |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása

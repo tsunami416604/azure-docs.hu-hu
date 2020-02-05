@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911029"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991391"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
@@ -21,13 +21,13 @@ Ez a cikk a [Azure Maps időjárási szolgáltatásokra](https://aka.ms/AzureMap
 
 ## <a name="unit-types"></a>Egységek típusai
 
-A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, hogy az adatokat metrikus vagy angolszász egységekben adja vissza. Az API-k által visszaadott válasz unitType is tartalmaz, amely egy numerikus érték, amely az egység fordításához használható. Ezen értékek értelmezéséhez tekintse meg az alábbi táblázatot.
+A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, hogy az adatokat metrikus vagy angolszász egységekben adja vissza. Az API-k által visszaadott válaszok közé tartozik a unitType és egy numerikus érték, amely az egység fordításához használható. Az értékek értelmezéséhez tekintse meg az alábbi táblázatot.
 
 |unitType|Leírás         |
 |--------|--------------------|
 |0       |méter                |
 |1       |Hüvelyk              |
-|2       |mérföld               |
+|2       |mérföldre               |
 |3       |milliméter          |
 |4       |centiméter          |
 |5       |mérő               |
@@ -52,7 +52,7 @@ A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, h
 
 ## <a name="weather-icons"></a>Időjárási ikonok
 
-Néhány időjárási szolgáltatás API-k visszatérési ikon kódok (iconCode) a válaszban, egy numerikus érték, amely az ikon definiálására használható. Ne hivatkozzon közvetlenül az alkalmazásokból származó rendszerképekre, az URL-címek módosíthatók és módosíthatók.
+Néhány időjárási szolgáltatás API-k a válaszban szereplő `iconCode` adják vissza. A `iconCode` az ikon definiálásához használt numerikus érték. Ne hivatkozzon közvetlenül az alkalmazásokból származó képekre, az URL-címek és a módosítások is megváltoznak.
 
 | Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|
@@ -77,12 +77,12 @@ Néhány időjárási szolgáltatás API-k visszatérési ikon kódok (iconCode)
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Igen |  Nem    | Részben Sunny a Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Igen |  Igen   | Vízisízni|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Igen |  Nem    | Jórészt Felhőbeli|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Igen |  Igen   | Ice |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Igen |  Igen   | Jég |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Igen |  Igen   | Ónos eső|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Igen |  Igen   | Fagyasztási eső|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Igen |  Igen   | Eső és hó|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Igen |  Igen   | Gyakori|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Igen |  Igen   | Ritka elérésű|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Igen |  Igen   | Hideg|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Igen |  Igen   | Szeles|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Nem  |  Igen   | Törlés|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nem  |  Igen   | Többnyire egyértelmű|

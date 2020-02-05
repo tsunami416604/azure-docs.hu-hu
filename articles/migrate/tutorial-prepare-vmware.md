@@ -1,18 +1,15 @@
 ---
 title: VMware virtuális gépek előkészítése értékeléshez/áttelepítéshez Azure Migrate
 description: Ismerje meg, hogyan készítheti elő a VMware virtuális gépek értékelését és áttelepítését Azure Migrate használatával.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028911"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989134"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware virtuális gépek előkészítése az Azure-ba történő értékeléshez és áttelepítéshez
 
@@ -41,8 +38,12 @@ Ezek az engedélyek szükségesek.
 **Tevékenység** | **Engedélyek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel.
-**A Azure Migrate berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezés használatával értékeli a VMware virtuális gépeket Azure Migrate Server Assessment használatával, valamint a VMware virtuális gépek [ügynök nélküli áttelepítését](server-migrate-overview.md) Azure Migrate kiszolgáló áttelepítésével. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/>A regisztráció során Azure Migrate két Azure Active Directory-(Azure AD-) alkalmazást hoz létre, amelyek egyedileg azonosítják a készüléket, és engedélyekkel kell rendelkezniük ezeknek az alkalmazásoknak a létrehozásához.<br/> – Az első alkalmazás a Azure Migrate szolgáltatási végpontokkal kommunikál.<br/> – A második alkalmazás a regisztráció során létrehozott Azure Key Vault fér hozzá az Azure AD-alkalmazás adatai és a készülék konfigurációs beállításainak tárolásához.
+**A Azure Migrate berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezés használatával értékeli a VMware virtuális gépeket Azure Migrate Server Assessment használatával, valamint a VMware virtuális gépek [ügynök nélküli áttelepítését](server-migrate-overview.md) Azure Migrate kiszolgáló áttelepítésével. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/>A készülék regisztrálása során a következő regisztrációs szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate két Azure Active Directory (Azure AD) alkalmazást hoz létre:<br/> – Az első alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.<br/> – A második alkalmazás kizárólag a felhasználó ügynök nélküli áttelepítésre vonatkozó előfizetésében létrehozott kulcstartó elérésére szolgál. A rendszer a RBAC hozzáférést biztosít a Azure Key Vault (az ügyfél bérlője alapján létrehozva), amikor a berendezésen keresztül kezdeményezi a felderítést.
 **Key Vault létrehozása** | A VMware virtuális gépek Azure Migrate kiszolgáló áttelepítésével történő áttelepítéséhez Azure Migrate létrehoz egy Key Vault a hozzáférési kulcsok kezeléséhez az előfizetésében lévő replikációs Storage-fiókhoz. A tároló létrehozásához szerepkör-hozzárendelési engedélyekre van szükség ahhoz az erőforráscsoporthoz, amelyben az Azure Migrate-projekt található.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
@@ -80,9 +81,9 @@ A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket.
 
 A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-### <a name="assign-role-assignment-permissions"></a>Szerepkör-hozzárendelési engedélyek hozzárendelése
+### <a name="assign-permissions-to-create-a-key-vault"></a>Engedélyek kiosztása Key Vault létrehozásához
 
-Ha engedélyezni szeretné, hogy a Azure Migrate egy Key Vault hozzon létre, rendeljen hozzá szerepkör-hozzárendelési engedélyeket a következő módon:
+Ha engedélyezni szeretné, hogy a Azure Migrate Key Vault hozzon létre, rendeljen engedélyeket az alábbiak szerint:
 
 1. A Azure Portal erőforráscsoporthoz válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.

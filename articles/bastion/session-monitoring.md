@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513002"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981089"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Munkamenet-figyelés és-felügyelet az Azure Bastion szolgáltatásban
 
@@ -40,7 +40,7 @@ Kiválaszthatja a munkamenet (ek) készletét, és kényszerítheti a leválaszt
 
 1. Navigáljon az Azure Bastion-erőforráshoz, és válassza a **munkamenetek** lehetőséget az Azure Bastion oldalon.
 
-   ![Lépjen](./media/session-monitoring/navigate.png)
+   ![lépjen](./media/session-monitoring/navigate.png)
 2. A munkamenetek kiválasztása után megtekintheti a távoli munkamenetek listáját.
 
    ![munkamenetek listázása](./media/session-monitoring/list.png)
@@ -49,8 +49,8 @@ Kiválaszthatja a munkamenet (ek) készletét, és kényszerítheti a leválaszt
    ![delete](./media/session-monitoring/delete.png)
 4. Ha a Törlés lehetőséget választja, a távoli munkamenet le lesz választva, és a felhasználó "megszakadt" üzenet jelenik meg a távoli munkamenetben.
 
-   ![Szétkapcsol](./media/session-monitoring/disconnect.png)
+   ![szétkapcsol](./media/session-monitoring/disconnect.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

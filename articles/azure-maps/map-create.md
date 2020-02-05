@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 49c86f3e6c654ecbfcd07809f42a1b038ca3f8ab
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911110"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988583"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre térképet és animálhat eg
 
 ## <a name="loading-a-map"></a>Térkép betöltése
 
-A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)egy példányát. A Térkép inicializálásakor egy DIV-elem AZONOSÍTÓját, amely megjeleníti a térképet és a leképezés betöltéséhez használni kívánt beállításokat. Ha nincs megadva az alapértelmezett hitelesítési információ a `atlas` névtérben, ezeket az információkat meg kell adni a térképi beállításokban a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. Ennek megfelelően a Map-példány létrehozása után csatoljon egy `ready` vagy `load` eseményt a térképhez, majd adja hozzá az eseménykezelő térképével kommunikáló további kódokat. A `ready` esemény azonnal következik be, amint a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a kezdeti leképezési nézet teljes betöltést végzett. 
+A Térkép betöltéséhez hozzon létre egy új, a [map osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)egy példányát. A Térkép inicializálásakor adjon át egy DIV-elem AZONOSÍTÓját a térkép megjelenítéséhez, és adja át a Térkép betöltéséhez használni kívánt beállításokat. Ha nincs megadva az alapértelmezett hitelesítési információ a `atlas` névtérben, ezeket az információkat meg kell adni a térképi beállításokban a Térkép betöltésekor. A Térkép a teljesítmény érdekében aszinkron módon több erőforrást is betölt. Így a Map-példány létrehozása után csatoljon egy `ready` vagy `load` eseményt a térképhez, majd adja hozzá a térképhez kapcsolódó további kódokat az eseménykezelőhöz. A `ready` esemény azonnal következik be, amint a térképnek elegendő erőforrása van betöltve a programozott módon való interakcióhoz. Az `load` esemény akkor következik be, amikor a kezdeti leképezési nézet teljes betöltést végzett. 
 
 <br/>
 
@@ -31,11 +31,11 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>alapszint
 </iframe>
 
 > [!TIP]
-> Több Térkép is betölthető ugyanarra az oldalra, és mindegyik használhatja ugyanazt a vagy a különböző hitelesítési és nyelvi beállításokat.
+> Ugyanazon a lapon több térképet is betölthet. Ugyanazon a lapon több Térkép is használhatja ugyanazt a vagy eltérő hitelesítési és nyelvi beállításokat.
 
 ## <a name="show-a-single-copy-of-the-world"></a>A világ egyetlen példányának megjelenítése
 
-Ha a Térkép széles képernyőre van nagyítva, a világ több példánya is vízszintesen jelenik meg. Ez nagy a legtöbb forgatókönyvhöz, de néhány alkalmazás esetében érdemes lehet csak egyetlen példányt látni a világból. Ezt úgy teheti meg, hogy a Maps `renderWorldCopies` lehetőséget `false`ra állítja be.
+Ha a Térkép széles képernyőre van nagyítva, a világ több példánya is vízszintesen jelenik meg. Ez a lehetőség bizonyos forgatókönyvek esetében kiváló megoldás, de más alkalmazások esetében érdemes megtekinteni a világ egyetlen példányát. Ez a viselkedés úgy valósítható meg, ha a Maps `renderWorldCopies` lehetőséget `false`re állítja.
 
 <br/>
 
@@ -45,13 +45,13 @@ Tekintse meg a <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen
 
 ## <a name="controlling-the-map-camera"></a>A Térkép kamera vezérlése
 
-A Térkép megjelenített területét kétféleképpen állíthatja be a kamera használatával. Megadhatja a kamera beállításait, például a középpontot és a nagyítást, amikor betölti a térképet, vagy a Térkép betöltését követően meghívja a `setCamera` lehetőséget, hogy programozott módon frissítse a Térkép nézetét.  
+A Térkép megjelenített területét kétféleképpen állíthatja be a Térkép kamerájának használatával. A kamera beállításait a Térkép betöltésekor is megadhatja. Másik lehetőségként meghívhatja a `setCamera` lehetőséget, amikor a Térkép betöltődött, és programozott módon frissíti a Térkép nézetet.  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>A kamera beállítása
 
-A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a központ és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
+A következő kódban létrejön egy [leképezési objektum](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , és a középpont és a nagyítási beállítások vannak megadva. A Térkép tulajdonságai, például a középpont és a nagyítási szint a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)részei.
 
 <br/>
 
@@ -71,7 +71,7 @@ A következő kódban a [Térkép objektum](https://docs.microsoft.com/javascrip
 
 ### <a name="animate-map-view"></a>Animálási Térkép nézet
 
-A következő kódban az első kód blokk létrehoz egy térképet, és beállítja a Térkép stílusát, a középpontot és a nagyítási értékeket. A második blokkban az animálás gombra kattintva létrejön egy Click eseménykezelő. Ha erre a gombra kattint, a rendszer a setCamera függvényt a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions), [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)véletlenszerű értékekkel hívja meg.
+A következő kódban az első kód blokk létrehoz egy térképet, és beállítja az Enter és a zoom Térkép stílusát. A második blokkban az animálás gombra kattintva létrejön egy Click eseménykezelő. Ha erre a gombra kattint, a rendszer meghívja a `setCamera` függvényt a [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) és a [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)véletlenszerű értékeivel.
 
 <br/>
 
@@ -80,7 +80,7 @@ A következő kódban az első kód blokk létrehoz egy térképet, és beállí
 
 ## <a name="try-out-the-code"></a>A kód kipróbálása
 
-Vessen egy pillantást a fenti mintakód. A JavaScript-kódot a bal oldalon található **js lapon** szerkesztheti, és a jobb oldalon látható **eredmények lapon** láthatja a Térkép nézet módosításait. Kattintson a **Szerkesztés CodePen** gombra, és szerkessze a kódot a CodePen.
+Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, és az **eredmény lapon**megtekintheti a Térkép nézet módosításait. Kattintson a Szerkesztés elemre a **CodePen**, a jobb felső sarokban, és módosítsa a kódot a CodePen.
 
 <a id="relatedReference"></a>
 
