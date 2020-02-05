@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770288"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025911"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -26,7 +26,6 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének űrlapját](https://aka.ms/FormRecognizerRequestAccess). Az űrlap-felismerő erőforrás létrehozásához hivatkozást tartalmazó e-mailt fog kapni.
-- Hozzáférés az űrlap-felismerő minta címkézési eszközhöz. A hozzáférés beszerzéséhez töltse ki és küldje el az [űrlap-felismerő címke eszköz kérelem űrlapját](https://aka.ms/LabelToolRequestAccess). A hitelesítő adatok beszerzésére és a privát tároló beállításjegyzékének elérésére vonatkozó utasításokat tartalmazó e-mailt fog kapni. 
 - Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>A minta feliratozási eszköz beállítása
@@ -38,18 +37,13 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
     |:--|:--|:--|
     |Minta címkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
     
-1. Ezután szüksége lesz az [Azure parancssori felületére (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ha még nem tette meg, telepítse a gépre.
-1. Ezután írja be a következő parancsot egy parancssorba. A `<username>` és `<password>` értékeit az üdvözlő e-mailek formájában adja meg.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. Most már készen áll a tároló futtatására `docker run`használatával.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    Ezzel a paranccsal a minta feliratozási eszköz elérhetővé válik egy webböngészőn keresztül. Nyissa meg a következőt: [http://localhost:3000](http://localhost:3000).

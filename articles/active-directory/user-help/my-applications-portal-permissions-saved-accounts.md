@@ -1,34 +1,34 @@
 ---
-title: Alkalmazás-engedélyek kezelése a saját alkalmazások (előzetes verzió) portálon – Azure Active Directory | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a szervezete felhőalapú alkalmazásaihoz tartozó alkalmazás-engedélyeket a saját alkalmazások (előzetes verzió) portálon.
+title: Alkalmazás engedélyeinek kezelése a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a szervezete felhőalapú alkalmazásaihoz tartozó alkalmazás-engedélyeket a saját alkalmazások portálján.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705054"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022409"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások (előzetes verzió) portálon
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálján
 
-Ha szervezeti alkalmazásokat használ a **saját alkalmazások** (előzetes verzió) portálon, gyakran ad meg engedélyeket és mentheti a fiók adatait. Az adatok biztonságának megőrzése érdekében érdemes lehet áttekinteni és visszavonni az engedélyeket, vagy törölni a fiók hitelesítő adatait. Az engedélyek vagy fiókok eltávolítása megszakíthatja az alkalmazások funkcióit. Ha problémái vannak az engedélyek vagy fiókok eltávolítása után, további segítségért forduljon a szervezet ügyfélszolgálatához.
+Ha szervezeti alkalmazásokat használ a **saját alkalmazások** portálon, akkor gyakran engedélyeket ad meg, és elmenti a fiók adatait. Az adatok biztonságának megőrzése érdekében érdemes lehet áttekinteni és visszavonni az engedélyeket, vagy törölni a fiók hitelesítő adatait. Az engedélyek vagy fiókok eltávolítása megszakíthatja az alkalmazások funkcióit. Ha problémái vannak az engedélyek vagy fiókok eltávolítása után, további segítségért forduljon a szervezet ügyfélszolgálatához.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
 
-## <a name="manage-app-permissions"></a>Alkalmazásengedélyek kezelése
+## <a name="manage-app-permissions"></a>Alkalmazás engedélyeinek kezelése
 
 Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott engedélyeket, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése**lehetőséget:
 
@@ -46,11 +46,11 @@ Az engedélyek ablak alsó részén látható, hogy a rendszergazda hogyan járu
 
 Miután felügyelte az alkalmazás engedélyeit és a mentett fiókokat a **saját alkalmazások** portálján, a következőket teheti:
 
-- Az alkalmazásokat a szervezet által létrehozott és biztosított különböző kategóriákba rendezheti. További információ: [a saját alkalmazások (előzetes verzió) portálon a munkaterületek elérése és használata](my-applications-portal-workspaces.md).
+- Az alkalmazásokat a szervezet által létrehozott és biztosított különböző kategóriákba rendezheti. További információ: [a saját alkalmazások portálon található gyűjtemények elérése és használata](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
+- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** portálon megjelenő személyes adatok frissítéséhez.
 
 - [Kezelheti szervezeteit](my-account-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605587"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020029"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: állomáslista létrehozása az Azure Marketplace használatával
 
@@ -55,7 +55,7 @@ Az **alapvető beállítások** panel az alábbi műveleteket hajtja végre:
 3. Adja meg a Windows rendszerű virtuális asztali ügyfelekre bejelentkező felhasználók vesszővel tagolt listáját, és az Azure Marketplace-ajánlat befejezése után nyissa meg az asztalt. Ha például user1@contoso.com és user2@contoso.com hozzáférést szeretne hozzárendelni, írja be a "user1@contoso.comuser2@contoso.com." értéket.
 4. Válassza az **új létrehozása** lehetőséget, és adja meg az új erőforráscsoport nevét.
 5. A **hely**mezőben válassza ki a virtuális hálózattal megegyező helyet, amely a Active Directory-kiszolgálóhoz kapcsolódik.
-6. Kattintson az **OK** gombra.
+6. Válassza a **tovább lehetőséget: konfigurálja a virtuális gépeket >** .
 
 >[!IMPORTANT]
 >Ha tiszta Azure Active Directory Domain Services és Azure Active Directory megoldást használ, ügyeljen arra, hogy a gazdagépet ugyanabban a régióban telepítse, mint a Azure Active Directory Domain Services a tartományhoz való csatlakozás és a hitelesítő adatokkal kapcsolatos hibák elkerülése érdekében.
@@ -66,7 +66,7 @@ A **virtuális gépek konfigurálása** panelen:
 
 1. Fogadja el az alapértelmezett értékeket, vagy szabja testre a virtuális gépek számát és méretét.
 2. Adja meg a virtuális gépek neveinek előtagját. Ha például a "prefix" nevet adja meg, akkor a virtuális gépek "előtag-0", "előtag-1" és így tovább.
-3. Kattintson az **OK** gombra.
+3. Válassza a **Tovább: virtuális gép beállításai**lehetőséget.
 
 ### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
 
@@ -80,7 +80,7 @@ A **virtuális gép beállításai** panelen:
 1. A **képforráshoz**válassza ki a forrást, és adja meg a megfelelő információkat a megkereséséhez és tárolásához. Ha úgy dönt, hogy nem használja a felügyelt lemezeket, válassza ki azt a Storage-fiókot, amely a. vhd-fájlt tartalmazza.
 2. Adja meg annak a tartományi fióknak a felhasználónevét és jelszavát, amely a virtuális gépeket a Active Directory tartományhoz fogja csatlakoztatni. Ugyanezt a felhasználónevet és jelszót a rendszer helyi fiókként hozza létre a virtuális gépeken. Ezeket a helyi fiókokat később is visszaállíthatja.
 3. Válassza ki azt a virtuális hálózatot, amely a Active Directory-kiszolgálóhoz kapcsolódik, majd válasszon egy alhálózatot a virtuális gépek üzemeltetéséhez.
-4. Kattintson az **OK** gombra.
+4. Válassza a Next (tovább) lehetőséget **: Windows virtuális asztali információk**.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows rendszerű virtuális asztali bérlő adatai
 
@@ -90,15 +90,14 @@ A **Windows rendszerű virtuális asztali bérlő adatai** panelen:
 2. A **Windows rendszerű virtuális asztali bérlő neve**mezőbe írja be annak a bérlőnek a nevét, ahol a gazdagépet létrehozza.
 3. Adja meg, hogy milyen típusú hitelesítő adatokat kíván használni a Windows rendszerű virtuális asztali bérlői RDS-tulajdonosként való hitelesítéshez. Ha végrehajtotta az [egyszerű szolgáltatásnév és a szerepkör-hozzárendelések létrehozása a PowerShell-lel oktatóanyagot](./create-service-principal-role-powershell.md), válassza az **egyszerű szolgáltatásnév**lehetőséget. Amikor megjelenik az **Azure ad-bérlő azonosítója** , adja meg az Azure Active Directory-példány azonosítóját, amely tartalmazza az egyszerű szolgáltatásnevet.
 4. Adja meg a bérlői rendszergazdai fiók hitelesítő adatait. Csak a jelszavas hitelesítő adatokkal rendelkező egyszerű szolgáltatások támogatottak.
-5. Kattintson az **OK** gombra.
+5. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>A telepítés befejezése és a virtuális gép létrehozása
 
 Az utolsó két penge esetében:
 
-1. Az **Összefoglalás** panelen tekintse át a telepítési adatokat. Ha módosítania kell valamit, térjen vissza a megfelelő panelre, és a folytatás előtt végezze el a módosítást. Ha az adatok jobbra néznek, kattintson **az OK gombra**.
-2. A **vásárlás** panelen tekintse át az Azure piactéren vásárolt további információkat.
-3. Válassza a **Létrehozás** lehetőséget a gazdagép telepítéséhez.
+1. A **felülvizsgálat és létrehozás** panelen tekintse át a telepítési adatokat. Ha módosítania kell valamit, térjen vissza a megfelelő panelre, és a folytatás előtt végezze el a módosítást. Ha az adatok jobbra néznek, kattintson **az OK gombra**.
+2. Válassza a **Létrehozás** lehetőséget a gazdagép telepítéséhez.
 
 Attól függően, hogy hány virtuális gépet hoz létre, ez a folyamat 30 percet vagy akár több időt is igénybe vehet.
 
@@ -132,7 +131,7 @@ A jelenleg támogatott ügyfelek:
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta a gazdagépet, és hozzárendelte a felhasználókat az asztalhoz való hozzáféréshez, feltöltheti a gazdagép-készletet a RemoteApp-programok használatával. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg ezt az oktatóanyagot:
 

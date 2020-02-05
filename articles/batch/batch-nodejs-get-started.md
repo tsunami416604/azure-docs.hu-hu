@@ -3,7 +3,7 @@ title: Oktatóanyag – Az Azure Batch Node.js-es ügyfélkódtárának használ
 description: Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a Node.js használatával.
 services: batch
 author: shwetams
-manager: gwallace
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323404"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023650"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
@@ -52,7 +52,7 @@ A Node.js-ügyfél üzembe helyez egy előkészítő feladattal ellátott Batch-
 
 Az alábbiakban lépésenként követjük a Node.js-ügyfél felépítésének folyamatát:
 
-### <a name="step-1-install-azure-batch-sdk"></a>1\. lépés: Azure Batch SDK telepítése
+### <a name="step-1-install-azure-batch-sdk"></a>1\. lépés: Az Azure Batch SDK telepítése
 
 A Node.js-hez készült Azure Batch SDK telepítése az npm install paranccsal történik.
 
@@ -65,9 +65,9 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>2\. lépés: Azure Batch fiók létrehozása
+### <a name="step-2-create-an-azure-batch-account"></a>2\. lépés: Azure Batch-fiók létrehozása
 
-A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) hozhatja létre.
+A [Azure Portal](batch-account-create-portal.md) vagy a parancssorból ([POWERSHELL](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) hozható létre.
 
 Az alábbi parancsokkal az Azure CLI-n keresztül hozhat létre egy fiókot.
 
@@ -85,7 +85,7 @@ Minden egyes Batch-fiók megfelelő hozzáférési kulcsokkal rendelkezik. Ezekr
 
 Másolja és mentse a következő lépésekben használni kívánt kulcsot.
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>3\. lépés: Azure Batch szolgáltatás ügyfelének létrehozása
+### <a name="step-3-create-an-azure-batch-service-client"></a>3\. lépés: Azure Batch-szolgáltatásügyfél létrehozása
 Az alábbi kódrészlet először importálja az Azure Batch Node.js modult, majd létrehoz egy Batch-szolgáltatásügyfelet. Először létre kell hoznia egy SharedKeyCredentials objektumot az előző lépésből átmásolt Batch-fiókkulccsal.
 
 ```nodejs
@@ -254,7 +254,7 @@ Az alábbiakban a pool.get függvény által visszaadott objektumra láthat pél
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>4\. lépés: Azure Batch-feladatok elküldése
+### <a name="step-4-submit-an-azure-batch-job"></a>4\. lépés: Azure Batch-feladat elküldése
 Az Azure Batch-feladatok hasonló feladatok logikai csoportjai. Ebben az esetben ez a következő: „CSV – JSON feldolgozás”. Minden egyes itt szereplő feladat képes az Azure Storage-tárolókban lévő CSV-fájlok feldolgozására.
 
 E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhetők, a vezénylésüket az Azure Batch-szolgáltatás végzi.
@@ -279,14 +279,14 @@ Feltöltheti a szkriptet egy Azure Storage-fiókba, és létrehozhat egy SAS URI
 
 Az Azure Batch-feladat beküldése során megtörténik egy előkészítő feladat meghatározása. Az előkészítő feladat konfigurációs paraméterei a következők:
 
-* **AZONOSÍTÓ**: Az előkészítési feladat egyedi azonosítója
-* **commandLine**: A feladat végrehajtható fájljának végrehajtásához szükséges parancssor
-* **resourceFiles**: Azon objektumok tömbje, amelyek a feladat futtatásához szükséges fájlok részleteit tartalmazzák.  Ennek beállítási lehetőségei a következők:
-    - BlobSource A fájl SAS URI-ja
-    - FilePath A fájl letöltéséhez és mentéséhez szükséges helyi elérési út
-    - FileMode Csak a Linux-csomópontokra alkalmazható, a fileMode oktális formátumban van, amelynek alapértelmezett értéke 0770
-* **waitForSuccess**: Ha igaz értékre van állítva, a feladat nem fut az előkészítési feladat meghibásodásakor.
-* **runElevated**: Állítsa igaz értékre, ha emelt szintű jogosultságokra van szükség a feladat futtatásához.
+* **ID**: Az előkészítő feladat egyedi azonosítója.
+* **commandLine**: A feladat végrehajtható fájljának végrehajtására szolgáló parancssor.
+* **resourceFiles**: A jelen feladat futtatásához letöltendő fájlok részletes adatait biztosító objektumtömbök.  Ennek beállítási lehetőségei a következők:
+    - blobSource: A fájl SAS URI-ja.
+    - filePath: A fájl helyi letöltési és mentési elérési útja.
+    - fileMode: Csak Linux-csomópontokra vonatkozik, a fileMode formátuma oktális, alapértelmezett értéke 0770.
+* **waitForSuccess**: Ha a beállítása igaz, a feladat nem fut előkészítőtevékenység-hibák esetében.
+* **runElevated**: Állítsa igaz értékre, ha a feladat futtatásához emelt szintű jogosultságokra van szükség.
 
 Az alábbi kódrészleten az előkészítő feladat egy szkriptkonfigurációs mintáját láthatjuk:
 
@@ -311,14 +311,14 @@ Ha a feladatok futtatásához nem szükséges előfeltételeket telepíteni, kih
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5\. lépés: Feladat Azure Batch feladatainak elküldése
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5\. lépés: Azure Batch-feladatok elküldése egy feladathoz
 
 A CSV-feldolgozási feladat létrehozását követően hozzunk létre tevékenységeket ehhez a feladathoz. Feltételezve, hogy négy tárolóval rendelkezünk, négy tevékenységet hozunk létre – minden tárolóhoz egyet.
 
 A [Python-szkript](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) két paramétert fogad el:
 
-* tároló neve: A Storage-tároló, amelyből fájlokat tölthet le
-* minta A fájlnév mintájának választható paramétere
+* container name: Az a Storage-tároló, amelyből a fájlokat letöltjük.
+* pattern: A fájlnév-minta választható paramétere.
 
 Feltételezve, hogy négy tárolóval („con1”, „con2”, „con3”, „con4”) rendelkezünk, az alábbi kód a korábban létrehozott „CSV-feldolgozás” nevű Azure Batch-feladat számára történő négy tevékenység beküldését mutatja be.
 
@@ -351,7 +351,7 @@ A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](/javascript/api/overview/azure/batch).

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás kezelése CloudSimple privát felhővel
-description: Ismerteti a CloudSimple saját Felhőbeli erőforrásainak és tevékenységének kezeléséhez rendelkezésre álló képességeket
+title: Azure VMware-megoldások (AVS) saját felhő kezelése
+description: Ismerteti az AVS saját Felhőbeli erőforrásainak és tevékenységének kezeléséhez rendelkezésre álló képességeket
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -8,87 +8,87 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 47bf2251f71204b99245c1a9d55ef87157c41dd8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812270"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014827"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Saját Felhőbeli erőforrások és tevékenységek kezelése
+# <a name="manage-avs-private-cloud-resources-and-activities"></a>Az AVS Private Cloud-erőforrások és-tevékenységek kezelése
 
-A privát felhők kezelése a CloudSimple-portálról történik.  A CloudSimple-portálon keresse meg az állapotot, a rendelkezésre álló erőforrásokat, a saját Felhőbeli tevékenységeket és egyéb beállításokat.
+Az AVS privát felhők kezelése az AVS-portálról történik. Keresse meg az állapotot, a rendelkezésre álló erőforrásokat, az AVS Private Cloud tevékenységeit és az AVS portál egyéb beállításait.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
+## <a name="access-the-avs-portal"></a>Hozzáférés az AVS-portálhoz
 
-Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
+Hozzáférés az [AVS-portálhoz](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-private-clouds"></a>Privát felhők listájának megtekintése
+## <a name="view-the-list-of-avs-private-clouds"></a>Az AVS privát felhők listájának megtekintése
 
-Az **erőforrások** lap **privát felhők** lapja felsorolja az előfizetésben található összes privát felhőt. Az adatok tartalmazzák a nevet, a vSphere-fürtök számát, a helyet, a saját felhő aktuális állapotát és az erőforrás-információkat.
+Az **erőforrások** lap **AVS Private felhők** lapja felsorolja az előfizetésben található összes AVS Private-felhőt. Az adatok közé tartozik a név, a vSphere-fürtök száma, a hely, az AVS-beli saját felhő aktuális állapota és az erőforrás-információ.
 
-![Saját felhő lapja](media/manage-private-cloud.png)
+![AVS Private Cloud oldal](media/manage-private-cloud.png)
 
-További információért és műveletekhez válasszon ki egy privát felhőt.
+További információért és műveletekhez válasszon egy AVS Private-felhőt.
 
-## <a name="private-cloud-summary"></a>Saját felhő összefoglalása
+## <a name="avs-private-cloud-summary"></a>AVS Private Cloud Összefoglaló
 
-A kiválasztott privát felhő átfogó összefoglalásának megtekintése.  Az összefoglalás lapon a privát felhőben üzembe helyezett DNS-kiszolgálók szerepelnek.  A DNS-továbbítást beállíthatja a helyszíni DNS-kiszolgálókról a saját felhőalapú DNS-kiszolgálóira.  A DNS-továbbítással kapcsolatos további információkért lásd: [a DNS konfigurálása névfeloldáshoz a saját felhőalapú vCenter](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)a helyszíni környezetből.
+Tekintse meg a kiválasztott AVS privát felhő átfogó összegzését. Az összefoglalás lapon az AVS Private Cloud-on üzembe helyezett DNS-kiszolgálók szerepelnek. A DNS-továbbítást beállíthatja a helyszíni DNS-kiszolgálókról az AVS Private Cloud DNS-kiszolgálókra. A DNS-továbbítással kapcsolatos további információkért lásd: [DNS beállítása névfeloldáshoz az AVS Private Cloud vCenter a helyszínen](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
 
-![Saját felhő összefoglalása](media/private-cloud-summary.png)
+![AVS Private Cloud Összefoglaló](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Elérhető műveletek
 
-* [Indítsa el a vSphere](https://docs.azure.cloudsimple.com/vsphere-access/)-ügyfelet. A vCenter elérése ehhez a privát felhőhöz.
-* [](create-nodes.md)Megvásárlási csomópontok. Csomópontok hozzáadása ehhez a privát felhőhöz.
-* [Bontsa ki](expand-private-cloud.md)a elemet. Csomópontok hozzáadása ehhez a privát felhőhöz.
+* [Indítsa el a vSphere-ügyfelet](https://docs.azure.cloudsimple.com/vsphere-access/). Az AVS Private Cloud vCenter elérése.
+* [Megvásárlási csomópontok](create-nodes.md). Csomópontok hozzáadása ehhez az AVS privát felhőhöz.
+* [Bontsa ki](expand-private-cloud.md)a elemet. Csomópontok hozzáadása ehhez az AVS privát felhőhöz.
 * **Frissítés**. Az oldalon található információk frissítése.
-* **Törlés**. A privát felhőt bármikor törölheti. **A törlés előtt győződjön meg róla, hogy minden rendszerről és adattal készített biztonsági másolatot.** A privát felhő törlése törli az összes virtuális gépet, a vCenter-konfigurációt és az összes adathalmazt. Kattintson a **Törlés** lehetőségre a kiválasztott privát felhő Összegzés szakaszában. A törlést követően az összes magánjellegű Felhőbeli adat törlődik egy biztonságos, szigorúan kompatibilis törlési folyamatba.
-* [VSphere-jogosultságok módosítása](escalate-private-cloud-privileges.md)  A jogosultságokat a privát felhőben is kiterjesztheti.
+* **Törlés**. Bármikor törölheti az AVS Private-felhőt. **A törlés előtt győződjön meg róla, hogy minden rendszerről és adattal készített biztonsági másolatot.** Az AVS Private Cloud törlése törli az összes virtuális gépet, a vCenter-konfigurációt és az adatkészletet. Kattintson a **Törlés** elemre a kiválasztott AVS Private Cloud (összefoglalás) szakaszban. A törlést követően az összes AVS Private Cloud-adat törlődik egy biztonságos, szigorúan kompatibilis törlési folyamatba.
+* [VSphere-jogosultságok módosítása](escalate-private-cloud-privileges.md) Adja meg a jogosultságait ezen az AVS Private-felhőben.
 
-## <a name="private-cloud-vlanssubnets"></a>Privát felhő VLAN-ok/alhálózatok
+## <a name="avs-private-cloud-vlanssubnets"></a>AVS Private Cloud VLAN-ok/alhálózatok
 
-Megtekintheti a kijelölt VLAN-ok/alhálózatok listáját a kiválasztott privát felhőhöz.  A lista tartalmazza a privát felhő létrehozásakor létrehozott felügyeleti VLAN-okat/alhálózatokat.
+Megtekintheti a megadott VLAN-ok/alhálózatok listáját a kiválasztott AVS privát felhőhöz. A lista tartalmazza az AVS Private Cloud létrehozásakor létrehozott felügyeleti VLAN-okat/alhálózatokat.
 
-![Privát felhő – VLAN-ok/alhálózatok](media/private-cloud-vlans-subnets.png) 
+![AVS Private Cloud – VLAN-ok/alhálózatok](media/private-cloud-vlans-subnets.png) 
 
 ### <a name="available-actions"></a>Elérhető műveletek
 
-* [VLAN-ok/alhálózatok hozzáadása](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Adjon hozzá egy VLAN/részhalmazt ehhez a privát felhőhöz.
+* [VLAN-ok/alhálózatok hozzáadása](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Adjon hozzá egy VLAN/részhalmazt ehhez az AVS privát felhőhöz.
 
 Válasszon VLAN-t/alhálózatot a következő műveletekhez
-* [Tűzfalszabály csatolása](https://docs.azure.cloudsimple.com/firewall/). Csatoljon egy tűzfalat ehhez a privát felhőhöz.
+* [Tűzfalszabály csatolása](https://docs.azure.cloudsimple.com/firewall/). Csatoljon egy tűzfal-táblázatot ehhez az AVS Private Cloudhoz.
 * **Szerkesztése**
 * **Törlés** (csak a felhasználó által definiált VLAN-ok/alhálózatok)
 
-## <a name="private-cloud-activity"></a>Saját Felhőbeli tevékenység
+## <a name="avs-private-cloud-activity"></a>AVS Private Cloud-tevékenység
 
-Tekintse meg a következő információkat a kiválasztott privát felhőhöz.  A tevékenység adatai a kiválasztott privát felhő összes tevékenységének szűrt listája.  Ezen az oldalon legfeljebb 25 legutóbbi tevékenység látható.
+Tekintse meg a következő információkat a kiválasztott AVS privát felhőhöz. A tevékenység adatai a kiválasztott AVS privát felhő összes tevékenységének szűrt listája. Ezen az oldalon legfeljebb 25 legutóbbi tevékenység látható.
 
 * Legutóbbi riasztások
 * Legutóbbi események
-* Legutóbbi tevékenységek
+* Legutóbbi feladatok
 * Legutóbbi naplózás
 
-![Saját felhő – tevékenység](media/private-cloud-activity.png)
+![AVS Private Cloud – tevékenység](media/private-cloud-activity.png)
 
 ## <a name="cloud-racks"></a>Felhőalapú állványok
 
-A felhőalapú állványok a saját felhő építőelemei. Mindegyik rack kapacitási egységet biztosít. A CloudSimple automatikusan konfigurálja a Felhőbeli állványokat a privát felhő létrehozásakor vagy bővítésekor megadott beállítások alapján.  Megtekintheti a felhőalapú állványok teljes listáját, beleértve az egyesekhez rendelt saját felhőt is.
+A Cloud racks az AVS Private Cloud építőelemei. Mindegyik rack kapacitási egységet biztosít. Az AVS a saját beállítások alapján automatikusan beállítja a Felhőbeli állványokat, amikor létrehoz vagy kibővít egy AVS Private-felhőt. Megtekintheti a felhőalapú állványok teljes listáját, beleértve az összes hozzá rendelt AVS Private Cloud-t.
 
-![Privát felhő – felhőalapú állványok](media/private-cloud-cloudracks.png)
+![AVS Private Cloud – felhőalapú állványok](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>vSphere felügyeleti hálózat
 
-A saját felhőben jelenleg konfigurált VMware felügyeleti erőforrások és virtuális gépek listája. Az információk közé tartozik a szoftver verziója, a teljes tartománynév (FQDN) és az erőforrások IP-címe.
+Az AVS Private Cloud-on jelenleg konfigurált VMware felügyeleti erőforrások és virtuális gépek listája. Az információk közé tartozik a szoftver verziója, a teljes tartománynév (FQDN) és az erőforrások IP-címe.
 
-![Saját felhőalapú vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
+![AVS Private Cloud-vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* További információ a [privát felhőkről](cloudsimple-private-cloud.md)
+* További információ az [AVS Private felhőkről](cloudsimple-private-cloud.md)

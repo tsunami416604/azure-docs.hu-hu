@@ -2,22 +2,22 @@
 title: Kimeneti adatokat az Azure Storage-ba a Batch szolgáltatás API-Azure Batch
 description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a Batch-feladatok és a feladat-kimeneti adatok Azure Storage-ba való megőrzéséhez.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a7ac927ccc27af10999310fde9a5dede7b4539e0
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 11bd8bc427dd3da35ec5aa0f728f6b04b7d4527d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939078"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022851"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 

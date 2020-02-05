@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978904"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024585"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -83,7 +83,7 @@ Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi pro
 
 A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző Azure-szolgáltatásokat használják, beleértve a következőket:
 
-- Azure portál 
+- Azure Portal 
 - Azure PowerShell 
 - Azure parancssori felület (CLI)
 
@@ -94,6 +94,8 @@ Fontos ellenőrizni azon felhasználók identitását, akik szeretnének hozzáf
 Miután engedélyezte a biztonsági alapértelmezett beállításokat a bérlőben, a Azure Portalt, Azure PowerShellt vagy az Azure CLI-t elérő bármely felhasználónak további hitelesítést kell végeznie. Ez a szabályzat minden olyan felhasználóra vonatkozik, aki Azure Resource Managerhoz fér hozzá, függetlenül attól, hogy rendszergazda vagy felhasználó. 
 
 Ha a felhasználó nincs regisztrálva a Multi-Factor Authenticationhoz, a folytatáshoz a Microsoft Authenticator alkalmazás használatával kell regisztrálnia a felhasználót. A rendszer nem biztosít 14 napos Multi-Factor Authentication regisztrációs időszakot.
+
+Az előzetes 2017 Exchange Online-bérlők alapértelmezés szerint le vannak tiltva modern hitelesítéssel. Ha nem szeretné, hogy a bejelentkezési hurok a fenti bérlők hitelesítése közben ne legyen engedélyezve, engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 > [!NOTE]
 > A Azure AD Connect szinkronizálási fiók ki van zárva a biztonsági alapbeállításokból, és a rendszer nem kéri a többtényezős hitelesítés regisztrálását vagy elvégzését. A szervezetek más célokra nem szabad ezt a fiókot használni.
@@ -108,9 +110,9 @@ A biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authenticati
 
 |   | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
 | --- | --- | --- |
-| Értesítés mobilalkalmazásban | X | X |
-| Mobilalkalmazásbeli ellenőrző kód vagy hardvertoken |   | X |
-| Telefonra küldött szöveges üzenet |   | X |
+| Értesítés a Mobile App használatával | X | X |
+| Ellenőrző kód a Mobile App vagy a Hardware tokenből |   | X |
+| SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
 | Alkalmazásjelszók |   | X * * |
 

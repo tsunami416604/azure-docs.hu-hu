@@ -2,21 +2,21 @@
 title: Azure Batch készlet átméretezésének kezdési eseménye
 description: A Batch-készlet átméretezési indítási eseményének hivatkozása. Például egy készlet átméretezési indítási esemény törzsét jeleníti meg, ha egy készlet 0 és 2 csomópont között átméretezi a manuális átméretezést.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 8e2df1c2264392ab79e2dcbb7e58977f341b14d9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 1866e51da30fe5ed148d019c8720755e99757df7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026628"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023582"
 ---
 # <a name="pool-resize-start-event"></a>Készlet átméretezésének indítása esemény
 
@@ -45,5 +45,5 @@ ms.locfileid: "76026628"
 |`targetDedicatedNodes`|Int32|A készlethez igényelt számítási csomópontok száma.|
 |`currentLowPriorityNodes`|Int32|A készlethez jelenleg hozzárendelt számítási csomópontok száma.|
 |`targetLowPriorityNodes`|Int32|A készlethez igényelt számítási csomópontok száma.|
-|`enableAutoScale`|Logikai|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
-|`isAutoPool`|Logikai|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|
+|`enableAutoScale`|Bool|Meghatározza, hogy a készlet mérete automatikusan igazodik-e az idő múlásával.|
+|`isAutoPool`|Bool|Azt határozza meg, hogy a készlet a feladatok autopool mechanizmusán keresztül lett-e létrehozva.|

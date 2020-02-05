@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 27cd2e58eabcd96414391cac1a517ea242a65c21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809813"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023752"
 ---
 # <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
 
@@ -36,8 +36,6 @@ A Microsoft nagyvállalati szolgáltatásainak használatakor a Microsoft bizony
 A felhasználói adattörlési képesség csak a IoT Central adminisztrációs oldalon keresztül érhető el. Az alkalmazás-rendszergazdák kiválaszthatják a törölni kívánt felhasználót, és az alkalmazás jobb felső sarkában található **Törlés** gombra kattintva törölhetik a rekordot. Az alkalmazás-rendszergazdák eltávolíthatják azokat az egyes fiókokat is, amelyek már nincsenek társítva a szóban forgó alkalmazáshoz.
 
 A felhasználó törlése után a rendszer nem küld további riasztásokat. Az e-mail-címüket azonban egyenként el kell távolítani az egyes konfigurált riasztásokból.
-
-További információ: [szabályok és műveletek konfigurálása az eszközhöz](tutorial-configure-rules.md).
 
 ## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 

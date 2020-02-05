@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906707"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018890"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
@@ -38,7 +38,9 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre és futtathat feladatokat
 
     ![Feladatok konfigurálása](./media/howto-run-a-job/configurejob.png)
 
-6. Az eszközök kiválasztása után válassza a **Futtatás** vagy a **Mentés**lehetőséget. A feladat most megjelenik a fő **feladatok** oldalon. Ebben a nézetben láthatja a jelenleg futó feladatot és a korábban futtatott feladatok előzményeit. A futó feladatok mindig megjelennek a lista elejénél. A mentett feladatok bármikor megnyithatók a Szerkesztés vagy a Futtatás folytatásához.
+6. A jobb oldalon válassza ki azokat az eszközöket, amelyeken futtatni szeretné a feladatot. A felső jelölőnégyzet bejelölésével az összes eszköz kiválasztásra kerül a teljes eszköz készletében. A **név**melletti jelölőnégyzet bejelölésével az aktuális oldalon lévő összes eszköz ki lesz választva.
+
+7. Az eszközök kiválasztása után válassza a **Futtatás** vagy a **Mentés**lehetőséget. A feladat most megjelenik a fő **feladatok** oldalon. Ebben a nézetben láthatja a jelenleg futó feladatot és a korábban futtatott feladatok előzményeit. A futó feladatok mindig megjelennek a lista elejénél. A mentett feladatok bármikor megnyithatók a Szerkesztés vagy a Futtatás folytatásához.
 
     ![Feladatok megtekintése](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ A feladatok és az összes érintett eszköz állapotának megtekintéséhez vá
 
 Most, hogy megismerte, hogyan hozhat létre feladatokat az Azure IoT Central alkalmazásban, néhány további lépés:
 
-- [Eszközkészletek használata](howto-use-device-sets.md)
 - [Saját eszközök kezelése](howto-manage-devices.md)
 - [Az eszköz sablonjának verziója](howto-version-device-template.md)

@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615395"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022120"
 ---
 # <a name="in-store-analytics-architecture"></a>Áruházbeli elemzési architektúra
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Az áruházbeli elemzési megoldások lehetővé teszik a kiskereskedelmi tárolási környezet különböző feltételeinek figyelését. Ezek a megoldások a IoT Centralon belüli alkalmazások egyikének kihasználásával és az alábbi architektúra útmutatásként használhatók.
+
+Az áruházbeli elemzési megoldások lehetővé teszik a kiskereskedelmi tárolási környezet különböző feltételeinek figyelését. Ezek a megoldások a IoT Centralon belüli alkalmazások egyikével és az alábbi architektúrával kapcsolatos útmutatásként használhatók.
 
 
 ![Azure IoT Central Store Analytics](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában
 
 ## <a name="condition-monitoring-sensors"></a>Állapot-figyelési érzékelők
 
-Az IoT-megoldások érzékelők készletével kezdődnek a kereskedelmi tárolók környezetében lévő értelmes jelek. A fenti architektúra-diagram bal szélén számos érzékelő látható.
+Az IoT-megoldások érzékelők készletével kezdődnek a kereskedelmi tárolók környezetében lévő értelmes jelek. A fenti architektúra-diagram bal szélén különböző típusú érzékelők is tükröződnek.
 
 ## <a name="gateway-devices"></a>Átjáróeszközök
 
@@ -43,7 +43,7 @@ Számos IoT érzékelő közvetlenül a felhőbe vagy a közelében található 
 
 ## <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Az Azure IoT Central-alkalmazás különböző IoT-érzékelőkből származó adatok betöltését, valamint a kiskereskedelmi tároló környezetében lévő átjáró-eszközöket, valamint az értelmes elemzések készletét hozza létre.
+Az Azure IoT Central-alkalmazás különböző típusú IoT-érzékelőkből származó adatok betöltését, valamint a kiskereskedelmi tároló környezetében található átjáró-eszközöket, valamint az értelmes elemzések készletét hozza létre.
 
 Az Azure IoT Central egy személyre szabott élményt nyújt az áruház kezelője számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és felügyeletét.
 
@@ -51,8 +51,8 @@ Az Azure IoT Central egy személyre szabott élményt nyújt az áruház kezelő
 A megoldáson belüli Azure IoT Central alkalmazás úgy konfigurálható, hogy nyers vagy összesített elemzéseket exportáljon az Azure Pásti (szolgáltatásként nyújtott platform) szolgáltatásaiba, amelyek adatkezelést végezhetnek, és gazdagítják ezeket a bepillantást, mielőtt a vállalaton belül kihelyezik őket alkalmazás. 
 
 ## <a name="business-application"></a>Üzleti alkalmazás
-A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző üzleti alkalmazások is kihasználhatók. A Retail Store Manager vagy a személyzet tagjai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez, és valós időben végezhetnek értelmes műveleteket. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app-pnp.md).
+A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző típusú üzleti alkalmazások is használhatók. A kiskereskedelmi áruház kezelője vagy a személyzet tagjai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez és a valós idejű, értelmes műveletek elvégzéséhez. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app-pnp.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerkedjen meg az [áruházbeli elemzési pénztár](https://aka.ms/checkouttemplate) és [az áruházbeli elemzési feltételek figyelése](https://aka.ms/conditiontemplate) alkalmazás-sablonokkal. 
-* Tekintse meg a teljes [körű oktatóanyagot](https://aka.ms/storeanalytics-tutorial) , amely bemutatja, hogyan hozhat létre olyan megoldást, amely az egyik áruházbeli elemzési alkalmazás-sablont használja.
+* Tekintse meg a teljes [körű oktatóanyagot](https://aka.ms/storeanalytics-tutorial) , amely végigvezeti a megoldás létrehozásán, hogyan hozhat létre megoldást az egyik áruházbeli elemzési alkalmazás-sablon használatával.

@@ -174,7 +174,7 @@
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: A CloudSimple Azure VMware-megoldása
+    - name: Azure VMware Solution by CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
     - name: Azure Portal-dokumentáció
@@ -194,19 +194,16 @@
             - name: IoT-központ
               tocHref: /azure/iot-central/core/
               topicHref: /azure/iot-central/core/
-            - name: IoT Central (előzetes verziójú funkciók)
-              tocHref: /azure/iot-central/preview/
-              topicHref: /azure/iot-central/preview/
-            - name: IoT Central energiaipari célra (előzetes verziójú funkciók)
+            - name: IoT Central energiaipari célra
               tocHref: /azure/iot-central/energy/
               topicHref: /azure/iot-central/energy/
-            - name: IoT Central kormányzati célra (előzetes verziójú funkciók)
+            - name: IoT Central kormányzati célra
               tocHref: /azure/iot-central/government/
               topicHref: /azure/iot-central/government/
-            - name: IoT Central egészségügyi célra (előzetes verziójú funkciók)
+            - name: IoT Central egészségügyi célra
               tocHref: /azure/iot-central/healthcare/
               topicHref: /azure/iot-central/healthcare/
-            - name: IoT Central kiskereskedelmi célra (előzetes verziójú funkciók)
+            - name: IoT Central kiskereskedelmi célra
               tocHref: /azure/iot-central/retail/
               topicHref: /azure/iot-central/retail/
         - name: IoT Edge

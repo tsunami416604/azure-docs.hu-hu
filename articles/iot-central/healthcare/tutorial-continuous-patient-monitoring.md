@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986424"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021287"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ez az oktatóanyag bemutatja, hogyan kezdheti el az első lépéseket egy IoT Central folyamatos beteg monitorozási alkalmazás sablonjának üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és mit szeretne tenni a következő lépésekkel.
+
+Ez az oktatóanyag bemutatja, hogyan kezdheti el az első lépéseket egy IoT Central folyamatos beteg monitorozási alkalmazás sablonjának üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és mit tehet a következő lépésekben.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -34,7 +34,7 @@ Navigáljon az [Azure IoT Central Application Manager webhelyére](https://apps.
 >[!div class="mx-imgBorder"] 
 >![app Manager egészségügyi](media/app-manager-health.png)
 
-A **create app (alkalmazás létrehozása** ) gombra kattintva megkezdheti az alkalmazás létrehozását, majd bejelentkezhet a Microsoft személyes, munkahelyi vagy iskolai fiókjával. Ekkor az **új alkalmazás** lapra kerül.
+A **create app (alkalmazás létrehozása** ) gombra kattintva megkezdheti az alkalmazás létrehozását, majd bejelentkezhet a Microsoft személyes, munkahelyi vagy iskolai fiókjával. Az **új alkalmazás** lapra kerül.
 
 ![Alkalmazás-egészségügyi ellátás létrehozása](media/app-manager-health-create.png)
 
@@ -52,13 +52,13 @@ Az alkalmazás létrehozása:
 
 ### <a name="dashboards"></a>Irányítópultok
 
-Az alkalmazás-sablon üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján**kell megjelenni. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital ezen kezelői irányítópultján megtekintheti a sablonban található eszközök információit és telemetria, valamint parancsokat, feladatokat és műveleteket is végrehajthat. Az irányítópulton a következőket teheti:
+Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján**kell megszállnia. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital ezen kezelői irányítópultján megtekintheti a sablonban található eszközök információit és telemetria, valamint parancsokat, feladatokat és műveleteket is végrehajthat. Az irányítópulton a következőket teheti:
 
 * Lásd: az eszköz telemetria és tulajdonságai, például az eszköz **töltöttségi szintje** vagy a **kapcsolati** állapota.
 
 * Megtekintheti a Smart Vitals javító eszköz **alapszintű csomagját** és helyét.
 
-* Telepítse **újra** az intelligens vitális javítását az új páciensek számára.
+* A Smart Vitals javításának **újraépítése** egy új beteg számára.
 
 * Tekintse meg a **szolgáltatói irányítópultot** , amelyet a kórházi ápolási csapat láthat a betegek nyomon követése érdekében.
 
@@ -78,7 +78,7 @@ Mindkét irányítópulton bármikor visszatérhet ehhez a dokumentációhoz.
 
 Ha az **eszközbeállítások** lapra kattint, látni fogja, hogy a sablonhoz két különböző típusú eszköz tartozik:
 
-* **Smart vitals-javítás**: ez az eszköz egy olyan javítást jelent, amely különböző, a kórházon belüli és kívüli betegek monitorozására szolgáló létfontosságú jeleket méri. Ha a sablonra kattint, látni fogja, hogy az eszközök, például az akkumulátorok és az eszközök hőmérsékletének elküldése mellett a javítás a beteg egészségügyi adatokat is elküldi, például a légzési ráta és a vérnyomás.
+* **Smart vitals-javítás**: ez az eszköz egy olyan javítást jelent, amely különböző típusú létfontosságú jeleket mér. A kórházi és a kórházon kívüli betegek monitorozására is használható. Ha a sablonra kattint, látni fogja, hogy az eszközök, például az akkumulátorok és az eszközök hőmérsékletének elküldése mellett a javítás a beteg egészségügyi adatokat is elküldi, például a légzési ráta és a vérnyomás.
 
 * **Intelligens térd zárójel**: ez az eszköz egy térd zárójelet jelöl, amelyet a betegek a térdtől való kiváltáskor használhatnak. Ha erre a sablonra kattint, az eszközön kívül olyan képességek jelennek meg, mint a mozgási és a gyorsítási tartomány.
 
@@ -102,7 +102,7 @@ A szabályok lapra ugráskor három, az alkalmazás sablonjában található sza
 
 ### <a name="devices"></a>Eszközök
 
-Kattintson az **eszközök** fülre, majd válassza ki a **Smart térd zárójel**egy példányát. Láthatja, hogy három nézet áll rendelkezésre a kiválasztott eszköz információinak megismeréséhez. Ezek a nézetek az eszköz sablonjának létrehozásakor jönnek létre és jelennek meg. Ez azt jelenti, hogy az összes csatlakoztatott vagy szimulált eszközön konzisztensek lesznek.
+Kattintson az **eszközök** fülre, majd válassza ki a **Smart térd zárójel**egy példányát. Látni fogja, hogy a kiválasztott eszköz információinak megtekintéséhez három nézet áll rendelkezésre. Ezek a nézetek az eszköz sablonjának létrehozásakor jönnek létre és jelennek meg, ami azt jelenti, hogy az összes csatlakoztatott vagy szimulált eszközön konzisztensek lesznek.
 
 Az **irányítópult** nézet áttekintést nyújt azokról a telemetria és tulajdonságokról, amelyek a kezelő által vezérelt eszközről érkeznek.
 

@@ -1,70 +1,102 @@
 ---
 title: Mi az az Azure IoT Central? | Microsoft Docs
-description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
+description: Az Azure IoT Central egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását, és segít csökkenteni a IoT-kezelési műveletek terheit és költségeit, valamint a fejlesztést. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990759"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024126"
 ---
-<!---
-Purpose of an Overview article: 
-1. To give a TECHNICAL overview of a service/product: What is it? Why should I use it? It's a "learn" topic that describes key benefits and our competitive advantage. It's not a "do" topic.
-2. To help audiences who are new to service but who may be familiar with related concepts. 
-3. To compare the service to another service/product that has some similar functionality, ex. SQL Database / SQL Data Warehouse, if appropriate. This info can be in a short list or table. 
--->
-
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+A IoT Central egy IoT, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésének, kezelésének és karbantartásának terheit és költségeit. A IoT Central való kiépítésének köszönhetően lehetősége van arra, hogy az üzleti környezet IoT-adataival való átalakításának idejére, pénzére és energiára koncentráljon, nem csupán a komplex és folyamatosan fejlődő IoT-infrastruktúra fenntartását és frissítését.
 
-Az Azure IoT Central egy IoT, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésével, kezelésével és karbantartásával járó terheket és költségeket. Az Azure IoT Central kiválasztásával lehetősége van arra, hogy az Ön üzleti adatait IoT-adataival alakítsa át, és nem csupán egy összetett és folyamatosan fejlődő IoT-infrastruktúra karbantartására és frissítésére koncentrál.
+A webes felhasználói felülettel figyelheti az eszközök feltételeit, szabályokat hozhat létre, és több millió eszközt és adatmennyiséget kezelhet életciklusa során. Továbbá lehetővé teszi, hogy az IoT-intelligenciát az üzletági alkalmazásokra kiterjesztve az eszköz elemzéseit is fellépjen.
 
-A könnyen használható kezelőfelülettel egyszerűen figyelheti az eszközök feltételeit, szabályokat hozhat létre, és több millió eszközt és adatmennyiséget kezelhet életciklusa során. Továbbá lehetővé teszi, hogy az IoT-intelligenciát az üzletági alkalmazásokra kiterjesztve az eszköz elemzéseit is fellépjen.
-
-Ez a cikk az Azure IoT Central esetében ismerteti:
+Ez a cikk IoT Central:
 
 - A projekthez társított tipikus szerepek.
 - Egy alkalmazás létrehozása.
 - Az eszközök az alkalmazáshoz történő csatlakoztatása
 - Az alkalmazás felügyelete.
+- IoT Central Azure IoT Edge képességei.
+- A Azure IoT Edge Runtime-alapú eszközök csatlakoztatása az alkalmazáshoz.
+
+## <a name="known-issues"></a>Ismert problémák
+
+- A folyamatos adatexportálás nem támogatja a Avro formátumot (inkompatibilitás).
+- A GeoJSON jelenleg nem támogatott.
+- A Térkép csempe jelenleg nem támogatott.
+- A feladatok nem támogatják az összetett típusokat.
+- A tömb sémájának típusai nem támogatottak.
+- A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
+- Ez csak a Egyesült Államok és Európa helyein érhető el.
+- Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
 
 ## <a name="personas"></a>Szerepek
 
-Az Azure IoT Central dokumentációja négy olyan személyre utal, akik egy Azure IoT Central alkalmazással működnek:
+Az IoT Central dokumentációja négy olyan személyre utal, akik IoT Central alkalmazással működnek:
 
-- A _szerkesztő_ feladata, hogy meghatározza, milyen típusú eszközök csatlakoznak az alkalmazáshoz, valamint testreszabja az alkalmazást az operátor számára.
+- A _megoldás-szerkesztő_ feladata, hogy meghatározza az alkalmazáshoz kapcsolódó eszközök típusát, és testreszabja az alkalmazást az operátor számára.
 - Az _operátor_ kezeli az alkalmazáshoz csatlakoztatott eszközöket.
-- A _rendszergazdák_ felelősek olyan feladatokért, mint például a [felhasználói szerepkörök és engedélyek](howto-administer.md) kezelése az alkalmazáson belül.
-- Az _eszközfejlesztő_ hozza létre azokat a kódokat, amelyek az alkalmazáshoz csatlakoztatott eszközökön futnak.
+- A _rendszergazdák_ felelősek az olyan felügyeleti feladatokért, mint például a [felhasználói szerepkörök és engedélyek](howto-administer.md) kezelése az alkalmazáson belül.
+- Az _eszközök fejlesztői_ létrehozzák az alkalmazáshoz csatlakoztatott eszközön vagy IoT Edge modulon futó kódot.
 
-## <a name="create-your-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
+## <a name="create-your-iot-central-application"></a>A IoT Central-alkalmazás létrehozása
 
-Szerkesztőként az Azure IoT Central használatával egyéni, a felhőben üzemeltetett IoT-megoldásokat hozhat létre cége számára. Az egyéni IoT-megoldások általában a következőket foglalják magukban:
+Megoldás-szerkesztőként a IoT Central használatával létrehozhat egy egyéni, felhőalapú IoT-megoldást a szervezet számára. Az egyéni IoT-megoldások általában a következőket foglalják magukban:
 
 - Egy felhőalapú alkalmazás, amely telemetriai adatokat fogad az eszközökről és lehetővé teszi az eszközök felügyeletét.
 - Több eszköz, amelyek egyéni kódokat futtatnak és a felhőalapú alkalmazáshoz csatlakoznak.
 
-Gyorsan üzembe helyezhet egy új Azure IoT Central alkalmazást, és testre szabhatja a böngészőben megadott igényei szerint. Építőként a webalapú eszközök használatával hozzon létre egy _sablont_ az alkalmazáshoz csatlakozó eszközökhöz. Az eszköz sablonja az a terv, amely meghatározza egy adott típusú eszköz jellemzőit és viselkedését, például:
+Gyorsan üzembe helyezhet egy új IoT Central alkalmazást, és testre szabhatja a böngészőben megadott igényei szerint. Az általános _alkalmazási sablonnal_ vagy a [kereskedelmi](../retail/overview-iot-central-retail-pnp.md), [energia](../energy/overview-iot-central-energy.md)-, [kormányzati](../government/overview-iot-central-government.md)és [egészségügyi](../healthcare/overview-iot-central-healthcare.md)alkalmazások egyik iparági alkalmazási sablonjaival is elindítható.
+
+Megoldás-szerkesztőként a webalapú eszközök használatával hozzon létre egy _sablont_ az alkalmazáshoz csatlakozó eszközökhöz. Az eszköz sablonja az a terv, amely meghatározza egy adott típusú eszköz jellemzőit és viselkedését, például:
 
 - Telemetria.
 - Az operátor által módosítható üzleti tulajdonságok.
 - Azok az eszköztulajdonságok, amelyeket az eszköz állít be, és az alkalmazásban csak olvashatók.
-- Az alkalmazás által válaszoló küszöbértékek.
-- Az eszköz viselkedését meghatározó beállítások.
+- A tulajdonságok, amelyeket az operátor állít be, amelyek meghatározzák az eszköz viselkedését.
 
-Az eszközsablonok és az alkalmazások azonnal tesztelhetők az Azure IoT Central által létrehozott szimulált adatokkal.
+Ez az eszköz a következőket tartalmazza:
 
-A szerkesztők emellett testreszabhatják az Azure IoT Central-alkalmazás kezelőfelületét az operátorok számára, akiknek az alkalmazás napi használata a feladata. A szerkesztők által elvégezhető testreszabási lehetőségek közé tartoznak a következők:
+- Egy _eszköz-képesség modell_ , amely leírja az eszköz által megvalósított képességeket, például az általa küldött telemetria és az általa jelentett tulajdonságokat.
+- Az eszközön nem tárolt Felhőbeli tulajdonságok.
+- A IoT Central alkalmazás részét képező testreszabások, irányítópultok és űrlapok.
+
+
+### <a name="pricing"></a>Díjszabás
+
+A 7 napos ingyenes próbaverzió használatával IoT Central alkalmazást hozhat létre, vagy használhat standard díjszabási csomagot is.
+
+- Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
+- A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat.
+
+### <a name="create-device-templates"></a>Eszközök sablonjainak létrehozása
+
+A [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play (előzetes verzió) magja egy eszköz-képesség modell sémája, amely leírja az eszközök képességeit. IoT Central alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play (előzetes verzió) eszköz-képesség modelleket használják.
+
+Megoldás-szerkesztőként több lehetőség közül választhat az eszközök sablonjainak létrehozásához:
+
+- Importáljon egy eszköz-képességi modellt az [Azure Certified for IoT-Device Catalog eszközből](https://aka.ms/iotdevcat) , majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+- Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz képességeinek modelljét az eszköz kódjában.
+- Hozzon létre egy eszköz-képesség modellt a Visual Studio Code használatával, és tegye közzé a modellt egy adattárban. Implementálja az eszköz kódját a modellből, és kapcsolja össze az eszközt a IoT Central alkalmazással. IoT Central megkeresi az eszköz képességeinek modelljét a tárházból, és létrehoz egy egyszerű eszközt a sablonhoz.
+- Eszköz-képesség modell létrehozása a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz képességeinek modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+
+Megoldás-szerkesztőként a IoT Central segítségével programkódot hozhatja meg az eszközök teszteléséhez az eszköz sablonjainak ellenőrzéséhez.
+
+### <a name="customize-the-ui"></a>A felhasználói felület testreszabása
+
+Megoldás-szerkesztőként testreszabhatja a IoT Central alkalmazás felhasználói felületét azon operátorok esetében is, akik felelősek az alkalmazás napi használatért. A megoldás-szerkesztő által végrehajtható testreszabások:
 
 - Egy eszközsablonban található tulajdonságok és beállítások elrendezésének meghatározása.
 - Egyéni irányítópultok konfigurálása, amelyek segítik az operátorokat a megállapítások felismerésében és a problémák gyorsabb megoldásában.
@@ -79,40 +111,96 @@ A 7 napos ingyenes próbaverzió használatával IoT Central alkalmazást hozhat
 
 ## <a name="connect-your-devices"></a>Az eszközök csatlakoztatása
 
-Miután a szerkesztő meghatározta, hogy az alkalmazáshoz milyen típusú eszközök csatlakozhatnak, egy eszközfejlesztő létrehozza az eszközökön futtatandó kódokat. Az eszközfejlesztők a Microsoft nyílt forráskódú [Azure IoT SDK-it](https://github.com/Azure/azure-iot-sdks) használhatják az eszközkódok létrehozásához. Ezek az SDK-k számos nyelvet, platformot és protokollt támogatnak, hogy megfeleljenek az Ön igényeinek az eszközök és az Azure IoT Central-alkalmazás csatlakoztatását illetően. Az SDK-k segítenek a következő eszköz-képességek megvalósításában:
+Az Azure IoT Central az [azure IoT hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) használatával kezeli az összes eszköz regisztrációját és kapcsolódását.
 
-- Biztonságos kapcsolat létrehozása.
-- Telemetria küldése.
-- Állapotjelentés.
-- Konfigurációfrissítések fogadása.
+A DPS használata lehetővé teszi a következőket:
 
-További információkért olvassa el a következő blogbejegyzést: [Milyen előnyökkel jár, ha az Azure IoT SDK-kat használja, és milyen buktatókkal, ha nem?](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)
+- IoT Central az eszközök nagy léptékű bevezetésének és csatlakoztatásának támogatásához.
+- Az eszköz hitelesítő adatainak előállításához és az eszközök offline konfigurálásához az eszközök IoT Central felhasználói felületen keresztül történő regisztrálása nélkül.
+- Közös hozzáférésű aláírásokkal való kapcsolódáshoz használt eszközök.
+- Az iparági szabványnak megfelelő X. 509 tanúsítványok használatával csatlakoztatható eszközök.
+- A saját eszközök azonosítóinak használatával regisztrálhatja az eszközöket a IoT Centralban. A saját eszköz-azonosítók használatával egyszerűbbé válik a meglévő Back-Office rendszerekkel való integráció.
+- Egyetlen, egységes módszer az eszközök IoT Centralhoz való csatlakoztatására.
 
-## <a name="manage-your-application"></a>Az alkalmazás felügyelete
+További információért lásd: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
 
-Az Azure IoT Central-alkalmazásokat teljes mértékben a Microsoft üzemelteti, ami csökkenti az alkalmazások felügyelete miatti adminisztrációs terheket.
+### <a name="azure-iot-edge-devices"></a>Eszközök Azure IoT Edge
 
-Az operátorok az Azure IoT Central-alkalmazással kezelik az eszközöket az Azure IoT Central-megoldásban. A kezelők az alábbiakhoz hasonló feladatokat végzik el:
+Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használatával létrehozott eszközökhöz [Azure IoT Edge eszközöket](../../iot-edge/about-iot-edge.md) is csatlakozhat egy IoT Central alkalmazáshoz. Azure IoT Edge lehetővé teszi, hogy közvetlenül a IoT Central által felügyelt IoT-eszközökön futtassa a felhőalapú intelligenciát és az egyéni logikát. A IoT Edge Runtime a következőket teszi lehetővé:
+
+- A számítási feladatok telepítése és frissítése az eszközön.
+- Azure IoT Edge biztonsági szabványok fenntartása az eszközön.
+- Győződjön meg arról, hogy IoT Edge modulok mindig futnak.
+- Jelentési modul állapota a felhőben távoli figyeléshez.
+- Kezelheti az alárendelt levelek eszközei és a IoT Edge eszközök közötti kommunikációt egy IoT Edge eszköz moduljai és egy IoT Edge eszköz és a felhő között.
+
+További információ: [Azure IoT Edge eszközök és IoT Central](concepts-architecture.md#azure-iot-edge-devices).
+
+## <a name="stay-connected"></a>Tartsa a kapcsolatot
+
+IoT Central alkalmazásait teljes mértékben a Microsoft üzemelteti, ami csökkenti az alkalmazások felügyeletének terhelését.
+
+Kezelőként a IoT Central alkalmazással felügyelheti az eszközöket a IoT Central-megoldásban. A kezelők az alábbiakhoz hasonló feladatokat végzik el:
 
 - Az alkalmazáshoz csatlakoztatott eszközök monitorozása.
 - Az eszközök hibáinak keresése és elhárítása.
 - Új eszközök üzembe helyezése.
 
-Építőként olyan egyéni szabályokat és műveleteket adhat meg, amelyek a csatlakoztatott eszközökről származó adatfolyamként működnek. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
+Megoldás-szerkesztőként olyan egyéni szabályokat és műveleteket adhat meg, amelyek a csatlakoztatott eszközökről végeznek adatátvitelt. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
 
 A rendszergazdák [felhasználói szerepkörökkel és engedélyekkel](howto-administer.md)kezelhetik az alkalmazáshoz való hozzáférést.
 
+A nagy léptékű működésre tervezett IoT-megoldások esetében fontos az eszközkezelés strukturált megközelítése. Nem elég egyszerűen csatlakoztatni az eszközöket a felhőhöz, és az eszközöket csatlakoztatni és kifogástalan állapotba kell hozni. Az operátorok az alábbi IoT Central képességekkel kezelhetik eszközeiket az alkalmazások életciklusa során:
+
+### <a name="dashboards"></a>Irányítópultok 
+
+A beépített [irányítópultok](./howto-set-up-template.md#generate-default-views) testreszabható felhasználói felületet biztosítanak az eszközök állapotának és telemetria figyeléséhez. Kezdje egy beépített irányítópulttal egy [alkalmazás-sablonban](howto-use-app-templates.md) , vagy hozzon létre saját irányítópultokat az operátorok igényei szerint. Az irányítópultokat megoszthatja az alkalmazás összes felhasználójának használatával, vagy megtarthatja azokat.
+
+### <a name="rules-and-actions"></a>Szabályok és műveletek 
+
+Az eszköz állapotán és telemetria alapuló [Egyéni szabályok](tutorial-create-telemetry-rules.md) alapján azonosíthatja az eszközöket, amelyeknek figyelmet igényelnek. Konfigurálja a megfelelő személyek értesítéséhez szükséges műveleteket, és gondoskodjon arról, hogy a javítási intézkedések időben legyenek elvégezve.
+
+### <a name="jobs"></a>Feladatok 
+
+A [feladatok](howto-run-a-job.md) lehetővé teszik az eszközökön történő egyszeri vagy tömeges frissítés beállítását tulajdonságok vagy hívási parancsok megadásával. 
+
+### <a name="user-roles-and-permissions"></a>Felhasználói szerepkörök és engedélyek
+
+A [szerepkörök és engedélyek](howto-manage-users-roles.md) lehetővé teszik a rendszergazdák számára az egyes felhasználói élmények testreszabását. A rendszergazdák a webes felhasználói felületen hozhatnak létre szerepköröket és rendelhetnek engedélyeket.
+
+## <a name="transform-your-iot-data"></a>IoT-adatai átalakítása
+
+Az alkalmazási platformként a IoT Central lehetővé teszi a IoT-információk átalakítását az üzleti elemzésekben, amelyek a gyakorlatban hasznosítható eredményeket vezetnek. A [szabályok](./tutorial-create-telemetry-rules.md), az [adatexportálás](./howto-export-data.md)és a [nyilvános REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) példák arra, hogyan integrálható az IoT Central az üzletági alkalmazásokkal:
+
+![Hogyan alakíthatja át a IoT Central a IoT-adatait](media/overview-iot-central/transform.png)
+
+### <a name="monitor-device-health-and-operations-using-rules"></a>Eszközök állapotának és műveleteinek figyelése szabályok használatával
+
+Amikor az eszközök csatlakoznak és adatokat küldenek, a szabályok azonosítják a problémákat észlelő eszközöket, vagy hibaüzeneteket küldenek, így minimális állásidővel javíthatók. Hozzon létre szabályokat a IoT Central alkalmazásban az eszközök telemetria figyeléséhez, és figyelmeztessen egy operátort, ha egy metrika átlép egy küszöbértéket, vagy egy eszköz egy adott üzenetet küld. A szabályokhoz tartozó e-mail-műveletek és webhookok értesítik a megfelelő személyeket és a megfelelő alsóbb rétegbeli rendszereket.
+
+### <a name="run-custom-analytics-and-processing-on-your-exported-data"></a>Egyéni elemzések és feldolgozás futtatása az exportált adatain
+
+Létrehozhat olyan üzleti elemzéseket, mint például a gépi hatékonysági trendek meghatározása vagy a jövőbeli energiafelhasználás megjósolása a gyári szinten, ha egyéni elemzési folyamatokat hoz létre az telemetria az eszközökről való feldolgozásához és az eredmények tárolásához. Konfigurálja az adatexportálást a IoT Central alkalmazásban a telemetria, az eszköz tulajdonságainak változásainak és az eszköz sablonjának más szolgáltatásokra való módosításainak exportálására, ahol elemezheti, tárolhatja és megjelenítheti az adatait az Ön által előnyben részesített eszközökkel.
+
+### <a name="build-custom-iot-solutions-and-integrations-with-the-rest-apis"></a>Egyéni IoT-megoldások és-integrációk létrehozása a REST API-kkal
+
+IoT-megoldások létrehozása, például:
+
+- Az eszközök távoli beállítására és vezérlésére képes mobil Companion-alkalmazások.
+- Olyan egyéni integrációk, amelyek lehetővé teszik a meglévő üzletági alkalmazások számára a IoT-eszközökkel és-adataikkal való interakciót.
+- Eszközkezelő alkalmazások az eszközök modellezéséhez, előkészítéséhez, kezeléséhez és az adathozzáféréshez.
+
+## <a name="quotas"></a>Kvóták
+
+Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással lehet a IoT-megoldás hatókörére. Jelenleg IoT Central korlátozza az előfizetésben üzembe helyezhető alkalmazások számát 10-re. Ha a korlát növelésére van szüksége, forduljon a [Microsoft ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
+
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy áttekintette az Azure IoT Central jellemzőit, tekintse meg a javasolt következő lépéseket:
+Most, hogy áttekintette a IoT Centralt, a következő lépések javasoltak:
 
 - Ismerje meg az elérhető [Azure-technológiákat és-szolgáltatásokat a IoT-megoldások létrehozásához](../../iot-fundamentals/iot-services-and-technologies.md).
 - Ismerkedés az [Azure IoT Central kezelőfelületével](overview-iot-central-tour.md).
 - [Egy Azure IoT Central-alkalmazás létrehozásának](quick-deploy-iot-central.md) első lépései.
-- Egy oktatóanyag-sorozat mutatja be a következőket:
-  - [Szerkesztőként: Eszközsablon létrehozása](tutorial-define-device-type.md)
-  - [Szerkesztőként: Szabályok hozzáadása a megoldás automatizálásához](tutorial-configure-rules.md)
-  - [Szerkesztőként: Az alkalmazás testreszabása az operátorok számára](tutorial-customize-operator.md)
-  - [Operátorként: Eszközök monitorozása](tutorial-monitor-devices.md)
-  - [Operátorként: Valós eszköz hozzáadása a megoldáshoz](tutorial-add-device.md)
-  - [Eszközfejlesztőként: Kód létrehozása az eszközökhöz](tutorial-add-device.md#prepare-the-client-code)
+- További információ a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md)szolgáltatásról.
+- Útmutató [Azure IoT Edge eszköz csatlakoztatásához](./tutorial-add-edge-as-leaf-device.md).
+- További információ az [Azure IoT technológiákról és szolgáltatásokról](../../iot-fundamentals/iot-services-and-technologies.md).

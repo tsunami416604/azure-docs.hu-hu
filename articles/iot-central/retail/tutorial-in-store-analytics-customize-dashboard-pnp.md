@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702692"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022171"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central Store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
+Ebben az oktatóanyagban a Builder megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central in-store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -35,12 +34,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt a szerkesztőnek el kell végeznie az első oktatóanyagot az Azure IoT Central Store Analytics-alkalmazás létrehozásához és az eszközök hozzáadásához:
+A szerkesztőnek el kell végeznie az oktatóanyagot az Azure IoT Central Store Analytics-alkalmazás létrehozásához és az eszközök hozzáadásához:
 
 * [Áruházbeli elemzési alkalmazás létrehozása az Azure IoT Centralban](./tutorial-in-store-analytics-create-app-pnp.md) (kötelező)
 
 ## <a name="change-the-dashboard-name"></a>Irányítópult nevének módosítása
-Az operátor irányítópultjának testreszabásához szerkessze az alapértelmezett irányítópultot az alkalmazásban. Szükség esetén további új irányítópultokat is létrehozhat. Az irányítópult az alkalmazásban való testreszabásának első lépése a név módosítása.
+Az operátor irányítópultjának testreszabásához szerkesztenie kell az alapértelmezett irányítópultot az alkalmazásban. Emellett további új irányítópultokat is létrehozhat. Az irányítópult az alkalmazásban való testreszabásának első lépése a név módosítása.
 
 1. Navigáljon az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyére.
 
@@ -54,7 +53,7 @@ Az operátor irányítópultjának testreszabásához szerkessze az alapértelme
 
 1. Adjon meg egy rövid nevet az irányítópultnak az **irányítópult neve mezőben.** Ez az oktatóanyag egy contoso nevű kitalált vállalatot használ, és a példában szereplő irányítópult neve *contoso-irányítópult*. 
 
-1. Kattintson a **Mentés** gombra. Ezzel menti a módosításokat az irányítópulton, és letiltja a szerkesztési módot.
+1. Kattintson a **Mentés** gombra. A módosítások az irányítópulton lesznek mentve, és a szerkesztési mód le van tiltva.
 
     ![Azure IoT Central-irányítópult nevének módosítása](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -93,7 +92,7 @@ A tárolóban található érzékelő zónák térképét megjelenítő képcsem
 
     ![Azure IoT Central áruházbeli Térkép mentése](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-map-save.png)
 
-    A példában szereplő contoso Store-Térkép négy zónát mutat: két pénztári zónát, egy ruházati és testápolási zónát, valamint egy, a élelmiszerekhez és a delihoz tartozó zónát. Ebben az oktatóanyagban a telemetria biztosításához ezeket a zónákat fogja hozzárendelni.
+    A példában szereplő contoso Store-Térkép négy zónát mutat: két pénztári zónát, egy ruházati és testápolási zónát, valamint egy, a élelmiszerekhez és a delihoz tartozó zónát. Ebben az oktatóanyagban a telemetria biztosításához ezeket a zónákat társítja az érzékelőkhöz.
 
     ![Azure IoT Central tároló zónák](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-zones.png)
 
@@ -185,7 +184,7 @@ A **People Traffic** csempe szerkesztése a csak két telemetria megjelenítés�
 
 1. A **telemetria** válassza a **Count 1**, a **2**. és a **3**. számú elemet. 
 
-1. Válassza a **konfiguráció frissítése**lehetőséget. Ezzel törli a csempe meglévő konfigurációját. 
+1. Válassza a **konfiguráció frissítése**lehetőséget. Törli a csempe meglévő konfigurációját. 
 
 1. Válassza ismét a **configure (Konfigurálás** ) lehetőséget a **People Traffic** csempén.
 
@@ -233,7 +232,7 @@ Parancs hozzáadása az átjáró újraindításához:
 
 1. Válassza a **Szerkesztés** elemet. 
 
-1. Válassza a `C500` lehetőséget az **eszköz sablonja** listában. Ez a Rigado C500-átjáró sablonja. 
+1. Válassza a `C500` lehetőséget az **eszköz sablonja** listában. Ez a sablon a Rigado C500-átjáróhoz. 
 
 1. Válassza ki az átjáró példányát az **eszköz példányában**.
 

@@ -4,12 +4,12 @@ description: Ismerje meg, hogy a Azure Backup lehetővé teszi, hogy az Azure im
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997360"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022613"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 
@@ -75,6 +75,15 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
 
     ![Importálási képernyő](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. Válassza az átvitel lehetőséget a **saját lemezek használatával**.
+
+    >[!NOTE]
+    >Javasoljuk, hogy a kezdeti biztonsági mentési adatok kapcsolat nélküli átviteléhez használja a Azure Data Box lehetőséget. Ez a lehetőség elmenti a saját Azure-kompatibilis lemezek beszerzéséhez szükséges erőfeszítést azáltal, hogy Microsoft által védett, biztonságos és illetéktelen hozzáférést biztosító Azure-beli adatdoboz-eszközöket biztosít, amelyekhez a biztonsági mentési adatait közvetlenül a MARS-ügynök tudja írni.
+
+3. Kattintson a **tovább** gombra, és adja meg figyelmesen a bemeneti adatokat:
+
+    ![Adja meg a lemez adatait](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    A bemenetek leírása a következő:
 
     * **Átmeneti hely**: az az ideiglenes tárolási hely, ahová a rendszer a kezdeti biztonsági másolatot írja. Előfordulhat, hogy az előkészítési hely egy hálózati megosztáson vagy egy helyi számítógépen található. Ha a számítógép és a forrásszámítógép másolása eltérő, javasoljuk, hogy az előkészítési hely teljes hálózati elérési útját határozza meg.
@@ -85,21 +94,21 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
   
    Adja meg a bemeneteket a képernyőn, majd kattintson a **tovább**gombra. Mentse a megadott *átmeneti helyet* és az *Azure importálási feladatának nevét*, mivel ezek az információk szükségesek a lemezek előkészítéséhez.
 
-2. Ha a rendszer kéri, jelentkezzen be az Azure-előfizetésbe. Be kell jelentkeznie, hogy Azure Backup létre tudja hozni a Azure Active Directory alkalmazást, és meg kell adnia a szükséges engedélyeket az Azure import szolgáltatás eléréséhez.
+4. Ha a rendszer kéri, jelentkezzen be az Azure-előfizetésbe. Be kell jelentkeznie, hogy Azure Backup létre tudja hozni a Azure Active Directory alkalmazást, és meg kell adnia a szükséges engedélyeket az Azure import szolgáltatás eléréséhez.
 
-    ![Biztonsági mentés](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![Biztonsági mentés most](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. Fejezze be a munkafolyamatot, és a Azure Backup ügynök konzolján kattintson a **biztonsági mentés most**lehetőségre.
+5. Fejezze be a munkafolyamatot, és a Azure Backup ügynök konzolján kattintson a **biztonsági mentés most**lehetőségre.
 
-    ![Biztonsági mentés](./media/backup-azure-backup-import-export/backupnow.png)
+    ![Biztonsági mentés most](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. A varázsló Megerősítés lapján kattintson a **biztonsági mentés**gombra. A kezdeti biztonsági mentés a telepítés részeként íródik az átmeneti területre.
+6. A varázsló Megerősítés lapján kattintson a **biztonsági mentés**gombra. A kezdeti biztonsági mentés a telepítés részeként íródik az átmeneti területre.
 
    ![Erősítse meg, hogy most már készen áll a biztonsági mentésre](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     A művelet befejeződése után az előkészítési hely készen áll a lemez-előkészítésre.
 
-   ![Biztonsági mentés](./media/backup-azure-backup-import-export/opbackupnow.png)
+   ![Biztonsági mentés most](./media/backup-azure-backup-import-export/opbackupnow.png)
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>A SATA-meghajtók előkészítése és a szállítás az Azure-ba
 
@@ -206,4 +215,3 @@ A kezdeti biztonsági mentés befejezését követően biztonságosan törölhet
 ## <a name="next-steps"></a>Következő lépések
 
 * Az Azure importálási/exportálási munkafolyamatával kapcsolatos bármilyen kérdés esetén tekintse át az [adatok blob Storage-ba való átvitelére szolgáló Microsoft Azure import/export szolgáltatás használatát](../storage/common/storage-import-export-service.md)ismertető témakört.
-

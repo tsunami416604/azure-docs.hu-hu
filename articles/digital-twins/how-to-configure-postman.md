@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765394"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023310"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -33,45 +33,15 @@ A Poster-ügyfélen keresztül a megoldások fejlesztői megadhatják a HTTP-ké
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Azure Active Directory konfigurálása a OAuth 2,0 implicit engedélyezési folyamat használatára
 
-Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit engedélyezési folyamat használatára.
-
-1. Nyissa meg az **API-engedélyek** panelt az alkalmazás regisztrálásához. Válassza **az engedély hozzáadása** gombot. A **kérelem API-engedélyek** ablaktáblán válassza a **saját szervezet által használt API** -k fület, majd keresse meg a következőt:
-    
-    1. `Azure Digital Twins` kérdésre adott válaszban foglalt lépéseket. Válassza ki az **Azure Digital Twins** API-t.
-
-        [![Search API vagy Azure digitális Twins](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. Másik lehetőségként keressen rá `Azure Smart Spaces Service`. Válassza ki az **Azure Smart Spaces szolgáltatás** API-ját.
-
-        [![Search API az Azure intelligens Spaces szolgáltatáshoz](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > A megjelenő Azure AD API-név és-azonosító a bérlőtől függ:
-    > * A bérlői és az vevői fiókok tesztelésével `Azure Digital Twins`kereshet.
-    > * Más Microsoft-fiókoknak `Azure Smart Spaces Service`kell keresniük.
-
-1. A kiválasztott API az **Azure Digital Twins** néven jelenik meg ugyanabban a **kérelem API-engedélyek** ablaktáblán. Válassza az **olvasás (1)** legördülő listát, majd válassza az **olvasás. írás** jelölőnégyzetet. Kattintson az **engedélyek hozzáadása** gombra.
-
-    [![API-engedélyek hozzáadása az Azure Digital Twins-hoz](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. A szervezet beállításaitól függően előfordulhat, hogy további lépéseket kell tennie ahhoz, hogy rendszergazdai hozzáférést biztosítson ehhez az API-hoz. További információért forduljon a rendszergazdához. A rendszergazdai hozzáférés jóváhagyása után az **API-engedélyek** ablaktáblán a **rendszergazdai jóváhagyás szükséges** oszlop az API-khoz hasonlóan fog megjelenni:
-
-    [![rendszergazdai jóváhagyás megadása](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. Egy második **átirányítási URI** beállítása `https://www.getpostman.com/oauth2/callback`ra.
+1. [A rövid](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) útmutató lépéseit követve hozzon létre és konfiguráljon egy Azure Active Directory alkalmazást. Azt is megteheti, hogy újból felhasznál egy meglévő alkalmazás-regisztrációt.
 
     [új Poster átirányítási URI ![konfigurálása](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Győződjön meg arról, hogy [az alkalmazás **nyilvános ügyfélként**van regisztrálva](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), nyissa meg az alkalmazás regisztrációjának **hitelesítés** paneljét, majd görgessen le az ablaktáblán. Az **alapértelmezett ügyfél típusa** szakaszban válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként**való kezeléséhez, és kattintson a **Mentés**gombra.
+1. Most adjon hozzá egy **átirányítási URI** -t a `https://www.getpostman.com/oauth2/callback`hoz.
 
-    Jelölje be a **hozzáférési jogkivonatok** lehetőséget a **oauth2AllowImplicitFlow** beállítás engedélyezéséhez a manifest. JSON fájlban.
+1. Jelölje be az **implicit engedélyezési** > **hozzáférési tokenek** jelölőnégyzetet a OAuth 2,0 implicit engedélyezési folyamat használatának engedélyezéséhez. Válassza a **Konfigurálás**, majd a **Mentés**lehetőséget.
 
-    [![nyilvános ügyfél-konfigurációs beállítás](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Másolja és őrizze meg Azure Active Directory **alkalmazásának azonosítóját** . Ezt az alábbi lépések használják.
-
-   [![Azure Active Directory alkalmazás azonosítója](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Másolja a Azure Active Directory-alkalmazás **ügyfél-azonosítóját** .
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 token beszerzése
 
@@ -85,13 +55,11 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Név  | Csere erre | Példa |
+    | Name (Név)  | Csere erre | Példa |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | A bérlő vagy szervezet neve. A Azure Active Directory alkalmazás regisztrációjának alfanumerikus **bérlői azonosítója** helyett használja az emberi felhasználóbarát nevet. | `microsoft` |
 
 1. Az alkalmazás letöltéséhez nyissa meg a [www.getpostman.com](https://www.getpostman.com/) .
-
-1. Nyissa meg a Poster alkalmazást, és kattintson az új elemre | Hozzon létre egy újat, és válassza a kérelem lehetőséget. Adja meg a kérelem nevét. Válassza ki azt a gyűjteményt vagy mappát, ahová menteni szeretné, majd kattintson a Mentés gombra. 
 
 1. A GET kérést szeretnénk tenni. Válassza az **Engedélyezés** lapot, válassza a OAuth 2,0, majd az **új hozzáférési jogkivonat beolvasása**elemet.
 
@@ -99,7 +67,7 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL-cím | `https://www.getpostman.com/oauth2/callback` |
-    | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a **2. lépésből** |
+    | Hitelesítési URL-cím | Az **1. lépésben** szereplő **engedélyezési URL-cím** használata |
     | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy újrafelhasznált Azure Active Directory **alkalmazás azonosítójának** használata |
     | Hatókör | Hagyja üresen |
     | Állami | Hagyja üresen |

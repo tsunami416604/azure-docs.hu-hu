@@ -3,24 +3,24 @@ title: Az Azure IoT Central kiterjesztése egyéni elemzéssel | Microsoft Docs
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást egyéni elemzések és vizualizációk végrehajtásához. Ez a megoldás Azure Databricks használ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987628"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023837"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
 Ez az útmutató bemutatja, hogyan bővíthető a IoT Central alkalmazása egyéni elemzésekkel és vizualizációkkal. A példa egy [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) munkaterületet használ a IoT Central telemetria stream elemzéséhez, valamint vizualizációk, például [Box-ábrázolások](https://wikipedia.org/wiki/Box_plot)létrehozásához.
 
-Ez a útmutató azt mutatja be, hogyan terjeszthető ki IoT Central, hogy mit tehet a [beépített elemzési eszközökkel](howto-create-analytics.md).
+Ez a útmutató azt mutatja be, hogyan terjeszthető ki IoT Central, hogy mit tehet a [beépített elemzési eszközökkel](./howto-create-custom-analytics.md).
 
 Ebben a útmutatóban a következőket sajátíthatja el:
 
@@ -40,14 +40,16 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | Díjszabási csomag | Standard |
-| Alkalmazássablon | Örökölt alkalmazás |
+| Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
 | Könyvtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region (Régió) | Egyesült Államok |
+| Region (Régió) | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
+
+Ez az alkalmazás sablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetria küldenek.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
@@ -101,7 +103,7 @@ A Event Hubs névtere a következő képernyőképre hasonlít:
 
 Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
 
-1. Navigáljon a **folyamatos adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
+1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés**lehetőséget:
 
     | Beállítás | Value (Díj) |
@@ -114,7 +116,7 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Eszközök | Ki |
     | Eszközök sablonjai | Ki |
 
-![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-analytics/cde-configuration.png)
+![Adatexportálási konfiguráció](media/howto-create-custom-analytics/cde-configuration.png)
 
 A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
 
@@ -132,7 +134,7 @@ A fürt létrehozásához használja a következő táblázatban található inf
 | ------- | ----- |
 | Fürt neve | centralanalysis |
 | Fürt üzemmód | Standard |
-| Databricks Runtime verziója | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python-verzió | 3 |
 | Automatikus skálázás engedélyezése | Nem |
 | Megszakítás ennyi perc inaktivitás után | 30 |
@@ -229,4 +231,4 @@ Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 * Stream telemetria egy IoT Central alkalmazásból *folyamatos adatexportálás*használatával.
 * Hozzon létre egy Azure Databricks környezetet a telemetria-adatelemzéshez és a nyomtatáshoz.
 
-Most, hogy már tudja, hogyan hozhat létre egyéni elemzéseket, a következő lépés az, hogy megtudja, hogyan [jelenítheti meg és elemezheti az Azure IoT Central-adatait egy Power bi irányítópulton](howto-connect-powerbi.md).
+Most, hogy már tudja, hogyan hozhat létre egyéni elemzéseket, a javasolt következő lépés az [alkalmazás kezelésének](howto-administer.md)megismerése.

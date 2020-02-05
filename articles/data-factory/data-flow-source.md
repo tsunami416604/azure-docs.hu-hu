@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440223"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023514"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
 
@@ -44,6 +44,8 @@ Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beá
 
 ![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
 
+A **kapcsolatok tesztelése:** Annak ellenőrzése, hogy az adatfolyam Spark-szolgáltatása sikeresen tud-e csatlakozni a forrás-adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
+
 **Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
 
 * Jelölje be a **séma drift engedélyezése** jelölőnégyzetet, ha a forrás oszlopai gyakran változnak. Ez a beállítás lehetővé teszi, hogy az összes bejövő forrás mező áthaladjon a fogadóra történő átalakításokon.
@@ -69,13 +71,17 @@ Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg
 
 ![Beállítások a kivetítés lapon](media/data-flow/source3.png "Vetület")
 
-Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az **adattípusok észlelése** lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez. 
+Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az **adattípusok észlelése** lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez.
+
+A **séma alaphelyzetbe állítása** visszaállítja a leképezést a hivatkozott adatkészletben definiált értékre.
 
 Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból származtatott oszlop transzformációjában. Az oszlopnevek módosításához válasszon transzformációt.
 
 ### <a name="import-schema"></a>Séma importálása
 
-Az összetett adatstruktúrákat támogató adatkészletek, például a Avro és a CosmosDB nem igénylik a séma-definíciókat az adatkészletben. Ezért az ilyen típusú források **kivetítés** lapján a **séma importálása** gombra kattinthat.
+A **leképezés** lapon a **séma importálása** gomb lehetővé teszi, hogy egy aktív hibakeresési fürttel hozzon létre egy séma-kivetítést. Minden Forrástípus esetében elérhető, a séma importálásakor a rendszer felülírja az adatkészletben definiált leképezést. Az adatkészlet-objektum nem lesz módosítva.
+
+Ez olyan adatkészletekben hasznos, mint az összetett adatstruktúrákat támogató Avro és CosmosDB, és nem igénylik a séma-definíciókat az adatkészletben.
 
 ## <a name="optimize-the-source-transformation"></a>A forrás átalakítás optimalizálása
 

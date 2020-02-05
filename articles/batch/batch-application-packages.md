@@ -3,8 +3,8 @@ title: Alkalmazáscsomag telepítése számítási csomópontokon – Azure Batc
 description: A Azure Batch alkalmazáscsomag funkciójának használatával egyszerűen kezelhet több alkalmazást és verziót a Batch számítási csomópontokon történő telepítéshez.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/26/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc136a0359c73b164eb1e175092a97f2fde4bdfa
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029792"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025928"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -141,7 +141,7 @@ Kattintson az **Alkalmazások** > **Hozzáadás** elemre.
 
 Az **új alkalmazás** ablak a következő mezőket biztosítja az új alkalmazás-és alkalmazáscsomag beállításainak megadásához.
 
-**Alkalmazásazonosító**
+**Alkalmazás azonosítója**
 
 Ez a mező adja meg az új alkalmazás AZONOSÍTÓját, amelyre a szabványos Azure Batch azonosító érvényesítési szabályok vonatkoznak. Az alkalmazás-AZONOSÍTÓk nyújtásának szabályai a következők:
 

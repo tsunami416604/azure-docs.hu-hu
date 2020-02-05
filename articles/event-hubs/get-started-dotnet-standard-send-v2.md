@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: fc9ffc62e765f3b8c8fa418f3189f84686987821
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907116"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023242"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs-.NET Core-ból (Azure. Messaging. EventHubs) 
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat a Event Hubsba, az adatokat tároló fürt vagy folyamat eseményei alapján tárolhatja. Például átalakíthatja az eseményeket egy valós idejű elemzési szolgáltató használatával. Ez a nagy léptékű esemény-gyűjtési és-feldolgozási képesség a modern alkalmazás-architektúrák kulcsfontosságú összetevője, beleértve a eszközök internetes hálózata (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -118,9 +118,9 @@ Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amel
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
 Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-tárolóként. Egy Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
 
-1. [Azure Storage-fiók létrehozása](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
-2. [BLOB-tároló létrehozása](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+1. [Azure Storage-fiók létrehozása](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [BLOB-tároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     Jegyezze fel a kapcsolatok sztringjét és a tároló nevét. Ezeket a fogadási kódban fogja használni. 
 

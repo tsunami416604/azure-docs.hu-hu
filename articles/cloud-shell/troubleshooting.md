@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961556"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024279"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
 
@@ -36,8 +36,8 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Cloud Shell letiltása zárolt hálózati környezetben
 
-- **Részletek**: a rendszergazdák letilthatják a Cloud Shell hozzáférését a felhasználók számára. A Cloud Shell hozzáférést biztosít a `ux.console.azure.com` tartományhoz, amely megtagadható, leállíthatja a Cloud Shell entrypoints való hozzáférést, beleértve a portal.azure.com, a shell.azure.com, a Visual Studio Code Azure-fiók bővítményét és a docs.microsoft.com.
-- **Megoldás**: a hálózati beállításokon keresztül korlátozza a `ux.console.azure.com` elérését a környezetében. A Cloud Shell ikon továbbra is létezik a portal.azure.com, de nem fog sikeresen csatlakozni a szolgáltatáshoz.
+- **Részletek**: a rendszergazdák letilthatják a Cloud Shell hozzáférését a felhasználók számára. A Cloud Shell hozzáférést biztosít a `ux.console.azure.com` tartományhoz, amely megtagadható, leállíthatja a Cloud Shell entrypoints való hozzáférést, beleértve a portal.azure.com, a shell.azure.com, a Visual Studio Code Azure-fiók bővítményét és a docs.microsoft.com. Az USA kormányzati felhőben a BelépésiPont `ux.console.azure.us`; nincs megfelelő shell.azure.us.
+- **Megoldás**: korlátozza a hozzáférést `ux.console.azure.com` vagy `ux.console.azure.us` hálózati beállításokon keresztül a környezetéhez. A Cloud Shell ikon továbbra is szerepel a Azure Portalban, de nem fog sikeresen csatlakozni a szolgáltatáshoz.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403 RequestDisallowedByPolicy
 

@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549380"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022494"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Az Azure AD-séma ismertetése
 A Azure Active Directory (Azure AD) egyik objektuma, például bármely címtár, egy programozott, magas szintű adatszerkezet, amely felhasználók, csoportok és névjegyek számára is jelent. Amikor új felhasználót vagy kapcsolatot hoz létre az Azure AD-ben, az adott objektum új példányát hozza létre. Ezek a példányok a tulajdonságaik alapján különböztethetők meg.
@@ -72,7 +72,7 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
 1.  Lépjen a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer).
 1.  Jelentkezzen be a globális rendszergazdai fiókjával.
 1.  A bal oldalon válassza az **engedélyek módosítása** lehetőséget, és győződjön meg arról, hogy a **könyvtár. ReadWrite. All** .
-1.  Futtassa a lekérdezési https://graph.microsoft.com/beta/serviceprincipals/. Ez a lekérdezés az egyszerű szolgáltatások listáját adja vissza.
+1.  Futtassa a lekérdezést https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith (DisplayName, "Active"). Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
 1.  Keresse meg `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` és jegyezze fel `"id"`értékét.
     ```
     "value": [

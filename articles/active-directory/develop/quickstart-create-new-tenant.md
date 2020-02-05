@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704153"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023157"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: bérlő beállítása
 
@@ -57,7 +57,7 @@ Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve a
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Új Azure AD-bérlő létrehozása
 
-Ha még nem rendelkezik Azure AD-bérlővel, vagy ha újat szeretne létrehozni, kövesse a [címtár létrehozása élmény](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) utasításait. Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
+Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy újat a fejlesztéshez, tekintse meg a rövid útmutatót [, vagy egyszerűen](../fundamentals/active-directory-access-create-new-tenant.md) kövesse a [címtár-létrehozási élményt](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
 
 - **Szervezet neve**
 - **Kezdeti tartomány** – a *.onmicrosoft.com része lesz. A tartományt később testreszabhatja.

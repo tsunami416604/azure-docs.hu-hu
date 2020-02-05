@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés alkalmazásokhoz az Azure AD-alkalmazásproxyval |} A Microsoft Docs
-description: Kapcsolja be egyszeri bejelentkezést a közzétett helyszíni alkalmazásait az Azure AD-alkalmazásproxy az Azure Portalon.
+title: Egyszeri bejelentkezés az alkalmazásokba az Azure AD Application Proxy használatával | Microsoft Docs
+description: Kapcsolja be az egyszeri bejelentkezést a közzétett helyszíni alkalmazásokhoz az Azure AD Application Proxy a Azure Portalban.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,36 +14,49 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18510bd7ace6ca87278b5bf68f79b372251ac0e1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807825"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025741"
 ---
-# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Az egyszeri bejelentkezés alkalmazásproxyval való vaulting jelszó
+# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy
 
-Az Azure Active Directory Application Proxy segítségével növelje hatékonyságát azáltal, hogy a távoli alkalmazottak biztonságosan érhetik el azokat, túl a helyszíni alkalmazás-közzététel. Az Azure Portalon is állíthat be egyszeri bejelentkezéssel (SSO) ezekre az alkalmazásokra. A felhasználók csak az Azure AD-hitelesítést kell, és nem kell ismét jelentkezzen be a vállalati alkalmazás eléréséhez.
+Azure Active Directory Application Proxy segít a hatékonyság növelésében a helyszíni alkalmazások közzétételével, így a távoli alkalmazottak is biztonságosan férhetnek hozzájuk. A Azure Portal az egyszeri bejelentkezést (SSO) is beállíthatja ezekhez az alkalmazásokhoz. A felhasználóknak csak az Azure AD-ben kell hitelesíteniük magukat, és nem kell újból bejelentkezniük a vállalati alkalmazásba.
 
-Az alkalmazásproxy támogatja több [egyszeri bejelentkezési módok](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Jelszóalapú bejelentkezés célja az alkalmazásokat, amelyek egy felhasználónév – jelszó kombinációt használja a hitelesítéshez. Az alkalmazás konfigurálása a jelszóalapú bejelentkezés, a felhasználóknak kell jelentkezzen be a helyszíni alkalmazás egyszer. Ezt követően az Azure Active Directory tárolja a bejelentkezési adatait, és automatikusan átadja az alkalmazás, amikor a felhasználók távolról elérni.
+Az alkalmazásproxy számos [egyszeri bejelentkezési módot](what-is-single-sign-on.md#choosing-a-single-sign-on-method)támogat. A jelszó alapú bejelentkezés olyan alkalmazások számára készült, amelyek Felhasználónév/jelszó kombinációt használnak a hitelesítéshez. Ha a jelszó-alapú bejelentkezést az alkalmazáshoz konfigurálja, a felhasználóknak egyszer be kell jelentkezniük a helyszíni alkalmazásba. Ezután a Azure Active Directory tárolja a bejelentkezési adatokat, és automatikusan megadja azt az alkalmazásnak, amikor a felhasználók távolról érik el.
 
-Érdemes már közzétett és tesztelte az alkalmazást az alkalmazásproxy használatával. Ha nem, kövesse a lépéseket a [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md) majd térjen vissza ide.
+Az alkalmazást már közzétette és tesztelte az Application proxyval. Ha nem, kövesse az [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md) című témakör lépéseit, majd térjen vissza ide.
 
-## <a name="set-up-password-vaulting-for-your-application"></a>Az alkalmazás vaulting jelszó beállítása
+## <a name="set-up-password-vaulting-for-your-application"></a>Jelszó-tároló beállítása az alkalmazáshoz
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**.
-1. A listában jelölje ki az alkalmazást, amelyet szeretne az egyszeri bejelentkezés beállítása.  
-1. Válassza ki **egyszeri bejelentkezési**.
+1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **az összes alkalmazást**.
+1. A listából válassza ki az SSO-val beállítani kívánt alkalmazást.  
+1. **Alkalmazásproxy**kiválasztása 
+1. Módosítsa az **előhitelesítés típusát** **áteresztő** értékre, majd válassza a **Mentés**lehetőséget. Később visszaválthat **Azure Active Directory** típusra. 
+1. Válassza az **egyszeri bejelentkezés**lehetőséget.
 
-   ![Egyszeri bejelentkezés az alkalmazás áttekintése oldalon válassza ki](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
+   ![Az alkalmazás áttekintés lapjáról válassza az egyszeri bejelentkezés lehetőséget.](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
-1. Az egyszeri bejelentkezési módot válassza **jelszóalapú bejelentkezés**.
-1. A bejelentkezési URL-címet adja meg az URL-címet az oldal amelyen a felhasználók megadják felhasználónevüket és jelszavukat, jelentkezzen be az alkalmazást a vállalati hálózaton kívül. Ez lehet a külső URL-CÍMÉT, amikor az alkalmazás alkalmazásproxyn keresztül közzétett létrehozott.
+1. Az egyszeri bejelentkezés mód esetében válassza a **jelszó alapú bejelentkezés**lehetőséget.
+1. A bejelentkezési URL-cím mezőbe írja be annak az oldalnak az URL-címét, amelyben a felhasználók megadják a felhasználónevét és jelszavát, hogy bejelentkezzenek az alkalmazásba a vállalati hálózaton kívül. Ez lehet a külső URL-cím, amelyet az alkalmazás alkalmazásproxy használatával történő közzétételekor hozott létre.
 
-   ![Válassza ki a jelszóalapú bejelentkezés, és adja meg az URL-cím](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
+   ![Válassza a jelszó alapú bejelentkezés lehetőséget, és adja meg az URL-címét](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. Kattintson a **Mentés** gombra.
+1. **Alkalmazásproxy**kiválasztása 
+1. Módosítsa az **előhitelesítés típusát** **Azure Active Directoryre** , majd válassza a **Mentés**lehetőséget. 
+1. Válassza **a felhasználók és csoportok**lehetőséget.
+1. Rendeljen felhasználókat az alkalmazáshoz a **felhasználó hozzáadása**lehetőség kiválasztásával. 
+1. Ha előre definiálni szeretné a felhasználó hitelesítő adatait, jelölje be a Felhasználónév előtt található jelölőnégyzetet, majd válassza a **hitelesítő adatok frissítése**lehetőséget.
+1. Válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **minden alkalmazás**lehetőséget.
+1. A listából válassza ki azt az alkalmazást, amelyet a jelszó egyszeri bejelentkezésével konfigurált.
+1. Válassza a **branding**elemet. 
+1. Frissítse a **Kezdőlap URL-címét** a **Bejelentkezés URL-címére** a jelszó-SSO lapon, majd válassza a **Mentés**lehetőséget.  
+
+
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
@@ -51,9 +64,9 @@ Az alkalmazásproxy támogatja több [egyszeri bejelentkezési módok](what-is-s
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 
-Nyissa meg a külső URL-cím, amely az alkalmazás konfigurálva a távoli hozzáféréshez. Jelentkezzen be hitelesítő adataival, amelyet az alkalmazás (vagy egy Ön által beállított hozzáférési a teszt fiók hitelesítő adatait). Miután a bejelentkezés sikeres, hagyja meg az alkalmazást, és térjen vissza a hitelesítő adatok újbóli megadása nélkül kell lennie.
+Nyissa meg a saját alkalmazások portált. Jelentkezzen be a hitelesítő adataival (vagy a hozzáféréshez beállított tesztelési fiók hitelesítő adataival). Ha sikeresen bejelentkezett, kattintson az alkalmazás ikonjára. Ez elindíthatja a saját alkalmazások biztonságos bejelentkezési böngésző bővítményének telepítését. Ha a felhasználó előre megadott hitelesítő adatokkal rendelkezik, a hitelesítés automatikusan megtörténik, ellenkező esetben a felhasználónevet vagy a jelszót kell megadnia az első alkalommal. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Olvassa el más módokon megvalósításához [egyszeri bejelentkezés](what-is-single-sign-on.md)
-- Ismerje meg [fér hozzá az alkalmazásokhoz távolról az Azure AD-alkalmazásproxy történő futtatásának biztonsági szempontjai](application-proxy-security.md)
+- További információk az [egyszeri bejelentkezés](what-is-single-sign-on.md) megvalósításának egyéb módjairól
+- Tudnivalók [az alkalmazások távoli Azure-ad Application proxy való elérésének biztonsági szempontjairól](application-proxy-security.md)

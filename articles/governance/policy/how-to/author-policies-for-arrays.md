@@ -3,12 +3,12 @@ title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873097"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023191"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -140,7 +140,8 @@ A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocatio
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelése három szabványos forgatókönyvet tartalmaz: none, any és ALL. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
+Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi, hogy a tömb egyes elemeit egyenként, a logikai és a köztük lévő elemeket is kiértékelje. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés.
+Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
 Ez a tény fontos, hogy tisztában legyen azzal, hogyan **\[\*** a tömb egyes elemeinek kiértékelése \].
@@ -183,16 +184,16 @@ Az alábbi példában szereplő összes feltételnél cserélje le a `<field>`t 
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
-|Állapot |Eredmény |Magyarázat |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Házirend hatása |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Házirend hatása |A tömb elemeinek értéke false (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1), így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Házirend hatása |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Semmit |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
-|`{<field>,"Equals":"127.0.0.1"}` |Semmit |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
-|`{<field>,"Equals":"10.0.4.1"}` |Semmit |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|Állapot |Eredmény | Alkalmazási helyzet |Magyarázat |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Nincs |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Házirend hatása |Egy vagy több egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nincs |Egy vagy több egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_. A logikai operátor hamis (**nem** _igaz_) értéket ad vissza, ezért a hatás nincs aktiválva. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Házirend hatása |Nem minden egyezés |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Házirend hatása |Nem minden egyezés |A tömb elemeinek értéke false (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1), így az **Equals** feltétel _hamis_. A logikai operátor igaz (**nem** _hamis) értéket_ad vissza, ezért a hatás aktiválódik. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nincs |Összes egyezés |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nincs |Összes egyezés |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
 
 ## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 

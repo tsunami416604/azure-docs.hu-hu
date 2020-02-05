@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cd2e34be7ef55c4ee6d18c6db6010134a7d935d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895953"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020624"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
 
@@ -136,7 +137,7 @@ Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexe
 > [!NOTE]
 > Az Azure Cognitive Search az árképzési szinttől függően Kinyeri a szöveg mennyiségét: 32 000 karakter az ingyenes szinthez, 64 000 az alapszintű, 4 000 000 a standard, a 8 000 000 a standard S2 és az 16 000 000 standard S3-hoz. A rendszer figyelmeztetést tartalmaz az indexelő állapotának a csonkolt dokumentumokra adott válaszában.  
 
-* A blobon (ha van ilyen) a felhasználó által megadott metaadat-tulajdonságok szó szerint vannak kibontva.
+* A blobon (ha van ilyen) a felhasználó által megadott metaadat-tulajdonságok szó szerint vannak kibontva. Vegye figyelembe, hogy ehhez az indexben meg kell adni egy olyan mezőt, amelynek a neve megegyezik a blob metaadat-kulcsával. Ha például a blob `High`értékkel rendelkező `Sensitivity` metaadat-kulcsával rendelkezik, akkor a keresési indexben meg kell adnia egy `Sensitivity` nevű mezőt, amely a `High`értékkel lesz feltöltve.
 * A Blobok szabványos metaadat-tulajdonságainak kibontása a következő mezőkbe történik:
 
   * **metaadatok\_storage\_neve** (EDM. String) – a blob fájlneve. Ha például blob-/My-Container/My-Folder/subfolder/Resume.pdf rendelkezik, a mező értéke `resume.pdf`.

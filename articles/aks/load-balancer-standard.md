@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045049"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025707"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.81 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>A terheléselosztó kimenő szabályának megjelenítése
+## <a name="configure-outbound-ports-and-idle-timeout"></a>Kimenő portok és Üresjárati időkorlát konfigurálása
 
-A terheléselosztó által létrehozott Kimenő szabály megjelenítéséhez használja az [az Network LB kimenő-Rule List][az-network-lb-outbound-rule-list] lehetőséget, és adja meg az AK-fürt Node erőforráscsoportot:
+> [!WARNING]
+> A következő szakasz a nagyobb léptékű hálózatkezelés speciális forgatókönyveit és az alapértelmezett konfigurációk SNAT-kimerülési problémáinak kezelését ismerteti. A virtuális gépek és az IP-címek esetében a rendelkezésre álló kvóta pontos leltározása szükséges ahhoz, hogy a *AllocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* az alapértelmezett értékről az egészséges fürtök fenntartása érdekében módosítsa.
+> 
+> A *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes* értékeinek módosítása jelentősen befolyásolhatja a terheléselosztó kimenő szabályának viselkedését. Az értékek frissítése előtt tekintse át az [Load Balancer kimenő szabályokat][azure-lb-outbound-rules-overview], a [terheléselosztó kimenő szabályait][azure-lb-outbound-rules]és a [kimenő kapcsolatokat az Azure-ban][azure-lb-outbound-connections] , mielőtt frissíti ezeket az értékeket a módosítások hatásának teljes megértéséhez.
+
+A kimenő lefoglalt portok és a tétlen időtúllépések a [SNAT][azure-lb-outbound-connections]-hez használatosak. Alapértelmezés szerint a *standard* SKU Load Balancer [automatikus hozzárendelést használ a kihelyezett portok számához a háttérbeli készlet mérete alapján][azure-lb-outbound-preallocatedports] , valamint az egyes portok 30 perces üresjárati időkorlátját. Az értékek megtekintéséhez használja az az [Network LB kimenő-Rule List][az-network-lb-outbound-rule-list] lehetőséget a terheléselosztó kimenő szabályának megjelenítéséhez:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-A példában a kimenetben a *AllocatedOutboundPorts* 0. A *AllocatedOutboundPorts* értéke azt jelenti, hogy a SNAT-portok kiosztása a háttérbeli készlet méretétől függően automatikus hozzárendelésre áll. További részletekért tekintse [meg az Azure-ban][azure-lb-outbound-connections] [Load Balancer kimenő][azure-lb-outbound-rules] és kimenő kapcsolatokat.
+A példa kimenete a *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes*alapértelmezett értékét jeleníti meg. A *AllocatedOutboundPorts* 0 értéke állítja be a kimenő portok számát a háttérbeli készlet méretétől függően a kimenő portok számának automatikus hozzárendelése használatával. Ha például a fürt 50 vagy kevesebb csomóponttal rendelkezik, az egyes csomópontok 1024 portjai vannak lefoglalva.
+
+Érdemes lehet módosítani a *allocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* beállítást, ha a fenti alapértelmezett konfiguráció alapján szeretné szembenézni a SNAT-kimerüléssel. Minden további IP-cím lehetővé teszi a 64 000 további portok kiosztását, az Azure-standard Load Balancer azonban nem növekszik automatikusan a portok száma csomóponton, ha további IP-címek vannak hozzáadva. Ezeket az értékeket módosíthatja a *Load-Balancer-kimenő-portok* és a *Load-Balancer – Idle-timeout* paraméterek beállításával. Példa:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> A kapcsolat vagy a skálázási problémák elkerülése érdekében [ki kell számítania a szükséges kvótát][calculate-required-quota] , mielőtt testreszabja a *allocatedOutboundPorts* . A *allocatedOutboundPorts* megadott értéknek a 8-as többszörösének is kell lennie.
+
+Fürt létrehozásakor a *Load-Balancer-kimenő-portok* és a *Load-Balancer-Idle-timeout* paramétereket is használhatja, de a *terheléselosztás által felügyelt-kimenő-IP-darabszám*, a *Load-Balancer-kimenő-* IP-címek vagy a *Load-Balancer-kimenő-IP-előtag* is megadható.  Példa:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+Ha módosítja a terheléselosztó *– kimenő – portok* és a *terheléselosztó – Üresjárati időkorlát* paramétereit az alapértelmezett értéktől, akkor ez a beállítás hatással van a terheléselosztó-profil viselkedésére, ami hatással van a teljes fürtre.
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>A allocatedOutboundPorts testreszabásához szükséges kvóta
+Elegendő kimenő IP-kapacitásra van szükség a csomópontok és a kívánt kimenő portok számától függően. A következő képlettel ellenőrizheti, hogy van-e elegendő kimenő IP-kapacitása: 
+ 
+*outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
+ 
+Ha például 3 *nodeVMs*van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs*kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
+ 
+Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>Meghatározott IP-tartományokhoz való hozzáférés korlátozása
 
@@ -239,9 +283,12 @@ További információ a Kubernetes Services szolgáltatásról a [Kubernetes Ser
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

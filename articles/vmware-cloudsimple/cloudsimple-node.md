@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple – a csomópontok áttekintése
-description: Ismerje meg a CloudSimple-csomópontokat és-fogalmakat.
+title: Azure VMware-megoldások (AVS) – a csomópontok áttekintése
+description: Ismerkedjen meg az AVS-csomópontokkal és-fogalmakkal.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 08d8fc3e6f1f2f83cf3c4fee3fdafb0bd07e336c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899020"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024925"
 ---
-# <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
+# <a name="avs-nodes-overview"></a>Az AVS-csomópontok áttekintése
 
-A csomópontok a privát felhő építőelemei. Csomópont:
+A csomópontok egy AVS privát felhő építőelemei. Csomópont:
 
 * Dedikált operációs rendszer nélküli számítási gazdagép, amelyen telepítve van egy VMware ESXi hypervisor  
-* Saját felhők létrehozásához vagy lefoglalásához használható számítási egység
-* Elérhető egy olyan régióban való üzembe helyezéshez vagy fenntartáshoz, ahol a CloudSimple szolgáltatás elérhető
+* Az AVS privát felhők létrehozásához megvásárolt vagy fenntartott számítástechnikai egység
+* Megvásárolható vagy foglalható egy olyan régióban, ahol az AVS szolgáltatás elérhető
 
-Létre kell hoznia egy privát felhőt a kiépített csomópontokból. Privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz. Privát felhő kibontásához adjon hozzá további csomópontokat.  Csomópontokat adhat hozzá egy meglévő fürthöz, vagy létrehozhat egy új fürtöt a Azure Portal csomópontjainak kiépítés, és társíthatja őket a CloudSimple szolgáltatáshoz.  Az összes kiépített csomópont látható a CloudSimple szolgáltatás alatt.  
+Hozzon létre egy AVS Private-felhőt a megvásárolt csomópontokból. Az AVS privát felhő létrehozásához legalább három csomópontra van szükség ugyanahhoz az SKU-hoz. Az AVS Private Cloud kibontásához további csomópontokat adjon hozzá. Csomópontokat adhat hozzá egy meglévő fürthöz, vagy létrehozhat egy új fürtöt, ha megvásárolja a csomópontokat a Azure Portalban, és társítja őket az AVS szolgáltatáshoz. A megvásárolt csomópontok az AVS szolgáltatás alatt láthatók. 
 
 ## <a name="provisioned-nodes"></a>Kiépített csomópontok
 
@@ -32,7 +32,7 @@ A kiépített csomópontok utólagos elszámolású kapacitást biztosítanak. A
 * Ha hitelkártyával fizet az Azure-előfizetésért, a kártyát azonnal kiszámlázzák.
 * Ha számlán számlázunk, a díjak a következő számlán jelennek meg.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-megoldás CloudSimple-csomópontok SKU-ban
+## <a name="vmware-solution-by-avs-nodes-sku"></a>VMware-megoldás AVS-csomópontok SKU-ban
 
 A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás számára.
 
@@ -47,16 +47,18 @@ A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás 
 
 ## <a name="limits"></a>Korlátozások
 
-A következő csomópont-korlátok a privát felhőkre vonatkoznak.
+A következő csomópontokra vonatkozó korlátozások érvényesek az AVS privát felhőkre.
 
 | Erőforrás | Korlát |
 |----------|-------|
-| A privát felhő létrehozásához szükséges csomópontok minimális száma | 3 |
-| Fürtben lévő csomópontok maximális száma egy privát felhőben | 16 |
-| A privát felhőben lévő csomópontok maximális száma | 64 |
+| A csomópontok minimális száma egy AVS Private-felhő létrehozásához | 3 |
+| Fürtben lévő csomópontok maximális száma egy AVS Private-felhőben | 16 |
+| Csomópontok maximális száma egy AVS Private-felhőben | 64 |
 | Csomópontok minimális száma egy új fürtön | 3 |
 
 ## <a name="next-steps"></a>Következő lépések
 
+* Ismerje meg, hogyan [vásárolhat csomópontokat](create-nodes.md)
+* További információ az [AVS Private felhőkről](cloudsimple-private-cloud.md)
 * További információ a [csomópontok](create-nodes.md) kiépítéséről
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

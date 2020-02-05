@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 47d1fa4e2911fa0f898804e6293af5754f572f7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987540"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016374"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ez az oktatóanyag végigvezeti Önt egy vízminőség-figyelési alkalmazás létrehozásán az Azure IoT Centralban. Az alkalmazást az Azure IoT Central **Water Quality monitoring** Application sablon alapján hozza létre.
 
@@ -64,7 +64,9 @@ Ebben a szakaszban az Azure IoT Central **vízminőség-figyelési** sablonnal h
 
     ![Az Azure IoT Central új alkalmazás oldal](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-    ![az Azure IoT Central New-Application számlázási adatait,](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png) már létrehozott egy vízminőség-figyelési alkalmazást az Azure IoT Central **Water Quality monitoring** sablon használatával.
+    ![Az Azure IoT Central új alkalmazás számlázási adatai](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
+
+Ezzel létrehozott egy vízminőség-figyelési alkalmazást az Azure IoT Central **Water minőség-figyelési** sablonnal.
 
 Az új alkalmazás a következő előre konfigurált összetevőkből áll:
 

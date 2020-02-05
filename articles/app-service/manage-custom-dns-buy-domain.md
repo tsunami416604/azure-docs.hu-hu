@@ -5,18 +5,18 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967302"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023412"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása Azure App Service
 
 App Service tartományok olyan legfelső szintű tartományok, amelyek közvetlenül az Azure-ban kezelhetők. Megkönnyítik [Azure app Service](overview.md)egyéni tartományának kezelését. Ez az oktatóanyag bemutatja, hogyan vásárolhat egy App Service tartományt, és hogyan rendelhet hozzá DNS-neveket Azure App Servicehoz.
 
-Azure-beli virtuális gép vagy Azure Storage esetében lásd: [app Service tartomány kiosztása Azure-beli virtuális géphez vagy Azure Storage-hoz](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Azure-beli virtuális gép vagy Azure Storage esetében lásd: [app Service tartomány kiosztása Azure-beli virtuális géphez vagy Azure Storage-hoz](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

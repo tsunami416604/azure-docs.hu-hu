@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API
       items:
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Frissítés az API 5-ös verziójáról a 7-es verzióra
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: A Visual Studio használata
-      items:
-        - name: A Bing News Search csatlakoztatott szolgáltatás használata
-          href: vs-bing-news-search-connected-service.md
 - name: Alapelvek
   items:
     - name: Keresési lekérdezések küldése

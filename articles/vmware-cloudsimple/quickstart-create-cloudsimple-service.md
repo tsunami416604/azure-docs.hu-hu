@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: VMware CloudSimple szolgáltatás létrehozása'
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Ismerje meg, hogyan hozhatja létre a CloudSimple szolgáltatást, a megvásárlási csomópontokat és a tartalék csomópontokat
+title: Azure VMware Solutions (AVS) rövid útmutató – szolgáltatás létrehozása
+description: Ismerje meg, hogyan hozhatja létre az AVS szolgáltatást, a megvásárlási csomópontokat és a tartalék csomópontokat
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -9,26 +9,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7eb414e51ca38f524ab83bfb51f80f771524287
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452364"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024432"
 ---
-# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rövid útmutató – Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
+# <a name="quickstart---create-azure-vmware-solutions-avs-service"></a>Rövid útmutató – Azure VMware Solutions (AVS) szolgáltatás létrehozása
 
-Első lépésként hozza létre az Azure VMware-megoldást a Azure Portal CloudSimple.
+Első lépésként hozza létre az Azure VMware-megoldásokat (AVS) a Azure Portal.
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware-megoldás a CloudSimple-szolgáltatás áttekintése
+## <a name="vmware-solutions-avs---service-overview"></a>VMware Solutions (AVS) – szolgáltatás áttekintése
 
-A CloudSimple szolgáltatás lehetővé teszi, hogy a CloudSimple az Azure VMware-megoldást használja.  A szolgáltatás létrehozása lehetővé teszi a csomópontok kiépítését, a csomópontok fenntartását és a privát felhők létrehozását.  Adja hozzá a CloudSimple szolgáltatást minden olyan Azure-régióban, ahol a CloudSimple szolgáltatás elérhető.  A szolgáltatás a CloudSimple által definiált Azure VMware-megoldás peremhálózati hálózatát határozza meg.  Ez a peremhálózati hálózat olyan szolgáltatásokhoz használható, amelyek VPN-, ExpressRoute-és internetkapcsolattal rendelkeznek a privát felhőkhöz.
+Az AVS szolgáltatás lehetővé teszi, hogy az AVS használatával Azure VMware-megoldást fogyasszon. A szolgáltatás létrehozása lehetővé teszi a csomópontok kiépítését, a csomópontok fenntartását és az AVS privát felhők létrehozását. Adja hozzá az AVS szolgáltatást minden olyan Azure-régióban, ahol az AVS szolgáltatás elérhető. A szolgáltatás az Azure VMware-megoldás peremhálózati hálózatát az AVS használatával határozza meg. Ez a peremhálózati hálózat olyan szolgáltatások esetében használatos, amelyek VPN-t, ExpressRoute és internetkapcsolatot tartalmaznak az AVS privát Felhőkhöz.
 
-A CloudSimple szolgáltatás hozzáadásához létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat a peremhálózati hálózat létrehozásakor használatos, és egy/28 CIDR blokkot igényel. Az átjáró alhálózatának címtartomány egyedinek kell lennie. A helyszíni hálózati címtartomány vagy az Azure-beli virtuális hálózati címtartomány egyikével sem lehet átfedésben.
+Az AVS szolgáltatás hozzáadásához létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat a peremhálózati hálózat létrehozásakor használatos, és egy/28 CIDR blokkot igényel. Az átjáró alhálózatának címtartomány egyedinek kell lennie. A helyszíni hálózati címtartomány vagy az Azure-beli virtuális hálózati címtartomány egyikével sem lehet átfedésben.
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Egy/28 CIDR-blokk lefoglalása az átjáró-alhálózathoz.  Az átjáró-alhálózatok CloudSimple szolgáltatáshoz szükségesek, és egyediek ahhoz a régióhoz, amelyben létrehozták. Az átjáró-alhálózatot az Azure VMware-megoldáshoz CloudSimple Edge hálózati szolgáltatások használják, és egy/28 CIDR blokkra van szükség. Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben a CloudSimple-környezettel kommunikáló hálózattal.  A CloudSimple kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák.
+Egy/28 CIDR-blokk lefoglalása az átjáró-alhálózathoz. Az átjáró-alhálózatot az AVS szolgáltatásnak kell megadnia, és egyedinek kell lennie abban a régióban, amelyben létrehozták. Az átjáró-alhálózatot az AVS Edge hálózati szolgáltatások használják az Azure VMware-megoldáshoz, és egy/28 CIDR blokkra van szükség. Az átjáró alhálózatának címtartomány egyedinek kell lennie. Nem lehet átfedésben az AVS-környezettel kommunikáló hálózattal. Az AVS-vel kommunikáló hálózatok a helyszíni hálózatokat és az Azure-beli virtuális hálózatokat is tartalmazzák.
 
 Tekintse át a [hálózati előfeltételeket](cloudsimple-network-checklist.md). 
 
@@ -39,21 +39,21 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keresse meg a **CloudSimple szolgáltatást**.
+2. Keresés az **AVS szolgáltatásban**.
 
-    ![CloudSimple szolgáltatás keresése](media/create-cloudsimple-service-search.png)
+    ![Az AVS szolgáltatás keresése](media/create-cloudsimple-service-search.png)
 
-3. Válassza a **CloudSimple Services**elemet.
+3. Válassza az **AVS-szolgáltatások**lehetőséget.
 4. Új szolgáltatás létrehozásához kattintson a **Hozzáadás** gombra.
 
-    ![CloudSimple szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
+    ![AVS-szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
 
-5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a CloudSimple szolgáltatást.
+5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni az AVS szolgáltatást.
 6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
 7. A szolgáltatás azonosításához adja meg a nevet.
-8. Adja meg a CIDR a Service Gateway számára. Olyan/28 alhálózatot ad meg, amely nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy a tervezett CloudSimple alhálózatok egyikét sem. A CIDR nem módosítható a szolgáltatás létrehozása után.
+8. Adja meg a CIDR a Service Gateway számára. Olyan/28 alhálózatot ad meg, amely nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy a tervezett AVS-alhálózatok egyikét sem. A CIDR nem módosítható a szolgáltatás létrehozása után.
 
-    ![A CloudSimple szolgáltatás létrehozása](media/create-cloudsimple-service.png)
+    ![Az AVS szolgáltatás létrehozása](media/create-cloudsimple-service.png)
 
 9. Kattintson az **OK** gombra.
 
@@ -61,19 +61,19 @@ Létrejön a szolgáltatás, és hozzá lesz adva a szolgáltatások listájáho
 
 ## <a name="provision-nodes"></a>Csomópontok kiépítése
 
-Ha a CloudSimple saját felhőalapú környezete számára szeretné beállítani az utólagos elszámolású kapacitást, először a Azure Portal csomópontjait kell kiépíteni.
+Az AVS Private Cloud Environment esetében az utólagos elszámolású kapacitás beállításához először a Azure Portal csomópontjait kell kiépíteni.
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. CloudSimple- **csomópontok**keresése.
+2. Az **AVS-csomópontok**keresése.
 
-    ![CloudSimple-csomópontok keresése](media/create-cloudsimple-node-search.png)
+    ![AVS-csomópontok keresése](media/create-cloudsimple-node-search.png)
 
-3. Válassza a **CloudSimple-csomópontok**lehetőséget.
+3. Válassza az **AVS-csomópontok**lehetőséget.
 4. Csomópontok létrehozásához kattintson a **Hozzáadás** gombra.
 
-    ![CloudSimple-csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
+    ![AVS-csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
 
-5. Válassza ki azt az előfizetést, ahol CloudSimple-csomópontokat kíván kiépíteni.
+5. Válassza ki azt az előfizetést, ahol az AVS-csomópontokat szeretné kiépíteni.
 6. Válassza ki a csomópontok erőforrás-csoportját. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
 7. Adja meg a csomópontok azonosításához szükséges előtagot.
 8. Válassza ki a csomópont-erőforrások helyét.
@@ -86,5 +86,5 @@ Ha a CloudSimple saját felhőalapú környezete számára szeretné beállítan
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Saját felhő létrehozása és környezet konfigurálása](quickstart-create-private-cloud.md)
-* További információ a [CloudSimple szolgáltatásról](https://docs.azure.cloudsimple.com/cloudsimple-service)
+* [AVS Private Cloud létrehozása és környezet konfigurálása](quickstart-create-private-cloud.md)
+* További információ az [AVS szolgáltatásról](https://docs.azure.cloudsimple.com/cloudsimple-service)

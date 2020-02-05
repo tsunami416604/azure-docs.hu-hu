@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702016"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022086"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 A két korábbi oktatóanyagban létrehozta és testreszabta a IoT Central alkalmazást a **Store Analytics-Checkout** alkalmazás sablonjának használatával. Ebben az oktatóanyagban konfigurálja a IoT Central alkalmazást az eszközökről összegyűjtött telemetria exportálásához. Ezután a Power BI használatával létrehozhat egy egyéni irányítópultot az áruház kezelőjének, hogy megjelenítse a telemetria származtatott bepillantást.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag során a következőket fogja elsajátítani:
 > [!div class="checklist"]
 > * Konfiguráljon egy IoT Central alkalmazást a telemetria exportálásához egy Event hubhoz.
 > * A Logic Apps használatával adatokat küldhet az Event hub-ból egy Power BI streaming-adatkészletbe.
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 * Egy Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőforráscsoportot a kezeléséhez. Az erőforráscsoport ugyanazon a helyen kell lennie, mint az **áruházbeli elemzési-pénztár** IoT Central alkalmazás. Erőforráscsoport létrehozása:
 
@@ -440,7 +440,7 @@ Adja hozzá a négy vonalas diagramot a hőmérséklet és a páratartalom megje
 
 | Beállítás | Diagram #1 | Diagram #2 | Diagram #3 | Diagram #4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Adathalmaz | 1\. zóna érzékelő | 1\. zóna érzékelő | 2\. zóna érzékelő | 2\. zóna érzékelő |
+| Adatkészlet | 1\. zóna érzékelő | 1\. zóna érzékelő | 2\. zóna érzékelő | 2\. zóna érzékelő |
 | Vizualizáció típusa | Vonaldiagram | Vonaldiagram | Vonaldiagram | Vonaldiagram |
 | Tengely | Időbélyeg | Időbélyeg | Időbélyeg | Időbélyeg |
 | Értékek | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
@@ -458,7 +458,7 @@ A két környezeti érzékelő közül a legutóbbi hőmérséklet és a párata
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Adathalmaz | 1\. zóna érzékelő | 1\. zóna érzékelő | 2\. zóna érzékelő | 2\. zóna érzékelő |
+| Adatkészlet | 1\. zóna érzékelő | 1\. zóna érzékelő | 2\. zóna érzékelő | 2\. zóna érzékelő |
 | Vizualizáció típusa | Kártya | Kártya | Kártya | Kártya |
 | Mezők | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
 | Cím | Hőmérséklet (F) | Páratartalom (%) | Hőmérséklet (F) | Páratartalom (%) |
@@ -474,7 +474,7 @@ Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a t
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Adathalmaz | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
+| Adatkészlet | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
 | Vizualizáció típusa | Fürtözött oszlopdiagram | Fürtözött oszlopdiagram | Mérőműszer | Mérőműszer |
 | Tengely    | Időbélyeg | Időbélyeg | – | – |
 | Value (Díj) | 1\. tartózkodási idő | 2\. tartózkodási idő | Várólista hossza 1 | Várólista hossza 2 |

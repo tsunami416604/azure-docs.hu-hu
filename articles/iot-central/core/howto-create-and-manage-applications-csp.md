@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987662"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023803"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -23,25 +23,27 @@ CSP-ként létrehozhat és kezelhet Microsoft Azure IoT Central-alkalmazásokat 
 
 Első lépésként jelentkezzen be a fiókjába a Microsoft partner portálon, és válassza ki azt az ügyfelet, akivel Azure IoT Central alkalmazást szeretne létrehozni. A bal oldali NAV szolgáltatásban navigáljon az ügyfélhez.
 
-![Microsoft partner Center, ügyfél nézet](media/howto-create-application-csp/image1.png)
+![Microsoft partner Center, ügyfél nézet](media/howto-create-and-manage-applications-csp/image1.png)
 
 Az Azure IoT Central a felügyelethez elérhető szolgáltatásként van felsorolva. Válassza ki az Azure IoT Central hivatkozást az oldalon új alkalmazások létrehozásához vagy meglévő alkalmazások kezeléséhez ehhez az ügyfélhez.
 
-![Az Azure IoT Central kezelhető](media/howto-create-application-csp/image2.png)
+![Az Azure IoT Central kezelhető](media/howto-create-and-manage-applications-csp/image2.png)
 
 Az Azure IoT Central Application Manager oldalán landol. Az Azure IoT Central a Microsoft partner központjából származó kontextust tartja, és az adott ügyfelet felügyelheti. Ezt a nyugtát az Application Manager oldal fejlécében tekintheti meg. Innen olyan meglévő alkalmazást is megnyithat, amelyet korábban hozott létre az ügyfél számára, hogy kezelje az ügyfelet, vagy új alkalmazást hozzon létre az ügyfél számára.
 
-![Kezelő létrehozása a CSP-hez](media/howto-create-application-csp/image3.png)
+![Kezelő létrehozása a CSP-hez](media/howto-create-and-manage-applications-csp/image3.png)
 
 Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **örökölt alkalmazás** lehetőséget egy új alkalmazás létrehozásához. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás**lehetőséget kell választania. További információkat az alábbi mezőkben talál.
 
-![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-application-csp/image4.png)
+![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-application-csp/image4-1.png)
+![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![Alkalmazás-oldal létrehozása a CSP számlázási adataihoz](media/howto-create-application-csp/image4-2.png)
+![Alkalmazás-oldal létrehozása a CSP számlázási adataihoz](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>Díjszabási csomag
+
+A standard díjszabási csomagot használó alkalmazásokat csak CSP-ként lehet létrehozni. Ahhoz, hogy az Azure IoT Central bemutassa az ügyfelet, létrehozhat egy alkalmazást, amely az ingyenes díjszabási csomagot külön használja. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat.
 
 A standard díjszabási csomagot használó alkalmazásokat csak CSP-ként lehet létrehozni. Ahhoz, hogy az Azure IoT Central bemutassa az ügyfelet, létrehozhat egy alkalmazást, amely az ingyenes díjszabási csomagot külön használja. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat.
 
@@ -75,9 +77,6 @@ További információt az Azure- [előfizetések](https://docs.microsoft.com/azu
 
 Válassza ki azt a régiót vagy [földrajzot](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol létre szeretné hozni az Azure IoT Central alkalmazást. Az optimális teljesítmény érdekében általában az eszközökhöz legközelebb eső régiót kell kiválasztania.
 
-> [!NOTE]
-> Az előzetes verziójú alkalmazás sablonjai jelenleg csak az **Európa** és **Egyesült Államok** helyen érhetők el.
-
 További információ: Azure- [régiók](https://azure.microsoft.com/global-infrastructure/regions/) és [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
 
 Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a régiók oldalon [elérhető termékek területen](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
@@ -87,11 +86,7 @@ Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a 
 
 ## <a name="application-template"></a>Alkalmazássablon
 
-Az új Azure IoT Central-alkalmazáshoz az alábbi alkalmazás-sablon közül választhat.
-
-| Alkalmazássablon | Leírás |
-| -------------------- | ----------- |
-| Örökölt alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
+Válassza ki az alkalmazáshoz használni kívánt sablont.
 
 
 ## <a name="next-steps"></a>Következő lépések

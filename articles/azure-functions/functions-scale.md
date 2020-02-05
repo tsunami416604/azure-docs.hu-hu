@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921914"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024653"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -26,7 +26,7 @@ A használat és a Prémium csomag is automatikusan hozzáadja a számítási te
 
 A Prémium csomag további funkciókat kínál, például a prémium szintű számítási példányokat, a példányok határozatlan idejű megtartásának és VNet-kapcsolatának lehetőségét.
 
-A App Service-csomag lehetővé teszi, hogy kihasználhassa az Ön által felügyelt dedikált infrastruktúrát. A Function alkalmazás nem méretezhető az események alapján, ami azt jelenti, hogy soha nem méretezi le nullára. (Megköveteli, hogy [a always on](#always-on) engedélyezve legyen.)
+A App Service-csomag lehetővé teszi, hogy kihasználhassa az Ön által felügyelt dedikált infrastruktúrát. A Function alkalmazás nem méretezhető az események alapján, ami azt jelenti, hogy soha nem méretezi a nulla értéket. (Megköveteli, hogy [a always on](#always-on) engedélyezve legyen.)
 
 ## <a name="hosting-plan-support"></a>Üzemeltetési csomag támogatása
 
@@ -44,9 +44,9 @@ A következő táblázat a három üzemeltetési csomag jelenlegi támogatását
 
 ## <a name="consumption-plan"></a>Használatalapú csomag
 
-A használati terv használatakor a rendszer a Azure Functions gazdagép példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján. Ezek a kiszolgáló nélküli csomagok automatikusan méreteznek, és csak akkor kell fizetni a számítási erőforrásokért, amikor a függvények futnak. Használatalapú csomag esetében egy függvény végrehajtása túllépi a konfigurált időkorlátot.
+A használati terv használatakor a rendszer a Azure Functions gazdagép példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján. Ez a kiszolgáló nélküli csomag automatikusan méretezi a számítási erőforrásokat, és csak akkor kell fizetnie, ha a függvények futnak. Egy használati tervben a függvény végrehajtásának időtúllépése egy konfigurálható idő után.
 
-A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. A számlázási folyamat a függvényalkalmazás összes függvényét figyelembe veszi. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
+A számlázás a végrehajtások száma, a végrehajtás ideje és a felhasznált memória alapján történik. A számlázás a Function alkalmazás összes függvényében összesítve történik. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
 
 A felhasználási terv az alapértelmezett üzemeltetési csomag, amely a következő előnyöket kínálja:
 
@@ -152,7 +152,7 @@ A Azure Functions méretezési egysége a Function alkalmazás. A Function alkal
 
 A skálázás több tényezőn is változhat, és a kiválasztott trigger és nyelv alapján különbözőképpen méretezhető. Van néhány bonyolult méretezési mód az alábbiakkal kapcsolatban:
 
-* Egy adott függvényalkalmazás legfeljebb 200 példányig skálázható fel. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.
+* Egyetlen Function-alkalmazás csak legfeljebb 200 példányra méretezhető. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.
 * HTTP-eseményindítók esetén az új példányok csak a legfeljebb 1 másodpercenként lesznek lefoglalva.
 * A nem HTTP-triggerek esetében az új példányok csak 30 másodpercenként egyszer lesznek lefoglalva.
 

@@ -3,21 +3,21 @@ title: Építészeti fogalmak az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure architektúrával kapcsolatos főbb fogalmakat IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/31/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884484"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014521"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 Ez a cikk áttekintést nyújt a Microsoft Azure IoT Central architektúráról.
 
@@ -32,7 +32,69 @@ Az eszközök az Azure IoT Central alkalmazással cserélik át az adatait. Az e
 
 Az Azure IoT Central-ban az eszköz által az alkalmazással megadható adatcsere megadására kerül egy eszköz sablonjában. További információ az eszközök sablonjairól: [metaadatok kezelése](#metadata-management).
 
-Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](concepts-connectivity.md).
+Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](concepts-get-connected.md).
+
+## <a name="azure-iot-edge-devices"></a>Eszközök Azure IoT Edge
+
+Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használatával létrehozott eszközökhöz [Azure IoT Edge eszközöket](../../iot-edge/about-iot-edge.md) is csatlakozhat egy IoT Central alkalmazáshoz. IoT Edge lehetővé teszi, hogy közvetlenül a IoT Central által felügyelt IoT-eszközökön futtassa a felhőalapú intelligenciát és az egyéni logikát. A IoT Edge Runtime a következőket teszi lehetővé:
+
+- A számítási feladatok telepítése és frissítése az eszközön.
+- IoT Edge biztonsági szabványok fenntartása az eszközön.
+- Győződjön meg arról, hogy IoT Edge modulok mindig futnak.
+- Jelentési modul állapota a felhőben távoli figyeléshez.
+- Kezelheti az alárendelt levelek eszközei és a IoT Edge eszközök közötti kommunikációt egy IoT Edge eszköz moduljai és egy IoT Edge eszköz és a felhő között.
+
+![Azure-IoT Central Azure IoT Edge](./media/concepts-architecture/iotedge.png)
+
+A IoT Central a következő képességeket teszi lehetővé IoT Edge eszközökhöz:
+
+- IoT Edge eszköz képességeinek leírására szolgáló eszközök, például:
+  - Az üzembe helyezési jegyzékfájl feltöltési képessége, amely segítséget nyújt az eszközök flottájának jegyzékfájljának kezeléséhez.
+  - A IoT Edge eszközön futó modulok.
+  - Az egyes modulok telemetria.
+  - Az egyes modulok által jelentett tulajdonságok
+  - Az egyes modulok parancsai a következőre válaszolnak:.
+  - Az IoT Edge Gateway Device képesség modell és az alsóbb rétegbeli eszköz képességeinek modellje közötti kapcsolatok.
+  - A IoT Edge eszközön nem tárolt Felhőbeli tulajdonságok.
+  - A IoT Central alkalmazás részét képező testreszabások, irányítópultok és űrlapok.
+
+  További információ: [Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz](./concepts-iot-edge.md) című cikk.
+
+- Lehetőség IoT Edge eszközök méretezésére az Azure IoT Device kiépítési szolgáltatás használatával
+- Szabályok és műveletek.
+- Egyéni irányítópultok és elemzések.
+- A telemetria folyamatos adatexportálása IoT Edge-eszközökről.
+
+### <a name="iot-edge-device-types"></a>IoT Edge eszközök típusai
+
+A IoT Central az alábbi módon osztályozza IoT Edge eszközök típusát:
+
+- Leaf-eszközök. Egy IoT Edge eszközön lehetnek alsóbb rétegbeli eszközök, de ezek az eszközök nincsenek kiépítve IoT Central.
+- Átjáró-eszközök alsóbb rétegbeli eszközökkel. Az átjáró-eszköz és az alsóbb rétegbeli eszközök kiépítve IoT Central
+
+![IoT Central IoT Edge áttekintéssel](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge mintázatok
+
+A IoT Central a következő IoT Edge eszköz-mintákat támogatja:
+
+#### <a name="iot-edge-as-leaf-device"></a>IoT Edge Leaf-eszközként
+
+![IoT Edge Leaf-eszközként](./media/concepts-architecture/edgeasleafdevice.png)
+
+A IoT Edge eszköz IoT Central és az alsóbb rétegbeli eszközökön van kiépítve, és a telemetria a IoT Edge eszköztől érkezőként jelennek meg. Az IoT Edge eszközhöz csatlakoztatott alsóbb rétegbeli eszközök nincsenek kiépítve a IoT Central.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>IoT Edge átjáró-eszköz, amely identitással csatlakozik az alsóbb rétegbeli eszközökhöz
+
+![IoT Edge alsóbb rétegbeli eszköz identitásával](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+A IoT Edge eszköz IoT Central az IoT Edge eszközhöz csatlakoztatott alsóbb rétegbeli eszközök mellett van kiépítve. Az alsóbb rétegbeli eszközök az átjárón keresztüli üzembe helyezésének támogatása jelenleg nem támogatott.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge átjáró-eszköz csatlakoztatása az IoT Edge átjáró által megadott identitással rendelkező alsóbb rétegbeli eszközökhöz
+
+![IoT Edge az alárendelt eszközzel identitás nélkül](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+A IoT Edge eszköz IoT Central az IoT Edge eszközhöz csatlakoztatott alsóbb rétegbeli eszközök mellett van kiépítve. Jelenleg nem támogatott az átjáró támogatása az alsóbb rétegbeli eszközök személyazonosságának biztosításával és az alsóbb rétegbeli eszközök kiépítési támogatásával. Ha saját személyazonosság-fordítási modult használ, IoT Central támogatja ezt a mintát.
 
 ## <a name="cloud-gateway"></a>Felhőbeli átjáró
 
@@ -44,7 +106,7 @@ Az Azure IoT Central az Azure IoT Hubt használja Felhőbeli átjáróként, ame
 
 További információ a IoT Hubről: [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/).
 
-Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](concepts-connectivity.md)ismertető témakört.
+Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](concepts-get-connected.md)ismertető témakört.
 
 ## <a name="data-stores"></a>Adattárak
 
@@ -63,27 +125,26 @@ Az elemzési szolgáltatás feladata az alkalmazás által megjelenített egyén
 
 ## <a name="rules-and-actions"></a>Szabályok és műveletek
 
-A [szabályok és műveletek](howto-create-telemetry-rules.md) szorosan együttműködnek az alkalmazáson belüli feladatok automatizálásához. A Builder olyan szabályokat határozhat meg, amelyek az eszköz telemetria alapulnak, például a megadott küszöbértéket meghaladó hőmérsékletet. Az Azure IoT Central egy stream-processzor használatával határozza meg, hogy mikor teljesülnek a szabályok feltételei. Ha a szabály feltétele teljesül, a rendszer elindítja a szerkesztő által definiált műveletet. Egy művelet elküldheti például egy e-mailt, amely értesíti a mérnöket arról, hogy az eszköz hőmérséklete túl magas.
+A [szabályok és műveletek](tutorial-create-telemetry-rules.md) szorosan együttműködnek az alkalmazáson belüli feladatok automatizálásához. A Builder olyan szabályokat határozhat meg, amelyek az eszköz telemetria alapulnak, például a megadott küszöbértéket meghaladó hőmérsékletet. Az Azure IoT Central egy stream-processzor használatával határozza meg, hogy mikor teljesülnek a szabályok feltételei. Ha a szabály feltétele teljesül, a rendszer elindítja a szerkesztő által definiált műveletet. Egy művelet elküldheti például egy e-mailt, amely értesíti a mérnöket arról, hogy az eszköz hőmérséklete túl magas.
 
 ## <a name="metadata-management"></a>Metaadatok kezelése
 
 Egy Azure IoT Central-alkalmazásban az eszközök sablonjai határozzák meg az eszközök típusának viselkedését és képességeit. Egy hűtőszekrény-eszköz sablonja például meghatározza azt a telemetria, amelyet a hűtőszekrény küld az alkalmazásnak.
 
-![Sablon architektúrája](media/concepts-architecture/template_architecture.png)
+![Sablon architektúrája](media/concepts-architecture/template-architecture.png)
 
-Egy eszköz sablonjában:
+IoT Central alkalmazás-eszköz sablonjában a következőket tartalmazza:
 
-- A **mérések** határozzák meg, hogy az eszköz milyen telemetria küld az alkalmazásnak.
-- A **Beállítások** határozzák meg az operátor által beállítható konfigurációkat.
-- A **Tulajdonságok** az operátor által beállítható metaadatokat határozzák meg.
-- A **szabályok** az eszközről elküldett adatok alapján automatizálják az alkalmazás viselkedését.
-- Az **irányítópultok** az alkalmazásban található eszközök testreszabható nézetei.
+- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve. Az eszköz képességeinek modelljeivel kapcsolatos további információkért tekintse meg a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) dokumentációját.
+- A **felhő tulajdonságai** határozzák meg az adott eszközhöz tartozó tulajdonságokat IoT Central. Ezek a tulajdonságok csak IoT Central tárolódnak, és soha nem lesznek elküldve egy eszközre.
+- A **nézetek** határozzák meg azokat az irányítópultokat és űrlapokat, amelyeket a készítő hoz létre, hogy az operátor figyelje és felügyelje az eszközöket.
+- A **testreszabások** lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modelljét, hogy azok jobban megfeleljenek a IoT Central alkalmazásnak.
 
 Egy alkalmazáshoz egy vagy több szimulált és valós eszköz tartozhat az egyes eszközök alapján.
 
 ## <a name="data-export"></a>Adatexportálás
 
-Egy Azure IoT Central alkalmazásban [folyamatosan exportálhatja adatait](howto-export-data-event-hubs-service-bus.md) a saját azure-Event Hubsba, Azure Service Busba és Azure Blob Storage példányaiba. IoT Central exportálhat méréseket, eszközöket és az eszközök sablonjait.
+Egy Azure IoT Central alkalmazásban [folyamatosan exportálhatja az adatait](howto-export-data.md) a saját azure-Event Hubs és Azure Service Bus példányaiba. Az Azure Blob Storage-fiókjába rendszeres időközönként is exportálhatja adatait. IoT Central exportálhat méréseket, eszközöket és az eszközök sablonjait.
 
 ## <a name="batch-device-updates"></a>Batch-eszközök frissítései
 
@@ -91,7 +152,7 @@ Egy Azure IoT Central alkalmazásban [létrehozhat és futtathat feladatokat](ho
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A rendszergazdák az előre definiált szerepkörök használatával meghatározhatják az Azure IoT Central-alkalmazások [hozzáférési szabályait](howto-administer.md) . A rendszergazdák olyan szerepkörökhöz rendelhetnek felhasználókat, amelyek meghatározzák az alkalmazás azon területeit, amelyekhez a felhasználó hozzáfér.
+A [rendszergazdák meghatározhatnak](howto-manage-users-roles.md) egy Azure IoT Central alkalmazás hozzáférési szabályait az egyik előre definiált szerepkör használatával vagy egyéni szerepkör létrehozásával. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el.
 
 ## <a name="security"></a>Biztonság
 
@@ -109,6 +170,6 @@ A rendszergazdák egyéni témák alkalmazásával szabhatják testre az alkalma
 
 Az operátorok személyre szabott alkalmazás-irányítópultokat hozhatnak létre. Több irányítópultot is beállíthat, amelyek különböző adathalmazokat jelenítenek meg, és válthatnak egymás között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](concepts-connectivity.md) megismerése az Azure IoT Centralban.
+Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](concepts-get-connected.md) megismerése az Azure IoT Centralban.

@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309999"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020760"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -31,6 +31,10 @@ A Felhőbeli kiépítés ütemezve van, hogy 2 percenként fusson. 2 percenként
 **K: a jelszó-kivonatolási szinkronizálás hibáinak észlelése az első futtatáskor. miért?**
 
 Ez a várható eredmény. A hibák oka, hogy a felhasználói objektum nem szerepel az Azure AD-ben. Ha a felhasználó az Azure AD-be lett kiépítve, a jelszó-kivonatokat a következő futtatáskor kell kiépíteni. Várjon néhány futtatást, és győződjön meg arról, hogy a jelszó-kivonat szinkronizálása már nem rendelkezik a hibákkal.
+
+**K: mi történik, ha a Active Directory-példány olyan attribútumokkal rendelkezik, amelyeket nem támogat a felhőalapú provisoning (például a címtárszolgáltatás-bővítmények)?**
+
+A Felhőbeli kiépítés futtatja és kiépíti a támogatott attribútumokat. A nem támogatott attribútumok nem lesznek kiépítve az Azure AD-be. Tekintse át a Active Directory Directory-bővítményeit, és győződjön meg arról, hogy nincs szüksége ezekre az attribútumra az Azure AD-ba való adatforgalomhoz Ha egy vagy több attribútumra van szükség, érdemes lehet Azure AD Connect szinkronizálást használni, vagy áthelyezni a szükséges információkat a támogatott attribútumok egyikére (például a 1-15-es bővítmény-attribútumokra).
 
 **K: mi a különbség a Azure AD Connect szinkronizálás és a felhő kiépítés között?**
 

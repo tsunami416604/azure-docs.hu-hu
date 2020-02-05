@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5632d98d9d853d9a4b0882c28cad1836bb6f3cef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984025"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025469"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató intelligens leltár-kezelési alkalmazás sablonja
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ebből az oktatóanyagból megtudhatja, hogyan kezdheti el az első lépéseket egy IoT Central **intelligens leltár-kezelési** alkalmazás sablonjának üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
 
@@ -25,12 +25,14 @@ Ebből az oktatóanyagból megtudhatja, hogyan,
 * az alkalmazás végigvezeti 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * Az alkalmazás üzembe helyezéséhez nem szükségesek konkrét előfeltételek
 * Ajánlott az Azure-előfizetés használata, de anélkül is próbálkozhat
 
 ## <a name="create-smart-inventory-management-application-template"></a>Intelligens leltár-felügyeleti alkalmazás sablonjának létrehozása
 
 Az alábbi lépések végrehajtásával hozhat létre alkalmazást
+
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
     > [!div class="mx-imgBorder"]
@@ -50,9 +52,10 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
     > [!div class="mx-imgBorder"]
     > ![intelligens leltár kezelése számlázási adatok](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
-## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti 
+## <a name="walk-through-the-application"></a>az alkalmazás végigvezeti 
 
 ### <a name="dashboard"></a>Irányítópult 
+
 Az alkalmazás sablonjának sikeres üzembe helyezése után az alapértelmezett irányítópult egy intelligens leltározási felügyeleti operátorok célzott portálja. A Northwind Trader egy fiktív intelligens leltározási szolgáltató, amely a (z) Bluetooth alacsony energiafogyasztású, valamint a kereskedelmi tárolót rádiófrekvenciás azonosítással (RFID) kezeli. Ebben az irányítópultban két különböző átjáró jelenik meg, amelyek a leltárral kapcsolatos telemetria biztosítanak, valamint a hozzájuk tartozó parancsokat, feladatokat és műveleteket is. Ez az irányítópult előre konfigurálva van a kritikus intelligens leltár felügyeleti eszköz műveleti tevékenységének megjelenítéséhez.
 Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz felügyeleti művelet között. 
    * A raktár üzembe helyezése rögzített kapcsolattal rendelkező átjáróval történik & a raklapokon található, a & nyomkövetési leltár nagyobb létesítményben való nyomon követéséhez
@@ -72,7 +75,7 @@ Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz fe
 ## <a name="device-template"></a>Eszköz sablonja
 Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képesség modell két különböző interfész átjáró telemetria van strukturálva **& tulajdonság** -és **átjáró-parancsok**
 
-**Átjáró telemetria & tulajdonsága** – ez a felület az érzékelőkkel, a hellyel, az eszköz adataival és az eszközök Twin tulajdonságával, például az átjárók küszöbértékeit & frissítési időközökkel kapcsolatos összes telemetria jelképezi.
+**Átjáró telemetria & tulajdonsága** – ez a felület az érzékelőkkel, a hellyel, az eszköz adataival és az eszközök Twin tulajdonságával kapcsolatos képességeket jelképezi, például az átjáró küszöbértékeit és a frissítési intervallumokat.
 
 > [!div class="mx-imgBorder"]
 > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
@@ -86,15 +89,15 @@ Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képess�
 ## <a name="rules"></a>Szabályok
 Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
 
-**Átjáró kapcsolat nélküli üzemmódban**: Ez a szabály akkor aktiválódik, ha az átjáró nem jelent hosszabb ideig a felhőnek. Az átjáró nem válaszol az alacsony töltöttségi mód, a kapcsolat elvesztése, az Eszközállapot miatt.
+**Átjáró kapcsolat nélküli üzemmódban**: Ez a szabály akkor aktiválódik, ha az átjáró hosszabb ideig nem jelent jelentést a felhőnek. Az átjáró nem válaszol, mert kevés az akkumulátor mód, a kapcsolat elvesztése, az Eszközállapot.
 
-**Ismeretlen címkék**: kritikus fontosságú, hogy nyomon követhesse az adott eszközhöz társított összes RFID-&. Ha az átjáró túl sok ismeretlen címkét észlel, ez jelzi a szinkronizálási kihívásokat.
+**Ismeretlen címkék**: kritikus fontosságú, hogy nyomon követhesse az adott eszközhöz társított összes RFID-&. Ha az átjáró túl sok ismeretlen címkét észlel, akkor a szinkronizálási kihívások megjelölése a forrásként szolgáló alkalmazásokkal.
 
 > [!div class="mx-imgBorder"]
 > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Feladatok
-Válassza a feladatok fület az alkalmazás sablonjának részeként öt különböző feladat megjelenítéséhez: a feladatok funkció kihasználható az egész megoldásra kiterjedő műveletek végrehajtásához. Itt a készletkezelési feladatok az eszköz parancsaival & Twin képességgel végezhetnek feladatokat, például
+Válassza a feladatok fület az alkalmazás sablonjának részeként öt különböző feladat megjelenítéséhez: a feladatok szolgáltatással az egész megoldásra kiterjedő műveleteket hajthat végre. Itt a leltár-felügyeleti feladatok az eszköz parancsait és a Twin képességet használják olyan feladatok elvégzésére, mint például a,
    * az olvasók letiltása az összes átjárón keresztül
    * a telemetria küszöbértékének módosítása 
    * igény szerinti leltározási vizsgálat végrehajtása a teljes megoldáson keresztül.
@@ -112,4 +115,4 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 ## <a name="next-steps"></a>Következő lépések
 * További információ az intelligens leltár felügyeletének [intelligens leltár-kezelési koncepcióról](./architecture-smart-inventory-management-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
-* További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

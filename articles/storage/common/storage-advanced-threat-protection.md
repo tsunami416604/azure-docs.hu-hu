@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457413"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022392"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
@@ -29,7 +29,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme a fenyegetések észl
 
 ## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
-Alapértelmezés szerint engedélyezve van a komplex veszélyforrások elleni védelem a Storage-fiókhoz. A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
+A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
 
 ### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -101,7 +101,7 @@ Használja a következő PowerShell-parancsmagokat:
 Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
 
 * A rendellenesség természete
-* A tárfiók neve
+* A Storage-fiók neve
 * Az esemény időpontja
 * A tárolási típus
 * A lehetséges okok

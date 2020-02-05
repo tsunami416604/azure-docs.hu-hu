@@ -1,6 +1,6 @@
 ---
-title: Fiókkezelés – Azure VMware-megoldás a CloudSimple-portálon
-description: Ismerteti, hogyan kezelheti a fiókokat az Azure VMware-megoldásban a CloudSimple-portálon
+title: Fiókkezelés – Azure VMware Solutions (AVS) portál
+description: Ismerteti, hogyan kezelheti a fiókokat az Azure VMware Solutions (AVS) portálon
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,24 +8,24 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1fd7cb1c55fb664828448cef0b67ea9b16323bdf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564185"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025367"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Fiókok kezelése az Azure VMware-megoldásban a CloudSimple-portálon
+# <a name="manage-accounts-on-the-azure-vmware-solutions-avs-portal"></a>Fiókok kezelése az Azure VMware Solutions (AVS) portálon
 
-A CloudSimple szolgáltatás létrehozásakor létrehoz egy fiókot a CloudSimple. A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található. Az előfizetéshez tartozó tulajdonosi és közreműködői szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz. A CloudSimple szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a fiókok oldalon található.
+Az AVS szolgáltatás létrehozásakor létrejön egy fiók az AVS-ben. A fiók társítva van az Azure-előfizetéséhez, ahol a szolgáltatás található. Az előfizetéshez tartozó tulajdonosi és közreműködői szerepkörökkel rendelkező felhasználók hozzáférhetnek az AVS-portálhoz. Az AVS szolgáltatáshoz társított Azure-előfizetés azonosítója és a bérlő azonosítója a fiókok oldalon található.
 
-A CloudSimple-portál fiókjainak kezeléséhez [nyissa meg a portált](access-cloudsimple-portal.md) , és válassza a **fiók** lehetőséget az oldalsó menüben.
+A fiókok az AVS-portálon való kezeléséhez [nyissa meg a portált](access-cloudsimple-portal.md) , és válassza a **fiók** lehetőséget az oldalsó menüben.
 
-Válassza az **Összefoglalás** lehetőséget a vállalat CloudSimple-konfigurációjával kapcsolatos információk megtekintéséhez. Megjelenik a felhő-konfiguráció jelenlegi kapacitása, beleértve a privát felhők számát, a teljes tárterületet, a vSphere, a csomópontok számát és a számítási magok számát. Ha az aktuális konfiguráció nem felel meg az összes igénynek, a rendszer hivatkozást tartalmaz a további csomópontok megvásárlásához.
+Válassza az **Összefoglalás** lehetőséget a vállalat AVS-konfigurációjával kapcsolatos információk megtekintéséhez. Megjelenik a felhő-konfiguráció jelenlegi kapacitása, beleértve az AVS privát felhők számát, a teljes tárterületet, a vSphere, a csomópontok számát és a számítási magok számát. Ha az aktuális konfiguráció nem felel meg az összes igénynek, a rendszer hivatkozást tartalmaz a további csomópontok megvásárlásához.
 
 ## <a name="email-alerts"></a>Értesítő e-mailek
 
-Bármely olyan személy e-mail-címét felveheti, akit értesíteni szeretne a saját Felhőbeli konfiguráció változásairól.
+Bármely olyan személy e-mail-címét felveheti, akit értesíteni szeretne az AVS Private Cloud konfigurációjának módosításairól.
 
 1. A **további e-mail-riasztások** területen kattintson az **új hozzáadása**lehetőségre.
 2. Adja meg az e-mail-címet.
@@ -33,8 +33,8 @@ Bármely olyan személy e-mail-címét felveheti, akit értesíteni szeretne a s
 
 Egy bejegyzés eltávolításához kattintson az **X**gombra.
 
-## <a name="cloudsimple-operator-access"></a>CloudSimple-kezelő hozzáférése
+## <a name="avs-operator-access"></a>AVS-kezelő hozzáférése
 
-Az operátori hozzáférés beállítása lehetővé teszi, hogy a CloudSimple segítséget nyújtson a CloudSimple-portálra való bejelentkezést lehetővé tevő támogatási szakembernek.  A beállítás alapértelmezés szerint engedélyezve van. A támogatási mérnök által az ügyfél-fiókba való bejelentkezéskor végrehajtott összes művelet rögzítve van, és elérhetővé válik a **tevékenység** > **naplózása** lapon végzett felülvizsgálathoz.
+A kezelői hozzáférés beállítása lehetővé teszi, hogy az AVS segítséget nyújtson a hibaelhárításhoz azáltal, hogy egy támogatási szakember engedélyezi a bejelentkezést az AVS-portálra. A beállítás alapértelmezés szerint engedélyezve van. A támogatási mérnök által az ügyfél fiókjába való bejelentkezéskor végrehajtott összes művelet rögzítve van, és elérhető a **tevékenység** > a **napló** oldalán.
 
-Kattintson a **CloudSimple operátor hozzáférés engedélyezve** váltógomb lehetőségre a hozzáférés be-és kikapcsolása.
+Kattintson az **AVS-kezelő hozzáférés engedélyezve** váltógomb lehetőségre a hozzáférés be-vagy kikapcsolásához.

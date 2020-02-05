@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767603"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024041"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
 Azure AD Connect a felhő-kiépítés egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálására szolgál.  Azure AD Connect szinkronizálás mellett is használható, és a következő előnyöket biztosítja:
@@ -46,6 +46,8 @@ Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connec
 | Kapcsolattartási objektumok támogatása |● |● |
 | Eszközök objektumainak támogatása |● | |
 | Alapvető Testreszabás engedélyezése az attribútumok folyamataihoz |● |● |
+| Sychronize Exchange Online-attribútumok |● |● |
+| A bővítmény attribútumainak szinkronizálása 1-15 |● |● |
 | Ügyfél által definiált AD-attribútumok (címtárszolgáltatás-bővítmények) szinkronizálása |● | |
 | Jelszó-kivonat szinkronizálásának támogatása |●|●|
 | Az átmenő hitelesítés támogatása |●||
@@ -60,7 +62,7 @@ Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connec
 | Az attribútumfolyamok speciális testreszabásának engedélyezése |● | |
 | Visszaírási-támogatás (jelszavak, eszközök, csoportok) |● | |
 | Azure AD Domain Services támogatás|● | |
-| Hibrid Exchange-konfiguráció |● | |
+| [Hibrid Exchange-visszaírási](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Több mint 50 000 objektum támogatása AD-tartományban |● | |
 
 ## <a name="next-steps"></a>Következő lépések 

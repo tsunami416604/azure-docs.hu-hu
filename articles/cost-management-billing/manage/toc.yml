@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
           href: ea-portal-troubleshoot.md
-        - name: A Microsoft ügyfélszerződés EA-feladatai
-          href: mca-enterprise-operations.md
 - name: Hibaelhárítás
   items:
     - name: Nem található előfizetés

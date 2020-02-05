@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423101"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024602"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
@@ -31,7 +31,7 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
 
 ### <a name="to-create-a-new-tenant"></a>Új bérlő létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendszergazdai fiókkal.
+1. Jelentkezzen be a szervezet [Azure Portalba](https://portal.azure.com/).
 
 1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.  
 
@@ -58,6 +58,7 @@ Az új bérlő létrejön a contoso.onmicrosoft.com tartománnyal.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő lépésekkel:
 
+- Győződjön meg arról, hogy be van jelentkezve a törölni kívánt címtárba az Azure Portal **címtár + előfizetés** szűrője segítségével, és szükség esetén váltson a célhelyre.
 - Válassza ki **Azure Active Directoryt**, majd a **Contoso – áttekintés** lapon a **Címtár törlése** lehetőséget.
 
     A bérlő és a hozzá kapcsolódó információk törlődnek.

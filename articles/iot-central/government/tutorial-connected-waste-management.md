@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990026"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016493"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure IoT Central csatlakoztatott hulladékgazdálkodási alkalmazást a IoT Central **csatlakoztatott hulladékkezelési** alkalmazás sablonból. 
 
-Az oktatóanyag a következőket ismerteti: 
+Az oktatóanyag során a következőket fogja elsajátítani: 
 
 > [!div class="checklist"]
+
 > * A csatlakoztatott hulladékgazdálkodási alkalmazás létrehozásához használja az Azure IoT Central **csatlakoztatott hulladékgazdálkodási** sablont
 > * Az operátor irányítópultjának megismerése és testreszabása 
 > * A csatlakoztatott hulladékgyűjtő tároló eszköz sablonjának megismerése
@@ -38,7 +39,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>Csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
-Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodási sablont** használjuk a csatlakoztatott hulladékgazdálkodási alkalmazás létrehozásához IoT Centralban.
+Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodási sablonnal** hozza létre a csatlakoztatott hulladékgazdálkodási alkalmazást a IoT Central.
 
 Új Azure IoT Central csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása:  
 
@@ -59,7 +60,7 @@ Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodás
     * **URL** – opcionálisan megadhatja a kívánt URL-címet. Az URL-címet később is megváltoztathatja. 
     * Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
 
-    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../preview/quick-deploy-iot-central.md).
+    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../core/quick-deploy-iot-central.md).
 
 5. Kattintson a lap alján található **Létrehozás** gombra. 
 
@@ -134,7 +135,7 @@ Az eszköz sablonjának megtekintése:
 
 2. Az eszközök listájában megjelenik a **csatlakoztatott hulladék tároló**. Megnyitásához kattintson a névre.
 
-3. Ismerkedjen meg az eszköz sablonjának funkcióival. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet* stb.
+3. Ismerkedjen meg az eszköz sablonjának funkcióival. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet*és egyebeket.
 
    ![Eszköz sablonja](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -152,7 +153,7 @@ Próbálja testre szabni a következőket:
 ### <a name="add-a-cloud-property"></a>Felhőbeli tulajdonság hozzáadása 
 
 1. Navigáljon a **Cloud tulajdonságra** az eszköz sablonja menüben
-2. Vegyen fel egy új Felhőbeli tulajdonságot a **+ Cloud Property**elemre kattintva. A IoT Centralban hozzáadhat egy olyan tulajdonságot, amely az eszközhöz szükséges, de nem várható, hogy az eszköz elküldje őket. A Felhőbeli tulajdonság például lehet a telepítési területre, az adategységre vagy a karbantartási információkra jellemző riasztási küszöbérték. 
+2. Vegyen fel egy új Felhőbeli tulajdonságot a **+ Cloud Property**elemre kattintva. A IoT Centralban hozzáadhat egy olyan tulajdonságot, amely az eszközhöz szükséges, de nem várható, hogy az eszköz elküldje őket. A Felhőbeli tulajdonság például lehet a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték, valamint egyéb információk. 
 3. Módosítások **mentése** 
  
 ### <a name="views"></a>Nézetek 

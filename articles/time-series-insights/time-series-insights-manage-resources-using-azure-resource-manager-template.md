@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973227"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024398"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -57,7 +57,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
     <div id="required-parameters"></div>
 
-   * Kötelező paraméterek
+   * Szükséges paraméterek
 
      | Paraméter | Leírás |
      | --- | --- |
@@ -69,7 +69,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
     <div id="optional-parameters"></div>
 
-   * Opcionális paraméterek
+   * Választható paraméterek
 
      | Paraméter | Leírás |
      | --- | --- |
@@ -188,7 +188,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * A telepítési parancsmag futtatásakor beágyazott paramétereket is használhat. A parancs formátuma a következő:
+    * A telepítési parancsmag futtatásakor beágyazott paramétereket is használhat. A parancs a következő:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"

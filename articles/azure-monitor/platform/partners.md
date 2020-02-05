@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894588"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023871"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -140,7 +140,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-További információ
+További információk
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -272,7 +272,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Rugalmas dokumentáció."
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana-integráció."
 [influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influx-adatközpont-integráció."
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "A Logic monitor dokumentációja."
+[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "A Logic monitor dokumentációja."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "A Moogsoft dokumentációja."
 [newrelic-doc]: https://newrelic.com/azure "A NewRelic dokumentációja."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "A OpsGenie dokumentációja."

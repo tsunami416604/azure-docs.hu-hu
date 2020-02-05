@@ -2,21 +2,21 @@
 title: Azure Batch készlet létrehozási eseménye
 description: A Batch-készlet létrehozási eseményének hivatkozása, amely a készlet létrehozása után lett kibocsátva. A napló tartalma a készlet általános információit fogja közzétenni.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: cb109daee20300d4564ecd40c0a3c14de0f3de1c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929867"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022189"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 

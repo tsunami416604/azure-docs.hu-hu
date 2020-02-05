@@ -3,20 +3,22 @@ title: Az Azure IoT Central kiterjesztése egyéni szabályokkal és értesíté
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást e-mail-értesítések küldéséhez, amikor egy eszköz leállítja a telemetria küldését. Ez a megoldás Azure Stream Analytics, Azure Functions és SendGrid használ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987594"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022443"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
+
+
 
 Ez az útmutató bemutatja, hogyan bővítheti IoT Central alkalmazását egyéni szabályokkal és értesítésekkel. A példa egy értesítés küldését mutatja be egy operátornak, amikor egy eszköz leállítja a telemetria küldését. A megoldás egy [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) lekérdezést használ annak észlelésére, hogy egy eszköz leállította-e a telemetria küldését. A Stream Analytics-feladatokhoz [Azure functions](https://docs.microsoft.com/azure/azure-functions/) kell küldenie az értesítő e-maileket a [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)használatával.
 
@@ -41,14 +43,16 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | Díjszabási csomag | Standard |
-| Alkalmazássablon | Örökölt alkalmazás |
+| Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
 | Könyvtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region (Régió) | Egyesült Államok |
+| Region (Régió) | A legközelebbi régió |
 
 A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
+
+Ez az alkalmazás sablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetria küldenek.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére, hogy egy eszköz nem küld-e telemetria több mint 120 másodpercig. A lekérdezés az Event hub telemetria használja bemenetként. A feladat elküldi a lekérdezés eredményeit a Function alkalmazásnak. Ebben a szakaszban a Stream Analytics feladatot konfigurálja:
 
-1. A Azure Portal navigáljon a stream Analytics-feladathoz a **feladatok topológia** területen válassza a **bemenetek**lehetőséget, válassza a **+ stream-bemenet hozzáadása**lehetőséget, majd válassza az **Event hub**elemet.
+1. A Azure Portal navigáljon a Stream Analytics feladathoz a **feladatok topológia** területen válassza a **bemenetek**lehetőséget, válassza a **+ stream-bemenet hozzáadása**lehetőséget, majd válassza az **Event hub**elemet.
 1. A következő táblázatban található információk segítségével konfigurálja a bemenetet a korábban létrehozott Event hub használatával, majd válassza a **Mentés**lehetőséget:
 
     | Beállítás | Value (Díj) |
@@ -307,7 +311,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
 
 Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
 
-1. Navigáljon a **folyamatos adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
+1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs**elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés**lehetőséget:
 
     | Beállítás | Value (Díj) |
@@ -328,15 +332,15 @@ A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
 
 A megoldás teszteléséhez letilthatja a folyamatos adatexportálást IoT Centralról szimulált leállított eszközökre:
 
-1. A IoT Central alkalmazásban navigáljon a **folyamatos adatexportálás** lapra, és válassza az **Exportálás Event Hubs** exportálási konfigurációt.
+1. A IoT Central alkalmazásban navigáljon az **adatexportálás** lapra, és válassza az **Exportálás Event Hubs** exportálási konfigurációt.
 1. Válassza **ki** az **engedélyezve** lehetőséget, majd kattintson a **Mentés**gombra.
 1. Legalább két perc elteltével az e-mail-cím egy vagy **több olyan e** -mailt kap, amely az alábbi példához hasonlóan néz ki:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Kitakarítás

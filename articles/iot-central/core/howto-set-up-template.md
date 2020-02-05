@@ -1,332 +1,270 @@
 ---
-title: Eszköz sablonjának beállítása Azure IoT Central alkalmazásban | Microsoft Docs
-description: Megtudhatja, hogyan állíthat be egy eszközt a mérésekkel, a beállításokkal, a tulajdonságokkal, a szabályokkal és az irányítópulttal.
-author: viv-liu
-ms.author: viviali
-ms.date: 06/19/2019
-ms.topic: conceptual
+title: Új IoT-eszköz típusának meghatározása az Azure IoT Centralban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy új Azure IoT-sablont az Azure IoT Central-alkalmazásban. Megadhatja a típus telemetria, állapotát, tulajdonságait és parancsait.
+author: dominicbetts
+ms.author: dobett
+ms.date: 12/06/2019
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c4df07174a5d8826acd7682fa3035fcfd201c5c9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953095"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023786"
 ---
-# <a name="set-up-a-device-template"></a>Eszközsablon beállítása
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+# <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköz típusának definiálása az Azure IoT Central-alkalmazásban
 
 Az eszköz sablonja egy olyan terv, amely meghatározza egy Azure IoT Central-alkalmazáshoz csatlakozó eszköz típusának jellemzőit és viselkedését.
 
 A Builder például létrehozhat egy eszköz sablont egy csatlakoztatott ventilátorhoz, amely a következő jellemzőkkel rendelkezik:
 
-- Hőmérséklet telemetria mérése
-- Hely mérése
-- Ventilátoros motor hiba eseményének mérése
-- Ventilátor működési állapotának mérése
-- Ventilátor sebességének beállítása
-- Riasztásokat küldő szabályok
-- Irányítópult, amely átfogó képet nyújt az eszközről
+- Hőmérséklet telemetria küld
+- Location tulajdonság küldése
+- Ventilátor motoros hibák eseményeinek küldése
+- Ventilátor működési állapotának küldése
+- Egy írható ventilátoros Speed tulajdonságot biztosít
+- Az eszköz újraindítására szolgáló parancsot biztosít
+- Általános áttekintést nyújt az eszközről egy irányítópulton keresztül
 
-Ebből az eszköz sablonból az operátor létrehozhat és összekapcsolhat valódi ventilátoros eszközöket olyan nevekkel, mint például a **ventilátor-1** és a **ventilátor-2**. Ezek a ventilátorok olyan mérésekkel, beállításokkal, tulajdonságokkal, szabályokkal és irányítópulttal rendelkeznek, amelyeket az alkalmazás felhasználói figyelnek és kezelhetnek.
-
-> [!NOTE]
-> Csak az építők és a rendszergazdák hozhatnak létre, szerkeszthetnek és törölhetnek eszközöket. Bármely felhasználó létrehozhat eszközöket a **Device Explorer** oldalon a meglévő eszközök sablonjaiból.
-
-## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
-
-1. Navigáljon az **eszközök sablonjai** lapra.
-
-2. Sablon létrehozásához először válassza az **+ új**lehetőséget.
-
-3. A gyors kezdéshez válasszon a meglévő, előre elkészített sablonok közül. Ellenkező esetben válassza az **Egyéni**lehetőséget, adjon meg egy nevet, majd kattintson a **Létrehozás** gombra a saját sablon kiépítéséhez a semmiből.
-
-   ![Eszköz sablonjának könyvtára](./media/howto-set-up-template/newtemplate.png)
-
-4. Egyéni sablon létrehozásakor megtekintheti az új sablon **eszköz adatai** lapját. IoT Central automatikusan létrehoz egy szimulált eszközt az eszköz létrehozásakor. A szimulált eszköz lehetővé teszi az alkalmazás működésének tesztelését a valódi eszköz csatlakoztatása előtt.
-
-A következő szakaszok az **eszköz sablonja** oldalon található lapokat ismertetik.
-
-## <a name="measurements"></a>Mérések
-
-A mérések az eszközről származó adatok. Több mérést is hozzáadhat az eszköz sablonhoz az eszköz képességeinek megfelelően.
-
-- A **telemetria** mérések az eszköz által az idő múlásával összegyűjtött numerikus adatpontok. Folyamatos adatfolyamként jelennek meg. Ilyen például a hőmérséklet.
-- Az **esemény** -mérések olyan időponthoz mért adatmennyiségek, amelyek az eszközön valamilyen jelentőséget jelentenek. A súlyossági szint az esemény fontosságát jelöli. Ilyen például a ventilátoros motor hibája.
-- Az **állapot** -mérések az eszköz vagy annak összetevőinek állapotát jelzik egy adott időszakban. A ventilátor mód például úgy definiálható, mint a két lehetséges állapot .
-- A **hely** mérése az eszköz hosszúsági és szélességi koordinátái az adott időszakra vonatkozóan. Egy ventilátor például áthelyezhető az egyik helyről a másikra.
-
-### <a name="create-a-telemetry-measurement"></a>Telemetria-mérés létrehozása
-
-Új telemetria-mérés hozzáadásához válassza az **+ új mérték**lehetőséget, válassza a **telemetria** lehetőséget a mérték típusaként, és adja meg az űrlap részleteit.
+Az eszköz sablonja alapján a kezelők valódi ventilátoros eszközöket hozhatnak létre és csatlakozhatnak. Ezek a ventilátorok olyan mérésekkel, tulajdonságokkal és parancsokkal rendelkeznek, amelyeket az operátorok a figyelésre és felügyeletre használnak. A kezelők az eszközök irányítópultját és űrlapjait használják a ventilátorral való interakcióra.
 
 > [!NOTE]
-> Az eszköz sablonjának neveinek meg kell egyezniük a megfelelő eszköz kódjában található nevekkel, hogy a telemetria-mérték megjelenjen az alkalmazásban, amikor valódi eszköz csatlakozik. Ha a beállításokat, az eszköz tulajdonságait és a parancsokat konfigurálja, akkor a következő részben ismertetett módon adja meg az eszköz sablonját.
+> Csak az építők és a rendszergazdák hozhatnak létre, szerkeszthetnek és törölhetnek eszközöket. Bármely felhasználó létrehozhat eszközöket az **eszközök** lapon a meglévő eszközök sablonjaiból.
 
-Hozzáadhat például egy új hőmérséklet-telemetria mérést:
+A [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi a IoT Central számára az eszközök integrálását anélkül, hogy beágyazott eszköz kódját kellene írnia. A IoT Plug and Play (előzetes verzió) magja a Device képesség modell sémája, amely az eszközök képességeit ismerteti. IoT Central alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play (előzetes verzió) eszköz-képesség modelleket használják.
 
-| Megjelenítendő név        | Mezőnév    |  egység    | Min   |Maximum|
-| --------------------| ------------- |-----------|-------|---|
-| Hőmérséklet         | ideiglenes          |  degC     |  0    |100|
+A Builder számos lehetőséget kínál az eszközök sablonjainak létrehozására:
 
-!["Telemetria létrehozása" űrlap a hőmérséklet-mérés részleteivel](./media/howto-set-up-template/measurementsform.png)
+- Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz képességeinek modelljét az eszköz kódjában.
+- Eszköz-képesség modell importálása az [Azure Certified for IoT Device Catalog](https://aka.ms/iotdevcat)eszközből. Ezután adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+- Hozzon létre egy eszköz-képesség modellt a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz képességeinek modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+- Hozzon létre egy eszköz-képesség modellt a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből, és a valódi eszközt csatlakoztathatja a IoT Central alkalmazáshoz egy eszköz – első kapcsolat használatával. IoT Central megkeresi és importálja az eszköz képességeinek modelljét a nyilvános adattárból. Ezután hozzáadhat bármilyen Felhőbeli tulajdonságot, testreszabást és irányítópultot, amely az IoT Central alkalmazásnak az eszköz sablonját kell használnia.
 
-A **Mentés**gombra kattintva a **hőmérséklet** -mérés megjelenik a mértékegységek listájában. Rövid idő alatt a szimulált eszköz hőmérsékleti adatainak vizualizációja látható.
+## <a name="create-a-device-template-from-the-device-catalog"></a>Eszköz sablonjának létrehozása az eszköz-katalógusból
 
-A telemetria megjelenítésekor a következő összesítési lehetőségek közül választhat: átlag, minimum, maximum, Sum és Count. Az **átlag** érték van kiválasztva az alapértelmezett összesítésként a diagramon.
+Építőként gyorsan megkezdheti a megoldás kiépítését egy IoT Plug and Play (előzetes verzió) tanúsítvánnyal rendelkező eszköz használatával. Tekintse meg a listát az [Azure IoT-eszköz katalógusában](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrálható az eszköz-katalógussal, így a IoT Plug and Play (előzetes verzió) tanúsítvánnyal rendelkező eszközökről importálhat egy eszköz-képesség modellt. Eszköz sablonjának létrehozása ezen eszközök egyikéről a IoT Centralban:
 
-> [!NOTE]
-> A telemetria-mérés adattípusa lebegőpontos szám.
+1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
+1. Válassza az **+ új**lehetőséget, majd válassza ki a katalógusból a IoT Plug and Play (előzetes verzió) tanúsítvánnyal rendelkező eszközöket. IoT Central létrehoz egy sablont ezen eszköz-képesség modell alapján.
+1. Bármilyen Felhőbeli tulajdonságot, testreszabást és nézetet hozzáadhat az eszköz sablonhoz.
+1. Válassza a **Közzététel** lehetőséget, hogy a sablon elérhető legyen az operátorok számára az eszközök megtekintéséhez és csatlakoztatásához.
 
-### <a name="create-an-event-measurement"></a>Esemény-mérés létrehozása
+## <a name="create-a-device-template-from-scratch"></a>Sablon létrehozása a semmiből
 
-Új esemény mértékének hozzáadásához válassza az **+ új mérték** lehetőséget, majd válassza az **esemény** lehetőséget a mérték típusaként. Adja meg a részleteket az **esemény létrehozása** űrlapon.
+Az eszköz sablonjai A következőket tartalmazzák:
 
-Adja meg az esemény **megjelenítendő nevét**, a **mező nevét**és a **súlyossági** adatokat. A következő három elérhető súlyossági szint közül választhat: **hiba**, **Figyelmeztetés**és **információ**.
+- Az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat meghatározó _eszköz-képességi modell_ . Ezeket a képességeket egy vagy több interfészbe rendezi a rendszer.
+- A _felhő tulajdonságai_ , amelyek a IoT Central alkalmazás által az eszközökön tárolt adatokat határozzák meg. Előfordulhat például, hogy egy Felhőbeli tulajdonság rögzíti az eszköz legutóbbi kiszolgálásának dátumát. Ezeket az adatokat soha nem osztja meg az eszközzel.
+- A _testreszabások_ lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modellje definícióit. A szerkesztő például felülbírálhatja egy eszköz tulajdonságának a nevét. A tulajdonságok neve IoT Central irányítópultokon és űrlapokon jelenik meg.
+- Az _irányítópultok és űrlapok_ lehetővé teszik, hogy a szerkesztő olyan felhasználói felületet hozzon létre, amely lehetővé teszi a kezelők számára az alkalmazáshoz csatlakoztatott eszközök figyelését és kezelését
 
-Hozzáadhat például egy új **ventilátoros motort jelző** eseményt.
+Eszköz sablonjának létrehozása a IoT Centralban:
 
-| Megjelenítendő név        | Mezőnév    |  Alapértelmezett súlyosság |
-| --------------------| ------------- |-----------|
-| Ventilátormotor-hiba     | fanmotorerror |  Hiba    |
+1. Nyissa meg az IoT Central alkalmazás **eszköz sablonok** lapját.
+1. Válassza az **+ új** > **Egyéni**lehetőséget.
+1. Adja meg a sablon nevét, például a **környezeti érzékelőt**.
+1. Nyomja le az **Enter** billentyűt. IoT Central létrehoz egy üres sablont.
 
-!["Esemény létrehozása" űrlap a ventilátoros motorral kapcsolatos esemény részleteivel](./media/howto-set-up-template/eventmeasurementsform.png)
+## <a name="manage-a-device-template"></a>Eszköz sablonjának kezelése
 
-Miután kiválasztotta a **Save (Mentés**) lehetőséget, a **ventilátor motoros hibák** mérése megjelenik a mértékegységek listájában. Rövid idő alatt megtekintheti az esemény adatainak vizualizációját a szimulált eszközről.
+A sablon kezdőlapján átnevezheti vagy törölheti a sablonokat.
 
-Egy esemény további részleteinek megtekintéséhez válassza ki az esemény ikonját a diagramon:
+Miután hozzáadta az eszköz képességeinek modelljét a sablonhoz, közzéteheti azt. Amíg nem tette közzé a sablont, nem tud csatlakozni az eszközhöz a sablon alapján, hogy az operátorok megjelenjenek az **eszközök** lapon.
 
-![A "fan-motor hibája" esemény részletei](./media/howto-set-up-template/eventmeasurementsdetail.png)
+## <a name="create-a-capability-model"></a>Képesség modell létrehozása
 
-> [!NOTE]
-> Az esemény mértékének adattípusa karakterlánc.
+Eszköz-képesség modell létrehozásához a következőket teheti:
 
-### <a name="create-a-state-measurement"></a>Állapot mérésének létrehozása
+- A IoT Central használatával hozzon létre egy egyéni modellt a semmiből.
+- Modell importálása JSON-fájlból. Előfordulhat, hogy egy eszköz-szerkesztő a Visual Studio Code-ot használta az alkalmazáshoz tartozó eszköz-képesség modell létrehozásához.
+- Válasszon egy eszközt az eszköz-katalógusból. Ezzel a beállítással importálhatja azt az eszköz-képességi modellt, amelyet a gyártó közzétett az eszközön. Az ehhez hasonló eszköz-képesség modell automatikusan közzé lesz téve.
 
-Új állapot mértékének hozzáadásához válassza az **+ új mérték** gombot, és válassza az **állapot** lehetőséget a mérték típusaként. Adja meg a részleteket az **állapot létrehozása** űrlapon.
+## <a name="manage-a-capability-model"></a>Képesség modell kezelése
 
-Adja **meg a megjelenítendő név**, a **mező neve**és az állapot **értékeinek** részleteit. Minden érték rendelkezhet egy megjelenítendő névvel, amelyet akkor fog használni, amikor az érték megjelenik a diagramokban és a táblákban.
+Az eszköz-képesség modell létrehozása után a következőket teheti:
 
-Hozzáadhat például egy új **ventilátor mód** állapotot, amely két lehetséges értékkel rendelkezik, amelyeket az eszköz képes elküldeni, **működni** és **leállítani**.
+- Felületek hozzáadása a modellhez. A modellnek legalább egy csatolóval kell rendelkeznie.
+- Szerkessze a modell metaadatait, például az azonosítót, a névteret és a nevet.
+- Törölje a modellt.
 
-| Megjelenítendő név | Mezőnév    |  1\. érték   | Megjelenítendő név | 2\. érték    |Megjelenítendő név  |
-| -------------| ------------- |----------- | -------------| -----------| -------------|
-| Ventilátor mód     | fanmode       |  1         | Üzemel    |     0      | Leállítva      |
+## <a name="create-an-interface"></a>Felület létrehozása
 
-!["Állapot szerkesztése" űrlap a ventilátor mód részleteivel](./media/howto-set-up-template/statemeasurementsform.png)
+Az eszköz képességeinek legalább egy csatolóval kell rendelkezniük. Az illesztőfelület a képességek újrafelhasználható gyűjteménye.
 
-A **Mentés**gombra kattintva a **ventilátor üzemmód** állapotának mérése megjelenik a mértékegységek listájában. Rövid idő alatt megtekintheti az állapotadatok vizualizációját a szimulált eszközről.
+Felület létrehozása:
 
-Ha az eszköz túl sok adatpontot küld egy kis időtartamon belül, az állapot mérése egy másik vizualizációval jelenik meg. Válassza ki a diagramot, hogy az adott időszakon belül az összes adatpontot időrendi sorrendben jelenítse meg. Az időtartomány leszűkíthető úgy is, hogy megjelenjen a diagramon ábrázolt mérés.
+1. Nyissa meg az eszköz képességeinek modelljét, és válassza a **+ kapcsolat hozzáadása**elemet.
 
-> [!NOTE]
-> Az állapot mérésének adattípusa karakterlánc.
+1. A **csatoló kiválasztása** lapon a következőket teheti:
 
-### <a name="create-a-location-measurement"></a>Hely mérésének létrehozása
+    - Hozzon létre egy egyéni felületet a semmiből.
+    - Meglévő illesztőfelület importálása egy fájlból. Előfordulhat, hogy egy eszközön a Visual Studio Code használatával létrehoztak egy felületet az eszközhöz.
+    - Válasszon egyet a standard felületek közül, például az **eszköz adatai** felületet. A standard felületek a sok eszközhöz közös képességeket határozzák meg. Ezeket a standard felületeket az Azure IoT teszi közzé, és nem lehet verziószámmal vagy szerkesztéssel ellátott.
 
-Új hely mértékének hozzáadásához válassza az **+ új mérték**lehetőséget, válassza a **hely** lehetőséget a mérték típusaként, és adja meg a részleteket a **create mértékegység** űrlapon.
+1. Miután létrehozta a felületet, az **identitás szerkesztése** elemre kattintva módosíthatja az interfész megjelenítendő nevét.
 
-Hozzáadhat például egy új hely telemetria mértékét:
+1. Ha úgy dönt, hogy új egyéni felületet hoz létre, hozzáadhatja az eszköz képességeit. Az eszköz képességei a következők: telemetria, tulajdonságok és parancsok.
 
-| Megjelenítendő név        | Mezőnév    |
-| --------------------| ------------- |
-| Eszköz helye      |  assetloc     |
+### <a name="telemetry"></a>Telemetria
 
-!["Hely létrehozása" űrlap a hely mértékének részleteivel](./media/howto-set-up-template/locationmeasurementsform.png)
+A telemetria az eszközről küldött értékek streamje, jellemzően egy érzékelőből. Egy érzékelő például jelenthetheti a környezeti hőmérsékletet.
 
-A Save ( **Mentés**) gombra kattintva a **hely** mérőszáma megjelenik a mértékegységek listájában. Rövid idő alatt megtekintheti a hely adatainak vizualizációját a szimulált eszközről.
+A következő táblázat a telemetria képesség konfigurációs beállításait mutatja be:
 
-A hely megjelenítésekor a következő lehetőségek közül választhat: legutóbbi hely és hely előzményei. A **hely előzményei** csak a kiválasztott időtartományra érvényesek.
+| Mező | Leírás |
+| ----- | ----------- |
+| Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetria érték megjelenítendő neve. |
+| Name (Név) | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Képesség típusa | Telemetria. |
+| Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
+| Séma | A telemetria adattípus, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
+| Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ**vagy **Figyelmeztetés**. |
+| Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
+| Unit (Egység) | A telemetria értékének (például: **mph**, **%** vagy **&deg;C**) egysége. |
+| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
+| Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
+| Leírás | A telemetria képesség leírása. |
 
-A hely mérésének adattípusa egy olyan objektum, amely hosszúságot, szélességet és választható magasságot tartalmaz. A következő kódrészlet a JavaScript-struktúrát mutatja be:
+### <a name="properties"></a>Tulajdonságok
 
-```javascript
-assetloc: {
-  lon: floating point number,
-  lat: floating point number,
-  alt?: floating point number
-}
-```
+A tulajdonságok a pont – idő értékeket jelölik. Egy eszköz használhat például egy tulajdonságot a elérni kívánt cél hőmérséklet jelentésére. A IoT Central írható tulajdonságokat adhat meg.
 
-A valódi eszköz csatlakoztatása után a mértékként hozzáadott hely frissül az eszköz által eljuttatott értékkel. A hely mértékének beállítása után [hozzáadhat egy térképet a hely megjelenítéséhez az eszköz irányítópultján](#add-a-location-measurement-in-the-dashboard).
+A következő táblázat a tulajdonságok funkciójának konfigurációs beállításait mutatja be:
 
-## <a name="settings"></a>Beállítások
+| Mező | Leírás |
+| ----- | ----------- |
+| Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
+| Name (Név) | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Képesség típusa | Tulajdonság. |
+| Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
+| Séma | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
+| Írható | Ha a tulajdonság nem írható, az eszköz jelentést készíthet IoT Central. Ha a tulajdonság írható, az eszköz jelentést készíthet IoT Central, és IoT Central a tulajdonságok frissítését is elküldheti az eszköznek.
+| Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ**vagy **Figyelmeztetés**. |
+| Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
+| Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** vagy **&deg;C**. |
+| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
+| Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
+| Leírás | A tulajdonság funkciójának leírása. |
 
-A beállítások vezérlik az eszközt. Lehetővé teszik, hogy az operátorok adatokat adjanak az eszköznek. Több olyan beállítást is hozzáadhat az eszközhöz, amely csempéként jelenik meg az operátorok számára a **Beállítások** lapon. Többféle típusú beállítást is hozzáadhat: szám, szöveg, dátum, váltógomb és szakasz felirata.
+### <a name="commands"></a>Parancsok
 
-A beállítások a három állapot egyike lehet. Az eszköz ezeket az állapotokat jelenti.
+A IoT Central eszköz parancsai hívhatók. A parancsok opcionálisan továbbítják a paramétereket az eszköznek, és választ kapnak az eszköztől. Meghívhat például egy parancsot 10 másodperc alatt egy eszköz újraindítására.
 
-- **Szinkronizálva**: az eszköz úgy módosult, hogy tükrözze a beállítás értékét.
+A következő táblázat a parancs funkciójának konfigurációs beállításait mutatja be:
 
-- **Függőben**: az eszköz jelenleg a beállítási értékre változik.
+| Mező | Leírás |
+| ----- | ----------- |
+| Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
+| Name (Név) | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Képesség típusa | Parancs. |
+| Parancs | `SynchronousExecutionType` kérdésre adott válaszban foglalt lépéseket. |
+| Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
+| Leírás | A parancs funkciójának leírása. |
+| Kérelem | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
+| Válasz | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 
-- **Hiba**: az eszköz hibát adott vissza.
+## <a name="manage-an-interface"></a>Illesztőfelület kezelése
 
-Hozzáadhat például egy új ventilátor sebességét úgy, hogy kiválasztja a **Settings (beállítások** ) lehetőséget, és beírja az új **szám** beállítást:
+Ha még nem tette közzé a felületet, módosíthatja az illesztőfelület által definiált képességeket. Miután közzétette a felületet, ha módosítani kívánja a módosításokat, létre kell hoznia az eszköz sablonjának új verzióját és az illesztőfelület verzióját. A **Testreszabás** szakaszban olyan módosításokat végezhet, amelyek nem igényelnek verziószámozást, például megjelenítendő neveket vagy egységeket.
 
-| Megjelenítendő név  | Mezőnév    |  egység  | tizedesek |Kezdeti|
-| --------------| ------------- |---------| ---------|---- |
-| Ventilátor sebessége     | fanSpeed      | RPM     | 2        | 0   |
+Azt is megteheti, hogy a felületet JSON-fájlként exportálja, ha újra szeretné használni egy másik képesség modellben.
 
-!["Szám konfigurálása" űrlap a sebességi beállítások részleteivel](./media/howto-set-up-template/settingsform.png)
+## <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
 
-A Save ( **Mentés**) gombra kattintva a **ventilátor sebessége** beállítás csempeként jelenik meg. Az operátor a **Device Explorer** lapon található beállítás használatával módosíthatja az eszköz ventilátorának sebességét.
+A felhő tulajdonságai a IoT Central lévő eszközök adatainak tárolására használhatók. A felhő tulajdonságai soha nem továbbítódnak az eszközre. Például a Cloud Properties használatával tárolhatja annak az ügyfélnek a nevét, aki az eszközt telepítette, vagy az eszköz utolsó szolgáltatásának dátuma.
 
-## <a name="properties"></a>Tulajdonságok
+A következő táblázat a Cloud Property konfigurációs beállításait mutatja be:
 
-A tulajdonságok az eszközhöz társított metaadatok, például rögzített eszköz helye és sorozatszáma. Több tulajdonság hozzáadása a **Tulajdonságok** lapon csempéként megjelenő sablonhoz. Egy tulajdonság típusa például szám, szöveg, dátum, váltógomb, eszköz tulajdonság, címke vagy rögzített hely. Az operátor meghatározza a tulajdonságok értékeit, amikor létrehoznak egy eszközt, és bármikor szerkeszthetik ezeket az értékeket. Az eszköz tulajdonságai csak olvashatók, és az eszközről az alkalmazásba kerülnek. Az operátorok nem változtathatják meg az eszköz tulajdonságait. Amikor egy valódi eszköz csatlakozik, az eszköz tulajdonságlapja frissül az alkalmazásban.
+| Mező | Leírás |
+| ----- | ----------- |
+| Megjelenítendő név | Az irányítópultokon és űrlapokon használt Cloud Property érték megjelenítendő neve. |
+| Name (Név) | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
+| Séma | A Felhőbeli tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. |
 
-Két tulajdonságkategória érhető el:
+## <a name="add-customizations"></a>Testreszabások hozzáadása
 
-- Az eszköz által az IoT Central alkalmazásnak jelentett _Tulajdonságok_ . Az eszköz tulajdonságai az eszköz által jelentett írásvédett értékek, és az alkalmazásban frissülnek, amikor valódi eszköz van csatlakoztatva.
-- Az alkalmazásban tárolt és az operátor által szerkeszthető _alkalmazás-tulajdonságok_ . Az alkalmazás tulajdonságai csak az alkalmazásban tárolódnak, és az eszköz soha nem látja őket.
+Ha módosítania kell egy importált felületet, vagy IoT Central-specifikus funkciókat kell hozzáadnia egy képességhez, használja a testreszabásokat. Csak olyan mezőket szabhat testre, amelyek nem bontják le az illesztőfelületek kompatibilitását. Megteheti például a következőket:
 
-Például hozzáadhatja az eszköz utolsó kiszolgált dátumát új **Date** (alkalmazás) tulajdonságként a **Tulajdonságok** lapon:
+- Testreszabhatja egy képesség megjelenített nevét és egységeit.
+- Adja meg az alapértelmezett színt, amelyet akkor kell használni, ha az érték megjelenik a diagramon.
+- Egy tulajdonság kezdeti, minimális és maximális értékének megadása.
 
-| Megjelenítendő név  | Mezőnév | Kezdeti érték   |
-| --------------| -----------|-----------------|
-| Utolsó szervizelés      | lastServiced        | 01/29/2019     |
+Nem szabhatja testre a képesség nevét vagy a képesség típusát. Ha módosítások nem hajthatók végre a **Testreszabás** szakaszban, az eszköz sablonját és felületét kell megadnia a funkció módosításához.
 
-!["Az utolsó szervizelt" űrlap konfigurálása a "tulajdonságok" lapon](./media/howto-set-up-template/propertiesform.png)
+### <a name="generate-default-views"></a>Alapértelmezett nézetek előállítása
 
-A Save ( **Mentés**) gombra kattintva a rendszer csempeként jeleníti meg az eszköz utolsó kiszolgált dátumát.
+Az alapértelmezett nézetek létrehozásával gyorsan megjelenítheti az eszköz fontos adatait. Az eszköz sablonjában legfeljebb három alapértelmezett nézet hozható létre:
 
-Miután létrehozta a csempét, módosíthatja az alkalmazás tulajdonság értékét a **Device Explorerban**.
+- A **parancsok** megjelenítik az eszköz parancsainak nézetét, és lehetővé teszik az operátor számára az eszközre történő küldést.
+- Az **Áttekintés** az eszközök telemetria, a diagramok és a metrikák megjelenítését teszi lehetővé.
+- A **Névjegy** az eszköz adatainak megtekintését, az eszköz tulajdonságainak megjelenítését ismerteti.
 
-### <a name="create-a-location-property"></a>Location tulajdonság létrehozása
+Miután kiválasztotta az **alapértelmezett nézetek létrehozása**lehetőséget, láthatja, hogy az eszköz sablonjának **nézetek** szakaszában automatikusan hozzá lettek adva.
 
-Földrajzi kontextust biztosíthat az Azure IoT Centralban, és leképezheti a szélességi és hosszúsági koordinátákat, illetve az utca címeit. Azure Maps engedélyezi ezt a funkciót a IoT Centralban.
+## <a name="add-dashboards"></a>Irányítópultok hozzáadása
 
-A hely két típusát adhatja hozzá:
+Irányítópultokat adhat hozzá egy sablonhoz, hogy az operátorok diagramok és metrikák használatával jelenítsék meg az eszközöket. Az eszközök sablonjaihoz több irányítópult is tartozhat.
 
-- Az alkalmazásban tárolt **Location (alkalmazás) tulajdonság**. Az alkalmazás tulajdonságai csak az alkalmazásban tárolódnak, és az eszköz soha nem látja őket.
-- A **hely eszköz tulajdonságként**, amelyet az eszköz az alkalmazásnak jelent. Az ilyen típusú tulajdonságot a rendszer a legjobb statikus helyen használja.
+Irányítópult hozzáadása egy eszköz sablonhoz:
 
-> [!NOTE]
-> A tulajdonságként megadott hely nem rögzíti az előzményeket. Ha előzményekre van szükség, használja a hely mértékét.
+1. Nyissa meg az eszköz sablonját, és válassza a **nézetek**lehetőséget.
+1. Válassza ki **az eszköz megjelenítését**.
+1. Adja meg az irányítópult nevét az **irányítópult neve**mezőben.
+1. Csempe hozzáadása az irányítópulthoz a statikus, a tulajdonság, a Cloud Property, a telemetria és a Command csempék listájából. Húzza az irányítópultra felvenni kívánt csempéket.
+1. Ha több telemetria-értéket szeretne ábrázolni egyetlen diagramon, válassza ki a telemetria-értékeket, majd kattintson az **összevonás**elemre.
+1. Konfigurálja az egyes hozzáadott csempéket az adatmegjelenítés testreszabásához. Ezt úgy teheti meg, hogy a fogaskerék ikonra kattint, vagy kiválasztja a **konfiguráció módosítása** elemet a diagram csempén.
+1. Rendezze és méretezze át a csempéket az irányítópulton.
+1. Mentse a módosításokat.
 
-#### <a name="add-location-as-an-application-property"></a>Hely hozzáadása alkalmazás-tulajdonságként
+### <a name="configure-preview-device-to-view-dashboard"></a>Az előnézet eszköz konfigurálása az irányítópult megtekintéséhez
 
-A Location (hely) tulajdonságot alkalmazás-tulajdonságként is létrehozhatja a IoT Central alkalmazásban Azure Maps használatával. Felveheti például az eszköz telepítési címe:
+Az irányítópult megtekintéséhez és teszteléséhez válassza az **előnézet eszköz konfigurálása**lehetőséget. Ez lehetővé teszi, hogy megtekintse az irányítópultot, amikor az operátor látja a közzététel után. Ezzel a beállítással ellenőrizheti, hogy a nézetek a megfelelő adatokon jelenjenek-e meg. A következő lehetőség közül választhat:
 
-1. Navigáljon a **Tulajdonságok** lapra.
+- Nincs előnézeti eszköz.
+- Az eszköz sablonja számára konfigurált valós tesztelési eszköz.
+- Egy meglévő eszköz az alkalmazásban az eszköz AZONOSÍTÓjának használatával.
 
-2. A könyvtárban válassza a **hely**lehetőséget.
+## <a name="add-forms"></a>Űrlapok hozzáadása
 
-3. A **megjelenítendő név**, a **Mezőnév**és (opcionálisan) **kezdeti érték** konfigurálása a helyhez.
+Űrlapokat adhat hozzá egy eszköz sablonhoz, hogy az operátorok a tulajdonságok megtekintésével és beállításával lehetővé tegyék az eszközök felügyeletét. Az operátorok csak a felhő tulajdonságait és az írható eszköz tulajdonságait módosíthatják. Az eszközök sablonjaihoz több űrlap is tartozhat.
 
-    | Megjelenítendő név  | Mezőnév | Kezdeti érték |
-    | --------------| -----------|---------|
-    | Telepítési címe | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
+Űrlap hozzáadása egy eszköz sablonhoz:
 
-   !["Hely konfigurálása" űrlap a hely részleteivel](./media/howto-set-up-template/locationcloudproperty2.png)
+1. Nyissa meg az eszköz sablonját, és válassza a **nézetek**lehetőséget.
+1. Válassza **az eszköz és a Felhőbeli adattárolás szerkesztése**lehetőséget.
+1. Adja meg az űrlap nevét az **űrlap nevében**.
+1. Válassza ki az űrlap elrendezéséhez használni kívánt oszlopok számát.
+1. Adja hozzá a tulajdonságokat egy meglévő szakaszhoz az űrlapon, vagy válassza a tulajdonságok lehetőséget, és válassza a **Hozzáadás szakaszt**. Az űrlapon található tulajdonságok csoportosításához használjon szakaszt. Hozzáadhat egy címet egy szakaszhoz.
+1. Konfigurálja az űrlap minden tulajdonságát, hogy testre szabja a viselkedését.
+1. Rendezze a tulajdonságokat az űrlapon.
+1. Mentse a módosításokat.
 
-   Két támogatott formátum van a hely hozzáadásához:
-   - **Hely címként**
-   - **Hely koordinátákként**
+## <a name="publish-a-device-template"></a>Eszköz sablonjának közzététele
 
-4. Kattintson a **Mentés** gombra. Az operátor frissítheti a hely értékét a **Device Explorerban**.
+Az eszköz képességeinek modelljét megvalósító eszköz csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
 
-#### <a name="add-location-as-a-device-property"></a>Hely hozzáadása eszköz tulajdonságként
+Miután közzétett egy sablont, csak korlátozott módosításokat végezhet az eszköz képességeinek modelljében. Egy felület módosításához [létre kell hoznia és közzé kell tennie egy új verziót](./howto-version-device-template.md).
 
-A Location (hely) tulajdonságot az eszköz által jelentett eszköz tulajdonságként is létrehozhatja. Ha például nyomon szeretné követni az eszköz helyét:
+Az eszköz közzétételéhez nyissa meg az eszköz sablonját, és válassza a **Közzététel**lehetőséget.
 
-1. Navigáljon a **Tulajdonságok** lapra.
+Miután közzétett egy sablont, az operátor megkeresheti az **eszközök** lapot, és hozzáadhat akár valódi, akár szimulált eszközöket, amelyek az eszköz sablonját használják. A módosítások végrehajtása során továbbra is módosíthatja és mentheti az eszköz sablonját. Ha ezeket a módosításokat a kezelőben a **Devices (eszközök** ) lapon szeretné megtekinteni, ki kell választania a **közzétételi** időt.
 
-2. Válassza ki az **eszköz tulajdonságot** a könyvtárból.
-
-3. Adja meg a megjelenítendő név és a mező nevét, és válassza a **hely** lehetőséget az adattípus mezőben:
-
-    | Megjelenítendő név  | Mezőnév | Adattípus |
-    | --------------| -----------|-----------|
-    | Eszközhely | deviceLocation | location  |
-
-   > [!NOTE]
-   > A mezők neveinek meg kell egyezniük a megfelelő eszköz kódjában szereplő tulajdonságok neveivel.
-
-   !["Az eszköz tulajdonságainak konfigurálása" űrlap a hely részleteivel](./media/howto-set-up-template/locationdeviceproperty2.png)
-
-A valódi eszköz csatlakoztatása után a rendszer az eszköz tulajdonságként hozzáadott helyet frissíti az eszköz által eljuttatott értékkel. Miután konfigurálta a Location (hely) tulajdonságot, [hozzáadhat egy térképet a hely megjelenítéséhez az eszköz irányítópultján](#add-a-location-property-in-the-dashboard).
-
-## <a name="commands"></a>Parancsok
-
-A parancsok használatával távolról kezelhetők az eszközök. Lehetővé teszik a kezelők számára parancsok futtatását az eszközön. Több olyan parancsot is hozzáadhat az eszközhöz, amely csempéként jelenik meg az operátorok által használt **parancsok** lapon. Az eszköz előkészítője számára rugalmasan határozhatja meg a parancsokat az igényeinek megfelelően.
-
-Miben különbözik a parancsok egy adott beállítástól?
-
-- **Beállítás**: a beállítás az eszközre alkalmazni kívánt konfiguráció. Azt szeretné, hogy az eszköz mindaddig megőrzi ezt a konfigurációt, amíg meg nem változtatja. Például beállíthatja a fagyasztó hőmérsékletét, és ezt a beállítást a fagyasztó újraindításakor is meg szeretné jeleníteni.
-
-- **Parancs**: parancsok használatával azonnal futtathat egy parancsot az eszközön a IoT Centralból. Ha egy eszköz nincs csatlakoztatva, a parancs túllépi az időkorlátot, és sikertelen lesz. Például egy eszköz újraindítására van szükség.
-
-Hozzáadhat például egy új **echo** -parancsot a **parancsok** lapon, majd az **+ új parancs**lehetőség kiválasztásával és az új parancs részleteinek megadásával:
-
-| Megjelenítendő név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
-| --------------| -----------|---------------- | --------- |
-| Echo parancs  | echo       |  30             | szöveg      |
-
-!["Parancs konfigurálása" űrlap az ECHO részleteivel](./media/howto-set-up-template/commandsecho1.png)
-
-A Save ( **Mentés**) gombra kattintva a **echo** parancs csempeként jelenik meg, és készen áll arra, hogy a **Device Explorer** , amikor a valódi eszköz csatlakozik. Ahhoz, hogy a parancsok sikeresen fussanak, a parancs mezőinek meg kell egyezniük a megfelelő eszköz kódjában szereplő névvel.
-
-[Itt található a minta C-eszköz kódjának hivatkozása.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
-
-## <a name="rules"></a>Szabályok
-
-A szabályok segítségével a kezelők közel valós időben figyelheti az eszközöket. A szabályok automatikusan kezdeményeznek olyan műveleteket, mint például az e-mailek küldése a szabály indításakor. Jelenleg az egyik szabály elérhető:
-
-- **Telemetria-szabály**, amely akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket. [További információ a telemetria-szabályokról](howto-create-telemetry-rules.md).
-
-## <a name="dashboard"></a>Irányítópult
-
-Az irányítópulton megtekintheti az eszközre vonatkozó információkat. Szerkesztőként hozzáadhat csempéket a laphoz, hogy a kezelők megértsék az eszköz viselkedését. Számos típusú irányítópult-csempét (például képet, vonalas diagramot, sávdiagram, fő teljesítménymutatót (KPI), beállításokat és tulajdonságokat, valamint címkét) adhat hozzá.
-
-Hozzáadhat például egy **beállításokat és tulajdonságokat tartalmazó** csempét a beállítások és tulajdonságok aktuális értékeinek megjelenítéséhez az **irányítópult** lap és a tár csempéje segítségével:
-
-!["Az eszköz részleteinek konfigurálása" űrlap a beállítások és a tulajdonságok részleteivel](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
-
-Most, amikor egy operátor megtekinti az irányítópultot a **Device Explorerban**, láthatják a csempét.
-
-### <a name="add-a-location-measurement-in-the-dashboard"></a>Hely mértékének megadása az irányítópulton
-
-Ha beállította a hely mértékét, az eszköz irányítópultján megjelenítheti a helyet egy térképen. A hely méréséhez lehetősége van a hely előzményeinek ábrázolására.
-
-1. Navigáljon az **irányítópult** lapra.
-
-1. Az eszköz irányítópultján válassza a **Térkép** lehetőséget a könyvtárból.
-
-1. Adja meg a Térkép címét. A következő példában a cím **eszköz aktuális helye**található. Ezután válassza ki a **mérések** lapon korábban konfigurált hely mértékét. A következő példában az **eszköz helyének** mérése van kiválasztva:
-
-   !["Map konfigurálása" űrlap a cím és a tulajdonságok részleteivel](./media/howto-set-up-template/locationcloudproperty5map.png)
-
-1. Kattintson a **Mentés** gombra. A Térkép csempe most megjeleníti a kiválasztott helyet.
-
-Átméretezheti a Térkép csempéjét. Amikor egy operátor megtekinti az irányítópultot a **Device Explorerban**, az összes konfigurált irányítópult-csempét, beleértve a hely térképét is látható.
-
-### <a name="add-a-location-property-in-the-dashboard"></a>Location tulajdonság hozzáadása az irányítópulton
-
-Ha konfigurált egy Location (hely) tulajdonságot, az eszköz irányítópultján megjelenítheti a helyet egy térképsel.
-
-1. Navigáljon az **irányítópult** lapra.
-
-1. Az eszköz irányítópultján válassza a **Térkép** lehetőséget a könyvtárból.
-
-1. Adja meg a Térkép címét. A következő példában a cím **eszköz aktuális helye**található. Ezután válassza ki a Location (hely) tulajdonságot, amelyet korábban a **Properties (Tulajdonságok** ) lapon konfigurált. A következő példában az **eszköz helyének** mérése van kiválasztva:
-
-   ![Térkép űrlap konfigurálása a cím és a tulajdonságok részleteivel](./media/howto-set-up-template/locationcloudproperty6map.png)
-
-1. Kattintson a **Mentés** gombra. A Térkép csempe most megjeleníti a kiválasztott helyet.
-
-Átméretezheti a Térkép csempéjét. Amikor egy operátor megtekinti az irányítópultot a **Device Explorerban**, az összes konfigurált irányítópult-csempét, beleértve a hely térképét is látható.
-
-Ha többet szeretne megtudni a csempék használatáról az Azure IoT Centralban, tekintse meg az [irányítópult-csempék használatát](howto-use-tiles.md)ismertető témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan állíthatja be az eszköz sablonját az Azure IoT Central alkalmazásban, a következőket teheti:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-- [Új sablon-verzió létrehozása](howto-version-device-template.md)
-- [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit.md)
-- [Általános ügyfélalkalmazás összekötése az Azure IoT Central-alkalmazással (node. js)](howto-connect-nodejs.md)
+* Hozzon létre egy új IoT-sablont.
+* Felhő tulajdonságainak létrehozása
+* Testreszabások létrehozása.
+* Adjon meg egy vizualizációt az eszköz telemetria.
+* Tegye közzé az eszköz sablonját.
+
+Következő lépésként a következőket teheti:
+
+> [!div class="nextstepaction"]
+> [Eszköz csatlakoztatása](howto-connect-devkit.md)

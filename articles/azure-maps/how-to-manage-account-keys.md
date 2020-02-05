@@ -1,19 +1,19 @@
 ---
-title: Azure Maps-fiók kezelése az Azure Portalon | Microsoft Azure térképek
+title: Azure Maps fiók kezelése a Azure Portalban | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan kezelheti a Microsoft Azure Maps-fiókját a Azure Portal használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911502"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025605"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
@@ -25,19 +25,19 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza az Azure Portal bal felső sarkában található **Erőforrás létrehozása** lehetőséget.
+2. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 
 3. Keresse meg és válassza ki a **Maps**elemet. Ezután kattintson a **Létrehozás** elemre.
 
 4. Adja meg az új fiók adatait.
 
-![Adja meg Azure Maps fiók adatait a Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
+[![adja meg Azure Maps fiók adatait a Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
 
 A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, és válassza a **Törlés**lehetőséget.
 
-![Azure Maps fiók törlése a Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
+[![törölje a Azure Maps-fiókját a Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
 

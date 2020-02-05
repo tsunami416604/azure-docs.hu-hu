@@ -5,7 +5,7 @@
   items:
     - name: Mi a Computer Vision?
       href: Home.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Az ügyfél-SDK használata
       items:
@@ -135,8 +135,6 @@
         - name: A Container Instances használata
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: A Computer Vision csatlakoztatott szolgáltatás használata
-      href: vs-computer-vision-connected-service.md
     - name: Videók valós idejű elemzése
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Referencia

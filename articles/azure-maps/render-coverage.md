@@ -1,6 +1,6 @@
 ---
 title: Megjelenítési lefedettség | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogy mely régiókban Microsoft Azure Maps rendering lefedettséggel és a megjelenített részletek szintjével együtt.
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a régiókat Microsoft Azure Maps-lefedettséggel együtt a megjelenített részletek szintjével.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910668"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025452"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps megjelenítési lefedettség
 
-A Azure Maps raszteres csempéket és vektoros csempéket használ a térképek létrehozásához. A legalacsonyabb felbontásban a teljes világ egyetlen csempére illeszkedik. A legnagyobb felbontásban az egyetlen csempe 38 négyzetmétert jelöl. A Térkép nagyítása során egyre több részletet láthat a kontinensekről, régiókról, városokról és az egyes utcákról. További információ: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
+A Azure Maps raszteres csempéket és vektoros csempéket használ a térképek létrehozásához. A legalacsonyabb felbontásban a teljes világ egyetlen csempén illeszkedik. A legnagyobb felbontásban az egyetlen csempe 38 négyzetmétert jelöl. A nagyítás során további részleteket láthat a kontinensekről, régiókról, városokról és az egyes utcákról. További információ a csempék használatáról: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes régióban. Az alábbi táblázatokból megtudhatja, hogy az egyes régiók milyen megjelenített részletességi szintekről számíthatnak.
+A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes régióban. Az alábbi táblázatok részletezik az egyes régiókban megjeleníthető információk szintjét.
 
 ## <a name="legend"></a>Jelmagyarázat
 
@@ -44,7 +44,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Kamerun                         | ✓ | ✓ |
 | Közép-afrikai Köztársaság         | ✓ | Ø |
 | Csád                             | ✓ | Ø |
-| Comore-szigetek                          | ✓ | Ø |
+| Comore                          | ✓ | Ø |
 | Kongói Demokratikus Köztársaság | ✓ | ✓ |
 | Côte d’Ivoire                    | ✓ | Ø |
 | Dzsibuti                         | ✓ | Ø |
@@ -75,7 +75,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Réunion                          | ✓ | ✓ |
 | Ruanda                           | ✓ | ✓ |
 | Szent Ilona, Ascension és Tristan da Cunha | ✓ | Ø |
-| Sao Tome és Principe            | ✓ | Ø |
+| São Tomé és Príncipe            | ✓ | Ø |
 | Szenegál                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Szomália                          | ✓ | ✓ |
@@ -139,7 +139,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Saint Kitts és Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint Martin (francia)     | ✓ | ✓ |
-| Saint Pierre és Miquelon | ✓ | ✓ |
+| Saint-Pierre és Miquelon | ✓ | ✓ |
 | Saint Vincent és Grenadine-szigetek | ✓ | ✓ |
 | Sint Maarten (holland)      | ✓ | ✓ |
 | Déli-Georgia és Déli-Sandwich-szigetek | ✓ | ✓ |
@@ -164,9 +164,9 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Brunei                    | ✓ | ✓ |
 | Kambodzsa                  |   | Ø |
 | Kína                     |   | Ø |
-| Cocos (Keeling)-szigetek   |   | Ø |
+| Kókusz (Keeling)-szigetek   |   | Ø |
 | Koreai Népi Demokratikus Köztársaság |   | Ø |
-| Hongkong KKT             | ✓ | ✓ |
+| Hongkong (KKT)             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonézia                 | ✓ | ✓ |
 | Irán                      |   | Ø |
@@ -179,7 +179,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Kirgizisztán                |   | Ø |
 | Laoszi Népi Demokratikus Köztársaság |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Makaó (KKT)                 | ✓ | ✓ |
+| Makaó KKT                 | ✓ | ✓ |
 | Malajzia                  | ✓ | ✓ |
 | Maldív-szigetek                  |   | Ø |
 | Mongólia                  |   | Ø |
@@ -198,7 +198,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Tajvan                    | ✓ | ✓ |
 | Tádzsikisztán                |   | Ø |
 | Thaiföld                  | ✓ | ✓ |
-| Timor-Leste               |   | Ø |
+| Kelet-Timor               |   | Ø |
 | Türkmenisztán              |   | Ø |
 | Egyesült Arab Emírségek      | ✓ | ✓ |
 | Az Amerikai Egyesült Államok lakatlan külbirtokai |   | Ø |
@@ -206,7 +206,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Óceánia
+## <a name="oceania"></a>Oceania
 
 | Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
@@ -218,7 +218,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
 | Marshall-szigetek          |   | Ø |
-| Mikronézia                |   | Ø |
+| Mikronéziai szövetséges Államok                |   | Ø |
 | Nauru                     |   | Ø |
 | Új-Kaledónia             |   | Ø |
 | Új-Zéland               | ✓ | ✓ |
@@ -226,14 +226,14 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Norfolk-sziget            |   | Ø |
 | Palau                     |   | Ø |
 | Pápua Új-Guinea          |   | Ø |
-| Pitcairn-szigetek                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Szamoa                     |   | Ø |
 | Salamon-szigetek           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
 | Tuvalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
-| Wallis- és Futuna-szigetek         |   | Ø |
+| Wallis és Futuna         |   | Ø |
 
 
 ## <a name="europe"></a>Európa
@@ -296,7 +296,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Törökország                    | ✓ | ✓ |
 | Ukrajna                   | ✓ | ✓ |
 | Egyesült Királyság            | ✓ | ✓ |
-| Vatikán              | ✓ | ✓ |
+| Vatikáni Városállam              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Következő lépések
 

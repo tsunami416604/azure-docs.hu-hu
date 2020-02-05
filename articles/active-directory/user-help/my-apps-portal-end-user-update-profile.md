@@ -2,31 +2,38 @@
 title: Profil frissítése & fiókadatok a saját alkalmazások portálján – Azure AD
 description: Megtudhatja, hogyan frissítheti a profilját és munkahelyi vagy iskolai fiókjának adatait, beleértve a jelszó módosítását, a jelszó-visszaállítás bekapcsolását, a biztonsági ellenőrzési módszerek frissítését, a szervezet használati feltételeinek megállapítását, és kijelentkezését bárhol bejelentkezett munkahelyi vagy iskolai fiókjával.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704867"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022279"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>A profil és a munkahelyi vagy iskolai fiókadatok frissítése a saját alkalmazások portálján
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálon, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, a profil-és fiókadatok frissítését, a **csoportok** adatainak megtekintését, valamint az alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzését. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálon a következőre: 
+
+- Számos felhőalapú alkalmazás megtekintése és elindítása
+- A profil-és fiókadatok frissítése
+- A **csoportok** adatainak megjelenítése
+- Alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzése. 
+
+Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="view-your-organization-related-profile-information"></a>A szervezettel kapcsolatos profil adatainak megtekintése
 
@@ -76,7 +83,7 @@ Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszó
 
     ![Jelszó módosítása lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Válassza a **Küldés** lehetőséget.
+3. Válassza a **Küldés**lehetőséget.
 
     A jelszó módosítása megtörténik. Be kell jelentkeznie minden olyan alkalmazásba, amelyre korábban bejelentkezett a munkahelyi vagy iskolai fiókjával.
 
@@ -107,7 +114,7 @@ A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és
 
     - **A Microsoft Authenticator alkalmazás beállítása.** Beállíthatja, hogy a Microsoft Authenticator alkalmazás az ellenőrzési módszerként működjön. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md)
 
-3. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+3. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Tekintse át a szervezet használati feltételeinek utasításait
 

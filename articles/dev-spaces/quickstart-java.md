@@ -6,37 +6,30 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Java-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Java, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a814516eb002eadb19100182d1917fd4aaa0cec6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293572"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025197"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes a Visual Studio Code és a Java-Azure dev Spaces-szel
 
-Ebből az útmutatóból a következőket tudhatja meg:
-
-- Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
-- A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
-- Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
-
-Az Azure dev Spaces Emellett lehetővé teszi a következő műveletek hibakeresését és megismétlését:
-- [Node. js és Visual Studio Code](quickstart-nodejs.md)
-- [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
-- [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
+Ebben a rövid útmutatóban egy felügyelt Kubernetes-fürttel állítja be az Azure dev Spaces-t, a Visual Studio Code-ban pedig egy Java-alkalmazást, hogy iteratív és hibakeresési kódot használjon a tárolókban. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének hibakeresését és tesztelését az Azure Kubernetes szolgáltatásban (ak) a minimális fejlesztői gép beállításával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- A [Visual Studio Code telepítése megtörtént](https://code.visualstudio.com/download).
-- Az [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és a [Java Debugger for Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) Extensions for Visual Studio Code telepítése.
-- [Telepített Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [A Maven telepítve és konfigurálva van](https://maven.apache.org).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Java Development Kit (JDK) 1.8.0 +](https://aka.ms/azure-jdks).
+- [Maven 3.5.0 +](https://maven.apache.org/download.cgi).
+- [Visual Studio Code](https://code.visualstudio.com/download).
+- Az [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és a [Java Debugger for Azure fejlesztői Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) bővítmények a Visual Studio Code-hoz.
+- [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-regions]. Az alábbi parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AK-fürtöt.
+Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-regions]. A következő parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AK-fürtöt.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -45,13 +38,14 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
-A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
+A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. A következő parancs engedélyezi a dev Spaces szolgáltatást a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
+> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Nem telepítheti az Azure dev Spaces CLI-t a Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
 
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
@@ -80,11 +74,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>A minta alkalmazás előkészítése a Visual Studio Code-ban
 
-Nyissa meg a Visual Studio Code-ot, kattintson a *fájl* , majd a *Megnyitás...* lehetőségre, keresse meg a *dev-Spaces/Samples/Java/Getting-Started/webfrontend* könyvtárat, és kattintson a *Megnyitás*gombra.
+Nyissa meg a Visual Studio Code-ot, válassza a **fájl** , majd a **Megnyitás**lehetőséget, navigáljon a *dev-Spaces/Samples/Java/Getting-Started/webfrontend* könyvtárba, és válassza a **Megnyitás**elemet.
 
 Most már megnyitotta a *webfrontend* -projektet a Visual Studio Code-ban. Az alkalmazás fejlesztői tárhelyen való futtatásához a Docker és a Helm chart objektumokat a parancs paletta Azure dev Spaces bővítményének használatával hozhatja ki.
 
-A parancs paletta a Visual Studio Code-ban való megnyitásához kattintson a *nézet* , majd a *parancs paletta*elemre. Kezdje el begépelni `Azure Dev Spaces` és kattintson a `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`elemre.
+A Command paletta Visual Studio Code-ban való megnyitásához válassza a **nézet** , majd a **parancs paletta**lehetőséget. Kezdje el beírni `Azure Dev Spaces` és válassza **Az Azure dev Spaces: konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz**lehetőséget.
 
 ![Konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz](./media/common/command-palette.png)
 
@@ -101,26 +95,26 @@ Ez a parancs előkészíti a projektet az Azure dev Spaces-ben való futtatásra
 > [!TIP]
 > A projekthez tartozó [Docker és Helm diagramot](how-dev-spaces-works.md#prepare-your-code) az Azure dev Spaces használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Kód létrehozása és futtatása a Kubernetes a Visual studióból
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Kód létrehozása és futtatása a Kubernetes a Visual Studio Code-ból
 
-Kattintson a bal oldali *hibakeresés* ikonra, és kattintson a felül a *Java program indítása (AZDS)* elemre.
+Válassza a bal oldali **hibakeresés** ikont, és válassza a felül a **Java program indítása (AZDS)** lehetőséget.
 
 ![Java-program elindítása](media/get-started-java/debug-configuration.png)
 
-Ez a parancs az Azure dev Spaces szolgáltatásban hozza létre és futtatja a szolgáltatást. Az alján található *Terminálablak* megjeleníti az Azure dev Spaces szolgáltatást futtató szolgáltatáshoz tartozó Build kimenetet és URL-címeket. A *hibakeresési konzol* megjeleníti a napló kimenetét.
+Ez a parancs az Azure dev Spaces szolgáltatásban hozza létre és futtatja a szolgáltatást. Az alján található **Terminálablak** megjeleníti az Azure dev Spaces szolgáltatást futtató szolgáltatáshoz tartozó Build kimenetet és URL-címeket. A **hibakeresési konzol** megjeleníti a napló kimenetét.
 
 > [!Note]
-> Ha nem látja az Azure dev Spaces-parancsokat a *parancssorban*, győződjön meg arról, hogy telepítette a [Visual Studio Code bővítményt az Azure dev Spaces szolgáltatáshoz](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Győződjön meg arról is, hogy megnyitotta a *dev-Spaces/Samples/Java/Getting-Started/webfrontend* könyvtárat a Visual Studio Code-ban.
+> Ha nem látja az Azure dev Spaces-parancsokat a **parancssorban**, győződjön meg arról, hogy telepítette a [Visual Studio Code bővítményt az Azure dev Spaces szolgáltatáshoz](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Győződjön meg arról is, hogy megnyitotta a *dev-Spaces/Samples/Java/Getting-Started/webfrontend* könyvtárat a Visual Studio Code-ban.
 
 A szolgáltatás futását a nyilvános URL-cím megnyitásával tekintheti meg.
 
-A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le a hibakeresést* .
+Válassza a **hibakeresés** lehetőséget, majd állítsa le a **hibakeresést** a hibakereső leállításához.
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *Java program elindítása (AZDS)* . Példa:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a **Java program elindítása (AZDS)** . Példa:
 
-1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
+1. Ha az alkalmazás még fut, válassza a **hibakeresés** lehetőséget, majd állítsa le a **hibakeresést** .
 1. A (z) [`src/main/java/com/ms/sample/webfrontend/Application.java`19. sor frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) :
     
     ```java
@@ -128,30 +122,30 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
     ```
 
 1. Mentse a módosításokat.
-1. Futtassa újra a *Java program elindítása (AZDS)* .
+1. Futtassa újra a **Java program elindítása (AZDS)** .
 1. Navigáljon a futó szolgáltatáshoz, és figyelje meg a módosításokat.
-1. Az alkalmazás leállításához kattintson a *hibakeresés* gombra, majd állítsa le a *hibakeresést* .
+1. Válassza a **hibakeresés** lehetőséget, majd állítsa le a **hibakeresést** az alkalmazás leállításához.
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Töréspontok beállítása és használata hibakereséshez
 
-Indítsa el a szolgáltatást a *Launch Java program (AZDS)* használatával. A szolgáltatás hibakeresési módban is fut.
+Indítsa el a szolgáltatást a **Launch Java program (AZDS)** használatával. A szolgáltatás hibakeresési módban is fut.
 
-A *nézet* , majd az *Intéző*elemre kattintva térjen vissza a *tallózó* nézethez. Nyissa meg `src/main/java/com/ms/sample/webfrontend/Application.java`, és kattintson a 19. sorban a kurzorra. Ha a töréspontot az *F9 billentyűre* szeretné beállítani, vagy kattintson a *hibakeresés* lehetőségre, majd a *töréspontot*.
+A **nézet** , majd az **Intéző**lehetőség kiválasztásával térjen vissza a **tallózó** nézethez. Nyissa meg a *src/Main/Java/com/MS/Sample/webfrontend/Application. Java* -t, majd kattintson a 19. sorban a kurzorra. A Töréspont beállításához nyomja meg az **F9** billentyűt, vagy válassza a **hibakeresés** , majd a **töréspont váltása**lehetőséget.
 
-Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy a 19. sor ki van emelve. A beállított töréspont szüneteltette a szolgáltatást a 19. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa a művelettel*. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
+Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy a 19. sor ki van emelve. A beállított töréspont szüneteltette a szolgáltatást a 19. sorban. A szolgáltatás folytatásához nyomja le az **F5** billentyűt, vagy válassza a **hibakeresés** , majd a **Folytatás**lehetőséget. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort az `src/main/java/com/ms/sample/webfrontend/Application.java` 19. sorba helyezi, és az *F9 billentyűt*.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 19. sorban a *src/Main/Java/com/MS/Sample/webfrontend/Application. Java* és az **F9**billentyű lenyomásával helyezi el.
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
-Amíg a szolgáltatás hibakeresési módban fut, frissítse `src/main/java/com/ms/sample/webfrontend/Application.java`a 19. sort. Példa:
+Amíg a szolgáltatás hibakeresési módban fut, frissítse a 19. sort a *src/Main/Java/com/MS/Sample/webfrontend/Application. Java*nyelven. Példa:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra a hibakeresést* , vagy a hibakeresés *eszköztáron*kattintson a *hibakeresés újraindítása* gombra.
+Mentse a fájlt. Válassza **a hibakeresés lehetőséget, majd** **indítsa újra a hibakeresést** , vagy a hibakeresés **eszköztáron**válassza a **hibakeresés újraindítása** gombot.
 
 ![Hibakeresés frissítése](media/common/debug-action-refresh.png)
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996748"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026115"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban (ak)
 
@@ -96,7 +96,7 @@ New Supported Version List
 * A Kubernetes új **másodlagos** verzióihoz
   * Az összes felhasználó nyilvánosan értesítést kap az új verzióról, és a rendszer eltávolítja a verziót.
   * Egy új javítási verzió kiadásakor a rendszer a legrégebbi javítást is eltávolítja egyszerre.
-  * Az ügyfeleknek a nyilvános értesítés dátumától számítva **60 nap elteltével** frissíteniük kell egy támogatott alverzióra.
+  * Az ügyfelek a nyilvános értesítés dátumától számított **30 napon belül** frissíthetnek egy támogatott alverzióra.
 * A Kubernetes új **javítócsomag** -verzióihoz
   * Az összes felhasználó értesítést kap az új javítási verzió kiadásáról, és a legújabb patch kiadásra frissít.
   * A felhasználók **30 napig** frissíthetnek újabb, támogatott javítási kiadásra. A felhasználók **30 napon belül** frissítenek egy támogatott patch kiadásra a legrégebbi eltávolítása előtt.

@@ -2,8 +2,8 @@
 title: Nagy számítási igényű Azure-beli virtuális gépek használata a Batch használatával
 description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch készletekben. Ismerje meg az operációs rendszer függőségeit, és tekintse meg a példákat.
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: jushiman
-ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026796"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023599"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
 
@@ -166,7 +166,7 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 | **Rendszerkép típusa** | Marketplace (Linux/Windows) |
 | **Közzétevő** | OpenLogic |
 | **Ajánlat** | CentOS – HPC |
-| **Termékváltozat** | 7.4 |
+| **Termékváltozat** | 7,4 |
 | **Csomópont mérete** | H16r standard |
 | **Csomópontok közötti kommunikáció engedélyezve** | Igaz |
 | **Feladatok maximális száma/csomópont** | 1 |

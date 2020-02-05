@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688291"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016969"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az alkalmazásokkal a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714). Az [Azure Virtual Networks][VNETOverview] (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -34,7 +34,7 @@ Egy alkalmazás egyszerre csak a VNet-integrációs szolgáltatás egyik formáj
 | Probléma  | Megoldás | 
 |----------|----------|
 | Egy adott régióban szeretné elérni az RFC 1918-es címeket (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16). | regionális VNet-integráció |
-| Szeretné elérni az erőforrásokat egy másik régióban található klasszikus VNet vagy VNet | Átjáró szükséges VNet-integráció |
+| Szeretné elérni az erőforrásokat egy másik régióban található klasszikus VNet vagy VNet | átjáró szükséges VNet-integráció |
 | Az RFC 1918-végpontok elérését szeretné elérni a ExpressRoute között | regionális VNet-integráció |
 | Erőforrásokat szeretne elérni a szolgáltatási végpontok között | regionális VNet-integráció |
 
@@ -56,7 +56,7 @@ Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következők
 * AD-integráció 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>regionális VNet-integráció 
+## <a name="regional-vnet-integration"></a>Regionális VNet-integráció 
 
 > [!NOTE]
 > A peering még nem érhető el Linux-alapú App Service számára.
@@ -74,7 +74,7 @@ Ez a funkció előzetes verzióban érhető el, de a Windows-alkalmazások éles
 * Csak olyan címeket érhet el, amelyek az RFC 1918 tartományban találhatók. Ezek a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 címterület címei.
 * A globális társ-összekapcsolási kapcsolatok erőforrásai nem érhetők el
 * Az alkalmazásból érkező forgalomhoz tartozó útvonalak nem állíthatók be a VNet
-* A szolgáltatás csak olyan újabb App Service skálázási egységekből érhető el, amelyek támogatják a PremiumV2 App Service csomagokat.
+* A szolgáltatás csak olyan újabb App Service skálázási egységekből érhető el, amelyek támogatják a PremiumV2 App Service csomagokat. Vegye figyelembe, hogy ez nem jelenti azt, hogy az alkalmazásnak egy PremiumV2 SKU-on kell futnia, és csak azt kell futtatnia egy App Service-csomagon, ahol a PremiumV2 lehetőség elérhető (ami azt jelenti, hogy ez egy újabb méretezési egység, ahol ez a VNet-integrációs szolgáltatás is elérhető).
 * Az integrációs alhálózatot csak egy App Service-csomag használhatja
 * A szolgáltatás nem használható a App Service Environmentban található elkülönített csomag-alkalmazásokban
 * A szolgáltatáshoz egy nem használt alhálózat szükséges, amely egy/27 32-es címmel vagy nagyobb a Resource Manager-VNet
@@ -143,7 +143,7 @@ Ez a funkció nem támogatja a következőket:
 * Erőforrásokhoz való hozzáférés ExpressRoute-on keresztül 
 * Erőforrásokhoz való hozzáférés szolgáltatásvégpontokon keresztül 
 
-### <a name="getting-started"></a>Bevezetés
+### <a name="getting-started"></a>Első lépések
 
 Az alábbiakban néhány dolgot figyelembe kell vennie, mielőtt csatlakoztatja a webalkalmazást egy virtuális hálózathoz:
 
@@ -248,7 +248,7 @@ Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjj
 * VPN Gateway költségek – a pont – hely típusú VPN-hez szükséges VNet-átjáró költségeinek költsége. A részletek a [VPN Gateway díjszabási][VNETPricing] oldalán találhatók.
 
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 Habár a funkció egyszerűen beállítható, ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram használható az alkalmazás-konzolról való kapcsolat tesztelésére. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az eszközök-> kudu. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a Debug konzol lapra. Az Azure Portal üzemeltetett konzoljának eléréséhez nyissa meg az eszközök-> konzolt. 
 
 #### <a name="tools"></a>Eszközök

@@ -1,7 +1,7 @@
 ---
-title: CloudSimple-karbantartás és-frissítések
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Ismerteti a CloudSimple szolgáltatási folyamatát az ütemezett karbantartáshoz és frissítésekhez
+title: Azure VMware-megoldások (AVS) – AVS-karbantartás és-frissítések
+description: Leírja az AVS szolgáltatás ütemezett karbantartásának és frissítéseinek folyamatát
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372823"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025027"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-karbantartás és-frissítések
+# <a name="avs-maintenance-and-updates"></a>AVS-karbantartás és-frissítések
 
-A privát felhőalapú környezet úgy van kialakítva, hogy ne legyen egyetlen meghibásodási pont.
+Az AVS Private Cloud Environment úgy van kialakítva, hogy ne legyen egyetlen meghibásodási pont.
 
 * Az ESXi-fürtök vSphere magas rendelkezésre állással (HA) vannak konfigurálva. A fürtök mérete legalább egy tartalék csomópont legyen a rugalmasság érdekében.
 * A redundáns elsődleges tárterületet a vSAN biztosítja, amelynek legalább három csomóponttal kell rendelkeznie az egyetlen hiba elleni védelem biztosításához. a vSAN konfigurálható úgy, hogy magasabb rugalmasságot biztosítson a nagyobb fürtök számára.
@@ -26,26 +26,26 @@ A privát felhőalapú környezet úgy van kialakítva, hogy ne legyen egyetlen 
 * Az ESXi-gazdagépek redundáns ventilátorokkal és hálózati adapterekkel rendelkeznek.
 * A TOR-és gerinc-kapcsolók a rugalmasság biztosításához a HA párokban vannak konfigurálva.
 
-A CloudSimple folyamatosan figyeli a következő virtuális gépeket az üzemidő és a rendelkezésre állás érdekében, és rendelkezésre állási SLA-kat biztosít:
+Az AVS folyamatosan figyeli a következő virtuális gépeket az üzemidő és a rendelkezésre állás érdekében, és rendelkezésre állási SLA-kat biztosít:
 
 * ESXi-gazdagépek
 * vCenter
 * PBB
 * NSX-kezelő
 
-A CloudSimple a következő folyamatos hibák figyelését is figyeli:
+Az AVS a következő folyamatos hibák figyelését is figyeli:
 
 * Merevlemezek
 * Fizikai NIC-portok
 * Kiszolgálók
-* Ventilátor
+* Rajongók
 * Power
 * Kapcsolók
 * Portok váltása
 
 Ha egy lemez vagy csomópont meghibásodik, a rendszer automatikusan hozzáadja az érintett VMware-fürthöz egy új csomópontot, amely azonnal visszaállítja az állapotot.
 
-A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a VMware-elemeket a privát felhőkben:
+Az AVS biztonsági mentést készít, karbantartja és frissíti ezeket a VMware-elemeket az AVS privát felhőkben:
 
 * ESXi
 * vCenter platform szolgáltatásai
@@ -55,7 +55,7 @@ A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a
 
 ## <a name="back-up-and-restore"></a>Biztonsági mentés és visszaállítás
 
-A CloudSimple biztonsági mentése a következőket tartalmazza:
+Az AVS Backup a következőket tartalmazza:
 
 * A vCenter, a PSC és a DVS szabályainak éjszakai növekményes biztonsági mentései.
 * natív API-kat vCenter az összetevők biztonsági mentéséhez az alkalmazás rétegében.
@@ -66,15 +66,15 @@ A visszaállítást [support Request](https://portal.azure.com/#blade/Microsoft_
 
 ## <a name="maintenance"></a>Karbantartás
 
-A CloudSimple többféle típusú karbantartást végez.
+Az AVS többféle tervezett karbantartási típust is tartalmaz.
 
 ### <a name="backendinternal-maintenance"></a>Háttér/belső karbantartás
 
-Ez a karbantartás általában a fizikai eszközök újrakonfigurálását vagy a szoftverfrissítések telepítését foglalja magában. Ez nem befolyásolja a kiszolgált eszközök normál felhasználását. A redundáns hálózati adapterek és az egyes fizikai állványok, a normál hálózati forgalom és a privát Felhőbeli műveletek nem érintettek. A teljesítményre gyakorolt hatás csak akkor tapasztalható, ha a szervezet a teljes redundáns sávszélességet szeretné használni a karbantartási időszakban.
+Ez a karbantartás általában a fizikai eszközök újrakonfigurálását vagy a szoftverfrissítések telepítését foglalja magában. Ez nem befolyásolja a kiszolgált eszközök normál felhasználását. A redundáns hálózati adapterek és az egyes fizikai állványok, a normál hálózati forgalom és az AVS Private Cloud-műveletek nem érintettek. A teljesítményre gyakorolt hatás csak akkor tapasztalható, ha a szervezet a teljes redundáns sávszélességet szeretné használni a karbantartási időszakban.
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple-portál karbantartása
+### <a name="avs-portal-maintenance"></a>AVS-portál karbantartása
 
-A CloudSimple-vezérlő síkja vagy az infrastruktúra frissítésekor bizonyos korlátozott szolgáltatási állásidőre van szükség. Jelenleg a karbantartási időközök lehetnek olyan gyakoriak, mint havonta egyszer. A gyakoriság várhatóan az idő múlásával csökken. A CloudSimple értesítést biztosít a portál karbantartásáról, és a lehető legrövidebb időn belül megtartja az intervallumot. A portál karbantartási időszaka alatt a következő szolgáltatások továbbra is hatással vannak a működésre:
+Az AVS vezérlő síkja vagy az infrastruktúra frissítésekor bizonyos korlátozott szolgáltatási állásidőre van szükség. Jelenleg a karbantartási időközök lehetnek olyan gyakoriak, mint havonta egyszer. A gyakoriság várhatóan az idő múlásával csökken. Az AVS értesítést biztosít a portál karbantartásáról, és a lehető legrövidebb időn belül megtartja az intervallumot. A portál karbantartási időszaka alatt a következő szolgáltatások továbbra is hatással vannak a működésre:
 
 * VMware felügyeleti sík és alkalmazások
 * vCenter-hozzáférés
@@ -83,7 +83,7 @@ A CloudSimple-vezérlő síkja vagy az infrastruktúra frissítésekor bizonyos 
 
 ### <a name="vmware-infrastructure-maintenance"></a>VMware-infrastruktúra karbantartása
 
-Időnként szükség van a VMware-infrastruktúra konfigurációjának módosítására.  Jelenleg ezek az intervallumok minden 1-2 hónapban előfordulhatnak, de a gyakoriság várhatóan az idő múlásával csökken. Az ilyen típusú karbantartás általában a CloudSimple-szolgáltatások normál fogyasztásának megszakítása nélkül végezhető el. A VMware karbantartási időköze során a következő szolgáltatások továbbra is hatással vannak a működésre:
+Időnként szükség van a VMware-infrastruktúra konfigurációjának módosítására. Jelenleg ezek az intervallumok minden 1-2 hónapban előfordulhatnak, de a gyakoriság várhatóan az idő múlásával csökken. Az ilyen típusú karbantartás általában az AVS-szolgáltatások normál felhasználásának megszakítása nélkül végezhető el. A VMware karbantartási időköze során a következő szolgáltatások továbbra is hatással vannak a működésre:
 
 * VMware felügyeleti sík és alkalmazások
 * vCenter-hozzáférés
@@ -92,7 +92,7 @@ Időnként szükség van a VMware-infrastruktúra konfigurációjának módosít
 
 ## <a name="updates-and-upgrades"></a>Frissítések és frissítések
 
-A CloudSimple feladata a VMware-szoftverek (ESXi, vCenter, PSC és NSX) életciklus-kezelése a privát felhőben.
+Az AVS a VMware-szoftverek (ESXi, vCenter, PSC és NSX) életciklus-kezelési feladata az AVS Private Cloud-ban.
 
 A szoftverfrissítések a következők:
 
@@ -100,9 +100,9 @@ A szoftverfrissítések a következők:
 * **Frissítések**. Egy VMware stack-összetevő másodlagos verziója megváltozik.
 * **Frissítések**. VMware stack-összetevő főverziójának módosítása.
 
-A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérhetővé válik. A CloudSimple egy héten belül kivezeti a biztonsági javítást a privát felhőalapú környezetekhez.
+Az AVS kritikus biztonsági javítást végez, amint elérhetővé válik a VMware-ről. SLA-n belül az AVS a biztonsági javítást az AVS Private Cloud Environments szolgáltatásba összesíti.
 
-A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.
+Az AVS negyedéves karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, az AVS együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 

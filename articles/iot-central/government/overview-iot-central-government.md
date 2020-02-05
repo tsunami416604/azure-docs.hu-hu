@@ -7,22 +7,22 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464081"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016510"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Ismerkedjen meg az Azure IoT Central alkalmazás-sablonjait használó intelligens városi megoldások létrehozásával. Kezdje el most a **víz minőségének monitorozásával**, a **vízfogyasztás figyelésével**és a **csatlakoztatott hulladékgazdálkodással**.
+
+Ismerkedjen meg az intelligens városi megoldások Azure IoT Central alkalmazás-sablonok használatával történő létrehozásával. Kezdje el most a **víz minőségének monitorozásával**, a **vízfogyasztás figyelésével**és a **csatlakoztatott hulladékgazdálkodással**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Mi az a víz minőségének monitorozására szolgáló alkalmazás sablonja?   
 
-A hagyományos vízminőség-monitorozás a manuális mintavételi technikákra és a helyszíni laboratóriumi elemzésre támaszkodik, amely időigényes és költséges. A vízminőségnek a valós időben történő távoli monitorozásával a vízminőséggel kapcsolatos problémák kezelhetők a polgárok befolyásolása előtt. Emellett a fejlett analitikai, vízügyi segédprogramokkal és környezetvédelmi ügynökségekkel korai figyelmeztetéseket kaphat a lehetséges vízminőséggel kapcsolatos problémákról, és előre megtervezheti a víz kezelésére vonatkozó problémákat.  
+A hagyományos vízminőség-monitorozás a manuális mintavételi technikákra és a helyszíni laboratóriumi elemzésre támaszkodik, amely időigényes és költséges. A vízminőségnek a valós időben történő távoli monitorozásával a vízminőséggel kapcsolatos problémák kezelhetők, mielőtt a polgárok érintettek lesznek. Emellett a fejlett analitikai, vízügyi segédprogramokkal és környezetvédelmi ügynökségekkel korai figyelmeztetéseket kaphat a lehetséges vízminőséggel kapcsolatos problémákról, és előre megtervezheti a víz kezelésére vonatkozó problémákat.  
 
 A vízminőség-figyelési alkalmazás egy IoT Central alkalmazás sablonja, amely segítséget nyújt a IoT-megoldás fejlesztésében, és lehetővé teszi a víz-segédeszközök digitális monitorozását az intelligens városokban. 
 
@@ -40,7 +40,7 @@ Ismerkedjen meg a [víz minőségének monitorozási alkalmazásával foglalkoz�
 
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Mi a víz fogyasztásának monitorozása alkalmazás sablonja? 
 
-A hagyományos vízfelhasználási nyomon követés a vízkezelők számára a vízfelhasználási mérőszámok kézi elolvasására támaszkodik a mérési helyeken. Egyre több város a hagyományos mérőszámokat a fejlett intelligens mérőszámokkal váltja fel, amely lehetővé teszi a használat távoli figyelését, valamint a szelepek távoli vezérlését a vízforgalom szabályozásához. A víz fogyasztásának monitorozása és a polgárok digitális visszajelzési üzenete is növelheti a hangfelismerést, és csökkentheti a víz felhasználását. 
+A hagyományos vízfelhasználási nyomon követés a vízkezelők számára a vízfelhasználási mérőszámok kézi elolvasására támaszkodik a mérési helyeken. Egyre több város a hagyományos mérőszámokat a fejlett intelligens mérőszámokkal helyettesíti, amely lehetővé teszi a használat távoli figyelését és a szelepek távvezérlését a vízfolyás szabályozása érdekében. A víz fogyasztásának monitorozása és a polgárok digitális visszajelzési üzenete is növelheti a hangfelismerést, és csökkentheti a víz felhasználását. 
 
 
 A vízfelhasználás-figyelési alkalmazás egy IoT Central alkalmazás sablonja, amely segítséget nyújt a IoT-megoldás fejlesztésében, hogy a víz-segédeszközök és-városok távolról felügyeljék és ellenőrizzék a víz áramlását a felhasználás csökkentése érdekében. 
@@ -73,7 +73,7 @@ A csatlakoztatott hulladékkezelési alkalmazás sablonja előre konfigurált:
 Ismerkedés a [csatlakoztatott hulladékgazdálkodási alkalmazás oktatóanyagával](./tutorial-connected-waste-management.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a IoT Centralban az ingyenes [create app](https://apps.azureiotcentral.com/build/government) (kormányzati alkalmazás sablonjait)
 * További tudnivalók a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md)

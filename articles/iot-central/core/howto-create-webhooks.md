@@ -3,23 +3,21 @@ title: Webhookok létrehozása a szabályokban az Azure IoT Centralban | Microso
 description: Hozzon létre webhookokat az Azure IoT Centralban, hogy automatikusan értesítse a többi alkalmazást, amikor a szabályok tüzet mutatnak.
 author: viv-liu
 ms.author: viviali
-ms.date: 06/16/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 5c2bef7f3eb8d6f8d6d78755d839a33556259b65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+manager: corywink
+ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953667"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022426"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása az Azure-beli szabályokon IoT Central
 
 *Ez a témakör az építők és a rendszergazdákra vonatkozik.*
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
 A webhookok lehetővé teszik a IoT Central alkalmazás csatlakoztatását más alkalmazásokhoz és szolgáltatásokhoz távoli figyeléshez és értesítésekhez. A webhookok automatikusan értesítik a többi olyan alkalmazást és szolgáltatást, amely akkor csatlakozik, amikor egy szabály aktiválódik a IoT Central alkalmazásban. A IoT Central alkalmazás POST-kérést küld a másik alkalmazás HTTP-végpontjának, amikor egy szabály aktiválódik. A hasznos adat tartalmazza az eszköz adatait és a szabály-trigger részleteit.
 
@@ -31,7 +29,7 @@ Ebben a példában a RequestBin-hez csatlakozik, hogy értesítést kapjon a sza
 
 1. Hozzon létre egy új RequestBin, és másolja a **bin URL-címét**.
 
-1. Hozzon létre egy [telemetria szabályt](howto-create-telemetry-rules.md) vagy egy [eseményvezérelt szabályt](howto-create-event-rules.md). Mentse a szabályt, és adjon hozzá egy új műveletet.
+1. Hozzon létre egy [telemetria-szabályt](tutorial-create-telemetry-rules.md). Mentse a szabályt, és adjon hozzá egy új műveletet.
 
     ![Webhook-létrehozási képernyő](media/howto-create-webhooks/webhookcreate.png)
 
@@ -41,52 +39,41 @@ Ebben a példában a RequestBin-hez csatlakozik, hogy értesítést kapjon a sza
 
 Most, hogy a szabály aktiválódik, megjelenik egy új kérelem a RequestBin.
 
-## <a name="payload"></a>Adattartalom
+## <a name="payload"></a>adattartalom
 
-Egy szabály kiváltásakor a rendszer egy HTTP POST-kérést küld egy JSON-adattartalomot tartalmazó visszahívási URL-címre a mérésekkel, az eszközkel, a szabállyal és az alkalmazás részleteivel. Telemetria-szabály esetén a hasznos adatok a következőhöz hasonlóak:
+Egy szabály indításakor a rendszer HTTP POST-kérelmet küld a telemetria, az eszköz, a szabály és az alkalmazás részleteit tartalmazó JSON-adattartalommal rendelkező visszahívási URL-címre. A hasznos adatok a következőhöz hasonlóak:
 
 ```json
 {
-    "id": "ID",
-    "timestamp": "date-time",
-    "device" : {
-        "id":"ID",
-        "name":  "Refrigerator1",
-        "simulated" : true,
-        "deviceId": "deviceID",
-        "deviceTemplate":{
-            "id": "ID",
-            "version":"1.0.0"
-        },
-        "properties":{
-            "device":{
-                "firmwareversion":"1.0"
-            },
-            "cloud":{
-                "location":"One Microsoft Way"
-            }
-        },
-        "measurements":{
-            "telemetry":{
-                "temperature":20,
-                "pressure":10
-            }
-        }
-
-    },
+    "id": "<id>",
+    "displayName": "Webhook 1",
+    "timestamp": "2019-10-24T18:27:13.538Z",
     "rule": {
-        "id": "ID",
-        "name": "High temperature alert",
-        "enabled": true,
-        "deviceTemplate": {
-            "id":"GUID",
-            "version":"1.0.0"
-        }
+        "id": "<id>",
+        "displayName": "High temp alert",
+        "enabled": true
     },
+    "device": {
+        "id": "mx1",
+        "displayName": "MXChip IoT DevKit - mx1",
+        "instanceOf": "<device-template-id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true
+    },
+    "data": [{
+        "@id": "<id>",
+        "@type": ["Telemetry"],
+        "name": "temperature",
+        "displayName": "Temperature",
+        "value": 66.27310467496761,
+        "interfaceInstanceName": "sensors"
+    }],
     "application": {
-        "id": "ID",
-        "name": "Contoso app",
-        "subdomain":"contoso-app"
+        "id": "<id>",
+        "displayName": "x - Store Analytics Checkout---PnP",
+        "subdomain": "<subdomain>",
+        "host": "<host>"
     }
 }
 ```
@@ -95,8 +82,8 @@ Egy szabály kiváltásakor a rendszer egy HTTP POST-kérést küld egy JSON-ada
 
 Jelenleg nincs programozási mód a webhookok API-n keresztül történő előfizetésére/lemondása.
 
-Ha ötletekkel szeretné javítani ezt a funkciót, küldje el javaslatait a [uservoice fórumra](https://feedback.azure.com/forums/911455-azure-iot-central).
+Ha Ötletei vannak a funkció fejlesztéséhez, tegye a javaslatait a [felhasználói hangalapú fórumba](https://feedback.azure.com/forums/911455-azure-iot-central).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte a webhookok beállítását és használatát, a javasolt következő lépés a [munkafolyamatok kiépítése a Microsoft Flowban](howto-add-microsoft-flow.md).
+Most, hogy megismerte a webhookok beállítását és használatát, a javasolt következő lépés az [Azure monitor műveleti csoportok konfigurálásának](howto-use-action-groups.md)megismerése.

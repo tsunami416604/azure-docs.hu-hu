@@ -1,6 +1,6 @@
 ---
 title: Az alkalmazások magas rendelkezésre állásának biztosítása az Azure-beli VMware-ben való futtatáskor
-description: A CloudSimple magas rendelkezésre állási funkcióit ismerteti a CloudSimple privát felhőben futó alkalmazások általános alkalmazáshiba-forgatókönyvei esetében
+description: Leírja, hogy az AVS magas rendelkezésre állási funkciói az AVS Private-felhőben futó alkalmazások általános alkalmazáshiba-forgatókönyveit tárgyalják
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025350"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Az alkalmazások magas rendelkezésre állásának biztosítása az Azure-beli VMware-ben való futtatáskor
 
-A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en futó alkalmazások számára az Azure-környezetben. A következő táblázat felsorolja a hibák forgatókönyveit és a hozzájuk kapcsolódó magas rendelkezésre állási funkciókat.
+Az AVS-megoldás magas rendelkezésre állást biztosít a VMware-en futó alkalmazások számára az Azure-környezetben. A következő táblázat felsorolja a hibák forgatókönyveit és a hozzájuk kapcsolódó magas rendelkezésre állási funkciókat.
 
 | Meghibásodási forgatókönyv | Az alkalmazás védett? | Platform HA funkció | VMware HA funkció | Azure HA szolgáltatás |
 ------------ | ------------- | ------------ | ------------ | ------------- |
@@ -25,7 +25,7 @@ A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en fut�
 | Ventilátor meghibásodása | igen | Redundáns ventilátorok, sikertelen csomópont gyors cseréje |  |  |
 | NIC-hiba | igen | Redundáns hálózati adapter, sikertelen csomópont gyors cseréje
 | Gazdagép áramszünet | igen | Redundáns tápegység |  |  |
-| ESXi-gazdagép meghibásodása | igen | Sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| ESXi-gazdagép meghibásodása | igen | sikertelen csomópont gyors cseréje | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
 | VM-hiba | igen | [Terheléselosztók](load-balancers.md)  | [VMware vSphere magas rendelkezésre állás](https://www.vmware.com/products/vsphere/high-availability.html) | Állapot nélküli VMware virtuális gépek Azure Load Balancer |
 | Levél-kapcsoló portjának hibája | igen | Redundáns hálózati adapter |  |  |
 | A levél kapcsolójának hibája | igen | Redundáns levél kapcsolók |  |  |
@@ -35,15 +35,15 @@ A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en fut�
 | Adatközpont-hiba | igen |  |  | Rendelkezésre állási zónák |
 | Regionális hiba | igen  |  |  | Azure-régiók |
 
-A CloudSimple által biztosított Azure VMware-megoldás a következő magas rendelkezésre állási funkciókat biztosítja.
+Az AVS által biztosított Azure VMware-megoldás a következő magas rendelkezésre állási funkciókat biztosítja.
 
 ## <a name="fast-replacement-of-failed-node"></a>Sikertelen csomópont gyors cseréje
 
-A CloudSimple vezérlő síkja szoftver folyamatosan figyeli a VMware-fürtök állapotát, és észleli, ha egy ESXi-csomópont meghibásodik. Ezután automatikusan felvesz egy új ESXi-gazdagépet az érintett VMware-fürtbe az azonnal elérhető csomópontok készletéből, és a meghibásodott csomópontot a fürtből veszi át. Ez a funkció biztosítja, hogy a VMware-fürtön lévő tartalék kapacitást gyorsan visszaállítsa a rendszer, hogy a fürt vSAN és a VMware hektár által biztosított rugalmassága helyreálljon.
+Az AVS Control Plane szoftver folyamatosan figyeli a VMware-fürtök állapotát, és észleli, ha egy ESXi-csomópont meghibásodik. Ezután automatikusan felvesz egy új ESXi-gazdagépet az érintett VMware-fürtbe az azonnal elérhető csomópontok készletéből, és a meghibásodott csomópontot a fürtből veszi át. Ez a funkció biztosítja, hogy a VMware-fürtön lévő tartalék kapacitást gyorsan visszaállítsa a rendszer, hogy a fürt vSAN és a VMware hektár által biztosított rugalmassága helyreálljon.
 
 ## <a name="placement-groups"></a>Elhelyezési csoportok
 
-Egy privát felhőt létrehozó felhasználó kijelölhet egy Azure-régiót és egy elhelyezési csoportot a kiválasztott régión belül. Az elhelyezési csoport több állványon, de ugyanazon a gerincen lévő hálózati szegmensen belül elterjedt csomópontok halmaza. Az azonos elhelyezési csoportban lévő csomópontok legfeljebb két további ugrással rendelkezhetnek egymással. Az elhelyezési csoportok mindig egyetlen Azure rendelkezésre állási zónán belül találhatók, és több állványra is kiterjednek. A CloudSimple-vezérlési sík a saját felhő csomópontjait több állványra osztja el, a legjobb erőfeszítés alapján. A különböző elhelyezési csoportokban lévő csomópontok garantáltan különböző állványokra helyezhetők.
+Az AVS Private Cloudt létrehozó felhasználó kijelölhet egy Azure-régiót és egy elhelyezési csoportot a kiválasztott régión belül. Az elhelyezési csoport több állványon, de ugyanazon a gerincen lévő hálózati szegmensen belül elterjedt csomópontok halmaza. Az azonos elhelyezési csoportban lévő csomópontok legfeljebb két további ugrással rendelkezhetnek egymással. Az elhelyezési csoportok mindig egyetlen Azure rendelkezésre állási zónán belül találhatók, és több állványra is kiterjednek. Az AVS Control Plan a legjobb erőfeszítés alapján osztja szét az AVS-beli privát felhő csomópontjait több állványon. A különböző elhelyezési csoportokban lévő csomópontok garantáltan különböző állványokra helyezhetők.
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
@@ -55,7 +55,7 @@ Az Azure vNet-hez a ExpressRoute használatával létesített adatközpont-kapcs
 
 ## <a name="redundant-networking-services"></a>Redundáns hálózati szolgáltatások
 
-A CloudSimple összes hálózati szolgáltatását (beleértve a VLAN-t, a tűzfalat, a nyilvános IP-címeket, az internetet és a VPN-t) úgy tervezték, hogy kiválóan elérhetők legyenek, és képesek legyenek támogatni a szolgáltatást.
+Az AVS Private Cloud-hoz tartozó összes AVS hálózati szolgáltatás (beleértve a VLAN-t, a tűzfalat, a nyilvános IP-címeket, az internetet és a VPN-t) úgy lett kialakítva, hogy a szolgáltatás SLA-ját támogassa.
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer az állapot nélküli VMware virtuális gépekhez
 

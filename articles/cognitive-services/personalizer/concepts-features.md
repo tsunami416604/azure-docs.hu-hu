@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760827"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026149"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -132,6 +132,8 @@ A következő szakaszban gyakori eljárások találhatók a személyre szabott s
 Lehetőség van a szolgáltatáskészletek javítására úgy, hogy azok nagyobb vagy kevésbé sűrűvé teszik őket.
 
 Például egy időbélyeg, amely a másodikra mutat, nagyon ritka funkció. Az idő a "Morning", a "délig", a "délutáni", illetve a "délelőtt" értékre való besorolásával sűrűbb (hatékony) lehet.
+
+A tartózkodási hely adatai általában a szélesebb besorolások létrehozásának előnyeit is kihasználhatják. Például egy szélességi hosszúságú koordináta, például a lat: 47,67402 ° N, Long: 122,12154 ° W túl pontos, és a modellre kényszeríti a szélességi és a hosszúsági körök különböző dimenzióként való megismerését. Ha a tartózkodási hely adatai alapján próbál személyre szabni, a nagyobb szektorokban segít a tartózkodási hely adatainak csoportosításában. Ennek egyik egyszerű módja, ha kiválaszt egy megfelelő kerekítési pontosságot a lat-hosszú számok számára, és a szélességi és a hosszúsági fokot a "területek" értékre kombinálva egyetlen sztringbe helyezi őket. Tegyük fel például, hogy egy jó módszer a 47,67402 ° N, a Long: 122,12154 ° s a régiókban, körülbelül néhány kilométer széles a "location": "34.3, 12,1".
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>A szolgáltatási készletek kibontása a kikövetkeztetett információkkal

@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony létesítése – Azure CLI-vel |} A Microsoft Docs
-description: Ebből a cikkből elsajátíthatja a virtuális hálózatok összekapcsolása virtuális hálózati társviszony-létesítés, az Azure CLI használatával.
+title: Virtuális hálózatok összekötése virtuális hálózattal – Azure CLI | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok virtuális hálózati kapcsolattal az Azure CLI használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 8e1cf2a1c5503f31a70bc654ae1a211d1ab64581
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b3a2c47aa1bcb624294a95db4218b311db747760
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203872"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016068"
 ---
-# <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure CLI használatával
+# <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok összekötése virtuális hálózati kapcsolattal az Azure CLI használatával
 
 A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -37,17 +37,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.28-as vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
-Előtt egy virtuális hálózatot hoz létre, akkor hozzon létre egy erőforráscsoportot a virtuális hálózatot és más ebben a cikkben létrehozott összes erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot *myVirtualNetwork1* a címelőtaggal rendelkező *10.0.0.0/16*.
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. A következő példában létrehozunk egy *myVirtualNetwork1* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
 
 ```azurecli-interactive 
 az network vnet create \
@@ -58,7 +58,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Hozzon létre egy virtuális hálózatot nevű *myVirtualNetwork2* a címelőtaggal rendelkező *10.1.0.0/16*:
+Hozzon létre egy *myVirtualNetwork2* nevű virtuális hálózatot a *10.1.0.0/16*előtaggal:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -71,7 +71,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>Virtuális hálózatok közötti társviszony létesítése
 
-Virtuális hálózati azonosítókat, ezért először kérje le az egyes virtuális hálózat azonosítója között jönnek létre társviszony-Létesítéseket [az network vnet show](/cli/azure/network/vnet) és Azonosítóját tárolja egy változóban.
+A virtuális hálózati azonosítók között létrejöttek a társítások, ezért először le kell kérnie az egyes virtuális hálózatok AZONOSÍTÓját az [az Network vnet show](/cli/azure/network/vnet) paranccsal, és TÁROLJA az azonosítót egy változóban.
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -88,7 +88,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-A társviszony-létesítés *myVirtualNetwork1* való *myVirtualNetwork2* a [az hálózat virtuális hálózatok közötti társviszony létrehozása](/cli/azure/network/vnet/peering). Ha a `--allow-vnet-access` paraméter nincs megadva, egy társviszony jön létre, de nem érkeztek is áthaladhat azt.
+Hozzon létre egy társat a *myVirtualNetwork1* -ből a *myVirtualNetwork2* az [az Network vnet peering Create](/cli/azure/network/vnet/peering)paranccsal. Ha a `--allow-vnet-access` paraméter nincs megadva, a rendszer létrehoz egy társítást, de a kommunikáció nem végezhető el.
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -99,7 +99,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Vissza az előző parancs végrehajtása után a kimenetben láthatja a **peeringState** van *kezdeményezve*. A társviszony-létesítési marad a *kezdeményezve* állapot, amíg nem hoz létre a társviszonyt *myVirtualNetwork2* való *myVirtualNetwork1*. A társviszony-létesítés *myVirtualNetwork2* való *myVirtualNetwork1*. 
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *inicializálva*van. A társítás a *kezdeményezett* állapotban marad, amíg létre nem hozza a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. Hozzon létre egy társat a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-Vissza az előző parancs végrehajtása után a kimenetben láthatja a **peeringState** van *csatlakoztatva*. Az Azure is módosította a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* a társviszony-létesítési *csatlakoztatva*. Ellenőrizze, hogy a társviszony-létesítés állapota a *myVirtualNetwork1 – myVirtualNetwork2* társviszony-létesítés változott *csatlakoztatva* a [az network vnet peering show](/cli/azure/network/vnet/peering).
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *csatlakoztatva*van. Az Azure a *myVirtualNetwork1-myVirtualNetwork2* peering társítási állapotát is megváltoztatta a *csatlakozáshoz*. Győződjön meg arról, hogy a *myVirtualNetwork1-myVirtualNetwork2-* társítás társítási állapota az [az Network vnet peering show](/cli/azure/network/vnet/peering)paranccsal *kapcsolódott* .
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -120,7 +120,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-Amíg a többi virtuális hálózatban lévő erőforrásokra erőforrásaikat egy virtuális hálózatot nem lehet kommunikálni a **peeringState** tartozó mindkét virtuális hálózatok társviszony-létesítések *csatlakoztatva*. 
+Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni a másik virtuális hálózatban lévő erőforrásokkal, amíg a **peeringState** mindkét virtuális hálózatban *csatlakoztatva*van. 
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -128,7 +128,7 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. A következő példában létrehozunk egy nevű virtuális Gépet *myVm1* a a *myVirtualNetwork1* virtuális hálózatot. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` lehetőség a háttérben létrehozza a virtuális Gépet, így a következő lépéssel is.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példa egy *myVm1* nevű virtuális gépet hoz létre a *myVirtualNetwork1* virtuális hálózaton. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` lehetőség a virtuális gépet a háttérben hozza létre, így folytathatja a következő lépéssel.
 
 ```azurecli-interactive
 az vm create \
@@ -143,7 +143,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-A virtuális gép létrehozása a *myVirtualNetwork2* virtuális hálózatot.
+Hozzon létre egy virtuális GÉPET a *myVirtualNetwork2* virtuális hálózaton.
 
 ```azurecli-interactive 
 az vm create \
@@ -155,7 +155,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI információkat jelenít meg az alábbi példához hasonló: 
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg: 
 
 ```azurecli 
 {
@@ -170,36 +170,36 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális
 }
 ```
 
-Jegyezze fel a **publicIpAddress** értékét. Ezzel a címmel eléri a virtuális Gépet egy későbbi lépésben az internetről.
+Jegyezze fel a **publicIpAddress** értékét. Ez a címe egy későbbi lépésben a virtuális gép internetről való elérésére szolgál.
 
 ## <a name="communicate-between-vms"></a>Virtuális gépek közötti kommunikáció
 
-A következő paranccsal hozhat létre az SSH-munkamenetből a *myVm2* virtuális Gépet. Cserélje le `<publicIpAddress>` a virtuális gép nyilvános IP-címét. Az előző példában a nyilvános IP-cím van *13.90.242.231*.
+A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVm2* virtuális géppel. Cserélje le a `<publicIpAddress>`t a virtuális gép nyilvános IP-címére. Az előző példában a nyilvános IP-cím *13.90.242.231*.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-A virtuális gép pingelni *myVirtualNetwork1*.
+Pingelje a virtuális gépet a *myVirtualNetwork1*-ben.
 
 ```bash 
 ping 10.0.0.4 -c 4
 ```
 
-Ekkor négy választ kap. 
+Négy választ kap. 
 
-Zárja be az SSH-munkamenetet, hogy a *myVm2* virtuális Gépet. 
+Zárd be az SSH-munkamenetet a *myVm2* virtuális géphez. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan virtuális hálózatok közötti társviszony az azonos Azure-régióban, két hálózat kapcsolódni. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#cli) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
+Ebből a cikkből megtudhatta, hogyan csatlakoztathatók a két hálózat ugyanabban az Azure-régióban, virtuális hálózattal. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#cli) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
 
-Is [csatlakoztatni szeretné saját számítógépét egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VPN,-kapcsolaton keresztül, és lépjen kapcsolatba az erőforrásokkal egy virtuális hálózaton, vagy a társviszonyban álló virtuális hálózatba. Lásd: a virtuális hálózat cikkekben ismertetett feladatok végrehajtásához újrafelhasználható szkripteket [mintaszkriptjeire](cli-samples.md).
+A [saját számítógépét VPN-kapcsolaton keresztül is összekapcsolhatjuk egy virtuális hálózattal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és a virtuális hálózatban lévő erőforrásokkal és a társ virtuális hálózatokkal is kezelhetik. A virtuális hálózati cikkekben tárgyalt feladatok számos feladatának elvégzéséhez újrafelhasználható parancsfájlok esetén lásd: [parancsfájl-minták](cli-samples.md).

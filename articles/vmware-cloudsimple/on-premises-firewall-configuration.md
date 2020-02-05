@@ -1,7 +1,7 @@
 ---
-title: Azure VMware-megoldás elérése helyszíni CloudSimple
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Azure VMware-megoldás elérése a helyszíni hálózatról a tűzfalon keresztül történő CloudSimple
+title: Azure VMware-megoldások (AVS) elérése a helyszínen
+description: Azure VMware-megoldások (AVS) elérése a helyszíni hálózatról tűzfalon keresztül
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/08/2019
@@ -9,54 +9,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452410"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024466"
 ---
-# <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Hozzáférés a CloudSimple saját felhőalapú környezetéhez és a helyszíni alkalmazásokhoz
+# <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Az AVS Private Cloud Environment és a helyszíni alkalmazások elérése
 
-Egy kapcsolat beállítható a helyszíni hálózatról az Azure ExpressRoute vagy a helyek közötti VPN-t használó CloudSimple.  A kapcsolat használatával elérheti a CloudSimple saját Felhőbeli vCenter és a privát felhőben futtatott számítási feladatokat.  Megadhatja, hogy milyen portok legyenek megnyitva a kapcsolatban a helyszíni hálózat tűzfala használatával.  Ez a cikk a tipikus alkalmazások portokra vonatkozó követelményeit tárgyalja.  Bármely más alkalmazás esetében tekintse meg az alkalmazás dokumentációjában a portokra vonatkozó követelményeket.
+A helyszíni hálózatról az Azure-ExpressRoute vagy a helyek közötti VPN-kapcsolaton keresztüli csatlakozást lehet beállítani. A kapcsolat használatával elérheti az AVS Private Cloud vCenter és az AVS Private-felhőben futtatott munkaterheléseket. Megadhatja, hogy milyen portok legyenek megnyitva a kapcsolatban a helyszíni hálózat tűzfala használatával. Ez a cikk a tipikus alkalmazások portokra vonatkozó követelményeit tárgyalja. Bármely más alkalmazás esetében tekintse meg az alkalmazás dokumentációjában a portokra vonatkozó követelményeket.
 
 ## <a name="ports-required-for-accessing-vcenter"></a>A vCenter eléréséhez szükséges portok
 
-A saját felhőalapú vCenter és a NSX-T kezelőhöz való hozzáféréshez az alábbi táblázatban definiált portokat meg kell nyitni a helyszíni tűzfalon.  
+Az AVS Private Cloud vCenter és a NSX-T Manager eléréséhez az alábbi táblázatban definiált portokat meg kell nyitni a helyszíni tűzfalon. 
 
 | Port       | Forrás                           | Cél                      | Rendeltetés                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Helyszíni DNS-kiszolgálók          | Privát Felhőbeli DNS-kiszolgálók        | Szükséges a *az.CLOUDSIMPLE.IO* DNS-keresésének továbbításához a helyszíni hálózatról a saját felhőalapú DNS-kiszolgálókra.       |
-| 53 (UDP)   | Privát Felhőbeli DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók          | A DNS továbbításához a helyszíni tartománynevek a helyszíni DNS-kiszolgálókra való átadásához szükségesek. |
-| 80 (TCP)   | Helyszíni hálózat              | Saját felhőalapú felügyeleti hálózat | A vCenter URL-címének *http* -ről *https*-re való átirányításához szükséges.                                                           |
-| 443 (TCP)  | Helyszíni hálózat              | Saját felhőalapú felügyeleti hálózat | A vCenter és a NSX-T kezelő helyszíni hálózatról való eléréséhez szükséges.                                             |
-| 8000 (TCP) | Helyszíni hálózat              | Saját felhőalapú felügyeleti hálózat | A helyszíni környezetből a saját felhőbe irányuló virtuális gépek vMotion szükséges.                                            |
-| 8000 (TCP) | Saját felhőalapú felügyeleti hálózat | Helyszíni hálózat              | A virtuális gépeknek a helyszíni környezetbe való vMotion szükséges.                                            |
+| 53 (UDP)   | Helyszíni DNS-kiszolgálók          | AVS Private Cloud DNS-kiszolgálók        | A DNS-címkeresés továbbításához szükséges az *az. AVS.io* a helyszíni hálózatról származó AVS Private Cloud DNS-kiszolgálókra.     |
+| 53 (UDP)   | AVS Private Cloud DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók          | A DNS továbbításához szükséges a helyszíni tartománynevek megkeresése az AVS Private Cloud vCenter a helyszíni DNS-kiszolgálókra. |
+| 80 (TCP)   | Helyszíni hálózat              | AVS Private Cloud Management Network | A vCenter URL-címének *http* -ről *https*-re való átirányításához szükséges.                                                         |
+| 443 (TCP)  | Helyszíni hálózat              | AVS Private Cloud Management Network | A vCenter és a NSX-T kezelő helyszíni hálózatról való eléréséhez szükséges.                                           |
+| 8000 (TCP) | Helyszíni hálózat              | AVS Private Cloud Management Network | A helyszíni rendszerből az AVS Private Cloud-ba irányuló virtuális gépek vMotion szükséges.                                          |
+| 8000 (TCP) | AVS Private Cloud Management Network | Helyszíni hálózat              | A virtuális gépeknek az AVS privát felhőből a helyszíni rendszerbe való vMotion szükséges.                                          |
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>A helyszíni Active Directory identitás forrásaként való használatához szükséges portok
 
-Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurálni a saját felhőalapú vCenter, meg kell nyitni a táblázatban definiált portokat.  Lásd: az [Azure ad használata identitás-szolgáltatóként a CloudSimple vCenter a](https://docs.azure.cloudsimple.com/azure-ad/) konfigurációs lépésekhez.
+Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurálni az AVS Private Cloud vCenter, meg kell nyitni a táblázatban definiált portokat. Lásd: az [Azure ad használata identitás-szolgáltatóként a vCenter az AVS AVS-beli privát felhőben](https://docs.azure.cloudsimple.com/azure-ad/) a konfigurációs lépésekhez.
 
 | Port         | Forrás                           | Cél                                         | Rendeltetés                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)      | Privát Felhőbeli DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók                             | A DNS továbbításához a helyszíni Active Directory-tartománynevek a saját Felhőbeli vCenter a helyszíni DNS-kiszolgálókra való megkeresése szükséges.          |
-| 389 (TCP/UDP) | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory-tartományvezérlők     | A Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlők felhasználói hitelesítéshez való LDAP-kommunikációhoz szükséges.                |
-| 636 (TCP)     | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory-tartományvezérlők     | A biztonságos LDAP (LDAPs) kommunikációhoz szükséges a Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlőkre a felhasználói hitelesítéshez. |
-| 3268 (TCP)    | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                        |
-| 3269 (TCP)    | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                       |                                           |
+| 53 (UDP)      | AVS Private Cloud DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók                             | A DNS továbbítása a helyszíni Active Directory-tartománynevek az AVS Private Cloud vCenter a helyszíni DNS-kiszolgálókra való megkereséséhez szükséges.        |
+| 389 (TCP/UDP) | AVS Private Cloud Management Network | Helyszíni Active Directory-tartományvezérlők     | Az AVS Private Cloud vCenter-kiszolgáló és az Active Directory-tartományvezérlők közötti LDAP-kommunikációhoz szükséges a felhasználói hitelesítéshez.              |
+| 636 (TCP)     | AVS Private Cloud Management Network | Helyszíni Active Directory-tartományvezérlők     | A biztonságos LDAP (LDAPs) kommunikációhoz szükséges az AVS Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlőkre a felhasználói hitelesítéshez. |
+| 3268 (TCP)    | AVS Private Cloud Management Network | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                      |
+| 3269 (TCP)    | AVS Private Cloud Management Network | Helyszíni Active Directory globáliskatalógus-kiszolgálók | Több tartományvezérlős üzemelő példányokban történő LDAP-kommunikációhoz szükséges.                                                                     |                                           |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>A számítási feladatok virtuális gépei eléréséhez szükséges általános portok
 
-A privát felhőben futó számítási feladatok virtuális gépei számára szükséges, hogy a helyszíni tűzfalon a portok meg legyenek nyitva.  Az alábbi táblázat a szükséges általános portok némelyikét és azok célját mutatja be.  Az alkalmazás-specifikus portokra vonatkozó követelményekért tekintse meg az alkalmazás dokumentációját.
+Az AVS Private Cloud-on futó munkaterhelési virtuális gépek eléréséhez portok szükségesek a helyszíni tűzfalon való megnyitásához. Az alábbi táblázat a szükséges általános portok némelyikét és azok célját mutatja be. Az alkalmazás-specifikus portokra vonatkozó követelményekért tekintse meg az alkalmazás dokumentációját.
 
 | Port         | Forrás                         | Cél                          | Rendeltetés                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
-| 22 (TCP)      | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | Biztonságos rendszerhéj-hozzáférés a privát felhőben futó linuxos virtuális gépekhez.              |
-| 3389 (TCP)    | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | Távoli asztalról a privát felhőben futó Windows rendszerű virtuális gépekre.                 |
-| 80 (TCP)      | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | A privát felhőben futó virtuális gépeken üzembe helyezett webkiszolgálók elérése.        |
-| 443 (TCP)     | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | Hozzáférés a privát felhőben futó virtuális gépeken üzembe helyezett biztonságos webkiszolgálókhoz. |
-| 389 (TCP/UDP) | Saját Felhőbeli számítási feladatok hálózata | Helyszíni Active Directory-hálózat | Csatlakoztassa a Windows munkaterhelés virtuális gépeket a helyszíni Active Directory-tartományhoz.       |
-| 53 (UDP)      | Saját Felhőbeli számítási feladatok hálózata | Helyszíni hálózat                  | DNS-szolgáltatás elérése a számítási feladatok virtuális gépei számára a helyszíni DNS-kiszolgálókra.         |
+| 22 (TCP)      | Helyszíni hálózat            | AVS Private Cloud munkaterhelés-hálózat       | Biztonságos rendszerhéj-hozzáférés az AVS Private Cloud-on futó Linux rendszerű virtuális gépekhez.            |
+| 3389 (TCP)    | Helyszíni hálózat            | AVS Private Cloud munkaterhelés-hálózat       | A Távoli asztalról az AVS Private Cloud-on futó Windows rendszerű virtuális gépekre.               |
+| 80 (TCP)      | Helyszíni hálózat            | AVS Private Cloud munkaterhelés-hálózat       | Hozzáférés az AVS Private Cloud-on futó virtuális gépeken üzembe helyezett webkiszolgálókhoz.      |
+| 443 (TCP)     | Helyszíni hálózat            | AVS Private Cloud munkaterhelés-hálózat       | Hozzáférés az AVS Private Cloud-on futó virtuális gépeken üzembe helyezett biztonságos webkiszolgálókhoz. |
+| 389 (TCP/UDP) | AVS Private Cloud munkaterhelés-hálózat | Helyszíni Active Directory-hálózat | Csatlakoztassa a Windows munkaterhelés virtuális gépeket a helyszíni Active Directory-tartományhoz.     |
+| 53 (UDP)      | AVS Private Cloud munkaterhelés-hálózat | Helyszíni hálózat                  | DNS-szolgáltatás elérése a számítási feladatok virtuális gépei számára a helyszíni DNS-kiszolgálókra.       |
 
 ## <a name="next-steps"></a>Következő lépések
 

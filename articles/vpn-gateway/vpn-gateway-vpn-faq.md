@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895979"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016748"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 
@@ -34,7 +34,7 @@ A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több
 
 Nem. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Milyen lehetőségeim vannak a létesítmények közötti kapcsolódásra?
+### <a name="what-are-my-cross-premises-connection-options"></a>Mik a lehetőségeim létesítmények közötti kapcsolat esetén?
 
 A következő létesítmények közötti kapcsolattípusok támogatottak:
 
@@ -68,14 +68,15 @@ A házirendalapú átjárók házirendalapú VPN-kapcsolatokat valósítanak meg
 
 Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva.
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem házirendalapú VPN-átjárómat útvonalalapúra?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem a házirend-alapú VPN-átjárót a Route-alapúra?
+
 Nem. Az Azure vnet-átjáró típusa nem módosítható házirend-alapúról Route-alapú vagy más módon. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
 1. Törölje a törölni kívánt átjáróval társított kapcsolatokat.
 1. Törölje az átjárót:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell – klasszikus](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Hozzon létre egy megfelelő típusú új átjárót, majd végezze el a VPN beállítását](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell – klasszikus](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Hozzon létre egy új, a kívánt típusú átjárót, és fejezze be a VPN-beállítást](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Szükségem van GatewaySubnetre?
 
@@ -89,11 +90,15 @@ Nem.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Megszerezhetem a VPN-átjáróm IP-címét, mielőtt létrehozom az átjárót?
 
-Nem. Az átjárót létre kell hozni az IP-cím beszerzéséhez. Ha törli, majd újra létrehozza a VPN-átjárót, az IP-cím megváltozik.
+A zóna-redundáns és a zónákhoz tartozó átjárók (az az _átjáró a_ névben) mind a _standard SKU_ Azure nyilvános IP-erőforrásra támaszkodnak. Az Azure standard SKU nyilvános IP-erőforrásainak statikus kiosztási módszert kell használniuk. Ezért a VPN-átjáróhoz tartozó nyilvános IP-címet azonnal megkapja a használni kívánt szabványos SKU nyilvános IP-erőforrás létrehozásakor.
+
+A nem zónában lévő és nem zónákhoz tartozó átjárók (az az átjárók, amelyek nem _rendelkeznek a_ névben) nem KAPHATJÁK meg a VPN-átjáró IP-címét a létrehozás előtt. Az IP-cím csak akkor változik, ha törli, majd újra létrehozza a VPN-átjárót.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Kérhetek statikus nyilvános IP-címet a VPN-átjáróm számára?
 
-Nem. Csak a dinamikus IP-cím hozzárendelése támogatott. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A VPN-átjáró IP-címe kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. A VPN-átjáró nyilvános IP-címe nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN-átjáró belső karbantartása/frissítése során. 
+A fentiekben leírtaknak megfelelően a zóna-redundáns és a zónákhoz tartozó átjárók (az az _átjáró, amelynek_ a neve) mind a _standard SKU_ Azure nyilvános IP-erőforrásra támaszkodnak. Az Azure standard SKU nyilvános IP-erőforrásainak statikus kiosztási módszert kell használniuk.
+
+A nem zóna nélküli és nem zónákhoz tartozó átjárók (az az átjárók, amelyek _nem_ rendelkeznek _a_ névben) esetében csak a dinamikus IP-címek hozzárendelése támogatott. Ez azonban nem jelenti azt, hogy az IP-cím a VPN-átjáróhoz való hozzárendelése után módosul. A VPN-átjáró IP-címe csak akkor változik, ha az átjárót törli, majd újra létrehozza. A VPN-átjáró nyilvános IP-címe nem változik a VPN-átjáró további belső karbantartásának és frissítésének átméretezése, alaphelyzetbe állítása vagy befejezése után.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Hogyan történik a VPN-alagút hitelesítése?
 

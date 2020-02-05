@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773049"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022137"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Az Azure IoT Central egy IoT, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésével, kezelésével és karbantartásával járó terheket és költségeket. Az Azure IoT Central kiválasztásával lehetősége van arra, hogy az Ön üzleti adatait IoT-adataival alakítsa át, és nem csupán egy összetett és folyamatosan fejlődő IoT-infrastruktúra karbantartására és frissítésére koncentrál.
 
@@ -65,7 +65,7 @@ A digitális terjesztési központ előnyei a következők:
 * A kamerák megfigyelik az árukat a megérkezésük után, és áthelyezhetik azokat a továbbító rendszeren.
 * Hibás termékek automatikus azonosítása.
 * Hatékony megrendelés nyomon követése.
-* Csökkentett költségek, hatékonyabb termelékenység és optimalizált kihasználtság.
+* Csökkentett költségek, hatékonyabb termelékenység és optimalizált használat.
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek: 
 
@@ -78,7 +78,7 @@ További információért lásd: a [Digital Distribution Center alkalmazás-sabl
 
 Számos kiskereskedő esetében az áruházban lévő környezeti feltételek kulcsfontosságú differenciált versenytársaik számára. A kereskedők kellemes feltételeket szeretnének fenntartani az üzleteik számára az ügyfelek számára.  
 
-Megoldás-szerkesztőként használhatja a IoT Central in-store Analytics feltételeit figyelő alkalmazás sablonját, amellyel teljes körű megoldást hozhat létre. Az alkalmazás sablon lehetővé teszi, hogy digitálisan kapcsolódjon egy kiskereskedelmi áruházbeli környezethez, és figyelje a különböző szenzor-eszközök használatával. Ezek az érzékelők-eszközök olyan telemetria hoznak létre, amelyeket üzleti elemzési eredményekre válthatnak, így csökkenthetik az üzemeltetési költségeket, és nagyszerű élményt nyújtanak ügyfeleiknek.
+Megoldás-szerkesztőként használhatja a IoT Central in-store Analytics feltételeit figyelő alkalmazás sablonját, amellyel teljes körű megoldást hozhat létre. Az alkalmazás sablonja lehetővé teszi, hogy digitálisan kapcsolódjon egy kiskereskedelmi tárolási környezethez, és figyelje a különböző típusú érzékelő eszközök használatával. Ezek az érzékelők-eszközök olyan telemetria hoznak létre, amelyeket üzleti elemzési eredményekre válthatnak, így csökkenthetik az üzemeltetési költségeket, és nagyszerű élményt nyújtanak ügyfeleiknek.
 
 Az alkalmazás sablonjának használata a következőhöz:
 
@@ -149,8 +149,8 @@ A IoT Central Micro-beteljesülés Center alkalmazás sablon lehetővé teszi a 
 
 Az alkalmazás sablonja a következőket teszi lehetővé: 
 
-- Zökkenőmentesen csatlakoztathatók különböző IoT-érzékelők, például robotok vagy feltételt figyelő érzékelők egy IoT Central alkalmazás-példányhoz.
-- Az érzékelő hálózat, valamint a környezetben található átjárók állapotának monitorozása és felügyelete.
+- Zökkenőmentesen csatlakoztathatók különböző típusú IoT-érzékelők, például robotok vagy feltételt figyelő érzékelők egy IoT Central alkalmazás-példányhoz.
+- Figyelheti és kezelheti az érzékelő hálózat állapotát, valamint a környezetben található bármely átjáró eszközét.
 - A megfelelő riasztások elindításához hozzon létre egyéni szabályokat a környezeti feltételek köré a teljesítési központban.
 - Alakítsa át a környezeti feltételeket a teljesítési központban a kiskereskedelmi tárház csapata által kihasználható elemzésekre.
 - Exportálja az összesített betekintést meglévő vagy új üzleti alkalmazásokba a kiskereskedelmi személyzet tagjai számára.

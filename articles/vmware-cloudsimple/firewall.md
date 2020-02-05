@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple használatával – tűzfalszabályok és szabályok beállítása
-description: Leírja, hogyan állítható be a saját felhőalapú tűzfalak táblái és szabályai az alhálózatokon és a VLAN-ok forgalmának korlátozására.
+title: Azure VMware-megoldások (AVS) – tűzfalszabályok és szabályok beállítása
+description: Leírja, hogyan állítható be az AVS Private Cloud Firewall Tables és Rules az alhálózatok és a VLAN-ok forgalmának korlátozására.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606457"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025282"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Tűzfalszabályok és szabályok beállítása privát Felhőkhöz
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>Tűzfalszabályok és szabályok beállítása az AVS privát Felhőkhöz
 
 A tűzfalak és a kapcsolódó szabályok lehetővé teszik, hogy korlátozásokat határozzon meg az egyes alhálózatokra és VLAN-okra érvényes adatforgalomra vonatkozóan.
 
@@ -24,7 +24,7 @@ A tűzfalak és a kapcsolódó szabályok lehetővé teszik, hogy korlátozások
 
 ## <a name="add-a-new-firewall-table"></a>Új tűzfalszabály hozzáadása
 
-1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
+1. [Nyissa meg az AVS-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
 2. Válassza a **Tűzfalszabályok**lehetőséget.
 3. Válassza a **Tűzfalszabály létrehozása**lehetőséget.
 
@@ -51,7 +51,7 @@ A tűzfalszabályok határozzák meg, hogy a tűzfal hogyan kezelje a különbö
 2. Állítsa be a szabályt a következőképpen:
     * **Név**. Adjon nevet a szabálynak.
     * **Prioritás**. Rendeljen hozzá egy prioritást a szabályhoz. A rendszer először az alacsonyabb számú szabályokat hajtja végre.
-    * **Forgalom típusa** Válassza ki, hogy a szabály a privát felhő, az Internet vagy a VPN-forgalom (állapot nélküli) vagy egy nyilvános IP-cím (állapot) esetén van-e.
+    * **Forgalom típusa** Kiválaszthatja, hogy a szabály az AVS Private Cloud, az Internet vagy a VPN-forgalom (állapot nélküli) vagy egy nyilvános IP-cím (állapot-nyilvántartó) esetében van-e.
     * **Protokoll**. Válassza ki a szabály által lefedett protokollt (TCP, UDP vagy bármely protokoll).
     * **Irány**. Válassza ki, hogy a szabály bejövő vagy kimenő forgalomra vonatkozik-e. Külön szabályokat kell megadnia a bejövő és a kimenő forgalomhoz.
     * **Művelet**. Válassza ki az elvégzendő műveletet, ha a szabály megfelel (Engedélyezés vagy megtagadás).
@@ -75,5 +75,5 @@ A tűzfalszabályok definiálása után megadhatja azokat az alhálózatokat, am
 1. A **hálózati** > **Tűzfalszabályok** lapon válasszon ki egy tűzfal-táblázatot.
 2. Nyissa meg a **csatolt VLAN-ok/alhálózat** lapot.
 3. Kattintson **a csatolás egy VLAN/alhálózat**elemre.
-4. Válassza ki a privát felhőt és a VLAN-t. Megjelenik a társított alhálózat neve és CIDR-blokkja.
+4. Válassza ki az AVS privát felhőt és a VLAN-t. Megjelenik a társított alhálózat neve és CIDR-blokkja.
 5. Kattintson a **Submit (Küldés**) gombra.

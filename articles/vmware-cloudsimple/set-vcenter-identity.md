@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple – vCenter-identitások beállítása a privát felhőben
-description: Ismerteti, hogyan állítható be a saját Felhőbeli vCenter a vCenter való Active Directory hitelesítéshez a VMware-rendszergazdák számára a eléréséhez
+title: Azure VMware Solutions (AVS) – vCenter-identitások beállítása az AVS Private Cloud szolgáltatásban
+description: Leírja, hogyan állíthatja be az AVS Private Cloud vCenter, hogy hitelesítse magát Active Directory a VMware-rendszergazdák számára a vCenter eléréséhez
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76542865"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014215"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>A VMware vCenter Identity sources
 
-A VMware vCenter a vCenter-hez hozzáférő felhasználók hitelesítéséhez különböző identitás-forrásokat támogat.  A CloudSimple saját Felhőbeli vCenter úgy is beállítható, Active Directory hogy a VMware-rendszergazdák hozzáférhessenek a vCenter. Ha a telepítés befejeződött, a **cloudowner** felhasználó hozzáadhat felhasználókat az Identity forrásból a vCenter.  
+A VMware vCenter a vCenter-hez hozzáférő felhasználók hitelesítéséhez különböző identitás-forrásokat támogat. Az AVS Private Cloud-vCenter beállítható úgy, hogy a VMware-rendszergazdák Active Directory a vCenter eléréséhez. Ha a telepítés befejeződött, a **cloudowner** felhasználó hozzáadhat felhasználókat az Identity forrásból a vCenter. 
 
 A Active Directory tartománya és tartományvezérlői a következő módokon állíthatók be:
 
 * A helyszínen futó tartomány-és tartományvezérlők Active Directory
 * Az Azure-ban virtuális gépekként működő tartomány-és tartományvezérlők Active Directory Azure-előfizetésében
-* A saját felhőben futó új Active Directory tartomány és tartományvezérlők
+* Új Active Directory tartomány-és tartományvezérlők, amelyek az AVS Private Cloud-ban futnak
 * Azure Active Directory szolgáltatás
 
-Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tartomány és tartományvezérlők állíthatók be a helyszíni vagy virtuális gépeken az előfizetésekben.  Ha az Azure AD-t identitás forrásaként szeretné használni, tekintse [meg az Azure ad-t identitás-szolgáltatóként a CloudSimple privát felhőben történő vCenter](azure-ad.md) című témakört, amely részletes útmutatást nyújt az Identity Source beállításához.
+Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tartomány és tartományvezérlők állíthatók be a helyszíni vagy virtuális gépeken az előfizetésekben. Ha az Azure AD-t személyazonossági forrásként szeretné használni, tekintse [meg az Azure ad-t identitás-szolgáltatóként az vCenter az AVS Private Cloud](azure-ad.md) szolgáltatásban című témakört, amely részletes útmutatást nyújt az identitás forrásának beállításához.
 
 [Az Identity forrás hozzáadása előtt átmenetileg megnövelheti](#add-an-identity-source-on-vcenter) [a vCenter-jogosultságokat](escalate-private-cloud-privileges.md).
 
@@ -39,14 +39,14 @@ Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tar
 ## <a name="identity-source-options"></a>Személyazonossági forrás beállításai
 
 * [Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [Új Active Directory beállítása privát felhőben](#set-up-new-active-directory-on-a-private-cloud)
+* [Új Active Directory beállítása egy AVS privát felhőben](#set-up-new-active-directory-on-an-avs-private-cloud)
 * [Active Directory beállítása az Azure-ban](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként
 
 Ha a helyszíni Active Directory egyszeri bejelentkezési identitás forrásaként szeretné beállítani, a következőkre lesz szüksége:
 
-* [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni adatközpontból a saját felhőbe.
+* [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni adatközpontból az AVS Private-felhőbe.
 * A helyszíni DNS-kiszolgáló IP-címe a vCenter és a platform Services-vezérlőhöz (PSC) lett hozzáadva.
 
 A Active Directory tartományának beállításakor használja az alábbi táblázatban szereplő információkat.
@@ -69,9 +69,9 @@ Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active
 > [!TIP]
 > A [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)találhat további információt az egyszeri bejelentkezési azonosítók forrásairól.
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Új Active Directory beállítása privát felhőben
+## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>Új Active Directory beállítása egy AVS privát felhőben
 
-Beállíthat egy új Active Directory tartományt a saját felhőben, és használhatja az egyszeri bejelentkezéshez használt identitási forrásként.  A Active Directory tartomány lehet egy meglévő Active Directory erdő része, vagy önálló erdőként is beállítható.
+Beállíthat egy új Active Directory tartományt az AVS Private-felhőben, és az egyszeri bejelentkezéshez használható identitási forrásként. A Active Directory tartomány lehet egy meglévő Active Directory erdő része, vagy önálló erdőként is beállítható.
 
 ### <a name="new-active-directory-forest-and-domain"></a>Új Active Directory erdő és tartomány
 
@@ -100,15 +100,15 @@ A Active Directory tartomány beállítása után az új Active Directoryhoz [ho
 
 ## <a name="set-up-active-directory-on-azure"></a>Active Directory beállítása az Azure-ban
 
-Az Azure-on futó Active Directory hasonló a helyileg futó Active Directoryhoz.  Ha az Azure-ban futó Active Directoryt egyszeri bejelentkezési vCenter szeretné beállítani, akkor a vCenter-kiszolgálónak és a PSC-nek hálózati kapcsolattal kell rendelkeznie az Azure Virtual Network, ahol Active Directory szolgáltatások futnak.  Ezt a kapcsolatot az [azure Virtual Network kapcsolattal](azure-expressroute-connection.md) is létrehozhatja az Azure Virtual Network ExpressRoute használatával, ahol Active Directory szolgáltatások futnak a CloudSimple.
+Az Azure-on futó Active Directory hasonló a helyileg futó Active Directoryhoz. Ha az Azure-ban futó Active Directoryt egyszeri bejelentkezési vCenter szeretné beállítani, akkor a vCenter-kiszolgálónak és a PSC-nek hálózati kapcsolattal kell rendelkeznie az Azure Virtual Network, ahol Active Directory szolgáltatások futnak. Ezt a kapcsolatot az [azure Virtual Network-kapcsolattal](azure-expressroute-connection.md) is létrehozhatja az Azure Virtual Network ExpressRoute használatával, ahol a Active Directory szolgáltatások az AVS Private Cloud-hoz futnak.
 
-A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Directory hozzáadása egyszeri bejelentkezési identitásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című témakör lépéseit, és adja hozzá az azonosító forrásként.  
+A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Directory hozzáadása egyszeri bejelentkezési identitásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című témakör lépéseit, és adja hozzá az azonosító forrásként. 
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Identity forrás hozzáadása a vCenter
 
-1. Adja meg a [jogosultságokat](escalate-private-cloud-privileges.md) a saját felhőben.
+1. A [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) az AVS Private Cloud-ra.
 
-2. Jelentkezzen be a vCenter a saját felhőbe.
+2. Jelentkezzen be az AVS Private Cloud-vCenter.
 
 3. Válassza a **kezdőlap > felügyelet**lehetőséget.
 

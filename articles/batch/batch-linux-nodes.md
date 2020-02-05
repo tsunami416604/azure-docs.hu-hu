@@ -3,8 +3,8 @@ title: Linux futtatása virtuális gépek számítási csomópontjain – Azure 
 description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a Azure Batch Linux rendszerű virtuális gépek készletén.
 services: batch
 documentationcenter: python
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 080310d5884ca82a3ff02ff0474777ea3a71997e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547608"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023701"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -238,11 +238,11 @@ A következő táblázat felsorolja azokat a Piactéri virtuálisgép-rendszerk�
 | MicrosoftWindowsServer | WindowsServer | 2012 – Datacenter – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 | legutóbbi | Batch. Node. Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
-| OpenLogic | CentOS | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
+| OpenLogic | CentOS | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
+| OpenLogic | CentOS – HPC | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
 | OpenLogic | CentOS – HPC | 7.3 | legutóbbi | Batch. Node. CentOS 7 |
 | OpenLogic | CentOS – HPC | 7.1 | legutóbbi | Batch. Node. CentOS 7 |
-| Oracle | Oracle – Linux | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
+| Oracle | Oracle – Linux | 7,4 | legutóbbi | Batch. Node. CentOS 7 |
 | SUSE | SLES – HPC | 12 – SP2 | legutóbbi | Batch. Node. openSUSE 42,1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Kapcsolódás Linux-csomópontokhoz SSH használatával

@@ -7,29 +7,33 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 6ddf0a5300caa5e202b16fc4f376056489cd9b61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d7050cfdae2c726a3a5bd44b4399792a400572a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984282"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025520"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a csatlakoztatott logisztikai alkalmazási sablonhoz
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ez az oktatóanyag bemutatja, hogyan kezdheti el az első lépéseket egy IoT Central **csatlakoztatott logisztikai** alkalmazás-sablon üzembe helyezésével. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
 
-Ebből az oktatóanyagból megtudhatja, hogyan, 
-* csatlakoztatott logisztikai alkalmazás létrehozása 
+Ebből az oktatóanyagból megtudhatja, hogyan,
+
+* csatlakoztatott logisztikai alkalmazás létrehozása
 * az alkalmazás végigvezeti 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * Az alkalmazás üzembe helyezéséhez nem szükségesek konkrét előfeltételek
 * Ajánlott az Azure-előfizetés használata, de anélkül is próbálkozhat
 
 ## <a name="create-connected-logistics-application-template"></a>Csatlakoztatott logisztikai alkalmazás sablonjának létrehozása
+
 Az alábbi lépések végrehajtásával hozhat létre alkalmazást
+
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
     > [!div class="mx-imgBorder"]
@@ -41,7 +45,7 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
    * **Alkalmazás neve**: az alapértelmezett javasolt nevet használhatja, vagy megadhatja a felhasználóbarát alkalmazás nevét.
    * **URL**: használhatja a javasolt alapértelmezett URL-címet, vagy megadhatja a felhasználóbarát egyedi emlékezetes URL-címét. Ezt követően az alapértelmezett beállítás akkor ajánlott, ha már rendelkezik Azure-előfizetéssel. Elkezdheti a 7 napos ingyenes próbaverzió díjszabását, és úgy is dönthet, hogy az ingyenes nyomvonal lejárta előtt bármikor standard díjszabási csomagra vált.
    * **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
-   * **Létrehozás** : válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
+   * **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
     > [!div class="mx-imgBorder"]
     > ![csatlakoztatott logisztikai irányítópult](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
@@ -49,11 +53,11 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
     > [!div class="mx-imgBorder"]
     > ![kapcsolódó logisztikai számlázási adatok](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
-## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti 
+## <a name="walk-through-the-application"></a>az alkalmazás végigvezeti 
 
 ## <a name="dashboard"></a>Irányítópult
 
-Az alkalmazás sablonjának sikeres üzembe helyezését követően az alapértelmezett irányítópult egy kapcsolódó logisztikai szolgáltatói portál. A Northwind Trader egy fiktív logisztikai szolgáltató, amely az óceánban és a szárazföldön található áruszállítási flottát kezeli. Ezen az irányítópulton két különböző átjáró jelenik meg, amelyek a telemetria kapcsolatos információkat biztosítanak a kapcsolódó parancsokkal, feladatokkal és a végrehajtható műveletekkel együtt. Ez az irányítópult előre konfigurálva van a kritikus logisztikai eszközök működési tevékenységének bemutatására.
+Az alkalmazás sablonjának sikeres üzembe helyezését követően az alapértelmezett irányítópult egy kapcsolódó logisztikai szolgáltatói portál. A Northwind Trader egy fiktív logisztikai szolgáltató, amely az óceánban és a szárazföldön található áruszállítási flottát kezeli. Ezen az irányítópulton két különböző átjáró jelenik meg, amelyek a telemetria, valamint a hozzájuk tartozó parancsokat, feladatokat és műveleteket is biztosítják. Ez az irányítópult előre konfigurálva van a kritikus logisztikai eszközök működési tevékenységének bemutatására.
 Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz felügyeleti művelet között. 
    * A tehergépkocsi-szállítás logisztikai útvonala és a tengeri szállítás helye részletesen az összes multimodális szállítás
    * Az átjáró állapotának megtekintése & vonatkozó információk 
@@ -62,7 +66,7 @@ Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz fe
 > ![csatlakoztatott logisztikai irányítópult](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png)
 
    * Egyszerűen nyomon követheti az átjárók, az aktív és az ismeretlen címkék teljes számát.
-   * Elvégezheti az Eszközkezelő műveleteit, például a belső vezérlőprogram frissítését, az érzékelő letiltását, az érzékelő engedélyezését, az érzékelő küszöbértékének frissítését, az telemetria-intervallumok frissítését, & Update Service
+   * Megteheti az Eszközkezelő műveleteit, például a belső vezérlőprogram frissítését, az érzékelő letiltását, az érzékelő engedélyezését, az érzékelő küszöbértékének frissítését, a frissítési telemetria intervallumait, & Update Service-szerződések
    * Eszköz akkumulátor-felhasználásának megtekintése
 
 > [!div class="mx-imgBorder"]
@@ -72,7 +76,7 @@ Az irányítópult logikailag oszlik meg két különböző átjáró-eszköz fe
 
 Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képességének modelljét. A képesség modell két különböző interfész átjáró telemetria van strukturálva **& tulajdonság** -és **átjáró-parancsok**
 
-**Átjáró telemetria & tulajdonsága** – ez a felület az érzékelőkkel, a helyekkel és az eszközökkel kapcsolatos összes telemetria, valamint az eszköz Twin tulajdonságának funkcióit jelöli, például az érzékelő küszöbértékeit & frissítési időközökben.
+**Átjáró telemetria & tulajdonsága** – ez a felület az érzékelőkkel, a hellyel és az eszköz adataival kapcsolatos összes telemetria, valamint az eszköz Twin tulajdonságának funkcióit jelöli, például az érzékelő küszöbértékeit & frissítési időközökben.
 
 > [!div class="mx-imgBorder"]
 > ![csatlakoztatott logisztikai irányítópult](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png)
@@ -85,9 +89,9 @@ Kattintson az eszközök sablonjai lapra, és látni fogja az átjáró képess�
 ## <a name="rules"></a>Szabályok
 Válassza a szabályok lapot az alkalmazás sablonjában található két különböző szabály megjelenítéséhez. Ezek a szabályok úgy vannak konfigurálva, hogy e-mail-értesítéseket küldjön a kezelőknek további vizsgálatokra.
  
-**Átjáró-lopás riasztása**: ezt a szabályt akkor indítja el a rendszer, ha az érzékelők váratlan fényt észlelnek a menet közben. A potenciális lopás kivizsgálásához az operátoroknak MIHAMARABB értesítést kell kapniuk.
+**Átjáró-lopás riasztása**: ezt a szabályt akkor indítja el a rendszer, ha az érzékelők váratlan fényt észlelnek az utazás közben. A potenciális lopás kivizsgálásához az operátoroknak MIHAMARABB értesítést kell kapniuk.
  
-Nem **válaszoló átjáró**: Ez a szabály akkor aktiválódik, ha az átjáró hosszabb ideig nem jelent a felhőnek. Az átjáró nem válaszol az alacsony töltöttségi mód, a kapcsolat elvesztése, az Eszközállapot miatt.
+Nem **válaszoló átjáró**: Ez a szabály akkor aktiválódik, ha az átjáró hosszabb ideig nem jelent jelentést a felhőnek. Az átjáró nem válaszol, mert kevés az akkumulátor mód, a kapcsolat elvesztése, az Eszközállapot.
 
 > [!div class="mx-imgBorder"]
 > ![csatlakoztatott logisztikai irányítópult](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
@@ -98,10 +102,10 @@ Válassza a feladatok fület az alkalmazás sablonjának részeként öt külön
 > [!div class="mx-imgBorder"]
 > ![csatlakoztatott logisztikai irányítópult](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
 
-A feladatok szolgáltatást a megoldásokra kiterjedő műveletek végrehajtásához használhatja. Itt a feladatok az eszköz parancsai & a Twin képességgel olyan feladatokat végezhetnek el, mint például bizonyos érzékelők letiltása az összes átjárón, vagy az érzékelő küszöbértékének módosítása a szállítás módjától és útvonaltól függően. 
+A feladatok szolgáltatással az egész megoldásra kiterjedő műveleteket végezhet. Itt a feladatok az eszköz parancsai és a Twin képesség használatával olyan feladatokat végezhetnek el, mint például bizonyos érzékelők letiltása az összes átjárón, vagy az érzékelő küszöbértékének módosítása a szállítás módjától és útvonaltól függően. 
    * Ez egy standard művelet, amellyel letilthatja a sokk-érzékelőket az óceáni szállítás során, hogy megőrizze az akkumulátort, vagy csökkentse a hőmérséklet küszöbértékét a hideg láncú szállítás során 
  
-   * A feladatok lehetővé teszik az olyan rendszerszintű műveletek végrehajtását, mint például a belső vezérlőprogram frissítése az átjárón vagy a szolgáltatási szerződés frissítése, hogy naprakész maradjon a karbantartási tevékenységekben.
+   * A feladatok lehetővé teszik a rendszerszintű műveletek, például a belső vezérlőprogram frissítését az átjárón vagy a szolgáltatási szerződés frissítését, hogy naprakészek maradjanak a karbantartási tevékenységekben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját az **adminisztráció** > **alkalmazás beállításai** között, és kattintson a **Törlés**gombra.
@@ -112,4 +116,4 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [csatlakoztatott logisztikai koncepcióról](./architecture-connected-logistics-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
-* További információ az [IoT Central áttekintése](../preview/overview-iot-central.md)
+* További információ az [IoT Central áttekintése](../core/overview-iot-central.md)

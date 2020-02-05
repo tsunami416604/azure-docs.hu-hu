@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cffa571028dac192e8b8806ee9ec932cf89eb1fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c4b13c56a68205195bd5ad4b696d9e01786a8dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498787"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016544"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>A vízminőség-monitorozás referenciaarchitektúrája 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 A vízminőség-figyelési megoldások az **Azure IoT Central app sablonnal** is felhasználhatók a kick starter IoT alkalmazásként. Ez a cikk magas szintű hivatkozási architektúra-útmutatást nyújt a végpontok közötti megoldás létrehozásához. 
 
@@ -44,14 +44,14 @@ Miután az intelligens vízeszközeit IoT Centralhoz csatlakoztatotta, az eszkö
 ## <a name="extensibility-and-integrations"></a>Bővíthetőség és integrációk 
 Kiterjesztheti a IoT alkalmazást IoT Central és opcionálisan:
 * a IoT-adatok átalakítása és integrálása speciális elemzésekhez, például a gépi tanulási modellek IoT Central alkalmazás folyamatos exportálásával
-* munkafolyamatok automatizálása más rendszerekben a műveletek Microsoft Flow vagy webhookok használatával történő aktiválásával IoT Central alkalmazásból
+* a munkafolyamatok automatizálása más rendszerekben a műveletek Microsoft Flow vagy webhookok használatával történő aktiválásával IoT Central alkalmazásból
 * a IoT-alkalmazás programozott módon való elérése IoT Central API-kon keresztül IoT Central
 
 ## <a name="business-applications"></a>Üzleti alkalmazások 
 A IoT-adatforrások számos üzleti alkalmazást használhatnak a víz-eszközön belül. Ha szeretné megismerni, hogyan csatlakoztatható a IoT Central a vízminőség-figyelési alkalmazáshoz a Field Services használatával, kövesse a következő cikket: a [Dynamics 365 Field Services integrálása](./how-to-configure-connected-field-services.md). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [hozhat létre vízminőség-figyelési](./tutorial-water-quality-monitoring.md) IoT Central alkalmazást
 * További információ a [IoT Central Government-sablonokról](./overview-iot-central-government.md)
 * További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)

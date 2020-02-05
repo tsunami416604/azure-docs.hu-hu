@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893136"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025809"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) adatainak másolása és átalakítása Azure Data Factory használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893136"
 > * [1-es verzió](v1/data-factory-azure-documentdb-connector.md)
 > * [Aktuális verzió](connector-azure-cosmos-db.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához a és a rendszerbe Azure Cosmos DB (SQL API), valamint az adatáramlás használata az adatok átalakításához a Azure Cosmos DBban (SQL API). A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
+Ez a cikk azt ismerteti, hogyan használhatja az Azure Data Factory másolási tevékenységét, amellyel adatokat másolhat az Azure Cosmos DB-be (SQL API) és onnan ki, és hogyan használhatja az Adatfolyamot az adatok átalakítására az Azure Cosmos DB-ben (SQL API). A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
 
 >[!NOTE]
 >Ez az összekötő csak Cosmos DB SQL API-t támogatja. A MongoDB API-hoz tekintse [meg a MONGODB API](connector-azure-cosmos-db-mongodb-api.md)-hoz készült összekötőjét a következő témakörben: Azure Cosmos db. Más API-típusok jelenleg nem támogatottak.
@@ -268,6 +268,18 @@ A Azure Cosmos DB vonatkozó beállítások a forrás-átalakítás **forrás be
 **Átviteli sebesség:** Adja meg a CosmosDB-gyűjteményre alkalmazni kívánt RUs számának nem kötelező értékét az olvasási művelet során az adott adatfolyam minden egyes végrehajtásához. Minimális értéke 400.
 
 **Előnyben részesített régiók:** Válassza ki a folyamathoz használni kívánt olvasási régiókat.
+
+#### <a name="json-settings"></a>JSON-beállítások
+
+**Egyetlen dokumentum:** Akkor válassza ezt a lehetőséget, ha az ADF a teljes fájlt egyetlen JSON-doc-ként kezeli.
+
+Nem **jegyzett oszlopnevek:** Akkor válassza ezt a lehetőséget, ha a JSON-beli oszlopnevek nem idézőjelként szerepelnek.
+
+**Megjegyzésekkel rendelkezik:** Akkor használja ezt a beállítást, ha a JSON-dokumentumok megjegyzésekkel rendelkeznek az adataiban.
+
+**Egyszer idézett:** Ezt akkor kell kiválasztani, ha a dokumentumban lévő oszlopok és értékek idézőjelek között vannak megadva.
+
+**Megmenekült fordított perjel:** Ha fordított perjeleket használ a JSON-beli Escape-karakterekhez, válassza ezt a lehetőséget.
 
 ### <a name="sink-transformation"></a>Fogadó transzformáció
 

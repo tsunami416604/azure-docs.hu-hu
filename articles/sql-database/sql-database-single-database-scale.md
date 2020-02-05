@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845862"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023140"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
@@ -63,7 +63,7 @@ A szolgáltatási réteg módosításának becsült késése vagy egy önálló 
 
 A szolgáltatási szintek változási vagy számítási átméretezési művelete megszakítható.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 Az adatbázis-Áttekintés panelen navigáljon az **értesítésekhez** , és kattintson a csempére, amely azt jelzi, hogy folyamatban van egy művelet:
 
@@ -93,8 +93,8 @@ else {
 - Ha magasabb szolgáltatási szintre vagy számítási méretre frissít, az adatbázis maximális mérete nem növekszik, ha explicit módon nagyobb méretet (MaxSize) ad meg.
 - Egy adatbázis visszalépéséhez az adatbázis felhasznált területének kisebbnek kell lennie, mint a cél szolgáltatási csomag maximálisan megengedett mérete és a számítási méret.
 - Ha a **prémium** szintről a **standard** szintre vált, a rendszer extra tárterületet számít fel, ha mindkettő (1) az adatbázis maximális mérete támogatott a célként megadott számítási méretnél, és (2) a maximális méret meghaladja a cél számítási méretének belefoglalt tárolási mennyiségét. Ha például egy 500 GB-os maximális mérettel rendelkező P1-adatbázis az S3-as verzióra van lefoglalva, akkor a rendszer extra tárterületet biztosít, mivel az S3 támogatja a maximális 1 TB-os méretet, és a benne foglalt tárolási mennyiség csak 250 GB. Így a további tárterület mérete 500 GB – 250 GB = 250 GB. Az extra tárterület díjszabását lásd: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/). Ha a felhasznált terület tényleges mennyisége kisebb, mint a foglalt tárterület, akkor ez az extra díj elkerülhető, ha az adatbázis maximális méretét a benne foglalt mennyiségre csökkenti.
-- Ha a [geo-replikálást](sql-database-geo-replication-portal.md) engedélyező adatbázist frissít, frissítse a másodlagos adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre, mielőtt frissítené az elsődleges adatbázist (általános útmutató a legjobb teljesítményhez). Ha más verzióra frissít, először a másodlagos adatbázist kell frissíteni.
-- Ha a [geo-replikálást](sql-database-geo-replication-portal.md) engedélyező adatbázis visszaminősítése engedélyezve van, az elsődleges adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre kell visszaminősíteni a másodlagos adatbázis visszaminősítése előtt (általános útmutató a legjobb teljesítményhez). Egy másik kiadásra való visszalépéskor először vissza kell állítani az elsődleges adatbázist.
+- Ha a [geo-replikálást](sql-database-geo-replication-portal.md) engedélyező adatbázist frissít, frissítse a másodlagos adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre, mielőtt frissítené az elsődleges adatbázist (általános útmutató a legjobb teljesítményhez). Egy másik kiadásra való frissítéskor követelmény, hogy a másodlagos adatbázist először frissíti a rendszer.
+- Ha a [geo-replikálást](sql-database-geo-replication-portal.md) engedélyező adatbázis visszaminősítése engedélyezve van, az elsődleges adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre kell visszaminősíteni a másodlagos adatbázis visszaminősítése előtt (általános útmutató a legjobb teljesítményhez). Egy másik kiadásra való visszalépéskor követelmény, hogy először az elsődleges adatbázist kell visszaértékelni.
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatási szintek esetében. Ha az **alapszintű szintre van** leértékelve, a biztonsági mentés alacsonyabb megőrzési időszakot vesz fel. Lásd: [Azure SQL Database biztonsági mentések](sql-database-automated-backups.md).
 - Az adatbázis új tulajdonságai csak akkor lesznek alkalmazva, ha a módosítások befejeződtek.
 

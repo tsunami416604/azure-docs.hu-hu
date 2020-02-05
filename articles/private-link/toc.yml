@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure privát kapcsolat?
       href: private-link-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Privát végpont létrehozása
       items:
@@ -16,6 +16,8 @@
           href: create-private-endpoint-powershell.md
     - name: Privát kapcsolati szolgáltatás létrehozása
       items:
+        - name: Azure Portal
+          href: create-private-link-service-portal.md
         - name: Azure PowerShell
           href: create-private-link-service-powershell.md
         - name: Azure CLI

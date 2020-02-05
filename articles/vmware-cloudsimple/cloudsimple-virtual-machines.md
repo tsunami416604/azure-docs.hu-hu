@@ -1,7 +1,7 @@
 ---
-title: Virtuális gépek – áttekintés
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Ismerje meg a CloudSimple virtuális gépeket és azok előnyeit.
+title: Azure VMware Solutions (AVS) – Virtual Machines – áttekintés
+description: Ismerkedjen meg az AVS Virtual Machines szolgáltatással és azok előnyeivel.
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,28 +9,28 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e6cc6d51e37cea98cc553a236295311d21f595a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372789"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024908"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple Virtual Machines – áttekintés
+# <a name="avs-virtual-machines-overview"></a>AVS Virtual Machines – áttekintés
 
-A CloudSimple lehetővé teszi a VMware virtuális gépek (VM-EK) kezelését a Azure Portal.  A vSphere-fürtről származó fürt vagy erőforráskészlet az Azure-on keresztül felügyelhető az előfizetéshez való hozzárendeléssel.
+Az AVS lehetővé teszi a VMware virtuális gépek (VM-EK) kezelését a Azure Portal. A vSphere-fürtről származó fürt vagy erőforráskészlet az Azure-on keresztül felügyelhető az előfizetéshez való hozzárendeléssel.
 
-Ha CloudSimple virtuális gépet szeretne létrehozni az Azure-ból, egy virtuálisgép-sablonnak léteznie kell a saját Felhőbeli vCenter.  A sablon az operációs rendszer és az alkalmazások testreszabására szolgál.  A sablon virtuális gépe megerősíthető, hogy megfeleljen a vállalati biztonsági házirendeknek.  A sablon segítségével virtuális gépeket hozhat létre, majd önkiszolgáló modell használatával felhasználhatja azokat a Azure Portal.
+Az Azure-ból származó AVS virtuális gép létrehozásához egy virtuálisgép-sablonnak léteznie kell az AVS Private Cloud vCenter. A sablon az operációs rendszer és az alkalmazások testreszabására szolgál. A sablon virtuális gépe megerősíthető, hogy megfeleljen a vállalati biztonsági házirendeknek. A sablon segítségével virtuális gépeket hozhat létre, majd önkiszolgáló modell használatával felhasználhatja azokat a Azure Portal.
 
 ## <a name="benefits"></a>Előnyök
 
-A Azure Portal CloudSimple virtuális gépei olyan önkiszolgáló mechanizmust biztosítanak, amellyel a felhasználók VMware virtuális gépeket hozhatnak létre és kezelhetnek.
+A Azure Portal rendszerhez készült AVS Virtual Machines önkiszolgáló mechanizmust biztosít a felhasználók számára a VMware virtuális gépek létrehozásához és kezeléséhez.
 
-* CloudSimple virtuális gép létrehozása a saját Felhőbeli vCenter
+* AVS-alapú virtuális gép létrehozása az AVS Private Cloud vCenter
 * Virtuális gép tulajdonságainak kezelése
   * Lemezek hozzáadása/eltávolítása
   * Hálózati adapterek hozzáadása/eltávolítása
-* A CloudSimple virtuális gép energiagazdálkodási műveletei
+* Az AVS-alapú virtuális gép energiagazdálkodási műveletei
   * Bekapcsolás és kikapcsolás
   * Virtuális gép alaphelyzetbe állítása
 * Virtuális gép törlése

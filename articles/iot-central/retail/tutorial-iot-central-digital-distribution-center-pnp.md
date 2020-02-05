@@ -7,22 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984095"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025486"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ez az oktatóanyag bemutatja, hogyan kezdheti el egy IoT Central **Digital Distribution Center** -alkalmazás sablonjának üzembe helyezését. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
 
 Ebből az oktatóanyagból megtudhatja, hogyan, 
 * Digital Distribution Center-alkalmazás létrehozása 
-* Az alkalmazás végigvezeti 
+* az alkalmazás végigvezeti 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Az alkalmazás üzembe helyezéséhez nem szükségesek konkrét előfeltételek
@@ -116,4 +116,4 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 ## <a name="next-steps"></a>Következő lépések
 * További információ a Digital Distribution Center Solution Architecture [Digital Distribution Center koncepcióról](./architecture-digital-distribution-center-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
-* További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

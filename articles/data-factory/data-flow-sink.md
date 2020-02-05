@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440260"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020046"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -47,11 +47,17 @@ Miután hozzáadta a fogadót, konfigurálja a fogadó **lapon.** Itt kiválaszt
 
 **Séma ellenőrzése:** Ha a séma ellenőrzése beállítás be van jelölve, az adatfolyam sikertelen lesz, ha az adatkészlet meghatározott sémájában lévő bármelyik oszlop nem található.
 
-## <a name="field-mapping"></a>Mezőleképezés
+## <a name="field-mapping"></a>Mező-hozzárendelés
 
 A kiválasztott átalakításhoz hasonlóan a fogadó **leképezés** lapján eldöntheti, hogy a bejövő oszlopok milyen módon lesznek írva. Alapértelmezés szerint a rendszer az összes bemeneti oszlopot leképezi, beleértve az elsodródott oszlopokat is. Ez az úgynevezett **automatikus leképezés**.
 
 Ha kikapcsolja az automatikus leképezést, lehetőség van a rögzített oszlop alapú hozzárendelések vagy a szabály alapú leképezések hozzáadására. A szabályokon alapuló leképezések lehetővé teszik, hogy a mintázat egyezésének megfelelő kifejezéseket írjon a logikai és fizikai oszlopnevek. A szabályokon alapuló leképezéssel kapcsolatos további információkért lásd: az [adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Egyéni fogadó rendelés
+
+Alapértelmezés szerint az determinált sorrendben több mosogatóba történik az adatgyűjtés. A végrehajtó motor párhuzamosan fogja írni az Adatátalakítási logikát, és az egyes futtatások esetében a fogadó sorrend eltérő lehet. A fogadó rendezésének megadásához és pontos elfogadásához engedélyezze az **Egyéni fogadó megrendelését** az adatfolyam Általános lapján. Ha ez a beállítás engedélyezve van, a mosogatók egymás után, növekvő sorrendben lesznek írva.
+
+![Egyéni fogadó rendelés](media/data-flow/custom-sink-ordering.png "Egyéni fogadó rendelés")
 
 ## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 

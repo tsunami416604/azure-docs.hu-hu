@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934612"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023293"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure digitális ikrek – dokumentáció
 
@@ -93,11 +93,11 @@ A példák olyan hibakódokat is tartalmaznak, amelyek segítenek a hibakeresés
 ## <a name="swagger-oauth-20-authorization"></a>Hencegő OAuth 2,0-engedélyezés
 
 > [!NOTE]
-> * Az Azure Digital Twins-erőforrást létrehozó felhasználói fióknak van egy hely-rendszergazdai szerepkör-hozzárendelése, és további szerepkör-hozzárendeléseket is létrehozhat más felhasználók számára. Az ilyen felhasználók és szerepköreik az API-k meghívására is engedélyezhetők.
+> * Az Azure Digital Twins-erőforrást létrehozó felhasználói fióknak van egy hely-rendszergazdai szerepkör-hozzárendelése, és további szerepkör-hozzárendeléseket is létrehozhat más felhasználók számára. A felhasználók és a hozzájuk tartozó szerepkörök engedélyt kaphatnak az API-k meghívására.
 
-1. Kövesse az [ebben](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) a rövid útmutatóban található lépéseket egy Azure ad-alkalmazás létrehozásához és konfigurálásához. Azt is megteheti, hogy újból felhasznál egy meglévő alkalmazás-regisztrációt.
+1. [A rövid](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) útmutató lépéseit követve hozzon létre és konfiguráljon egy Azure Active Directory alkalmazást. Azt is megteheti, hogy újból felhasznál egy meglévő alkalmazás-regisztrációt.
 
-1. Adja hozzá a következő **átirányítási URL-címet** az Azure ad-alkalmazás regisztrálásához:
+1. Adja hozzá a következő **átirányítási URI** -t a Azure Active Directory alkalmazás regisztrálásához:
 
     [a HRE-ben lévő hencegő átirányítási URL-cím ![](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ A példák olyan hibakódokat is tartalmaznak, amelyek segítenek a hibakeresés
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | A felügyeleti REST API dokumentációjának URL-címe megtalálható a portálon  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Másolja az Azure AD-alkalmazás **ügyfél-azonosítóját** .
+1. Jelölje be az **implicit engedélyezési** > **hozzáférési tokenek** jelölőnégyzetet a OAuth 2,0 implicit engedélyezési folyamat használatának engedélyezéséhez. Válassza a **Konfigurálás**, majd a **Mentés**lehetőséget.
+
+1. Másolja a Azure Active Directory-alkalmazás **ügyfél-azonosítóját** .
 
 A Azure Active Directory regisztrációjának befejezése után:
 

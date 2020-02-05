@@ -1,86 +1,95 @@
 ---
 title: Az eszköz adatai elemzése az Azure IoT Central alkalmazásban | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan elemezheti az eszköz adatait az Azure IoT Central-alkalmazásban lekérdezések és vizualizációk használatával.
-author: lmasieri
-ms.author: lmasieri
-ms.date: 06/09/2019
+description: Elemezze az eszköz adatait az Azure IoT Central alkalmazásban.
+author: ankitgup
+ms.author: ankitgup
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: a467e0e6e8967cf963ad099f83de6718330aa43f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+manager: abjork
+ms.openlocfilehash: 7627421317458eb0ff9637b3497df11dacfddbff
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827981"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023854"
 ---
-# <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Az eszköz adatai elemzése az elemzések használatával
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Az eszköz-adatelemzés használata az eszközökön
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Az Azure IoT Central gazdag elemzési funkciókat kínál az eszközök nagy mennyiségű adatainak megismeréséhez. Első lépésként látogasson el az **elemzésre** a bal oldali ablaktáblán.
+
+
+Az Azure IoT Central gazdag elemzési funkciókat kínál a korábbi trendek elemzéséhez és az eszközök különböző telemetriáiról összekapcsolásához. Első lépésként látogasson el az **elemzésre** a bal oldali ablaktáblán.
+
+## <a name="understanding-the-analytics-ui"></a>Az elemzési felhasználói felület ismertetése
+Az elemzési felhasználói felület három fő összetevőből áll:
+- **Adatkonfiguráció panel:** A konfiguráció panelen válassza ki azt az erőforráscsoportot, amelynek az adatelemzését el szeretné elemezni. Ezután válassza ki az elemezni kívánt telemetria, és válassza ki az összesítési módszert az egyes telemetria. A **felosztás** a vezérléssel segít az adatcsoportosításban az eszköz tulajdonságait dimenzióként használva.
+
+- **Idő vezérlőelem:** Az idővezérlő használatával kiválaszthatja az időtartamot, amelynek az adatelemzését el szeretné elemezni. Az időtartomány kijelöléséhez húzza az idő csúszkát az idő végére. Az idővezérlő is tartalmaz egy **intervallum-méretezési** csúszkát, amely szabályozza a gyűjtőt vagy az adatösszesítéshez használt intervallum méretét. 
+
+- **Diagram vezérlőelem:** A diagram vezérlőelem soronként jeleníti meg az adatdiagramot. Az adott vonalak láthatóságát a diagram jelmagyarázatával is átválthatja. 
+
+
+  ![Az elemzési felhasználói felület áttekintése](media/howto-create-analytics/analyticsui.png)
+
 
 ## <a name="querying-your-data"></a>Az adatai lekérdezése
 
-Ki kell választania egy **eszközt**, hozzá kell adnia egy **szűrőt** (nem kötelező), majd ki kell választania egy **időszakot** a kezdéshez. Ha elkészült, válassza az **eredmények megjelenítése** lehetőséget az adatai megjelenítésének megkezdéséhez.
+Először ki kell választania egy telemetria, és az elemezni kívánt **eszközöket**. Ha elkészült, válassza az **elemzés** lehetőséget az adatai megjelenítésének megkezdéséhez.
 
-* **Eszközök készletei:** Az [eszközbeállítások](howto-use-device-sets.md) az eszközök felhasználó által meghatározott csoportja. Például az összes hűtőszekrény a Oaklandben, vagy az összes rev 2,0 szélturbinák.
+- **Eszközcsoport:** Az [eszközcsoport](tutorial-use-device-groups.md) egy felhasználó által definiált eszköz. Például az összes hűtőszekrény a Oaklandben, vagy az összes 2,0-es szélturbinák.
 
-* **Szűrők:** A kereséshez szűrőket is hozzáadhat az adataihoz. Egyszerre legfeljebb 10 szűrőt adhat hozzá. Például a Oaklandban található összes hűtőszekrényben megtalálhatja, hogy a hőmérséklet a 60 fok fölé esik.
-* Időtartam **:** Alapértelmezés szerint az elmúlt 10 percből fogjuk beolvasni az adatait. Ezt az értéket módosíthatja az előre meghatározott időtartományok egyikére, vagy kijelölhet egy egyéni időszakot is.
+- **Telemetria:** Válassza ki az elemezni és felderíteni kívánt telemetria. Egyszerre több telemetriáiról is kiválaszthat. Az alapértelmezett összesítési módszer az átlag értékre van állítva, amely numerikus és darabszám típusú. A numerikus adattípusok támogatott összesítési módszerei az átlag, a maximum, a minimum, a darabszám és a összeg.  A karakterlánc adattípusának támogatott összesítési módszerei a darabszám.
 
-  ![Elemzési lekérdezés](media/howto-create-analytics/analytics-query.png)
+- **Felosztás:** A "Split by" vezérlő segít az adatcsoportosításban az eszköz tulajdonságait dimenzióként használva. Az eszköz és a felhő tulajdonságainak értékei a telemetria és az eszköz által történő küldéskor is összekapcsolhatók. Ha a felhő vagy az eszköz tulajdonság frissítve lett, a telemetria a diagramon különböző értékek szerint csoportosítva jelenik meg.
 
-## <a name="visualizing-your-data"></a>Az adataik megjelenítése
-
-Miután lekérdezte az adatait, megkezdheti a megjelenítését. Megtekintheti/elrejtheti a méréseket, módosíthatja az adatösszesítési módot, és az adatokat az eszközök különböző tulajdonságai alapján további módon feloszthatja.  
-
-* **Felosztás:** Az adatfelosztás az eszköz tulajdonságai alapján további részletezést tesz lehetővé az adataiban. Például megoszthatja az eredményeket az eszköz azonosítója vagy helye alapján.
-
-* **Mérések:** Kiválaszthatja, hogy egyszerre legfeljebb 10 különböző telemetria jelenjen meg, amelyeket az eszközei jelentettek. A mérések olyan dolgok, mint például a hőmérséklet és a páratartalom.
-
-* **Összesítés:** Alapértelmezés szerint az adatokat az átlag alapján összesítjük, de úgy is dönthet, hogy az adatösszesítést úgy változtatja meg, hogy az megfeleljen az igényeinek.
-
-   ![Elemzési vizualizáció felosztási alapja](media/howto-create-analytics/analytics-splitby.png)
+    > [!TIP]
+    > Ha külön szeretné megtekinteni az egyes eszközökre vonatkozó adatmegjelenítést, válassza az eszköz azonosítója elemet a "felosztás" vezérlőelemben.
 
 ## <a name="interacting-with-your-data"></a>Interakció az adataival
 
-A lekérdezés eredményeinek többféleképpen is módosíthatók, hogy megfeleljenek a vizualizáció igényeinek. A diagram nézet és a rács nézet, a nagyítás és a kicsinyítés, az adathalmaz frissítése és a sorok megjelenítésének módosítása is megadható.
+Miután lekérdezte az adatait, megkezdheti a megjelenítését a vonalas diagramon. Megjelenítheti/elrejtheti a telemetria, módosíthatja az időtartamot, megtekintheti a telemetria egy adatrácsban.
 
-* **Rács megjelenítése:** Az eredmények táblázatos formában érhetők el, így megtekintheti az egyes adatpontok adott értékét. Ez a nézet a kisegítő lehetőségeket is kielégíti.
-* **Diagram megjelenítése:** Az eredmények sor formátumban jelennek meg, így könnyebben azonosíthatók a felfelé vagy lefelé irányuló trendek és rendellenességek.
+- **Időszerkesztő panel:** Alapértelmezés szerint az elmúlt egy nap adatait fogjuk beolvasni. Az idő hosszának megváltoztatásához húzza az időcsúszka végét. A naptár vezérlővel is kiválaszthatja az előre meghatározott időgyűjtők egyikét, vagy kiválaszthat egy egyéni időtartományt. Az idővezérlő is tartalmaz egy **intervallum-méretezési** csúszkát, amely szabályozza a gyűjtőt vagy az adatösszesítéshez használt intervallum méretét.
 
-  ![Az elemzések rács nézetének megjelenítése](media/howto-create-analytics/analytics-showgrid.png)
+    ![Időszerkesztő](media/howto-create-analytics/timeeditorpanel.png)
 
-A nagyítás lehetővé teszi az Ön adatait. Ha olyan időszakot talál, amelyet szeretne összpontosítani az eredményhalmazban, használja a kurzort a nagyítani kívánt terület nagyításához, és a rendelkezésre álló vezérlők használatával hajtsa végre az alábbi műveletek egyikét:
+    - **Belső dátumtartomány csúszka eszköz**: a két végpont vezérlőelem használatával húzza őket a kívánt időtartományra. Ezt a belső dátumtartományt a külső dátumtartomány csúszka vezérlőeleme korlátozza.
+    
+   
+    - **Külső dátumtartomány csúszka vezérlő**: a végpont vezérlőelemekkel kiválaszthatja a külső dátumtartományt, amely a belső dátumtartomány vezérlőelemhez lesz elérhető.
 
-* **Nagyítás:** Miután kiválasztotta az időszakot, a nagyítás engedélyezve van, és lehetővé teszi az adatnagyítást.
-* **Kicsinyítés:** Ez a vezérlő lehetővé teszi, hogy az utolsó nagyításból egy szintet nagyítson. Ha például háromszor nagyítja fel az adatait, a kicsinyítéskor egy lépéssel egyszerre egy lépést is végrehajthat.
-* **Nagyítás alaphelyzetbe állítása:** Miután elvégezte a különböző nagyítási szinteket, a nagyítás-vezérlés lehetőséggel visszatérhet az eredeti eredményhalmaz-készlethez.
+    - **Dátumtartomány gombjának növelése és csökkentése**: növelje vagy csökkentse az időtartományt úgy, hogy kijelöli a kívánt időszakra vonatkozó gombot.
 
-  ![Az adatok nagyításának elvégzése](media/howto-create-analytics/analytics-zoom.png)
+    - **Intervallum-méret csúszka**: ezzel a beállítással az adott időkereten belül és kívül is nagyíthatja az intervallumokat. Ez a művelet a nagy szeletek közötti mozgás pontosabb szabályozását teszi lehetővé. Használhatja az adatai részletes, nagy felbontású nézeteinek megtekintésére is, akár ezredmásodpercig is. A csúszka alapértelmezett kiindulási pontja a kiválasztott adatok legoptimálisabb nézete, amely egyensúlyt teremt a felbontás, a lekérdezés sebessége és a részletesség szempontjából.
+    
+    - **Dátumtartomány-választó**: ezzel a webes vezérlővel egyszerűen kiválaszthatja a kívánt dátum-és időtartományokat. A vezérlőelemet a különböző időzónák közötti váltásra is használhatja. Miután elvégezte a módosítások alkalmazását az aktuális munkaterületre, válassza a mentés lehetőséget.
 
-Az igényeinek megfelelően módosíthatja a vonal stílusát. Négy lehetőség közül választhat:
+    > [!TIP]
+    > Az intervallum méretét a rendszer dinamikusan határozza meg a kijelölt időtartomány alapján. A kisebb időkeretek lehetővé teszik, hogy az adatokat nagyon részletes időközönként, néhány másodpercen belül összesítse.
 
-* **Vonal:** Az egyes adatpontok közötti egyenes vonal.
-* **Zökkenőmentes:** Az egyes pontok közötti görbe vonal.
-* **Lépés:** A diagram egyes pontjai közötti vonal egy lépés.
-* **Scatter:** Az összes pont ábrázolása a diagramon sorok nélkül történik.
 
-  ![Az elemzésekben elérhető különböző típusú sorok](media/howto-create-analytics/analytics-linetypes.png)
+- **Diagram jelmagyarázata:** A diagram jelmagyarázata a diagram kiválasztott telemetria jeleníti meg. Az egérmutatót a jelmagyarázat minden eleme fölé helyezheti, hogy az a diagramon fókuszba kerüljön. A "Split by" használatakor a telemetria a kiválasztott dimenzió megfelelő értékei szerint csoportosítja. A csoport nevére kattintva válthat az egyes telemetria vagy a teljes csoport láthatósága is.  
 
-Végül a következő három mód egyikének kiválasztásával rendezheti az adatait az Y tengelyen:
 
-* **Halmozott:** Minden méréshez egy gráf van halmozva, és mindegyik gráf saját Y tengellyel rendelkezik. A halmozott gráfok akkor hasznosak, ha több mérés van kiválasztva, és a mérések eltérő nézetét szeretnék használni.
-* Nem **halmozott:** Minden mérték gráfja egy Y tengelyre van rajzolva, az Y tengely értékei azonban a Kiemelt mérték alapján változnak. A nem halmozott gráfok akkor hasznosak, ha több mértéket szeretne átfedésben, és az adott időszakra vonatkozó mintákat szeretné látni.
-* **Megosztott Y tengely:** Az összes gráf ugyanazt az Y tengelyt használja, és a tengely értékei nem változnak. A megosztott Y tengelyes diagramok akkor hasznosak, ha egyetlen mértéket szeretne megtekinteni az adatdarabolás során.
+- **Y tengely formátumának vezérlője:** az y tengely üzemmódja az elérhető y tengelyes nézet beállításain keresztül vált. Ez a vezérlő csak akkor érhető el, ha a különböző telemetriáiról láthatóvá válnak. Az y tengelyt úgy állíthatja be, hogy a következő három mód közül választhat:
 
-  ![Adatelrendezés az y tengelyen különböző vizualizációs módokkal](media/howto-create-analytics/analytics-yaxis.png)
+    - **Halmozott:** Minden telemetria gráfja halmozott, és mindegyik gráf saját y tengellyel rendelkezik. Ez a mód alapértelmezettként van beállítva.
+    - **Megosztott:** Minden telemetria gráfja ugyanazon y tengelyen van ábrázolva.
+    - **Átfedés:** Ezzel a beállítással több sort is halmozhat ugyanazon y tengelyen, és az y tengely adatváltozása a kijelölt sor alapján változik.
 
-## <a name="next-steps"></a>További lépések
+  ![Adatelrendezés az y tengelyen különböző vizualizációs módokkal](media/howto-create-analytics/yaxiscontrol.png)
 
-Most, hogy megismerte, hogyan hozhat létre egyéni elemzéseket az Azure IoT Central alkalmazáshoz, itt a javasolt következő lépés:
+- **Nagyítási vezérlő:** A nagyítással tovább részletezheti az adatait. Ha olyan időszakot talál, amelyet szeretne összpontosítani az eredményhalmaz alapján, az egérmutatóval fogja megragadni a területét, majd húzza azt a választott végpontra. Ezután kattintson a jobb gombbal a kijelölt régióra, majd kattintson a nagyítás lehetőségre.
 
-> [!div class="nextstepaction"]
-> [Node. js-alkalmazás előkészítése és összekapcsolása](howto-connect-nodejs.md)
+  ![Nagyítás az adattartalomba](media/howto-create-analytics/zoom.png)
+
+A három pont alatt több diagram vezérlőelemet is használhat az adatkezeléshez.
+
+- **Rács megjelenítése:** Az eredmények táblázatos formában érhetők el, így megtekintheti az egyes adatpontok adott értékét.
+
+- **Jelölő eldobása:** A "drop marker" vezérlő lehetővé teszi a diagram bizonyos adatpontjainak rögzítését. Akkor hasznos, ha több sor esetében próbál meg összehasonlítani különböző időszakokban lévő információkat.
+
+  ![Az elemzések rács nézetének megjelenítése](media/howto-create-analytics/additionalchartcontrols.png)

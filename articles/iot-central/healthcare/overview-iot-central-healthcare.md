@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: a5a8c8e52c4bebda4e22e592fefa3801449504e3
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027459"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021487"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Egészségügyi megoldások kiépítése az Azure IoT Central 
+# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Egészségügyi megoldások létrehozása az Azure IoT Centrallal 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Ismerje meg, hogyan hozhat létre egészségügyi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 
@@ -26,15 +26,15 @@ Ismerje meg, hogyan hozhat létre egészségügyi megoldásokat az Azure IoT Cen
 Az egészségügyi IoT terén a folyamatos beteg monitorozás az egyik legfontosabb segítő, amely csökkenti a visszafogadások kockázatát, hatékonyabban kezeli a krónikus betegségeket, és javítja a betegek eredményeit. A folyamatos beteg monitorozás két fő kategóriába osztható:
 
 1. **Fekvőbeteg-figyelés**: az orvosi wearables és más kórházi eszközök használata esetén a Care Teams a beteg létfontosságú jeleinek és orvosi feltételeinek elküldését anélkül, hogy egy ápolót naponta többször is fel kellene vennie. Az ápolási csapatok tudomásul veszik, hogy a pácienseknek kritikus figyelmet kell fordítaniuk az értesítéseken keresztül, és hatékonyan rangsorolják az idejüket.
-1. **Távoli beteg figyelése**: az orvosi wearables és a beteg által jelentett eredmények (profik) a kórházon kívüli betegek figyelésére, az ismételt beléptetés kockázata jelentősen csökkenthető. A krónikus betegeknek és a rehabilitációs betegeknek származó adatokat össze lehet gyűjteni annak biztosítására, hogy a betegek betartsák a gondozási terveket, és hogy a páciensek károsodásával kapcsolatos riasztások a kritikus fontosságúak legyenek.
+1. **Távoli beteg figyelése**: a kórházon kívüli betegek megfigyelésére szolgáló orvosi wearables és betegeknek szóló jelentés (profik) használatával csökkenthető az Újrafogadás kockázata. A krónikus betegeknek és a rehabilitációs betegeknek származó adatokat össze lehet gyűjteni annak biztosítására, hogy a betegek betartsák a gondozási terveket, és hogy a páciensek károsodásával kapcsolatos riasztások a kritikus fontosságúak legyenek.
 
 Ez az alkalmazás-sablon a folyamatos beteg-figyelés mindkét kategóriájának megoldására használható. Az előnyök a következők:
 
-* Zökkenőmentesen kapcsolódhat számos orvosi hordható IoT Central-példányhoz.
+* Zökkenőmentesen csatlakoztathatók különböző típusú orvosi hordható IoT Central-példányokhoz.
 * Az eszközök monitorozása és kezelése, hogy azok egészségesek maradjanak.
 * Az eszközökre vonatkozó egyéni szabályok létrehozása a megfelelő riasztások elindításához.
 * Exportálja a beteg Health-adatait a FHIR készült Azure API-ra, amely egy megfelelő adattár.
-* Exportálja az összesített betekintést meglévő vagy új üzleti alkalmazásokba, amelyek felhatalmazzák az ápoló csapatokat.
+* Exportálja az összesített betekintést meglévő vagy új üzleti alkalmazásokba.
 
 >[!div class="mx-imgBorder"] 
 >![CPM-irányítópult](media/in-patient-dashboard.png)
