@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e9a3d13eeb0c8704e2faac1037d51e5bd322dc4
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945112"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988145"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
 A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes forgalmi információkat** . Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
 
-A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes országra vagy régióra vonatkozóan. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
+A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal minden országban vagy régióban. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
 ## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Ország/régió  |Incidensek  |Flow  |
+|Ország/régió  |Események  |Flow  |
 |---------|:---------:|:---------:|
 |Argentína      |✓         |✓         |
 |Brazília     |✓         |✓         |
@@ -39,15 +39,15 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-|Ország/régió   |Incidensek  |Flow  |
+|Ország/régió   |Események  |Flow  |
 |---------|:---------:|:---------:|
 |Ausztrália     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hongkong KKT     |✓         |✓         |
+|Hongkong (KKT)     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonézia     |✓         |✓         |
 |Kazahsztán    |✓         |✓         |
-|Makaó (KKT)     |✓         |✓         |
+|Makaó KKT     |✓         |✓         |
 |Malajzia     |✓         |✓         |
 |Új-Zéland     |✓         |✓         |
 |Fülöp-szigetek  |✓         |✓         |
@@ -59,7 +59,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 
 ## <a name="europe"></a>Európa
 
-|Ország/régió   |Incidensek  |Flow  |
+|Ország/régió   |Események  |Flow  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Ausztria     |✓         |✓         |
@@ -112,12 +112,12 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |\+ Gibraltár     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Man-sziget     |✓         |✓         |
-|Vatikán   |✓         |✓         |
+|Vatikáni Városállam   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-|Ország/régió |Incidensek  |Flow  |
+|Ország/régió |Események  |Flow  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egyiptom     |✓         |✓         |

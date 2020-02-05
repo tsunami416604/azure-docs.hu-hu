@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770084"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986002"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -68,7 +68,9 @@ Ha nyilvános IP-címet használ végpontként, a nyilvános IP-cím erőforrás
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Mik a Keep-Alive időkorlát és a TCP Üresjárati időkorlát beállításai?
 
- A Application Gateway v1 SKU-ban az életben tartási időkorlát 120 másodperc. A v2 SKU életben tartási időtúllépése 75 másodperc. A TCP Üresjárati időkorlát 4 perces alapértelmezett érték a Application Gateway virtuális IP-címe (VIP) esetében.
+Az *életben tartási időkorlát* azt szabályozza, hogy a Application Gateway mennyi ideig várjon, amíg az ügyfél egy másik HTTP-kérést küld egy állandó kapcsolaton, mielőtt újra felhasználja vagy bezárja. A *TCP üresjárati időkorlátja* azt szabályozza, hogy a TCP-kapcsolatok mennyi ideig legyenek nyitva, ha nincs tevékenység. 
+
+A *Keep-Alive időtúllépés* a Application Gateway v1 SKU-ban 120 másodperc, a v2 sku pedig 75 másodperc. A *TCP Üresjárati időkorlát* 4 perces alapértelmezett érték a (z) v1-es és v2-es Application Gateway-alapú virtuális IP-cím (VIP) esetében. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP-cím vagy a DNS-név módosul az Application Gateway élettartama során?
 

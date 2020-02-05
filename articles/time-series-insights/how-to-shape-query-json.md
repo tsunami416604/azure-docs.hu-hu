@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 12/05/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8232fd4c2a1e17800c96854b4ba7298e57ed84b7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864349"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989892"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával 
 
@@ -165,7 +165,7 @@ Példa JSON-adattartalomra:
 
 * A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
 
-   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | mennyiség |
+   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | Egység |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s |
    | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi |
@@ -174,7 +174,7 @@ Példa JSON-adattartalomra:
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | mennyiség | időbélyeg | adatsorozat. érték |
+   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | Egység | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |

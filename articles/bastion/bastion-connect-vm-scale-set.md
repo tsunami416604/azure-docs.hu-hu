@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 446784155cf6f72cfaa80523ed3913eacc7e5cfc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513132"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988090"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával
 
@@ -26,7 +26,7 @@ Győződjön meg arról, hogy beállította a virtuálisgép-méretezési csopor
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com). Navigáljon ahhoz a virtuálisgép-méretezési csoporthoz, amelyhez csatlakozni szeretne.
 
-   ![Lépjen](./media/bastion-connect-vm-scale-set/1.png)
+   ![lépjen](./media/bastion-connect-vm-scale-set/1.png)
 2. Keresse meg a virtuálisgép-méretezési csoport azon példányát, amelyhez csatlakozni szeretne, majd válassza a **Kapcsolódás**lehetőséget. RDP-kapcsolat használata esetén a virtuálisgép-méretezési csoportnak Windows virtuálisgép-méretezési csoportnak kell lennie.
 
    ![Virtuálisgép-méretezési csoport](./media/bastion-connect-vm-scale-set/2.png)
@@ -38,6 +38,6 @@ Győződjön meg arról, hogy beállította a virtuálisgép-méretezési csopor
    ![csatlakozásra](./media/bastion-connect-vm-scale-set/4.png)
 5. Az ehhez a virtuális géphez a Bastion-en keresztül létesített RDP-kapcsolat közvetlenül a Azure Portal (HTML5-n keresztül) lesz megnyitva a 443-es port és a megerősített szolgáltatás használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

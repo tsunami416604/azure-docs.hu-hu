@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3170ca428b0b06f3d76bfd6037f75f345a2a466a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896368"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989671"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse kibocsátási megjegyzések
 
@@ -157,7 +157,7 @@ Az azonosított verzió használatával erősítse meg, hogy melyik kiadás lett
 ## <a name="more-information"></a>További információ
 
 - [Blog – Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [Az ügyféltanácsadói csapat blogjai](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Az ügyféltanácsadói csapat blogjai](https://docs.microsoft.com/archive/blogs/sqlcat/)
 - [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

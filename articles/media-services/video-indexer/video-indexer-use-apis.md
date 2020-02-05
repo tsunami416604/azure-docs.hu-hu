@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892685"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989773"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -86,7 +86,7 @@ A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A
 
 * A fiókazonosító lekérése szoftveresen a **Video Indexer fejlesztői portálon**.
 
-    Használja a [Fiókok lekérése](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API-t.
+    Használja a [fiók beolvasása](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API-t.
 
     > [!TIP]
     > A `generateAccessTokens=true` meghatározásával létrehozhat hozzáférési jogkivonatokat a fiókokhoz.
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A kimeneti JSON adatainak vizsgálata](video-indexer-output-json-v2.md).
+- [A kimeneti JSON részleteinek vizsgálata](video-indexer-output-json-v2.md)
+- Tekintse meg a videó feltöltésének és indexelésének fontos aspektusát bemutató [mintakód](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) használatát. Az wil kód követésével jól szemlélteti, hogyan használható az API az alapszintű funkciókhoz. Olvassa el a beágyazott megjegyzéseket, és figyelje meg az ajánlott eljárásokkal kapcsolatos tanácsokat.
+

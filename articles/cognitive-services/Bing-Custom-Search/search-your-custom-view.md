@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072746"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983112"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search-példány meghívása a portálról
 
@@ -35,16 +35,16 @@ Néhány fontos paraméter a következő:
 |---------|---------|
 |Lekérdezés     | A keresendő keresési kifejezés. Csak a webes, a képi, a videó-és az automatikus kiegészítési végpontokhoz érhető el |
 |Egyéni konfigurációs azonosító | A kiválasztott egyéni keresési példány konfigurációs azonosítója. Ez a mező csak olvasható. |
-|Market     | Az eredményeket kezdeményező piac. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el.        |
+|Piac     | Az eredményeket kezdeményező piac. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el.        |
 |Előfizetési kulcs | A teszteléshez használandó előfizetési kulcs. Kijelölhet egy kulcsot a legördülő listából, vagy megadhat egy manuálisan.          |
 
 Ha **további paraméterekre** kattint, a következő paramétereket mutatja be:  
 
 |Paraméter  |Leírás  |
 |---------|---------|
-|Safe Search     | A felnőtt tartalmak weblapjainak szűrésére szolgáló szűrő. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el.        |
+|Biztonságos Keresés     | A felnőtt tartalmak weblapjainak szűrésére szolgáló szűrő. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el. Vegye figyelembe, hogy a Bing egyéni Video Search csak két értéket támogat: `moderate` és `strict`.        |
 |Felhasználói felület nyelve    | A felhasználói felületi karakterláncokhoz használt nyelv. Ha például az üzemeltetett felhasználói felületen engedélyezi a képeket és a videókat, a **kép** és a **videó** lapok a megadott nyelvet használják.        |
-|Darabszám     | A válaszban visszaadni kívánt keresési eredmények száma. Csak webes, képi és videós végpontok esetén érhető el.         |
+|Mennyiség     | A válaszban visszaadni kívánt keresési eredmények száma. Csak webes, képi és videós végpontok esetén érhető el.         |
 |Eltolás    | A kihagyni kívánt keresési eredmények száma az eredmények visszaadása előtt. Csak webes, képi és videós végpontok esetén érhető el.        |
     
 Miután megadta az összes szükséges beállítást, kattintson a **hívás** gombra a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha kijelöli a futtatott felhasználói felület végpontját, tesztelheti a keresési felületet az alsó ablaktáblán.
@@ -53,7 +53,7 @@ Miután megadta az összes szükséges beállítást, kattintson a **hívás** g
 
 A Bing Custom Search-példányhoz társított előfizetést új példány létrehozása nélkül módosíthatja. Ha az API-hívásokat egy új előfizetésre szeretné elküldeni és felszámolni, hozzon létre egy új Bing Custom Search-erőforrást a Azure Portal. Használja az új előfizetési kulcsot az API-kérelmekben, valamint a példány egyéni konfigurációs AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni nézet meghívása aC#](./call-endpoint-csharp.md)
 - [Egyéni nézet meghívása Javával](./call-endpoint-java.md)

@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702521"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983095"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
 
 Az átirányítási URI-vagy válasz-URL-cím az a hely, amelyet az engedélyezési kiszolgáló az alkalmazás sikeres engedélyezése után elküld a felhasználónak, és engedélyezési kódot vagy hozzáférési jogkivonatot adott meg. A kód vagy token az átirányítási URI vagy a válasz jogkivonatában található, ezért fontos, hogy regisztrálja a megfelelő helyet az alkalmazás regisztrációs folyamatának részeként.
 
+ A válasz URL-címekre a következő korlátozások vonatkoznak:
+
+    * A válasz URL-címének az `https`sémával kell kezdődnie.
+    * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként `.../abc/response-oidc`, ne adja meg `.../ABC/response-oidc` a válasz URL-címében. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, előfordulhat, hogy a `.../abc/response-oidc` társított cookie-k nem illeszkednek a `.../ABC/response-oidc` URL-címhez.
+    
 ## <a name="maximum-number-of-redirect-uris"></a>Átirányítási URI-k maximális száma
 
 A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja.

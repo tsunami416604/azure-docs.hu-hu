@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442797"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985050"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure-beli Azure Active Directory használatával API Management
 
@@ -50,13 +50,13 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
    ![Az identitás-szolgáltató hozzáadásának lépései a Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Nyisson meg egy másik lapot a böngészőben. 
 11. A [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) gombra kattintva regisztrálhat egy alkalmazást a Active Directoryban.
-12. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
+12. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
 13. Válassza az **új regisztráció**lehetőséget. Az **alkalmazás regisztrálása** lapon állítsa be az értékeket az alábbiak szerint:
     
-* Adjon **nevet** egy értelmes névnek. például: *Developer-Portal*
-* **Ebben a szervezeti könyvtárban csak**a **támogatott fióktípus** beállítása a fiókokhoz. 
-* Állítsa be az **átirányítási URI** -t a 9. lépésben kapott értékre. 
-* Válassza a **regisztráció**lehetőséget. 
+    * Adjon **nevet** egy értelmes névnek. például: *Developer-Portal*
+    * **Ebben a szervezeti könyvtárban csak**a **támogatott fióktípus** beállítása a fiókokhoz. 
+    * Állítsa be az **átirányítási URI** -t a 9. lépésben kapott értékre. 
+    * Válassza a **regisztráció**lehetőséget. 
 
 14.  Az alkalmazás regisztrálása után másolja az **alkalmazás (ügyfél) azonosítóját** az **Áttekintés** lapról. 
 15. Térjen vissza a API Management-példányra. Az **identitás-szolgáltató hozzáadása** ablakban illessze be az **alkalmazás (ügyfél) azonosító** értékét az **ügyfél-azonosító** mezőbe.
@@ -71,10 +71,10 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 
 19. Az **identitás-szolgáltató hozzáadása** ablak az **engedélyezett bérlők** szövegmezőt is tartalmazza. Itt adja meg azon Azure AD-példányok tartományait, amelyekhez hozzáférést szeretne biztosítani az API Management Service-példány API-jai számára. Több tartományt is elkülönítheti a sortörésekkel, szóközökkel vagy vesszővel.
 
-> [!NOTE]
-> Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Lépjen a `https://<URL of your developer portal>/aadadminconsent`ra (például https://contoso.portal.azure-api.net/aadadminconsent).
-> b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
-> c. Válassza a **Küldés** lehetőséget. 
+    > [!NOTE]
+    > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Lépjen a `https://<URL of your developer portal>/aadadminconsent`ra (például https://contoso.portal.azure-api.net/aadadminconsent).
+    > b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
+    > c. Válassza a **Küldés**lehetőséget. 
 
 20.  A kívánt konfiguráció megadása után válassza a **Hozzáadás**lehetőséget.
 
@@ -95,7 +95,7 @@ Most hozzáadhat külső Azure AD-csoportokat a API Management példány **csopo
 
 1. Válassza ki a **Csoportok** lapot.
 2. Kattintson a **HRE hozzáadása** gombra.
-   !["HRE csoport hozzáadása" gomb](./media/api-management-howto-aad/api-management-with-aad008.png)
+    !["HRE csoport hozzáadása" gomb](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Válassza ki a hozzáadni kívánt csoportot.
 4. Kattintson a **kiválasztás** gombra.
 
@@ -105,11 +105,11 @@ A konfigurált Azure AD-példány felhasználói már bejelentkezhetnek a fejles
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
 
-A fejlesztői portálon jelentkezzen be a HRE-be a **OAuth gombok** widgettel. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
-
-![HRE gombok widget](./media/api-management-howto-aad/portal-oauth-widget.png)
+A fejlesztői portálon jelentkezzen be a HRE-be a **Bejelentkezés gombra: OAuth** widget. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
 
 Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik a HRE-be, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs laphoz.
+
+A **regisztrációs űrlap: a OAuth** widget a OAuth való regisztrációhoz használt űrlapot jelöli.
 
 > [!IMPORTANT]
 > A HRE módosításainak érvénybe léptetéséhez újra közzé kell tennie [a portált](api-management-howto-developer-portal-customize.md#publish) .

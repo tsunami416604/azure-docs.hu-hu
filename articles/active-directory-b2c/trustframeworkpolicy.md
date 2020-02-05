@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840179"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982415"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 | tenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
 | policyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
 | PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`, `Debugging`vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Nem | Az a végpont, amelyet a rendszer a **deploymentmode beállítása** `Development`értékre való beállításakor használ. Az értéknek `urn:journeyrecorder:applicationinsights`nak kell lennie. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 
 

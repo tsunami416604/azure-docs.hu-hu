@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954590"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990793"
 ---
 # <a name="manage-your-iot-central-application"></a>IoT Central alkalmazás kezelése
 
@@ -40,9 +40,9 @@ Az alkalmazás lemezképének módosításához lásd: [lemezképek előkészít
 
 ## <a name="copy-an-application"></a>Alkalmazás másolása
 
-Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példányait, az eszköz adatelőzményeit és a felhasználói adatmennyiségeket. A másolás egy utólagos elszámolású alkalmazás, amelyet fizetnie kell. Így nem hozhat létre próbaverziós alkalmazást.
+Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példányait, az eszköz adatelőzményeit és a felhasználói adatmennyiségeket. A másolás egy standard díjszabási csomagot használ, amelyért díjat kell fizetnie. Így nem hozhat létre olyan alkalmazást, amely az ingyenes díjszabási csomagot használja.
 
-Válassza a **Másolás**lehetőséget. A párbeszédpanelen adja meg az új utólagos elszámolású alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. További információ az űrlap mezőiről az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatóban.
+Válassza a **Másolás**lehetőséget. A párbeszédpanelen adja meg az új alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. További információ az űrlap mezőiről az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatóban.
 
 ![Alkalmazásbeállítások lap](media/howto-administer/appcopy2.png)
 

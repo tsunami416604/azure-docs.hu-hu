@@ -2,17 +2,17 @@
 title: 'Rövid útmutató: Apache Spark-fürtök az Azure CLI-vel – Azure HDInsight'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsight az Azure CLI használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 71b5e9f0ece79633673b183ca7288852f42ca3c0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/03/2020
+ms.openlocfilehash: ac937519ca3fa9381fe4970f2e4336fe4a0a9227
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494710"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989144"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI használatával
 
@@ -28,7 +28,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark-fürt létrehozása
 
-1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használni, egyszerűen válassza ki a **kipróbálom** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
+1. Jelentkezzen be az Azure-előfizetésbe. Ha Azure Cloud Shell használatát tervezi, válassza a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
 
     ```azurecli-interactive
     az login
@@ -103,18 +103,18 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
 Az erőforrások eltávolításához adja meg az alábbi parancsok mindegyikét vagy egy részét:
 
@@ -139,7 +139,7 @@ az group delete \
     --name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsight az Azure CLI használatával.  Folytassa a következő oktatóanyaggal, amelyben megtudhatja, hogyan használhatja a HDInsight Spark-fürtöt interaktív lekérdezések mintaadatokon való futtatására.
 

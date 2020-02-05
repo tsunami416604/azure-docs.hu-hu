@@ -1,14 +1,14 @@
 ---
 title: Rövid útmutató – & Run-tároló rendszerképének összeállítása
-description: Gyorsan futtathat feladatokat a Azure Container Registry használatával, és igény szerint, a felhőben készíthet és futtathat egy tároló-rendszerképet.
+description: A Azure Container Registry segítségével gyorsan futtathatja a Docker-tároló rendszerképét a felhőben.
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454952"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986274"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
 
@@ -44,7 +44,7 @@ Ez a példa egy *alapszintű* beállításjegyzéket hoz létre, amely egy költ
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Rendszerkép létrehozása Docker
 
-Hozzon létre egy rendszerképet a Azure Container Registry használatával. Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy *Docker* nevű Docker az alábbi tartalommal. Ez egy egyszerű példa arra, hogy Linux-tárolót hozzon létre, de létrehozhatja a saját standard Docker, és képeket készíthet más platformokhoz.
+Hozzon létre egy rendszerképet a Azure Container Registry használatával. Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy *Docker* nevű Docker az alábbi tartalommal. Ez egy egyszerű példa arra, hogy Linux-tárolót hozzon létre, de létrehozhatja a saját standard Docker, és képeket készíthet más platformokhoz. A cikkben szereplő példák a bash-rendszerhéjra vannak formázva.
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 A rendszerkép létrehozásához futtassa az az [ACR Build][az-acr-build] parancsot. A létrehozást követően a rendszer leküldi a rendszerképet a beállításjegyzékbe. A következő példa leküldi a `sample/hello-world:v1` rendszerképet. A parancs végén lévő `.` beállítja a Docker helyét, ebben az esetben az aktuális könyvtárat.
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 A sikeres buildek és leküldések kimenete a következőhöz hasonló:
@@ -110,22 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>A rendszerkép futtatása
 
-Most gyorsan futtathatja a létrehozott és a beállításjegyzékbe leküldett képet. A tároló-fejlesztési munkafolyamatban ez lehet egy érvényesítési lépés a lemezkép telepítése előtt.
+Most gyorsan futtathatja a létrehozott és a beállításjegyzékbe leküldett képet. Itt az [az ACR Run][az-acr-run] parancsot használja a Container parancs futtatásához. A tároló-fejlesztési munkafolyamatban ez lehet egy érvényesítési lépés a lemezkép telepítése előtt, vagy a parancsot egy [többlépéses YAML-fájlba][container-registry-tasks-multi-step]is felveheti. 
 
-Hozzon létre egy *quickrun. YAML* fájlt egy helyi munkakönyvtárban az alábbi tartalommal egyetlen lépéshez. Helyettesítse be a beállításjegyzék bejelentkezési kiszolgálójának nevét *\<acrLoginServer\>* . A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: *\<Registry-name\>. azurecr.IO* (mind kisbetűs), például *mycontainerregistry008.azurecr.IO*. Ez a példa feltételezi, hogy az előző szakaszban létrehozta és leküldte a `sample/hello-world:v1` rendszerképet:
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-A példában szereplő `cmd` lépés az alapértelmezett konfigurációban futtatja a tárolót, de `cmd` támogatja a további `docker run` paramétereket, vagy akár más `docker` parancsokat is.
-
-Futtassa a tárolót a következő paranccsal:
+Az alábbi példa a `$Registry` használatával adja meg a beállításjegyzéket, amelyen a parancsot futtatja:
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+A példában szereplő `cmd` paraméter az alapértelmezett konfigurációban futtatja a tárolót, de `cmd` támogatja a további `docker run` paramétereket, vagy akár más `docker` parancsokat is.
 
 A kimenet a következőkhöz hasonló:
 
@@ -182,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tárolók gyors létrehozására, leküldésére és futtatására az Azure-ban. Folytassa a Azure Container Registry oktatóanyagokkal, és ismerkedjen meg az ACR-feladatok a rendszerkép-buildek és-frissítések automatizálására való használatával.
+Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tárolói rendszerképek gyors létrehozására, leküldésére és futtatására az Azure-ban, helyi Docker-telepítés nélkül. Folytassa a Azure Container Registry feladatok oktatóanyagával, amelyből megtudhatja, hogyan használhatja az ACR-feladatokat a rendszerkép-buildek és a frissítések automatizálására.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyagok Azure Container Registry][container-registry-tutorial-quick-task]
+> [Azure Container Registry feladatok – oktatóanyagok][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tá
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

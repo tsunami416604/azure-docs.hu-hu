@@ -1,6 +1,6 @@
 ---
 title: Térkép stílusának beállítása a Azure Maps Android SDK-val | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan használhatók az Android SDK-hoz készült Microsoft Azure Maps stílussal kapcsolatos funkciók.
+description: Ebből a cikkből megtudhatja, Microsoft Azure térképek stílussal kapcsolatos funkciói az Android SDK-hoz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fe0aa662234166249433634ccb45d1931d176319
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910487"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988957"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Térkép stílusának beállítása a Azure Maps Android SDK-val
 
@@ -59,7 +59,7 @@ A fenti `mapcontrol_style` attribútum a leképezési stílust **grayscale_darkr
 
 ## <a name="set-map-style-in-the-activity-class"></a>Térkép stílusának beállítása a tevékenység osztályban
 
-A Térkép stílusa beállítható a tevékenység osztályban. Másolja a következő kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára. Ezzel beállítja a Térkép stílusát **satellite_road_labels**.
+A Térkép stílusa beállítható a tevékenység osztályban. Másolja a következő kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára. Ez a kód **satellite_road_labelsre**állítja be a leképezési stílust.
 
 ```Java
 mapControl.onReady(map -> {

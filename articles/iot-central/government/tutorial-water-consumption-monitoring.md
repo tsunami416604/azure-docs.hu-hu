@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112622"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990554"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Oktatóanyag: vízfelhasználást figyelő alkalmazás létrehozása IoT Central
 
@@ -66,6 +66,7 @@ Ebben a szakaszban az Azure IoT Central Water-használat **figyelési sablonját
 
     ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
+    ![Azure IoT Central alkalmazás számlázási adatainak létrehozása](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 6. Ezzel létrehozta a víz-fogyasztás figyelése alkalmazást az Azure IoT Central **Water-használat figyelési** sablonnal.
 
 Gratulálunk! Elkészült a vízminőség-figyelési alkalmazás létrehozásával, amely előre konfigurálva van:
@@ -126,7 +127,7 @@ A **víz-felhasználás figyelésére szolgáló** alkalmazás két, a flow- *m�
 Az eszköz sablonjának megtekintése:
 
 1. Az alkalmazás bal oldali navigációs paneljén kattintson az **eszközök sablonok** elemre IoT Central. 
-    A Device templates (eszközök) listában két, a **flow-mérőt** és az **intelligens szelepet** tartalmazó eszköz jelenik meg
+    A **Device templates** (eszközök) listában két eszközosztály és egy **intelligens szelep** jelenik meg.
 
    ![Eszköz sablonja](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 

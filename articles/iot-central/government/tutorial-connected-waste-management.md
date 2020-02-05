@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112641"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990026"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
@@ -64,7 +64,10 @@ Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodás
 5. Kattintson a lap alján található **Létrehozás** gombra. 
 
     ![Azure IoT Central csatlakoztatott hulladék alkalmazás létrehozása lap](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central kapcsolódó számlázási adatok létrehozása](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. Ezzel létrehozott egy csatlakoztatott hulladékgazdálkodási alkalmazást az Azure IoT Central **csatlakoztatott hulladékgazdálkodási sablon**használatával. 
 
 Gratulálunk! Az újonnan létrehozott alkalmazás előre konfigurálva van:
@@ -131,7 +134,7 @@ Az eszköz sablonjának megtekintése:
 
 2. Az eszközök listájában megjelenik a **csatlakoztatott hulladék tároló**. Megnyitásához kattintson a névre.
 
-3. Familirize az eszköz sablonjának képességeihez. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet* stb.
+3. Ismerkedjen meg az eszköz sablonjának funkcióival. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet* stb.
 
    ![Eszköz sablonja](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 

@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Migrate szolgáltatás támogatási beállí
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 81939292885e33ec6397eb4a437bef63b4ad0787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846564"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990725"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -52,7 +52,7 @@ Azure Migrate kiszolgáló áttelepítése | n/a | Telepítse át a [VMWare virt
 
 **Támogatás** | **Részletek**
 --- | ---
-Előfizetés | Egy előfizetéshez több Azure Migrate projekt is tartozhat.
+Előfizetést | Egy előfizetéshez több Azure Migrate projekt is tartozhat.
 Azure-engedélyek | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
 VMware virtuális gépek  | Egyetlen projektben akár 35 000 VMware virtuális gépet is megvizsgálhat.
 Hyper-V virtuális gépek | Akár 35 000 Hyper-V virtuális gépet is kivizsgálhat egyetlen projektben.
@@ -67,7 +67,7 @@ Ahhoz, hogy a Azure Migrate az Azure-ban működjön, a gépek felmérése és �
 --- | --- | ---
 Azure Migrate projekt létrehozása | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel. | A [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), a [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-create-project)beállítása.
 A Azure Migrate berendezés regisztrálása | A Azure Migrate egy egyszerűsített [Azure Migrate berendezés](migrate-appliance.md) használatával értékeli a VMWare virtuális gépeket Azure Migrate Server Assessment használatával, valamint a VMWare virtuális gépek [ügynök nélküli áttelepítését](server-migrate-overview.md) Azure Migrate kiszolgáló áttelepítésével. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/> A regisztráció során Azure Migrate két Azure Active Directory-(Azure AD-) alkalmazást hoz létre, amelyek egyedileg azonosítják a készüléket, és engedélyekkel kell rendelkezniük ezeknek az alkalmazásoknak a létrehozásához.<br/><br/> – Az első alkalmazás a Azure Migrate szolgáltatási végpontokkal kommunikál.<br/><br/> – A második alkalmazás a regisztráció során létrehozott Azure Key Vault fér hozzá az Azure AD-alkalmazás adatai és a készülék konfigurációs beállításainak tárolásához. | A [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), a [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)beállítása.
-Key Vault létrehozása a VMware ügynök nélküli Migrálás számára | Ha a VMware virtuális gépeket ügynök nélküli Azure Migrate kiszolgáló áttelepítésével szeretné áttelepíteni, Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli. A tároló létrehozásához meg kell határoznia az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon az erőforráson, amelyben a Azure Migrate projekt található. | Engedélyek [beállítása](tutorial-prepare-vmware.md#assign-role-assignment-permissions) .
+Key Vault létrehozása a VMware ügynök nélküli Migrálás számára | Ha a VMware virtuális gépeket ügynök nélküli Azure Migrate kiszolgáló áttelepítésével szeretné áttelepíteni, Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli. A tároló létrehozásához meg kell határoznia az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon az erőforráson, amelyben a Azure Migrate projekt található. | Engedélyek [beállítása](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) .
 
 ## <a name="supported-geographies"></a>Támogatott földrajzi területek
 

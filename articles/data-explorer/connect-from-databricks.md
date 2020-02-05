@@ -1,49 +1,49 @@
 ---
-title: Csatlakozás az Azure adatkezelő Azure databricksből Python használatával
-description: Ez a témakör bemutatja, hogyan érheti el adatait az Azure Data Explorer két hitelesítési módszerek egyikének használatával egy Python-kódtár az Azure Databricks használatával.
+title: Kapcsolódás az Azure Adatkezelőhoz a Azure Databricks a Python használatával
+description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Databricks található Python-függvénytárat az Adatkezelő Azure-ból származó adatok eléréséhez a két hitelesítési módszer egyikének használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861207"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985679"
 ---
-# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Csatlakozás az Azure adatkezelő Azure databricksből Python használatával
+# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Kapcsolódás az Azure Adatkezelőhoz a Azure Databricks a Python használatával
 
-[Az Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) egy Apache Spark-alapú elemzési platform, amely a Microsoft Azure platform van optimalizálva. Ez a cikk bemutatja, hogyan érheti el adatait az Azure Data Explorer egy Python-kódtár az Azure Databricks használatával. Többféleképpen is az Azure az adatkezelőt, beleértve egy bejelentkezés az eszközön és a egy Azure Active Directory (Azure AD-) alkalmazás-hitelesítést.
+A [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) egy Apache Spark-alapú elemzési platform, amely a Microsoft Azure platformra van optimalizálva. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Databricksban található Python-függvénytárat az Azure-Adatkezelő adatainak eléréséhez. Az Azure Adatkezelő több módon is hitelesíthető, beleértve az eszköz felhasználónevét és egy Azure Active Directory (Azure AD) alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Azure Data Explorer fürt és az adatbázis](/azure/data-explorer/create-cluster-database-portal).
-- [Az Azure Databricks-munkaterület létrehozása](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). A **Azure Databricks szolgáltatás**, a a **Tarifacsomag** legördülő listában válassza **prémium**. Ez a beállítás lehetővé teszi az Azure Databricks titkos kulcsok használatával tárolja a hitelesítő adatait, és hivatkozni tudjon rájuk a jegyzetfüzetek és a feladatok.
+- [Hozzon létre egy Azure adatkezelő-fürtöt és-adatbázist](/azure/data-explorer/create-cluster-database-portal).
+- [Hozzon létre egy Azure Databricks munkaterületet](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). A **Azure Databricks szolgáltatás**alatt, a **díjszabási szint** legördülő listában válassza a **prémium**lehetőséget. Ez a beállítás lehetővé teszi, hogy Azure Databricks titkokat használjon a hitelesítő adatok tárolásához, és azok jegyzetfüzetekben és feladatokban való megadásához.
 
-- [Hozzon létre egy fürtöt](https://docs.azuredatabricks.net/user-guide/clusters/create.html) az Azure Databricksben (a minta jegyzetfüzetek futtatásához szükséges minimális beállításai) az alábbi beállításokkal:
+- [Hozzon létre egy fürtöt](https://docs.azuredatabricks.net/user-guide/clusters/create.html) Azure Databricks a következő specifikációkkal (a minta jegyzetfüzetek futtatásához szükséges minimális beállításokkal):
 
-   ![A fürt létrehozásának](media/connect-from-databricks/databricks-create-cluster.png)
+   ![A fürt létrehozására vonatkozó előírások](media/connect-from-databricks/databricks-create-cluster.png)
 
-## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>Telepítse a Python-kódtár az Azure Databricks-fürtön
+## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>A Python-könyvtár telepítése a Azure Databricks-fürtön
 
-Telepítése a [Python-kódtár](/azure/kusto/api/python/kusto-python-client-library) az Azure Databricks-fürtön:
+A Python- [könyvtár](/azure/kusto/api/python/kusto-python-client-library) telepítése a Azure Databricks-fürtön:
 
-1. Nyissa meg az Azure Databricks-munkaterület és [hozzon létre egy könyvtárat](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. [Töltse fel a Python PyPI csomag vagy a tojás Python](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
-   - Töltse fel, telepítése és a kódtár csatlakoztatása a Databricks-fürt.
-   - Adja meg a PyPi nevét: **azure kusto-data**.
+1. Nyissa meg a Azure Databricks munkaterületet, és [hozzon létre egy könyvtárat](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
+2. [Python PyPI-csomag vagy Python-tojás feltöltése](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
+   - Töltse fel, telepítse és csatolja a könyvtárat a Databricks-fürthöz.
+   - Adja meg a PyPi nevét: **Azure-kusto--** .
 
-## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Csatlakozás az Azure Data Explorer egy eszközbejelentkezés használatával
+## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Kapcsolódás az Azure Adatkezelőhoz eszköz-bejelentkezés használatával
 
-[Importálja a Jegyzetfüzet](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) használatával a [lekérdezés-ADX-eszközbejelentkezés](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) notebook. Majd csatlakozhat az Azure Data Explorer a hitelesítő adataival.
+[Importáljon egy jegyzetfüzetet](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) a [query-ADX-Device-login](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) notebook használatával. Ezután a hitelesítő adataival csatlakozhat az Azure Adatkezelőhoz.
 
-## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Csatlakozás az Azure AD-alkalmazás használatával ADX
+## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Kapcsolódás ADX egy Azure AD-alkalmazás használatával
 
-1. Hozzon létre az Azure AD-alkalmazás által [kiépítése az Azure AD-alkalmazást](/azure/kusto/management/access-control/how-to-provision-aad-app).
-1. Hozzáférést biztosít az Azure AD-alkalmazás az Azure Data Explorer adatbázisban, az alábbiak szerint:
+1. Hozzon létre Azure AD-alkalmazást [egy Azure ad-alkalmazás üzembe](/azure/kusto/management/access-control/how-to-provision-aad-app)helyezésével.
+1. A következőképpen biztosítson hozzáférést az Azure AD-alkalmazáshoz az Azure Adatkezelő-adatbázisban:
 
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
@@ -51,32 +51,32 @@ Telepítése a [Python-kódtár](/azure/kusto/api/python/kusto-python-client-lib
     |   |   |
     | - | - |
     | ```DB Name``` | az adatbázis neve |
-    | ```AAD App ID``` | az Azure AD-alkalmazás azonosítója |
-    | ```AAD Tenant ID``` | az Azure AD-bérlő azonosítója |
+    | ```AAD App ID``` | Azure AD-alkalmazás azonosítója |
+    | ```AAD Tenant ID``` | Az Azure AD-bérlő azonosítója |
 
-### <a name="find-your-azure-ad-tenant-id"></a>Keresse meg az Azure AD-bérlő azonosítója
+### <a name="find-your-azure-ad-tenant-id"></a>Az Azure AD-bérlő AZONOSÍTÓjának megkeresése
 
-Alkalmazás hitelesítéséhez, az Azure Data Explorer használja az Azure AD-bérlő azonosítója. A bérlő Azonosítójának megkereséséhez használja a következő URL-címet. Helyettesítse be a tartomány *tartomanynev*.
+Egy alkalmazás hitelesítéséhez az Azure Adatkezelő az Azure AD-bérlői AZONOSÍTÓját használja. A bérlő AZONOSÍTÓjának megkereséséhez használja a következő URL-címet. Helyettesítse be tartományát a *SajátTartomány*számára.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Ha például a tartomány a *contoso.com*, az URL-cím a következő: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Válassza ki az URL-cím, az eredmények megtekintéséhez. Az első sor a következőképpen történik: 
+Ha például a tartomány a *contoso.com*, az URL-cím a következő: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Válassza ki ezt az URL-címet az eredmények megtekintéséhez. Az első sor a következő: 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-A bérlői azonosító `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
+A bérlő azonosítója `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
 
-### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Store és az Azure AD-Alkalmazásazonosító és a kulcs védelme 
+### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Az Azure AD-alkalmazás AZONOSÍTÓjának és kulcsának tárolása és biztonságossá tétele 
 
-Store és biztonságossá tétele az Azure AD alkalmazás Azonosítóját és kulcsát az Azure Databricks használatával [titkok](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) módon:
-1. [A parancssori felület beállítása](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
-1. [A parancssori felület telepítése](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
-1. [Hitelesítés beállítása](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
-1. Konfigurálja a [titkok](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) az alábbi Példaparancsok használatával:
+Az Azure AD-alkalmazás AZONOSÍTÓját és kulcsát az alábbi módon Azure Databricks [Secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) használatával tárolhatja és biztonságossá teheti:
+1. [Állítsa be a CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli)-t.
+1. [Telepítse a CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)-t. 
+1. A [hitelesítés beállítása](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
+1. Konfigurálja a [titkokat](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) a következő minta-parancsok használatával:
 
     ```databricks secrets create-scope --scope adx```
 
@@ -86,5 +86,5 @@ Store és biztonságossá tétele az Azure AD alkalmazás Azonosítóját és ku
 
     ```databricks secrets list --scope adx```
 
-### <a name="import-a-notebook"></a>A notebook importálása
-[Importálja a Jegyzetfüzet](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) használatával a [lekérdezés-ADX – AAD-alkalmazás](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) notebook szeretne csatlakozni az Azure Data Explorer. A helyőrző értékeket frissítse a fürt nevét, adatbázis neve és az Azure AD-bérlő azonosítója.
+### <a name="import-a-notebook"></a>Jegyzetfüzet importálása
+[Importáljon egy jegyzetfüzetet](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) a [query-ADX-HRE-app](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) notebook használatával az Azure Adatkezelőhoz való kapcsolódáshoz. Frissítse a helyőrző értékeket a fürt nevére, az adatbázis nevére és az Azure AD-bérlői AZONOSÍTÓra.

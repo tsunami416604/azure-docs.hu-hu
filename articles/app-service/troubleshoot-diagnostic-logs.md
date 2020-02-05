@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121358"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985934"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -26,9 +26,9 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 |Type (Típus)|Platform|Földrajzi egység|Leírás|
 |-|-|-|-|
 | Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus**, **hiba**, **Figyelmeztetés**, **információ**, **hibakeresés**és **nyomkövetés**. Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
-| Webkiszolgálói naplózás| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
+| Webkiszolgáló naplózása| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
 | Részletes hibaüzenetek| Windows | App Service fájlrendszer | Az ügyfél böngészőjébe küldendő *. htm* -hibaüzenetek lapjai. Biztonsági okokból a rendszer nem tudja elküldeni a részletes hibaüzeneteket az éles környezetben lévő ügyfeleknek, de App Service a hibaüzenetet minden alkalommal mentheti, amikor olyan alkalmazáshiba történik, amelynek HTTP-kódja 400 vagy nagyobb. A lap tartalmazhat olyan információkat, amelyek segíthetnek meghatározni, hogy a kiszolgáló miért adja vissza a hibakódot. |
-| Sikertelen kérelemkövetés | Windows | App Service fájlrendszer | Részletes nyomkövetési információk a sikertelen kérelmekről, beleértve a kérés feldolgozásához használt IIS-összetevők nyomkövetését és az egyes összetevőkre vonatkozó időt. Ez akkor hasznos, ha javítani szeretné a hely teljesítményét, vagy egy adott HTTP-hibát szeretne elkülöníteni. A rendszer az összes sikertelen kérelemhez létrehoz egy mappát, amely tartalmazza az XML-naplófájlt, valamint az XSL-stíluslapot, amellyel a naplófájlt megtekintheti. |
+| Sikertelen kérelmek nyomkövetése | Windows | App Service fájlrendszer | Részletes nyomkövetési információk a sikertelen kérelmekről, beleértve a kérés feldolgozásához használt IIS-összetevők nyomkövetését és az egyes összetevőkre vonatkozó időt. Ez akkor hasznos, ha javítani szeretné a hely teljesítményét, vagy egy adott HTTP-hibát szeretne elkülöníteni. A rendszer az összes sikertelen kérelemhez létrehoz egy mappát, amely tartalmazza az XML-naplófájlt, valamint az XSL-stíluslapot, amellyel a naplófájlt megtekintheti. |
 | Központi telepítés naplózása | Windows, Linux | App Service fájlrendszer | Naplók, amikor tartalmat tesz közzé egy alkalmazásban. A központi telepítés naplózása automatikusan megtörténik, és nincsenek konfigurálható beállítások a telepítési naplózáshoz. Segít eldönteni, miért nem sikerült üzembe helyezni a központi telepítést. Ha például [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)használ, a központi telepítés naplózásával határozhatja meg, hogy miért sikertelen a parancsfájl. |
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A
 | Szint | Belefoglalt kategóriák |
 |-|-|
 |**Letiltva** | None |
-|**Hiba:** | Hiba, kritikus |
+|**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Információk** | Információ, figyelmeztetés, hiba, kritikus|
 |**Részletes** | Nyomkövetés, hibakeresés, információ, figyelmeztetés, hiba, kritikus (minden kategória) |
@@ -188,7 +188,7 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 | AppServiceHTTPLogs | Igen | Igen | Webkiszolgáló-naplók |
 | AppServiceEnvironmentPlatformLogs | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
 | AppServiceAuditLogs | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | TBA | TBA | Fájl módosítása FTP-n és kudu |
+| AppServiceFileAuditLogs | TBA | Igen | Fájl módosítása FTP-n és kudu |
 | AppServiceAppLogs | TBA | Java SE & tomcat | Alkalmazás-naplók |
 
 ## <a name="nextsteps"></a> Következő lépések

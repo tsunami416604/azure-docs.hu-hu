@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfe569fde8f290c9272520630c2e903e770f223
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6828db6bcb4c7e68d508acc249d9a82024083a00
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293708"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az egybeesik
 
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A egybeesik az **SP** által kezdeményezett egyszeri bejelentkezést támogatja
 * **A belefoglalt idő a** felhasználó üzembe helyezését támogatja
-* Miután konfigurálta a megkötést, kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A konfigurálást követően kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását is biztosítja. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>A beérkezett adatok hozzáadása a katalógusból
 
@@ -156,5 +156,3 @@ Ha a hozzáférési panelen a megegyezni kívánt csempére kattint, automatikus
 - [Az Azure AD-val való együttműködés kipróbálása](https://aad.portal.azure.com)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [A különleges láthatósággal és ellenőrzésekkel szembeni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

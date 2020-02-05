@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434971"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990759"
 ---
 <!---
 Purpose of an Overview article: 
@@ -69,6 +69,13 @@ A szerkesztők emellett testreszabhatják az Azure IoT Central-alkalmazás kezel
 - Egy eszközsablonban található tulajdonságok és beállítások elrendezésének meghatározása.
 - Egyéni irányítópultok konfigurálása, amelyek segítik az operátorokat a megállapítások felismerésében és a problémák gyorsabb megoldásában.
 - Egyéni elemzések konfigurálása, amelyek a csatlakoztatott eszközökről származó idősorozat-adatokat vizsgálják.
+
+## <a name="pricing"></a>Díjszabás
+
+A 7 napos ingyenes próbaverzió használatával IoT Central alkalmazást hozhat létre, vagy használhat standard díjszabási csomagot is.
+
+- Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
+- A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. További információ a [IoT Central díjszabásáról](https://aka.ms/iotcentral-pricing).
 
 ## <a name="connect-your-devices"></a>Az eszközök csatlakoztatása
 

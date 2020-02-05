@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a967fdb4b9c742a0ac7f372e5cd7eeb99171a906
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966899"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987778"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966899"
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 1. Kattintson a [Létrehozás gombra **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Adja meg az összes szükséges beállítást a futásidejű kulcshoz:
+1. Adja meg az összes szükséges beállítást a **futásidejű** kulcshoz:
 
     |Beállítás|Value (Díj)|
     |--|--|
@@ -73,7 +73,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
 
-                // Add your endpoint key
+                // Add your prediction Runtime key
                 String Key = "YOUR-KEY";
 
                 // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
@@ -117,11 +117,11 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
     }
     ```
 
-1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési kulcsával és végpontával.
+1. Cserélje le a `YOUR-KEY`t, és `YOUR-ENDPOINT` értékeket a saját előrejelzési **futtatókörnyezeti** kulccsal és végponttal.
 
     |Információ|Rendeltetés|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres előrejelzési kulcs.|
+    |`YOUR-KEY`|Az 32 karakteres előrejelzési **futtatókörnyezet** kulcsa.|
     |`YOUR-ENDPOINT`| Az előrejelzési URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 

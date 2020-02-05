@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533276"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989084"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
@@ -83,7 +83,8 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
 5. Másolja be az egyik kulcsot (idézőjelek nélkül), amelyet a következő lépésekben a gépére telepítendő, saját üzemeltetésű integrációs modul regisztrálásához használt.  
 
-## <a name="install-the-integration-runtime"></a>Az Integration Runtime telepítése
+## <a name="install-the-integration-runtime-tool"></a>Az Integration Runtime eszköz telepítése
+
 1. Ha az integrációs modul már telepítve van a számítógépen, akkor a **Programok hozzáadása vagy eltávolítása** funkcióval távolítsa el. 
 
 2. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) a saját üzemeltetésű integrációs modult egy helyi windowsos gépre. Futtassa a telepítést.
@@ -135,5 +136,4 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
     h. Válassza a **Teszt** elemet annak ellenőrzéséhez, hogy az integrációs modul kapcsolódni tud-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen kapcsolódás esetén egy hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.    
 
     > [!NOTE]
-    > Jegyezze fel a hitelesítési típus, a kiszolgáló, az adatbázis, a felhasználó és a jelszó értékeit. Az oktatóanyag részében használni fogja őket. 
-    
+    > Jegyezze fel a hitelesítési típus, a kiszolgáló, az adatbázis, a felhasználó és a jelszó értékeit. Az oktatóanyag részében használni fogja őket.

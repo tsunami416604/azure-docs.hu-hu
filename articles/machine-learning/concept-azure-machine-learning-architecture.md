@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845616"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984863"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -85,7 +85,7 @@ A tevékenységek az SDK-n vagy a webes felületen keresztül nyújthatnak érte
 ### <a name="compute-instance"></a>Számítási példány (előzetes verzió)
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
+> A számítási példányok csak olyan munkaterületekhez érhetők el, ahol az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**található, és a közeljövőben más régiók is támogatást kapnak.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 A **Azure Machine learning számítási példány** (korábban notebook VM) egy teljes körűen felügyelt felhőalapú munkaállomás, amely több eszközt és környezetet is tartalmaz a gépi tanuláshoz. A számítási példányok számítási célként használhatók a betanítási és a következtetési feladatokhoz. A nagyméretű feladatokhoz Azure Machine Learning a többcsomópontos skálázási képességekkel rendelkező [számítási fürtök](how-to-set-up-training-targets.md#amlcompute) jobb számítási célt választhatnak.

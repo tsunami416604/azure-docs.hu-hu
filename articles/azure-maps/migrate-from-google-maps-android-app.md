@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643d48cb931bcec1a8a3385d2ec24a394660c368
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6e54d8ea44b6c322f311cc1baeb6ca3ab6715aee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75909187"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989960"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Android-alkalmazás migrálása a Google Mapsből
 
-A Azure Maps Android SDK olyan API-felületet tartalmaz, amely nagyon hasonlít a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az ajánlott eljárások és architektúrák közül sokat alkalmaz, és könnyen át tudja vinni a tudását a másikra.
+A Azure Maps Android SDK egy olyan API-felülettel rendelkezik, amely hasonló a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az egyes fogalmak, ajánlott eljárások és architektúrák közül sokat alkalmazunk. Az ismereteket könnyedén átviheti az egyikből a másikba.
 
 A Azure Maps Android SDK az API 21 minimális Android-verzióját támogatja: Android 5.0.0 (nyalóka).
 
-A Java-ban megadott összes példa, de a Kotlin is használható az Azure Maps Android SDK-val.
+Az összes példa Java nyelven érhető el, azonban a Kotlin a Azure Maps Android SDK-val is használható.
 
-Az SDK-val való fejlesztéssel kapcsolatos további információkért tekintse meg a [Azure Maps Android SDK útmutatóit](how-to-use-android-map-control-library.md) is.
+Az Android SDK Azure Maps használatával történő fejlesztésével kapcsolatos további információkért tekintse meg a [Azure Maps Android SDK útmutatói](how-to-use-android-map-control-library.md)útmutatóit.
 
 ## <a name="load-a-map"></a>Térkép betöltése
 
@@ -32,7 +32,7 @@ Az Android-alkalmazásokban a Google vagy a Azure Maps használatával betölthe
 
 - Egy API-vagy előfizetési kulcs beszerzése a platformhoz való hozzáféréshez.
 - Adjon hozzá néhány XML-t egy tevékenységhez, hogy meghatározza, hol kell megjeleníteni a térképet, és hogy hogyan kell meghatározni.
-- Továbbítsa az összes életciklus-metódust a Térkép nézetet tartalmazó tevékenységből a Map osztály megfelelő értékeire. Különösen a következő módszerekkel kell továbbítania:
+- Továbbítsa az összes életciklus-metódust a Térkép nézetet tartalmazó tevékenységből a Map osztály megfelelő értékeire. Különösen a következő módszereket kell felülbírálnia:
     - `onCreate(Bundle)`
     - `onStart()`
     - `onResume()`
@@ -67,7 +67,7 @@ Ha az Androidhoz készült Google Maps SDK-val szeretne térképet megjeleníten
             android:layout_height="match_parent"/>
     ```
 
-1.  A **MainActivity. Java** fájlban fel kell vennie a Google Maps SDK importálásait. Továbbítsa az összes életciklus-metódust a Térkép nézetet tartalmazó tevékenységből a Map osztály megfelelő értékeire. `MapView` példány a térképi töredékből a `getMapAsync(OnMapReadyCallback)` metódus használatával kérhető le. A `MapView` automatikusan inicializálja a térképek rendszerét és a nézetet. Szerkessze a **MainActivity. Java** fájlt a következőképpen:
+1.  A MainActivity. Java fájlban fel kell vennie a Google Maps SDK importálásait. Továbbítsa az összes életciklus-metódust a Térkép nézetet tartalmazó tevékenységből a Map osztály megfelelő értékeire. `MapView` példány a térképi töredékből a `getMapAsync(OnMapReadyCallback)` metódus használatával kérhető le. A `MapView` automatikusan inicializálja a térképek rendszerét és a nézetet. Szerkessze a **MainActivity. Java** fájlt a következőképpen:
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
@@ -142,7 +142,7 @@ Ha az Androidhoz készült Google Maps SDK-val szeretne térképet megjeleníten
     }
     ```
 
-Ha egy alkalmazásban futott, a Térkép vezérlőelem a következőképpen fog betöltődik.
+Egy alkalmazás futtatásakor a Térkép vezérlőelem a következőképpen lett betöltve.
 
 <center>
 
@@ -152,9 +152,9 @@ Ha egy alkalmazásban futott, a Térkép vezérlőelem a következőképpen fog 
 
 Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni, a következő lépéseket kell elvégeznie:
 
-1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt**, **adattárak** blokkolása szakaszhoz:
+1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt** blokk szakaszhoz:
 
-    ```
+    ```JAVA
     maven {
             url "https://atlas.microsoft.com/sdk/android"
     }
@@ -166,7 +166,7 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
 
     2. Adja hozzá a következő kódot az Android szakaszhoz:
 
-        ```
+        ```JAVA
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -174,15 +174,15 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
         ```
     3. Frissítse a függőségek blokkot, és adjon hozzá egy új implementációs függőségi sort a legújabb Azure Maps Android SDK-hoz:
 
-        ```
+        ```JAVA
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
         > [!Note]
-        > A Azure Maps Android SDK-t rendszeresen frissítjük és bővítettük. A legújabb Azure Maps implementáció verziószámának beszerzéséhez tekintse meg a [Bevezetés az Android Map Control](how-to-use-android-map-control-library.md) dokumentációját. Azt is megteheti, hogy a verziószámot "0,2" értékről "0 +" értékre állítja, hogy mindig a legújabb verzióra mutasson.
+        > A Azure Maps Android SDK-t rendszeresen frissítjük és bővítettük. A legújabb Azure Maps verziószámának beszerzéséhez tekintse meg a [Bevezetés az Android Map Control](how-to-use-android-map-control-library.md) dokumentációját. Azt is megteheti, hogy a verziószám a "0,2" értékről "0 +" értékre van állítva, hogy a kód mindig a legújabb verzióra mutasson.
     
     4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal**elemre.
-3. Térképi töredék hozzáadása a fő tevékenységhez (res \> elrendezés \> tevékenység\_Main. xml):
+3. Térképi töredék hozzáadása a fő tevékenységhez (erőforrások \> elrendezés \> tevékenység\_Main. xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -201,7 +201,7 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
     </FrameLayout>
     ```
 
-4. A **MainActivity. Java** fájlban a következőkre lesz szüksége:
+4. A **MainActivity. Java** fájlban a következőket kell tennie:
     
     * importálások hozzáadása az Azure Maps SDK-hoz
     * a Azure Maps hitelesítési adatainak beállítása
@@ -209,7 +209,7 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
 
     Ha a hitelesítési adatokat a `AzureMaps` osztályban globálisan a `setSubscriptionKey` vagy a `setAadProperties` módszer használatával állítja be, akkor a hitelesítési adatokat nem kell minden nézetben felvennie. 
 
-    A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez, amelyet közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás megfelelően működjön, hívja meg a Map Control életciklusának módszereit, a Térkép vezérlőelemet tartalmazó tevékenységen felül kell bírálnia a következő életciklus-metódusokat, és meg kell hívnia a megfelelő leképezés-vezérlési módszert. 
+    A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez, amelyet közvetlenül a tartalmazó tevékenységből kell meghívni. A Térkép vezérlőelem életciklus-módszereinek helyes meghívásához felül kell bírálnia az alábbi életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben, és meg kell hívnia a megfelelő leképezés-vezérlési módszert. 
 
     * `onCreate(Bundle)` 
     * `onStart()` 
@@ -310,7 +310,7 @@ Egyszerű Azure Maps ![](media/migrate-google-maps-android-app/simple-azure-maps
 Figyelje meg, hogy a Azure Maps-vezérlő támogatja a nagyítást, és több globális nézetet biztosít.
 
 > [!TIP]
-> Ha Android-emulátort használ a Windowsban, előfordulhat, hogy a Térkép nem jelenik meg az OpenGL-vel és a szoftveresen felgyorsított grafikus megjelenítéssel való ütközések miatt. A probléma megoldásához a következő működött. Nyissa meg a AVD-kezelőt, és válassza ki a szerkeszteni kívánt virtuális eszközt. Az **emulált teljesítmény** szakaszban állítsa a **grafikus** beállítást a **hardver**elemre.
+> Ha Android-emulátort használ a Windowsban, előfordulhat, hogy a Térkép nem jelenik meg az OpenGL-vel és a szoftveresen felgyorsított grafikus megjelenítéssel való ütközések miatt. A probléma megoldásához a következő működött. Nyissa meg a AVD-kezelőt, és válassza ki a szerkeszteni kívánt virtuális eszközt. Görgessen le a **Konfiguráció ellenőrzése** panelen. Az **emulált teljesítmény** szakaszban állítsa a **grafikus** beállítást a **hardver**elemre.
 
 ## <a name="localizing-the-map"></a>A Térkép honosítása
 
@@ -318,7 +318,7 @@ Ha a célközönség több ország között oszlik meg, vagy különböző nyelv
 
 **Előtte: Google Maps**
 
-A Térkép nyelve a fő tevékenység `onCreate` metódusában állítható be a Térkép környezeti nézetének beállítása előtt. A következő nyelvi kóddal korlátozza a nyelvet francia nyelvre: "FR".
+A Térkép nyelvét a fő tevékenység `onCreate` metódusában adhatja meg a következő kód hozzáadásával. A Térkép környezeti nézetének beállítása előtt hozzá kell adni a kódot. A következő nyelvi kóddal korlátozza a nyelvet francia nyelvre: "FR".
 
 ```java
 String languageToLoad = "fr";
@@ -365,7 +365,7 @@ A második lehetőség, hogy átadja a nyelvet, és megtekinti az információka
     />
 ```
 
-A harmadik lehetőség az, hogy programozott módon állítsa be a Térkép nyelvét és regionális nézetét a Maps `setStyle` metódus használatával. Ezt bármikor megteheti a Térkép nyelvének és regionális nézetének módosításához.
+A harmadik lehetőség az, hogy programozott módon állítsa be a Térkép nyelvét és regionális nézetét a Maps `setStyle` metódus használatával. Ez a beállítás bármikor beállítható a Térkép nyelvének és regionális nézetének módosításához.
 
 ```java
 mapControl.onReady(map -> {
@@ -384,14 +384,14 @@ A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported
 
 ## <a name="setting-the-map-view"></a>A Térkép nézet beállítása
 
-Az Azure-ban és a Google Maps-ben elérhető dinamikus leképezések programozott módon áthelyezhetők az új földrajzi helyekre a megfelelő módszerek meghívásával. Az alábbi példák azt mutatják be, hogyan lehet a Térkép műhold antennát megjeleníteni, középre állítani a térképet koordinátákkal (szélesség: 35,0272, hosszúság:-111,0225), és a Google Maps-ben a nagyítási szint 15 értékre változik.
+A dinamikus térképek a Azure Maps és a Google Maps szolgáltatásban programozott módon áthelyezhetők az új földrajzi helyekre a megfelelő módszerek meghívásával. Az alábbi példák azt mutatják be, hogyan lehet a Térkép műhold antennát megjeleníteni, középre állítani a térképet koordinátákkal (szélesség: 35,0272, hosszúság:-111,0225), és a Google Maps-ben a nagyítási szint 15 értékre változik.
 
 > [!NOTE]
-> A Google Maps a méretekben 256 képpont méretű csempéket használ, míg Azure Maps nagyobb 512 képpont csempét használ. Ez csökkenti a Azure Maps által igényelt hálózati kérések számát, ha a Google Maps szolgáltatással ugyanazt a térképi területet szeretné betölteni. Ahhoz azonban, hogy a csempe-piramisok hogyan működnek a Térkép vezérlőelemekben, a Azure Maps nagyobb csempéje azt jelenti, hogy ugyanazt a megtekinthető terület a Google Maps-ben is elérhetővé teszi, a Google Maps-ben használt nagyítási szint kivonásával a Azure Maps használatakor.
+> A Google Maps a méretekben 256 képpont méretű csempéket használ, míg Azure Maps nagyobb 512 képpont csempét használ. Ez csökkenti a Azure Maps által igényelt hálózati kérések számát, ha a Google Maps szolgáltatással ugyanazt a térképi területet szeretné betölteni. Ahhoz azonban, hogy a csempe-piramisok hogyan működnek a Térkép vezérlőelemekben, a Azure Maps nagyobb csempéje azt jelenti, hogy ugyanazt a megtekinthető terület a Google Maps-ben is elérhetővé teszi, a Google Maps-ben használt nagyítási szint kivonásával a Azure Maps használatakor. 
 
 **Előtte: Google Maps**
 
-A Google Maps Map vezérlő kamerája programozott módon áthelyezhető a `moveCamera` metódussal, amely lehetővé teszi a Térkép középpontjának és a nagyítási szint megadását. A `setMapType` metódussal lehet megváltoztatni a megjelenített Térkép típusát.
+A Google Maps Map vezérlő kamerája programozott módon áthelyezhető a `moveCamera` metódus használatával, amely lehetővé teszi a Térkép középpontjának és a nagyítási szint megadását. A `setMapType` metódussal lehet megváltoztatni a megjelenített Térkép típusát.
 
 ```java
 @Override
@@ -468,7 +468,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-Azure Maps pontban az adatpontok a térképen is megtekinthetők, ha először hozzáadja az adatforráshoz, majd az adatforrást egy szimbólum réteghez csatlakoztatja. Az adatforrás optimalizálja a térbeli adatok kezelését a Térkép vezérlőelemben, és a szimbólum réteg megadja, hogyan kell megjeleníteni a pontok információit képként és/vagy szövegként.
+A Azure Mapsban az adatpontok adatforráshoz való hozzáadásával a térképen megjeleníthető a pontok. Ezt követően az adatforrás csatlakoztatása egy szimbólum réteghez Az adatforrás optimalizálja a Térkép vezérlőelem térbeli adatainak kezelését. A szimbólum réteg azt adja meg, hogyan lehet megjeleníteni a pontok információit képként és/vagy szövegként.
 
 ```java
 mapControl.onReady(map -> {
@@ -490,18 +490,18 @@ mapControl.onReady(map -> {
 
 ## <a name="adding-a-custom-marker"></a>Egyéni jelölő hozzáadása
 
-Az egyéni rendszerképeket egy térképen ábrázoló pontok ábrázolására lehet használni. Az alábbi ábrán egy egyéni rendszerkép jelenik meg, amely egy pontot jelenít meg a térképen a következő helyen: (szélesség: 51,5, hosszúság:-0,2), és kiegyenlíti a jelölő pozícióját, hogy a gombostű ikon a Térkép helyes helyére legyen igazítva.
+Az egyéni rendszerképeket egy térképen ábrázoló pontok ábrázolására lehet használni. Az alábbi példákban található Térkép egyéni rendszerképet használ egy pont megjelenítésére a térképen. A pont a következő szélességben: 51,5 és hosszúság:-0,2. A Térkép kiegyenlíti a jelölő pozícióját, hogy a gombostű ikon a térképen a megfelelő pozícióval legyen igazítva.
 
 <center>
 
 ![sárga gombostű-rendszerkép](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
 YLW\_gombostű. png</center>
 
-A fenti képen mindkét példában a rendszer hozzáadja az alkalmazások erőforrásainak megrajzolható mappájához.
+Mindkét példában megjelenik a fenti rendszerkép az alkalmazások erőforrásainak megrajzolható mappájába.
 
 **Előtte: Google Maps**
 
-A Google Maps segítségével egyéni rendszerképeket használhat a jelölők számára, ha betölti őket a jelölő `icon` lehetőségével. Ha a kép pontját a koordináta felé szeretné igazítani, akkor a `anchor` lehetőség használható. A horgony a rendszerkép méreteihez képest, ebben az esetben a 0,2 egység széles és 1 egység magas.
+A Google Maps használatával a jelölők egyéni rendszerképeket is használhatnak. Egyéni rendszerképek betöltése a jelölő `icon` kapcsolójának használatával. Ha a kép pontját a koordinátahöz szeretné igazítani, használja a `anchor` kapcsolót. A horgony a rendszerkép méreteihez képest, ebben az esetben a 0,2 egység széles és 1 egység magas.
 
 ```java
 @Override
@@ -520,7 +520,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-A Azure Maps az egyéni rendszerképeket is támogatja, de a lemezképet először be kell tölteni a Térkép erőforrásaiba, és hozzá kell rendelni egy egyedi azonosítót. A szimbólum réteg ezután hivatkozhat erre az AZONOSÍTÓra. A szimbólum eltolással lehet a képen a megfelelő pontra igazítani a `iconOffset` kapcsoló használatával. Vegye figyelembe, hogy az ikon eltolása képpontban megadva. Alapértelmezés szerint az eltolás a rendszerkép alsó középpontjához képest relatív értékre van állítva, de ez a `iconAnchor` kapcsolóval módosítható. Ez a példa a `iconAnchor` beállítást állítja be, hogy `"center"`, és egy ikon eltolásával helyezze át a képet öt képpontot jobbra, a 15 képpontot pedig a gombostű-rendszerkép pontjához igazítva.
+Azure Maps támogatja az egyéni rendszerképeket, de először a lemezképet be kell tölteni a Térkép erőforrásaiba, és hozzá kell rendelni egy egyedi azonosítót. A szimbólum réteg ezután hivatkozhat erre az AZONOSÍTÓra. A szimbólum eltolása úgy, hogy a `iconOffset` kapcsoló használatával a képen a megfelelő pontra legyen igazítva. Az ikon eltolása képpontban megadva. Alapértelmezés szerint az eltolás a rendszerkép alsó középpontjához képest relatív értékre van állítva, de az eltolás értéke a `iconAnchor` kapcsolóval módosítható. Ez a példa a `iconAnchor` beállítást állítja be, hogy `"center"`, és egy ikon eltolásával helyezze át a képet öt képpontot jobbra, a 15 képpontot pedig a gombostű-rendszerkép pontjához igazítva.
 
 ```java
 mapControl.onReady(map -> {
@@ -580,7 +580,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-Azure Maps a vonalláncok neve LineString vagy MultiLineString objektum. Ezek az objektumok hozzáadhatók egy adatforráshoz, és egy sor réteg használatával is megjeleníthető. Vegye figyelembe, hogy a stroke width és a Dash Array "pixel" egységei a Azure Maps web SDK-ban vannak igazítva, amely ugyanazokat az értékeket használja mindkét SDK-ban, ugyanazokat az eredményeket használják.
+Azure Maps a vonalláncok neve `LineString` vagy `MultiLineString` objektum. Ezek az objektumok hozzáadhatók egy adatforráshoz, és egy sor réteg használatával is megjeleníthető. A stroke width és a Dash Array "pixel" egységei a Azure Maps web SDK-ban vannak igazítva, amely ugyanazt az értéket használja mindkét SDK-ban, és ugyanazokat az eredményeket használják.
 
 ```java
 mapControl.onReady(map -> {
@@ -643,7 +643,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-Azure Maps a sokszög és a többsokszögű objektumok hozzáadhatók egy adatforráshoz, és a térképen a rétegek használatával is megjeleníthető. A sokszög területe egy sokszög rétegben jeleníthető meg. A sokszög körvonalait egy vonal réteggel lehet megjeleníteni. Vegye figyelembe, hogy a stroke width és a Dash Array "pixel" egységei a Azure Maps web SDK-ban vannak igazítva, amely ugyanazokat az értékeket használja mindkét SDK-ban, ugyanazokat az eredményeket használják.
+A Azure Mapsban `Polygon` és `MultiPolygon` objektumok hozzáadhatók egy adatforráshoz, és a térképen a rétegek használatával is megjeleníthető. A sokszög területe egy sokszög rétegben jeleníthető meg. A sokszög körvonalait egy vonal réteggel lehet megjeleníteni. A stroke width és a Dash Array "pixel" egységei a Azure Maps web SDK-ban vannak igazítva, amely ugyanazt az értéket használja mindkét SDK-ban, és ugyanazokat az eredményeket használják.
 
 ```java
 mapControl.onReady(map -> {
@@ -679,7 +679,7 @@ mapControl.onReady(map -> {
 
 ## <a name="overlay-a-tile-layer"></a>Csempe rétegének átfedése
 
-A csempék, más néven képátfedések a Google Maps-ben lehetővé teszik, hogy olyan rétegbeli képeket illesszen be, amelyek a Maps csempe rendszerhez igazított kisebb csempés képekre vannak bontva. Ez egy gyakori módszer a rétegek vagy nagyon nagy adathalmazok átfedésére.
+ A csempe rétegek lehetővé teszik, hogy olyan rétegbeli képeket illesszen be, amelyeket kisebb csempés képekre bontottak, amelyek a Maps csempe rendszerhez igazodnak. Ez a módszer a rétegek és a nagyméretű adathalmazok átfedésének gyakori módja. A csempék rétegeit képátfedésként nevezzük a Google Maps-ben.
 
 Az alábbi példák egy időjárási radar csempe réteget fedik fel az Iowa State University Iowa környezeti Mesonet. A csempék mérete 256 képpont.
 
@@ -718,10 +718,10 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-Azure Maps a csempék rétegét ugyanúgy lehet a térképhez adni, mint bármely más rétegben. Olyan formázott URL-cím, amely x, y és nagyítási helyőrzőket tartalmaz; a `{x}`, `{y}`, `{z}` vagy annak a rétegnek a használatával kell eldönteni, hogy hová fér hozzá a csempék. A rétegek Azure Maps a `{quadkey}`, a `{bbox-epsg-3857}` és a `{subdomain}` helyőrzőket is támogatják. A csempék félig áttetszővé tételéhez a rendszer 0,8-es opacitási értéket használ. Vegye figyelembe, hogy az opacitás és az átlátszóság, bár hasonló, fordított értékeket használjon. A közöttük való átalakítás egyszerűen kivonja az értéket az első számból.
+A térképhez hasonló módon adhat hozzá egy csempe réteget, mint bármely más réteget. Olyan formázott URL-cím, amely x, y és nagyítási helyőrzőket tartalmaz; a `{x}`, `{y}`, `{z}` vagy annak a rétegnek a használatával kell eldönteni, hogy hová fér hozzá a csempék. A rétegek Azure Maps a `{quadkey}`, a `{bbox-epsg-3857}`és a `{subdomain}` helyőrzőket is támogatják. A csempék félig áttetszővé tételéhez a rendszer 0,8-es opacitási értéket használ. A fedettség és az átlátszóság, bár hasonló, fordított értékeket használjon. A közöttük való átalakításhoz vonja ki az értékét az első számból.
 
 > [!TIP]
-> Azure Maps rétegekben könnyen megjeleníthető más rétegek alatt, beleértve az alapszintű leképezési rétegeket is. Gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempe rétegeit, hogy azok könnyen olvashatók legyenek. A `map.layers.add` metódus egy második paramétert vesz igénybe, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. A Térkép felirat alatti csempe réteg beszúrásához a következő kód használható: `map.layers.add(myTileLayer, "labels");`
+> Azure Maps rétegekben könnyen megjeleníthető más rétegek alatt, beleértve az alapszintű leképezési rétegeket is. Gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempe rétegeit, hogy azok könnyen olvashatók legyenek. A `map.layers.add` metódus egy második paramétert használ, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. A Térkép felirat alatti csempe réteg beszúrásához a következő kód használható: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {
@@ -740,7 +740,7 @@ mapControl.onReady(map -> {
 
 ## <a name="show-traffic"></a>Forgalom megjelenítése
 
-A forgalmi adatok az Azure és a Google Maps is felhelyezhetők.
+A forgalmi adatok a Azure Maps és a Google Maps szolgáltatásban is elhelyezhetők.
 
 **Előtte: Google Maps**
 
@@ -761,7 +761,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Utána: Azure Maps**
 
-Azure Maps számos különböző lehetőséget biztosít a forgalom megjelenítéséhez. A forgalmi incidensek, például a közúti bezárások és a balesetek ikonként is megjeleníthetők a térképen. A forgalom, a színkódolt utak a térképen is behelyezhetők, és a színek a feladott sebességkorlátozás alapján módosíthatók, a normál várható késéshez képest, vagy abszolút késleltetéssel. Az incidensek Azure Maps percenként frissülnek, és az adatforgalom két percenként történik.
+Azure Maps számos különböző lehetőséget biztosít a forgalom megjelenítéséhez. A forgalmi incidensek, például a közúti bezárások és a balesetek ikonként is megjeleníthetők a térképen. A térképen a forgalmi folyamat, a színkódolt utak is behelyezhetők. A színek úgy módosíthatók, hogy megjelenjenek a közzétett sebességi korláthoz képest, a normál várható késéshez képest, vagy az abszolút késleltetéssel. Az incidensek Azure Maps percenként frissülnek, és két percenként frissülnek a flow-adatforgalom.
 
 ```java
 mapControl.onReady(map -> {

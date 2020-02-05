@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911081"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985917"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 
-Ez a cikk bemutatja, hogyan használhatja a [map Class Events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) tulajdonságot a Térkép eseményeinek és a Térkép különböző rétegeinek kiemeléséhez. Azt is bemutatja, hogyan használhatja a Map Class Events tulajdonságot az események kiemelésére a HTML-jelölővel való interakció során.
+Ez a cikk bemutatja, hogyan használhatja a [map Events osztályt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). A tulajdonság kiemeli az eseményeket a térképen és a Térkép különböző rétegein. Az eseményeket kiemelheti a HTML-jelölővel való interakció során is.
 
 ## <a name="interact-with-the-map"></a>A térképpel való interakció
 
-Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megfelelő egérmutatóval jelölt eseményeket. A **js lapra** kattintva megtekintheti és szerkesztheti a JavaScript-kódot. Kattintson a **Szerkesztés CodePen** gombra, és szerkessze a kódot a CodePen.
+Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megfelelő egérmutatóval jelölt eseményeket. A **js lapra** kattintva megtekintheti és szerkesztheti a JavaScript-kódot. A CodePen-on található kód módosításához kattintson a **Szerkesztés a CodePen** elemre.
 
 <br/>
 
@@ -31,7 +31,7 @@ Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megf
 
 ## <a name="interact-with-map-layers"></a>A Térkép rétegekkel való interakció
 
-A következő kód kiemeli az események nevét, amelyekkel a rendszer a szimbólum réteggel folytatott kommunikáció során felveszi a munkát. A szimbólum, a buborék, a vonal és a sokszög réteg egyaránt támogatja ugyanezeket az eseményeket. A Heat Térkép és a csempe réteg nem támogatja ezeket az eseményeket.
+A következő kód kiemeli a kilőtt eseményt, amikor a szimbólum réteggel lép kapcsolatba. A szimbólum, a buborék, a vonal és a sokszög réteg egyaránt támogatja ugyanezeket az eseményeket. A Heat Térkép és a csempe réteg nem támogatja ezeket az eseményeket.
 
 <br/>
 

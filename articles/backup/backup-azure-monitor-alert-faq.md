@@ -4,50 +4,49 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172929"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989569"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
-Ez a cikk az Azure figyelési riasztásával kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk Azure Backup figyeléssel és jelentéskészítéssel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Hogyan ellenőrizze, hogy megkezdődött-e a jelentéskészítési adatforgalom egy Storage-fiókba?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Hogyan ellenőrizze, hogy megkezdődött-e a jelentéskészítési adatforgalom egy Log Analytics (LA) munkaterületen?
 
-Lépjen a konfigurált Storage-fiókra, és válassza a tárolók lehetőséget. Ha a tároló tartalmaz egy bejegyzést az elemzésekhez – naplók – azurebackupreport, azt jelzi, hogy a jelentéskészítési adat elindult.
+Navigáljon a konfigurált LA munkaterületre, navigáljon a **naplók** menüponthoz, és futtassa a lekérdezési CoreAzureBackup | igény szerint 1. Ha egy visszaadott rekord jelenik meg, az azt jelenti, hogy az adatok a munkaterületre áramlanak. A kezdeti adatküldés akár 24 óráig is eltarthat.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Milyen gyakorisággal történik az adatküldés a Storage-fiókba és a Azure Backup a Content Pack csomagba Power BI?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Milyen gyakorisággal történik az adatküldés egy LA munkaterületre?
 
-  A 0. nap felhasználói számára körülbelül 24 órát vesz igénybe az adatgyűjtés egy Storage-fiókba. A kezdeti leküldés befejezése után az Adatfrissítés az alábbi ábrán látható gyakorisággal történik.
+A tárolóból származó diagnosztikai adatok bekerülnek a Log Analytics munkaterületre, és némi késéssel. Minden esemény 20 – 30 perccel a Log Analytics munkaterületen érkezik, miután leküldte a Recovery Services-tárolóból. További részletek a lag-ról:
 
-* A feladatokkal, **riasztásokkal**, **biztonsági másolati elemekkel** **, tárolókkal,** **védett kiszolgálókkal**és **házirendekkel** kapcsolatos adatokat a rendszer az ügyfél-Storage-fiókba küldi, a naplózott módon.
+* Az összes megoldás esetében a biztonsági mentési szolgáltatás beépített riasztásait azonnal leküldi a rendszer a létrehozásuk után. Így általában 20 – 30 perc múlva jelennek meg az Log Analytics munkaterületen.
+* Minden megoldásban az igény szerinti biztonsági mentési feladatok és a visszaállítási feladatok a befejezésük után azonnal leküldve lesznek.
+* Az SQL Backup kivételével az összes megoldás esetében az ütemezett biztonsági mentési feladatok a befejezésük után azonnal leküldve lesznek.
+* Az SQL Backup szolgáltatásban, mivel a naplók biztonsági mentései 15 percenként fordulnak elő, az összes befejezett ütemezett biztonsági mentési feladatra vonatkozó információ, beleértve a naplókat, a kötegbe kerül, és 6 óránként küldi el azokat.
+* Minden megoldásban, például a biztonsági másolati elem, a házirend, a helyreállítási pontok, a tárterület és így tovább, naponta legalább egyszer leküldjük.
+* A biztonsági mentési konfiguráció (például a házirend módosítása vagy a szerkesztési szabályzat) változása elindítja az összes kapcsolódó biztonsági mentési információt.
 
-* A **tárterülettel kapcsolatos adattárolást** 24 óránként küldi el a rendszer az ügyfél Storage-fiókjába.
+### <a name="how-long-can-i-retain-reporting-data"></a>Mennyi ideig tarthatom a jelentési adat?
 
-    ![Azure Backup jelentés leküldéses gyakorisága](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Egy LA munkaterület létrehozása után megadhatja, hogy legfeljebb 2 évig őrizze meg az adatmennyiséget. Alapértelmezés szerint a LA munkaterület 31 napig őrzi meg az adatmegőrzési időtartamot.
 
-* A Power BI [naponta egyszer ütemezett frissítést](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)tartalmaz. A Content Pack Power BIban lévő adatok manuális frissítését végezheti el.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Megjelenik az összes adataim a jelentésekben az LA munkaterület konfigurálása után?
 
-### <a name="how-long-can-i-retain-reports"></a>Mennyi ideig tarthatom a jelentéseket?
-
-A Storage-fiók konfigurálásakor kiválaszthatja a jelentési adatok megőrzési idejét a Storage-fiókban. Kövesse a [Storage-fiók konfigurálása a jelentések számára](backup-azure-configure-reports.md#configure-storage-account-for-reports) szakasz 6. lépését. Emellett az [Excelben is elemezheti a jelentéseket](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) , és az igényeinek megfelelően mentheti azokat hosszabb megőrzési időtartamra.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Megjelenik az összes adataim a jelentésekben a Storage-fiók konfigurálása után?
-
- A Storage-fiók konfigurálása után létrehozott összes információ a Storage-fiókba kerül, és elérhetővé válik a jelentésekben. A folyamatban lévő feladatok nem továbbítódnak a jelentéskészítéshez. Miután a feladatok befejeződik vagy sikertelenek lesznek, a rendszer elküldi a jelentéseknek.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Ha már konfiguráltam a Storage-fiókot a jelentések megtekintéséhez, módosíthatom a konfigurációt egy másik Storage-fiók használatára?
-
-Igen, úgy módosíthatja a konfigurációt, hogy egy másik Storage-fiókra mutasson. Használja az újonnan konfigurált Storage-fiókot, amikor csatlakozik a Azure Backup Content Pack csomaghoz. Egy másik Storage-fiók konfigurálása után a rendszer a Storage-fiókban lévő új adatfolyamatokat is elvégezte. A régebbi adatmennyiség (a konfiguráció módosítása előtt) továbbra is a régebbi Storage-fiókban marad.
+ A rendszer a diagnosztikai beállítások konfigurálása után létrehozott összes adathalmazt a LA munkaterületre küldi, és elérhetővé válik a jelentésekben. A folyamatban lévő feladatok nem továbbítódnak a jelentéskészítéshez. Miután a feladatok befejeződik vagy sikertelenek lesznek, a rendszer elküldi a jelentéseknek.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Megtekinthetem a jelentéseket a tárolók és az előfizetések között?
 
-Igen, ugyanazt a Storage-fiókot több tárolón is konfigurálhatja a több-tár közötti jelentések megtekintéséhez. Ugyanezt a Storage-fiókot is konfigurálhatja a tárakhoz az előfizetések között. Ezt követően használhatja ezt a Storage-fiókot, amikor a Power BI Azure Backup-csomaghoz csatlakozik a jelentések megtekintéséhez. A kiválasztott Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak.
+Igen, megtekintheti a jelentéseket a tárakban és az előfizetésekben, valamint a régiókban is. Előfordulhat, hogy az adatai egyetlen LA munkaterületen vagy egy LA munkaterületen belül találhatók.
+
+### <a name="can-i-view-reports-across-tenants"></a>Megtekinthetem a jelentéseket a bérlők között?
+
+Ha Ön [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) -felhasználó, aki delegált hozzáféréssel rendelkezik ügyfelei előfizetéséhez vagy a La munkaterületekhez, a biztonsági mentési jelentések segítségével megtekintheti az összes bérlő adatait.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart az Azure Backup-ügynök feladata, hogy tükrözze a portálon?
 
@@ -85,7 +84,7 @@ Igen. A következő helyzetekben a rendszer nem küld értesítéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-További gyakori kérdések:
+További gyakori kérdéseket is áttekinthet:
 
 * [Gyakori kérdések](backup-azure-vm-backup-faq.md) az Azure-beli virtuális gépek biztonsági mentéséről.
-* Az Azure Backup-ügynökkel kapcsolatos [Gyakori kérdések](backup-azure-file-folder-backup-faq.md)
+* [Gyakori kérdések](backup-azure-file-folder-backup-faq.md) az Azure Backup-ügynökről

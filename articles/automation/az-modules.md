@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418827"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986104"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Az modul támogatása Azure Automation
 
@@ -18,7 +18,7 @@ Az Azure Automation lehetővé teszi az [Azure PowerShell az modul](/powershell/
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Számos dolgot figyelembe kell venni, ha az az modult használja Azure Automationban. A runbookok és modulokat az Automation-fiók magasabb szintű megoldásai is használhatják. A runbookok szerkesztése vagy a modulok frissítése potenciálisan problémákat okozhat a runbookok. Az új `Az` modulok importálása előtt gondosan tesztelje az összes runbookok és-megoldást egy külön Automation-fiókban. A modulok módosításai negatívan megadhatják a [Start/Stop](automation-solution-vm-management.md) megoldást. Javasoljuk, hogy ne változtassa meg a modulokat és a runbookok olyan Automation-fiókokban, amelyek bármilyen megoldást tartalmaznak. Ez a viselkedés nem jellemző az az modulokra. Ezt a viselkedést figyelembe kell venni az Automation-fiók módosításainak bevezetésekor.
+Számos dolgot figyelembe kell venni, ha az az modult használja Azure Automationban. A runbookok és modulokat az Automation-fiók magasabb szintű megoldásai is használhatják. A runbookok szerkesztése vagy a modulok frissítése potenciálisan problémákat okozhat a runbookok. Az új `Az` modulok importálása előtt gondosan tesztelje az összes runbookok és-megoldást egy külön Automation-fiókban. A modulok módosításai negatív hatással lehetnek a [Start/Stop](automation-solution-vm-management.md) megoldásra. Nem javasoljuk, hogy a modulokat és a runbookok olyan Automation-fiókokban változtassa meg, amelyek bármilyen megoldást tartalmaznak. Ez a viselkedés nem jellemző az az modulokra. Ezt a viselkedést figyelembe kell venni az Automation-fiók módosításainak bevezetésekor.
 
 `Az` modulnak az Automation-fiókba való importálása nem importálja automatikusan a modult a runbookok által használt PowerShell-munkamenetbe. A modulok a következő helyzetekben importálhatók a PowerShell-munkamenetbe:
 

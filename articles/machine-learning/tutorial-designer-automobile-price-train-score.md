@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934048"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982603"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -135,7 +135,9 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **összes oszlop**lehetőséget.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
+
+1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás**elem mellett, majd válassza az **összes oszlop**lehetőséget.
 
 1. Új szabály hozzáadásához válassza ki a **+** .
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844092"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984812"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -50,7 +50,7 @@ A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre é
 
 A következő esetekben hozhat létre Azure Machine Learning számítási példányokat (előzetes verzió) vagy számítási fürtöket:
 
-| | Azure Machine Learning Studio | Azure portál | SDK | Resource Manager-sablon | CLI |
+| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sablon | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Számítási példány | igen | igen | igen | igen |  |
 | Számítási fürt | igen | igen | igen | igen | igen |
@@ -58,7 +58,7 @@ A következő esetekben hozhat létre Azure Machine Learning számítási péld�
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, a más típusú számítási céloktól eltérően.
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
+> A számítási példányok csak olyan munkaterületekhez érhetők el, ahol az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**található, és a közeljövőben más régiók is támogatást kapnak.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 ### <a name="compute-clusters"></a>Számítási fürtök

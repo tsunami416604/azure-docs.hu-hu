@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949116"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982908"
 ---
 # <a name="date-claims-transformations"></a>A jogcímek átalakításának dátuma
 
@@ -92,7 +92,7 @@ A **dátum** claimType egy **datetime** claimType alakítja át. A jogcím-átal
 | Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | InputClaim | dátum | Az átalakítandó ClaimType. |
-| outputClaim | outputClaim | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| OutputClaim | OutputClaim | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Az alábbi példa azt mutatja be, hogy a jogcím `dateOfBirth` (dátum adattípus) átalakítása egy másik jogcímre `dateOfBirthWithTime` (dateTime adattípus).
 
@@ -114,13 +114,42 @@ Az alábbi példa azt mutatja be, hogy a jogcím `dateOfBirth` (dátum adattípu
 - Kimeneti jogcímek:
     - **outputClaim**: 1559347200 (2019 12:00:00. június 1.)
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+Egy **datetime** claimType alakít át egy **dátum** -claimType. A jogcím-átalakítás eltávolítja az időformátumot a dátumból.
+
+| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | InputClaim | dateTime | Az átalakítandó ClaimType. |
+| OutputClaim | OutputClaim | dátum | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+
+Az alábbi példa azt mutatja be, hogy a jogcím `systemDateTime` (dateTime adattípus) átalakítása egy másik jogcímre `systemDate` (dátum adattípus).
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti jogcímek:
+  - **inputClaim**: 1559347200 (2019 12:00:00. június 1.)
+- Kimeneti jogcímek:
+  - **outputClaim**: 2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 Az aktuális UTC dátum és idő lekérése és az érték hozzáadása egy ClaimType.
 
 | Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| outputClaim | currentDateTime | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| OutputClaim | currentDateTime | dateTime | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -143,9 +172,9 @@ Annak megállapítása, hogy egy dateTime később, korábban vagy egyenlő-e eg
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | Az első dateTime érték, amely azt hasonlítja össze, hogy korábbi vagy későbbi, mint a második dateTime. A Null érték kivételt jelez. |
 | InputClaim | secondDateTime | dateTime | A második dátum és idő, amely azt hasonlítja össze, hogy az előbbi vagy későbbi, mint az első dateTime. A null értéket a rendszer az aktuális datetTime kezeli. |
-| InputParameter | operátor | sztring | A következő értékek egyike: azonos, későbbi, vagy korábbi, mint. |
+| InputParameter | üzemeltető | sztring | A következő értékek egyike: azonos, későbbi, vagy korábbi, mint. |
 | InputParameter | timeSpanInSeconds | int | Adja hozzá a TimeSpan az első datetime értékhez. |
-| outputClaim | eredmény | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| OutputClaim | találat | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Ezzel a jogcím-átalakítással megállapíthatja, hogy két ClaimTypes egyenlő, később vagy korábban, mint egymást. Előfordulhat például, hogy a felhasználó az utolsó alkalommal fogadta el a szolgáltatási feltételeket (TOS). 3 hónap elteltével megkérheti a felhasználót, hogy ismét hozzáférjen a TSz-hez.
 A jogcím-átalakítás futtatásához először le kell kérnie az aktuális dateTime értéket, és az utolsó alkalommal a felhasználó elfogadja a TSz-ket.

@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása a Azure Migrate
 description: Ismerje meg a fizikai kiszolgálók értékelésének támogatását a Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846567"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990334"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -38,7 +38,7 @@ Ha a helyszíni gépeket az Azure-ba való áttelepítésre szeretné felmérni,
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy egy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** Állítson be egy helyi felhasználói fiókot az összes olyan Windows-kiszolgálón, amelyet fel szeretne venni a felderítésbe. A felhasználói fiókot fel kell venni a következő csoportokhoz: Távoli asztal felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
+| **Engedélyek**           | **Windows:** Állítson be egy helyi vagy tartományi felhasználói fiókot a felderítésbe felvenni kívánt Windows-kiszolgálókon. A felhasználói fiókot fel kell venni a következő csoportokhoz: Távoli asztal felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
 | **Operációs rendszer** | Az összes [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -operációs rendszer támogatott, a következők kivételével:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

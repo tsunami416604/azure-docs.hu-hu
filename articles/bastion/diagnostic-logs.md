@@ -1,22 +1,22 @@
 ---
-title: Azure Bastion diagnosztikai naplók engedélyezése és használata | Microsoft Docs
+title: Azure-beli megerősített diagnosztikai naplók engedélyezése és használata
 description: Ebből a cikkből megtudhatja, hogyan engedélyezheti és dolgozhat az Azure Bastion diagnosztikai naplóival.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512404"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989450"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>A megerősített diagnosztikai naplók engedélyezése és használata
 
-Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a munkaterhelésekhez, a Bastion naplózhatja a távoli munkamenetek diagnosztikát. Ezután a diagnosztika használatával megtekintheti, hogy mely felhasználók mely munkaterhelésekhez kapcsolódnak, milyen időpontban, hol és más hasonló naplózási információkkal. A diagnosztika használatához engedélyeznie kell a diagnosztikai naplókat az Azure Bastion-ben. Ennek a cikknek a segítségével engedélyezheti a diagnosztikai naplókat, majd megtekintheti a naplókat.
+Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a munkaterhelésekhez, a Bastion naplózhatja a távoli munkamenetek diagnosztikát. Ezután a diagnosztika használatával megtekintheti, hogy mely felhasználók kapcsolódtak a munkaterhelésekhez, hogy milyen időpontban, hol és más hasonló naplózási információkkal. A diagnosztika használatához engedélyeznie kell a diagnosztikai naplókat az Azure Bastion-ben. Ennek a cikknek a segítségével engedélyezheti a diagnosztikai naplókat, majd megtekintheti a naplókat.
 
 ## <a name="enable"></a>Diagnosztikai napló engedélyezése
 
@@ -77,6 +77,6 @@ A diagnosztikai naplók eléréséhez közvetlenül használhatja azt a Storage-
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

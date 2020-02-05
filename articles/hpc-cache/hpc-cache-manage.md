@@ -4,18 +4,18 @@ description: Az Azure HPC cache kezelése és frissítése a Azure Portal haszn�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867078"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988861"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
-A gyorsítótár Áttekintés lapja a Azure Portal megjeleníti a projekt részleteit, a gyorsítótár állapotát és a gyorsítótár alapszintű statisztikáit. Emellett a gyorsítótár törlésére, az adatürítések hosszú távú tárolásra vagy a szoftverek frissítésére vonatkozó vezérlőket is tartalmaz.
+A gyorsítótár Áttekintés lapja a Azure Portal megjeleníti a projekt részleteit, a gyorsítótár állapotát és a gyorsítótár alapszintű statisztikáit. Emellett a gyorsítótár leállításához vagy elindításához, a gyorsítótár törléséhez, az adatürítéshez és a szoftver frissítéséhez szükséges vezérlőkkel is rendelkezik.
 
 Az Áttekintés lap megnyitásához válassza ki a gyorsítótár-erőforrást a Azure Portal. Töltse be például a **minden erőforrás** lapot, és kattintson a gyorsítótár nevére.
 
@@ -23,12 +23,29 @@ Az Áttekintés lap megnyitásához válassza ki a gyorsítótár-erőforrást a
 
 A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 
+* **Indítás** és [**Leállítás**](#stop-the-cache) – gyorsítótári művelet felfüggesztése
 * [**Ürítés**](#flush-cached-data) – módosított adatot ír a tárolási célokba
 * [**Frissítés**](#upgrade-cache-software) – frissíti a gyorsítótár szoftverét
 * **Frissítés** – újratölti az Áttekintés oldalt
 * [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
 
 Az alábbi lehetőségekről itt olvashat bővebben.
+
+## <a name="stop-the-cache"></a>A gyorsítótár leállítása
+
+A gyorsítótár leállításával csökkentheti a költségeket az inaktív időszakokban. Nem számítunk fel időt a gyorsítótár leállítási idejére, de a gyorsítótár lefoglalt lemezes tárterületét kell fizetnie. (A részletekért tekintse meg a [díjszabási](https://aka.ms/hpc-cache-pricing) oldalt.)
+
+A leállított gyorsítótár nem válaszol az ügyfelek kéréseire. A gyorsítótár leállítása előtt le kell választania az ügyfeleket.
+
+A **Leállítás** gomb felfüggeszti az aktív gyorsítótárat. A **Leállítás** gomb akkor érhető el, ha a gyorsítótár állapota **kifogástalan** vagy **csökkentett teljesítményű**.
+
+![képernyőkép a leállítást lefedő gombokról és egy előugró üzenetről, amely leírja a leállítási műveletet, és azt kérdezi, hogy folytatja? Igen (alapértelmezett) és nincs gomb](media/stop-cache.png)
+
+Miután rákattintott az Igen gombra a gyorsítótár leállításának megerősítéséhez, a gyorsítótár automatikusan kiüríti a tartalmát a tárolási célokhoz. Ez a folyamat hosszabb időt is igénybe vehet, de gondoskodik az adatkonzisztenciaről. Végül a gyorsítótár állapota **Leállítva**értékre változik.
+
+A leállított gyorsítótár újraaktiválásához kattintson a **Start** gombra. Nincs szükség jóváhagyásra.
+
+![képernyőkép a legfontosabb gombokról a Start Kiemelt](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>Gyorsítótárazott adattárolás ürítése
 
@@ -68,13 +85,14 @@ A tárolási célokként használt háttérbeli tárolási kötetek nem érintik
 > [!NOTE]
 > Az Azure HPC-gyorsítótár nem ír automatikusan módosított adatokból a gyorsítótárból a háttér-tárolási rendszerbe a gyorsítótár törlése előtt.
 >
-> Az alábbi eljárást követve győződjön meg arról, hogy a gyorsítótárban lévő összes adattal a hosszú távú tárolásra lett írva:
+> Annak érdekében, hogy a gyorsítótárban lévő összes adattal a hosszú távú tárolásra legyen írva, [a törlés előtt állítsa le a gyorsítótárat](#stop-the-cache) . Győződjön meg arról, hogy az állapot **leállt** , mielőtt a Törlés gombra kattintana.
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. [Távolítsa el](hpc-cache-edit-storage.md#remove-a-storage-target) az egyes tárolási célokat az Azure HPC-gyorsítótárból a tárolási célok lapon található törlés gombbal. A rendszer automatikusan a gyorsítótárból a háttér-tárolási rendszerbe írja a módosult adatot a cél eltávolítása előtt.
-> 1. Várjon, amíg a tárolási cél teljesen el lesz távolítva. A folyamat akár egy órát is igénybe vehet, ha sok adattal kell írni a gyorsítótárból. Ha elkészült, a portál értesítése szerint a törlési művelet sikeres volt, és a tárolási cél eltűnik a listából.
-> 1. Miután az összes érintett tárolási cél törölve lett, biztonságosan törölheti a gyorsítótárat.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> Azt is megteheti, hogy a [kiürítési](#flush-cached-data) lehetőséggel menti a gyorsítótárazott adatot, de az elveszítés kis kockázattal jár, ha az ügyfél a kiürítés befejeződése után módosítja a gyorsítótárat, de megsemmisíti a gyorsítótár-példányt.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Gyorsítótár-metrikák és-figyelés
 

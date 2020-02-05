@@ -3,8 +3,8 @@ title: Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver szá
 description: Magas rendelkezésre állási útmutató SAP NetWeaver-hez SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839614"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985517"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 
@@ -159,7 +159,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHub
    9. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    10. Alhálózat azonosítója  
-   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /subnets/ **&lt;alhálózat neve&gt;**
+   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózat neve&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -277,7 +277,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
    > [!NOTE]
-   > A fürtcsomópontok állomásneve ne használjon kötőjeleket. Ellenkező esetben a fürt nem fog működni. Ez egy ismert korlátozás, és a SUSE a javításon dolgozik. A javítás az SAP-SUSE-Cloud-Connector csomag javításának részeként jelenik meg.
+   > A gazdagép nevében található kötőjel használatával kapcsolatos ismert probléma az **SAP-SUSE-cluster-Connector**csomag **3.1.1** -es verziójában van meghatározva. Győződjön meg arról, hogy a csomag SAP-SUSE-cluster-Connector legalább 3.1.1-es verzióját használja, ha a fürt csomópontjait használja az állomásnévben. Ellenkező esetben a fürt nem fog működni. 
 
    Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector**néven nevezzük.
 
@@ -446,7 +446,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[1]** az SAP NetWeaver ASCS telepítése  
 
-   Telepítse az SAP NetWeaver ASCS root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó-felületi konfigurációjának IP-címét képezi le, például <b>NW1-ASCS</b>, <b>10.0.0.7</b> és a mintavételhez használt példány számát. a terheléselosztó, például <b>00</b>.
+   Telepítse az SAP NetWeaver ASCS-t root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó felületi konfigurációjának IP-címére mutat, például: <b>NW1-ASCS</b>, <b>10.0.0.7</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>00</b>.
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
@@ -505,7 +505,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[2]** SAP NETWEAVER-ERS telepítése
 
-   Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely a hálózati terheléselosztási felület konfigurációjának IP-címét képezi le az ERS számára, például <b>NW1-AERS</b>, <b>10.0.0.8</b> és a mintavételhez használt példány számát. a terheléselosztó, például: <b>02</b>.
+   Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely leképezi a terheléselosztó előtér-konfigurációjának IP-címét, például: <b>NW1-AERS</b>, <b>10.0.0.8</b> és a terheléselosztó mintavételéhez használt példány számát, például: <b>02</b>.
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
@@ -1243,7 +1243,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a SUSE ajá
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

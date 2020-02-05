@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840298"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982840"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ A **SingleSignon** elem a következő attribútumban szerepel:
 | --------- | -------- | ----------- |
 | Hatókör | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed`, `Tenant`, `Application`vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. A `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
 | KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](custom-policy-keep-me-signed-in.md)című témakörben talál. |
+|EnforceIdTokenHintOnLogout| Nem|  Egy korábban kiállított azonosító token átadásának kényszerítése a kijelentkezési végpontra, amely a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatos mutatóként szolgál a-ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true`. További információ: [webes bejelentkezés OpenID-kapcsolattal](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -160,7 +162,7 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A kulcs-érték párok neve. |
+| Name (Név) | Igen | A kulcs-érték párok neve. |
 
 További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization-dynamic.md)
 
@@ -176,18 +178,18 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| displayName | 0:1 | A felhasználók számára megjelenő technikai profil nevét tartalmazó karakterlánc. |
-| Leírás | 0:1 | A felhasználók számára megjelenített technikai profil leírását tartalmazó karakterlánc. |
+| displayName | 1:1 | A technikai profil nevét tartalmazó karakterlánc. |
+| Leírás | 0:1 | A technikai profil leírását tartalmazó karakterlánc. |
 | Protocol (Protokoll) | 1:1 | Az összevonáshoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll által a végponttal való kommunikációhoz használt kulcs/érték párokból álló *elemek* gyűjteménye a függő entitás és más közösségi résztvevők közötti interakció konfigurálásához. |
-| OutputClaims | 0:1 | A technikai profilban kimenetként elkészített jogcím-típusok listája. Ezen elemek mindegyike egy olyan **claimType** hivatkozik, amely már definiálva van a **ClaimsSchema** szakaszban vagy egy olyan házirendben, amelyből a házirend-fájl örököl. |
-| SubjectNamingInfo | 0:1 | A jogkivonatokban használt tulajdonos neve. |
+| OutputClaims | 1:1 | A technikai profilban kimenetként elkészített jogcím-típusok listája. Ezen elemek mindegyike egy olyan **claimType** hivatkozik, amely már definiálva van a **ClaimsSchema** szakaszban vagy egy olyan házirendben, amelyből a házirend-fájl örököl. |
+| SubjectNamingInfo | 1:1 | A jogkivonatokban használt tulajdonos neve. |
 
 A **protokoll** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll standardot jelöli, mint az OASIS-specifikáció. Ne használjon SAML-jogkivonatot éles környezetben. |
+| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll standardot jelöli, mint az OASIS-specifikáció. Ne használjon SAML-jogkivonatot éles környezetben. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

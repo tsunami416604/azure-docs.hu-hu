@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978458"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984167"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -128,7 +128,7 @@ A kérelmek egy népszerű modul, amely HTTP 1,1-kérelmek küldésére szolgál
    ```
 
 > [!NOTE]
-> Ha többet szeretne megtudni a kérelmekről, tekintse meg [a kérelmek: http for Humans](http://docs.python-requests.org/en/master/)című témakört.
+> Ha többet szeretne megtudni a kérelmekről, tekintse meg [a kérelmek: http for Humans](https://2.python-requests.org/en/master/)című témakört.
 
 ### <a name="install-and-configure-flask"></a>A lombik telepítése és konfigurálása
 
@@ -319,7 +319,7 @@ A következő részekben ezt a folyamatot fogja megismételni, ahogy az adatelem
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>A `index.html` frissítése
+### <a name="update-indexhtml"></a>`index.html` frissítése
 
 Most, hogy van egy függvény a szöveg fordításához, és egy útvonal a lombik alkalmazásban való meghívásához, a következő lépés az alkalmazás HTML-címének létrehozása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -556,7 +556,7 @@ Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a `sentime
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>A `index.html` frissítése
+### <a name="update-indexhtml"></a>`index.html` frissítése
 
 Most, hogy már rendelkezik egy, a hangulat-elemzés futtatására szolgáló függvénnyel, és egy útvonal a lombik alkalmazásban a hívásához, a következő lépés az alkalmazás HTML-fájljának megírása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -581,7 +581,7 @@ Most, hogy már rendelkezik egy, a hangulat-elemzés futtatására szolgáló f�
    </div>
    ```
 
-### <a name="update-mainjs"></a>A `main.js` frissítése
+### <a name="update-mainjs"></a>`main.js` frissítése
 
 Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változókhoz rendeli hozzá, majd a kérésben a `sentiment-analysis` útvonalra küldi át.
 
@@ -751,7 +751,7 @@ Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a `synthes
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>A `index.html` frissítése
+### <a name="update-indexhtml"></a>`index.html` frissítése
 
 Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy útvonal a lombik alkalmazásban való meghívásához, a következő lépés az alkalmazás HTML-címének megírása. Az alábbi HTML-fájl néhány dolgot tartalmaz:
 
@@ -834,7 +834,7 @@ Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy út
 
 5. Ügyeljen arra, hogy mentse a munkáját.
 
-### <a name="update-mainjs"></a>A `main.js` frissítése
+### <a name="update-mainjs"></a>`main.js` frissítése
 
 Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a fordítást és a hangbetűkészletet rendeli hozzá a rendszer a változóhoz, majd a kérésben a `text-to-speech` útvonalra küldi át.
 
@@ -955,7 +955,7 @@ Navigáljon a megadott kiszolgálócím-címre. Írja be a szövegbeviteli terü
 
 Így van egy működő alkalmazása, amely elvégzi a fordításokat, elemzi a hangulatát és a szintetizált beszédet. Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez. Mindenképpen tekintse meg a többi [Azure-Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
 
-## <a name="get-the-source-code"></a>A forráskód lekérése
+## <a name="get-the-source-code"></a>Forráskód beszerzése
 
 A projekt forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 

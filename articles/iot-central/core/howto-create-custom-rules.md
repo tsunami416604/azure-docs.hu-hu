@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435009"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987594"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
 
@@ -40,7 +40,7 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Fizetési terv | Utólagos, használatalapú fizetés |
+| Díjszabási csomag | Standard |
 | Alkalmazássablon | Örökölt alkalmazás |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
@@ -60,21 +60,21 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Név    | Adja meg a névtér nevét |
+| Name (Név)    | Adja meg a névtér nevét |
 | Díjcsomag | Basic |
-| Előfizetés | Az Ön előfizetése |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Földrajzi egység | USA keleti régiója |
 | Adatkapacitás-egységek | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics-feladat
+### <a name="stream-analytics-job"></a>Stream Analytics feladatok
 
 A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) a következő beállításokkal:
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Név    | Válassza ki a feladatokhoz tartozó nevet |
-| Előfizetés | Az Ön előfizetése |
+| Name (Név)    | Válassza ki a feladatokhoz tartozó nevet |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Földrajzi egység | USA keleti régiója |
 | Üzemeltetési környezet | Felhőbeli |
@@ -87,12 +87,12 @@ A [Azure Portal használatával hozzon létre egy Function alkalmazást](https:/
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | App neve    | Válassza ki a Function alkalmazás nevét |
-| Előfizetés | Az Ön előfizetése |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Operációs rendszer | Windows |
-| Szolgáltatási csomag | Használatalapú csomag |
+| Üzemeltetési csomag | Használatalapú csomag |
 | Földrajzi egység | USA keleti régiója |
-| Futtatókörnyezet verme | .NET |
+| Futásidejű verem | .NET |
 | Adattárolás | Új létrehozása |
 
 ### <a name="sendgrid-account"></a>SendGrid-fiók
@@ -101,9 +101,9 @@ A [Azure Portal használatával hozzon létre egy SendGrid-fiókot](https://port
 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
-| Név    | Válassza ki a SendGrid-fiók nevét |
+| Name (Név)    | Válassza ki a SendGrid-fiók nevét |
 | Jelszó | Jelszó létrehozása |
-| Előfizetés | Az Ön előfizetése |
+| Előfizetést | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Díjcsomag | F1 – Ingyenes |
 | Kapcsolattartási adatok | Írja be a szükséges adatokat |
@@ -243,7 +243,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
     | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Bemeneti alias | centraltelemetry |
-    | Előfizetés | Az Ön előfizetése |
+    | Előfizetést | Az Ön előfizetése |
     | Event Hubs-névtér | Az Event hub-névtér |
     | Eseményközpont neve | Meglévő **centralexport** használata |
 
@@ -253,7 +253,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
     | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Kimeneti alias | emailnotification |
-    | Előfizetés | Az Ön előfizetése |
+    | Előfizetést | Az Ön előfizetése |
     | Függvényalkalmazás | A Function alkalmazás |
     | Függvény  | HttpTrigger1 |
 
@@ -318,7 +318,7 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Eseményközpont | centralexport |
     | Mérések | Be |
     | Eszközök | Ki |
-    | Eszközsablonok | Ki |
+    | Eszközök sablonjai | Ki |
 
 ![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-rules/cde-configuration.png)
 

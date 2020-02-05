@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028919"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984744"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
@@ -39,10 +39,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Be kell állítania a Azure Migrate telepítéséhez szükséges engedélyeket.
 
-- Az Azure-fiók engedélyei egy Azure Migrate projekt létrehozásához.
-- A fiókra vonatkozó engedélyek a Azure Migrate berendezés regisztrálásához. A berendezést a migrált Hyper-V virtuális gépek felderítésére és értékelésére használjuk. A készülék regisztrálása során Azure Migrate két Azure Active Directory (Azure AD) alkalmazást hoz létre, amelyek egyedileg azonosítják a készüléket:
-    - Az első alkalmazás a Azure Migrate szolgáltatási végpontokkal kommunikál.
-    - A második alkalmazás a regisztráció során létrehozott Azure Key Vault fér hozzá az Azure AD-alkalmazás adatainak és a készülék konfigurációs beállításainak tárolásához.
+**Tevékenység** | **Engedélyek**
+--- | ---
+**Azure Migrate projekt létrehozása** | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel.
+**A Azure Migrate berendezés regisztrálása** | Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a Hyper-v virtuális gépeket Azure Migrate Server Assessment használatával. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/>A készülék regisztrálása során a következő regisztrációs szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást:<br/> A HRE alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.
 
 
 
@@ -59,15 +59,14 @@ Győződjön meg arról, hogy rendelkezik Azure Migrate-projekt létrehozásáho
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Engedélyek kiosztása a készülék regisztrálásához
 
-A következő módszerek egyikével hozhat létre engedélyeket a Azure Migrate számára a készülék regisztrálása során létrehozott Azure AD-alkalmazások létrehozásához:
+Az Azure AD-alkalmazás létrehozásához az alábbi módszerek egyikének használatával rendelhet engedélyeket Azure Migrate számára:
 
 - A bérlők/globális rendszergazdák engedélyeket adhatnak a bérlő felhasználói számára az Azure AD-alkalmazások létrehozásához és regisztrálásához.
 - A bérlői/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét (amely rendelkezik engedélyekkel) a fiókhoz.
 
-Érdemes megjegyezni, hogy:
-
-- Az alkalmazások nem rendelkeznek más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
-- Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
+> [!NOTE]
+> - Az alkalmazás nem rendelkezik más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
+> - Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
 
 
 #### <a name="grant-account-permissions"></a>Fiók engedélyeinek megadása
@@ -108,7 +107,7 @@ A szkript a következő műveleteket végzi el:
 - Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e.
 - Ellenőrzi, hogy Ön (a parancsfájlt futtató felhasználó) rendelkezik-e rendszergazdai jogosultságokkal a Hyper-V-gazdagépen.
 - Lehetővé teszi, hogy olyan helyi felhasználói fiókot hozzon létre (nem rendszergazda), amelyet a Azure Migrate szolgáltatás a Hyper-V-gazdagépkel való kommunikációhoz használ. Ezt a felhasználói fiókot a rendszer a gazdagépen adja hozzá a következő csoportokhoz:
-    - Rendszerfelügyeleti felhasználók
+    - Távfelügyeleti felhasználók
     - Hyper-V-rendszergazdák
     - Teljesítményfigyelő felhasználói
 - Ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.
@@ -140,7 +139,7 @@ Futtassa a szkriptet a következő módon:
 
 A kivonatoló értékek a következők:
 
-| **Kivonat** | **Érték** |
+| **Hash** | **Érték** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
@@ -165,7 +164,7 @@ Azure Migrate a helyszíni virtuális gépek felderítéséhez szükséges enged
     - A felderítésbe felvenni kívánt gazdagépekhez és fürtökhöz egyetlen fiókra van szükség.
     - A fiók lehet helyi vagy tartományi fiók is. Azt javasoljuk, hogy rendszergazdai engedélyekkel rendelkezik a Hyper-V-gazdagépeken vagy-fürtökön.
     - Ha nem szeretne rendszergazdai engedélyeket rendelni, akkor a következő engedélyek szükségesek:
-        - Rendszerfelügyeleti felhasználók
+        - Távfelügyeleti felhasználók
         - Hyper-V-rendszergazdák
         - Teljesítményfigyelő felhasználói
 

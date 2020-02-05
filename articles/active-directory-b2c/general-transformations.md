@@ -8,21 +8,50 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948849"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982806"
 ---
 # <a name="general-claims-transformations"></a>Általános jogcím-átalakítások
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Identity Experience Framework sémájának általános jogcímek átalakítására. További információ: [ClaimsTransformations](claimstransformations.md).
+
+## <a name="copyclaim"></a>CopyClaim
+
+Jogcím értékének másolása egy másikra. Mindkét jogcímnek ugyanabból a típusból kell származnia.
+
+| Tétel | TransformationClaimType | Adattípus | Megjegyzések |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | InputClaim | karakterlánc, int | A másolandó jogcím típusa. |
+| OutputClaim | OutputClaim | karakterlánc, int | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+
+Ennek a jogcím-átalakításnak a használatával karakterlánc-vagy numerikus jogcímből származó értéket másolhat egy másik jogcímbe. Az alábbi példa a externalEmail jogcím értékét másolja át az e-mail-jogcímbe.
+
+```XML
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti jogcímek:
+    - **inputClaim**: bob@contoso.com
+- Kimeneti jogcímek:
+    - **outputClaim**: bob@contoso.com 
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -31,7 +60,7 @@ Ellenőrzi, hogy a **inputClaim** létezik-e vagy sem, és a **outputClaim** iga
 | Tétel | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | InputClaim |Bármelyik | Az a bemeneti jogcím, amelynek létezését ellenőrizni kell. |
-| outputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| OutputClaim | OutputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Ezzel a jogcím-átalakítással ellenőrizhető, hogy létezik-e jogcím, vagy tartalmaz-e értéket. A visszatérési érték egy logikai érték, amely jelzi, hogy a jogcím létezik-e. A következő példa ellenőrzi, hogy létezik-e e-mail-cím.
 
@@ -62,7 +91,7 @@ A megadott egyszerű szöveg kivonatolása a só és a titok használatával. A 
 | InputClaim | egyszerű szöveges | sztring | A titkosítani kívánt bemeneti jogcím |
 | InputClaim | só | sztring | A Salt paraméter. A `CreateRandomString` jogcím-átalakítás használatával véletlenszerű értéket hozhat létre. |
 | InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C házirend- **kulcsra**mutat. Új házirend-kulcs létrehozásához: a Azure AD B2C-bérlőben válassza a **kezelés**alatt az **identitási élmény keretrendszert**. Válassza ki a **házirend-kulcsok** elemet a bérlőben elérhető kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **Beállítások**lapon válassza a **manuális**lehetőséget. Adjon meg egy nevet (az előtagot *B2C_1A_* lehet automatikusan hozzáadni.). A **titkos** szövegmezőbe írja be a használni kívánt titkos kulcsot (például 1234567890). A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget. Kattintson a **Létrehozás** gombra. |
-| outputClaim | hash | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. A `plaintext` inputClaim konfigurált jogcím. |
+| OutputClaim | hash | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. A `plaintext` inputClaim konfigurált jogcím. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

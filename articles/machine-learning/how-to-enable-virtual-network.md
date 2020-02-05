@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937861"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988217"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,8 +180,8 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
 - __Számítási példány__ vagy __számítási fürt__esetén korlátozza a kimenő forgalmat a következő elemekre:
-   - Azure Storage a __Storage__ __szolgáltatási címkéje__ használatával
-   - Azure Container Registry a __AzureContainerRegistry__ __szolgáltatási címkéjének__ használatával
+   - Azure Storage a __Storage. RegionName__ __szolgáltatási címkéjével__ . Ahol a `{RegionName}` egy Azure-régió neve.
+   - Azure Container Registry a __AzureContainerRegistry. RegionName__ __szolgáltatási címkéje__ segítségével. Ahol a `{RegionName}` egy Azure-régió neve.
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
    
 - __Számítási példány__esetén adja hozzá a következő elemeket is:

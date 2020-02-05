@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező O.C. Péter - AppreciateHub |} A Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez O.C. és az Azure Active Directory között Péter - AppreciateHub.
+title: 'Oktatóanyag: Azure Active Directory integráció a oC Tanner – AppreciateHub | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és oC között Tanner-AppreciateHub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,202 +11,149 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 8814dc9ba94ca7fa56a2225c71895520467bf05f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 768756e013a4301ea11f5f9478178bdad46f9d67
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095824"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983996"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező O.C. Péter - AppreciateHub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a oC Tanner – AppreciateHub
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható a O.C. Péter - AppreciateHub az Azure Active Directory (Azure AD).
-O.C. integrálása Péter – az Azure ad-vel AppreciateHub nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a oC Tanner-AppreciateHub Azure Active Directory (Azure AD) szolgáltatással. A oC integrálása Tanner-AppreciateHub az Azure AD-vel a következőket teheti:
 
-* Szabályozhatja, hogy ki férhet hozzá O.C. Azure AD-ben Péter - AppreciateHub.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve O.C. Péter - AppreciateHub (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A oC-hez hozzáférő Azure AD-beli vezérlés Tanner-AppreciateHub.
+* A felhasználók automatikus bejelentkezésének engedélyezése a oC A Tanner-AppreciateHub Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az O.C. Péter - AppreciateHub, akkor a következők szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* O.C. Péter - AppreciateHub egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* O.C. Tanner-AppreciateHub egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* O.C. Péter - AppreciateHub támogatja **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* O.C. A Tanner-AppreciateHub támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>O.C. hozzáadása Péter - AppreciateHub a katalógusból
+* A oC konfigurálása után Tanner-AppreciateHub kényszerítheti a munkamenet-vezérlők betartatását, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-O.C. integrációjának konfigurálása Péter - AppreciateHub az Azure AD-be, hozzá kell adnia O.C. Péter - AppreciateHub a galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>OC hozzáadása Tanner-AppreciateHub a katalógusból
 
-**O.C. hozzáadása Péter - AppreciateHub katalógusból, hajtsa végre a következő lépéseket:**
+A oC integrációjának konfigurálása Tanner-AppreciateHub az Azure AD-be, hozzá kell adnia a oC Tanner-AppreciateHub a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **oC Tanner-AppreciateHub** kifejezést a keresőmezőbe.
+1. Válassza ki a **oC Tanner-AppreciateHub** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a oC Tanner – AppreciateHub
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO konfigurálása és tesztelése a oC-mel Tanner-AppreciateHub egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a oC-ben Tanner-AppreciateHub.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+Az Azure AD SSO konfigurálása és tesztelése a oC használatával Tanner-AppreciateHub, végezze el a következő építőelemeket:
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[oC Tanner-APPRECIATEHUB SSO konfigurálása](#configure-oc-tanner---appreciatehub-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[OC Tanner-AppreciateHub-teszt felhasználó létrehozása](#create-oc-tanner---appreciatehub-test-user)** – a oC B. Simon párja Tanner-AppreciateHub, amely a felhasználó Azure AD-képviseletéhez van társítva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A Keresés mezőbe írja be a **O.C. Péter - AppreciateHub**válassza **O.C. Péter - AppreciateHub** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![O.C. Péter - AppreciateHub a találatok listájában](common/search-new-app.png)
+1. A [Azure Portal](https://portal.azure.com/) **oC Tanner-AppreciateHub alkalmazás-** integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az O.C. Péter - AppreciateHub alapján nevű tesztfelhasználó **Britta Simon**.
-Egyszeri bejelentkezés működjön, egy Azure AD-felhasználót és a kapcsolódó felhasználó O.C. hivatkozás kapcsolata Péter - AppreciateHub kell létrehozni.
+1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-Az Azure AD egyszeri bejelentkezés az O.C. tesztelése és konfigurálása Péter - AppreciateHub, át kell adnia a következő építőelemeket:
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[O.C. konfigurálása Péter - AppreciateHub egyszeri bejelentkezés](#configure-oc-tanner---appreciatehub-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[O.C. létrehozása Péter - AppreciateHub tesztfelhasználó](#create-oc-tanner---appreciatehub-test-user)**  – egy megfelelője a Britta Simon O.C. van Péter - AppreciateHub, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+1. A **oC Tanner-AppreciateHub beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-O.C. az Azure AD egyszeri bejelentkezés konfigurálása Péter - AppreciateHub, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az a **O.C. Péter - AppreciateHub** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
-
-    >[!NOTE]
-    >Letöltheti a **szolgáltató metaadatait tartalmazó fájl** a [Itt](https://fed.appreciatehub.com/fed/sp/metadata)
-
-    a. Kattintson a **metaadatfájl feltöltése**.
-
-    ![Metaadatfájl feltöltése](common/upload-metadata.png)
-
-    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
-
-    ![metaadatfájl kiválasztása](common/browse-upload-metadata.png)
-
-    c. A metaadatfájl sikeres feltöltése után a **azonosító** és **válasz URL-cím** értékeket automatikusan alapszintű SAML-konfigurációja szakasz első.
-
-     ![O.C. Péter - AppreciateHub tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
-
-    > [!Note]
-    > Ha a **azonosító** és **válasz URL-cím** értékek nem automatikus polulated lekérése, majd töltse ki az értékeket manuálisan a követelmény alapján. Kapcsolattartó [O.C. Péter - AppreciateHub ügyfél-támogatási csapatának](mailto:sso@octanner.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
-
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
-
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
-
-6. Az a **O.C. beállítása Péter - AppreciateHub** területén másolja megfelelően a követelmény a megfelelő URL-címe.
-
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
+    a. Bejelentkezési URL-cím
 
     b. Azure AD-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezési URL-cím
 
-### <a name="configure-oc-tanner---appreciatehub-single-sign-on"></a>O.C. konfigurálása Péter - AppreciateHub Single Sign-On
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Az egyszeri bejelentkezés konfigurálása **O.C. Péter - AppreciateHub** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát a oC való hozzáférés megadásával. Tanner-AppreciateHub.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **oC Tanner-AppreciateHub**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-    ![Új felhasználó gomb](common/new-user.png)
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mező típusa felhasználó például BrittaSimon@contoso.com.
+## <a name="configure-oc-tanner---appreciatehub-sso"></a>OC konfigurálása Tanner – AppreciateHub egyszeri bejelentkezés
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+Az egyszeri bejelentkezés konfigurálásához a **oC Tanner-AppreciateHub** oldalon el kell küldenie a letöltött összevonás- **metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [oC Tanner-AppreciateHub támogatási csapatához](mailto:sso@octanner.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+### <a name="create-oc-tanner---appreciatehub-test-user"></a>OC létrehozása Tanner – AppreciateHub teszt felhasználó
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a oC-ben Tanner-AppreciateHub.
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés O.C. Azure egyszeri bejelentkezés használatára Péter - AppreciateHub.
+**A következő lépések végrehajtásával hozhat létre egy Britta Simon nevű felhasználót a oC Tanner-AppreciateHub-ben:**
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **O.C. Péter - AppreciateHub**.
+Kérje meg a [oC Tanner-AppreciateHub támogatási csapatát](mailto:sso@octanner.com) , hogy olyan felhasználót hozzon létre, amelynek nameID attribútuma megegyezik az Azure ad-beli Britta-névvel.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-2. Az alkalmazások listájában jelölje ki a **O.C. Péter - AppreciateHub**.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-    ![A O.C. Péter - alkalmazásainak listájában AppreciateHub hivatkozás](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-oc-tanner---appreciatehub-test-user"></a>O.C. létrehozása Péter - AppreciateHub tesztfelhasználó számára
-
-Ez a szakasz célja az, hogy O.C. Britta Simon nevű felhasználó létrehozása Péter - AppreciateHub.
-
-**Britta Simon O.C. nevű felhasználó létrehozása Péter - AppreciateHub, hajtsa végre az alábbi lépéseket:**
-
-Kérje meg a [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com) , amely rendelkezik nameID attribútum Britta Simon felhasználóneve megegyezik az Azure AD-felhasználó létrehozásához.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Amikor rákattint a O.C. Péter - AppreciateHub csempe a hozzáférési panelen, érdemes lehet automatikusan bejelentkezett a O.C. Péter - AppreciateHub, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor rákattint a oC Tanner-AppreciateHub csempe a hozzáférési panelen automatikusan be kell jelentkeznie a oC Tanner-AppreciateHub, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálja ki a oC Tanner-AppreciateHub az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A oC Tanner-AppreciateHub elleni védelem speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

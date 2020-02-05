@@ -3,21 +3,21 @@ title: Rajzolási eszközök modulja | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan állíthatja be a rajzolási beállításokat a Microsoft Azure Maps web SDK használatával
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910588"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988923"
 ---
 # <a name="use-the-drawing-tools-module"></a>A Rajzeszközök modul használata
 
-A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönnyíti a Térkép alakzatainak megrajzolását és szerkesztését egy bemeneti eszköz, például egy egér érintési képernyő használatával. A modul alaposztálya a [Konfigurációkezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) , és biztosítja a Térkép alakzatainak rajzolásához és szerkesztéséhez szükséges összes képességet. A Rajzfigyelő közvetlenül és az egyéni eszköztár felhasználói felületén is használható, vagy használhatja a beépített [rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) osztályt. 
+A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönnyíti a Térkép alakzatainak rajzolását és szerkesztését egy beviteli eszköz, például egy egér vagy egy érintőképernyő használatával. Ennek a modulnak a fő osztálya a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). A projektmenedzser biztosítja a Térkép alakzatainak rajzolásához és szerkesztéséhez szükséges összes képességet. Közvetlenül is használható, és integrálva van egy egyéni eszköztár felhasználói felülettel. Használhatja a beépített [rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) osztályt is. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>A rajzolási eszközök modul betöltése egy weblapon
 
@@ -30,7 +30,7 @@ A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönny�
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - Azt is megteheti, hogy helyileg betölti a Azure Maps web SDK forráskódhoz tartozó Rajzeszközök modult az [Azure-Maps-Draw-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM csomag használatával, majd az alkalmazással üzemelteti. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
+    - Vagy a Azure Maps web SDK forráskódját helyileg is betöltheti az [Azure-Maps-Draw-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM csomag használatával, majd üzemeltetheti azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
     
         > **NPM telepítése az Azure-Maps-Draw-Tools**
     
@@ -43,7 +43,7 @@ A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönny�
 
 ## <a name="use-the-drawing-manager-directly"></a>A rajzolási kezelő közvetlen használata
 
-Most, hogy a Rajzeszközök modul be lett töltve az alkalmazásba, a rajzolási és szerkesztési képességek engedélyezéséhez használhatja a [rajz-kezelőt](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) a térképen. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy az `drawingManager.setOptions()` függvényt használja.
+Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy az `drawingManager.setOptions()` függvényt használja.
 
 ### <a name="set-the-drawing-mode"></a>Rajzolási mód beállítása
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-Az alábbi kódrészlet olyan funkciót valósít meg, amely lehetővé teszi, hogy egy sokszöget szabadon rajzoljon a térképen, miközben lenyomva tartja a bal oldali egérgombot, és a körülötte lévő egeret húzza. 
+ Ez a mintakód a sokszög rajzolásának funkcióit valósítja meg a térképen. Csak tartsa lenyomva a bal egérgombot, és húzza a körülötte lévőket szabadon.
 
 <br/>
 
