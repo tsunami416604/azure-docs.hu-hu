@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: Virtuális gépek figyelése
       items:
-        - name: Gyűjtés – Azure-beli virtuális gépek
+        - name: Azure-beli virtuális gépek
           href: learn/quick-collect-azurevm.md
-        - name: Gyűjtés – Linux rendszerű számítógép
+        - name: Linux rendszerű számítógép
           href: learn/quick-collect-linux-computer.md
-        - name: Gyűjtés – Windows rendszerű számítógép
+        - name: Windows rendszerű számítógép
           href: learn/quick-collect-windows-computer.md
     - name: Alkalmazások figyelése
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: Egyéni adatforrások egyeztetése
               href: app/custom-data-correlation.md
+            - name: Kapcsolati sztringek
+              href: app/sdk-connection-string.md
             - name: Speciális témakörök
               items:
                 - name: Webalkalmazások és szolgáltatások részletes diagnosztikája
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics bővítmény
               items:
-                - name: Áttekintés
-                  href: platform/diagnostics-extension-overview.md
-                - name: Naplók gyűjtése
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: Verzióelőzmények
-                      href: platform/diagnostics-extension-schema.md
-                    - name: Séma
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Küldés az Azure Storage-be
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Küldés az Application Insightsba
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Küldés az Event Hubsba
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Küldés az Azure Monitorba egyéni metrikaként
+                    - name: Áttekintés
+                      href: platform/diagnostics-extension-overview.md
+                    - name: Telepítés és konfigurálás
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager-sablon
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Küldés az Azure Monitor-metrikákba
                       items:
                         - name: Virtuális gép
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,17 +558,28 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Felhőszolgáltatás
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Küldés az Event Hubsba
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Küldés a naplókba
+                      href: platform/azure-storage-iis-table.md
+                    - name: Küldés az Azure Storage-be
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Küldés az Application Insightsba
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Verzióelőzmények
+                      href: platform/diagnostics-extension-schema.md
                     - name: JSON-sorok erőforrásnapló-formátuma
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Hibaelhárítás
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: Használat virtuális gépekkel
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Egyéni metrikák a Telegraf használatával
+                    - name: Áttekintés
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Metrikák gyűjtése a Telegraf használatával
                       href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics-ügynökök
+            - name: Log Analytics-ügynök
               items:
                 - name: Áttekintés
                   href: platform/log-analytics-agent.md
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: Az ügynök állapota
                   href: insights/solution-agenthealth.md
+                - name: Adatforrások
+                  items:
+                    - name: Áttekintés
+                      href: platform/agent-data-sources.md
+                    - name: Windows-események
+                      href: platform/data-sources-windows-events.md
+                    - name: Egyéni JSON-adatok
+                      href: platform/data-sources-json.md
+                    - name: A CollectD teljesítményadatai
+                      href: platform/data-sources-collectd.md
+                    - name: Rendszernapló
+                      href: platform/data-sources-syslog.md
+                    - name: Teljesítményszámlálók
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux-alkalmazások teljesítménye
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS-naplók
+                      href: platform/data-sources-iis-logs.md
+                    - name: Egyéni naplók
+                      href: platform/data-sources-custom-logs.md
+                    - name: Egyéni mezők
+                      href: platform/custom-fields.md
             - name: Hibaelhárítás
               items:
                 - name: A Log Analytics virtuálisgép-bővítménye
@@ -600,28 +630,6 @@
                 - name: A Log Analytics Linux-ügynöke
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: Ügynökök adatforrásai
-          items:
-            - name: Áttekintés
-              href: platform/agent-data-sources.md
-            - name: Windows-események
-              href: platform/data-sources-windows-events.md
-            - name: Egyéni JSON-adatok
-              href: platform/data-sources-json.md
-            - name: A CollectD teljesítményadatai
-              href: platform/data-sources-collectd.md
-            - name: Rendszernapló
-              href: platform/data-sources-syslog.md
-            - name: Teljesítményszámlálók
-              href: platform/data-sources-performance-counters.md
-            - name: Linux-alkalmazások teljesítménye
-              href: platform/data-sources-linux-applications.md
-            - name: IIS-naplók
-              href: platform/data-sources-iis-logs.md
-            - name: Egyéni naplók
-              href: platform/data-sources-custom-logs.md
-            - name: Egyéni mezők
-              href: platform/custom-fields.md
         - name: Azure Monitor virtuális gépekhez
           items:
             - name: Áttekintés
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Monitorozás letiltása
               href: insights/vminsights-optout.md
-        - name: Kapacitással és teljesítménnyel kapcsolatos megoldás
-          href: insights/capacity-performance.md
-        - name: VMWare-elemzési megoldás
-          href: insights/vmware.md
-        - name: Wire Data-megoldás
-          href: insights/wire-data.md
-        - name: Szolgáltatástérkép-megoldás
-          href: insights/service-map.md
+        - name: Megoldások
+          items:
+            - name: Kapacitással és teljesítménnyel kapcsolatos megoldás
+              href: insights/capacity-performance.md
+            - name: VMWare-elemzési megoldás
+              href: insights/vmware.md
+            - name: Wire Data-megoldás
+              href: insights/wire-data.md
+            - name: Szolgáltatástérkép-megoldás
+              href: insights/service-map.md
         - name: Számítógépcsoportok
           href: platform/computer-groups.md
     - name: Tárolók figyelése
@@ -1125,6 +1135,10 @@
   items:
     - name: Szolgáltatási korlátozások
       href: service-limits.md
+    - name: Diagnosztikai bővítmény
+      items:
+        - name: Séma
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: Függőségek automatikus összegyűjtése

@@ -4,16 +4,13 @@
   items:
     - name: Mi a hitelesítés?
       href: overview-authentication.md
-- name: Első lépések
-  items:
-    - name: Új jelszó létrehozásának konfigurálása
-      href: quickstart-sspr.md
 - name: Oktatóanyagok
+  expanded: true
   items:
-    - name: 1 MFA engedélyezése alkalmazásokhoz
+    - name: Új jelszó önkiszolgáló kérésének engedélyezése
+      href: tutorial-enable-sspr.md
+    - name: MFA engedélyezése alkalmazásokhoz
       href: tutorial-mfa-applications.md
-    - name: 2 SSPR-próba engedélyezése
-      href: tutorial-sspr-pilot.md
     - name: Az SSPR helyszíni integrációjának engedélyezése
       href: tutorial-enable-writeback.md
     - name: Az Azure Identity Protection integrálása

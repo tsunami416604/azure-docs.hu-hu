@@ -40,6 +40,12 @@
       href: disable-private-link-service-network-policy.md
     - name: Privát végpontok kezelése
       href: manage-private-endpoint.md
+    - name: Hibaelhárítás
+      items:
+        - name: Privátvégpont-kapcsolati problémák hibaelhárítása
+          href: troubleshoot-private-endpoint-connectivity.md
+        - name: Privát kapcsolat szolgáltatás kapcsolati problémáinak hibaelhárítása
+          href: troubleshoot-private-link-connectivity.md
 - name: Referencia
   items:
     - name: Azure CLI

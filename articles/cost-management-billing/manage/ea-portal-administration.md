@@ -4,16 +4,16 @@ description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 88daa5913838511be59ce7a30b7e9430d8865a62
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769674"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023378"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 

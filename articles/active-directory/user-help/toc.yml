@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: A Saját alkalmazások portál súgója
   items:
-    - name: A Saját alkalmazások portál elérése és használata
+    - name: 'Bejelentkezés a Saját alkalmazások portálra, és annak használata'
       href: my-apps-portal-end-user-access.md
     - name: Profil- és fiókadatok frissítése
       href: my-apps-portal-end-user-update-profile.md
     - name: A csoporttal kapcsolatos információk frissítése
       href: my-apps-portal-end-user-groups.md
+    - name: Alkalmazások rendszerezése gyűjteményekkel
+      href: my-applications-portal-workspaces.md
+    - name: Alkalmazásengedélyek szerkesztése vagy visszavonása
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: Saját hozzáférés felülvizsgálatainak elvégzése
       href: my-apps-portal-end-user-access-reviews.md
     - name: Problémák elhárítása
       href: my-apps-portal-end-user-troubleshoot.md
-- name: A Saját alkalmazások (előzetes verzió) portál súgója
-  items:
-    - name: A Saját alkalmazások portál elérése és használata
-      href: my-applications-portal-access.md
-    - name: Munkaterületek elérése és használata
-      href: my-applications-portal-workspaces.md
-    - name: Alkalmazásengedélyek szerkesztése vagy visszavonása
-      href: my-applications-portal-permissions-saved-accounts.md

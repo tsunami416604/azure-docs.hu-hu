@@ -1150,6 +1150,9 @@
             - name: A felhasználói felület teljesítményével kapcsolatos problémák elemzése
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: A feladatok nem haladnak a munkaterületen
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: Fürtök
           items:
             - name: Fürtben lévő magok számának kiszámítása
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: A WASB-ben lévő fájlok olvasása nem sikerült.
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: A JDBC-adatforrások olvasási teljesítményének optimalizálása
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:

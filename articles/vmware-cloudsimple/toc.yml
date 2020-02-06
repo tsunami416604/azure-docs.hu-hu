@@ -1,9 +1,9 @@
-- name: VMware Solution by CloudSimple
+- name: VMware Solutions (AVS)
   href: /azure/vmware-cloudsimple
   items:
     - name: Áttekintés
       items:
-        - name: Mi az a VMware Solution by CloudSimple?
+        - name: Mi a VMware Solutions (AVS)?
           href: cloudsimple-vmware-solutions-overview.md
         - name: A legfontosabb felügyeleti alapelvek
           href: key-concepts.md
@@ -14,9 +14,9 @@
           href: cloudsimple-network-checklist.md
         - name: Inicializálás és kapacitás kiépítése
           href: quickstart-create-cloudsimple-service.md
-        - name: Magánfelhős környezet konfigurálása
+        - name: AVS-magánfelhős környezet konfigurálása
           href: quickstart-create-private-cloud.md
-        - name: VMware rendszerű virtuális gép létrehozása magánfelhőben
+        - name: VMware rendszerű virtuális gép létrehozása AVS-magánfelhőben
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: VMware rendszerű virtuális gépek felhasználása az Azure-ban
           href: quickstart-create-vmware-virtual-machine.md
@@ -26,7 +26,7 @@
           href: cloudsimple-service.md
         - name: Csomópontok
           href: cloudsimple-node.md
-        - name: Magánfelhő
+        - name: AVS-magánfelhő
           href: cloudsimple-private-cloud.md
         - name: Virtual machines (Virtuális gépek)
           href: cloudsimple-virtual-machines.md
@@ -44,7 +44,7 @@
           href: cloudsimple-account.md
         - name: Tevékenységkezelés
           href: cloudsimple-activity.md
-        - name: VMware a magánfelhőben
+        - name: VMware az AVS-magánfelhőben
           href: vmware-components.md
         - name: Biztonsági áttekintés
           href: cloudsimple-security.md
@@ -56,9 +56,9 @@
           href: cloudsimple-faq.md
     - name: Oktatóanyagok
       items:
-        - name: A CloudSimple-szolgáltatás létrehozása
+        - name: AVS-szolgáltatás létrehozása
           href: create-cloudsimple-service.md
-        - name: Hozzáférés a CloudSimple portáljához
+        - name: Az AVS-portál elérése
           href: access-cloudsimple-portal.md
         - name: Helyszíni tűzfal konfigurációja
           href: on-premises-firewall-configuration.md
@@ -70,25 +70,25 @@
               href: create-nodes.md
             - name: Csomópontok törlése
               href: delete-nodes.md
-        - name: Magánfelhő-erőforrások kezelése
+        - name: AVS-magánfelhő-erőforrások kezelése
           items:
-            - name: Magánfelhő létrehozása
+            - name: AVS-magánfelhő létrehozása
               href: create-private-cloud.md
-            - name: Magánfelhők kezelése
+            - name: AVS-magánfelhők kezelése
               href: manage-private-cloud.md
-            - name: Magánfelhő bővítése
+            - name: AVS-magánfelhő bővítése
               href: expand-private-cloud.md
-            - name: Magánfelhő zsugorítása
+            - name: AVS-magánfelhő zsugorítása
               href: shrink-private-cloud.md
             - name: Azure-előfizetés leképezése
               href: azure-subscription-mapping.md
             - name: Jogosultságok eszkalációja
               href: escalate-private-cloud-privileges.md
-            - name: Magánfelhő törlése
+            - name: AVS-magánfelhő törlése
               href: delete-private-cloud.md
-        - name: CloudSimple-tevékenység monitorozása
+        - name: Az AVS tevékenységeinek figyelése
           href: monitor-activity.md
-        - name: Magánfelhő-hálózat beállítása
+        - name: AVS-magánfelhő-hálózat beállítása
           items:
             - name: Virtuális helyi hálózatok és alhálózatok létrehozása és kezelése
               href: create-vlan-subnet.md
@@ -98,35 +98,35 @@
               href: public-ips.md
             - name: VPN-kapcsolatok beállítása
               href: vpn-gateway.md
-            - name: Virtuális hálózati kapcsolat létesítése a CloudSimple-höz
+            - name: Virtuális hálózati kapcsolat az AVS-hez
               href: virtual-network-connection.md
-        - name: Fiókkezelés a CloudSimple portálján
+        - name: Fiókkezelés az AVS portálján
           items:
             - name: Fiók összegzésének megtekintése
               href: account.md
             - name: Felhasználók listájának megtekintése
               href: users.md
-        - name: CloudSimple-alapú virtuális gépek beállítása
+        - name: AVS-virtuálisgépek telepítése
           items:
-            - name: CloudSimple-alapú virtuális gép létrehozása az Azure-ban
+            - name: AVS-virtuálisgép létrehozása az Azure-ban
               href: azure-create-vm.md
-            - name: A CloudSimple-alapú virtuális gépek felügyelete az Azure-ban
+            - name: AVS-virtuálisgépek kezelése az Azure-ban
               href: azure-manage-vm.md
     - name: Útmutatók
       items:
         - name: A környezet védelme
           href: private-cloud-secure.md
-        - name: Magánfelhő-felügyelet
+        - name: AVS-magánfelhő-felügyelet
           items:
-            - name: Magánfelhőre vonatkozó jogosultságok eszkalálása
+            - name: AVS-magánfelhőre vonatkozó jogosultságok eszkalálása
               href: escalate-privileges.md
             - name: A tevékenységprofilhoz tartozó DNS és DHCP beállítása
               href: dns-dhcp-setup.md
             - name: Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
               href: migration-layer-2-vpn.md
-        - name: Magánfelhő-hálózat
+        - name: AVS-magánfelhő-hálózat
           items:
-            - name: VPN-kapcsolat magánfelhőkhöz
+            - name: VPN-kapcsolat AVS-magánfelhőkhöz
               href: set-up-vpn.md
             - name: Helyszíni hálózati kapcsolat ExpressRoute-tal
               href: on-premises-connection.md
@@ -140,15 +140,15 @@
               href: private-cloud-dns-forwarding.md
         - name: VMware-platform
           items:
-            - name: A magánfelhő engedélymodelljének megismerése
+            - name: Az AVS-magánfelhő engedélymodelljének megismerése
               href: learn-private-cloud-permissions.md
             - name: vCenter-identitásforrások
               href: set-vcenter-identity.md
             - name: Azure Application Gateway és VMware rendszerű virtuális gépek
               href: azure-application-gateway.md
-            - name: Magánfelhő vCenter-kiszolgálójának konfigurálása vRealize automatizálási végpontként
+            - name: AVS-magánfelhő vCenter-kiszolgálójának konfigurálása vRealize automatizálási végpontként
               href: configure-server-vrealize-automation-endpoint.md
-            - name: Számítási feladatot futtató virtuális gépek migrálása magánfelhőbe
+            - name: Számítási feladatot futtató virtuális gépek migrálása AVS-magánfelhőbe
               href: migrate-workloads.md
             - name: Migrálás az Azure Data Box használatával
               href: migration-using-azure-data-box.md
@@ -160,19 +160,19 @@
           items:
             - name: Számítási feladatot futtató virtuális gépek biztonsági mentése
               href: backup-workloads-veeam.md
-            - name: Magánfelhő konfigurálása vészhelyreállítási helyként a Zerto használatával
+            - name: AVS-magánfelhő konfigurálása vészhelyreállítási helyként a Zerto használatával
               href: disaster-recovery-zerto.md
-            - name: Magánfelhő konfigurálása vészhelyreállítási helyként a VMware SRM használatával
+            - name: AVS-magánfelhő konfigurálása vészhelyreállítási helyként a VMware SRM használatával
               href: disaster-recovery-site-recovery-manager.md
             - name: A VMware Horizon megoldási útmutatója
               href: horizon-guide.md
-            - name: vSAN-titkosítás konfigurálása magánfelhőhöz
+            - name: vSAN-titkosítás konfigurálása AVS-magánfelhőhöz
               href: vsan-encryption.md
-            - name: Magánfelhő optimalizálása az Oracle RAC-hez
+            - name: AVS-magánfelhő optimalizálása az Oracle RAC-hez
               href: oracle-real-application-clusters.md
         - name: Azure Core-integráció
           items:
-            - name: Azure AD-identitásforrás magánfelhőbeli vCenterben
+            - name: Azure AD-identitásforrás AVS-magánfelhőbeli vCenterben
               href: azure-ad.md
             - name: Helyszíni hálózati kapcsolat ExpressRoute-tal
               href: on-premises-connection.md

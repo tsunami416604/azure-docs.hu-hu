@@ -44,6 +44,8 @@
           href: ./ag/application-gateway-waf-configuration.md
         - name: WAF-szabályzatok áttekintése
           href: ./ag/policy-overview.md
+        - name: Robotvédelem áttekintése
+          href: ./ag/bot-protection-overview.md
     - name: Front Door
       items:
         - name: Egyéni szabályok

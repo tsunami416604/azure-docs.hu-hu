@@ -10,72 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: ab2843a4076e4700b584a1e09c0c58271cf61328
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73890744"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77021253"
 highlightedContent:
   items:
   - title: Mi az az IoT Central?
     itemType: overview
-    url: ./preview/overview-iot-central.md
+    url: ./core/overview-iot-central.md
   - title: Mik azok az alkalmazássablonok?
     itemType: concept
     url: ./core/concepts-app-templates.md
   - title: Az Azure IoT Central architektúrája
     itemType: architecture
-    url: ./preview/concepts-architecture.md
+    url: ./core/concepts-architecture.md
   - title: Új alkalmazás létrehozása
     itemType: quickstart
-    url: ./preview/quick-deploy-iot-central.md
+    url: ./core/quick-deploy-iot-central.md
   - title: Eszköztípus meghatározása és eszköz hozzáadása
     itemType: tutorial
-    url: ./preview/howto-set-up-template.md
+    url: ./core/howto-set-up-template.md
   - title: Eszközök monitorozása
     itemType: tutorial
-    url: ./preview/tutorial-create-telemetry-rules.md
+    url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: Csatlakozás (előzetes verziójú funkciók)
+  - title: Csatlakozás
     links:
-    - url: ./preview/howto-set-up-template.md
+    - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: Eszközsablon beállítása
-    - url: ./preview/tutorial-connect-pnp-device.md
+    - url: ./core/tutorial-connect-pnp-device.md
       itemType: tutorial
-      text: IoT Plug and Play-eszköz csatlakoztatása
+      text: IoT Plug and Play-eszköz (előzetes verzió) csatlakoztatása
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Részletek
-  - title: A kapcsolat fenntartása (előzetes verziójú funkciók)
+  - title: A kapcsolat fenntartása
     links:
-    - url: ./preview/tutorial-use-device-groups.md
+    - url: ./core/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: Eszközcsoportok használata
-    - url: ./preview/howto-manage-devices.md
+    - url: ./core/howto-manage-devices.md
       itemType: how-to-guide
       text: Eszközök kezelése
     - url: ./core/howto-run-a-job.md
       itemType: concept
       text: Feladat futtatása
-    - url: ./preview/howto-create-analytics.md
+    - url: ./core/howto-create-analytics.md
       itemType: how-to-guide
       text: Eszközadatok elemzése
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Részletek
-  - title: Átalakítás (előzetes verziójú funkciók)
+  - title: Átalakítás
     links:
-    - url: ./preview/tutorial-create-telemetry-rules.md
+    - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: Telemetriaszabály létrehozása
-    - url: ./preview/howto-export-data.md
+    - url: ./core/howto-export-data.md
       itemType: how-to-guide
       text: Folyamatos adatexportálás konfigurálása
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Részletek
 productDirectory:
   title: Kezdje meg az alkotást iparági alkalmazássablonokkal

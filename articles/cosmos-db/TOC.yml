@@ -1048,6 +1048,9 @@
         - name: A Spring Boot Starter használata
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
+        - name: Spring Data fejlesztői útmutató
+          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
+          maintainContext: true
         - name: ODBC-illesztő
           href: odbc-driver.md
     - name: Adatok migrálása a Cosmos DB-re

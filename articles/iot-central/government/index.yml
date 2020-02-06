@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: d0cf11c30a772af49ca7af99445a012d27b43ad8
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: e778cafcd75cec1f0a763dad4f3f57bbcbec19fd
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73890789"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77016527"
 landingContent:
 - title: Kormányzati megoldások létrehozása
   linkLists:
@@ -36,13 +36,13 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Eszközsablon beállítása
-      url: ../preview/howto-set-up-template.md
-    - text: IoT Plug and Play-eszköz csatlakoztatása
-      url: ../preview/tutorial-connect-pnp-device.md
+      url: ../core/howto-set-up-template.md
+    - text: IoT Plug and Play-eszköz (előzetes verzió) csatlakoztatása
+      url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: MX Chip IoT DevKit előkészítése és csatlakoztatása
-      url: ../preview/howto-connect-devkit.md
+      url: ../core/howto-connect-devkit.md
     - text: Más IoT-felhők csatlakoztatása
       url: ../core/howto-build-iotc-device-bridge.md
 - title: A kapcsolat fenntartása
@@ -50,46 +50,46 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Eszközcsoportok használata
-      url: ../preview/tutorial-use-device-groups.md
+      url: ../core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Eszközök kezelése
-      url: ../preview/howto-manage-devices.md
+      url: ../core/howto-manage-devices.md
     - text: Feladat futtatása
       url: ../core/howto-run-a-job.md
     - text: Eszközadatok elemzése
-      url: ../preview/howto-create-analytics.md
+      url: ../core/howto-create-analytics.md
 - title: Átalakítás
   linkLists:
   - linkListType: tutorial
     links:
     - text: Szabály létrehozása
-      url: ../preview/quick-configure-rules.md
+      url: ../core/quick-configure-rules.md
     - text: Telemetriaszabályok létrehozása
-      url: ../preview/tutorial-create-telemetry-rules.md
+      url: ../core/tutorial-create-telemetry-rules.md
     - text: Exportálás a Blob Storage-ba
-      url: ../preview/howto-export-data.md
+      url: ../core/howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Egyéni szabályok létrehozása
-      url: ../preview/howto-create-custom-rules.md
+      url: ../core/howto-create-custom-rules.md
     - text: Egyéni elemzések létrehozása
-      url: ../preview/howto-create-custom-analytics.md
+      url: ../core/howto-create-custom-analytics.md
 - title: Adminisztráció
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Az alkalmazás felügyelete
-      url: ../preview/howto-administer.md
+      url: ../core/howto-administer.md
     - text: Felhasználók és szerepkörök kezelése
-      url: ../preview/howto-manage-users-roles.md
+      url: ../core/howto-manage-users-roles.md
     - text: Számla megtekintése
-      url: ../preview/howto-view-bill.md
+      url: ../core/howto-view-bill.md
     - text: Az alkalmazás felhasználói felületének testreszabása
-      url: ../preview/howto-customize-ui.md
+      url: ../core/howto-customize-ui.md
     - text: Személyes irányítópultok konfigurálása
       url: ../core/howto-create-personal-dashboards.md
     - text: Irányítópult-csempék használata
       url: ../core/howto-add-tiles-to-your-dashboard.md
     - text: Alkalmazássablonok használata
-      url: ../preview/howto-use-app-templates.md
+      url: ../core/howto-use-app-templates.md

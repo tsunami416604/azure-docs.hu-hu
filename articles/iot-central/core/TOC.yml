@@ -1,4 +1,4 @@
-- name: Azure IoT Central dokumentáció
+- name: Az Azure IoT Central dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -9,134 +9,132 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Új alkalmazás létrehozása
+    - name: 1. Új alkalmazás létrehozása
       href: quick-deploy-iot-central.md
+    - name: 2. Szimulált eszköz hozzáadása
+      href: quick-create-pnp-device.md
+    - name: 3. Szabályok és műveletek konfigurálása
+      href: quick-configure-rules.md
+    - name: 4. Eszközök monitorozása
+      href: quick-monitor-devices.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Új eszköztípus megadása
-      href: tutorial-define-device-type.md
-    - name: 2 – Szabályok konfigurálása
-      href: tutorial-configure-rules.md
-    - name: 3 – Operátori nézet testreszabása
-      href: tutorial-customize-operator.md
-    - name: 4 – Eszközök monitorozása
-      href: tutorial-monitor-devices.md
-    - name: 5 – Eszköz hozzáadása
-      href: tutorial-add-device.md
+    - name: Csatlakozás
+      items:
+        - name: Plug and Play-eszköz (előzetes verzió) csatlakoztatása
+          href: tutorial-connect-pnp-device.md
+        - name: Átjáró-eszközsablon létrehozása
+          href: tutorial-define-gateway-device-type.md
+        - name: IoT Edge-eszköz csatlakoztatása
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: A kapcsolat fenntartása
+      items:
+        - name: Eszközcsoport létrehozása
+          href: tutorial-use-device-groups.md
+    - name: Átalakítás
+      items:
+        - name: Szabály létrehozása
+          href: tutorial-create-telemetry-rules.md
+        - name: A REST API használata
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Alapelvek
   items:
     - name: Architektúra
       href: concepts-architecture.md
-    - name: Kapcsolatok
-      href: concepts-connectivity.md
     - name: Mik azok az alkalmazássablonok?
       href: concepts-app-templates.md
+    - name: Csatlakozás
+      href: concepts-get-connected.md
+    - name: IoT Edge-eszközök csatlakoztatása
+      href: concepts-iot-edge.md
 - name: Útmutatók
   items:
-    - name: Eszközök csatlakoztatása
-      items:
-        - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
-          href: howto-connect-nodejs.md
-        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
-          href: howto-connect-devkit.md
-        - name: Raspberry Pi (Python) előkészítése és csatlakoztatása
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Raspberry Pi (C#) előkészítése és csatlakoztatása'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Windows IoT Core eszköz előkészítése és csatlakoztatása
-          href: howto-connect-windowsiotcore.md
-        - name: SensorTile.box eszköz előkészítése és csatlakoztatása
-          href: howto-connect-sensortile.md
-        - name: Eszközkapcsolatok monitorozása parancssor használatával
-          href: howto-use-iotc-explorer.md
-    - name: Eszközök kezelése
+    - name: Csatlakozás
       items:
         - name: Eszközsablon beállítása
           href: howto-set-up-template.md
-        - name: Eszközök kezelése
-          href: howto-manage-devices.md
-        - name: Feladat futtatása
-          href: howto-run-a-job.md
-        - name: Használatos eszközök készletei
-          href: howto-use-device-sets.md
-        - name: Verzióeszköz-sablon
-          href: howto-version-device-template.md
-    - name: Figyelés és elemzés
-      items:
-        - name: Telemetriaszabály létrehozása
-          href: howto-create-telemetry-rules.md
-        - name: Eseményszabály létrehozása
-          href: howto-create-event-rules.md
-        - name: Eszközadatok elemzése
-          href: howto-create-analytics.md
-    - name: Műveletek és bővíthetőség
-      items:
-        - name: Több művelet csoportosítása szabályokon
-          href: howto-use-action-groups.md
-        - name: Webhookműveletek létrehozása szabályokon
-          href: howto-create-webhooks.md
-        - name: Folyamatok létrehozása a Microsoft Flow-ban
-          href: howto-add-microsoft-flow.md
-        - name: Munkafolyamatok létrehozása az Azure Logic Appsben
-          href: howto-build-azure-logic-apps.md
-        - name: Az Azure Functions aktiválása
-          href: howto-trigger-azure-functions.md
-        - name: Az adatok exportálása
-          items:
-            - name: Exportálás az Event Hubsba és a Service Busba
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Exportálás a Blob Storage-ba
-              href: howto-export-data-blob-storage.md
-        - name: Egyéni szabályok létrehozása
-          href: howto-create-custom-rules.md
-        - name: Egyéni elemzések létrehozása
-          href: howto-create-custom-analytics.md
-        - name: Adatok vizualizációja a Power BI-ban
-          href: howto-connect-powerbi.md
+        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
+          href: howto-connect-devkit.md
+        - name: RuuviTag eszköz előkészítése és csatlakoztatása
+          href: howto-connect-ruuvi.md
+        - name: Rigado Cascade 500 előkészítése és csatlakoztatása
+          href: howto-connect-rigado-cascade-500.md
         - name: Más IoT-felhők csatlakoztatása
           href: howto-build-iotc-device-bridge.md
+    - name: A kapcsolat fenntartása
+      items:
+        - name: Eszközkapcsolatok monitorozása az Azure CLI-vel
+          href: howto-monitor-devices-azure-cli.md
+        - name: Verzióeszköz-sablon
+          href: howto-version-device-template.md
+        - name: Eszközök kezelése
+          href: howto-manage-devices.md
+        - name: Szabályok konfigurálása
+          href: howto-configure-rules.md
+        - name: Eszközadatok elemzése
+          href: howto-create-analytics.md
+        - name: Csempék hozzáadása az irányítópulthoz
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: Személyes Azure IoT Central-irányítópultok létrehozása
+          href: howto-create-personal-dashboards.md
+        - name: Feladat futtatása
+          href: howto-run-a-job.md
+        - name: Verzióeszköz-sablon
+          href: howto-version-device-template.md
+    - name: Átalakítás
+      items:
+        - name: Folyamatos adatexportálás konfigurálása
+          href: howto-export-data.md
+        - name: Szabályokra vonatkozó webhookok létrehozása
+          href: howto-create-webhooks.md
+        - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
+          href: howto-use-action-groups.md
+        - name: Egyéni szabályok létrehozása
+          href: howto-create-custom-rules.md
+        - name: Egyéni elemzések létrehozása a Databricksszel
+          href: howto-create-custom-analytics.md
     - name: Adminisztráció
       items:
         - name: Az alkalmazás felügyelete
-          href: howto-administer.md
-        - name: Felhasználók és szerepkörök kezelése
-          href: howto-manage-users-roles.md
-        - name: Számla megtekintése
-          href: howto-view-bill.md
-        - name: Az alkalmazás felhasználói felületének testreszabása
-          href: howto-customize-ui.md
-        - name: Kép előkészítése és feltöltése
-          href: howto-prepare-images.md
-        - name: Csempék hozzáadása az irányítópulthoz
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: Irányítópult-csempék használata
-          href: howto-use-tiles.md
-        - name: Alkalmazássablonok használata
-          href: howto-use-app-templates.md
-        - name: Kezelés az Azure Portalról
-          href: howto-manage-iot-central-from-portal.md
-        - name: Kezelés az Azure CLI-ből
-          href: howto-manage-iot-central-from-cli.md
-        - name: Kezelés az Azure PowerShellből
-          href: howto-manage-iot-central-from-powershell.md
-        - name: Alkalmazás létrehozása és kezelése CSP-ként
-          href: howto-create-and-manage-applications-csp.md
-    - name: Személyre szabás
-      items:
-        - name: Személyes Azure IoT Central-irányítópultok létrehozása
-          href: howto-create-personal-dashboards.md
-        - name: Beállítások kezelése
-          href: howto-manage-preferences.md
-        - name: Élő csevegés ki-/bekapcsolása
-          href: howto-show-hide-chat.md
+          items:
+            - name: Alkalmazásbeállítások módosítása
+              href: howto-administer.md
+            - name: Felhasználók és szerepkörök kezelése
+              href: howto-manage-users-roles.md
+            - name: A számla kezelése
+              href: howto-view-bill.md
+            - name: Az alkalmazás felhasználói felületének testreszabása
+              href: howto-customize-ui.md
+            - name: Az alkalmazás exportálása
+              href: howto-use-app-templates.md
+        - name: Kezelés más helyekről
+          items:
+            - name: Kezelés az Azure Portalról
+              href: howto-manage-iot-central-from-portal.md
+            - name: Kezelés az Azure CLI-ből
+              href: howto-manage-iot-central-from-cli.md
+            - name: Kezelés az Azure PowerShellből
+              href: howto-manage-iot-central-from-powershell.md
+            - name: Kezelés CSP-portálról
+              href: howto-create-and-manage-applications-csp.md
+        - name: Alkalmazás szeméyre szabása
+          items:
+            - name: A személyes beállítások kezelése
+              href: howto-manage-preferences.md
+            - name: Élő csevegés ki-/bekapcsolása
+              href: howto-show-hide-chat.md
 - name: Kapcsolódó témakörök
   items:
-    - name: Megoldások
+    - name: Iparági alkalmazássablonok
       items:
-        - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
+        - name: Kiskereskedelem
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: Energia
+          href: ../energy/overview-iot-central-energy.md
+        - name: Government
+          href: ../government/overview-iot-central-government.md
+        - name: Egészségügy
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: Platformszolgáltatások
       items:
         - name: IoT Hub
@@ -161,6 +159,8 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Ügyfelek adatkérései
       href: iot-central-customer-data-requests.md
     - name: Támogatott böngészők
