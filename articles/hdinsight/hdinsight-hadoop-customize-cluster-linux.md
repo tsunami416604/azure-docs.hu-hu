@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934028"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031448"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -144,11 +144,11 @@ A parancsfájl műveleti parancsfájljai a következő segédprogramok használa
 
 A HDInsight parancsfájlokat biztosít a következő összetevők telepítéséhez a HDInsight-fürtökön:
 
-| Név | Parancsprogramok használata |
+| Név | Szkript |
 | --- | --- |
-| Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [további Storage-fiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
-| A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [a Hue telepítése és használata a HDInsight Hadoop-fürtökön](hdinsight-hadoop-hue-linux.md). |
-| Betöltési struktúra kódtárai |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor](hdinsight-hadoop-add-hive-libraries.md). |
+| Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Lásd: [további Storage-fiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
+| A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Lásd: [a Hue telepítése és használata a HDInsight Hadoop-fürtökön](hdinsight-hadoop-hue-linux.md). |
+| Betöltési struktúra kódtárai |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Lásd: [egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Parancsfájl-művelet használata a fürt létrehozása során
 
@@ -156,9 +156,9 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Parancsfájl-művelet használata a fürt létrehozása során a Azure Portal
 
-1. Hozzon létre egy fürtöt a HDInsight-ben [a Linux-alapú fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md)című témakörben leírtak szerint a Azure Portal használatával. A fürt létrehozása során a 6. lépéssel, a **parancsfájlok műveleteivel**érkezik meg. Navigáljon a **választható** >  **+ új beküldése**elemre.
+1. Hozzon létre egy fürtöt a HDInsight-ben [a Linux-alapú fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md)című témakörben leírtak szerint a Azure Portal használatával. A **konfiguráció + díjszabás** lapon válassza a **+ parancsfájl hozzáadása műveletet**.
 
-    ![Azure Portal-fürt parancsfájljának művelete](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Azure Portal-fürt parancsfájljának művelete](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
 
@@ -166,7 +166,7 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
     Az alábbi táblázat az űrlap elemeit ismerteti:
 
-    | Tulajdonság | Value (Díj) |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Parancsfájl kiválasztása | Saját parancsfájl használatához válassza az __Egyéni__lehetőséget. Ellenkező esetben válassza ki a megadott parancsfájlok egyikét. |
     | Név |Adja meg a parancsfájl művelet nevét. |
@@ -180,9 +180,9 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
     ![HDInsight több parancsfájl-művelet](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Ha elkészült a parancsfájlok hozzáadásával, kattintson a __kiválasztás__ gombra, majd a __Tovább gombra a__ __fürt összegzése__ szakasz folytatásához.
+    Ha elkészült a parancsfájlok hozzáadásával, térjen vissza a **konfiguráció + díjszabás** lapra.
 
-1. A fürt létrehozásához kattintson a __Létrehozás__ elemre a __fürt összesítésének__ kiválasztása listából.
+1. Fejezze be a fürt többi létrehozási lépését a szokásos módon.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Parancsfájl-művelet használata Azure Resource Manager sablonokból
 
@@ -246,7 +246,7 @@ Ugrás a [Azure Portalra](https://portal.azure.com):
 
     Az alábbi táblázat az űrlap elemeit ismerteti:
 
-    | Tulajdonság | Value (Díj) |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Parancsfájl kiválasztása | Saját parancsfájl használatához válassza az __Egyéni__lehetőséget. Ellenkező esetben válasszon egy megadott parancsfájlt. |
     | Név |Adja meg a parancsfájl művelet nevét. |
@@ -327,7 +327,7 @@ Ha a .NET SDK-t a parancsfájlok fürtön való alkalmazására szeretné haszn�
 
 ### <a name="the-azure-portal"></a>Az Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight-fürtök**elemre.
 
@@ -415,13 +415,13 @@ A HDInsight szolgáltatás számos módszert kínál az egyéni összetevők has
 
 3. **Minták**. A népszerű egyéni összetevők esetében a Microsoft és mások példákat is biztosítanak az összetevők HDInsight-fürtökön való használatára. Ezeket a mintákat támogatás nélkül biztosítjuk.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A Ambari webes felhasználói felületén megtekintheti a parancsfájlok műveletei által naplózott információkat. Ha a parancsfájl meghibásodik a fürt létrehozása során, a naplók a fürthöz társított alapértelmezett Storage-fiókban is elérhetők. Ez a szakasz azt ismerteti, hogyan lehet lekérdezni a naplókat mindkét lehetőség használatával.
 
 ### <a name="the-apache-ambari-web-ui"></a>Az Apache Ambari webes felhasználói felülete
 
-1. Nyissa meg a `https://CLUSTERNAME.azurehdinsight.net` URL-címet a böngészőben. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
+1. A böngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 
     Ha a rendszer kéri, adja meg a fürt rendszergazdai fiókjának nevét, a **rendszergazdát**és a jelszót. Előfordulhat, hogy egy webes űrlapon újra meg kell adnia a rendszergazdai hitelesítő adatokat.
 
@@ -495,7 +495,7 @@ További információ a fürt SSH-val történő csatlakoztatásáról: [Csatlak
 
 Ha a fürt a 2016. március 15. előtt lett létrehozva, előfordulhat, hogy nem jelenik meg bejegyzés a parancsfájl-műveleti előzményekben. A fürt átméretezése hatására a parancsfájlok megjelennek a parancsfájl-műveletek előzményeiben.
 
-Ez alól két kivétel van:
+Két kivétel van:
 
 * A fürt a 2015. szeptember 1. előtt jött létre. Ez a dátum az, amikor parancsfájl-műveletek lettek bevezetve. Az ezen dátum előtt létrehozott összes fürthöz nem használható parancsfájl-művelet a fürt létrehozásához.
 

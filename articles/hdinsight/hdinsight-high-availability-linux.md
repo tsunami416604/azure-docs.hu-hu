@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747876"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030870"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -46,7 +46,7 @@ A Nimbus-csomópontok Apache Storm fürtökkel érhetők el. A Nimbus-csomópont
 
 A [ZooKeeper](https://zookeeper.apache.org/) -csomópontok a fő szolgáltatások vezető megválasztására szolgálnak a fő csomópontokon. Azt is használják, hogy biztosítják, hogy a szolgáltatások, az adatok (feldolgozó) csomópontjai és az átjárók tudják, melyik fő szolgáltatás aktív a főkiszolgálón. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontot biztosít.
 
-### <a name="worker-nodes"></a>Munkavégző-csomópontok
+### <a name="worker-nodes"></a>Munkavégző csomópontok
 
 A feldolgozó csomópontok végrehajtják a tényleges adatelemzést, ha a feladatot elküldik a fürtnek. Ha egy feldolgozó csomópont meghibásodik, az általa végrehajtott feladat egy másik munkavégző csomópontnak lesz elküldve. Alapértelmezés szerint a HDInsight négy munkavégző csomópontot hoz létre. Ezt a számot módosíthatja úgy, hogy az igényeinek megfelelően és a fürt létrehozása után is megfeleljen.
 
@@ -107,7 +107,7 @@ A következő módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érh
 
 A fő csomópontokon futó szolgáltatások állapotának megtekintéséhez használja a Ambari webes felhasználói felületét vagy a Ambari REST API.
 
-### <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
+### <a name="ambari-web-ui"></a>Ambari Web UI
 
 A Ambari webes felhasználói felülete `https://CLUSTERNAME.azurehdinsight.net`látható. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a fürt HTTP-felhasználói hitelesítő adatait. Az alapértelmezett HTTP-Felhasználónév a **rendszergazda** , a jelszó pedig a fürt létrehozásakor megadott jelszó.
 
@@ -125,12 +125,12 @@ A következő riasztások segítik a fürt rendelkezésre állásának figyelés
 | Ambari-ügynök szívverése                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot egy ügynökkel.                                                                                                                        |
 | ZooKeeper-kiszolgáló folyamata                 | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a ZooKeeper-kiszolgáló folyamata nem határozható meg a hálózaton való működéshez és figyeléshez.                                                               |
 | IOCache metaadat-kiszolgálójának állapota           | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a IOCache metaadat-kiszolgáló nem állapítható meg, és nem válaszol az ügyfelek kéréseire                                                            |
-| JournalNode webes felhasználói felület                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a JournalNode webes felhasználói felülete nem érhető el.                                                                                                                 |
+| JournalNode Web UI                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a JournalNode webes felhasználói felülete nem érhető el.                                                                                                                 |
 | Spark2 takarékosság-kiszolgáló                     | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a Spark2 takarékossági kiszolgáló nem határozható meg.                                                                                                |
 | Előzmények kiszolgálói folyamat                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az előzmények kiszolgálói folyamat nem hozható létre és nem figyelhető a hálózaton.                                                                |
 | Előzmények kiszolgáló webes felhasználói felülete                    | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az előzményeket kiszolgáló webes FELÜLETe nem érhető el.                                                                                                              |
 | Webes felhasználói felület `ResourceManager`                   | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a `ResourceManager` webes felhasználói felület nem érhető el.                                                                                                             |
-| NodeManager állapotának összegzése               | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Csomópontkezelők van                                                                                                                    |
+| NodeManager Health Summary               | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Csomópontkezelők van                                                                                                                    |
 | Alkalmazás idővonalának webes felhasználói felülete                      | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az alkalmazás idővonal-kiszolgáló webes felhasználói felülete nem érhető el.                                                                                                         |
 | DataNode állapotának összegzése                  | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van                                                                                                                       |
 | NameNode webes felhasználói felület                          | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a NameNode webes felhasználói felülete nem érhető el.                                                                                                                    |
@@ -147,7 +147,7 @@ A következő riasztások segítik a fürt rendelkezésre állásának figyelés
 | Metrikák gyűjtője – HBase Master folyamat | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtője HBase fő folyamatai nem állíthatók be és nem figyelhető a hálózatban a beállított kritikus küszöbérték esetében (másodpercben megadva). |
 | Rendelkezésre álló százalékos metrikai figyelők       | Ez a riasztás akkor aktiválódik, ha a metrikák figyelési folyamatainak százalékos aránya nem működik, és a beállított figyelmeztetési és kritikus küszöbértékeket a hálózat figyeli.                             |
 | Rendelkezésre álló Csomópontkezelők százalékos aránya           | Ez a riasztás akkor aktiválódik, ha a fürtben lévő lefelé Csomópontkezelők száma nagyobb, mint a beállított kritikus küszöbérték. Összesíti a NodeManager folyamat-ellenőrzésének eredményeit.        |
-| NodeManager állapota                       | Ez a gazdagép szintű riasztás ellenőrzi a NodeManager összetevőben elérhető Node Health tulajdonságot.                                                                                              |
+| NodeManager Health                       | Ez a gazdagép szintű riasztás ellenőrzi a NodeManager összetevőben elérhető Node Health tulajdonságot.                                                                                              |
 | NodeManager webes felhasználói felület                       | Ez a gazdagép szintű riasztás akkor aktiválódik, ha a NodeManager webes felhasználói felülete nem érhető el.                                                                                                                 |
 | NameNode magas rendelkezésre állási állapota        | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.                                                                                     |
 | DataNode folyamat                         | Ez a gazdagép szintű riasztás akkor aktiválódik, ha az egyes DataNode folyamatok nem hozhatók létre és nem lesznek figyelve a hálózaton.                                                         |
@@ -270,7 +270,7 @@ Fürt létrehozásakor megadhatja a csomópontok méretét. A következő inform
 
 * **Azure Portal**: fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
 
-    ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**: az [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) parancs használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper-csomópontok méretét a `--headnode-size`, a `--workernode-size`és a `--zookeepernode-size` paraméterek használatával.
 

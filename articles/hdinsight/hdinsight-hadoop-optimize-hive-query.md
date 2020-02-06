@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215837"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030962"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive lekérdezések optimalizálása az Azure HDInsight
 
@@ -29,11 +29,11 @@ A munkavégző csomópontok számának növelése egy HDInsight-fürtben lehető
 
 * A fürt létrehozásakor megadhatja a munkavégző csomópontok számát a Azure Portal, a Azure PowerShell vagy a parancssori felület használatával.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőfelvételen a Azure Portal munkavégző csomópontjának konfigurációja látható:
   
-    ![Azure Portal fürt méretének csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Azure Portal fürt méretének csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * A létrehozást követően szerkesztheti a munkavégző csomópontok számát úgy, hogy az újbóli létrehozása nélkül is kibővítse a fürtöt:
 
-    ![Azure Portal méretezési fürt mérete](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure Portal méretezési fürt mérete](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 További információ a HDInsight skálázásáról: HDInsight- [fürtök méretezése](hdinsight-scaling-best-practices.md)
 

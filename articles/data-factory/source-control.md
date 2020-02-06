@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646897"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031629"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 
@@ -70,7 +70,7 @@ Mindkét módszer megnyithatja a tárház beállításainak konfigurációs pane
 
 A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai láthatók:
 
-| Beállítás | Leírás | Value (Díj) |
+| Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
@@ -157,7 +157,7 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 
 - A GitHub-integráció a Data Factory Visual authoring Tools eszközzel csak a Data Factory általánosan elérhető verziójában működik.
 
-- Egy GitHub-ág legfeljebb 1 000 entitást hívhat le (például folyamatokat és adatkészleteket). Ha eléri ezt a korlátot, a rendszer azt javasolja, hogy az erőforrásokat külön gyárakra ossza fel.
+- Egy GitHub-ág legfeljebb 1 000 entitást hívhat le (például folyamatokat és adatkészleteket). Ha eléri ezt a korlátot, a rendszer azt javasolja, hogy az erőforrásokat külön gyárakra ossza fel. Az Azure DevOps git nem rendelkezik ezzel a korlátozással.
 
 ## <a name="switch-to-a-different-git-repo"></a>Váltás másik git-tárházra
 
@@ -187,7 +187,7 @@ Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az 
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok mentésének helye – adjon hozzá egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch`mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Példa:
+A közzétételi ág konfigurálása – vagyis a Resource Manager-sablonok mentésének helye – adjon hozzá egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch`mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Például:
 
 ```json
 {
@@ -249,8 +249,13 @@ Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzét
 
 1. Az aktuális git-tárház eltávolítása
 1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása az adattárba** lehetőség van **kiválasztva**
-1. Az együttműködési ág összes erőforrásának törlése
 1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
+
+Az alábbi példák olyan helyzetekre mutatnak, amelyek elavult közzétételi ágat okozhatnak:
+- Egy felhasználónak több ága van. Az egyik szolgáltatási ág törölte azokat a társított szolgáltatásokat, amelyek nincsenek társítva AKV (a nem AKV társított szolgáltatások azonnal közzé lesznek téve, függetlenül attól, hogy git vagy nem), és soha nem egyesítette a szolgáltatási ágat az együttműködési brnach.
+- Egy felhasználó módosította az adatelőállítót az SDK vagy a PowerShell használatával
+- A felhasználó minden erőforrást egy új ágra helyezett át, és első alkalommal próbált közzétenni. A társított szolgáltatásokat manuálisan kell létrehozni az erőforrások importálásakor.
+- Egy felhasználó manuálisan feltölt egy nem AKV társított szolgáltatást vagy egy Integration Runtime JSON-t. Erre az erőforrásra hivatkoznak egy másik erőforrásból, például egy adatkészletből, egy társított szolgáltatásból vagy egy folyamatból. Az UX használatával létrehozott nem AKV társított szolgáltatás azonnal közzé van téve, mert a hitelesítő adatokat titkosítani kell. Ha olyan adatkészletet tölt fel, amely hivatkozik erre a társított szolgáltatásra, és megpróbál közzétenni, az UX lehetővé teszi, hogy a git-környezetben is megtalálható legyen. A közzétételi időpontban elutasításra kerül, mivel nem létezik a (z) adatfeldolgozó szolgáltatásban.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: a64d03ebe7c8bbb4cfa9c7bd63a678892250373d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482867"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031395"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -45,17 +45,17 @@ Ha az ügyfélalkalmazás rendelkezik a OAuth-jogkivonattal, át kell adni ezt a
 
 1. A Kafka-fürt létrehozási munkafolyamata során a "biztonság és hálózatkezelés" lapon jelölje be a "Kafka REST-proxy engedélyezése" beállítást.
 
-     ![A Kafka REST-proxy engedélyezése és a biztonsági csoport kiválasztása](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-enable.png)
+     ![A Kafka REST-proxy engedélyezése és a biztonsági csoport kiválasztása](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. Kattintson a **biztonsági csoport kiválasztása**elemre. A biztonsági csoportok listájából válassza ki azt a biztonsági csoportot, amelyhez hozzáférést szeretne biztosítani a REST-proxyhoz. A keresőmező segítségével megkeresheti a megfelelő biztonsági csoportot. Kattintson a lap alján található **kiválasztás** gombra.
 
-     ![A Kafka REST-proxy engedélyezése és a biztonsági csoport kiválasztása](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-select-security-group.png)
+     ![A Kafka REST-proxy engedélyezése és a biztonsági csoport kiválasztása](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. Hajtsa végre a további lépéseket a fürt létrehozásához a következő témakörben leírtak szerint: [Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started).
 
 1. A fürt létrehozása után lépjen a fürt tulajdonságaiba, és jegyezze fel a Kafka REST-proxy URL-címét.
 
-     ![REST-proxy URL-címének megtekintése](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     ![REST-proxy URL-címének megtekintése](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
 
 ## <a name="client-application-sample"></a>Ügyfélalkalmazás mintája
 

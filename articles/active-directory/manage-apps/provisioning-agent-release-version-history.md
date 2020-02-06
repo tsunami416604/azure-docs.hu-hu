@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect kiépítési ügynök: Verzió kiadási előzményei | Microsoft Docs'
+title: 'Azure AD Connect kiépítési ügynök: verzió kiadásának előzményei | Microsoft Docs'
 description: Ez a cikk felsorolja Azure AD Connect kiépítési ügynök összes kiadását, valamint ismerteti az új szolgáltatásokat és a rögzített problémákat.
 services: active-directory
 documentationcenter: ''
@@ -12,27 +12,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 02/04/2020
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326465"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030674"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: Verziókiadások előzményei
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei
 Ez a cikk a kiadott Azure Active Directory Connect kiépítési ügynök verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti a kiépítési ügynököt új funkciókkal és funkciókkal. A kiépítési ügynök automatikusan frissül, amikor megjelent egy új verzió. 
 
 Javasoljuk, hogy az ügynökök automatikus frissítésének engedélyezésével ellenőrizze, hogy a legújabb funkciókkal és hibajavításokkal rendelkezik-e. A Microsoft közvetlen támogatást biztosít az ügynök legújabb verziójához és egy korábbi verzióhoz.
+
+## <a name="11960"></a>1.1.96.0
+
+### <a name="release-status"></a>Kiadás állapota
+
+2019. december 4., letöltésre kiadva
+
+### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
+
+* A [Azure ad Connect felhőalapú](../cloud-provisioning/what-is-cloud-provisioning.md) kiépítésének támogatásával szinkronizálhatja a felhasználókat, a kapcsolattartókat és a csoport adatait a helyszíni Active Directoryból az Azure ad-be
+
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>Kiadás állapota
 
-2019. szeptember 9.: Kiadva az automatikus frissítéshez
+2019. szeptember 9.: kiadva az automatikus frissítéshez
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 
@@ -49,7 +60,7 @@ Javasoljuk, hogy az ügynökök automatikus frissítésének engedélyezésével
 
 ### <a name="release-status"></a>Kiadás állapota
 
-2019. január 23.: Letöltésre kiadva
+2019. január 23., letöltésre kiadva
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 

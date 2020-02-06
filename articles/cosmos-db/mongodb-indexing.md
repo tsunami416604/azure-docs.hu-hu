@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753376"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029469"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexelés a MongoDB Azure Cosmos DB API-ját használva
 
@@ -25,13 +25,96 @@ Az 3,6-es átviteli protokoll verzióját kiszolgáló fiókok eltérő alapért
 
 ### <a name="dropping-the-default-indexes-36"></a>Az alapértelmezett indexek eldobása (3,6)
 
-Az 3,6-es átviteli protokollt kiszolgáló fiókok esetében az egyetlen alapértelmezett index a _id, amely nem lehet eldobni.
+Az 3,6-es átviteli protokollt kiszolgáló fiókok esetében az egyetlen alapértelmezett index _id, amely nem lehet eldobni.
 
 ### <a name="creating-a-compound-index-36"></a>Összetett index létrehozása (3,6)
 
 Az 3,6-os vezetékes protokollt használó fiókok esetében az igaz összetett indexek támogatottak. A következő parancs létrehoz egy összetett indexet az "a" és a "b" mezőknél: `db.coll.createIndex({a:1,b:1})`
 
 Az összetett indexek hatékonyan rendezhetők egyszerre több mezőn, például a következő módon: `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>Az index előrehaladásának nyomon követése
+
+Azure Cosmos DB API-MongoDB-fiókjainak 3,6-es verziója támogatja az `currentOp()` parancsot az index előrehaladásának nyomon követéséhez egy adatbázis-példányon. Ez a parancs egy olyan dokumentumot ad vissza, amely egy adatbázis-példányon végzett folyamatban lévő műveletekkel kapcsolatos információkat tartalmaz. A `currentOp` parancs a natív MongoDB lévő összes folyamatban lévő művelet nyomon követésére szolgál, míg a Azure Cosmos DB API-MongoDB a parancs csak az indexelési művelet nyomon követését támogatja.
+
+Íme néhány példa, amely bemutatja, hogyan használhatja a `currentOp` parancsot az index előrehaladásának nyomon követéséhez:
+
+• Az index előrehaladásának beolvasása egy gyűjteménynél:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+• Az index előrehaladásának beolvasása az adatbázis összes gyűjteményéhez:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• Az Azure Cosmos-fiókban lévő összes adatbázis és gyűjtemény index-előrehaladásának beolvasása:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+Az index előrehaladásának részletei az aktuális index művelethez tartozó előrehaladás százalékos arányát tartalmazzák. Az alábbi példa a kimeneti dokumentum formátumát mutatja be az index különböző szakaszaiban:
+
+1. Ha az indexelési művelet egy "foo" gyűjtemény és "Bar" adatbázison, amelynek 60%-os indexelése befejeződött, a következő kimeneti dokumentum fog megjelenni. `Inprog[0].progress.total` az 100-as a cél befejezését mutatja.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. A "foo" gyűjtemény és a "Bar" adatbázison éppen elindított indexelési művelet esetén a kimeneti dokumentum 0%-os előrehaladást eredményezhet, amíg nem ér el mérhető szintre.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Ha a folyamatban lévő index művelet befejeződik, a kimeneti dokumentum üres inprog műveleteket jelenít meg.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>Az 3,2-es verzió indexelése
 
@@ -59,7 +142,7 @@ Az [egyedi indexek](unique-keys.md) hasznosak annak biztosítására, hogy két 
 >[!Important]
 > Egyedi indexeket jelenleg csak akkor lehet létrehozni, ha a gyűjtemény üres (nem tartalmaz dokumentumokat).
 
-A következő parancs létrehoz egy egyedi indexet a "student_id" mezőhöz:
+A következő parancs egy egyedi indexet hoz létre a (z) "student_id" mezőhöz:
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )

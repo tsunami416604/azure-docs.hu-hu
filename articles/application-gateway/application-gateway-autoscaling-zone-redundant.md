@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668150"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031560"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -42,7 +42,7 @@ A Standard_v2 és WAF_v2 SKU a következő régiókban érhető el: az USA észa
 A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már nem csatolja a példányszámot vagy a méretet. A v2 SKU díjszabása két összetevőből áll:
 
 - **Rögzített ár** – ez egy Standard_v2 vagy WAF_v2 átjáró kiépítésének óránkénti (vagy részleges órányi) díja. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva.
-- **Kapacitási egység díja** – ez egy fogyasztási alapú költség, amelyet a rögzített költség mellett számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.  A számlázás a fenntartott példányok számának megfelelő kapacitás egység szintjén történik.
+- **Kapacitási egység díja** – ez egy fogyasztási alapú költség, amelyet a rögzített költség mellett számítunk fel. A kapacitási egység díját óránként vagy részben is számításba kell venni. A kapacitás egysége – számítási egység, állandó kapcsolatok és átviteli sebesség – három dimenzióval rendelkezik. A számítási egység a processzor kapacitása által felhasznált mérték. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.  A számlázás a fenntartott példányok számának megfelelő kapacitás egység szintjén történik.
 
 Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
 
@@ -64,7 +64,7 @@ Az alábbi táblázat az árakat mutatja be, és csak illusztrációs célokat s
 | Standard_v2                                       |    0,20             | 0,0080                          |
 | WAF_v2                                            |    0,36             | 0,0144                          |
 
-A díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-gateway/). A számlázás a 2019. július 1-jén kezdődik.
+A díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-gateway/). 
 
 **1. példa**
 

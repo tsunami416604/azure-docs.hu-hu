@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 56c25b7c77809a5cb7f4e539cff8e1815cd9976f
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435329"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031705"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
 
@@ -34,7 +34,7 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
     > [!NOTE]  
     > A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. Prémium lemezeket DS és GS sorozatbeli virtuális gépek használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
-    ![fürt méret szakasza a lemezek száma munkavégző csomóponttal kiemelve](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
+    ![fürt méret szakasza a lemezek száma munkavégző csomóponttal kiemelve](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>Felügyelt lemezek használata: Resource Manager-sablon
 

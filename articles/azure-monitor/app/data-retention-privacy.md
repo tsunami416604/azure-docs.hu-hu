@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513456"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031680"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -52,7 +52,7 @@ Három adatforrás található:
 ### <a name="what-kinds-of-data-are-collected"></a>Milyen típusú adatokat gyűjt a rendszer?
 A fő kategóriák a következők:
 
-* [Webkiszolgáló telemetria](../../azure-monitor/app/asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. `Session id` kérdésre adott válaszban foglalt lépéseket.
+* [Webkiszolgáló telemetria](../../azure-monitor/app/asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. `Session id`.
 * [Weblapok](../../azure-monitor/app/javascript.md) – oldal, felhasználói és munkamenetek száma. Oldal betöltési ideje Kivételek. Ajax-hívások.
 * Teljesítményszámlálók – memória, CPU, IO, hálózati kihasználtság.
 * Ügyfél-és kiszolgálói környezet – operációs rendszer, területi beállítás, eszköz típusa, böngésző, képernyőfelbontás.
@@ -84,7 +84,7 @@ Az 90 napnál hosszabb ideig tartott adatok mellett további díjak is felmerül
 
 Az összesített adatokat (azaz a számításokat, az átlagokat és az egyéb statisztikai adatokat, amelyek a metrika Explorerben láthatók) a 90 napos gabona 1 percen belül őrzi meg.
 
-A [hibakeresési Pillanatképek](../../azure-monitor/app/snapshot-debugger.md) tárolása 15 napig tart. Ez az adatmegőrzési szabályzat az alkalmazáson belüli alapon van beállítva. Ha ezt az értéket kell megnövelni, akkor a Azure Portal támogatási esetének megnyitásával növelheti a növekedést.
+A [hibakeresési Pillanatképek](../../azure-monitor/app/snapshot-debugger.md) tárolása 15 napig tart. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az adatai láthatók az Ön számára, és ha van szervezeti fiókja, a csapattagok. 
@@ -134,7 +134,7 @@ Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurál
 
 `C:\Users\username\AppData\Local\Temp` az adatmegőrzésre szolgál. Ez a hely nem konfigurálható a konfigurációs könyvtárból, és a mappa elérésére vonatkozó engedélyek az adott felhasználóra korlátozódnak a szükséges hitelesítő adatokkal. (További információ: [implementáció](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
-###  <a name="net"></a>.NET
+###  <a name="net"></a>.Net
 
 Alapértelmezés szerint a `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját használja `%localAppData%\Microsoft\ApplicationInsights` vagy a temp mappa `%TMP%`. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.)
 
@@ -175,7 +175,18 @@ A rendszer alapértelmezés szerint `%TEMP%/appInsights-node{INSTRUMENTATION KEY
 
 A mappa előtagjának `appInsights-node` felülbírálható a [küldő. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)fájlban található `Sender.TEMPDIR_PREFIX` statikus változó futásidejű értékének módosításával.
 
+### <a name="opencensus-python"></a>OpenCensus Python
 
+Alapértelmezés szerint a OpenCensus Python SDK a `%username%/.opencensus/.azure/`aktuális felhasználói mappát használja. A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) itt.) A megőrzött adataival ellátott mappa a telemetria létrehozó Python-fájl után lesz elnevezve.
+
+A tárolási fájl helyét megváltoztathatja a használt exportőr konstruktorában lévő `storage_path` paraméter átadásával.
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hogyan az adatküldés Application Insights a TLS 1,2 használatával?
 
@@ -187,20 +198,20 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 
 ### <a name="platformlanguage-specific-guidance"></a>Platform/nyelvspecifikus útmutató
 
-|Platform/nyelv | Támogatás | További információ |
+|Platformon és nyelven | Támogatás | További információ |
 | --- | --- | --- |
 | Azure App Services  | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt.  |
-| Azure-függvényalkalmazások | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt. |
+| Azure Function-alkalmazások | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt. |
 |.NET | Támogatott, a konfiguráció a verziótól függően változik. | A .NET 4,7-es és korábbi verzióival kapcsolatos részletes konfigurációs információkhoz tekintse meg [ezeket az utasításokat](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Állapotmonitor | Támogatott, konfigurálás szükséges | A Állapotmonitor a TLS 1,2-es verziójának támogatásához az [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.net-konfigurációra](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) támaszkodik.
 |Node.js |  A v 10.5.0-ben támogatott konfigurációra lehet szükség. | Bármely alkalmazásspecifikus konfigurációhoz használja a [hivatalos Node. js TLS/SSL-dokumentációt](https://nodejs.org/api/tls.html) . |
 |Java | Támogatott, a TLS 1,2-es JDK-támogatása a [jdk 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html)verzióban lett hozzáadva. | A JDK 8 [alapértelmezés szerint a TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)-et használja.  |
 |Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához.  | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
-| Windows 8,0 – 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
-| Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
-| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
-| Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | –
+| Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
+| A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
+| Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
+| Windows Server 2008 SP2 | A TLS 1.2 támogatásához szükséges frissítést. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
+|Windows Vista | Nem támogatott. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 
@@ -223,7 +234,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 A [Application Insights személyes adatkezelési cikk](../../azure-monitor/platform/personal-data-mgmt.md) részletesen ismerteti ezt a problémát.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kikapcsolhatom a felhasználók a Application Insights?
-Nem közvetlenül. Nem biztosítunk olyan kapcsolót, amelyet a felhasználók a Application Insights kikapcsolására használhatnak.
+Közvetlenül nem. Nem biztosítunk olyan kapcsolót, amelyet a felhasználók a Application Insights kikapcsolására használhatnak.
 
 Egy ilyen szolgáltatást azonban az alkalmazásban is megvalósíthat. Az SDK-k mindegyike tartalmaz egy API-beállítást, amely kikapcsolja a telemetria-gyűjteményt. 
 
@@ -234,15 +245,15 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 
 | A művelet | Összegyűjtött adatosztályok (lásd a következő táblázatot) |
 | --- | --- |
-| [Application Insights SDK hozzáadása .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználó |
+| [Application Insights SDK hozzáadása .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
 | [Állapotmonitor telepítése IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
-| [Application Insights SDK hozzáadása Java-webalkalmazáshoz][java] |ServerContext<br/>Következtetni<br/>Kérelem<br/>Munkamenet<br/>felhasználó |
-| [JavaScript SDK hozzáadása a weboldalhoz][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
+| [Application Insights SDK hozzáadása Java-webalkalmazáshoz][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
+| [JavaScript SDK hozzáadása a weboldalhoz][client] |ClientContext <br/>Következtetni<br/>Oldalala<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságok megadása][apiproperties] |A standard és az egyéni események **tulajdonságai** |
 | [TrackMetric hívása][api] |Numerikus értékek<br/>**Tulajdonságok** |
 | [Hívási sáv *][api] |Esemény neve<br/>**Tulajdonságok** |
 | [TrackException hívása][api] |**Kivételek**<br/>Verem kiírása<br/>**Tulajdonságok** |
-| Az SDK nem tud adatokat gyűjteni. Példa: <br/> -nem érhető el a teljesítményszámláló-számlálók<br/> – kivétel a telemetria inicializálásakor |SDK-diagnosztika |
+| Az SDK nem tud adatokat gyűjteni. Például: <br/> -nem érhető el a teljesítményszámláló-számlálók<br/> – kivétel a telemetria inicializálásakor |SDK-diagnosztika |
 
 [Más platformokhoz készült SDK][platforms]-k esetében tekintse meg a dokumentumokat.
 
@@ -256,7 +267,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Munkamenet |`session id` |
 | ServerContext |Számítógépnév, területi beállítás, operációs rendszer, eszköz, felhasználói munkamenet, felhasználói környezet, művelet |
 | Következtetni |földrajzi hely az IP-címről, időbélyeg, operációs rendszer, böngésző |
-| Metrikák |Metrika neve és értéke |
+| Mérőszámok |Metrika neve és értéke |
 | Események |Esemény neve és értéke |
 | Oldalmegtekintések |URL-cím és az oldal neve vagy a képernyő neve |
 | Ügyfél-Teljesítményfigyelő |URL-cím/oldal neve, böngésző betöltési ideje |
@@ -267,7 +278,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Összeomlik |`Process id`, `parent process id`, `crash thread id`; alkalmazás-javítás, `id`, Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzoridő, rendelkezésre álló memória, kérelmek gyakorisága, kivételek száma, a folyamat saját bájtjai, i/o-sebesség, kérelem időtartama, kérelmek várólistájának hossza |
-| Elérhetőség |Webteszt-válasz kódja, az egyes tesztelési lépések időtartama, teszt neve, időbélyeg, sikeres, válaszidő, tesztelési hely |
+| Rendelkezésre állás |Webteszt-válasz kódja, az egyes tesztelési lépések időtartama, teszt neve, időbélyeg, sikeres, válaszidő, tesztelési hely |
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |
 
 [Az ApplicationInsights. config fájl szerkesztésével kikapcsolhatja az egyes adatmennyiségeket][config]
@@ -276,7 +287,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 > Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) végigvezeti Önt a lehetőségein.
 
 ## <a name="credits"></a>Kreditek
-Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll, amelyek [https://www.maxmind.com ból ](https://www.maxmind.com)érhetők el.
+Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll, amelyek [https://www.maxmind.comból ](https://www.maxmind.com)érhetők el.
 
 
 

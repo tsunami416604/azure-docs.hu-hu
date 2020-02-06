@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102027"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031356"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjai
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az Azure-beli SQL Server biztonsági szempontjai Virtual Machines
 
 Ez a témakör olyan általános biztonsági irányelveket tartalmaz, amelyek segítenek az Azure-beli virtuális gépek (VM) SQL Server példányainak biztonságos elérésében.
 
@@ -49,13 +49,17 @@ A legjobb biztonság érdekében válassza a legszigorúbb beállítást a forga
 
 A portálon kiválasztott beállítások bejövő biztonsági szabályokat használnak a virtuális gép [hálózati biztonsági csoportján](../../../virtual-network/security-overview.md) (NSG), hogy engedélyezzék vagy megtagadják a virtuális géphez való hálózati forgalmat. Módosíthatja vagy létrehozhat új bejövő NSG szabályokat, amelyek engedélyezik a forgalmat a SQL Server portra (alapértelmezés szerint 1433). Megadhat konkrét IP-címeket is, amelyek számára engedélyezett a porton keresztüli kommunikáció.
 
-![Hálózatbiztonságicsoport-szabályok](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
+![Hálózat biztonsági csoportok szabályai](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
 A hálózati forgalom korlátozására szolgáló NSG kívül a Windows tűzfalat is használhatja a virtuális gépen.
 
 Ha a klasszikus üzemi modellel rendelkező végpontokat használ, távolítsa el az összes végpontot a virtuális gépen, ha nem használja őket. Az ACL-ek végpontokkal való használatával kapcsolatos utasításokért lásd: [az ACL kezelése egy végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Ez a Resource Managert használó virtuális gépek esetében nem szükséges.
 
 Végezetül vegye fontolóra a titkosított kapcsolatok engedélyezését az Azure-beli virtuális gépen a SQL Server adatbázismotor példányához. Konfigurálja az SQL Server-példányt egy aláírt tanúsítvánnyal. További információ: [titkosított kapcsolatok engedélyezése az adatbázismotor és a](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) [kapcsolati karakterlánc szintaxisával](https://msdn.microsoft.com/library/ms254500.aspx).
+
+## <a name="encryption"></a>Titkosítás
+
+A Managed Disks szolgáltatás kiszolgálóoldali titkosítást és Azure Disk Encryption biztosít. A [kiszolgálóoldali titkosítás](/azure/virtual-machines/windows/disk-encryption) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) a BitLocker vagy a dm-crypt technológiát használja, és integrálja a Azure Key Vault az operációs rendszer és az adatlemezek titkosításához. 
 
 ## <a name="use-a-non-default-port"></a>Nem alapértelmezett port használata
 
@@ -74,7 +78,7 @@ Ha ezt a kiépítés után szeretné konfigurálni, két lehetőség közül vá
 > [!IMPORTANT]
 > A nem alapértelmezett port meghatározása jó ötlet, ha a SQL Server-port nyilvános internetes kapcsolatokhoz van nyitva.
 
-Ha SQL Server egy nem alapértelmezett portot figyel, a csatlakozáskor meg kell adnia a portot. Vegyünk például egy olyan forgatókönyvet, ahol a kiszolgáló IP-címe 13.55.255.255, és SQL Server figyeli a 1401-es portot. A SQL Serverhoz való kapcsolódáshoz a kapcsolati sztringben kell megadnia `13.55.255.255,1401` .
+Ha SQL Server egy nem alapértelmezett portot figyel, a csatlakozáskor meg kell adnia a portot. Vegyünk például egy olyan forgatókönyvet, ahol a kiszolgáló IP-címe 13.55.255.255, és SQL Server figyeli a 1401-es portot. A SQL Serverhoz való kapcsolódáshoz meg kell adnia `13.55.255.255,1401` a kapcsolati karakterláncban.
 
 ## <a name="manage-accounts"></a>Fiókok kezelése
 
@@ -93,9 +97,14 @@ Nem szeretné, hogy a támadók egyszerűen kitalálják a fiókok nevét vagy j
 
   - Ha az **sa** bejelentkezést kell használnia, engedélyezze a bejelentkezést a kiépítés után, és rendeljen hozzá egy új erős jelszót.
 
-## <a name="follow-on-premises-best-practices"></a>Helyszíni ajánlott eljárások követése
+## <a name="additional-best-practices"></a>További ajánlott eljárások
 
-A jelen témakörben ismertetett eljárások mellett javasoljuk, hogy tekintse át és implementálja a hagyományos helyszíni biztonsági eljárásokat, ahol lehetséges. További információ: [SQL Server telepítésének biztonsági szempontjai](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
+A jelen témakörben ismertetett eljárások mellett javasoljuk, hogy tekintse át és implementálja mind a hagyományos, mind a helyi biztonsági eljárások, mind a virtuális gépek biztonsági eljárásainak ajánlott biztonsági eljárásait. 
+
+A helyszíni biztonsági gyakorlatokkal kapcsolatos további információkért tekintse meg a SQL Server telepítésének és a [Security Center](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database) [biztonsági szempontjait](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) . 
+
+A virtuális gépek biztonságával kapcsolatos további információkért lásd a [Virtual Machines biztonsági áttekintése](/azure/security/fundamentals/virtual-machines-overview)című témakört.
+
 
 ## <a name="next-steps"></a>További lépések
 

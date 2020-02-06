@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984744"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031220"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan lehet felkészülni a helyszíni Hyper-V virtuális 
 
 [Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
-Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -42,7 +42,7 @@ Be kell állítania a Azure Migrate telepítéséhez szükséges engedélyeket.
 **Tevékenység** | **Engedélyek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel.
-**A Azure Migrate berendezés regisztrálása** | Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a Hyper-v virtuális gépeket Azure Migrate Server Assessment használatával. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/>A készülék regisztrálása során a következő regisztrációs szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást:<br/> A HRE alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.
+**A Azure Migrate berendezés regisztrálása** | Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a Hyper-V virtuális gépeket Azure Migrate Server Assessment használatával. Ez a készülék felfedi a virtuális gépeket, és a VM-metaadatokat és teljesítményadatokat Azure Migrateba küldi.<br/><br/>A készülék regisztrálása során a következő erőforrás-szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást:<br/> A HRE alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.
 
 
 
@@ -227,7 +227,7 @@ A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Azure-fiók engedélyeinek beállítása.

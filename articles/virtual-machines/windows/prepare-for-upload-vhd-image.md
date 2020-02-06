@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461129"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906780"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -33,6 +33,22 @@ Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos inform
 > A cikkben szereplő utasítások a következőkre vonatkoznak:
 >1. A Windows Server 2008 R2 és újabb Windows Server operációs rendszerek 64 bites verziója. Az 32 bites operációs rendszerek Azure-ban való futtatásával kapcsolatos információkért lásd: [a 32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Ha a számítási feladat áttelepítéséhez vész-helyreállítási eszközt használ, például Azure Site Recovery vagy Azure Migrate, ezt a folyamatot továbbra is végre kell hajtani, és követnie kell a vendég operációs rendszert, hogy előkészítse a rendszerképet az áttelepítés előtt.
+
+## <a name="system-file-checker-sfc-command"></a>Rendszerfájl-ellenőrzési (SFC) parancs
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Futtassa a Windows rendszerfájl-ellenőrzési segédprogramot (az sfc vizsgált verziójának futtatása) az operációs rendszer rendszerképének létrehozásához szükséges általánosítási lépést megelőzően.
+
+A rendszerfájl-ellenőrző (SFC) parancs a Windows rendszerfájljainak ellenőrzéséhez és lecseréléséhez használható.
+
+Az SFC parancs futtatása:
+
+1. Nyisson meg egy rendszergazdai jogú parancssort rendszergazdaként.
+1. Írja be `sfc /scannow`, majd válassza az **ENTER billentyűt**.
+
+    ![Rendszerfájl-ellenőrzési](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+Az SFC-vizsgálat befejeződése után próbálja meg telepíteni a Windows-frissítéseket, és indítsa újra a számítógépet.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>A virtuális lemez átalakítása rögzített méretűre és VHD-re
 
@@ -156,7 +172,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 Győződjön meg arról, hogy a következő beállítások megfelelően vannak konfigurálva a táveléréshez:
 
 >[!NOTE] 
->Előfordulhat, hogy a `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`futtatásakor hibaüzenet jelenik meg. Az üzenet biztonságosan figyelmen kívül hagyható. Ez azt jelenti, hogy a tartomány nem küldi el ezt a konfigurációt egy Csoportházirend objektumon keresztül.
+>Előfordulhat, hogy a `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`futtatásakor hibaüzenet jelenik meg. Nyugodtan figyelmen kívül hagyhatja ezt az üzenetet. Ez azt jelenti, hogy a tartomány nem küldi el ezt a konfigurációt egy Csoportházirend objektumon keresztül.
 
 1. A RDP protokoll (RDP) engedélyezve van:
    
@@ -383,7 +399,7 @@ Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehe
 |                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | MRxSmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Mag                    | ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Távoli asztali szolgáltatások | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |

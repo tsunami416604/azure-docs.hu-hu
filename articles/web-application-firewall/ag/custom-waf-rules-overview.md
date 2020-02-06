@@ -7,16 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935003"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031731"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Egyéni szabályok a webalkalmazási tűzfal v2-hez az Azure Application Gateway
 
-Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 olyan előre konfigurált, platform által felügyelt szabályokat tartalmaz, amelyek számos különböző típusú támadás elleni védelmet biztosítanak. Ezek a támadások többek között a site Scripting, az SQL-injektálás és egyebek. Ha Ön WAF-rendszergazda, érdemes lehet saját szabályokat írnia az alapszintű szabálykészlet (CRS) szabályainak kibővítéséhez. A szabályok a megfelelő feltételek alapján letilthatják vagy engedélyezhetik a kért forgalmat.
+Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 olyan előre konfigurált, platform által felügyelt szabályokat tartalmaz, amelyek számos különböző típusú támadás elleni védelmet biztosítanak. Ezek a támadások többek között a site Scripting, az SQL-injektálás és egyebek. Ha Ön WAF-rendszergazda, érdemes megírnia a saját szabályait az alapszintű szabálykészlet (CRS) szabályainak kibővítéséhez. A szabályok a megfelelő feltételek alapján letilthatják vagy engedélyezhetik a kért forgalmat.
 
 Az egyéni szabályok segítségével saját szabályokat hozhat létre, amelyeket a rendszer a WAF áthaladó kérelmek esetében kiértékel. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Az egyéni szabályok tartalmazzák a szabály nevét, a szabály prioritását és a megfelelő feltételek tömbjét. Ha ezek a feltételek teljesülnek, a rendszer egy műveletet végez (Engedélyezés vagy Letiltás).
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a487e0c9d565993b45f7e271af23a622e61389ad
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990827"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031203"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni fizikai kiszolg
 
 [Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
 
-Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -44,7 +44,7 @@ Be kell állítania a Azure Migrate telepítéséhez szükséges engedélyeket.
 **Tevékenység** | **Engedélyek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel.
-**A Azure Migrate berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a fizikai kiszolgálókat Azure Migrate Server Assessment használatával. Ez a készülék felfedi a kiszolgálókat, és a metaadatokat és teljesítményadatokat Azure Migrate küldi el.<br/><br/>A készülék regisztrálása során a következő regisztrációs szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást:<br/> A HRE alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.
+**A Azure Migrate berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli és értékeli a fizikai kiszolgálókat Azure Migrate Server Assessment használatával. Ez a készülék felfedi a kiszolgálókat, és a metaadatokat és teljesítményadatokat Azure Migrate küldi el.<br/><br/>A készülék regisztrálása során a következő erőforrás-szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetésben – Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.<br/><br/> A bevezetés részeként Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást:<br/> A HRE alkalmazás a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz (hitelesítéshez és engedélyezéshez) használatos. Az alkalmazásnak nincs jogosultsága ARM-hívások vagy RBAC elérésére bármely erőforráson.
 
 
 
@@ -127,7 +127,7 @@ Tekintse át a fizikai kiszolgálók áttelepítésére vonatkozó követelmény
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ebben az oktatóanyagban az alábbiakat végezte el:
 
 > [!div class="checklist"]
 > * Azure-fiók engedélyeinek beállítása.

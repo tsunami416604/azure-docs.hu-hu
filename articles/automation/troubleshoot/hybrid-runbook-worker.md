@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988039"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030727"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibáinak megoldása
 
 Ez a cikk a hibrid Runbook-feldolgozókkal kapcsolatos hibák elhárításával kapcsolatos információkat tartalmaz.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 A hibrid Runbook Worker egy ügynöktől függ, hogy hogyan regisztrálja az Automation-fiókját a feldolgozó, a Runbook-feladatok fogadása és a jelentés állapotának regisztrálásához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke, más néven a Microsoft monitoring Agent (MMA). Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 
@@ -28,41 +28,39 @@ A hibrid Runbook Worker egy ügynöktől függ, hogy hogyan regisztrálja az Aut
 
 #### <a name="issue"></a>Probléma
 
-A Runbook végrehajtása sikertelen, és a következő hibaüzenet jelenik meg:
+A Runbook végrehajtása sikertelen, és a következő hibaüzenet jelenik meg.
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-A runbook röviddel azután fel van függesztve, hogy háromszor próbálkozik a végrehajtással. Vannak olyan feltételek, amelyek megszakítják a runbook befejezését. A kapcsolódó hibaüzenet nem tartalmazhat további információkat.
+A runbook röviddel azután fel van függesztve, hogy háromszor próbálkozik a végrehajtással. Vannak olyan feltételek, amelyek megszakítják a runbook befejezését. Előfordulhat, hogy a kapcsolódó hibaüzenet nem tartalmaz további információkat.
 
 #### <a name="cause"></a>Ok
 
-A lehetséges okok a következők:
+A lehetséges okok:
 
-* A runbookok nem tud hitelesíteni a helyi erőforrásokkal
+* A runbookok nem tud hitelesíteni a helyi erőforrásokkal.
 
-* A hibrid feldolgozó proxy vagy tűzfal mögött van
-
-* A runbookok nem tud hitelesíteni a helyi erőforrásokkal
+* A hibrid feldolgozó proxy vagy tűzfal mögött van.
 
 * A hibrid Runbook Worker szolgáltatás futtatására konfigurált számítógép nem felel meg a minimális hardverkövetelmények követelményeinek.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a *. azure-automation.net a 443-es porton.
 
-A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a minimális hardverkövetelmények, mielőtt a feldolgozó konfigurálva lenne a szolgáltatás üzemeltetésére. A runbookok és az általuk használt háttérbeli folyamat okozhatja, hogy a rendszer felhasználható, és runbook a feladatok késését vagy időtúllépését okozza.
+A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a minimális hardverkövetelmények, mielőtt a feldolgozó konfigurálva lenne a szolgáltatás üzemeltetésére. A runbookok és az általuk használt háttérbeli folyamat okozhatja, hogy a rendszer felhasználható, és runbook a feladatok késését vagy időtúllépését okozhatja.
 
-Erősítse meg, hogy a hibrid Runbook Worker szolgáltatást futtató számítógép megfelel a hardverkövetelmények minimális követelményeinek. Ha igen, figyelje a CPU-t és a memóriát a hibrid Runbook-munkavégző folyamatok és a Windows teljesítménye közötti korreláció megállapítása érdekében. A memória vagy a CPU terhelése arra utalhat, hogy frissítenie kell az erőforrásokat. Kiválaszthat egy másik számítási erőforrást is, amely képes támogatni a minimális követelményeket és a skálázást, ha a munkaterhelési igények azt jelzik, hogy növekedésre van szükség.
+Győződjön meg arról, hogy a hibrid Runbook Worker szolgáltatás futtatására szolgáló számítógép megfelel a minimális hardverkövetelmények követelményeinek. Ha igen, figyelje a CPU-t és a memóriát a hibrid Runbook-munkavégző folyamatok és a Windows teljesítménye közötti korreláció megállapítása érdekében. A memória vagy a CPU nyomása az erőforrások frissítésének szükségességét jelezheti. Kiválaszthat egy másik számítási erőforrást is, amely támogatja a minimális követelményeket és a méretezést, ha a munkaterhelési igények azt jelzik, hogy növelésre van szükség.
 
-Keresse meg a **Microsoft-SMA** eseménynaplót a megfelelő eseményhez, a Leírás *Win32 folyamata pedig a következő kóddal kilépett: [4294967295]* . A hiba oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid feldolgozói csoport futtató hitelesítő adatait. Tekintse át a [Runbook engedélyeket](../automation-hrw-run-runbooks.md#runbook-permissions) annak megerősítéséhez, hogy helyesen konfigurálta-e a runbookok-hitelesítést.
+Keresse meg a **Microsoft-SMA** eseménynaplót a megfelelő eseményhez, a Leírás *Win32 folyamata pedig a következő kóddal kilépett: [4294967295]* . Ennek a hibának az az oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid feldolgozói csoport futtató hitelesítő adatait. Tekintse át a [Runbook engedélyeket](../automation-hrw-run-runbooks.md#runbook-permissions) annak ellenőrzéséhez, hogy helyesen konfigurálta-e a runbookok-hitelesítést.
 
 ### <a name="no-cert-found"></a>Forgatókönyv: a hibrid Runbook-feldolgozók tanúsítványtárolójában nem található tanúsítvány.
 
 #### <a name="issue"></a>Probléma
 
-A hibrid Runbook-feldolgozón futó runbook a következő hibaüzenettel meghiúsul:
+A hibrid Runbook-feldolgozón futó runbook a következő hibaüzenettel meghiúsul.
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -74,9 +72,9 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a futtató [fiókot](../manage-runas-account.md) egy olyan runbook próbálja használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nem található. A hibrid Runbook-feldolgozók alapértelmezés szerint nem rendelkeznek helyileg a tanúsítvánnyal, amelyet a futtató fiók megfelelő működéséhez igényel.
+Ez a hiba akkor fordul elő, ha a futtató [fiókot](../manage-runas-account.md) egy olyan runbook próbálja használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nem található. A hibrid Runbook-feldolgozók alapértelmezés szerint nem rendelkeznek helyileg a tanúsítvánnyal, és a futtató fióknak megfelelően kell működnie.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 Ha a hibrid Runbook-feldolgozó egy Azure-beli virtuális gép, akkor ehelyett [felügyelt identitásokat használhat az Azure-erőforrásokhoz](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) . Ez a forgatókönyv leegyszerűsíti a hitelesítést azáltal, hogy lehetővé teszi az Azure-erőforrások hitelesítését az Azure-beli virtuális gép felügyelt identitásával a futtató fiók helyett. Ha a hibrid Runbook Worker egy helyszíni gép, telepítenie kell a futtató fiók tanúsítványát a gépre. A tanúsítvány telepítésének megismeréséhez tekintse meg a következő témakört: a PowerShell runbook export-RunAsCertificateToHybridWorker futtatása a [Runbookok futó hibrid runbook-feldolgozón](../automation-hrw-run-runbooks.md).
 
@@ -92,11 +90,11 @@ A Worker kezdeti regisztrációs fázisa meghiúsul, és a következő hibaüzen
 
 #### <a name="cause"></a>Ok
 
-A lehetséges okok a következők:
+A lehetséges okok:
 * Az ügynök beállításaiban nem szerepel a munkaterület-azonosító vagy a munkaterület kulcsa (elsődleges). 
 * A hibrid Runbook-feldolgozó nem tudja letölteni a konfigurációt, ami egy fiók összekapcsolási hibáját okozza. Ha az Azure lehetővé teszi a megoldások használatát, csak bizonyos régiókat támogat a Log Analytics munkaterület és az Automation-fiók összekapcsolásához. Az is lehetséges, hogy helytelen dátum és/vagy idő van beállítva a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, a bevezetés sikertelen lesz.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 ##### <a name="mistyped-workspace-idkey"></a>Nem típusos munkaterület azonosítója/kulcsa
 Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e megadva, lásd: [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#windows-agent) a Windows-ügynökhöz, vagy [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#linux-agent) a Linux-ügynökhöz.  Győződjön meg arról, hogy a teljes karakterláncot kijelöli a Azure Portal, majd másolja és illessze be alaposan.
@@ -121,7 +119,7 @@ A Linux Log Analytics ügynöke nem fut
 
 Ha az ügynök nem fut, megakadályozza, hogy a Linux Hybrid Runbook Worker kommunikáljon Azure Automationokkal. Lehetséges, hogy az ügynök különböző okokból nem fut.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
  A következő parancs beírásával ellenőrizze, hogy fut-e az ügynök: `ps -ef | grep python`. Az alábbihoz hasonló kimenetnek kell megjelennie, a Python-folyamatokat a **nxautomation** felhasználói fiókkal. Ha a Update Management vagy Azure Automation megoldások nincsenek engedélyezve, a következő folyamatok egyike sem fut.
 
@@ -133,10 +131,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 A következő lista azokat a folyamatokat mutatja be, amelyek a Linux hibrid Runbook-feldolgozók számára lettek elindítva. Ezek mind a `/var/opt/microsoft/omsagent/state/automationworker/` könyvtárban találhatók.
 
-
 * **OMS. conf** – a Worker Manager folyamata. Közvetlenül a DSC-ből indult el.
 
-* **Worker. conf** – az automatikusan regisztrált hibrid feldolgozói folyamat, amelyet a Worker Manager indít el. Ezt a folyamatot a Update Management használja, és átlátható a felhasználó számára. Ez a folyamat nem jelenik meg, ha a Update Management megoldás nincs engedélyezve a számítógépen.
+* **Worker. conf** – a hibrid munkavégző folyamat automatikus regisztrálása. A Worker Manager indította el. Ezt a folyamatot a Update Management használja, és átlátható a felhasználó számára. Ez a folyamat nem jelenik meg, ha a Update Management megoldás nincs engedélyezve a számítógépen.
 
 * **DIY/Worker. conf** – a DIY hibrid feldolgozói folyamat. A DIY hibrid feldolgozói folyamat a hibrid Runbook-feldolgozón futtatott felhasználói runbookok végrehajtására szolgál. Ez csak az automatikus regisztrált hibrid munkavégző folyamattól tér el a legfontosabb részletességgel, amelyet más konfigurációt használ. Ez a folyamat nem jelenik meg, ha a Azure Automation megoldás le van tiltva, és a DIY Linux Hybrid Worker nincs regisztrálva.
 
@@ -164,7 +161,7 @@ A `healthservice` szolgáltatás nem fut a hibrid Runbook Worker gépen.
 
 Ha a Microsoft monitoring Agent Microsoft szolgáltatás nem fut, ez az állapot megakadályozza, hogy a hibrid Runbook-feldolgozó kommunikáljon a Azure Automationkal.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze, hogy fut-e az ügynök a következő parancs megadásával a PowerShellben: `Get-Service healthservice`. Ha a szolgáltatás leáll, írja be a következő parancsot a PowerShellben a szolgáltatás elindításához: `Start-Service healthservice`.
 
@@ -178,7 +175,7 @@ Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a *
 
 Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a *. azure-automation.net a 443-es portokon. 
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizze, hogy vannak-e olyan figyelmeztetési vagy hibaüzenetek az **alkalmazás és szolgáltatások Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és szolgáltatások Logs\Operations-kezelő** eseménynaplójában, amely egy kapcsolatot vagy más olyan problémát jelez, amely hatással van a szerepkör bevezetésére Azure Automation vagy probléma esetén a normál műveletek során. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/platform/agent-windows-troubleshoot.md)című témakört.
 
@@ -202,7 +199,7 @@ Heartbeat
 
 Ezt a problémát a hibrid Runbook-feldolgozó sérült gyorsítótára okozhatja.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 A probléma megoldásához jelentkezzen be a hibrid Runbook-feldolgozóba, és futtassa az alábbi szkriptet. Ez a szkript leállítja a Microsoft monitoring agentet, eltávolítja a gyorsítótárat, és újraindítja a szolgáltatást. Ez a művelet kényszeríti a hibrid Runbook-feldolgozót, hogy újra letöltse a konfigurációját Azure Automationról.
 
@@ -228,7 +225,7 @@ Machine is already registered
 
 Ezt a problémát akkor lehet okozni, ha a gép már regisztrálva van egy másik Automation-fiókkal, vagy ha megpróbálta beolvasni a hibrid Runbook-feldolgozót, miután eltávolította azt egy gépről.
 
-#### <a name="resolution"></a>Felbontás
+#### <a name="resolution"></a>Megoldás:
 
 A probléma megoldásához távolítsa el a következő beállításkulcsot, és indítsa újra a `HealthService`, majd próbálja megismételni a `Add-HybridRunbookWorker` parancsmagot:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494142"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029545"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -36,11 +36,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
-    |Előfizetés  | Válassza ki a legördülő menüből a fürthöz használt Azure-előfizetést. Az ehhez a rövid útmutatóhoz használt előfizetés az **Azure**. |
+    |Előfizetést  | Válassza ki a legördülő menüből a fürthöz használt Azure-előfizetést. Az ehhez a rövid útmutatóhoz használt előfizetés az **Azure**. |
     |Erőforráscsoport | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az ehhez a rövid útmutatóhoz használt erőforráscsoport-név **myResourceGroup**. |
     |Fürt neve | Adjon nevet a HDInsight Spark-fürtnek. Az ehhez a rövid útmutatóhoz használt fürt neve **myspark2019**.|
-    |Földrajzi egység   | Válasszon egy helyet az erőforráscsoportnak. A sablon ezt a helyet használja a fürt létrehozásához, valamint az alapértelmezett fürttárolóhoz. A rövid útmutatóhoz használt hely az **USA keleti**régiója. |
-    |Fürttípus| Válassza a **Spark** lehetőséget a fürt típusaként.|
+    |Hely   | Válasszon egy helyet az erőforráscsoportnak. A sablon ezt a helyet használja a fürt létrehozásához, valamint az alapértelmezett fürttárolóhoz. A rövid útmutatóhoz használt hely az **USA keleti**régiója. |
+    |Fürt típusa| Válassza a **Spark** lehetőséget a fürt típusaként.|
     |Fürt verziója|Ez a mező automatikusan feltölti az alapértelmezett verziót a fürt típusának kiválasztása után.|
     |Fürt bejelentkezési felhasználóneve| Adja meg a fürt bejelentkezési felhasználónevét.  Az alapértelmezett név a *rendszergazda*. Ezzel a fiókkal a gyors útmutatóban később bejelentkezhet a Jupyter-jegyzetfüzetbe. |
     |Fürt bejelentkezési jelszava| Adja meg a fürt bejelentkezési jelszavát. |
@@ -59,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
     |Az elsődleges tárfiók|Használja az automatikusan feltöltött értéket.|
     |Tároló|Használja az automatikusan feltöltött értéket.|
 
-    ![HDInsight Spark-fürt alapkonfigurációinak létrehozása](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "Spark-fürt létrehozása a HDInsight-ben az alapvető konfigurációk")
+    ![HDInsight Spark-fürt alapkonfigurációinak létrehozása](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Spark-fürt létrehozása a HDInsight-ben az alapvető konfigurációk")
 
     A folytatáshoz válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
@@ -69,9 +69,9 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, előfordulh
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
 
-A Jupyter Notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
+A Jupyter notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 1. Válassza a **HDInsight-fürtök** lehetőséget, majd a létrehozott fürtöt.
 
@@ -133,7 +133,7 @@ Lépjen vissza az Azure Portalra és válassza a **Törlés** lehetőséget.
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésekor a rendszer a HDInsight Spark-fürtöt és az alapértelmezett tárfiókot is törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozható létre egy HDInsight Spark-fürt, illetve hogyan futtatható egy alapszintű Spark SQL-lekérdezés. Folytassa a következő oktatóanyaggal, amelyben megtudhatja, hogyan használhatja a HDInsight Spark-fürtöt interaktív lekérdezések mintaadatokon való futtatására.
 

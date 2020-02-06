@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e673c2dfd9b3bef6d443498fc96a8c71e0737851
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833346"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030761"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
 
@@ -59,7 +59,7 @@ A OAuth 2,0-ben az ilyen típusú engedélyeket *hatóköröknek*nevezzük. Ezek
 * Írás a felhasználó naptárába `Calendars.ReadWrite` használatával
 * E-mail küldése felhasználóként a `Mail.Send` használatával
 
-Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak a rendszergazdai engedélyekkel adhatók meg, és a kérés/engedélyezés a [rendszergazdai engedélyezési végpont](v2-permissions-and-consent.md#admin-restricted-permissions)használatával lehetséges. Látogasson el lapunkra további információért.
+Az alkalmazások leggyakrabban a Microsoft Identity platform engedélyezés végpontjának megadásával kérik le ezeket az engedélyeket. Bizonyos magas jogosultsági szintű engedélyek azonban csak a rendszergazdai engedélyekkel adhatók meg, és a kérés/engedélyezés a [rendszergazdai engedélyezési végpont](v2-permissions-and-consent.md#admin-restricted-permissions)használatával lehetséges. További információért olvassa el a következőt:.
 
 ## <a name="permission-types"></a>Engedélyezési típusok
 
@@ -89,7 +89,7 @@ Ha egy alkalmazás az [OpenID Connect](active-directory-v2-protocols.md)használ
 
 A `email` hatókör a `openid` hatókörrel és másokkal is használható. Az alkalmazás az `email` jogcím formájában hozzáférést biztosít a felhasználó elsődleges e-mail-címéhez. A `email` jogcímet csak akkor tartalmazza a token, ha a felhasználói fiókhoz társított e-mail-cím, amely nem mindig az eset. Ha a `email` hatókört használja, az alkalmazásnak fel kell készülnie arra az esetre, amikor az `email` jogcím nem létezik a jogkivonatban.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profile
 
 A `profile` hatókör a `openid` hatókörrel és másokkal is használható. Hozzáférést biztosít az alkalmazásnak a felhasználóval kapcsolatos jelentős mennyiségű információhoz. Az általa elérhető információ magában foglalja a következőket:, de nem kizárólagosan, a felhasználó vezetéknevét, vezetéknevét, előnyben részesített felhasználónevét és objektum-AZONOSÍTÓját. Egy adott felhasználó id_tokens paraméterében elérhető profil jogcímek teljes listájáért tekintse meg a`id_tokens`- [referenciát](id-tokens.md).
 
@@ -204,11 +204,11 @@ Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától
 
 | Paraméter     | Állapot     | Leírás                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Szükséges | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A (z) GUID vagy a felhasználóbarát név formátumban adható meg, vagy általános módon hivatkozik `common`re, ahogy az a példában látható. |
-| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
-| `redirect_uri` | Szükséges |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
+| `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy általános módon hivatkozik a szervezetekre, ahogyan az a példában látható. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
 | `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-|`scope`        | Szükséges      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus ( [`/.default`](#the-default-scope)) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). Ha az alkalmazás engedélyeire van szüksége, a statikusan konfigurált engedélyek listájának lekéréséhez `/.default`t kell használnia.  | 
+|`scope`        | Kötelező      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus ( [`/.default`](#the-default-scope)) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). Ha az alkalmazás engedélyeire van szüksége, a statikusan konfigurált engedélyek listájának lekéréséhez `/.default`t kell használnia.  | 
 
 
 Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszergazda a `scope` paraméterben kért összes engedély jóváhagyását kéri.  Ha statikus (`/.default`) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezését kéri.

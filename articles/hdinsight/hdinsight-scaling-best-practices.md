@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744767"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030922"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -35,9 +35,9 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 |[PowerShell-AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<fürt neve >-TargetInstanceCount \<NewSize >|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<erőforráscsoport >--name \<-fürt neve >--Target-instances Count \<NewSize >|
 |[Azure CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-fürt átméretezése \<clusterName > \<megcélzott példányok száma > |
-|[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
+|[Azure Portalra](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
-![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 A módszerek bármelyikével akár percek alatt is méretezheti a HDInsight-fürtöt.
 
@@ -126,7 +126,7 @@ Ha manuálisan szeretné megölni a futó alkalmazást, hajtsa végre a követke
 yarn application -kill <application_id>
 ```
 
-Példa:
+Például:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

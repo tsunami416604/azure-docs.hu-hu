@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990742"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031663"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -63,12 +63,12 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 
 **Követelmény** | **Fizikai** 
 --- | ---
-**Letöltési formátum** | Tömörített mappa (PowerShell-telepítő parancsfájllal)
+**Letöltési formátum** | Tömörített mappa (PowerShell-alapú telepítő parancsfájllal)
 **Letöltési hivatkozás** | [Letöltési hivatkozás](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Letöltési méret** | 59,7 MB
-**Hardver** | Dedikált fizikai számítógép vagy virtuális gép. A készüléket futtató gépnek 16 GB RAM-mal, 8 vCPU, körülbelül 80 GB tárhellyel és külső kapcsolóval kell rendelkeznie.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
+**Hardver** | Dedikált fizikai gép vagy virtuális gép használata. A készüléket futtató gépnek 16 GB RAM-mal, 8 vCPU, körülbelül 80 GB tárhellyel és külső kapcsolóval kell rendelkeznie.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
 **Kivonat értéke** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**Szoftver** | A készülék számítógépének a Windows Server 2016-et kell futtatnia. 
+**Operációs rendszer** | A készüléket futtató gépnek Windows Server 2016 rendszernek kell futnia. 
 **Berendezések üzembe helyezése**   |  A készülék telepítőjének parancsfájlját a rendszer letölti a portálról (tömörített mappában). <br/> Bontsa ki a mappát, és futtassa a PowerShell-szkriptet (AzureMigrateInstaller. ps1).
 **Felfedezés** | A berendezések akár 250 fizikai kiszolgálót is felfedezhetnek.
 **Berendezés összetevői** | Felügyeleti alkalmazás: webalkalmazás a berendezésben felhasználói bevitelhez a telepítés során.<br/> Felderítési ügynök: a számítógép konfigurációs adatainak összegyűjtése.<br/> Assessment Agent: teljesítményadatokat gyűjt.<br/>  Automatikus frissítési szolgáltatás: összetevők frissítése (24 óránként fut).
@@ -85,15 +85,16 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 --- | --- |
 *.portal.azure.com  | Navigáljon a Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésbe.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat, hogy a készülék kommunikáljon a Azure Migrateokkal.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat, hogy a készülék kommunikáljon a Azure Migrateokkal.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *.vault.azure.net | A Azure Key Vault titkainak kezelése.
 aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz. Azure Migrate berendezés frissítéseihez használatos.
 download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltéséről.
-*.servicebus.windows.net | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
-*.blob.core.windows.net |  **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/>Adatok feltöltése a tárolóba.
+*.servicebus.windows.net | A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
+*.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/> Kapcsolódjon Azure Migrate szolgáltatás URL-címeihez.
+*.blob.core.windows.net |  **VMware ügynök nélküli Migrálás esetén használatos**<br/><br/>Adatok feltöltése a Storage-ba áttelepítéshez.
 
 
 
@@ -106,12 +107,12 @@ Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készü
 
 **Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-CPU-kihasználtság | CPU. használat. átlag | Ajánlott virtuális gép mérete/díja
-Memória kihasználtsága | mem. használat. átlag | Ajánlott virtuális gép mérete/díja
-Lemez olvasási sebessége (MB/s) | virtualDisk. Read. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási sebessége (MB/s) | virtualDisk. Write. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez olvasási műveletei másodpercenként | virtualDisk. numberReadAveraged. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási műveletei másodpercenként | virtualDisk. numberWriteAveraged. Average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Processzorkihasználtság | cpu.usage.average | Ajánlott virtuális gép mérete/díja
+Memória kihasználtsága | mem.usage.average | Ajánlott virtuális gép mérete/díja
+Lemez olvasási sebessége (MB/s) | virtualDisk.read.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási sebessége (MB/s) | virtualDisk.write.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez olvasási műveletei másodpercenként | virtualDisk.numberReadAveraged.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási műveletei másodpercenként | virtualDisk.numberWriteAveraged.average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
 Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | A virtuális gép méretének kiszámítása
 Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A virtuális gép méretének kiszámítása
 
@@ -126,47 +127,47 @@ Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM
 **Adatok** | **Számláló**
 --- | --- 
 **Gép részletei** | 
-VIRTUÁLIS GÉP AZONOSÍTÓJA | VM. Config. értékű 
-a virtuális gép neve | VM. Config.Name
-vCenter Server azonosítója | VMwareClient. instance. UUID
-Virtuális gép leírása | VM. Summary. config. Megjegyzés
-Licenc terméknév | VM. Client. ServiceContent. about. LicenseProductName
-Operációs rendszer típusa | VM. SummaryConfig.GuestFullName
-Rendszerindítás típusa | VM. Config. firmware
-Magok száma | VM. Config. Hardware. NumCPU
-Memória (MB) | VM. Config. Hardware. MemoryMB
+VIRTUÁLIS GÉP AZONOSÍTÓJA | vm.Config.InstanceUuid 
+a virtuális gép neve | vm.Config.Name
+vCenter Server azonosítója | VMwareClient.Instance.Uuid
+Virtuális gép leírása | vm.Summary.Config.Annotation
+Licenc terméknév | vm.Client.ServiceContent.About.LicenseProductName
+Operációs rendszer típusa | vm.SummaryConfig.GuestFullName
+Rendszerindítás típusa | vm.Config.Firmware
+Magok száma | vm.Config.Hardware.NumCPU
+Memória (MB) | vm.Config.Hardware.MemoryMB
 Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
 Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
-CPU-kihasználtság | CPU. használat. átlag
-Memória kihasználtsága |mem. használat. átlag
+Processzorkihasználtság | cpu.usage.average
+Memória kihasználtsága |mem.usage.average
 **/Lemez adatai** | 
 Lemez kulcsának értéke | lemez. Kulcs
-Dikunit száma | lemez. UnitNumber
-Lemezvezérlő-kulcs értéke | lemez. ControllerKey. Value
-Kiépített gigabájt | virtualDisk. DeviceInfo. Summary
+Dikunit száma | disk.UnitNumber
+Lemezvezérlő-kulcs értéke | disk.ControllerKey.Value
+Kiépített gigabájt | virtualDisk.DeviceInfo.Summary
 Lemez neve | A lemez használatával generált érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey. VAlue
-Olvasási műveletek másodpercenként | virtualDisk. numberReadAveraged. Average
-Írási műveletek másodpercenként | virtualDisk. numberWriteAveraged. Average
-Olvasási sebesség (MB/s) | virtualDisk. Read. Average
-Írási sebesség (MB/s) | virtualDisk. Write. Average
+Olvasási műveletek másodpercenként | virtualDisk.numberReadAveraged.average
+Írási műveletek másodpercenként | virtualDisk.numberWriteAveraged.average
+Olvasási sebesség (MB/s) | virtualDisk.read.average
+Írási sebesség (MB/s) | virtualDisk.write.average
 **Hálózati adapter adatai** | 
 Hálózati adapter neve | hálózati. Kulcs
-MAC-címe | ((VirtualEthernetCard) NIC). MacAddress
+MAC-cím | ((VirtualEthernetCard)nic).MacAddress
 IPv4-címek | VM. Guest.Net
 IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name (Név) | tároló. GetType (). név
+Név | container.GetType().Name
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
-Mappa részletei virtuális gépenként | ((Mappa) tároló). ChildEntity. Type
-Adatközpont részletei virtuális gépenként | (Datacenter) tároló. VmFolder
-Az adatközpont részletei egy gazdagép mappájában | (Datacenter) tároló. HostFolder
-Fürt adatai egy gazdagépen | ((ClusterComputeResource) tároló). Gazdagép
-Gazdagép adatai virtuális gépenként | ((HostSystem) tároló). VM
+Mappa részletei virtuális gépenként | ((Folder)container).ChildEntity.Type
+Adatközpont részletei virtuális gépenként | ((Datacenter)container).VmFolder
+Az adatközpont részletei egy gazdagép mappájában | ((Datacenter)container).HostFolder
+Fürt adatai egy gazdagépen | ((ClusterComputeResource)container).Host
+Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 
 ## <a name="collected-data---hyper-v"></a>Összegyűjtött adatok – Hyper-V
 
@@ -208,16 +209,16 @@ Operációs rendszer neve/verziója/teljes tartományneve | Msvm_KvpExchangeComp
 Virtuális gép energiaellátási állapota | Msvm_ComputerSystem | EnabledState
 **/Lemez adatai** | 
 Lemez azonosítója | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Type (Típus)
+Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Típus
 Virtuális merevlemez mérete | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 Virtuális merevlemez szülőjének | Msvm_VirtualHardDiskSettingData | ParentPath
 **Hálózati adapter adatai** | 
-IP-címek (szintetikus hálózati adapterek) | Msvm_GuestNetworkAdapterConfiguration | Erőforrásrekordjaiba
+IP addresses (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP engedélyezve (szintetikus hálózati adapterek) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC-azonosító (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | InstanceID
 Hálózati adapter MAC-címe (szintetikus hálózati adapterek) | Msvm_SyntheticEthernetPortSettingData | Cím
-NIC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting-adathalmazok | InstanceID
-NIC MAC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting-adathalmazok | Cím
+NIC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | InstanceID
+NIC MAC-azonosító (örökölt hálózati adapterek) | MsvmEmulatedEthernetPortSetting Data | Cím
 
 
 

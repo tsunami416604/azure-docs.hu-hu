@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720267"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029491"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-network-watcher"></a>Mi az Network Watcher?
 Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) összetevőinek hálózati állapotát, beleértve a Virtual Machines, a virtuális hálózatokat, az alkalmazás-átjárókat, a terheléselosztó és az Azure-beli virtuális hálózatok egyéb erőforrásait. Nem megoldás a Péter (platform-szolgáltatás) infrastruktúrájának figyelésére, vagy a web/mobil Analitika beszerzésére.
@@ -54,17 +54,29 @@ Látogasson el a Network Watcher-összetevők [díjszabási oldalára](https://a
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Mely régiók Network Watcher támogatott/elérhető?
 Az [Azure szolgáltatás rendelkezésre állási lapján](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) megtekintheti a legújabb regionális elérhetőséget.
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Mik a Network Watcher erőforrás-korlátai?
-Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) lapon.  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Milyen engedélyekre van szükség a Network Watcher használatához?
+Tekintse meg a [Network Watcher használatához szükséges RBAC engedélyek](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listáját. Erőforrások üzembe helyezéséhez közreműködői engedélyekkel kell rendelkeznie a NetworkWatcherRG (lásd alább).
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egyetlen példányban engedélyezett Network Watcher régiónként?
-Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése működjön, ez a szolgáltatás nem megengedett.
+### <a name="how-do-i-enable-network-watcher"></a>Hogyan engedélyezhetem a Network Watchert?
+A Network Watcher szolgáltatás minden előfizetéshez [automatikusan engedélyezve](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) van.
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>Mi a Network Watcher üzembe helyezési modell?
+A Network Watcher szülő erőforrás minden régióban egyedi példánnyal van üzembe helyezve. Elnevezési formátum: NetworkWatcher_RegionName. Példa: a NetworkWatcher_centralus a "Central US" régió Network Watcher erőforrása.
+
+### <a name="what-is-the-networkwatcherrg"></a>Mi a NetworkWatcherRG?
+Network Watcher erőforrások a rejtett **NetworkWatcherRG** -erőforráscsoport alatt találhatók, amely automatikusan létrejön. Például a NSG flow-napló erőforrás a Network Watcher gyermek erőforrása, és engedélyezve van a NetworkWatcherRG.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Miért kell telepíteni a Network Watcher bővítményt? 
 A Network Watcher-bővítményt minden olyan szolgáltatáshoz meg kell adni, amely egy virtuális gépről érkező forgalmat kell előállítani vagy feltartóztatni. 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>Mely szolgáltatásokhoz szükséges a Network Watcher bővítmény?
-Csak a csomagok rögzítése, a kapcsolati hibák és a kapcsolat figyelője szükséges a Network Watcher kiterjesztésének megjelenni.
+A csomagok rögzítése, a kapcsolati hibák és a kapcsolati figyelő funkcióinak jelen kell lennie a Network Watcher bővítménynek.
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>Mik a Network Watcher erőforrás-korlátai?
+Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) lapon.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egyetlen példányban engedélyezett Network Watcher régiónként?
+Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése működjön, ez a szolgáltatás nem megengedett.
 
 ## <a name="nsg-flow-logs"></a>NSG
 
@@ -85,7 +97,7 @@ Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbé
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hogyan használja a NSG a szolgáltatási végpont mögötti Storage-fiókkal?
 
-A NSG a szolgáltatási végpontokkal compantible, és nem igényel további konfigurálást. Tekintse meg a szolgáltatás-végpontok virtuális hálózatban való [engedélyezésével foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) .
+A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltatási végpontokkal. Tekintse meg a szolgáltatás-végpontok virtuális hálózatban való [engedélyezésével foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) .
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?

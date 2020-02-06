@@ -1,43 +1,45 @@
 ---
-title: A Java használata adatok küldéséhez és az Azure-Event Hubs
-description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.
+title: Események küldése vagy fogadása az Azure Event Hubs Java (örökölt) használatával
+description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely az Azure Event Hubs a régi Azure-eventhubs csomag használatával küld/fogad eseményeket.
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: be9919950f24dbee7fb8a3f901767c298105bf53
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.topic: quickstart
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a2cce90b5aa28dac6ff945ac48f70bfd319683b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325474"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029894"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>A Java használata események küldésére és fogadására az Azure-ból Event Hubs
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Az Azure Event Hubs (Azure-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre Java-alkalmazásokat az Azure-Event Hubs eseményeinek küldéséhez és fogadásához.
 
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. A Event Hubs részletes áttekintését lásd: Event Hubs áttekintés és Event Hubs funkciók.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. A Event Hubs részletes áttekintését lásd: Event Hubs áttekintés és Event Hubs funkciók.
 
-> [!NOTE]
-> A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
+> [!WARNING]
+> Ez a rövid útmutató a régi **Azure-eventhubs** és az **Azure-eventhubs-EF** csomagokat használja. Javasoljuk, hogy a legújabb [Azure-Messaging-eventhubs](get-started-java-send-v2.md) csomag használatára [telepítse át](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md) a kódot. 
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a feladatok megkezdése előtt.
-- Java-fejlesztési környezet. Ez az oktatóanyag az [Eclipse](https://www.eclipse.org/)-t használja.
-- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be az Event hub elérési kulcsának értékét a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot az oktatóanyag későbbi részében írt kódban használhatja. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+- A Java fejlesztési környezet. Ez az oktatóanyag az [Eclipse](https://www.eclipse.org/)-t használja.
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be az Event hub elérési kulcsának értékét a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
 
 ## <a name="send-events"></a>Események küldése 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Java-alkalmazást az Event hub eseményeinek elküldéséhez. 
 
-### <a name="add-reference-to-azure-event-hubs-library"></a>Hivatkozás hozzáadása az Azure Event Hubs Library-hoz
+> [!NOTE]
+> A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
+
+### <a name="add-reference-to-azure-event-hubs-library"></a>Az Azure Event Hubs-erőforrástárhoz hivatkozás hozzáadása
 
 A Event Hubs Java-ügyféloldali kódtára a [Maven Central adattárból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22)származó Maven-projektekben használható. Ezt a kódtárat a következő függőségi deklarációval hivatkozhat a Maven-projektfájl használatával:
 
@@ -51,11 +53,11 @@ A Event Hubs Java-ügyféloldali kódtára a [Maven Central adattárból](https:
 
 A különböző típusú Build-környezetek esetében explicit módon beszerezheti a legújabb kiadott JAR-fájlokat a [Maven központi adattárból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-Egy egyszerű esemény-közzétevő esetében importálja a *com. microsoft. Azure. eventhubs* csomagot a Event Hubs ügyfél osztályokhoz és a *com. microsoft. Azure. servicebus* csomaghoz a segédprogram-osztályokhoz, például az Azure-ban megosztott általános kivételekhez. Service Bus üzenetküldési ügyfél. 
+Egy egyszerű esemény-közzétevő esetében importálja a *com. microsoft. Azure. eventhubs* csomagot a Event Hubs ügyfél osztályokhoz és a *com. microsoft. Azure. servicebus* csomaghoz a segédprogram-osztályokhoz, például a Azure Service Bus üzenetkezelési ügyféllel megosztott általános kivételekhez. 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy `SimpleSend` nevű osztályt, és adja hozzá a következő kódot a osztályhoz:
+A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy `SimpleSend`nevű osztályt, és adja hozzá a következő kódot a osztályhoz:
 
 ```java
 import com.google.gson.Gson;
@@ -82,9 +84,9 @@ public class SimpleSend {
  }
 ```
 
-### <a name="construct-connection-string"></a>Kapcsolatok karakterláncának létrehozása
+### <a name="construct-connection-string"></a>Kapcsolati karakterlánc létrehozása
 
-A ConnectionStringBuilder osztály használatával hozza létre a Event Hubs ügyfél példányának átadandó kapcsolódási karakterlánc értékét. Cserélje le a helyőrzőket a névtér és az Event hub létrehozásakor beszerzett értékekre:
+A ConnectionStringBuilder osztály használatával hozhat létre egy kapcsolati karakterlánc értékét az Event Hubs-ügyfél példány számára. A helyőrzőket cserélje le a névtér és az eseményközpont létrehozásakor beszerzett:
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
@@ -96,7 +98,7 @@ A ConnectionStringBuilder osztály használatával hozza létre a Event Hubs üg
 
 ### <a name="write-code-to-send-events"></a>Kód írása az események küldéséhez
 
-Hozzon létre egy számokból álló eseményt egy karakterláncnak az UTF-8 bájtos kódolásba alakításával. Ezután hozzon létre egy új Event Hubs ügyfél-példányt a kapcsolatok sztringből, és küldje el az üzenetet:   
+Hozzon létre egy egyes számú esemény átalakításával keletkező egy karakterlánc, az UTF-8 bájtos kódolást. Ezután hozzon létre új Event Hubs-ügyfél példány a kapcsolati karakterláncból, és az üzenet elküldéséhez:   
 
 ```java 
         final Gson gson = new GsonBuilder().create();
@@ -136,17 +138,17 @@ Hozzon létre egy számokból álló eseményt egy karakterláncnak az UTF-8 bá
 
 ``` 
 
-Hozza létre és futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
+Hozhat létre és futtassa a programot, és győződjön meg arról, hogy nincsenek-e hibák.
 
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Függelék: az üzenetek EventHub-partíciókhoz való továbbításának módja
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>A függelék: Hogyan üzenetek legyenek átirányítva az EventHub-partíciók
 
-Mielőtt a felhasználók lekérik az üzeneteket, azokat közzé kell tenni a-közzétevők által először a partíciókban. Ha az üzeneteket a com. microsoft. Azure. eventhubs. EventHubClient objektum sendSync () metódusával szinkronban közzétesszük az Event hub-ban, az üzenetet elküldheti egy adott partícióra, vagy átadható az összes rendelkezésre álló partícióra egy ciklikus multiplexelés használatával. attól függően, hogy a partíciós kulcs meg van-e adva.
+Üzenetek fogyasztó megkaptuk, mielőtt közzétenni a partíciók először a kiadók által rendelkeznek. Üzeneteket az eseményközpontba szinkron módon történik a metódussal sendSync() a com.microsoft.azure.eventhubs.EventHubClient objektum közzétételét követően sikerült-e az összes rendelkezésre álló partíciókra Ciklikus időszeleteléses módon elosztott vagy egy adott partícióra küldött üzenet attól függően, hogy a partíciós kulcs van megadva, vagy nem.
 
-Ha meg van adva a partíciós kulcsot megadó karakterlánc, a rendszer a kulcsot kivonattal határozza meg, hogy melyik partícióra küldje az eseményt.
+Ha egy karakterlánc, amely a partíciókulcs meg van adva, a kulcs lesz kivonatolása határozza meg az eseményt, hogy melyik partíciót.
 
-Ha a partíciós kulcs nincs beállítva, az üzenetek az összes rendelkezésre álló partícióra kerekítve lesznek
+Ha nincs beállítva a partíciókulcsot, ciklikus-robined az összes rendelkezésre álló partíció lesz-e majd üzenetek
 
 ```java
 // Serialize the event into bytes
@@ -172,9 +174,9 @@ Az oktatóanyagban szereplő kód a [githubon lévő EventProcessorSample-kód](
 
 ### <a name="receive-messages-with-eventprocessorhost-in-java"></a>Üzenetek fogadása az EventProcessorHost használatával Javában
 
-A **EventProcessorHost** egy Java-osztály, amely leegyszerűsíti az események fogadását a Event Hubsről az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével ezekből a Event Hubsokból. A EventProcessorHost használatával több fogadón is feloszthatja az eseményeket, még akkor is, ha azok különböző csomópontokon futnak. Ez a példa bemutatja, hogyan használható az EventProcessorHost egyetlen fogadóhoz.
+A **EventProcessorHost** egy Java-osztály, amely leegyszerűsíti az események fogadását a Event Hubsről az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével ezekből a Event Hubsokból. EventProcessorHost használatával, akkor is feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az EventProcessorHost egyetlen fogadóhoz.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiókkal] [Azure Storage-fiókkal]:
 
@@ -187,7 +189,7 @@ A EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiókk
    
     ![Hozzáférési kulcsainak beolvasása Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
-    Másolja a key1 értéket egy ideiglenes helyre. Az oktatóanyag későbbi részében használni fogja.
+    1\. kulcs értékét egy ideiglenes helyre másolja. Az oktatóanyagban későbbi részében használni fogja.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
 
@@ -223,7 +225,7 @@ A különböző típusú Build-környezetek esetében explicit módon beszerezhe
         }
     }
     ```
-2. A következő kóddal hozzon létre egy `EventProcessorSample` nevű új osztályt. Cserélje le a helyőrzőket az Event hub és a Storage-fiók létrehozásakor használt értékekre:
+2. A következő kóddal hozzon létre egy `EventProcessorSample` nevű új osztályt. A helyőrzőket cserélje le az event hubot és a storage-fiók létrehozásakor használt értékek:
    
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
@@ -313,7 +315,7 @@ A különböző típusú Build-környezetek esetében explicit módon beszerezhe
            System.out.println("End of sample");
        }
     ```
-3. Hozzon létre egy `EventProcessor` nevű osztályt a következő kód használatával:
+3. Hozzon létre még egy `EventProcessor`nevű osztályt a következő kód használatával:
    
     ```java
     public static class EventProcessor implements IEventProcessor
@@ -378,15 +380,15 @@ A különböző típusú Build-környezetek esetében explicit módon beszerezhe
     }
     ```
 
-Ez az oktatóprogram az EventProcessorHost egyetlen példányát használja. Az átviteli sebesség növelése érdekében javasoljuk, hogy a EventProcessorHost több példányát futtassa, lehetőleg különálló gépeken.  Redundanciát is biztosít. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló neveket adni az EventProcessorHost példányoknak.
+Ez az oktatóprogram az EventProcessorHost egyetlen példányát használja. Átviteli sebesség növelése érdekében azt javasoljuk, hogy Ön több példányának futtatása EventProcessorHost, lehetőleg külön gépeken található.  Redundanciát is biztosít. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló neveket adni az EventProcessorHost példányoknak.
 
-### <a name="publishing-messages-to-eventhub"></a>Üzenetek közzététele a EventHub-ben
+### <a name="publishing-messages-to-eventhub"></a>Az EventHub közzétételi üzenetek
 
-Mielőtt a felhasználók lekérik az üzeneteket, azokat közzé kell tenni a-közzétevők által először a partíciókban. Érdemes megjegyezni, hogy ha az sendSync () metódust a com. microsoft. Azure. eventhubs. EventHubClient objektumon szinkron módon teszik közzé az Event hub-ban, az üzenetet elküldheti egy adott partícióra, vagy eloszthatja az összes rendelkezésre álló partícióra. ciklikus multiplexelés, attól függően, hogy a partíciós kulcs meg van-e adva.
+Üzenetek fogyasztó megkaptuk, mielőtt közzétenni a partíciók először a kiadók által rendelkeznek. Érdemes megjegyezni, hogy üzeneteket az eseményközpontba szinkron módon történik a metódussal sendSync() a com.microsoft.azure.eventhubs.EventHubClient objektum közzétételét, az üzenet volt küldhetnek egy megadott partícióra vagy ossza el az összes rendelkezésre álló partíciók Ciklikus időszeleteléses módon attól függően, hogy a partíciós kulcs van megadva, vagy sem.
 
-Ha meg van adva a partíciós kulcsot megadó karakterlánc, a rendszer kivonattal határozza meg, hogy melyik partíciót kell elküldeni az eseménynek.
+Ha egy karakterlánc, amely a partíciókulcs meg van adva, a kulcs kivonatolt, hogy az eseményt, hogy melyik partíciót határozza meg.
 
-Ha a partíciós kulcs nincs beállítva, az üzenetek az összes rendelkezésre álló partícióra kerekítve lesznek
+Ha nincs beállítva a partíciókulcsot, ciklikus-robined az összes rendelkezésre álló partíciók-e majd üzenetek
 
 ```java
 // Serialize the event into bytes
@@ -404,21 +406,21 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 ```
 
-### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Egyéni CheckpointManager megvalósítása a EventProcessorHost (EF) számára
+### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Egy egyéni CheckpointManager megvalósítása az EventProcessorHost (EPH)
 
-Az API egy mechanizmust biztosít az egyéni ellenőrzőpont-kezelő megvalósítására olyan forgatókönyvek esetén, amelyekben az alapértelmezett implementáció nem kompatibilis a használati esettel.
+Az API lehetővé teszi a egyéni ellenőrzőpont-kezelő, ahol az alapértelmezett implementációja, nem kompatibilis a használati forgatókönyvek megvalósításához.
 
-Az alapértelmezett ellenőrzőpont-kezelő blob Storage-t használ, de ha felülbírálja az EF által a saját implementációja által használt ellenőrzőpont-kezelőt, akkor bármilyen tárolót használhat, amelyet vissza szeretne állítani a Checkpoint Manager megvalósításához.
+Az alapértelmezett ellenőrzőpont-kezelő használja a blob storage-ba, de ha felülbírálja a saját implementációjához EPH által használt ellenőrzőpont-kezelő, bármely store szeretne készíteni az ellenőrzőpont manager végrehajtására használható.
 
-Hozzon létre egy osztályt, amely megvalósítja a com. microsoft. Azure. eventprocessorhost. ICheckpointManager felületet
+Hozzon létre egy osztályt, amely megvalósítja a felület com.microsoft.azure.eventprocessorhost.ICheckpointManager
 
-Az ellenőrzőpont-kezelő egyéni implementációjának használata (com. microsoft. Azure. eventprocessorhost. ICheckpointManager)
+Az ellenőrzőpont-kezelő (com.microsoft.azure.eventprocessorhost.ICheckpointManager) egyéni megvalósítását használni
 
-A megvalósításon belül felülbírálhatja az alapértelmezett ellenőrzőpont-ellenőrzési mechanizmust, és saját adattárolójuk alapján implementálhatja a saját ellenőrzőpontokat (például SQL Server, CosmosDB és Azure cache for Redis). Javasoljuk, hogy az ellenőrzőpont-kezelő megvalósításához használt áruház elérhető legyen minden olyan EF-példány számára, amely a fogyasztói csoport eseményeinek feldolgozását végzi.
+A megvalósításon belül felülbírálhatja az alapértelmezett ellenőrzőpont-ellenőrzési mechanizmust, és saját adattárolójuk alapján implementálhatja a saját ellenőrzőpontokat (például SQL Server, CosmosDB és Azure cache for Redis). Azt javasoljuk, hogy a tároló az ellenőrzőpont manager megvalósítási biztonsági érhető-e feldolgozni az eseményeket a felhasználói csoport EPH-példányok.
 
-Bármilyen, a környezetében elérhető adattárat használhat.
+Használhat bármilyen a környezetében elérhető adattárolót.
 
-A com. microsoft. Azure. eventprocessorhost. EventProcessorHost osztály két konstruktort biztosít, amelyek segítségével felülbírálhatja a EventProcessorHost ellenőrzőpont-kezelőjét.
+A com.microsoft.azure.eventprocessorhost.EventProcessorHost osztály két konstruktorral, amelyek lehetővé teszik az EventProcessorHost az ellenőrzőpont-kezelő felülírását is biztosít.
 
 
 ## <a name="next-steps"></a>Következő lépések

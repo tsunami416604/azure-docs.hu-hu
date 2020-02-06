@@ -3,12 +3,12 @@ title: A tárolók élő adattárolásának Azure Monitor beállítása (előzet
 description: Ez a cikk azt ismerteti, hogyan lehet beállítani a tároló-naplók (StdOut/stderr) valós idejű nézetét és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404703"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030681"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) funkciójának beállítása
 
@@ -16,8 +16,8 @@ Ha szeretné megtekinteni az Azure Kubernetes Service-(ak-) fürtökön Azure Mo
 
 Ez a funkció három különböző módszert támogat a naplókhoz, eseményekhez és mérőszámokhoz való hozzáférés szabályozásához:
 
-- AK Kubernetes RBAC-hitelesítés nélkül engedélyezve
-- AK engedélyezve a Kubernetes RBAC-engedélyezéssel
+- Az AKS nélküli Kubernetes RBAC-hitelesítés engedélyezve
+- Az AKS Kubernetes RBAC-hitelesítés engedélyezve
 - Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel engedélyezett AK
 
 Ezek az utasítások rendszergazdai hozzáférést igényelnek a Kubernetes-fürthöz, és ha úgy konfigurálja, hogy az Azure Active Directory (AD) felhasználó-hitelesítésre, rendszergazdai hozzáférés az Azure AD-hoz.  
@@ -45,17 +45,17 @@ A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejele
 >[!IMPORTANT]
 >Ennek a funkciónak a felhasználóinak az [Azure Kubernetes-fürt felhasználói szerepkört](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) kell használniuk a fürthöz a `kubeconfig` letöltéséhez és a szolgáltatás használatához. A szolgáltatás használatához a felhasználóknak **nincs** szükségük közreműködői hozzáférésre a fürthöz. 
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-fürt RBAC nélkül engedélyezve
+## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-fürt nélkül RBAC engedélyezve
 
-Ha olyan Kubernetes-fürttel rendelkezik, amely nincs Kubernetes RBAC-hitelesítéssel konfigurálva, vagy az Azure AD egyszeri bejelentkezéssel van integrálva, nem kell végrehajtania ezeket a lépéseket. Ennek az az oka, hogy a rendszergazdai engedélyek alapértelmezés szerint nem RBAC konfigurációban vannak.
+Ha egy Kubernetes-fürtöt, amely nincs beállítva a Kubernetes RBAC-hitelesítés vagy az Azure AD egyszeri bejelentkezéses integrálva van, nem kell az alábbi lépésekkel. Ennek az az oka, hogy a rendszergazdai engedélyek alapértelmezés szerint nem RBAC konfigurációban vannak.
 
 ## <a name="configure-kubernetes-rbac-authentication"></a>Kubernetes RBAC-hitelesítés konfigurálása
 
 Ha engedélyezi a Kubernetes RBAC-engedélyezést, a rendszer két felhasználót használ: a **clusterUser** és a **CLUSTERADMIN** a Kubernetes API eléréséhez. Ez hasonló a `az aks get-credentials -n {cluster_name} -g {rg_name}` futtatásához a felügyeleti beállítás nélkül. Ez azt jelenti, hogy a **clusterUser** hozzáférést kell biztosítani a Kubernetes API végponti pontjaihoz.
 
-Az alábbi példák bemutatják, hogyan konfigurálhatja a fürt szerepkörének kötését ebből a YAML-konfigurációs sablonból.
+A következő példa lépései bemutatják, hogyan konfigurálhatja a fürt szerepkör-kötés yaml konfigurációs sablon alapján.
 
-1. Másolja és illessze be a YAML fájlt, és mentse LogReaderRBAC. YAML néven.  
+1. Másolja és illessze be a yaml-fájlt, és mentse LogReaderRBAC.yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -101,7 +101,7 @@ Az Azure AD-ügyfél regisztrációját újra kell konfigurálni, hogy a Azure P
 A Kubernetes speciális biztonsági beállításaival kapcsolatos további információkért tekintse át a [Kubernetes dokumentációját](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
 >[!NOTE]
->Ha új RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyet a tárolók Azure Monitorához létre kell hoznia. 
+>Ha új RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyeket az alábbi 3. lépésben megadott tárolók Azure Monitorához kell létrehoznia.
 
 ### <a name="client-registration-reconfiguration"></a>Ügyfél-regisztráció újrakonfigurálása
 
@@ -117,7 +117,7 @@ A Kubernetes speciális biztonsági beállításaival kapcsolatos további infor
 4. Az átirányítási URL-címek regisztrálását követően a **Speciális beállítások**területen válassza a **hozzáférési tokenek** és **azonosító jogkivonatok** lehetőséget, majd mentse a módosításokat.
 
 >[!NOTE]
->Az egyszeri bejelentkezés Azure Active Directory használatával történő hitelesítés konfigurálása csak az új AK-fürtök kezdeti telepítése során hajtható végre. Az egyszeri bejelentkezés nem konfigurálható egy már üzembe helyezett AK-fürthöz.
+>Az egyszeri bejelentkezés Azure Active Directory használatával történő hitelesítés konfigurálása csak az új AK-fürtök kezdeti telepítése során hajtható végre. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be.
   
 >[!IMPORTANT]
 >Ha a frissített URI használatával újrakonfigurálta az Azure AD-t a felhasználói hitelesítéshez, törölje a böngésző gyorsítótárát, és győződjön meg arról, hogy a frissített hitelesítési jogkivonat letöltése és alkalmazása megtörtént.

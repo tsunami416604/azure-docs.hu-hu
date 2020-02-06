@@ -7,27 +7,33 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705921"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031612"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
 
-A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft globális hálózatához a világ bármely pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
+Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
 
 ## <a name="resources"></a>Az erőforrás létrehozása
 
-1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést. A ExpressRoute Direct erőforrás-és ExpressRoute-áramköröknek ugyanahhoz az előfizetéshez kell tartoznia.
+1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést. Az ExpressRoute közvetlen erőforrások és az ExpressRoute-Kapcsolatcsoportok ugyanabban az előfizetésben kell lennie.
 
    ```powershell
    Connect-AzAccount 
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Az összes olyan hely listázása, ahol a ExpressRoute Direct támogatott.
+   
+2. Regisztrálja újra az előfizetést a Microsoft. Network-be a expressrouteportslocation és a expressrouteport API-k eléréséhez.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. Minden hely, ahol az ExpressRoute közvetlen támogatott listája.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -60,7 +66,7 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Annak megállapítása, hogy a fent felsorolt hely rendelkezik-e elérhető sávszélességgel
+4. Határozza meg, hogy rendelkezik-e egy olyan helyre, fent felsorolt rendelkezésre álló sávszélesség
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -82,14 +88,14 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
                           }
                         ]
    ```
-4. ExpressRoute közvetlen erőforrás létrehozása a fent kiválasztott hely alapján
+5. Hozzon létre egy ExpressRoute közvetlen erőforrást a fent kiválasztott hely alapján
 
-   A ExpressRoute Direct a QinQ és a Dot1Q beágyazást is támogatja. Ha a QinQ van kiválasztva, az egyes ExpressRoute-körök dinamikusan hozzá lesznek rendelve egy S-címkéhez, és egyediek lesznek a ExpressRoute közvetlen erőforrásaiban. Az áramkörön minden C-címkének egyedinek kell lennie az áramkörön, a közvetlen ExpressRoute azonban nem.  
+   Az ExpressRoute közvetlen QinQ- és Dot1Q beágyazását támogatja. Ha QinQ van kijelölve, mindegyik ExpressRoute-kapcsolatcsoport dinamikusan rendeli egy S-címke, és az ExpressRoute közvetlen erőforrás teljes egyedi lesz. Minden C-címke a kapcsolatcsoport egyedinek kell lennie. a kapcsolatcsoport, de nem az ExpressRoute közvetlen között.  
 
-   Ha a Dot1Q beágyazás van kiválasztva, akkor a C-tag (VLAN) egyediségét kell kezelnie a teljes ExpressRoute közvetlen erőforrásban.  
+   Ha Dot1Q beágyazás be van jelölve, a teljes az ExpressRoute közvetlen erőforrás között egyedi-e a C-Tag (VLAN) kell kezelni.  
 
    > [!IMPORTANT]
-   > A ExpressRoute Direct csak egy beágyazási típus lehet. A beágyazás nem módosítható a közvetlen ExpressRoute létrehozása után.
+   > Az ExpressRoute közvetlen csak egy beágyazás típusa lehet. A beágyazás ExpressRoute közvetlen létrehozása után nem módosítható.
    > 
  
    ```powershell 
@@ -97,7 +103,7 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
    ```
 
    > [!NOTE]
-   > A beágyazási attribútum a Dot1Q értékre is állítható. 
+   > A beágyazás attribútum Dot1Q is beállítható. 
    >
 
    **Példa kimenetre:**
@@ -151,15 +157,15 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
 
 ## <a name="state"></a>Hivatkozások rendszergazdai állapotának módosítása
 
-  Ezt a folyamatot kell használni az 1. rétegbeli tesztek elvégzéséhez, hogy az egyes kapcsolatok megfelelően legyenek kijavítani az egyes útválasztók számára az elsődleges és a másodlagos számára.
-1. ExpressRoute közvetlen részletek beolvasása.
+  Ez a folyamat egy 1. rétegét tesztet, amely biztosítja, hogy minden egyes közötti kapcsolat megfelelően javított minden útválasztón elsődleges és másodlagos elvégzéséhez használható.
+1. Az ExpressRoute közvetlen beolvasása – részletek.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Állítsa be a hivatkozást engedélyezve értékre. Ismételje meg ezt a lépést az egyes hivatkozások engedélyezésre való beállításához.
+2. Állítsa hivatkozás engedélyezett. Ismételje meg ezt a lépést minden hivatkozás engedélyezve van beállítva.
 
-   A hivatkozások [0] az elsődleges port és a hivatkozások [1] a másodlagos port.
+   Hivatkozások [0] az az elsődleges port, a hivatkozások [1] pedig a másodlagos portot.
 
    ```powershell
    $ERDirect.Links[0].AdminState = "Enabled"
@@ -221,21 +227,21 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
 
 ## <a name="circuit"></a>Áramkör létrehozása
 
-Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a ExpressRoute Direct erőforrás. Ezt a támogatás növelheti. A kiosztott és a felhasznált sávszélesség nyomon követése felelős. A kiépített sávszélesség a ExpressRoute közvetlen erőforrásban található összes áramkör sávszélességének összege, a felhasznált sávszélesség pedig az alapul szolgáló fizikai felületek fizikai használata.
+Alapértelmezés szerint az előfizetés, amelyben az ExpressRoute közvetlen erőforrás van a 10 Kapcsolatcsoportok hozhat létre. Ez a támogatás által növelhető. Ön felelős nyomon követheti kiépített és a felhasznált sávszélesség. Kiosztott sávszélességre sávszélesség az ExpressRoute közvetlen erőforrás minden kapcsolatcsoportra összegét, és a mögöttes fizikai adapterek fizikai használatát a magas kihasználtságú sávszélesség.
 
-A fentiekben ismertetett forgatókönyvek támogatásához további áramköri sávszélességek is használhatók, amelyek csak a ExpressRoute közvetlen használatával használhatók. Ezek a következők: 40Gbps és 100Gbps.
+Nincsenek további kapcsolatcsoport sávszélessége, amely az ExpressRoute közvetlen csak a fent vázolt forgatókönyvek támogatásához, amellyel. Ezek a: 40Gbps és 100Gbps.
 
 A **SkuTier** lehet helyi, standard vagy prémium.
 
 A **SkuFamily** csak MeteredData lehet, mert a ExpressRoute Direct nem támogatja.
 
-Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
+Kapcsolatcsoport létrehozása az ExpressRoute közvetlen erőforráson.
 
   ```powershell
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Egyéb sávszélességek: 5,0, 10,0 és 40,0
+  Más sávszélességeket tartalmazza: 5.0, 10.0 és 40.0
 
   **Példa kimenetre:**
 

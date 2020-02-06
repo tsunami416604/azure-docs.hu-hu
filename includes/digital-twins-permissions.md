@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76749011"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029008"
 ---
 >[!NOTE]
 >Ez a szakasz az [Azure ad-alkalmazás regisztrálására](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)vonatkozó utasításokat tartalmazza.
@@ -27,24 +27,40 @@ ms.locfileid: "76749011"
 
     [![válassza az új regisztráció gombot](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. Adjon egy rövid nevet az alkalmazás regisztrálásához a **név** mezőben. Az **átirányítási URI (nem kötelező)** szakaszban válassza a bal oldali legördülő menüben a **nyilvános ügyfél/natív (mobil & asztal)** lehetőséget, majd a jobb oldali szövegmezőbe írja be a `https://microsoft.com`. Kattintson a **Register** (Regisztrálás) elemre.
+1. Adjon egy rövid nevet az alkalmazás regisztrálásához a **név** mezőben. 
+
+    1. Az **átirányítási URI (nem kötelező)** szakaszban adja meg `https://microsoft.com` a szövegmezőben.     
+
+    1. Ellenőrizze, hogy a Azure Active Directory-alkalmazás támogatja-e a fiókokat és a bérlőket.
+
+    1. Kattintson a **Register** (Regisztrálás) elemre.
 
     [![létrehozás panel](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. Győződjön meg arról, hogy [az alkalmazás **nyilvános ügyfélként**van regisztrálva](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), nyissa meg az alkalmazás regisztrációjának **hitelesítés** paneljét, majd görgessen le az ablaktáblán. Az **alapértelmezett ügyfél típusa** szakaszban válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként**való kezeléséhez, és kattintson a **Mentés**gombra.
+1. A **hitelesítés** panelen a fontos hitelesítési konfigurációs beállítások adhatók meg. 
+
+    1. Adja hozzá az **átirányítási URI-ket** , és konfigurálja a **hozzáférési jogkivonatokat** a **+ platform hozzáadása**lehetőség kiválasztásával.
+
+    1. Válassza az **Igen** lehetőséget annak megadásához, hogy az alkalmazás **nyilvános ügyfél**legyen.
+
+    1. Ellenőrizze, hogy a Azure Active Directory-alkalmazás támogatja-e a fiókokat és a bérlőket.
+
+    [![nyilvános ügyfél-konfigurációs beállítás](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. Miután kiválasztotta a megfelelő platformot, konfigurálja az **átirányítási URI-ket** és a **hozzáférési jogkivonatokat** a felhasználói felület jobb oldalán lévő oldalsó panelen.
 
     1. Az **átirányítási URI-azonosítóknak** meg kell egyezniük a hitelesítési kérelem által megadott címtől:
 
-        * Helyi fejlesztési környezetben üzemeltetett alkalmazásokhoz válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget. Ügyeljen arra, hogy az **alapértelmezett ügyfél típusát** állítsa Igen értékre.
+        * Helyi fejlesztési környezetben üzemeltetett alkalmazásokhoz válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget. Ügyeljen arra, hogy a **nyilvános ügyfelet** állítsa **Igen**értékre.
         * Azure App Serviceon üzemeltetett egylapos alkalmazások esetében válassza a **web**lehetőséget.
 
-        Válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget, és adja meg `http://localhost:8080/`.
+    1. Döntse el, hogy megfelelő-e a **kijelentkezési URL-cím** .
 
-        [![átirányítási URI-k konfigurálása](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. Engedélyezze az implicit engedélyezési folyamatot a **hozzáférési jogkivonatok** vagy **azonosító tokenek**ellenőrzésével.
+                
+    [![átirányítási URI-k konfigurálása](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. A **hozzáférési jogkivonatok** beállításával konfigurálja a **oauth2AllowImplicitFlow** beállítást úgy, hogy `true` az erőforrás **jegyzékfájljának** JSON-fájljában.
-
-        [![nyilvános ügyfél-konfigurációs beállítás](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    Kattintson a **Konfigurálás**, majd a **Mentés**elemre.
 
 1.  Nyissa meg a regisztrált alkalmazás **Áttekintés** paneljét, és másolja a következő entitások értékeit egy ideiglenes fájlba. Ezeket az értékeket fogja használni a minta alkalmazás konfigurálásához a következő fejezetekben.
 

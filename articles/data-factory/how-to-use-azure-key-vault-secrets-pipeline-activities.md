@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926764"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031492"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 
@@ -47,12 +47,12 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
 4. A Data Factory folyamatában adjon hozzá egy új webes tevékenységet, és konfigurálja az alábbiak szerint.  
 
-    |Tulajdonság  |Value (Díj)  |
+    |Tulajdonság  |Érték  |
     |---------|---------|
-    |Biztonságos kimenet     |Igaz         |
+    |Biztonságos kimenet     |True (Igaz)         |
     |URL-cím     |[A titkos URI-érték]? API-Version = 7.0         |
     |Módszer     |GET         |
-    |Hitelesítés     |MSI         |
+    |Authentication     |MSI         |
     |Erőforrás        |https://vault.azure.net       |
 
     ![Webes tevékenység](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -63,7 +63,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     > [!CAUTION]
     > Állítsa a Secure output (biztonságos kimenet) beállítást igaz értékre, hogy megakadályozza a titkos érték egyszerű szövegként való naplózását.  Az értéket használó további tevékenységeknek a biztonságos bemenet beállítását True értékre kell állítani.
 
-5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity("web"). output. Value)** .
+5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity("web"). output. Value**.
 
     ![Kód kifejezése](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

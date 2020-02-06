@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901471"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030745"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -62,7 +62,7 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
 ## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése
 
-Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **műveleti csoportok** szakaszában látható. Válassza ki a kezelni kívánt műveleti csoportot:
+A műveleti csoport létrehozása után megtekintheti a **műveleti csoportokat** a **figyelés** ablaktábla **riasztások** kezdőlapján a **műveletek kezelése** lehetőség kiválasztásával. Válassza ki a kezelni kívánt műveleti csoportot:
 
 * Műveletek hozzáadása, szerkesztése vagy eltávolítása.
 * A műveleti csoport törlése.
@@ -80,7 +80,7 @@ A műveleti csoportban korlátozott számú Runbook művelet lehet.
 ### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
 
-### <a name="email"></a>E-mail cím
+### <a name="email"></a>E-mail
 A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mail-szűrés megfelelően van konfigurálva
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -103,10 +103,10 @@ A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre
 
 A műveleti csoportban korlátozott számú ITSM művelet lehet. 
 
-### <a name="logic-app"></a>Logic App
+### <a name="logic-app"></a>Logikai alkalmazás
 A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 
-### <a name="secure-webhook"></a>Biztonságos webhook
+### <a name="secure-webhook"></a>Secure Webhook
 **A biztonságos webhook funkció jelenleg előzetes verzióban érhető el.**
 
 A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -202,7 +202,7 @@ További fontos információk: az információk és az [SMS-riasztások viselked
 
 A műveleti csoportban korlátozott számú SMS-művelet lehet.  
 
-### <a name="voice"></a>Beszédhang
+### <a name="voice"></a>Hang
 Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
 A műveleti csoportban korlátozott számú hangművelet lehet.
