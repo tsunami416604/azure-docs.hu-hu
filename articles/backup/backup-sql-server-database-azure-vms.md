@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773118"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029571"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -109,6 +109,9 @@ Kerülje a következő elemek használatát az adatbázis-nevekben:
 * Perjelek továbbítása
 
 Az alias nem támogatott karakterekhez érhető el, de a rendszer elkerüli a használatát. További információt a [Table Service adatmodelljét ismertető](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) témakörben talál.
+
+>[!NOTE]
+>A speciális karaktereket (például "+" vagy "&") tartalmazó adatbázisok védelmi műveletének **konfigurálása** nem támogatott. Megváltoztathatja az adatbázis nevét, vagy engedélyezheti az **automatikus védelmet**, amely sikeresen képes védelemmel ellátni ezeket az adatbázisokat.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -281,7 +284,7 @@ Ha le kell tiltania az automatikus védelmet, válassza ki a példány nevét a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A webinárium témái:
+Az alábbiak végrehajtásának módját ismerheti meg:
 
 * [SQL Server adatbázisok biztonsági másolatának visszaállítása](restore-sql-database-azure-vm.md)
 * [Biztonsági másolatok SQL Server adatbázisok kezelése](manage-monitor-sql-database-backup.md)

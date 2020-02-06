@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Hibakeresési mód
               href: concepts-data-flow-debug-mode.md
-            - name: JSON kezelése
-              href: concepts-data-flow-json.md
             - name: Sémaeltérés
               href: concepts-data-flow-schema-drift.md
             - name: Oszlopminták
