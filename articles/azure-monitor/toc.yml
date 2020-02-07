@@ -8,6 +8,8 @@
       href: terminology.md
     - name: GYIK
       href: faq.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: Azure-erőforrás monitorozása
