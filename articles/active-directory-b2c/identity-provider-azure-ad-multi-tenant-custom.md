@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/06/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849616"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061590"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné a bejelentkezést, regisztrálnia kell egy alkalmazást a szervezeti Azure AD-bérlőn belül.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Győződjön meg arról, hogy a szervezeti Azure AD-bérlőt (például contoso.com) tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés szűrőt** a felső menüben, majd válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **új regisztráció**lehetőséget.
@@ -63,6 +63,19 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
+
+## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
+
+Ha az Azure AD-ból `family_name` és `given_name` jogcímeket szeretne beszerezni, az alkalmazáshoz választható jogcímeket konfigurálhat az Azure Portal felhasználói felületen vagy az alkalmazás jegyzékfájljában. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory**.
+1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
+1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció (előzetes verzió)** lehetőséget.
+1. Válassza a **választható jogcím hozzáadása**lehetőséget.
+1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
+1. Válassza ki a hozzáadandó választható jogcímeket.
+1. Kattintson az **Hozzáadás** parancsra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -134,7 +147,7 @@ Az Azure AD-t jogcím-szolgáltatóként is megadhatja, ha hozzáadja az Azure A
 
 Frissítenie kell az érvényes jogkivonat-kiállítók listáját, és korlátozni kell a hozzáférést az Azure AD-bérlő azon felhasználói számára, akik be tudnak jelentkezni.
 
-Az értékek beszerzéséhez tekintse meg az OpenID Connect Discovery metaadatait minden olyan Azure AD-bérlőhöz, amelyhez be szeretné jelentkezni a felhasználóktól. A metaadatok URL-címének formátuma hasonló a `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`hoz, ahol `your-tenant` az Azure AD-bérlő neve. Példa:
+Az értékek beszerzéséhez tekintse meg az OpenID Connect Discovery metaadatait minden olyan Azure AD-bérlőhöz, amelyhez be szeretné jelentkezni a felhasználóktól. A metaadatok URL-címének formátuma hasonló a `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`hoz, ahol `your-tenant` az Azure AD-bérlő neve. Például:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 

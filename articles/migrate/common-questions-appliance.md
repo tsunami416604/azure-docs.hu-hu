@@ -3,12 +3,12 @@ title: Az Azure Migrate készülékkel kapcsolatos gyakori kérdések
 description: Válaszok az Azure Migrate készülékkel kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292332"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064699"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -16,6 +16,7 @@ Ez a cikk az Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre ad v�
 
 - [Általános kérdések](resources-faq.md) a Azure Migrateról.
 - A felderítéssel, az értékeléssel és a függőségi vizualizációval kapcsolatos [kérdések](common-questions-discovery-assessment.md) .
+- A kiszolgálók áttelepítésével kapcsolatos [kérdések](common-questions-server-migration.md) .
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Mi a Azure Migrate készülék?

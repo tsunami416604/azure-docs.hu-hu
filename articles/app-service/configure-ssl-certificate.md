@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845927"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046417"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -21,7 +21,7 @@ Miután hozzáadta a tanúsítványt a App Service app vagy [Function alkalmazá
 
 A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanúsítványokat adhat hozzá a App Serviceban:
 
-|Lehetőség|Leírás|
+|Beállítás|Leírás|
 |-|-|
 | Ingyenes App Service felügyelt tanúsítvány létrehozása (előzetes verzió) | Egy könnyen használható privát tanúsítvány, ha csak az `www` [Egyéni tartományát](app-service-web-tutorial-custom-domain.md) vagy a app Serviceban található nem meztelen tartományt kell védenie. |
 | App Service-tanúsítvány vásárlása | Az Azure által felügyelt privát tanúsítvány. A szolgáltatás ötvözi az automatizált tanúsítványok kezelését, valamint a megújítási és exportálási lehetőségek rugalmasságát. |
@@ -37,6 +37,9 @@ A következő útmutató követése:
 - Csak az ingyenes tanúsítvány: altartomány hozzárendelése (például `www.contoso.com`) egy [CNAME-rekorddal](app-service-web-tutorial-custom-domain.md#map-a-cname-record)app Service.
 
 ## <a name="private-certificate-requirements"></a>Magánjellegű tanúsítványokra vonatkozó követelmények
+
+> [!NOTE]
+> Az Azure Web Apps **nem támogatja a** AES256, és az összes pfx-fájlt titkosítani kell a TrippleDES-mel.
 
 Az [ingyenes app Service felügyelt tanúsítvány](#create-a-free-certificate-preview) vagy a [app Service tanúsítvány](#import-an-app-service-certificate) már megfelel a app Service követelményeinek. Ha úgy dönt, hogy feltölt vagy importál egy privát tanúsítványt App Serviceba, a tanúsítványnak meg kell felelnie a következő követelményeknek:
 
@@ -112,7 +115,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | A App Service tanúsítvány rövid neve. |
+| Név | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
 | Előfizetést | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
 | Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
@@ -133,10 +136,10 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
-| Földrajzi egység | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
-| Díjcsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
+| Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a lépéseket követve [számos alkalmazás hozzáférést biztosít a kulcstartóhoz](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
 
@@ -358,7 +361,7 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -366,7 +369,7 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 * [Egyéni DNS-név biztonságossá tétele SSL-kötéssel](configure-ssl-bindings.md)
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)

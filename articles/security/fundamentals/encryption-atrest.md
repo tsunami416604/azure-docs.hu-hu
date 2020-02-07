@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d814058866991b3d94363125870c27ae170b3ae8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497300"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064359"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -137,13 +137,13 @@ A Microsoft által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosí
 
 A szolgáltatás által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás használata esetén a kulcs létrehozása, tárolása és a szolgáltatáshoz való hozzáférés mind a szolgáltatás által felügyelt. Az alapszintű Azure-erőforrás-szolgáltatók jellemzően az adattitkosítási kulcsokat tárolják egy olyan tárolóban, amely az adatforráshoz közeledik, és gyorsan elérhető és hozzáférhető, miközben a kulcs titkosítási kulcsait egy biztonságos belső tároló tárolja.
 
-**Előnyök**
+**Előnyei**
 
 - Egyszerű beállítás
 - A Microsoft a legfontosabb rotációt, biztonsági mentést és redundanciát kezeli
 - Az ügyfél nem rendelkezik a megvalósítással vagy egy egyéni kulcskezelő séma kockázatával.
 
-**Hátrányok**
+**Hátrányai**
 
 - A titkosítási kulcsok (a kulcs specifikációja, az életciklus, a visszavonás stb.) nem adhatók meg az ügyfelek felett.
 - Nincs lehetőség a kulcsfontosságú felügyelet elkülönítésére a szolgáltatás általános felügyeleti modelljéből
@@ -165,14 +165,14 @@ Az adatok titkosítása vagy visszafejtése során használt kulcs beszerzéséh
 >[!NOTE]
 >Az Key Vault engedélyezésével kapcsolatos további információkért tekintse meg a [Azure Key Vault dokumentációjában](../../key-vault/key-vault-secure-your-key-vault.md)a Key Vault biztonságossá tétele című oldalt.
 
-**Előnyök**
+**Előnyei**
 
 - A használt kulcsok teljes körű vezérlése – a titkosítási kulcsok kezelése az ügyfél Key Vault az ügyfél vezérlése alatt történik.
 - Több szolgáltatás titkosításának lehetősége egyetlen főkiszolgálóra
 - A szolgáltatás általános felügyeleti modelljéből elkülönítheti a kulcskezelő szolgáltatást
 - Meghatározhatja a szolgáltatás és a kulcs helyét a régiók között
 
-**Hátrányok**
+**Hátrányai**
 
 - Az ügyfél teljes felelősséggel rendelkezik a kulcs-hozzáférés kezeléséhez
 - Az ügyfél teljes felelősséggel rendelkezik a fő életciklus-felügyelethez
@@ -186,14 +186,14 @@ Egyes Azure-szolgáltatások lehetővé teszik a saját kulcsú (HYOK) kulcskeze
 
 Ha az ügyfél által vezérelt hardverben a szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítást használja, a rendszer a kulcsokat az ügyfél által konfigurált rendszeren tartja karban. A modellt támogató Azure-szolgáltatások biztosítják a biztonságos kapcsolódást az ügyfél által megadott kulcstárolóhoz.
 
-**Előnyök**
+**Előnyei**
 
 - Teljes hozzáférés a használt legfelső szintű kulcshoz – a titkosítási kulcsokat egy ügyfél által biztosított tároló kezeli
 - Több szolgáltatás titkosításának lehetősége egyetlen főkiszolgálóra
 - A szolgáltatás általános felügyeleti modelljéből elkülönítheti a kulcskezelő szolgáltatást
 - Meghatározhatja a szolgáltatás és a kulcs helyét a régiók között
 
-**Hátrányok**
+**Hátrányai**
 
 - A kulcsok tárolásának, biztonságának, teljesítményének és rendelkezésre állásának teljes felelőssége
 - A kulcsok hozzáférés-kezelésének teljes felelőssége
@@ -241,7 +241,7 @@ Microsoft Azure szolgáltatások a REST-modellekben egy vagy több titkosítást
 
 Az Azure-alapú infrastruktúra-szolgáltatás (IaaS) funkcióit használó bármely ügyfél a IaaS-alapú virtuális gépek és Azure Disk Encryption lemezek számára is lehetővé teheti a titkosítást. Az Azure Disk Encryption szolgáltatással kapcsolatos további információkért tekintse meg a [Azure Disk Encryption dokumentációját](../azure-security-disk-encryption-overview.md).
 
-#### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az összes Azure Storage-szolgáltatás (blob Storage, üzenetsor-tárolás, Table Storage és Azure Files) támogatja a kiszolgálóoldali titkosítást a nyugalmi állapotban; néhány szolgáltatás emellett az ügyfél által felügyelt kulcsokat és az ügyféloldali titkosítást is támogatja. 
 
@@ -262,64 +262,77 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Kiszolgálóoldali szolgáltatás által felügyelt kulcs használata**     | **Ügyfél által felügyelt kulcs kiszolgálóoldali használata**             | **Ügyfél által felügyelt kulcs ügyféloldali használata**      |
 | **AI és Machine Learning**      |                    |                    |                    |
-| Azure Cognitive Search                     | Igen                | Előzetes verzió            | -                  |
-| Azure Machine Learning   | Igen                | -                  | -                  |
+| Azure Cognitive Search           | Igen                | Igen                | -                  |
+| Azure Machine Learning           | Igen                | Igen                | -                  |
 | Azure Machine Learning Studio    | Igen                | Előzetes verzió, RSA 2048 bites | -               |
 | Power BI                         | Igen                | Előzetes verzió, RSA 2048 bites | -                  |
 | **Elemzés**                    |                    |                    |                    |
 | Azure Stream Analytics           | Igen                | -                  | -                  |
-| Azure Event Hubs-eseményközpontok                       | Igen                | Előzetes verzió, az összes RSA-hossz. | -                  |
+| Event Hubs                       | Igen                | Igen, az összes RSA-hossz. | -                  |
+| Functions                        | Igen                | Igen, az összes RSA-hossz. | -                  |
 | Azure Analysis Services          | Igen                | -                  | -                  |
 | Azure Data Catalog               | Igen                | -                  | -                  |
 | Apache Kafka az Azure HDInsight  | Igen                | Az összes RSA-hossz.   | -                  |
-| Azure Adatkezelő              | Igen                | -                  | -                  |
+| Azure Monitor Application Insights | Igen                | Igen                | -                  |
+| Azure Monitor Log Analytics | Igen                | Igen                | -                  |
+| Azure Data Explorer              | Igen                | Igen                | -                  |
 | Azure Data Factory               | Igen                | Igen                | -                  |
-| Azure Data Lake adattár            | Igen                | Igen, RSA 2048-bit  | -                  |
-| **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Igen                | -                  | -                  |
-| Container Registry               | Igen                | -                  | -                  |
+| Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
+| **Tárolók**                   |                    |                    |                    |
+| Azure Kubernetes Service         | Igen                | Igen                | -                  |
+| Tárolópéldányok              | Igen                | Igen                | -                  |
+| Container Registry               | Igen                | Igen                | -                  |
 | **Számítás**                      |                    |                    |                    |
-| Virtual Machines                 | Igen                | Igen, RSA 2048-bit  | -                  |
+| Virtuális gépek                 | Igen                | Igen, RSA 2048-bit  | -                  |
 | Virtuálisgép-méretezési csoport        | Igen                | Igen, RSA 2048-bit  | -                  |
 | SAP HANA                         | Igen                | Igen, RSA 2048-bit  | -                  |
+| App Service                      | Igen                | Igen                | -                  |
+| Automatizálás                       | Igen                | Igen                | -                  |
+| Azure portál                     | Igen                | Igen                | -                  |
+| Logic Apps                       | Igen                | Igen                | -                  |
+| Azure Managed Applications       | Igen                | Igen                | -                  |
+| Service Bus                      | Igen                | Igen                | -                  |
+| Site Recovery                    | Igen                | Igen                | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
-| SQL Server a Virtual Machines szolgáltatásban   | Igen                | Igen, RSA 2048-bit  | Igen                |
+| SQL Server on Virtual Machines   | Igen                | Igen, RSA 2048-bit  | Igen                |
 | Azure SQL Database               | Igen                | Igen, RSA 2048-bit  | Igen                |
 | MariaDB Azure SQL Database   | Igen                | -                  | -                  |
-| MySQL-Azure SQL Database     | Igen                | -                  | -                  |
-| Azure SQL Database PostgreSQL-hez | Igen                | -                  | -                  |
-| Azure SQL Data Warehouse         | Igen                | Igen, RSA 2048-bit  | Igen                |
+| MySQL-Azure SQL Database     | Igen                | Igen                | -                  |
+| Azure SQL Database PostgreSQL-hez | Igen               | Igen                | -                  |
+| Azure Synapse Analytics          | Igen                | Igen, RSA 2048-bit  | Igen                |
 | SQL Server Stretch Database      | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Table Storage                    | Igen                | -                  | Igen                |
-| Azure Cosmos DB                  | Igen                | -                  | -                  |
+| Table Storage                    | Igen                | Igen                | Igen                |
+| Azure Cosmos DB                  | Igen                | Igen                | -                  |
+| Azure Databricks                 | Igen                | Igen                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Igen                | -                  | Igen                |
-| Azure-beli adattárak                      | Igen                | -                  | Igen                |
+| Azure-repók                      | Igen                | -                  | Igen                |
 | **Identitáskezelés**                     |                    |                    |                    |
 | Azure Active Directory           | Igen                | -                  | -                  |
-| Azure Active Directory Domain Services | Igen          | Igen, RSA 2048-bit  | -                  |
-| **Integráció**                  |                    |                    |                    |
-| Szolgáltatásbusz                      | Igen                | -                  | Igen                |
+| Azure Active Directory tartományi szolgáltatások | Igen          | Igen, RSA 2048-bit  | -                  |
+| **Integrációs**                  |                    |                    |                    |
+| Service Bus                      | Igen                | Igen                | Igen                |
 | Event Grid                       | Igen                | -                  | -                  |
 | API Management                   | Igen                | -                  | -                  |
 | **IoT szolgáltatások**                 |                    |                    |                    |
-| IoT Hub                          | Igen                | -                  | Igen                |
+| IoT Hub                          | Igen                | Igen                | Igen                |
 | **Felügyelet és irányítás**    |                    |                    |                    |
 | Azure Site Recovery              | Igen                | -                  | -                  |
 | **Media**                        |                    |                    |                    |
-| Médiaszolgáltatások                   | Igen                | -                  | Igen                |
-| **Storage**                      |                    |                    |                    |
+| Media Services                   | Igen                | -                  | Igen                |
+| **Tárolás**                      |                    |                    |                    |
 | Blob Storage                     | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Lemezes tárolás                     | Igen                | -                  | -                  |
-| Managed Disk Storage             | Igen                | -                  | -                  |
+| Lemezes tárolás                     | Igen                | Igen                | -                  |
+| Felügyelt Disk Storage             | Igen                | Igen                | -                  |
 | File Storage                     | Igen                | Igen, RSA 2048-bit  | -                  |
-| Queue Storage                    | Igen                | -                  | Igen                |
+| Queue Storage                    | Igen                | Igen                | Igen                |
 | Avere vFXT                       | Igen                | -                  | -                  |
 | Azure NetApp Files               | Igen                | -                  | -                  |
 | Archive Storage                  | Igen                | Igen, RSA 2048-bit  | -                  |
 | StorSimple                       | Igen                | Igen, RSA 2048-bit  | Igen                |
-| Azure Backup                     | Igen                | -                  | Igen                |
+| Azure Backup                     | Igen                | Igen                | Igen                |
 | Data Box                         | Igen                | -                  | Igen                |
+| Data Box Edge                    | Igen                | Igen                | -                  |
 
 ## <a name="conclusion"></a>Összegzés
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834106"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046235"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
@@ -29,7 +29,7 @@ Ha többet szeretne megtudni a Azure Automation állapot konfigurációjának el
 
 Azure Automation állapot-konfiguráció számos gép felügyeletére használható:
 
-- Azure-alapú virtuális gépek
+- Azure virtuális gépek
 - Azure-beli virtuális gépek (klasszikus)
 - Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
 - Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
@@ -48,12 +48,12 @@ A következő részekben felvázoljuk, hogyan végezheti el az egyes típusú g�
 >Ha írási engedélyt szeretne adni `omsagent` felhasználónak, futtassa a következő parancsokat: `setfacl -m u:omsagent:rwx /tmp`
 >
 
-## <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+## <a name="azure-virtual-machines"></a>Azure virtuális gépek
 
 Azure Automation állapot-konfiguráció lehetővé teszi az Azure-beli virtuális gépek üzembe helyezését a konfiguráció kezeléséhez a Azure Portal, a Azure Resource Manager sablonok vagy a PowerShell használatával. A motorháztető alatt, és anélkül, hogy rendszergazda kelljen a virtuális géphez csatlakoznia, az Azure-beli virtuális gép kívánt állapota konfigurációs bővítmény regisztrálja Azure Automation állapot konfigurációjában a virtuális gépet.
 Mivel az Azure-beli virtuális gép kívánt állapotának konfigurációs bővítménye aszinkron módon fut, a folyamat előrehaladásának nyomon követéséhez és a hibaelhárításhoz szükséges lépések az [**Azure Virtual Machine**](#troubleshooting-azure-virtual-machine-onboarding) bevezetési szakaszának alábbi hibaelhárítási szakaszában találhatók.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A [Azure Portal](https://portal.azure.com/)Navigáljon arra a Azure Automation-fiókra, amelyben a virtuális gépeket szeretné bevezetni. Az állapot konfigurációja lapon és a **csomópontok** lapon kattintson a **+ Hozzáadás**gombra.
 

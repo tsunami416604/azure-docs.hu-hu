@@ -1,22 +1,22 @@
 ---
 title: Azure eszközök internetes hálózata (IoT) technológiák és megoldások
 description: Ismerteti az Azure IoT-megoldás létrehozásához használható technológiák és szolgáltatások gyűjteményét.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457166"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046061"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Azure-technológiák és-szolgáltatások IoT-megoldások létrehozásához
 
-Az Azure IoT-technológiák és-szolgáltatások számos olyan IoT-megoldás létrehozásához nyújtanak lehetőséget, amelyek lehetővé teszik a szervezet digitális átalakítását. Megteheti például a következőket:
+Az Azure IoT-technológiák és-szolgáltatások számos olyan IoT-megoldás létrehozásához nyújtanak lehetőséget, amelyek lehetővé teszik a szervezet digitális átalakítását. Megteheti például a következőt:
 
 - A biztonságos, nagyvállalati szintű IoT-megoldás létrehozásához és üzembe helyezéséhez használja az [Azure IoT Central](https://apps.azureiotcentral.com), egy felügyelt IoT-alkalmazás platformját. A IoT Central a megoldás fejlesztési folyamatának felgyorsításához az iparági specifikus alkalmazás-sablonok, például a kiskereskedelmi és az egészségügyi szolgáltatások gyűjteményét.
 - Kiterjesztheti az Azure IoT [megoldás-gyorsító](https://www.azureiotsolutions.com) nyílt forráskódú forráskódját egy olyan általános IoT-forgatókönyv megvalósításához, mint például a távoli figyelés vagy a prediktív karbantartás.
@@ -40,8 +40,8 @@ Az [Azure IoT megoldás-gyorsítók](https://www.azureiotsolutions.com) testresz
 
 Az Azure IoT megoldás-gyorsítók magas szintű irányítást biztosítanak a IoT-megoldáshoz. A megoldás-gyorssegédek előre összeállított megoldásokat tartalmaznak olyan általános IoT-forgatókönyvekhez, amelyeket percek alatt üzembe helyezhet az Azure-előfizetésében. A forgatókönyvek a következők:
 
-  - Távoli megfigyelés
-  - Okosgyár
+  - Távoli figyelés
+  - Csatlakoztatott gyár
   - Prediktív karbantartás
   - Eszközszimuláció
 
@@ -83,6 +83,8 @@ A IOT Central digitális ikrek használatával szinkronizálja az eszközöket �
 ### <a name="data-and-analytics"></a>Adatok és analitika
 
 A IoT-eszközök általában nagy mennyiségű idősoros adatok előállítására szolgálnak, mint például az érzékelőkből származó hőmérséklet-beolvasások. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) tud csatlakozni egy IoT hubhoz, olvassa el a telemetria streamet az eszközökről, tárolja azokat, és lehetővé teszi a lekérdezését és megjelenítését.
+
+A [Azure Maps](/azure/azure-maps) térinformatikai szolgáltatások gyűjteménye, amely friss leképezési adatait használja a webes és mobil alkalmazások pontos földrajzi kontextusának biztosításához. Az alkalmazások létrehozásához REST API, webalapú JavaScript-vezérlőt vagy Android SDK-t használhat.
 
 ## <a name="next-steps"></a>Következő lépések
 

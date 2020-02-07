@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg az Azure Migrate VMware Assessment támogatásával.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846175"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048765"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -86,9 +86,9 @@ A függőségi [vizualizáció](concepts-dependency-visualization.md) segítség
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 
 
-## <a name="agentless-dependency-visualization"></a>Ügynök nélküli függőségek vizualizációja
+## <a name="agentless-dependency-visualization"></a>Ügynök nélküli függőségi vizualizáció
 
-Ez a beállítás jelenleg előzetes verzióban érhető el. [További információk](how-to-create-group-machine-dependencies-agentless.md). A követelményeket a következő táblázat foglalja össze.
+Ez az opció jelenleg csak előzetes verzióban érhető el. [További információk](how-to-create-group-machine-dependencies-agentless.md). A követelményeket a következő táblázat foglalja össze.
 
 **Követelmény** | **Részletek**
 --- | ---
@@ -96,7 +96,7 @@ Ez a beállítás jelenleg előzetes verzióban érhető el. [További informác
 **VM-támogatás** | Jelenleg csak a VMware virtuális gépek esetében támogatott.
 **Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites)
 **Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Windows-fiók** |  A vizualizáció felhasználói fiókra van szüksége vendég hozzáféréssel.
+**Windows-fiók** |  A vizualizációnak helyi vagy tartományi rendszergazdai fiókra van szüksége.
 **Linux-fiók** | A vizualizációhoz rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szükség.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 **VM-ügynökök** | Nincs szükség ügynökre a virtuális gépeken.
 **VMware-eszközök** | A VMware-eszközöket az elemezni kívánt virtuális gépeken kell telepíteni és futtatni.

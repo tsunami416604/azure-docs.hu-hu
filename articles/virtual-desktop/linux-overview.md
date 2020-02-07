@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776390"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049666"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -26,7 +26,7 @@ Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlak
 
 Az SDK az Ubuntu 18,04-es vagy újabb verzióján alapuló legtöbb operációs rendszerrel kompatibilis. Ha más Linux-disztribúcióval rendelkezik, segítünk Önnek az igényeinek legmegfelelőbb támogatásban.
 
-### <a name="feature-support"></a>Szolgáltatások támogatása
+### <a name="feature-support"></a>Funkciók támogatása
 
 Az SDK több kapcsolatot is támogat az asztali és a távoli alkalmazás-munkamenetekhez. A következő átirányítások támogatottak:
 
@@ -55,7 +55,7 @@ A Linux-ügyfél Windows rendszerű virtuális asztali környezethez való fejle
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Linux SDK-t a [technikai Közösség fórumán](https://go.microsoft.com/fwlink/?linkid=2116541)keresztül kérheti le.
+Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az elérhető SDK-hoz való hozzáférésre vonatkozó utasításokkal frissítjük.
 
 Tekintse meg a következő ügyfelek dokumentációját:
 

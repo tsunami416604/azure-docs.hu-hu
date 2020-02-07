@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Symantec Web Security szolgáltatás (WSS) konfigurálása a felhasználók automatikus üzembe helyezéséhez Azure Active Directory | Microsoft Docs'
+title: 'Oktatóanyag: a Symantec Web Security szolgáltatás (WSS) konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus üzembe helyezéséhez és kiépítéséhez a Symantec Web Security szolgáltatásban (WSS).
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: cfdf5487bcd4c33a21fca593fef829c58d2d099d
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fbd105ca1623512a3c16f3b609374f5c4055898b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576198"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063118"
 ---
-# <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Oktatóanyag: A Symantec Web Security szolgáltatás (WSS) konfigurálása a felhasználók automatikus üzembe helyezéséhez
+# <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Oktatóanyag: a Symantec Web Security szolgáltatás (WSS) konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
-Az oktatóanyag célja, hogy bemutassa a Symantec Web Security Service (WSS) és Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikus kiosztása és kiépítése a Symantec Web Security szolgáltatásba Szolgáltatás (WSS).
+Az oktatóanyag célja, hogy bemutassa a Symantec Web Security szolgáltatásban (WSS) és Azure Active Directory (Azure AD) végrehajtandó lépéseket az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat a Symantec Web Security Service (WSS) szolgáltatáshoz.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="assigning-users-to-symantec-web-security-service-wss"></a>Felhasználók kiosztása a Symantec Web Security szolgáltatásban (WSS)
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
 Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoportok hozzáférhessenek a Symantec Web Security szolgáltatáshoz (WSS). Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Symantec Web Security szolgáltatáshoz (WSS) az alábbi utasításokat követve:
 * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
@@ -56,11 +56,11 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 Mielőtt konfigurálja a Symantec Web Security szolgáltatást (WSS) az Azure AD-vel való automatikus felhasználó-kiépítés előtt, engedélyeznie kell a SCIM-létesítést a Symantec Web Security szolgáltatásban (WSS).
 
-1. Jelentkezzen be a [Symantec Web Security szolgáltatás felügyeleti konzolján](https://portal.threatpulse.com/login.jsp). Navigáljon a **Solutions** > **szolgáltatáshoz**.
+1. Jelentkezzen be a [Symantec Web Security szolgáltatás felügyeleti konzolján](https://portal.threatpulse.com/login.jsp). Navigáljon a **megoldások** > **szolgáltatáshoz**.
 
     ![Symantec webes biztonsági szolgáltatás (WSS)](media/symantec-web-security-service/service.png)
 
-2. Navigáljon **a fiók-karbantartási** > **integrációk** > **új integrációhoz**.
+2. Navigáljon a **fiók karbantartása** > **integrációk** > **új integráció**elemre.
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
@@ -68,7 +68,7 @@ Mielőtt konfigurálja a Symantec Web Security szolgáltatást (WSS) az Azure AD
 
     ![Symantec webes biztonsági szolgáltatás](media/symantec-web-security-service/third-party-users.png)
 
-4.  Másolja a **scim URL** -címét és tokenjét. Ezeket az értékeket a rendszer a Symantec Web Security szolgáltatás (WSS) alkalmazás üzembe helyezés lapjának **bérlő URL-címe** és **titkos jogkivonat** mezőjébe írja be a Azure Portal.
+4.  Másolja a **scim URL-címét** és **tokenjét**. Ezeket az értékeket a rendszer a Symantec Web Security szolgáltatás (WSS) alkalmazás üzembe helyezés lapjának **bérlő URL-címe** és **titkos jogkivonat** mezőjébe írja be a Azure Portal.
 
     ![Symantec webes biztonsági szolgáltatás](media/symantec-web-security-service/scim.png)
 
@@ -103,7 +103,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 ### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Symantec Web Security szolgáltatáshoz (WSS) az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -111,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![A Symantec Web Security szolgáltatás (WSS) hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
@@ -119,13 +119,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg a **bérlői URL-címben** és a titkos jogkivonatban korábban lekért **scim URL-címet** és **jogkivonat** -értékeket. Kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Symantec Web Security szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Symantec Web Security szolgáltatás (WSS) fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A rendszergazdai hitelesítő adatok szakaszban adja meg a **bérlői URL-címben** és a **titkos jogkivonatban** korábban lekért **scim URL-címet** és **jogkivonat** -értékeket. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a Symantec Web Security szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Symantec Web Security szolgáltatás (WSS) fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
@@ -133,7 +133,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![A Symantec Web Security szolgáltatás (WSS) felhasználói hozzárendelései](media/symantec-web-security-service/usermapping.png)
 
-9. Tekintse át az Azure AD-ről a Symantec Web Security szolgáltatásra (WSS) szinkronizált felhasználói attribútumokat az **attribútum** -hozzárendelési szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Symantec Web Security szolgáltatás (WSS) felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ről a Symantec Web Security szolgáltatásra (WSS) szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Symantec Web Security szolgáltatás (WSS) felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![A Symantec Web Security szolgáltatás (WSS) felhasználói hozzárendelései](media/symantec-web-security-service/userattribute.png)
 
@@ -141,13 +141,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![A Symantec Web Security szolgáltatás (WSS) felhasználói hozzárendelései](media/symantec-web-security-service/groupmapping.png)
 
-11. Tekintse át az Azure AD-ről a Symantec Web Security szolgáltatásra (WSS) szinkronizált csoport attribútumokat az **attribútum** -hozzárendelési szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Symantec Web Security szolgáltatásban (WSS) lévő csoportok egyeztetésére használhatók frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD-ről a Symantec Web Security szolgáltatásra (WSS) szinkronizált csoport attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Symantec Web Security szolgáltatásban (WSS) lévő csoportok egyeztetésére használhatók frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![A Symantec Web Security szolgáltatás (WSS) felhasználói hozzárendelései](media/symantec-web-security-service/groupattribute.png)
 
-12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Symantec Web Security szolgáltatáshoz, módosítsa a kiépítési **állapotot** a következőre a **Beállítások** szakaszban.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Symantec Web Security szolgáltatáshoz, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
     ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
@@ -159,15 +159,15 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)tart a felhasználók kiépítése.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig tart a felhasználók kiépítése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a Symantec Web Security szolgáltatásban (WSS). További információ: [a felhasználó kiépítési állapotának ellenõrzése](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók](../manage-apps/check-status-user-account-provisioning.md)kiépítés során.
+A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a Symantec Web Security szolgáltatásban (WSS). További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

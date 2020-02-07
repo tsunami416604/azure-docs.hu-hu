@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030922"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064631"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -216,6 +216,10 @@ Ha a struktúra az ideiglenes fájlok mögött maradt, akkor manuálisan is tör
 Ha a fürtök a három munkavégző csomópontnál kevesebbre skálázáskor csökkentett módban vannak, és az előző lépések nem működnek, akkor elkerülhető, hogy a fürt a biztonságos módba kerüljön, így legalább három feldolgozó csomópontot kell tartania.
 
 A három feldolgozó csomópont megtartása drágább, mint a csak egy feldolgozó csomópontra való méretezés, azonban megakadályozza, hogy a fürt biztonságos módban ragadjon.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight skálázása egy feldolgozói csomópontra
+
+Még akkor is, ha a fürt 1 csomópontra van méretezve, a 0. munkavégző csomópont továbbra is fennmarad. A munkavégző csomópont 0 soha nem vonható le.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Futtassa a parancsot a biztonságos üzemmód elhagyásához
 

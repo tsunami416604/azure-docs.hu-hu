@@ -2,7 +2,7 @@
 title: Az Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként – Azure AD
 description: A biztonsági adatok (előzetes verzió) lapon beállíthatja, hogy az Ön identitását a Microsoft Authenticator alkalmazással ellenőrizze ellenőrzési módszerként.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 9a3efc6f6b1b7137e8e29e37edd968765712fef5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704969"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062421"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként
 
@@ -33,7 +33,7 @@ Ha a rendszer a munkahelyi vagy iskolai fiókjába való bejelentkezés után az
 
 A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
 
-| Módszer | Alkalmazási cél |
+| Módszer | Felhasználási mód |
 | ------ | -------- |
 | Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |

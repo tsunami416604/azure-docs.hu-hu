@@ -2,7 +2,7 @@
 title: Biztonsági kulcs beállítása ellenőrzési módszerként – Azure AD
 description: A biztonsági adatok (előzetes verzió) oldalának beállítása, amellyel ellenőrizheti, hogy az Ön személyazonossága gyors identitású online (FIDO2) biztonsági kulcsot használ-e ellenőrzési módszerként.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: lizross
-ms.openlocfilehash: 3e16602128a70077d0a7962522ad3898421c8997
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704918"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062336"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
 
@@ -31,7 +31,7 @@ A biztonsági kulcsokat jelszó nélküli bejelentkezési módszerként is haszn
 
 A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
 
-| Módszer | Alkalmazási cél |
+| Módszer | Felhasználási mód |
 | ------ | -------- |
 | Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
@@ -49,7 +49,7 @@ A rendszergazda vagy a szervezete biztonsági kulcsot fog biztosítani, ha a mun
 > [!Note]
 > Ha nem tud FIDO2 biztonsági kulcsot használni, más jelszó nélküli ellenőrzési módszerek is használhatók, mint például a Microsoft Authenticator alkalmazás vagy a Windows Hello. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md). A Windows Hello szolgáltatással kapcsolatos további információkért lásd: a [Windows Hello áttekintése](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A biztonsági kulcs regisztrálásának megkezdése előtt az alábbiaknak igaznak kell lenniük:
 

@@ -3,12 +3,12 @@ title: A tárolók élő adattárolásának Azure Monitor beállítása (előzet
 description: Ez a cikk azt ismerteti, hogyan lehet beállítani a tároló-naplók (StdOut/stderr) valós idejű nézetét és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030681"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063764"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) funkciójának beállítása
 
@@ -114,7 +114,7 @@ A Kubernetes speciális biztonsági beállításaival kapcsolatos további infor
     >[!NOTE]
     >Ha ezt a funkciót az Azure China-ban használja, az első alap URL-címet `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` kell megadni, és a második alap URL-címet `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`kell megadni. 
     
-4. Az átirányítási URL-címek regisztrálását követően a **Speciális beállítások**területen válassza a **hozzáférési tokenek** és **azonosító jogkivonatok** lehetőséget, majd mentse a módosításokat.
+4. Az átirányítási URL-címek regisztrálását követően az **implicit engedélyezés**területen válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** lehetőséget, majd mentse a módosításokat.
 
 >[!NOTE]
 >Az egyszeri bejelentkezés Azure Active Directory használatával történő hitelesítés konfigurálása csak az új AK-fürtök kezdeti telepítése során hajtható végre. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be.

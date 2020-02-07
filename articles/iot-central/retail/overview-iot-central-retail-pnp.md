@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022137"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059852"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
@@ -52,7 +52,7 @@ A következő képernyőképek az alkalmazás sablonjában lévő beépített ir
 
 További információért lásd: az [üzembe helyezés és az útmutató egy csatlakoztatott logisztikai alkalmazás sablonjának](./tutorial-iot-central-connected-logistics-pnp.md) létrehozásához.
 
-## <a name="digital-distribution-center"></a>Digitális elosztási központ
+## <a name="digital-distribution-center"></a>Digitális terjesztési központ
 
 Mivel a gyártók és a kiskereskedők globális jelenlétet alkotnak, az ellátási láncok egyre összetettebbek. A fogyasztók mostantól nagy számú termék elérhetővé tételére számíthatnak, és ezek a termékek egy vagy két napon belül érkeznek. A terjesztési központoknak alkalmazkodnia kell ezekhez a trendekhez, és a meglévő eredménytelenség leküzdéséhez. 
 
@@ -160,7 +160,7 @@ Az alábbi képernyőfelvételen a beépített irányítópult látható az alka
 > [!div class="mx-imgBorder"]
 > ![Micro-teljesítési központ](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-További információért lásd: [üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonjának](./tutorial-iot-central-smart-inventory-management-pnp.md) oktatóanyaga.
+További információért lásd: [üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonjának](./tutorial-micro-fulfillment-center-pnp.md) oktatóanyaga.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -170,5 +170,5 @@ A kereskedelmi megoldások létrehozásának megkezdéséhez:
 * [Üzembe helyezés és végigvezeti a csatlakoztatott logisztikai alkalmazás sablonján](./tutorial-iot-central-connected-logistics-pnp.md).
 * [A Digital Distribution Center alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * [Helyezzen üzembe és járjon el egy intelligens leltár-kezelési alkalmazás sablonján](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* [Üzembe helyezheti és végigvezeti a Micro-teljesítési központ alkalmazás sablonján](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Üzembe helyezheti és végigvezeti a Micro-teljesítési központ alkalmazás sablonján](./tutorial-micro-fulfillment-center-pnp.md).
 * További információ a IoT Centralről a [IoT Central áttekintésében](../preview/overview-iot-central.md).

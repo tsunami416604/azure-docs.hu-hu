@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Dropbox Business |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Dropbox Business felhasználói fiókokat.
+title: 'Oktatóanyag: a Dropbox for Business konfigurálása a felhasználók automatikus üzembe helyezéséhez a Azure Active Directory segítségével | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez a Dropbox for Business szolgáltatásban.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7a76c86100041b544916c7d10e43bf3aaa44d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672909"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058422"
 ---
-# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Dropbox Business konfigurálása
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: a Dropbox for Business konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania, a Dropbox és az Azure Active Directory (Azure AD) konfigurálása az Azure ad-ben való automatikus kiépítésének és megszüntetésének felhasználók és csoportok, a Dropbox Business bemutatása.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Dropboxban a vállalati és Azure Active Directory (Azure AD) számára az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Dropbox vállalatoknak.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [A Dropbox Business-bérlő](https://www.dropbox.com/business/pricing)
-* Egy felhasználói fiókot a Dropboxban vállalati rendszergazdai jogosultságokkal rendelkezik.
+* Azure AD-bérlő
+* [A Dropbox vállalati bérlő](https://www.dropbox.com/business/pricing)
+* Felhasználói fiók a Dropbox vállalatnál rendszergazdai engedélyekkel.
 
-## <a name="add-dropbox-for-business-from-the-gallery"></a>Dropbox Business hozzáadása a katalógusból
+## <a name="add-dropbox-for-business-from-the-gallery"></a>A Dropbox for Business hozzáadása a katalógusból
 
-Konfigurálja az Azure AD-felhasználók automatikus Dropbox Business, mielőtt szüksége az Azure AD alkalmazáskatalógusában Dropbox Business hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus felhasználó-kiépítés előtt hozzá kell adnia a Dropbox for businesst az Azure AD Application Galleryből a felügyelt SaaS-alkalmazások listájára.
 
-**Az Azure AD alkalmazáskatalógusában Dropbox Business hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Ha az Azure AD alkalmazás-katalógusból szeretné hozzáadni a Dropbox for businesst, hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Dropbox Business**válassza **Dropbox Business** az eredmények panelen, majd kattintson a a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Dropbox for Business**kifejezést, válassza a **Dropbox vállalat számára** lehetőséget az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Dropbox Business az eredmények listájában](common/search-new-app.png)
+    ![A Dropbox for Business az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-dropbox-for-business"></a>Felhasználók hozzárendelése Dropbox Business
+## <a name="assigning-users-to-dropbox-for-business"></a>Felhasználók kiosztása a Dropbox vállalati verzióhoz
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure AD hozzá kell férniük a Dropboxba vállalati. Ha úgy döntött, rendelhet a felhasználók és csoportok Dropbox Business az alábbi utasításokat:
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD-beli felhasználók és/vagy csoportok hozzáférhessenek-e a Dropbox vállalati verzióhoz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Dropbox for Business szolgáltatáshoz az alábbi utasításokat követve:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Felhasználók hozzárendelése Dropbox Business fontos tippek
+### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Fontos Tippek a felhasználóknak a Dropbox vállalati verzióhoz való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó Dropbox Business teszteléséhez a felhasználók automatikus konfigurációs van rendelve. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Dropbox for Business szolgáltatáshoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* A felhasználó Dropbox Business való hozzárendelésekor a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Amikor felhasználót rendel a Dropbox for Business szolgáltatáshoz, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>Dropbox Business történő automatikus felhasználókiépítés konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>Automatikus felhasználó-kiépítés beállítása a Dropbox vállalati verzióra 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD felhasználói és/vagy a csoport-hozzárendelések alapján csoportosítja, a Dropbox Business.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a Dropboxban lévő felhasználókat és/vagy csoportokat.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés Dropbox Business engedélyezése, a biztonsági utasítások megadott a [Dropbox Business egyszeri bejelentkezés az oktatóanyaghoz](dropboxforbusiness-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Dropbox vállalati verziójában, a [Dropbox for Business egyszeri bejelentkezés oktatóanyagában](dropboxforbusiness-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Dropbox Business az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása a Dropbox for Business szolgáltatáshoz az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Dropbox Business**.
+2. Az alkalmazások listában válassza a **Dropbox vállalatoknak**elemet.
 
-    ![A Dropbox, az alkalmazások listáját az üzleti hivatkozás](common/all-applications.png)
+    ![A Dropbox for Business hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** területén kattintson **engedélyezés**. A Dropbox bejelentkezési párbeszédpanel egy új böngészőablakban nyílik meg.
+5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. Megnyílik egy új böngészőablakban a Dropbox for Business bejelentkezési párbeszédpanelje.
 
     ![Kiépítés ](common/provisioning-oauth.png)
 
-6. Az a **jelentkezzen be a Dropbox összekapcsolása az Azure AD vállalati** párbeszédpanel, jelentkezzen be a Dropboxba üzleti bérlő, és igazolja személyazonosságát.
+6. A **vállalati dropboxba való bejelentkezéshez az Azure ad-vel való kapcsolódáshoz** jelentkezzen be a Dropbox for Business-bérlőbe, és ellenőrizze az identitását.
 
-    ![Üzleti jelentkezzen be a Dropboxba](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
+    ![Dropbox vállalati bejelentkezéshez](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
 
-7. 5 és 6 lépések elvégzése után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Dropbox Business csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a Dropbox Business fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
+7. Az 5. és a 6. lépés elvégzése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a vállalati dropboxhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Dropbox for Business-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-oauth.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Dropboxba**.
+10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a dropboxhoz**lehetőséget.
 
-    ![Dropbox Felhasználóleképezéseket](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
+    ![Dropbox felhasználói leképezések](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
 
-11. Tekintse át a dropboxba az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat, a Dropbox a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből a Dropboxba szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. A **megfelelő** tulajdonságokként kiválasztott attribútumok a Dropbox felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Dropbox felhasználói attribútumok](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
+    ![Dropbox felhasználói attribútumai](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
 
-12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportok a Dropboxba**.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Dropbox-hoz**lehetőséget.
 
-    ![Dropbox-csoport-hozzárendelések](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
+    ![Dropbox-csoport leképezései](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
 
-13. Tekintse át az Azure AD-ból a dropboxba szinkronizált oszlopainál a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfelelnek a dropbox a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+13. Tekintse át az Azure AD-ből a Dropboxba szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a dropboxban lévő csoportok egyeztetésére használhatók a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Dropbox csoportattribútumok](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
+    ![Dropbox-csoport attribútumai](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
 
-14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Az Azure AD létesítési szolgáltatás, a Dropbox engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+15. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a Dropboxhoz, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-16. A felhasználók és/vagy a csoportok, adja meg a Dropboxba kiépítéséhez definiálása válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+16. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni a Dropbox számára a **Settings (beállítások** ) szakasz **hatókörében** lévő kívánt értékek kiválasztásával.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-17. Ha készen áll rendelkezésre, kattintson a **mentése**.
+17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely által az Azure AD létesítési szolgáltatás a Dropboxban végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a dropboxban.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
  
-* Dropbox nem támogatja a meghívott felhasználó felfüggesztése. Egy meghívott felhasználó fel van függesztve, ha a felhasználó törlődik.
+* A Dropbox nem támogatja a meghívott felhasználók felfüggesztését. Ha egy meghívott felhasználó fel van függesztve, a felhasználó törölve lesz.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

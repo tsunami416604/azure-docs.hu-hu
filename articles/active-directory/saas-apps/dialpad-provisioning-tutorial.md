@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Dialpad |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Dialpad felhasználói fiókokat.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés beállítása a Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,163 +15,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 32e634bc089417aaa8080b30a5f77f663a3d8b33
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611781"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058346"
 ---
-# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Dialpad konfigurálása
+# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Dialpad és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok a Dialpad bemutatása.
+Ennek az oktatóanyagnak a célja, hogy bemutassa az Azure AD konfigurálásához Azure Active Directory szükséges lépéseket, hogy a felhasználók és/vagy csoportok automatikus kiosztását és kiépítését (Azure AD) is be lehessen állítani.
 
 > [!NOTE]
->  Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+>  Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
-> Ez az összekötő jelenleg előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [A bérlő egy Dialpad](https://www.dialpad.com/pricing/).
-* Egy felhasználói fiókot a Dialpad rendszergazdai jogosultságokkal rendelkezik.
+* [Egy](https://www.dialpad.com/pricing/)meglevő bérlő.
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók.
 
-## <a name="assign-users-to-dialpad"></a>Felhasználók hozzárendelése Dialpad
-Az Azure Active Directory egy fogalom, más néven hozzárendeléseket használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+## <a name="assign-users-to-dialpad"></a>Felhasználók társításának kiosztása
+Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben Dialpad hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és csoportok Dialpad utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoportok számára milyen hozzáférésre van szükség. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat:
  
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md) 
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md) 
 
- ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Felhasználók hozzárendelése Dialpad fontos tippek
+ ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Fontos Tippek a felhasználók kiosztásához
 
- * Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Dialpad a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+ * Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a felhasználók automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése Dialpad, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva, a létesítési.
+* Amikor egy felhasználóhoz rendeli a kiosztást, ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="setup-dialpad-for-provisioning"></a>A telepítő Dialpad kiépítéshez
+## <a name="setup-dialpad-for-provisioning"></a>A telepítés a kiépítés során
 
-Az Azure AD-felhasználók automatikus Dialpad konfigurálja, mielőtt kell Dialpad lévő egyes kiépítési információk lekéréséhez.
+Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálása előtt be kell szereznie néhány kiépítési információt a sablonból.
 
-1. Jelentkezzen be a [Dialpad felügyeleti konzol](https://dialpadbeta.com/login) válassza **adminisztrátori beállítások**. Ügyeljen arra, hogy **vállalatom** kiválasztott elemet a legördülő listából. Navigáljon a **hitelesítési > API-kulcsok**.
+1. Jelentkezzen be a megadható [felügyeleti konzolra](https://dialpadbeta.com/login) , és válassza a **rendszergazdai beállítások**lehetőséget. Győződjön meg arról, hogy a **vállalatom** ki van választva a legördülő listából. Navigáljon a **hitelesítés > API-kulcsok**elemre.
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad01.png)
 
-2. Hozzon létre egy új kulcsot kattintva **kulcs hozzáadása** és a titkos jogkivonat tulajdonságainak konfigurálása.
+2. Új kulcs létrehozásához kattintson **a kulcs hozzáadása** és a titkos token tulajdonságainak konfigurálása elemre.
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad02.png)
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad03.png)
 
-3. Kattintson a **érték megjelenítéséhez kattintson** legutóbb létrehozott API-kulcs gombra, és másolja a megjelenített értéket. Ezt az értéket fog megadni az **titkos jogkivonat** mezőt a kiépítés lapon Dialpad alkalmazását az Azure Portalon. 
+3. Kattintson a **kattintson ide az érték megjelenítése** gombra a legutóbb létrehozott API-kulcshoz, és másolja a megjelenő értéket. Ez az érték a Azure Portalban a kiépítés lapjának **titkos jogkivonat** mezőjében lesz megadva. 
 
-    ![Dialpad jogkivonat létrehozása](media/dialpad-provisioning-tutorial/dialpad04.png)
+    ![A létrehozott jogkivonat létrehozása](media/dialpad-provisioning-tutorial/dialpad04.png)
 
-## <a name="add-dialpad-from-the-gallery"></a>Dialpad hozzáadása a katalógusból
+## <a name="add-dialpad-from-the-gallery"></a>A gyűjteményhez tartozó Hozzáadás a katalógusból
 
-Az Azure AD-felhasználók automatikus Dialpad konfigurálja, szüksége az Azure AD alkalmazáskatalógusában Dialpad hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálásához az Azure AD-alkalmazás-katalógusból kell megadnia a felügyelt SaaS-alkalmazások listáját.
 
-**Az Azure AD alkalmazáskatalógusában Dialpad hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Az Azure AD-alkalmazás-katalógusból az alábbi lépéseket követve adhatja hozzá a-t:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Dialpad**válassza **Dialpad** az eredmények panelen.
-    ![Az eredmények listájában Dialpad](common/search-new-app.png)
+4. A **keresőmezőbe írja be**a megjelenő kifejezést **, válassza az eredmények panelen a** kiválasztva lehetőséget.
+    ![az eredmények listájában](common/search-new-app.png)
 
-5. Keresse meg a **URL-cím** kiemelve alább a egy külön böngészőablakot. 
+5. Nyissa meg az alábbi **URL-címet** egy külön böngészőben. 
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad05.png)
 
-6. A jobb felső sarokban, válassza ki **bejelentkezés > használat Dialpad online**.
+6. A jobb felső sarokban válassza a **bejelentkezés > az online kapcsolat használata**lehetőséget.
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad06.png)
 
-7. Mivel Dialpad OpenIDConnect alkalmazás, válassza a bejelentkezés a Microsoft munkahelyi fiókjával Dialpad az.
+7. Mivel a OpenIDConnect egy alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a megfelelő lehetőséget.
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/loginpage.png)
 
-8. A sikeres hitelesítés után fogadja el a hozzájárulást kérő lap hozzájárulási kérése. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a Dialpad fiókjához.
+8. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a felhasználói fiókhoz.
 
-    ![Dialpad Add SCIM](media/dialpad-provisioning-tutorial/redirect.png)
+    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/redirect.png)
 
- ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Felhasználók automatikus átadása az Dialpad konfigurálása
+ ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Az automatikus felhasználó-kiépítés beállítása a kiosztott értékre
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD-felhasználói és/vagy a csoport-hozzárendelések alapján csoportosítja a Dialpad.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a felhasználókat és/vagy csoportokat.
 
-### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Dialpad az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való használatra:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Dialpad**.
+2. Az alkalmazások **listában válassza a**kiválasztva lehetőséget.
 
-    ![Az alkalmazások listáját a Dialpad hivatkozásra](common/all-applications.png)
+    ![Az alkalmazások listájában található, az alkalmazáshoz tartozó hivatkozás](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban bemeneti `https://dialpad.com/scim` a **bérlői URL-cím**. Az érték, amely kéri le, és a korábban mentett Dialpad a bemeneti **titkos jogkivonat**. Kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Dialpad csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Dialpad fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://dialpad.com/scim` a **bérlői URL-címben**. Adja meg a beolvasott és a korábban mentett értéket a **titkos jogkivonatban**. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a-hoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a megadott fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-8. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Dialpad**.
+8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók számára**lehetőséget.
 
-    ![Dialpad Felhasználóleképezéseket](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
+    ![Felhasználói hozzárendelések](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. Tekintse át a Dialpad a az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek Dialpad levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Dialpad felhasználói attribútumok](media/dialpad-provisioning-tutorial/dialpad07.png)
+    ![A felhasználói attribútumok](media/dialpad-provisioning-tutorial/dialpad07.png)
 
-10. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Az Azure AD létesítési szolgáltatás Dialpad engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a (z) számára, módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. A felhasználók és/vagy a kívánt csoportok definiálása Dialpad való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni, ha a **Settings** ( **hatókör** ) területen a kívánt értékeket választja.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll rendelkezésre, kattintson a **mentése**.
+13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a Dialpad által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md)
-##  <a name="connector-limitations"></a>Összekötő-korlátozások
-* Dialpad nem támogatja a csoport átnevezése még ma. Ez azt jelenti, hogy módosítania kellene a **displayName** csoportnak az Azure AD nem lesz frissítve és Dialpad megjelennek.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md) helyezésével kapcsolatban.
+##  <a name="connector-limitations"></a>Összekötő korlátozásai
+* A (z) rendszer nem támogatja a csoport-átnevezni még ma. Ez azt jelenti, hogy az Azure AD-beli csoportok **DisplayName** -beli módosításait nem frissíti a rendszer, és az a következő módon jelenik meg:.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

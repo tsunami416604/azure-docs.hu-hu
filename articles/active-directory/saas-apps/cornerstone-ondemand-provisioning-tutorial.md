@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása alapkövei OnDemand |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és felhasználói fiókok alapkövei OnDemand megszüntetése.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés sarokköve OnDemand konfigurálása a Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a sarokköve OnDemand.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,151 +16,151 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8170fc094f1515783fa51a0d579bc12094aab836
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672942"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058424"
 ---
-# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása alapkövei OnDemand konfigurálása
+# <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés sarokköve OnDemand konfigurálása
 
-Ez az oktatóanyag bemutatja a alapkövei OnDemand és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítése és a felhasználók vagy csoportok alapkövei OnDemand megszüntetése végrehajtásához szükséges lépéseket.
+Ez az oktatóanyag bemutatja, hogyan kell végrehajtani a lépéseket a sarokköve OnDemand és Azure Active Directory (Azure AD) az Azure AD konfigurálásához, hogy a felhasználók vagy csoportok automatikusan kiépítsék és felépítsék a OnDemand.
 
 > [!NOTE]
-> Ez az oktatóanyag leírja egy összekötőt, amely a kiszolgáló üzembe helyezése az Azure AD felhasználói épül. Ez a szolgáltatás leírása, hogyan működik, és gyakran ismételt kérdések kapcsolatos tudnivalókat lásd: [felhasználói kiépítésének és megszüntetésének biztosítása az Azure Active Directory-as-szoftverszolgáltatások (SaaS) alkalmazások automatizálása](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag egy, az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismertet. További információ a szolgáltatás működéséről, működéséről és gyakori kérdéseiről: a felhasználók kiépítésének [automatizálása és a szolgáltatott szoftveres (SaaS) alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik a következővel:
 
 * Egy Azure AD-bérlő.
-* A bérlő egy OnDemand alapkövei.
-* Egy felhasználói fiókot a alapkövei OnDemand rendszergazdai jogosultságokkal rendelkezik.
+* Egy sarokköve OnDemand-bérlő.
+* A OnDemand sarokköve felhasználói fiók rendszergazdai jogosultságokkal rendelkezik.
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [alapkövei OnDemand webszolgáltatás](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf). Ez a szolgáltatás alapkövei OnDemand csoportjaink számára érhető el.
+> Az Azure AD kiépítési integrációja a [OnDemand Web Service](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)-re támaszkodik. Ez a szolgáltatás a sarokköve OnDemand csapatok számára érhető el.
 
-## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Az Azure Marketplace-ről alapkövei OnDemand hozzáadása
+## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Sarokköve OnDemand hozzáadása az Azure Marketplace-ről
 
-Mielőtt alapkövei OnDemand konfigurál az Azure AD-felhasználók automatikus számára, hozzá alapkövei OnDemand a Marketplace-ről a felügyelt SaaS-alkalmazások listája.
+Mielőtt konfigurálja az Azure AD-vel való automatikus felhasználói üzembe helyezéshez szükséges sarokköve OnDemand, adjon hozzá sarokkövei OnDemand a piactéren a felügyelt SaaS-alkalmazások listájához.
 
-A Marketplace-ről alapkövei OnDemand hozzáadásához kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve adhat hozzá sarokkövei OnDemand a piactéren.
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza a bal oldali navigációs panelen, **Azure Active Directory**.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory ikonra](common/select-azuread.png)
+    ![A Azure Active Directory ikon](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza **új alkalmazás** a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **alapkövei OnDemand** válassza **alapkövei OnDemand** az eredmény panelen. Az alkalmazás hozzáadásához válassza **Hozzáadás**.
+4. A keresőmezőbe írja be a **sarokköve OnDemand** elemet, és válassza ki a **sarokköve OnDemand** elemet az eredmények panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
 
-    ![Az eredmények listájában alapkövei OnDemand](common/search-new-app.png)
+    ![Sarokköve OnDemand az eredmények listájában](common/search-new-app.png)
 
-## <a name="assign-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése alapkövei OnDemand
+## <a name="assign-users-to-cornerstone-ondemand"></a>Felhasználók kiosztása a sarokköve OnDemand
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók vagy csoportok, amelyek az alkalmazások az Azure AD hozzá lett rendelve a rendszer szinkronizálja.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók vagy csoportok lesznek szinkronizálva.
 
-Mielőtt konfigurálása és engedélyezése a felhasználók automatikus átadása, döntse el, mely felhasználók vagy csoportok Azure AD-ben alapkövei OnDemand hozzáférésre van szükségük. Ezek a felhasználók vagy csoportok hozzárendelése alapkövei OnDemand, kövesse a [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást](../manage-apps/assign-user-or-group-access-portal.md).
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak vagy csoportjai számára szükséges a sarokköve a OnDemand. Ha ezeket a felhasználókat vagy csoportokat a sarokköve OnDemand szeretné hozzárendelni, kövesse a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)című témakör utasításait.
 
-### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése alapkövei OnDemand fontos tippek
+### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Fontos Tippek a felhasználók fő OnDemand való hozzárendeléséhez
 
-* Azt javasoljuk, hogy hozzárendelje egyetlen alapkövei OnDemand a felhasználók automatikus konfiguráció tesztelése az Azure AD-felhasználót. Hozzárendelhet további felhasználókat vagy csoportokat később.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználót rendeljen a sarokköve OnDemand az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat vagy csoportokat is hozzárendelhet.
 
-* Ha egy felhasználó alapkövei OnDemand rendeli, válassza ki bármilyen érvényes alkalmazásspecifikus szerepkör érhető el, ha a hozzárendelés párbeszédpanelen. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Ha egy felhasználót a sarokköve OnDemand rendel hozzá, akkor a hozzárendelés párbeszédpanelen válasszon egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configure-automatic-user-provisioning-to-cornerstone-ondemand"></a>Felhasználók automatikus átadása az alapkövei OnDemand konfigurálása
+## <a name="configure-automatic-user-provisioning-to-cornerstone-ondemand"></a>Az automatikus felhasználó-kiépítés konfigurálása a sarokköve OnDemand
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálásának lépéseit. Vele létrehozása, frissítése és tiltsa le a felhasználók vagy csoportok alapkövei OnDemand az Azure AD-felhasználó vagy csoport-hozzárendelések alapján.
+Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálásának lépésein. A használatával felhasználók vagy csoportok létrehozása, frissítése és letiltása az Azure AD-ben felhasználói vagy OnDemand alapján.
 
-Felhasználók automatikus átadása alapkövei OnDemand az Azure AD-ben konfigurálásához kövesse az alábbi lépéseket.
+Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az automatikus felhasználói üzembe helyezést a sarokkövei OnDemand.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások** > **minden alkalmazás** > **alapkövei OnDemand**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások** > **minden alkalmazás** > **sarokköve OnDemand**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **alapkövei OnDemand**.
+2. Az alkalmazások listában válassza ki a **sarokköve OnDemand**elemet.
 
-    ![Az alkalmazások listáját a alapkövei OnDemand hivatkozás](common/all-applications.png)
+    ![A OnDemand sarokköve hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Alapkövei OnDemand kiépítése](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
+    ![OnDemand kiépítés sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa be **Kiépítési mód** való **automatikus**.
+4. A **kiépítési mód** beállítása **automatikusra**.
 
-    ![Alapkövei OnDemand Kiépítési mód](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Sarokköve OnDemand kiépítési módja](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a rendszergazdai felhasználónevet, a rendszergazdai jelszó és a tartomány a alapkövei OnDemand-fiók:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a OnDemand fiókjának rendszergazdai felhasználónevét, rendszergazdai jelszavát és tartományát:
 
-    * Az a **rendszergazdai felhasználónév** mezőben adja meg a tartományt vagy a rendszergazdai fiók a alapkövei OnDemand bérlő felhasználóneve. Ez például akkor contoso\admin.
+    * A **rendszergazda felhasználóneve** mezőben adja meg a rendszergazdai fiók tartományát vagy felhasználónevét a sarokköve OnDemand-bérlőn. Példa contoso\admin.
 
-    * Az a **rendszergazdai jelszó** mezőben adja meg a jelszót, amely megfelel a rendszergazda felhasználóneve.
+    * A **rendszergazdai jelszó** mezőbe írja be a rendszergazdai felhasználónévnek megfelelő jelszót.
 
-    * Az a **tartomány** mezőben adja meg a web service URL-címét a alapkövei OnDemand-bérlő. Ha például a szolgáltatás nem található: `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`, és a Contoso tartomány van `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. A web service URL-cím lekérésével további információkért lásd: [e pdf](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    * A **tartomány** mezőben adja meg a OnDemand-bérlő webszolgáltatásának URL-címét. A szolgáltatás például a `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`helyen található, a contoso esetében pedig a tartomány `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. A webszolgáltatás URL-címének beolvasásával kapcsolatos további információkért tekintse meg [ezt a PDF-fájlt](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
-6. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD alapkövei OnDemand csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, hogy a alapkövei OnDemand rendszergazdai engedélyekkel rendelkezzen, majd próbálkozzon újra.
+6. Miután kitöltötte az 5. lépésben látható mezőket, válassza a **kapcsolat tesztelése** lehetőséget, és győződjön meg róla, hogy az Azure ad képes csatlakozni a sarokköve OnDemand. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a sarokköve OnDemand-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Kapcsolat a alapkövei OnDemand tesztelése](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
+    ![OnDemand-tesztelési kapcsolatok sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
 
-7. Az a **értesítő e-mailt** mezőben adja meg a személy e-mail-címét vagy az üzembe helyezési hiba értesítést szeretne kapni a csoportban. Válassza ki a **e-mail-értesítés küldése, ha hiba történik** jelölőnégyzetet.
+7. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, aki a kiépítési hibákra vonatkozó értesítéseket szeretné kapni. Jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Alapkövei OnDemand értesítő e-mailt](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
+    ![A sarokköve OnDemand értesítő e-mail-címe](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
 8. Kattintson a **Mentés** gombra.
 
-9. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a alapkövei OnDemand**.
+9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a sarokköve OnDemand**lehetőséget.
 
-    ![Alapkövei OnDemand-szinkronizálás](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
+    ![OnDemand-szinkronizálás sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
 
-10. Tekintse át a alapkövei OnDemand a az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek alapkövei OnDemand levő felhasználói fiókokat. Szeretné menteni a módosításokat, válassza ki a **mentése**.
+10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakaszának sarokköve OnDemand. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a OnDemand sarokköve a frissítési műveletekhez. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
 
-    ![Alapkövei OnDemand attribútumleképezések](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
+    ![Sarokköve OnDemand attribútum-hozzárendelések](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
-11. Hatókörszűrő konfigurálásához kövesse az utasításokat a [hatókörkezelési szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+11. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-12. Ahhoz, hogy az Azure AD létesítési szolgáltatás az OnDemand alapkövei, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
+12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a sarokköve OnDemand, a beállítások szakaszban módosítsa a **kiépítési állapot** **beállítást** **a**következőre:.
 
-    ![Alapkövei OnDemand kiépítési állapot](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
+    ![A OnDemand kiépítési állapotának sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
 
-13. Adja meg a felhasználókat vagy csoportokat, amelyekhez szeretne üzembe helyezni a alapkövei OnDemand. Az a **beállítások** területen válassza ki a kívánt értékeket **hatókör**.
+13. Adja meg azokat a felhasználókat és csoportokat, amelyeket a sarokköve OnDemand kíván kiépíteni. A **Beállítások** szakaszban válassza ki a **hatókörben**használni kívánt értékeket.
 
-    ![Alapkövei OnDemand hatókör](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
+    ![Sarokköve OnDemand hatóköre](./media/cornerstone-ondemand-provisioning-tutorial/SyncScope.png)
 
-14. Ha készen áll rendelkezésre, válassza ki a **mentése**.
+14. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
 
-    ![Alapkövei OnDemand mentése](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
+    ![Alapköve OnDemand mentése](./media/cornerstone-ondemand-provisioning-tutorial/Save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó vagy csoport meghatározott **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az újabb szinkronizálás hosszabb időt vesz igénybe. Mindaddig, amíg az Azure AD létesítési szolgáltatás fut bekövetkezésük körülbelül 40 percenként. 
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Körülbelül 40 percenként történnek, amíg az Azure AD-kiépítési szolgáltatás fut. 
 
-Használhatja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat, a kiépítési tevékenységek jelentésének szakaszt. A jelentés az Azure AD létesítési szolgáltatás a alapkövei OnDemand által végrehajtott összes műveletet ismerteti.
+A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésének hivatkozásait. A jelentés ismerteti az Azure AD-kiépítési szolgáltatás által a sarokkövek OnDemand végrehajtott összes műveletet.
 
-Olvassa el az Azure AD létesítési naplók információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-A alapkövei OnDemand **pozíció** attribútum, amely megfelel a szerepköröket a alapkövei OnDemand portál értéket vár. Érvényes listájának beolvasásához **pozíció** értékek, keresse fel **felhasználói rekord szerkesztése > szervezeti felépítés > pozíció** a alapkövei OnDemand-portálon.
+A sarokköve OnDemand **position** attribútum olyan értéket vár, amely megfelel a sarokkövei OnDemand-portál szerepköreinek. Az érvényes **pozicionálási** értékek listájának lekéréséhez lépjen a **felhasználói rekord szerkesztése > szervezet szerkezete > pozíció** a sarokköve OnDemand portálon.
 
-![Cornerstone OnDemand Provisioning Edit User Record](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png)
+![OnDemand-kiépítés – felhasználói rekord szerkesztése](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png)
 
-![Alapkövei OnDemand-kiépítés pozíciója](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png)
+![A OnDemand kiépítési pozíciójának sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png)
 
-![Alapkövei OnDemand-kiépítés pozíció listája](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
+![A OnDemand-létesítési pozíciók sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

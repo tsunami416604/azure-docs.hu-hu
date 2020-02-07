@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval üzemeltetőjének jelszókezelő & digitális tároló konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének üzemeltetőjének jelszókezelő & digitális Vault felhasználói fiókokat.
+title: 'Oktatóanyag: a Keeper Password Manager & Digital Vault konfigurálása a felhasználók automatikus kiosztásához Azure Active Directorysal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a & digitális tárolóban.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,164 +15,164 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 74bfe37323a17bde19e4a9bf4ec28c9c3910b37f
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666253"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057521"
 ---
-# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása üzemeltetőjének jelszókezelő & digitális tároló konfigurálása
+# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Oktatóanyag: a Keeper Password Manager & digitális tároló beállítása a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag célja az, hogy a lépéseket kell végrehajtania a üzemeltetőjének jelszókezelő & digitális Vault és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok üzemeltetőjének jelszó bemutatása & Manager digitális tároló.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Keeper Password Managerben & Digital Vaultban és Azure Active Directory (Azure AD), hogy az Azure AD-t úgy konfigurálja, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat a jelszó-kezelő & digitális tárolóban.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [A jelszókezelő üzemeltetőjének & digitális tároló bérlői](https://keepersecurity.com/pricing.html?t=e)
-* Egy felhasználói fiókot a üzemeltetőjének jelszókezelő & digitális tároló rendszergazdai jogosultságokkal rendelkezik.
+* Azure AD-bérlő
+* [A Keeper Password Manager & A digitális tár bérlője](https://keepersecurity.com/pricing.html?t=e)
+* Egy felhasználói fiók a Keeper Password Managerben & a digitális tárolóban rendszergazdai engedélyekkel.
 
-## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Jelszókezelő üzemeltetőjének & digitális tároló hozzáadása a katalógusból
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>A Keeper Password Manager & Digital Vault hozzáadása a katalógusból
 
-Mielőtt konfigurálná a üzemeltetőjének jelszókezelő & digitális tárolót a felhasználók automatikus átadása az Azure ad-vel, hozzá kell üzemeltetőjének jelszókezelő & digitális Vault az Azure AD alkalmazáskatalógusában a felügyelt SaaS-alkalmazások listájára.
+Mielőtt az Azure AD-vel automatikus felhasználó-kiosztásra konfigurálja a Keeper Password Manager & digitális tárolót, az Azure AD-alkalmazás-katalógusban hozzá kell adnia a Keeper Password Manager & Digital Vaultot a felügyelt SaaS-alkalmazások listájához.
 
-**Az Azure AD alkalmazáskatalógusában üzemeltetőjének jelszókezelő & digitális tár hozzáadásához hajtsa végre az alábbi lépéseket:**
+**A Keeper Password Manager & digitális tárolójának Azure AD-alkalmazás-katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **üzemeltetőjének jelszókezelő & digitális tároló**, jelölje be **üzemeltetőjének jelszókezelő & digitális tároló** az eredmények panelen, majd kattintson a a **Hozzáadás**gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Keeper Password manager & digitális**tároló kifejezést, válassza a **Keeper Password Manager & digitális** tároló elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Jelszókezelő üzemeltetőjének & digitális tároló a találatok listájában](common/search-new-app.png)
+    ![A Keeper Password Manager & Digital Vault az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Felhasználók hozzárendelése üzemeltetőjének jelszókezelő és digitális tároló
+## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Felhasználók kiosztása a Keeper Password Manager & Digital Vaulthoz
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben üzemeltetőjének jelszókezelő & digitális Vault hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok üzemeltetőjének jelszókezelő & digitális tároló utasításokat követve:
+A felhasználók automatikus kiosztásának konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra és/vagy csoportokra van szükség az Azure AD-ben a Keeper Password Manager & digitális tárolóhoz való hozzáféréshez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Keeper Password Manager & Digital Vaulthoz az alábbi utasítások követésével:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Felhasználók hozzárendelése üzemeltetőjének jelszókezelő és digitális tároló fontos tippek
+### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Fontos Tippek a felhasználók a Keeper Password Manager & Digital Vaulthoz való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve üzemeltetőjének jelszókezelő & digitális tárolót a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Keeper Password Manager & Digital Vaulthoz a felhasználók automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése üzemeltetőjének jelszókezelő és digitális tároló, a hozzárendelés párbeszédpanelen válassza ki bármilyen érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Ha egy felhasználót a Keeper Password Manager & Digital Vaulthoz rendel, akkor a hozzárendelés párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Felhasználók automatikus átadása üzemeltetőjének jelszókezelő & digitális tároló konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Az automatikus felhasználó-kiépítés beállítása a Keeper Password Manager & Digital Vaultba 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók és csoportok üzemeltetőjének jelszókezelő konfigurálásának lépéseit, és az Azure ad-ben a felhasználó és/vagy a csoport-hozzárendelések alapján digitális tároló.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy a felhasználók és/vagy csoportok felhasználóinak és/vagy csoportoknak az Azure AD-ban való létrehozásához, frissítéséhez és letiltásához a Keeper Password Managerben & a digitális tárolóban lévő felhasználókat és/vagy csoportokat.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés üzemeltetőjének jelszókezelő & digitális Vault engedélyezése, a biztonsági utasítások megadott a [üzemeltetőjének jelszókezelő & digitális Vault egyszeri bejelentkezést az oktatóanyag](keeperpasswordmanager-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Keeper Password Manager & Digital Vault számára, a [Keeper Password manager & Digital Vault egyszeri bejelentkezés oktatóanyagában](keeperpasswordmanager-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása üzemeltetőjének jelszókezelő & digitális Vault az Azure ad-ben:
+### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>A felhasználók automatikus üzembe helyezésének beállítása a Keeper Password Manager & digitális tárolóban az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **üzemeltetőjének jelszókezelő & digitális tároló**.
+2. Az alkalmazások listában válassza a **Keeper Password Manager & Digital Vault**elemet.
 
-    ![A jelszókezelő üzemeltetőjének & digitális Vault hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A Keeper Password Manager & Digital Vault-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím** és **titkos jogkivonat** a üzemeltetőjének jelszókezelő & digitális tároló fiók 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Keeper Password Manager **bérlői URL-címét** és **titkos jogkivonatát** & digitális tároló fiókját a 6. lépésben leírtak szerint.
 
-6. Jelentkezzen be a [üzemeltetőjének felügyeleti konzol](https://keepersecurity.com/console/#login). Kattintson a **rendszergazdai** , és válasszon ki egy meglévő csomópontot, vagy hozzon létre egy újat. Keresse meg a **kiépítési** lapot, és válasszon **metódus hozzáadása**.
+6. Jelentkezzen be a [Keeper felügyeleti konzolra](https://keepersecurity.com/console/#login). Kattintson a **rendszergazda** elemre, válasszon ki egy meglévő csomópontot, vagy hozzon létre újat. Navigáljon a **kiépítés** lapra, és válassza a **metódus hozzáadása**lehetőséget.
 
-    ![Üzemeltetőjének felügyeleti konzol](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![A Keeper felügyeleti konzolja](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    Válassza ki **SCIM (a tartományok közötti Identity Management rendszer**.
+    Válassza **a scim (rendszer a tartományok közötti identitások kezeléséhez**lehetőséget.
 
-    ![Üzemeltetőjének SCIM hozzáadása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![SCIM hozzáadása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
-    Kattintson a **kiépítés jogkivonat létrehozása**.
+    Kattintson a létesítési **Jogkivonat létrehozása**lehetőségre.
 
-    ![Üzemeltetőjének végpont létrehozása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Megtartó létrehozása végpont](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
-    Másolja le az értékeket a **URL-cím** és **Token** , és illessze be őket **bérlői URL-cím** és **titkos jogkivonat** az Azure ad-ben. Kattintson a **mentése** a kiépítési üzemeltetőjének a telepítés befejezéséhez.
+    Másolja az URL- **cím** és a **jogkivonat** értékét, és illessze be őket a **bérlői URL-cím** és a **titkos tokenbe** az Azure ad-ben. Kattintson a **Save (Mentés** ) gombra a kiépítési beállítás befejezéséhez a Keeper-ben.
 
-    ![Üzemeltetőjének jogkivonat létrehozása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Megtartó létrehozása token](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat üzemeltetőjének jelszókezelő & digitális tároló. Ha a kapcsolat hibája esetén, győződjön meg arról, üzemeltetőjének jelszókezelő & digitális tároló fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a Keeper Password Manager & Digital vaulthoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Keeper Password Manager & a digitális tár fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók üzemeltetőjének jelszókezelő & digitális tároló**.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Keeper Password Manager & Digital vaultban**lehetőséget.
 
-    ![Üzemeltetőjének Felhasználóleképezéseket](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Felhasználó-hozzárendelések megőrzése](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
-11. Tekintse át a üzemeltetőjének jelszókezelő & digitális Vault az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek üzemeltetőjének jelszókezelő & digitális tárolóban levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található, a "Password Manager & Digital Vault" című témakörben. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Keeper Password Manager felhasználói fiókjainak a frissítési műveletek során való egyeztetésére szolgálnak & Digital vaultban. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Üzemeltetőjének felhasználói attribútumok](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Megtartó felhasználói attribútumok](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportok üzemeltetőjének jelszókezelő & digitális tároló**.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Keeper Password Manager & Digital vaultban**lehetőséget.
 
-    ![Üzemeltetőjének csoport-hozzárendelések](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Megtartó csoport leképezései](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
-13. Tekintse át a csoportattribútumok üzemeltetőjének jelszókezelő & digitális Vault az Azure AD-ből szinkronizált a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfelelnek a üzemeltetőjének jelszókezelő & digitális tároló frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+13. Tekintse át az Azure AD-ből szinkronizált csoport-attribútumokat az **attribútum-hozzárendelési** szakaszban található & digitális tárolóban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Keeper Password Managerben lévő csoportoknak felelnek meg a frissítési műveletek során a & Digital vaultban. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Üzemeltetőjének csoportattribútumok](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Megtartó csoport attribútumai](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Az Azure AD létesítési szolgáltatás üzemeltetőjének jelszókezelő & digitális tároló engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Keeper Password Manager & Digital Vault számára, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-16. Válassza ki a kívánt értékeket a üzemeltetőjének jelszókezelő & digitális tároló üzembe helyezése a felhasználók és/vagy a kívánt csoportok meghatározásához **hatókör** a a **beállítások** szakaszban.
+16. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára szeretné kiépíteni a Keeper Password Manager & Digital Vaultot, ha a **Settings (beállítások** ) szakaszban szeretné kiválasztani a kívánt értékeket a **hatókörben** .
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-17. Ha készen áll rendelkezésre, kattintson a **mentése**.
+17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakaszban előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységgel kapcsolatos jelentés, amely ismerteti az Azure AD létesítési szolgáltatás a üzemeltetőjének jelszókezelő által végrehajtott összes műveletet kiépítés & Digitális tároló.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a Keeper Password Manager & Digital vaultban.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* Jelszókezelő üzemeltetőjének & digitális tárolót igényel **e-mailek** és **felhasználónév** szeretné, hogy az azonos érték, vagy attribútumok frissítéseit az más értéket fog módosítása.
-* Jelszókezelő üzemeltetőjének & digitális tároló nem támogatja a felhasználó törlése, csak letiltja. A letiltott felhasználók fog megjelenni a üzemeltetőjének felügyelet konzol felhasználói felületén zárolva van.
+* A Keeper Password Manager & Digital Vaultnak **e-maileket** és **felhasználóneveket** kell megadnia ugyanazzal a forrással, mivel bármelyik attribútum frissítései módosítják a másik értéket.
+* A Keeper Password Manager & Digital Vault nem támogatja a felhasználók törlését, csak a tiltást. A letiltott felhasználók a Keeper felügyeleti konzol felhasználói felületén zárolva jelennek meg.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -2,7 +2,7 @@
 title: Munkahelyi eszköz csatlakoztatása a szervezet hálózatához – AD
 description: Ismerje meg, hogyan csatlakozhat munkahelyi eszközéhez a szervezet hálózatához.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704646"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062268"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
 Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
@@ -85,7 +85,7 @@ Ha már beállította az eszközét, és már be van állítva, akkor az alábbi
 
 5. A **jelszó megadása** képernyőn írja be a jelszót, majd válassza a **Bejelentkezés**lehetőséget.
 
-    ![Írja be a jelszót](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Jelszó megadása](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
 6. A mobileszközön hagyja jóvá az eszközt, hogy hozzáférhessen a fiókjához. 
 

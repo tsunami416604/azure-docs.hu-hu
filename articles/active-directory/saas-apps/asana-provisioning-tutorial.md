@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276587"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058907"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
@@ -89,7 +89,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a**következőre lehetőséget.
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a-ba szinkronizálni kívánt felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítés műveletekhez használhatók a leválasztási műveletek felhasználói fiókjainak megfelelően. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget. További információ: a [felhasználó-kiépítés attribútum-leképezések testreszabása](../manage-apps/customize-application-attributes.md).
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a-ba szinkronizálni kívánt felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítés műveletekhez használhatók a leválasztási műveletek felhasználói fiókjainak megfelelően. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget. További információ: a [felhasználó-kiépítés attribútum-leképezések testreszabása](../app-provisioning/customize-application-attributes.md).
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a, a **Beállítások** szakaszban, módosítsa a **kiépítési állapotot** **a**következőre:.
 
@@ -97,10 +97,10 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 A kezdeti szinkronizálás mostantól elindul a **felhasználók** szakaszban a facsoporthoz rendelt összes felhasználónál. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat. A naplók a kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a a (z)-ben.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséről.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](asana-tutorial.md)

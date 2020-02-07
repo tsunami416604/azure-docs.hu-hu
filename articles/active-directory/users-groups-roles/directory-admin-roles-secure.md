@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967711"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063849"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 A legtöbb szervezet esetében az üzleti eszközök biztonsága az informatikai rendszereket kezelő és kezelő Kiemelt jogosultságú fiókok integritásának függvénye. A Cyber-támadók az infrastruktúra-rendszerek (például Active Directory és Azure Active Directory) privilegizált hozzáférésére összpontosítanak ahhoz, hogy hozzáférjenek a szervezet bizalmas adatokhoz. 
 
-Azok a hagyományos megközelítések, amelyek a hálózat beléptetési és kilépési pontjainak védelmére összpontosítanak, mivel az elsődleges biztonsági peremhálózat kevésbé hatékony, mivel az SaaS-alkalmazások és a személyes eszközök használata az interneten. Egy komplex, modern vállalaton belül a hálózati biztonsági határ természetes helyettesítői a szervezet identitáskezelő rétegében található hitelesítés- és engedélyezésvezérlők.
+Azok a hagyományos megközelítések, amelyek a hálózat beléptetési és kilépési pontjainak védelmére összpontosítanak, mivel az elsődleges biztonsági peremhálózat kevésbé hatékony, mivel az SaaS-alkalmazások és a személyes eszközök használata az interneten. Egy összetett modern vállalat hálózati biztonsági területének természetes cseréje a szervezet identitási rétegének hitelesítési és engedélyezési vezérlői.
 
 A Kiemelt jogosultságú rendszergazdai fiókok hatékonyan felügyelik az új "biztonsági területet". Kritikus fontosságú a Kiemelt hozzáférés biztosítása, függetlenül attól, hogy a környezet helyszíni, Felhőbeli vagy hibrid helyszíni és felhőben üzemeltetett szolgáltatás-e. A rendszergazdai hozzáférés a meghatározott ellenfelekkel szembeni védelme megköveteli, hogy teljes és átgondolt megközelítést nyújtson a szervezet rendszereinek kockázatokból való elkülönítéséhez. 
 
@@ -241,7 +241,7 @@ A C-Suite vezetők, a magas szintű vezetők, a kritikus informatikai és bizton
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Dedikált munkaállomások használata az Azure AD felügyeletéhez
 
-A támadók megkísérelheti a Kiemelt fiókok megcélzását arra, hogy hozzáférjenek a szervezet adataihoz és rendszereihez, hogy megzavarják az adatok integritását és hitelességét olyan kártékony kód révén, amely megváltoztatja a program logikáját, vagy Snoops a rendszergazdának a hitelesítő adatok megadásával. Az emelt hozzáférési szintű munkaállomások (Privileged Access Workstation, PAW) az internetről érkező támadások és fenyegetések ellen védett dedikált operációs rendszert biztosítanak a bizalmas feladatokhoz. Az érzékeny feladatok és fiókok a napi használatú munkaállomásokon és eszközökön való elkülönítése rendkívül erős védelmet biztosít az adathalász támadások, az alkalmazások és az operációs rendszer sebezhetőségei, a különböző megszemélyesítési támadások és a hitelesítő adatok ellopása elleni támadások, például a billentyűleütés naplózás, pass-The-hash és Pass-The-Ticket. Az emelt szintű hozzáférésű munkaállomások üzembe helyezésével csökkentheti annak a kockázatát, hogy a rendszergazdák rendszergazdai hitelesítő adatokat adjanak meg, kivéve a megerősített asztali környezetet. További információ: [privilegizált hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+A támadók megkísérelheti a Kiemelt fiókok megcélzását arra, hogy hozzáférjenek a szervezet adataihoz és rendszereihez, hogy megzavarják az adatok integritását és hitelességét olyan kártékony kód révén, amely megváltoztatja a program logikáját, vagy Snoops a rendszergazdának a hitelesítő adatok megadásával. Az emelt szintű hozzáférésű munkaállomások (mancsok) dedikált operációs rendszert biztosítanak az internetes támadásokkal és a veszélyforrási vektorokkal védett bizalmas feladatokhoz. Az érzékeny feladatok és fiókok a napi használatú munkaállomásokon és eszközökön való elkülönítése rendkívül erős védelmet biztosít az adathalász támadások, az alkalmazások és az operációs rendszer sebezhetőségei, a különböző megszemélyesítési támadások és a hitelesítő adatok ellopása elleni támadások, például a billentyűleütés naplózás, pass-The-hash és Pass-The-Ticket. Az emelt szintű hozzáférésű munkaállomások üzembe helyezésével csökkentheti annak a kockázatát, hogy a rendszergazdák rendszergazdai hitelesítő adatokat adjanak meg, kivéve a megerősített asztali környezetet. További információ: [privilegizált hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>A National Institute of Standards and Technology ajánlásainak áttekintése az incidensek kezeléséhez 
 
@@ -298,7 +298,7 @@ Az Azure log-integráció lehetővé teszi, hogy az Azure-erőforrásokból szá
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Felhasználók üzembe helyezésének megvalósítása a csatlakoztatott alkalmazásokhoz
 
-Az Azure AD segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Felhőbeli (SaaS) alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és így tovább. További információ: a [felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése az Azure ad-vel](../manage-apps/user-provisioning.md).
+Az Azure AD segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Felhőbeli (SaaS) alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és így tovább. További információ: a [felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése az Azure ad-vel](../app-provisioning/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Adatvédelem integrálása
 

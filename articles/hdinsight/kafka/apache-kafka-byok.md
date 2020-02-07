@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841656"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048980"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Saját kulcs használata az Azure HDInsight Apache Kafka
 
@@ -95,9 +95,13 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight-fürt létrehozása
 
-Most már készen áll egy új HDInsight-fürt létrehozására. A BYOK csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el a BYOK-fürtökből, és a BYOK nem adható hozzá a meglévő fürtökhöz.
+Most már készen áll egy új HDInsight-fürt létrehozására. Az **alapok** lapon válassza a **Kafka** lehetőséget a **fürt típusához**.
 
-![Kafka-lemez titkosítása Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure Portal a Kafka típusának kiválasztása](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+A BYOK csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el a BYOK-fürtökből, és a BYOK nem adható hozzá a meglévő fürtökhöz.
+
+![Kafka-lemez titkosítása Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 A fürt létrehozása során adja meg a teljes kulcs URL-címét, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT. A fürt teljes létrehozásával kapcsolatos részletekért lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](./apache-kafka-get-started.md)
 

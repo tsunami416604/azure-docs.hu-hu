@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774939"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050006"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Azure Media Services tartalom közzététele REST használatával 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
-> * [Portál](media-services-portal-publish.md)
+> * [Portal](media-services-portal-publish.md)
 > 
 > 
 
@@ -33,7 +33,7 @@ Az adaptív sávszélességű MP4-készleteket egy OnDemand streaming-lokátor l
 
 A OnDemand streaming-lokátor használatával olyan URL-címeket is létrehozhat, amelyek a fokozatosan letöltött MP4-fájlokra mutatnak.  
 
-Ez a cikk bemutatja, hogyan hozhat létre egy OnDemand streaming-keresőt az adategység közzétételéhez, valamint egy sima, MPEG DASH és HLS streaming URL-címek létrehozásához. Azt is bemutatja, hogyan készíthet a progresszív letöltési URL-címeket.
+Ez a cikk bemutatja, hogyan hozhat létre egy OnDemand streaming-keresőt az adategység közzétételéhez, valamint egy sima, MPEG DASH és HLS streaming URL-címek létrehozásához. Azt is bemutatja, hogyan készíthet progresszív letöltési URL-címeket.
 
 A [következő](#types) szakasz azokat a felsorolási típusokat mutatja be, amelyek értékeit a REST-hívásokban használják.   
 
@@ -41,12 +41,12 @@ A [következő](#types) szakasz azokat a felsorolási típusokat mutatja be, ame
 > A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
 További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->A https://media.windows.net hoz való sikeres csatlakozás után egy 301-es átirányítást fog kapni, amely egy másik Media Services URI azonosítót ad meg. Ezt követően meg kell adnia a további hívásokat az új URI-hoz.
+>A https://media.windows.nethoz való sikeres csatlakozás után egy 301-es átirányítást fog kapni, amely egy másik Media Services URI azonosítót ad meg. Ezt követően meg kell adnia a további hívásokat az új URI-hoz.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>OnDemand-kereső létrehozása
 A OnDemand streaming-lokátor létrehozásához és az URL-címek lekéréséhez a következőket kell tennie:
@@ -187,13 +187,13 @@ példa:
         OnDemandOrigin = 2,
     }
 
-## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
+## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Media Services Operations REST API áttekintése](media-services-rest-how-to-use.md)
 
 [Eszköz kézbesítési házirendjének konfigurálása](media-services-rest-configure-asset-delivery-policy.md)

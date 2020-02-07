@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768680"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046461"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -28,10 +28,10 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Office 365-csoportok életcik
 
 Miután beállított egy csoportot a lejárat után:
 
-- A felhasználói tevékenységgel rendelkező csoportok automatikusan megújulnak a közeljövőben
-- A csoport tulajdonosai értesítést kapnak a csoport megújításáról, ha a csoport nincs automatikusan újítva
-- A nem megújított csoportok törlődnek
-- A törölt Office 365-csoportok 30 napon belül visszaállíthatók a csoport tulajdonosai vagy a rendszergazda
+- A felhasználói tevékenységgel rendelkező csoportokat a rendszer automatikusan megújítja a közeljövőben.
+- A csoport tulajdonosai értesítést kapnak a csoport megújításáról, ha a csoport nem automatikusan megújul.
+- A nem megújított csoportok törlődnek.
+- A törölt Office 365-csoportok a csoport tulajdonosainak vagy a rendszergazdának 30 napon belül visszaállíthatók.
 
 Jelenleg csak egy lejárati szabályzat konfigurálható az összes Office 365-csoportra egy Azure AD-szervezetben.
 
@@ -42,7 +42,7 @@ További információ az Azure AD PowerShell-parancsmagok letöltéséről és t
 
 ## <a name="activity-based-automatic-renewal"></a>Tevékenység-alapú automatikus megújítás
 
-Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak attól függően, hogy a közelmúltban használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai általi manuális beavatkozást, mert az Office 365-szolgáltatások, például az Outlook, a SharePoint, a Teams vagy a Yammer különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
+Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak, attól függően, hogy legutóbb használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai általi manuális beavatkozást, mivel az Office 365-szolgáltatások, például az Outlook, a SharePoint, a Teams vagy a Yammer különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>A csoport lejáratát automatikusan megújító tevékenységek
 
@@ -55,6 +55,8 @@ A következő felhasználói műveletek az automatikus csoport megújítását o
 ### <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
 
 A rendszergazdák az Azure AD-ben lekérhetik az automatikusan megújított csoportok listáját a tevékenység-naplózási naplókból.
+
+![Csoportok automatikus megújítása tevékenység alapján](./media/groups-lifecycle/audit-logs-autorenew-group.png)
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
@@ -173,13 +175,13 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
 A következő parancsmagok segítségével konfigurálhatja a szabályzatot részletesebben. További információ: PowerShell- [dokumentáció](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
-- Új – AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
 - Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Alaphelyzetbe állítás – AzureADMSLifeCycleGroup
+- Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ## <a name="next-steps"></a>Következő lépések

@@ -1,7 +1,7 @@
 ---
 title: Automatizált ML-kísérletek létrehozása
 titleSuffix: Azure Machine Learning
-description: Az automatizált gépi tanulás felvesz egy algoritmust az Ön számára, és létrehoz egy modellt, amely készen áll a telepítésre. Ismerje meg azokat a beállításokat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
+description: Automatizált gépi tanulási algoritmus választja ki az Ön számára, és készen áll a központi telepítési modell generál. Ismerje meg a beállításokat, amelyek segítségével automatizált machine learning-példakísérleteket konfigurálása.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: sgilley
@@ -11,37 +11,37 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986495"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048582"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
+Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val. Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja.
 
 Egy automatizált gépi tanulási kísérletre vonatkozó példák megtekintéséhez tekintse meg az [oktatóanyag: besorolási modell betanítása automatizált gépi tanulási](tutorial-auto-train-models.md) vagy [tanítási modellekkel a Felhőbeli automatizált gépi tanulással](how-to-auto-train-remote.md)című témakört.
 
-Az automatizált gépi tanulásban elérhető konfigurációs beállítások:
+Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 
 * Válassza ki a kísérlet típusát: besorolás, regresszió vagy idősorozat-előrejelzés
-* Adatforrás, formátumok és beolvasás
-* Válassza ki a számítási célt: helyi vagy távoli
-* Automatikus gépi tanulási kísérlet beállításai
-* Automatizált gépi tanulási kísérlet futtatása
-* Modell metrikáinak megismerése
-* Modell regisztrálása és üzembe helyezése
+* Az adatforrás, formátumokat és adatok újbóli lekérésére
+* Válassza a compute-cél: helyi vagy távoli
+* Automatizált machine learning-kísérlet beállításai
+* Egy automatizált machine learning-kísérlet futtatása
+* Modell metrikák böngészése
+* Regisztráljon és a modell üzembe helyezése
 
 Ha nem szeretne programkódot felvenni, akkor [Azure Machine learning Studióban is létrehozhatja az automatizált gépi tanulási kísérleteket](how-to-create-portal-experiments.md).
 
-## <a name="select-your-experiment-type"></a>Válassza ki a kísérlet típusát
+## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
-A kísérlet megkezdése előtt meg kell határoznia, hogy milyen típusú gépi tanulási probléma van a megoldásban. Az automatizált gépi tanulás támogatja a besorolási, a regressziós és az előrejelzési feladatok típusát. További [információ a feladattípusokról](how-to-define-task-type.md).
+Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Az automatizált gépi tanulás támogatja a besorolási, a regressziós és az előrejelzési feladatok típusát. További [információ a feladattípusokról](how-to-define-task-type.md).
 
-Az automatizált gépi tanulás a következő algoritmusokat támogatja az automatizálási és hangolási folyamat során. Felhasználóként nem kell megadnia az algoritmust.
+Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
 
 Osztályozás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
@@ -71,9 +71,9 @@ from azureml.train.automl import AutoMLConfig
 automl_config = AutoMLConfig(task = "classification")
 ```
 
-## <a name="data-source-and-format"></a>Adatforrás és formátum
+## <a name="data-source-and-format"></a>Adatforrás és a formátum
 
-Az automatizált gépi tanulás támogatja a helyi asztalon vagy a felhőben, például az Azure Blob Storageban található adategységeket. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset**is beolvashatók.  [További tudnivalók az adatkészletekről](how-to-create-register-datasets.md).
+Automatizált machine learning található adatok támogatja, a helyi számítógépére vagy a felhőben, például az Azure Blob Storage. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset**is beolvashatók.  [További tudnivalók az adatkészletekről](how-to-create-register-datasets.md).
 
 A betanítási adatgyűjtésre vonatkozó követelmények:
 - Az adatokat táblázatos formában kell megadni.
@@ -91,7 +91,7 @@ Az alábbi példák bemutatják, hogyan tárolhatja az ilyen formátumú adattá
   label = "Y"
   ```
 
-* Panda dataframe
+* Pandas dataframe
 
     ```python
     import pandas as pd
@@ -102,7 +102,7 @@ Az alábbi példák bemutatják, hogyan tárolhatja az ilyen formátumú adattá
     label = "label-col-name"
     ```
 
-## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Adatok lekérése a kísérlet futtatásához távoli számításkor
+## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Kísérlet futtatása távoli számítási adatlehívást
 
 Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az SDK-ban [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály a következő funkciókat teszi elérhetővé:
 
@@ -111,13 +111,13 @@ Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenni�
 
 A következő témakörben talál példát arra, [Hogyan](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) csatlakoztathatók az adatok a számítási célra a `Dataset` osztály használatával.
 
-## <a name="train-and-validation-data"></a>Betanítási és érvényesítési adatkészletek
+## <a name="train-and-validation-data"></a>Adatok train és érvényesítése
 
 A `AutoMLConfig` konstruktorban közvetlenül is megadhatja a különböző vonat-és ellenőrzési készleteket.
 
-### <a name="k-folds-cross-validation"></a>K-összecsukható kereszt-ellenőrzés
+### <a name="k-folds-cross-validation"></a>K – Modellrész keresztellenőrzés
 
-A `n_cross_validations` beállítással adhatja meg a több érvényesítést. A betanítási adatkészletet véletlenszerűen `n_cross_validations`, egyenlő méretűre bontja. Az egyes átellenőrzési körökben a rendszer az egyik hajtogatást használja a fennmaradó hajtogatási modell érvényesítéséhez. Ez a folyamat megismétli a `n_cross_validations`i köröket, amíg az összes összekapcsolást be nem használja az érvényesítési csoportba. A rendszer az összes `n_cross_validations` kör átlagos pontszámát fogja jelenteni, és a rendszer a megfelelő modellt a teljes betanítási adatkészletre átképezi.
+A `n_cross_validations` beállítással adhatja meg a több érvényesítést. A betanítási adatkészletet véletlenszerűen `n_cross_validations`, egyenlő méretűre bontja. Során minden egyes keresztellenőrzési round egyet a kevesebb modellrészt használható ellenőrzés céljából a többi modellrész tanított modell. Ez a folyamat megismétli a `n_cross_validations`i köröket, amíg az összes összekapcsolást be nem használja az érvényesítési csoportba. A rendszer az összes `n_cross_validations` kör átlagos pontszámát fogja jelenteni, és a rendszer a megfelelő modellt a teljes betanítási adatkészletre átképezi.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo Cross Validation (ismétlődő véletlenszerű almintavételezés)
 
@@ -125,12 +125,12 @@ A `validation_size` segítségével megadhatja az érvényesítéshez használan
 
 ### <a name="custom-validation-dataset"></a>Egyéni ellenőrzési adatkészlet
 
-Használjon egyéni ellenőrzési adatkészletet, ha a véletlenszerű felosztás nem fogadható el, általában idősorozat-vagy kiegyensúlyozatlan adat. Saját ellenőrzési adatkészletet is megadhat. A modell kiértékelése a véletlenszerű adatkészlet helyett megadott ellenőrzési adatkészlet alapján történik.
+Használjon egyéni ellenőrzési adatkészletet, ha a véletlenszerű felosztás nem fogadható el, általában idősorozat-vagy kiegyensúlyozatlan adat. A saját érvényesítési adatkészletet is megadhat. A modellben értékelik az érvényesítési élelmiszer-megadott véletlenszerű adatkészlet helyett.
 
-## <a name="compute-to-run-experiment"></a>Számítás a kísérlet futtatásához
+## <a name="compute-to-run-experiment"></a>Számítási kísérlet futtatása
 
-A következő határozza meg, hogy a modell hogyan lesz betanítva. Az automatizált Machine learning-betanítási kísérlet a következő számítási lehetőségeken futtatható:
-*   Helyi számítógép, például helyi asztal vagy laptop – általában kis adatkészletek esetén, és még mindig a felderítési szakaszban van.
+Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machine learning betanítási kísérlet futtassa a következő számítási lehetőségek:
+*   A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
 *   Egy távoli gép a felhőben – [Azure Machine learning felügyelt számítás](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a gépi tanulási modellek betanítását az Azure-beli virtuális gépek fürtjén.
 
     Tekintse meg ezt a [GitHub-webhelyet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) a helyi és távoli számítási célokkal rendelkező jegyzetfüzetek példáinak megtekintéséhez.
@@ -143,7 +143,7 @@ A következő határozza meg, hogy a modell hogyan lesz betanítva. Az automatiz
 
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
-Számos lehetőség közül választhat, amelyekkel konfigurálhatja az automatizált gépi tanulási kísérletet. Ezeket a paramétereket egy `AutoMLConfig` objektum létrehozásával állítja be a rendszer. A paraméterek teljes listájáért tekintse meg a [AutoMLConfig osztályt](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
+Többféle módon használhatja az automatikus machine learning-kísérlet konfigurálása. Ezeket a paramétereket egy `AutoMLConfig` objektum létrehozásával állítja be a rendszer. A paraméterek teljes listájáért tekintse meg a [AutoMLConfig osztályt](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
 Néhány példa:
 
@@ -189,12 +189,18 @@ Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanul
 
 ### <a name="data-featurization"></a>Az adatfeaturization
 
-Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
+Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#featurization).
 
-A featurization engedélyezéséhez a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)`"featurization": 'auto'`t kell megadni.
+A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `featurization`. A következő táblázat a featurization elfogadott beállításait mutatja be a [`AutoMLConfig` osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+|Featurization-konfiguráció | Leírás |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
+|`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-create-portal-experiments.md#advanced-featurization-options) .|
 
 > [!NOTE]
-> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+> Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.
 
 ### <a name="time-series-forecasting"></a>Idősorozat-előrejelzés
 Az idősorozat `forecasting` feladat további paramétereket igényel a konfigurációs objektumban:
@@ -301,14 +307,14 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Elküldheti a kísérletet egy modell futtatásához és létrehozásához. Adja át a `AutoMLConfig`t a `submit` metódusnak a modell létrehozásához.
+Küldje el a kísérlet futtatásához és a egy modell létrehozása. Adja át a `AutoMLConfig`t a `submit` metódusnak a modell létrehozásához.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
 ```
 
 >[!NOTE]
->A függőségek először egy új gépre települnek.  A kimenet megjelenítése előtt akár 10 percet is igénybe vehet.
+>Függősége először telepítve van egy új gépen.  Mielőtt látható a kimenetre akár 10 percig is eltarthat.
 >A `show_output` beállítása a konzolon megjelenített kimenet `True` eredményeire.
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
@@ -317,7 +323,7 @@ A kísérlet befejezéséhez több lehetőség is megadható.
 1. Kilépés hosszú idő után: `experiment_timeout_minutes` használata a beállításokban megadhatja, hogy a rendszer hány perc elteltével folytassa a kísérlet futtatását.
 1. Kilépés egy pontszám elérésekor: a `experiment_exit_score` használatával a rendszer elvégzi a kísérletet, miután elérte az elsődleges metrikai pontszám értékét.
 
-### <a name="explore-model-metrics"></a>Modell metrikáinak megismerése
+### <a name="explore-model-metrics"></a>Modell metrikák böngészése
 
 Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha egy jegyzetfüzetben van. További részletekért tekintse meg a [modellek követése és értékelése](how-to-track-experiments.md#view-run-details) című témakört.
 
@@ -397,7 +403,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Helyszín:
+   Az elemek magyarázata:
 
    |Kimenet|Meghatározás|
    |----|--------|
@@ -408,7 +414,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
    |Átalakítások|A bemenő funkciókra alkalmazott átalakítások listája a mérnöki funkciók létrehozásához.|
    
 ### <a name="customize-feature-engineering"></a>A funkciók mérnöki testreszabása
-A szolgáltatások mérnöki testreszabásához válassza a `"feauturization":FeaturizationConfig`lehetőséget.
+A szolgáltatások mérnöki testreszabásához válassza a `"featurization": FeaturizationConfig`lehetőséget.
 
 A támogatott Testreszabás az alábbiakat tartalmazza:
 

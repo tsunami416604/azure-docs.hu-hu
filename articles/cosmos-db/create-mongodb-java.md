@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445512"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061708"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: konzolos alkalmazás létrehozása Javával és a MongoDB API-val Azure Cosmos DB
 
@@ -27,18 +27,13 @@ ms.locfileid: "75445512"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Ebben a rövid útmutatóban a Mongo DB és a Java SDK Azure Cosmos DB API-ját fogja használni egy konzol-webalkalmazás létrehozásához. Azure Cosmos DB lehetővé teszi a dokumentum-, kulcs/érték-és Graph-adatbázisok gyors létrehozását és lekérdezését, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Cosmos DB középpontjában.
-
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Cosmos-fiókot [Azure Cosmos db API-MongoDB](mongodb-introduction.md). Ezután létrehozhatja és üzembe helyezheti a [MongoDB Java-illesztőprogram](https://docs.mongodb.com/ecosystem/drivers/java/)használatával létrehozott konzolos alkalmazást. 
+Ebben a rövid útmutatóban egy Azure Cosmos DB hoz létre és kezel egy MongoDB API-fiókhoz a Azure Portalból, és a GitHubról klónozott Java SDK-alkalmazás használatával ad hozzá egy adatforrást. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-* [Az Azure-hoz készült JDK telepítése és a JDK 8-as verziójának Azure Stack](https://aka.ms/azure-jdks)
-* Maven (ha nem rendelkezik Maven-nel, futtassa az `apt-get install maven` parancsot)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`a kapcsolatok karakterláncával.
+- A [Java Development Kit (JDK) 8-as verziója](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
+- [Maven](https://maven.apache.org/download.cgi). Vagy futtassa `apt-get install maven` a Maven telepítéséhez.
+- [Git](https://git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -46,15 +41,15 @@ Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltét
 
 ## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
-Az új adatbázis neve legyen **db**, az új gyűjteményé pedig **coll**.
+Nevezze el az új **adatbázis-** adatbázist, és az **új gyűjteményt**.
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
+Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -66,7 +61,7 @@ Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok kar
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
@@ -78,9 +73,11 @@ Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok kar
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
 
-Az alábbi kódrészletek mind a Program.java fájlból származnak.
+Az alábbi kódrészletek mind a *program. Java* fájlból származnak.
 
-* A rendszer inicializálja a DocumentClient ügyfelet.
+Ez a konzol alkalmazás a [MongoDB Java-illesztőprogramot](https://docs.mongodb.com/ecosystem/drivers/java/)használja. 
+
+* A DocumentClient inicializálva van.
 
     ```java
     MongoClientURI uri = new MongoClientURI("FILLME");`
@@ -114,19 +111,19 @@ Az alábbi kódrészletek mind a Program.java fájlból származnak.
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. A fiókban válassza a **gyorskonfigurálás**lehetőséget, válassza a **Java**lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
+1. A Azure Cosmos DB fiókjában válassza a **gyorskonfigurálás**lehetőséget, válassza a **Java**lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
 
-2. Nyissa meg a `Program.java` fájlt, cserélje le a MongoClientURI konstruktor argumentumát a kapcsolati sztringgel. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+2. Nyissa meg a *program. Java* fájlt, cserélje le az argumentumot a MongoClientURI konstruktorra a kapcsolódási karakterlánccal. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
     
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
-1. Futtassa a `mvn package` parancsot egy terminálban a szükséges npm-modulok telepítéséhez
+1. Futtassa az `mvn package` parancsot a terminálban a szükséges npm-modulok telepítéséhez
 
 2. Futtassa a `mvn exec:java -D exec.mainClass=GetStarted.Program` parancsot egy terminálban a Java-alkalmazás elindításához.
 
 Ezentúl a [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) használatával lekérdezheti, módosíthatja, és dolgozhat az új adatokkal.
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -136,7 +133,7 @@ Ezentúl a [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Cosmos-fiókot, hogyan hozhat létre gyűjteményt, és hogyan futtathat egy konzolos alkalmazást. Mostantól további adatait is importálhatja a Cosmos-adatbázisba.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB API-t a Mongo DB-fiókhoz, hogyan adhat hozzá egy adatbázist és egy tárolót a Adatkezelő használatával, és hogyan adhat hozzá egy Java-konzol alkalmazás használatával. Mostantól további adatait is importálhatja a Cosmos-adatbázisba. 
 
 > [!div class="nextstepaction"]
 > [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)

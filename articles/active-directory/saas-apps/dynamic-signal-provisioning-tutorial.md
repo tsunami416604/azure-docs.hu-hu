@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A dinamikus védelem a felhasználók automatikus átadása az Azure Active Directory konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének dinamikus jel felhasználói fiókokat.
+title: 'Oktatóanyag: dinamikus jel konfigurálása a felhasználók automatikus üzembe helyezéséhez Azure Active Directorysal | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a dinamikus jellé.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,148 +15,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f9bfa0eaea67919bad775af5cf9071cd3d6973ca
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2ec91d42dff8f3a1fc4b036aa1c3ec77faf6a0fc
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672654"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058042"
 ---
-# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása dinamikus jel konfigurálása
+# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: dinamikus jel beállítása a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a dinamikus jel és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók, illetve dinamikus jel a csoportok bemutatása.
+Ennek az oktatóanyagnak a célja, hogy bemutassa a dinamikus és Azure Active Directory (Azure AD) végrehajtandó lépéseit, hogy az Azure AD konfigurálja a felhasználókat és/vagy csoportokat a dinamikus jellé való automatikus kiépítéséhez és kiépítéséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [A bérlő egy dinamikus jel](https://dynamicsignal.com/)
-* Egy felhasználói fiókot a dinamikus jel rendszergazdai jogosultságokkal rendelkezik.
+* Azure AD-bérlő
+* [Dinamikus jel bérlője](https://dynamicsignal.com/)
+* Rendszergazdai jogosultságokkal rendelkező dinamikus jellel rendelkező felhasználói fiók.
 
-## <a name="add-dynamic-signal-from-the-gallery"></a>A dinamikus jel hozzáadása a katalógusból
+## <a name="add-dynamic-signal-from-the-gallery"></a>Dinamikus jel hozzáadása a katalógusból
 
-Mielőtt konfigurálná a az Azure AD-felhasználók automatikus dinamikus jel, szüksége az Azure AD alkalmazáskatalógusában dinamikus jel hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus felhasználó-kiépítés előtt dinamikus jelet kell hozzáadnia az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Az Azure AD alkalmazáskatalógusában dinamikus jel hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Ha dinamikus jelet szeretne hozzáadni az Azure AD Application Galleryből, hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **dinamikus jel**válassza **dinamikus jel** az eredmények panelen, majd kattintson a a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **dinamikus jelet**, válassza ki a **dinamikus** jelet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az eredmények listájában a dinamikus jel](common/search-new-app.png)
+    ![Dinamikus jel az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-dynamic-signal"></a>Felhasználók hozzárendelése dinamikus jel
+## <a name="assigning-users-to-dynamic-signal"></a>Felhasználók kiosztása dinamikus jellé
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Mielőtt a felhasználók automatikus kiépítés engedélyezése és konfigurálása, akkor meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure AD dinamikus jel hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok dinamikus jel utasításokat követve:
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználóknak és/vagy csoportoknak hogyan kell elérniük a dinamikus jeleket. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti dinamikus jellé a következő utasítások követésével:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>Felhasználók hozzárendelése dinamikus jel fontos tippek
+### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>Fontos Tippek a felhasználók dinamikus jellé való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó hozzá van rendelve a felhasználók automatikus konfiguráció teszteléséhez dinamikus jel. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a dinamikus jellé a felhasználó automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése dinamikus jel, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Ha egy felhasználót dinamikus jellé rendel, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>A dinamikus jel történő automatikus felhasználókiépítés konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>Automatikus felhasználó-kiépítés beállítása dinamikus jellé 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók és csoportok az Azure AD-ben a felhasználó és/vagy a csoport-hozzárendelések alapján dinamikus jel konfigurálásáról.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a dinamikus jeleket használó felhasználókat és/vagy csoportokat.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés a dinamikus jel engedélyezése, a biztonsági utasítások megadott a [dinamikus jel egyszeri bejelentkezéses oktatóanyag](dynamicsignal-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezte a dinamikus jel számára, a [dinamikus jel egyszeri bejelentkezés oktatóanyagában](dynamicsignal-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása számára jelzés dinamikus Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása dinamikus jel esetén az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **dinamikus jel**.
+2. Az alkalmazások listában válassza a **dinamikus jel**lehetőséget.
 
-    ![A dinamikus jel hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A dinamikus jel hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím** és **titkos jogkivonat** a dinamikus jel fiók 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a dinamikus jel fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a 6. lépésben leírtak szerint.
 
-6. A dinamikus jel felügyeleti konzolon lépjen a **Admin > Speciális > API**.
+6. A dinamikus jel felügyeleti konzolon navigáljon a **rendszergazda > Advanced > API**elemre.
 
-    ![A dinamikus jel kiépítése](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    ![Dinamikus jelek kiépítés](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
-    Másolás a **SCIM API URL-Címének** való **bérlői URL-cím**. Kattintson a **új jogkivonat létrehozása** létrehozni egy **tulajdonosi jogkivonat** , és másolja az értéket a **titkos jogkivonat**.
+    Másolja a **scim API URL-címét** a **bérlői URL**-címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba**való másolásához.
 
-    ![A dinamikus jel kiépítése](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    ![Dinamikus jelek kiépítés](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
-7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD dinamikus jel csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a dinamikus jel fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a dinamikus jellé. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a dinamikus jel fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL-cím + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a dinamikus jel**.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása dinamikus jellé**lehetőséget.
 
-    ![A dinamikus jel Felhasználóleképezéseket](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
+    ![Dinamikus jelek felhasználói leképezései](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
-11. Tekintse át a dinamikus jelre az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a dinamikus védelem a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban található dinamikus jellé. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a dinamikus jel által a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![A dinamikus jel felhasználói attribútumok](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
+    ![Dinamikus jel felhasználói attribútumai](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD létesítési szolgáltatás dinamikus jel engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a dinamikus jel számára, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Adja meg a felhasználók és/vagy a csoportok, adja meg dinamikus jel való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne a dinamikus jellé kiépíteni a **Beállítások** szakasz **hatókörében** lévő kívánt értékek kiválasztásával.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll rendelkezésre, kattintson a **mentése**.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás a dinamikus jel által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a dinamikus jeleken végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A dinamikus jel nem támogatja a felhasználó végleges törlése az Azure ad-ből. Törli a felhasználó véglegesen a dinamikus jel, a művelet rendelkezik, a dinamikus jel felügyeleti konzol felhasználói felületén keresztül történjen. 
-* A dinamikus jel jelenleg nem támogatja a csoportok.
+* A dinamikus jel nem támogatja az állandó felhasználók törlését az Azure AD-ből. Ha véglegesen szeretné törölni a felhasználót a dinamikus jelek között, a műveletet a dinamikus jel felügyeleti konzoljának felhasználói felületén kell elvégezni. 
+* A dinamikus jel jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

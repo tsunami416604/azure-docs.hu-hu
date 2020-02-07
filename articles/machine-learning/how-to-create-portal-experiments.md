@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720401"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046116"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 ## <a name="create-and-run-experiment"></a>Kísérlet létrehozása és futtatása
 
-1. Válassza a **+ kísérlet létrehozása** lehetőséget, és töltse fel az űrlapot.
+1. Válassza az **+ új AUTOMATIZÁLT ml Futtatás** lehetőséget, és töltse ki az űrlapot.
 
 1. Válasszon ki egy adatkészletet a tárolóból, vagy hozzon létre egy új adatkészletet. Az adatkészletek helyi fájlokból, webes URL-címekből, adattárolóból vagy Azure Open-adatkészletből hozhatók létre. 
 
@@ -113,16 +113,19 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
         1. Előrejelzési horizont kiválasztása: azt jelzi, hogy a modell hány időegységet (perc/óra/nap/hét/hónap/év) fog tudni a jövőben előre jelezni. Minél több modellre van szükség a jövőbeli előrejelzéshez, annál kevésbé pontos lesz. [További információ az előrejelzési és előrejelzési horizontról](how-to-auto-train-forecast.md).
 
-1. Választható Hozzáadási konfigurációk: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
+1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
     További beállítások|Leírás
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az előfeldolgozásról](#preprocess).
+    Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. Az idősorozat-előrejelzés feladattípusa nem támogatott. [További információ az előfeldolgozásról](#featurization). 
+    A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatát
     Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
     Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)* : meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
     Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
-    Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Magok maximális száma iterációban*: válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
+    Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál.
+
+1. Választható Featurization-beállítások megtekintése: Ha úgy dönt, hogy engedélyezi az **automatikus featurization** a **további konfigurációs beállítások** űrlapon, ezen az űrlapon adhatja meg, hogy mely oszlopok hajtják végre ezeket a featurizations, és válassza ki, hogy melyik statisztikai értéket kívánja használni a hiányzó érték imputations.
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Döntés| Az oszlop adatainak normál eloszlásból való megmérése.
 Értékek| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Speciális featurization beállítások
 
-A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `feauturization`. 
+Az automatizált gépi tanulás automatikusan biztosítja az előfeldolgozást és az guardrails, így könnyebben azonosíthatja és kezelheti az adataival kapcsolatos lehetséges problémákat. 
 
-|Featurization-konfiguráció | Leírás |
-| ------------- | ------------- |
-|"feauturization" = "FeaturizationConfig"| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"feauturization" = "off"| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
-|"feauturization" = "automatikus"| Azt jelzi, hogy a következő guardrails-és featurization-lépések előfeldolgozásának részeként a rendszer automatikusan végrehajtja a lépéseket.|
+### <a name="preprocessing"></a>Előfeldolgozás
 
 |&nbsp;lépések előfeldolgozása| Leírás |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `fe
 
 ### <a name="data-guardrails"></a>Az adatguardrails
 
-Az automatizált gépi tanulás olyan adatok guardrails, amelyek segítségével azonosíthatja az adatokkal kapcsolatos lehetséges problémákat (például a hiányzó értékeket, az osztály egyensúlyhiányát), és segítheti a javítási műveleteket a jobb eredmények érdekében. Számos ajánlott eljárás érhető el, és a megbízható eredmények elérésére is alkalmazható. 
+A rendszer automatikusan alkalmazza az adatok guardrails, hogy azonosítsa az adataival kapcsolatos lehetséges problémákat (például a hiányzó értékeket, az osztály kiegyensúlyozatlanságát), és segítsen a továbbfejlesztett eredmények kijavításában. Számos ajánlott eljárás érhető el, és a megbízható eredmények elérésére is alkalmazható. 
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint azokat a társított állapotokat, amelyeket a felhasználók a kísérlet elküldésekor megkaphatnak.
 
@@ -191,14 +190,11 @@ Időbeli adatsorozat-konzisztencia|**Telt** <br><br><br><br> **Rögzített** |<b
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 
-A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítési folyamata akár 10 percet is igénybe vehet. A betanítási feladatok további 2-3 percet is igénybe vehetnek az egyes folyamatok futtatásának befejezéséhez.
+A kísérlet futtatásához kattintson a **Befejezés** gombra. A kísérlet előkészítési folyamata akár 10 percet is igénybe vehet. A betanítási feladatok további 2-3 percet is igénybe vehetnek az egyes folyamatok futtatásának befejezéséhez.
 
 ### <a name="view-experiment-details"></a>Kísérlet részleteinek megtekintése
 
->[!NOTE]
-> A Futtatás állapotának megtekintéséhez válassza a rendszeres **frissítés** lehetőséget. 
-
-Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ezen a képernyőn látható a kísérlet futtatásának összegzése, beleértve a **futtatási állapotot**is. 
+Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ez a képernyő a kísérlet futtatásának összegzését jeleníti meg, beleértve a futtatási szám melletti állapotsort is. 
 
 A **models (modellek** ) lapon a metrika pontszám alapján rendezett modellek listája látható. Alapértelmezés szerint a kiválasztott metrika alapján a legmagasabb pontszám a lista tetején található. Mivel a betanítási feladatok további modelleket próbálnak ki, azok hozzáadódnak a listához. Ezzel a lépéssel gyorsan összehasonlíthatja az eddig létrehozott modellek metrikáit.
 
@@ -218,9 +214,9 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
 1. Van néhány lehetőség a telepítéshez. 
 
-    + 1\. lehetőség: a legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a legjobb modell telepítése lehetőséget a Részletek lapon.
+    + 1\. lehetőség: a legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a **legjobb modell telepítése** gombot a **részletek** lapon.
 
-    + 2\. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből, részletezés a modellben a modell részletei lap megnyitásához, majd válassza a modell üzembe helyezése lehetőséget.
+    + 2\. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből, részletezés a modellben a modell **részletei** lap megnyitásához, majd válassza a **modell üzembe helyezése**lehetőséget.
 
 1. Töltse ki a **modell üzembe helyezése** ablaktáblát.
 
@@ -229,7 +225,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
     Név| Adja meg a központi telepítés egyedi nevét.
     Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)* .
-    Név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
+    Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.
     Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információ a pontozási parancsfájlokról](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Próbálja ki a végpontok közötti [oktatóanyagot, amellyel létrehozhatja az első AUTOMATIZÁLT ml-kísérletet Azure Machine learning](tutorial-first-experiment-automated-ml.md)használatával. 
+* Próbálja ki az [első AUTOMATIZÁLT ml-kísérlet Azure Machine learning Studióval való létrehozásához szükséges teljes körű oktatóanyagot](tutorial-first-experiment-automated-ml.md). 
 * [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.
 * Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
 * [Ismerje meg, hogyan használhat webszolgáltatásokat](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).

@@ -2,21 +2,21 @@
 title: Bejelentkezés a Microsoft Authenticator alkalmazás használatával – Azure AD
 description: A Microsoft Authenticator alkalmazással bejelentkezhet a munkahelyi vagy iskolai fiókjába, illetve a személyes Microsoft-és nem Microsoft-fiókokba a kétfaktoros ellenőrzés vagy a telefonos bejelentkezés használatával.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84aa3731f8066772c6a268f2ae4e16215452e78a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704680"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062200"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 

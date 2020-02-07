@@ -3,12 +3,12 @@ title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023191"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050068"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -140,8 +140,7 @@ A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocatio
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi, hogy a tömb egyes elemeit egyenként, a logikai és a köztük lévő elemeket is kiértékelje. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés.
-Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
+Azok az aliasok, amelyek neve **\[\*\]** a nevükhöz csatolva jelzi, hogy a **típus** _tömb_. A teljes tömb értékének kiértékelése helyett a **\[\*\]** lehetővé teszi, hogy a tömb egyes elemeit egyenként, a logikai és a köztük lévő elemeket is kiértékelje. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
 Ez a tény fontos, hogy tisztában legyen azzal, hogyan **\[\*** a tömb egyes elemeinek kiértékelése \].
@@ -184,7 +183,7 @@ Az alábbi példában szereplő összes feltételnél cserélje le a `<field>`t 
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
-|Állapot |Eredmény | Alkalmazási helyzet |Magyarázat |
+|Állapot |Eredmény | Forgatókönyv |Magyarázat |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Nincs |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |

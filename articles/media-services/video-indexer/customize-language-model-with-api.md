@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513150"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049030"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Nyelvi modell testreszabása a Video Indexer API-kkal
 
@@ -32,7 +32,7 @@ A [nyelvi modell létrehozása](https://api-portal.videoindexer.ai/docs/services
 > [!NOTE]
 > Továbbra is be kell tanítania a modellt a modell engedélyezett fájljaival a fájl tartalmának megismeréséhez. A nyelv tanításának irányai a következő szakaszban találhatók.
 
-A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a szövegtörzsben lévő fájlokat fel kell töltenie az űrlap-adatok használatával, továbbá a fenti szükséges paraméterek értékeit is megadja. Ezt kétféleképpen teheti meg: 
+A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a szövegtörzsben lévő fájlokat fel kell töltenie az űrlap-adatok használatával, továbbá a fenti szükséges paraméterek értékeit is megadja. Ehhez két módja van: 
 
 1. A kulcs lesz a fájlnév, és az érték lesz a txt-fájl.
 2. A kulcs a fájl neve, az érték pedig a txt-fájl URL-címe lesz.
@@ -105,9 +105,8 @@ A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valam
 }
 ```
 
-A **linguisticModelId** paraméterhez a nyelvi modell visszaadott **azonosító** értékét kell használnia, amikor [feltölt egy videót az indexbe](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) és a **languageModelId** paramétert a [videó újraindexelése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)során.
+A visszaadott **azonosító** egy egyedi azonosító, amely a nyelvi modellek megkülönböztetésére szolgál, míg a **languageModelId** a [videó feltöltéséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) és a videó API-k [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (más néven **linguisticModelId** video Indexer feltöltési/újraindexelési API-khoz) való feltöltéséhez is használják.
 
- 
 ## <a name="delete-a-language-model"></a>Nyelvi modell törlése
 
 A [nyelvi modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API törli a megadott fiókból származó egyéni nyelvi modellt. A törölt nyelvi modellt használó összes videó esetében Ugyanez az index marad, amíg újra nem indexeli a videót. Ha újra indexeli a videót, új nyelvi modellt rendelhet a videóhoz. Ellenkező esetben a Video Indexer az alapértelmezett modellt fogja használni a videó újbóli indexeléséhez.
@@ -123,7 +122,7 @@ A [Language Model API frissítése](https://api-portal.videoindexer.ai/docs/serv
 > [!NOTE]
 > Már létre kell hoznia a nyelvi modellt. Ezzel a hívással engedélyezheti vagy letilthatja a modellben található összes fájlt, frissítheti a nyelvi modell nevét, és feltöltheti a nyelvi modellbe felvenni kívánt fájlokat.
 
-A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a szövegtörzsben lévő fájlokat fel kell töltenie az űrlap-adatok használatával, továbbá a fenti szükséges paraméterek értékeit is megadja. Ezt kétféleképpen teheti meg: 
+A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a szövegtörzsben lévő fájlokat fel kell töltenie az űrlap-adatok használatával, továbbá a fenti szükséges paraméterek értékeit is megadja. Ehhez két módja van: 
 
 1. A kulcs lesz a fájlnév, és az érték lesz a txt-fájl.
 2. A kulcs a fájl neve, az érték pedig a txt-fájl URL-címe lesz.

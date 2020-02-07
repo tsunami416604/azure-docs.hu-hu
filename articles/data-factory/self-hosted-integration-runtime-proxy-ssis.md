@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 48d4df5684c84e195810439912dd610f5af364d4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/06/2020
+ms.openlocfilehash: b20a615691d95c04574e2909f69b5a83a97f9d14
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964481"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048953"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Saját üzemeltetésű IR konfigurálása az ADF-Azure-SSIS IR proxyként
 
@@ -112,7 +112,7 @@ Amikor az OLEDB/Flat file sources használatával olyan új csomagokat tervez, a
 
 ![ConnectByProxy tulajdonság engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség közül választhat:
+Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  Két lehetőség érhető el:
 - A csomagokat tartalmazó projekt megnyitása, újraépítése és újbóli üzembe helyezése a legújabb SSDT a Azure-SSIS IRon való futtatáshoz: ezt követően a tulajdonság értéke **true (igaz** ) értékre állítható be, ha a SSMS-ból csomagokat futtat, és a **Csatlakozáskezelő** lapon megjelenő kapcsolódó ügyfélkapcsolat-kezelők.
 
   ![ConnectByProxy property2 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -149,7 +149,7 @@ A Azure-SSIS IR futó második előkészítési feladatok külön nem lesznek fe
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak az ODBC/OLEDB/Flat file kapcsolatkezelő és az ODBC/OLEDB/Flat file sources adatáramlási feladatai támogatottak. 
+- Jelenleg csak az ODBC/OLEDB/Flat file ügyfélkapcsolat-kezelővel és az ODBC/OLEDB/Flat file sources vagy OLEDB-célhoz tartozó adatáramlási feladatok támogatottak. 
 - Jelenleg csak az Azure Blob Storage társított szolgáltatások vannak konfigurálva a **fiók kulcsa**/**sas URI**/**egyszerű szolgáltatásnév** -hitelesítés.
 
 ## <a name="next-steps"></a>Következő lépések

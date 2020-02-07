@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867437"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049888"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
 Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
 
-## <a name="before-you-begin"></a>Előzetes teendők 
+## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
 [Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
 Az alhálózatot delegálni kell Azure NetApp Files.  
@@ -40,12 +40,12 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 * A megfelelő portokat meg kell nyitni a megfelelő Windows Active Directory (AD) kiszolgálón.  
     A szükséges portok a következők: 
 
-    |     Szolgáltatás           |     Port     |     Protocol (Protokoll)     |
+    |     Szolgáltatás           |     Port     |     Protokoll     |
     |-----------------------|--------------|------------------|
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    –       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -73,6 +73,8 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     Ha olyan tartományvezérlővel rendelkezik, amely nem érhető el a Azure NetApp Files delegált alhálózaton keresztül, beküldhet egy Azure-támogatási kérést, hogy a hatókört **globális** (alapértelmezett) **helyről**módosítsa.  Azure NetApp Files csak a tartományvezérlővel kell kommunikálnia azon a helyen, ahol a Azure NetApp Files delegált alhálózati címtartomány található.
 
     Lásd: [a hely topológiájának megtervezése az](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) ad-helyekre és-szolgáltatásokra vonatkozóan. 
+    
+További információ a további AD-információkról: Azure NetApp Files [SMB-gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) . 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory-kapcsolatok létrehozása
 
@@ -86,7 +88,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
         Ez az a DNS, amely szükséges a Active Directory tartományhoz való csatlakozáshoz és az SMB-hitelesítési műveletekhez. 
     * **Másodlagos DNS-**    
         Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
-    * **Tartomány**  
+    * **Tartományi**  
         Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
         Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.

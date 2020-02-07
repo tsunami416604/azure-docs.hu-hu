@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530034"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060048"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből az SAP SuccessFactors (előzetes verzió)
 Ennek az oktatóanyagnak a célja, hogy megjelenítse a visszaírási attribútumoknak az Azure AD-ből a SuccessFactors Employee Central-be történő elvégzéséhez szükséges lépéseket. A visszaírási által jelenleg támogatott attribútum az e-mail-attribútum. 
@@ -63,7 +63,7 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 * Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API**elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
   > [!div class="mx-imgBorder"]
   > Olvasási írási engedély ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Kattintson a **kész**gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
+* Kattintson a **kész**gombra. Kattintson a **módosítások mentése**gombra.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
@@ -92,7 +92,7 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 * Tekintse át az engedélyezési szerepkör engedélyezését az engedély csoport számára. 
   > [!div class="mx-imgBorder"]
   > ![engedély szerepkör és a csoport részletei](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Kattintson a **Save Changes** (Módosítások mentése) gombra.
+* Kattintson a **módosítások mentése**gombra.
 
 ## <a name="configuring-successfactors-writeback"></a>SuccessFactors-visszaírási konfigurálása
 
@@ -134,7 +134,7 @@ Ez a szakasz a következő lépéseit tartalmazza:
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a SuccessFactors hitelesítő adatok és az URL-cím érvényes-e.
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett leképezések **szinkronizálását Azure Active Directory felhasználókat a SuccessFactors**
 
@@ -152,7 +152,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
 
 1. Az **attribútum-hozzárendelések** szakaszban csak a SuccessFactors felhasználói profilnak az Azure ad-felhasználóval való összekapcsolásához és az Azure ad-ben az e-mailek forrásaként szolgáló attribútumhoz tartozó azonosítót lehet módosítani. 
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >A SuccessFactors visszaírási csak az e-mail-attribútumot támogatja. Új attribútumok hozzáadásához ne használja az **Új leképezés hozzáadása** lehetőséget. 
@@ -170,7 +170,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Mentés** gombra.
+2. Kattintson a **Save** (Mentés) gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a SuccessFactors-bérlőben lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 
@@ -183,8 +183,8 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
-* [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../manage-apps/export-import-provisioning-configuration.md)
+* [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)
 

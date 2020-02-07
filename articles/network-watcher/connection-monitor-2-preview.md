@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026886"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049282"
 ---
-# <a name="overview"></a>Áttekintés
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Egyesített kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
 A kapcsolódási figyelő (előzetes verzió) egységes, végpontok közötti kapcsolat-figyelési képességeket biztosít az Azure Network Watcher a hibrid és az Azure-beli Felhőbeli üzembe helyezéshez. Az Azure Network Watcher eszközeivel figyelheti, diagnosztizálhatja és tekintheti meg az Azure-beli üzemelő példányok kapcsolattal kapcsolatos metrikáit.
 
@@ -78,8 +78,8 @@ A _kapcsolati figyelő_ rendszeres időközönként figyeli a kommunikációt, �
 
 ### <a name="accessing-connection-monitor-preview"></a>A Csatlakozáskezelő elérése (előzetes verzió)
 
-1. Hozzáférés Network Watcher a következő hivatkozás használatával:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. A Network Watcher bal oldali paneljének figyelés szakaszában kattintson a "kapcsolatbeállítások (előzetes verzió)" fülre. Ez a lap csak akkor látható, ha Network Watcher az 1. lépésben megadott hivatkozás használatával érhető el.
+1. A Azure Portal kezdőlapján keresse fel a Network Watcher
+2. A Network Watcher bal oldali paneljének figyelés szakaszában kattintson a "kapcsolatbeállítások (előzetes verzió)" fülre.
 3. A Csatlakozáskezelő (előzetes verzió) használatával létrehozott összes figyelőt láthatja. A rendszer a Csatlakozáskezelő lap klasszikus felhasználói felületének használatával létrehozott összes figyelőt a Csatlakozáskezelő lapon fogja látni.
 
     ![Figyelő létrehozása](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -423,7 +423,7 @@ Ha egy figyelőhöz szeretne létrehozni egy tesztelési csoportot, akkor a lent
 
       ![TG hozzáadása](./media/connection-monitor-2-preview/add-test-config.png)
 
-Az egyes tesztelési csoportokhoz hozzáadott összes forrást és célhelyet az egyes tesztekre bontva lehet megadni. Példa:
+Az egyes tesztelési csoportokhoz hozzáadott összes forrást és célhelyet az egyes tesztekre bontva lehet megadni. Például:
 
 * Tesztelési Csoport: TG1
 * Források: 3 (A, B, C)
@@ -441,10 +441,10 @@ Az egyes tesztelési csoportokhoz hozzáadott összes forrást és célhelyet az
 | 6 | B | D | 2\. konfiguráció |
 | 7 | B | E | 1\. konfiguráció |
 | 8 | B | E | 2\. konfiguráció |
-| 9 | C# | D | 1\. konfiguráció |
-| 10 | C# | D | 2\. konfiguráció |
-| 11 | C# | E | 1\. konfiguráció |
-| 12 | C# | E | 2\. konfiguráció |
+| 9 | C | D | 1\. konfiguráció |
+| 10 | C | D | 2\. konfiguráció |
+| 11 | C | E | 1\. konfiguráció |
+| 12 | C | E | 2\. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -497,7 +497,7 @@ A listát a következő alapján szűrheti:
 
 ![Tesztek szűrése](./media/connection-monitor-2-preview/cm-view.png)
 
-Példa:
+Például:
 
 1. Az összes olyan teszt megtekintése az összes (előzetes verzióban), ahol a Source IP = 10.192.64.56:
    1. Nézet módosítása a "tesztek" értékre
@@ -550,7 +550,7 @@ A (z)% és a RTT sikertelen ellenőrzések trendjeinek megtekintéséhez:
    5. Az időintervallum módosítása további adatértékek megtekintéséhez
    6. A b lépésben megváltoztathatja a nézetet, és megtekintheti forrás, célhely vagy tesztelési konfiguráció alapján. Ezután válasszon ki egy entitást az 5 leggyakoribb sikertelen teszt kivizsgálásához.  Például: válassza a nézet: források és célhelyek lehetőséget, hogy vizsgálja meg az adott kombináció között futó összes tesztet a kiválasztott kapcsolati figyelőben.
 
-3. Test
+3. Tesztelés
    1. Kattintson a vizsgálni kívánt forrás + cél + tesztelési konfigurációra.
    2. A kiválasztott időintervallum esetében a (z)%-os ellenőrzésekhez nem sikerült a küszöbértéket és a tényleges értékeket látni. A RTT MS a küszöbértéket, az átlagot, a minimumot és a maximális értéket fogja látni. A kiválasztott teszthez kapcsolódó felgyújtott riasztásokat is láthat.
 
@@ -574,12 +574,12 @@ A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létre
 
 Erőforrás típusa – Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa | Leírás | Dimenziók |
+| Metrika | Metrika megjelenített neve | Unit (Egység) | Aggregáció típusa | Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | a kapcsolat figyelési mintavételének%-a meghiúsult | Nincsenek méretek |
-| AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS) |             Nincsenek méretek |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | teszt esetén sikertelen volt az ellenőrzések százaléka |Lista:-ConnectionMonitorResourceId-SourceAddress-SourceName-Sourceresourceid azonosítónak-forrás típusa-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Régió |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott ellenőrzések időkorlátja (MS). Ez az érték nem átlag | Lista:-ConnectionMonitorResourceId-SourceAddress-SourceName-Sourceresourceid azonosítónak-forrás típusa-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Régió |
+| ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | a kapcsolat figyelési mintavételének%-a meghiúsult | Nincs dimenzió |
+| AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS) |             Nincs dimenzió |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | teszt esetén sikertelen volt az ellenőrzések százaléka | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Sourceresourceid azonosítónak <br> * Forrás típusa <br> * Protokoll <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Régió |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodperc | Átlag | A forrás és a cél között eljuttatott ellenőrzések időkorlátja (MS). Ez az érték nem átlag | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Sourceresourceid azonosítónak <br> * Forrás típusa <br> * Protokoll <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Régió |
 
  ![Metrikák figyelése](./media/connection-monitor-2-preview/monitor-metrics.png)
 
@@ -599,7 +599,7 @@ Riasztás létrehozása:
 7. Riasztás részleteinek megadása
 8. Riasztási szabály létrehozása
 
-   ![Értesítések](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+   ![Riasztások](./media/connection-monitor-2-preview/mdm-alerts.jpg)
 
 ## <a name="step-5-diagnose-issues-in-your-network"></a>5\. lépés: a hálózatban felmerülő problémák diagnosztizálása
 

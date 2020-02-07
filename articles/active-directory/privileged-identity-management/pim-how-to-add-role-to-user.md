@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024228"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047100"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -61,19 +61,9 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás**gombra.
 
-    Megnyílik a **tag vagy csoport kiválasztása** lap.
+1. Válasszon ki egy tagot, akihez hozzárendelni kívánja a szerepkört, majd válassza a **kiválasztás**lehetőséget.
 
-1. Válassza ki a szerepkörhöz hozzárendelni kívánt tagot vagy csoportot, majd válassza a **kiválasztás**lehetőséget.
-
-    ![Tag vagy csoport ablaktábla kiválasztása](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Megnyílik a tagsági beállítások panel.
-
-1. A **hozzárendelés típusa** listában válassza a **jogosult** vagy az **aktív**lehetőséget.
-
-    ![Tagságok beállításai panel](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Az Azure-erőforrások Privileged Identity Management két különböző hozzárendelési típust biztosít:
+1. A **tagsági beállítások** ablaktábla **hozzárendelés típusa** listájában válassza a **jogosult** vagy az **aktív**lehetőséget.
 
     - A **jogosult** hozzárendelésekhez a szerepkör tagjának kell lennie a szerepkör használatára vonatkozó művelet végrehajtásához. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik.
 
@@ -83,13 +73,9 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
     A szerepkör beállításaitól függően előfordulhat, hogy a jelölőnégyzet nem jelenik meg, vagy lehet, hogy nem módosítható.
 
-1. Egy adott hozzárendelés időtartamának megadásához törölje a jelölőnégyzet jelölését, és módosítsa a kezdő és/vagy befejező dátum és idő mezőket.
+1. Egy adott hozzárendelés időtartamának megadásához törölje a jelölőnégyzet jelölését, és módosítsa a kezdő és/vagy befejező dátum és idő mezőket. Ha elkészült, válassza a **kész**gombot.
 
     ![Tagsági beállítások – dátum és idő](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Ha elkészült, válassza a **kész**gombot.
-
-    ![Új hozzárendelés – Hozzáadás](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
 

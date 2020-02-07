@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906267"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062863"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -120,16 +120,16 @@ Lehetséges, hogy csökkentse a kiosztott megosztás méretét a használt GiB a
 
 Az alábbi táblázat néhány példát mutat be a kiosztott megosztási méretekre:
 
-|Kapacitás (GiB) | Alap IOPS-érték | Burst IOPS | Kimenő forgalom (MiB/s) | Bejövő forgalom (MiB/s) |
+|Kapacitás (GiB) | Alapterv IOPS | Burst IOPS | Kimenő forgalom (MiB/s) | Bejövő forgalom (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Akár 300     | 66   | 44   |
 |500         | 500     | Akár 1 500   | 90   | 60   |
-|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
+|1,024       | 1,024   | Akár 3 072   | 122   | 81   |
 |5 120       | 5 120   | Akár 15 360  | 368   | 245   |
 |10 240      | 10 240  | Akár 30 720  | 675 | 450   |
 |33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
+|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
@@ -199,13 +199,12 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 
 - A LRS/ZRS és a GRS/GZRS fiók átalakítása nem lehetséges a nagyméretű fájlmegosztást engedélyező Storage-fiókok esetében.
 
-### <a name="regional-availability"></a>Regionális elérhetőség
+### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az 100 TiB kapacitási korláttal rendelkező standard fájlmegosztás globálisan elérhető az összes Azure-régióban –
 
 - LRS: minden régió, Dél-Afrika északi régiója és Dél-Afrika nyugati régiója kivételével.
-   - Az országos felhők (Government, Németország, Kína) a PowerShell és az Azure parancssori felület (CLI) használatával támogatottak. Nincs portál-támogatás. 
-   - USA keleti régiója, Kelet-RÉGIÓJA, Nyugat-Európa: minden új fiók támogatott. Néhány meglévő fiók nem végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
+   - USA keleti régiója és Nyugat-Európa: minden új fiók támogatott. Néhány meglévő fiók nem végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
 
 - ZRS: minden régió, kivéve a Kelet-Japán, Észak-Európa, Dél-Afrika északi régióját.
 - GRS/GZRS: nem támogatott.

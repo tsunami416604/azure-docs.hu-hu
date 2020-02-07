@@ -1,138 +1,255 @@
 ---
-title: Windows rendszerű virtuális asztali munkamenet-gazdagépek dinamikus méretezése – Azure
-description: Útmutató az automatikus skálázási parancsfájl beállításához a Windows rendszerű virtuális asztali munkamenet-gazdagépekhez.
+title: Munkamenet-gazdagépek méretezése Azure Automation – Azure
+description: A Windows rendszerű virtuális asztali munkamenet-gazdagépek automatikus méretezése Azure Automation használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451342"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061506"
 ---
-# <a name="scale-session-hosts-dynamically"></a>Munkamenet-gazdagépek dinamikus skálázása
+# <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
-Számos, az Azure-beli Windows rendszerű virtuális asztali környezet esetében a virtuális gépek költségei a Windows rendszerű virtuális asztali telepítés teljes költségének jelentős részét jelentik. A költségek csökkentése érdekében érdemes leállítani és felszabadítani a munkamenet-gazda virtuális gépeket (VM-EK) a használaton kívüli órákban, majd újraindítani őket a maximális kihasználtsági idő alatt.
+A virtuális gépek (VM-EK) skálázásával csökkentheti a Windows rendszerű virtuális asztali környezet teljes üzembe helyezési költségeit. Ez azt jelenti, hogy leállítja és felszabadítja a munkamenet-gazda virtuális gépeket a használaton kívüli órákban, majd visszakapcsolja őket a csúcsidőben, majd újra kiosztja őket.
 
-Ez a cikk egy egyszerű méretezési parancsfájlt használ a munkamenet-gazdagép virtuális gépei automatikus méretezéséhez a Windows rendszerű virtuális asztali környezetben. Ha többet szeretne megtudni a skálázási szkript működéséről, tekintse meg a [skálázási parancsfájl működése](#how-the-scaling-script-works) című szakaszt.
+Ebből a cikkből megtudhatja, hogy a Azure Automation és Azure Logic Apps rendszerbe épített skálázási eszköz hogyan fogja automatikusan méretezni a munkamenet-gazdagép virtuális gépeket a Windows rendszerű virtuális asztali környezetben. Ha szeretné megtudni, hogyan használhatja a skálázási eszközt, ugorjon előre az [Előfeltételek](#prerequisites)elemre.
+
+## <a name="how-the-scaling-tool-works"></a>A skálázási eszköz működése
+
+A skálázási eszköz alacsony költségű automatizálási lehetőséget biztosít azon ügyfelek számára, akik szeretnék optimalizálni a munkamenet-gazda virtuális gépek költségeit.
+
+A skálázási eszköz használatával a következőket végezheti el:
+ 
+- A virtuális gépeket a csúcson és a maximum munkaidőn alapuló kezdési és leállítási időszakokra ütemezhet.
+- Virtuális gépek vertikális felskálázása a munkamenetek száma alapján a CPU Core-ban.
+- Méretezés a virtuális gépeken a munkaidőn kívüli időszakban, így a munkamenet-gazdagépek minimális száma nem fut le.
+
+A skálázási eszköz Azure Automation PowerShell-runbookok, webhookok és Azure Logic Apps függvény kombinációját használja. Az eszköz futtatásakor Azure Logic Apps meghívja a webhookot a Azure Automation runbook elindításához. A runbook Ezután létrehoz egy feladatot.
+
+A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenetek aktuális számát és az aktuálisan futó munkamenet-gazdagép virtuálisgép-kapacitását az egyes gazdagépek esetében. Ezt az információt használja annak kiszámításához, hogy a futó munkamenet-gazda virtuális gépek támogatni tudják-e a meglévő munkameneteket a **createazurelogicapp. ps1** fájlhoz definiált *SessionThresholdPerCPU* paraméter alapján. Ha a munkamenet-gazdagép virtuális gépei nem támogatják a meglévő munkameneteket, a feladatokban további munkamenet-gazda virtuális gépek indulnak a gazdagép-készletben.
+
+>[!NOTE]
+>A *SessionThresholdPerCPU* nem korlátozza a virtuális gépen futó munkamenetek számát. Ez a paraméter csak azt határozza meg, hogy mikor kell elindítani az új virtuális gépeket a kapcsolatok terheléselosztásához. A munkamenetek számának korlátozásához kövesse a [set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) utasítást, hogy ennek megfelelően konfigurálja a *MaxSessionLimit* paramétert.
+
+A maximális kihasználtsági idő alatt a feladattípus határozza meg, hogy a *MinimumNumberOfRDSH* paraméter alapján melyik munkamenet-gazda virtuális gépek legyenek leállítva. A feladattípus beállítja a munkamenet-gazda virtuális gépek kiürítési módját, hogy megakadályozza, hogy az új munkamenetek csatlakozzanak a gazdagépekhez. Ha a *LimitSecondsToForceLogOffUser* paramétert nem nulla értékű pozitív értékre állítja be, a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat, hogy mentse a munkáját, várjon a beállított időtartamra, majd kényszerítse ki a felhasználókat a kijelentkezésre. Ha a munkamenet-gazda virtuális gépen lévő összes felhasználói munkamenet ki lett jelentkezve, a parancsfájl leállítja a virtuális gépet.
+
+Ha a *LimitSecondsToForceLogOffUser* paramétert nulla értékre állítja, a művelet engedélyezi a megadott csoportházirendek munkamenet-konfigurációs beállítását a felhasználói munkamenetek kijelentkezésének kezeléséhez. A csoportházirendek megjelenítéséhez nyissa meg a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > a **Terminálszolgáltatások** > a **terminálkiszolgáló** > a **munkamenet időkorlátait**. Ha egy munkamenet-gazda virtuális gépen vannak aktív munkamenetek, a feladatokból a munkamenet-gazda virtuális gép fut. Ha nincsenek aktív munkamenetek, a rendszer leállítja a munkamenet-gazda virtuális gépet.
+
+A feladatot rendszeresen futtatja egy beállított Ismétlődési intervallum alapján. Ezt az időközt a Windows rendszerű virtuális asztali környezet méretétől függően módosíthatja, de ne feledje, hogy a virtuális gépek indítása és leállítása hosszabb időt is igénybe vehet, ezért ne felejtse el a késleltetést figyelembe venni. Ajánlott 15 percenként beállítani az ismétlődési időközt.
+
+Az eszköz azonban a következő korlátozásokkal is rendelkezik:
+
+- Ez a megoldás csak a készletezett munkamenet-gazda virtuális gépekre vonatkozik.
+- Ez a megoldás bármely régióban felügyeli a virtuális gépeket, de csak abban az előfizetésben használható, mint a Azure Automation fiókja és Azure Logic Apps.
+
+>[!NOTE]
+>A skálázási eszköz szabályozza a skálázási készlet terheléselosztási módját. Ez a beállítás az első terheléselosztást adja meg a csúcs és a maximum óra között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A parancsfájl futtatásához szükséges környezetnek a következőkkel kell rendelkeznie:
+A skálázási eszköz beállításának megkezdése előtt győződjön meg arról, hogy a következők állnak készen:
 
-- Egy Windows rendszerű virtuális asztali bérlő és fiók, vagy egy egyszerű szolgáltatásnév, amely a bérlő (például az RDS közreműködő) lekérdezéséhez szükséges engedélyekkel rendelkezik.
-- A Windows rendszerű virtuális asztali szolgáltatásban konfigurált és regisztrált Munkamenetcímtár-készlet virtuális gépek.
-- Egy további virtuális gép, amely a Feladatütemező használatával futtatja az ütemezett feladatot, és hálózati hozzáféréssel rendelkezik a munkamenet-gazdagépekhez. Ezt a rendszer a dokumentum későbbi részében a méretezési virtuális gép néven említi.
-- Az ütemezett feladatot futtató virtuális gépre telepített [Microsoft Azure Resource Manager PowerShell-modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) .
-- Az ütemezett feladatot futtató virtuális GÉPRE telepített [Windows virtuális asztali PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+- Egy [Windows rendszerű virtuális asztali bérlő és egy gazdagép](create-host-pools-arm-template.md)
+- A Windows rendszerű virtuális asztali szolgáltatásban konfigurált és regisztrált munkamenet-gazdagépek készletei
+- Az Azure-előfizetés [közreműködői hozzáféréssel](../role-based-access-control/role-assignments-portal.md) rendelkező felhasználója
 
-## <a name="recommendations-and-limitations"></a>Javaslatok és korlátozások
+Az eszköz telepítéséhez használt gépnek rendelkeznie kell a következővel: 
 
-A skálázási parancsfájl futtatásakor tartsa szem előtt az alábbi dolgokat:
+- Windows PowerShell 5,1 vagy újabb
+- A Microsoft az PowerShell-modul
 
-- Ez a skálázási parancsfájl csak egy, a skálázási parancsfájlt futtató ütemezett feladat példányán lévő egy gazdagépet képes kezelni.
-- A skálázási parancsfájlokat futtató ütemezett feladatoknak olyan virtuális gépen kell lenniük, amely mindig be van kapcsolva.
-- Hozzon létre egy külön mappát a skálázási parancsfájl minden példányához és a konfigurációhoz.
-- Ez a szkript nem támogatja a többtényezős hitelesítést igénylő Azure AD felhasználói fiókokkal való bejelentkezést rendszergazdaként a Windows rendszerű virtuális asztalhoz. Javasoljuk, hogy az egyszerű szolgáltatásokat használja a Windows Virtual Desktop szolgáltatás és az Azure eléréséhez. [Ezt az oktatóanyagot](create-service-principal-role-powershell.md) követve hozzon létre egy egyszerű szolgáltatásnevet és egy szerepkör-hozzárendelést a PowerShell használatával.
-- Az Azure SLA-garanciája csak a rendelkezésre állási csoportba tartozó virtuális gépekre vonatkozik. A dokumentum aktuális verziója egy olyan környezetet ír le, amely egyetlen virtuális géppel hajtja végre a skálázást, ami esetleg nem felel meg a rendelkezésre állási követelményeknek.
+Ha minden készen áll, kezdjük a kezdéssel.
 
-## <a name="deploy-the-scaling-script"></a>A skálázási parancsfájl üzembe helyezése
+## <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
-A következő eljárásokkal megtudhatja, hogyan helyezheti üzembe a skálázási parancsfájlt.
+Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook futtatásához. A következőképpen állíthatja be a fiókját:
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>A környezet előkészítése a méretezési parancsfájlhoz
+1. Nyissa meg a Windows PowerShellt rendszergazdaként.
+2. A következő parancsmag futtatásával jelentkezzen be az Azure-fiókjába.
 
-Először készítse elő a környezetet a skálázási parancsfájlhoz:
+     ```powershell
+     Login-AzAccount
+     ```
 
-1. Jelentkezzen be a virtuális gépre (a méretezési virtuális gépre), amely az ütemezett feladatot egy tartományi rendszergazdai fiókkal fogja futtatni.
-2. Hozzon létre egy mappát a méretezési virtuális gépen a skálázási parancsfájl és a konfigurációjának tárolásához (például **C:\\skálázás-HostPool1**).
-3. Töltse le a **basicScale. ps1**, a **config. JSON**és a **functions-PSStoredCredentials. Ps1** fájlt, valamint a **PowershellModules** mappát a [skálázási parancsfájl-tárházból](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja azokat a 2. lépésben létrehozott mappába. A skálázási virtuális gépre való másolás előtt két fő módszert kell megszereznie a fájlok beszerzéséhez:
-    - A git-tárház klónozása a helyi gépre.
-    - Tekintse meg az egyes fájlok **nyers** verzióját, másolja és illessze be az egyes fájlok tartalmát egy szövegszerkesztőbe, majd mentse a fájlokat a megfelelő fájlnévvel és fájltípussal. 
+     >[!NOTE]
+     >A fióknak közreműködői jogosultságokkal kell rendelkeznie azon az Azure-előfizetésen, amelyre a skálázási eszközt telepíteni szeretné.
 
-### <a name="create-securely-stored-credentials"></a>Biztonságos tárolt hitelesítő adatok létrehozása
+3. Futtassa a következő parancsmagot a Azure Automation fiók létrehozásához szükséges parancsfájl letöltéséhez:
 
-Ezután létre kell hoznia a biztonságos tárolt hitelesítő adatokat:
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     ```
 
-1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Importálja az RDS PowerShell-modult a következő parancsmag futtatásával:
+4. Futtassa a következő parancsmagot a parancsfájl végrehajtásához és a Azure Automation fiók létrehozásához:
 
-    ```powershell
-    Install-Module Microsoft.RdInfra.RdPowershell
-    ```
-    
-3. Nyissa meg a szerkesztési ablaktáblát, töltse be a **Function-PSStoredCredentials. ps1** fájlt, majd futtassa a teljes parancsfájlt (F5)
-4. Futtassa a következő parancsmagot:
-    
-    ```powershell
-    Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
-    ```
-    
-    **Adja meg például a következőt: set-változó-Name – scope Global-Value "c:\\skálázás – HostPool1"**
-5. Futtassa a **New-StoredCredential-\$** . Ha a rendszer kéri, adja meg a Windows rendszerű virtuális asztali hitelesítő adatait, amely jogosult a gazdagép lekérdezésére (az alkalmazáskészletet a **config. JSON fájlban**lehet megadni).
-    - Ha más egyszerű szolgáltatásnevet vagy standard fiókot használ, akkor a helyi tárolt hitelesítő adatok létrehozásához minden fióknál futtassa a **New-StoredCredential------\$-a-a-a-a-a-** .
-6. A **Get-StoredCredential-List** futtatásával erősítse meg, hogy a hitelesítő adatok sikeresen létrejöttek.
+     ```powershell
+     .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
+     ```
 
-### <a name="configure-the-configjson-file"></a>A config. JSON fájl konfigurálása
+5. A parancsmag kimenete tartalmaz egy webhook URI-t. Ügyeljen arra, hogy az URI rekordját tárolja, mert az Azure Logic apps végrehajtási ütemtervének beállításakor paraméterként fogja használni.
 
-Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a méretezési parancsfájl beállításait a config. JSON fájlban:
+Miután beállította Azure Automation-fiókját, jelentkezzen be az Azure-előfizetésbe, és ellenőrizze, hogy a Azure Automation-fiókja és a kapcsolódó runbook szerepeltek-e a megadott erőforráscsoporthoz, ahogy az alábbi képen is látható:
 
-| Mező                     | Leírás                    |
-|-------------------------------|------------------------------------|
-| AADTenantId                   | Az Azure AD-bérlő azonosítója, amely társítja azt az előfizetést, amelyben a munkamenet-gazda virtuális gépei futnak     |
-| AADApplicationId              | Egyszerű szolgáltatásnév alkalmazásának azonosítója                                                       |
-| AADServicePrincipalSecret     | Ezt megadhatja a tesztelési fázisban, de az **functions-PSStoredCredentials. ps1** hitelesítő adatainak létrehozása után üresen kell hagyni.    |
-| currentAzureSubscriptionId    | Annak az Azure-előfizetésnek az azonosítója, amelyben a munkamenet-gazda virtuális gépek futnak                        |
-| tenantName                    | Windows rendszerű virtuális asztali bérlő neve                                                    |
-| hostPoolName                  | Windows rendszerű virtuális asztali címkészlet neve                                                 |
-| RDBroker                      | A WVD szolgáltatás URL-címe, alapértelmezett érték: https:\//rdbroker.wvd.microsoft.com             |
-| Felhasználónév                      | Az egyszerű szolgáltatásnév alkalmazásának azonosítója (ez lehet ugyanaz a szolgáltatás, mint a AADApplicationId) vagy a standard felhasználó a multi-Factor Authentication használata nélkül |
-| isServicePrincipal            | Az elfogadott értékek: **true** vagy **false**. Azt jelzi, hogy a használt hitelesítő adatok második halmaza egy egyszerű szolgáltatásnév vagy egy normál fiók. |
-| BeginPeakTime                 | A csúcsérték-használat idejének kezdete                                                            |
-| EndPeakTime                   | A csúcsérték-használati idő végén                                                              |
-| TimeDifferenceInHours         | Időbeli eltérés a helyi idő és az UTC között (óra)                                   |
-| SessionThresholdPerCPU        | A munkamenetek maximális száma a CPU-küszöbérték alapján, amely meghatározza, hogy egy új munkamenet-gazda virtuális gép mikor induljon el csúcsidőben.  |
-| MinimumNumberOfRDSH           | A futtatni kívánt gazdagépek minimális száma a használaton kívüli időszakban             |
-| LimitSecondsToForceLogOffUser | Azon időtartam másodpercben, ameddig a felhasználók kijelentkezése előtt várni kell. Ha a 0 értékre van állítva, a felhasználók nem kénytelenek kijelentkezni.  |
-| LogOffMessageTitle            | A felhasználónak elküldött üzenet címe, mielőtt kijelentkezésre kényszerülnek                  |
-| LogOffMessageBody             | A felhasználóknak a kijelentkezésük előtt küldött figyelmeztető üzenet törzse. Például: "Ez a számítógép X percen belül le fog állni. Mentse a munkáját, és jelentkezzen ki. |
+![Az újonnan létrehozott Automation-fiókot és runbook bemutató Azure áttekintés oldal képe.](media/automation-account.png)
 
-### <a name="configure-the-task-scheduler"></a>A Feladatütemező konfigurálása
+A képernyő bal oldalán található erőforrások listára, majd a **webhook**elemre kattintva ellenőrizze, hogy a webhook hol van.
 
-A konfigurációs JSON-fájl konfigurálása után a Feladatütemezőt úgy kell konfigurálnia, hogy rendszeres időközönként futtassa az basicScaler. ps1 fájlt.
+## <a name="create-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók létrehozása
 
-1. Indítsa el a **Feladatütemezőt**.
-2. A Feladatütemező **ablakban válassza** a **feladat létrehozása..** . lehetőséget.
-3. **A feladat létrehozása** párbeszédpanelen válassza az **általános** lapot, adjon meg egy **nevet** (például "dinamikus RDSH"), válassza a Futtatás lehetőséget, **hogy a felhasználó bejelentkezett-e vagy sem** , és **a legmagasabb jogosultságokkal fusson**.
-4. Lépjen az **Eseményindítók** lapra, majd válassza az **új...** lehetőséget.
-5. Az **új trigger** párbeszédablak **Speciális beállítások**területén jelölje be a **Feladat ismétlése** jelölőnégyzetet, és válassza ki a megfelelő időtartamot és időtartamot (például **15 perc** vagy **határozatlan**idő).
-6. Válassza a **műveletek** fület, és kattintson az **új...** lehetőségre.
-7. Az **új művelet** párbeszédpanelen írja be a **PowerShell. exe fájlt** a **program/parancsfájl** mezőbe, majd írja be a **C:\\skálázás\\BasicScale. ps1** parancsot az **argumentumok hozzáadása (nem kötelező)** mezőbe.
-8. Lépjen a **feltételek** és **Beállítások** lapokra, majd kattintson az **OK gombra** az egyes beállítások alapértelmezett beállításainak elfogadásához.
-9. Adja meg annak a rendszergazdai fióknak a jelszavát, amelyben futtatni szeretné a skálázási parancsfájlt.
+Most, hogy rendelkezik egy Azure Automation fiókkal, létre kell hoznia egy Azure Automation futtató fiókot is az Azure-erőforrások eléréséhez.
 
-## <a name="how-the-scaling-script-works"></a>A skálázási parancsfájl működése
+Egy [Azure Automation futtató fiók](../automation/manage-runas-account.md) hitelesítést biztosít az Azure-ban található erőforrások kezeléséhez az Azure-parancsmagokkal. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatásnevet a Azure Active Directory, és hozzárendeli a közreműködői szerepkört az egyszerű szolgáltatásnév felhasználóhoz az előfizetési szinten, az Azure futtató fiók nagyszerű módszer a biztonságos hitelesítésre tanúsítványok és egyszerű szolgáltatásnév, anélkül, hogy egy hitelesítő objektumban felhasználónevet és jelszót kellene tárolnia. További információ a futtató hitelesítésről: a [futtató fiók engedélyeinek korlátozása](../automation/manage-runas-account.md#limiting-run-as-account-permissions).
 
-Ez a skálázási parancsfájl egy config. JSON fájlból olvassa be a beállításokat, beleértve a maximális kihasználtsági időszak kezdetét és végét a nap folyamán.
+Minden olyan felhasználó, aki tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés rendszergazdája, a következő szakasz utasításait követve hozhat létre futtató fiókot.
 
-A maximális kihasználtság ideje alatt a parancsfájl ellenőrzi a munkamenetek aktuális számát és a jelenlegi futó RDSH kapacitását az egyes gazdagépek esetében. Kiszámítja, hogy a futó munkamenet-gazdagép virtuális gépei rendelkeznek-e elegendő kapacitással a meglévő munkamenetek támogatásához a config. JSON fájlban meghatározott SessionThresholdPerCPU paraméter alapján. Ha nem, a parancsfájl további munkamenet-gazdagép virtuális gépeket indít el a gazdagép-készletben.
+Futtató fiók létrehozása az Azure-fiókban:
 
-A nem maximális kihasználtsági idő alatt a parancsfájl meghatározza, hogy a munkamenet-gazdagép virtuális gépei melyik MinimumNumberOfRDSH-paraméter alapján legyenek leállítva a config. JSON fájlban. A parancsfájl úgy állítja be a munkamenet-gazdagép virtuális gépei számára a kiürítési módot, hogy megakadályozza az új munkamenetek kapcsolódását a gazdagépekhez. Ha a config. JSON fájlban a **LimitSecondsToForceLogOffUser** paramétert nem nulla értékű pozitív értékre állítja, akkor a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat a munka megtakarításához, várjon a beállított időtartamra, majd kényszeríti a felhasználókat a kijelentkezésre. Ha az összes felhasználói munkamenet ki lett jelentkezve egy munkamenet-gazda virtuális gépen, a parancsfájl leállítja a kiszolgálót.
+1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájában adja meg és válassza az **Automation-fiókok**elemet.
 
-Ha a config. JSON fájlban a **LimitSecondsToForceLogOffUser** paramétert nullára állítja, a parancsfájl lehetővé teszi a munkamenet-konfiguráció beállítását a gazdagép-készlet tulajdonságaiban a felhasználói munkamenetek kijelentkezésének kezeléséhez. Ha egy munkamenet-gazda virtuális gépen vannak munkamenetek, akkor a munkamenet-gazda virtuális gép nem fut. Ha nincsenek munkamenetek, a szkript leállítja a munkamenet-gazda virtuális gépet.
+2. Az **Automation-fiókok** lapon válassza ki az Automation-fiók nevét.
 
-A szkriptet úgy tervezték, hogy rendszeres időközönként fusson a skálázható virtuálisgép-kiszolgálón a Feladatütemező használatával. A Távoli asztali szolgáltatások környezet méretétől függően válassza ki a megfelelő időintervallumot, és ne feledje, hogy a virtuális gépek indítása és leállítása hosszabb időt is igénybe vehet. Azt javasoljuk, hogy 15 percenként futtassa a skálázási parancsfájlt.
+3. Az ablak bal oldalán lévő ablaktáblán válassza a **futtató fiókok** lehetőséget a Fiókbeállítások szakaszban.
 
-## <a name="log-files"></a>Naplófájlok
+4. Válassza az Azure-beli **futtató fiók**lehetőséget. Amikor megjelenik az Azure-beli **futtató fiók hozzáadása** panel, tekintse át az áttekintő információkat, majd kattintson a **Létrehozás** elemre a fiók létrehozási folyamatának elindításához.
 
-A skálázási parancsfájl két naplófájlt hoz létre, a **WVDTenantScale. log** és a **WVDTenantUsage. log**fájlt. A **WVDTenantScale. log** fájl naplózza az eseményeket és a hibákat (ha vannak) a skálázási parancsfájl minden végrehajtása során.
+5. Várjon néhány percet, amíg az Azure létrehozza a futtató fiókot. A létrehozási folyamat nyomon követhető a menüben az értesítések területen.
 
-A **WVDTenantUsage. log** fájl rögzíti a magok aktív számát és a virtuális gépek aktív számát minden alkalommal, amikor végrehajtja a skálázási parancsfájlt. Ezekkel az információkkal megbecsülheti Microsoft Azure virtuális gépek tényleges használatát és a költségeket. A fájl vesszővel tagolt értékként van formázva, és minden egyes elem a következő információkat tartalmazza:
+6. A folyamat befejeződése után létrejön egy Azurerunasconnection elemet nevű eszköz a megadott Automation-fiókban. A szolgáltatás tartalmazza az alkalmazás AZONOSÍTÓját, a bérlő AZONOSÍTÓját, az előfizetés AZONOSÍTÓját és a tanúsítvány ujjlenyomatát. Jegyezze fel az alkalmazás AZONOSÍTÓját, mert később használni fogja.
 
->idő, alkalmazáskészlet, magok, virtuális gépek
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Szerepkör-hozzárendelés létrehozása a Windows rendszerű virtuális asztalon
 
-A fájl neve módosítható úgy is, hogy egy. csv kiterjesztéssel rendelkezzen, betöltve a Microsoft Excelben, és elemezze.
+Ezután létre kell hoznia egy szerepkör-hozzárendelést, hogy a Azurerunasconnection elemet kommunikálni tudjon a Windows virtuális asztallal. Ügyeljen arra, hogy a PowerShell használatával jelentkezzen be egy olyan fiókkal, amely jogosultságokkal rendelkezik a szerepkör-hozzárendelések létrehozásához.
+
+Először töltse le és importálja a PowerShell-munkamenetben használni kívánt [Windows virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , ha még nem tette meg. Futtassa a következő PowerShell-parancsmagokat a Windows rendszerű virtuális asztalhoz való kapcsolódáshoz és a bérlők megjelenítéséhez.
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+
+Get-RdsTenant
+```
+
+Ha a bérlőt a méretezni kívánt gazdagép-készletekkel keresi, kövesse az [Azure Automation fiók létrehozása](#create-an-azure-automation-account) című témakör utasításait, és használja a következő parancsmag előző parancsmagjának a bérlő nevét a szerepkör-hozzárendelés létrehozásához:
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
+```
+
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Az Azure Logic app és a végrehajtási ütemterv létrehozása
+
+Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állítania egy végrehajtási ütemtervet az új méretezési eszközhöz.
+
+1.  Nyissa meg a Windows PowerShellt rendszergazdaként
+
+2.  A következő parancsmag futtatásával jelentkezzen be az Azure-fiókjába.
+
+     ```powershell
+     Login-AzAccount
+     ```
+
+3. Futtassa a következő parancsmagot a createazurelogicapp. ps1 parancsfájl helyi számítógépen való letöltéséhez.
+
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
+     ```
+
+4. A következő parancsmag futtatásával jelentkezzen be a Windows rendszerű virtuális asztalra egy olyan fiókkal, amely az RDS-tulajdonos vagy az RDS közreműködői engedélyekkel rendelkezik.
+
+     ```powershell
+     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+     ```
+
+5. Futtassa az alábbi PowerShell-szkriptet az Azure Logic app és a végrehajtási ütemterv létrehozásához.
+
+     ```powershell
+     $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
+     
+     $aadTenantId = Read-Host -Prompt "Enter your Azure AD tenant ID"
+
+     $subscriptionId = Read-Host -Prompt "Enter your Azure Subscription ID"
+
+     $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
+
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+
+     $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
+
+     $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
+
+     $timeDifference = Read-Host -Prompt "Enter the time difference between local time and UTC in hours, e.g. +5:30"
+
+     $sessionThresholdPerCPU = Read-Host -Prompt "Enter the maximum number of sessions per CPU that will be used as a threshold to determine when new session host VMs need to be started during peak hours"
+
+     $minimumNumberOfRdsh = Read-Host -Prompt "Enter the minimum number of session host VMs to keep running during off-peak hours"
+
+     $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
+
+     $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
+
+     $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
+
+     $location = Read-Host -Prompt "Enter the name of the Azure region where you will be creating the logic app"
+
+     $connectionAssetName = Read-Host -Prompt "Enter the name of the Azure RunAs connection asset"
+
+     $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
+
+     $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
+
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+
+     .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
+       -AADTenantID $aadTenantId `
+       -SubscriptionID $subscriptionId `
+       -TenantName $tenantName `
+       -HostPoolName $hostPoolName `
+       -RecurrenceInterval $recurrenceInterval `
+       -BeginPeakTime $beginPeakTime `
+       -EndPeakTime $endPeakTime `
+       -TimeDifference $timeDifference `
+       -SessionThresholdPerCPU $sessionThresholdPerCPU `
+       -MinimumNumberOfRDSH $minimumNumberOfRdsh `
+       -LimitSecondsToForceLogOffUser $limitSecondsToForceLogOffUser `
+       -LogOffMessageTitle $logOffMessageTitle `
+       -LogOffMessageBody $logOffMessageBody `
+       -Location $location `
+       -ConnectionAssetName $connectionAssetName `
+       -WebHookURI $webHookURI `
+       -AutomationAccountName $automationAccountName `
+       -MaintenanceTagName $maintenanceTagName
+     ```
+
+     A parancsfájl futtatása után a logikai alkalmazásnak egy erőforráscsoporthoz kell megjelennie, ahogy az alábbi képen is látható.
+
+     ![Egy példa az Azure logikai alkalmazás áttekintés lapjára.](media/logic-app.png)
+
+Ha módosítani szeretné a végrehajtás ütemezését, például az ismétlődési intervallumot vagy az időzónát, lépjen az autoskálázás ütemező elemre, és válassza a **Szerkesztés** lehetőséget a Logic apps Designer megkereséséhez.
+
+![A Logic Apps Designer képe. A felhasználó ismétlődési idejének módosítására és a webhook fájljának megnyitására szolgáló ismétlődési és webhook-menük.](media/logic-apps-designer.png)
+
+## <a name="manage-your-scaling-tool"></a>Méretezési eszköz kezelése
+
+Most, hogy létrehoztuk a skálázási eszközt, elérheti a kimenetét. Ez a szakasz néhány olyan funkciót ismertet, amelyek hasznosak lehetnek.
+
+### <a name="view-job-status"></a>Feladat állapotának megtekintése
+
+Megtekintheti az összes runbook-feladat összegzett állapotát, vagy megtekintheti egy adott runbook-feladat alaposabb állapotát a Azure Portal.
+
+A kiválasztott Automation-fiók jobb oldalán, a "feladat statisztikái" alatt megtekintheti az összes runbook-feladat összefoglalóit tartalmazó listát. Az ablak bal oldalán a **feladatok** lap megnyitása megjeleníti a feladat aktuális állapotát, a kezdési időpontokat és a befejezési időpontokat.
+
+![A feladatok állapota lap képernyőképe.](media/jobs-status.png)
+
+### <a name="view-logs-and-scaling-tool-output"></a>Naplók és méretezési eszköz kimenetének megtekintése
+
+A kibővíthető és a skálázási műveletek naplóit megtekintheti a runbook megnyitásával és a feladatokhoz tartozó nevek kiválasztásával.
+
+Navigáljon a runbook (az alapértelmezett név WVDAutoScaleRunbook) az Azure Automation fiókot futtató erőforráscsoporthoz, és válassza az **Áttekintés**lehetőséget. Az Áttekintés lapon válasszon ki egy feladatot a legutóbbi feladatok területen a méretezési eszköz kimenetének megtekintéséhez, ahogy az alábbi képen is látható.
+
+![A skálázási eszköz kimeneti ablakának képe.](media/tool-output.png)

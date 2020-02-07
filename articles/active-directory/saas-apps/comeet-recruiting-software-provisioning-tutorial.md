@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directoryval Comeet felvételi szoftver konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Comeet felvételi szoftver felhasználói fiókokat.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés és a Azure Active Directory összegyűjtésének konfigurálása Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a szoftverek toborzásával.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,143 +15,143 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d54750e731f92a574ac6571612f8dbd9054a9530
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672984"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058333"
 ---
-# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Comeet felvételi szoftver konfigurálása
+# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus kiépítés céljából történő toborzásának konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Comeet felvételi szoftver és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók, illetve Comeet felvételi szoftverfrissítési csoportok bemutatása.
+A jelen oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a szoftver-és Azure Active Directory (Azure AD) bevonásával az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikus kiosztása és kiépítése a szoftverek toborzásával összhangban történjen.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [A bérlő egy Comeet felvételi szoftver](https://www.comeet.co/)
-* Egy felhasználói fiókot a felvételi szoftver Comeet rendszergazdai jogosultságokkal rendelkezik.
+* Azure AD-bérlő
+* [A szoftveres bérlők toborzása](https://www.comeet.co/)
+* Egy felhasználói fiók, amely megfelel a szoftver rendszergazdai engedélyekkel való toborzásának.
 
-## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Comeet felvételi szoftver hozzáadása a katalógusból
+## <a name="add-comeet-recruiting-software-from-the-gallery"></a>A gyűjteményhez tartozó szoftverek felvételének hozzáadása
 
-Mielőtt konfigurálná a Comeet felvételi szoftvert a felhasználók automatikus átadása az Azure ad-vel, szüksége az Azure AD alkalmazáskatalógusában Comeet felvételi szoftver hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus felhasználó-kiépítési szoftver bevezetésének konfigurálása előtt hozzá kell adnia az Azure AD-alkalmazás-katalógusból a felügyelt SaaS-alkalmazások listájához való felvételt.
 
-**Az Azure AD alkalmazáskatalógusában Comeet felvételi szoftver hozzáadásához hajtsa végre az alábbi lépéseket:**
+**A következő lépésekkel adhatja hozzá a szoftvereket az Azure AD Application Galleryből:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Comeet felvételi szoftver**, jelölje be **Comeet felvételi szoftver** az eredmények panelen, majd kattintson a a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **munkatársak toborzása szoftver**, válassza a **munkatársak toborzása** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Szoftver felvétele comeet a találatok listájában](common/search-new-app.png)
+    ![A szoftverek toborzása az eredmények listájában](common/search-new-app.png)
 
-## <a name="assigning-users-to-comeet-recruiting-software"></a>Felhasználók hozzárendelése Comeet felvételi szoftver
+## <a name="assigning-users-to-comeet-recruiting-software"></a>Felhasználók kiosztása a szoftverek toborzásával való megfeleléshez
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben Comeet felvételi szoftver hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok Comeet felvételi szoftver utasításokat követve:
+Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai férhetnek hozzá a szoftverek toborzásához. Miután eldöntötte, a felhasználók és/vagy csoportok hozzárendelésével összefoglalhatja a szoftvereket az itt leírt utasítások követésével:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Felhasználók hozzárendelése Comeet felvételi szoftver fontos tippek
+### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Fontos Tippek a felhasználók a szoftverek toborzásához való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Comeet felvételi szoftvert a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen társítva a szoftverek toborzásához az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Egy felhasználó Comeet felvételi szoftver hozzárendelésekor bármilyen érvényes alkalmazás-specifikus szerepkört (ha elérhető) jelöljön ki a hozzárendelés párbeszédpanelen. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Amikor egy felhasználóhoz rendeli a szoftver toborzását, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Felhasználók automatikus átadása Comeet felvételi szoftver konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>A felhasználók automatikus üzembe helyezésének beállítása a szoftverek toborzásának megtartására 
 
-Ez a szakasz útmutatók bemutatja, hogyan konfigurálásáról az Azure AD létesítési szolgáltatás szeretne létrehozni, frissíteni, és tiltsa le a felhasználók, illetve Comeet felvételi szoftverfrissítési csoportok az Azure ad-ben a felhasználói és/vagy a csoport-hozzárendelések alapján.
+Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálásának lépésein a felhasználók és/vagy csoportok az Azure AD-ben történő felhasználói és/vagy csoportos hozzárendelések alapján történő létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Előfordulhat, hogy is engedélyezését választja SAML-alapú egyszeri bejelentkezés Comeet felvételi szoftverek, a biztonsági utasítások megadott a [Comeet felvételi szoftver egyszeri bejelentkezéses oktatóanyag](comeetrecruitingsoftware-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is lehetővé teszi a szoftveres toborzáshoz való megfelelés érdekében, a [közös szoftveres egyszeri bejelentkezés oktatóanyaga](comeetrecruitingsoftware-tutorial.md)című témakörben ismertetett utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Comeet felvételi szoftverek az Azure ad-ben:
+### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a szoftver Azure AD-ben való felvételéhez:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Comeet felvételi szoftver**.
+2. Az alkalmazások listában válassza a **szoftver felvétele**lehetőséget.
 
-    ![Az alkalmazások listáját a Comeet felvételi szoftver hivatkozás](common/all-applications.png)
+    ![Az alkalmazások listáján szereplő szoftver-toborzási hivatkozás](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím** és **titkos jogkivonat** a Comeet felvételi szoftver fiók 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címét** és **titkos jogkivonatát** , amely a 6. lépésben leírtak szerint tartalmazza a szoftver fiókjának felvételét.
 
-6. A a [Comeet felvételi szoftver felügyeleti konzol](https://app.comeet.co/), keresse meg **Comeet > Beállítások > hitelesítési > Microsoft Azure**, és másolja a **a vállalatjogkivonattitkoskulcs**értéket a következőre a **titkos jogkivonat** mezőt az Azure ad-ben.
+6. A [szoftveres felügyeleti konzol](https://app.comeet.co/)összeadásával kapcsolatban navigáljon a **> Beállítások > a hitelesítés > Microsoft Azure**elemre, és másolja a **vállalati érték titkos tokenjét** az Azure ad **titkos jogkivonat** mezőjébe.
 
-    ![Comeet Szoftverellátáshoz felvétele](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
+    ![A szoftverek kiépítési feltoborzásának összetartása](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
-7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Comeet felvételi szoftverek kapcsolódhatnak. Ha a kapcsolat hibája esetén, győződjön meg arról, Comeet felvételi szoftver fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a szoftverek toborzásához. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy a szoftver fiókjának toborzása rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-token.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Comeet**.
+10. A **leképezések** szakaszban válassza az **Azure Active Directory a felhasználók szinkronizálása**lehetőséget.
 
-    ![Szoftver Felhasználóleképezéseket felvételi comeet](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
+    ![A szoftveres felhasználói leképezések toborzása](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
-11. Tekintse át a Comeet felvételi szoftverek az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok felel meg a frissítési műveletek Comeet felvételi szoftveres felhasználói fiókok használhatók. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat, hogy azok megfeleljenek a szoftvereknek az **attribútum-hozzárendelési** szakaszban való felvételéhez. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az adott felhasználói fiókoknak felelnek meg a frissítési műveletekhez való toborzásban. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Szoftverfrissítési csoport toborzás attribútumok comeet](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
+    ![A szoftveres csoport attribútumainak toborzása](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Az Azure AD létesítési szolgáltatás Comeet felvételi szoftverek engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatás számára a szoftverek toborzását, módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-14. Válassza ki a kívánt értékeket a Comeet felvételi szoftverek üzembe helyezése a felhasználók és/vagy a csoportok, adja meg meghatározásához **hatókör** a a **beállítások** szakaszban.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket szeretne kiépíteni a szoftver toborzásának megkezdéséhez. Ehhez válassza a **Settings (beállítások** ) szakaszban a kívánt értékeket a **hatókörben** .
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-15. Ha készen áll rendelkezésre, kattintson a **mentése**.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás Comeet felvételi szoftverfrissítési által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végzett, a szoftverekkel való összekapcsolásra vonatkozó összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* Comeet felvételi szoftver jelenleg nem támogatja a csoportok.
+* A munkatársak toborzása jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

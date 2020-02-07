@@ -1,28 +1,28 @@
 ---
 title: Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez – Azure
-description: Felügyelt adatlemez csatlakoztatása Windows rendszerű virtuális géphez a Azure Portal használatával.
+description: Hogyan lehet egy Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463434"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77055668"
 ---
-# <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez a Azure Portal használatával
+# <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával
 
-Ez a cikk bemutatja, hogyan csatolhat új felügyelt adatlemezt egy Windows rendszerű virtuális géphez (VM) a Azure Portal használatával. A virtuális gép mérete határozza meg, hány adatlemezt tud csatlakoztatni. További információ: [virtuális gépek méretei](sizes.md).
+Ez a cikk bemutatja, hogyan kell új felügyelt adatlemez csatolása egy Windows virtuális gép (VM) az Azure portal használatával. A virtuális gép mérete határozza meg, hány adatlemez csatolható. További információ: [virtuális gépek méretei](sizes.md).
 
 
 ## <a name="add-a-data-disk"></a>Adatlemez hozzáadása
 
 1. Adatlemez hozzáadásához nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
-2. Válasszon ki egy virtuális gépet a listából.
+2. Válasszon egy virtuális gépet a listából.
 3. A **virtuális gép** lapon válassza a **lemezek**lehetőséget.
 4. A **lemezek** oldalon válassza az **adatlemez hozzáadása**elemet.
 5. Az új lemez legördülő menüjében válassza a **lemez létrehozása**lehetőséget.
@@ -40,9 +40,9 @@ Ez a cikk bemutatja, hogyan csatolhat új felügyelt adatlemezt egy Windows rend
 4. Az új lemez nem **lefoglaltként**jelenik meg. Kattintson a jobb gombbal a lemezen bárhová, és válassza az **új egyszerű kötet**lehetőséget. Megnyílik az **új egyszerű kötet varázsló** ablak.
 5. Folytassa a varázslót, és őrizze meg az összes alapértelmezett értéket, és ha elkészült, válassza a **Befejezés**gombot.
 6. A **Lemezkezelés**ablak bezárásához.
-7. Megjelenik egy előugró ablak, amely értesíti, hogy az új lemezt a használata előtt kell formázni. Válassza a **lemez formázása**lehetőséget.
+7. Egy előugró ablak jelenik meg, hogy arról tájékoztatja, az új lemez formázásához, mielőtt használhatná azt kell. Válassza a **lemez formázása**lehetőséget.
 8. Az **új lemez formázása** ablakban jelölje be a beállításokat, majd kattintson a **Start**gombra.
-9. Megjelenik egy figyelmeztetés, amely értesíti, hogy a lemezek formázása minden adat törlődik. Kattintson az **OK** gombra.
+9. Megjelenik egy figyelmeztetés értesíti, hogy a lemezek formázása törli az összes adatot. Kattintson az **OK** gombra.
 10. Ha a formázás elkészült, kattintson **az OK gombra**.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,31 +3,33 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989875"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050014"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
-Az erőforrás-házirend definícióit a Azure Policy használja az erőforrásokra vonatkozó konvenciók létrehozásához. Az egyes definíciók az erőforrás-megfelelőséget írják le, és azt, hogy milyen hatást kell végrehajtani, ha egy erőforrás nem megfelelő.
-Az egyezmények meghatározásával szabályozhatja a költségeket, és könnyebben kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek engedélyezettek legyenek. Azt is megkövetelheti, hogy minden erőforrásnak legyen egy adott címkéje. A házirendeket az összes alárendelt erőforrás örökli. Ha a szabályzatot egy erőforráscsoporthoz alkalmazza, az az adott erőforráscsoport összes erőforrására érvényes lesz.
+Azure Policy az erőforrásokra vonatkozó konvenciókat hoz létre. A szabályzat-definíciók írják le az erőforrás-megfelelőségi [feltételeket](#conditions) , valamint azt, hogy egy adott feltétel teljesül-e. A feltétel egy erőforrás-tulajdonság [mezőjét](#fields) hasonlítja össze egy szükséges értékkel. Az erőforrás-tulajdonságok mezői [aliasok](#aliases)használatával érhetők el. Az erőforrás-tulajdonság mező egy egyértékű mező vagy több értékből álló [tömb](#understanding-the--alias) . A feltétel kiértékelése eltér a tömböknél.
+További információ a [feltételekről](#conditions).
+
+Egyezmények definiálásával is csökkenthetők a költségek, és további könnyen kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek használata engedélyezett. Másik lehetőségként megkövetelheti, hogy az összes erőforrásnak rendelkeznie kell egy adott címkét. Összes gyermekerőforrás örökölt házirendek. Ha egy szabályzatot alkalmazott egy erőforráscsoportba, alkalmazható az adott erőforráscsoportba tartozó összes erőforrást.
 
 A szabályzat-definíciós séma itt található: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-A JSON használatával hozhat létre szabályzat-definíciót. A házirend-definíció a következő elemeit tartalmazza:
+JSON használatával létrehozhat egy szabályzatdefiníciót. A szabályzatdefiníció az elemeket tartalmazza:
 
 - mód
 - paraméterek
-- megjelenítendő név
+- Megjelenített név
 - leírás
-- házirend-szabály
-  - logikai Értékelés
-  - érvénybe
+- felügyeletiházirend-szabálya
+  - logikai kiértékelése
+  - hatás
 
-A következő JSON például egy olyan szabályzatot mutat be, amely korlátozza az erőforrások központi telepítését:
+A következő JSON például olyan szabályzatot, amely korlátozza, hogy üzembe helyezett erőforrások látható:
 
 ```json
 {
@@ -74,6 +76,8 @@ A **mód** határozza meg, hogy mely erőforrástípusok lesznek kiértékelve e
 - `all`: erőforráscsoportok és minden erőforrástípus kiértékelése
 - `indexed`: csak a címkéket és helyet támogató erőforrástípusok kiértékelése
 
+Például az erőforrás-`Microsoft.Network/routeTables` támogatja a címkéket és a helyet, és mindkét módban kiértékelésre kerül. A nem címkézhető erőforrás-`Microsoft.Network/routeTables/routes` azonban `Indexed` módban nem lehet kiértékelni.
+
 Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all`. A portálon keresztül létrehozott összes házirend-definíció a `all` módot használja. Ha a PowerShellt vagy az Azure CLI-t használja, manuálisan is megadhatja a **Mode** paramétert. Ha a házirend-definíció nem tartalmaz **Mode** értéket, a rendszer alapértelmezés szerint `all` Azure PowerShell és az Azure CLI-ben `null`. A visszafelé kompatibilitás támogatásához a `null` mód megegyezik a `indexed` használatával.
 
 a címkéket vagy helyszíneket kikényszerítő házirendek létrehozásakor `indexed`t kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok**. Az erőforráscsoportok helyét vagy címkéit kényszerítő házirendeknek úgy kell beállítaniuk a **módot** , hogy `all` és kifejezetten a `Microsoft.Resources/subscriptions/resourceGroups` típust célozzák meg. Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
@@ -92,11 +96,11 @@ Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok
 
 ## <a name="parameters"></a>Paraméterek
 
-A paraméterek segítségével egyszerűsítheti a házirendek kezelését a házirend-definíciók számának csökkentésével. Gondoljon olyan paraméterekre, mint például az űrlap mezői – `name`, `address`, `city`, `state`. Ezek a paraméterek mindig azonosak maradnak, de az értékek az űrlap kitöltése alapján változnak.
-A paraméterek ugyanúgy működnek, mint a házirendek létrehozásakor. A házirend-definícióban szereplő paraméterekkel együtt más értékekkel is felhasználhatja a szabályzatot különböző forgatókönyvekhez.
+Paraméterek segítségével leegyszerűsítik a szabályzatok kezelését szabályzatdefiníciók számának csökkentésével. Gondoljon olyan paraméterekre, mint például az űrlap mezői – `name`, `address`, `city`, `state`. Ezek a paraméterek változnak, azonban azok értékeit módosíthatja az űrlap egyes kitöltése alapján.
+Paraméterek ugyanúgy működnek, szabályzatok készítése során. Paraméterekkel együtt egy szabályzat-definícióban, újból felhasználhatja az adott házirendnek a különböző helyzetekhez különböző értékek alapján.
 
 > [!NOTE]
-> A paraméterek hozzáadhatók meglévő és hozzárendelt definícióhoz is. Az új paraméternek tartalmaznia kell a **defaultValue** tulajdonságot. Ez megakadályozza, hogy a házirend vagy kezdeményezés meglévő hozzárendelései érvénytelenek legyenek.
+> A paraméterek hozzáadhatók meglévő és hozzárendelt definícióhoz is. Az új paraméternek tartalmaznia kell a **defaultValue** tulajdonságot. Ez megakadályozza, hogy meglévő hozzárendelését a szabályzatot vagy kezdeményezést közvetve érvénytelen kerül sor.
 
 ### <a name="parameter-properties"></a>Paraméter tulajdonságai
 
@@ -165,12 +169,12 @@ A `metadata` tulajdonságon belül a **strongType** használatával több válas
 
 ## <a name="definition-location"></a>Definíció helye
 
-Kezdeményezés vagy szabályzat létrehozásakor meg kell adnia a definíció helyét. A definíció helyének felügyeleti csoportnak vagy előfizetésnek kell lennie. Ez a hely határozza meg azt a hatókört, amelyhez a kezdeményezést vagy házirendet hozzá lehet rendelni. Az erőforrásoknak a definíció helyének hierarchiájában kell közvetlen tagoknak vagy gyermekeknek lenniük a hozzárendelés céljára.
+Egy kezdeményezést vagy létrehozásakor meg kell határozni a definíció helye. A definíció helye egy felügyeleti csoportot vagy egy előfizetésben kell lennie. Ezen a helyen, amelyhez a kezdeményezést vagy rendelhetők a hatókör határozza meg. Erőforrások közvetlen tagjai vagy a gyermekek a hierarchiában a definíció helye, hogy a szabályzat-hozzárendelés kell lennie.
 
-Ha a definíció helye:
+Ha a definíció helye v:
 
 - Az előfizetésen belül csak **az előfizetés** erőforrásait lehet hozzárendelni.
-- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzathoz. Ha azt tervezi, hogy a házirend-definíciót több előfizetésre is alkalmazza, akkor a helynek az ezeket az előfizetéseket tartalmazó felügyeleti csoportnak kell lennie.
+- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzathoz. Ha azt tervezi, a szabályzat-definíció alkalmazni a különböző előfizetések, a hely ezen előfizetések tartalmazó felügyeleti csoportot kell lennie.
 
 ## <a name="display-name-and-description"></a>Megjelenítendő név és leírás
 
@@ -179,9 +183,9 @@ A **DisplayName** és a **Leírás** használatával azonosíthatja a házirend-
 > [!NOTE]
 > A házirend-definíció létrehozása vagy frissítése során a JSON-on kívüli tulajdonságok definiálják az **azonosítót**, a **típust**és a **nevet** , és nem szükségesek a JSON-fájlban. Az SDK-n keresztüli szabályzat-definíció beolvasása az **azonosító**, a **típus**és a **név** tulajdonságokat adja vissza a JSON részeként, de mindegyik írásvédett információ a házirend-definícióhoz kapcsolódik.
 
-## <a name="policy-rule"></a>házirend-szabály
+## <a name="policy-rule"></a>Szabályzatbeli szabály
 
-A **házirend-szabály** az **IF** és a blokkból áll. Az **IF** blokkban meg kell adnia egy vagy több olyan feltételt, amely megadja, hogy a rendszer mikor kényszerítse ki a házirendet. Ezekhez a feltételekhez logikai operátorokat alkalmazhat, így pontosan meghatározhatja a házirend forgatókönyvét.
+A **házirend-szabály** az **IF** és a blokkból áll. Az **IF** blokkban meg kell adnia egy vagy több olyan feltételt, amely megadja, hogy a rendszer mikor kényszerítse ki a házirendet. Ezek a feltételek, pontosan meghatározni a forgatókönyv egy házirend logikai operátorokat alkalmazhat.
 
 Az **Ezután** blokkban definiálhatja azt a hatást, amely az **IF** feltételek teljesülése esetén történik.
 
@@ -198,7 +202,7 @@ Az **Ezután** blokkban definiálhatja azt a hatást, amely az **IF** feltétele
 
 ### <a name="logical-operators"></a>Logikai operátorok
 
-A támogatott logikai operátorok a következők:
+Támogatott logikai operátorok a következők:
 
 - `"not": {condition  or operator}`
 - `"allOf": [{condition or operator},{condition or operator}]`
@@ -206,7 +210,7 @@ A támogatott logikai operátorok a következők:
 
 A **nem** szintaxis invertálja a feltétel eredményét. A **allOf** szintaxisa (a logikai **és** a művelethez hasonlóan) minden feltételnek igaznak kell lennie. A **anyOf** szintaxisa (a logikai **vagy** a művelethez hasonlóan) egy vagy több feltétel teljesülése szükséges.
 
-A logikai operátorok beágyazására is lehetőség van. A következő példa egy **nem** műveletet mutat be, amely egy **allOf** -műveletbe van beágyazva.
+Logikai operátorok ágyazhatja be. A következő példa egy **nem** műveletet mutat be, amely egy **allOf** -műveletbe van beágyazva.
 
 ```json
 "if": {
@@ -253,15 +257,17 @@ Az érték legfeljebb egy helyettesítő karakterből állhat `*`.
 
 A **egyezési** és **notMatch** feltételek használatakor `#` a számjegyek egyeztetéséhez, `?` egy betűhöz, `.` a karaktereknek való megfeleléshez, illetve bármely más karakterhez, amely megfelel a tényleges karakternek. Míg a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel kis-és nagybetűket nem jelent. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el. Példákat a [több név mintázatának engedélyezése](../samples/allow-multiple-name-patterns.md)című témakörben talál.
 
+Egy **\[\*\] alias** tömb mezőjének értékeként a tömb minden elemét egyedileg értékeli ki a rendszer a logikai **és** az elemek között. További információ: [a \[\*\] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+
 ### <a name="fields"></a>Mezők
 
-A feltételek mezők használatával jönnek létre. Egy mező megfelel az erőforrás-kérelem hasznos adatainak, és leírja az erőforrás állapotát.
+Feltételek alkotta mezőkkel. Egy mező megegyezik a tulajdonság az erőforrás-kérések forgalma, és az erőforrás állapotának leírása.
 
 A következő mezők támogatottak:
 
 - `name`
 - `fullName`
-  - Az erőforrás teljes nevét adja vissza. Az erőforrás teljes neve az erőforrás neve előtagértéke (például "myServer/myDatabase").
+  - Az erőforrás teljes nevét adja vissza. Erőforrás teljes név bármelyik szülő erőforrás nevét (például "myServer/myDatabase") által kiegészített az erőforrás nevét.
 - `kind`
 - `type`
 - `location`
@@ -310,7 +316,7 @@ A következő `concat` példában a rendszer a **TagName** paraméter értékén
 }
 ```
 
-### <a name="value"></a>Value (Díj)
+### <a name="value"></a>Érték
 
 A feltételek az **érték**használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi.
 az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
@@ -396,7 +402,7 @@ Ehelyett a [IF ()](../../../azure-resource-manager/templates/template-functions-
 
 A módosított szabályzattal rendelkező szabály `if()` ellenőrzi a **név** hosszát, mielőtt a rendszer a háromnál kevesebb karakternél rövidebb értékre próbálja beolvasni a `substring()`. Ha a **név** túl rövid, a "nem az ABC-től kezdődően" értéket adja vissza, és az **ABC**-hez képest. Az **ABC** -vel nem kezdődő rövid névvel rendelkező erőforrás továbbra is meghiúsul a házirend-szabályban, de az értékelés során már nem okoz hibát.
 
-### <a name="count"></a>Mennyiség
+### <a name="count"></a>Darabszám
 
 Azok a feltételek, amelyek megszámolják, hogy az erőforrás-adattartalomban lévő tömb tagjai közül hányan felelnek meg egy feltétel kifejezésének a **Count** kifejezés használatával. A gyakori forgatókönyvek azt ellenőrzik, hogy a tömb tagjai megfelelnek-e a feltételnek: "legalább az egyike", "a" minden "vagy" nincs ". a **Count** kiértékeli az egyes [\[\*\] alias](#understanding-the--alias) -tömb tagjait a feltétel kifejezéséhez, és a _valódi_ eredményeket összegzi, amely a kifejezés operátorával összehasonlítva történik.
 
@@ -536,7 +542,7 @@ A **Count**a következő tulajdonságokat használja:
 }
 ```
 
-### <a name="effect"></a>Következmény
+### <a name="effect"></a>Hatás
 
 Azure Policy a következő típusú hatásokat támogatja:
 
@@ -552,18 +558,18 @@ Azure Policy a következő típusú hatásokat támogatja:
 
 Az egyes effektusok, a kiértékelési sorrend, a tulajdonságok és a példák részletes ismertetését lásd: a [Azure Policy effektusok ismertetése](effects.md).
 
-### <a name="policy-functions"></a>Házirend-függvények
+### <a name="policy-functions"></a>A házirend-funkciók
 
 Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/templates/template-functions.md) egy házirend-szabályon belül használható, az alábbi függvények és a felhasználó által definiált függvények kivételével:
 
 - copyIndex ()
 - üzembe helyezés ()
-- listáját
+- list*
 - newGuid()
 - pickZones()
 - szolgáltatók ()
 - hivatkozás ()
-- resourceId ()
+- resourceId()
 - változók ()
 
 A következő függvények használhatók egy házirend-szabályban, de különböznek a Azure Resource Manager sablonban lévő használattól:
@@ -596,9 +602,9 @@ Ez a házirend-szabály példa a `resourceGroup` Resource függvényt használja
 
 ## <a name="aliases"></a>Aliasok
 
-Tulajdonság-Aliasok használatával férhet hozzá az erőforrástípus adott tulajdonságaihoz. Az aliasok lehetővé teszik annak korlátozását, hogy az adott erőforrás egy tulajdonsága milyen értékeket vagy feltételeket engedélyezzen. Az egyes aliasok egy adott erőforrástípus különböző API-verzióinak elérési útjaira mutatnak. A házirend kiértékelése során a házirend-kezelő beolvassa az adott API-verzióhoz tartozó tulajdonság elérési útját.
+Aliasok tulajdonság használatával az erőforrástípushoz konkrét tulajdonságok eléréséhez. Az aliasok lehetővé teszi korlátozása, milyen értékeket, vagy a feltételek az erőforrás-tulajdonságok megengedettek. Minden egyes alias képez le egy adott erőforrás típusát különböző API-verzióit szereplő elérési utakat. Szabályzat-kiértékelés során a házirendmotor lekérdezi, hogy API-verzió tulajdonság elérési útját.
 
-Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatott aliasok megkereséséhez használja az alábbi módszerek egyikét:
+Az aliasok listája folyamatosan bővül. Milyen aliasok az Azure Policy által jelenleg támogatott megkereséséhez használja a következő módszerek egyikét:
 
 - Azure Policy-bővítmény a Visual Studio Code-hoz (ajánlott)
 
@@ -637,7 +643,7 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure parancssori felület (CLI)
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -649,7 +655,7 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
   az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
-- REST API/ARMClient
+- REST API-t / ARMClient
 
   ```http
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
@@ -657,7 +663,7 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
 
 ### <a name="understanding-the--alias"></a>A [*] alias ismertetése
 
-A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, **\[\*\]** csatolva. Példa:
+A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, **\[\*\]** csatolva. Például:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -693,9 +699,9 @@ További információ: [[\*] alias kiértékelése](../how-to/author-policies-fo
 
 ## <a name="initiatives"></a>Kezdeményezések
 
-A kezdeményezések lehetővé teszik több kapcsolódó szabályzat-definíció csoportosítását a hozzárendelések és a felügyelet egyszerűsítése érdekében, mivel egyetlen elemmel dolgozik egy csoporttal. Például a kapcsolódó címkézési szabályzatok definícióit egyetlen kezdeményezésbe csoportosíthatja. Az egyes szabályzatok egyenkénti kiosztása helyett a kezdeményezést kell alkalmaznia.
+Kezdeményezések lehetővé teszi több kapcsolódó szabályzatdefiníciót, mert dolgozik egy csoport egyetlen elemként hozzárendelések és a felügyeleti egyszerűsítése érdekében. Ha például be egy egyetlen-kezdeményezéshez kapcsolódó címkézési szabályzatdefiníciók csoportosíthatók. Ahelyett, hogy az egyes házirendek külön-külön rendeli, a kezdeményezés vonatkoznak.
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két címke kezeléséhez: `costCenter` és `productName`. Két beépített szabályzatot használ az alapértelmezett címke értékének alkalmazásához.
+Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két címke kezeléséhez: `costCenter` és `productName`. Két beépített szabályzatokat használ a alkalmazni az alapértelmezett címke értéke.
 
 ```json
 {

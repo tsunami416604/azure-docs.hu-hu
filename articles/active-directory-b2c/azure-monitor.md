@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026756"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046029"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
-A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Azure AD B2C) használati tevékenységének eseményeit különböző figyelési megoldásokra. Megtarthatja a naplókat a hosszú távú használatra, vagy integrálhatja a külső felek biztonsági információit és esemény-felügyeleti (SIEM) eszközöket, hogy betekintést nyerjen a környezetbe.
+A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Azure AD B2C) bejelentkezési és [naplózási](view-audit-logs.md) naplókat különböző figyelési megoldásokhoz. Megtarthatja a naplókat a hosszú távú használatra, vagy integrálhatja a külső felek biztonsági információit és esemény-felügyeleti (SIEM) eszközöket, hogy betekintést nyerjen a környezetbe.
 
 A naplózási eseményeket a következő módon irányíthatja át:
 
@@ -70,7 +70,7 @@ A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói *cs
 1. Ha a **Azure Active Directory** továbbra is ki van választva a Azure Portal, válassza a **felhasználók**lehetőséget, majd válasszon ki egy felhasználót.
 1. Jegyezze fel a felhasználó **objektum-azonosítóját**.
 
-### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager sablon létrehozása
+### <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
 
 Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure Resource Manager sablont](../lighthouse/how-to/onboard-customer.md) az ajánlatához a következő információkkal. A `mspOfferName` és a `mspOfferDescription` értékek láthatók, ha az ajánlat részleteit a Azure Portal [szolgáltatók lapján](../lighthouse/how-to/view-manage-service-providers.md) tekinti meg.
 
@@ -213,7 +213,7 @@ Miután delegálta az erőforrás-kezelést, és kiválasztotta az előfizetés�
 
 Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálása:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. **Azure Active Directory** kiválasztása
 1. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.

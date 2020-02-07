@@ -2,7 +2,7 @@
 title: Munkahelyi vagy iskolai fiók jelszavának módosítása – Azure AD
 description: Megtudhatja, hogyan módosíthatja munkahelyi vagy iskolai fiókja jelszavát a saját fiók portál jelszó módosítása lapján.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: f92df704047e1d36e69e40ce5299b8d01e48e9eb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705173"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064053"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a jelszó módosítása lapról
 
@@ -37,7 +37,7 @@ A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a
 
     ![Jelszó módosítása lap, amely megjeleníti a jelszó mezőket](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Válassza a **Küldés** lehetőséget.
+4. Válassza a **Küldés**lehetőséget.
 
     A jelszó módosítva lesz, és a rendszer kérni fogja, hogy jelentkezzen be újra a munkahelyi vagy iskolai fiókjába.
 

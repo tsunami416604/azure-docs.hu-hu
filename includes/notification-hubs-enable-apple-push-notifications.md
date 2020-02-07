@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407106"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047769"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának előállítása
 
@@ -26,6 +26,10 @@ A tanúsítvány-aláírási kérelem (CSR) fájljának létrehozása, amelyet a
 1. Válassza a **kulcstartó-hozzáférés**, majd a **tanúsítvány**kibontása elemet, majd válassza **a tanúsítvány kérése a**hitelesítésszolgáltatótól lehetőséget.
 
     ![Új tanúsítvány kérése a Kulcskarika-eléréssel](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+    
+> [!NOTE]
+> Az OS X alapértelmezés szerint kiválasztja a kulcstartó-hozzáférési eszközben kiválasztott kategória első tételét. Ez akkor fordulhat elő, ha a **tanúsítványok** szakaszban szerepel, és az **Apple Worldwide fejlesztői kapcsolatainak hitelesítésszolgáltatója** *nem* a lista első eleme. A tanúsítvány igénylése előtt győződjön meg arról, hogy a **tanúsítványok** szakaszban szerepel, majd válassza az **Apple Worldwide fejlesztői kapcsolatok hitelesítésszolgáltató**lehetőséget.
+
 
 1. Válassza ki a **felhasználói e-mail-címét**, írja be a **köznapi név** értékét, győződjön meg róla, hogy a **lemezre mentve**van, majd válassza a **Folytatás**lehetőséget. Hagyja üresen a **CA e-mail-címét** , mert nincs rá szükség.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429270"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048270"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása IoT Hub
 
@@ -73,7 +73,10 @@ Az eszközök közvetlen metódusának meghívása a következő elemekből áll
     }
     ```
 
-Az időkorlát másodpercben. Ha nincs beállítva időtúllépés, az alapértelmezett érték 30 másodperc.
+A kérelemben `responseTimeoutInSeconds`ként megadott érték az az időtartam, ameddig a IoT Hub szolgáltatásnak meg kell várnia a közvetlen metódus végrehajtásának befejezéséhez az eszközön. Állítsa be ezt az időkorlátot úgy, hogy az egy adott eszköz által várt végrehajtási időnek megfelelően legyen legalább egy ideig. Ha nincs megadva időtúllépés, a rendszer az alapértelmezett 30 másodperc értéket használja. A `responseTimeoutInSeconds` minimális és maximális értéke 5 és 300 másodperc.
+
+A kérelemben `connectTimeoutInSeconds`ként megadott érték azt az időtartamot határozza meg, ameddig egy közvetlen IoT Hub metódus meghívásakor a szolgáltatásnak meg kell várnia, hogy egy leválasztott eszköz online állapotba kerüljön. Az alapértelmezett érték 0, ami azt jelenti, hogy az eszközöknek már online állapotba kell esniük a közvetlen metódus meghívása után. A `connectTimeoutInSeconds` maximális értéke 300 másodperc.
+
 
 #### <a name="example"></a>Példa
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 A háttérbeli alkalmazás a következő elemekből álló választ kap:
 
-* *Http-állapotkód*, amely a IoT Hubtól érkező hibákhoz használható, beleértve a jelenleg nem csatlakoztatott eszközök 404-es hibáját.
+* *Http-állapotkód*:
+  * 200 a közvetlen metódus sikeres végrehajtását jelzi;
+  * 404 azt jelzi, hogy az eszköz azonosítója érvénytelen, vagy ha az eszköz nem volt online, és `connectTimeoutInSeconds` ezt követően a közvetlen metódus meghívása után (a rendszer a mellékelt hibaüzenetet használja a kiváltó ok megértéséhez);
+  * az 504 azt jelzi, hogy az eszköz által okozott átjáró időtúllépése nem válaszol a közvetlen metódusra a `responseTimeoutInSeconds`on belül.
 
 * A ETag, a kérelem AZONOSÍTÓját, a tartalom típusát és a tartalom kódolását tartalmazó *fejlécek* .
 

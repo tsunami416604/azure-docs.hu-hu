@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026795"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049697"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Az Azure IoT Central-beli adatszolgáltatások exportálása
 
@@ -62,10 +62,14 @@ Ha a Service Bus exportálás célhelyként választja, akkor a várólisták é
 
 Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) létrehozása vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md).
+1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) létrehozása vagy [Azure Data Lake Storage v2 Storage-fiókok](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Az adatexportálás csak a blokk blobokat támogató Storage-fiókokba tud írni. Az alábbi lista a Storage-fiókok ismert kompatibilis típusait sorolja fel: 
 
-    - Ha egy Azure Data Lake Storage v2 Storage-fiókba exportálja az adatexportálást, a **BlobStorage** kell választania **.**
-    - A IoT Central-alkalmazáshoz tartozó előfizetéseken kívül is exportálhatja az adatait a Storage-fiókokba. Ebben az esetben kapcsolati sztringet fog használni.
+    |Teljesítményszint|Fiók típusa|
+    |-|-|
+    |Standard|általános célú v2|
+    |Standard|általános célú v1|
+    |Standard|Blob Storage|
+    |Premium|Blob Storage letiltása|
 
 2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
 
@@ -197,7 +201,7 @@ A pillanatképben szereplő minden üzenet vagy rekord az eszköz és az eszköz
 - `simulated` jelző, igaz, ha az eszköz szimulált eszköz
 - `provisioned` jelző, igaz, ha az eszköz ki lett építve
 - `approved` jelző, igaz, ha az eszköz jóvá lett hagyva az adatküldéshez
-- Tulajdonságértékek
+- Tulajdonságok értékei
 - `properties` az eszköz és a felhő tulajdonságai értékeit is beleértve
 
 A törölt eszközök nincsenek exportálva. Jelenleg nincsenek mutatók a törölt eszközök exportált üzeneteiben.

@@ -1,19 +1,19 @@
 ---
-title: Adatfolyam-videó-oktatóanyagok leképezése
+title: Adatfolyamok leképezését ismertető oktatóvideók
 description: Az adatáramlási fogalmakat bemutató videós oktatóanyagok listája
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: MT
+ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030034"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048256"
 ---
-# <a name="mapping-data-flow-video-tutorials"></a>Adatfolyam-videó-oktatóanyagok leképezése
+# <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
 Az alábbi lista a Azure Data Factory csapat által létrehozott, a leképezési folyamatokról szóló oktatóanyagot mutatja be.
 
@@ -42,6 +42,8 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 [Származtatott oszlop átalakítása](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [Csatlakozás az átalakításhoz](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[Saját illesztési minta](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Keresési transzformáció](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 

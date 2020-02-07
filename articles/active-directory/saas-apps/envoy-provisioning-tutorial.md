@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Envoy konfigurálása a felhasználók automatikus átadása az Azure Active Directoryban |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Envoy felhasználói fiókokat.
+title: 'Oktatóanyag: a megbízottat konfigurálása a felhasználók automatikus üzembe helyezéséhez Azure Active Directory | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a megbízott felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,159 +15,159 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: df4c5895e15e7e9e63ad1f3d273af1c3fdab2e90
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 30faae80f1af4ff63924a76b26a03b8fe354a7df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672725"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058025"
 ---
-# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása az Envoy konfigurálása
+# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Oktatóanyag: a megbízottat konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania az Envoy és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésére és megszüntetni hozzárendeléseket felhasználók és/vagy az Envoy csoportok bemutatása.
+Ennek az oktatóanyagnak a célja, hogy bemutassa a megbízottat és Azure Active Directory (Azure AD) végrehajtandó lépéseit az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a megbízottat.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [Az Envoy bérlő](https://envoy.com/pricing/)
-* Egy felhasználói fiókot az Envoy rendszergazdai jogosultságokkal rendelkezik.
+* Azure AD-bérlő
+* [Egy megbízottat bérlő](https://envoy.com/pricing/)
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók.
 
-## <a name="add-envoy-from-the-gallery"></a>Az Envoy hozzáadása a katalógusból
+## <a name="add-envoy-from-the-gallery"></a>Megbízottat hozzáadása a katalógusból
 
-Konfigurálja az Envoy felhasználók automatikus átadása az Azure ad-vel, mielőtt szüksége az Azure AD alkalmazáskatalógusában Envoy hozzáadása a felügyelt SaaS-alkalmazások listája.
+Mielőtt beállítja a megbízottat az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, hozzá kell adnia egy megbízottat az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-**Az Azure AD alkalmazáskatalógusában Envoy hozzáadásához hajtsa végre az alábbi lépéseket:**
+**Ha a megbízottat az Azure AD-alkalmazás-katalógusból szeretné felvenni, hajtsa végre a következő lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Envoy**válassza **Envoy** az eredmények panelen, majd kattintson a a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a következőt: **megbízottat**, válassza a **megbízottat** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az envoy a találatok listájában](common/search-new-app.png)
+    ![Az eredmények listájában szereplő megbízottat](common/search-new-app.png)
 
-## <a name="assigning-users-to-envoy"></a>Felhasználók hozzárendelése az Envoy
+## <a name="assigning-users-to-envoy"></a>Felhasználók kiosztása a megbízottnak
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Mielőtt a felhasználók automatikus kiépítés engedélyezése és konfigurálása, akkor meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben az Envoy hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok Envoy utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és/vagy csoportjai férhetnek hozzá a megbízotthoz. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat a megbízotthoz:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-envoy"></a>Felhasználók hozzárendelése az Envoy fontos tippek
+### <a name="important-tips-for-assigning-users-to-envoy"></a>Fontos Tippek a felhasználók a megbízottat való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve az Envoy a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a megbízottat a felhasználó automatikus kiépítési konfigurációjának teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése az Envoy, jelöljön ki minden olyan érvényes alkalmazás-specifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Ha egy felhasználót a megbízottat rendel hozzá, ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configuring-automatic-user-provisioning-to-envoy"></a>Az Envoy történő automatikus felhasználókiépítés konfigurálása 
+## <a name="configuring-automatic-user-provisioning-to-envoy"></a>A felhasználók automatikus kiépítési megbízottjának konfigurálása 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD-felhasználói és/vagy a csoport-hozzárendelések alapján csoportosítja az Envoy.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein az Azure AD-ben felhasználói és/vagy csoport-hozzárendelések alapján a felhasználók és/vagy csoportok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés az Envoy engedélyezése, a biztonsági utasítások megadott a [Envoy egyszeri bejelentkezéses oktatóanyag](envoy-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a megbízott számára, a [megbízottat egyszeri bejelentkezés oktatóanyagában](envoy-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása az Envoy az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Azure AD-beli megbízottat:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Envoy**.
+2. Az alkalmazások listában válassza a **megbízottat**.
 
-    ![Az Envoy hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A megbízottat mutató hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban bemeneti `https://app.envoy.com/scim/v2` a **bérlői URL-cím**. Beolvasni a **titkos jogkivonat** Envoy fiókja, kövesse az útmutató 6. lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://app.envoy.com/scim/v2` a **bérlői URL-címben**. A megbízottat tartalmazó fiók **titkos jogkivonatának** lekéréséhez kövesse a 6. lépésben leírt útmutatót.
 
-6. Jelentkezzen be a [Envoy felügyeleti konzol](https://dashboard.envoy.com/login). Kattintson a **Integrációk**.
+6. Jelentkezzen be a [megbízott felügyeleti konzolra](https://dashboard.envoy.com/login). Kattintson az **integrációk**elemre.
 
-    ![Az envoy Integrációk](media/envoy-provisioning-tutorial/envoy01.png)
+    ![A megbízottat integrációk](media/envoy-provisioning-tutorial/envoy01.png)
 
-    Kattintson a **telepítése** számára a **a Microsoft Azure SCIM-integráció**.
+    Kattintson a **telepítés** gombra a **Microsoft Azure scim-integrációhoz**.
 
-    ![Az envoy telepítése](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Megbízott telepítése](media/envoy-provisioning-tutorial/envoy02.png)
 
-    Kattintson a **mentése** a **minden felhasználó szinkronizálása**. 
+    Kattintson a **Mentés** gombra az **összes felhasználó szinkronizálásához**. 
 
-    ![Mentse az envoy](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Megbízott mentése](media/envoy-provisioning-tutorial/envoy03.png)
 
-    Beolvasni a titkos kulcs-Token feltöltése.
+    Töltse le a titkos tokent.
     
-    ![Az envoy OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
+    ![Megbízott OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
 
-7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD az Envoy csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, az Envoy fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a megbízotthoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a megbízott fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 9. Kattintson a **Save** (Mentés) gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók az Envoy**.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a megbízottat**lehetőséget.
     
-    ![Az envoy felhasználói attribútumok](media/envoy-provisioning-tutorial/envoy-user-mappings.png)
+    ![Felhasználói attribútumok megbízottat](media/envoy-provisioning-tutorial/envoy-user-mappings.png)
     
-11. Tekintse át a az Envoy az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókokat az Envoy a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a megbízott felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Az envoy felhasználói attribútumok](media/envoy-provisioning-tutorial/envoy-user-attribute.png)
+    ![Felhasználói attribútumok megbízottat](media/envoy-provisioning-tutorial/envoy-user-attribute.png)
 
-12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, Envoy**.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a megbízottat**lehetőséget.
 
-    ![Az envoy Felhasználóleképezéseket](media/envoy-provisioning-tutorial/envoy-group-mapping.png)
+    ![Felhasználó-hozzárendelések megbízottja](media/envoy-provisioning-tutorial/envoy-group-mapping.png)
 
-13. Tekintse át a szinkronizált Azure AD-ből, az Envoy oszlopainál a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfelelnek az Envoy a frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+13. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a megbízott csoportoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Az envoy Felhasználóleképezéseket](media/envoy-provisioning-tutorial/envoy-group-attributes.png)
+    ![Felhasználó-hozzárendelések megbízottja](media/envoy-provisioning-tutorial/envoy-group-attributes.png)
     
-14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Az Azure AD létesítési szolgáltatás az Envoy engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+15. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a megbízottat, módosítsa a **kiépítési állapotot** a **következőre** a **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-16. Határozza meg a felhasználók és/vagy a csoportok, adja meg az Envoy való kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+16. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a megbízottat szeretné kiépíteni. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-17. Ha készen áll rendelkezésre, kattintson a **mentése**.
+17. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás az Envoy által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti az üzembe helyezési tevékenység jelentésre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a megbízotton végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

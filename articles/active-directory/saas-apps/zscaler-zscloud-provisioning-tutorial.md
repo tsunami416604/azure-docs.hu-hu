@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Zscaler-ZSCloud konfigurálása a felhasználók automatikus üzembe helyezéséhez a következővel: Azure Active Directory | Microsoft Docs'
+title: 'Oktatóanyag: Zscaler-ZSCloud konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Zscaler ZSCloud.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515445"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062676"
 ---
-# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Oktatóanyag: Zscaler-ZSCloud konfigurálása a felhasználók automatikus kiépítési felállításához
+# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler-ZSCloud konfigurálása a felhasználók automatikus kiépítési felállításához
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja Azure Active Directory (Azure AD) a felhasználók és/vagy csoportok automatikus kiépítésére és megszüntetésére a Zscaler ZSCloud.
 
@@ -88,17 +88,17 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. Válassza ki  a kiépítés fület:
+3. Válassza ki a **kiépítés** fület:
 
     ![Zscaler ZSCloud Provisioning](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
 
-4. A **kiépítési mód** beállítása automatikusra :
+4. A **kiépítési mód** beállítása **automatikusra**:
 
     ![A kiépítési mód beállítása](./media/zscaler-zscloud-provisioning-tutorial/provisioningcredentials.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler ZSCloud-fiókjának **bérlői URL-címét** és titkos jogkivonatát a következő lépésben leírtak szerint.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler ZSCloud-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a következő lépésben leírtak szerint.
 
-6. A bérlői **URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti** > **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
+6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg az **Adminisztráció** > **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
 
     ![Zscaler ZSCloud Authentication Settings](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -106,11 +106,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![SAML-ablak konfigurálása](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Jelölje be az **scim létesítésének engedélyezése** jelölőnégyzetet, és másolja ki az **alap URL-címet** és a **tulajdonosi**jogkivonatot, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
+    Jelölje be az **scim létesítésének engedélyezése** jelölőnégyzetet, és másolja ki az **alap URL-címet** és a **tulajdonosi jogkivonatot**, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
 
 7. A **bérlői URL-cím** és a **titkos jogkivonat** mezőiben szereplő értékek megadása után válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen csatlakozni a Zscaler-ZSCloud. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler ZSCloud-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Kapcsolat tesztelése](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
+    ![A kapcsolat tesztelése](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
 8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. **Ha hiba történik, válassza az e-mail-értesítés küldése**lehetőséget:
 
@@ -124,21 +124,21 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakasz Zscaler ZSCloud. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler ZSCloud felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
-    ![Attribútumleképezések](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![Attribútumok hozzárendelése](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerZSCloud**lehetőséget:
 
     ![Azure AD-csoportok szinkronizálása](./media/zscaler-zscloud-provisioning-tutorial/groupmappings.png)
 
-13. Tekintse át az Azure AD-ből szinkronizált Zscaler ZSCloud az **attribútum** -hozzárendelések szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler ZSCloud tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
+13. Tekintse át az Azure AD-ből szinkronizált Zscaler ZSCloud az **attribútum-hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler ZSCloud tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
-    ![Attribútumleképezések](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![Attribútumok hozzárendelése](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagának](./../active-directory-saas-scoping-filters.md)utasításait.
 
-15. Az Azure AD kiépítési szolgáltatás Zscaler ZSCloud való engedélyezéséhez módosítsa a kiépítési **állapotot** **a következőre** a **Beállítások** szakaszban:
+15. Az Azure AD kiépítési szolgáltatás Zscaler ZSCloud való engedélyezéséhez módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban:
 
-    ![Kiépítési állapot](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
+    ![Telepítés állapota](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
 
 16. Adja meg a Zscaler ZSCloud kiépíteni kívánt felhasználókat és/vagy csoportokat, ha a **Beállítások** szakaszban a **hatókör** területen a kívánt értékeket választja:
 
@@ -152,12 +152,12 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókör** szakasz
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../active-directory-saas-provisioning-reporting.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../active-directory-saas-provisioning-reporting.md)
 

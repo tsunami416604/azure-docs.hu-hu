@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837946"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064682"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -69,7 +69,7 @@ Fontos, hogy megismerje a HDInsight-fürt (ek) on futó számítási feladatok t
 
 * Érdemes megfontolni, hogy a figyelési megoldás vagy szolgáltatás hasznos előnyt jelentene-e. A Microsoft System Center egy [HDInsight felügyeleti csomagot](https://www.microsoft.com/download/details.aspx?id=42521)biztosít. A naplók gyűjtésére és központosítására olyan külső gyártótól származó eszközöket is használhat, mint az Apache Chukwa és a ganglionok. Számos vállalat kínál szolgáltatásokat a Hadoop-alapú big data megoldások figyelésére, például: középpont, CompuWare APM, Sematext SPM és Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. lépés: a fürtszolgáltatás verzióinak kezelése és a parancsfájl-műveleti naplók megtekintése
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>2\. lépés: a fürtszolgáltatás verzióinak kezelése és a naplók megtekintése
 
 Egy tipikus HDInsight-fürt számos szolgáltatást és nyílt forráskódú szoftvercsomagot használ (például Apache HBase, Apache Spark stb.). Bizonyos munkaterhelések, például a bioinformatika esetében előfordulhat, hogy a feladat-végrehajtási naplók mellett meg kell őriznie a szolgáltatás konfigurációs naplójának előzményeit is.
 
@@ -89,9 +89,21 @@ A Ambari felhasználói felületének használatával letöltheti a fürt egy ad
 
 A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`címen érhetők el.
 
+### <a name="view-ambari-alerts-status-logs"></a>Ambari riasztások állapotának naplófájljainak megtekintése
+
+Az Apache Ambari `ambari-alerts.log`ba írja a riasztási állapot módosításait. A teljes elérési út `/var/log/ambari-server/ambari-alerts.log`. A naplóhoz tartozó hibakeresés engedélyezéséhez módosítsa a tulajdonságot `/etc/ambari-server/conf/log4j.properties.` változásban, majd a `# Log alert state changes` alatti bejegyzést:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. lépés: a fürt feladatok végrehajtási naplófájljainak kezelése
 
-A következő lépés a feladatok végrehajtási naplófájljainak áttekintése a különböző szolgáltatásokhoz.  A szolgáltatások lehetnek például az Apache HBase, a Apache Spark és sok más. A Hadoop-fürtök nagy mennyiségű részletes naplót készítenek, így a hasznos naplók (és amelyek nem) időigényesek lehetnek.  A naplófájlok kezeléséhez fontos a naplózási rendszer ismertetése.  A következő példa egy naplófájlt mutat be.
+A következő lépés a feladatok végrehajtási naplófájljainak áttekintése a különböző szolgáltatásokhoz.  A szolgáltatások lehetnek például az Apache HBase, a Apache Spark és sok más. A Hadoop-fürtök nagy mennyiségű részletes naplót készítenek, így a hasznos naplók (és amelyek nem) időigényesek lehetnek.  A naplófájlok kezeléséhez fontos a naplózási rendszer ismertetése.  A következő képen egy példa naplófájl található.
 
 ![HDInsight példa naplófájl minta kimenete](./media/hdinsight-log-management/hdi-log-file-example.png)
 
@@ -172,7 +184,7 @@ Azt is megtekintheti, hogy a HIBAKERESÉSi naplózás engedélyezve van-e egy va
 
 Ha a naplókat az összes csomópontról egy központi helyre szeretné gyűjteni, létrehozhat egy adatfolyamot, például az összes naplóbejegyzés betöltését a Solr-be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A HDInsight figyelési és naplózási gyakorlata](https://msdn.microsoft.com/library/dn749790.aspx)
 * [A FONALas alkalmazások naplóihoz való hozzáférés Apache Hadoop Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)

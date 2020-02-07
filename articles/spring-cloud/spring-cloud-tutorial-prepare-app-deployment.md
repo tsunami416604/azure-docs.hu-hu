@@ -4,14 +4,14 @@ description: Ebben az oktatóanyagban egy Java Spring-alkalmazást készít elő
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 10/06/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 9918c7866b21cd2a9e021a355fb43977c91a89cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277449"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064716"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -25,38 +25,14 @@ Az Azure Spring Cloud a Java 8 és a Java 11 használatát is támogatja. Az üz
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>A Spring boot és a Spring Cloud verziói
 
-Az Azure Spring Cloud csak a Spring boot-alkalmazásokat támogatja. Támogatja a Spring boot 2,0-es és 2,1-es verzióját is. A következő táblázat a támogatott Spring boot és Spring felhő kombinációkat sorolja fel:
+Az Azure Spring Cloud csak a Spring boot-alkalmazásokat támogatja. Támogatja a Spring boot 2,1-es és 2,2-es verzióját is. A következő táblázat a támogatott Spring boot és Spring felhő kombinációkat sorolja fel:
 
 Spring boot-verzió | Tavaszi felhő verziója
 ---|---
-2.0 | Finchley. RELEASE
 2.1 | Greenwich. RELEASE
+2.2 | Hoxton. RELEASE
 
 Győződjön meg arról, hogy a Pom. xml fájl megfelelő Spring boot és Spring Cloud függőségekkel rendelkezik a Spring boot-verzió alapján.
-
-### <a name="dependencies-for-spring-boot-version-20"></a>A Spring boot 2,0-es verziójának függőségei
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.9.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>A Spring boot 2,1-es verziójának függőségei
 
@@ -65,7 +41,7 @@ Győződjön meg arról, hogy a Pom. xml fájl megfelelő Spring boot és Spring
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.1.12.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -74,7 +50,31 @@ Győződjön meg arról, hogy a Pom. xml fájl megfelelő Spring boot és Spring
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR3</version>
+                <version>Greenwich.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+
+### <a name="dependencies-for-spring-boot-version-22"></a>A Spring boot 2,2-es verziójának függőségei
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -90,20 +90,10 @@ A következő táblázat felsorolja a Spring boot és Spring Cloud-t használó 
 
 Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
 ---|---|---
-2.0 | Finchley. RELEASE | 2.0
 2.1 | Greenwich. RELEASE | 2.1
+2.2 | Hoxton. RELEASE | 2.2
 
 Adja meg a következő függőségek egyikét a Pom. xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
-
-### <a name="dependency-for-azure-spring-cloud-version-20"></a>Az Azure Spring Cloud 2,0-es verziójának függősége
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.0.0</version>
-</dependency>
-```
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Az Azure Spring Cloud 2,1-es verziójának függősége
 
@@ -111,7 +101,17 @@ Adja meg a következő függőségek egyikét a Pom. xml fájlban. Válassza ki 
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
+</dependency>
+```
+
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Az Azure Spring Cloud 2,2-es verziójának függősége
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.2.0</version>
 </dependency>
 ```
 

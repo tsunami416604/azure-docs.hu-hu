@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982438"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048282"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Az automatizált gépi tanulás segítségével automatizálhatja az időigénye
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Machine Learning munkaterületet.
+> * Az Azure Machine Learning-munkaterület létrehozása.
 > * Futtasson automatizált gépi tanulási kísérletet.
 > * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.
@@ -38,7 +38,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 * Töltse le a [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
@@ -69,11 +69,15 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. Hozzon létre egy új adatkészletet a **helyi fájlok** lehetőség kiválasztásával a **+ adatkészlet létrehozása** legördülő menüből. 
 
+    1. Az **alapszintű információ** űrlapon adja meg az adatkészlet nevét, és adjon meg egy opcionális leírást. Az automatikus ml Azure Machine learning Studióban jelenleg csak táblázatos adatkészleteket támogat, ezért az adatkészlet típusának alapértelmezett értékének táblázatos kell lennie.
+
+    1. Kattintson a **Next (tovább) gombra** a bal alsó sarokban
+
+    1. Az **adattár és fájl kiválasztása** űrlapon válassza ki az alapértelmezett adattárat, amelyet a rendszer automatikusan beállított a munkaterület létrehozásakor, **workspaceblobstore (Azure Blob Storage)** . Itt töltheti fel az adatfájlt, hogy elérhető legyen a munkaterületen.
+
     1. Válassza a **Tallózás** lehetőséget.
     
     1. Válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépen. Ez az [előfeltételként](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)letöltött fájl.
-
-    1. Az adatkészlet típusaként válassza a **táblázatos** lehetőséget. 
 
     1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
@@ -86,10 +90,10 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
         Fájl formátuma|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
-        Elválasztó|Egy vagy több karakter, amely&nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vessző
+        Elválasztó karakter|Egy vagy több karakter, amely&nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vesszővel
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ehhez a példához válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
 
@@ -132,22 +136,22 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         További&nbsp;konfigurációk|Leírás|&nbsp;oktatóanyag értéke&nbsp;
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |&nbsp;feladatok betanítása&nbsp;idő (óra): 1 <br> Metrika&nbsp;pontszám&nbsp;küszöbérték: nincs
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szor&nbsp;kereszt-ellenőrzési <br> <br> Érvényességek száma: 2
-        Párhuzamosság| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
+        Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5
         
         Kattintson a **Mentés** gombra.
 
-1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek** képernyő a **futtatási állapottal** , amikor a kísérlet előkészítése megkezdődik.
+1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek** képernyő, amelyen a kísérlet előkészítésének megkezdése után a **Futtatás állapota** látható.
 
 >[!IMPORTANT]
 > Az előkészítés **10-15 percet** vesz igénybe a kísérlet futtatásának előkészítése érdekében.
 > A futása után **az egyes iterációk esetében 2-3 percet**vesz igénybe.  
 > Válassza a rendszeres **frissítés** lehetőséget, hogy megtekintse a kísérlet előrehaladásának állapotát.
 >
-> Éles környezetben valószínűleg egy kicsit. Ebben az oktatóanyagban azonban azt javasoljuk, hogy kezdje el a tesztelt algoritmusok vizsgálatát a Models (modellek) lapon, amíg a többiek még futnak. 
+> Éles környezetben valószínűleg egy kicsit. Ebben az oktatóanyagban azonban azt javasoljuk, hogy kezdje el a tesztelt algoritmusok vizsgálatát a **models (modellek** ) lapon, amíg a többiek még futnak. 
 
 ##  <a name="explore-models"></a>Modellek megismerése
 
@@ -159,13 +163,13 @@ A következő lépésekkel navigálhat a **modell részletein** és a **vizualiz
 
 ![Iteráció részleteinek futtatása](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 A Azure Machine Learning Studióban található automatizált gépi tanulás lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. 
 
 Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
 
-A Futtatás befejezése után térjen vissza a **Futtatás részletei** lapra, és válassza a **modellek** fület. Válassza a **frissítés**lehetőséget. 
+A Futtatás befejezése után térjen vissza a **Futtatás részletei** lapra, és válassza a **modellek** fület.
 
 Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe. Az üzembe helyezési folyamat több lépést is magában foglal, beleértve a modell regisztrálását, az erőforrások létrehozását és a webszolgáltatás konfigurálását.
 
@@ -173,13 +177,13 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
 
 1. Töltse fel a **modell üzembe helyezése** panelt az alábbiak szerint:
 
-    Mező| Value (Díj)
+    Mező| Érték
     ----|----
     Központi telepítés neve| My-automl – üzembe helyezés
     Központi telepítés leírása| Az első automatizált gépi tanulási kísérlet üzembe helyezése
     Számítási típus | Azure számítási példány kiválasztása (ACI)
-    Hitelesítés engedélyezése| Letiltás lehetőséget. 
-    Egyéni központi telepítések használata| Letiltás lehetőséget. Lehetővé teszi az alapértelmezett illesztőprogram-fájl (pontozási parancsfájl) és a környezeti fájl számára az automatikusan generált értéket. 
+    Hitelesítés engedélyezése| Megbénít. 
+    Egyéni központi telepítések használata| Megbénít. Lehetővé teszi az alapértelmezett illesztőprogram-fájl (pontozási parancsfájl) és a környezeti fájl számára az automatikusan generált értéket. 
     
     Ebben a példában a *speciális* menüben megadott alapértékeket használjuk. 
 
@@ -216,11 +220,11 @@ Ebben az automatizált gépi tanulási oktatóanyagban a Azure Machine Learning 
 > [!div class="nextstepaction"]
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ További információ az [előfeldolgozásról](how-to-create-portal-experiments.md#preprocess).
++ További információ a [featurization](how-to-create-portal-experiments.md#featurization).
 + További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 
 >[!NOTE]
 > Ezt a bank marketing-adatkészletet a [Creative Commons (CCO: Public Domain) licence](https://creativecommons.org/publicdomain/zero/1.0/)keretében lehet elérni. Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
-> [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. (Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez.) Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez. Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.

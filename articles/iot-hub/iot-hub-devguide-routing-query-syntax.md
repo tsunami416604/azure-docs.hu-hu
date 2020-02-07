@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934622"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064818"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub üzenet-útválasztási lekérdezés szintaxisa
 
@@ -50,12 +50,12 @@ A IoT Hub a protokollok közötti együttműködés [általános formátumát](i
 
 A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának azonosításában. 
 
-| Tulajdonság | Type (Típus) | Leírás |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | contentType | sztring | A felhasználó az üzenet tartalmának típusát adja meg. Az üzenet törzse lekérdezésének engedélyezéséhez ennek az értéknek az Application/JSON értéket kell beállítania. |
 | contentEncoding | sztring | A felhasználó megadja az üzenet kódolási típusát. Az engedélyezett értékek: UTF-8, UTF-16, UTF-32, ha a contentType alkalmazás/JSON értékre van beállítva. |
-| iothub--összekötő-eszköz-azonosító | sztring | Ezt az értéket IoT Hub állítja be, és azonosítja az eszköz AZONOSÍTÓját. A lekérdezéshez használja a `$connectionDeviceId`. |
-| iothub – enqueuedtime | sztring | Ezt az értéket a IoT Hub állítja be, és a tényleges időpontot jelöli, hogy az üzenet enqueuing az UTC-ben. A lekérdezéshez használja a `enqueuedTime`. |
+| iothub-connection-device-id | sztring | Ezt az értéket IoT Hub állítja be, és azonosítja az eszköz AZONOSÍTÓját. A lekérdezéshez használja a `$connectionDeviceId`. |
+| iothub-enqueuedtime | sztring | Ezt az értéket a IoT Hub állítja be, és a tényleges időpontot jelöli, hogy az üzenet enqueuing az UTC-ben. A lekérdezéshez használja a `enqueuedTime`. |
 | iothub – csatoló neve | sztring | Ezt az értéket a felhasználó állítja be, és a telemetria-üzenetet megvalósító digitális kettős interfész nevét jelöli. A lekérdezéshez használja a `$interfaceName`. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. |
 
 A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. A **ContentType**, a **ContentEncoding**és a **enqueuedTime**mellett a **connectionDeviceId** és a **connectionModuleId** is lekérdezhető.
@@ -66,7 +66,7 @@ Az alkalmazás tulajdonságai olyan felhasználó által definiált karakterlán
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 
-A `$` szimbólummal előre rögzíteni kell egy lekérdezést az üzenetrendszer tulajdonságaiban. Az alkalmazás tulajdonságainak lekérdezései a nevükkel érhetők el, és nem szabad a `$`szimbólummal előtaggal ellátni. Ha az alkalmazás-tulajdonság neve `$`vel kezdődik, akkor IoT Hub a Rendszertulajdonságokban keres rá, és nem található, akkor az alkalmazás tulajdonságai között fog megjelenni. Példa: 
+A `$` szimbólummal előre rögzíteni kell egy lekérdezést az üzenetrendszer tulajdonságaiban. Az alkalmazás tulajdonságainak lekérdezései a nevükkel érhetők el, és nem szabad a `$`szimbólummal előtaggal ellátni. Ha az alkalmazás-tulajdonság neve `$`vel kezdődik, akkor IoT Hub a Rendszertulajdonságokban keres rá, és nem található, akkor az alkalmazás tulajdonságai között fog megjelenni. Például: 
 
 Lekérdezés a rendszertulajdonság contentEncoding 
 
@@ -196,7 +196,7 @@ Az üzenet-útválasztás lehetővé teszi, hogy lekérdezze a JSON-objektumokat
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 
-Az üzenettörzs lekérdezését előtaggal kell ellátni a `$twin`. A lekérdezés kifejezése egy kettős címkét vagy egy tulajdonság hivatkozását is egyesítheti egy szövegtörzs-hivatkozással, egy üzenetrendszer tulajdonságaival és az üzenet alkalmazás tulajdonságainak hivatkozásával. Azt javasoljuk, hogy a címkék és a tulajdonságok egyedi nevét használják, mivel a lekérdezés nem megkülönbözteti a kis-és nagybetűket. Ez az összes eszközre és az ikrekre is vonatkozik. A `twin`, a `$twin`, a `body`vagy a `$body`használata is tartózkodik a tulajdonságok neveként. A következők például az összes érvényes lekérdezési kifejezés: 
+Az üzenet Twin lekérdezését előre fel kell oldani a `$twin`. A lekérdezés kifejezése egy kettős címkét vagy egy tulajdonság hivatkozását is egyesítheti egy szövegtörzs-hivatkozással, egy üzenetrendszer tulajdonságaival és az üzenet alkalmazás tulajdonságainak hivatkozásával. Azt javasoljuk, hogy a címkék és a tulajdonságok egyedi nevét használják, mivel a lekérdezés nem megkülönbözteti a kis-és nagybetűket. Ez az összes eszközre és az ikrekre is vonatkozik. A `twin`, a `$twin`, a `body`vagy a `$body`használata is tartózkodik a tulajdonságok neveként. A következők például az összes érvényes lekérdezési kifejezés: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

@@ -3,8 +3,8 @@ title: Migrálás a Resource Managerbe a PowerShell használatával
 description: Ez a cikk végigvezeti a platform által támogatott IaaS-erőforrások, például a virtuális gépek (VM-EK), a virtuális hálózatok és a klasszikus eszközökről a Storage-fiókok áttelepítésének Azure PowerShell parancsok használatával történő Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 0c145c84f9dea3b6212bb6c608eb1a4eb586ff60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647560"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056818"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
@@ -58,7 +58,7 @@ A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfig
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. lépés: Győződjön meg arról, hogy Ön az előfizetés rendszergazdája
 Az áttelepítés elvégzéséhez hozzá kell adnia az előfizetéshez tartozó [Azure Portal](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A **központi** menüben válassza az **előfizetés**lehetőséget. Ha nem látja, válassza a **minden szolgáltatás**lehetőséget.
 3. Keresse meg a megfelelő előfizetési bejegyzést, majd tekintse meg a **saját szerepkör** mezőt. A rendszergazdák számára az értéknek a _fiók_rendszergazdája kell lennie.
 

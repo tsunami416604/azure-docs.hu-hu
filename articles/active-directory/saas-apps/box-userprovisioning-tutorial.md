@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Mező konfigurálása a felhasználók automatikus átadása az Azure Active Directory |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Box között.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés beállítása a Azure Active Directoryhoz | Microsoft Docs'
+description: Útmutató az Azure Active Directory és a Box közötti egyszeri bejelentkezés konfigurálásához.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,123 +15,123 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60431766"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058569"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: Mező konfigurálása a felhasználók automatikus átadása
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
-Ez az oktatóanyag célja szemlélteti a lépéseket kell elvégeznie a mezőbe, és az Azure AD automatikus kiépítés és megszüntetni hozzárendeléseket felhasználói fiókokat az Azure AD-be.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a box-ban elvégzendő lépéseket, valamint az Azure AD-t, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Box-ba.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Box, a következőkre van szükség:
+Az Azure AD-integráció a Box-nal való konfigurálásához a következő elemek szükségesek:
 
-- Az Azure AD-bérlő
-- A Box üzleti terve vagy jobb
+- Azure AD-bérlő
+- Box üzleti terv vagy jobb
 
 > [!NOTE]
-> Ha ebben az oktatóanyagban a lépéseket, azt javasoljuk, hogy *nem* éles környezetben használja.
+> Ha teszteli az oktatóanyag lépéseit, javasoljuk, hogy *ne használjon éles* környezetet.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
 - Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ha nem rendelkezik Azure AD-próbaverzióval, egy [hónapos próbaverziót is beszerezhet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-box"></a>Felhasználók hozzárendelése a Boxba 
+## <a name="assigning-users-to-box"></a>Felhasználók kiosztása a box-ban 
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók és/vagy az Azure AD-csoportokat a felhasználók, akik hozzáférhetnek a Box alkalmazás a jelölik. Ha úgy döntött, rendelhet ezeket a felhasználókat a Box alkalmazás a következő utasításokat:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a Box-alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a Box-alkalmazáshoz:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Felhasználók és csoportok hozzárendelése
-A **Box > felhasználók és csoportok** lap az Azure Portalon lehetővé teszi, hogy adja meg, hogy mely felhasználók és csoportok szabad megadni a hozzáférést a Boxba. Hozzárendelése egy felhasználóhoz vagy csoporthoz történjen az alábbiakat eredményezi:
+## <a name="assign-users-and-groups"></a>Felhasználók és csoportok társítása
+> A Azure Portal **felhasználók és csoportok** lapján megadhatja, hogy mely felhasználók és csoportok számára legyen elérhető a Box. Egy felhasználó vagy csoport hozzárendelése a következő okok miatt fordul elő:
 
-* Az Azure AD lehetővé teszi, a hozzárendelt felhasználói (akár közvetlen hozzárendelés vagy a csoporttagság) mezőhöz történő hitelesítéséhez. Ha egy felhasználóhoz nincs hozzárendelve, az Azure AD nem engedélyezi azokat jelentkezzen be a mezőbe, és hibaüzenetet jelenít meg az Azure AD bejelentkezési oldal.
-* A Box alkalmazáscsempe bekerül a felhasználó [alkalmazásindítójában](../manage-apps/end-user-experiences.md).
-* Ha az Automatikus kiépítés engedélyezve van, majd a hozzárendelt felhasználók és csoportok kerülnek automatikusan ki kell építeni az üzembe helyezési üzenetsorba.
+* Az Azure AD lehetővé teszi a hozzárendelt felhasználó (közvetlen hozzárendelés vagy csoporttagság alapján) hitelesítését a box-ban. Ha a felhasználó nincs hozzárendelve, akkor az Azure AD nem engedélyezi, hogy bejelentkezzen a mezőbe, és hibát ad vissza az Azure AD bejelentkezési oldalán.
+* A rendszer a felhasználó [alkalmazás-indítójának](../manage-apps/end-user-experiences.md)adja hozzá a mezőhöz tartozó alkalmazás-csempét.
+* Ha az automatikus kiépítés engedélyezve van, akkor a hozzárendelt felhasználók és/vagy csoportok automatikusan kiépítve lesznek hozzáadva a kiépítési sorhoz.
   
-  * Ha csak a felhasználói objektumok lettek konfigurálva, ki kell építeni, majd az üzembe helyezési várólista összes közvetlenül hozzárendelt felhasználók kerülnek, és minden felhasználó, amelyek tagjai semmilyen hozzárendelt csoportok kerülnek, az üzembe helyezési várólista. 
-  * Ha voltak beállítva a csoportobjektumokhoz ki kell építeni, majd az összes hozzárendelt csoportot objektumok lesznek kiépítve, be, és minden olyan felhasználó, ezek a csoportok tagjai. A csoport- és csoporttagság alapján ír be megmaradnak.
+  * Ha csak a felhasználói objektumok lettek kiépítve, akkor az összes közvetlenül hozzárendelt felhasználó a kiépítési várólistába kerül, és az összes hozzárendelt csoportba tartozó felhasználó a kiépítési várólistába kerül. 
+  * Ha a csoportosítási objektumok úgy lettek konfigurálva, hogy kiépítve legyenek, akkor a rendszer az összes hozzárendelt csoportot kiépíti a Box-ba, és minden olyan felhasználót, aki ezen csoportok tagjai. A csoport-és felhasználói tagságok megmaradnak a box-ban való íráskor.
 
-Használhatja a **attribútumok > egyszeri bejelentkezés** lap segítségével konfigurálhatja, hogy mely felhasználói attribútumok (vagy a jogcímszolgáltatói) jelennek meg a Boxba SAML-alapú hitelesítés során, és a **attribútumok > kiépítési** lapról Állítsa be, hogyan felhasználói és csoportattribútum flow Azure AD-ből a Boxba operations kiépítése során.
+A következő **> attribútumokkal** konfigurálhatja, hogy mely felhasználói attribútumok (vagy jogcímek) jelennek meg a Box számára az SAML-alapú hitelesítés során, valamint az **attribútumok > kiépítés** lapon, hogy a felhasználói és a csoport attribútumai hogyan áramlanak be az Azure ad-ből a kiépítési műveletek során.
 
-### <a name="important-tips-for-assigning-users-to-box"></a>Felhasználók hozzárendelése Box fontos tippek 
+### <a name="important-tips-for-assigning-users-to-box"></a>Fontos Tippek a felhasználók a Box-hoz való hozzárendeléséhez 
 
-*   Javasoljuk, hogy egyetlen Azure ad-ben a felhasználói be az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
+*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználóhoz legyen rendelve a kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-*   Amikor egy felhasználó hozzárendelése a box, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
+*   Egy felhasználó Box-hoz rendeléséhez ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
 
-## <a name="enable-automated-user-provisioning"></a>Az automatikus felhasználó-kiépítés engedélyezése
+## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
 
-Ez a szakasz végigvezeti a csatlakozás az Azure AD-be a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissíteni, és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó és csoport-hozzárendelések alapján a boxban.
+Ez a szakasz azt ismerteti, hogyan csatlakoztatható az Azure AD a Box felhasználói fiók létesítési API-hoz, és hogyan konfigurálható a kiépítési szolgáltatás az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
-Ha az Automatikus kiépítés engedélyezve van, majd a hozzárendelt felhasználók és csoportok kerülnek automatikusan ki kell építeni az üzembe helyezési üzenetsorba.
+Ha az automatikus kiépítés engedélyezve van, akkor a hozzárendelt felhasználók és/vagy csoportok automatikusan kiépítve lesznek hozzáadva a kiépítési sorhoz.
     
- * Ha csak a felhasználói objektumok úgy kell létrehozni, akkor az üzembe helyezési várólista közvetlenül hozzárendelt felhasználók kerülnek, és minden felhasználó, amelyek tagjai semmilyen hozzárendelt csoportok kerülnek, az üzembe helyezési várólista vannak konfigurálva. 
+ * Ha csak a felhasználói objektumok vannak konfigurálva, akkor a közvetlenül hozzárendelt felhasználókat a kiépítési várólistába helyezi, és minden hozzárendelt csoportba tartozó felhasználó a kiépítési várólistába kerül. 
     
- * Ha voltak beállítva a csoportobjektumokhoz ki kell építeni, majd az összes hozzárendelt csoportot objektumok lesznek kiépítve, be, és minden olyan felhasználó, ezek a csoportok tagjai. A csoport- és csoporttagság alapján ír be megmaradnak.
+ * Ha a csoportosítási objektumok úgy lettek konfigurálva, hogy kiépítve legyenek, akkor a rendszer az összes hozzárendelt csoportot kiépíti a Box-ba, és minden olyan felhasználót, aki ezen csoportok tagjai. A csoport-és felhasználói tagságok megmaradnak a box-ban való íráskor.
 
 > [!TIP] 
-> Választhatja azt is, engedélyezve van a SAML-alapú egyszeri bejelentkezés a Box, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Box számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurálása automatikus felhasználói fiók kiépítése:
+### <a name="to-configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása:
 
-Ez a szakasz célja engedélyezése az Active Directory felhasználói fiókok a Boxba kidolgozására.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok kiépítés a Box-ba.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-2. Ha már konfigurált be egyszeri bejelentkezést, keresse meg a Box, a keresőmező használatával példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Box** az alkalmazás-katalógusában. Jelölje be a keresési eredmények között, és adja hozzá az alkalmazások listáját.
+2. Ha már konfigurálta az egyszeri bejelentkezést, a keresőmező használatával keresse meg a kívánt példányt. Ellenkező esetben válassza a **Hozzáadás** elemet, és keresse meg a **szövegmezőt** az alkalmazás-galériában. Jelölje ki a jelölőnégyzetet a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-3. Válassza ki a Box-példányát, majd válassza ki a **kiépítési** fülre.
+3. Válassza ki a Box-példányát, majd válassza a **kiépítés** lapot.
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**. 
+4. Állítsa a **kiépítési módot** **automatikus**értékre. 
 
-    ![Kiépítés](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** területén kattintson **engedélyezés** egy új böngészőablakban a Box bejelentkezési párbeszédpanel megnyitásához.
+5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre egy új böngészőablakban a Box bejelentkezési párbeszédpanel megnyitásához.
 
-6. Az a **hozzáférés biztosítása a Box bejelentkezési** lapon adja meg a szükséges hitelesítő adatokat, és kattintson a **engedélyezés**. 
+6. A **belépés a Box** -ba lapon adja meg a szükséges hitelesítő adatokat, majd kattintson az **Engedélyezés**gombra. 
    
-    ![Felhasználók automatikus kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769546.png "engedélyezése a felhasználók automatikus átadása")
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769546.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-7. Kattintson a **hozzáférést biztosít a Boxba** engedélyezni ezt a műveletet, és térjen vissza az Azure Portalon. 
+7. A művelet engedélyezéséhez és a Azure Portalhoz való visszatéréshez kattintson a **hozzáférés engedélyezése jelölőnégyzetre** . 
    
-    ![Felhasználók automatikus kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769549.png "engedélyezése a felhasználók automatikus átadása")
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769549.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-8. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a Box alkalmazás. Ha a kapcsolat hibája esetén, győződjön meg arról, a Box-fiók csapat rendszergazdai engedélyekkel rendelkező, majd próbálkozzon a **"Engedélyezés"** lépés újra.
+8. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Box-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Box-fiókja rendelkezik rendszergazdai jogosultságokkal, majd próbálja megismételni az **"engedélyezés"** lépést.
 
-9. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be a jelölőnégyzetet.
+9. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítő e-mailek** mezőben, majd jelölje be a jelölőnégyzetet.
 
-10. Kattintson a **mentéséhez.**
+10. Kattintson a **Mentés gombra.**
 
-11. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a Boxba.**
+11. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása jelölőnégyzetet.**
 
-12. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok a Boxba szinkronizált Azure AD-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveleteket a felhasználói fiókokat a boxban. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+12. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Box-ba szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-13. Az Azure AD létesítési szolgáltatás Box engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** beállítások szakaszában
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Box számára, módosítsa a **kiépítési állapotot** **a következőre** a Settings (beállítások) szakaszban.
 
-14. Kattintson a **mentéséhez.**
+14. Kattintson a **Mentés gombra.**
 
-Felhasználók és/vagy a felhasználók és csoportok szakaszban be hozzárendelt csoportokat a kezdeti szinkronizálás, amely elindítja. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a kiépítési szolgáltatást, a Box alkalmazás a által végrehajtott összes műveletet.
+Ezzel elindítja a felhasználók és csoportok szakaszban a mezőhöz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Box alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-A Box bérlőben szinkronizált felhasználók be vannak felsorolva **felügyelt felhasználók** a a **felügyeleti konzol**.
+A Box-bérlőben a szinkronizált felhasználók a **felügyelt felhasználók** területen jelennek meg a **felügyeleti konzolon**.
 
-![Integráció állapotát](./media/box-userprovisioning-tutorial/IC769556.png "integrációs állapota")
+![Integrációs állapot](./media/box-userprovisioning-tutorial/IC769556.png "Integrációs állapot")
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](box-tutorial.md)

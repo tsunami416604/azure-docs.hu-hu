@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765760"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047845"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
 
@@ -37,7 +37,9 @@ A múltban engedélyezte a ServiceMap megoldást a munkaterületen, és a Log An
 
 
 ## <a name="how-do-i-upgrade"></a>Hogyan frissíteni?
-A frissítést igénylő virtuális gépeket a Azure Portal Azure Monitor for VMs első **lépések** lapján találhatja meg. Frissíthet egyetlen virtuális gépet, vagy kijelölhet egyszerre többet is a frissítéshez. A PowerShell használatával történő frissítéshez használja a következő parancsot:
+Ha egy Log Analytics munkaterület a Azure Monitor legújabb verziójára frissül a virtuális gépekre, akkor a függőségi ügynököt az adott munkaterülethez csatlakoztatott összes virtuális gépre frissíti. A frissítést igénylő virtuális gépeket a Azure Portal Azure Monitor for VMs első **lépések** lapján találhatja meg. Ha a virtuális gép frissítését választja, akkor az adott virtuális géphez tartozó munkaterületet a munkaterülethez csatolt többi virtuális géppel együtt frissíti. Egyetlen vagy több virtuális GÉPET, erőforráscsoportot vagy előfizetést is kijelölhet. 
+
+A következő parancs használatával frissíthet egy munkaterületet a PowerShell használatával:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -53,7 +55,7 @@ Miután frissítettük felhasználói felületét a `InsightsMetrics` táblában
 >Ha vannak olyan riasztási szabályok, amelyek hivatkoznak ezekre a számlálóra a `Perf` táblában, frissítenie kell őket a `InsightsMetrics` táblában tárolt új adatértékekre való hivatkozáshoz. Tekintse meg a dokumentációt, például a táblázatra hivatkozó log-lekérdezéseket.
 >
 
-Ha úgy dönt, hogy a teljesítményszámlálók engedélyezve vannak, akkor a `Perf` táblában a [Log Analytics díjszabás [(https://azure.microsoft.com/pricing/details/monitor/) ) alapján betöltött és tárolt adatmennyiség után kell fizetnie.
+Ha úgy dönt, hogy a teljesítményszámlálók engedélyezve vannak, akkor a `Perf` táblában a [Log Analytics díjszabás [(https://azure.microsoft.com/pricing/details/monitor/)) alapján betöltött és tárolt adatmennyiség után kell fizetnie.
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Hogyan befolyásolja ez a változás a riasztási szabályokat?
 
@@ -97,7 +99,7 @@ A Azure Monitor for VMs frissítését várhatóan január 2020-én Kiszabadítj
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>A Health funkció korlátozott nyilvános előzetes verzióban érhető el
 
-Nagy mennyiségű visszajelzést kaptunk az ügyfelektől a VM Health szolgáltatás készletével kapcsolatban. Sokan érdeklődnek a funkció iránt, és izgatottan várják, hogy az támogatni tudja majd a monitorozási munkafolyamatokat. Több változást is bevezetünk, új funkciókat adunk hozzá, és a beérkezett visszajelzéseknek is megpróbálunk eleget tenni. 
+Nagy mennyiségű visszajelzést kaptunk az ügyfelektől a VM Health szolgáltatás készletével kapcsolatban. Ez a funkció nagy érdeklődést mutat a figyelési munkafolyamatok támogatásával kapcsolatban. Azt tervezzük, hogy egy sor módosítást teszünk elérhetővé a funkciók hozzáadásához és a kapott visszajelzések kezeléséhez. 
 
 Ennek a változásnak az új ügyfelekre gyakorolt hatásának csökkentése érdekében a funkciót **korlátozott nyilvános előzetes**verzióra helyezte át. Ez a frissítés 2019 októberében történt.
 

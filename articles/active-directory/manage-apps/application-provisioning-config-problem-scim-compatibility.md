@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712345"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063594"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
 Azure Active Directory (Azure AD) automatikusan kiépítheti a felhasználókat és a csoportokat bármely olyan alkalmazásra vagy rendszerre, amelyet egy webszolgáltatásnak kell ellátnia a [rendszeren a tartományok közötti Identitáskezelés (scim) 2,0 protokoll specifikációja](https://tools.ietf.org/html/draft-ietf-scim-api-19)alapján meghatározott felületen. 
 
-A SCIM 2,0 protokoll Azure AD-támogatását a [rendszer a tartományok közötti Identitáskezelés (scim) használatával című témakör ismerteti, amellyel automatikusan kiépítheti a felhasználókat és csoportokat a Azure Active Directoryból az alkalmazásokba](use-scim-to-provision-users-and-groups.md), amelyek a scim 2,0-et támogató alkalmazások számára automatikusan kiépítik a felhasználókat és csoportokat az Azure ad-ből.
+A SCIM 2,0 protokoll Azure AD-támogatását a [rendszer a tartományok közötti Identitáskezelés (scim) használatával című témakör ismerteti, amellyel automatikusan kiépítheti a felhasználókat és csoportokat a Azure Active Directoryból az alkalmazásokba](../app-provisioning/use-scim-to-provision-users-and-groups.md), amelyek a scim 2,0-et támogató alkalmazások számára automatikusan kiépítik a felhasználókat és csoportokat az Azure ad-ből.
 
 Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatásának az SCIM 2,0-es protokollal való betartásával kapcsolatos aktuális és múltbeli problémákat ismerteti, valamint a problémák megoldását.
 
@@ -113,5 +113,5 @@ Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kó
 
 
 ## <a name="next-steps"></a>Következő lépések
-[További információ az SaaS-alkalmazásokhoz való kiépítés és kiépítés ellen](user-provisioning.md)
+[További információ az SaaS-alkalmazásokhoz való kiépítés és kiépítés ellen](../app-provisioning/user-provisioning.md)
 

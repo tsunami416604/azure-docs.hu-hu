@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531380"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048362"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
 
@@ -24,7 +24,7 @@ A huzavona adatáramlási folyamata az Power Query online mashup-szerkesztő ál
 
 A huzavona adatforgalmai különösen hasznosak az adatmérnökök vagy a Citizen-adatintegrátorok számára.
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>Gyors interaktív adatfeltárás és-előkészítés
 
@@ -42,9 +42,9 @@ Az adatokat kód nélküli módon vizsgálhatja, hogy eltávolítsa a kiugró é
 
 | Összekötő | Adatformátum | Hitelesítés típusa |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Fiók kulcsa |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, parketta | Fiókkulcs |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | CSV | Szolgáltatásnév |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Fiók kulcsa, egyszerű szolgáltatásnév |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, parketta | Fiók kulcsa, egyszerű szolgáltatásnév |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-hitelesítés |
 | [Azure szinapszis-elemzés](connector-azure-sql-data-warehouse.md) | - | SQL-hitelesítés |
 

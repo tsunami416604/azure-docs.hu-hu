@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662934"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054915"
 ---
 | Erőforrás | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
@@ -17,18 +17,18 @@ ms.locfileid: "75662934"
 | Előtér-IP-konfigurációk |2 |1 nyilvános és 1 magán |
 | Előtér-portok |100<sup>1</sup> | |
 | Háttérbeli címkészlet |100<sup>1</sup> | |
-| Háttér-kiszolgálók/készlet |1200 | |
+| Háttér-kiszolgálók/készlet |1,200 | |
 | HTTP-figyelők |100<sup>1</sup> | |
 | HTTP-terheléselosztási szabályok |100<sup>1</sup> | |
 | Háttérbeli HTTP-beállítások |100<sup>1</sup> | |
-| Átjárónkénti példányok száma |32 | |
-| SSL-tanúsítványok |100<sup>1</sup> |1/HTTP-figyelők |
+| Átjárónkénti példányok száma |V1 SKU – 32<br>V2 SKU – 125 | |
+| SSL-tanúsítványok |100<sup>1</sup> |1/HTTP-figyelő |
 | SSL-tanúsítvány maximális mérete |V1 SKU – 10 KB<br>V2 SKU – 16 KB| |
 | Hitelesítési tanúsítványok |100 | |
-| Megbízható főtanúsítványok |100 | |
+| Megbízható legfelső szintű tanúsítványok |100 | |
 | Kérelem időkorlátja (minimum) |1 másodperc | |
 | Kérelem időtúllépésének maximális száma |24 óra | |
-| Helyek száma |100<sup>1</sup> |1/HTTP-figyelők |
+| Helyek száma |100<sup>1</sup> |1/HTTP-figyelő |
 | URL-térképek/figyelő |1 | |
 | Elérésiút-alapú szabályok maximális elérési útja egy URL-címen|100||
 | Átirányítási konfigurációk |100<sup>1</sup>| |

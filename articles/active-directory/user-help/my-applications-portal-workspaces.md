@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022358"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064036"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a saját alkalmazások portálján
 
-A munkaterületek különböző, a **saját alkalmazások** portálon megjelenő alkalmazás-nézetek. Az alkalmazások a gyűjtemények részleg vagy a felhasználói szerepkör szerint csoportosíthatók, például:. Ha nem látja az elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda még nem állította be és nem osztotta meg Önnel a t. Ha további segítségre vagy engedélyekre van a megosztott gyűjtemények megtekintéséhez, forduljon a szervezet ügyfélszolgálatához.
+A gyűjtemények különböző alkalmazás-nézetek, amelyeket a **saját alkalmazások** portálon láthat. Az alkalmazások a gyűjtemények részleg vagy a felhasználói szerepkör szerint csoportosíthatók, például:. Ha nem látja az elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda még nem állította be és nem osztotta meg Önnel a t. Ha további segítségre vagy engedélyekre van a megosztott gyűjtemények megtekintéséhez, forduljon a szervezet ügyfélszolgálatához.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 

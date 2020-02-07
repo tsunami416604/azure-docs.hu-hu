@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435855"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061641"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
 Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache Kafka-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales` és `marketingspend` témakörökhöz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Témakörök létrehozása egy Kafka-fürtön
 > * Ranger-házirendek tesztelése
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisite"></a>Előfeltételek
 
 Egy [HDInsight Kafka-fürt Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -112,7 +112,7 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
 
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)**a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
+1. Kövesse **az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag**[a példák létrehozását és üzembe helyezését](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ismertető szakaszának 2. és 3. lépését.
 
 1. Futtassa az alábbi parancsot:
 
@@ -146,6 +146,8 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user** a témakört `sale
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
 4. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése** szakasz 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` is elérhető legyen **sales_user**.
+
+**Megjegyzés: ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem a termelői fogyasztó projekt alatt, amely a nem tartományhoz csatlakoztatott forgatókönyvekhez tartozik).**
 
 5. A következő parancs végrehajtásával ellenőrizze, hogy a **sales_user1** képes-e a `salesevents` témakörre:
 
@@ -189,11 +191,14 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user** a témakört `sale
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-fürtöt a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
-1. Kattintson a **Törlés** gombra. Kattintson az **Igen** gombra.
+1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem pedig a nem tartományhoz tartozó gyártó-fogyasztói projekt alatt). csatlakoztatott forgatókönyvek).
 
 ## <a name="next-steps"></a>Következő lépések
 

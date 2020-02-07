@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása a Smartsheet |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének felhasználói fiókokat a Smartsheethez.
+title: 'Oktatóanyag: a Smartsheet konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Smartsheet.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,185 +15,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fbdf8a1c4b1881fc6dfd9d7b95a4103761e9ce7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670938"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063189"
 ---
-# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Smartsheet konfigurálása
+# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Smartsheet konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Smartsheet és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok a Smartsheethez bemutatásához.
+Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Smartsheet és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Smartsheet.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételek vonatkoznak:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Az Azure AD-bérlő
-* [Egy Smartsheet-bérlő](https://www.smartsheet.com/pricing)
-* A Smartsheet vállalati vagy nagyvállalati Premier csomag rendszergazda engedélyekkel rendelkező felhasználói fiókkal.
+* Azure AD-bérlő
+* [Smartsheet-bérlő](https://www.smartsheet.com/pricing)
+* Felhasználói fiók Smartsheet Enterprise vagy Enterprise Premier csomaggal, rendszergazdai engedélyekkel.
 
-## <a name="assign-users-to-smartsheet"></a>Felhasználók hozzárendelése a Smartsheethez
+## <a name="assign-users-to-smartsheet"></a>Felhasználók Smartsheet rendelése
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve az Azure AD-alkalmazáshoz hozzárendelt csoportok vannak szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben a Smartsheet hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok Smartsheet utasításokat követve:
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Smartsheet való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Smartsheet az alábbi utasításokat követve:
 
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Felhasználók hozzárendelése Smartsheet fontos tippek
+### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Fontos Tippek a felhasználók Smartsheet való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve a Smartsheethez a felhasználók automatikus konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Smartsheet-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* A Smartsheethez való hozzárendelésekor a felhasználó, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Amikor Smartsheet rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-* Ahhoz, hogy a felhasználó szerepkör-hozzárendelések Smartsheet és az Azure AD között a paritásos, ajánlott ugyanabban a szerepkör-hozzárendeléseket a teljes Smartsheet felhasználói listában vehető igénybe. A Felhasználólista smartsheetből lekéréséhez lépjen **Fiókadminisztrátor > felhasználók kezelése > További műveletek > Felhasználólista letöltése (csv)** .
+* A Smartsheet és az Azure AD közötti felhasználói szerepkör-hozzárendelések paritásának biztosítása érdekében ajánlott ugyanazokat a szerepkör-hozzárendeléseket használni, amelyek a teljes Smartsheet-felhasználók listájában fel vannak töltve. A felhasználói lista Smartsheet való lekéréséhez navigáljon a **fiók rendszergazdája > a felhasználói felügyelet > további műveletek > a felhasználói lista letöltése (CSV)** elemre.
 
-* Az alkalmazás egyes funkcióinak eléréséhez Smartsheet egy felhasználónak szüksége van több szerepkört. Többet szeretne megtudni a felhasználói típusok és engedélyek a Smartsheet, lépjen a [felhasználói típusai és engedélyek](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
+* Az alkalmazás egyes funkcióinak eléréséhez a Smartsheet-nek több szerepkörrel kell rendelkeznie. Ha többet szeretne megtudni a Smartsheet felhasználói típusairól és engedélyeiről, lépjen a [Felhasználói típusok és engedélyek](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)elemre.
 
-*  Ha egy felhasználó hozzárendelve az Smartsheet, több szerepkörrel rendelkezik az Ön **kell** győződjön meg arról, hogy a szerepkör-hozzárendelések replikálása az Azure AD egy olyan forgatókönyvet, ahol felhasználók megszakadhat a Smartsheet-objektumok elérése véglegesen elkerülése érdekében. Minden egyedi szerepkör Smartsheet- **kell** egy másik csoporthoz hozzárendelni az Azure ad-ben. A felhasználó **kell** majd adni a szükséges szerepkörök megfelelő csoportok. 
+*  Ha egy felhasználó több, a Smartsheet-ban hozzárendelt szerepkörrel rendelkezik, meg **kell** győződnie arról, hogy a szerepkör-hozzárendelések replikálva vannak az Azure ad-ben, így elkerülhető, hogy a felhasználók ne férhessenek hozzá a Smartsheet objektumokhoz. A Smartsheet minden egyes egyedi szerepkörét **hozzá kell rendelni** egy másik csoporthoz az Azure ad-ben. **Ezután a felhasználót hozzá kell adni** a kívánt szerepköröknek megfelelő csoportokhoz. 
 
-## <a name="set-up-smartsheet-for-provisioning"></a>A Smartsheet beállítása a kiépítéshez
+## <a name="set-up-smartsheet-for-provisioning"></a>Smartsheet beállítása a kiépítés számára
 
-Konfigurálja a Smartsheet az Azure AD-felhasználók automatikus, mielőtt szüksége lesz a Smartsheet SCIM-kiépítés engedélyezése.
+Az Azure AD-vel való automatikus Smartsheet konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Smartsheet-on.
 
-1. Jelentkezzen be egy **SysAdmin (rendszergazda)** a a **[Smartsheet-portál](https://app.smartsheet.com/b/home)** , és keresse meg **Fiókadminisztrátor**.
+1. Jelentkezzen be **rendszergazdaként** a **[Smartsheet-portálon](https://app.smartsheet.com/b/home)** , és navigáljon a **fiók rendszergazdája**elemre.
 
-    ![Smartsheet-fiók rendszergazdai](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
+    ![Smartsheet-fiók rendszergazdája](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Lépjen a **biztonsági vezérlők > felhasználó automatikus kiépítés > szerkesztése**.
+2. Lépjen a **biztonsági vezérlők > felhasználó automatikus kiépítés > szerkesztés**gombra.
 
-    ![A Smartsheet biztonsági vezérlőket](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
+    ![Smartsheet biztonsági vezérlők](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
-3. Adja hozzá, és ellenőrizze az e-mail-tartománnyal, azoknak a felhasználóknak, üzembe helyezése az Azure ad-ből a Smartsheethez tervezi. Válasszon **nincs engedélyezve a** győződjön meg arról, hogy az összes üzembe helyezési műveletek csak az Azure ad-ből származnak, és bizonyosodjon meg arról, hogy az Azure AD-hozzárendelések szinkronban-e a Smartsheet Felhasználólista.
+3. Adja hozzá és ellenőrizze az e-mail tartományokat azon felhasználók számára, akik számára az Azure AD-ből Smartsheet kíván kiépíteni. A **nincs engedélyezve** beállítás megadásával biztosíthatja, hogy a kiépítési műveletek csak az Azure ad-ből származzanak, valamint hogy a Smartsheet-felhasználók listája szinkronban legyen az Azure ad-hozzárendelésekkel.
 
-    ![A Smartsheet-felhasználó kiépítési](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
+    ![Smartsheet-felhasználó kiépítés](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
 
-4. Érvényesítés befejezése után a a tartomány aktiválni kell. 
+4. Az érvényesítés befejeződése után aktiválni kell a tartományt. 
 
-    ![A Smartsheet tartomány aktiválása](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
+    ![Smartsheet aktiválása tartomány](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Hozzon létre a **titkos jogkivonat** felhasználók automatikus átadása az Azure ad-vel való konfigurálásához szükséges **alkalmazások fejlesztése és integrációja**.
+5. Az **alkalmazásokhoz és az integrációhoz**való navigálással létrehozhatja az automatikus felhasználó-kiépítés az Azure ad-vel való konfigurálásához szükséges **titkos jogkivonatot** .
 
-    ![A Smartsheet-telepítés](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Smartsheet telepítése](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Válasszon **API-hozzáférés**. Kattintson a **új hozzáférési jogkivonat létrehozása**.
+6. Válassza az **API-hozzáférés**lehetőséget. Kattintson az **új hozzáférési jogkivonat előállítása**elemre.
 
-    ![A Smartsheet-telepítés](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![Smartsheet telepítése](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. Határozza meg az API hozzáférési jogkivonat nevét. Kattintson az **OK** gombra.
+7. Adja meg az API-hozzáférési jogkivonat nevét. Kattintson az **OK** gombra.
 
-    ![A Smartsheet-telepítés](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![Smartsheet telepítése](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
-8. Másolja be az API hozzáférési tokent, és mentse, ez lesz az egyetlen alkalom is megtekintheti. Ez a szükséges a **titkos jogkivonat** mezőt az Azure ad-ben.
+8. Másolja az API-hozzáférési jogkivonatot, és mentse, mivel ez az egyetlen időpontig megtekinthető. Erre szükség van az Azure AD **titkos jogkivonat** mezőjében.
 
-    ![A Smartsheet-jogkivonat](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
+    ![Smartsheet token](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
 
-## <a name="add-smartsheet-from-the-gallery"></a>A Smartsheet hozzáadása a katalógusból
+## <a name="add-smartsheet-from-the-gallery"></a>Smartsheet hozzáadása a gyűjteményből
 
-A Smartsheet az Azure AD-felhasználók automatikus konfigurálása, szüksége az Azure AD alkalmazáskatalógusában Smartsheet hozzáadása a felügyelt SaaS-alkalmazások listája.
+Az Azure AD-vel való automatikus Smartsheet konfigurálásához hozzá kell adnia a Smartsheet az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen válassza ki a **Azure Active Directory**.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a panel tetején.
+3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Smartsheet**válassza **Smartsheet** az eredmények panelen. 
+4. A keresőmezőbe írja be a **Smartsheet**kifejezést, majd az eredmények panelen kattintson a **Smartsheet** elemre. 
 
-    ![Az eredmények listájában Smartsheet](common/search-new-app.png)
+    ![Smartsheet az eredmények listájában](common/search-new-app.png)
 
-5. Válassza ki a **a Smartsheet-előfizetési** gomb, amely átirányítja Önt a Smartsheet a bejelentkezési lapot. 
+5. Válassza ki a **Smartsheet (regisztráció)** gombot, amely átirányítja Önt a Smartsheet bejelentkezési oldalára. 
 
     ![Smartsheet OIDC hozzáadása](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
 
-6. Mivel Smartsheet OpenIDConnect alkalmazás, válassza ki a Smartsheethez a Microsoft munkahelyi fiókjával bejelentkezni.
+6. Mivel a Smartsheet egy OpenIDConnect-alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a Smartsheet lehetőséget.
 
-    ![A Smartsheet OIDC bejelentkezés](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
+    ![Smartsheet OIDC-bejelentkezés](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
 
-7. A sikeres hitelesítés után fogadja el a hozzájárulást kérő lap hozzájárulási kérése. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a Smartsheet-fiók, a rendszer átirányítja.
+7. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a Smartsheet-fiókjába.
 
-    ![A Smartsheet OIDc jóváhagyás](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
+    ![Smartsheet OIDc-beleegyezett](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
 
-## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Felhasználók automatikus átadása a Smartsheethez konfigurálása 
+## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Automatikus felhasználó-kiépítés beállítása a Smartsheet 
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók konfigurálásáról és/vagy az Azure AD felhasználói és/vagy a csoport-hozzárendelések alapján Smartsheet-csoportok.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Smartsheet alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
-### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása a Smartsheet az Azure ad-ben:
+### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Smartsheet az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Smartsheet**.
+2. Az alkalmazások listában válassza a **Smartsheet**lehetőséget.
 
-    ![A Smartsheet-hivatkozás alkalmazásainak listájában](common/all-applications.png)
+    ![Az Smartsheet hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![Kiépítés lapon](common/provisioning.png)
+    ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lapon](common/provisioning-automatic.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban bemeneti `https://scim.smartsheet.com/v2/` a **bérlői URL-cím**. Bemeneti érték olvassa be, és a smartsheetből korábban mentett **titkos jogkivonat**. Kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Smartsheet csatlakozhat. Ha a kapcsolat nem sikerül, ellenőrizze a Smartsheet-fiók rendelkezik-e rendszergazdai jogosultságokkal, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://scim.smartsheet.com/v2/` a **bérlői URL-címben**. Adja meg a beolvasott és a korábban mentett értéket a **titkos token**Smartsheet. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Smartsheet. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Smartsheet-fiók rendelkezik SysAdmin engedélyekkel, és próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
-8. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Smartsheethez**.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Smartsheet**lehetőséget.
 
-    ![A Smartsheet Felhasználóleképezéseket](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
+    ![Smartsheet felhasználói leképezések](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
 
-9. Tekintse át a felhasználói attribútumok a Smartsheethez a szinkronizált Azure AD-ből a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok Smartsheet-frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Smartsheet. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Smartsheet felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![A Smartsheet felhasználói attribútumok](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
+    ![Smartsheet felhasználói attribútumai](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
 
-10. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Az Azure AD létesítési szolgáltatás a Smartsheet engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+11. Az Azure AD-kiépítési szolgáltatás Smartsheet való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolt](common/provisioning-toggle-on.png)
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Határozza meg a felhasználók és/vagy a csoportok, adja meg a Smartsheethez kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+12. Adja meg a Smartsheet kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-    ![Hatókör-kiépítés](common/provisioning-scope.png)
+    ![Kiépítési hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll rendelkezésre, kattintson a **mentése**.
+13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
-    ![Üzembe helyezési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely a Smartsheet-kiszolgáló üzembe helyezése az Azure AD által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Smartsheet-on végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="connector-limitations"></a>Összekötő-korlátozások
+## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A Smartsheet nem támogatja a soft-törlések. Ha egy felhasználó **aktív** attribútumot hamis értékre van állítva, a Smartsheet véglegesen törli a felhasználót.
+* A Smartsheet nem támogatja a Soft-delete használatát. Ha a felhasználó **aktív** attribútuma hamis értékre van állítva, a Smartsheet véglegesen törli a felhasználót.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

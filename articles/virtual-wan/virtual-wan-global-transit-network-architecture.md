@@ -1,18 +1,19 @@
 ---
-title: Azure Virtual WAN globális tranzit hálózati architektúra | Microsoft Docs
+title: 'Architektúra: globális átviteli hálózati architektúra'
+titleSuffix: Azure Virtual WAN
 description: Ismerje meg a Virtual WAN-hoz készült globális átviteli hálózati architektúrát
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607372"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064971"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -137,7 +138,7 @@ A VNet vagy harmadik féltől származó biztonságos tranzit lehetővé teszi, 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
 Az ág – Internet vagy harmadik féltől származó biztonságos továbbítás lehetővé teszi, hogy az ágak a virtuális WAN-központban Azure Firewall keresztül csatlakozhassanak az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális WAN-kapcsolaton keresztüli kapcsolatokat, és telepítse a Azure Firewallt az VWAN hub (ok) ban.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a DocuSign |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a DocuSign között.
+title: 'Oktatóanyag: a DocuSign konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és DocuSign között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,89 +15,89 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121d147a3f8c91f17e955120b2c14f7dbd3da592
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60280116"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058178"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása DocuSign konfigurálása
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés DocuSign konfigurálása
 
-Ez az oktatóanyag célja, a lépéseket kell elvégeznie a DocuSign és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből DocuSign mutatni.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a DocuSign és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a DocuSign.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
-*   Azure Active directory-bérlő.
-*   A DocuSign az egyszeri bejelentkezés engedélyezve van az előfizetés.
-*   Egy felhasználói fiókot a Docusignban csapat rendszergazdai jogosultságokkal rendelkezik.
+*   Egy Azure Active Directory-bérlő.
+*   DocuSign egyszeri bejelentkezésre alkalmas előfizetés.
+*   Felhasználói fiók a DocuSign-ben a csoport rendszergazdai engedélyeivel.
 
-## <a name="assigning-users-to-docusign"></a>Felhasználók hozzárendelése DocuSign
+## <a name="assigning-users-to-docusign"></a>Felhasználók kiosztása a DocuSign
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálódnak.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók, illetve a csoportok az Azure ad-ben képviselik a felhasználók, akik hozzáférhetnek a DocuSign-alkalmazását. Ha úgy döntött, utasításokat követve ezeket a felhasználókat rendelhet DocuSign-alkalmazását:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a DocuSign alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a DocuSign-alkalmazáshoz:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-docusign"></a>Felhasználók hozzárendelése DocuSign fontos tippek
+### <a name="important-tips-for-assigning-users-to-docusign"></a>Fontos Tippek a felhasználók DocuSign való hozzárendeléséhez
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó DocuSign azt az üzembe helyezési konfiguráció tesztelése rendelve. További felhasználók később is rendelhető.
+*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a DocuSign a létesítési konfiguráció teszteléséhez. Később további felhasználók is hozzárendelhetők.
 
-*   Amikor egy felhasználó hozzárendelése a DocuSign, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
+*   Ha a felhasználó DocuSign rendel hozzá, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
 
 > [!NOTE]
-> Az Azure AD nem támogatja a csoportos kiépítését, a Docusign-alkalmazáshoz, csak a felhasználók bővítheti.
+> Az Azure AD nem támogatja a Docusign alkalmazással való csoportos kiépítés használatát, csak a felhasználók számára lehet kiépíteni.
 
-## <a name="enable-user-provisioning"></a>Felhasználó-kiépítés engedélyezése
+## <a name="enable-user-provisioning"></a>A felhasználó üzembe helyezésének engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-csatlakozás DocuSign a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a DocuSign az Azure ad-ben a felhasználó és csoport-hozzárendelések alapján.
+Ez a szakasz végigvezeti az Azure AD-nek a DocuSign felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és DocuSign alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!Tip]
-> Választhatja azt is, SAML-alapú egyszeri bejelentkezés engedélyezve van, a DocuSign, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a DocuSign, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-user-account-provisioning"></a>Konfigurálása a felhasználói fiók kiépítése:
+### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok üzembe helyezésének konfigurálása:
 
-Ez a szakasz célja engedélyezése a felhasználó kiépítése az Active Directory felhasználói fiókoknak az DocuSign kidolgozására.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok DocuSign való kiépítés.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-1. Ha már konfigurált DocuSign az egyszeri bejelentkezés, keresse meg a keresési mező használatával DocuSign-példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **DocuSign** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a DocuSign, és adja hozzá az alkalmazások listáját.
+1. Ha már konfigurálta a DocuSign az egyszeri bejelentkezéshez, keresse meg a DocuSign-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **DocuSign** az alkalmazás-gyűjteményben. Válassza a DocuSign lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-1. Válassza ki a DocuSign-példányát, majd válassza ki a **kiépítési** fülre.
+1. Válassza ki a DocuSign példányát, majd válassza a **kiépítés** lapot.
 
-1. Állítsa be a **Kiépítési mód** való **automatikus**. 
+1. Állítsa a **kiépítési módot** **automatikus**értékre. 
 
-    ![Kiépítés](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
+1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
-    a. Az a **rendszergazdai felhasználónév** szövegmezőbe írja be a DocuSign-fiók, amelynek neve a **rendszergazda** DocuSign.com hozzárendelni a profilt.
+    a. A **rendszergazda felhasználóneve** szövegmezőbe írja be azt a DocuSign-fióknevet, amelyben a **rendszergazda profil található** a DocuSign.com hozzárendelve.
    
-    b. Az a **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
+    b. A **rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
 
-1. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a DocuSign-alkalmazás.
+1. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a DocuSign-alkalmazáshoz.
 
-1. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket kapni, és jelölje be a jelölőnégyzetet.
+1. Az **értesítő e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek a kiépítési hibákra vonatkozó értesítéseket kell kapnia, majd jelölje be a jelölőnégyzetet.
 
-1. Kattintson a **mentéséhez.**
+1. Kattintson a **Mentés gombra.**
 
-1. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a DocuSign.**
+1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a DocuSign lehetőséget.**
 
-1. Az a **attribútumleképezések** területen tekintse át a DocuSign az Azure AD-ből szinkronizált felhasználói attribútumok. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a DocuSign a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az DocuSign-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a DocuSign felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-1. Az Azure AD létesítési szolgáltatás, a DocuSign engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** beállítások szakaszában
+1. Az Azure AD-kiépítési szolgáltatás DocuSign való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
-1. Kattintson a **mentéséhez.**
+1. Kattintson a **Mentés gombra.**
 
-Elindítja a kezdeti szinkronizálás, a DocuSign, a felhasználók és csoportok szakaszban hozzárendelve felhasználók. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a DocuSign az alkalmazást a kiépítési szolgáltatás által végrehajtott összes műveletet.
+Elindítja a felhasználók és csoportok szakaszban DocuSign rendelt felhasználók kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a DocuSign alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](docusign-tutorial.md)

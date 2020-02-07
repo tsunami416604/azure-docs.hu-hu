@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: ce8ef987adc0cec4fcd8acef4cc075d50c92d62a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 244a71d400493a2029e831b729c63bc0b0dfe559
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722888"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049646"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
 
@@ -78,13 +78,13 @@ A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott t
 
 Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett titkosítási algoritmusokat IoT Hub ügyféloldali SDK-k használatával.
 
-| Nyelv | TLS 1,2 támogatott | Dokumentáció |
-|----------|-------------------|---------------|
-| Ü        | Igen               | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Igen               | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Igen               | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Igen               | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Igen               | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
+| Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
+|----------|------------------------------------|---------------|
+| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | 2\.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | 1\.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | 1\.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | 1\.12.2 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben

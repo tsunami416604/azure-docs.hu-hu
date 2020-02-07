@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288955"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049758"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
 
@@ -62,7 +62,7 @@ Az ügynök nélküli függőségi vizualizációk nem igénylik a gépeken lév
 
 Állítson be egy olyan felhasználói fiókot, amely rendelkezik a szükséges engedélyekkel, hogy a kiszolgáló értékelése hozzáférhessen a virtuális géphez a felderítéshez. Egy felhasználói fiókot is megadhat.
 
-- **Szükséges engedélyek a Windows rendszerű virtuális gépeken**: a felhasználói fióknak "vendég" hozzáférésre van szüksége.
+- **Szükséges engedélyek a Windows rendszerű virtuális gépeken**: a felhasználói fióknak helyi vagy tartományi rendszergazdának kell lennie.
 - **Szükséges engedélyek Linux rendszerű virtuális gépeken**: a fiókhoz rendszergazdai jogosultság szükséges. A felhasználói fióknak ezt a két funkciót kell megadnia a/bin/netstat és a/bin/ls fájlokhoz: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>A felhasználói fiók hozzáadása a berendezéshez
@@ -76,7 +76,7 @@ Adja hozzá a fiókot a következő módon:
 3. Válassza ki az **operációs rendszert**.
 4. Adja meg a fiók rövid nevét.
 5. Adja meg a **felhasználónevet** és a **jelszót**
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
     ![VM-felhasználói fiók hozzáadása](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -96,7 +96,7 @@ Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi
 
 A függőségi felderítés megkezdése után 6 órával is megjelenítheti a függőségeket.
 
-## <a name="visualize-dependencies"></a>Függőségek vizualizálása
+## <a name="visualize-dependencies"></a>Függőségek megjelenítése
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Keresse meg azt a gépet, amelyre vonatkozóan meg szeretné tekinteni a függőségi térképet.

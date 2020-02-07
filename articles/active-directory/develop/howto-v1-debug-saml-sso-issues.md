@@ -12,25 +12,25 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 648338f2ba57ad1c460c1c5b4a8d9a2ee91ebb1b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697013"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063713"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban
 
 Ismerje meg, hogyan találhatja meg és javíthatja az [egyszeri bejelentkezéssel](../manage-apps/what-is-single-sign-on.md) kapcsolatos problémákat Azure Active Directory (Azure ad) által támogatott [Security Assertion Markup Language (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)-es alkalmazásokhoz. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Javasoljuk, hogy telepítse a [saját alkalmazások biztonságos bejelentkezési bővítményét](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). Ez a böngésző-bővítmény megkönnyíti az SAML-kérelmek és az SAML-válasz adatainak összegyűjtését, amelyekre szüksége van az egyszeri bejelentkezéssel kapcsolatos problémák megoldásához. Ha nem tudja telepíteni a bővítményt, ez a cikk bemutatja, Hogyan oldhatók fel a bővítmények és azok nélkül a hibák.
 
 A saját alkalmazások biztonságos bejelentkezési bővítményének letöltéséhez és telepítéséhez használja az alábbi hivatkozások egyikét.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- A [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 ## <a name="test-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés tesztelése
@@ -101,4 +101,4 @@ A hiba elhárításához kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy az egyszeri bejelentkezés az alkalmazáson dolgozik, [automatizálhatja a felhasználók üzembe](../manage-apps/user-provisioning.md) helyezését és megszüntetését az SaaS-alkalmazásokhoz vagy [a feltételes hozzáférés használatának megkezdéséhez](../conditional-access/app-based-conditional-access.md).
+Most, hogy az egyszeri bejelentkezés az alkalmazáson dolgozik, [automatizálhatja a felhasználók üzembe](../app-provisioning/user-provisioning.md) helyezését és megszüntetését az SaaS-alkalmazásokhoz vagy [a feltételes hozzáférés használatának megkezdéséhez](../conditional-access/app-based-conditional-access.md).

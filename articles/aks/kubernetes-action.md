@@ -7,20 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130530"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046348"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
 A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. A Kubernetes művelet [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) megkönnyíti az Azure Kubernetes Service-fürtök üzembe helyezését. A művelet beállítja a cél AK-alapú fürt kontextusát, amelyet más műveletek, például az [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), az [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) stb. használhatnak, vagy futtathatnak bármilyen kubectl-parancsot.
-
-> [!IMPORTANT]
-> A GitHub-műveletek jelenleg béta verzióban vannak. Először [regisztrálnia kell, hogy csatlakozzon az előzetes](https://github.com/features/actions) verzióhoz a GitHub-fiók használatával.
-> 
 
 A munkafolyamatot egy YAML-fájl (. YML) határozza meg a tárház `/.github/workflows/` útvonalán. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
@@ -78,9 +74,9 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
 A tároló lemezképek felépítése és leküldése `Azure/docker-login@v1` művelettel történik. Ha a Container-lemezképet AK-ra szeretné telepíteni, akkor a `Azure/k8s-deploy@v1` műveletet kell használnia. Ehhez a művelethez öt paraméter tartozik:
 
-| **A paraméter**  | **Magyarázat**  |
+| **Paraméter**  | **Magyarázat**  |
 |---------|---------|
-| **namespace** | Választható Válassza ki a cél Kubernetes-névteret. Ha a névtér nincs megadva, a parancsok az alapértelmezett névtérben fognak futni. | 
+| **névtér** | Választható Válassza ki a cél Kubernetes-névteret. Ha a névtér nincs megadva, a parancsok az alapértelmezett névtérben fognak futni. | 
 | **jegyzékek** |  Szükséges A jegyzékfájl elérési útja, amelyet a rendszer az üzembe helyezéshez fog használni |
 | **képek** | Választható A jegyzékfájlok helyettesítéséhez használni kívánt rendszerkép (ek) teljes erőforrás-URL-címe |
 | **imagepullsecrets** | Választható Egy olyan Docker-beállításjegyzékbeli titok neve, amely már be van állítva a fürtön belül. Az egyes titkos nevek a imagePullSecrets mezőben találhatók a bemeneti jegyzékfájlban található munkaterhelések esetében. |
@@ -134,7 +130,7 @@ jobs:
           demo-k8s-secret
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon különböző adattárakban találhatja meg a műveleteket, melyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub a CI/CD-hez való használatához és az alkalmazások Azure-beli üzembe helyezéséhez.
 

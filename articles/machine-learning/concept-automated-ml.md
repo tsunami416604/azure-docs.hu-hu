@@ -10,14 +10,14 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894887"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048973"
 ---
-# <a name="what-is-automated-machine-learning"></a>Mi az az automatizált gépi tanulás?
+# <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
 Az automatizált gépi tanulás, más néven automatizált ML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML a [Microsoft kutatási részlegének](https://arxiv.org/abs/1705.05355)áttörésén alapul.
 
@@ -95,11 +95,11 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális featurization
 
-További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
+További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#featurization). A beállítás engedélyezése a következővel:
 
-+ Azure Machine Learning Studio: az [alábbi lépésekkel](how-to-create-portal-experiments.md)kiválaszthatja a **featurization beállításainak megtekintése** a **konfigurációs Futtatás** szakaszban.
++ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-create-portal-experiments.md#create-and-run-experiment).
 
-+ Python SDK: `"feauturization": auto' / 'off' / FeaturizationConfig` megadása a [`AutoMLConfig` osztályhoz](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
++ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` megadása a [`AutoMLConfig` osztályhoz](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 ## <a name="prevent-over-fitting"></a>Túlterhelések megakadályozása
 
@@ -141,9 +141,9 @@ Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolód
 
 | Modell | Vonat pontossága | Teszt pontossága |
 |-------|----------------|---------------|
-| A | 99,9% | 95% |
+| A | 99.9% | 95% |
 | B | 87% | 87% |
-| C# | 99,9% | 45% |
+| C | 99.9% | 45% |
 
 Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
@@ -151,7 +151,7 @@ Az **a** és **B**modellek összehasonlításakor a Model **a** jobb modell, mer
 
 A **C** modell a túlzott illesztések egyértelmű esetét jelöli. a betanítás pontossága nagyon magas, de a teszt pontossága nem a magashoz közel van. Ez a különbségtétel szubjektív, de a probléma és az adatok ismerete, valamint a hibák számának elfogadható. 
 
-## <a name="time-series-forecasting"></a>Idősoros előrejelzés
+## <a name="time-series-forecasting"></a>Idősorozat-előrejelzés
 
 Az előrejelzések az üzleti tevékenység szerves részét képezik, függetlenül attól, hogy bevételi, leltározási, értékesítési vagy vevői igények. Az automatikus ML-vel kombinálhatja a technikákat és a megközelítéseket, és egy ajánlott, magas színvonalú idősorozat-előrejelzést is igénybe vehet.
 

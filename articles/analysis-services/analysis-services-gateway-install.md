@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264067"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062149"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
@@ -22,12 +22,12 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Rendszerkövetelmények:**
+**Minimális követelmények:**
 
-* .NET-keretrendszer 4.5-ös verziója
+* .NET 4,5-keretrendszer
 * a Windows 8/Windows Server 2012 R2 64 bites verziója (vagy újabb)
 
-**Ajánlott:**
+**Ajánlott**
 
 * 8 magos processzor
 * 8 GB memória
@@ -43,8 +43,6 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 * Az átjáró telepítésekor a számítógépre bejelentkezett felhasználói fióknak szolgáltatás-jogosultságként kell bejelentkeznie. Ha a telepítés befejeződött, a helyszíni adatátjáró szolgáltatás az NT SERVICE\PBIEgwService fiókot használja a szolgáltatásként való bejelentkezéshez. A telepítés befejezése után egy másik fiók is megadható a telepítés során vagy a szolgáltatásokban. Győződjön meg arról, Csoportházirend beállítások lehetővé teszik, hogy az Ön által a telepítéskor bejelentkezett fiók és a kiválasztott szolgáltatásfiók szolgáltatásként történő bejelentkezéssel rendelkezzen.
 * Jelentkezzen be az Azure-ba egy Azure AD-fiókkal ugyanahhoz a [bérlőhöz](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) , amelyhez az átjárót regisztrálja. Az Azure B2B-(vendég-) fiókok nem támogatottak átjáró telepítésekor és regisztrálása esetén.
 * Ha az adatforrások egy Azure Virtual Networkon (VNet) vannak, akkor konfigurálnia kell a [AlwaysUseGateway](analysis-services-vnet-gateway.md) -kiszolgáló tulajdonságát.
-* Az itt ismertetett (egyesített) átjáró nem támogatott az Azure Germany-régiókban. Ehelyett használjon **dedikált helyszíni átjárót Azure Analysis Serviceshoz**, amelyet a kiszolgáló **gyorskonfigurálás** a portálon telepítenek. 
-
 
 ## <a name="download"></a>Letöltés
 
@@ -56,7 +54,7 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 2. Válassza **a helyszíni adatátjáró**lehetőséget.
 
-   ![Válassza ezt:](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Kiválasztás](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Válasszon ki egy helyet, fogadja el a feltételeket, majd kattintson a **telepítés**gombra.
 

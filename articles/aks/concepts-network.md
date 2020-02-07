@@ -1,18 +1,17 @@
 ---
 title: Fogalmak – hálózatkezelés az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatásban (ak), beleértve a kubenet és az Azure CNI hálózatkezelését, a bejövő vezérlőket, a terheléselosztó és a statikus IP-címeket.
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547965"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047461"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -57,7 +56,7 @@ A terheléselosztó és szolgáltatások IP-címe dinamikusan rendelhető hozzá
 
 A *belső* és *külső* terheléselosztó is létrehozható. A belső terheléselosztó csak privát IP-címet kap, ezért nem érhetők el az internetről.
 
-## <a name="azure-virtual-networks"></a>Azure-alapú virtuális hálózatok
+## <a name="azure-virtual-networks"></a>Azure-beli virtuális hálózatok
 
 Az AK-ban olyan fürtöt helyezhet üzembe, amely a következő két hálózati modell egyikét használja:
 
@@ -97,7 +96,7 @@ A kubenet és az Azure CNI egyaránt biztosítanak hálózati kapcsolatot az AK-
 
 A kubenet és az Azure CNI között a következő viselkedési különbségek léteznek:
 
-| Szolgáltatás                                                                                   | Kubenet   | Azure-CNI |
+| Képesség                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Fürt üzembe helyezése meglévő vagy új virtuális hálózaton                                            | Támogatott – UDR manuálisan alkalmazva | Támogatott |
 | Pod-Pod kapcsolat                                                                         | Támogatott | Támogatott |
@@ -115,10 +114,10 @@ A használt hálózati modelltől függetlenül a kubenet és az Azure CNI is ü
 * Az Azure platform képes automatikusan létrehozni és konfigurálni a virtuális hálózati erőforrásokat, amikor egy AK-fürtöt hoz létre.
 * A virtuális hálózati erőforrásokat manuálisan is létrehozhatja és konfigurálhatja, és csatolhatja ezeket az erőforrásokat az AK-fürt létrehozásakor.
 
-Bár a szolgáltatás-végpontok vagy UDR is támogatottak mind a kubenet, mind az Azure CNI esetében, az [AK támogatási szabályzatai][support-policies] határozzák meg, hogy milyen módosításokat végezhet el. Példa:
+Bár a szolgáltatás-végpontok vagy UDR is támogatottak mind a kubenet, mind az Azure CNI esetében, az [AK támogatási szabályzatai][support-policies] határozzák meg, hogy milyen módosításokat végezhet el. Például:
 
 * Ha egy AK-fürthöz manuálisan hozza létre a virtuális hálózati erőforrásokat, akkor a saját UDR vagy szolgáltatási végpontok konfigurálásakor is támogatott.
-* Ha az Azure-platform automatikusan létrehozza az AK-fürthöz tartozó virtuális hálózati erőforrásokat, akkor a saját UDR vagy szolgáltatási végpontok konfigurálásához nem lehet kézzel módosítani az AK által felügyelt erőforrásokat.
+* Ha az Azure-platform automatikusan létrehozza az AK-fürthöz tartozó virtuális hálózati erőforrásokat, a saját UDR vagy szolgáltatási végpontok konfigurálásához nem támogatott manuálisan módosítani az AK által felügyelt erőforrásokat.
 
 ## <a name="ingress-controllers"></a>Bejövő vezérlők
 
@@ -132,9 +131,9 @@ Az AK-ban létrehozhat egy bejövő erőforrásokat, például NGINX-et, vagy ha
 
 A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-kapcsolaton keresztül elért nagyméretű webalkalmazások esetében a TLS-megszakítást a bejövő erőforrások nem az alkalmazáson belül, hanem a bejövő erőforrással is tudják kezelni. A TLS-hitelesítés automatikus létrehozásához és konfigurálásához beállíthatja, hogy a bejövő erőforrások olyan szolgáltatók használatára legyenek használhatók, mint például a titkosítás. Az NGINX beáramlási vezérlőnek a titkosítással való konfigurálásával kapcsolatos további információkért lásd: [bejövő és TLS][aks-ingress-tls].
 
-A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürt egyik tárolójába irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrásának IP-címe nem lesz elérhető a cél tárolóban. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja az SSL-áteresztőt. Az ügyfél-forrás IP-megőrzés és az SSL-továbbítás más szolgáltatásokkal is használható, például a *terheléselosztó* típussal.
+A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürtön lévő egyik tárolóhoz irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrás IP-címe nem lesz elérhető a cél tároló számára. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőben, nem használhatja az SSL-áteresztőt. Az ügyfél-forrás IP-megőrzés és az SSL-továbbítás más szolgáltatásokkal is használható, például a *terheléselosztó* típussal.
 
-## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
 A hálózati biztonsági csoport a virtuális gépek, például az AK-csomópontok forgalmát szűri. A szolgáltatások, például a terheléselosztó létrehozása során az Azure platform automatikusan konfigurálja a hálózati biztonsági csoportok szükséges szabályait. Ne konfigurálja manuálisan a hálózati biztonsági csoport szabályait a hüvelyek forgalmának szűrésére egy AK-fürtben. Adja meg a szükséges portokat és továbbítást a Kubernetes szolgáltatás jegyzékfájljának részeként, és hagyja, hogy az Azure platform létrehozza vagy frissítse a megfelelő szabályokat. Hálózati házirendeket is használhat a következő szakaszban leírtak szerint, hogy automatikusan alkalmazza a forgalmi szűrő szabályait a hüvelyekre.
 

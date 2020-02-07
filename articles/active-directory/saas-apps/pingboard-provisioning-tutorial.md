@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278253"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061275"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Pingboard konfigurálása
 
@@ -88,7 +88,7 @@ Ez a szakasz végigvezeti az Azure AD az Pingboard felhasználói fiók létesí
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Pingboard**lehetőséget.
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Pingboard-be szinkronizálandó felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Pingboard felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget. További információ: a [felhasználói kiépítési attribútumok társításának testreszabása](../manage-apps/customize-application-attributes.md).
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Pingboard-be szinkronizálandó felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Pingboard felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget. További információ: a [felhasználói kiépítési attribútumok társításának testreszabása](../app-provisioning/customize-application-attributes.md).
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Pingboard számára, a **Beállítások** szakaszban módosítsa a **kiépítési állapot** beállítást **a**következőre:.
 
@@ -96,10 +96,10 @@ Ez a szakasz végigvezeti az Azure AD az Pingboard felhasználói fiók létesí
 
 A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a következő szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat. A naplók a kiépítési szolgáltatás által a Pingboard alkalmazásban végrehajtott összes műveletet írják le.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséről.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](pingboard-tutorial.md)
