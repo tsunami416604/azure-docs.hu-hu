@@ -161,6 +161,8 @@
         - name: Üzembe helyezés – REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: Üzembe helyezés a GitHubból
+          href: deploy-to-azure-button.md
         - name: What-if típusú üzembe helyezés
           href: template-deploy-what-if.md
         - name: Újratelepítés hiba esetén

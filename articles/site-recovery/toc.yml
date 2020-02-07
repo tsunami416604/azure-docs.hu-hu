@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: Hyper-V rendszerű virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell használatával
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: Hyper-V rendszerű virtuális gépek Azure-ba történő vészhelyreállításának beállítása (VMM-mel) a PowerShell használatával
+    - name: Hyper-V rendszerű virtuális gépek vészhelyreállításának beállítása (VMM-mel) a PowerShell használatával
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Automation-runbookok hozzáadása helyreállítási tervekhez
       href: site-recovery-runbook-automation.md
