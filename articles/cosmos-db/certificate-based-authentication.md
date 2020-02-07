@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442106"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064495"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
 
-A tanúsítványalapú hitelesítés lehetővé teszi az ügyfélalkalmazás hitelesítését Azure Active Directory (Azure AD) és egy ügyféltanúsítvány használatával. A tanúsítványalapú hitelesítést olyan gépen is elvégezheti, amelyre szüksége van egy identitásra, például egy helyszíni gépre vagy egy Azure-beli virtuális gépre. Az alkalmazás elolvashatja Azure Cosmos DB kulcsait anélkül, hogy a kulcsokat közvetlenül az alkalmazásban kelljen volna beolvasnia. Ez a cikk bemutatja, hogyan hozhat létre egy minta Azure AD-alkalmazást, hogyan konfigurálhatja tanúsítványalapú hitelesítésre, bejelentkezhet az Azure-ba az új alkalmazás-identitás használatával, majd lekéri a kulcsokat az Azure Cosmos-fiókból. Ez a cikk a Azure PowerShell használatával állítja be az identitásokat, és C# egy minta alkalmazást biztosít, amely hitelesíti és hozzáfér a kulcsokhoz az Azure Cosmos-fiókból.  
+A tanúsítványalapú hitelesítéssel az ügyfélalkalmazás ügyféltanúsítvánnyal hitelesíthető az Azure Active Directory (Azure AD) használatával. A tanúsítványalapú hitelesítést olyan gépen végezheti el, amelyen identitásra van szükség, például egy helyszíni gépen vagy egy Azure-beli virtuális gépen. Az alkalmazás elolvashatja Azure Cosmos DB kulcsait anélkül, hogy a kulcsokat közvetlenül az alkalmazásban kelljen volna beolvasnia. Ez a cikk bemutatja, hogyan hozhat létre egy minta Azure AD-alkalmazást, hogyan konfigurálhatja tanúsítványalapú hitelesítésre, bejelentkezhet az Azure-ba az új alkalmazás-identitás használatával, majd lekéri a kulcsokat az Azure Cosmos-fiókból. Ez a cikk a Azure PowerShell használatával állítja be az identitásokat, és C# egy minta alkalmazást biztosít, amely hitelesíti és hozzáfér a kulcsokhoz az Azure Cosmos-fiókból.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ A tanúsítványalapú hitelesítés lehetővé teszi az ügyfélalkalmazás hit
 
 Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiókjában. Ezt az alkalmazást később a rendszer a Azure Cosmos DB-fiók kulcsainak olvasásához használja. Egy alkalmazás regisztrálásához kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, lépjen a **Alkalmazásregisztrációk** panelre, és válassza az **új regisztráció**lehetőséget. 
 
@@ -55,7 +55,6 @@ Ebben a lépésben telepíteni fogja az Azure AD PowerShell-modult. Ez a modul a
 1. Windows PowerShell integrált parancsprogram-kezelési környezet megnyitása rendszergazdai jogosultságokkal. Ha még nem tette meg, telepítse az az PowerShell-modult, és kapcsolódjon az előfizetéséhez. Ha több előfizetéssel rendelkezik, beállíthatja az aktuális előfizetés környezetét az alábbi parancsokban látható módon:
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 
@@ -104,7 +103,7 @@ A fenti parancs az alábbi képernyőképhez hasonló kimenetet eredményez:
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Az Azure Cosmos-fiók konfigurálása az új identitás használatára
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **hozzáférés-vezérlés (iam) panelt** .
 
@@ -120,7 +119,7 @@ A tanúsítvány alapú hitelesítő adatokat társíthatja az Azure AD-beli üg
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, nyissa meg a **Alkalmazásregisztrációk** ablaktáblát, és nyissa meg az előző lépésben létrehozott minta alkalmazást. 
 

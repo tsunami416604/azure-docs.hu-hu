@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422641"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063526"
 ---
 # <a name="configure-password-single-sign-on"></a>Jelszó egyszeri bejelentkezésének konfigurálása
 
-Ha [egy Gallery-alkalmazást](add-gallery-app.md) vagy egy [nem Gallery-](add-non-gallery-app.md) webalkalmazást AD hozzá az Azure ad vállalati alkalmazásaihoz, az egyik elérhető egyszeri bejelentkezési lehetőség a [jelszó-alapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso). Ez a lehetőség bármely, HTML-alapú bejelentkezési oldallal rendelkező web esetében elérhető. A jelszó-alapú egyszeri bejelentkezés (más néven a jelszó-tároló) lehetővé teszi a felhasználók hozzáférésének és jelszavának kezelését az identitás-összevonást nem támogató webalkalmazásokhoz. Olyan helyzetekben is hasznos, amikor több felhasználónak egyetlen fiókot kell megosztania, például a szervezete közösségi Media app-fiókjaival. 
+Ha [egy Gallery-alkalmazást](add-gallery-app.md) vagy egy [nem Gallery-webalkalmazást](add-non-gallery-app.md) AD hozzá az Azure ad vállalati alkalmazásaihoz, az egyik elérhető egyszeri bejelentkezési lehetőség a [jelszó-alapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso). Ez a lehetőség bármely, HTML-alapú bejelentkezési oldallal rendelkező web esetében elérhető. A jelszó-alapú egyszeri bejelentkezés (más néven a jelszó-tároló) lehetővé teszi a felhasználók hozzáférésének és jelszavának kezelését az identitás-összevonást nem támogató webalkalmazásokhoz. Olyan helyzetekben is hasznos, amikor több felhasználónak egyetlen fiókot kell megosztania, például a szervezete közösségi Media app-fiókjaival. 
 
 A jelszó-alapú egyszeri bejelentkezés nagyszerű lehetőséget biztosít az alkalmazások Azure AD-ba való integrálásának gyors megkezdésére, és lehetővé teszi a következőket:
 
@@ -32,7 +32,7 @@ A jelszó-alapú egyszeri bejelentkezés nagyszerű lehetőséget biztosít az a
 
 -   Saját felhasználónevek és jelszavak megadásának engedélyezése a **felhasználók** számára az [alkalmazás-hozzáférési panelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) manuálisan begépelt összes meglévő alkalmazás-fiókhoz
 
--   A felhasználóhoz rendelt felhasználónevek és jelszavak megadásának engedélyezése az **üzleti csoport tagjai** számára az önkiszolgáló [alkalmazás-hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) szolgáltatás használatával
+-   A felhasználóhoz rendelt felhasználónevek és jelszavak megadásának engedélyezése az **üzleti csoport tagjai** számára az [önkiszolgáló alkalmazás-hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) szolgáltatás használatával
 
 -   Annak engedélyezése, hogy a **rendszergazda** megadhatja a felhasználók vagy csoportok által az alkalmazásba való bejelentkezéskor használandó felhasználónevet és jelszót a hitelesítő adatok frissítése funkció használatával. 
 
@@ -44,7 +44,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-2. Navigáljon **Azure Active Directory** > **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
+2. Navigáljon **Azure Active Directory** > **vállalati alkalmazások**elemre. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
 
 3. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
@@ -56,7 +56,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 7. Adja meg az alkalmazás webalapú bejelentkezési oldalának URL-címét. A karakterláncnak a Felhasználónév beviteli mezőjét tartalmazó oldalnak kell lennie.
 
-   ![Jelszóalapú egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Jelszó alapú egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 8. Kattintson a **Mentés** gombra. Az Azure AD megpróbálja elemezni a bejelentkezési oldalt a Felhasználónév-bevitelhez és a jelszó beviteléhez. Ha a kísérlet sikeres, elkészült. 
  
@@ -68,7 +68,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja a bejelentkezést.
 
-1. Az **alkalmazás neve > konfiguráció területen válassza az alkalmazás nevének konfigurálása > jelszó egyszeri bejelentkezés beállításai lehetőséget a bejelentkezés konfigurálása lap megjelenítéséhez. \<**  **\<** 
+1. Az **\<alkalmazás neve > konfiguráció**területen válassza a konfigurálás **\<alkalmazás neve > jelszó egyszeri bejelentkezési beállítások** lehetőséget a **Bejelentkezés konfigurálása** lap megjelenítéséhez. 
 
 2. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet. A bejelentkezési mezők manuális észlelését ismertető további utasítások jelennek meg.
 
@@ -81,7 +81,7 @@ Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja
 5. A megadott URL-címmel rendelkező lapon ugorjon végig a bejelentkezési folyamaton. Adja meg a Felhasználónév és a jelszó mezőket, majd próbáljon meg bejelentkezni. (Nem kell megadnia a megfelelő jelszót.)
 
    A rendszer felszólítja a rögzített bejelentkezési mezők mentésére.
-6. Kattintson az **OK** gombra. A böngésző bővítménye frissíti a rögzítés állapota lapot, és az üzenet **metaadatai frissültek**az alkalmazáshoz. A böngésző lap bezárul.
+6. Kattintson az **OK** gombra. A böngésző bővítménye frissíti a rögzítés állapota lapot, és az üzenet **metaadatai frissültek az alkalmazáshoz**. A böngésző lap bezárul.
 
 7. Az Azure AD **configure bejelentkezési** oldalán kattintson az **OK gombra, és sikerült bejelentkezni az alkalmazásba**.
 
@@ -92,7 +92,7 @@ A bejelentkezési oldal rögzítése után felhasználókat és csoportokat rend
 > [!NOTE]
 > Feltöltheti az alkalmazás csempe emblémáját az alkalmazás **Konfigurálás** lapján található **embléma feltöltése** gombbal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)
-- [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](configure-automatic-user-provisioning-portal.md)
+- [A felhasználói fiókok automatikus üzembe helyezésének konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

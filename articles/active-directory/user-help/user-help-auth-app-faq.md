@@ -2,7 +2,7 @@
 title: Kérdések & Microsoft Authenticator alkalmazással kapcsolatos válaszok – Azure AD
 description: Gyakori kérdések és válaszok (GYIK) a Microsoft-hitelesítési alkalmazásról és a kétfaktoros ellenőrzésről.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 70f4844a8c157ba7964ce1053c007db8e9301336
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704697"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063883"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -50,7 +50,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Az Apple Watch Companion-alkalmazás összeomlott. Elküldhetem az összeomlási naplókat, hogy meg lehessen vizsgálni? | Először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br><br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános**elemre, majd kattintson az **elemzés megtekintése**elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok**területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a Microsoft Authenticator alkalmazást a telefonján, és illessze be a másolt szöveget a **megosztás az alkalmazás-fejlesztők** között szövegmezőbe a **naplók küldése** lapon.</li></ol> |
 | Mi az az alkalmazás-zárolási funkció, és hogyan segít megőrizni a biztonságot? | Az egyszer használatos PIN-kódok, az alkalmazásadatok és az Alkalmazásbeállítások biztonságosabbá tételéhez bekapcsolhatja az alkalmazás zárolási funkcióját a Microsoft Authenticator alkalmazásban. Ha bekapcsolja az alkalmazás zárolását a Microsoft Authenticator alkalmazás **Beállítások** képernyőjén, a rendszer a PIN-kód vagy a biometrikus adatoknak a Microsoft Authenticator alkalmazás minden egyes megnyitásakor történő hitelesítését kéri. Ez a szolgáltatás extra védelmet nyújt, így a Microsoft Authenticator alkalmazásban az értesítések jóváhagyása nem változik.<br><br>**Megjegyzés**<br>Mivel az eszközök regisztrációja a Microsoft Authenticator alkalmazáson kívül más helyszíneken is megtörténhet, például a Céges portál alkalmazásban vagy az Android-fiók beállításain belül, nincs garancia arra, hogy az alkalmazás zárolása leállítja a felhasználót a Microsofthoz való hozzáféréshez. Hitelesítő alkalmazás. |
 | Miért kapok értesítést a fiókommal kapcsolatos tevékenységről? | Ha többet szeretne megtudni arról, hogy mi történik a személyes Microsoft-fiókával kapcsolatban, tevékenység-értesítéseket küldünk a Microsoft Authenticator alkalmazásnak. Ezek az értesítések azonnal megjelennek valami változás után, így segítve a biztonság megőrzését. Korábban elküldte ezeket az értesítéseket e-mailben és SMS-ben, és már kiterjesztjük az alkalmazást is. További információ ezekről a tevékenységi értesítésekről: [Mi történik, ha szokatlan bejelentkezés van a fiókjába](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Ha meg szeretné változtatni, hogy hol kapja meg az értesítéseket, jelentkezzen be, ahol kapcsolatba léphet a fiókja [nem kritikus fiókkal kapcsolatos riasztások](https://account.live.com/SecurityNotifications/Update) oldalával. |
-| A munkahelyi vagy iskolai fiókba való bejelentkezéskor az iOS-hez készült alapértelmezett e-mail-alkalmazás használatával a rendszer rákérdez a biztonsági ellenőrzési információk Microsoft Authenticator alkalmazásra. Miután megtörtént az információ megadása és a posta alkalmazásba való visszatérés, hibaüzenetet kapok. Mit tegyek? | Ez valószínűleg azért történik, mert a bejelentkezés és a levelező alkalmazás két különböző alkalmazásban fordul elő, így a kezdeti háttér-bejelentkezési folyamat leáll, és sikertelen lesz. Ha szeretné kijavítani ezt a megoldást, javasoljuk, hogy a képernyő jobb alsó sarkában lévő **Safari** ikonra kattintva jelentkezzen be a levelező alkalmazásba. A Safariba való áthelyezéssel a teljes bejelentkezési folyamat egyetlen alkalmazásban történik, amely lehetővé teszi, hogy sikeresen bejelentkezzen az alkalmazásba. |
+| A munkahelyi vagy iskolai fiókba való bejelentkezéskor az iOS-hez készült alapértelmezett e-mail-alkalmazás használatával a rendszer rákérdez a biztonsági ellenőrzési információk Microsoft Authenticator alkalmazásra. Miután megtörtént az információ megadása és a posta alkalmazásba való visszatérés, hibaüzenetet kapok. Mit tehetek? | Ez valószínűleg azért történik, mert a bejelentkezés és a levelező alkalmazás két különböző alkalmazásban fordul elő, így a kezdeti háttér-bejelentkezési folyamat leáll, és sikertelen lesz. Ha szeretné kijavítani ezt a megoldást, javasoljuk, hogy a képernyő jobb alsó sarkában lévő **Safari** ikonra kattintva jelentkezzen be a levelező alkalmazásba. A Safariba való áthelyezéssel a teljes bejelentkezési folyamat egyetlen alkalmazásban történik, amely lehetővé teszi, hogy sikeresen bejelentkezzen az alkalmazásba. |
 | Az egyszeri jelszavas (OTP) kódok nem működnek. Mit tegyek? | Győződjön meg arról, hogy az eszközön megadott dátum és idő megfelelő, és hogy a rendszer automatikusan szinkronizálja őket. Ha a dátum és az idő helytelen, vagy nincs szinkronban, a kód nem fog működni. |
 
 ## <a name="next-steps"></a>Következő lépések

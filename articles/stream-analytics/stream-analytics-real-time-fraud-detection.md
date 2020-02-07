@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458793"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064392"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés a Azure Stream Analytics használatával: a csalások valós idejű észlelése
 
@@ -52,29 +52,36 @@ Az adatfolyamok elemzéséhez *Az Azure* -ba kerül. Az adatok betöltésének t
 >[!NOTE]
 >Az eljárás részletesebb változata: [Event Hubs névtér és az Event hub létrehozása a Azure Portal használatával](../event-hubs/event-hubs-create.md). 
 
-### <a name="create-a-namespace-and-event-hub"></a>Névtér és Event hub létrehozása
+### <a name="create-a-namespace-and-event-hub"></a>A névtér és az eseményközpont létrehozása
 Ebben az eljárásban először létre kell hoznia egy Event hub-névteret, majd hozzá kell adnia egy Event hub-t a névtérhez. Az Event hub-névterek a kapcsolódó Event Bus-példányok logikai csoportosítására szolgálnak. 
 
-1. Jelentkezzen be a Azure Portalba, és kattintson az **erőforrás létrehozása** > **eszközök internetes hálózata** > **Event hub**elemre. 
+1. Jelentkezzen be a Azure Portalba, és kattintson a képernyő bal felső részén található **erőforrás létrehozása** elemre.
 
-2. A **névtér létrehozása** panelen adja meg a névtér nevét (például `<yourname>-eh-ns-demo`). Bármilyen nevet használhat a névtérhez, de a névnek érvényesnek kell lennie az URL-címhez, és egyedinek kell lennie az Azure-ban. 
+2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd válassza a **csillag (`*`)** lehetőséget a **Event Hubs** elem mellett az **elemzési** kategóriában. Győződjön meg arról, hogy a bal oldali navigációs menüben a **Event Hubs** a **Kedvencek közé** kerül. 
+
+   ![Event Hubs keresése](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. A bal oldali navigációs menüben kattintson a **Kedvencek** elemre, majd a **Hozzáadás** elemre az eszköztáron válassza a **Event Hubs** lehetőséget.
+
+   ![Hozzáadás gomb](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. A **névtér létrehozása** panelen adja meg a névtér nevét (például `<yourname>-eh-ns-demo`). Bármilyen nevet használhat a névtérhez, de a névnek érvényesnek kell lennie az URL-címhez, és egyedinek kell lennie az Azure-ban. 
     
-3. Válasszon ki egy előfizetést, hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson a **Létrehozás**gombra.
+5. Válasszon ki egy előfizetést, hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson a **Létrehozás**gombra.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. Ha a névtér befejezte a telepítést, keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
+6. Ha a névtér befejezte a telepítést, keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
 
-5. Kattintson az új névtérre, majd a névtér ablaktáblán kattintson az **Event hub**elemre.
+7. Kattintson az új névtérre, majd a névtér ablaktáblán kattintson az **Event hub**elemre.
 
    ![Az Event hub hozzáadása gomb új Event hub létrehozásához](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Nevezze el az új Event hub `asa-eh-frauddetection-demo`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Jelenleg nem kell megadnia az Event hub egyéb beállításait.
+8. Nevezze el az új Event hub `asa-eh-frauddetection-demo`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Jelenleg nem kell megadnia az Event hub egyéb beállításait.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. Kattintson a **Create** (Létrehozás) gombra.
+9. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
@@ -91,7 +98,7 @@ Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak r
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Kattintson a **Create** (Létrehozás) gombra.
+4.  Kattintson a **Létrehozás** gombra.
 
 5.  Miután telepítette a házirendet, kattintson rá a megosztott hozzáférési házirendek listájában.
 
@@ -171,7 +178,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a **Létrehozás** gombra.
 
     A rendszer létrehozza a feladatot, és a portál megjeleníti a feladatok részleteit. A művelet még nem fut, de a művelet elkezdése előtt konfigurálnia kell a feladatot.
 
@@ -187,16 +194,16 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Bemeneti alias  |  CallStream   |  Adja meg a feladat bemenetének azonosító nevét.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott Event hub tartozik.   |
-   |Event Hubs-névtér  |  ASA-eh-NS-bemutató |  Adja meg az Event hub-névtér nevét.   |
-   |Eseményközpont neve  | ASA-eh-frauddetection-bemutató | Válassza ki az Event hub nevét.   |
-   |Eseményközpont szabályzatának neve  | ASA – szabályzat – felügyelet – bemutató | Válassza ki a korábban létrehozott hozzáférési szabályzatot.   |
+   |-előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott Event hub tartozik.   |
+   |Event Hubs-névtér  |  asa-eh-ns-demo |  Adja meg az Event hub-névtér nevét.   |
+   |Eseményközpont neve  | asa-eh-frauddetection-demo | Válassza ki az Event hub nevét.   |
+   |Eseményközpont szabályzatának neve  | asa-policy-manage-demo | Válassza ki a korábban létrehozott hozzáférési szabályzatot.   |
 
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Kattintson a **Create** (Létrehozás) gombra.
+4. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Lekérdezések létrehozása a valós idejű adatértékek átalakításához
 
@@ -357,14 +364,14 @@ Ha rendelkezik meglévő blob Storage-fiókkal, ezt használhatja. Ebből az okt
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Kimeneti alias  |  CallStream-FraudulentCalls   |  Adja meg a feladat kimenetének azonosító nevét.   |
-   |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
+   |-előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |Tárfiók  |  asaehstorage |  Adja meg a létrehozott Storage-fiók nevét. |
-   |Tároló  | ASA-fraudulentcalls – bemutató | Válassza az új létrehozása elemet, és adja meg a tároló nevét. |
+   |Container  | asa-fraudulentcalls-demo | Válassza az új létrehozása elemet, és adja meg a tároló nevét. |
 
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. Kattintson a **Mentés** gombra. 
+5. Kattintson a **Save** (Mentés) gombra. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>A streaming Analytics-feladatok elindítása

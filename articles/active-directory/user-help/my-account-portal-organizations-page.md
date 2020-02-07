@@ -2,7 +2,7 @@
 title: Szervezetek kezelése a saját fiók portálról – Azure AD
 description: A saját fiók portál szervezetek lapján megtekintheti és elhagyhatja a munkahelyi vagy iskolai fiókjához kapcsolódó szervezeteket.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: e8bea2c8eed210278b52b7ce6095a77c41fdd6ab
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705139"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062472"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
 

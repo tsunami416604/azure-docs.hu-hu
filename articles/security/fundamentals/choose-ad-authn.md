@@ -1,5 +1,6 @@
 ---
-title: Válassza ki a megfelelő hitelesítési módszert az Azure AD Hybrid Identity megoldáshoz | Microsoft Docs
+title: Hitelesítés az Azure AD Hybrid Identity Solutions-megoldásokhoz
+titleSuffix: Active Directory
 description: Ez az útmutató segítséget nyújt az ügyvezetők, a informatikai igazgatók, a CISOs, a vezető identitás-építészek, a vállalati építészek és a biztonsági és informatikai döntéshozók számára, hogy az Azure AD Hybrid Identity megoldáshoz használt hitelesítési módszert használják közepes és nagy szervezetekben.
 keywords: ''
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460691"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064427"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -34,7 +35,7 @@ Az identitás az IT-biztonság új vezérlő síkja, így a hitelesítés egy sz
 ### <a name="out-of-scope"></a>Hatókörön kívül
 Azok a szervezetek, amelyek nem rendelkeznek meglévő helyszíni címtár-lábnyommal, nem a jelen cikk középpontjában állnak. Ezek a vállalatok jellemzően csak a felhőben hoznak létre identitásokat, ami nem igényel hibrid identitási megoldást. A csak felhőalapú identitások kizárólag a felhőben találhatók, és nem kapcsolódnak a megfelelő helyszíni identitásokhoz.
 
-## <a name="authentication-methods"></a>Hitelesítési módok
+## <a name="authentication-methods"></a>Hitelesítési módszerek
 Ha az Azure AD Hybrid Identity megoldás az új vezérlő síkja, a hitelesítés a Felhőbeli hozzáférés alapja. A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
 
 A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak.
@@ -173,11 +174,11 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 
 |Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
-|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincs|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincs|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
-|Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Van állapot-figyelési megoldás?|Nem kötelező|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
 |Milyen típusú bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + jelszó<br><br>sAMAccountName + jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány-és intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Másodlagos bejelentkezési azonosító](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Támogatott a vállalati Windows Hello?|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*A Windows Server 2016-tartomány működési szintjét igényli*|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
@@ -191,7 +192,7 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 > [!NOTE]
 > Az Azure AD feltételes hozzáférésben az egyéni vezérlők jelenleg nem támogatják az eszközök regisztrálását.
 
-## <a name="recommendations"></a>Ajánlatok
+## <a name="recommendations"></a>Javaslatok
 Az Identity rendszer biztosítja, hogy a felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz, valamint az áttelepített és a felhőben elérhetővé tenni kívánt üzletági alkalmazásokhoz. Annak érdekében, hogy a jogosult felhasználók a szervezet bizalmas adataiból származó, produktív és rosszul működő felhasználókat is megőrizzen, a hitelesítés szabályozza az alkalmazásokhoz való hozzáférést.
 
 A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerhez használhatja vagy engedélyezheti a következő okok miatt:

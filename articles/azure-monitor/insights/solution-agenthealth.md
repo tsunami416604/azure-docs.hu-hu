@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402430"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062132"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health megoldás a Azure Monitor
 A Agent Health megoldás az Azure-ban segít megérteni, hogy az összes ügynök, amely közvetlenül a Log Analytics munkaterületen jelent meg Azure Monitor vagy egy Azure Monitorhoz csatlakoztatott System Center Operations Manager felügyeleti csoport, amely nem válaszol, és operatív adatgyűjtés elküldése.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -49,7 +49,7 @@ Amikor hozzáadja a megoldást a Log Analytics munkaterülethez, a rendszer hozz
 
 Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányítópult megnyitásához.  Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlop felsorolja azt a tíz eseményt, amelyek a legjobban megfelelnek az adott oszlop időtartományi feltételének. Az oszlopok alján jobb oldalon található **Az összes megtekintése** elemet vagy az oszlopok fejlécét kiválasztva a teljes listát lefedő keresést végezhet a naplóban.
 
-| Column | Leírás |
+| Oszlop | Leírás |
 |--------|-------------|
 | Ügynökök darabszáma egységidő alatt | Az ügynökök számának trendje egy hét napos időszakra vetítve, a Linux- és Windows-ügynököket is beleértve.|
 | Nem válaszoló ügynökök száma | Azon ügynökök listája, amelyek az elmúlt 24 órában nem küldtek szívverést.|
@@ -79,7 +79,7 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 | `Version` | Log Analytics ügynök vagy Operations Manager ügynök verziója.|
 | `SCAgentChannel` | Az érték *Direct* (Közvetlen) és/vagy *SCManagementServer*.|
 | `IsGatewayInstalled` | Ha Log Analytics átjáró van telepítve, az érték *true (igaz*), különben az érték *hamis*.|
-| `ComputerIP` | A számítógép IP-címe.|
+| `ComputerIP` | A számítógép nyilvános IP-címe. Azure-beli virtuális gépeken ez a nyilvános IP-címet jeleníti meg, ha van ilyen. A magánhálózati IP-címeket használó virtuális gépek esetében ez az Azure SNAT-címet (nem a magánhálózati IP-címet) jeleníti meg. |
 | `RemoteIPCountry` | A földrajzi hely, ahol a számítógép üzemel.|
 | `ManagementGroupName` | Az Operations Manager felügyeleti csoportjának neve.|
 | `SourceComputerId` | A számítógép egyedi azonosítója.|

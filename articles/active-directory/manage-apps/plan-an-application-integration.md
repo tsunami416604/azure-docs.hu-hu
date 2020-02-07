@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895937"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063380"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal
 
@@ -85,7 +85,7 @@ Ha egyéni alkalmazását szeretné felvenni az Azure-alkalmazás-katalógusba, 
 A következő cikkek az Azure AD-összekötők és az Azure ad-vel való integráció során az alkalmazásokhoz való hozzáférés kezelését ismertetik.
 
 * [Az alkalmazásokhoz való hozzáférés kezelése az Azure AD-vel](what-is-access-management.md)
-* [Automatizálás az Azure AD-összekötők révén](user-provisioning.md)
+* [Automatizálás az Azure AD-összekötők révén](../app-provisioning/user-provisioning.md)
 * [Felhasználók hozzárendelése egy alkalmazáshoz](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Csoportok hozzárendelése egy alkalmazáshoz](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Fiókok megosztása](../active-directory-sharing-accounts.md)
@@ -95,7 +95,7 @@ Részletes információk a [githubról](https://aka.ms/deploymentplans)tölthet�
 
 Telepítési terv letöltése a Azure Portalról:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **vállalati alkalmazások** lehetőséget | **válasszon ki egy alkalmazást** | **üzembe helyezési tervet**.
 
 Kérjük, küldjön visszajelzést az üzembe helyezési tervekről az [üzembe helyezési terv felmérésének](https://aka.ms/DeploymentPlanFeedback)megadásával.

@@ -4,21 +4,21 @@ description: A felhasználói rekordok tömeges letöltése a Azure Active Direc
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720298"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063832"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>A felhasználók listájának letöltése (előzetes verzió) a Azure Active Directory portálon
 
@@ -39,18 +39,17 @@ Az Azure AD felügyeleti központban lévő felhasználók listájának letölt�
 
    A letöltési fájl a felhasználók szűrt listáját fogja tartalmazni.
 
-   A rendszer a következő felhasználói attribútumokat fogja tartalmazni: 
+   A következő felhasználói attribútumok szerepelnek:
 
    - userPrincipalName
    - displayName
-   - vezetéknév
-   - levelezési
+   - Vezetéknév
+   - mail
    - givenName
    - objectId
    - userType
    - Beosztás
-   - részleg
-   - Manager
+   - Szervezeti egység
    - accountEnabled
    - usageLocation
    - streetAddress
@@ -60,7 +59,7 @@ Az Azure AD felügyeleti központban lévő felhasználók listájának letölt�
    - city
    - Irányítószám
    - telephoneNumber
-   - mobileszköz
+   - mobil
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
@@ -79,7 +78,7 @@ A függőben lévő tömeges kérelmek állapotát a **tömeges művelet eredmé
 
 A felhasználók listájának létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez lehetővé teszi, hogy legalább 500 000 felhasználóból álló listát hozzanak létre és töltsenek le.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges hozzáadása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)

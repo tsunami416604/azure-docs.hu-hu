@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848782"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061454"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Jelszavas kezelés – gyakori kérdések
 
@@ -36,7 +36,7 @@ Ez a GYIK a következő szakaszokra oszlik:
 
 * **K: a felhasználók regisztrálhatják a saját jelszó-visszaállítási adataikat?**
 
-  > **V:** Igen. Ha a jelszó-visszaállítás engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek (https://aka.ms/ssprsetup) a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen (https://myapps.microsoft.com) is regisztrálhatnak. Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
+  > **V:** Igen. Ha a jelszó-visszaállítás engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek (https://aka.ms/ssprsetup) a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen (https://myapps.microsoft.com)is regisztrálhatnak. Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
   >
   >
 * **K: ha engedélyezem a jelszó-visszaállítást egy csoport számára, és úgy dönt, hogy mindenki számára engedélyezi azt, akkor a felhasználóknak újra regisztrálniuk kell?**
@@ -114,7 +114,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: Hogyan vehetem fel a felhasználókat arra, hogy hová szeretnék visszaállítani a jelszavukat?**
 
-  > **A:** Próbálja ki a [SSPR üzembe helyezési](howto-sspr-deployment.md#communications-plan) cikkének néhány javaslatát.
+  > **A:** Próbálja ki a [SSPR üzembe helyezési](howto-sspr-deployment.md#plan-communications) cikkének néhány javaslatát.
   >
   >
 * **K: használhatom ezt a lapot egy mobileszközön?**

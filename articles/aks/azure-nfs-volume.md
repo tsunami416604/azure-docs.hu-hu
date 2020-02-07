@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549257"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063815"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS-(hálózati fájlrendszer) Linux Server-kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatással (ak)
 A tárolók közötti adatmegosztás gyakran a Container-alapú szolgáltatások és alkalmazások szükséges összetevője. Általában különböző hüvelyek vannak, amelyekhez ugyanahhoz az információhoz kell hozzáférni egy külső állandó köteten.    
@@ -20,7 +20,7 @@ Habár az Azure Files egy lehetőség, az NFS-kiszolgáló létrehozása Azure-b
 
 Ez a cikk bemutatja, hogyan hozhat létre NFS-kiszolgálót Ubuntu rendszerű virtuális gépen. Továbbá adja meg az AK-tárolók hozzáférését ehhez a megosztott fájlrendszerhez.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
 Az AK-fürtnek az NFS-kiszolgálóval azonos vagy összetartozó virtuális hálózatokban kell lennie. A fürtöt egy meglévő VNET kell létrehozni, amely a virtuális géppel megegyező VNET lehet.
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-A kiszolgáló újraindul (a parancsfájl miatt), és csatlakoztathatja az NFS-kiszolgálót az AK-hoz
+A kiszolgáló újraindul (a parancsfájl miatt), és csatlakoztathatja az NFS-kiszolgálót az AK-hoz.
 
 >[!IMPORTANT]  
 >Győződjön meg arról, hogy a **AKS_SUBNET** a megfelelővel cseréli ki a fürtöt, vagy "*" megnyitja az NFS-kiszolgálót minden portra és kapcsolatra.
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>AK-fürt csatlakoztatása az NFS-kiszolgálóhoz
-Az NFS-kiszolgálót összekapcsolhatjuk a fürttel úgy, hogy kiépítünk egy állandó kötetet és állandó mennyiségi jogcímet, amely megadja a kötet elérésének módját.  
+Az NFS-kiszolgálót összekapcsolhatjuk a fürttel úgy, hogy kiépítünk egy állandó kötetet és állandó mennyiségi jogcímet, amely megadja a kötet elérésének módját.
+
 Szükség van a két szolgáltatás összekapcsolására ugyanazon vagy társ virtuális hálózatokban. A fürt ugyanazon VNET való beállítására vonatkozó utasítások itt találhatók: [AK-fürt létrehozása a meglévő VNET][aks-virtual-network]
 
 Ha ugyanabban a virtuális hálózatban (vagy társ) található, állandó kötetet és állandó mennyiségi jogcímet kell kiépíteni az AK-fürtben. A tárolók ezután csatlakoztatni tudják az NFS-meghajtót a helyi címtárhoz.
@@ -140,7 +141,7 @@ spec:
       type: nfs
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Ha nem tud csatlakozni a kiszolgálóhoz egy fürtről, akkor előfordulhat, hogy az exportált könyvtár vagy annak szülője nem rendelkezik megfelelő engedélyekkel a kiszolgáló eléréséhez.
 
 Győződjön meg arról, hogy az exportálási címtár és a hozzá tartozó szülő címtár 777 engedélyekkel rendelkezik.

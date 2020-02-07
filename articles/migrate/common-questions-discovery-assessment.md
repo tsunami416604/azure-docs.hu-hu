@@ -3,12 +3,12 @@ title: Gyakori kérdések – felderítés, értékelés és függőség elemzé
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513286"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059487"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Gyakori kérdések a felderítéssel, az értékeléssel és a függőségek elemzésével kapcsolatban
 
@@ -16,6 +16,8 @@ Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcso
 
 - [Általános kérdések](resources-faq.md) a Azure Migrateról.
 - Az Azure Migrate berendezéssel kapcsolatos [kérdések](common-questions-appliance.md) .
+- A kiszolgálók áttelepítésével kapcsolatos [kérdések](common-questions-server-migration.md) .
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet tudok felderíteni egy berendezéssel?

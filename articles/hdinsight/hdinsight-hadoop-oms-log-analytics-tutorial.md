@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/06/2020
+ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240369"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063737"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight-fürtök figyelése Azure Monitor naplók használatával
 
@@ -26,9 +26,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Log Analytics-munkaterület**. Ezt a munkaterületet a saját adattárházával, adatforrásaival és megoldásaival kapcsolatos egyedi Azure Monitor-naplózási környezetnek tekintheti át. Az utasításokért lásd: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Egy Log Analytics-munkaterület. Ezt a munkaterületet a saját adattárházával, adatforrásaival és megoldásaival kapcsolatos egyedi Azure Monitor-naplózási környezetnek tekintheti át. Az utasításokért lásd: [log Analytics munkaterület létrehozása](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
 
-* **Egy Azure HDInsight-fürt**. Jelenleg a következő HDInsight-fürtökkel rendelkező Azure Monitor naplókat használhatja:
+* Egy Azure-beli HDInsight-fürt. Jelenleg a következő HDInsight-fürtökkel rendelkező Azure Monitor naplókat használhatja:
 
   * Hadoop
   * HBase
@@ -37,9 +37,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
   * Spark
   * Storm
 
-  Egy HDInsight-fürt létrehozásával kapcsolatos utasításokért lásd: [Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+  A HDInsight-fürtök létrehozásával kapcsolatos útmutatásért lásd: Ismerkedés [Az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* **Azure PowerShell az modul**.  Lásd: [az új Azure PowerShell bemutatása az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+* Azure PowerShell az modul.  Lásd: [az új Azure PowerShell bemutatása az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 > [!NOTE]  
 > Javasoljuk, hogy a HDInsight-fürt és a Log Analytics-munkaterületen helyezze a jobb teljesítmény érdekében ugyanabban a régióban. Azure Monitor naplók nem érhetők el az összes Azure-régióban.
@@ -50,15 +50,15 @@ Ebben a szakaszban konfigurálja egy meglévő HDInsight Hadoop-fürtöt az Azur
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Lásd: [fürtök listázása és megjelenítése](./hdinsight-administer-use-portal-linux.md#showClusters) az utasításokhoz. A fürt megnyílik egy új portál oldalon.
 
-1. A bal oldalon a **figyelés**területen válassza az **Operations Management Suite**elemet.
+1. A bal oldalon a **figyelés**területen válassza a **Azure monitor**lehetőséget.
 
-1. A fő nézet **OMS figyelés**területén válassza az **Engedélyezés**lehetőséget.
+1. A fő nézet **Azure monitor integráció**területén válassza az **Engedélyezés**lehetőséget.
 
 1. A **munkaterület kiválasztása** legördülő listából válasszon ki egy meglévő log Analytics munkaterületet.
 
 1. Kattintson a **Mentés** gombra.  A beállítás mentéséhez teljesítése pár percet vesz igénybe.
 
-    ![Engedélyezze a monitorozást az HDInsight-fürtök](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "engedélyezze a monitorozást az HDInsight-fürtök")
+    ![HDInsight-fürtök figyelésének engedélyezése](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight-fürtök figyelésének engedélyezése")
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure Monitor naplók engedélyezése Azure PowerShell használatával
 
@@ -100,7 +100,7 @@ Az elérhető HDInsight-megoldások a következők:
 * HDInsight Spark-figyelés
 * HDInsight Storm-monitorozás
 
-Az utasításokat követve telepítse a felügyeleti megoldás, lásd: [felügyeleti megoldások az Azure-ban](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). A kísérlethez telepítsen egy HDInsight Hadoop-figyelési megoldást. Amikor kész van, megjelenik egy **HDInsightHadoop** alatt felsorolt csempe **összefoglalás**. Válassza ki a **HDInsightHadoop** csempére. A HDInsightHadoop megoldás hasonlóan néz ki:
+A felügyeleti megoldás telepítésével kapcsolatos utasításokért lásd: [felügyeleti megoldások az Azure-ban](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). A kísérlethez telepítsen egy HDInsight Hadoop-figyelési megoldást. Ha elkészült, megjelenik egy **HDInsightHadoop** csempe az **Összefoglalás**területen. Válassza a **HDInsightHadoop** csempét. A HDInsightHadoop megoldás hasonlóan néz ki:
 
 ![HDInsight figyelési megoldás megtekintése](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -114,11 +114,11 @@ Az Azure monitor a fürt csomópontjaihoz tartozó teljesítménymutatók össze
 
 A HDInsight a következő típusú naplók importálásával támogatja a fürt naplózását Azure Monitor naplókkal:
 
-* `log_gateway_audit_CL`– Ez a táblázat a fürt átjárójának csomópontjairól nyújt naplókat, amelyek sikeres és sikertelen bejelentkezési kísérleteket mutatnak.
-* `log_auth_CL`– Ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
-* `log_ambari_audit_CL`– Ez a tábla naplókat biztosít a Ambari.
-* `log_ranger_audti_CL`– Ez a táblázat az Apache Ranger és az ESP-fürtök naplóit tartalmazza.
+* `log_gateway_audit_CL` – ez a táblázat a sikeres és sikertelen bejelentkezési kísérleteket bemutató fürtcsomópont-csomópontok naplóit tartalmazza.
+* `log_auth_CL` – ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
+* `log_ambari_audit_CL` – ez a tábla naplókat biztosít a Ambari.
+* `log_ranger_audti_CL` – ez a táblázat az Apache Rangerből származó, ESP-fürtökön található naplókat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez](hdinsight-hadoop-oms-log-analytics-use-queries.md)

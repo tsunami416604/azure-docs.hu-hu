@@ -1,8 +1,8 @@
 ---
-title: Mi a Microsoft Authenticator alkalmazás? – Azure Active Directory | Microsoft Docs
+title: Mi a Microsoft Authenticator alkalmazás? – Az azure Active Directory |} A Microsoft Docs
 description: Ismerkedjen meg a Microsoft Authenticator alkalmazással, beleértve a mi is, hogyan működik, és milyen információkat tartalmaz a tartalom ezen szakasza.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 010302d3a4c7498f7fa5344dc73e7b182c4b94bc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704663"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062285"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazás?
 
@@ -35,13 +35,13 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 >
 >Ez a cikk azoknak a felhasználóknak készült, akik a Microsoft Authenticator alkalmazást biztonsági ellenőrzési módszerként szeretnék letölteni és használni. Ha Ön rendszergazda, aki információt keres arról, hogyan kapcsolhatja be a jelszó nélküli bejelentkezést az alkalmazottak és más alkalmazások hitelesítő alkalmazásával, tekintse meg a [jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)című témakört.
 
-## <a name="terminology"></a>Szakkifejezések
+## <a name="terminology"></a>Terminológia
 
-| Időtartam|Leírás|
+| Időszak|Leírás|
 | ----|-----------|
 | Kétfaktoros ellenőrzés | Ellenőrzési folyamat, amely megköveteli, hogy csak két ellenőrző adatot használjon, például egy jelszót és egy PIN-kódot. A Microsoft Authenticator alkalmazás a standard Kéttényezős ellenőrzést és a jelszó nélküli bejelentkezést is támogatja. |
 | Multi-factor authentication (MFA) | Az összes kétfaktoros ellenőrzés többtényezős hitelesítés, amely megköveteli, hogy *legalább* két, a szervezet igényeinek megfelelő ellenőrző adatot használjon. |
-| Microsoft-fiók (más néven, MSA) | Saját személyes fiókjait hozhat létre, hogy hozzáférjen a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók a Microsoft által futtatott Microsoft fogyasztói identitás-fiók rendszerében jön létre és tárolja. |
+| Microsoft-fiók (más néven, MSA) | Saját személyes fiókjait hozhat létre, hogy hozzáférjen a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók létrehozása és a Microsoft fogyasztói identitás-fiókrendszer a Microsoft által futtatott tárolja. |
 | Munkahelyi vagy iskolai fiók | A szervezet létrehozza munkahelyi vagy iskolai fiókját (például alain@contoso.com), hogy lehetővé tegye a belső és potenciálisan korlátozott erőforrások, például a Microsoft Azure, a Windows Intune és az Office 365 elérését. |
 | Ellenőrző kód | A hitelesítő alkalmazásban az egyes hozzáadott fiókok alatt megjelenő hat számjegyű kód. Az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot. Ezt az egyszeri jelszót (OTP) is nevezik. |
 
@@ -69,7 +69,7 @@ A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros elle
 
 - **Nem Microsoft-fiók.** A nem Microsoft-fiókok (például alain@gmail.com) kétfaktoros ellenőrzését is beállíthatja. Előfordulhat, hogy a nem Microsoft-fiókok nem használják a kétfaktoros hitelesítést, de a **biztonsági** vagy **bejelentkezési** beállításokon belül meg kell keresnie a szolgáltatást. A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely támogatja az TOTP szabványokat. A nem Microsoft-fiókok hozzáadásával kapcsolatos további információkért lásd [a nem Microsoft-fiókok hozzáadását](user-help-auth-app-add-non-ms-account.md)ismertető témakört.
 
-## <a name="in-this-section"></a>A szakasz tartalma
+## <a name="in-this-section"></a>Ebben a szakaszban
 
 | Cikk | Leírás |
 | ------ | ------------ |

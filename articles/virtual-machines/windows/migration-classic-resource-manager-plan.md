@@ -3,8 +3,8 @@ title: A klasszikusról Azure Resource Managerre való Migrálás megtervezése
 description: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,26 +12,23 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 2d7eca56556c8a1097b625b8f4b0e2de2facbc60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980893"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061607"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 Míg Azure Resource Manager számos csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát.
-
-> [!NOTE]
-> Az Azure Customer tanácsadó csapat és a Felhőbeli megoldás-építészek a nagy környezetek áttelepítését végző ügyfelekkel együttműködve jelentős mértékben járultak hozzá az alábbi útmutatóhoz. Ez a dokumentum továbbra is frissülni fog, ahogy a siker új mintája, ezért térjen vissza időről időre, és ellenőrizze, hogy van-e új javaslat.
 
 Az áttelepítési út négy általános fázisban érhető el:<br>
 
 ![Áttelepítési fázisok](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Felkészülés
+## <a name="plan"></a>Csomag
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technikai megfontolások és kompromisszumok
 
@@ -44,7 +41,7 @@ A technikai követelmények méretétől, a földrajzi helytől és az üzemelte
 5. A működési csapatai mostantól támogatják a klasszikus és a Azure Resource Manager is az alkalmazásokat/virtuális gépeket?
 6. Hogyan változtatja meg a virtuális gépek üzembe helyezési, felügyeleti, figyelési és jelentéskészítési folyamatait a (ha egyáltalán) Azure Resource Manager?  Frissíteni kell az üzembe helyezési parancsfájlokat?
 7. Mi a kommunikációs terv az érdekelt felek (végfelhasználók, alkalmazások tulajdonosai és infrastruktúra-tulajdonosok) riasztására?
-8. A környezet összetettsége alapján szükség van olyan karbantartási időszakra, amelyben az alkalmazás nem érhető el a végfelhasználók és az alkalmazások tulajdonosai számára?  Ha igen, milyen hosszú ideig?
+8. A környezet összetettsége alapján szükség van olyan karbantartási időszakra, amelyben az alkalmazás nem érhető el a végfelhasználók és az alkalmazások tulajdonosai számára?  Ha igen, mennyi ideig?
 9. Mi a képzési terv, hogy az érdekelt felek jól tájékozott és jártasak legyenek a Azure Resource Managerban?
 10. Mi a program Management vagy projektmenedzsment terv az áttelepítéshez?
 11. Mik a Azure Resource Manager áttelepítési és egyéb kapcsolódó technológiai útitervek Ütemtervei?  Optimálisan vannak igazítva?
@@ -126,7 +123,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
   - Nyilvános IP-címek
   - Statikus nyilvános IP-címek
   - Processzormagok
-  - Hálózati biztonsági csoportok
+  - Network Security Groups (Hálózati biztonsági csoportok)
   - Útvonaltáblák
 
     A jelenlegi Azure Resource Manager kvótákat az alábbi parancsokkal tekintheti meg a Azure PowerShell legújabb verziójával.

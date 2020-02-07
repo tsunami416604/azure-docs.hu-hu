@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A jutalmazási átjáró konfigurálása az automatikus felhasználó-kiépítés Azure Active Directory használatával | Microsoft Docs'
+title: 'Oktatóanyag: jutalmazási átjáró konfigurálása az automatikus felhasználó-kiépítés Azure Active Directory használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az átjáró jutalmazására.
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4d07fa66374908781fd1d637fd722fd60d1352b3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 928d48907e43de5e65ca5604ff878bfb83d5e95b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737874"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060995"
 ---
-# <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Oktatóanyag: A jutalmazási átjáró konfigurálása a felhasználók automatikus üzembe helyezéséhez
+# <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Oktatóanyag: jutalmazási átjáró konfigurálása a felhasználók automatikus kiépítési felállításához
 
 Ennek az oktatóanyagnak a célja, hogy bemutassa a jutalmazási átjáró és Azure Active Directory (Azure AD) által elvégzendő lépéseket az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikus kiosztását és kiépítését automatikusan kiépítse és kiépítse az átjáró számára.
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="assigning-users-to-reward-gateway"></a>Felhasználók kiosztása a jutalmazási átjáróhoz 
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
 A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-beli felhasználók és/vagy csoportok hozzáférhessenek-e a jutalmazási átjáróhoz. A döntés megkezdése után ezeket a felhasználókat és/vagy csoportokat a felhasználók [vagy csoportok vállalati alkalmazásokhoz rendelése](../manage-apps/assign-user-or-group-access-portal.md)című részben leírtak szerint rendelheti hozzá az átjáró jutalmazásához.
 
@@ -55,7 +55,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 ## <a name="setup-reward-gateway--for-provisioning"></a>A kiépítés beállítása a jutalmazási átjáró számára
 Mielőtt beállítja a jutalmazási átjárót az Azure AD-vel való automatikus felhasználó-kiépítés során, engedélyeznie kell a SCIM-létesítést a jutalmazási átjárón.
 
-1. Jelentkezzen be a [jutalmazási átjáró felügyeleti konzolján](https://rewardgateway.photoshelter.com/login/). Kattintsonaz integrációk elemre.
+1. Jelentkezzen be a [jutalmazási átjáró felügyeleti konzolján](https://rewardgateway.photoshelter.com/login/). Kattintson az **integrációk**elemre.
 
     ![Jutalmazási átjáró felügyeleti konzolja](media/reward-gateway-provisioning-tutorial/image00.png)
 
@@ -98,7 +98,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-reward-gateway-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása a jutalmazási átjáróhoz az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![A jutalmazási átjáró hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
@@ -114,13 +114,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **scim URL-címét (v2)** és a **OAuth-tulajdonosi jogkivonat** azon értékeit, amelyeket a bérlői **URL-cím** és a **titkos jogkivonat** korábban lekért. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a jutalmazási átjáróhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a jutalmazási átjáró fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **scim URL-címét (v2)** és a **OAuth-tulajdonosi jogkivonat** azon értékeit, amelyeket a **bérlői URL-cím** és a **titkos jogkivonat** korábban lekért. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a jutalmazási átjáróhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a jutalmazási átjáró fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
@@ -132,13 +132,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Jutalmazási átjáró felügyeleti konzolja](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a jutalmazási átjáró számára, módosítsa a kiépítési **állapotot** a következőre a Settings ( **Beállítások** ) szakaszban.
+11. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a jutalmazási átjáró számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
     ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni az átjáró kiosztásához. ehhez válassza ki a kívánt értékeket a hatókörben a **Beállítások** szakaszban.
+12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni az átjáró kiosztásához. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
@@ -146,9 +146,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a jutalmazási átjárón végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a jutalmazási átjárón végrehajtott összes műveletet ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
@@ -156,9 +156,9 @@ A jutalmazási átjáró jelenleg nem támogatja a csoportos kiépítés haszná
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+[Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

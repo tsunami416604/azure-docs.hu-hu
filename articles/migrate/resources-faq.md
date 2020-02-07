@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989348"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062098"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
@@ -55,7 +55,7 @@ A kiszolgáló értékelése egy áttelepítési tervező eszköz. A Site Recove
 
 Tekintse át a [VMWare virtuális gép](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) és a [Hyper-V virtuális gépek](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)Azure Migrate támogatott földrajzi területeit.
 
-## <a name="how-do-i-get-started"></a>Hogyan kezdhetem el használni?
+## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 
 Azonosíthatja a szükséges eszközt, és hozzáadhatja egy Azure Migrate projekthez. Ha ISV-eszközt vagy Mozgatót ad hozzá:
 - Első lépésként szerezze be a licencet, vagy regisztráljon az ingyenes próbaverzióra az eszköz házirendjének megfelelően. Az eszközök licencelése az ISV vagy az eszköz licencelési modelljének megfelelően történik.
@@ -67,9 +67,7 @@ Központilag nyomon követheti az áttelepítési utat a Azure Migrate projekten
 [További információ](how-to-delete-project.md) a projektek törléséről. 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>A számítógépek megőrzik a tartományi identitást az áttelepítés után?
 
-Feltételezve, hogy a tartományi szolgáltatások integrálva vannak az Azure-ba, a tartományi tagságot és a számítógép identitását a tartományba [helyezi](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/), a rendszer megőrzi az áttelepítés után. 
 
 ## <a name="next-steps"></a>Következő lépések
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

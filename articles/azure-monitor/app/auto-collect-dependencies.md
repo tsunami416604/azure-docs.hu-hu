@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678303"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064274"
 ---
 # <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
 
@@ -24,9 +24,9 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | Alkalmazás-keretrendszerek| Verziók |
 | ------------------------|----------|
 | ASP.NET webűrlapok | 4.5 + |
-| ASP.NET MVC | 4 + |
+| ASP.NET, MVC | 4+ |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET-mag | 1.1 + |
 | <b>Kommunikációs kódtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -43,7 +43,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Alkalmazás-keretrendszerek</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Spring boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup> *</sup> |
+| [Spring boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java servlet | 3.1 + |
 | <b>Kommunikációs kódtárak</b> |  |
 | [Apache HTTP-ügyfél](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
@@ -53,7 +53,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>Naplózási kódtárak</b> | |
-| [Logback](https://logback.qos.ch/) | 1 + |
+| [Logback](https://logback.qos.ch/) | 1+ |
 | [Log4j](https://logging.apache.org/log4j/) | 1,2 + |
 | <b>Metrikák kódtárai</b> |  |
 | JMX | 1.0 + |
@@ -71,7 +71,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [Redis](https://www.npmjs.com/package/redis) | 2. x |
 | [MongoDb](https://www.npmjs.com/package/mongodb); [MongoDb mag](https://www.npmjs.com/package/mongodb-core) | 2. x-3. x |
 | [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0-2.16. x |
-| [PostgreSql](https://www.npmjs.com/package/pg); | 6. x-7. x |
+| [PostgreSql](https://www.npmjs.com/package/pg); | 6.x - 7.x |
 | [PG – készlet](https://www.npmjs.com/package/pg-pool) | 1. x-2. x |
 | <b>Naplózási kódtárak</b> | |
 | [konzol](https://nodejs.org/api/console.html) | 0,10 + |
@@ -82,12 +82,13 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 
 | Kommunikációs kódtárak | Verziók |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Mind |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Összes |
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Egyéni függőségi követés beállítása a [.net](../../azure-monitor/app/asp-net-dependencies.md)-hez.
 - Egyéni függőség-követés beállítása a [Javához](../../azure-monitor/app/java-agent.md).
+- Egyéni függőségi követés beállítása a [OpenCensus Pythonhoz](../../azure-monitor/app/opencensus-python-dependency.md).
 - [Egyéni függőségi telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Lásd: [adatmodell](../../azure-monitor/app/data-model.md) Application Insights típusokhoz és adatmodellekhez.
 - Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

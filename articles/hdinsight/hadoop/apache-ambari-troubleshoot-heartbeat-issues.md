@@ -1,18 +1,18 @@
 ---
 title: Az Apache Ambari szívverési problémái az Azure HDInsight
 description: Az Apache Ambari szívverésével kapcsolatos problémák különböző okainak áttekintése az Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964617"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057073"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Az Apache Ambari szívverési problémái az Azure HDInsight
 
@@ -22,13 +22,13 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ### <a name="issue"></a>Probléma
 
-A Ambari-ügynök magas CPU-kihasználtsággal rendelkezik, ami a Ambari felhasználói felületének riasztásait eredményezi, hogy egyes csomópontok esetén a Ambari-ügynök szívverése megszakad. A szívverés elveszett riasztása általában átmeneti. 
+A Ambari-ügynök magas CPU-kihasználtsággal rendelkezik, ami a Ambari felhasználói felületének riasztásait eredményezi, hogy egyes csomópontok esetén a Ambari-ügynök szívverése megszakad. A szívverés elveszett riasztása általában átmeneti.
 
 ### <a name="cause"></a>Ok
 
 A különböző ambari hibák miatt előfordulhat, hogy a ambari-ügynöknek magas (100) százalékos CPU-kihasználtsága lehet.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. Azonosítsa a ambari-ügynök folyamat-AZONOSÍTÓját (PID):
 
@@ -67,7 +67,7 @@ A Ambari-ügynök nem indult el, amely a Ambari felhasználói felületén riasz
 
 A riasztások oka a Ambari-ügynök nem fut.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 1. Ambari-ügynök állapotának megerősítése:
 
@@ -93,9 +93,9 @@ A Ambari szívverés ügynöke megszakadt.
 
 A OMS-naplók nagy CPU-kihasználtságot okoznak.
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
-* Tiltsa le a OMS naplózását a [disable-AzHDInsightOperationsManagementSuite PowerShell-](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) modullal. 
+* Tiltsa le Azure Monitor naplózást a [disable-AzHDInsightMonitoring PowerShell-](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) parancsmag használatával.
 * A `mdsd.warn` naplófájl törlése
 
 ---

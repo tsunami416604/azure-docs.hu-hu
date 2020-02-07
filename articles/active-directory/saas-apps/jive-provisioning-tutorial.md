@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása a Jive |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Jive között.
+title: 'Oktatóanyag: a Jive konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Jive között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,93 +15,93 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60263383"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057734"
 ---
-# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Oktatóanyag: Jive-beli konfigurálásához a felhasználók automatikus átadása
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Jive konfigurálása
 
-Ez az oktatóanyag célja a megjelenítése, hogy a lépéseket kell elvégeznie a jive-beli és az Azure AD automatikus kiépítés és megszüntetni hozzárendeléseket felhasználói fiókokhoz jive-beli az Azure AD-ből.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a Jive és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Jive.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
-*   Azure Active directory-bérlő.
-*   A jive-beli egyszeri bejelentkezéses engedélyezett előfizetéssel.
-*   Egy felhasználói fiókot a Jive csapat rendszergazdai jogosultságokkal rendelkezik.
+*   Egy Azure Active Directory-bérlő.
+*   Egy Jive egyszeri bejelentkezésre engedélyezett előfizetés.
+*   Felhasználói fiók a Jive-ben a csoport rendszergazdai engedélyeivel.
 
-## <a name="assigning-users-to-jive"></a>Jive-beli felhasználók hozzárendelése
+## <a name="assigning-users-to-jive"></a>Felhasználók kiosztása a Jive
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "", az alkalmazások az Azure AD szinkronizálása.
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége dönthet arról, hogy mely felhasználók, illetve a csoportok az Azure ad-ben a felhasználók, akik hozzáférhetnek a Jive alkalmazását jelölik. Ha úgy döntött, rendelhet ezeket a felhasználókat a jive-beli alkalmazás utasításokat követve:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a Jive alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a Jive-alkalmazáshoz:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-jive"></a>Felhasználók hozzárendelése a Jive fontos tippek
+### <a name="important-tips-for-assigning-users-to-jive"></a>Fontos Tippek a felhasználók Jive való hozzárendeléséhez
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználót az üzembe helyezési konfiguráció teszteléséhez a Jive rendelni. További felhasználók és csoportok később is rendelhető.
+*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Jive a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-*   Amikor egy felhasználó hozzárendelése Jive, ki kell választania egy érvényes felhasználói szerepkörnek. Az "Alapértelmezett hozzáférés" szerepkör nem működik a kiépítéshez.
+*   Ha a felhasználó Jive rendel hozzá, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
 
-## <a name="enable-user-provisioning"></a>Felhasználó-kiépítés engedélyezése
+## <a name="enable-user-provisioning"></a>A felhasználó üzembe helyezésének engedélyezése
 
-Ez a szakasz végigvezeti az Azure AD-csatlakozás Jive a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó és csoport-hozzárendelések alapján Jive a.
+Ez a szakasz végigvezeti az Azure AD-nek a Jive felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és Jive alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Előfordulhat, hogy meg az SAML-alapú egyszeri bejelentkezés a Jive engedélyezve van, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Jive, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-user-account-provisioning"></a>Konfigurálása a felhasználói fiók kiépítése:
+### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok üzembe helyezésének konfigurálása:
 
-Ez a szakasz célja engedélyezése a felhasználó kiépítése az Active Directory felhasználói fiókoknak az Jive kidolgozására.
-Ez az eljárás részeként a Ön a felhasználó biztonsági jogkivonat Jive.com igényelnie kell biztosítania.
+Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active Directory felhasználói fiókok Jive való kiépítés.
+Ennek az eljárásnak a részeként meg kell adnia egy felhasználói biztonsági jogkivonatot, amelyet Jive.com kell kérnie.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-1. Ha már konfigurálta a Jive az egyszeri bejelentkezés, keresse meg a keresési mező használatával Jive-példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Jive** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a Jive, és adja hozzá az alkalmazások listáját.
+1. Ha már konfigurálta a Jive az egyszeri bejelentkezéshez, keresse meg a Jive-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Jive** az alkalmazás-gyűjteményben. Válassza a Jive lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-1. Válassza ki a Jive-példányát, majd válassza ki a **kiépítési** fülre.
+1. Válassza ki a Jive példányát, majd válassza a **kiépítés** lapot.
 
-1. Állítsa be a **Kiépítési mód** való **automatikus**. 
+1. Állítsa a **kiépítési módot** **automatikus**értékre. 
 
-    ![Kiépítés](./media/jive-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/jive-provisioning-tutorial/provisioning.png)
 
-1. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a következő beállításokat:
+1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
    
-    a. Az a **jive-beli rendszergazdai felhasználónév** szövegmezőbe írja be a Jive-fiók, amelynek neve a **rendszergazda** Jive.com hozzárendelni a profilt.
+    a. A Jive-rendszergazda **felhasználóneve** szövegmezőbe írja be a Jive-fiók nevét, amely a Jive.com hozzárendelt **rendszergazdai** profillal rendelkezik.
    
-    b. Az a **jive-beli rendszergazdai jelszó** szövegmezőbe írja be a fiókhoz tartozó jelszót.
+    b. A **Jive-adminisztrátor jelszava** szövegmezőbe írja be a fiókhoz tartozó jelszót.
    
-    c. Az a **jive-beli bérlői URL-cím** szövegmezőbe írja be a jive-beli bérlői URL-cím.
+    c. A **Jive-bérlő URL-címe** szövegmezőbe írja be a Jive-bérlői URL-címet.
       
       > [!NOTE]
-      > A jive-beli bérlői URL-cím Jive jelentkezzen be a szervezet által használt URL-cím.  
-      > Általában az URL-cím formátuma a következő: **www.\< szervezet\>. jive.com**.          
+      > A Jive-bérlő URL-címe a szervezet által a Jive való bejelentkezéshez használt URL-cím.  
+      > Általában az URL-cím formátuma a következő: **www.\<organization\>. Jive.com**.          
 
-1. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat a Jive alkalmazását.
+1. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Jive-alkalmazáshoz.
 
-1. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítési e-mail** mezőben a kiépítési hibaüzeneteket, és jelölje be az alábbi jelölőnégyzetet.
 
-1. Kattintson a **mentéséhez.**
+1. Kattintson a **Mentés gombra.**
 
-1. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a Jive.**
+1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Jive lehetőséget.**
 
-1. Az a **attribútumleképezések** területen tekintse át a jive-beli az Azure AD-ből szinkronizált felhasználói attribútumok. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok felel meg a frissítési műveleteket a jive-beli felhasználói fiókok használhatók. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Jive-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Jive felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-1. Az Azure AD létesítési szolgáltatás a jive-beli engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** beállítások szakaszában
+1. Az Azure AD-kiépítési szolgáltatás Jive való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
-1. Kattintson a **mentéséhez.**
+1. Kattintson a **Mentés gombra.**
 
-Elindítja a kezdeti szinkronizálás, a felhasználók és/vagy a felhasználók és csoportok szakaszban jive-beli hozzárendelt csoportokat. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a Jive alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
+Elindítja a felhasználók és csoportok szakaszban Jive rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Jive alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](jive-tutorial.md)

@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839660"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061258"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
 A HDInsight-fürtben lévő adatelemzéshez az [Azure Storage](../storage/common/storage-introduction.md)-ban, [Azure Data Lake Storage 1](../data-lake-store/data-lake-store-overview.md) . generációs/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)vagy egy kombinációban tárolhatók az adathalmazok. Ezek a tárolási beállítások lehetővé teszik a számításhoz használt HDInsight-fürtök biztonságos törlését felhasználói adatvesztés nélkül.
 
-Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage-ban alapértelmezett fájlrendszerként, illetve a HDInsight 3,6-as verzióban, kiválaszthatja az Azure Storage-t vagy a Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 értéket alapértelmezett fájlként a rendszer néhány kivétellel. Az 1. generációs Data Lake Storage az alapértelmezett és a csatolt tárolóként való használatának támogatásához tekintse meg a [HDInsight-fürt rendelkezésre állását](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)ismertető témakört.
+Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage-ban alapértelmezett fájlrendszerként, vagy a HDInsight 3,6-as verzióban az Azure Storage vagy Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 értéket az alapértelmezett fájlrendszerként, néhány kivétellel. Az 1. generációs Data Lake Storage az alapértelmezett és a csatolt tárolóként való használatának támogatásához tekintse meg a [HDInsight-fürt rendelkezésre állását](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)ismertető témakört.
 
 Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight-fürtökkel. Ha szeretné megtudni, hogyan működik Data Lake Storage Gen 1 HDInsight-fürtökkel, tekintse meg a [Azure Data Lake Storage használata az Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-store.md)című témakört. További információ a HDInsight-fürtök létrehozásáról: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 | Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint | Támogatott hozzáférési szintek |
 |----------------------|--------------------|-----------------------------|------------------------|
 | StorageV2 (általános célú v2)  | Blob     | Standard                    | Gyakori, ritka elérésű, archív\*   |
-| Storage (általános célú v1)   | Blob     | Standard                    | –                    |
+| Storage (általános célú v1)   | Blob     | Standard                    | N/A                    |
 | BlobStorage                    | Blob     | Standard                    | Gyakori, ritka elérésű, archív\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Tároló elérési útjának azonosítása a Abmari
+## <a name="identify-storage-path-from-ambari"></a>Tároló elérési útjának azonosítása a Ambari
 
 * A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához keresse meg a következőt:
 
@@ -148,7 +148,7 @@ A Microsoft az alábbi eszközöket biztosítja az Azure Storage-hoz való együ
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portalra](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -160,11 +160,11 @@ HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, am
 > [!WARNING]  
 > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtanulta, hogyan használhat HDFS-kompatibilis Azure-tárolót a HDInsighttal. Ez lehetővé teszi a skálázható, hosszú távú adatarchiváló beszerzési megoldások kiépítését, valamint hogy a HDInsighttal kinyerje a strukturált és strukturálatlan tárolt adatokban lévő információkat.
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 * [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Ismerkedés a Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)

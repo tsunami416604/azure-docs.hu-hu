@@ -2,13 +2,13 @@
 title: A Resource Manager-alapú és a klasszikus üzemi modell
 description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltatásfelügyeleti) üzemi modellek közötti különbségeket ismerteti.
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168850"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064512"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
 
@@ -76,7 +76,7 @@ Csak a Resource Manager-alapú modellben létrehozott erőforrások támogatják
 
 Az alábbi diagramon Resource Manager-alapú modellben üzembe helyezett számítási, hálózati és tárolási erőforrások láthatók.
 
-![Erőforrás-kezelői architektúra](./media/deployment-models/arm_arch3.png)
+![Resource Manager-architektúra](./media/deployment-models/arm_arch3.png)
 
 Vegye figyelembe az erőforrások közötti következő összefüggéseket:
 
@@ -99,10 +99,10 @@ A klasszikus megoldás a virtuális gépek futtatására a következő:
 
 A következő táblázat a Compute, a Network és a Storage erőforrás-szolgáltatók együttműködésének változásait ismerteti:
 
-| Tétel | Hagyományos | Erőforrás-kezelő |
+| Elem | Klasszikus | Resource Manager |
 | --- | --- | --- |
 | Felhőszolgáltatás a virtuális gépekhez |A Cloud Service egy tároló volt a virtuális gépekhez, amely platform és a terheléselosztás Rendelkezésre állását is igényelte. |Az új modell használatával a Cloud Service már nem szükséges objektum egy virtuális gép létrehozásához. |
-| Virtual Network |A virtuális géphez nem szükséges virtuális hálózat. Ha szerepel, a virtuális hálózat nem telepíthető a Resource Managerrel. |A virtuális géphez egy, a Resource Managerrel üzembe helyezett virtuális hálózat szükséges. |
+| Virtuális hálózatok |A virtuális géphez nem szükséges virtuális hálózat. Ha szerepel, a virtuális hálózat nem telepíthető a Resource Managerrel. |A virtuális géphez egy, a Resource Managerrel üzembe helyezett virtuális hálózat szükséges. |
 | Tárfiókok |A virtuális gépnek olyan Storage-fiókra van szüksége, amely a virtuális merevlemezeket az operációs rendszer, az ideiglenes és a további adatlemezek számára tárolja. |A virtuális gép számára szükséges egy tárfiók, hogy a lemezeit blobtárolóban tárolhassa. |
 | Rendelkezésre állási csoportok |A platform felé való rendelkezésre állást azonos „AvailabilitySetName” konfigurálásával lehetett jelezni a virtuális gépeken. A tartalék tartományok maximális száma 2 volt. |A Rendelkezésre állási csoport egy Microsoft.Compute szolgáltató által közzétett erőforrás. A nagy rendelkezésre állást igénylő virtuális gépeket szerepeltetni kell a Rendelkezésre állási csoportban. A tartalék tartományok maximális száma mostantól 3. |
 | Affinitáscsoportok |Virtuális hálózatok létrehozásához szükség volt Affinitáscsoportokra. A regionális virtuális hálózatok bevezetése azonban már nem volt szükséges. |Egyszerűbben fogalmazva az Azure Resource Manageren keresztül közzétett API-kban nem létezik az Affinitáscsoportok koncepciója. |
@@ -110,7 +110,7 @@ A következő táblázat a Compute, a Network és a Storage erőforrás-szolgál
 | Virtuális IP-cím |A Cloud Services egy alapértelmezett VIP-t (virtuális IP-cím) kap, amikor egy virtuális gépet hozzáadnak egy felhőszolgáltatáshoz. A Virtuális IP-cím az implicit terheléselosztóhoz társított cím. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. A dinamikus nyilvános IP-címek hozzárendelhetők egy terheléselosztóhoz. A nyilvános IP-címek védelme biztonsági csoportok segítségével biztosítható. |
 | Fenntartott IP-címek |Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát. |A nyilvános IP-címek létrehozhatók statikus módban, amely ugyanazokat a képességeket biztosítja, mint a fenntartott IP-címek. |
 | Virtuális gépenként megadott nyilvános IP-cím (PIP) |A nyilvános IP-címek közvetlenül is hozzárendelhetők egy virtuális géphez. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Egy nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. |
-| Endpoints (Végpontok) |A virtuális gépen konfigurálni kell a bemeneti végpontokat, hogy bizonyos portok csatlakoztathatóvá váljanak. A virtuális gépekhez való csatlakozás egyik legelterjedtebb módja a bemeneti végpontok beállítása. |A bejövő NAT-szabályok konfigurálhatók a terheléselosztókon, így azonos képességek érhetők el a végpontok engedélyezésére adott portokon a virtuális gépekhez való csatlakozás céljából. |
+| Végpontok |A virtuális gépen konfigurálni kell a bemeneti végpontokat, hogy bizonyos portok csatlakoztathatóvá váljanak. A virtuális gépekhez való csatlakozás egyik legelterjedtebb módja a bemeneti végpontok beállítása. |A bejövő NAT-szabályok konfigurálhatók a terheléselosztókon, így azonos képességek érhetők el a végpontok engedélyezésére adott portokon a virtuális gépekhez való csatlakozás céljából. |
 | DNS-név |Egy felhőszolgáltatás egy implicit globálisan egyedi DNS-nevet kap. Például: `mycoffeeshop.cloudapp.net`. |A DNS-nevek opcionális paraméterek, amelyek egy nyilvános IP-cím erőforráson adhatók meg. Az FQDN formátuma a következő lesz: `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Hálózati illesztők |Az elsődleges és másodlagos hálózati adapter és tulajdonságai egy virtuális gép hálózati konfigurációjaként voltak megadva. |A hálózati adapter egy Microsoft.Network szolgáltató által közzétett erőforrás. A hálózati adapter életciklusa nem kötődik virtuális géphez. A virtuális gép hozzárendelt IP-címére (kötelező), a virtuális gép virtuális hálózatának alhálózatára (kötelező), valamint egy hálózati biztonsági csoportra (nem kötelező) hivatkozik. |
 

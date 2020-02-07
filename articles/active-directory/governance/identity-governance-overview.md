@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173150"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063679"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -29,7 +29,7 @@ A Azure Active Directory (Azure AD) Identity-szabályozás lehetővé teszi, hog
 
 Az Identitáskezelés lehetővé teszi a szervezetek számára, hogy a következő feladatokat hajtsák végre az alkalmazottak, az üzleti partnerek és a szállítók, valamint a helyszíni és a Felhőbeli szolgáltatások és alkalmazások között:
 
-- Az identitás-életciklus irányítása
+- Az identitás életciklusának szabályozása
 - Hozzáférési életciklus szabályozása
 - Biztonságos privilegizált hozzáférés az adminisztrációhoz
 
@@ -58,7 +58,7 @@ A szervezeteknek olyan folyamatra van szükségük, amely túllépi az adott fel
 
 Ez általában a hozzáférés-jóváhagyási döntéseket delegálja az üzleti döntéshozóknak.  Emellett maguk is bejárhatják a felhasználókat.  A vállalati marketing alkalmazásban található bizalmas ügyféladatokat használó felhasználóknak például ismerniük kell a vállalat szabályzatait. Előfordulhat, hogy a vendég felhasználói nem tudnak az olyan szervezeten belüli adatkezelési követelményekkel kapcsolatban, amelyeknek meghívásra kerültek.
 
-A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), valamint a scim integrált [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md) vagy [alkalmazásokhoz](../manage-apps/use-scim-to-provision-users-and-groups.md)való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../b2b/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.   Az [Azure ad-jogosultságok kezelése](entitlement-management-overview.md) lehetővé teszi annak meghatározását is, hogy a felhasználók hogyan kérnek hozzáférést a csoport-és csoporttagság, az alkalmazási szerepkörök és a SharePoint Online szerepköreinek csomagjaihoz.
+A szervezetek az olyan technológiákon keresztül automatizálják a hozzáférési életciklus folyamatát, mint a [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), valamint a scim integrált [SaaS-alkalmazásokhoz](../saas-apps/tutorial-list.md) vagy [alkalmazásokhoz](../app-provisioning/use-scim-to-provision-users-and-groups.md)való felhasználói kiépítés.  A szervezetek azt is megadhatják [, hogy mely vendég felhasználók férhetnek hozzá a helyszíni alkalmazásokhoz](../b2b/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogosultságok rendszeresen áttekinthetők az ismétlődő [Azure ad hozzáférési felülvizsgálatok](access-reviews-overview.md)használatával.   Az [Azure ad-jogosultságok kezelése](entitlement-management-overview.md) lehetővé teszi annak meghatározását is, hogy a felhasználók hogyan kérnek hozzáférést a csoport-és csoporttagság, az alkalmazási szerepkörök és a SharePoint Online szerepköreinek csomagjaihoz.
 
 Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure AD kikényszeríti a [feltételes hozzáférési](/azure/active-directory/conditional-access/) szabályzatokat. A feltételes hozzáférési szabályzatok tartalmazhatják például a használati [feltételek](../conditional-access/terms-of-use.md) megjelenítését, és biztosítják, hogy a felhasználó az alkalmazáshoz való hozzáférés megkezdése előtt [jóváhagyja ezeket a feltételeket](../conditional-access/require-tou.md) .
 
@@ -88,7 +88,7 @@ Habár nincs tökéletes megoldás vagy javaslat minden ügyfélhez, a következ
 
 Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazdai feladatok elvégzéséhez az Identitáskezelés irányításában. Javasoljuk, hogy az Azure AD PIM használatával aktiválja a szerepköröket a feladatok elvégzéséhez szükséges módon. Az identitás-irányítási funkciók konfigurálásához az alábbi legkevesebb jogosultsággal rendelkező címtár-szerepkört kell megadni:
 
-| Szolgáltatás | Legkevésbé Kiemelt szerepkör |
+| Funkció | Legkevésbé Kiemelt szerepkör |
 | ------- | --------------------- |
 | Jogosultságkezelés | Felhasználói rendszergazda (a SharePoint Online-helyek katalógusba való felvételének kivételével, amely globális rendszergazdai jogosultságot igényel) |
 | Hozzáférési felülvizsgálatok | Felhasználói rendszergazda (az Azure-beli vagy az Azure AD-szerepkörök hozzáférési felülvizsgálatának kivételével, amelyhez Kiemelt szerepkörű rendszergazda szükséges) |

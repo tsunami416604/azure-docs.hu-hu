@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Tableau Online |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és felhasználói fiókok, a Tableau Online megszüntetése.
+title: 'Oktatóanyag: a tabló online beállítása az automatikus felhasználó-kiépítés Azure Active Directory | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus üzembe helyezéséhez és megszüntetéséhez a tabló Online szolgáltatásban.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e203e88de8d806f489e5a7ab9bfd227c8232f84
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670900"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064214"
 ---
-# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Tableau Online konfigurálása
+# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez a tabló online beállítása
 
-Ez az oktatóanyag azt ismerteti, a Tableau Online és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítése és a felhasználók és csoportok, a Tableau Online megszüntetése végrehajtásához szükséges lépéseket.
+Ez az oktatóanyag bemutatja, hogyan végezheti el az Azure AD-t a tabló online és Azure Active Directory (Azure AD) szolgáltatásban a felhasználók és csoportok automatikus üzembe helyezéséhez és megszüntetéséhez a tabló online-ban.
 
 > [!NOTE]
-> Ez az oktatóanyag leírja egy összekötőt, amely a kiszolgáló üzembe helyezése az Azure AD felhasználói épül. Ez a szolgáltatás leírása, hogyan működik, és gyakran ismételt kérdések kapcsolatos tudnivalókat lásd: [felhasználói kiépítésének és megszüntetésének biztosítása az Azure Active Directory-as-szoftverszolgáltatások (SaaS) alkalmazások automatizálása](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag egy, az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismertet. További információ a szolgáltatás működéséről, működéséről és gyakori kérdéseiről: a felhasználók kiépítésének [automatizálása és a szolgáltatott szoftveres (SaaS) alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik a következővel:
 
 *   Egy Azure AD-bérlő.
-*   A [Tableau Online bérlő](https://www.tableau.com/).
-*   Egy felhasználói fiókot a Tableau Online rendszergazdai jogosultságokkal rendelkezik.
+*   Egy [tabló online bérlő](https://www.tableau.com/).
+*   Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a tabló online-ban.
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [Tableau Online Rest API-val](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm). Az API-t a Tableau Online fejlesztők számára érhető el.
+> Az Azure AD kiépítési integrációja a [tabló online REST API](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm)-ra támaszkodik. Ez az API a tabló online fejlesztői számára érhető el.
 
-## <a name="add-tableau-online-from-the-azure-marketplace"></a>Adja hozzá a Tableau Online az Azure Marketplace-ről
-Konfigurálása előtt Tableau Online az Azure AD-felhasználók automatikus számára, hozzá Tableau Online az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listája.
+## <a name="add-tableau-online-from-the-azure-marketplace"></a>Tabló online hozzáadása az Azure Marketplace-ről
+Mielőtt beállítja a tabló online-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, adja hozzá a tablót az Azure piactéren a felügyelt SaaS-alkalmazások listájához.
 
-A Marketplace-ről, a Tableau Online hozzáadásához kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve adhat hozzá online tablót a piactéren.
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza a bal oldali navigációs panelen, **Azure Active Directory**.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory ikonra](common/select-azuread.png)
+    ![A Azure Active Directory ikon](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza **új alkalmazás** a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Tableau Online** válassza **Tableau Online** az eredmény panelen. Az alkalmazás hozzáadásához válassza **Hozzáadás**.
+4. A keresőmezőbe írja be a **tabló online** kifejezést, majd válassza a **tabló online** lehetőséget az eredmények panelen. Az alkalmazás hozzáadásához válassza a **Hozzáadás**lehetőséget.
 
-    ![Az eredmények listájában a tableau Online](common/search-new-app.png)
+    ![Tabló online az eredmények listájában](common/search-new-app.png)
 
-## <a name="assign-users-to-tableau-online"></a>Felhasználók hozzárendelése a Tableau Online
+## <a name="assign-users-to-tableau-online"></a>Felhasználók kiosztása a tabló online-hoz
 
-Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók vagy csoportok, amelyek az alkalmazások az Azure AD hozzá lett rendelve a rendszer szinkronizálja.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók vagy csoportok lesznek szinkronizálva.
 
-Mielőtt konfigurálása és engedélyezése a felhasználók automatikus átadása, döntse el, mely felhasználók vagy csoportok Azure AD-ben a Tableau online-hoz való hozzáférésre van szükségük. Ezek a felhasználók vagy csoportok hozzárendelése a Tableau Online, kövesse a [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználói vagy csoportjai férhetnek hozzá a tabló online-hoz. Ha ezeket a felhasználókat vagy csoportokat szeretné hozzárendelni a tabló online-hoz, kövesse a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)című témakör utasításait.
 
-### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Felhasználók hozzárendelése a Tableau Online fontos tippek
+### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Fontos Tippek a felhasználók online Tablóhoz rendeléséhez
 
-*   Azt javasoljuk, hogy hozzárendelje egyetlen Azure AD-felhasználót a Tableau Online, a felhasználók automatikus konfiguráció teszteléséhez. Hozzárendelhet további felhasználókat vagy csoportokat később.
+*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználót rendeljen a tabló online-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat vagy csoportokat is hozzárendelhet.
 
-*   Tableau online-hoz való hozzárendelése egy felhasználó, jelölje ki bármely érvényes alkalmazásspecifikus szerepkör érhető el, ha a hozzárendelés párbeszédpanel. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+*   Ha egy felhasználót a tabló online szolgáltatáshoz rendel hozzá, akkor a hozzárendelés párbeszédpanelen válasszon egy érvényes alkalmazásspecifikus szerepkört, ha van ilyen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
-## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>Felhasználók automatikus átadása a Tableau Online konfigurálása
+## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>Automatikus felhasználó-kiépítés beállítása a tabló online-ba
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálásának lépéseit. Vele létrehozása, frissítése és tiltsa le a felhasználókat és csoportokat, a Tableau Online az Azure AD-felhasználó vagy csoport-hozzárendelések alapján.
+Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálásának lépésein. Ezzel a beállítással felhasználókat vagy csoportokat hozhat létre, frissíthet és letilthat a tabló online-ban az Azure AD-ben lévő felhasználói vagy csoportos hozzárendelések alapján.
 
 > [!TIP]
-> Emellett engedélyezheti az SAML-alapú egyszeri bejelentkezés a Tableau online-hoz. Kövesse az utasításokat a [Tableau egyszeri bejelentkezéses oktatóprogram](tableauonline-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, azonban ez a két funkció kiegészíti egymást.
+> Engedélyezheti az SAML-alapú egyszeri bejelentkezést is a tabló online-hoz. Kövesse a [tabló online egyszeri bejelentkezés oktatóanyagának](tableauonline-tutorial.md)utasításait. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
 
-### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Felhasználók automatikus átadása a Tableau online-hoz az Azure AD konfigurálása
+### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása a Tablóhoz az Azure AD-ben
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások** > **minden alkalmazás** > **Tableau Online**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások** > **minden alkalmazás > a** **tabló online**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Tableau Online**.
+2. Az alkalmazások listában válassza a **tabló online**lehetőséget.
 
-    ![Az alkalmazások listáját a Tableau Online hivatkozás](common/all-applications.png)
+    ![A tabló online hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítési** fülre.
+3. Válassza ki a **kiépítés** lapot.
 
-    ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
+    ![Tabló online kiépítés](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![A tableau Online Kiépítési mód](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Tabló online kiépítési mód](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** területén adjon meg a tartomány, a rendszergazdai felhasználónevet, a rendszergazdai jelszó és a tartalom URL-CÍMÉT, a Tableau Online-fiók:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a tabló online-fiókjának tartományát, rendszergazdai felhasználónevét, rendszergazdai jelszavát, valamint a tartalom URL-címét:
 
-   * Az a **tartomány** mezőben adja meg a 6. lépés alapján együtt.
+   * A **tartomány** mezőbe írja be az altartományt a 6. lépés alapján.
 
-   * Az a **rendszergazdai felhasználónév** mezőben adja meg a rendszergazdai fiók a Clarizen bérlő felhasználóneve. Például: admin@contoso.com.
+   * A **rendszergazda felhasználóneve** mezőben adja meg a Clarizen-bérlő rendszergazdai fiókjának felhasználónevét. Például: admin@contoso.com.
 
-   * Az a **rendszergazdai jelszó** mezőben adja meg a jelszót a rendszergazdai fiók, amely megfelel a rendszergazda felhasználóneve.
+   * A **rendszergazdai jelszó** mezőbe írja be a rendszergazdai felhasználónévnek megfelelő rendszergazdai fiók jelszavát.
 
-   * Az a **tartalom URL-címe** mezőben adja meg a 6. lépés alapján együtt.
+   * A **tartalom URL-címe** mezőben adja meg az altartományt a 6. lépés alapján.
 
-6. Bejelentkezés után a rendszergazda fiókjához a Tableau online-hoz, megjelenik a értékeit **tartomány** és **tartalom URL-címe** az URL-címét a felügyelet lapon.
+6. Miután bejelentkezett a felügyeleti fiókjába a tabló Online szolgáltatásban, a **tartomány** és a **tartalom URL-címéhez** tartozó értékeket a rendszergazda lap URL-címéből érheti el.
 
-    * A **tartomány** a Tableau online fiók másolható át ezt az URL-címben:
+    * A tabló online-fiókjához tartozó **tartomány** az URL-cím ezen részéből is átmásolható:
 
         ![Tableau Online Domain](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
-    * A **tartalom URL-címe** a Tableau online fiókot lehet másolni az ebben a szakaszban. Egy érték, amely a fiók beállítása során van definiálva. Ebben a példában az értéke "contoso":
+    * A tabló online-fiókjához tartozó **tartalom URL-címe** átmásolható ebből a szakaszból. A fiók beállítása során megadott érték. Ebben a példában az érték a "contoso":
 
-        ![Tableau Online Content URL](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+        ![Tabló online tartalom URL-címe](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > A **tartomány** eltérhet az itt láthatótól.
+        > Előfordulhat, hogy a **tartománya** különbözik az itt láthatók közül.
 
-7. 5\. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** , győződjön meg arról, hogy az Azure AD a Tableau online-hoz csatlakozik. Ha a kapcsolat nem sikerül, ellenőrizze, hogy a Tableau Online-fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
+7. Miután kitöltötte az 5. lépésben látható mezőket, válassza a **kapcsolat tesztelése** lehetőséget, és győződjön meg arról, hogy az Azure ad csatlakozni tud a tabló online-hoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a tabló online-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Kapcsolat a tableau Online tesztelése](./media/tableau-online-provisioning-tutorial/TestConnection.png)
+    ![Tabló online tesztelési kapcsolat](./media/tableau-online-provisioning-tutorial/TestConnection.png)
 
-8. Az a **értesítő e-mailt** mezőben adja meg a személy e-mail-címét vagy az üzembe helyezési hiba értesítést szeretne kapni a csoportban. Válassza ki a **e-mail-értesítés küldése, ha hiba történik** jelölőnégyzetet.
+8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, aki a kiépítési hibákra vonatkozó értesítéseket szeretné kapni. Jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![A tableau Online értesítő e-mailt](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
+    ![Tabló online értesítő E-mail](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Tableau**.
+10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók a tablóhoz**lehetőséget.
 
-    ![A tableau Online felhasználók szinkronizálása](./media/tableau-online-provisioning-tutorial/UserMappings.png)
+    ![A tabló online felhasználói szinkronizálása](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-11. Tekintse át a Tableau online az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Szeretné menteni a módosításokat, válassza ki a **mentése**.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
 
-    ![A tableau Online egyező felhasználói attribútumok](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tabló online – egyező felhasználói attribútumok](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, Tableau**.
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a tablóhoz**lehetőséget.
 
-    ![A tableau Online csoport szinkronizálása](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
+    ![Tabló online csoport szinkronizálása](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-13. Tekintse át a Tableau online az Azure AD-ből szinkronizált oszlopainál a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Szeretné menteni a módosításokat, válassza ki a **mentése**.
+13. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a tabló online felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
 
-    ![A tableau Online egyező csoportattribútumok](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
+    ![Tabló online egyeztetési csoport attribútumai](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-14. Hatókörszűrő konfigurálásához kövesse az utasításokat a [hatókörkezelési szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-15. Ahhoz, hogy az Azure AD létesítési szolgáltatás Tableau online-hoz, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
+15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a tabló online számára, a **Beállítások** szakaszban módosítsa a **kiépítési állapot** beállítást **a**következőre:.
 
-    ![Tableau Online Provisioning Status](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
+    ![Tabló online kiépítési állapot](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-16. Adja meg a felhasználókat vagy csoportokat, amelyekhez szeretne üzembe helyezni, a Tableau online-hoz. Az a **beállítások** területen válassza ki a kívánt értékeket **hatókör**.
+16. Adja meg azokat a felhasználókat és csoportokat, amelyeket a tabló online-hoz szeretne kiépíteni. A **Beállítások** szakaszban válassza ki a **hatókörben**használni kívánt értékeket.
 
-    ![Tableau Online Scope](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
+    ![Tabló online hatóköre](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-17. Ha készen áll rendelkezésre, válassza ki a **mentése**.
+17. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
 
-    ![Tableau Online Save](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
+    ![Tabló online mentés](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó vagy csoport meghatározott **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az újabb szinkronizálás hosszabb időt vesz igénybe. Mindaddig, amíg az Azure AD létesítési szolgáltatás fut bekövetkezésük körülbelül 40 percenként. 
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. Körülbelül 40 percenként történnek, amíg az Azure AD-kiépítési szolgáltatás fut. 
 
-Használhatja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat, a kiépítési tevékenységek jelentésének szakaszt. A jelentés az Azure AD létesítési szolgáltatás Tableau online által végrehajtott összes műveletet ismerteti.
+A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésének hivatkozásait. A jelentés az Azure AD-kiépítési szolgáltatás által a tabló online platformon végrehajtott összes műveletet ismerteti.
 
-Olvassa el az Azure AD létesítési naplók információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/tableau-online-provisioning-tutorial/tutorial_general_01.png

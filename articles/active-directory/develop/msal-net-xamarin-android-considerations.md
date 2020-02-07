@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 54df91d38541fbe17a28c9ae083ae0e7d0c9d88d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695007"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063662"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus megfontolások a MSAL.NET
 Ez a cikk a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat ismerteti.
@@ -71,16 +71,19 @@ Ez a vonal biztosítja, hogy a vezérlő visszakerüljön a MSAL, amint a hitele
 
 ## <a name="update-the-android-manifest"></a>Az Android-jegyzékfájl frissítése
 A `AndroidManifest.xml`nak a következő értékeket kell tartalmaznia:
-```csharp
+```xml
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="msal{client_id}" android:host="auth" />
+        <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash"/>
          </intent-filter>
 </activity>
 ```
+Helyettesítse be a Azure Portal regisztrált csomag nevét a `android:host=` értékhez. Helyettesítse be a `android:path=` érték Azure Portalban regisztrált kulcs kivonatát. Az aláírási kivonat **nem** lehet URL-kódolású. Győződjön meg arról, hogy az aláírás kivonatának elején van egy vezető `/`.
 
 Vagy [a tevékenység a kódban is létrehozható](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) , és nem lehet kézzel szerkeszteni `AndroidManifest.xml`. Ehhez létre kell hoznia egy olyan osztályt, amely a `Activity` és a `IntentFilter` attribútummal rendelkezik. A fenti XML-hez hasonló értékeket képviselő osztály a következő lesz:
 
@@ -112,7 +115,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Ha létrehoz egy új Xamarin. Forms alkalmazást, és felvesz egy hivatkozást a MSAL.Net NuGet-csomagra, akkor ez csak működni fog.
 Ha azonban egy meglévő Xamarin. Forms alkalmazást szeretne frissíteni a MSAL.NET Preview 1.1.2 vagy újabb verziójára, előfordulhat, hogy felmerülő problémák merülhetnek fel.
 
@@ -141,6 +144,6 @@ Ez valószínűleg azért van, mert a Visual Studio nem tudta megfelelően friss
 
 További részleteket és mintákat a következő minta readme.md-fájljának [Android-specifikus megfontolások](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) című részében talál:
 
-| Minta | Platform | Leírás |
+| Sample | Platform | Leírás |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használhatja az MSAL-t a MSA és az Azure AD hitelesítésére a AADD 2.0-s végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz. <br>![Topológia](media/msal-net-xamarin-android-considerations/topology.png) |

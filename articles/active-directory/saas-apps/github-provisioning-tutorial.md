@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276604"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057651"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -33,6 +33,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * Azure Active Directory-bérlő
 * GitHub [vállalati felhőben](https://help.github.com/articles/github-s-products/#github-enterprise)létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) szükséges
 * Felhasználói fiók a GitHubban rendszergazdai engedélyekkel a szervezethez
+* Győződjön meg arról, hogy az [itt](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) leírtak szerint a OAuth hozzáférése meg lett biztosítva a szervezet számára
 
 > [!NOTE]
 > Az Azure AD-kiépítés integrációja a GitHub [scim API](https://developer.github.com/v3/scim/)-ra támaszkodik, amely a GitHub Enterprise [Számlázási csomagjában](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)elérhető [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) -ügyfelek számára érhető el.
@@ -70,7 +71,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
     ![GitHub-kiépítés](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A művelet megnyit egy GitHub-engedélyezési párbeszédpanelt egy új böngészőablakban. 
+5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A művelet megnyit egy GitHub-engedélyezési párbeszédpanelt egy új böngészőablakban. Ügyeljen arra, hogy a hozzáférés engedélyezéséhez jóvá kell hagynia a jóváhagyást. Kövesse az [itt](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)ismertetett útmutatást.
 
 6. Az új ablakban jelentkezzen be a GitHubba a rendszergazdai fiókjával. Az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a GitHub-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Ha elkészült, térjen vissza a Azure Portal a létesítési konfiguráció befejezéséhez.
 
@@ -94,13 +95,13 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 Ez a művelet elindítja a felhasználók és csoportok szakaszban a GitHubhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

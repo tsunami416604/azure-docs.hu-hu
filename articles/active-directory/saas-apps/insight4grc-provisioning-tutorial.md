@@ -1,99 +1,80 @@
 ---
-title: 'Oktatóanyag: A Insight4GRC konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Insight4GRC.
+title: 'Oktatóanyag: a Insight4GRC konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Insight4GRC.
 services: active-directory
 documentationcenter: ''
-author: zchia
-writer: zchia
+author: Zhchia
+writer: Zhchia
 manager: beatrizd
-ms.assetid: 34718201-4f0e-4260-9af0-b3b70a1e8265
+ms.assetid: d0eab8a0-571b-4609-96b1-bdbc761a25de
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 7e8c6c2277f29fc114033aac24844e9e85816b78
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 02/04/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951035"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057481"
 ---
-# <a name="tutorial-configure-insight4grc--for-automatic-user-provisioning"></a>Oktatóanyag: Insight4GRC konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Insight4GRC konfigurálása
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Insight4GRC és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Insight4GRC.
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Insight4GRC és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [Insight4GRC](https://www.rsmuk.com/) . A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
->
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása a Insight4GRC-ben
+> * Felhasználók eltávolítása a Insight4GRC-ben, ha már nincs szükség hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a Insight4GRC között
+> * Csoportok és csoporttagságok kiépítése a Insight4GRC-ben
+> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial) a Insight4GRC-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő.
-* [Egy Insight4GRC-bérlő](https://www.rsmuk.com/).
+* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Insight4GRC-ben.
 
-## <a name="assigning-users-to-insight4grc"></a>Felhasználók kiosztása a Insight4GRC 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1\. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a Insight4GRC között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
-
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Insight4GRC való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Insight4GRC az alábbi utasításokat követve:
-
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-insight4grc"></a>Fontos Tippek a felhasználók Insight4GRC való hozzárendeléséhez 
-
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Insight4GRC-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
-
-* Amikor Insight4GRC rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
-
-## <a name="setup-insight4grc-for-provisioning"></a>Insight4GRC beállítása a kiépítés számára
+## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>2\. lépés Insight4GRC konfigurálása az Azure AD-vel való kiépítés támogatásához
 
 Az Azure AD-vel való automatikus Insight4GRC konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Insight4GRC-on.
 
-1. A tulajdonosi jogkivonat beszerzéséhez a végfelhasználónak kapcsolatba kell lépnie a [támogatási csapattal](mailto:support.ss@rsmuk.com) , és meg kell adnia a tulajdonosi jogkivonatot az ügyfeleknek.
-
+1. A tulajdonosi jogkivonat beszerzéséhez a végfelhasználónak kapcsolatba kell lépnie a [támogatási csapattal](mailto:support.ss@rsmuk.com).
 2. A SCIM-végpont URL-címének beszerzéséhez a Insight4GRC tartománynevet kell használni, mivel a SCIM-végpont URL-címének összeállításához lesz használva. A Insight4GRC-tartománynevet a kezdeti szoftverfrissítés részeként a Insight4GRC használatával kérheti le.
 
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>3\. lépés Insight4GRC hozzáadása az Azure AD Application Galleryből
 
-## <a name="add-insight4grc--from-the-gallery"></a>Insight4GRC hozzáadása a gyűjteményből
+Vegyen fel Insight4GRC az Azure AD-alkalmazás-katalógusból a Insight4GRC való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a Insight4GRC az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-Az Azure AD-vel való automatikus Insight4GRC konfigurálásához hozzá kell adnia a Insight4GRC az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-**Ha Insight4GRC szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+* Felhasználók és csoportok Insight4GRC való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>5\. lépés Automatikus felhasználó-kiépítés beállítása a Insight4GRC 
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Insight4GRC az Azure AD-ben:
 
-4. A keresőmezőbe írja be a **Insight4GRC**kifejezést, válassza az **Insight4GRC** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
-
-    ![Insight4GRC az eredmények listájában](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-insight4grc"></a>Automatikus felhasználó-kiépítés beállítása a Insight4GRC  
-
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Insight4GRC alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
-
-> [!TIP]
-> Azt is megteheti, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a Insight4GRC számára, a [Insight4GRC-egyszeri bejelentkezés oktatóanyagában](insight4grc-tutorial.md)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
-
-### <a name="to-configure-automatic-user-provisioning-for-insight4grc--in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Insight4GRC az Azure AD-ben:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -101,7 +82,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az Insight4GRC hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
@@ -109,39 +90,48 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5.  A rendszergazdai hitelesítő adatok szakaszban `https://{Insight4GRC Domain Name}.insight4grc.com/public/api/scim/v2` adja meg a **bérlői URL-címet** a korábban lekért {Insight4GRC domain name} érték használatával. Adja meg a korábban a **titkos tokenbe**beolvasott **jogkivonat-értéket** . Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Insight4GRC rendszergazdai hitelesítő adatait és a felhasználónevet. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![kiépítési](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Insight4GRC**lehetőséget.
 
-    ![Insight4GRC – felhasználói leképezések](media/insight4grc-provisioning-tutorial/usermapping.png)
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő Insight4GRC. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Insight4GRC felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a Insight4GRC API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum** -hozzárendelési szakaszban található Insight4GRC. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Insight4GRC felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+   |Attribútum|Típus|
+   |---|---|
+   |userName|Sztring|
+   |externalId|Sztring|
+   |aktív|Logikai|
+   |Cím|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |e-mailek [típus eq "work"] .value|Sztring|
+   |phoneNumbers [típus eq "work"] .value|Sztring|
 
-    ![Insight4GRC – felhasználói leképezések](media/insight4grc-provisioning-tutorial/userattribute.png)
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Insight4GRC**lehetőséget.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoport szinkronizálása a Insight4GRC** lehetőséget.
+11. Tekintse át az Azure AD-ből szinkronizált Insight4GRC az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Insight4GRC tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Insight4GRC-csoportok leképezései](media/insight4grc-provisioning-tutorial/groupmapping.png)
+      |Attribútum|Típus|
+      |---|---|
+      |displayName|Sztring|
+      |externalId|Sztring|
+      |tagok|Referencia|
 
-11. Tekintse át az Azure AD-ből szinkronizált Insight4GRC az attribútumok leképezése szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Insight4GRC tartozó csoportfiókok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-    ![Insight4GRC-csoportok leképezései](media/insight4grc-provisioning-tutorial/groupattribute.png)
-
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
-
-11. Az Azure AD-kiépítési szolgáltatás Insight4GRC való engedélyezéséhez módosítsa a kiépítési **állapotot** a **Beállítások** szakaszban.
+13. Az Azure AD-kiépítési szolgáltatás Insight4GRC való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
     ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg a Insight4GRC kiépíteni kívánt felhasználókat és/vagy csoportokat a Settings ( **Beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+14. Adja meg a Insight4GRC kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
@@ -149,16 +139,20 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Insight4GRC-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+## <a name="step-6-monitor-your-deployment"></a>6\. lépés Az üzemelő példány figyelése
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
+* A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül.
+* Tekintse meg a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
+* Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="additional-resources"></a>További források
 
-* [A vállalati alkalmazások felhasználói fiókok üzembe](../manage-apps/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
+* [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, [Hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md).
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md).

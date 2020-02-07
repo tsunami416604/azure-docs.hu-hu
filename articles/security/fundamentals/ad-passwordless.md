@@ -1,5 +1,6 @@
 ---
-title: A jelszavak nélküli világ megismerése Azure Active Directoryokkal | Microsoft Docs
+title: Jelszavas hitelesítés az Azure AD-vel
+titleSuffix: Active Directory
 description: Ez az útmutató segítséget nyújt az ügyvezetők, a informatikai igazgatók, a CISOs, az identitás-építészek, a vállalati építészek, valamint a biztonsági és informatikai döntéshozók számára, akik a jelszóval nem rendelkező hitelesítési módszer kiválasztásához felelősek a Azure Active Directory megvalósításához.
 keywords: jelszóval nem rendelkező, azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945584"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064478"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 
@@ -284,14 +285,14 @@ A három jelszóval nem rendelkező lehetőség közül választva a vállalat b
 ||**Vállalati Windows Hello**|**Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással**|**FIDO2 biztonsági kulcsok**|
 |:-|:-|:-|:-|
 |**Előfeltételek**| Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory| A Microsoft Authenticator alkalmazás<br>Telefon (Android 6,0 vagy újabb rendszert futtató iOS-és Android-eszközök)|Windows 10, 1809-es vagy újabb verzió<br>Azure Active Directory|
-|**Mode**|Platform|Szoftverek|Hardver|
+|**Mód**|Platform|Szoftver|Hardver|
 |**Rendszerek és eszközök**|Beépített platformmegbízhatósági modul (TPM) rendelkező számítógép<br>PIN-kód és biometriai felismerés |PIN-kód és biometriai felismerés telefonon|Microsoft-kompatibilis FIDO2 biztonsági eszközök|
 |**Felhasználói élmény**|Bejelentkezés PIN-kód vagy biometrikus felismerés (arc, írisz vagy ujjlenyomat) használatával Windows-eszközökkel.<br>A Windows Hello-hitelesítés az eszközhöz van kötve; a felhasználónak az eszközre és egy bejelentkezési összetevőre is szüksége van, például PIN-kódot vagy biometrikus tényezőt a vállalati erőforrások eléréséhez.|Jelentkezzen be egy olyan mobiltelefonnal, amely ujjlenyomat-vizsgálatot, arc-vagy írisz-felismerést vagy PIN-kódot használ.<br>A felhasználók a SZÁMÍTÓGÉPRŐL vagy a mobiltelefonjára bejelentkezhetnek a munkahelyi vagy személyes fiókba.|Bejelentkezés a FIDO2 biztonsági eszközzel (biometria, PIN-kód és NFC)<br>A felhasználó a szervezeti vezérlők és a PIN-kód alapján végzett hitelesítés alapján képes hozzáférni az eszközhöz, például az USB biztonsági kulcsok és az NFC-kompatibilis intelligens kártyák, kulcsok vagy hordható eszközök használatával.|
 |**Engedélyezett forgatókönyvek**| Jelszó nélküli felhasználói élmény a Windows-eszközön.<br>A dedikált munkahelyi SZÁMÍTÓGÉPekre alkalmazható, amely képes az egyszeri bejelentkezésre az eszközre és az alkalmazásokra.|Jelszó nélküli, bárhol elérhető megoldás mobiltelefon használatával.<br>A munkahelyi vagy személyes alkalmazások webes elérésére bármely eszközről.|Jelszó nélküli felhasználói élmény a biometria, a PIN-kód és az NFC használatát végző feldolgozók számára.<br>A megosztott számítógépekre alkalmazható, és ha a mobiltelefon nem életképes megoldás (például ügyfélszolgálati munkatárs, nyilvános kioszk vagy kórházi csapat)|
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Alkalmazási helyzet|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyeleti**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyeleti**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
@@ -299,7 +300,7 @@ A következő táblázat segítségével kiválaszthatja, hogy melyik módszer f
 |**Információkkal dolgozó feldolgozó**|Termelékenységi munka| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
 |**Frontline Worker**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-es eszközök|FIDO2 biztonsági kulcsok|
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 A jelszóval nem rendelkező hitelesítés a jövő hulláma, és egy biztonságosabb környezet elérési útja. Javasoljuk, hogy a szervezetek kezdjenek megtervezni ezt a változást, és csökkentsék a jelszavuk függőségeit. Első lépésként vegye figyelembe a következő célokat:
 

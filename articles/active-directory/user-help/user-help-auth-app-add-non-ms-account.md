@@ -2,21 +2,21 @@
 title: Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz – Azure AD
 description: Vegyen fel nem Microsoft-fiókokat, például a Google vagy a Facebook alkalmazást a Microsoft Authenticator alkalmazásba, hogy ellenőrizze az identitását a kétfaktoros ellenőrzés használatakor.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063951"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
@@ -44,7 +44,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd
 
 ### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-1. A számítógépen lépjen a https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ra, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
+1. A számítógépen lépjen a https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomera, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
 
 2. A személyes Google-fiókra vonatkozó kétlépéses ellenőrzés bekapcsolásához kövesse az oldalon található lépéseket.
 

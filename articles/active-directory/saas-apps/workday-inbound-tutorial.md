@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613762"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064306"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -28,7 +28,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző profilok munka
 
 ## <a name="overview"></a>Áttekintés
 
-A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasználó-kiépítési szolgáltatás](../manage-apps/user-provisioning.md) integrálva van a [MUNKANAP emberi erőforrások API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) -val. Az Azure AD ezt a kapcsolódást használja a következő felhasználó-kiépítési munkafolyamatok engedélyezéséhez:
+A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasználó-kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) integrálva van a [MUNKANAP emberi erőforrások API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) -val. Az Azure AD ezt a kapcsolódást használja a következő felhasználó-kiépítési munkafolyamatok engedélyezéséhez:
 
 * A felhasználók kiépítésével **Active Directory** kiépíteni a kiválasztott felhasználók csoportját a munkanapokból egy vagy több Active Directory tartományba.
 
@@ -40,13 +40,13 @@ A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasznál
 
 Az Azure AD-alapú felhasználó-kiépítési szolgáltatás által támogatott munkafolyamatok munkafolyamatai lehetővé teszik a következő emberi erőforrások és az identitás-életciklus felügyeleti forgatókönyvek automatizálását:
 
-* **Új alkalmazottak felvétele** – új alkalmazottak munkanapokhoz való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../manage-apps/user-provisioning.md), és az e-mail-címet a munkanapokra írja vissza.
+* **Új alkalmazottak felvétele** – új alkalmazottak munkanapokhoz való hozzáadásakor a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és az [Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md), és az e-mail-címet a munkanapokra írja vissza.
 
-* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekordot munkanapon frissítenek (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokban](../manage-apps/user-provisioning.md)is.
+* **Alkalmazotti attribútumok és profilok frissítései** – ha egy alkalmazotti rekordot munkanapon frissítenek (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)is.
 
-* **Alkalmazotti megszakítások** – ha egy alkalmazott munkanapokon leáll, a felhasználói fiókja automatikusan le van tiltva Active Directory, Azure Active Directory és opcionálisan az Office 365 és az [Azure ad által támogatott egyéb SaaS-alkalmazások](../manage-apps/user-provisioning.md)esetében.
+* **Alkalmazotti megszakítások** – ha egy alkalmazott munkanapokon leáll, a felhasználói fiókja automatikusan le van tiltva Active Directory, Azure Active Directory és opcionálisan az Office 365 és az [Azure ad által támogatott egyéb SaaS-alkalmazások](../app-provisioning/user-provisioning.md)esetében.
 
-* **Alkalmazottak** újratelepítése – ha egy alkalmazottat munkanapokon helyeztek át újra, a régi fiókjuk automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory és opcionálisan az Office 365-et és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../manage-apps/user-provisioning.md).
+* **Alkalmazottak** újratelepítése – ha egy alkalmazottat munkanapokon helyeztek át újra, a régi fiókjuk automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory és opcionálisan az Office 365-et és [Az Azure ad által támogatott egyéb SaaS-alkalmazásokat](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
 
@@ -62,7 +62,7 @@ Ez a munkanap felhasználói kiépítési megoldás ideális a következőkhöz:
 
 * Office 365-t használó szervezetek e-mailben
 
-## <a name="solution-architecture"></a>Megoldásarchitektúra
+## <a name="solution-architecture"></a>Megoldási architektúra
 
 Ez a szakasz a közös hibrid környezetek teljes körű felhasználói üzembe helyezési megoldásának architektúráját ismerteti. Két kapcsolódó folyamat létezik:
 
@@ -156,7 +156,7 @@ Ebben a forgatókönyvben egy munkanap Bérlővel rendelkezik, és a felhasznál
 | Nem. helyszíni üzembe helyezési ügynökök | 3 (a magas rendelkezésre álláshoz és a feladatátvételhez) |
 | Nem. a munkanapokon az AD felhasználói kiépítési alkalmazások konfigurálásához Azure Portal | 1 |
 
-  ![1\. eset](./media/workday-inbound-tutorial/dep_scenario1.png)
+  ![1\. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
 
 #### <a name="deployment-scenario-2--single-workday-tenant---multiple-child-ad-domains"></a>Üzembe helyezési forgatókönyv #2: egyetlen munkanap bérlő – > több alárendelt AD-tartomány
 
@@ -312,9 +312,9 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
    | ---------- | ---------- |
    | Beolvasás és üzembe helyezés | Worker-jelentések: Public Worker-jelentések |
    | Beolvasás és üzembe helyezés | Személyes adatok: munkahelyi kapcsolattartási adatok |
-   | Beszerzés | Feldolgozói adatfeldolgozás: összes pozíció |
-   | Beszerzés | Munkavégző adatok: aktuális személyzeti információ |
-   | Beszerzés | Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím |
+   | Lekérés | Feldolgozói adatfeldolgozás: összes pozíció |
+   | Lekérés | Munkavégző adatok: aktuális személyzeti információ |
+   | Lekérés | Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím |
    | Beolvasás és üzembe helyezés | Munkanap-fiókok |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Üzleti folyamatokra vonatkozó biztonsági házirend engedélyeinek konfigurálása
@@ -472,7 +472,7 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanapokhoz tartozó hitelesítő adatok és az ügynök telepítésére konfigurált AD hitelesítő adatok érvényesek-e.
 
-     ![Azure portál](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett hozzárendelések **szinkronizálása munkanapokat a helyszíni munkatársaival Active Directory**
 
@@ -502,7 +502,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
    > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, meg kell vizsgálnia és ellenőriznie kell az attribútumok hozzárendeléseit és kifejezéseit, hogy biztosan megadja a kívánt eredményt. A Microsoft azt javasolja, hogy a **forrás objektum hatókörében** lévő hatókör-szűrők használatával tesztelje a leképezéseket néhány, munkanapokon tesztelő felhasználóval. Miután meggyőződött arról, hogy a leképezések működnek, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
    > [!CAUTION] 
-   > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy az AD-integrációhoz nem lehet szükség az adott munkanapon belül. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../manage-apps/skip-out-of-scope-deletions.md) című cikket.
+   > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy az AD-integrációhoz nem lehet szükség az adott munkanapon belül. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../app-provisioning/skip-out-of-scope-deletions.md) című cikket.
   
 1. A **cél objektum műveletek** mezőben globálisan szűrheti, hogy a Active Directory milyen műveleteket hajtson végre. A **Létrehozás** és a **frissítés** a leggyakoribb.
 
@@ -516,7 +516,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
          * **Konstans** – statikus, állandó karakterlánc-érték írása az ad-attribútumba
 
-         * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../manage-apps/functions-for-customizing-application-data.md).
+         * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Forrásoldali attribútum** – a felhasználó attribútuma a munkanap alapján. Ha a keresett attribútum nem található, tekintse meg [a munkanapokat használó felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című témakört.
 
@@ -537,40 +537,40 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
 1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
 
-   ![Azure portál](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Az alábbiakban néhány példát mutatunk be a munkanap és a Active Directory között, néhány gyakori kifejezéssel
 
 * A *parentDistinguishedName* attribútumra leképező kifejezés a felhasználó különböző szervezeti egységekhez való kiépítésére szolgál egy vagy több munkanap forrás attribútuma alapján. Ebben a példában a felhasználók különböző szervezeti egységekben vannak elhelyezve attól függően, hogy milyen városokban vannak.
 
-* A Active Directory *userPrincipalName* attribútumát a rendszer a deduplikálás függvény [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) hozza létre, amely ellenőrzi, hogy létezik-e egy GENERÁLT érték a cél ad-tartományban, és csak akkor állítja be, ha az egyedi.  
+* A Active Directory *userPrincipalName* attribútumát a rendszer a deduplikálás függvény [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) hozza létre, amely ellenőrzi, hogy létezik-e egy GENERÁLT érték a cél ad-tartományban, és csak akkor állítja be, ha az egyedi.  
 
-* [A kifejezések írásához itt talál dokumentációt](../manage-apps/functions-for-customizing-application-data.md). Ez a szakasz példákat tartalmaz a speciális karakterek eltávolítására.
+* [A kifejezések írásához itt talál dokumentációt](../app-provisioning/functions-for-customizing-application-data.md). Ez a szakasz példákat tartalmaz a speciális karakterek eltávolítására.
 
 | MUNKANAP ATTRIBÚTUM | ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁS/FRISSÍTÉS |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  EmployeeID | **Igen** | Csak létrehozásra írva |
+| **WorkerID**  |  Alkalmazottkód | **Igen** | Csak létrehozásra írva |
 | **PreferredNameData**    |  CN    |   |   Csak létrehozásra írva |
 | **SelectUniqueValue (JOIN ("\@", JOIN (".", \[FirstName\], \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozás (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com")**   | userPrincipalName     |     | Csak létrehozásra írva 
 | **Replace (Mid (a Replace (\[UserID\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,), 1, 20),," ([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Csak létrehozásra írva |
 | **Kapcsoló (\[aktív\], "0", "true", "1", "false")** |  accountDisabled      |     | Létrehozás + frissítés |
 | **FirstName**   | givenName       |     |    Létrehozás + frissítés |
-| **LastName**   |   sn   |     |  Létrehozás + frissítés |
+| **LastName**   |   sorozatszám   |     |  Létrehozás + frissítés |
 | **PreferredNameData**  |  displayName |     |   Létrehozás + frissítés |
-| **Vállalat**         | company   |     |  Létrehozás + frissítés |
-| **SupervisoryOrganization**  | Részleg  |     |  Létrehozás + frissítés |
-| **ManagerReference**   | manager  |     |  Létrehozás + frissítés |
-| **BusinessTitle**   |  title     |     |  Létrehozás + frissítés | 
+| **Vállalati**         | Vállalati   |     |  Létrehozás + frissítés |
+| **SupervisoryOrganization**  | Szervezeti egység  |     |  Létrehozás + frissítés |
+| **ManagerReference**   | kezelő  |     |  Létrehozás + frissítés |
+| **BusinessTitle**   |  Cím     |     |  Létrehozás + frissítés | 
 | **AddressLineData**    |  streetAddress  |     |   Létrehozás + frissítés |
 | **Önkormányzat**   |   l   |     | Létrehozás + frissítés |
-| **CountryReferenceTwoLetter**      |   Co |     |   Létrehozás + frissítés |
+| **CountryReferenceTwoLetter**      |   CO |     |   Létrehozás + frissítés |
 | **CountryReferenceTwoLetter**    |  c  |     |         Létrehozás + frissítés |
-| **CountryRegionReference** |  st     |     | Létrehozás + frissítés |
+| **CountryRegionReference** |  St     |     | Létrehozás + frissítés |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Létrehozás + frissítés |
 | **Irányítószám**  |   Irányítószám  |     | Létrehozás + frissítés |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Létrehozás + frissítés |
-| **Fax**      | Érték facsimiletelephonenumber     |     |    Létrehozás + frissítés |
-| **Mobil**  |    mobil       |     |       Létrehozás + frissítés |
+| **Fax**      | facsimileTelephoneNumber     |     |    Létrehozás + frissítés |
+| **Mobileszköz**  |    mobil       |     |       Létrehozás + frissítés |
 | **LocalReference** |  preferredLanguage  |     |  Létrehozás + frissítés |                                               
 | **Switch (\[önkormányzat\], "OU = standard felhasználók, OU = felhasználók, OU = default, OU = Locations, DC = contoso, DC = com", "Dallas", "OU = standard felhasználók, OU = felhasználók, OU = Dallas, OU = Locations, DC = contoso, DC = com", "Austin", "OU = standard felhasználók, OU = felhasználók, OU = Austin, OU = Locations, DC = contoso, DC = com", "Seattle", "OU = standard felhasználók, OU = felhasználók, OU = Seattle, OU = Locations, DC = contoso, DC = com", "London", "OU = standard felhasználók, OU = felhasználók, OU = London, OU = Locations, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Létrehozás + frissítés |
 
@@ -653,7 +653,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
 
       * **Konstans** – statikus, állandó karakterlánc-érték írása az ad-attribútumba
 
-      * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../manage-apps/functions-for-customizing-application-data.md).
+      * **Kifejezés** – lehetővé teszi egyéni érték írását az ad-attribútumnak egy vagy több munkanap-attribútum alapján. [További információkért tekintse meg ezt a cikket a kifejezésekkel kapcsolatban](../app-provisioning/functions-for-customizing-application-data.md).
 
    * **Forrásoldali attribútum** – a felhasználó attribútuma a munkanap alapján. Ha a keresett attribútum nem található, tekintse meg [a munkanapokat használó felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című témakört.
 
@@ -737,7 +737,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Mentés** gombra.
+2. Kattintson a **Save** (Mentés) gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. 
 
@@ -745,7 +745,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 5. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
 
-   ![Azure portál](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -848,7 +848,7 @@ Ha új ötletet javasol, ellenőrizze, hogy valaki más már javasolta-e a hason
 * Nyissa meg a **vezérlőpultot** -> **távolítsa el vagy módosítsa a program** menüt
 * Keresse meg a bejegyzésnek megfelelő verziót **Microsoft Azure ad kapcsolódás kiépítési ügynökhöz**
 
-  ![Azure portál](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>A Microsoft automatikusan leküldi a kiépítési ügynök frissítéseit?
 
@@ -881,9 +881,9 @@ Cserélje le a [Proxy-Server] és a [proxy-port] változót a proxykiszolgáló 
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?
 
-Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. A további zöld pipa nagyobb rugalmasságot jelent.
+Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság.
 
-Győződjön meg arról, hogy az eszköz biztosítja a megfelelő eredményeket:
+Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hogy ne felejtse el:
 
 * Nyissa meg az eszközt egy böngészőben azon a kiszolgálón, amelyen a kiépítési ügynököt telepítette.
 * Győződjön meg arról, hogy a kiépítési ügynökre érvényes proxyk vagy tűzfalak is érvényesek erre az oldalra. Ezt az Internet Explorerben a **Beállítások-> Internetbeállítások-> kapcsolatok-> LAN-beállítások**menüpontban teheti meg. Ezen az oldalon a "proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze el a proxy címe mezőt a "címek" mezőbe.
@@ -984,7 +984,7 @@ Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *Displa
      | ----------------- | -------------------- |
      | PreferredFirstName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: First_Name/Text () |
      | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/Text () |
-     | Cég | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [@wd:type= ' Organization_Type_ID '] = ' vállalat ']/wd:Organization_Reference/@wd:Descriptor |
+     | Vállalat | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [@wd:type= ' Organization_Type_ID '] = ' vállalat ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' felügyelet ']/WD: Organization_Name/Text () |
   
    Erősítse meg a munkanap csapatát, hogy a fenti API-kifejezés érvényes a munkanap bérlői konfigurációjához. Szükség esetén szerkesztheti őket a [munkanap felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című szakaszban leírtak szerint.
@@ -1023,9 +1023,9 @@ Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *Displa
     )
      ```
     Lásd még:
-  * [Switch függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Illesztési függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Függvény hozzáfűzése szintaxisa](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Switch függvény szintaxisa](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Illesztési függvény szintaxisa](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Függvény hozzáfűzése szintaxisa](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>Hogyan használhatom a SelectUniqueValue-t egyedi értékek létrehozásához a samAccountName attribútumhoz?
 
@@ -1043,17 +1043,17 @@ A fenti kifejezés működése: Ha a felhasználó János Smith, először a JSm
 
 Lásd még:
 
-* [A Mid függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Függvény szintaxisának cseréje](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue függvény szintaxisa](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [A Mid függvény szintaxisa](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Függvény szintaxisának cseréje](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [SelectUniqueValue függvény szintaxisa](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Hogyan a mellékjeleket és a normál angol Ábécébe konvertálhatja a karaktereket?
 
-A [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) függvénnyel eltávolíthat speciális karaktereket a felhasználó keresztneve és vezetékneve alapján, a felhasználó e-mail-címének vagy a CN-értékének összeállításával.
+A [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics) függvénnyel eltávolíthat speciális karaktereket a felhasználó keresztneve és vezetékneve alapján, a felhasználó e-mail-címének vagy a CN-értékének összeállításával.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-Ez a szakasz részletesen ismerteti, hogyan lehet elhárítani az Azure AD-naplók és a Windows Server Eseménynapló naplók használatával a munkanapokkal való integrációval kapcsolatos problémákat. Ez az oktatóanyagban rögzített általános hibaelhárítási lépésekre és fogalmakra épül [: jelentéskészítés az automatikus felhasználói fiók kiépítésekor](../manage-apps/check-status-user-account-provisioning.md)
+Ez a szakasz részletesen ismerteti, hogyan lehet elhárítani az Azure AD-naplók és a Windows Server Eseménynapló naplók használatával a munkanapokkal való integrációval kapcsolatos problémákat. Ez az oktatóanyagban rögzített általános hibaelhárítási lépésekre és fogalmakra épül [: jelentéskészítés az automatikus felhasználói fiók kiépítésekor](../app-provisioning/check-status-user-account-provisioning.md)
 
 Ez a szakasz a hibaelhárítás következő szempontjait ismerteti:
 
@@ -1209,7 +1209,7 @@ Ha a létesítési szolgáltatás nem tud csatlakozni a munkanapokhoz vagy a Act
 |#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
 |1.| A naplózási hibák exportálása a naplóba hibaüzenet *: OperationsError-SvcErr: működési hiba történt. Nem lett konfigurálva kiváló hivatkozás a címtárszolgáltatások számára. A címtárszolgáltatás ezért nem tudja kiadni az átirányításokat az erdőn kívüli objektumokra.* | Ez a hiba általában akkor jelenik meg, ha a *Active Directory-tároló* szervezeti egysége helytelenül van beállítva, vagy ha problémák merülnek fel a *parentDistinguishedName*használt kifejezés-hozzárendeléssel kapcsolatban. | Az elíráshoz keresse meg a *Active Directory Container* ou paramétert. Ha a *parentDistinguishedName* elemet használja az attribútumleképezésben, győződjön meg arról, hogy mindig egy AD-tartományon belüli ismert tárolóba adja vissza az értékeket. A generált érték megjelenítéséhez tekintse meg az *Exportálás* eseményt a naplókban. |
-|2.| Művelet-meghibásodások exportálása a naplóban hibakód: *SystemForCrossDomainIdentityManagementBadResponse* és üzenet *: ConstraintViolation-AtrErr: a kérelemben szereplő érték érvénytelen. Az attribútum értéke nem az elfogadható tartományba esik. \nError részletei: CONSTRAINT_ATT_TYPE – vállalat*. | Habár ez a hiba a *vállalati* attribútumra jellemző, ezt a hibát más attribútumok, például a *CN* is láthatja. Ez a hiba az AD által kényszerített séma megkötése miatt jelenik meg. Alapértelmezés szerint az AD-ben a *vállalat* és a *CN* -hez hasonló attribútumok felső határértéke 64 karakter. Ha a munkanaptól érkező érték több mint 64 karakterből áll, akkor ez a hibaüzenet jelenik meg. | Ellenőrizze az *Exportálás* eseményt a naplókban, hogy megjelenjen-e a hibaüzenetben jelentett attribútum értéke. Érdemes lehet a munkanapokból származó értéket a [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) függvénnyel lerövidíteni, vagy a leképezéseket egy olyan ad-attribútumra módosítani, amely nem rendelkezik hasonló hosszúságú korlátozásokkal.  |
+|2.| Művelet-meghibásodások exportálása a naplóban hibakód: *SystemForCrossDomainIdentityManagementBadResponse* és üzenet *: ConstraintViolation-AtrErr: a kérelemben szereplő érték érvénytelen. Az attribútum értéke nem az elfogadható tartományba esik. \nError részletei: CONSTRAINT_ATT_TYPE – vállalat*. | Habár ez a hiba a *vállalati* attribútumra jellemző, ezt a hibát más attribútumok, például a *CN* is láthatja. Ez a hiba az AD által kényszerített séma megkötése miatt jelenik meg. Alapértelmezés szerint az AD-ben a *vállalat* és a *CN* -hez hasonló attribútumok felső határértéke 64 karakter. Ha a munkanaptól érkező érték több mint 64 karakterből áll, akkor ez a hibaüzenet jelenik meg. | Ellenőrizze az *Exportálás* eseményt a naplókban, hogy megjelenjen-e a hibaüzenetben jelentett attribútum értéke. Érdemes lehet a munkanapokból származó értéket a [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) függvénnyel lerövidíteni, vagy a leképezéseket egy olyan ad-attribútumra módosítani, amely nem rendelkezik hasonló hosszúságú korlátozásokkal.  |
 
 #### <a name="ad-user-account-update-errors"></a>Az AD felhasználói fiók frissítésével kapcsolatos hibák
 
@@ -1348,7 +1348,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
 ### <a name="exporting-and-importing-your-configuration"></a>Konfiguráció exportálása és importálása
 
-A [kiépítési konfiguráció exportálásával és importálásával](../manage-apps/export-import-provisioning-configuration.md) kapcsolatban tekintse meg a cikket.
+A [kiépítési konfiguráció exportálásával és importálásával](../app-provisioning/export-import-provisioning-configuration.md) kapcsolatban tekintse meg a cikket.
 
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
 
@@ -1362,7 +1362,7 @@ Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

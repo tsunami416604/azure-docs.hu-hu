@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 5ebc1e6df85a521ef7a03bfce8e062fc0fbf734b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703286"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063696"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -55,7 +55,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1\. lépés: Az alkalmazás konfigurálása
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, **https://login.microsoftonline.com/common/oauth2/nativeclient ként** hozzá kell adnia egy ÁTirányítási URI-t.
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, **https://login.microsoftonline.com/common/oauth2/nativeclientként** hozzá kell adnia egy ÁTirányítási URI-t.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -80,7 +80,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 > > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
-> Helyszín:
+> Az elemek magyarázata:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 >
 > > [!TIP]
@@ -103,7 +103,7 @@ Ez a szakasz a rövid útmutatóról nyújt további információkat.
 A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a felhasználók bejelentkezésére és biztonsági jogkivonatok igénylésére használt könyvtár. A biztonsági jogkivonatok a Microsoft Identity platform által védett API-k elérésére használhatók a fejlesztők számára. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján*:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
@@ -119,10 +119,11 @@ Ezt követően a MSAL inicializálása a következő kód használatával tört�
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 
-> |Helyszín: ||
+> |Az elemek magyarázata: ||
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
@@ -144,7 +145,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Helyszín:||
+> |Az elemek magyarázata:||
 > |---------|---------|
 > | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
 
@@ -159,7 +160,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Helyszín: ||
+> |Az elemek magyarázata: ||
 > |---------|---------|
 > | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
 > | `firstAccount` | Megadja az első felhasználói fiókot a gyorsítótárban (a MSAL több felhasználót is támogat egyetlen alkalmazásban) |

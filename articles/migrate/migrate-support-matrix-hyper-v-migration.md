@@ -3,12 +3,12 @@ title: A Hyper-V áttelepítésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V áttelepítésének támogatásával Azure Migrateokkal.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031646"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064461"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>A Hyper-V áttelepítésének támogatási mátrixa
 
@@ -23,10 +23,10 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
-| **Üzembe helyezés**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető. |
+| **Üzembe helyezés**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető. <br/>Azure Migrate replikációs szoftvert (Hyper-V replikációs szolgáltatót) kell telepíteni a Hyper-V gazdagépekre.|
 | **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. |
 | **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2. |
-| **URL-hozzáférés** | A Hyper-V-gazdagépeknek hozzá kell férniük az alábbi URL-címekhez:<br/><br/> -login.microsoftonline.com: hozzáférés-vezérlés és Identitáskezelés Active Directory használatával.<br/><br/> -*. backup.windowsazure.com: replikálási adatok átvitele és koordinálása. Szolgáltatás URL-címének áttelepítve.<br/><br/> -*. blob.core.windows.net: adatok feltöltése a Storage-fiókba.<br/><br/> -dc.services.visualstudio.com: a belső figyeléshez használt alkalmazás-naplók feltöltése.<br/><br/> - time.windows.com | Ellenőrzi a rendszerek és a globális idő közötti időszinkronizálást.
+| **URL-hozzáférés** | A Hyper-V-gazdagépeken a replikációs szolgáltató szoftverének hozzá kell férnie az alábbi URL-címekhez:<br/><br/> -login.microsoftonline.com: hozzáférés-vezérlés és Identitáskezelés Active Directory használatával.<br/><br/> -*. backup.windowsazure.com: replikálási adatok átvitele és koordinálása. Szolgáltatás URL-címének áttelepítve.<br/><br/> -*. blob.core.windows.net: adatok feltöltése a Storage-fiókba.<br/><br/> -dc.services.visualstudio.com: a belső figyeléshez használt alkalmazás-naplók feltöltése.<br/><br/> -time.windows.com: ellenőrzi az időszinkronizálást a rendszerek és a globális idő között.
 | **Port-hozzáférés** |  Kimenő kapcsolatok a 443-es HTTPS-porton a virtuális gép replikációs adatküldéséhez.
 
 ## <a name="hyper-v-vms"></a>Hyper-V virtuális gépek
@@ -34,8 +34,6 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 | **Támogatás**                  | **Részletek**               
 | :----------------------------- | :------------------- |
 | **Operációs rendszer** | Az Azure által támogatott összes Windows-és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) - [alapú](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) operációs rendszer. |
-| **Engedélyek**           | Minden felmérni kívánt Hyper-V virtuális gépen rendszergazdai engedélyekkel kell rendelkeznie. |
-| **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
 | **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. Az áttelepítés előtt manuálisan kell végrehajtania a módosításokat. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak. |
 | **Linux rendszerű rendszerindítás**                 | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie. |
 | **UEFI-rendszerindítás**                  | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva. A virtuális gépnek csak a Windows Server 2012-es vagy újabb verziójának kell futnia. Az operációsrendszer-lemez legfeljebb öt partíciót tartalmazhat, és az operációsrendszer-lemez mérete nem haladhatja meg a 300 GB-ot.
@@ -55,15 +53,13 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 
 ## <a name="azure-vm-requirements"></a>Azure-beli virtuális gépekre vonatkozó követelmények
 
-Az Azure-ba replikált összes helyszíni virtuális gépnek meg kell felelnie az ebben a táblázatban összefoglalt Azure-beli virtuálisgép-követelményeknek. Ha Site Recovery futtatja az előfeltétel-ellenőrzés replikálását, akkor az ellenőrzés sikertelen lesz, ha egyes követelmények nem teljesülnek.
+Az Azure-ba replikált összes helyszíni virtuális gépnek meg kell felelnie az ebben a táblázatban összefoglalt Azure-beli virtuálisgép-követelményeknek.
 
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Ellenőrzi a VMware virtuális gépek támogatott operációs rendszereinek áttelepítését.<br/> A támogatott operációs rendszereken futó munkaterhelések áttelepíthetők. | Az ellenőrzés sikertelen, ha nem támogatott.
-Vendég operációs rendszer architektúrája | 64 bites. | Az ellenőrzés sikertelen, ha nem támogatott.
 Operációs rendszer lemezének mérete | Akár 2 048 GB-ig. | Az ellenőrzés sikertelen, ha nem támogatott.
 Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem támogatott.
-Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
+Adatlemezek száma | 16 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
 Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.

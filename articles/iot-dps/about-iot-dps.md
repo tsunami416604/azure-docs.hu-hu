@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15eaba5b1102ddb282d72497093b8554a6b4cf56
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904867"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061624"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgáltatása, amely lehetővé teszi, hogy az emberi beavatkozás nélkül, a megfelelő IoT hub-ra való leválasztást, valamint a jobb oldali üzembe helyezést. A DPS lehetővé teszi, hogy több millió eszköz biztonságos és skálázható módon legyen kiépítve.
@@ -80,12 +80,14 @@ A DPS számos funkcióval rendelkezik, így ideális megoldás az eszközök ki�
 * Az esetleg regisztráló eszközök/eszközcsoportok teljes rekordját tartalmazó **regisztrációs lista**. A regisztrációs lista tartalmazza az eszköz kívánt konfigurációjára vonatkozó adatokat, amint az regisztrál, és bármikor frissíthető.
 * **Több kiosztási szabályzat** annak szabályozására, hogy a DPS hogyan rendeljen eszközöket az IoT-hubokhoz a forgatókönyvek támogatása érdekében: a legalacsonyabb késés, a páros mértékben súlyozott eloszlás (alapértelmezett) és a statikus konfiguráció a beléptetési listán keresztül. A késés meghatározása a [Traffic managerével](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)megegyező módszerrel történik.
 * A **Naplózás monitorozása és hibakeresése** segít biztosítani, hogy minden jól működjön.
-* A **többközpontos támogatás** lehetővé teszi, hogy a DPS késői kötésű eszközöket hozzon létre egy IoT hubhoz futásidőben. A DPS több Azure-előfizetésen keresztül tud kommunikálni a hubokkal.
-* A régiók **közötti támogatás** lehetővé teszi, hogy a DPS más régiókban is rendeljen eszközöket az IoT-hubokhoz.
+* A **Több központ támogatása** lehetővé teszi, hogy a Device Provisioning Service egynél több IoT Hubhoz rendeljen hozzá eszközöket. A Device Provisioning Service tud kommunikálni a több Azure-előfizetést felölelő központokkal.
+* A **Régiófüggetlen támogatás** lehetővé teszi a Device Provisioning Service számára, hogy más régiókban lévő IoT Hubokhoz is hozzárendeljen eszközöket.
+* Az inaktív **adatok titkosítása** lehetővé teszi, hogy az eszközök kiépítési szolgáltatásában lévő adatok a 256 bites AES-titkosítással legyenek titkosítva, és visszafejtve legyenek, az egyik legerősebb blokk titkosítási algoritmus, valamint az FIPS 140-2-kompatibilis.
+
 
 Az eszközkiépítéssel kapcsolatban felmerülő alapelvekről és szolgáltatásokról az [eszközzel kapcsolatos alapelvek](concepts-device.md), [szolgáltatással kapcsolatos alapelvek](concepts-service.md) és [biztonsági alapelvek](concepts-security.md) szakaszokban szerezhet további információkat.
 
-## <a name="cross-platform-support"></a>Platformközi támogatás
+## <a name="cross-platform-support"></a>Platformfüggetlen támogatás
 Az összes Azure IoT-szolgáltatáshoz hasonlóan a DPS több különböző operációs rendszerrel is együttműködik a platformmal. Az Azure számos [nyelven](https://github.com/Azure/azure-iot-sdks) kínál nyílt forráskódú SDK-kat az eszközök csatlakoztatásához és a szolgáltatás felügyeletéhez. A DPS a következő protokollokat támogatja az eszközök csatlakoztatásához:
 
 * HTTPS
@@ -96,13 +98,13 @@ Az összes Azure IoT-szolgáltatáshoz hasonlóan a DPS több különböző oper
 
 A DPS csak a HTTPS-kapcsolatokat támogatja a szolgáltatási műveletekhez.
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 A DPS számos régióban elérhető. A meglévő és újonnan bejelentett régiók naprakész listája minden szolgáltatáshoz megtalálható az [Azure-régióknál](https://azure.microsoft.com/regions/). A Device Provisioning Service elérhetőségét az [Azure állapota](https://azure.microsoft.com/status/) lapon tekintheti meg.
 
 > [!NOTE]
 > A DPS globális, és nem egy helyhez van kötve. Azonban meg kell adnia egy régiót, amelyben a DPS-profilhoz tartozó metaadatok lesznek tárolva.
 
-## <a name="availability"></a>Elérhetőség
+## <a name="availability"></a>Rendelkezésre állás
 A DPS esetében 99,9% szolgáltatói szerződés van, és [elolvashatja az SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)-t. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/)-ban található.
 
 ## <a name="quotas"></a>Kvóták

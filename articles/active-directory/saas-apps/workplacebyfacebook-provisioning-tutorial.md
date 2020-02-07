@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985167"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064142"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
 Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Facebook és Azure Active Directory (Azure AD) munkahelyén kell elvégezni a felhasználók automatikus kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [Facebook](https://work.workplace.com/) számára az Azure ad kiépítési szolgáltatásával. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 
-> [!NOTE]
-> Jóváhagyták az Azure AD harmadik féltől származó alkalmazást a munkahelyen a Facebookban. Az ügyfelek nem fognak megszakítani a szolgáltatást december 16-án. Megjelenik egy Megjegyzés a munkahelyen a Facebook felügyeleti konzolon, amely a 28 – február-2020 határidőt jelzi, ha az új alkalmazásra kell áttérnie. Dolgozunk azon, hogy az átállás a lehető legegyszerűbb legyen, és itt a hónap végéig elérhetővé kell tenni a frissítést.
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrálás az új munkahelyre Facebook-alkalmazással
+Ha a Facebook használatával már rendelkezik munkahelyi integrációval, tekintse meg a következő szakaszt a változásokról. Ha a Facebook első indításakor beállítja a munkahelyet, kihagyhatja ezt a szakaszt, és átléphet a támogatott képességekre. 
+
+#### <a name="whats-changing"></a>Mi változik?
+* Változások az Azure AD-oldalon: a felhasználók munkahelyi üzembe helyezésének engedélyezési módszere történelmileg hosszú élettartamú titkos token volt. Hamarosan megjelenik az engedélyezési módszer, amely a OAuth engedélyezési engedélyre módosult. 
+* Változások a munkahelyi oldalon: korábban az Azure AD-alkalmazás volt a Facebook-beli egyéni integráció a munkahelyen. Most az Azure AD-t a munkahelyi integrációs könyvtárban tekintheti meg harmadik féltől származó alkalmazásként. 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mit kell tennem a meglévő egyéni integráció új alkalmazásba való átállításához?
+Ha van meglévő munkahelyi integrációja egy érvényes jogkivonattal, **nincs szükség beavatkozásra**. Minden héten automatikusan áttelepítik az ügyfeleket az új alkalmazásba. Ez teljesen a színfalak mögött történik. Ha nem tud várni, és manuálisan szeretné áthelyezni az új alkalmazást, hozzáadhat egy új munkahely-példányt a katalógusból, és konfigurálhatja újra a kiépítés konfigurálását. A munkahely minden új példánya automatikusan az új alkalmazás verzióját fogja használni. 
+
+ 
+Ha a munkahelyi integráció karanténban van, akkor újra meg kell adnia egy érvényes tokent ahhoz, hogy áttelepítse Önt. A rendszergazdai hitelesítő adatok szakasz szürkén jelenik meg, de a következőt lehet hozzáfűzni ( **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = True**) az URL-címre a hitelesítő adatok újbóli mentéséhez. 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>A rendszergazdai hitelesítő adatok szakasz szürkén jelenik meg az alkalmazáson, és nem lehet menteni. Hogy miért?
+Zárolta a meglévő munkahelyi ügyfelek rendszergazdai hitelesítő adatait tartalmazó szakaszát. Ha a bérlőt áttelepítette az új munkahelyi alkalmazásba, akkor újra frissítheti a rendszergazdai hitelesítő adatok szakaszt. Ha nem tud megvárni, a fenti URL-cím használatával szerkesztheti az alkalmazást. 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>Mikor fognak történni ezek a változások?
+A munkahely összes új példánya már az új integrációs/engedélyezési módszert fogja használni. A meglévő integrációk fokozatosan, februárban lesznek áttelepítve. A Migrálás minden bérlő esetében a hónap végéig lesz végrehajtva. 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
@@ -45,11 +67,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * A Facebook egyszeri bejelentkezéses előfizetést használó munkaterülete
 
 > [!NOTE]
-> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
-Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
+Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja éles környezetét, ha szükséges.
+- Ne használja az éles környezetben, csak szükség esetén.
 - Ha még nem rendelkezik Azure AD-próbaverzióval, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1\. lépés A kiépítési üzembe helyezés megtervezése
@@ -77,7 +99,7 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
 
 * Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -109,26 +131,26 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
 
 9. Tekintse át az Azure AD-ból a munkahelyre szinkronizált felhasználói attribútumokat a Facebook használatával az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Facebook által a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. Ha úgy dönt, hogy megváltoztatja a [megfelelő célként megadott attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor a Facebook API-nak az adott attribútum alapján történő szűrését támogató munkaterületet kell biztosítania. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-   |Attribútum|Type (Típus)|
+   |Attribútum|Típus|
    |---|---|
    |userName|Sztring|
    |displayName|Sztring|
-   |Active|Logikai|
+   |aktív|Logikai|
    |Cím|Logikai|
-   |e-mailek [type EQ "work"]. Value|Sztring|
-   |név. givenName|Sztring|
-   |név. familyName|Sztring|
+   |e-mailek [típus eq "work"] .value|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
    |név. formázott|Sztring|
    |címek [type EQ "work"]. formázott|Sztring|
-   |címek [type EQ "work"]. streetAddress|Sztring|
+   |.streetAddress címek [típus eq "work"]|Sztring|
    |címek [típus EQ "work"]. helység|Sztring|
    |címek [típus EQ "work"]. régió|Sztring|
    |címek [type EQ "work"]. Country|Sztring|
-   |címek [type EQ "work"]. irányítószám|Sztring|
+   |.postalCode címek [típus eq "work"]|Sztring|
    |címek [type EQ "other"]. formázott|Sztring|
-   |phoneNumbers [type EQ "work"]. Value|Sztring|
-   |phoneNumbers [type EQ "Mobile"]. Value|Sztring|
-   |phoneNumbers [type EQ "fax"]. Value|Sztring|
+   |phoneNumbers [típus eq "work"] .value|Sztring|
+   |phoneNumbers [típus eq "mobileszköz"] .value|Sztring|
+   |phoneNumbers [típus eq "fax"] .value|Sztring|
    |externalId|Sztring|
    |preferredLanguage|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Sztring|

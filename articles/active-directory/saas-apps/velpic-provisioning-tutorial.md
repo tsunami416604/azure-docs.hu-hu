@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása Velpic |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Velpic felhasználói fiókokat.
+title: 'Oktatóanyag: a Velpic konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Velpic.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,88 +16,88 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337680"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064121"
 ---
-# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Velpic konfigurálása
+# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Velpic konfigurálása
 
-Ez az oktatóanyag célja, a lépéseket kell elvégeznie a Velpic és az Azure AD automatikus kiépítésének és megszüntetésének felhasználói fiókok Azure AD-ből Velpic mutatni.
+Ennek az oktatóanyagnak a célja, hogy megmutassa a Velpic és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Velpic.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
 
 * Egy Azure Active Directory-bérlő
-* Egy Velpic bérlőt a [nagyvállalati csomag](https://www.velpic.com/pricing.html) vagy jobban engedélyezve
-* Velpic rendszergazdai engedélyekkel rendelkező felhasználói fiók
+* Velpic-bérlő a [nagyvállalati csomaggal](https://www.velpic.com/pricing.html) vagy jobb engedélyezéssel
+* Rendszergazdai jogosultságokkal rendelkező Velpic felhasználói fiók
 
-## <a name="assigning-users-to-velpic"></a>Felhasználók hozzárendelése Velpic
+## <a name="assigning-users-to-velpic"></a>Felhasználók kiosztása a Velpic
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Automatikus felhasználói fiók kiépítése kontextusában csak a felhasználók és csoportok rendelt "" az Azure AD-alkalmazáshoz való szinkronizálásra kerül. 
+Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek. 
 
-A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt kell döntenie, hogy mely felhasználók, illetve a csoportok az Azure ad-ben képviselik a felhasználók, akik hozzáférhetnek a Velpic alkalmazását. Ha úgy döntött, utasításokat követve ezeket a felhasználókat rendelhet Velpic alkalmazásához:
+A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a Velpic alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a Velpic-alkalmazáshoz:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](../manage-apps/assign-user-or-group-access-portal.md)
+[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-velpic"></a>Felhasználók hozzárendelése Velpic fontos tippek
+### <a name="important-tips-for-assigning-users-to-velpic"></a>Fontos Tippek a felhasználók Velpic való hozzárendeléséhez
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználót az üzembe helyezési konfiguráció teszteléséhez Velpic rendelni. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Velpic a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
 
-* Amikor egy felhasználó hozzárendelése Velpic, akkor ki kell választania a **felhasználói** , vagy egy másik érvényes és alkalmazásspecifikus szerepkör (ha elérhető) a hozzárendelés párbeszédpanelen. Vegye figyelembe, hogy a **alapértelmezett hozzáférési** szerepkör nem működik az üzembe helyezés, és ezeket a felhasználókat a rendszer kihagyja.
+* Amikor Velpic rendel hozzá egy felhasználóhoz, ki kell választania a **felhasználói** szerepkört vagy egy másik érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Vegye figyelembe, hogy az **alapértelmezett hozzáférési** szerepkör nem működik a kiépítés során, és ezek a felhasználók kimaradnak.
 
-## <a name="configuring-user-provisioning-to-velpic"></a>Velpic történő felhasználókiépítés konfigurálása
+## <a name="configuring-user-provisioning-to-velpic"></a>A felhasználók üzembe helyezésének beállítása a Velpic
 
-Ez a szakasz végigvezeti az Azure AD-csatlakozás Velpic a felhasználói fiók üzembe helyezési API, és az eszközkiépítési szolgáltatás létrehozása, frissítése és letiltását konfigurálása hozzárendelt felhasználói fiókok a felhasználó és csoport-hozzárendelést az Azure ad-ben alapján Velpic.
+Ez a szakasz végigvezeti az Azure AD-nek a Velpic felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és Velpic alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP]
-> Előfordulhat, hogy meg Velpic SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Velpic, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése Velpic az Azure AD-ben:
+### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli Velpic:
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás** szakaszban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
 
-2. Ha már konfigurált Velpic egyszeri bejelentkezést, keresse meg a keresési mező használatával Velpic példányát. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Velpic** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a Velpic, és adja hozzá az alkalmazások listáját.
+2. Ha már konfigurálta a Velpic az egyszeri bejelentkezéshez, keresse meg a Velpic-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Velpic** az alkalmazás-gyűjteményben. Válassza a Velpic lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-3. Válassza ki a Velpic példányát, majd válassza ki a **kiépítési** fülre.
+3. Válassza ki a Velpic példányát, majd válassza a **kiépítés** lapot.
 
-4. Állítsa be a **Kiépítési mód** való **automatikus**.
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Velpic kiépítése](./media/velpic-provisioning-tutorial/Velpic1.png)
+    ![Velpic kiépítés](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím & titkos jogkivonat** Velpic a. () Ezeket az értékeket a Velpic fiók alatt található: **Kezelése** > **integrációs** > **beépülő modul** > **SCIM**)
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **bérlői URL-címet & Velpic titkos jogkivonatát** . (Ezek az értékek a Velpic-fiókban találhatók: > **integráció** **kezelése** > **beépülő modul** > **scim**)
 
     ![Engedélyezési értékek](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Az Azure Portalon kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat Velpic alkalmazását. A csatlakozás sikertelen lesz, ha győződjön meg arról, Velpic fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra az 5. lépés.
+6. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Velpic-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Velpic-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra az 5. lépéssel.
 
-7. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítési e-mail** mezőben a kiépítési hibaüzeneteket, és jelölje be az alábbi jelölőnégyzetet.
 
 8. Kattintson a **Save** (Mentés) gombra.
 
-9. A leképezések szakasz alatt válassza ki a **szinkronizálása az Azure Active Directory-felhasználók a Velpic**.
+9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Velpic**lehetőséget.
 
-10. Az a **attribútumleképezések** területen tekintse át a felhasználói attribútumok, amelyek a rendszer szinkronizálja az Azure ad-ből Velpic. Vegye figyelembe, hogy a kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok használandó felel meg a frissítési műveletek Velpic levő felhasználói fiókokat. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Velpic-be szinkronizálandó felhasználói attribútumokat. Vegye figyelembe, hogy a **megfelelő** tulajdonságokként kiválasztott attribútumok a Velpic felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-11. Az Azure AD létesítési szolgáltatás Velpic engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
+11. Az Azure AD-kiépítési szolgáltatás Velpic való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
 12. Kattintson a **Save** (Mentés) gombra.
 
-Ekkor elindul a kezdeti szinkronizálás, a felhasználók és/vagy a felhasználók és csoportok szakaszban Velpic hozzárendelt csoportokat. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hajtsa végre. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységre vonatkozó jelentések, amelyek leírják a kiépítési szolgáltatás által végrehajtott összes műveletet.
+Ezzel elindítja a felhasználók és csoportok szakaszban Velpic rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb ideig tart, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentéseire mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

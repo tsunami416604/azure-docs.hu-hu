@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311658"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063798"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETének használatával
 
@@ -27,18 +27,18 @@ Ebből a dokumentumból megtudhatja, hogyan használhatja a Ambari webes felhasz
 
 Az [Apache Ambari](https://ambari.apache.org) egy könnyen használható webes felhasználói felületet biztosít a Hadoop-kezeléshez. A Ambari használatával felügyelheti és figyelheti a Hadoop-fürtöket. A fejlesztők a [AMBARI REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)-k használatával integrálhatja ezeket a képességeket alkalmazásaiba.
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Csatlakozás
 
-A Ambari webes felhasználói felülete `https://CLUSTERNAME.azurehdinsight.net` címen érhető el a HDInsight-fürtön, ahol a `CLUSTERNAME` a fürt neve.
+A Ambari webes felhasználói felülete `https://CLUSTERNAME.azurehdinsight.net`on érhető el a HDInsight-fürtön, ahol a `CLUSTERNAME` a fürt neve.
 
 > [!IMPORTANT]  
-> A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Ha a rendszer a hitelesítésre kéri, használja a fürt létrehozásakor megadott rendszergazdai fiók nevét és jelszavát.
+> A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Ha a rendszer a hitelesítésre kéri, használja a fürt létrehozásakor megadott rendszergazdai fiók nevét és jelszavát. Ha a rendszer nem kéri a hitelesítő adatok megadását, ellenőrizze a hálózati beállításokat, és győződjön meg arról, hogy az ügyfél és az Azure HDInsight-fürtök között nincs kapcsolati probléma.
 
 ## <a name="ssh-tunnel-proxy"></a>SSH-alagút (proxy)
 
 Habár a fürt Ambari közvetlenül az interneten keresztül érhető el, néhány hivatkozás a Ambari webes felhasználói felületéről (például a JobTracker) nem érhető el az interneten. A szolgáltatások eléréséhez létre kell hoznia egy SSH-alagutat. További információ: az [SSH-alagút használata a HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari webes felhasználói felület
+## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > A Ambari webes felhasználói felületének nem minden funkciója támogatott a HDInsight. További információkért lásd a jelen dokumentum nem [támogatott műveletek](#unsupported-operations) című szakaszát.
@@ -49,21 +49,21 @@ Amikor megnyílik az oldal, jegyezze fel a felső sávot. Ez a sáv a következ�
 
 ![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Tétel |Leírás |
+|Elem |Leírás |
 |---|---|
 |Ambari embléma|Megnyitja az irányítópultot, amely a fürt figyelésére használható.|
 |Fürt neve # Ops|A folyamatban lévő Ambari-műveletek számát jeleníti meg. A fürt nevének kiválasztásakor vagy az **# Ops** megjeleníti a háttérben futó műveletek listáját.|
 |riasztások száma|Riasztásokat vagy kritikus riasztásokat jelenít meg, ha vannak ilyenek a fürthöz.|
 |Irányítópult|Megjeleníti az irányítópultot.|
 |Szolgáltatások|A fürt szolgáltatásainak információi és konfigurációs beállításai.|
-|Hosts|A fürt csomópontjainak információi és konfigurációs beállításai.|
-|Értesítések|Információk, figyelmeztetések és kritikus riasztások naplója.|
-|Felügyeleti|A fürtre, a szolgáltatásfiók-információkra és a Kerberos-biztonságra telepített szoftverek stackje vagy szolgáltatásai.|
+|Gazdagépek|A fürt csomópontjainak információi és konfigurációs beállításai.|
+|Riasztások|Információk, figyelmeztetések és kritikus riasztások naplója.|
+|Rendszergazda|A fürtre, a szolgáltatásfiók-információkra és a Kerberos-biztonságra telepített szoftverek stackje vagy szolgáltatásai.|
 |Rendszergazda gomb|Ambari-kezelés, felhasználói beállítások és kijelentkezés.|
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 Az alábbi lista a Ambari által használt általános riasztási állapotokat tartalmazza:
 
@@ -138,7 +138,7 @@ A felhasználók, csoportok és engedélyek használata a [tartományhoz csatlak
 > [!WARNING]  
 > Ne változtassa meg a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú HDInsight-fürtön. A jelszó módosítása megszakítja a parancsfájl-műveletek használatát, vagy skálázási műveleteket hajt végre a fürtön.
 
-### <a name="hosts"></a>Hosts
+### <a name="hosts"></a>Gazdagépek
 
 A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gazdagépek kezeléséhez kövesse az alábbi lépéseket.
 
@@ -151,7 +151,7 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
 
 2. A **műveletek** menüben válassza ki a végrehajtani kívánt műveletet:
 
-    |Tétel |Leírás |
+    |Elem |Leírás |
     |---|---|
     |Az összes összetevő elindítása|Indítsa el az összes összetevőt a gazdagépen.|
     |Az összes összetevő leállítása|Állítsa le az összes összetevőt a gazdagépen.|
@@ -159,7 +159,7 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
     |Karbantartási mód bekapcsolása|Letiltja a gazdagép riasztásait. Ezt a módot akkor kell engedélyezni, ha riasztásokat létrehozó műveleteket hajt végre. Például leállíthatja és elindíthatja a szolgáltatást.|
     |Karbantartási mód kikapcsolása|A gazdagépet a normál riasztáshoz adja vissza.|
     |Leállítás|Leállítja a DataNode vagy a Csomópontkezelők a gazdagépen.|
-    |Kezdés|Elindítja a DataNode vagy a Csomópontkezelők a gazdagépen.|
+    |Indítás|Elindítja a DataNode vagy a Csomópontkezelők a gazdagépen.|
     |Újraindítás|Leállítja és elindítja a DataNode vagy a Csomópontkezelők a gazdagépen.|
     |Leszerelése|Eltávolít egy gazdagépet a fürtből. **Ne használja ezt a műveletet a HDInsight-fürtökön.**|
     |Recommission|Egy korábban leszerelt gazdagép hozzáadását a fürthöz. **Ne használja ezt a műveletet a HDInsight-fürtökön.**|

@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ed2a1b1f4eaf665e893026c8b3bbc77ddad5c98e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712305"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063577"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>A felhasználók üzembe helyezésének konfigurálása Azure AD Gallery-alkalmazásokban
 
@@ -40,9 +40,9 @@ Ha szeretne támogatást kérni egy adott alkalmazás automatikus kiépítéséh
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Alkalmazás konfigurálása automatikus kiépítés esetén
 
-Az *automatikus* beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Az Azure AD kiépítési szolgáltatásával és működésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](user-provisioning.md).
+Az *automatikus* beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Az Azure AD kiépítési szolgáltatásával és működésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
-Az egyes felhasználók és csoportok alkalmazásokhoz való kiépítésével kapcsolatos további információkért lásd: a [felhasználói fiókok üzembe helyezésének kezelése a vállalati](configure-automatic-user-provisioning-portal.md)alkalmazásokhoz.
+Az egyes felhasználók és csoportok alkalmazásokhoz való kiépítésével kapcsolatos további információkért lásd: a [felhasználói fiókok üzembe helyezésének kezelése a vállalati](../app-provisioning/configure-automatic-user-provisioning-portal.md)alkalmazásokhoz.
 
 Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükséges tényleges lépések az alkalmazástól függően változnak.
 
@@ -54,5 +54,5 @@ Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory hasz
 A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ide tartozik a "megfelelő tulajdonság" beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál. Az attribútumok hozzárendelésével kapcsolatos további információkért tekintse meg a *következő lépések* hivatkozását.
 
 ## <a name="next-steps"></a>Következő lépések
-[Az SaaS-alkalmazások felhasználói kiépítési attribútum-leképezésének testreszabása Azure Active Directory](customize-application-attributes.md)
+[Az SaaS-alkalmazások felhasználói kiépítési attribútum-leképezésének testreszabása Azure Active Directory](../app-provisioning/customize-application-attributes.md)
 
