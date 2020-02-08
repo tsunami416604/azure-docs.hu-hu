@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964498"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083103"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: az Azure-adatmegosztás használatával fogadja el és fogadja az adatfogadást  
 
@@ -30,7 +30,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 * Egy adatmegosztás meghívása: Microsoft Azure egy meghívót az "Azure adatmegosztási meghívása **<yourdataprovider@domain.com>** " című témakörben.
-* Regisztrálja a Microsoft. DataShare erőforrás-szolgáltatót. Az adatmegosztási erőforrás-szolgáltató regisztrálásához kövesse az Azure-beli [Adatmegosztások hibakeresése című cikkben](data-share-troubleshoot.md) leírt utasításokat.
+* Regisztrálja a [Microsoft. DataShare erőforrás-szolgáltatót](concepts-roles-permissions.md#resource-provider-registration) az Azure-előfizetésben, amelyben létre fog hozni egy adatmegosztási erőforrást és az Azure-előfizetést, ahol a cél Azure-adattárolók találhatók.
 
 ### <a name="receive-data-into-a-storage-account"></a>Adatfogadás egy Storage-fiókba: 
 
@@ -57,7 +57,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 * Ügyfél IP-SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portal található SQL Serverben navigáljon a *tűzfalak és a virtuális hálózatok* területére.
     1. Kattintson a **be** kapcsolóra az Azure-szolgáltatásokhoz való hozzáférés engedélyezéséhez.
-    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre, majd a **Mentés**gombra. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is. 
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre, majd a **Mentés**gombra. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy a következő alkalommal meg kell ismételni a folyamatot, amikor az adatok beérkeznek egy SQL-célhelyre Azure Portal. Hozzáadhat IP-címtartományt is. 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürtbe történő adatfogadás: 
@@ -68,7 +68,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Meghívás megnyitása
 

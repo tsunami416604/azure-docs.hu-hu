@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964464"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087172"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -35,7 +35,7 @@ Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendel
 |Azure Blob Storage| Storage blob-Adatolvasó | Storage blob adatközreműködői
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
 |Azure Data Lake Gen2 | Storage blob-Adatolvasó | Storage blob adatközreműködői
-|Azure SQL Server-kiszolgáló | SQL-adatbázis közreműködői | SQL-adatbázis közreműködői
+|Azure-SQL Server | SQL-adatbázis közreműködői | SQL-adatbázis közreműködői
 |Azure Adatkezelő-fürt | Közreműködő | Közreműködő
 |
 
@@ -63,7 +63,7 @@ Az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-ho
 1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 1. A *szerepkör*területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó*lehetőséget).
 1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
-1. Kattintson a *Mentés* gombra.
+1. Kattintson a *Save* (Mentés) gombra.
 
 SQL-alapú források esetében a fenti lépéseken kívül egy SQL-felhasználót is létre kell hozni az SQL Database-ben az Azure-beli adatmegosztási erőforrással megegyező névvel rendelkező külső szolgáltatótól. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt egy minta parancsfájl is megtalálható az [adatmegosztási](share-your-data.md) oktatóanyagban. 
 
@@ -81,7 +81,7 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 1. A *szerepkör*területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó*lehetőséget).
 1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
-1. Kattintson a *Mentés* gombra.
+1. Kattintson a *Save* (Mentés) gombra.
 
 SQL-alapú célként a fenti lépéseken kívül egy SQL-felhasználót is létre kell hozni az SQL Database-ben az Azure-beli adatmegosztási erőforrással megegyező névvel rendelkező külső szolgáltatótól. Ezt a felhasználót *db_datareader, db_datawriter, db_ddladmin* engedéllyel kell megadnia. A rendszer az SQL-alapú megosztás egyéb előfeltételeivel együtt egy minta parancsfájlt is megtalál az [elfogadás és fogadás adatkezelési](subscribe-to-data-share.md) oktatóanyagban. 
 
@@ -91,7 +91,7 @@ A szerepkör-hozzárendelés hozzáadásával kapcsolatos további tudnivalóké
 
 ## <a name="resource-provider-registration"></a>Erőforrás-szolgáltató regisztrálása 
 
-Ha először szeretné megtekinteni az Azure-beli adatmegosztási meghívást az Azure-bérlőben, előfordulhat, hogy manuálisan kell regisztrálnia a Microsoft. DataShare erőforrás-szolgáltatót az Azure-előfizetésében. Az alábbi lépéseket követve regisztrálja a Microsoft. DataShare erőforrás-szolgáltatót az Azure-előfizetésében. 
+Ha először szeretné megtekinteni az Azure-beli adatmegosztási meghívást az Azure-bérlőben, előfordulhat, hogy manuálisan kell regisztrálnia a Microsoft. DataShare erőforrás-szolgáltatót az Azure-előfizetésében. Az alábbi lépéseket követve regisztrálja a Microsoft. DataShare erőforrás-szolgáltatót az Azure-előfizetésében. Az erőforrás-szolgáltató regisztrálásához *közreműködői* hozzáférésre van szüksége az Azure-előfizetéshez.
 
 1. A Azure Portal navigáljon az **előfizetések**elemre.
 1. Válassza ki az Azure-adatmegosztáshoz használt előfizetést.

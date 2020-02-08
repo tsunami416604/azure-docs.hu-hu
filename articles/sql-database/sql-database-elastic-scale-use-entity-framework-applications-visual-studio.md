@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823483"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087188"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
 
@@ -27,7 +27,7 @@ Ez a dokumentum egy Entity Framework alkalmazás azon módosításait mutatja be
 A cikk kódjának letöltéséhez:
 
 * A Visual Studio 2012-es vagy újabb verziójára van szükség. 
-* Töltse le az [Azure SQL-Entity Framework Integration Sample-hez készült rugalmas adatbázis-eszközöket](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) az MSDN-ből. Bontsa ki a mintát a választott helyre.
+* Töltse le az [Azure SQL-Entity Framework Integration Sample-hez készült rugalmas adatbázis-eszközöket](https://github.com/Azure/elastic-db-tools/). Bontsa ki a mintát a választott helyre.
 * Indítsa el a Visual Studiót. 
 * A Visual Studióban válassza a fájl-> nyitott projekt/megoldás lehetőséget. 
 * A **projekt megnyitása** párbeszédpanelen navigáljon a letöltött mintához, és válassza a **EntityFrameworkCodeFirst. SLN** elemet a minta megnyitásához. 
@@ -193,12 +193,12 @@ A fenti kód a fenti példák szemléltetik az alkalmazáshoz szükséges alapé
 | Aktuális konstruktor | Újraírható konstruktor az adatforgalomhoz | Alapkonstruktor | Megjegyzések |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolódásnak a szegmens Térkép és az Adatfüggő útválasztási kulcs függvényének kell lennie. Az EF használatával kell átadnia az automatikus kapcsolódást, és ehelyett a szegmenses leképezést kell használnia a kapcsolatok közvetítéséhez. |
-| MyContext (karakterlánc) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kötés a szegmens Térkép és az Adatfüggő útválasztási kulcs függvénye. A rögzített adatbázis-név vagy a kapcsolatok karakterlánca nem működik, mert a szegmenses Térkép átadja az ellenőrzést. |
-| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |A rendszer létrehozza a hozzáférést a megadott szegmenses térképhez és a horizontális Felskálázási kulcshoz a megadott modellel. A lefordított modellt a rendszer átadja az alapszintű c'tor. |
+| MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kötés a szegmens Térkép és az Adatfüggő útválasztási kulcs függvénye. A rögzített adatbázis-név vagy a kapcsolatok karakterlánca nem működik, mert a szegmenses Térkép átadja az ellenőrzést. |
+| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A rendszer létrehozza a hozzáférést a megadott szegmenses térképhez és a horizontális Felskálázási kulcshoz a megadott modellel. A lefordított modellt a rendszer átadja az alapszintű c'tor. |
 | MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha a bemenet már használta a szegmenses térképet és a kulcsot). A rendszer átadja a logikai értéket. |
-| MyContext (karakterlánc, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha a bemenet a szegmenses térképet és a kulcsot használta). A lefordított modell át lett adva. |
+| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha a bemenet a szegmenses térképet és a kulcsot használta). A lefordított modell át lett adva. |
 | MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Az új konstruktornak meg kell győződnie arról, hogy a ObjectContext átadott összes kapcsolatot átirányítja a rendszer a rugalmas skálázással kezelt kapcsolatok felé. A ObjectContexts részletes témája a jelen dokumentum hatókörén kívül esik. |
-| MyContext (DbConnection, DbCompiledModel, bool) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, bool); |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. A kapcsolatok nem adhatók meg bemenetként (kivéve, ha a bemenet már használta a szegmenses térképet és a kulcsot). A modell és a logikai érték átadása az alaposztály konstruktorának. |
+| MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. A kapcsolatok nem adhatók meg bemenetként (kivéve, ha a bemenet már használta a szegmenses térképet és a kulcsot). A modell és a logikai érték átadása az alaposztály konstruktorának. |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>Szegmenses séma üzembe helyezése EF-Migrálás útján
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896083"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087393"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
@@ -30,13 +30,13 @@ Ez a cikk a következő kérdésekre ad választ:
 
 A következő szakaszokban ismertetjük a használati forgatókönyvek áttekintését.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Azure Time Series Insights egy teljes körű, szolgáltatásként nyújtott platformot kínál. A szolgáltatás a kifejezetten környezetfüggő, idősorozat-optimalizált IoT adatok gyűjtésére, feldolgozására, tárolására, elemzésére és lekérdezésére szolgál. A Time Series Insights ideális megoldás az alkalmi adatfeltárásra és az operatív elemzésre. A Time Series Insights egy egyedileg bővíthető, testreszabott szolgáltatás, amely megfelel az ipari IoT üzemelő példányok széles körű igényeinek.
 
-## <a name="data-exploration-and-visual-anomaly-detection"></a>Adatfeltárás és vizuális anomáliadetektálás
+## <a name="data-exploration-and-visual-anomaly-detection"></a>Adatelemzési és vizualizációs anomáliák észlelése
 
-Több milliárd eseményt vizsgálhat meg és elemezhet azonnal, és feltárhatja a rendellenességeket, és megismerheti az adatok rejtett trendjeit. A Time Series Insights közel valós idejű teljesítményt nyújt az IoT- és DevOps-alapú elemzési számítási feladatoknál.
+Azonnal feltárhatja és elemezheti az észlelt rendellenességeket, és felderítheti az adataiban lévő rejtett trendeket. A Time Series Insights közel valós idejű teljesítményt nyújt a IoT és a DevOps-elemzési számítási feladatokhoz.
 
 [![adatkezelő](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
@@ -62,9 +62,9 @@ A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
 * A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights olyan időbeli operátorokkal rendelkezik, mint például a `from`, a `to`, a `first`és a `last`. Összesítések és átalakítások, például `average`, `min`, `max`, `split by`, `order by`és `DateHistogram`. Emellett olyan szűrési operátorokat is tartalmaz, mint például a `has`, `in`, `and`, `or`, `greater than`és `REGEX`. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
 
-## <a name="operational-analysis-and-driving-process-efficiency"></a>Üzemeltetéselemzés és a folyamatok hatékonyságának növelése
+## <a name="operational-analysis-and-driving-process-efficiency"></a>Operatív elemzés és a vezetési folyamat hatékonysága
 
-A Time Series Insights használatával figyelheti az állapotot, a használatot és a nagy méretű berendezések teljesítményét. Time Series Insights egyszerű módszert kínál a működési hatékonyság mérésére. A Time Series Insights használatával azonnali és rugalmas skálázhatósággal kezelheti a változatos és kiszámíthatatlan IoT-terheléseket a betöltések és a lekérdezések teljesítményének csökkenése nélkül.
+A Time Series Insights használatával figyelheti az állapotot, a használatot és a nagy méretű berendezések teljesítményét. Time Series Insights egyszerű módszert kínál a működési hatékonyság mérésére. Time Series Insights segíti a különböző és kiszámíthatatlan IoT számítási feladatok kezelését a betöltés vagy a lekérdezési teljesítmény feláldozása nélkül.
 
 [![áttekintése](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 

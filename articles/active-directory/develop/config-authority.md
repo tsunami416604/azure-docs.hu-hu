@@ -3,22 +3,22 @@ title: Identitás-szolgáltatók konfigurálása (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan használhatja a különböző hatóságokat, például a B2C-t, a szuverén felhőket és a vendég felhasználókat az iOS-és macOS-MSAL.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: aaef7c4c0e2fa295e6e20976df5cce1523a70c43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697778"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085212"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
 
@@ -180,7 +180,7 @@ Előfordulhat, hogy különböző hatóköröket kell átadnia az egyes szuveré
 
 Ha a szolgáltatói URL-cím `"login.microsoftonline.com/common"`értékre van állítva, a felhasználó bekerül a saját bérlőbe. Előfordulhat azonban, hogy egyes alkalmazásoknak egy másik bérlőbe kell írniuk a felhasználót, és egyes alkalmazások csak egyetlen Bérlővel működnek.
 
-A felhasználó egy adott bérlőbe való aláírásához konfigurálja `MSALPublicClientApplication` egy adott szolgáltatóval. Példa:
+A felhasználó egy adott bérlőbe való aláírásához konfigurálja `MSALPublicClientApplication` egy adott szolgáltatóval. Például:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

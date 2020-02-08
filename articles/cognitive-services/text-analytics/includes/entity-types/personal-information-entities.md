@@ -6,30 +6,110 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799906"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086899"
 ---
 ## <a name="personal-information-entity-types"></a>Személyes információ típusú entitások típusai:
 
+### <a name="person"></a>Személy
+Nevek felismerése szövegben.
+
+Nyelvek
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                               | A modell verziójától kezdődően érhető el |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| N/A          | Felismert nevek, például `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Szervezet  
+
+Felismerheti a szervezeteket, vállalatokat, ügynökségeket, vállalatokat, klubokat és más csoportokat.
+
+Nyelvek 
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                                                                       | A modell verziójától kezdődően érhető el|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| N/A          | szervezetek, például `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
 ### <a name="phone-number"></a>Telefonszám
 
-Telefonszámok. 
+Telefonszámok (csak az Egyesült államokbeli telefonszámok). 
 
 Nyelvek
 
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve           | Leírás                                           |
-|------------------------|-------------------------------------------------------|
-| N/A                    | Telefonszámok, például `+1 123-123-123`.          |
-| EU-telefonszám        | Az Európai Unióra jellemző telefonszámok.         |
-| EU mobil telefonszáma | Az Európai Unióra jellemző mobiltelefon-telefonszámok. |
+| Altípus neve | Leírás                                    | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------|----------------------------------------|
+| N/A          | Egyesült államokbeli telefonszámok, például `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>E-mail
+
+E-mail-cím. 
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                      | A modell verziójától kezdődően érhető el |
+|--------------|--------------------------------------------------|----------------------------------------|
+| N/A          | E-mail-cím, például `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>URL-cím
+
+Internetes URL-címek.
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                          | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------------|----------------------------------------|
+| N/A          | Webhelyekhez tartozó URL-címek, például `https://www.bing.com` | `2020-02-01`                           |
+
+### <a name="ip-address"></a>IP-cím
+
+Internet Protocol címe
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                              | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------|----------------------------------------|
+| N/A          | Hálózati címe például `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Mennyiség 
+
+Numerikus mennyiségek
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                   | A modell verziójától kezdődően érhető el |
+|--------------|-------------------------------|----------------------------------------|
+| Kor          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>DateTime
+
+Dátum és idő entitások
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                   | A modell verziójától kezdődően érhető el |
+|--------------|-------------------------------|----------------------------------------|
+| Dátum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>EU GPS-koordináták
 
@@ -39,13 +119,15 @@ Nyelvek
 
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                               |
-|--------------|-------------------------------------------|
-| N/A          | GPS-koordináták az Európai Unión belül |
+| Altípus neve | Leírás                               | A modell verziójától kezdődően érhető el |
+|--------------|-------------------------------------------|----------------------------------------|
+| N/A          | GPS-koordináták az Európai Unión belül | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure-információk
 
 Azonosítható Azure-információk, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait. 
+
+* A modell verziója `2019-10-01`tól kezdődően érhető el.
 
 Nyelvek
 
@@ -66,6 +148,8 @@ Nyelvek
 | SQL Server a kapcsolatok karakterlánca          | Az SQL Serverhez tartozó kapcsolatok karakterlánca.                                         |
 
 ### <a name="identification"></a>Szoftverazonosító
+
+* A modell verziója `2019-10-01`tól kezdődően érhető el.
 
 Nyelvek
 

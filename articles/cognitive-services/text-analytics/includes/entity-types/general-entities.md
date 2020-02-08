@@ -6,48 +6,99 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284120"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086884"
 ---
 ## <a name="general-entity-types"></a>Általános entitások típusai:
 
 ### <a name="person"></a>Személy
-Felismert nevek és más személyek a szövegben.
+
+Nevek felismerése szövegben.
+
 Nyelvek
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás             |
-|--------------|-------------------------|
-| N/A          | Felismert nevek, például `Bill Gates`, `Marie Curie` |
+| Altípus neve | Leírás                                                      | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------------------------|---------------------------------------|
+| N/A          | Felismert személy neve, például `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+
+### <a name="persontype"></a>PersonType
+Egy személy által birtokolt feladat típusa vagy szerepköre.
+
+Nyelvek
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                                                                | A modell verziójától kezdődően érhető el |
+|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
+| N/A          | Feladattípusok például `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Hely
 
-Természetes és emberi által készített tereptárgyak, struktúrák és földrajzi funkciók.
+Természetes és emberi által készített tereptárgyak, struktúrák, földrajzi funkciók és geopolitikai entitások.
 
 Nyelvek
 
-
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| N/A          | helyszínek, például `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty` |
+| Altípus neve              | Leírás                                                                              | A modell verziójától kezdődően érhető el |
+|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
+| N/A                       | helyszínek, például `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitikai entitás (GPE) | Városok, országok, például `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
-Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például: vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. Nyelvek 
+Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például: vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. 
+
+Nyelvek 
 
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| N/A          | szervezetek, például `Microsoft`, `NASA` `National Oceanic and Atmospheric Administration` |
+| Altípus neve | Leírás                                                                                             | A modell verziójától kezdődően érhető el |
+|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
+| N/A          | szervezetek, például `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
+
+### <a name="event"></a>Esemény  
+
+Történelmi, társadalmi és természeti események.  
+
+Nyelvek 
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                                            | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------------------------------|----------------------------------------|
+| N/A          | Események, például `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
+
+### <a name="product"></a>Product  
+
+Különböző kategóriák fizikai objektumai.  
+
+Nyelvek 
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                                                        | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------------------------------------------|----------------------------------------|
+| N/A          | Például `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
+| Számítás    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
+
+### <a name="skill"></a>Ügyességi  
+
+Egy képességet vagy szakértelmet leíró entitás.  
+
+Nyelvek 
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                                                                 | A modell verziójától kezdődően érhető el |
+|--------------|-----------------------------------------------------------------------------|----------------------------------------|
+| N/A          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Telefonszám
 
@@ -55,12 +106,11 @@ Telefonszámok (csak az Egyesült államokbeli telefonszámok).
 
 Nyelvek
 
-
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                                  |
-|----------|----------------------------------------------|
-| N/A         | Egyesült államokbeli telefonszámok, például `(312) 555-0176`. |
+| Altípus neve | Leírás                                    | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------|----------------------------------------|
+| N/A          | Egyesült államokbeli telefonszámok, például `(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>E-mail
 
@@ -68,12 +118,11 @@ E-mail-cím.
 
 Nyelvek
 
-
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                                  |
-|----------|----------------------------------------------|
-| N/A         | E-mail-cím, például `support@contoso.com` |
+| Altípus neve | Leírás                                      | A modell verziójától kezdődően érhető el |
+|--------------|--------------------------------------------------|----------------------------------------|
+| N/A          | E-mail-cím, például `support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>URL-cím
 
@@ -81,27 +130,60 @@ Internetes URL-címek.
 
 Nyelvek
 
-
 * Nyilvános előzetes verzió: `English`
 
-| Altípus neve | Leírás                                           |
-|----------|-------------------------------------------------------|
-| N/A         | Webhelyekhez tartozó URL-címek, például `https://www.bing.com`. |
+| Altípus neve | Leírás                                          | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------------------|----------------------------------------|
+| N/A          | Webhelyekhez tartozó URL-címek, például `https://www.bing.com` | `2019-10-01`                           |
 
-###  <a name="number"></a>Szám
+### <a name="ip-address"></a>IP-cím
 
-Számok és numerikus mennyiségek. 
+Internet Protocol címe
 
 Nyelvek
 
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve | Leírás                              | A modell verziójától kezdődően érhető el |
+|--------------|------------------------------------------|----------------------------------------|
+| N/A          | Hálózati címe például `10.0.0.101` | `2019-10-01`                           |
+
+###  <a name="datetime"></a>DateTime
+
+Dátum és idő entitások. 
+
+* A modell verziójától kezdve elérhető `2019-10-01`
+
+Nyelvek
 
 * Nyilvános előzetes verzió: `English`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
-| N/A         | `6`, `six`                   |
+| N/A         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| Dátum  | `May 2nd, 2017`, `05/02/2017`       |
+| Time     | `8:15`, `6AM`              |
+| DateRange    | `August 2nd to August 5th`         |
+| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Időtartam | `2.5 minutes`, `one and a half hours`         |
+| Beállítás | `every Saturday`         |
+
+###  <a name="quantity"></a>Mennyiség
+
+Számok és numerikus mennyiségek. 
+
+* A modell verziójától kezdve elérhető `2019-10-01`
+
+Nyelvek
+
+* Nyilvános előzetes verzió: `English`
+
+| Altípus neve    | Példák                     |
+|-------------|------------------------------|
+| Szám         | `6`, `six`                   |
 | Százalék  | `50%`, `fifty percent`       |
-| Sorszám     | `2nd`, `second`              |
+| Sorszámok     | `2nd`, `second`              |
+| Kor         | `90 day old`, `30 years old` |
 | Currency (Pénznem)    | `$10.99`, `€30.00`           |
 | Dimenzió   | `10 miles`, `40 cm`          |
 | Hőmérséklet | `32 degrees`, `10°C`         |

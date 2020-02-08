@@ -1,5 +1,5 @@
 ---
-title: Az Azure SignalR Service kiszolgáló nélküli rövid útmutató – Java
+title: Csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Java használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre csevegőszobát az Azure SignalR szolgáltatás és az Azure Functions használatával.
 author: sffamily
 ms.service: signalr
@@ -7,36 +7,34 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775863"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083199"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR Service Java használatával
+# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a Java használatával
 
-Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós idejű funkciókat az alkalmazásához. Az Azure Functions egy kiszolgáló nélküli platform, amellyel infrastruktúra kezelése nélkül futtathat kódokat. Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan készíthet kiszolgáló nélküli, valós idejű csevegőalkalmazást a SignalR szolgáltatás és a Functions használatával.
+Az Azure Signaler szolgáltatással egyszerűen adhat hozzá valós idejű funkciókat az alkalmazáshoz, és Azure Functions egy kiszolgáló nélküli platform, amely lehetővé teszi, hogy az infrastruktúra kezelése nélkül futtassa a kódot. Ebben a rövid útmutatóban a Java segítségével kiszolgáló nélküli, valós idejű csevegési alkalmazást hozhat létre a Signal Service és a functions használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing). Az Azure Function apps helyi futtatására szolgál.
 
-Ellenőrizze, hogy van-e telepítve valamilyen kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/).
+   > [!NOTE]
+   > A szükséges szignáló szolgáltatásbeli kötések a javában csak az Azure Function Core Tools 2.4.419 (2.0.12332) vagy újabb verziójában támogatottak.
 
-Telepítse az [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) eszközkészletet az Azure-függvényalkalmazások helyi futtatásához.
+   > [!NOTE]
+   > A bővítmények telepítéséhez Azure Functions Core Tools a [.net Core SDK](https://www.microsoft.com/net/download) telepítésére van szükség. A JavaScript-alapú Azure-függvényalkalmazások létrehozásához azonban nem szükséges a .NET ismerete.
+
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/), 8-as verzió
+- [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 
 > [!NOTE]
-> A SignalR Service kötéseket Java-környezetben, győződjön meg arról, hogy 2.4.419 verzióját használja, vagy újabb verzióját az Azure Functions Core Tools (gazdagép verziója 2.0.12332) használatára.
-
-A bővítmények telepítéséhez az Azure Functions Core Tools jelenleg igényli, hogy a [.NET Core SDK](https://www.microsoft.com/net/download) telepítve legyen. A JavaScript-alapú Azure-függvényalkalmazások létrehozásához azonban nem szükséges a .NET ismerete.
-
-Ha függvényalkalmazást szeretne létrehozni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
-
-* A [Java Developer Kit](https://www.azul.com/downloads/zulu/) 8-as verziója.
-* Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -58,24 +56,24 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
     ![SignalR szolgáltatás létrehozása](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. A Kódszerkesztő, nyissa meg a *a java/src/Csevegés* a klónozott adattár-mappában.
+1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/Java* mappát a klónozott tárházban.
 
 1. Nevezze át a *local.settings.sample.json* fájlt *local.settings.json* névre.
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A fő fájlt, amely tartalmazza a funkciók vannak *src/chat/java/src/main/java/com/function/Functions.java*:
+1. A függvényeket tartalmazó fő fájl az *src/chat/Java/src/Main/Java/com/Function/functions. Java*:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
-    - **SendMessage** – Csevegési üzenet fogadása a kérelem törzsében szereplő, és használja a *SignalR* kimeneti, kötelező, az üzenet összes szórási csatlakoztatva az ügyfélalkalmazások számára.
+    - **üzenetküldés** – csevegési üzenetet fogad a kérelem törzsében, és a *signaler* kimeneti kötés használatával közvetíti az üzenetet az összes csatlakoztatott ügyfélalkalmazás számára.
 
-1. A terminálban ellenőrizze, hogy az a *a java/src/Csevegés* mappát. A függvényalkalmazás létrehozása.
+1. A terminálon győződjön meg arról, hogy a *src/chat/Java* mappában található. Hozza létre a Function alkalmazást.
 
     ```bash
     mvn clean package
     ```
 
-1. Futtassa helyben a függvényalkalmazást.
+1. Futtassa helyileg a Function alkalmazást.
 
     ```bash
     mvn azure-functions:run
@@ -85,9 +83,9 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott, és futtatta a Maven használatával valós idejű kiszolgáló nélküli alkalmazás. Ezután megtudhatja, hogyan hozhat létre Java az Azure Functions előzmények.
+Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a Maven használatával. Következő lépésként megismerheti, hogyan hozhat létre teljesen új Java-Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Az első függvény létrehozása a Java és Maven](../azure-functions/functions-create-first-java-maven.md)
+> [Az első függvény létrehozása a Java és a Maven használatával](../azure-functions/functions-create-first-java-maven.md)

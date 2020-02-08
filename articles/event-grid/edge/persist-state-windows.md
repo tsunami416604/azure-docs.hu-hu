@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844615"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086625"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
 
@@ -212,13 +212,13 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     ```
 ## <a name="persist-events"></a>Események megőrzése
 
-Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell a metaadatok megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti fejezetek segítségével.
+Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell az események megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti részekkel.
 
 Fontos tudnivalók a megőrzött eseményekről:
 
 * Az események megtartása esemény-előfizetések alapján engedélyezett, és a kötet vagy a könyvtár csatlakoztatása után is engedélyezve van.
 * Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
-* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum minden üzenetkezelő rendszerhez alkalmazkodik, de csak nagy léptékű észrevehető válik.
+* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum az összes üzenetkezelő rendszerhez alkalmazkodik, de csak nagy léptékben érezhető lesz.
 
 Ha engedélyezni szeretné az esemény-megőrzést egy esemény-előfizetésben, állítsa a `persistencePolicy` `true`:
 

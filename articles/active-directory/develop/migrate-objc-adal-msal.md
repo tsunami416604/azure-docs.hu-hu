@@ -3,22 +3,22 @@ title: ADAL a MSAL áttelepítési útmutatóhoz (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a MSAL for iOS/macOS és a ObjectiveC Azure AD Authentication Library (ADAL) közötti különbségeket. ObjC) és a MSAL iOS/macOS rendszerre való áttelepítésének módja.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 311d6ed988777e94f5dd3fde8ac6e9aff1fb39fe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696673"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085176"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
 
@@ -65,7 +65,7 @@ Egyetlen erőforrás-azonosító helyett a MSAL-alkalmazások hatóköröket biz
 
 A MSAL kétféleképpen biztosítható hatókörök:
 
-* Adja meg az alkalmazások által igényelt összes engedély listáját. Példa: 
+* Adja meg az alkalmazások által igényelt összes engedély listáját. Például: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -146,7 +146,7 @@ Az alkalmazás brókerének engedélyezése:
 
 1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazáshoz. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth`. Cserélje le a `<app.bundle.id>`t az alkalmazás Bundle-azonosítójával. Ha a ADAL-ről végez áttelepítést, és az alkalmazása már közvetítő képességgel rendelkezik, semmi feleslegesen nem kell mást tennie. Az előző átirányítási URI-ja teljes mértékben kompatibilis a MSAL, így a 3. lépésre ugorhat.
 
-2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI esetében a formátum `msauth.<app.bundle.id>`. Példa:
+2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI esetében a formátum `msauth.<app.bundle.id>`. Például:
 
     ```xml
     <key>CFBundleURLSchemes</key>

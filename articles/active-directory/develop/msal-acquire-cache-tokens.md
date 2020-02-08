@@ -3,22 +3,22 @@ title: '& Gyorsítótár-tokenek beszerzése a MSAL-mel | Azure'
 titleSuffix: Microsoft identity platform
 description: További információ a tokenek beszerzéséről és gyorsítótárazásáról a Microsoft Authentication Library (MSAL) használatával.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/07/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9a9dda1bba4d587881d32d937fa0e20b68a5b383
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696568"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085164"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
 
@@ -47,7 +47,7 @@ Vagy például egy egyéni webes API hatókörei: `api://abscdefgh-1234-abcd-efg
 A Microsoft Graph API esetében csak a hatókör érték `user.read` `https://graph.microsoft.com/User.Read` formátumra mutat, és a szolgáltatás szinonimaként használható.
 
 > [!NOTE]
-> Bizonyos webes API-k (például a Azure Resource Manager API) (https://management.core.windows.net/) a hozzáférési jogkivonat célközönségi jogcíme (AUD) "/" karakterét várnak. Ebben az esetben fontos átadni a hatókört https://management.core.windows.net//user_impersonation ként (jegyezze fel a dupla perjelet), hogy a token érvényes legyen az API-ban.
+> Bizonyos webes API-k (például a Azure Resource Manager API) (https://management.core.windows.net/) a hozzáférési jogkivonat célközönségi jogcíme (AUD) "/" karakterét várnak. Ebben az esetben fontos átadni a hatókört https://management.core.windows.net//user_impersonationként (jegyezze fel a dupla perjelet), hogy a token érvényes legyen az API-ban.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Dinamikus hatókörök kérése növekményes engedélyhez
 

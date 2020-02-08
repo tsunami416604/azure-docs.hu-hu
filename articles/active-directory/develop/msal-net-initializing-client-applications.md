@@ -3,22 +3,22 @@ title: MSAL.NET-ügyfélalkalmazások inicializálása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan inicializálhatja a nyilvános ügyfelet és a bizalmas ügyfélalkalmazások alkalmazásait a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695551"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083984"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Ügyfélalkalmazások inicializálása a MSAL.NET használatával
 Ez a cikk a nyilvános ügyfelek és a bizalmas ügyfélalkalmazások a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával történő inicializálását ismerteti.  Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.

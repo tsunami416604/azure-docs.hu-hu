@@ -3,22 +3,22 @@ title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (M
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy milyen szempontokat kell figyelembe vennie, amikor a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával Xamarin a rendszerböngészőket.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695048"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084586"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások a MSAL.NET
 
@@ -31,9 +31,9 @@ Javasoljuk, hogy használjon olyan böngészőket, amelyek támogatják az egyé
 | Egyéni lapokat támogató böngészők | Csomag neve |
 |------| ------- |
 |Chrome | com.android.chrome|
-|Microsoft Edge | com. microsoft. emmx|
-|Firefox | org. mozilla. Firefox|
-|Ecosia | com. ecosia. Android|
+|Microsoft Edge | com.microsoft.emmx|
+|Firefox | org.mozilla.firefox|
+|Ecosia | com.ecosia.android|
 |Kiwi | com. kiwibrowser. Browser|
 |Bátor | com. bátor. böngésző|
 
@@ -53,21 +53,21 @@ A következő táblázat a tesztelt eszközöket és böngészőket sorolja fel.
 
 | | Böngésző&ast;     |  Eredmény  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/egy + | Chrome&ast; | Pass|
-| Huawei/egy + | Edge&ast; | Pass|
-| Huawei/egy + | Firefox&ast; | Pass|
-| Huawei/egy + | Bátor&ast; | Pass|
+| Huawei/One+ | Chrome&ast; | Pass|
+| Huawei/One+ | Edge&ast; | Pass|
+| Huawei/One+ | Firefox&ast; | Pass|
+| Huawei/One+ | Bátor&ast; | Pass|
 | Egy + | Ecosia&ast; | Pass|
 | Egy + | Kiwi&ast; | Pass|
-| Huawei/egy + | Operát | Pass|
+| Huawei/One+ | Opera | Pass|
 | Huawei | OperaMini | Pass|
-| Huawei/egy + | Inböngésző | Pass|
+| Huawei/One+ | Inböngésző | Pass|
 | Egy + | Maxthon | Pass|
-| Huawei/egy + | DuckDuckGo | Felhasználó által megszakított hitelesítés|
-| Huawei/egy + | UC böngésző | Felhasználó által megszakított hitelesítés|
+| Huawei/One+ | DuckDuckGo | Felhasználó által megszakított hitelesítés|
+| Huawei/One+ | UC böngésző | Felhasználó által megszakított hitelesítés|
 | Egy + | Delfin | Felhasználó által megszakított hitelesítés|
 | Egy + | CM böngésző | Felhasználó által megszakított hitelesítés|
-| Huawei/egy + | nincs telepítve | AndroidActivityNotFound ex|
+| Huawei/One+ | nincs telepítve | AndroidActivityNotFound ex|
 
 &ast; támogatja az egyéni lapokat
 

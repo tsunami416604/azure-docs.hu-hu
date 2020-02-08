@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901524"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086465"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +23,7 @@ Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontja
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet több Node-készletet egy AK-fürtben.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
@@ -565,7 +565,7 @@ A Resource Manager-sablonban definiált csomópont-készlet beállításaitól �
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Nyilvános IP-cím társítása egy csomópont-készletben
 
 > [!WARNING]
-> A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t kell használnia, ha csomópontként kell hozzárendelni egy nyilvános IP-címet.
+> A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Ennek a korlátozásnak az eredményeképpen a Windows-ügynök készletei nem támogatottak ehhez az előzetes verziójú szolgáltatáshoz. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t kell használnia, ha csomópontként kell hozzárendelni egy nyilvános IP-címet.
 
 Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. Bizonyos esetekben azonban előfordulhat, hogy a csomópontok csomópontjain a saját nyilvános IP-címeiket kell megadni. Egy példa a játékra, ahol a konzolnak közvetlen csatlakoznia kell egy felhőalapú virtuális géphez a ugrások minimalizálásához. Ezt úgy érheti el, ha regisztrál egy külön előzetes verziójú szolgáltatásra, a Node nyilvános IP-címére (előzetes verzió).
 

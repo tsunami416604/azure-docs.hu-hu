@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést (SSO) macOS és iOS rendszeren.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022630"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085521"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: az SSO konfigurálása macOS és iOS rendszeren
 
@@ -69,7 +69,7 @@ Ha engedélyezni szeretné az egyszeri bejelentkezést az alkalmazásokban, a k�
 
 Ahhoz, hogy a Microsoft Identity platform tudja, mely alkalmazások oszthatják meg a jogkivonatokat, az alkalmazásoknak azonos ügyfél-azonosítót vagy alkalmazás-azonosítót kell megosztaniuk. Ez az egyedi azonosító, amelyet az első alkalmazásnak a portálon való regisztrálása során adott meg.
 
-A Microsoft Identity platform azt mutatja be, hogy az azonos alkalmazás-azonosítót használó alkalmazások **átirányítási URI**-k. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa:
+A Microsoft Identity platform azt mutatja be, hogy az azonos alkalmazás-azonosítót használó alkalmazások **átirányítási URI**-k. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
 
 App1 átirányítási URI: `msauth.com.contoso.mytestapp1://auth`  
 App2 átirányítási URI: `msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +149,7 @@ A MSAL támogatja a Microsoft Authenticator felügyelt hitelesítését. A Micro
 
 Az alábbi lépéseket követve engedélyezheti az egyszeri bejelentkezést az alkalmazáshoz tartozó hitelesítési közvetítő használatával:
 
-1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth`. Cserélje le a "< app. Bundle. id >" "elemre az alkalmazás Bundle-azonosítójával. Példa:
+1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazás info. plist fájljában. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth`. Cserélje le a "< app. Bundle. id >" "elemre az alkalmazás Bundle-azonosítójával. Például:
 
     ```xml
     <key>CFBundleURLSchemes</key>

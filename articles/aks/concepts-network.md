@@ -5,13 +5,14 @@ author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047461"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084280"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -106,6 +107,8 @@ A kubenet és az Azure CNI között a következő viselkedési különbségek l�
 | Hozzáférés a szolgáltatási végpontok által védett erőforrásokhoz                                             | Támogatott | Támogatott |
 | Kubernetes-szolgáltatások közzététele terheléselosztó szolgáltatás, app Gateway vagy bejövő adatkezelő használatával | Támogatott | Támogatott |
 | Alapértelmezett Azure DNS és privát zónák                                                          | Támogatott | Támogatott |
+
+A DNS-sel kapcsolatban a CoreDNS, az kubenet és az Azure CNI beépülő modul DNS-t is kínál, amely egy AK-ban futó démon. A Kubernetes CoreDNS kapcsolatos további információkért lásd: a [DNS-szolgáltatás testreszabása](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). A CoreDNS alapértelmezés szerint úgy van konfigurálva, hogy ismeretlen tartományokat továbbítson a csomópont DNS-kiszolgálóira, vagyis az Azure Virtual Network DNS-funkcióit, amelyeken az AK-fürt telepítve van. Ezért a Azure DNS és a privát zónák az AK-ban futó hüvelyek esetében működnek.
 
 ### <a name="support-scope-between-network-models"></a>A hálózati modellek közötti hatókör támogatása
 

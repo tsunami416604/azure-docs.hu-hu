@@ -1,14 +1,14 @@
 ---
-title: FedRAMP – magas terv – vezérlés leképezése
+title: FedRAMP nagy terv-minta vezérlők
 description: A FedRAMP magas tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941380"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087341"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP magas tervrajzi minta leképezésének vezérlése
 
@@ -28,7 +28,7 @@ Ez a terv segít áttekinteni azokat a fiókokat, amelyek esetleg nem felelnek m
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
-- Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Fiókkezelés | Szerepköralapú sémák
 
@@ -81,7 +81,7 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>Az AU-3 (2) naplózási rekordok tartalma | Tervezett auditálási rekordok központosított kezelése
 
@@ -102,7 +102,7 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 - Diagnosztikai beállítás naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
-- A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) audit felülvizsgálat, elemzés és jelentéskészítés | Központi áttekintés és elemzés
 
@@ -125,10 +125,10 @@ A biztonsági rések vizsgálatának és figyelésének részletes kihasználás
 - \[előzetes verzió\]: a sebezhetőségi felmérést engedélyezni kell a Virtual Machines
 - \[előzetes verzió\]: Enable Azure Monitor for VMs
 - \[Preview\]: Azure Monitor engedélyezése VM Scale Setshoz (VMSS)
-- A sebezhetőségi felmérést alkalmazni ajánlott az SQL-kiszolgálókon
+- A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - Diagnosztikai beállítás naplózása
 - A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- A sebezhetőségi felmérést alkalmazni ajánlott az SQL-kiszolgálókon
+- A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon
 - A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
 - Az SQL-adatbázisok biztonsági réseit szervizelni kell
 - A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni
@@ -149,7 +149,7 @@ Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is na
 - Diagnosztikai beállítás naplózása
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
-- A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Naplózás üzembe helyezése SQL-kiszolgálókon
 - Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése
@@ -241,7 +241,7 @@ Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure P
 Ez a terv segítséget nyújt az információs rendszer biztonsági réseinak kezeléséhez olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek figyelik az operációs rendszer biztonsági réseit, az SQL biztonsági réseket és a virtuális gépek Azure Security Center- A Azure Security Center jelentéskészítési funkciókat biztosít, amelyekkel valós idejű betekintést nyerhet az üzembe helyezett Azure-erőforrások biztonsági állapotára. A terv emellett olyan szabályzat-definíciókat is hozzárendel, amelyek az SQL-kiszolgálókon a speciális adatbiztonságot auditálják és érvényesítik. A speciális adatbiztonság biztonsági rések felmérése és a komplex veszélyforrások elleni védelem lehetővé teszi, hogy jobban megértse a telepített erőforrások sebezhetőségeit.
 
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
-- A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
 - A virtuális gépek biztonsági konfigurációjában lévő biztonsági réseket szervizelni kell
@@ -283,17 +283,17 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
 - Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- A webalkalmazás csak HTTPS protokollon keresztül érhető el
+- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) a REST-adatok védelme | Titkosítási védelem
 
 Ebből a tervből megtudhatja, hogyan kényszerítheti ki a szabályzatot a titkosítási vezérlők használatára, hogy olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendeljen hozzá, amelyek kikényszerítik az adott titkosítási vezérlőket, és naplózzák a gyenge titkosítási beállítások használatát. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, a tervhez hozzárendelt szabályzat-definíciók titkosítást igényelnek a Storage-fiókokhoz; transzparens adattitkosítás megkövetelése SQL-adatbázisokban; és naplózza a hiányzó titkosítást az SQL-adatbázisokon, a virtuális gépek lemezein és az Automation-fiók változóinak.
 
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
-- A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Az SQL DB transzparens adattitkosításának üzembe helyezése
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
@@ -339,7 +339,7 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 - \[előzetes verzió\]: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
 - \[előzetes verzió\]: Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
-- A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
 - Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon
 - Naplózás üzembe helyezése SQL-kiszolgálókon

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure Batch-feladatok futtatása – Python API'
+title: Azure Batch feladatok futtatása a Python API használatával
 description: A Batch Python ügyféloldali kódtár használatával gyorsan futtathat egy Azure Batch-minta feladatot és feladatot. Ismerje meg a Batch szolgáltatás legfontosabb fogalmait.
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017105"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086045"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Gyors útmutató: Azure Batch feladatok futtatása a Python API használatával
 
-Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch Python API-ra épülő alkalmazásból.  A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
+Ebben a rövid útmutatóban a Python API használatával futtat egy Azure Batch feladatot egy alkalmazásból. Az alkalmazás feltölti a bemeneti adatfájlokat az Azure Storage szolgáltatásba, és létrehoz egy batch számítási csomópontok (virtuális gépek) *készletét* . Ezután létrehoz egy *feladatot* , amely egy alapszintű paranccsal *dolgozza fel a* készletben lévő összes bemeneti fájlt.
 
-Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló *készletet*. Ezután létrehoz egy minta*feladatot*, amely *tevékenységek* futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten.
- 
+Itt megismerheti a Batch szolgáltatás legfontosabb fogalmait, és készen áll arra, hogy a Batch-t nagyobb méretű, reálisabb számítási feladatokkal próbálja kipróbálni.
+
 ![A Azure Batch munkafolyamat áttekintése](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Python 2.7-es, 3.3-as vagy újabb verziója](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/) csomagkezelő
-
-* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy **Azure batch** -fiók és egy társított **Azure Storage** -fiók. Hozza létre ezeket a fiókokat a [Azure Portal](quick-create-portal.md) vagy a [CLI](quick-create-cli.md) használatával.
+- [Python](https://python.org/downloads), 2,7 vagy 3,3 vagy újabb verzió, beleértve a [pip](https://pip.pypa.io/en/stable/installing/) Package Managert
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -59,7 +55,7 @@ A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `config.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókokhoz beszerzett értékekkel. Példa:
+Nyissa meg a `config.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókokhoz beszerzett értékekkel. Például:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'

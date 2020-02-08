@@ -3,22 +3,22 @@ title: Az oldal újratöltésének elkerülése (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy miként kerülheti el a lapok újratöltését a tokenek a Microsoft-hitelesítési kódtár használatával való csendes beszerzése és megújítása közben a JavaScripthez (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696146"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084958"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>A MSAL. js használatával a tokenek beszerzése és megújítása előtt Kerülje a lap újratöltését
 A JavaScripthez készült Microsoft Authentication Library (MSAL. js) rejtett `iframe` elemeket használ a jogkivonatok háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_urinak (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, a `iframe`a betöltéshez `redirect_uri` megfelelő HTML-kódot eredményez. Általában az alkalmazás `redirect_uri` a legfelső szintű lap, ezért az újratöltést okoz.
@@ -35,9 +35,9 @@ Ha el szeretné kerülni, hogy a teljes alkalmazás újratöltődik újra, vagy 
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicializálás a fő alkalmazás fájljában
 
-Ha az alkalmazás úgy van strukturálva, hogy van egy központi JavaScript-fájl, amely meghatározza az alkalmazás inicializálási, útválasztási és egyéb elemeit, akkor az alkalmazás-modulok feltételeit attól függően is betöltheti, hogy az alkalmazás betöltődik-e `iframe` vagy sem. Példa:
+Ha az alkalmazás úgy van strukturálva, hogy van egy központi JavaScript-fájl, amely meghatározza az alkalmazás inicializálási, útválasztási és egyéb elemeit, akkor az alkalmazás-modulok feltételeit attól függően is betöltheti, hogy az alkalmazás betöltődik-e `iframe` vagy sem. Például:
 
-A AngularJS: app. js fájlban
+In AngularJS: app.js
 
 ```javascript
 // Check that the window is an iframe and not popup

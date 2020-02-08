@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841114"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087027"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,7 +128,7 @@ A parancs válasza hasonló a következő JSON-fájlhoz:
 
 További információ az erőforráscsoportok használatáról: [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 Új munkaterület létrehozásához használja a következő parancsot. Cserélje le a `<workspace-name>`t a munkaterülethez használni kívánt névre. Cserélje le a `<resource-group-name>` az erőforráscsoport nevére:
 
@@ -327,7 +327,7 @@ Ha megvizsgálja a betanítási szkriptet, megfigyelheti, hogy az alfa értéket
 
 A modellt a rendszer a `./outputs` könyvtárba mentette a számítási célhelyen, ahol azt betanítták. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine Learning munkaterületre. A kísérlet részeként tárolódik (`myexperiment` ebben a példában).
 
-## <a name="register-the-model"></a>A modell regisztrálása
+## <a name="register-the-model"></a>Regisztrálja a modellt
 
 A modell közvetlenül a kísérletben tárolt verzióból való regisztrálásához használja a következő parancsot:
 
@@ -366,7 +366,7 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 
 Az első parancs letölti a regisztrált modellt az aktuális könyvtárba. A fájl neve `sklearn_mnist_model.pkl`, amely a modell regisztrálása során hivatkozott fájl. A második parancs regisztrálja a helyi modellt (`-p "sklearn_mnist_model.pkl"`) ugyanazzal a névvel, mint a korábbi regisztrációval (`mymodel`). Ez alkalommal a visszaadott JSON-adatérték a 2-es verziót sorolja fel.
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 Modell üzembe helyezéséhez használja a következő parancsot:
 
@@ -381,7 +381,7 @@ Ez a parancs egy `myservice`nevű új szolgáltatást helyez üzembe a korábban
 
 A `inferenceConfig.yml` fájl információkkal szolgál arról, hogyan használható a modell a következtetésekhez. Például hivatkozik a bejegyzési parancsfájlra (`score.py`) és a szoftver függőségeire. 
 
-A fájl struktúrájával kapcsolatos további információkért tekintse meg a [következtetési konfigurációs sémát](reference-azure-machine-learning-cli.md#inference-configuration-schema). A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning](how-to-deploy-and-where.md#prepare-to-deploy).
+A fájl struktúrájával kapcsolatos további információkért tekintse meg a [következtetési konfigurációs sémát](reference-azure-machine-learning-cli.md#inference-configuration-schema). A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 A `aciDeploymentConfig.yml` ismerteti a szolgáltatás üzemeltetéséhez használt központi telepítési környezetet. A központi telepítési konfiguráció a központi telepítéshez használt számítási típusra vonatkozik. Ebben az esetben egy Azure Container-példányt használunk. További információ: a [központi telepítés konfigurációs sémája](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

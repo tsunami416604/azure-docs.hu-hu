@@ -2,7 +2,7 @@
 title: ADAL az Androidhoz készült MSAL-áttelepítési útmutatóhoz | Azure
 description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authentication Library (ADAL) Android-alkalmazást a Microsoft hitelesítési tárba (MSAL).
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
 ms.date: 09/6/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696707"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084055"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -56,7 +56,7 @@ A MSAL nyilvános API fontos változásokat vezet be, beleértve a következőke
 - A MSAL támogatja a deklaratív konfigurációját:
   - Ügyfél-azonosító, átirányítási URI.
   - Beágyazott vs alapértelmezett böngésző
-  - hatóságok
+  - Hatóságok
   - HTTP-beállítások, például olvasási és kapcsolati időtúllépés
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>Az alkalmazás regisztrálása és migrálása a MSAL-be
@@ -65,7 +65,7 @@ A MSAL használatához nem szükséges módosítania a meglévő alkalmazás reg
 
 Ha az alkalmazás regisztrálva van a portálon, megjelenik az **API-engedélyek** lap. Itt megtalálhatók azon API-k és engedélyek (hatókörök) listája, amelyeket az alkalmazás jelenleg úgy konfigurált, hogy hozzáférést igényeljen. Emellett az egyes API-engedélyekhez társított hatókör-nevek listáját is megjeleníti.
 
-### <a name="user-consent"></a>Felhasználói beleegyezés
+### <a name="user-consent"></a>Felhasználói beleegyezett
 
 A ADAL és a HRE v1 végpont esetében az első használatkor a felhasználó beleegyezik a saját erőforrásaiba. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
 

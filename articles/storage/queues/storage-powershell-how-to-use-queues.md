@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313841"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087067"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Az alábbi példa először kapcsolatot létesít az Azure Storage-val a Storage-fiók környezetével, amely magában foglalja a Storage-fiók nevét és a hozzá tartozó hozzáférési kulcsot. Ezután meghívja a [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) parancsmagot egy "queueName" nevű várólista létrehozásához.
+Az alábbi példa először kapcsolatot létesít az Azure Storage-val a Storage-fiók környezetével, amely magában foglalja a Storage-fiók nevét és a hozzá tartozó hozzáférési kulcsot. Ezután meghívja a [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) parancsmagot egy "howtoqueue" nevű várólista létrehozásához.
 
 ```powershell
 $queueName = "howtoqueue"

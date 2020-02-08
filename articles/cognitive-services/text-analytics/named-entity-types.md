@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: cc684e99c0ed28aedd9b88aa21840ff60fb1b44b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508055"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086883"
 ---
 # <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Megnevezett entitás-felismerési 3-as verzió (előnézet) támogatott típusai
 
 Az Text Analytics API lehetővé teszi a szövegben talált entitások azonosítását és egyértelműsítse. Az [elnevezett entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md) lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja.
 
-## <a name="entity-types"></a>Entitások típusai
+## <a name="entity-types"></a>Entitás típusa
 
 A támogatott entitások típusai és altípusai (ahol vannak ilyenek) alább láthatók:
 
@@ -35,6 +35,6 @@ A támogatott entitások típusai és altípusai (ahol vannak ilyenek) alább l�
 
 ***
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Elnevezett entitások felismerésének használata a Text Analyticsban](how-tos/text-analytics-how-to-entity-linking.md)

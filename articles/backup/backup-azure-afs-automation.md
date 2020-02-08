@@ -3,12 +3,12 @@ title: Azure Files biztonsági mentése a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773105"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086939"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Azure Files biztonsági mentése a PowerShell-lel
 
@@ -44,6 +44,13 @@ Tekintse át az az **. recoveryservices szolgáltatónál** [parancsmag](/powers
 A PowerShell beállítása a következőképpen történik:
 
 1. [Töltse le az az PowerShell legújabb verzióját](/powershell/azure/install-az-ps). A minimálisan szükséges verzió a 1.0.0.
+
+> [!WARNING]
+> Az előzetes verzióhoz szükséges PS minimális verziója az "az 1.0.0" volt. A GA közelgő változásai miatt a minimálisan szükséges PS-verzió az "az. Recoveryservices szolgáltatónál 2.6.0" lesz. Nagyon fontos, hogy az összes meglévő PS-verziót frissítse erre a verzióra. Ellenkező esetben a meglévő parancsfájlok a GA után törnek le. Telepítse a minimális verziót a következő PS-parancsokkal
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Keresse meg a Azure Backup PowerShell-parancsmagokat a következő paranccsal:
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Fontos figyelmeztetés – az AFS biztonsági mentések biztonsági másolati elemének azonosítása
+
+Ez a szakasz az AFS biztonsági mentések az előzetes verzióról a GA-be való lekérésének változásait ismerteti.
+
+Az AFS biztonsági mentésének engedélyezésekor a felhasználó a felhasználóbarát fájlmegosztás nevét adja meg az entitás neveként, és létrehoz egy biztonsági mentési elemet. A biztonsági mentési tétel neve a Azure Backup szolgáltatás által létrehozott egyedi azonosító. Általában az azonosító felhasználóbarát nevet is magában foglal. Azonban az Azure-szolgáltatások belsőleg azonosítják az Azure-fájlmegosztás egyedi azonosítására szolgáló módszert. Ez azt jelenti, hogy az AFS Backup biztonsági mentési tételének egyedi neve GUID, és nem lesz kapcsolatban az ügyfél rövid nevével. Ha tudni szeretné az egyes elemek egyedi nevét, egyszerűen futtassa az ```Get-AzRecoveryServicesBackupItem``` parancsot a megfelelő szűrőkkel a backupManagementType és a WorkloadType számára az összes releváns elem lekéréséhez, majd figyelje meg a visszaadott PS objektum/válasz név mezőjét. Az elemek listázása mindig ajánlott, majd válaszként a "név" mezőből olvassa be az egyedi nevet. Ezzel az értékkel szűrheti az elemeket a "Name" paraméterrel. Ellenkező esetben használja a FriendlyName paramétert, hogy lekérje az adott tételt az ügyfél rövid nevével/azonosítójával.
+
+> [!WARNING]
+> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. Ebben a verzióban az "friendlyName" szűrő ```Get-AzRecoveryServicesBackupItem``` parancshoz érhető el. Adja át az Azure-fájlmegosztás nevét a friendlyName paraméternek. Ha átadja az Azure-fájlmegosztás nevét a "név" paraméternek, ez a verzió figyelmeztetést küld, hogy a rövid nevet adja át a felhasználóbarát név paraméternek. A minimális verzió telepítése nem okozhatja a meglévő parancsfájlok meghibásodását. Telepítse a PS minimális verzióját a következő paranccsal.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>Igény szerinti biztonsági mentés indítása
 
 A [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával igény szerinti biztonsági mentést futtathat egy védett Azure-fájlmegosztás számára.
 
-1. Kérje le a Storage-fiókot és-fájlmegosztást a tárolóból a tárolóban, amely a biztonsági mentési adatok tárolását a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. A biztonsági mentési feladatok elindításához a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)használatával szerezheti be a virtuális gép adatait.
+1. Kérje le a Storage-fiókot abban a tárolóban, amely a biztonsági mentési adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)tárolja.
+2. A biztonsági mentési feladatok elindításához a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)használatával szerezheti be az Azure-fájlmegosztás adatait.
 3. Futtasson egy igény szerinti biztonsági mentést a[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Futtassa az igény szerinti biztonsági mentést az alábbiak szerint:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ A biztonsági mentések során az Azure-fájlmegosztás pillanatképeit használ
 Az igény szerinti biztonsági mentések segítségével 10 évig megőrizheti a pillanatképeket. A ütemező használatával igény szerinti PowerShell-szkripteket futtathat a választott megőrzéssel, és így minden héten, hónapban vagy évben rendszeres időközönként pillanatfelvételeket készíthet. Rendszeres Pillanatképek készítésekor tekintse át az Azure Backup használatával [igény szerinti biztonsági mentések korlátozásait](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) .
 
 Ha minta parancsfájlokat keres, tekintse meg a GitHubon (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) található minta parancsfájlt Azure Automation runbook használatával, amely lehetővé teszi a biztonsági másolatok rendszeres ütemezését, és akár 10 évig is megőrizheti azokat.
+
+> [!WARNING]
+> Győződjön meg arról, hogy a PS verziója frissítve lett az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára az Automation-runbookok lévő AFS-alapú biztonsági mentésekhez. A régi "AzureRM" modult az "az" modullal kell helyettesíteni. Ebben a verzióban az "friendlyName" szűrő ```Get-AzRecoveryServicesBackupItem``` parancshoz érhető el. Adja át az Azure-fájlmegosztás nevét a friendlyName paraméternek. Ha átadja az Azure-fájlmegosztás nevét a "név" paraméternek, ez a verzió figyelmeztetést küld, hogy a rövid nevet adja át a felhasználóbarát név paraméternek.
 
 ## <a name="next-steps"></a>Következő lépések
 

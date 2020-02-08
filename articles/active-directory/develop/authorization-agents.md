@@ -2,22 +2,22 @@
 title: Engedélyezési ügynökök és azok engedélyezése | Azure
 description: Tudnivalók a különböző engedélyezési ügynökökről a Microsoft Authentication Library (MSAL) lehetővé teszi az Android-alkalmazás használatát és azok engedélyezését.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697999"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085329"
 ---
 # <a name="authorization-agents-android"></a>Engedélyezési ügynökök (Android)
 
@@ -76,17 +76,17 @@ A böngésző listájában szereplő böngészők sorrendjét az operációs ren
 
 A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-e a konfigurációs fájlban megadott `"redirect_uri"`ra:
 
-| | Beépített böngésző | Chrome | Operát  | Microsoft Edge | UC böngésző | Firefox |
+| | Beépített böngésző | Chrome | Opera  | Microsoft Edge | UC böngésző | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | 4\. Nexus (API 17) | Pass | Pass |nem alkalmazható |nem alkalmazható |nem alkalmazható |nem alkalmazható |
-| Samsung S7 (API 25) | pass | Pass | Pass | Pass | sikertelen |Pass |
-| Huawei (API 26) |pass * * | Pass | sikertelen | Pass | Pass |Pass |
-| Vivo (API 26) |Pass|Pass|Pass|Pass|Pass|sikertelen|
-| 2\. képpont (API 26) |Pass | Pass | Pass | Pass | sikertelen |Pass |
+| Samsung S7 (API 25) | pass | Pass | Pass | Pass | Sikertelen |Pass |
+| Huawei (API 26) |pass * * | Pass | Sikertelen | Pass | Pass |Pass |
+| Vivo (API 26) |Pass|Pass|Pass|Pass|Pass|Sikertelen|
+| 2\. képpont (API 26) |Pass | Pass | Pass | Pass | Sikertelen |Pass |
 | Ellenfél | Pass | nem alkalmazható * * * |nem alkalmazható  |nem alkalmazható |nem alkalmazható | nem alkalmazható|
-| OnePlus (25. API) |Pass | Pass | Pass | Pass | sikertelen |Pass |
-| Nexus (API 28) |Pass | Pass | Pass | Pass | sikertelen |Pass |
-|MI | Pass | Pass | Pass | Pass | sikertelen |Pass |
+| OnePlus (25. API) |Pass | Pass | Pass | Pass | Sikertelen |Pass |
+| Nexus (API 28) |Pass | Pass | Pass | Pass | Sikertelen |Pass |
+|MI | Pass | Pass | Pass | Pass | Sikertelen |Pass |
 
 \* A Samsung beépített böngészője a Samsung Internet.  
 \* * A Huawei beépített böngészője a Huawei böngésző.  

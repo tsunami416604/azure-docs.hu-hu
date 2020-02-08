@@ -4,17 +4,17 @@ description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosí
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942202"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082830"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
@@ -43,10 +43,10 @@ A Microsoft által felügyelt kulcsokat használhatja a Storage-fiók titkosít�
 
 Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosabb felügyeleti lehetőségeit.
 
-|                                        |    Microsoft által felügyelt kulcsok                             |    Ügyfél által felügyelt kulcsok                                                                                                                        |    Ügyfél által biztosított kulcsok                                                          |
+|                                        |    Microsoft által felügyelt kulcsok                             |    Felhasználó által kezelt kulcsok                                                                                                                        |    Ügyfél által biztosított kulcsok                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Titkosítási/visszafejtési műveletek    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Az Azure Storage szolgáltatásai támogatottak    |    Mind                                                |    BLOB Storage, Azure Files<sup>1, 2</sup>                                                                                                               |    Blobtároló                                                                  |
+|    Az Azure Storage szolgáltatásai támogatottak    |    Összes                                                |    BLOB Storage, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Kulcstároló                         |    Microsoft Key Store    |    Azure Key Vault                                                                                                                              |    Azure Key Vault vagy bármely más kulcstároló                                                                 |
 |    Kulcs rotációs felelőssége         |    Microsoft                                          |    Ügyfél                                                                                                                                     |    Ügyfél                                                                      |
 |    Kulcshasználat                           |    Microsoft                                          |    Azure Portal, Storage erőforrás-szolgáltató REST API, Azure Storage felügyeleti kódtárak, PowerShell, parancssori felület        |    Azure Storage-REST API (blob Storage), Azure Storage ügyféloldali kódtárak    |
@@ -154,7 +154,7 @@ A kérelemben szereplő titkosítási kulcsok megadása nem kötelező. Ha azonb
 
 A blob Storage következő műveletei támogatják az ügyfél által biztosított titkosítási kulcsok küldését egy kérelemre:
 
-- [Put Blob](/rest/api/storageservices/put-blob)
+- [BLOB elhelyezése](/rest/api/storageservices/put-blob)
 - [Tiltási lista](/rest/api/storageservices/put-block-list)
 - [Put blokk](/rest/api/storageservices/put-block)
 - [Blokk elhelyezése URL-címről](/rest/api/storageservices/put-block-from-url)
@@ -164,9 +164,9 @@ A blob Storage következő műveletei támogatják az ügyfél által biztosíto
 - [BLOB tulajdonságainak beállítása](/rest/api/storageservices/set-blob-properties)
 - [BLOB metaadatainak beállítása](/rest/api/storageservices/set-blob-metadata)
 - [BLOB beolvasása](/rest/api/storageservices/get-blob)
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
+- [BLOB tulajdonságainak beolvasása](/rest/api/storageservices/get-blob-properties)
 - [BLOB metaadatainak beolvasása](/rest/api/storageservices/get-blob-metadata)
-- [Snapshot Blob](/rest/api/storageservices/snapshot-blob)
+- [Pillanatkép-blob](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Ügyfél által biztosított kulcsok elforgatása
 

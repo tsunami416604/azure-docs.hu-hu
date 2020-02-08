@@ -3,22 +3,22 @@ title: Ügyfélalkalmazás konfigurációja (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfélalkalmazások konfigurációs beállításait a Microsoft Authentication Library (MSAL) használatával.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696482"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085004"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -31,7 +31,7 @@ A kódban egy új nyilvános vagy bizalmas ügyfélalkalmazás (vagy a MSAL. js-
     - [Ügyfél titka](#client-secret) (bizalmas ügyfélalkalmazások esetében).
 - [Naplózási beállítások](#logging), beleértve a naplózási szintet, a személyes adatvezérlést és az összetevő nevét a könyvtár használatával.
 
-## <a name="authority"></a>Authority
+## <a name="authority"></a>Hitelesítésszolgáltató
 
 A szolgáltató egy URL-cím, amely egy olyan könyvtárat jelez, amelyből a MSAL jogkivonatokat kérhet. Gyakori hatóságok:
 
@@ -112,7 +112,7 @@ Ha Ön a MSAL-t használó nyilvános ügyfélalkalmazás-fejlesztő:
   ---------  | --------------
   Asztali alkalmazás (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`értéke. Ez lehetővé teszi az egyszeri bejelentkezést a böngészőben úgy, hogy az értéket a WebAuthenticationBroker. GetCurrentApplicationCallbackUri () értékre állítja be, amelyet regisztrálnia kell
-  .NET Core | `https://localhost` kérdésre adott válaszban foglalt lépéseket. Ez lehetővé teszi, hogy a felhasználó a rendszerböngészőt interaktív hitelesítésre használja, mivel a .NET Core jelenleg nem rendelkezik felhasználói felülettel a beágyazott webes nézethez.
+  .NET Core | `https://localhost`. Ez lehetővé teszi, hogy a felhasználó a rendszerböngészőt interaktív hitelesítésre használja, mivel a .NET Core jelenleg nem rendelkezik felhasználói felülettel a beágyazott webes nézethez.
 
 - Nem kell hozzáadnia átirányítási URI-t, ha olyan Android-és iOS-alkalmazást épít, amely nem támogatja a közvetítőt (az átirányítási URI-t a rendszer automatikusan `msal{ClientId}://auth`ra állítja a Xamarin Android és iOS rendszerű Xamarin.
 

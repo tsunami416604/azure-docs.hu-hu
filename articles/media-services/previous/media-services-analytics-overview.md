@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844343"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069625"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics a Media Services platformon 
 
 ## <a name="retirement-plans"></a>Nyugdíjazási tervek
 
 > [!IMPORTANT]
-> A 2020-ben a következő örökölt adathordozó-processzort fogjuk kivonni: az alábbi táblázatban található részletek. 
+> Egyes adathordozó-processzorok kivonása folyamatban van. A kivonulási dátumokért és további információkért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört. 
 
-|Médiafeldolgozó neve|Nyugdíjazás dátuma|További megjegyzések|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|Október 1-től 2020|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. További információ: [áttelepítés Azure Media Indexerról Azure Media Servicesra video Indexer](migrate-indexer-v1-v2.md)
- 
 ## <a name="overview"></a>Áttekintés
 
 Több szervezet használja a videó használatát előnyben részesített médiumként alkalmazottaik betanításához, az ügyfelek bevonásához és az üzleti funkciók dokumentálására. A felhő-számítástechnika lehetővé teszi a nagyméretű médiafájlok tárolását, továbbítását és elérését. Ha azonban a videó tartalmának a vállalati könyvtára is növekszik, akkor a tartalomból való kinyeréséhez hasonlóan hatékony eszközre van szükség. 
@@ -65,10 +61,10 @@ Az Azure Media OCR (optikai karakterfelismerés) használatával szerkeszthető,
 ### <a name="scalable-face-redaction"></a>Skálázható arc kivonása
 A Azure Media Redactor egy Media Analytics adathordozó-feldolgozó, amely méretezhető Arcfelismerés a felhőben. Az Arcfelismerés használatával módosíthatja a videót a kijelölt személyek életlenítési lapjaira. Előfordulhat, hogy az Arcfelismerés szolgáltatást szeretné használni a hírek adathordozóján, vagy ha a közbiztonság is érintett. Néhány perces felvétel, amely több arcot tartalmaz, akár órákat is igénybe vehet manuálisan, de ezzel a szolgáltatással az arc kivonása csupán néhány egyszerű lépést vesz igénybe. További információ: [kivonási arcok Azure Media Analytics](media-services-face-redaction.md) cikkből.
 
-### <a name="content-moderation"></a>Tartalom-jóváhagyás
+### <a name="content-moderation"></a>Tartalom moderálása
 Az Azure Content Moderator lehetővé teszi, hogy a videókhoz géppel támogatott moderálást használjon. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat. A videók a nemkívánatos tartalomhoz történő manuális moderálása időigényes és költséges feladat. Ezzel a szolgáltatással és a kapcsolódó felülvizsgálati eszközökkel kombinálhatja a gépi támogatással rendelkező moderálásokat a legjobb eredmények hatékony és költséghatékony megoldásával. További információkért tekintse meg a [videók Azure-Content Moderatorval való feldolgozását](media-services-content-moderation.md) ismertető cikket.
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a>Gyakori alkalmazási helyzetek
 Media Analytics segítségével a szervezetek és a vállalatok új bepillantást nyerhetnek a videóból, és hatékonyabban kezelhetik a nagy mennyiségű videó tartalmát. Íme néhány forgatókönyv:
 
 * **Központilag hívható**. A közösségi média beköszöntével még az ügyfél-szolgáltatási tranzakciók nagy hányadát is megkönnyíti az ügyfelek hívási központjai. Az ebben a hangadatokban kódolva nagy mennyiségű ügyfél-információ elemezhető, így magasabb szintű vásárlói elégedettség érhető el. Media Indexer használatával a szervezetek szövegeket gyűjthetnek, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik az intelligenciát a gyakori panaszok, a panaszok forrásai és egyéb releváns adatok köré.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019604"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083084"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS beállítása a névfeloldáshoz az AVS Private Cloud vCenter hozzáférés a helyszíni munkaállomásokról
 
@@ -32,10 +32,10 @@ Ha a vCenter-kiszolgálót egy, a helyszíni munkaállomásokról származó AVS
 
 A DNS-konfigurációhoz használja a következő lehetőségek egyikét.
 
-* [Hozzon létre egy zónát a DNS-kiszolgálón a * számára. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [A megoldáshoz hozzon létre egy feltételes továbbítót a helyszíni DNS-kiszolgálón. AVS.io](#create-a-conditional-forwarder)
+* [Zóna létrehozása a (z) *. cloudsimple.io DNS-kiszolgálón](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [Feltételes továbbító létrehozása a helyszíni DNS-kiszolgálón a *. cloudsimple.io](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Hozzon létre egy zónát a DNS-kiszolgálón a * számára. AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Zóna létrehozása a (z) *. cloudsimple.io DNS-kiszolgálón
 
 Létrehozhat egy zónát helyettes zónáként, és a saját felhőben lévő DNS-kiszolgálókra irányíthatja a névfeloldást. Ez a szakasz a kötési DNS-kiszolgáló vagy a Microsoft Windows DNS-kiszolgáló használatával kapcsolatos információkat tartalmaz.
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>Feltételes továbbító létrehozása
 
-A feltételes továbbító továbbítja a DNS-névfeloldási kérelmeket a kijelölt kiszolgálóra. Ezzel a beállítással a *. A rendszer továbbítja a AVS.io az AVS Private Cloud-on található DNS-kiszolgálókra. Az alábbi példák bemutatják, hogyan állíthat be továbbítókat különböző típusú DNS-kiszolgálókon.
+A feltételes továbbító továbbítja a DNS-névfeloldási kérelmeket a kijelölt kiszolgálóra. Ezzel a beállítással a *. cloudsimple.io-re irányuló kérések továbbítása az AVS Private Cloud-on található DNS-kiszolgálókra történik. Az alábbi példák bemutatják, hogyan állíthat be továbbítókat különböző típusú DNS-kiszolgálókon.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Feltételes továbbító létrehozása egy kötési DNS-kiszolgálón
 

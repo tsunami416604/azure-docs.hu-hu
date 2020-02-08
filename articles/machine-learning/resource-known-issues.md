@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638357"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087150"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -44,11 +44,11 @@ A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakít
 
 Az alábbi képen látható, hogyan: ![visulize](./media/resource-known-issues/aml-visualize-data.png)
 
-## <a name="sdk-installation-issues"></a>SDK-telepítési problémák
+## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
 
 **Hibaüzenet: nem távolítható el a (z) PyYAML**
 
-Pythonhoz készült Azure Machine Learning SDK: a PyYAML egy distutils telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Ha továbbra is szeretné telepíteni az SDK-t a hiba figyelmen kívül hagyásával, használja a következőt:
+Az Azure Machine Learning SDK Pythonhoz készült: PyYAML egy telepített distutils projektet. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Amely a Python 3.7.3 használatával hoz létre egy Conda-környezetet, amely nem rendelkezik a 3.7.4-ben lévő telepítési hibával.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt Azure Machine Learning számítás létrehozásakor
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt az Azure Machine Learning Compute létrehozása
 
-Ritkán fordul elő, hogy egyes felhasználók, akik a Azure Machine Learning munkaterületet hoztak létre a Azure Portal a GA kiadása előtt, előfordulhat, hogy az adott munkaterületen nem tud létrehozni Azure Machine Learning számítást. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
+Nincs ritka előfordulhat, hogy néhány az általánosan elérhető kiadás előtt az Azure Portalról az Azure Machine Learning-munkaterületet létrehozó felhasználó nem feltétlenül tudja hozni az Azure Machine Learning Compute munkaterület. Emelje egy támogatási kérést a megfelelő szolgáltatás, vagy hozzon létre egy új munkaterületet a Portalon vagy az SDK azonnal feloldásának saját magának.
 
-## <a name="image-building-failure"></a>Rendszerkép-létrehozási hiba
+## <a name="image-building-failure"></a>Lemezkép létrehozása sikertelen
 
-Rendszerkép-létrehozási hiba a webszolgáltatás telepítésekor. Áthidaló megoldás: "pynacl = = 1.2.1" hozzáadása pip-függőségként a Conda-fájlhoz a rendszerkép-konfigurációhoz.
+Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő megoldás az, hogy hozzáadása "pynacl 1.2.1-es ==" Conda-fájlba a rendszerkép-konfiguráció pip függőségként.
 
 ## <a name="deployment-failure"></a>Üzembe helyezési hiba
 
@@ -76,7 +76,7 @@ Ha betartja `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with
 
 ## <a name="fpgas"></a>FPGA-k
 
-A modelleket nem fogja tudni telepíteni a FPGA, amíg nem kérelmezi és nem hagyta jóvá a FPGA-kvótát. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai
+Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
@@ -121,7 +121,7 @@ pip install --upgrade azureml-dataprep
 
 ## <a name="databricks"></a>Databricks
 
-Databricks és Azure Machine Learning problémák.
+Databricks és az Azure Machine Learning problémákat.
 
 ### <a name="failure-when-installing-packages"></a>Hiba a csomagok telepítésekor
 
@@ -172,13 +172,13 @@ Ha Azure Databricks fürtön lévő adatolvasáskor `FailToSendFeather` hibaüze
 * Adja hozzá `azureml-dataprep` 1.1.8 vagy újabb verziót.
 * Adja hozzá a `pyarrow` 0,11-es vagy újabb verzióját.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
-Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál áttekintő oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Machine learning studióba](https://ml.azure.com) léphet, és megkeresheti a munkaterület nevét.
+Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Machine learning studióba](https://ml.azure.com) léphet, és megkeresheti a munkaterület nevét.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatokat is megadhat. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Machine learning Studio](https://ml.azure.com) webhelyére, és válassza ki a munkaterületet, és válassza a munkaterületet **> kísérlet > >**  
+Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Machine learning Studio](https://ml.azure.com) webhelyére, és válassza ki a munkaterületet, és válassza a munkaterületet **> kísérlet > >**  
 
 > [!NOTE]
 > Azure Machine Learning a különböző forrásokból származó információkat naplózza a betanítás során, például a AutoML vagy a betanítási feladatot futtató Docker-tárolóban. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
@@ -306,3 +306,9 @@ Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.
 
 Törölje a címkét a mellette lévő kereszt jelre kattintva.
+
+## <a name="run-or-experiment-deletion"></a>Futtatás vagy kísérlet törlése
+
+A kísérletek archiválása a [Experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) metódussal vagy a Azure Machine learning Studio-ügyfél Experiment (kísérletezés) lapjának használatával végezhető el. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+
+Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).

@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263143"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086552"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Rövid útmutató: Azure Databricks munkaterület létrehozása a saját Virtual Network
 
 A Azure Databricks alapértelmezett telepítése egy új, a Databricks által felügyelt virtuális hálózatot hoz létre. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Databricks munkaterületet a saját virtuális hálózatában. Az adott munkaterületen belül Apache Spark-fürtöt is létrehozhat. 
 
-További információ arról, hogy miért dönthet úgy, hogy létrehoz egy Azure Databricks munkaterületet a saját virtuális hálózatában: [Azure Databricks üzembe helyezése az Azure Virtual Networkban (VNet Injection)] (/databricks/Administration-Guide/Cloud-configurations/Azure/vnet-Inject).
+További információ arról, hogy miért dönthet úgy, hogy létrehoz egy Azure Databricks munkaterületet a saját virtuális hálózatában: [Azure Databricks üzembe helyezése az Azure-Virtual Network (VNet Injection)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/databricks/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
@@ -33,7 +33,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Ezután válassza a **hálózatkezelés > virtuális hálózat**lehetőséget.
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget. Ezután válassza a **hálózatkezelés > virtuális hálózat**lehetőséget.
 
     ![Virtuális hálózat létrehozása Azure Portalon](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
     |Előfizetést|\<Az Ön előfizetése\>|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|databricks – rövid útmutató|Válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet a fiókhoz.|
     |Name (Név)|databricks – rövid útmutató|Válassza ki a virtuális hálózat nevét.|
-    |Region (Régió)|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki azt a földrajzi helyet, ahol a virtuális hálózatot üzemeltetni szeretné. Használja a felhasználókhoz legközelebb eső helyet.|
+    |Régió|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki azt a földrajzi helyet, ahol a virtuális hálózatot üzemeltetni szeretné. Használja a felhasználókhoz legközelebb eső helyet.|
 
     ![A Azure Portal virtuális hálózatának alapjai](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
@@ -64,7 +64,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
-1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Ezután válassza az **elemzési > Databricks**lehetőséget.
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget. Ezután válassza az **elemzési > Databricks**lehetőséget.
 
     ![Azure Databricks munkaterület létrehozása Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -75,8 +75,8 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
     |Munkaterület neve|databricks – rövid útmutató|Válassza ki a Azure Databricks munkaterület nevét.|
     |Előfizetést|\<Az Ön előfizetése\>|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|databricks – rövid útmutató|Válassza ki ugyanazt az erőforráscsoportot, amelyet a virtuális hálózathoz használt.|
-    |Földrajzi egység|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki a virtuális hálózattal megegyező helyet.|
-    |Díjcsomag|Válassza a standard vagy a prémium lehetőséget.|A díjszabással kapcsolatos további információkért tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).|
+    |Hely|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki a virtuális hálózattal megegyező helyet.|
+    |Tarifacsomag|Válassza a standard vagy a prémium lehetőséget.|A díjszabással kapcsolatos további információkért tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).|
 
     ![Azure Databricks-munkaterület alapalapjainak létrehozása](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -85,8 +85,8 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
     |Azure Databricks munkaterület üzembe helyezése a Virtual Networkban (VNet)|Igen|Ez a beállítás lehetővé teszi Azure Databricks munkaterület telepítését a virtuális hálózaton.|
-    |Virtual Network (Virtuális hálózat)|databricks – rövid útmutató|Válassza ki az előző szakaszban létrehozott virtuális hálózatot.|
-    |Nyilvános alhálózat neve|nyilvános alhálózat|Használja az alapértelmezett nyilvános alhálózat nevét.|
+    |Virtual Network|databricks – rövid útmutató|Válassza ki az előző szakaszban létrehozott virtuális hálózatot.|
+    |Nyilvános alhálózat neve|public-subnet|Használja az alapértelmezett nyilvános alhálózat nevét.|
     |Nyilvános alhálózat CIDR tartománya|10.179.64.0/18|Használjon CIDR-tartományt, beleértve a/26-ot.|
     |Magánhálózati alhálózat neve|magánhálózati alhálózat|Használja az alapértelmezett magánhálózati alhálózat nevét.|
     |Magánhálózati alhálózat CIDR tartománya|10.179.0.0/18|Használjon CIDR-tartományt, beleértve a/26-ot.|
@@ -108,7 +108,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Térjen vissza a Azure Databricks szolgáltatáshoz, és válassza a **munkaterület elindítása** lehetőséget az **Áttekintés** oldalon.
 
-2. Válassza a **fürtök** >  **+ fürt létrehozása**lehetőséget. Ezután hozzon létre egy fürtöt, például *databricks-Gyorsindítás-cluster*, és fogadja el a többi alapértelmezett beállítást. Válassza a **Fürt létrehozása** lehetőséget.
+2. Válassza a **fürtök** >  **+ fürt létrehozása**lehetőséget. Ezután hozzon létre egy fürtöt, például *databricks-Gyorsindítás-cluster*, és fogadja el a többi alapértelmezett beállítást. Válassza a **fürt létrehozása**lehetőséget.
 
     ![Azure Databricks-fürt létrehozása](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

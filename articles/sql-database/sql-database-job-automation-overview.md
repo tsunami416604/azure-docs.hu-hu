@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810092"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083120"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 
@@ -66,7 +66,7 @@ Az SQL Agent feladatainak számos alapvető fogalma van:
 ### <a name="job-steps"></a>A feladatok lépései
 
 Az SQL Agent-feladatok lépései az SQL Agent által végrehajtandó műveletek sorozatából állnak. Minden lépésnél a következő lépésnek kell megjelennie, ha a lépés sikeres vagy sikertelen, hiba esetén az újrapróbálkozások száma.
-Az SQL-ügynök lehetővé teszi, hogy különböző típusú feladatokat hozzon létre, például a Transact-SQL-feladatok lépését, amely egyetlen Transact-SQL-köteget hajt végre az adatbázison, vagy az operációs rendszert futtató, az egyéni operációsrendszer-parancsfájlt végrehajtó operációsrendszer-parancsok/PowerShell-lépéseket, a SSIS-feladatok lehetővé teszik az adatok betöltését SSIS-futtatókörnyezet vagy olyan [replikációs](sql-database-managed-instance-transactional-replication.md) lépések, amelyek az adatbázisból más adatbázisokba is közzétehetik a módosításokat.
+Az SQL-ügynök lehetővé teszi, hogy különböző típusú feladatokat hozzon létre, például a Transact-SQL-feladatok lépéseit, amelyek egyetlen Transact-SQL-köteget hajtanak végre az adatbázison, vagy az operációs rendszer futtatását végrehajtó operációsrendszer-parancsok vagy PowerShell-lépések lehetővé teszik az adatok betöltését az SSIS-futtatókörnyezettel, illetve olyan [replikációs](sql-database-managed-instance-transactional-replication.md) lépéseket, amelyek az adatbázisból más adatbázisokba is
 
 A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) egy adatbázismotor-szolgáltatás, amely lehetővé teszi egy adatbázis egy vagy több tábláján végzett módosítások közzétételét, valamint az előfizetői adatbázisokba való közzétételét és terjesztését. A módosítások közzététele a következő SQL-ügynök-feladattípus-típusok használatával valósítható meg:
 
@@ -168,7 +168,7 @@ A felügyelt példányok nem támogatják a SQL Serverban elérhető SQL Agent-f
 
 További információ a SQL Server Agentről: [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs-preview"></a>Elastic Database-kezelési feladatok (előzetes)
+## <a name="elastic-database-jobs-preview"></a>Elastic Database feladatok (előzetes verzió)
 
 **Rugalmas adatbázis-feladatok** segítségével egy vagy több T-SQL-szkriptet párhuzamosan, nagy számú adatbázison, ütemezve vagy igény szerint futtathat.
 
@@ -202,7 +202,9 @@ A *feladat-adatbázis* feladatok meghatározására, valamint a feladat-végreha
 
 A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL-adatbázis szükséges a rugalmasfeladat-ügynök létrehozásához.
 
-A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatási szinten működjön. A *feladat-adatbázis* javasolt szolgáltatási szintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatási szintet választani.
+A *feladat adatbázisának* a szó szerint nem kell újnak lennie, de tiszta, üres, S0 vagy magasabb szolgáltatási célnak kell lennie. A *feladat-adatbázis* javasolt szolgáltatási célja az S1 vagy a magasabb, de az optimális választás a feladat (ok) teljesítményének, a feladatok számának, a feladathoz tartozó célok számának és a gyakran futtatott feladatok számától függ. Előfordulhat például, hogy egy S0-adatbázis elegendő ahhoz, hogy egy olyan feladathoz tartozó ügynök, amely tíz adatbázisnál kevesebb feladatot futtat, de a feladat futtatása percenként nem elég gyors egy S0-adatbázishoz, és a magasabb szolgáltatási szintet is érdemes lehet. 
+
+Ha a feladatra vonatkozó művelet a vártnál lassabban működik, [Figyelje](sql-database-monitor-tune-overview.md#monitor-database-performance) az adatbázis teljesítményét és az erőforrás-kihasználtságot a feladatban a Azure Portal vagy a [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV használatával. Ha egy Erőforrás kihasználtsága, például a CPU, az adat IO vagy a log Write a 100%-ot közelíti meg, és a lassulási időszakokkal összefügg, érdemes lehet az adatbázis növekményes méretezését magasabb szolgáltatási célkitűzésekre (akár a [DTU-modellbe](sql-database-service-tiers-dtu.md) , akár a [virtuális mag-modellbe](sql-database-service-tiers-vcore.md)), amíg a feladatok adatbázisának teljesítménye nem megfelelő.
 
 
 ##### <a name="job-database-permissions"></a>Feladat-adatbázis engedélyei
@@ -212,7 +214,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 |Szerepkörnév  |'jobs' sémaengedélyek  |'jobs_internal' sémaengedélyek  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    None     |
+|**jobs_reader**     |    SELECT     |    Nincs     |
 
 > [!IMPORTANT]
 > Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához és szerkesztéséhez szükséges engedélyekkel rendelkező rosszindulatú felhasználó létrehozhat vagy szerkeszthet egy olyan feladatot, amely tárolt hitelesítő adattal csatlakozik a rosszindulatú felhasználó által vezérelt adatbázishoz, ezáltal a felhasználó meghatározhatja a hitelesítő adathoz tartozó jelszót.
@@ -251,6 +253,10 @@ A **4. példában** olyan célcsoport szerepel, amely célhelyként egy rugalmas
 **5. példa** és a **6. példa** olyan speciális forgatókönyveket mutat be, amelyekben az Azure SQL-kiszolgálók, a rugalmas készletek és az adatbázisok kombinálhatók belefoglalási és kizárási szabályok használatával.<br>
 A **7. példa** azt mutatja be, hogy a feladat futtatása során a szilánkleképezésben szereplő szilánkok is kiértékelhetők.
 
+> [!NOTE]
+> A feladatok adatbázisa lehet egy adott feladatokhoz tartozó cél. Ebben az esetben a feldolgozói adatbázist ugyanúgy kezeli a rendszer, mint bármely más céladatbázis. A feladathoz tartozó felhasználónak létre kell hoznia és megfelelő engedélyeket kell biztosítania a feladathoz tartozó adatbázishoz, és az adatbázis hatókörön belüli hitelesítő adatainak is léteznie kell a feladathoz tartozó adatbázisban, ugyanúgy, mint bármely más céladatbázis esetében.
+>
+
 #### <a name="job"></a>Feladat
 
 A *feladatok* ütemezetten vagy egyszeri feladatként végrehajtható munkaegységek. Egy feladat egy vagy több *feladatlépésből* áll.
@@ -279,7 +285,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az SQL Server Agent?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
 - [Rugalmas feladatok létrehozása és kezelése](elastic-jobs-overview.md) 

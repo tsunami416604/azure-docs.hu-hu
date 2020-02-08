@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017003"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087125"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>VPN-kapcsolat konfigurálása az AVS Private Cloud-hoz
 
@@ -26,7 +26,7 @@ A VPN-átjárók lehetővé teszik az AVS-hálózathoz való csatlakozást a hel
 
 Egy régióban létrehozhat egy helyek közötti VPN-átjárót és egy pont – hely típusú VPN-átjárót.
 
-## <a name="point-to-site-vpn"></a>Pont – hely típusú VPN
+## <a name="point-to-site-vpn"></a>Pont – hely VPN
 
 Pont – hely típusú VPN-átjáró létrehozásával kapcsolatban lásd: [pont – hely típusú VPN-átjáró létrehozása](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
@@ -97,14 +97,14 @@ A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első AVS saját 
 
     ![VPN-kapcsolat szerkesztése](media/viscosity-edit-connection.png)
 
-7. Kattintson a **hálózatkezelés** lapra, és adja meg az AVS Private Cloud DNS-kiszolgáló IP-címeit vesszővel vagy szóközzel elválasztva, a tartományt pedig ```AVS.io```ként. Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
+7. Kattintson a **hálózatkezelés** lapra, és adja meg az AVS Private Cloud DNS-kiszolgáló IP-címeit vesszővel vagy szóközzel elválasztva, a tartományt pedig ```az.cloudsimple.io```ként. Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
 
     ![VPN-hálózatkezelés](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
 > Ha az első AVS Private-felhőhöz szeretne csatlakozni, távolítsa el ezeket a beállításokat, és kapcsolódjon a VPN-kiszolgálóhoz.
 
-## <a name="site-to-site-vpn"></a>Helyek közötti VPN
+## <a name="site-to-site-vpn"></a>Site-to-Site VPN
 
 Helyek közötti VPN-átjáró létrehozásához tekintse meg a [helyek közötti VPN-átjáró létrehozása](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)című témakört. A helyszíni hálózatról az AVS Private Cloud felé irányuló helyek közötti VPN-kapcsolat biztosítja ezeket az előnyöket. 
 
@@ -117,4 +117,4 @@ Ha magas rendelkezésre állású módban szeretné beállítani a helyszíni VP
 
 > [!IMPORTANT]
 >    1. Állítsa be a TCP MSS-befogást a 1200-es méretre a VPN-eszközön. Ha a VPN-eszközök nem támogatják a MSS-befogást, akkor a bújtatási felületen lévő MTU-t 1240 bájtra is állíthatja.
-> 2. A helyek közötti VPN beállítása után továbbítja a (*) DNS-kéréseit. AVS.io az AVS Private Cloud DNS-kiszolgálókra. Kövesse a helyszíni [DNS-telepítő](on-premises-dns-setup.md)utasításait.
+> 2. Miután beállította a helyek közötti VPN-t, továbbítsa a *. cloudsimple.io DNS-kérelmeit az AVS Private Cloud DNS-kiszolgálókra. Kövesse a helyszíni [DNS-telepítő](on-premises-dns-setup.md)utasításait.

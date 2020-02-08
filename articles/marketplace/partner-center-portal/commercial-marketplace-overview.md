@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812062"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069438"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
 Üdvözöljük a Microsoft partner Center kereskedelmi piactér portálján. A [kereskedelmi piactér portál](https://partner.microsoft.com/dashboard/commercial-marketplace/) célja, hogy segítse a termékeinek és szolgáltatásainak értékesítését, az ügyfelek elérhetőségét és a vállalat növekedését.
 
-Ebben a dokumentációban bemutatjuk a partner Center-fiók létrehozásának és használatának alapjait, az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy [AppSource](https://appsource.microsoft.com/), a meglévő SaaS-ajánlatok kezelésével elérhető új szolgáltatott szoftver-(SaaS-) ajánlatokat. a kérdések és a visszajelzések összegyűjtését segítő erőforrások biztosítása. 
+Ebben a dokumentációban megismerheti a partner Center-fiók létrehozásának és használatának alapjait, az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy [AppSource](https://appsource.microsoft.com/)-ben elérhető új szolgáltatott szoftver-(SaaS-) ajánlatokat, valamint a meglévő SaaS-ajánlatok kezelését és a visszajelzések összegyűjtését segítő forrásokat. 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Tudnivalók a Microsoft kereskedelmi piactérről
 
-Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en és a [AppSource](https://appsource.microsoft.com/) -webáruházban az üzleti megoldások, az innovatív technológiák és az engedélyezési szolgáltatások révén a vállalatok, a kormányok és a szervezetek is megtalálhatják a webes áruházakat, [Azure Portal a terméken belüli élményt](https://portal.azure.com), [Felhőalapú megoldás-szolgáltatók](https://partner.microsoft.com/cloud-solution-provider)és Microsoft értékesítési csapatok. 
+A különböző méretű vállalatok, kormányok és szervezetek az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en és a [AppSource](https://appsource.microsoft.com/) web store- [ban, Azure Portal a terméken belüli felhasználói élményben](https://portal.azure.com), a [felhőalapú megoldás-szolgáltatóknál](https://partner.microsoft.com/cloud-solution-provider)és a Microsoft értékesítési csapatokban egyaránt megtalálják az üzleti megoldásokat, az innovatív technológiákat és az engedélyezési szolgáltatásokat. 
 
 A partner Center egy Microsoft-partner felhasználói felületének központja. Azoknak a szervezeteknek, akik piacra kerülnek a Microsofttal, és kihasználhatják a piactér előnyeit, a partner Center az a portál, amelyen keresztül a közzétevők létrehozzák és kezelhetik az ajánlatokat, tesztelési célú bemutatókat biztosítanak, és elemzéseket tekinthetnek meg a 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Áttelepítés Cloud Partner Portalról
 
-A partner Center a Microsoft a szoftvergyártókkal való kapcsolatának minden aspektusának jobb integrálására szolgál. Ennek a folyamatnak a részeként áttelepíti a [Cloud Partner Portal](https://cloudpartner.azure.com/) funkcióit a partner központba. 
+A partner Center a Microsoft a szoftvergyártókkal való kapcsolatának minden aspektusának jobb integrálására szolgál. Ennek a folyamatnak a részeként áttelepíti a [Cloud Partner Portal](https://cloudpartner.azure.com/) funkcióit a partner központba.
 
-**Jelenleg a partner Center csak a szolgáltatott szoftveres (SaaS) ajánlatok létrehozását és felügyeletét támogatja.**
+>[!NOTE]
+>Jelenleg a partner Center támogatja a szolgáltatott szoftveres (SaaS) ajánlatok létrehozását és felügyeletét, az Azure-alkalmazások ajánlatait, a Dynamics 365-et az ügyfelek ajánlatai, a engagement & PowerApps ajánlatok, a Dynamics 365 for Operations ajánlatok és a Dynamics 365 for Üzleti központi ajánlatok. Hamarosan további ajánlatokat is támogatunk.
 
-A meglévő piactér-közzétevők ismerős, de továbbfejlesztett felhasználói élményt nyújtanak az intuitív kezelőfelülettel. A Portálon és e-mailben küldött értesítések tájékoztatják az áttelepítés közzétevőit. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. Ennek a partnernek a frissítése nem érinti a vásárlói élményt. 
+A meglévő piactér-közzétevők ismerős, de továbbfejlesztett felhasználói élményt nyújtanak az intuitív kezelőfelülettel. A Portálon és e-mailben küldött értesítések tájékoztatják az áttelepítés közzétevőit. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. Ennek a partnernek a frissítése nem érinti a vásárlói élményt.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>A felhasználói élmény és a számlázás fejlesztése
 
@@ -55,7 +56,7 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 További információ a legújabb és jövőbeli kiadásokról: a [Piactéri menetrend](https://aka.ms/publicmarketplaceroadmap)megnyitása, vagy a [Microsoft partner Közösség](https://www.microsoftpartnercommunity.com/)beszélgetése. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az új Microsoft-partnerek számára, akik a SaaS-ajánlatoknak a piactéren való közzétételét érdeklik, tekintse meg a [kereskedelmi piactér fiók létrehozása a partner Centerben](./create-account.md)című témakört.
 - Azok a meglévő partnerek, akik korábban közzétett ajánlatokat a Cloud Partner Portalban, a [kereskedelmi Marketplace-fiókot a partner Centerben kezelhetik](./manage-account.md). 

@@ -4,14 +4,14 @@ description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, 
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901417"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087416"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
 
@@ -71,6 +71,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Data Factory](#data-factory-limits)
 * [Data Lake analitikai szolgáltatás](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [Adatmegosztás](#data-share-limits)
 * [Database Migration Service](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
@@ -82,7 +83,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Key Vault](#key-vault-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Többtényezős hitelesítés](#multi-factor-authentication-limits)
+* [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [Hálózat](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Azure-bástya](#azure-bastion-limits)
@@ -95,13 +96,13 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Nyilvános IP-cím](#publicip-address)
   * [Privát kapcsolat](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtual Network](#networking-limits)
+  * [Virtuális hálózat](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Service Bus](#service-bus-limits)
+* [Szolgáltatásbusz](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -109,7 +110,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [StorSimple-rendszeren](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
-* [Virtuális gépek](#virtual-machines-limits)
+* [Virtual Machines](#virtual-machines-limits)
 * [Virtuálisgép-méretezési csoportok](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
@@ -307,11 +308,11 @@ Azure Cosmos DB korlátok esetében lásd: [korlátok a Azure Cosmos DBban](../.
 
 [!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
-### <a name="azure-database-for-mysql"></a>A MySQL-hez készült Azure Database
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
 Azure Database for MySQL korlátokat a [Azure Database for MySQL korlátozásai](../../mysql/concepts-limits.md)című témakörben talál.
 
-### <a name="azure-database-for-postgresql"></a>A PostgreSQL-hez készült Azure Database
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 
 Azure Database for PostgreSQL korlátokat a [Azure Database for PostgreSQL korlátozásai](../../postgresql/concepts-limits.md)című témakörben talál.
 
@@ -347,7 +348,7 @@ Ha részletesebben szeretne tájékozódni a határértékekről, például a do
 
 ### <a name="azure-monitor-limits"></a>Azure Monitor korlátok
 
-#### <a name="alerts"></a>Értesítések
+#### <a name="alerts"></a>Riasztások
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 
@@ -404,6 +405,10 @@ Ha részletesebben szeretne tájékozódni a határértékekről, például a do
 ### <a name="data-lake-store-limits"></a>Data Lake Store korlátok
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
+
+### <a name="data-share-limits"></a>Adatmegosztási korlátok
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>Database Migration Service korlátok
 
@@ -481,7 +486,7 @@ SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Dat
 
 SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3f5e8c76fcf5f6088698e785e3203ab65bf04de1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549941"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084482"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -61,7 +61,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >    - Hagyja üresen az **átirányítási URI** -t, majd válassza a **regisztráció**lehetőséget.
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsample/secure/aad` és `http://localhost:8080/msal4jsample/graph/me`.
+>    - Az **átirányítási URI**-k területen adja hozzá a `https://localhost:8080/msal4jsample/secure/aad` és `https://localhost:8080/msal4jsample/graph/me`.
 >    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 >
@@ -75,7 +75,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
 >
-> 1. Adja hozzá a válasz URL-címeket `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`ként.
+> 1. Adja hozzá a válasz URL-címeket `https://localhost:8080/msal4jsamples/secure/aad` és `https://localhost:8080/msal4jsamples/graph/me`ként.
 > 1. Hozzon létre egy ügyfél titkot.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
@@ -89,25 +89,38 @@ A minta futtatásához a következőkre lesz szüksége:
 
 #### <a name="step-3-configure-the-code-sample"></a>3\. lépés: a mintakód konfigurálása
 
- 1. Csomagolja ki a zip-fájlt egy helyi mappába.
+ 1. Bontsa ki a zip-fájlt egy helyi mappába.
  1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
-
  1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> Helyszín:
->
-> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
-> - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
-> - `Enter_the_Tenant_Info_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
+    > [!div renderon="docs"]
+    > Az elemek magyarázata:
+    >
+    > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
+    > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
+    > - `Enter_the_Tenant_Info_Here` – a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
+
+ 1. Ha a HTTPS-t a localhost használatával szeretné használni, töltse ki a Server. SSL. Key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) eszköz segédprogramját.
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   Helyezze a generált rendszertároló fájlt a "Resources" (erőforrások) mappába.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. lépés: a kód mintájának futtatása
 
@@ -117,11 +130,11 @@ Futtassa közvetlenül az IDE-ből a beágyazott rugós rendszerindítási kiszo
 
 ##### <a name="running-from-ide"></a>Futtatás IDE-ből
 
-Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a szabványos Kezdőlap URL-címe http://localhost:8080
+Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a szabványos Kezdőlap URL-címe https://localhost:8080.
 
 1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
 
-1. A felhasználó hitelesítése után a rendszer átirányítja *http://localhost:8080/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
+1. A felhasználó hitelesítése után a rendszer átirányítja *https://localhost:8080/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
     - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
     - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
 
@@ -156,7 +169,7 @@ Vegyen fel egy hivatkozást a Java-MSAL a következő kód hozzáadásával a f�
 import com.microsoft.aad.msal4j.*;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az engedélyekről és a beleegyezik:
 

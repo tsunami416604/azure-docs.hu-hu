@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg az Azure Migrate VMware Assessment támogatásával.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048765"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086775"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -99,7 +99,7 @@ Ez az opció jelenleg csak előzetes verzióban érhető el. [További informác
 **Windows-fiók** |  A vizualizációnak helyi vagy tartományi rendszergazdai fiókra van szüksége.
 **Linux-fiók** | A vizualizációhoz rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szükség.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 **VM-ügynökök** | Nincs szükség ügynökre a virtuális gépeken.
-**VMware-eszközök** | A VMware-eszközöket az elemezni kívánt virtuális gépeken kell telepíteni és futtatni.
+**VMware-eszközök** | A VMware-eszközöket az elemezni kívánt virtuális gépeken kell telepíteni és futtatni. <br/> Ha a VMware-eszközök verziószáma 9,10 – 10.2.0, győződjön meg róla, hogy frissítenie kell a 10.2.0-re.
 **vCenter hitelesítő adatai** | Egy vCenter Server fiók írásvédett hozzáféréssel, valamint a Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal.
 **Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
 

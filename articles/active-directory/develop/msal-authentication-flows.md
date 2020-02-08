@@ -3,28 +3,28 @@ title: MSAL-hitelesítési folyamatok | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg a Microsoft Authentication Library (MSAL) által használt hitelesítési folyamatokkal és támogatásokkal.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/30/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962091"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085127"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
 Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különböző hitelesítési folyamatokat ismerteti.  Ezek a folyamatok különféle alkalmazási forgatókönyvekben használhatók.
 
-| Flow | Leírás | Használatban|  
+| Folyamat | Leírás | Használatban|  
 | ---- | ----------- | ------- | 
 | [Interaktív](#interactive) | Lekérdezi a jogkivonatot egy interaktív folyamaton keresztül, amely egy böngészőben vagy előugró ablakban kéri a felhasználótól a hitelesítő adatokat. | [Asztali alkalmazások](scenario-desktop-overview.md), [Mobile apps](scenario-mobile-overview.md) |
 | [Implicit támogatás](#implicit-grant) | Lehetővé teszi, hogy az alkalmazás jogkivonatokat kapjon a háttér-kiszolgáló hitelesítő adatainak cseréje nélkül. Ez lehetővé teszi az alkalmazás számára, hogy bejelentkezzen a felhasználóba, karbantartsa a munkamenetet, és más webes API-k számára is lekérje a jogkivonatokat az ügyfél JavaScript-kódjában.| [Egyoldalas alkalmazások (SPA)](scenario-spa-overview.md) |
@@ -39,7 +39,7 @@ Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különb
  
 Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
  
-|Flow | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -74,7 +74,7 @@ Számos modern webalkalmazást ügyféloldali, egyoldalas alkalmazásként, Java
 
 Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az Electron-et és a reakciós Natívt, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
-## <a name="authorization-code"></a>engedélyezési kód
+## <a name="authorization-code"></a>Engedélyezési kód
 
 A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
@@ -87,7 +87,7 @@ Az előző ábrán az alkalmazás:
 1. Egy hozzáférési jogkivonat számára beváltott engedélyezési kódot kér.
 2. A hozzáférési token használatával hívja meg a webes API-t.
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 
 - A jogkivonat beváltásához csak egyszer használhatja az engedélyezési kódot. Ne próbálja meg többször bekérni a jogkivonatot ugyanazzal az engedélyezési kóddal (a protokoll szabványos specifikációja explicit módon tiltja). Ha a kódot többször is beváltja, vagy ha nem tudja, hogy egy keretrendszer is elvégzi az Ön számára, a következő hibaüzenet jelenik meg: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 

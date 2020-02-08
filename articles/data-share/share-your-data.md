@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964421"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083045"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: adatmegosztás az Azure-adatmegosztás használatával  
 
@@ -29,6 +29,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 * A címzett Azure bejelentkezési e-mail-címe (az e-mail alias használata nem fog működni).
+* Ha az Azure-beli adattár egy másik Azure-előfizetésben található, mint amelyet az adatmegosztási erőforrás létrehozásához fog használni, regisztrálja a [Microsoft. DataShare erőforrás-szolgáltatót](concepts-roles-permissions.md#resource-provider-registration) abban az előfizetésben, amelyben az Azure-adattár található. 
 
 ### <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból:
 
@@ -57,7 +58,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 * Ügyfél IP-SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
     1. A Azure Portal található SQL Serverben navigáljon a *tűzfalak és a virtuális hálózatok* területére.
     1. Kattintson a **be** kapcsolóra az Azure-szolgáltatásokhoz való hozzáférés engedélyezéséhez.
-    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre, majd a **Mentés**gombra. Az ügyfél IP-címének módosítása változhat. Hozzáadhat IP-címtartományt is. 
+    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre, majd a **Mentés**gombra. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is. 
 
 ### <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Adatkezelő
 * Egy Azure Adatkezelő-fürt, amelynek adatbázisait meg szeretné osztani.
@@ -66,7 +67,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Adatmegosztási fiók létrehozása
 
@@ -85,7 +86,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Name (Név) | *datashareacount* | Adja meg az adatmegosztási fiók nevét. |
     | Előfizetést | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *test-resource-group* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
-    | Földrajzi egység | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
+    | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
     | | |
 
 1. Válassza a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -96,7 +97,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Navigáljon az adatmegosztás áttekintő oldalára.
 
-    ![Az adatai megosztása](./media/share-receive-data.png "Az adatok megosztása") 
+    ![Az adatai megosztása](./media/share-receive-data.png "Az adatai megosztása") 
 
 1. Válassza **az adatmegosztás megkezdése**lehetőséget.
 

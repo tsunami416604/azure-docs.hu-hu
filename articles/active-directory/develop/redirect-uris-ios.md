@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: Ismerje meg a Microsoft Authentication Library for ObjectiveC (iOS és macOS MSAL) és az Azure AD Authentication Library for ObjectiveC (ADAL) közötti különbségeket. ObjC) és a közöttük való Migrálás módját.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703082"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085639"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és a macOS rendszerhez készült Microsoft Authentication Library használatával
 
@@ -40,7 +40,7 @@ Előfordulhat azonban, hogy módosítania kell az átirányítási URI-t a speci
 
 Ahhoz, hogy a Microsoft Identity platform megossza a jogkivonatokat az alkalmazások között, minden alkalmazásnak ugyanazzal az ügyfél-AZONOSÍTÓval vagy alkalmazás-AZONOSÍTÓval kell rendelkeznie. Ez az egyedi azonosító, amely akkor érhető el, ha az alkalmazást a portálon regisztrálta (nem pedig az Apple-alkalmazásban regisztrálva lévő alkalmazáscsomag-azonosítót).
 
-Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egyes iOS-alkalmazások esetében. Ez lehetővé teszi, hogy a Microsoft Identity szolgáltatás egyedi módon azonosítsa az alkalmazás-AZONOSÍTÓval rendelkező különböző alkalmazásokat. Mindegyik alkalmazás több átirányítási URI-t is regisztrál a Azure Portalban. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa:
+Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egyes iOS-alkalmazások esetében. Ez lehetővé teszi, hogy a Microsoft Identity szolgáltatás egyedi módon azonosítsa az alkalmazás-AZONOSÍTÓval rendelkező különböző alkalmazásokat. Mindegyik alkalmazás több átirányítási URI-t is regisztrál a Azure Portalban. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
 
 A következő alkalmazás-regisztráció a Azure Portalban:
 
@@ -82,7 +82,7 @@ A MSAL ellenőrzi, hogy az átirányítási URI megfelelően van-e regisztrálva
 
 ## <a name="use-a-custom-redirect-uri"></a>Egyéni átirányítási URI használata
 
-Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, hogy `MSALPublicClientApplicationConfig`, és adja át ezt az objektumot `MSALPublicClientApplication` az objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializáló `nil`t ad vissza, és további információkkal állítja be a `redirectURIError`.  Példa:
+Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, hogy `MSALPublicClientApplicationConfig`, és adja át ezt az objektumot `MSALPublicClientApplication` az objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializáló `nil`t ad vissza, és további információkkal állítja be a `redirectURIError`.  Például:
 
 Objective-C:
 

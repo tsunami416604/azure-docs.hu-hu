@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023565"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087043"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -36,44 +36,46 @@ A virtuális gépek méretének kiválasztására néhány kivétel és korláto
 
 A virtuálisgép-konfigurációban található batch-készletek szinte minden VM-méretet támogatnak ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). A támogatott méretekkel és korlátozásokkal kapcsolatos további információkért tekintse meg a következő táblázatot.
 
-A nem felsorolt promóciós vagy előnézeti virtuálisgép-méretek támogatása nem garantált.
+| VM-sorozat  | Támogatott méretek |
+|------------|---------|
+| Alapszintű A | Minden méret, *kivéve* a Basic_A0 (a0) |
+| A | Minden méret, *kivéve* Standard_A0 |
+| Av2 | Minden méret |
+| B | Nincs |
+| DC | Nincs |
+| Dv2, DSv2 | Minden méret |
+| Dv3, Dsv3 | Minden méret |
+| Dav4, Dasv4 | Nincs – még nem érhető el |
+| Ev3, Esv3 | Minden méret E64is_v3 és E64i_v3 kivételével |
+| Eav4, Easv4 | Nincs – még nem érhető el |
+| F, FS | Minden méret |
+| Fsv2 | Minden méret |
+| G, GS | Minden méret |
+| H | Minden méret |
+| HB<sup>1</sup> | Minden méret |
+| <sup>1</sup> . HBv2 | Minden méret |
+| HC<sup>1</sup> | Minden méret |
+| Ls | Minden méret |
+| Lsv2 | Nincs – még nem érhető el |
+| M<sup>1</sup> | Minden méret, kivéve a M64, a M64m, a M128, a M128m |
+| Mv2 | Nincs – még nem érhető el |
+| NC | Minden méret |
+| <sup>1</sup> . NCv2 | Minden méret |
+| <sup>1</sup> . NCv3 | Minden méret |
+| <sup>1</sup> . nd | Minden méret |
+| <sup>1</sup> . NDv2 | Nincs – még nem érhető el |
+| NV | Minden méret |
+| <sup>1</sup> . NVv3 | Minden méret |
+| NVv4 | Nincs |
+| SAP HANA | Nincs |
 
-| Virtuálisgép-sorozat  | Támogatott méretek | Batch-fiók készletének kiosztási módja<sup>1</sup> |
-|------------|---------|-----------------|
-| Alapszintű A sorozat | Minden méret, *kivéve* a Basic_A0 (a0) | Bármelyik |
-| A-sorozat | Minden méret, *kivéve* Standard_A0 | Bármelyik |
-| Av2-sorozat | Minden méret | Bármelyik |
-| B sorozat | None | Nincs |
-| DC sorozat | None | Nincs |
-| Dv2, DSv2 sorozat | Minden méret | Bármelyik |
-| Dv3, Dsv3 sorozat | Minden méret | Bármelyik |
-| Ev3, Esv3 sorozat | Minden méret | Bármelyik |
-| Fsv2 sorozat | Minden méret | Bármelyik |
-| H-sorozat | Minden méret | Bármelyik |
-| HB –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
-| HC-sorozat<sup>2</sup> | Minden méret | Bármelyik |
-| Ls sorozat | Minden méret | Bármelyik |
-| Lsv2 sorozat | None | Nincs |
-| M sorozat | Standard_M64ms (csak alacsony prioritású), Standard_M128s (csak alacsony prioritású) | Bármelyik |
-| Mv2 sorozat | None | Nincs |
-| NC sorozat | Minden méret | Bármelyik |
-| NCv2 –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
-| NCv3 –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
-| ND sorozat<sup>2</sup> | Minden méret | Bármelyik |
-| NDv2 sorozat | Minden méret | Felhasználói előfizetés mód |
-| NV sorozat | Minden méret | Bármelyik |
-| NVv3 sorozat | None | Nincs |
-| SAP HANA | None | Nincs |
-
-<sup>1</sup> az újabb virtuálisgép-sorozatok kezdetben részlegesen támogatottak. Ezeket a virtuálisgép-sorozatokat a Batch-fiókok a **felhasználói előfizetésre**beállított **kiosztási móddal** tudják lefoglalni. A Batch-fiók konfigurálásával kapcsolatos további információkért lásd: [Batch-fiókok kezelése](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . Tekintse meg a [kvóták és korlátok](batch-quota-limit.md) című témakört, amelyből megtudhatja, hogyan kérhet kvótát a részben támogatott virtuálisgép-sorozatokhoz a **felhasználói előfizetés** batch  
-
-<sup>2</sup> ezek a virtuálisgép-méretek lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de az adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie.
+<sup>1</sup> ezek a virtuálisgép-méretek lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de létre kell hoznia egy új batch-fiókot, és egy adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie. Ez a korlátozás akkor törlődik, ha a virtuálisgép-sorozatok vCPU-kvótája teljes mértékben támogatott a Batch-fiókok esetében.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Készletek a Cloud Service-konfigurációban
 
 A Cloud Service-konfigurációban a Batch-készletek támogatják a Cloud Services összes virtuálisgép- [méretét](../cloud-services/cloud-services-sizes-specs.md) , a következők **kivételével** :
 
-| Virtuálisgép-sorozat  | Nem támogatott méretek |
+| VM-sorozat  | Nem támogatott méretek |
 |------------|-------------------|
 | A-sorozat   | Extra kicsi       |
 | Av2-sorozat | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |

@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: További információ az egyéni jogcímek igényléséről.
 services: active-directory
 documentationcenter: ''
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 0aa4648d3d5e76c2d0ebd7524ad8dfa52da3fb30
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702487"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085606"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
 
@@ -30,7 +30,7 @@ Az OpenID Connect segítségével igény szerint kérheti az egyes jogcímek vis
 
 Az iOS és a macOS rendszerhez készült Microsoft Authentication Library (MSAL) lehetővé teszi, hogy konkrét jogcímeket kérjen az interaktív és a csendes jogkivonat-beszerzési forgatókönyvekben. Ezt a `claimsRequest` paraméterrel végezheti el.
 
-Több forgatókönyv is van, ahol ez szükséges. Példa:
+Több forgatókönyv is van, ahol ez szükséges. Például:
 
 - Az alkalmazás szabványos készletén kívüli jogcímek igénylése.
 - A standard jogcímek adott kombinációinak kérése, amelyek nem adhatók meg hatókörökkel az alkalmazáshoz. Ha például egy hozzáférési jogkivonat a hiányzó jogcímek miatt elutasításra kerül, az alkalmazás a MSAL használatával kérheti le a hiányzó jogcímeket.

@@ -3,22 +3,22 @@ title: UWP megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg az Univerzális Windows-platform és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4803b2bda63ef0e14137aaafe95a422089e7f671
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695092"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083665"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Univerzális Windows-platform-specifikus megfontolások a MSAL.NET
 A UWP-on több szempontot is figyelembe kell vennie a MSAL.NET használatakor.
@@ -42,7 +42,7 @@ A UWP platform (WAB) mögöttes implementációja nem működik megfelelően oly
 
 A megkerülő megoldás egy alternatív módszer használata (felhasználónév/jelszó + telefonos hitelesítés), de a felület nem jó.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Néhány ügyfél jelezte, hogy bizonyos vállalati környezetekben a következő bejelentkezési hiba történt:
 
@@ -63,7 +63,7 @@ Részletekért lásd: [web Authentication Broker-Hegedűs](https://docs.microsof
 ## <a name="next-steps"></a>Következő lépések
 További részleteket az alábbi példákban talál:
 
-Minta | Platform | Leírás 
+Sample | Platform | Leírás 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-Native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Egy Univerzális Windows-platform ügyfélalkalmazás a msal.net használatával, amely az Azure AD v 2.0-végponttal hitelesítő felhasználó Microsoft Graphhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használhatja az MSAL-t a MSA és az Azure AD hitelesítésére a HRE 2.0-s végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz. <br>![Topológia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

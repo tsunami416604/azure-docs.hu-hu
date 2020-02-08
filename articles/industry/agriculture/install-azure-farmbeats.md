@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0702b302af1c964014a6649f5f3e86ce47b4600a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048372"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069285"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
 
@@ -77,7 +77,7 @@ Az Azure FarmBeats tényleges telepítésének megkezdése előtt végre kell ha
 
 ### <a name="verify-permissions"></a>Engedélyek ellenőrzése
 
-Az Azure FarmBeats telepíteni kívánt Azure-bérlőn a következő engedélyekre lesz szüksége:
+Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek az Azure-bérlőben:
 
 - Bérlő – HRE alkalmazás létrehozója
 - Előfizetés – tulajdonos
@@ -85,7 +85,7 @@ Az Azure FarmBeats telepíteni kívánt Azure-bérlőn a következő engedélyek
 
 Az első két engedélyre van szükség a [HRE alkalmazás létrehozásának lépéseinek létrehozásához](#create-an-aad-application) . Ha szükséges, a HRE-alkalmazás létrehozásához a megfelelő engedélyekkel rendelkező személyt is beszerezhet. A FarmBeats telepítő személynek azon erőforráscsoport tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
 
-A Azure Portal a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access) vonatkozó utasításokat követve ellenőrizheti a hozzáférési engedélyeit.
+A Azure Portal a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access)vonatkozó utasításokat követve ellenőrizheti a hozzáférési engedélyeit.
 
 ### <a name="decide-subscription-and-region"></a>Előfizetés és régió kiválasztása
 
@@ -120,7 +120,7 @@ Futtassa az alábbi lépéseket egy Cloud Shell-példányban a PowerShell-körny
         ./create_aad_script.ps1
     ```
 
-4. A HRE-szkript körülbelül 2 percet vesz igénybe, és megjeleníti az értékeket a képernyőn, valamint egy ugyanabban a könyvtárban található JSON-fájlon. Ha valaki más futtatta a szkriptet, kérje meg őket, hogy ossza meg Önnel ezt a kimenetet.
+4. A HRE parancsfájl körülbelül 2 percet vesz igénybe, és megjeleníti a képernyőn látható értékeket, valamint egy ugyanabban a könyvtárban található JSON-fájlt. Ha valaki más futtatta a szkriptet, kérje meg őket, hogy ossza meg Önnel ezt a kimenetet.
 
 ### <a name="create-sentinel-account"></a>Sentinel-fiók létrehozása
 
@@ -132,7 +132,7 @@ Kövesse a következő lépéseket egy ingyenes fiók létrehozásához a Sentin
 2. Adja meg a szükséges adatokat (keresztnév, vezetéknév, Felhasználónév, jelszó és e-mail azonosító), és fejezze be az űrlapot.
 3. A rendszer egy ellenőrző hivatkozást küld a regisztrált e-mail-AZONOSÍTÓba. Válassza ki az e-mailben megadott hivatkozást, és fejezze be az ellenőrzést.
 
-Az ellenőrzés befejezése után a regisztrációs folyamat befejeződött. Jegyezze fel a Sentinel- **felhasználónevét** és a **Sentinel-jelszavát**.
+A regisztrációs folyamat befejeződött. Jegyezze fel a **Sentinel felhasználónevét** és a **Sentinel-jelszavát**, ha az ellenőrzés is befejeződött.
 
 ## <a name="install"></a>Telepítés
 
@@ -146,13 +146,17 @@ Most már készen áll a FarmBeats telepítésére. A telepítés elindításáh
 
 4. Megjelenik egy új ablak. A regisztrációs folyamat befejezéséhez válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet, amelyre telepíteni szeretné az Azure-FarmBeats.
 
-5. Adja meg azt az e-mail-címet, amelynek az Azure FarmBeats kapcsolatos riasztásokat kell kapnia a **FarmBeats szolgáltatás riasztások** szakaszában. A lap alján található tovább gombra kattintva lépjen a **függőségek** lapra. ![alapjai lap](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+5. Adja meg azt az e-mail-címet, amelynek az Azure FarmBeats kapcsolatos riasztásokat kell kapnia a **FarmBeats szolgáltatás riasztások** szakaszában. A lap alján található **tovább** gombra kattintva lépjen a **függőségek** lapra.
+
+    ![Alapbeállítások lap](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
 6. Másolja az egyes bejegyzéseket a [HRE szkript](#create-an-aad-application) kimenetéről a HRE-alkalmazás bemenetei szakaszba.
 
-7. Adja meg a [Sentinel-fiók](#create-sentinel-account) felhasználónevét és jelszavát a Sentinel-fiók szakaszban. A Tovább gombra kattintva lépjen a **felülvizsgálat + létrehozás** lapra ![függőségek lapra](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+7. Adja meg a [Sentinel-fiók](#create-sentinel-account) felhasználónevét és jelszavát a Sentinel-fiók szakaszban. Kattintson a **tovább** gombra a **felülvizsgálat + létrehozás** lapra való áttéréshez.
 
-8. A beírt részletek ellenőrzése után válassza **az OK gombot**. Megjelenik a Használati feltételek lap. Tekintse át a feltételeket, és válassza a **Létrehozás** lehetőséget a telepítés elindításához. A rendszer automatikusan átirányítja egy oldalra, ahol követheti a telepítés folyamatát.
+    ![Függőségek lap](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+
+8. A beírt részletek ellenőrzése után válassza **az OK gombot**. Megjelenik a Használati feltételek lap. Tekintse át a feltételeket, és válassza a **Létrehozás** lehetőséget a telepítés elindításához. A rendszer átirányítja az oldalra, ahol követheti a telepítési folyamatot.
 
 A telepítés befejezése után ellenőrizheti a telepítést, és megkezdheti a FarmBeats-portál használatát, ha a telepítés során megadott webhely nevére navigál: https://\<FarmBeats-web-Name >. azurewebsites. net. A farmok létrehozásához a FarmBeats felhasználói felületét kell megtekinteni.
 
@@ -161,6 +165,7 @@ A **Datahub** a következő címen érhető el: https://\<FarmBeats-website-Name
 ## <a name="upgrade"></a>Frissítés
 
 A FarmBeats legújabb verzióra való frissítéséhez futtassa a következő lépéseket egy Cloud Shell példányban a PowerShell-környezet használatával. A felhasználónak azon előfizetés tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
+
 A rendszer első alkalommal kéri a felhasználókat, hogy válasszon ki egy előfizetést, és hozzon létre egy Storage-fiókot. Végezze el a telepítést a megadott utasítások szerint.
 
 1. A [Frissítési parancsfájl](https://aka.ms/FarmBeatsUpgradeScript) letöltése

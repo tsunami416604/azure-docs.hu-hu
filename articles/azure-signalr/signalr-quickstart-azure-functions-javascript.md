@@ -1,5 +1,5 @@
 ---
-title: Azure Signaler szolgáltatás kiszolgáló nélküli gyors üzembe helyezése – JavaScript
+title: Csevegési helyiség létrehozása a JavaScript használatával Azure Functions és a Signaler szolgáltatással
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre csevegőszobát az Azure SignalR szolgáltatás és az Azure Functions használatával.
 author: sffamily
 ms.service: signalr
@@ -7,28 +7,29 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450262"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083196"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Rövid útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR szolgáltatás használatával JavaScript nyelven.
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a JavaScript használatával
 
-Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós idejű funkciókat az alkalmazásához. Az Azure Functions egy kiszolgáló nélküli platform, amellyel infrastruktúra kezelése nélkül futtathat kódokat. Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan készíthet kiszolgáló nélküli, valós idejű csevegőalkalmazást a SignalR szolgáltatás és a Functions használatával.
+Az Azure Signaler szolgáltatással egyszerűen adhat hozzá valós idejű funkciókat az alkalmazáshoz, és Azure Functions egy kiszolgáló nélküli platform, amely lehetővé teszi, hogy az infrastruktúra kezelése nélkül futtassa a kódot. Ebben a rövid útmutatóban a JavaScript használatával kiszolgáló nélküli, valós idejű csevegési alkalmazást hozhat létre a Signal Service és a functions használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
+- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), 2-es vagy újabb verzió. Az Azure Function apps helyi futtatására szolgál.
+- [Node. js](https://nodejs.org/en/download/), 10-es verzió. x
 
-Ellenőrizze, hogy van-e telepítve valamilyen kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/).
+   > [!NOTE]
+   > A példáknak a Node. js más verzióival kell dolgozniuk, további információért lásd a [Azure functions Runtime Versions dokumentációját](../azure-functions/functions-versions.md#languages) .
 
-Telepítse a [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (2-es vagy újabb verzió) az Azure Function apps helyi futtatásához.
-
-Ez a rövid útmutató a [Node. js](https://nodejs.org/en/download/) 10. x verziót használja, de más verziókkal is működnie kell. A támogatott Node. js-verziókkal kapcsolatos további információkért tekintse meg a [Azure functions Runtime Versions dokumentációját](../azure-functions/functions-versions.md#languages) .
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 

@@ -3,22 +3,22 @@ title: MSAL. js-ügyfélalkalmazások inicializálása | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg az ügyfélalkalmazások inicializálásával a JavaScripthez készült Microsoft Authentication Library (MSAL. js) használatával.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696129"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084043"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása a MSAL. js használatával
 Ez a cikk a Microsoft hitelesítési függvénytárának a JavaScripthez (MSAL. js) való inicializálását ismerteti egy felhasználói ügynök alkalmazás egy példányával. A User-Agent alkalmazás a nyilvános ügyfélalkalmazás olyan formája, amelyben az ügyfél kódja egy felhasználói ügynökön, például egy böngészőben fut. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
@@ -118,13 +118,13 @@ Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálh
     * Azure AD B2C az űrlap `https://<instance>/tfp/<tenant>/<policyName>/`, ahol a példány a Azure AD B2C tartomány, azaz {a-bérlő-neve}. b2clogin. com, a bérlő a Azure AD B2C bérlő neve, azaz {a-bérlő-Name}. onmicrosoft. com, policyName az alkalmazandó B2C-szabályzat neve.
 
 
-- **validateAuthority**: nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett szint a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és a `false`re kell beállítani.
+- **validateAuthority**: nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett érték a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és a `false`re kell beállítani.
 
 - **redirectUri**: nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével. Az alapértelmezett érték a `window.location.href`.
 
 - **postLogoutRedirectUri**: nem kötelező.  A kijelentkezés után `postLogoutRedirectUri` átirányítja a felhasználót. Az alapértelmezett érték `redirectUri`.
 
-- **navigateToLoginRequestUrl**: nem kötelező. Kikapcsolhatja az alapértelmezett navigációt a Start lapon a bejelentkezés után. Alapértelmezett érték: true (igaz). Ez csak az átirányítási folyamatok esetében használatos.
+- **navigateToLoginRequestUrl**: nem kötelező. Kikapcsolhatja az alapértelmezett navigációt a Start lapon a bejelentkezés után. Az alapértelmezett érték a True (igaz). Ez csak az átirányítási folyamatok esetében használatos.
 
 - **cacheLocation**: nem kötelező.  A böngésző tárterületét `localStorage` vagy `sessionStorage`re állítja be. A mező alapértelmezett értéke: `sessionStorage`.
 

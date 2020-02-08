@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019825"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083227"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
@@ -48,7 +48,7 @@ A megoldás telepítése és konfigurálása előtt győződjön meg arról, hog
 * Az önálló NSX-T Edge készülék verziója kompatibilis az AVS Private Cloud-környezetben használt NSX-T Manager-verzióval (NSX-T 2.3.0).
 * A rendszer létrehozta a helyszíni vCenter a hamis továbbítások engedélyezése után.
 * Egy nyilvános IP-cím van fenntartva a NSX-T önálló ügyfél kimenő IP-címéhez, és 1:1 NAT van érvényben a két cím közötti fordításhoz.
-* A DNS-továbbítás a helyi DNS-kiszolgálókon van beállítva az az számára. AVS.io tartomány, hogy az AVS Private Cloud DNS-kiszolgálókra mutasson.
+* A DNS-továbbítás a az.cloudsimple.io tartományhoz tartozó helyszíni DNS-kiszolgálókon van beállítva, hogy az AVS Private Cloud DNS-kiszolgálókra mutasson.
 * A RTT késése 150 MS-nál kisebb vagy azzal egyenlő, ahogy az a két helyen való működéshez szükséges vMotion.
 
 ## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
@@ -57,10 +57,10 @@ A következő táblázat a támogatott vSphere-verziókat és hálózati adapter
 
 | vSphere verziója | Forrás vSwitch típusa | Virtuális hálózati adapter illesztőprogramja | Cél vSwitch típusa | Támogatott? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Mind | DVS | Mind | DVS | Igen |
+| Összes | DVS | Összes | DVS | Igen |
 | vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | VMXNET3 | N-VDS | Igen |
 | vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | E1000 | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI vagy 6.5 P03, NSX-V vagy Versions, NSX-T 2.2, 6.5 P03 vagy újabb verziók | Mind | Mind | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI vagy 6.5 P03, NSX-V vagy Versions, NSX-T 2.2, 6.5 P03 vagy újabb verziók | Összes | Összes | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
 
 A VMware NSX-T 2,3 kiadástól kezdve:
 
@@ -75,7 +75,7 @@ További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMw
 
 | **Elem** | **Érték** |
 |------------|-----------------|
-| Hálózat neve | MGMT_NET_VLAN469 |
+| Hálózati név | MGMT_NET_VLAN469 |
 | VLAN | 469 |
 | CIDR| 10.250.0.0/24 |
 | Önálló peremhálózati berendezés IP-címe | 10.250.0.111 |
@@ -154,16 +154,16 @@ Az NSX-T Tier0-útválasztó és az önálló NSX Edge-ügyfél közötti IPsec-
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>A visszacsatolási felület IP-címének reklámozása az alátét-hálózaton
 
-1. Hozzon létre egy NULL útvonalat a visszacsatolási csatoló hálózata számára. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **statikus útvonalak**elemet. Kattintson a **Hozzáadás** parancsra. A **hálózat**mezőben adja meg a visszacsatolási kapcsolat IP-címét. A **következő ugrások**esetében kattintson a **Hozzáadás**gombra, adja meg a "NULL" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a rendszergazdai távolság számára.
+1. Hozzon létre egy NULL útvonalat a visszacsatolási csatoló hálózata számára. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **statikus útvonalak**elemet. Kattintson az **Hozzáadás** parancsra. A **hálózat**mezőben adja meg a visszacsatolási kapcsolat IP-címét. A **következő ugrások**esetében kattintson a **Hozzáadás**gombra, adja meg a "NULL" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a rendszergazdai távolság számára.
 
     ![Statikus útvonal hozzáadása](media/l2vpn-routing-security01.png)
 
-2. Hozzon létre egy IP-előtagot tartalmazó listát. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **IP-előtagok listáját**. Kattintson a **Hozzáadás** parancsra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson kétszer a **Hozzáadás** gombra. Az első sorban adja meg a "0.0.0.0/0" értéket a **hálózat** és a "megtagadás" **művelethez**. A második sorban válassza a **bármely** a **hálózat** számára lehetőséget, és **engedélyezze** a **műveletet**.
+2. Hozzon létre egy IP-előtagot tartalmazó listát. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **IP-előtagok listáját**. Kattintson az **Hozzáadás** parancsra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson kétszer a **Hozzáadás** gombra. Az első sorban adja meg a "0.0.0.0/0" értéket a **hálózat** és a "megtagadás" **művelethez**. A második sorban válassza a **bármely** a **hálózat** számára lehetőséget, és **engedélyezze** a **műveletet**.
 3. Csatolja az IP-előtag listáját a BGP-szomszédokhoz (TOR). Ha az IP-előtag listáját a BGP-szomszédhoz csatolja, azzal meggátolja, hogy az alapértelmezett útvonal a BGP-ben meghirdessen a TOR-kapcsolókra. Azonban minden más útvonal, amely tartalmazza a null útvonalat, meghirdeti a visszacsatolási felület IP-címét a TOR-kapcsolók számára.
 
     ![IP-előtag-lista létrehozása](media/l2vpn-routing-security02.png)
 
-4. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **BGP** > **szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a **szerkesztés** > a **családok kezelése**elemre. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Mentés** gombra. Ismételje meg ezt a lépést a második szomszédnál.
+4. Jelentkezzen be a NSX-T kezelőbe, és válassza a **hálózatkezelés** > **Útválasztás** > **útválasztók** > **szolgáltató – LR** > **Útválasztás** > **BGP** > **szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a **szerkesztés** > a **családok kezelése**elemre. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszédnál.
 
     ![csatolja az IP-előtag listáját 1](media/l2vpn-routing-security03.png) ![csatolja a 2. IP-előtag-listát](media/l2vpn-routing-security04.png)
 

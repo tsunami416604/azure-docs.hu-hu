@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849733"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086673"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Témakörök és esemény-előfizetések figyelése
 
@@ -40,7 +40,7 @@ Konfigurálja a modult a metrikák kibocsátására úgy, hogy a `metrics__repor
         }
  ```    
 
-A metrikák a HTTP-n és a https-ben `4438/metrics` modul `5888/metrics`én lesznek elérhetők. Például `http://<modulename>:4438/metrics?api-version=2019-01-01-preview` a http-hez. Ezen a ponton a metrikák modulja lekérdezheti a végpontot, hogy összegyűjtse a mérőszámokat az ebben a [példában szereplő architektúrában](https://github.com/veyalla/ehm).
+A metrikák a HTTP-n és a https-ben `4438/metrics` modul `5888/metrics`én lesznek elérhetők. Például `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` a http-hez. Ezen a ponton a metrikák modulja lekérdezheti a végpontot, hogy összegyűjtse a mérőszámokat az ebben a [példában szereplő architektúrában](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
@@ -63,9 +63,9 @@ A témakörök és az esemény-előfizetések mérőszámokat bocsátanak ki, ho
 | Metrika | Leírás |
 | ------ | ----------- |
 | deliverySuccessCounts | A konfigurált végponthoz sikeresen küldött események száma
-| deliveryFailureCounts | Az esemény-kézbesítési kísérletek száma nem sikerült a konfigurált végponton
+| deliveryFailureCounts | A konfigurált végpontnak sikertelenül küldött események száma
 | deliverySuccessLatencyMs | Az események késése (ezredmásodpercben) sikeresen lefutott
 | deliveryFailureLatencyMs | Az események kézbesítési hibáinak késése ezredmásodpercben
 | systemDelayForFirstAttemptMs | Események rendszerkésleltetése az első kézbesítési kísérlet előtt ezredmásodpercben
 | deliveryAttemptsCount | Esemény kézbesítési kísérletek száma – sikeres és sikertelen
-| expiredCounts | Nem továbbítható események száma 
+| expiredCounts | A lejárt és a beállított végpontnak nem továbbított események száma

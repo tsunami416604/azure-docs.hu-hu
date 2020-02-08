@@ -3,7 +3,7 @@ title: Felhasználók be-és kijelentkezése & hívási Microsoft Graph (Android
 description: Hozzáférési token beszerzése és a Microsoft Identity platform (Android) hozzáférési jogkivonatait igénylő API-k meghívása Microsoft Graph
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4366f95a9c6d5c0e6b851583ac6001b3b413c08a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758835"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085395"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból 
 
@@ -476,7 +476,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Layout 
+### <a name="layout"></a>Elrendezés 
 
 Példa `activity_main.xml` fájlra a gombok és szövegmezők megjelenítéséhez. 
 
@@ -583,7 +583,7 @@ Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Id
 
 Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.
 
-## <a name="get-help"></a>Segítség
+## <a name="get-help"></a>Segítségkérés
 
 Ha problémája van az Oktatóanyaggal vagy a Microsoft Identity platformmal, látogasson el a [Súgó és támogatás](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) webhelyre.
 

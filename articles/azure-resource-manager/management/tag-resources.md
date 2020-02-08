@@ -3,18 +3,18 @@ title: Erőforrások címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665161"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087323"
 ---
-# <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
+# <a name="use-tags-to-organize-your-azure-resources"></a>Címkék használata az Azure-erőforrások rendszerezéséhez
 
 Címkéket alkalmazhat az Azure-erőforrásokra, hogy logikailag szervezze őket a besorolásba. Minden címke egy nevet és egy érték párokat tartalmaz. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
-A címkék alkalmazása után az előfizetés összes erőforrását lekérheti az adott címke nevével és értékével. A címkékkel olyan kapcsolódó erőforrásokat is lekérhet, amelyek más erőforráscsoportokban találhatók. Ez a megoldás akkor hasznos, ha számlázás vagy felügyelet céljából kell rendszereznie erőforrásait.
+A címkék alkalmazása után az előfizetés összes erőforrását lekérheti az adott címke nevével és értékével. A címkék lehetővé teszik a kapcsolódó erőforrások különböző erőforráscsoportokből való lekérését. Ez a megoldás akkor hasznos, ha számlázás vagy felügyelet céljából kell rendszereznie erőforrásait.
 
 A besorolásnak egy önkiszolgáló metaadat-címkézési stratégiát kell figyelembe vennie az automatikus címkézési stratégia mellett, hogy csökkentse a felhasználók terhelését, és növelje a pontosságot.
 
@@ -39,7 +39,7 @@ Az alábbi korlátozások érvényesek a címkékre:
 
 Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználónak írási hozzáféréssel kell rendelkeznie az adott erőforrás-típushoz. Ha címkéket szeretne alkalmazni az összes erőforrástípus, használja a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkört. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
-## <a name="policies"></a>Irányelvek
+## <a name="policies"></a>Szabályzatok
 
 A [Azure Policy](../../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
@@ -171,7 +171,7 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -394,7 +394,7 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 
 ### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
 
-Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasásakor használja a `tags.[tag-name]` szintaxist a `tags.tag-name` szintaxis helyett, mert egyes karaktereket nem megfelelően értelmezi a pont jelölése.
+Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasásakor használja a `tags[tag-name]` szintaxist a `tags.tag-name` szintaxis helyett, mert egyes karaktereket nem megfelelően értelmezi a pont jelölése.
 
 ```json
 {
@@ -436,7 +436,7 @@ A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](/rest/ap
 
 ## <a name="tags-and-billing"></a>Címkék és számlázás
 
-Címkék segítségével a számlázási adatok is csoportosíthatók. Ha például több virtuális gépet futtat különböző vállalatok számára, akkor a használatot címkék segítségével tudja költséghely szerint csoportosítani. A címkék a költségek futtatókörnyezet szerinti besorolására, például az éles környezetben futó virtuális gépek használatának kiszámlázására is felhasználhatók.
+A címkéket a számlázási adataik csoportosítására használhatja. Ha például több virtuális gépet futtat különböző szervezetekhez, a címkék használatával csoportosítsa a használatot Cost Center alapján. A címkék használatával kategorizálhatja a költségeket futásidejű környezet szerint, például az éles környezetben futó virtuális gépek számlázási használatát.
 
 A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../../billing/billing-usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../billing/billing-download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 

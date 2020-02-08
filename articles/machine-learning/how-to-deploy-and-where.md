@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932380"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083237"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
+- A modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
 
 - Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
 
@@ -172,24 +172,24 @@ A többmodelles végpontok egy megosztott tárolót használnak több modell üz
 
 Egy E2E példa, amely bemutatja, hogyan használható több modell egyetlen tárolós végpont mögött, lásd [a következő példát](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) :
 
-## <a name="prepare-to-deploy"></a>Az üzembe helyezés előkészítése
+## <a name="prepare-deployment-artifacts"></a>Üzembe helyezési összetevők előkészítése
 
-A modell üzembe helyezéséhez a következő elemek szükségesek:
+A modell üzembe helyezéséhez a következőkre lesz szüksége:
 
-* **Egy bejegyzési parancsfájl**. Ez a szkript fogadja a kéréseket, a modell használatával szerzi be a kérelmeket, és visszaadja az eredményeket.
+* **Bejegyzési parancsfájl & forráskód függőségei**. Ez a szkript fogadja a kéréseket, a modell használatával szerzi be a kérelmeket, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
     > * A bejegyzési parancsfájl a modellre jellemző. Meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
     >
     >   Ha a kérelem adatai formátuma nem használható a modellben, akkor a szkript elfogadható formátumba alakíthatja át. Átalakíthatja a választ is, mielőtt visszaadná azt az ügyfélnek.
     >
-    > * Az Azure Machine Learning SDK nem biztosít módot a webszolgáltatások vagy IoT Edge üzembe helyezések számára az adattár vagy adatkészletek eléréséhez. Ha a telepített modellnek hozzá kell férnie az üzemelő példányon kívül tárolt adatokat, például egy Azure Storage-fiókban található adatokat, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
+    > * A webszolgáltatások és a IoT Edge üzemelő példányok nem férnek hozzá a munkaterület-adattárakhoz vagy adatkészletekhez. Ha a telepített szolgáltatásnak el kell érnie az üzemelő példányon kívül tárolt adatokat, például egy Azure Storage-fiókban található adatokat, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
     >
     >   A forgatókönyvnek megfelelő alternatív megoldás a Batch- [Előrejelzés](how-to-use-parallel-run-step.md), amely hozzáférést biztosít az adattárakhoz a pontozás során.
 
-* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek.
+* **Következtetési környezet**. A modell futtatásához szükséges, telepített csomag függőségeivel ellátott alaprendszerkép.
 
-* Az üzembe helyezett modellt futtató számítási cél **telepítési konfigurációja** . Ez a konfiguráció a modell futtatásához szükséges memória-és CPU-követelményeket ismerteti.
+* Az üzembe helyezett modellt üzemeltető számítási cél **üzembe helyezési konfigurációja** . Ez a konfiguráció a modell futtatásához szükséges memória-és CPU-követelményeket ismerteti.
 
 Ezek az elemek egy *következtetési konfigurációba* és egy *központi telepítési konfigurációba*vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik. Ezeket a konfigurációkat programozott módon definiálhatja, ha az SDK használatával végzi el az üzembe helyezést. A parancssori felület használatakor a JSON-fájlokban definiálhatja őket.
 
@@ -215,7 +215,7 @@ AZUREML_MODEL_DIR a szolgáltatás telepítése során létrehozott környezeti 
 
 A következő táblázat a telepített modellek számától függően AZUREML_MODEL_DIR értékét ismerteti:
 
-| Üzembe helyezés | Környezeti változó értéke |
+| Környezet | Környezeti változó értéke |
 | ----- | ----- |
 | Egyetlen modell | A modellt tartalmazó mappa elérési útja. |
 | Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók (`$MODEL_NAME/$VERSION`) |
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. adja meg a InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2. a következtetési környezet meghatározása
 
 A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Ez a konfiguráció nem része a belépési parancsfájlnak. Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Ezt később, a modell telepítésekor használják.
 
@@ -538,7 +538,7 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 
 | Számítási cél | Üzembe helyezési konfiguráció – példa |
 | ----- | ----- |
-| Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Helyi: | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -547,41 +547,6 @@ A helyi, Azure Container Instances és az AK-alapú webszolgáltatások osztály
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profilkészítés
-
-A modell szolgáltatásként való üzembe helyezése előtt érdemes lehet profilt használni az optimális CPU-és memória-követelmények meghatározásához. Használhatja az SDK-t vagy a CLI-t is a modell profiljának megkezdéséhez. Az alábbi példák azt mutatják be, hogyan lehet profilt felvenni az SDK használatával.
-
-> [!IMPORTANT]
-> Profilkészítés használatakor a megadott következtetési konfiguráció nem hivatkozhat Azure Machine Learning környezetre. Ehelyett adja meg a szoftver függőségeit a `InferenceConfig` objektum `conda_file` paraméterének használatával.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Ez a kód a következő kimenethez hasonló eredményt jelenít meg:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-A modell profilkészítési eredményei `Run` objektumként vannak kibocsátva.
-
-További információ a parancssori felületről történő profilkészítésről: [az ml Model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
-
-További információ a következő dokumentumokban található:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [A konfigurációs fájl sémájának következtetése](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
 
@@ -870,7 +835,7 @@ SDK
 model_path = Model(ws,'mymodel').download()
 ```
 
-CLI
+CLI:
 ```azurecli-interactive
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
@@ -977,9 +942,9 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-A csomag létrehozása után a `package.pull()` segítségével lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Példa: 
+A csomag létrehozása után a `package.pull()` segítségével lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338` kérdésre adott válaszban foglalt lépéseket. 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
 A modell letöltése után a `docker images` parancs használatával listázhatja a helyi rendszerképeket:
 

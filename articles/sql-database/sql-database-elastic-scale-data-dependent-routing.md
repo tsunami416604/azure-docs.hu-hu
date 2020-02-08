@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fbdf8e316368be02ebd0c4bfd320917c20d80777
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823682"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069455"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Lekérdezés továbbítása a megfelelő adatbázishoz az Adatfüggő útválasztás használatával
 
@@ -147,8 +147,8 @@ try {
 int customerId = 12345;
 int newPersonId = 4321;
 
-Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
-{
+Configuration.SqlRetryPolicy.ExecuteAction(() -> {
+
     // Connect to the shard for a customer ID.
     using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Configuration.GetCredentialsConnectionString(), ConnectionOptions.Validate))
     {
@@ -174,7 +174,7 @@ Az átmeneti hibakezelés megvalósításához szükséges csomagokat a rendszer
 
 A tranzakciós tulajdonságok minden, a szegmensen belüli művelet esetében garantáltak. Az Adatfüggő útválasztáson keresztül küldött tranzakciók például a kapcsolatok cél szegmensének hatókörén belül lesznek végrehajtva. Jelenleg nincs lehetőség arra, hogy több kapcsolat kerüljön be egy tranzakcióba, ezért a szegmenseken végrehajtott műveletekhez nem biztosítunk tranzakciós garanciát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szegmensek leválasztásához vagy a szegmensek újbóli csatolásához lásd: [a recoverymanager osztállyal osztály használata a szegmenses Térkép problémák megoldásához](sql-database-elastic-database-recovery-manager.md)
 

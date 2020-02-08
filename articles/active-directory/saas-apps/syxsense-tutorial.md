@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43787bfffcb04e816f58cdcc0d9e61a61f1f16fd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050248"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Syxsense
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Syxsense a Azure
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Syxsense az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Syxsense alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ------------ | --------- |
     | E-mail | User. e-mail |
 
@@ -118,7 +118,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -144,11 +144,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **Beállítások ikonra**.
 
-    ![Syssense-konfiguráció](./media/syxsense-tutorial/configure1.png)
+    ![Syxsense-konfiguráció](./media/syxsense-tutorial/configure1.png)
 
 1. Kattintson a **külső hitelesítésre** , és adja meg az **alkalmazás-összevonási metaadatok URL-címét** a **SAML 2.0 metaadatok** szövegmezőben, majd kattintson a **Mentés**gombra.
 
-    ![Syssense-konfiguráció](./media/syxsense-tutorial/configure2.png)
+    ![Syxsense-konfiguráció](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense-tesztelési felhasználó létrehozása
 
@@ -156,18 +156,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen kattintson a **felhasználói fiókok** elemre.
 
-    ![Syssense-konfiguráció](./media/syxsense-tutorial/user1.png)
+    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user1.png)
 
 1. Kattintson az **Hozzáadás** parancsra.
 
-    ![Syssense-konfiguráció](./media/syxsense-tutorial/user2.png)
+    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user2.png)
 
 1. Adja meg a felhasználó adatait a szervezet követelményeinek megfelelően, majd kattintson a **Mentés**gombra.
 
-    ![Syssense-konfiguráció](./media/syxsense-tutorial/user3.png)
+    ![Syxsense-konfiguráció](./media/syxsense-tutorial/user3.png)
 
-
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -177,7 +176,7 @@ Ha a hozzáférési panelen a Syxsense csempére kattint, automatikusan be kell 
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

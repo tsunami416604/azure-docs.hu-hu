@@ -3,18 +3,21 @@ title: Azure Files visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776338"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086828"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy teljes fájlmegosztást vagy adott fájlokat a [Azure Backup](backup-overview.md) szolgáltatás által az Azure PowerShell használatával létrehozott visszaállítási pontról.
 
 Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson. Az eredeti helyre vagy egy másik helyre is visszaállíthatja.
+
+> [!WARNING]
+> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) .
 
 ## <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
 

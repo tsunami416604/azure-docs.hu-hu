@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024704"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083132"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Az AVS Private Cloud beállítása vész-helyreállítási webhelyként a helyszíni VMware-alapú számítási feladatokhoz
 
@@ -51,7 +51,7 @@ A következő szakaszok azt ismertetik, hogyan helyezhet üzembe egy DR-megoldá
 A következő előfeltételek végrehajtásával engedélyezheti a Zerto virtuális replikálását a helyszíni környezetből az AVS Private-felhőbe.
 
 1. [Hozzon létre egy helyek közötti VPN-kapcsolatot a helyszíni hálózat és az AVS Private Cloud között](set-up-vpn.md).
-2. [Állítsa be a DNS-lekérdezést úgy, hogy az AVS Private Cloud Management-összetevők továbbítva legyenek az AVS Private Cloud DNS-kiszolgálókra](on-premises-dns-setup.md). A DNS-címkeresés továbbításának engedélyezéséhez hozzon létre egy továbbítási zóna bejegyzést a helyi DNS-kiszolgálón `*.AVS.io` az AVS DNS-kiszolgálókra.
+2. [Állítsa be a DNS-lekérdezést úgy, hogy az AVS Private Cloud Management-összetevők továbbítva legyenek az AVS Private Cloud DNS-kiszolgálókra](on-premises-dns-setup.md). A DNS-címkeresés továbbításának engedélyezéséhez hozzon létre egy továbbítási zóna bejegyzést a helyi DNS-kiszolgálón `*.cloudsimple.io` az AVS DNS-kiszolgálókra.
 3. DNS-címkeresés beállítása, hogy a helyszíni vCenter-összetevők továbbítva legyenek a helyszíni DNS-kiszolgálókra. A DNS-kiszolgálóknak elérhetőknek kell lenniük az AVS saját felhőben a helyek közötti VPN-kapcsolaton keresztül. Ha segítségre van, nyújtson be egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), amely a következő információkat biztosítja. 
 
     * Helyszíni DNS-tartománynév
@@ -93,6 +93,6 @@ A következő előfeltételek végrehajtásával engedélyezheti a Zerto virtuá
 6. Szükség esetén szabja testre az egyes virtuális gépek hálózati beállításait, és hozza létre a VPG.
 7. Feladatátvételi teszt a replikálás befejeződése után.
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Referencia
 
 [A Zerto dokumentációja](https://www.zerto.com/myzerto/technical-documentation/)

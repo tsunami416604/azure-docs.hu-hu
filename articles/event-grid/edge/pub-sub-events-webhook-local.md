@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844544"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086636"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
 
@@ -45,9 +45,9 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
 1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
 1. Válassza a **Modulok beállítása** lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
 
-### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
+### <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
@@ -64,8 +64,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
         }
     ```    
  1. Kattintson a **Mentés** gombra.
- 1. Folytassa a következő szakasszal, és adja hozzá a Azure Functions modult, mielőtt együtt telepítené őket.
+ 1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
-    > Ebben az oktatóanyagban a Event Grid modult az ügyfél-hitelesítés letiltásával és a HTTP-előfizetők engedélyezésével fogja telepíteni. Az éles számítási feladatokhoz javasoljuk, hogy engedélyezze az ügyfél-hitelesítést, és engedélyezze a csak HTTPs-előfizetőket. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](security-authentication.md).
+    > Ebben az oktatóanyagban a Event Grid-modult az ügyfél-hitelesítés letiltásával fogja telepíteni. Az éles számítási feladatokhoz javasoljuk, hogy engedélyezze az ügyfél-hitelesítést. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](security-authentication.md).
     > 
     > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, hogy engedélyezze a bejövő forgalmat a 4438-es porton. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Az Azure Function IoT Edge modul üzembe helyezése
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid előfizető IoT Edge modul üzembe helyezése
 
-Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe a Azure Functions IoT modult, amely Event Grid előfizetőként fog működni, amely az események kézbesítésére szolgál.
-
->[!IMPORTANT]
->Ebben a szakaszban egy minta Azure-függvény alapú előfizető-modult fog üzembe helyezni. Természetesen bármely olyan egyéni IoT modul lehet, amely képes figyelni a HTTP POST-kérelmeket.
-
+Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult, amely az események kézbesítéséhez használható eseménykezelőként fog működni.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
@@ -102,23 +97,8 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe a Azure Functions Io
 1. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
 
    * **Név**: előfizető
-   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Tároló-létrehozási beállítások**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Tároló-létrehozási beállítások**: nincs
 1. Kattintson a **Mentés** gombra.
 1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
@@ -191,7 +171,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
     ```
 
     >[!NOTE]
-    > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure Function-mintának.
+    > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure-előfizetői mintának.
 2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK`.
 
     ```sh
@@ -223,7 +203,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
     Példa a kimenetre:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása

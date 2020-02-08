@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerkedjen meg az Azure AD B2C és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834195"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084000"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -78,7 +78,7 @@ a következőre:
 
 - `policy` a korábbi karakterláncok egyike (például `PolicySignUpSignIn`).
 - `ParentActivityOrWindow` szükséges az Androidhoz (a tevékenységhez), és nem kötelező a szülő felhasználói felületet támogató egyéb platformokhoz, például a Windows rendszerhez és az iOS-UIViewController. További információt [itt talál a felhasználói felület párbeszédpanelen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` egy olyan metódus, amely megkeresi az adott szabályzathoz tartozó fiókot. Példa:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` egy olyan metódus, amely megkeresi az adott szabályzathoz tartozó fiókot. Például:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -124,7 +124,7 @@ A ROPC folyamattal kapcsolatos további részletekért tekintse meg ezt a [dokum
 Ez a folyamat **nem ajánlott** , mert az alkalmazás a jelszót kérő felhasználó nem biztonságos. A problémával kapcsolatos további információkért tekintse meg [ezt a cikket](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
 A Felhasználónév/jelszó használatával több dolgot is megadhat:
-- a modern identitás alapvető alapelvei: a jelszó bekerül, majd újra lejátszva. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja. Ez nem kompatibilis a jelszóval.
+- A modern identitás alapvető alapelvei: a jelszó bekerül, majd újra lejátszva. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja. Ez nem kompatibilis a jelszóval.
 - Az MFA-t igénylő felhasználóknak nem lehet bejelentkezniük (mivel nincs interakció).
 - A felhasználók nem tudnak egyszeri bejelentkezést végezni.
 
@@ -167,7 +167,7 @@ Ezek a jogcímek számos Azure AD B2C esetben hiányoznak.
 
 Az ügyfél hatással van arra, hogy amikor a Felhasználónév mezőt szeretné megjeleníteni, "hiányzik a jogkivonat-válaszból" értékként? Ha igen, ennek az az oka, hogy Azure AD B2C nem ad vissza értéket a preferred_username IdToken a közösségi fiókok és külső identitás-szolgáltatók (IDP-EK) korlátai miatt. Az Azure AD egy értéket ad vissza a preferred_usernamehoz, mert tudja, hogy kik a felhasználók, de a Azure AD B2C esetében, mert a felhasználó helyi fiókkal, Facebook-, Google-, GitHub-és egyéb szolgáltatásokkal is bejelentkezhet preferred_username Azure AD B2C. A ADAL-mel való MSAL-kompatibilitás blokkolásának feloldásához úgy döntöttünk, hogy a "hiányzó a jogkivonat-válaszból" kifejezést használjuk az Azure AD B2C-fiókok kezelésekor, amikor a IdToken semmit nem ad vissza a preferred_username. A MSAL-nek egy értéket kell visszaadnia preferred_username számára a gyorsítótár-kompatibilitás fenntartásához a kódtárak között.
 
-### <a name="workarounds"></a>Megoldásai
+### <a name="workarounds"></a>Megkerülő megoldások
 
 #### <a name="mitigation-for-the-missing-tenant-id"></a>A hiányzó bérlői azonosító enyhítése
 
@@ -182,6 +182,6 @@ Az egyik lehetőség a "név" jogcím használata előnyben részesített felhas
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 
-| Minta | Platform | Leírás|
+| Sample | Platform | Leírás|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használható a MSAL.NET a felhasználók hitelesítéséhez Azure AD B2C segítségével, és hogyan férhet hozzá egy webes API-hoz az eredményül kapott jogkivonatokkal.|

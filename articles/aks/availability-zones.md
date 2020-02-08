@@ -1,20 +1,21 @@
 ---
-title: Availability Zones használata az Azure Kubernetes szolgáltatásban (ak)
+title: Rendelkezésre állási zónák használata az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre olyan fürtöt, amely a csomópontokat a rendelkezésre állási zónák között osztja el az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605084"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086522"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
 Az Azure Kubernetes Service (ak)-fürt erőforrásokat, például a csomópontokat és a tárolókat a mögöttes Azure számítási infrastruktúra logikai fejezetei között osztja el. Ez a telepítési modell gondoskodik arról, hogy a csomópontok külön frissítési és tartalék tartományokon futnak egyetlen Azure-adatközpontban. Az ezzel az alapértelmezett viselkedéssel üzembe helyezett AK-fürtök magas szintű rendelkezésre állást biztosítanak a hardverhiba vagy tervezett karbantartási események elleni védelemhez.
 
@@ -58,11 +59,11 @@ Az Azure Managed Disks-t használó kötetek jelenleg nem a zónákhoz tartozó 
 
 Ha állapot-nyilvántartó munkaterhelést kell futtatnia, a saját Pod specifikációjában a szennyező adatok és a tolerálás használatával mondja el, hogy a Kubernetes Scheduler a lemezekkel megegyező zónában hozza létre a hüvelyeket. Azt is megteheti, hogy olyan hálózati tárterületet használ, mint például a Azure Files, amelyek a zónák közötti ütemezés szerint csatolhatók a hüvelyekhez.
 
-## <a name="overview-of-availability-zones-for-aks-clusters"></a>Az AK-fürtök Availability Zones áttekintése
+## <a name="overview-of-availability-zones-for-aks-clusters"></a>Az AK-fürtök rendelkezésre állási zónáinak áttekintése
 
-A Availability Zones egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A zónák egy Azure-régióban található egyedi fizikai helyszínek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében.
+A rendelkezésre állási zónák egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A zónák egy Azure-régióban található egyedi fizikai helyszínek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A rendelkezésreállási zónák régión belüli fizikai elkülönítése védelmet biztosít az alkalmazások és az adatok számára az adatközpont meghibásodása esetén. A zóna-redundáns szolgáltatások a rendelkezésre állási zónák között replikálják az alkalmazásokat és az adataikat, így biztosítva az egypontos meghibásodás elleni védekezést.
 
-További információ: [Mi a Availability Zones az Azure-ban?][az-overview].
+További információ: [Mik a rendelkezésre állási zónák az Azure-ban?][az-overview].
 
 A rendelkezésre állási zónák használatával üzembe helyezett AK-fürtök több, egyetlen régióban található zónában terjeszthetik a csomópontokat. Egy, az *USA 2. keleti* régiója régióban található fürt például létrehozhat csomópontokat mindhárom rendelkezésre állási zónában az *USA 2. keleti*régiójában. Az AK-beli fürt erőforrásainak ezen eloszlása javítja a fürt rendelkezésre állását, mivel azok egy adott zóna meghibásodása esetén rugalmasak.
 
@@ -122,6 +123,53 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Ha további csomópontokat ad hozzá egy ügynök-készlethez, az Azure platform automatikusan elosztja a mögöttes virtuális gépeket a megadott rendelkezésre állási zónák között.
 
+Vegye figyelembe, hogy az újabb Kubernetes-verziókban (1.17.0 és újabb verziók) az AK-t használja az újabb címke `topology.kubernetes.io/zone` az elavult `failure-domain.beta.kubernetes.io/zone`mellett.
+
+## <a name="verify-pod-distribution-across-zones"></a>A pod-eloszlás ellenőrzése a zónák között
+
+Amint azt a [jól ismert címkék, jegyzetek és Adatszennyező objektumok][kubectl-well_known_labels]dokumentálják, a Kubernetes a `failure-domain.beta.kubernetes.io/zone` címkével automatikusan terjeszti a hüvelyeket egy replikációs vezérlőben vagy szolgáltatásban a rendelkezésre álló különböző zónák között. Ennek teszteléséhez 3 – 5 csomópontra méretezheti a fürtöt a helyes Pod-terjesztés ellenőrzéséhez:
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+Ha a skálázási művelet néhány perc elteltével befejeződik, a parancs `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` a következőhöz hasonló kimenetet kell adni:
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+Amint láthatja, már két további csomópont található az 1. és 2. zónában. Három replikából álló alkalmazást is telepíthet. Az NGINX-et példaként fogjuk használni:
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+Ha ellenőrzi, hogy a használt csomópontok hol futnak a hüvelyek, látni fogja, hogy a hüvelyek a három különböző rendelkezésre állási zónának megfelelő hüvelyeken futnak. A parancs `kubectl describe pod | grep -e "^Name:" -e "^Node:"` például a következőhöz hasonló kimenetet kaphat:
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+Ahogy az előző kimenetben látható, az első Pod a 0. csomóponton fut, amely a rendelkezésre állási zónában `eastus2-1`található. A második Pod a 2. csomóponton fut, amely a `eastus2-3`nak felel meg, a harmadik pedig a 4-es csomópontban, `eastus2-2`. További konfiguráció nélkül a Kubernetes a három rendelkezésre állási zónában helyesen terjeszti a hüvelyeket.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
@@ -144,3 +192,4 @@ Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási z
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

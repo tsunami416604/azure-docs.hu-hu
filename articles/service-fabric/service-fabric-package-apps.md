@@ -3,12 +3,12 @@ title: Azure Service Fabric-alkalmazás becsomagolása
 description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását és a fürtre történő telepítés előkészítését ismertető témakört.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639683"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083610"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -43,7 +43,7 @@ A mappák neve megegyezik a megfelelő elemek **nevének** attribútumaival. Ha 
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint használata
 
-A **SetupEntryPoint** használatára jellemző forgatókönyvek, ha a szolgáltatás elindítása előtt futtatni kell egy végrehajtható fájlt, vagy emelt szintű jogosultságokkal kell végrehajtania egy műveletet. Példa:
+A **SetupEntryPoint** használatára jellemző forgatókönyvek, ha a szolgáltatás elindítása előtt futtatni kell egy végrehajtható fájlt, vagy emelt szintű jogosultságokkal kell végrehajtania egy műveletet. Például:
 
 * A szolgáltatás végrehajtható fájlja által igényelt környezeti változók beállítása és inicializálása. Nem korlátozódik kizárólag a Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. Például a NPM. exe fájlhoz a Node. js-alkalmazások üzembe helyezéséhez konfigurált környezeti változók szükségesek.
 * Hozzáférés-vezérlés beállítása biztonsági tanúsítványok telepítésével.
@@ -56,9 +56,9 @@ A **SetupEntryPoint**konfigurálásával kapcsolatos további információkért 
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Csomag létrehozása a Visual Studio használatával
 
-Ha a Visual Studio 2015 használatával hozza létre az alkalmazást, a Package paranccsal automatikusan létrehozhat egy csomagot, amely megfelel a fent ismertetett elrendezésnek.
+Ha a Visual Studióval hozza létre az alkalmazást, a *Package* paranccsal automatikusan létrehozhat egy csomagot, amely megfelel a fent ismertetett elrendezésnek.
 
-Csomag létrehozásához kattintson a jobb gombbal az alkalmazás projektre Megoldáskezelő, majd válassza a csomag parancsot az alábbiak szerint:
+Csomag létrehozásához kattintson a jobb gombbal az alkalmazás projektre *megoldáskezelő* , és válassza a **csomag** parancsot:
 
 ![Alkalmazás becsomagolása a Visual Studióval][vs-package-command]
 

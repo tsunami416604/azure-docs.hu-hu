@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983222"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085386"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
 ## <a name="what-is-authentication"></a>Mi az a hitelesítés?
 
-Ez a cikk számos olyan hitelesítési koncepciót ismertet, amelyeknek meg kell ismernie a védett webes API-kat hívó webalkalmazások, webes API-k vagy alkalmazások létrehozásához szükséges tudnivalókat. Ha olyan kifejezést lát, amely nem ismeri a t, próbálja ki a következőt: (Szószedet) [Developer-glossary.md].
+Ez a cikk számos olyan hitelesítési koncepciót ismertet, amelyeknek meg kell ismernie a védett webes API-kat hívó webalkalmazások, webes API-k vagy alkalmazások létrehozásához szükséges tudnivalókat. Ha úgy látja, hogy nem ismeri a kifejezést, próbálja ki a [szószedetet](developer-glossary.md).
 
 A **hitelesítés** az a folyamat, amelynek a bebizonyítása Ön szerint van. A hitelesítést (angolul authentication) szokás az AuthN rövidítéssel is jelölni.
 
@@ -38,7 +38,7 @@ A központosított identitás-szolgáltató még ennél is fontosabb olyan alkal
 
 A Microsoft Identity platform leegyszerűsíti az alkalmazások fejlesztőinek hitelesítését azáltal, hogy szolgáltatásként szolgáltatja a hitelesítést, és támogatja az iparági szabványnak megfelelő protokollokat, például a [OAuth 2,0](https://oauth.net/2/) és az [OpenID Connect](https://openid.net/connect/)szolgáltatást, valamint a különböző platformokhoz készült nyílt forráskódú kódtárakat, amelyek segítségével gyorsan elindíthatja a kódolást. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, a [Microsoft Graph](https://developer.microsoft.com/graph/), más Microsoft API-k vagy a fejlesztők által készített API-k meghívására. További információ: [a Microsoft Identity platform fejlődése](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>bérlők
+### <a name="tenants"></a>Bérlők
 
 A Felhőbeli identitás-szolgáltató számos szervezetet szolgál ki. Ha az Azure AD-t a különböző szervezetek felhasználói számára külön szeretné megőrizni, a bérlők egy-egy Bérlővel vannak particionálva.
 
@@ -83,10 +83,10 @@ Az alkalmazások maguk is bejelentkezhetnek a felhasználókba, vagy delegálhat
 
 Ahhoz, hogy egy identitás-szolgáltató tudja, hogy egy felhasználó hozzáfér egy adott alkalmazáshoz, a felhasználónak és az alkalmazásnak is regisztrálva kell lennie az identitás-szolgáltatónál. Ha az Azure AD-vel regisztrálja az alkalmazást, olyan identitás-konfigurációt biztosít az alkalmazáshoz, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel. Az alkalmazás regisztrálása a következőket is lehetővé teszi:
 
-* szabja testre az alkalmazás arculatát a bejelentkezési párbeszédablakban. Ez azért fontos, mert ez az első olyan felhasználói élmény, amelyet a felhasználó az alkalmazással fog rendelkezni.
+* Szabja testre az alkalmazás arculatát a bejelentkezési párbeszédablakban. Ez azért fontos, mert ez az első olyan felhasználói élmény, amelyet a felhasználó az alkalmazással fog rendelkezni.
 * Döntse el, hogy csak akkor szeretné-e bejelentkezni a felhasználók számára, ha azok a szervezethez tartoznak. Ez egyetlen bérlői alkalmazás. Vagy bármely munkahelyi vagy iskolai fiókkal való bejelentkezés engedélyezése a felhasználók számára. Ez egy több-bérlős alkalmazás. A személyes Microsoft-fiókokat, illetve a LinkedIn, a Google és egyéb közösségi fiókokat is lehetővé teheti.
-* hatókör-engedélyek kérése. Kérheti például a "user. Read" hatókört, amely engedélyt ad a bejelentkezett felhasználó profiljának olvasásához.
-* adja meg a webes API-hoz való hozzáférést meghatározó hatóköröket. Általában, amikor egy alkalmazás szeretne hozzáférni az API-hoz, engedélyt kell kérnie az Ön által meghatározott hatókörökre.
+* Hatókör-engedélyek kérése. Kérheti például a "user. Read" hatókört, amely engedélyt ad a bejelentkezett felhasználó profiljának olvasásához.
+* Adja meg a webes API-hoz való hozzáférést meghatározó hatóköröket. Általában, amikor egy alkalmazás szeretne hozzáférni az API-hoz, engedélyt kell kérnie az Ön által meghatározott hatókörökre.
 * Ossza meg az Azure ad-val egy titkos kulcsot, amely igazolja az alkalmazás identitását az Azure AD-nek.  Ez abban az esetben fontos, ha az alkalmazás bizalmas ügyfélalkalmazás. A bizalmas ügyfélalkalmazások olyan alkalmazások, amelyek biztonságosan tárolhatják a hitelesítő adatokat. A hitelesítő adatok tárolásához megbízható háttér-kiszolgálót igényelnek.
 
 A regisztrálást követően az alkalmazás egyedi azonosítót kap, amelyet az alkalmazás az Azure AD-val oszt meg, amikor jogkivonatokat kér. Ha az alkalmazás egy [bizalmas ügyfélalkalmazás](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application), akkor a titkos kulcsot vagy a nyilvános kulcsot is megosztja, attól függően, hogy a rendszer a tanúsítványokat és a titkokat használta-e.

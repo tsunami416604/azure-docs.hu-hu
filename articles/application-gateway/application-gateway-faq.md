@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986002"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086534"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -20,7 +20,7 @@ ms.locfileid: "76986002"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -134,7 +134,7 @@ Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a hát
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Válthatok a példány mérete közepesről nagyra megszakítás nélkül?
 
-Igen. Az Azure frissíti a példányokat a frissítési és a tartalék tartományok között, így biztosítva, hogy a példányok egyszerre ne legyenek sikertelenek. Application Gateway támogatja a skálázást azáltal, hogy a terhelés megosztásához hozzáad egy átjáró több példányát.
+Igen.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -322,7 +322,7 @@ További információ: [OWASP Top-10 biztonsági rések](https://www.owasp.org/i
 
 ### <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
 
-Igen. DDoS elleni védelmet engedélyezhet azon a virtuális hálózaton, ahol az alkalmazásátjáró telepítve van. Ez a beállítás biztosítja, hogy az Azure DDoS Protection szolgáltatás az alkalmazásátjáró virtuális IP-címét (VIP) is védje.
+Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van elérhető útmutató a v1 SKU-ról a v2 SKU-ra való Migrálás céljából?
 

@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171224"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086983"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
 
 A WAF szabályzatok a figyelőkkel való társítása lehetővé teszi, hogy a különböző szabályzatok által védett, egyetlen WAF mögötti helyek is védve legyenek. Ha például öt hely van a WAF mögött, öt különálló WAF-szabályzat közül választhat (egyet az egyes figyelőknél) a kizárások, az egyéni szabályok és a felügyelt szabályrendszerek egy adott helyhez való testreszabásához anélkül, hogy a másik négyet kellene végrehajtania. Ha egyetlen szabályzatot szeretne alkalmazni az összes webhelyre, egyszerűen társíthatja a szabályzatot a Application Gatewayhoz, nem pedig az egyes figyelőkhöz, hogy az alkalmazás globálisan legyen alkalmazva. A házirendek egy elérésiút-alapú útválasztási szabályra is alkalmazhatók. 
-
-   > [!NOTE]
-   > A site WAF-szabályzatok az USA déli középső régiójában és Észak-Európában is elérhetők. Ha a portálon szeretné elérni őket, használja [ezt a hivatkozást](https://aka.ms/AppgwwafWithAllFeatureFlags) , amíg mindenki számára elérhetővé nem válik.  
 
 Tetszőleges számú szabályzatot készíthet. Miután létrehozta a szabályzatot, ahhoz társítania kell egy Application Gateway, hogy az érvénybe lépjen, de az Application Gateway és a figyelők tetszőleges kombinációjával társítható. 
 
@@ -42,7 +39,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
    |Házirend a következőhöz:     |Regionális WAF (Application Gateway)|
    |Előfizetést     |Adja meg az előfizetés nevét|
    |Erőforráscsoport     |Válassza ki az erőforráscsoportot|
-   |Szabályzat neve     |Adjon egyedi nevet a WAF-házirendnek.|
+   |Házirend neve     |Adjon egyedi nevet a WAF-házirendnek.|
 3. A **társítás** lapon adja meg a következő beállítások egyikét, majd válassza a **Hozzáadás**lehetőséget:
 
    |Beállítás  |Érték  |

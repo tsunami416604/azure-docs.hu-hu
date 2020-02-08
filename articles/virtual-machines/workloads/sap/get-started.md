@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989824"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087368"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -119,8 +119,9 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
-## <a name="change-log"></a>Módosítási napló
+## <a name="change-log"></a>Változásnapló
 
+- 02/07/2020: változás a [nyilvános végponti kapcsolaton a virtuális gépekhez az Azure standard ILB használatával SAP ha-forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) a minta NSG-képernyőkép frissítése
 - 02/03/2020: a magas rendelkezésre állás megváltozása az SAP NW-ben Azure-beli [virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) az SAP-alkalmazások SLES és [magas rendelkezésre ÁLLÁSa SAP NW-hez az Azure-beli virtuális gépeken a SLES-ben a ANF for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) használatával a SLES-beli fürtcsomópontok állomásneve
 - 01/28/2020: a [RHEL Azure-beli virtuális gépeken a SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) megváltozása a SAP HANA-fürt erőforrásainak a Red Hat időtúllépési javaslataihoz való igazításához
 - 01/17/2020: Váltás az [Azure Proximity-elhelyezési csoportjaiban az optimális hálózati késés érdekében SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) a meglévő virtuális gépek áthelyezésének szakasza

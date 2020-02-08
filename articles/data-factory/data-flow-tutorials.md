@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/14/2020
-ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.date: 02/06/2020
+ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048256"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069585"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
@@ -132,3 +132,7 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 [Logikai modellek és fizikai modellek](http://youtu.be/K5tgzLjEE9Q)
 
 [Forrásadatok változásainak észlelése](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+## <a name="data-flow-expressions"></a>Adatfolyam-kifejezések
+
+[Dátum-és időkifejezések](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)

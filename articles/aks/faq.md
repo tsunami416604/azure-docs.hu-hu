@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 58b372e1f80386c4e02339f67f4c5aeaa686a662
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549223"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086501"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatással kapcsolatos gyakori kérdések
 
@@ -97,8 +97,6 @@ Az AK a következő [belépésvezérlés-vezérlőket][admission-controllers]tá
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
-- *DenyEscalatingExec*
-- *AlwaysPullImages*
 
 Jelenleg nem módosítható a belépésvezérlés az AK-ban.
 
@@ -122,9 +120,9 @@ Fontos felismerni az AK szolgáltatás rendelkezésre állása közötti külön
 
 Az AK-ban megadhatja a `maxPods` értéket, ha a fürtöt az Azure CLI-vel és a Azure Resource Manager-sablonokkal hozza létre. A Kubenet és az Azure CNI azonban *minimális értéket* igényel (a létrehozáskor érvényesítve):
 
-| Hálózatkezelés | Minimális | Maximum |
+| Hálózat | Minimális | Maximum |
 | -- | :--: | :--: |
-| Azure-CNI | 30 | 250 |
+| Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
 Mivel az AK felügyelt szolgáltatás, a bővítmények és a hüvelyek üzembe helyezése és kezelése a fürt részeként történik. A múltban a felhasználók meghatározhatnak egy `maxPods` értéket, amely alacsonyabb a felügyelt hüvely futtatásához szükséges értéknél (például 30). Az AK most kiszámítja a hüvelyek minimális számát a következő képlet használatával: ((maxPods vagy (maxPods * vm_count)) > felügyelt kiegészítő hüvelyek minimális száma.

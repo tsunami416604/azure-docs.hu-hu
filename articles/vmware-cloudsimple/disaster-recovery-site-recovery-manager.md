@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024721"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083151"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Az AVS Private Cloud beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
 
@@ -101,7 +101,7 @@ Ha az alábbi műveletek egyikét szeretné elvégezni, vegyen fel egy külső I
 
 Az IP-címek keresésének, az IP-címek kezelésének és a névfeloldási szolgáltatásoknak az AVS Private Cloud-ban való megadásához állítson be egy DHCP-és DNS-kiszolgálót a [DNS-és DHCP-alkalmazások és-munkaterhelések beállítása az AVS Private Cloud](dns-dhcp-setup.md)-ban című részben leírtak szerint.
 
-A *. avs.io tartományt a felügyeleti virtuális gépek és a gazdagépek használják az AVS Private Cloud-ban. A tartományra irányuló kérelmek feloldásához konfigurálja a DNS-továbbítást a DNS-kiszolgálón a [feltételes továbbító létrehozása](on-premises-dns-setup.md#create-a-conditional-forwarder)című témakörben leírtak szerint.
+A *. cloudsimple.io tartományt a felügyeleti virtuális gépek és a gazdagépek használják az AVS Private Cloud-ban. A tartományra irányuló kérelmek feloldásához konfigurálja a DNS-továbbítást a DNS-kiszolgálón a [feltételes továbbító létrehozása](on-premises-dns-setup.md#create-a-conditional-forwarder)című témakörben leírtak szerint.
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>A vSphere replikációs berendezés telepítése a helyszíni környezetben
 
@@ -133,7 +133,7 @@ A vRA és az SRM telepítése előtt ki kell bővíteni a cloudowner-felhasznál
 A telepítés a következő magas szintű lépésekből áll:
 
 1. [Kiterjesztési jogosultságok](escalate-private-cloud-privileges.md).
-2. Hozzon létre egy felhasználót az AVS Private-felhőben a vSphere replikálás és az SRM telepítéséhez. Az alábbiakban ismertetett [vCenter felhasználói felület: hozzon létre egy felhasználót az AVS Private Cloud-ban a vRA & SRM telepítéséhez](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
+2. Hozzon létre egy felhasználót az AVS Private-felhőben a vSphere replikálás és az SRM telepítéséhez. Az alábbiakban ismertetett [vCenter felhasználói felület: hozzon létre egy felhasználót az AVS Private Cloud-ban a vRA &AMP; SRM telepítéséhez](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
 3. Készítse elő az AVS saját felhőalapú környezetét a vRA telepítéséhez.
 4. Telepítse a vRA-t az AVS Private Cloud-ban a VR ISO-OVF a vmware.com-ből. A vRA 6,5 esetében [Ez a VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) releváns információkat tartalmaz.
 5. A vRA vonatkozó tűzfalszabályok konfigurálása. Az alábbi lépések az [AVS Portalon: a vRA vonatkozó tűzfalszabályok konfigurálása](#avs-portal-configure-firewall-rules-for-vra).
@@ -219,7 +219,7 @@ Teljes körűen szabályozhatja az vSphere-replikációs és az SRM szoftvereket
 
  A [Array-alapú replikáció és a vSphere replikációs technológiák egyszerre is használhatók az SRM](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) szolgáltatással együtt. Ezeket azonban a virtuális gépek elkülönített készletére kell alkalmazni (az adott virtuális gép a tömb alapú replikálás vagy a vSphere replikálás, de nem mindkettő) számára is védhető. Emellett az AVS-hely több védett helyhez is konfigurálható helyreállítási helyként. További információ a többhelyes konfigurációkról: [SRM többhelyes beállításai](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 * [A VMware Site Recovery Manager dokumentációja](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [A Site Recovery Manager 6,5 működési korlátai](https://kb.vmware.com/s/article/2147110)

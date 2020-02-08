@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: daa98d703a115e663032639d78f51b26ed1c7ba3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441871"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083021"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás a Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Globálisan elosztott adatbázisként Cosmos DB átfogó SLA-kat biztosít, amel
 
 |Művelet típusa  | Egyetlen régió |Több régió (egyrégiós írások)|Többrégiós (több régiós írások) |
 |---------|---------|---------|-------|
-|Írások    | 99,99    |99,99   |99,999|
-|Olvasások     | 99,99    |99,999  |99,999|
+|Írja    | 99,99    |99,99   |99,999|
+|Olvasás     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > A gyakorlatban a kötött elavulás, munkamenet, konzisztens előtag és végleges konzisztencia-modell tényleges írási rendelkezésre állása jelentősen meghaladja a közzétett SLA-kat. Az összes konzisztencia tényleges olvasási rendelkezésre állása jelentősen meghaladja a közzétett SLA-kat.
@@ -59,9 +59,9 @@ A regionális kimaradások nem ritkák, az Azure Cosmos DB azonban gondoskodik a
 - **Többrégiós fiókok egyetlen írási régióval (olvasási régió kimaradása):**
   - Az olvasási régió meghibásodása esetén ezek a fiókok az olvasáshoz és íráshoz is elérhetők maradnak.
   - Az érintett régiót a rendszer automatikusan leválasztja, és offline állapotba állítja. A [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -k átirányítják az olvasási hívásokat a következő elérhető régióba az előnyben részesített régiók listájában.
-  - Ha a régiók rangsorolt listáján egyetlen régió sem érhető el, a beérkező kérések automatikusan az aktuális írási régióra váltanak vissza.
+  - Ha az előnyben részesített régiók listájának egyik régiója sem érhető el, a hívások automatikusan visszakerülnek az aktuális írási régióba.
   - Az olvasási régió meghibásodásának kezeléséhez nincs szükség módosításra az alkalmazás kódjában. Végül, ha az érintett régió újra online állapotba kerül, a korábban érintett olvasási régió automatikusan szinkronizál az aktuális írási régióval, és ismét elérhető lesz az olvasási kérések kiszolgálásához.
-  - A további olvasásokat a szolgáltatás a helyreállt régiókhoz irányítja át anélkül, hogy módosítania kellene az alkalmazáskódot. Egy korábban sikertelen régió feladatátvétele és újracsatlakozása során a konzisztencia-garanciák továbbra is tiszteletben maradnak Cosmos DB.
+  - A következő olvasások a visszaállított régióba lesznek átirányítva az alkalmazás kódjának módosítása nélkül. Egy korábban sikertelen régió feladatátvétele és újracsatlakozása során a konzisztencia-garanciák továbbra is tiszteletben maradnak Cosmos DB.
 
 - Még egy ritka és szerencsétlen esemény esetén is, ha az Azure-régió tartósan behajthatatlan, nincs adatvesztés, ha a többrégiós Cosmos-fiók *erős* konzisztencia-konfigurációval van konfigurálva. Ha egy véglegesen letiltott írási régiót használ, a rendszer a határos elavulttá tételhez konfigurált többrégiós Cosmos-fiókot, a lehetséges adatvesztési időszakot az elavult (*k* vagy *T*) értékre korlátozza, ahol k = 100000 frissítés és T = 5 perc. A munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek esetében a lehetséges adatvesztési időszak legfeljebb 15 percet vesz igénybe. További információ a Azure Cosmos DB RTO és RPO céljairól: a [konzisztencia szintjei és az adatok tartóssága](consistency-levels-tradeoffs.md#rto)
 
@@ -71,13 +71,13 @@ A régiók közötti rugalmasság mellett mostantól engedélyezheti a **zónák
 
 A rendelkezésre állási zónák támogatásával Azure Cosmos DB biztosítja, hogy a replikák egy adott régióban több zónába kerüljenek, hogy magas rendelkezésre állást és rugalmasságot biztosítson a zónákon belüli meghibásodások során. Ebben a konfigurációban nem változnak a késés és a többi SLA. Egyetlen zóna meghibásodása esetén a Zone redundancia teljes körű adattartósságot biztosít a RPO = 0 és a rendelkezésre állás RTO = 0 segítségével való elérhetősége esetén.
 
-A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.md) funkciójának *kiegészítő funkciója* . A zónaredundancia önmagában nem megbízható megoldás a regionális rugalmassághoz. Ha például regionális kimaradások vagy kis késleltetésű hozzáférés van a régiók között, azt javasoljuk, hogy több írási régióval is rendelkezzen a zóna redundancia mellett.
+A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.md) funkciójának *kiegészítő funkciója* . A zónák redundancia önmagában nem lehet a regionális rugalmasság elérésére támaszkodni. Ha például regionális kimaradások vagy kis késleltetésű hozzáférés van a régiók között, azt javasoljuk, hogy több írási régióval is rendelkezzen a zóna redundancia mellett.
 
-Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiókjában egy meglévő régióra a zónaredundanciát úgy engedélyezheti, ha eltávolítja a régiót, és újra hozzáadja azt a zónaredundancia engedélyezésével.
+Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
 
 Ez a funkció a következő Azure-régiókban érhető el:
 
-- Egyesült Királyság déli régiója
+- Az Egyesült Királyság déli régiója
 
 - Délkelet-Ázsia
 
@@ -89,7 +89,7 @@ Ez a funkció a következő Azure-régiókban érhető el:
 
 - Nyugat-Európa
 
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 > [!NOTE]
 > Az egyetlen régióhoz tartozó Azure Cosmos-fiók Availability Zonesának engedélyezése olyan díjakat eredményez, amelyek egy további régiónak a fiókhoz való hozzáadásával egyenértékűek. A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) és a [többrégiós költségeket Azure Cosmos db](optimize-cost-regions.md) cikkekben.
@@ -105,9 +105,9 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 |Zónák hibái – rendelkezésre állás | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség |
 |Olvasási késés | Régiók közötti régió | Régiók közötti régió | Alacsony |
 |Írási késés | Régiók közötti régió | Régiók közötti régió | Alacsony |
-|Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | Adatvesztés <br/><br/> A többszörös főkiszolgálóval és több régióval rendelkező, kötött elavulás konzisztenciájának használatakor az adatvesztés a fiókon beállított korláttal van korlátozva. <br/><br/> A regionális leállás során az adatvesztés elkerülhető a több régióval való erős konzisztencia konfigurálásával. Ez a lehetőség olyan kompromisszumokat tartalmaz, amelyek befolyásolják a rendelkezésre állást és a teljesítményt.      |
+|Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | Adatvesztés <br/><br/> A többszörös főkiszolgálóval és több régióval rendelkező, kötött elavulás konzisztenciájának használatakor az adatvesztés a fiókban konfigurált határos elavulás miatt van korlátozva. <br /><br />A regionális leállás során elkerülhető az adatvesztés azáltal, hogy erős konzisztenciát konfigurál több régióval. Ez a lehetőség olyan kompromisszumokat tartalmaz, amelyek befolyásolják a rendelkezésre állást és a teljesítményt. Csak az egyrégiós írásokhoz konfigurált fiókokon konfigurálható. |
 |Regionális leállás – rendelkezésre állás | Rendelkezésre állás elvesztése | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség |
-|Adatforgalom | X RU/s kiosztott átviteli sebesség | X RU/s kiosztott átviteli sebesség | 2X RU/s kiosztott átviteli sebesség <br/><br/> Ennek a konfigurációs módnak kétszer kell megfelelnie az átviteli sebességnek, ha egyetlen régióhoz képest Availability Zones van, mert két régió van. |
+|Átviteli sebesség | X RU/s kiosztott átviteli sebesség | X RU/s kiosztott átviteli sebesség | 2X RU/s kiosztott átviteli sebesség <br/><br/> Ennek a konfigurációs módnak kétszer kell megfelelnie az átviteli sebességnek, ha egyetlen régióhoz képest Availability Zones van, mert két régió van. |
 
 > [!NOTE]
 > Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy többrégiós Azure Cosmos-fiókhoz, a fióknak engedélyezve kell lennie a több főkiszolgálós írásoknak

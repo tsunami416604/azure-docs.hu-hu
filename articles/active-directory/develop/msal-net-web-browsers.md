@@ -3,22 +3,22 @@ title: Böngészők használata (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695075"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084596"
 ---
 # <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
 
@@ -43,9 +43,9 @@ A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kódda
 
 Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Áttekintés
+### <a name="at-a-glance"></a>Dióhéjban
 
-| Keretrendszer        | Beágyazott | Rendszer | Alapértelmezett |
+| Keretében        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
 | Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
 | .NET Core     | Nem | Igen ^ | Rendszer |
@@ -149,7 +149,7 @@ A MSAL.NET beágyazott webnézete és rendszerböngészője között néhány vi
 
 **Interaktív bejelentkezés a MSAL.NET a beágyazott webnézet használatával:**
 
-![beágyazva](media/msal-net-web-browsers/embedded-webview.png)
+![Beágyazott](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktív bejelentkezés a MSAL.NET a rendszerböngésző használatával:**
 

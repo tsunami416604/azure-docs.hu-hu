@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932623"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084441"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -93,7 +93,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
     ![Hozzáférési felülvizsgálat létrehozása a befejezési beállítások alapján](./media/create-access-review/upon-completion-settings.png)
 
-1. Ha azt szeretné, hogy a rendszer automatikusan eltávolítsa a megtagadott felhasználók hozzáférését, állítsa be az **eredmények automatikus alkalmazása az erőforrásra** lehetőséget az **engedélyezéshez**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
+1. Ha automatikusan el szeretné távolítani a-t, a megtagadott felhasználók hozzáférését az **automatikus alkalmazás az erőforrásra** beállításával **engedélyezheti**. Ha a felülvizsgálat befejeződése után manuálisan szeretné alkalmazni az eredményeket, állítsa a kapcsolót a **Letiltás**lehetőségre.
 
 1. Az ajánlott felülvizsgáló **nem válaszoló** listával adhatja meg, hogy mi történik azon felhasználók esetében, akiket a felülvizsgálati időszakon belül nem tekintenek át a véleményező. Ez a beállítás nem érinti azokat a felhasználókat, akiket manuálisan ellenőriztek a véleményezők. Ha megtagadja a végső felülvizsgáló döntését, a rendszer eltávolítja a felhasználó hozzáférését.
 
@@ -127,6 +127,20 @@ Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a 
 Alapértelmezés szerint az Azure AD egy e-mailt küld a felülvizsgálók számára röviddel a felülvizsgálat elindítása után. Ha úgy dönt, hogy nem szeretné elküldeni az Azure AD-t az e-mail-címre, tájékoztassa a véleményezőket arról, hogy a hozzáférési felülvizsgálat a befejezésre vár. Megtekintheti a [csoportokhoz vagy alkalmazásokhoz való hozzáférés ellenőrzésének](perform-access-review.md)utasításait. Ha az Ön véleménye szerint a vendégek áttekinthetik a saját hozzáférését, megtudhatják, hogyan [tekintheti át a hozzáférést a csoportokhoz vagy alkalmazásokhoz](review-your-access.md).
 
 Ha a vendégek felülvizsgálók vannak hozzárendelve, és nem fogadták el a meghívást, nem kapnak e-mailt a hozzáférési felülvizsgálatokból, mert először el kell fogadniuk a meghívót a felülvizsgálat előtt.
+
+## <a name="access-review-status-table"></a>Hozzáférési felülvizsgálati állapot tábla
+
+| status | Meghatározás |
+|--------|------------|
+|NotStarted | A felülvizsgálat létrejött, a felhasználó felderítése elindul. |
+|Inicializálása   | A felhasználó felderítése folyamatban van a felülvizsgálat részét képező összes felhasználó azonosítására. |
+|Indítás | A felülvizsgálat megkezdődött. Ha az e-mail-értesítések engedélyezve vannak, a rendszer e-maileket küld a felülvizsgálók számára. |
+|InProgress | A felülvizsgálat megkezdődött. Ha az e-mail-értesítések engedélyezve vannak az e-mailek elküldése a felülvizsgálók számára. A felülvizsgálók a határidőig küldhetnek döntéseket. |
+|Befejezése | A felülvizsgálat folyamatban van, és a rendszer elküldi az e-maileket a felülvizsgálati tulajdonosnak. |
+|Az autoreview | A felülvizsgálat a rendszer-felülvizsgálati szakaszban található. A rendszer rögzíti azokat a felhasználókat, akik a javaslatok vagy az előre konfigurált döntések alapján nem voltak ellenőrizve. |
+|Alapvizsgálat | A rendszer minden olyan felhasználó számára rögzíti a döntéseket, akiket nem vizsgáltak meg. A felülvizsgálat készen áll a **alkalmazásra** , ha engedélyezve van az automatikus alkalmazás. |
+|Alkalmazása | A jóváhagyott felhasználók hozzáférése nem változik. |
+|Alkalmazott | A megtagadott felhasználókat, ha vannak ilyenek, el lettek távolítva az erőforrásból vagy a címtárból. |
 
 ## <a name="create-reviews-via-apis"></a>Felülvizsgálatok létrehozása API-kon keresztül
 

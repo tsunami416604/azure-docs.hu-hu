@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053369"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087080"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiépített átviteli sebesség optimalizálása Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A kiépített átviteli sebességi modell használatával Azure Cosmos DB kiszá
 
 Kezdődhet a minimális átviteli sebesség 400 RU/mp-ben, és akár több tízmillió kérést is beállíthat másodpercenként vagy akár többre. Minden, az Azure Cosmos-tárolón vagy-adatbázison kiállított kérelem, például olvasási kérelem, írási kérelem, lekérdezési kérelem, tárolt eljárások a kiosztott átviteli sebességtől számított megfelelő költségekkel rendelkeznek. Ha 400 RU/s-t hoz létre, és egy olyan lekérdezést ad ki, amely a 40 RUs költséggel jár, másodpercenként 10 ilyen lekérdezést fog kiadni. A fentieken túli kérések díjszabása korlátozott lesz, és újra kell próbálkoznia a kéréssel. Ha az ügyfél-illesztőprogramokat használja, az automatikus újrapróbálkozási logikát támogatja.
 
-Az adatátviteli kapacitást adatbázisok vagy tárolók számára is kiépítheti, és minden stratégia segíthet a forgatókönyvtől függően a költségek megtakarításában.
+Az átviteli sebességet adatbázisok vagy tárolók között is kioszthatja, és a különféle stratégiákkal alacsonyabbak lehetnek a költségek a forgatókönyvtől függően.
 
 ## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizálás az átviteli sebesség különböző szinteken való kiépítés útján
 
@@ -57,9 +57,9 @@ Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján 
 |----|----|----|
 |SQL API|Adatbázis|Tároló|
 |MongoDB-hez készült Azure Cosmos DB API|Adatbázis|Gyűjtemény|
-|Cassandra API|kulcstartomány|Table|
-|Gremlin API|Adatbázis-fiók|Gráf|
-|Tábla API|Adatbázis-fiók|Table|
+|Cassandra API|Kulcstér|Tábla|
+|Gremlin API|Adatbázis-fiók|Graph|
+|Tábla API|Adatbázis-fiók|Tábla|
 
 Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 
@@ -123,7 +123,7 @@ Riasztásokat is beállíthat, hogy ellenőrizze, hogy a korlátozott kérelmek 
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Az átviteli sebesség rugalmas és igény szerinti méretezése 
 
-Mivel a kiosztott átviteli sebességért számítunk fel díjat, a kiépített átviteli sebességnek megfelelően kell megelőznie a fel nem használt átviteli sebességet. A kiosztott átviteli sebességet igény szerint bármikor fel-vagy lekicsinyítheti.  
+Mivel a kiosztott átviteli sebességért számítunk fel díjat, a kiépített átviteli sebességnek megfelelően kell megelőznie a fel nem használt átviteli sebességet. A kiosztott átviteli sebességet igény szerint bármikor fel-vagy lekicsinyítheti. Ha az átviteli sebesség igénye nagyon kiszámítható, használhat Azure Functions, és időzítő trigger használatával [növelheti vagy csökkentheti az átviteli sebességet](scale-on-schedule.md). 
 
 * Az RUs felhasználásának figyelése és a korlátozott számú kérelem aránya azt mutatja, hogy a nap folyamán vagy a héten nem kell folyamatosan kiépíteni az állandókat. Előfordulhat, hogy kevesebb forgalmat kell megkapnia éjjel vagy a hétvégén. Azure Portal vagy Azure Cosmos DB natív SDK-k vagy REST API segítségével bármikor méretezheti a kiosztott átviteli sebességet. A Azure Cosmos DB REST API végpontokat biztosít a tárolók teljesítményi szintjének programozott frissítéséhez, így egyszerűvé teszi az átviteli sebesség beállítását a kód napjától vagy a hét napjától függően. A művelet leállás nélkül történik, és általában kevesebb, mint egy perc alatt lép érvénybe. 
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861336"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087351"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Elastic Database feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával
 
@@ -173,8 +173,8 @@ Számos adatgyűjtési forgatókönyv esetében hasznos lehet néhány ilyen pro
 - $ (job_version)
 - $ (step_id)
 - $ (step_name)
-- $ (job_execution_id)
-- $ (job_execution_create_time)
+- $(job_execution_id)
+- $(job_execution_create_time)
 - $ (target_group_name)
 
 Ha például az összes eredményt ugyanabból a feladatokból szeretné csoportosítani, használja a *$ (job_execution_id)* parancsot az alábbi parancsban látható módon:
@@ -189,10 +189,13 @@ Ha például az összes eredményt ugyanabból a feladatokból szeretné csoport
 
 Az alábbi példa egy új feladatot hoz létre, amely több adatbázisból gyűjt teljesítményadatokat.
 
-Alapértelmezés szerint a Feladatkezelő megkeresi a tábla létrehozását, amely a visszaadott eredményeket tárolja. Ennek eredményeképpen a kimeneti hitelesítő adatokhoz használt hitelesítő adatokhoz tartozó bejelentkezési azonosítónak megfelelő engedélyekkel kell rendelkeznie a végrehajtásához. Ha az idő előtt manuálisan szeretné létrehozni a táblázatot, akkor a következő tulajdonságokkal kell rendelkeznie:
+Alapértelmezés szerint a feladatok ügynöke létrehozza a kimeneti táblát a visszaadott eredmények tárolásához. Ezért a kimeneti hitelesítő adatokhoz tartozó rendszerbiztonsági tag számára legalább a következő engedélyekkel kell rendelkeznie: `CREATE TABLE` az adatbázison, `ALTER`, `SELECT`, `INSERT`, `DELETE` a kimeneti táblán vagy annak sémáján, valamint `SELECT` a [sys. indexek](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) katalógus nézetében.
+
+Ha az idő előtt manuálisan szeretné létrehozni a táblázatot, akkor a következő tulajdonságokkal kell rendelkeznie:
 1. Az eredményhalmaz helyes nevét és adattípusait tartalmazó oszlopok.
 2. A uniqueidentifier adattípusával internal_execution_id további oszlop.
 3. `IX_<TableName>_Internal_Execution_ID` nevű nem fürtözött index a internal_execution_id oszlopban.
+4. Az összes fent felsorolt engedély, kivéve `CREATE TABLE` engedélyt az adatbázisra vonatkozóan.
 
 Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
 
@@ -1192,7 +1195,7 @@ GO
 A [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database)a következő nézetek érhetők el.
 
 
-|Megtekintés  |Leírás  |
+|Nézet  |Leírás  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
 |[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
@@ -1210,7 +1213,7 @@ A [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database
 A feladatok végrehajtási előzményeit jeleníti meg.
 
 
-|Oszlop neve|   Data type   |Leírás|
+|oszlop neve|   Adattípus   |Leírás|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  A feladatok végrehajtásának egy példányának egyedi azonosítója.
 |**job_name**   |nvarchar (128)  |A feladattípus neve.
@@ -1224,7 +1227,7 @@ A feladatok végrehajtási előzményeit jeleníti meg.
 |**end_time**|  datetime2 (7)    |A feladatok végrehajtásának dátuma és időpontja. NULL, ha a feladatot még nem hajtották végre, vagy még nem végezte el a végrehajtást.
 |**current_attempts**   |int    |A lépés újrapróbálkozásának száma. A fölérendelt feladatoknak 0, a alárendelt feladatok végrehajtása a végrehajtási házirend alapján 1 vagy nagyobb lesz.
 |**current_attempt_start_time** |datetime2 (7)|  A feladatok végrehajtásának dátuma és időpontja. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
-|**last_message**   |nvarchar (max.)| A feladatok vagy lépések előzményeinek üzenete. 
+|**last_message**   |típus: nvarchar(max)| A feladatok vagy lépések előzményeinek üzenete. 
 |**target_type**|   nvarchar (128)   |A céladatbázis vagy adatbázisok gyűjteményének típusa, beleértve a kiszolgáló összes adatbázisát, egy rugalmas készletben vagy adatbázisban lévő összes adatbázist. A target_type érvényes értékei: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
 |**target_id**  |uniqueidentifier|  A célcsoport-tag egyedi azonosítója.  NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
 |**target_group_name**  |nvarchar (128)  |A célcsoport neve. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
@@ -1238,7 +1241,7 @@ A feladatok végrehajtási előzményeit jeleníti meg.
 
 Megjeleníti az összes feladatot.
 
-|Oszlop neve|   Data type|  Leírás|
+|oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |A feladattípus neve.|
 |**job_id**|    uniqueidentifier    |A feladatokhoz tartozó egyedi azonosító.|
@@ -1256,7 +1259,7 @@ Megjeleníti az összes feladatot.
 
 Megjeleníti az összes feladattípust.
 
-|Oszlop neve|   Data type|  Leírás|
+|oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |A feladattípus neve.|
 |**job_id**|    uniqueidentifier    |A feladatokhoz tartozó egyedi azonosító.|
@@ -1269,7 +1272,7 @@ Megjeleníti az összes feladattípust.
 
 Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 
-|Oszlop neve    |Data type| Leírás|
+|oszlop neve    |Adattípus| Leírás|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| A feladattípus neve.|
 |**job_id** |uniqueidentifier   |A feladatokhoz tartozó egyedi azonosító.|
@@ -1278,7 +1281,7 @@ Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 |**step_name**  |nvarchar (128)  |Egyedi (ehhez a feladatokhoz) a lépéshez tartozó név.|
 |**command_type**   |nvarchar (50)   |A feladattípusban végrehajtandó parancs típusa. A v1 esetében az értéknek és az alapértelmezett értéknek a "TSql" értéket kell megadnia.|
 |**command_source** |nvarchar (50)|  A parancs helye. A v1 esetében a "inline" az alapértelmezett és az egyetlen elfogadott érték.|
-|**parancs**|   nvarchar (max.)|  A rugalmas feladatokkal command_type használatával végrehajtandó parancsok.|
+|**parancs**|   típus: nvarchar(max)|  A rugalmas feladatokkal command_type használatával végrehajtandó parancsok.|
 |**credential_name**|   nvarchar (128)   |A feladatok végrehajtásához használt adatbázis-hatókörű hitelesítő adat neve.|
 |**target_group_name**| nvarchar (128)   |A célcsoport neve.|
 |**target_group_id**|   uniqueidentifier|   A célcsoport egyedi azonosítója.|
@@ -1293,8 +1296,8 @@ Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 |**output_resource_group_name** |nvarchar (128)| Az erőforráscsoport neve, ahol a célkiszolgáló található.|
 |**output_server_name**|    nvarchar (256)   |A célkiszolgáló neve az eredmény-készlethez.|
 |**output_database_name**   |nvarchar (128)| Az eredményhalmaz céladatbázis neve.|
-|**output_schema_name** |nvarchar (max.)| A célként megadott séma neve. Ha nincs megadva, az alapértelmezett érték a dbo.|
-|**output_table_name**| nvarchar (max.)|  Annak a táblának a neve, amely az eredményeket a lekérdezés eredményei alapján tárolja. A tábla automatikusan létrejön, az eredmények készletének sémája alapján, ha még nem létezik. A sémának meg kell egyeznie az eredmények készletének sémájával.|
+|**output_schema_name** |típus: nvarchar(max)| A célként megadott séma neve. Ha nincs megadva, az alapértelmezett érték a dbo.|
+|**output_table_name**| típus: nvarchar(max)|  Annak a táblának a neve, amely az eredményeket a lekérdezés eredményei alapján tárolja. A tábla automatikusan létrejön, az eredmények készletének sémája alapján, ha még nem létezik. A sémának meg kell egyeznie az eredmények készletének sémájával.|
 |**max_parallelism**|   int|    Egy rugalmas készletben lévő adatbázisok maximális száma, amelyet a feladattípus egyszerre fog futni. Az alapértelmezett érték NULL, ami nincs korlátozva. |
 
 
@@ -1310,7 +1313,7 @@ Megjeleníti az egyes feladatok összes verziójának összes lépését. A sém
 
 Felsorolja az összes célcsoportot.
 
-|Oszlop neve|Data type| Leírás|
+|oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |A célcsoport neve, adatbázisok gyűjteménye. 
 |**target_group_id**    |uniqueidentifier   |A célcsoport egyedi azonosítója.
@@ -1321,7 +1324,7 @@ Felsorolja az összes célcsoportot.
 
 Megjeleníti az összes célcsoport összes tagját.
 
-|Oszlop neve|Data type| Leírás|
+|oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|A célcsoport neve, adatbázisok gyűjteménye. |
 |**target_group_id**    |uniqueidentifier   |A célcsoport egyedi azonosítója.|
@@ -1337,7 +1340,7 @@ Megjeleníti az összes célcsoport összes tagját.
 |**shard_map_name** |nvarchar (128)| A célcsoportban található szegmens-hozzárendelés neve. Csak akkor van megadva, ha target_type "SqlShardMap".|
 
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
  - ![Témakör hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL szintaxisának konvenciói](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
