@@ -463,6 +463,8 @@
                       href: saas-multitenantdb-schema-management.md
                     - name: ETL elemzéshez
                       href: saas-multitenantdb-tenant-analytics.md
+        - name: Kvótanövelések kérése
+          href: quota-increase-request.md
 - name: SQL Database-adatbázisok
   items:
     - name: SQL Database-adatbázisok dokumentációja

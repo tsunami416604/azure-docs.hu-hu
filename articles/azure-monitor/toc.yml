@@ -4,8 +4,6 @@
   items:
     - name: Mi az Azure Monitor?
       href: overview.md
-    - name: Terminológiai változások
-      href: terminology.md
     - name: GYIK
       href: faq.md
     - name: Újdonságok
@@ -1141,6 +1139,8 @@
       items:
         - name: Séma
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: Terminológiai változások
+      href: terminology.md
     - name: Application Insights
       items:
         - name: Függőségek automatikus összegyűjtése
