@@ -1,0 +1,107 @@
+- name: Alkalmazás és HR-üzembehelyezés dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mit jelent az alkalmazások üzembe helyezése?
+      href: user-provisioning.md
+- name: Oktatóanyagok
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) – szerepkörkiépítés
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Minden integrált katalógusalkalmazás
+      href: /azure/active-directory/saas-apps
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Az alkalmazások üzembe helyezésének működése
+      href: how-provisioning-works.md
+    - name: Alkalmazás üzembe helyezésének tervezése
+      href: plan-auto-user-provisioning.md
+    - name: Felhőalapú HR-üzembehelyezés tervezése
+      href: plan-cloud-hr-provision.md
+- name: Útmutatók
+  expanded: true
+  items:
+    - name: Üzembe helyezés konfigurálása katalógusbeli alkalmazás esetében
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Attribútumleképezések szerkesztése
+      items:
+        - name: Attribútumleképezések testreszabása
+          href: customize-application-attributes.md
+        - name: Kifejezések írása attribútumleképezésekhez
+          href: functions-for-customizing-application-data.md
+    - name: Felhasználók és csoportok hatókörbe foglalása vagy hatókörből való kizárása
+      items:
+        - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Hatókörön kívüli felhasználók törlésének mellőzése
+          href: skip-out-of-scope-deletions.md
+    - name: Monitorozás és jelentéskészítés az üzembe helyezés esetében
+      items:
+        - name: Átadás állapotának és teljesítményének monitorozása
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Jelentés az alkalmazások üzembe helyezéséről
+          href: check-status-user-account-provisioning.md
+        - name: Konfiguráció exportálása és importálása
+          href: export-import-provisioning-configuration.md
+    - name: Az alkalmazás üzembe helyezésének hibaelhárítása
+      items:
+        - name: Az alkalmazások üzembe helyezésének hibaelhárítása
+          href: application-provisioning-config-problem.md
+        - name: Karantén állapota
+          href: application-provisioning-quarantine-status.md
+        - name: Engedélyezési probléma (nem lehet menteni a rendszergazdai hitelesítési adatokat)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: A felhasználók átadása nem történik meg
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Nem a megfelelő felhasználók lettek átadva
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Hiányzó forrásattribútum
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Az átadási feladat túl lassú
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: Üzembehelyezési naplók
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Automatikus konfigurálás az MS Graph használatával
+      href: application-provisioning-configure-api.md
+- name: Referencia
+  items:
+    - name: Üzembehelyezési módszer kiválasztása
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Felhőalapú HR üzembe helyezése
+      items:
+        - name: SuccessFactors-attribútumok referenciája
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday-attribútumok referenciája
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect-kiépítési ügynök
+      items:
+        - name: Kiépítési ügynök verzióelőzményei
+          href: provisioning-agent-release-version-history.md
+- name: További források
+  items:
+    - name: Támogatási és súgó lehetőségek fejlesztőknek
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

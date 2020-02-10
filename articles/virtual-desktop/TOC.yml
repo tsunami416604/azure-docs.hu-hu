@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
           href: install-office-on-wvd-master-image.md
-    - name: Munkamenet-gazdagépek dinamikus skálázása
+    - name: Munkamenet-gazdagépek automatikus skálázása
       href: set-up-scaling-script.md
     - name: Csatorna testreszabása
       href: customize-feed-for-virtual-desktop-users.md

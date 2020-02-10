@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995948"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031339"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
 
@@ -25,10 +25,15 @@ A havi kifizetések az alábbiak esetében érhetőek el:
 
 - Virtual machines (Virtuális gépek)
 - Azure Storage
-- SQL Database
+- SQL Database-adatbázisok
 - SQL Data Warehouse
 - Cosmos DB
 - App Service-bélyeg díja
+- Felügyelt lemez
+- Azure Data Explorer
+- Azure Database for MariaDB, MySQL és PostgreSQL
+- Azure VMware Solution by CloudSimple
+
 
 Foglalások vásárlása az [Azure Portalon](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513416"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111769"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Azure által felügyelt identitás használata az ACR-feladatokban 
 
@@ -84,19 +84,19 @@ Az identitás erőforrás-AZONOSÍTÓját az az [Identity show][az-identity-show
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. adja meg az identitás engedélyeit más Azure-erőforrásokhoz való hozzáféréshez
 
-A feladat követelményeitől függően adja meg az identitás engedélyeit más Azure-erőforrások eléréséhez. Példák:
+A feladat követelményeitől függően adja meg az identitás engedélyeit más Azure-erőforrások eléréséhez. Példák erre vonatkozóan:
 
 * A felügyelt identitást hozzárendelheti egy olyan szerepkörhöz, amely lekéréses, leküldéses és lekéréses, illetve egyéb engedélyekkel rendelkezik az Azure-beli cél tároló A beállításjegyzék szerepköreinek teljes listáját itt tekintheti meg: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md). 
 * Rendeljen hozzá egy szerepkört a felügyelt identitáshoz az Azure Key vaultban található titkos kódok olvasásához.
 
 Az [Azure CLI](../role-based-access-control/role-assignments-cli.md) -vel vagy más Azure-eszközökkel kezelheti a szerepköralapú hozzáférést az erőforrásokhoz. Például futtassa az az [szerepkör-hozzárendelés létrehozása][az-role-assignment-create] parancsot az identitás szerepkör hozzárendeléséhez az erőforráshoz. 
 
-A következő példa felügyelt identitást rendel hozzá a tároló-beállításjegyzékből való lekéréshez szükséges engedélyekhez. A parancs megadja az identitás *egyszerű szolgáltatásnév azonosítóját* és a cél beállításjegyzék *erőforrás-azonosítóját* .
+A következő példa felügyelt identitást rendel hozzá a tároló-beállításjegyzékből való lekéréshez szükséges engedélyekhez. A parancs megadja a feladat identitásának *résztvevő-azonosítóját* és a cél beállításjegyzék *erőforrás-azonosítóját* .
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Ha egy felhasználó által hozzárendelt identitás hitelesítő adatait szeretné felvenni a beállításjegyzék *targetregistry*való hitelesítéshez, adja át `use-identity` az identitás *ügyfél-azonosítójának* értékével. Példa:
+Ha egy felhasználó által hozzárendelt identitás hitelesítő adatait szeretné felvenni a beállításjegyzék *targetregistry*való hitelesítéshez, adja át `use-identity` az identitás *ügyfél-azonosítójának* értékével. Például:
 
 ```azurecli
 az acr task credential add \

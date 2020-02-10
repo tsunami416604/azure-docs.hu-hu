@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275510"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111589"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -139,9 +139,6 @@ Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Servic
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5\. lépés: az Intune-szabályzat konfigurálása a felügyelt eszközökhöz (nem kötelező)
 
-> [!NOTE]
-> Ez a funkció jelenleg csak iOS rendszeren érhető el.
-
 A Microsoft Intune segítségével kezelheti a vállalat munkaerő által használt ügyfélalkalmazások felügyeletét. Az Intune lehetővé teszi olyan képességek használatát, mint például az adattitkosítás és a további hozzáférési követelmények. Az alkalmazások Intune-nal történő kezelésével kapcsolatos további információkért lásd: az Intune app Management. Az alábbi lépéseket követve engedélyezheti, hogy a Power BI Mobile Application működjön az Intune-szabályzattal.
 
 1. Nyissa meg **Azure Active Directory** , majd az **alkalmazások regisztrációját**.
@@ -153,7 +150,7 @@ A Microsoft Intune segítségével kezelheti a vállalat munkaerő által haszn�
 7. Kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre az alkalmazáshoz való hozzáférés engedélyezéséhez.
 8. Konfigurálja a kívánt Intune- [szabályzatot az alkalmazás-védelmi házirendek létrehozásához és hozzárendeléséhez](https://docs.microsoft.com/intune/app-protection-policies).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha az alkalmazás a jelentés több percnél hosszabb betöltésére tett kísérlet után egy hibaüzenetet ad vissza, előfordulhat, hogy módosítania kell az időtúllépési beállítást. Alapértelmezés szerint az alkalmazásproxy olyan alkalmazásokat támogat, amelyek akár 85 másodpercet is igénybe vesznek a kérelmek megválaszolására. A beállítás 180 másodpercre való meghosszabbításához válassza ki az alkalmazáshoz **tartozó alkalmazásproxy** -beállítások lapon a háttérbeli időtúllépést. A gyors és megbízható jelentések létrehozásával kapcsolatos tippekért tekintse meg [Power bi jelentések – ajánlott eljárások](https://docs.microsoft.com/power-bi/power-bi-reports-performance)című témakört.
 

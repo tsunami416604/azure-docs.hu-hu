@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Az Azure Dev Spaces dokumentációja
-summary: Az Azure Dev Spaces lehetővé teszi, hogy anélkül végezze el az Azure Kubernetes Service (AKS) szolgáltatásban futó teljes mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését, hogy függőségeket kellene replikálnia vagy utánoznia. Az Azure Dev Spaces egyszerűbbé teszi a csapattal való együttműködést a megosztott AKS-fürtökben. Lehetővé teszi a tárolók futtatását és hibakeresését közvetlenül az AKS-ben.
+summary: Az Azure Dev Spaces az AKS bővítménye, amely lehetővé teszi a kód egyszerű futtatását és hibakeresését egy nagyobb alkalmazás kontextusában. A kódot teljeskörűen tesztelheti, elérheti a töréspontokat a fürtön futó kódban, és ütközések nélkül megoszthat egy fejlesztési fürtöt a csapattagok között.
 metadata:
   title: Az Azure Dev Spaces dokumentációja
-  description: Az Azure Dev Spaces lehetővé teszi, hogy anélkül végezze el az Azure Kubernetes Service (AKS) szolgáltatásban futó teljes mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését, hogy függőségeket kellene replikálnia vagy utánoznia. Az Azure Dev Spaces egyszerűbbé teszi a csapattal való együttműködést a megosztott AKS-fürtökben. Lehetővé teszi a tárolók futtatását és hibakeresését közvetlenül az AKS-ben.
+  description: Az Azure Dev Spaces az AKS bővítménye, amely lehetővé teszi a kód egyszerű futtatását és hibakeresését egy nagyobb alkalmazás kontextusában. A kódot teljeskörűen tesztelheti, elérheti a töréspontokat a fürtön futó kódban, és ütközések nélkül megoszthat egy fejlesztési fürtöt a csapattagok között.
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 96fe99c5eb2ef8600ee9cca1e63f9fc3451919c2
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 8871b713806b7c80520d4b52112f84056d20bc26
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75438343"
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77057362"
 landingContent:
 - title: Az Azure Dev Spaces bemutatása
   linkLists:

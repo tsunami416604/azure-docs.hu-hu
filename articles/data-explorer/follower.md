@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281342"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111477"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -61,7 +61,7 @@ var followerResourceGroupName = "followerResouceGroup";
 var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationName = "adc";
+var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
@@ -113,7 +113,7 @@ follower_resource_group_name = "followerResouceGroup"
 leader_resouce_group_name = "leaderResouceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_Configuration_name = "adc"
+attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
@@ -180,7 +180,7 @@ Ebben a szakaszban megtudhatja, hogyan csatolhat egy adatbázist egy meglévő f
     "variables": {},
     "resources": [
         {
-            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "name": "[parameters('attachedDatabaseConfigurationsName')]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
@@ -206,12 +206,12 @@ A Azure Resource Manager sablont [a Azure Portal vagy a](https://portal.azure.co
 
 |**Beállítás**  |**Leírás**  |
 |---------|---------|
-|Követő fürt neve     |  A követő fürt neve.  |
-|Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A névnek egyedinek kell lennie a fürt szintjén.     |
+|Követő fürt neve     |  A követő fürt neve. Ez az a fürt, amelyre ez a sablon telepítve lesz.  |
+|Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A név tetszőleges karakterlánc lehet, ha a fürt szintjén egyedi.     |
 |Adatbázis neve     |      A követendő adatbázis neve. Ha követni szeretné az összes vezető adatbázisát, használja a "*" lehetőséget.   |
 |Leader-fürterőforrás azonosítója    |   A Leader-fürt erőforrás-azonosítója.      |
 |A rendszerbiztonsági tag alapértelmezett módosításának típusa    |   Az alapértelmezett egyszerű módosítási típus. Lehet `Union`, `Replace` vagy `None`. Az alapértelmezett egyszerű módosítási típussal kapcsolatos további információkért lásd: az [egyszerű módosítás típusa vezérlő parancs](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Földrajzi egység   |   Az összes erőforrás helye. A vezetőnek és a követőnek ugyanazon a helyen kell lennie.       |
+|Hely   |   Az összes erőforrás helye. A vezetőnek és a követőnek ugyanazon a helyen kell lennie.       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>Az adatbázis sikeres csatolásának ellenőrzése
 
@@ -250,7 +250,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationsName = "adc";
+var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
@@ -278,7 +278,7 @@ var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
-        AttachedDatabaseConfigurationName = "adc",
+        AttachedDatabaseConfigurationName = "uniqueName",
         ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
@@ -312,7 +312,7 @@ kusto_management_client = KustoManagementClient(credentials, follower_subscripti
 
 follower_resource_group_name = "followerResouceGroup"
 follower_cluster_name = "follower"
-attached_database_configurationName = "adc"
+attached_database_configurationName = "uniqueName"
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
@@ -348,7 +348,7 @@ follower_resource_group_name = "followerResourceGroup"
 leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_configuration_name = "adc"
+attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
@@ -367,7 +367,7 @@ Adatbázis csatolásakor az **"alapértelmezett rendszerbiztonsági tag módosí
 |---------|---------|
 |**Union**     |   A csatolt adatbázis-rendszerbiztonsági tag mindig tartalmazza az eredeti adatbázis-rendszerbiztonsági tag, valamint a követő adatbázishoz hozzáadott további új rendszerbiztonsági tagokat is.      |
 |**Csere**   |    Nem található a rendszerbiztonsági tag öröklése az eredeti adatbázisból. Új rendszerbiztonsági tag létrehozása szükséges a csatolt adatbázishoz.     |
-|**Nincs**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
+|**NEz egy**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
 
 További információ a jogosultságokkal rendelkező rendszerbiztonsági tag konfigurálásához használható vezérlési parancsokról: a [követő parancsok kezelése a követő fürtök](/azure/kusto/management/cluster-follower)felügyeletéhez.
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 94adac6ba232f8931d00083432c027ddccb2ce64
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842494"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112345"
 ---
-A parancs kimenetében a `identity` szakasz egy `SystemAssigned` típusú identitást mutat be a feladatban. A `principalId` az identitás egyszerű szolgáltatásnév azonosítója:
+A parancs kimenetében a `identity` szakasz egy `SystemAssigned` típusú identitást mutat be a feladatban. A `principalId` a feladat identitásának elsődleges azonosítója:
 
 ```console
 [...]

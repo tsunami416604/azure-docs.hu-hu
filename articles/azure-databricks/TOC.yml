@@ -1087,9 +1087,20 @@
             - name: Azure Data Lake Storage hitelesítő adatok átengedésének engedélyezése
               href: /azure/databricks/administration-guide/access-control/credential-passthrough
               maintainContext: true
-        - name: Munkaterület tárolójának kezelése
-          href: /azure/databricks/administration-guide/workspace-storage/storage
-          maintainContext: true
+        - name: Munkaterület objektumainak és viselkedésének kezelése
+          items:
+            - name: Munkaterületek kezelése – áttekintés
+              href: /azure/databricks/administration-guide/workspace/index
+              maintainContext: true
+            - name: Munkaterület tárolójának kezelése
+              href: /azure/databricks/administration-guide/workspace/storage
+              maintainContext: true
+            - name: Munkaterület biztonsági fejléceinek kezelése
+              href: /azure/databricks/administration-guide/workspace/security
+              maintainContext: true
+            - name: Notebook-funkciók hozzáférésének kezelése
+              href: /azure/databricks/administration-guide/workspace/notebooks
+              maintainContext: true
         - name: Fürtkonfigurációk engedélyezése
           items:
             - name: Fürtkonfiguráció áttekintése
@@ -1609,6 +1620,9 @@
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
               maintainContext: true
+            - name: 2020. február
+              href: /azure/databricks/release-notes/product/2020/february
+              maintainContext: true
             - name: 2020. január
               href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
@@ -1757,9 +1771,6 @@
                 - name: Databricks Runtime 5.2 ML
                   href: /azure/databricks/release-notes/runtime/5.2ml
                   maintainContext: true
-                - name: Databricks Runtime 3.5
-                  href: /azure/databricks/release-notes/runtime/3.5
-                  maintainContext: true
             - name: Nem támogatott
               items:
                 - name: Nem támogatott futtatókörnyezet-kiadások
@@ -1792,6 +1803,9 @@
                 - name: Databricks Runtime 4.0
                   href: /azure/databricks/release-notes/runtime/4.0
                   maintainContext: true
+                - name: Databricks Runtime 3.5 LTS
+                  href: /azure/databricks/release-notes/runtime/3.5
+                  maintainContext: true
                 - name: Databricks Runtime 3.4
                   href: /azure/databricks/release-notes/runtime/3.4
                   maintainContext: true
@@ -1803,6 +1817,9 @@
               maintainContext: true
         - name: Kiadástípusok
           href: /azure/databricks/release-notes/release-types
+          maintainContext: true
+        - name: Azure Databricks-állapotoldal
+          href: /azure/databricks/status
           maintainContext: true
     - name: R fejlesztői útmutató
       href: /azure/machine-learning/r-developers-guide

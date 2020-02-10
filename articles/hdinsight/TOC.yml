@@ -39,6 +39,8 @@
           href: ./hdinsight-component-versioning.md
         - name: Magas rendelkezésre állású összetevők
           href: ./hdinsight-high-availability-components.md
+        - name: Apache Ambari az Azure HDInsightban
+          href: ./apache-ambari-usage.md
         - name: Machine Learning a HDInsightban
           href: ./hdinsight-machine-learning-overview.md
         - name: Ipari léptékű streamelés a HDInsightban

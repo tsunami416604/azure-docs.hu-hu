@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061590"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111544"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -50,6 +50,19 @@ Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné
 1. Válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
 1. Adja meg a titok **leírását** , válasszon ki egy lejáratot, majd kattintson a **Hozzáadás**gombra. Jegyezze fel a titok **értékét** egy későbbi lépésben való használatra.
 
+## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
+
+Ha az Azure AD-ból `family_name` és `given_name` jogcímeket szeretne beszerezni, az alkalmazáshoz választható jogcímeket konfigurálhat az Azure Portal felhasználói felületen vagy az alkalmazás jegyzékfájljában. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory**.
+1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
+1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció (előzetes verzió)** lehetőséget.
+1. Válassza a **választható jogcím hozzáadása**lehetőséget.
+1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
+1. Válassza ki a hozzáadandó választható jogcímeket.
+1. Kattintson az **Hozzáadás** parancsra.
+
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 
 A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
@@ -63,19 +76,6 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza a `Signature`lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
-
-## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
-
-Ha az Azure AD-ból `family_name` és `given_name` jogcímeket szeretne beszerezni, az alkalmazáshoz választható jogcímeket konfigurálhat az Azure Portal felhasználói felületen vagy az alkalmazás jegyzékfájljában. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md).
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory**.
-1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.
-1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
-1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció (előzetes verzió)** lehetőséget.
-1. Válassza a **választható jogcím hozzáadása**lehetőséget.
-1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
-1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Kattintson az **Hozzáadás** parancsra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 

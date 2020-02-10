@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841167"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111465"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -24,7 +24,7 @@ A MABS a System Center DPM alapul, és hasonló funkciókat biztosít néhány k
 
 - A MABS futtatásához nincs szükség System Center-licencre.
 - A MABS és a DPM esetében az Azure hosszú távú biztonsági mentési tárolót biztosít. Emellett a DPM lehetővé teszi az adatok biztonsági mentését a szalagos hosszú távú tároláshoz. A MABS nem biztosítja ezt a funkciót.
-- Elsődleges DPM-kiszolgálóról biztonsági mentést készíthet egy másodlagos DPM-kiszolgálóval. A másodlagos kiszolgáló biztosítja az elsődleges kiszolgáló adatbázisának és az elsődleges kiszolgálón tárolt adatforrás-replikáknak a védelmét. Az elsődleges kiszolgáló meghibásodása esetén a másodlagos kiszolgáló folytathatja az elsődleges kiszolgáló által védett munkaterhelések védelmét, amíg az elsődleges kiszolgáló ismét elérhető nem lesz.  A MABS nem biztosítja ezt a funkciót.
+- Elsődleges DPM-kiszolgálóról biztonsági mentést készíthet egy másodlagos DPM-kiszolgálóval. A másodlagos kiszolgáló biztosítja az elsődleges kiszolgáló adatbázisának és az elsődleges kiszolgálón tárolt adatforrás-replikáknak a védelme érdekében. Ha az elsődleges kiszolgáló meghibásodik, a másodlagos kiszolgáló folytathatja az elsődleges kiszolgáló által védett munkaterhelések védelmét, amíg az elsődleges kiszolgáló ismét elérhető nem lesz.  A MABS nem biztosítja ezt a funkciót.
 
 A MABS a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57520)töltheti le. Helyszíni vagy Azure-beli virtuális gépen is futtatható.
 
@@ -43,7 +43,7 @@ A DPM/MABS és a Azure Backup használatával történő biztonsági mentés a k
 1. A Microsoft Azure Recovery Services (MARS) ügynök telepítve van a DPM-kiszolgálón/MABS.
 1. A MARS-ügynök biztonsági mentést készít a DPM-vagy MABS-lemezekről az Azure-beli biztonsági mentési Recovery Services-tárolóba Azure Backup használatával.
 
-További információ:
+További információk:
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.
@@ -75,12 +75,15 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 **Helyszíni MABS** | Támogatott 64 bites operációs rendszerek:<br/><br/> MABS v3 és újabb verziók: Windows Server 2019 (standard, Datacenter, Essentials). <br/><br/> MABS v2 és újabb verziók: Windows Server 2016 (standard, Datacenter, Essentials).<br/><br/> Minden MABS-verzió: Windows Server 2012 R2.<br/><br/>Minden MABS-verzió: Windows Storage Server 2012 R2.
 **Helyszíni DPM** | Fizikai kiszolgáló vagy Hyper-V virtuális gép: System Center 2012 SP1 vagy újabb.<br/><br/> VMware virtuális gép: System Center 2012 R2, 5. frissítéssel vagy újabb verzióval.
 
+>[!NOTE]
+>A Azure Backup Server telepítése nem támogatott a Windows Server Core vagy Microsoft Hyper-V Server rendszeren.
+
 ## <a name="management-support"></a>Kezelési támogatás
 
-**Probléma** | **Részletek**
+**Kérdés** | **Részletek**
 --- | ---
 **Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS-t egy tartományvezérlőre, egy olyan gépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör, egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Tartomány** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
+**Tartományi** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
 **Storage** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
 **MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS áthelyezése** | Ha a MABS egy új kiszolgálóra helyezi át, a tárterület megőrzése mellett az MBS használata támogatott.<br/><br/> A kiszolgálónak ugyanazzal a névvel kell rendelkeznie, mint az eredetinek. A név nem módosítható, ha ugyanazt a tárolót szeretné megőrizni, és ugyanazt a MABS-adatbázist használja az adathelyreállítási pontok tárolásához.<br/><br/> Szüksége lesz egy biztonsági másolatra a MABS-adatbázisról, mert vissza kell állítania.

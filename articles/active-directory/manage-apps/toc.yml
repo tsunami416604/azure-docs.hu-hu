@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Végfelhasználói portálok
               href: end-user-experiences.md
+    - name: Felhőalkalmazások láthatósága és vezérlése
+      href: cloud-app-security.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy

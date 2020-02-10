@@ -47,6 +47,8 @@
             - name: A Tárolókhoz készült Azure Monitor letiltása
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
+      href: howto-run-privileged-containers.md
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110727"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111754"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -175,7 +175,7 @@ A tárház tartalma:
 
 • LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
 
-**Mosquito_pub esetén:**
+**Mosquitto_pub esetén:**
 
 • Ez a mappa két mintát tartalmaz, amelyeket a Mosquitto.org által biztosított mosquitto_pub Utility eszközzel használ.
 

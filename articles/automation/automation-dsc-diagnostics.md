@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850346"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111534"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation állapot-konfiguráció jelentési adatAzure Monitor naplókba való továbbítása
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>Az állapot-konfigurációs naplók megtekintése
 
-Miután beállította az integrációt Azure Monitor naplókkal az Automation-állapot konfigurációs adataihoz, megjelenik egy **naplóbeli keresés** gomb az Automation-fiók **DSC-csomópontok** paneljén. Kattintson a **naplóbeli keresés** gombra a DSC-csomóponti adat naplófájljainak megtekintéséhez.
+Miután beállította az integrációt Azure Monitor naplókkal az Automation-állapot konfigurációs adataihoz **, az állapot** konfigurálása (DSC) lap bal oldali paneljének **naplók** elemét választva megtekintheti őket.  
 
-![Naplóbeli Keresés gomb](media/automation-dsc-diagnostics/log-search-button.png)
+![Naplók](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 Megnyílik a **naplók keresése** panel, és megjelenik egy **DscNodeStatusData** művelet az egyes állapot-konfigurációs csomópontokhoz, valamint egy **DscResourceStatusData** -művelet minden olyan [DSC-erőforráshoz](/powershell/scripting/dsc/resources/resources) , amelyet az adott csomópontra alkalmazott csomópont-konfigurációban hívnak.
 
@@ -84,11 +84,14 @@ A **DscResourceStatusData** művelet a sikertelen DSC-erőforrások hibáit tart
 
 A művelethez tartozó információk megtekintéséhez kattintson a listában szereplő egyes műveletekre.
 
-A naplókat Azure Monitor naplók keresésével is megtekintheti.
-Lásd: [az adatkeresés a naplók használatával](../log-analytics/log-analytics-log-searches.md).
-Adja meg a következő lekérdezést az állapot-konfigurációs naplók megkereséséhez: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+A naplókat Azure Monitor naplók keresésével is megtekintheti. Lásd: [az adatkeresés a naplók használatával](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Adja meg a következő lekérdezést az állapot-konfigurációs naplók megkereséséhez.
 
-A lekérdezés a művelet nevével is szűkíthető. Például:`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>E-mail küldése, ha az állapot-konfiguráció megfelelőségének ellenőrzése sikertelen
 
@@ -136,7 +139,7 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | DscReportStatus |Azt jelzi, hogy sikeresen lefutott-e a megfelelőség ellenőrzése. |
 | ConfigurationMode | A konfiguráció alkalmazása a csomópontra. A lehetséges értékek a következők: __"ApplyOnly"__ , __"ApplyandMonitior"__ és __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: a DSC alkalmazza a konfigurációt, és még nem tesz semmit, kivéve, ha új konfigurációt küld a cél csomópontra, vagy amikor egy új konfigurációt végez egy kiszolgálóról. Új konfiguráció kezdeti alkalmazása után a DSC nem keres eltolódást egy előzőleg konfigurált állapotból. A DSC addig próbálkozik a konfiguráció alkalmazásával, amíg a __ApplyOnly__ érvénybe lép. </li><li> __ApplyAndMonitor__: ez az alapértelmezett érték. Az LCD ChipOnGlas minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a cél csomópont a kívánt állapotba sodródik, a DSC a naplókban lévő eltérést jelenti. A DSC addig próbálkozik a konfiguráció alkalmazásával, amíg a __ApplyAndMonitor__ érvénybe lép.</li><li>__ApplyAndAutoCorrect__: a DSC minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a cél csomópont a kívánt állapotba sodródik, a DSC a naplókban jelzi a következetlenségeket, majd újra alkalmazza az aktuális konfigurációt.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
-| IPAddress | A felügyelt csomópont IPv4-címe. |
+| IP-cím | A felügyelt csomópont IPv4-címe. |
 | Kategória | DscNodeStatus |
 | Erőforrás | A Azure Automation fiók neve. |
 | Tenant_g | A hívó bérlőjét azonosító GUID. |
@@ -151,9 +154,9 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | ResultDescription | A művelet leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
 | ResourceGroup | Az Automation-fiókhoz tartozó erőforráscsoport neve. |
-| ResourceProvider | Microsoft. AUTOMATION |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |A megfelelőségi jelentés korrelációs azonosítójának GUID azonosítója. |
+| CorrelationId |A megfelelőségi jelentés korrelációs AZONOSÍTÓjának GUID azonosítója. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -182,11 +185,11 @@ A Azure Automation diagnosztika két kategóriát hoz létre a Azure Monitor nap
 | ResultDescription | A művelet leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
 | ResourceGroup | Az Automation-fiókhoz tartozó erőforráscsoport neve. |
-| ResourceProvider | Microsoft. AUTOMATION |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |A megfelelőségi jelentés korrelációs azonosítójának GUID azonosítója. |
+| CorrelationId |A megfelelőségi jelentés korrelációs AZONOSÍTÓjának GUID azonosítója. |
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Automation-állapot konfigurációs adatainak Azure Monitor naplókba való elküldésével jobban betekintést nyerhet az Automation-állapot konfigurációs csomópontjainak állapotára:
 
