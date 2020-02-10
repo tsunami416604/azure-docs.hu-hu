@@ -137,8 +137,6 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: Felhőszolgáltatás-foglalási hiba
           href: cloud-services-allocation-failures.md
-        - name: Az alkalmazások nem támogatják a TLS 1.2-t
-          href: applications-dont-support-TLS-1-2.md
         - name: A felhőszolgáltatásbeli szerepkörök újrahasznosításának gyakori okai
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: Az alkalmazás nem támogatja a TLS 1.2-t
