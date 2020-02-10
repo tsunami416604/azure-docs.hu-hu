@@ -8,12 +8,14 @@
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: Új tudásbázis létrehozása
-      href: quickstarts/create-publish-knowledge-base.md
-    - name: Metaadatokkal rendelkező kérdések felvétele
-      href: quickstarts/add-question-metadata-portal.md
-    - name: Válasz kérése Postman vagy cURL használatával
-      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: a QnA Maker portállal
+      items:
+        - name: 1. Tudásbázis létrehozása
+          href: quickstarts/create-publish-knowledge-base.md
+        - name: 2. Metaadatokkal rendelkező kérdések felvétele
+          href: quickstarts/add-question-metadata-portal.md
+        - name: 3. Válasz kérése Postman vagy cURL használatával
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Tesztelés kötegfájllal
       href: Quickstarts/batch-testing.md
     - name: A REST API-k használata
@@ -61,8 +63,6 @@
     - name: Létrehozás és válaszküldés egy tudásbázisból
       displayName: 'curl, publish, chit-chat, chit chat'
       href: Tutorials/create-publish-query-in-portal.md
-    - name: 'Létrehozás és válaszküldés egy tudásbázisból a C# használatával'
-      href: Tutorials/create-publish-answer.md
     - name: QnA Maker-robot létrehozása
       href: Tutorials/create-qna-bot.md
 - name: Alapelvek

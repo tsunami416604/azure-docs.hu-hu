@@ -25,6 +25,9 @@
         - name: Automatizált gépi tanulási kísérlet létrehozása
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: Kereslet előrejelzése automatizált gépi tanulással (közösségi kerékpárhasználat adatai)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: Az első ML-kísérlet létrehozása

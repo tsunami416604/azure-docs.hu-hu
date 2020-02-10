@@ -110,6 +110,10 @@
               href: microsoft-compute-sizeselector.md
             - name: UserNameTextBox
               href: microsoft-compute-usernametextbox.md
+        - name: Felügyelt identitás
+          items:
+            - name: IdentitySelector
+              href: microsoft-managedidentity-identityselector.md
         - name: Network (Hálózat)
           items:
             - name: PublicIPAddressCombo
