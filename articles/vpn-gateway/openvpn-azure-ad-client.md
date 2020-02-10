@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647917"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110554"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés (előzetes verzió)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuális hálózathoz pont – hely VPN és Azure Active Directory hitelesítés használatával való csatlakozáshoz. Az Azure AD-vel való kapcsolat és hitelesítés előtt először konfigurálnia kell az Azure AD-bérlőt. További információ: [Azure ad-bérlő konfigurálása](openvpn-azure-ad-tenant.md).
 
@@ -24,11 +24,11 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuáli
 
 ## <a name="profile"></a>Ügyféloldali profilok használata
 
-A csatlakozáshoz le kell töltenie az Azure VPN-ügyfelet (előzetes verzió), és konfigurálnia kell egy VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet. Létrehozhat egy ügyféloldali profilt a számítógépen, exportálhatja, majd importálhatja további számítógépekre.
+A csatlakozáshoz le kell töltenie az Azure VPN-ügyfelet, és konfigurálnia kell egy VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet. Létrehozhat egy ügyféloldali profilt a számítógépen, exportálhatja, majd importálhatja további számítógépekre.
 
 ### <a name="to-download-the-azure-vpn-client"></a>Az Azure VPN-ügyfél letöltése
 
-Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) töltheti le az Azure VPN-ügyfelet (előzetes verzió).
+Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) töltheti le az Azure VPN-ügyfelet.
 
 ### <a name="cert"></a>Tanúsítvány alapú ügyféloldali profil létrehozása
 
@@ -60,23 +60,23 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 1. A lapon válassza az **Importálás**lehetőséget.
 
-    ![importálás](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![importálása](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás**lehetőséget.
 
-    ![importálás](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![importálása](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Adja meg a profil nevét, majd válassza a **Mentés**lehetőséget.
 
-    ![importálás](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![importálása](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Válassza a **Csatlakozás** lehetőséget a VPN-hez való csatlakozáshoz.
 
-    ![importálás](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![importálása](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
 
-    ![importálás](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![importálása](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Ügyféloldali profil törlése
 
@@ -148,7 +148,7 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
     ![diagnosztizálása](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hogyan DNS-utótagokat hozzáadni a VPN-ügyfélhez?
 

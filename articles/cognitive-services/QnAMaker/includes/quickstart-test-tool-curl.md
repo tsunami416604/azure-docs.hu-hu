@@ -8,69 +8,477 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/20/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 0677a361e853f778894b6a62a054636e3276b364
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 24299ea999ecb45f60f00d8b84c70cf748e9d0c2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424411"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109634"
 ---
 Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legújabb [**curl**](https://curl.haxx.se/).
-* [QnA Maker szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) kell rendelkeznie, és a [Tudásbázisban kérdésekkel és válaszokkal](../Tutorials/create-publish-query-in-portal.md)kell rendelkeznie.
+* Rendelkeznie kell
+    * Egy [QnA Maker szolgáltatás](../How-To/set-up-qnamaker-service-azure.md)
+    * Egy betanított és közzétett Tudásbázis [az előző rövid](../Quickstarts/add-question-metadata-portal.md)útmutatóból, amely a metaadatokkal és a Chit-csevegéssel lett kiképezve kérdésekkel és válaszokkal.
 
-## <a name="publish-to-get-endpoint"></a>Közzététel a végpont beszerzéséhez
+> [!NOTE]
+> Ha készen áll arra, hogy a tudásalapú kérdésre válaszoljon, be kell [tanítania](../Quickstarts/create-publish-knowledge-base.md#save-and-train) és [közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) kell tennie a tudásbázist. A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. A **curl** lapon láthatók azok a beállítások, amelyek szükségesek a parancssori eszköz válaszának létrehozásához.
 
-Ha készen áll arra, hogy megválaszolja a Tudásbázis kérdését, [tegye közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
+## <a name="use-metadata-to-filter-answer"></a>A válasz szűrése metaadatok használatával
 
-## <a name="use-production-endpoint-with-curl"></a>Üzemi végpont használata a cURL használatával
+A metaadatokon alapuló válaszhoz használja az előző gyors lekérdezési tudásbázist.
 
-A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. A **curl** lapon láthatók azok a beállítások, amelyek szükségesek a válasz létrehozásához a parancssori [eszközről.](https://www.getpostman.com)
-
-[Közzétételi eredmények ![](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
-
-A CURL-beli válasz létrehozásához hajtsa végre a következő lépéseket:
-
-1. Másolja a szöveget a CURL lapon. 
-1. Nyisson meg egy parancssori vagy terminált, és illessze be a szöveget.
-1. Szerkessze a kérdést, hogy releváns legyen a Tudásbázisban. Ügyeljen arra, hogy ne távolítsa el a kérdést körülvevő JSON-t.
-1. Adja meg a parancsot. 
-1. A válasz tartalmazza a válaszra vonatkozó információkat. 
+1. A Tudásbázis **Beállítások** lapján válassza a **curl** fület egy példaként szolgáló curl-parancs megjelenítéséhez, amelyet a rendszer a Tudásbázisból kapott válasz létrehozásához használ.
+1. Másolja a parancsot egy szerkeszthető környezetbe (például szövegfájlba), így szerkesztheti a parancsot. Szerkessze a kérdés értékét a következőképpen, hogy a rendszer a metaadatokat használja a QnA-készletek szűrőként való `service:qna_maker`.
 
     ```bash
-    > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+
+    A kérdés csak egyetlen szó, `size`, amely a két QnA-készlet bármelyikét visszaállíthatja. A `strictFilters` Array azt jelzi, hogy a válasz csak a `qna_maker` válaszokra van korlátozva.
+
+1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek. A következő cURL-válasz formázva lett az olvashatóság érdekében:
+
+    ```JSON
     {
-      "answers": [
-        {
-          "questions": [
-            "How do I programmatically update my Knowledge Base?"
-          ],
-          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
-          "score": 100.0,
-          "id": 18,
-          "source": "Custom Editorial",
-          "metadata": [
+        "answers": [
             {
-              "name": "category",
-              "value": "api"
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
+                "score": 68.76,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "service",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
             }
-          ]
-        }
-      ]
+        ],
+        "debugInfo": null
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Átmeneti végpont használata a cURL használatával
+    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános válasz `No good match found in KB.` adja vissza.
 
-Ha az átmeneti végponttól választ szeretne kapni, használja a `isTest` Body (törzs) tulajdonságot.
+## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
+
+A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. A hibakeresési információkkal kapcsolatos válasz létrehozásához adja hozzá a `debug` tulajdonságot:
+
+```json
+Debug: {Enable:true}
+```
+
+1. Szerkessze a cURL parancsot úgy, hogy tartalmazza a hibakeresési tulajdonságot a további információk megtekintéséhez.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+
+1. A válasz tartalmazza a válaszra vonatkozó információkat. A következő JSON-kimenetben néhány hibakeresési részlet lecserélve a rövid időpontra.
+
+    ```console
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How do I share a knowledge base with others?"
+                ],
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) how to collaborate on a knowledge base.",
+                "score": 56.07,
+                "id": 5,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": {
+            "userQuery": {
+                "question": "How do I programmatically update my Knowledge Base?",
+                "top": 1,
+                "userId": null,
+                "strictFilters": [],
+                "isTest": false,
+                "debug": {
+                    "enable": true,
+                    "recordL1SearchLatency": false,
+                    "mockQnaL1Content": null
+                },
+                "rankerType": 0,
+                "context": null,
+                "qnaId": 0,
+                "scoreThreshold": 0.0
+            },
+            "rankerInfo": {
+                "specialFuzzyQuery": "how do i programmatically~6 update my knowledge base",
+                "synonyms": "what s...",
+                "rankerLanguage": "English",
+                "rankerFileName": "https://qnamakerstore.blob.core.windows.net/qnamakerdata/rankers/ranker-English.ini",
+                "rankersDirectory": "D:\\home\\site\\wwwroot\\Data\\QnAMaker\\rd0003ffa60fc45.24.0\\RankerData\\Rankers",
+                "allQnAsfeatureValues": {
+                    "WordnetSimilarity": {
+                        "5": 0.54706300120043716,...
+                    },
+                    ...
+                },
+                "rankerVersion": "V2",
+                "rankerModelType": "TreeEnsemble",
+                "rankerType": 0,
+                "indexResultsCount": 25,
+                "reRankerResultsCount": 1
+            },
+            "runtimeVersion": "5.24.0",
+            "indexDebugInfo": {
+                "indexDefinition": {
+                    "name": "064a4112-bd65-42e8-b01d-141c4c9cd09e",
+                    "fields": [...
+                    ],
+                    "scoringProfiles": [],
+                    "defaultScoringProfile": null,
+                    "corsOptions": null,
+                    "suggesters": [],
+                    "analyzers": [],
+                    "tokenizers": [],
+                    "tokenFilters": [],
+                    "charFilters": [],
+                    "@odata.etag": "\"0x8D7A920EA5EE6FE\""
+                },
+                "qnaCount": 117,
+                "parameters": {},
+                "azureSearchResult": {
+                    "continuationToken": null,
+                    "@odata.count": null,
+                    "@search.coverage": null,
+                    "@search.facets": null,
+                    "@search.nextPageParameters": null,
+                    "value": [...],
+                    "@odata.nextLink": null
+                }
+            },
+            "l1SearchLatencyInMs": 0,
+            "qnaL1Results": {...}
+        },
+        "activeLearningEnabled": true
+    }
+    ```
+
+## <a name="use-test-knowledge-base"></a>Tesztelési Tudásbázis használata
+
+Ha a teszt Tudásbázisból szeretne választ kapni, használja a `isTest` Body tulajdonságot.
+
+A tulajdonság egy logikai érték.
 
 ```json
 isTest:true
 ```
 
+A cURL parancs így néz ki:
 
+```bash
+curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
+
+A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-lekérdezés.
+
+> [!NOTE]
+> Ha a teszt és a közzétett tudásbázisok pontosan ugyanazok, akkor továbbra is lehet némi eltérés, mert a tesztelési index az erőforrás összes tudásbázisa között meg van osztva.
+
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>A cURL használata a Chit-csevegési válaszok lekérdezéséhez
+
+1. A cURL-kompatibilis terminálon használjon egy, a felhasználótól származó bot-beszélgetés-befejezési utasítást, például `Thank you` kérdést. Nincsenek beállítva más tulajdonságok.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+
+1. Futtassa a cURL parancsot, és fogadja a JSON-választ, beleértve a pontszámot és a választ.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. QnA Maker az összes kapcsolódó kérdést, valamint a Chit-Chat metaadat-címkét tartalmazó metaadat-tulajdonságot is visszaadja.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>A cURL használata küszöbértékkel és alapértelmezett választ
+
+A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték nem teljesül, a rendszer az alapértelmezett választ adja vissza.
+
+1. Használja a következő cURL-parancsot, és cserélje le a kifejezést a saját erőforrás nevére, a Tudásbázis-AZONOSÍTÓra és a végponti kulcsra, hogy megkérdezzen egy `size` választ a 80%-os vagy annál nagyobb küszöbértékkel. A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%, ehelyett a Tudásbázis létrehozásakor megadott alapértelmezett választ kell visszaadnia.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Futtassa a cURL parancsot, és fogadja a JSON-választ, beleértve a pontszámot és a választ.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker egy `0`pontszámot adott vissza, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. QnA Maker az összes kapcsolódó kérdést, valamint a Chit-Chat metaadat-címkét tartalmazó metaadat-tulajdonságot is visszaadja.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>A cURL használata küszöbértékkel és alapértelmezett választ
+
+A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték nem teljesül, a rendszer az alapértelmezett választ adja vissza.
+
+1. Adja hozzá a `threshold` tulajdonságot, ha választ szeretne kapni a 80%-os vagy annál nagyobb küszöbértékű `size`. A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%. Az eredmény a Tudásbázis létrehozásakor megadott alapértelmezett választ adja vissza.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Futtassa a cURL parancsot, és fogadja a JSON-választ.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker egy `0`pontszámot adott vissza, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
+
+1. Módosítsa a küszöbértéket 60%-ra, és kérje újra a lekérdezést:
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ```
+
+    The returned JSON found the answer.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "score": 71.1,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "server",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```

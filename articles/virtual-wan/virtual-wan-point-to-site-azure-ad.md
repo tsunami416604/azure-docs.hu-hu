@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782430"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108318"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -20,7 +20,7 @@ Ez az oktatóanyag bemutatja, hogyan konfigurálhatja az Azure AD-hitelesítést
 
 Ehhez a kapcsolattípushoz konfigurálni kell egy ügyfelet az ügyfélszámítógépen. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * WAN létrehozása
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -86,19 +86,17 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 
 A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatására vonatkozó paramétereket.
 
-1. Állítsa be a következő változókat, és szükség szerint cserélje le az értékeket a környezetéhez.
+1. A virtuális WAN területen válassza a **felhasználói VPN-konfigurációk**lehetőséget.
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![Új konfiguráció](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. A konfiguráció létrehozásához futtassa a következő parancsokat:
+2. kattintson a **+ felhasználói VPN-konfiguráció létrehozása**lehetőségre.
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![Új konfiguráció](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. Adja meg az adatokat, és kattintson a **Létrehozás** gombra.
+
+   ![Új konfiguráció](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>Hub-hozzárendelés szerkesztése
 

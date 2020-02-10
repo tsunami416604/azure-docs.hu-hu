@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898843"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108254"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -39,7 +39,7 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
 - **Felügyelt verzió** – az API Management-példányba épített portál szerkesztésével és testreszabásával, és az URL-`<your-api-management-instance-name>.developer.azure-api.net`keresztül érhető el. A [jelen dokumentációs cikkből](api-management-howto-developer-portal-customize.md) megtudhatja, hogyan érheti el és szabhatja testre a felügyelt portált.
-- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A portált a legújabb verzióra is frissítenie kell. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódját][1] és [a widget megvalósítását ismertető oktatóanyagot][4]. A [felügyelt verzió oktatóanyaga](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a saját üzemeltetésű verzióban is szerepel.
+- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A portált a legújabb verzióra is frissítenie kell. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódját][1] és [a widget megvalósítását ismertető oktatóanyagot][3]. A [felügyelt verzió oktatóanyaga](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a saját üzemeltetésű verzióban is szerepel.
 
 ## <a name="portal-architectural-concepts"></a>Portál építészeti fogalmak
 
@@ -98,13 +98,13 @@ Az interaktív Fejlesztői konzolon az OAuth-mel való hitelesítés még nem t�
 
 ### <a name="has-the-old-portal-been-deprecated"></a>Elavult a régi portál?
 
-A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új funkciókat kizárólag az új fejlesztői portálon tesszük elérhetővé.
+A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új szolgáltatások csak az új fejlesztői portálon lesznek implementálva.
 
 Az örökölt portálok elavulása külön lesz bejelentve. Ha kérdése, problémája vagy megjegyzése van, emelje fel őket [egy dedikált GitHub-problémával](https://github.com/Azure/api-management-developer-portal/issues/121).
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>A portálon nem támogatottak a szükséges funkciók
 
-Használja a saját üzemeltetésű verziót, és [implementálja saját widgetjét][4].
+Használja a saját üzemeltetésű verziót, és [implementálja saját widgetjét][3].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Hogyan automatizálható a portál üzembe helyezése?
 
@@ -140,7 +140,7 @@ A legtöbb konfigurációs módosítás (például a VNet, a bejelentkezés és 
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>CORS hibaüzenetet kapok az interaktív konzol használatakor
 
-Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](api-management-cross-domain-policies.md#CORS) az API (ok) ra. Az összes paramétert manuálisan is megadhatja, vagy helyettesítő karakteres `*` értékeket használhat. Példa:
+Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](api-management-cross-domain-policies.md#CORS) az API (ok) ra. Az összes paramétert manuálisan is megadhatja, vagy helyettesítő karakteres `*` értékeket használhat. Például:
 
 ```XML
 <cors>
@@ -232,14 +232,12 @@ További információ az új fejlesztői portálról:
 
 - [A felügyelt fejlesztői portál elérése és testreszabása](api-management-howto-developer-portal-customize.md)
 - [A portál saját üzemeltetésű verziójának beállítása][2]
-- [Saját widget implementálása][4]
+- [Saját widget implementálása][3]
 
 Egyéb erőforrások tallózása:
 
 - [GitHub-adattár a forráskódtal][1]
-- [A projekt nyilvános ütemterve][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

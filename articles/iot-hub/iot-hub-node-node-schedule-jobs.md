@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147646"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110844"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (node. js)
 
@@ -30,7 +30,7 @@ Elméletileg a feladatok az alábbi műveletek egyikét betakarják, és nyomon 
 
 További információk a következő cikkekben felsorolt lehetőségekről:
 
-* Eszköz Twin és tulajdonságai: [Ismerkedés az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md) és [oktatóanyaggal: Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
+* Eszközök Twin és Properties: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md) és [oktatóanyaggal: az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
 
 * Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok és [oktatóanyag: közvetlen metódusok](quickstart-control-device-node.md)
 
@@ -53,6 +53,8 @@ Az oktatóanyag végén két Node. js-alkalmazás található:
 * Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -89,7 +91,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő �
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le `{yourDeviceConnectionString}` a helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le a `{yourDeviceConnectionString}` helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -166,7 +168,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közve
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Adja hozzá a következő változó deklarációkat. A helyőrző értékét cserélje le az [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)beolvasása elemre. `{iothubconnectionstring}` Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
+5. Adja hozzá a következő változó deklarációkat. A `{iothubconnectionstring}` helyőrző értékét cserélje le az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -291,10 +293,10 @@ Most már készen áll az alkalmazások futtatására.
 
    ![A szimulált eszköz alkalmazásának futtatása](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 
-Ha továbbra is szeretné megkezdeni a IoT hub és az eszközkezelés mintáit, például a távoli belső [vezérlőprogram frissítését, tekintse meg az oktatóanyagot: A belső vezérlőprogram frissítése](tutorial-firmware-update.md).
+Ha továbbra is szeretné megkezdeni a IoT Hub és az eszközkezelés mintáit, például a távoli belső vezérlőprogram frissítését, tekintse meg az [oktatóanyag: a belső vezérlőprogram frissítését](tutorial-firmware-update.md)ismertető témakört.
 
 A IoT Hub első lépéseinek folytatásához tekintse meg a [Azure IoT Edge első lépéseivel](../iot-edge/tutorial-simulate-device-linux.md)foglalkozó témakört.

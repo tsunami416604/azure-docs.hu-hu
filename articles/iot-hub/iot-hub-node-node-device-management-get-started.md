@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147450"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110916"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Ismerkedés az Eszközkezelővel (node. js)
 
@@ -29,15 +29,17 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Az oktatóanyag végén két Node. js-konzollal rendelkező alkalmazás található:
 
-* a korábban létrehozott **dmpatterns_getstarted_device. js**a IoT hubhoz csatlakozik, és a rendszer újraindítási közvetlen módszert kap, szimulálja a fizikai újraindítást, és az utolsó újraindítás időpontját jelenti.
+* **dmpatterns_getstarted_device. js**, amely a korábban létrehozott eszköz identitásával csatlakozik az IoT hubhoz, a rendszer újraindítási közvetlen metódust kap, szimulál egy fizikai újraindítást, és az utolsó újraindítás idejét jelenti.
 
-* a **dmpatterns_getstarted_service. js**egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
+* **dmpatterns_getstarted_service. js**, amely közvetlen metódust hív meg a szimulált eszköz alkalmazásban, megjeleníti a választ, és megjeleníti a frissített jelentett tulajdonságokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -80,7 +82,7 @@ Ebben a szakaszban:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje le `{yourdeviceconnectionstring}` a helyőrző értékét a korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során átmásolt eszköz-csatlakoztatási karakterláncra.  
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt.  Cserélje le a `{yourdeviceconnectionstring}` helyőrző értékét a korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során átmásolt eszköz-összekapcsolási karakterláncra.  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -180,7 +182,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy távol
     var Client = require('azure-iothub').Client;
     ```
 
-5. Adja hozzá a következő változó deklarációkat, és `{iothubconnectionstring}` cserélje le a helyőrző értékét a korábban átmásolt IoT hub-karakterláncra a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése:
+5. Adja hozzá a következő változó deklarációkat, és cserélje le a `{iothubconnectionstring}` helyőrző értékét a korábban átmásolt IoT hub-karakterláncra a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

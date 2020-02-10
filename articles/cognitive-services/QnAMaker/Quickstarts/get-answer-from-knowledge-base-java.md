@@ -2,15 +2,15 @@
 title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Java – QnA Maker'
 description: Ez a Java REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: b65677be32519a9dd2716a2e365abfb2ca1291d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 96b8b870dc82bfb08aca2a1d1acb2958ff7eb2f3
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842971"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109877"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Gyors útmutató: válaszok egy tudásbázisbeli kérdésre Java használatával
 
@@ -21,10 +21,10 @@ Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból sz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Hozzá kell adnia a következő Apache HTTP-ügyféloldali kódtárakat a projekthez:
-    * httpclient-4.5.3. jar
-    * httpcore-4.4.6. jar
-    * Commons-Logging-1.2. jar
+* Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Az alábbi Apache HTTP-ügyfélkönyvtárak hozzáadása a projekthez kell:
+    * httpclient-4.5.3.jar
+    * httpcore-4.4.6.jar
+    * Commons-naplózás – 1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza a **kulcsok** elemet az **Erőforrás-kezelés** területen az QnA Maker erőforráshoz tartozó Azure-irányítópulton.
 * **Közzétételi** oldal beállításai Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. [Ezt az alapszintű tudásbázist](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)töltheti le és használhatja.
@@ -71,9 +71,9 @@ További információ a [kérelemről](../how-to/metadata-generateanswer-usage.m
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
+Hozhat létre, és a program futtatása a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
-1. Hozza létre a fájlt:
+1. A fájl létrehozása:
 
     ```bash
     javac -cp "lib/*" GetAnswer.java

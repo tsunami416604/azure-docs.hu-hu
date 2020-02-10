@@ -2,15 +2,15 @@
 title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, go-QnA Maker'
 description: Ez a go REST-alapú rövid útmutató végigvezeti Önt a tudásalapú válasz beszerzésén, programozott módon.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: 2a91342be0f1bfa440d6c4092d94eb03eed554ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a4b3fe6e037b73a33fe452c7c16471bfb88d6067
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844228"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109893"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Gyors útmutató: válaszok kérése egy tudásalapú Tudásbázisból a go használatával
 
@@ -65,9 +65,9 @@ További információ a [kérelemről](../how-to/metadata-generateanswer-usage.m
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
+Hozhat létre, és a program futtatása a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
-1. Hozza létre a fájlt:
+1. A fájl létrehozása:
 
     ```bash
     go build get-answer.go

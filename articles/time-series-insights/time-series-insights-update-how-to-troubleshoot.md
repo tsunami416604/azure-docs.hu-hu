@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861574"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110297"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Előzetes verziójú környezet diagnosztizálása és megoldása
 
@@ -75,7 +75,7 @@ Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probléma: az esemény forrásának időbélyeg-tulajdonságának neve nem működik
 
-Győződjön meg arról, hogy a név és az érték megfelel a következő szabályoknak:
+Győződjön meg arról, hogy a nevét és értékét megfelelnek-e a következő szabályok:
 
 * Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
 * Az eseményforrás által a JSON-karakterláncként kapott időbélyeg-tulajdonság értéke `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ilyen karakterlánc például `“2008-04-12T12:53Z”`.

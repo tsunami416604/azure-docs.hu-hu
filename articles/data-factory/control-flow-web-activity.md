@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678174"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110019"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára.
@@ -67,13 +67,13 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A webes tevékenység neve | Sztring | Igen
 type | **Webtevékenységre**kell beállítani. | Sztring | Igen
-method | A célként megadott végpont REST API-metódusa. | karakterlánc. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
+method | A célként megadott végpont REST API-metódusa. | sztring elemet. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Igen
 fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
 törzse | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adatait tartalmazó sémában](#request-payload-schema) . | A POST/PUT metódusokhoz szükséges.
 hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-Adatkészletek | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
-LinkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
+datasets | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
+linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
 
 > [!NOTE]
 > A webes tevékenység által meghívott REST-végpontoknak JSON típusú választ kell visszaadniuk. A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz.
@@ -90,10 +90,14 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="none"></a>None
+Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
+
+### <a name="none"></a>Nincs
+
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>Alapszintű
+
 Adja meg az alapszintű hitelesítéshez használni kívánt felhasználónevet és jelszót.
 
 ```json
@@ -105,6 +109,7 @@ Adja meg az alapszintű hitelesítéshez használni kívánt felhasználónevet 
 ```
 
 ### <a name="client-certificate"></a>Ügyféltanúsítvány
+
 A PFX-fájl és a jelszó Base64 kódolású tartalmának megadása.
 
 ```json
@@ -125,6 +130,9 @@ Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatá
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> Ha az adat-előállító git-tárházral van konfigurálva, az alapszintű vagy az ügyféltanúsítvány-alapú hitelesítés használatához a hitelesítő adatait Azure Key Vault kell tárolnia. A Azure Data Factory nem tárol jelszavakat a git-ben.
 
 ## <a name="request-payload-schema"></a>Adattartalom-séma kérése
 Ha a POST/PUT metódust használja, a Body (törzs) tulajdonság a végpontnak elküldhető adattartalmat jelöli. A hasznos adatok részeként a társított szolgáltatásokat és adatkészleteket is átadhatja. Itt látható a hasznos adatok sémája:
@@ -243,7 +251,7 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat:
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

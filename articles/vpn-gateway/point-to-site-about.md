@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896099"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110446"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN-ről
 
-A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A P2S-kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
+A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. Ez a cikk a Resource Manager-alapú üzemi modell vonatkozik.
 
 ## <a name="protocol"></a>Milyen protokollt használ a P2S?
 
@@ -45,7 +45,7 @@ Az ügyféltanúsítvány érvényesítését a VPN-átjáró hajtja végre, és
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Hitelesítés natív Azure Active Directory hitelesítés használatával
 
-Az Azure AD-hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a Azure Active Directory hitelesítő adataik használatával. A natív Azure AD-hitelesítés csak az OpenVPN protokoll és a Windows 10 esetében támogatott, és az [Azure VPN-ügyfél (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)használatát igényli.
+Az Azure AD-hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a Azure Active Directory hitelesítő adataik használatával. A natív Azure AD-hitelesítés csak az OpenVPN protokoll és a Windows 10 esetében támogatott, és az [Azure VPN-ügyfél](https://go.microsoft.com/fwlink/?linkid=2117554)használatát igényli.
 
 A natív Azure AD-hitelesítéssel kihasználhatja az Azure AD feltételes hozzáférését, valamint a VPN-hez készült Multi-Factor Authentication (MFA) funkciókat is.
 
@@ -55,7 +55,7 @@ Magas szinten az alábbi lépéseket kell elvégeznie az Azure AD-hitelesítés 
 
 2. [Azure AD-hitelesítés engedélyezése az átjárón](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Azure VPN-ügyfél letöltése és konfigurálása (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN-ügyfél letöltése és konfigurálása](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományi kiszolgáló használatával
@@ -68,7 +68,7 @@ A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal is integrálható.
 
 A RADIUS-kiszolgálók integrálása más külső identitási rendszerekkel is elvégezhető. Ez számos hitelesítési lehetőséget nyit meg a P2S VPN-hez, beleértve a többtényezős beállításokat is.
 
-![pont – hely kapcsolat](./media/point-to-site-about/p2s.png "Külső végpont és telephely közötti")
+![pont – hely kapcsolat](./media/point-to-site-about/p2s.png "Pont–hely kapcsolat")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél-konfigurációs követelmények?
 
@@ -183,7 +183,7 @@ A P2S-konfiguráció az az parancssori felülettel és a következő paranccsal 
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 

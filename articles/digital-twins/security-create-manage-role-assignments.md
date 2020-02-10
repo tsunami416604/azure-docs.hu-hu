@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438061"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110404"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -36,12 +36,12 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Név | Szükséges | Type (Típus) | Leírás |
+| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
 | objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId a `“@”` karakterrel kell kezdődnie. |
 | objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
-| path | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor `"/"`t kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
+| elérési út | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor `"/"`t kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
 | tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. `DeviceId` és `TenantId` ObjectIdTypes nem engedélyezett. `UserId` és `ServicePrincipalId` ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíciós azonosítók
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 A **rendszergazdai** szerepkörrel rendelkező felhasználók ezt követően az URL-címre egy hitelesített http post-kérést rendelhetnek a felhasználóhoz.
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ A következő JSON-törzstel:
 
 Az összes elérhető szerepkör (szerepkör-definíció) listázásához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely az egyes hozzárendelt s
 
 Egy adott szerepkör-hozzárendelés vizsgálatához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Paraméter értéke** | **Kötelező** |  **Típus** |  **Leírás** |
+| **Paraméter értéke** | **Szükséges** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Igaz | Sztring |   A UserId-objectIdType objectId. |
-| YOUR_PATH | Igaz | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
-| YOUR_ACCESS_TYPE |  Igaz | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
-| YOUR_RESOURCE_TYPE | Igaz | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
+| YOUR_USER_ID |  True (Igaz) | Sztring |   A UserId-objectIdType objectId. |
+| YOUR_PATH | True (Igaz) | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
+| YOUR_ACCESS_TYPE |  True (Igaz) | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
+| YOUR_RESOURCE_TYPE | True (Igaz) | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
 Egy sikeres kérelem logikai `true` vagy `false`t ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
 
@@ -174,11 +174,11 @@ Egy sikeres kérelem logikai `true` vagy `false`t ad vissza, amely jelzi, hogy a
 
 Egy elérési útra vonatkozó összes szerepkör-hozzárendelés beszerzéséhez hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Value (Díj) | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_PATH | A terület teljes elérési útja |
 
@@ -200,7 +200,7 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely a kiválasztott **path**
 
 A címzettek engedélyének visszavonásához törölje a szerepkör-hozzárendelést egy hitelesített HTTP-TÖRLÉSi kérelem létrehozásával:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ A sikeres TÖRLÉSi kérelem egy 204-es válasz állapotot ad vissza. Ellenőriz
 
 Szerepkör-hozzárendelés létrehozásához hozzon létre egy hitelesített HTTP POST-kérelmet az URL-címre:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -236,7 +236,7 @@ Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott s
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
 ```
 
-## <a name="configuration-examples"></a>Példák konfigurációra
+## <a name="configuration-examples"></a>Konfigurációs példák
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos gyakran észlelt szerepkör-hozzárendelési forgatókönyvben.
 

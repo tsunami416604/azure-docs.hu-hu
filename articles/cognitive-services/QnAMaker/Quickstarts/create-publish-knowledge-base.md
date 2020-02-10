@@ -1,61 +1,55 @@
 ---
 title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy QnA Maker tudásbázist (KB) a saját tartalmakból, például a GYIK-ből vagy a termék-kézikönyvekből. Ebben a példában a QnA Maker tudásbázist egy egyszerű gyakori kérdések weboldaláról hozza létre a BitLocker-kulcs helyreállításával kapcsolatos kérdések megválaszolásához.
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a kérdésekre QnA Maker.
 ms.topic: quickstart
-ms.date: 01/29/2020
-ms.author: diberry
-ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/08/2020
+ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901676"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108726"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
-Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a BitLocker-kulcsok helyreállításával kapcsolatos kérdésekre.
+Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a kérdésekre QnA Maker.
 
-Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarthatja a felhasználókat.
-
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+> * A Azure Portalban létrehozott QnA Maker [erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
 
-## <a name="create-a-new-qna-maker-knowledge-base"></a>Új QnA Maker Tudásbázis létrehozása
+## <a name="create-your-first-qna-maker-knowledge-base"></a>Az első QnA Maker Tudásbázis létrehozása
 
 1. Jelentkezzen be az [QnAMaker.ai](https://QnAMaker.ai) -portálra az Azure-beli hitelesítő adataival.
 
 1. A QnA Maker portálon válassza a **Tudásbázis létrehozása**elemet.
 
-1. A **Létrehozás** lapon válassza a **QnA szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást.
+1. A **Létrehozás** lapon hagyja ki az **1. lépést** , ha már rendelkezik a QnA Maker erőforrással.
 
-1. A Azure Portal hozza létre az erőforrást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
-1. Térjen vissza a QnA Maker portálra, frissítse a webhelyet a portálon, és folytassa a Tudásbázis létrehozásával. Válasszon ki egy meglévő bérlőt, előfizetést és az új erőforrást. Válassza ki a nyelvet. Ez a QnA Maker szolgáltatás összes tudásbázisának nyelve lesz.
+    Ha még nem hozta létre az erőforrást, válassza **a QnA-szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
+
+    Amikor elkészült az erőforrás létrehozásával a Azure Portalban, térjen vissza a QnA Maker portálra, frissítse a böngésző oldalát, és folytassa a **2. lépéssel**.
+
+1. A **3. lépésben**válassza ki az Active Directoryt, előfizetést, szolgáltatást (erőforrás) és a szolgáltatásban létrehozott összes Tudásbázis nyelvét.
 
    ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. Nevezze el a Tudásbázisban a **minta QNA kb-ot**.
+1. A **3. lépésben**nevezze el az Ön tudásbázisát a **minta QnA kb**-ra.
 
-1. Mintaként szolgáló Word-dokumentum hozzáadása URL-címként:
+1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
 
-    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
+    |Beállítás|Érték|
+    |--|--|
+    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
+    |**Alapértelmezett válasz szövege**| `Quickstart - default answer not found.`|
+    |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**Chit-csevegés**|**Professional** kiválasztása|
 
-1. Válassza a(z) `+ Add URL` lehetőséget.
+1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
 
-1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra.
-
-1. Válassza **a kb létrehozása**lehetőséget.
-
-    A kinyerési folyamat eltarthat néhány percig, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
+    A kinyerési folyamat néhány percet vesz igénybe, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
 
     Miután QnA Maker sikeresen létrehozta a tudásbázist, megnyílik a **Tudásbázis** lap. Ezen a lapon szerkesztheti a Tudásbázis tartalmát.
 
@@ -78,7 +72,7 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 ## <a name="save-and-train"></a>Mentés és betanítás
 
-Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás) elemre, amely menti a módosításokat és betanítja a QnA Maker-modellt. A rendszer a módosításokat csak akkor őrzi meg, ha menti őket.
+A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre a módosítások mentéséhez és a QnA Maker betanításához. A rendszer a módosításokat csak akkor őrzi meg, ha menti őket.
 
 ## <a name="test-the-knowledge-base"></a>A Tudásbázis tesztelése
 
@@ -145,19 +139,21 @@ Létrehozott egy új tudásbázist, hozzáadott egy nyilvános URL-címet a tud�
 
 Miután közzétette a tudásbázist, létrehozott egy robotot, és tesztelte a robotot.
 
-Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, és törölni kellene a tartalmat.
+Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, vagy törölni kellene a tartalmat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
+Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ:
+> [!div class="nextstepaction"]
+> [Metaadatokkal kapcsolatos kérdések hozzáadása](add-question-metadata-portal.md)
+
+További információk:
 
 * [Markdown-formátum a válaszokban](../reference-markdown-format.md)
 * QnA Maker [adatforrások](../concepts/knowledge-base.md).
 * A [robot erőforrás-konfigurációs beállításai](../tutorials/create-qna-bot.md).
 
-> [!div class="nextstepaction"]
-> [Metaadatokkal kapcsolatos kérdések hozzáadása](add-question-metadata-portal.md)
+

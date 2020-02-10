@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474038"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108990"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
 
@@ -24,7 +24,7 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Hozzon létre egy QnA Maker szolgáltatást](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base) , vagy használjon egy meglévő szolgáltatást, amely az angol nyelvet használja az ebben a rövid útmutatóban használt minta doc-hoz.
+* [Hozzon létre egy QnA Maker szolgáltatást](create-publish-knowledge-base.md) , vagy használjon egy meglévő szolgáltatást, amely az angol nyelvet használja.
 * A [multi-turn minta `.docx` fájl](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) letöltése
 * Töltse le a [Batch Testing eszközt](https://aka.ms/qnamakerbatchtestingtool), bontsa ki a végrehajtható fájlt a `.zip` fájlból.
 
@@ -41,9 +41,16 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
     * Azure QnA szolgáltatás neve
     * Nyelv – az angol nyelv
 1. Adja meg a Tudásbázis neve `Multi-turn batch test quickstart` nevet.
-1. A **4. lépésben**jelölje be az **URL-címek,. PDF-vagy. docx-fájlok többszörös kibontásának engedélyezése**lehetőséget.
-1. Adja meg `Quickstart - can't find answer`**alapértelmezett válaszának szövegét** . Az éles Tudásbázisban ezeknek az információknak jobban kell megjelenniük a felhasználónak, de ebben a rövid útmutatóban egy egyszerű válasz működik.
-1. Továbbra is a **4. lépésben**válassza a **+ fájl hozzáadása** lehetőséget, majd válassza ki a letöltött `.docx` fájl listáját az előfeltételek között.
+
+1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
+
+    |Beállítás|Érték|
+    |--|--|
+    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
+    |**Alapértelmezett válasz szövege**| `Batch test - default answer not found.`|
+    |**+ Fájl hozzáadása**|Az előfeltételek között válassza ki a letöltött `.docx` fájl listáját.|
+    |**Chit-csevegés**|**Professional** kiválasztása|
+
 1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
 
     A létrehozási folyamat befejeződése után a portálon megjelenik a szerkeszthető Tudásbázis.
@@ -130,7 +137,7 @@ A következő diagram segítségével megismerheti, hogyan keresheti meg a vála
 |Oszlop száma|Nem kötelező oszlop|Az adatok helye|
 |--|--|--|
 |3|metaadatok|Meglévő Tudásbázis exportálása a meglévő _kulcshoz: érték_ párok.|
-|4|felül|Az `25` alapértelmezett értéke ajánlott.|
+|4|Top|Az `25` alapértelmezett értéke ajánlott.|
 |5|Kérdés-és Levelesláda-készlet azonosítója|A meglévő Tudásbázis exportálása az azonosító értékekhez. Azt is figyelje meg, hogy az azonosítók a kimeneti fájlban lettek visszaadva.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Metaadatok hozzáadása a tudásbázishoz
@@ -160,7 +167,7 @@ A Batch tesztelésének két fő forgatókönyve van:
 * **Csevegési naplófájlok feldolgozása** – a leggyakoribb válasz egy korábban láthatatlan kérdés – a leggyakoribb eset az, amikor a feldolgozáshoz a lekérdezéseket tartalmazó naplófájlt kell használnia, például egy csevegési robot felhasználói kérdéseit. Hozzon létre egy batch-fájl tesztet, amely csak a szükséges oszlopokkal rendelkezik. A teszt az egyes kérdések legfelső szintű válaszát adja vissza. Ez nem jelenti azt, hogy a legjobb válasz a helyes válasz. A teszt befejezése után lépjen be az érvényesítési tesztbe.
 * **Ellenőrzési teszt** – a várt válasz ellenőrzése. Ehhez a teszthez meg kell határozni, hogy a Batch-tesztben szereplő összes kérdés és a hozzá tartozó várt válasz érvényesítve lett. Ehhez manuális folyamatra lehet szükség.
 
-A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési naplók feldolgozására 
+A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési naplók feldolgozására
 
 1. Hozzon létre egy új batch-tesztelési fájlt, amely tartalmazza a választható adat`batch-test-data-2.tsv`. Adja hozzá a 6 sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a Top és a QnA set ID-t az egyes sorokhoz.
 

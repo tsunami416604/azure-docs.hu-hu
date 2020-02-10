@@ -2,15 +2,15 @@
 title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Python – QnA Maker'
 description: Ez a Python REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: f439a492e2e63e3f99f80004b387d9cfc415e4b0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7fe1ed140c53f93f2bd00847c5652906de998147
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842954"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109700"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Gyors útmutató: a Tudásbázis kérdéseire választ kaphat a Python használatával
 
@@ -59,7 +59,7 @@ A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`.
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
+Futtassa a programot a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
 Futtassa a fájlt:
 

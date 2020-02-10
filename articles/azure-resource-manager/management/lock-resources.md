@@ -2,40 +2,39 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644358"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109538"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
 Rendszergazdaként szüksége lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására annak érdekében, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
 * A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást. 
-* A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel. 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
 
 ## <a name="how-locks-are-applied"></a>A zárolások alkalmazása
 
 Ha egy fölérendelt hatókörben zárolja a zárolást, akkor a hatókörben lévő összes erőforrás örökli ugyanazt a zárolást. A később hozzáadott erőforrások még a szülőtől öröklik a zárolást. Az öröklés legszigorúbb zárolása elsőbbséget élvez.
 
-A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaz. További információ a felhasználók és szerepkörök engedélyeinek beállításáról: [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md).
+A szerepköralapú hozzáférés-vezérléstől eltérően a felügyeleti zárolások használatával korlátozásokat alkalmazhat az összes felhasználó és szerepkör között. További információ a felhasználók és szerepkörök engedélyeinek beállításáról: [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md).
 
-A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy SQL Database írásvédett zárolása például megakadályozza az adatbázis törlését vagy módosítását. Nem akadályozza meg az adatok létrehozását, frissítését és törlését az adatbázisban. Az adattranzakciók engedélyezettek, mert a rendszer nem küldi el ezeket a műveleteket a `https://management.azure.com`.
+A Resource Manager-zárolások csak olyan műveletekre vonatkoznak, amelyek a felügyeleti síkon történnek, és amelyek `https://management.azure.com`nak eljuttatott műveletekből állnak. A zárolások nem korlátozzák, hogy az erőforrások hogyan hajtják végre a saját funkcióit. Az erőforrás-módosítások korlátozottak, de az erőforrás-műveletek nem korlátozódnak. Egy SQL Database írásvédett zárolása például megakadályozza az adatbázis törlését vagy módosítását. Nem akadályozza meg az adatok létrehozását, frissítését és törlését az adatbázisban. Az adattranzakciók engedélyezettek, mert a rendszer nem küldi el ezeket a műveleteket a `https://management.azure.com`.
 
 A **readonly** utasítás alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. Az **írásvédett** zárolás az erőforrásra vagy az erőforrást tartalmazó erőforráscsoporthoz is alkalmazható. Az **írásvédett** zárolás által blokkolt műveletekkel kapcsolatos gyakori példák a következők:
 
-* A Storage-fiók **írásvédett** zárolása megakadályozza, hogy minden felhasználó a kulcsokat listázza. A kulcsok listázásának művelete POST kérelmen keresztül történik, mert a visszaadott kulcsok írási műveletekkel elérhetők.
+* A Storage-fiók **írásvédett** zárolása megakadályozza, hogy minden felhasználó a kulcsokat listázza. A kulcsok listázása művelet egy POST-kérésen keresztül történik, mert a visszaadott kulcsok írási műveletekhez érhetők el.
 
 * Egy App Service erőforrás **írásvédett** zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforrás fájljait, mert az interakció írási hozzáférést igényel.
 
 * Egy olyan erőforráscsoport **írásvédett** zárolása, amely egy virtuális gépet tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kik hozhatnak létre vagy törölhetnek zárolásokat
+
 Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="managed-applications-and-locks"></a>Felügyelt alkalmazások és zárolások
@@ -58,7 +57,12 @@ A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastru
 
 ![Szolgáltatás törlése](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure-beli biztonsági másolatok és zárolások
+
+Ha zárolja Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. **CanNotDelete** zárolás esetén a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.md).
+
 ## <a name="portal"></a>Portál
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Sablon
@@ -174,7 +178,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Az üzembe helyezett erőforrásokat az az [Lock Create](/cli/azure/lock#az-lock-create) paranccsal zárolhatja az Azure CLI használatával.
 

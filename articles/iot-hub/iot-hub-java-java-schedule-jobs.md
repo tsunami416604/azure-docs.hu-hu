@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: bbb78dcd36ec986cefc1d57e01396f285a6b30dd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9227192b2f7c554943fb3716ba1d1066f814c447
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161959"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110320"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezett és szórása (Java)
 
@@ -30,9 +30,9 @@ A feladatok becsomagolják az egyik műveletet, és nyomon követik a végrehajt
 
 Ha többet szeretne megtudni ezekről a képességekről, tekintse meg a következőt:
 
-* Eszköz Twin és tulajdonságai: [Ikereszközök – első lépések](iot-hub-java-java-twin-getstarted.md)
+* Eszközök Twin és Properties: Ismerkedés [az eszközök ikrekkel](iot-hub-java-java-twin-getstarted.md)
 
-* Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok [és oktatóanyag: Közvetlen metódusok használata](quickstart-control-device-java.md)
+* Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok és [oktatóanyag: közvetlen metódusok használata](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -58,6 +58,8 @@ Az oktatóanyag végén egy Java-konzolos eszköz-alkalmazás és egy Java-konzo
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -149,7 +151,7 @@ Az alkalmazás létrehozása:
     import java.util.UUID;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{youriothubconnectionstring}` le a szót a IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése során bemásolt elérési karakterlánccá:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{youriothubconnectionstring}`t az IoT hub-beli, a korábban a [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során átmásolt adatpontra:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -160,7 +162,7 @@ Az alkalmazás létrehozása:
     private static final long maxExecutionTimeInSeconds = 30;
     ```
 
-10. Adja hozzá a következő metódust az **app** osztályhoz, hogy ütemezzen egy feladatot, amely frissíti az eszköz dupla kiépítési és a **padló** kívánt tulajdonságait:
+10. Adja hozzá a következő metódust az **app** osztályhoz, hogy ütemezzen egy feladatot, amely frissíti az eszköz dupla **kiépítési** és a **padló** kívánt tulajdonságait:
 
     ```java
     private static JobResult scheduleJobSetDesiredProperties(JobClient jobClient, String jobId) {
@@ -258,7 +260,7 @@ Az alkalmazás létrehozása:
     }
     ```
 
-14. Frissítse a **fő** metódus aláírását, hogy tartalmazza `throws` a következő záradékot:
+14. Frissítse a **fő** metódus aláírását, hogy tartalmazza a következő `throws` záradékot:
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -309,9 +311,9 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-2. A parancssorban navigáljon a szimulált **eszköz** mappájához.
+2. A parancssorban navigáljon a **szimulált eszköz** mappájához.
 
-3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőségeket a függőségek csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz:
+3. Egy szövegszerkesztővel nyissa meg a **Pom. XML** fájlt a **szimulált-Device** mappában, és adja hozzá a következő függőségeket a **függőségek** csomóponthoz. Ez a függőség lehetővé teszi, hogy a **IOT-Device-Client** csomagot használja az alkalmazásban az IOT hub-vel való kommunikációhoz:
 
     ```xml
     <dependency>
@@ -367,7 +369,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
     import java.util.Scanner;
     ```
 
-9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje `{yourdeviceconnectionstring}` le a szöveget a korábban az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) részben átmásolt eszköz-csatlakoztatási sztringre:
+9. Adja hozzá a következő osztályszintű változókat az **App** osztályhoz. Cserélje le a `{yourdeviceconnectionstring}`t a korábban az [új eszköz regisztrálása az IoT hub-ben](#register-a-new-device-in-the-iot-hub) részben másolt eszköz-összekapcsolási karakterláncra:
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -425,7 +427,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
     }
     ```
 
-13. Frissítse a **fő** metódus aláírását, hogy tartalmazza `throws` a következő záradékot:
+13. Frissítse a **fő** metódus aláírását, hogy tartalmazza a következő `throws` záradékot:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
@@ -481,7 +483,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely kezeli a IoT H
 
 17. Mentse és zárjuk be a **simulated-device\src\main\java\com\mycompany\app\App.Java** fájlt.
 
-18. Hozza létre a **szimulált eszköz** alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a szimulált **-Device** mappára, és futtassa a következő parancsot:
+18. Hozza létre a **szimulált eszköz** alkalmazást, és javítsa ki az esetleges hibákat. A parancssorban navigáljon a **szimulált-Device** mappára, és futtassa a következő parancsot:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -499,7 +501,7 @@ Most már készen áll a konzolon futó alkalmazások futtatására.
 
    ![Az eszköz ügyfele elindul](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-2. A `schedule-jobs` mappában a parancssorban futtassa a következő parancsot a **Schedule-Jobs** szolgáltatás alkalmazás futtatásához két feladat futtatásához. Az első beállítja a kívánt tulajdonságértékek értékét, a második pedig a közvetlen metódust hívja:
+2. A `schedule-jobs` mappában egy parancssorban futtassa a következő parancsot a **Schedule-Jobs** szolgáltatás alkalmazás futtatásához két feladat futtatásához. Az első beállítja a kívánt tulajdonságértékek értékét, a második pedig a közvetlen metódust hívja:
 
    ```cmd\sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -511,7 +513,7 @@ Most már készen áll a konzolon futó alkalmazások futtatására.
 
    ![Az eszköz ügyfele válaszol a változásokra](./media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 

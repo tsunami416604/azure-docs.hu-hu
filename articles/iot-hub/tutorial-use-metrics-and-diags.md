@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7ce56237631b858347a99c310751d4f2c1506e10
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746199"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108233"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -41,6 +41,9 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
 - E-mail fiók, amely képes e-mailek fogadására.
+
+- Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -259,7 +262,7 @@ A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure
 
    **Értesítő e-mail címzettjei**: Itt adhatja meg az e-mail-címét. 
 
-   A szabály mentéséhez kattintson az **OK** gombra. 
+   A szabály mentéséhez kattintson **az OK** gombra. 
 
 5. Ekkor két riasztás jelenik meg a klasszikus riasztások ablaktáblán: 
 

@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 44b53cbfdb1982d9f9e6a0cb6408a16b1d660d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 48da92374a29b5319f0ae5eaa830f2e03511b512
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447423"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109471"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Java használatával
 
-Ez a REST-alapú rövid útmutató végigvezeti a Tudásbázis (KB) programozott közzétételének lépésein. A Publishing leküldi a Tudásbázis legújabb verzióját egy dedikált Azure Cognitive Search indexre, és létrehoz egy végpontot, amely meghívható az alkalmazásban vagy a csevegési robotban.
+A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A Publishing leküldi a Tudásbázis legújabb verzióját egy dedikált Azure Cognitive Search indexre, és létrehoz egy végpontot, amely meghívható az alkalmazásban vagy a csevegési robotban.
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
@@ -28,10 +28,10 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Hozzá kell adnia a következő Apache HTTP-ügyféloldali kódtárakat a projekthez:
-    * httpclient-4.5.3. jar
-    * httpcore-4.4.6. jar
-    * Commons-Logging-1.2. jar
+* Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Az alábbi Apache HTTP-ügyfélkönyvtárak hozzáadása a projekthez kell:
+    * httpclient-4.5.3.jar
+    * httpcore-4.4.6.jar
+    * Commons-naplózás – 1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 * QnA Maker Tudásbázis-azonosító a `kbid` lekérdezési karakterlánc paraméterben az alább látható módon található.
@@ -43,7 +43,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 > [!NOTE]
 > A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-Java** GitHub-tárházból](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)érhetők el.
 
-## <a name="create-a-java-file"></a>Java-fájl létrehozása
+## <a name="create-a-java-file"></a>Hozzon létre egy Java-fájlt
 
 Nyissa meg a VSCode, és hozzon létre egy `PublishKB.java`nevű új fájlt.
 
@@ -53,9 +53,9 @@ Nyissa meg a VSCode, és hozzon létre egy `PublishKB.java`nevű új fájlt.
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 
-## <a name="create-publishkb-class-with-main-method"></a>PublishKB osztály létrehozása a Main metódussal
+## <a name="create-publishkb-class-with-main-method"></a>Metoda main PublishKB osztály létrehozása
 
-A függőségek után adja hozzá a következő osztályt:
+A függőségek után adja hozzá a következő osztályok:
 
 ```Go
 public class PublishKB {
@@ -68,13 +68,13 @@ public class PublishKB {
 
 ## <a name="add-required-constants"></a>Szükséges konstansok hozzáadása
 
-A **Main** metódusban adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Cserélje le az értékeket a saját értékeire.
+A **Main** metódusban adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Cserélje le az értékeket a saját.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 
-## <a name="add-post-request-to-publish-knowledge-base"></a>POST kérelem hozzáadása a Tudásbázis közzétételéhez
+## <a name="add-post-request-to-publish-knowledge-base"></a>Adja hozzá a POST-kérés Tudásbázis közzététele
 
-A szükséges konstansok után adja hozzá a következő kódot, amely HTTPS-kérést küld a QnA Maker API egy Tudásbázis közzétételéhez, és fogadja a választ:
+A szükséges állandókat után adja hozzá a következő kódra, amely egy HTTPS-kérést küld a QnA Maker API Tudásbázis közzététele, és megkapja a választ:
 
 [!code-java[Add a POST request to publish knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=32-44 "Add a POST request to publish knowledge base")]
 
@@ -84,9 +84,9 @@ Bármely egyéb válasz esetében a rendszer a választ változtatás nélkül a
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
+Hozhat létre, és a program futtatása a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
-1. Hozza létre a fájlt:
+1. A fájl létrehozása:
 
     ```bash
     javac -cp "lib/*" PublishKB.java
@@ -102,7 +102,7 @@ Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automat
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](../Tutorials/create-publish-answer.md#generating-an-answer).
+Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](./get-answer-from-knowledge-base-java.md).
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

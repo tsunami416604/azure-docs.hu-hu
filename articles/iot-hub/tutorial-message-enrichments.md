@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c2ac5d3de37a1a89ebd63b89666f164444e0a63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773784"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108220"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
 
@@ -39,6 +39,9 @@ Az oktatóanyag elvégzéséhez az alábbi feladatokat végezheti el:
 
 * Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 * A [Visual Studio](https://www.visualstudio.com/) telepítése.
+
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +76,7 @@ Ha még nem tette meg, nyisson meg egy Azure [Cloud Shell ablakot](https://shell
 
 Itt láthatók a szkript által létrehozott erőforrások. A *dúsított* érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az *eredeti* érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Név | Value (Díj) |
+| Name (Név) | Érték |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | tároló neve | eredeti  |
@@ -255,7 +258,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, az üzenet-útválas
 
 2. Adja hozzá ezeket az értékeket a ContosoStorageEndpointEnriched-végpont listájához.
 
-   | Jelmagyarázat | Value (Díj) | Végpont (legördülő lista) |
+   | Paraméter | Érték | Végpont (legördülő lista) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -293,7 +296,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
 
    Itt láthatók a sablon betöltésével létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható. Ezek az Azure CLI-szkriptben használt értékek.
 
-   | Név | Value (Díj) |
+   | Name (Név) | Érték |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | tároló neve | eredeti  |

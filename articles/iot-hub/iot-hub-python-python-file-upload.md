@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001129"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110752"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
 
@@ -43,6 +43,8 @@ Az oktatóanyag végén futtassa a Python-konzol alkalmazást:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Fájl feltöltése egy eszköz alkalmazásból
@@ -62,7 +64,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
 
 3. Egy szövegszerkesztővel hozzon létre egy **FileUpload.py** -fájlt a munkamappában.
 
-4. Adja hozzá a `import` következő utasításokat és változókat a **FileUpload.py** fájl elejéhez. 
+4. Adja hozzá a következő `import` utasításokat és változókat a **FileUpload.py** -fájl elején. 
 
     ```python
     import time
@@ -78,7 +80,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
     FILENAME = "[File name for storage]"
     ```
 
-5. A fájlban cserélje le a `[Device Connection String]` helyére az IoT hub-eszközhöz tartozó kapcsolatok sztringjét. Cserélje `[Full path to file]` le a helyére a létrehozott tesztüzenet elérési útját, vagy bármely olyan fájlt, amelyet fel szeretne tölteni az eszközön. A `[File name for storage]` helyére írja a nevet, amelyet a blob Storage-ba való feltöltés után szeretne megadni a fájl számára. 
+5. A fájlban cserélje le a `[Device Connection String]`t az IoT hub-eszközének a kapcsolatok karakterláncára. Cserélje le a `[Full path to file]`t a létrehozott tesztüzenet elérési útjára, vagy bármely olyan fájlra, amelyet fel szeretne tölteni az eszközön. Cserélje le a `[File name for storage]`t arra a névre, amelyet a fájl a blob Storage-ba való feltöltése után szeretne megadni. 
 
 6. Visszahívás létrehozása a **upload_blob** függvényhez:
 
@@ -90,7 +92,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Adja hozzá a következő kódot az ügyfél összekapcsolásához és a fájl feltöltéséhez. Adja meg a `main` rutint is:
+7. Adja hozzá a következő kódot az ügyfél összekapcsolásához és a fájl feltöltéséhez. A `main` rutint is tartalmazza:
 
     ```python
     def iothub_file_upload_sample_run():
@@ -146,7 +148,7 @@ Most már készen áll az alkalmazás futtatására.
 
     ![Feltöltött fájl](./media/iot-hub-python-python-file-upload/2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
 

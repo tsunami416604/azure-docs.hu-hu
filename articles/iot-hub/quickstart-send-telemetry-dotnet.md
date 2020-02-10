@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4df1070fed456cc8f1d53d1b83b6d9b42ad0df03
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773801"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110551"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
 
@@ -47,7 +47,9 @@ A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Micr
 az extension add --name azure-cli-iot-ext
 ```
 
-Töltse le az Azure C# IoT-mintákat https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ről, és bontsa ki a zip-archívumot.
+Töltse le az Azure C# IoT-mintákat https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zipről, és bontsa ki a zip-archívumot.
+
+Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -129,7 +131,7 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 2. Nyissa meg a **ReadDeviceToCloudMessages.cs** fájlt egy Ön által választott szövegszerkesztőben. Frissítse a következő változókat, és mentse a fájlon végrehajtott módosításait.
 
-    | Változó | Value (Díj) |
+    | Változó | Érték |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a Event Hubs-kompatibilis végpontra, amelyet korábban jegyzett készített. |
     | `s_eventHubsCompatiblePath`     | Cserélje le a változó értékét arra a Event Hubs-kompatibilis elérési útra, amelyet korábban jegyzett készített. |

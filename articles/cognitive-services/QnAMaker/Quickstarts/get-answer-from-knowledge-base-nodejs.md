@@ -2,15 +2,15 @@
 title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Node. js – QnA Maker'
 description: Ez a Node. js REST-alapú rövid útmutató végigvezeti Önt a tudásalapú válasz beszerzésén, programozott módon.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: 89c7c71860accb322be522e1a655e4db6288634d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e8077235852e8776c4e52403cbac3e4bccc6c4f1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844245"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109777"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Gyors útmutató: válaszok a Tudásbázisban a Node. js-vel kapcsolatos kérdésekre
 
@@ -63,7 +63,7 @@ npm install request request-promise
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Futtassa a programot a parancssorból. A szolgáltatás automatikusan elküldi a kérést a QnA Maker APInak, majd a konzol ablakba fog nyomtatni.
+Futtassa a programot a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
 
 Futtassa a fájlt:
 

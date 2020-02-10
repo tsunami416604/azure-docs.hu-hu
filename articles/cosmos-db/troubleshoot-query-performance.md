@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264271"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109344"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -117,7 +117,7 @@ Az indexelési szabályzatnak tartalmaznia kell `WHERE` záradékok, `ORDER BY` 
 
 Ha egy egyszerű lekérdezést futtatunk a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten, a `WHERE` záradékban található tulajdonság indexelése sokkal alacsonyabb költséget vesz figyelembe.
 
-### <a name="original"></a>eredeti
+### <a name="original"></a>Eredeti
 
 Lekérdezés:
 
@@ -193,7 +193,7 @@ A lekérdezés más részei továbbra is használhatják az indexet, annak ellen
 
 Egy szűrővel és egy `ORDER BY` záradékkal rendelkező lekérdezések általában a tartomány indexét fogják használni, ha egy összetett indexből tudnak kiszolgálni. Az indexelési házirend módosításán kívül az összes tulajdonságot fel kell vennie az összetett indexbe a `ORDER BY` záradékba. A lekérdezés módosítása biztosítja, hogy az a kompozit indexet használja.  A hatás megfigyeléséhez futtasson egy lekérdezést a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten.
 
-### <a name="original"></a>eredeti
+### <a name="original"></a>Eredeti
 
 Lekérdezés:
 
@@ -224,8 +224,8 @@ Indexelési házirend:
 Frissített lekérdezés (a `ORDER BY` záradékban mindkét tulajdonságot tartalmazza):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -262,7 +262,7 @@ Frissített indexelési házirend:
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>ILLESZTÉSi kifejezések optimalizálása segédlekérdezés használatával
 A többértékű allekérdezések optimalizálhatja `JOIN` kifejezéseket úgy, hogy az összes Select-many kifejezés után lenyomja a predikátumokat, és nem a `WHERE` záradékban lévő összes kereszthivatkozást.
 
-Tekintse meg a következő lekérdezést:
+Vegye figyelembe a következő lekérdezést:
 
 ```sql
 SELECT Count(1) AS Count
@@ -315,7 +315,7 @@ Ezeket a lekérdezéseket a (z) a lekérdezésben szereplő partíciós kulccsal
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Azok a lekérdezések, amelyek tartomány-szűrői vannak a partíciós kulcson, vagy nincsenek szűrők a partíciós kulcson, a "ventilátor" kiválasztására és a fizikai partíciók összes indexének az eredményekre való vizsgálatára van szükség.

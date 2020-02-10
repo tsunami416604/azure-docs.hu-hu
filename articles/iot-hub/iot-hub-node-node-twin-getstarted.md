@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060732"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110826"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Ismerkedés az eszközökhöz tartozó ikrekkel (node. js)
 
@@ -36,6 +36,8 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Node. js 10.0. x vagy újabb verzió.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -69,7 +71,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a hely met
 
 3. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery. js** fájlt a **addtagsandqueryapp** mappában.
 
-4. Adja hozzá a következő kódot a **AddTagsAndQuery. js** fájlhoz. A `{iot hub connection string}` helyére írja be az [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)lekérése során másolt IoT hubi kapcsolatok karakterláncát.
+4. Adja hozzá a következő kódot a **AddTagsAndQuery. js** fájlhoz. Cserélje le a `{iot hub connection string}`t az IoT hub-beli [kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)során másolt IoT hub-kapcsolatok karakterláncára.
 
    ``` javascript
         'use strict';
@@ -164,7 +166,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
 
 3. Egy szövegszerkesztővel hozzon létre egy új **ReportConnectivity. js** fájlt a **ReportConnectivity** mappában.
 
-4. Adja hozzá a következő kódot a **ReportConnectivity. js** fájlhoz. Cserélje `{device connection string}` le a szöveget a **myDeviceId** -eszköz identitásának létrehozásakor a [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)során másolt eszköz-kapcsolódási karakterláncra.
+4. Adja hozzá a következő kódot a **ReportConnectivity. js** fájlhoz. Cserélje le a `{device connection string}`t a **myDeviceId** -eszköz identitásának létrehozásakor a [IoT hub új eszköz regisztrálása](#register-a-new-device-in-the-iot-hub)során másolt eszköz-kapcsolódási sztringre.
 
     ```javascript
         'use strict';
@@ -212,7 +214,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
         node ReportConnectivity.js
     ```
 
-    Ekkor megjelenik az üzenet `twin state reported`.
+    `twin state reported`üzenetnek kell megjelennie.
 
 6. Most, hogy az eszköz bejelentette a kapcsolati adatait, mindkét lekérdezésben szerepelnie kell. Lépjen vissza a **addtagsandqueryapp** mappába, és futtassa újra a lekérdezéseket:
 
@@ -224,7 +226,7 @@ Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a **myDevi
 
     ![MyDeviceId megjelenítése mindkét lekérdezési eredményben](media/iot-hub-node-node-twin-getstarted/service2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy szimulált eszközt, amely az eszköz kapcsolati adatait jelenti a Twin-ben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az adatokat az SQL-Like IoT Hub lekérdezési nyelv használatával.
 
