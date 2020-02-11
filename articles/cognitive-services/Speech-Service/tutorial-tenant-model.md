@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446803"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118920"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
 
@@ -37,13 +37,13 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 A bérlői modell üzembe helyezése előtt regisztrálni kell a bérlői modell szolgáltatásban. A regisztráció a Microsoft 365 felügyeleti központban végezhető el, és csak a Microsoft 365 rendszergazdája végezhető el.
 
-1. Jelentkezzen be a [Microsoft 365 Felügyeleti központba](https://admin.microsoft.com).
+1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com).
 
-1. A bal oldali ablaktáblán válassza a **Beállítások**, majd az **alkalmazások**lehetőséget, majd válassza az **Azure Speech Services**elemet.
+1. A bal oldali ablaktáblán válassza a **Beállítások**lehetőséget, majd a beágyazott menüben válassza a **Beállítások** lehetőséget, majd válassza az **Azure Speech Services** lehetőséget a főablakban.
 
    ![A "szolgáltatások & beépülő modulok" panel](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Jelölje be a **szervezeti szintű nyelvi modell engedélyezése** jelölőnégyzetet, majd kattintson a **módosítások mentése**gombra. 
+1. Jelölje be a **szervezeti szintű nyelvi modell engedélyezése** jelölőnégyzetet, majd kattintson a **módosítások mentése**gombra.
 
    ![Az Azure Speech Services ablaktábla](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -55,11 +55,11 @@ A bérlői modell példányának kikapcsolása:
 
 Ha a Speech SDK-val szeretné használni a bérlői modellt, szüksége lesz egy beszédfelismerési erőforrásra és a hozzá tartozó előfizetési kulcsra.
 
-1. Jelentkezzen be az [Azure portálra](https://aka.ms/azureportal).
-1. Válassza az **Erőforrás létrehozása** lehetőséget.
+1. Jelentkezzen be az [Azure Portal](https://aka.ms/azureportal).
+1. Válassza **az erőforrás létrehozása**lehetőséget.
 1. A **keresőmezőbe** írja be a **Speech**kifejezést.
 1. Az eredmények listájában válassza a **beszéd**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ellenőrizze a következőket:
+1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ügyeljen rá, hogy:
    * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
    * A **díjszabás** a **S0**értékre van állítva.
 1. Kattintson a **Létrehozás** gombra.
@@ -83,7 +83,7 @@ Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, 
    > * [Ügyfél kulcsa](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365-kormány](https://www.microsoft.com/microsoft-365/government)
 
-1. Válassza a **jóváhagyási** lehetőséget. 
+1. Válassza a **jóváhagyási** lehetőséget.
 
    Ha a bérlői modell elkészült, egy megerősítő e-mail-üzenetet kap további utasításokkal.
 

@@ -6,41 +6,31 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 257fd02c2f7ec2aff9d55b91b2cbd54b6eb55431
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc615149b092aebfdde767fb3b716fb897bfd551
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464401"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121508"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató: Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
 
-Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első Java-alkalmazását az Azure Service Fabric-ban az Eclipse IDE használatával egy linuxos fejlesztői gépen. Az útmutató elvégzése után rendelkezni fog egy Java webes kezelőfelületes szavazóalkalmazással, amely egy a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.
+Ebben a rövid útmutatóban egy Java-alkalmazást helyez üzembe az Azure Service Fabric az Eclipse IDE használatával egy linuxos fejlesztői gépen. Az útmutató elvégzése után rendelkezni fog egy Java webes kezelőfelületes szavazóalkalmazással, amely egy a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
-![Azure Service Fabric szavazó minta](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
-
-Ezen rövid útmutató segítségével megtanulhatja a következőket:
-
-* Az Eclipse használata a Service Fabricben üzemeltetett Java-alkalmazásokhoz
-* Az alkalmazás központi telepítése a helyi fürtre
-* Az alkalmazás horizontális felskálázása több csomópontra
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
-
-1. [A Service Fabric SDK és a Service Fabric parancssori felület (CLI) telepítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
-2. [A Git telepítése](https://git-scm.com/)
-3. [Az Eclipse telepítése](https://www.eclipse.org/downloads/)
-4. [A Java környezet beállítása](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) az Eclipse beépülő modul telepítéséhez szükséges választható lépések elvégzésével
+- [Java-környezet](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) és [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Eclipse neon (4.6) +](https://www.eclipse.org/downloads/packages/) és [Eclipse beépülő modul a Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)
+- [Service Fabric SDK és parancssori felület (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
 Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
-```git
+```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 ```
 
@@ -51,13 +41,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    A helyi fürt elindítása eltarthat egy ideig. A fürt üzembe állásának ellenőrzéséhez nyissa meg a Service Fabric Explorert a **http://localhost:19080** címen. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel.
+    A helyi fürt elindítása eltarthat egy ideig. Annak ellenőrzéséhez, hogy a fürt teljesen fel van-e biztosítva, nyissa meg a Service Fabric Explorer `http://localhost:19080`. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel.
 
     ![Az Azure Service Fabric Explorer kifogástalan állapotú csomópontokat jelenít meg](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. Nyissa meg az Eclipse környezetet.
 3. Válassza a **fájl** > **importálás** > **Gradle** > **meglévő Gradle-projekt** elemet, és kövesse a varázslót.
-4. Válassza a **könyvtár** lehetőséget, majd válassza ki a `Voting` könyvtárat a githubról klónozott `service-fabric-java-quickstart` mappából. Válassza a **Finish** (Befejezés) elemet.
+4. Válassza ki a **könyvtárat** , és válassza ki a githubról klónozott **Service-Fabric-Java-Gyorsindítás** mappában található **szavazási** könyvtárat. Válassza a **Finish** (Befejezés) elemet.
 
     ![Gradle-projekt importálása az Eclipse-be](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
@@ -72,15 +62,17 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 Most hozzáadhat szavazási lehetőségeket az alkalmazáshoz, és megkezdheti a szavazatok gyűjtését. Az alkalmazás különálló adatbázis nélkül futtatja és tárolja az összes adatot a Service Fabric-fürtben.
 
+![Azure Service Fabric szavazó minta](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
+
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
 
-A szolgáltatások skálázhatók egy adott fürtben, hogy kövessék a szolgáltatások terhelésének változásait. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatásokat többféleképpen is skálázhatja, használhat például szkripteket, vagy a Service Fabric parancssori felület (sfctl) parancsait. A következő lépések során a Service Fabric Explorert használjuk.
+A szolgáltatások skálázhatók egy adott fürtben, hogy kövessék a szolgáltatások terhelésének változásait. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatások méretezésének számos módja van. Használhat például parancsfájlokat vagy parancsokat Service Fabric parancssori felületről (`sfctl`). A következő lépések során a Service Fabric Explorert használjuk.
 
-A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://localhost:19080`.
+Service Fabric Explorer az összes Service Fabric-fürtön fut, és a böngészőből érhető el, ha a fürt HTTP-kezelési portjára (19080) keres rá. Például: `http://localhost:19080`.
 
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
-1. Nyissa meg a Service Fabric Explorert a fürtben – például: `https://localhost:19080`.
+1. Nyissa meg Service Fabric Explorer a fürtben. Például: `https://localhost:19080`.
 2. Válassza a **háló:/szavazó/VotingWeb** csomópont melletti három pontot ( **..** .) a TreeView vezérlőben, és válassza a **szolgáltatás méretezése**lehetőséget.
 
     ![Szolgáltatás méretezése az Azure Service Fabricban](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)

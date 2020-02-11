@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866984"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120670"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files konfigurálása Windows-tárolóban App Service
 
@@ -38,6 +38,7 @@ Ez az útmutató bemutatja, hogyan érheti el az Azure Storage-t Windows-tárol�
 - Az Azure Storage a Windows-tárolókban jelenleg **nem támogatott** a Windows app Service-csomagok saját programkódjának használata esetén.
 - Az Azure Storage a Windows-tárolókban **nem támogatja** a **tárolási tűzfal** konfigurációjának használatát az infrastruktúra korlátai miatt.
 - Az Azure Storage a Windows-tárolókban alkalmazásban **legfeljebb öt** csatlakoztatási pontot határozhat meg.
+- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
 - Az Azure Storage szolgáltatás számlázása egymástól függetlenül történik, és **nem szerepel** a webalkalmazásban. További információ az [Azure Storage díjszabásáról](https://azure.microsoft.com/pricing/details/storage).
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Tárterület csatolása a webalkalmazáshoz (előzetes verzió)

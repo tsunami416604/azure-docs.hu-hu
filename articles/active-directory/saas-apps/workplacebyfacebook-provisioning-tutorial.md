@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064142"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121444"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -43,7 +43,9 @@ Ha a munkahelyi integráció karanténban van, akkor újra meg kell adnia egy é
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
- 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Honnan tudhatom meg, hogy az alkalmazás migrálása megtörtént-e? 
+Az alkalmazás migrálása után a rendszer eltávolítja az engedélyezési szakaszban található szalagcímet, amely ismerteti a beérkező módosításokat, és a titkos jogkivonat mezőt egy kék Engedélyezés gombra cseréli. 
+
 #### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>A rendszergazdai hitelesítő adatok szakasz szürkén jelenik meg az alkalmazáson, és nem lehet menteni. Hogy miért?
 Zárolta a meglévő munkahelyi ügyfelek rendszergazdai hitelesítő adatait tartalmazó szakaszát. Ha a bérlőt áttelepítette az új munkahelyi alkalmazásba, akkor újra frissítheti a rendszergazdai hitelesítő adatok szakaszt. Ha nem tud megvárni, a fenti URL-cím használatával szerkesztheti az alkalmazást. 
 

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840587"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114419"
 ---
-# <a name="traffic-analytics"></a>Traffic Analytics
+# <a name="traffic-analytics"></a>Forgalmi elemzések
 
 Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a felhasználói és alkalmazási tevékenységeknek a felhőalapú hálózatokban. A Traffic Analytics Network Watcher hálózati biztonsági csoport (NSG) folyamatábráit elemzi, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. A Traffic Analytics segítségével a következőket teheti:
 
@@ -67,14 +67,14 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * USA déli középső régiója
 * USA középső régiója
 * USA nyugati régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 * Közép-Franciaország
 * Nyugat-Európa
 * Észak-Európa
 * Dél-Brazília
-* Egyesült Királyság nyugati régiója
-* Egyesült Királyság déli régiója
-* Ausztrália keleti régiója
+* Az Egyesült Királyság nyugati régiója
+* Az Egyesült Királyság déli régiója
+* Kelet-Ausztrália
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
@@ -83,8 +83,8 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * Dél-India
 * Kelet-Japán 
 * Nyugat-Japán
-* US Gov Virginia
-* Kína 2. keleti régiója
+* USA-beli államigazgatás – Virginia
+* Kelet-Kína 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Támogatott régiók: Log Analytics munkaterületek
 
@@ -97,23 +97,23 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * USA déli középső régiója
 * USA középső régiója
 * USA nyugati régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 * USA középső régiója
 * Közép-Franciaország
 * Nyugat-Európa
 * Észak-Európa
 * Dél-Brazília
-* Egyesült Királyság nyugati régiója
-* Egyesült Királyság déli régiója
-* Ausztrália keleti régiója
+* Az Egyesült Királyság nyugati régiója
+* Az Egyesült Királyság déli régiója
+* Kelet-Ausztrália
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
 * Korea középső régiója
 * Közép-India
 * Kelet-Japán
-* US Gov Virginia
-* Kína 2. keleti régiója
+* USA-beli államigazgatás – Virginia
+* Kelet-Kína 2
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -123,20 +123,20 @@ A fiókjának a következő Azure [beépített szerepkörök](../role-based-acce
 
 |Üzemi modell   | Szerepkör                   |
 |---------          |---------               |
-|Erőforrás-kezelő   | Tulajdonos                  |
+|Resource Manager   | Tulajdonos                  |
 |                   | Közreműködő            |
 |                   | Olvasó                 |
 |                   | Hálózati közreműködő    |
 
 Ha a fiókja nincs hozzárendelve az egyik beépített szerepkörhöz, azt hozzá kell rendelni egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , amely a következő műveletekhez van hozzárendelve az előfizetési szinten:
 
-- "Microsoft. Network/applicationGateways/Read"
+- "Microsoft.Network/applicationGateways/read"
 - "Microsoft. Network/Connections/Read"
-- "Microsoft. Network/loadBalancers/Read"
-- "Microsoft. Network/localNetworkGateways/Read"
-- "Microsoft. Network/networkInterfaces/Read"
+- "Microsoft.Network/loadBalancers/read"
+- "Microsoft.Network/localNetworkGateways/read"
+- "Microsoft.Network/networkInterfaces/read"
 - "Microsoft. Network/networkSecurityGroups/Read"
-- "Microsoft. Network/nyilvános IP/Read"
+- "Microsoft.Network/publicIPAddresses/read"
 - "Microsoft. Network/routeTables/Read"
 - "Microsoft. Network/virtualNetworkGateways/Read"
 - "Microsoft. Network/virtualNetworks/Read"
@@ -151,7 +151,7 @@ A forgalom elemzéséhez rendelkeznie kell egy meglévő hálózati figyelővel,
 
 A NSG folyamat naplózásának engedélyezése előtt hálózati biztonsági csoporttal kell rendelkeznie a folyamatok naplózásához. Ha nem rendelkezik hálózati biztonsági csoporttal, a létrehozásához tekintse meg [a hálózati biztonsági csoport létrehozása](../virtual-network/manage-network-security-group.md#create-a-network-security-group) című témakört.
 
-A Azure Portal bal oldalán válassza a **figyelés**, majd a **Network Watcher**, majd a **NSG flow-naplók**lehetőséget. Válassza ki azt a hálózati biztonsági csoportot, amely számára engedélyezni kívánja a NSG flow-naplóját a következő képen látható módon:
+A Azure Portal területen lépjen a **Network Watcher**elemre, majd válassza a **NSG flow-naplók**lehetőséget. Válassza ki azt a hálózati biztonsági csoportot, amely számára engedélyezni kívánja a NSG flow-naplóját a következő képen látható módon:
 
 ![A NSG flow naplójának engedélyezését igénylő NSG kiválasztása](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -210,7 +210,7 @@ A portál bal oldalán válassza a **minden szolgáltatás**lehetőséget, majd 
 
 Az irányítópult az első alkalommal akár 30 percet is igénybe vehet, mert Traffic Analytics először elegendő adatokat kell összeállítania ahhoz, hogy értelmes elemzéseket lehessen bevezetni, mielőtt bármilyen jelentést hozna létre.
 
-## <a name="usage-scenarios"></a>Felhasználási területek
+## <a name="usage-scenarios"></a>Használati forgatókönyvek
 
 A Traffic Analytics teljes konfigurálása után érdemes megtekinteni az alábbi elemzéseket:
 
@@ -341,7 +341,7 @@ Az Application Gateway adatforgalmának eloszlása & Load Balancer, topológia, 
  - Annak ismerete, hogy mely alhálózatok beszélgetnek az Application Gateway vagy a Load Balancer. Ha váratlan beszélgetéseket figyel, javítsa ki a konfigurációt.
  - Ha a támadó hálózatok egy Application Gateway vagy Load Balancer használatával beszélgetnek, a NSG szabályok konfigurálásával is kijavítani tudja a szélhámos hálózatok blokkolását. 
 
-    ![alhálózat – topológia – bemutató – Traffic-Distribution-to-a-Application-Gateway-subnet-with-about-to-flow](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Az internetről érkező forgalmat fogadó portok és virtuális gépek megtekintése
 

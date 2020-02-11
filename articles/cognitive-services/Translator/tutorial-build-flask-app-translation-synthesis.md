@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984167"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118575"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -59,8 +59,8 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hozzon létre egy fiókot, és fizessen elő az erőforrásokra
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
-* Translator Text
-* Text Analytics
+* Fordítói szöveg
+* Szövegelemzés
 * Beszédszolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
@@ -182,7 +182,7 @@ Ez a kód biztosítja, hogy amikor egy felhasználó navigál, `http://your-web-
 
 Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy felhasználó számára, az útvonalak az API-k meghívására is használhatók gomb lenyomásakor, vagy tetszőleges számú művelet elvégzése anélkül, hogy el kellene érni a kezdőlapot. Ez a művelet akkor jelenik meg, ha útvonalakat hoz létre a fordításhoz, a hangulathoz és a beszédfelismeréshez.
 
-### <a name="get-started"></a>Az első lépések
+### <a name="get-started"></a>Első lépések
 
 1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy `app.py` nevű fájlt a munkakönyvtár gyökerében. Ezután másolja a kódot `app.py`ba, és mentse a következőt:
 
@@ -474,7 +474,7 @@ Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez, m
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A [text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) az érzelmek elemzéséhez, a szövegből kinyert fő kifejezésekhez vagy a forrás nyelvének észleléséhez használható. Ebben az alkalmazásban az érzelmek elemzését fogjuk használni annak megállapításához, hogy a megadott szöveg pozitív, semleges vagy negatív. Az API 0 és 1 közötti numerikus pontszámokat jelenít meg. Az 1-hez közeli pontszámok pozitív véleményt jeleznek, míg a 0-hoz közeliek negatívat.
+A [text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) az érzelmek elemzéséhez, a szövegből kinyert fő kifejezésekhez vagy a forrás nyelvének észleléséhez használható. Ebben az alkalmazásban az érzelmek elemzését fogjuk használni annak megállapításához, hogy a megadott szöveg pozitív, semleges vagy negatív. Az API 0 és 1 közötti numerikus pontszámot ad vissza. Az 1. ponthoz közeledő pontszámok pozitív és negatív eredményt jeleznek.
 
 Ebben a szakaszban néhány dolgot kell tennie:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rendszerképek besorolása oktatóanyag: a betanítási modellek'
+title: 'Kép besorolási oktatóanyag: modelleket taníthat be'
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan taníthat egy képbesorolási modellt a scikit-Learn egy Python Jupyter notebookon Azure Machine Learning használatával. Ez az oktatóanyag egy kétrészes sorozat első része.
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261364"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116488"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,11 +42,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Fejezze be az [oktatóanyagot: első lépésként hozza létre első Azure ml-kísérletét](tutorial-1st-experiment-sdk-setup.md) :
-    * Munkaterületek létrehozása
+    * Munkaterület létrehozása
     * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
     * Felhőalapú számítási példány létrehozása.
 
-* A klónozott **oktatóanyagok** mappában Nyissa meg az **IMG-besorolás-part1-Training. ipynb** notebookot. 
+* A klónozott *oktatóanyagok/képbesorolás-mnist-adat* mappában Nyissa meg az *IMG-besorolás-part1-Training. ipynb* notebookot. 
 
 
 Az oktatóanyag és a kapcsolódó **utils.py** -fájl a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha a saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni. A `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` futtatása az oktatóanyag függőségeinek telepítéséhez.
@@ -220,7 +220,7 @@ Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen el
 Ehhez a feladathoz be kell nyújtania a feladatot a korábban beállított távoli képzési fürtön való futtatáshoz.  A feladat elküldésének menete:
 * Könyvtár létrehozása
 * Betanító szkript létrehozása
-* Kalkulátor-objektum létrehozása
+* Hozzon létre egy estimator objektumot
 * Feladat küldése
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -304,15 +304,15 @@ Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
 
-A Futtatás elküldéséhez egy [SKLearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objektumot kell használni. A becslő létrehozásához határozza meg a következő elemeket az alábbi kód futtatásával:
+A Futtatás elküldéséhez egy [SKLearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objektumot kell használni. Hozza létre a kalkulátort a következő kód futtatásával az elemek definiálásához:
 
-* A becslőobjektum neve (`est`).
+* A kalkulátor objektum neve, `est`.
 * A szkripteket tartalmazó könyvtár. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A számítási cél. Ebben az esetben a létrehozott Azure Machine Learning számítási fürtöt használja.
-* A betanítási szkript neve, **train.py**.
-* A betanítási szkript szükséges paraméterei.
+* A betanítási szkript neve, **Train.py**.
+* A betanítási parancsfájlhoz szükséges paraméterek.
 
-Ebben az oktatóanyagban ez a cél a AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. Először hozzon létre egy környezeti objektumot, amely meghatározza a betanításhoz szükséges függőségeket. 
+Ebben az oktatóanyagban ez a cél AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. Először hozzon létre egy környezeti objektumot, amely meghatározza a betanításhoz szükséges függőségeket. 
 
 ```python
 from azureml.core.environment import Environment

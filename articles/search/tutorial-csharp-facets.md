@@ -3,17 +3,17 @@ title: C#oktatóanyag a navigálást segítő aspektusok használatáról
 titleSuffix: Azure Cognitive Search
 description: Ez az oktatóanyag a "keresési eredmények tördelése – Azure Cognitive Search" projektre épül, és dimenziós navigálást is felvehet. Ebből a témakörből megtudhatja, hogyan használhatók a keresések egyszerű szűkítéséhez.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794085"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121566"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#Oktatóanyag: a navigálást segítő aspektusok használata – Azure Cognitive Search
 
@@ -21,7 +21,7 @@ Az aspektusok a navigáláshoz nyújtanak segítséget azáltal, hogy a felhaszn
 
 Ez az oktatóanyag az [ C# oktatóanyagban létrehozott lapozási projektre épül: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Modell tulajdonságainak beállítása _IsFacetable_
 > * Face-Navigálás hozzáadása az alkalmazáshoz

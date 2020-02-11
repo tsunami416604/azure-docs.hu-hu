@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391668"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123156"
 ---
 Az Azure File Sync-ügynök rendszeres időközönként frissül új funkciók hozzáadásával és a problémák megoldásával. Javasoljuk, hogy konfigurálja Microsoft Update a Azure File Sync-ügynök frissítéseinek elérhetővé tételéhez.
 
@@ -40,7 +40,7 @@ Az alábbi utasítások azt írják le, hogyan módosíthatja a beállításokat
 Nyisson meg egy PowerShell-konzolt, és keresse meg azt a könyvtárat, ahová a Szinkronizáló ügynököt telepítette, majd importálja a kiszolgálói parancsmagokat. Alapértelmezés szerint ez a következőképpen néz ki:
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
-Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
+Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
 `Get-StorageSyncAgentAutoUpdatePolicy` futtatásával ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.

@@ -4,12 +4,12 @@ description: Útmutató a Recovery Services-tároló Azure-előfizetések és-er
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172895"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120724"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -18,6 +18,10 @@ Ez a cikk azt ismerteti, hogyan helyezhet át egy Recovery Services-tárolót az
 ## <a name="supported-regions"></a>Támogatott régiók
 
 A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália, Kelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója, a RÉGIÓJA, az USA déli középső régiója, az USA nyugati középső régiója, az USA nyugati régiója Közép-India, Dél-India, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
+
+## <a name="unsupported-regions"></a>Nem támogatott régiók
+
+Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-Németország, US Gov Iowa, Észak-Kína, Kína North2, Kelet-Kína, Kína készletek
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services-tároló áthelyezésének előfeltételei
 
@@ -44,7 +48,7 @@ A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália, Kelet-
 
 A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése más erőforráscsoport-csoportba
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Nyissa meg **Recovery Services** -tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
    ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -73,7 +77,7 @@ A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése m
 
 Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik előfizetésbe helyezheti át
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Nyissa meg Recovery Services-tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
     ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -128,7 +132,7 @@ Recovery Services-tároló másik erőforráscsoporthoz való áthelyezéséhez 
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Szeretne áthelyezni egy új előfizetést, adja meg a `--destination-subscription-id` paraméter.
+Új előfizetésre való áttéréshez adja meg a `--destination-subscription-id` paramétert.
 
 ## <a name="post-migration"></a>Áttelepítés utáni
 

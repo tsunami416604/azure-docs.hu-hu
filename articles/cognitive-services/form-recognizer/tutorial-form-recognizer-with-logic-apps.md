@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773083"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118266"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
@@ -34,10 +34,6 @@ Az oktatóanyag a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
-
-## <a name="request-access-for-form-recognizer"></a>Űrlap-felismerő hozzáférésének kérése
-
-Az űrlap-felismerő korlátozott hozzáférésű előzetes verzióban érhető el. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját. Ha az Azure Cognitive Services csapata jóváhagyta a kérést, a szolgáltatás elérésére vonatkozó utasításokat tartalmazó e-mailt fog kapni.
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Az elemzett számla értelmezése
 
@@ -81,7 +77,7 @@ A munkafolyamat beállításához kövesse az alábbi lépéseket.
 
 1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás részleteit az itt látható módon. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
-   | Tulajdonság | Value (Díj) | Leírás |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | <*Logic-app-name*> | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
@@ -131,7 +127,7 @@ Ahhoz, hogy az űrlap-felismerő szolgáltatással elemezze a számlákat, be ke
     > [!div class="mx-imgBorder"]
     > az űrlap-felismerő ![jának neve](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Kattintson a **Create** (Létrehozás) gombra.
+    Kattintson a  **Create** (Létrehozás) gombra.
 
 1. A **betanítási modell** párbeszédpanel **forrás**mezőjébe írja be annak a tárolónak az URL-címét, ahová a mintaadatok feltöltése megtörténjen.
 
@@ -175,7 +171,7 @@ Ebben a szakaszban a logikai alkalmazást konfigurálja úgy, hogy kibontsa az a
     > [!div class="mx-imgBorder"]
     > ![Kinyeri a tábla adatait a számlából](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 

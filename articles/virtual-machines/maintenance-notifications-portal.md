@@ -1,20 +1,18 @@
 ---
-title: Azure-beli virtuális gépek karbantartási értesítéseinek használata a portálon
+title: A portál használata karbantartási értesítésekhez
 description: Megtekintheti az Azure-ban futó virtuális gépek karbantartási értesítéseit, és megkezdheti az önkiszolgáló karbantartást a portál használatával.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535820"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115738"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Tervezett karbantartási értesítések feldolgozása a portál használatával
 
@@ -24,7 +22,7 @@ A [tervezett karbantartási](maintenance-notifications.md) hullám ütemezése u
 
 Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett virtuális gépeket.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. A bal oldali navigációs sávon kattintson a **Virtual Machines**elemre.
 
@@ -34,9 +32,9 @@ Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett vir
 
    **Karbantartási állapot**: a virtuális gép karbantartási állapotát jeleníti meg. A lehetséges értékek a következők:
       
-      | Value (Díj) | Leírás |
+      | Érték | Leírás |
       |-------|-------------|
-      | Az első lépések | A virtuális gép önkiszolgáló karbantartási ablakban van, amely lehetővé teszi a karbantartás elindítását. A virtuális gép karbantartásának megkezdéséről alább tájékozódhat. | 
+      | Indítás most | A virtuális gép önkiszolgáló karbantartási ablakban van, amely lehetővé teszi a karbantartás elindítását. A virtuális gép karbantartásának megkezdéséről alább tájékozódhat. | 
       | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. A karbantartási időszak megismeréséhez kattintson a karbantartás – ütemezett ablakra ebben a nézetben, vagy a virtuális gépre kattintva. | 
       | Már frissítve | A virtuális gép már frissítve van, és jelenleg nincs szükség további műveletre. | 
       | Újrapróbálkozás később | Sikeresen kezdeményezte a karbantartást. Az önkiszolgáló karbantartási lehetőséget később is használhatja. | 

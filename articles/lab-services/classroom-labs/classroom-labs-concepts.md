@@ -1,6 +1,6 @@
 ---
-title: Tanterem Labs-fogalmak – Azure Lab Services |} A Microsoft Docs
-description: Ismerje meg, hogyan azt teheti, hogy egyszerűen hozhat létre és laborok kezelése, és a Lab Services alapvető fogalmait.
+title: Tantermi Labs-fogalmak – Azure Lab Services | Microsoft Docs
+description: Megismerheti a labor Services alapfogalmait, és azt, hogy miként hozhat létre és kezelhet laborokat.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067389"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120894"
 ---
 # <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
-Az alábbi lista tartalmazza az alapfogalmakat Lab Services és a definíciók:
+
+A következő lista a Key Lab Services alapfogalmait és definícióit tartalmazza:
 
 ## <a name="quota"></a>Kvóta
-Kvóta az időkorlát (órában), amely egy oktató állíthatja be a labor virtuális Géphez használandó tanuló. 0, vagy egy bizonyos számú órák állítható. A kvóta 0 értékre van állítva, ha egy diák csak használhat a virtuális gép Ha ütemezés szerint fut, vagy egy oktató manuálisan kikapcsolja a virtuális gépen a diákoknak.
- 
+
+A kvóta az az időkorlátja (órában), ameddig a tanár beállíthatja, hogy a tanulók laboratóriumi virtuális gépet használjanak. A beállítás értéke 0 vagy adott számú óra lehet. Ha a kvóta 0 értékű, a tanulók csak akkor használhatják a virtuális gépet, ha egy ütemterv fut, vagy amikor egy tanár manuálisan bekapcsolja a tanuló virtuális gépét.  
+
+A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy tanár manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja a kvóta időtartamát az adott tanuló számára.
+
 ## <a name="schedules"></a>Ütemezések
-Ütemezések idő tárolóhely (egyszeri vagy ismétlődő), amely egy oktató hozhat létre az osztály. A labor összes virtuális gép automatikusan elindulnak, az ütemezéshez elején és végén található az ütemezés le vannak állítva. Kvóta órák nem használ egy ütemezés futtatásakor.
 
-## <a name="template-virtual-machine"></a>A sablon virtuális gép
-Egy tesztkörnyezetben sablon virtuális gép alap virtuálisgép-lemezkép, amelyből a felhasználók összes virtuális gépek jönnek létre. Az oktatók és labor létrehozói állítsa be a sablon virtuális gépet, és konfigurálja azt a szoftvert, a képzés résztvevői labs ehhez adja meg azoknak a. Egy Virtuálisgép-sablont tesz közzé, ha az Azure Lab Services hoz létre, vagy frissíti a labor virtuális gépeken a virtuális gép sablon alapján. 
+Az ütemtervek a tanárok által az osztály számára létrehozható időpontok (egyszer vagy ismétlődő). A laborban lévő összes virtuális gép automatikusan elindul az ütemterv elején, és leállt az ütemterv végén. Az ütemterv futtatásakor a rendszer nem használja a kvóta-órákat.
 
+## <a name="template-virtual-machine"></a>Sablon virtuális gépe
+
+A laborban található sablon virtuális gépe egy alapszintű virtuálisgép-rendszerkép, amelyből minden felhasználó virtuális gépe létrejött. A trénerek/labor-készítők beállítják a sablon virtuális gépet, és azt a szoftverrel konfigurálja, amelyet a résztvevők számára a laborok betanításához szeretne biztosítani. Amikor közzétesz egy sablon virtuális gépet, Azure Lab Services létrehozza vagy frissíti a laboratóriumi virtuális gépeket a sablon VM-je alapján.
 
 ## <a name="user-profiles"></a>Felhasználói profilok
-Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismerteti. 
+
+Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismerteti.
 
 ### <a name="lab-account-owner"></a>Tesztkörnyezetfiók tulajdonosa
-Általában a vállalat felhőerőforrásainak informatikai rendszergazdája, aki az Azure-előfizetés tulajdonosa, és a tesztkörnyezetfiók tulajdonosaként eljárva az alábbi feladatokat hajthatja végre:   
+
+Általában a vállalat felhőerőforrásainak informatikai rendszergazdája, aki az Azure-előfizetés tulajdonosa, és a tesztkörnyezetfiók tulajdonosaként eljárva az alábbi feladatokat hajthatja végre:
 
 - Tesztkörnyezetfiókot állít be a vállalat számára.
 - Felügyeli és konfigurálja a szabályzatokat minden tesztkörnyezetre vonatkozóan.
 - Engedélyeket ad a vállalatban dolgozó személyeknek tesztkörnyezet létrehozására a tesztkörnyezetfiókban.
 
 ### <a name="professor"></a>Professzor
-A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában olyan felhasználók hozzák létre, mint a tanárok vagy az online oktatók. Az oktató az alábbi feladatokat hajtja végre: 
+
+A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában olyan felhasználók hozzák létre, mint a tanárok vagy az online oktatók. Az oktató az alábbi feladatokat hajtja végre:
 
 - Létrehozza az osztályterem-tesztkörnyezetet.
-- Virtuális gépeket hoz létre a tesztkörnyezetben. 
+- Virtuális gépeket hoz létre a tesztkörnyezetben.
 - Telepíti a megfelelő szoftvereket a virtuális gépeken.
 - Meghatározza, hogy ki férhet hozzá a tesztkörnyezethez.
 - Elküldi a hallgatóknak a tesztkörnyezetre mutató regisztrációs hivatkozást.
 
 ### <a name="student"></a>Hallgató
+
 A hallgató az alábbi feladatokat hajtja végre:
 
-- Regisztrál a tesztkörnyezetben a tesztkörnyezet létrehozójától kapott regisztrációs hivatkozással. 
-- Csatlakozik a tesztkörnyezetben lévő virtuális géphez, és osztálytermi munkához, feladatokhoz és projektekhez használja. 
+- Regisztrál a tesztkörnyezetben a tesztkörnyezet létrehozójától kapott regisztrációs hivatkozással.
+- Csatlakozik a tesztkörnyezetben lévő virtuális géphez, és osztálytermi munkához, feladatokhoz és projektekhez használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 Első lépésként az Azure Lab Services használatával hozzon létre egy tesztkörnyezetfiókot, amely az osztálytermi tesztkörnyezetek létrehozásához szükséges:
 
 - [Tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)

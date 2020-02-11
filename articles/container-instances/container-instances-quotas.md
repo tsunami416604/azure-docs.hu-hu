@@ -3,18 +3,18 @@ title: Szolgáltatási kvóták és régiók rendelkezésre állása
 description: A Azure Container Instances szolgáltatás kvótái, korlátai és régiójának rendelkezésre állása.
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 91681130e32cf8a76829b8bfc3e2a1e97a59ff6b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533509"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117903"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>A Azure Container Instances kvótái és korlátai
 
 Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonatkozó alapértelmezett korlátokat. Ez a cikk a Azure Container Instances alapértelmezett kvótáit és korlátait részletezi.
 
-Az Azure-régiók Azure Container Instances szolgáltatásainak és erőforrásainak rendelkezésre állását az [Erőforrás rendelkezésre állása Azure Container instances](container-instances-region-availability.md)számára című témakörben tekintheti meg.
+A Azure Container Instances számítási, memória-és tárolási erőforrásainak rendelkezésre állása régiónként és operációs rendszertől függően változik. Részletekért lásd: [az erőforrás rendelkezésre állása Azure Container instances](container-instances-region-availability.md)számára.
 
 ## <a name="service-quotas-and-limits"></a>Szolgáltatási kvóták és korlátok
 

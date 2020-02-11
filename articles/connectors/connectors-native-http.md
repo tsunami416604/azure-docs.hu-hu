@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888141"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118024"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Kimenő hívások küldése HTTP-vagy HTTPS-végpontoknak Azure Logic Apps használatával
 
@@ -40,7 +40,7 @@ A cél végpont képességei alapján a HTTP-összekötő támogatja a 1,0, 1,1 
 
 Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-címére, és választ ad vissza.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
 1. A **válasszon műveletet**területen a keresőmezőbe írja be a "http" kifejezést a szűrőként. Az **Eseményindítók** listából válassza ki a **http** -eseményindítót.
 
@@ -50,9 +50,12 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
 1. Adja meg a http- [trigger azon paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) értékeit, amelyeket a célként megadott végpont felé irányuló hívásba kíván foglalni. Állítsa be az ismétlődést, hogy milyen gyakran szeretné, hogy az eseményindító ellenőrizzék a célként megadott végpontot.
 
-   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![HTTP-trigger paramétereinek megadása](./media/connectors-native-http/http-trigger-parameters.png)
+
+   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
+
+   * [Hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Az erőforrásokhoz való hozzáférés hitelesítése felügyelt identitásokkal](../logic-apps/create-managed-service-identity.md)
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
@@ -64,7 +67,7 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
 Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-címére, és választ ad vissza.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a HTTP-triggert használja első lépésként.
 
@@ -80,9 +83,12 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 1. Adja meg azoknak a [http-műveleti paramétereknek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) az értékeit, amelyeket fel szeretne venni a célként megadott végpontba.
 
-   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![HTTP-műveleti paraméterek megadása](./media/connectors-native-http/http-action-parameters.png)
+
+   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
+
+   * [Hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Az erőforrásokhoz való hozzáférés hitelesítése felügyelt identitásokkal](../logic-apps/create-managed-service-identity.md)
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
@@ -145,10 +151,10 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság neve | Type (Típus) | Leírás |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
 | fejlécek | objektum | A kérelemben szereplő fejlécek |
-| törzs | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
@@ -156,7 +162,7 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |
-| 400 | Hibás kérelem |
+| 400 | Hibás kérés |
 | 401 | Nem engedélyezett |
 | 403 | Forbidden |
 | 404 | Nem található |

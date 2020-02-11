@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422699"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120482"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -57,7 +57,7 @@ Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
 
@@ -131,7 +131,18 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
     Az új hozzáférési csomag megjelenik a hozzáférési csomagok listájában.
 
+## <a name="creating-an-access-package-programmatically"></a>Hozzáférési csomag programozott módon történő létrehozása
+
+Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki rendelkezik a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással, meghívja az API-t a következőre:
+
+1. [Sorolja fel a katalógusban szereplő accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
+1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
+1. [Hozzon létre egy accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
+
 ## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag igénylésére szolgáló hivatkozás megosztása](entitlement-management-access-package-settings.md)
 - [Hozzáférési csomag erőforrás-szerepköreinek módosítása](entitlement-management-access-package-resources.md)
+- [Felhasználó közvetlen kiosztása a hozzáférési csomaghoz](entitlement-management-access-package-assignments.md)

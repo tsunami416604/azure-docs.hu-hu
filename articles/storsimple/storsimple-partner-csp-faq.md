@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések a Microsoft Azure StorSimple és a felhőalapú megoldások szolgáltatói programjáról a partnerek számára | Microsoft Docs
+title: 'Gyakori kérdések a partnereknek: StorSimple for Cloud Solutions Provider program'
 description: Válaszokat talál a StorSimple és a CSP-vel kapcsolatos gyakori kérdésekre.
 services: storsimple
 documentationcenter: NA
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828528"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116164"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple a Cloud Solutions-szolgáltatói programhoz: Gyakori kérdések
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple a Cloud Solutions szolgáltatói programhoz: gyakori kérdések
 
 
 ## <a name="overview"></a>Áttekintés
@@ -97,5 +97,5 @@ A CSP-StorSimple kapcsolatos további információkért nyissa meg a következő
 - [Partneri központ](https://partnercenter.microsoft.com/) 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-ben](storsimple-partner-csp-deploy.md)című lépésre.

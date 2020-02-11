@@ -3,19 +3,19 @@ title: A beszédfelismerés céljainak felismerése a Speech SDK használatával
 titleSuffix: Azure Cognitive Services
 description: Ebből az útmutatóból megtudhatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech C#SDK használatával.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805892"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120039"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>A beszédfelismerés céljainak felismerése a Speech SDK-valC#
 
@@ -48,7 +48,7 @@ A LUIS integrálható a Speech Service szolgáltatással a beszédből való sz�
 
 A LUIS háromféle kulcsot használ:
 
-| Kulcs típusa  | Rendeltetés                                               |
+| Kulcs típusa  | Cél                                               |
 | --------- | ----------------------------------------------------- |
 | Tartalomkészítés | Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását |
 | Kezdő   | Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával   |
@@ -91,12 +91,15 @@ Ezután adja hozzá a projekthez egy kódot.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. A megadott `Main()` metóduson belül adja hozzá a következő kódot:
+1. Cserélje le a megadott `Main()` metódust a következő aszinkron egyenértékű értékkel:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Hozzon létre egy üres aszinkron metódust `RecognizeIntentAsync()`, ahogy az itt látható:
@@ -138,12 +141,12 @@ Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppI
 
 A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak, és a neve `model`), a szándék neve és a szándék azonosítója. Az azonosító és a név közötti különbség a következő.
 
-| `AddIntent()`&nbsp;argumentum | Rendeltetés |
+| `AddIntent()`&nbsp;argumentum | Cél |
 | --------------------------- | ------- |
 | `intentName` | A szándék LUIS-appban meghatározott neve. Ennek az értéknek pontosan egyeznie kell a LUIS-cél nevével. |
 | `intentID` | A Speech SDK által felismert szándékhoz rendelt azonosító. Ez az érték lehet bármilyen hasonló; nem kell megegyeznie a cél nevével a LUIS alkalmazásban meghatározottak szerint. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót. |
 
-A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `RecognizeIntentAsync()` metódus három `AddIntent` sorát erre a kódra.
+A Home Automation LUIS alkalmazásnak két célja van: egyet az eszköz bekapcsolásához, egy másikat pedig egy eszköz kikapcsolásához. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `AddIntent` metódus három `RecognizeIntentAsync()` sorát erre a kódra.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
@@ -173,7 +176,7 @@ Az alkalmazás nem elemzi a JSON-eredményt. Csak a JSON-szöveget jeleníti meg
 
 ## <a name="specify-recognition-language"></a>Adja meg a felismerés nyelvét
 
-A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például vegyen fel `config.SpeechRecognitionLanguage = "de-de";`t az alkalmazásba, mielőtt létrehozza a felismerést a német nyelvű leképezések felismeréséhez. További információ: [támogatott nyelvek](language-support.md#speech-to-text).
+A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például vegyen fel `config.SpeechRecognitionLanguage = "de-de";`t az alkalmazásba, mielőtt létrehozza a felismerést a német nyelvű leképezések felismeréséhez. További információért lásd a [Luis nyelvi támogatását](../LUIS/luis-language-support.md#languages-supported)ismertető témakört.
 
 ## <a name="continuous-recognition-from-a-file"></a>Folyamatos felismerés fájlból
 

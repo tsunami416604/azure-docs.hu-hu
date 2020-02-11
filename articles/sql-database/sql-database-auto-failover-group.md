@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768667"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116191"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -31,7 +31,7 @@ Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási 
 
 Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, az SQL Database-kiszolgáló vagy a felügyelt példány adatbázisait érintő kimaradások automatikusan feladatátvételt eredményeznek. Az automatikus feladatátvételi csoportot az alábbiak szerint kezelheti:
 
-- [Azure Portal](sql-database-implement-geo-distributed-database.md)
+- [Azure Portalra](sql-database-implement-geo-distributed-database.md)
 - [Azure CLI: feladatátvételi csoport](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [PowerShell: feladatátvételi csoport](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [REST API: feladatátvételi csoport](/rest/api/sql/failovergroups).
@@ -242,7 +242,7 @@ Mivel minden példány el van különítve a saját VNet, engedélyezni kell a k
 A felügyelt példányok között két különböző előfizetésben hozhat létre feladatátvételi csoportot. A PowerShell API használatakor megteheti a `PartnerSubscriptionId` paraméter megadásával a másodlagos példányhoz. REST API használatakor a `properties.managedInstancePairs` paraméterben szereplő minden példány-azonosító saját subscriptionID rendelkezhet.
   
 > [!IMPORTANT]
-> Az Azure Portal nem támogatja a feladatátvételi csoportokat a különböző előfizetések között.
+> A Azure Portal nem támogatja a feladatátvételi csoportok különböző előfizetésekben történő létrehozását. Emellett a meglévő feladatátvételi csoportok esetében a különböző előfizetések és/vagy erőforráscsoportok esetében a feladatátvételt nem lehet manuálisan elindítani az elsődleges példányon keresztül a portálon keresztül. Kezdeményezzen helyet a Geo-másodlagos példányból.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Feladatátvétel kezelése másodlagos példányra
 
@@ -380,7 +380,7 @@ További információ a feladatátvételi csoportokkal való időpontra történ
 
 ## <a name="limitations-of-failover-groups"></a>A feladatátvételi csoportok korlátai
 
-Vegye figyelembe a következő korlátozásokat:
+Vegye figyelembe a következő korlátozások vonatkoznak:
 
 - Nem hozható létre feladatátvételi csoport két kiszolgáló vagy példány között ugyanabban az Azure-régióban.
 - A feladatátvételi csoport nem nevezhető át. Törölnie kell a csoportot, majd újra létre kell hoznia egy másik névvel. 

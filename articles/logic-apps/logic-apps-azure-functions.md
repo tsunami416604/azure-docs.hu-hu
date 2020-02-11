@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453469"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116907"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions hívása Azure Logic Apps
 
@@ -125,7 +125,7 @@ Ahhoz, hogy létre lehessen hozni egy Azure-függvényt, amely a logikai alkalma
 
    1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-   Példa:
+   Például:
 
    ![A függvény megadása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
@@ -200,11 +200,11 @@ Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, 
 
 Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz való hozzáférést a bejelentkezés és a hitelesítő adatok vagy titkos kódok megadása nélkül szeretné hitelesíteni, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt felügyelt identitást használja, a logikai alkalmazás Azure-függvényei ugyanazt az identitást is használhatják a hitelesítéshez. További információ a Logic apps Azure functions szolgáltatásának hitelesítés-támogatásáról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt identitást vagy manuálisan létrehozott, felhasználó által hozzárendelt identitást használja, akkor a logikai alkalmazásban található Azure-függvények ugyanezt az identitást is használhatják a hitelesítéshez. További információ a Logic apps Azure functions szolgáltatásának hitelesítés-támogatásáról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-Az alábbi lépéseket követve állíthatja be és használhatja a rendszer által hozzárendelt identitást a függvénnyel:
+Az alábbi lépéseket követve állíthatja be és használhatja a felügyelt identitást a függvénnyel:
 
-1. Engedélyezze a rendszer által hozzárendelt identitást a logikai alkalmazásban, és állítsa be az identitás hozzáférését a célként megadott erőforráshoz. Lásd: [Az Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md).
+1. Engedélyezze a felügyelt identitást a logikai alkalmazáson, és állítsa be az identitás hozzáférését a célként megadott erőforráshoz. Lásd: [Az Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md).
 
 1. Engedélyezze a hitelesítést az Azure-függvényben és a Function alkalmazásban az alábbi lépéseket követve:
 
@@ -215,7 +215,7 @@ Az alábbi lépéseket követve állíthatja be és használhatja a rendszer ál
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Névtelen hitelesítés beállítása a függvényben
 
-Ha a logikai alkalmazás rendszerhez rendelt identitását szeretné használni az Azure-függvényben, a függvény hitelesítési szintje névtelen értékre van állítva. Ellenkező esetben a logikai alkalmazás "BadRequest" hibát jelez.
+Ha a logikai alkalmazás felügyelt identitását szeretné használni az Azure-függvényben, a függvény hitelesítési szintje névtelen értékre van állítva. Ellenkező esetben a logikai alkalmazás "BadRequest" hibát jelez.
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a Function alkalmazást. Ezek a lépések az "FabrikamFunctionApp" kifejezést használják példaként szolgáló Function alkalmazásként.
 

@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533425"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116537"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
@@ -23,19 +23,19 @@ ms.locfileid: "75533425"
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
-Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
+Ez az oktatóanyag a következő feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * A munkaterület összekötése és kísérlet létrehozása
 > * Az adatterhelés és a scikit betanítása – modellek
 > * Betanítási eredmények megtekintése a portálon
-> * A legjobb modell lekérése
+> * A legjobb modellt beolvasása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
 
-Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` az első rész végén megnyitva. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
+Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* , az első rész végén megnyitva. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
 ## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
 
@@ -45,7 +45,7 @@ Az oktatóanyag ezen részében futtatja a kódot a minta Jupyter jegyzetfüzetb
 
 
 > [!Warning]
-> Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` a jelen oktatóanyaghoz **szükséges összes kóddal és adattal** rendelkezik.
+> Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook *oktatóanyagok/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* tartalmazza az oktatóanyaghoz **szükséges összes kódot és** adatmennyiséget.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 
@@ -133,7 +133,7 @@ A képzés befejezését követően hívja meg a `experiment` változót, hogy b
 experiment
 ```
 
-<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Dokumentációs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációhoz</td></tr></table>
+<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 

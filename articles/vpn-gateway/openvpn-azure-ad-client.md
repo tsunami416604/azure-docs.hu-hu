@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 3072fc3a82cfe85649cf080c9def69cc4869b7ec
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110554"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122504"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés
 
@@ -163,6 +163,24 @@ Megváltoztathatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<d
           <dnssuffix>.xyz.com</dnssuffix>
           <dnssuffix>.etc.net</dnssuffix>
     </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hogyan egyéni útvonalakat hozzáadni a VPN-ügyfélhez?
+
+Módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<útvonalat >\<includeroutes >\<cél >\<maszk > \</route >\</includeroutes >\</destionation >\</mask >** Címkék
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
     
 </clientconfig>
 </azvpnprofile>

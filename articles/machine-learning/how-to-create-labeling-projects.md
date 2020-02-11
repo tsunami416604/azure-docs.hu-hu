@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765069"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116840"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -125,7 +125,7 @@ A határoló mezőkhöz a következő fontos kérdések tartoznak:
 
 ## <a name="initialize-the-labeling-project"></a>A címkézési projekt inicializálása
 
-A címkézési projekt inicializálását követően a projekt egyes szempontjai nem változtathatók meg. A feladattípus vagy az adatkészlet nem módosítható. A címkék és a feladat leírásának URL-címe *is* módosítható. A projekt létrehozása előtt gondosan tekintse át a beállításokat. A projekt elküldése után visszatért a **címkézési** kezdőlapra, amely a projekt **inicializálását**fogja megjeleníteni. Ez a lap nem frissül automatikusan. Ezért egy szüneteltetés után manuálisan frissítse az oldalt, hogy megtekintse a projekthez **létrehozott**állapotot.
+A címkézési projekt inicializálását követően a projekt egyes szempontjai nem változtathatók meg. A feladattípus vagy az adatkészlet nem módosítható. A címkék és a feladat leírásának URL-címe *is* módosítható. A projekt létrehozása előtt gondosan tekintse át a beállításokat. A projekt elküldése után visszaadja az **Adatcímkéző** kezdőlapjának, amely a projekt **inicializálását**fogja megjeleníteni. Ez a lap nem frissül automatikusan. Ezért egy szüneteltetés után manuálisan frissítse az oldalt, hogy megtekintse a projekthez **létrehozott**állapotot.
 
 ## <a name="manage-teams-and-people"></a>Csapatok és személyek kezelése
 
@@ -139,7 +139,7 @@ Ha e-mailt szeretne küldeni a csapatnak, válassza ki a csapatot a **csapat ré
 
 ## <a name="run-and-monitor-the-project"></a>A projekt futtatása és figyelése
 
-A projekt inicializálását követően az Azure elindítja a futtatását. A **projekt részleteinek**megtekintéséhez válassza ki a projektet a fő **feliratozás** lapon. Az **irányítópult** lapon látható a címkézési feladat állapota.
+A projekt inicializálását követően az Azure elindítja a futtatását. Válassza ki a projektet a fő **adatfelirat** lapon a **projekt részleteinek**megtekintéséhez. Az **irányítópult** lapon látható a címkézési feladat állapota.
 
 Az **adat** lapon megtekintheti az adatkészletet, és ellenőrizheti a címkézett adatokat. Ha nem megfelelően címkézett információt lát, jelölje ki, majd válassza az **elutasítás**lehetőséget, amely eltávolítja a címkéket, és visszahelyezi az adatfelirat nélküli várólistába.
 
@@ -148,6 +148,24 @@ A **csapat** lapon rendelhet hozzá vagy rendelhet hozzá csoportokat a projekth
 A projekt szüneteltetéséhez vagy újraindításához kattintson a **pause**/**Start** gombra. Csak akkor címkézheti az adatfeliratot, ha a projekt fut.
 
 Az adatokat közvetlenül a **Project Details (projekt részletei** ) oldaláról is megcímkézheti a **felirat adatainak**kiválasztásával.
+
+## <a name="add-labels-to-a-project"></a>Címkék hozzáadása egy projekthez
+
+A címkézési folyamat során azt tapasztalhatja, hogy további címkékre van szükség a lemezképek besorolásához.  Előfordulhat például, hogy egy "ismeretlen" vagy "más" címkét szeretne felvenni a zavaró képek jelzésére.
+
+A következő lépések segítségével adhat hozzá egy vagy több címkét egy projekthez:
+
+1. Válassza ki a projektet a fő **adatfelirat** lapon.
+1. A lap tetején válassza a **felfüggesztés** lehetőséget a címkéző tevékenységtől való leállításához.
+1. Válassza a **részletek** lapot.
+1. A bal oldali listában válassza a **címke osztályok**lehetőséget.
+1. A lista tetején válassza a **+ Címkék hozzáadása** ![címke hozzáadása](media/how-to-create-labeling-projects/add-label.png)
+1. Az űrlapon adja hozzá az új címkét, és válassza ki, hogyan kell továbblépni.  Mivel módosította a képekhez elérhető címkéket, kiválaszthatja, hogyan kezelje a már címkézett adatok:
+    * Kezdje újra, és távolítsa el az összes meglévő címkét.  Akkor válassza ezt a lehetőséget, ha törölni szeretné az összes meglévő címkét, hogy a teljes készlet felhasználható legyen az összes rendszerkép címkézéséhez.
+    * Kezdjen el az összes meglévő címke megtartásával.  Válassza ezt a lehetőséget, ha az összes adatfelirat nélküli jelölést szeretné megtekinteni, de a meglévő címkéket a címkével ellátott képek alapértelmezett címkéjéként kívánja megtartani.
+    * Folytatás, az összes meglévő címke megtartása. Válassza ezt a lehetőséget, ha az összes olyan adathalmazt meg kívánja őrizni, amely már be van jelölve, és kezdje el használni az új címkét a még nem besorolt
+1. Szükség szerint módosítsa az utasítások lapját az új felirat (ok) hoz.
+1. Miután hozzáadta az összes új címkét, a lap tetején kattintson a **Start** gombra a projekt újraindításához.  
 
 ## <a name="export-the-labels"></a>Címkék exportálása
 

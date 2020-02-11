@@ -4,12 +4,12 @@ description: Útmutató a webes URL-címek meghívásához vagy e-mail-értesít
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364203"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120685"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-mailek és webhookok riasztási értesítéseinek küldése a Azure Monitorban az autoskálázási műveletek használatával
 Ebből a cikkből megtudhatja, hogyan állíthatja be az eseményindítókat, hogy konkrét webes URL-címeket hívjon fel, vagy az Azure-ban végzett autoskálázási műveletek alapján küldjön e-mailt.  
@@ -17,11 +17,11 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az eseményindítókat, ho
 ## <a name="webhooks"></a>Webhookok
 A webhookok lehetővé teszik, hogy az Azure riasztási értesítéseket más rendszerekre irányítsa a feldolgozás utáni vagy egyéni értesítések esetén. Tegyük fel például, hogy a riasztást olyan szolgáltatásokra irányítja, amelyek képesek az SMS-küldésre, a hibák naplózására és a csapatnak a csevegési vagy üzenetküldési szolgáltatásokkal való értesítésére. A webhook URI azonosítójának érvényes HTTP-vagy HTTPS-végpontnak kell lennie.
 
-## <a name="email"></a>E-mail cím
+## <a name="email"></a>E-mail
 Az e-maileket bármely érvényes e-mail-címre lehet elküldeni. A rendszergazdák és az előfizetés azon előfizetések rendszergazdái, akiknél a szabály fut, szintén értesítést kapnak.
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services és Web Apps
-Cloud Services és kiszolgálófarm (Web Apps) Azure Portal is bejelentkezhet.
+## <a name="cloud-services-and-app-services"></a>Cloud Services és App Services
+Cloud Services és kiszolgálófarm (App Services) Azure Portal is bejelentkezhet.
 
 * Válassza a **skála mérőszám alapján** lehetőséget.
 
@@ -58,11 +58,11 @@ A REST API vagy Resource Manager-sablon használatakor a következő beállítá
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| művelet |igen |az értéknek "Scale" értékűnek kell lennie |
+| operation |igen |az értéknek "Scale" értékűnek kell lennie |
 | sendToSubscriptionAdministrator |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
 | sendToSubscriptionCoAdministrators |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
 | customEmails |igen |az érték lehet null [] vagy az e-mailek karakterlánc-tömbje. |
-| webhookok |igen |az érték lehet null vagy érvényes URI |
+| webhooks |igen |az érték lehet null vagy érvényes URI |
 | serviceUri |igen |érvényes HTTPS URI |
 | properties |igen |az értéknek üresnek kell lennie {} vagy tartalmazhat kulcs-érték párokat. |
 
@@ -102,12 +102,12 @@ Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a kö
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
-| művelet |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
-| összefüggésben |igen |Az autoscale művelet kontextusa |
+| operation |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
+| context |igen |Az autoscale művelet kontextusa |
 | időbélyeg |igen |Az autoskálázási művelet elindítására szolgáló időbélyegző |
 | id |Igen |Az autoskálázási beállítás Resource Manager-azonosítója |
 | név |Igen |Az autoskálázási beállítás neve |
-| Részletek |Igen |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
+| details |Igen |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
 | subscriptionId |Igen |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
 | resourceGroupName |Igen |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
 | resourceName |Igen |A méretezni kívánt cél erőforrás neve |

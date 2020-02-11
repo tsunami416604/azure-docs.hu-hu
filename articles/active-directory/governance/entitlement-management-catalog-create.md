@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422640"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120235"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -51,6 +51,10 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 1. A katalógus létrehozásához kattintson a **Létrehozás** gombra.
 
+### <a name="creating-a-catalog-programmatically"></a>Katalógus létrehozása programozott módon
+
+Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageCatalog létrehozásához](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Erőforrások hozzáadása egy katalógushoz
 
 Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőforrásoknak léteznie kell egy katalógusban. A felvehető erőforrások típusai: csoportok, alkalmazások és SharePoint Online-webhelyek. A csoportok lehetnek felhőben létrehozott Office 365-csoportok vagy felhőalapú Azure AD-alapú biztonsági csoportok. Az alkalmazások lehetnek az Azure ad vállalati alkalmazások, például az SaaS-alkalmazások és az Azure AD-ben összevont saját alkalmazások is. A webhelyek lehetnek SharePoint Online-webhelyek vagy SharePoint Online-webhelycsoportok.
@@ -76,6 +80,10 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 1. Ha elkészült, kattintson a **Hozzáadás**gombra.
 
     Ezek az erőforrások mostantól a katalógusban lévő hozzáférési csomagokba is belefoglalhatók.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Erőforrás hozzáadása egy katalógushoz programozott módon
+
+Microsoft Graph használatával is hozzáadhat erőforrást egy katalógushoz.  Egy megfelelő szerepkörben vagy katalógusban és erőforrás-tulajdonosban lévő felhasználó egy olyan alkalmazással, amely delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageResourceRequest létrehozásához](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Erőforrások eltávolítása egy katalógusból
 
@@ -129,7 +137,7 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
     ![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="delete-a-catalog"></a>Katalógus törlése
 
@@ -144,6 +152,10 @@ A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 1. A katalógus **áttekintésében**kattintson a **Törlés**elemre.
 
 1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
+
+### <a name="deleting-a-catalog-programmatically"></a>Katalógus programozott törlése
+
+A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással rendelkezik, meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Következő lépések
 

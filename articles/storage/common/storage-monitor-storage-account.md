@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862832"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116266"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Storage-fiók figyelése a Azure Portal
 
@@ -25,6 +25,8 @@ Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../
 > A Azure Portal figyelési adataival kapcsolatos költségek vannak kivizsgálva. További információ: [Storage Analytics](storage-analytics.md).
 >
 > Azure Files jelenleg támogatja Storage Analytics metrikákat, de még nem támogatja a naplózást.
+>
+> A prémium szintű teljesítmény-blokkoló blob Storage-fiókok nem támogatják a Storage analitikai metrikáit, de támogatják a naplózást. Az REST API vagy az ügyféloldali kódtár segítségével programozott módon engedélyezheti a naplózást. Ha a prémium szintű blob blob Storage-fiókokkal rendelkező mérőszámokat szeretné megtekinteni, érdemes lehet [Az Azure Storage-metrikákat használni a Azure monitorban](storage-metrics-in-azure-monitor.md).
 >
 > Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -136,7 +138,7 @@ A blob-, tábla-és üzenetsor-szolgáltatásokhoz tartozó olvasási, írási �
 1. Győződjön **meg**arról, hogy az **állapot** beállítás be értékre van állítva, majd válassza ki azokat a **szolgáltatásokat** , amelyeknek engedélyezni szeretné a naplózást.
 
     ![Konfigurálja a naplózást a Azure Portalban.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 A diagnosztikai naplókat a rendszer egy *$logs* nevű blob-tárolóba menti a Storage-fiókjában. A naplófájlokat a [Microsoft Storage Explorerhoz](https://storageexplorer.com)hasonló Storage Explorerrel, vagy programozott módon, a Storage ügyféloldali kódtár vagy a PowerShell használatával tekintheti meg.
 

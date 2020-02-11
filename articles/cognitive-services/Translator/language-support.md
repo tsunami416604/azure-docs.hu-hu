@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902001"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118810"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és területi támogatása
 
@@ -42,10 +42,10 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 
 |Nyelv|  Nyelvkód|  V3 API|
 |:-----|:-----:|:-----|
-|búr| `af`|   Neurális|
+|afrikaans| `af`|   Neurális|
 |arab|    `ar`    |   Neurális|
-|Bangla|    `bn`    |   Neurális|
-|Bosnyák (latin betűs)|   `bs`    |   Neurális|
+|Bengáli|    `bn`    |   Neurális|
+|bosnyák (latin betűs)|   `bs`    |   Neurális|
 |bolgár| `bg`    |   Neurális|
 |Kantoni (hagyományos)|   `yue`|  Statisztikai|
 |katalán|   `ca`    |   Statisztikai|
@@ -57,16 +57,16 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |holland| `nl`|   Neurális|
 |Angol|   `en`    |   Neurális|
 |észt|  `et`    |   Neurális|
-|Fidzsi|    `fj`    |   Statisztikai|
+|Fijian|    `fj`    |   Statisztikai|
 |filippínó|  `fil`   |   Statisztikai|
 |finn|   `fi`    |   Neurális|
 |francia|    `fr`    |   Neurális|
 |német|    `de`    |   Neurális|
 |görög| `el`    |   Neurális|
-|Haiti kreol|    `ht`        |Statisztikai|
+|Haitian Creole|    `ht`        |Statisztikai|
 |héber |`he`   |Neurális
 |hindi| `hi`    |   Neurális|
-|Hmong DAW| `mww`   |   Statisztikai|
+|Hmong Daw| `mww`   |   Statisztikai|
 |magyar| `hu`    |   Neurális|
 |izlandi| `is`    |   Neurális|
 |indonéz|    `id`    |   Statisztikai|
@@ -74,13 +74,13 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |olasz|   `it`    |   Neurális|
 |japán|  `ja`    |   Neurális|
 |kannada|`kn`| Neurális
-|Kiswahili| `sw`    |   Statisztikai|
+|szuahéli| `sw`    |   Statisztikai|
 |Klingon|   `tlh`   |   Statisztikai|
 |Klingon (plqaD)|   `tlh-Qaak`  |   Statisztikai|
 |koreai |`ko`   |   Neurális|
 |lett|   `lv`    |   Neurális|
 |litván|    `lt`    |   Neurális|
-|Malgas|  `mg`    |   Statisztikai|
+|Madagaszkári|  `mg`    |   Statisztikai|
 |maláj| `ms`        |Statisztikai|
 |malajálam| `ml` | Neurális
 |máltai|   `mt`    |   Statisztikai|
@@ -88,15 +88,15 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |norvég| `nb`    |   Neurális|
 |perzsa|   `fa`    |   Neurális|
 |lengyel|    `pl`    |   Neurális|
-|Portugál (brazíliai)|   `pt-br` |   Neurális|
-|Portugál (portugáliai)| `pt-pt` | Neurális
+|portugál (brazíliai)|   `pt-br` |   Neurális|
+|portugál (általános)| `pt-pt` | Neurális
 |pandzsábi|`pa`|Neurális
-|Queretaro otomi|   `otq`   |   Statisztikai|
+|Queretaro Otomi|   `otq`   |   Statisztikai|
 |román|  `ro`    |   Neurális|
-|orosz|   `ru`    |   Neurális|
-|Szamoai|    `sm`    |   Statisztikai|
+|Orosz|   `ru`    |   Neurális|
+|Samoa|    `sm`    |   Statisztikai|
 |szerb (cirill betűs)|    `sr-Cyrl`|  Statisztikai|
-|Szerb (latin betűs)|   `sr-Latn`       |Statisztikai|
+|szerb (latin betűs)|   `sr-Latn`       |Statisztikai|
 |szlovák|    `sk`    |   Neurális|
 |szlovén| `sl`    |   Neurális|
 |spanyol|   `es`    |   Neurális|
@@ -105,29 +105,29 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |tamil| `ta`    |   Neurális|
 |telugu|    `te`    |   Neurális|
 |thai|  `th`    |   Neurális|
-|Tongai|    `to`    |   Statisztikai|
+|Tongan|    `to`    |   Statisztikai|
 |török|   `tr`        |Neurális|
 |ukrán| `uk`    |   Neurális|
 |urdu|  `ur`    |   Statisztikai|
 |vietnami|    `vi`    |   Neurális|
 |walesi| `cy`    |   Neurális|
-|Yucatec Maya|  `yua`   |   Statisztikai|
+|A Maya alkalmazáshoz Yucatec|  `yua`   |   Statisztikai|
 
 > [!NOTE]
 > A nyelvi kód `pt` alapértelmezett értéke `pt-br`, Portugál (brazíliai).
 
-## <a name="transliteration"></a>Átírás
+## <a name="transliteration"></a>Átbetűzésű
 
 A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" kifejezés azt jelzi, hogy a nyelv a felsorolt parancsfájlokból vagy azok egyikére is átadható. A "-->" érték azt jelzi, hogy a nyelv csak az egyik parancsfájlból a másikba való átírására használható.
 
-| Nyelv    | Nyelvkód | Parancsprogramok használata | /Feladó | Parancsprogramok használata|
+| Nyelv    | Nyelvkód | Szkript | /Feladó | Szkript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | `ar` | Arab `Arab` | <--> | Latin `Latn` |
-|Bangla  | `bn` | Bengáli `Beng` | <--> | Latin `Latn` |
-| Kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Latin `Latn` |
-| Kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Hagyományos kínai `Hant`|
-| Kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Latin `Latn` |
-| Kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Egyszerűsített kínai `Hans` |
+|Bengáli  | `bn` | Bengáli `Beng` | <--> | Latin `Latn` |
+| kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Latin `Latn` |
+| kínai (egyszerűsített) | `zh-Hans` | Egyszerűsített kínai `Hans`| <--> | Hagyományos kínai `Hant`|
+| kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Latin `Latn` |
+| kínai (hagyományos) | `zh-Hant` | Hagyományos kínai `Hant`| <--> | Egyszerűsített kínai `Hans` |
 | gudzsaráti | `gu`  | Gudzsaráti `Gujr` | --> | Latin `Latn` |
 | héber | `he` | Héber `Hebr` | <--> | Latin `Latn` |
 | hindi | `hi` | Devanagari `Deva` | <--> | Latin `Latn` |
@@ -138,7 +138,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | Oriya | `or` | Oriya `Orya` | <--> | Latin `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | szerb (cirill betűs) | `sr-Cyrl` | Cirill `Cyrl`  | --> | Latin `Latn` |
-| Szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cirill `Cyrl`|
+| szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cirill `Cyrl`|
 | tamil | `ta` | Tamil `Taml` | --> | Latin `Latn` |
 | telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
 | thai | `th` | Thai `Thai` | <--> | Latin `Latn` |
@@ -149,10 +149,10 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
-| búr      | `af`          |
+| afrikaans      | `af`          |
 | arab       | `ar`          |
-| Bangla      | `bn`          |
-| Bosnyák (latin betűs)      | `bs`          |
+| Bengáli      | `bn`          |
+| bosnyák (latin betűs)      | `bs`          |
 | bolgár      | `bg`          |
 | katalán      | `ca`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
@@ -165,16 +165,16 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | francia      | `fr`          |
 | német      | `de`          |
 | görög      | `el`          |
-| Haiti kreol      | `ht`          |
+| Haitian Creole      | `ht`          |
 | héber      | `he`          |
 | hindi      | `hi`          |
-| Hmong DAW      | `mww`          |
+| Hmong Daw      | `mww`          |
 | magyar      | `hu`          |
 | izlandi    | `is`  |
 | indonéz      | `id`          |
 | olasz      | `it`          |
 | japán      | `ja`          |
-| Kiswahili      | `sw`          |
+| szuahéli      | `sw`          |
 | Klingon      | `tlh`          |
 | koreai      | `ko`          |
 | lett      | `lv`          |
@@ -184,10 +184,10 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | norvég      | `nb`          |
 | perzsa      | `fa`          |
 | lengyel      | `pl`          |
-| Portugál (brazíliai)     | `pt-br`          |
+| portugál (brazíliai)     | `pt-br`          |
 | román      | `ro`          |
-| orosz      | `ru`          |
-| Szerb (latin betűs)      | `sr-Latn`          |
+| Orosz      | `ru`          |
+| szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |
 | spanyol      | `es`          |
@@ -218,8 +218,8 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
 | arab       | `ar`          |
-| Bangla      | `bn`          |
-| Bosnyák (latin betűs)      | `bs`          |
+| Bengáli      | `bn`          |
+| bosnyák (latin betűs)      | `bs`          |
 | bolgár      | `bg`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
 |kínai (hagyományos)|   `zh-Hant`   |
@@ -241,20 +241,20 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | ír | `ga`  |
 | olasz      | `it`          |
 | japán      | `ja`          |
-| Kiswahili|    `sw`    |
+| szuahéli|    `sw`    |
 | koreai      | `ko`          |
 | lett      | `lv`          |
 | litván      | `lt`          |
-| Malgas| `mg`    |
+| Madagaszkári| `mg`    |
 | maori| `mi`  |
 | norvég      | `nb`          |
 | perzsa      | `fa`          |
 | lengyel      | `pl`          |
-| Portugál (brazíliai) | `pt-br` |
+| portugál (brazíliai) | `pt-br` |
 | román      | `ro`          |
-| orosz      | `ru`          |
-| Szamoai|   `sm`    |
-| Szerb (latin betűs)      | `sr-Latn`          |
+| Orosz      | `ru`          |
+| Samoa|   `sm`    |
+| szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |
 | spanyol      | `es`          |

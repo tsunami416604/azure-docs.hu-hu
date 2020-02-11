@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907473"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120096"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Gyűjtemények létrehozása a saját alkalmazások portálján
 
@@ -30,7 +30,7 @@ A felhasználók a saját alkalmazások portálon tekinthetik meg és indíthatj
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan engedélyezheti és hozhat létre gyűjteményeket a rendszergazda. További információ a végfelhasználók számára a saját alkalmazások portál és gyűjtemények használatáról: a [gyűjtemények elérése és használata](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Saját alkalmazások előnézeti funkcióinak engedélyezése
+## <a name="enable-the-latest-my-apps-features"></a>A legújabb saját alkalmazások funkcióinak engedélyezése
 
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be felhasználói rendszergazdaként vagy globális rendszergazdaként.
 
@@ -39,13 +39,13 @@ A felhasználók a saját alkalmazások portálon tekinthetik meg és indíthatj
 3. A **felhasználói**szolgáltatások előzetesei területen válassza a **felhasználói szolgáltatás előnézeti beállításainak kezelése**lehetőséget.
 
 4. A **felhasználók a saját alkalmazások előnézeti funkcióit használhatják**a következő lehetőségek közül:
-   * **Kiválasztott** – egy adott csoport előnézeti funkcióinak engedélyezése. A **csoport kiválasztása** lehetőség kiválasztásával válassza ki azt a csoportot, amelyhez engedélyezni kívánja az előzetes verziójú funkciókat.  
-   * **All** – az összes felhasználó előzetes verziójú funkcióinak engedélyezése.
+   * **Kiválasztott** – egy adott csoport funkcióinak engedélyezése. A **csoport kiválasztása** lehetőség kiválasztásával válassza ki azt a csoportot, amelyhez engedélyezni kívánja a szolgáltatásokat.  
+   * **All** – engedélyezi az összes felhasználó funkcióit.
 
 > [!NOTE]
 > A saját alkalmazások portál megnyitásához a felhasználók használhatják a `https://myapps.microsoft.com` vagy a testre szabott hivatkozást a szervezethez, például `https://myapps.microsoft.com/contoso.com`. Miután engedélyezte az új saját alkalmazások felületét, a **frissített My Applications szolgáltatás elérhető** szalagcím **jelenik meg a** saját alkalmazások oldal tetején, a felhasználók pedig kiválaszthatják, hogy megtekintsék az új felhasználói élményt. Az új felület használatának leállításához a felhasználók az **új élmény kihagyása** szalagcímből választhatják az **Igen** lehetőséget az oldal tetején.
 
-## <a name="create-a-collection"></a>Katalógus létrehozása
+## <a name="create-a-collection"></a>Gyűjtemény létrehozása
 
 Gyűjtemény létrehozásához rendelkeznie kell egy prémium szintű Azure AD P1 vagy P2 licenccel.
 

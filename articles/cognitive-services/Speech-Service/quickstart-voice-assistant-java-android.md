@@ -3,19 +3,19 @@ title: 'Gyors útmutató: egyéni hangsegéd, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan hozhat létre hangsegéd-alkalmazást Java nyelven Androidon a Speech SDK használatával
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975958"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119755"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: hangsegéd létrehozása Java nyelven Androidon a Speech SDK használatával
 
@@ -283,7 +283,7 @@ Az alkalmazás és a tevékenység elindítása után a gombra kattintva megkezd
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 - [A hangsegédek ismertetése](voice-assistants.md)
 - [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [Egyéni kulcsszavak](speech-devices-sdk-create-kws.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024279"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120227"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
 
@@ -28,6 +28,11 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Általános hibaelhárítás
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Hiba a AzureAD-parancsmagok PowerShellben való futtatásakor
+
+- **Részletek**: Ha a AzureAD-parancsmagokat, például a Cloud Shell `Get-AzureADUser` futtatja, a következő hibaüzenet jelenhet meg: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Megoldás**: futtassa a `Connect-AzureAD` parancsmagot. Korábban Cloud Shell a parancsmagot automatikusan futtatta a PowerShell indításakor. A kezdési idő felgyorsításához a parancsmag már nem fut automatikusan. Úgy is dönthet, hogy visszaállítja a korábbi viselkedést úgy, hogy `Connect-AzureAD`t ad hozzá a PowerShellben található $PROFILE-fájlhoz.
 
 ### <a name="early-timeouts-in-firefox"></a>Korai időtúllépés a Firefoxban
 
@@ -117,7 +122,7 @@ A Cloud Shell a következő böngészők legújabb verzióit támogatja:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Használati korlátozások
+### <a name="usage-limits"></a>Használati korlátok
 
 A Cloud Shell interaktív használati esetekhez készült. Ennek eredményeképpen a hosszan futó, nem interaktív munkamenetek figyelmeztetés nélkül megszűnnek.
 

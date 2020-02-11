@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930014"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121417"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom kiszolgálása az Azure Storage-ban App Service Linuxon
 
@@ -34,6 +34,7 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t a Linux 
 - Az Azure Storage App Service támogatja a **Azure Files tárolók** (írási/olvasási) és az **Azure Blob-tárolók** csatlakoztatását (csak olvasható)
 - Az Azure Storage és a App Service **nem támogatja** a **tárolási tűzfal** konfigurációjának használatát az infrastruktúra korlátai miatt.
 - Az Azure Storage App Service lehetővé teszi, **hogy egy alkalmazás legfeljebb öt** csatlakoztatási pontot határozzon meg.
+- Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.
 - Az Azure Storage szolgáltatás **nem része** a webalkalmazásnak, és külön számlázható. További információ az [Azure Storage díjszabásáról](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]
@@ -69,7 +70,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Az Azure Storage a Custom-ID használatával több tárolós alkalmazással is csatlakoztatható. Az egyéni azonosító nevét a [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)futtatásával tekintheti meg.
 
-A *Docker-compose. YML* fájlban rendelje hozzá a `custom-id`hoz a `volumes` lehetőséget. Példa:
+A *Docker-compose. YML* fájlban rendelje hozzá a `custom-id`hoz a `volumes` lehetőséget. Például:
 
 ```yaml
 wordpress:

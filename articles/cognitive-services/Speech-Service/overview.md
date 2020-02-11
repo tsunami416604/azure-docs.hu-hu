@@ -3,19 +3,19 @@ title: Mi az a beszédszolgáltatás?
 titleSuffix: Azure Cognitive Services
 description: A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg-beszéd és a beszéd fordításának egységesítése egyetlen Azure-előfizetésbe. Beszédet adhat hozzá alkalmazásaihoz, eszközeihez és eszközeihez a Speech SDK, a Speech Devices SDK vagy a REST API-k használatával.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261432"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119926"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -26,7 +26,7 @@ A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd 
 
 Ezek a funkciók alkotják a beszédfelismerési szolgáltatást. Az ebben a táblázatban található hivatkozásokkal többet tudhat meg az egyes funkciók általános használati eseteiről, vagy böngészhet az API-referenciában.
 
-| Szolgáltatás | Szolgáltatás | Leírás | SDK | REST |
+| Szolgáltatás | Funkció | Leírás | SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
 | [Beszéd – szöveg](speech-to-text.md) | Diktálás | A beszéd-szöveg szöveggé átmásolja a hangadatfolyamokat valós időben a szöveggé, hogy alkalmazásai, eszközei vagy eszközei képesek legyenek a felhasználásra vagy a megjelenítésre. A beszéd-szöveg és a [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Kötegelt átírás](batch-transcription.md) | A Batch-átírás lehetővé teszi a nagy mennyiségű adatforgalom aszinkron beszéd-szöveggé átírását. Ez egy REST-alapú szolgáltatás, amely ugyanazt a végpontot használja, mint a Testreszabás és a modell kezelése. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
@@ -38,29 +38,11 @@ Ezek a funkciók alkotják a beszédfelismerési szolgáltatást. Az ebben a tá
 | [Beszédfordítás](speech-translation.md) | Beszédfordítás | A beszédfelismerés valós idejű, többnyelvű fordítást tesz lehetővé alkalmazásaihoz, eszközeihez és eszközeihez. Használja ezt a szolgáltatást beszéd – beszéd és beszéd – szöveg fordításához. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nem |
 | [Hangvezérelt asszisztensek](voice-assistants.md) | Hangvezérelt asszisztensek | A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely a bot Framework közvetlen vonalas vagy integrált egyéni parancsait (előzetes verzió) használja a feladatok befejezéséhez. | [Igen](voice-assistants.md) | Nem |
 
-## <a name="news-and-updates"></a>Hírek és frissítések
-
-Ismerje meg a beszédfelismerési szolgáltatás újdonságait.
-
-- 2019. november
-  - Két új beszélő stílus, [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) és [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles) lett hozzáadva a `en-US-JessaNeural` hanghoz.
-- 2019. szeptember
-  - Megjelent a Speech SDK 1.7.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-- 2019. augusztus
-  - **Új oktatóanyag**: [hang engedélyezése a robotnak a Speech SDK- C# val](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - Új, beszédes stílust ( [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)) adott hozzá a `en-US-JessaNeural` hanghoz.
-- 2019. június
-  - Megjelent a Speech SDK 1.6.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-- Május 2019 – a dokumentáció már elérhető a [beszélgetés átírásához](conversation-transcription-service.md), a [Call Center átírásához](call-center-transcription.md)és a [hangasszisztensekhez](voice-assistants.md).
-- 2019. május
-  - Megjelent Speech SDK 1.5.1. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-  - Megjelent Speech SDK 1.5.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-
 ## <a name="try-the-speech-service"></a>A beszédfelismerési szolgáltatás kipróbálása
 
 A legnépszerűbb programozási nyelveken gyors útmutatókat ajánlunk, amelyek mindegyike kevesebb, mint 10 perc alatt futtathatja a kódot. Ez a táblázat az egyes szolgáltatásokhoz tartozó legnépszerűbb gyors útmutatókat tartalmazza. A bal oldali navigációs sávon további nyelveket és platformokat is felhasználhat.
 
-| Beszéd – szöveg (SDK) | Szöveg – beszéd (SDK) | Fordítás (SDK) |
+| Beszéd – szöveg (SDK) | Szöveg – beszéd (SDK) | Translation (SDK) |
 | -------------------- | -------------------- | ----------------- |
 | [Hangfájlból származó beszéd felismerése](quickstarts/speech-to-text-from-file.md) | [Beszéd szintetizálása hangfájlba](quickstarts/text-to-speech-audio-file.md) | [Beszéd fordítása szöveggé](quickstarts/translate-speech-to-text.md) |
 | [Beszéd felismerése mikrofonnal](quickstarts/speech-to-text-from-microphone.md) | [Beszéd szintetizálása egy beszélő számára](quickstarts/text-to-speech.md) | [Beszéd fordítása több megcélzott nyelvre](quickstarts/translate-speech-to-text-multiple-languages.md) |
@@ -90,10 +72,10 @@ A beszédfelismerési szolgáltatás a beépített modellekkel jól működik, a
 
 | Beszédszolgáltatás | Platform | Leírás |
 | -------------- | -------- | ----------- |
-| Hang-szöveg transzformáció | [Custom Speech](https://aka.ms/customspeech) | Testreszabhatja a beszédfelismerési modelleket igényeihez és rendelkezésre álló adataihoz. Kiküszöbölheti a beszédfelismerést akadályozó tényezőket, például a különféle beszédstílusok, a háttérzaj vagy a szókincs által okozott problémákat. |
-| Szöveg-hang transzformáció | [Egyéni hang](https://aka.ms/customvoice) | Létrehozhat egy felismerhető és egyedülálló hangot szövegfelolvasási alkalmazásaihoz az elérhető beszédadatokkal. A hangkimeneteket tovább finomíthatja a hangparaméterek készletének módosításával. |
+| Diktálás | [Custom Speech](https://aka.ms/customspeech) | Testreszabhatja a beszédfelismerési modelleket igényeihez és rendelkezésre álló adataihoz. Leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt. |
+| Szövegfelolvasás | [Egyéni hang](https://aka.ms/customvoice) | Létrehozhat egy felismerhető és egyedülálló hangot szövegfelolvasási alkalmazásaihoz az elérhető beszédadatokkal. A hangkimeneteket tovább finomíthatja a hangparaméterek készletének módosításával. |
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 - [Beszéd SDK](speech-sdk-reference.md)
 - [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)

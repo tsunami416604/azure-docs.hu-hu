@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464380"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121485"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure-ban Service Fabric
 
-Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Java Spring boot-alkalmazást az Azure Service Fabricban. Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
-
-A rövid útmutató a Spring webhelyének [első lépéseket ismertető](https://spring.io/guides/gs/spring-boot/) útmutatójában található mintát használja. Ez az ismerős parancssori eszközöket alkalmazó rövid útmutató végigvezet a Spring Boot-minta Service Fabric-alkalmazásként történő telepítésének lépésein. A folyamat végén a Spring Boot mintája működőképes állapotban lesz a Service Fabricen.
-
-![Spring boot Service Fabric minta](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-Ezen rövid útmutató segítségével megtanulhatja a következőket:
-
-* Spring Boot-alkalmazás telepítése Service Fabricre
-* Az alkalmazás központi telepítése a helyi fürtre
-* Az alkalmazás horizontális felskálázása több csomópontra
-* Feladatátvétel elvégzése a szolgáltatáson a rendelkezésre állás korlátozása nélkül
+Ebben a rövid útmutatóban egy Java Spring boot-alkalmazást helyez üzembe az Azure Service Fabricba a Linux vagy MacOS rendszerű, ismerős parancssori eszközök használatával. Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-1. A Service Fabric SDK és a Service Fabric parancssori felület (CLI) telepítése
+- [Java-környezet](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) és [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-1. [A Git telepítése](https://git-scm.com/)
-1. A Yeoman telepítése
+- [Java-környezet és Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. A Java-környezet beállítása
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminálablakban futtassa a következő parancsot a Spring Boot-mintaalkalmazás helyi számítógépre történő klónozásához.
+Egy terminál ablakban futtassa a következő parancsot a Spring boot [első lépések](https://github.com/spring-guides/gs-spring-boot) minta alkalmazás helyi gépre történő klónozásához.
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>A Spring Boot-alkalmazás létrehozása 
-1. Az alkalmazás létrehozásához futtassa az alábbi parancsot a `gs-spring-boot/complete` könyvtárban: 
+A *GS-Spring-boot/Complete* könyvtáron belül futtassa az alábbi parancsot az alkalmazás létrehozásához. 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>A Spring Boot-alkalmazás becsomagolása 
-1. A klónban lévő `gs-spring-boot` könyvtárban futtassa a `yo azuresfguest` parancsot. 
+1. A klónban a *GS-Spring-boot* könyvtárban futtassa a `yo azuresfguest` parancsot. 
 
 1. Az egyes sorokban adja meg a következő adatokat.
 
     ![Spring boot Yeoman bejegyzései](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. A `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` mappában hozzon létre egy `entryPoint.sh` nevű fájlt. Adja a következőket az `entryPoint.sh` fájlhoz. 
+1. A *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* mappában hozzon létre egy *entryPoint.sh*nevű fájlt. Adja hozzá a következő kódot a *entryPoint.sh* fájlhoz. 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    A **ServiceManifest.xml** fájlnak most így kell kinéznie: 
+    A *ServiceManifest.xml* fájlnak most így kell kinéznie: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    A helyi fürt elindítása eltarthat egy ideig. A fürt üzembe állásának ellenőrzéséhez nyissa meg a Service Fabric Explorert a **http://localhost:19080** címen. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel. 
+    A helyi fürt elindítása eltarthat egy ideig. Annak ellenőrzéséhez, hogy a fürt teljesen fel van-e biztosítva, nyissa meg a Service Fabric Explorer `http://localhost:19080`. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel. 
     
     ![Service Fabric Explorer a kifogástalan csomópontokat jeleníti meg](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Nyissa meg a `gs-spring-boot/SpringServiceFabric` mappát.
+1. Nyissa meg a *GS-Spring-boot/SpringServiceFabric* mappát.
 1. A helyi fürthöz való csatlakozáshoz futtassa a következő parancsot.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. Futtassa az `install.sh` szkriptet.
+1. Futtassa a *install.sh* szkriptet.
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     ![Spring boot Service Fabric minta](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Most már elérhető a Service Fabric-fürtre telepített Spring Boot-alkalmazás.
+
+További információ: Spring boot [első lépések](https://spring.io/guides/gs/spring-boot/) minta a Spring webhelyén.
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
 

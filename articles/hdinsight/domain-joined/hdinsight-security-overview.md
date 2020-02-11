@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053743"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122106"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -32,7 +32,7 @@ A HDInsight [virtuális hálózatokon](../hdinsight-plan-virtual-network-deploym
 
 A VNET telepített összes fürt egy privát végponttal is rendelkezik, amely a VNET belüli magánhálózati IP-címekre oldja fel a fürt átjáróinak magánhálózati HTTP-hozzáférését.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A HDInsight [Enterprise Security Package](apache-domain-joined-architecture.md) Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít. A Active Directory integrációja [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)használatával érhető el. Ezekkel a képességekkel a felügyelt Active Directory tartományhoz csatlakoztatott HDInsight-fürtöt hozhat létre. Ezután konfigurálhatja azon vállalat alkalmazottainak listáját, akik hitelesíthetők és be tudnak jelentkezni a fürtbe.
 
@@ -87,9 +87,9 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | Az [operációs rendszer javításának](../hdinsight-os-patching.md) rendszeres időközönkénti ellenőrzése | Ügyfél |
 | Hálózati biztonság | [Virtuális hálózat](../hdinsight-plan-virtual-network-deployment.md) konfigurálása |
 |  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../hdinsight-plan-virtual-network-deployment.md#networktraffic) konfigurálása | Ügyfél |
-|  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal (előzetes verzió) | Ügyfél |
-| Virtualizált infrastruktúra | – | HDInsight (felhőalapú szolgáltató) |
-| Fizikai infrastruktúra biztonsága | – | HDInsight (felhőalapú szolgáltató) |
+|  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
+| Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
+| Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
 
 ## <a name="next-steps"></a>Következő lépések
 

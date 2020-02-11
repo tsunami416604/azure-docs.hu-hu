@@ -1,5 +1,5 @@
 ---
-title: Az OpenSSL konfigurálása Linuxra
+title: Linuxos OpenSSL konfigurálása
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan konfigurálhatja az OpenSSL-t a Linux rendszerhez.
 services: cognitive-services
@@ -10,26 +10,46 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: cadf31dede8ee81323076013d00b9431f597bda6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156488"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119980"
 ---
-# <a name="configure-openssl-for-linux"></a>Az OpenSSL konfigurálása Linuxra
+# <a name="configure-openssl-for-linux"></a>Linuxos OpenSSL konfigurálása
 
 Ha bármilyen Speech SDK-verziót használ a 1.9.0 előtt, az [OpenSSL](https://www.openssl.org) dinamikusan van konfigurálva a gazda-rendszer verzióra. A Speech SDK újabb verzióiban az OpenSSL ( [1.1.1](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)-es verzió) statikusan kapcsolódik a Speech SDK alapvető könyvtárához.
 
-## <a name="troubleshoot-connectivity"></a>Kapcsolatok hibaelhárítása
-
-Ha a Speech SDK 1.9.0 kiadásának használata esetén kapcsolódási hibák merülnek fel, győződjön meg arról, hogy a `ssl/certs` könyvtár létezik a `/usr/lib` könyvtárban, amely a Linux fájlrendszerben található. Ha a `ssl/certs` könyvtár *nem létezik*, ellenőrizze, hogy az OpenSSL telepítve van-e a rendszeren a következő parancs használatával:
-
+A kapcsolat biztosításához ellenőrizze, hogy az OpenSSL-tanúsítványok telepítve vannak-e a rendszerbe. Parancs futtatása:
 ```bash
-which openssl
+openssl version -d
 ```
 
-Ezután keresse meg az OpenSSL `certs` könyvtárat, és másolja a könyvtár tartalmát a `/usr/lib/ssl/certs` könyvtárba. Ezután próbálja meg újra, hogy megoldódott-e a kapcsolódási problémák.
+Az Ubuntu/Debian-alapú rendszerek kimenetének a következőnek kell lennie:
+```
+OPENSSLDIR: "/usr/lib/ssl"
+```
+
+Győződjön meg arról, hogy a OPENSSLDIR alatt van-e `certs` alkönyvtár. A fenti példában `/usr/lib/ssl/certs`lenne.
+
+* Ha `/usr/lib/ssl/certs` van, és számos különböző tanúsítványfájl tartalmaz (`.crt` vagy `.pem` kiterjesztéssel), nincs szükség további műveletekre.
+
+* Ha a OPENSSLDIR valami más, mint `/usr/lib/ssl` és/vagy a több különálló fájl helyett egyetlen tanúsítványfájl-fájl található, be kell állítania egy megfelelő SSL környezeti változót, hogy jelezze, hol találhatók a tanúsítványok.
+
+## <a name="examples"></a>Példák
+
+- A OPENSSLDIR `/opt/ssl`. `certs` alkönyvtár számos `.crt`-vagy `.pem`-fájllal rendelkezik.
+Állítsa be a környezeti változót úgy, hogy `/opt/ssl/certs` a Speech SDK-t használó program futtatása előtt `SSL_CERT_DIR`. Például:
+```bash
+SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+```
+
+- A OPENSSLDIR `/etc/pki/tls`. Van egy tanúsítványfájl-fájl, például `ca-bundle.pem` vagy `ca-bundle.crt`.
+Állítsa be a környezeti változót úgy, hogy `/etc/pki/tls/ca-bundle.pem` a Speech SDK-t használó program futtatása előtt `SSL_CERT_FILE`. Például:
+```bash
+SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

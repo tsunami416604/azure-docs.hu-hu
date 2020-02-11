@@ -1,5 +1,5 @@
 ---
-title: 'Képek besorolása oktatóanyag: modellek üzembe helyezése'
+title: 'Kép besorolási oktatóanyag: modellek üzembe helyezése'
 titleSuffix: Azure Machine Learning
 description: Ez az oktatóanyag bemutatja, hogyan használhatók a Azure Machine Learning egy képbesorolási modell üzembe helyezéséhez a scikit-Learn használatával egy Python Jupyter notebookon. Ez az oktatóanyag a két részből álló sorozat második része.
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122083"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116506"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: lemezkép besorolási modell üzembe helyezése Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,14 +33,14 @@ Az oktatóanyag ezen részében a Azure Machine Learning a következő feladatok
 > * A modell üzembe helyezése Container Instances.
 > * Tesztelje az üzembe helyezett modellt.
 
-A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és megismerésére. Méretezhető éles üzembe helyezés esetén érdemes lehet az Azure Kubernetes szolgáltatást használni. További információ: [a telepítés és a hol](how-to-deploy-and-where.md).
+A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és megismerésére. Méretezhető éles környezetekben üzemelő példányok fontolja meg az Azure Kubernetes Service. További információ: [a telepítés és a hol](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > A cikkben ismertetett kód Azure Machine Learning SDK 1.0.41-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jegyzetfüzet futtatásához először végezze el a modell betanítását az [oktatóanyagban (1. rész): képbesorolási modell betanítása](tutorial-train-models-with-aml.md).   Ezután nyissa meg az **IMG-besorolás-part2-Deploy. ipynb** notebookot a klónozott **oktatóanyagok** mappában.
+A jegyzetfüzet futtatásához először végezze el a modell betanítását az [oktatóanyagban (1. rész): képbesorolási modell betanítása](tutorial-train-models-with-aml.md).   Ezután nyissa meg az *IMG-besorolás-part2-Deploy. ipynb* notebookot a klónozott *oktatóanyagok/lemezkép-besorolás-mnist-adat* mappában.
 
 Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy telepítette `matplotlib` és `scikit-learn` a környezetében. 
 

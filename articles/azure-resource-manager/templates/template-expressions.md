@@ -2,19 +2,21 @@
 title: Sablon szintaxisa és kifejezések
 description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ismerteti.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484193"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120600"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések a Azure Resource Manager-sablonokban
 
-A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
+A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések kezdete és vége zárójelekkel: `[` és `]`. A kifejezés értéke a sablon telepítésekor lesz kiértékelve. Egy kifejezés karakterláncot, egész számot, logikai értéket, tömböt vagy objektumot adhat vissza.
 
 A sablon kifejezése nem lehet hosszabb 24 576 karakternél.
+
+A kifejezések támogatják a JSON-t ("NULL"), a tulajdonságok pedig a null literál értékét támogatják. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nem szerepel.
 
 ## <a name="use-functions"></a>Függvények használata
 

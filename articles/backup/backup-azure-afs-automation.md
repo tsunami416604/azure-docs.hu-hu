@@ -3,12 +3,12 @@ title: Azure Files biztonsági mentése a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086939"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120523"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Azure Files biztonsági mentése a PowerShell-lel
 
@@ -250,9 +250,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Fontos figyelmeztetés – az AFS biztonsági mentések biztonsági másolati elemének azonosítása
 
-Ez a szakasz az AFS biztonsági mentések az előzetes verzióról a GA-be való lekérésének változásait ismerteti.
+Ez a szakasz egy fontos változást vázol fel az AFS Backup szolgáltatásban a GA előkészítéséhez.
 
-Az AFS biztonsági mentésének engedélyezésekor a felhasználó a felhasználóbarát fájlmegosztás nevét adja meg az entitás neveként, és létrehoz egy biztonsági mentési elemet. A biztonsági mentési tétel neve a Azure Backup szolgáltatás által létrehozott egyedi azonosító. Általában az azonosító felhasználóbarát nevet is magában foglal. Azonban az Azure-szolgáltatások belsőleg azonosítják az Azure-fájlmegosztás egyedi azonosítására szolgáló módszert. Ez azt jelenti, hogy az AFS Backup biztonsági mentési tételének egyedi neve GUID, és nem lesz kapcsolatban az ügyfél rövid nevével. Ha tudni szeretné az egyes elemek egyedi nevét, egyszerűen futtassa az ```Get-AzRecoveryServicesBackupItem``` parancsot a megfelelő szűrőkkel a backupManagementType és a WorkloadType számára az összes releváns elem lekéréséhez, majd figyelje meg a visszaadott PS objektum/válasz név mezőjét. Az elemek listázása mindig ajánlott, majd válaszként a "név" mezőből olvassa be az egyedi nevet. Ezzel az értékkel szűrheti az elemeket a "Name" paraméterrel. Ellenkező esetben használja a FriendlyName paramétert, hogy lekérje az adott tételt az ügyfél rövid nevével/azonosítójával.
+Az AFS biztonsági mentésének engedélyezésekor a felhasználó a felhasználóbarát fájlmegosztás nevét adja meg az entitás neveként, és létrehoz egy biztonsági mentési elemet. A biztonsági mentési tétel neve a Azure Backup szolgáltatás által létrehozott egyedi azonosító. Általában az azonosító felhasználóbarát nevet is magában foglal. A Soft-delete fontos forgatókönyvének kezeléséhez azonban, ahol egy fájlmegosztás törölhető, és egy másik fájlmegosztás is létrehozható ugyanazzal a névvel, az Azure-fájlmegosztás egyedi identitása mostantól az ügyfél rövid neve helyett azonosító lesz. Az egyes elemek egyedi azonosítójának/nevének megismeréséhez egyszerűen futtassa az ```Get-AzRecoveryServicesBackupItem``` parancsot a megfelelő szűrőkkel a backupManagementType és a WorkloadType számára az összes releváns elem lekéréséhez, majd figyelje meg a visszaadott PS objektum/válasz név mezőjét. Az elemek listázása mindig ajánlott, majd válaszként a "név" mezőből olvassa be az egyedi nevet. Ezzel az értékkel szűrheti az elemeket a "Name" paraméterrel. Ellenkező esetben használja a FriendlyName paramétert, hogy lekérje az adott tételt az ügyfél rövid nevével/azonosítójával.
 
 > [!WARNING]
 > Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. Ebben a verzióban az "friendlyName" szűrő ```Get-AzRecoveryServicesBackupItem``` parancshoz érhető el. Adja át az Azure-fájlmegosztás nevét a friendlyName paraméternek. Ha átadja az Azure-fájlmegosztás nevét a "név" paraméternek, ez a verzió figyelmeztetést küld, hogy a rövid nevet adja át a felhasználóbarát név paraméternek. A minimális verzió telepítése nem okozhatja a meglévő parancsfájlok meghibásodását. Telepítse a PS minimális verzióját a következő paranccsal.

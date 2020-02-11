@@ -3,17 +3,17 @@ title: C#oktatóanyag az eredmények megrendeléséről
 titleSuffix: Azure Cognitive Search
 description: Ez az oktatóanyag bemutatja, hogyan rendezheti a keresési eredményeket. A szolgáltatás egy korábbi, az elsődleges tulajdonság és a másodlagos tulajdonság szerinti rendezést, valamint egy pontozási profilt tartalmaz, amely növeli a feltételt.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112684"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121546"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Oktatóanyag: az eredmények rendezése – Azure Cognitive Search
 
@@ -956,7 +956,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)című témakörben talál.
 

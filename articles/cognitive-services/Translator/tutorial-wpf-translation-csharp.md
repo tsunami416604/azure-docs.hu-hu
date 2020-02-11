@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978526"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118603"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
@@ -37,12 +37,12 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes szolgáltatásokhoz tartozó API-referenciák tallózásához kövesse a hivatkozást.
 
-| Szolgáltatás | Szolgáltatás | Leírás |
+| Szolgáltatás | Funkció | Leírás |
 |---------|---------|-------------|
-| Translator Text | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
-| Translator Text | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) (Fordítás) | Szöveg fordítása több mint 60 nyelvre. |
-| Translator Text | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) (Felismerés) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
-| Bing Spell Check | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
+| Fordítói szöveg | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
+| Fordítói szöveg | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 60 nyelvre. |
+| Fordítói szöveg | [Kinyomoz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
+| Bing – Helyesírás-ellenőrzés | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -114,12 +114,12 @@ Nézzük meg, hogy mi építünk.
 
 A felhasználói felület a következő összetevőket tartalmazza:
 
-| Név | Type (Típus) | Leírás |
+| Name (Név) | Típus | Leírás |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Megjeleníti a Microsoft Translator által a szöveges fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik. |
 | `ToLanguageComboBox` | ComboBox | Ugyanazokat a nyelveket jeleníti meg, mint a `FromComboBox`, de a felhasználó által lefordított nyelv kiválasztására szolgál. |
 | `TextToTranslate` | TextBox | Lehetővé teszi a felhasználó számára a fordítás szövegének megadását. |
-| `TranslateButton` | Gomb | Ezzel a gombbal lefordíthatja a szöveget. |
+| `TranslateButton` | Gombra | Ezzel a gombbal lefordíthatja a szöveget. |
 | `TranslatedTextLabel` | Címke | Megjeleníti a fordítást. |
 | `DetectedLanguageLabel` | Címke | Megjeleníti a lefordítani kívánt szöveg észlelt nyelvét (`TextToTranslate`). |
 
@@ -171,7 +171,7 @@ Ennyi, az űrlap készen áll. Most írj egy kódot a szöveges fordítás és a
 > [!NOTE]
 > Nyugodtan megteheti ezt az űrlapot, vagy létrehozhatja a sajátját.
 
-## <a name="create-your-app"></a>Az alkalmazás elkészítése
+## <a name="create-your-app"></a>Az alkalmazás létrehozása
 
 `MainWindow.xaml.cs` az alkalmazást vezérlő kódot tartalmazza. A következő néhány szakaszban kód hozzáadásával feltöltjük a legördülő menüket, és meghívhatjuk Translator Text és Bing Spell Check által kitett néhány API-t.
 
@@ -250,9 +250,9 @@ Az összes projekt be van ágyazva a `MainWindow : Window` osztályba. Kezdjük 
 
 Ebben a kódrészletben két, a fordításhoz elérhető nyelvekkel kapcsolatos információt tartalmazó tag-változót jelentettünk be:
 
-| Változó | Type (Típus) | Leírás |
+| Változó | Típus | Leírás |
 |----------|------|-------------|
-|`languageCodes` | Karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
+|`languageCodes` | karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |
 
 Ezt követően a `MainWindow` konstruktoron belül a hibakezelés a `HandleExceptions`-mel bővült. Ez a hibakezelés biztosítja, hogy a rendszer riasztást biztosítson, ha nem kezelik a kivételeket. Ezután ellenőrizze, hogy a megadott előfizetési kulcs 32 karakter hosszúságú-e. Hiba történik, ha a kulcs kisebb, mint 32 karakternél.
@@ -322,7 +322,7 @@ Vegyen fel egy metódust, ahol az utolsó szakaszban leálltunk, és hozzunk lé
    // In the following sections, we'll add code below this.
    ```
 
-A `GetLanguagesForTranslate()` metódus létrehoz egy HTTP GET kérelmet, és az `scope=translation` Query string paraméter használatával korlátozza a kérés hatókörét a fordítás támogatott nyelvekre. Az `en` értékű `Accept-Language` fejléc hozzáadásával a támogatott nyelvek neve angolul jelenik meg.
+A `GetLanguagesForTranslate()` metódus létrehoz egy HTTP GET kérelmet, és az `scope=translation` Query string paraméter használatával korlátozza a kérés hatókörét a fordítás támogatott nyelvekre. Az `Accept-Language` értékű `en` fejléc hozzáadásával a támogatott nyelvek neve angolul jelenik meg.
 
 A JSON-válasz elemzése és átalakítása szótárba. Ezután hozzáadja a nyelvi kódokat a `languageCodes` tag változóhoz. A nyelvi kódokat és a nyelvek felhasználóbarát nevét tartalmazó kulcs-érték-párokból az alkalmazás egy hurkot hoz létre, majd hozzáadja azokat a `languageCodesAndTitles` tagváltozóhoz. Az űrlap legördülő menüje megjeleníti a felhasználóbarát neveket, de a fordítás igényléséhez kódokat kell kérni.
 

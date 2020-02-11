@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 42960acebcc8923c8228c35087d2a5156e2ff32b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 012165b1039b04b3b4d6b72e2385dfbf57e40cd0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975686"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118697"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Gyors útmutató: a Translator Text API átbetűzés szövegének használata
 
@@ -54,7 +54,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [A beviteli nyelv azonosítása](quickstart-detect.md)

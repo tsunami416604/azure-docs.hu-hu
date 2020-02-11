@@ -3,19 +3,19 @@ title: 'Gyors útmutató: egyéni hangsegéd a Javához (Windows, Linux) – Spe
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Cognitive Services Speech SDK-t Java-konzolos alkalmazásokban. Megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás egy korábban létrehozott bot Framework robothoz úgy, hogy a közvetlen vonalas beszédfelismerési csatornát használja, és lehetővé tegye a hangsegéd felhasználói élményét.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815853"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119676"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Rövid útmutató: hangsegéd létrehozása a Speech SDK-val, Java (előzetes verzió)
 
@@ -474,7 +474,7 @@ A GitHubon további minták is elérhetők, például a hangfájlok beszédének
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [A hangsegédek ismertetése](voice-assistants.md)
 - [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)

@@ -2,13 +2,13 @@
 title: EmptyDir-kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat egy emptyDir-kötetet a tárolók közötti adatmegosztáshoz Azure Container Instances
 ms.topic: article
-ms.date: 02/08/2018
-ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552457"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117740"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>EmptyDir-kötet csatlakoztatása Azure Container Instances
 
@@ -29,18 +29,20 @@ Néhány példa a *emptyDir* -kötetek használatára:
 
 A *emptyDir* -kötetben lévő adatmennyiséget a tároló összeomlik. Az újraindított tárolók azonban nem garantáltak, hogy az *emptyDir* -köteten tárolt adatmennyiséget megőrzik. Ha leállítja a tároló csoportot, a *emptyDir* kötet nem marad meg.
 
+A Linux *emptyDir* -kötetek maximális mérete 50 GB.
+
 ## <a name="mount-an-emptydir-volume"></a>EmptyDir-kötet csatlakoztatása
 
-Ha emptyDir-kötetet szeretne csatlakoztatni egy tároló-példányban, [Azure Resource Manager sablonnal](/azure/templates/microsoft.containerinstance/containergroups)kell telepítenie.
+Ha emptyDir-kötetet szeretne csatlakoztatni egy tároló-példányban, [Azure Resource Manager sablonnal](/azure/templates/microsoft.containerinstance/containergroups), YAML- [fájllal](container-instances-reference-yaml.md)vagy más programozott módszerrel telepítheti a tárolókat.
 
-Először töltse ki a `volumes` tömböt a sablon `properties` szakaszának tároló csoportjában. Ezután minden olyan tárolóhoz, amelyben a *emptyDir* -kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
+Először töltse ki a `volumes` tömböt a fájl tároló csoport `properties` szakaszában. Ezután minden olyan tárolóhoz, amelyben a *emptyDir* -kötetet csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
 
 A következő Resource Manager-sablon például egy két tárolóból álló tároló csoportot hoz létre, amelyek mindegyike a *emptyDir* -kötetet csatlakoztatja:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Ha egy Azure Resource Manager sablonnal szeretné megtekinteni a tároló példány központi telepítésének példáját, tekintse meg a [többtárolós csoportok telepítése Azure Container Instancesban](container-instances-multi-container-group.md)című témakört.
+A Container Group telepítésére vonatkozó példákat lásd: [többtárolós csoport üzembe helyezése Resource Manager-sablonnal](container-instances-multi-container-group.md) és [egy többtárolós csoport üzembe helyezése YAML-fájl használatával](container-instances-multi-container-yaml.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

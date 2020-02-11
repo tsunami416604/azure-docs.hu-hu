@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964833"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121012"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Gyors útmutató: minta IoT csatlakoztatása Plug and Play előnézeti eszköz alkalmazásaC#a IoT hub ()
 
@@ -25,7 +25,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Pl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez telepítenie kell a .NET Core 2,2-et a fejlesztői gépre. A .NET Core SDK ezen verzióját több platformra is letöltheti a [.net Core 2,2 letöltésével](https://dotnet.microsoft.com/download/dotnet-core/2.2).
+A rövid útmutató elvégzéséhez telepítenie kell a .NET Core 3,0-et a fejlesztői gépre. A .NET Core SDK ezen verzióját több platformra is letöltheti a [.net Core 3,0 letöltésével](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
 A fejlesztői gépen található .NET-verzió ellenőrzéséhez futtassa a következő parancsot egy helyi terminál ablakban: 
 
@@ -72,7 +72,7 @@ A klónozott mintakód használatával olyan alkalmazást hozhat létre, amely e
 1. Futtasson egy IoT Plug and Play eszközt, amely telemetria küld az IoT hubhoz. Ugyanebben a terminálban a szükséges csomagok kiépítéséhez és a minta alkalmazás futtatásához használja a következő parancsot:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Láthatja, hogy az eszköz regisztrálása sikeresen megtörtént, és a rendszer frissítéseket vár a felhőből. Ez azt jelzi, hogy az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.

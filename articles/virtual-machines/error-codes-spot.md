@@ -1,20 +1,19 @@
 ---
 title: Az Azure spot-alapú virtuális gépek és a méretezési csoportok példányainak hibakódai
 description: Ismerje meg, hogy milyen hibakódok jelenhetnek meg a helyszínen futó virtuális gépek és a méretezési csoport példányainak használatakor.
-services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 97e68f4d0d671ffa0f697c484c502b9070a3f20f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781942"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115852"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Előzetes verzió: a helyszíni virtuális gépekhez és a méretezési csoportokhoz tartozó hibaüzenetek
 
@@ -27,7 +26,7 @@ ms.locfileid: "74781942"
 Íme néhány lehetséges hibakód, amelyet a helyszíni virtuális gépek és a méretezési csoportok használatakor kaphat.
 
 
-| Jelmagyarázat | Üzenet | Leírás |
+| Paraméter | Üzenet | Leírás |
 |-----|---------|-------------|
 | SkuNotAvailable | A (z) "\<Resource\>" erőforrás kért szintje jelenleg nem érhető el a (z) "\<Location\>" helyen a (z)\<subscriptionID\>előfizetéshez. Próbálkozzon másik szinten, vagy helyezzen üzembe egy másik helyet. | Ezen a helyen nincs elegendő Azure-beli helyszíni kapacitás a virtuális gép vagy a méretezési csoport példányának létrehozásához. |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  A kizárási szabályzat csak az Azure spot Virtual Machines állítható be. | Ez a virtuális gép nem egy helyszíni virtuális gép, ezért nem állíthatja be a kizárási szabályzatot. |

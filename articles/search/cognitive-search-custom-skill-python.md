@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152170"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122422"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
 
@@ -57,7 +57,7 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 
 A Visual Studio Code létrehozza a függvényalkalmazást egy új munkaterületen. Ez a projekt a [host.json](../azure-functions/functions-host-json.md) és a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) konfigurációs fájlokat tartalmazza, valamint az esetleges nyelvspecifikus projektfájlokat is. 
 
-A Function app projekt **összefűzési** mappájába egy új, http-triggerrel aktivált függvény is létrejön. Ebben a tartalomban az "\__init__. a (z)" nevű fájl lesz:
+A Function app projekt **összefűzési** mappájába egy új, http-triggerrel aktivált függvény is létrejön. Ebben a tartalomban a "\_\_init__.," nevű fájl jelenik meg:
 
 ```py
 import logging

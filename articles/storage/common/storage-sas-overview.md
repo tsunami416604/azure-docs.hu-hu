@@ -10,18 +10,18 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371819"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121927"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
 A közös hozzáférésű aláírás (SAS) biztonságos delegált hozzáférést biztosít a Storage-fiók erőforrásaihoz anélkül, hogy veszélyeztetné az adatai biztonságát. A SAS segítségével részletesen szabályozhatja, hogy az ügyfél Hogyan férhet hozzá az adataihoz. Megadhatja, hogy az ügyfél milyen erőforrásokhoz férhet hozzá, milyen engedélyekkel rendelkezik ezekhez az erőforrásokhoz, és hogy mennyi ideig érvényes az SAS érvényessége, más paraméterek között.
 
-## <a name="types-of-shared-access-signatures"></a>A közös hozzáférésű jogosultságkódok típusai
+## <a name="types-of-shared-access-signatures"></a>A közös hozzáférésű aláírások típusai
 
 Az Azure Storage három különböző típusú közös hozzáférési aláírást támogat:
 
@@ -62,7 +62,7 @@ Az SAS-t kétféleképpen lehet aláírni:
 
 - A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
 
-### <a name="sas-token"></a>SAS-jogkivonat
+### <a name="sas-token"></a>SAS-token
 
 Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít elő, például az egyik Azure Storage ügyféloldali kódtára használatával. A SAS-tokent semmilyen módon nem követik nyomon az Azure Storage. Korlátlan számú SAS-tokent hozhat létre az ügyféloldali oldalon. Miután létrehozott egy SAS-t, terjesztheti azt olyan ügyfélalkalmazások számára, amelyek hozzáférést igényelnek a Storage-fiók erőforrásaihoz.
 
@@ -76,13 +76,13 @@ Ha egy ügyfélalkalmazás egy kérelem részeként egy SAS URI-t biztosít az A
 
 Használjon SAS-t, ha biztonságos hozzáférést szeretne biztosítani a Storage-fiók erőforrásaihoz bármely olyan ügyfél számára, aki egyébként nem rendelkezik engedéllyel az adott erőforrásokhoz.
 
-Gyakori eset, ha egy SAS hasznos szolgáltatás, ahol a felhasználók a saját adataikat olvassák és írhatják a Storage-fiókjába. Az olyan esetekben, amikor a tárfiók felhasználói adatokat tárol, két tipikus kialakítási minta létezik:
+Gyakori eset, ha egy SAS hasznos szolgáltatás, ahol a felhasználók a saját adataikat olvassák és írhatják a Storage-fiókjába. Olyan helyzetekben, amikor egy Storage-fiók felhasználói adattárolást tárol, két jellemző kialakítási minta létezik:
 
-1. Az ügyfelek egy hitelesítést végző, előtérbeli proxyszolgáltatással töltik fel- és le az adatokat. Az előtér-proxy szolgáltatásnak megvan az előnye, hogy lehetővé teszi az üzleti szabályok érvényesítését, de nagy mennyiségű vagy nagy mennyiségű adatforgalom esetén az igényeknek megfelelően méretezhető szolgáltatás létrehozása költséges vagy nehézkes lehet.
+1. Az ügyfelek az előtér-proxy szolgáltatáson keresztül tölthetik le és tölthetik le az adatletöltést, amely hitelesítést végez. Az előtér-proxy szolgáltatásnak megvan az előnye, hogy lehetővé teszi az üzleti szabályok érvényesítését, de nagy mennyiségű vagy nagy mennyiségű adatforgalom esetén az igényeknek megfelelően méretezhető szolgáltatás létrehozása költséges vagy nehézkes lehet.
 
    ![Forgatókönyv diagramja: előtér-proxy szolgáltatás](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Egy egyszerű szolgáltatás hitelesíti az ügyfelet, majd létrehoz egy SAS-t. Miután az ügyfélalkalmazás megkapja az SAS-t, közvetlenül hozzáférhetnek a Storage-fiók erőforrásaihoz a SAS által meghatározott engedélyekkel és az SAS által engedélyezett időtartammal. Az SAS-szel nincs szükség az összes adat az előtérbeli proxyszolgáltatáson keresztül történő átirányítására.
+1. Egy egyszerű szolgáltatás szükség szerint hitelesíti az ügyfelet, majd létrehoz egy SAS-t. Miután az ügyfélalkalmazás megkapja az SAS-t, közvetlenül hozzáférhetnek a Storage-fiók erőforrásaihoz a SAS által meghatározott engedélyekkel és az SAS által engedélyezett időtartammal. Az SAS csökkenti az összes, az előtér-proxy szolgáltatáson keresztüli útválasztási művelet szükségességét.
 
    ![Forgatókönyv-diagram: SAS-szolgáltatói szolgáltatás](./media/storage-sas-overview/sas-storage-provider-service.png)
 
@@ -110,6 +110,7 @@ A közös hozzáférési aláírások használatára vonatkozó alábbi javaslat
 - **A közeljövőben lejárati idő használata egy ad hoc SAS-szolgáltatás SAS vagy fiók SAS esetében.** Ily módon, még akkor is, ha egy SAS biztonsága sérül, csak rövid ideig érvényes. Ez a gyakorlat különösen akkor fontos, ha nem hivatkozhat tárolt hozzáférési szabályzatra. A közeljövőben lejárati idő a blobba írt adatok mennyiségét is korlátozza a feltöltéshez rendelkezésre álló idő korlátozásával.
 - **Ha szükséges, az ügyfelek automatikusan megújítják az SAS-t.** Az ügyfeleknek a lejárat előtt is meg kell újítaniuk a SAS-t, hogy újra lehessen próbálkozni az újrapróbálkozások idejével, ha az SAS-t biztosító szolgáltatás nem érhető el. Ha a SAS-t kis számú azonnali, rövid életű művelethez kívánja használni, amelyeket a lejárati időszakon belül el kell végezni, akkor ez szükségtelen lehet, mivel a SAS-t nem kell megújítani. Ha azonban olyan ügyfele van, amely az SAS-n keresztül rutinul kéri a kérelmeket, akkor a lejárati lehetőség a lejátszásra kerül. A legfontosabb szempont, hogy az SAS-nek rövid életűnek kell lennie (ahogy azt korábban már említettük) annak biztosításához, hogy az ügyfél kellő időben megújítsa a megújítást (a sikeres megújítás előtt lejáró SAS okozta fennakadások elkerülése érdekében).
 - **Ügyeljen rá, hogy az SAS indítási ideje legyen.** Ha **most**beállítja a kezdő időpontot a sas számára, akkor az óra torzítása miatt (a különböző gépektől függően a jelenlegi idő eltérései) a hibák időnként megfigyelhetők az első néhány percben. Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában érvényes a lejárati időre is – ne feledje, hogy a kérések bármelyik irányában akár 15 percet is megfigyelheti. Az 2012-02-12-nál korábbi REST-verziót használó ügyfelek esetében a tárolt hozzáférési szabályzatra nem hivatkozó SAS maximális időtartama 1 óra, és a szabályzatok által meghiúsult hosszabb időszakot megadó házirendek.
+- **Legyen óvatos az SAS datetime formátumával.** Ha egy SAS esetében beállítja a kezdési időt és/vagy a lejáratot, egyes segédprogramokban (például a parancssori segédprogram AzCopy), akkor a dátum és idő formátuma csak "+% Y-% m-% dT% H:%M:% SZ" lehet.  
 - **Legyen egyedi az elérni kívánt erőforrással.** Az ajánlott biztonsági eljárás a minimálisan szükséges jogosultságokkal rendelkező felhasználó biztosítása. Ha egy felhasználónak csak olvasási hozzáférésre van szüksége egyetlen entitáshoz, akkor olvasási hozzáféréssel kell rendelkeznie az adott entitáshoz, és nem kell olvasási/írási/törlési hozzáférést adni az összes entitáshoz. Ez segít csökkenteni a károkat, ha a SAS biztonsága sérül, mert az SAS a támadók kezében kevesebb árammal rendelkezik.
 - **Ismerje meg, hogy a fiók számlázása minden használat után történik, beleértve a SAS-n keresztül is.** Ha írási hozzáférést biztosít egy blobhoz, a felhasználó a 200 GB-os blob feltöltését is választhatja. Ha olvasási hozzáféréssel is rendelkezik, dönthetnek úgy is, hogy 10 alkalommal töltik le, ami 2 TB-ot jelent a kimenő forgalomért. A korlátozott engedélyek megadásával csökkentheti a rosszindulatú felhasználók lehetséges műveleteit. Használja a rövid élettartamú SAS-t a fenyegetés csökkentése érdekében (de legyen szem előtt tartva a Befejezés időpontját).
 - **A SAS használatával írt adatellenőrzés.** Ha egy ügyfélalkalmazás adatot ír a Storage-fiókjába, vegye figyelembe, hogy problémák merülhetnek fel az adott adattal kapcsolatban. Ha az alkalmazás működéséhez az szükséges, hogy az adatok a használatra kész állapotban legyenek, akkor ezt az ellenőrzést az adatok írása után kell végrehajtani, mielőtt az alkalmazás használni fogja őket. Ez a gyakorlat védelmet biztosít a fiókba írt sérült vagy rosszindulatú adatbevitelek ellen, akár egy olyan felhasználó, aki megfelelően megszerezte az SAS-t, vagy egy kiszivárgott SAS-t használó felhasználó.

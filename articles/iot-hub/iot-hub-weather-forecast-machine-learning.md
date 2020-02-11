@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976179"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122160"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning
 
@@ -49,24 +49,77 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Az időjárási előrejelzési modell üzembe helyezése webszolgáltatásként
 
+Ebben a szakaszban az Azure AI-könyvtár időjárás-előrejelző modelljét kapja meg. Ezután hozzáadhat egy R-script modult a modellhez a hőmérséklet és a páratartalom-érték tisztításához. Végül pedig prediktív webszolgáltatásként helyezi üzembe a modellt.
+
+### <a name="get-the-weather-prediction-model"></a>Időjárás-előrejelző modell lekérése
+
+Ebben a szakaszban megtekintheti a Azure AI Gallery időjárási előrejelzési modelljét, és megnyithatja Azure Machine Learning Studio (klasszikus).
+
 1. Ugrás az [időjárás-előrejelző modell oldalára](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Kattintson a **Megnyitás a studióban** Microsoft Azure Machine learning Studio (klasszikus) lehetőségre.
-   ![nyissa meg Cortana Intelligence Gallery időjárás-előrejelzési modell lapját](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Kattintson a **Futtatás** gombra a modell lépéseinek ellenőrzéséhez. Ez a lépés 2 percet is igénybe vehet.
-   ![nyissa meg Azure Machine Learning Studio (klasszikus) időjárási előrejelzési modelljét](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Kattintson a WEBSZOLGÁLTATÁS > **prediktív webszolgáltatás** **beállítása** elemre.
-   ![az időjárás-előrejelző modell üzembe helyezését Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. A diagramon húzza a **webszolgáltatás bemeneti** modulját valahol a **pontszám modell** modul közelében.
-1. Kapcsolódjon a **webszolgáltatáshoz tartozó bemeneti** modulhoz a **pontszám modell** modulhoz.
-   ![két modul összekapcsolását Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
+   ![Az időjárás-előrejelző modell oldalának megnyitása Azure AI Gallery](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
+
+1. Kattintson a **Megnyitás a Studióban (klasszikus)** lehetőségre a modell Microsoft Azure Machine learning Studio (klasszikus) való megnyitásához.
+
+   ![Az időjárási előrejelzési modell megnyitása Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+
+### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>R-script modul hozzáadása a hőmérséklet és a páratartalom értékének tisztításához
+
+Ahhoz, hogy a modell megfelelően viselkedjen, a hőmérséklet-és páratartalom-adatnak a numerikus adatértékekre kell átállnia. Ebben a szakaszban egy R-script modult ad hozzá az időjárási előrejelzési modellhez, amely eltávolítja azokat a sorokat, amelyek hőmérséklete vagy nedvességtartalma nem alakítható át numerikus értékekre.
+
+1. A Azure Machine Learning Studio ablak bal oldalán kattintson a nyílra az eszközök panel kibontásához. Írja be a "végrehajtás" kifejezést a keresőmezőbe. Válassza az **R-parancsfájl végrehajtása** modult.
+
+   ![Válassza az R-parancsfájl végrehajtása modult](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
+
+1. Húzza az **r-szkript végrehajtása** modult a **tiszta hiányzó** adatmodulhoz, és a meglévő **r-szkript végrehajtása** modult a diagramon. Törölje a kapcsolatot a **tiszta hiányzó adatok** és az **R-szkriptek végrehajtása** modulok között, majd az ábrán látható módon kapcsolja össze az új modul bemeneteit és kimeneteit.
+
+   ![R-szkript végrehajtásához tartozó modul hozzáadása](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
+
+1. A Tulajdonságok ablak megnyitásához válassza az új **végrehajtási R-parancsfájl** modult. Másolja és illessze be az alábbi kódot az **R-szkript** mezőbe.
+
+   ```r
+   # Map 1-based optional input ports to variables
+   data <- maml.mapInputPort(1) # class: data.frame
+
+   data$temperature <- as.numeric(as.character(data$temperature))
+   data$humidity <- as.numeric(as.character(data$humidity))
+
+   completedata <- data[complete.cases(data), ]
+
+   maml.mapOutputPort('completedata')
+
+   ```
+
+   Ha elkészült, a Tulajdonságok ablakban a következőhöz hasonlóan kell kinéznie:
+
+   ![Kód hozzáadása az R-parancsfájl-modul végrehajtásához](media/iot-hub-weather-forecast-machine-learning/add-code-to-module.png)
+
+### <a name="deploy-predictive-web-service"></a>Prediktív webszolgáltatás üzembe helyezése
+
+Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszolgáltatást a modell alapján, majd telepítse a webszolgáltatást.
+
+1. Kattintson a **Futtatás** gombra a modell lépéseinek ellenőrzéséhez. Ez a lépés több percet is igénybe vehet.
+
+   ![Futtassa a kísérletet a lépések ellenőrzéséhez](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
+
+1. Kattintson a WEBSZOLGÁLTATÁS > **prediktív webszolgáltatás** **beállítása** elemre. Megnyílik a prediktív kísérlet diagramja.
+
+   ![Az időjárási előrejelzési modell üzembe helyezése Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+
+1. A prediktív kísérlet diagramon törölje a kapcsolatot a **webszolgáltatás bemeneti** modulja és a felül található **időjárási adatkészlet** között. Ezután húzza a **webszolgáltatás bemeneti** modulját valahol a **pontszám modell** modul közelében, és kapcsolódjon az ábrán látható módon:
+
+   ![Két modul összekötése Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
 1. Kattintson a **Futtatás** gombra a modell lépéseinek ellenőrzéséhez.
+
 1. Kattintson a **webszolgáltatás telepítése** lehetőségre a modell webszolgáltatásként való üzembe helyezéséhez.
+
 1. A modell irányítópultján töltse le a **kérelem/válasz** **Excel 2010 vagy korábbi munkafüzetét** .
 
    > [!Note]
    > Ügyeljen arra, hogy az **excel 2010-as vagy korábbi munkafüzetét** akkor is letöltse, ha az Excel újabb verzióját futtatja a számítógépen.
 
-   ![Az Excel letöltése a kérelem VÁLASZának végpontja számára](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Az Excel letöltése a kérelem VÁLASZának végpontja számára](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
 1. Nyissa meg az Excel-munkafüzetet, jegyezze fel a **webszolgáltatás URL-címét** és a **hozzáférési kulcsot**.
 
@@ -180,11 +233,11 @@ Futtassa az ügyfélalkalmazás a hőmérséklet és a páratartalom adatok IoT 
 1. Jelentkezzen be Azure-fiókjába.
 1. Válassza ki előfizetését.
 1. Kattintson az előfizetésre > **Storage-fiókok** > a Storage-fiókja > **blob-tárolók** > a tárolót.
-1. Nyisson meg egy. csv-fájlt, és tekintse meg az eredményt. Az utolsó oszlop az eső esélyét rögzíti.
+1. Töltsön le egy. csv-fájlt, és tekintse meg az eredményt. Az utolsó oszlop az eső esélyét rögzíti.
 
-   ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Sikeresen használta a Azure Machine Learningt, hogy az IoT hub hőmérséklet-és páratartalom-adatai alapján előkészítse az eső esélyét.
 

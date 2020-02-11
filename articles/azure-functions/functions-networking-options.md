@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846455"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114295"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -28,7 +28,7 @@ A Function apps több módon is üzemeltethető:
 
 ## <a name="matrix-of-networking-features"></a>Hálózati szolgáltatások mátrixa
 
-|                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium csomag](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
+|                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium csomag](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Bejövő IP-korlátozások & Private site Access](#inbound-ip-restrictions)|✅igen|✅igen|✅igen|✅igen|
 |[Virtuális hálózat integrációja](#virtual-network-integration)|❌nem|✅igen (regionális)|✅igen (regionális és átjáró)|✅igen|
@@ -111,7 +111,7 @@ A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítség
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor az alkalmazás megszakítja az alkalmazást.
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor az alkalmazás megszakítja az alkalmazást. Ez a funkció jelenleg a Prémium csomag és a virtuális hálózati integráció használatával érhető el.
 
 [További információ a Storage-fiókra vonatkozó követelményekről.](./functions-create-function-app-portal.md#storage-account-requirements)
 

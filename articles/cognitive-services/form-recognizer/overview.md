@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379433"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118539"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -51,17 +51,9 @@ Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok ango
 
 Az űrlap-felismerő a szöveg és a tábla szerkezetét is kinyerheti (a szöveghez társított sorok és oszlopok száma) a nagy felbontású optikai karakterfelismerés (OCR) használatával. 
 
-## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
+## <a name="get-started"></a>Első lépések
 
-**1. lépés:** Hozzáférés kérése:
-
-Az űrlap-felismerő korlátozott hozzáférésű előzetes verzióban érhető el. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját. Az űrlap adatokat kér Önnek, a vállalatnak és a forgatókönyvnek, amelyben az űrlap-felismerőt fogja használni.
-
-**2. lépés:** Hozzon létre egy űrlap-felismerő erőforrást a Azure Portalban:
-
-Ha hozzáférést kap a használati űrlap-felismerőhöz, a rendszer egy üdvözlő e-mailt fog kapni, amely több hivatkozást és erőforrást is tartalmaz. Az üzenetben található "Azure Portal" hivatkozásra kattintva nyissa meg a Azure Portal, és hozzon létre egy űrlap-felismerő erőforrást.
-
-**3. lépés:** Adatok kinyerése az űrlapokból:
+Egy rövid útmutató segítségével megkezdheti az űrlapok adatainak kinyerését. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
 * Egyéni – modell betanítása az űrlapokra
   * Betanítás címkék nélkül
@@ -76,13 +68,11 @@ Ha hozzáférést kap a használati űrlap-felismerőhöz, a rendszer egy üdvö
 * Elrendezés – szöveg és tábla szerkezetének kinyerése űrlapokból
   * [Gyors útmutató: elrendezési adatok kinyerése a Python használatával](quickstarts/python-layout.md)
 
-Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
-
-**4. lépés:** Tekintse át a REST API-kat:
+### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
 
 A következő API-kat fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
 
-|Név |Leírás |
+|Name (Név) |Leírás |
 |---|---|
 | **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. Állítsa be a _useLabelFile_ paramétert úgy, hogy `true` a manuálisan címkézett adattal. |
 | **Űrlap elemzése** |Egyetlen dokumentum elemzése, amely streamként lett átadva szöveg-, kulcs/érték párok és táblák kinyeréséhez az űrlapról az egyéni modellel.  |

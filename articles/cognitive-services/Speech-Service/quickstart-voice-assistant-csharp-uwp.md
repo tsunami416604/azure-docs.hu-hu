@@ -3,19 +3,19 @@ title: 'Gyors útmutató: egyéni hangsegéd C# (UWP) – beszédfelismerési sz
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben egy C# univerzális Windows-platform-(UWP-) alkalmazást hoz létre a Cognitive Services Speech szoftverfejlesztői készlet (SDK) használatával. Az ügyfélalkalmazás egy korábban létrehozott, a Direct line Speech Channel használatára konfigurált robot-keretrendszerhez csatlakozik. Az alkalmazás a Speech SDK NuGet csomagjával és a Microsoft Visual Studio 2019-mel készült.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816228"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119768"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Rövid útmutató: hangsegéd létrehozása a Speech SDK-val, UWP
 
@@ -419,7 +419,7 @@ Most már készen áll az alkalmazás létrehozására és tesztelésére.
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [A hangsegédek ismertetése](voice-assistants.md)
 - [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)

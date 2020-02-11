@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 4df1070fed456cc8f1d53d1b83b6d9b42ad0df03
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8ecd0ebbd242135f0d3b0c6e365d6e97586031cb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110551"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121228"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
 
@@ -47,7 +47,7 @@ A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Micr
 az extension add --name azure-cli-iot-ext
 ```
 
-Töltse le az Azure C# IoT-mintákat https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zipről, és bontsa ki a zip-archívumot.
+Töltse le az Azure C# IoT-mintákat [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zipről](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és BONTsa ki a zip-archívumot.
 
 Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 

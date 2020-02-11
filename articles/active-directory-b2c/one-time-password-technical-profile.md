@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982789"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114052"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -26,7 +26,7 @@ A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az egyszeri jels
 
 Az egyszeri jelszóval kapcsolatos technikai profil a kód ellenőrzése során hibaüzenetet is jelez. Tervezze meg az integrációt az egyszeri jelszóval egy **érvényesítési technikai profil**használatával. Az érvényesítési technikai profil a kód ellenőrzéséhez az egyszeri jelszó-technikai profilt hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell az Azure ad B2C által használt protokollkezelő-szerelvény teljesen minősített nevét:
 
@@ -51,7 +51,7 @@ Ennek a technikai profilnak az első módja egy kód létrehozása. Alább láth
 
 A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójának küldendő jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| ClaimReferenceId | Szükséges | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | azonosító | Igen | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 
@@ -61,7 +61,7 @@ A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -eleme
 
 A **OutputClaims** elem az egyszeri jelszavas protokoll szolgáltatója által létrehozott jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| ClaimReferenceId | Szükséges | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | otpGenerated | Igen | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
 
@@ -71,7 +71,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 A kód generálásának és karbantartásának konfigurálásához a következő beállítások használhatók:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60`; Maximális érték: `1200`; Alapértelmezett: `600`. |
 | CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
@@ -117,7 +117,7 @@ A technikai profil második módja egy kód ellenőrzése. Alább láthatók az 
 
 A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójának küldendő jogcímek listáját tartalmazza. A jogcím nevét a lent megadott névre is leképezheti.
 
-| ClaimReferenceId | Szükséges | Leírás |
+| ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | azonosító | Igen | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 | otpToVerify | Igen | A felhasználó által megadott ellenőrző kód. |
@@ -134,7 +134,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 A következő beállításokkal konfigurálhatja a kód-ellenőrzési hiba esetén megjelenő hibaüzenetet:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nem | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
 | UserMessageIfMaxRetryAttempted | Nem | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
@@ -168,3 +168,10 @@ A következő példa a kód ellenőrzéséhez használható `TechnicalProfile`:
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszer használatos jelszó-ellenőrző profilt:
+
+- [Egyéni e-mail-ellenőrzés Azure Active Directory B2C](custom-email.md)
+

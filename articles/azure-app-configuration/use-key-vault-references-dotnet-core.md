@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714427"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116615"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Oktatóanyag: Key Vault referenciák használata ASP.NET Core alkalmazásban
 
@@ -172,7 +172,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     using Azure.Identity;
     ```
 
-1. A `config.AddAzureAppConfiguration` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához. Adja meg a `UseAzureKeyVault` lehetőséget egy új `KeyVaultClient`-hivatkozás átadásához a Key Vault.
+1. A `config.AddAzureAppConfiguration` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához. Adja meg a `ConfigureKeyVault` kapcsolót, és adja át a megfelelő hitelesítő adatokat a Key Vault.
 
     #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -217,7 +217,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
             .UseStartup<Startup>());
     ```
 
-1. Amikor inicializálta az alkalmazás-konfigurációhoz való csatlakozást, átadta a `KeyVaultClient` hivatkozást a `UseAzureKeyVault` metódusnak. Az inicializálás után a Key Vault hivatkozások értékeit ugyanúgy érheti el, mint a normál alkalmazás-konfigurációs kulcsok értékeit.
+1. Amikor inicializálta az alkalmazás-konfigurációhoz való csatlakozást, a `ConfigureKeyVault` metódus meghívásával állíthatja be Key Vault kapcsolatát. Az inicializálás után a Key Vault hivatkozások értékeit ugyanúgy érheti el, mint a normál alkalmazás-konfigurációs kulcsok értékeit.
 
     A folyamat működés közbeni megtekintéséhez nyissa meg az *index. cshtml* mappát a **views** > **kezdőlapján** . Cserélje le a tartalmát a következő kódra:
 

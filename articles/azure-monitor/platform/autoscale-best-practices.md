@@ -4,14 +4,14 @@ description: Az Azure-ban Web Apps, virtuálisgép-méretezési csoportokhoz és
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396998"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117113"
 ---
-# <a name="best-practices-for-autoscale"></a>Ajánlott automatikus méretezési eljárások
+# <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
 
 ## <a name="autoscale-concepts"></a>Alapfogalmak
@@ -113,7 +113,7 @@ Hasonlóképpen, amikor az autoscale visszavált az alapértelmezett profilra, e
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>A méretezés szempontjai, ha több szabály van konfigurálva egy profilban
 
-Egyes esetekben előfordulhat, hogy egy profilban több szabályt kell beállítania. A szolgáltatások a következő autoskálázási szabályokat használják, ha több szabály van beállítva.
+Egyes esetekben előfordulhat, hogy egy profilban több szabályt kell beállítania. A következő autoskálázási szabályokat használja az autoskálázási motor, ha több szabály van beállítva.
 
 A kibővített, az *autoskálázás fut*, ha bármely szabály teljesül.
 A *méretezési*szolgáltatásban az autoskálázás megköveteli az összes szabály teljesítését.
@@ -133,13 +133,13 @@ Ezután a következő történik:
 Ha viszont a CPU értéke 25%, és a memória 51%-os, az autoskálázás **nem** méretezhető. A skálázáshoz a PROCESSZORnak 29%-os és 49%-os memóriával kell rendelkeznie.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Mindig válassza ki a biztonságos alapértelmezett példányszámot
-A példányok alapértelmezett száma fontos, hogy a szolgáltatás csak akkor számítson, ha a metrikák nem érhetők el. Ezért válassza ki a számítási feladatok számára biztonságos alapértelmezett példányszámot.
+Az alapértelmezett példányszám azért fontos, mert az autoscale méretezi a szolgáltatást az adott számra, ha a mérőszámok nem érhetők el. Ezért válassza ki a számítási feladatok számára biztonságos alapértelmezett példányszámot.
 
 ### <a name="configure-autoscale-notifications"></a>Az autoscale-értesítések konfigurálása
 Ha a következő feltételek bármelyike teljesül, a rendszer közzéteszi az automatikusan a tevékenység naplóját:
 
-* Méretezési művelettel kapcsolatos autoskálázási műveletek
-* Az autoskálázási szolgáltatás sikeresen befejezte a méretezési műveletet
+* A skálázási művelettel kapcsolatos autoskálázás.
+* Az autoskálázási szolgáltatás sikeresen befejezte a méretezési műveletet.
 * Az autoskálázási szolgáltatás nem végez méretezési műveletet.
 * A mérőszámok nem érhetők el az autoskálázási szolgáltatás számára a méretezési döntések elvégzéséhez.
 * A mérőszámok újra elérhetők (helyreállítás) a méretezési döntések elvégzéséhez.
@@ -148,7 +148,7 @@ Az autoskálázási motor állapotának figyeléséhez használhat egy műveletn
 
 A műveletnapló értesítésein kívül az e-mail-vagy webhook-értesítéseket is konfigurálhatja, hogy a sikeres skálázási műveletekről értesítést kapjon az autoskálázási beállítás értesítések lapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hozzon létre egy műveletnapló-riasztást az előfizetésben lévő összes autoskálázási motor műveleteinek figyeléséhez.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Eseménynapló-riasztás létrehozása az összes sikertelen, az előfizetésen belüli és a vertikális Felskálázási műveletek figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553987"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120425"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
 
@@ -48,6 +48,10 @@ Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy kinek
 1. A lejárt hozzárendelések megjelenítéséhez kattintson a szűrő állapotára, és válassza a **lejárt**lehetőséget.
 
 1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés**gombra.
+
+### <a name="viewing-assignments-programmatically"></a>A hozzárendelések programozott megtekintése
+
+Microsoft Graph használatával is lekérheti a hozzárendeléseket egy hozzáférési csomagban.  A megfelelő szerepkörbe tartozó, a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkező alkalmazással rendelkező felhasználó meghívhatja az API-t a [accessPackageAssignments listázásához](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Felhasználó közvetlen kiosztása
 
@@ -76,6 +80,10 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 1. A **Hozzáadás** gombra kattintva közvetlenül hozzárendelheti a kiválasztott felhasználókat a hozzáférési csomaghoz.
 
     Néhány pillanat elteltével kattintson a **frissítés** gombra, hogy megjelenjenek a felhasználók a hozzárendelések listájában.
+
+### <a name="directly-assigning-users-programmatically"></a>Felhasználók közvetlen kiosztása programozott módon
+
+Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasználót egy hozzáférési csomaghoz.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageAssignmentRequest létrehozásához](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Hozzárendelés eltávolítása
 

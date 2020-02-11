@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e615170952ea2987639a0bfc269ad5a1692e1e59
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480800"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117127"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor
 Ebből a cikkből megtudhatja, hogyan engedélyezheti vagy letilthatja a **Windows 10** laboros virtuális gépek (sablon vagy tanuló) automatikus leállítását egy távoli asztali kapcsolat leválasztása után. Azt is megadhatja, hogy a virtuális gépek mennyi ideig várjon a felhasználó újrakapcsolódására az automatikus leállítás előtt.
@@ -34,6 +34,9 @@ A labor-létrehozási varázsló 3. lépés lapján engedélyezheti vagy letilth
 Ezt a beállítást a **Beállítások** lapon konfigurálhatja, ahogy az az alábbi képen is látható: 
 
 ![Konfigurálás a tesztkörnyezet létrehozása után](../media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+
+> [!WARNING]
+> Ha a Windows operációs rendszert (OS) leállítja egy virtuális gépre, mielőtt leválaszt egy RDP-munkamenetet a virtuális géphez, az automatikus leállítás funkció nem fog megfelelően működni.  
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:

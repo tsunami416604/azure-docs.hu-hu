@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937296"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121724"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -32,17 +32,17 @@ A Azure DNS számlázási modell a Azure DNSban üzemeltetett DNS-zónák szám�
 
 További információkért tekintse meg a [Azure DNS díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/dns/).
 
-### <a name="what-is-the-sla-for-azure-dns"></a>Mi az Azure DNS garantált szolgáltatási szintje?
+### <a name="what-is-the-sla-for-azure-dns"></a>Mi a Azure DNS SLA-ja?
 
 Az Azure garantálja, hogy az érvényes DNS-kérelmek választ kapnak az idő legalább egy Azure DNS 100%-ában.
 
 További információ: [Azure DNS SLA oldal](https://azure.microsoft.com/support/legal/sla/dns).
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Mi a DNS-zóna? Ugyanaz, mint a DNS-tartomány? 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Mi az a DNS-zóna? Ugyanaz, mint a DNS-tartomány? 
 
 A tartomány a tartománynévrendszer egyedi neve. Például: contoso.com.
 
-A DNS-zóna egy adott tartomány DNS-rekordjainak üzemeltetésére szolgál. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a www\.contoso.com egy webhelyhez. Ezek a rekordok a DNS-zóna contoso.com futnak.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a www\.contoso.com egy webhelyhez. Ezek a rekordok a DNS-zóna contoso.com futnak.
 
 A tartománynév *csak egy név*. A DNS-zónák olyan adatforrások, amelyek egy tartománynév DNS-rekordjait tartalmazzák. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Emellett DNS-névkiszolgálók számára is lehetővé teszi az internetről érkező DNS-lekérdezések megválaszolását.
 
@@ -50,7 +50,7 @@ A tartománynév *csak egy név*. A DNS-zónák olyan adatforrások, amelyek egy
 
 Nem feltétlenül.
 
-Nem kell tartományt megvásárolnia egy DNS-zóna üzemeltetéséhez Azure DNSban. Bármikor létrehozhat egy DNS-zónát anélkül, hogy tartománynévvel rendelkezne. A zóna DNS-lekérdezései csak akkor oldhatók fel, ha a zónához rendelt Azure DNS névkiszolgálók felé irányulnak.
+Nem kell tartományt megvásárolnia egy DNS-zóna üzemeltetéséhez Azure DNSban. Bármikor létrehozhat egy DNS-zónát a tartománynév tulajdonjoga nélkül. A zóna DNS-lekérdezései csak akkor oldhatók fel, ha a zónához rendelt Azure DNS névkiszolgálók felé irányulnak.
 
 Ha a DNS-zónát a globális DNS-hierarchiához szeretné kapcsolni, meg kell vásárolnia a tartománynevet. Ezután a világ bármely pontjáról érkező DNS-lekérdezések megkeresik a DNS-zónát, és választ adnak a DNS-rekordokra.
 
@@ -149,7 +149,7 @@ Igen. Azure DNS támogatja a közös üzemeltetésű tartományokat más DNS-szo
 
 A közös üzemeltetés beállításához módosítsa a tartományhoz tartozó NS-rekordokat úgy, hogy mindkét szolgáltató névkiszolgálók felé mutassanak. A névkiszolgáló (NS) rekordjai határozzák meg, hogy mely szolgáltatók kapják meg a tartomány DNS-lekérdezéseit. Ezeket az NS-rekordokat Azure DNS, a másik szolgáltatóban és a szülő zónában is módosíthatja. A fölérendelt zóna általában a tartománynév-regisztrálón keresztül van konfigurálva. További információ a DNS-delegálásról: [DNS-tartomány delegálása](dns-domain-delegation.md).
 
-Győződjön meg arról is, hogy a tartomány DNS-rekordjai szinkronban vannak a DNS-szolgáltatók között. A Azure DNS jelenleg nem támogatja a DNS-zónák átvitelét. A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](https://docs.microsoft.com/powershell/module/az.dns), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)használatával kell szinkronizálni.
+Győződjön meg arról is, hogy a tartomány DNS-rekordjai szinkronban vannak a DNS-szolgáltatók között. A Azure DNS jelenleg nem támogatja a DNS-zónák átvitelét. A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](https://docs.microsoft.com/rest/api/dns/), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)használatával kell szinkronizálni.
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Meg kell-e adni a tartományom mind a négy Azure DNS a névkiszolgálók delegálását?
 

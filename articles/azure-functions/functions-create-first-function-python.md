@@ -4,12 +4,12 @@ description: Kiszolgáló nélküli Python-kód létrehozása és üzembe helyez
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898562"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116217"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Gyors útmutató: HTTP által aktivált Python-függvény létrehozása az Azure-ban
 
@@ -31,7 +31,7 @@ A cikk [Visual Studio Code-alapú verziója](/azure/azure-functions/functions-cr
 1. `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 1. Futtasson `python --version` (Linux/MacOS) vagy `py --version` (Windows) a Python-verzió jelentéseinek 3.7. x-ben való vizsgálatához.
 
-## <a name="create-and-activate-a-virtual-environment"></a>Virtuális környezet létrehozása és aktiválása
+## <a name="create-and-activate-a-virtual-environment"></a>Hozzon létre, és aktiválja a virtuális környezet
 
 Egy megfelelő mappában futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,7-et használja.
 
@@ -107,7 +107,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
 
 Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-locally) , és később is megvizsgálhatja a fájl tartalmát.
 
-### <a name="__init__py"></a>\_\_init\_\_.
+#### <a name="__init__py"></a>\_\_init\_\_.
 
 *\_\_init\_\_. a. `main()` a. a...* *..*
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 HTTP-trigger esetén a függvény a *function. JSON*fájlban meghatározott `req` változóban fogadja a kérelmeket. `req` az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. A *function. JSON*fájlban `$return`ként definiált visszatérési objektum az [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](functions-bindings-http-webhook.md).
 
-### <a name="functionjson"></a>Function. JSON
+#### <a name="functionjson"></a>function.json
 
 a *function. JSON* egy olyan konfigurációs fájl, amely meghatározza a függvény bemeneti és kimeneti `bindings`ét, beleértve az trigger típusát is. Ha kívánja, megváltoztathatja a `scriptFile`t, ha szükséges, más Python-fájlt is meghívhat.
 
@@ -199,7 +199,7 @@ Ha elkészült, nyomja le a **Ctrl**+**C** billentyűkombinációt a functions g
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>A függvényhez kapcsolódó Azure-erőforrások létrehozása
 
-A függvény kódjának az Azure-ba történő üzembe helyezéséhez három erőforrást kell létrehoznia:
+Mielőtt üzembe helyezi a függvény kódját az Azure-ban, három erőforrást kell létrehoznia:
 
 - Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
 - Egy Azure Storage-fiók, amely fenntartja az állapotot és a projektekkel kapcsolatos egyéb információkat.

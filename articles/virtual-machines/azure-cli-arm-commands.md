@@ -1,36 +1,29 @@
 ---
-title: Azure CLI-parancsok Resource Manager módban | Microsoft Docs
-description: Az Azure parancssori felület (CLI) parancsai a Resource Manager-alapú üzemi modell erőforrásainak kezeléséhez
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Klasszikus Azure CLI-parancsok
+description: Az Azure parancssori felület (CLI) parancsai az erőforrások kezeléséhez.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355931"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122447"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI-parancsok Resource Manager módban
-Ez a cikk az Azure parancssori felület (CLI) azon parancsainak szintaxisát és beállításait tartalmazza, amelyeket általában az Azure-erőforrások létrehozásához és kezeléséhez használ a Azure Resource Manager üzemi modellben. Ezeket a parancsokat a parancssori felület Resource Manager (ARM) módban való futtatásával érheti el. Ez nem egy teljes hivatkozás, és a CLI-verziója némileg eltérő parancsokat vagy paramétereket is megjeleníthet. Az Azure-erőforrások és-erőforráscsoportok általános áttekintését lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md).  
+# <a name="azure-classic-cli-commands"></a>Klasszikus Azure CLI-parancsok 
 
-> [!NOTE]
-> Ez a cikk az Azure CLI-ben a Resource Manager üzemmód parancsait mutatja be, más néven a klasszikus Azure CLI-t. A Resource Manager-modellben való működéshez az [Azure CLI](/cli/azure/install-az-cli2)-t is kipróbálhatja, a következő generációs többplatformos parancssori felülettel.
->Tudjon meg többet a [régi és az új Azure-CLIs](/cli/azure/old-and-new-clis).
->
+> [!IMPORTANT]
+> Ez a témakör az Azure klasszikus parancssori felületének telepítését ismerteti. A klasszikus parancssori felület elavult, és csak a klasszikus üzemi modellel használható.
+> Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/)-t.
 
-Első lépésként [telepítse az Azure CLI](../cli-install-nodejs.md) -t, és [kapcsolódjon az Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli).
+Ez a cikk a klasszikus Azure parancssori felület (CLI) azon parancsainak szintaxisát és beállításait ismerteti, amelyeket általában Azure-erőforrások létrehozására és kezelésére használhat. Ez nem egy teljes hivatkozás, és a CLI-verziója némileg eltérő parancsokat vagy paramétereket is megjeleníthet. 
+
+Első lépésként [telepítse a klasszikus Azure CLI](../cli-install-nodejs.md) -t, és [kapcsolódjon az Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli).
 
 Az aktuális parancs szintaxisa és a parancssorban az erőforrás-kezelő módban írja be a `azure help` vagy a parancsot az adott parancs súgójának megjelenítéséhez `azure help [command]`. Az adott Azure-szolgáltatások létrehozásához és kezeléséhez használt dokumentációban is található CLI-példák.
 
@@ -45,10 +38,10 @@ Az alábbi parancs használatával engedélyezheti az Azure CLI Resource Manager
 
 > [!NOTE]
 > A CLI Azure Resource Manager mód és az Azure Service Management mód kölcsönösen kizárják egymást. Ez azt eredményezi, hogy az egyik módban létrehozott erőforrások nem kezelhetők a másik módból.
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>Azure-fiók: fiók adatainak kezelése
+
+## <a name="account-information"></a>Fiók adatai
 Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcsolódáshoz.
 
 **Az importált előfizetések listázása**
@@ -75,7 +68,7 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure ad: Active Directory objektumok megjelenítésére szolgáló parancsok
+## <a name="active-directory-objects"></a>Active Directory-objektumok
 **Az Active Directory-alkalmazások megjelenítésére szolgáló parancsok**
 
     ad app create [options]
@@ -102,7 +95,7 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: a rendelkezésre állási csoportok kezelésére szolgáló parancsok
+## <a name="availability-sets"></a>Rendelkezésre állási csoportok
 **Rendelkezésre állási csoport létrehozása egy erőforráscsoporthoz**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: parancsok a helyi beállítások kezeléséhez
+## <a name="local-settings"></a>Helyi beállítások
 **Az Azure CLI konfigurációs beállításainak listázása**
 
     config list [options]
@@ -137,7 +130,7 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Azure-szolgáltatás: a fiókok funkcióinak kezeléséhez szükséges parancsok
+## <a name="account-features"></a>Fiók funkciói
 **Az előfizetéshez elérhető összes funkció listázása**
 
     feature list [options]
@@ -150,7 +143,7 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure-Csoport: Az erőforráscsoportok kezelésére szolgáló parancsok
+## <a name="resource-groups"></a>Erőforráscsoportok
 **Létrehoz egy erőforráscsoportot**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ Az eszköz az Azure-előfizetési adatokat használja a fiókjához való kapcso
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure hdinsight: a HDInsight-fürtök kezelésére szolgáló parancsok
+## <a name="hdinsight-clusters"></a>HDInsight-fürtök
 **A fürt konfigurációs fájljának létrehozásához vagy hozzáadásához szükséges parancsok**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 Példa: hozzon létre egy konfigurációs fájlt, amely tartalmazza a fürt létrehozásakor futtatandó parancsfájl-műveletet.
 
@@ -307,17 +301,17 @@ Paraméter beállításai:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure-ismeretek: a monitorozási adatokkal kapcsolatos parancsok (események, riasztási szabályok, autoskálázási beállítások, metrikák)
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Bepillantások (események, riasztási szabályok, autoskálázási beállítások, metrikák)
 **Egy előfizetéshez, correlationId, erőforráscsoporthoz, erőforráshoz vagy erőforrás-szolgáltatóhoz tartozó műveleti naplók beolvasása**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure Location: parancsok az összes erőforrástípus elérhető helyének lekéréséhez
+## <a name="locations"></a>Helyek 
 **Az elérhető helyszínek listázása**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Azure Network: hálózati erőforrások kezelésére szolgáló parancsok
+## <a name="network-resources"></a>Hálózati erőforrások
 **Virtuális hálózatok kezelésére szolgáló parancsok**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1503,7 @@ Paraméter beállításai:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure Provider: az erőforrás-szolgáltatói regisztrációk kezelésére szolgáló parancsok
+## <a name="resource-provider-registrations"></a>Erőforrás-szolgáltatói regisztrációk
 **Jelenleg regisztrált szolgáltatók listázása a Resource Managerben**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ Paraméter beállításai:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-erőforrás: az erőforrások kezeléséhez szükséges parancsok
+## <a name="resources"></a>További források
 **Erőforrás-csoport létrehozása**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ Paraméter beállításai:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure-szerepkör: az Azure-szerepkörök kezelésére szolgáló parancsok
+## <a name="azure-roles"></a>Azure-szerepkörök
 **Az összes elérhető szerepkör-definíció beolvasása**
 
     role list [options]
@@ -1562,7 +1556,7 @@ Paraméter beállításai:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: a tárolási objektumok kezelésére szolgáló parancsok
+## <a name="storage-objects"></a>Tárolási objektumok
 **A Storage-fiókok kezelésére szolgáló parancsok**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ Paraméter beállításai:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure-címke: a Resource Manager-címke kezelésére szolgáló parancsok
+## <a name="tags"></a>Címkék
 **Címke hozzáadása**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ Paraméter beállításai:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure-beli virtuális gép: az Azure-Virtual Machines kezelésére szolgáló parancsok
+## <a name="virtual-machines"></a>Virtuális gépek
 **Virtuális gép létrehozása**
 
     vm create [options] <resource-group> <name> <location> <os-type>

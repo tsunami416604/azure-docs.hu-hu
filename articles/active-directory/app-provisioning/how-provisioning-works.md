@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066849"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121372"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -86,6 +86,8 @@ A hatókör-szűrők használatával olyan attribútum-alapú szabályokat hatá
 ### <a name="b2b-guest-users"></a>B2B (vendég) felhasználók
 
 Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../b2b/configure-saas-apps.md).
+
+Vegye figyelembe, hogy a vendég felhasználó userPrincipalName gyakran "alias # EXT #@domain.com"-ként van tárolva. Ha a userPrincipalName az attribútum-hozzárendelések forrása attribútumként szerepel, a #EXT # el lesz távolítva a userPrincipalName. Ha a #EXT # elemre van szüksége, cserélje le a userPrincipalName és a originalUserPrincipalName tulajdonságot a forrás attribútumként. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 

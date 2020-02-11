@@ -1,31 +1,29 @@
 ---
-title: 'Gyors útmutató: szöveg-beszéd hangok listázása, Python-Speech szolgáltatás'
+title: Szöveg-beszéd hangok listázása, Python-Speech szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját egy régió/végpont számára a Python használatával. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik.
+description: Ebből a cikkből megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját egy régió/végpont számára a Python használatával. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: c645d01dd37fd370911019446c99c76c9da6221c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975975"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119805"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Gyors útmutató: a szöveg-beszéd hangok listájának beolvasása a Python használatával
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>A szöveg-beszéd hangok listájának beolvasása a Python használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját egy régió/végpont számára a Python használatával. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik. A támogatott régiók listáját a [régiók](regions.md)című részben tekintheti meg.
+Ebből a cikkből megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját egy régió/végpont számára a Python használatával. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik. A támogatott régiók listáját a [régiók](regions.md)című részben tekintheti meg.
 
-Ehhez a rövid útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+Ehhez a cikkhez egy Speech Service-erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * Python 2.7.x vagy 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője
@@ -44,9 +42,9 @@ import requests
 
 A rendszer a szöveges és a beszédfelismerési szolgáltatás felé irányuló HTTP-kérelmekre vonatkozó kéréseket használ.
 
-## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Adja meg az előfizetési kulcsot, és hozzon létre egy promptot a TTS számára
+## <a name="set-the-subscription-key-and-create-a-prompt-for-tts"></a>Állítsa az előfizetési kulcsot, és hozzon létre egy kérdés Szövegfelolvasás
 
-A következő néhány szakaszban létrehozhat metódusokat az engedélyezés kezeléséhez, a szöveg-beszéd API meghívásához és a válasz érvényesítéséhez. Kezdjük egy osztály létrehozásával. Itt tesszük a metódusokat a token Exchange-hez, és meghívjuk a szöveg-beszéd API-t.
+A következő néhány szakaszban módszerek engedélyezés kezeléséhez, az szöveg-hang transzformációs API-t és érvényesíteni a választ fog létrehozni. Kezdjük egy osztály létrehozásával. Ez az, ahol elhelyezzük a jogkivonatcsere, és a szöveg-hang transzformációs API meghívására szolgáló módszerek.
 
 ```python
 class GetVoices(object):
@@ -59,7 +57,7 @@ A `subscription_key` a Azure Portal egyedi kulcsa.
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-Ehhez a végponthoz hozzáférési jogkivonat szükséges a hitelesítéshez. Hozzáférési jogkivonat lekéréséhez Exchange szükséges. Ez a példa a beszédfelismerési szolgáltatás előfizetési kulcsát egy hozzáférési jogkivonat számára a `issueToken` végpont használatával cseréli.
+Ehhez a végponthoz hozzáférési jogkivonat szükséges a hitelesítéshez. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a példa a beszédfelismerési szolgáltatás előfizetési kulcsát egy hozzáférési jogkivonat számára a `issueToken` végpont használatával cseréli.
 
 Ez a példa azt feltételezi, hogy a Speech Service-előfizetés az USA nyugati régiójában található. Ha más régiót használ, frissítse a `fetch_token_url`értékét. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
@@ -78,11 +76,11 @@ def get_token(self):
 > [!NOTE]
 > A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférési jogkivonattal](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-## <a name="make-a-request-and-save-the-response"></a>Kérelem elkészítése és a válasz mentése
+## <a name="make-a-request-and-save-the-response"></a>Kérés és a válasz mentése
 
-Itt fogja felépíteni a kérést, és menti a visszaadott hangok listáját. Először be kell állítania a `base_url` és a `path`. Ez a példa feltételezi, hogy az USA nyugati végpontját használja. Ha az erőforrás egy másik régióban van regisztrálva, ellenőrizze, hogy a `base_url`frissíti-e. További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Itt fogja felépíteni a kérést, és menti a visszaadott hangok listáját. Először be kell állítania a `base_url` és a `path`. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióban van regisztrálva, ellenőrizze, hogy a `base_url`frissíti-e. További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Ezután adja hozzá a kéréshez szükséges fejléceket. Végül egy kérést küld a szolgáltatásnak. Ha a kérelem sikeres, és a rendszer egy 200 állapotkódot ad vissza, a válasz fájlba lesz írva.
+Ezután adja hozzá a kéréshez szükséges fejléceket. Végül paritásadatok egy kérelmet a szolgáltatáshoz. Ha a kérelem sikeres, és a rendszer egy 200 állapotkódot ad vissza, a válasz fájlba lesz írva.
 
 Másolja ezt a kódot a `GetVoices` osztályba:
 
@@ -107,7 +105,7 @@ def get_voices(self):
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Már majdnem kész. Utolsó lépésként hozza létre az osztályt, és hívja meg a függvényeket.
+Már majdnem kész. Az utolsó lépés, hogy az osztály példányosítható, és a függvényeket.
 
 ```python
 if __name__ == "__main__":
@@ -117,9 +115,9 @@ if __name__ == "__main__":
     app.get_voices()
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
-Ennyi, készen áll a minta futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
+Ennyi, készen áll a minta futtatására. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:
 
 ```console
 python get-voices.py
@@ -127,14 +125,14 @@ python get-voices.py
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
+Ellenőrizze, hogy a bizalmas adatok eltávolítása a mintaalkalmazás forráskódja, például a előfizetési kulcsok.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Python-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Szöveget beszéddé átalakító API-referencia](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)

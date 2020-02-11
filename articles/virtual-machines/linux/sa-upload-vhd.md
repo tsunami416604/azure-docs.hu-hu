@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458673"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115839"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -35,7 +35,7 @@ Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2
 
 Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: `myResourceGroup`, `mystorageaccount`és `mydisks`.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `WestUs` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-A célként megadott Storage-fióknak meg kell egyeznie, mint ahol a virtuális lemezt feltöltötte. Emellett az az **VM Create** parancs által megkövetelt összes további paramétert is meg kell adnia vagy válaszolnia kell, mint például a virtuális hálózat, a nyilvános IP-cím, a Felhasználónév és az ssh-kulcsok. További információt az [elérhető CLI Resource Manager-paraméterekről](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)itt olvashat.
+A célként megadott Storage-fióknak meg kell egyeznie, mint ahol a virtuális lemezt feltöltötte. Emellett az az **VM Create** parancs által megkövetelt összes további paramétert is meg kell adnia vagy válaszolnia kell, mint például a virtuális hálózat, a nyilvános IP-cím, a Felhasználónév és az ssh-kulcsok. További információt a [klasszikus CLI Resource Manager-paraméterekről](../azure-cli-arm-commands.md#virtual-machines)itt olvashat.
 
 ## <a name="requirements"></a>Követelmények
 A következő lépések elvégzéséhez a következőkre lesz szüksége:
@@ -124,13 +124,13 @@ Tekintse meg a **[Linux telepítési megjegyzéseit](create-upload-generic.md#ge
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoportok logikailag egyesítik az összes Azure-erőforrást a virtuális gépek támogatásához, például a virtuális hálózatkezeléshez és a tárhelyhez. További információforrások az erőforráscsoportok [áttekintése](../../azure-resource-manager/management/overview.md)című témakörben találhatók. Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal.
 
-A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
+A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `westus` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Hozzon létre egy Storage-fiókot az egyéni lemez és a virtuális gépek számára az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Az egyéni lemezről létrehozott nem felügyelt lemezekkel rendelkező virtuális gépeknek ugyanabban a Storage-fiókban kell lenniük, mint a lemezzel. 
 
