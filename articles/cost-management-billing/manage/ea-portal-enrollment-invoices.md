@@ -4,16 +4,16 @@ description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/21/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 1379f4acb88020234aa3a8fa2d3289f0bff0f108
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769552"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023395"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -425,7 +425,7 @@ A letöltött használatiadat-jelentésen látható, hogy a nyers erőforrás-ha
 
 Például: 694,533404 tényleges SQL Server-óra szerepel a használati adatokat tartalmazó jelentésben. Ezeket az egységeket a rendszer 6,94533404 egységére alakítja át 100 üzemórára vonatkozóan, amelyet aztán 6,9453-ra kerekítve jeleníti meg az Azure Enterprise Portalon.
 
-- Ezeket az egységeket a rendszer ezután megszorozza a kötelezettségvállalási egység árával, és az eredményt két tizedesre csonkolja. A japán yen (JPY) és a koreai won (KRW) esetében a kiterjesztett mennyiség nulla tizedesjegyre van kerekítve.
+- Ezeket az egységeket a rendszer ezután megszorozza a kötelezettségvállalási egység árával, és az eredményt két tizedesre csonkolja. A japán yen (JPY) és a dél-koreai won (KRW) esetében a kiterjesztett mennyiség nulla tizedesjegyre van kerekítve.
 - A túlhasználati díjak esetén a számlázható egységeket hat számjegyre csonkolja a rendszer, majd a kiterjesztett számlázási mennyiség meghatározása érdekében megszorozza a túlhasználati díjak egységárával.
 - Felügyelt szolgáltatás szolgáltatójának (MSP) számlázása esetén az MSP-ként megjelölt részleghez tartozó összes használat nulla tizedesjegyre van csonkolva az EA mértékegységre való átalakítás után. Ennek eredményeképpen a használat összege alacsonyabb lehet, mint az Azure Enterprise Portalon jelentett összes használat összege. Ez attól függ, hogy az MSP még a pénzügyi keretének egyenlegén belül vagy már a kereten túl van.
 

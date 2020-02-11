@@ -418,5 +418,7 @@
       href: 'https://blog.botframework.com/category/luis/'
     - name: Tudásbázis
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
+- name: Videók
+  href: 'whats-new.md#videos'
 - name: LUIS portál
   href: 'https://www.luis.ai'
