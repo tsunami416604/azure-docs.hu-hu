@@ -1,6 +1,6 @@
 ---
-title: Támogatási kérelem létrehozása a Cloudyn az Azure-ban | Microsoft Docs
-description: Ez a cikk végigvezeti a Cloudyn vonatkozó támogatási kérelem létrehozásához szükséges lépéseken.
+title: Támogatási kérés létrehozása az Azure-beli Cloudyn számára | Microsoft Docs
+description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy támogatási kérést a Cloudyn számára.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,41 +11,41 @@ ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
 ms.openlocfilehash: 4ebb2a1f617da75aad8cea805ba793910375c47a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989318"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Támogatási kérelem létrehozása a Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Támogatási kérés létrehozása a Cloudyn számára
 
-Ha nem találja a keresett információt, nyisson meg egy támogatási kérést. Vagy ha azt gyanítja, hogy probléma van a szolgáltatás megszakadásával vagy hibával. Egy támogatási jegy megnyitásakor győződjön meg arról, hogy egyetlen probléma miatt megnyitotta azt. Ez segít a jelentett probléma gyors átirányításában.
+Létrehozhat egy támogatási kérést, ha nem találja azokat az információkat, amelyeket keres. Vagy ha azt gyanítja, hogy a problémát a szolgáltatás kimaradása vagy egy programhiba okozza. Amikor megnyit egy támogatási jegyet, fontos, hogy az csak egyetlen problémára vonatkozzon. Ez segít a jelentett probléma minél gyorsabb továbbításában.
 
 ## <a name="open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-1. Jelentkezzen be a Azure Portalba (https://portal.azure.com).
-2. A felső navigációs sávon kattintson a **Súgó**elemre.
-3. A **Súgó** menüben kattintson a **Súgó és támogatás**elemre.
-4. A támogatás területen található Súgó + támogatás menüben kattintson az **új támogatási kérelem**elemre.
-5. A probléma típusa alatt található alapok területen válassza a **számlázás**lehetőséget.
-6. Az előfizetés területen válassza ki a felsorolt előfizetéseket. A választott előfizetés nem használható a probléma-útválasztáshoz.
-7. A támogatási csomag területen válassza ki az Azure-támogatási csomagot, majd kattintson a **tovább**gombra.  
-8. A probléma területen válasszon ki egy **súlyossági** szintet a válaszidő meghatározásához.
-9. A **probléma típusa** területen válassza a **Cloudyn örökölt**elemet, majd válasszon ki egy **kategóriát**.
-10. A **title (cím** ) mezőben adjon meg egy címet, amely leírja a kérést.
-11. A **részletek** mezőbe írja be a további adatokat.
-12. **Mikor indult el a probléma?** , válasszon ki egy hozzávetőleges dátumot és időpontot, majd kattintson a **tovább**gombra.  
-14. A **kapcsolattartási adatok** területen válassza ki a kívánt kapcsolattartási módszert, és adja meg a kapcsolattartási adatait, majd kattintson a **Létrehozás**gombra.  
+1. Jelentkezzen be az Azure Portalra (https://portal.azure.com).
+2. A felső navigációs ablakban kattintson a **Súgó** elemre.
+3. A **Súgó** menüben kattintson a **Súgó és támogatás** elemre.
+4. A Súgó és támogatás menüben, a Támogatás területen kattintson az **Új támogatási kérés** elemre.
+5. Az Alapok területen a Probléma típusánál válassza a **Számlázás** lehetőséget.
+6. Az Előfizetésnél válasszon a felsorolt előfizetések közül. A választott előfizetés nem játszik szerepet a probléma továbbításában.
+7. A Támogatási csomagnál válassza ki a saját Azure-beli támogatási csomagját, majd kattintson a **Tovább** gombra.  
+8. A Probléma területen válasszon egy **Súlyossági szintet**, ami segít a válaszidő meghatározásában.
+9. A **Probléma típusa** területen válassza az **Örökölt Cloudyn** lehetőséget, majd válasszon egy **kategóriát**.
+10. A **Cím** mezőbe írjon be egy címet, amely leírja a kérés tartalmát.
+11. A **Részletek** mezőbe írja be a további információkat.
+12. A **Mikor jelentkezett először a probléma?** kérdésnél válasszon ki egy körülbelüli dátumot és időpontot, majd kattintson a **Tovább** gombra.  
+14. A **Kapcsolattartási adatok** területen válassza ki a kívánt kapcsolatfelvételi módot, és adja meg az elérhetőségét, majd kattintson a **Létrehozás** parancsra.  
 
-A támogatási jegy létrehozása után a rendszer hozzáadja a támogatási várólistához. A válaszadási idő a támogatási csomag és a probléma súlyossága (üzleti hatás) alapján változhat. További információ: a [támogatás hatóköre és a válaszadás](https://azure.microsoft.com/support/plans/response/).
+A támogatási kérés a létrehozása után a bekerül a támogatási üzenetsorba. A válaszidő a támogatási csomagtól és a probléma súlyosságától (üzletmenetre gyakorolt hatásától) függően változhat. További információkért lásd a [hatókör és a válaszképesség támogatását](https://azure.microsoft.com/support/plans/response/).
 
-Ha Cost Managementhez szeretne számlázási támogatási jegyet létrehozni, a **probléma típusa**területen válassza a **Azure Cost Management**lehetőséget.
+Ha szeretne létrehozni egy számlázási támogatási jegyet a Cost Management számára, a **Probléma típusa** alatt válassza az **Azure Cost Management** lehetőséget.
 
-A beküldött incidensek állapotának vizsgálatához tekintse meg az [összes támogatási kérelmet](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
+A jelentett incidens állapotát megtekintheti az [Összes támogatási kérés](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests) területen.
 
-Ha Ön egy Azure-fiókkal nem rendelkező örökölt Cloudyn-felhasználó, akkor a https://support.microsoft.com/oas/default.aspx?prid=16451 címen megnyithatja a támogatási kérést.
+Ha a Cloudyn régebbi verzióját használja, és nem rendelkezik Azure-fiókkal, akkor a következő helyen hozhat létre egy támogatási kérést: https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni a Cloudyn-ről, folytassa a használati és Cloudyn kapcsolatos oktatóanyag [áttekintésével](../cloudyn/tutorial-review-usage.md) .
+- Ha bővebb információra van szüksége a Cloudynről, folytassa a Cloudyn [A használat és a költségek áttekintése](../cloudyn/tutorial-review-usage.md) című oktatóanyagával.

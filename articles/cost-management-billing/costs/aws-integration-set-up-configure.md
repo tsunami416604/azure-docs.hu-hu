@@ -1,6 +1,6 @@
 ---
-title: AWS-integráció beállítása Azure Cost Management
-description: Ez a cikk bemutatja, hogyan állíthatja be és konfigurálja az AWS-t és a használati jelentéseket a Azure Cost Management-integrációval.
+title: Az AWS és az Azure Cost Management integrációjának beállítása
+description: Ez a cikk végigvezeti az AWS költség- és használati jelentésnek az Azure Cost Managementbe való integrálásának beállításán és konfigurálásán.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,110 +11,110 @@ ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 5dbc6ca836c8d1c8b717fd4bf23eab5aa360a288
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988694"
 ---
-# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS és a használati jelentés integrálásának beállítása és konfigurálása
+# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS költség- és használati jelentés integrálásának beállítása és konfigurálása
 
-A Amazon Web Services (AWS) Cost és a használati jelentés (akt) integrálásával az AWS-kiadásokat a Azure Cost Managementban figyelheti és irányíthatja. Az integráció lehetővé teszi, hogy a Azure Portal egyetlen helyen figyelje és szabályozza az Azure és az AWS kiadásait. Ez a cikk bemutatja, hogyan állíthatja be az integrációt, és hogyan konfigurálhatja, hogy Azure Cost Management szolgáltatások használatával elemezze a költségeket és tekintse át a költségvetést.
+Az Amazon Web Services (AWS) költség- és használati jelentésének (CUR) integrálásával az AWS-kiadások az Azure Cost Managementben figyelhetővé és szabályozhatóvá válnak. Az integráció lehetővé teszi, hogy az Azure Portalon egyetlen helyről egyszerre lehessen monitorozni és szabályozni az Azure-ral és az AWS-szel kapcsolatos kiadásokat. Ez a cikk bemutatja, hogyan lehet az integrációt beállítani és konfigurálni ahhoz, hogy az Azure Cost Management-funkciókkal elemezhetők és áttekinthetők legyenek a költségvetések.
 
-Cost Management feldolgozza az AWS-gyűjtőn tárolt és használati jelentést az AWS-hozzáférési hitelesítő adatokkal, hogy lekérje a jelentések definícióit, és letöltse a jelentés GZIP CSV-fájljait.
+A Cost Management úgy dolgozza fel az AWS költség- és használati jelentését, amely egy S3-tárolóban található, hogy az Ön AWS-hozzáférési hitelesítő adatait használja a jelentésdefinícióik lekéréséhez és a jelentések GZIP CSV-fájljainak letöltéséhez.
 
-## <a name="create-a-cost-and-usage-report-in-aws"></a>Cost-és használati jelentés létrehozása az AWS-ben
+## <a name="create-a-cost-and-usage-report-in-aws"></a>Költség- és használati jelentés létrehozása az AWS-ben
 
-A Cost és a használati jelentés használata az AWS által ajánlott módszer az AWS-költségek gyűjtésére és feldolgozására. További információ: [AWS Cost and használati jelentés](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) dokumentációja.
+A költség- és használati jelentés használata az AWS által javasolt módszer az AWS költségeinek összegyűjtésére és feldolgozására. További információkért lásd az [AWS költség- és használati jelentésének](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) dokumentációját.
 
-Az AWS számlázási és Cost Management konzoljának **cost & használati jelentések** lapján a következő lépésekkel hozhat létre költségeket és használati jelentéseket:
+Az AWS számlázási és Cost Management-konzoljának **költség- és használati jelentésekkel** foglalkozó oldalán a következő lépésekkel hozhat létre költségeket és használati jelentéseket:
 
-1. Jelentkezzen be az AWS felügyeleti konzolra, és nyissa meg a [számlázási és Cost Management-konzolt](https://console.aws.amazon.com/billing).
-2. A navigációs ablaktáblán válassza a **Cost & használati jelentések**elemet.
-3. Válassza a **jelentés létrehozása**lehetőséget.
-4. A **jelentés neve**mezőben adja meg a jelentés nevét.
-5. A **további jelentés részletei**területen válassza az **erőforrás-azonosítók belefoglalása**lehetőséget.
-6. Az **adatfrissítési beállítások beállításnál**válassza ki, hogy az AWS költség-és használati jelentését szeretné-e frissíteni, ha az AWS a számla véglegesítése után a fiókra vonatkozó visszatérítést, jóváírást vagy támogatási díjat alkalmaz. Amikor egy jelentés frissül, egy új jelentés kerül feltöltésre az Amazon S3-ba. Javasoljuk, hogy hagyja bejelölve a beállítást.
+1. Jelentkezzen be az AWS felügyeleti konzolra, és nyissa meg a [Billing and Cost Management console](https://console.aws.amazon.com/billing) (Számlázási és költségkezelési konzolt).
+2. A navigációs sávon válassza a **Cost & Usage Reports** (Költség- és használati jelentések) elemet.
+3. Válassza a **Create report** (Jelentés létrehozása) parancsot.
+4. A **Report name** (Jelentés neve) mezőben adja meg a jelentés nevét.
+5. Az **Additional report details** (Jelentés további részletei) területen válassza az **Include resource IDs** (Erőforrás-azonosítók belefoglalása) lehetőséget.
+6. A **Data refresh settings** (Adatfrissítési beállítások) alatt válassza ki, szeretné-e, hogy az AWS költség- és használati jelentés frissüljön, ha az AWS visszatérítéseket, jóváírásokat vagy támogatási díjakat alkalmaz az Ön fiókjára, miután a számla véglegesítve lett. Egy jelentés frissítésekor egy új jelentés lesz feltöltve az Amazon S3-ba. Javasoljuk, hogy ezt a beállítást hagyja bejelölve.
 7. Kattintson a **Tovább** gombra.
-8. Az **S3 gyűjtőhöz**válassza a **Konfigurálás**lehetőséget.
-9. Az S3 gyűjtő konfigurálása párbeszédpanelen hajtsa végre az alábbi műveletek egyikét:
-    1. Válasszon ki egy meglévő gyűjtőt a legördülő listából, és válassza a **tovább**lehetőséget.
-    2. Adja meg a gyűjtő nevét és a régiót, ahol létre kíván hozni egy új gyűjtőt, majd válassza a **tovább**lehetőséget.
-10. Jelölje be az **Megerősítem, hogy a szabályzat helyes**, majd kattintson a **Mentés**gombra.
-11. Választható A jelentés elérési útjának előtagjaként adja meg azt a jelentés elérési útját, amelyet előtagértéke szeretne a jelentés nevére.
-Ha nem ad meg előtagot, az alapértelmezett előtag a jelentéshez megadott név. A dátumtartomány `/report-name/date-range/` formátummal rendelkezik.
-12. Az **időegység**beállításnál válassza az **óránként**lehetőséget.
-13. A **jelentések verziószámozása**beállításnál válassza ki, hogy szeretné-e, hogy a jelentés minden verziója felülírja az előző verziót, vagy ha további új jelentéseket szeretne.
-14. Az **Adatintegráció engedélyezéséhez**nincs szükség kijelölésre.
-15. A **tömörítéshez**válassza a **gzip**lehetőséget.
+8. Az **S3 bucket** (S3-tárolónál) esetén válassza a **Configure** (Konfigurálás) parancsot.
+9. Az S3-tároló konfigurálására szolgáló párbeszédpanelen végezze el a következő feladatok egyikét:
+    1. Válasszon ki egy meglévő tárolót a legördülő listából, majd válassza a **Next** (Tovább) lehetőséget.
+    2. Adja meg a tároló nevét és a régiót, ahol létre kívánja hozni az új tárolót, majd kattintson a **Next** (Tovább) gombra.
+10. Jelölje be az **I have confirmed that this policy is correct** (Megerősítem, hogy ez a szabályzat helyes) lehetőséget, majd kattintson a **Save** (Mentés) parancsra.
+11. (Nem kötelező) A jelentés elérési útjának előtagjánál adja meg a jelentés nevének elejéhez hozzáadott előtagot.
+Ha nem ad meg előtagot, a rendszer az alapértelmezett előtagot tekinti a jelentéshez megadott névnek. A dátumtartomány formátuma: `/report-name/date-range/`.
+12. A **Time unit** (Időegység) beállításnál válassza az **Hourly** (Óránként) lehetőséget.
+13. A **Report versioning** (Jelentés verziószámozása) beállításnál válassza ki, hogy szeretné-e, hogy a jelentés minden egyes verziója felülírja az előző verziót, vagy további új jelentéseket szeretne létrehozni.
+14. Az **Enable data integration for** (Adatintegráció engedélyezése a következőhöz) beállításnál semmit nem kell kiválasztania.
+15. A **Compression** (Tömörítés) beállításnál válassza a **GZIP** lehetőséget.
 16. Kattintson a **Tovább** gombra.
-17. Miután áttekintette a jelentés beállításait, válassza a **felülvizsgálat és Befejezés**lehetőséget.
+17. Miután átnézte a jelentése beállításait, válassza a **Review and Complete** (Áttekintés és befejezés) lehetőséget.
 
-    Jegyezze fel a jelentés nevét. Ezt a későbbi lépések során fogja használni.
+    Jegyezze fel a jelentés nevét. A későbbi lépésekben szükség lesz rá.
 
-Akár 24 óráig is eltarthat, amíg az AWS elkezdi jelentéseket kézbesíteni az Amazon S3-gyűjtőnek. A kézbesítést követően az AWS naponta legalább egyszer frissíti az AWS-költségeket és a használati jelentéseket tartalmazó fájlokat. Folytathatja az AWS-környezet konfigurálását, és nem kell megvárnia a kézbesítés megkezdését.
+Akár 24 órát is igénybe vehet, hogy az AWS kézbesíteni kezdje a jelentéseket az Amazon S3-tárolóba. A kézbesítés megkezdése után az AWS legalább naponta egyszer frissíti az AWS költség- és használati jelentésének fájljait. Folytathatja az AWS-környezet konfigurálását anélkül, hogy meg kellene várnia a kézbesítés megkezdését.
 
 ## <a name="create-a-role-and-policy-in-aws"></a>Szerepkör és szabályzat létrehozása az AWS-ben
 
-Azure Cost Management hozzáfér az S3 gyűjtőhöz, ahol a Cost és a használati jelentés naponta többször is megtalálható. A szolgáltatásnak hozzá kell férnie a hitelesítő adatokhoz az új adatok ellenőrzéséhez. Az AWS-ben létre kell hoznia egy szerepkört és egy házirendet, amely lehetővé teszi Cost Management számára a hozzáférését.
+Az Azure Cost Management naponta többször eléri azt az S3-tárolót, ahol a költség- és használati jelentés található. A szolgáltatásnak hozzáférésre van szüksége a hitelesítő adatokhoz, hogy ellenőrizni tudja az új adatok elérhetőségét. Ehhez az AWS-ben létre kell hozni egy szerepkört és egy szabályzatot.
 
-Ahhoz, hogy szerepköralapú hozzáférést lehessen engedélyezni egy AWS-fiókhoz Cost Managementban, a szerepkör az AWS-konzolon jön létre. Az AWS-konzolon rendelkeznie kell az ARN és a _External ID_ _szerepkörrel_ . Később ezeket a Cost Management az AWS- **összekötő létrehozása** oldalon használhatja.
+Ahhoz, hogy egy AWS-fiók szerepköralapú hozzáférését lehetővé tegyük a Cost Managementben, a szerepkört az AWS-konzolon kell létrehozni. Ehhez szükség van a _szerepkör ARN-re_ és a _külső azonosítóra_ az AWS-konzolról. Később ezeket az **AWS-összekötő létrehozására** szolgáló lapon fogjuk használni a Cost Managementben.
 
-Az új szerepkör létrehozása varázsló használata:
+Használja az új szerepkör létrehozására szolgáló varázslót:
 
-1. Jelentkezzen be az AWS-konzolra, és válassza a **szolgáltatások**lehetőséget.
-2. A szolgáltatások listájában válassza a **iam**lehetőséget.
-3. Válassza ki a **szerepkörök** elemet, majd válassza a **szerepkör létrehozása**lehetőséget.
-4. A következő oldalon válasszon **egy másik AWS-fiókot**.
-5. A **fiók azonosítója**mezőben adja meg a **432263259397**értéket.
-6. A **Beállítások**területen jelölje be a **külső azonosító megkövetelése (ajánlott eljárás, ha egy harmadik fél ezt a szerepkört fogja feltételezni)** .
-7. A **külső azonosító**mezőben adja meg azt a külső azonosítót, amely az AWS szerepkör és a Azure Cost Management közötti közös PIN-kód. Ugyanez a külső azonosító is használatban van a Cost Management **új összekötő** lapján. A Microsoft azt javasolja, hogy erős PIN-kódot használjon a külső azonosító megadásakor.
+1. Jelentkezzen be az AWS-konzolra és válassza a **Services** (Szolgáltatások) elemet.
+2. A szolgáltatások listájában válassza az **IAM** elemet.
+3. Válassza a **Roles** (Szerepkörök), majd a **Create Role** (Szerepkör létrehozása) lehetőséget.
+4. A következő lapon válassza az **Another AWS account** (Másik AWS-fiók) lehetőséget.
+5. Az **Account ID** (Fiókazonosító) mezőben adja meg a következőt: **432263259397**.
+6. Az **Options** (Beállítások) között válassza a következő lehetőséget: **Require external ID (Best practice when a third party will assume this role)** (Külső azonosító megkövetelése (Ajánlott eljárás, ha a szerepkört egy harmadik fél használja)).
+7. Az **External ID** (Külső azonosító) mezőben adja meg a külső azonosítót, amely egy jelszó, melyet az AWS-szerepkör és az Azure Cost Management közösen használ. Ugyanezt a külső azonosítót kell megadni a Cost Managementben az **Új összekötő** lapon is. A Microsoft egy erős jelszószabályzat használatát javasolja a külső azonosító megadásakor.
 
     > [!NOTE]
-    > Ne módosítsa az **MFA megkövetelése**beállítást. Továbbra is törölni kell.
-8. Válassza a **Tovább: engedélyek**lehetőséget.
-9. Válassza a **házirend létrehozása**lehetőséget. Ekkor egy új böngészőlap jelenik meg. Itt hozhat létre egy szabályzatot.
-10. Válassza **a szolgáltatás kiválasztása**lehetőséget.
+    > Ne módosítsa a **Require MFA** (Többtényezős hitelesítés megkövetelése) részt. Ez a lehetőség maradjon bejelöletlen.
+8. Válassza a **Next: Permissions** (Tovább: Engedélyek) lehetőséget.
+9. Válassza a **Create policy** (Szabályzat létrehozása) lehetőséget. Ekkor egy új böngészőlap jelenik meg. Itt hozhat létre egy új szabályzatot.
+10. Válassza a **Choose a service** (Szolgáltatás kiválasztása) lehetőséget.
 
-A Cost és a használati jelentés engedélyeinek konfigurálása:
+Konfigurálja a költség- és használati jelentésre vonatkozó engedélyeket:
 
-1. Adja meg **a költségeket és a használati jelentést**.
-2. Válassza a **hozzáférési szint** > **olvasás** > **DescribeReportDefinitions**lehetőséget. Ez a lépés lehetővé teszi Cost Management számára, hogy elolvassa, hogy milyen aktuális jelentések vannak meghatározva, és hogy azok megfelelnek-e a jelentésdefiníció előfeltételeinek.
-3. Válassza a **további engedélyek hozzáadása**lehetőséget.
+1. Írja be a **Cost and Usage Report** kifejezést.
+2. Válassza az **Access level** > **Read** > **DescribeReportDefinitions** (Hozzáférési szint > Olvasás > DescribeReportDefinitions) elemet. Ez a lépés lehetővé teszi, hogy a Cost Management beolvassa, hogy milyen CUR-jelentések vannak meghatározva, és megállapítsa, hogy ezek megfelelnek-e a jelentésdefiníció előfeltételeinek.
+3. Válassza az **Add additional permissions** (További engedélyek hozzáadása) lehetőséget.
 
-Az S3 gyűjtő és objektumok engedélyeinek konfigurálása:
+Konfigurálja az S3-tárolóra és -objektumokra vonatkozó engedélyeket:
 
-1. Válassza **a szolgáltatás kiválasztása**lehetőséget.
-2. Adja meg az **S3**értéket.
-3. Válassza a **hozzáférési szint** > **lista** > **ListBucket**lehetőséget. Ez a művelet beolvassa az S3 gyűjtőben található objektumok listáját.
-4. Válassza a **hozzáférési szint** > **olvasás** > **GetObject**lehetőséget. Ez a művelet engedélyezi a számlázási fájlok letöltését.
-5. Válassza az **erőforrások**lehetőséget.
-6. Válassza a **gyűjtő – ARN hozzáadása**elemet.
-7. A **gyűjtő neve**mezőbe írja be az aktuális fájlok tárolására szolgáló gyűjtőt.
-8. Válassza az **objektum – ARN hozzáadása**elemet.
-9. A **gyűjtő neve**mezőbe írja be az aktuális fájlok tárolására szolgáló gyűjtőt.
-10. Az **Objektumnév**mezőben válassza **a bármelyik**lehetőséget.
-11. Válassza a **további engedélyek hozzáadása**lehetőséget.
+1. Válassza a **Choose a service** (Szolgáltatás kiválasztása) lehetőséget.
+2. Írja be az **S3** kifejezést.
+3. Válassza az **Access level** > **List** > **ListBucket** (Hozzáférési szint > Felsorolás > ListBucket) elemet. Ez a művelet lekéri az S3-tárolóban található objektumok listáját.
+4. Válassza az **Access level** > **Read** > **GetObject** (Hozzáférési szint > Olvasás > GetObject) elemet. Ez a művelet lehetővé teszi a számlázási fájlok letöltését.
+5. Válassza a **Resources** (Erőforrások) elemet.
+6. Válassza a **bucket – Add ARN** (tároló – ARN hozzáadása) elemet.
+7. A **Bucket name** (Tároló neve) mezőben adja meg a CUR-fájlok tárolására használt tárolót.
+8. Válassza az **object – Add ARN** (objektum – ARN hozzáadása) elemet.
+9. A **Bucket name** (Tároló neve) mezőben adja meg a CUR-fájlok tárolására használt tárolót.
+10. Az **Object name** (Objektum neve) beállításnál válassza az **Any** (Bármelyik) lehetőséget.
+11. Válassza az **Add additional permissions** (További engedélyek hozzáadása) lehetőséget.
 
-A Cost Explorer engedélyének konfigurálása:
+Konfigurálja a Cost Explorerre vonatkozó engedélyeket:
 
-1. Válassza **a szolgáltatás kiválasztása**lehetőséget.
-2. Adja meg a **Cost Explorer szolgáltatást**.
-3. Válassza ki **az összes Cost Explorer szolgáltatási műveletet (CE:\*)** . Ez a művelet ellenőrzi, hogy a gyűjtemény helyes-e.
-4. Válassza a **további engedélyek hozzáadása**lehetőséget.
+1. Válassza a **Choose a service** (Szolgáltatás kiválasztása) lehetőséget.
+2. Írja be a **Cost Explorer Service** kifejezést.
+3. Válassza az **All Cost Explorer Service actions (ce:\*)** (Összes Cost Explorer szolgáltatási műveletet) lehetőséget. Ez a művelet ellenőrzi, hogy a gyűjtemény helyes-e.
+4. Válassza az **Add additional permissions** (További engedélyek hozzáadása) lehetőséget.
 
-Engedély hozzáadása AWS-szervezetekhez:
+AWS-szervezetek engedélyének hozzáadása:
 
-1. Adja meg a **szervezeteket**.
-2. Válassza a **hozzáférési szint** > **lista** > **ListAccounts**lehetőséget. Ez a művelet lekéri a fiókok nevét.
-3. A **felülvizsgálati szabályzat**mezőben adja meg az új szabályzat nevét. Győződjön meg arról, hogy a megfelelő adatokat adta meg, majd válassza a **házirend létrehozása**lehetőséget.
-4. Lépjen vissza az előző lapra, és frissítse a böngésző weblapját. Keresse meg az új szabályzatot a keresősáv alatt.
-5. Válassza a **Next (tovább): felülvizsgálat**lehetőséget.
-6. Adja meg az új szerepkör nevét. Győződjön meg arról, hogy a megfelelő adatokat adta meg, majd válassza a **szerepkör létrehozása**lehetőséget.
+1. Írja be az **Organizations** kifejezést.
+2. Válassza az **Access level** > **List** > **ListAccounts** (Hozzáférési szint > Felsorolás > ListAccounts) elemet. Ez a művelet lekéri a fiókok nevét.
+3. A **Review Policy** (Szabályzat áttekintése) résznél adja meg az új szabályzat nevét. Ellenőrizze, hogy helyesen adta-e meg az adatokat, majd válassza a **Create Policy** (Szabályzat létrehozása) parancsot.
+4. Lépjen vissza az előző lapra, és frissítse az oldalt a böngészőben. A keresőmezőben keressen rá az új szabályzatra.
+5. Válassza a **Next: Review** (Tovább: Áttekintés) lehetőséget.
+6. Adja meg az új szerepkör nevét. Ellenőrizze, hogy helyesen adta-e meg az adatokat, majd válassza a **Create Role** (Szerepkör létrehozása) parancsot.
 
-    Jegyezze fel az ARN szerepkört és az előző lépésekben használt külső azonosítót a szerepkör létrehozásakor. Ezeket később a Azure Cost Management-összekötő beállításakor fogja használni.
+    Jegyezze fel a szerepkör ARN-jét és a külső azonosítót, amelyeket az előző lépések során használt a szerepkör létrehozásához. Ezekre később szükség lesz az Azure Cost Management összekötőjének beállításakor.
 
-A szabályzat JSON-nek az alábbi példához hasonlónak kell lennie. Cserélje le az _bucketname_ -t az S3 gyűjtő nevére.
+A szabályzat JSON-jának a következő példához hasonlóan kell kinéznie. Cserélje le a _bucketname_ részt a saját S3-tárolójának a nevére.
 
 ```JSON
 {
@@ -148,87 +148,87 @@ A szabályzat JSON-nek az alábbi példához hasonlónak kell lennie. Cserélje 
 
 ## <a name="set-up-a-new-aws-connector-in-azure"></a>Új AWS-összekötő beállítása az Azure-ban
 
-Az alábbi információk használatával AWS-összekötőt hozhat létre, és megkezdheti az AWS-költségek figyelését:
+Az alábbiak alapján adhat hozzá egy új AWS-összekötőt, és kezdheti meg a saját AWS-költségei monitorozását:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Lépjen **Cost Management + számlázási** > **Cost Management**.
-3. A **Beállítások**területen válassza a **Cloud Connectors (előzetes verzió)** lehetőséget.  
-    ![például a Cloud Connectors (előzetes verzió) beállítást](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)).
-4. Összekötő létrehozásához kattintson a lap tetején a **+ Hozzáadás** gombra.
-5. Az **AWS-összekötő létrehozása** oldalon a **megjelenítendő név**mezőben adja meg az összekötő nevét.  
-    ![példa az AWS-összekötő létrehozásához](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Szükség esetén az alapértelmezett felügyeleti csoportot is kiválaszthatja. Az összes felderített csatolt fiókot fogja tárolni. Később is beállíthatja.
-7. A **számlázás** szakaszban válassza **az 1%-os automatikus feltöltés az általános rendelkezésre állás** esetén lehetőséget, ha az előnézet lejárta után is biztosítani szeretné a folyamatos működést. Ha az automatikus beállítást választja, ki kell választania egy számlázási előfizetést.
-8. Az **ARN szerepkör**esetében adja meg a szerepkör AWS-ben való beállításakor használt értéket.
-9. A **külső azonosító**mezőben adja meg a szerepkör AWS-ben való beállításakor használt értéket.
-10. A **jelentés neve**mezőbe írja be az AWS-ben létrehozott nevet.
-11. Válassza a **tovább** , majd a **Létrehozás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Lépjen a **Költségkezelés + számlázás** > **Cost Management** elemre.
+3. A **Beállítások** alatt válassza a **Felhőbeli összekötők (előzetes verzió)** elemet.  
+    ![A Felhőbeli összekötők (előzetes verzió) beállítást bemutató példa](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
+4. A lap tetején válassza a **+Hozzáadás** lehetőséget az összekötő létrehozásához.
+5. Az **AWS-összekötő létrehozása** lapon, a **Megjelenítendő név** mezőben adjon egy nevet az összekötőnek.  
+    ![Példa az AWS-összekötő létrehozására szolgáló lapra](./media/aws-integration-setup-configure/create-aws-connector01.png)
+6. Igény szerint válassza ki az alapértelmezett felügyeleti csoportot. Ez fogja tárolni az összes felderített összekapcsolt fiókot. Ezt később is beállíthatja.
+7. A **számlázási** szakaszban válassza az **1% automatikus terhelése általános rendelkezésre állás esetén** lehetőséget, ha biztosítani szeretné a folyamatos működést az előzetes verzió lejárta után. Ha az automatikus beállítást választja, ki kell választania egy előfizetést a számlázáshoz.
+8. A **Szerepkör ARN-je** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
+9. A **Külső azonosító** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
+10. A **Jelentés neve** mezőben adja meg az AWS-ben létrehozott nevet.
+11. Válassza a **Tovább**, majd a **Létrehozás** parancsot.
 
-Az új AWS-hatókörök, az AWS-összevont fiók, az AWS-vel összekapcsolt fiókok és a költségadatok megjelenése is eltarthat néhány óráig.
+Beletelhet néhány órába, mire az új AWS-hatókörök, az összesített AWS-fiók, az összekapcsolt AWS-fiókok és az ezekre vonatkozó költségadatok megjelennek.
 
-Az összekötő létrehozása után azt javasoljuk, hogy rendeljen hozzá hozzáférés-vezérlést. A felhasználók engedélyeket kapnak az újonnan felderített hatókörökhöz: AWS összevont fiók és AWS-hez kapcsolt fiókok. Az összekötőt létrehozó felhasználó az összekötő, a konszolidált fiók és az összes társított fiók tulajdonosa.
+Miután létrehozta az összekötőt, javasoljuk, hogy rendeljen hozzá hozzáférés-vezérlést. A felhasználók az újonnan felderített hatókörökhöz kapnak engedélyeket: az összesített AWS-fiókhoz és az összekapcsolt AWS-fiókokhoz. Az összekötőt létrehozó felhasználó lesz az összekötő, az összesített fiók és az összes összekapcsolt fiók tulajdonosa.
 
-Az összekötő engedélyeinek a felhasználóknak való kiosztása a felderítés után nem rendel hozzá engedélyeket a meglévő AWS-hatókörökhöz. Ehelyett csak az új társított fiókok kapnak engedélyeket.
+Ha a felderítés után a felhasználókhoz összekötő-engedélyeket rendel, ennek során nem rendel engedélyeket a meglévő AWS-hatókörökhöz. Ehelyett csak az új összekapcsolt fiókokhoz lesznek engedélyek rendelve.
 
-## <a name="take-additional-steps"></a>További lépések elvégzése
+## <a name="take-additional-steps"></a>További lépések
 
-- [Felügyeleti csoportok beállítása](../../governance/management-groups/overview.md#initial-setup-of-management-groups), ha még nem tette meg.
-- Győződjön meg arról, hogy az új hatókörök hozzá lettek adva a hatókör-választóhoz. Kattintson a **frissítés** elemre a legfrissebb adatértékek megtekintéséhez.
-- A **Felhőbeli összekötők** lapon válassza ki az összekötőt, és válassza az **Ugrás a számlázási fiókra** lehetőséget a társított fiók felügyeleti csoportokhoz való hozzárendeléséhez.
+- [Hozza létre a felügyeleti csoportokat](../../governance/management-groups/overview.md#initial-setup-of-management-groups), ha ez még nem történt meg.
+- Ellenőrizze, hogy az új hatókörök hozzáadódnak-e a hatókörválasztóhoz. Kattintson a **Frissítés** parancsra a legújabb adatok megtekintéséhez.
+- A **Felhőbeli összekötők** lapon válassza ki az összekötőt, és kattintson az **Ugrás a számlázási fiókra** lehetőségre az összekapcsolt fiók felügyeleti csoportokhoz való társításához.
 
-## <a name="manage-cloud-connectors"></a>Felhőbeli összekötők kezelése
+## <a name="manage-cloud-connectors"></a>Felhőbeli összekötők felügyelete
 
-Amikor kijelöl egy összekötőt a **felhőalapú összekötők** lapon, a következőket teheti:
+Amikor kiválaszt egy összekötőt a **Felhőbeli összekötők** lapon, a következőket teheti:
 
-- Válassza az **Ugrás a számlázási fiókra** lehetőséget az AWS konszolidált fiók adatainak megtekintéséhez.
-- Válassza a **Access Control** lehetőséget az összekötő szerepkör-hozzárendelésének kezeléséhez.
-- Az összekötő frissítéséhez válassza a **Szerkesztés** lehetőséget. Az AWS-fiók száma nem módosítható, mert az az ARN szerepkörben jelenik meg. Létrehozhat azonban egy új összekötőt is.
-- Válassza az **ellenőrzés** lehetőséget az ellenőrzési teszt újrafuttatásához, hogy a Cost Management képes legyen adatokat gyűjteni az összekötő-beállítások használatával.
+- Kiválasztja az **Ugrás a számlázási fiók** lehetőséget a konszolidált AWS-fiók adatainak megtekintéséhez.
+- Kiválasztja a **Hozzáférés-vezérlés** lehetőséget az összekötő szerepkör-hozzárendeléseinek kezeléséhez.
+- Kiválasztja a **Szerkesztés** lehetőséget az összekötő frissítéséhez. Az AWS-fiók száma nem módosítható, mert az szerepel a szerepkör ARN-jében. De létrehozhat egy új összekötőt.
+- Válassza az **Ellenőrzés** lehetőséget az ellenőrzési teszt újrafuttatásához, ami megvizsgálja, hogy a Cost Management képes-e az adatok gyűjtésére az összekötő beállításaival.
 
 ![Példa a létrehozott AWS-összekötők listájára](./media/aws-integration-setup-configure/list-aws-connectors.png)
 
-## <a name="set-up-azure-management-groups"></a>Azure felügyeleti csoportok beállítása
+## <a name="set-up-azure-management-groups"></a>Azure-beli felügyeleti csoportok beállítása
 
-Helyezze el az Azure-előfizetéseit és AWS-fiókját ugyanabban a felügyeleti csoportban, és hozzon létre egyetlen helyet, ahol megtekintheti a több felhőalapú szolgáltató adatait. Ha még nem konfigurálta az Azure-környezetet felügyeleti csoportokkal, tekintse meg a [felügyeleti csoportok kezdeti beállítását](../../governance/management-groups/overview.md#initial-setup-of-management-groups)ismertető témakört.
+Helyezze el az Azure-előfizetéseit és összekapcsolt AWS-fiókjait ugyanabban a felügyeleti csoportban, hogy egyetlen helyen láthatóvá váljanak a különböző felhőszolgáltatók adatai. Ha még nem konfigurálta az Azure-környezetét a felügyeleti csoportokkal, lásd: [A felügyeleti csoportok kezdeti beállítása](../../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
-Ha szeretné elkülöníteni a költségeket, létrehozhat egy olyan felügyeleti csoportot, amely csak AWS-hez kapcsolódó fiókokat tartalmaz.
+Ha el szeretné különíteni a költségeket, létrehozhat egy olyan felügyeleti csoportot, amely csak az összekapcsolt AWS-fiókokat tartalmazza.
 
-## <a name="set-up-an-aws-consolidated-account"></a>AWS konszolidált fiók beállítása
+## <a name="set-up-an-aws-consolidated-account"></a>Összesített AWS-fiók beállítása
 
-Az AWS konszolidált fiók több AWS-fiók esetében a számlázást és a fizetést ötvözi. Ez egy AWS-hez csatolt fiók is.
+Az összesített AWS-fiók magában egyesíti több AWS-fiók számlázását és fizetését. Emellett összekapcsolt AWS-fiókként is funkcionál.
 
-![Példa egy AWS konszolidált fiókra](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+![Példa egy összesített AWS-fiók részleteire](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
 
 Az oldalon a következőket teheti:
 
-- Válassza a **frissítés** lehetőséget, ha az AWS-hez csatolt fiókok társítását felügyeleti csoporttal szeretné tömegesen frissíteni.
-- Válassza a **Access Control** lehetőséget a hatókör szerepkör-hozzárendelésének beállításához.
+- Kiválasztja a **Frissítés** lehetőséget, amellyel tömegesen frissítheti az összekapcsolt AWS-fiókok társítását egy felügyeleti csoporthoz.
+- Kiválasztja a **Hozzáférés-vezérlés** lehetőséget a hatókörhöz tartozó szerepkör-hozzárendelések beállításához.
 
-### <a name="permissions-for-an-aws-consolidated-account"></a>Az AWS konszolidált fiók engedélyei
+### <a name="permissions-for-an-aws-consolidated-account"></a>Egy összesített AWS-fiók engedélyei
 
-Alapértelmezés szerint az AWS-összevont fiók engedélyei a fiók létrehozásakor vannak beállítva az AWS-összekötő engedélyei alapján. Az összekötő létrehozója a tulajdonos.
+Alapértelmezés szerint az összesített AWS-fiókok engedélyei a fiók létrehozásakor az AWS-összekötő engedélyei alapján vannak beállítva. A tulajdonos az összekötő létrehozója.
 
-A hozzáférési szintet az AWS konszolidált fiók **hozzáférési szint** lapján kezelheti. Az AWS-hez csatolt fiókok azonban nem öröklik az AWS konszolidált fiókra vonatkozó engedélyeket.
+A hozzáférési szintet az összesített AWS-fiók **Hozzáférési szint** lapján lehet kezelni. Az összekapcsolt AWS-fiókok azonban nem öröklik az összesített AWS-fiók engedélyeit.
 
-## <a name="set-up-an-aws-linked-account"></a>AWS-hez kapcsolódó fiók beállítása
+## <a name="set-up-an-aws-linked-account"></a>Összekapcsolt AWS-fiók beállítása
 
-Az AWS-hez kapcsolódó fiók az AWS-erőforrások létrehozása és kezelése. Egy csatolt fiók biztonsági határként is működik.
+Az összekapcsolt AWS-fiókban történik az AWS-erőforrások létrehozása és kezelése. Az összekapcsolt fiók emellett biztonsági határként is funkcionál.
 
-Ezen a lapon a következőket teheti:
+Ezen az oldalon a következőket teheti:
 
-- Válassza a **frissítés** lehetőséget, ha egy AWS-hez csatolt fiók társítását szeretné frissíteni egy felügyeleti csoporttal.
-- A hatókörhöz tartozó szerepkör-hozzárendelés beállításához válassza a **Access Control** lehetőséget.
+- Kiválasztja a **Frissítés** lehetőséget, amellyel frissítheti egy összekapcsolt AWS-fiók társítását egy felügyeleti csoporthoz.
+- Kiválasztja a **Hozzáférés-vezérlés** lehetőséget a hatókörhöz tartozó szerepkör-hozzárendelések beállításához.
 
-![Példa az AWS-hez csatolt fiók oldalára](./media/aws-integration-setup-configure/aws-linked-account01.png)
+![Példa egy összekapcsolt AWS-fiók lapjára](./media/aws-integration-setup-configure/aws-linked-account01.png)
 
-### <a name="permissions-for-an-aws-linked-account"></a>Az AWS-hez csatolt fiók engedélyei
+### <a name="permissions-for-an-aws-linked-account"></a>Egy összekapcsolt AWS-fiók engedélyei
 
-Alapértelmezés szerint az AWS-hez csatolt fiók engedélyei a létrehozás után, az AWS-összekötő engedélyei alapján vannak beállítva. Az összekötő létrehozója a tulajdonos. A hozzáférési szintet az AWS-hez csatolt fiók **hozzáférési szint** lapján kezelheti. Az AWS-hez csatolt fiókok nem öröklik az AWS konszolidált fiók engedélyeit.
+Alapértelmezés szerint az összekapcsolt AWS-fiók engedélyei a fiók létrehozásakor az AWS-összekötő engedélyei alapján vannak beállítva. A tulajdonos az összekötő létrehozója. A hozzáférési szintet az összekapcsolt AWS-fiók **Hozzáférési szint** lapján lehet kezelni. Az összekapcsolt AWS-fiókok nem öröklik az összesített AWS-fiók engedélyeit.
 
-Az AWS-hez csatolt fiókok mindig öröklik az engedélyeket attól a felügyeleti csoporttól, amelyhez tartoznak.
+Az összekapcsolt AWS-fiókok mindig öröklik annak a felügyeleti csoportnak az engedélyeit, amelyhez tartoznak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Most, hogy beállította és konfigurálta az AWS költség-és használati jelentés integrációját, folytassa az [AWS költségeinek és használatának kezelésével](aws-integration-manage.md).
-- Ha nem ismeri a költségek elemzését, tekintse meg [a Cost Analysis gyors üzembe helyezés és a költségek elemzése](quick-acm-cost-analysis.md) című témakört.
-- Ha nem ismeri a költségvetést az Azure-ban, tekintse meg az [Azure-költségvetések létrehozását és kezelését](tutorial-acm-create-budgets.md)ismertető témakört.
+- Most, hogy beállította és konfigurálta az AWS költség- és használati jelentés integrációját, folytassa [az AWS költségeinek és használatának felügyeletével](aws-integration-manage.md).
+- Ha nem ismeri a költségelemzést, lásd a [költségek költségelemzés használatával történő feltérképezését és elemzését](quick-acm-cost-analysis.md) ismertető gyorsútmutatót.
+- Ha nem ismeri a költségvetéseket az Azure-ban, lásd az [Azure-költségvetések létrehozását és kezelését](tutorial-acm-create-budgets.md) ismertető szakaszt.

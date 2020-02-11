@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270858"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
@@ -86,7 +86,7 @@ A Visual Studio- és a Microsoft Partner Network-előfizetésekhez havonta ismé
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Nagyvállalati Szerződéssel (EA) rendelkező előfizetések számlázási tulajdonjogának átadása
 
-A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egyik fiókból a másiknak egy adott regisztráción belül. További információkért lásd: [fiók tulajdonosának módosítása](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) az EA Portalon.
+A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egyik fiókból a másiknak egy adott regisztráción belül. További információért lásd a [Fiók tulajdonosának módosítása](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) részt az EA Portalon.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>A számlázási tulajdonjog elfogadását követő lépések
 
@@ -190,7 +190,7 @@ A [Szerepköralapú hozzáférés-vezérlési (RBAC-)](../../role-based-access-c
 
 Ha a címzettnek korlátoznia kell a hozzáférését az erőforrásaihoz, érdemes megfontolnia a szolgáltatáshoz társított titkos kódok frissítését. A legtöbb erőforrást a következő lépésekkel lehet frissíteni:
 
-  1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+  1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
   2. A központi menüben válassza a **Minden erőforrás** elemet.
   3. Válassza ki az erőforrást.
   4. Az erőforrás lapján kattintson a **Beállítások** elemre. Itt tekintheti meg és frissítheti a meglévő titkos kódokat.
@@ -222,10 +222,10 @@ Nem minden előfizetés-típus támogatja a számlázási tulajdonjog átadásá
 Akkor kapja ezt a hibaüzenetet, ha úgy próbálja átadni egy Microsoft Azure-csomag előfizetését, hogy nem rendelkezik a szükséges engedéllyel. A Microsoft Azure-csomag előfizetésének átadásához tulajdonosnak vagy közreműködőnek kell lennie abban a számlázási szakaszban, ahol az előfizetés számlái megjelennek. További információk: [A számlázási szakaszokhoz tartozó előfizetések kezelése](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az egyéb RBAC-szerepköröket. További információk: [Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: Az általános Cost Analysis a Azure Cost Managementban használatos
-description: Ez a cikk azt ismerteti, hogyan kérheti le a Azure Cost Management gyakori Cost Analysis feladatainak eredményeit.
+title: Gyakran használt költségelemzési megoldások az Azure Cost Managementben
+description: Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében az Azure Cost Managementben.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,108 +11,108 @@ ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
 ms.openlocfilehash: 756e2f275a92a31a99604aaf7ef880bfdce8149b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988512"
 ---
-# <a name="common-cost-analysis-uses"></a>Közös Cost Analysis-használat
+# <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 
-Azure Cost Management a felhasználók gyakran választ adnak olyan kérdésekre, amelyekre sok más kér. Ez a cikk végigvezeti a közös Cost Analysis feladatainak Cost Managementban való beszerzésének eredményein.
+Az Azure Cost Management felhasználói gyakran keresnek válaszokat olyan kérdésekre, amelyeket sok más felhasználó is feltesz. Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében a Cost Managementben.
 
-## <a name="view-cost-breakdown-by-azure-service"></a>A költségcsökkentés megtekintése az Azure szolgáltatásban
+## <a name="view-cost-breakdown-by-azure-service"></a>Költséglebontás megtekintése Azure-szolgáltatások szerint
 
-Az Azure-szolgáltatások költségeinek megtekintésével jobban megismerheti az infrastruktúra azon részeit, amelyek a legjobban teszik ki a költségeket. Előfordulhat például, hogy a virtuális gépek számítási költségei kis méretűek. A virtuális gépekről kibocsátott információk mennyisége miatt azonban jelentős hálózati költségek merülhetnek fel. Az Azure-szolgáltatások elsődleges díjszabási illesztőprogramjainak megismerése elengedhetetlen ahhoz, hogy igény szerint lehessen módosítani a szolgáltatások használatát.
+A költségek Azure-szolgáltatások szerinti megjelenítése révén jobban átláthatja infrastruktúrájának azon részeit, amelyek a legmagasabb költségekkel járnak. Előfordulhat például, hogy a virtuális gépekhez kapcsolódó számítási költségek alacsonyak. A virtuális gépekből származó információmennyiség miatt azonban jelentős hálózati költségek merülhetnek fel. Az Azure-szolgáltatások elsődleges költségtényezőinek megértése elengedhetetlen ahhoz, hogy igény szerint módosíthassa saját szolgáltatáshasználatát.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Válassza **a Cost by Service** lehetőséget, majd csoportosítsa a **szolgáltatási szintet**.
-1. Módosítsa a nézetet **táblázatra**.
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza a **Díj szolgáltatás szerint** elemet, majd végezze el a csoportosítást **Szolgáltatásszint** szerint.
+1. Módosítsa a nézetet a következőre: **Táblázat**.
 
-![Költségbecslés az Azure-szolgáltatással](./media/cost-analysis-common-uses/breakdown-by-service.png)
+![Költségek lebontása Azure-szolgáltatások szerint](./media/cost-analysis-common-uses/breakdown-by-service.png)
 
-## <a name="view-cost-breakdown-by-azure-resource"></a>A költségcsökkentés megtekintése az Azure-erőforrás alapján
+## <a name="view-cost-breakdown-by-azure-resource"></a>Költséglebontás megtekintése Azure-erőforrások szerint
 
-A szolgáltatások Azure-erőforrásokkal készültek. Az erőforrásokon alapuló költségek áttekintésével gyorsan azonosíthatja az elsődleges költségekkel foglalkozó közreműködőket. Ha egy szolgáltatás túl drága erőforrásokkal rendelkezik, érdemes lehet módosítani a költségek csökkentését.
+A szolgáltatások létrehozása Azure-erőforrásokkal történik. A költségek erőforrás-alapú áttekintése segítséget nyújthat az elsődleges költségelemek gyors azonosításában. Ha egy szolgáltatás túlságosan drága erőforrásokkal rendelkezik, érdemes lehet módosításokat eszközölni a költségek csökkentése érdekében.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Válassza **a Cost by Resource**lehetőséget.
-1. Módosítsa a nézetet **táblázatra**.
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza a **Díjak erőforrások szerint** elemet.
+1. Módosítsa a nézetet a következőre: **Táblázat**.
 
-![A költségcsökkentés megtekintése az Azure-erőforrás alapján](./media/cost-analysis-common-uses/cost-by-resource.png)
+![Költséglebontás megtekintése Azure-erőforrások szerint](./media/cost-analysis-common-uses/cost-by-resource.png)
 
-## <a name="view-cost-breakdown-by-selected-dimensions"></a>A kiválasztott dimenziók szerinti költségcsökkentés megtekintése
+## <a name="view-cost-breakdown-by-selected-dimensions"></a>Költséglebontás megtekintése a kiválasztott dimenziók szerint
 
-A méretek lehetővé teszik a költségek rendszerezését a díjakban bemutatott különböző metaadat-értékek alapján. Például a költségeket a hely alapján csoportosíthatja.
+A dimenziók lehetővé teszik, hogy költségeit a díjtételekben szereplő különböző metaadatértékek alapján rendszerezhesse. Csoportosíthatja például a költségeit hely szerint.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Válassza ki a **Csoportosítás** szűréssel lehetőséget.  
-    ![válasszon ki egy csoportot az elem alapján](./media/cost-analysis-common-uses/group-by.png)
-1. A nézetet később is elmentheti.
-1. A diagram alatti tortadiagramra kattintva részletesebb információt jeleníthet meg.  
-    ![A kiválasztott dimenziók szerinti költségcsökkentés megtekintése](./media/cost-analysis-common-uses/drill-down.png)
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza a **Csoportosítási szempont** szűrőt.  
+    ![Csoport kiválasztása tétel szerint](./media/cost-analysis-common-uses/group-by.png)
+1. Igény szerint mentheti a nézetet későbbi felhasználásra.
+1. A részletesebb adatok megtekintéséhez kattintson a grafikon alatti tortadiagramra.  
+    ![Költséglebontás megtekintése a kiválasztott dimenziók szerint](./media/cost-analysis-common-uses/drill-down.png)
 
-## <a name="view-costs-per-day-or-by-month"></a>Napi/havi megtekintés
+## <a name="view-costs-per-day-or-by-month"></a>Napi vagy havi költségek megtekintése
 
-A napi és havi költségek megvizsgálása révén jobban megismerheti, hogy van-e idő a hét vagy az év között, ahol a költségek magasabbak. Ha több ügyfél-forgalom van a munkaszüneti időszakban, az az Azure-költségek megfelelő növelését eredményezi? A hétfő drágább, mint a hétfő?
+A napi és havi költségek megtekintése révén jobban megismerheti, hogy van-e olyan időszak a hét vagy év során, amikor a költségei magasabbak. Ha nagyobb ügyfélforgalma van egy adott munkaszüneti időszakban, Azure-költségei annak megfelelően nőnek? A péntek drágább nap, mint a hétfő?
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Állítsa a **részletességet** **havi** vagy **napi**értékre.
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. A **Részletesség** értéke legyen **Havi** vagy **Napi**.
 
-![Költségek napi megtekintése](./media/cost-analysis-common-uses/daily-granularity.png)
+![Napi költségek megtekintése](./media/cost-analysis-common-uses/daily-granularity.png)
 
-## <a name="view-costs-for-a-specific-tag"></a>Adott címke költségeinek megtekintése
+## <a name="view-costs-for-a-specific-tag"></a>Adott címkéhez tartozó költségek megtekintése
 
-Számos Azure-felhasználó címkét alkalmaz az erőforrásokra, például egy költséghely-vagy fejlesztői környezetre (éles és tesztelés), hogy jobban kategorizálja a díjakat. A címkék dimenzióként jelennek meg a Cost Analysis szolgáltatásban. A dimenzió használatával betekintést nyerhet az egyéni címkézési kategorizálásokra.
+A díjtételek hatékonyabb kategorizálásához számos Azure-felhasználó alkalmaz címkéket az erőforrásai esetében, ami lehet például költséghely vagy (éles és tesztelési) fejlesztési környezet. A címkék dimenziókként jelennek meg a költségelemzésben. A dimenziók segítségével a felhasználó betekintést nyerhet saját egyéni címkézési kategóriáiba.
 
-A címkék támogatása a címkének az erőforrásra való alkalmazása *után* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a Cost összesítések esetében.
+A címkék támogatása a címke erőforráson való alkalmazása *utáni* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a költségösszesítések esetében.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. A címke alapján válassza a **Csoportosítás** lehetőséget.
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza ki a címkéhez tartozó **Csoportosítás szempont** elemet.
 
-![Adott címke költségeinek megtekintése](./media/cost-analysis-common-uses/tag.png)
+![Adott címkéhez tartozó költségek megtekintése](./media/cost-analysis-common-uses/tag.png)
 
-## <a name="download-your-usage-details"></a>A használati adatok letöltése
+## <a name="download-your-usage-details"></a>Használati adatok letöltése
 
-A használati adatok jelentési fájlja CSV formátumban a számlán felhalmozott összes díj részletezését tartalmazza. A jelentés segítségével összehasonlíthatja azt, és jobban megismerheti a számláját. A számlán szereplő összes számlázott díj a használati jelentésben lebontott díjaknak felel meg.
+A használati adatokat tartalmazó, CSV formátumú jelentésfájl tartalmazza az adott számlán szereplő összes díjtétel lebontását. A jobb megértés érdekében a jelentést összehasonlíthatja a számlájával. A számlán szereplő díjtételek mindegyike egy-egy lebontott díjtételnek felel meg a használati jelentésben.
 
-1. A Azure Portalban navigáljon a Számlázási fiók vagy előfizetés **használati és díjszabási** lapjára. Például: **Cost Management + számlázási** > **számlázás** > **használat + díj**.
-1. Válassza ki a letöltendő sort, majd kattintson a letöltés szimbólumra.  
-    ![Használat és díjak letöltése](./media/cost-analysis-common-uses/download1.png)
-1.  Válassza ki a letölteni kívánt használati fájlt.  
-    ![Válassza ki a letölteni kívánt használati fájlt](./media/cost-analysis-common-uses/download2.png)
+1. Az Azure Portalon keresse meg a számlázási fiókhoz vagy előfizetéshez tartozó **Használat és díjak** lapot. Például: **Költségkezelés + Számlázás** > **Számlázás** > **Felhasználás + díjak**.
+1. Válassza ki a letöltési forrásként használni kívánt elemet, majd kattintson a letöltési szimbólumra.  
+    ![Használati adatok és díjak letöltése](./media/cost-analysis-common-uses/download1.png)
+1.  Válassza ki a letölteni kívánt használatiadat-fájlt.  
+    ![Letölteni kívánt használatiadat-fájl kiválasztása](./media/cost-analysis-common-uses/download2.png)
 
-## <a name="view-monthly-ea-cost-breakdown"></a>A havi nagyvállalati költség részletezésének megtekintése
+## <a name="view-monthly-ea-cost-breakdown"></a>Havi EA-költséglebontás megtekintése
 
-Az EA-regisztráció a teljes szervezet költségeit felhalmozza. A költségek felmerülésének és az idő múlásával történő számlázásának megértése segít a megfelelő felek bevonásában a költségek felelősségteljes felügyeletének biztosításához.
+EA-regisztrációja a teljes szervezet költségeit magában foglalja. A költségek felhalmozódásának és időbeli számlázásának megértése segít a megfelelő érdekelt felek bevonásában a költségek felelősségteljes kezelésének biztosításához.
 
-1. A Azure Portal navigáljon a **Cost Management + számlázási** > **áttekintése**elemre.
-1. Kattintson az aktuális hónap **részletezése** lehetőségre, és tekintse meg a pénzügyi kötelezettségvállalását.  
-    ![az EA költségeinek áttekintése – összefoglalás](./media/cost-analysis-common-uses/breakdown1.png)
-1.  Kattintson a **használat és díjak** lapra, és tekintse meg az előző hónap bontását a kiválasztott TimeSpan.  
-    ![használat és költségek lap](./media/cost-analysis-common-uses/breakdown2.png)
+1. Az Azure Portalon lépjen a **Költségkezelés + Számlázás** > **Áttekintése** területre.
+1. Kattintson az aktuális hónaphoz tartozó **Lebontás** elemre, és tekintse meg a pénzügyi kerete részleteit.  
+    ![EA-költségek áttekintése – a költséglebontás összefoglalása](./media/cost-analysis-common-uses/breakdown1.png)
+1.  Kattintson a **Használat és díjak** lapra, és tekintse meg az előző hónap költséglebontását a kiválasztott időtartományra vonatkozóan.  
+    ![Használat és díjak lap](./media/cost-analysis-common-uses/breakdown2.png)
 
-## <a name="view-enrollment-monthly-cost-by-term"></a>A regisztráció havi költségének megtekintése feltételek szerint
+## <a name="view-enrollment-monthly-cost-by-term"></a>Havi regisztrációs költség megtekintése időszakonként
 
-A beléptetés havi költségeinek grafikus nézetét használva megtudhatja, hogy egy adott időszakra vonatkozóan milyen költségek alakulnak ki és számlázottak.
+A regisztráció havi költségeinek grafikus nézete segítségével megismerheti az adott időszakra vonatkozó költségtrendeket és kiszámlázott összegeket.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Válassza ki a regisztrációt, és állítsa be a beléptetési időszakot.
-1. Állítsa a részletességet havi értékre, majd állítsa a nézetet **oszlopra (halmozott)** .
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza ki a regisztrációt, és állítsa be a regisztrációs időszakot.
+1. Állítsa be a részletességet havi értékre, majd állítsa be a nézetet a következőre: **Oszlop (halmozott)** .
 
-Az adatait csoportosíthatja és szűrheti részletesebb elemzés céljából.
+A részletesebb elemzéshez csoportosíthatja és szűrheti is az adatait.
 
-![Havi beléptetési költség – időszak szerint](./media/cost-analysis-common-uses/enrollment-term1.png)
+![Havi regisztrációs költség időszakonként](./media/cost-analysis-common-uses/enrollment-term1.png)
 
-## <a name="view-ea-enrollment-accumulated-costs"></a>Az EA-regisztrációban felhalmozott költségek megtekintése
+## <a name="view-ea-enrollment-accumulated-costs"></a>Az EA-regisztráció halmozott költségeinek megtekintése
 
-Tekintse meg a nettó halmozott díjakat az idő múlásával, hogy megértse az adott időszakra vonatkozó teljes kiadásokat.
+Tekintse meg az idővel felhalmozott nettó díjtételeket, hogy átfogó képet kaphasson a szervezete kiadásairól az adott időszakra vonatkozóan.
 
-1. A Azure Portal navigáljon a hatókör Cost Analysis eleméhez. Például: **Cost Management + számlázási** > **Cost Management** > **Cost Analysis**.
-1. Válassza ki a regisztrációt, és tekintse meg az aktuálisan felhalmozott költségeket.
+1. Az Azure Portalon keresse meg a saját hatóköréhez tartozó költségelemzést. Például: **Költségkezelés + Számlázás** > **Költségkezelés** > **Költségelemzés**.
+1. Válassza ki a regisztrációt, majd tekintse meg az aktuális halmozott költségeket.
 
-![Beléptetések halmozott költségei](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+![Halmozott regisztrációs költségek](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
-## <a name="next-steps"></a>Következő lépések
-- Ha még nem végezte el a Cost Management első gyors útmutatóját, olvassa el a [költségeket](quick-acm-cost-analysis.md).
+## <a name="next-steps"></a>További lépések
+- Ha még nem végezte el a Cost Management (Költségkezelés) első gyorsútmutatóját, itt megtekintheti: [Költségelemzés indítása](quick-acm-cost-analysis.md).
 - Olvassa el a [Cost Management dokumentációját](../index.yml).

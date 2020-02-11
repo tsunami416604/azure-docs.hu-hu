@@ -109,6 +109,10 @@
           href: long-audio-api.md
         - name: Beszédszintézis használata Docker-tárolókkal
           href: speech-container-howto.md?tabs=tts
+        - name: Hangok listájának lekérése a REST (Python) használatával
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: Szöveg átalakítása beszéddé a REST (Python) használatával
+          href: quickstart-python-text-to-speech.md
     - name: Referencia
       items:
         - name: Beszéd SDK

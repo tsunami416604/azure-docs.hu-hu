@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996039"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Nyílt bankolás (PSD2) és erős ügyfél-hitelesítés (SCA) Azure-ügyfeleknek
@@ -48,7 +48,7 @@ Ha a bank elutasítja a terhelést, az Azure-fiók állapota **Lejárt** lesz az
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) fiókadminisztrátorként.
 2. Végezzen keresést a **Költségkezelés + számlázás** oldalon.
-3. A **Cost Management + számlázási** **Áttekintés** oldalon tekintse át a **saját előfizetések** rács Állapot oszlopát.
+3. A **Költségkezelés + Számlázás** terület **Áttekintés** lapján ellenőrizze a **Saját előfizetések** táblázat Állapot oszlopát.
 4. Ha az előfizetés állapota **Lejárt**, kattintson az **Egyenleg rendezése** hivatkozásra. A rendszer kéri, hogy végezze el a többtényezős hitelesítést a folyamat során.
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>A Marketplace- és foglalásvásárlások kiegyenlítetlen díjainak rendezése
@@ -62,5 +62,5 @@ A Marketplace- és foglalásvásárlásokat az Azure-szolgáltatásoktól külö
 5. Válassza ki a megfelelő előfizetést.
 6. A számlák táblázatában tekintse át az Állapot oszlopot. Ha a számla **Esedékes** vagy **Lejárt**, kattintson a **Fizetés most** elemre. A rendszer kéri, hogy végezze el a többtényezős hitelesítést a folyamat során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure-számlák befizetéséről további információt talál [Az Azure-előfizetés lejárt esedékességű tartozásának rendezése](resolve-past-due-balance.md) című szakaszban.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 4dc7771862bc922702c5cc321fb3c566212d799a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990566"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Előfizetés számlázásának áttekintése REST API-kkal
@@ -48,7 +48,7 @@ A következő fejlécek megadása kötelező:
 |Kérelem fejléce|Leírás|
 |--------------------|-----------------|
 |*Content-Type* (Tartalomtípus):|Kötelező. Állítsa `application/json` értékre.|
-|*Authorization* (Engedélyezés):|Kötelező. Érvényes `Bearer` [hozzáférési tokenre](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)van állítva. |
+|*Authorization* (Engedélyezés):|Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Válasz
 
@@ -107,7 +107,7 @@ A többi állapotkód hibafeltételt jelez. Ilyen esetekben a válaszobjektum ad
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
 - Vizsgálja meg az [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) használatának lehetőségét
 - [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)

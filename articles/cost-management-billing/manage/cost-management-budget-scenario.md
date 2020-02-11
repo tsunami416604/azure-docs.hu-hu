@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992724"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
@@ -135,7 +135,7 @@ Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet 
 3.  Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.
 
     ![Azure – Új lépés – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Keressen rá a "JSON elemzése" kifejezésre a **Logic apps Designer** keresőmezőbe, ahol megkeresheti és kiválaszthatja az **adatműveletek – JSON-elemzés** [műveletet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).
+4.  A **Logic Apps Designer** keresőmezőjébe írja be a „JSON elemzése” kulcsszavakat, és válassza ki **Adatműveletek – JSON elemzése** [műveletet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).
 
     ![Azure – Logic App – JSON elemzése művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  Nevezze el „hasznos adat”-nak a **Tartalom** mezőben a JSON hasznos adat elemzéshez használt tartalmat, vagy használja a „Szövegtörzs” címkét a dinamikus tartalomból.
@@ -383,6 +383,6 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 
 Most már rendelkezik egy teljesen működőképes költségvetéssel az előfizetéshez, amely leállítja a virtuális gépeket, amikor eléri a beállított költségvetési küszöbértékeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információkért az Azure számlázási forgatókönyvekről lásd: [A számlázás és költségkezelés automatizálási forgatókönyvei](cost-management-automation-scenarios.md).

@@ -255,8 +255,6 @@
         - name: Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE kódoló
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB kódoló
               href: media-services-configure-kb-live-encoder.md
             - name: NewTek TriCaster kódoló

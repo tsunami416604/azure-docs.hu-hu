@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988200"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
@@ -67,7 +67,7 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
 ## <a name="check-the-transfer-request-status"></a>Az átadási kérelem állapotának ellenőrzése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -83,28 +83,28 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
     ![Képernyőkép az átadási kérelmek listájáról](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
 
-   |Column|Meghatározás|
+   |Oszlop|Meghatározás|
    |---------|---------|
    |Kérelem dátuma|Az átadási kérelem elküldésének dátuma|
    |Címzett|A felhasználó e-mail-címe, ahová a számlázási tulajdonjog átadásának kérése el lett küldve|
    |Lejárat dátuma|A kérelem lejáratának dátuma|
-   |Állapot|Az átadási kérelem állapota|
+   |status|Az átadási kérelem állapota|
 
     Az átadási kérelem állapota a következők egyike lehet:
 
-   |Állapot|Meghatározás|
+   |status|Meghatározás|
    |---------|---------|
    |Folyamatban|A felhasználó nem fogadta el az átadási kérelmet|
    |Feldolgozás|A felhasználó jóváhagyta az átadási kérelmet. A felhasználó által kiválasztott előfizetések számlázása átkerül az Ön fiókjába|
    |Befejezve| A felhasználó által kiválasztott előfizetések számlázása átkerült az Ön fiókjába|
    |Befejeződött, hibákkal|A kérelem teljesítve lett, de néhány, a felhasználó által kiválasztott előfizetés átadási nem sikerült|
    |Lejárt|A felhasználó nem fogadta el időben a kérelmet, így a kérelem lejárt|
-   |Törölve|Valaki, akinek az átadási kérelemhez hozzáférése volt, megszakította a kérelmet|
+   |Megszakítva|Valaki, akinek az átadási kérelemhez hozzáférése volt, megszakította a kérelmet|
    |Elutasítva|A felhasználó elutasította az átadási kérelmet|
 
-6. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átvitel részletei oldalon az alábbi információk jelennek meg: ![képernyőkép, amely az átvitt előfizetések listáját jeleníti meg](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átadási részleteinek lapján az alábbi információk jelennek meg: ![Képernyőkép az átadott kérelmek listájáról](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
-   |Column  |Meghatározás|
+   |Oszlop  |Meghatározás|
    |---------|---------|
    |Átadási kérelem azonosítója|Az átadási kérelem egyedi azonosítója. Ha támogatási kérést nyújt be, ossza meg az azonosítót az Azure-támogatással, hogy a támogatási kérésre gyorsabban kapjon választ|
    |Átadási kérelem dátuma|Az átadási kérelem elküldésének dátuma|
@@ -122,7 +122,7 @@ Az alább felsorolt előfizetés-típusok számlázási tulajdonjogát lehet ké
 
 \* A nagyvállalati DevTest-előfizetés az átadáskor használatalapú fizetés alapján lesz kiszámlázva, és az ügyfél nagyvállalati DevTest-ajánlata részeként kínált kedvezmények nem lesznek elérhetők a CSP-partner számára.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 A következő szakasz további információkkal szolgál az előfizetések átadásáról.
 
@@ -148,7 +148,7 @@ Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. A foglalások �
 
 ### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 
-Az [Azure RBAC (szerepköralapú hozzáférés-vezérlés)](../../role-based-access-control/overview.md) használatával hozzárendelt meglévő felhasználók, csoportok vagy egyszerű szolgáltatások hozzáférését a rendszer nem érinti az áttérés során. A partner nem kap új RBAC-hozzáférést az előfizetésekhez.  
+A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure RBAC (szerepköralapú hozzáférés-vezérlés)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új RBAC-hozzáférést az előfizetésekhez.  
 
 A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez.  A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-hozzáféréssel a támogatási jegyek eléréséhez.
 
@@ -181,11 +181,11 @@ Ha a két címtár nem egyezik, az előfizetések átadása nem sikerült. Léte
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel az ügyfélszolgálattal
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-előfizetések számlázási tulajdonjoga átadódik az Önnek. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
 

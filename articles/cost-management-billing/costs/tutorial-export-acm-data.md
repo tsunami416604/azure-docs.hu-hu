@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – exportált adatok létrehozása és kezelése Azure Cost Managementból
-description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az exportált Azure Cost Management-adatforrásokat, hogy azok külső rendszerekben is használhatók legyenek.
+title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehozása és kezelése
+description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,17 +11,17 @@ ms.service: cost-management-billing
 manager: jasonh
 ms.custom: seodec18
 ms.openlocfilehash: 76ee5aba0f1d0769e15a5969409dfef2a018e477
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987284"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
-Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Létrehozhat azonban egy ismétlődő feladatot, amely napi, heti vagy havi rendszerességgel automatikusan exportálja Cost Management adatait az Azure Storage-ba. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
+Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Azonban létrehozhat egy ismétlődő feladatot, amely naponta, hetente vagy havonta automatikusan exportálja a Cost Management-adatokat az Azure Storage-ba. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
 
-Tekintse meg az Azure-beli költségadatok Azure Storage-ba történő ütemezett exportálásának [ütemezését bemutató Azure Cost Management videót tartalmazó tárolóba](https://www.youtube.com/watch?v=rWa_xI1aRzo) való exportálás módját.
+Tekintse meg a [Storage-exportálások Azure Cost Managementtel történő ütemezését ismertető](https://www.youtube.com/watch?v=rWa_xI1aRzo) videót az Azure-költségadatok Azure Storage-ba való ütemezett exportálásáról.
 
 Az oktatóanyagban szereplő példák bemutatják, hogyan exportálhatja a Cost Management-adatokat, majd hogyan ellenőrizheti, hogy az adatok exportálása sikeres volt-e.
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az adatgyűjtés sikerességének ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az adatexportálás számos Azure-fióktípus számára elérhető, beleértve a [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) és a [Microsoft ügyfél-szerződéssel](get-started-partners.md) rendelkező ügyfeleket. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A következő Azure-engedélyek vagy-hatókörök a felhasználók és csoportok által az adatexportálásra vonatkozó előfizetésekben támogatottak. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+Az adatexportálás számos Azure-fióktípushoz elérhető, beleértve a [Nagyvállalati Szerződéssel (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) és a [Microsoft Ügyfélszerződéssel](get-started-partners.md) rendelkező ügyfeleket. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md). Az alábbi Azure-engedélyek és -hatókörök előfizetésenként támogatottak felhasználó vagy csoport általi adatexportáláshoz. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
 - Tulajdonos – Ütemezett exportálási feladatokat hozhat létre, módosíthat vagy törölhet az előfizetésben.
 - Közreműködő – Létrehozhatja, módosíthatja vagy törölheti saját ütemezett exportálási feladatait. Módosíthatja a mások által létrehozott ütemezett exportálási feladatok nevét.
@@ -47,54 +47,54 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-daily-export"></a>Napi rendszerességű exportálás létrehozása
 
-Ha egy adatexportálást szeretne létrehozni vagy megtekinteni, vagy exportálni szeretné az exportálást, nyissa meg a kívánt hatókört a Azure Portalban, és válassza a menü **Cost Analysis** elemét. Például navigáljon az **előfizetések**elemre, válasszon ki egy előfizetést a listából, majd válassza a menü **Cost Analysis** elemét. A Költségelemzés lap tetején kattintson az **Exportálás** elemre, majd válasszon ki egy exportálási beállítást. Válassza például az **Exportálás időzítése**lehetőséget.  
+Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A Költségelemzés lap tetején kattintson az **Exportálás** elemre, majd válasszon ki egy exportálási beállítást. Például válassza az **Exportálás üzemezése** lehetőséget.  
 
 > [!NOTE]
-> - Az előfizetéseken túl erőforráscsoportokhoz, fiókokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
->- Ha partnerként jelentkezett be a Számlázási fiók hatókörében vagy egy ügyfél bérlője számára, exportálhatja az adatait egy olyan Azure Storage-fiókba, amely a partner Storage-fiókjához van csatolva. Azonban rendelkeznie kell aktív előfizetéssel a CSP-bérlőben.
+> - Az előfizetéseken túl erőforráscsoportokhoz, fiókokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
+>- Amikor partnerként jelentkezik be a számlázási fiók hatókörébe vagy egy ügyfél bérlőjébe, adatokat exportálhat abba az Azure Storage-fiókba, amely össze van kapcsolva a partner tárfiókjával. Ehhez azonban aktív előfizetéssel kell rendelkeznie a CSP-bérlő esetében.
 >
 
 
-Válassza a **Hozzáadás**lehetőséget, írja be az Exportálás nevét, majd válassza ki a **havi dátum és idő szerinti költségek napi exportálását** . Kattintson a **Tovább** gombra.
+Kattintson a **Hozzáadás** elemre, adja meg az exportálás kívánt nevét, majd válassza **Az eddigi tárgyhavi költségek napi exportálása** lehetőséget. Kattintson a **Tovább** gombra.
 
 ![Példa új exportálásra az exportálás típusával](./media/tutorial-export-acm-data/basics_exports.png)
 
 Adja meg az Azure-tárfiók előfizetését, majd válassza ki a tárfiókját.  Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné. Kattintson a **Tovább** gombra.
 
-![A Storage-fiók részleteit bemutató új exportálási példa](./media/tutorial-export-acm-data/storage_exports.png)
+![Új exportálási példa a tárfiók adataival](./media/tutorial-export-acm-data/storage_exports.png)
 
 Tekintse át az exportálás adatait, majd kattintson a **Létrehozás** gombra.
 
-Az új exportálási feladat megjelenik az exportálási feladatok listájában. Alapértelmezés szerint az új exportálások engedélyezve vannak. Ha egy ütemezett exportálást szeretne letiltani vagy törölni, válassza ki a listában a bármelyik elemet, majd válassza a **Letiltás** vagy a **Törlés**lehetőséget.
+Az új exportálási feladat megjelenik az exportálási feladatok listájában. Alapértelmezés szerint az új exportálások engedélyezve vannak. Ha le szeretne tiltani vagy törölni szeretne egy ütemezett exportálást, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
 
 Kezdetben egy-két óra is eltelhet az exportálási feladat lefutásáig. Azonban négy órát is igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
 
 ### <a name="export-schedule"></a>Exportálás üzemezése
 
-Az ütemezett exportálást meghatározza, hogy azt eredetileg a hét mely napján és mely időpontban hozta létre. Ütemezett exportálás létrehozásakor az Exportálás minden további exportálási eseménynél azonos gyakorisággal fut. Ha például egy havi gyakorisággal rendelkező exportálási készletet szeretne napi rendszerességgel, az Exportálás naponta fut. A heti exportáláshoz hasonlóan az Exportálás minden héten ugyanazon a napon fut le, mint az ütemezve. Az Exportálás pontos kézbesítési ideje nem garantált, és az exportált adatmennyiség a futási idő négy óráján belül elérhető. "
+Az ütemezett exportálást meghatározza, hogy azt eredetileg a hét mely napján és mely időpontban hozta létre. Amikor ütemezett exportálást hoz létre, minden további exportálási eseményre ugyanazon gyakorisággal fog sor kerülni. Például ha egy aktuális havi exportálás napi gyakoriságúra van beállítva, az exportálási feladat naponta fut le. Hasonlóan a heti exportáláshoz, az exportálási feladat minden héten ugyanazon a napon fut le, az ütemezésnek megfelelően. Az exportált adatok pontos kézbesítési időpontja nem garantált, és az exportált adatok a futtatás időpontjától számított négy órán belül állnak rendelkezésre.
 Mindegyik exportálás egy új fájlt hoz létre, azaz a régebben exportált adatok nem lesznek felülírva.
 
-Két típusú exportálási lehetőség létezik:
+Kétféle exportálási lehetőség áll rendelkezésre:
 
-A **hónapról a napra szóló költségek napi exportálása** – a kezdeti exportálás azonnal megkezdődik. A további exportálási feladatok minden rákövetkező nap az eredeti exportálással meg egyező időpontban futnak le. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
+**Az eddigi tárgyhavi költségek napi exportálása** – A kezdeti exportálás azonnal lefut. A további exportálási feladatok minden rákövetkező nap az eredeti exportálással meg egyező időpontban futnak le. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
 
-**Custom (egyéni** ) – lehetővé teszi a heti és a havi exportálási ütemtervek, valamint a hónap és a nap közötti beállítások megadását. *A kezdeti exportálás azonnal lefut.*
+**Egyéni** – Heti és havi exportálási feladatok ütemezését teszi lehetővé az addigi tárgyheti vagy tárgyhavi adatokkal. *A kezdeti exportálás azonnal lefut.*
 
-Ha használatalapú, MSDN- vagy Visual Studio-előfizetéssel rendelkezik, a számlázási időszak nem feltétlenül esik egybe a naptári hónapokkal. Az ilyen típusú előfizetésekhez és erőforráscsoportokhoz olyan exportálásokat is létrehozhat, amelyek a számlázási időszakhoz vagy a naptári hónapokhoz igazodnak. A számlázási hónaphoz igazított exportálás létrehozásához navigáljon az **Egyéni**elemre, majd válassza a **számlázás-időszak – dátum**lehetőséget.  A naptári hónapra igazított exportálás létrehozásához válassza a **hónap – dátum**lehetőséget.
+Ha használatalapú, MSDN- vagy Visual Studio-előfizetéssel rendelkezik, a számlázási időszak nem feltétlenül esik egybe a naptári hónapokkal. Az ilyen típusú előfizetésekhez és erőforráscsoportokhoz olyan exportálásokat is létrehozhat, amelyek a számlázási időszakhoz vagy a naptári hónapokhoz igazodnak. A számlázási hónaphoz igazodó exportálás létrehozásához lépjen az **Egyéni** menüpontra, majd válassza a **Számlázási időszak mai napig** lehetőséget.  A naptári hónaphoz igazodó exportálás létrehozásához válassza az **Ebben a hónapban** lehetőséget.
 >
 >
 
-![Új Exportálás – alapvető alapismeretek lap, amely egy egyéni hetente kiválasztott heti kijelölést mutat be](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+![Új exportálás – Alapvető beállítások lap, amelyen látható az aktuális heti egyéni kiválasztás](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
 
 A Cost Management-adatainak gyűjtését egyszerűen ellenőrizheti, az exportált CSV-fájlt pedig az Azure Storage Explorerrel tekintheti meg.
 
-Az exportálási listában kattintson a tárfiók nevére. A Storage-fiók lapon válassza a Megnyitás az Explorerben lehetőséget. Ha megjelenik egy megerősítő mező, válassza az **Igen** lehetőséget a fájl megnyitásához Azure Storage Explorerban.
+Az exportálási listában kattintson a tárfiók nevére. A tárfiók lapján válassza a Megnyitás az Explorerben lehetőséget. Ha megjelenik egy megerősítési mező, kattintson az **Igen** gombra, hogy megnyissa a fájlt az Azure Storage Explorerben.
 
 ![A tárfiók lapja mintául szolgáló adatokkal és a Megnyitás az Explorerben hivatkozással](./media/tutorial-export-acm-data/storage-account-page.png)
 
-A Storage Explorerben navigáljon ahhoz a tárolóhoz, amelyet meg szeretne nyitni, majd válassza ki az aktuális hónapnak megfelelő mappát. Ekkor egy CSV-fájlokból álló lista jelenik meg. Válasszon ki egyet, majd kattintson a **Megnyitás**gombra.
+A Storage Explorerben navigáljon ahhoz a tárolóhoz, amelyet meg szeretne nyitni, majd válassza ki az aktuális hónapnak megfelelő mappát. Ekkor egy CSV-fájlokból álló lista jelenik meg. Válasszon ki egy elemet, majd kattintson a **Megnyitás** gombra.
 
 ![A Storage Explorerben megjelenő, mintául szolgáló adatok](./media/tutorial-export-acm-data/storage-explorer.png)
 
@@ -107,7 +107,7 @@ A fájl abban a programban vagy alkalmazásban nyílik meg, amelyik a CSV kiterj
 
 A Cost Management-adatok exportálásának egyik célja az adatok külső rendszerekből való elérése. Használhat például valamilyen irányítópultot vagy egyéb pénzügyi rendszert. Az ilyen rendszerek nagyban eltérnek egymástól, ezért ebben az esetben nem lenne praktikus példával szolgálni.  Az adatok alkalmazásokból való elérését [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md) című cikkel is elkezdheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

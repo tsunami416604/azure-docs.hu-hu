@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290240"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Az Azure-foglalási kedvezmény alkalmazása virtuális gépekre
@@ -47,7 +47,7 @@ Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatiku
 
 ![Képernyőfelvétel egy alkalmazott foglalásról és két egyező virtuálisgép-példányról](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. A foglalást meghaladó használatért a normál használatalapú fizetési díjszabás szerint kell fizetni. A foglalások sorban nem számítunk fel díjat, mert a foglalások vásárlásának részeként már befizették.
+1. A foglalást meghaladó használatért a normál használatalapú fizetési díjszabás szerint kell fizetni. A foglalást meg nem haladó használatért nem számítunk fel díjat, mert az a foglalás vásárlásának részeként már be lett fizetve.
 2. Az 1. órában az 1. példány 0,75 órán keresztül, a 2. példány pedig 0,5 órán keresztül fut. Az 1. óra összesített használata 1,25 óra. A fennmaradó 0,25 óráért használatalapú díjszabás szerint kell fizetni.
 3. A 2. és a 3. óra esetében mindkét példány 1 órán keresztül futott. Az egyik példány használatát a foglalás fedezi, a másikra használatalapú fizetési díjszabást alkalmazunk.
 4. A 4. órában az 1. példány 0,5 órán keresztül, a 2. példány pedig 1 órán keresztül fut. A foglalás az 1. példány használatát teljesen, a 2. példány használatából pedig 0,5 órát fedez. A fennmaradó 0,5 óráért használatalapú díjszabás szerint kell fizetni.
@@ -76,8 +76,8 @@ A példány méretrugalmassági beállítása határozza meg, hogy mely szolgál
 
 Ha a *ConsumedService* értéke `Microsoft.Compute`, a foglalási kedvezmények automatikusan érvényesülnek minden megfelelő virtuálisgép-használat esetében, attól függetlenül, hogy a beállítás be vagy ki van-e kapcsolva. Ebből kifolyólag ellenőrizze a használati adatait a *ConsumedService* értékének megtekintéséhez. Néhány példa:
 
-- Virtuális gépek
-- Virtual Machine Scale Sets
+- Virtual machines (Virtuális gépek)
+- Virtuálisgép-méretezési csoportok
 - Container Service
 - Azure Batch-üzemelőpéldányok (felhasználói előfizetési módban)
 - Azure Kubernetes Service (AKS)
@@ -96,11 +96,11 @@ Ellenőrizze a *ConsumedService* értékét a használati adatokban annak megál
 A példányok méretrugalmasságára vonatkozó további információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

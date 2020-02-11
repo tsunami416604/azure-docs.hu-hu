@@ -1,6 +1,6 @@
 ---
-title: A Microsoft partneri szerződés számlájának áttekintése – Azure
-description: Megtudhatja, hogyan tekintheti át a számla-és erőforrás-használatot, valamint ellenőrizheti a Microsoft partneri szerződés díját.
+title: A Microsoft Partnerszerződéshez tartozó számla áttekintése – Azure
+description: Megtudhatja, hogyan tekintheti át a számlát és az erőforrás-használatot, valamint hogyan ellenőrizheti a Microsoft Partnerszerződéshez tartozó számla tételeit.
 author: jureid
 manager: jureid
 tags: billing
@@ -12,32 +12,32 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990839"
 ---
-# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Oktatóanyag: a Microsoft partneri szerződéssel foglalkozó számla áttekintése
+# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Oktatóanyag: A Microsoft Partnerszerződéshez tartozó számla áttekintése
 
- A rendszer minden hónapban létrehoz egy számlát az egyes számlázási profilokhoz a Microsoft Partnerszerződéshez tartozó számlázási fiókban. A számla az előző hónap összes ügyfél által fizetendő díját tartalmazza. Az egyes tranzakciók Azure Portalon történő elemzésével értelmezheti a számlán feltüntetett díjakat. A Azure Portal is megtekintheti a számlákat, és összehasonlíthatja a használati adatok fájljának díját.
+ A rendszer minden hónapban létrehoz egy számlát az egyes számlázási profilokhoz a Microsoft Partnerszerződéshez tartozó számlázási fiókban. A számla az előző hónap összes ügyfél által fizetendő díját tartalmazza. Az egyes tranzakciók Azure Portalon történő elemzésével értelmezheti a számlán feltüntetett díjakat. A számláit megtekintheti az Azure Portalon is, és összehasonlíthatja a díjtételeket a használatrészletező fájlban szereplő adatokkal.
 
 További tudnivalókért lásd [a számlák az Azure Portalról való letöltését](download-azure-invoice.md) ismertető cikket.
 
-Ez az oktatóanyag csak a Microsoft partneri szerződéssel rendelkező Azure-partnerekre vonatkozik.
+Ez az oktatóanyag csak azokra az Azure-partnerekre vonatkozik, akik rendelkeznek Microsoft Partnerszerződéssel.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Számlázott tranzakciók ellenőrzése a Azure Portal
+> * A kiszámlázott tranzakciók áttekintése az Azure Portalon
 > * Függőben lévő díjak áttekintése a következő számla összegének megbecsléséhez
 > * Az Azure használati díjainak elemzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Microsoft partneri szerződéshez hozzáféréssel kell rendelkeznie a számlázási fiókhoz.
+Hozzáféréssel kell rendelkeznie a Microsoft Partnerszerződéshez tartozó számlázási fiókhoz.
 
-Az Azure-ra előfizetett naptól számítva 30 napnál hosszabbnak kell lennie. Az Azure a számlázási időszak végén küld Önnek számlát.
+30 napnál több időnek kell eltelnie el az Azure-előfizetés életbe lépése óta. Az Azure a számlázási időszak végén küld Önnek számlát.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -47,27 +47,27 @@ Az Azure-ra előfizetett naptól számítva 30 napnál hosszabbnak kell lennie. 
 
 A szerződéstípusra kattintva megállapíthatja, hogy rendelkezik-e hozzáféréssel a Microsoft-partnerszerződéshez tartozó számlázási fiókhoz.
 
-A Azure Portal írja be a *Cost Management + számlázás* kifejezést a keresőmezőbe, majd válassza a **Cost Management + számlázás**lehetőséget.
+Az Azure Portalon írja be a *költségkezelés + számlázás* szöveget a keresőmezőbe, majd válassza a **Költségkezelés + Számlázás** lehetőséget.
 
 ![Képernyőkép az Azure Portal keresőmezőjéről](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
 Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a bal oldalon található **Tulajdonságok** elemet. Akkor fér hozzá a Microsoft-partnerszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-partnerszerződés**.
 
-![A Microsoft partneri szerződést bemutató képernyőkép a tulajdonságok oldalon](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
+![Képernyőkép a Tulajdonságok lapon található Microsoft Partnerszerződésről](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
 Ha több számlázási hatókörhöz van hozzáférése, a számlázási fiók oszlopában ellenőrizheti a fiók típusát. Akkor fér hozzá a Microsoft-partnerszerződéshez tartozó számlázási fiókhoz, ha bármelyik hatókör számlázási fiókjának típusa **Microsoft-partnerszerződés**.
 
-![A Microsoft partneri szerződést bemutató képernyőkép a számlázási fiókok listája oldalon](./media/review-partner-agreement-bill/mpa-in-the-list.png)
+![Képernyőkép a Számlázási fiókok listája lapon található Microsoft Partnerszerződésről](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
-## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Számlázott tranzakciók ellenőrzése a Azure Portal
+## <a name="review-invoiced-transactions-in-the-azure-portal"></a>A kiszámlázott tranzakciók áttekintése az Azure Portalon
 
-Cost Management + számlázás lapon válassza a lap bal oldalán található **összes tranzakció** elemet. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási fiók, számlázási profil vagy ügyfél kiválasztása után tudja kiválasztani a **Minden tranzakció** lehetőséget.
+A Költségkezelés + Számlázás területen válassza a bal oldalon az **Összes tranzakció** lehetőséget. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási fiók, számlázási profil vagy ügyfél kiválasztása után tudja kiválasztani a **Minden tranzakció** lehetőséget.
 
 Az Összes tranzakció lapon az alábbi információk jelennek meg:
 
 ![A kiszámlázott tranzakciók listáját megjelenítő képernyőkép](./media/review-partner-agreement-bill/all-transactions.png)
 
-|Column  |Meghatározás  |
+|Oszlop  |Meghatározás  |
 |---------|---------|
 |Dátum     | A tranzakció dátuma  |
 |Számlaazonosító     | Annak a számlának az azonosítója, amelyen a tranzakció számlázva lett. Ha támogatási kérést nyújt be, ossza meg az azonosítót az Azure-támogatással, hogy a támogatási kérésre gyorsabban kapjon választ |
@@ -77,7 +77,7 @@ Az Összes tranzakció lapon az alábbi információk jelennek meg:
 |Mennyiség     |  A tranzakció összege      |
 |Számlázási profil     | A tranzakció ezen számlázási profil számláján jelenik meg |
 
-A számlázási tranzakciók szűréséhez keresse meg a számla AZONOSÍTÓját.
+A számla azonosítójára keresve szűrje ki a számlához tartozó tranzakciókat.
 
 ## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Függőben lévő díjak áttekintése a következő számla összegének megbecsléséhez
 
@@ -87,7 +87,7 @@ A díjak összegei a számlázásig becsült, függőben lévő összegek. A Mic
 
 A függőben lévő díjak azonosításkor a díjakat kitevő egyes tranzakciók elemzésével értelmezheti a díjakat. Ezen a ponton a függőben lévő használati díjak nem jelennek meg az Összes tranzakció lapon. A függőben lévő használati díjakat az Azure-előfizetések oldalán tekintheti meg.
 
-Cost Management és számlázás lapon válassza ki a számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
+A Költségkezelés + Számlázás területen válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
 
 Válassza a bal oldalon található **Összes tranzakció** lehetőséget.
 
@@ -97,7 +97,7 @@ Keressen rá a *függőben* kifejezésre. Használja az **Időtartomány** szűr
 
 ### <a name="view-pending-charges-by-customer"></a>Függőben lévő díjak megtekintése ügyfelenként
 
-Cost Management és számlázás lapon válassza ki a számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
+A Költségkezelés + Számlázás területen válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
 
 Válassza ki az **Ügyfelek** elemet a lap bal oldalán.
 
@@ -107,7 +107,7 @@ Az Ügyfelek lap megjeleníti a számlázási profilhoz tartozó egyes ügyfelek
 
 ### <a name="view-pending-usage-charges"></a>Függőben lévő használati díjak megtekintése
 
-Cost Management és számlázás lapon válassza ki a számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
+A Költségkezelés + Számlázás területen válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. A számlázási fiókon belül válassza ki a **Számlázási profilok** lehetőséget, majd a számlázási profilt.
 
 Válassza ki az **Azure-előfizetések** elemet a lap bal oldalán. Az Azure-előfizetések oldala megjeleníti a számlázási profilban szereplő egyes előfizetések aktuális és utolsó havi díjait. Az aktuális hónap díjai az aktuális hónap függőben lévő díjai, és számlázásuk a havi számla létrehozásakor történik. Ha az előző havi számla még nincs létrehozva, a múlt havi díjak is függőben vannak.
 
@@ -125,16 +125,16 @@ A számla befizetésére vonatkozó utasításokat a számla alján találja. Fi
 
 Ha már befizette számláját, a befizetés állapotát az Azure Portalon található Számlák oldalon ellenőrizheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Számlázott tranzakciók ellenőrzése a Azure Portal
+> * A kiszámlázott tranzakciók áttekintése az Azure Portalon
 > * Függőben lévő díjak áttekintése a következő számla összegének megbecsléséhez
 > * Az Azure használati díjainak elemzése
 
-Ismerkedjen meg Azure Cost Management partnerekkel való használatával.
+Tudjon meg többet az Azure Cost Management használatáról a partnerek esetében.
 
 > [!div class="nextstepaction"]
-> [Ismerkedjen meg Azure Cost Management partnerekkel](../costs/get-started-partners.md)
+> [Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással](../costs/get-started-partners.md)

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290138"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
@@ -27,7 +27,7 @@ A következő táblázat ismerteti, hogy a fájl melyik fióktípusnál melyik d
 Fiók típusa | Azure-használat | Marketplace-használat | Vásárlások | Visszatérítések
 --- | --- | --- | --- | ---
 Nagyvállalati Szerződés (EA) | Igen | Igen | Igen | Nem
-Microsoft Ügyfélszerződés (Microsoft Customer Agreement, MCA) | Igen | Igen | Igen | Igen
+Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA) | Igen | Igen | Igen | Igen
 Használatalapú fizetés (PAYG) | Igen | Igen | Nem | Nem
 
 A Marketplace-rendelésekkel (más néven külső szolgáltatásokkal) kapcsolatos további tudnivalók: [Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése](understand-azure-marketplace-charges.md).
@@ -40,71 +40,71 @@ A használati adatokat és díjakat tartalmazó CSV-fájl megnyitható a Microso
 A következő tábla leírja az Azure használati adatait és díjait tartalmazó fájljának legújabb verziójában használt fontos kifejezéseket.
 A lista a használatalapú fizetéses (PAYG), a Nagyvállalati Szerződéssel (EA) és Microsoft-ügyfélszerződéssel (Microsoft Customer Agreement, MCA) rendelkező fiókok kifejezéseit is tartalmazza.
 
-Időtartam | Fiók típusa | Leírás
+Időszak | Fiók típusa | Leírás
 --- | --- | ---
 AccountName | EA, PAYG | Az EA regisztrációs fiók vagy PAYG számlázási fiók megjelenítendő neve.
 AccountOwnerId<sup>1</sup> | EA, PAYG | Az EA regisztrációs fiók vagy PAYG számlázási fiók egyedi azonosítója.
-AdditionalInfo | Mind | Szolgáltatásspecifikus metaadatok. Például egy virtuális gép rendszerképének típusa.
-BillingAccountId<sup>1</sup> | Mind | Az alapszintű számlázási fiók egyedi azonosítója.
-BillingAccountName | Mind | A számlázási fiók neve.
-BillingCurrency | Mind | A számlázási fiókhoz tartozó pénznem.
+AdditionalInfo | Összes | Szolgáltatásspecifikus metaadatok. Például egy virtuális gép rendszerképének típusa.
+BillingAccountId<sup>1</sup> | Összes | Az alapszintű számlázási fiók egyedi azonosítója.
+BillingAccountName | Összes | A számlázási fiók neve.
+BillingCurrency | Összes | A számlázási fiókhoz tartozó pénznem.
 BillingPeriod | EA, PAYG | A díj számlázási időszaka.
-BillingPeriodEndDate | Mind | A számlázási időszak záródátuma.
-BillingPeriodStartDate | Mind | A számlázási időszak kezdődátuma.
-BillingProfileId<sup>1</sup> | Mind | Az EA-regisztráció, PAYG-előfizetés, MCA-számlázásiprofil vagy összesített AWS-fiók egyedi azonosítója.
-BillingProfileName | Mind | Az EA-regisztráció, PAYG-előfizetés, MCA-számlázásiprofil vagy összesített AWS-fiók neve.
-ChargeType | Mind | Jelzi, hogy a díj használatra (**Usage**), vásárlásra (**Purchase**) vagy visszatérítésre (**Refund**) vonatkozik-e.
-ConsumedService | Mind | A szolgáltatás neve, amelyre a díj vonatkozik.
+BillingPeriodEndDate | Összes | A számlázási időszak záródátuma.
+BillingPeriodStartDate | Összes | A számlázási időszak kezdődátuma.
+BillingProfileId<sup>1</sup> | Összes | Az EA-regisztráció, PAYG-előfizetés, MCA-számlázásiprofil vagy összesített AWS-fiók egyedi azonosítója.
+BillingProfileName | Összes | Az EA-regisztráció, PAYG-előfizetés, MCA-számlázásiprofil vagy összesített AWS-fiók neve.
+ChargeType | Összes | Jelzi, hogy a díj használatra (**Usage**), vásárlásra (**Purchase**) vagy visszatérítésre (**Refund**) vonatkozik-e.
+ConsumedService | Összes | A szolgáltatás neve, amelyre a díj vonatkozik.
 CostCenter<sup>1</sup> | EA, MCA | Az előfizetésben a költségek nyomon követésére meghatározott költséghely (csak az MCA-fiókok nyitott számlázási időszakaiban érhető el).
-Költség | EA, PAYG | Lásd: CostInBillingCurrency.
+Költségek | EA, PAYG | Lásd: CostInBillingCurrency.
 CostInBillingCurrency | MCA | A díj költsége a számlázási pénznemben számítva, kreditek és adók nélkül.
 CostInPricingCurrency | MCA | A díj költsége a díjszabási pénznemben számítva, kreditek és adók nélkül.
-Currency (Deviza) | EA, PAYG | Lásd: BillingCurrency.
-Date<sup>1</sup> | Mind | A díjhoz tartozó használati vagy vásárlási dátum.
-EffectivePrice | Mind | Az időszakra vonatkozó kevert egységár. A kevert árak átlagolással csökkentik az egységár bármely ingadozását, például a fokozatos szintbeállítás esetében, amely csökkenti az árat, ahogy a mennyiség az idő múlásával növekszik.
+Currency (Pénznem) | EA, PAYG | Lásd: BillingCurrency.
+Date<sup>1</sup> | Összes | A díjhoz tartozó használati vagy vásárlási dátum.
+EffectivePrice | Összes | Az időszakra vonatkozó kevert egységár. A kevert árak átlagolással csökkentik az egységár bármely ingadozását, például a fokozatos szintbeállítás esetében, amely csökkenti az árat, ahogy a mennyiség az idő múlásával növekszik.
 ExchangeRateDate | MCA | Az átváltási árfolyam hatályba lépésének dátuma.
 ExchangeRatePricingToBilling | MCA | A költség árképzési pénznemről a számlázási pénznemre való átváltásához használt árfolyam.
-Frequency | Mind | Jelzi, ha a díj várhatóan ismétlődni fog. A díjak lehetnek egyszeriek (**OneTime**) ismétlődhetnek havonta vagy évenként (**Recurring**), vagy lehetnek használatalapúak (**UsageBased**).
+Frequency | Összes | Jelzi, ha a díj várhatóan ismétlődni fog. A díjak lehetnek egyszeriek (**OneTime**) ismétlődhetnek havonta vagy évenként (**Recurring**), vagy lehetnek használatalapúak (**UsageBased**).
 InvoiceId | PAYG, MCA | A számla PDF-fájlján látható egyedi dokumentumazonosító.
 InvoiceSection | MCA | Lásd: InvoiceSectionName.
 InvoiceSectionId<sup>1</sup> | EA, MCA | Az EA-részleg vagy MCA-számlaszakasz egyedi azonosítója.
 InvoiceSectionName | EA, MCA | Az EA-részleg vagy MCA-számlaszakasz neve.
-IsAzureCreditEligible | Mind | Azt jelzi, hogy a díj jogosult-e az Azure-kreditek (Values: true, false) használatával történő fizetésre.
-Földrajzi egység | MCA | Az erőforrást futtató adatközpont helye.
-MeterCategory | Mind | A fogyasztásmérő osztályozási kategóriájának neve. Például: *Felhőszolgáltatások* vagy *Hálózat*.
-MeterId<sup>1</sup> | Mind | A fogyasztásmérő egyedi azonosítója.
-MeterName | Mind | A fogyasztásmérő neve.
-MeterRegion | Mind | Az adatközpont neve a hely alapján árazott szolgáltatások esetén. Lásd: Hely.
-MeterSubCategory | Mind | A fogyasztásmérő osztályozási alkategóriájának neve.
-OfferId<sup>1</sup> | Mind | A megvásárolt ajánlat neve.
+IsAzureCreditEligible | Összes | Jelzi, hogy a díj fizethető-e Azure-kreditekkel (értékek: True (Igaz), False (Hamis)).
+Hely | MCA | Az erőforrást futtató adatközpont helye.
+MeterCategory | Összes | A fogyasztásmérő osztályozási kategóriájának neve. Például: *Felhőszolgáltatások* vagy *Hálózat*.
+MeterId<sup>1</sup> | Összes | A fogyasztásmérő egyedi azonosítója.
+MeterName | Összes | A fogyasztásmérő neve.
+MeterRegion | Összes | Az adatközpont neve a hely alapján árazott szolgáltatások esetén. Lásd: Hely.
+MeterSubCategory | Összes | A fogyasztásmérő osztályozási alkategóriájának neve.
+OfferId<sup>1</sup> | Összes | A megvásárolt ajánlat neve.
 PartNumber<sup>1</sup> | EA, PAYG | Az adott fogyasztásmérő árképzéséhez használt azonosító.
 PlanName | EA, PAYG | A Marketplace-csomag neve.
 PreviousInvoiceId | MCA | Hivatkozás az eredeti számlára, ha ez a számla visszatérítésről lett kiállítva.
 PricingCurrency | MCA | Az egyeztetett árakon alapuló árképzéshez használt pénznem.
-Termék | Mind | A termék neve.
+Product | Összes | A termék neve.
 ProductId<sup>1</sup> | MCA | A termék egyedi azonosítója.
-ProductOrderId | Mind | A termékrendelés egyedi azonosítója.
-ProductOrderName | Mind | A termékrendelés egyedi neve.
-Közzétevő neve | Mind | A Marketplace-szolgáltatások közzétevője.
-PublisherType | Mind | Közzétevő típusa (értékek: **Azure**, **AWS**, **Marketplace**).
-Mennyiség | Mind | A megvásárolt vagy igénybe vett egységek száma.
-Foglalásazonosító | EA, MCA | A megvásárolt foglaláspéldány egyedi azonosítója.
+ProductOrderId | Összes | A termékrendelés egyedi azonosítója.
+ProductOrderName | Összes | A termékrendelés egyedi neve.
+Közzétevő neve | Összes | A Marketplace-szolgáltatások közzétevője.
+PublisherType | Összes | A közzétevő típusa (értékek: **Azure**, **AWS**, **Marketplace**).
+Mennyiség | Összes | A megvásárolt vagy igénybe vett egységek száma.
+ReservationId | EA, MCA | A megvásárolt foglaláspéldány egyedi azonosítója.
 ReservationName | EA, MCA | A megvásárolt foglaláspéldány neve.
-ResourceGroup | Mind | Az erőforrást tartalmazó [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) neve. Nem minden költség származik az erőforráscsoportok központilag telepített erőforrásaiból. Az erőforráscsoporthoz nem tartozó díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
-ResourceId<sup>1</sup> | Mind | Az [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-erőforrás egyedi azonosítója.
-ResourceLocation | Mind | Az erőforrást futtató adatközpont helye. Lásd: Hely.
-ResourceName nevű erőforrásáról | EA, PAYG | Az erőforrás neve. Nem minden költség a telepített erőforrásokból származik. Az erőforrástípus nem rendelkező díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
-ResourceType | MCA | Az erőforráspéldány típusa. Nem minden költség a telepített erőforrásokból származik. Az erőforrástípus nem rendelkező díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
+ResourceGroup | Összes | Az erőforrást tartalmazó [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) neve. Nem minden díjtétel az erőforráscsoportokon üzembe helyezett erőforrásokból származik. Az erőforráscsoporthoz nem kapcsolódó díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
+ResourceId<sup>1</sup> | Összes | Az [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-erőforrás egyedi azonosítója.
+ResourceLocation | Összes | Az erőforrást futtató adatközpont helye. Lásd: Hely.
+ResourceName nevű erőforrásáról | EA, PAYG | Az erőforrás neve. Nem minden díjtétel az üzembe helyezett erőforrásokból származik. Az erőforrástípussal nem rendelkező díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
+ResourceType | MCA | Az erőforráspéldány típusa. Nem minden díjtétel az üzembe helyezett erőforrásokból származik. Az erőforrástípussal nem rendelkező díjtételek a következőként jelennek meg: null/üres, **Egyéb** vagy **Nem alkalmazható**.
 ServiceFamily | MCA | Az a szolgáltatáscsalád, amelybe a szolgáltatás tartozik.
-ServiceInfo1 | Mind | Szolgáltatásspecifikus metaadatok.
-ServiceInfo2 | Mind | Örökölt mező a nem kötelező szolgáltatásspecifikus metaadatoknak.
+ServiceInfo1 | Összes | Szolgáltatásspecifikus metaadatok.
+ServiceInfo2 | Összes | Örökölt mező a nem kötelező szolgáltatásspecifikus metaadatoknak.
 ServicePeriodEndDate | MCA | Annak a díjszabási időszaknak a záródátuma, amely meghatározta és rögzítette az igénybe vett vagy megvásárolt szolgáltatások árképzését.
 ServicePeriodStartDate | MCA | Annak a díjszabási időszaknak a kezdődátuma, amely meghatározta és rögzítette az igénybe vett vagy megvásárolt szolgáltatások árképzését.
-SubscriptionId<sup>1</sup> | Mind | Az Azure-előfizetés egyedi azonosítója.
-SubscriptionName | Mind | Az Azure-előfizetés neve.
-Tags<sup>1</sup> | Mind | Az erőforráshoz hozzárendelt címkék. Nem tartalmazza az erőforráscsoport címkéit. A költségek csoportosítására vagy elosztására szolgál a belső költséghelyi elszámolás során. További információkért lásd: [Az Azure-erőforrások rendszerezése címkék használatával](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
-Időtartam | Mind | Megjeleníti az ajánlat érvényességi időszakát. Például: fenntartott példányok esetén 12 hónapig jelenik meg a kifejezés. Egyszeri vagy ismétlődő vásárlások esetén az időszak 1 hónap (SaaS, Marketplace-ügyfélszolgálat). Ez nem vonatkozik az Azure-felhasználásra.
-UnitOfMeasure | Mind | A szolgáltatás számlázásának mértékegysége. A számítási szolgáltatások számlázása például óraalapú.
+SubscriptionId<sup>1</sup> | Összes | Az Azure-előfizetés egyedi azonosítója.
+SubscriptionName | Összes | Az Azure-előfizetés neve.
+Tags<sup>1</sup> | Összes | Az erőforráshoz hozzárendelt címkék. Nem tartalmazza az erőforráscsoport címkéit. A költségek csoportosítására vagy elosztására szolgál a belső költséghelyi elszámolás során. További információkért lásd: [Az Azure-erőforrások rendszerezése címkék használatával](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Időszak | Összes | Megjeleníti az ajánlat érvényességi időszakát. Például: Fenntartott példányok esetén a megjelenített időszak 12 hónap. Egyszeri vagy ismétlődő vásárlások esetén az időszak 1 hónap (SaaS, Marketplace-ügyfélszolgálat). Ez nem vonatkozik az Azure-felhasználásra.
+UnitOfMeasure | Összes | A szolgáltatás számlázásának mértékegysége. A számítási szolgáltatások számlázása például óraalapú.
 UnitPrice | EA, PAYG | A díj egységenkénti ára.
 
 _<sup>**1**</sup> Az egy adott költségrekord egyedi azonosítójának létrehozásához használatos mezők._
@@ -118,7 +118,7 @@ A következő táblázat egymáshoz rendeli a régebbi API-kban használt kifeje
 Régi kifejezés | Új kifejezés
 --- | ---
 ConsumedQuantity | Mennyiség
-IncludedQuantity | –
+IncludedQuantity | N/A
 InstanceId | ResourceId
 Rate (Egységár) | EffectivePrice
 Unit (Egység) | UnitOfMeasure
@@ -131,11 +131,11 @@ UsageStart | Dátum
 
 A részletes használati adatokkal és díjakkal kapcsolatos további tudnivalókért olvassa el a [használatalapú fizetéses](review-individual-bill.md) vagy a [Microsoft-ügyfélszerződéses](review-customer-agreement-bill.md) számlák ismertetését.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md)
 - [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](download-azure-daily-usage.md)
