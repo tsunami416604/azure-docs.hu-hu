@@ -44,8 +44,8 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 | Franciaország         | Közép-Franciaország      | 20.43.40.128/25,</br>20.43.41.0/26,</br>40.79.132.112/28     |
 | India          | Közép-India       | 52.140.104.128/25,</br>52.140.105.0/26,</br>20.43.121.48/28  |
 | Japán          | Kelet-Japán          | 20.43.64.128/25,</br>20.43.65.0/26,</br>13.78.109.192/28     |
-| Dél-Korea          | Korea középső régiója       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
-| Dél-Afrika   | Dél-Afrika északi régiója  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |
+| Dél-Korea          | Dél-Korea középső régiója       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
+| Dél-afrikai Köztársaság   | Dél-Afrika északi régiója  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |
 | Egyesült Királyság | Egyesült Királyság déli régiója            | 51.104.24.128/25,</br>51.104.25.0/26,</br>51.104.9.32/28     |
 | Egyesült Államok  | USA középső régiója          | 20.37.154.0/23,</br>20.37.156.0/26,</br>20.44.10.64/28       |
 |                | USA keleti régiója             | 20.42.2.0/23,</br>20.42.4.0/26,</br>40.71.14.32/28           |

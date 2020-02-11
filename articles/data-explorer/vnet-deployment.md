@@ -120,8 +120,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 40.82.236.24 |
 | Kelet-Japán | 20.43.89.90 |
 | Nyugat-Japán | 40.81.184.86 |
-| Korea középső régiója | 40.82.156.149 |
-| Korea déli régiója | 40.80.234.9 |
+| Dél-Korea középső régiója | 40.82.156.149 |
+| Dél-Korea déli régiója | 40.80.234.9 |
 | USA északi középső régiója | 40.81.45.254 |
 | Észak-Európa | 52.142.91.221 |
 | Dél-Afrika északi régiója | 102.133.129.138 |
@@ -159,8 +159,8 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Dél-Franciaország | 23.97.212.5 |
 | Kelet-Japán | 138.91.19.129 |
 | Nyugat-Japán | 138.91.19.129 |
-| Korea középső régiója | 138.91.19.129 |
-| Korea déli régiója | 138.91.19.129 |
+| Dél-Korea középső régiója | 138.91.19.129 |
+| Dél-Korea déli régiója | 138.91.19.129 |
 | USA északi középső régiója | 23.96.212.108 |
 | Észak-Európa | 191.235.212.69 
 | Dél-Afrika északi régiója | 104.211.224.189 |

@@ -81,7 +81,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | | Közép-Franciaország | `https://francecentral.api.cognitive.microsoft.com` |
 | | Közép-India | `https://centralindia.api.cognitive.microsoft.com` |
 | | Kelet-Japán | `https://japaneast.api.cognitive.microsoft.com` |
-| | Korea középső régiója | `https://koreacentral.api.cognitive.microsoft.com` |
+| | Dél-Korea középső régiója | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA északi középső régiója | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Észak-Európa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Dél-Afrika északi régiója | `https://southafricanorth.api.cognitive.microsoft.com` |

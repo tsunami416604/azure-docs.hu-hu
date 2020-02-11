@@ -51,7 +51,7 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Nyugat-India | 104.211.160.80    |
 | Kelet-Japán | 13.78.61.196, 191.237.240.43  |
 | Nyugat-Japán | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
-| Korea középső régiója | 52.231.32.42   |
+| Dél-Korea középső régiója | 52.231.32.42   |
 | Dél-Korea | 52.231.200.86    |
 | USA északi középső régiója | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Észak-Európa | 40.113.93.91, 191.235.193.75    |

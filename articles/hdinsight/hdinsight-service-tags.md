@@ -66,8 +66,8 @@ Ha a Service címke második lehetőségét részesíti előnyben, és a fürt a
 | &nbsp; | USA nyugati középső régiója | HDInsight. WestCentralUS |
 | Kanada | Kelet-Kanada | HDInsight. CanadaEast |
 | Brazília | Dél-Brazília | HDInsight. BrazilSouth |
-| Dél-Korea | Korea középső régiója | HDInsight. KoreaCentral |
-| &nbsp; | Korea déli régiója | HDInsight. KoreaSouth |
+| Dél-Korea | Dél-Korea középső régiója | HDInsight. KoreaCentral |
+| &nbsp; | Dél-Korea déli régiója | HDInsight. KoreaSouth |
 | India | Közép-India | HDInsight. CentralIndia |
 | &nbsp; | Dél-India | HDInsight. SouthIndia |
 | Japán | Nyugat-Japán | HDInsight. JapanWest |

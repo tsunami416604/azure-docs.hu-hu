@@ -199,7 +199,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| USA déli középső régiója (globális)| 104.214.19.224|
 | Azure Public| USA északi középső régiója (globális)| 52.162.110.80|
 | Azure Public| USA nyugati középső régiója| 52.253.135.58|
-| Azure Public| Korea középső régiója| 40.82.157.167|
+| Azure Public| Dél-Korea középső régiója| 40.82.157.167|
 | Azure Public| Az Egyesült Királyság nyugati régiója| 51.137.136.0|
 | Azure Public| Nyugat-Japán| 40.81.185.8|
 | Azure Public| USA északi középső régiója| 40.81.47.216|
@@ -215,7 +215,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| Délkelet-Ázsia| 40.90.185.46|
 | Azure Public| Dél-Afrika északi régiója| 102.133.130.197|
 | Azure Public| Közép-Kanada| 52.139.20.34|
-| Azure Public| Korea déli régiója| 40.80.232.185|
+| Azure Public| Dél-Korea déli régiója| 40.80.232.185|
 | Azure Public| Közép-India| 13.71.49.1|
 | Azure Public| USA nyugati régiója| 13.64.39.16|
 | Azure Public| Délkelet-Ausztrália| 20.40.160.107|

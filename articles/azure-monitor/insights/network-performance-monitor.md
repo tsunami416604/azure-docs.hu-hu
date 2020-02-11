@@ -55,7 +55,7 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * Ausztrália keleti régiója
 * Dél-Egyesült Királyság
 * Kelet-Ázsia
-* Korea középső régiója
+* Dél-Korea középső régiója
 * Közép-India
 * USA-beli kormányzati Virginia
 * Kína 2. keleti régiója

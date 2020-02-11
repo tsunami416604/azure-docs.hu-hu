@@ -280,7 +280,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Seychelle-szigetek                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Szomália                                             |                 |                |              |      ✓     |          ✓         |
-| Dél-Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Dél-afrikai Köztársaság                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dél-Szudán                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Szudán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Szváziföld                                           |                 |                |       ✓      |      ✓     |          ✓         |

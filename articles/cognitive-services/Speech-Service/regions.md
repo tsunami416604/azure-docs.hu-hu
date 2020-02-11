@@ -45,7 +45,7 @@ A Speech SDK a következő régiókban érhető el a beszédfelismerés, a **sz�
 | Kelet-Ázsia        | `eastasia`           | https://eastasia.cris.ai       |
 | Délkelet-Ázsia   | `southeastasia`      | https://southeastasia.cris.ai  |
 | Kelet-Japán       | `japaneast`          | https://japaneast.cris.ai      |
-| Korea középső régiója    | `koreacentral`       | https://koreacentral.cris.ai   |
+| Dél-Korea középső régiója    | `koreacentral`       | https://koreacentral.cris.ai   |
 | Ausztrália keleti régiója   | `australiaeast`      | https://australiaeast.cris.ai  |
 | Közép-Kanada   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Észak-Európa     | `northeurope`        | https://northeurope.cris.ai    |

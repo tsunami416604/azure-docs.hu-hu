@@ -114,7 +114,7 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |Középnyugat-Németország| ✔ | |
 |Kelet-Japán| ✔ | ✔<sup>1</sup> |
 |Nyugat-Japán| ✔ | |
-|Korea középső régiója| ✔ |  |
+|Dél-Korea középső régiója| ✔ |  |
 |USA északi középső régiója| ✔ |  |
 |Észak-Európa| ✔ | ✔<sup>1</sup> |
 |USA déli középső régiója| ✔ | ✔<sup>1</sup> |

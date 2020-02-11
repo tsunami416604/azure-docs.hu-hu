@@ -294,7 +294,7 @@ Szaúd-Arábia
 Szingapúr
 * Nemzeti regisztrációs azonosító kártya (NRIC) száma
 
-Dél-Afrika
+Dél-afrikai Köztársaság
 * AZONOSÍTÓ száma
 * Rezidens regisztrációs szám
 

@@ -97,8 +97,8 @@ A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános r�
 | Ausztrália 2. középső régiója   | Kína 2. keleti régiója      | Délkelet-Ázsia     | Egyesült Királyság déli régiója           |
 | Ausztrália keleti régiója        | Észak-Kína       | Kelet-Japán         | Egyesült Királyság nyugati régiója            |
 | Délkelet-Ausztrália   | Kína 2. északi régiója     | Nyugat-Japán         | US DoD – középső régió     |
-| Dél-Brazília          | Kelet-Ázsia         | Korea középső régiója      | US DoD – keleti régió        |
-| Közép-Kanada        | USA keleti régiója           | Korea déli régiója        | US Gov Arizona     |
+| Dél-Brazília          | Kelet-Ázsia         | Dél-Korea középső régiója      | US DoD – keleti régió        |
+| Közép-Kanada        | USA keleti régiója           | Dél-Korea déli régiója        | US Gov Arizona     |
 | Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | US Gov Texas       |
 | Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | US Gov Virginia    |
 | USA középső régiója            | Közép-Franciaország    | USA déli középső régiója   | Nyugat-India         |

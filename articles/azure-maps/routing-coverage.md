@@ -70,7 +70,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Ruanda                         |        ✓       |                       |             |
 | Szenegál                        |        ✓       |                       |             |
 | Seychelle                     |        ✓       |                       |             |
-| Dél-Afrika                   |        ✓       ||         ✓            |             |
+| Dél-afrikai Köztársaság                   |        ✓       ||         ✓            |             |
 | Szváziföld                      |        ✓       |                       |             |
 | Tanzánia                       |        ✓       |                       |             |
 | Togo                           |        ✓       |                       |             |

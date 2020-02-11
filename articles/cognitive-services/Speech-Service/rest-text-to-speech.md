@@ -53,7 +53,7 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |

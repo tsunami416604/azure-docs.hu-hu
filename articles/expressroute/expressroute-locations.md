@@ -49,7 +49,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **India** | Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Oceania** | Délkelet-Ausztrália, Kelet-Ausztrália |Auckland, Melbourne, Perth, Sydney, Sydney2 |
-| **Dél-Korea** | Korea középső régiója, Korea déli régiója |Busan, Szöul|
+| **Dél-Korea** | Dél-Korea középső régiója, Korea déli régiója |Busan, Szöul|
 | **Egyesült Arab Emírségek** | UAE Central, Észak-Egyesült Arab | Dubai, Dubai2 |
 | **Dél-Afrika** | Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
 | **Dél-Amerika** | Dél-Brazília |Sao Paulo |

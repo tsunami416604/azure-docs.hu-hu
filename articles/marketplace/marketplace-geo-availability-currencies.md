@@ -136,7 +136,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Szingapúr                           | SG        | USD          |
 | Szlovákia                            | SK        | EUR          |
 | Szlovénia                            | SI        | EUR          |
-| Dél-Afrika                        | ZA        | USD          |
+| Dél-afrikai Köztársaság                        | ZA        | USD          |
 | Spanyolország                               | ES        | EUR          |
 | Srí Lanka                           | LK        | USD          |
 | Svédország                              | SE        | SEK          |

@@ -46,8 +46,8 @@ ms.locfileid: "76938318"
 * Kelet-Ázsia
 * Kelet-Japán
 * Nyugat-Japán
-* Korea középső régiója
-* Korea déli régiója
+* Dél-Korea középső régiója
+* Dél-Korea déli régiója
 * Délkelet-Ázsia
 * Nyugat-India
 

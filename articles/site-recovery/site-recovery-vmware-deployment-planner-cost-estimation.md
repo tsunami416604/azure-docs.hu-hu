@@ -156,7 +156,7 @@ Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének 
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (chf)||DKK|Dán korona (kr)|
 |EUR|Euró (€)||GBP|Angol font (£)||HKD|Hongkongi dollár (HK$)|
 |IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (₹)||JPY|Japán jen (¥)|
-|KRW|Koreai von (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
+|KRW|Koreai won (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
 |NOK|Norvég korona (kr)||NZD|Új-zélandi dollár ($)||RUB|Orosz rubel (руб)|
 |SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|

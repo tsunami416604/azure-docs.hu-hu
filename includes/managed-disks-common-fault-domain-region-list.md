@@ -38,8 +38,8 @@ ms.locfileid: "72783572"
 | Dél-India         | 2                       |
 | Közép-India       | 2                       |
 | Nyugat-India          | 2                       |
-| Korea középső régiója       | 2                       |
-| Korea déli régiója         | 2                       |
+| Dél-Korea középső régiója       | 2                       |
+| Dél-Korea déli régiója         | 2                       |
 | Egyesült Arab Emírségek északi régiója           | 2                       |
 |                     |                         |
 | Kelet-Kína          | 2                       |

@@ -50,7 +50,7 @@ A térségek az Office 365-ben több geo esetén is elérhető:
 | India | IND |
 | Japán | JPN |
 | Dél-Korea | KOR |
-| Dél-Afrika | ZAF |
+| Dél-afrikai Köztársaság | ZAF |
 | Egyesült Arab Emírségek | A |
 | Egyesült Királyság | GBR |
 | Egyesült Államok | NAM |

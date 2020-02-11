@@ -231,7 +231,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Szlovénia                            | SI        |
 | Salamon-szigetek                     | SB        |
 | Szomália                             | SO        |
-| Dél-Afrika                        | ZA        |
+| Dél-afrikai Köztársaság                        | ZA        |
 | Déli-Georgia és Déli-Sandwich-szigetek | GS    |
 | Dél-Szudán                         | SS        |
 | Spanyolország                               | ES        |

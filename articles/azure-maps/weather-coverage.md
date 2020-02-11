@@ -157,7 +157,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Seychelle                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Szomália                     | ✓               |                              |        ✓| 
-| Dél-Afrika                | ✓               |                              |        ✓| 
+| Dél-afrikai Köztársaság                | ✓               |                              |        ✓| 
 | Dél-Szudán                 | ✓               |                              |        ✓| 
 | Szudán                       | ✓               |                              |        ✓| 
 | Szíria                       | ✓               |                              |        ✓| 

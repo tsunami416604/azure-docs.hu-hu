@@ -41,12 +41,12 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | India |Közép-India |Dél-India |
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
-| Korea |Korea középső régiója |Korea déli régiója |
+| Dél-Korea |Dél-Korea középső régiója |Dél-Korea déli régiója |
 | Észak-Amerika |USA keleti régiója |USA nyugati régiója |
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
-| Dél-Afrika | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
+| Dél-afrikai Köztársaság | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Egyesült Királyság déli régiója |
 | Egyesült Arab Emírségek | Egyesült Arab Emírségek északi régiója | Egyesült Arab Emírségek középső régiója
 | Egyesült Államok védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |

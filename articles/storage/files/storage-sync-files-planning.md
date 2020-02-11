@@ -263,8 +263,8 @@ Azure File Sync csak a következő régiókban érhető el:
 | USA 2. keleti régiója | Virginia |
 | Közép-Franciaország | Párizs |
 | Dél-Franciaország * | Marseille |
-| Korea középső régiója | Szöul |
-| Korea déli régiója | Puszan |
+| Dél-Korea középső régiója | Szöul |
+| Dél-Korea déli régiója | Puszan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |
@@ -314,8 +314,8 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | Dél-Franciaország        | Közép-Franciaország     |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
-| Korea középső régiója       | Korea déli régiója        |
-| Korea déli régiója         | Korea középső régiója      |
+| Dél-Korea középső régiója       | Dél-Korea déli régiója        |
+| Dél-Korea déli régiója         | Dél-Korea középső régiója      |
 | Észak-Európa        | Nyugat-Európa        |
 | USA északi középső régiója    | USA déli középső régiója   |
 | Dél-Afrika északi régiója  | Dél-Afrika nyugati régiója  |

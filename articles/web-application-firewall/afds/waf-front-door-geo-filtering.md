@@ -201,7 +201,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | VG | Brit Virgin-szigetek|
 | VI | Amerikai Virgin-szigetek|
 | VN | Vietnam|
-| ZA | Dél-Afrika|
+| ZA | Dél-afrikai Köztársaság|
 | ZM | Zambia|
 | ZW | Zimbabwe|
 

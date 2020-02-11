@@ -29,8 +29,8 @@ A helyek közötti alapú VPN-kapcsolat és a virtuális WAN-architektúra a kö
 | Ausztrália | Délkelet-Ausztrália, Kelet-Ausztrália |
 | Ausztrália kormánya | Ausztrália középső régiója, Ausztrália 2. középső régiója |
 | India | Nyugat-India, Közép-India, Dél-India |
-| Dél-Korea | Korea középső régiója, Korea déli régiója |
-| Dél-Afrika | Dél-Afrika északi régiója, Dél-Afrika nyugati régiója |
+| Dél-Korea | Dél-Korea középső régiója, Korea déli régiója |
+| Dél-afrikai Köztársaság | Dél-Afrika északi régiója, Dél-Afrika nyugati régiója |
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Az Azure-régiók és az országos felhők geopolitikai határai
 

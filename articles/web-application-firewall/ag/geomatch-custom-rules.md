@@ -203,7 +203,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | VG | Brit Virgin-szigetek|
 | VI | Amerikai Virgin-szigetek|
 | VN | Vietnam|
-| ZA | Dél-Afrika|
+| ZA | Dél-afrikai Köztársaság|
 | ZM | Zambia|
 | ZW | Zimbabwe|
 

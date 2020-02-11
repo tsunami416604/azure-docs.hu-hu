@@ -78,7 +78,7 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
-* Korea középső régiója
+* Dél-Korea középső régiója
 * Közép-India
 * Dél-India
 * Kelet-Japán 
@@ -109,7 +109,7 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
-* Korea középső régiója
+* Dél-Korea középső régiója
 * Közép-India
 * Kelet-Japán
 * USA-beli államigazgatás – Virginia

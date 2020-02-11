@@ -153,7 +153,7 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | JO         | Jordánia               | JOD               |
 | KZ         | Kazahsztán           | KZT               |
 | KE         | Kenya                | KES               |
-| KR         | Korea                | KRW               |
+| KR         | Dél-Korea                | KRW               |
 | KW         | Kuvait               | KWD               |
 | LV         | Lettország               | EUR               |
 | LI         | Liechtenstein        | CHF               |
@@ -186,7 +186,7 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | SG         | Szingapúr            | SGD               |
 | SK         | Szlovákia             | EUR               |
 | SI         | Szlovénia             | EUR               |
-| ZA         | Dél-Afrika         | ZAR               |
+| ZA         | Dél-afrikai Köztársaság         | ZAR               |
 | ES         | Spanyolország                | EUR               |
 | LK         | Srí Lanka            | USD               |
 | SE         | Svédország               | SEK               |

@@ -179,7 +179,7 @@ A Azure SQL Database nagy kapacitású szintje jelenleg a következő régiókba
 - Közép-Franciaország
 - Kelet-Japán
 - Nyugat-Japán
-- Korea középső régiója
+- Dél-Korea középső régiója
 - Dél-Korea
 - USA északi középső régiója
 - Észak-Európa

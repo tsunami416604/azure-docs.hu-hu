@@ -56,7 +56,7 @@ Az Azure HPC cache a következő Azure-régiókban érhető el:
 * Délkelet-Ázsia
 * Sydney
 * USA nyugati régiója, 2.
-* Korea középső régiója
+* Dél-Korea középső régiója
 
 A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache) .
 

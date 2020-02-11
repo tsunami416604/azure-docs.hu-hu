@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés az Mimecast Personal Portalon történő kon
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
-    | Dél-Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Dél-afrikai Köztársaság    | `https://za-api.mimecast.com/login/saml`|
     | Ausztrália       | `https://au-api.mimecast.com/login/saml`|
     | Offshore szoftverfejlesztési        | `https://jer-api.mimecast.com/login/saml`|
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés az Mimecast Personal Portalon történő kon
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|    
-    | Dél-Afrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Dél-afrikai Köztársaság    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Ausztrália       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | Offshore szoftverfejlesztési        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés az Mimecast Personal Portalon történő kon
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
-    | Dél-Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Dél-afrikai Köztársaság    | `https://za-api.mimecast.com/login/saml`|
     | Ausztrália       | `https://au-api.mimecast.com/login/saml`|
     | Offshore szoftverfejlesztési        | `https://jer-api.mimecast.com/login/saml`|
 

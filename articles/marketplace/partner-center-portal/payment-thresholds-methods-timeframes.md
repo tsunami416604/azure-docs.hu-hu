@@ -167,7 +167,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Szlovákia                         | Igen               | Igen                                      | Igen    | Igen             |
 | Szlovénia                         | Igen               | Igen                                      | Igen    | Igen             |
 | Szomália                          | Igen               | Igen                                      | Igen    | Nem              |
-| Dél-Afrika                     | Igen               | Igen                                      | Igen    | Igen             |
+| Dél-afrikai Köztársaság                     | Igen               | Igen                                      | Igen    | Igen             |
 | Spanyolország                            | Igen               | Igen                                      | Igen    | Igen             |
 | Srí Lanka                        | Igen               | Igen                                      | Igen    | Nem              |
 | Svédország                           | Igen               | Igen                                      | Igen    | Igen             |

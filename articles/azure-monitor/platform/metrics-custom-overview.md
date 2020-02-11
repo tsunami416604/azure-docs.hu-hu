@@ -191,7 +191,7 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |Kelet-Japán | https:\//japaneast.monitoring.azure.com
 |Délkelet-Ázsia  | https:\//southeastasia.monitoring.azure.com |
 |Kelet-Ázsia | https:\//eastasia.monitoring.azure.com
-|Korea középső régiója   | https:\//koreacentral.monitoring.azure.com
+|Dél-Korea középső régiója   | https:\//koreacentral.monitoring.azure.com
 
 
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok

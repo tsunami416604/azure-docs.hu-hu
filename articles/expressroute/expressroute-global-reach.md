@@ -38,7 +38,7 @@ Az ExpressRoute globális elérhetőségű jelenleg támogatott a következő he
 * Hongkong (KKT)
 * Írország
 * Japán
-* Korea
+* Dél-Korea
 * Hollandia
 * Szingapúr
 * Svájc
