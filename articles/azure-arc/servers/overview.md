@@ -7,15 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 01/29/2020
+ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899200"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114238"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure arc for Servers (előzetes verzió)
 
@@ -54,6 +54,12 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 >[!NOTE]
 >A Windowshoz készült csatlakoztatott számítógép ügynökének előzetes kiadása csak az angol nyelv használatára konfigurált Windows Servert támogatja.
 >
+
+### <a name="required-permissions"></a>Szükséges engedélyek
+
+- A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési szerepkör tagja.
+
+- Egy gép olvasásához, módosításához, újbóli előkészítéséhez és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
 
@@ -123,7 +129,7 @@ A Windows és a Linux rendszerhez készült Azure Connected Machine Agent csomag
 >[!NOTE]
 >Ebben az előzetes verzióban csak egy csomag jelenik meg, amely Ubuntu 16,04 vagy 18,04 esetén megfelelő.
 
-## <a name="install-and-configure-agent"></a>Ügynök telepítése és konfigurálása
+## <a name="install-and-configure-agent"></a>Telepítse és konfigurálja az ügynököt
 
 A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a követelményektől függően különböző módszerekkel végezhetők el. Az alábbi táblázat az egyes módszereket ismerteti, amelyek alapján meghatározhatja, hogy melyik a legmegfelelőbb a szervezet számára.
 

@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/29/2020
+ms.date: 02/09/2020
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 81083a9d94f782201a8eb765ac1f88093c0337c4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c6dd2e9ce01205b34b95fa224e8bd16d21588b70
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024092"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114258"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -64,12 +64,12 @@ A csatlakoztatott gépi ügynököt manuálisan is telepítheti a *AzureConnecte
 
 Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, a cikk későbbi részében ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy`.
 
-A következő táblázat azokat a paramétereket mutatja be, amelyeket az ügynöknek a parancssorból való beállítása támogat.
+Az alábbi táblázat a paramétereket, az ügynök a parancssorból a telepítő által támogatott emeli ki.
 
 | Paraméter | Leírás |
 |:--|:--|
 | /? | A parancssori kapcsolók listáját adja vissza. |
-| /S | A csendes telepítést felhasználói beavatkozás nélkül hajtja végre. |
+| /S | Felhasználói beavatkozás nélkül csendes telepítést hajt végre. |
 
 A telepítőprogramnak a `/?` paraméterrel való futtatásához például írja be a `msiexec.exe /i AzureConnectedMachineAgent.msi /?`értéket.
 
@@ -167,7 +167,7 @@ Ha le szeretne bontani egy gépet az Azure arc for Servers szolgáltatásban (el
 
     Ha parancsfájlt kíván használni az eltávolításhoz, használja a következő példát, amely lekéri a termékkód lekérését, és az msiexec. exe parancssori `msiexec /x {Product Code}`használatával eltávolítja az ügynököt. Ehhez tegye a következőket:  
     
-    a. Nyissa meg a beállításszerkesztőt.  
+    a. Nyissa meg a Beállításszerkesztőt.  
     b. A beállításkulcs `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`területen keresse meg és másolja a termékkód GUID azonosítóját.  
     c. Ezután eltávolíthatja az ügynököt az msiexec használatával.
 
@@ -188,5 +188,6 @@ Ha le szeretne bontani egy gépet az Azure arc for Servers szolgáltatásban (el
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [Szabályzat társítása csatlakoztatott gépekhez](../../governance/policy/assign-policy-portal.md)
+- Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
+
+- További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-intro.md).
