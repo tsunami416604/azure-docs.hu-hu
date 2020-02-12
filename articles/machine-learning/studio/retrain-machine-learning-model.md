@@ -1,5 +1,5 @@
 ---
-title: Webszolgáltatás újbóli betanítása
+title: Webszolgáltatás újratanítása
 titleSuffix: ML Studio (classic) - Azure
 description: Ismerje meg, hogyan frissíthet egy webszolgáltatást egy újonnan betanított gépi tanulási modell használatára Azure Machine Learning Studio (klasszikus).
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838670"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152856"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
 
@@ -31,7 +31,7 @@ A Machine learning új webszolgáltatás újratanításához és üzembe helyez�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>Az átképzési webszolgáltatás üzembe helyezése
+## <a name="deploy-the-retraining-web-service"></a>A megőrzési webszolgáltatás üzembe helyezése
 
 Az átképzési webszolgáltatás lehetővé teszi, hogy a modellt új paraméterekkel (például új adatokkal) adja át, és később mentse. Amikor egy **webszolgáltatás kimenetét** egy **vonat-modellhez**kapcsolja, a betanítási kísérlet egy új modellt fog használni.
 
@@ -72,7 +72,7 @@ Az alábbi képernyőfelvételen a Azure Machine Learning webszolgáltatások po
 
 ![Felhasznált oldal](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>A apikey-deklaráció frissítése
+### <a name="update-the-apikey-declaration"></a>Frissítés a apikey tulajdonsággal végzett tesztelése nyilatkozat
 
 Keresse meg a **apikey** deklarációját:
 
@@ -86,7 +86,7 @@ A BES mintakód feltölt egy fájlt egy helyi meghajtóról (például "C:\temp\
 
 1. Bejelentkezés az Azure Portalra
 1. A bal oldali navigációs oszlopban kattintson a **További szolgáltatások**elemre, keressen rá a **Storage-fiókok**elemre, és jelölje ki.
-1. A Storage-fiókok listájából válassza ki az egyiket az átképzésen áthelyezett modell tárolásához.
+1. Storage-fiókok listájából válassza ki a retrained modell tárolásához.
 1. A bal oldali navigációs oszlopban kattintson a **hozzáférési kulcsok**elemre.
 1. Másolja és mentse az **elsődleges hozzáférési kulcsot**.
 1. A bal oldali navigációs oszlopban kattintson a **Blobok**elemre.
@@ -116,7 +116,7 @@ Amikor megadja a kimeneti helyet a kérelem adattartalmában, a *RelativeLocatio
 
 Íme egy példa a kimenet átképzésére:
 
-![Kimenet átképzése](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Kimeneti átképezési](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Az újraképzés eredményeinek kiértékelése
 
@@ -140,7 +140,7 @@ Ezután szerezze be a webszolgáltatás-definíciós objektumot a [Get-AzMlWebSe
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához futtassa a Get-AzMlWebService parancsmagot paraméterek nélkül az előfizetésében lévő webszolgáltatások megjelenítéséhez. Keresse meg a webszolgáltatást, és tekintse meg a webszolgáltatás AZONOSÍTÓját. Az erőforráscsoport neve az azonosító negyedik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport neve Default-MachineLearning-SouthCentralUS.
+Egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához futtassa a Get-AzMlWebService parancsmagot paraméterek nélkül az előfizetésében lévő webszolgáltatások megjelenítéséhez. Keresse meg a webszolgáltatás, és tekintse meg a webszolgáltatás-azonosítót. Az erőforráscsoport neve az azonosító negyedik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,7 +149,7 @@ Egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához 
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Másik lehetőségként egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához jelentkezzen be a Azure Machine Learning webszolgáltatások portálra. Válassza ki a webszolgáltatást. Az erőforráscsoport neve a webszolgáltatás URL-címének ötödik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport neve Default-MachineLearning-SouthCentralUS.
+Másik lehetőségként egy meglévő webszolgáltatás erőforráscsoport-nevének meghatározásához jelentkezzen be a Azure Machine Learning webszolgáltatások portálra. Válassza ki a web service. Az erőforráscsoport neve a webszolgáltatás URL-címének ötödik eleme, közvetlenül a *resourceGroups* elem után. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
@@ -182,13 +182,13 @@ Az [import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machi
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Webszolgáltatás frissítése
+### <a name="update-the-web-service"></a>A web service frissítése
 
 Végül az [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) parancsmag használatával frissítse a prediktív kísérletet.
 
     Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a webszolgáltatások kezeléséről vagy több kísérlet futtatásának nyomon követéséről, tekintse meg a következő cikkeket:
 

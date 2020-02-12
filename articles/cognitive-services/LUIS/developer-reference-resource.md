@@ -2,17 +2,17 @@
 title: Fejlesztői erőforrások – Language Understanding
 description: Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Understanding (LUIS) alkalmazások fejlesztését segítik. Kezelheti Azure-erőforrásait és a LUIS-előrejelzéseket.
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119978"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152686"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK, REST és CLI fejlesztői erőforrások a Language Understandinghoz (LUIS)
 
-Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Understanding (LUIS) alkalmazások fejlesztését segítik. Kezelheti Azure-erőforrásait és a LUIS-előrejelzéseket. 
+Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Understanding (LUIS) alkalmazások fejlesztését segítik. Kezelheti Azure-erőforrásait és a LUIS-előrejelzéseket.
 
 ## <a name="azure-resource-management"></a>Azure-erőforrások kezelése
 
@@ -36,6 +36,10 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 [Cognitive Services mintakód](https://github.com/Azure-Samples/cognitive-services-quickstart-code) használatával megismerheti és használhatja a leggyakoribb feladatokat.
 
+### <a name="rest-specifications"></a>REST-specifikációk
+
+A [Luis Rest-specifikációk](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS), valamint az összes [Azure Rest-specifikáció](https://github.com/Azure/azure-rest-api-specs)nyilvánosan elérhető a githubon.
+
 ### <a name="rest-apis"></a>REST API-k
 
 A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhetők el:
@@ -44,6 +48,29 @@ A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhet�
 |--|--|
 |Tartalomkészítés|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[előzetes verzió – v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |Előrejelzés|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>REST-végpontok
+
+A LUIS jelenleg két típusú végpontot tartalmaz:
+
+* Szerzői műveletek a betanítási végponton
+* lekérdezési előrejelzés a futásidejű végponton.
+
+|Cél|URL-cím|
+|--|--|
+|Létrehozás a betanítási végponton|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 futtatókörnyezet – a futásidejű végpont összes előrejelzése|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 futtatókörnyezet – verziók előrejelzése futásidejű végponton|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 futtatókörnyezet – a tárolóhelyek előrejelzése futásidejű végponton|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+Az alábbi táblázat az előző táblázatban szereplő, kapcsos zárójelekkel `{}`paramétereket ismerteti.
+
+|Paraméter|Cél|
+|--|--|
+|`your-resource-name`|Azure-Erőforrás neve|
+|`q` vagy `query`|például csevegőrobot ügyfélalkalmazástól utterance (kifejezés) szövegét|
+|`version`|10 karakteres verzió neve|
+|`slot`| `production` vagy `staging`|
 
 ### <a name="language-based-sdks"></a>Language-alapú SDK-k
 
@@ -77,7 +104,7 @@ A bot Framework [számos eszközt](https://github.com/microsoft/botbuilder-tools
 * [Feladás](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)– szülő és gyermek alkalmazások kezelése
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – C#/Typescript-osztályok automatikus előállítása a Luis-szándékok és entitások számára.
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) – egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára a bot Framework SDK használatával létrehozott robotok tesztelését és hibakeresését
-
+* A [robot Framework zeneszerzője](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrált fejlesztői eszköz a fejlesztők és a több-fegyelmi csapatok számára a robotok és a társalgási tapasztalatok létrehozásához a Microsoft bot Framework használatával
 
 ## <a name="next-steps"></a>Következő lépések
 

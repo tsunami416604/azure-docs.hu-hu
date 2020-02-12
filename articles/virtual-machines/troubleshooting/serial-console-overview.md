@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134053"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153859"
 ---
 # <a name="azure-serial-console"></a>Azure soros konzol
 
@@ -66,37 +66,6 @@ A soros konzol a méretezési csoport minden példányán elérhető a virtuáli
   1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
      ![Linuxos virtuálisgép-méretezési csoport soros konzolja](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>Soros konzol RBAC szerepköre
-A fentiekben leírtaknak megfelelően a soros konzolhoz virtuálisgép-közreműködő vagy nagyobb hozzáférés szükséges a virtuális gép vagy a virtuálisgép-méretezési csoport számára. Ha nem szeretné, hogy a virtuális gép közreműködője legyen a felhasználónak, de továbbra is engedélyezni szeretné egy felhasználó számára a soros konzol elérését, ezt a következő szerepkörrel teheti meg:
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>A szerepkör létrehozása és használata:
-*   Mentse a JSON-t egy ismert helyen – például `~/serialconsolerole.json`.
-*   A szerepkör-definíció létrehozásához használja a következő az CLI-parancsot: `az role definition create --role-definition serialconsolerole.json -o=json`
-*   Ha frissítenie kell a szerepkört, használja a következő parancsot: `az role definition update --role-definition serialconsolerole.json -o=json`
-*   A szerepkör Access Control (IAM) jelenik meg a portálon (a propagálás eltarthat néhány percig)
-*   Hozzáadhat felhasználókat a virtuális géphez és a rendszerindítási diagnosztika Storage-fiókhoz az egyéni szerepkör szerepkörrel.
-    *   Vegye figyelembe, hogy a felhasználónak meg kell adni az egyéni szerepkört a virtuális gépen és a rendszerindítási diagnosztika Storage *-* fiókjában.
-
 
 ## <a name="advanced-uses-for-serial-console"></a>A soros konzol speciális felhasználási módjai
 A konzolhoz való hozzáféréstől eltekintve a következőhöz is használhatja az Azure soros konzolt:

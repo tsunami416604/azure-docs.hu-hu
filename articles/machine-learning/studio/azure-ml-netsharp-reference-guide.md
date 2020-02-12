@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cf6e07e3bbad6b98fcce9cc0e39cdab97375a2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427667"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148572"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Azure Machine Learning Studio (klasszikus)
 
@@ -56,7 +56,7 @@ A net # emellett a következő négy típusú speciális csatlakoztatási köteg
 
 ## <a name="supported-customizations"></a>Támogatott testreszabások
 
-A Azure Machine Learning Studio (klasszikus) szolgáltatásban létrehozott neurális hálózati modellek architektúrája a NET # használatával széles körben testreszabható. Előnyök:
+A Azure Machine Learning Studio (klasszikus) szolgáltatásban létrehozott neurális hálózati modellek architektúrája a NET # használatával széles körben testreszabható. A következőket teheti:
 
 + Rejtett rétegek létrehozása és a csomópontok számának szabályozása az egyes rétegekben.
 + Határozza meg, hogyan kapcsolódjanak egymáshoz a rétegek.
@@ -89,17 +89,17 @@ Az alábbi utasítás például egy állandó `x`t határoz meg:
 
 `Const X = 28;`
 
-Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Példa:
+Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Például:
 
 `Const { X = 28; Y = 4; }`
 
-Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Példa:
+Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Például:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Réteg deklarációja
 
-A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Példa:
+A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Például:
 
 ```Net#
 input Data auto;
@@ -130,10 +130,10 @@ A következő kimeneti függvények támogatottak:
 
 + szigmabél
 + lineáris
-+ SOFTMAX szoftvert fejlesztettek
++ softmax
 + rlinear
 + Square
-+ Sqrt
++ sqrt
 + srlinear
 + ABS
 + TANH
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + A csomópontok teljes száma a (z) [50, 5, 5] réteg deklarált dimenzióját használatával számítható ki a következőképpen: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Mivel a `Sharing[d]` csak `d == 0`esetén hamis, a kernelek száma `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Köszönetnyilvánítás
+## <a name="acknowledgements"></a>Nyugták
 
 A neurális hálózatok architektúrájának testre szabására szolgáló net # nyelv a Microsoft számára készült az Katzenberger (Architect, Machine Learning) és a Alekszej Kamenev (szoftverfejlesztő mérnök, Microsoft Research) számára. Belsőleg használatos a gépi tanulási projektekhez és az alkalmazásokhoz, a képek észlelése és a szöveges elemzések között. További információ: [neurális hálók a Azure Machine learning Studióban – bevezetés a net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) használatába

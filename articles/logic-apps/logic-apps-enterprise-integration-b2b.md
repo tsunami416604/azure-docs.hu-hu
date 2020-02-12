@@ -1,111 +1,186 @@
 ---
-title: B2B vállalati integrációk létrehozása
-description: B2B-adatAzure Logic Appsek fogadása Enterprise Integration Pack
+title: Exchange-üzenetek B2B vállalati integrációs forgatókönyvekhez
+description: VÁLLALATKÖZI üzenetek fogadása és küldése Azure Logic Apps a kereskedelmi partnerek között a Enterprise Integration Pack használatával
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/08/2016
-ms.openlocfilehash: 39966b8171296a8608b9436485f7682d114c8410
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 02/10/2020
+ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793100"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151206"
 ---
-# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-adatfogadás Azure Logic Apps és Enterprise Integration Pack
+# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-üzenetek fogadása és küldése Azure Logic Apps és Enterprise Integration Pack használatával
 
-A partnerekkel és szerződésekkel rendelkező integrációs fiók létrehozása után készen áll a Business to Business (B2B) munkafolyamat létrehozására a logikai alkalmazáshoz a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
+Ha olyan integrációs fiókkal rendelkezik, amely kereskedelmi partnereket és megállapodásokat határoz meg, létrehozhat egy olyan automatizált üzleti üzleti (B2B) munkafolyamatot, amely a kereskedelmi partnerek közötti üzeneteket az [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)használatával [Azure Logic apps](../logic-apps/logic-apps-overview.md) segítségével cseréli le. A Azure Logic Apps az AS2, a X12, a EDIFACT és a RosettaNet iparági szabványnak megfelelő protokollokat támogató összekötőket is működik. Ezeket az összekötőket Logic Apps, például a Salesforce és az Office 365 Outlookhoz [elérhető más összekötők](../connectors/apis-list.md)segítségével is kombinálhatja.
+
+Ez a cikk bemutatja, hogyan hozhat létre olyan logikai alkalmazást, amely egy kérelem-trigger használatával HTTP-kérést kap, dekódolja az üzenet tartalmát az AS2 és a X12 műveletekkel, majd a válasz használatával visszaadja a választ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az AS2 és a X12 műveletek használatához Vállalati integráció fiókkal kell rendelkeznie. Megtudhatja [, hogyan hozhat létre vállalati integráció fiókot](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+* Azure-előfizetés. Ha még nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-## <a name="create-a-logic-app-with-b2b-connectors"></a>Logikai alkalmazás létrehozása B2B-összekötővel
+* Üres logikai alkalmazás, amellyel a B2B-munkafolyamatot létrehozhatja az alábbi műveletek által követett [kérelem](../connectors/connectors-native-reqres.md) -trigger használatával:
 
-Kövesse az alábbi lépéseket egy B2B logikai alkalmazás létrehozásához, amely az AS2 és a X12 műveletet használja az adatok kereskedelmi partnertől való fogadásához:
+  * [AS2-dekódolás](../logic-apps/logic-apps-enterprise-integration-as2.md)
 
-1. Hozzon létre egy logikai alkalmazást, majd [kapcsolja össze az alkalmazást az integrációs fiókkal](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+  * [Feltétel](../logic-apps/logic-apps-control-flow-conditional-statement.md), amely a válasz alapján küldi el a [választ](../connectors/connectors-native-reqres.md) , hogy az AS2-dekódolási művelet sikeres vagy sikertelen-e
 
-2. Kérelem hozzáadása **– Ha egy HTTP-kérést kap** a logikai alkalmazáshoz, a rendszer elindít egy HTTP-kérelmet.
+  * [X12-üzenet dekódolása](../logic-apps/logic-apps-enterprise-integration-x12.md) 
 
-    ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
+  Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: hozza létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-3. A **dekódolási AS2** művelet hozzáadásához válassza a **művelet hozzáadása**lehetőséget.
+* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md) , amely társítva van az Azure-előfizetéséhez, és kapcsolódik a logikai alkalmazáshoz. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
+* Legalább két olyan [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amelyet már definiált az integrációs fiókjában, valamint az [AS2-és X12-szerződéseket](logic-apps-enterprise-integration-agreements.md) az adott partnereknek.
 
-4. Ha az összes műveletet át szeretné szűrni, írja be az **AS2** szót a keresőmezőbe.
+## <a name="add-request-trigger"></a>Kérelem-trigger hozzáadása
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
+Ez a példa a Logic app designert használja a Azure Portalban, de a Visual Studióban a Logic app Designer hasonló lépésein is követheti.
 
-5. Válassza ki az **AS2-dekódolási AS2-üzenet** műveletet.
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
+1. A keresőmezőbe írja be a `when a http request`kifejezést, majd válassza ki, hogy mikor kapja meg a rendszer a **http-kérést** triggerként való használatra.
 
-6. Adja hozzá a bemenetként használni kívánt **törzset** . 
-   Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem törzsét. Vagy adjon meg egy kifejezést, amely beírja a fejléceket a **fejlécek** mezőbe:
+   ![A logikai alkalmazás munkafolyamatának elindításához válassza a kérelem elindítása lehetőséget](./media/logic-apps-enterprise-integration-b2b/select-http-request-trigger.png)
 
-    @triggerOutputs() [' headers ']
+1. Hagyja üresen a **kérelem törzse JSON-séma** mezőt, mert az X12 üzenet egy sima fájl.
 
-7. Adja hozzá az AS2 számára szükséges **fejléceket** , amelyeket a HTTP-kérések fejlécében talál. 
-   Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem fejléceit.
+   ![Hagyja üresen a "kérelem törzse JSON-séma" kifejezést.](./media/logic-apps-enterprise-integration-b2b/receive-trigger-message-body-json-schema.png)
 
-8. Most adja hozzá a dekódolási X12-üzenet műveletet. Válassza **a művelet hozzáadása**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
+   Ez a lépés a logikai alkalmazást indító kérelem küldéséhez használandó **http post URL-címet** hozza létre. Az URL-cím másolásához válassza a másolás ikont az URL mellett.
 
-9. Ha az összes műveletet át szeretné szűrni, írja be a **x12** szót a keresőmezőbe.
+   ![A kérések triggeréhez generált URL-cím a hívások fogadásához](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
+## <a name="add-as2-decode-action"></a>AS2-dekódolási művelet hozzáadása
 
-10. Válassza ki a **X12-dekódolás X12 üzenet** műveletet.
+Most adja hozzá a használni kívánt B2B-műveleteket. Ez a példa AS2-és X12-műveleteket használ.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
+1. Az trigger alatt válassza az **új lépés**lehetőséget. Az trigger részleteinek elrejtéséhez kattintson az trigger címsorára.
 
-11. Most meg kell adnia a bemenetet ehhez a művelethez. 
-    Ez a bemenet az előző AS2 művelet kimenete.
+   ![Újabb lépés hozzáadása a logikai alkalmazás munkafolyamatához](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-    Az üzenet tényleges tartalma egy JSON-objektumban van, és Base64 kódolású, ezért meg kell adnia egy kifejezést bemenetként. 
-    Adja meg a következő kifejezést az **X12 Flat file üzenetben a beviteli mező DEkódolásához** :
-    
-    @base64ToString(törzs ("Decode_AS2_message")? [" AS2Message']? ["Content"])
+1. A **válasszon műveletet**területen a keresőmezőbe írja be `as2 decode`, majd válassza az **AS2 Decode (v2)** elemet.
 
-    Most adja hozzá a lépéseket a kereskedelmi partnertől kapott X12 adatok dekódolásához és egy JSON-objektum kimeneti elemeihez. 
-    Ha értesíteni szeretné a partnert arról, hogy az adatfogadásra került, küldjön vissza egy választ a HTTP-válasz műveletben az AS2 üzenet-törlési értesítést (MDN) tartalmazó válasz.
+   ![Keresse meg és válassza ki az "AS2 Decode (v2)"](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
-12. A **Válasz** művelet hozzáadásához válassza a **művelet hozzáadása**lehetőséget.
+1. Ahhoz, hogy az **üzenet dekódolja** a tulajdonságot, adja meg azt a bemenetet, amelyet az AS2-művelet dekódolni kíván, ami a http-kérési trigger által fogadott `body` tartalom. Ezt a tartalmat több módon is megadhatja bemenetként a dinamikus tartalmak listájából vagy kifejezésként:
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
+   * Ha ki szeretne választani egy olyan listából, amely megjeleníti az elérhető trigger kimeneteit, kattintson az **üzenetben a Decode (dekódolás** ) elemre. Miután megjelenik a dinamikus tartalom lista, a **http-kérelem fogadása**alatt válassza ki a **törzs** tulajdonság értékét, például:
 
-13. Ha az összes műveletet át szeretné szűrni, a keresőmezőbe írja be a **Válasz** szót.
+     ![Válassza ki a "Body" értéket az triggerből](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
+   * Ha olyan kifejezést szeretne megadni, amely az trigger `body` kimenetére hivatkozik, kattintson az **üzenetben a Decode (dekódolás** ) mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés**lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra**:
 
-14. Válassza ki a **Válasz** műveletet.
+     `triggerOutputs()['body']`
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
+     Vagy a **dekódolni kívánt üzenet** mezőbe írja be a következő kifejezést:
 
-15. Ha a MDN az **X12 dekódolása** művelet kimenetében szeretné elérni, állítsa a válasz **törzse** mezőt a következő kifejezésre:
+     `@triggerBody()`
 
-    @base64ToString(törzs ("Decode_AS2_message")? [" OutgoingMdn']? ["Content"])
+     A kifejezés feloldja a **törzs** tokenjét.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
+     ![Megoldott szövegtörzs kimenete triggerből](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-body-expression.png)
 
-16. Mentse a munkáját.
+1. A **Message headers** tulajdonságnál adja meg az AS2 művelethez szükséges fejléceket, amelyeket a http-kérési trigger által fogadott `headers` tartalom ismertet.
 
-    ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
+   Ha olyan kifejezést szeretne megadni, amely az trigger `headers` kimenetére hivatkozik, kattintson az **üzenetek fejléce** mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés**lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra**:
 
-Ezzel befejezte a B2B logikai alkalmazás beállítását. Egy valós alkalmazásban érdemes lehet egy üzletági (LOB) alkalmazásban vagy adattárban tárolni a dekódolású X12-adatmennyiséget. A saját LOB-alkalmazások összekapcsolásához és a logikai alkalmazásban található API-k használatához további műveleteket adhat hozzá, vagy egyéni API-kat írhat.
+   `triggerOutputs()['Headers']`
 
-## <a name="features-and-use-cases"></a>Funkciók és használati esetek
+   Ha ezt a kifejezést szeretné lekérni a jogkivonat feloldásához, váltson át a tervező és a kód nézet között, például:
 
-* Az AS2-és X12-dekódolási és-kódolási műveletek lehetővé teszik az adatcserét a kereskedelmi partnerek között az iparági szabványoknak megfelelő protokollok használatával a Logic Appsben.
-* A kereskedelmi partnerekkel való adatcseréhez az AS2 és a X12 is használható egymással vagy anélkül.
-* A B2B-műveletek segítségével egyszerűen hozhat létre partnereket és szerződéseket az integrációs fiókjában, és felhasználhatja őket egy logikai alkalmazásban.
-* Ha más műveletekkel bővíti a logikai alkalmazást, az egyéb alkalmazások és szolgáltatások, például a SalesForce között küldhet és fogadhat.
+   ![Megoldott fejlécek kimenete triggerből](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
-## <a name="learn-more"></a>További információ
-[További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+## <a name="add-response-action-for-message-receipt-notification"></a>Üzenet-visszaigazolási értesítésre vonatkozó válasz hozzáadása
+
+Ha értesíteni szeretné a kereskedelmi partnert arról, hogy az üzenet érkezett, visszaállíthat egy, az AS2-üzenetek törlésére vonatkozó értesítést (MDN) tartalmazó választ a **Válasz** művelet használatával. Ha ezt a műveletet azonnal hozzáadja az **AS2 dekódolása** művelet után, akkor a művelet meghiúsul, a logikai alkalmazás nem folytatja a feldolgozást.
+
+1. Az **AS2-dekódolási** művelet alatt válassza az **új lépés**lehetőséget.
+
+1. A **válasszon műveletet**területen a keresőmező alatt válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `condition` kifejezést. A **műveletek** listából válassza a **feltétel**elemet.
+
+   ![A "feltétel" művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
+
+   Ekkor megjelenik a feltétel alakzat, beleértve az elérési utakat, hogy a feltétel teljesül-e.
+
+   ![Feltétel alakzat döntési elérési utakkal](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+
+1. Most határozza meg az értékelendő feltételt. A **Válasszon értéket** mezőben adja meg a következő kifejezést:
+
+   `@body('AS2_Decode')?['AS2Message']?['MdnExpected']`
+
+   A középső mezőben ellenőrizze, hogy az összehasonlítási művelet `is equal to`értékre van-e állítva. A jobb oldali mezőbe írja be a `Expected`értéket. Ha meg szeretné szerezni a jogkivonatként feloldható kifejezést, váltson át a tervező és a kód nézet között.
+
+   ![Feltétel alakzat döntési elérési utakkal](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+
+1. Mostantól megadhatja, hogy az **AS2-dekódolási** művelet sikeres volt-e, vagy sem.
+
+   1. Abban az esetben, ha az **AS2-dekódolási** művelet sikeres, a **Ha igaz** alakzatnál válassza a **művelet hozzáadása**lehetőséget. A **válasszon műveletet**területen a keresőmezőbe írja be a `response`kifejezést, majd válassza a **Válasz**lehetőséget.
+
+      ![A "válasz" művelet megkeresése és kiválasztása](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
+
+   1. A következő kifejezések megadásával érheti el az AS2-MDN az **AS2 Decode** művelet kimenetében:
+
+      * A **Response** művelet **fejlécek** tulajdonságában adja meg a következő kifejezést:
+
+        `@body('AS2_Decode')?['OutgoingMdn']?['OutboundHeaders']`
+
+      * A **Response** művelet **törzs** tulajdonságában adja meg a következő kifejezést:
+
+        `@body('AS2_Decode')?['OutgoingMdn']?['Content']`
+
+   1. A jogkivonatként feloldható kifejezések lekéréséhez váltson a tervező és a kód nézet között:
+
+      ![Megoldott kifejezés az AS2 MDN eléréséhez](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
+
+   1. Abban az esetben, ha az **AS2-dekódolási** művelet meghiúsul, a **Ha hamis** alakzatnál válassza a **művelet hozzáadása**lehetőséget. A **válasszon műveletet**területen a keresőmezőbe írja be a `response`kifejezést, majd válassza a **Válasz**lehetőséget. Állítsa be a **Válasz** műveletét az állapot és a kívánt hiba visszaadásához.
+
+1. Mentse a logikai alkalmazást.
+
+## <a name="add-decode-x12-message-action"></a>X12-üzenet dekódolása művelet hozzáadása
+
+1. Most adja hozzá a **dekódolási X12-üzenet** műveletet. A **Válasz** művelet alatt válassza a **művelet hozzáadása**lehetőséget.
+
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `x12 decode`kifejezést, majd válassza a **dekódolás X12 üzenetet**.
+
+   ![A "X12-üzenet dekódolása" művelet megkeresése és kiválasztása](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
+
+1. Ha a X12 művelet a kapcsolati adatok megadását kéri, adja meg a kapcsolat nevét, válassza ki a használni kívánt integrációs fiókot, majd válassza a **Létrehozás**lehetőséget.
+
+   ![X12-kapcsolatok létrehozása az integrációs fiókhoz](./media/logic-apps-enterprise-integration-b2b/create-x12-integration-account-connection.png)
+
+1. Most adja meg a X12 művelet bemenetét. Ez a példa az AS2 művelet kimenetét használja, amely az üzenet tartalma, de vegye figyelembe, hogy ez a tartalom JSON-objektum formátumú, és Base64 kódolású. Ezért át kell alakítania ezt a tartalmat egy karakterlánccá.
+
+   Az **X12 lapos fájljának dekódolása** mezőbe írja be ezt a kifejezést az AS2-kimenet átalakításához:
+
+   `@base64ToString(body('AS2_Decode')?['AS2Message']?['Content'])`
+
+    Ha meg szeretné szerezni a jogkivonatként feloldható kifejezést, váltson át a tervező és a kód nézet között.
+
+    ![Base64 kódolású tartalom konvertálása karakterlánccá](./media/logic-apps-enterprise-integration-b2b/x12-decode-message-content.png)
+
+1. Mentse a logikai alkalmazást.
+
+   Ha további lépések szükségesek ehhez a logikai alkalmazáshoz, például az üzenet tartalmának dekódolásához és a tartalom JSON-objektum formátumú kimenetének megjelenítéséhez, folytassa a logikai alkalmazás összeállításával.
+
+Ezzel befejezte a B2B logikai alkalmazás beállítását. Egy valós alkalmazásban érdemes lehet egy üzletági (LOB) alkalmazásban vagy adattárban tárolni a dekódolású X12-adatmennyiséget. Például tekintse meg a következő cikkeket:
+
+* [Csatlakozás SAP-rendszerekhez az Azure Logic Appsből](../logic-apps/logic-apps-using-sap-connector.md)
+* [SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával](../connectors/connectors-sftp-ssh.md)
+
+Saját LOB-alkalmazások összekapcsolásához és az API-k a logikai alkalmazásban való használatához további műveleteket adhat hozzá, vagy [Egyéni API-kat írhat](../logic-apps/logic-apps-create-api-app.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Bejövő HTTPS-hívások fogadása és megválaszolása](../connectors/connectors-native-reqres.md)
+* [Exchange AS2-üzenetek a B2B vállalati integrációhoz](../logic-apps/logic-apps-enterprise-integration-as2.md)
+* [Exchange X12-üzenetek a B2B vállalati integrációhoz](../logic-apps/logic-apps-enterprise-integration-x12.md)
+* További információ a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)

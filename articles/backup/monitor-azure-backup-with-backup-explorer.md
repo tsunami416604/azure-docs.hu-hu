@@ -1,98 +1,103 @@
 ---
 title: Biztonsági másolatok figyelése a Backup Explorerrel
-description: Egy cikk leírja, hogyan használható a Backup Explorer a biztonsági másolatok valós idejű figyelésére a tárolók, előfizetések, régiók és bérlők között
+description: Ez a cikk azt ismerteti, hogyan használható a Backup Explorer a tárolók, előfizetések, régiók és bérlők biztonsági mentéseinak valós idejű figyelésére.
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 331d8aeeb828dedb6700a94fafa074c179bef7ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65f68e33b53dff341ee72f6b9e9f42e344c49b1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992182"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149575"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Biztonsági másolatok figyelése a Backup Explorerrel
 
-Mivel a szervezetek egyre több gépet készítenek a felhőbe, fontos, hogy egy központi helyen tekintsék meg a biztonsági másolatok működésével kapcsolatos információkat a nagy mennyiségű, a biztonsági mentések hatékony figyelése érdekében.
+Ahogy a szervezetek egyre több gépet készítenek a felhőbe, egyre fontosabbá válik a biztonsági másolatok hatékony monitorozása. Az első lépés a legjobb módszer, ha egy központi helyet használ a működési adatok nagyméretű ingatlanon való megtekintéséhez.
 
-A Backup Explorer munkafüzet egy beépített Azure Monitor-munkafüzet, amely lehetővé teszi, hogy a biztonsági mentést végző ügyfelek egyetlen ablaktáblával rendelkezzenek az Azure-ban a teljes biztonsági mentéshez kapcsolódó operatív figyelési tevékenységek végrehajtásához (a bérlők, a helyszínek és a előfizetések, erőforráscsoportok és tárolók), mindezt egy központi helyen. Tágabb értelemben a következő képességeket biztosítja:
+A Backup Explorer egy beépített Azure Monitor-munkafüzet, amely egyetlen, központi helyen biztosítja Azure Backup ügyfeleknek. A Backup Explorer segítségével figyelheti az operatív tevékenységeket az Azure teljes biztonsági mentési területén, amely a bérlőket, a helyszíneket, az előfizetéseket, az erőforráscsoportokat és a tárolókat is felöleli. A Backup Explorer széles körben a következő képességeket biztosítja:
 
-* **Méretarányos perspektíva** – a biztonsági mentési elemek, a feladatok, a riasztások, a házirendek és az erőforrások összesített nézete, amelyeket a rendszer a teljes biztonsági mentéshez nem konfigurált a biztonsági mentéshez. 
-* Részletes **elemzés** – az egyes entitások – a feladatok, a riasztások, a szabályzatok és a biztonsági másolati elemek – részletes információit is megtekintheti egyetlen helyről.
-* Végrehajtható **felületek** – a probléma azonosítása után elvégezheti a műveletek végrehajtását úgy, hogy zökkenőmentesen navigál a biztonsági mentési elemhez vagy az Azure-erőforráshoz.
+* **Méretezési szempont**: bemutatjuk azon biztonsági mentési elemek, feladatok, riasztások, szabályzatok és erőforrások összesített nézetét, amelyek még nincsenek konfigurálva a biztonsági mentéshez a teljes ingatlanon. 
+* **Részletezés elemzése**: az egyes feladatokkal, riasztásokkal, házirendekkel és biztonsági másolati elemekkel kapcsolatos részletes információk megjelenítése egy helyen.
+* Végrehajtható **felületek**: a probléma azonosítása után zökkenőmentesen megoldható a megfelelő biztonsági mentési elem vagy Azure-erőforrás.
 
-A fenti funkciókat az Azure Resource Graph és a Azure Monitor munkafüzetek natív integrációja biztosítja.
+Ezeket a képességeket az Azure Resource Graph és a Azure Monitor munkafüzetek natív integrációja biztosítja.
 
 > [!NOTE]
-> * A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
-> * A Backup Explorer olyan operatív irányítópult, amely az elmúlt 7 napban (maximum) megtekintheti a biztonsági másolatokkal kapcsolatos információkat.
-> * Jelenleg a Backup Explorer sablonjának testreszabása nem támogatott. Emellett jelenleg nem ajánlott egyéni automatizálásokat írni az Azure Resource Graph-adatszolgáltatásban.
+> * A Backup Explorer jelenleg csak Azure-beli virtuális gépek (VM-EK) esetében érhető el.
+> * A Backup Explorer egy operatív irányítópult, amely a biztonsági másolatok adatainak megtekintésére szolgál az elmúlt 7 napban (maximum).
+> * Jelenleg a Backup Explorer sablonjának testreszabása nem támogatott. 
+> * Az Azure Resource Graph-adatszolgáltatásokban nem ajánlott egyéni automatizálást írni.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="get-started"></a>Első lépések
 
-A Backup Explorer eléréséhez navigáljon bármelyik Recovery Services-tárolóhoz, és kattintson a **Backup Explorer** hivatkozásra az **Áttekintés** oldalon.
+A Backup Explorer eléréséhez nyissa meg a Recovery Services-tárolót, és válassza a **Backup Explorer** hivatkozást az **Áttekintés** ablaktáblán.
 
 ![Tároló gyors hivatkozása](media/backup-azure-monitor-with-backup-explorer/vault-quick-link.png)
 
-A hivatkozásra kattintva megnyílik a Backup Explorer, amely összesített nézetet biztosít az összes olyan tárolóhoz és előfizetéshez, amelyhez hozzáféréssel rendelkezik. Ha Azure Lighthouse-fiókot használ, megtekintheti az összes olyan bérlőre vonatkozó információt, amelyhez hozzáfér (lásd a továbbiak című szakaszt a több-bérlős nézetekben).
+A hivatkozás kiválasztásával megnyílik a Backup Explorer, amely összesített nézetet biztosít az összes olyan tárolóhoz és előfizetéshez, amelyhez hozzáféréssel rendelkezik. Ha Azure Lighthouse-fiókot használ, megtekintheti az összes olyan bérlőn tárolt adatkapcsolatot, amelyhez hozzáfér. További információkért tekintse meg a cikk végén található "több-bérlős nézetek" című szakaszt.
 
-![Explorer kezdőlapja](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
+![Backup Explorer kezdőlapja](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
 
 ## <a name="backup-explorer-use-cases"></a>A Backup Explorer használati esetei
 
-A Backup Explorer több lapból áll, amelyek mindegyike részletes információkat biztosít a biztonsági mentési összetevőkről, például a biztonsági másolati elemekről, a feladatokról, a szabályzatokról stb. Ez a szakasz egy rövid áttekintést nyújt az egyes lapokról. A videók minta használati eseteket biztosítanak az egyes lapokhoz, valamint a felhasználóhoz elérhető különböző vezérlőelemek leírását.
+A Backup Explorer több lapot jelenít meg, amelyek mindegyike részletes információkat biztosít egy adott biztonsági mentési összetevőről (például egy biztonsági mentési elemről, feladatról vagy szabályzatról). Ez a szakasz egy rövid áttekintést nyújt az egyes lapokról. A videók minta használati eseteket biztosítanak az egyes biztonsági mentési összetevőkhöz, valamint a rendelkezésre álló vezérlők leírását.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="the-summary-tab"></a>Az összefoglalás lap
 
-Az összefoglalás lapon gyors áttekintést készíthet a Backup-hagyaték általános feltételéről. Megtekintheti az olyan információkat, mint a védett elemek száma, az elemek száma, amelyekhez nincs engedélyezve a védelem, hány feladat sikeres volt az elmúlt 24 órában, és így tovább. 
+Az **Összefoglalás** lap gyors áttekintést nyújt a Backup Estate általános feltételéről. Megtekintheti például a védett elemek számát, azon elemek számát, amelyekhez nincs engedélyezve a védelem, vagy hogy hány feladat sikeres volt az elmúlt 24 órában.
 
-A többi lap külön entitást képvisel – például: biztonsági másolati elemek, biztonsági mentési feladatok, biztonsági mentési riasztások és biztonsági mentési szabályzatok. Megtekintheti azon gépek adatait is, amelyekhez nincs konfigurálva a biztonsági mentés. Ezen fülek bármelyikére kattintva az adott entitásra jellemző információk jelennek meg.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYd]
 
-### <a name="backup-items"></a>Biztonsági másolati elemek
+### <a name="the-backup-items-tab"></a>A biztonsági mentési elemek lap
 
-Megtekintheti az előfizetéssel, a tárolóval és egyéb paraméterekkel szűrt biztonsági mentési elemeket. A biztonsági másolati elem nevére kattintva megnyithatja az adott biztonsági másolathoz tartozó Azure-panelt. A táblából például megfigyelheti, hogy az utolsó biztonsági mentés sikertelen volt a (z) X elemnél. Ha az X gombra kattint, megnyílik az elemhez tartozó biztonsági mentési panel, amelyen igény szerinti biztonsági mentési művelet aktiválható.
+Az egyes biztonsági mentési elemeket az előfizetés, a tár és egyéb jellemzők alapján szűrheti és tekintheti meg. A biztonsági másolati elem nevének kiválasztásával megnyithatja az adott elemhez tartozó Azure-ablaktáblát. A táblából például megfigyelheti, hogy az *X*elem utolsó biztonsági mentése meghiúsult. Az *X*lehetőség kiválasztásával megnyithatja az elem **Backup (biztonsági** mentés) paneljét, ahol elindíthat egy igény szerinti biztonsági mentési műveletet.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
-### <a name="jobs"></a>Feladatok
+### <a name="the-jobs-tab"></a>A feladatok lap
 
-Az elmúlt hét napban indított összes feladat részleteit a feladatok lapra lépve tekintheti meg. Itt szűrheti a feladat művelet, a feladat állapota és a hibakód alapján (sikertelen feladatok esetén).
+A **feladatok** lapon megtekintheti az elmúlt 7 napban indított összes feladat részleteit. Itt szűrheti a *feladat művelet*, a *feladat állapota*és a *hibakód* (sikertelen feladatok esetén) szerinti szűrést.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
-### <a name="alerts"></a>Értesítések
+### <a name="the-alerts-tab"></a>A riasztások lap
 
-Az elmúlt hét napban elindított összes riasztás részleteit megtekintheti a riasztások lapra kattintva. Itt szűrheti a rekordokat a riasztás típusa szerint (például: biztonsági mentési hiba, visszaállítási hiba), a riasztás aktuális állapota (például aktív vagy megoldott) és a riasztás súlyossága (például kritikus, figyelmeztetés, információ). Az Azure-beli virtuális géphez a virtuális gépre mutató hivatkozásra kattintva is megnyithatja a szükséges lépéseket.
+A **riasztások** lapon megtekintheti az elmúlt 7 napban a tárolókban generált összes riasztás részleteit. A riasztások típus szerint szűrhetők (*biztonsági mentési hiba* vagy *visszaállítási hiba*), az aktuális állapot (*aktív* vagy *megoldott*) és a súlyosság (*kritikus*, *Figyelmeztetés*vagy *információ*). Kiválaszthat egy hivatkozást is az Azure-beli virtuális gép ugrásához, és megteheti a szükséges lépéseket.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
-### <a name="policies"></a>Irányelvek
+### <a name="the-policies-tab"></a>A házirendek lap
 
-A szabályzatok lapra kattintva megtekintheti az összes biztonsági mentési szabályzatot, amelyet a Backup-hagyatékban hozott létre. Megtekintheti, hogy hány elem van társítva az egyes szabályzatokhoz, valamint a megőrzési időtartamot és a biztonsági mentés gyakoriságát, amelyet az egyes szabályzatok határoznak meg.
+A **szabályzatok** lapon megtekintheti a biztonsági mentési területen létrehozott biztonsági mentési szabályzatok legfontosabb információit. Megtekintheti az egyes szabályzatokhoz társított elemek számát, valamint a szabályzat által meghatározott megőrzési időtartamot és a biztonsági mentés gyakoriságát is.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nLKV]
 
-### <a name="backup-not-enabled"></a>A biztonsági mentés nincs engedélyezve
+### <a name="the-backup-not-enabled-tab"></a>A biztonsági mentés nem engedélyezett lap
 
-Fontos, hogy a szervezet biztonsági mentési rendszergazdája gyorsan azonosítsa, hogy a szervezet mely gépei még nem rendelkeznek biztonsági mentéssel, hogy a biztonsági mentés engedélyezve legyen minden olyan gépen, amely védelmet igényel. Ha a **biztonsági mentés nem engedélyezett** lapra kattint, a feladat segít ebben a feladatban.
+A biztonsági mentést engedélyezni kell minden olyan gépen, amely védelmet igényel. A Backup Explorer segítségével a biztonsági mentési rendszergazdák gyorsan azonosíthatják, hogy a szervezet mely számítógépeit még nem védi biztonsági másolat. Ezen információk megtekintéséhez válassza a **biztonsági mentés nem engedélyezett** lapot.
 
-Ezen a lapon egy tábla jelenik meg, amely a nem védett elemek listáját tartalmazza. Ha a szervezete azt a gyakorlatot követi, hogy különböző címkéket rendel a termelési gépekhez és a tesztelési gépekhez, illetve a különböző funkciókat kiszolgáló gépekhez, amelyek mindegyike külön biztonsági mentési szabályzatra van szüksége, a címkék alapján történő szűrés segítségével megtekintheti az adott bizonyos kategóriájú gépek. Ha bármelyik elem nevére kattint, a rendszer átirányítja az elem **biztonsági mentésének konfigurálása** panelre, ahol lehetősége van arra, hogy a megfelelő biztonsági mentési szabályzattal biztonsági másolatot készítsen az adott elemről.
+A **biztonsági mentés nem engedélyezett** ablaktáblán a nem védett gépek listáját tartalmazó tábla jelenik meg. A szervezet különböző címkéket rendelhet az üzemi gépekhez és a tesztelési gépekhez, illetve a különböző funkciókat ellátó gépekhez. Mivel a gépek minden egyes osztályának külön biztonsági mentési szabályzatra van szüksége, a címkék alapján történő szűrés segít megtekinteni az egyes alkalmazásokra vonatkozó információkat. Bármely gép nevének kiválasztásával átirányítja a gép **biztonsági mentési** paneljére, ahol kiválaszthatja a megfelelő biztonsági mentési szabályzatot.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQXZ]
 
-## <a name="exporting-to-excel"></a>Exportálás Excelbe
+## <a name="export-to-excel"></a>Exportálás Excelbe
 
-Bármely widget (táblázat/diagram) jobb felső sarkában található lefelé mutató nyílra kattintva exportálhatja a widget tartalmát egy Excel-táblázatként, amely a meglévő szűrőket alkalmazza. Ha egy táblázat több sorát szeretné exportálni az Excelbe, a lapon megjelenő sorok számát az egyes lapok tetején lévő **sorok/oldal** legördülő lista használatával növelheti.
+Bármely táblázat vagy diagram tartalmát Excel-táblázatként exportálhatja. A tartalmát a rendszer az-ként exportálja, és a meglévő szűrőket alkalmazza. További táblázatos sorok exportálásához növelheti a lapon megjelenítendő sorok számát az egyes lapok tetején lévő **sorok/lapok** legördülő lista használatával.
 
-## <a name="pinning-to-dashboard"></a>Rögzítés az irányítópulton
+## <a name="pin-to-the-dashboard"></a>Rögzítés az irányítópulton
 
-Az egyes widgetek tetején található rögzítés ikonra kattintva rögzítheti a widgetet a Azure Portal irányítópulton. Ez segít a szükséges legfontosabb információk megjelenítéséhez igazított testreszabott irányítópultok létrehozásában.
+Az egyes táblázatok vagy diagramok tetején található "PIN" ikon kiválasztásával rögzítheti azt a Azure Portal irányítópulton. Az adatok rögzítésével létrehozhat egy testreszabott irányítópultot, amely az Ön számára legfontosabb információk megjelenítésére van szabva.
 
 ## <a name="cross-tenant-views"></a>Több-bérlős nézetek
 
-Ha Ön egy Azure Lighthouse-felhasználó, aki több bérlői környezetben delegált hozzáféréssel rendelkezik az előfizetésekhez, az alapértelmezett előfizetés-szűrőt használhatja (a Azure Portal jobb felső részén található szűrő ikonra kattintva kiválaszthatja az összes előfizetést, amelyet szeretne Lásd:. Ez lehetővé teszi a Backup Explorer számára, hogy összesítse az összes tár adatait Ezen előfizetések között. További információ az [Azure Lighthouse-](https://docs.microsoft.com/azure/lighthouse/overview)ról.
+Ha egy Azure Lighthouse-felhasználó delegált hozzáféréssel rendelkezik több bérlői környezetben lévő előfizetésekhez, használhatja az alapértelmezett előfizetési szűrőt. Megjeleníti azokat az előfizetéseket, amelyek adatait meg szeretné jeleníteni, ha a Azure Portal jobb felső sarkában található "szűrő" ikonra kattint. Ha ezt a funkciót használja, a Backup Explorer összesíti a kiválasztott előfizetések összes tárolójának adatait. További információ: [Mi az az Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview).
 
 ## <a name="next-steps"></a>Következő lépések
 

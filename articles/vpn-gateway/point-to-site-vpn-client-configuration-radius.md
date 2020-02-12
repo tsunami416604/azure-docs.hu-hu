@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903032"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148470"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése P2S RADIUS-hitelesítéshez
 
@@ -38,7 +38,6 @@ A P2S RADIUS-hitelesítés konfigurációs munkafolyamata a következő:
 
 A cikk fejezeteinek használatához először döntse el, hogy milyen típusú hitelesítést kíván használni: felhasználónév/jelszó, tanúsítvány vagy más típusú hitelesítés. Mindegyik szakasz a Windows, Mac OS X és a Linux rendszerre vonatkozó lépésekkel rendelkezik (ez jelenleg csak korlátozott lépésekben érhető el).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>Felhasználónév/jelszó hitelesítése
 
@@ -50,7 +49,7 @@ A Felhasználónév/jelszó hitelesítés konfigurálásakor csak az EAP-MSCHAPv
 
 A VPN-ügyfél konfigurációs fájljait a Azure Portal használatával vagy Azure PowerShell használatával hozhatja meg.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Navigáljon a virtuális hálózati átjáróhoz.
 2. Kattintson **a pont – hely konfiguráció**elemre.
@@ -97,7 +96,7 @@ A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfelet a tan
 
 1. Válassza ki a Windows rendszerű számítógép architektúrájának megfelelő VPN-ügyfélkonfigurációs fájlokat. 64 bites processzor-architektúra esetén válassza a **VpnClientSetupAmd64** telepítőcsomagot. 32 bites processzor-architektúra esetén válassza a **VpnClientSetupX86** telepítőcsomagot. 
 2. A csomag telepítéséhez kattintson rá duplán. Ha egy SmartScreen előugró ablak jelenik meg, válassza a **További információ** > **Futtatás amúgy**lehetőséget.
-3. Az ügyfélszámítógépen keresse meg a **hálózati beállítások** elemet, és válassza a **VPN**lehetőséget. A VPN-kapcsolat megjeleníti annak a virtuális hálózatnak a nevét, amelyhez csatlakozott. 
+3. Az ügyfélszámítógépen keresse meg a **hálózati beállítások** elemet, és válassza a **VPN**lehetőséget. A VPN-kapcsolat annak a virtuális hálózatnak a nevét mutatja, amelyhez csatlakozik. 
 
 #### <a name="admaccli"></a>Mac (OS X) VPN-ügyfél beállítása
 
@@ -224,7 +223,7 @@ A következő VPN-ügyfeleket állíthatja be:
 
 1. Válasszon ki egy konfigurációs csomagot, és telepítse azt az ügyfélszámítógépen. 64 bites processzor-architektúra esetén válassza a **VpnClientSetupAmd64** telepítőcsomagot. 32 bites processzor-architektúra esetén válassza a **VpnClientSetupX86** telepítőcsomagot. Ha egy SmartScreen előugró ablak jelenik meg, válassza a **További információ** > **Futtatás amúgy**lehetőséget. A csomagot mentheti is, így más ügyfélszámítógépekre is telepítheti.
 2. Minden ügyfélhez Ügyféltanúsítvány szükséges a hitelesítéshez. Telepítse az ügyféltanúsítványt. További információ az Ügyféltanúsítványok használatáról: [Ügyféltanúsítványok a pont – hely](vpn-gateway-certificates-point-to-site.md)kapcsolatokhoz. A létrehozott tanúsítvány telepítéséhez tekintse [meg a tanúsítvány telepítése Windows-ügyfeleken](point-to-site-how-to-vpn-client-install-azure-cert.md)című témakört.
-3. Az ügyfélszámítógépen keresse meg a **hálózati beállítások** elemet, és válassza a **VPN**lehetőséget. A VPN-kapcsolat megjeleníti annak a virtuális hálózatnak a nevét, amelyhez csatlakozott.
+3. Az ügyfélszámítógépen keresse meg a **hálózati beállítások** elemet, és válassza a **VPN**lehetőséget. A VPN-kapcsolat annak a virtuális hálózatnak a nevét mutatja, amelyhez csatlakozik.
 
 #### <a name="certmaccli"></a>Mac (OS X) VPN-ügyfél beállítása
 

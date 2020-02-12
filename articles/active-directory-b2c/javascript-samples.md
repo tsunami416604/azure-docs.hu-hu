@@ -1,27 +1,36 @@
 ---
-title: JavaScript-minták – Azure Active Directory B2C | Microsoft Docs
-description: A JavaScript használatának megismerése Azure Active Directory B2Cban.
+title: JavaScript-minták
+titleSuffix: Azure AD B2C
+description: Ismerje meg az Azure Active Directory B2C JavaScript használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841931"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149073"
 ---
-# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták a Azure Active Directory B2C való használatra
+# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) alkalmazásaihoz saját JavaScript-ügyféloldali kódot adhat hozzá. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](custom-policy-overview.md), ki kell választania egy [lapelrendezést](page-layout.md), és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben. Ez a cikk azt ismerteti, hogyan módosíthatja az egyéni házirendet a parancsfájlok végrehajtásának engedélyezéséhez.
+A Azure Active Directory B2C (Azure AD B2C) alkalmazásaihoz saját JavaScript-ügyféloldali kódot adhat hozzá.
+
+JavaScript engedélyezése az alkalmazásokhoz:
+
+* Elem hozzáadása az [Egyéni szabályzathoz](custom-policy-overview.md)
+* [Lapelrendezés kiválasztása](page-layout.md)
+* [B2clogin.com](b2clogin.md) használata a kérésekben
+
+Ez a cikk azt ismerteti, hogyan módosíthatja az egyéni házirendet a parancsfájlok végrehajtásának engedélyezéséhez.
 
 > [!NOTE]
 > Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, tekintse [meg a JavaScript-és lapelrendezés-verziókat a Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -30,11 +39,11 @@ A Azure Active Directory B2C (Azure AD B2C) alkalmazásaihoz saját JavaScript-�
 
 ### <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
 
-* [Válassza ki](page-layout.md) az alkalmazás felhasználói felületi elemeinek lapelrendezés elemet.
+* Válassza ki az alkalmazás felhasználói felületi elemeinek [lapelrendezés](contentdefinitions.md#select-a-page-layout) elemet.
 
-    Ha a JavaScriptet szeretné használni, meg kell [adnia egy](page-layout.md#replace-datauri-values) lapelrendezés-verziót az egyéni szabályzat *összes* tartalmi definíciójában.
+    Ha a JavaScriptet szeretné használni, meg kell [adnia egy](contentdefinitions.md#migrating-to-page-layout) lapelrendezés-verziót, amely az egyéni szabályzat *összes* tartalmi definíciójának `contract` verzióját használja.
 
-## <a name="add-the-scriptexecution-element"></a>A ScriptExecution elem hozzáadása
+## <a name="add-the-scriptexecution-element"></a>Adja hozzá a ScriptExecution elemet
 
 A szkriptek végrehajtásának engedélyezéséhez adja hozzá a **ScriptExecution** elemet a [RelyingParty](relyingparty.md) elemhez.
 
@@ -50,33 +59,15 @@ A szkriptek végrehajtásának engedélyezéséhez adja hozzá a **ScriptExecuti
       ...
     </RelyingParty>
     ```
-3. Mentse és töltse fel a fájlt.
+3. Mentse, és töltse fel a fájlt.
 
-## <a name="guidelines-for-using-javascript"></a>Útmutató a JavaScript használatához
-
-Kövesse az alábbi irányelveket, amikor testreszabja az alkalmazás felületét a JavaScript használatával:
-
-- `<a>` HTML-elemeken nem köthető kattintási esemény.
-- Ne vegyen fel függőséget Azure AD B2C kód vagy Megjegyzés alapján.
-- Ne módosítsa Azure AD B2C HTML-elemek sorrendjét vagy hierarchiáját. A felhasználói felületi elemek sorrendjének szabályozásához használjon Azure AD B2C szabályzatot.
-- A következő megfontolásokkal hívhat meg bármilyen REST-szolgáltatást:
-    - Előfordulhat, hogy az ügyféloldali HTTP-hívások engedélyezéséhez be kell állítania a REST szolgáltatás CORS.
-    - Győződjön meg arról, hogy a REST szolgáltatás biztonságos, és csak a HTTPS protokollt használja.
-    - Ne használja közvetlenül a JavaScriptet Azure AD B2C végpontok meghívásához.
-- Beágyazhatja a JavaScriptet, vagy külső JavaScript-fájlokra mutató hivatkozásokat is használhat. Külső JavaScript-fájl használata esetén ügyeljen arra, hogy az abszolút URL-címet használja, nem pedig relatív URL-címet.
-- JavaScript-keretrendszerek:
-    - Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
-    - A RequireJS használata nem támogatott.
-    - Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
-- Azure AD B2C beállítások a `window.SETTINGS`, `window.CONTENT` objektumok, például az aktuális felhasználói felület nyelvének meghívásával olvashatók. Ne módosítsa az objektumok értékét.
-- A Azure AD B2C-hibaüzenet testreszabásához használjon honosítást egy házirendben.
-- Ha bármilyen adat egy szabályzat használatával érhető el, általában az ajánlott módszer.
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript-minták
 
-### <a name="show-or-hide-a-password"></a>Jelszó megjelenítése vagy elrejtése
+### <a name="show-or-hide-a-password"></a>Megjelenítése vagy elrejtése a jelszóval
 
-Az ügyfelek számára a regisztráció sikerességének egyik gyakori módja, hogy meglássuk, mit adtak meg a jelszavuk. Ezzel a beállítással a felhasználók regisztrálhatnak, így egyszerűen megtekinthetik és módosíthatják a jelszavukat, ha szükséges. A jelszó típusú mezőknél megjelenik egy jelölőnégyzet a **jelszó megjelenítése** címkével.  Ez lehetővé teszi, hogy a felhasználó egyszerű szövegként tekintse meg a jelszót. Adja meg ezt a kódrészletet a regisztrációs vagy bejelentkezési sablonban egy önérvényesített oldal számára:
+Egy közös segít az ügyfeleknek a regisztráció sikeres módja, hogy mi ezek adta a jelszavát, megtekintheti őket. A funkció lehetővé teszi a felhasználók regisztráljanak engedélyezésével, egyszerűen és a jelszavát, ha a szükséges javításokat. A jelszó típusú mezőknél megjelenik egy jelölőnégyzet a **jelszó megjelenítése** címkével.  Ez lehetővé teszi a felhasználó számára a jelszót egyszerű szövegként. Ez a kódrészlet a regisztrálási vagy bejelentkezési sablonhoz önellenőrzött laphoz a következők:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -122,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Használati feltételek hozzáadása
 
-Adja meg a következő kódot az oldalra, ahol használni szeretné a használati **feltételeket** jelölőnégyzetet. Ezt a jelölőnégyzetet általában a helyi fiók regisztrálásához és a közösségi fiók regisztrációs oldalain kell megadni.
+Adja meg a következő kódot az oldalra, ahol használni szeretné a használati **feltételeket** jelölőnégyzetet. Ezt a jelölőnégyzetet az helyi fiók regisztrációs és a közösségi fiók regisztrációs lapok általában szükség lesz.
 
 ```Javascript
 function addTermsOfUseLink() {

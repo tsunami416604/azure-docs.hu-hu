@@ -1,5 +1,5 @@
 ---
-title: A mintaadatkészletek használata
+title: A minta adatkészletek használata
 titleSuffix: ML Studio (classic) - Azure
 description: A Machine Learning Studio (klasszikus) részét képező minta modellekben használt adatkészletek leírása. Ezeket a minta adatkészleteket használhatja a kísérletekhez.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211a2a83d2668c3240daca11e9063b31d42655ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427430"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152754"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
 [top]: #machine-learning-sample-datasets
@@ -27,7 +27,7 @@ Ezen adatkészletek némelyike elérhető az Azure Blob Storage-ban. Ezen adatk�
 Ezen minta-adatkészletek további része a munkaterületen a **mentett adatkészletek**területen érhető el. Ez a modul paletta bal oldalán található, Machine Learning Studio (klasszikus).
 A saját kísérletekben bármelyik adatkészletet használhatja a kísérlet vászonra húzva.
 
-## <a name="datasets"></a>Adathalmazok
+## <a name="datasets"></a>Adatkészletek
 
 <table>
 
@@ -259,7 +259,7 @@ Az országos Institute of diabétesz és az emésztési és a vese diseases adat
 </tr>
 
 <tr>
-  <td>Éttermek vásárlói adatai</td>
+  <td>Az éttermi ügyféladatok</td>
   <td>
 Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai adatokat és a preferenciákat.
 <p></p>
@@ -270,7 +270,7 @@ Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai a
 </tr>
 
 <tr>
-  <td>Éttermi szolgáltatási adatok</td>
+  <td>Az éttermi funkciókról</td>
   <td>
 Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezési stílussal és hellyel kapcsolatos metaadatok halmaza.
 <p></p>
@@ -281,7 +281,7 @@ Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezé
 </tr>
 
 <tr>
-  <td>Éttermek minősítései</td>
+  <td>Éttermi minősítések</td>
   <td>
 A felhasználók által az éttermek számára a 0 és 2 közötti skálán megadott minősítéseket tartalmazza.
 <p></p>

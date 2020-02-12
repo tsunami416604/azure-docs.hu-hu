@@ -8,19 +8,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833960"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152006"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
 Ez a cikk segítséget nyújt a klasszikus virtuális hálózatok Resource Manager-virtuális hálózatok való összekapcsolásához, hogy a különálló üzemi modellekben található erőforrások kommunikáljanak egymással. A cikkben ismertetett lépések a PowerShellt használják, de ezt a konfigurációt a Azure Portal használatával is létrehozhatja, ehhez a listából válassza ki a cikket.
 
 > [!div class="op_single_selector"]
-> * [Portál](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
@@ -166,7 +166,7 @@ Az átjáró állapotát a **Get-AzureVNetGateway** parancsmag használatával t
 
 ## <a name="creatermgw"></a>2. szakasz – az RM VNet-átjáró konfigurálása
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Az előfeltételek feltételezik, hogy már létrehozott egy RM-VNet. Ebben a lépésben létrehoz egy VPN-átjárót az RM-VNet. Ezeket a lépéseket csak akkor kezdje el, ha a klasszikus VNet-átjáróhoz tartozó nyilvános IP-címet nem kéri le. 
 
@@ -298,7 +298,7 @@ Az átjárók közötti kapcsolat létrehozásához a PowerShell szükséges. El
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -309,7 +309,7 @@ Az átjárók közötti kapcsolat létrehozásához a PowerShell szükséges. El
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

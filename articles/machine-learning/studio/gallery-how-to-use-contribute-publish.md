@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427557"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153026"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
@@ -30,7 +30,7 @@ A Azure AI Gallery számos különböző erőforrást tartalmaz, amelyeket a Mic
 * **Oktatóanyagok** – számos oktatóanyag elérhető a gépi tanulási technológiák és fogalmak megismerésére, illetve a különböző gépi tanulási problémák megoldására szolgáló speciális módszerek leírására.
 * **Gyűjtemények** – a gyűjtemény lehetővé teszi az olyan kísérletek, API-k és más katalógus-erőforrások csoportosítását, amelyek egy adott megoldást vagy fogalmat próbálnak ki.
 * **Egyéni modulok** – egyéni modulokat tölthet le a Studio (klasszikus) munkaterületre a saját kísérletekben való használatra.
-* **Jupyter-jegyzetfüzetek** – a Jupyter-jegyzetfüzetek egyetlen, interaktív vászonban tartalmazzák a kódot, az adatvizualizációkat és a dokumentációt. A katalógusban található jegyzetfüzetek a fejlett gépi tanulási technikák és megoldások oktatóanyagait és részletes leírását tartalmazzák.
+* **Jupyter-jegyzetfüzetek** – a Jupyter-jegyzetfüzetek egyetlen, interaktív vászonban tartalmazzák a kódot, az adatvizualizációkat és a dokumentációt. A katalógus-notebookjait adja meg, oktatóanyagok és részletes magyarázatát az fejlett gépi tanulási technikák és megoldásokat.
 
 ## <a name="discover-and-contribute"></a>Felderítés és közreműködés
 
@@ -72,7 +72,7 @@ Ha az erőforrás a munkaterületen található, testreszabhatja és használhat
 Importált egyéni modul használata:
 
 1. Hozzon létre egy kísérletet, vagy nyisson meg egy meglévő kísérletet.
-1. A munkaterületen lévő egyéni modulok listájának kibontásához válassza az **Egyéni**lehetőséget a modul palettáján. A modul paletta a kísérlet vászontól balra látható.
+1. A munkaterületen lévő egyéni modulok listájának kibontásához válassza az **Egyéni**lehetőséget a modul palettáján. A modulpaletta, hogy a bal oldalon, a kísérletvászonra.
 1. Válassza ki az importált modult, és húzza át a kísérletbe.
 
 ## <a name="contribute-experiments"></a>A kísérletek elősegítése
@@ -86,24 +86,24 @@ Emellett olyan vitafórum-eszközzel is bejelentkezhet, mint például a Disqus,
 
 1. A kísérlet vászon alatti műveletek listájában válassza a **Közzététel a**katalógusban lehetőséget.
 
-1. A katalógusban adjon meg egy leíró **nevet** és **címkéket** . Emelje ki a használt technikákat vagy a megoldás valós problémáját. Példa egy leíró kísérlet címére: "bináris besorolás: Twitter Hangulatelemzés."
+1. A katalógusban adjon meg egy leíró **nevet** és **címkéket** . Emelje ki a használt technikákat vagy a megoldás valós problémáját. Egy leíró kísérlet címe például "bináris osztályozás: Twitter-Hangulatelemzés."
 
-1. Az **Összefoglalás** mezőben adja meg a kísérlet összegzését. Röviden ismertesse a kísérlet megoldásával kapcsolatos problémát, és azt, hogy miként közelíti meg.
+1. Az **Összefoglalás** mezőben adja meg a kísérlet összegzését. Röviden ismertesse a kísérlet megoldja a problémát, és hogyan válaszadásra.
 
-1. A **részletes leírás** mezőben adja meg a kísérlet egyes részeiben bekövetkezett lépéseket. Néhány hasznos témakör a következő:
-   * A kísérleti gráf képernyőképe
-   * Adatforrások és magyarázat
+1. A **részletes leírás** mezőben adja meg a kísérlet egyes részeiben bekövetkezett lépéseket. Néhány hasznos témakörök tartalmazzák a következők:
+   * Kísérlet diagram képernyőképe
+   * Az adatforrások és magyarázat
    * Adatfeldolgozás
    * Jellemzőkiemelés
    * Modell leírása
-   * A modell teljesítményének eredményei és kiértékelése
+   * Eredmények és modellek teljesítményének kiértékelése
 
-   A leírást a Markdown használatával formázhatja. Ha szeretné megtekinteni, hogy a kísérlet leírása lapon milyen bejegyzések jelennek meg a kísérlet közzétételekor, válassza az **előnézet**lehetőséget.
+   A leírás formázása a markdown használatával is. Ha szeretné megtekinteni, hogy a kísérlet leírása lapon milyen bejegyzések jelennek meg a kísérlet közzétételekor, válassza az **előnézet**lehetőséget.
 
    > [!TIP]
-   > A Markdown-szerkesztéshez és az előzetes verzióhoz megadott szövegmezők kicsik. Javasoljuk, hogy írja be a kísérlet dokumentációját egy Markdown-szerkesztőbe (például a [Visual Studio Code](https://aka.ms/vscode)-ba), majd másolja és illessze be a kész dokumentációt a katalógus szövegmezőbe.
+   > A megadott markdown-szerkesztő és az előzetes verzió kis szövegmezők. Javasoljuk, hogy írja be a kísérlet dokumentációját egy Markdown-szerkesztőbe (például a [Visual Studio Code](https://aka.ms/vscode)-ba), majd másolja és illessze be a kész dokumentációt a katalógus szövegmezőbe.
 
-1. A **rendszerkép kiválasztása** lapon válassza ki a kísérlet miniatűr képét. A miniatűr képe a kísérlet részletei lap tetején, a kísérlet csempén jelenik meg. Más felhasználók láthatják a miniatűr képét, amikor megkeresik a katalógust. Feltölthet egy rendszerképet a számítógépről, vagy kiválaszthat egy Stock-rendszerképet a gyűjteményből.
+1. A **rendszerkép kiválasztása** lapon válassza ki a kísérlet miniatűr képét. Az asztalnak a miniatűrjére a kísérlet részletei lap, és a kísérlet csempén legfelül jelenik meg. Más felhasználók látni fogják az asztalnak a miniatűrjére, a gyűjtemény böngészése közben. Töltsön fel egy képet a számítógépről, vagy megvásárolható kép kiválasztása a katalógusból.
 
 1. A **Beállítások** oldalon, a **láthatóság**területen válassza ki, hogy közzé kívánja-e tenni a tartalmat nyilvánosan (**nyilvános**), vagy csak olyan személyek számára legyen elérhető, akik az oldalra mutató hivatkozással rendelkeznek (fel van**listázva**).
 
@@ -114,29 +114,29 @@ Emellett olyan vitafórum-eszközzel is bejelentkezhet, mint például a Disqus,
 
 ### <a name="update-your-experiment"></a>A kísérlet frissítése
 
-Ha szükséges, módosíthatja a munkafolyamatot (modulok, paraméterek stb.) egy, a katalógusban közzétett kísérletben. A Machine Learning Studio (klasszikus) területen végezze el a kísérlethez használni kívánt módosításokat, majd tegye közzé újra. A közzétett kísérlet frissülni fog a módosításaival.
+Ha szeretné, módosíthatja a munkafolyamatnak a kísérletet, amelyek a katalógusban közzétett (modulok, paraméterek és így tovább). A Machine Learning Studio (klasszikus) területen végezze el a kísérlethez használni kívánt módosításokat, majd tegye közzé újra. A közzétett kísérletek frissülni fog a módosításokat.
 
-A kísérlethez a következő információk bármelyikét módosíthatja közvetlenül a katalógusban:
+Közvetlenül a katalógusban a kísérlethez módosíthatja a következő információkat:
 
 * Kísérlet neve
-* Összefoglalás vagy Leírás
+* Összefoglalás vagy leírása
 * Címkék
-* Lemezkép
+* Image (Kép)
 * Láthatósági beállítás (**nyilvános** vagy nem **listázva**)
 
-A kísérletet a katalógusból is törölheti.
+A kísérlet a katalógusból is törli.
 
-Ezeket a módosításokat elvégezheti, vagy törölheti a kísérletet, a kísérlet részletei lapon vagy a profil lapján a gyűjteményben.
+Ezeket a módosításokat, vagy törölni a kísérletet a kísérlet részleteit megjelenítő oldalon vagy a profiloldalán a katalógusban.
 
-* A kísérlet részletei lapon a kísérlet részleteinek módosításához válassza a **Szerkesztés**lehetőséget. A Részletek lap szerkesztési módba lép. A módosítások elvégzéséhez válassza a **Szerkesztés** lehetőséget a kísérlet neve, összegzése vagy címkéje mellett. A módosítások végrehajtása után válassza a **kész**lehetőséget. Ha módosítani szeretné a kísérlet láthatósági beállításait (**nyilvános** vagy nem **listázott**), vagy a kísérletet törölni szeretné a katalógusból, válassza a **Beállítások** ikont.
+* A kísérlet részletei lapon a kísérlet részleteinek módosításához válassza a **Szerkesztés**lehetőséget. A Részletek lap szerkesztési módba kerül. A módosítások elvégzéséhez válassza a **Szerkesztés** lehetőséget a kísérlet neve, összegzése vagy címkéje mellett. A módosítások végrehajtása után válassza a **kész**lehetőséget. Ha módosítani szeretné a kísérlet láthatósági beállításait (**nyilvános** vagy nem **listázott**), vagy a kísérletet törölni szeretné a katalógusból, válassza a **Beállítások** ikont.
 
-* A profil lapon válassza ki a kísérlethez tartozó lefelé mutató nyilat, majd válassza a **Szerkesztés**lehetőséget. Ekkor megjelenik a kísérlet részletes lapja szerkesztési módban. Ha végzett a módosítások végrehajtásával, válassza a **kész**lehetőséget. Ha törölni szeretné a kísérletet a katalógusból, válassza a **Törlés**lehetőséget.
+* A profil lapon válassza ki a kísérlethez tartozó lefelé mutató nyilat, majd válassza a **Szerkesztés**lehetőséget. Ekkor megjelenik a kísérletbe és szerkesztési módban részleteit megjelenítő oldalon. Ha végzett a módosítások végrehajtásával, válassza a **kész**lehetőséget. Ha törölni szeretné a kísérletet a katalógusból, válassza a **Törlés**lehetőséget.
 
-### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tippek a kísérlet dokumentálására és közzétételére
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Dokumentálja a és a közzététele a kísérlethez tippek
 
-* Feltételezheti, hogy az olvasó korábbi adatelemzési tapasztalattal rendelkezik, de hasznos lehet az egyszerű nyelv használata. Részletesen ismertesse a dolgokat, amikor csak lehetséges.
-* Adjon meg elegendő információt és részletes magyarázatot arról, hogy az olvasók könnyebben navigálják a kísérletet.
-* A vizualizációk hasznosak lehetnek az olvasók számára a kísérletezési dokumentáció helyes értelmezéséhez és használatához. A vizualizációk a kísérleti gráfokat és az adatképernyőképeket tartalmazzák.
+* Akkor feltételezheti, hogy az olvasó rendelkezik a korábbi élmény adatelemzéshez, de a egyszerű nyelv hasznos lehet. Dolog, amikor csak lehetséges részletesen ismertetik.
+* Adjon meg elegendő információk és részletes magyarázatokat, keresse meg a kísérlethez olvasók könnyebben.
+* Vizualizációk az olvasók számára értelmezi és megfelelően használja a kísérlet dokumentációjában hasznos lehet. Vizualizációk a kísérleti diagramok, képernyőfelvételekkel mutatja be, az adatok közé tartozik.
 * Ha tartalmaz egy adatkészletet a kísérletben (azaz nem importálja az adatkészletet az importálási modulon keresztül), az adatkészlet a kísérlet része, és közzé van téve a katalógusban. Győződjön meg arról, hogy a közzétenni kívánt adatkészlet rendelkezik olyan licencelési feltételekkel, amelyek lehetővé teszik a megosztást és a letöltést bárki által. A katalógushoz való hozzájárulás az Azure használati [feltételeinek](https://azure.microsoft.com/support/legal/website-terms-of-use/)hatálya alá esik.
 
 ## <a name="contribute-tutorials-and-collections"></a>Oktatóanyagok és gyűjtemények elősegítése
@@ -151,7 +151,7 @@ Segíthet másoknak egy olyan **oktatóanyag** megírásában, amely ismerteti a
 
 1. A **Leírás** lapon az **elem típusa**beállításnál válassza az **oktatóanyag** vagy a **gyűjtemény**lehetőséget. Adjon meg egy nevet, egy rövid összefoglalást, egy részletes leírást, valamint minden olyan címkét, amely segíthet más felhasználóknak a hozzájárulás megkeresésében. Ezután kattintson a **Next** (Tovább) gombra.
 
-1. A **rendszerkép kiválasztása** lapon válasszon ki egy, az Ön hozzájárulásával megjelenített képet. Feltöltheti saját képfájlját, vagy kiválaszthat egy Stock-rendszerképet. Olyan képet válasszon, amely segíthet a felhasználóknak azonosítani a hozzájárulás tartalmát és célját. Ezután kattintson a **Next** (Tovább) gombra.
+1. A **rendszerkép kiválasztása** lapon válasszon ki egy, az Ön hozzájárulásával megjelenített képet. Töltse fel a saját képfájl, vagy válasszon ki egy tőzsdei lemezképet. Olyan képet válasszon, amely segíthet a felhasználóknak azonosítani a hozzájárulás tartalmát és célját. Ezután kattintson a **Next** (Tovább) gombra.
 
 1. A **Beállítások** lapon a **láthatóság**beállításnál válassza ki, hogy a hozzájárulás **nyilvános** -e (bárki megtekintheti), vagy nem **listázható** (csak a közvetlen hivatkozású személyek tekinthetik meg).
 
@@ -181,11 +181,11 @@ A gyűjtemény elemei a **Szerkesztés**lehetőség kiválasztásával szerkeszt
 
 **Milyen követelmények vonatkoznak a rendszerképek elküldésére vagy szerkesztésére?**
 
-Az Ön hozzájárulásával elküldött rendszerképek csempe létrehozásához használhatók. Azt javasoljuk, hogy a képek 500 KB-nál kisebbek legyenek, a 3:2 oldalaránya és a 960 &#215; 640 felbontása.
+Az Ön hozzájárulásával elküldött rendszerképek csempe létrehozásához használhatók. Azt javasoljuk, hogy képeket lehet kisebb, mint 500 KB-aspect ratio 3:2 és 960 felbontása &#215; 640.
 
 **Mi történik a kísérletben használt adatkészlettel? Az adatkészlet is közzé van téve a katalógusban?**
 
-Ha az adatkészlet a kísérlet része, és a rendszer nem importálja az Adatimportálási modulon keresztül, az adatkészlet a kísérlet részeként lesz közzétéve a katalógusban. Győződjön meg arról, hogy a kísérletben közzétett adatkészlet rendelkezik a megfelelő licencelési feltételekkel. A licencelési feltételek lehetővé teszik bárki számára, hogy megosszák és letöltsék az adatfájlokat. A katalógushoz való hozzájárulás az Azure használati [feltételeinek](https://azure.microsoft.com/support/legal/website-terms-of-use/)hatálya alá esik.
+Ha az adatkészlet a kísérlet része, és a rendszer nem importálja az Adatimportálási modulon keresztül, az adatkészlet a kísérlet részeként lesz közzétéve a katalógusban. Győződjön meg arról, hogy a kísérletben közzétett adatkészlet rendelkezik a megfelelő licencelési feltételekkel. A licencelési feltételeket kell, hogy bárki megosztani, és töltse le az adatokat. A katalógushoz való hozzájárulás az Azure használati [feltételeinek](https://azure.microsoft.com/support/legal/website-terms-of-use/)hatálya alá esik.
 
 **Olyan kísérlettel rendelkezem, amely egy adatimportálási modul használatával lekéri az Azure HDInsight vagy a SQL Server. A hitelesítő adataim használatával kéri le az adatokat. Tehetek közzé ilyen típusú kísérletet? Hogyan lehet biztosítani, hogy a hitelesítő adataim ne legyenek megosztva?**
 
@@ -193,9 +193,9 @@ Jelenleg nem tehet közzé a katalógusban egy olyan kísérletet, amely hiteles
 
 **Hogyan adjon meg több címkét?**
 
-A címke beírása után adjon meg egy másik címkét, nyomja meg a TAB billentyűt.
+Miután megadta a címkét, adjon meg egy másik címke, nyomja le a Tab billentyűt.
 
-## <a name="we-want-to-hear-from-you"></a>Szeretnénk megismerni véleményét!
+## <a name="we-want-to-hear-from-you"></a>Szeretnénk hallani!
 
 Azt szeretnénk, hogy a katalógust a felhasználók és a felhasználók vezérlik. A jobb oldali smiley használatával mondja el nekünk, hogy mi a szeretete vagy a gyűlölete a katalógussal kapcsolatban.  
 

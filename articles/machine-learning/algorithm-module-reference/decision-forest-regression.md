@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546673"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152380"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
 
@@ -24,7 +24,7 @@ Ezzel a modullal egy regressziós modellt hozhat létre a döntési fák együtt
 
 A modell konfigurálása után a modellt a címkével ellátott adatkészlet és a [vonat modell](./train-model.md) modul használatával kell betanítania. Ezt követően a betanított modell segítségével előrejelzéseket készíthet. 
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A döntési fák olyan nem parametrikus modellek, amelyek az egyes példányok esetében egyszerű teszteket hajtanak végre, a bináris faszerkezetek adatstruktúráját, amíg el nem éri a levél csomópontot (döntés).
 
@@ -84,7 +84,7 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
 10. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 

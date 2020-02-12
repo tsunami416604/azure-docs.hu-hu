@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131553"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152499"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen sávszélességű élő stream küldése a NewTek TriCaster Encoder használatával  
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a [NewTek TriCaster](https://newtek
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux operációs rendszert használ, [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md)létrehozásához használja a Azure Portal.
 
+Ha a Tricaster-t használja az élő kódolásra engedélyezett AMS-csatornákhoz való adatküldéshez, akkor az élő eseményen video-és hanghibák jelentkezhetnek, ha a Tricaster bizonyos funkcióit használja, például a hírcsatornák gyors kivágását, vagy váltás a betöltésre vagy a listára. Az AMS csapat dolgozik ezen problémák elhárításán, addig nem ajánlott ezeket a funkciókat használni.
+
 > [!NOTE]
-> Ha a Tricaster-t használja az élő kódolásra engedélyezett AMS-csatornákhoz való adatküldéshez, akkor az élő eseményen video-és hanghibák jelentkezhetnek, ha a Tricaster bizonyos funkcióit használja, például a hírcsatornák gyors kivágását, vagy váltás a betöltésre vagy a listára. Az AMS csapat dolgozik ezen problémák elhárításán, addig nem ajánlott ezeket a funkciókat használni.
->
->
+>  Érdemes lehet áthelyezni a TLS 1,2-re, a prefferred TLS-verzióra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

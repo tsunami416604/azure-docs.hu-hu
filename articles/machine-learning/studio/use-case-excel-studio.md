@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427444"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152771"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Elemzések migrálása az Excelből a Azure Machine Learning Studioba (klasszikus)
 
@@ -54,10 +54,10 @@ Eleinte az Excel-modell egyértelműen felülmúlta a Studio (klasszikus) modell
 |  | Excel | Studio (klasszikus) |
 | --- |:---:|:---:|
 | Teljesítmény | | |
-| <ul style="list-style-type: none;"><li>Kiigazított R négyzet</li></ul> |0,96 |– |
-| <ul style="list-style-type: none;"><li>Együttható <br />Meghatározása</li></ul> |– |0,78<br />(kis pontosság) |
+| <ul style="list-style-type: none;"><li>Kiigazított R négyzet</li></ul> |0.96 |N/A |
+| <ul style="list-style-type: none;"><li>Együttható <br />Meghatározása</li></ul> |N/A |0.78<br />(kis pontosság) |
 | Abszolút átlagos hiba |9\.5 m USD |19.4 m USD |
-| Átlagos abszolút hiba (%) |6,03% |12,2% |
+| Átlagos abszolút hiba (%) |6.03% |12.2% |
 
 Ha a Machine Learning csapat fejlesztői és adatszakértői által készített folyamatát és eredményeit is felhasználta, a rendszer gyorsan nyújt hasznos tippeket. 
 
@@ -71,28 +71,28 @@ A javaslatok alkalmazása során ugyanezt az alapteljesítményt valósították
 
 |  | Excel | Studio (klasszikus) (kezdeti) | Studio (klasszikus) legalább négyzetes |
 | --- |:---:|:---:|:---:|
-| Címkézett érték |Tényleges adatok (numerikus) |Azonos |Azonos |
-| Tanuló |Excel – > adatelemzés – > regresszió |Lineáris regresszió. |Lineáris regresszió |
-| Tanulói beállítások |– |Alapértelmezések |szokásos legkisebb négyzetek<br />L2 = 0,005 |
-| Adatkészlet |26 sor, 3 funkció, 1 címke. Az összes numerikus érték. |Azonos |Azonos |
-| Felosztás: betanítás |Az első 18 sorban betanított Excel az utolsó 8 sorban tesztelt. |Azonos |Azonos |
-| Felosztás: teszt |Az utolsó 8 sorra alkalmazott Excel regressziós képlet |Azonos |Azonos |
+| Címkézett érték |Tényleges adatok (numerikus) |azonos |azonos |
+| Learner |Excel – > adatelemzés – > regresszió |Lineáris regresszió. |Lineáris regresszió |
+| Tanulói beállítások |N/A |Alapértelmezett |szokásos legkisebb négyzetek<br />L2 = 0.005 |
+| Adatkészlet |26 sor, 3 funkció, 1 címke. Az összes numerikus érték. |azonos |azonos |
+| Felosztás: betanítás |Az első 18 sorban betanított Excel az utolsó 8 sorban tesztelt. |azonos |azonos |
+| Felosztás: teszt |Az utolsó 8 sorra alkalmazott Excel regressziós képlet |azonos |azonos |
 | **Teljesítmény** | | | |
-| Kiigazított R négyzet |0,96 |– | |
-| Meghatározási együttható |– |0,78 |0,952049 |
+| Kiigazított R négyzet |0.96 |N/A | |
+| Meghatározási együttható |N/A |0.78 |0.952049 |
 | Abszolút átlagos hiba |9\.5 m USD |19.4 m USD |9\.5 m USD |
-| Átlagos abszolút hiba (%) |<span style="background-color: 00FF00;">6,03%</span> |12,2% |<span style="background-color: 00FF00;">6,03%</span> |
+| Átlagos abszolút hiba (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 
 Emellett az Excel-együtthatók az Azure-ban betanított modellben is összehasonlítva vannak a funkciók súlyozásával:
 
 |  | Excel-együtthatók | Azure-funkciók súlyozása |
 | --- |:---:|:---:|
-| Feltartóztatás/torzítás |19470209,88 |19328500 |
-| A szolgáltatása |0,832653063 |0,834156 |
-| B szolgáltatás |11071967,08 |11007300 |
-| C funkció |25383318,09 |25140800 |
+| Feltartóztatás/torzítás |19470209.88 |19328500 |
+| A szolgáltatás |0.832653063 |0.834156 |
+| B szolgáltatás |11071967.08 |11007300 |
+| C funkció |25383318.09 |25140800 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Machine Learning webszolgáltatást az Excelben szeretnénk felhasználni. Az üzleti elemzők az Excel programon alapulnak, és a Machine Learning webszolgáltatást az Excel-adatok sorával kell meghívni, és az előre jelzett értéket vissza kell adni az Excelnek. 
 
 A modellt a Studio (klasszikus) lehetőségeit és algoritmusait használva is optimalizálni akartuk.
@@ -117,10 +117,10 @@ Ha a regresszióval kísérletezni szeretne, egy jó adatkészlet kipróbálhat�
 
 | Modell | Abszolút átlagos hiba | Legfelső szintű négyzetes hiba | Relatív abszolút hiba | Relatív négyzetes hiba | Meghatározási együttható |
 | --- | --- | --- | --- | --- | --- |
-| Megnövelt döntési fa |0,930113 |1,4239 |0,106647 |0,021662 |0,978338 |
-| Lineáris regresszió (átmenetes leereszkedés) |2,035693 |2,98006 |0,233414 |0,094881 |0,905119 |
-| Neurális hálózat típusú regresszió |1,548195 |2,114617 |0,177517 |0,047774 |0,952226 |
-| Lineáris regresszió (szokásos legkisebb négyzetek) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
+| Megnövelt döntési fa |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
+| Lineáris regresszió (átmenetes leereszkedés) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
+| Neurális hálózat típusú regresszió |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
+| Lineáris regresszió (szokásos legkisebb négyzetek) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Kulcs elvihető
 Sokat tanultam az Excel regressziós és Studio (klasszikus) kísérletek párhuzamos futtatásával. Az alapmodell létrehozása az Excelben, és a Machine Learning [lineáris regressziót][linear-regression] használó modellekhez való összehasonlítás segített a Studio (klasszikus) megismerésében, és felderítettük az adatválaszték és a modell teljesítményének javítására tett lehetőségeket. 
@@ -129,7 +129,7 @@ Azt is javasoljuk, hogy a [szűrésen alapuló funkció kiválasztásával][filt
 
 A Studio (klasszikus) és az Excel rendszerindítási szolgáltatásának prediktív elemzési előrejelzése lehetővé teszi, hogy jelentős mértékben növelje az eredményeket a széles körű üzleti felhasználói közönség számára. 
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 Íme néhány forrás, amely segít a regresszióval való együttműködésben: 
 
 * Regresszió az Excelben. Ha még soha nem próbálta meg a regressziót az Excelben, az oktatóanyag megkönnyíti a következőket: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)

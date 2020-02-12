@@ -15,14 +15,14 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473314"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149813"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
+# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
 
 ## <a name="general-installation"></a>Általános telepítés
 
@@ -113,13 +113,13 @@ A következő egy tájékoztató dokumentum, amely bemutatja a mérnöki, támog
 - Az átmeneti kiszolgálók nem magas rendelkezésre állású megoldásnak számítanak, de több átmeneti kiszolgálóval is rendelkezhet
 - A "késés" átmeneti kiszolgálók bevezetése miatt előfordulhat, hogy hiba esetén lehetséges az állásidő.
 - Az előkészítési kiszolgáló összes frissítésének tesztelése és ellenőrzése először
-- Mindig ellenőrizze az exportálást, mielőtt átvált az átmeneti kiszolgálóra a teljes importáláshoz és a teljes szinkronizáláshoz az üzleti hatás csökkentése érdekében serverLeverage
+- Mindig ellenőrizze az exportálást, mielőtt átvált az átmeneti kiszolgálóra.  Kihasználhatja az átmeneti kiszolgálót a teljes importáláshoz és a teljes szinkronizáláshoz az üzleti hatás csökkentése érdekében
 - A lehető legnagyobb mértékben megtarthatja a verziók közötti konzisztenciát Azure AD Connect-kiszolgálók között 
 
 **K: engedélyezhető Azure AD Connect az Azure AD Connector-fiók létrehozása munkacsoportos gépen?**
 Nem.  Ahhoz, hogy az Azure AD Connect automatikusan létre lehessen hozni az Azure AD Connector-fiókot, a gépnek tartományhoz kell tartoznia.  
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 **K: van egy tűzfallal, hálózati eszközzel vagy mással, amely korlátozza, hogy a kapcsolatok mikor maradhatnak nyitva a hálózaton. Mire használható az ügyféloldali időtúllépési küszöbérték a Azure AD Connect használatakor?**  
 Minden hálózati szoftver, fizikai eszköz vagy bármi más, ami korlátozza a kapcsolatok nyitva maradható maximális időtartamát, legalább öt percet (300 másodperc) kell használnia ahhoz, hogy a kiszolgáló, amelyen a Azure AD Connect-ügyfél telepítve van és Azure Active Directory. Ez a javaslat a korábban megjelent Microsoft identitásszinkronizálás-eszközökre is vonatkozik.
 
@@ -258,7 +258,7 @@ Ritka esetekben a Azure AD Connect szolgáltatás nem indul el a frissítés vé
 **K: nem tudom, mi a kockázat, amikor a Azure AD Connect újabb verziójára frissítek. Meg tud hívni nekem, hogy segítsenek a frissítésben?**  
 Ha segítségre van szüksége a Azure AD Connect újabb verziójára való frissítéshez, nyisson meg egy támogatási jegyet az [Office 365-támogatással való kapcsolatfelvételhez szükséges szolgáltatási kérelem létrehozásához](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 **K: Hogyan Kérhetek segítséget a Azure AD Connect?**
 
 [Keresés a Microsoft Tudásbázisban (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)

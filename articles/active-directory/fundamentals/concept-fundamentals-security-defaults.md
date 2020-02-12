@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024585"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149830"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -74,7 +74,7 @@ Ahhoz, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazás
 
 Napjainkban a kiegyezéses bejelentkezési kísérletek többsége örökölt hitelesítésből származik. Az örökölt hitelesítés nem támogatja a Multi-Factor Authentication. Ha a címtárban engedélyezve van a Multi-Factor Authentication szabályzat, a támadó egy régebbi protokoll használatával is hitelesítheti magát, és megkerülheti a Multi-Factor Authentication. 
 
-Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi protokoll által végrehajtott összes hitelesítési kérelem le lesz tiltva. A biztonsági alapértelmezett beállítások nem gátolják meg az Exchange ActiveSync szolgáltatást.
+Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi protokoll által végrehajtott összes hitelesítési kérelem le lesz tiltva. A biztonsági alapértékek blokkolja Exchange Active Sync egyszerű hitelesítést.
 
 > [!WARNING]
 > A biztonsági beállítások engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
@@ -85,7 +85,7 @@ A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző
 
 - Azure Portal 
 - Azure PowerShell 
-- Azure parancssori felület (CLI)
+- Azure CLI
 
 A Azure Resource Manager használata a szolgáltatások kezeléséhez magas jogosultsági szintű művelet. Azure Resource Manager megváltoztathatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását. Az egytényezős hitelesítés számos különböző támadáshoz, például az adathalászathoz és a jelszó-permetezéshez van kitéve. 
 
@@ -104,7 +104,7 @@ Az előzetes 2017 Exchange Online-bérlők alapértelmezés szerint le vannak ti
 
 A következő további szempontok a bérlő biztonsági alapértékeinek üzembe helyezésével kapcsolatosak.
 
-### <a name="authentication-methods"></a>Hitelesítési módok
+### <a name="authentication-methods"></a>Hitelesítési módszerek
 
 A biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
@@ -114,7 +114,7 @@ A biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authenticati
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből |   | X |
 | SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
-| Alkalmazásjelszók |   | X * * |
+| Alkalmazás jelszavai |   | X * * |
 
 \* * Az alkalmazások jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
 

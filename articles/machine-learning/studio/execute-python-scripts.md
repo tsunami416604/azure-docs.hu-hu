@@ -1,5 +1,5 @@
 ---
-title: Python-parancsprogramok futtatása
+title: Python-szkriptek végrehajtása
 titleSuffix: ML Studio (classic) - Azure
 description: Ismerje meg, hogyan használhatja a Python-szkriptek végrehajtása a Python-kódokat Machine Learning Studio (klasszikus) kísérletekben és webszolgáltatásokban.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5512069ec609783d166b8417a7006ec4ab17fe1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427654"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153434"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
 
@@ -114,7 +114,7 @@ A pontozási kísérletekben használt összes [Python parancsfájl][execute-pyt
 
 ![Webszolgáltatások Studio-munkaterülete](./media/execute-python-scripts/figure3a.png)
 
-![Python-pandák kifejezés](./media/execute-python-scripts/python-script-with-python-pandas.png)
+![Python Pandas expression](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
 A kísérletből létrehozott webszolgáltatás a következő műveleteket végzi el:
 
@@ -181,7 +181,7 @@ Jelenleg az egyéni Python-modulok hozzáadásának egyetlen módja a korábban 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).
+További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
 
 <!-- Module References -->
 [execute-python-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-python-script

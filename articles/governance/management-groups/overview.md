@@ -4,12 +4,12 @@ description: Megismerheti a felügyeleti csoportokat és azok használatának m�
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8b087eeaa2f087e79a4d05764199e3b72b6ec66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750250"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151972"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -102,7 +102,7 @@ Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és tá
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC szerepkör-definíció és hozzárendelés
 
-A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg bizonyos [korlátozásokkal](#limitations)támogatott.  A felügyeleti csoport hatókörét megadhatja a szerepkör-definíció hozzárendelhető hatókörében.  Ez az egyéni RBAC-szerepkör ezután elérhető lesz az adott felügyeleti csoportban és bármely felügyeleti csoportban, előfizetésben, erőforráscsoporthoz vagy erőforrásban. Ez az egyéni szerepkör a hierarchiát a beépített szerepkörhöz hasonlóan örökli.    
+A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el bizonyos [korlátozásokkal](#limitations).  A felügyeleti csoport hatókörét megadhatja a szerepkör-definíció hozzárendelhető hatókörében.  Ez az egyéni RBAC-szerepkör ezután elérhető lesz az adott felügyeleti csoportban és bármely felügyeleti csoportban, előfizetésben, erőforráscsoporthoz vagy erőforrásban. Ez az egyéni szerepkör a hierarchiát a beépített szerepkörhöz hasonlóan örökli.    
 
 ### <a name="example-definition"></a>Példa definíció
 Az [Egyéni szerepkör definiálása és létrehozása](../../role-based-access-control/custom-roles.md) nem változik a felügyeleti csoportok belefoglalásával. A felügyeleti csoport **/providers/Microsoft.Management/managementgroups/{GroupID}** megadásához használja a teljes elérési utat. 

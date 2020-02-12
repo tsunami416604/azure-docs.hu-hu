@@ -1,5 +1,5 @@
 ---
-title: Egyszerű lekérdezés szintaxisa
+title: Egyszerű lekérdezési szintaxis
 titleSuffix: Azure Cognitive Search
 description: Az Azure Cognitive Search teljes szöveges keresési lekérdezéséhez használt egyszerű lekérdezési szintaxis referenciája.
 manager: nitinme
@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792553"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152669"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search
 
 Az Azure Cognitive Search két Lucene-alapú lekérdezési nyelvet implementál: az [egyszerű lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene lekérdezés-elemzőt](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Az Azure Cognitive Search az egyszerű lekérdezési szintaxis kizárja a fuzzy/lejtő beállításait.  
 
-> [!NOTE]  
->  Az Azure Cognitive Search egy alternatív [Lucene lekérdezési szintaxist](query-lucene-syntax.md) biztosít az összetettebb lekérdezésekhez. Ha többet szeretne megtudni a lekérdezés-elemzési architektúra és az egyes szintaxisok előnyeiről, tekintse meg a [teljes szöveges keresés működése az Azure Cognitive Search-ban](search-lucene-query-architecture.md)című témakört.
+> [!NOTE]
+> Az egyszerű lekérdezési szintaxis a [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) API **keresési** paraméterében átadott lekérdezési kifejezésekhez használatos, nem tévesztendő össze az API [$Filter](search-filters.md) paraméteréhez használt [OData szintaxissal](query-odata-filter-orderby-syntax.md) . Ezek a különböző szintaxisok magukban foglalják a lekérdezések összeállításához, a karakterláncok kiszökéséhez és így tovább.
+>
+> Az Azure Cognitive Search egy másik [teljes Lucene lekérdezési szintaxist](query-lucene-syntax.md) biztosít a **keresési** paraméter összetettebb lekérdezéséhez. Ha többet szeretne megtudni a lekérdezés-elemzési architektúra és az egyes szintaxisok előnyeiről, tekintse meg a [teljes szöveges keresés működése az Azure Cognitive Search-ban](search-lucene-query-architecture.md)című témakört.
 
 ## <a name="how-to-invoke-simple-parsing"></a>Egyszerű elemzések meghívása
 
@@ -72,7 +74,7 @@ Az utótag operátor egy csillag `*`. A `lux*` például olyan dokumentumokra ke
 
 ## <a name="phrase-search-operator"></a>Kifejezés keresési operátora
 
-A kifejezés operátor a kifejezést idézőjelek közé `" "`. Előfordulhat például, hogy `Roach Motel` (idézőjelek nélkül) a `Roach`t és/vagy `Motel`t tartalmazó dokumentumokat bármilyen sorrendben keresi, `"Roach Motel"` (idézőjelekkel együtt) csak a teljes kifejezést tartalmazó dokumentumokat fogja tartalmazni, és ebben a sorrendben (a szöveg elemzése továbbra is fennáll. érvényes).
+A kifejezés operátor a kifejezést idézőjelek közé `" "`. Előfordulhat például, hogy `Roach Motel` (idézőjelek nélkül) a `Roach`t és/vagy `Motel`t tartalmazó dokumentumokat bármilyen sorrendben keresi, `"Roach Motel"` (idézőjelekkel együtt) csak a teljes kifejezést tartalmazó dokumentumokat fogja tartalmazni, és ebben a sorrendben (a szöveg elemzése továbbra is érvényes).
 
 ## <a name="precedence-operator"></a>Elsőbbségi operátor
 
@@ -88,7 +90,7 @@ A sorrend operátor a karakterláncot zárójelek közé `( )`. `motel+(wifi | l
 > [!NOTE]  
 >  Bár a Escapes megtartja a tokeneket, a szöveg elemzése az elemzési módtól függően feldarabolhatja őket. A részletekért lásd a [ &#40;Language&#41; support Azure Cognitive Search REST API](index-add-language-analyzers.md) című témakört.  
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
 
 + [Dokumentumok &#40;keresése az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene lekérdezési szintaxis](query-lucene-syntax.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043367"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148198"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -24,14 +24,14 @@ A hozzárendelt rendszergazdai jogosultságokkal rendelkező fiókokat a támad�
 
 A Microsoft azt javasolja, hogy az MFA-t legalább a következő szerepkörökhöz írja elő:
 
-* Globális rendszergazda
-* SharePoint-rendszergazda
-* Exchange-rendszergazda
+* Számlázási rendszergazda
 * Feltételes hozzáférésű rendszergazda
-* Biztonsági rendszergazda
+* Exchange-rendszergazda
+* Globális rendszergazda
 * Segélyszolgálat (jelszó) rendszergazdája
 * Jelszókezelő
-* Számlázási rendszergazda
+* Biztonsági rendszergazda
+* SharePoint-rendszergazda
 * Felhasználói rendszergazda
 
 A szervezetek dönthetnek úgy, hogy belefoglalják vagy kizárják a szerepköröket.
@@ -55,14 +55,14 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **címtárbeli szerepkörök (előzetes verzió)** lehetőséget, és legalább a következő szerepköröket válassza:
-      * Globális rendszergazda
-      * SharePoint-rendszergazda
-      * Exchange-rendszergazda
+      * Számlázási rendszergazda
       * Feltételes hozzáférésű rendszergazda
-      * Biztonsági rendszergazda
+      * Exchange-rendszergazda
+      * Globális rendszergazda
       * Segélyszolgálat rendszergazdája
       * Jelszókezelő
-      * Számlázási rendszergazda
+      * Biztonsági rendszergazda
+      * SharePoint-rendszergazda
       * Felhasználói rendszergazda
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.

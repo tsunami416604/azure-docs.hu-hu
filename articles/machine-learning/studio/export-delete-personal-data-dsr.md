@@ -1,5 +1,5 @@
 ---
-title: Adatok exportálása és törlése
+title: Az adatai exportálása és törlése
 titleSuffix: ML Studio (classic) - Azure
 description: A Azure Machine Learning Studio (klasszikus) által tárolt termékbeli adatok a Azure Portalon és a hitelesített REST API-kon keresztül is exportálhatók és törlésre használhatók. A telemetria-adatok az Azure adatvédelmi portálján érhetők el. Ez a cikk bemutatja, hogyan.
 services: machine-learning
@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6b815057a6c79eb55303b8d8a349bc5a4a9bfb43
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427591"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153060"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Terméken belüli felhasználói adatok exportálása és törlése Azure Machine Learning Studio (klasszikus)
 
-A Azure Portal, a Studio (klasszikus) felület, a PowerShell és a hitelesített REST API-k használatával törölheti vagy exportálhatja Azure Machine Learning Studio (klasszikus) tárolt termékeit. Ebből a cikkből megtudhatja, hogyan. 
+A Azure Portal, a Studio (klasszikus) felület, a PowerShell és a hitelesített REST API-k használatával törölheti vagy exportálhatja Azure Machine Learning Studio (klasszikus) tárolt termékeit. Ez a cikk bemutatja, hogyan. 
 
-A telemetria-adatok az Azure adatvédelmi portálján érhetők el. 
+Az adatvédelem az Azure Portalon keresztül elérhető telemetriai adatokat. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -61,7 +61,7 @@ A felhasználók törölhetik a munkaterületen lévő eszközöket, ha kijelöl
 
 ![Eszközök törlése Machine Learning Studio (klasszikus)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
-### <a name="delete-an-entire-workspace"></a>Teljes munkaterület törlése
+### <a name="delete-an-entire-workspace"></a>Egy teljes munkaterület törlése
 
 A felhasználók a teljes munkaterületet is törölhetik:
 - Fizetős munkaterület: törölje a Azure Portalon keresztül.

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: dce05c558423400d095c83800cdcaf85e174e081
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860414"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152074"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Aktív-aktív S2S VPN-kapcsolatok konfigurálása Azure VPN Gateway-átjárókkal
 
 Ez a cikk bemutatja, hogyan hozhat létre aktív-aktív létesítmények közötti és VNet VNet kapcsolatokat a Resource Manager-alapú üzemi modell és a PowerShell használatával.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-highly-available-cross-premises-connections"></a>A nagyszámú létesítmények közötti kapcsolatok
 Ha magas rendelkezésre állást szeretne biztosítani a létesítmények közötti és VNet kapcsolatokhoz, több VPN-átjárót kell üzembe helyeznie, és több párhuzamos kapcsolatot kell létesítenie a hálózatok és az Azure között. A kapcsolódási lehetőségek és a topológia áttekintéséhez tekintse meg a [létesítmények közötti, valamint a VNet és a VNet közötti kapcsolatot](vpn-gateway-highlyavailable.md) .
@@ -49,7 +49,7 @@ Az alábbi lépésekkel konfigurálhatja az Azure VPN Gatewayt aktív-aktív mó
 
 A többi tulajdonság megegyezik a nem aktív-aktív átjárókkal. 
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Előfordulhat, hogy telepítenie kell az Azure Resource Manager PowerShell-parancsmagjait. A PowerShell-parancsmagok telepítésével kapcsolatos további információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/overview) című témakört.
 
@@ -223,7 +223,7 @@ Az alábbi példa azokat a paramétereket sorolja fel, amelyeket a helyszíni VP
 
 A kapcsolatot néhány perc múlva kell létrehozni, és a BGP-társítási munkamenet elindul az IPsec-kapcsolat létrejöttekor. Ez a példa eddig csak egy helyszíni VPN-eszközt konfigurált, ami az alábbi ábrán látható:
 
-![aktív-aktív-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>3\. lépés – két helyszíni VPN-eszköz csatlakoztatása az aktív-aktív VPN-átjáróhoz
 Ha két VPN-eszköze van ugyanazon a helyszíni hálózaton, akkor a kettős redundancia eléréséhez csatlakoztassa az Azure VPN Gatewayt a második VPN-eszközhöz.
@@ -270,7 +270,7 @@ Hasonlóképpen, az alábbiakban azokat a paramétereket sorolja fel, amelyeket 
 
 A kapcsolat (alagutak) létrejötte után a rendszer két redundáns VPN-eszközt és alagutat csatlakoztat a helyszíni hálózathoz és az Azure-hoz:
 
-![kettős redundancia – crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>3. rész – aktív-aktív VNet – VNet kapcsolat létrehozása
 Ez a szakasz egy aktív-aktív VNet-VNet-kapcsolódást hoz létre a BGP-vel. 
@@ -366,7 +366,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 A fenti lépések elvégzése után a kapcsolat néhány perc alatt létrejön, és a BGP-társas munkamenet akkor válik elérhetővé, ha a VNet-VNet kapcsolat befejeződött kettős redundanciával:
 
-![aktív-aktív-V2V](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
 ## <a name ="aaupdate"></a>Meglévő VPN-átjáró frissítése
 

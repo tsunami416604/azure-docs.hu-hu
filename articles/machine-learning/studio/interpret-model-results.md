@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454700"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153468"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
@@ -56,7 +56,7 @@ A kétosztályos besorolási probléma példája az írisz virágok besorolása.
 
 ![Az írisz-kísérlet képernyőképe](./media/interpret-model-results/1.png)
 
-1\. ábra Iris kétosztályos besorolási problémás kísérlet
+1\. ábra. Iris kétosztályos besorolási problémás kísérlet
 
 Kísérlet történt a probléma megoldására, ahogy az 1. ábrán is látható. Egy kétosztályos, megnövelt döntési famodell lett kitanítva és felhorzsolve. Most már megjelenítheti a [pontszám modell][score-model] modul előrejelzési eredményeit a [pontszám modell][score-model] modul kimeneti portjára kattintva, majd a **vizualizáció elemre kattintva.**
 
@@ -78,13 +78,13 @@ Miután megértette az előrejelzési eredményeket, és megítélte a hangot, a
 
 ![A pontozási kísérlet képernyőképe](./media/interpret-model-results/3.png)
 
-3\. ábra Az írisz kétosztályos besorolási problémás kísérletének pontozása
+3\. ábra. Az írisz kétosztályos besorolási problémás kísérletének pontozása
 
 Most be kell állítania a webszolgáltatás bemenetét és kimenetét. A bemenet a [pontszám modell][score-model]megfelelő bemeneti portja, amely az írisz virág funkcióinak bemenete. A kimenet kiválasztása attól függ, hogy érdekli-e az előre jelzett osztály (a mutató címkéje), a kiszámított valószínűség vagy mindkettő. Ebben a példában feltételezzük, hogy mindkét esetben érdekli Önt. A kívánt kimeneti oszlopok kiválasztásához használjon egy [Select oszlopot az adatkészlet][select-columns] modulban. Kattintson [az Oszlopok kiválasztása az adatkészletben][select-columns]lehetőségre, kattintson az **oszlop kiválasztásának indítása**elemre, és válassza a pontozott **címkék** és a **mutatós valószínűségek**lehetőséget. Miután beállította az [oszlopok kiválasztását az adatkészletben][select-columns] , és újra futtatja, készen kell állnia a pontozási kísérlet webszolgáltatásként való közzétételére a **webszolgáltatás közzététele**lehetőségre kattintva. A végső kísérlet a 4. ábrára hasonlít.
 
 ![Az írisz kétosztályos besorolási kísérlet](./media/interpret-model-results/4.png)
 
-4\. ábra Egy Iris kétosztályos besorolási problémájának végső pontozási kísérlete
+4\. ábra. Egy Iris kétosztályos besorolási problémájának végső pontozási kísérlete
 
 Miután futtatta a webszolgáltatást, és megadhat egy tesztelési példány egyes szolgáltatási értékeit, az eredmény két számot ad vissza. Az első szám a pontozásos címke, a második pedig a pontozásos valószínűség. Ez a virág az 1. osztályba kerül, 0,9655-as valószínűséggel.
 
@@ -92,7 +92,7 @@ Miután futtatta a webszolgáltatást, és megadhat egy tesztelési példány eg
 
 ![Pontozási tesztek eredményei](./media/interpret-model-results/5.png)
 
-5\. ábra Az írisz kétosztályos besorolásának webszolgáltatási eredménye
+5\. ábra. Az írisz kétosztályos besorolásának webszolgáltatási eredménye
 
 ### <a name="multi-class-classification"></a>Többosztályos besorolás
 **Példa kísérletre**
@@ -105,13 +105,13 @@ A betanítási adatokban 16 funkció van kinyerve a kézzel írt levelekből sz�
 
 ![Betűk felismerése többosztályos besorolási kísérlet](./media/interpret-model-results/6.png)
 
-6\. ábra A betűk felismerése többosztályos besorolással kapcsolatos probléma
+6\. ábra. A betűk felismerése többosztályos besorolással kapcsolatos probléma
 
 A [pontszám modell][score-model] modul eredményeinek megjelenítéséhez kattintson a [pontszám modell][score-model] modul kimeneti portjára, majd a vizualizáció elemre **, a**7. ábrán látható módon kell látnia a tartalmat.
 
 ![Pontszám modell eredményei](./media/interpret-model-results/7.png)
 
-7\. ábra A pontszám modelljének megjelenítése többosztályos besorolást eredményez
+7\. ábra. A pontszám modelljének megjelenítése többosztályos besorolást eredményez
 
 **Eredmény értelmezése**
 
@@ -123,11 +123,11 @@ Az egyes bejegyzésekhez tartozó mutatós címkét és a pontozásos címke val
 
 ![Példa R-kódra](./media/interpret-model-results/8.png)
 
-8\. ábra R-kód a pontozott feliratok kinyeréséhez és a címkék kapcsolódó valószínűségéhez
+8\. ábra. R-kód a pontozott feliratok kinyeréséhez és a címkék kapcsolódó valószínűségéhez
 
 ![Kísérlet eredménye](./media/interpret-model-results/9.png)
 
-9\. ábra A levél-felismerés többosztályos besorolási problémájának végső pontozási kísérlete
+9\. ábra. A levél-felismerés többosztályos besorolási problémájának végső pontozási kísérlete
 
 Miután közzétette és futtatta a webszolgáltatást, és megadta a bemeneti szolgáltatások egyes értékeit, a visszaadott eredmény a 10. ábrára hasonlít. A kinyert 16 funkció alapján ez a kézzel írt levél a 0,9715 valószínűséggel rendelkező "T".
 
@@ -135,7 +135,7 @@ Miután közzétette és futtatta a webszolgáltatást, és megadta a bemeneti s
 
 ![Teszt eredménye](./media/interpret-model-results/10.png)
 
-10. ábra A többosztályos besorolás webszolgáltatás-eredménye
+10. ábra. A többosztályos besorolás webszolgáltatás-eredménye
 
 ## <a name="regression"></a>Regresszió
 A regressziós problémák eltérnek a besorolási problémáktól. Besorolási probléma esetén olyan diszkrét osztályokat próbál meg megjósolni, mint például az, hogy az írisz virág melyik osztályhoz tartozik. De ahogy az alábbi példában is látható egy regressziós problémára, egy folytonos változót próbál meg előre jelezni, például egy autó árát.
@@ -146,7 +146,7 @@ A regressziós példaként használja az autó árának előrejelzését. Egy au
 
 ![Autó árának regressziós kísérlete](./media/interpret-model-results/11.png)
 
-11. ábra Az autó árának regressziós problémáinak kísérlete
+11. ábra. Az autó árának regressziós problémáinak kísérlete
 
 A pontszám- [modell][score-model] modul megjelenítése, az eredmény a 12. ábrán látható.
 
@@ -224,7 +224,7 @@ Az ajánló rendszerek esetében példaként használhatja az éttermi javaslatt
 
 * Éttermek minősítése az ügyfelektől
 * Az ügyfél funkcióinak adatszolgáltatása
-* Éttermi szolgáltatási adatok
+* Az éttermi funkciókról
 
 A Azure Machine Learning Studio (klasszikus) [Matchbox ajánló][train-matchbox-recommender] modullal több dolog is elvégezhető:
 

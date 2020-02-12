@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8b882e6fb697d272ddc06e8d263f4c2144ebd017
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 55fe3a2a4fd0f45b0873e47f29b7ea013558be40
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152482"
 ---
 # <a name="add-columns-module"></a>Oszlopok hozzáadása modul
 
@@ -35,7 +35,7 @@ Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet lé
 
 3. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 A folyamat futtatása után:
 
 - Az új adatkészlet első sorainak megtekintéséhez kattintson a jobb gombbal az **Oszlopok hozzáadása** modulra, és válassza a Megjelenítés lehetőséget. Vagy válassza ki a modult, és váltson a **kimenetek** lapra a jobb oldali panelen, kattintson a **port kimenetének** hisztogram ikonjára az eredmény megjelenítéséhez.

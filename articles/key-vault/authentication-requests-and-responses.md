@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883998"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148232"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -27,15 +27,15 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 
  A Azure Key Vault objektumainak működéséhez az alábbi URL-címek használhatók:  
 
-- HOZZon létre egy TESTKEY nevű kulcsot egy Key Vault use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- TESTKEY nevű kulcs létrehozása Key Vault use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORTEDKEY nevű kulcs importálása Key Vault használatára –`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORTEDKEY nevű kulcs importálása Key Vault use-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- KERESÉSI KIFEJEZÉSKÉNT nevű titkos kód beszerzése egy Key Vault-alkalmazásban –`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- KERESÉSI KIFEJEZÉSKÉNT nevű titkos kód beszerzése egy Key Vault use-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
 - Kivonat aláírása egy TESTKEY nevű kulccsal Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  A Key Vaultra irányuló kérések szolgáltatója mindig a következő:`https://{keyvault-name}.vault.azure.net/`  
+  A Key Vaultra irányuló kérések szolgáltatója mindig a következő, `https://{keyvault-name}.vault.azure.net/`  
 
   A kulcsok mindig a/Keys útvonalon tárolódnak, a titkokat a rendszer mindig a/Secrets elérési út alatt tárolja.  
 
@@ -44,7 +44,7 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 
  A Azure Key Vault protokoll verziói a Date számozási sémát egy {éééé} használatával követik. {MM}. {DD} formátum.  
 
-## <a name="request-body"></a>Kérelem törzse  
+## <a name="request-body"></a>A kérelem törzse  
  A HTTP-specifikációnak megfelelően a GET műveletekhez nem tartozhatnak kérelem törzse, és a POST és PUT műveleteknek kérelem törzstel kell rendelkezniük. A TÖRLÉSi műveletek törzse nem kötelező a HTTP-ben.  
 
  Hacsak a művelet leírása másként nincs jelezve, a kérelem törzsének tartalomtípusa csak Application/JSON lehet, és tartalmaznia kell egy szerializált JSON-objektumot, amely a tartalomtípusnak felel meg.  
@@ -60,13 +60,13 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 ## <a name="error-responses"></a>Hibaüzenetek  
  A hibakezelés a HTTP-állapotkódok használatát fogja használni. A tipikus eredmények a következők:  
 
-- 2xx – sikeres: Normál működéshez használatos. A válasz törzse a várt eredményt fogja tartalmazni.  
+- 2xx – sikeres: normál működéshez használatos. A válasz törzse a várt eredményt fogja tartalmazni.  
 
-- 3xx – átirányítás: A "nem módosított" 304 visszatérhet a feltételes lekérések teljesítéséhez. A jövőben más 3xx-kódokat is használhat a DNS-és elérésiút-változások jelzésére.  
+- 3xx – átirányítás: a "nincs módosítva" értékkel rendelkező 304 visszatérhet a feltételes lekérések teljesítéséhez. A jövőben más 3xx-kódokat is használhat a DNS-és elérésiút-változások jelzésére.  
 
-- 4xx – ügyfél-hiba: Helytelen kérések, hiányzó kulcsok, szintaktikai hibák, érvénytelen paraméterek, hitelesítési hibák stb. használata A válasz törzse részletes hibaüzenetet fog tartalmazni.  
+- 4xx – ügyfélalkalmazás: helytelen kérések, hiányzó kulcsok, szintaktikai hibák, érvénytelen paraméterek, hitelesítési hibák stb. használata. A válasz törzse részletes hibaüzenetet fog tartalmazni.  
 
-- 5xx – kiszolgálóhiba: Belső kiszolgálói hibákhoz használatos. A válasz törzse az összegzett hibaüzeneteket fogja tartalmazni.  
+- 5xx – kiszolgálóhiba: belső kiszolgálóhiba esetén használatos. A válasz törzse az összegzett hibaüzeneteket fogja tartalmazni.  
 
   A rendszer úgy van kialakítva, hogy proxy vagy tűzfal mögött működjön. Ezért előfordulhat, hogy egy ügyfél más hibakódokat kap.  
 
@@ -110,9 +110,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  A WWW-Authenticate fejléc paramétereinek a következők:  
 
--   Engedély Annak a OAuth2-engedélyezési szolgáltatásnak a címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
+-   engedélyezés: a OAuth2-engedélyezési szolgáltatás címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
 
--   erőforrás Az engedélyezési kérelemben használandó erőforrás neve.  
+-   erőforrás: az engedélyezési kérelemben használandó erőforrás neve (https://vault.azure.net).  
 
 ## <a name="see-also"></a>Lásd még:  
  [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure-beli adattárház fejlesztéséhez szükséges erőforrások
+title: Erőforrások az adattárház fejlesztéséhez az Azure szinapszis Analytics szolgáltatásban
 description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák a SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,67 +10,40 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a6cb7937bdd5dea9eb1a48b2b350db9077431fe0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0f8967eab1be8351c50035d8afa784aa7afd79e1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645612"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153315"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntések és kódolási technikák a SQL Data Warehouse
-Tekintse át ezeket a fejlesztési cikkeket, hogy jobban megértse a legfontosabb tervezési döntéseket, ajánlásokat és kódolási technikákat SQL Data Warehouse.
+# <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák egy adattárházhoz az Azure szinapszis Analyticsben 
+ Ebben a cikkben további forrásokat talál, amelyek segítségével jobban megismerheti a legfontosabb tervezési döntéseket, javaslatokat és kódolási technikákat az Azure Szinapszisban található adattárházak esetében.
 
 ## <a name="key-design-decisions"></a>Kulcsfontosságú tervezési döntések
-A következő cikkek kiemelik az elosztott adattárház SQL Data Warehouse használatával történő fejlesztésével kapcsolatos fogalmakat és kialakítási döntéseket:
+Az alábbi cikkek a következő cikkekben ismertetik az elosztott adattárház fejlesztésével kapcsolatos fogalmakat és kialakítási döntéseket az Azure szinapszis SQL Analytics szolgáltatásával:
 
-* [kapcsolatok][connections]
-* [Egyidejűség][concurrency]
-* [tranzakciók][transactions]
-* [felhasználó által definiált sémák][user-defined schemas]
-* [tábla eloszlása][table distribution]
-* [tábla indexei][table indexes]
-* [tábla partíciói][table partitions]
-* [CTAS][CTAS]
-* [statisztika][statistics]
+* [kapcsolatok](sql-data-warehouse-connect-overview.md)
+* [Egyidejűség](resource-classes-for-workload-management.md)
+* [tranzakciók](sql-data-warehouse-develop-transactions.md)
+* [felhasználó által definiált sémák](sql-data-warehouse-develop-user-defined-schemas.md)
+* [tábla eloszlása](sql-data-warehouse-tables-distribute.md)
+* [tábla indexei](sql-data-warehouse-tables-index.md)
+* [tábla partíciói](sql-data-warehouse-tables-partition.md)
+* [CTAS](sql-data-warehouse-develop-ctas.md)
+* [statisztika](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Fejlesztési javaslatok és kódolási technikák
-Ezek a cikkek konkrét kódolási technikákat, tippeket és javaslatokat mutatnak a SQL Data Warehouse fejlesztéséhez:
+Az alábbi cikkekben konkrét kódolási technikák, tippek és javaslatok szerepelnek az adatraktár SQL Analytics szolgáltatással történő fejlesztéséhez:
 
-* [tárolt eljárások][stored procedures]
-* [Címkék][labels]
-* [kilátással][views]
-* [ideiglenes táblák][temporary tables]
-* [dinamikus SQL][dynamic SQL]
-* [hurkolás][looping]
-* [csoportosítási beállítások][group by options]
-* [változó-hozzárendelés][variable assignment]
+* [tárolt eljárások](sql-data-warehouse-develop-stored-procedures.md)
+* [Címkék](sql-data-warehouse-develop-label.md)
+* [kilátással](sql-data-warehouse-develop-views.md)
+* [ideiglenes táblák](sql-data-warehouse-tables-temporary.md)
+* [dinamikus SQL](sql-data-warehouse-develop-dynamic-sql.md)
+* [hurkolás](sql-data-warehouse-develop-loops.md)
+* [csoportosítási beállítások](sql-data-warehouse-develop-group-by-options.md)
+* [változó-hozzárendelés](sql-data-warehouse-develop-variable-assignment.md)
 
-## <a name="next-steps"></a>További lépések
-További információ: [SQL Data Warehouse T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).
-
-<!--Image references-->
-
-<!--Article references-->
-[concurrency]: ./resource-classes-for-workload-management.md
-[connections]: ./sql-data-warehouse-connect-overview.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[dynamic SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
-[group by options]: ./sql-data-warehouse-develop-group-by-options.md
-[labels]: ./sql-data-warehouse-develop-label.md
-[looping]: ./sql-data-warehouse-develop-loops.md
-[statistics]: ./sql-data-warehouse-tables-statistics.md
-[stored procedures]: ./sql-data-warehouse-develop-stored-procedures.md
-[table distribution]: ./sql-data-warehouse-tables-distribute.md
-[table indexes]: ./sql-data-warehouse-tables-index.md
-[table partitions]: ./sql-data-warehouse-tables-partition.md
-[temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[transactions]: ./sql-data-warehouse-develop-transactions.md
-[user-defined schemas]: ./sql-data-warehouse-develop-user-defined-schemas.md
-[variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
-[views]: ./sql-data-warehouse-develop-views.md
-
-
-<!--MSDN references-->
-[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
-
-<!--Other Web references-->
+## <a name="next-steps"></a>Következő lépések
+További információ: [T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).

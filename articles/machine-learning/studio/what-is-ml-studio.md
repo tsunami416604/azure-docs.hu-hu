@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: A Azure Machine Learning Studio (klasszikus) egy fogd és vidd eszköz, amellyel gyorsan készíthet modelleket a használatra kész algoritmusok és modulok használatával.
 services: machine-learning
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 07629a17492d0c898bbd76aeeab6c84cf39b4b55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314070"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152703"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Mi az Machine Learning Studio (klasszikus)?
 
@@ -38,13 +38,13 @@ A prediktív elemzési modell létrehozásához nincs szükség programozásra, 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Miben különbözik a Machine Learning Studio (klasszikus) Azure Machine Learningtól?
 
-A [Azure Machine learning](../overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert egyaránt lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
+A [Azure Machine learning](../overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert (előzetes verzió) is lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
 
 Íme egy gyors összehasonlítás:
 
 || Machine Learning Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
-| Húzási interfész | Igen | Igen – [Azure Machine learning Designer](../concept-designer.md) |
+| Húzási interfész | Igen | Igen – [Azure Machine learning Designer (előzetes verzió)](../concept-designer.md) |
 | Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Modulok a fogd és vidd interfészhez | Számos | Népszerű [modulok](../algorithm-module-reference/module-reference.md) kezdeti készlete|
 |Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| Támogatja a Azure Machine Learning számítási (GPU-vagy CPU-) és notebook-alapú virtuális gépeket.<br/>([Egyéb, az SDK-ban támogatott számítások](../concept-compute-target.md#train))|

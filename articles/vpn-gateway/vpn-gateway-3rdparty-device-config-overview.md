@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778022"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148332"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>A partneri VPN-eszközök konfigurációinak áttekintése
 Ez a cikk áttekintést nyújt a helyszíni VPN-eszközök konfigurálásáról az Azure VPN Gateway-hez való csatlakozáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró beállításával megtudhatja, hogyan csatlakozhat a különböző helyszíni VPN-eszközök konfigurációhoz ugyanazzal a paraméterekkel.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Eszközkövetelmények
 Az Azure VPN Gateway standard IPsec/IKE Protocol Suite-csomagokat használ a helyek közötti (S2S) VPN-alagutakhoz. Az IPsec/IKE-paraméterek és az Azure VPN Gateway titkosítási algoritmusok listájáért lásd: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md). Az adott kapcsolatok pontos algoritmusait és erősségeit is megadhatja a [titkosítási követelmények](vpn-gateway-about-compliance-crypto.md)című témakörben leírtak szerint.
@@ -29,7 +29,7 @@ A mintában az első konfiguráció egyetlen S2S VPN-alagutat tartalmaz az Azure
 
 Az egyetlen VPN-alagút beállításával kapcsolatos részletes utasításokért lásd: [helyek közötti kapcsolat konfigurálása](vpn-gateway-howto-site-to-site-resource-manager-portal.md). A következő szakaszokban adja meg a minta konfigurációjának kapcsolódási paramétereit, és adjon meg egy PowerShell-parancsfájlt, amely segítséget nyújt az első lépésekhez.
 
-### <a name="connection-parameters"></a>Kapcsolódási paraméterek
+### <a name="connection-parameters"></a>Kapcsolatok paraméterei
 Ez a szakasz az előző szakaszokban leírt példák paramétereit sorolja fel.
 
 | **Paraméter**                | **Érték**                    |

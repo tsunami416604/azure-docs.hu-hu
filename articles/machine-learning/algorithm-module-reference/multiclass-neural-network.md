@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: a1b14a4f004e9b6fe64d9095eeb63ebf78750387
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546537"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152091"
 ---
 # <a name="multiclass-neural-network-module"></a>Többosztályos neurális hálózati modul
 
@@ -56,7 +56,7 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
         - A kimeneti réteg teljes mértékben csatlakozik a rejtett réteghez.
         - A rejtett réteg teljes mértékben csatlakozik a bemeneti réteghez.
         - A bemeneti rétegben lévő csomópontok számát a betanítási adatokban található szolgáltatások száma határozza meg.
-        - A rejtett rétegben található csomópontok számát a felhasználó állíthatja be. Az alapértelmezett érték 100.
+        - A rejtett rétegben található csomópontok számát a felhasználó állíthatja be. Az alapértelmezett érték a 100.
         - A kimeneti rétegben lévő csomópontok száma az osztályok számától függ.
   
    
@@ -82,7 +82,7 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
     - Ha úgy állítja be az **oktatói módot** , hogy az **egyetlen paraméter**legyen, használja a [Train modellt](train-model.md).  
   
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546639"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152210"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
@@ -107,7 +107,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
     -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 

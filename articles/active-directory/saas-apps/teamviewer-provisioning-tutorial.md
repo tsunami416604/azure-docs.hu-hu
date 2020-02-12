@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: ba7afb506a21df7fc2fe4cc4b7194549b6efde83
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050563"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150697"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Oktatóanyag: a TeamViewer konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -40,7 +40,8 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 * [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-* Egy rendszergazdai jogosultságokkal rendelkező TeamViewer-fiók.
+* Egy érvényes, a TeamViewer számára érvényes kétfajta [licenc](https://www.teamviewer.com/de/teamviewer-tensor/) .
+* A rendelkezésre álló [egyszeri bejelentkezés](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) konfigurációjának érvényes egyéni azonosítója.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1\. lépés A kiépítési üzembe helyezés megtervezése
 1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
@@ -49,7 +50,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>2\. lépés A TeamViewer konfigurálása az Azure AD-vel való kiépítés támogatására
 
-1. Jelentkezzen be a TeamViewer alkalmazás felügyeleti konzolján. Navigáljon a **Profil szerkesztése**elemre.
+1. Jelentkezzen be a [TeamViewer felügyeleti konzolba](https://login.teamviewer.com). Navigáljon a **Profil szerkesztése**elemre.
 
     ![TeamViewer felügyeleti konzol](./media/teamviewer-provisioning-tutorial/admin.png)
 

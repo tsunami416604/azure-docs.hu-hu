@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c07ae779334c97b28803d77d2ce4a1b5b7962b48
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314419"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152397"
 ---
 # <a name="create-python-model"></a>Python-modell létrehozása
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ismerje meg, hogyan hozhat létre egy nem betanított modellt egy Python-szkriptből a **Python-modell létrehozása** modul használatával. A modellt a Azure Machine Learning Designer-környezetben található Python-csomagban szereplő bármelyik tanulón alapozhatja. 
 
@@ -35,7 +35,7 @@ A modul használatához a Python közbenső vagy szakértői ismerete szüksége
 
 Ez a cikk bemutatja, hogyan használható a **Python-modell létrehozása** egy egyszerű folyamattal. Alább látható a folyamat gráfja.
 
-![létrehozás – Python-Model](./media/module/aml-create-python-model.png)
+![create-python-model](./media/module/aml-create-python-model.png)
 
 1.  Kattintson a **Python-modell létrehozása**lehetőségre, szerkessze a szkriptet a modellezés vagy az adatkezelési folyamat megvalósításához. A modellt a Azure Machine Learning környezetben található Python-csomagban található bármely tanulón alapozhatja.
 

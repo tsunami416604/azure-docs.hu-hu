@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133608"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150170"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Zóna – redundáns virtuális hálózati átjáró létrehozása Azure Availability Zones
 
@@ -21,27 +21,11 @@ A VPN-és ExpressRoute-átjárók üzembe helyezhetők a Azure Availability Zone
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-A számítógépen vagy a Azure Cloud Shellon helyileg telepített PowerShellt is használhat. Ha a PowerShell helyi telepítése és használata mellett dönt, a szolgáltatás használatához a PowerShell-modul legújabb verziója szükséges.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>A PowerShell helyi használata
-
-Ha az Cloud Shell használata helyett a PowerShellt helyileg használja a számítógépen, telepítenie kell a PowerShell-modul 1.0.0 vagy újabb verzióját. A telepített PowerShell-verzió ellenőrzését a következő paranccsal végezheti el:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. a változók deklarálása
 
-A példa lépéseihez használt értékek alább láthatók. Emellett néhány példa deklarált változókat használ a lépéseken belül. Ha ezeket a lépéseket a saját környezetében használja, ne felejtse el ezeket az értékeket saját értékre cserélni. A hely megadásakor ellenőrizze, hogy a megadott régió támogatott-e. További információt a [Gyakori kérdések](#faq)című témakörben talál.
+Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira. Ha a gyakorlat során bármikor lezárta a PowerShell-vagy Cloud Shell-munkamenetet, csak másolja és illessze be újra az értékeket a változók újbóli bejelentéséhez. A hely megadásakor ellenőrizze, hogy a megadott régió támogatott-e. További információt a [Gyakori kérdések](#faq)című témakörben talál.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

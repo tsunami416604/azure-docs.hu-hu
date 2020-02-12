@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786161"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153876"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>A OData nyelvének áttekintése `$filter`, `$orderby`és `$select` az Azure-ban Cognitive Search
 
@@ -93,7 +93,7 @@ A mező elérési útjait az [Azure Cognitive Search REST API](https://docs.micr
 
 | API | Paraméter neve | Korlátozások |
 | --- | --- | --- |
-| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | None |
+| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincs |
 | Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
 | Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, ha `queryType` `full` | Csak **kereshető** mezőkre hivatkozhat |
@@ -111,7 +111,7 @@ A OData konstansai egy adott [entitás adatmodell](https://docs.microsoft.com/do
 
 Az alábbi táblázat az Azure Cognitive Search által támogatott adattípusok állandóit mutatja be:
 
-| Data type | Példa állandók |
+| Adattípus | Példa állandók |
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
@@ -121,6 +121,17 @@ Az alábbi táblázat az Azure Cognitive Search által támogatott adattípusok 
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Speciális karakterek Escape-karakterlánc-konstansokban
+
+A OData lévő karakterlánc-konstansokat szimpla idézőjelek határozzák meg. Ha olyan karakterlánc-állandó lekérdezést kell létrehoznia, amely magába foglalja az idézőjeleket, akkor a beágyazott idézőjelek megkettőzésével megduplázhatja őket.
+
+Például egy formázatlan aposztróftal (például "Alice 's Car") jelölt kifejezés a OData karakterlánc-konstans `'Alice''s car'`.
+
+> [!IMPORTANT]
+> Ha programozott módon alakítja ki a szűrőket, fontos megjegyezni, hogy a felhasználói bevitelből származó karakterlánc-konstansok megmaradnak. Ez csökkenti az [injekciós támadások](https://wikipedia.org/wiki/SQL_injection)lehetőségét, különösen akkor, ha szűrőket használ a [biztonsági vágás](search-security-trimming-for-azure-search.md)megvalósításához.
+
+### <a name="constants-syntax"></a>Konstansok szintaxisa
 
 A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a fenti táblázatban látható állandók többségének nyelvtanát határozza meg. A Geo-térbeli típusok nyelvtana az [Azure Cognitive Search OData geo-térbeli függvények területén](search-query-odata-geo-spatial-functions.md)érhető el.
 
@@ -218,7 +229,7 @@ Az interaktív szintaxis diagram is elérhető:
 > [!NOTE]
 > Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-A **$OrderBy** és a **$Select** paraméterek az egyszerűbb kifejezések vesszővel tagolt listája. A **$Filter** paraméter egy egyszerű alkifejezésből álló logikai kifejezés. Ezek az alkifejezések olyan logikai operátorokkal vannak kombinálva, mint például a [`and`, a `or`és a `not`](search-query-odata-logical-operators.md), az összehasonlító operátorok, például a [`eq`, `lt`, `gt`stb](search-query-odata-comparison-operators.md)., valamint a gyűjtemény operátorai, például [`any` és `all`](search-query-odata-collection-operators.md).
+A **$OrderBy** és a **$Select** paraméterek az egyszerűbb kifejezések vesszővel tagolt listája. A **$Filter** paraméter egy egyszerű alkifejezésből álló logikai kifejezés. Ezek az alkifejezések olyan logikai operátorokkal vannak kombinálva, mint például a [`and`, a `or`és a `not`](search-query-odata-logical-operators.md), az összehasonlító operátorok, például a [`eq`, `lt`, `gt`](search-query-odata-comparison-operators.md)stb., valamint a gyűjtemény operátorok, például [`any` és `all`](search-query-odata-collection-operators.md).
 
 A **$Filter**, **$OrderBy**és **$Select** paramétereket részletesebben ismertetjük a következő cikkekben:
 
@@ -226,7 +237,7 @@ A **$Filter**, **$OrderBy**és **$Select** paramétereket részletesebben ismert
 - [OData $orderby szintaxis az Azure-ban Cognitive Search](search-query-odata-orderby.md)
 - [OData $select szintaxis az Azure-ban Cognitive Search](search-query-odata-select.md)
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
 
 - [Sokoldalú navigálás az Azure-ban Cognitive Search](search-faceted-navigation.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)

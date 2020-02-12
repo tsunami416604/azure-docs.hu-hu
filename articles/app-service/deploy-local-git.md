@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680953"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152992"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -50,6 +50,9 @@ Ha szeretné lekérni az URL-címet, amely lehetővé teszi a helyi git üzembe 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> Ha Linux app-Service-csomagot használ, hozzá kell adnia a következő paramétert:--Runtime Python | 3.7
+
 
 Ha új git-kompatibilis alkalmazást szeretne létrehozni, futtassa a [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) Cloud Shell a `--deployment-local-git` paraméterrel. Cserélje le az \<app-Name >, \<csoportnév > és \<díjcsomag nevét > az új git-alkalmazás, az Azure-erőforráscsoport és a Azure App Service-csomag nevére.
 
@@ -142,7 +145,7 @@ A helyi git üzembe helyezésének engedélyezése az alkalmazáshoz Azure-folya
 
 A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával tesz közzé egy App Service alkalmazást az Azure-ban:
 
-|Üzenet|Ok|Felbontás
+|Üzenet|Ok|Megoldás:
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Az alkalmazás nem működik.|Indítsa el az alkalmazást a Azure Portal. A git-telepítés nem érhető el a webalkalmazás leállításakor.|
 |`Couldn't resolve host 'hostname'`|Az "Azure" távoli adatcímeinek adatai helytelenek.|Az `git remote -v` parancs használatával listázhatja az összes távoli, valamint a hozzá tartozó URL-címet. Győződjön meg arról, hogy az "Azure" távoli URL-címe helyes. Ha szükséges, távolítsa el, majd hozza létre újra a távoli elérést a megfelelő URL-cím használatával.|

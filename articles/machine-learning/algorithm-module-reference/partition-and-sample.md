@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314929"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152125"
 ---
 # <a name="partition-and-sample-module"></a>Partíció és minta modul
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal mintavételezést végezhet egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
 
@@ -44,8 +44,8 @@ A mintavétel fontos eszköz a gépi tanulásban, mivel lehetővé teszi az adat
 
 Ez a modul több módszer használatát teszi lehetővé az adatpartíciók és a mintavételezések felosztásához. Először válassza ki a metódust, majd adja meg a metódus által igényelt további beállításokat.
 
-- Fej
-- Mintavétel
+- Head
+- Mintavételezés
 - Hozzárendelés a kidobásokhoz
 - Kidobás
 

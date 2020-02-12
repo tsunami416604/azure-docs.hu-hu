@@ -7,75 +7,75 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427691"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150918"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Ügyfél-adatforgalom elemzése Azure Machine Learning Studio (klasszikus) használatával
 ## <a name="overview"></a>Áttekintés
-Ez a cikk a Azure Machine Learning Studio (klasszikus) használatával létrehozott ügyfél-adatforgalom-elemzési projekt hivatkozási megvalósítását ismerteti. Ebben a cikkben a kapcsolódó általános modelleket tárgyaljuk az ipari ügyfelek adatforgalmával kapcsolatos problémák holisztikus megoldásához. A Machine Learning használatával létrehozott modellek pontosságát is mérjük, és értékeljük a további fejlesztés irányait.  
+Ez a cikk a Azure Machine Learning Studio (klasszikus) használatával létrehozott ügyfél-adatforgalom-elemzési projekt hivatkozási megvalósítását ismerteti. Ebben a cikkben bemutatjuk, azok alkalmazásfüggőségeit az iparági vásárlók lemorzsolódási problémájának megoldására szolgáló kapcsolódó általános modellekről. Azt is mérheti a Machine Learning segítségével létrehozott modellek pontossága, és felmérheti a további fejlesztésére vonatkozó utasításokat.  
 
-### <a name="acknowledgements"></a>Köszönetnyilvánítás
-Ezt a kísérletet a Serge Berger, a Microsoft legfontosabb adattudósa és Roger Barga, korábban a Microsoft Azure Machine Learning Studio (klasszikus) termék-kezelője fejlesztette ki és tesztelte. Az Azure dokumentációs csapata hálásan tudomásul veszi szakértelmét, és köszönjük nekik a tanulmány megosztását.
+### <a name="acknowledgements"></a>Nyugták
+Ezt a kísérletet a Serge Berger, a Microsoft legfontosabb adattudósa és Roger Barga, korábban a Microsoft Azure Machine Learning Studio (klasszikus) termék-kezelője fejlesztette ki és tesztelte. Az Azure dokumentációs csapata köszönetet mondani a segítségükért összpontosíthassák nyugtázza, és Köszönjük Ez a tanulmány megosztása.
 
 > [!NOTE]
-> A kísérlethez használt adathalmaz nem nyilvánosan elérhető. A következő témakörből megtudhatja, hogyan hozhat létre egy gépi tanulási modellt az adatváltozások elemzéséhez: a kiskereskedelmi adatváltozási [modell sablonja](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) [Azure AI Gallery](https://gallery.azure.ai/)
+> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. A következő témakörből megtudhatja, hogyan hozhat létre egy gépi tanulási modellt az adatváltozások elemzéséhez: a kiskereskedelmi adatváltozási [modell sablonja](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) [Azure AI Gallery](https://gallery.azure.ai/)
 > 
 > 
 
 
 
-## <a name="the-problem-of-customer-churn"></a>Az ügyfelek adatforgalmával kapcsolatos probléma
-A fogyasztói piacon és minden nagyvállalati ágazatban tevékenykedő vállalkozásoknak a változásokkal kell foglalkoznia. Időnként a forgalom túlzott, és hatással van a szabályzatra vonatkozó döntések meghozatalára. A hagyományos megoldás az, hogy megjósolja a nagy teljesítményű és az igényeiket a concierge-szolgáltatás, a marketing-kampányok vagy a speciális kiosztások alkalmazása révén. Ezek a módszerek az iparágtól az iparágig eltérőek lehetnek. Egy adott fogyasztói fürttől akár egy másik iparágon (például a távközlésen) belül is változhatnak.
+## <a name="the-problem-of-customer-churn"></a>A probléma a vásárlók lemorzsolódásának
+A fogyasztó piacon elérhető, és az összes vállalati ágazatban vállalkozások kell forgalom kezelésére. Néha túlzott és befolyásolja a házirendet érintő döntések. A hagyományos megoldás, ha nagy-upsell churners előre jelezni, és oldja meg saját igényeinek megfelelő marketingkampányokba, recepciószolgálata szolgáltatáson keresztül vagy a speciális felmentésekről alkalmazásával. Ezek a módszerek eltérőek lehetnek industry iparági. Még vésve egy adott fogyasztói fürtről a másikra egy iparági (például távközlési) belül.
 
-A gyakori tényező az, hogy a vállalatoknak minimálisra kell csökkenteniük ezeket a speciális ügyfelek megőrzési erőfeszítéseit. A természetes módszer tehát az, ha az összes ügyfelet kihasználja a változás valószínűségével, és megkeresi a legfontosabb N-ot. A legfontosabb ügyfelek lehetnek a legjövedelmezőbb adatbázisok. Például bonyolultabb forgatókönyvekben a profit funkciót a jelöltek kiválasztásakor a speciális felmentéshez kell alkalmazni. Ezek a szempontok azonban csak a teljes stratégia részét képezik az adatforgalom kezeléséhez. A vállalatoknak figyelembe kell venniük a kockázatokat (és a hozzájuk kapcsolódó kockázati toleranciát), a beavatkozás szintjét és költségeit, valamint a mérvadó ügyfelek szegmentálását.  
+A gyakori tényezővel az, hogy vállalkozások minimalizálása érdekében ezeket külön ügyfél felhasználómegtartása kell-e. Így természetes módszer lehet a pontszám minden ügyfél a lemorzsolódás valószínűségét, és oldja meg a felső N azokat. Előfordulhat, hogy a legjelentősebb ügyfeleket legjövedelmezőbb azokat. Például kifinomultabb forgatókönyvekben nyereség függvény alkalmazzák a speciális felmentéssel a deduplikációra kijelölt során. Ezeket a szempontokat azonban csak a teljes forgalom kapcsolatos stratégia részét képezik. Vállalkozások is figyelembe kell fiók kockázati (és a kapcsolódó kockázattűrése), a szint és a beavatkozás és egyértelmű ügyfélcsoportok költségét.  
 
-## <a name="industry-outlook-and-approaches"></a>Iparági kilátások és megközelítések
-A forgalom kifinomult feldolgozása egy érett iparág jele. A klasszikus példa az a távközlési iparág, ahol az előfizetőknek gyakran kell váltaniuk az egyik szolgáltatóról a másikra. Ez az önkéntes változás elsődleges szempont. Emellett a szolgáltatók jelentős ismereteket gyűjtöttek az adatforgalom- *illesztőprogramokról*, amelyek az ügyfelek által a váltáshoz szükséges tényezők.
+## <a name="industry-outlook-and-approaches"></a>Iparági az outlook és módszerek
+Kifinomult kezelését a lemorzsolódás érett iparág bejelentkezési. A klasszikus például, a távközlési iparágban, ahol előfizetők ismert, hogy gyakran váltson egy szolgáltatói egy másikba. Önkéntes kihagyásával az elsődleges szempont. Emellett a szolgáltatók jelentős ismereteket gyűjtöttek az adatforgalom- *illesztőprogramokról*, amelyek az ügyfelek által a váltáshoz szükséges tényezők.
 
-Például a kézibeszélő vagy az eszköz választása a mobiltelefonos üzleti forgalom jól ismert mozgatórugója. Ennek eredményeképpen egy népszerű szabályzat egy új előfizetők árának a megfizetése, és a meglévő ügyfelek teljes díja a frissítéshez. Ennek a szabályzatnak a segítségével a felhasználók az egyik szolgáltatóról a másikra ugrálva új kedvezményt nyerhetnek. Ez viszont a szolgáltatók számára kéri a stratégiák pontosítását.
+Például kézibeszélő vagy az eszköz el egy jól ismert illesztőprogram a mobiltelefon üzleti adatforgalom. Ennek eredményeképpen egy népszerű szabályzatot, hogy kézibeszélő árát subsidize új előfizetők számára, és a frissítéshez a meglévő ügyfelek számára a teljes díj díja szerint számítjuk fel. Ez a szabályzat hagyományosan ügyfelek egy szolgáltató a másikra segítségével tehetjük meg új kedvezményes díjat vezetett. Ennek érdekében, a rendszer felkéri szolgáltatók számára, hogy stratégiákkal pontosításához.
 
-A kézibeszélő-ajánlatok magas volatilitása olyan tényező, amely gyorsan érvényteleníti a jelenlegi kézibeszélő-modelleken alapuló adatforgalom modelljeit. Emellett a mobiltelefonok nem csak a telekommunikációs eszközök, hanem a Fashion-utasítások (az iPhone-t is figyelembe veszik). Ezek a közösségi előrejelzők a normál távközlési adatkészletek hatókörén kívül esnek.
+Magas változékonyságán kézibeszélő ajánlatok a fontos, hogy gyorsan érvényteleníti modellek adatforgalom aktuális kézibeszélő modellek alapuló tényező. Ezenkívül mobiltelefonokról nem csak a távközlési eszközöket, azok is el utasítások (vegye figyelembe az iPhone-t). A közösségi előrejelzőket rendszeres távközlési adatkészletek hatókörén kívül vannak.
 
-A modellezéssel kapcsolatos nettó eredmény az, hogy nem lehet hangházirendet kidolgozni, mert nem kell megszüntetnie az adatforgalom ismert okait. Valójában a folyamatos modellezési stratégia, beleértve a kategorikus változókat (például döntési fákat) számszerűsítő klasszikus modelleket, **kötelező megadni**.
+Az eredmény a modellezési, hogy egy hang házirend nem lényegesen egyszerűen elkerülve a lemorzsolódás ismert okait. Valójában a folyamatos modellezési stratégia, beleértve a kategorikus változókat (például döntési fákat) számszerűsítő klasszikus modelleket, **kötelező megadni**.
 
-A big data készletek használata az ügyfeleken a szervezetek big data elemzést hajtanak végre (különösen a big data alapján történő adatváltozások észlelését) a probléma hatékony megközelítése érdekében. További információ a big datai megközelítésről az ETL-re vonatkozó ajánlásokat ismertető szakaszban.  
+Big data jellegű adatkészletek használatával az ügyfelek, a szervezetek big data-elemzés (különösen, a big data-alapú forgalom észlelési), a probléma hatékony megközelítés végzik. További információk a big Data típusú adatok megközelítés ETL szakasz ajánlások lemorzsolódási problémájának találja.  
 
-## <a name="methodology-to-model-customer-churn"></a>Az ügyfél-adatforgalom modellezésének módszertana
-Az ügyfelek adatforgalmának megoldására szolgáló gyakori problémamegoldó folyamat az 1-3-es számú ábrán látható:  
+## <a name="methodology-to-model-customer-churn"></a>A modell vásárlók lemorzsolódásának módszertan
+Gyakori problémák megoldásához folyamat megoldani a vásárlók lemorzsolódásának megfelelőként jelenik a számok 1-3:  
 
-1. A kockázati modell segítségével megvizsgálhatja, hogy a műveletek milyen hatással vannak a valószínűségre és a kockázatokra.
-2. Az intervenciós modell lehetővé teszi, hogy meggondolja, hogyan érintheti a beavatkozási szint a forgalom valószínűségét és az ügyfél élettartamának értékét (CLV).
-3. Ez az elemzés egy olyan minőségi elemzéshez nyújt támogatást, amely egy proaktív marketing-kampányhoz tartozik, amely az optimális ajánlat biztosítására célozza az ügyfelek szegmenseit.  
+1. Kockázati modell lehetővé teszi, hogy hogyan befolyásolja az műveletek valószínűségét, és a kockázati.
+2. Egy beavatkozás modellje lehetővé teszi, fontolja meg, hogyan beavatkozás szintjét a valószínűsége annak, és a vásárlói mennyisége hatással lehetnek a csoportélettartam értékének (CLV).
+3. Ez az elemzés adatmodelljeinek egy minőségi elemző, amely a célozza meg, hogy az optimális ajánlat ügyfélszegmensek proaktív marketingkampány eszkalálása.  
 
 ![Ábra, amely bemutatja, hogy a kockázati tolerancia és a döntési modellek hogyan eredményeznek gyakorlatban hasznosítható elemzéseket](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
-Ez a előremutató megközelítés a legjobb módszer a forgalom kezeléséhez, de összetettsége van: egy többmodelles archetípusot és a modellek közötti nyomkövetési függőségeket kell kifejleszteni. A modellek közötti interakció a következő ábrán látható módon ágyazható be:  
+A továbbítás akik megközelítés kezelni az adatforgalom a legjobb módszer, de együttműködik a összetettséget: fejlesszen többmodelles archetype és nyomkövetési függőségek modellek között kell, hogy. A modellek közötti interakció is technológiába ágyazott, az alábbi ábrán látható módon:  
 
 ![Adatváltozási modell interakciós diagramja](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
 *4. ábra: egységes multi-Model archetípus*  
 
-A modellek közötti interakció kulcsfontosságú, ha átfogó megközelítést kívánunk biztosítani az ügyfelek megtartására. Minden modell szükségszerűen csökkenti az idő múlását; Ezért az architektúra egy implicit hurok (hasonlóan a ROPOGÓs-DM adatbányászati standard által beállított archetípushoz, [***3***]).  
+A modellek közötti interakció az kulcs, ha egy átfogó megközelítés továbbítására az ügyfélmegtartást. Minden modell szükségszerűen csökkenti az idő múlását; Ezért az architektúra egy implicit hurok (hasonlóan a ROPOGÓs-DM adatbányászati standard által beállított archetípushoz, [***3***]).  
 
-A kockázat-döntési marketing szegmentálása/bomlási ciklusa továbbra is általánosított struktúra, amely számos üzleti problémára alkalmazható. Az adatváltozások elemzése egyszerűen csak erős képviselő a probléma megoldására, mivel egy összetett üzleti probléma összes tulajdonságát mutatja, amely nem teszi lehetővé egyszerűsített prediktív megoldás használatát. Az adatváltozások modern megközelítésének közösségi szempontjai nem kiemelten kiemelten szerepelnek a megközelítésben, de a közösségi szempontok a modellezési archetípusban vannak, mivel bármilyen modellben lennének.  
+A teljes ciklus a kockázat-döntési-marketing Szegmentálás/idősorfelbontási még egy általánosított szerkezete, és számos üzleti problémára vonatkozik. Lemorzsolódásának elemzése egyszerűen a csoport problémák erős képviselője azért azonban egy összetett üzleti probléma, amely nem engedélyezi a prediktív megoldás egyszerűsített képességekre vonatkozó. A vásárlói lemorzsolódás modern megközelítését közösségi aspektusait nem különösen kiemelt a megközelítéssel, de a közösségi szempontok a a modellezési archetype vannak ágyazva, azok bármely modellben lenne.  
 
-Itt is érdekes big data elemzések. A mai távközlési és kiskereskedelmi vállalatok teljes körű adatokat gyűjtenek az ügyfelekről, és könnyen bemutatjuk, hogy a többmodelles kapcsolatok iránti igény általános trend lesz, mivel a feltörekvő trendek, például a eszközök internetes hálózata és a mindenütt elérhetők eszközök, amelyek lehetővé teszik, hogy a vállalatok több rétegen is intelligens megoldásokat alkalmazzanak.  
+Egy érdekes emellett a big data-elemzés. A mai távközlési és kereskedelmi vállalkozások az ügyfeleknek az alábbi adatok gyűjtése, és azt is könnyen bizonyulhat, hogy többmodelles kapcsolat szükség lesz egy gyakori trend, adott jelentkező trendeket, például az eszközök internetes hálózata és a széles körben használt az eszközök, amelyek lehetővé teszik az üzleti több rétegén intelligens megoldások bevezetését.  
 
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>A modellezési archetípus implementálása Machine Learning Studio (klasszikus)
 Az ismertetett probléma miatt mi a legjobb módszer egy integrált modellezési és pontozási módszer megvalósítására? Ebben a szakaszban bemutatjuk, hogyan valósult meg ez a Azure Machine Learning Studio (klasszikus) használatával.  
 
-A többmodelles megközelítés a globális archetípusok megtervezése során szükséges. Még a megközelítés pontozási (prediktív) részét is többmodelles értékre kell állítani.  
+A több modell megközelítés kell, a forgalom egy globális archetype tervezésekor. Még a relevanciaprofil (prediktív) részét megközelítés többmodelles kell lennie.  
 
-Az alábbi ábrán az általunk létrehozott prototípus látható, amely négy pontozási algoritmust alkalmaz Machine Learning Studio (klasszikus) a forgalom előrejelzésére. A többmodelles megközelítés használatának oka nem csupán egy Ensemble-osztályozó létrehozása a pontosság növeléséhez, hanem a túlterhelések elleni védelemhez és az előírásos funkciók kiválasztásának javításához is.  
+Az alábbi ábrán az általunk létrehozott prototípus látható, amely négy pontozási algoritmust alkalmaz Machine Learning Studio (klasszikus) a forgalom előrejelzésére. Többmodelles módszerével oka nem csak egy nagyobb pontosság, de is túlzott méretezés ellen védelmet biztosító és javítása előírásoknak megfelelő szolgáltatás kiválasztása ensemble osztályozó létrehozása céljából.  
 
 ![Egy összetett Studio (klasszikus) munkaterületet ábrázoló képernyőkép, amely számos összekapcsolt modullal rendelkezik](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
@@ -83,18 +83,18 @@ Az alábbi ábrán az általunk létrehozott prototípus látható, amely négy 
 
 A következő szakaszokban további részleteket talál a Machine Learning Studio (klasszikus) használatával megvalósított prototípus-pontozási modellről.  
 
-### <a name="data-selection-and-preparation"></a>Adatkiválasztás és-előkészítés
-A modellek létrehozásához használt adatok és az ügyfelek pontszáma egy CRM vertikális megoldásból származik, és az adatok az ügyfelek adatainak védelme érdekében eltorzítva vannak. Az adatok az Egyesült államokbeli 8 000-előfizetésekkel kapcsolatos információkat tartalmaznak, és három forrást egyesítenek: az adatok kiépítési (előfizetési metaadatok), a tevékenységre vonatkozó adatokat (a rendszer használatát) és az ügyfél-támogatási adatokat. Az adatok nem tartalmazzák az ügyfelekkel kapcsolatos üzleti adatokat; például nem tartalmazza a lojalitási metaadatokat vagy a jóváírási pontszámokat.  
+### <a name="data-selection-and-preparation"></a>Kijelölt adatok és -előkészítés
+A modellek létrehozásához használt adatokat, és pontszám ügyfelek CRM-függőleges megoldásról, lett lekérve az adatokkal a rejtjelezett felhasználói adatok védelme. Az adatok az Egyesült Államokban 8000 előfizetésekkel kapcsolatos információkat tartalmaz, és amely ötvözi az három forrásának: provisioning (előfizetés metaadatai) adatok, tevékenység adatokat (használat a rendszer) és ügyfél-támogatási adatok. Az adatok nem tartalmazzák az ügyfelekkel kapcsolatos üzleti adatokat; például nem tartalmazza a lojalitási metaadatokat vagy a jóváírási pontszámokat.  
 
-Az egyszerűség kedvéért az ETL és az adattisztítási folyamatok a hatókörön kívül vannak, mivel feltételezzük, hogy az adatelőkészítés máshol már megtörtént.
+Az egyszerűség kedvéért ETL és folyamatok adattisztító hatókörén kívül mivel feltételezzük, hogy adat-előkészítési már rendelkezik-e már végzett máshol.
 
-A modellezés funkcióinak kiválasztása a véletlenszerű erdő modult használó folyamaton belül az előrejelzők készletének előzetes fontossági pontozásán alapul. Machine Learning Studio (klasszikus) megvalósításához a reprezentatív funkciók középértékét, középértékét és tartományait számítjuk ki. Például hozzáadta a minőségi adatok összesítéseit, például a felhasználók tevékenységének minimális és maximális értékeit.
+Szolgáltatás kiválasztása a modellezési előzetes többszörösére pontozási előrejelzőket, szerepel a folyamat a véletlenszerű erdő modult használó készlete alapul. Machine Learning Studio (klasszikus) megvalósításához a reprezentatív funkciók középértékét, középértékét és tartományait számítjuk ki. Ha például hozzáadtunk összesítések a mennyiségi adatok, például a felhasználói tevékenység minimális és maximális értékeket.
 
-A legutóbbi hat hónapra vonatkozóan is rögzítettünk információkat. A rendszer egy évig elemezte az adatelemzést, és úgy állapították meg, hogy még akkor is, ha statisztikailag jelentős tendenciát mutatnak, a változás hatása jelentősen csökken hat hónap elteltével.  
+A legutóbbi hat hónapig historikus információkat is rögzített. Adatok egy évig elemeztük, és azt létre, hogy akkor is, ha voltak statisztikailag trendeket, lemorzsolódási hatása jelentősen csökken hat hónapig érvényesek.  
 
 A legfontosabb szempont, hogy a teljes folyamat, beleértve az ETL-t, a szolgáltatások kijelölését és a modellezést Machine Learning Studio (klasszikus), Microsoft Azure adatforrások használatával implementálták.   
 
-Az alábbi ábrák a felhasznált adathalmazokat szemléltetik.  
+Az alábbi ábrák bemutatják a használt adatok.  
 
 ![A nyers értékekkel használt adatok mintáját ábrázoló képernyőfelvétel](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
@@ -105,112 +105,112 @@ Az alábbi ábrák a felhasznált adathalmazokat szemléltetik.
 *7. ábra: az adatforrásból kinyert funkciók*
  
 
-> Vegye figyelembe, hogy ezek az adatkészletek magánjellegűek, ezért a modell és az adattípusok nem oszthatók meg.
+> Vegye figyelembe, hogy ezek az adatok személyes, és ezért a modell és az adatok nem oszthatók meg.
 > Ahhoz azonban, hogy egy hasonló modell nyilvánosan elérhető adatforgalomot használjon, tekintse meg ezt a minta kísérletet a [Azure AI Gallery](https://gallery.azure.ai/): [távközlési ügyfelek](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)adatforgalmáról.
 > 
 > Ha többet szeretne megtudni arról, hogyan valósítható meg a forgalom-elemzési modell a Cortana Intelligence Suite használatával, ajánljuk [ezt a videót](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) a Senior program Manager pici Hyong tok használatával is. 
 > 
 > 
 
-### <a name="algorithms-used-in-the-prototype"></a>A prototípusban használt algoritmusok
-A következő négy gépi tanulási algoritmust használtuk a prototípus létrehozásához (testreszabás nélkül):  
+### <a name="algorithms-used-in-the-prototype"></a>A prototípust használt algoritmusok
+A következő négy gépi tanulási algoritmusok segítségével hozhat létre, a prototípus (nincs testreszabása):  
 
-1. Logisztikai regresszió (LR)
-2. Megnövelt döntési fa (BT)
-3. Átlagos perceptron (AP)
-4. A Vector Machine (SVM) támogatása  
+1. Logisztikai regressziós (LR)
+2. Gyorsított döntési fa (BT)
+3. Átlagolt perceptron (AP)
+4. Támogató vektorgép (SVM)  
 
-A következő ábra a kísérlet tervezési felületének egy részét szemlélteti, amely a modellek létrehozásának sorrendjét jelzi:  
+A következő ábra szemlélteti a kísérlet tervezőfelületére, amely azt jelzi, hogy a feladatütemezés, amelyben a modellek létrehozott egy része:  
 
 ![A Studio-kísérlet vászonjának kis szakaszának képernyőképe](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
 *8. ábra: modellek létrehozása Machine Learning Studio (klasszikus)*  
 
-### <a name="scoring-methods"></a>Pontozási módszerek
-A négy modellt egy címkével ellátott betanítási adatkészlet használatával szerezte be.  
+### <a name="scoring-methods"></a>Pontozó módszerek
+A négy modell címkézett betanítási adatkészletet használatával pontozását azt.  
 
-A pontozási adatkészletet egy összehasonlítható modellre is elküldte, amely az SAS Enterprise Miner 12 asztali kiadásával készült. A SAS-modell pontosságát és mind a négy Machine Learning Studio (klasszikus) modellt mértük.  
+Azt is be a pontozási adatkészletet, egy SAS vállalati Miner 12 asztali kiadásának használatával létrehozott összehasonlítható modell. A SAS-modell pontosságát és mind a négy Machine Learning Studio (klasszikus) modellt mértük.  
 
-## <a name="results"></a>Eredmények
-Ebben a szakaszban bemutatjuk a modellek pontosságával kapcsolatos megállapításokat a pontozási adatkészlet alapján.  
+## <a name="results"></a>Results (Eredmények)
+Ebben a szakaszban azt jelenleg a kapcsolatos a pontozási adatkészleten alapuló modell pontossága megállapításokat.  
 
-### <a name="accuracy-and-precision-of-scoring"></a>Pontozás pontossága és pontossága
+### <a name="accuracy-and-precision-of-scoring"></a>És pontozás pontossága
 Általánosságban elmondható, hogy a Azure Machine Learning Studio (klasszikus) implementációja a 10-15% (a görbe vagy a AUC alatti terület) pontossága alatt áll az SAS mögött.  
 
-Azonban a forgalom legjelentősebb mérőszáma a téves besorolási arány: vagyis az osztályozó által előre jelzett legfontosabb N-adatforgalom, amelyek valójában **nem** voltak forgalomban, és különleges kezelést is kapott? A következő diagram az összes modellhez hasonlítja ezt a téves besorolási arányt:  
+Azonban a forgalom legjelentősebb mérőszáma a téves besorolási arány: vagyis az osztályozó által előre jelzett legfontosabb N-adatforgalom, amelyek valójában **nem** voltak forgalomban, és különleges kezelést is kapott? A következő diagram az összes modellt a téves besorolás aránya hasonlítja össze:  
 
 ![4 algoritmus teljesítményét összehasonlító görbe gráf alatti terület](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
 *9. ábra: Passau prototípus területe a görbe alatt*
 
-### <a name="using-auc-to-compare-results"></a>Az AUC használata az eredmények összehasonlításához
-A görbe (AUC) alatti terület egy metrika, amely a pozitív és negatív populációk eredményeinek eloszlása közötti *separability* globális mértékét jelöli. A hagyományos fogadó operátor jellemző (ROC) gráfhoz hasonló, de az egyik fontos különbség, hogy a AUC metrika nem igényli a küszöbérték kiválasztását. Ehelyett összefoglalja az eredményeket az **összes** lehetséges lehetőség közül. Ezzel szemben a hagyományos ROC-gráf a függőleges tengely pozitív arányát és a vízszintes tengelyen a hamis pozitív arányt mutatja, és a besorolási küszöbérték változó.   
+### <a name="using-auc-to-compare-results"></a>Az eredmények összehasonlítása AUC használatával
+A görbe (AUC) alatti terület egy metrika, amely a pozitív és negatív populációk eredményeinek eloszlása közötti *separability* globális mértékét jelöli. A hagyományos fogadó operátor jellemző (ROC) gráfhoz hasonló, de egy fontos különbség az, hogy a AUC metrika nem kell választani egy küszöbértéket. Ehelyett összefoglalja az eredményeket az **összes** lehetséges lehetőség közül. Ezzel szemben a hagyományos ROC-diagramon látható a riasztási aránnyal a függőleges tengely és a vízszintes tengelyről téves riasztási aránnyal, és a besorolási küszöbérték változó.   
 
-A AUC a különböző algoritmusok (vagy különböző rendszerek) esetében érdemes használni, mert lehetővé teszi a modellek összehasonlítását a AUC értékeivel. Ez egy népszerű megközelítés olyan iparágakban, mint a meteorológia és a Bioscience. Így a AUC egy népszerű eszközt képvisel az osztályozó teljesítményének értékeléséhez.  
+A AUC a különböző algoritmusok (vagy különböző rendszerek) esetében érdemes használni, mert lehetővé teszi a modellek összehasonlítását a AUC értékeivel. Ez az iparágban például meteorológia és biosciences egy népszerű megközelítés. Ebből kifolyólag AUC jelöli egy népszerű eszköz osztályozó teljesítményének értékeléséhez.  
 
-### <a name="comparing-misclassification-rates"></a>A téves besorolás arányának összehasonlítása
-Összehasonlítjuk a kérdéses adatkészletben található, körülbelül 8 000 előfizetés CRM-adataival.  
+### <a name="comparing-misclassification-rates"></a>Téves besorolás díjak összehasonlítása
+Körülbelül 8000 előfizetések CRM-adatok használatával az adott adatkészlet téves besorolás fel azt képest.  
 
-* Az SAS-besorolási arány 10-15% volt.
+* A SAS téves besorolás sebesség 10 – 15 % volt.
 * A Machine Learning Studio (klasszikus) téves besorolási arány 15-20% volt a Top 200-300-adatforgalomhoz.  
 
-A telekommunikációs iparágban fontos, hogy csak azokat az ügyfeleket kezelje, akik a legnagyobb kockázatot jelentenek, ha concierge szolgáltatást vagy más különleges kezelést biztosítanak. Ebben a tekintetben a Machine Learning Studio (klasszikus) implementáció az SAS-modellel egyenrangú eredményeket hoz létre.  
+A távközlési iparágban fontos csak a vásárlói lemorzsolódás recepciószolgálata szolgáltatásként vagy egyéb speciális kezelés felajánlásával őket a legmagasabb kockázattal rendelkező ügyfelek cím. Ebben a tekintetben a Machine Learning Studio (klasszikus) implementáció az SAS-modellel egyenrangú eredményeket hoz létre.  
 
-Ugyanezen jogkivonatban a pontosság sokkal fontosabb, mint a pontosság, mivel főleg a lehetséges adatforgalom megfelelő besorolását érdeklik.  
+Hasonlóképpen pontossága fontosabb, mint a pontossága, mivel ez többnyire megfelelő Írisz lehetséges churners iránt.  
 
-A wikipedia következő diagramja egy élénk, könnyen értelmezhető grafikában ábrázolja a kapcsolatot:  
+Az alábbi ábrán a Wikipedia a kapcsolatot a színes, könnyen érthető kép ábrázolja:  
 
 ![Két cél. Az egyik cél, hogy a találatok lazán vannak csoportosítva, de közel vannak a "kis pontosság: jó igaz" értékhez, a gyenge pontossághoz. Egy másik cél szorosan csoportosítva van, de távol van a "kis pontosságú: gyenge megbízhatóság", jó pontossággal jelölt Bulls-szemtől.](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
 *10. ábra: a pontosság és a pontosság közötti kompromisszum*
 
-### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>A megnövelt döntési famodell pontossági és pontossági eredményei
-A következő diagram a pontozásból származó nyers eredményeket jeleníti meg a megnövelt döntési famodellhez tartozó Machine Learning prototípus használatával, amely a négy modell közül a legpontosabb:  
+### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Gyorsított döntési fa modell pontosságát és a pontosság eredményei
+Az alábbi ábra a pontozás a Machine Learning prototípus használata a gyorsított döntési fa modell, amely a négy modellek között a legpontosabb történetesen nyers eredményét jeleníti meg:  
 
 ![A pontosságot, a pontosságot, a visszahívás, az F-score, a AUC, az átlagos naplók elvesztését és a betanítási napló elvesztését ábrázoló táblázat négy algoritmus esetén](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
 *11. ábra: a megerősítő döntési fa modelljének jellemzői*
 
-## <a name="performance-comparison"></a>Teljesítmény-összehasonlítás
+## <a name="performance-comparison"></a>Teljesítmény összehasonlítása
 Összehasonlítjuk az adatgyűjtési sebességet a Machine Learning Studio (klasszikus) modellek és egy hasonló modell használatával, amely az SAS Enterprise Miner 12,1 asztali kiadásával lett létrehozva.  
 
-A következő táblázat összefoglalja az algoritmusok teljesítményét:  
+A következő táblázat összefoglalja az algoritmusok teljesítményének:  
 
 *1. táblázat. Az algoritmusok általános teljesítménye (pontossága)*
 
-| LR | BT | ÁZSIAI ÉS CSENDES-ÓCEÁNI TÉRSÉG | SVM |
+| LR | BT | AP | SVM |
 | --- | --- | --- | --- |
-| Átlagos modell |A legjobb modell |Alulteljesítő |Átlagos modell |
+| Átlagos modell |A legjobb modellt |Az alulteljesítő |Átlagos modell |
 
 A Machine Learning Studio (klasszikus) által szolgáltatott modellek a végrehajtás gyorsasága érdekében 15-25%-kal, de a pontosság nagyjából par volt.  
 
-## <a name="discussion-and-recommendations"></a>Vitafórumok és javaslatok
-A távközlési iparágban számos gyakorlat alakult ki a forgalom elemzéséhez, többek között:  
+## <a name="discussion-and-recommendations"></a>Hozzászólás és javaslatok
+A távközlési iparágban több eljárások kiderült rendelkezik, lemorzsolódásának elemzése a többek között:  
 
-* Metrikák származtatása négy alapvető kategóriához:
-  * **Entitás (például egy előfizetés)** . Az előfizetésre és/vagy az ügyfélre vonatkozó alapvető információk kiépítése a forgalom tárgya.
-  * **Tevékenység** – Szerezze be az entitáshoz kapcsolódó összes lehetséges használati információt, például a bejelentkezések számát.
-  * **Ügyfélszolgálati támogatás**. Az ügyfélszolgálati naplókból származó információk begyűjtése annak jelzésére, hogy az előfizetés az ügyfélszolgálattal kapcsolatos problémákkal vagy interakciókkal járt-e.
-  * **Versenyképes és üzleti adatszolgáltatások**. Szerezzen be bármilyen információt az ügyfélről (például nem érhető el vagy nem nehéz nyomon követni).
-* A szolgáltatás kiválasztásának fontossága. Ez azt jelenti, hogy a megnövelt döntési fa modell mindig ígéretes megközelítés.  
+* Származtasson négy alapvető kategória metrikái:
+  * **Entitás (például egy előfizetés)** . Alapvető információkat szeretne az előfizetés és/vagy a vásárlói lemorzsolódás tárgyát képező kiépítése.
+  * **Tevékenység** – Szerezze be a kapcsolódó entitás, például a bejelentkezések száma az összes lehetséges használati információkat.
+  * **Ügyfélszolgálati támogatás**. Gyűjtsön információkat az ügyfél-támogatási naplók jelzi, hogy az előfizetés volt-e a problémákat és az ügyfél-támogatási interakciók.
+  * **Versenyképes és üzleti adatszolgáltatások**. Az ügyfél lehetséges minden olyan információt (például lehet érhető el vagy visszakövetését, hogy).
+* Meghajtó szolgáltatás kiválasztása fontosak használja. Ez azt jelenti, hogy a gyorsított döntési fa modell mindig a ígéret megközelítést.  
 
-Ennek a négy kategóriának a használata azt az illúziót hozza létre, hogy egy egyszerű *determinisztikus* megközelítés a kategóriánkénti ésszerű tényezők alapján Sajnos, bár ez a fogalom kézenfekvőnek tűnik, ez hamis megértést mutat. Ennek az az oka, hogy a forgalom időbeli hatás, és a változásokhoz hozzájáruló tényezők általában átmeneti állapotokban vannak. Mi vezet az ügyfél számára, hogy a mai napig elhagyhatja a jövőt, és az is előfordulhat, hogy már hat hónapja lesz. Ezért szükség van egy *valószínűségi* modellre.  
+Ennek a négy kategóriának a használata azt az illúziót hozza létre, hogy egy egyszerű *determinisztikus* megközelítés a kategóriánkénti ésszerű tényezők alapján Sajnos bár ebben a formátumban egyértelmű úgy tűnik, egy hamis ismertetése. Az oka, hogy adatváltozás historikus érvénybe, és a vásárlói lemorzsolódás hozzájáruló tényezők rendszerint átmeneti állapotok. Mit kell figyelembe venni, így még ma ügyfél érdeklődők holnap lehet különböző, és természetesen lesz különböző hat hónap múlva. Ezért szükség van egy *valószínűségi* modellre.  
 
-Ez a fontos megfigyelés gyakran megtekinthető az üzleti életben, ami általában előnyben részesíti az elemzések üzleti intelligenciával kapcsolatos megközelítését, főleg azért, mert ez egy könnyebben értékesíthető és egyszerű automatizálási megoldás.  
+Ez fontos megfigyelési gyakran üzleti, amely általában egy üzleti intelligencia megközelítéssel szeretnék analytics van kihagyott, leginkább, mert egy egyszerűbb értékesítésére, és könnyen érthető megjegyzésblokkok írására automation elismeri.  
 
 Az önkiszolgáló elemzések Machine Learning Studio (klasszikus) használatával történő használatának ígérete azonban az, hogy a négy, osztással vagy részleggel osztályozott információ értékes forrást jelent a gépi tanulással kapcsolatban.  
 
-Azure Machine Learning Studio (klasszikus) egy másik izgalmas funkciója, amely lehetővé teszi egyéni modul hozzáadását a már elérhető előre definiált modulok tárházához. Ez a képesség lényegében lehetőséget teremt a kódtárak kiválasztására és sablonok létrehozására a vertikális piacok számára. A Azure Machine Learning Studio (klasszikus) fontos megkülönböztetője a piacon.  
+Azure Machine Learning Studio (klasszikus) egy másik izgalmas funkciója, amely lehetővé teszi egyéni modul hozzáadását a már elérhető előre definiált modulok tárházához. Ez a funkció alapvetően hoz lehetőséget válassza ki a kódtárakat, és vertikális piacok sablonok létrehozásához. A Azure Machine Learning Studio (klasszikus) fontos megkülönböztetője a piacon.  
 
-Reméljük, hogy a jövőben is folytatjuk ezt a témakört, különösen a big data analyticshez kapcsolódóan.
+Reméljük, hogy továbbra is a jövőben ez a témakör különösen kapcsolatos big data-elemzés.
   
 
 ## <a name="conclusion"></a>Összegzés
-Ez a tanulmány egy ésszerű módszert mutat be az ügyfelek adatforgalmával kapcsolatos gyakori problémák általános keretrendszer használatával történő kezeléséhez. A pontozási modellek prototípusát tekintették, és a Azure Machine Learning Studio (klasszikus) használatával Implementáljuk. Végezetül felmértük a prototípus megoldás pontosságát és teljesítményét az SAS-ben található hasonló algoritmusok tekintetében.  
+Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának közös vásárlók lemorzsolódásának általános keretrendszer használatával. A pontozási modellek prototípusát tekintették, és a Azure Machine Learning Studio (klasszikus) használatával Implementáljuk. Végül azt adatokon, a pontosság és a teljesítmény, a prototípus-megoldás összehasonlítható algoritmusok a biztonsági Társítások kapcsolatban.  
 
  
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 [1] prediktív elemzés: az előrejelzéseken felül a W. McKnight, az Information Management, a július/August 2011, a p. 18 – 20.  
 
 [2] wikipedia-cikk: [pontosság és pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision)

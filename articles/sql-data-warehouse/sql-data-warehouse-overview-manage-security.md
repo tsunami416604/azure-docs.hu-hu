@@ -1,6 +1,6 @@
 ---
 title: Adatbázis biztonságossá tétele
-description: Tippek a Azure SQL Data Warehouse-adatbázis biztonságossá tételéhez a megoldások fejlesztéséhez.
+description: Tippek az adatbázisok biztonságossá tételéhez és az SQL Analytics SQL-készlet erőforrásában lévő megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064733"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153281"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Adatbázis biztonságossá tétele SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064733"
 > 
 > 
 
-Ez a cikk végigvezeti a Azure SQL Data Warehouse-adatbázis biztonságossá tételének alapjain. Ez a cikk a hozzáférés korlátozására, az adatok védelmére és a figyelési tevékenységekre vonatkozó erőforrásokkal való ismerkedést ismerteti.
+Ez a cikk végigvezeti az SQL-készlet SQL-elemzésen belüli biztonságossá tételének alapjain. Ez a cikk bemutatja, hogyan használhatja az erőforrásokat a hozzáférés korlátozásához, az adatok védelméhez és a figyelési tevékenységekhez egy SQL-készlet használatával kiépített adatbázisban.
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
 A tűzfalszabályok a-kiszolgáló és az adatbázis használatával is elutasítja a kapcsolódási kísérleteket az olyan IP-címekről, amelyek nincsenek explicit módon engedélyezve. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával. 
 
-Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  A helyi számítógép Azure SQL Data Warehouseának eléréséhez győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen lehetővé teszi a kimenő kommunikációt a 1433-es TCP-porton.  
+Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Ha a helyi számítógépről szeretné elérni az SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt az 1433-as TCP-porton  
 
-Az Azure szinapszis a kiszolgálói szintű IP-tűzfalszabályok használatát alkalmazza. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../sql-database/sql-database-firewall-configure.md)
+Az Azure szinapszis Analytics kiszolgálói szintű IP-tűzfalszabályok használatával működik. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../sql-database/sql-database-firewall-configure.md)
 
-A SQL Data Warehouse létesített kapcsolatok alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
+Az SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
 
-## <a name="authentication"></a>Hitelesítés
-A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. A SQL Data Warehouse jelenleg a felhasználónévvel és a jelszóval, valamint a Azure Active Directoryával támogatja SQL Server hitelesítés használatát. 
+## <a name="authentication"></a>Authentication
+A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL-készlet jelenleg támogatja a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directory. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezeknek a hitelesítő adatoknak a használatával a hitelesítő adatokat az adott kiszolgálón található adatbázis-tulajdonosként vagy a "dbo" SQL Server hitelesítésen keresztül végezheti el.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ezután kapcsolódjon a **SQL Data Warehouse-adatbázishoz** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
+Ezután kapcsolódjon az **SQL-készlet adatbázisához** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótan
 Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.md) vagy a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával végezhető el.
 
 ## <a name="next-steps"></a>Következő lépések
-A különböző protokollokkal történő, a tárházhoz való csatlakozással kapcsolatos részletekért és Példákért lásd: [csatlakozás SQL Data Warehousehoz](sql-data-warehouse-connect-overview.md).
+További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás az SQL-készlethez](sql-data-warehouse-connect-overview.md).

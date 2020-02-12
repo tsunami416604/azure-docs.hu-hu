@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427576"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152873"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Első lépések az R programozási nyelv Azure Machine Learning Studio (klasszikus)
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Ez az oktatóanyag segítséget nyújt a Azure Machine Learning Studio (klasszikus) kiterjesztésének megkezdéséhez az R programozási nyelv használatával. Kövesse ezt az R programozási oktatóanyagot az R-kód létrehozásához, teszteléséhez és végrehajtásához a studión belül (klasszikus). Az oktatóanyagban végzett munka során egy teljes előrejelzési megoldást fog létrehozni a Studio (klasszikus) R-nyelvének használatával.  
 
@@ -133,7 +133,7 @@ A RStudio egy széles körben használt IDE az R-hez. RStudio használok a jelen
 
 Ha nincs telepítve az R programozási nyelv az asztali gépen, azt javasoljuk, hogy tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a [https://www.r-project.org/](https://www.r-project.org/)címen elérhető átfogó r Archive Network (Cran) címen érhető el. Letölthetők a Windows, Mac OS és a Linux/UNIX rendszerhez készült letöltések. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatmanipulációs csomagot tartalmaz.
 
-Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX rendszerű letöltéseit http://www.rstudio.com/products/RStudio/ címen találja. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
+Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX rendszerű letöltéseit http://www.rstudio.com/products/RStudio/címen találja. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
 
 A RStudio oktatóanyagának bemutatása [a RSTUDIO ide használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)érhető el.
 
@@ -503,7 +503,7 @@ Futtassa ezt a kódot a kísérletben, és vizsgálja meg az eredményt a kimene
 
 *11. ábra. Az dataframe összefoglalása két oszloppal eltávolítva.*
 
-Van egy jó hírünk! Megkapjuk a várt eredményeket.
+Jó hír! Megkapjuk a várt eredményeket.
 
 ### <a name="add-a-new-column"></a>Új oszlop hozzáadása
 
@@ -1313,7 +1313,7 @@ A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokument
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Azure Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 
 * A [kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) az Emmanuel Paradis jó kiindulópontja az R.  
-* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. Al. egy kicsit mélyebbre kerül.
+* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. al. egy kicsit mélyebbre kerül.
 
 Az R-ben számos könyv található, amely segítséget nyújt az első lépésekhez. Itt talál néhány hasznosat:
 

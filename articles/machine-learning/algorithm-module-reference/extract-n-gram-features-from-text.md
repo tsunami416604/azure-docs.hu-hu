@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312226"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152278"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-Gram-funkciók kinyerése a szöveges modul hivatkozása alapján
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti. A nem strukturált szöveges adatok *szabadkézi* használja az N-Gram-funkciók a szöveges modulból való kinyerését. 
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti. A nem strukturált szöveges adatok *szabadkézi* használja az N-Gram-funkciók a szöveges modulból való kinyerését. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Az N-Gram-funkciók kinyerésének konfigurációja a szöveges modulból
 
@@ -106,7 +106,7 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 1.  Kösse össze a mentett adatkészletet az N-Gram-funkciók kinyerésével a pontozási gráfban található Text modulból.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A Text modul N-Gram-funkcióinak kinyerése két típusú kimenetet hoz létre: 
 
@@ -125,7 +125,7 @@ A szószedet tartalmazza az n-Gram-szótárt, amely az elemzés részeként gene
 + **DF**: az n-gramm kifejezés gyakorisági pontszáma az eredeti corpusban.
 + **IDF**: az eredeti Corpus n-grammjának inverz dokumentumának gyakorisági pontszáma.
 
-Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Példa:
+Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Például:
 
 * A rendszer hibát jelez, ha a modul ismétlődő sorokat talál a bemeneti szókincsben található ugyanazzal a kulccsal. Ügyeljen arra, hogy a szókincsben ne legyen két sor ugyanazzal a Szóval.
 * A szókincs-adatkészletek bemeneti sémájának pontosan egyeznie kell, beleértve az oszlopnevek és az oszlopok típusát is. 

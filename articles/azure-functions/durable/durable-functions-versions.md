@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849802"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152890"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -59,6 +59,10 @@ Durable Functions 2. x egy új Host. JSON sémát használ. Az 1. x fő változ�
 * `"notifications"` (és az `"eventGrid"` alszakasz) az Event Grid-értesítési konfigurációhoz.
 
 A részletekért tekintse meg a [Durable functions Host. JSON dokumentációját](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+
+#### <a name="default-taskhub-name-changes"></a>A taskhub alapértelmezett nevének módosítása
+
+Ha az 1. x verzióban nincs megadva a Task hub neve a Host. JSON fájlban, az alapértelmezett érték a "DurableFunctionsHub". A 2. x verzióban a feladat-központ alapértelmezett neve mostantól a Function alkalmazás nevéből származik. Emiatt, ha a 2. x verzióra való frissítéskor nem adott meg a Task hub nevét, a kód az új Task hub-vel fog működni, és az összes fedélzeti előkészítési folyamat már nem fog működni az alkalmazásban. Ennek megkerülő megoldásához explicit módon állíthatja be a Task hub nevét az "DurableFunctionsHub" v1. x alapértelmezett értékére, vagy követheti a [nulla állásidővel kapcsolatos üzembe helyezési útmutatót](durable-functions-zero-downtime-deployment.md) , amely részletesen ismerteti, hogyan kezelheti a működés közbeni előkészítési folyamatokat.
 
 #### <a name="public-interface-changes-net-only"></a>Nyilvános interfész módosításai (csak .NET)
 

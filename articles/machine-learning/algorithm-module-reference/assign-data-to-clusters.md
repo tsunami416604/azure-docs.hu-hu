@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: ac99b95e3cece09c5bdeb0986a11a999603707e6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eff480d6763ae4bd277e6781663c559cc7c9169e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548526"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152448"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: az adathozzárendelés a fürtökhöz
 
@@ -45,7 +45,7 @@ Az adatok hozzárendelése a fürtökhöz modul olyan adatkészletet ad vissza, 
   
 5.  A folyamat futtatása.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 +  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. Vagy válassza ki a modult, és váltson a **kimenetek** lapra a jobb oldali panelen, kattintson a **port kimenetének** hisztogram ikonjára az eredmény megjelenítéséhez.
 

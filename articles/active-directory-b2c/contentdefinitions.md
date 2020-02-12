@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions – Azure Active Directory B2C | Microsoft Docs
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: A Azure Active Directory B2C egyéni házirendjének ContentDefinitions elemének megadásához.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a940c7676a59ed85d5cf16c76f72a12ce0026d5
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136272"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148861"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,7 +57,6 @@ A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil meta
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 A **ContentDefinition** elem a következő attribútumot tartalmazza:
@@ -72,22 +72,59 @@ A **ContentDefinition** elem a következő elemeket tartalmazza:
 | LoadUri | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom definíciójának HTML5-oldalának URL-címét. |
 | RecoveryUri | 0:1 | Egy karakterlánc, amely tartalmazza a tartalom-definícióval kapcsolatos hibát megjelenítő HTML-oldal URL-címét. |
 | DataUri | 1:1 | Egy olyan karakterlánc, amely a lépéshez szükséges felhasználói élményt biztosító HTML-fájl relatív URL-címét tartalmazza. |
-| Metaadatok | 1:1 | Kulcs/érték párok gyűjteménye, amely a tartalom definíciójában használt metaadatokat tartalmazza. |
+| Metaadatok | 0:1 | Kulcs/érték párok gyűjteménye, amely a tartalom definíciójában használt metaadatokat tartalmazza. |
 | LocalizedResourcesReferences | 0:1 | Honosított erőforrások gyűjteménye. Ezzel az elemmel testreszabható a felhasználói felület és a jogcím attribútum honosítása. |
 
 ### <a name="datauri"></a>DataUri
 
-A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma `urn:com:microsoft:aad:b2c:elements:page-name:version`.  A következő táblázat a használható oldal azonosítóinak értékeit és leírásait tartalmazza.
+A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma `urn:com:microsoft:aad:b2c:elements:page-name:version`. A következő táblázat felsorolja a használható oldal-azonosítókat.
 
-| Érték |   Leírás |
+| Oldal azonosítója | Leírás |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. Ez az érték a "bejelentkezési funkciók megtartása" funkciót és az "elfelejtette jelszavát?" is tartalmazza hivatkozás. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | Megerősíti a telefonszámokat szöveg vagy hang használatával a regisztráció vagy a bejelentkezés során. |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | Megjelenít egy űrlapot, amely lehetővé teszi a felhasználók számára a profil létrehozását vagy frissítését. |
+| `globalexception` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
+| `providerselection` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. |
+| `unifiedssp` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. Ez az érték a "bejelentkezési funkciók megtartása" funkciót és az "elfelejtette jelszavát?" is tartalmazza hivatkozás. |
+| `unifiedssp` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. |
+| `multifactor` | Megerősíti a telefonszámokat szöveg vagy hang használatával a regisztráció vagy a bejelentkezés során. |
+| `selfasserted` | Megjelenít egy űrlapot, amely lehetővé teszi a felhasználók számára a profil létrehozását vagy frissítését. |
 
+## <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
+
+A [JavaScript ügyféloldali kódot](javascript-samples.md) a `elements` és az oldal típusának `contract` beszúrásával engedélyezheti. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+A `DataUri` [verziója](page-layout.md) a szabályzat felhasználói felületi elemeire vonatkozó HTML-, CSS-és JavaScript-csomagot tartalmazza. Ha engedélyezni kívánja a JavaScript ügyféloldali kódját, a JavaScript-alapú elemek nem változtathatók meg. Ha nem változtathatók meg, a módosítások váratlan viselkedést okozhatnak a felhasználói oldalakon. A problémák megelőzése érdekében kényszerítse ki a lapelrendezés használatát, és adja meg a lapelrendezés verzióját. Így biztosíthatja, hogy a JavaScripten alapuló összes tartalmi definíció nem változtatható. Ha nem kívánja engedélyezni a JavaScriptet, akkor is meg kell adnia a lapok elrendezésének verzióját.
+
+Az alábbi példa a `selfasserted` verzió `1.2.0`**DataUri** mutatja be:
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>Áttelepítés az oldal elrendezésére
+
+Az érték formátumának tartalmaznia kell a `contract`szót: _urn: com: Microsoft: HRE: B2C: Elements:**Szerződés**:p Age-Name: Version_. Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
+
+| Régi DataUri érték | Új DataUri érték |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -103,19 +140,6 @@ A **LocalizedResourcesReferences** elem a következő attribútumokat tartalmazz
 | --------- | -------- | ----------- |
 | Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
 | LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
-
-A következő példa egy regisztrációs vagy bejelentkezési tartalom definícióját mutatja be:
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 Az alábbi példa egy regisztrációs vagy bejelentkezési tartalom definícióját mutatja be az angol, francia és spanyol nyelv honosítására való hivatkozással:
 
@@ -154,3 +178,8 @@ A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definíci
 | **API. selfasserted. profileUpdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
 
+## <a name="next-steps"></a>Következő lépések
+
+A felhasználói felület tartalmi definíciók használatával történő testreszabására példát a következő témakörben talál:
+
+[Az alkalmazás felhasználói felületének testreszabása egyéni házirend használatával](custom-policy-ui-customization.md)

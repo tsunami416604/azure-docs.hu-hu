@@ -2,17 +2,17 @@
 title: Mi a Cloud Service-modell és-csomag | Microsoft Docs
 description: Ismerteti a Cloud Service-modellt (. csdef,. cscfg) és a csomagot (. cspkg) az Azure-ban
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360701"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148309"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan lehet becsomagolni?
 A felhőalapú szolgáltatás három összetevőből, a szolgáltatás-definícióból ( *. csdef)* , a szolgáltatás-konfigurációból *(. cscfg)* és egy szolgáltatáscsomag *(. cspkg)* jön létre. A **ServiceDefinition. csdef** és a **ServiceConfig. CSCFG** fájl is XML-alapú, és leírja a Cloud Service szerkezetét és konfigurálását. együttesen nevezik a modellt. A **szervizcsomag. cspkg** egy zip-fájl, amely a **ServiceDefinition. csdef** és egyebek között jön létre, és tartalmazza az összes szükséges bináris-alapú függőséget. Az Azure létrehoz egy felhőalapú szolgáltatást mind a **szervizcsomaggal. cspkg** , mind a **ServiceConfig. cscfg**.
@@ -31,7 +31,7 @@ Miután a Cloud Service fut az Azure-ban, újrakonfigurálhatja azt a **ServiceC
 
 <a name="csdef"></a>
 
-## <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
+## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
 A **ServiceDefinition. csdef** fájl azokat a beállításokat adja meg, amelyeket az Azure a Cloud Service konfigurálásához használ. Az [Azure-szolgáltatás definíciós sémája (. Csdef fájl)](/previous-versions/azure/reference/ee758711(v=azure.100)) egy szolgáltatás-definíciós fájl számára engedélyezhető formátumot biztosít. A következő példa a webes és feldolgozói szerepkörökhöz definiálható beállításokat mutatja be:
 
 ```xml
@@ -106,12 +106,12 @@ A helyi tárolási erőforrások definícióit tartalmazza. A helyi tárolási e
 **Importálja**  
 Az importált modulok definícióit tartalmazza. Az előző példában a Távoli asztali kapcsolat és az Azure-kapcsolat moduljai láthatók.
 
-**Startup**  
+**Indítási**  
 A szerepkör indításakor futtatott feladatokat tartalmazza. A feladatok egy. cmd vagy végrehajtható fájlban vannak meghatározva.
 
 <a name="cscfg"></a>
 
-## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration. cscfg
+## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
 A felhőalapú szolgáltatás beállításainak konfigurációját a **ServiceConfiguration. cscfg** fájl értékei határozzák meg. Itt adhatja meg, hogy hány példányt kíván telepíteni a fájl egyes szerepköreihez. A szolgáltatás-definíciós fájlban megadott konfigurációs beállítások értékeit a rendszer hozzáadja a szolgáltatás konfigurációs fájljához. A rendszer a felhőalapú szolgáltatáshoz társított felügyeleti tanúsítványok ujjlenyomatai megfelelnek is hozzáadja a fájlhoz. Az [Azure szolgáltatás konfigurációs sémája (. Cscfg fájl)](/previous-versions/azure/reference/ee758710(v=azure.100)) a szolgáltatás konfigurációs fájljának engedélyezett formátumát adja meg.
 
 A szolgáltatás konfigurációs fájlja nincs becsomagolva az alkalmazásba, de az Azure-ba feltöltött külön fájlként, és a felhőalapú szolgáltatás konfigurálására szolgál. A felhőalapú szolgáltatás újbóli üzembe helyezése nélkül feltöltheti az új szolgáltatás konfigurációs fájlját. A felhőalapú szolgáltatás konfigurációs értékei megváltoztathatók a Cloud Service futása közben. A következő példa a webes és feldolgozói szerepkörökhöz definiálható konfigurációs beállításokat mutatja be:
@@ -215,7 +215,10 @@ Az [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 
 <a name="cspkg"></a>
 
-## <a name="servicepackagecspkg"></a>Szervizcsomag. cspkg
+## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Az üzembe helyezhető csomagok maximális mérete 600MB
+
 Egy alkalmazás Azure-beli felhőalapú szolgáltatásként történő üzembe helyezéséhez először a megfelelő formátumban kell becsomagolni az alkalmazást. A **CSPack** parancssori eszközt (az [Azure SDK](https://azure.microsoft.com/downloads/)-val együtt) a Visual Studio alternatívájaként a csomagfájl létrehozásához használhatja.
 
 A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg`, de más nevet is megadhat a **CSPack**`/out` kapcsolójának használatával.
@@ -259,7 +262,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Ahol a változók a következőképpen vannak meghatározva:
 
-| Változó | Value (Díj) |
+| Változó | Érték |
 | --- | --- |
 | \[könyvtárnév\] |Az Azure-projekt. csdef fájlját tartalmazó legfelső szintű projekt könyvtárában található alkönyvtár. |
 | \[ServiceDefinition\] |A szolgáltatás definíciós fájljának neve. Alapértelmezés szerint a fájl neve ServiceDefinition. csdef. |

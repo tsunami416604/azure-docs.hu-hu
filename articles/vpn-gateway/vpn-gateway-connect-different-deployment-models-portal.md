@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951734"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152023"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
@@ -30,7 +30,7 @@ Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne lé
 
 ### <a name="before"></a>Előkészületek
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * Ezek a lépések azt feltételezik, hogy mindkét virtuális hálózatok már létre lett hozva. Ha gyakorlatként használja ezt a cikket, és nem rendelkezik virtuális hálózatok, a következő lépésekben talál hivatkozásokat a létrehozásához.
 * Ellenőrizze, hogy a virtuális hálózatok címtartományok nem fedik-e egymást egymással, vagy átfedésben van-e az átjárók által a csatlakozáshoz használt egyéb kapcsolatok tartományával.
@@ -75,7 +75,7 @@ Ehhez a konfigurációhoz létre kell hoznia egy VPN Gateway-kapcsolatot egy IPs
 
 Az alábbi táblázat egy példát mutat be a példa virtuális hálózatok és helyi helyeinek meghatározására:
 
-| Virtual Network (Virtuális hálózat) | Címtartomány | Region (Régió) | Kapcsolódás helyi hálózati helyhez |
+| Virtual Network | Címterület | Régió | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |
@@ -100,7 +100,7 @@ Ha már rendelkezik egy VPN-átjáróval rendelkező VNet, ellenőrizze, hogy az
 
 1. Keresse meg az **összes erőforrást** , és keresse meg a **ClassicVNet** a listában.
 2. Kattintson a menü **Beállítások** szakaszában az **átjáró** elemre, majd a szalagcímre kattintva hozzon létre egy átjárót.
-  ![VPN-átjáró konfigurálása](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Configurálja egy VPN-átjárót ")
+  ![VPN-átjáró konfigurálása](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN-átjáró konfigurálása")
 3. Az **új VPN-kapcsolat** lapon, a **kapcsolat típusa**területen válassza a **helyek közötti**lehetőséget.
 4. **Helyi hely**esetén kattintson a **kötelező beállítások konfigurálása**elemre. Ekkor megnyílik a **helyi webhely** oldal.
 5. A **helyi hely** lapon hozzon létre egy nevet, amely a Resource Manager VNet hivatkozik. Például: "RMVNetLocal".
@@ -147,7 +147,7 @@ Ha nem rendelkezik Resource Manager-VNet, és gyakorlatként futtatja ezeket a l
 
 ### <a name="creategw"></a>2. virtuális hálózati átjáró létrehozása
 
-Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -170,7 +170,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
 **Példa értékei:** Helyi hálózati átjáró = ClassicVNetLocal
 
-| Virtual Network (Virtuális hálózat) | Címtartomány | Region (Régió) | Kapcsolódás helyi hálózati helyhez |Átjáró nyilvános IP-címe|
+| Virtual Network | Címterület | Régió | Kapcsolódás helyi hálózati helyhez |Átjáró nyilvános IP-címe|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |Az ClassicVNet-átjáróhoz hozzárendelt nyilvános IP-cím|
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |A RMVNet-átjáróhoz hozzárendelt nyilvános IP-cím.|
@@ -204,7 +204,7 @@ Ebben a szakaszban lecseréli azt a helyőrző IP-címet, amelyet a helyi hely b
 Ezekben a lépésekben a Azure Portal segítségével konfigurálja a (z) Resource Manager-VNet származó kapcsolatokat a klasszikus VNet.
 
 1. A **minden erőforrás**területen keresse meg a helyi hálózati átjárót. A példánkban a helyi hálózati átjáró **ClassicVNetLocal**.
-2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés**gombra. Zárja be az oldalt.
+2. Kattintson a **konfiguráció** elemre, és ellenőrizze, hogy az IP-cím értéke a klasszikus VNET tartozó VPN-átjáró. Szükség esetén frissítse a frissítést, majd kattintson a **Mentés**gombra. Az oldal bezárásához.
 3. Az **összes erőforrás**területen kattintson a helyi hálózati átjáróra.
 4. Kattintson a **kapcsolatok** elemre a kapcsolatok lap megnyitásához.
 5. A **kapcsolatok** lapon kattintson a **+** elemre a kapcsolat hozzáadásához.
