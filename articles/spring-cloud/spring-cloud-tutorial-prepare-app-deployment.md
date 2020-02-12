@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
-description: Ebben az oktatóanyagban egy Java Spring-alkalmazást készít elő az üzembe helyezéshez.
+title: Oktatóanyag – Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
+description: Ebben az oktatóanyagban egy Java Spring-alkalmazást készít elő az Azure Spring Cloud üzembe helyezéséhez.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1af4bdcfc0fea319b9e5c9f39a1ade3f4492404f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064716"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137632"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
-Ez a rövid útmutató bemutatja, hogyan készíthet egy meglévő Java Spring Cloud-alkalmazást az Azure Spring Cloud-hoz való üzembe helyezéshez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez.
+Ez a rövid útmutató bemutatja, hogyan készíthet meglévő Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez.
 
 ## <a name="java-runtime-version"></a>Java futtatókörnyezet verziója
 

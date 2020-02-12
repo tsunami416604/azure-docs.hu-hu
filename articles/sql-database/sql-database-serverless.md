@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372330"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131971"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -33,7 +33,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -43,7 +43,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 
 További részletekért tekintse meg a [számlázást](sql-database-serverless.md#billing)ismertető témakört.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 A kiszolgáló nélküli, időszakos, kiszámíthatatlan használati mintákkal rendelkező önálló adatbázisokhoz optimalizált ár-teljesítmény, amely némi késést biztosít a számítási felmelegszik a tétlen használati időszakok után. Ezzel szemben a kiépített számítási szint az önálló adatbázisokra vagy a rugalmas készletekben található több adatbázisra optimalizált, magasabb átlagos használattal, amely nem biztosít semmilyen késleltetést a számítási felmelegítőben.
 
@@ -69,7 +69,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 | **Teljesítmény-felügyeleti tevékenység** |Alacsonyabb|Magasabb|
 |**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
-|**Számlázási részletesség**|Másodpercenként|/ óra|
+|**Számlázási részletesség**|Másodpercenként|/Óra|
 
 ## <a name="purchasing-model-and-service-tier"></a>Modell-és szolgáltatási szintek vásárlása
 
@@ -124,10 +124,10 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Szolgáltatás|Trigger újraindítása|
+|Funkció|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
-|Fenyegetésészlelés|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
+|Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
 |Adatfelderítés és besorolás|Érzékenységi Címkék hozzáadása, módosítása, törlése vagy megtekintése|
 |Naplózás|Naplózási rekordok megtekintése.<br>Naplózási házirend frissítése vagy megtekintése.|
 |Adatmaszkolás|Az adatmaszkolási szabályok hozzáadása, módosítása, törlése vagy megtekintése|
@@ -141,7 +141,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolódás
+### <a name="connectivity"></a>Kapcsolatok
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 
@@ -155,17 +155,17 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 1. Adja meg a szolgáltatási cél nevét. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
 
-   |Szolgáltatási cél neve|Szolgáltatáscsomag|Hardver létrehozása|Maximális virtuális mag|
+   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
    |---|---|---|---|
-   |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
-   |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
-   |GP_S_Gen5_4|Általános rendeltetés|Gen5|4|
-   |GP_S_Gen5_6|Általános rendeltetés|Gen5|6|
-   |GP_S_Gen5_8|Általános rendeltetés|Gen5|8|
-   |GP_S_Gen5_10|Általános rendeltetés|Gen5|10|
-   |GP_S_Gen5_12|Általános rendeltetés|Gen5|12|
-   |GP_S_Gen5_14|Általános rendeltetés|Gen5|14|
-   |GP_S_Gen5_16|Általános rendeltetés|Gen5|16|
+   |GP_S_Gen5_1|Általános célú|Gen5|1|
+   |GP_S_Gen5_2|Általános célú|Gen5|2|
+   |GP_S_Gen5_4|Általános célú|Gen5|4|
+   |GP_S_Gen5_6|Általános célú|Gen5|6|
+   |GP_S_Gen5_8|Általános célú|Gen5|8|
+   |GP_S_Gen5_10|Általános célú|Gen5|10|
+   |GP_S_Gen5_12|Általános célú|Gen5|12|
+   |GP_S_Gen5_14|Általános célú|Gen5|14|
+   |GP_S_Gen5_16|Általános célú|Gen5|16|
 
 2. Szükség esetén megadhatja a minimális virtuális mag és az automatikus szüneteltetés késleltetését is, ha módosítani szeretné az alapértelmezett értékeket. A következő táblázat a paraméterek elérhető értékeit tartalmazza.
 
@@ -179,7 +179,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 Az alábbi példák egy új adatbázist hoznak létre a kiszolgáló nélküli számítási szinten. A példák explicit módon határozzák meg a minimális virtuális mag, a maximális virtuális mag és az automatikus szüneteltetés késleltetését.
 
-#### <a name="use-azure-portal"></a>Az Azure-portál használata
+#### <a name="use-azure-portal"></a>Az Azure Portal használata
 
 Lásd [: gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](sql-database-single-database-get-started.md).
 
@@ -257,7 +257,7 @@ A maximális vagy a minimális virtuális mag, valamint az automatikus szünetel
 A maximális vagy a minimális virtuális mag módosítását, valamint az automatikus szüneteltetés késleltetését az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal végezheti el az Azure CLI-ben a `capacity`, a `min-capacity`és az `auto-pause-delay` argumentum használatával.
 
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="resources-used-and-billed"></a>Felhasznált erőforrások és számlázás
 
@@ -271,11 +271,11 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Jogi személy|Metrika|Leírás|egység|
+|Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -336,13 +336,13 @@ Pontosabban, a példában szereplő számítási számla kiszámítása a követ
 
 |Időintervallum|másodpercenként használt virtuális mag|GB használt másodpercenként|Számítási dimenzió számlázása|Virtuális mag másodpercben elszámolt időtartam|
 |---|---|---|---|---|
-|0:00-1:00|4|9|használt virtuális mag|4 virtuális mag * 3600 másodperc = 14400 virtuális mag másodperc|
-|1:00-2:00|1|12|Felhasznált memória|12 GB * 1/3 * 3600 másodperc = 14400 virtuális mag másodperc|
-|2:00-8:00|0|0|Minimális memória kiépítve|3 GB * 1/3 * 21600 másodperc = 21600 virtuális mag másodperc|
+|0:00-1:00|4|9|használt virtuális mag|4 vCores * 3600 seconds = 14400 vCore seconds|
+|1:00-2:00|1|12|Felhasznált memória|12 GB * 1/3 * 3600 seconds = 14400 vCore seconds|
+|2:00-8:00|0|0|Minimális memória kiépítve|3 GB * 1/3 * 21600 seconds = 21600 vCore seconds|
 |8:00-24:00|0|0|A felfüggesztett számítási díj nem számítható fel|0 virtuális mag másodperc|
 |24 órán át számlázott virtuális mag-másodpercek összesen||||50400 virtuális mag másodperc|
 
-Tegyük fel, hogy a számítási egység ára $0.000073/virtuális mag/Second.  Ezt követően a 24 órás időszakra kiszámított számítás a számítási egység árának és a virtuális mag másodpercben mért kiszámlázásának szorzata: $0.000073/virtuális mag/Second * 50400 virtuális mag másodperc = $3,68
+Tegyük fel, hogy a számítási egység ára $0.000145/virtuális mag/Second.  Ezt követően a 24 órás időszakra kiszámított számítás a számítási egység árának és a virtuális mag másodpercben mért kiszámlázásának szorzata: $0.000145/virtuális mag/Second * 50400 virtuális mag másodperc ~ $7,31
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid Benefit és fenntartott kapacitás
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548373"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137897"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
@@ -43,17 +43,13 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 2.  Csatlakoztasson egy nem betanított modellt a bal szélső bemenethez. 
 
-3. Állítsa az **oktatói mód létrehozása** beállítást a **paraméter tartomány**értékre. A **Range Builder** használatával meghatározhatja, hogy milyen értékeket kell használni a paraméterben.  
 
-    Szinte az összes besorolási és regressziós modul támogatja az integrált paramétereket. Olyan tanulók esetében, amelyek nem támogatják a paraméterek tartományának konfigurálását, csak az elérhető paramétereket lehet tesztelni.
-
-    Manuálisan is beállíthatja egy vagy több paraméter értékét, majd elsöpörheti a többi paramétert. Ez eltarthat egy ideig.
 
 4.  Adja hozzá a betanításhoz használni kívánt adatkészletet, és kapcsolja össze a Hiperparaméterek beállítása hangolási modell középső bemenetével.  
 
     Ha címkézett adatkészlettel rendelkezik, a jobb szélső bemeneti porthoz (**opcionális ellenőrzési adatkészlet**) is csatlakoztatható. Ez lehetővé teszi a pontosság mérését a képzés és a hangolás során.
 
-5.  A Hiperparaméterek beállítása-modell hangolása **Tulajdonságok** ablaktábláján válasszon egy értéket a **paraméter-megtakarítási mód**beállításnál. Ezzel a beállítással szabályozhatja, hogy a paraméterek hogyan legyenek kiválasztva.
+5.  A modell Hiperparaméterek beállítása finomhangolása jobb oldali paneljén válasszon egy értéket a **paraméter-elsöprő üzemmódhoz**. Ezzel a beállítással szabályozhatja, hogy a paraméterek hogyan legyenek kiválasztva.
 
     - **Teljes rács**: Ha ezt a beállítást választja, a modul hurkot mutat a rendszer által előre meghatározott rács fölé, hogy kipróbálja a különböző kombinációkat, és azonosítsa a legjobb tanulót. Ez a beállítás akkor lehet hasznos, ha nem tudja, mi a legjobb paraméter-beállítás, és szeretné kipróbálni az értékek összes lehetséges kombinációját.
 
@@ -64,8 +60,6 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 7.  Válassza ki a futtatások számát:
 
     1. **Futtatások maximális száma véletlenszerű húzáskor**: ha véletlenszerű sweepet választ, megadhatja, hogy a modell hány alkalommal legyen betanítva, a paraméterek véletlenszerű kombinációjának használatával.
-
-    2. A **véletlenszerűen kiválasztott rácson futó futtatások maximális száma**: Ez a beállítás azt is meghatározza, hogy az ismétlések száma véletlenszerű mintavételezéssel történjen-e, de az értékek nem a megadott tartományból véletlenszerűen jönnek létre. Ehelyett a modul létrehozza a paraméterek összes lehetséges kombinációjának mátrixát. Ezután véletlenszerű mintavételt végez a mátrixban. Ez a módszer hatékonyabb és kevésbé hajlamos a regionális Túlmintavételezésre vagy a mintavételezésre.
 
 8.  A **rangsoroláshoz**válassza ki a modellek rangsorolásához használandó egyetlen mérőszámot.
 

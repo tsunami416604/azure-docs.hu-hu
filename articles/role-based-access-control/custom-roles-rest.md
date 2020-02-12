@@ -1,5 +1,5 @@
 ---
-title: Egyéni szerepkörök létrehozása vagy frissítése az Azure-erőforrásokhoz az REST API-Azure használatával | Microsoft Docs
+title: Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése a REST API
 description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket a szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz az REST API használatával.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452938"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137361"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Egyéni szerepkörök létrehozása vagy frissítése az Azure-erőforrásokhoz a REST API használatával
 
@@ -38,7 +38,7 @@ A címtárban lévő összes egyéni szerepkör listázásához használja a [sz
 
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
-    | Szűrő | Leírás |
+    | Szűrés | Leírás |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -54,15 +54,15 @@ Egy hatókörben lévő egyéni szerepkörök listázásához használja a [szer
 
 1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
-    | Szűrő | Leírás |
+    | Szűrés | Leírás |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -78,15 +78,15 @@ Ha a megjelenített nevével szeretne információt kapni egy egyéni szerepkör
 
 1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
 1. Cserélje le a *{Filter}* helyére a szerepkör megjelenített nevét.
 
-    | Szűrő | Leírás |
+    | Szűrés | Leírás |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Használja a szerepkör pontos megjelenítendő neve URL-kódolású formáját. Például `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
@@ -104,9 +104,9 @@ Ha egyedi azonosítóval szeretne adatokat lekérni egy egyéni szerepkörről, 
 
 1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre a szerepköröket szeretné listázni.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
@@ -152,9 +152,9 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciókat –
 
 1. Az URI-n belül cserélje le a *{scope}* értéket az egyéni szerepkör első `assignableScopes`ére.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
@@ -217,9 +217,9 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
 
 1. Az URI-n belül cserélje le a *{scope}* értéket az egyéni szerepkör első `assignableScopes`ére.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
@@ -301,9 +301,9 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciókat – tö
 
 1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelynek az egyéni szerepkörét törölni szeretné.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 

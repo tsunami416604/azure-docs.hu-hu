@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314521"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137580"
 ---
-# <a name="apply-transformation-module"></a>Átalakítási modul alkalmazása
+# <a name="apply-transformation-module"></a>A alkalmazni átalakítási modul
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal módosíthatja a bemeneti adatkészletet egy korábban számított transzformáció alapján.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning támogatást nyújt számos különböző egyéni átalak
 
 ## <a name="how-to-use-apply-transformation"></a>Az átalakítás alkalmazása  
   
-1. Adja hozzá az **átalakítási modul alkalmazása** a folyamathoz lehetőséget. Ez a modul a **pontszám** kategóriában **Machine learning**alatt található. 
+1. Adja hozzá az **átalakítási modul alkalmazása** a folyamathoz lehetőséget. Ez a modul a **modell pontozási & kiértékelési** kategóriában található. 
   
-2. Keressen egy meglévő átalakítást bemenetként való használatra.  A korábban mentett átalakítások a bal oldali navigációs ablaktábla **átalakítások** csoportjában találhatók.  
+2. Keressen egy meglévő átalakítást bemenetként való használatra. A korábban mentett átalakítások a bal oldali modul fájának **adatkészletek kategóriája** alatt találhatók a **saját adatkészletek** csoportban.  
   
    
   

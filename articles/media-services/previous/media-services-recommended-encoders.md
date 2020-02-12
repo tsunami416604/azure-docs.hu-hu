@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886571"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131401"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
+
 Azure Media Services használatával folytatott élő közvetítésnél megadhatja, hogy a csatorna hogyan kapja meg a bemeneti adatfolyamot. Ha a helyszíni kódolót élő kódolási csatornával szeretné használni, a kódolónak kimenetként kell leküldenie egy kiváló minőségű, egysebességű adatfolyamot. Ha úgy dönt, hogy egy helyszíni kódolót használ egy átmenő csatornán keresztül, a kódolónak egy többszörös átviteli sebességű streamet kell leküldenie az összes kívánt kimeneti tulajdonsággal. További információ: [élő közvetítés helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 
+## <a name="encoder-requirements"></a>Kódolóval kapcsolatos követelmények
+
+A kódolók csak HTTPS-vagy RTMP-protokollok használata esetén támogatják a TLS 1,2-et.
+
+## <a name="live-encoders-that-output-rtmp"></a>Az RTMP kimenetét futtató élő kódolók 
+
 Azure Media Services javasolja a következő élő kódolók egyikének használatát, amelyeknek az RTMP as kimenete:
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast (13.0.2 vagy újabb verzió) a TLS 1,2-követelmény miatt
+
+  A kódolók számára a TLS 1,2-et a RTMP protokoll használatakor kell támogatni.
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure Media Services javasolja a következő élő kódolók egyikének használ
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Feldarabolt MP4 kimenetű élő kódolók 
+
 Azure Media Services azt javasolja, hogy a következő élő kódolók egyikét használja kimenetként a többszörös sávszélességű töredezett MP4 (Smooth Streaming).
+
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Elemi élő (a TLS 1,2-követelmény miatti 2.14.15 és újabb verzió)
+
+  HTTPS protokollok használata esetén a kódolóknak támogatniuk kell a TLS 1,2-et.
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services azt javasolja, hogy a következő élő kódolók egyikét 
 > Egy élő kódoló egy átviteli sebességű streamet küldhet egy átmenő csatornára, ez a konfiguráció azonban nem ajánlott, mivel nem teszi lehetővé az adaptív sávszélességű adatfolyam-továbbítást az ügyfél számára.
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>Helyszíni kódoló partner létrehozása
+
 Azure Media Services a helyszíni kódoló partnernek, Media Services népszerűsíti a terméket, ha a kódolót a nagyvállalati ügyfeleknek ajánlja. Ahhoz, hogy helyszíni kódoló partner legyen, ellenőriznie kell a helyszíni kódoló kompatibilitását Media Services használatával. Ehhez végezze el a következő ellenőrzéseket:
 
 Csatorna ellenőrzésének továbbítása

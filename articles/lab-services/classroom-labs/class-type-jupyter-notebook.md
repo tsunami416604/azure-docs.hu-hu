@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75530680"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133748"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 
@@ -30,7 +30,7 @@ A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van s
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)számára.
+Engedélyezze az alábbi táblázatban ismertetett beállításokat a labor-fiókhoz. A Piactéri lemezképek engedélyezésével kapcsolatos további információkért lásd: a [piactér-rendszerképek elérhetővé tétele a labor-készítők](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)számára.
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ A tantermi labor beállításakor használja az alábbi táblázatban szereplő 
 | Tesztkörnyezet beállításai | Érték/utasítások |
 | ------------ | ------------------ |
 |Virtuális gép mérete| Kis GPU (számítás). Ez a méret a legjobb megoldás a nagy számítási igényű és a hálózati igényű alkalmazások, például a mesterséges intelligencia és a mély tanulás számára. |
-|Virtuálisgép-rendszerkép| Adatelemző virtuális gép – Windows 2016|
+|Virtuálisgép-rendszerkép| Data Science Virtual Machine – Windows 2016|
 
 ## <a name="template-machine"></a>Sablon számítógép
 
@@ -54,7 +54,7 @@ A [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft
 
 Az osztály beállításához fennmaradó feladat a helyi jegyzetfüzetek biztosítása.  Az Azure Machine Learning minták használatával kapcsolatos útmutatásért lásd: [környezet konfigurálása Jupyter notebookokkal](../../machine-learning/how-to-configure-environment.md#jupyter).  Saját jegyzetfüzeteket is megadhat a sablon számítógépén.  A jegyzetfüzeteket a rendszer a sablon közzétételekor másolja az összes tanulói gépre.
 
-## <a name="cost-estimate"></a>Becsült költség
+## <a name="cost-estimate"></a>Költségbecslés
 
 Az osztályra vonatkozó lehetséges költségbecslés.  25 tanulós osztályt fogunk használni.  20 órányi ütemezett idő van.  Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára.  A kiválasztott virtuálisgép-méret kisméretű GPU (számítás) volt, amely 139 Lab egység.
 

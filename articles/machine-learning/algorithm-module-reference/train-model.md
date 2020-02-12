@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548407"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137926"
 ---
-# <a name="train-model-module"></a>Betanítási modell modul
+# <a name="train-model-module"></a>Tanítási modell modulhoz
 
 Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
@@ -39,7 +39,7 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
 
 3. A betanítás befejezése után használja a betanított modellt az egyik [pontozási modullal](./score-model.md), hogy előrejelzéseket készítsen az új adatmennyiségekről.
 
-## <a name="how-to-use-train-model"></a>A **Train Model** használata  
+## <a name="how-to-use-train-model"></a>A Train Model használata 
   
 1.  Azure Machine Learning a besorolási modell vagy a regressziós modell konfigurálása.
     
@@ -49,7 +49,7 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
 
     A betanítási adatkészlet címkét tartalmazó oszlopot kell tartalmaznia. A címkék nélküli sorok figyelmen kívül lesznek hagyva.
   
-4.  A **label (címke) oszlopban**kattintson az **oszlop kiválasztásának indítása**elemre, és válasszon ki egy olyan oszlopot, amely tartalmazza a modell által betanítható eredményeket.
+4.  A **label (címke) oszlopban**kattintson az **oszlop szerkesztése** elemre a modul jobb oldali paneljén, és válasszon ki egy olyan oszlopot, amely tartalmazza a modell által a képzéshez használható eredményeket.
   
     - Besorolási problémák esetén a Label oszlopnak **kategorikus** értékeket vagy **különálló** értékeket kell tartalmaznia. Néhány példa lehet igen/nem minősítés, a betegség besorolási kódja vagy neve, vagy egy bevételi csoport.  Ha nem kategorikus oszlopot választ, a modul a betanítás során hibát ad vissza.
   

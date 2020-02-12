@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312199"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137504"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
-Ez a cikk a Azure Machine Learning Designer részét képező modult ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
 
 Az adatkészletek oszlopaihoz társított metaadatok módosításához használja az adatok szerkesztése modult. Az adatkészlet értéke és adattípusa a metaadatok szerkesztése modul használata után módosul.
 
@@ -40,9 +40,9 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 ## <a name="configure-edit-metadata"></a>Metaadatok szerkesztésének konfigurálása
   
-1. A Azure Machine Learningban adja hozzá a metaadatok szerkesztése modult a folyamathoz, és kapcsolódjon a frissíteni kívánt adatkészlethez. Az adatkészletet a **manipulálás** kategóriában találja az **adatátalakítás** alatt.
+1. A Azure Machine Learning Designerben adja hozzá a metaadatok szerkesztése modult a folyamathoz, és kapcsolódjon a frissíteni kívánt adatkészlethez. A modult az **Adatátalakítási** kategóriában találja.
   
-1. Válassza az oszlopok **elindítása** lehetőséget, majd válassza ki az oszlopot vagy az oszlopok készletét, hogy működjön a használatával. Az oszlopokat egyenként is kiválaszthatja név vagy index alapján, vagy az oszlopok csoportját típus szerint is kiválaszthatja.  
+1. A modul jobb oldali paneljén kattintson az **oszlop szerkesztése** elemre, és válassza ki az oszlopot vagy az oszlopok készletét, amelyekkel dolgozni szeretne. Az oszlopokat egyenként is kiválaszthatja név vagy index alapján, vagy az oszlopok csoportját típus szerint is kiválaszthatja.  
   
 1. Válassza az **adattípus** lehetőséget, ha egy másik adattípust kell hozzárendelni a kijelölt oszlopokhoz. Előfordulhat, hogy módosítania kell az adattípust bizonyos műveletekhez. Ha például a forrás-adatkészlet szövegként kezelt számokat tartalmaz, a matematikai műveletek használata előtt módosítania kell őket egy numerikus adattípusra.
 

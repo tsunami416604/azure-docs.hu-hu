@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018992"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137730"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-A [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag használatával hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Példa:
+A [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag használatával hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Például:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -57,7 +57,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -66,30 +66,14 @@ A szkript először egy erőforráscsoportot hoz létre az USA keleti régiójá
 |Paraméter         |Leírás |
 |------------------|------------|
 |ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-|Földrajzi egység |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak-Európában**vagy Nyugat- **Európai** régióban, illetve **Ausztráliában** vagy **Ázsia és a csendes-óceáni térség** földrajzi régióban.  |
+|Hely |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**, **Európában**vagy **Egyesült Államok** földrajzi régiókban.  |
 |Name (Név)              |Az alkalmazás neve a Azure Portalban. |
-|altartomány         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
-|Termékváltozat               |Jelenleg használhatja a **ST1** vagy a **ST2**. Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
-|displayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
+|Subdomain         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
+|SKU               |Jelenleg használhatja a **ST1** vagy a **ST2**. Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot. |
+|DisplayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Alkalmazás-sablonok**
-
-| Sablon neve            | Leírás |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el.
-| iotc-pnp-preview@1.0.0   | Létrehoz egy üres Plug and Play (előzetes verzió) alkalmazást, amely a saját eszközök sablonjaival és eszközeivel tölthető fel. |
-| iotc-condition@1.0.0     | Létrehoz egy alkalmazást egy áruházbeli elemzés – feltétel-figyelési sablonnal. Ezzel a sablonnal csatlakozhat és figyelheti a tárolási környezetet. |
-| iotc-consumption@1.0.0   | Létrehoz egy alkalmazást a víz-felhasználási megfigyelési sablonnal. Ezzel a sablonnal figyelheti és szabályozhatja a víz áramlását. |
-| iotc-distribution@1.0.0  | Létrehoz egy alkalmazást egy digitális terjesztési sablonnal. Ezzel a sablonnal a fő eszközök és műveletek digitalizing javíthatja a raktár kimeneti hatékonyságát. |
-| iotc-inventory@1.0.0     | Egy intelligens leltár-felügyeleti sablonnal rendelkező alkalmazást hoz létre. Ezzel a sablonnal automatizálhatja a fogadást, a termékek mozgatását, a ciklusok leltározását és az érzékelők nyomon követését. |
-| iotc-logistics@1.0.0     | Létrehoz egy alkalmazást egy csatlakoztatott logisztikai sablonnal. Ezzel a sablonnal valós időben nyomon követheti a szállítást a levegő, a víz és a föld között, ahol a hely és a feltétel figyelése történik. |
-| iotc-meter@1.0.0         | Létrehoz egy alkalmazást az intelligens mérőműszer-figyelési sablonnal. Ezzel a sablonnal figyelheti az energiafogyasztást, a hálózati állapotot, és azonosíthatja a trendeket az ügyfélszolgálat és az Intelligens Fogyasztásmérők felügyeletének javítása érdekében.  |
-| iotc-patient@1.0.0       | Létrehoz egy alkalmazást folyamatos beteg-figyelési sablonnal. Ezzel a sablonnal kiterjesztheti a betegellátás, a visszafogadás és a betegségek kezelését. |
-| iotc-power@1.0.0         | Létrehoz egy alkalmazást a napelemes figyelési sablonnal. Ezzel a sablonnal figyelhetők a napelemek állapota, az energiatermelés trendjei. |
-| iotc-quality@1.0.0       | Létrehoz egy alkalmazást a vízminőség-figyelési sablonnal. Ez a sablon a víz minőségének digitális figyelésére használható.|
-| iotc-store@1.0.0         | Létrehoz egy alkalmazást egy áruházbeli elemzés – pénztár sablonnal. Ezzel a sablonnal figyelheti és kezelheti a pénztári folyamatot a tárolón belül. |
-| iotc-waste@1.0.0         | Egy csatlakoztatott hulladékkezelési sablonnal rendelkező alkalmazást hoz létre. Ezzel a sablonnal figyelhetők a hulladéktároló tárolók és a küldő mezők operátorai. |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central-alkalmazások megtekintése
 
@@ -107,7 +91,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Alkalmazás eltávolítása
 
-IoT Central alkalmazás törléséhez használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmagot. Példa:
+IoT Central alkalmazás törléséhez használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmagot. Például:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

@@ -1,5 +1,5 @@
 ---
-title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára az Azure RBAC és a Azure Portal használatával
+title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása a RBAC és a Azure Portal rendelkező külső felhasználók számára
 description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz a szervezeten kívüli felhasználók számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707882"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138380"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára az Azure RBAC és a Azure Portal használatával
 
@@ -165,7 +165,7 @@ Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el k
 
 1. Kattintson az eltávolítani kívánt vendég felhasználóra.
 
-1. Kattintson a **Törlés** gombra.
+1. Kattintson a **Delete** (Törlés) gombra.
 
    ![Vendég felhasználó törlése](./media/role-assignments-external-users/delete-guest-user.png)
 

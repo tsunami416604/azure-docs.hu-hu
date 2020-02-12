@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989841"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133833"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -177,16 +177,16 @@ Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-képeket [Azure
 
 A Azure Disk Encryption [Red Hat egyéni rendszerképeken](/linux/redhat-create-upload-vhd)nem támogatott. A [Linux rendszerű virtuális gépekhez Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements)további ade-követelmények és előfeltételek vannak dokumentálva.
 
-A Azure Disk Encryption alkalmazására vonatkozó lépések a [Linux rendszerű virtuális gépeken és a kapcsolódó cikkeken Azure Disk Encryption forgatókönyvekben](../../linux/disk-encryption-linux.md) érhetők el.  
+A Azure Disk Encryption alkalmazására vonatkozó lépések a [Linux rendszerű virtuális gépeken és a kapcsolódó cikkeken Azure Disk Encryption forgatókönyvekben](../../linux/disk-encryption-linux.md) érhetők el.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - Ha olyan előfizetésre próbál létrehozni egy virtuális gépet, amely nincs engedélyezve ehhez az ajánlathoz, a következő hibaüzenetet kapja:
 
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     Ebben az esetben forduljon a Microsoft vagy a Red Hat szolgáltatáshoz, és engedélyezze az előfizetését.
 
 - Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:

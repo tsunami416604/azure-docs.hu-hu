@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963290"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138129"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>A regresszió használata az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
 
@@ -31,8 +31,8 @@ A képzési gépi tanulási modell alapvető lépései a következők:
 
 1. Az adatok lekérése
 1. Az adatfeldolgozás előkezelése
-1. A modell tanítása
-1. A modell értékelése
+1. A modell betanítása
+1. A modell kiértékelése
 
 Itt látható a folyamat utolsó, befejezett gráfja. Ez a cikk az összes modul indoklását tartalmazza, így a hasonló döntéseket saját maga is megteheti.
 
@@ -57,11 +57,11 @@ A sok hiányzó értékkel rendelkező normalizált veszteségek kizárásához 
 
 ![Adatfeldolgozás előtti](./media/how-to-designer-sample-regression-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>A modell tanítása
+## <a name="train-the-model"></a>A modell betanítása
 
 A gépi tanulási problémák változhatnak. Az általános gépi tanulási feladatok közé tartoznak a besorolási, fürtözési, regressziós és ajánlott rendszerek, amelyek mindegyike más algoritmust igényelhet. Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Az algoritmus kiválasztása után a paramétereket a pontosabb modell betanításához kell hangolnia. Ezután ki kell értékelnie az összes modellt, például a pontosságot, az érthetőséget és a hatékonyságot mutató mérőszámok alapján.
 
-Mivel a minta célja a személygépkocsik árának előrejelzése, és mivel a Label (ár) oszlop valós számokat tartalmaz, a regressziós modell jó választás. Figyelembe véve, hogy a szolgáltatások száma viszonylag kicsi (kevesebb, mint 100), és ezek a funkciók nem ritkák, a döntési határ valószínűleg nem lineáris. Ezért ehhez a folyamathoz a **döntési erdő regresszióját** használjuk.
+Mivel a minta célja, hogy előre megjósolja az autó árát, és mivel a Label (ár) oszlop folyamatos adat, a regressziós modell jó választás lehet. Ehhez a folyamathoz **lineáris regressziót** használunk.
 
 Az **adatok felosztása** modul használatával véletlenszerűen oszthatja meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 70%-át, a tesztelési adatkészlet pedig az eredeti adatok 30%-át tartalmazza.
 

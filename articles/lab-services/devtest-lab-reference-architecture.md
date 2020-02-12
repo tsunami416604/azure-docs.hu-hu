@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982114"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132850"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs a vállalatok hivatkozási architektúrája
 Ez a cikk olyan hivatkozási architektúrát tartalmaz, amely a vállalatok Azure DevTest Labs alapján történő központi telepítésében nyújt segítséget. A következőket tartalmazza:
@@ -41,7 +41,7 @@ Ezek a hivatkozási architektúra legfontosabb elemei:
     - A felhőalapú környezet összes hálózati forgalmát a biztonsági/megfelelőségi helyszíni tűzfalon keresztül szeretné kényszeríteni.
 - **Hálózati biztonsági csoportok**: a forrás-és cél IP-címek alapján a Felhőbeli környezet (vagy a felhőalapú környezet) forgalmának korlátozása egy [hálózati biztonsági csoport](../virtual-network/security-overview.md)használata. Tegyük fel például, hogy csak a vállalati hálózatról származó forgalmat kívánja engedélyezni a tesztkörnyezet hálózatai között.
 - **Távoli asztali átjáró**: a vállalatok általában letiltják a kimenő távoli asztali kapcsolatokat a vállalati tűzfalon. Számos lehetőség áll rendelkezésre a DevTest Labs felhőalapú környezetéhez való kapcsolódás engedélyezéséhez, beleértve a következőket:
-  - Használjon [Távoli asztali átjárót](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), és engedélyezze az átjáró terheléselosztó statikus IP-címét.
+  - Használjon [Távoli asztali átjárót](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), és engedélyezze az átjáró Load Balancer statikus IP-címét.
   - A ExpressRoute/helyek közötti VPN-kapcsolaton keresztül [irányítsa az összes bejövő RDP-forgalmat](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) . Ez a funkció közös szempont, ha a vállalatok DevTest Labs-telepítést terveznek.
 - **Hálózati szolgáltatások (virtuális hálózatok, alhálózatok)** : az [Azure hálózati](../networking/networking-overview.md) topológiája egy másik kulcsfontosságú elem a DevTest Labs architektúrában. Azt szabályozza, hogy a laborból származó erőforrások kommunikálhatnak-e, és hozzáférnek-e a helyszíni és az internethez. Az architektúra ábránk a leggyakoribb módszereket tartalmazza, amelyekkel az ügyfelek a DevTest Labs szolgáltatást használják: az összes labor [virtuális hálózati](../virtual-network/virtual-network-peering-overview.md) kapcsolaton keresztül csatlakozik egy [sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használatával a EXPRESSROUTE/helyek közötti VPN-kapcsolathoz a helyszíni környezethez. A DevTest Labs azonban közvetlenül az Azure Virtual Network-t használja, így nincs korlátozás a hálózati infrastruktúra beállításával kapcsolatban.
 - **DevTest Labs**: a DevTest Labs a teljes architektúra kulcsfontosságú része. További információ a szolgáltatásról: [About DevTest Labs](devtest-lab-overview.md).
@@ -50,7 +50,7 @@ Ezek a hivatkozási architektúra legfontosabb elemei:
 ## <a name="scalability-considerations"></a>Méretezési szempontok
 Bár a DevTest Labs nem rendelkezik beépített kvótákkal vagy korlátozásokkal, a laborok tipikus működésében használt egyéb Azure-erőforrásokhoz [előfizetési szintű kvóták](../azure-resource-manager/management/azure-subscription-service-limits.md)tartoznak. Tehát egy tipikus vállalati környezetben több Azure-előfizetésre van szükség a DevTest Labs nagyméretű üzembe helyezésének biztosításához. A vállalatok által leggyakrabban elérhető kvóták a következők:
 
-- **Erőforráscsoportok**: az alapértelmezett konfigurációban a DevTest Labs létrehoz egy erőforráscsoportot minden új virtuális géphez, vagy a felhasználó létrehoz egy környezetet a szolgáltatás használatával. Az előfizetések [akár 980 erőforráscsoportot](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)is tartalmazhatnak. Tehát a virtuális gépek és a környezetek korlátja egy előfizetésben. Két másik konfigurációt kell figyelembe vennie:
+- **Erőforráscsoportok**: az alapértelmezett konfigurációban a DevTest Labs létrehoz egy erőforráscsoportot minden új virtuális géphez, vagy a felhasználó létrehoz egy környezetet a szolgáltatás használatával. Az előfizetések [akár 980 erőforráscsoportot](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)is tartalmazhatnak. Tehát a virtuális gépek és a környezetek korlátja egy előfizetésben. Két másik konfigurációt kell figyelembe vennie:
     - **[Az összes virtuális gép ugyanarra az erőforráscsoporthoz kerül](resource-group-control.md)** : bár ez a telepítő segít az erőforráscsoport-korlátnak való megfelelésben, hatással van az erőforrás típusú erőforrás-csoportra vonatkozó korlátra.
     - **Megosztott nyilvános IP**-címek használata: az azonos méretű és régiót használó virtuális gépek ugyanabba az erőforráscsoporthoz kerülnek. Ez a konfiguráció "középutat" az erőforráscsoport-kvóták és az erőforrás-típus/erőforrás-csoport kvótái között, ha a virtuális gépek számára engedélyezett a nyilvános IP-címek használata.
 - **Erőforrások**erőforráscsoport szerinti erőforrásai: az erőforrás-csoportonként az erőforrások alapértelmezett korlátja [800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Ha az *összes virtuális gépet ugyanarra az erőforráscsoport* -konfigurációra használja, a felhasználók sokkal hamarabb elérik ezt az előfizetést, különösen akkor, ha a virtuális gépek sok további lemezzel rendelkeznek.

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159872"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138016"
 ---
-# <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
+# <a name="securing-paas-deployments"></a>A Pásti üzembe helyezésének biztonságossá tétele
 
 Ez a cikk segítséget nyújt a következőkhöz:
 
@@ -36,7 +36,7 @@ A [biztonságos alkalmazások fejlesztése az Azure](abstract-develop-secure-app
 ## <a name="cloud-security-advantages"></a>Felhőbeli biztonsági előnyök
 Fontos megérteni az Ön és a Microsoft közötti [felelősség megosztását](shared-responsibility.md) . A helyszíni, a teljes verem tulajdonosa, de a felhőbe való áttérés során bizonyos felelősségek a Microsoft felé irányulnak.
 
-[A felhőben biztonsági előnyökkel jár](shared-responsibility.md#cloud security advantages). A helyszíni környezetben a szervezetek valószínűleg kielégítetlen felelősséggel rendelkeznek, és korlátozott erőforrásokkal ruházzák fel a biztonságot, ami olyan környezetet hoz létre, amelyben a támadók kihasználhatják a biztonsági réseket minden rétegben.
+[A felhőben biztonsági előnyökkel jár](shared-responsibility.md#cloud-security-advantages). A helyszíni környezetben a szervezetek valószínűleg kielégítetlen felelősséggel rendelkeznek, és korlátozott erőforrásokkal ruházzák fel a biztonságot, ami olyan környezetet hoz létre, amelyben a támadók kihasználhatják a biztonsági réseket minden rétegben.
 
 A szervezetek a szolgáltató felhőalapú biztonsági képességeivel és a Felhőbeli intelligenciával javíthatják a fenyegetések észlelését és a válaszadás időpontját.  A felelősségi körök felhőbe való áthelyezésével a szervezetek nagyobb biztonsági lefedettséggel rendelkezhetnek, ami lehetővé teszi, hogy a biztonsági erőforrásokat és a költségvetést más üzleti prioritásokhoz lehessen rendelni.
 
@@ -98,13 +98,13 @@ A Microsoft [biztonsági fejlesztési életciklusa](https://www.microsoft.com/en
 
 A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure-szolgáltatásokat használó megoldásokra. Ezek a enyhítések nem fognak működni minden helyzetben.
 
-| Threat | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
+| Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | --- | --- | --- |
-| Hamisítási | Hitelesítés | HTTPS-kapcsolatok megkövetelése. |
-| Módosítás | Integritás | Ellenőrizze az SSL-tanúsítványokat. |
+| Hamisítási | Authentication | HTTPS-kapcsolatok megkövetelése. |
+| Illetéktelen módosításának | Integritás | Ellenőrizze az SSL-tanúsítványokat. |
 | Letagadhatóság | Nem megtagadási | Az Azure [monitorozásának és diagnosztizálásának](/azure/architecture/best-practices/monitoring)engedélyezése. |
 | Információk közzététele | Titoktartási | Bizalmas adatok titkosítása a [szolgáltatás tanúsítványainak](/rest/api/appservice/certificates)használatával. |
-| Szolgáltatás megtagadása | Elérhetőség | Teljesítmény-mérőszámok figyelése a lehetséges szolgáltatásmegtagadási feltételekhez. A kapcsolatok szűrőinek implementálása. |
+| Szolgáltatás megtagadása | Rendelkezésre állás | Teljesítmény-mérőszámok figyelése a lehetséges szolgáltatásmegtagadási feltételekhez. A kapcsolatok szűrőinek implementálása. |
 | Jogosultsági szint emelése | Engedélyezés | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)használata. |
 
 ## <a name="develop-on-azure-app-service"></a>Fejlesztés Azure App Service
@@ -119,7 +119,7 @@ A App Service használatának ajánlott eljárásai a következők:
 **Részletek**: a hozzáférés korlátozása elengedhetetlen azoknak a szervezeteknek, akik biztonsági házirendeket kívánnak kikényszeríteni az adatok eléréséhez. A RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés-kezeléssel](/azure/role-based-access-control/overview).
 
 **Ajánlott eljárás**: a kulcsok védelmének biztosítása.   
-**Részletek**: a Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A fokozott biztonság érdekében lehetőség van a kulcsok importálására és létrehozására is a HSM-ekben. További információ: [Azure Key Vault](/azure/key-vault/key-vault-overview) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
+**Részletek**: a Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](/azure/key-vault/key-vault-overview) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
 
 **Ajánlott eljárás**: a bejövő forrás IP-címeinek korlátozása.   
 **Részletek**: a [app Service Environment](/azure/app-service/environment/intro) virtuális hálózati integrációs funkcióval rendelkezik, amely a bejövő forrás IP-címeinek hálózati biztonsági csoportokon keresztüli korlátozására nyújt segítséget. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure-beli virtuális hálózattal](/azure/app-service/web-sites-integrate-with-vnet).

@@ -14,29 +14,28 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7bb3db4861842e145689682035adc3c691538adf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: afc0fcb6751a08b41010fa569c67a9827e0abec0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297803"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131925"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Haivision KB Live Encoder használatával  
 > [!div class="op_single_selector"]
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
 Ebből a témakörből megtudhatja, hogyan konfigurálhatja a [HAVISION kb élő kódoló](https://www.haivision.com/products/kb-series/) kódolóját úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
-Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux rendszeren, az Azure portal használatával hozzon létre [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
+Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux operációs rendszert használ, [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md)létrehozásához használja a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 *   Hozzáférés egy Haivision KB-kódolóhoz, amely az SW v 5.01-es vagy újabb verzióját futtatja.
-* [Az Azure Media Services-fiók létrehozása](media-services-portal-create-account.md)
-* Győződjön meg arról, van egy folyamatos átviteli végponton fut-e. További információkért lásd: [adatfolyam-továbbítási végpontok kezelése egy Media Services-fiók](media-services-portal-manage-streaming-endpoints.md)
-* Telepítse a legújabb verzióját a [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) eszközt.
+* [Azure Media Services fiók létrehozása](media-services-portal-create-account.md)
+* Győződjön meg arról, van egy folyamatos átviteli végponton fut-e. További információ: [streaming-végpontok kezelése Media Services-fiókban](media-services-portal-manage-streaming-endpoints.md)
+* Telepítse a [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) eszköz legújabb verzióját.
 * Indítsa el az eszközt, és csatlakozzon az AMS-fiók.
 
 ## <a name="tips"></a>Tippek
@@ -45,10 +44,10 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az 
 * Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
 
 ## <a name="create-a-channel"></a>Csatorna létrehozása
-1. Az AMSE eszköz navigáljon a **élő** lapra, majd kattintson a jobb gombbal a csatorna területen belül. Válassza ki **csatorna létrehozása...** a menüből.
+1. A AMSE eszközben navigáljon az **élő** lapra, és kattintson a jobb gombbal a csatorna területére. Válassza a **csatorna létrehozása... lehetőséget.** a menüből.
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. Adjon meg egy csatorna nevét, a Leírás mező kitöltése nem kötelező. Csatorna beállítások területén válassza ki a **Standard** a Live Encoding funkcióval beállítást is választja, a bemeneti protokoll beállítása **RTMP**. Hagyhatja, hogy a többi beállítás-jébe. Győződjön meg arról, hogy a **most indítsa el az új csatorna** van kiválasztva.
-3. Kattintson a **csatorna létrehozása**.
+2. Adjon meg egy csatorna nevét, a Leírás mező kitöltése nem kötelező. A Channel Settings (csatorna beállításai) területen válassza a **standard** lehetőséget a Live Encoding beállításnál, a bemeneti protokollt pedig az **RTMP**értékre állítva. Hagyhatja, hogy a többi beállítás-jébe. Győződjön meg arról, hogy az **új csatorna elindítása most** lehetőség van kiválasztva.
+3. Kattintson a **csatorna létrehozása**gombra.
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]
@@ -58,34 +57,34 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az 
 Ebben az oktatóanyagban a következő kimeneti beállításokat használják. Ez a szakasz a többi konfigurációs lépések részletesebben ismerteti.
 
 Videó:
--   Codec H.264
--   Profil Magas (4,0-as szint)
--   Sávszélességű 5000 kbps
--   Keyframe 2 másodperc (60-es keret)
--   Keret sebessége: 30
+-   Kodek: H.264
+-   Profil: High (4.0-s szint)
+-   Átviteli sebesség: 5000 KB/s
+-   Kulcsképek: 2 másodperc (60-es keret)
+-   Keret arány: 30
 
 Hang
--   Codec AAC (LC)
--   Sávszélességű 192 kbps
--   Mintavételezési arány: 44,1 kHz
+-   Kodekkel: Az AAC (LC)
+-   Átviteli sebesség: 192 Kb/s
+-   Mintavételi gyakoriság: 44,1 kHz
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 1.  Jelentkezzen be a Haivision KB felhasználói felületére.
 2.  Kattintson a Channel Control Center **menü gombjára** , majd válassza a **csatorna hozzáadása** elemet.  
-    ![Képernyőkép a 2017-08-14-es 9.15.09](./media/media-services-configure-kb-live-encoder/step2.png)
+    ![képernyőkép 2017-08-14 a következő helyen: 9.15.09 AM](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  Írja be a **csatorna nevét** a név mezőbe, és kattintson a Tovább gombra.  
-    ![Képernyőkép a 2017-08-14-es 9.19.07](./media/media-services-configure-kb-live-encoder/step3.png)
+    ![képernyőkép 2017-08-14 a következő helyen: 9.19.07 AM](./media/media-services-configure-kb-live-encoder/step3.png)
 4.  Válassza ki a **csatorna bemeneti forrását** a **bemeneti forrás** legördülő menüből, és kattintson a Tovább gombra.
-    ![Képernyőkép a 2017-08-14-es 9.20.44](./media/media-services-configure-kb-live-encoder/step4.png)
+    ![képernyőkép 2017-08-14 a következő helyen: 9.20.44 AM](./media/media-services-configure-kb-live-encoder/step4.png)
 5.  A **kódoló sablon** legördülő menüből válassza a **H264-720-AAC-192** elemet, majd kattintson a Tovább gombra.
-    ![Képernyőkép a 2017-08-14-es 9.23.15](./media/media-services-configure-kb-live-encoder/step5.png)
+    ![képernyőkép 2017-08-14 a következő helyen: 9.23.15 AM](./media/media-services-configure-kb-live-encoder/step5.png)
 6.  Az **új kimenet kiválasztása** legördülő menüből válassza az **RTMP** elemet, majd kattintson a Tovább gombra.  
-    ![Képernyőkép a 2017-08-14-es 9.27.51](./media/media-services-configure-kb-live-encoder/step6.png)
-7.  A **csatorna kimenete** ablakban töltse ki az Azure stream-információkat. Illessze be a **RTMP** hivatkozást a **kiszolgáló** területének kezdeti csatornájának beállításához. A **kimeneti név** területen adja meg a csatorna nevét. Az adatfolyam neve sablon területen használja a (z)% video_bitrate% sablon RTMPStreamName_ a stream elnevezéséhez.
-    ![Képernyőkép a 2017-08-14-es 9.33.17](./media/media-services-configure-kb-live-encoder/step7.png)
+    ![képernyőkép 2017-08-14 a következő helyen: 9.27.51 AM](./media/media-services-configure-kb-live-encoder/step6.png)
+7.  A **csatorna kimenete** ablakban töltse ki az Azure stream-információkat. Illessze be a **RTMP** hivatkozást a **kiszolgáló** területének kezdeti csatornájának beállításához. A **kimeneti név** területen adja meg a csatorna nevét. Az adatfolyam neve sablon területen használja a RTMPStreamName_% video_bitrate% sablont a stream elnevezéséhez.
+    ![képernyőkép 2017-08-14 a következő helyen: 9.33.17 AM](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Kattintson a Tovább gombra, majd kattintson a kész gombra.
 9.  A kódoló csatorna elindításához kattintson a **Lejátszás gombra** .  
-    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
+    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Teszt lejátszás
 Keresse meg az AMSE eszköz, és kattintson a jobb gombbal a csatorna tesztelését. A menüben vigye az egérmutatót az előnézet lejátszásához, és válassza a Azure Media Player lehetőséget.

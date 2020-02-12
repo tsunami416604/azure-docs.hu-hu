@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546690"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137550"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -63,7 +63,7 @@ Ez a funkció azért hasznos, mert egyszerűen össze lehet hasonlítani két k�
 2. Kapcsolja össze a pontszám modell modul kimenetét a második modellhez a **modell kiértékelése**jobb oldali bemenetével.
 3. A folyamat futtatása.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A **kiértékelési modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a **kiértékelési eredmények megjelenítése** lehetőséget az eredmények megtekintéséhez.
 
@@ -76,14 +76,14 @@ Az alábbi ábrán például az azonos adatokra épülő két fürtözött model
 
 Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 
-+ [besorolási modellek](#bkmk_classification)
-+ [regressziós modellek](#bkmk_regression)
++ [besorolási modellek](#metrics-for-classification-models)
++ [regressziós modellek](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>Besorolási modellek metrikái
+### <a name="metrics-for-classification-models"></a>Besorolási modellek metrikái
 
 A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során. Ha összehasonlítja a modelleket, azokat a kiértékeléshez kiválasztott metrika rangsorolja.  
   
@@ -101,7 +101,7 @@ A következő metrikákat kell jelenteni a besorolási modellek kiértékelése 
   
 - A **betanítási naplók elvesztésének** egyetlen pontszáma, amely az osztályozó előnyeit jelöli véletlenszerű előrejelzéssel. A napló elvesztése a modell bizonytalanságát méri, ha összehasonlítja az általa az ismert értékekre (a talajjal igaz) vonatkozó valószínűségeket a címkékben. A modell egészére vonatkozóan szeretné csökkenteni a napló elvesztését.
 
-##  <a name="bkmk_regression"></a>Regressziós modellek metrikái
+### <a name="metrics-for-regression-models"></a>Regressziós modellek metrikái
  
 A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becslésére lettek kialakítva.  A modell akkor tekinthető megfelelőnek, ha a megfigyelt és az előre jelzett értékek közötti különbség kicsi. A maradékok mintázatának (az egy előre jelzett pont és a hozzá tartozó tényleges érték közötti különbség) megvizsgálása azonban sokat jelenthet a modell lehetséges torzításával kapcsolatban.  
   
@@ -115,7 +115,7 @@ A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becsl�
   
 - A **relatív négyzetes hiba (RSE)** hasonló módon normalizálja az előre jelzett értékek teljes négyzetes hibáját azáltal, hogy a tényleges értékek teljes négyzetes hibáját választja.  
   
-- **Nulla egy hiba (MZOE)** azt jelzi, hogy az előrejelzés helyes-e vagy sem.  Más szóval: `ZeroOneLoss(x,y) = 1`, ha `x!=y`; Ellenkező esetben `0`.
+
   
 - A **meghatározási együttható**(más néven R<sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
   

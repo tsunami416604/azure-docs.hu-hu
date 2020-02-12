@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451226"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134053"
 ---
-# <a name="azure-serial-console"></a>Azure soroz konzol
+# <a name="azure-serial-console"></a>Azure soros konzol
 
-A Azure Portal soros konzolja hozzáférést biztosít a virtuális gépek (VM-EK) és virtuálisgép-méretezési csoport példányaihoz, amelyek Linux vagy Windows rendszert futtatnak. A soros kapcsolat a virtuális gép vagy virtuálisgép-méretezési csoportpéldány ttyS0- vagy COM1-es soros portjához kapcsolódik, ezáltal a hálózattól és a futtatott operációs rendszertől független hozzáférést biztosít. A soros konzol csak a Azure Portal használatával érhető el, és csak azon felhasználók számára engedélyezett, akik a virtuális gép vagy a virtuálisgép-méretezési csoport számára a közreműködő vagy annál magasabb hozzáférési szerepkörrel rendelkeznek.
+A Azure Portal soros konzolja hozzáférést biztosít a virtuális gépek (VM-EK) és virtuálisgép-méretezési csoport példányaihoz, amelyek Linux vagy Windows rendszert futtatnak. Ez a soros kapcsolat a virtuális gép vagy a virtuálisgép-méretezési csoport példányának ttyS0 vagy COM1 soros portjához csatlakozik, és a hálózat vagy az operációs rendszer állapotának független hozzáférést biztosít. A soros konzol csak a Azure Portal használatával érhető el, és csak azon felhasználók számára engedélyezett, akik a virtuális gép vagy a virtuálisgép-méretezési csoport számára a közreműködő vagy annál magasabb hozzáférési szerepkörrel rendelkeznek.
 
 A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport példányai esetében is ugyanúgy működik. Ebben a doc-ban a virtuális gépekre vonatkozó összes említés implicit módon tartalmazza a virtuálisgép-méretezési csoport példányait, hacsak másként nincs megadva.
 
@@ -38,24 +38,24 @@ A soros konzol virtuális gépen vagy virtuálisgép-méretezési csoport péld�
 - A soros konzolhoz hozzáférő Azure-fióknak rendelkeznie kell [virtuálisgép-közreműködő szerepkörrel](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) mind a virtuális gép, mind a [rendszerindítási diagnosztika](boot-diagnostics.md) Storage-fiókhoz.
 
 > [!NOTE]
-> - A klasszikus központi telepítések nem támogatottak. A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Azure Resource Manager telepítési modellt kell használnia.
+> Klasszikus üzemi modellben nem támogatottak. A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Azure Resource Manager telepítési modellt kell használnia.
 
 ## <a name="get-started-with-the-serial-console"></a>Ismerkedés a soros konzollal
 A virtuális gépek és a virtuálisgép-méretezési csoport soros konzolja csak a Azure Portal érhető el:
 
 ### <a name="serial-console-for-virtual-machines"></a>Virtual Machines soros konzolja
 A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támogatás + hibaelhárítás** szakaszának **Serial consoleére** kattintva.
-  1. Nyissa meg az [Azure portált](https://portal.azure.com).
+  1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuális gépet. Megnyílik a virtuális gép áttekintő lapja.
 
-  1. Görgessen le a **támogatás + hibaelhárítás** szakaszhoz, és válassza a **Serial Console**lehetőséget. Megnyílik egy új ablaktábla a soros konzollal, és elindítja a kapcsolatát.
+  1. Görgessen le a **támogatás + hibaelhárítás** szakaszhoz, és válassza a **Serial Console**lehetőséget. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
      ![Linux soros konzol ablak](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets soros konzolja
 A soros konzol a méretezési csoport minden példányán elérhető a virtuálisgép-méretezési csoportokhoz. A **Serial Console** gomb meglátása előtt navigáljon a virtuálisgép-méretezési csoport egyes példányaira. Ha a virtuálisgép-méretezési csoport nem rendelkezik engedélyezve a rendszerindítási diagnosztika szolgáltatással, frissítse a virtuálisgép-méretezési csoport modelljét a rendszerindítási diagnosztika engedélyezéséhez, majd frissítse az összes példányt az új modellre a soros konzol eléréséhez.
-  1. Nyissa meg az [Azure portált](https://portal.azure.com).
+  1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuálisgép-méretezési készletet. Megnyílik a virtuálisgép-méretezési csoport Áttekintés lapja.
 
@@ -63,9 +63,40 @@ A soros konzol a méretezési csoport minden példányán elérhető a virtuáli
 
   1. Virtuálisgép-méretezési csoport példányának kiválasztása
 
-  1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget. Megnyílik egy új ablaktábla a soros konzollal, és elindítja a kapcsolatát.
+  1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
      ![Linuxos virtuálisgép-méretezési csoport soros konzolja](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+## <a name="serial-console-rbac-role"></a>Soros konzol RBAC szerepköre
+A fentiekben leírtaknak megfelelően a soros konzolhoz virtuálisgép-közreműködő vagy nagyobb hozzáférés szükséges a virtuális gép vagy a virtuálisgép-méretezési csoport számára. Ha nem szeretné, hogy a virtuális gép közreműködője legyen a felhasználónak, de továbbra is engedélyezni szeretné egy felhasználó számára a soros konzol elérését, ezt a következő szerepkörrel teheti meg:
+
+```
+{
+  "Name": "Serial Console Role",
+  "IsCustom": true,
+  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
+  "Actions": [
+      "Microsoft.Compute/virtualMachines/*/write",
+      "Microsoft.Compute/virtualMachines/*/read",
+      "Microsoft.Storage/storageAccounts/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<subscriptionId>"
+  ]
+}
+```
+
+### <a name="to-create-and-use-the-role"></a>A szerepkör létrehozása és használata:
+*   Mentse a JSON-t egy ismert helyen – például `~/serialconsolerole.json`.
+*   A szerepkör-definíció létrehozásához használja a következő az CLI-parancsot: `az role definition create --role-definition serialconsolerole.json -o=json`
+*   Ha frissítenie kell a szerepkört, használja a következő parancsot: `az role definition update --role-definition serialconsolerole.json -o=json`
+*   A szerepkör Access Control (IAM) jelenik meg a portálon (a propagálás eltarthat néhány percig)
+*   Hozzáadhat felhasználókat a virtuális géphez és a rendszerindítási diagnosztika Storage-fiókhoz az egyéni szerepkör szerepkörrel.
+    *   Vegye figyelembe, hogy a felhasználónak meg kell adni az egyéni szerepkört a virtuális gépen és a rendszerindítási diagnosztika Storage *-* fiókjában.
+
 
 ## <a name="advanced-uses-for-serial-console"></a>A soros konzol speciális felhasználási módjai
 A konzolhoz való hozzáféréstől eltekintve a következőhöz is használhatja az Azure soros konzolt:

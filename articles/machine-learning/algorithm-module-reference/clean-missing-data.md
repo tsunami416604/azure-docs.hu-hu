@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314470"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137559"
 ---
 # <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal törölheti, lecserélheti vagy következtetheti ki a hiányzó értékeket. 
 
@@ -37,11 +37,11 @@ Ez a modul a hiányzó értékek tisztításához használt átalakítás defin�
 
 ## <a name="how-to-use-clean-missing-data"></a>A tiszta hiányzó adatértékek használata
 
-Ez a modul lehetővé teszi a tisztítási művelet definiálását. A tisztítási műveletet úgy is mentheti, hogy később új adatként is alkalmazható legyen. A takarítási folyamat létrehozásának és mentésének leírását az alábbi hivatkozásokon tekintheti meg: 
+Ez a modul lehetővé teszi a tisztítási művelet definiálását. A tisztítási műveletet úgy is mentheti, hogy később új adatként is alkalmazható legyen. A takarítási folyamat létrehozásáról és mentéséhez a következő részekben talál további információt: 
  
-+ Hiányzó értékek cseréje
++ [Hiányzó értékek cseréje](#replace-missing-values)
   
-+ Takarítási átalakítás alkalmazása új adatértékekre
++ [Takarítási átalakítás alkalmazása új adatértékekre](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > A hiányzó értékek kezelésére használt tisztítási módszer jelentősen befolyásolhatja az eredményeket. Javasoljuk, hogy kísérletezzen különböző módszerekkel. Vegye fontolóra egy adott módszer használatának indoklását, valamint az eredmények minőségét.
@@ -56,12 +56,9 @@ Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodu
 
     Például a hiányzó értékek kereséséhez az összes numerikus oszlopban:
 
-    1. Nyissa meg az oszlop-választót, és válassza **a szabályokkal**lehetőséget.
-    2. A **kezdéshez**válassza a **nincs oszlop**lehetőséget.
+    1. Válassza ki a **tiszta hiányzó** adatmodult, majd kattintson a modul jobb oldali paneljén található **Szerkesztés oszlopra** .
 
-        Az összes OSZLOPOT is elindíthatja, majd kihagyhatja az oszlopokat. Kezdetben a szabályok nem jelennek meg, ha először a **minden oszlop**elemre kattint, de a **nem oszlopok** elemre kattint, majd a **minden oszlop** újra elemre kattintva elindíthatja az összes oszlopot, majd kiszűrheti (kizárhatja) az oszlopokat a név, az adattípus vagy az oszlopok indexe alapján.
-
-    3. A **include (Belefoglalás**) mezőben válassza ki az **oszlop típusát** a legördülő listából, majd válassza a **numerikus**lehetőséget, vagy egy konkrétabb numerikus típust. 
+    3. A **include (Belefoglalás**) mezőben válassza ki az **oszlopok típusai** elemet a legördülő listából, majd válassza a **numerikus**lehetőséget. 
   
     Minden kiválasztott tisztítási vagy helyettesítési módszernek a kijelölés **összes** oszlopára érvényesnek kell lennie. Ha valamelyik oszlopban lévő adatok nem kompatibilisek a megadott művelettel, a modul hibát ad vissza, és leállítja a folyamatot.
   
@@ -109,13 +106,13 @@ Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodu
   
 6. Ha a beállítás, az **Egyéni helyettesítési**érték lehetőség van kiválasztva, a lehetőség **helyettesítő értéke** elérhető. Írjon be egy új értéket, amelyet helyettesítő értékként kíván használni az oszlopban található összes hiányzó értékhez.  
   
-    Vegye figyelembe, hogy ezt a beállítást csak egész számmal, dupla, logikai vagy dátum adattípusú oszlopokban használhatja. A Date oszlopokban a helyettesítő érték a 100 – ns kullancsok számaként is megadható a 1/1/0001 12:00 óra óta  
+    Vegye figyelembe, hogy ezt a beállítást csak egész számmal, dupla, logikai vagy sztring típusú oszlopokban használhatja.
   
 7. **Hiányzó érték jelző oszlop létrehozása**: válassza ezt a beállítást, ha azt szeretné, hogy az oszlopban szereplő értékek megfelelnek a hiányzó érték tisztításának feltételeinek. Ez a beállítás különösen akkor hasznos, ha új tisztítási műveletet állít be, és szeretné meggyőződni arról, hogy az a tervezett módon működik-e.
   
 8. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A modul két kimenetet ad vissza:  
 

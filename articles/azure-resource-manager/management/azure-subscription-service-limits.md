@@ -3,13 +3,13 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087416"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133705"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -28,8 +28,6 @@ Az erőforrásnevek korlátozásait lásd: [Az Azure-erőforrások elnevezési s
 ## <a name="limits-and-azure-resource-manager"></a>Korlátok és Azure Resource Manager
 
 Egyszerre több Azure-erőforrást is egyesítheti egyetlen Azure-erőforráscsoporthoz. Az erőforráscsoportok használatakor a korlátozásokat a rendszer a globálisan a Azure Resource Managertel rendelkező regionális szinten felügyeli. További információ az Azure-erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](overview.md)).
-
-A következő korlátok listájában az új táblázat a Azure Resource Manager használatakor felmerülő eltéréseket mutatja. Például van egy **előfizetési korlát** tábla és egy **előfizetési korlát – Azure Resource Manager** tábla. Ha a korlát mindkét forgatókönyvre vonatkozik, csak az első táblázatban látható. Hacsak másként nincs jelezve, a korlátok globálisak az összes régióban.
 
 > [!NOTE]
 > Az Azure-erőforráscsoportok erőforrásainak kvótái régiónként elérhetők az előfizetés, nem pedig előfizetések esetén, a Service Management kvótái. Vegyük példaként a vCPU-kvótákat. A vCPU támogatásával a kvóta növeléséhez el kell döntenie, hogy hány vCPU kíván használni a régiókban. Ezután egy konkrét kérést fog kérni az Azure-erőforráscsoport kvótáinak vCPU a kívánt mennyiségekhez és régiókhoz. Ha a Nyugat-Európában 30 vCPU kell használnia az alkalmazás futtatásához, akkor külön 30 vCPU-t kér Nyugat-Európában. A vCPU-kvóta nem növekszik más régiókban – csak Nyugat-Európában a 30 vCPU kvóta.
@@ -115,13 +113,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Előfizetés korlátai – Azure Service Management (klasszikus üzembehelyezési modell)
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>Előfizetési korlátok – Azure Resource Manager
-
-Azure Resource Manager és Azure-erőforráscsoportok használatakor a következő korlátozások érvényesek. A Azure Resource Manager nem módosított korlátok nincsenek felsorolva. Ezeket a korlátokat az előző táblázatban tekintheti meg.
+Azure Resource Manager és Azure-erőforráscsoportok használatakor a következő korlátozások érvényesek.
 
 További információ a Resource Manager API olvasási és írási korlátairól: a [Resource Manager-kérelmek szabályozása](request-limits-and-throttling.md).
 
@@ -485,6 +477,12 @@ SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Dat
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
 
 SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+
+### <a name="classic-deployment-model-limits"></a>Klasszikus üzembehelyezési modell korlátai
+
+Ha a Azure Resource Manager telepítési modell helyett a klasszikus üzemi modellt használja, a következő korlátozások érvényesek.
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>Lásd még
 

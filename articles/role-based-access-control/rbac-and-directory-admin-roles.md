@@ -1,5 +1,5 @@
 ---
-title: A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök | Microsoft Docs
+title: A klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure AD-szerepkörök
 description: A különböző Azure-beli szerepköröket írja le – A hagyományos előfizetés-rendszergazdai szerepköröket, az Azure szerepkör-alapú hozzáférésvezérlési (RBAC-) szerepköröket, és az Azure Active Directory- (Azure AD-) rendszergazdai szerepköröket
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979312"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138077"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök
 

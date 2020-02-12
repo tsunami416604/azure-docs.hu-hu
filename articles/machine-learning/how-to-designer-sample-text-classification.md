@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963241"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137787"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Osztályozó létrehozása a vállalati kategória előrejelzéséhez Azure Machine Learning Designer használatával.
 
@@ -39,11 +39,11 @@ A betanítási gépi tanulási modellek szöveges adattal való alapvető lépé
 
    A Text (szöveg) funkciót a numerikus funkcióba konvertálhatja a szolgáltatás kibontási modulja, például a szolgáltatások kivonatolása, az n-Gram funkció kinyerése a szöveges adatokból.
 
-1. A modell tanítása
+1. A modell betanítása
 
 1. Pontszám adatkészlet
 
-1. A modell értékelése
+1. A modell kiértékelése
 
 Itt látható a folyamat utolsó, befejezett gráfja. Biztosítjuk az összes modul indoklását, így a hasonló döntéseket saját maga is megteheti.
 
@@ -63,7 +63,7 @@ Egyes vállalatoknak nem találhatók cikkek, így a rekordok száma kevesebb, m
 
 ## <a name="pre-process-the-text-data"></a>A szöveges adatértékek előzetes feldolgozása
 
-Az **előfeldolgozási szöveg** modul használatával elődolgozhatja a szöveges adatbevitelt, beleértve a mondatok észlelését, a tokenize mondatokat és így tovább. A [**szöveg előfeldolgozása**](algorithm-module-reference/preprocess-text.md) című cikkben szereplő összes támogatott beállítás megtalálható. A TeX-adatok előfeldolgozása után az **adatok felosztása** modul használatával véletlenszerűen oszthatja meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 50%-át, a tesztelési adatkészlet pedig az eredeti adatok 50%-át tartalmazza.
+Az **előfeldolgozási szöveg** modul használatával elődolgozhatja a szöveges adatbevitelt, beleértve a mondatok észlelését, a tokenize mondatokat és így tovább. A [**szöveg előfeldolgozása**](algorithm-module-reference/preprocess-text.md) című cikkben szereplő összes támogatott beállítás megtalálható. A szöveges adatok előzetes feldolgozását követően az **adatok felosztása** modul használatával véletlenszerűen oszthatja meg a bemeneti adatokat, így a betanítási adatkészlet az eredeti adatok 50%-át, a tesztelési adatkészlet pedig az eredeti adatok 50%-át tartalmazza.
 
 ## <a name="feature-engineering"></a>Szolgáltatások mérnöki
 Ebben a példában két módszert használunk a szolgáltatások fejlesztéséhez.
@@ -79,11 +79,11 @@ A mintavételi folyamat során a kivonatoló bitek számát állítsa 14-re, és
 
 Az n-Gram egy adott szövegrész n kifejezésének folytonos sorozata. Az 1. méretű n-grammos unigram nevezik. a 2. méretű n-gramm egy bigram; a 3. méretű n-gramm trigram. A nagyobb méretű n-grammot esetenként az n érték, például a "négy gramm", az "öt gramm" és így tovább.
 
-Az [**N-Gram funkciót a szöveges**](algorithm-module-reference/extract-n-gram-features-from-text.md)modulból egy másik megoldásként használták a funkció mérnöki környezetében. Ez a modul először kibontja az n-gramm értéket az n-grammon kívül, azon dokumentumok számát, amelyekben minden n-Gram megjelenik a szövegben (DF). Ebben a példában a TF-IDF mérőszámot használjuk a funkciók értékének kiszámításához. Ezután átalakítja a strukturálatlan szöveges adatmennyiséget az azonos hosszúságú numerikus funkciós vektorokra, ahol mindegyik funkció egy n-Gram TF-IDF-értékét jelöli egy szöveges példányban.
+Az [**N-Gram funkciót a szöveges**](algorithm-module-reference/extract-n-gram-features-from-text.md) modulból egy másik megoldásként használták a funkció mérnöki környezetében. Ez a modul először kibontja az n-gramm értéket az n-grammon kívül, azon dokumentumok számát, amelyekben minden n-Gram megjelenik a szövegben (DF). Ebben a példában a TF-IDF mérőszámot használjuk a funkciók értékének kiszámításához. Ezután átalakítja a strukturálatlan szöveges adatmennyiséget az azonos hosszúságú numerikus funkciós vektorokra, ahol mindegyik funkció egy n-Gram TF-IDF-értékét jelöli egy szöveges példányban.
 
 A szöveges adatok numerikus szolgáltatásbeli vektorokra való konvertálása után az **Oszlop kiválasztása** modul használatával távolíthatja el a szöveges adatokat az adatkészletből. 
 
-## <a name="train-the-model"></a>A modell tanítása
+## <a name="train-the-model"></a>A modell betanítása
 
 Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Mivel ennek a folyamatnak a célja a vállalat kategóriájának előrejelzése, a többosztályos osztályozó modell jó választás. Figyelembe véve, hogy a szolgáltatások száma nagy, és ezek a funkciók ritkák, a **többosztályos logisztikai regressziós** modellt használjuk ehhez a folyamathoz.
 

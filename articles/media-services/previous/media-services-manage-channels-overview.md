@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895953"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131603"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Az élő közvetítés áttekintése Media Services használatával
 
@@ -55,13 +55,13 @@ Az Azure Media Services szolgáltatásokban a **csatornák**, a **programok** é
 
 A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalmát dolgozza fel. A csatornák a következő módokon képesek egy élő adatfolyam-továbbítás bemenetét fogadni:
 
-* A helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) tartalmakat küldenek a csatornának, amely **áteresztő** továbbításra van konfigurálva. Az **áteresztő** továbbítás azt jelenti, hogy a feldolgozott adatfolyamok további feldolgozás nélkül haladnak át a **csatornán**. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: Adobe Flash Media Live Encoder (FMLE), Stream Wirecast, Haivision, Teradek és Tricaster transcoders.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) tartalmakat küldenek a csatornának, amely **áteresztő** továbbításra van konfigurálva. Az **áteresztő** továbbítás azt jelenti, hogy a feldolgozott adatfolyamok további feldolgozás nélkül haladnak át a **csatornán**. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: stream Wirecast, Haivision, Teradek és Tricaster transcoders.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
   > [!NOTE]
   > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
   > 
   > 
-* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy élő kódolást végezzen Media Services az alábbi formátumok valamelyikével: RTMP vagy Smooth Streaming (töredezett MP4). A következő, RTMP kimenettel rendelkező élő kódolók ismertek, hogy az ilyen típusú csatornákkal működnek: Wirecast, FMLE. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy élő kódolást végezzen Media Services az alábbi formátumok valamelyikével: RTMP vagy Smooth Streaming (töredezett MP4). A következő, RTMP-kimenettel rendelkező élő kódolók ismertek az ilyen típusú csatornákkal való együttműködésre: a Wirecast. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja, hogy a csatorna milyen módon kapja meg a bemeneti adatfolyamot, és hogy szeretné-e, hogy a csatorna élő kódolást végezzen a streamben. Erre két lehetősége van:
 
@@ -72,13 +72,13 @@ A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja,
 
 Az alábbi táblázat a Media Services által támogatott két csatorna típusának összehasonlítását ismerteti.
 
-| Szolgáltatás | Áteresztő csatorna | Standard szintű csatorna |
+| Funkció | Áteresztő csatorna | Standard szintű csatorna |
 | --- | --- | --- |
 | Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
 | Maximális felbontás, rétegek száma |1080p, 8 réteg, 60 + fps |720p, 6 réteg, 30 fps |
 | Bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Ár |Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre. |Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximális futási idő |A hét minden napján, 24 órában elérhető |8 óra |
+| Maximális futási idő |nonstop |8 óra |
 | A beágyazások behelyezésének támogatása |Nem |Igen |
 | Az ad-jelzés támogatása |Nem |Igen |
 | Átmenő CEA 608/708 feliratok |Igen |Igen |
@@ -138,20 +138,20 @@ Ha a csatornát továbbra is le szeretné állítani a számlázási adatokból,
 >
 
 ### <a id="states"></a>Csatornák állapota és a számlázási módra való leképezésük módja
-Csatorna aktuális állapota. A lehetséges értékek:
+Egy csatorna aktuális állapota. A lehetséges értékek:
 
-* **Leállítva**. Ez a csatorna kezdeti állapota a létrehozás után (kivéve, ha az autostart ki lett választva a portálon.) Ebben az állapotban nem történik számlázás. Ebben az állapotban a csatorna tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.
-* **Kezdés**: A csatorna indítás alatt van. Ebben az állapotban nem történik számlázás. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Hiba esetén a csatorna Leállított állapotra vált.
-* **Fut**. A csatorna élő streamek feldolgozására alkalmas állapotban van. Most már számlázási használat. A további számlázás elkerülése érdekében le kell állítania a csatornát.
-* **Leállítás folyamatban**. A csatorna leállítás alatt van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
-* **Törlés**folyamatban. A csatorna törlés alatt van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
+* **Leállítva**. Ez a csatorna kezdeti állapota a létrehozás után (kivéve, ha az autostart ki lett választva a portálon.) Ebben az állapotban nem történik számlázás. Ebben az állapotban a csatorna tulajdonságai frissíthetők, de a folyamatos átvitel nem engedélyezett.
+* **Kezdés**: A csatorna indítása folyamatban van. Ebben az állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel. Ha hiba történik, a csatorna visszaállított állapotba tér vissza.
+* **Fut**. A csatorna képes az élő streamek feldolgozására. Most már számlázási használat. A további számlázás elkerülése érdekében le kell állítania a csatornát.
+* **Leállítás folyamatban**. A csatorna leállítása folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
+* **Törlés**folyamatban. A csatorna törlése folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
 
-Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében miként alakul a számlázási mód.
+Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhetők le a számlázási módra.
 
-| Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázási? |
+| Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázási? |
 | --- | --- | --- |
-| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
+| Indítás |Indítás |Nem (átmeneti állapot) |
+| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 

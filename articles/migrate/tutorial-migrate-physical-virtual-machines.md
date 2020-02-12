@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan telepíthet át fizikai gépeket az Azu
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069523"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134942"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -61,9 +61,6 @@ Az oktatóanyag elkezdése előtt:
 Azure-engedélyek beállítása a Azure Migrate-kiszolgáló áttelepítésével történő Migrálás előtt.
 
 - **Projekt létrehozása**: az Azure-fióknak rendelkeznie kell egy Azure Migrate projekt létrehozásához szükséges engedélyekkel. 
-- **Regisztrálja a Azure Migrate replikációs berendezést**: a replikációs készülék létrehoz és regisztrál egy Azure Active Directory alkalmazást az Azure-fiókjában. Engedélyek delegálása ehhez.
-- **Key Vault létrehozása**: a gépek áttelepíthetők, Azure Migrate létrehoz egy Key Vault az erőforráscsoporthoz, hogy a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezelhesse. A tároló létrehozásához szerepkör-hozzárendelési engedélyekre van szükség ahhoz az erőforráscsoporthoz, amelyben az Azure Migrate-projekt található. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
 
@@ -73,43 +70,6 @@ Azure-engedélyek beállítása a Azure Migrate-kiszolgáló áttelepítésével
     - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Engedélyek kiosztása a replikációs berendezés regisztrálásához
-
-Az ügynök-alapú áttelepítés esetében Azure Migrate kiszolgáló áttelepítésére vonatkozó engedélyeket delegálhat az Azure AD-alkalmazás létrehozásához és regisztrálásához a fiókjában. Engedélyeket a következő módszerek egyikével rendelhet hozzá:
-
-- A bérlők/globális rendszergazdák engedélyeket adhatnak a bérlő felhasználói számára az Azure AD-alkalmazások létrehozásához és regisztrálásához.
-- A bérlői/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét (amely rendelkezik engedélyekkel) a fiókhoz.
-
-Érdemes megjegyezni, hogy:
-
-- Az alkalmazások nem rendelkeznek más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
-- Ezeket az engedélyeket csak akkor kell megadnia, amikor új replikációs berendezést regisztrál. Az engedélyeket a replikációs berendezés beállítása után távolíthatja el. 
-
-
-#### <a name="grant-account-permissions"></a>Fiók engedélyeinek megadása
-
-A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket.
-
-1. Az Azure AD-ben a bérlői/globális rendszergazdának **Azure Active Directory** > **felhasználó** > **felhasználói beállításokat**kell megkeresnie.
-2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** .
-
-    ![Azure AD-engedélyek](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása 
-
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
-
-## <a name="assign-permissions-to-create-key-vault"></a>Engedélyek kiosztása Key Vault létrehozásához
-
-Rendeljen szerepkör-hozzárendelési engedélyeket azon az erőforráscsoporthoz, amelyben az Azure Migrate-projekt található, a következőképpen:
-
-1. A Azure Portal erőforráscsoporthoz válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez. Szüksége van a **tulajdonos** (vagy a **közreműködő** és a **felhasználói hozzáférés rendszergazdai**) engedélyeire.
-3. Ha nem rendelkezik a szükséges engedélyekkel, kérje meg őket az erőforráscsoport tulajdonosától. 
-
 ## <a name="prepare-for-migration"></a>Előkészületek a migráláshoz
 
 ### <a name="check-machine-requirements-for-migration"></a>A gép követelményeinek ellenõrzése az áttelepítéshez
@@ -117,7 +77,7 @@ Rendeljen szerepkör-hozzárendelési engedélyeket azon az erőforráscsoportho
 Győződjön meg arról, hogy a gépek megfelelnek az Azure-ba való Migrálás követelményeinek. 
 
 > [!NOTE]
-> Az ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésével a Azure Site Recovery szolgáltatás szolgáltatásain alapul. Néhány követelmény Site Recovery dokumentációra mutató hivatkozásokat is tartalmazhat.
+> Az ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésével ugyanazzal a replikációs architektúrával rendelkezik, mint a Azure Site Recovery szolgáltatás ügynök-alapú vész-helyreállítási funkciója, és a felhasznált összetevők némelyike ugyanazzal a kóddal van megosztva. Néhány követelmény Site Recovery dokumentációra mutató hivatkozásokat is tartalmazhat.
 
 1. [Ellenőrizze](migrate-support-matrix-physical-migration.md#physical-server-requirements) a fizikai kiszolgáló követelményeit.
 2. A virtuális gép beállításainak ellenőrzése. Az Azure-ba replikált helyszíni számítógépeknek meg kell felelniük az Azure-beli [virtuális gépek követelményeinek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).

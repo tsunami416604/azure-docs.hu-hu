@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482555"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132050"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone-képek beszerzése a drone-partnerektől
 
@@ -22,7 +22,7 @@ Jelenleg a következő képkeresési partnerek támogatottak.
 
 A drone-képek Azure FarmBeats-mel való integrálása segít a farmon végzett orthomosaic adatok beszerzésében a datahub. Miután az elérhetővé válik, megtekintheti a FarmBeats-gyorsító szolgáltatásban. Az adatok az adatfúzióhoz, valamint a mesterséges intelligencia és a gépi tanulási modellek létrehozásához használhatók.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
   - Győződjön meg arról, hogy telepítette az Azure FarmBeats-t. További információ a FarmBeats telepítéséről: az [Azure FarmBeats telepítése](install-azure-farmbeats.md).
   - Győződjön meg arról, hogy rendelkezik a farmhoz, amelyhez a FarmBeats-rendszeren definiált drone-képeket szeretné megadni.
@@ -38,7 +38,7 @@ Adja meg az alábbi információkat az eszköz szolgáltatójának az FarmBeats 
 Kövesse az alábbi lépéseket.
 
 1. Töltse le a [szkriptet](https://aka.ms/farmbeatspartnerscript), és bontsa ki a helyi meghajtóra. A zip-fájlban két fájl található.
-2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Azure Cloud Shellt. Ez a lehetőség a portál jobb felső sarkában található eszköztáron érhető el.
+2. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és nyissa meg Azure Cloud shell. Ez a lehetőség a portál jobb felső sarkában található eszköztáron érhető el.
 
     ![Azure Cloud Shell megnyitása a portál jobb felső sávján](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -91,4 +91,4 @@ A drone-szolgáltató által feltöltött fájlok és rendszerképek megjelennek
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan használhatja a FarmBeats Datahub [API-kat](references-for-azure-farmbeats.md#rest-api) a drone-képek beszerzéséhez.
+Ismerje meg, hogyan használhatja a FarmBeats Datahub [API-kat](rest-api-in-azure-farmbeats.md) a drone-képek beszerzéséhez.

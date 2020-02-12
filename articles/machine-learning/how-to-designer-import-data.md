@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314028"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138152"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Adatai importálása Azure Machine Learning designerbe
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Az adatai importálása Azure Machine Learning designerbe (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan importálhat saját adatait a Designerben egyéni megoldások létrehozásához. Az adatgyűjtés kétféleképpen importálható a tervezőbe: 
 
@@ -45,7 +45,7 @@ A regisztrált adatkészletek a modul palettáján, a **saját Adatkészletek** 
 
 ![A mentett adatkészletek helyét bemutató képernyőkép a tervező palettán](media/how-to-designer-import-data/use-datasets-designer.png)
 
-A Machine learning-munkaterülethez regisztrált összes [adatkészlet](how-to-create-register-datasets.md#dataset-types) megjelenik a modul palettáján. Nem korlátozódik a Designerben létrehozott adatkészletek használatára.
+
 
 > [!NOTE]
 > A tervező jelenleg csak a [táblázatos adatkészletek](how-to-create-register-datasets.md#dataset-types)feldolgozását támogatja. Ha [fájl-adatkészleteket](how-to-create-register-datasets.md#dataset-types)szeretne használni, használja a Python és az R számára elérhető Azure Machine learning SDK-t.
@@ -78,7 +78,7 @@ A tervező belsőleg felismeri a következő adattípusokat:
 
 * Sztring
 * Egész szám
-* Decimális
+* tizedes tört
 * Logikai
 * Dátum
 

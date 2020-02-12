@@ -3,15 +3,15 @@ title: Felügyelt tárolói nyilvántartások
 description: Bevezetés az Azure Container Registry szolgáltatásba, amely felhőalapú, felügyelt és magán Docker-beállításjegyzékeket biztosít.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445733"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132032"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -21,7 +21,7 @@ Az Azure Container-jegyzékeket meglévő tároló-fejlesztési és üzembe hely
 
 A Docker-és a beállításjegyzék-fogalmakkal kapcsolatos további információkért tekintse meg a [Docker áttekintését](https://docs.docker.com/engine/docker-overview/) , valamint a [jegyzékek, a adattárak és a lemezképek ismertetését](container-registry-concepts.md).
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
@@ -34,14 +34,14 @@ Az ACR-feladatok konfigurálásával automatikusan újraépítheti az alkalmazá
 
 Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azure Portal és az API-támogatás az Azure Container-nyilvántartások kezeléséhez. Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
 
-## <a name="key-features"></a>Fő funkciók
+## <a name="key-features"></a>A legfontosabb jellemzők
 
 * **Beállításjegyzékbeli SKU** – hozzon létre egy vagy több tároló-beállításjegyzéket az Azure-előfizetésében. A beállításjegyzékek három SKU-ban érhetők el: [alapszintű, standard és prémium](container-registry-skus.md), amelyek mindegyike támogatja a webhook-integrációt, a beállításjegyzék hitelesítését Azure Active Directory és a törlési funkciót. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. 
 
 * **Biztonság és hozzáférés** – jelentkezzen be egy beállításjegyzékbe az Azure CLI vagy a standard `docker login` parancs használatával. Azure Container Registry a tároló lemezképeit HTTPS-kapcsolaton keresztül továbbítja, és támogatja a TLS-t az ügyfélkapcsolatok biztonságossá tételéhez. 
 
   > [!IMPORTANT]
-  > 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
+  > 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,2 engedélyezése a legutóbbi Docker-ügyfél (18.03.0 vagy újabb verzió) használatával. A TLS 1,0 és 1,1 támogatása megszűnik. 
 
   Egy tároló-beállításjegyzékhez való hozzáférést egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával [szabályozhatja](container-registry-authentication.md) . Szerepköralapú hozzáférés-vezérlés (RBAC) használatával felhasználók vagy rendszerek részletes engedélyeit rendelheti hozzá egy beállításjegyzékhez.
 

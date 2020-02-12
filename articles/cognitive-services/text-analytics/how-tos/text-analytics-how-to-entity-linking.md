@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774139"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137972"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -34,7 +34,7 @@ A nevesített entitások felismerése lehetővé teszi a különböző entitáso
 
 A Text Analytics API az elnevezett Entity Recognition-v2 és v3 két verzióját kínálja. A 3. verzió (nyilvános előzetes verzió) nagyobb részletességet biztosít az észlelhető és kategorizálható entitásokban.
 
-| Szolgáltatás                                                         | Felkerülő v2 | V3 |
+| Funkció                                                         | Felkerülő v2 | V3 |
 |-----------------------------------------------------------------|--------|--------|
 | Egyszeri és batch-kérelmek módszerei                          | X      | X      |
 | Alapszintű entitások felismerése több kategória között              | X      | X      |
@@ -44,52 +44,14 @@ A Text Analytics API az elnevezett Entity Recognition-v2 és v3 két verzióját
 
 További információért lásd a [nyelvi támogatást](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) ismertető témakört.
 
-#### <a name="version-2tabversion-2"></a>[2-es verzió](#tab/version-2)
 
-### <a name="entity-types"></a>Entitások típusai
+#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-> [!NOTE]
-> Az elnevezett entitások felismerése () 2-es verziója csak a következő entitásokat támogatja. Nyilvános előzetes verzióban érhető el, és nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
-
-| Type (Típus)  | Altípus | Példa |
-|:-----------   |:------------- |:---------|
-| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Földrajzi egység      | N/A\*         | „Redmond, Washington”, „Paris”  |
-| Szervezet  | N/A\*         | „Microsoft”   |
-| Mennyiség      | Szám        | „6”, „six”     |
-| Mennyiség      | Százalék    | „50%”, „fifty percent”|
-| Mennyiség      | Sorszám       | „2nd”, „second”     |
-| Mennyiség      | Kor           | "90 napos", "30 év régi"    |
-| Mennyiség      | Currency (Deviza)      | „$10.99”     |
-| Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
-| Mennyiség      | Hőmérséklet   | „32 degrees”    |
-| Dátum és idő      | N/A\*         | „6:30PM February 4, 2012”      |
-| Dátum és idő      | Dátum          | „May 2nd, 2017”, „05/02/2017”   |
-| Dátum és idő      | Idő          | "08:00", "8:00"  |
-| Dátum és idő      | Dátumtartomány     | „May 2nd to May 5th”    |
-| Dátum és idő      | Időtartomány     | „6pm to 7pm”     |
-| Dátum és idő      | Időtartam      | „1 minute and 45 seconds”   |
-| Dátum és idő      | Beállítás           | „every Tuesday”     |
-| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail cím         | N/A\*         | „support@contoso.com” |
-| Egyesült államokbeli telefonszám  | N/A\*         | (Csak az Egyesült államokbeli telefonszámok) "(312) 555-0176" |
-| IP-cím    | N/A\*         | 10.0.0.100 |
-
-\* a bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos entitások kihagyhatják a `SubType`.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
-
-### <a name="request-endpoints"></a>Kérelmek végpontjai
-
-Az elnevezett Entity Recognition v2 egyetlen végpontot használ az egyhelyes és az entitás-összekapcsolási kérelmekhez:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
-
-### <a name="entity-types"></a>Entitások típusai
+### <a name="entity-types"></a>Entitás típusa
 
 A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitások is felismerhetők:
 
-* Általános
+* Általános kérdések
 * Személyes adatok 
 
 A támogatott entitások és nyelvek részletes listáját a következő témakörben találja: a [támogatott entitások támogatása](../named-entity-types.md) .
@@ -110,6 +72,45 @@ Entitás összekapcsolása
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+
+### <a name="entity-types"></a>Entitás típusa
+
+> [!NOTE]
+> Az elnevezett entitások felismerése () 2-es verziója csak a következő entitásokat támogatja. Nyilvános előzetes verzióban érhető el, és nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
+
+| Típus  | Altípus | Példa |
+|:-----------   |:------------- |:---------|
+| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
+| Hely      | N/A\*         | "Redmond, Washington", "Párizs"  |
+| Szervezet  | N/A\*         | Microsoft   |
+| Mennyiség      | Szám        | "6", "hat"     |
+| Mennyiség      | Százalék    | "50%", "50 százalék"|
+| Mennyiség      | Sorszámok       | "2.", "Second"     |
+| Mennyiség      | Kor           | "90 napos", "30 év régi"    |
+| Mennyiség      | Currency (Pénznem)      | "$10,99"     |
+| Mennyiség      | Dimenzió     | "10 Miles", "40 cm"     |
+| Mennyiség      | Hőmérséklet   | "32 fok"    |
+| DateTime      | N/A\*         | "6:18. február 4., 2012"      |
+| DateTime      | Dátum          | "Május 2nd, 2017", "05/02/2017"   |
+| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | DateRange     | "Május 2. május 5."    |
+| DateTime      | TimeRange     | "18:00 – 19:00"     |
+| DateTime      | Időtartam      | "1 perc és 45 másodperc"   |
+| DateTime      | Beállítás           | "minden kedd"     |
+| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
+| E-mail         | N/A\*         | „support@contoso.com” |
+| Egyesült államokbeli telefonszám  | N/A\*         | (Csak az Egyesült államokbeli telefonszámok) "(312) 555-0176" |
+| IP-cím    | N/A\*         | 10.0.0.100 |
+
+\* a bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos entitások kihagyhatják a `SubType`.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
+
+### <a name="request-endpoints"></a>Kérelmek végpontjai
+
+Az elnevezett Entity Recognition v2 egyetlen végpontot használ az egyhelyes és az entitás-összekapcsolási kérelmekhez:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése
@@ -124,17 +125,10 @@ Minden dokumentumnak 5 120 karakterből kell állnia, és gyűjteményben legfel
 
 Hozzon létre egy POST-kérelmet. A következő hivatkozásokon a [Poster](text-analytics-how-to-call-api.md) vagy az **API-tesztelési konzol** használatával gyorsan feldolgozhatja és elküldheti az egyiket. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
 
-#### <a name="version-2tabversion-2"></a>[2-es verzió](#tab/version-2)
-
-[Nevesített entitások felismerése (megnevezett) v2 – dokumentáció](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-A 2. verzió a következő végpontot használja az entitás-összekapcsolási és a Meghívási kérelmekhez: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[3-as verzió](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 [Elnevezett Entity Recognition v3-dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 Entitás összekapcsolása
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+
+[Nevesített entitások felismerése (megnevezett) v2 – dokumentáció](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+A 2. verzió a következő végpontot használja az entitás-összekapcsolási és a Meghívási kérelmekhez: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Az összes POST kérelem egy JSON formátumú választ ad vissza az azonosítók
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-#### <a name="version-2tabversion-2"></a>[2-es verzió](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Példa a kiválasztó v2-re
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>V3-válaszok – példa
 
@@ -274,9 +240,46 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 }
 ```
 
+#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Példa a kiválasztó v2-re
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
+}
+```
+
 ---
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 

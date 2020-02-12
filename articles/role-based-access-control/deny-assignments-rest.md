@@ -1,6 +1,6 @@
 ---
-title: Listában elutasítása hozzárendelések Azure-erőforrások használatával a REST API – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan listában elutasítása a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure-erőforrások és a REST API-hozzárendeléseit.
+title: Azure-erőforrások megtagadási hozzárendeléseinek listázása a REST API
+description: Útmutató a felhasználók, csoportok és alkalmazások megtagadási hozzárendeléseinek listázásához szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrások és a REST API számára.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,77 +15,77 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e6214b3cb2cdca2d80ebae43771b206e3396d8b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118291"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137321"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Azure-erőforrások megtagadási hozzárendeléseinek listázása a REST API használatával
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk azt ismerteti, hogyan kell felsorolni megtagadása hozzárendelések a REST API használatával.
+A [hozzárendelések megtagadása](deny-assignments.md) esetén a felhasználók bizonyos Azure-erőforrás-műveleteket hajtanak végre, még akkor is, ha egy szerepkör-hozzárendelés hozzáférést biztosít Ez a cikk bemutatja, hogyan listázhatja a megtagadási hozzárendeléseket a REST API használatával.
 
 > [!NOTE]
-> Nem közvetlenül hozhat létre saját hozzárendelések elutasítása. Információ a nem engedélyezi a hozzárendelések jönnek létre, lásd: [hozzárendelések megtagadása](deny-assignments.md).
+> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: a [hozzárendelések megtagadása](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
+A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
-- `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read` engedély, amely az [Azure-erőforrások legtöbb beépített szerepkörében](built-in-roles.md)szerepel.
 
-## <a name="list-a-single-deny-assignment"></a>Egy listában elutasítása hozzárendelés
+## <a name="list-a-single-deny-assignment"></a>Egyetlen megtagadási hozzárendelés listázása
 
-1. Indítsa el a következő kérelmet:
+1. Kezdje a következő kéréssel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a Megtagadás hozzárendelések listázása.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre vonatkozóan meg szeretné jeleníteni a megtagadási hozzárendeléseket.
 
-    | Scope | Típus |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{Megtagadás-hozzárendelés-azonosító}* szeretné beolvasni, a Megtagadás hozzárendelés azonosítóval.
+1. Cserélje le a *{deny-hozzárendelés-ID}* helyet a lekérdezni kívánt megtagadási hozzárendelés-azonosítóra.
 
-## <a name="list-multiple-deny-assignments"></a>Több listában elutasítása hozzárendelések
+## <a name="list-multiple-deny-assignments"></a>Több megtagadási hozzárendelés listázása
 
-1. A kezdéshez válasszon egyet a következő kérelmet:
+1. Kezdje a következő kérelmek egyikével:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview
     ```
 
-    A választható paraméterek:
+    Választható paraméterekkel:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a Megtagadás hozzárendelések listázása.
+1. Az URI-n belül cserélje le a *{scope}* értéket arra a hatókörre, amelyre vonatkozóan meg szeretné jeleníteni a megtagadási hozzárendeléseket.
 
-    | Scope | Típus |
+    | Hatókör | Típus |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Előfizetés |
+    | `subscriptions/{subscriptionId}` | Előfizetést |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le *{szűrő}* azzal a feltétellel, hogy a Megtagadás hozzárendelés szűréséhez a alkalmazni szeretné.
+1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez.
 
     | Szűrés | Leírás |
     | --- | --- |
-    | (nincs szűrő) | Összes megtagadása hozzárendelések,:, kisebb és nagyobb a megadott hatókörben. |
-    | `$filter=atScope()` | Listában elutasítása hozzárendelések csak a megadott hatókörhöz vagy újabb. Nem tartalmazza a Megtagadás subscopes-hozzárendelést. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Listában elutasítása hozzárendelések a megadott néven. |
+    | (nincs szűrő) | A megadott hatókör alá tartozó összes megtagadási hozzárendelés listázása. |
+    | `$filter=atScope()` | Csak a megadott hatókörhöz és a fentiekhez tartozó megtagadási hozzárendelések listázása. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
+    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | A megadott nevű megtagadási hozzárendelések listázása. |
 
-## <a name="list-deny-assignments-at-the-root-scope-"></a>Listában elutasítása hozzárendelések a gyökérszintű hatókörben (/)
+## <a name="list-deny-assignments-at-the-root-scope-"></a>Megtagadási hozzárendelések listázása a gyökérszintű hatókörben (/)
 
-1. A hozzáférési szintjének emelése, leírtak szerint [az Azure Active Directoryban egy globális rendszergazda hozzáférési szintjének emelése](elevate-access-global-admin.md).
+1. Emelje meg a hozzáférést a [Azure Active Directory globális rendszergazdai jogosultságának jogosultságszint-emelése](elevate-access-global-admin.md)című témakörben leírtak szerint.
 
 1. Használja a következő kérelmet:
 
@@ -93,17 +93,17 @@ Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Cserélje le *{szűrő}* azzal a feltétellel, hogy a Megtagadás hozzárendelés szűréséhez a alkalmazni szeretné. Szűrő megadása kötelező.
+1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez. Szűrő szükséges.
 
     | Szűrés | Leírás |
     | --- | --- |
-    | `$filter=atScope()` | Listában elutasítása hozzárendelések csak a legfelső szintű hatókörhöz. Nem tartalmazza a Megtagadás subscopes-hozzárendelést. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Listában elutasítása hozzárendelések a megadott néven. |
+    | `$filter=atScope()` | Csak a gyökérszintű hatókörhöz tartozó megtagadási hozzárendelések listázása. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
+    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | A megadott nevű megtagadási hozzárendelések listázása. |
 
-1. Távolítsa el az emelt szintű hozzáférés.
+1. Emelt szintű hozzáférés eltávolítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Megismerheti az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md)
+- [Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése](deny-assignments.md)
 - [Globális rendszergazda jogosultságszintjének emelése az Azure Active Directoryban](elevate-access-global-admin.md)
 - [Azure REST API-referencia](/rest/api/azure/)

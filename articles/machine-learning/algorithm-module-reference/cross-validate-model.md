@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546707"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137533"
 ---
 # <a name="cross-validate-model"></a>Modell keresztellenőrzése
 
@@ -62,13 +62,13 @@ Ebben a forgatókönyvben a modellt többek között a modell betanításával �
 
 2. Bármely besorolási vagy regressziós modell kimenetének összekötése. 
 
-    Ha például **két Class Bayes-pontot** használ a besoroláshoz, konfigurálja a modellt a kívánt paraméterekkel. Ezután húzzon egy összekötőt az osztályozatlan **modell** portjáról a kereszt-ellenőrzési modell megfelelő portjára. 
+    Ha például **két osztályt használó döntési fát** használ a besoroláshoz, konfigurálja a modellt a kívánt paraméterekkel. Ezután húzzon egy összekötőt az osztályozatlan **modell** portjáról a kereszt-ellenőrzési modell megfelelő portjára. 
 
     > [!TIP] 
     > Nem kell betanítania a modellt, mert a kereszt-ellenőrzési modell automatikusan betanítja a modellt a kiértékelés részeként.  
 3.  A kereszt-ellenőrzési modell **adatkészletének** portjához csatlakoztasson bármely címkézett betanítási adatkészletet.  
 
-4.  A kereszt-ellenőrzési modell **Tulajdonságok** paneljén válassza az **oszlop kiválasztó indítása**elemet. Válassza ki az osztály címkéjét vagy a kiszámítható értéket tartalmazó egyetlen oszlopot. 
+4.  A kereszt-ellenőrzési modell jobb oldali paneljén kattintson az **oszlop szerkesztése**elemre. Válassza ki azt az egyetlen oszlopot, amely tartalmazza a osztály címkéjét vagy a kiszámítható értéket. 
 
 5. Állítsa be a **véletlenszerű mag** paraméter értékét, ha meg szeretné ismételni a több ellenőrzés eredményét egymást követő futtatásokban ugyanazon az adategységen.  
 
@@ -76,9 +76,7 @@ Ebben a forgatókönyvben a modellt többek között a modell betanításával �
 
 7. A jelentések leírását a [Results (eredmények](#results) ) című szakaszban találja.
 
-    A modell későbbi újrafelhasználáshoz való másolatának lekéréséhez váltson az algoritmust tartalmazó modul jobb oldali paneljének **kimenetek** lapjára (például a **két osztály Bayes pontja**). Ezután válassza az **adatkészlet regisztrálása** ikont a betanított modell másolatának mentéséhez a modul fájában.
-
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Az összes iteráció befejezése után a Cross validate Model a teljes adatkészlet pontszámait hozza létre. Emellett teljesítménymutatókat is létrehoz, amelyeket a modell minőségének felméréséhez használhat.
 
@@ -88,9 +86,9 @@ A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, v
 
 Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése**elemet.
 
-| Új oszlopnév      | Leírás                              |
+| Új oszlop neve      | Leírás                              |
 | -------------------- | ---------------------------------------- |
-| Pontozott címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
+| Pontozásos Címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
 | Pontozásos valószínűségek | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Azt jelzi, hogy az érték becsült valószínűsége a **pontozásos címkékben**. |
 | Fold száma          | A fold nulla alapú indexét jelzi, amelyet az egyes adatsorokhoz rendeltek a rendszer a kereszt-ellenőrzés során. |
 
@@ -103,7 +101,7 @@ Ebben a jelentésben a kidobások index érték szerint, növekvő sorrendben va
 Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki **a kiértékelési eredmények megjelenítése kidobással**lehetőséget.
 
 
-|Oszlop neve| Leírás|
+|oszlop neve| Leírás|
 |----|----|
 |Fold száma| Az egyes összecsukható azonosítók. Ha öt hajtogatást hozott létre, a 0 és 4 közötti számú adat öt részhalmaza lesz.
 |A kiszorzott példák száma|Az egyes hajtogatáshoz rendelt sorok száma Nagyjából egyenlőnek kell lenniük. |

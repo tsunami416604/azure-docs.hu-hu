@@ -1,5 +1,5 @@
 ---
-title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a REST API használatával
+title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása a RBAC és a REST API
 description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatával.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981036"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138313"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a REST API használatával
 
@@ -57,10 +57,10 @@ A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-
 
 1. Az URI-n belül cserélje le a *{scope}* értéket a szerepkör-hozzárendelés hatókörére.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
-    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}` | Előfizetést |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Erőforrás |
 
@@ -68,10 +68,10 @@ A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-
 
 1. A kérelem törzsében cserélje le a *{scope}* helyére a szerepkör-hozzárendelés hatókörét.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
-    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}` | Előfizetést |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Erőforrás |
 
@@ -93,10 +93,10 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 1. Az URI-n belül cserélje le a *{scope}* elemet a szerepkör-hozzárendelés eltávolítására szolgáló hatókörre.
 
-    | Hatókör | Type (Típus) |
+    | Hatókör | Típus |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Felügyeleti csoport |
-    | `subscriptions/{subscriptionId1}` | Előfizetés |
+    | `subscriptions/{subscriptionId1}` | Előfizetést |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Erőforrás |
 

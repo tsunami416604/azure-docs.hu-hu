@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ab68fc6533be5e3241de2e49652251fea5fe2f7d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780675"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77135160"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) illesztőprogramok
+### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) drivers
 
 Az NC-, NCv2-, NCv3-, ND-és NDv2-sorozatú virtuális gépek NVIDIA Tesla-(CUDA-) illesztőprogramjai csak az alábbi táblázatban felsorolt operációs rendszereken támogatottak. Az illesztőprogram-letöltési hivatkozások a kiadvány aktuális időpontjában jelennek meg. A legújabb illesztőprogramokért látogasson el az [NVIDIA](https://www.nvidia.com/) webhelyére.
 
@@ -37,9 +37,9 @@ A Microsoft a virtuális munkaállomásként vagy virtuális alkalmazásként ha
 Vegye figyelembe, hogy az NVIDIA-bővítmény mindig telepíti a legújabb illesztőprogramot. Az előző verzióra mutató hivatkozásokat biztosítunk azon ügyfelek számára, akik egy régebbi verziótól függenek.
 
 A Windows Server 2019, a Windows Server 2016 és a Windows 10 rendszerhez (akár Build 1909):
-- [Rács 10,0 (441,66)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
-- [Rács 9,0 (431,02)](https://download.microsoft.com/download/8/C/C/8CC88D54-EB07-44D3-8FA9-B797B173ED04/431.02_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
+- [Rács 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
+- [Rács 10,0 (441,66)](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
 
 Windows Server 2012 R2, Windows Server 2008 R2, Windows 8 és Windows 7 esetén: 
-- [Rács 10,0 (441,66)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
-- [Rács 9,1 (431,79)](https://download.microsoft.com/download/8/6/e/86ef2daa-b31e-43ad-90f2-bd795384b71e/431.79_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (. exe)  
+- [Rács 10,1 (442,06)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
+- [Rács 10,0 (441,66)](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (. exe)  

@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: Nem csatlakozó lemezek megkeresése
           href: find-unattached-disks.md
-        - name: Fájltároló használata
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: Lemezek – Gyakori kérdések
           href: faq-for-disks.md
     - name: Hálózatkezelés felügyelete

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571983"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137702"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>SSL-lezárás Key Vault tanúsítványokkal
 
@@ -34,6 +34,9 @@ Application Gateway integrációja Key Vault számos előnnyel jár, többek kö
 
 Application Gateway jelenleg csak a szoftveresen érvényesített tanúsítványokat támogatja. Hardveres biztonsági modul (HSM) – az érvényesített tanúsítványok nem támogatottak. Ha Application Gateway Key Vault tanúsítványok használatára van konfigurálva, a példányok lekérik a tanúsítványt a Key Vaultról, és helyileg telepítik az SSL-lezáráshoz. A példányok is lekérdezik Key Vault 24 órás időközönként a tanúsítvány megújított verziójának lekéréséhez, ha van ilyen. Ha a rendszer frissített tanúsítványt talál, a rendszer automatikusan elforgatja a HTTPS-figyelőhöz jelenleg társított SSL-tanúsítványt.
 
+> [!NOTE]
+> A Azure Portal csak a kulcstartó tanúsítványait támogatja, a titkokat nem. Application Gateway továbbra is támogatja a kulcstartóra hivatkozó titkokat, de csak olyan nem portálon keresztüli erőforrásokon keresztül, mint például a PowerShell, a CLI, az API, az ARM-sablonok stb. 
+
 ## <a name="how-integration-works"></a>Az integráció működése
 
 Application Gateway integrációja Key Vault megköveteli a három lépésből álló konfigurációs folyamatot:
@@ -52,6 +55,6 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
 
    ![Key Vault-tanúsítványok](media/key-vault-certs/ag-kv.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával](configure-keyvault-ps.md)

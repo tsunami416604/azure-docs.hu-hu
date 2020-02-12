@@ -4,49 +4,47 @@ description: Ebben az oktatóanyagban egy Linux rendszerű Azure-beli virtuális
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514646"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133320"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
 > [!NOTE]
 > Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ebben a cikkben egy Linux rendszerű Azure-beli virtuális gépet konfigurálunk olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik. Az átlátszó átjáró konfigurációja lehetővé teszi az eszközök számára, hogy az átjárón keresztül csatlakozzanak az Azure IoT Hubhoz anélkül, hogy az átjáró létezik. Ugyanakkor a IoT Hub eszközzel kommunikáló felhasználók nem ismerik a köztes átjáró eszközét. Végső soron az átlátszó átjáróval vesszük fel a peremhálózat-elemzéseket a rendszerbe azáltal, hogy IoT Edge modulokat adnak hozzá az átjáróhoz.
+Ebben a cikkben egy Linux rendszerű Azure-beli virtuális gépet konfigurálunk olyan IoT Edge eszközként, amely transzparens átjáróként működik. Egy transzparens átjáró konfigurációja lehetővé teszi az eszközök számára, hogy az átjárón keresztül csatlakozzanak az Azure IoT Hubhoz, és nem tudta, hogy az átjáró létezik. Ugyanakkor egy, az Azure-ban IoT Hub eszközzel kommunikáló felhasználó nem ismeri a köztes átjáró eszközét. Végső soron az Edge Analytics szolgáltatást hozzáadjuk a rendszerhez IoT Edge modulok az átlátszó átjáróhoz való hozzáadásával.
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
 
-## <a name="generate-certificates"></a>Tanúsítványok előállítása
+## <a name="create-certificates"></a>Tanúsítványok létrehozása
 
-Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
+Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli IoT-eszköz egy transzparens átjáróként működő IoT Edge-eszközhöz kapcsolódjon. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
 
-Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy egy Docker-rendszerképet használunk ennek a lépésnek a végrehajtásához, mert jelentősen csökkentette a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépések számát. A Docker-rendszerképpel kapcsolatos automatizált információk megismeréséhez tekintse meg a [bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md) című témakört.
+Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy a lépés elvégzéséhez Docker-rendszerképet használunk, mert jelentősen csökkenti a Windows fejlesztői gépen lévő tanúsítványok létrehozásához szükséges lépések számát. A Docker-rendszerképpel kapcsolatos automatizált információk megismeréséhez tekintse meg a [bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md) című témakört.
 
 1. Jelentkezzen be a fejlesztői virtuális gépre.
 
-2. Nyisson meg egy parancssort, és futtassa a következő parancsot egy könyvtár létrehozásához a virtuális gépen.
+2. Hozzon létre egy új mappát, amelynek elérési útja és neve `c:\edgeCertificates`.
 
-    ```cmd
-    mkdir c:\edgeCertificates
-    ```
-
-3. A Windows Start menüjéből indítsa el a **Docker for Windows** programot.
+3. Ha még nem fut, a Windows Start menüjéből indítsa el a **Docker for Windows** programot.
 
 4. Nyissa meg a Visual Studio Code-ot.
 
 5. Válassza a **fájl** > **mappa megnyitása..** . lehetőséget, és válassza a **C:\\forrás\\IoTEdgeAndMlSample\\CreateCertificates**elemet.
 
-6. Kattintson a jobb gombbal a Docker, és válassza a **rendszerkép létrehozása**lehetőséget.
+6. Az Explorer ablaktáblán kattintson a jobb gombbal a **Docker** elemre, és válassza a **rendszerkép létrehozása**lehetőséget.
 
 7. A párbeszédpanelen fogadja el az alapértelmezett értéket a rendszerkép neve és a címke: **createcertificates: Latest**.
+
+    ![Tanúsítványok létrehozása a Visual Studio Code-ban](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
 8. Várjon, amíg a Build befejeződik.
 
@@ -95,17 +93,17 @@ Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről
 
 ## <a name="create-iot-edge-device"></a>IoT Edge-eszköz létrehozása
 
-Ha Azure IoT Edge eszközt szeretne csatlakoztatni egy IoT hubhoz, először létre kell hoznia egy identitást az eszközhöz a központban. A kapcsolódási karakterláncot a felhőben található eszköz-identitásból fogjuk használni, hogy a futtatókörnyezetet a IoT Edge eszközön konfigurálja. Ha az eszköz konfigurálva lett, és csatlakozik a központhoz, a modulok üzembe helyezésére és üzenetek küldésére van lehetőség. A fizikai IoT Edge eszköz konfigurációját a IoT hub megfelelő eszköz-identitásának konfigurációjának módosításával is megváltoztathatja.
+Ha Azure IoT Edge eszközt szeretne csatlakoztatni egy IoT hubhoz, először létre kell hoznia egy identitást az eszközhöz a központban. A kapcsolódási karakterláncot a felhőben található eszköz-identitásból fogjuk használni, hogy a futtatókörnyezetet a IoT Edge eszközön konfigurálja. Ha egy konfigurált eszköz csatlakozik a központhoz, a modulok üzembe helyezésére és üzenetek küldésére van lehetőség. A fizikai IoT Edge eszköz konfigurációját a IoT hub megfelelő eszköz-identitásának módosításával is megváltoztathatja.
 
 Ebben az oktatóanyagban létrehozjuk az új eszköz identitását a Visual Studio Code használatával. Ezeket a lépéseket a [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)vagy az [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)használatával is elvégezheti.
 
 1. A fejlesztői gépen nyissa meg a Visual Studio Code-ot.
 
-2. Nyissa meg az **Azure IoT hub eszközök** keretét a Visual Studio Code Explorer nézetből.
+2. Bontsa ki az **Azure IoT hub** keretet a Visual Studio Code Explorer nézetből.
 
 3. Kattintson a három pontra, majd válassza az **IoT Edge eszköz létrehozása**lehetőséget.
 
-4. Adja meg az eszköz nevét. A kényelmes használat érdekében a **aaTurbofanEdgeDevice** használjuk, így a korábban az eszköz-hám használatával létrehozott összes ügyféleszközök elküldheti a tesztelési adatmennyiséget.
+4. Adja meg az eszköz nevét. A kényelmes használat érdekében a **aaTurbofanEdgeDevice** nevet használjuk, így a felsorolt eszközök tetejére rendezi a rendszer.
 
 5. Az új eszköz megjelenik az eszközök listájában.
 
@@ -125,9 +123,9 @@ Ha a piactéren parancsfájl-alapú telepítésben szeretné használni a rendsz
 
 1. A keresősáv mezőben adja meg és válassza ki a **piactér**lehetőséget.
 
-1. A keresősáv mezőben adja meg és válassza ki **a Azure IoT Edge Ubuntun**.
+1. A piactéren keresse meg és válassza ki az **Ubuntu-Azure IoT Edge**.
 
-1. Bejelöli a **kívánt programozott üzembe helyezést? Első lépések** hivatkozása.
+1. A programozott módon történő üzembe helyezéshez válassza az **első lépések** hivatkozást.
 
 1. Kattintson az **Engedélyezés** gombra, majd a **Mentés**elemre.
 
@@ -174,7 +172,7 @@ Ezután futtassa a parancsfájlt a IoT Edge eszközhöz tartozó virtuális gép
 
     ![SSH-kapcsolatok karakterláncának másolása virtuális géphez](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
-## <a name="connect-to-your-iot-edge-device"></a>Kapcsolódás a IoT Edge eszközhöz
+## <a name="connect-to-your-iot-edge-device"></a>Csatlakozás az IoT Edge-eszköz
 
 A következő néhány szakaszban az általunk létrehozott Azure-beli virtuális gépet konfiguráljuk. Az első lépés a virtuális géphez való kapcsolódás.
 
@@ -192,7 +190,9 @@ A következő néhány szakaszban az általunk létrehozott Azure-beli virtuáli
 
 ## <a name="download-key-vault-certificates"></a>Key Vault tanúsítványok letöltése
 
-A cikk korábbi szakaszaiban a tanúsítványokat a Key Vault, hogy elérhetővé tegyék azokat a IoT Edge eszközön és a levélben lévő eszközön, amely egy olyan alsóbb rétegbeli eszköz, amely az IoT Edge eszközt használja átjáróként az IoT Hubsal való kommunikációhoz. Az oktatóanyagban később fogunk foglalkozni a levél eszközzel. Ebben a szakaszban a tanúsítványokat a IoT Edge eszközre kell letölteni.
+A cikk korábbi szakaszaiban a tanúsítványokat a Key Vault, hogy elérhetővé tegyék azokat a IoT Edge eszközön és a levélben lévő eszközön. A levél eszköz olyan alsóbb rétegbeli eszköz, amely az IoT Edge eszközt használja átjáróként a IoT Hub való kommunikációhoz.
+
+Az oktatóanyagban később fogunk foglalkozni a levél eszközzel. Ebben a szakaszban a tanúsítványokat a IoT Edge eszközre kell letölteni.
 
 1. Jelentkezzen be az Azure-ba az Azure CLI-vel a Linux rendszerű virtuális gépen futó SSH-munkamenetből.
 
@@ -227,7 +227,7 @@ A cikk korábbi szakaszaiban a tanúsítványokat a Key Vault, hogy elérhetőv�
 
 ## <a name="update-the-iot-edge-device-configuration"></a>A IoT Edge eszköz konfigurációjának frissítése
 
-Az IoT Edge Runtime a fájl/etc/iotedge/config.YAML használja a konfiguráció megőrzéséhez. A fájlban háromféle információt kell frissíteni:
+A IoT Edge futtatókörnyezet a fájl `/etc/iotedge/config.yaml` használatával tartja meg a konfigurációját. A fájlban háromféle információt kell frissíteni:
 
 * **Eszköz-összekapcsolási karakterlánc**: az eszköz identitásának IoT hub
 * **Tanúsítványok:** az alsóbb rétegbeli eszközökkel létesített kapcsolatokhoz használandó tanúsítványok
@@ -296,7 +296,9 @@ A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagép
 
 ## <a name="next-steps"></a>Következő lépések
 
-Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Először a Azure Key Vaultba feltöltött tesztelési tanúsítványok létrehozásával kezdtük el. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. A szkript az Azure CLI telepítésének további lépéseit vette igénybe (az[Azure CLI telepítése az apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)használatával). Az SSH-n keresztül csatlakoztatott virtuális gépekkel, az Azure-ba való bejelentkezéssel, a Key Vault tanúsítványok letöltésével, valamint az IoT Edge Runtime konfigurációjának számos frissítését a config. YAML fájl frissítésével végezheti el. További információ a IoT Edge átjáróként való használatáról: [IoT Edge eszköz átjáróként](iot-edge-as-gateway.md)való használata. Az IoT Edge eszköz transzparens átjáróként való konfigurálásával kapcsolatos további információkért lásd: [IoT Edge-eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működéshez.
+Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Elkezdtük a Azure Key Vaultba feltöltött tesztelési tanúsítványok generálását. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. Az SSH-n keresztül csatlakoztatott virtuális géppel az Azure-ba jelentkezett be, és a tanúsítványokat a Key Vaultból letöltöttük. A config. YAML fájl frissítésével számos frissítést készítettünk a IoT Edge futtatókörnyezet konfigurációjában.
+
+További információ: [hogyan használható egy IoT Edge eszköz átjáróként](iot-edge-as-gateway.md) , és hogyan [konfigurálható egy IoT Edge-eszköz, amely transzparens átjáróként működik](how-to-create-transparent-gateway.md).
 
 IoT Edge modulok létrehozásához folytassa a következő cikkel.
 

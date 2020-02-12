@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474436"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132285"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
 
@@ -65,7 +65,7 @@ A következő üzembe helyezési szempontok vonatkoznak erre a példa használat
 
 Az előző példához hasonlóan tegyük fel, hogy a contoso egy olyan helyszíni üzletági (LOB) alkalmazással rendelkezik, amelyet majdnem egy évtizeden át fejlesztettünk ki. Ez az alkalmazás a címtárral tisztában van, és a rendszer az LDAP használatával olvasta el a felhasználókkal kapcsolatos információkat és attribútumokat AD DS. Az alkalmazás nem módosítja az attribútumokat, vagy más módon ír a könyvtárba.
 
-A contoso szeretné áttelepíteni ezt az alkalmazást az Azure-ba, és kivonni az alkalmazást futtató, a helyszíni helyi hardvert. Az alkalmazás nem írható át olyan modern címtár-API-k használatára, mint például a REST-alapú Azure AD Graph API. A rendszer egy emelt szintű váltási lehetőséget választ arra az esetre, ha az alkalmazás a felhőben való futtatásra, kód módosítása vagy az alkalmazás átírása nélkül telepíthető.
+A contoso szeretné áttelepíteni ezt az alkalmazást az Azure-ba, és kivonni az alkalmazást futtató, a helyszíni helyi hardvert. Az alkalmazás nem írható át olyan modern címtár-API-k használatára, mint például a REST-alapú Microsoft Graph API. A rendszer egy emelt szintű váltási lehetőséget választ arra az esetre, ha az alkalmazás a felhőben való futtatásra, kód módosítása vagy az alkalmazás átírása nélkül telepíthető.
 
 Ebben az esetben az Azure AD DS lehetővé teszi, hogy az alkalmazások LDAP-olvasási műveleteket végezzenek a felügyelt tartományon, hogy megkapják a szükséges attribútum-információkat. Az alkalmazást nem kell újraírni, így az Azure-ba való átállással a felhasználók továbbra is használhatják az alkalmazást anélkül, hogy megtörtént a futtatásuk.
 
@@ -103,7 +103,7 @@ Beállíthat olyan Azure HDInsight-fürtöt, amely egy Azure AD DS felügyelt ta
 
 További információ erről az üzembe helyezési forgatókönyvről: [tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása][hdinsight]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][tutorial-create-instance]
 

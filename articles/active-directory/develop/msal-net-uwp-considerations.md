@@ -1,7 +1,7 @@
 ---
 title: UWP megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerkedjen meg az Univerzális Windows-platform és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokkal.
+description: Tudnivalók a Univerzális Windows-platform (UWP) használatához a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,57 +13,56 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4803b2bda63ef0e14137aaafe95a422089e7f671
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2eeec28569cf31af4542d6cd7aca1fb27d77b1e0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083665"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132527"
 ---
-# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Univerzális Windows-platform-specifikus megfontolások a MSAL.NET
-A UWP-on több szempontot is figyelembe kell vennie a MSAL.NET használatakor.
+# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>A Univerzális Windows-platform és a MSAL.NET használatának szempontjai
+A MSAL.NET-t (UWP) Univerzális Windows-platform használó alkalmazások fejlesztőinek figyelembe kell venniük a jelen cikkben ismertetett fogalmakat.
 
 ## <a name="the-usecorporatenetwork-property"></a>A UseCorporateNetwork tulajdonság
-A WinRT platformon `PublicClientApplication` a következő logikai tulajdonsággal rendelkezik ``UseCorporateNetwork``. Ez a tulajdonság lehetővé teszi a Win 8.1-és UWP-alkalmazások számára az integrált Windows-hitelesítés előnyeit (és így az operációs rendszerbe bejelentkezett felhasználóval való egyszeri bejelentkezést), ha a felhasználó egy összevont Azure AD-bérlőben lévő fiókkal van bejelentkezve. A tulajdonság beállításakor a MSAL.NET a WAB (web Authentication Broker) szolgáltatást használja.
+A Windows-futtatókörnyezet (WinRT) platformon `PublicClientApplication` a logikai tulajdonságot `UseCorporateNetwork`. Ez a tulajdonság lehetővé teszi a Windows 8,1 alkalmazások és UWP alkalmazások számára az integrált Windows-hitelesítés (IWA) előnyeit, ha a felhasználó olyan fiókba van bejelentkezve, amely összevont Azure Active Directory (Azure AD) Bérlővel rendelkezik. Az operációs rendszerbe bejelentkezett felhasználók használhatnak egyszeri bejelentkezést (SSO) is. A `UseCorporateNetwork` tulajdonság beállításakor a MSAL.NET webes hitelesítési közvetítőt (WAB) használ.
 
 > [!IMPORTANT]
-> Ha a tulajdonságot igaz értékre állítja, feltételezi, hogy az alkalmazás fejlesztője engedélyezte az integrált Windows-hitelesítést (IWA) az alkalmazásban. Ehhez:
-> - A UWP-alkalmazás ``Package.appxmanifest`` a **képességek** lapon engedélyezze a következő képességeket:
->   - Vállalati hitelesítés
->   - Magánhálózatok (ügyfél & kiszolgáló)
->   - Megosztott felhasználói tanúsítvány
+> Ha a `UseCorporateNetwork` tulajdonságot igaz értékre állítja, feltételezi, hogy az alkalmazás fejlesztője engedélyezte a IWA az alkalmazásban. A IWA engedélyezése:
+> - A UWP alkalmazásának `Package.appxmanifest`a **képességek** lapon engedélyezze a következő képességeket:
+>   - **Vállalati hitelesítés**
+>   - **Magánhálózatok (ügyfél & kiszolgáló)**
+>   - **Megosztott felhasználói tanúsítvány**
 
-A IWA alapértelmezés szerint nincs engedélyezve, mert a vállalati hitelesítést vagy a megosztott felhasználói tanúsítványokat kérő alkalmazások esetében magasabb szintű ellenőrzésre van szükség a Windows áruházban, és nem minden fejlesztőnek érdemes elvégeznie a nagyobb ellenőrzési szint.
+A IWA alapértelmezés szerint nincs engedélyezve, mert Microsoft Store magas szintű ellenőrzést igényel, mielőtt olyan alkalmazásokat fogad el, amelyek a vállalati hitelesítés vagy a megosztott felhasználói tanúsítványok képességeit igénylik. Nem minden fejlesztő szeretné ezt az ellenőrzési szintet végrehajtani.
 
-A UWP platform (WAB) mögöttes implementációja nem működik megfelelően olyan nagyvállalati forgatókönyvekben, ahol a feltételes hozzáférés engedélyezve volt. A hibajelenség azt eredményezi, hogy a felhasználó megpróbál bejelentkezni a Windows Hello szolgáltatásba, és azt javasoljuk, hogy válasszon ki egy tanúsítványt, de:
+A UWP platformon az alapul szolgáló WAB-implementáció nem működik megfelelően olyan nagyvállalati forgatókönyvekben, ahol engedélyezve van a feltételes hozzáférés. A felhasználók a Windows Hello használatával próbálnak bejelentkezni a probléma tüneteire. Ha a felhasználó a tanúsítvány kiválasztását kéri:
 
-- a PIN-kód tanúsítványa nem található,
-- vagy a felhasználó úgy dönt, hogy nem kéri a PIN-kód megadását.
+- A PIN-kód tanúsítványa nem található.
+- Miután a felhasználó kiválaszt egy tanúsítványt, a rendszer nem kéri a PIN-kódot.
 
-A megkerülő megoldás egy alternatív módszer használata (felhasználónév/jelszó + telefonos hitelesítés), de a felület nem jó.
+Megpróbálhatja elkerülni ezt a problémát egy alternatív módszer, például a Felhasználónév-jelszó és a telefonos hitelesítés használatával, de a felület nem jó.
 
 ## <a name="troubleshooting"></a>Hibakeresés
 
-Néhány ügyfél jelezte, hogy bizonyos vállalati környezetekben a következő bejelentkezési hiba történt:
+Egyes ügyfelek a következő bejelentkezési hibát jelentették be bizonyos vállalati környezetekben, ahol tudják, hogy internetkapcsolattal rendelkeznek, és a kapcsolatok nyilvános hálózattal működnek.
 
 ```Text
-We can't connect to the service you need right now. Check your network connection or try this again later
+We can't connect to the service you need right now. Check your network connection or try this again later.
 ```
 
-mivel tudják, hogy rendelkeznek internetkapcsolattal, és amelyek nyilvános hálózattal működnek.
-
-A megkerülő megoldással gondoskodhat arról, hogy a WAB (a mögöttes Windows-összetevő) engedélyezze a magánhálózati hálózatot. Ezt a beállításkulcs beállításával teheti meg:
+A probléma elkerüléséhez győződjön meg arról, hogy a WAB (a mögöttes Windows-összetevő) engedélyezi a magánhálózaton. Ezt a beállításkulcs beállításával teheti meg:
 
 ```Text
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Részletekért lásd: [web Authentication Broker-Hegedűs](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+További információ: [web Authentication Broker-Hegedűs](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Következő lépések
-További részleteket az alábbi példákban talál:
+A következő minták további információkat nyújtanak.
 
 Sample | Platform | Leírás 
 |------ | -------- | -----------|
-|[Active-Directory-DotNet-Native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Egy Univerzális Windows-platform ügyfélalkalmazás a msal.net használatával, amely az Azure AD v 2.0-végponttal hitelesítő felhasználó Microsoft Graphhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan használhatja az MSAL-t a MSA és az Azure AD hitelesítésére a HRE 2.0-s végponton keresztül, és az eredményül kapott jogkivonattal fér hozzá a Microsoft Graphhoz. <br>![Topológia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[Active-Directory-DotNet-Native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | A MSAL.NET-t használó UWP ügyfélalkalmazás. A Microsoft Graph egy Azure AD 2,0-végponttal hitelesítő felhasználóhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t az Azure AD 2,0-végponton keresztül a MSAL használatával. Azt is bemutatja, hogyan lehet elérni Microsoft Graph és megjeleníti az eredményül kapott jogkivonatot. <br>![Topológia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

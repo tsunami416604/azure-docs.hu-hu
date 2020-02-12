@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479058"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136342"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
 
@@ -32,7 +32,7 @@ Az alábbi ábrán egy önjelölt regisztrációs oldal látható, amelyben két
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) rendelkeznie kell `DataUri` az oldal 2.0.0 vagy újabb verzióra kell beállítani. Példa:
+ Az [önérvényesített műszaki profilok](self-asserted-technical-profile.md) [metaadatok](self-asserted-technical-profile.md#metadata) szakaszában a hivatkozott [ContentDefinition](contentdefinitions.md) rendelkeznie kell `DataUri` az oldal 2.0.0 vagy újabb verzióra kell beállítani. Például:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -46,7 +46,7 @@ Az alábbi ábrán egy önjelölt regisztrációs oldal látható, amelyben két
 
 A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
 | UserInterfaceControlType | Igen | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
@@ -80,7 +80,7 @@ A megjelenítési vezérlők mindegyik típusának különböző megjelenítési
 
 Az [önérvényesített technikai profilban](self-asserted-technical-profile.md#display-claims)definiált **megjelenítési jogcímek** esetében a megjelenítési jogcímek a felhasználó által a megjelenítési vezérlőn belül összegyűjtött jogcímeket jelölik. A hivatkozott **claimType** elemnek meg kell adnia a Azure ad B2C által támogatott felhasználói beviteli típus **UserInputType** elemét, például `TextBox` vagy `DropdownSingleSelect`. Ha egy **művelethez**meg kell adni egy megjelenítési jogcímet, állítsa be a **kötelező** attribútumot úgy, hogy `true`, hogy a felhasználó az adott megjelenítési jogcím értékének megadását kényszerítse.
 
-Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusaihoz szükségesek. Például **VerificationCode** szükséges a **VerificationControl**típusú megjelenítési vezérlőelemhez. A **ControlClaimType** attribútum használatával megtudhatja, hogy melyik DisplayClaim van kijelölve ehhez a szükséges jogcímhez. Példa:
+Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusaihoz szükségesek. Például **VerificationCode** szükséges a **VerificationControl**típusú megjelenítési vezérlőelemhez. A **ControlClaimType** attribútum használatával megtudhatja, hogy melyik DisplayClaim van kijelölve ehhez a szükséges jogcímhez. Például:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -90,7 +90,7 @@ Bizonyos megjelenítési jogcímek a megjelenítési vezérlők bizonyos típusa
 
 A megjelenítési vezérlő **kimeneti jogcímeit** a rendszer nem küldi el a következő előkészítési lépéshez. Ezeket a rendszer ideiglenesen csak az aktuális megjelenítési vezérlő munkamenet számára menti. Ezek az ideiglenes jogcímek megoszthatók ugyanazon megjelenítési vezérlő különböző műveletei között.
 
-Ha a jogcímeket a következő előkészítési lépéshez szeretné kipróbálni, használja a tényleges, önérvényesített technikai profil **OutputClaims** , amely erre a megjelenítési vezérlőelemre hivatkozik.
+Ha ki szeretné próbálni a kimeneti jogcímeket a következő előkészítési lépésre, használja a tényleges önérvényesített technikai profil **OutputClaims** , amely erre a megjelenítési vezérlőelemre hivatkozik.
 
 ### <a name="display-control-actions"></a>Vezérlési műveletek megjelenítése
 
@@ -129,7 +129,7 @@ A következő példa egy kódot küld e-mailben vagy SMS-ben az **mfaType** jogc
 
 A megjelenítési vezérlőkre az [önérvényesített technikai profil](self-asserted-technical-profile.md) [megjelenítési jogcímeiben](self-asserted-technical-profile.md#display-claims) hivatkozunk.
 
-Példa:
+Például:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

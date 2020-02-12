@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644698"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131467"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory GYIK
 Ez a cikk a Azure Data Factoryával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.  
@@ -72,7 +72,7 @@ Ha át szeretné helyezni a SSIS számítási feladatait, létrehozhat egy Data 
 ### <a name="sdks"></a>SDK-k
 Ha Ön fejlett felhasználó, és egy programozott felületet keres, a Data Factory az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez vagy monitorozásához használhat a kedvenc IDE használatával. A nyelvi támogatás magában foglalja a .NET, a PowerShell, a Python és a REST használatát.
 
-### <a name="monitoring"></a>Monitoring
+### <a name="monitoring"></a>Figyelés
 A böngésző felhasználói felületén a PowerShell, az SDK vagy a vizuális monitorozási eszközök segítségével figyelheti az adatgyárait. Hatékony és hatékony módon figyelheti és kezelheti az igény szerinti, trigger-és órajel-alapú egyéni folyamatokat. Szakítsa meg a meglévő feladatokat, tekintse meg a hibák áttekintését, a részletes hibaüzenetek lekérését és a problémák hibakeresését, mindezt egyetlen panelről, háttérbeli váltás nélkül, vagy navigáljon a képernyők között. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>A SSIS új szolgáltatásai Data Factory
@@ -106,16 +106,16 @@ Az Integration Runtime-példányok száma nincs korlátozva az adatelőállító
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik a Azure Data Factory legfelső szintű fogalmai?
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. A Azure Data Factory négy fő összetevőt tartalmaz, amelyek együtt működnek olyan platformként, amelyen adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezési és-átalakítási lépésekkel.
 
-### <a name="pipelines"></a>Adatcsatornák
+### <a name="pipelines"></a>Folyamatok
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
 
 ### <a name="data-flows"></a>Adatfolyamok
 Az adatfolyamatok olyan objektumok, amelyeket vizuálisan hozhat létre Data Factory, amelyek a háttérbeli Spark-szolgáltatásokban nagy mennyiségű adatátalakítást végeznek. Nincs szükség a programozás vagy a Spark belső elemeinek megismerésére. Egyszerűen tervezze meg az Adatátalakítási szándékot gráfok (leképezések) vagy számolótáblák (huzavona-EK) használatával.
 
-### <a name="activities"></a>Activities (Tevékenységek)
+### <a name="activities"></a>Tevékenységek
 Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. A másolási tevékenység használatával például az adatok egy adattárból egy másik adattárba másolhatók. Ehhez hasonlóan használhat egy kaptár-tevékenységet is, amely egy Azure HDInsight-fürtön futó kaptár-lekérdezést futtat az adatai átalakításához vagy elemzéséhez. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.
 
-### <a name="datasets"></a>Adathalmazok
+### <a name="datasets"></a>Adatkészletek
 Az adatkészletek adatstruktúrákat jelölnek az adattárakon belül, amelyek egyszerűen rámutatnak vagy meghivatkozzák az adatokat, amelyeket a tevékenységekben be- vagy kimenetként használni szeretne. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
@@ -139,7 +139,7 @@ Az adatkészlet egy határozottan begépelt paraméter és egy olyan entitás, a
 
 A társított szolgáltatás egy olyan, szigorúan beírt paraméter is, amely kapcsolati adatokat tartalmaz egy adattárhoz vagy egy számítási környezethez. Ez egy olyan entitás is, amelyet újból felhasználhat vagy hivatkozhat.
 
-### <a name="control-flows"></a>Vezérlőfolyamatok
+### <a name="control-flows"></a>Folyamatok vezérlése
 A vezérlési folyamatok összehangolják azokat a folyamatokat, amelyek a folyamat szintjén definiált láncolási tevékenységeket foglalják magukban, és amelyek a folyamatot igény szerint vagy eseményindítóból hívhatják meg. A vezérlési folyamatokban az is lehet, hogy a rendszer egyéni állapotba helyezi és hurkos tárolókat (azaz foreach-iterációkat) tartalmaz.
 
 
@@ -195,13 +195,16 @@ A másolási tevékenység használatával a többi összekötőtől származó 
 
 A saját üzemeltetésű integrációs modul egy ADF-alapú folyamat-összeállítás, amellyel a másolási tevékenységgel adatok szerezhetők be és helyezhetők át a helyszíni vagy a VM-alapú adatforrásokból, illetve elsüllyednek. Először készítsen másolatot az adatforgalomról, majd az átalakításhoz szükséges adatfolyamot, majd egy későbbi másolatot, ha át kell helyeznie az átalakított adattárolót a helyszíni áruházba.
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Az adatfolyam-számítási motor több bérlőt is kiszolgál?
+A fürtök soha nem lesznek megosztva. Garantáljuk, hogy az egyes feladatokhoz az üzemi környezetben futnak az elkülönítés. Hibakeresési forgatókönyv esetén egy személy kap egy fürtöt, és minden debugs az adott felhasználó által kezdeményezett fürtre lép.
+
 ## <a name="wrangling-data-flows"></a>Huzavona-adatfolyamok
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Melyek a huzavona-adatfolyam támogatott régiói?
 
 A huzavona-adatfolyam jelenleg támogatott a következő régiókban létrehozott adatüzemekben:
 
-* Ausztrália keleti régiója
+* Kelet-Ausztrália
 * Közép-Kanada
 * Közép-India
 * USA középső régiója
@@ -211,11 +214,11 @@ A huzavona-adatfolyam jelenleg támogatott a következő régiókban létrehozot
 * Észak-Európa
 * Délkelet-Ázsia
 * USA déli középső régiója
-* Egyesült Királyság déli régiója
+* Az Egyesült Királyság déli régiója
 * USA nyugati középső régiója
 * Nyugat-Európa
 * USA nyugati régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Milyen korlátozások és korlátozások vonatkoznak a huzavona-adatfolyamra?
 
@@ -249,7 +252,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * real
 * lebegőpontos
 * char
-* NCHAR
+* nchar
 * varchar
 * nvarchar
 * egész szám
@@ -264,7 +267,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * dátum
 * dátum/idő
 * datetime2
-* idő adattípusúra
+* smalldatetime
 * időbélyeg
 * uniqueidentifier
 * xml

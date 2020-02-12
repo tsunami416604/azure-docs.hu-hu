@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530646"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132831"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -90,7 +90,7 @@ Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amik
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Tartalomtípus | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats adatközpont API-jai esetében a formátum a JSON. Content-Type: Application/JSON
+Content-Type | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats adatközpont API-jai esetében a formátum a JSON. Content-Type: Application/JSON
 Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
 Elfogadás | A válasz formátuma. A FarmBeats adatközpont API-jai esetében a formátum a JSON. Elfogadás: alkalmazás/JSON
 
@@ -132,16 +132,16 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   Gyártó  | A gyártó neve |
   ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
   Portok  | A port neve és típusa, amely digitális vagy analóg.  |
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
+  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
   Leírás  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
   **Eszköz** |  |
   DeviceModelId  |A társított eszköz-modell azonosítója. |
   HardwareId   |Az eszköz egyedi azonosítója, például egy MAC-címe.  |
   ReportingInterval |Jelentéskészítési időköz (másodperc). |
-  Földrajzi egység    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
+  Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
   ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
-  Név  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
+  Name (Név)  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
   Leírás  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
   **SensorModel** |  |
@@ -155,16 +155,16 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   SensorMeasures > AggregationType  | Egyik sem, átlagos, maximális, minimum vagy StandardDeviation.
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
   Leírás  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
   **Érzékelő**  |  |
   HardwareId  | A gyártó által beállított érzékelő egyedi azonosítója.
   SensorModelId  | A társított érzékelő modell azonosítója.
-  Földrajzi egység  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
+  Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
   Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
-  Név  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
+  Name (Név)  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
   Leírás  | Adjon meg egy értelmes leírást.
   Tulajdonságok  | További tulajdonságok a gyártótól.
 
@@ -345,4 +345,4 @@ Az eszközök gyártói vagy partnerei az alábbi ellenőrzőlista segítségév
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a REST APIről: [REST API](references-for-azure-farmbeats.md#rest-api).
+További információ a REST APIről: [REST API](rest-api-in-azure-farmbeats.md).

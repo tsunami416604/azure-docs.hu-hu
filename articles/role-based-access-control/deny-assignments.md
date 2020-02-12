@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése | Microsoft Docs
+title: Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése
 description: További információ az Azure-erőforrások szerepköralapú hozzáférés-vezérlési (RBAC) hozzárendeléseinek megtagadásáról.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479353"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137374"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése
 
@@ -54,7 +54,7 @@ A megtagadási hozzárendelések a szerepkör-hozzárendelések hasonló mintáj
  Egy megtagadási hozzárendelés a következő tulajdonságokkal rendelkezik:
 
 > [!div class="mx-tableFixed"]
-> | Tulajdonság | Szükséges | Típus | Leírás |
+> | Tulajdonság | Kötelező | Típus | Leírás |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Igen | Sztring | A megtagadási hozzárendelés megjelenített neve. A névnek egyedinek kell lennie egy adott hatókörhöz. |
 > | `Description` | Nem | Sztring | A megtagadási hozzárendelés leírása. |
@@ -87,7 +87,7 @@ Minden rendszerbiztonsági tag kombinálható `ExcludePrincipals`ekkel, hogy az 
 - Csak `Principals` használható, és nem használható `ExcludePrincipals`ban.
 - a `Principals[i].Type` `SystemDefined`re kell beállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-erőforrások megtagadási hozzárendeléseinek listázása a Azure Portal használatával](deny-assignments-portal.md)
 * [Az Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md)

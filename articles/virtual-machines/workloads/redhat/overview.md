@@ -7,14 +7,14 @@ manager: borisb2015
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8ca249a5f6c300a39548e4e16927d7a20acae1a8
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942330"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133820"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 A Red Hat számítási feladatait az Azure különféle kínálatai támogatják. A Red Hat Enterprise Linux-(RHEL-) lemezképek a RHEL-munkaterhelések középpontjában állnak, mint a Red Hat Update Infrastructure (RHUI).
@@ -37,6 +37,11 @@ Az Azure Red Hat Gold-képeket is kínál. Ezek a rendszerképek hasznosak lehet
 
 > [!NOTE]
 > Megjegyzés a kettős számlázás esetében: a kettős számlázás akkor merül fel, amikor egy felhasználó kétszer fizet a RHEL-előfizetésekhez. Ez általában akkor fordul elő, amikor az ügyfél az előfizetés-kezelővel csatol egy jogosultságot egy RHEL TB virtuális géphez. Például egy olyan ügyfél, amely az előfizetés-kezelővel egy RHEL TB-rendszerképben lévő SAP-csomagokra vonatkozó jogosultságot csatol, a rendszer nem fogja megduplázni, mivel a TB díja és az SAP-előfizetése között kétszer kell fizetnie a RHEL. Ez nem fog történni a rendszerképek BYOS.
+
+### <a name="generation-2-images"></a>2\. generációs rendszerképek
+A 2. generációs virtuális gépek újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. A részleteket a [2. generációs dokumentáció](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ismerteti. A RHEL-lemezkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak, és a fő rendszerindító rekord (MBR) helyett egy GUID partíciós táblát (GPT) használnak a rendszerindítási időben. Ez többek között a 2TB-nál nagyobb operációsrendszer-lemezeket is lehetővé tesz. Emellett a [Mv2 sorozatú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) csak a 2. generációs lemezképeken futnak.
+
+A RHEL 2. generációs képei elérhetők a piactéren. Keresse meg a "Gen2" elemet a lemezkép SKU-ban, ha az Azure CLI-vel az összes lemezképet felsorolja, majd a virtuális gép üzembe helyezési folyamatának "speciális" lapján lépjen a 2. generációs virtuális gépek üzembe helyezéséhez.
 
 ## <a name="red-hat-update-infrastructure-rhui"></a>Red Hat frissítési infrastruktúra (RHUI)
 Az Azure csak a TB RHEL virtuális gépek (VM) esetében biztosít Red Hat frissítési infrastruktúrát. A RHUI hatékonyan tükrözi a Red Hat CDNs, de csak az Azure TB RHEL virtuális gépek számára érhető el. A megfelelő csomagokat attól függően érheti el, hogy melyik RHEL-lemezképet telepítette. Az SAP-rendszerképekhez tartozó RHEL például az alap RHEL-csomagok mellett hozzáférhetnek az SAP-csomagokhoz is.

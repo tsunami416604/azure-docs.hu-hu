@@ -1,5 +1,5 @@
 ---
-title: Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
+title: Batch-előrejelzések futtatása Azure Machine Learning Designer használatával (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat be egy batch-előrejelzési folyamatot a tervező használatával. Telepítse a folyamatot paraméteres webszolgáltatásként, amely bármely HTTP-könyvtárból indítható el.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311886"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138111"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ A betanítási folyamatnak legalább egyszer futnia kell, hogy létre lehessen h
 
 1. Nyissa meg a **tervező** lapot a munkaterületen.
 
-1. Válassza ki azt a betanítási folyamatot, amely a modellt az előrejelzéshez használni kívánja.
+1. Válassza ki azt a betanítási folyamatot, amely az előrejelzéshez használni kívánt modellt végzi.
 
 1. **Futtassa** a folyamatot.
 
@@ -83,7 +83,7 @@ Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel 
 
 1. Kattintson a **Publish** (Közzététel) elemre.
 
-![Folyamat közzététele](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
+![Folyamatok közzététele](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
 
 ## <a name="consume-an-endpoint"></a>Végpont felhasználása

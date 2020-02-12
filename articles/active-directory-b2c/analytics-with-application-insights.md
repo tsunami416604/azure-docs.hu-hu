@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2018
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 646e3e0d68846013d656627a4ef6ef1fb1e11e09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846769"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136324"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>A felhasználó viselkedésének nyomon követése Azure Active Directory B2C a Application Insights használatával
 
@@ -29,7 +29,7 @@ Azure Active Directory B2C (Azure AD B2C) és az Azure Application Insights egy�
 * Teljesítmény mérése.
 * Értesítések létrehozása Application Insightsból.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 A Azure AD B2C identitás-keretrendszer része a szolgáltató `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Az eseményre vonatkozó adatokat közvetlenül az Application Insights számára küldi el a Azure AD B2C számára megadott rendszerállapot-kulcs használatával.
 
@@ -45,14 +45,14 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 Ha a Azure AD B2C használatával Application Insightst használ, mindössze annyit kell tennie, hogy létrehoz egy erőforrást, és beolvassa a kialakítási kulcsot.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a bérlő nem az Ön Azure AD B2C bérlője.
 3. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában, majd keresse meg és válassza a **Application Insights**lehetőséget.
-4. Kattintson a **Create** (Létrehozás) gombra.
+4. Kattintson a  **Create** (Létrehozás) gombra.
 5. Adja meg az erőforrás **nevét** .
 6. Az **alkalmazás típusa**mezőben válassza a **ASP.net webalkalmazás**lehetőséget.
 7. Az **erőforráscsoport**területen válasszon egy meglévő csoportot, vagy adjon meg egy új csoport nevét.
-8. Kattintson a **Create** (Létrehozás) gombra.
+8. Kattintson a  **Create** (Létrehozás) gombra.
 4. A Application Insights erőforrás létrehozása után nyissa meg, bontsa ki az **Essentials**csomópontot, és másolja a kialakítási kulcsot.
 
 ![Application Insights áttekintése és kialakítási kulcsa](./media/analytics-with-application-insights/app-insights.png)
@@ -112,7 +112,7 @@ A technikai profilok a Azure AD B2C identitási élményének keretrendszerében
 
 | Technikai profil | Tevékenység |
 | ----------------- | -----|
-| AzureInsights – gyakori | Közös paramétereket hoz létre az összes AzureInsights-technikai profilban. |
+| AzureInsights-Common | Közös paramétereket hoz létre az összes AzureInsights-technikai profilban. |
 | AzureInsights-SignInRequest | Egy bejelentkezési eseményt hoz létre, amely jogcímeket tartalmaz, ha bejelentkezési kérés érkezett. |
 | AzureInsights-UserSignup | Létrehoz egy UserSignup-eseményt, amikor a felhasználó aktiválja a bejelentkezési lehetőséget egy regisztrációs vagy bejelentkezési úton. |
 | AzureInsights-SignInComplete | A hitelesítés sikeres befejezését rögzíti, ha a rendszer jogkivonat küldése a függő entitás alkalmazásának. |
@@ -158,7 +158,7 @@ Adja hozzá a profilokat a *TrustFrameworkExtensions. XML* fájlhoz az alapszint
       <InputClaims>
         <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
-        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
+        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
         <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
       </InputClaims>
     </TechnicalProfile>

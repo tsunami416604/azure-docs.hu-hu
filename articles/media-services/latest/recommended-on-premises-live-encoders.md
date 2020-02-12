@@ -6,21 +6,21 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186037"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132709"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő adatfolyam-kódolók
 
 Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek**nevezzük. Egy élő kódoló egyetlen sávszélességű streamet küldhet egy átmenő csatornára. Ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű adatfolyam-továbbítást az ügyfél számára.
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek**nevezzük. Azt javasoljuk, hogy az élő kódoló többszörös átviteli sebességű streameket küldjön egyetlen sávszélességű adatfolyamként egy átmenő élő esemény helyett, hogy az adaptív sávszélességű adatfolyamot továbbítsa az ügyfélnek.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -29,21 +29,28 @@ Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/me
 
 A Media Services élő kódolásával kapcsolatos részletes információkért lásd: [élő adatfolyamok Media Services v3](live-streaming-overview.md).
 
+## <a name="encoder-requirements"></a>Kódolóval kapcsolatos követelmények
+
+A kódolók csak HTTPS-vagy RTMP-protokollok használata esetén támogatják a TLS 1,2-et.
+
 ## <a name="live-encoders-that-output-rtmp"></a>Az RTMP kimenetét futtató élő kódolók
 
 A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák `rtmp://` vagy `rtmps://`.
 
+Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.<br/><br/>
+Amikor RTMPS-sel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy a 2935-ös és a 2936-os kimenő TCP-portok nyitva vannak-e.
+
 > [!NOTE]
-> Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.
+> A kódolók számára a TLS 1,2-et a RTMP protokoll használatakor kell támogatni.
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria élő 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Elemi élő (2.14.15 és újabb verzió)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast (13.0.2 vagy újabb verzió) a TLS 1,2-követelmény miatt
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ A Media Services a következő, RTMP kimenetű élő kódolók használatát jav
 
 Media Services javasolja a következő élő kódolók egyikének használatát, amelyekben a többszörös sávszélességű Smooth Streaming (töredékes MP4) kimenetként van használatban. A támogatott URL-sémák `http://` vagy `https://`.
 
+> [!NOTE]
+> HTTPS protokollok használata esetén a kódolóknak támogatniuk kell a TLS 1,2-et.
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elemi élő (a TLS 1,2-követelmény miatti 2.14.15 és újabb verzió)
+- Envivio 4Caster C4 Gen III 
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live és Hero 4K (UHD/HEVC)
 - [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Ha több nyelven végez élő eseményeket (például egy angol hangsávot és egy spanyol hangsávot), akkor ezt a Media Excel Live encoderben állíthatja be úgy, hogy az élő hírcsatornát továbbítsa egy átmenő élő eseményre.
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Helyszíni élő kódoló beállításainak konfigurálása
 

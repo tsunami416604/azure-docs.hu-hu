@@ -1,6 +1,6 @@
 ---
-title: Listában elutasítása hozzárendelések Azure-erőforrások Azure PowerShell-lel |} A Microsoft Docs
-description: Ismerje meg, hogy a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, amelyek az adott Azure-erőforrás műveleteket hajthat végre, az Azure PowerShell-lel adott hatókörök hozzáférése listázása.
+title: Azure-erőforrások megtagadási hozzárendeléseinek listázása Azure PowerShell
+description: Megtudhatja, hogyan listázhatja azokat a felhasználókat, csoportokat, egyszerű szolgáltatásokat és felügyelt identitásokat, amelyek a Azure PowerShell használatával megtagadták bizonyos Azure-erőforrás-műveletekhez való hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c1ea26fdb4d60262f89ea6ab0f87220a08c01e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110484"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137401"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Listában elutasítása hozzárendelések Azure-erőforrások Azure PowerShell-lel
+# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Azure-erőforrások megtagadási hozzárendeléseinek listázása Azure PowerShell használatával
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk azt ismerteti, hogyan kell felsorolni megtagadása hozzárendelések Azure PowerShell-lel.
+A [hozzárendelések megtagadása](deny-assignments.md) esetén a felhasználók bizonyos Azure-erőforrás-műveleteket hajtanak végre, még akkor is, ha egy szerepkör-hozzárendelés hozzáférést biztosít Ez a cikk a megtagadási hozzárendelések Azure PowerShell használatával történő listázását ismerteti.
 
 > [!NOTE]
-> Nem közvetlenül hozhat létre saját hozzárendelések elutasítása. Információ a nem engedélyezi a hozzárendelések jönnek létre, lásd: [hozzárendelések megtagadása](deny-assignments.md).
+> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: a [hozzárendelések megtagadása](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
+A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
-- `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrásokhoz](built-in-roles.md)
-- [PowerShell az Azure Cloud Shellben](/azure/cloud-shell/overview) vagy [Azure PowerShell-lel](/powershell/azure/install-az-ps)
+- `Microsoft.Authorization/denyAssignments/read` engedély, amely az [Azure-erőforrások legtöbb beépített szerepkörében](built-in-roles.md) szerepel
+- [PowerShell Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="list-deny-assignments"></a>Listában elutasítása hozzárendelések
+## <a name="list-deny-assignments"></a>Megtagadás-hozzárendelések felsorolása
 
-### <a name="list-all-deny-assignments"></a>A lista az összes elutasítása hozzárendelések
+### <a name="list-all-deny-assignments"></a>Az összes megtagadási hozzárendelés listázása
 
-Listázásához-hozzárendelését az aktuális előfizetésben, használja az összes elutasítása [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+A jelenlegi előfizetés összes megtagadási hozzárendelésének listázásához használja a [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
 
 ```azurepowershell
 Get-AzDenyAssignment
@@ -90,9 +90,9 @@ ExcludePrincipals       : {
 IsSystemProtected       : True
 ```
 
-### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Listában elutasítása erőforrás hatókört-hozzárendelést
+### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Erőforráscsoport-hatókörben lévő megtagadási hozzárendelések listázása
 
-Listázásához hozzárendelések erőforrás csoport hatókörre, használja az összes elutasítása [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+Egy erőforráscsoport-hatókör összes megtagadási hozzárendelésének listázásához használja a [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
 
 ```azurepowershell
 Get-AzDenyAssignment -ResourceGroupName <resource_group_name>
@@ -111,9 +111,9 @@ Principals         : {
                      }
 ```
 
-### <a name="list-deny-assignments-at-a-subscription-scope"></a>Listában elutasítása egy előfizetési hatókört-hozzárendelést
+### <a name="list-deny-assignments-at-a-subscription-scope"></a>Előfizetési hatókörben lévő megtagadási hozzárendelések listázása
 
-Listázásához hozzárendelés előfizetést hatókörre, használja az összes elutasítása [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment). Az előfizetés-azonosító lekéréséhez, megtalálhatja a **előfizetések** panel az Azure Portalon, vagy Ön használhatja [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+Az előfizetési hatókörök összes megtagadási hozzárendelésének listázásához használja a [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment). Az előfizetés-azonosító lekéréséhez keresse meg a Azure Portal **előfizetések** paneljén, vagy használja a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 ```azurepowershell
 Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
@@ -123,8 +123,8 @@ Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Megismerheti az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md)
-- [Listában elutasítása hozzárendelések Azure-erőforrások az Azure portal használatával](deny-assignments-portal.md)
-- [Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések](deny-assignments-rest.md)
+- [Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése](deny-assignments.md)
+- [Azure-erőforrások megtagadási hozzárendeléseinek listázása a Azure Portal használatával](deny-assignments-portal.md)
+- [Azure-erőforrások megtagadási hozzárendeléseinek listázása a REST API használatával](deny-assignments-rest.md)

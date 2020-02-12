@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314096"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138175"
 ---
 # <a name="score-model-module"></a>A Score model (Modell montozása) modul
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal a betanított besorolási vagy regressziós modell használatával készíthet előrejelzéseket.
 
@@ -32,7 +32,7 @@ Ezzel a modullal a betanított besorolási vagy regressziós modell használatá
 
 3. A folyamat futtatása.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Miután létrehozta a pontszámok készletét a [score Model](./score-model.md)használatával:
 
@@ -44,7 +44,7 @@ A pontszám vagy az előre jelzett érték számos különböző formátumban le
 
 - A besorolási modellek esetében a [pontszám modell](./score-model.md) a osztály előre jelzett értékét, valamint az előre jelzett érték valószínűségét adja eredményül.
 - A regressziós modellek esetében a [pontszám modell](./score-model.md) csak az előre jelzett numerikus értéket hozza létre.
-- A képbesorolási modellek esetében a pontszám lehet a rendszerképben található objektum osztálya, vagy egy logikai érték, amely azt jelzi, hogy egy adott szolgáltatás található-e.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Pontszámok közzététele webszolgáltatásként
 

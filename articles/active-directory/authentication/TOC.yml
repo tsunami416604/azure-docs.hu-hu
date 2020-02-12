@@ -9,8 +9,8 @@
   items:
     - name: Új jelszó önkiszolgáló kérésének engedélyezése
       href: tutorial-enable-sspr.md
-    - name: MFA engedélyezése alkalmazásokhoz
-      href: tutorial-mfa-applications.md
+    - name: Az Azure Multi-Factor Authentication engedélyezése
+      href: tutorial-enable-azure-mfa.md
     - name: Az SSPR helyszíni integrációjának engedélyezése
       href: tutorial-enable-writeback.md
     - name: Az Azure Identity Protection integrálása

@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979929"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132247"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
-A Azure Active Directory Domain Services (Azure AD DS) biztonsági naplózás lehetővé teszi az Azure stream biztonsági eseményeinek megadását a célként megadott erőforrásokhoz. Ezek az erőforrások például az Azure Storage, az Azure Log Analytics-munkaterületek vagy az Azure Event hub. A biztonsági naplózási események engedélyezése után az Azure AD DS a kijelölt kategóriába tartozó összes naplózott eseményt elküldi a célként megadott erőforrásnak. Az eseményeket az Azure Storage-ba és a streambe való beküldéssel is archiválhatja az Azure Event Hubs használatával, vagy saját elemzéssel és az Azure Log Analytics-munkaterületek használatával az Azure Portal.
+A Azure Active Directory Domain Services (Azure AD DS) biztonsági naplózás lehetővé teszi az Azure stream biztonsági eseményeinek megadását a célként megadott erőforrásokhoz. Ezek az erőforrások például az Azure Storage, az Azure Log Analytics-munkaterületek vagy az Azure Event hub. A biztonsági naplózási események engedélyezése után az Azure AD DS a kijelölt kategóriába tartozó összes naplózott eseményt elküldi a célként megadott erőforrásnak.
+
+Az eseményeket az Azure Storage-ba és a streambe való beküldéssel is archiválhatja az Azure Event Hubs használatával, vagy saját elemzéssel és az Azure Log Analytics-munkaterületek használatával az Azure Portal.
 
 > [!IMPORTANT]
 > Az Azure AD DS biztonsági naplózás csak Azure Resource Manager-alapú példányok esetén érhető el. Az áttelepítéssel kapcsolatos információkért lásd: [Az Azure AD DS áttelepítése a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-azure-adds].
@@ -51,35 +53,35 @@ A következő naplózási események kategóriák érhetők el:
 |:---|:---|
 |Fiók bejelentkezési biztonsága|4767, 4774, 4775, 4776, 4777|
 |Fiókkezelés biztonsága|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781 és 4782|
-|Részletek követése biztonság|None|
+|Részletek követése biztonság|Nincs|
 |DS-hozzáférés biztonsága|5136, 5137, 5138, 5139, 5141|
 |Bejelentkezés – biztonság|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Objektum-hozzáférés biztonsága|None|
+|Objektum-hozzáférés biztonsága|Nincs|
 |Házirend-módosítási biztonság|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Biztonsági jogosultságok használata|4985|
 |Rendszerbiztonság|4612, 4621|
 
 ## <a name="security-audit-destinations"></a>Biztonsági naplózási célhelyek
 
-Az Azure-beli Storage, az Azure Event Hubs vagy az Azure Log Analytics-munkaterületek tetszőleges kombinációját használhatja az Azure AD DS biztonsági naplózáshoz célként megadott erőforrásként. Használhatja az Azure Storage-t a biztonsági naplózási események archiválásához, de egy Azure Log Analytics-munkaterületet az információk rövid távú elemzéséhez és jelentéséhez.
+Az Azure Storage, az Azure Event Hubs vagy az Azure Log Analytics-munkaterületek célként megadott erőforrásként használhatók Azure AD DS biztonsági naplózáshoz. Ezek a célhelyek kombinálhatók. Használhatja például az Azure Storage-t a biztonsági naplózási események archiválásához, de egy Azure Log Analytics-munkaterületet az információk rövid távú elemzéséhez és jelentéséhez.
 
 Az alábbi táblázat az egyes forrásokhoz tartozó erőforrás-típusokra vonatkozó forgatókönyveket ismerteti.
 
 > [!IMPORTANT]
-> A Azure AD Domain Services biztonsági naplózás engedélyezése előtt létre kell hoznia a cél erőforrást. Ezeket az erőforrásokat a Azure Portal, Azure PowerShell vagy az Azure CLI használatával hozhatja létre.
+> Az Azure AD DS biztonsági naplózás engedélyezése előtt létre kell hoznia a cél-erőforrást. Ezeket az erőforrásokat a Azure Portal, Azure PowerShell vagy az Azure CLI használatával hozhatja létre.
 
-| Cél erőforrás | Alkalmazási helyzet |
+| Cél erőforrás | Forgatókönyv |
 |:---|:---|
-|Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. Mielőtt engedélyezi az Azure AD DS biztonsági naplózási eseményeit, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md).|
-|Azure Event Hubs-eseményközpontok| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics munkaterület| Ezt a célt akkor érdemes használni, ha az elsődleges szükséglet a Azure Portal közvetlen biztonságos naplózásának elemzése és ellenőrzése. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy log Analytics munkaterületet a Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. <br /><br />Mielőtt engedélyezi az Azure AD DS biztonsági naplózási eseményeit, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel.<br /><br />Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics munkaterület| Ezt a célt akkor érdemes használni, ha az elsődleges szükséglet a Azure Portal közvetlen biztonságos naplózásának elemzése és ellenőrzése.<br /><br />Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy log Analytics munkaterületet a Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Biztonsági naplózási események engedélyezése a Azure Portal használatával
 
 Az Azure AD DS biztonsági naplózási események az Azure Portal használatával történő engedélyezéséhez hajtsa végre a következő lépéseket.
 
 > [!IMPORTANT]
-> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Nem lehet lekérdezni az eseményeket a múltból, illetve a múltbeli eseményeket is visszajátszani. Az Azure AD DS csak az engedélyezése után lehet eseményeket küldeni.
+> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Múltbeli események nem kérhetők le és nem játszhatók vissza. Az Azure AD DS csak a biztonsági naplózás engedélyezése után elvégezhető eseményeket küldheti el.
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *aadds.contoso.com*.
@@ -94,7 +96,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 
     ![A szükséges cél és naplózási események típusának engedélyezése a rögzítéshez](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Azure Storage**
+    * **Azure Storage tárterület**
         * Válassza az **archiválás egy Storage-fiókba**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
         * Válassza ki az **előfizetést** és azt a **Storage-fiókot** , amelyet a biztonsági naplózási események archiválásához használni kíván.
         * Ha elkészült, kattintson **az OK gombra**.
@@ -116,7 +118,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 Az Azure AD DS biztonsági naplózási események Azure PowerShell használatával történő engedélyezéséhez hajtsa végre az alábbi lépéseket. Ha szükséges, először [telepítse a Azure PowerShell modult, és kapcsolódjon az Azure-előfizetéséhez](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Nem lehet lekérdezni az eseményeket a múltból, illetve a múltbeli eseményeket is visszajátszani. Az Azure AD DS csak az engedélyezése után lehet eseményeket küldeni.
+> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Múltbeli események nem kérhetők le és nem játszhatók vissza. Az Azure AD DS csak a biztonsági naplózás engedélyezése után elvégezhető eseményeket küldheti el.
 
 1. Hitelesítse az Azure-előfizetését a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) parancsmag használatával. Ha a rendszer kéri, adja meg a fiókja hitelesítő adatait.
 
@@ -175,7 +177,7 @@ A log analitikai munkaterületek lehetővé teszik a biztonsági naplózási ese
 * [Az Azure Monitor dokumentációja](https://docs.microsoft.com/azure/azure-monitor/)
 * [Ismerkedés a Log Analyticsával Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
-* [Irányítópultok létrehozása és megosztása Log Analytics-adatokból](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Irányítópultok létrehozása és megosztása Log Analytics-adatkészletből](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Az alábbi példák segítségével megkezdheti az Azure AD DS biztonsági naplózási eseményeinek elemzését.
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>2\. minta lekérdezés
 
-Tekintse meg az összes fiókzárolási eseményt (*4740*) a 2019. június 26. között, 9 órakor és 2019 éjfél, a dátum és idő szerint növekvő sorrendbe rendezve:
+Az összes fiókzárolási esemény (*4740*) megtekintése a 2020. február 3. között, 9 órakor és 2019. február 10. között a dátum és idő szerint növekvő sorrendbe rendezve:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

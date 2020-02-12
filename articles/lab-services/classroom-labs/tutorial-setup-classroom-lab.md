@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719177"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134121"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -33,12 +33,16 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Meghívó e-mail küldése a tanulóknak
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha Lab-fiókban szeretné beállítani a tantermi labort, akkor az egyik szerepkör tagjának kell lennie a labor-fiókban: tulajdonos, labor létrehozó vagy közreműködő. A rendszer automatikusan hozzáadja a tulajdonosi szerepkörhöz a labor-fiók létrehozásához használt fiókot.
+Ebben az oktatóanyagban egy labort állít be az osztályhoz tartozó virtuális gépekkel. Ha Lab-fiókban szeretné beállítani a tantermi labort, akkor az egyik szerepkör tagjának kell lennie a labor-fiókban: tulajdonos, labor létrehozó vagy közreműködő. A rendszer automatikusan hozzáadja a tulajdonosi szerepkörhöz a labor-fiók létrehozásához használt fiókot. Így használhatja azt a felhasználói fiókot, amellyel létrehoz egy Lab-fiókot egy osztályterem labor létrehozásához. 
 
-A labor tulajdonosa más felhasználókat is hozzáadhat a **tesztkörnyezet létrehozói** szerepköréhez. Például a labor tulajdonosa hozzáadja a professzorokat a labor létrehozói szerepkörhöz. Ezután a professzorok létrehozzák a laborokat a virtuális gépekkel a saját osztályaik számára. A tanulók a professzorok által a laborba való regisztráláshoz használt regisztrációs hivatkozást használják. Ha regisztrálva vannak, a laborokban használhatnak virtuális gépeket az osztály munkahelyi és otthoni működéséhez. A felhasználók labor Creator szerepkörbe való felvételének részletes lépéseiért lásd: [felhasználó hozzáadása a labor létrehozói szerepkörhöz](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+A Azure Lab Services használata esetén a tipikus munkafolyamat:
 
+1. A labor-fiók létrehozója más felhasználókat is felvesz a **labor létrehozói** szerepkörbe. Például a Lab-fiók létrehozója/rendszergazdája felveszi a professzorokat a **labor létrehozói** szerepkörbe, hogy a laborokat a saját osztályaik számára is létrehozzák. 
+2. Ezután a professzorok létrehozzák a laborokat a virtuális gépekkel a saját osztályaik számára, és regisztrációs hivatkozásokat küldenek a tanulók számára az osztályban. 
+3. A tanulók a professzorok által a laborba való regisztráláshoz használt regisztrációs hivatkozást használják. Ha regisztrálva vannak, a laborokban használhatnak virtuális gépeket az osztály munkahelyi és otthoni működéséhez. 
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
+Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban. 
 
 1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
@@ -49,81 +53,55 @@ A labor tulajdonosa más felhasználókat is hozzáadhat a **tesztkörnyezet lé
     1. Adja meg a labor **nevét** , majd kattintson a **Tovább gombra**.  
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-
-        Ha Linux-rendszerképet választ, megjelenik egy lehetőség, amely lehetővé teszi a távoli asztali kapcsolat engedélyezését. Részletekért lásd: [Távoli asztali kapcsolat engedélyezése Linux](how-to-enable-remote-desktop-linux.md)rendszerhez.
     2. A **virtuális gép hitelesítő adatai** lapon a tesztkörnyezet összes virtuális gépe alapértelmezett hitelesítő adatait adhatja meg. Adja meg a felhasználó **nevét** és **jelszavát** , majd kattintson a **tovább**gombra.  
 
         ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
         > [!IMPORTANT]
         > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.
-    3. A **labor-házirendek** lapon adja meg, hogy az egyes felhasználók számára hány óra legyen kiválasztva (az**egyes felhasználókra vonatkozó kvóta**) a tesztkörnyezet ütemezett idején kívül, majd válassza a **Befejezés**gombot. 
+    3. A **labor-házirendek** lapon válassza a **Befejezés**lehetőséget. 
 
         ![Kvóta az egyes felhasználók számára](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
-5. Az alábbi képernyő jelenik meg, amely a sablon virtuális gépek létrehozásának állapotát jeleníti meg. A sablon létrehozása a tesztkörnyezetben akár 20 percig is eltarthat. 
+5. Az alábbi képernyő jelenik meg, amely a sablon virtuális gépek létrehozásának állapotát jeleníti meg. A művelet akár 20 percet is igénybe vehet. 
 
     ![A sablon virtuális gép létrehozási állapota](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. A **sablon** oldalon hajtsa végre a következő lépéseket: ezek a lépések nem **kötelezőek** az oktatóanyaghoz.
 
-    2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Linux-sablonos virtuális gép esetén válassza ki, hogy SSH vagy RDP használatával szeretne-e csatlakozni (ha az RDP engedélyezve van).
-    1. A virtuális gép jelszavának alaphelyzetbe állításához válassza a **jelszó alaphelyzetbe állítása** lehetőséget. 
-    1. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
-    1. **Állítsa le** a virtuális gépet.  
-    1. Adja meg a sablon **leírását**.
-10. A **sablon** lapon válassza a **Közzététel** lehetőséget az eszköztáron. 
+    1. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Linux-sablonos virtuális gép esetén válassza ki, hogy SSH vagy RDP használatával szeretne-e csatlakozni (ha az RDP engedélyezve van).
+    3. Telepítse és konfigurálja az osztályhoz szükséges szoftvereket a sablon virtuális gépén. 
+    4. **Állítsa le** a sablon virtuális gépet.  
+
+## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele
+Ebben a lépésben közzéteszi a sablon virtuális gépet. A közzétételi folyamat olyan Tesztkörnyezet virtuális gépeket hoz létre, amelyek alapvetően a sablon virtuális gépe másolatai. 
+
+1. A **sablon** lapon válassza a **Közzététel** lehetőséget az eszköztáron. 
 
     ![Sablon közzététele gomb](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Közzététel után a lépés nem vonható vissza. 
-8. A **sablon közzététele** lapon adja meg a laborban létrehozni kívánt virtuális gépek számát, majd válassza a **Közzététel**lehetőséget. 
+2. A **sablon közzététele** lapon adja meg a laborban létrehozni kívánt virtuális gépek számát, majd válassza a **Közzététel**lehetőséget. 
 
     ![Sablon közzététele – virtuális gépek száma](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-11. A sablon **közzétételének állapota** az oldalon látható. Ez a folyamat akár egy órát is igénybe vehet. 
+3. A sablon **közzétételének állapota** az oldalon látható. Ez a folyamat akár egy órát is igénybe vehet. 
 
     ![Sablon közzétételének folyamata](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Váltson a **Virtual Machines Pool** lapra a bal oldali menüben, vagy válassza a virtuális gépek csempét. Győződjön meg arról, hogy a nem **hozzárendelt** állapotú virtuális gépek láthatók. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
+4. Várjon, amíg a közzététel befejeződik, majd váltson a **Virtual Machines Pool** lapra, ehhez válassza a bal oldali menüben a **virtuális gépek** lehetőséget, vagy a **virtuális gépek** csempét. Győződjön meg arról, hogy a nem **hozzárendelt** állapotú virtuális gépek láthatók. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
 
-    ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+    ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)   
 
-    Ezen a lapon a következő feladatokat hajthatja végre (ezeket a lépéseket nem kell végrehajtania az oktatóanyaghoz. Ezek a lépések csak az Ön adataira vonatkoznak.): 
-    
-    1. A labor kapacitásának módosításához (a laborban lévő virtuális gépek száma) válassza ki a **labor kapacitás** elemet az eszköztáron.
-    2. Ha az összes virtuális gépet egyszerre szeretné elindítani, válassza az **összes elindítása** lehetőséget az eszköztáron. 
-    3. Egy adott virtuális gép indításához válassza a lefelé mutató nyilat az **állapotban**, majd kattintson a **Start**gombra. Egy virtuális gépet úgy is elindíthat, ha kijelöl egy virtuális gépet az első oszlopban, majd kiválasztja az **Indítás** lehetőséget az eszköztáron.
-
-    A sablonok létrehozásával és kezelésével, valamint a tanulói virtuális gépek beállításával és kezelésével kapcsolatos további információkért tekintse meg a következő cikkeket: 
-    
-    - [Tantermi Lab-sablonok létrehozása és kezelése](how-to-create-manage-template.md)
-    - [Virtuálisgép-készlet beállítása és kezelése](how-to-set-virtual-machine-passwords.md)
-
-## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a laborhoz
-
-1. Válassza a bal oldali menü **felhasználók** elemét. Alapértelmezés szerint a **hozzáférés korlátozása** beállítás engedélyezve van. Ha ez a beállítás be van kapcsolva, a felhasználók nem regisztrálhatnak a laborba még akkor sem, ha a felhasználó a felhasználók listáján szerepel. Csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása**lehetőséget, amely lehetővé teszi a felhasználók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
-2. Válassza a **felhasználók hozzáadása** lehetőséget az eszköztáron, majd válassza a **Hozzáadás e-mail-címek alapján**lehetőséget. 
-
-    ![Felhasználók hozzáadása gomb](../media/how-to-configure-student-usage/add-users-button.png)
-1. A **felhasználók hozzáadása** lapon adja meg a felhasználók e-mail-címeit külön sorokban, vagy egyetlen sorban pontosvesszővel elválasztva. 
-
-    ![Felhasználói e-mail-címek hozzáadása](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Kattintson a **Mentés** gombra. A listában megjelenik a felhasználók e-mail-címe és állapota (regisztrált vagy nem). 
-
-    ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
-
-    A listában szereplő felhasználók nevét a laborba való regisztráció után fogja látni. 
-    
 ## <a name="set-a-schedule-for-the-lab"></a>A laborhoz tartozó ütemterv beállítása
-Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtuális gépek meghatározott időpontokban automatikusan elindulnak/leállnak. A korábban megadott felhasználói kvóta az egyes felhasználók számára az ütemezett időponton kívül hozzárendelt további idő. 
+Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtuális gépek meghatározott időpontokban automatikusan elindulnak/leállnak. A korábban megadott felhasználói kvóta (alapértelmezett: 10 óra) az egyes felhasználók számára az ütemezett időponton kívül hozzárendelt további idő. 
 
 1. Váltson az **ütemezések** lapra, és válassza az eszköztár **ütemezett esemény hozzáadása** elemét. 
 
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/add-schedule-button.png)
 2. Az **ütemezett esemény hozzáadása** oldalon hajtsa végre a következő lépéseket:
     1. Ellenőrizze, hogy a **standard** érték van-e kiválasztva az **esemény típusára**.  
-    2. Az osztály **kezdő dátumának** megadása. 
-    4. Itt adhatja meg azt a **kezdési időpontot** , amikor a virtuális gépeket el szeretné indítani.
-    5. Itt adhatja meg a **leállítási időt** , amikor a virtuális gépeket le kell állítani. 
-    6. Adja meg az **időzónát** a megadott kezdési és befejezési időpontnál. 
+    2. Válassza ki az osztály **kezdő dátumát** . 
+    4. Válassza ki a **kezdési időpontot** , amikor a virtuális gépeket el szeretné indítani.
+    5. Válassza ki a **leállítási időt** , amikor a virtuális gépeket le kell állítani. 
+    6. Válassza ki az **időzónát** a megadott kezdési és befejezési időponthoz. 
 3. Az **ütemezett esemény hozzáadása** lapon válassza ki az aktuális ütemezést az **ismétlés** szakaszban.  
 
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](../media/how-to-create-schedules/select-current-schedule.png)
@@ -145,12 +123,28 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
     További információ egy osztályhoz tartozó ütemtervek létrehozásáról és kezeléséről: [az Órarend létrehozása és kezelése az osztályterem Labs szolgáltatásban](how-to-create-schedules.md).
 
-## <a name="send-invitation-emails-to-students"></a>Meghívó e-mailek küldése a tanulóknak
+
+## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a laborhoz
+
+1. Válassza a bal oldali menü **felhasználók** elemét. Alapértelmezés szerint a **hozzáférés korlátozása** beállítás engedélyezve van. Ha ez a beállítás be van kapcsolva, a felhasználók nem regisztrálhatnak a laborba még akkor sem, ha a felhasználó a felhasználók listáján szerepel. Csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása**lehetőséget, amely lehetővé teszi a felhasználók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
+2. Válassza a **felhasználók hozzáadása** lehetőséget az eszköztáron, majd válassza a **Hozzáadás e-mail-cím alapján**lehetőséget. 
+
+    ![Felhasználók hozzáadása gomb](../media/how-to-configure-student-usage/add-users-button.png)
+1. A **felhasználók hozzáadása** lapon adja meg a felhasználók e-mail-címeit külön sorokban, vagy egyetlen sorban pontosvesszővel elválasztva. 
+
+    ![Felhasználói e-mail-címek hozzáadása](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Kattintson a **Mentés** gombra. A listában megjelenik a felhasználók e-mail-címe és állapota (regisztrált vagy nem). 
+
+    ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
+
+    A listában szereplő felhasználók nevét a laborba való regisztráció után fogja látni. 
+    
+
+## <a name="send-invitation-emails-to-users"></a>Meghívó e-mailek küldése a felhasználóknak
 
 1. Váltson a **felhasználók** nézetre, ha már nincs a lapon, és válassza az **összes meghívása** lehetőséget az eszköztáron. 
 
     ![Tanulók kiválasztása](../media/tutorial-setup-classroom-lab/invite-all-button.png)
-
 1. A **Meghívás küldése e-mailben** lapon adjon meg egy opcionális üzenetet, majd válassza a **Küldés**lehetőséget. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. Ezt a regisztrációs hivatkozást a következő parancs kiválasztásával érheti el: **... (három pont)** az eszköztáron és a **regisztrációs hivatkozáson**. 
 
     ![Regisztrációs hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
@@ -159,7 +153,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban létrehozott egy osztályterem-tesztkörnyezetet, és konfigurálta azt. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
+Ebben az oktatóanyagban létrehozott egy labort az osztályhoz az Azure-ban. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás az osztályterem-tesztkörnyezet virtuális gépeihez](tutorial-connect-virtual-machine-classroom-lab.md)

@@ -16,70 +16,82 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 33510015f4f05661ad2ea041b1fd3da0e8bfb1ed
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702079"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132441"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó mobil alkalmazás – alkalmazás regisztrálása
+# <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
 
-Ez a cikk az alkalmazás regisztrációs utasításait tartalmazza a mobileszközök létrehozásához.
+Ez a cikk a létrehozott Mobile-alkalmazások regisztrálásához nyújt útmutatást.
 
-## <a name="supported-accounts-types"></a>Támogatott fiókok típusai
+## <a name="supported-account-types"></a>Támogatott fióktípusok
 
-A mobileszközök által támogatott fióktípus az engedélyezni kívánt élménytől és a használni kívánt folyamattól függ.
+A mobileszközök által támogatott fióktípus attól függ, hogy milyen élményt szeretne engedélyezni, és milyen folyamatokat kíván használni.
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Célközönség az interaktív jogkivonat-beszerzéshez
 
-A legtöbb Mobile-alkalmazás interaktív hitelesítést használ. Ha ez a helyzet, akkor bármely [fióktípus](quickstart-register-app.md#register-a-new-application-using-the-azure-portal) bejelentkezhet a felhasználókba
+A legtöbb Mobile-alkalmazás interaktív hitelesítést használ. Ha az alkalmazás ezt a hitelesítési űrlapot használja, bármilyen [fióktípus](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)bejelentkezhet a felhasználókba.
 
-### <a name="audience-for-integrated-authentication-usernamepassword-and-b2c"></a>Az integrált hitelesítés, a Felhasználónév/jelszó és a B2C célközönsége
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Az integrált Windows-hitelesítés, a Felhasználónév-jelszó és a B2C célközönsége
 
-- Ha integrált Windows-hitelesítést (UWP-alkalmazásokat) vagy felhasználónevet vagy jelszót szeretne használni, az alkalmazásnak be kell jelentkeznie a saját bérlő (LOB-fejlesztő) vagy az Azure Active Directory-szervezetek (ISV-forgatókönyv) felhasználói számára. A Microsoft személyes fiókjai nem támogatják ezeket a hitelesítési folyamatokat
-- Ha a felhasználók a B2C-szolgáltatót és a szabályzatot áthaladó közösségi identitásokkal jelentkeznek be, akkor csak az interaktív és a username-Password hitelesítést használhatja. Felhasználónév – a jelszó jelenleg csak a Xamarin. iOS, a Xamarin. Android és a UWP esetében támogatott.
+Ha Univerzális Windows-platform (UWP) alkalmazással rendelkezik, akkor az integrált Windows-hitelesítés használatával jelentkezhet be a felhasználókba. Az integrált Windows-hitelesítés vagy felhasználónév-jelszó alapú hitelesítés használatához az alkalmazásnak saját üzletági (LOB) fejlesztői bérlőben kell bejelentkeznie a felhasználókba. Független szoftvergyártói (ISV) forgatókönyv esetén az alkalmazás Azure Active Directory szervezetében is bejelentkezhet a felhasználókba. Ezek a hitelesítési folyamatok nem támogatottak a Microsoft személyes fiókjaiban.
 
-A Big Picture esetében lásd: [forgatókönyvek és támogatott hitelesítési folyamatok](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) és [forgatókönyvek, valamint támogatott platformok és nyelvek](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+A felhasználók olyan közösségi identitások használatával is bejelentkezhetnek, amelyek átadják a B2C-hatóságot és a szabályzatot. Ennek a módszernek a használatához csak az interaktív hitelesítés és a username-Password hitelesítés használható. A Felhasználónév-jelszó hitelesítés jelenleg csak Xamarin. iOS, Xamarin. Android és UWP esetén támogatott.
+
+További információ: [forgatókönyvek és támogatott hitelesítési folyamatok](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) , [forgatókönyvek és támogatott platformok és nyelvek](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
 ## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurálása és URI-k átirányítása  
 
 ### <a name="interactive-authentication"></a>Interaktív hitelesítés
 
-A mobileszköz interaktív hitelesítéssel való létrehozásakor a legkritikusabb regisztrációs lépés az átirányítási URI. Ez a hitelesítés panelen állítható be a [platform-konfiguráción](https://aka.ms/MobileAppReg)keresztül.
+Ha interaktív hitelesítést használó mobil alkalmazást hoz létre, a legkritikusabb regisztrációs lépés az átirányítási URI. A hitelesítés panelen beállíthatja az interaktív hitelesítést a [platform konfigurációján ](https://aka.ms/MobileAppReg)keresztül.
 
-Ez a felhasználói élmény lehetővé teszi az alkalmazás számára, hogy egyszeri bejelentkezést (SSO) kapjon a Microsoft Authenticator (és az Androidon Intune Céges portál), valamint az eszköz-felügyeleti házirendek támogatásával.
+Ez a felhasználói élmény lehetővé teszi, hogy az alkalmazás egyszeri bejelentkezést (SSO) kapjon Microsoft Authenticator (és az Androidon Intune Céges portál). Emellett az eszköz-felügyeleti házirendeket is támogatni fogja.
 
-Vegye figyelembe, hogy az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, amely segítséget nyújt az iOS-és Android-alkalmazások felügyelt válasz URI-azonosítójának kiszámításához:
+Az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, amely segítséget nyújt az iOS-és Android-alkalmazások felügyelt válasz URI-azonosítójának kiszámításához:
 
-1. Az alkalmazás regisztrálása beállításban válassza a **hitelesítés** és kiválasztás **kipróbálom az új felhasználói élményt**
-   ![rendszerképet](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. Az alkalmazás-regisztrációs portálon válassza a **hitelesítés** > **próbálja ki az új felhasználói élményt**.
 
-2. Válassza a **platform hozzáadása**
-   ![rendszerkép lehetőséget](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   ![A hitelesítés panel, ahol új felhasználói élményt választhat](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-3. Ha a platformok listája támogatott, válassza az **iOS**
-   ![a rendszerképet](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+2. Válassza **a platform hozzáadása**lehetőséget.
 
-4. Adja meg a köteg AZONOSÍTÓját a kért módon, majd nyomja meg
-   ![-rendszerkép **regisztrálása**](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![Platform hozzáadása](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-5. Az átirányítási URI-t az Ön számára számítjuk ki.
-   ![kép](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+3. Ha a platformok listája támogatott, válassza az **iOS**lehetőséget.
 
-Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás Jegyzékfájlján keresztül teheti meg. Az ajánlott formátum a következő:
+   ![Mobileszköz kiválasztása](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth` (például "msauth. com. yourcompany. appName://auth")
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Az androidos aláírás kivonata a Key Tool parancs használatával hozható létre a kiadási vagy a hibakeresési kulcsokkal.
+4. Adja meg a köteg AZONOSÍTÓját, majd válassza a **regisztráció**lehetőséget.
 
-### <a name="username-password"></a>Felhasználónév jelszava
+   ![Adja meg a köteg AZONOSÍTÓját](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-Ha az alkalmazás csak a username/Password nevet használja, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Valójában ez a folyamat a Microsoft Identity platform v 2.0-végpontját is átveszi, és az alkalmazás nem hívható vissza semmilyen konkrét URI-ra. Azonban meg kell adnia, hogy az alkalmazás egy nyilvános ügyfélalkalmazás. Ezt a konfigurációt az alkalmazás **hitelesítési** szakasza fogja megvalósítani, a **Speciális beállítások** alszakaszban pedig válassza az **Igen**lehetőséget az **alkalmazás nyilvános ügyfélként való kezelésére** szolgáló kérdésnél (az **alapértelmezett ügyfél típusa** bekezdésben).
+A lépések elvégzése után az átirányítási URI-t az alábbi képen látható módon számítjuk ki.
+
+![Az eredményül kapott átirányítási URI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+
+Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás jegyzékfájlján keresztül teheti meg. A jegyzékfájl ajánlott formátuma a következő:
+
+- **iOS**: `msauth.<BUNDLE_ID>://auth` 
+  - Adja meg például a következőt: `msauth.com.yourcompany.appName://auth`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Az Android-aláírási kivonatot a kulcstartó parancs használatával hozhatja ki a kiadási kulccsal vagy a hibakeresési kulccsal.
+
+### <a name="username-password-authentication"></a>Felhasználónév – jelszó-hitelesítés
+
+Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra. 
+
+Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez indítsa el az alkalmazás **hitelesítési** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** részében, az **alkalmazás nyilvános ügyfélként való kezelésére**szolgáló kérdésnél válassza az **Igen**lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell igényelnie, más néven hatóköröknek kell lennie. A kívánt élménytől függően ez statikusan végezhető el a Azure Portalon vagy dinamikusan, futásidőben. Az engedélyek statikus regisztrálása lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást, és ajánlottak legyenek.
+A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell kérnie. Ezeket az engedélyeket hatóköröknek is nevezik. A kívánt élménytől függően a delegált engedélyeket statikusan is kérheti a Azure Portalon keresztül. Vagy a futtatáskor dinamikusan is kérheti őket. 
+
+Az engedélyek statikus regisztrálásával lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást. A statikus regisztráció ajánlott.
 
 ## <a name="next-steps"></a>Következő lépések
 

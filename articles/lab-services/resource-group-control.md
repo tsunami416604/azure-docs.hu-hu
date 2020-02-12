@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647339"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134536"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Válasszon erőforráscsoportot a tesztkörnyezet virtuális gépei számára Azure DevTest Labs
 
@@ -31,12 +31,12 @@ A labor tulajdonosaként beállíthatja, hogy a tesztkörnyezet virtuális gépe
 Ezzel a funkcióval egy parancsfájl segítségével megadhat egy új vagy egy meglévő erőforráscsoportot az Azure-előfizetésében az összes Tesztkörnyezet virtuális gépe számára. A Azure DevTest Labs jelenleg egy API-n keresztül támogatja ezt a funkciót.
 
 > [!NOTE]
-> A DevTest Labs szolgáltatásban a Labs létrehozásakor minden előfizetési korlát érvényes. Gondoljon egy laborra, mint bármely más erőforrásra az előfizetésében. Erőforráscsoportok esetén a korlát [980 erőforráscsoport/előfizetés](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> A DevTest Labs szolgáltatásban a Labs létrehozásakor minden előfizetési korlát érvényes. Gondoljon egy laborra, mint bármely más erőforrásra az előfizetésében. Erőforráscsoportok esetén a korlát [980 erőforráscsoport/előfizetés](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
-## <a name="use-azure-portal"></a>Az Azure-portál használata
+## <a name="use-azure-portal"></a>Az Azure Portal használata
 Kövesse az alábbi lépéseket a laborban létrehozott összes virtuális géphez tartozó erőforráscsoport megadásához. 
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A bal oldali navigációs menüben válassza a **minden szolgáltatás** lehetőséget. 
 3. Válassza a **DevTest Labs** elemet a listából.
 4. A Labs listából válassza ki a **labort**.  

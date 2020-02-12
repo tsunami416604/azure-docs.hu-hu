@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Privileged Identity Management (PIM) az Azure-erőforrásokhoz való hozzáférés kezelése
-description: Ismerje meg az Azure Active Directory Privileged Identity Management (PIM) és a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz való hozzáférés kezelése.
+title: Azure-erőforrásokhoz való hozzáférés kezelése az Azure AD és a PIM használatával
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a Azure Active Directory Privileged Identity Management (PIM) és a szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344614"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138035"
 ---
-# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management Azure-erőforrásokhoz való hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Azure-erőforrásokhoz való hozzáférés kezelése Azure AD Privileged Identity Management
 
-Kiemelt jogosultságú fiókok védelmét a rosszindulatú kibertámadások ellen, a jogosultságok expozíciós idejének és a jelentéseket és riasztásokat keresztül használatuk átláthatóvá használhatja az Azure Active Directory Privileged Identity Management (PIM). A PIM azért teszi ezt, korlátozza a felhasználók számára csak a jogosultságai a "csak az időben" véve (JIT), vagy a jogosultságok hozzárendelése a akkor használhatja rövidített időtartam elteltével jogosultságokkal automatikusan visszavonódnak. 
+A rendszerjogosultságú fiókok rosszindulatú cyber-támadások elleni védelme érdekében Azure Active Directory Privileged Identity Management (PIM) használatával csökkentheti a jogosultságok expozíciós idejét, és a jelentésekkel és riasztásokkal növelheti a használat láthatóságát. A PIM ezt azáltal korlátozza, hogy a felhasználók csak az idő függvényében (JIT) használják a jogosultságokat, vagy ha jogosultságokat rendelnek a lerövidített időtartamhoz, amely után a rendszer automatikusan visszavonja a jogosultságokat. 
 
-Mostantól használhatja a PIM az Azure szerepköralapú hozzáférés-vezérlés (RBAC) kezelése, szabályozása és figyelése az Azure-erőforrásokhoz való hozzáférést. A PIM beépített és egyéni szerepkör tagsága segítségével kezelheti: 
+Mostantól használhatja a PIM-t az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz való hozzáférés felügyeletéhez, szabályozásához és figyeléséhez. A PIM képes a beépített és egyéni szerepkörök tagságának kezelésére: 
 
-- Igény szerinti, "csak az időben" az Azure erőforrások hozzáférésének engedélyezése
-- Erőforrás-hozzáférés automatikusan a hozzárendelt felhasználók és csoportok elévülése
-- Ideiglenes hozzáférések hozzárendelése az Azure-erőforrások gyors feladatok vagy a készenléti ütemezések
-- Értesítéseket kaphat az új felhasználók vagy csoportok hozzárendelése esetén erőforrásokhoz való hozzáférést, és ha azok a jogosult hozzárendelések aktiválása
+- Igény szerinti, "egyszeri" hozzáférés engedélyezése az Azure-erőforrásokhoz
+- Erőforrás-hozzáférés automatikus lejárata a hozzárendelt felhasználókhoz és csoportokhoz
+- Az Azure-erőforrásokhoz való ideiglenes hozzáférés kiosztása gyors feladatok vagy hívási ütemtervek esetén
+- Riasztások beszerzése új felhasználók vagy csoportok erőforrás-hozzáféréshez való hozzárendelésekor, valamint a jogosult hozzárendelések aktiválásakor
 
-További információkért lásd: [Mi az Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+További információ: [Mi az Azure ad Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)

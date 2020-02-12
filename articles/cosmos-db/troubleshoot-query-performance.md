@@ -1,19 +1,19 @@
 ---
 title: Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elháríthatja a Azure Cosmos DB SQL-lekérdezéssel kapcsolatos problémákat.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 01/14/2020
-ms.author: girobins
+ms.date: 02/10/2020
+ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109344"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132066"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -117,7 +117,7 @@ Az indexelési szabályzatnak tartalmaznia kell `WHERE` záradékok, `ORDER BY` 
 
 Ha egy egyszerű lekérdezést futtatunk a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten, a `WHERE` záradékban található tulajdonság indexelése sokkal alacsonyabb költséget vesz figyelembe.
 
-### <a name="original"></a>Eredeti
+### <a name="original"></a>eredeti
 
 Lekérdezés:
 
@@ -193,12 +193,12 @@ A lekérdezés más részei továbbra is használhatják az indexet, annak ellen
 
 Egy szűrővel és egy `ORDER BY` záradékkal rendelkező lekérdezések általában a tartomány indexét fogják használni, ha egy összetett indexből tudnak kiszolgálni. Az indexelési házirend módosításán kívül az összes tulajdonságot fel kell vennie az összetett indexbe a `ORDER BY` záradékba. A lekérdezés módosítása biztosítja, hogy az a kompozit indexet használja.  A hatás megfigyeléséhez futtasson egy lekérdezést a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten.
 
-### <a name="original"></a>Eredeti
+### <a name="original"></a>eredeti
 
 Lekérdezés:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c._ts ASC
+SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
 ```
 
 Indexelési házirend:
@@ -308,7 +308,7 @@ Ha például létrehozunk egy tárolót a partíciós kulcs foodGroup, a követk
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 Ezeket a lekérdezéseket a (z) a lekérdezésben szereplő partíciós kulccsal is optimalizálhatja:
@@ -327,7 +327,7 @@ WHERE c.description = "Mushroom, oyster, raw"
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 ## <a name="filters-on-multiple-properties"></a>Szűrők több tulajdonságon

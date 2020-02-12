@@ -8,178 +8,177 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 4dd27d3fb4321c2eecf222136376bfd4b49790bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027775"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136172"
 ---
-# <a name="quickstart-create-a-private-link-service-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
+# <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
 
-Az Azure Private link Service a saját szolgáltatására vonatkozik, amelyet az Azure privát kapcsolata működtet. A Azure Load Balancer mögött működő szolgáltatás vagy erőforrás engedélyezhető a magánjellegű kapcsolatokhoz való hozzáféréshez. A szolgáltatás felhasználói saját virtuális hálózatok érhetik el a szolgáltatást. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást a Azure Portal használatával.
+Az Azure Private link Service a saját szolgáltatására hivatkozik, amelyet a privát kapcsolat kezel. A Azure Load Balancer mögött működő szolgáltatáshoz vagy erőforráshoz privát hivatkozásokat adhat hozzá. A szolgáltatás felhasználói saját virtuális hálózatokról is hozzáférhetnek. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást a Azure Portal használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="create-an-internal-load-balancer"></a>Belső terheléselosztó létrehozása
+## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 
-Először hozzon létre egy virtuális hálózatot, majd egy belső terheléselosztó használatát az Azure Private link szolgáltatással.
+Először hozzon létre egy virtuális hálózatot. Következő lépésként hozzon létre egy belső terheléselosztó szolgáltatást a privát kapcsolat szolgáltatással való használatra.
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, amely a privát kapcsolati szolgáltatás eléréséhez használt terheléselosztó üzemeltetésére szolgál.
-
+Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Emellett létrehozza azt az alhálózatot is, amely a privát kapcsolati szolgáltatáshoz hozzáférő terheléselosztó futtatására szolgál.
 
 1. A portál bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
-   
-1. A **virtuális hálózat létrehozása** panelen írja be vagy válassza ki a következő értékeket:
-   
-   - **Név**: írja be a **MyVNet**nevet.
-   - **ResourceGroup**: válassza az **új létrehozása**elemet, majd írja be a **Myresourcegrouplb erőforráscsoportban**, majd kattintson **az OK gombra**. 
-   - **Alhálózat** > **neve**: írja be a következőt: **MyBackendSubnet**.
-   
+
+1. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
+
+   - **Név**: adja meg a **MyVNet**.
+   - **ResourceGroup**: válassza az **új létrehozása**elemet, írja be a **Myresourcegrouplb erőforráscsoportban**, majd kattintson **az OK gombra**.
+   - **Alhálózat** > **neve**: adja meg a **MyBackendSubnet**.
+
 1. Kattintson a **Létrehozás** gombra.
 
    ![Virtuális hálózat létrehozása](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
+### <a name="create-a-standard-load-balancer"></a>Standard terheléselosztó létrehozása
 
-Hozzon létre egy standard belső terheléselosztó-t a portál használatával. A létrehozott név és IP-cím automatikusan a terheléselosztó előlapján lesz konfigurálva.
+A portál használatával hozzon létre egy standard belső terheléselosztó. A megadott név és IP-cím automatikusan be van állítva a terheléselosztó előtér-címére.
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
-   
-2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
-    | Beállítás                 | Value (Díj)                                              |
+1. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat:
+
+    | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetést               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | A legördülő listában válassza a *myresourcegrouplb erőforráscsoportban* lehetőséget.|
-    | Name (Név)                   | *myLoadBalancer*                                   |
-    | Region (Régió)         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
-    | Type (Típus)          | Válassza a **belső**lehetőséget.                                        |
-    | SKU (Cikkszám)           | Válassza a **standard**lehetőséget.                          |
-    | Virtuális hálózat           | Válassza a *MyVNet*lehetőséget.                          |    
-    | IP-cím hozzárendelése              | Válassza a **statikus**lehetőséget.   |
-    | Magánhálózati IP-cím|Írjon be egy olyan címeket, amely a virtuális hálózat és az alhálózat címterület területén található, például *10.3.0.7*.  |
+    | **Előfizetés**               | Válassza ki előfizetését.    |
+    | **Erőforráscsoport**         | Válassza a **myresourcegrouplb erőforráscsoportban** lehetőséget a mezőben.|
+    | **Name (Név)**                   | Adja meg a **myLoadBalancer**.                                   |
+    | **Régió**         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
+    | **Típus**          | Válassza a **belső**lehetőséget.                                        |
+    | **Termékváltozat**           | Válassza a **standard**lehetőséget.                          |
+    | **Virtuális hálózat**           | Válassza a **MyVNet**lehetőséget.                          |
+    | **IP-cím hozzárendelése**              | Válassza a **statikus**lehetőséget.   |
+    | **Magánhálózati IP-cím**|Adjon meg egy, a virtuális hálózat és az alhálózat címterület területén található címeket. Ilyen például a 10.3.0.7.  |
 
-3. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra. 
-   
+1. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás** elemet.
+
+1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-standard-load-balancer-resources"></a>Standard Load Balancer-erőforrások létrehozása
 
-Ebben a szakaszban a terheléselosztó beállításait konfigurálja egy háttérbeli címkészlet és egy állapot-mintavétel számára, és meg kell adnia a terheléselosztó szabályait.
+Ebben a szakaszban a terheléselosztó beállításait fogja konfigurálni egy háttércímkészlet és egy állapotminta számára, A terheléselosztó szabályait is megadhatja.
 
-#### <a name="create-a-backend-pool"></a>Háttérbeli készlet létrehozása
+#### <a name="create-a-back-end-pool"></a>Háttérbeli készlet létrehozása
 
-Az erőforrásokra irányuló forgalom elosztásához a háttérbeli címkészlet tartalmazza a Load Balancerhoz csatlakozó virtuális hálózati adapterek IP-címeit. Hozza létre a háttér-címkészlet *myBackendPool* , hogy tartalmazza a terheléselosztási forgalomhoz szükséges erőforrásokat.
+A háttér-címkészlet a terheléselosztó számára csatlakozó virtuális hálózati adapterek IP-címeit tartalmazza. Ez a készlet lehetővé teszi az erőforrások forgalmának elosztását. Hozza létre a **myBackendPool** nevű háttér-címkészletet a forgalmat terheléselosztási erőforrások belefoglalásához.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
-2. A **Beállítások**területen válassza a **háttér-készletek**, majd a **Hozzáadás**lehetőséget.
-3. A **háttérbeli készlet hozzáadása** lapon a név mezőbe írja be a *myBackendPool*nevet a háttérbeli készlet neveként, majd válassza a **Hozzáadás**lehetőséget.
-
-
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
+1. Válassza az **összes erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
+1. A **Beállítások** alatt válassza a **Háttérkészletek**, majd a **Hozzáadás** lehetőséget.
+1. A **háttérbeli készlet hozzáadása** lapon adja meg a **myBackendPool** nevet a háttér-készlet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
 #### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
-Ha engedélyezni szeretné a terheléselosztó számára az erőforrás állapotának figyelését, az állapot-mintavételt kell használnia. Az állapot-mintavétel dinamikusan hozzáadja vagy eltávolítja az erőforrásokat a terheléselosztó forgása alapján az állapot-ellenőrzésekre adott válasz alapján. 
+Használjon állapot-mintavételt, hogy a terheléselosztó-figyelő erőforrás állapota meglegyen. Az állapot-ellenőrzésre adott erőforrás-válasz alapján az állapotfigyelő szolgáltatás dinamikusan hozzáadja vagy eltávolítja az erőforrásokat a terheléselosztó elforgatásával.
 
-**Állapot-mintavétel létrehozása az erőforrások állapotának figyeléséhez:**
+Állapot-mintavétel létrehozása az erőforrások állapotának figyeléséhez:
 
 1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **MyLoadBalancer** lehetőséget az erőforrások listájából.
-   
+
 1. A **Beállítások** területn válassza az **Állapotminták**, majd a **Hozzáadás** lehetőséget.
-   
-1. Az **állapotfelmérés hozzáadása** lapon írja be vagy válassza ki a következő értékeket:
-   
-   - **Név**: írja be a **MyHealthProbe**nevet.
-   - **Protokoll**: legördülő menüből válassza a **TCP**lehetőséget. 
-   - **Port**: Type **80**. 
-   - **Időköz**: Type **15**. Az intervallum a mintavételi kísérletek között eltelt másodpercek száma.
-   - Nem megfelelő **állapot küszöbértéke**: Type **2**. Ez az érték azon egymást követő mintavételi hibák száma, amelyek a virtuális gép nem megfelelő állapotának tekintendők.
-   
+
+1. Az **állapotfelmérés hozzáadása** lapon adja meg vagy válassza ki a következő értékeket:
+
+   - **Név**: adja meg a **MyHealthProbe**.
+   - **Protokoll**: válassza a **TCP**lehetőséget.
+   - **Port**: írja be a **80**értéket.
+   - **Intervallum**: adja meg a **15**értéket. Ez az érték a mintavételi kísérletek között eltelt másodpercek száma.
+   - Nem megfelelő **állapot küszöbértéke**: írja be a **2**értéket. Ez az érték azon egymást követő mintavételi hibák száma, amelyek a virtuális gép nem megfelelő állapotának számítása előtt történnek.
+
 1. Kattintson az **OK** gombra.
 
 #### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztó szabályai határozzák meg, hogy a rendszer hogyan ossza el a forgalmat az erőforrásokra. A szabály meghatározza a bejövő forgalom előtér-IP-konfigurációját, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás-és célport eléréséhez. 
+A terheléselosztó szabályai határozzák meg, hogy a rendszer hogyan ossza el a forgalmat az erőforrásokra. A szabály az alábbiakat határozza meg:
 
-A **MyLoadBalancerRule** nevű terheléselosztó-szabály a 80-es portot figyeli az előtér- **LoadBalancerFrontEnd**. A szabály a 80-es porton is továbbítja a hálózati forgalmat a háttérbeli címkészlet **MyBackendPool**. 
+- A bejövő forgalom előtér-IP-konfigurációja.
+- A háttérbeli IP-készlet a forgalom fogadására.
+- A szükséges forrás és cél portok.
 
-**A terheléselosztó szabály létrehozása:**
+A **MyLoadBalancerRule** nevű terheléselosztó-szabály a **LoadBalancerFrontEnd** előtérben figyeli a 80-es portot. A szabály a 80-as porton keresztül továbbítja a hálózati forgalmat az **MyBackendPool** -háttérbeli címkészlet számára.
+
+Terheléselosztó-szabály létrehozása:
 
 1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **MyLoadBalancer** lehetőséget az erőforrások listájából.
-   
+
 1. A **Beállítások**területen válassza a **terheléselosztási szabályok**elemet, majd kattintson a **Hozzáadás**gombra.
-   
-1. A **terheléselosztási szabály hozzáadása** lapon írja be vagy válassza ki a következő értékeket, ha még nem létezik:
-   
-   - **Név**: írja be a **MyLoadBalancerRule**nevet.
-   - Előtérbeli **IP-cím:** Írja be a **LoadBalancerFrontEnd** típust, ha nincs jelen.
+
+1. A **terheléselosztási szabály hozzáadása** lapon adja meg vagy válassza ki a következő értékeket, ha még nem jelennek meg:
+
+   - **Név**: adja meg a **MyLoadBalancerRule**.
+   - Előtérbeli **IP-cím:** Adja meg a **LoadBalancerFrontEnd**.
    - **Protokoll**: válassza a **TCP**lehetőséget.
-   - **Port**: Type **80**.
-   - **Háttér-port**: Type **80**.
+   - **Port**: írja be a **80**értéket.
+   - **Háttér-port**: írja be a **80**értéket.
    - **Háttér-készlet**: válassza a **MyBackendPool**lehetőséget.
    - **Állapot**-mintavétel: válassza a **MyHealthProbe**lehetőséget. 
-   
+
 1. Kattintson az **OK** gombra.
-   
+
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 
-Ebben a szakaszban egy, a standard Load Balancer mögötti privát kapcsolati szolgáltatást fog létrehozni.
+Ebben a szakaszban egy standard Load Balancer mögötti privát kapcsolati szolgáltatást hoz létre.
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Private link Center (előzetes verzió)** lehetőséget. A privát hivatkozás a portálon keresztül is kereshető.
+1. A Azure Portal oldal bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Private link Center (előzetes verzió)** lehetőséget. A portál keresőmező használatával is megkeresheti a privát hivatkozást.
 
-2. A **Private link Centerben – áttekintés**a **"saját szolgáltatás közzététele, hogy mások is csatlakozhatnak"** lehetőségnél válassza az indítás lehetőséget.
+1. A **Private link Centerben – áttekintés** > **saját szolgáltatás közzététele, hogy mások is csatlakozhassanak**, válassza az **Indítás**lehetőséget.
 
-3. A **Private link Service létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+1. A **Private link Service létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás           | Value (Díj)                                                                        |
+    | Beállítás           | Érték                                                                        |
     |-------------------|------------------------------------------------------------------------------|
-    | **Projekt részletei:**  |                                                                              |
-    | Előfizetést      | Válassza ki előfizetését.                                                     |
-    | Erőforráscsoport    | *Myresourcegrouplb erőforráscsoportban* kiválasztása                                                     |
-    | **PÉLDÁNY RÉSZLETEI:** |                                                                              |
-    | Name (Név)              | *MyPrivateLinkService* megadása |
-    | Region (Régió)            | Válassza az *USA 2. keleti* régióját                                                         |
+    | Projekt részletei:  |                                                                              |
+    | **Előfizetés**      | Válassza ki előfizetését.                                                     |
+    | **Erőforráscsoport**    | Válassza a **myresourcegrouplb erőforráscsoportban**lehetőséget.                                                    |
+    | Példány részletei: |                                                                              |
+    | **Name (Név)**              | Adja meg a **myPrivateLinkService**. |
+    | **Régió**            | Válassza az **USA 2. keleti régiója** lehetőséget.                                                        |
 
-4. Válassza a **Next (tovább): kimenő beállítások**lehetőséget.
+1. Válassza a **Next (tovább): kimenő beállítások**lehetőséget.
 
-5. A **privát kapcsolati szolgáltatás létrehozása – kimenő beállítások**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. A **privát kapcsolati szolgáltatás létrehozása – kimenő beállítások**területen adja meg vagy válassza ki az alábbi adatokat:
 
-
-    | Beállítás                           | Value (Díj)                                                                           |
+    | Beállítás                           | Érték                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | Terheléselosztó                     | *MyLoadBalancer* kiválasztása                                                           |
-    | Load Balancer előtér IP-címe | Válassza ki a MyLoadBalancer felületének IP-címét                                |
-    | Forrás NAT virtuális hálózata        | *MyVNET* kiválasztása                                                                   |
-    | Forrás NAT-alhálózat                 | *MyBackendSubnet* kiválasztása                                                          |
-    | A TCP-proxy v2 engedélyezése               | Válassza az igen/nem beállítást attól függően, hogy az alkalmazás a TCP-proxy v2 fejlécét várja-e |
-    | Magánhálózati IP-cím beállításai       | A kiosztási módszer és az IP-cím konfigurálása az egyes NAT-IP-címekhez                  |
+    | **Load Balancer**                     | Válassza a **MyLoadBalancer**lehetőséget.                                                           |
+    | **Load Balancer előtér IP-címe** | Válassza ki a **MyLoadBalancer**ELŐTÉR-IP-címét.                                |
+    | **Forrás NAT virtuális hálózata**        | Válassza a **myVNET**lehetőséget.                                                                   |
+    | **Forrás NAT-alhálózat**                 | Válassza a **myBackendSubnet**lehetőséget.                                                          |
+    | **A TCP-proxy v2 engedélyezése**               | Válassza az **Igen** vagy a **nem** lehetőséget attól függően, hogy az alkalmazás TCP-proxy v2-fejlécet vár-e. |
+    | **Magánhálózati IP-cím beállításai**       | Konfigurálja a kiosztási módszert és az IP-címet az egyes NAT-IP-címekhez.                  |
 
-6. Válassza a Next (tovább) lehetőséget **: hozzáférés a biztonsághoz**.
+1. Válassza a Next (tovább) lehetőséget **: hozzáférés a biztonsághoz**.
 
-7. A **privát kapcsolat szolgáltatás létrehozása – hozzáférési biztonság**területen adja meg vagy válassza ki az alábbi adatokat:
-
-    | Beállítás                                     | Value (Díj)                                                             |
-    |---------------------------------------------|-------------------------------------------------------------------|
-    | Láthatóság                                  | *Csak szerepköralapú hozzáférés-vezérlés* kiválasztása         |
+1. **A privát kapcsolati szolgáltatás létrehozása – hozzáférési biztonság**területen válassza a **láthatóság**lehetőséget, majd válassza a **szerepköralapú hozzáférés-vezérlés**lehetőséget.
   
-8. Válassza a **Next (tovább**) gombot, majd a lap tetején a **felülvizsgálat + létrehozás lapot** .
+1. Válassza a **Next (tovább) lehetőséget: címkék** > **felülvizsgálat + létrehozás** vagy válassza a lap tetején található **felülvizsgálat + létrehozás** lapot.
 
-9. Tekintse át az adatokat, és válassza a **Létrehozás**lehetőséget.
+1. Tekintse át az adatokat, majd válassza a **Létrehozás**lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha végzett a Private link szolgáltatással, törölje az erőforráscsoportot az ebben a rövid útmutatóban használt erőforrások törléséhez:
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-1. Adja meg a *myresourcegrouplb erőforráscsoportban* a portál tetején található **keresőmezőbe** , és válassza a *myresourcegrouplb erőforráscsoportban* lehetőséget a keresési eredmények közül. 
-2. Válassza az **Erőforráscsoport törlése** elemet. 
-3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+Ha végzett a Private link szolgáltatással, törölje az erőforráscsoportot az ebben a rövid útmutatóban használt erőforrások törléséhez.
+
+1. Írja be a **myresourcegrouplb erőforráscsoportban** kifejezést a portál tetején található keresőmezőbe, és válassza a **myresourcegrouplb erőforráscsoportban** elemet a keresési eredmények közül.
+1. Válassza az **Erőforráscsoport törlése** elemet.
+1. Az **írja be az ERŐFORRÁSCSOPORT nevét mezőbe írja be a következőt**: **myResourceGroup**.
+1. Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy belső Azure Load balancert és egy privát kapcsolati szolgáltatást. További információ a privát végpontok létrehozásáról: [privát végpontok létrehozása Azure Portal használatával](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+Ebben a rövid útmutatóban létrehozott egy belső Azure Load balancert és egy privát kapcsolati szolgáltatást. Azt is megtudhatja, hogyan [hozhat létre egy privát végpontot a Azure Portal használatával](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).

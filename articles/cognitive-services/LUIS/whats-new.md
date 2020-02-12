@@ -1,34 +1,28 @@
 ---
 title: Újdonságok – Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280297"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137806"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
-Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
+Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések 
+## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="november-4-2019---ignite"></a>November 4., 2019-Ignite
 
+* Video- [Advanced Natural Language Understanding (NLU) modellek a Luis és az Azure Cognitive Services használatával | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * Továbbfejlesztett fejlesztői hatékonyság
-    * Az [előrejelzési végpont v3](luis-migration-api-v3.md)verziójának általános elérhetősége. 
-    * Alkalmazások importálása és exportálása a. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját. 
+    * Az [előrejelzési végpont v3](luis-migration-api-v3.md)verziójának általános elérhetősége.
+    * Alkalmazások importálása és exportálása a. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját.
 * Nyelvi bővítés
     * Az [arab és a hindi](luis-language-support.md) nyilvános előzetes verzióban érhető el.
 * Előre összeállított modellek
@@ -37,8 +31,8 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
     * Olasz előre [összeépített entitások](luis-reference-prebuilt-entities.md#italian-entity-support) – az életkor, a pénznem, a dimenzió, a szám és a százalékos felbontás a v2-től módosult.
 * Továbbfejlesztett felhasználói élmény a [preview.Luis.ai-portálon](https://preview.luis.ai) – az összetett modellek kiépítése és hibakeresése érdekében feldolgozatlan címkézési élmény. Próbálja ki a betekintő portál oktatóanyagokat:
     * [Csak szándékok](tutorial-intents-only.md)
-    * [Felismert gépi megtanult entitás](tutorial-machine-learned-entity.md) 
-* Előzetes nyelvi ismeretek – a [kifinomult nyelvi modellek fejlesztése](luis-concept-entity-types.md) kevesebb erőfeszítéssel. 
+    * [Felismert gépi megtanult entitás](tutorial-machine-learned-entity.md)
+* Előzetes nyelvi ismeretek – a [kifinomult nyelvi modellek fejlesztése](luis-concept-entity-types.md) kevesebb erőfeszítéssel.
 * Megadhatja a gépi tanulási funkciókat a modell szintjén, és engedélyezheti a modellek más modellekhez való használatát, például az entitások szolgáltatásként való használatát a szándékok és más entitások számára.
 * Új, kibővített [korlátok](luis-boundaries.md) – a kifejezések listájának és az összes kifejezésnek, valamint az új modellnek a funkció korlátainál nagyobb maximális száma
 * Kinyerheti az adatokat a szövegből a mély hierarchia struktúrájának formátumában, így hatékonyabban fejlesztheti a beszélgetési alkalmazásokat.
@@ -74,7 +68,7 @@ A Build 2019 konferencián a következő funkciók jelentek meg:
 
 * [A V3 API áttelepítési útmutatójának előzetes verziója](luis-migration-api-v3.md)
 * [Továbbfejlesztett elemzési irányítópult](luis-how-to-use-dashboard.md)
-* [Továbbfejlesztett előre összeépített tartományok](luis-reference-prebuilt-domains.md) 
+* [Továbbfejlesztett előre összeépített tartományok](luis-reference-prebuilt-domains.md)
 * [Dinamikus lista entitásai](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Külső entitások](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ A Build 2019 konferencián a következő funkciók jelentek meg:
 [Bot-keretrendszer](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Videók
+
+### <a name="2019-ignite-videos"></a>2019 Ignite-videók
+
+[Advanced Natural Language Understanding (NLU) modellek a LUIS és az Azure Cognitive Services használatával | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>2019 videók készítése
 

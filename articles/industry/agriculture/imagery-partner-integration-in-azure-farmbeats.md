@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0c03394c48c936f9faef85e9f4933893aaa67090
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482425"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131856"
 ---
 # <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
@@ -40,7 +40,7 @@ A FarmBeats csatolásához a következő hitelesítő adatokat kell használnia 
 
 Az API-k a hencegés műszaki dokumentációját tartalmazzák. További információ az API-król és a megfelelő kérésekről vagy válaszokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A FarmBeats Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure ad) szolgáltatást használ. A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít. 
 
@@ -83,7 +83,7 @@ Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amik
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Tartalomtípus  | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
+Content-Type  | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
 Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
 Elfogadás  | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
 
@@ -492,4 +492,4 @@ A/SceneFile API-hoz intézett POST hívása egy SAS-feltöltési URL-címet ad v
 
 ## <a name="next-steps"></a>Következő lépések
 
-A REST API-alapú integráció részleteivel kapcsolatos további információkért lásd: [REST API](references-for-azure-farmbeats.md#rest-api).
+A REST API-alapú integráció részleteivel kapcsolatos további információkért lásd: [REST API](rest-api-in-azure-farmbeats.md).

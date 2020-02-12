@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481310"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132207"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure AD Domain Services felügyelt tartományban
 
@@ -97,7 +97,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli csoport objektumai
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Helyszíni AD DS szinkronizálása az Azure AD-be és az Azure-ba AD DS
 
-Azure AD Connect használatával szinkronizálhatók a felhasználói fiókok, csoporttagság és hitelesítő adatok kivonatai egy helyszíni AD DS környezetből az Azure AD-be. A felhasználói fiókok, például az UPN és a helyszíni biztonsági azonosító (SID) attribútumai szinkronizálva vannak. Ha Azure AD Domain Services használatával szeretne bejelentkezni, az NTLM-és Kerberos-hitelesítéshez szükséges örökölt jelszó-kivonatok is szinkronizálva lesznek az Azure AD-vel.
+Azure AD Connect használatával szinkronizálhatók a felhasználói fiókok, csoporttagság és hitelesítő adatok kivonatai egy helyszíni AD DS környezetből az Azure AD-be. A felhasználói fiókok, például az UPN és a helyszíni biztonsági azonosító (SID) attribútumai szinkronizálva vannak. Az Azure AD DS használatával való bejelentkezéshez az NTLM-és Kerberos-hitelesítéshez szükséges örökölt jelszó-kivonatok is szinkronizálva lesznek az Azure AD-vel.
 
 > [!IMPORTANT]
 > A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. Nem támogatott Azure AD Connect telepítése Azure AD DS felügyelt tartományba az objektumok Azure AD-be való visszaszinkronizálásához.
@@ -113,7 +113,7 @@ Számos szervezet rendelkezik egy viszonylag összetett helyszíni AD DS környe
 
 Az Azure AD sokkal egyszerűbb és lapos névteret tartalmaz. Ahhoz, hogy a felhasználók megbízhatóan hozzáférhessenek az Azure AD által védett alkalmazásokhoz, hárítsa el az UPN-ütközéseket a különböző erdőkben lévő felhasználói fiókok között. Az Azure AD DS felügyelt tartományok az Azure AD-hez hasonló, lapos szervezeti struktúrát használnak. Az összes felhasználói fiókot és csoportot a rendszer a *AADDC-felhasználók* tárolóban tárolja, annak ellenére, hogy a különböző helyszíni tartományokból vagy erdőkből szinkronizálva van, még akkor is, ha a helyszíni hierarchikus szervezeti egységet konfigurálta. Az Azure AD DS felügyelt tartomány bármely hierarchikus OU-struktúrát lelapul.
 
-Ahogy korábban már említettük, az Azure-ból nem AD DS vissza az Azure AD-be. [Létrehozhat egyéni szervezeti egységet (OU-t)](create-ou.md) az Azure AD DS, majd a felhasználók, csoportok vagy szolgáltatásfiókok számára az egyéni szervezeti egységeken belül. Az egyéni szervezeti egységekben létrehozott objektumok egyike sincs szinkronizálva az Azure AD-vel. Ezek az objektumok csak az Azure AD DS felügyelt tartományon belül érhetők el, és nem láthatók az Azure AD PowerShell-parancsmagok, az Azure AD Graph API vagy az Azure ad felügyeleti felhasználói felület használatával.
+Ahogy korábban már említettük, az Azure-ból nem AD DS vissza az Azure AD-be. [Létrehozhat egyéni szervezeti egységet (OU-t)](create-ou.md) az Azure AD DS, majd a felhasználók, csoportok vagy szolgáltatásfiókok számára az egyéni szervezeti egységeken belül. Az egyéni szervezeti egységekben létrehozott objektumok egyike sincs szinkronizálva az Azure AD-vel. Ezek az objektumok csak az Azure AD DS felügyelt tartományon belül érhetők el, és nem láthatók az Azure AD PowerShell-parancsmagokkal, Microsoft Graph API-val vagy az Azure AD felügyeleti felhasználói felületének használatával.
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Mi nincs szinkronizálva az Azure-AD DS
 
@@ -128,9 +128,13 @@ A következő objektumok vagy attribútumok nem szinkronizálhatók a helyszíni
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Jelszó-kivonatolási szinkronizálás és biztonsági megfontolások
 
-Az Azure AD DS engedélyezésekor az NTLM + Kerberos hitelesítéshez örökölt jelszó-kivonatok szükségesek. Az Azure AD nem tárolja a tiszta szöveges jelszavakat, így ezek a kivonatok nem hozhatók létre automatikusan a meglévő felhasználói fiókokhoz. A generált és tárolt, NTLM és Kerberos-kompatibilis jelszavak kivonatait az Azure AD-ben mindig titkosított módon tárolja a rendszer. A titkosítási kulcsok minden egyes Azure AD-bérlő esetében egyediek. Ezek a kivonatok titkosítva vannak, így csak az Azure AD DS fér hozzá a visszafejtési kulcsokhoz. Nincs más szolgáltatás vagy összetevő az Azure AD-ben a visszafejtési kulcsok eléréséhez. A rendszer ezután szinkronizálja az örökölt jelszavakat az Azure AD-ből egy Azure AD DS felügyelt tartomány tartományvezérlőjére. Az Azure AD DS felügyelt tartományvezérlők lemezei inaktív állapotban vannak titkosítva. Ezeket a jelszó-kivonatokat a rendszer a jelszavak tárolási és biztonságos tárolásához és védelméhez hasonlóan tárolja és védi a helyszíni AD DS környezetben.
+Az Azure AD DS engedélyezésekor az NTLM + Kerberos hitelesítéshez örökölt jelszó-kivonatok szükségesek. Az Azure AD nem tárolja a tiszta szöveges jelszavakat, így ezek a kivonatok nem hozhatók létre automatikusan a meglévő felhasználói fiókokhoz. A generált és tárolt, NTLM és Kerberos-kompatibilis jelszavak kivonatait az Azure AD-ben mindig titkosított módon tárolja a rendszer.
 
-Kizárólag felhőalapú Azure AD-környezetek esetén a [felhasználóknak alaphelyzetbe kell állítaniuk vagy módosítaniuk a jelszavukat](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy az Azure ad-ben a szükséges jelszó-kivonatok generálása és tárolása megtörténjen. Az Azure AD Domain Services engedélyezése után az Azure AD-ben létrehozott bármely felhőalapú felhasználói fiókhoz a rendszer a jelszó-kivonatokat az NTLM és a Kerberos-kompatibilis formátumban hozza létre és tárolja. Az új fiókoknak nem kell alaphelyzetbe állítaniuk vagy módosítaniuk a jelszavukat a régi jelszó-kivonatok létrehozásához.
+A titkosítási kulcsok minden egyes Azure AD-bérlő esetében egyediek. Ezek a kivonatok titkosítva vannak, így csak az Azure AD DS fér hozzá a visszafejtési kulcsokhoz. Nincs más szolgáltatás vagy összetevő az Azure AD-ben a visszafejtési kulcsok eléréséhez.
+
+A rendszer ezután szinkronizálja az örökölt jelszavakat az Azure AD-ből egy Azure AD DS felügyelt tartomány tartományvezérlőjére. Az Azure AD DS felügyelt tartományvezérlők lemezei inaktív állapotban vannak titkosítva. Ezeket a jelszó-kivonatokat a rendszer a jelszavak tárolási és biztonságos tárolásához és védelméhez hasonlóan tárolja és védi a helyszíni AD DS környezetben.
+
+Kizárólag felhőalapú Azure AD-környezetek esetén a [felhasználóknak alaphelyzetbe kell állítaniuk vagy módosítaniuk a jelszavukat](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy az Azure ad-ben a szükséges jelszó-kivonatok generálása és tárolása megtörténjen. Az Azure AD Domain Services engedélyezése után az Azure AD-ben létrehozott bármely felhőalapú felhasználói fiókhoz a rendszer a jelszó-kivonatokat az NTLM és a Kerberos-kompatibilis formátumban hozza létre és tárolja. Ezeknek az új fiókoknak nem kell alaphelyzetbe állítania vagy módosítaniuk a jelszavukat a régi jelszó-kivonatok létrehozásához.
 
 A helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókok esetében [konfigurálnia kell Azure ad Connect a jelszó-kivonatok szinkronizálását az NTLM és a Kerberos-kompatibilis formátumokban](tutorial-configure-password-hash-sync.md).
 

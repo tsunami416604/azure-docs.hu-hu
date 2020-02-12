@@ -5,27 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178982"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133602"
 ---
-Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal.
+Emelt szintű jogosultságokkal nyissa meg a PowerShell-konzolt.
 
-
-
-Ha helyileg futtatja az Azure PowerShell, csatlakozzon az Azure-fiókjával. A *Connect-AzAccount* parancsmag hitelesítő adatokat kér. Miután hitelesítése, letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell-lel. Ha helyileg nem futtatja a Powershellt, és helyette használja az Azure Cloud Shell "próbálja ki: a böngészőben, hagyja ki az első lépéshez. Fog csatlakozni az Azure-fiókja automatikusan.
+Ha Azure PowerShell helyileg futtatja, kapcsolódjon az Azure-fiókjához. A *AzAccount* parancsmag hitelesítő adatokat kér. A hitelesítés után letölti a fiók beállításait, hogy elérhetők legyenek Azure PowerShell számára. Ha ehelyett Azure Cloud Shell használ, nem kell futtatnia a *AzAccount*. Azure Cloud Shell automatikusan csatlakozik Azure-fiókjához.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Ha több előfizetéssel rendelkezik, az Azure-előfizetések listájának beolvasása.
+Ha egynél több előfizetéssel rendelkezik, szerezze be az Azure-előfizetések listáját.
 
 ```azurepowershell-interactive
 Get-AzSubscription

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332302"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133769"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek.  
@@ -32,7 +32,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ----------- | ------------ |  
-| Marketplace-rendszerképek | Engedélyezze a Data Science Virtual Machine for Linux (Ubuntu) rendszerképet a labor-fiókban való használathoz.  A következő cikkekben talál útmutatást: a [tesztkörnyezet-készítők számára elérhető Piactéri lemezképek megadása](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators). | 
+| Marketplace-rendszerképek | Engedélyezze a Data Science Virtual Machine for Linux (Ubuntu) rendszerképet a labor-fiókban való használathoz.  A következő cikkekben talál útmutatást: a [tesztkörnyezet-készítők számára elérhető Piactéri lemezképek megadása](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, és alkalmazza a következő beállításokat:
 
@@ -44,7 +44,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 A Linux-rendszerképekhez készült Data Science Virtual Machine az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket biztosít. Ennek eredményeképpen a sablon létrehozása után nem kell további testreszabást végeznie. A tanulók számára közzé lehet tenni. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
 
 Egy 25 tanulós osztály esetében, amely 20 órányi időpontot és 10 órányi kvótát biztosít a munkahelyhez vagy a hozzárendelésekhez, a labor díja 25 diák * (20 + 10) óra * 139 labor egység * 0,01 USD/óra = 1042,5 USD

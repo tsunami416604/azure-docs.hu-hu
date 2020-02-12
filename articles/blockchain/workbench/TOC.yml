@@ -71,7 +71,5 @@
   items:
     - name: Ethereum Proof-of-Authority konzorcium
       href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger Fabric konzorcium
-      href: ../templates/hyperledger-fabric-consortium-blockchain.md
     - name: Hyperledger Fabric konzorcium – Azure Kubernetes Service
       href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md
