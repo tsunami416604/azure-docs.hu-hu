@@ -3,12 +3,12 @@ title: FedRAMP nagy terv-minta vezérlők
 description: A FedRAMP magas tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087341"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150612"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP magas tervrajzi minta leképezésének vezérlése
 
@@ -261,7 +261,7 @@ Emellett a terv a nem védett végpontokat, alkalmazásokat és tárolási fiók
 
 - Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
-- A IaaS lévő webalkalmazások NSG-szabályait meg kell erősíteni
+- A webportokat korlátozni kell a virtuális géphez társított hálózati biztonsági csoportokhoz
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) határ védelme | Hozzáférési pontok

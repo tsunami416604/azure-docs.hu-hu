@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312200"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152261"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
-Ez a cikk a Azure Machine Learning Designer részét képező modult ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
 
 A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
 
@@ -30,7 +30,7 @@ A szolgáltatások kivonatolása úgy működik, hogy az egyedi tokeneket egész
 
 Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy hangulati pontszámot követ. Tegyük fel, hogy ezt a szöveget szeretné használni a modell létrehozásához.
 
-|Felhasználói szöveg|Vélemény|
+|Felhasználói szöveg|Hangulat|
 |--------------|---------------|
 |Imádtam ezt a könyvet|3|
 |Utáltam ezt a könyvet|1|
@@ -96,7 +96,7 @@ A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is tesz
 
 1. A folyamat futtatása.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A feldolgozás befejezése után a modul egy átalakított adatkészletet ad eredményül, amelyben az eredeti szöveges oszlop több oszlopra lett konvertálva. Minden oszlop a szöveg egyik funkcióját jelöli. Attól függően, hogy milyen jelentős a szótár, az eredményül kapott adatkészlet nagyméretű lehet:
 
@@ -121,7 +121,7 @@ Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolás
     
 * Ezeket a szöveg-előfeldolgozási beállításokat érdemes használni az eredmények egyszerűsítése és a pontosság javítása érdekében:
 
-    * Szóhatárolás
+    * Sortörés
     * A Word eltávolításának leállítása
     * Kis-és nagybetűk normalizálása
     * Írásjelek és speciális karakterek eltávolítása

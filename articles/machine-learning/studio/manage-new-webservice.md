@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2e72c8a363ee7f58630b1c0d8d0f00434c2e2b7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f6c686151cbf22d375151268afb04a47bd1b8924
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838794"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153400"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Webszolgáltatás kezelése a Azure Machine Learning Studio (klasszikus) webszolgáltatások portál használatával
 A Microsoft Azure Machine Learning webszolgáltatások portál használatával kezelheti Machine Learning új és klasszikus webszolgáltatásait. Mivel a klasszikus webszolgáltatások és az új webszolgáltatások különböző alapul szolgáló technológiákon alapulnak, némileg eltérő felügyeleti képességei vannak.
@@ -80,7 +80,7 @@ Az irányítópulton megtekintheti a webszolgáltatás általános használatát
 ### <a name="configuring-the-web-service"></a>Webszolgáltatás konfigurálása
 Kattintson a **configure (Konfigurálás** ) menüpontra.
 
-A következő tulajdonságokat frissítheti:
+Az alábbi tulajdonságok frissíthetők:
 
 * A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását.
 * A **cím** lehetővé teszi a webszolgáltatás címének megadását
@@ -147,7 +147,7 @@ Az irányítópulton megtekintheti a webszolgáltatás általános használatát
 ### <a name="configuring-the-web-service"></a>Webszolgáltatás konfigurálása
 Kattintson a **configure (Konfigurálás** ) menüpontra.
 
-A következő tulajdonságokat frissítheti:
+Az alábbi tulajdonságok frissíthetők:
 
 * A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását. A leírás mező kitöltése kötelező.
 * A **naplózással** engedélyezheti vagy letilthatja a hibák naplózását a végponton. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának](web-services-logging.md)engedélyezése.

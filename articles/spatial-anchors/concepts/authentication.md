@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270585"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152601"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -96,6 +96,13 @@ Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlo
 
 1. Konfiguráció a Azure Portalban
     1.  Az alkalmazás regisztrálása az Azure AD-ben **natív alkalmazásként**. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős vagy sem, és megadja az alkalmazáshoz engedélyezett átirányítási URL-címeket.
+        1.  Váltson az **API-engedélyek** lapra
+        2.  Válassza **az engedély hozzáadása** lehetőséget
+            1.  Válassza a **vegyes valóság erőforrás-szolgáltató** elemet **a saját szervezet által használt API** -k alatt
+            2.  **Delegált engedélyek** kiválasztása
+            3.  Jelölje be a **mixedreality. bejelentkezési** jelölőnégyzetet a **mixedreality** alatt
+            4.  Válassza az **engedélyek hozzáadása** lehetőséget
+        3.  Adja meg a **rendszergazdai jóváhagyást**
     2.  Adja meg az alkalmazás vagy a felhasználók számára az erőforráshoz való hozzáférést:
         1.  Navigáljon a térbeli horgonyok erőforrásához Azure Portal
         2.  Váltson a **hozzáférés-vezérlés (iam)** lapra

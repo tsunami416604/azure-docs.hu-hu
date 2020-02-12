@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845078"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152924"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Csomagok ellenőrzése az Azure Network Watcher
 
 A Network Watcher csomag rögzítési funkciójával elindíthatja és kezelheti az Azure-beli virtuális gépeken a portálról, a PowerShellből, a CLI-ből és programozott módon, az SDK-ban és REST API keresztül. A csomagok rögzítése lehetővé teszi, hogy olyan forgatókönyveket adjon meg, amelyek a csomagok szintjének megfelelő adatokat igényelnek, mivel az információkat könnyen használható formátumban kell megadni. A szabadon elérhető eszközöket kihasználva ellenőrizheti az adatokat, és megvizsgálhatja a virtuális gépekről érkező és onnan érkező kommunikációt, és betekintést nyerhet a hálózati forgalomba. A csomagok rögzítése többek között a következőkből áll: a hálózat vagy az alkalmazások problémáinak kivizsgálása, a hálózati visszaélések észlelése és a behatolási kísérletek, illetve a szabályozások megfelelőségének fenntartása Ebben a cikkben bemutatjuk, hogyan nyitható meg a Network Watcher által biztosított csomag-rögzítési fájl egy népszerű nyílt forráskódú eszköz használatával. Olyan példákat is ismertetünk, amelyek bemutatják a kapcsolati késés kiszámítását, a rendellenes forgalom azonosítását és a hálózati statisztikák vizsgálatát.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk a korábban futtatott csomagok rögzítésének egyes előre konfigurált forgatókönyveit ismerteti. Ezek a forgatókönyvek olyan képességeket mutatnak be, amelyek a csomagok rögzítésének áttekintésével érhetők el. Ez a forgatókönyv a [WireShark](https://www.wireshark.org/) használatával vizsgálja meg a csomagok rögzítését.
 
 Ez a forgatókönyv feltételezi, hogy már futtatta a csomagok rögzítését egy virtuális gépen. Ha meg szeretné tudni, hogyan hozhat létre egy csomagot rögzítő látogatást a csomagok rögzítésének [kezelése a portálon](network-watcher-packet-capture-manage-portal.md) vagy a REST-mel a [csomagok rögzítésének REST API használatával történő kezelésével](network-watcher-packet-capture-manage-rest.md).
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
 Ebben az esetben a következőket kell tennie:
 
@@ -39,7 +39,7 @@ Ebben az esetben a következőket kell tennie:
 
 Ebben a forgatókönyvben bemutatjuk, hogyan lehet megtekinteni a két végpont között bekövetkező Transmission Control Protocol (TCP) beszélgetés kezdeti oda-és RTT.
 
-TCP-kapcsolatok létrehozásakor a rendszer az első három, a csatlakozás során küldött csomagot követ egy, a háromutas kézfogásnak nevezett mintát. Ha megvizsgálja az ebben a kézfogásban elküldött első két csomagot, az ügyféltől érkező első kérést és a kiszolgáló válaszát, a kapcsolat létrejötte után kiszámíthatja a késést. Ezt a késést a kerekítési idő (RTT) nevezik. A TCP protokollal és a háromutas kézfogással kapcsolatos további információkért tekintse meg a következő erőforrást. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+TCP-kapcsolatok létrehozásakor a rendszer az első három, a csatlakozás során küldött csomagot követ egy, a háromutas kézfogásnak nevezett mintát. Ha megvizsgálja az ebben a kézfogásban elküldött első két csomagot, az ügyféltől érkező első kérést és a kiszolgáló válaszát, a kapcsolat létrejötte után kiszámíthatja a késést. Ezt a késést a kerekítési idő (RTT) nevezik. A TCP protokollal és a háromutas kézfogással kapcsolatos további információkért tekintse meg a következő erőforrást. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>1\. lépés
 

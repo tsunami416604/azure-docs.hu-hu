@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 9/19/2019
+ms.date: 2/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908836"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149304"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Oktatóanyag: Azure AD B2B együttműködési felhasználók tömeges meghívása (előzetes verzió)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76908836"
 
 > [!NOTE]
 > A 12/22/2019-as számú felhasználó (előzetes verzió) szolgáltatás átmenetileg le lett tiltva.
-> A szolgáltatás újbóli engedélyezéséhez jelenleg nem tartozik ismert dátum. 
+> Jelenleg nincs olyan ismert dátum, amikor a szolgáltatás újra lesz engedélyezve a Azure Portal. A PowerShell használatával tömegesen hívhatja meg a vendég felhasználókat, lásd: [B2B-kód és PowerShell-minták](code-samples.md).
 
 Ha Azure Active Directory (Azure AD) B2B együttműködéssel dolgozik együtt külső partnerekkel, egyszerre több vendégfelhasználót meghívhat a szervezetébe. Ebből az oktatóanyagból megtudhatja, hogyan küldhet tömeges meghívásokat a külső felhasználóknak a Azure Portal használatával. A következőket fogja elvégezni:
 

@@ -3,12 +3,12 @@ title: A Azure Functions futtatókörnyezet verzióinak megcélzása
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogyan határozhatja meg az Azure-ban üzemeltetett Function app futásidejű verzióját.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294167"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151955"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
 
@@ -18,7 +18,7 @@ A Function alkalmazás a Azure Functions futtatókörnyezet egy adott verziójá
 
 Azure Functions lehetővé teszi a futtatókörnyezet egy adott verziójának megcélzását egy Function alkalmazás `FUNCTIONS_EXTENSION_VERSION` alkalmazás beállításával. A Function alkalmazás a megadott főverzión marad, amíg explicit módon nem választ egy új verzióra.
 
-Ha csak a főverziót adta meg, akkor a rendszer automatikusan frissíti a Function alkalmazást a futtatókörnyezet új, az elérhetővé válására szolgáló másodlagos verzióira. Az új alverziók nem vezetnek be feltörési módosításokat. Ha alverziót (például "2.0.12345") ad meg, a Function alkalmazás az adott verzióra van rögzítve, amíg explicit módon nem módosítja.
+Ha csak a főverziót adta meg, akkor a rendszer automatikusan frissíti a Function alkalmazást a futtatókörnyezet új, az elérhetővé válására szolgáló másodlagos verzióira. Az új alverziók nem mutatják be a törési változásokat. Ha alverziót (például "2.0.12345") ad meg, a Function alkalmazás az adott verzióra van rögzítve, amíg explicit módon nem módosítja.
 
 > [!NOTE]
 > Ha a Azure Functions egy adott verziójához rögzít, majd megpróbál az Azure-ban közzétenni az Azure-ban a Visual Studióval, megnyílik egy párbeszédpanel, amely felszólítja, hogy frissítsen a legújabb verzióra, vagy szakítsa meg a közzétételt. Ennek elkerüléséhez adja hozzá a `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` tulajdonságot a `.csproj` fájlban.
@@ -29,7 +29,7 @@ Az alábbi táblázat az egyes főverziók `FUNCTIONS_EXTENSION_VERSION` érték
 
 | Főverzió | `FUNCTIONS_EXTENSION_VERSION` érték |
 | ------------- | ----------------------------------- |
-| 3. x  | `~3` |
+| 3.x  | `~3` |
 | 2. x  | `~2` |
 | 1. x  | `~1` |
 

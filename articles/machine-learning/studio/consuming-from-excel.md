@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e32e3ddd99efe1d389b65f7a4134633a40b29a9a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2e95c4bfbe7342e251e6d845fd4acfed6ff6109a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839724"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150102"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása az Excelből
 
@@ -26,7 +26,7 @@ Ha az Excel 2013-as (vagy újabb) vagy az Excel online-t használja, javasoljuk,
 
 
 ## <a name="steps"></a>Lépések
-Webszolgáltatás közzététele. [3. Oktatóanyag: a hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md) elmagyarázza, hogyan teheti meg. Jelenleg az Excel-munkafüzet funkció csak olyan kérés/válasz szolgáltatások esetében támogatott, amelyek egyetlen kimenettel rendelkeznek (azaz egyetlen pontozási címkével). 
+Webszolgáltatás közzététele. [3. Oktatóanyag: a hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md) elmagyarázza, hogyan teheti meg. Az Excel-munkafüzet funkció jelenleg csak egy egyetlen kimeneti (azaz egy pontozó egycímkés) kérés/válasz szolgáltatások esetében támogatott. 
 
 Ha rendelkezik webszolgáltatással, kattintson a Studio bal oldalán található **WEBszolgáltatások** szakaszra, majd válassza ki az Excelből használni kívánt webszolgáltatást.
 
@@ -51,18 +51,18 @@ Ha rendelkezik webszolgáltatással, kattintson a Studio bal oldalán találhat�
 3. Biztonsági figyelmeztetés jelenik meg. Kattintson a **tartalom engedélyezése** gombra a makrók futtatásához a számolótáblán.
 
     ![Tartalom engedélyezése a makrók letiltására vonatkozó biztonsági figyelmeztetés elvetéséhez](./media/consuming-from-excel/enablecontent.png)
-4. A makrók engedélyezése után létrejön egy tábla. A kék színű oszlopoknak az ERŐFORRÁSREKORDOK webszolgáltatásba vagy a **paraméterekbe**való bevitelre van szükségük. Jegyezze fel a ERŐFORRÁSREKORD-szolgáltatás kimenetét, az **előre jelzett értékeket** zöld színnel. Ha az adott sorhoz tartozó összes oszlop ki van töltve, a munkafüzet automatikusan meghívja a pontozási API-t, és megjeleníti a pontozásos eredményeket.
+4. Ha makrók engedélyezve vannak, egy tábla jön létre. A kék színű oszlopoknak az ERŐFORRÁSREKORDOK webszolgáltatásba vagy a **paraméterekbe**való bevitelre van szükségük. Jegyezze fel a ERŐFORRÁSREKORD-szolgáltatás kimenetét, az **előre jelzett értékeket** zöld színnel. Amikor egy adott sorának az összes oszlop ki vannak töltve, a munkafüzet automatikusan a pontozási API- és a pontozott eredményeit jeleníti meg.
 
     ![A paraméterek bemenetei és az eredményül kapott előre jelzett értékek táblázata](./media/consuming-from-excel/sampletable.png)
-5. Több sor kitöltéséhez töltse ki a második sort az adatokkal, és a rendszer az előre jelzett értékeket adja meg. Egyszerre több sort is beilleszthet.
+5. Pontszámot rendelni az egynél több sorral, adja meg a második sor az adatok és az előre jelzett értékek előállítása. Több sor egyszerre is beillesztheti.
 
-Az adatok megjelenítéséhez az Excel összes funkcióját (gráfok, Power map, feltételes formázás stb.) használhatja az előre jelzett értékekkel.
+Használhatja az Excel-szolgáltatások (diagramokat, a power mappel, feltételes formázás, stb.) az előre jelzett értékek segítségével jelenítheti meg az adatokat.
 
 ## <a name="sharing-your-workbook"></a>A munkafüzet megosztása
-Ahhoz, hogy a makrók működjenek, az API-kulcsnak a táblázat részét kell képeznie. Ez azt jelenti, hogy csak a megbízható entitásokkal vagy személyekkel kell megosztania a munkafüzetet.
+A makrók működjön az API-kulcsot a számolótábla részét kell lennie. Ez azt jelenti, hogy ossza meg a munkafüzetet csak a megbízható entitások/szolgáltatásra.
 
 ## <a name="automatic-updates"></a>Automatikus frissítések
-A rendszer a következő két helyzetben tesz elérhetővé egy ERŐFORRÁSREKORDOK-hívást:
+Az RRS kezdeményezték a két ezekben a helyzetekben:
 
 1. Az első alkalommal, amikor egy sor tartalma az összes **paraméterében** szerepel
 2. A **Paraméterek** bármelyike olyan sorban változik, amelyben minden **paraméter** be van írva.

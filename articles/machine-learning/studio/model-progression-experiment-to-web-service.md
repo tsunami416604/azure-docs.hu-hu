@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838018"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148082"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
 A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő ***kísérlet*** fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
@@ -49,7 +49,7 @@ Az alábbi szakaszokban egy tipikus megoldás következik be, amelyet a Machine 
 A ***betanítási kísérlet*** a webszolgáltatások fejlesztésének kezdeti fázisa Machine learning Studio (klasszikus). A betanítási kísérlet célja, hogy lehetővé teszi a gépi tanulási modellek fejlesztését, tesztelését, megismétlését és végül betanítását. Akár egyszerre több modellt is betaníthat, amikor a legjobb megoldást keresi, de ha végzett a kísérletezéssel, egyetlen betanított modellt is kiválaszthat, és kizárja a többit a kísérletből. A prediktív elemzési kísérlet kialakítására példát a következő témakörben talál: [Azure Machine learning Studio (klasszikus) hitelkockázat-értékelésének prediktív elemzési megoldásának fejlesztése](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>A prediktív kísérlet
-Miután betanított modellt a betanítási kísérletben, kattintson a **webszolgáltatás beállítása** elemre, és válassza a **prediktív webszolgáltatás** Machine learning Studio (klasszikus) lehetőséget a betanítási kísérlet prediktívvé alakításának elindításához.  ***kísérlet***. A prediktív kísérlet célja, hogy a betanított modellt használja az új adatmennyiségek kiértékelésére, amelynek célja, hogy végül Azure-webszolgáltatásként működőképes legyen.
+Miután betanított modellt a betanítási kísérletben, kattintson a **webszolgáltatás beállítása** elemre, és válassza a **prediktív webszolgáltatás** Machine learning Studio (klasszikus) lehetőséget, hogy elindítsa a betanítási kísérletet egy ***prediktív kísérletre***. A prediktív kísérlet célja, hogy a betanított modellt használja az új adatmennyiségek kiértékelésére, amelynek célja, hogy végül Azure-webszolgáltatásként működőképes legyen.
 
 Ezt a konverziót a következő lépésekkel végezheti el:
 
@@ -95,16 +95,16 @@ Példa: tegyük fel, hogy a prediktív kísérlet a bemeneti adatok teljes sorá
 
 Ha szeretné megőrizni a gépi tanulási modellt, de az új adataival szeretné újratanítani, két lehetőség közül választhat:
 
-1. **A modell újratanítása a webszolgáltatás futása közben** – ha a prediktív webszolgáltatás futása közben szeretné áttanítani a modellt, ezt úgy teheti meg, hogy a betanítási kísérlet során pár módosítást hajt ***végre, majd*** üzembe helyezhető egy ***átképzési webszolgáltatásként*** . Ennek módjával kapcsolatos útmutatásért olvassa el a [Machine learning modellek programozott újratanítása](/azure/machine-learning/studio/retrain-machine-learning-model)című témakört.
+1. **A modell újratanítása a webszolgáltatás futása** közben – ha a prediktív webszolgáltatás futása közben szeretné áttanítani a modellt, ezt úgy teheti meg, hogy a betanítási kísérlet során pár módosítást hajt ***végre, és***ezt követően üzembe helyezheti azt egy ***átképzési webszolgáltatásként*** . Ennek módjával kapcsolatos útmutatásért olvassa el a [Machine learning modellek programozott újratanítása](/azure/machine-learning/studio/retrain-machine-learning-model)című témakört.
 2. **Térjen vissza az eredeti betanítási kísérletre, és használjon különböző képzési adatait a modell fejlesztéséhez** – a prediktív kísérlet a webszolgáltatáshoz van csatolva, de a betanítási kísérlet nem kapcsolódik közvetlenül ehhez a módszerhez. Ha módosítja az eredeti betanítási kísérletet, és a **webszolgáltatás beállítása**elemre kattint, a rendszer létrehoz egy *új* prediktív kísérletet, amely telepítésekor a rendszer létrehoz egy *új* webszolgáltatás-szolgáltatást. Nem csupán az eredeti webszolgáltatás frissítésére szolgál.
 
    Ha módosítania kell a betanítási kísérletet, nyissa meg, majd kattintson a **Mentés másként** lehetőségre a másoláshoz. Ez érintetlenül hagyja az eredeti betanítási kísérletet, a prediktív kísérletet és a webszolgáltatás-szolgáltatást. Mostantól létrehozhat egy új webszolgáltatást is a módosításaival. Miután telepítette az új webszolgáltatást, eldöntheti, hogy leállítja-e az előző webszolgáltatást, vagy továbbra is fut-e az új webszolgáltatás mellett.
 
 **Egy másik modellt szeretne betanítani**
 
-Ha módosítani kívánja az eredeti prediktív kísérletet, például egy másik gépi tanulási algoritmus kiválasztását, egy másik betanítási módszer kipróbálását, a modell átképzéséhez pedig a fentebb ismertetett második eljárást kell követnie: Nyissa meg a betanítási kísérlet, kattintson a **Save as (Mentés másként** ) lehetőségre a másoláshoz, majd indítsa el a modell fejlesztésének új elérési útját, hozza létre a prediktív kísérletet, és telepítse a webszolgáltatást. Ezzel egy új webszolgáltatás fog létrejönni, amely nem kapcsolódik az eredetihöz – eldöntheti, hogy melyik vagy mindkettőt használja a működés folytatásához.
+Ha módosítani kívánja az eredeti prediktív kísérletet, például egy másik gépi tanulási algoritmus kiválasztásával, egy másik betanítási módszer kipróbálásával, majd a modell átképzéséhez a fentebb ismertetett második eljárást kell követnie: Nyissa meg a betanítási kísérletet, kattintson a **Mentés másként** lehetőségre a másoláshoz, majd indítsa el a modell fejlesztésének új útvonalát, hozza létre a prediktív kísérletet és telepítse a webszolgáltatást. Ezzel egy új webszolgáltatás fog létrejönni, amely nem kapcsolódik az eredetihöz – eldöntheti, hogy melyik vagy mindkettőt használja a működés folytatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fejlesztés és kísérletezés folyamatával kapcsolatos további részletekért tekintse meg a következő cikkeket:
 
 * a kísérlet átalakítása – a [modell előkészítése a Azure Machine learning Studio (klasszikus) üzembe helyezéséhez](convert-training-experiment-to-scoring-experiment.md)

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 618f2e15a2f4acf8ac397872b33aaa98f0b5c4d8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454756"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149915"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Végpontok létrehozása központilag telepített Azure Machine Learning Studio (klasszikus) webszolgáltatásokhoz
 
@@ -27,7 +27,7 @@ A webszolgáltatás minden végpontja független módon van kezelve, szabályozv
 
 ## <a name="add-endpoints-to-a-web-service"></a>Végpontok hozzáadása egy webszolgáltatáshoz
 
-A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat egy végpontot egy webszolgáltatáshoz. A végpont létrehozása után a rendszer a szinkron API-k, a Batch API-k és az Excel-munkalapok használatával is felhasználhatja.
+A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat egy végpontot egy webszolgáltatáshoz. A végpont a létrehozás után szinkron API-k segítségével, a batch API-k, ezért használja fel, és excel-munkalapokat.
 
 > [!NOTE]
 > Ha további végpontokat adott hozzá a webszolgáltatáshoz, nem törölheti az alapértelmezett végpontot.
@@ -35,7 +35,7 @@ A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat
 1. Machine Learning Studio (klasszikus), a bal oldali navigációs oszlopban kattintson a webszolgáltatások elemre.
 2. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése**elemre. Megnyílik az Azure Machine Learning webszolgáltatások portál a webszolgáltatás végpontok lapjára.
 3. Kattintson az **Új** lehetőségre.
-4. Adja meg az új végpont nevét és leírását. A végpontok neveinek 24 vagy kevesebb karakterből kell állnia, és csak kisbetűkből vagy számokból állhatnak. Válassza ki a naplózási szintet, valamint azt, hogy a mintaadatok engedélyezve vannak-e. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
+4. Írjon be egy nevet és leírást az új végpont. A Végpontnevek 24 karakter vagy kevesebb, hosszúságúnak kell lennie, és kisbetűket betűk vagy számok el kell készíteni. Válassza ki a naplózási szint, és hogy engedélyezve van-e a mintaadatok. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
 
 ## <a id="scaling"></a>Webszolgáltatás méretezése további végpontok hozzáadásával
 

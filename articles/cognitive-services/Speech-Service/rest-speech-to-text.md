@@ -1,7 +1,7 @@
 ---
 title: Beszéd és szöveg közötti API-referenciák (REST) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan használhatja a beszéd – szöveg REST API. Ebben a cikkben megismerheti az engedélyezési lehetőségeket, a lekérdezési lehetőségeket, a kérések strukturálása és a válasz fogadását.
+description: Megtudhatja, hogyan használhatja a beszéd – szöveg REST API. Ebben a cikkben megismerkedhet engedélyezési beállítások, a lekérdezési beállítások, struktúra kérést és választ kapnak.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975839"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153213"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
-A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpont egy régióhoz van társítva. Az alkalmazáshoz szükség van egy előfizetési kulcsra a használni kívánt végponthoz.
+A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpontot nem egy régió tartozik. Az alkalmazás egy előfizetési kulcsot szeretné használni a végpont szükséges.
 
 A beszéd – szöveg REST API használata előtt értse fel a következőket:
 
 * A REST APIt használó és a hang közvetlen továbbítására szolgáló kérelmek legfeljebb 60 másodperces hangot tartalmazhatnak.
-* A beszéd – szöveg REST API csak a végső eredményeket adja vissza. A részleges eredmények nincsenek megadva.
+* A hang-szöveg transzformációs REST API-t csak végső eredményt adja vissza. Részleges eredményeket nem tartozik.
 
 Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) -t vagy egy file-alapú REST API, például a [Batch átírását](batch-transcription.md).
 
@@ -32,48 +32,48 @@ Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes 
 
 ## <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-Ezek a régiók a REST API használatával történő beszéd-szöveges átíráshoz támogatottak. Győződjön meg arról, hogy az előfizetési régiójának megfelelő végpontot választotta.
+Ezekben a régiókban támogatottak hang-szöveg transzformációs beszédátírási a REST API használatával. Győződjön meg arról, hogy a végpontot, amely megfelel az előfizetés régiót választja.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
 
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 
-Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncában.
+Ezeket a paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
 
-| Paraméter | Leírás | Kötelező/nem kötelező |
+| Paraméter | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `language` | Azonosítja a felismert nyelvet. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Szükséges |
-| `format` | Megadja az eredmény formátumát. Az elfogadott értékek `simple` és `detailed`. Az egyszerű eredmények közé tartozik a `RecognitionStatus`, a `DisplayText`, a `Offset`és a `Duration`. A részletes válaszok többek között megbízhatósági értékekkel és négy különböző képviselettel rendelkeznek. Az alapértelmezett beállítás: `simple`. | Választható |
-| `profanity` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek `masked`, amelyek felváltják a csillagokkal való káromkodást, `removed`, ami eltávolítja az eredményből az összes káromkodást, vagy `raw`, amely magában foglalja a káromkodást az eredményben. Az alapértelmezett beállítás: `masked`. | Választható |
+| `language` | A felismert használja a beszélt nyelv azonosítja. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Kötelező |
+| `format` | Megadja a eredményformátum. Az elfogadott értékek `simple` és `detailed`. Az egyszerű eredmények közé tartozik a `RecognitionStatus`, a `DisplayText`, a `Offset`és a `Duration`. Részletes válaszok megbízhatósági értékeket és a négy különböző reprezentációinak több eredmények belefoglalása. Az alapértelmezett beállítás a `simple`. | Optional |
+| `profanity` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek `masked`, amelyek felváltják a csillagokkal való káromkodást, `removed`, ami eltávolítja az eredményből az összes káromkodást, vagy `raw`, amely magában foglalja a káromkodást az eredményben. Az alapértelmezett beállítás a `masked`. | Optional |
 
-## <a name="request-headers"></a>Kérésfejlécek
+## <a name="request-headers"></a>Kérelemfejlécek
 
-Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
+Ez a táblázat felsorolja a szükséges és választható fejlécek a hang-szöveg transzformációs kéréseket.
 
-|Fejléc| Leírás | Kötelező/nem kötelező |
+|Fejléc| Leírás | Kötelező / választható |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ezt a fejlécet vagy `Authorization` kötelező megadni. |
 | `Authorization` | A `Bearer`szó előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Ezt a fejlécet vagy `Ocp-Apim-Subscription-Key` kötelező megadni. |
-| `Content-type` | A megadott hangadatok formátumát és kodekjét ismerteti. Az elfogadott értékek `audio/wav; codecs=audio/pcm; samplerate=16000` és `audio/ogg; codecs=opus`. | Szükséges |
-| `Transfer-Encoding` | Meghatározza, hogy a rendszer a darabolásos hangadatokat egyetlen fájl helyett elküldje. Csak a hangadatok darabolásakor használja ezt a fejlécet. | Választható |
-| `Expect` | Ha darabolásos átvitelt használ, küldjön `Expect: 100-continue`. A beszédfelismerési szolgáltatás tudomásul veszi a kezdeti kérést, és további adatra vár.| A darabolásos hangadatok küldéséhez szükséges. |
+| `Content-type` | A formátum és a megadott hang adatok kodek ismerteti. Az elfogadott értékek `audio/wav; codecs=audio/pcm; samplerate=16000` és `audio/ogg; codecs=opus`. | Kötelező |
+| `Transfer-Encoding` | Megadja, hogy darabolt hang adatot küld, ahelyett, hogy egyetlen fájlt. Csak akkor használja ezt a fejlécet, ha hang adatokat. | Optional |
+| `Expect` | Ha darabolásos átvitelt használ, küldjön `Expect: 100-continue`. A beszédfelismerési szolgáltatás tudomásul veszi a kezdeti kérést, és további adatra vár.| Szükséges darabolt hang adatot küldenek. |
 | `Accept` | Ha meg van adni, `application/json`nak kell lennie. A beszédfelismerési szolgáltatás az eredményeket JSON-formátumban jeleníti meg. Néhány kérelem-keretrendszer nem kompatibilis alapértelmezett értéket biztosít. Javasoljuk, hogy mindig vegyen fel `Accept`. | Nem kötelező, de ajánlott. |
 
 ## <a name="audio-formats"></a>Hangformátumok
 
-A hang a HTTP `POST` kérelem törzsében lesz elküldve. Ennek a táblázatnak az egyik formátumában kell szerepelnie:
+A hang a HTTP `POST` kérelem törzsében lesz elküldve. A jelen táblázatban lévő formátumok valamelyikében kell lennie:
 
-| Formátum | Codec | Sávszélességű | Mintavételezési arány |
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16 bites | 16 kHz, monó |
-| VORBIS | OPUS | 16 bites | 16 kHz, monó |
+| WAV | A PCM | 16-bit | 16 kHz, mono |
+| OGG | OPUS | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->A fenti formátumok a Speech Service REST API és WebSocket szolgáltatásán keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg csak a WAV formátumot támogatja a PCM-kodekkel.
+>A fenti formátumok a Speech Service REST API és WebSocket szolgáltatásán keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg a WAV formátumot támogatja a PCM-kodekkel és [más formátumokkal](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="sample-request"></a>Példa a kérelemre
+## <a name="sample-request"></a>Mintakérelem
 
-Az alábbi minta tartalmazza az állomásnév és a szükséges fejléceket. Fontos megjegyezni, hogy a szolgáltatás a hangadatokat is várja, amelyek nem szerepelnek ebben a mintában. Ahogy korábban említettük, a darabolás javasolt, de nem kötelező.
+Az alábbi mintát is tartalmaz, a gazdagépnév és a kötelező fejlécet. Fontos megjegyezni, hogy a szolgáltatás emellett arra számít hívásaiból, amely nem érhető el ebben a példában. Leírtak szerint korábban darabolás ajánlott, azonban nem kötelező.
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -87,21 +87,21 @@ Expect: 100-continue
 
 ## <a name="http-status-codes"></a>HTTP-állapotkódok
 
-Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
+A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibák.
 
 | HTTP-állapotkód | Leírás | Lehetséges ok |
 |------------------|-------------|-----------------|
-| 100 | Folytatás | A kezdeti kérelem el lett fogadva. Folytassa a további adatok küldésével. (Darabolásos átvitelsel használatos.) |
-| 200 | OK | A kérelem sikeres volt; a válasz törzse egy JSON-objektum. |
-| 400 | Hibás kérelem | A nyelvi kód nincs megadva, nem támogatott nyelv, érvénytelen hangfájl stb. |
-| 401 | Nem engedélyezett | Az előfizetési kulcs vagy az engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
-| 403 | Forbidden | Hiányzó előfizetési kulcs vagy engedélyezési jogkivonat. |
+| 100 | Folytatás | A kezdeti kérés elfogadva. Folytassa a többi adatot küld. (Használja a darabolásos átviteli.) |
+| 200 | OK | A kérelem sikeres volt. a választörzs mérete a JSON-objektum. |
+| 400 | Hibás kérés | A nyelvi kód nincs megadva, nem támogatott nyelv, érvénytelen hangfájl stb. |
+| 401 | Nem engedélyezett | Az előfizetői vagy engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
+| 403 | Forbidden | Hiányzik az előfizetési kulcs vagy engedélyezési jogkivonat. |
 
 ## <a name="chunked-transfer"></a>Darabolásos átvitel
 
-A darabolásos átvitel (`Transfer-Encoding: chunked`) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A REST API nem biztosít részleges vagy időközi eredményeket.
+A darabolásos átvitel (`Transfer-Encoding: chunked`) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A REST API-t nem biztosít részleges vagy köztes eredményeket.
 
-Ez a mintakód azt mutatja be, hogyan lehet hangot küldeni a darabokban. Csak az első részletnek kell tartalmaznia a hangfájl fejlécét. `request` egy HTTPWebRequest objektum, amely a megfelelő REST-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
+A mintakód bemutatja, hogyan hang tömbökben küldése. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektum, amely a megfelelő REST-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
 
 ```csharp
 
@@ -140,26 +140,26 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Válasz paraméterei
+## <a name="response-parameters"></a>Válasz paraméterek
 
-Az eredmények JSON-ként vannak megadva. A `simple` formátum tartalmazza ezeket a legfelső szintű mezőket.
+Eredményei JSON-fájlként. A `simple` formátum tartalmazza ezeket a legfelső szintű mezőket.
 
 | Paraméter | Leírás  |
 |-----------|--------------|
 |`RecognitionStatus`|Állapot, például `Success` a sikeres felismeréshez. Lásd a következő táblázatot.|
-|`DisplayText`|A felismert szöveg a tőkésítés, a központozás, az inverz szöveg normalizálása (a szóbeli szöveg konvertálása rövidebb formátumokra, például 200 a "200" vagy "Dr. Smith" kifejezésre a "Doctor Smith" esetében) és a káromkodás maszkolása után. Csak sikeres.|
-|`Offset`|Az az idő (100-ns egységben), amikor a felismert beszéd az audio streamben kezdődik.|
-|`Duration`|Az audio streamben felismert beszéd időtartama (100-ns egységben).|
+|`DisplayText`|A felismert szöveg a tőkésítés, a központozás, az inverz szöveg normalizálása (a szóbeli szöveg konvertálása rövidebb formátumokra, például 200 a "200" vagy "Dr. Smith" kifejezésre a "Doctor Smith" esetében) és a káromkodás maszkolása után. Jelenleg csak a sikeres.|
+|`Offset`|Az idő (100 nanoszekundumos egységek), amelyen a felismert speech az audio-adatfolyam kezdődik.|
+|`Duration`|Az időtartam (100 nanoszekundumos egység) a felismert beszéd, a hang adatfolyamban.|
 
 A `RecognitionStatus` mező a következő értékeket tartalmazhatja:
 
-| Állapot | Leírás |
+| status | Leírás |
 |--------|-------------|
 | `Success` | Az felismerés sikeres volt, és a `DisplayText` mező van jelen. |
-| `NoMatch` | A rendszer beszédet észlelt az audio streamben, de a célnyelv nem felelt meg a szavaknak. Általában azt jelenti, hogy az elismerés nyelve egy másik nyelv, amelyet a felhasználó beszél. |
-| `InitialSilenceTimeout` | A hangadatfolyam kezdete csak csendet foglalt, és a szolgáltatás a beszédfelismerésre való várakozás során időtúllépést várt. |
-| `BabbleTimeout` | A hangadatfolyam elején csak a zaj szerepel, és a szolgáltatás a beszédfelismerésre való várakozás során időtúllépést okozott. |
-| `Error` | A felismerési szolgáltatás belső hibát észlelt, és nem folytatható. Próbálkozzon újra, ha lehetséges. |
+| `NoMatch` | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. Általában azt jelenti, a beszédfelismerési nyelv, a felhasználó van, és beszéljen egy másik nyelven. |
+| `InitialSilenceTimeout` | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `BabbleTimeout` | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot. |
+| `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
 
 > [!NOTE]
 > Ha a hang csak a káromkodásból áll, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza beszédfelismerési eredményt.
@@ -170,13 +170,13 @@ A `NBest` listán szereplő összes objektum a következőket tartalmazza:
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| `Confidence` | A 0,0-es bejegyzés megbízhatósági pontszáma (nincs megbízhatóság) 1,0-re (teljes biztonság) |
-| `Lexical` | A felismert szöveg lexikális formája: a tényleges szavak felismerése. |
-| `ITN` | A felismert szöveg, a telefonszámok, a számok, a rövidítések ("doktor Smith" – "Dr Smith") és az alkalmazott egyéb átalakítások inverz szövege. |
-| `MaskedITN` | A ITN űrlap a káromkodás maszkolásával lett alkalmazva, ha szükséges. |
-| `Display` | A felismert szöveg megjelenítési formája, írásjelekkel és nagybetűkkel kiegészítve. Ez a paraméter ugyanaz, mint a `DisplayText`, ha a formátum értéke `simple`. |
+| `Confidence` | A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági) |
+| `Lexical` | A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel. |
+| `ITN` | Inverz szöveg normalizált ("kanonikus") formájában a felismert szöveget, phone számok, rövidítések ("orvos smith", "dr smith") és egyéb átalakítások alkalmazza. |
+| `MaskedITN` | A vulgáris maszkolási alkalmazza, ha a rendszer kéri fel űrlapján. |
+| `Display` | A megjelenítési formája a felismert szöveget, írásjelek és a nagybetűk hozzáadva. Ez a paraméter ugyanaz, mint a `DisplayText`, ha a formátum értéke `simple`. |
 
-## <a name="sample-responses"></a>Mintául szolgáló válaszok
+## <a name="sample-responses"></a>Minta válaszok
 
 Egy tipikus válasz a `simple` felismerésre:
 

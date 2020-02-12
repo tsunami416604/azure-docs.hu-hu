@@ -1,0 +1,191 @@
+- name: Azure Active Directory fejlesztők számára
+  href: index.yml
+- name: Áttekintés
+  href: v1-overview.md
+- name: Példák
+  href: sample-v1-code.md
+- name: Alapelvek
+  items:
+    - name: Miért érdemes frissíteni a 2.0-s verzióra
+      href: azure-ad-endpoint-comparison.md
+    - name: Alkalmazástípusok
+      items:
+        - name: Alkalmazástípusok
+          href: app-types.md
+        - name: Egyoldalas alkalmazás
+          href: single-page-application.md
+        - name: Webalkalmazás
+          href: web-app.md
+        - name: Webes API
+          href: web-api.md
+        - name: Mobil- és asztali alkalmazások
+          href: native-app.md
+        - name: Démon vagy kiszolgálóalkalmazás
+          href: service-to-service.md
+    - name: Hitelesítés
+      items:
+        - name: Hitelesítési alapok
+          href: v1-authentication-scenarios.md
+        - name: Az OAuth 2.0 és az OpenID Connect protokoll
+          items:
+            - name: OpenID Connect
+              href: v1-protocols-openid-connect-code.md
+            - name: OAuth 2.0 implicit engedélyezési folyamat
+              href: v1-oauth2-implicit-grant-flow.md
+            - name: Oauth 2.0 hitelesítésikód-engedélyezés
+              href: v1-protocols-oauth-code.md
+            - name: OAuth 2.0-alapú meghatalmazásos folyamat
+              href: v1-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
+              href: v1-oauth2-client-creds-grant-flow.md
+        - name: SAML 2.0 protokoll
+          items:
+            - name: Egyszeri bejelentkezés
+              href: ../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Kijelentkezés
+              href: ../develop/single-sign-out-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Hogyan használja az Azure AD a SAML-protokollt
+              href: ../develop/active-directory-saml-protocol-reference.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WS-Federation
+          items:
+            - name: Összevonási metaadatok
+              href: azure-ad-federation-metadata.md
+        - name: Aláírókulcs-váltás
+          href: ../develop/active-directory-signing-key-rollover.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Azonosító jogkivonatok
+          href: ../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Hozzáférési jogkivonatok
+          href: ../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Tanúsítványok hitelesítő adatai
+          href: ../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: SAML-jogkivonatok
+          href: ../develop/reference-saml-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Alkalmazáskonfiguráció
+      items:
+        - name: Alkalmazások és szolgáltatásnevek
+          href: ../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Hogyan és miért adhatók hozzá az alkalmazások az Azure AD szolgáltatáshoz
+          href: ../develop/active-directory-how-applications-are-added.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Egybérlős és több-bérlős alkalmazások
+          href: ../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Engedélyek és jóváhagyás
+      displayName: Scopes
+      items:
+        - name: Engedélyek és jóváhagyás típusai
+          href: v1-permissions-consent.md
+        - name: Jóváhagyási keretrendszer
+          href: ../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Alkalmazás-jóváhagyási tapasztalatok
+          href: ../develop/application-consent-experience.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Feltételes hozzáférés
+      href: conditional-access-dev-guide.md
+    - name: Országos felhőkörnyezetek
+      href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: Útmutatók
+  items:
+    - name: Hitelesítés
+      items:
+        - name: Egyszeri bejelentkezés konfigurálása
+          displayName: SSO
+          items:
+            - name: Egyszeri bejelentkezés engedélyezése Android rendszeren
+              href: howto-v1-enable-sso-android.md
+            - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
+              href: howto-v1-enable-sso-ios.md
+            - name: SAML-alapú SSO hibakeresése
+              href: howto-v1-debug-saml-sso-issues.md
+        - name: Jogcímek konfigurálása
+          items:
+            - name: Szerepkörjogcímek konfigurálása
+              href: ../develop/active-directory-enterprise-app-role-management.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Jogcímek testreszabása – portál
+              href: ../develop/active-directory-saml-claims-customization.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Jogcímek testreszabása – Powershell
+              href: ../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Nem kötelező jogcímek konfigurálása
+              href: ../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: A jogkivonatok élettartamának beállítása
+              href: ../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Ajánlott hibakezelési eljárások az ADAL-hoz
+          href: active-directory-devhowto-adal-error-handling.md
+    - name: Alkalmazáskonfiguráció
+      items:
+        - name: Egybérlős alkalmazás átalakítása több-bérlőssé
+          href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Egyszerű szolgáltatás létrehozása
+          items:
+            - name: Az Azure PowerShell használata
+              href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Az Azure Portal használata
+              href: ../develop/howto-create-service-principal-portal.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Alkalmazás korlátozása felhasználók egy halmazára
+          href: ../develop/howto-restrict-your-app-to-a-set-of-users.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Alkalmazás-szerepkörök hozzáadása az alkalmazáson belül
+          href: ../develop/howto-add-app-roles-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Védjegyzési útmutató
+          href: ../develop/howto-add-branding-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
+          href: ../develop/howto-add-terms-of-service-privacy-statement.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: A Visual Studio használata
+      items:
+        - name: Az Active Directory csatlakoztatott szolgáltatás használata
+          href: ../develop/vs-active-directory-add-connected-service.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Bevezetés a .NET MVC-projektek használatába
+          href: ../develop/vs-active-directory-dotnet-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Mi történt a .NET MVC-projektemmel?
+          href: ../develop/vs-active-directory-dotnet-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Bevezetés a WebAPI-projektek használatába
+          href: ../develop/vs-active-directory-webapi-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Mi történt a WebAPI-projektemmel?
+          href: ../develop/vs-active-directory-webapi-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Hiba a hitelesítés észlelésekor
+          href: ../develop/vs-active-directory-error.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Alkalmazás piacra juttatása
+      items:
+        - name: Közzététel az App Source-ban
+          href: howto-get-appsource-certified.md
+        - name: Közzététel az Azure AD alkalmazáskatalógusban
+          href: howto-app-gallery-listing.md
+        - name: Közzététel az Office 365 Értékesítői információközpontban
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+    - name: Azure Access Control Service
+      displayName: ACS
+      items:
+        - name: Migrálás az Azure Access Control Service-ből
+          href: active-directory-acs-migration.md
+        - name: Letiltott Access Control Service-névterek újraaktiválása
+          href: howto-reactivate-disabled-acs-namespaces.md
+    - name: Az Azure AD Graph API használata
+      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: AD FS fejlesztőknek
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+- name: Referencia
+  items:
+    - name: Hitelesítési tárak
+      displayName: ADAL
+      href: active-directory-authentication-libraries.md
+    - name: Azure AD Graph API
+      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Alkalmazásjegyzék
+      href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Hitelesítés és hitelesítési hibakódok
+      href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Kompatibilitástörő változások
+      href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: További források
+  items:
+    - name: Szószedet
+      href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure AD blog
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: A Microsoft Identitásplatform fejlesztői blogja
+      href: 'https://developer.microsoft.com/identity/blogs/'
+    - name: Próbálja ki a Microsofttal való bejelentkezést
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Segítség kérése
+      displayName: 'support, help options'
+      href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure-erőforrások felügyelt identitásai
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

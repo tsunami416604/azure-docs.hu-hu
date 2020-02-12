@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: a28b77a25971128b9474f18d860f6204c3433c73
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312294"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152329"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [a következő cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
@@ -34,39 +34,39 @@ A Azure Machine Learning a Python anaconda-eloszlását használja, amely számo
  -  Anaconda 4.5 + Distribution for Python 3,6 
 
 Az előre telepített csomagok a következők:
--  asn1crypto = = 0.24.0
-- attrs = = 19.1.0
-- Azure – Common = = 1.1.18
-- Azure-Storage – blob = = 1.5.0
-- Azure-Storage – Common = = 1.4.0
+-  asn1crypto==0.24.0
+- attrs==19.1.0
+- azure-common==1.1.18
+- azure-storage-blob==1.5.0
+- azure-storage-common==1.4.0
 - 2019.3.9 = =
-- cffi = = 1.12.2
-- chardet = = 3.0.4
+- cffi==1.12.2
+- chardet==3.0.4
 - titkosítás = = 2.6.1
 - disztribúció = = 1.4.0
-- IDNA = = 2.8
-- jsonschema = = 3.0.1
+- idna==2.8
+- jsonschema==3.0.1
 - lightgbm = = 2.2.3
-- több – itertools = = 6.0.0
-- NumPy = = 1.16.2
-- Pandák = = 0.24.2
-- Párna = = 6.0.0
-- pip = = 19.0.3
+- more-itertools==6.0.0
+- numpy==1.16.2
+- pandas==0.24.2
+- Pillow==6.0.0
+- pip==19.0.3
 - pyarrow = = 0.12.1
-- pycparser = = 2.19
-- pycryptodomex = = 3.7.3
-- pyrsistent = = 0.14.11
+- pycparser==2.19
+- pycryptodomex==3.7.3
+- pyrsistent==0.14.11
 - Python-dateutil = = 2.8.0
-- pytz = = 2018.9
-- kérelmek = = 2.21.0
+- pytz==2018.9
+- requests==2.21.0
 - scikit – Learn = = 0.20.3
 - SciPy = = 1.2.1
 - setuptools = = 40.8.0
-- hat = = 1.12.0
-- Torch = = 1.0.1. Post2
+- six==1.12.0
+- torch==1.0.1.post2
 - torchvision = = 0.2.2. post3
-- urllib3 = = 1.24.1
-- Wheel = = 0.33.1 
+- urllib3==1.24.1
+- wheel==0.33.1 
 
  Ha az előre telepített listában nem szereplő egyéb csomagokat szeretne telepíteni, például *scikit-misc*, adja hozzá a következő kódot a szkripthez: 
 
@@ -111,7 +111,7 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A beágyazott Python-kód által végrehajtott számítások eredményét pandákként kell megadni. A DataFrame, amelyet a rendszer automatikusan a Azure Machine Learning adatkészlet formátumára konvertál, így az eredményeket a folyamat más moduljaival is használhatja.
 

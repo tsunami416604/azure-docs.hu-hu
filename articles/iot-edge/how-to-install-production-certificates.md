@@ -4,16 +4,16 @@ description: Hozzon létre tesztelési tanúsítványokat, és Ismerje meg, hogy
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/03/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509903"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149898"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>Éles tanúsítványok telepítése IoT Edge eszközön
 
@@ -42,7 +42,7 @@ Ha még nem rendelkezik legfelső szintű hitelesítésszolgáltatóval, de szer
 A következő fájlok létrehozásához használja a saját hitelesítésszolgáltatóját:
 
 * Legfelső szintű hitelesítésszolgáltató
-* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
+* Eszköz Hitelesítésszolgáltatói tanúsítvány
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓI titkos kulcsa
 
 Ebben a cikkben a *legfelső szintű hitelesítésszolgáltatót* nevezzük, nem pedig a szervezet legfelső szintű hitelesítésszolgáltatója. Ez a legfelső szintű hitelesítésszolgáltató a IoT Edge-forgatókönyvhöz, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök az egymás közötti megbízhatósági kapcsolat létrehozására használnak.
@@ -63,12 +63,12 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
 
    Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
 
-2. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
+2. Nyissa meg az IoT Edge biztonsági démon konfigurációs fájlt.
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML fájlban a tanúsítvány és a kulcsok fájljának URI-ja számára a IoT Edge eszközön. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Példa:
+3. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML fájlban a tanúsítvány és a kulcsok fájljának URI-ja számára a IoT Edge eszközön. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
    * Windows:
 
@@ -89,6 +89,12 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
       ```
 
 4. Linux-eszközökön ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e olvasási engedéllyel a tanúsítványokat tároló címtárhoz.
+
+5. Ha korábban más tanúsítványokat használt IoT Edgehoz az eszközön, a IoT Edge elindítása vagy újraindítása előtt törölje a fájlokat a következő két könyvtárban:
+
+   * Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
+
+   * Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="next-steps"></a>Következő lépések
 
