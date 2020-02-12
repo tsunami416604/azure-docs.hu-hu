@@ -494,6 +494,8 @@
           href: javascript-query-api.md
     - name: Az Azure Cosmos DB költségeinek optimalizálása
       items:
+        - name: Költségtervezés és a költségek kezelése
+          href: plan-manage-costs.md
         - name: Díjszabási modell
           href: how-pricing-works.md
         - name: Teljes bekerülési költség (TCO)

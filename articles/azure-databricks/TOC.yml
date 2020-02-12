@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: Üzletiintelligencia-eszközök
+    - name: Integráció
       items:
-        - name: BI-eszközök csatlakoztatása
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: Az integráció áttekintése
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: Üzletiintelligencia-eszközök
+          items:
+            - name: BI-eszközök csatlakoztatása
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: Partneradatok integrációja
+          items:
+            - name: Partnerintegrációk áttekintése
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Qlik-integráció
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Fivetran-integráció
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: InfoWorks-integráció
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: StreamSets-integráció
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Syncsort-integráció
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: A Delta Lake bemutatása
@@ -1818,9 +1837,9 @@
         - name: Kiadástípusok
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Azure Databricks-állapotoldal
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Azure Databricks-állapotoldal
+      href: /azure/databricks/status
+      maintainContext: true
     - name: R fejlesztői útmutató
       href: /azure/machine-learning/r-developers-guide
     - name: Azure-ütemterv

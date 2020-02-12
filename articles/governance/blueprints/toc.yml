@@ -52,6 +52,17 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, cis'
           href: ./samples/cis-azure-1.1.0/deploy.md
+    - name: DoD Impact Level 4
+      items:
+        - name: Áttekintés
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/index.md
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: Áttekintés

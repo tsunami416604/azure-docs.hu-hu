@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: Összetevő metaadatai
           href: logic-apps-enterprise-integration-metadata.md
-        - name: B2B-üzenetek fogadása
+        - name: B2B-üzenetek fogadása és küldése
           href: logic-apps-enterprise-integration-b2b.md
         - name: AS2-üzenetek váltása
           href: logic-apps-enterprise-integration-as2.md

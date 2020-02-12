@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: Gyorsítótárazás engedélyezése I/O gyorsítótárral
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Jar-függőségek kezelése
+              href: ./spark/manage-jar-dependency.md
             - name: Notebookok használata az Apache Sparkban
               items:
                 - name: Helyi Jupyter notebook használata
