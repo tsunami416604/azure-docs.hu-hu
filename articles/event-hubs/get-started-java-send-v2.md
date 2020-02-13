@@ -6,31 +6,30 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 2e406cfd84642056bcc97190a3100f7e05d3c828
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4ebb52aa3e8d4ccfee6b36fb60c7f041df08a69a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137934"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163024"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Az Azure Event Hubs (Azure-Messaging-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Java-alkalmazásokat az Azure-Event Hubs eseményeinek küldéséhez és fogadásához. 
-
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket az Event hub eseményeiről és fogadhat az **Azure-Messaging-eventhubs Java-** csomag használatával.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az új **Azure-Messaging-eventhubs** csomagot használja. A régi **Azure-eventhubs** és **Azure-eventhubs-EF** csomagokat használó rövid útmutatókért tekintse meg [ezt a cikket](event-hubs-java-get-started-send.md). 
+> Ez a rövid útmutató az új **Azure-Messaging-eventhubs** csomagot használja. A régi **Azure-eventhubs** és **Azure-eventhubs-EF** csomagokat használó gyors útmutató: [események küldése és fogadása az Azure-eventhubs és az Azure-eventhubs-EF használatával](event-hubs-java-get-started-send.md). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
+Ha még nem ismeri az Azure Event Hubs-t, a rövid útmutató elvégzése előtt tekintse meg a [Event Hubs áttekintése](event-hubs-about.md) című témakört. 
 
-Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-- A Java fejlesztési környezet. Ez az oktatóanyag az [Eclipse](https://www.eclipse.org/)-t használja. Szükség van a Java Development Kit (JDK) 8-as vagy újabb verziójára. 
-- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be az Event hub elérési kulcsának értékét a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+- **Microsoft Azure előfizetés**. Az Azure-szolgáltatások, például az Azure Event Hubs használatához előfizetésre van szükség.  Ha még nem rendelkezik Azure-fiókkal, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/free/) , vagy a [fiók létrehozásakor](https://azure.microsoft.com)használhatja az MSDN-előfizetői előnyeit.
+- A Java fejlesztési környezet. Ez a rövid útmutató az [Eclipse](https://www.eclipse.org/)-t használja. Szükség van a Java Development Kit (JDK) 8-as vagy újabb verziójára. 
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **Event Hubs névtérhez tartozó kapcsolatok karakterláncot** a cikk utasításait követve: a [kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A rövid útmutató későbbi részében használja a kapcsolatok karakterláncát.
 
 ## <a name="send-events"></a>Események küldése 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Java-alkalmazást az Event hub eseményeinek elküldéséhez. 

@@ -1,7 +1,6 @@
 ---
-title: Oktatóanyag – a tartalék példányok díjszabásának optimalizálása az Cloudyn-Azure-ban
+title: Oktatóanyag – Fenntartott példányok költségeinek optimalizálása a Cloudynnel – Azure
 description: Ebben az oktatóanyagban megismerheti, hogyan optimalizálhatja a fenntartott példányok költségeit az Azure-ban és az Amazon Web Servicesben (AWS).
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,13 +8,13 @@ ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 9b0dbc31f3789cb0033a531ad6c5395d3cfb8bcc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987088"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769943"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -112,7 +111,7 @@ Például ha vásárol egy foglalást egy DS1\_v2 típusú virtuális gépre az 
 
 Ha azonban csak az idő 50%-ában fut, akkor a megtérülési pont 10 hónap után jön el, az éves megtakarítás pedig mindössze 49,74 dollár lesz. Előfordulhat, hogy a példában szereplő példánytípus esetében nem tudna megtakarítást elérni a foglalás megvásárlásával. Lásd a következő képet:
 
-![Példa az Azure-beli virtuális gépekre vonatkozó megszakítási pontra](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Példa kiegyenlítődési pontra az Azure-beli virtuális gépek esetén](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>A fenntartott példányok költségeinek megtekintése
 
@@ -127,11 +126,11 @@ A tényleges költségek elemzése és az elemzés egy adott időszakban jelent�
 
 A Cloudyn portálon lépjen a **Costs** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza az **Actual Cost Analysis** (Tényleges költségek elemzése) vagy az **Actual Cost Over Time** (Tényleges költségek időbeli alakulása) lehetőséget. Állítsa be a szűrőket. Például szűrhet az Azure/VM szolgáltatásra, és csoportosíthatja az eredményeket erőforrástípus és díjszabási modell szerint. Lásd a következő képet:
 
-![A fenntartott példányok tényleges díja – példa](./media/tutorial-optimize-reserved-instances/azure05.png)
+![Példa a fenntartott példányok tényleges költségeire](./media/tutorial-optimize-reserved-instances/azure05.png)
 
 Szűrhet egy adott szolgáltatásra (jelen példában az **Azure/VM**-re), és csoportosíthatja az eredményeket **díjszabási modell** és **erőforrástípus** szerint, ahogyan az a következő képen látható:
 
-![Példa a tényleges költség-jelentési csoportokra és szűrőkre az ár modell és az erőforrás típusa szerint csoportosítva](./media/tutorial-optimize-reserved-instances/azure06.png)
+![Példa a díjszabási modell és erőforrástípus szerint csoportosított tényleges költségekről szóló jelentés csoportjaira és szűrőire](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 Elemezni lehet a korábbi kifizetések típusait is, például egyszeri díjak, használati díjak és licencdíjak.
 
@@ -145,7 +144,7 @@ A tényleges költségek jelentésében egy 747 dollár értékű kiugrás láth
 
 A megtekintéshez lépjen a **Costs** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza ki az **Amortized Cost Analysis** (Amortizált költségek elemzése) vagy az **Amortized Cost Over Time** (Amortizált költségek időbeli alakulása) lehetőséget.
 
-![Az elszámolt fenntartott példányokra vonatkozó költségeket bemutató példa](./media/tutorial-optimize-reserved-instances/azure07.png)
+![Példa a fenntartott példányok amortizált költségeire](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>Az AWS-beli fenntartott példányok költségeinek optimalizálása
 
@@ -166,25 +165,25 @@ A portál tetején, a jelentések menüjében kattintson az **Optimizer** > **Pr
 
 A következő képen vásárlási javaslatok láthatók a jelentésből.
 
-![Példa a vásárlási javaslatokra a EC2-vásárlási javaslatok jelentésében](./media/tutorial-optimize-reserved-instances/aws01.png)
+![Vásárlási javaslatokat bemutató példa az EC2 vásárlási javaslatokról szóló jelentésben](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 Ebben a példában a Cloudyn\_A fiókhoz 32, fenntartott példány vásárlására vonatkozó javaslat érhető el. Ha mindegyik vásárlási javaslatot követi, azzal évente akár 137 770 dollár megtakarítást érhet el. Vegye figyelembe, hogy a Cloudyn által megadott vásárlási javaslatok azt feltételezik, hogy a számítási feladatok futtatása egyenletes.
 
 Az egyes javaslatok részletes indoklásának megtekintéséhez kattintson a pluszjelre ( **+** ) a **Justifications** (Indoklások) oszlopban. Íme egy példa a lista első javaslatára.
 
-![A vásárlás indoklásának részleteit bemutató példa](./media/tutorial-optimize-reserved-instances/aws02.png)
+![Példa a vásárlás indoklásának részleteivel](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 Az előbbi példa azt mutatja, hogy a számítási feladatok igény szerinti futtatása évente 90 456 dollárba kerülne. Ha azonban előre megvásárolja a foglalást, ugyanezen számítási feladatok végrehajtása 56 592 dollárba kerülne, vagyis évente 33 864 dollár lenne a megtakarítás.
 
 Kattintson a pluszjelre az **EC2 fenntartott példány vásárlásának hatása** mellett, hogy megtekinthesse a megtérülési pontot az évben, vagyis azt, hogy a vásárlási befektetés mikor térül meg. A következő példában nagyjából nyolc hónappal a vásárlást követően az igény szerinti használat költségei túllépik a fenntartott példány összesített költségeit:
 
-![Példa a vásárlási hatás részleteire](./media/tutorial-optimize-reserved-instances/aws03.png)
+![Példa a vásárlás hatásának részleteivel](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 Innentől kezdve Ön pénzt takarít meg.
 
 A **Példányok egy adott időszakban** jelentésben ellenőrizheti a vásárlási javaslat pontosságát. Ebben a példában azt láthatja, hogy az elmúlt 30 napban a számítási feladatokhoz átlagosan hat példány lett felhasználva.
 
-![Példa a példányok korábbi használatát ábrázoló időszakra](./media/tutorial-optimize-reserved-instances/aws04.png)
+![Példa a példányok adott időszakra vonatkozó használati előzményeivel](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>Nem használt foglalások módosítása
 
@@ -200,23 +199,23 @@ A következő képen a nem használt fenntartott példányok jelentése láthat�
 
 Kattintson a pluszjelre egy adott foglalás **Details** (Részletek) oszlopában a foglalás részleteinek megtekintéséhez.
 
-![A nem használt foglalások részleteit bemutató példa](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![Példa a nem használt foglalások részleteire](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 Az előző példában összesen 77 nem használt foglalás található a különböző rendelkezésre állási zónákban. Az első foglalásban 51 nem használt példány található. A lista további részében a fenntartott példányok potenciális módosítási lehetőségei láthatók, amelyeknek elvégezhetők az **m3.2xlarge** példánytípus használatával a **us-east-1c** rendelkezésre állási zónában.
 
 Kattintson a lista első foglalásánál a **Modify** (Módosítás) lehetőségre a **Modify RI** (Fenntartott példány módosítása) oldal megnyitásához, ahol a foglalás részletei láthatók.
 
-![A módosítható foglalásokat bemutató példa](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![Példa a módosítható foglalásokra](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 Itt vannak felsorolva a módosítható fenntartott példányok. A következő képen például 51 nem használt foglalás látható, amelyek módosíthatók, de a két foglalásnak összesen 54 példányra van szüksége. Ha módosítja a nem használt foglalásokat, hogy az összes ki legyen használva, akkor a továbbiakban négy példány igény szerint lesz futtatva. Ebben a példában fel kell osztani a nem használt foglalásokat, hogy az első foglalás 30 példányt, a második pedig 21-et használjon.
 
 Kattintson az első foglalási bejegyzéshez tartozó pluszjelre, majd állítsa a **Reservation quantity** (Foglalás mennyisége) értékét **30**-ra. A második bejegyzésnél állítsa a foglalás mennyiségét **21**-re, majd kattintson az **Apply** (Alkalmaz) lehetőségre.
 
-![Példa a foglalási mennyiség módosítására](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![Példa a foglalási mennyiség módosításaira](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 A foglalás összes nem használt példánya teljes mértékben ki van használva, és 51 példány már nem igény szerint fut. Ebben a példában a vállalkozás pénzt takaríthat meg az igény szerinti használat jelentős csökkentésével és a már kifizetett foglalások kihasználásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 

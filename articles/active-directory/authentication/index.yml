@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847151"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166416"
 landingContent:
 - title: Tudnivalók a hitelesítésről
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: Jelszóvisszaíró
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: Új jelszó önkiszolgáló kérése – Gyorsútmutató
-      url: quickstart-sspr.md
+    - text: Új jelszó önkiszolgáló kérésének engedélyezése
+      url: tutorial-enable-sspr.md
+    - text: Jelszóvisszaíró engedélyezése a helyszíni rendszerhez
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: Új jelszó önkiszolgáló kérésének üzembe helyezése az Azure AD-ben
+    - text: Üzembehelyezési útmutató az új jelszó önkiszolgáló kéréséhez
       url: howto-sspr-deployment.md
-    - text: Jelszóvisszaíró engedélyezése
-      url: howto-sspr-writeback.md
     - text: Új jelszó kérésének engedélyezése a Windows bejelentkezési képernyőjéről
       url: howto-sspr-windows.md
 - title: Az Azure Multi-Factor Authentication engedélyezése
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Az Azure MFA próbaüzeme adott alkalmazások esetében
-      url: tutorial-mfa-applications.md
-    - text: A többtényezős hitelesítés és a jelszómódosítás aktiválása kockázatészlelésekkel
+    - text: Az Azure Multi-Factor Authentication engedélyezése
+      url: tutorial-enable-azure-mfa.md
+    - text: A kockázatalapú Azure Multi-Factor Authentication engedélyezése
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Az Azure Multi-Factor Authentication üzembe helyezése
+    - text: Az Azure Multi-Factor Authentication üzembehelyezési útmutatója
       url: howto-mfa-getstarted.md
     - text: NPS-bővítmény használata helyszíni alkalmazások integrálásához
       url: howto-mfa-nps-extension.md

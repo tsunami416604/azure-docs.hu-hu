@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931406"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166569"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag végigvezeti egy olyan tesztelési célú felhőalapú kiép�
 
 ![Létrehozás](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 Az oktatóanyag kipróbálása előtt vegye figyelembe a következő elemeket:
 1. Győződjön meg arról, hogy már ismeri a Felhőbeli kiépítés alapjait. 
 2. Győződjön meg arról, hogy Azure AD Connect Sync 1.4.32.0 vagy újabb verzióját futtatja, és a szinkronizálási szabályokat dokumentált módon konfigurálta. A tesztelés során a rendszer eltávolítja egy teszt szervezeti egységet vagy csoportot Azure AD Connect szinkronizálási hatókörből. Az objektumok Hatókörön kívüli áthelyezése az objektumok az Azure AD-ben való törléséhez. Felhasználói objektumok esetén az Azure AD-objektumok nem törlődnek, és visszaállíthatók. Csoportosítási objektumok esetén az Azure AD-objektumok nem módosíthatók, és nem állíthatók vissza. Egy új hivatkozási típus lett bevezetve Azure AD Connect szinkronizálásban, amely megakadályozza a törlést a tesztelési forgatókönyvek esetén. 
@@ -67,8 +67,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  3. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább**gombra:
 
     **Név:** Adjon egy értelmes nevet a szabálynak<br>
-    **Leírás:** Adjon hozzá egy értelmes Leírást<br> 
-    
+    **Leírás:** Adjon hozzá egy értelmes Leírást<br>
     **Csatlakoztatott rendszerek:** Válassza ki azt az AD-összekötőt, amelyhez egyéni szinkronizálási szabályt írunk<br>
     **Csatlakoztatott rendszerobjektum típusa:** Felhasználói<br>
     **Metaverse objektum típusa:** Személy<br>
@@ -79,7 +78,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  
  4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Ezután kattintson a **Next** (Tovább) gombra. 
 
-    |Szabály|Attribútum|Művelet|Value (Díj)|
+    |Szabály|Attribútum|Művelet|Érték|
     |-----|----|----|-----|
     |Hatóköri szervezeti egység|DN|ENDSWITH|A szervezeti egység megkülönböztető neve.|
     |Hatókör-csoport||ISMEMBEROF|A biztonsági csoport megkülönböztető neve.|
@@ -87,7 +86,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
     ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Az **illesztési** szabályok lapon kattintson a **tovább**gombra.
- 6. Az **átalakítások** lapon adjon hozzá egy állandó átalakítást: a flow igaz értéket a cloudNoFlow attribútumhoz. Kattintson a **Hozzáadás** parancsra.
+ 6. Az **átalakítások** lapon adjon hozzá egy állandó átalakítást: a flow igaz értéket a cloudNoFlow attribútumhoz. Kattintson az **Hozzáadás** parancsra.
  Egyéni szabály ![](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasználó, csoport és kapcsolattartó). Ismételje meg a lépéseket egy konfigurált AD-összekötő/AD-erdő alapján. 
@@ -144,7 +143,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azu
 
 1. Jelentkezzen be az Azure portálra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure Portalra](media/how-to-install/install6.png)</br>
 
 3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
 Azure AD-kiépítés ![](media/how-to-install/install7.png)</br>

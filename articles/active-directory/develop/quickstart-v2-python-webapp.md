@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: b219b507ac14b2a66b23f93d9fb1035f56cb8164
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2710263aa099618d57f763edd199673ae04b53ed
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018686"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160488"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Ebből a rövid útmutatóból megtudhatja, hogyan integrálhat egy Python-webalkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.
 
@@ -110,7 +108,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Helyszín:
+> Az elemek magyarázata:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .

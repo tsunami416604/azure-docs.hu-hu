@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Adatok vizualizációja
       items:
-        - name: Nézetek
-          items:
-            - name: Nézettervező
-              href: platform/view-designer.md
-            - name: Csempe referenciája
-              href: platform/view-designer-tiles.md
-            - name: Vizualizációs rész referenciája
-              href: platform/view-designer-parts.md
-            - name: Szűrők
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Naplóadatok exportálása
-              href: platform/powerbi.md
-            - name: Alkalmazásadatok exportálása
-              href: app/export-power-bi.md
         - name: Munkafüzetek
           items:
             - name: Áttekintés
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Szövegparaméterek
                       href: platform/workbooks-text.md
+        - name: Nézetek
+          items:
+            - name: Nézetek átalakítása munkafüzetekké
+              items:
+                - name: Az átalakítás áttekintése
+                  href: platform/view-designer-conversion-overview.md
+                - name: Átalakítási beállítások
+                  href: platform/view-designer-conversion-options.md
+                - name: Áttekintés és hozzáférés
+                  href: platform/view-designer-conversion-access.md
+                - name: Gyakori feladatok
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Csempeátalakítások
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Példák
+                  href: platform/view-designer-conversion-examples.md
+            - name: Nézettervező
+              href: platform/view-designer.md
+            - name: Csempe referenciája
+              href: platform/view-designer-tiles.md
+            - name: Vizualizációs rész referenciája
+              href: platform/view-designer-parts.md
+            - name: Szűrők
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Naplóadatok exportálása
+              href: platform/powerbi.md
+            - name: Alkalmazásadatok exportálása
+              href: app/export-power-bi.md
         - name: Irányítópultok
           items:
             - name: Naplóadatokat használó irányítópult

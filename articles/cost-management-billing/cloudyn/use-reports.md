@@ -1,520 +1,520 @@
 ---
 title: Cloudyn-jelentések használata az Azure-ban | Microsoft Docs
-description: Ez a cikk a Cloudyn-portálon található Cloudyn-jelentések célját ismerteti, amely segít a hatékony használatban.
+description: Ez a cikk a Cloudyn portálon elérhető Cloudyn-jelentések célját ismerteti a hatékony használat érdekében.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 139ad67035a96fb67bd96c4abb14ce9e1f26bf4f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 6f974ae35dbf23a134b775fe0d4f8cf5195a75af
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989058"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773910"
 ---
-# <a name="reports-available-in-the-cloudyn-portal"></a>A Cloudyn-portálon elérhető jelentések
+# <a name="reports-available-in-the-cloudyn-portal"></a>A Cloudyn portálon elérhető jelentések
 
-Ez a cikk a Cloudyn-portálon található Cloudyn-jelentések célját ismerteti. Azt is leírja, hogyan használhatja a jelentéseket hatékonyan. A legtöbb jelentés intuitív, és egységes megjelenéssel és működéssel rendelkezik. Az egyetlen jelentésben elvégezhető műveletek többsége más jelentésekben is elvégezhető. A Cloudyn-jelentések használatáról, beleértve a jelentések testreszabásának és mentésének módját, valamint a jelentések ütemtervének áttekintését lásd: a [Cost-jelentések ismertetése](understanding-cost-reports.md).
+Ez a cikk a Cloudyn portálon elérhető Cloudyn-jelentések célját ismerteti. A cikk a jelentések hatékony használatát is ismerteti. A legtöbb jelentés intuitívan használható, valamint egységes megjelenéssel és működéssel rendelkezik. Az egy adott jelentésben elvégezhető műveletek nagy részét más jelentésekben is elvégezheti. A Cloudyn-jelentések áttekintéséért és használatáért (beleértve a jelentések testreszabását, mentését és ütemezését) lásd a [költségjelentések ismertetését](understanding-cost-reports.md).
 
 Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](../cost-management-billing-overview.md).
 
-## <a name="report-types"></a>Report types (Jelentéstípusok)
+## <a name="report-types"></a>Jelentéstípusok
 
-Három típusú Cloudyn-jelentés létezik:
+A Cloudyn-jelentéseknek három típusa van:
 
-- Időbeli jelentések. Például az idő múlásával kapcsolatos jelentés. Az idő múlásával a jelentések egy idősorozatot jelenítenek meg a kiválasztott intervallumban egy előre meghatározott felbontással, és heti felbontást mutatnak az elmúlt két hónapban. A Csoportosítás és a szűrés használatával különböző adatpontokra nagyíthat.
-  - A határidős jelentések segítségével megtekintheti a trendeket, és észlelheti a tüskéket és a rendellenességeket.
-- Elemzési jelentések. Például a Cost Analysis jelentés. Ezek a jelentések összesített adatokat jelenítenek meg egy meghatározott időszakban, és lehetővé teszik a csoportosítást és a szűrést az adatain.
-  - Az elemzési jelentések segítségével megtekintheti a tüskéket, és meghatározhatja az anomáliák kiváltó okait, és megjelenítheti az adatai részletes lebontását.
-- Táblázatos jelentések. A jelentéseket táblázatként is megtekintheti, de egyes jelentések csak táblázatként jelennek meg. Ezek a jelentések az elemek részletes listáját tartalmazzák.
-  - A javaslatok táblázatos jelentések – nincsenek vizualizációk a javaslatokhoz. A javaslatok eredményeit azonban megjelenítheti. Például a megtakarítás az idő múlásával.
-  - A táblázatos jelentések a műveletek listájaként vagy a további feldolgozás céljából történő adatexportálás során hasznosak. Például egy jóváírási jelentés.
+- Időalapú jelentések. Ilyen például az Időalapú költségek jelentés. Az időalapú jelentések adatok időbeli sorozatát jelenítik meg egy előre meghatározott részletességgel rendelkező kiválasztott időszakban, és heti részlegességgel ismertetik az utolsó két hónapot. A csoportosítás és a szűrés használatával ráközelíthet különböző adatpontokra.
+  - Az időalapú jelentésekkel megtekintheti a trendeket, valamint észlelheti a kiugró csúcsokat és anomáliákat.
+- Elemzési jelentések. Ilyen például a Költségelemzési jelentés. Ezek a jelentések egy Ön által meghatározott időszak összesített adatait mutatják, valamint lehetővé teszik az adatok csoportosítását és szűrését.
+  - Az elemzési jelentések segítségével megtekintheti a kiugró csúcsokat, meghatározhatja az anomáliák kiváltó okait, valamint megjelenítheti az adatok részletes lebontását.
+- Táblázatos jelentések. Bármely jelentést megtekinthet táblázatként, bizonyos jelentések azonban csak táblázatként tekinthetők meg. Ezek a jelentések részletes elemlistákkal szolgálnak.
+  - A javaslatok táblázatos jelentések, tehát a javaslatok nincsenek vizualizálva. A javaslatok eredményeit azonban vizualizálhatja (például egy adott időszak megtakarításait).
+  - A táblázatos jelentések műveleti listaként vagy adatok további feldolgozáshoz való exportálásához hasznos (például költséghelyi elszámolási jelentésként).
 
-A _Cost-jelentések_ a _tényleges_ vagy az elszámolt költségeket mutatják.
+A költségjelentések _tényleges_ vagy _amortizált_ költségeket jelenítenek meg.
 
-A tényleges Cost-jelentések megjelenítik a kiválasztott időkereten belül végrehajtott kifizetéseket. Például az összes egyszeri díj, például a fenntartott példány (RI) vásárlása a tényleges költségek jelentésekben, a költségek arányában jelenik meg.
+A tényleges költségek jelentései egy kiválasztott időkereten belül történt kifizetéseket mutatnak. A tényleges költségek jelentéseiben az egyszeri díjak (például a fenntartott példányok vásárlásai) kiugró költségként jelennek meg.
 
-Az elszámolt költségekkel kapcsolatos jelentések egy adott időszakra érvényes egyszeri díjakat mutatnak be. Például az RI-vásárlásokra vonatkozó egyszeri díjak a foglalási időszak alatt oszlanak meg, és nem jelennek meg tüskeként. Az elszámolt nézet az egyetlen módja annak, hogy valódi trendeket lásson, és a költségeket is felkészítse.
+Az amortizált költségek elosztják az egyszeri költségeket arra a vonatkozó időszakra. A fenntartott példányok vásárlásának egyszeri díjai például eloszlanak a foglalási időszakon belül, és nem kiugró csúcsként jelennek meg. A tényleges trendek megtekintése és a költség-előrejelzések létrehozása csak amortizált nézetben lehetséges.
 
-Bizonyos esetekben az amortizáció külön jelentésként jelenik meg. Ilyenek például a Cost Analysis és az elszámolt Cost Analysis jelentései. Más esetekben az amortizáció egy olyan jelentési házirend, mint például a Cost foglalási és a Cost Analysis-jelentések.
+Bizonyos esetekben az amortizáció külön jelentésként jelenik meg. Ilyen például a Költségelemzési és az Amortizált költségek elemzése jelentés. Más esetekben az amortizáció egy jelentési szabályzat, mint például a Költségfelosztási vagy a Költségelemzési jelentés.
 
-Az időszakos kézbesítésre vonatkozó jelentéseket is ütemezhet. A Cost-jelentések lehetővé teszik a küszöbérték beállítását, így azok hasznosak lehetnek a riasztásokhoz.
+Minden jelentéshez ütemezhet időszakos kézbesítést. A költségjelentésekkel beállíthat egy küszöbértéket, így ezek a jelentések hasznosak riasztásokhoz.
 
-## <a name="cost-analysis-vs-cost-allocation"></a>Cost Analysis és Cost kiosztása
+## <a name="cost-analysis-vs-cost-allocation"></a>Költségelemzés és költségfelosztás
 
-A _Cost Analysis_ -jelentések a felhőalapú szolgáltatók számlázási adatait jelenítik meg. A jelentések segítségével csoportosíthatja és részletezheti a számlázási fájl alapján részletezett különböző adatszegmenseket. A jelentések lehetővé teszik a Felhőbeli szállító nyers számlázási adataiban a részletes díjszabást.
+A _Költségelemzési_ jelentések a felhőszolgáltatóktól származó számlázási adatokat jelenítik meg. A jelentésekkel csoportosíthatja és részletesen elemezheti a számlázási fájlban tételekre bontott különböző adatszegmenseket. A jelentések lehetővé teszik a felhőszolgáltató nyers számlázási adataiban történő részletes költségelemzést.
 
-Néhány _Cost Analysis_ -jelentés nem csoportosítja a költségeket az erőforrás-címkék alapján. A és a címkén alapuló számlázási adatok csak akkor jelennek meg a jelentésekben, ha a költségek lefoglalása után a Cost ( [költség) Kiosztásával 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+Bizonyos _költségelemzési_ jelentések nem csoportosítják a költségeket erőforráscímkék szerint. A címkealapú számlázási információk csak azután jelennek meg a jelentésekben, hogy felosztotta a költségeket a költségek [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) használatával történő létrehozása által.
 
-A Cost _foglalási_ jelentései akkor érhetők el, ha az 360-es [Cost kiosztásával](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)létrehoz egy Cost-modellt. A Cloudyn feldolgozza a költségeket és a számlázási adatokat, és _megfelel_ az adatoknak a Felhőbeli fiókok használati és címkézési adatainak. Az adatok egyeztetéséhez a Cloudyn hozzáférésre van szüksége a használati adatokhoz. Ha vannak olyan fiókok, amelyek nem rendelkeznek hitelesítő adatokkal, akkor a rendszer _Kategorizálatlan erőforrásként_címkézi őket.
+A _Költségfelosztási_ jelentések azután érhetők el, hogy létrehozott egy költségmodellt a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) használatával. A Cloudyn feldolgozza a költség- és számlázási adatokat, és _megfelelteti_ az adatokat a felhőfiókok használati és címkeadatainak. Az adatok megfeleltetéséhez a Cloudynnek hozzá kell férnie a használati adatokhoz. Ha rendelkezik olyan fiókokkal, amelyekből hiányoznak a hitelesítő adatok, a Cloudyn _nem kategorizált erőforrásként_ címkézi fel őket.
 
 ## <a name="dashboards"></a>Irányítópultok
 
-A felhőben lévő irányítópultok magas szintű áttekintést nyújtanak a jelentésekről. Az irányítópultok widgetek alkotják, és az egyes widgetek lényegében egy jelentés miniatűrje. Amikor [testreszabja a jelentéseket](understanding-cost-reports.md#save-and-schedule-reports), azokat saját jelentésekba menti, és hozzáadja őket az irányítópulthoz. Az irányítópultokkal kapcsolatos további információkért tekintse [meg a Key Cost-mérőszámok irányítópultokkal történő megtekintését](dashboards.md)ismertető témakört.
+A Cloudyn irányítópultjai magas szintű áttekintést nyújtanak a jelentésekhez. Az irányítópultokat widgetek alkotják, és az egyes widgetek tulajdonképpen a jelentések miniatűrjei. A jelentések [testreszabását](understanding-cost-reports.md#save-and-schedule-reports) követően a My Reports (Saját jelentések) közé mentheti a jelentéseket, és a rendszer hozzáadja őket az irányítópulthoz. Az irányítópultokkal kapcsolatos további információkért lásd a [fő költségmetrikák irányítópultokkal való megtekintését](dashboards.md).
 
 ## <a name="budget-information-in-reports"></a>Költségvetési információk a jelentésekben
 
-Számos Cloudyn-jelentés a manuálisan létrehozott költségvetési információkat jeleníti meg. Így a jelentések nem jelenítik meg a költségvetési adatokat, amíg létre nem hozza a költségvetést. További információ: költségkeret- [kezelési beállítások](#budget-management-settings).
+Számos Cloudyn-jelentés csak azután jelenít meg költségvetési információkat, hogy manuálisan létrehozott egy költségvetést. Ezért a jelentések nem jelenítenek meg költségvetési információkat, amíg létre nem hoz egy költségvetést. További információkért lásd a [költségvetés-kezelési beállításokat](#budget-management-settings).
 
 ## <a name="reports-and-reporting-features"></a>Jelentések és jelentéskészítési funkciók
 
-A Cloudyn a következő jelentéseket és jelentéskészítési szolgáltatásokat tartalmazza.
+A Cloudyn az alábbi jelentéseket és jelentéskészítési funkciókat tartalmazza.
 
 ### <a name="cost-navigator-report"></a>Költségnavigátor jelentés
 
-Az Költségnavigátor jelentés egy gyors módszer a számlázási felhasználás megtekintésére az irányítópult-nézet használatával. A szűrők és az alapszintű nézetek egy részhalmazával azonnal megjelenítheti a szervezet költségeinek összefoglaló nézetét. A költségek dátum szerint jelennek meg. Mivel a jelentés a költségek kezdeti nézetére szolgál, nem olyan rugalmas vagy átfogó, mint számos más jelentés vagy egyéni irányítópult, amelyet Ön hozott létre.
+A Költségnavigátor jelentéssel gyorsan megtekintheti a számlázási használatát egy irányítópult-nézet segítségével. Ez a jelentés számos szűrővel és alapszintű nézettel rendelkezik, amelyekkel azonnal megjelenítheti a szervezete költségeinek összesített nézetét. A költségek megjelenítése dátum alapján történik. Mivel a jelentés a költségek kezdeti nézeteként szolgál, nem olyan rugalmas vagy átfogó, mint sok más jelentés vagy egyéni irányítópult, amelyet Ön hoz létre.
 
-Alapértelmezés szerint a jelentés fő nézetei a következőket mutatják be:
+Alapértelmezés szerint a jelentés nagyobb nézetei az alábbiakat jelenítik meg:
 
-- A munkaidő egy munkahetet ábrázoló diagram nézetét jeleníti meg. A dátumtartomány megváltoztatásával módosíthatja a dátumtartomány **oszlopdiagram-** diagramját.
+- Időalapú költségek egy munkahetet megjelenítő sávdiagramnézetben. A **Date Range** (Dátumtartomány) módosításával módosíthatja a sávdiagram dátumtartományát.
 - Kiadások szolgáltatás szerint, tortadiagram használatával.
 - Erőforrások kategorizálása címkék szerint, tortadiagram használatával.
-- Költség entitások szerinti kiadások kördiagram használatával.
-- A teljes összeg, a lista nézetben.
+- Kiadások költségentitások szerint, tortadiagram használatával.
+- Teljes költség dátum szerint, listanézetben.
 
 ### <a name="cost-analysis-report"></a>Költségelemzési jelentés
 
-A Cost Analysis jelentés a szabályzat alapján a költséghelyi visszacsatolási és a jóváírási összeg kiszámítása. A megadott időkereten belül összesíti a Felhőbeli felhasználást, miután az összes kiosztási szabályt alkalmazta a saját költségeit. Például kiszámítja a költségeket címkék alapján, hozzárendeli a címkézetlen erőforrások költségét, és opcionálisan lefoglalja a fenntartott példányok kihasználtságát.
+A Költségelemzési jelentés egy költséghelyi visszacsatolási és költséghelyi elszámolási számítás, amely az Ön szabályzatán alapul. A jelentés összesíti a kiválasztott időkereten belüli felhőhasználatot, miután az összes felosztási szabályt alkalmazta a költségre. Például kiszámítja a költségeket címkék szerint, újból hozzárendeli a címkézetlen erőforrások költségeit, és opcionálisan lefoglalja a fenntartott példányok használatát.
 
-Az 360-es [Cost-foglalásban](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) beállított szabályzatok a Cost Analysis jelentésben szerepelnek, és az eredmények a felhőalapú gyártó nyers adataiból származó információkkal kombinálhatók.
+A rendszer alkalmazza a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-ban beállított szabályzatokat a Költségelemzési jelentésben, majd ötvözi az eredményeket a felhőszolgáltató nyers adataiból származó információkkal.
 
-Hogyan történik a jelentés kiszámítása? A Cloudyn szolgáltatás biztosítja az egyes csatolt fiókok integritásának megőrzését a _fiók affinitásának_alkalmazásával. Az affinitás gondoskodik arról, hogy egy adott szolgáltatást nem használó fiókhoz ne legyen kiosztva a szolgáltatás költségei. A fiókban felmerülő költségek ebben a fiókban maradnak, és nem számítanak ki a kiosztási szabályzatok alapján. Előfordulhat például, hogy öt csatolt fiókja van. Ha csak hárman használják a tárolási szolgáltatásokat, akkor a tárolási szolgáltatások díjait a rendszer csak a három fiókban található címkék között osztja ki.
+Hogyan történik a jelentés kiszámítása? A _fiókaffinitás_ alkalmazásával a Cloudyn szolgáltatás biztosítja, hogy a felosztás megőrizze az egyes összekapcsolt fiókok integritását. Az affinitás biztosítja, hogy a konkrét szolgáltatást nem használó fiókokhoz ne legyenek hozzárendelve a szolgáltatás költségei. A fiókban keletkező költségek az adott fiókban maradnak, és a kiszámításuk nem a felosztási szabályzatok szerint történik. Például öt összekapcsolt fiókkal rendelkezik. Ha közülük csak három használ tárolási szolgáltatásokat, akkor a tárolási szolgáltatások költsége csak a három fiók címkéi között van felosztva.
 
-A Cost Analysis jelentés használatával:
+A Költségelemzési jelentéssel:
 
-- Szervezeti jóváírás/költséghelyi visszacsatolási kiszámítása
-- Az összes költség kategorizálása
-- Megjeleníti a teljes központi telepítés összesített nézetét egy adott időkereten belül.
-- A Cost modellben létrehozott házirendek alapján megtekintheti a költségeket kategóriánként.
+- Kiszámíthatja a szervezete költséghelyi elszámolását és költséghelyi visszacsatolását
+- Kategorizálhatja a költségeit
+- Megjelenítheti a teljes környezet adott időkeretre vonatkozó összesített nézetét
+- Megtekintheti a költségeket a költségmodellben létrehozott szabályzatokon alapuló címkekategóriák szerint.
 
-A Cost Analysis jelentés használata:
+A Költségelemzési jelentés használata:
 
-1. Válasszon dátumtartományt.
-2. Szükség szerint adjon hozzá címkéket.
-3. Csoportok hozzáadása.
-4. Válassza ki a korábban létrehozott Cost modellt.
+1. Válasszon ki egy dátumtartományt.
+2. Igény szerint adjon hozzá címkéket.
+3. Adjon hozzá csoportokat.
+4. Válasszon ki egy korábban létrehozott költségmodellt.
 
 ### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
 
-Az idő múlásával jelentés a Cost foglalásának eredményeit jeleníti meg idősorozatként. Lehetővé teszi a trendek megfigyelését és a szabálytalanságok észlelését az üzemelő példányban. Alapvetően a meghatározott időszakban elosztott költségeket mutatja. A jelentés tartalmazza a főbb költségekkel járó közreműködőket, beleértve a folyamatos költségeket és az egyszeri fenntartott példányok díját, amelyeket a rendszer a kiválasztott időszakban töltött le. Ebben a jelentésben a 360-es [Cost-foglalásban](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) beállított szabályzatok használatosak.
+Az Időalapú költségek jelentés idősorozatokként jeleníti meg a költségfelosztási eredményeket. Ez a jelentés lehetővé teszi, hogy megfigyelje a trendeket, és észlelje a rendellenességeket a környezetben. Tulajdonképpen a költségek adott időszakban történő elosztását jeleníti meg. A jelentés tartalmazza a kiválasztott időkereten belül elköltött főbb költségelemeket, például a folyamatos költségeket és a fenntartott példányok egyszeri díjait. Ebben a jelentésben a rendszer alkalmazza a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-ban beállított szabályzatokat.
 
-A következő időpontra vonatkozó jelentés használata:
+Az Időalapú költségek jelentéssel:
 
-- A változások időbeli változásait láthatja, és ez hatással lehet egy nap (vagy dátumtartomány) változására a következőre.
-- Egy adott példány költségeinek elemzése az idő múlásával.
-- Megtudhatja, miért volt egy adott példányra vonatkozó költségmegtakarítás.
+- Megtekintheti az időalapú változásokat, valamint azt, hogy mely hatások változnak az egyik napról (vagy dátumtartományról) a másikra.
+- Elemezheti egy adott példány időalapú költségeit.
+- Megismerheti, miért növekedtek egy adott példány költségei.
 
-A díjszabási idő jelentés használata:
+Az Időalapú költségek jelentés használatához:
 
-1. Válasszon dátumtartományt.
-2. Szükség szerint adjon hozzá címkéket.
-3. Csoportok hozzáadása.
-4. Válassza ki a korábban létrehozott Cost modellt.
-5. Válassza ki a tényleges költségeket vagy az elszámolt költségeket.
-6. Adja meg, hogy szeretné-e alkalmazni a foglalási szabályokat a nyers számlázási adatnézet megtekintéséhez vagy az újraszámított Cost nézethez.
+1. Válasszon ki egy dátumtartományt.
+2. Igény szerint adjon hozzá címkéket.
+3. Adjon hozzá csoportokat.
+4. Válasszon ki egy korábban létrehozott költségmodellt.
+5. Válassza ki a tényleges költségeket vagy az amortizált költségeket.
+6. Adja meg, hogy a felosztási szabályokat a nyers számlázási adatok nézetének vagy az újraszámított költségek nézetének megtekintéséhez szeretné alkalmazni.
 
-### <a name="actual-cost-analysis-report"></a>Tényleges Cost Analysis-jelentés
+### <a name="actual-cost-analysis-report"></a>Tényleges költségelemzési jelentés
 
-A tényleges költség-elemzési jelentés a szolgáltatói költségeket nem módosítva jeleníti meg. A legfontosabb közreműködőket, például a folyamatos költségeket és az egyszeri díjakat mutatja be.
+A Tényleges költségelemzési jelentés módosítások nélkül jeleníti meg a szolgáltatói költségeket. Ez a jelentés a főbb költségelemeket jeleníti meg, például a folyamatos költségeket és az egyszeri díjakat.
 
-A jelentés használatával megtekintheti az előfizetések költségadatok adatait. A jelentésben az Azure-előfizetések a **fiók neve** és a **Fiók száma mezőben**jelennek meg. A **társított fiókok** AWS-előfizetéseket mutatnak. Az előfizetések költségeinek megtekintéséhez az egyes fiókok részletezése csoportban **válassza**ki az előfizetés típusát.
+A jelentéssel megtekintheti az előfizetéseivel kapcsolatos költséginformációkat. A jelentésben az Azure-előfizetések **fióknévként** és **fiókszámként** jelennek meg. A **Linked accounts** (Összekapcsolt fiókok) az AWS-előfizetéseket jelenítik meg. Az előfizetésenkénti költségek és a fiókonkénti lebontás megtekintéséhez válassza ki az előfizetése típusát a **Groups** (Csoportok) területen.
 
-A tényleges Cost Analysis-jelentés használatával:
+A Tényleges költségelemzési jelentéssel:
 
-- A megadott időkereten belül a nyers szolgáltató költségeinek elemzése és figyelése.
-- Küszöbérték-riasztást ütemezhet.
-- A fiókok és entitások által felmerült nem módosított költségek elemzése.
+- Elemezheti és monitorozhatja az adott időkereten belül elköltött nyers szolgáltatói költségeket.
+- Ütemezhet egy küszöbérték-riasztást.
+- Elemezheti a fiókok és az entitások által előidézett módosítatlan költségeket.
 
-### <a name="actual-cost-over-time-report"></a>Tényleges bekerülési idő jelentés
+### <a name="actual-cost-over-time-report"></a>Tényleges időalapú költségek jelentés
 
-A tényleges bekerülési idő jelentés egy standard Cost Analysis-jelentés, amely egy meghatározott időfelbontásra osztja fel a költségeket. A jelentés az idő múlásával megjeleníti a trendeket, és észleli a kiadási rendellenességeket. Ez a jelentés a főbb költségekkel járó közreműködőket tartalmazza, beleértve a folyamatos költségeket és az egyszeri fenntartott példányok díját, amelyeket a rendszer a kiválasztott időszakban töltött le.
+A Tényleges időalapú költségek jelentés egy standard költségelemzési jelentés, amely meghatározott időbeli részletességgel osztja el a költségeket. A jelentés időalapú költést jelenít meg, így lehetővé teszi, hogy megfigyelje a trendeket, és észlelje a költési rendellenességeket. Ez a jelentés a kiválasztott időkereten belül elköltött főbb költségelemeket jeleníti meg, például a folyamatos költségeket és a fenntartott példányok egyszeri díjat.
 
-Az idő múlásával jelentést a következőre használhatja:
+A Tényleges időalapú költségek jelentéssel:
 
-- Tekintse meg a költséghatékonyságot az idő múlásával.
-- A szabálytalanságok megkeresése a költségeket illetően.
-- A felhőalapú szolgáltatókkal kapcsolatos összes kapcsolódó kérdés megkeresése.
+- Megtekintheti az adott időszakra vonatkozó trendeket.
+- Rendellenességeket kereshet a költségekben.
+- Megtekintheti a felhőszolgáltatókkal kapcsolatos költségekre vonatkozó kérdéseket.
 
-### <a name="amortized-cost-reports"></a>Amortizációs Cost-jelentések
+### <a name="amortized-cost-reports"></a>Amortizált költségjelentések
 
-Az elszámolási költséggel kapcsolatos jelentések a lineárisan nem használatos szolgáltatási díjakat, vagy a költségek egyszeri megfizetését, valamint a költségeknek az élettartamuk során egyenletes elosztását mutatják be. Az egyszeri díjak például a következők lehetnek:
+Az amortizált költségek ezen készlete linearizált, nem használatalapú szolgáltatási díjakat vagy egyszer kifizetendő költségeket jelenít meg, és egyenletesen elosztja a költségeket időben az élettartamuk során. Az egyszeri díjak például az alábbiakat tartalmazzák:
 
 - Éves támogatási díjak
-- Éves biztonsági összetevők díjai
-- Fenntartott példányok beszerzési díjai
-- Néhány Azure Marketplace-elem
+- Biztonsági összetevők éves díjai
+- Fenntartott példányok beszerzési illetékei
+- Egyes Azure Marketplace-elemek
 
-A számlázási fájlban az egyszeri díjak akkor jelennek meg, ha a szolgáltatás felhasználásának kezdési és befejezési dátuma (timestamp) egyenlő értékkel rendelkezik. A Cloudyn szolgáltatás ezt követően az elszámolt egyszeri díjakat észleli. Az igény szerinti használati költségekkel rendelkező egyéb fogyasztáson alapuló szolgáltatásokat nem számoljuk el.
+A számlázási fájlban az egyszeri díjak karakterizálása akkor történik meg, amikor a szolgáltatáshasználat kezdő és záró dátuma (időbélyege) azonos értékkel rendelkezik. A Cloudyn szolgáltatás ezt követően amortizált egyszeri díjakként ismeri fel őket. Az egyéb, igény szerinti használattal rendelkező használatalapú szolgáltatások költségei nincsenek amortizálva.
 
-Az elszámolt költségadatok a következők:
+Az Amortizált költségjelentések az alábbiakat tartalmazzák:
 
-- Amortizációs Cost Analysis
-- Amortizációs díj az idő függvényében
+- Amortizált költségek elemzése
+- Időalapú amortizált költségek
 
 ### <a name="cost-analysis-report"></a>Költségelemzési jelentés
 
-A Cost Analysis jelentés betekintést nyújt a Felhőbeli felhasználásra és a költségekre a kiválasztott időkereten belül. A Cost Analysis jelentésben a 360-es [foglalásban](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) beállított szabályzatok használatosak.
+A Költségelemzési jelentés betekintést nyújt a felhőhasználatba és a kiadásokba egy kiválasztott időkereten belül. A rendszer alkalmazza a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-ban beállított szabályzatokat a Költségelemzési jelentésben.
 
-Hogyan számítja ki a Cloudyn a jelentést?
+Hogyan számítja ki a Cloudyn ezt a jelentést?
 
-A Cloudyn biztosítja, hogy a foglalás megőrizze az egyes csatolt fiókok integritását a _fiók affinitásának_alkalmazásával. Az affinitás gondoskodik arról, hogy egy adott szolgáltatást nem használó fiókhoz ne legyen kiosztva a szolgáltatás költségei. A fiókban felmerülő költségek ebben a fiókban maradnak, és nem számítják ki a foglalási szabályzatok. Előfordulhat például, hogy öt csatolt fiókja van. Ha csak hárman használják a tárolási szolgáltatásokat, akkor a tárolási szolgáltatások díjait a rendszer csak a három fiókban található címkék között osztja ki.
+A _fiókaffinitás_ alkalmazásával a Cloudyn biztosítja, hogy a felosztás megőrizze az egyes összekapcsolt fiókok integritását. Az affinitás biztosítja, hogy a konkrét szolgáltatást nem használó fiókokhoz ne is legyenek hozzárendelve a szolgáltatás költségei. A fiókban keletkező költségek az adott fiókban maradnak, és a kiszámításuk nem a felosztási szabályzatok szerint történik. Például öt összekapcsolt fiókkal rendelkezik. Ha közülük csak három használ tárolási szolgáltatásokat, akkor a tárolási szolgáltatások költsége csak a három fiók címkéi között van felosztva.
 
-A Cost Analysis jelentés használatával:
+A Költségelemzési jelentéssel:
 
-- Megjeleníti a teljes központi telepítés összesített nézetét egy adott időkereten belül.
-- A Cost modellben létrehozott házirendek alapján megtekintheti a költségeket kategóriánként.
+- Megjelenítheti a teljes környezet adott időkeretre vonatkozó összesített nézetét
+- Megtekintheti a költségeket a költségmodellben létrehozott szabályzatokon alapuló címkekategóriák szerint.
 
 ### <a name="cost-over-time-report"></a>Időalapú költségek jelentése
 
-A költségek időbeli alakulása jelentés az idő múlásával megjeleníti a trendeket, és észleli az üzemelő példányok szabálytalanságait. Alapvetően a meghatározott időszakban elosztott költségeket mutatja. A jelentés tartalmazza a főbb költségekkel járó közreműködőket, beleértve a folyamatos költségeket és az egyszeri fenntartott példányok díját, amelyeket a rendszer a kiválasztott időszakban töltött le. Ebben a jelentésben a 360-es [Cost-foglalásban](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) beállított szabályzatok használatosak.
+Az Időalapú költségek jelentés megjeleníti az időalapú kiadásokat, így észlelheti a trendeket és a rendellenességeket az üzemelő példányban. Tulajdonképpen a költségek adott időszakban történő elosztását jeleníti meg. A jelentés tartalmazza a kiválasztott időkereten belül elköltött főbb költségelemeket, például a folyamatos költségeket és a fenntartott példányok egyszeri díjait. Ebben a jelentésben a rendszer alkalmazza a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-ban beállított szabályzatokat.
 
-A következő időpontra vonatkozó jelentés használata:
+Az Időalapú költségek jelentéssel:
 
-- A változások időbeli változásait láthatja, és ez hatással lehet egy nap (vagy dátumtartomány) változására a következőre.
-- Egy adott példány költségeinek elemzése az idő múlásával.
-- Megtudhatja, miért volt egy adott példányra vonatkozó költségmegtakarítás.
+- Megtekintheti az időalapú változásokat, valamint azt, hogy mely hatások változnak az egyik napról (vagy dátumtartományról) a másikra.
+- Elemezheti egy adott példány időalapú költségeit.
+- Megismerheti, miért növekedtek egy adott példány költségei.
 
-### <a name="custom-charges-report"></a>Egyéni díjak jelentés
+### <a name="custom-charges-report"></a>Egyéni díjakkal kapcsolatos jelentés
 
-A vállalati és a CSP-felhasználók gyakran a saját Felhőbeli erőforrás-használat mellett további szolgáltatásokat biztosítanak a külső vagy belső ügyfelek számára. Egyéni díjakat határozhat meg a hozzáadott szolgáltatásokhoz, illetve az ügyfél számlázási vagy jóváírási jelentéseihez hozzáadott kedvezményekhez egyéni sorokként.
+A vállalati és CSP-felhasználók a saját felhőerőforrás-használatuk mellett gyakran további szolgáltatásokat biztosítanak külső vagy belső ügyfeleik számára. A hozzáadott szolgáltatások egyéni díjait vagy az ügyfél számlázási vagy költséghelyi elszámolási jelentéseihez hozzáadott kedvezményeket egyéni sorelemekként határozza meg.
 
-Az egyéni szolgáltatási díjak a számlán általában nem szereplő szolgáltatásokat tükrözik. A létrehozott egyéni díjak ezután megjelennek a Cost-jelentésekben.
+Az egyéni szolgáltatási díjak azokat a szolgáltatásokat jelzik, amelyek általában nem jelennek meg a számlákon. A létrehozott egyéni díjak ezután megjelennek a Költségjelentésekben.
 
-Az *Egyéni díjak nem egyéni díjszabással*rendelkeznek. Az egyéni díjak listája nem jeleníti meg az esetlegesen megjelenő eltérő díjszabást. Például az AWS számlázási díjai ugyanúgy jelennek meg, mint a díjak.
+*Az egyéni díjak díjszabása nem egyéni*. Az egyéni díjak listája nem jeleníti meg az esetlegesen kiszámlázott különféle díjakat. Az AWS számlázási díjai például csak a kiszámlázáskor jelennek meg.
 
 Egyéni díj létrehozása:
 
-1. Az **Egyéni költségek**területen kattintson az **új hozzáadása**lehetőségre. Megjelenik az _új egyéni díj hozzáadása_ párbeszédpanel.
-2. A **szolgáltató neve**mezőben adja meg a szolgáltató nevét.
-3. A **szolgáltatás neve**mezőben adja meg a szolgáltatás típusát.
-4. A **Leírás**mezőben adja meg az egyéni díj leírását.
-5. A **típus**mezőben adja meg a Select **százalék** elemet, majd a szolgáltatások legördülő menüben válassza ki azokat a szolgáltatásokat, amelyeket egyéni díjakként szeretne szerepeltetni a Cost-jelentésekben.
-6. A **fizetés**lapon válassza ki, hogy a díj egyszeri díj vagy ismétlődő díj. Ha a díj ismétlődő díj, válassza az elszámolt lehetőséget, ha azt szeretné, hogy a díjat ki kell fizetni, és válassza ki a hónapok számát.
-7. Ha egy egyszeri díj van kiválasztva, **a Date (** **tényleges dátum**) mezőben adja meg a díj kifizetésének dátumát. Ha az ismétlődő díj be van jelölve, adja meg a dátumtartományt, beleértve a kezdési dátumot és a díj befejezési dátumát.
-8. Az **entitások fában**válassza ki azokat az entitásokat, amelyekre alkalmazni szeretné a díjat, majd **válassza a be lehetőséget.**
+1. A **Custom Charges** (Egyéni díjak) területen kattintson az **Add New** (Új hozzáadása) elemre. Megjelenik az _Add New Custom Charge_ (Új egyéni díj hozzáadása) párbeszédpanel.
+2. A **Provider Name** (Szolgáltató neve) mezőben adja meg a szolgáltató nevét.
+3. A **Service Name** (Szolgáltatásnév) mezőben adja meg a szolgáltatás típusát.
+4. A **Description** (Leírás) mezőben adja meg az egyéni díj leírását.
+5. A **Type** (Típus) mezőben adja meg a kiválasztott **Percentage** (Százalék) értéket, majd a Services (Szolgáltatások) legördülő listából válassza ki azokat a szolgáltatásokat, amelyeket bele szeretne foglalni a költségjelentésekbe egyéni díjakként.
+6. A **Payment** (Fizetés) mezőben válassza ki, hogy a díj One-Time Fee (Egyszeri díj) vagy Recurring Fee (Ismétlődő díj). Ha a díj ismétlődő díj, és azt szeretné, hogy a díj amortizált legyen, válassza az Amortized (Amortizált) lehetőséget, és adja meg a hónapok számát.
+7. Ha egyszeri díj van kiválasztva, a **Date** (Dátum) terület **Effective Date** (Hatályba lépés dátuma) mezőjében adja meg a díj kifizetésének dátumát. Ha a Recurring Fee (Ismétlődő díj) lehetőség van kiválasztva, adja meg a dátumtartományt a díj kezdő és záró dátumával együtt.
+8. Az **Entities tree** (Entitásfa) területen válassza ki az entitásokat, amelyekre alkalmazni szeretné a díjat, majd válassza az **On** (Be) lehetőséget.
 
-_Ha a díjakat egy entitáshoz rendeli, a felhasználók nem módosíthatják azokat. A rendszergazda által egy szülő entitáshoz hozzáadott díjak csak olvashatók._
+_Ha a díjakat egy entitáshoz rendeli, a felhasználók nem módosíthatják azokat. Azok a díjak, amelyeket egy rendszergazda adott hozzá egy fölérendelt entitáshoz, írásvédettek._
 
-Egyéni díjak megtekintése:
+Az egyéni költségek megtekintése:
 
-Az egyéni díjak a Cost-jelentésekben jelennek meg. Nyissa meg például a tényleges Cost Analysis jelentést, majd a **kiterjesztett szűrők**területen válassza az **önálló**lehetőséget. Ezután szűrje az **Egyéni díjak**megjelenítéséhez.
+Az egyéni díjak a Költségjelentéseknél jelennek meg. Például nyissa meg a Tényleges költségelemzési jelentést, majd az **Extended Filters** (Kiterjesztett szűrők) területen válassza a **Standalone** (Különálló) lehetőséget. Ezután szűréssel jelenítse meg az **egyéni díjakat**.
 
-### <a name="cost-allocation-360"></a>Költségmegosztás 360
+### <a name="cost-allocation-360"></a>Cost Allocation 360
 
-A Cost allokációs 360 használatával egyéni költség-lefoglalási modelleket hozhat létre a felhasznált Felhőbeli erőforrások költségeinek kiosztásához. Számos jelentés az egyéni Cost-modellekkel létrehozott egyéni Cost-modellekkel kapcsolatos információkat jeleníti meg. Egyes jelentések pedig csak azt követően jelenítik meg az adatokat, miután létrehozott egy egyéni Cost-modellt a Cost lefoglalásával.
+A Cost Allocation 360 használatával létrehozhat egyéni költségfelosztási modelleket a költségek felhasznált felhőalapú erőforrásokhoz való hozzárendeléséhez. Számos jelentés olyan egyéni költségmodellek információit jeleníti meg, amelyeket egyéni költségmodellekkel hozott létre. Emellett egyes jelentések csak akkor jelenítenek meg információkat, ha létrehozott egy költségfelosztást biztosító egyéni költségmodellt.
 
-Az egyéni Cost models létrehozásával kapcsolatos további információkért lásd [: oktatóanyag: költségek kezelése a Cloudyn használatával](tutorial-manage-costs.md).
+Az egyéni költségmodellek létrehozásával kapcsolatos további információkért lásd: [Oktatóanyag: Költségek kezelése a Cloudyn használatával](tutorial-manage-costs.md).
 
-### <a name="cost-vs-budget-over-time-report"></a>Költség és költségkeret időbeli alakulása jelentés
+### <a name="cost-vs-budget-over-time-report"></a>Költségek és időalapú költségvetés jelentés
 
-A költség és a költségkeret időbeli alakulása jelentés lehetővé teszi, hogy összehasonlítsa a fődíjas közreműködőket a költségvetésével szemben. A hozzárendelt költségvetés megjelenik a jelentésben, így az idő múlásával megtekintheti az (alatta/alatt/par) költségvetés-felhasználást. A jelentés tetején a mezők megjelenítése/elrejtése lehetőség kiválasztásával megtekintheti a költségeket, a költségvetést, a halmozott költségeket és a teljes költségvetést.
+A Költségek és időalapú költségvetési jelentéssel összehasonlíthatja a költségvetésbe beleszámító fő költségelemeket. A hozzárendelt költségvetés megjelenik a jelentésben, így megtekintheti a költségvetés időalapú használatát (túlhasználtságát, kihasználatlanságát vagy megfelelő használatát). A jelentés tetején lévő Show/Hide Fields (Mezők megjelenítése/elrejtése) lehetőség használatával kiválaszthatja, hogy a költségeket, a költségvetést, a halmozott költségeket vagy a teljes költségvetést szeretné megtekinteni.
 
-### <a name="current-month-projected-cost-report"></a>Aktuális havi tervezett Cost-jelentés
+### <a name="current-month-projected-cost-report"></a>Aktuális havi előre jelzett költség jelentés
 
-Az aktuális havi tervezett Cost-jelentés betekintést nyújt az aktuális havi díjszabási összefoglalóba. Ez a jelentés a hónap elejétől, az előző hónaptól és az aktuális hónap teljes tervezett költségével kapcsolatos költségeket jeleníti meg. Az aktuális havi tervezett költség a naprakész havi költség és a kivetítés összegét számítja ki az elmúlt 30 napban figyelt díjak alapján.
+Az Aktuális havi előre jelzett költség jelentés betekintést nyújt az aktuális hónap költségeinek összegzésébe. Ez a jelentés a hónap elejétől számított költségeket, az előző havi költségeket és az aktuális hónap teljes előre jelzett költségeit mutatja. Az aktuális havi előre jelzett költség kiszámítása a naprakész havi költségek összegeként és az elmúlt 30 napban monitorozott költségek előrejelzéseként történik.
 
-Az aktuális havi tervezett Cost-jelentés használata:
+Az Aktuális havi előre jelzett költség jelentéssel:
 
-- Projekt havi költségei szolgáltatás szerint
-- Projekt havi költségei fiók szerint
+- Előre jelezheti a költségeket szolgáltatás szerint
+- Előre jelezheti a költségeket fiók szerint
 
-### <a name="annual-projected-cost-report"></a>Éves tervezett Cost-jelentés
+### <a name="annual-projected-cost-report"></a>Éves előre jelzett költségről szóló jelentés
 
-Az éves tervezett költségek jelentés lehetővé teszi, hogy a korábbi kiadások trendjei alapján megtekintse az éves tervezett költségeket. A következő 12 hónapot mutatja a teljes előrejelzett költségek közül. A kivetítések a következő 12 hónap során kikövetkeztetett trend függvény használatával történnek, az utolsó 30 nap használati díja alapján.
+Az Éves előre jelzett költségről szóló jelentéssel megtekintheti az éves előre jelzett költségeket a korábbi kiadási trendek alapján. Ez a jelentés a következő 12 hónap összes előrejelzett költségét mutatja. Az előrejelzések létrehozása egy, a következő 12 hónapra extrapolált trendfunkció használatával történik az elmúlt 30 nap használatához kapcsolódó költségek alapján.
 
 ### <a name="budget-management-settings"></a>Költségvetés-kezelési beállítások
 
-A költségvetés-kezelés lehetővé teszi a pénzügyi év költségvetésének megadását.
+A Költségvetés-kezelés segítségével beállíthat egy költségkeretet az adott pénzügyi évre.
 
-Költségvetés hozzáadása egy entitáshoz:
+Költségvetés entitáshoz való hozzáadása:
 
-1. A költségvetés kezelése lap **entitások**területén válassza ki azt az entitást, amelyben létre kívánja hozni a költségvetést.
-2. A költségvetési évben válassza ki azt az évet, amelyben létre kívánja hozni a költségvetést.
-3. Minden hónapban állítsa be a költségvetést, majd kattintson a **Save (Mentés**) gombra.
+1. A Budget Management (Költségvetés-kezelés) oldal **Entities** (Entitások) területén válassza ki az entitást, amelyben a költségvetést létre szeretné hozni.
+2. A költségvetési évben válassza ki az évet, amelyhez létre szeretné hozni a költségvetést.
+3. Minden hónapban állítsa be a költségvetést, majd kattintson a **Save** (Mentés) parancsra.
 
-Fájl importálása az éves költségvetésbe:
+Az éves költségvetés fájljának importálása:
 
-1. A **műveletek**területen válassza az **Exportálás** lehetőséget egy üres CSV-sablon letöltéséhez, amelyet a költségvetés alapjaként kíván használni.
-2. Töltse ki a CSV-fájlt a költségvetési bejegyzéseivel, és mentse helyileg.
-3. A **műveletek**területen válassza az **Importálás**lehetőséget.
-4. Válassza ki a mentett fájlt, majd kattintson **az OK**gombra.
+1. Az **Actions** (Műveletek) területen válassza az **Export** (Exportálás) lehetőséget egy üres CSV-sablon letöltéséhez, amelyet a költségvetés alapjaként használhat.
+2. Töltse ki a CVS-fájlt a költségvetés elemeivel, és mentse a fájlt helyileg.
+3. Az **Actions** (Műveletek) területen válassza az **Import** (Importálás) elemet.
+4. Válassza ki a mentett fájlt, majd kattintson az **OK** gombra.
 
-Ha a kész költségvetést CSV-fájlként szeretné exportálni, a **műveletek**területen válassza az **Exportálás** lehetőséget a fájl letöltéséhez.
+A kész költségvetés CVS-fájlként történő exportálásához az **Actions** (Műveletek) területen válassza az **Export** (Exportálás) lehetőséget, és töltse le a fájlt.
 
-Ha elkészült, a költségkeret a Cost Analysis jelentéseiben és a költség és a költségvetés időbeli változása jelentésben jelenik meg. A jelentéseket a költségvetési küszöbértékek alapján is ütemezhet.
+Ha a költségvetés elkészült, megjelenik a Költségelemzési jelentések között, valamint a Költségek és időalapú költségvetés jelentésben. Emellett jelentéseket is ütemezhet a költségvetési küszöbértékek alapján.
 
-### <a name="azure-resource-explorer-report"></a>Azure Erőforrás-kezelő jelentés
+### <a name="azure-resource-explorer-report"></a>Azure Resource Explorer-jelentés
 
-A Azure Erőforrás-kezelő jelentés a Cloudyn elérhető Azure-erőforrások tömeges listáját jeleníti meg. A jelentés hatékony használatához az Azure-fiókoknak engedélyezve kell lennie a kiterjesztett mérőszámoknak. A kiterjesztett mérőszámok Cloudyn hozzáférést biztosítanak az Azure-beli virtuális gépekhez. További információ: [bővített mérőszámok hozzáadása az Azure Virtual Machines szolgáltatáshoz](azure-vm-extended-metrics.md).
+Az Azure Resource Explorer-jelentés a Cloudynban elérhető Azure-erőforrások tömeges listáját mutatja. A jelentés hatékony használatához az Azure-fiókokban engedélyezni kell a kiterjesztett metrikákat. A kiterjesztett metrikák hozzáférést biztosítanak a Cloudyn számára az Azure-beli virtuális gépekhez. További információkért lásd a [kiterjesztett metrikák Azure-beli virtuális gépekhez történő hozzáadását](azure-vm-extended-metrics.md) ismertető szakaszt.
 
-### <a name="azure-resources-over-time-report"></a>Azure-erőforrások az idő múlásával jelentés
+### <a name="azure-resources-over-time-report"></a>Azure-erőforrások adott időszakban jelentés
 
-Az Azure-erőforrások az idő múlásával jelentés az adott időszakban futó összes erőforrás részletezését jeleníti meg. A jelentés hatékony használatához az Azure-fiókoknak engedélyezve kell lennie a kiterjesztett mérőszámoknak. A kiterjesztett mérőszámok Cloudyn hozzáférést biztosítanak az Azure-beli virtuális gépekhez. További információ: [bővített mérőszámok hozzáadása az Azure Virtual Machines szolgáltatáshoz](azure-vm-extended-metrics.md).
+Az Azure-erőforrások adott időszakban jelentés az összes futó jelentés lebontását mutatja egy adott időszakban. A jelentés hatékony használatához az Azure-fiókokban engedélyezni kell a kiterjesztett metrikákat. A kiterjesztett metrikák hozzáférést biztosítanak a Cloudyn számára az Azure-beli virtuális gépekhez. További információkért lásd a [kiterjesztett metrikák Azure-beli virtuális gépekhez történő hozzáadását](azure-vm-extended-metrics.md) ismertető szakaszt.
 
-### <a name="instance-explorer-report"></a>Példány-kezelő jelentés
+### <a name="instance-explorer-report"></a>Instance Explorer-jelentés
 
-A példányok kezelője jelentés használatával megtekintheti a virtuális gépek eszközeinek különféle mérőszámait. Adott példányok részletezésével megtekintheti a következő információkat:
-- Példány futó intervallumai
+Az Instance Explorer-jelentés a virtuális gépek objektumaihoz tartozó különböző metrikák megtekintésére szolgál. Elemezhet konkrét példányokat az olyan információk megtekintéséhez, mint például az alábbiak:
+- Példányfuttatási időközök
 - Életciklus a kiválasztott időszakban
-- CPU-kihasználtság
+- Processzorhasználat
 - Hálózati bemenet
-- Kimeneti forgalom
+- Kimenő forgalom
 - Aktív lemezek
 
-A példány-kezelő jelentés a megadott dátumtartomány szerint gyűjti az összes futó intervallumot, és ennek megfelelően összesíti az adatokat. A dátumtartomány összes futó intervallumának megtekintéséhez bontsa ki a példányt. Az egyes példányok díjait a rendszer az AWS és az Azure-lista díjszabása alapján kiválasztott dátumtartomány szerint számítja ki. A rendszer nem alkalmaz kedvezményeket. További mezőket is hozzáadhat a jelentéshez a mezők megjelenítése/elrejtése mező használatával.
+Az Instance Explorer-jelentés összegyűjti a meghatározott dátumtartományban található összes futási intervallumot, és ennek megfelelően összesíti az adatokat. A dátumtartományban található futási intervallumok megtekintéséhez terjessze ki a példányt. A rendszer az egyes példányok költségét az AWS- és az Azure-listaárak alapján a kiválasztott dátumtartományhoz számítja ki. Kedvezmények nélkül. A Show/Hide Fields (Mezők megjelenítése/elrejtése) lehetőség használatával további mezőket adhat hozzá a jelentéshez.
 
-A példányok kezelője jelentés használata a következőhöz:
+Az Instance Explorer-jelentéssel:
 
-- A becsült költségek kiszámítása egy gépen.
-- Hozzon létre egy teljes listát, beleértve az összesített órákat is, amelyek az adott időtartományban aktív összes gépről érvényesek.
-- Hozzon létre egy listát a felhőalapú szolgáltató vagy fiók alapján.
-- Megtekintheti az időtartományban létrehozott vagy leállított gépeket.
-- Az összes jelenleg leállított gép megtekintése.
+- Kiszámíthatja a gépenkénti becsült költséget.
+- Létrehozhatja az adott időtartományon belül aktív gépek teljes listáját, beleértve az összesített futási órákat.
+- Létrehozhat listákat felhőszolgáltató vagy fiók szerint.
+- Megtekintheti az adott időtartományon belül létrehozott vagy megszüntetett gépeket.
+- Megtekintheti az összes aktuálisan leállított gépet.
 - Megtekintheti az egyes gépek címkéit.
 
-### <a name="instances-over-time-report"></a>Példányok időbeli jelentés
+### <a name="instances-over-time-report"></a>Példányok adott időszakban jelentés
 
-A példányok az idő múlásával jelentés használatával megtekintheti a kijelölt időtartományban aktív gépek maximális számát. Ha a definiált felbontás hét vagy hónap, az eredmény az adott napon aktív gépek maximális száma az adott hónapban. Válasszon ki egy dátumtartományt a jelentésben megjeleníteni kívánt szűrők kiválasztásához.
+A Példányok adott időszakban jelentés használatával megtekintheti a kiválasztott időtartományon belül aktív gépek maximális számát. Ha heti vagy havi részletesség van megadva, az eredmények az adott hónap adott napján aktív gépek maximális számára vonatkoznak. Válasszon ki egy dátumtartományt a jelentésben megjeleníteni kívánt szűrők kiválasztásához.
 
-### <a name="instance-utilization-over-time-report"></a>Példány kihasználtsága időbeli jelentéssel
+### <a name="instance-utilization-over-time-report"></a>Időalapú példányhasználat jelentés
 
-Ez a jelentés a processzor vagy a memória részletezését jeleníti meg az összes példányra vonatkozóan az idő múlásával.
+Ez a jelentés az összes példány processzor- vagy memóriahasználatának időalapú lebontását mutatja.
 
-### <a name="compute-power-cost-over-time-report"></a>Számítási teljesítmény az idő függvényében jelentés
+### <a name="compute-power-cost-over-time-report"></a>Számítási teljesítmény időalapú költsége jelentés
 
-A számítási bekapcsolási idő jelentés a számítási teljesítmény részletezését jeleníti meg a megadott dátumtartomány szerint. Bár más jelentések a futó gépek számát vagy a futásidejű órákat mutatják, ez a jelentés az alapórákat, a számítási egység óráját és a GB RAM-ot jeleníti meg.
+A Számítási teljesítmény időalapú költsége jelentés a megadott dátumtartományra vonatkozó számítási teljesítmény lebontását mutatja. Bár más jelentések a futó gépek vagy a futásidő óráinak számát jelenítik meg, ez a jelentés alapóraszámot, a számítási egységhez tartozó óraszámot vagy a GB RAM-hoz tartozó óraszámot jeleníti meg.
 
-A jelentés használata:
+A jelentéssel:
 
-- A számítási teljesítmény ellenőrzését a megadott dátumtartomány szerint.
-- Számítási idő megtekintése a Cost foglalási modellek alapján.
+- Ellenőrizheti a számítási teljesítményt egy adott dátumtartományon belül.
+- Megtekintheti a számítási időket a költségfelosztási modellek alapján.
 
-Ez a jelentés a [Cost allokációs 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) -szabályzatokhoz van társítva, így az eredmények a kijelölt címkézés és szabályzatok alapján jelennek meg. Ha nem hozott létre szabályzatot, akkor az eredmények nem jelennek meg.
+Ez a jelentés kapcsolódik a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-szabályzatokhoz, így az eredmények a kiválasztott költségszabályzatban meghatározott címkézés és szabályzatok alapján jelennek meg. Ha nem hozott létre szabályzatot, az eredmények nem jelennek meg.
 
-### <a name="compute-power-average-cost-over-time-report"></a>Számítási teljesítmény átlagos átlagköltsége – jelentés
+### <a name="compute-power-average-cost-over-time-report"></a>Számítási teljesítmény átlagos időalapú költsége jelentés
 
-Az idő függvényében a számítási teljesítmény átlagos díjait használva több, mint az egyes futó gépek költségeit tekintheti meg. A jelentésben az átlagos napi óradíj, a főóra, a számítási egység óra és a GB RAM óra érték látható. A jelentés betekintést nyújt az üzemelő példány hatékonyságára.
+A Számítási teljesítmény átlagos időalapú költsége jelentéssel az egyes futó gépek költségén kívül más adatok is megtekinthetők. A jelentés a példányóránkénti átlagos költséget, az alapóraszámot, a számítási egységhez tartozó óraszámot és a GB RAM-hoz tartozó óraszámot is megjeleníti. A jelentés betekintést nyújt a környezet hatékonyságába.
 
-Ez a jelentés a [Cost allokációs 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) -szabályzatokhoz van csatolva, így az eredmények a megadott címkézés és szabályzatok alapján jelennek meg. Ha nem hozott létre szabályzatot, akkor az eredmények nem jelennek meg.
+Ez a jelentés kapcsolódik a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)-szabályzatokhoz, így az eredmények a kiválasztott költségszabályzatban meghatározott címkézés és szabályzatok alapján jelennek meg. Ha nem hozott létre szabályzatot, az eredmények nem jelennek meg.
 
-### <a name="s3-cost-over-time-report"></a>Az S3 költséghatékonysági jelentés
+### <a name="s3-cost-over-time-report"></a>S3-beli időalapú költségek jelentés
 
-Az S3 költség az idő múlásával jelentés az Amazon Simple Storage Service (S3) költségeinek részletezését biztosítja a megadott időszakra vonatkozóan. A jelentés segítségével megtalálhatja azokat a gyűjtőket, amelyek a fő díjas illesztőprogramokat használják, és az S3-használat és a kiadások tendenciáit jeleníti meg.
+Az S3-beli időalapú költségek jelentés az Amazon Simple Storage Service (S3) költségeinek időalapú, adott időkereten belüli, gyűjtőkre való lebontásával szolgál. A jelentés segít megtalálni a fő költségtényezőkként szolgáló gyűjtőket, és megmutatja az S3-használat és -kiadások trendjeit.
 
-### <a name="s3-distribution-of-cost-report"></a>A Cost-jelentés S3-eloszlása
+### <a name="s3-distribution-of-cost-report"></a>S3-költségeloszlás jelentés
 
-A jelentés használatával elemezheti az előző hónapra vonatkozó S3-költségeket a gyűjtő és a tárolási osztály alapján. A tortadiagram nézetet a láthatósági küszöbérték beállítására használhatja. Vagy a táblázat nézetet is használhatja a részösszegek megjelenítéséhez.
+Ezzel a jelentéssel gyűjtő és tárolási osztály alapján elemezheti az előző havi S3-költségeket. A tortadiagram nézettel beállíthatja a láthatósági küszöbértéket. A táblázatnézet használatával pedig megtekintheti a részösszegeket.
 
-### <a name="s3-bucket-properties-report"></a>Az S3-gyűjtő tulajdonságai jelentés
+### <a name="s3-bucket-properties-report"></a>S3-gyűjtőtulajdonságok jelentés
 
-A jelentés használatával megtekintheti az S3-gyűjtő tulajdonságait. A tortadiagram nézetet a láthatósági küszöbérték beállítására használhatja. Vagy a táblázat nézetet is használhatja a részösszegek megjelenítéséhez.
+Ezzel a jelentéssel megtekintheti az S3-gyűjtők tulajdonságait. A tortadiagram nézettel beállíthatja a láthatósági küszöbértéket. A táblázatnézet használatával pedig megtekintheti a részösszegeket.
 
-### <a name="rds-instances-over-time-report"></a>RDS-példányok időbeli jelentés
+### <a name="rds-instances-over-time-report"></a>RDS-példányok adott időszakban jelentés
 
-A jelentés használatával megtekintheti az összes, a megadott időszak alatt futó, az összes Amazon-beli adatbázis-szolgáltatás (RDS) példányának részletezését.
+Ezzel a jelentéssel megtekintheti a megadott időszakban futó Amazon Relational Database Service- (RDS-) példányok lebontását.
 
-### <a name="rds-active-instances-report"></a>RDS aktív példányok jelentése
+### <a name="rds-active-instances-report"></a>Aktív RDS-példányok jelentés
 
-A jelentés használatával elemezze az aktív RDS-példányokat. A jelentésben bontsa ki a sor elemet a további információk megtekintéséhez.
+Ezzel a jelentéssel elemezheti az aktív RDS-példányokat. A további információk megtekintéséhez bontsa ki a sorelemet a jelentésben.
 
-### <a name="azure-reserved-instances-report"></a>Azure Reserved instances-jelentés
+### <a name="azure-reserved-instances-report"></a>Azure-beli fenntartott példányok jelentés
 
-Az Azure-beli fenntartott példányok jelentés az Azure-beli fenntartott példányok egyetlen nézetét jeleníti meg. Ez a jelentés az egyes vásárlásokat a saját soraként jeleníti meg. A jelentés a vásárlás részleteit is megjeleníti, például a megvásárolt fiókot, a vásárlás és a példány típusát, a hátralévő napokat és így tovább. Megjelenítheti vagy elrejtheti a jelentésekhez tartozó adatmezőket a mezők megjelenítése/elrejtése használatával.
+Az Azure-beli fenntartott példányok jelentésben egyszerre tekintheti meg az Azure-beli fenntartott példányok mindegyikét. Ez a jelentés külön sortételként jeleníti meg az egyes vásárlásokat. A jelentés a vásárlások részleteit is megjeleníti, például a vásárlást kezdeményező fiókot, a vásárlás típusát és a példánytípust, a hátralévő napokat és az egyéb információkat. A jelentésadatokat a Show/Hide Fields (Mezők megjelenítése/elrejtése) elemmel jelenítheti meg vagy rejtheti el.
 
-Az Azure Reserved instances jelentés használatával megtekintheti a következőket:
+Az Azure Reserved Instances (Azure-beli fenntartott példányok) jelentéssel az alábbiakat tekintheti meg:
 
-- A foglalások listája a vásárlás dátuma szerint.
-- Hátralévő idő, amíg az RI le nem jár.
-- Egyszeri díj.
-- Az a fiók, amely megvásárolta a RIs-t, és mikor.
+- Az összes foglalás listáját a vásárlás dátuma szerint.
+- A fenntartott példány lejáratáig fennmaradó időt.
+- Az egyszeri díjakat.
+- A fenntartott példányokat megvásárló fiókot és a vásárlás időpontját.
 
-### <a name="aws-reserved-instances-report"></a>AWS fenntartott példányok jelentése
+### <a name="aws-reserved-instances-report"></a>AWS Reserved Instances (AWS-beli fenntartott példányok) jelentés
 
-Az AWS-beli fenntartott példányok jelentés egyetlen nézetet biztosít az AWS számára fenntartott példányokról. Ez a jelentés megjeleníti az egyes vásárlások saját sorát, valamint a vásárlás részleteit, például a megvásárolt fiókot, a vásárlás és a példány típusát, a hátralévő napokat és így tovább. Megjelenítheti vagy elrejtheti a jelentésekhez tartozó adatmezőket a mezők megjelenítése/elrejtése használatával.
+Az AWS Reserved Instances (AWS-beli fenntartott példányok) jelentésben egyszerre tekintheti meg az AWS-beli fenntartott példányok mindegyikét. Ez a jelentés külön sortételként jeleníti meg az egyes vásárlásokat, emellett a vásárlások részleteit is megjeleníti, például a vásárlást kezdeményező fiókot, a vásárlás típusát és a példánytípust, a hátralévő napokat és az egyéb információkat. A jelentésadatokat a Show/Hide Fields (Mezők megjelenítése/elrejtése) elemmel jelenítheti meg vagy rejtheti el.
 
-Az AWS Reserved instances jelentés használatával megtekintheti a következőket:
+Az AWS Reserved Instances (AWS-beli fenntartott példányok) jelentéssel az alábbiakat tekintheti meg:
 
-- A foglalások listája a vásárlás dátuma szerint.
-- Hátralévő idő, amíg az RI le nem jár.
-- Egyszeri díj.
-- Eredeti vásárlási azonosító (foglalási azonosító).
-- A RIs-t és a-t megvásárló fiók.
+- Az összes foglalás listáját a vásárlás dátuma szerint.
+- A fenntartott példány lejáratáig fennmaradó időt.
+- Az egyszeri díjakat.
+- Eredeti vásárlás azonosítója (foglalásazonosító).
+- A fenntartott példányokat megvásárló fiókot és a vásárlás időpontját.
 
-### <a name="ec2-ri-buying-recommendations-report"></a>EC2 RI – vásárlási javaslatok jelentés
+### <a name="ec2-ri-buying-recommendations-report"></a>EC2 RI Buying Recommendations (Fenntartott EC2-példány vásárlására vonatkozó javaslatok) jelentés
 
-A Felhőbeli erőforrások felhasználásának alapja az igény szerinti modell, ahol az erőforrások csak a használat során járnak költséggel. Nincsenek előzetes kötelezettségvállalások – csak a ténylegesen használt funkciókért kell fizetnie.
+A felhőbeli erőforrások felhasználása az igény szerinti modellen alapul, amelyben az erőforrások csak a használatuk esetén járnak költséggel. Nincs előzetes kötelezettségvállalás, csak a valóban használt funkciókért kell fizetnie, és csak akkor, amikor használja őket.
 
-Az AWS alternatív díjszabási modellt kínál a rugalmas számítási felhő (EC2) szolgáltatásaihoz, a fenntartott példányhoz (RI). Ez a díjszabási modell garantálja a felhasználók számára, hogy szükség esetén a kapacitást használják a RI időtartamra. Az RI jelentős árengedményt nyújt az igény szerinti díjszabáshoz képest. Cserébe a felhasználók előzetes kötelezettségvállalást tesznek a virtuális példányok használatára. A kötelezettségvállalás egy adott családra, méretre, rendelkezésre állási zónára (AZ) és az operációs rendszerre van kötve a kötelezettségvállalási időszakon (egy vagy három év). A RI lehetővé teszi, hogy az AWS hatékonyan tervezze meg a jövőbeli kapacitást, és megszerezze az ügyfelek elkötelezettségét a szolgáltatásai használatára.
+Az AWS alternatív árképzési modellt kínál az Elastic Compute Cloud- (EC2-) szolgáltatásaira vonatkozóan, a fenntartott példányt. Ez az árképzési modell a fenntartott példány időtartama során garantálja a felhasználóknak a kellő kapacitást, amikor csak szükségük van rá. A fenntartott példány jelentős árkedvezményeket kínál az igény szerinti árképzéshez képest. A felhasználóknak cserébe előzetes kötelezettségvállalást kell tenniük a virtuális példány használatára vonatkozóan. A kötelezettségvállalás egy adott termékcsaládhoz, mérethez, rendelkezésreállási zónához és operációs rendszerhez kötött a kötelezettségvállalás időtartamára (egy vagy három év). A fenntartott példány lehetővé teszi az AWS számára a jövőbeli kapacitás hatékony tervezését, valamint az ügyfelek elkötelezettségének megnyerését a szolgáltatásai használatára.
 
-Három fizetési lehetőség a RIs számára, amely mindenre kiterjed:
+A fenntartott példányok vásárlásához három fizetési lehetőség érhető el:
 
-- Tömeges összeg a 0. napon, amely a legmagasabb kedvezményt kínálja
-- Nincs előzetes verzió, amelyben a ri költségét havi telepítésekben kell fizetni, a legalacsonyabb árengedményt kínálva
-- Részleges előzetes verzió, amelyben a díj 1/4-1/2, a többi pedig a havi telepítésekben, a teljes költség alacsonyabb, de lezárult, az összes kezdeti arányig
+- Teljes összeg a 0. napon, amely a legmagasabb kedvezményt kínálja.
+- Nincs előzetes fizetés, amely esetén a fenntartott példány költsége havi részletekben fizetendő a fenntartott példány időtartama során. Ez a lehetőség kínálja a legkisebb kedvezményt.
+- Részleges előzetes fizetés, amely esetén az ár ¼–½-e előre fizetendő, a fennmaradó összeg pedig havi részletekben. A kedvezmény mértéke viszonylag alacsony, de közelebb áll a teljes összeg előre fizetését lehetővé tevő lehetőséghez.
 
-A Cloudyn az elmúlt 30 napban kiértékeli az egyes gépek üzemidőét. A Cloudyn javasolja a RIs megvásárlását, ha ez költséghatékonyabb, ha a gépet az aktuális üzemidő szintjén egy RI-vel szeretné futtatni.
+A Cloudyn értékeli az egyes gépek üzemidejét az elmúlt 30 napra vonatkozóan. A Cloudyn fenntartott példányok vásárlását javasolja, ha az aktuális üzemidőszint mellett a gépet fenntartott példánnyal költséghatékonyabb futtatni.
 
-A jelentés azt az indoklást mutatja be, hogy javaslatai alapján a legtöbb pénzt mentse az év során. A javaslatok az igény szerinti példányok a RIs szolgáltatással való cseréjét javasolták. A RIs-t közvetlenül a jelentésből is megvásárolhatja.
+A jelentés megjeleníti az év során a lehető legtöbb pénz megtakarítására irányuló javaslatainak indoklását. A javaslatok az igény szerinti példányok fenntartott példányokra való lecserélését ajánlják. A fenntartott példányokat közvetlenül a jelentésből is megvásárolhatja.
 
-Minden lap teljes jelentésként nyílik meg. A lapok jelentős részei a következők:
+Mindegyik lap teljes jelentésként nyílik meg. A lapok fontos részei az alábbiak:
 
-- **EC2 ri – vásárlás hatása** – ez a szakasz az igény szerinti és fenntartott példányok közötti különbség szimulációját ismerteti. Kattintson a **Nagyítás**elemre, hogy megtekintse a javaslathoz már definiált szűrőket tartalmazó teljes EC2 ri vásárlási hatás jelentését. Ez a jelentés a lehetséges RI-vásárlások vásárlásának hatását mutatja. A EC2 fenntartott példányok megvásárlásakor megtekintheti a várható átlagos üzemidőt.
+- **EC2 RI Purchase Impact** (Fenntartott EC2-példány vásárlásának hatása) – Ez a szakasz az igény szerinti és a fenntartott példányok közötti különbség szimulációját biztosítja. A **Zoom in** (Nagyítás) elemre kattintva megtekintheti a teljes EC2 RI Purchase Impact (Fenntartott EC2-példány vásárlásának hatása) jelentést, a javaslatra vonatkozóan előre meghatározott szűrőkkel. Ez a jelentés a különféle fenntartott példányok esetleges megvásárlásával járó hatást jeleníti meg. A várt átlagos üzemidő módosításával megtekintheti a fenntartott EC2-példányok vásárlásával járó lehetséges megtakarítást.
 
-- **Elemzések mentése** – ez a szakasz az elért lehetséges megtakarításokat és a megtakarítások hónapját adja meg a Cloudyn ajánlásainak követése során. A tényleges megtakarítások és a mentett százalékok piros színnel vannak kiemelve.
+- **Saving Analysis** (Megtakarításelemzés) – Ez a szakasz az elért lehetséges megtakarítást és azt a hónapot jeleníti meg, amikor a megtakarítás realizálódik a Cloudyn javaslatainak követése esetén. A tényleges megtakarítást és a megtakarított százalékot piros színnel emeli ki a rendszer.
 
-- **EC2 ri-típus összehasonlítása** – ez a szakasz a Cloudyn javasolt központi telepítésének ROI-kiemeléseit emeli ki, beleértve az összes vonatkozó beállítást is. A jelentés eredményei feltételezik, hogy a gép 100%-os üzemidőt használ. Kattintson a **Nagyítás** gombra a részletes jelentés megnyitásához.
+- **EC2 RI Type Comparison** (Fenntartott EC2-példánytípusok összehasonlítása) – Ez a szakasz a Cloudyn által ajánlott üzemi környezettel járó megtérüléssel kapcsolatos főbb információkat jeleníti meg, beleértve a kapcsolódó lehetőségeket is. A jelentés eredményei feltételezik, hogy a gép 100%-os üzemidő mellett fut. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a részletes jelentést.
 
-- **Példányok időbeli** megoszlása – ez a szakasz a javaslathoz, a OnDemand, a fenntartott példányokhoz és a helyhez társított összes példány részletezését jeleníti meg. Kattintson a **Nagyítás** gombra a részletes jelentés megnyitásához.
-- **Ráfizetéses pontok** – ez a szakasz az összes lehetséges ajánlott telepítés és a ROI és a hónap közötti táblázatot jeleníti meg a ROI bekövetkeztekor. Kattintson a **Nagyítás** gombra a részletes jelentés megnyitásához.
+- **Instances Over Time** (Példányok egy adott időszakban) – Ez a szakasz a javaslathoz kapcsolódó összes példány részletezését jeleníti meg, OnDemand (Igény szerinti), Reserved Instances (Fenntartott példányok) és Spot (Kihasználatlan) szerint lebontva. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a részletes jelentést.
+- **Breakeven Points** (Kiegyenlítődési pontok) – Ez a szakasz egy táblázatot jelenít meg az összes lehetséges, javasolt üzemi környezettel, a megtérüléssel, valamint a megtérülés realizálódásának hónapjával. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a részletes jelentést.
 
-### <a name="ec2-reservations-over-time-report"></a>EC2 foglalások időbeli jelentéssel
+### <a name="ec2-reservations-over-time-report"></a>EC2 Reservations Over Time (EC2-foglalások adott időszakban) jelentés
 
-A EC2-foglalások időbeli jelentésével nyomon követheti a megvásárolt EC2-RIs-használat állapotát. Megadhatja a jelentés felbontását óra, nap vagy hét értékre.
+Az EC2 Reservations Over Time (EC2-foglalások adott időszakban) jelentés a megvásárolt fenntartott EC2-példányok használatának állapotát követi nyomon. A jelentés részletességét beállíthatja órára, napra vagy hétre.
 
-A jelentés használata:
+A jelentéssel:
 
-- A használatban lévő és nem használt foglalások megjelenítése.
-- Ha óránként szeretné megtekinteni a felbontást, ellenőrizze az óra használatát.
+- Megjelenítheti, hogy a megvásárolt foglalások közül melyiket használják és melyiket nem.
+- Óra szintig részletezhet a fenntartott példány órára lebontott használatának megtekintéséhez.
 
-### <a name="savings-over-time-report"></a>Megtakarítás az idő múlásával – jelentés
+### <a name="savings-over-time-report"></a>Savings Over Time (Megtakarítás adott időszakban) jelentés
 
-A megtakarítások időbeli jelentésének használatával megtekintheti a fenntartott példányok és a helyszíni példányok használatával elért megtakarításokat. A jelentés a RI-vásárlások eredményeként elért ROI-t jeleníti meg.
+A Savings Over Time (Megtakarítás adott időszakban) jelentéssel a fenntartott példányokkal és a kihasználatlan példányokkal elért megtakarítást tekintheti meg. A jelentés megjeleníti az adott időszakban a fenntartott példányok megvásárlásával járó megtérülést.
 
-A RIs-megtakarítás megtekintéséhez csoportosítsa az eredményeket az **Ár modell** alapján, és válassza a **foglalás**lehetőséget. Egy adott fiók vagy példány típusával elért RI-megtakarítás megtekintéséhez vegye fel a megfelelő csoportosítást és szűrőt a fiók vagy a példány típusára.
+A fenntartott példányoknak köszönhető megtakarítás megtekintéséhez csoportosítsa az eredményeket **Price Model** (Ármodell) alapján, majd válassza a **Reservation** (Foglalás) elemet. Egy adott fiók vagy példánytípus által a fenntartott példányokkal elért megtakarítás megtekintéséhez adja meg a megfelelő csoportosítást, és szűrjön rá a fiókra vagy példánytípusra.
 
-Ha meg szeretné tekinteni a direktszínes példányok használatának megtakarításait, szűrje az **árat** a **helyszínen**. A jelentés alapértelmezett szűrője az RI és a Spot példányok.
+A kihasználatlan példányok használatából eredő megtakarítás megtekintéséhez a **Price Model** (Ármodell) szűrőt állítsa **Spot** (Kihasználatlan) értékűre. A jelentés alapértelmezett szűrője az RI (Fenntartott példány) és Spot Instances (Kihasználatlan példányok).
 
-### <a name="rds-ri-buying-recommendations-report"></a>Az RDS RI vásárlási javaslatainak jelentése
+### <a name="rds-ri-buying-recommendations-report"></a>RDS RI Buying Recommendations (Fenntartott RDS-példány vásárlására vonatkozó javaslatok) jelentés
 
-Az RDS RI vásárlási javaslatairól szóló jelentés azt ajánlja, hogy mikor használjon RDS-t az igény szerinti példányok helyett.
+Az RDS RI Buying Recommendations (Fenntartott RDS-példány vásárlására vonatkozó javaslatok) jelentés javaslatokat ad arra vonatkozóan, hogy mikor érdemes fenntartott RDS-példányokat használni az igény szerinti példányok helyett.
 
-Minden lap teljes jelentésként nyílik meg. A lapok jelentős részei a következők:
+Mindegyik lap teljes jelentésként nyílik meg. A lapok fontos részei az alábbiak:
 
-- **RDS ri – vásárlási hatás** – ez a szakasz az igény szerinti és fenntartott példányok közötti különbség szimulációját tartalmazza. Kattintson a nagyítás lehetőségre, hogy a teljes RDS RI-vásárlási Impact **-** jelentés a javaslathoz már meghatározott szűrőkkel legyen látható. Ez a jelentés lehetővé teszi, hogy megtekintse a potenciális RI-vásárlások vásárlásának hatását.  Megváltoztathatja a várható átlagos üzemidőt, és megtekintheti a lehetséges mentést a RIs megvásárlásával.
-- **Elemzés mentése** – ez a szakasz az elért lehetséges megtakarításokat és a megtakarítások hónapját adja meg a Cloudyn ajánlásainak követése során. A tényleges megtakarítások és a mentett százalékok piros színnel vannak kiemelve.
+- **RDS RI Purchase Impact** (Fenntartott RDS-példány vásárlásának hatása) – Ez a szakasz az igény szerinti és a fenntartott példányok közötti különbség szimulációját biztosítja. A **Zoom in** (Nagyítás) elemre kattintva megtekintheti a teljes RDS RI Purchase Impact (Fenntartott RDS-példány vásárlásának hatása) jelentést, a javaslatra vonatkozóan előre meghatározott szűrőkkel. A jelentéssel a különféle fenntartott példányok esetleges megvásárlásával járó hatást is megtekintheti.  A várt átlagos üzemidő módosításával megtekintheti a fenntartott példányok vásárlásával járó lehetséges megtakarítást.
+- **Saving Analysis** (Megtakarításelemzés) – Ez a szakasz az elért lehetséges megtakarítást és azt a hónapot jeleníti meg, amikor a megtakarítás realizálódik a Cloudyn javaslatainak követése esetén. A tényleges megtakarítást és a megtakarított százalékot piros színnel emeli ki a rendszer.
 
-- **RDS ri-típusok összehasonlítása** – ez a szakasz a javasolt központi telepítés ROI-kiemeléseit emeli ki, beleértve az összes vonatkozó beállítást is. A jelentés eredményei feltételezik, hogy a gép 100%-os üzemidőt használ. Kattintson a **Nagyítás** gombra a kiválasztott gép részletes jelentésének megnyitásához.
-- **Példányok az idő múlásával** – ez a szakasz a javaslathoz, a OnDemand, a fenntartott példányokhoz és a spothoz társított összes példány részletezését jeleníti meg. Kattintson a **Nagyítás** gombra a részletes jelentés megnyitásához.
+- **RDS RI Type Comparison** (Fenntartott RDS-példánytípusok összehasonlítása) – Ez a szakasz az ajánlott üzemi környezettel járó megtérüléssel kapcsolatos főbb információkat jeleníti meg, beleértve a kapcsolódó lehetőségeket is. A jelentés eredményei feltételezik, hogy a gép 100%-os üzemidő mellett fut. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a kiválasztott gépre vonatkozó részletes jelentést.
+- **Instances Over Time** (Példányok egy adott időszakban) – Ez a szakasz a javaslathoz kapcsolódó összes példány részletezését jeleníti meg, OnDemand (Igény szerinti), Reserved Instances (Fenntartott példányok) és Spot (Kihasználatlan) szerint lebontva. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a részletes jelentést.
 
-- **Ráfizetéses-pontok** – ebben a szakaszban az összes lehetséges ajánlott telepítés és a ROI és a havi megtérülés táblázata látható. Kattintson a **Nagyítás** gombra a részletes jelentés megnyitásához.
+- **Breakeven Points** (Kiegyenlítődési pontok) – Ez a szakasz egy táblázatot jelenít meg az összes lehetséges, javasolt üzemi környezettel, a megtérüléssel, valamint a megtérülés realizálódásának hónapjával. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a részletes jelentést.
 
-### <a name="rds-reservations-over-time-report"></a>RDS-foglalások időbeli jelentéssel
+### <a name="rds-reservations-over-time-report"></a>RDS Reservations Over Time (RDS-foglalások adott időszakban) jelentés
 
-Az RDS-foglalás időbeli jelentés használatával megtekintheti a felhasznált és a nem használt foglalások lebontását a megadott időszakban.
+Az RDS Reservations Over Time (RDS-foglalások adott időszakban) jelentéssel megtekintheti a megadott időtartam során használt és nem használt foglalások részletezését.
 
-### <a name="reserved-instance-purchase-impact-report"></a>Fenntartott példányok vásárlásának hatása jelentés
+### <a name="reserved-instance-purchase-impact-report"></a>Reserved Instance Purchase Impact (Fenntartott példányok vásárlásának hatása) jelentés
 
-A EC2 RI vásárlási hatása jelentés lehetővé teszi, hogy a fenntartott példányok költségeit és az igény szerinti költségeket is szimulálja az idő függvényében. A megoldással jobb vásárlási döntéseket hozhat. Állítsa be a szűrőket, például az átlagos futtatókörnyezetet, a kifejezést, a platformot és másokat, hogy megalapozott döntéseket hozzon az RI-vásárlások során.
+Az EC2 RI Purchase Impact (Fenntartott EC2-példány vásárlásának hatása) jelentés lehetővé teszi a fenntartott példányokkal, illetve az igény szerinti példányokkal járó költségek szimulálását egy adott időszakra vonatkozóan. A jelentés segítségével jobb döntéseket hozhat a vásárlás tekintetében. Az olyan tényezőkre, mint az átlagos üzemidőre, időtartamra, platformra és másokra vonatkozó szűrők módosításával megalapozott döntéseket hozhat, amikor fenntartott példányok vásárlását fontolgatja.
 
-### <a name="cost-effective-sizing-recommendations-report"></a>Költséghatékony méretezési javaslatok jelentés
+### <a name="cost-effective-sizing-recommendations-report"></a>Cost-Effective Sizing Recommendations (Költséghatékony méretezésre vonatkozó javaslatok) jelentés
 
-A költséghatékony méretezési javaslatok jelentés az AWS és az Azure eredményeit biztosítja. Az AWS-felhasználók esetében az RI-vásárlásokat figyelembe kell venni, és az eredmények nem tartalmazzák a RI-ként futó gépeket. Ez a jelentés a kiépíthető kihasználatlan példányok listáját tartalmazza. A javaslatok az elmúlt 30 napban használt használati és teljesítményadatokat alapulnak. Minden javaslatban szerepelnek a jelöltek listája, amelyek az előállításhoz szükségesek, valamint egy hivatkozás, amely a példány teljes részleteit és teljesítmény-metrikáit jeleníti meg. Továbbá, ha a vonatkozó javaslatok az újabb generációs példányok típusaira való váltásra vonatkoznak.
+A Cost-Effective Sizing Recommendations (Költséghatékony méretezésre vonatkozó javaslatok) jelentés az AWS-hez és az Azure-hoz kapcsolódóan biztosít eredményeket. AWS-felhasználók esetén a rendszer a megvásárolt fenntartott példányokat veszi figyelembe, és az eredmények nem foglalják magukban a fenntartott példányként futó gépeket. A jelentés azon alacsony kihasználtságú példányok listáját biztosítja, amelyeknél a rendszer a méret csökkentését javasolja. A javaslatok az elmúlt 30 nap használati és teljesítményadatain alapulnak. Az egyes javaslatok magukban foglalják a méretcsökkentésre javasolt példányok listáját, a méretcsökkentés indoklását, valamint egy hivatkozást, amelyet követve megtekinthetők az adott példányok részletes adatai és teljesítménymetrikái. Az is látható továbbá, hogy a kapcsolódó javaslatok ajánlják-e az újabb generációs példánytípusokra való váltást.
 
-Nem töltheti le a jelentésből az ajánlott példány-azonosítók listáját. A példány-azonosítók letöltéséhez használja a minden méretezési javaslat jelentést.
+A jelentésből nem tölthető le az azokat a példányazonosítókat tartalmazó lista, amelyek esetén a rendszer méretcsökkentést javasol. A példányazonosítók letöltéséhez használja az All Sizing Recommendations (Minden méretezési javaslat) jelentést.
 
-Vegye figyelembe a következő leépítési példát:
+Tekintse meg a méretcsökkentésre vonatkozó alábbi példát:
 
-Hat m3. XLarge fut. A Cloudyn elemzése azt mutatja, hogy öt közülük kevés a CPU kihasználtsága. Érdemes lehet leépíteni őket.
+Hat, futó m3.xlarge-példánnyal rendelkezik. A Cloudyn elemzése kimutatta, hogy közülük ötnél alacsony a processzor kihasználtsága. Vegye fontolóra a méretük csökkentését.
 
-A Cost Impact kiszámítja a költségeket. Ebben a példában a sor elem kibővítésével megtekintheti egy m3. XLarge-példány (Linux/Unix) díjait $0,266/óra és egy m3. nagyméretű példány (Linux/Unix) díja $0,133/óra. Így az éves díj $11 651 öt m3. a XLarge példányok 100%-os kihasználtsággal futnak. Az éves díj $5 825 5 m3. a nagy példányok 100%-os kihasználtsággal működnek. A lehetséges megtakarítás $5 825.
+A Cost Impact (Költségre gyakorolt hatás) szakaszban a költségre gyakorolt hatást számítja ki a rendszer. Ebben a példában a sortétel kibontásával láthatja, hogy egy m3.xlarge-példány (Linux/Unix) költsége 0,266 dollár/óra, egy m3.large-példány (Linux/Unix) költsége pedig 0,133 dollár/óra. A 100%-os kihasználtsággal futó öt m3.xlarge-példány éves költsége így 11 651 dollár. A 100%-os kihasználtsággal futó öt m3.large-példány éves költsége 5825 dollár. A lehetséges megtakarítás 5825 dollár.
 
-A költséghatékony méretezési indoklások megtekintéséhez kattintson a + elemre a vonal kibontásához. **Részletek**:
+A költséghatékony méretezésre vonatkozó javaslatok indoklásának megtekintéséhez kattintson a + elemre a sortétel kibontásához. A **Details** (Részletek) lapon:
 
-- Az **ajánlás indoklása** szakasz a jelenlegi központi telepítést és a javasolt példányok számát jeleníti meg.
-- A **Cost Impact** szakasz a lehetséges megtakarítások meghatározására szolgáló számítást jeleníti meg.
-- A **lehetséges éves megtakarítások** szakasz a Cloudyn javaslata során felhasználható éves megtakarításokat jeleníti meg.
+- A **Recommendation Justification** (Javaslat indoklása) szakasz az aktuális üzemi környezetet és a méretcsökkentésre javasolt példányok számát jeleníti meg.
+- A **Cost Impact** (Költségre gyakorolt hatás) a lehetséges megtakarítás meghatározásához használt számítást jeleníti meg.
+- A **Potential Annual Savings** (Lehetséges éves megtakarítás) szakasz a lehetséges éves megtakarítást jeleníti meg, ha a méretcsökkentés végrehajtása a Cloudyn javaslata szerint történik.
 
-### <a name="all-sizing-recommendations-report"></a>Az összes méretezési javaslat jelentés
+### <a name="all-sizing-recommendations-report"></a>All Sizing Recommendations (Minden méretezési javaslat) jelentés
 
-Ez a jelentés a kiépíthető kihasználatlan példányok listáját tartalmazza. A javaslatok az elmúlt 30 napban használt használati és teljesítményadatokat alapulnak. Minden javaslatban megtekintheti a példány teljes részleteit és teljesítmény-mérőszámait.
+A jelentés azon alacsony kihasználtságú példányok listáját biztosítja, amelyeknél a rendszer a méret csökkentését javasolja. A javaslatok az elmúlt 30 nap használati és teljesítményadatain alapulnak. Az egyes javaslatokban megtekintheti az adott példányok részletes adatait és teljesítménymetrikáit.
 
-Ha AWS fenntartott példányokat vásárolt, ez a jelentés az összes futó példány eredményét tartalmazza, beleértve a RIs-ként futó példányokat is.
+Ha fenntartott AWS-példányokat vásárolt, ez a jelentés az összes futó példányra vonatkozóan tartalmaz eredményeket, beleértve a fenntartott példányként futó példányokat is.
 
-A minden méretezési javaslat jelentés a következőre használható:
+Az All Sizing Recommendations (Minden méretezési javaslat) jelentéssel:
 
-- Tekintse meg az összes olyan példány listáját, amely a felépítésre jelöltek.
-- A példányok nevét és azonosítóit tartalmazó jelentések listájának exportálása.
+- Megtekintheti azon példányok listáját, amelyeknél a rendszer a méret csökkentését javasolja.
+- Exportálhatja a példányneveket és -azonosítókat tartalmazó jelentéslistát.
 
-Egy adott példányra vonatkozó javaslat részleteinek megtekintéséhez kattintson a **+** elemre a részletek kibontásához. A javaslat részletei szakasz áttekintést nyújt a javaslatról.
+Egy adott példányra vonatkozó javaslat részleteinek megtekintéséhez kattintson a **+** jelre a részletek kibontásához. A Recommendation Details (Javaslat részletei) szakasz biztosítja a javaslat áttekintését.
 
-A **címkék** szakasz a kijelölt példányhoz tartozó címke kulcsainak és értékeinek listáját tartalmazza. A bal oldali panelen található címkék használatával szűrheti a szakaszt.
+A **Tags** (Címkék) szakasz a kiválasztott példány címkekulcsainak és -értékeinek listáját biztosítja. A bal oldali panelen található Tags (Címkék) elemmel szűrheti a szakaszt.
 
-A **CPU-kihasználtság** szakasz a példány CPU-kihasználtságát adja meg az elmúlt hónapban, naponta.
+A **CPU Utilization** (CPU-használat) szakaszban a példány elmúlt havi CPU-használata látható napra lebontva.
 
-Kattintson a diagramra a részletezéshez, majd nyissa meg a példány CPU-t az idő függvényében, és tekintse meg a példányok részletezését.
+A grafikonra kattintva részletes elemzést indíthat, és megnyithatja az Instance CPU Over Time (Példányok CPU-használata adott időszakban) jelentést a példányok részletezésének megtekintéséhez.
 
-- Mezők **megjelenítése/elrejtése mezők** hozzáadásához és eltávolításához használja a következő mezőket: timestamp, AVG CPU, minimális CPU, Max CPU.
-- Dátumtartomány **használata dátum** -és dátumtartomány megadásához, valamint részletezés egy adott InstanceId.
-- **Kibővített szűrők** használata az összes vagy egy adott példány azonosítójának megjelenítéséhez
-- A CPU-kihasználtsági jelentés megnyitásához kattintson a **Nagyítás** gombra.
+- A **Show/Hide Fields** (Mezők megjelenítése/elrejtése) elemmel a következő mezőket veheti fel vagy távolíthatja el: Timestamp (Időbélyeg), Avg CPU (Átl. CPU), Min CPU (Min. CPU), Max CPU (Max. CPU).
+- A **Date Range** (Dátumtartomány) használatával egy dátumot vagy dátumtartományt adhat meg, és egy adott példányazonosítót elemezhet.
+- Az **Extended Filters** (Bővített szűrők) használatával megjelenítheti az összes vagy csak egy adott példányazonosítót.
+- A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a CPU Utilization (CPU-használat) jelentést.
 
-Ha a példány 30 napig nem lett figyelve, a hiányos adatértékek jelennek meg.
+Ha a példány 30 napig nem volt monitorozva, hiányos adatok láthatók.
 
-A **memória kihasználtsága (GB)** szakasz a felhasznált memóriával kapcsolatos információkat tartalmazza. Az AWS-felhasználók esetében a memória metrikái nem lesznek automatikusan elérhetők, és az AWS-en keresztül hozzá kell őket adni egy példányhoz. Az AWS a EC2-példányok számára lehetővé teszi a memória metrikáinak engedélyezését.
+A **Memory Utilization (GB)** (Memóriahasználat (GB)) szakasz a felhasznált memóriával kapcsolatban biztosít információt. AWS-felhasználók esetén a memóriametrikák nem érhetők el automatikusan, és minden példányhoz külön hozzá kell adni őket az AWS segítségével. Az AWS díjat számít fel az EC2-példányokra vonatkozó memóriametrikák engedélyezéséhez.
 
-A **memória kihasználtsága (%)** szakasz a felhasznált memória százalékos arányát jeleníti meg.
+A **Memory Utilization (%)** (Memóriahasználat (%)) szakasz a felhasznált memória százalékos arányát jeleníti meg.
 
-A **hálózati bemeneti forgalom** szakasz a kiválasztott példány hálózati forgalmának, átlagának és maximális számának időpontját jeleníti meg. Vigye a kurzort a sorok fölé, hogy megtekintse az adott idő dátumát és maximális forgalmát. Kattintson a **Nagyítás** gombra a hálózati bemeneti forgalom jelentésének megnyitásához.
+A **Network Input Traffic** (Bejövő hálózati forgalom) szakasz a hálózati forgalom átlagos és maximális értékeinek adott időszakra vonatkozó pillanatképét jeleníti meg a kiválasztott példányra vonatkozóan. Az egérmutatót a vonalakra helyezve tekintheti meg a dátumot, illetve az adott időpont maximális hálózati forgalmát. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a Network Input Traffic (Bejövő hálózati forgalom) jelentést.
 
-A **hálózati kimeneti forgalom** szakasz a kiválasztott példány hálózati kimeneti forgalmának pillanatképét jeleníti meg. Vigye a kurzort a sorok fölé, hogy megtekintse az adott idő dátumát és maximális forgalmát. Kattintson a **Nagyítás** gombra a hálózati kimeneti forgalom jelentésének megnyitásához.
+A **Network Output Traffic** (Kimenő hálózati forgalom) szakasz a kimenő hálózati forgalom pillanatképét jeleníti meg a kiválasztott példányra vonatkozóan. Az egérmutatót a vonalakra helyezve tekintheti meg a dátumot, illetve az adott időpont maximális hálózati forgalmát. A **Zoom In** (Nagyítás) elemre kattintva nyithatja meg a Network Output Traffic (Kimenő hálózati forgalom) jelentést.
 
-### <a name="instance-metrics-explorer-report"></a>Példány Metrikaböngésző jelentés
+### <a name="instance-metrics-explorer-report"></a>Instance Metrics Explorer (Példánymetrika-böngésző) jelentés
 
-A példány Metrikaböngésző jelentés a több felhőből származó teljesítmény-metrikákat jeleníti meg. A jelentés használatával megtekintheti a CPU-, memória-és hálózati metrikai küszöbértékeken alapuló vagy alá felhasználható példányokat.
+Az Instance Metrics Explorer (Példánymetrika-böngésző) jelentés az egyes példányok több felhőre vonatkozó teljesítménymetrikáit jeleníti meg. A jelentéssel azokat a példányokat tekintheti meg, amelyek kihasználtsága túl magas vagy túl alacsony a CPU-, a memória- és hálózatmetrikák küszöbértékei alapján.
 
-A Felhőbeli teljesítmény megtekinthető egy példányon:
+Az egyes példányok több felhőre vonatkozó teljesítményének megtekintése:
 
-1. A **dátumtartomány**mezőben válasszon ki egy dátumtartományt, amelynek a teljesítményét meg szeretné tekinteni.
-2. A **címkék**területen válassza ki a megtekinteni kívánt címkéket.
-3. A **szűrők**területen válassza ki a jelentésben megjeleníteni kívánt szűrőket.
-4. A **kiterjesztett szűrők**területen módosítsa a jelentés küszöbértékeit a következőre:
-    - Átlagos CPU
-    - Maximális CPU
-    - Átlagos memória
-    - Maximális memória
-5. A **kiterjesztett szűrők** **területen kattintson a Megjelenítés** elemre, majd válassza ki a megjelenítendő példányok típusát.
+1. A **Date Range** (Dátumtartomány) szakaszban válassza ki azt a dátumtartományt, amelyre vonatkozóan látni szeretné a teljesítményt.
+2. A **Tags** (Címkék) szakaszban válassza ki a megtekinteni kívánt címkéket.
+3. A **Filters** (Szűrők) szakaszban válassza ki a jelentésben megjeleníteni kívánt szűrőket.
+4. Az **Extended Filters** (Bővített szűrők) szakaszban módosíthatja a jelentés küszöbértékeit az alábbiakra vonatkozóan:
+    - Avg CPU (Átl. CPU)
+    - Max CPU (Max. CPU)
+    - Avg Memory (Átl. memória)
+    - Max Memory (Max. memória)
+5. Kattintson az **Extended Filters** (Bővített szűrők) szakasz **Show** (Megjelenítés) elemére, majd válassza ki a megjeleníteni kívánt példányok típusát.
 
-Egy adott példány metrikáinak időbeli megjelenítése:
+Egy adott példány adott időszakra vonatkozó metrikáinak megtekintése:
 
-- Nyissa meg a példány Metrikaböngésző jelentést, és kattintson az **+** elemre a részletek megtekintéséhez.
+- Nyissa meg az Instance Metrics Explorer (Példánymetrika-böngésző) jelentést, és kattintson a **+** jelre a részletek megtekintéséhez.
 
-### <a name="rds-sizing-recommendations-report"></a>RDS-méretezési javaslatok jelentés
+### <a name="rds-sizing-recommendations-report"></a>RDS Sizing Recommendations (RDS-méretezési javaslatok) jelentés
 
-Az RDS-méretezési javaslatok jelentés az RDS méretezési javaslatokat nyújt a felhő használatának optimalizálásához. Megjeleníti a kihasználható példányok listáját. A Cloudyn javaslatok az elmúlt 30 nap használati és teljesítmény-adatain alapulnak. A javaslatokat a fiók neve, a régió, a példány típusa és az állapot alapján szűrheti.
+Az RDS Sizing Recommendations (RDS-méretezési javaslatok) jelentés az RDS-sel kapcsolatos méretezési javaslatokat biztosít a felhőhasználat optimalizálásához. Azon alacsony kihasználtságú példányok listáját biztosítja, amelyeknél a rendszer a méret csökkentését javasolja. A Cloudyn javaslatai az elmúlt 30 nap használati és teljesítményadatain alapulnak. A javaslatokat Account Name (Fióknév), Region (Régió), Instance Type (Példánytípus) és Status (Állapot) alapján szűrheti.
 
-### <a name="sizing-threshold-manager-report"></a>Méretezési küszöbérték-kezelő jelentés
+### <a name="sizing-threshold-manager-report"></a>Sizing Threshold Manager (Méretezési küszöbértékek kezelője) jelentés
 
-A Cloudyn beépített méretezési javaslatai egy összetett algoritmus használatával lettek kiszámítva, hogy pontos méretezési javaslatokat nyújtsanak. Módosíthatja a küszöbértékeket a javaslatok lecsökkentése céljából.
+A Cloudyn beépített méretezési javaslatainak számítása egy összetett algoritmussal történik a pontos méretezési javaslatok biztosítása érdekében. A méretcsökkentésre vonatkozó javaslatok küszöbértékeit azonban módosíthatja.
 
-A küszöbérték-méretezési javaslatok manuális módosítása:
+Méretezési javaslatok küszöbértékeinek manuális módosítása:
 
-1. A méretezési küszöb kezelőjében állítsa be a következő küszöbértékeket, ahogy szeretné:
-    - Átlagos CPU-érték (%)
-    - Maximális CPU-érték (%)
-    - Átlagos memória (%)
-    - Maximális memória (%)
-3. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
-4. A módosítások azonnal érvényesek az összes javaslatra.
+1. A Sizing Threshold Manager (Méretezési küszöbértékek kezelője) jelentésben módosítsa tetszés szerint az alábbi küszöbértékeket:
+    - Average CPU % (Átlagos CPU-használat %-ban)
+    - Maximum CPU % (Maximális CPU-használat %-ban)
+    - Average Memory % (Átlagos memóriahasználat %-ban)
+    - Maximum Memory % (Maximális memóriahasználat %-ban)
+3. Kattintson az **Apply** (Alkalmaz) elemre a módosítások mentéséhez.
+4. A módosítások azonnal érvénybe lépnek a javaslatok mindegyikére vonatkozóan.
 
 Az alapértelmezett küszöbértékek visszaállítása:
 
-- A méretezési küszöb kezelőjében kattintson az **Alapértelmezések visszaállítása**elemre.
+- Kattintson a Sizing Threshold Manager (Méretezési küszöbértékek kezelője) jelentés **Restore Defaults** (Alapértelmezett értékek visszaállítása) elemére.
 
-### <a name="compute-instance-types-report"></a>Számítási példányok típusai jelentés
+### <a name="compute-instance-types-report"></a>Compute Instance Types (Számításipéldány-típusok) jelentés
 
-A példányok típusai jelentés használatával:
+A példánytípusokra vonatkozó jelentéssel:
 
-- A példány típusait a szolgáltatás, a család, az API-név és a név alapján tekintheti meg.
-- Megtekintheti a CPU, az ECU, a RAM és a hálózat adatait.
+- Megtekintheti a példánytípusokat Service (Szolgáltatás), Family (Család), API Name (API-név) és Name (Név) alapján.
+- Olyan részleteket tekinthet meg, mint a CPU, ECU, RAM és Network (Hálózat).
 
-A **kereséssel** konkrét sorok is megkereshetők.
+A **Search** (Keresés) használatával adott sortételeket kereshet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a jelentések használatáról, többek között a jelentések testreszabásáról és mentéséről, valamint az ütemezett jelentésekről: a [Cost-jelentések ismertetése](understanding-cost-reports.md).
-- Ismerkedjen meg a Cloudyn-ben található irányítópultokkal, és arról, hogyan hozhat létre saját egyéni irányítópultokat, lásd: [Key Cost-mérőszámok megtekintése az irányítópultokkal](dashboards.md).
+- A [költségjelentéseket ismertető](understanding-cost-reports.md) cikkben elsajátíthatja a jelentések használatát, beleértve a testre szabásukat, mentésüket és ütemezésüket is.
+- A [fő költségmetrikák irányítópultokkal történő megtekintését](dashboards.md) ismertető cikkben megismerkedhet a Cloudyn irányítópultjaival, és megtudhatja, hogyan hozhat létre saját, egyéni irányítópultokat.

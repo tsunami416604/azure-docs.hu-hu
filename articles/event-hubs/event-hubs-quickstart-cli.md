@@ -2,22 +2,22 @@
 title: Létrehoz egy eseményközpontot, az Azure Event Hubs – az Azure parancssori felület használatával |} A Microsoft Docs
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eseményközpontot az Azure CLI-vel, majd hogyan küldhet és fogadhat eseményeket a Java használatával.
 services: event-hubs
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 3bc7b409d590ac096b70431ae009fed36c968307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/11/2020
+ms.author: spelluru
+ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148253"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162633"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure CLI használatával
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rövid útmutató: Eseményközpont létrehozása az Azure CLI-vel
 
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
@@ -46,7 +46,7 @@ az login
 az account set --subscription MyAzureSub
 ``` 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Futtassa az alábbi parancsot egy erőforráscsoport létrehozásához:
 
 ```azurecli-interactive
@@ -72,18 +72,17 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 Gratulálunk! Az Azure CLI segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok: 
+Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (csak küldése)](event-hubs-c-getstarted-send.md)
-- [Az Apache Storm (csak reecive)](event-hubs-storm-getstarted-receive.md)
+- [C (csak küldés)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
 
 [hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
