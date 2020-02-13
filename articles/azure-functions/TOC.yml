@@ -327,7 +327,15 @@
     - name: Eseményindítók és kötések
       items:
         - name: Blob Storage
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: Áttekintés
+              href: functions-bindings-storage-blob.md
+            - name: Eseményindító
+              href: functions-bindings-storage-blob-trigger.md
+            - name: Input (Bemenet)
+              href: functions-bindings-storage-blob-input.md
+            - name: Kimenet
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: Functions 1.x

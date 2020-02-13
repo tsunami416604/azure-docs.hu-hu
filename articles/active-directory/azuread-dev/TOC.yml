@@ -176,6 +176,8 @@
   items:
     - name: Szószedet
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Videók
+      href: videos.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure AD blog

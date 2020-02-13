@@ -1,21 +1,20 @@
 ---
 title: Oktatóanyag - A használat és a költségek áttekintése az Cloudynnel az Azure-ban | Microsoft Docs
 description: Ebben az oktatóanyagban a használat és a költségek áttekintésével nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 1489c447513d2a470c75c909faf4ecccb6df5b17
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: a2d4525b0b29feb230f5496196a84e651e651e52
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986969"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774040"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +50,15 @@ A használattal és költségekkel kapcsolatos tényleges kiadásokat időalapú
 
 Egy példa a jelentésekre:
 
-![Példa a tényleges költségadatok jelentésére](./media/tutorial-review-usage/actual-cost01.png)
+![Példa az Actual Cost Over Time (Tényleges költségek az adott időszakban) jelentésre](./media/tutorial-review-usage/actual-cost01.png)
 
 A jelentés az elmúlt 30 nap összes kiadását megjeleníti. Ha csak az Azure-szolgáltatásokhoz tartozó költségeket szeretné megtekinteni, alkalmazza a Service (Szolgáltatás) csoportot, és szűrjön rá az összes Azure-szolgáltatásra. A következő képen a szűrt szolgáltatások láthatók.
 
-![Példa szűrt Azure-szolgáltatások megjelenítésére](./media/tutorial-review-usage/actual-cost02.png)
+![Példa a szűrt Azure-szolgáltatások megjelenítésére](./media/tutorial-review-usage/actual-cost02.png)
 
 Az előző példában 2018. október 29-től kezdve a korábbinál kevesebb kiadás volt tapasztalható. Ha túl sok az oszlop, az megnehezítheti a trendek értelmezését. A jelentés nézetét módosíthatja vonal- vagy területdiagramra, hogy az adatok másképp jelenjenek meg. Az alábbi képen a trend sokkal jobban kirajzolódik.
 
-![Példa a csökkenő Azure-beli virtuális gépek költséghatékonyságára](./media/tutorial-review-usage/actual-cost03.png)
+![Az Azure-beli virtuális gépek csökkenő költségtrendjét bemutató példa](./media/tutorial-review-usage/actual-cost03.png)
 
 A példára visszatérve látható, hogy az Azure-beli virtuális gépekhez kapcsolódó költségek lecsökkentek. A többi Azure-szolgáltatáshoz kapcsolódó költségek is azon a napon kezdtek csökkenni. Mi okozta vajon a kiadások csökkenését? Ebben a példában befejeződött egy nagyobb munkaprojekt, ezért több Azure-szolgáltatás használata is visszaesett.
 
@@ -77,45 +76,45 @@ A költséghatékony méretezési javaslatokat tartalmazó jelentés a virtuáli
 
 A portál tetején lévő menüben kattintson az **Optimizer** (Optimalizáló) > **Sizing Optimization** (Méretezés optimalizálása) > **Cost Effective Sizing Recommendations** (Költséghatékony méretezési javaslatok) elemre. Ha hasznosnak gondolja, szűrő használatával szűkítheti az eredményeket. Íme egy példa.
 
-![Költséghatékony méretezési javaslat jelentés Azure-beli virtuális gépekhez](./media/tutorial-review-usage/sizing01.png)
+![Költséghatékony méretezésre vonatkozó javaslatok jelentése Azure-beli virtuális gépekhez](./media/tutorial-review-usage/sizing01.png)
 
 Példánkban 2382 dollár takarítható meg a virtuálisgép-példánytípusok módosítására vonatkozó javaslatok elfogadásával. Kattintson a plusz (+) jelre az első javaslat **Details** (Részletek) oszlopában. Megjelennek az első javaslat részletei.
 
-![A javaslat részleteit bemutató példa](./media/tutorial-review-usage/sizing02.png)
+![A javaslat részleteit megjelenítő példa](./media/tutorial-review-usage/sizing02.png)
 
 A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek listája) melletti plusz (+) jelre kattintva tekintheti meg.
 
-![Példa az átméretezni kívánt virtuális gépek listájának megjelenítésére](./media/tutorial-review-usage/sizing03.png)
+![Átméretezésre jelölt virtuális gépek listáját megjelenítő példa](./media/tutorial-review-usage/sizing03.png)
 
 A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását a Cloudynben](https://youtu.be/1xaZBNmV704).
 
-Az Azure Cost Management költségcsökkentési javaslatokat is ad az Azure-szolgáltatásokra vonatkozóan. További információkat a [javaslatok alapján történő költségoptimalizálással foglalkozó oktatóanyagban](../costs/tutorial-acm-opt-recommendations.md) talál.
+Az Azure Cost Management költségcsökkentési javaslatokat is ad az Azure-szolgáltatásokra vonatkozóan. További információért lásd: [Oktatóanyag – Javaslatok alapján történő költségoptimalizálás](../costs/tutorial-acm-opt-recommendations.md).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Szokatlan kiadásokra figyelmeztető riasztások létrehozása
 
-A riasztások lehetővé teszik, hogy automatikusan értesítse az érintett feleket a felmerülő rendellenességek és a kockázatok túllépéséről. Riasztásokat a költségvetés és a költségek küszöbértékei alapján támogató jelentésekkel hozhat létre.
+A riasztásokkal automatikusan figyelmeztetheti az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A költségvetés és a költségek küszöbértékeit használó jelentések alapján riasztásokat hozhat létre.
 
-Ez a példa a **tényleges költséggel** kapcsolatos jelentést küld egy értesítés elküldéséhez, amikor egy Azure-beli virtuális gépen töltött kiadása eléri a teljes költségvetést. Ebben a forgatókönyvben a $20 000-es teljes költségkerettel rendelkezik, és értesítést szeretne kapni, ha a költségek a költségkeret felére közelednek, $9 000, és egy további riasztás, ha a költségek elérik a $10 000-ot.
+A példában a rendszer az **Actual Cost Over Time** (Tényleges költségek az adott időszakban) jelentése alapján értesítést küld, amint az Azure-beli virtuális gépekkel kapcsolatos kiadások megközelítik a teljes költségkeretet. Ebben az esetben a teljes költségvetése 20 000 dollár, és szeretne értesítést kapni, amikor a költségek megközelítik ennek a felét, vagyis elérik a 9000 dollárt, illetve egy további riasztás is szükséges, amikor a költség eléri a 10 000 dollárt.
 
-1. A Cloudyn-portál felső részén található menüben válassza a **költségek** > a költségek **elemzése** > a **tényleges költségek**időbeli változását.
+1. A Cloudyn portál tetején lévő menüben válassza a **Costs**(Költségek) > **Cost Analysis**(Költségelemzés) > **Actual Cost Over Time** (Tényleges költségek az adott időszakban) elemet.
 2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget.
-3. A jelentés jobb felső részén válassza a **műveletek** , majd az **ütemezett jelentés**elemet.
-4. Ha ütemezett időközönként szeretné elküldeni a jelentés e-mail-címét, válassza az **Ütemezés** lapot a jelentés **mentése vagy ütemezése** párbeszédpanelen. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés tartalmazza az Ön által használt címkéket, csoportosításokat és szűréseket.
-5. Válassza a **küszöb** fület, majd a **tényleges költségeket és a küszöbértéket**.
-   1. A **piros riasztási** küszöbérték mezőbe írja be a 10000 értéket.
-   2. A **sárga riasztási** küszöbérték mezőbe írja be a 9000 értéket.
-   3. Az **egymást követő riasztások száma** mezőben adja meg, hogy hány egymást követő riasztást kapjon. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat.
+3. A jelentés jobb felső sarkában kattintson az **Actions** (Műveletek) gombra, majd válassza a **Schedule report** (Jelentés ütemezése) lehetőséget.
+4. A jelentés mentésére vagy ütemezésére szolgáló mező **Scheduling** (Ütemezés) lapján állítsa be a jelentés elküldését a saját e-mail-címére a kívánt gyakorisággal. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Az e-mailben küldött jelentés az összes használt címkét, csoportosítást és szűrőt tartalmazza majd.
+5. Kattintson a **Threshold** (Küszöbérték) lapra, és válassza az **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget.
+   1. A **Red alert** (Vörös riasztás) küszöbértékének mezőjébe írja be a 10 000 értéket.
+   2. A **Yellow alert** (Sárga riasztás) küszöbértékének mezőjébe írja be a 9000 értéket.
+   3. A **Number of consecutive alerts** (Egymást követő riasztások száma) mezőben adja meg az egymást követő riasztások számát. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat.
 6. Kattintson a **Mentés** gombra.
 
-![Példa a vörös és a sárga riasztásokra a kiadások küszöbértékei alapján](./media/tutorial-review-usage/schedule-alert01.png)
+![Példa a kiadások küszöbértékei alapján kiadott vörös és sárga riasztásokra](./media/tutorial-review-usage/schedule-alert01.png)
 
-A riasztások létrehozásához a **költség százalékos aránya** és a költségvetési küszöbérték mérőszáma is kiválasztható. Ez lehetővé teszi a küszöbértékek megadását a költségkeret százalékaként a pénznem értékei helyett.
+Azt is megteheti, hogy a **Cost Percentage vs. Budget** (Költségszázalék a költségvetési küszöbértékhez képest) mutatót választja a riasztások alapjául. Ez lehetővé teszi, hogy a küszöbértékeket a költségkeret százalékaként határozza meg a pénznembeli érték helyett.
 
 ## <a name="export-data"></a>Adatok exportálása
 
 A jelentésekhez kapcsolódó riasztások létrehozásához hasonlóan a jelentésekből adatokat is exportálhat. Előfordulhat például, hogy a Cloudyn-fiókok listáját vagy más felhasználói adatokat szeretne exportálni. Egy jelentés exportálásához nyissa meg a jelentést, majd kattintson a jobb felső sarokban található **Actions** (Műveletek) gombra. Kiválaszthatja például az **Export all report data** (Az összes jelentésadat exportálása) elemet, így letöltheti és kinyomtathatja az információkat. Másik lehetőségként kiválaszthatja a **Schedule report** (Jelentés ütemezése) beállítást a jelentés e-mailben történő elküldésének ütemezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

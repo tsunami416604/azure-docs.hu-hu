@@ -4,13 +4,13 @@
   items:
     - name: Ansible az Azure-ban – ismertetés
       href: ./ansible-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Ansible-megoldássablon üzembe helyezése CentOS rendszeren
       href: ./ansible-deploy-solution-template.md
     - name: Az Ansible telepítése Linux rendszerű virtuális gépeken
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Forgatókönyvek futtatása a Cloud Shellben
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: Linux rendszerű virtuális gépek konfigurálása
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Linux rendszerű virtuális gépek kezelése
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: Oktatóanyagok
   items:
