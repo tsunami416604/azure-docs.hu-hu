@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Azure Active Directory fejlesztők számára
+summary: Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára az olyan alkalmazások létrehozását, amelyek biztosítják a munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználók biztonságos bejelentkeztetését. Az Azure AD egyaránt támogatja egybérlős, üzletági (LOB) alkalmazások, illetve a több-bérlős alkalmazások fejlesztését. A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztői platform fejlődésének eredménye. Az új alkalmazásoknál ajánlott a Microsoft Identitásplatform (2.0-s verzió) és az MSAL használata a jogkivonatok beszerzéséhez és a biztonságos webes API-k eléréséhez.
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77163211"
+landingContent:
+- title: Azure Active Directory fejlesztők számára
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory fejlesztők számára (1.0-s verzió)
+      url: v1-overview.md
+    - text: A Microsoft identitásplatformjának fejlődése
+      url: ../develop/about-microsoft-identity-platform.md
+    - text: Microsoft-identitásplatform (2.0-s verzió)
+      url: ../develop/v2-overview.md
+  - linkListType: concept
+    links:
+    - text: Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
+      url: azure-ad-endpoint-comparison.md
+    - text: Alkalmazástípusok és forgatókönyvek
+      url: app-types.md
+- title: Hitelesítési protokollok
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hitelesítési alapok
+      url: v1-authentication-scenarios.md
+  - linkListType: concept
+    links:
+    - text: OAuth 2.0 hitelesítési kódfolyamat
+      url: v1-protocols-oauth-code.md
+    - text: OpenID Connect-kódfolyamat
+      url: v1-protocols-openid-connect-code.md
+    - text: OAuth 2.0-ügyfél hitelesítő adatainak engedélyezési folyamata
+      url: v1-oauth2-client-creds-grant-flow.md
+- title: Példák
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Mintaalkalmazások
+      url: sample-v1-code.md

@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Referencia
   items:
     - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete

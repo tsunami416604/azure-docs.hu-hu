@@ -60,21 +60,14 @@
           href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Az Azure Private Endpoints használata
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Adatredundancia
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      items:
-        - name: Helyileg redundáns tárolás
-          href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Zónaredundáns tárolás
-          href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Georedundáns tárolás
-          href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Zóna- és georedundáns tárolás
-          href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Vészhelyreállítás és feladatátvétel
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: HA-alkalmazások tervezése RA-GRS használatával
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Adatredundancia
+          items:
+            - name: Adatredundancia
+              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Vészhelyreállítás és feladatátvétel
+              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Magas rendelkezésre állású alkalmazások tervezése
+              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Teljesítmény és kapacitás – ellenőrzőlista
       href: storage-performance-checklist.md
     - name: Egyidejűség
@@ -172,8 +165,12 @@
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Transport Layer Security engedélyezése
               href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Az adatreplikálás módjának megváltoztatása
+      href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Vészhelyreállítás
       items:
+        - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
+          href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Fiók feladatátvételének indítása
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: A Storage Emulator használata

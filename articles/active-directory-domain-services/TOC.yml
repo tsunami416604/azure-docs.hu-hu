@@ -77,7 +77,7 @@
           href: notifications.md
         - name: Felügyelt tartomány törlése
           href: delete-aadds.md
-        - name: Migrálás klasszikus üzemi modellből (előzetes verzió)
+        - name: Migrálás klasszikus üzemi modellből
           href: migrate-from-classic-vnet.md
         - name: Termékváltozat módosítása
           href: change-sku.md

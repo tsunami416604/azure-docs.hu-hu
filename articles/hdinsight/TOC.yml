@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Hibaelhárítás
           items:
+            - name: Nem sikerült létrehozni a Jupyter Notebook-jegyzetfüzetet
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError kivétel
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Meghiúsult Apache Spark-feladat – NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: Hibakeresés Apache Spark-feladatokban
               href: ./spark/apache-spark-job-debugging.md
+            - name: WASB-fájlműveletek hibakeresése
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: Apache Spark-feladatok hibakeresése IntelliJ használatával
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Apache Spark-hibaelhárítás
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: Elveszett Key Vault-hozzáférés
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: WASBS tárolási kivétel
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: Áttekintés

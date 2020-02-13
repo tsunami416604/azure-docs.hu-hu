@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Kapcsolódás Power BI-jal
               href: knowledge-store-connect-power-bi.md
+            - name: Kivetítési példák
+              href: knowledge-store-projections-examples.md
     - name: Dokumentumok lekérdezése
       items:
         - name: Lekérdezéstípusok és összeállítás
