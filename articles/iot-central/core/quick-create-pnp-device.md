@@ -3,17 +3,17 @@ title: Rövid útmutató – szimulált eszköz hozzáadása az Azure IoT Centra
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eszköz-sablont, és hogyan adhat hozzá szimulált eszközt a IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027761"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169582"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
 
@@ -70,8 +70,8 @@ Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdons
 
     | Megjelenítendő név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Utolsó szervizelés dátuma | Nincs          | Dátum   |
+    | Ügyfél neve     | Nincs          | Sztring |
 
 1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra:
 

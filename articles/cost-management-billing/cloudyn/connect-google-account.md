@@ -1,78 +1,77 @@
 ---
-title: Google Cloud Platform-fiók összekötése az Azure-beli Cloudyn | Microsoft Docs
-description: Google Cloud Platform fiók összekapcsolásával megtekintheti a Cloudyn-jelentésekben szereplő költségeket és használati adatokat.
-services: cost-management
+title: Google Cloud Platform-fiók csatlakoztatása a Cloudynhez az Azure-ban | Microsoft Docs
+description: Csatlakoztasson egy Google Cloud Platform-fiókot a költségek és a használati adatok Cloudyn-jelentésekben való megtekintéséhez.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 8849811560c7e3d35a40b4725dbbb63c82745123
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994570"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770189"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform-fiók összekötése
+# <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform-fiók csatlakoztatása
 
-Meglévő Google Cloud Platform-fiókját összekapcsolhatjuk a Cloudyn. A fiók Cloudyn való összekapcsolását követően a Cost és a használati adatok a Cloudyn-jelentésekben érhetők el. Ez a cikk segítséget nyújt a Google-fiók konfigurálásához és a Cloudyn-mel való összekapcsolásához.
+Csatlakoztathatja meglévő Google Cloud Platform-fiókját a Cloudynhez. Miután csatlakoztatta a fiókot a Cloudynhez, a költség- és a használati adatok elérhetők lesznek a Cloudyn-jelentésekben. Ez a cikk segítséget nyújt a Google-fiók konfigurálásához és a Cloudynhez való csatlakoztatásához.
 
 
-## <a name="collect-project-information"></a>Projekt adatainak összegyűjtése
+## <a name="collect-project-information"></a>Projektadatok gyűjtése
 
-Először gyűjtsön információkat a projektről.
+Első lépésként gyűjtsön adatokat a projektről.
 
-1. Jelentkezzen be a Google Cloud Platform-konzolra [https://console.cloud.google.com](https://console.cloud.google.com)címen.
-2. Tekintse át a Cloudyn bevezetésre szánt projekt adatait, és jegyezze fel a **projekt nevét** és a **projekt azonosítóját**. Az információkat később is megtarthatja a későbbi lépésekhez.  
-    ![a projekt nevét és a projekt AZONOSÍTÓját a Google Cloud Platform-konzolon](./media/connect-google-account/gcp-console01.png)
-3. Ha a számlázás nincs engedélyezve és csatolva van a projekthez, hozzon létre egy számlázási fiókot. További információkért lásd: [új számlázási fiók létrehozása](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
+1. Jelentkezzen be a Google Cloud Platform konzoljára a [https://console.cloud.google.com](https://console.cloud.google.com) webhelyen.
+2. Ellenőrizze annak a projektnek az adatait, amelyet a Cloudynben szeretne regisztrálni, és jegyezze fel a **Project name** (Projekt neve) és a **Project ID** (Projektazonosító) értékét. Ezekre az adatokra szükség lesz a későbbi lépésekben.  
+    ![A Project name és a Project ID a Google Cloud Platform konzolján](./media/connect-google-account/gcp-console01.png)
+3. Ha a számlázás nincs engedélyezve és a projekthez társítva, hozzon létre egy számlázási fiókot. További információ: [Új számlázási fiók létrehozása](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
-## <a name="enable-storage-bucket-billing-export"></a>Storage-gyűjtő számlázási exportálásának engedélyezése
+## <a name="enable-storage-bucket-billing-export"></a>Tároló számlázása exportálásának engedélyezése
 
-A Cloudyn egy Storage-gyűjtőből kéri le a Google számlázási adatait. A Cloudyn-regisztráció során a **gyűjtő neve** és a **jelentés előtagja** információi hasznosak maradnak a későbbi használatra.
+A Cloudyn egy tárolóból kéri le a Google számlázási adatait. Jegyezze fel a **Bucket name** (Gyűjtő neve) és a **Report prefix** (Jelentés előtagja) értékeit, mert a Cloudyn regisztrációja során szükség lesz rájuk.
 
-A Google Cloud Storage használata a használati jelentések tárolására a minimális díjakat eredményezi. További információ: [felhőalapú tárolás díjszabása](https://cloud.google.com/storage/pricing).
+A Google Cloud Storage a használati jelentések tárolására való használata minimális költséggel jár. További információ: [A felhőalapú tárolás díjszabása](https://cloud.google.com/storage/pricing).
 
-1. Ha nem engedélyezte a számlázási exportálást egy fájlba, kövesse a [Számlázási Exportálás fájlba való engedélyezésének](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file)utasításait. JSON-vagy CSV-számlázási exportálási formátumot is használhat.
-2. Ellenkező esetben a Google Cloud Platform-konzolon navigáljon **a számlázás > a** **Számlázási exportálás**elemre. Jegyezze fel a számlázási **gyűjtő nevét** és a **jelentés előtagját**.  
-    a számlázási Exportálás lapon megjelenő számlázási adatok ![](./media/connect-google-account/billing-export.png)
+1. Ha nem engedélyezte a számlázás fájlba történő exportálását, kövesse a következőben szereplő utasításokat: [Számlázás fájlba történő exportálásának engedélyezése](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). A számlázás exportálásához JSON és CSV formátumot is használhat.
+2. Egyéb esetben lépjen a Google Cloud Platform konzoljának **Billing** > **Billing export** (Számlázás > Számlázás exportálása) területére. Jegyezze fel a számlázás **Bucket name** (Gyűjtő neve) és **Report prefix** (Jelentés előtagja) értékét.  
+    ![A számlázás exportálási adatai a Billing export (Számlázás exportálása) lapon](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>Google Cloud Platform API-k engedélyezése
 
-A használati és adategységek adatainak gyűjtéséhez a Cloudyn a következő Google Cloud Platform API-kat kell engedélyezni:
+A használat és az adategységek adatainak gyűjtéséhez a Cloudyn a következő Google Cloud Platform API-k engedélyezését igényli:
 
 - BigQuery API
 - Google Cloud SQL
-- Google Cloud adattár API
+- Google Cloud Datastore API
 - Google Cloud Storage
-- Google Cloud Storage – JSON API
-- Google számítási Motor API
+- Google Cloud Storage JSON API
+- Google Compute Engine API
 
 ### <a name="enable-or-verify-apis"></a>API-k engedélyezése vagy ellenőrzése
 
-1. A Google Cloud Platform-konzolon válassza ki a Cloudyn regisztrálni kívánt projektet.
-2. Navigáljon az API-k **& Services** > **Library**weblapjára.
-3. A keresés funkció használatával megkeresheti az egyes korábban felsorolt API-ket.
-4. Az egyes API-k esetében ellenőrizze, hogy az **API engedélyezve** van-e. Egyéb esetben kattintson az **Engedélyezés**gombra.
+1. A Google Cloud Platform konzolján válassza ki azt a projektet, amelyet regisztrálni szeretne a Cloudynben.
+2. Lépjen az **APIs & Services** > **Library** (API-k és szolgáltatások > Kódtár) területre.
+3. Keresse meg a korábban felsorolt API-kat.
+4. Az egyes API-k esetében ellenőrizze, hogy az **API enabled** (API engedélyezve) érték jelenik-e meg. Ellenkező esetben kattintson az **ENABLE** (Engedélyezés) elemre.
 
-## <a name="add-a-google-cloud-account-to-cloudyn"></a>Google Cloud-fiók felvétele a Cloudyn-be
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Google Cloud-fiók hozzáadása a Cloudynhez
 
-1. Nyissa meg a Cloudyn-portált a Azure Portal, vagy navigáljon a [https://azure.cloudyn.com ra](https://azure.cloudyn.com/) , és jelentkezzen be.
-2. Kattintson a **Beállítások** (fogaskerék szimbólum) elemre, majd válassza a **Cloud accounts (felhőalapú fiókok**) lehetőséget.
-3. A **fiókok kezelése**lapon válassza a **Google-fiókok** lapot, majd kattintson az **új + hozzáadása**lehetőségre.
-4. A **Google-fiók neve**mezőben adja meg a Számlázási fiók e-mail-címét, majd kattintson a **tovább**gombra.
-5. A Google-hitelesítés párbeszédpanelen válasszon ki vagy adjon meg egy Google-fiókot, majd **engedélyezze** a cloudyn.com hozzáférését a fiókjához.
-6. Adja hozzá a kérelemhez korábban feljegyzett projekthez tartozó adatokat. Ide tartozik a **projekt azonosítója**, a **projekt** neve, a **Számlázási** gyűjtő neve és a **Számlázási fájl** jelentésének előtagja, majd kattintson a **Save (Mentés**) gombra.  
-    ![Google-projekt hozzáadása a Cloudyn-fiókhoz](./media/connect-google-account/add-project.png)
+1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a [https://azure.cloudyn.com](https://azure.cloudyn.com/) webhelyre, és jelentkezzen be.
+2. Kattintson a **Settings** (Beállítások) elemre (fogaskerék szimbólum), majd válassza a **Cloud Accounts** (Cloud-fiókok) lehetőséget.
+3. Az **Accounts Management** (Fiókkezelés) területen válassza a **Google Accounts** (Google-fiókok) lapot, majd kattintson az **Add new +** (Új hozzáadása +) elemre.
+4. A **Google Account Name** (Google-fiók neve) mezőbe írja be a számlázási fiók e-mail-címét, majd kattintson a **Next** (Következő) gombra.
+5. A Google authentication (Hitelesítés Google-fiókkal) párbeszédpanelen válassza ki vagy adja meg a Google-fiókot, majd kattintson az **ALLOW** (Engedélyezés) gombra, hogy a cloudyn.com hozzáférhessen a fiókhoz.
+6. Adja meg a kért projektadatokat, amelyeket korábban feljegyzett. Ezek közé tartozik a **Project ID** (Projektazonosító), a **Project** name (Projekt neve), a **billing** bucket name (számlázási gyűjtő neve) és a **billing file** Report prefix (számlázási fájl jelentési előtagja). Kattintson a **Mentés** gombra.  
+    ![Google-projekt hozzáadása Cloudyn-fiókhoz](./media/connect-google-account/add-project.png)
 
-A Google-fiók megjelenik a fiókok listájában, és azt a **hitelesítettnek**kell lennie. Ebben az esetben a Google-projekt nevét és AZONOSÍTÓját kell megjelennie, és rendelkeznie kell egy zöld pipa jellel. A fiók állapotának **befejezettnek**kell lennie.
+A Google-fiók megjelenik a fiókok listájában, ahol **Authenticated** (Hitelesített) állapotúnak kell lennie. Alatta a Google-projekt nevének és azonosítójának kell megjelennie, mellettük egy zöld pipával. A fiók állapota **Completed** (Befejezve) kell, hogy legyen.
 
-A Cloudyn-jelentések néhány órán belül megjelenítik a Google költségeit és használati adatait.
+A Cloudyn-jelentésekben néhány órán belül megtekinthetők a Google költségei és használati adatai.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni a Cloudyn-ről, folytassa a használati és Cloudyn kapcsolatos oktatóanyag [áttekintésével](tutorial-review-usage.md) .
+- Ha bővebb információra van szüksége a Cloudynről, lépjen tovább a Cloudyn [A használat és a költségek áttekintése](tutorial-review-usage.md) című oktatóanyagára.

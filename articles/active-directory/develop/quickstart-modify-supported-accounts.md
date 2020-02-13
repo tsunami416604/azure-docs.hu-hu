@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704119"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160689"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: alkalmazás által támogatott fiókok módosítása
 
@@ -37,7 +37,7 @@ Először is győződjön meg arról, hogy az alábbi előfeltételek teljesüln
 
 Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
@@ -63,7 +63,7 @@ Ha olyan alkalmazást ír, amelyet a szervezeten kívüli ügyfelei és partnere
 
 Az egyoldalas alkalmazások (SPA-k) általában egy böngészőben futó JavaScript-intenzív előtérrel rendelkeznek, amely az alkalmazás webes API-s hátterét hívja meg az üzleti logika végrehajtatására. Az Azure AD-ben üzemeltetett egyoldalas alkalmazások esetében az OAuth 2.0 implicit engedélyezés használatával hitelesítheti a felhasználókat az Azure AD-ben, és szerezheti be a jogkivonatot, amelynek használatával biztosíthatja a hívásokat az alkalmazás JavaScript-ügyfeléről a háttér webes API-jára.
 
-Miután a felhasználó megadta a hozzájárulást, ugyanez a hitelesítési protokoll használható a jogkivonatok beszerzéséhez az ügyfél és az alkalmazáshoz konfigurált egyéb webes API erőforrások közötti hívások biztosításához. Ha többet szeretne megtudni az implicit engedélyezésről és annak alkalmazhatóságáról az egyes alkalmazás-forgatókönyvekben, ismerkedjen meg az Azure AD [1.0](v1-oauth2-implicit-grant-flow.md)-s és [v2.0](v2-oauth2-implicit-grant-flow.md)-s verziójára vonatkozó OAuth 2.0 implicit engedélyezési folyamattal.
+Miután a felhasználó megadta a hozzájárulást, ugyanez a hitelesítési protokoll használható a jogkivonatok beszerzéséhez az ügyfél és az alkalmazáshoz konfigurált egyéb webes API erőforrások közötti hívások biztosításához. Ha többet szeretne megtudni az implicit engedélyezésről és annak alkalmazhatóságáról az egyes alkalmazás-forgatókönyvekben, ismerkedjen meg az Azure AD [1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md)-s és [v2.0](v2-oauth2-implicit-grant-flow.md)-s verziójára vonatkozó OAuth 2.0 implicit engedélyezési folyamattal.
 
 Az OAuth 2.0 implicit engedély alapértelmezés szerint le van tiltva az alkalmazásokon. Ha engedélyezni szeretné az OAuth 2.0 implicit engedély használatát az alkalmazásánál, kövesse az alábbi lépéseket.
 
@@ -80,7 +80,7 @@ Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyelet
 
 * [Alkalmazás regisztrálása a Microsoft identitásplatformján](quickstart-register-app.md)
 * [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
-* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
 
 Ha szeretne többet megtudni a regisztrált alkalmazásokat jelölő két Azure AD-objektumról és azok kapcsolatáról, tekintse meg az [alkalmazás- és szolgáltatásnév-objektumokat](app-objects-and-service-principals.md) ismertető szakaszt.

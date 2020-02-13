@@ -1,23 +1,22 @@
 ---
 title: Oktatóanyag – Hozzáférések hozzárendelése a Cloudynban | Microsoft Docs
 description: Ebben az oktatóanyagban megtudhatja, hogyan rendelhet hozzáféréseket a Cloudyn-adatokhoz olyan felhasználói fiókokkal, amelyek meghatározzák az entitások hozzáférési szintjeit.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986927"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774008"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Oktatóanyag: Hozzáférések hozzárendelése a Cloudyn-adatokhoz
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Oktatóanyag: Hozzáférések hozzárendelése Cloudyn-adatokhoz
 
 A Cloudyn-adatokhoz való hozzáférés felhasználó- vagy entitáskezeléssel biztosítható. A Cloudyn felhasználói fiókok határozzák meg az *entitásokhoz* és az adminisztratív funkciókhoz való hozzáférést. Két típusú hozzáférés létezik: rendszergazdai és felhasználói. Hacsak az adott felhasználónál nincs máshogy beállítva, a rendszergazdai hozzáférés lehetővé teszi a Cloudyn portál összes funkciójának korlátlan használatát, beleértve a felhasználókezelést, a címzettlisták kezelését és a gyökérszintű entitás-hozzáférést az entitások összes adatához. A felhasználói hozzáférés a végfelhasználóknak van szánva, hogy jelentéseket tekinthessenek meg és állíthassanak össze az általuk elérhető entitásadatok alapján.
 
@@ -47,7 +46,7 @@ Bár Ön eleve rendelkezik rendszergazdai hozzáféréssel, előfordulhat, hogy 
 Adja meg a felhasználóra vonatkozó kötelező adatokat. A **bejelentkezési azonosítónak** egy érvényes e-mail-címnek kell lennie. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Az első bejelentkezéskor a felhasználó beállít egy jelszót.
 
 A **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) alatt a cég gyökérszintű entitása van kiválasztva. Hagyja kiválasztva a gyökérszintű entitást, és mentse a felhasználói adatokat. A gyökérszintű entitás kiválasztásával a felhasználó nem csupán a fa legfelső szintű entitásához fér majd hozzá, hanem az össze az alá tartozóhoz is.  
-  ![például a rendszergazdai hozzáférés az új felhasználó hozzáadása mezőben látható](./media/tutorial-user-access/new-admin-access.png)
+  ![A példa a rendszergazdai hozzáférést mutatja az Add new user (Új felhasználó hozzáadása) mezőben](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 A Cloudyn-adatokhoz irányítópult- és jelentésszintű hozzáférést igénylő felhasználóknak felhasználói jogosultságra van szükségük ezek megtekintéséhez. Hozzon létre egy új felhasználót a rendszergazdai hozzáféréssel rendelkező felhasználóhoz hasonló felhasználói hozzáféréssel, a következő eltérésekkel:
@@ -56,7 +55,7 @@ A Cloudyn-adatokhoz irányítópult- és jelentésszintű hozzáférést igényl
 - Jelölje be a **User has user access** (A felhasználó felhasználói hozzáféréssel rendelkezik) listában azokat az entitásokat, amelyekhez a felhasználónak hozzáféréssel kell rendelkeznie.
 - Emellett igény szerint egyes entitásokhoz rendszergazdai hozzáférést is adhat.
 
-![Példa a felhasználói hozzáférésre az új felhasználó hozzáadása mezőben](./media/tutorial-user-access/new-user-access.png)
+![A példa a felhasználói hozzáférést mutatja az Add new user (Új felhasználó hozzáadása) mezőben](./media/tutorial-user-access/new-user-access.png)
 
 A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók hozzáadása a Cloudyn rendszerébe](https://youtu.be/Nzn7GLahx30).
 
@@ -88,11 +87,11 @@ Az Azure-szerződés vagy -fiók a Cloudynben való regisztrálásakor az előfi
 
 A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. Egyetlen entitásból (a gyökérből) kell kiindulni, és ebből kell kiépíteni a teljes entitásfát. Példa egy entitáshierarchiára, amely számos informatika vállalatéhoz hasonlóan fog kinézni, amint a fa elkészül:
 
-![Példa a fiókok kezelése lapon megjelenő entitás fastruktúrára](./media/tutorial-user-access/entity-tree.png)
+![Példa az Accounts Management (Fiókkezelés) lapon megjelenő entitásfára](./media/tutorial-user-access/entity-tree.png)
 
 Az **Entities** (Entitások) elem mellett kattintson az **Add Entity** (Entitás hozzáadása) gombra. Adja meg a hozzáadni kívánt személy vagy részleg adatait. A **Full Name** (Teljes név) és az **Email** (E-mail-cím) mezőknek nem szükséges meglévő felhasználók adatait tartalmaznia. Ha meg szeretné tekinteni a hozzáférési szintek listáját, keressen rá a Súgóban az *Adding an entity* (Entitások hozzáadása) témakörre.
 
-![Az entitás hozzáadása mezőben szereplő entitás neve és hozzáférési szintjei látható példa](./media/tutorial-user-access/add-entity.png)
+![A példán az Add entity (Entitás hozzáadása) mezőben megjelenő entitásnév és hozzáférési szintek láthatók](./media/tutorial-user-access/add-entity.png)
 
 Amikor elkészült, **mentse** az entitást.
 
@@ -118,7 +117,7 @@ A költségentitás-hierarchiák létrehozásáról szóló oktatóvideó: [Köl
 
 Ha Ön Azure Nagyvállalati Szerződés alá tartozó felhasználó, tekintse meg a fiókok és előfizetések entitásokkal való társításáról szóló videót: [Csatlakozás az Azure Resource Managerhez a Cloudynnal](https://youtu.be/oCIwvfBB6kk).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

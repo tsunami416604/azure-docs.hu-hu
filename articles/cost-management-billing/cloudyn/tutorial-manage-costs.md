@@ -1,21 +1,20 @@
 ---
 title: Oktatóanyag – Költségek kezelése a Cloudynnel az Azure-ban | Microsoft Docs
 description: Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a költségeket költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987410"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769911"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: Költségek kezelése a Cloudyn használatával
 
@@ -23,7 +22,7 @@ A Cloudynben a költségeket címkék alapján foglalhatja le a költségek keze
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 
-A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását, valamint az összevont számlázási információk megtekintését és kezelését úgy, hogy ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
+A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek segítségével kategóriákba sorolhatja az erőforrásokat, és ha ugyanazt a címkét több erőforrásra és erőforráscsoportra is alkalmazza, ezzel együtt jelenítheti meg és kezelheti azok összesített számlázási adatait. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -51,13 +50,13 @@ Vegye figyelembe, hogy a címkeinformációk nem jelennek meg ezeknél az erőfo
 
 A költséglefoglalás első lépéseként a hatókört kell definiálni egy költségmodell segítségével. A költségmodell nem módosítja a költségeket, csak leosztja azokat. A költségmodell létrehozásakor az adatokat költségentitás, fiók vagy előfizetés, valamint több címke alapján szegmentálja. A címkék általában lehetnek számlázási kódok, költséghelyek vagy csoportnevek. A címkék emellett abban is segítenek, hogy költséghelyi visszacsatolást és elszámolást végezzen a vállalat egyéb részeire vonatkozóan.
 
-Egyéni költség-lefoglalási modell létrehozásához válassza a **költségek** &gt; **Cost Management** &gt; a jelentés menüjének **foglalás 360 ° értékét** .
+Egyéni költséglefoglalási modell létrehozásához válassza a **Költségek** &gt; **Költségkezelés** &gt; **Cost Allocation 360°** lehetőséget a jelentés menüjében.
 
-![Példa egy olyan irányítópultra, amelyen a Cost kiosztása 360](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Példa az irányítópultra ahol kiválaszthatja a Cost Allocation 360-at](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 A **Cost Allocation 360** lapon kattintson a **Hozzáadás** elemre, majd adja meg a költségmodell nevét és leírását. Válassza ki az összes fiókot vagy válasszon egy egyénit. Egyéni fiókok kiválasztása esetén egyszerre több fiókot is választhat akár különböző felhőszolgáltatóktól is. Ezután kattintson a **Kategorizálás** gombra a költségadatok kategorizálásához használt felderített címkék kiválasztásához. Válassza ki a modellbe felvenni kívánt címkéket (kategóriákat). A következő példában az **Egység** címke van kiválasztva.
 
-![Példa a Cost Model kategorizálásának megjelenítésére](./media/tutorial-manage-costs/cost-model01.png)
+![Példa a költségmodellek kategorizálására](./media/tutorial-manage-costs/cost-model01.png)
 
 A példában látható, hogy 19 680 dollár nincs kategorizálva (nem rendelkezik címkével).
 
@@ -81,7 +80,7 @@ Ha ki nem osztott Amazon Web Services (AWS) lefoglalt példányokkal rendelkezik
 
 A költségek lefoglalásával kapcsolatos választásainak áttekintéséhez kattintson az **Összefoglalás** gombra. Ha mentené az adatokat, és később térne vissza a további szabályok létrehozásához, kattintson a **Mentése vázlatként** gombra. Választhatja a **Mentés és aktiválás** lehetőséget is az adatok mentéséhez. Ekkor a Cloudyn megkezdi a költséglefoglalási modell feldolgozását.
 
-A költségmodellek listájában az új költségmodell **Feldolgozás alatt** állapotúként jelenik meg. Beletelhet némi időbe, mire a Cloudyn adatbázisa frissül a költségmodelljével. A feldolgozás végeztével a modell **Kész** állapotúra vált. Ezután megtekintheti a cost-modell adatait a Cost Analysis jelentésben a kiterjesztett szűrők &gt; a **Cost Model**( **kibővített szűrők** ) területen.
+A költségmodellek listájában az új költségmodell **Feldolgozás alatt** állapotúként jelenik meg. Beletelhet némi időbe, mire a Cloudyn adatbázisa frissül a költségmodelljével. A feldolgozás végeztével a modell **Kész** állapotúra vált. Ezt követően a költségmodell adatai a Költségelemzés jelentésben tekinthetők meg a **Bővített szűrők** &gt; **Költségmodell** menüpont alatt.
 
 ### <a name="category-manager"></a>Kategóriakezelő
 
@@ -95,7 +94,7 @@ A szabályok definiálásakor több értéket is hozzáadhat az OR (VAGY) felté
 
 Az alábbi képen a **Work-Load** elnevezésű új kategóriához létrehozott szabályokat bemutató példa látható.
 
-![Példa az új munkahelyi terhelési kategóriára](./media/tutorial-manage-costs/category01.png)
+![Példa az új work-load kategóriára](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Címkék forrásai és jelentések
 
@@ -122,14 +121,14 @@ Az egyes vállalatok egészen különböző módszereket alkalmazhatnak a költs
 
 A költséglefoglalási eredmények megtekintéséhez nyissa meg a Költségelemzési jelentést, és válassza ki a létrehozott költségmodellt. Ezután hozzon létre csoportosítást a költségmodellben kiválasztott egy vagy több címke alapján.
 
-![A Cost Analysis-jelentés az új díjakból származó adatokra mutató példát mutat be.](./media/tutorial-manage-costs/cost-analysis.png)
+![Költségelemzési jelentés az új költségből származó példaadattal](./media/tutorial-manage-costs/cost-analysis.png)
 
 Egyszerűen hozhat létre és menthet az adott csoportok által használt adott szolgáltatásokra összpontosító jelentéseket. Például elképzelhető, hogy az egyik részleg jelentős mértékben használ Azure-beli virtuális gépeket. Létrehozhat egy, az Azure-beli virtuális gépekre szűrt jelentést a használat mértékének és a költségeknek a megjelenítéséhez.
 
 Amennyiben szeretné a csapatokat a pillanatnyi állapotokat mutató jelentésekkel ellátni, a jelentéseket exportálhatja PDF- vagy CSV-formátumba.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

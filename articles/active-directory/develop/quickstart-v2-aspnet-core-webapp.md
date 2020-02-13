@@ -12,16 +12,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 58fce1ca2401ecf79e478377e7547a6c5785f7d1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703643"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160729"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás hogyan jelentkezhet be a személyes fiókokba (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokkal bármely Azure Active Directory (Azure AD) példányból.
 
@@ -54,7 +52,7 @@ Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás
 > 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
 >    - Az **átirányítási URI**-k területen vegyen fel `https://localhost:44321/signin-oidc`, majd válassza a **Mentés**lehetőséget.
 >    - A **Speciális beállítások** szakaszban állítsa be `https://localhost:44321/signout-oidc`a **KIJELENTKEZÉSI URL-címet** .
->    - Az **Implicit engedély** területen jelölje be az **azonosító jogkivonatok** elemet.
+>    - Az **implicit támogatás szakaszban adja**meg az **azonosító jogkivonatokat**.
 >    - Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -86,7 +84,7 @@ Ebből a rövid útmutatóból megtudhatja, hogy egy ASP.NET Core webalkalmazás
 > > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
-> Helyszín:
+> Az elemek magyarázata:
 > - `Enter_the_Application_Id_here` – a Azure Portal regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** . Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
 > - `Enter_the_Tenant_Info_Here` – a következő lehetőségek egyike:
 >   - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
@@ -142,7 +140,7 @@ A `.AddAzureAd` tartalmazó vonal hozzáadja a Microsoft Identity platform hitel
 > |Ahol  |  |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
-> | Authority | A hitelesítést végző felhasználó STS-végpontja. Ez általában <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhőben, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
+> | Hitelesítésszolgáltató | A hitelesítést végző felhasználó STS-végpontja. Ez általában <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhőben, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
 > | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben a `ValidateIssuer` `false`re van beállítva, hogy jelezze, hogy képes-e a bejelentkezések fogadására bármely személyes vagy munkahelyi vagy iskolai fiókból. |
 
 

@@ -1,17 +1,17 @@
 ---
-title: HTTP által aktivált Python-függvény létrehozása az Azure-ban
+title: Kiszolgáló nélküli Python-függvény létrehozása a HTTP-kérelmekhez Azure Functions
 description: Kiszolgáló nélküli Python-kód létrehozása és üzembe helyezése a felhőben Azure Functions használatával.
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116217"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157890"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Gyors útmutató: HTTP által aktivált Python-függvény létrehozása az Azure-ban
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: Python-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
 Ebben a cikkben parancssori eszközöket használ egy olyan Python-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 

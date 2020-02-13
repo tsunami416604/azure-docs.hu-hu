@@ -3,18 +3,18 @@ title: Gyors útmutató – szabályok és műveletek konfigurálása az Azure I
 description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027803"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169482"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Gyors útmutató: szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Central
 
@@ -34,15 +34,15 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
 1. Adja meg a **környezeti hőmérsékletet** a szabály neveként.
 
-1. A **megcélzott eszközök** szakaszban válassza a **MXChip IoT fejlesztői készlet** lehetőséget az eszköz sablonként. Ez a beállítás szűri azokat az eszközöket, amelyekre a szabály vonatkozik. További szűrési feltételeket adhat meg a **+ szűrő**lehetőség kiválasztásával.
+1. A **megcélzott eszközök** szakaszban válassza a **MXChip IoT fejlesztői készlet** lehetőséget az eszköz sablonként. Ez a beállítás szűri azokat az eszközöket, amelyekre a szabály vonatkozik. A **+ szűrő**lehetőség kiválasztásával további szűrési feltételeket adhat hozzá.
 
 1. A **feltételek** szakaszban megadhatja, hogy mi indítja el a szabályt. A következő információk segítségével határozhat meg egy olyan feltételt, amely a hőmérséklet telemetria:
 
-    | Mező        | Value (Díj)            |
+    | Mező        | Érték            |
     | ------------ | ---------------- |
     | Mérés  | Hőmérséklet      |
-    | Művelet     | Nagyobb, mint  |
-    | Value (Díj)        | 90               |
+    | Művelet     | nagyobb, mint  |
+    | Érték        | 90               |
 
     További feltételek hozzáadásához válassza a **+ feltétel**lehetőséget.
 
@@ -52,10 +52,10 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
 1. A következő táblázatban található információk segítségével határozza meg a műveletet, majd válassza a **kész**lehetőséget:
 
-    | Beállítás   | Value (Díj)                                             |
+    | Beállítás   | Érték                                             |
     | --------- | ------------------------------------------------- |
     | Megjelenített név | Kezelői e-mail művelet                          |
-    | –        | Az Ön e-mail-címe                                |
+    | Művelet        | Az Ön e-mail-címe                                |
     | Megjegyzések     | A környezeti hőmérséklet túllépte a küszöbértéket. |
 
     > [!NOTE]

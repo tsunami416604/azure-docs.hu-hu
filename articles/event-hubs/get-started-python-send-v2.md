@@ -6,31 +6,27 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/30/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d977ae9ea8b78664ac1d3a318f58553da696c089
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906359"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162973"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Események küldése vagy fogadása az Event hubokból a Python használatával (Azure-eventhub 5. verzió)
-
-Az Azure Event Hubs egy olyan big data streaming platform és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event hubok feldolgozhatják és tárolhatják az elosztott szoftverekkel és eszközökkel előállított eseményeket, adatfájlokat vagy telemetria. Az Event hub-nak elküldett adatai bármilyen valós idejű elemzési szolgáltató vagy batch-vagy Storage-adapter használatával átalakíthatók és tárolhatók. További információ: [Event Hubs áttekintése](event-hubs-about.md) és [Event Hubs szolgáltatások](event-hubs-features.md).
-
-Ez a rövid útmutató azt ismerteti, hogyan lehet olyan Python-alkalmazásokat létrehozni, amelyek események küldését és fogadását is elküldhetik az Event hub-ból.
+Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub-ból az **Azure-eventhub 5. verziójú Python-** csomag használatával.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK 1. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-python-get-started-send.md)találja. 
+> Ez a rövid útmutató az Azure-eventhub 5. verziójának legújabb csomagját használja. Az Azure-eventhub 1. verziójának első csomagját használó gyors üzembe helyezéssel kapcsolatban lásd: az [események küldése és fogadása az Azure-eventhub 1. verziójának használatával](event-hubs-python-get-started-send.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
+Ha még nem ismeri az Azure Event Hubs-t, a rövid útmutató elvégzése előtt tekintse meg a [Event Hubs áttekintése](event-hubs-about.md) című témakört. 
 
 A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- Aktív Event Hubs névtér és Event hub. A létrehozásához kövesse a rövid útmutató [: Event hub létrehozása a Azure Portal használatával](event-hubs-create.md)című témakör utasításait. Jegyezze fel a névtér és az Event hub nevét, hogy a rövid útmutató későbbi részében használni lehessen.
-- A Event Hubs névtér megosztott elérési kulcsának és elsődleges kulcsának értéke. A hozzáférési kulcs nevének és értékének beszerzéséhez kövesse az [Event hub kapcsolati karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakör útmutatását. Az alapértelmezett hozzáférési kulcs neve *RootManageSharedAccessKey*. Jegyezze fel a kulcs nevét és az elsődleges kulcs értékét, hogy a rövid útmutatóban később használhassa.
+- **Microsoft Azure előfizetés**. Az Azure-szolgáltatások, például az Azure Event Hubs használatához előfizetésre van szükség.  Ha még nem rendelkezik Azure-fiókkal, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/free/) , vagy a [fiók létrehozásakor](https://azure.microsoft.com)használhatja az MSDN-előfizetői előnyeit.
 - Python 2,7 vagy 3,5 vagy újabb, a PIP telepítve és frissítve.
 - A Event Hubs Python-csomagja. 
 
@@ -45,6 +41,7 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **Event Hubs névtérhez tartozó kapcsolatok karakterláncot** a cikk utasításait követve: a [kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A rövid útmutató későbbi részében használja a kapcsolatok karakterláncát.
 
 ## <a name="send-events"></a>Események küldése
 Ebben a szakaszban egy Python-szkriptet hoz létre, amely a korábban létrehozott Event hubhoz küld eseményeket.
@@ -96,7 +93,7 @@ Hozzon létre egy Azure Storage-fiókot és egy BLOB-tárolót a következő lé
 A fogadási kódban jegyezze fel a kapcsolódási karakterláncot és a tároló nevét.
 
 
-### <a name="create-a-python-script-to-receive-events"></a>Python-szkript létrehozása események fogadásához
+### <a name="create-a-python-script-to-receive-events"></a>Hozzon létre egy Python-szkriptet eseményeket szeretne fogadni.
 
 Ebben a szakaszban egy Python-szkriptet hoz létre az Event hub eseményeinek fogadásához:
 
@@ -140,7 +137,7 @@ Ebben a szakaszban egy Python-szkriptet hoz létre az Event hub eseményeinek fo
 
 ### <a name="run-the-receiver-app"></a>A fogadó alkalmazás futtatása
 
-A parancsfájl futtatásához nyisson meg egy parancssort, amely a Python elérési útjában található, majd futtassa a következő parancsot:
+A szkript futtatásához nyisson meg egy parancssort, amelynek az elérési út Python, és futtassa ezt a parancsot:
 
 ```bash
 python recv.py
@@ -148,7 +145,7 @@ python recv.py
 
 ### <a name="run-the-sender-app"></a>A küldő alkalmazás futtatása
 
-A parancsfájl futtatásához nyisson meg egy parancssort, amely a Python elérési útjában található, majd futtassa a következő parancsot:
+A szkript futtatásához nyisson meg egy parancssort, amelynek az elérési út Python, és futtassa ezt a parancsot:
 
 ```bash
 python send.py

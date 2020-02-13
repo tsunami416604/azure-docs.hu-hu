@@ -1,21 +1,20 @@
 ---
-title: Regisztrálás CSP-partneri információkkal az Azure-beli Cloudyn használatával
+title: Regisztrálás az Azure-beli Cloudynbe CSP-partneradatokkal
 description: Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/18/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
-manager: benshy
-ms.openlocfilehash: 420bca89903b3b88d7930165f95742ebb4f74d5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: ea156e8efabcb73b324f0a102945b227558cece9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987669"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117774"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Regisztrálás a CSP partnerprogrammal és a költségadatok megtekintése
 
@@ -31,17 +30,17 @@ CSP-partnerként regisztrálhat a Cloudynbe. A regisztráció hozzáférést biz
 >
 > A Cloudynhez a közvetett CSP-viszonteladók is hozzáférhetnek, ha közvetett CSP-szolgáltatójuk regisztrál a Cloudynre. Ezután a közvetett CSP-viszonteladók és biztosíthatnak Cloudyn-hozzáférést Azure-ügyfeleknek és -előfizetésekhez.
 >
->A felhőben a Microsoft biztonságos alkalmazás modelljével kapcsolatos panasz van. További információ: [a Secure Application Model Framework engedélyezése](/partner-center/develop/enable-secure-app-model).
+>A Cloudy kompatibilis a Microsoft biztonságos alkalmazásmodelljével. Bővebb információ: [A biztonságos alkalmazásmodellek keretrendszerének engedélyezése](/partner-center/develop/enable-secure-app-model).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="register-with-cloudyn"></a>Regisztráció a Cloudynben
 
 1. Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján.
 2. Az **Áttekintés** területen kattintson a **Cloudyn** elemre.  
-    ![Cloudyn-oldal megjelenik a Azure Portal](./media/quick-register-csp/cost-mgt-billing-service.png)
+    ![A Cloudyn lap az Azure Portalon](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. A **Cloudyn** lapon kattintson a **Go to Cloudyn** (Ugrás a Cloudynre) elemre a Cloudyn regisztrációs oldalának új ablakban való megnyitásához.
 4. A Cloudyn portálon a próbaverzióra való regisztrációhoz írja be a vállalata nevét, válassza a **Microsoft CSP Partner Program Administrator** (Microsoft CSP partnerprogram rendszergazdája) lehetőséget, majd kattintson a **Next** (Tovább) gombra.  
 5. Adja meg az **alkalmazásazonosítót**, a **kereskedelmi azonosítót** és az **alkalmazás titkos kulcsát**, majd válassza a **Default Pricing Plan** (Alapértelmezett díjszabás) lehetőséget. Ha nincsenek kéznél ezek az információk, jelentkezzen be a Partnerközpontba a [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) webhelyen az elsődleges rendszergazdai fiókjával, és kövesse az alábbi lépéseket:
@@ -50,9 +49,9 @@ CSP-partnerként regisztrálhat a Cloudynbe. A regisztráció hozzáférést biz
    3. Másolja ki az **Alkalmazásazonosító** GUID azonosítót a webalkalmazásból.
    4. Másolja ki a **Kereskedelmi azonosító** GUID azonosítót a webalkalmazásból.
    5. Jelölje meg, hogy egy vagy két év legyen-e a kulcs érvényességi időtartama. Válassza a **Kulcs hozzáadása** elemet, majd másolja ki és mentse el a titkos kulcs értékét.  
-    ![partner irányítópultja, ahol a hitelesítő adatokat másolja](./media/quick-register-csp/csp-partner-center.png)
+    ![A partner irányítópultja, ahová a hitelesítő adatokat másolja](./media/quick-register-csp/csp-partner-center.png)
    6. Térjen vissza a Cloudyn regisztrációs oldalára, és illessze be az adatokat.  
-      ![Hitelesítő adatok beillesztése a Cloudyn regisztrációs oldalán](./media/quick-register-csp/csp-reg.png)
+      ![A Cloudyn regisztrációs oldalán illessze be a hitelesítő adatokat.](./media/quick-register-csp/csp-reg.png)
 6. Fogadja el a használati feltételeket, majd ellenőrizze az adatokat. A **Next** (Tovább) gombra kattintva adjon engedélyt a Cloudynnek az Azure-erőforrásadatok gyűjtésére. A gyűjtött adatok az előfizetéseire vonatkozó használati, teljesítmény-, elszámolási és címkeadatokból állnak.  
 7. Az **Invite other stakeholders** (További érdekelt felek meghívása) területen hozzáadhat felhasználókat az e-mail-címük megadásával. Ha kész van, kattintson a **Next** (Tovább) gombra. Körülbelül két órát vesz igénybe, míg a rendszer az összes elszámolási adatot hozzáadja a Cloudynhez.
 8. A **Go to Cloudyn** (Ugrás a Cloudynre) elemre kattintva nyissa meg a Cloudyn portált, ahol a **Cloud Accounts Management** (Felhőalapú fiókok felügyelete) oldalon látnia kell a regisztrált CSP-fiók adatait.
@@ -61,7 +60,7 @@ CSP-partnerként regisztrálhat a Cloudynbe. A regisztráció hozzáférést biz
 
 Alapértelmezés szerint a Partner Center API csak közvetlen CSP-k számára érhető el. Egy közvetlen CSP-szolgáltató azonban konfigurálhat hozzáférést közvetett CSP-ügyfeleinek vagy -partnereinek a Cloudyn entitáscsoportjainak segítségével.
 
-A közvetett CSP-ügyfelek vagy-partnerek hozzáférésének engedélyezéséhez kövesse a [regisztráció a Cloudyn](#register-with-cloudyn) alkalmazásban című témakör lépéseit a próbaverzió regisztrálásának beállításához. Ezután a következő lépéseket végrehajtva szegmentálja a közvetett CSP-adatokat a Cloudyn entitáscsoportjaival. Végül rendelje hozzá az entitáscsoportokhoz a megfelelő felhasználói engedélyeket.
+Ha hozzáférést szeretne biztosítani a közvetett CSP-ügyfeleknek vagy -partnereknek, a [Regisztráció a Cloudynben](#register-with-cloudyn) szakasz lépéseit követve hozzon létre egy regisztrációt a próbaverzióra. Ezután a következő lépéseket végrehajtva szegmentálja a közvetett CSP-adatokat a Cloudyn entitáscsoportjaival. Végül rendelje hozzá az entitáscsoportokhoz a megfelelő felhasználói engedélyeket.
 
 1. Hozzon létre egy entitáscsoportot az [entitások létrehozásával](tutorial-user-access.md#create-and-manage-entities) foglalkozó szakaszban található információk alapján.
 2. Kövesse az [előfizetések költségentitásokhoz való hozzárendelésével](https://www.youtube.com/watch?v=d9uTWSdoQYo) foglalkozó videóban ismertetett lépéseket. Társítsa a közvetett CSP-ügyfél fiókját és Azure-előfizetéseit az előzőleg létrehozott entitáshoz.
@@ -72,7 +71,7 @@ A közvetett CSP-partnerek bejelentkezhetnek a Cloudyn portálra a számukra lé
 
 [!INCLUDE [cost-management-create-account-view-data](../../../includes/cost-management-create-account-view-data.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a CSP-adatokat használta arra, hogy regisztráljon a Cloudynre. A Cloudyn portálra is bejelentkezett, és elkezdte a költségadatok áttekintését. Ha bővebb információra van szüksége a Cloudynről, lépjen tovább a Cloudyn oktatóanyagára.
 

@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: 2e8c477aea7a11eefa606ab9cd084ca3ed9f400f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995649"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76841880"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Az Azure Reservationsszel csökkentheti költségeit, ha egy- vagy hároméves csomagra vonatkozó kötelezettséget vállal a virtuális gépekre, az Azure Blob Storage-ra vagy Azure Data Lake Storage Gen2-re, az SQL Database számítási kapacitására, az Azure Cosmos DB átviteli sebességére vagy más Azure-erőforrásokra. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára.
+Az Azure Reservationsszel csökkentheti költségeit, ha egy- vagy hároméves csomagra vonatkozó kötelezettséget vállal a virtuális gépekre, az Azure Blob Storage-ra vagy Azure Data Lake Storage Gen2-re, az SQL Database számítási kapacitására, az Azure Disk Storage-ra, az Azure Cosmos DB átviteli sebességére vagy más Azure-erőforrásokra. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára.
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
@@ -32,15 +32,15 @@ Szolgáltatáscsomagok:
 
 - **Fenntartott virtuálisgép-példány** – A foglalás csak a virtuális gép számítási költségeit fedezi. Nem fedezi azonban a további szoftverek, a hálózatkezelés és a tárolás költségeit.
 - **Fenntartott kapacitás az Azure Storage-ban** – A foglalás a standard Blob Storage- vagy Azure Data Lake Gen2-tárfiókok tárolási kapacitását fedezi. A foglalás nem fedezi a sávszélességgel és a tranzakciókkal járó díjakat.
+- **Azure Disk Storage-foglalások** – A foglalás csak a P30-as vagy annál nagyobb méretű, prémium szintű SSD-k esetében érvényes. Az egyéb lemeztípusokat és a P30-asnál kisebb méretű lemezeket nem fedi le.
 - **Fenntartott Azure Cosmos DB-kapacitás** – A foglalás az erőforrások számára kiosztott átviteli sebességet fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit.
 - **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. A licenc számlázása külön történik.
 - **SQL Data Warehouse** – A foglalás a cDWU-használatot fedezi. Nem fedezi azonban az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 - **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.
-- A MySQL-hez készült Azure Database
-- A PostgreSQL-hez készült Azure Database
-- A MariaDB-hez készült Azure Database
-- Azure Adatkezelő
-- Premium SSD Managed Disks
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure Data Explorer
 
 
 A Windows rendszerű virtuális gépek és az SQL Database esetében a licencelési költségek fedezéséhez használhatja az [Azure Hybrid Benefitet](https://azure.microsoft.com/pricing/hybrid-benefit/).
@@ -105,9 +105,9 @@ Ha az erőforráscsoportot áthelyezi egy másik előfizetésbe, a foglalás hat
 
 A foglalási kedvezmények a következő jogosult előfizetésekre és ajánlattípusokra vonatkoznak.
 
-- Nagyvállalati szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P)
+- Nagyvállalati szerződés (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P)
 - Microsoft-ügyfélszerződéses előfizetések.
-- Egyedi csomagok utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P)
+- Egyéni csomagok a használatalapú fizetés díjszabásával (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P).
 - CSP-előfizetések
 
 A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
@@ -140,10 +140,10 @@ Foglalás vásárlásakor a foglalás alkalmazható az ugyanabban a méretcsopor
 
 Szolgáltatáscsomagok:
 
-- Fenntartott VM-példányok: a foglalás megvásárlása és a **példányok méretének rugalmassága érdekében**a kedvezményes lefedettség a kiválasztott VM-mérettől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
-- Az Azure Storage szolgáltatás számára fenntartott kapacitás: a standard Azure Storage-fiókok számára fenntartott kapacitást a havi 100 vagy 1 PiB egységben vásárolhat. A Fenntartott kapacitás az Azure Storage-ban minden régióban elérhető bármelyik hozzáférési szinthez (gyakori, ritka és archív) és replikációs lehetőséghez (LRS, GRS és ZRS).
-- SQL Database fenntartott kapacitás: a kedvezményes lefedettség a választott teljesítmény szintjétől függ. További információkért lásd [az Azure-beli foglalási kedvezmény alkalmazását](understand-reservation-charges.md) ismertető cikket.
-- Azure Cosmos DB fenntartott kapacitás: a kedvezményes lefedettség a kiosztott átviteli sebességtől függ. További információkért lásd [az Azure Cosmos DB-beli foglalási kedvezmény alkalmazását](understand-cosmosdb-reservation-charges.md) ismertető cikket.
+- Reserved VM Instances: Ha a foglalás megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a kiválasztott virtuálisgép-mérettől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+- Fenntartott kapacitás az Azure Storage-ban: A standard Azure Storage-fiókoknak havi 100 TiB-os vagy 1 PiB-os egységben vásárolhat lefoglalt kapacitást. A Fenntartott kapacitás az Azure Storage-ban minden régióban elérhető bármelyik hozzáférési szinthez (gyakori, ritka és archív) és replikációs lehetőséghez (LRS, GRS és ZRS).
+- Fenntartott SQL Database-kapacitás: A kedvezmény általi lefedettség a kiválasztott teljesítményszinttől függ. További információkért lásd [az Azure-beli foglalási kedvezmény alkalmazását](understand-reservation-charges.md) ismertető cikket.
+- Fenntartott Azure Cosmos DB-kapacitás: A kedvezmény általi lefedettség a kiosztott átviteli sebességtől függ. További információkért lásd [az Azure Cosmos DB-beli foglalási kedvezmény alkalmazását](understand-cosmosdb-reservation-charges.md) ismertető cikket.
 
 ## <a name="reservation-notifications"></a>Foglalási értesítések
 
@@ -167,11 +167,11 @@ Az egyéni előfizetéssel rendelkező ügyfelek esetében:
 - A fióktulajdonos kapja meg az összes többi értesítést.
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
     - [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)

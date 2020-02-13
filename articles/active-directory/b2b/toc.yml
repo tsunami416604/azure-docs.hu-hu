@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Oktatóanyagok
       items:
-        - name: B2B-vendégfelhasználók tömeges meghívása
+        - name: Tömeges meghívás a PowerShellen keresztül
+          href: bulk-invite-powershell.md
+        - name: Tömeges meghívás a portálon keresztül (előzetes verzió)
           href: tutorial-bulk-invite.md
         - name: Többtényezős hitelesítés kényszerítése
           href: b2b-tutorial-require-mfa.md

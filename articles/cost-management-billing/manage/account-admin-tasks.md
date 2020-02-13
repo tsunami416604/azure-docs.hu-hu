@@ -2,21 +2,21 @@
 title: Fiókadminisztrátori feladatok az Azure Portalon
 description: Ismerteti, hogyan hajthatók végre fizetési műveletek az Azure Portalon
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 2fadd0b6eb0951031a9d577b2fd3a3d497076dd8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990111"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132134"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
 
@@ -29,13 +29,18 @@ Ezen feladatok elvégzéséhez fiókadminisztrátornak kell lennie.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigáljon az előfizetés fizetési módjaihoz
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként. 
+
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
     
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listából válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
-    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+1. A **Saját előfizetések** listából válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát. 
+   
+   ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   
+   > [!NOTE]
+   > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést. 
 
 1. Válassza a **Fizetési módok** elemet.
 
@@ -119,10 +124,13 @@ A költségkeret nem érhető el hűségszerződéses csomagokat és használata
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listában válassza ki a Visual Studio Enterprise-előfizetését.
-    
-    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+1. A **Saját előfizetések** listában válassza ki a Visual Studio Enterprise-előfizetését. 
 
+   ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Ha bizonyos Visual Studio-előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította egy előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
+    
 1. Az előfizetés áttekintésében kattintson a narancssárga szalagcímre a költségkeret eltávolításához.
     
     ![Képernyőkép a költségkeret eltávolítása szalagcímről](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
@@ -144,10 +152,13 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listában válassza ki Azure in Open-előfizetését.
-   
+1. A **Saját előfizetések** listában válassza ki Azure in Open-előfizetését. 
+
     ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
+   > [!NOTE]
+   > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Módosítania kell az előfizetés könyvtárát az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
+    
 1. Válassza a **Kreditelőzmények** lehetőséget.
     
     ![A kreditelőzményeket bemutató képernyőkép](./media/account-admin-tasks/aio-credit-history-blade.png)
@@ -173,5 +184,5 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Nem támogatjuk a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [váratlan költségek elemzéséről és megelőzéséről az Azure Portalon](getting-started.md)

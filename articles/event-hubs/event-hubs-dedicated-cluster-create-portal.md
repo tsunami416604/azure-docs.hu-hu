@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
-ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157482"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Event Hubs-fürt létrehozása Azure Portal használatával 
 Event Hubs-fürtök egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az ajánlat garantált 99,99%-os SLA-val rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy [Event Hubs fürt](event-hubs-dedicated-overview.md) másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodpercenkénti késéssel. A fürtön belül létrehozott névterek és az Event hubok a standard ajánlat összes funkcióját tartalmazzák, többek között a bejövő korlátok nélkül. A dedikált ajánlat további díj nélkül tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást, amely lehetővé teszi, hogy automatikusan batch-és naplózza az adatstreameket az [Azure-Blob Storage](../storage/blobs/storage-blobs-introduction.md) vagy az [1. generációs Azure Data Lake Storage](../data-lake-store/data-lake-store-overview.md).
@@ -106,6 +106,10 @@ Ha módosítani szeretné a fürt méretét a létrehozás után, vagy ha az el�
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy Event Hubs-fürtöt hozott létre. Az Event hub eseményeinek küldésére és fogadására, valamint az események Azure Storage-ba vagy Azure Data Lake Storeba való rögzítésére vonatkozó részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
-- [Események küldése és fogadása a .NET Core-ban](event-hubs-dotnet-standard-getstarted-send.md)
+- Események küldése és fogadása 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [Event Hubs rögzítésének engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
 - [Az Azure Event Hubs használata a Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

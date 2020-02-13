@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2020
+ms.date: 01/24/2020
 ms.author: banders
-ms.openlocfilehash: ea545919436201524a1c77b27e9b187f3b1c3b64
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314045"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773886"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
-Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat le tudja cserélni azonos típusú foglalásokra. Kérheti egy foglalás díjának visszatérítését is 50 000 USD/év összegig, ha már nincs rá szüksége. A visszatérítések maximális száma a Microsofttal kötött szerződése hatálya alá tartozó összes foglalásra vonatkozik.
+Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat le tudja cserélni azonos típusú foglalásokra. Kérheti egy foglalás díjának visszatérítését is 50 000 USD/év összegig, ha már nincs rá szüksége. A visszatérítések felső korlátja a Microsofttal kötött szerződése hatálya alá tartozó összes foglalásra vonatkozik.
 
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a CSP.
 
@@ -29,14 +29,14 @@ Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzá
 
 A foglalás cseréjét három gyors lépésbe végezheti el az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
-1. Válassza ki a visszatéríteni kívánt foglalásokat, majd kattintson az **Átváltás** elemre.  
+1. Válassza ki a visszatéríteni kívánt foglalásokat, majd válassza az **Átváltás** lehetőséget.  
     ![Példa kép a visszaadni kívánt foglalásokról](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
 2. Válassza ki a megvásárolni kívánt virtuálisgép-terméket, és adja meg a mennyiséget. Győződjön meg arról, hogy az új vásárlás végösszege nagyobb, mint a visszatérítés végösszege. [A vásárlás előtt határozza meg a megfelelő méretet.](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)  
     ![Példa kép a cserével vásárolni kívánt virtuálisgép-termékről](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
 3. Tekintse át és fejezze be a tranzakciót.  
     ![Példa kép a cserével vásárolni kívánt virtuálisgép-termékről, a csere teljesítésével](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
 
-Egy foglalás visszatérítéséhez lépjen a **Foglalás részleteire**, és kattintson a **Visszatérítés** lehetőségre.
+Egy foglalás visszatérítéséhez lépjen a **Foglalás részleteire**, és válassza a **Visszatérítés** lehetőséget.
 
 ## <a name="how-transactions-are-processed"></a>A tranzakciók feldolgozása
 
@@ -66,7 +66,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 - A cseréket csak foglalások tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - A cserét a rendszer visszatérítésként és újravásárlásként dolgozza fel – vagyis külön tranzakciókat hoz létre a lemondáshoz és az új vásárláshoz. A becserélt foglalások arányosított foglalási összegét visszatéríti a rendszer. Az új vásárlásért pedig teljes díjat kell fizetni. Az arányosított foglalási összeg a visszaadott foglalás nap szerint kiszámított maradványértéke.
 - A foglalások akkor is becserélhetők vagy visszatéríthetők, ha a megvásárlásukhoz használt Nagyvállalati Szerződés lejárt, és új szerződésként lett megújítva.
-- A cserék során a foglalások bármely tulajdonsága módosítható, így a méret, a régió, a mennyiség és az időtartam is.
+- A cserék során a foglalások bármely tulajdonsága módosítható, így a család, a sorozat, a verzió, a termékváltozat, a régió, a mennyiség és az időtartam is.
 - Az új vásárlásnak a visszatérített összeggel egyenlőnek vagy annál nagyobb összegűnek kell lennie.
 - A csere keretében megvásárolt új foglalás új időtartamot kap, amelynek a csere időpontja lesz a kezdete.
 - A cserékre semmilyen pótdíj vagy éves korlát nem vonatkozik.
@@ -81,13 +81,13 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Nem prémium szintű tároló cseréje prémium tárolóra
 
-Ha egy olyan virtuálisgép-méretre rendelkezik foglalással, amely nem támogatja a Premium Storage-ot, becserélheti egy olyan egyenértékű VM-méretre, amely támogatja azt. Például egy _F1_ méretűt egy _F1s_ méretűre. A csere végrehajtásához lépjen a Foglalás részleteire, és kattintson a **Csere** lehetőségre. A csere nem állítja vissza a fenntartott példány időtartamát, és nem hoz létre új tranzakciót.
+Ha egy olyan virtuálisgép-méretre rendelkezik foglalással, amely nem támogatja a Premium Storage-ot, becserélheti egy olyan egyenértékű VM-méretre, amely támogatja azt. Például egy _F1_ méretűt egy _F1s_ méretűre. A csere végrehajtásához lépjen a Foglalás részleteire, és válassza a **Csere** lehetőséget. A csere nem állítja vissza a fenntartott példány időtartamát, és nem hoz létre új tranzakciót.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](manage-reserved-vm-instance.md) szakaszt.
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:

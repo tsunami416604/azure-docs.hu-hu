@@ -1,38 +1,39 @@
 ---
 title: A szabályzatminták indexe
-description: 'Az Azure Policyhez készült minták indexe A kategóriák többek között a következők: elnevezés, címkék, Key Vault, hálózatkezelés, tárolás.'
-ms.date: 03/19/2019
+description: Az Azure Policyhez készült beépített elemek indexe Kategóriacímkék, Jogszabályi megfelelőség, Key Vault, Kubernetes, Vendégkonfiguráció és egyebek.
+ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 54e77a83a03d9a8f5cedd59f010569d7ecef7d90
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070102"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168034"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
 
-A következő táblázat az Azure Policyhez használható mintákra mutató hivatkozásokat tartalmaz. Ezek a minták az [Azure Policy mintaadattárában](https://github.com/Azure/azure-policy) is megtalálhatók.
+Ez az oldal az Azure Policy beépített szabályzatdefinícióinak és nyelvhasználati mintáinak indexét tartalmazza.
 
-[!INCLUDE [azure-policy-samples-general](../../../../includes/azure-policy-samples-general.md)]
+## <a name="built-ins"></a>Beépített elemek
 
-[!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
+- [Házirendek](./built-in-policies.md)
+- [Kezdeményezések](./built-in-initiatives.md)
 
-[!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+## <a name="patterns"></a>Minták
 
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+Az alábbiakban példákat láthat az Azure Policyben található nyelvet és operátorokat használó különböző mintákra:
 
-[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
-
-[!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
-
-[!INCLUDE [azure-policy-samples-network](../../../../includes/azure-policy-samples-network.md)]
-
-[!INCLUDE [azure-policy-samples-sql](../../../../includes/azure-policy-samples-sql.md)]
-
-[!INCLUDE [azure-policy-samples-storage](../../../../includes/azure-policy-samples-storage.md)]
+- [Logikai operátorok](./pattern-logical-operators.md)
+- [Mezők](./pattern-fields.md)
+- [Paraméterek](./pattern-parameters.md)
+- [Hatás részletei](./pattern-effect-details.md)
+- [Értékoperátor](./pattern-value-operator.md)
+- [Számoperátor](./pattern-count-operator.md)
+- [Szabályzatdefiníciók csoportosítása egy kezdeményezésben](./pattern-group-with-initiative.md)
+- [Erőforrások üzembe helyezése a deployIfNotExists használatával](./pattern-deploy-resources.md)
 
 ## <a name="next-steps"></a>További lépések
 
+- A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).

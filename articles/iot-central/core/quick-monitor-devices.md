@@ -3,18 +3,18 @@ title: Rövid útmutató – az eszközök figyelése az Azure IoT Central
 description: Az operátorok segítségével megtudhatja, hogyan használhatja az Azure IoT Central alkalmazást az eszközök figyelésére.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027747"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168755"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Gyors útmutató: az Azure IoT Central használata az eszközök figyelésére
 
@@ -41,8 +41,6 @@ Az előző rövid útmutatókban létrehozott szimulált eszköz **áttekintő**
 ## <a name="investigate-an-issue"></a>Probléma vizsgálata
 
 Kezelőként megtekintheti az eszközre vonatkozó információkat az **Áttekintés**, a **Névjegy**és a **parancsok** nézetekben. A készítő létrehozott egy **eszköz kezelése** nézetet az eszköz adatainak szerkesztéséhez és az eszköz tulajdonságainak beállításához.
-
-Az eszközre vonatkozó információk megtekintéséhez válassza az **Áttekintés** nézetet.
 
 Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. Ön dönti el, hogy az eszköz hőmérséklete túl magas-e.
 

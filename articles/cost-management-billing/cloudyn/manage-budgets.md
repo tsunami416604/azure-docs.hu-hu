@@ -1,89 +1,89 @@
 ---
 title: Cloudyn-költségvetések kezelése az Azure-ban
-description: Ez a cikk segítséget nyújt a költségvetések gyors létrehozásához és a Cloudyn-ben való kezeléséhez.
+description: Ennek a cikknek a segítségével gyorsan létrehozhat költségvetéseket a Cloudynben, és megkezdheti a kezelésüket.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 3572296da8e81602e905a3d9f515e7d49067cfa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 91a1027add615c71784b6be1261fab97aadd9f3a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990592"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769990"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Azure-költségvetések kezelése a Cloudyn-mel
+# <a name="manage-azure-budgets-with-cloudyn"></a>Azure-költségvetések kezelése a Cloudynnel
 
-A költségvetések és a költségkeret-alapú riasztások beállítása segít a felhő irányításának és elszámoltathatóságának javításában. Ez a cikk segítséget nyújt a költségvetések gyors létrehozásához és a Cloudyn-ben való kezeléséhez.
+A költségvetések és költségvetés-alapú riasztások beállítása hozzájárul a felhőszabályozás és az elszámoltathatóság javításához. Ennek a cikknek a segítségével gyorsan létrehozhat költségvetéseket a Cloudynben, és megkezdheti a kezelésüket.
 
-Ha nagyvállalati vagy MSP-fiókkal rendelkezik, a hierarchikus költségű entitás struktúrájának használatával havi költségvetési kvótákat rendelhet a különböző üzleti egységekhez, részlegekhez vagy más Cost-entitásokhoz. Ha prémium szintű fiókkal rendelkezik, használhatja a költségvetés-kezelési funkciót, amelyet aztán a teljes Felhőbeli kiadásokra alkalmaz. Az összes költségvetést manuálisan rendeli hozzá a rendszer.
+Ha nagyvállalati vagy MSP-fiókkal rendelkezik, a hierarchikus költségentitás-struktúrával havi költségvetési kvótákat rendelhet a különböző üzleti egységekhez, részlegekhez vagy más költségentitásokhoz. Ha prémium szintű fiókkal rendelkezik, használhatja a költségvetés-kezelési funkciót, amelyet utána a teljes felhőbeli költésre alkalmaz a rendszer. Minden költségvetés hozzárendelése manuálisan történik.
 
-A hozzárendelt költségvetések alapján meghatározhatja a küszöbérték-riasztásokat a felhasznált költségvetés százaléka alapján, és meghatározhatja az egyes küszöbértékek súlyosságát.
+A hozzárendelt költségvetésekhez kapcsolódóan meghatározhat küszöbérték-riasztásokat a felhasznált költségvetés százalékos aránya alapján, és meghatározhatja az egyes küszöbértékek súlyosságát.
 
-A költségvetési jelentések a hozzárendelt költségvetést mutatják. A felhasználók megtekinthetik, hogy a kiadások mikor lettek felhasználva, alatta vagy névértéken, az idő múlásával. Ha a költségvetési jelentés tetején a **mezők megjelenítése/elrejtése** lehetőséget választja, megtekintheti a költségeket, a költségvetést, a halmozott költségeket vagy a teljes költségvetést.
+A költségvetési jelentések a hozzárendelt költségvetést jelenítik meg. A felhasználók megtekinthetik, hogy a kiadásaik egy adott időszakban mikor lépik túl a felhasználást, mikor vannak alatta, vagy mikor egyeznek meg azzal. A költségvetési jelentések tetején található **Show/Hide Fields** (Mezők megjelenítése/elrejtése) elemmel tekintheti meg a költségeket, a költségvetést, a halmozott költségeket vagy a teljes költségvetést.
 
-Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. A Cost Management költségvetésével kapcsolatos további információkért lásd: [költségvetések létrehozása és kezelése](../costs/tutorial-acm-create-budgets.md).
+Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. A Cost Management költségvetéseivel kapcsolatos további információkért tekintse meg a [költségvetések létrehozását és kezelését](../costs/tutorial-acm-create-budgets.md) ismertető cikket.
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 
-Ha létrehoz egy költségvetést, azt a pénzügyi évre állítja be, és egy adott entitásra vonatkozik.
+Amikor létrehoz egy költségvetést, azt a pénzügyi évre állítja be, és egy adott entitásra vonatkozik.
 
-Költségvetés létrehozása és társítása egy entitáshoz:
+Költségvetés létrehozása és entitáshoz rendelése:
 
-1. Navigáljon a **költségek** &gt; **Cost Management** &gt; **költségvetést**.
-2. A költségvetés kezelése lap **entitások**területén válassza ki azt az entitást, amelyben létre kívánja hozni a költségvetést.
-3. A költségvetési évben válassza ki azt az évet, amelyben létre kívánja hozni a költségvetést.
-4. Minden hónapban állítson be egy költségvetési értéket. Ha elkészült, kattintson a **Mentés**gombra.
-Ebben a példában a június 2018-es havi költségkeret értéke $135 000. Az év teljes költségvetése $1 615 000,00.
-![hozzon létre egy költségvetési oldalt, amelyben minden hónapra vonatkozóan költségvetést állít be](./media/manage-budgets/set-budget.png)
+1. Lépjen a **Costs** &gt; **Cost Management** &gt; **Budget** (Költségek > Költségkezelés > Költségvetés) részre.
+2. A Budget Management (Költségvetés-kezelés) oldal **Entities** (Entitások) területén válassza ki az entitást, amelyben a költségvetést létre szeretné hozni.
+3. A költségvetési évben válassza ki az évet, amelyhez létre szeretné hozni a költségvetést.
+4. Állítson be egy költségvetési értéket minden hónap számára. Ha végzett, kattintson a **Save** (Mentés) gombra.
+Ebben a példában 2018 júniusának havi költségvetése 135 000 dollárra lett beállítva. Az év teljes költségvetése 1 615 000,00 dollár.
+![Költségvetési oldal létrehozása, amelyen minden hónap számára beállíthatja a költségvetést](./media/manage-budgets/set-budget.png)
 
 
-Fájl importálása az éves költségvetésbe:
+Az éves költségvetés fájljának importálása:
 
-1. A **műveletek**területen válassza az **Exportálás** lehetőséget egy üres CSV-sablon letöltéséhez, amelyet a költségvetés alapjaként kíván használni.
-2. Töltse ki a CSV-fájlt a költségvetési bejegyzéseivel, és mentse helyileg.
-3. A **műveletek**területen válassza az **Importálás**lehetőséget.
-4. Válassza ki a mentett fájlt, majd kattintson **az OK**gombra.
+1. Az **Actions** (Műveletek) területen válassza az **Export** (Exportálás) lehetőséget egy üres CSV-sablon letöltéséhez, amelyet a költségvetés alapjaként használhat.
+2. Töltse ki a CVS-fájlt a költségvetés elemeivel, és mentse a fájlt helyileg.
+3. Az **Actions** (Műveletek) területen válassza az **Import** (Importálás) elemet.
+4. Jelölje ki a mentett fájlt, majd kattintson az **Ok** gombra.
 
-Ha a kész költségvetést CSV-fájlként szeretné exportálni, a **műveletek**területen válassza az **Exportálás** lehetőséget a fájl letöltéséhez.
+A kész költségvetés CVS-fájlként történő exportálásához az **Actions** (Műveletek) területen válassza az **Export** (Exportálás) lehetőséget, és töltse le a fájlt.
 
-## <a name="view-budget-in-reports"></a>Költségvetés megtekintése a jelentésekben
+## <a name="view-budget-in-reports"></a>Költségvetés megtekintése jelentésekben
 
-Ha elkészült, a költségkeret a legtöbb Cost-jelentésben a **költségek** &gt; a **Cost Analysis** és a Cost és a költségkeret időbeli változása című jelentésben látható. A jelentések a költségvetési küszöbértékek alapján is ütemezhetők a **műveletek**használatával.
+Miután elkészült, a költségvetés a költségjelentések többségében látható a **Costs** &gt; **Cost Analysis** (Költségek > Költségelemzés) részen, valamint a Cost vs. Budget Over Time (Költség és költségvetés összehasonlítása adott időszakban) jelentésben. Az **Actions** (Műveletek) menüvel ütemezhet is jelentéseket a költségvetés-küszöbértékek alapján.
 
-Íme egy példa a Cost Analysis-jelentésre. Az év eleje óta a számítási feladatok és a használati típusok teljes költségvetését és költségét jeleníti meg.
+Egy példa a Cost Analysis (Költségelemzés) jelentésre. A jelentés számítási feladatok és használati típusok alapján jeleníti meg a teljes költségvetést és költséget az év elejétől kezdve.
 
-![Példa Cost Analysis-jelentésre költségvetéssel](./media/manage-budgets/cost-analysis-budget-example.png)
+![Példa a Cost Analysis (Költségelemzés) jelentésre költségvetéssel](./media/manage-budgets/cost-analysis-budget-example.png)
 
-Ebben a példában feltételezzük, hogy az aktuális dátum június 22. A $71 611,28. június 2018-os költség a $135 000-os havi költségvetéshez képest. A költség sokkal alacsonyabb a havi költségkeretnél, mert a hónap vége előtt még nyolc nap van hátra.
+Ebben a példában tételezzük fel, hogy a mai dátum június 22. 2018 júniusának a költsége 71 611,28 dollár a 135 000 dolláros havi költségvetéshez képest. Ez a költség sokkal alacsonyabb a havi költségvetésnél, mert még nyolc napnyi kiadás van hátra a hónap végéig.
 
-A jelentés megtekintésének egy másik módja a halmozott költségek és a költségkeret megkeresése. A halmozott költségek megtekintéséhez a **mezők megjelenítése/elrejtése**területen válassza a **halmozott költség** és a **teljes költségvetés**lehetőséget. Az alábbi példa az év eleje óta felhalmozott költségeket mutatja be.
+A jelentés megtekintésének egy másik módja a halmozott költség és a költségvetés összehasonlítása. A halmozott költségek megtekintéséhez a **Show/Hide Fields** (Mezők megjelenítése/elrejtése) területen válassza az **Accumulated Cost** (Halmozott költség) és **Total Budget** (Teljes költségvetés) elemet. Íme egy példa, amely a halmozott költséget jeleníti meg az év elejétől kezdve.
 
-![Példa a költségek és a költségkeret összesített költségére és a költségvetés időbeli alakulására – jelentés](./media/manage-budgets/accumulated-budget.png)
+![Példa halmozott költségre és teljes költségvetésre a Cost vs. Budget Over Time (Költség és költségvetés összehasonlítása adott időszakban) jelentésben](./media/manage-budgets/accumulated-budget.png)
 
-A jövőben a halmozott költségek meghaladják a költségvetést. Könnyebben láthatja, hogy ha megváltoztatja a diagram nézetet a _sor_ típusára.
+Valamikor a jövőben a halmozott költség meghaladhatja a költségvetést. Ezt egyszerűen megállapíthatja, ha a diagramnézetet _vonal_ típusúra módosítja.
 
-![A Cost by months jelentés egy vonalas diagramban látható](./media/manage-budgets/budget-line.png)
+![Vonaldiagramon megjelenített költségvetés a Cost by Months (Költség hónapok szerint) jelentésben](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Költségvetési riasztások létrehozása szűrőhöz
+## <a name="create-budget-alerts-for-a-filter"></a>Költségvetési riasztások létrehozása szűrőkhöz
 
-Az előző példában látható, hogy a halmozott költségek megközelítik a költségvetést. Automatikus költségvetési riasztásokat hozhat létre, hogy értesítést kapjon a megoldáshoz, vagy meghaladja a költségvetést. A riasztás alapvetően a küszöbértéket tartalmazó ütemezett jelentés. A költségvetési riasztás küszöbértékének mérőszámai a következők:
+Az előző példában láthatja, hogy a halmozott költség megközelítette a költségvetést. Létrehozhat automatikus költségvetési riasztásokat, így értesülhet arról, ha a kiadások megközelítik vagy meghaladják a költségvetést. A riasztás alapvetően egy küszöbértékkel rendelkező ütemezett jelentés. A költségvetési riasztási küszöbérték-metrikák az alábbiak:
 
-- Hátralévő költség vs. költségkeret – a pénznem értékének küszöbértékének megadása
-- Költség százalékos aránya és költségvetése – százalékos érték küszöbértékének megadása
+- Remaining cost vs. budget (Fennmaradó költség a költségvetéshez képest) – egy aktuális értékre vonatkozó küszöbérték megadásához
+- Cost percentage vs. budget (Költség százalékos aránya a költségvetéshez képest) – egy százalékos értékre vonatkozó küszöbérték megadásához
 
-Lássunk egy példát.
+Lássunk erre egy példát.
 
-A költség és a költségkeret időbeli alakulása jelentésben kattintson a **műveletek** , majd az **ütemezett jelentés**elemre. A küszöb lapon válassza ki a küszöbérték mérőszámát. Például a **Cost százalék vs költségvetés**. Válasszon ki egy riasztási típust, és adja meg a költségvetés százalékos értékét. Ha csak egyszer szeretne értesítést kapni, válassza **az egymást követő riasztások száma** lehetőséget, majd írja be az _1_értéket. Kattintson a **Mentés** gombra.
+A Cost vs. Budget Over Time (Költség és költségvetés összehasonlítása adott időszakban) jelentésben kattintson az **Actions** (Műveletek) gombra, majd válassza a **Schedule report** (Jelentés ütemezése) lehetőséget. A Threshold (Küszöbérték) lapon válasszon ki egy küszöbérték-metrikát. Például: **Cost percentage vs. budget** (Költség százalékos aránya a költségvetéshez képest). Válasszon ki egy riasztástípust, majd adja meg a költségvetés százalékos értékét. Ha csak egyszer szeretne értesítést kapni, válassza a **Number of consecutive alerts** (Egymást követő riasztások száma) lehetőséget, majd írja be az _1_ értéket. Kattintson a **Save** (Mentés) gombra.
 
-![Költségvetési riasztás létrehozása a jelentés mentése vagy beosztása mezőben](./media/manage-budgets/budget-alert.png)
+![Költségvetési riasztás létrehozása a Save or Schedule this report (A jelentés mentése vagy ütemezése) lapon](./media/manage-budgets/budget-alert.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha még nem végezte el az első oktatóanyagot a Cloudyn, olvassa el a [használat és a költségek áttekintése](tutorial-review-usage.md)című cikk lépéseit.
-- További információ a [Cloudyn-ben elérhető jelentésekről](use-reports.md).
+- Ha még nem végezte el a Cloudyn első oktatóanyagát, olvassa el a [használat és költségek áttekintését](tutorial-review-usage.md) ismertető cikkben.
+- Tájékozódjon bővebben a [Cloudynben elérhető jelentésekről](use-reports.md).
