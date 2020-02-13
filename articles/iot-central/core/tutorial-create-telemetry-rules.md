@@ -3,31 +3,29 @@ title: Oktatóanyag – szabályok létrehozása és kezelése az Azure IoT Cent
 description: Ez az oktatóanyag azt mutatja be, hogy az Azure IoT Central-szabályok hogyan teszik lehetővé az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését a szabály indításakor.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027705"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167420"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-
-
 Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott eszközöket. Az Azure IoT Central szabályai lehetővé teszik az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését. Néhány kattintással megadhat egy feltételt, amely figyeli a telemetria az eszközökről, és konfigurál egy megfelelő műveletet. Ez a cikk azt ismerteti, hogyan hozhatók létre szabályok az eszköz által eljuttatott telemetria figyeléséhez.
 
 Az eszközök a telemetria használatával numerikus adatok küldését az eszközről. Egy szabály akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket.
 
-Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a környezeti érzékelő eszköz hőmérséklete meghaladja a 70&deg; F.
+Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a szimulált környezeti érzékelő eszköz hőmérséklete meghaladja a 70&deg; F.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
@@ -36,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása a IoT Central alkalmazás](./quick-create-pnp-device.md) -gyors útmutatóhoz a **környezeti érzékelő** eszköz sablonjának létrehozásához.
+Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása a IoT Central alkalmazás](./quick-create-pnp-device.md) -gyors útmutatóhoz a **MXChip IoT fejlesztői készlet** -sablon létrehozásához.
 
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
@@ -52,7 +50,7 @@ Telemetria szabály létrehozásához az eszköz sablonjának meg kell határozn
 
 1. A szabály azonosításához adja meg a name _hőmérséklet-figyelőt_ , majd nyomja le az ENTER billentyűt.
 
-1. Válassza ki a **környezeti érzékelő** eszköz sablonját. Alapértelmezés szerint a szabály automatikusan az eszköz sablonhoz társított összes eszközre vonatkozik. Az eszközök egy részhalmazának szűréséhez válassza a **+ szűrés** lehetőséget, és használja az eszköz tulajdonságait az eszközök azonosításához. A szabály letiltásához állítsa be az **engedélyezett/letiltott** gombot a szabály fejlécében:
+1. Válassza ki a **MXChip IoT fejlesztői készlet** -eszköz sablonját. Alapértelmezés szerint a szabály automatikusan az eszköz sablonhoz társított összes eszközre vonatkozik. Az eszközök egy részhalmazának szűréséhez válassza a **+ szűrés** lehetőséget, és használja az eszköz tulajdonságait az eszközök azonosításához. A szabály letiltásához állítsa be az **engedélyezett/letiltott** gombot a szabály fejlécében:
 
     ![Szűrők és engedélyezés](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ A **+ feltétel**lehetőség kiválasztásával több feltételt is hozzáadhat 
 
 ### <a name="configure-actions"></a>Műveletek konfigurálása
 
-Miután definiálta a feltételt, beállíthatja, hogy a szabály milyen műveleteket végezhet el. A rendszer meghívja a műveleteket, ha a szabályban megadott összes feltétel igaz értékre van kiértékelve. Jelenleg az egyetlen elérhető művelet a levelezés.
+Miután definiálta a feltételt, beállíthatja, hogy a szabály milyen műveleteket végezhet el. A rendszer meghívja a műveleteket, ha a szabályban megadott összes feltétel igaz értékre van kiértékelve.
 
 1. Válassza a **+ e-mail** lehetőséget a **műveletek** szakaszban.
 

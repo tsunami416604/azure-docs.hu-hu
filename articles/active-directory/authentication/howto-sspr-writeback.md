@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f1fa447312ad6a1f92eaed1164020cb6ee95606e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847252"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161596"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: a jelszó visszaírási konfigurálása
 
@@ -35,7 +35,7 @@ Az alábbi lépések feltételezik, hogy már konfigurálta Azure AD Connect a k
 A jelszó-visszaírási kapcsolatos gyakori hibaelhárítási feladatokért tekintse meg a hibaelhárítási cikkben a [jelszó visszaírási hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) című szakaszt.
 
 > [!WARNING]
-> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../develop/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
+> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../azuread-dev/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
 >
 > A szolgáltatás megszakadásának elkerülése érdekében frissítse a Azure AD Connect egy korábbi verziójáról egy újabb verzióra, és tekintse meg a [Azure ad Connect: frissítés korábbi verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md) című cikket.
 >
@@ -53,7 +53,7 @@ A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő 
 * E3 vagy a3 Microsoft 365
 * Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Vállalati verzió
+* Microsoft 365 Business
 
 > [!WARNING]
 > Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.

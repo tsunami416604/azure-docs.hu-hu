@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639871"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161936"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionális vész-helyreállítás Azure Databricks-fürtökhöz
 
@@ -37,7 +37,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
    1. Több Azure Databricks munkaterület kiépítése különálló Azure-régiókban. Hozza létre például az elsődleges Azure Databricks munkaterületet a Kelet-RÉGIÓJA. Hozza létre a másodlagos katasztrófa-helyreállítási Azure Databricks munkaterületet egy külön régióban, például az USA nyugati régiójában.
 
-   2. [Geo-redundáns tárolás](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)használata. A rendszer alapértelmezés szerint az Azure Storage-ban tárolja az Azure Databricks társított adatmennyiséget. Az Databricks-feladatok eredményeit az Azure Blob Storage is tárolja, így a feldolgozott adatok tartósak maradnak, és a fürt leállítása után is nagyon elérhetők maradnak. Mivel a Storage és a Databricks fürt közös elhelyezésű, a földrajzilag redundáns tárolást kell használnia, hogy az adatelérést a másodlagos régióban lehessen elérni, ha az elsődleges régió már nem érhető el.
+   2. [Geo-redundáns tárolás](../storage/common/storage-redundancy.md)használata. A rendszer alapértelmezés szerint az Azure Storage-ban tárolja az Azure Databricks társított adatmennyiséget. Az Databricks-feladatok eredményeit az Azure Blob Storage is tárolja, így a feldolgozott adatok tartósak maradnak, és a fürt leállítása után is nagyon elérhetők maradnak. Mivel a Storage és a Databricks fürt közös elhelyezésű, a földrajzilag redundáns tárolást kell használnia, hogy az adatelérést a másodlagos régióban lehessen elérni, ha az elsődleges régió már nem érhető el.
 
    3. A másodlagos régió létrehozása után át kell telepítenie a felhasználókat, a felhasználói mappákat, a jegyzetfüzeteket, a fürtkonfiguráció, a feladatok konfigurációját, a kódtárakat, a tárolót, az inicializálási parancsfájlokat és a hozzáférés-vezérlés újrakonfigurálását. A következő szakaszban további részleteket is ismertetünk.
 

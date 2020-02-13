@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697744"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161134"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory engedélyezési keretrendszer
 
@@ -28,7 +28,7 @@ A keretrendszer egy olyan felhasználó vagy rendszergazda számára, aki beleeg
 
 A hozzájárulási keretrendszer a OAuth 2,0-ra és annak különböző folyamataira épül, például az engedélyezési kód engedélyezésére és az ügyfél hitelesítő adataira a nyilvános vagy bizalmas ügyfelek használatával. Az OAuth 2,0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazás (például telefon, tábla, kiszolgáló vagy webalkalmazás) kiépítését, és hozzáférést biztosít a szükséges erőforrásokhoz.
 
-További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v1-protocols-oauth-code.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](authentication-scenarios.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)használatával.
+További információ a OAuth 2.0 engedélyezési támogatással rendelkező hozzájárulási keretrendszer használatáról: [hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és](v2-oauth2-auth-code-flow.md) az Azure ad és [Az Azure ad hitelesítési forgatókönyvei](authentication-scenarios.md)használatával. További információ az Office 365-hez való jogosult hozzáférésről Microsoft Graphon keresztül: az [alkalmazás hitelesítése Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)használatával.
 
 ## <a name="consent-experience---an-example"></a>Beleegyező felhasználói élmény – példa
 
@@ -42,13 +42,13 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
 
 1. Ha a felhasználó még nincs hitelesítve, az Azure AD `/authorize`-végpontja kéri a felhasználót, hogy jelentkezzen be.
 
-    ![Felhasználói vagy rendszergazdai bejelentkezés az Azure AD-be](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Felhasználói vagy rendszergazdai bejelentkezés az Azure AD-be](./media/consent-framework/usersignin.png)
 
 1. Miután a felhasználó bejelentkezett, az Azure AD megállapítja, hogy a felhasználónak meg kell-e jelenítenie egy beleegyező lapot. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazáshoz való hozzájárulásukat. Ha még nem adta meg a jóváhagyást, az Azure AD belekéri a felhasználót, és megjeleníti a működéséhez szükséges engedélyeket. A beleegyezési párbeszédpanelen megjelenő engedélyek halmaza megegyezik a Azure Portal **delegált engedélyeiben** kiválasztott engedélyekkel.
 
-    ![A belefoglalt hozzáférési párbeszédpanelen megjelenő engedélyek példáját jeleníti meg](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![A belefoglalt hozzáférési párbeszédpanelen megjelenő engedélyek példáját jeleníti meg](./media/consent-framework/consent.png)
 
-1. Miután a felhasználó beleegyezett a hozzájárulásba, a rendszer egy engedélyezési kódot ad vissza az alkalmazásnak, amely a hozzáférési jogkivonat és a frissítési jogkivonat beszerzésére lett beváltva. További információ erről a folyamatról: [webes API-alkalmazás típusa](web-api.md).
+1. Miután a felhasználó beleegyezett a hozzájárulásba, a rendszer egy engedélyezési kódot ad vissza az alkalmazásnak, amely a hozzáférési jogkivonat és a frissítési jogkivonat beszerzésére lett beváltva. További információ erről a folyamatról: [OAuth 2,0 engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md).
 
 1. Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a rendszer a bérlő összes felhasználója számára megjelenjen a belefoglalt hozzáférés párbeszédablakban, és a rendszergazda szerepkörrel rendelkező felhasználók [Azure Portal](https://portal.azure.com) is elvégezhető. Ha meg szeretné tudni, hogy mely rendszergazdai szerepkörök jogosultak a delegált engedélyekre, tekintse meg az [Azure ad-beli rendszergazdai szerepkörre vonatkozó engedélyeket](../users-groups-roles/directory-assign-admin-roles.md).
 

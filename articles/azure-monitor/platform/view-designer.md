@@ -6,18 +6,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/22/2018
-ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2019
+ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363200"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166463"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> A Azure Monitorban megjelenő nézeteket a rendszer fokozatosan kicseréli, és olyan [munkafüzetek](workbooks-overview.md) helyébe lép, amelyek további funkciókat biztosítanak. A meglévő nézetek munkafüzetekbe konvertálásával kapcsolatos részletekért tekintse meg a [Azure monitor View Designer és a munkafüzetek áttérési útmutatóját](view-designer-conversion-overview.md) .
 
 További információ a tervező nézetéről:
 
@@ -32,7 +33,7 @@ A nézetek a Azure Portal Azure Monitor **Áttekintés** lapján jelennek meg. N
 
 A tervező nézettel létrehozott nézetek a következő táblázatban ismertetett elemeket tartalmazzák:
 
-| Rész | Leírás |
+| Részeként | Leírás |
 |:--- |:--- |
 | Csempék | Megjelenik a Azure Monitor **áttekintése** oldalon. Az egyes csempék az általa képviselt egyéni nézet vizuális összegzését jelenítik meg. Mindegyik csempe típusa különböző vizualizációkat biztosít a rekordokhoz. Az egyéni nézet megjelenítéséhez ki kell választania egy csempét. |
 | Egyéni nézet | Egy csempe kiválasztásakor jelenik meg. Minden nézet egy vagy több vizualizációs alkatrészt tartalmaz. |
@@ -49,7 +50,7 @@ A tervező nézettel létrehozott nézetek a következő beállításokat jelen�
 
 A beállításokat a következő táblázat ismerteti:
 
-| Lehetőség | Leírás |
+| Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | A legújabb adattal frissíti a nézetet. | 
 | Naplók      | Megnyitja a [log Analytics](../log-query/portals.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
@@ -95,7 +96,7 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 
 ![Szerkesztés menü](media/view-designer/edit-menu.png)
 
-| Lehetőség | Leírás |
+| Beállítás | Leírás |
 |:--|:--|
 | Mentés        | Menti a módosításokat, és bezárja a nézetet. |
 | Mégse      | Elveti a módosításokat, és bezárja a nézetet. |

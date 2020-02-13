@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD hitelesítési el az Azure Media Services API .NET-tel |} A Microsoft Docs
-description: Ez a témakör bemutatja az Azure Active Directory (Azure AD-) hitelesítés használata a .NET-tel az Azure Media Services (AMS) API eléréséhez.
+title: Az Azure AD-hitelesítés használata az Azure Media Services API .NET-tel való eléréséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használható a Azure Active Directory (Azure AD) hitelesítés a Azure Media Services (AMS) API .NET-tel való eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,92 +13,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b53fca292630ef988ee1357ea50adc4d7b7e9be5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726556"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162879"
 ---
-# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata az Azure Media Services API .NET-keretrendszerrel történő eléréséhez
+# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata Azure Media Services API .NET-tel való eléréséhez
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Windowsazure.mediaservices 4.0.0.4 verziótól kezdődően az Azure Media Services támogatja az Azure Active Directory (Azure AD-) alapú hitelesítést. Ez a témakör bemutatja, hogyan eléréséhez az Azure Media Services API a Microsoft .NET-tel az Azure AD-hitelesítés használható.
+A windowsazure. Mediaservices 4.0.0.4 kezdve a Azure Media Services támogatja a Azure Active Directory (Azure AD) alapján történő hitelesítést. Ebből a témakörből megtudhatja, hogyan használhatja az Azure AD-hitelesítést a Azure Media Services API Microsoft .NET-hoz való eléréséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure-fiók. További részletek: [Ingyenes Azure-próbafiók](https://azure.microsoft.com/pricing/free-trial/). 
-- Egy Media Services-fiók. További információkért lásd: [hozzon létre egy Azure Media Services-fiók az Azure portal használatával](media-services-portal-create-account.md).
-- A legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) csomagot.
-- A témakörre való ismerkedés során bizonyulhat [elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés](media-services-use-aad-auth-to-access-ams-api.md). 
+- Egy Media Services-fiók szükséges. További információ: [Azure Media Services fiók létrehozása a Azure Portal használatával](media-services-portal-create-account.md).
+- A legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -csomag.
+- A [Azure Media Services API Azure ad-hitelesítéssel történő elérésének áttekintése](media-services-use-aad-auth-to-access-ams-api.md)című témakör ismerete. 
 
-Ha az Azure Media Services Azure AD-hitelesítést használ, két módon hitelesítheti:
+Az Azure AD-hitelesítés Azure Media Services használatával történő használatakor kétféleképpen végezheti el a hitelesítést:
 
-- **Felhasználói hitelesítés** hitelesíti magát az a személy, aki használja az alkalmazást kezelheti az Azure Media Services-erőforrások. Az interaktív alkalmazás először kéri a felhasználótól a hitelesítő adatokat. Ilyen például, a kódolási feladatok figyelésére, vagy az élő adások online közvetítése jogosult felhasználók által használt felügyeleti konzolalkalmazást. 
-- **Egyszerű szolgáltatásnév hitelesítése** szolgáltatás hitelesíti. Alkalmazásokat, amelyek gyakran használják ezt a hitelesítési módszert démonszolgáltatásokat, a középső rétegű services vagy az ütemezett feladatok, például a web apps, a függvényalkalmazások, a logic apps, API-k vagy mikroszolgáltatás-alapú alkalmazások.
+- A **felhasználói hitelesítés** az alkalmazást használó személyt hitelesíti Azure Media Services erőforrásokkal való kommunikációhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a hitelesítő adatok megadására. Ilyen például az a felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak. 
+- A **szolgáltatás egyszerű hitelesítése** hitelesíti a szolgáltatást. Azok az alkalmazások, amelyek gyakran használják ezt a hitelesítési módszert a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok, például a Web Apps, a Function apps, a Logic apps, az API-k vagy a Service-alkalmazások futtatásához.
 
 >[!IMPORTANT]
->Az Azure Media Services jelenleg támogatja az Azure Access Control Service-hitelesítési modellre. Azonban hozzáférés-vezérlés engedélyezési fog 2018. június 22 elavulttá válik. Azt javasoljuk, hogy telepít át egy Azure Active Directory-hitelesítési modellre minél hamarabb.
+>Az Azure Media Service jelenleg egy Azure Access Control Service hitelesítési modellt támogat. A Access Control engedélyezése azonban a 2018-es június 22-én lesz elavult. Javasoljuk, hogy a lehető leghamarabb telepítse át Azure Active Directory hitelesítési modellre.
 
-## <a name="get-an-azure-ad-access-token"></a>Az Azure AD hozzáférési token beszerzése
+## <a name="get-an-azure-ad-access-token"></a>Azure AD hozzáférési jogkivonat beszerzése
 
-Ha csatlakozni szeretne az Azure Media Services API Azure AD-hitelesítés, az ügyfélalkalmazás kell az Azure AD hozzáférési jogkivonat kérése. A Media Services .NET client SDK használatakor az Azure AD hozzáférési jogkivonat beszerzése részleteit számos burkolt be, és Önnek az egyszerűsített a [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) és [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs)osztályokat. 
+Ha az Azure AD-hitelesítéssel szeretne csatlakozni a Azure Media Services API-hoz, az ügyfélalkalmazás Azure AD hozzáférési jogkivonatot kell kérnie. Ha a Media Services .NET Client SDK-t használja, az Azure AD hozzáférési jogkivonatok beszerzésének számos részlete a [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) és a [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) osztályban van becsomagolva és egyszerűsítve. 
 
-Például, hogy nem kell adja meg az Azure AD-szolgáltatót, a Media Services-erőforrás URI-t vagy a natív Azure AD alkalmazás részleteit. Ezek a jól ismert értékek, amelyek már az Azure AD hozzáférési jogkivonat-szolgáltató osztály alapján. 
+Például nem kell megadnia az Azure AD-szolgáltatót, Media Services erőforrás URI-JÁT vagy a natív Azure AD-alkalmazás részleteit. Ezek olyan jól ismert értékek, amelyeket az Azure AD hozzáférési jogkivonat-szolgáltatói osztálya már konfigurált. 
 
-Ha nem az Azure Media Service .NET SDK-t használ, azt javasoljuk, hogy használja a [Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md). Használatával lekérjük az értékeket a paraméterek, amelyek az Azure AD Authentication Library szüksége, tekintse meg a [az Azure portal használata az Azure AD-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md).
+Ha nem az Azure Media Service .NET SDK-t használja, javasoljuk, hogy használja az [Azure ad hitelesítési függvénytárat](../../active-directory/azuread-dev/active-directory-authentication-libraries.md). Az Azure AD hitelesítési függvénytárhoz használni kívánt paraméterek értékeinek lekéréséhez lásd: [a Azure Portal használata az Azure ad-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md).
 
-Lehetősége is van, hogy az alapértelmezett megvalósítása a **AzureAdTokenProvider** a saját implementációjához.
+Lehetősége van arra is, hogy lecserélje a **AzureAdTokenProvider** alapértelmezett implementációját a saját megvalósítására.
 
-## <a name="install-and-configure-azure-media-services-net-sdk"></a>Telepítse és konfigurálja az Azure Media Services .NET SDK
+## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK telepítése és konfigurálása
 
 >[!NOTE] 
->A Media Services .NET SDK használatával az Azure AD-hitelesítés használatához szüksége lesz a legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) csomagot. Ezenkívül vegyen fel egy hivatkozást a **Microsoft.IdentityModel.Clients.ActiveDirectory** sestavení. Ha egy meglévő alkalmazást használ, a **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** sestavení. 
+>Ha az Azure AD-hitelesítést a Media Services .NET SDK-val szeretné használni, rendelkeznie kell a legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -csomaggal. Továbbá adjon hozzá egy hivatkozást a **Microsoft. IdentityModel. clients. ActiveDirectory** szerelvényhez. Ha meglévő alkalmazást használ, foglalja bele a **Microsoft. WindowsAzure. MediaServices. Client. Common. Authentication. dll** szerelvényt. 
 
-1. Hozzon létre egy új C# konzolalkalmazást a Visual Studióban.
-2. Használja a [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-csomag telepítéséhez **Azure Media Services .NET SDK**. 
+1. Hozzon létre C# egy új Console-alkalmazást a Visual Studióban.
+2. **Azure Media Services .net SDK**telepítéséhez használja a [windowsazure. Mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-csomagot. 
 
-    Hivatkozások NuGet használatával hozzáadásához tegye a következőket: a **Megoldáskezelőben**, és kattintson a jobb gombbal a projekt nevére, majd válassza ki **NuGet-csomagok kezelése**. Ezután keresse meg **windowsazure.mediaservices** válassza **telepítése**.
+    Ha a NuGet használatával szeretne hivatkozásokat felvenni, hajtsa végre a következő lépéseket: **megoldáskezelő**kattintson a jobb gombbal a projekt nevére, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keressen rá a **windowsazure. Mediaservices** kifejezésre, és válassza a **telepítés**lehetőséget.
     
     – vagy –
 
-    Futtassa a következő parancsot **Package Manager Console** a Visual Studióban.
+    Futtassa a következő parancsot a **Package Manager konzolon** a Visual Studióban.
 
         Install-Package windowsazure.mediaservices -Version 4.0.0.4
 
-3. Adjon hozzá **használatával** a forráskódhoz.
+3. Adja hozzá a **használatát** a forráskódhoz.
 
         using Microsoft.WindowsAzure.MediaServices.Client; 
 
 ## <a name="use-user-authentication"></a>Felhasználói hitelesítés használata
 
-Ha csatlakozni szeretne az Azure Media Service API-t a felhasználó-hitelesítési lehetőséget, az ügyfélalkalmazás kell kérése az Azure AD-token a következő paraméterek használatával:  
+Ha az Azure Media Service API-hoz szeretne csatlakozni a felhasználói hitelesítés beállítással, az ügyfélalkalmazás a következő paraméterekkel kell igényelnie az Azure AD-jogkivonatot:  
 
-- Az Azure AD-bérlő végpont. A bérlői kapcsolatos információkat az Azure Portalról kérhető. A jobb felső sarokban a bejelentkezett felhasználó a kurzort.
-- Media Services-erőforrás URI-t.
-- A Media Services (natív) alkalmazás ügyfél-azonosító. 
-- A Media Services (natív) alkalmazás átirányítási URI-t. 
+- Azure AD-bérlői végpont. A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó fölé a jobb felső sarokban.
+- Media Services erőforrás URI-ja.
+- Media Services (natív) alkalmazás ügyfél-azonosítója. 
+- Media Services (natív) alkalmazás átirányítási URI-ja. 
 
-Ezek a paraméterek értékei található **AzureEnvironments.AzureCloudEnvironment**. A **AzureEnvironments.AzureCloudEnvironment** állandó van a .NET SDK-val lekérheti a megfelelő környezetet egy nyilvános Azure-adatközpontok környezetiváltozó-beállításainak a segítő. 
+A paraméterek értékei a következő címen találhatók: **AzureEnvironments. AzureCloudEnvironment**. A **AzureEnvironments. AzureCloudEnvironment** állandó a .net SDK egyik segítője, amely egy nyilvános Azure-adatközpont megfelelő környezeti változójának beállítására szolgál. 
 
-Előre definiált környezeti beállítások eléréséhez a Media Services csak a nyilvános adatközpontokban tartalmazza. A független vagy a kormányzati felhő-régiók, használhatja **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**, vagy **AzureGermanCloudEnvironment** jelölik.
+Előre definiált környezeti beállításokat tartalmaz, amelyek csak a nyilvános adatközpontokban lévő Media Services elérésére használhatók. Szuverén vagy kormányzati Felhőbeli régiókban a **AzureChinaCloudEnvironment**, a **AzureUsGovernmentEnvironment**és a **AzureGermanCloudEnvironment** is használható.
 
-Az alábbi példakód létrehoz egy jogkivonatot:
+A következő kódrészlet létrehoz egy jogkivonatot:
     
     var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
   
-A Media Services elleni programozási indításához szeretne létrehozni egy **CloudMediaContext** példányt, amely a kiszolgáló helyi jelöli. A **CloudMediaContext** többek között a feladatok, objektumok, fájlok, hozzáférési házirendek és keresők fontos gyűjtemények mutató hivatkozásokat tartalmaz. 
+A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **csatlakozáshoz szükséges cloudmediacontext** olyan fontos gyűjteményekre mutató hivatkozásokat tartalmaz, mint a feladatok, az eszközök, a fájlok, a hozzáférési házirendek és a lokátorok. 
 
-Is kell átadni a **erőforrás URI-t a Media Services-REST** , a **CloudMediaContext** konstruktor. Beolvasni az erőforrás URI-t REST médiaszolgáltatások, jelentkezzen be az Azure Portalon, válassza ki az Azure Media Services-fiók, jelölje be a **API-hozzáférés**, majd válassza ki **csatlakozhat az Azure Media Services és a felhasználói hitelesítés**. 
+A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A Media REST-szolgáltatások erőforrás-URI-ja beszerzéséhez jelentkezzen be a Azure Portalba, válassza ki a Azure Media Services fiókját, válassza az **API-hozzáférés**lehetőséget, majd válassza a **Kapcsolódás a Azure Media Serviceshoz felhasználói hitelesítéssel**lehetőséget. 
 
-Az alábbi példakód létrehoz egy **CloudMediaContext** példány:
+A következő mintakód egy **csatlakozáshoz szükséges cloudmediacontext** -példányt hoz létre:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
 
-Az alábbi példa bemutatja, hogyan hozhat létre az Azure ad-ben és a környezetet:
+Az alábbi példa bemutatja, hogyan hozhatja létre az Azure AD-tokent és a környezetet:
 
     namespace AzureADAuthSample
     {
@@ -125,19 +125,19 @@ Az alábbi példa bemutatja, hogyan hozhat létre az Azure ad-ben és a környez
     }
 
 >[!NOTE]
->Ha a kivételt, amely szerint "a távoli kiszolgáló hibát adott vissza: Jogosulatlan (401-es)"tekintse meg a [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés szakaszában.
+>Ha olyan kivételt kap, amely azt jelzi, hogy "a távoli kiszolgáló a következő hibát adta vissza: (401) nem engedélyezett", tekintse meg a [hozzáférés-vezérlési](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakaszt a Azure Media Services API Azure ad-hitelesítéssel történő elérésének áttekintésével
 
-## <a name="use-service-principal-authentication"></a>Használja az egyszerű szolgáltatásnév hitelesítése
+## <a name="use-service-principal-authentication"></a>Egyszerű szolgáltatás hitelesítésének használata
     
-Csatlakozni az Azure Media Services API a szolgáltatást a középső rétegbeli alkalmazás egyszerű lehetőséggel kell (web API-t vagy webes alkalmazás) kér az Azure AD-token, a következő paraméterekkel:  
+Ha csatlakozni szeretne a Azure Media Services API-hoz az egyszerű szolgáltatásnév beállítással, a középső rétegbeli alkalmazásnak (webes API-nak vagy webalkalmazásnak) egy Azure AD-jogkivonatot kell igényelni a következő paraméterekkel:  
 
-- Az Azure AD-bérlő végpont. A bérlői kapcsolatos információkat az Azure Portalról kérhető. A jobb felső sarokban a bejelentkezett felhasználó a kurzort.
-- Media Services-erőforrás URI-t.
-- Az Azure AD-alkalmazás értékeire: a **ügyfél-azonosító** és **titkos Ügyfélkód**.
+- Azure AD-bérlői végpont. A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó fölé a jobb felső sarokban.
+- Media Services erőforrás URI-ja.
+- Azure AD-alkalmazás értékei: az **ügyfél-azonosító** és az **ügyfél titka**.
 
-A tartozó értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód** paramétereket az Azure Portalon tekintheti meg. További információkért lásd: [Ismerkedés az Azure AD-hitelesítés az Azure portal használatával](media-services-portal-get-started-with-aad.md).
+Az **ügyfél-azonosító** és az **ügyfél titkos** paramétereinek értékei a Azure Portal találhatók. További információ: [Az Azure ad-hitelesítés használatának első lépései a Azure Portal használatával](media-services-portal-get-started-with-aad.md).
 
-Az alábbi példakód létrehoz egy jogkivonat használatával a **AzureAdTokenCredentials** konstruktort, amely a **AzureAdClientSymmetricKey** paramétert: 
+A következő mintakód létrehoz egy jogkivonatot a **AzureAdTokenCredentials** konstruktor használatával, amely paraméterként a **AzureAdClientSymmetricKey** fogadja: 
     
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"), 
@@ -145,21 +145,21 @@ Az alábbi példakód létrehoz egy jogkivonat használatával a **AzureAdTokenC
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-Azt is megadhatja a **AzureAdTokenCredentials** konstruktort, amely a **AzureAdClientCertificate** paraméterként. 
+Megadhatja azt a **AzureAdTokenCredentials** konstruktort is, amely paraméterként fogadja a **AzureAdClientCertificate** . 
 
-Hogyan hozhat létre, és a egy tanúsítvány konfigurálása az Azure AD által felhasználható formában kapcsolatos útmutatásért lásd: [tanúsítványok – manuális konfigurációs lépés végrehajtásával démon alkalmazások az Azure ad hitelesítése](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
+A tanúsítványoknak az Azure AD által használható űrlapon való létrehozásával és konfigurálásával kapcsolatos utasításokért lásd: [hitelesítés az Azure ad-ben az Active Directory-alkalmazásokban, tanúsítványokkal – manuális konfigurációs lépések](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
 
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureCloudEnvironment);
 
-A Media Services elleni programozási indításához szeretne létrehozni egy **CloudMediaContext** példányt, amely a kiszolgáló helyi jelöli. Is kell átadni a **erőforrás URI-t a Media Services-REST** , a **CloudMediaContext** konstruktor. Beszerezheti a **erőforrás URI-t a Media Services-REST** érték is az Azure Portalról.
+A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A **Media Rest Services** értékének erőforrás-URI-ja a Azure Portal is beszerezhető.
 
-Az alábbi példakód létrehoz egy **CloudMediaContext** példány:
+A következő mintakód egy **csatlakozáshoz szükséges cloudmediacontext** -példányt hoz létre:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
     
-Az alábbi példa bemutatja, hogyan hozhat létre az Azure ad-ben és a környezetet:
+Az alábbi példa bemutatja, hogyan hozhatja létre az Azure AD-tokent és a környezetet:
 
     namespace AzureADAuthSample
     {
@@ -189,6 +189,6 @@ Az alábbi példa bemutatja, hogyan hozhat létre az Azure ad-ben és a környez
         }
     }
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerkedés a [fájlokat tölthet fel a fiók](media-services-dotnet-upload-files.md).
+Ismerkedés a [fájlok feltöltésével a fiókjába](media-services-dotnet-upload-files.md).

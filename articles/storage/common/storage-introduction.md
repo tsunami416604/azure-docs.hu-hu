@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970212"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157584"
 ---
-# <a name="introduction-to-azure-storage"></a>Az Azure Storage bemutatása
+# <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
 Az Azure Storage a Microsoft felhőalapú tárolási megoldása a modern adattárolási forgatókönyvekhez. Az Azure Storage az adatobjektumok nagymértékben skálázható objektumtárolását, a felhő fájlrendszer-szolgáltatását, a megbízható üzenetküldést elősegítő üzenettárolást és egy NoSQL-tárolót biztosít. Az Azure Storage:
 
@@ -36,7 +36,7 @@ Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza:
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-account-create.md).
 
-## <a name="blob-storage"></a>Blobtároló
+## <a name="blob-storage"></a>Blob Storage
 
 Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatok tárolására van optimalizálva.
 
@@ -84,7 +84,7 @@ Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Stor
 
 További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md).
 
-## <a name="disk-storage"></a>Disk Storage
+## <a name="disk-storage"></a>Lemezes tárolás
 
 Az Azure Managed Disk egy virtuális merevlemez (VHD). Úgy gondolhatja, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. Az Azure Managed Disks szolgáltatás blobként tárolódik, amely az Azure-ban egy véletlenszerű IO Storage-objektum. A felügyelt lemezeket nevezzük felügyelt, mivel ez egy absztrakt lap Blobok, blob-tárolók és Azure Storage-fiókok esetében. A felügyelt lemezekkel mindössze annyit kell tennie, hogy kiépíti a lemezt, az Azure pedig gondoskodik a többiről.
 
@@ -120,11 +120,9 @@ Az Azure Storage ügyféloldali kódtárai módszerekkel titkosítják az adatok
 
 ## <a name="redundancy"></a>Redundancia
 
-Az adatok tartósságának biztosítása érdekében az Azure Storage több példányban replikálja az adatokat. A Storage-fiók beállításakor ki kell választania egy redundancia beállítást.
+Az Azure Storage több példányban tárolja az adatait, így biztosítva, hogy az adatai tartósak legyenek. A Storage-fiók beállításakor ki kell választania egy redundancia beállítást.
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-A vész-helyreállítási szolgáltatással kapcsolatos további információkért lásd: vész- [helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage-ba és az Azure Storage-ból
 

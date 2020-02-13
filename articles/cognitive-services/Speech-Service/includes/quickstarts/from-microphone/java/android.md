@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9a260577906ec94ecba87bb1be02fe35d8c763b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467834"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156295"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +58,7 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) is. Használja például az ingyenes próba-előfizetéshez `westus`.
+1. Az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` karakterláncát is cserélje le. Használja például az ingyenes próba-előfizetéshez `westus`.
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 

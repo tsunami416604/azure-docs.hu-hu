@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 8d1b032ff1805b34359dfa4ca8269bbf82c9ef27
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 084cd852e0211ea494504a0d6e2350df567de0b1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774091"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117795"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Egyéni Azure-előfizetés regisztrálása és a költségadatok megtekintése
 
@@ -22,7 +22,7 @@ Az Azure-előfizetésével regisztrálhat a Cloudynbe. A regisztráció hozzáf�
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-- Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+- Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="register-with-cloudyn"></a>Regisztráció a Cloudynben
 

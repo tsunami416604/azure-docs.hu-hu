@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616276"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158145"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával
 
@@ -49,7 +49,7 @@ A Kubernetes-fürtön belül a rendszer webhook jogkivonat-hitelesítést haszn�
 
 Az AK-nal való integráláshoz hozzon létre és használjon egy Azure AD-alkalmazást, amely végpontként működik az azonosító kérésekhez. Az első Azure AD-alkalmazásnak szüksége lesz az Azure AD-csoporttagság beszerzésére egy felhasználó számára.
 
-Hozza létre a kiszolgálóalkalmazás-összetevőt az az [AD App Create][az-ad-app-create] paranccsal, majd frissítse a csoporttagság jogcímeit az az [AD App Update][az-ad-app-update] parancs használatával. A következő példa az alapismeretek [szakaszban](#before-you-begin) definiált *aksname* változót használja, és létrehoz egy változót.
+Hozza létre a kiszolgálóalkalmazás-összetevőt az az [AD App Create][az-ad-app-create] paranccsal, majd frissítse a csoporttagság jogcímeit az az [AD App Update][az-ad-app-update] parancs használatával. A következő [példa az alapismeretek szakaszban](#before-you-begin) definiált *aksname* változót használja, és létrehoz egy változót.
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-Most hozzon létre egy egyszerű szolgáltatásnevet a Server-alkalmazáshoz az az [ad SP Create][az-ad-sp-create] parancs használatával. Ez az egyszerű szolgáltatásnév az Azure platformon történő hitelesítésre szolgál. Ezután szerezze be a szolgáltatás egyszerű kulcsát az az [ad SP hitelesítőadat][az-ad-sp-credential-reset] -visszaállítási parancs használatával, és rendelje hozzá a *serverApplicationSecret* nevű változóhoz az alábbi lépések egyikében:
+Most hozzon létre egy egyszerű szolgáltatásnevet a Server-alkalmazáshoz az az [ad SP Create][az-ad-sp-create] parancs használatával. Ez az egyszerű szolgáltatásnév az Azure platformon történő hitelesítésre szolgál. Ezután szerezze be a szolgáltatás egyszerű kulcsát az az [ad SP hitelesítőadat-visszaállítási][az-ad-sp-credential-reset] parancs használatával, és rendelje hozzá a *serverApplicationSecret* nevű változóhoz az alábbi lépések egyikében:
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -172,7 +172,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a *userPrincipalName*alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a *objectId* tulajdonság lekérdezése és használata.
 
-Hozzon létre egy nevű `basic-azure-ad-binding.yaml` YAML-jegyzékfájlt, és illessze be a következő tartalmakat. Az utolsó sorban cserélje le az *userPrincipalName_or_objectId* elemet az előző parancs UPN-vagy objektumazonosító-kimenetére:
+Hozzon létre egy `basic-azure-ad-binding.yaml` nevű YAML-jegyzékfájlt, és illessze be a következő tartalmakat. Az utolsó sorban cserélje le a *userPrincipalName_or_objectId* elemet az előző parancs UPN-vagy objektumazonosító-kimenetével:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -197,7 +197,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>Fürt elérése az Azure AD-vel
 
-Most teszteljük az Azure AD-hitelesítés az AK-fürthöz való integrálását. A `kubectl` konfigurációs környezet beállítása normál felhasználói hitelesítő adatok használatára. Ez a környezet továbbítja az összes hitelesítési kérést az Azure AD-n keresztül.
+Most teszteljük az Azure AD-hitelesítés az AK-fürthöz való integrálását. Állítsa be a `kubectl` konfigurációs környezetét normál felhasználói hitelesítő adatok használatára. Ez a környezet továbbítja az összes hitelesítési kérést az Azure AD-n keresztül.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -228,7 +228,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-A `kubectl` rendszer gyorsítótárazza a által fogadott hitelesítési jogkivonatot. A rendszer csak akkor kéri a bejelentkezést, ha a jogkivonat lejárt, vagy a Kubernetes konfigurációs fájl újból létrejön.
+A `kubectl`hoz kapott hitelesítési jogkivonat gyorsítótárazva van. A rendszer csak akkor kéri a bejelentkezést, ha a jogkivonat lejárt, vagy a Kubernetes konfigurációs fájl újból létrejön.
 
 Ha a következő példában szereplő kimenetben sikeresen bejelentkezett egy webböngészővel, akkor a következő lehetséges problémákkal kapcsolatos hibaüzenet jelenik meg:
 
@@ -238,9 +238,9 @@ error: You must be logged in to the server (Unauthorized)
 
 * A megfelelő objektumazonosítót vagy UPN-t definiálta attól függően, hogy a felhasználói fiók ugyanahhoz az Azure AD-bérlőhöz van-e társítva.
 * A felhasználó nem tagja több mint 200 csoportnak.
-* Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel`--aad-server-app-secret`
+* Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a `--aad-server-app-secret` használatával konfigurált értékkel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 
@@ -260,7 +260,7 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update

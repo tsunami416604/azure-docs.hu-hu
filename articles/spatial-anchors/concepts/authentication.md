@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152601"
+ms.locfileid: "77161681"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -92,7 +92,7 @@ Ha elkészült, az SDK kezeli a hozzáférési tokenhez tartozó fiók kulcsána
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD-beli felhasználói hitelesítés
 
-Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlott módszer egy Azure AD-jogkivonat használata a felhasználó számára, amely a ADAL-könyvtár használatával szerezhető be a következő dokumentációban leírtak szerint: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); Kövesse a "Gyors indítás" szakaszban felsorolt lépéseket, amelyek a következőket tartalmazzák:
+Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlott módszer egy Azure AD-jogkivonat használata a felhasználó számára, amelyet a [MSAL-könyvtár](../../active-directory/develop/msal-overview.md)használatával szerezhet be. Kövesse az [alkalmazás regisztrálása](../../active-directory/develop/quickstart-register-app.md)című útmutatóban felsorolt lépéseket, amelyek a következőket tartalmazzák:
 
 1. Konfiguráció a Azure Portalban
     1.  Az alkalmazás regisztrálása az Azure AD-ben **natív alkalmazásként**. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős vagy sem, és megadja az alkalmazáshoz engedélyezett átirányítási URL-címeket.
@@ -118,7 +118,7 @@ Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlo
         3.  Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, cserélje le ezt az értéket **közösre**
     3.  A jogkivonat-kérelemben állítsa az **erőforrást** "https://sts.mixedreality.azure.com" értékre. Ez az "erőforrás" arra utal az Azure AD-ra, hogy az alkalmazás jogkivonatot kér az Azure térbeli horgonyok szolgáltatáshoz.
 
-Ezzel az alkalmazásnak képesnek kell lennie az Azure AD-token ADAL való beszerzésére; beállíthatja, hogy az Azure AD-jogkivonat **authenticationToken** legyen a felhőalapú munkamenet-konfigurációs objektumon.
+Ezzel az alkalmazásnak képesnek kell lennie az Azure AD-token MSAL való beszerzésére; beállíthatja, hogy az Azure AD-jogkivonat **authenticationToken** legyen a felhőalapú munkamenet-konfigurációs objektumon.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ Az Azure térbeli horgonyokat használó alkalmazások éles környezetben való
 
 A rendszer azt feltételezi, hogy az alkalmazás saját mechanizmust használ (például: Microsoft-fiók, PlayFab, Facebook, Google ID, Custom username/Password stb.) a háttérbeli szolgáltatáshoz való hitelesítéshez. Miután a felhasználók hitelesítése megtörtént a háttér-szolgáltatásban, a szolgáltatás lekérhet egy Azure AD-tokent, kicserélheti az Azure térbeli horgonyok hozzáférési jogkivonatára, majd visszaküldheti azt az ügyfélalkalmazás számára.
 
-Az Azure AD hozzáférési jogkivonatot a ADAL-könyvtár használatával kérdezi le a következő dokumentációban leírtak szerint: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); Kövesse a "Gyors indítás" szakaszban felsorolt lépéseket, amelyek a következőket tartalmazzák:
+Az Azure AD hozzáférési jogkivonatot a MSAL- [könyvtár](../../active-directory/develop/msal-overview.md)használatával kéri le a rendszer. Kövesse az [alkalmazás regisztrálása](../../active-directory/develop/quickstart-register-app.md)című útmutatóban felsorolt lépéseket, amelyek a következőket tartalmazzák:
 
 1.  Konfiguráció a Azure Portalban:
     1.  Az alkalmazás regisztrálása az Azure AD-ben:

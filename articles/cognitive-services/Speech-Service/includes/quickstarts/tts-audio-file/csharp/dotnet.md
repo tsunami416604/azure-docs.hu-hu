@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 17e5f35e83f5cb6e8115a9d344f93abf84e5b38a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768163"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155972"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,6 +65,9 @@ namespace helloworld
 `SpeechSynthesizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a kódot a `SynthesisToAudioFileAsync()` metódusba.
 
 ````C#
+// Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+// from here: https://aka.ms/speech/sdkregion).
+// The default language is "en-us".
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ````
 
@@ -197,7 +200,7 @@ Most már készen áll az alkalmazás létrehozására és a beszédfelismerési
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Egyéni hang létrehozása](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Egyéni hangminták rögzítése](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

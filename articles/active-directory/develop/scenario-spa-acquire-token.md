@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701926"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160066"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: token beszerzése egy API meghívásához
 
@@ -42,7 +42,7 @@ Megadhatja azokat az API-hatóköröket, amelyeknek a hozzáférési jogkivonato
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Token beszerzése előugró ablakban
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 A következő kód az előugró felület módszereivel ötvözi a korábban leírt mintát:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 A MSAL szögletes burkolója biztosítja a HTTP Interceptor-t, amely a hozzáférési jogkivonatokat csendes üzemmódban automatikusan beszerzi, és csatolja őket a HTTP-kérésekhez API-khoz.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 Azt is megteheti, hogy a tokeneket explicit módon beolvassa a beszerzési lexikális metódusok használatával, ahogy azt az alapvető MSAL. js-függvénytárban ismertetjük.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Token beszerzése átirányítás
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 A következő minta a korábban leírtaknak megfelelően, de a tokenek interaktív beszerzésére szolgáló átirányítási módszerrel látható. A korábban említettek szerint regisztrálnia kell az átirányítás visszahívását.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>Választható jogcímek kérése
+
 A választható jogcímeket a következő célokra használhatja:
 
 - Adja meg az alkalmazáshoz tartozó jogkivonatok további jogcímeit.
@@ -150,7 +153,6 @@ A választható jogcímeket a következő célokra használhatja:
 
 Ha `IdToken`nem kötelező jogcímeket szeretne kérni, küldhet egy sztringesített jogcím-objektumot az `AuthenticationParameters.ts` osztály `claimsRequest` mezőjébe.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 További információ: [opcionális jogcímek](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Ez a kód megegyezik a korábban leírtak szerint.
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

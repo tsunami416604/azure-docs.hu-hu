@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782124"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158944"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Előzetes verzió: helyszíni virtuális gépek üzembe helyezése Azure PowerShell használatával
 
@@ -29,7 +29,7 @@ Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő m
 > A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
 > Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> A nyilvános előzetes verzió korai részében a direktszínes példányok fix áron lesznek, így nem kerül sor ár-alapú kizárásra.
+
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
@@ -37,9 +37,6 @@ Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő m
 Hozzon létre egy spotVM a [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) használatával a konfiguráció létrehozásához. `-Priority Spot` belefoglalása és `-MaxPrice` beállítása a következőkre:
 - `-1`, hogy a virtuális gép árát a rendszer ne zárja ki.
 - a dollár mennyisége, legfeljebb 5 számjegy. A `-MaxPrice .98765` például azt jelenti, hogy a virtuális gép fel lesz osztva, ha egy spotVM ára körülbelül 98765 USD-t mutat.
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzió korai részében beállíthatja a maximális árat, de a rendszer figyelmen kívül hagyja. A helyszíni virtuális gépek fix áron fognak rendelkezni, így nem kerül sor ár-alapú kizárásra.
 
 
 Ez a példa olyan spotVM hoz létre, amely nem lesz kiosztva a díjszabás alapján (csak akkor, ha az Azure-ban a kapacitás vissza van rendelve).

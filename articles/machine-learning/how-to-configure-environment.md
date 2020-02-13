@@ -11,21 +11,21 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986512"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169845"
 ---
-# <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
+# <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy fejlesztési környezetet a Azure Machine Learning való együttműködéshez. Azure Machine Learning a platform agnosztikus. A fejlesztői környezetének egyetlen nehéz követelménye a Python 3. Egy elkülönített környezet (például anaconda vagy Virtualenv) is ajánlott.
 
 A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környezetet tartalmazza, valamint az előnyeit és hátrányait.
 
-| Környezet | Szakemberek | Hátrányok |
+| Környezet | Szakemberek számára | Hátrányok |
 | --- | --- | --- |
 | [Felhőalapú Azure Machine Learning számítási példány (előzetes verzió)](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
@@ -52,15 +52,11 @@ A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter 
     > [!TIP]
     > Ha Linux vagy macOS rendszerű, és a bashtől eltérő (például zsh) rendszerhéjat használ, előfordulhat, hogy bizonyos parancsok futtatásakor hibák jelentkeznek. A probléma megkerüléséhez használja a `bash` parancsot egy új bash-rendszerhéj elindításához és a parancsok futtatásához.
 
-- Windows rendszeren szükség van a parancssorra vagy az anaconda promptra (amelyet a anaconda és a Miniconda telepít).
+- A Windows, a parancssort vagy szükséges Anaconda parancssort (telepített Anaconda és Miniconda).
 
 ## <a id="compute-instance"></a>Saját felhőalapú számítási példány
 
 A Azure Machine Learning [számítási példány (előzetes verzió)](concept-compute-instance.md) egy biztonságos felhőalapú Azure-munkaállomás, amely Jupyter notebook-kiszolgálóval, JupyterLab és teljes mértékben előkészített ml-környezettel biztosítja az adatszakértőket.
-
-> [!NOTE]
-> A számítási példányok csak olyan munkaterületekhez érhetők el, ahol az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**található, és a közeljövőben más régiók is támogatást kapnak.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .
 
 A számítási példányok telepítése és konfigurálása nem szükséges.  Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
@@ -77,7 +73,7 @@ A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési 
   - Népszerű adatelemzési eszközök, mint például a Spark standalone és a drill
   - Azure-eszközök, például az Azure CLI, a AzCopy és a Storage Explorer
   - Integrált fejlesztői környezetek (ide), például a Visual Studio Code és a Notebookshoz
-  - Jupyter Notebook kiszolgáló
+  - Jupyter Notebook Server
 
 A Azure Machine Learning SDK a DSVM Ubuntu-vagy Windows-verziójával működik. Ha azonban azt tervezi, hogy a DSVM számítási célként is használja, akkor csak az Ubuntu támogatott.
 
@@ -115,7 +111,7 @@ A DSVM használata fejlesztési környezetként:
             az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
             ```
 
-2. A Azure Machine Learning SDK már telepítve van a DSVM. Az SDK-t tartalmazó Conda-környezet használatához használja a következő parancsok egyikét:
+2. A Azure Machine Learning SDK már telepítve van a DSVM. A Conda-környezet, amely tartalmazza az SDK-t használ, használja a következő parancsok egyikét:
 
     * Ubuntu DSVM esetén:
 
@@ -129,7 +125,7 @@ A DSVM használata fejlesztési környezetként:
         conda activate AzureML
         ```
 
-1. Annak ellenőrzéséhez, hogy elérhető-e az SDK, és ellenőrizze a verziót, használja a következő Python-kódot:
+1. Győződjön meg arról, hogy az SDK eléréséhez, és ellenőrizze a verziót, használja a következő Python-kódban:
 
     ```python
     import azureml.core
@@ -210,7 +206,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
 ### <a id="jupyter"></a>Jupyter notebookok
 
-A Jupyter-jegyzetfüzetek a [Jupyter projekt](https://jupyter.org/)részét képezik. Interaktív kódolási élményt biztosítanak, ahol olyan dokumentumokat hozhat létre, amelyek élő kódot és szövegeket és grafikákat vegyítenek. A Jupyter notebookok szintén nagyszerű megoldást nyújtanak az eredmények másokkal való megosztására, mivel a dokumentumban lévő kódrészletek kimenetét mentheti el. A Jupyter notebookok számos platformon telepíthetők.
+A Jupyter-jegyzetfüzetek a [Jupyter projekt](https://jupyter.org/)részét képezik. Ahol létrehozhatja az élő kód kombinálhatók a leíró szöveg és képek, dokumentumok interaktív kódolási élményt nyújtanak. A Jupyter notebookok szintén nagyszerű megoldást nyújtanak az eredmények másokkal való megosztására, mivel a dokumentumban lévő kódrészletek kimenetét mentheti el. A Jupyter Notebooks kiszállítására különböző platformokon is telepítheti.
 
 A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges összetevőket a Jupyter-jegyzetfüzetek anaconda-környezetben való futtatásához.
 
@@ -293,7 +289,7 @@ Hozzon létre egy [Databricks-fürtöt](https://docs.microsoft.com/azure/azure-d
 
 Használja ezeket a beállításokat:
 
-| Beállítás |A következőkre vonatkozik| Value (Díj) |
+| Beállítás |A következőkre vonatkozik| Érték |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
 | A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 6,0 (Scala 2,11, Spark 2.4.3) |
@@ -313,7 +309,7 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 
    |SDK&nbsp;csomag&nbsp;extrák|Forrás|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
-   |Databricks| Python-tojás vagy PyPI feltöltése | azureml – SDK [databricks]|
+   |Databricks| Python-tojás vagy PyPI feltöltése | azureml-sdk[databricks]|
    |Databricks esetében –<br> automatizált ML-képességek| Python-tojás vagy PyPI feltöltése | azureml – SDK [automl]|
 
    > [!Warning]
@@ -365,7 +361,7 @@ A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, h
 
 A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
 
-Ha ezt a fájlt a kódból szeretné használni, használja a `ws=Workspace.from_config()`. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
+Ha ezt a fájlt a kódból szeretné használni, használja a `ws=Workspace.from_config()`. Ez a kód az adatokat tölt be a fájlt, és a munkaterülethez csatlakozik.
 
 A konfigurációs fájlt háromféleképpen is létrehozhatja:
 

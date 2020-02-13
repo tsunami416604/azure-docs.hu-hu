@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864111"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157907"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
 
@@ -22,7 +22,7 @@ ms.locfileid: "75864111"
 Ebből a cikkből megtudhatja, hogyan hozhat létre VPN Gateway-kapcsolatot a virtuális hálózatok között. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. A cikkben ismertetett lépések a klasszikus üzemi modellre és a Azure Portal vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -33,7 +33,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre VPN Gateway-kapcsolatot a vi
 
 ![VNet a VNet kapcsolati diagramhoz](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>Tudnivalók a virtuális hálózatok közötti kapcsolatokról
 
@@ -61,7 +61,7 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, [A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok](#faq) című részben talál.
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 A gyakorlat megkezdése előtt töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. A legtöbb lépésben a portált használjuk, de a PowerShell használatával kell létrehoznia a virtuális hálózatok közötti kapcsolatokat. A kapcsolatok nem hozhatók létre a Azure Portal használatával.
 
@@ -73,7 +73,7 @@ Az alábbi táblázat a virtuális hálózatok definiálására mutat példát. 
 
 **Példa**
 
-| Virtual Network (Virtuális hálózat) | Címtartomány | Region (Régió) | Kapcsolódás helyi hálózati helyhez |
+| Virtual Network | Címterület | Régió | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -135,7 +135,7 @@ Például a TestVNet1 egy "VNet4Local" nevű helyi hálózati webhelyhez csatlak
 
 Az egyes VNet helyi helye a másik VNet. A következő példában szereplő értékek használatosak a konfigurációhoz:
 
-| Virtual Network (Virtuális hálózat) | Címtartomány | Region (Régió) | Kapcsolódás helyi hálózati helyhez |
+| Virtual Network | Címterület | Régió | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA keleti régiója |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA nyugati régiója |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -161,7 +161,7 @@ Minden virtuális hálózatnak rendelkeznie kell egy virtuális hálózati átj�
 4. Adja meg az **átjáró méretét**. Ez a beállítás az [ÁTJÁRÓ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)-ra hivatkozik.
 5. Konfigurálja az **útválasztási típust**. A konfiguráció útválasztási típusának **dinamikusnak**kell lennie. Az útválasztási típust később nem módosíthatja, hacsak nem szakítja meg az átjárót, és nem hoz létre újat.
 6. Kattintson az **OK** gombra.
-7. Az **új VPN-kapcsolat** lapon kattintson az **OK** gombra a virtuális hálózati átjáró létrehozásának megkezdéséhez. Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
+7. Az **új VPN-kapcsolat** lapon kattintson az **OK** gombra a virtuális hálózati átjáró létrehozásának megkezdéséhez. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
 ## <a name="vnet4settings"></a>5. lépés – a TestVNet4 beállításainak konfigurálása
 
@@ -199,7 +199,7 @@ Miután mindkét virtuális hálózatok létrehozta a virtuális hálózati átj
    ![hely módosítása](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
 5. Frissítse a **VPN-átjáró IP-címét** , és kattintson az **OK** gombra a beállítások mentéséhez.
 
-   ![Átjáró IP-címe](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
+   ![átjáró IP-címe](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
 6. A többi oldal bezárásához.
 7. Ismételje meg ezeket a lépéseket a TestVNet4.
 
@@ -229,7 +229,7 @@ A következő lépésekben csatlakozni fog az Azure-fiókjához, és letölti é
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-   Ezután a következő parancsmag használatával adja hozzá Azure-előfizetését a PowerShellhez a klasszikus üzemi modellhez.
+   Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
 
    ```powershell
    Add-AzureAccount

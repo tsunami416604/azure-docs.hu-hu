@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888983"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159828"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -79,7 +79,7 @@ Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure A
 
 Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintott, megjelenik egy felugró párbeszédpanel a következő lehetőségekkel:
 
-| Lehetőség | Leírás |
+| Beállítás | Leírás |
 | --- | --- |
 | Új fiók létrehozása | Válassza ezt a lehetőséget, ha az Azure AD Connect varázslójával szeretné létrehozni az AD DS-fiókot az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. Ha ezt a lehetőséget választja, adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Az Azure AD Connect varázsló a megadott vállalati rendszergazdai fiók használatával hozza létre a szükséges AD DS-fiókot. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. |
 | Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
@@ -97,7 +97,7 @@ Ezen az oldalon áttekintheti a helyszíni AD DS rendszerben jelenlévő és az 
 ![Nem ellenőrzött tartományok](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 Tekintse át az összes **Not Added** (Hozzá nem adott) és **Not Verified** (Nem ellenőrzött) megjelöléssel rendelkező tartományt. Bizonyosodjon meg róla, hogy az Ön által használt tartományok ellenőrizve lettek az Azure AD szolgáltatásban. Miután ellenőrizte a tartományokat, kattintson a Frissítés szimbólumra. További információkért lásd: [A tartomány hozzáadása és ellenőrzése](../active-directory-domains-add-azure-portal.md)
 
-**UserPrincipalName** – A userPrincipalName attribútum a felhasználók által az Azure AD és az Office 365 szolgáltatásokba való bejelentkezéskor látható attribútum. A más néven UPN-utótagként ismert használt tartományokat ellenőrizni kell az Azure AD szolgáltatásban a felhasználók szinkronizálása előtt. A Microsoft javasolja a userPrincipalName alapértelmezett attribútum megtartását. Ha az attribútum nem átirányítható és nem ellenőrizhető, ebben az esetben lehetséges egy másik attribútumot választani. Megjelölheti például az e-mail-címet a bejelentkezési azonosítót hordozó attribútumként. A userPrincipalName attribútumtól eltérő attribútumot más néven **Másik azonosítóként** ismerjük. A Másik azonosító értékének igazodnia kell az RFC822 szabványhoz. A Másik azonosító a jelszókivonat-szinkronizálással, az átmenő hitelesítéssel és az összevonással egyaránt használható. Az attribútum nem lehet többértékűként megadva az Active Directoryban akkor sem, ha csak egyetlen értékkel rendelkezik. A másodlagos AZONOSÍTÓval kapcsolatos további információkért [kattintson ide.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)
+**UserPrincipalName** – A userPrincipalName attribútum a felhasználók által az Azure AD és az Office 365 szolgáltatásokba való bejelentkezéskor látható attribútum. A más néven UPN-utótagként ismert használt tartományokat ellenőrizni kell az Azure AD szolgáltatásban a felhasználók szinkronizálása előtt. A Microsoft javasolja a userPrincipalName alapértelmezett attribútum megtartását. Ha az attribútum nem átirányítható és nem ellenőrizhető, ebben az esetben lehetséges egy másik attribútumot választani. Megjelölheti például az e-mail-címet a bejelentkezési azonosítót hordozó attribútumként. A userPrincipalName attribútumtól eltérő attribútumot más néven **Másik azonosítóként** ismerjük. A Másik azonosító értékének igazodnia kell az RFC822 szabványhoz. A Másik azonosító a jelszókivonat-szinkronizálással, az átmenő hitelesítéssel és az összevonással egyaránt használható. Az attribútum nem lehet többértékűként megadva az Active Directoryban akkor sem, ha csak egyetlen értékkel rendelkezik. A másodlagos AZONOSÍTÓval kapcsolatos további információkért tekintse meg a [gyakran ismételt kérdések](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname) témakört.
 
 >[!NOTE]
 > Az átmenő hitelesítés engedélyezésekor legalább egy ellenőrzött tartománnyal kell rendelkeznie, hogy továbbléphessen a varázslóban.
@@ -125,7 +125,7 @@ Ha ilyen figyelmeztető jelölést lát, ellenőrizze, hogy ezek a tartományok 
 #### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Válassza ki, hogyan történjen a felhasználók azonosítása a helyszíni címtárakban
 Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhatja, hogy az AD DS-erdőkből származó felhasználók miként szerepeljenek az Azure AD szolgáltatásban. A felhasználók vagy egyszer szerepelnek az összes erdőben, vagy engedélyezett és letiltott fiókok kombinációjával rendelkeznek. A felhasználók egyes erdőkben esetleg kapcsolattartóként is szerepelhetnek.
 
-![Unique](./media/how-to-connect-install-custom/unique2.png)
+![Egyedi](./media/how-to-connect-install-custom/unique2.png)
 
 | Beállítás | Leírás |
 | --- | --- |
@@ -163,9 +163,9 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 >[!WARNING]
 >Az Azure AD Connect az **1.0.8641.0-s** verzióig bezárólag az Azure Access Control szolgáltatást használta a jelszavak visszaírására.  Ezt a szolgáltatást **2018. november 7-vel** megszüntetjük.  Amennyiben az Azure AD Connect valamely érintett verzióját használja, és a jelszóvisszaírás engedélyezve van, a szolgáltatás megszüntetését követően a felhasználók esetleg nem lesznek többé képesek módosítani vagy visszaállítani a jelszavukat. Az Azure AD Connect érintett verzióiban a jelszóvisszaírás nem lesz támogatva.
 >
->Az Access Control Service szolgáltatással kapcsolatos további információért lásd a [Migrálás az Azure Access Control Service-ből](../develop/active-directory-acs-migration.md) című cikket.
+>Az Access Control Service szolgáltatással kapcsolatos további információért lásd a [Migrálás az Azure Access Control Service-ből](../azuread-dev/active-directory-acs-migration.md) című cikket.
 >
->Az Azure AD Connect legújabb verziójának letöltéséhez kattintson [ide](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+>Az Azure AD Connect legújabb verziójának letöltéséhez kattintson [ide](https://www.microsoft.com/download/details.aspx?id=47594).
 
 ![Választható szolgáltatások](./media/how-to-connect-install-custom/optional2.png)
 
@@ -283,7 +283,7 @@ Határozza meg a webalkalmazás-proxy kiszolgálóként használni kívánt kisz
 > <li> A hitelesítési kérések zavartalan áramlása érdekében győződjön meg róla, hogy fennáll a HTTP/HTTPS kapcsolat a webalkalmazás-kiszolgáló és az AD FS-kiszolgáló közt.</li>
 >
 
-![Web App](./media/how-to-connect-install-custom/adfs3.png)
+![Webalkalmazás](./media/how-to-connect-install-custom/adfs3.png)
 
 A rendszer kéri a hitelesítő adatok megadását, hogy a webalkalmazás-kiszolgáló létrehozhasson egy biztonságos kapcsolatot az AD FS-kiszolgálóval. Ezeknek helyi rendszergazdai hitelesítő adatoknak kell lenniük az AD FS kiszolgálón.
 
@@ -382,7 +382,7 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 
 * Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához.
 
-![Teljes körű](./media/how-to-connect-install-custom/completed.png)
+![Complete](./media/how-to-connect-install-custom/completed.png)
 
 ![Ellenőrzés](./media/how-to-connect-install-custom/adfs7.png)
 
@@ -393,7 +393,7 @@ A teljes körű hitelesítés sikerességének ellenőrzéséhez manuálisan kel
 * Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 * Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 A következő szakaszban az Azure AD Connect telepítése során felmerülő problémákkal kapcsolatos hibaelhárítási és egyéb információkat talál.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Az ADSync adatbázis már tartalmaz adatokat, és nem írható felül”

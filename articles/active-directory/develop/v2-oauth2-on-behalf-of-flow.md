@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700464"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159642"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Az OAuth 2,0-es adatforgalom (OBO) arra szolgál, hogy az alkalmazás hogyan hívja meg a szolgáltatás/webes API-t, ami viszont egy másik szolgáltatást vagy webes API-t hív meg. Az a cél, hogy a delegált felhasználói identitást és engedélyeket a kérési láncon keresztül propagálja. Ahhoz, hogy a középső szintű szolgáltatás hitelesített kéréseket továbbítson az alárendelt szolgáltatásnak, a felhasználó nevében védenie kell egy hozzáférési jogkivonatot a Microsoft Identity platformon.
 
@@ -70,12 +69,12 @@ Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáf
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `grant_type` | Szükséges | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
-| `client_id` | Szükséges | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
-| `client_secret` | Szükséges | Az Azure Portal-Alkalmazásregisztrációk lapon az alkalmazáshoz generált ügyfél-titkos kulcs. |
-| `assertion` | Szükséges | A kérelemben használt jogkivonat értéke.  Ennek a tokennek rendelkeznie kell az ehhez az OBO-kérelemhez tartozó alkalmazás célközönségével (ezt az alkalmazást a `client-id` mező jelöli). |
-| `scope` | Szükséges | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md). |
-| `requested_token_use` | Szükséges | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
+| `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
+| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
+| `client_secret` | Kötelező | Az Azure Portal-Alkalmazásregisztrációk lapon az alkalmazáshoz generált ügyfél-titkos kulcs. |
+| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke.  Ennek a tokennek rendelkeznie kell az ehhez az OBO-kérelemhez tartozó alkalmazás célközönségével (ezt az alkalmazást a `client-id` mező jelöli). |
+| `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md). |
+| `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
 
 #### <a name="example"></a>Példa
 
@@ -102,13 +101,13 @@ Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogk
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `grant_type` | Szükséges | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
-| `client_id` | Szükséges |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
-| `client_assertion_type` | Szükséges | Az értéknek `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`nak kell lennie. |
-| `client_assertion` | Szükséges | Egy, az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező (JSON webes jogkivonat). A tanúsítvány regisztrálásának és az állítás formátumának megismeréséhez lásd: [tanúsítvány hitelesítő adatai](active-directory-certificate-credentials.md). |
-| `assertion` | Szükséges | A kérelemben használt jogkivonat értéke. |
-| `requested_token_use` | Szükséges | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
-| `scope` | Szükséges | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md).|
+| `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
+| `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
+| `client_assertion_type` | Kötelező | Az értéknek `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`nak kell lennie. |
+| `client_assertion` | Kötelező | Egy, az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező (JSON webes jogkivonat). A tanúsítvány regisztrálásának és az állítás formátumának megismeréséhez lásd: [tanúsítvány hitelesítő adatai](active-directory-certificate-credentials.md). |
+| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke. |
+| `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
+| `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md).|
 
 Figyelje meg, hogy a paraméterek majdnem ugyanazok, mint a közös titok által benyújtott kérelem esetében, kivéve, ha a `client_secret` paramétert két paraméter helyettesíti: egy `client_assertion_type` és `client_assertion`.
 

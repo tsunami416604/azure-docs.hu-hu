@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162881"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162208"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -28,7 +28,7 @@ Ez a cikk a FONALat mutatja be, valamint azt, hogyan koordinálja az alkalmazás
 
 A fonal a Hadoop-ben szabályozza és koordinálja az adatfeldolgozást. A fonal két fő szolgáltatással rendelkezik, amelyek folyamatokként futnak a fürt csomópontjain:
 
-* Erőforráskezelő
+* ResourceManager
 * NodeManager
 
 A erőforráskezelő a fürt számítási erőforrásait a MapReduce-feladatokhoz hasonló alkalmazások számára biztosítja. A erőforráskezelő tárolóként engedélyezi ezeket az erőforrásokat, ahol mindegyik tároló a CPU-magok és a memória memóriájának kiosztását tartalmazza. Ha kombinálja a fürtben rendelkezésre álló összes erőforrást, majd a magok és a memória blokkokban való elosztását, minden egyes blokk erőforrás egy tároló. A fürt minden csomópontja rendelkezik bizonyos számú tároló kapacitásával, ezért a fürtnek van rögzített korlátja a rendelkezésre álló tárolók számánál. A tárolóban lévő erőforrások kiosztása konfigurálható.
@@ -46,6 +46,27 @@ A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelent
 Az összes HDInsight-fürt a FONALat helyezi üzembe. A erőforráskezelő a magas rendelkezésre álláshoz van telepítve egy elsődleges és egy másodlagos példánnyal, amely az első és a második főcsomóponton fut a fürtön belül. Egyszerre csak a erőforráskezelő egyetlen példánya aktív. A NodeManager-példányok a fürt rendelkezésre álló munkavégző csomópontjain futnak.
 
 ![Apache-fonal az Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Helyreállítható törlés
+
+Ha törölni szeretne egy fájlt a Storage-fiókból, tekintse meg a következőt:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/storage-blob-soft-delete.md)
+* [BLOB törlésének visszavonása](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>1\. generációs Azure Data Lake Storage
+
+[Visszaállítás – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>2\. generációs Azure Data Lake Storage
+
+[Ismert problémák a Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Kukába ürítése
+
+A **HDFS** > **Advanced core-hely** `fs.trash.interval` tulajdonságának az alapértelmezett értéknek kell lennie `0`, mert nem kell a helyi fájlrendszerben tárolt adatok tárolására. Ez az érték nem befolyásolja a távoli tárolási fiókokat (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Következő lépések
 

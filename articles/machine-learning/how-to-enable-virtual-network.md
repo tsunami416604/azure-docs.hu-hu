@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988217"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169952"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,10 +125,6 @@ Ha Azure Machine Learning kísérletezési képességeket szeretne használni a 
 
 ## <a name="compute-instance"></a>Machine Learning Compute használata
 
-> [!NOTE]
-> A számítási példányok (előzetes verzió) jelenleg csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületek esetében érhetők el, és hamarosan további régiókat is támogatnak.
-> Ezen régiók egyikével hozzon létre egy számítási példányt, amelyet hozzáadhat a virtuális hálózathoz.
-
 Ha egy virtuális hálózatban Azure Machine Learning számítási példányt vagy számítási fürtöt szeretne használni, a következő hálózati követelményeknek kell teljesülniük:
 
 > [!div class="checklist"]
@@ -141,7 +137,7 @@ Ha egy virtuális hálózatban Azure Machine Learning számítási példányt va
 A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
 
 * Egy hálózati biztonsági csoport
-* Egy nyilvános IP-cím
+* One public IP address
 * Egy Load Balancer
 
 Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.

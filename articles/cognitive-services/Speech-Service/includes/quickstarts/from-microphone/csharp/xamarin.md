@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468076"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156164"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ Az általános HelloWorld projekt platform-független implementációkat tartalm
 1. A forrásfájl `OnRecognitionButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
 
 
-1. A `OnRecognitionButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceRegion`, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . (Például az ingyenes próbaverziós előfizetés `westus` használata.)
+1. A `OnRecognitionButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceregion`, és cserélje le az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" helyére. (Például az ingyenes próbaverziós előfizetés `westus` használata.)
 
 1. Ezután létre kell hoznia egy [Xamarin szolgáltatást](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), amely a különböző platform-projektekben, például a UWP, az Androidban és az iOS-ben lévő mikrofon-engedélyek lekérdezésére szolgál. Ehhez vegyen fel egy új, *Services* nevű mappát a HelloWorld projekt alatt, és hozzon létre C# egy új forrásfájlt. Kattintson a jobb gombbal a *szolgáltatások* mappára, és válassza az **új elem** **hozzáadása** > a **fájl** > elemet. Nevezze át a fájlt `IMicrophoneService.cs`, és az alábbi kódrészletből helyezze el az összes kódot:
 

@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698679"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161256"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -69,13 +69,13 @@ Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, 
 
 Válassza ki a `NameIdentifier` (vagy NameID) jogcím kívánt forrását. A következő lehetőségek közül választhat.
 
-| Név | Leírás |
+| Name (Név) | Leírás |
 |------|-------------|
-| E-mail cím | A felhasználó e-mail címe |
+| E-mail | A felhasználó e-mail-címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
 | onpremisessamaccount | A helyszíni Azure AD-ből szinkronizált SAM-fiók neve |
-| ObjectId | A felhasználó ObjectId az Azure AD-ben |
-| Alkalmazottkód | A felhasználó alkalmazott azonosítója |
+| oid | A felhasználó ObjectId az Azure AD-ben |
+| EmployeeID | A felhasználó alkalmazott azonosítója |
 | Címtárbővítmények | A helyszíni [Active Directory szinkronizált címtárszolgáltatás-bővítmények Azure ad Connect Sync használatával](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Bővítmény attribútumai 1-15 | Az Azure AD-séma kibővítéséhez használt helyszíni bővítmény attribútumai |
 
@@ -180,4 +180,4 @@ Először is az Azure AD ellenőrzi, hogy a Brita felhasználói típusa `All gu
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](howto-v1-debug-saml-sso-issues.md)
+* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

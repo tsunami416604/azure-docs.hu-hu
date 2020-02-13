@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544786"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162684"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Előzetes verzió: Azure-beli helyszíni virtuális gépek a virtuálisgép-méretezési csoportokhoz 
 
@@ -25,7 +25,6 @@ A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a na
 > A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
 > Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> A nyilvános előzetes verzió korai részében a direktszínes példányok fix áron lesznek, így nem kerül sor ár-alapú kizárásra.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -48,7 +47,7 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Direktszínű virtuális gépek üzembe helyezése méretezési csoportokban
 
 A helyszíni virtuális gépek méretezési csoportokon történő üzembe helyezéséhez beállíthatja az új *prioritás* jelzőt a *helyszínen*. A méretezési csoport összes virtuális gépe a következőre lesz beállítva:. A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásához használja az alábbi módszerek egyikét:
-- [Azure Portal](#portal)
+- [Azure Portalra](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager sablonok](#resource-manager-templates)
@@ -58,7 +57,7 @@ A helyszíni virtuális gépek méretezési csoportokon történő üzembe helye
 A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Méretezési csoport telepítésekor beállíthatja a direktszín jelölőt és a kizárási házirendet: ![helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozása](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. Csak adja hozzá a "--priority spot" helyet, és adja hozzá a `--max-price`. Ebben a példában a `--max-price` `-1` használjuk, így a példány árát a rendszer nem zárja ki.
 
@@ -89,7 +88,7 @@ $vmssConfig = New-AzVmssConfig `
     --max-price -1
 ```
 
-## <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
+## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépéseket ismertető cikkben leírtakkal. 
 
@@ -105,7 +104,7 @@ Helyszíni központi telepítések esetén használjon`"apiVersion": "2019-03-01
 
 Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionPolicy` paramétert `Delete`re.
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **K:** A létrehozása után a a standard példány megegyeznek?
 
@@ -160,12 +159,12 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionP
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
+| Nagyvállalati Szerződés         | Igen                               |
+| Utólagos fizetés                | Igen                               |
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Előnyök                     | Nincs                     |
-| Szponzorált                    | Nincs                     |
-| Free Trial (Ingyenes próba)                   | Nincs                     |
+| Előnyök                     | Nem érhető el                     |
+| Szponzorált                    | Nem érhető el                     |
+| Ingyenes próbaverzió                   | Nem érhető el                     |
 
 
 **K:** Hol tehetek közzé kérdéseket?

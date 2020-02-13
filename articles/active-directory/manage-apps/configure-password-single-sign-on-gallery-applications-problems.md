@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274193"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159046"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probléma az Azure AD Gallery-alkalmazás jelszavas egyszeri bejelentkezésének konfigurálásakor
 
@@ -31,7 +31,7 @@ Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártója nemr�
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az integrációs folyamatok, előfordulhat, hogy a problémák azonnal nem találhatók meg, vagy ha a problémák kijavítása hosszabb időt vesz igénybe. Abban az esetben, ha az ilyen integrációk egyike nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban meg lehessen oldani.
 
-**Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** küldje el őket, így a Microsoft dolgozhat velük, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+**Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** küldje el őket, így a Microsoft dolgozhat velük, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>A hitelesítő adatokat a rendszer kitölti és elküldte, de az oldal jelzi, hogy a hitelesítő adatok helytelenek.
 
@@ -59,7 +59,7 @@ Abban az esetben, ha az előző javaslatok nem működnek, lehet, hogy változá
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az alkalmazások integrációja, előfordulhat, hogy nem lehet azonnal megkeresni a problémákat, vagy ha a problémák egy ideig eltartanak. Ha egy integráció nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban rögzítse. 
 
-Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>A bővítmény a Chrome-ban és a Firefoxban is működik, az Internet Explorerben nem
 
@@ -73,7 +73,7 @@ Ennek a hibának két fő oka van:
 
   * Sajnos ez a helyzet a böngésző verziószáma, a számítógép sebessége vagy a meglátogatott hely függvényében változhat. Ebben az esetben javasoljuk, hogy vegye fel a kapcsolatot az ügyfélszolgálattal, hogy javítsa az adott alkalmazás integrálását.
 
-Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Ellenőrizze, hogy az alkalmazás bejelentkezési lapja nemrég módosult-e, vagy további mezőt igényel
 
@@ -81,7 +81,7 @@ Ha az alkalmazás bejelentkezési lapja drasztikusan módosult, időnként az in
 
 Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan észlelhetők az alkalmazások integrációja, előfordulhat, hogy nem lehet azonnal megkeresni a problémákat, vagy ha a problémák egy ideig eltartanak. Ha egy integráció nem működik megfelelően, nyisson meg egy támogatási esetet, hogy a lehető leggyorsabban rögzítse. 
 
-Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
+Ezen kívül, **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** **küldje** el a módját, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../azuread-dev/howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési panel böngésző bővítményének telepítése
 
@@ -89,7 +89,7 @@ A hozzáférési panel böngésző bővítményének telepítéséhez kövesse a
 
 1.  Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com) az egyik támogatott böngészőben, és jelentkezzen be **felhasználóként** az Azure ad-ben.
 
-2.  Kattintson egy **jelszó-SSO-alkalmazásra** a hozzáférési panelen.
+2.  kattintson egy **jelszó-SSO-alkalmazásra** a hozzáférési panelen.
 
 3.  A szoftver telepítését kérő üzenetben válassza a **Telepítés most**lehetőséget.
 
@@ -107,6 +107,6 @@ A Chrome és a Firefox bővítményét az alábbi közvetlen hivatkozásokból i
 
 -   [Firefox hozzáférési panel bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Egyszeri bejelentkezés biztosítása az alkalmazásokba az Application proxy használatával](application-proxy-configure-single-sign-on-with-kcd.md)
 

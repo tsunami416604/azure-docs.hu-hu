@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d82b2904f16cc9816a22caadba598a7a44bfa007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 738ce3d52464897df42be49828ca838b9f77d441
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466492"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156439"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ ms.locfileid: "75466492"
     * Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 x64 rendszeren.
 * Linux rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
-  * Ubuntu rendszeren:
+  * On Ubuntu:
 
     ```sh
     sudo apt-get update
@@ -79,8 +79,8 @@ Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzet
 
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified subscription key and service region.
-# Replace with your own subscription key and service region (e.g., "westus").
+# Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+# from here: https://aka.ms/speech/sdkregion).
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
@@ -146,7 +146,7 @@ Ha az utasítások követésével kapcsolatos problémái vannak, tekintse meg a
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Egyéni hang létrehozása](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Egyéni hangminták rögzítése](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

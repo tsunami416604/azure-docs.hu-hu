@@ -8,39 +8,35 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466532"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157839"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Portál](search-manage.md)
+> * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Linux vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) PowerShell-parancsmagokat és-parancsfájlokat is futtathat. Az az **. Search** modul az [Azure Cognitive Search Management REST API](https://docs.microsoft.com/rest/api/searchmanagement)-kkal teljes paritással bővíti Azure PowerShell]. A Azure PowerShell és **az az. Search**használatával a következő feladatokat végezheti el:
+Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Linux vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) PowerShell-parancsmagokat és-parancsfájlokat is futtathat. Az az **. Search** modul a [keresési felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement) -k teljes paritásával bővíti a [Azure PowerShellt](https://docs.microsoft.com/powershell/) , és képes a következő feladatok végrehajtására:
 
 > [!div class="checklist"]
-> * [Az előfizetésben található összes keresési szolgáltatás listázása](#list-search-services)
-> * [Adott keresési szolgáltatással kapcsolatos információk lekérése](#get-search-service-information)
+> * [Előfizetés keresési szolgáltatásainak listázása](#list-search-services)
+> * [Szolgáltatás adatainak visszaküldése](#get-search-service-information)
 > * [Szolgáltatás létrehozása vagy törlése](#create-or-delete-a-service)
 > * [Felügyeleti API-kulcsok újragenerálása](#regenerate-admin-keys)
 > * [Lekérdezési API-kulcsok létrehozása vagy törlése](#create-or-delete-query-keys)
-> * [Szolgáltatások skálázása replikák és partíciók növelésével vagy csökkentésével](#scale-replicas-and-partitions)
+> * [Vertikális fel-vagy leskálázás replikákkal és partíciókkal](#scale-replicas-and-partitions)
 
-A PowerShell nem használható a szolgáltatás nevének, régiójának vagy szintjeinek megváltoztatására. A dedikált erőforrások a szolgáltatás létrehozásakor vannak lefoglalva. A mögöttes hardver (hely vagy csomópont típusa) módosítása új szolgáltatást igényel. Nincsenek eszközök vagy API-k a tartalmak egyik szolgáltatásból a másikba történő átviteléhez. Minden tartalomkezelés [Rest](https://docs.microsoft.com/rest/api/searchservice/) vagy [.net](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API-n keresztül történik, és ha az indexeket át szeretné helyezni, újra létre kell hoznia és újra kell töltenie őket egy új szolgáltatáson. 
+Alkalmanként a fenti listán *nem* szereplő feladatokkal kapcsolatos kérdéseket is fel kell kérni. Jelenleg nem használható az az **. Search** modul vagy a felügyeleti REST API a kiszolgálónév, régió vagy rétegek módosításához. A dedikált erőforrások a szolgáltatás létrehozásakor vannak lefoglalva. Ennek megfelelően a mögöttes hardver (hely vagy csomópont típusa) módosítása új szolgáltatást igényel. Hasonlóképpen nincsenek olyan eszközök vagy API-k, amelyek a tartalmak, például indexek továbbítására szolgálnak az egyik szolgáltatásból a másikba.
 
-Habár nincsenek a tartalomkezelésre vonatkozó dedikált PowerShell-parancsok, írhat olyan PowerShell-parancsfájlt, amely a REST vagy a .NET hívásokat hívja indexek létrehozásához és betöltéséhez. Az az **. Search** modul önmagában nem biztosítja ezeket a műveleteket.
-
-A PowerShell vagy más API-k (csak portál) által nem támogatott egyéb feladatok a következők:
-+ [Egy kognitív szolgáltatások erőforrásának](cognitive-search-attach-cognitive-services.md) összekapcsolása [AI-gazdagított indexeléshez](cognitive-search-concept-intro.md). A kognitív szolgáltatás egy készségkészlet, nem pedig előfizetéshez vagy szolgáltatáshoz van csatolva.
-+ [Kiegészítő figyelési megoldások](search-monitor-usage.md#add-on-monitoring-solutions) az Azure Cognitive Search monitorozásához.
+A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/) vagy [.net SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)-n keresztül történik. Noha nincsenek a tartalomhoz dedikált PowerShell-parancsok, olyan PowerShell-parancsfájlt írhat, amely REST vagy .NET API-kat hív meg indexek létrehozásához és betöltéséhez.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Az előfizetéshez tartozó összes Azure Cognitive Search-szolgáltatás listázása
+## <a name="list-services-in-a-subscription"></a>Előfizetéshez tartozó szolgáltatások listázása
 
 A következő parancsok az [**az. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
 
@@ -253,7 +249,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 

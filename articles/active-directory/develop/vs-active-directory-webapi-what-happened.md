@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699869"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159386"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt a WebAPI-projekttel (Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)
 
@@ -32,38 +32,38 @@ További információ a csatlakoztatott szolgáltatás használatáról: [első 
 
 Hatással van a projektfájl *. NET referenciái) és a `packages.config`ra (NuGet-referenciák).
 
-| Type (Típus) | Leírások |
+| Típus | Referencia |
 | --- | --- |
-| NET NuGet | Microsoft. Owin |
-| NET NuGet | Microsoft. Owin. host. SystemWeb |
-| NET NuGet | Microsoft. Owin. Security |
-| NET NuGet | Microsoft. Owin. Security. ActiveDirectory |
-| NET NuGet | Microsoft. Owin. Security. JWT |
-| NET NuGet | Microsoft. Owin. Security. OAuth |
+| NET NuGet | Microsoft.Owin |
+| NET NuGet | Microsoft.Owin.Host.SystemWeb |
+| NET NuGet | Microsoft.Owin.Security |
+| NET NuGet | Microsoft.Owin.Security.ActiveDirectory |
+| NET NuGet | Microsoft.Owin.Security.Jwt |
+| NET NuGet | Microsoft.Owin.Security.OAuth |
 | NET NuGet | Owin |
-| NET NuGet | System. IdentityModel. tokens. JWT |
+| NET NuGet | System.IdentityModel.Tokens.Jwt |
 
 További hivatkozások ha a címtár- **adatok olvasása** lehetőséget választotta:
 
-| Type (Típus) | Leírások |
+| Típus | Referencia |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (csak Visual Studio 2015) |
-| NET NuGet | Microsoft. Azure. ActiveDirectory. GraphClient |
-| NET NuGet | Microsoft. EDM |
-| NET NuGet | Microsoft. OData |
-| NET NuGet | Microsoft. Services. Services. Client |
-| NET NuGet | Microsoft. IdentityModel. clients. ActiveDirectory |
-| .NET        | Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms<br>(Csak Visual Studio 2015) |
-| NET NuGet | System. térbeli |
+| NET NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| NET NuGet | Microsoft.Data.Edm |
+| NET NuGet | Microsoft.Data.OData |
+| NET NuGet | Microsoft.Data.Services.Client |
+| NET NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms<br>(Csak Visual Studio 2015) |
+| NET NuGet | System.Spatial |
 
 A következő hivatkozások törlődnek (csak ASP.NET 4 projekt, a Visual Studio 2015-as verziójában):
 
-| Type (Típus) | Leírások |
+| Típus | Referencia |
 | --- | --- |
-| NET NuGet | Microsoft. AspNet. Identity. Core |
-| NET NuGet | Microsoft. AspNet. Identity. EntityFramework |
-| NET NuGet | Microsoft. AspNet. Identity. Owin |
+| NET NuGet | Microsoft.AspNet.Identity.Core |
+| NET NuGet | Microsoft.AspNet.Identity.EntityFramework |
+| NET NuGet | Microsoft.AspNet.Identity.Owin |
 
 ## <a name="project-file-changes"></a>Projektfájl módosításai
 
@@ -129,4 +129,4 @@ A csatlakoztatott szolgáltatás hozzáadásakor a Visual Studio 2015 biztonság
 ## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
-- [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)
+- [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

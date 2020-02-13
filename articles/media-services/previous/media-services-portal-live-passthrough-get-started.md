@@ -1,5 +1,5 @@
 ---
-title: Élő stream továbbítása helyszíni kódolókkal az Azure portal használatával |} A Microsoft Docs
+title: Élő stream helyszíni kódolókkal Azure Portal használatával | Microsoft Docs
 description: Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva.
 services: media-services
 documentationcenter: ''
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463301"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162752"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő Stream továbbítása helyszíni kódolókkal az Azure portal használatával
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal Azure Portal használatával
 > [!div class="op_single_selector"]
-> * [Portál](media-services-portal-live-passthrough-get-started.md)
+> * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure Portalon. 
+Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure portálon. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
-* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* Egy webkamera. Például a [Telestream Wirecast kódoló](https://www.telestream.net/wirecast/overview.htm).
+* Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy webkamera. Például a [Telestream Wirecast kódoló](media-services-configure-wirecast-live-encoder.md). 
 
 Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 
@@ -54,12 +54,12 @@ A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streame
 > [!NOTE]
 > Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
     
-1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A telepítő ötleteket, tekintse meg [egyszerű és hordozható esemény videó fogaskerék beállítása]( https://link.medium.com/KNTtiN6IeT).
-1. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)<br/>Emellett tekintse meg ezt a blogot: [Élő streamelés az éles üzemre OBS](https://link.medium.com/ttuwHpaJeT).
+1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
+1. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)<br/>Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
    
-    Ezt a lépést a csatorna létrehozása után is elvégezheti.
+    Ezt a lépést a csatorna létrehozása után is el lehet végezni.
 1. Hozzon létre és indítson el egy átmenő csatornát.
-1. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
+1. Kérje le a csatorna feldolgozó URL-címét. 
    
     Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 1. Kérje le a csatorna előnézeti URL-címét. 
@@ -70,7 +70,7 @@ A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streame
     Az Azure portál használata esetén az élő esemény létrehozása egy objektumot is létrehoz. 
 
 1. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
-1. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
+1. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés bekerül a kimenő streambe.
 1. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
 1. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
 
@@ -95,7 +95,7 @@ Egy csatorna három egyidejűleg zajló esemény támogat, hogy több archívumo
 
 A meglévő élő eseményeket nem szabad újra felhasználni. Ehelyett hozzon létre egy új eseményt minden eseményhez, és indítsa el.
 
-Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt. 
+Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot. 
 
 Az archivált tartalom törléséhez állítsa le és törölje az eseményt, majd törölje a hozzá társított objektumot. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
@@ -111,7 +111,7 @@ Az átmenő csatornákról az [élő stream többszörös átviteli sebességű 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
 2. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
    
-    ![Első lépések](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
+    ![Bevezetés](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     Megjelenik a **Live streaming** (Élő stream) ablak.
 3. A **Quick Create** (Gyorslétrehozás) gombra kattintva létrehozhat egy az RTMP betöltési protokollt használó átmenő csatornát.

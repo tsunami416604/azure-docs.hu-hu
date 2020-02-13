@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031395"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157133"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -24,6 +24,8 @@ A Kafka REST proxy lehetővé teszi, hogy egy REST API HTTP-n keresztül kommuni
 
 REST proxy nélkül a Kafka-ügyfeleknek ugyanabban a VNet kell lenniük, mint a Kafka-fürtnek vagy egy egyenrangú VNet. A REST-proxy lehetővé teszi, hogy bárhonnan összekapcsolja az adatelőállítókat vagy a fogyasztókat. A REST-proxy üzembe helyezése új nyilvános végpontot hoz létre a fürthöz, amelyet a portál beállításaiban talál.
 
+![Kafka REST proxy architektúrája](./media/rest-proxy/rest-proxy-architecture.png)
+
 Az API által támogatott összes művelet részletes leírását lásd: [Apache KAFKA Rest proxy API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
 ### <a name="security"></a>Biztonság
@@ -32,7 +34,7 @@ A Kafka REST-proxyhoz való hozzáférés Azure Active Directory biztonsági cso
 
 Ha a Kafka-fürtöt a REST-proxyn keresztül hozza létre, akkor meg kell adnia azt a HRE biztonsági csoportot, amelynek hozzáféréssel kell rendelkeznie a REST-végponthoz. A REST-proxyhoz hozzáférést igénylő Kafka-ügyfeleket (alkalmazásokat) a csoport tulajdonosának kell regisztrálnia ehhez a csoporthoz. A csoport tulajdonosa ezt a portálon vagy a Powershellen keresztül teheti meg.
 
-A REST proxy-végpontra irányuló kérések megkezdése előtt az ügyfélalkalmazás OAuth tokent kap a megfelelő biztonsági csoport tagságának ellenőrzéséhez. A OAuth-tokenek működésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése Azure Active Directory webalkalmazásokhoz a OAuth 2,0 Code Grant flow használatával](../../active-directory/develop/v1-protocols-oauth-code.md). Egy OAuth-token Pythonban való beolvasására példa: [ügyfélalkalmazás minta](#client-application-sample)
+A REST proxy-végpontra irányuló kérések megkezdése előtt az ügyfélalkalmazás OAuth tokent kap a megfelelő biztonsági csoport tagságának ellenőrzéséhez. A OAuth-tokenek működésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése Azure Active Directory webalkalmazásokhoz a OAuth 2,0 Code Grant flow használatával](../../active-directory/azuread-dev/v1-protocols-oauth-code.md). Egy OAuth-token Pythonban való beolvasására példa: [ügyfélalkalmazás minta](#client-application-sample)
 
 Ha az ügyfélalkalmazás rendelkezik a OAuth-jogkivonattal, át kell adni ezt a tokent a REST-proxynak nyújtott HTTP-kérelemben.
 

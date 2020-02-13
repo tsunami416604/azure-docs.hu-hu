@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701450"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159913"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Bérlet Azure Active Directory
 
@@ -36,7 +36,7 @@ Az alkalmazások fejlesztése során a fejlesztők úgy is dönthetnek, hogy az 
 
 A Azure Portalban úgy konfigurálhatja az alkalmazást, hogy egybérlős vagy több-bérlő legyen a célközönségnek a következőképpen történő beállításával.
 
-| Közönség | Egyetlen/több-bérlős | Kik jelentkezhetnek be | 
+| Célközönség | Egyetlen/több-bérlős | Kik jelentkezhetnek be | 
 |----------|--------| ---------|
 | Csak ebben a könyvtárban lévő fiókok | Egybérlős alkalmazás | A címtárban lévő összes felhasználói és vendég fiók használhatja az alkalmazást vagy az API-t.<br>*Akkor használja ezt a beállítást, ha a célközönség belső a szervezete számára.* |
 | Fiókok bármely Azure AD-címtárban | Több-bérlős | A Microsoft által használt munkahelyi vagy iskolai fiókkal rendelkező felhasználók és vendégek az alkalmazást vagy az API-t használhatják. Ilyenek például az Office 365-et használó iskolák és vállalkozások.<br>*Akkor használja ezt a lehetőséget, ha a célközönség üzleti vagy oktatási ügyfél.* |
@@ -46,9 +46,9 @@ A Azure Portalban úgy konfigurálhatja az alkalmazást, hogy egybérlős vagy t
 
 A nagyszerű, több-bérlős alkalmazások kiépítése kihívást jelenthet, mert a rendszergazdák által a bérlők számára megadható különböző szabályzatok száma. Ha több-bérlős alkalmazást szeretne létrehozni, kövesse az alábbi ajánlott eljárásokat:
 
-* Tesztelje az alkalmazást egy olyan bérlőn, amely beállította a [feltételes hozzáférési szabályzatokat](conditional-access-dev-guide.md).
+* Tesztelje az alkalmazást egy olyan bérlőn, amely beállította a [feltételes hozzáférési szabályzatokat](../azuread-dev/conditional-access-dev-guide.md).
 * A minimális felhasználói hozzáférés elve alapján győződjön meg arról, hogy az alkalmazás csak a ténylegesen szükséges engedélyeket kéri. Kerülje a rendszergazdai belefoglalást igénylő engedélyek megadását, mivel ez megakadályozhatja, hogy a felhasználók bizonyos szervezeteknél is beszerezzék az alkalmazást. 
-* Adja meg az alkalmazás részeként közzétett engedélyek megfelelő nevét és leírását. Ez segíti a felhasználókat és a rendszergazdákat arról, hogy mit fogadnak el az alkalmazás API-jai használatának megkísérlése során. További információ: az [engedélyek útmutatójának](v1-permissions-and-consent.md)ajánlott eljárások szakasza.
+* Adja meg az alkalmazás részeként közzétett engedélyek megfelelő nevét és leírását. Ez segíti a felhasználókat és a rendszergazdákat arról, hogy mit fogadnak el az alkalmazás API-jai használatának megkísérlése során. További információ: az [engedélyek útmutatójának](v2-permissions-and-consent.md)ajánlott eljárások szakasza.
 
 ## <a name="next-steps"></a>Következő lépések
 

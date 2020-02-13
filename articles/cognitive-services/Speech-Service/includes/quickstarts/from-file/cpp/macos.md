@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: 92586667675823343eb1f44f054e939c59719379
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 67157126aa218a520bc59251a93d0e2f049a240a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748811"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156590"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` sztringjét (például `westus` az ingyenes próbaverziós előfizetéshez).
 
 1. Cserélje le a karakterláncot a saját fájlnévre `whatstheweatherlike.wav`.
 

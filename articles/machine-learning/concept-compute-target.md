@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984812"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169819"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -50,16 +50,12 @@ A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre é
 
 A következő esetekben hozhat létre Azure Machine Learning számítási példányokat (előzetes verzió) vagy számítási fürtöket:
 
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sablon | CLI |
+| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sablon | parancssori felület |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Számítási példány | igen | igen | igen | igen |  |
 | Számítási fürt | igen | igen | igen | igen | igen |
 
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, a más típusú számítási céloktól eltérően.
-
-> [!NOTE]
-> A számítási példányok csak olyan munkaterületekhez érhetők el, ahol az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**található, és a közeljövőben más régiók is támogatást kapnak.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 ### <a name="compute-clusters"></a>Számítási fürtök
 
@@ -78,6 +74,6 @@ A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. E
 
 ## <a name="next-steps"></a>Következő lépések
 
-A webinárium témái:
+Az alábbiak végrehajtásának módját ismerheti meg:
 * [Számítási cél beállítása a modell betanításához](how-to-set-up-training-targets.md)
 * [Modell üzembe helyezése számítási célra](how-to-deploy-and-where.md)

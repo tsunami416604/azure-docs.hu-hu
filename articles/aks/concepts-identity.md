@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5d29598b0962fc42c855e7a26917a34269c30ddb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615862"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158062"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) hozzáférési és identitási lehetőségei
 
@@ -40,13 +40,13 @@ Az AK-fürtök biztonsága javítható Azure Active Directory (AD) integrálás�
 
 ![Azure Active Directory-integráció AK-fürtökkel](media/concepts-identity/aad-integration.png)
 
-Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. A `kubectl` konfigurációs környezet beszerzéséhez a felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtathatja. Ha a felhasználó ezután együttműködik az AK-val a- `kubectl`vel, a rendszer felszólítja, hogy jelentkezzen be az Azure ad-beli hitelesítő adataival. Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
+Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. `kubectl` konfigurációs környezet beszerzéséhez a felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtathatja. Amikor egy felhasználó a `kubectl`használatával kommunikál az AK-fürttel, a rendszer felszólítja, hogy jelentkezzen be az Azure AD-beli hitelesítő adataival. Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
 
 Az AK-fürtökön futó Azure AD-hitelesítés OpenID connectet használ, amely az OAuth 2,0 protokollra épülő identitási réteg. A OAuth 2,0 a védett erőforrások eléréséhez szükséges hozzáférési jogkivonatok beszerzésére és használatára vonatkozó mechanizmusokat határoz meg, az OpenID Connect pedig a OAuth 2,0 engedélyezési folyamat kiterjesztését valósítja meg a hitelesítéshez. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][openid-connect]. Az Azure AD által az OpenID Connect használatával beszerzett hitelesítési tokenek ellenőrzéséhez az AK-fürtök Kubernetes webhook token-hitelesítést használnak. További információt a [webhook token hitelesítési dokumentációjában][webhook-token-docs]talál.
 
 ## <a name="role-based-access-controls-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat szerepköröket az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
+A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat *szerepköröket* az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
 
 További információ: RBAC- [hitelesítés használata][kubernetes-rbac].
 
@@ -57,7 +57,7 @@ További információ: [Mi az az Azure RBAC?][azure-rbac]
 
 ## <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
 
-Mielőtt engedélyeket rendel a felhasználókhoz a Kubernetes RBAC, először az engedélyeket *szerepkörként*kell megadnia. A Kubernetes szerepkörei engedélyeket biztosítanak. Nem létezik a megtagadási engedély fogalma.
+Mielőtt engedélyeket rendel a felhasználókhoz a Kubernetes RBAC, először az engedélyeket *szerepkörként*kell megadnia. A Kubernetes szerepkörei engedélyeket *biztosítanak* . Nem létezik a *megtagadási* engedély fogalma.
 
 A szerepkörök a névtéren belüli engedélyek megadására szolgálnak. Ha engedélyeket kell megadnia a teljes fürtön, vagy az erőforrásokat egy adott névtéren kívül kell megadnia, akkor Ehelyett használhatja a *ClusterRoles*.
 
@@ -71,7 +71,7 @@ A szerepkör-kötések egy adott névtér szerepköreinek hozzárendelésére sz
 
 A ClusterRoleBinding ugyanúgy működik, mint a szerepkörök felhasználókhoz való kötése, de a teljes fürtön lévő erőforrásokra, nem pedig egy adott névtérre is alkalmazhatók. Ez a megközelítés lehetővé teszi, hogy a rendszergazdák vagy a támogatási mérnökök hozzáférjenek az AK-fürt összes erőforrásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
 
@@ -91,7 +91,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

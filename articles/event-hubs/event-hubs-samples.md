@@ -1,6 +1,6 @@
 ---
-title: Minták – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk a GitHubon elérhető Azure-Event Hubs minták listáját tartalmazza.
+title: Az Azure Event Hubs-minták – |} A Microsoft Docs
+description: Ez a cikk a Githubon, az Azure Event hubs minták listáját tartalmazza.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905351"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162058"
 ---
-# <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-Tárházak az Azure-Event Hubs mintákkal 
-Event Hubs mintákat a [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)talál. Ezek a minták az [Azure Event Hubs](/azure/event-hubs/)főbb funkcióit mutatják be. Ez a cikk az elérhető mintákat kategorizálja és ismerteti, az egyesekre mutató hivatkozásokkal.
+# <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-tárházakat, az Azure Event Hubs-minták 
+Event Hubs mintákat a [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples)talál. Ezek a minták az [Azure Event Hubs](/azure/event-hubs/)főbb funkcióit mutatják be. Ez a cikk kategorizálja, és ismerteti a rendelkezésre álló, hivatkozásokkal az egyes minták.
 
 ## <a name="net-samples"></a>.NET-minták
 
@@ -46,7 +46,7 @@ Event Hubs mintákat a [githubon](https://github.com/Azure/azure-event-hubs/tree
 | Azure-eventhub 5. verzió (legújabb) | [GitHub helye](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | Azure-eventhub 1. verzió (örökölt) | [GitHub helye](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
-## <a name="nodejs-samples"></a>Node.js-példák
+## <a name="javascript-samples"></a>JavaScript-minták
 
 | Verzió | Minták helye |
 | ------- | ---------------- | 
@@ -54,7 +54,7 @@ Event Hubs mintákat a [githubon](https://github.com/Azure/azure-event-hubs/tree
 | Azure/Event-hubok 2-es verzió (örökölt) | [GitHub helye](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
 
 
-## <a name="go-samples"></a>Minták ugrása
+## <a name="go-samples"></a>Go-minta
 Az Azure-Event Hubs az [Azure-Event-hubok-go GitHub-](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) tárházban találhat.
 
 ## <a name="azure-cli-samples"></a>Azure CLI-minták
@@ -63,11 +63,11 @@ Az Azure Event Hubs Azure CLI-mintákat az [Azure-Event-hubok](https://github.co
 ## <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 Az Azure Event Hubs Azure PowerShell mintáit az [Azure-Event-hubok GitHub-](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) tárházban találja.
  
-## <a name="apache-kafka-samples"></a>Apache Kafka minták
+## <a name="apache-kafka-samples"></a>Az Apache Kafka-minták
 Az [Azure-Event-hubok-for-Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub-tárházban a Apache Kafka funkcióhoz Event Hubs mintákat talál.
 
 ## <a name="next-steps"></a>Következő lépések
-Event Hubs a következő cikkekben talál további információt:
+További információ az Event Hubs az alábbi cikkeket:
 
 - [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
 - [Event Hubs-szolgáltatások](event-hubs-features.md)

@@ -9,26 +9,23 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990351"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169754"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon és a VS Code Remote
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a Visual Studio Code Remote-t egy Azure Machine Learning számítási példányon, hogy interaktív módon tudjon **hibakeresést végezni a** vs Code-ból. 
-
-> [!NOTE]
-> A számítási példányok csak olyan munkaterületekhez érhetők el, ahol az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**található, és a közeljövőben más régiók is támogatást kapnak.
 
 + Az [Azure Machine learning számítási példány](concept-compute-instance.md) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára, és felügyeleti és vállalati készültségi képességeket biztosít a rendszergazdák számára. 
 
 
 + [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) A fejlesztés lehetővé teszi, hogy egy tárolót, távoli gépet vagy a Linux (WSL) Windows alrendszerét teljes funkcionalitású fejlesztői környezetként használja. 
 
-## <a name="prerequisite"></a>Előfeltétel  
+## <a name="prerequisite"></a>Előfeltételek  
 
 Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) , ha még nem létezik ilyen. 
 
@@ -37,7 +34,7 @@ Windows-platformokon [telepítenie kell egy OpenSSH-kompatibilis SSH-ügyfelet](
 
 ## <a name="get-ip-and-ssh-port"></a>IP-cím és SSH-port beszerzése 
 
-1. Nyissa meg a Azure Machine Learning studiót a https://ml.azure.com/ címen.
+1. Nyissa meg a Azure Machine Learning studiót a https://ml.azure.com/címen.
 
 2. Válassza ki a [munkaterületet](concept-workspace.md).
 1. Kattintson a **számítási példányok** fülre.
@@ -92,7 +89,7 @@ További részletek a mezőkről:
 |Mező|Leírás|
 |----|---------|
 |Gazdagép|Bármilyen gyorsírást használhat a számítási példányhoz |
-|HostName|Ez a számítási példány IP-címe. |
+|Állomásnév|Ez a számítási példány IP-címe. |
 |Port|Ez a port a fenti SSH-párbeszédablakban látható. |
 |Felhasználó|Ezt `azureuser` kell |
 |IdentityFile|Arra a fájlra mutasson, ahová a titkos kulcsot mentette |

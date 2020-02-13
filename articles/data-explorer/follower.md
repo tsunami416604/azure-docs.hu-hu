@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111477"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162939"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -206,8 +206,8 @@ A Azure Resource Manager sablont [a Azure Portal vagy a](https://portal.azure.co
 
 |**Beállítás**  |**Leírás**  |
 |---------|---------|
-|Követő fürt neve     |  A követő fürt neve. Ez az a fürt, amelyre ez a sablon telepítve lesz.  |
-|Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A név tetszőleges karakterlánc lehet, ha a fürt szintjén egyedi.     |
+|Követő fürt neve     |  A követő fürt neve; a sablon üzembe helyezésének helye.  |
+|Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A név lehet bármilyen, a fürt szintjén egyedi karakterlánc.     |
 |Adatbázis neve     |      A követendő adatbázis neve. Ha követni szeretné az összes vezető adatbázisát, használja a "*" lehetőséget.   |
 |Leader-fürterőforrás azonosítója    |   A Leader-fürt erőforrás-azonosítója.      |
 |A rendszerbiztonsági tag alapértelmezett módosításának típusa    |   Az alapértelmezett egyszerű módosítási típus. Lehet `Union`, `Replace` vagy `None`. Az alapértelmezett egyszerű módosítási típussal kapcsolatos további információkért lásd: az [egyszerű módosítás típusa vezérlő parancs](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |

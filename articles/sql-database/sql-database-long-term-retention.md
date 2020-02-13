@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819910"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162157"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 
-Számos alkalmazás rendelkezik olyan szabályozással, megfelelőséggel vagy más üzleti céllal, amely megköveteli az adatbázis biztonsági másolatainak megőrzését Azure SQL Database [automatikus biztonsági mentések](sql-database-automated-backups.md)által biztosított 7-35 napon túl. A hosszú távú adatmegőrzési (LTR) funkció használatával akár 10 évig is tárolhatja a megadott SQL-adatbázis teljes biztonsági másolatait az [ra-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) blob Storage-ban. A biztonsági másolatokat új adatbázisként állíthatja helyre.
+Számos alkalmazás rendelkezik olyan szabályozással, megfelelőséggel vagy más üzleti céllal, amely megköveteli az adatbázis biztonsági másolatainak megőrzését Azure SQL Database [automatikus biztonsági mentések](sql-database-automated-backups.md)által biztosított 7-35 napon túl. A hosszú távú adatmegőrzés (LTR) szolgáltatással a megadott SQL Database-adatbázisok teljes biztonsági mentését tárolhatja az Azure Blob Storage-ban az olvasási hozzáférésű geo-redundáns tárolással akár 10 évig is. Ezután visszaállíthatja a biztonsági mentést új adatbázisként. Az Azure Storage redundanciával kapcsolatos további információkért lásd: [Azure Storage redundancia](../storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > A LTR engedélyezhető egyetlen és készletezett adatbázis esetében is. A felügyelt példányokban lévő példány-adatbázisok esetében még nem érhető el. Az SQL-ügynök feladatainak használatával a csak a 35 napnál nem régebben ütemezett [biztonsági mentéseket](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) ÜTEMEZHET a ltr helyett.
@@ -36,15 +36,15 @@ Példák a LTR házirendre:
 
    Az egyes évek harmadik teljes biztonsági mentését öt évig őrzi meg a rendszer.
    
-- W = 0, M = 3, Y = 0
+- W=0, M=3, Y=0
 
    Az egyes hónapok első teljes biztonsági mentését három hónapig őrzi meg a rendszer.
 
-- W = 12, M = 0, Y = 0
+- W=12, M=0, Y=0
 
    Minden heti teljes biztonsági mentés 12 hétig lesz tárolva.
 
-- W = 6, M = 12, Y = 10, WeekOfYear = 16
+- W=6, M=12, Y=10, WeekOfYear=16
 
    Minden heti teljes biztonsági mentés hat hétig tart. Minden hónap első teljes biztonsági mentésének kivételével, amelyet 12 hónapig tartanak. Az év 16. hetében készített teljes biztonsági mentés kivételével, amelyet a rendszer 10 évig tart. 
 
@@ -77,6 +77,6 @@ Ha meg szeretné tudni, hogyan konfigurálhatja a hosszú távú adatmegőrzést
 
 Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja az időbélyeg alapján egy adott biztonsági mentést. Az adatbázis az eredeti adatbázissal megegyező előfizetéshez tartozó meglévő kiszolgálókra állítható vissza. Ha szeretné megtudni, hogyan állíthatja vissza az adatbázist egy LTR biztonsági másolatból a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](sql-database-long-term-backup-retention-configure.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mivel az adatbázis biztonsági mentései védik az adatokat a véletlen sérüléstől vagy törléstől, fontos szerepet játszanak az üzletmenet folytonossága és a vész-helyreállítási stratégia. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).

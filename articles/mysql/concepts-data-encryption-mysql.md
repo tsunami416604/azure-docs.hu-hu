@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3f68ae9665b6235d44411835299721b835745252
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048323"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162361"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
 > [!NOTE]
 > Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon AskAzureDBforMySQL@service.microsoft.comhoz.
 
-Az ügyfél által felügyelt kulccsal Azure Database for MySQL adattitkosítás lehetővé teszi, hogy Bring Your Own Key (BYOK) adatvédelmet biztosítson a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
+A Azure Database for MySQL ügyfél által felügyelt kulcsaival történő adattitkosítás lehetővé teszi, hogy a qwn kulcsot (BYOK) a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
 
-Azure Database for MySQL esetén a kiszolgáló szintjén állíthatja be az adattitkosítást. Az adattitkosítás ezen formáját kihasználva az adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosításában használja a kulcsot. A ADATTITKOSÍTÁSI kulcsot egy ügyfél által felügyelt, aszimmetrikus kulcs, amelyet az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példány tárol. A ADATTITKOSÍTÁSI kulcsot a cikk későbbi részében részletesebben ismertetjük.
+A Azure Database for MySQL ügyfél által felügyelt kulcsaival rendelkező adattitkosítás a kiszolgáló szintjén van beállítva. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 
 A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelkezésre állású, és méretezhető, biztonságos tárolást biztosít az RSA titkosítási kulcsokhoz, opcionálisan a FIPS 140-2 2-es szintű, ellenőrzött hardveres biztonsági modulok (HSM-k) által támogatottak. Nem engedélyezi a közvetlen hozzáférést egy tárolt kulcshoz, de biztosítja a titkosítási és visszafejtési szolgáltatásokat a jogosult entitások számára. Key Vault a kulcsot létrehozhatja, importálhatja vagy [áthelyezheti egy helyszíni HSM-eszközről](../key-vault/key-Vault-hsm-protected-keys.md).
 
@@ -31,11 +31,11 @@ A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelke
 
 A Azure Database for MySQL adattitkosítása a következő előnyöket nyújtja:
 
-* Nagyobb átláthatóság, részletes szabályozás és felügyelet a titkosítási kulcshoz.
-* A központi felügyelet és a kulcsok megszervezése a Azure Key Vault-ban.
-* A feladatok elkülönítésének lehetősége a szervezeten belüli kulcsok és adatok kezelésében.
-* A kulcsfontosságú felügyelet elkülönítése a szervezeten belüli adatkezeléstől, így a Key Vault rendszergazda visszavonhatja a kulcs-hozzáférési engedélyeket, hogy a titkosított adatbázis elérhetetlenné váljon.
-* Nagyobb megbízhatóság a végfelhasználók számára, mivel a Microsoft nem tudja megtekinteni vagy kinyerni a titkosítási kulcsokat a Key Vaultban.
+* Az adathozzáférést teljes mértékben a rendszer ellenőrzi, hogy el tudja-e távolítani a kulcsot, és elérhetetlenné teszi az adatbázist 
+* Teljes hozzáférés a kulcs-életciklushoz, beleértve a kulcs rotációját a vállalati házirendekkel való összehangoláshoz
+* A Azure Key Vaultban található kulcsok központi felügyelete és szervezete
+* A feladatok elkülönítésének lehetősége a biztonsági tisztviselők, valamint a DBA és a rendszergazdák között
+
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 

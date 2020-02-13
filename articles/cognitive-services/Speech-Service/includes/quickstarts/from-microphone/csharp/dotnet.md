@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3b0df9f663866c916a45c85767d49b8701152cd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4b8f58fbfa9de929139646ad267a433645e2db35
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927862"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156344"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegy
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-`SpeechRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba.
+`SpeechRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja (válassza ki a "Speech SDK paramétert" a [régióból](https://aka.ms/speech/sdkregion). Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba.
 
 > [!NOTE]
 > Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).

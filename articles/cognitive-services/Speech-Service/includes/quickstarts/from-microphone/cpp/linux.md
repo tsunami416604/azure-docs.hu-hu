@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: b2b59eb4c81f28a0bb74aca11d925405256c16a5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f63105e97f447bd3d536b5de2908fbc830f903d4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928083"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156492"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Az első lépések előtt:
 
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` sztringjét (például `westus` az ingyenes próbaverziós előfizetéshez).
 
 > [!NOTE]
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .

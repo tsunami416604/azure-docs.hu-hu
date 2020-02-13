@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050014"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169771"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -255,7 +255,7 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
 A **hasonló** és **notLike** feltételek használatakor helyettesítő karaktert kell megadni `*` az értékben.
 Az érték legfeljebb egy helyettesítő karakterből állhat `*`.
 
-A **egyezési** és **notMatch** feltételek használatakor `#` a számjegyek egyeztetéséhez, `?` egy betűhöz, `.` a karaktereknek való megfeleléshez, illetve bármely más karakterhez, amely megfelel a tényleges karakternek. Míg a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel kis-és nagybetűket nem jelent. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el. Példákat a [több név mintázatának engedélyezése](../samples/allow-multiple-name-patterns.md)című témakörben talál.
+A **egyezési** és **notMatch** feltételek használatakor `#` a számjegyek egyeztetéséhez, `?` egy betűhöz, `.` a karaktereknek való megfeleléshez, illetve bármely más karakterhez, amely megfelel a tényleges karakternek. Míg a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel kis-és nagybetűket nem jelent. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el.
 
 Egy **\[\*\] alias** tömb mezőjének értékeként a tömb minden elemét egyedileg értékeli ki a rendszer a logikai **és** az elemek között. További információ: [a \[\*\] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
@@ -271,7 +271,7 @@ A következő mezők támogatottak:
 - `kind`
 - `type`
 - `location`
-  - **Globálisan** használhatja az olyan erőforrásokat, amelyek a helytől függetlenek. Példaként tekintse meg a [minták – engedélyezett helyszínek](../samples/allowed-locations.md)című témakört.
+  - **Globálisan** használhatja az olyan erőforrásokat, amelyek a helytől függetlenek.
 - `identity.type`
   - Az erőforráson engedélyezett [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) típusát adja vissza.
 - `tags`

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381077"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186610"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: hozzáférés letiltása, ha a rendszer a munkamenet kockázatát észleli Azure Active Directory feltételes hozzáféréssel  
 
-A környezet védelme érdekében érdemes lehet letiltani a gyanús felhasználókat a bejelentkezéskor. [Azure Active Directory (Azure ad) Identity Protection](../active-directory-identityprotection.md) elemzi az egyes bejelentkezéseket, és kiszámítja annak a valószínűségét, hogy a bejelentkezési kísérletet nem a felhasználói fiók jogos tulajdonosa végezte el. A valószínűség (alacsony, közepes, magas) a [bejelentkezési kockázati szintek](conditions.md#sign-in-risk)nevű számított érték formájában van megadva. A bejelentkezési kockázati feltétel beállításával feltételes hozzáférési szabályzatot állíthat be, hogy válaszoljon a megadott bejelentkezési kockázati szintekre.
+A környezet védelme érdekében érdemes lehet letiltani a gyanús felhasználókat a bejelentkezéskor. [Azure Active Directory (Azure ad) Identity Protection](../active-directory-identityprotection.md) elemzi az egyes bejelentkezéseket, és kiszámítja annak a valószínűségét, hogy a bejelentkezési kísérletet nem a felhasználói fiók jogos tulajdonosa végezte el. A valószínűség (alacsony, közepes, magas) a [bejelentkezési kockázati szintek](concept-conditional-access-conditions.md#sign-in-risk)nevű számított érték formájában van megadva. A bejelentkezési kockázati feltétel beállításával feltételes hozzáférési szabályzatot állíthat be, hogy válaszoljon a megadott bejelentkezési kockázati szintekre.
 
 Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy [feltételes hozzáférési szabályzatot](../active-directory-conditional-access-azure-portal.md) , amely letiltja a bejelentkezést a beállított bejelentkezési kockázati szint észlelésekor.
 
@@ -74,11 +74,11 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a kötelező feltételes hozzáf�
 
 1. A **feltételes hozzáférés** lapon, a felső eszköztáron kattintson a **Hozzáadás**gombra.
 
-   ![Név](./media/app-sign-in-risk/108.png)
+   ![Name (Név)](./media/app-sign-in-risk/108.png)
 
 1. Az **új** oldal **név** szövegmezőbe írja be a következőt: **hozzáférés tiltása közepes kockázati szinthez**.
 
-   ![Név](./media/app-sign-in-risk/104.png)
+   ![Name (Név)](./media/app-sign-in-risk/104.png)
 
 1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok**elemre.
 
@@ -129,7 +129,7 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a kötelező feltételes hozzáf�
 
    ![Szabályzat engedélyezése](./media/app-sign-in-risk/18.png)
 
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
@@ -143,7 +143,7 @@ Ha ezt a forgatókönyvet alkalmazza a mi esetben, **Ha** ehhez a forgatókönyv
 
 1. A [feltételes hozzáférés – házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson a **What if**elemre.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![WhatIf](./media/app-sign-in-risk/14.png)
 
 1. Kattintson a **felhasználó**elemre, válassza az **Alan Charon** elemet a **felhasználók** lapon, majd kattintson a **kiválasztás**elemre.
 
@@ -161,7 +161,7 @@ Az előző szakaszban megtanulta, hogyan értékelheti ki a szimulált bejelentk
 
 A szabályzat teszteléséhez próbáljon meg **Alan Charon** bejelentkezni a [Azure Portalba](https://portal.azure.com) a Tor böngésző használatával. A bejelentkezési kísérletet a feltételes hozzáférési szabályzatnak le kell tiltania.
 
-![Többtényezős hitelesítés](./media/app-sign-in-risk/118.png)
+![Multi-Factor Authentication](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -170,11 +170,11 @@ Ha már nincs rá szükség, törölje a teszt felhasználót, a Tor böngésző
 - Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
 - A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
 
-   ![Többtényezős hitelesítés](./media/app-sign-in-risk/33.png)
+   ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
 - A Tor-böngésző eltávolításával kapcsolatos utasításokért [lásd: eltávolítása.](https://tb-manual.torproject.org/uninstalling/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A használati feltételek elfogadásának](require-tou.md) megkövetelése

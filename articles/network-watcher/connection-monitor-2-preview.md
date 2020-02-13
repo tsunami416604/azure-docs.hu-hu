@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049282"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169320"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Egyesített kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
@@ -403,7 +403,7 @@ Ha egy figyelőhöz szeretne létrehozni egy tesztelési csoportot, akkor a lent
 
       ![2\. célhely hozzáadása](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Kattintson a "végpontok" fülre az Azure-beli virtuális gépek célhelyként való kiválasztásához. A végpontok listája O365 és D365-teszt URL-címekkel lesz feltöltve, név szerint csoportosítva.  Egy másik tesztelési csoportban létrehozott végpontot is kiválaszthat ugyanabban a figyelőben. Új végpont hozzáadásához kattintson a képernyő jobb felső sarkában található "+ végpont" elemre, és adja meg a végpont URL-címét/IP-címét/FQDN-jét és nevét.
+   2. Kattintson a "végpontok" fülre a végpontok célhelyként való kiválasztásához. A végpontok listája O365 és D365-teszt URL-címekkel lesz feltöltve, név szerint csoportosítva.  Egy másik tesztelési csoportban létrehozott végpontot is kiválaszthat ugyanabban a figyelőben. Új végpont hozzáadásához kattintson a képernyő jobb felső sarkában található "+ végpont" elemre, és adja meg a végpont URL-címét/IP-címét/FQDN-jét és nevét.
 
       ![Végpontok hozzáadása](./media/connection-monitor-2-preview/add-endpoints.png)
 

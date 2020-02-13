@@ -1,5 +1,5 @@
 ---
-title: Magával ragadó olvasó erőforrás létrehozása
+title: Erőforrás létrehozása a Modern olvasóhoz
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk bemutatja, hogyan hozhat létre egy új, teljes értékű olvasó-erőforrást egy egyéni altartománnyal, majd hogyan konfigurálhatja az Azure AD-t az Azure-bérlőben.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
-ms.translationtype: MT
+ms.openlocfilehash: 187989153ae32704df8a7ff061e19fe35206e0e8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170170"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162514"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -109,6 +109,10 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
             Write-Host "New service principal created successfully"
         }
 
+        # Sleep for 5 seconds to allow the new service principal to propagate
+        Write-Host "Sleeping for 5 seconds"
+        Start-Sleep -Seconds 5
+
         Write-Host "Granting service principal access to the newly created Immersive Reader resource"
         $accessResult = az role assignment create --assignee $principalId --scope $resourceId --role "Cognitive Services User"
         if (-not $accessResult) {
@@ -161,7 +165,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     | AADAppIdentifierUri |Az Azure AD-alkalmazás URI-ja. Ha egy meglévő Azure AD-alkalmazás nem található, a rendszer létrehoz egy újat ezzel az URI-val. Például: `https://immersivereaderaad-mycompany`. |
     | AADAppClientSecret |Az Ön által létrehozott jelszó, amelyet később a rendszer a token beszerzése során fog használni, hogy elindítsa az olvasót. A jelszónak legalább 16 karakterből kell állnia, és legalább 1 speciális karaktert kell tartalmaznia, és legalább 1 numerikus karaktert kell tartalmaznia. |
 
-1. Másolja a JSON-kimenetet egy szövegfájlba későbbi használatra. A kimenetnek az alábbihoz hasonlóan kell kinéznie.
+1. Másolja a JSON-kimenetet egy szövegfájlba későbbi használatra. A kimenet a következőhöz hasonlóan kell kinéznie.
 
     ```json
     {

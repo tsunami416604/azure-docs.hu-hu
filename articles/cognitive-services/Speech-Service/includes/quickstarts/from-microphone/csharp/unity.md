@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927930"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156424"
 ---
 > [!NOTE]
 > Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
@@ -90,7 +90,7 @@ A következő lépésekkel adhatja hozzá a minta parancsfájl kódját az Unity
 
 1. Keresse meg és cserélje le a `YourSubscriptionKey` karakterláncot a beszédfelismerési szolgáltatás előfizetési kulcsával.
 
-1. Keresse meg és cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióval](~/articles/cognitive-services/Speech-Service/regions.md) . Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
+1. Keresse meg és cserélje le az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` sztringjét. Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
 
 1. Mentse a parancsfájl módosításait.
 

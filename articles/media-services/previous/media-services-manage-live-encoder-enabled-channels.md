@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134925"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162531"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134925"
 Azure Media Services (AMS) esetében a **csatorna** az élő adatfolyam tartalmának feldolgozására szolgáló folyamatot jelöli. A **csatorna** az élő bemeneti streameket kétféleképpen fogadja el:
 
 * A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy élő kódolást végezzen Media Services az alábbi formátumok valamelyikével: RTMP vagy Smooth Streaming (töredezett MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* A helyszíni élő kódoló egy többszörös sávszélességű **RTMP** -t vagy **Smooth streaming** (darabolt MP4) küld a csatornára, amely nincs engedélyezve az AMS-mel végzett élő kódoláshoz. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a **Channel**s-ben. Ezt a metódust **áteresztőnek**nevezzük. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: stream Wirecast, Haivision, Teradek és Tricaster kódoló.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló egy többszörös sávszélességű **RTMP** -t vagy **Smooth streaming** (darabolt MP4) küld a csatornára, amely nincs engedélyezve az AMS-mel végzett élő kódoláshoz. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a **Channel**s-ben. Ezt a metódust **áteresztőnek**nevezzük. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: [stream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek és Tricaster kódoló.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -146,7 +146,7 @@ Szempontok:
 * 44,1 kHz mintavételi sebesség
 * MPEG-2 stílusú ADTS csomagolás
 * Az ajánlott kódolók a következők:
-* Wirecast
+* [Wirecast](media-services-configure-wirecast-live-encoder.md)
 * Flash Media élő kódoló
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Single bitrate Fragmented MP4 (Egyszeres sávszélességű, fragmentált MP4) (Smooth Streaming)

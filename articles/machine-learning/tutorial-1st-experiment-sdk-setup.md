@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 1dacc59ee0bf79128efd8920a91f3c3d54e5584a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116595"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165976"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,10 +99,6 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 
 Ha egyéni widgetekkel rendelkezik, vagy inkább a Jupyter/JupyterLab-t használja, válassza a jobb szélen a **Jupyter** legördülő listát, majd válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
-
-> [!NOTE]
-> A számítási példányok (előzetes verzió) jelenleg csak az **USA északi középső**régiója, az **USA 2. keleti**régiója, **Észak-Európa** vagy **Egyesült Királyság déli régiója**területén található munkaterületekhez érhetők el, és hamarosan további régiókat is támogatnak.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .  A jegyzetfüzet futtatásához notebook-alapú virtuális gépet vagy számítási példányt is használhat. A virtuális gépek továbbra is futnak, és csak akkor merülnek fel, ha leállítja. A Studio **számítási** lapján manuálisan leállíthatja, vagy megtekintheti az Azure-beli virtuális gépek ütemezett automatikus leállításának engedélyezésére vonatkozó [blogbejegyzést](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) .
 
 ## <a name="next-steps"></a>Következő lépések
 

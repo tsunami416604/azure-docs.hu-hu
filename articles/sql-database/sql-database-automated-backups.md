@@ -1,5 +1,5 @@
 ---
-title: automatikus, Geo-redundáns biztonsági másolatok
+title: Automatikus, Geo-redundáns biztonsági másolatok
 description: A SQL Database néhány percenként automatikusan létrehoz egy helyi adatbázis biztonsági mentését, és az Azure olvasási hozzáférésű geo-redundáns tárterületet használja a Geo-redundancia érdekében.
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348968"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157508"
 ---
-# <a name="automated-backups"></a>Automatizált biztonsági mentések
+# <a name="automated-backups"></a>Automatikus biztonsági mentések
 
-A SQL Database automatikusan létrehozza a konfigurált megőrzési időszak időtartamára fenntartott adatbázis-biztonsági másolatokat, és az Azure [olvasási hozzáférés geo-redundáns tárolóját (ra-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) használja annak érdekében, hogy a rendszer akkor is megőrizzék azokat, ha az adatközpont nem érhető el. Ezek a biztonsági másolatok automatikusan létrejönnek. Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. Ha a biztonsági szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhat egy [hosszú távú adatmegőrzést](sql-database-long-term-retention.md) az önálló adatbázisokra és a rugalmas készletekre.
+A SQL Database automatikusan létrehozza a konfigurált megőrzési időszak időtartamára fenntartott adatbázis-biztonsági másolatokat, és az Azure [olvasási hozzáférés geo-redundáns tárolóját (ra-GRS)](../storage/common/storage-redundancy.md) használja annak érdekében, hogy a rendszer akkor is megőrizzék azokat, ha az adatközpont nem érhető el. Ezek a biztonsági másolatok automatikusan létrejönnek. Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. Ha a biztonsági szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhat egy [hosszú távú adatmegőrzést](sql-database-long-term-retention.md) az önálló adatbázisokra és a rugalmas készletekre.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>Mi az a SQL Database biztonsági másolat?
 
-A SQL Database a SQL Server technológiával [teljes biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) készít hetente, a [különbözeti biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) 12 óránként, a [tranzakciós napló biztonsági](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) mentését pedig 5-10 percenként. A biztonsági mentések az [ra-GRS Storage-blobokban](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) tárolódnak, amelyek egy adatközpont-kimaradás elleni védelem érdekében egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) vannak replikálva. Adatbázis visszaállításakor a szolgáltatás kiszámítja, hogy a teljes, a különbözeti és a tranzakciónapló biztonsági mentéseket vissza kell-e állítani.
+A SQL Database a SQL Server technológiával [teljes biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) készít hetente, a [különbözeti biztonsági mentést](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) 12 óránként, a [tranzakciós napló biztonsági](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) mentését pedig 5-10 percenként. A biztonsági mentések az [ra-GRS Storage-blobokban](../storage/common/storage-redundancy.md) tárolódnak, amelyek egy adatközpont-kimaradás elleni védelem érdekében egy [párosított adatközpontba](../best-practices-availability-paired-regions.md) vannak replikálva. Adatbázis visszaállításakor a szolgáltatás kiszámítja, hogy a teljes, a különbözeti és a tranzakciónapló biztonsági mentéseket vissza kell-e állítani.
 
-A biztonsági másolatokat a következő célokra használhatja:
+Ezeket a biztonsági másolatokat a következő célra használhatja:
 
 - Egy meglévő adatbázis visszaállítása a Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával a megőrzési időszakon belül a **korábbi időpontra** . Az önálló adatbázisban és a rugalmas készletekben ez a művelet egy új adatbázist fog létrehozni az eredeti adatbázissal megegyező kiszolgálón. Felügyelt példányban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy megegyező vagy eltérő felügyelt példányt ugyanahhoz az előfizetéshez.
 - A **törölt adatbázis visszaállítása a törölt** vagy a megőrzési időn belül bármikor. A törölt adatbázis csak ugyanabban a logikai kiszolgálón vagy felügyelt példányban állítható vissza, amelyben az eredeti adatbázis létrejött.
@@ -53,11 +53,11 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 
 ## <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
+### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-SQL Database támogatja az önkiszolgáló szolgáltatást az időponthoz tartozó visszaállításhoz (PITR) a teljes biztonsági mentés, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági másolatainak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente, a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre, és a tranzakciónapló biztonsági mentései általában 5-10 percenként jönnek létre, a számítási méret és az adatbázis-tevékenység mennyisége alapján. Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Általában 30 percen belül befejeződik, de hosszabb időt is igénybe vehet, ha az adatbázis jelentős méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a további mentések felhasználói beavatkozás nélkül, a háttérben lesznek automatikusan ütemezve és felügyelve. Az adatbázis-mentések pontos időzítését az SQL Database szolgáltatás határozza meg a teljes rendszer terhelésének kiegyensúlyozásával. A biztonsági mentési feladatok nem módosíthatók és nem tilthatók le. 
+SQL Database támogatja az önkiszolgáló szolgáltatást az időponthoz tartozó visszaállításhoz (PITR) a teljes biztonsági mentés, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági másolatainak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente, a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre, és a tranzakciónapló biztonsági mentései általában 5-10 percenként jönnek létre, a számítási méret és az adatbázis-tevékenység mennyisége alapján. Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Általában 30 percen belül befejeződik, de hosszabb időt is igénybe vehet, ha az adatbázis jelentős méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a rendszer az összes további biztonsági mentést automatikusan ütemezi, és csendesen kezeli a háttérben. Az adatbázis biztonsági másolatainak pontos időzítését a SQL Database szolgáltatás határozza meg, mivel a teljes rendszerterhelést kiegyensúlyozza. A biztonsági mentési feladatok nem módosíthatók vagy letilthatók.
 
-A PITR biztonsági mentések földrajzilag redundánsak, és az [Azure Storage-régiók közötti replikálás](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) védi
+A PITR biztonsági mentései a földrajzilag redundáns tárolással védettek. További információ: [Azure Storage-redundancia](../storage/common/storage-redundancy.md).
 
 További információ: [időponthoz való visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) .
 
@@ -65,17 +65,17 @@ További információ: [időponthoz való visszaállítás](sql-database-recover
 
 Az önálló és a készletezett adatbázisok lehetővé teszi a teljes biztonsági másolatok hosszú távú megőrzésének (LTR) konfigurálását akár 10 évig az Azure Blob Storage-ban. Ha a LTR szabályzat engedélyezve van, a rendszer automatikusan átmásolja a heti teljes biztonsági mentést egy másik RA-GRS tárolóba. A különböző megfelelőségi követelmények kielégítése érdekében a heti, havi és/vagy éves biztonsági mentések esetében eltérő megőrzési időt választhat. A tárterület-használat a biztonsági mentések és a megőrzési időtartam (ok) kiválasztott gyakoriságával függ. A [ltr díjszabási számológép](https://azure.microsoft.com/pricing/calculator/?service=sql-database) használatával megbecsülheti a ltr-tároló költségeit.
 
-A PITR hasonlóan a LTR biztonsági mentések földrajzilag redundánsak, és az [Azure Storage-régiók közötti replikációval](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)védettek.
+A PITR hasonlóan a LTR biztonsági mentések védettek a Geo-redundáns tárolással. További információ: [Azure Storage-redundancia](../storage/common/storage-redundancy.md).
 
 További információ: a [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md).
 
 ## <a name="backup-storage-consumption"></a>Biztonsági másolatok tárolásának felhasználása 
 
 Az önálló adatbázisok esetében a biztonsági mentési tárterület teljes kihasználtsága a következőképpen számítható ki:   
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size` kérdésre adott válaszban foglalt lépéseket.
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`.
 
 A rugalmas készletek esetében a teljes biztonsági mentési tárterület összesített mérete a készlet szintjén történik, és a következőképpen számítjuk ki:   
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage` kérdésre adott válaszban foglalt lépéseket. 
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`. 
 
 A megőrzési időtartamnál régebbi biztonsági mentések az időbélyegző alapján automatikusan törlődnek. Mivel a különbözeti biztonsági másolatok és a naplók biztonsági mentései egy korábbi teljes biztonsági mentést igényelnek, a rendszer hetente megtisztítja őket. 
 
@@ -112,7 +112,7 @@ Az adatbázisok és a rugalmas készletek biztonsági mentési tárterülete a D
 
 ### <a name="vcore-model"></a>Virtuálismag-alapú modell
 
-Az önálló adatbázisok esetében az adatbázis méretének 100%-ának megfelelő minimális biztonsági mentési tárterület külön díj nélkül elérhető. A rugalmas készletek és a felügyelt példányok esetében a minimális biztonsági mentési tárterület a készlet vagy a példány méretének lefoglalt adattárolójának 100%-a, külön díj nélkül biztosítva. A biztonsági mentési tár ezt meghaladó használata GB/hó díjszabási alapon történik. Ez a további felhasználás az egyes adatbázisok munkaterhelésével és méretétől függ.
+Az önálló adatbázisok esetében az adatbázis méretének 100%-ának megfelelő minimális biztonsági mentési tárterület külön díj nélkül elérhető. A rugalmas készletek és a felügyelt példányok esetében a minimális biztonsági mentési tárterület a készlet vagy a példány méretének lefoglalt adattárolójának 100%-a, külön díj nélkül biztosítva. A biztonsági mentési tár további felhasználásának díja GB/hó. Ez a további felhasználás az egyes adatbázisok munkaterhelésével és méretétől függ.
 
 Az Azure SQL DB összesített értékként számítja ki az összes megőrzési biztonsági mentési tárterületet. Ezt az értéket minden órában jelenteni kell az Azure számlázási folyamatnak, amelynek feladata az óránkénti használat összesítése, hogy minden hónap végén lekérje a felhasználást. Az adatbázis eldobása után csökkentjük a felhasználást a biztonsági mentések kora után. Ha a megőrzési időtartamnál régebbiek lesznek, a számlázás leáll. Mivel a napló összes biztonsági mentése és különbözeti biztonsági mentése megmarad a teljes megőrzési időszakra vonatkozóan, a nagy mértékben módosított adatbázisok magasabb biztonsági mentési költségekkel fognak rendelkezni. 
 
@@ -195,7 +195,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>PITR megőrzési időszakának módosítása REST API használatával
 
-#### <a name="sample-request"></a>Mintakérelem
+#### <a name="sample-request"></a>Kérésminta
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

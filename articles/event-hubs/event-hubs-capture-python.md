@@ -4,7 +4,6 @@ description: 'Gyors útmutató: az Azure Python SDK-t használó parancsfájlok,
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
@@ -15,16 +14,16 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904505"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187291"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python (Azure-eventhub 1. verzió)
 
-A capture az Azure Event Hubs egyik funkciója. A capture használatával automatikusan továbbíthatja az adatátviteli adatait az Event hub-ban egy tetszőleges Azure Blob Storage-fiókba. Ez a funkció megkönnyíti a kötegelt feldolgozást a valós idejű adatfolyam-továbbítási adatátvitelhez. Ez a cikk azt ismerteti, hogyan használható a Event Hubs Capture a Python használatával. További információ a Event Hubs rögzítéséről: [események rögzítése az Azure Event Hubs használatával][Overview of Event Hubs Capture].
+Rögzítési funkciója az Azure Event hubs. A capture használatával automatikusan továbbíthatja az adatátviteli adatait az Event hub-ban egy tetszőleges Azure Blob Storage-fiókba. Ez a funkció megkönnyíti a kötegelt feldolgozást a valós idejű adatfolyam-továbbítási adatátvitelhez. Ez a cikk ismerteti, hogyan használható az Event Hubs Capture Python használatával. További információ a Event Hubs rögzítéséről: [események rögzítése az Azure Event Hubs használatával][Overview of Event Hubs Capture].
 
 Ez az útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* program a szimulált környezeti telemetria JSON formátumban küldi Event Hubs. Az Event hub a rögzítési funkcióval írja be ezeket az adattárakba a blob Storage-ba. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, létrehoz egy hozzáfűzési fájlt az összes eszközhöz, és az adatokat *. csv* fájlba írja az egyes eszközökön.
 
@@ -57,7 +56,7 @@ Ebben az útmutatóban a következőket végezheti el:
 
 Hozzon létre egy Storage-fiókot és-tárolót, amelyet a rögzítéshez használni szeretne. 
 
-1. Jelentkezzen be az [Azure portálra][Azure portal].
+1. Jelentkezzen be az [Azure Portal][Azure portal].
 2. A bal oldali navigációs ablakban válassza a **Storage-fiókok**lehetőséget, majd a Storage- **fiókok** képernyőn válassza a **Hozzáadás**lehetőséget.
 3. A Storage-fiók létrehozása képernyőn válassza ki az előfizetést és az erőforráscsoportot, majd adja meg a Storage-fiók nevét. Alapértelmezés szerint a többi beállítás is elhagyható. Válassza a **felülvizsgálat + létrehozás**lehetőséget, tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget. 
    
@@ -77,7 +76,7 @@ Hozzon létre egy Storage-fiókot és-tárolót, amelyet a rögzítéshez haszn�
 5. A **rögzítési** képernyőn válassza a **módosítások mentése**elemet. 
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>Hozzon létre egy Python-szkriptet az események az Event hubhoz való küldéséhez
-Ez a szkript 200 eseményt küld az Event hub-nak. Az események a JSON-ban eljuttatott egyszerű környezeti olvasások.
+Ez a szkript küldi az 200 eseményeket az eseményközpontjába. Az események a JSON-ban eljuttatott egyszerű környezeti olvasások.
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code][Visual Studio Code]-ot.
 2. Hozzon létre egy új, *Sender.py*nevű fájlt. 

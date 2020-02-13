@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512912"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161749"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Lake lekérdezése az Azure-Adatkezelő használatával
 
-A Azure Data Lake Storage egy rugalmasan méretezhető és költséghatékony, big data elemzésre szolgáló adatkezelési megoldás. Egy nagy teljesítményű fájlrendszer, a hatalmas méret és a gazdaságosság ötvözésével segít gyorsabban hozzájutni az elemzési eredményekhez. A Data Lake Storage Gen2 túlmutat az Azure Blob Storage képességein, és elemzési feladatokra van optimalizálva.
+A Azure Data Lake Storage egy rugalmasan méretezhető és költséghatékony, big data elemzésre szolgáló adatkezelési megoldás. Nagy teljesítményű és gazdaságos fájlrendszert biztosít, amely lehetővé teszi, hogy az idő felgyorsításához segítséget nyújtson. Data Lake Storage Gen2 bővíti az Azure Blob Storage képességeit, és az elemzési számítási feladatokhoz van optimalizálva.
  
-Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake Storage Gen2 szolgáltatással, amely gyors, gyorsítótárazott és indexelt hozzáférést biztosít a Lake-beli adatkezeléshez. Az Azure Adatkezelő-ba való előzetes betöltés nélkül elemezheti és lekérdezheti a tóban lévő adatot. Lekérdezheti a betöltött és a nem feldolgozott natív Lake-adatmennyiségeket is egyszerre.  
+Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake Storage (Gen1 és Gen2) szolgáltatással, amelyek gyors, gyorsítótárazott és indexelt hozzáférést biztosítanak a Lake-beli adatkezeléshez. Az Azure Adatkezelő-ba való előzetes betöltés nélkül elemezheti és lekérdezheti a tóban lévő adatot. Lekérdezheti a betöltött és a nem feldolgozott natív Lake-adatmennyiségeket is egyszerre.  
 
 > [!TIP]
-> A legjobb lekérdezési teljesítmény az Azure Adatkezelőba való adatfeldolgozást teszi szükségessé. Az Azure Data Lake Storage Gen2 előzetes betöltés nélküli lekérdezésének képességét csak olyan múltbeli vagy a ritkán lekérdezett adatmennyiségek esetében kell használni. [Optimalizálja a lekérdezés teljesítményét a tóban a](#optimize-your-query-performance) legjobb eredmények érdekében.
+> A legjobb lekérdezési teljesítmény az Azure Adatkezelőba való adatfeldolgozást teszi szükségessé. A külső adatmennyiség előzetes betöltés nélküli lekérdezésének képességét csak olyan múltbeli vagy a ritkán lekérdezett adatmennyiségek esetében lehet használni. [Optimalizálja a lekérdezés teljesítményét a tóban a](#optimize-your-query-performance) legjobb eredmények érdekében.
  
 
 ## <a name="create-an-external-table"></a>Külső tábla létrehozása
 
  > [!NOTE]
- > Jelenleg támogatott Storage-fiókok az Azure Blob Storage vagy Azure Data Lake Storage Gen2. A jelenleg támogatott adatformátumok a JSON, a CSV, a TSV és a txt.
+ > Jelenleg támogatott Storage-fiókok az Azure Blob Storage vagy Azure Data Lake Storage (Gen1 és Gen2).
 
 1. Az `.create external table` parancs használatával hozzon létre egy külső táblát az Azure Adatkezelőban. A külső táblák további parancsai, például a `.show`, a `.drop`és a `.alter` a [külső táblák parancsaiban](/azure/kusto/management/externaltables)vannak dokumentálva.
 
@@ -46,6 +46,7 @@ Az Azure Adatkezelő integrálható az Azure Blob Storage és Azure Data Lake St
     > * Ha partíciót tartalmazó külső táblát határoz meg, a tárolási struktúra megegyeznek.
 Ha például a tábla egy DateTime partícióval van definiálva éééé/hh/nn formátumban (alapértelmezett), az URI-tár elérési útja csak *container1/éééé/hh/nn/all_exported_blobs*lehet. 
     > * Ha a külső tábla egy datetime oszlop szerint van particionálva, mindig a lekérdezésben szereplő lezárt tartományhoz tartozó időszűrőt adja meg (például a lekérdezés – `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` – jobb teljesítményt kell végeznie, mint a (nyitott tartomány) egy-`ArchivedProducts | where Timestamp > ago(1h)`). 
+    > * Az összes támogatott betöltési [Formátum](ingest-data-overview.md#supported-data-formats) külső táblák használatával kérdezhető le.
 
 1. A külső tábla látható a webes felhasználói felület bal oldali ablaktábláján.
 
@@ -194,7 +195,7 @@ A *TaxiRides* -minta adatkészlete New York-i taxi-adathalmazt tartalmaz a [NYC 
 
 ### <a name="query-taxirides-external-table-data"></a>Külső *TaxiRides* lekérdezése 
 
-A *TaxiRides* külső tábla lekérdezéséhez jelentkezzen be [https://dataexplorer.azure.com/clusters/help/databases/Samples ba](https://dataexplorer.azure.com/clusters/help/databases/Samples) . 
+A *TaxiRides* külső tábla lekérdezéséhez jelentkezzen be [https://dataexplorer.azure.com/clusters/help/databases/Samplesba](https://dataexplorer.azure.com/clusters/help/databases/Samples) . 
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>Külső tábla lekérdezése particionálás nélkül *TaxiRides*
 

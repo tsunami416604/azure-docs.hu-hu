@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 70b13b16e6aca6b0bdb0858a32a219defef6cca3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841139"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162038"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -58,7 +58,8 @@ A 2. generációs virtuális gépek a következő Piactéri rendszerképeket tá
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
+* Cent OS 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
 
@@ -76,15 +77,15 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1\. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1\. generáció | 2\. generáció |
+| Funkció | 1\. generáció | 2\. generáció |
 |---------|--------------|--------------|
-| Rendszerindítás             | PCAT         | UEFI |
+| Boot             | PCAT         | UEFI |
 | Lemezvezérlő-vezérlők | IDE          | SCSI |
-| Virtuálisgép-méretek         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1\. generációs, 2. generációs képességek
 
-| Szolgáltatás | 1\. generáció | 2\. generáció |
+| Képesség | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
@@ -100,18 +101,19 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 A Azure Portal vagy az Azure CLI-ben létrehozhat 2. generációs virtuális gépeket az UEFI rendszerindítást támogató piactér-rendszerképből.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
-A 2. generációs rendszerképek a Windows-és a SLES a Gen1-lemezképekkel megegyező kiszolgálói ajánlatban szerepelnek. A folyamat szempontjából ez azt jelenti, hogy az ajánlatot és az SKU-t a virtuális gép portálján kell kiválasztani. Ha az SKU az 1. és a 2. generációs rendszerképeket is támogatja, kiválaszthatja, hogy létrehoz egy 2. generációs virtuális gépet a virtuális gép létrehozási folyamatának *speciális* lapján.
+Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális gépet Azure Portal-ben.
 
-Jelenleg a következő SKU-támogatás az 1. és a 2. generációs rendszerképeket támogatja:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Ha a Windows Server SKU-t ajánlatként választja, a **speciális** lapon lehetőség van egy **Gen 1** (BIOS) vagy **Gen 2** (UEFI) virtuális gép létrehozására. Ha a **2**. generációs lehetőséget választja, győződjön meg arról, hogy a 2. [generációs virtuális gépeknél](#generation-2-vm-sizes)az **alapok** lapon kiválasztott virtuálisgép-méret támogatott.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+1. Válassza **az erőforrás létrehozása**lehetőséget.
+1. Kattintson az **összes** megjelenítése lehetőségre a bal oldalon található Azure piactéren.
+1. Válasszon olyan képet, amely támogatja a Gen2.
+1. Kattintson a  **Create** (Létrehozás) gombra.
+1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
+1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
+1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
+1. A virtuális gép létrehozásának befejezéséhez folytassa a [Azure Portal létrehozás folyamatán](quick-create-portal.md) .
 
 ![Válassza ki az 1. generációs vagy a 2. generációs virtuális gépet](./media/generation-2/gen1-gen2-select.png)
 
@@ -144,7 +146,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 A 2. generációs virtuális gépeket ugyanúgy hozhatja létre felügyelt lemezképből vagy felügyelt lemezről, mint az 1. generációs virtuális gépeket.
 
-### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 
 A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok használatával is létrehozhatja. Az Azure CLI-ben a 2. generációs virtuális gépek létrehozásához használja az Azure-méretezési csoportokat.
 
@@ -195,6 +197,13 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 
 * **Áttelepíthetek egy virtuális gépet az 1. generációról a 2. generációra?**  
     Nem, a létrehozás után nem módosítható a virtuális gép generációja. Ha váltania kell a virtuálisgép-generációk között, hozzon létre egy másik generációs új virtuális gépet.
+
+* **Miért nem engedélyezett a virtuálisgép-méret a Gen2 virtuális gép létrehozásakor a méret választóban?**
+
+    Ezt megoldhatja a következő módon:
+
+    1. A **speciális** lapon ellenőrizze, hogy a virtuálisgép- **létrehozási** tulajdonság a **Gen 2** értékre van-e beállítva.
+    1. Győződjön meg arról, hogy olyan virtuálisgép- [méretet keres, amely támogatja a Gen2 virtuális gépeket](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Következő lépések
 

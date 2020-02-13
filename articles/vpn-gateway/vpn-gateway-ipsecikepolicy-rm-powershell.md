@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514918"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161902"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet – VNet kapcsolatokhoz
 
 Ez a cikk végigvezeti az IPsec/IKE-házirend konfigurálásának lépésein a helyek közötti VPN-vagy VNet-VNet kapcsolatokhoz a Resource Manager-alapú üzemi modell és a PowerShell használatával.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>Tudnivalók az Azure VPN-átjárók IPsec-és IKE-szabályzati paramétereinek használatáról
 Az IPsec és az IKE protokoll standard verziója számos titkosítási algoritmust támogat különböző kombinációkban. A [titkosítási követelményekkel és az Azure VPN-átjárókkal kapcsolatos információkért](vpn-gateway-about-compliance-crypto.md) tekintse meg, hogy ez hogyan segítheti a létesítmények közötti és VNet kapcsolatok biztosítását a megfelelőségi vagy biztonsági követelmények kielégítése érdekében.
@@ -50,7 +50,7 @@ Ez a szakasz az IPsec/IKE-házirend létrehozásához és frissítéséhez szük
 
 Az ebben a cikkben szereplő utasítások segítséget nyújt az IPsec/IKE-szabályzatok beállításához és konfigurálásához a következő ábrán látható módon:
 
-![IPSec-IKE-Policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 ## <a name ="params"></a>2. rész – támogatott titkosítási algoritmusok & a kulcs erősségeit
 
@@ -60,7 +60,7 @@ A következő táblázat felsorolja az ügyfelek által konfigurálható támoga
 | ---  | --- 
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES  
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
-| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, nincs |
+| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, None |
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs    |
 | IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs 
@@ -301,7 +301,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 A fenti lépések elvégzése után a rendszer néhány percen belül kialakítja a kapcsolatokat, és a következő hálózati topológiával fog rendelkezni, amint az elején látható:
 
-![IPSec-IKE-Policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
 ## <a name ="managepolicy"></a>5. rész – az IPsec/IKE-házirend frissítése egy kapcsolathoz

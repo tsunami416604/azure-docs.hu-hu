@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700515"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159731"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform és a OAuth 2,0-eszköz engedélyezési folyamata
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 A Microsoft Identity platform támogatja az [eszköz engedélyezésének](https://tools.ietf.org/html/rfc8628)engedélyezését, amely lehetővé teszi a felhasználók számára, hogy bejelentkezzenek a bemeneti korlátozás alá tartozó eszközökre, például az intelligens TV-re, a IoT eszközre vagy a nyomtatóra.  A folyamat engedélyezéséhez az eszközön a felhasználó meglátogat egy weblapot a böngészőben egy másik eszközre a bejelentkezéshez.  Ha a felhasználó bejelentkezik, az eszköz igény szerint elérheti a hozzáférési jogkivonatokat, és szükség szerint frissítheti a jogkivonatokat.  
 
@@ -62,8 +60,8 @@ scope=user.read%20openid%20profile
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
-| `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
+| `tenant` | Kötelező | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
+| `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `scope` | Ajánlott | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  |
 
 ### <a name="device-authorization-response"></a>Eszköz-engedélyezési válasz
@@ -99,12 +97,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Paraméter | Szükséges | Leírás|
+| Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
-| `tenant`  | Szükséges | A kezdeti kérelemben használt bérlői vagy bérlői alias. | 
-| `grant_type` | Szükséges | `urn:ietf:params:oauth:grant-type:device_code` kell lennie|
-| `client_id`  | Szükséges | Meg kell egyeznie a kezdeti kérelemben használt `client_id`val. |
-| `device_code`| Szükséges | Az eszköz engedélyezési kérelmében visszaadott `device_code`.  |
+| `tenant`  | Kötelező | A kezdeti kérelemben használt bérlői vagy bérlői alias. | 
+| `grant_type` | Kötelező | `urn:ietf:params:oauth:grant-type:device_code` kell lennie|
+| `client_id`  | Kötelező | Meg kell egyeznie a kezdeti kérelemben használt `client_id`val. |
+| `device_code`| Kötelező | Az eszköz engedélyezési kérelmében visszaadott `device_code`.  |
 
 ### <a name="expected-errors"></a>Várt hibák
 

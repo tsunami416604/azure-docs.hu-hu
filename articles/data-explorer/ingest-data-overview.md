@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091786"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157244"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Adatkezelő adatfeldolgozás
 
@@ -118,7 +118,7 @@ Az olyan meglévő infrastruktúrával rendelkező szervezetek esetében, amelye
 ## <a name="supported-data-formats"></a>Támogatott adatformátumok
 
 A lekérdezésből bekövetkező összes betöltési módszernél formázza az adatot úgy, hogy az Azure Adatkezelő képes legyen elemezni. 
-* A támogatott adatformátumok a következők: TXT, CSV, TSV, TSVE, PSV, SCSV, rendszerállapot-kimutatás, JSON (line-elválasztva, többsoros), Avro és parketta. 
+* A támogatott adatformátumok a következők: TXT, CSV, TSV, TSVE, PSV, SCSV, rendszerállapot-kimutatás, JSON (line-elválasztva, többsoros), Avro, ork és parketta. 
 * Támogatja a ZIP-és a GZIP-tömörítést.
 
 > [!NOTE]

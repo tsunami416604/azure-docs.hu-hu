@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111663"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168140"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 
@@ -109,7 +109,7 @@ A hardveres összetevők, például a PDM-TDM átalakításnak biztosítaniuk ke
 
 A nagy sebességű, 2,0-es USB-hangosztályt minden audio MCU támogatnia kell, hogy a szükséges sávszélességet akár hét csatornán, nagyobb mintavételi sebességgel és kis mélységgel lehessen biztosítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a Speech Devices SDK-ról](speech-devices-sdk.md)

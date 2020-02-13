@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063017"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166018"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
 
@@ -53,19 +53,19 @@ A SecretAPI webes API közzététele az Application proxyn keresztül:
 
 1. Hozza létre és tegye közzé a minta SecretAPI-projektet ASP.NET-webalkalmazásként a helyi számítógépen vagy intraneten. Győződjön meg arról, hogy a webalkalmazást helyileg éri el. 
    
-1. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory** lehetőséget a bal oldali navigációs sávon. Ezután az **Áttekintés** lapon válassza a **vállalati alkalmazások**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory**lehetőséget. Ezután válassza a **vállalati alkalmazások**lehetőséget.
    
 1. A **vállalati alkalmazások – minden alkalmazás** lap tetején válassza az **új alkalmazás**lehetőséget.
    
-1. Az **Azure ad** -katalógus tallózása oldalon a helyszíni **alkalmazások**területen válassza **a helyszíni alkalmazás hozzáadása**lehetőséget. Megjelenik a **saját helyszíni alkalmazás hozzáadása** lap.
+1. Az **alkalmazás hozzáadása** lapon válassza **a helyszíni alkalmazások**lehetőséget. Megjelenik a **saját helyszíni alkalmazás hozzáadása** lap.
    
 1. Ha nincs telepítve alkalmazásproxy-összekötő, a rendszer kérni fogja a telepítését. Válassza az **alkalmazásproxy-összekötő letöltése** lehetőséget az összekötő letöltéséhez és telepítéséhez. 
    
 1. Miután telepítette az alkalmazásproxy-összekötőt, a **saját helyszíni alkalmazás hozzáadása** oldalon:
    
-   1. A **név**elem mellett adja meg a *SecretAPI* .
+   1. A **név**mellett adja meg a *SecretAPI*.
       
-   1. Adja meg azt az URL-címet, amellyel az API-t a **belső URL-cím**melletti intraneten belülről érheti el. 
+   1. A **belső URL-cím**mellett adja meg azt az URL-címet, amelyet az API-hoz való hozzáféréshez használ az intraneten belülről.
       
    1. Győződjön meg arról, hogy az **előhitelesítés** **Azure Active Directoryra**van beállítva. 
       

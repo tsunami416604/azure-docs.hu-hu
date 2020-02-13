@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521014"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157704"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Storage-fiók feladatátvételének kezdeményezése (előzetes verzió)
 
@@ -32,19 +32,19 @@ Ez a cikk bemutatja, hogyan kezdeményezheti a fiók feladatátvételét a Stora
 Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, győződjön meg arról, hogy végrehajtotta a következő lépéseket:
 
 - Regisztráljon a fiók feladatátvételi előzetes verziójára. További információ a regisztrálásáról: [Tudnivalók az előzetes](storage-disaster-recovery-guidance.md#about-the-preview)verzióról.
-- Győződjön meg arról, hogy a Storage-fiókja a Geo-redundáns tárolás (GRS) vagy a Read-Access geo-redundáns tárolás (RA-GRS) használatára van konfigurálva. További információ a földrajzilag redundáns tárolással kapcsolatban [: Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-](storage-redundancy-grs.md)hoz. 
+- Győződjön meg arról, hogy a Storage-fiókja a Geo-redundáns tárolás (GRS) vagy a Read-Access geo-redundáns tárolás (RA-GRS) használatára van konfigurálva. További információ a földrajzilag redundáns tárolásról: [Azure Storage redundancia](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>A fiók feladatátvételének fontos következményei
 
 Amikor elindít egy fiókot a Storage-fiókhoz, a másodlagos végpont DNS-rekordjai frissülnek, így a másodlagos végpont lesz az elsődleges végpont. A feladatátvétel kezdeményezése előtt győződjön meg arról, hogy tisztában van a Storage-fiók lehetséges hatásával.
 
-Ha a feladatátvétel elindítása előtt szeretné megbecsülni a várható adatvesztés mértékét, akkor a `Get-AzStorageAccount` PowerShell-parancsmag használatával tekintse meg a **Legutóbbi szinkronizálási idő** tulajdonságot, és adja meg a `-IncludeGeoReplicationStats` paramétert. Ezután jelölje be a fiókja `GeoReplicationStats` tulajdonságát. 
+Ha a feladatátvétel elindítása előtt szeretné megbecsülni a várható adatvesztés mértékét, akkor a `Get-AzStorageAccount` PowerShell-parancsmag használatával tekintse meg a **Legutóbbi szinkronizálási idő** tulajdonságot, és adja meg a `-IncludeGeoReplicationStats` paramétert. Ezután jelölje be a fiókja `GeoReplicationStats` tulajdonságát. \
 
-A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-fiók típusát a helyileg redundáns tárterületre (LRS) az új elsődleges régióban. Újra engedélyezheti a Geo-redundáns tárolást (GRS), vagy a fiókhoz tartozó olvasási hozzáférésű geo-redundáns tárolást (RA-GRS). Vegye figyelembe, hogy a LRS-ről GRS-re vagy RA-GRS-re való átalakítás további költségekkel jár. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/). 
+A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-fiók típusát a helyileg redundáns tárterületre (LRS) az új elsődleges régióban. Újra engedélyezheti a Geo-redundáns tárolást (GRS), vagy a fiókhoz tartozó olvasási hozzáférésű geo-redundáns tárolást (RA-GRS). Vegye figyelembe, hogy a LRS-ről GRS-re vagy RA-GRS-re való átalakítás további költségekkel jár. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Miután újraengedélyezte a GRS a Storage-fiókjához, a Microsoft elkezdi replikálni a fiókjában lévő adatait az új másodlagos régióba. A replikálási idő a replikált adatmennyiségtől függ.  
 
-## <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az alábbi lépéseket:
 
@@ -108,7 +108,7 @@ az storage account failover \ --name accountName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vész-helyreállítási és fiók-feladatátvétel (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md)
 - [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)

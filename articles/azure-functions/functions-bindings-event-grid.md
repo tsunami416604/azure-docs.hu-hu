@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547455"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167507"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions Event Grid trigger
 
@@ -30,7 +30,7 @@ A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
 A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet csomagban, 1. x verzióban kell megadnia. A csomag forráskódja az [Azure-functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub-tárházban található.
 
@@ -164,7 +164,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = function (context, eventGridEvent) {
@@ -219,24 +219,12 @@ def main(event: func.EventGridEvent):
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ez a szakasz a következő példákat tartalmazza:
+Ez a szakasz tartalmazza az alábbi példák:
 
 * [Event Grid trigger, karakterlánc-paraméter](#event-grid-trigger-string-parameter)
 * [Event Grid trigger, POJO paraméter](#event-grid-trigger-pojo-parameter)
 
-Az alábbi példákban egy *function. JSON* -fájl és a kötést használó [Java-függvények](functions-reference-java.md) eseményindító-kötést mutatnak be, és ki kell nyomtatni egy eseményt, először az eseményt kell ```String```ként és másodikként fogadni POJO.
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+Az alábbi példák olyan eseményindító-kötést mutatnak be a [javában](functions-reference-java.md) , amely a kötést használja, és kinyomtat egy eseményt, először az eseményt `String` és másodikként fogadja el POJO.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Event Grid trigger, karakterlánc-paraméter
 
@@ -336,7 +324,7 @@ A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/
 
 A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok a `EventGridTrigger` attribútumban.
 
-|function. JSON-tulajdonság |Leírás|
+|Function.JSON tulajdonság |Leírás|
 |---------|---------|
 | **type** | Kötelező – `eventGridTrigger`értékre kell állítani. |
 | **direction** | Kötelező – `in`értékre kell állítani. |
@@ -440,7 +428,7 @@ Ha ezt a hivatkozást választja, a portál megnyitja az **esemény-előfizetés
 
 Az előfizetések Azure Portal használatával történő létrehozásával kapcsolatos további információkért tekintse meg az [egyéni esemény-Azure Portal létrehozása](../event-grid/custom-event-quickstart-portal.md) a Event Grid dokumentációjában.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Ha [Az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával szeretne előfizetést létrehozni, használja az az [eventgrid Event-előfizetés Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) parancsot.
 

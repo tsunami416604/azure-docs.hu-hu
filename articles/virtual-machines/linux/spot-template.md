@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782202"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162446"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Helyszíni virtuális gépek üzembe helyezése Resource Manager-sablonnal
 
@@ -33,7 +33,7 @@ Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő m
 > A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
 > Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> A nyilvános előzetes verzió korai részében a direktszínes példányok fix áron lesznek, így nem kerül sor ár-alapú kizárásra.
+
 
 
 ## <a name="use-a-template"></a>Sablon használata 
@@ -48,9 +48,6 @@ Helyszíni központi telepítések esetén használjon`"apiVersion": "2019-03-01
                 }
 ```
 
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzió korai részében beállíthatja a maximális árat, de a rendszer figyelmen kívül hagyja. A helyszíni virtuális gépek fix áron fognak rendelkezni, így nem kerül sor ár-alapú kizárásra.
 
 
 Itt látható egy példa a helyszíni virtuális gép hozzáadott tulajdonságait tartalmazó sablonra. Cserélje le az erőforrás nevét a saját és a `<password>` a virtuális gépen található helyi rendszergazdai fiókhoz tartozó jelszóval.

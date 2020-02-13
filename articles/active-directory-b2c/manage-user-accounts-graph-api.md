@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848875"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161664"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: az Azure AD-Graph API használata
 
@@ -26,7 +26,7 @@ Előfordulhat, hogy egy meglévő felhasználói tárolót kell áttelepítenie 
 A B2C-bérlők esetében két elsődleges mód van a Graph API való kommunikációra:
 
 * **Interaktív**, egyszeri futtatású feladatok esetén a feladatok végrehajtásakor rendszergazdai fiókként kell működnie a B2C-bérlőben. Ehhez a módhoz a rendszergazdának be kell jelentkeznie a hitelesítő adatokkal, mielőtt a rendszergazda bármilyen hívást el tud végezni a Graph API.
-* **Automatizált**, folyamatos feladatok esetén a felügyeleti feladatok elvégzéséhez szükséges jogosultságokkal ellátott valamilyen típusú szolgáltatásfiókot kell használnia. Az Azure AD-ben ezt egy alkalmazás regisztrálásával és az Azure AD-be történő hitelesítéssel teheti meg. Ezt egy olyan *alkalmazás-azonosító* használatával végezheti el, amely a [OAuth 2,0 ügyfél hitelesítő adatait](../active-directory/develop/service-to-service.md)használja. Ebben az esetben az alkalmazás önmaga, nem pedig felhasználóként működik a Graph API meghívásához.
+* **Automatizált**, folyamatos feladatok esetén a felügyeleti feladatok elvégzéséhez szükséges jogosultságokkal ellátott valamilyen típusú szolgáltatásfiókot kell használnia. Az Azure AD-ben ezt egy alkalmazás regisztrálásával és az Azure AD-be történő hitelesítéssel teheti meg. Ezt egy olyan *alkalmazás-azonosító* használatával végezheti el, amely a [OAuth 2,0 ügyfél hitelesítő adatait](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)használja. Ebben az esetben az alkalmazás önmaga, nem pedig felhasználóként működik a Graph API meghívásához.
 
 Ebből a cikkből megtudhatja, hogyan hajthatja végre az automatikus használati esetet. Olyan .NET 4,5 `B2CGraphClient` hoz létre, amely felhasználói létrehozási, olvasási, frissítési és törlési (szifilisz-) műveleteket hajt végre. Az ügyfél egy Windows parancssori felülettel (CLI) fog rendelkezni, amely lehetővé teszi különböző módszerek meghívását. A kód azonban nem interaktív, automatizált módon viselkedik.
 
@@ -60,7 +60,7 @@ A korábban megadott *olvasási és írási címtár-* adathozzáférési enged�
 
 Ha szeretné, hogy az alkalmazás törölje a felhasználókat vagy frissítse a jelszavakat, meg kell adnia a *felhasználó rendszergazdai* szerepkörét.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. A **kezelés**területen válassza a **szerepkörök és rendszergazdák**lehetőséget.
@@ -73,7 +73,7 @@ A Azure AD B2C alkalmazás már rendelkezik a felhasználók törléséhez szük
 
 ## <a name="get-the-sample-code"></a>A mintakód letöltése
 
-A kód minta egy olyan .NET-konzol alkalmazás, amely a [Active Directory-hitelesítési tár (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) használja az Azure AD-Graph API való interakcióhoz. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
+A kód minta egy olyan .NET-konzol alkalmazás, amely a [Active Directory-hitelesítési tár (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) használja az Azure AD-Graph API való interakcióhoz. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
 
 [Letöltheti a minta archívumot](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) vagy klónozott a GitHub-tárházat:
 
@@ -99,7 +99,7 @@ A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a 
 
 Ha a Build sikeres, a `B2C.exe` Console alkalmazás megtalálható a `B2CGraphClient\bin\Debug`ban.
 
-## <a name="review-the-sample-code"></a>A mintakód áttekintése
+## <a name="review-the-sample-code"></a>Tekintse át a mintakódot
 
 A B2CGraphClient használatához nyisson meg egy parancssort (`cmd.exe`), és váltson a projekt `Debug` könyvtárába. Ezután futtassa a `B2C Help` parancsot.
 
@@ -288,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Példa:
+Például:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -330,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-A kimenet felfedi az egyes egyéni attribútumok részleteit. Példa:
+A kimenet felfedi az egyes egyéni attribútumok részleteit. Például:
 
 ```json
 {

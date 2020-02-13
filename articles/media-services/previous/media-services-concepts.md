@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978832"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162905"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak 
 
@@ -29,7 +29,7 @@ Ez a témakör áttekintést nyújt a legfontosabb Media Services fogalmakról.
 
 ## <a name="a-idassetsassets-and-storage"></a>Eszközök és tároló <a id="assets"/>
 ### <a name="assets"></a>Objektumok
-Az [eszközök](https://docs.microsoft.com/rest/api/media/operations/asset) digitális fájlokat (például videó, hang, képek, miniatűr gyűjtemények, szöveges számok és zárt feliratú fájlok) és a fájlokra vonatkozó metaadatokat tartalmaznak. A digitális fájlok egy objektumba való feltöltése után a rendszer a Media Services kódolási és folyamatos átviteli munkafolyamatokban is felhasználhatja őket.
+Az [eszközök](https://docs.microsoft.com/rest/api/media/operations/asset) digitális fájlokat (például videó, hang, képek, miniatűr gyűjtemények, szöveges számok és zárt feliratú fájlok) és a fájlokra vonatkozó metaadatokat tartalmaznak. Miután a digitális fájlok feltöltése egy adategységbe, azok a Media Services encoding és adatfolyam-munkafolyamatok használható.
 
 Az eszköz az Azure Storage-fiókban található blob-tárolóra van leképezve, és az adategységben található fájlok a tárolóban blokk blobként tárolódnak. Azure Media Services nem támogatja az oldal blobokat.
 
@@ -108,10 +108,10 @@ A Media Services a következő, igény szerinti kódolókat támogatja, amelyek 
 
 További információ a támogatott kódolókkal kapcsolatban: [kódolók](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Élő adások online közvetítése
+## <a name="live-streaming"></a>Élő streamelés
 Azure Media Services a csatorna az élő adatfolyam tartalmának feldolgozására szolgáló folyamatot jelöli. A csatorna az élő bemeneti streameket kétféleképpen fogadja el:
 
-* A helyszíni élő kódoló többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) üzenetet küld a csatornának. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: Adobe Flash Live Encoder, Stream Wirecast, Teradek, Haivision és Tricaster kódolók. A betöltött adatfolyamok további átkódolás és kódolás nélkül haladnak át a csatornákon. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) üzenetet küld a csatornának. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: Adobe Flash Live Encoder, [stream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision és Tricaster kódolók. A betöltött adatfolyamok további átkódolás és kódolás nélkül haladnak át a csatornákon. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 * Egy átviteli sebességű adatfolyam (a következő formátumok egyikében: RTMP vagy Smooth Streaming (darabolt MP4)) a rendszer elküldi a csatornára, amely lehetővé teszi, hogy élő kódolást végezzen a Media Services. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 ### <a name="channel"></a>Csatorna
@@ -131,7 +131,7 @@ Minden program (esemény) társítva van egy eszközhöz. A program közzététe
 
 A csatornák három egyidejűleg zajló programot támogatnak, így egy bejövő streamből több archívumot is létre lehet hozni. Ez lehetővé teszi az események különféle részeinek szükség szerinti közzétételét és archiválását. Az üzleti igény szerint például 6 órát kell archiválni egy programból, de csak az utolsó 10 percet kell közvetíteni. Ezt két egyidejűleg zajló program létrehozásával érheti el. Ebben az esetben állítsa be az egyik programot az esemény 6 órájának archiválására, de ne tegye közzé. A másik programot 10 perc archiválására állítsa be, és tegye is közzé.
 
-További információ eléréséhez lásd:
+További információkért lásd:
 
 * [Olyan csatornák használata, amelyek engedélyezve vannak a Live Encoding végrehajtásához Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Helyszíni kódolóktól többszörös átviteli sebességű streameket fogadó csatornák használata](media-services-live-streaming-with-onprem-encoders.md)
@@ -150,9 +150,9 @@ Ha titkosított adategységet szeretne továbbítani, konfigurálnia kell az esz
 Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat a boríték-titkosítás (AES) vagy a közös titkosítás (PlayReady vagy Widevine) használatával. Az adatfolyam visszafejtéséhez a lejátszó a kulcs kézbesítési szolgáltatástól kéri a kulcsot. Annak eldöntéséhez, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
 ### <a name="token-restriction"></a>Jogkivonat-korlátozás
-A tartalmi kulcs engedélyezési házirendje rendelkezhet egy vagy több engedélyezési korlátozással: Open, token korlátozás vagy IP-korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. Media Services támogatja a tokeneket az egyszerű webes tokenek (SWT) és a JSON Web Token (JWT) formátumában. Media Services nem biztosít biztonságos jogkivonat-szolgáltatásokat. Létrehozhat egyéni STS-t is. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket. A Media Services Key Delivery Service visszaadja a kért kulcsot (vagy licencet) az ügyfélnek, ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a kulcshoz (vagy licenchez) konfigurált jogcímekkel.
+A tartalmi kulcs engedélyezési házirendje rendelkezhet egy vagy több engedélyezési korlátozással: Open, token korlátozás vagy IP-korlátozás. A tokennel korlátozott szabályzatokhoz a Secure Token Service (Biztonsági jegykiadó szolgáltatás, STS) által kiadott tokennek kell tartoznia. Media Services támogatja a tokeneket az egyszerű webes tokenek (SWT) és a JSON Web Token (JWT) formátumában. Media Services nem biztosít biztonságos jogkivonat-szolgáltatásokat. Létrehozhat egyéni STS-t is. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services Key Delivery Service visszaadja a kért kulcsot (vagy licencet) az ügyfélnek, ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a kulcshoz (vagy licenchez) konfigurált jogcímekkel.
 
-A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyhez a jogkivonat be lett jelentkezve, a kibocsátó pedig a tokent kiállító biztonságos jogkivonat-szolgáltatás. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
+A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyhez a jogkivonat be lett jelentkezve, a kibocsátó pedig a tokent kiállító biztonságos jogkivonat-szolgáltatás. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
 További információkért tekintse át a következő cikkeket:
 - [Tartalom – áttekintés](media-services-content-protection-overview.md)
@@ -190,7 +190,7 @@ A progresszív letöltés lehetővé teszi, hogy a teljes fájl letöltése elő
 >[!NOTE]
 >A titkosított eszközöket vissza kell fejteni, ha szeretné, hogy azok elérhetők legyenek a progresszív letöltéshez.
 
-A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Példa:
+A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Például:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152244"
+ms.locfileid: "77163194"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -42,7 +42,7 @@ A felhőalapú tárolás használata előtt először regisztrálnia kell egy ad
 
 A kívánt adatok definiálása és a forráshoz való kapcsolódás után az **[adatok importálása](./import-data.md)** az egyes oszlopok adattípusát következteti ki a benne foglalt értékek alapján, és betölti az adatait a tervezői folyamatba. Az **importálási adat** kimenete egy olyan adatkészlet, amely bármely tervezői folyamattal használható.
 
-Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva. Ha azonban nem kívánja újra beolvasni a forrást a folyamat minden egyes futtatásakor, állítsa a **gyorsítótárazott eredmények használata** beállítást igaz értékre. Ha ez a beállítás be van jelölve, a modul ellenőrzi, hogy a folyamat korábban fut-e ugyanazzal a forrással és ugyanazokkal a bemeneti beállításokkal. Ha a rendszer egy korábbi futtatást talál, a rendszer a gyorsítótárban lévő adatok helyett a forrásból származó adatok újratöltését fogja használni.
+Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatokat adhat hozzá az [importálási adatokat](./import-data.md)újrafuttatva.
 
 ## <a name="how-to-configure-import-data"></a>Az importálási adatgyűjtés konfigurálása
 
@@ -60,11 +60,7 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
     ![Importálás – adatelőnézet](media/module/import-data.png)
 
-1. Jelölje be a **gyorsítótárazott eredmények használata** lehetőséget, ha az adatkészletet az egymást követő futtatások újbóli felhasználásához szeretné gyorsítótárazni.
 
-    Feltételezve, hogy a modul paramétereinek nincsenek más módosításai, a folyamat csak a modul első futtatásakor tölti be az adatokat, majd ezt követően az adatkészlet gyorsítótárazott verzióját használja.
-
-    Törölje ezt a beállítást, ha a folyamat minden egyes futtatásakor újra be kell töltenie az adatátvitelt.
 
 1. A folyamat futtatása.
 

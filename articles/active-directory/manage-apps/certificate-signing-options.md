@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274744"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159199"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban a Gallery-alkalmazásokhoz Azure Active Directory
 
@@ -55,7 +55,7 @@ Az alkalmazás SAML-tanúsítvány-aláírási beállításainak és a tanúsít
 
 1. A [Azure Active Directory portálon](https://aad.portal.azure.com/)jelentkezzen be a fiókjába. Megjelenik a **Azure Active Directory felügyeleti központ** lap.
 1. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. Megjelenik a fiókjában a vállalati alkalmazások listája.
-1. Válasszon ki egy alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
+1. Válasszon egy alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
 
    ![Példa: alkalmazás – Áttekintés lap](./media/certificate-signing-options/application-overview-page.png)
 
@@ -73,7 +73,7 @@ Ezután módosítsa az alkalmazás SAML-jogkivonatának tanúsítvány-aláírá
 1. Az **aláírási algoritmus** legördülő listában válassza az **SHA-1** vagy az **SHA-256**elemet. Ezen beállítások leírása a jelen cikk korábbi, a tanúsítvány- [aláírási algoritmusok](#certificate-signing-algorithms) szakaszban található.
 1. Ha elégedett a lehetőségeivel, válassza a **Mentés** lehetőséget az új SAML-aláíró tanúsítvány beállításainak alkalmazásához. Ellenkező esetben válassza az **X-et** a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory app Galleryben](configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../develop/howto-v1-debug-saml-sso-issues.md)
+* [SAML-alapú egyszeri bejelentkezés – problémamegoldás](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

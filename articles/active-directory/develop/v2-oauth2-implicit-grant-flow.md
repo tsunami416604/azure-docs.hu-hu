@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42d315b44a76e79d6f1db48e5024094099564a98
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d7f27ad2adc5d4abf2b5ec993b3398ebf1370f52
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700481"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159675"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity platform és implicit engedélyezési folyamat
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 A Microsoft Identity platform végpontja segítségével a Microsofttól személyes és munkahelyi vagy iskolai fiókkal is aláírhatja a felhasználókat a saját egyoldalas alkalmazásokba. Az egyoldalas és más JavaScript-alkalmazások, amelyek elsődlegesen egy böngészőben futnak, néhány érdekes kihívást jelentenek a hitelesítés során:
 
@@ -42,6 +40,35 @@ Ha azonban inkább nem szeretne használni egy könyvtárat az egyoldalas alkalm
 
 > [!NOTE]
 > Nem minden Azure Active Directory-(Azure AD-) forgatókönyvet és szolgáltatást támogat a Microsoft Identity platform végpontja. Annak megállapításához, hogy érdemes-e a Microsoft Identity platform-végpontot használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt.
+
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>A OAuth2 implicit engedélyezésének megfelelő forgatókönyvei
+
+A OAuth2-specifikáció kijelenti, hogy az implicit támogatás úgy lett kialakítva, hogy lehetővé tegye a felhasználói ügynök alkalmazásai számára – azaz a böngészőben futtatott JavaScript-alkalmazásokat. Az ilyen alkalmazások meghatározó jellemzője, hogy a JavaScript-kód a kiszolgálói erőforrások (általában a webes API-k) elérésére és ennek megfelelően az alkalmazás felhasználói élményének frissítésére szolgál. Gondoljon olyan alkalmazásokra, mint például a Gmail vagy az Outlook Web Access: Amikor kiválaszt egy üzenetet a Beérkezett üzenetek mappából, csak az üzenet vizualizáció paneljén változik az új kijelölés megjelenítése, míg a lap többi része változatlan marad. Ez a jellemző ellentétben áll a hagyományos átirányítási webalkalmazásokkal, ahol minden felhasználói interakció a teljes oldal visszaküldését és az új kiszolgáló válaszának teljes oldalát jeleníti meg.
+
+Azok az alkalmazások, amelyek a JavaScript-alapú megközelítést használják szélsőségesként, egyoldalas alkalmazásoknak vagy Gyógyfürdőknek nevezzük. Az elképzelés az, hogy ezek az alkalmazások csak a kezdeti HTML-oldalt és a kapcsolódó JavaScriptet szolgálják ki, és a JavaScripten keresztül végrehajtott webes API-hívások által vezérelt minden további interakciót. Azonban a hibrid megközelítések, amelyekben az alkalmazás többnyire visszaküldéssel vezérelt, de alkalmanként JS-hívásokat hajt végre, nem ritka – az implicit flow használatáról szóló vitát is fontos.
+
+Az átirányítási alkalmazások általában cookie-kon keresztül védik a kéréseiket, azonban ez a megközelítés nem működik jól a JavaScript-alkalmazásokhoz. A cookie-k csak a által létrehozott tartományon működnek, míg a JavaScript-hívások más tartományokra is irányíthatók. Valójában ez gyakran előfordul: a Microsoft Graph API-t, az Office API-t, az Azure API-t, a tartományon kívüli, az alkalmazás kiszolgálása helyétől eltérő alkalmazásokat. A JavaScript-alkalmazások egyre növekvő tendenciát mutatnak, ha nincs háttérrendszer, a harmadik féltől származó webes API-kra támaszkodva 100%-ot az üzleti funkció megvalósítására.
+
+Jelenleg a webes API-hívások védelmének előnyben részesített módszere a OAuth2 tulajdonosi jogkivonat megközelítésének használata, amelyben minden hívást egy OAuth2 hozzáférési token kísér. A webes API megvizsgálja a bejövő hozzáférési jogkivonatot, és ha megtalálja a szükséges hatóköröket, akkor hozzáférést biztosít a kért művelethez. Az implicit folyamat kényelmes mechanizmust biztosít a JavaScript-alkalmazásokhoz a webes API-k hozzáférési jogkivonatának beszerzéséhez, ami számos előnyt kínál a cookie-kkal kapcsolatban:
+
+* A tokeneket megbízhatóan lehet megszerezni a több eredetű hívás szükségessége nélkül – az átirányítási URI kötelező regisztrációja, amelynél a tokenek visszaállnak, a tokenek nem helyezhetők el.
+* A JavaScript-alkalmazások a szükségesnél több hozzáférési jogkivonatot szerezhetnek be, az adott számú webes API-ra vonatkozóan – a tartományok korlátozása nélkül
+* A HTML5-funkciók, például a munkamenet vagy a helyi tárterület teljes hozzáférést biztosítanak a jogkivonat-gyorsítótárazáshoz és az élettartam-kezeléshez, míg a cookie-k kezelése az alkalmazásba
+* A hozzáférési jogkivonatok nem érzékenyek a helyek közötti kérelmek hamisítására (CSRF) irányuló támadásokra
+
+Az implicit engedélyezési folyamat nem ad ki frissítési jogkivonatokat, főleg biztonsági okokból. A frissítési token nem a hozzáférési jogkivonatoknak megfelelően van leszűkítve, így sokkal nagyobb hatékonyságot biztosít, így sokkal nagyobb károkat okoz, ha kiszivárgott. Az implicit folyamat során a tokenek az URL-címben lesznek továbbítva, így az elfogás kockázata magasabb, mint az engedélyezési kód megadásakor.
+
+Egy JavaScript-alkalmazás azonban egy másik mechanizmussal rendelkezik a hozzáférési tokenek megújításához, anélkül, hogy ismételten megkéri a felhasználót a hitelesítő adatok megadására. Az alkalmazás a rejtett iframe használatával új jogkivonat-kérelmeket hajthat végre az Azure AD engedélyezési végpontján: Ha a böngésző továbbra is aktív munkamenettel rendelkezik (olvasás: munkamenet-cookie) az Azure AD-tartományon, a hitelesítési kérelem a felhasználói beavatkozás szükségessége nélkül is sikeresen bekövetkezik.
+
+Ez a modell lehetővé teszi, hogy a JavaScript-alkalmazás önállóan megújítsa a hozzáférési jogkivonatokat, és új API-k számára is újat szerezzen (ha a felhasználó korábban beleegyezett hozzájuk). Ezzel elkerülheti a nagy értékű összetevők, például a frissítési token beszerzésének, fenntartásának és védelmének további terheit. A csendes megújulást lehetővé teszi, hogy az Azure AD munkamenet-cookie-t az alkalmazáson kívül felügyeli a rendszer. Ennek a módszernek egy másik előnye, hogy egy felhasználó kijelentkezhet az Azure AD-ből az Azure AD-be bejelentkezett bármely alkalmazás használatával, amely a böngésző lapjain fut. Ez az Azure AD munkamenet-cookie törlését eredményezi, és a JavaScript alkalmazás automatikusan elveszíti a kijelentkezett felhasználó jogkivonatának megújítását.
+
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Az implicit engedélyezési funkció megfelelő az alkalmazáshoz?
+
+Az implicit támogatás nagyobb kockázatot jelent, mint a többi támogatás, és a figyelmet igényelő területek jól dokumentálva vannak (például: [hozzáférési jogkivonat használata az erőforrás tulajdonosának megszemélyesítéséhez az implicit flow-ban] [OAuth2-spec-implicit-visszaélés] és [OAuth 2,0 Threat Model és biztonsági megfontolások] [OAuth2-Threat-Model-and-Security-vonatkozásai]). A magasabb kockázati profilt azonban nagyrészt az a tény okozza, hogy az aktív kódot végrehajtó alkalmazásokat egy távoli erőforrás szolgáltatja egy böngészőnek. Ha gyógyfürdő-architektúrát tervez, nem rendelkezik háttér-összetevőkkel, vagy webes API-t szeretne meghívni JavaScripten keresztül, a jogkivonat-beszerzéshez használt implicit folyamat használata javasolt.
+
+Ha az alkalmazás egy natív ügyfél, az implicit folyamat nem remekül illeszkedik. Az Azure AD-munkamenet cookie-nak a natív ügyfél kontextusában való hiánya megfosztja az alkalmazást a hosszú élettartamú munkamenet fenntartásának eszközeitől. Ez azt jelenti, hogy az alkalmazás többször is kéri a felhasználót, amikor hozzáférési jogkivonatokat kap az új erőforrásokhoz.
+
+Ha olyan webalkalmazást fejleszt, amely hátteret tartalmaz, és egy API-t használ a háttér-kódjából, az implicit folyamat szintén nem megfelelő. A többi támogatás sokkal nagyobb teljesítményt nyújt. A OAuth2 ügyfél-hitelesítő adatok megadása például lehetővé teszi az alkalmazáshoz hozzárendelt engedélyeket tükröző jogkivonatok beszerzését, a felhasználói delegálásokkal szemben. Ez azt jelenti, hogy az ügyfélnek lehetősége van az erőforrásokhoz való programozott hozzáférés fenntartására, még akkor is, ha a felhasználó nem vesz aktívan részt egy munkamenetben, és így tovább. Nem csak ez, de az ilyen támogatások nagyobb biztonsági garanciákat biztosítanak. Például a hozzáférési tokenek soha nem haladnak át a felhasználói böngészőn keresztül, ezért a böngésző előzményeiben nem kerülnek mentésre, így tovább. Az ügyfélalkalmazás emellett erős hitelesítést is végezhet a jogkivonat kérésekor.
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
@@ -75,14 +102,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `tenant` | kötelező |A kérelem elérési útjának `{tenant}` értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek: `common`, `organizations`, `consumers`és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
-| `response_type` | kötelező |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezéshez. A response_type `token`is tartalmazhat. A `token` használata lehetővé teszi az alkalmazás számára, hogy azonnal kapjon hozzáférési tokent az engedélyezés végponttól anélkül, hogy egy második kérést kellene létesítenie az engedélyezési végpont számára. Ha a `token` response_type használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely jelzi, hogy melyik erőforrást kell kibocsátania a jogkivonat számára (például user. Read on Microsoft Graph).  |
+| `tenant` | szükséges |A kérelem elérési útjának `{tenant}` értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek: `common`, `organizations`, `consumers`és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
+| `client_id` | szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
+| `response_type` | szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezéshez. A response_type `token`is tartalmazhat. A `token` használata lehetővé teszi az alkalmazás számára, hogy azonnal kapjon hozzáférési tokent az engedélyezés végponttól anélkül, hogy egy második kérést kellene létesítenie az engedélyezési végpont számára. Ha a `token` response_type használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely jelzi, hogy melyik erőforrást kell kibocsátania a jogkivonat számára (például user. Read on Microsoft Graph).  |
 | `redirect_uri` | ajánlott |Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. |
-| `scope` | kötelező |A [hatókörök](v2-permissions-and-consent.md)szóközzel tagolt listája. Az OpenID Connect (id_tokens) esetében tartalmaznia kell a hatókört `openid`, amely a hozzájárulási felhasználói felületen a "Bejelentkezés" engedélyre van lefordítva. Opcionálisan érdemes lehet a `email` és `profile` hatóköröket is felvenni a további felhasználói információkhoz való hozzáféréshez. A kérelemben más hatókörök is szerepelhetnek, ha hozzáférési jogkivonatot kér a különböző erőforrásokhoz való hozzáféréshez. |
+| `scope` | szükséges |A [hatókörök](v2-permissions-and-consent.md)szóközzel tagolt listája. Az OpenID Connect (id_tokens) esetében tartalmaznia kell a hatókört `openid`, amely a hozzájárulási felhasználói felületen a "Bejelentkezés" engedélyre van lefordítva. Opcionálisan érdemes lehet a `email` és `profile` hatóköröket is felvenni a további felhasználói információkhoz való hozzáféréshez. A kérelemben más hatókörök is szerepelhetnek, ha hozzáférési jogkivonatot kér a különböző erőforrásokhoz való hozzáféréshez. |
 | `response_mode` | választható |Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. Az alapértelmezett érték csak egy hozzáférési jogkivonat lekérdezése, de töredék, ha a kérelem tartalmaz egy id_token. |
 | `state` | ajánlott |A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-| `nonce` | kötelező |Az alkalmazás által generált kérelemben szereplő érték, amelyet a rendszer az eredményül kapott id_token tartalmaz. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. Csak id_token kérelmezése esetén szükséges. |
+| `nonce` | szükséges |Az alkalmazás által generált kérelemben szereplő érték, amelyet a rendszer az eredményül kapott id_token tartalmaz. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. Csak id_token kérelmezése esetén szükséges. |
 | `prompt` | választható |Megadja a szükséges felhasználói beavatkozás típusát. Ebben az esetben az egyetlen érvényes érték a következők egyike: "bejelentkezhessen," None "," select_account "és" beleegyező ". `prompt=login` kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatokat, és zárja be az egyszeri bejelentkezést. `prompt=none` az ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérés nélkül sem jelenik meg. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a Microsoft Identity platform-végpont hibát ad vissza. `prompt=select_account` elküldi a felhasználót egy olyan fiók-választónak, ahol a munkamenetben megjegyzett összes fiók megjelenik. a `prompt=consent` a felhasználó bejelentkezése után aktiválja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak. |
 | `login_hint`  |választható |A felhasználó számára a bejelentkezési oldal Felhasználónév/e-mail cím mezőjének előzetes kitöltésére is használható, ha a felhasználónevet az idő előtt ismeri. Az alkalmazások gyakran ezt a paramétert fogják használni az ismételt hitelesítés során, miután az `preferred_username` jogcím használatával már kibontották a felhasználónevet egy korábbi bejelentkezésből.|
 | `domain_hint` | választható |Ha belefoglalja ezt a funkciót, a rendszer kihagyja az e-mailes felderítési folyamatot, amelyet a felhasználó a bejelentkezési oldalon áthalad, ami valamivel egyszerűbb felhasználói élményt nyújt. Ezt gyakran használják olyan üzletági alkalmazások esetében, amelyek egyetlen bérlőn működnek, és amelyek tartománynevet biztosítanak egy adott bérlőn belül.  Ezzel továbbítja a felhasználót az adott bérlőhöz tartozó összevonási szolgáltatóhoz.  Vegye figyelembe, hogy ez megakadályozza, hogy a vendégek bejelentkezzenek ebbe az alkalmazásba.  |
@@ -211,7 +238,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `tenant` |kötelező |A kérelem elérési útjának `{tenant}` értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek: `common`, `organizations`, `consumers`és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
+| `tenant` |szükséges |A kérelem elérési útjának `{tenant}` értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek: `common`, `organizations`, `consumers`és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | ajánlott | A felhasználó által a kijelentkezés befejeződése után visszaadott URL-cím. Ennek az értéknek meg kell egyeznie az alkalmazáshoz regisztrált átirányítási URI-k egyikével. Ha nem szerepel, a felhasználó egy általános üzenetet fog megjeleníteni a Microsoft Identity platform végpontján. |
 
 ## <a name="next-steps"></a>Következő lépések

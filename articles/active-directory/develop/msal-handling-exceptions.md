@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084023"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160844"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
@@ -506,7 +506,7 @@ Az alábbi Objective-C mintakód bemutatja a gyakori hibák kezelésére vonatko
 
 ## <a name="conditional-access-and-claims-challenges"></a>A feltételes hozzáférés és a jogcímek kihívásai
 
-A tokenek csendes lekérése esetén előfordulhat, hogy az alkalmazás hibát jelez, ha egy olyan API-val kapcsolatos [feltételes hozzáférési jogcímet](conditional-access-dev-guide.md) igényel, mint például az MFA-szabályzat.
+A tokenek csendes lekérése esetén előfordulhat, hogy az alkalmazás hibát jelez, ha egy olyan API-val kapcsolatos [feltételes hozzáférési jogcímet](../azuread-dev/conditional-access-dev-guide.md) igényel, mint például az MFA-szabályzat.
 
 A hiba kezelésére szolgáló minta a jogkivonat interaktív beszerzése a MSAL használatával. A jogkivonat interaktív beszerzése arra kéri a felhasználót, hogy adja meg a szükséges feltételes hozzáférési szabályzatot.
 
@@ -520,7 +520,7 @@ A jogcím-kihívás kezeléséhez a `PublicClientApplicationBuilder` osztály `.
 
 ### <a name="javascript"></a>JavaScript
 
-Ha a tokeneket a MSAL. js használatával csendes úton (`acquireTokenSilent`használatával) kérdezi le, az alkalmazás hibákat kaphat, ha egy API-nak szüksége van egy [feltételes hozzáférési jogcímek](conditional-access-dev-guide.md) (például MFA-szabályzat) használatára.
+Ha a tokeneket a MSAL. js használatával csendes úton (`acquireTokenSilent`használatával) kérdezi le, az alkalmazás hibákat kaphat, ha egy API-nak szüksége van egy [feltételes hozzáférési jogcímek](../azuread-dev/conditional-access-dev-guide.md) (például MFA-szabályzat) használatára.
 
 A hiba kezelésére szolgáló minta egy interaktív hívást tesz lehetővé a token MSAL. js-ben való beszerzéséhez, például `acquireTokenPopup` vagy `acquireTokenRedirect` az alábbi példában látható módon:
 

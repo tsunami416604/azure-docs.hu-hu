@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121394"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161800"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Az API-k védelemmel való ellátása a OAuth 2,0-mel a Azure Active Directory és API Management használatával
 
@@ -212,7 +212,7 @@ A [JWT szabályzat érvényesítésével](api-management-access-restriction-poli
 
 ## <a name="build-an-application-to-call-the-api"></a>Alkalmazás létrehozása az API meghívásához
 
-Ebben az útmutatóban a API Management fejlesztői konzolt használta a OAuth 2,0 által védett `Echo API` meghívására szolgáló minta ügyfélalkalmazásként. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v1-code.md).
+Ebben az útmutatóban a API Management fejlesztői konzolt használta a OAuth 2,0 által védett `Echo API` meghívására szolgáló minta ügyfélalkalmazásként. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-scenarios.md)verzióról.

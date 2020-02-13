@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 4bce6a05938af9b8726b1b52ccb65d22d7492cfe
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162136"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>VPN-eszközök konfigurációs parancsfájljainak letöltése S2S VPN-kapcsolatokhoz
 
@@ -78,7 +78,7 @@ A kapcsolati erőforrás létrehozása után kövesse az alábbi utasításokat 
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Konfigurációs parancsfájl letöltése Azure PowerShell használatával
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 A Azure PowerShell használatával is letöltheti a konfigurációs parancsfájlt, ahogy az az alábbi példában is látható:
 

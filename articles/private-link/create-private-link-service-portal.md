@@ -8,16 +8,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136172"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191103"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
 
-Az Azure Private link Service a saját szolgáltatására hivatkozik, amelyet a privát kapcsolat kezel. A Azure Load Balancer mögött működő szolgáltatáshoz vagy erőforráshoz privát hivatkozásokat adhat hozzá. A szolgáltatás felhasználói saját virtuális hálózatokról is hozzáférhetnek. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást a Azure Portal használatával.
+Az Azure Private link Service a saját szolgáltatására hivatkozik, amelyet a privát kapcsolat kezel. Az Azure-standard Load Balancer mögött működő szolgáltatáshoz vagy erőforráshoz privát hivatkozásokat adhat hozzá. A szolgáltatás felhasználói saját virtuális hálózatokról is hozzáférhetnek. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást a Azure Portal használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -37,9 +37,9 @@ Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Emellett létre
 
 1. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
-   - **Név**: adja meg a **MyVNet**.
+   - **Név**: adja meg a **myVNet**.
    - **ResourceGroup**: válassza az **új létrehozása**elemet, írja be a **Myresourcegrouplb erőforráscsoportban**, majd kattintson **az OK gombra**.
-   - **Alhálózat** > **neve**: adja meg a **MyBackendSubnet**.
+   - **Alhálózat** > **neve**: adja meg a **myBackendSubnet**.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -61,7 +61,7 @@ A portál használatával hozzon létre egy standard belső terheléselosztó. A
     | **Régió**         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | **Típus**          | Válassza a **belső**lehetőséget.                                        |
     | **Termékváltozat**           | Válassza a **standard**lehetőséget.                          |
-    | **Virtuális hálózat**           | Válassza a **MyVNet**lehetőséget.                          |
+    | **Virtuális hálózat**           | Válassza a **myVNet**lehetőséget.                          |
     | **IP-cím hozzárendelése**              | Válassza a **statikus**lehetőséget.   |
     | **Magánhálózati IP-cím**|Adjon meg egy, a virtuális hálózat és az alhálózat címterület területén található címeket. Ilyen például a 10.3.0.7.  |
 
@@ -88,13 +88,13 @@ Használjon állapot-mintavételt, hogy a terheléselosztó-figyelő erőforrás
 
 Állapot-mintavétel létrehozása az erőforrások állapotának figyeléséhez:
 
-1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **MyLoadBalancer** lehetőséget az erőforrások listájából.
+1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **myLoadBalancer** lehetőséget az erőforrások listájából.
 
 1. A **Beállítások** területn válassza az **Állapotminták**, majd a **Hozzáadás** lehetőséget.
 
 1. Az **állapotfelmérés hozzáadása** lapon adja meg vagy válassza ki a következő értékeket:
 
-   - **Név**: adja meg a **MyHealthProbe**.
+   - **Név**: adja meg a **myHealthProbe**.
    - **Protokoll**: válassza a **TCP**lehetőséget.
    - **Port**: írja be a **80**értéket.
    - **Intervallum**: adja meg a **15**értéket. Ez az érték a mintavételi kísérletek között eltelt másodpercek száma.
@@ -110,23 +110,23 @@ A terheléselosztó szabályai határozzák meg, hogy a rendszer hogyan ossza el
 - A háttérbeli IP-készlet a forgalom fogadására.
 - A szükséges forrás és cél portok.
 
-A **MyLoadBalancerRule** nevű terheléselosztó-szabály a **LoadBalancerFrontEnd** előtérben figyeli a 80-es portot. A szabály a 80-as porton keresztül továbbítja a hálózati forgalmat az **MyBackendPool** -háttérbeli címkészlet számára.
+A **myLoadBalancerRule** nevű terheléselosztó-szabály a **LoadBalancerFrontEnd** előtérben figyeli a 80-es portot. A szabály a 80-as porton keresztül továbbítja a hálózati forgalmat az **myBackendPool** -háttérbeli címkészlet számára.
 
 Terheléselosztó-szabály létrehozása:
 
-1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **MyLoadBalancer** lehetőséget az erőforrások listájából.
+1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **myLoadBalancer** lehetőséget az erőforrások listájából.
 
 1. A **Beállítások**területen válassza a **terheléselosztási szabályok**elemet, majd kattintson a **Hozzáadás**gombra.
 
 1. A **terheléselosztási szabály hozzáadása** lapon adja meg vagy válassza ki a következő értékeket, ha még nem jelennek meg:
 
-   - **Név**: adja meg a **MyLoadBalancerRule**.
+   - **Név**: adja meg a **myLoadBalancerRule**.
    - Előtérbeli **IP-cím:** Adja meg a **LoadBalancerFrontEnd**.
    - **Protokoll**: válassza a **TCP**lehetőséget.
    - **Port**: írja be a **80**értéket.
    - **Háttér-port**: írja be a **80**értéket.
-   - **Háttér-készlet**: válassza a **MyBackendPool**lehetőséget.
-   - **Állapot**-mintavétel: válassza a **MyHealthProbe**lehetőséget. 
+   - **Háttér-készlet**: válassza a **myBackendPool**lehetőséget.
+   - **Állapot**-mintavétel: válassza a **myHealthProbe**lehetőséget. 
 
 1. Kattintson az **OK** gombra.
 
@@ -155,9 +155,9 @@ Ebben a szakaszban egy standard Load Balancer mögötti privát kapcsolati szolg
 
     | Beállítás                           | Érték                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | **Load Balancer**                     | Válassza a **MyLoadBalancer**lehetőséget.                                                           |
-    | **Load Balancer előtér IP-címe** | Válassza ki a **MyLoadBalancer**ELŐTÉR-IP-címét.                                |
-    | **Forrás NAT virtuális hálózata**        | Válassza a **myVNET**lehetőséget.                                                                   |
+    | **Load Balancer**                     | Válassza a **myLoadBalancer**lehetőséget.                                                           |
+    | **Load Balancer előtér IP-címe** | Válassza ki a **myLoadBalancer**ELŐTÉR-IP-címét.                                |
+    | **Forrás NAT virtuális hálózata**        | Válassza a **myVNet**lehetőséget.                                                                   |
     | **Forrás NAT-alhálózat**                 | Válassza a **myBackendSubnet**lehetőséget.                                                          |
     | **A TCP-proxy v2 engedélyezése**               | Válassza az **Igen** vagy a **nem** lehetőséget attól függően, hogy az alkalmazás TCP-proxy v2-fejlécet vár-e. |
     | **Magánhálózati IP-cím beállításai**       | Konfigurálja a kiosztási módszert és az IP-címet az egyes NAT-IP-címekhez.                  |

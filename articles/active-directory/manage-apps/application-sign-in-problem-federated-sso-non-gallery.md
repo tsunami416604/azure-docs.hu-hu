@@ -16,19 +16,19 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274856"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159182"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problémák az összevont egyszeri bejelentkezéshez konfigurált, nem Gallery-alkalmazásba való bejelentkezéskor
 
 Az alábbi bejelentkezési problémák elhárításához javasoljuk, hogy kövesse az alábbi javaslatokat, hogy jobb legyen a diagnosztika, és automatizálja a megoldás lépéseit:
 
 - Telepítse a [saját alkalmazások biztonságos böngésző bővítményét](access-panel-extension-problem-installing.md) , hogy Azure Active Directory (Azure ad) jobb diagnosztikai és megoldási funkciókat nyújtson a Azure Portal tesztelési felületének használatakor.
-- Reprodukálja a hibát a Azure Portal alkalmazás konfigurációja lapján található tesztelési élmény használatával. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](../develop/howto-v1-debug-saml-sso-issues.md)
+- Reprodukálja a hibát a Azure Portal alkalmazás konfigurációja lapján található tesztelési élmény használatával. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
@@ -40,7 +40,7 @@ Az SAML-kérelemben az alkalmazásból az Azure AD-be küldött kiállítói att
 
 **Felbontás**
 
-Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -66,11 +66,11 @@ Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik 
 
 **Lehetséges ok** 
 
-Az SAML-kérelem AssertionConsumerServiceURL értéke nem felel meg az Azure AD-ben konfigurált válasz URL-értéknek vagy mintának. Az SAML-kérelemben szereplő AssertionConsumerServiceURL érték a hibaüzenetben látható URL-cím. 
+Az SAML-kérelemben az AssertionConsumerServiceURL értéke nem felel meg az Azure AD-ben konfigurált válasz-URL-cím értékének vagy mintázatának. Az SAML-kérelemben az AssertionConsumerServiceURL értéke a hibában szereplő URL-cím. 
 
 **Felbontás** 
 
-Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
  
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként. 
 
@@ -98,11 +98,11 @@ Miután frissítette a válasz URL-értékét az Azure AD-ben, és megfelel az a
 
 **Lehetséges ok**
 
-A felhasználó nem kapott hozzáférést az alkalmazáshoz az Azure AD-ben.
+A felhasználó nem kapott hozzáférési jogot az alkalmazáshoz az Azure AD-ben.
 
 **Felbontás**
 
-Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendeléséhez kövesse az alábbi lépéseket. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
+Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendeléséhez kövesse az alábbi lépéseket. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania ezeket a lépéseket.
 
 1. Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
 
@@ -144,11 +144,11 @@ Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeke
 
 **Lehetséges ok**
 
-Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori probléma:
+Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. A leggyakoribb problémák a következők:
 
--   Hiányzó kötelező mezők az SAML-kérelemben
+-   Kötelező mezők hiányoznak az SAML-kérelemből
 
--   SAML-kérelem kódolt metódusa
+-   Az SAML-kérelem metódusa kódolt
 
 **Felbontás**
 
@@ -172,7 +172,7 @@ Az SAML-kérelemben az alkalmazásból az Azure AD-be elküldett `Issuer` attrib
 
 **Felbontás**
 
-Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../develop/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
+Győződjön meg arról, hogy az SAML-kérelem `Issuer` attribútuma megegyezik az Azure AD-ben konfigurált azonosító értékkel. Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési élményt](../azuread-dev/howto-v1-debug-saml-sso-issues.md) , nem kell manuálisan végrehajtania a következő lépéseket:
 
 1.  Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 
@@ -272,5 +272,5 @@ Törölje az alkalmazáshoz konfigurált nem használt válasz URL-címeket.
 
 Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)

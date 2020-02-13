@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701858"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159998"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Egyoldalas alkalmazás: webes API meghívása
 
@@ -27,9 +27,9 @@ Javasoljuk, hogy a webes API meghívása előtt hívja meg a `acquireTokenSilent
 
 ## <a name="call-a-web-api"></a>Webes API-hívás
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-A beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben használhatja bármilyen webes API meghívásához, például Microsoft Graph API-t. Példa:
+A beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben használhatja bármilyen webes API meghívásához, például Microsoft Graph API-t. Például:
 
 ```javascript
     var headers = new Headers();
@@ -47,9 +47,11 @@ A beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben ha
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 A MSAL szögletes burkolója kihasználja a HTTP-Interceptor előnyeit, hogy a hozzáférési jogkivonatokat csendesen szerezze be, és csatolja őket a HTTP-kérésekhez API-khoz. További információ: [token beszerzése API meghívásához](scenario-spa-acquire-token.md).
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

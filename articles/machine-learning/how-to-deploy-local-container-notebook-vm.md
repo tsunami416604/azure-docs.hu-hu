@@ -10,25 +10,21 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 28d176289a0b6cfe659f390feb441158c57f6533
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988430"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169935"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> A számítási példányok (előzetes verzió) csak olyan munkaterületek esetén érhetők el, amelyek az **USA északi középső**régiójában, az **USA 2. keleti**régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiójaban**is elérhetők, és hamarosan más régiókat is támogatnak.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .  Az ebben a cikkben ismertetett lépéseket követve központilag telepítheti a modelleket számítási példányra vagy notebook virtuális gépre.
-
 Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Machine Learning számítási példányon Azure Machine Learning használatával. Használjon számítási példányokat, ha a következő feltételek egyike igaz:
 
-- Gyorsan üzembe kell helyeznie és ellenőriznie kell a modellt.
-- A fejlesztés alatt álló modellt tesztel.
+- Gyors üzembe helyezése és a modell érvényesítése kell.
+- A tesztelt egy olyan modell, fejlesztés alatt áll.
 
 > [!TIP]
 > Egy modell üzembe helyezése egy számítási példányon lévő Jupyter Notebook, egy virtuális gépen lévő webszolgáltatás esetében egy _helyi telepítés_. Ebben az esetben a "helyi" számítógép a számítási példány. További információ a központi telepítésekről: [modellek üzembe helyezése a Azure Machine Learningsal](how-to-deploy-and-where.md).

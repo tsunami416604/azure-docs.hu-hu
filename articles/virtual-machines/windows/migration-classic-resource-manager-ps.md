@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153128"
+ms.locfileid: "77168336"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
@@ -52,8 +52,6 @@ Az alábbi folyamatábra azt határozza meg, hogy milyen sorrendben kell végreh
 Két fő lehetőség van a Azure PowerShell telepítésére: [PowerShell-Galéria](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [webplatform-telepítő (WebPI)](https://aka.ms/webpi-azps). A WebPI havi frissítéseket fogad. A PowerShell-galéria folyamatosan fogadja a frissítéseket. Ez a cikk a Azure PowerShell 2.1.0 verzióján alapul.
 
 A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. lépés: Győződjön meg arról, hogy Ön az előfizetés rendszergazdája
 Az áttelepítés elvégzéséhez hozzá kell adnia az előfizetéshez tartozó [Azure Portal](https://portal.azure.com).
@@ -104,6 +102,14 @@ Várjon öt percet, amíg a regisztráció befejeződik. A jóváhagyás állapo
 
 A folytatás előtt győződjön meg arról, hogy a RegistrationState `Registered`.
 
+A klasszikus üzemi modellre való áttérés előtt győződjön meg arról, hogy elegendő Azure Resource Manager virtuálisgép-vCPU van a jelenlegi üzembe helyezése vagy virtuális hálózata Azure-régiójában. A következő PowerShell-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azure Resource Manager. További információ a vCPU-kvótákkal kapcsolatban: [korlátok és a Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
+
+Ez a példa az **USA nyugati** régiójában lévő rendelkezésre állást ellenőrzi. Cserélje le a példában szereplő régió nevét a saját nevére.
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 Most jelentkezzen be a fiókjába a klasszikus üzemi modellhez.
 
 ```powershell
@@ -122,27 +128,17 @@ Szerezze be az elérhető előfizetéseket a következő paranccsal:
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>5\. lépés: elegendő Resource Manager VM-vCPU
-Győződjön meg arról, hogy az aktuális üzembe helyezés vagy a virtuális hálózat Azure-régiójában elegendő Azure Resource Manager virtuális gépek vCPU. A következő PowerShell-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azure Resource Manager. További információ a vCPU-kvótákkal kapcsolatban: [korlátok és a Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
-
-Ez a példa az **USA nyugati** régiójában lévő rendelkezésre állást ellenőrzi. Cserélje le a példában szereplő régió nevét a saját nevére.
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6\. lépés: a IaaS-erőforrások áttelepíthető parancsainak futtatása
-* [Virtuális gépek migrálása felhőalapú szolgáltatásban (nem virtuális hálózatban)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Virtuális gépek migrálása virtuális hálózatban](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Storage-fiók migrálása](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>5\. lépés: parancsok futtatása a IaaS-erőforrások áttelepíteni
+* [Virtuális gépek migrálása felhőalapú szolgáltatásban (nem virtuális hálózatban)](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Virtuális gépek migrálása virtuális hálózatban](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Storage-fiók migrálása](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > Az itt leírt összes művelet idempotens. Ha a nem támogatott funkció vagy a konfigurációs hiba nem megfelelő, javasoljuk, hogy próbálkozzon újra az előkészítés, a megszakítás vagy a végrehajtás művelettel. A platform ezután újra próbálkozik a művelettel.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>6,1. lépés: 1. lehetőség – virtuális gépek áttelepítése felhőalapú szolgáltatásba (nem virtuális hálózatban)
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>5,1. lépés: 1. lehetőség – virtuális gépek áttelepítése felhőalapú szolgáltatásba (nem virtuális hálózatban)
 Szerezze be a Cloud Services listáját a következő parancs használatával. Ezután válassza ki az áttelepíteni kívánt felhőalapú szolgáltatást. Ha a felhőalapú szolgáltatásban lévő virtuális gépek virtuális hálózaton vannak, vagy webes vagy feldolgozói szerepkörökkel rendelkeznek, a parancs hibaüzenetet ad vissza.
 
 ```powershell
@@ -223,7 +219,7 @@ Ha az előkészített konfiguráció jól néz ki, a következő parancs haszná
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6,1. lépés: 2. lehetőség – virtuális gépek migrálása virtuális hálózatban
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>5,1. lépés: 2. lehetőség – virtuális gépek migrálása virtuális hálózatban
 
 A virtuális gépek virtuális hálózatban való áttelepíthetők a virtuális hálózat áttelepíthetők. A virtuális gépeket a rendszer automatikusan áttelepíti a virtuális hálózattal. Válassza ki az áttelepíteni kívánt virtuális hálózatot.
 > [!NOTE]
@@ -266,7 +262,7 @@ Ha az előkészített konfiguráció jól néz ki, a következő parancs haszná
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>6,2. lépés: Storage-fiók átmigrálása
+### <a name="step-52-migrate-a-storage-account"></a>5,2. lépés: Storage-fiók átmigrálása
 Miután befejezte a virtuális gépek áttelepítését, hajtsa végre az alábbi előfeltételek ellenőrzését a Storage-fiókok áttelepítése előtt.
 
 > [!NOTE]

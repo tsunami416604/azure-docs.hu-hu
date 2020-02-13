@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792451"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191375"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B vállalati integrációs megoldások Azure Logic Apps és Enterprise Integration Pack
 
-A vállalatok közötti (B2B) megoldások és a szervezetek közötti zökkenőmentes kommunikáció érdekében a Enterprise Integration Pack (EIP) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával automatizált Skálázható vállalati integrációs munkafolyamatokat hozhat létre. Bár a szervezetek különböző protokollokat és formátumokat használnak, elektronikus úton is cserélhetnek üzeneteket. A EIP különböző formátumokat alakít át egy olyan formátumba, amelyet a szervezet rendszerei feldolgozhatnak és támogatnak az iparági szabványoknak megfelelő protokollokat, beleértve az [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), a [X12](logic-apps-enterprise-integration-x12.md)és a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). A titkosítással és a digitális aláírásokkal is biztonságossá teheti az üzeneteket. A EIP támogatja ezeket a [vállalati integrációs összekötőket](../connectors/apis-list.md#integration-account-connectors) és az iparági szabványokat:
+A vállalatok közötti (B2B) megoldások és a szervezetek közötti zökkenőmentes kommunikáció érdekében a Enterprise Integration Pack (EIP) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával automatizált Skálázható vállalati integrációs munkafolyamatokat hozhat létre. Bár a szervezetek különböző protokollokat és formátumokat használnak, elektronikus úton is cserélhetnek üzeneteket. A EIP különböző formátumokat alakít át egy olyan formátumba, amelyet a szervezet rendszerei feldolgozhatnak és támogatnak az iparági szabványoknak megfelelő protokollokat, beleértve az [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), a [X12](logic-apps-enterprise-integration-x12.md)és a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Emellett a titkosítás és a digitális aláírások használatával is javíthatja az üzenetek biztonságát. A EIP támogatja ezeket a [vállalati integrációs összekötőket](../connectors/apis-list.md#integration-account-connectors) és az iparági szabványokat:
 
 * Elektronikus adatcsere (EDI)
 * Enterprise Application Integration (EAI)
@@ -32,7 +32,7 @@ Ha már ismeri a Microsoft BizTalk Server vagy az Azure BizTalk Servicest, a EIP
 
 * Az Azure functions használatával egyéni kódot hozhat létre a logikai alkalmazásokhoz.
 
-## <a name="how-do-i-get-started"></a>Hogyan kezdhetem el használni?
+## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 
 A B2B Logic app-munkafolyamatok EIP való létrehozásának megkezdéséhez a következő elemek szükségesek:
 
@@ -48,7 +48,7 @@ A B2B Logic Apps-alkalmazások létrehozásának első lépései:
 
 ![B2B logikai alkalmazások létrehozásának előfeltételei](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Próbálja ki most
+## <a name="try-now"></a>Kipróbálom most
 
 [AS2-üzeneteket küldő és fogadó teljes mértékben működőképes minta logikai alkalmazás üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

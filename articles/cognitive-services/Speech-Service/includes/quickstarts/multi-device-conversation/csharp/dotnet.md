@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: a0bb2567a28912f3cdfed27138effe3868eb0e6e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99c8b77328d9e42dd66428b202cbeb0644972ced
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264528"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156569"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,6 +47,9 @@ Az első lépések előtt ügyeljen a következőre:
             {
                 // Replace these values with the details of your Cognitive Speech subscription
                 string subscriptionKey = "YourSubscriptionKey";
+
+                // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
+                // from here: https://aka.ms/speech/sdkregion).                   
                 string region = "YourServiceRegion";
     
                 // Sets source and target languages.
@@ -315,6 +318,6 @@ Az első lépések előtt ügyeljen a következőre:
 
 9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található Exit (Kilépés) gomb használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

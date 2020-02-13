@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965956"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163109"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
+# <a name="get-started-guide-for-azure-developers"></a>Első lépések útmutató Azure-fejlesztőknek
 
-## <a name="what-is-azure"></a>Mi az Azure?
+## <a name="what-is-azure"></a>Mi az az Azure?
 
 Az Azure egy teljes körű felhőalapú platform, amely képes a meglévő alkalmazások üzemeltetésére és az új alkalmazások fejlesztésének egyszerűsítésére. Az Azure még a helyszíni alkalmazások fejlesztésére is képes. Az Azure integrálja az alkalmazások fejlesztéséhez, teszteléséhez, üzembe helyezéséhez és kezeléséhez szükséges felhőalapú szolgáltatásokat, miközben kihasználja a felhő-számítástechnika hatékonyságát.
 
@@ -93,10 +93,10 @@ Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatás
 Az Azure Service Fabric egy elosztott rendszerek platformja. Ez a platform megkönnyíti a méretezhető és megbízható szolgáltatások kiépítését, csomagolását, üzembe helyezését és felügyeletét. Emellett átfogó alkalmazás-felügyeleti képességeket is biztosít, például a következőket:
 
 * Kiépítés
-* Üzembe helyezés
-* Monitoring
+* Telepítés
+* Figyelés
 * Frissítés/javítás
-* Törlés folyamatban
+* Törlése
 
 Az olyan alkalmazások, amelyek egy megosztott készleten futnak, kis méretűek és akár több száz vagy akár több ezer gép számára is elindíthatók.
 
@@ -163,7 +163,7 @@ Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazás
   >
   > Első **lépések**: [Egyéni Docker-rendszerkép használata a linuxon futó app Servicehoz](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Rendkívül fontos, hogy ne csak tudja, ki használja az alkalmazásokat, hanem megakadályozza az erőforrások jogosulatlan elérését is. Az Azure számos módszert kínál az alkalmazás-ügyfelek hitelesítésére.
 
@@ -171,7 +171,7 @@ Rendkívül fontos, hogy ne csak tudja, ki használja az alkalmazásokat, hanem 
 
   > **Használat esetén**: Ha egyszeri bejelentkezéses felhasználói élményt szeretne biztosítani, használja a Graph-alapú adatmennyiséget, vagy hitelesítse a tartományalapú felhasználókat.
   >
-  > Első **lépések**: további információért tekintse meg a [Azure Active Directory fejlesztői útmutatóját](../../active-directory/develop/v1-overview.md).
+  > Első **lépések**: további információért tekintse meg a [Azure Active Directory fejlesztői útmutatóját](../../active-directory/develop/v2-overview.md).
 
 - **App Service hitelesítés**: Ha úgy dönt, app Service az alkalmazás üzemeltetéséhez, az Azure ad beépített hitelesítési támogatását, valamint a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t, a Microsoftot és a Twittert is igénybe veheti.
 
@@ -181,7 +181,7 @@ Rendkívül fontos, hogy ne csak tudja, ki használja az alkalmazásokat, hanem 
 
 Az Azure-ban ajánlott biztonsági eljárásokkal kapcsolatos további információkért lásd az [Azure biztonsági eljárásai és mintái](../../security/fundamentals/best-practices-and-patterns.md)című témakört.
 
-### <a name="monitoring"></a>Monitoring
+### <a name="monitoring"></a>Figyelés
 
 Az Azure-ban futó alkalmazásával figyelnie kell a teljesítményt, figyelnie kell a problémákat, és látnia kell, hogyan használják az ügyfelek az alkalmazást. Az Azure számos figyelési lehetőséget biztosít.
 
@@ -238,7 +238,7 @@ Az Azure két lehetőséget biztosít az alkalmazások és szolgáltatások para
 
 -   [Azure PowerShell](../../powershell-install-configure.md): az Azure-erőforrások Windows PowerShell használatával történő felügyeletét lehetővé tevő parancsmagokkal rendelkező modulok készletét biztosítja.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A [Azure Portal](https://portal.azure.com) egy webalapú alkalmazás. Az Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használhatja a Azure Portal. A következőket tartalmazza:
 
@@ -280,7 +280,7 @@ Ezeket az üzembe helyezéseket egy Azure Resource Manager sablon használatáva
 
 A fejlesztőknek jobb, ha a kódot vesszük figyelembe, és a lehető leggyorsabban igyekszünk elindítani az alkalmazásokat. Javasoljuk, hogy a lehető legkönnyebben megkezdje az Azure-ban való munkát. Az Azure [ingyenes próbaidőszakot](https://azure.microsoft.com/free/)biztosít a könnyebb kezelhetőség érdekében. Egyes szolgáltatások esetében a "kipróbálás ingyenes" funkciót is használhatja, például a [Azure app Servicet](https://tryappservice.azure.com/), amelyhez még nem kell fiókot létrehoznia. Olyan szórakozást, mint a kódolás és az alkalmazás üzembe helyezése az Azure-ban, fontos, hogy elvégezze az Azure működésének megértését is. Pontosabban tisztában kell lennie azzal, hogyan működik a felhasználói fiókok, előfizetések és a számlázás szempontjából.
 
-### <a name="what-is-an-azure-account"></a>Mi az az Azure-fiók?
+### <a name="what-is-an-azure-account"></a>Mi az Azure-fiók?
 
 Azure-előfizetések létrehozásához vagy használatához Azure-fiókkal kell rendelkeznie. Az Azure-fiók egyszerűen identitás az Azure AD-ben vagy egy címtárban, például munkahelyi vagy iskolai szervezet, amelyet az Azure AD megbízhatónak tart. Ha nem tartozik ilyen szervezethez, bármikor létrehozhat egy előfizetést az Azure AD által megbízhatóként használt Microsoft-fiókkal. Ha többet szeretne megtudni a helyszíni Windows Server Active Directory Azure AD-vel való integrálásáról, tekintse [meg a helyszíni identitások integrálása a Azure Active Directorykal](../../active-directory/hybrid/whatis-hybrid-identity.md)című témakört.
 
@@ -288,7 +288,7 @@ Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példán
 
 Az egyes Azure-fiókok identitásait, más néven *felhasználókat*is definiálhat, és *csoportokat* ADHAT meg az Azure ad-ben. A felhasználói csoportok létrehozása jó módja a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
 
-### <a name="manage-your-subscriptions"></a>Saját előfizetések kezelése
+### <a name="manage-your-subscriptions"></a>Az előfizetések kezelése
 
 Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az elérhető előfizetési ajánlatok listáját a következő típus szerint tekintheti meg: [Microsoft Azure ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Az Azure-előfizetések olyan fiók-rendszergazdával rendelkeznek, amely teljes körű hozzáféréssel rendelkezik az előfizetéshez. Emellett olyan szolgáltatás-rendszergazdával is rendelkeznek, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../../cost-management-billing/manage/add-change-subscription-administrator.md). A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az egyes fiókok részletesen szabályozhatják az Azure-erőforrásokat.
 
@@ -298,7 +298,7 @@ Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai c
 
 A Azure Erőforrás-kezelő nagyszerű eszköz az előfizetésben már létrehozott erőforrások megjelenítéséhez. További információ: az [erőforrások megtekintése és módosítása a Azure erőforrás-kezelő használatával](../../resource-manager-resource-explorer.md).
 
-#### <a name="grant-access-to-resources"></a>Hozzáférést biztosít az erőforrásokhoz
+#### <a name="grant-access-to-resources"></a>Erőforrásokhoz való hozzáférés biztosítása
 
 Ha engedélyezi az Azure-erőforrásokhoz való hozzáférést, az ajánlott eljárás az, hogy a felhasználók az adott feladat végrehajtásához szükséges legalacsonyabb jogosultsággal lássák el a felhasználókat.
 

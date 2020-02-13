@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847341"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166960"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -61,40 +61,40 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="identity-providers-tokens-protocols"></a>Identitás-szolgáltatók, tokenek, protokollok
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDENTITÁSSZOLGÁLTATÓ – OpenIDConnect |  |  | X | Például: Google +.  |
-| IDENTITÁSSZOLGÁLTATÓ – OAUTH2 |  |  | X | Például: Facebook.  |
-| IDENTITÁSSZOLGÁLTATÓ-OAUTH1 (Twitter) |  | X |  | Például: Twitter. |
-| IDENTITÁSSZOLGÁLTATÓ-OAUTH1 (ex-Twitter) |  |  |  | Nem támogatott |
-| IDENTITÁSSZOLGÁLTATÓ – SAML |  |   | X | Például: Salesforce, ADFS. |
-| IDENTITÁSSZOLGÁLTATÓ – WSFED | X |  |  |  |
+| IDP-OpenIDConnect |  |  | X | Például: Google +.  |
+| IDP-OAUTH2 |  |  | X | Például: Facebook.  |
+| IDP-OAUTH1 (twitter) |  | X |  | Például: Twitter. |
+| IDP-OAUTH1 (ex-twitter) |  |  |  | Nem támogatott |
+| IDP-SAML |  |   | X | Például: Salesforce, ADFS. |
+| IDP-WSFED | X |  |  |  |
 | Függő entitás OAUTH1 |  |  |  | Nem támogatott. |
 | Függő entitás OAUTH2 |  |  | X |  |
 | Függő entitás OIDC |  |  | X |  |
-| Függő entitás SAML-je | X |  |  |  |
+| Függő entitás SAML-je |  |X  |  |  |
 | Függő entitás WSFED | X |  |  |  |
 | Alapszintű és Tanúsítványos hitelesítés REST API |  |  | X | Például Azure Logic Apps. |
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Multi Factor Authentication |  |  | X |  |
+| Azure multi-Factor Authentication |  |  | X |  |
 | Azure Active Directory helyi könyvtárként |  |  | X |  |
 | E-mail-ellenőrzésre szolgáló Azure E-mail alrendszer |  |  | X |  |
 | Többnyelvű támogatás|  |  | X |  |
 | Predikátumok érvényessége |  |  | X | Például a jelszó bonyolultsága. |
-| Harmadik féltől származó e-mail szolgáltatók használata | X |  |  |  |
+| Harmadik féltől származó e-mail szolgáltatók használata |  |X  |  |  |
 
 ### <a name="content-definition"></a>Tartalom definíciója
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Hiba lap, API. hiba |  |  | X |  |
 | IDENTITÁSSZOLGÁLTATÓ-kiválasztási oldal, API. idpselections |  |  | X |  |
 | IDENTITÁSSZOLGÁLTATÓ kiválasztása a regisztrációhoz, API. idpselections. regisztráció |  |  | X |  |
-| Elfelejtett jelszó, API. localaccountpasswordreset |  |  | X |  |
+| Forgot Password, api.localaccountpasswordreset |  |  | X |  |
 | Helyi fiók bejelentkezés, API. localaccountsignin |  |  | X |  |
 | Helyi fiók regisztrálása, API. localaccountsignup |  |  | X |  |
 | MFA-oldal, API. phonefactor |  |  | X |  |
@@ -105,7 +105,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="app-ief-integration"></a>IEF-integráció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Lekérdezési karakterlánc paraméterének domain_hint |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
 | Lekérdezési karakterlánc paraméterének login_hint |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
@@ -115,7 +115,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Egyszeri bejelentkezés munkamenet-szolgáltatója |  |  | X |  |
 | Külső bejelentkezési munkamenet-szolgáltató |  |  | X |  |
@@ -124,7 +124,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="security"></a>Biztonság
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Házirend-kulcsok – generál, manuális, feltöltés |  |  | X |  |
 | Szabályzat kulcsai – RSA/CERT, Secrets |  |  | X |  |
@@ -132,9 +132,9 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Portal – IEF UX |  |  | X |  |
+| Azure Portal-IEF UX |  |  | X |  |
 | Application Insights UserJourney-naplók |  | X |  | A fejlesztés során hibaelhárításra szolgál.  |
 | Eseménynaplók Application Insights (az előkészítés lépésein keresztül) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d3e4a794a948dd6bd9860c9b7e6f06ac981f86b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934550"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162497"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -40,10 +40,10 @@ Több [kimenő forgatókönyv](#scenarios)is létezik. Ezeket a forgatókönyvek
 
 A Azure Load Balancer és a kapcsolódó erőforrások explicit módon vannak meghatározva a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használatakor.  Az Azure jelenleg három különböző módszert biztosít a kimenő kapcsolatok eléréséhez Azure Resource Manager erőforrásokhoz. 
 
-| SKUs | Alkalmazási helyzet | Módszer | IP-protokollok | Leírás |
+| SKUs | Forgatókönyv | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- | --- |
 | Standard, alapszintű | [1. nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. A standard Load Balancer használatakor a kimenő kapcsolatok explicit módon történő megadásakor a [kimeneti szabályokat](load-balancer-outbound-rules-overview.md) kell használni |
-| Standard, alapszintű | [2. a virtuális géphez társított nyilvános Load Balancer (nincs nyilvános IP-cím a példányon)](#lb) | SNAT a Load Balancer előtérrel (PAT) rendelkező portokkal | TCP, UDP |Az Azure megosztja a nyilvános Load Balancer a több magánhálózati IP-címmel rendelkező előtér nyilvános IP-címét. Az Azure a frontendek ideiglenes portjait használja a PAT számára. |
+| Standard, alapszintű | [1. a példány szintű nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. Standard Load Balancer használata esetén a [Kimenő szabályok](load-balancer-outbound-rules-overview.md) nem támogatottak, ha egy nyilvános IP-cím van hozzárendelve a virtuális géphez |
 | none vagy alapszintű | [3. önálló virtuális gép (nincs Load Balancer, nincs nyilvános IP-cím)](#defaultsnat) | SNAT a port maszkolásával (PAT) | TCP, UDP | Az Azure automatikusan kijelöl egy nyilvános IP-címet a SNAT számára, megosztja ezt a nyilvános IP-címet a rendelkezésre állási csoport több magánhálózati IP-címével, és a nyilvános IP-cím ideiglenes portjait használja. Ez a forgatókönyv az előző forgatókönyvek tartaléka. Ha láthatóságra és vezérlésre van szüksége, nem ajánlott. |
 
 Ha nem szeretné, hogy a virtuális gép kommunikáljon az Azure-on kívüli végpontokkal a nyilvános IP-címtartomány területén, a hálózati biztonsági csoportok (NSG) használatával letilthatja a hozzáférést igény szerint. A [Kimenő kapcsolatok megakadályozása](#preventoutbound) című szakasz részletesebben tárgyalja a NSG. A virtuális hálózatok kimenő hozzáférés nélküli kialakításával, megvalósításával és kezelésével kapcsolatos útmutató a jelen cikk hatókörén kívül esik.
@@ -91,7 +91,7 @@ Ilyen például egy Azure Resource Manager üzemelő példány, amelyben az alka
 
 ### <a name="multife"></a>Több előtér a kimenő folyamatokhoz
 
-#### <a name="standard-load-balancer"></a>Standard Load Balancer
+#### <a name="standard-load-balancer"></a>standard Load Balancer
 
 Standard Load Balancer az összes jelöltet a kimenő folyamatokhoz használja egyszerre, ha [több (nyilvános) IP-frontend](load-balancer-multivip-overview.md) van jelen. Minden előtér megszorozza a rendelkezésre álló előre lefoglalt SNAT-portok számát, ha engedélyezve van a kimenő kapcsolatok terheléselosztási szabálya.
 
@@ -160,10 +160,10 @@ A következő táblázat a SNAT portok előfoglalásait mutatja be a háttérbel
 
 | Készlet mérete (VM-példányok) | Az előlefoglalt SNAT-portok száma IP-konfiguráció alapján|
 | --- | --- |
-| 1-50 | 1 024 |
-| 51–100 | 512 |
-| 101–200 | 256 |
-| 201–400 | 128 |
+| 1-50 | 1,024 |
+| 51-100 | 512 |
+| 101-200 | 256 |
+| 201-400 | 128 |
 | 401-800 | 64 |
 | 801-1000 | 32 |
 

@@ -6,22 +6,22 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150918"
+ms.locfileid: "77168998"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Ügyfél-adatforgalom elemzése Azure Machine Learning Studio (klasszikus) használatával
 ## <a name="overview"></a>Áttekintés
 Ez a cikk a Azure Machine Learning Studio (klasszikus) használatával létrehozott ügyfél-adatforgalom-elemzési projekt hivatkozási megvalósítását ismerteti. Ebben a cikkben bemutatjuk, azok alkalmazásfüggőségeit az iparági vásárlók lemorzsolódási problémájának megoldására szolgáló kapcsolódó általános modellekről. Azt is mérheti a Machine Learning segítségével létrehozott modellek pontossága, és felmérheti a további fejlesztésére vonatkozó utasításokat.  
 
-### <a name="acknowledgements"></a>Nyugták
+### <a name="acknowledgements"></a>Köszönetnyilvánítás
 Ezt a kísérletet a Serge Berger, a Microsoft legfontosabb adattudósa és Roger Barga, korábban a Microsoft Azure Machine Learning Studio (klasszikus) termék-kezelője fejlesztette ki és tesztelte. Az Azure dokumentációs csapata köszönetet mondani a segítségükért összpontosíthassák nyugtázza, és Köszönjük Ez a tanulmány megosztása.
 
 > [!NOTE]

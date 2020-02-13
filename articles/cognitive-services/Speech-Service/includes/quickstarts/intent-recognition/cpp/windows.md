@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a7245d97c4043a5e4b4e1555e899d3301fc36f3c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 292eba09b151d8de50fc379051091a4d2990a105
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900465"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156073"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +47,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegy
 Szúrja be ezt a kódot a `recognizeIntent()` metódusba. Győződjön meg róla, hogy frissíti ezeket az értékeket:
 
 * Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra.
-* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére.
+* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére.  Használja a "Speech SDK paramétert" a [régióból](https://aka.ms/speech/sdkregion).
 
 >[!TIP]
 > Ha segítségre van szüksége ezeknek az értékeknek a megtalálásához, tekintse meg [a Luis-alkalmazás létrehozása a szándék felismeréséhez](#create-a-luis-app-for-intent-recognition)című témakört.

@@ -7,24 +7,24 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 97db6af7233a8cc0e1feac75734225815282131a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: dec088ed751856957735867f740dc951c3b8f2ac
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896170"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162072"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy Azure Route-alapú VPN-átjárót több helyszíni, házirend-alapú VPN-eszközhöz való csatlakozáshoz, amely Egyéni IPsec/IKE-házirendeket használ a S2S VPN-kapcsolatokon.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>Házirend-alapú és Route-alapú VPN-átjárók
 
 A házirend- *és útvonal-alapú VPN-eszközök* különböznek az IPSec-forgalom választóinak a kapcsolaton való beállításakor:
 
-* **Házirend-alapú** A VPN-eszközök mindkét hálózat előtagjainak kombinációit használják annak meghatározására, hogy a forgalom titkosítása/visszafejtése hogyan történjen az IPsec-alagutakon keresztül. Ez általában a csomagszűrés által elvégezhető tűzfalakon épül fel. Az IPsec-alagút titkosítási és visszafejtési műveletei hozzáadódnak a csomagok szűrését és feldolgozását végző motorhoz.
+* **Házirend-alapú** A VPN-eszközök mindkét hálózat előtagjainak kombinációit használják annak meghatározására, hogy a forgalom titkosítása/visszafejtése hogyan történjen az IPsec-alagutakon keresztül. Ez általában a csomagszűrés által elvégezhető tűzfalakon épül fel. A rendszer az IPsec-alagút titkosítását és visszafejtését adja hozzá a Csomagszűrés és a feldolgozó motorhoz.
 * **Route-alapú** A VPN-eszközök bármilyen típusú (helyettesítő) forgalmi választót használnak, és lehetővé teszik a különböző IPsec-alagutakra irányuló útválasztási/továbbítási táblák közvetlen forgalmát. Ez általában olyan útválasztó platformokra épül, ahol az egyes IPsec-alagutak hálózati adapterként vagy VTI (virtuális bújtatási felületen) vannak modellezve.
 
 A következő diagramok kiemelik a két modellt:
@@ -40,7 +40,7 @@ Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alap
 
 |                          | **Házirendalapú VPN Gateway** | **Útvonalalapú VPN Gateway**       |**Útvonalalapú VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure Gateway SKU**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
 | **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                                    |
 | **Max. S2S-kapcsolatok** | **1**                       | 10                               |Standard: 10<br> Egyéb SKU-i: 30                     |
 |                          |                             |                                  |                                                    |
@@ -70,7 +70,7 @@ A kapcsolódást engedélyező munkafolyamat:
 3. Alkalmazza a házirendet a S2S vagy a VNet-VNet közötti kapcsolatok létrehozásakor, és **engedélyezze a házirend-alapú forgalom-választókat** a kapcsolatban.
 4. Ha a kapcsolódás már létrejött, a szabályzatot alkalmazhatja vagy frissítheti egy meglévő kapcsolatban.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 

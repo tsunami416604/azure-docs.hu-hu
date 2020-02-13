@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293589"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168149"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -45,7 +45,7 @@ ms.locfileid: "76293589"
 
 - Tekintse meg a `OpenSSL` frissítést a fenti módosítások feltörése alatt. A Linux és a Java esetében is rögzítettünk egy időszakos összeomlást és egy teljesítménnyel kapcsolatos problémát (nagy terhelés melletti zárolást). 
 - Java: az objektumok bezárásának tökéletesítése magas egyidejűségi helyzetekben.
-- Átalakítottuk a Nuget-csomagot. Eltávolította a `Microsoft.CognitiveServices.Speech.core.dll` három példányát, és `Microsoft.CognitiveServices.Speech.extension.kws.dll` a lib-mappák alatt, így a Nuget-csomag kisebb és gyorsabb lesz, és felvettük a C++ natív alkalmazások fordításához szükséges fejléceket.
+- Átalakítottuk a NuGet-csomagot. Eltávolította a `Microsoft.CognitiveServices.Speech.core.dll` három példányát, és `Microsoft.CognitiveServices.Speech.extension.kws.dll` a lib-mappák alatt, így a NuGet-csomag kisebb és gyorsabb lesz, és felvettük a C++ natív alkalmazások fordításához szükséges fejléceket.
 - [Itt talál](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)rögzített rövid útmutatót. Ezek a "mikrofon nem található" kivétel nélkül lettek kizárva a Linux, MacOS és Windows rendszereken.
 - Rögzített SDK-összeomlás a hosszú beszédfelismerés eredményeként bizonyos kódok elérési útjain, például [a](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)mintában.
 - Az Azure webalkalmazás-környezet rögzített SDK-telepítési hibája a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)megoldásához.
@@ -75,7 +75,7 @@ ms.locfileid: "76293589"
 - Egy `FromHost()` API-t adott hozzá, amely megkönnyíti a helyszíni tárolók és a szuverén felhők használatát.
 - A beszédfelismeréshez hozzáadott automatikus forrás Nyelvfelismerés (Java és C++)
 - Felvette `SourceLanguageConfig` objektumot a beszédfelismeréshez, amely a várt forrás nyelvek megadására szolgál C++(Java és)
-- A Windows (UWP), az Android és az iOS `KeywordRecognizer` támogatásának hozzáadása a Nuget és az Unity csomagon keresztül
+- A Windows (UWP), az Android és az iOS `KeywordRecognizer` támogatásának hozzáadása a NuGet és az Unity csomagon keresztül
 - Távoli beszélgetési Java API hozzáadva a beszélgetések átírásához aszinkron kötegekben.
 
 **Változtatások megszakítása**
@@ -279,7 +279,7 @@ A következő új tartalom érhető el a [példában szereplő adattárban](http
 - Az üres proxy felhasználóneve és a proxy jelszava helytelenül lett kezelve. Ebben a kiadásban, ha a proxy felhasználónevét és a proxy jelszavát üres karakterlánccá állítja be, a rendszer nem küldi el a proxyhoz való csatlakozáskor.
 - Az SDK által létrehozott munkamenet-azonosítók nem mindig voltak igazán véletlenszerűek egyes nyelveken&nbsp;/környezetekben. A probléma megoldásához hozzáadta a véletlenszerű generátor inicializálását.
 - Az engedélyezési tokenek kezelését javítani kell. Ha engedélyezési jogkivonatot szeretne használni, akkor a `SpeechConfig`ban válassza az előfizetési kulcsot, és hagyja üresen. Ezután hozza létre a felismerőt a szokásos módon.
-- Bizonyos esetekben a `Connection` objektum helytelenül lett közzétéve. A probléma kijavítva.
+- Bizonyos esetekben a `Connection` objektum helytelenül lett közzétéve. Ez a probléma megoldódott.
 - A JavaScript-minta úgy lett javítva, hogy támogassa a fordítási szintézis hangkimenetét a Safarion is.
 
 ## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
@@ -290,7 +290,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 - Javítsa ki azt a hibát a hangszivattyúban, amely nem ütemezett következő küldést, ha az aktuális küldés sikertelen volt.
 - Az Auth-jogkivonat folyamatos felismerésének javítása.
 - Hibajavítás különböző felismerőhöz/végpontokhoz.
-- Dokumentációs újítások.
+- Dokumentáció fejlesztései.
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0:2018 – decemberi kiadás
 
@@ -309,7 +309,7 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 - Android
   - Engedélyezve van a kisegítő képesség az APK-generációban.
 
-**Fejlesztések**
+**Fejlesztései**
 
 - A belső szál használatának fejlesztése, a szálak, a zárolások és a mutexek számának csökkentése.
 - Továbbfejlesztett hibajelentés/információk. Számos esetben a hibaüzenetek nem lettek propagálva az összes kiút.
@@ -337,26 +337,26 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 
 **Új funkciók**
 
-- Támogatás Android x86/x64 rendszerhez.
-- Proxy-támogatás: a `SpeechConfig` objektumban meghívhat egy függvényt a proxy információk (állomásnév, port, Felhasználónév és jelszó) beállításához. Ez a funkció még nem érhető el az iOS rendszeren.
-- Javított hibakódok és üzenetek. Ha egy felismerés hibát adott vissza, akkor a `Reason` (a megszakított eseménynél), vagy `CancellationDetails` (az elismerés eredménye) `Error`. A megszakított esemény most két további tagot tartalmaz, `ErrorCode` és `ErrorDetails`. Ha a kiszolgáló további hibaüzeneteket adott vissza a jelentett hibával, mostantól elérhető lesz az új tagokban.
+- Android x86/x64 támogatása.
+- Proxy-támogatás: a `SpeechConfig` objektumban meghívhat egy függvényt a proxy információk (állomásnév, port, Felhasználónév és jelszó) beállításához. Ez a funkció még nem áll rendelkezésre álló IOS-eszközökön.
+- Továbbfejlesztett hibakód és üzenetek. Ha egy felismerés hibát adott vissza, akkor a `Reason` (a megszakított eseménynél), vagy `CancellationDetails` (az elismerés eredménye) `Error`. A megszakított esemény most két további tagot tartalmaz, `ErrorCode` és `ErrorDetails`. A kiszolgáló további információ a hibáról az a jelzett hibát adott vissza, ha most lesz elérhető az új tagjait.
 
-**Fejlesztések**
+**Fejlesztései**
 
-- További ellenőrzés történt a felismerő konfigurációjában, és további hibaüzenetet adott hozzá.
-- Hatékonyabban kezelhető a hosszú idő a hangfájlok közepén.
-- NuGet csomag: a .NET-keretrendszer projektjeihez a AnyCPU-konfigurációval való kiépítés megakadályozása.
+- További ellenőrzés hozzáadva a felismerő konfigurációs és további hozzáadott hibaüzenet jelenik meg.
+- Hangfájl közepén régóta csend jobb kezelése.
+- NuGet-csomagot: .NET-keretrendszer projektek esetén ez megakadályozza, hogy használhatja a AnyCPU konfiguráció.
 
 **Hibajavítások**
 
-- Rögzített több kivétel található a felismerők között. Emellett a kivételek bekerülnek és `Canceled` eseményre konvertálódnak.
-- Memóriavesztés kijavítása a Property Management szolgáltatásban.
-- Kijavítva a hiba, amelyben egy hangbemeneti fájl összeomlhat a felismerővel.
-- Kijavítva egy hiba, amelyben az események egy munkamenet-leállítási esemény után fogadhatók.
-- Rögzített bizonyos versenyhelyzet-feltételek a Threading-ben.
-- Javítva lett egy iOS-kompatibilitási probléma, amely összeomlást eredményezhet.
-- Az androidos mikrofonok támogatásának stabilitási fejlesztése.
-- Kijavítva a hiba, ha egy felismerő a JavaScriptben figyelmen kívül hagyja az elismerés nyelvét.
+- Rögzített felismerő található kivételek. Emellett a kivételek bekerülnek és `Canceled` eseményre konvertálódnak.
+- A tulajdonság felügyeleti memóriavesztés ki.
+- Kijavítva a hiba, amelyben a bemeneti hangfájl összeomlási sikerült a felismerő.
+- Kijavítva a hiba, ahol események tudta fogadott munkamenet leállítási esemény után.
+- Rögzített threading néhány versenyhelyzet feltételeket.
+- Rögzített egy IOS-es kompatibilitási probléma, amely egy összeomlási eredményezhet.
+- Jobb stabilitás Android mikrofon támogatás.
+- Kijavítva a hiba, ahol a JavaScript-felismerő lenne figyelmen kívül hagyja a beszédfelismerési nyelv.
 - Kijavítva egy hiba, amely megakadályozza a `EndpointId` (bizonyos esetekben) a JavaScriptben.
 - A AddIntent-ben megváltozott a paraméterek sorrendje a JavaScriptben, és a rendszer hiányzó `AddIntent` JavaScript-aláírást adott hozzá.
 
@@ -366,72 +366,72 @@ Ez egy csak JavaScript kiadás. Nem lettek hozzáadva funkciók. A következő j
 
 ## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
 
-Megbízhatósági javítások és hibajavítások:
+Hibajavításokat tartalmaz, és megbízhatóság fejlesztései:
 
-- Rögzített potenciális végzetes hiba történt a versenyhelyzet ártalmatlanítását kiváltó feltétele miatt
-- Kijavított lehetséges végzetes hiba a nem beállított tulajdonságok esetében.
-- További hibák és paraméterek ellenőrzése hozzáadva.
-- Objective-C: a lehetséges végzetes hiba történt a NSString-ben a név felülbírálása miatt.
-- Objective-C: az API igazított láthatósága
-- JavaScript: az eseményekkel és azok hasznos adataival kapcsolatban rögzített.
-- Dokumentációs újítások.
+- Felismerő értékesítésére versenyhelyzet miatt rögzített lehetséges végzetes hiba
+- Rögzített lehetséges végzetes hiba esetén az adott Orientation tulajdonságait.
+- A hozzáadott további hiba és a paraméter ellenőrzése.
+- Objective-c rögzített lehetséges végzetes hiba okozza a NSString felülbírálása neve.
+- Objective-c igazítva látható-e API
+- JavaScript: Rögzített eseményeket és azok is észleltünk adattartalmakat.
+- Dokumentáció fejlesztései.
 
 A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozzáadva a javascripthez.
 
-## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0:2018 – szeptemberi kiadás
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services beszédfelismerő SDK 1.0.0-s: 2018. szeptember kiadás
 
 **Új funkciók**
 
-- Az Objective-C támogatása iOS rendszeren. Tekintse meg [az iOS-hez készült Objective-C](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)rövid útmutatót.
-- JavaScript-támogatás a böngészőben. Tekintse meg a [JavaScript](quickstart-js-browser.md)rövid útmutatót.
+- Objective-C támogatása IOS-eszközökön. Tekintse meg [az iOS-hez készült Objective-C](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)rövid útmutatót.
+- A böngészőben JavaScript támogatása. Tekintse meg a [JavaScript](quickstart-js-browser.md)rövid útmutatót.
 
 **Változtatások megszakítása**
 
 - Ebben a kiadásban számos megszakított változást vezetünk be.
   További részletekért olvassa el [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
 
-## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0:2018 – augusztus kiadás
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services beszédfelismerő SDK 0.6.0: 2018 augusztus kiadás
 
 **Új funkciók**
 
-- A Speech SDK-val létrehozott UWP-alkalmazások mostantól átadhatják a Windows-alkalmazás minősítési csomagját (WACK).
+- UWP-alkalmazás most már a Speech SDK-val készített továbbíthatja a Windows App Certification Kit (WACK).
   Tekintse meg a [UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp)rövid útmutatót.
-- .NET Standard 2,0-támogatás Linux rendszeren (Ubuntu 16,04 x64).
-- Kísérleti: a Java 8 támogatása Windows (64 bites) és Linux rendszeren (Ubuntu 16,04 x64).
+- A .NET Standard 2.0 Linux (Ubuntu 16.04 x 64) támogatása.
+- Kísérleti funkció: Támogatja a Java 8 (64 bites) Windows és Linux (Ubuntu 16.04 x 64).
   Tekintse meg a [Java Runtime Environment](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)rövid útmutatót.
 
 **Funkcionális változás**
 
-- További hibák részletes információinak közzététele a csatlakoztatási hibákról.
+- Tegyen elérhetővé további részletes információ a hibáról a csatlakozási hibák.
 
 **Változtatások megszakítása**
 
-- Java (Android) esetén a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvényhez már nem szükséges elérésiút-paraméter. A rendszer mostantól automatikusan észleli az elérési utat az összes támogatott platformon.
+- Java (Android) esetén a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvényhez már nem szükséges elérésiút-paraméter. Az elérési út most már automatikusan észleli az összes támogatott platformon.
 - A (`EndpointUrl` Java- C# ban található tulajdonság get-accesser objektuma el lett távolítva.
 
 **Hibajavítások**
 
-- A Java-ban a fordítási felismerő hangszintézisének eredménye most már megvalósítva van.
-- Kijavítva egy olyan hibát, amely inaktív szálakat okozhat, és nagyobb számú nyitott és nem használt szoftvercsatorna van.
-- Javítva a probléma, ahol a hosszan futó felismerés megszakadhat az átvitel közepén.
-- Rögzített versenyhelyzet a felismerő leállításakor.
+- A Java a fordítási felismerő hang összefoglaló eredménye van megvalósítva, mostantól.
+- Kijavítva a hiba, inaktív a szálak és a egy nyílt és a fel nem használt sockets megnövelt számú okozhatja.
+- Rögzített probléma, ahol egy hosszú ideig futó felismerése sikerült leállítani a közepén továbbítására.
+- Rögzített versenyhelyzet felismerő leállítása.
 
-## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0:2018 – júliusi kiadás
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services beszédfelismerő SDK 0.5.0-s: 2018 július kiadás
 
 **Új funkciók**
 
-- Támogatás Android platform (API 23: Android 6,0 Marshmallow vagy újabb). Tekintse meg az [androidos](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)rövid útmutatót.
-- A .NET Standard 2,0 támogatása Windows rendszeren. Tekintse meg a [.net Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)rövid útmutatót.
-- Kísérleti: a UWP támogatása Windows rendszeren (1709-es vagy újabb verzió).
+- Támogatás Android platform (API 23: Android 6.0-s Marshmallow vagy újabb). Tekintse meg az [androidos](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)rövid útmutatót.
+- A .NET Standard 2.0 támogatja a Windows. Tekintse meg a [.net Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)rövid útmutatót.
+- Kísérleti: Támogatás Windows (1709-es vagy újabb verzió) az UWP.
   - Tekintse meg a [UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)rövid útmutatót.
-  - Megjegyzés: a Speech SDK-val készített UWP-alkalmazások még nem adják át a Windows-alkalmazás minősítési csomagját (WACK).
-- A hosszan futó felismerés támogatása automatikus újracsatlakoztatással.
+  - Megjegyzés: A Speech SDK-val készített UWP-alkalmazás nem még meg a Windows App Certification Kit (WACK).
+- Támogatja az automatikus újracsatlakozás hosszú ideig futó felismerése.
 
 **Funkcionális változások**
 
 - `StartContinuousRecognitionAsync()` támogatja a hosszan futó felismerést.
-- A felismerési eredmény több mezőt tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (a kullancsok esetében is) és az elszámolási állapotot jelző, például a `InitialSilenceTimeout` és az `InitialBabbleTimeout`.
-- Támogatási AuthorizationToken a gyári példányok létrehozásához.
+- A felismerés eredményét további mezőket tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (a kullancsok esetében is) és az elszámolási állapotot jelző, például a `InitialSilenceTimeout` és az `InitialBabbleTimeout`.
+- Támogatási AuthorizationToken előállító példányok létrehozásához.
 
 **Változtatások megszakítása**
 
@@ -446,20 +446,20 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 **Hibajavítások**
 
 - Az eredményben rögzített helytelen visszatérési értékek `RecognizeAsync()` időtúllépés miatt.
-- A Windows Media Foundation-kódtárainak függősége el lett távolítva. Az SDK mostantól a Core audio API-kat használja.
+- A Windows media foundation kódtárak függőség el lett távolítva. Az SDK mostantól az alapvető hang API-k.
 - Dokumentációs javítás: hozzáadott egy [régiókat](regions.md) tartalmazó lapot a támogatott régiók leírásához.
 
 **Ismert probléma**
 
-- Az Androidhoz készült Speech SDK nem jelenti a fordításhoz tartozó beszédfelismerési eredmények jelentését. Ezt a problémát a következő kiadásban rögzíti a rendszer.
+- A beszédfelismerés SDK for Android nem jelentést speech összefoglaló eredmények a fordítás. A probléma a következő kiadás javítja.
 
-## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services Speech SDK 0.4.0:2018 – júniusi kiadás
+## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services beszédfelismerő SDK 0.4.0: 2018 június kiadás
 
 **Funkcionális változások**
 
 - AudioInputStream
 
-  A felismerő mostantól hangforrásként használhatja a streamet. További információ: [a kapcsolódó útmutató](how-to-use-audio-input-streams.md).
+  Egy felismerő most már felhasználhatja a stream hang forrásaként. További információ: [a kapcsolódó útmutató](how-to-use-audio-input-streams.md).
 
 - Részletes kimeneti formátum
 
@@ -471,17 +471,17 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 
 **Hibajavítások**
 
-- Egy lehetséges visszahívási probléma javítva az USP-rétegben a leállítás során.
-- Ha a felismerő hangbemeneti fájlt használt, a fájl a szükségesnél hosszabb ideig tartott.
-- Az üzenet-szivattyú és a felismerő között több holtpont is megszűnt.
+- Kijavítottuk a lehetséges visszahívási a USP rétegben leállítás során.
+- Egy felismerő felhasznált bemeneti hangfájl, ha azt volt üzemben szükséges hosszabb fájlleírót.
+- Az üzenet szivattyú és a felismerő között számos holtpontok eltávolítva.
 - Ha a szolgáltatás válasza időtúllépés miatt megtörténik, akkor a `NoMatch`.
-- A Windows Media Foundation kódtárai betöltődik. Ez a függvénytár csak a mikrofon bemenetéhez szükséges.
-- A hangadatok feltöltési sebessége az eredeti hangsebesség körülbelül kétszeresére korlátozódik.
-- Windows rendszeren a C# .net-szerelvények már erős névvel rendelkeznek.
+- A Windows media foundation könyvtáraiban betöltött késleltetés. Ez a kódtár mikrofon bemeneti csak szükség.
+- A feltöltési sebességét hívásaiból sebessége kétszer az eredeti hang korlátozva.
+- Windows, a C# nyelvet használó .NET-szerelvények most strong neve.
 - Dokumentációs javítás: `Region` a felismerő létrehozásához szükséges információk.
 
-További minták lettek hozzáadva, és folyamatosan frissülnek. A legújabb mintákhoz lásd a [SPEECH SDK Samples GitHub-tárházát](https://aka.ms/csspeech/samples).
+További példák lettek hozzáadva, és folyamatosan változik. A legújabb mintákhoz lásd a [SPEECH SDK Samples GitHub-tárházát](https://aka.ms/csspeech/samples).
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services Speech SDK 0.2.12733:2018 – májusi kiadás
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services beszédfelismerő SDK 0.2.12733: 2018 – május kiadás
 
-Ez a kiadás a Cognitive Services Speech SDK első nyilvános előzetes kiadása.
+Ebben a kiadásban a Cognitive Services beszédfelismerő SDK első nyilvános előzetes verziója.

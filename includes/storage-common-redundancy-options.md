@@ -5,19 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/28/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 5df0fe23183b53f13d6c6545e248724324434cde
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029799"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157218"
 ---
-A tárfiókok replikációs lehetőségei:
+A Storage-fiók redundancia-beállításai a következők:
 
-* [Helyileg redundáns tárolás (LRS)](../articles/storage/common/storage-redundancy-lrs.md): Egyszerű, alacsony költséghatékonyságú replikációs stratégia. Az adatreplikálást az elsődleges régióban háromszor szinkron módon replikálja a rendszer.
-* [Zóna – redundáns tárolás (ZRS)](../articles/storage/common/storage-redundancy-zrs.md): A magas rendelkezésre állást igénylő forgatókönyvek replikálása. Az adatreplikációt a rendszer szinkron módon replikálja az elsődleges régió három Azure-beli rendelkezésre állási zónáján belül.
-* [Geo-redundáns tárolás (GRS)](../articles/storage/common/storage-redundancy-grs.md): Régiók közötti replikáció a regionális kimaradások elleni védelemhez. Az adatreplikálást az elsődleges régióban háromszor szinkronizálja a rendszer, majd aszinkron módon replikálja a másodlagos régióba. A másodlagos régióban lévő adatolvasási hozzáférés engedélyezéséhez engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS).
-* [Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)](../articles/storage/common/storage-redundancy-gzrs.md): Replikáció a magas rendelkezésre állást és a maximális tartósságot igénylő forgatókönyvek esetében. Az adatreplikációt a rendszer szinkron módon replikálja az elsődleges régió három Azure-beli rendelkezésre állási zónájában, majd aszinkron módon replikálja a másodlagos régióba. Ha olvasási hozzáférést szeretne a másodlagos régióban lévő adathozzáféréshez, engedélyezze az olvasási hozzáférésű geo-Zone-redundáns tárolást (RA-GZRS).
+* Helyileg redundáns tárolás (LRS): egyszerű, alacsony költséghatékonyságú redundancia-stratégia. Az Adatmásolást az elsődleges régión belül háromszor kell szinkronizálni.
+* Zone-redundáns tárolás (ZRS): a magas rendelkezésre állást igénylő forgatókönyvek redundancia. Az Adatmásolás szinkron módon történik az elsődleges régió három Azure-beli rendelkezésre állási zónájában.
+* Geo-redundáns tárolás (GRS): régiók közötti redundancia a regionális kimaradások elleni védelemhez. Az Adatmásolást az elsődleges régióban háromszor szinkronizálja a rendszer, majd aszinkron módon másolja át a másodlagos régióba. A másodlagos régióban lévő adatolvasási hozzáférés engedélyezéséhez engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS).
+* Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió): a magas rendelkezésre állást és a maximális tartósságot igénylő forgatókönyvek redundancia. Az Adatmásolást a rendszer szinkron módon másolja az elsődleges régió három Azure-beli rendelkezésre állási zónájában, majd aszinkron módon másolja át a másodlagos régióba. Ha olvasási hozzáférést szeretne a másodlagos régióban lévő adathozzáféréshez, engedélyezze az olvasási hozzáférésű geo-Zone-redundáns tárolást (RA-GZRS).
+
+Az Azure Storage redundancia-lehetőségeivel kapcsolatos további információkért lásd: [Azure Storage redundancia](../articles/storage/common/storage-redundancy.md).

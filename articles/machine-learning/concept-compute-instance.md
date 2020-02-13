@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984846"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169842"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
 
@@ -26,9 +26,6 @@ Számítási példányt használhat a felhőben teljes mértékben konfigurált 
 
 A számítási példányokat általában fejlesztési környezetként használják.  A fejlesztéshez és a teszteléshez is használható számítási célként.  A nagyméretű feladatokhoz a többcsomópontos skálázási képességekkel rendelkező [Azure Machine learning számítási fürt](how-to-set-up-training-targets.md#amlcompute) jobb számítási célként szolgál.
 
-> [!NOTE]
-> A számítási példányok jelenleg csak az **USA északi középső**régiójában, az **USA 2. keleti**régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található régióban érhetők el, és hamarosan más régiókat is támogatnak.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 ## <a name="why-use-a-compute-instance"></a>Miért érdemes számítási példányt használni?
 
@@ -52,7 +49,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |----|:----:|
 |Illesztőprogramok|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPI-könyvtár||
-|Azure parancssori felület (CLI) ||
+|Azure CLI ||
 |Azure Machine Learning minták ||
 |Azure Machine Learning EDAT motor ||
 |Docker||
@@ -71,7 +68,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-|Visual Studio-kód ||
+|Visual Studio Code ||
 [A Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
 |Egyéb PyPI-csomagok|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
@@ -124,7 +121,7 @@ A következő műveleteket hajthatja végre:
 
 A munkaterületen minden számítási példány esetében a következőket teheti:
 
-* Hozzáférés az Jupyter, a JupyterLab, a RStudio és a VS Code URI azonosítóhoz a számítási példányon
+* Hozzáférés Jupyter, JupyterLab, RStudio a számítási példányon
 * Az SSH-t a számítási példányba. Az SSH-hozzáférés alapértelmezés szerint le van tiltva, de a számítási példány létrehozási idején is engedélyezhető. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül történik. A lapon megadhatja az SSH-kapcsolat adatait, például az IP-címet, a felhasználónevet és a portszámot.
 * Egy adott számítási példány, például az IP-cím és a régió részletes adatainak beolvasása.
 

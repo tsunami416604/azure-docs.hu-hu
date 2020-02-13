@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: ebabeccc43998c229bcd28063b6cbabae4b046ea
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cd00fb2df0063bd8bc753f9078194648f6745f1b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795825"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156636"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Az első lépések előtt:
 
 1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` sztringjét (például `westus` az ingyenes próbaverziós előfizetéshez).
 
 1. Mentse a projekt módosításait.
 

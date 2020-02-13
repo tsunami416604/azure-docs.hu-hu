@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901790"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179005"
 ---
 A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
@@ -23,7 +23,6 @@ A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a na
 > A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
 > Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> A nyilvános előzetes verzió korai részében a direktszínes példányok fix áron lesznek, így nem kerül sor ár-alapú kizárásra.
 
 ## <a name="eviction-policy"></a>Kizárási szabályzat
 
@@ -31,11 +30,8 @@ A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján l
 
 A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)használatával kapják meg. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
-> [!IMPORTANT]
-> A nyilvános előzetes verzió korai részében beállíthatja a maximális árat, de a rendszer figyelmen kívül hagyja. A helyszíni virtuális gépek fix áron fognak rendelkezni, így nem kerül sor ár-alapú kizárásra.
 
-
-| Lehetőség | Eredmény |
+| Beállítás | Eredmény |
 |--------|---------|
 | A maximális díj értéke > = a jelenlegi díj. | A virtuális gép üzembe helyezése esetén a kapacitás és a kvóta elérhető. |
 | A maximális árat úgy kell beállítani, hogy az aktuális árat <. | A virtuális gép nincs telepítve. Hibaüzenetet kap arról, hogy a maximális árat > = aktuális áron kell megadnia. |
@@ -54,7 +50,7 @@ A következő virtuálisgép-méretek nem támogatottak a Direktszínű virtuál
 
 A helyszíni virtuális gépek jelenleg nem használhatnak ideiglenes operációsrendszer-lemezeket.
 
-A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve a Microsoft Azure China 21Vianet és Department of Defense (DoD) szolgáltatást a Azure Government régióban.
+A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -94,12 +90,12 @@ A változó díjszabással maximális árat állíthat be az USA dollárban (USD
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
+| Nagyvállalati Szerződés         | Igen                               |
+| Utólagos fizetés                | Igen                               |
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Előnyök                     | Nincs                     |
-| Szponzorált                    | Nincs                     |
-| Free Trial (Ingyenes próba)                   | Nincs                     |
+| Előnyök                     | Nem érhető el                     |
+| Szponzorált                    | Nem érhető el                     |
+| Ingyenes próbaverzió                   | Nem érhető el                     |
 
 
 **K:** Hol tehetek közzé kérdéseket?

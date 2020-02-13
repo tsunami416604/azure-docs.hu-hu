@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363506"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162259"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-A Azure Monitor API lekérdezéséhez az ügyfélalkalmazás a korábban létrehozott egyszerű szolgáltatást használja a hitelesítéshez. Az alábbi PowerShell-szkript egy megközelítést mutat be, amely a [Active Directory-hitelesítési tár](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) használatával szerzi be a JWT hitelesítési tokent. Az JWT token egy HTTP-engedélyezési paraméter részeként kerül átadásra a Azure Monitor REST API kérelmekben.
+A Azure Monitor API lekérdezéséhez az ügyfélalkalmazás a korábban létrehozott egyszerű szolgáltatást használja a hitelesítéshez. Az alábbi PowerShell-szkript egy megközelítést mutat be, amely a [Active Directory-hitelesítési tár](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) használatával szerzi be a JWT hitelesítési tokent. Az JWT token egy HTTP-engedélyezési paraméter részeként kerül átadásra a Azure Monitor REST API kérelmekben.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -614,13 +614,13 @@ Az alábbi lista néhány példát tartalmaz a különböző Azure-erőforrások
 
 Az erőforrás-azonosító lekérésének alternatív módszerei vannak, beleértve a Azure Erőforrás-kezelő használatát, a kívánt erőforrás megtekintését a Azure Portal, a PowerShell vagy az Azure CLI segítségével.
 
-### <a name="azure-resource-explorer"></a>Azure Resource Manager
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 A kívánt erőforrás erőforrás-AZONOSÍTÓjának megkereséséhez az egyik hasznos módszer az [Azure erőforrás-kezelő](https://resources.azure.com) eszköz használata. Navigáljon a kívánt erőforráshoz, és tekintse meg a megjelenő azonosítót, ahogy az alábbi képernyőképen is látható:
 
 ![ALT "Azure Erőforrás-kezelő"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az erőforrás-azonosító a Azure Portal is beszerezhető. Ehhez keresse meg a kívánt erőforrást, majd válassza a tulajdonságok lehetőséget. Az erőforrás-azonosító a tulajdonságok szakaszban jelenik meg, ahogy az alábbi képernyőképen látható:
 
@@ -654,7 +654,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Ha az Azure CLI használatával szeretné lekérni az Azure Storage-fiók erőforrás-AZONOSÍTÓját, hajtsa végre a `az storage account show` parancsot az alábbi példában látható módon:
 

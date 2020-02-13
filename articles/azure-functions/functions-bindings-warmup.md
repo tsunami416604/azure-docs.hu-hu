@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933319"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167313"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -36,7 +36,7 @@ A bemelegedési trigger olyan megosztott függőségek létrehozására szolgál
 
 Vegye figyelembe, hogy a bemelegedési trigger csak a kibővített műveletekben, az újraindítások vagy más nem léptékű indítások során hívható meg. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
 
-## <a name="trigger---example"></a>Trigger – példa
+## <a name="trigger---example"></a>Az eseményindító – példa
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -127,7 +127,7 @@ Itt látható a *function. JSON* fájl:
 
 A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Az alábbi példa egy bemelegedési triggert mutat be egy *function. JSON* fájlban, valamint egy [Java-függvényt](functions-reference-java.md) , amely minden egyes új példányon futni fog, amikor az alkalmazáshoz kerül.
+Az alábbi példa egy bemelegedési triggert mutat be, amely akkor fut le, amikor az egyes új példányok bekerülnek az alkalmazásba.
 
-A függvénynek ```warmup``` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
-
-Itt látható a *function. JSON* fájl:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-A Java-kód a következő:
+A függvénynek `warmup` (kis-és nagybetűk megkülönböztetése) nevűnek kell lennie, és egy alkalmazásban csak egy bemelegedési függvény lehet.
 
 ```java
 @FunctionName("Warmup")
@@ -200,7 +184,7 @@ public void run( ExecutionContext context) {
 
 ---
 
-## <a name="trigger---attributes"></a>Trigger – attribútumok
+## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)a függvény konfigurálásához a `WarmupTrigger` attribútum érhető el.
 
@@ -239,17 +223,17 @@ A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger – konfiguráció
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és a `WarmupTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type** | –| Kötelező – `warmupTrigger`értékre kell állítani. |
-| **direction** | –| Kötelező – `in`értékre kell állítani. |
-| **név** | –| Kötelező – a függvény kódjában használt változó neve.|
+| **type** | n/a| Kötelező – `warmupTrigger`értékre kell állítani. |
+| **direction** | n/a| Kötelező – `in`értékre kell állítani. |
+| **név** | n/a| Kötelező – a függvény kódjában használt változó neve.|
 
-## <a name="trigger---usage"></a>Trigger – használat
+## <a name="trigger---usage"></a>Eseményindító - használat
 
 A meghívásakor a bemelegedési által aktivált függvények nem kapnak további információt.
 

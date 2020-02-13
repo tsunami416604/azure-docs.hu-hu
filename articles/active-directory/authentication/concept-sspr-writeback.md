@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023123"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161579"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
@@ -29,7 +29,7 @@ A jelszó-visszaírási a következőket használó környezetekben támogatott:
 * [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../develop/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
+> A jelszó-visszaírási nem fog működni azon ügyfelek esetében, akik az [Azure Access Control szolgáltatás (ACS) 2018](../azuread-dev/active-directory-acs-migration.md)-as 1.0.8641.0-verziójának kivonása után a Azure ad Connect verziót használják. Azure AD Connect a 1.0.8641.0 és régebbi verziók többé nem engedélyezik a jelszavak visszaírási, mert az adott funkcióhoz tartozó ACS-től függenek.
 >
 > A szolgáltatás megszakadásának elkerülése érdekében frissítse a Azure AD Connect egy korábbi verziójáról egy újabb verzióra, és tekintse meg a [Azure ad Connect: frissítés korábbi verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md) című cikket.
 >
@@ -58,7 +58,7 @@ A jelszó-visszaírási használatához a bérlőhöz hozzárendelt következő 
 * E3 vagy a3 Microsoft 365
 * Microsoft 365 E5 vagy a5
 * Microsoft 365 F1
-* Microsoft 365 Vállalati verzió
+* Microsoft 365 Business
 
 > [!WARNING]
 > Az önálló Office 365 licencelési csomagok *nem támogatják az "önkiszolgáló jelszó-visszaállítás/módosítás/zárolás a helyszíni visszaírási"* lehetőséget, és a funkció működéséhez a fenti csomagok egyikét kell megkövetelni.

@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758750"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160360"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai 
 
@@ -152,11 +152,11 @@ Hatálybalépés **dátuma**: november 15., 2018
 
 Érintett **protokoll**: [kód flow](v2-oauth2-auth-code-flow.md)
 
-A 2018. november 15-én kezdődően az Azure AD nem fogadja el a korábban használt hitelesítési kódokat az alkalmazásokhoz. Ez a biztonsági változás segíti az Azure AD-t az OAuth-specifikációnak megfelelően bevezetni, és a v1 és v2 végpontokon is érvényben lesz.
+2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
 
-Ha az alkalmazás az engedélyezési kódokat több erőforráshoz tartozó jogkivonatok lekérésére használja, javasoljuk, hogy a kód segítségével szerezzen be egy frissítési tokent, majd a frissítési token használatával további jogkivonatokat szerezzen be más erőforrásokhoz. Az engedélyezési kódok csak egyszer használhatók, de a frissítési tokenek többször is használhatók több erőforrásban. Minden olyan új alkalmazás, amely a OAuth-kód folyamata során a hitelesítési kódot próbálja újra felhasználni, invalid_grant hibát fog kapni.
+Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Minden olyan új alkalmazás, amely a OAuth-kód folyamata során a hitelesítési kódot próbálja újra felhasználni, invalid_grant hibát fog kapni.
 
-További információ a frissítési tokenekről: [a hozzáférési tokenek frissítése](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  A ADAL vagy a MSAL használata esetén ezt a függvénytár kezeli – a "AcquireTokenByAuthorizationCodeAsync" második példányát cserélje le a "AcquireTokenSilentAsync" értékre. 
+További információ a frissítési tokenekről: [a hozzáférési tokenek frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  A ADAL vagy a MSAL használata esetén ezt a függvénytár kezeli – a "AcquireTokenByAuthorizationCodeAsync" második példányát cserélje le a "AcquireTokenSilentAsync" értékre. 
 
 ## <a name="may-2018"></a>2018. május
 
@@ -166,7 +166,7 @@ További információ a frissítési tokenekről: [a hozzáférési tokenek fris
 
 Érintett **végpontok**: v 1.0 és v 2.0
 
-Érintett **protokollok**: implicit flow és [OBO flow](v1-oauth2-on-behalf-of-flow.md)
+Érintett **protokollok**: implicit folyamat és meghatalmazott [folyamat](v2-oauth2-on-behalf-of-flow.md)
 
 2018. május 1-től a id_tokens nem használható az új alkalmazások esetében az OBO-flow-ban. A hozzáférési jogkivonatokat inkább az API-k védelmére kell használni, még az ügyfél és a középső rétegek között is. Az 2018. május 1. előtt regisztrált alkalmazások továbbra is működőképesek lesznek, és a hozzáférési tokenek id_tokens Exchange-re lesznek képesek. Ez a minta azonban nem tekinthető az ajánlott eljárásnak.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547357"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158995"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
 
@@ -45,7 +45,7 @@ Ha azt tervezi, hogy a jelen cikkben szereplő Azure PowerShell példákat is ha
 
 ## <a name="overview"></a>Áttekintés
 
-Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőforrások csak az adott erőforráshoz való [hozzáféréshez használható hozzáférési jogkivonattal](../develop/developer-glossary.md#access-token) . A jogkivonat az [Azure-erőforrások egyszerű szolgáltatásának felügyelt identitásán alapul](overview.md#how-does-the-managed-identities-for-azure-resources-work). Ezért nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat beszerzéséhez a saját egyszerű szolgáltatásnév keretében. A jogkivonat alkalmas tulajdonosi jogkivonatként használni az [ügyfél hitelesítő adatait igénylő szolgáltatások közötti hívásokban](../develop/v1-oauth2-client-creds-grant-flow.md).
+Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőforrások csak az adott erőforráshoz való [hozzáféréshez használható hozzáférési jogkivonattal](../develop/developer-glossary.md#access-token) . A jogkivonat az [Azure-erőforrások egyszerű szolgáltatásának felügyelt identitásán alapul](overview.md#how-does-the-managed-identities-for-azure-resources-work). Ezért nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat beszerzéséhez a saját egyszerű szolgáltatásnév keretében. A jogkivonat alkalmas tulajdonosi jogkivonatként használni az [ügyfél hitelesítő adatait igénylő szolgáltatások közötti hívásokban](../develop/v2-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |
@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai a Instance Metadata Service számára. |
 | `api-version`  | Egy lekérdezési karakterlánc paraméter, amely a IMDS-végpont API-verzióját jelzi. Használja az API-verziót `2018-02-01` vagy újabb. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/ alkalmazás-azonosító URI-ja. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
 | `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében. |
 | `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
-| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/ alkalmazás-azonosító URI-ja. |
+| `resource` | Egy lekérdezési karakterlánc paraméter, amely a cél erőforrás alkalmazás-azonosító URI azonosítóját jelzi. Emellett megjelenik a kiállított jogkivonat `aud` (célközönség) jogcímében is. Ez a példa jogkivonatot kér a Azure Resource Managerhoz való hozzáféréshez, amely a https://management.azure.com/alkalmazás-azonosító URI-ja. |
 | `Metadata` | Egy HTTP-kérelem fejlécének mezője, amelyet az Azure-erőforrások felügyelt identitásai igényelnek a kiszolgálóoldali kérelmek hamisításának (SSRF) támadása ellen. Ezt az értéket a "true" értékre kell beállítani, az összes kisbetű esetében.|
 | `object_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a object_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
@@ -393,7 +393,7 @@ Az újrapróbálkozáshoz a következő stratégiát javasoljuk:
 
 | **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
+|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1\. kísérlet – 0 mp. késleltetés<br />2\. kísérlet – kb. 2 mp. késleltetés<br />3\. kísérlet – kb. 6 mp. késleltetés<br />4\. kísérlet – kb. 14 mp. késleltetés<br />5\. kísérlet – kb. 30 mp. késleltetés |
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906402"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187240"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs-információk rögzítése az Azure Storage-ban és a Python használatával (Azure-eventhub 5-ös verzió)
 
-Az Event hub-t konfigurálhatja úgy, hogy az Event hub számára eljuttatott adattárolók egy Azure Storage-fiókban vagy Azure Data Lake Storage legyenek rögzítve. Ez a cikk bemutatja, hogyan írhat Python-kódokat események küldéséhez az Event hub-ba, és beolvashatja a rögzített adatok Azure Blob Storage-ból való beolvasását. További információ erről a szolgáltatásról: [Event Hubs rögzítési funkciók áttekintése](event-hubs-capture-overview.md).
+Beállíthat egy Event hub-t úgy, hogy az Event hub-nak elküldett, Azure Storage-fiókba vagy Azure Data Lake Storage 1. vagy 2. generációs adattárolóba beérkező adatkészletek rögzítve legyenek. Ez a cikk bemutatja, hogyan írhat Python-kódokat események küldéséhez az Event hub-ba, és beolvashatja a rögzített adatok **Azure Blob Storage**-ból való beolvasását. További információ erről a szolgáltatásról: [Event Hubs rögzítési funkciók áttekintése](event-hubs-capture-overview.md).
 
-Ez a rövid útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* alkalmazás a szimulált környezeti telemetria JSON formátumban küldi az Event hubokba. Az Event hub úgy van konfigurálva, hogy a rögzítési funkció használatával írja ezeket az adattárakba a blob Storage-ba. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, és létrehoz egy hozzáfűzési fájlt az egyes eszközökhöz. Az alkalmazás ezután a CSV-fájlokba írja az adatot.
+Ez a rövid útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* alkalmazás a szimulált környezeti telemetria JSON formátumban küldi az Event hubokba. Az event hubs rögzítési funkciója használja ezeket az adatokat a Blob storage kötegekben van konfigurálva. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, és létrehoz egy hozzáfűzési fájlt az egyes eszközökhöz. Az alkalmazás ezután a CSV-fájlokba írja az adatot.
 
 > [!IMPORTANT]
 > Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK 1. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](event-hubs-capture-python.md). 
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
     Ügyeljen arra, hogy a rövid útmutató későbbi használatához a kapcsolódási karakterláncot és a tároló nevét jegyezze fel.  
 - Az Event hub rögzítési funkciójának engedélyezése. Ehhez kövesse a [Event Hubs rögzítés engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md)című témakör utasításait. Válassza ki a Storage-fiókot és az előző lépésben létrehozott BLOB-tárolót. Az Event hub létrehozásakor is engedélyezheti a szolgáltatást.  
 
-## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Hozzon létre egy Python-szkriptet az események az Event hub-ba való küldéséhez
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Hozzon létre egy Python-szkriptet küldhet eseményeket az eseményközpontjába
 Ebben a szakaszban egy Python-szkriptet hoz létre, amely 200 eseményt küld (10 eszköz * 20 eseményt) az Event hub-ba. Ezek az események JSON formátumban eljuttatott környezeti beolvasási példák. 
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code][Visual Studio Code]-ot.
@@ -96,7 +96,7 @@ Ebben a szakaszban egy Python-szkriptet hoz létre, amely 200 eseményt küld (1
 
     [![annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Python-szkript létrehozása a rögzítési fájlok olvasásához
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Hozzon létre egy Python-szkriptet a rögzítési fájlok olvasását
 Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-ban történik. Az ebben a szakaszban található szkript beolvassa a rögzített adatfájlokat az Azure Storage-fiókjából, és CSV-fájlokat hoz létre, amelyekkel egyszerűen megnyithatja és megtekintheti azokat. Az alkalmazás aktuális munkakönyvtárában 10 fájl jelenik meg. Ezek a fájlok a 10 eszközre vonatkozó környezeti beolvasásokat fogják tartalmazni. 
 
 1. A Python-szerkesztőben hozzon létre egy *capturereader.py*nevű szkriptet. Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt minden eszköz számára, hogy csak az adott eszközre írja az adatokat.
@@ -159,8 +159,8 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
     ```
 3. Cserélje le a `AZURE STORAGE CONNECTION STRING`t az Azure Storage-fiókhoz tartozó kapcsolatok karakterláncára. Az ebben a rövid útmutatóban létrehozott tároló neve *rögzítve*lesz. Ha más nevet használt a tárolóhoz, a *rögzítés* helyére írja be a Storage-fiókban található tároló nevét. 
 
-## <a name="run-the-scripts"></a>Parancsfájlok futtatása
-1. Nyisson meg egy parancssort, amely a Python elérési útjában található, majd futtassa ezeket a parancsokat a Python előfeltételként szükséges csomagok telepítéséhez:
+## <a name="run-the-scripts"></a>A szkriptek futtatása
+1. Nyisson meg egy parancssort, amelynek az elérési út Python, és futtassa ezeket a parancsokat, előfeltételként szükséges Python-csomagok telepítéséhez:
    
    ```
    pip install azure-storage-blob
@@ -173,7 +173,7 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
    python sender.py
    ```
    
-   Ez a parancs egy új Python-folyamatot indít el a küldő futtatásához.
+   Ez a parancs futtatásához a küldő egy új Python-folyamat elindul.
 3. Várjon néhány percet a rögzítés futtatására, majd írja be az alábbi parancsot az eredeti parancssorablakba:
    
    ```

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148861"
+ms.locfileid: "77157873"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2
 | `globalexception` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | `providerselection` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. |
 | `unifiedssp` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. Ez az érték a "bejelentkezési funkciók megtartása" funkciót és az "elfelejtette jelszavát?" is tartalmazza hivatkozás. |
-| `unifiedssp` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. |
+| `unifiedssd` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. |
 | `multifactor` | Megerősíti a telefonszámokat szöveg vagy hang használatával a regisztráció vagy a bejelentkezés során. |
 | `selfasserted` | Megjelenít egy űrlapot, amely lehetővé teszi a felhasználók számára a profil létrehozását vagy frissítését. |
 
-## <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
+### <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
 
 A [JavaScript ügyféloldali kódot](javascript-samples.md) a `elements` és az oldal típusának `contract` beszúrásával engedélyezheti. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
@@ -126,6 +126,29 @@ Az érték formátumának tartalmaznia kell a `contract`szót: _urn: com: Micros
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>Metaadatok
+
+A **metaadat** -elemek a következő elemeket tartalmazzák:
+
+| Elem | Események | Leírás |
+| ------- | ----------- | ----------- |
+| Elem | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
+
+A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| Paraméter | Igen | A metaadat-kulcs.  |
+
+#### <a name="metadata-keys"></a>Metaadat-kulcsok
+
+A Content Definition a következő metaadat-elemeket támogatja: 
+
+| Paraméter | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
@@ -134,7 +157,7 @@ A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | A tartalom definíciójának honosított erőforrás-hivatkozásainak listája. |
 
-A **LocalizedResourcesReferences** elem a következő attribútumokat tartalmazza:
+A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |

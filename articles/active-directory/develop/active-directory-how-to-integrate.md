@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698849"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161222"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integráció a Azure Active Directory
 
@@ -32,7 +32,7 @@ Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Haszn
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Az Azure AD támogatása az alkalmazásba való bejelentkezéshez
 
-**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha az Azure AD-vel bejelentkezik az alkalmazásba, a felhasználók nem fognak tudni még egy nevet és jelszót használni. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. Az Azure AD-ben a világ legnépszerűbb felhőalapú alkalmazásai, például az Office 365 és a Microsoft Azure is bejelentkezhetnek. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve az Azure AD-be. További információ [Az Azure ad-bejelentkezés támogatásának hozzáadásáról](v1-authentication-scenarios.md).
+**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha az Azure AD-vel bejelentkezik az alkalmazásba, a felhasználók nem fognak tudni még egy nevet és jelszót használni. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. Az Azure AD-ben a világ legnépszerűbb felhőalapú alkalmazásai, például az Office 365 és a Microsoft Azure is bejelentkezhetnek. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve az Azure AD-be. További információ [Az Azure ad-bejelentkezés támogatásának hozzáadásáról](authentication-scenarios.md).
 
 **Egyszerűsítse az alkalmazás regisztrálását.**  Az alkalmazásra való regisztráció során az Azure AD alapvető információkat küldhet a felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti a regisztrációt. A felhasználók az Azure AD-fiókjával regisztrálhatnak az alkalmazásra, mint a közösségi médiában és a mobil alkalmazásokban található, ismerős hozzájárulással. Bármely felhasználó regisztrálhat, és bejelentkezhet az Azure AD-be integrált alkalmazásba anélkül, hogy ez bevonást igényel. További információ az [alkalmazás Azure ad-fiókba való bejelentkezésének regisztrálásáról](../../app-service/configure-authentication-provider-aad.md).
 
@@ -92,5 +92,5 @@ Az Azure AD-val való integráció olyan előnyökkel jár, amelyek nem igényli
 
 A [kód írásának megkezdése](v2-overview.md#getting-started).
 
-[Felhasználók aláírása a Microsoft Identity platform használatával](v1-authentication-scenarios.md)
+[Felhasználók aláírása a Microsoft Identity platform használatával](authentication-scenarios.md)
 

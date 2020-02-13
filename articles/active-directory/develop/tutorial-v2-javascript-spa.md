@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701263"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159880"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -45,13 +45,13 @@ Az útmutatóban létrehozott minta alkalmazás lehetővé teszi, hogy a JavaScr
 
 Ez az útmutató a következő könyvtárat használja:
 
-|Részletes ismertetés|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library a JavaScripthez – előzetes verzió|
 
 > [!NOTE]
-> A *Msal. js* a Microsoft Identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, az iskolai és munkahelyi fiókok számára a bejelentkezést és a jogkivonatok beszerzését. A Microsoft Identity platform végpontjának [bizonyos korlátai vannak](azure-ad-endpoint-comparison.md#limitations).
-> A v 1.0 és a v 2.0 végpontok közötti különbségek megismeréséhez tekintse meg a [végpontok összehasonlító útmutatóját](azure-ad-endpoint-comparison.md).
+> A *Msal. js* a Microsoft Identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, az iskolai és munkahelyi fiókok számára a bejelentkezést és a jogkivonatok beszerzését. A Microsoft Identity platform végpontjának [bizonyos korlátai vannak](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
+> A v 1.0 és a v 2.0 végpontok közötti különbségek megismeréséhez tekintse meg a [végpontok összehasonlító útmutatóját](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->
 
@@ -266,7 +266,7 @@ Az útmutató által létrehozott fürdő `acquireTokenSilent` és/vagy `acquire
 
 #### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák:
+A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák erre vonatkozóan:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
 - Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.
@@ -325,11 +325,11 @@ Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` c
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
-1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
+1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot a** legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
 
@@ -377,7 +377,7 @@ Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` c
     };
     ```
 
-    Helyszín:
+    Az elemek magyarázata:
     - *\<Enter_the_Application_Id_here >* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
     - *\<Enter_the_Tenant_info_here >* a következő lehetőségek egyikére van beállítva:
        - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).

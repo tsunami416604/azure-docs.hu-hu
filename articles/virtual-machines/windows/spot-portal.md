@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 682ee86c373c715080ef1baf82b473242a2e43db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782046"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158978"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Előzetes verzió: helyszíni virtuális gépek üzembe helyezése a Azure Portal használatával
 
@@ -28,7 +28,7 @@ Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő m
 > A helyszíni példányok jelenleg nyilvános előzetes verzióban érhetők el.
 > Ez az előzetes verzió nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> A nyilvános előzetes verzió korai részében a direktszínes példányok fix áron lesznek, így nem kerül sor ár-alapú kizárásra.
+
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 

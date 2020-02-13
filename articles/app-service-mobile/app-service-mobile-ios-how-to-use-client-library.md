@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8f6307e37ff24d2a3f10bcf39ed989acdf3611f9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668439"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157992"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Az iOS-hez készült ügyféloldali kódtár használata az Azure-ban Mobile Apps
 
@@ -25,7 +25,7 @@ ms.locfileid: "74668439"
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a legújabb [Azure Mobile apps iOS SDK][1]használatával. Ha még nem ismeri az Azure Mobile Appst, először fejezze be az [azure Mobile Apps gyorskonfigurálás] a háttérrendszer létrehozásához, egy tábla létrehozásához és egy előre elkészített iOS Xcode-projekt letöltéséhez. Ebben az útmutatóban az ügyféloldali iOS SDK-ra fogunk összpontosítani. Ha többet szeretne megtudni a háttérbeli kiszolgálóoldali SDK-ról, tekintse meg a Server SDK-val kapcsolatos tudnivalókat.
 
-## <a name="reference-documentation"></a>Segédanyagok
+## <a name="reference-documentation"></a>Dokumentáció
 
 Az iOS-es ügyfél-SDK dokumentációja itt található: [Azure Mobile apps iOS-ügyfél referenciája][2].
 
@@ -434,7 +434,7 @@ A törléshez legalább a `id` attribútumot be kell állítani.
 
 Az egyéni API-k segítségével bármilyen háttérbeli funkció elérhetővé teheti. Nem kell táblázatos műveletre leképezni. Nem csak az üzenetkezelés nagyobb mértékű szabályozására van lehetőség, de a fejléceket is olvashatja/beállíthatja, és módosíthatja a válasz törzsének formátumát.
 
-Egyéni API meghívásához hívja meg `MSClient.invokeAPI`. A kérelem és a válasz tartalma JSON-ként van kezelve. Ha más adathordozó-típust szeretne használni, [használja a `invokeAPI`egyéb túlterhelését ][5].  `POST` kérelem helyett `GET`i kérelem elvégzéséhez állítsa a `HTTPMethod` paramétert a `"GET"` és a paraméterhez `body` (mivel a GET kérelmek nem rendelkeznek az üzenet törzsével). Ha az egyéni API más HTTP-műveleteket is támogat, módosítsa `HTTPMethod` megfelelően.
+Egyéni API meghívásához hívja meg `MSClient.invokeAPI`. A kérelem és a válasz tartalma JSON-ként van kezelve. Ha más adathordozó-típust szeretne használni, [használja a `invokeAPI`egyéb túlterhelését ][5].  `POST` kérelem helyett `GET`i kérelem elvégzéséhez állítsa a `HTTPMethod` paramétert a `"GET"` és a paraméterhez `body` (mivel a GET kérelmek nem rendelkeznek az üzenet törzsével). Ha az egyéni API más HTTP-műveleteket is támogat, módosítsa `HTTPMethod` megfelelően.`nil`
 
 **Objective-C**:
 
@@ -561,10 +561,10 @@ A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat
 3. A terminál használatával futtassa `pod install` a projektet tartalmazó könyvtárból, majd nyissa meg a létrehozott Xcode-munkaterületet (nem a projektből).
 4. Adja hozzá a következő kódot az alkalmazáshoz a használt nyelv alapján. Mindkét esetben végezze el a következő cseréket:
 
-   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com nak kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
+   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.comnak kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
    * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
    * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
-   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/done hoz* hasonlónak kell lennie.
+   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/donehoz* hasonlónak kell lennie.
 
 **Objective-C**:
 
@@ -920,6 +920,6 @@ Az iOS-hez készült Google bejelentkezési SDK-val a felhasználók Google-fió
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/configure-authentication-provider-aad.md
-[8]:../active-directory/develop/quickstart-v1-ios.md
+[8]:../active-directory/develop/quickstart-v2-ios.md
 [9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

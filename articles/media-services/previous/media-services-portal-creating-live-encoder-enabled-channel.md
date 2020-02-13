@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015210"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162565"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam-továbbítás Media Services használatával többszörös átviteli sebességű streameket hozhat létre a Azure Portal  
 > [!div class="op_single_selector"]
-> * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
@@ -43,10 +43,10 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A beállítási ötletekért tekintse meg az [egyszerű és a hordozható eseményekre vonatkozó videós eszközöket]( https://link.medium.com/KNTtiN6IeT).
 
-    Ha nem rendelkezik hozzáféréssel egy kamerához, az eszközök, például a [Wirecast](https://www.telestream.net/wirecast/overview.htm) használhatók élő hírcsatornák létrehozásához.
-1. Indítson el és konfiguráljon egy helyszíni élő kódolót, amely a következő protokollok egyikében képes egyetlen sávszélességű adatfolyamot kimenetként: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824) <br/>Továbbá tekintse meg ezt a blogot: [Élő streaming-termelés a OBS](https://link.medium.com/ttuwHpaJeT)-mel.
+    Ha nem rendelkezik hozzáféréssel egy kamerához, az eszközök, például a [Wirecast](media-services-configure-wirecast-live-encoder.md) használhatók élő hírcsatornák létrehozásához.
+1. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824) <br/>Továbbá tekintse meg ezt a blogot: [élő streaming Production with OBS](https://link.medium.com/ttuwHpaJeT).
 
-    Ezt a lépést a csatorna létrehozása után is elvégezheti.
+    Ezt a lépést a csatorna létrehozása után is el lehet végezni.
 1. Hozzon létre és indítson el egy csatornát. 
 1. Kérje le a csatorna feldolgozó URL-címét. 
 
@@ -67,7 +67,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. 
   További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Egy Media Services-fiók. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
+* Egy Media Services-fiók szükséges. Egy Media Services-fiók létrehozásához lásd: [Fiók létrehozása](media-services-portal-create-account.md)
 * Egy webkamera és egy egyféle sávszélességű élő adatfolyamot küldő kódoló.
 
 ## <a name="create-a-channel"></a>Csatorna létrehozása
@@ -94,7 +94,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
         Ha a csatorna vagy a hozzá tartozó események/programok már elindultak, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szükség, hozzon létre külön-külön csatornákat az egyes streamprotokollokhoz.  
    2. Alkalmazhatja az IP-korlátozást a betöltésre. 
 
-       Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a csatornára. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk segítségével (például „10.0.0.1/22”), vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.
+       Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a csatornára. Az engedélyezett IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-cím és egy CIDR alhálózati maszk használatával (pl. "10.0.0.1/22"), vagy egy IP-tartománnyal, egy IP-cím és egy pontozott decimális alhálózati maszk (például "10.0.0.1 (255.255.252.0)") használatával.
 
        Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 6. A **Preview** (Előnézet) lapon alkalmazza az IP-korlátozást az előnézetre.
@@ -185,7 +185,7 @@ Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd 
 
 ![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 * Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
 * Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban van.
 
