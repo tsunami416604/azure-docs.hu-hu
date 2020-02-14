@@ -7,6 +7,7 @@
     - name: A Microsoft identitásplatformjának fejlődése
       href: about-microsoft-identity-platform.md
 - name: Rövid útmutatók
+  expanded: true
   items:
     - name: Bérlő beállítása
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: Példák
   href: sample-v2-code.md
 - name: Alapelvek
+  expanded: true
   items:
     - name: Hitelesítési alapok
       href: authentication-scenarios.md

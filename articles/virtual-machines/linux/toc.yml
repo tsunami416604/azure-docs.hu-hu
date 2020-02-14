@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Megosztott lemezek
+          href: disks-shared.md
         - name: Rövid élettartamú operációsrendszer-lemezek
           href: ephemeral-os-disks.md
     - name: Hálózat
@@ -553,6 +555,8 @@
         - name: Lemezek üzembe helyezése sablonnal
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Megosztott lemezek engedélyezése
+          href: disks-shared-enable.md
         - name: VHD feltöltése lemezre – CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Lemez átméretezése

@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: Feltételes hozzáférési szabályzatok komponensei
       href: concept-conditional-access-policies.md
-    - name: Felhőalkalmazások és műveletek
-      href: concept-conditional-access-cloud-apps.md
-    - name: Feltételek
-      href: conditions.md
-    - name: Helyfeltételek
-      href: location-condition.md
-    - name: Vezérlők
-      href: controls.md
+    - name: Hozzárendelések
+      items:
+        - name: Felhasználók és csoportok
+          href: concept-conditional-access-users-groups.md
+        - name: Felhőalkalmazások vagy műveletek
+          href: concept-conditional-access-cloud-apps.md
+        - name: Feltételek
+          href: concept-conditional-access-conditions.md
+    - name: Hozzáférés-vezérlés
+      items:
+        - name: Engedély
+          href: concept-conditional-access-grant.md
+        - name: Munkamenet
+          href: concept-conditional-access-session.md
     - name: Csak jelentési mód
       href: concept-conditional-access-report-only.md
     - name: Szolgáltatásfüggőségek
       href: service-dependencies.md
+    - name: Helyfeltételek
+      href: location-condition.md
     - name: Lehetőségelemzési eszköz
       href: what-if-tool.md
+    - name: Vezérlők
+      href: controls.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration.md
     - name: Alapvető védelmi szabályzatok
@@ -84,10 +94,6 @@
       items:
         - name: Hibaelhárítás a Lehetőségelemzési eszközzel
           href: troubleshoot-conditional-access-what-if.md
-- name: Referencia
-  items:
-    - name: Technikai útmutató
-      href: technical-reference.md
 - name: További források
   items:
     - name: Azure visszajelzési fórum

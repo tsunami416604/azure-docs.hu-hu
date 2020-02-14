@@ -21,7 +21,11 @@
 - name: Alapelvek
   items:
     - name: Helyek és partnerek
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: Központi helyek és partnerek
+          href: virtual-wan-locations-partners.md
+        - name: Automation-irányelvek partnerek számára
+          href: virtual-wan-configure-automation-providers.md
     - name: IPsec-szabályzatok
       href: virtual-wan-ipsec.md
 - name: Útmutatók
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása felhasználói VPN-hez
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Automatizálás konfigurálása (virtuális WAN-partnerek)
-      href: virtual-wan-configure-automation-providers.md
     - name: Globális és hubalapú VPN-profilok letöltése
       href: global-hub-profile.md
     - name: Útválasztás konfigurálása

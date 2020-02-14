@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: Biztonságos
           items:
-            - name: A logikai alkalmazások védelme
+            - name: A biztonság javítása logikai alkalmazások esetében
               href: logic-apps-securing-a-logic-app.md
             - name: Hitelesítés felügyelt identitásokkal
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: Egyéni API-k létrehozása logikai alkalmazásokhoz
               href: logic-apps-create-api-app.md
-            - name: Egyéni API-k biztonságos hívása
+            - name: A biztonság javítása egyéni API-k meghívása esetében
               href: logic-apps-custom-api-authentication.md
             - name: Egyéni API-k üzembe helyezése és hívása
               href: logic-apps-custom-api-host-deploy-call.md

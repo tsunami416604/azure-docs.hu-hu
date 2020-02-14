@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: Oktatóanyagok
   items:
-    - name: Intelligens szerződések használata
+    - name: Intelligens szerződések létrehozása
       href: send-transaction.md
+    - name: Adatok közzététele a Data Managerrel
+      href: data-manager-cosmosdb.md
 - name: Alapelvek
   items:
     - name: Konzorcium
       href: consortium.md
     - name: Adathozzáférés és -biztonság
       href: data-security.md
+    - name: A Data Manager áttekintése
+      href: data-manager.md
     - name: Fejlesztés
       href: develop.md
     - name: Korlátok
@@ -41,6 +45,10 @@
   items:
     - name: Azure AD-hozzáférés konfigurálása
       href: configure-aad.md
+    - name: Data Manager konfigurálása – Portál
+      href: data-manager-portal.md
+    - name: Data Manager konfigurálása – parancssori felület
+      href: data-manager-cli.md
     - name: Tranzakciós csomópontok konfigurálása
       href: configure-transaction-nodes.md
     - name: Kezelés az Azure CLI használatával
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: Az Azure Blockchain Service monitorozása
       href: monitor-azure-blockchain-service.md
-- name: Blockchain Data Manager
-  items:
-    - name: A Data Manager áttekintése
-      href: data-manager.md
-    - name: Data Manager konfigurálása – Portál
-      href: data-manager-portal.md
-    - name: Data Manager konfigurálása – parancssori felület
-      href: data-manager-cli.md
-    - name: Adatok közzététele a Cosmos DB-n
-      href: data-manager-cosmosdb.md
 - name: További források
   items:
     - name: Azure Blockchain fejlesztői készlet

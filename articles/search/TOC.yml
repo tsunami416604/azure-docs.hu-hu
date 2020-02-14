@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: Relevanciahangolás (relevanciaprofilok)
           href: index-add-scoring-profiles.md
-    - name: Kezelés és monitorozás
+    - name: Szolgáltatás kezelése
       items:
-        - name: Portál adminisztrációja
+        - name: Portál
           href: search-manage.md
-        - name: PowerShell adminisztrációja
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Tevékenység és naplózás monitorozása
+    - name: Monitorozás és naplózás
+      items:
+        - name: Alapok
           href: search-monitor-usage.md
+        - name: Lekérdezési tevékenységek figyelése
+          href: search-monitor-queries.md
+        - name: Diagnosztikai naplózás
+          href: search-monitor-logs.md
         - name: Forgalmi elemzések keresése
           href: search-traffic-analytics.md
     - name: Hibaelhárítás

@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Tesztkörnyezeti fiókok konfigurálása
           href: how-to-configure-lab-accounts.md
+        - name: A tesztkörnyezeti hely kiválasztásának engedélyezése a tesztkörnyezet létrehozója számára
+          href: allow-lab-creator-pick-lab-location.md
         - name: Társviszony létesítése a tesztkörnyezet és egy virtuális hálózat között
           href: how-to-connect-peer-virtual-network.md
         - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
