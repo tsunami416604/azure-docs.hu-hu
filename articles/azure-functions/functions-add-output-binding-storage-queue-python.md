@@ -3,12 +3,12 @@ title: Azure Storage-várólista kötésének hozzáadása a Python-függvényhe
 description: Egy Azure Storage-várólista integrálása egy Python-függvénnyel egy kimeneti kötés használatával.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715365"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198479"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
 
@@ -156,7 +156,7 @@ Figyelje meg, hogy *nem* kell kódot írnia a hitelesítéshez, a várólista-hi
 1. Ha elkészült, állítsa le a gazdagépet a CTRL+**C** **billentyűkombinációval** .
 
 > [!TIP]
-> Az indítás során a gazdagép letölti és telepíti a [Storage kötési bővítményt](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) és a Microsoft egyéb kötési bővítményeit. Ez a telepítés azért történik, mert a kötési bővítmények alapértelmezés szerint engedélyezve vannak a *Host. JSON* fájlban a következő tulajdonságokkal:
+> Az indítás során a gazdagép letölti és telepíti a [Storage kötési bővítményt](functions-bindings-storage-blob.md#add-to-your-functions-app) és a Microsoft egyéb kötési bővítményeit. Ez a telepítés azért történik, mert a kötési bővítmények alapértelmezés szerint engedélyezve vannak a *Host. JSON* fájlban a következő tulajdonságokkal:
 >
 > ```json
 > {

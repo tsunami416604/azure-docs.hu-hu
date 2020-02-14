@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700294"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194500"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) – áttekintés
 
@@ -40,9 +40,13 @@ A fejlesztők számára a Microsoft Identity platform zökkenőmentesen integrá
 
 A Microsoft Identity platformmal egyszer is írhat kódot, és elérheti a felhasználókat. Egyszerre létrehozhat egy alkalmazást, és több platformon is dolgozhat, vagy olyan alkalmazást hozhat létre, amely ügyfélként, valamint erőforrás-alkalmazásként (API) működik.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
-Nem kell, hogy az identitások használata nehéz legyen. Válasszon egy olyan [forgatókönyvet](authentication-flows-app-scenarios.md) , amely Önre vonatkozik – az egyes forgatókönyvek elérési útja egy rövid útmutató és egy áttekintő oldal, amellyel percek alatt elvégezheti a működést:
+Nem kell, hogy az identitások használata nehéz legyen. 
+
+Tekintse meg a [Microsoft Identity platform videóját](identity-videos.md) , ahol megismerheti az alapvető tudnivalókat. 
+
+Válasszon egy olyan [forgatókönyvet](authentication-flows-app-scenarios.md) , amely Önre vonatkozik – az egyes forgatókönyvek elérési útja egy rövid útmutató és egy áttekintő oldal, amellyel percek alatt elvégezheti a működést:
 
 - [Egyoldalas alkalmazás létrehozása](scenario-spa-overview.md)
 - [Felhasználók számára bejelentkező Webalkalmazás létrehozása](scenario-web-app-sign-user-overview.md)

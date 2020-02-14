@@ -3,12 +3,12 @@ title: A Java-függvény csatlakoztatható az Azure Storage-hoz
 description: Megtudhatja, hogyan csatlakoztatható a HTTP-triggert használó Java-függvények az Azure Storage-hoz egy üzenetsor-tároló kimeneti kötésének használatával.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926898"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198547"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>A Java-függvény csatlakoztatható az Azure Storage-hoz
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Mivel engedélyezte a bővítmények használatát a Host. JSON fájlban, a [Storage kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) le lett töltve és telepítve lett az indításakor, valamint a többi Microsoft-kötési bővítménysel együtt.
+> Mivel engedélyezte a bővítmények használatát a Host. JSON fájlban, a [Storage kötési bővítmény](functions-bindings-storage-blob.md#add-to-your-functions-app) le lett töltve és telepítve lett az indításakor, valamint a többi Microsoft-kötési bővítménysel együtt.
 
 Ahogy korábban is, aktiválja a függvényt a parancssorból a cURL használatával egy új terminál ablakban:
 

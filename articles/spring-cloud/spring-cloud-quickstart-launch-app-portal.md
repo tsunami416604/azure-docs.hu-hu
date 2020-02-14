@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137758"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201543"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -76,9 +76,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
 
-1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -t a "https\://GitHub.com/Azure-Samples/piggymetrics" értékre.
-
-1. **Címke** beállítása a "config" értékre.
+1. Az **alapértelmezett adattár** szakaszban állítsa az **URI** -t "https://github.com/Azure-Samples/piggymetrics-config" értékre.
 
 1. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
 

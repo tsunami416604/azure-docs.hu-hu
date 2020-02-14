@@ -4,12 +4,12 @@ description: Bevezetés a Ansible használatára a felhőalapú üzembe helyezé
 keywords: Ansible, Azure, devops, áttekintés, felhőalapú üzembe helyezés, konfigurálási felügyelet, alkalmazás-telepítés, Ansible modulok, Ansible forgatókönyvek
 ms.topic: overview
 ms.date: 04/30/2019
-ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155775"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193565"
 ---
 # <a name="using-ansible-with-azure"></a>A Ansible használata az Azure-ban
 
@@ -57,4 +57,4 @@ A Ansible tartalmazza az Azure-erőforrások üzembe helyezéséhez és konfigur
 ## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: az Azure Ansible-megoldási sablonjának üzembe helyezése a CentOS-ben](./ansible-deploy-solution-template.md)
-- [Gyors útmutató: Linux rendszerű virtuális gépek konfigurálása az Azure-ban a Ansible használatával](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [Gyors útmutató: Linux rendszerű virtuális gépek konfigurálása az Azure-ban a Ansible használatával](./ansible-install-configure.md)

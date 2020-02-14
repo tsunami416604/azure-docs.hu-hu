@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278923"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201431"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató a következőket ismerteti:
 >[!TIP]
 > A Azure Cloud Shell egy ingyenes interaktív felület, amelyet a cikkben szereplő parancsok futtatására használhat. A közös Azure-eszközök előre telepítve vannak, beleértve a git legújabb verzióit, a Java Development Kit (JDK), a Maven és az Azure CLI-t. Ha bejelentkezett az Azure-előfizetésbe, indítsa el [Azure Cloud Shell](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](../cloud-shell/overview.md).
 
-Az oktatóanyag elvégzéséhez:
+A gyorsútmutató elvégzéséhez:
 
 1. [Telepítse a Git szoftvert](https://git-scm.com/).
 2. A [JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -63,7 +63,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 ## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
 1. A szolgáltatás **áttekintése** lapon válassza a **konfigurációs kiszolgáló**lehetőséget.
-1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** - **t https://github.com/Azure-Samples/piggymetrics re** , állítsa be a **címkét** a **config**értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+1. Az **alapértelmezett adattár** szakaszban állítsa az **URI** -t **https://github.com/Azure-Samples/piggymetrics-config** értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
 
     > [!div class="mx-imgBorder"]
     > ![a konfigurációs beállítások megadása és alkalmazása](media/maven-qs-apply-config.jpg)

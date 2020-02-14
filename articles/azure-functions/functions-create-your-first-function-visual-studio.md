@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 6d09453db0fdf8c09ad6d90c63b27f48508302be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230713"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198394"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
@@ -32,9 +32,9 @@ Az oktatóanyag elvégzéséhez először telepítenie kell a [Visual Studio 201
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A metódus `FunctionName` attribútuma a függvény nevét állítja be, amely alapértelmezés szerint `HttpTrigger`. A `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
+A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A metódus `FunctionName` attribútuma a függvény nevét állítja be, amely alapértelmezés szerint `Function1`. A `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
 
-A függvény képességeit a bemeneti és kimeneti kötésekkel bővítheti, ha a megfelelő attribútumokat alkalmazza a metódusra. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md#triggers-and-bindings) [Eseményindítók és kötések](functions-dotnet-class-library.md) szakaszát.
+A függvény képességeit a bemeneti és kimeneti kötésekkel bővítheti, ha a megfelelő attribútumokat alkalmazza a metódusra. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md#triggers-and-bindings)[Eseményindítók és kötések](functions-dotnet-class-library.md) szakaszát.
 
 Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
 
