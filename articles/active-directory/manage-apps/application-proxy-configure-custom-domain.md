@@ -1,5 +1,5 @@
 ---
-title: Egyéni tartományok az Azure AD Application Proxyban | Microsoft Docs
+title: Egyéni tartományok az Azure AD-alkalmazásproxy |} A Microsoft Docs
 description: Egyéni tartományok konfigurálása és kezelése az Azure AD Application Proxyban.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062524"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185540"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -49,7 +49,7 @@ A DNS-konfiguráció beállításához több lehetőség is rendelkezésre áll 
 
 Ha nem szeretné, hogy a belső felhasználók az alkalmazásproxy használatával legyenek átirányítva, beállíthat egy *megosztott agyi DNS-t*. A megosztott DNS-infrastruktúra a belső gazdagépeket egy belső tartománynév-kiszolgálóra és külső gazdagépekre irányítja a névfeloldáshoz. 
 
-![Feldarabolt agy DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![Maszkolt DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Különböző belső és külső URL-címek 
 
@@ -93,7 +93,7 @@ Az alkalmazás közzététele az Application proxyn keresztül egyéni tartomán
    
 6. Ha a tartomány már rendelkezik tanúsítvánnyal, a **tanúsítvány** mező a tanúsítvány adatait jeleníti meg. Ellenkező esetben válassza a **tanúsítvány** mezőt. 
    
-   ![Kattintson ide a tanúsítvány feltöltéséhez](./media/application-proxy-configure-custom-domain/certificate.png)
+   ![Kattintson ide egy tanúsítvány feltöltése](./media/application-proxy-configure-custom-domain/certificate.png)
    
 7. Az **SSL-tanúsítvány** lapon keresse meg és válassza ki a pfx-tanúsítványfájl. Adja meg a tanúsítványhoz tartozó jelszót, majd kattintson a **tanúsítvány feltöltése**lehetőségre. A tanúsítványokkal kapcsolatos további információkért tekintse meg az [Egyéni tartományok tanúsítványainak](#certificates-for-custom-domains) című szakaszt.
    
@@ -144,5 +144,5 @@ Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy m�
 
 ## <a name="next-steps"></a>Következő lépések
 * [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
-* [Feltételes hozzáférés engedélyezése](../conditional-access/technical-reference.md#cloud-apps-assignments) a közzétett alkalmazásokhoz.
+* [Feltételes hozzáférés engedélyezése](../conditional-access/overview.md) a közzétett alkalmazásokhoz.
 

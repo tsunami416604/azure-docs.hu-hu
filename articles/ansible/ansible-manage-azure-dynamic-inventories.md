@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti Azure-beli dinamikus leltározásait 
 keywords: Ansible, Azure, devops, bash, cloudshellben, dinamikus leltár
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442789"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193599"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Oktatóanyag: Azure-erőforrások dinamikus leltározásának konfigurálása az Ansible használatával
 
@@ -32,7 +32,7 @@ A Ansible használatával különböző forrásokból (például az Azure-ból) 
 
 ## <a name="create-the-test-vms"></a>A teszt virtuális gépek létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Nyissa meg a [Cloud Shellt](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -47,7 +47,7 @@ A Ansible használatával különböző forrásokból (például az Azure-ból) 
 
 1. Hozzon létre két linuxos virtuális gépet az Azure-ban az alábbi módszerek egyikével:
 
-    - **Ansible** forgatókönyv – a cikk, [alapszintű virtuális gép létrehozása az Azure-ban a Ansible](/azure/virtual-machines/linux/ansible-create-vm) bemutatja, hogyan hozhat létre virtuális gépet egy Ansible forgatókönyvből. Ha a virtuális gépek egyikét vagy mindkettőt egy vagy több virtuális gép definiálására használja, ügyeljen arra, hogy jelszó helyett az SSH-kapcsolatok legyenek használatban.
+    - **Ansible** forgatókönyv – a cikk, [alapszintű virtuális gép létrehozása az Azure-ban a Ansible](./ansible-create-vm.md) bemutatja, hogyan hozhat létre virtuális gépet egy Ansible forgatókönyvből. Ha a virtuális gépek egyikét vagy mindkettőt egy vagy több virtuális gép definiálására használja, ügyeljen arra, hogy jelszó helyett az SSH-kapcsolatok legyenek használatban.
 
     - **Azure CLI** – a Cloud Shell a következő parancsok mindegyikét kiadja a két virtuális gép létrehozásához:
 
@@ -63,7 +63,7 @@ A Ansible használatával különböző forrásokból (például az Azure-ból) 
                      --image UbuntuLTS --generate-ssh-keys
         ```
 
-## <a name="tag-a-vm"></a>Virtuális gépek címkézése
+## <a name="tag-a-vm"></a>Virtuális gép címkézése
 
 A címkék használatával a felhasználó által definiált kategóriák szerint [rendezheti az Azure-erőforrásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) . 
 
@@ -316,4 +316,4 @@ Ez a szakasz egy olyan technikát mutat be, amely azt teszteli, hogy az Nginx te
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
-> [Gyors útmutató: Linux rendszerű virtuális gépek konfigurálása az Azure-ban a Ansible használatával](/azure/virtual-machines/linux/ansible-create-vm)
+> [Gyors útmutató: Linux rendszerű virtuális gépek konfigurálása az Azure-ban a Ansible használatával](./ansible-create-vm.md)

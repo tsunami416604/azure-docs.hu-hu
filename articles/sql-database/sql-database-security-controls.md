@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802832"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190696"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>A Azure SQL Database biztonsági vezérlői
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure SQL Database beépített biztonsági vezérlőket dokumentálj
 
 SQL Database magában foglalja az [önálló adatbázist](sql-database-single-index.yml) és a [felügyelt példányt](sql-database-managed-instance.md)is. A következő bejegyzések mindkét ajánlatra érvényesek, kivéve ha ez másként nincs jelezve.
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
@@ -45,7 +45,7 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
 | Authentication| Igen | Azure Active Directory (Azure AD) |
-| Engedélyezés| Igen | None |
+| Engedélyezés| Igen | Nincs |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -55,13 +55,13 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 | Titkosítás az átvitel során:<ul><li>Azure ExpressRoute-titkosítás</li><li>Titkosítás egy virtuális hálózaton</li><li>Titkosítás a virtuális hálózatok között</ul>| Igen | HTTPS használatával. |
 | Titkosítás – kulcsok kezelését, például CMK vagy BYOK| Igen | A szolgáltatással felügyelt és az ügyfél által felügyelt kulcsok kezelése egyaránt elérhető. Az utóbbit [Azure Key Vaulton](../key-vault/index.yml)keresztül kínáljuk. |
 | Az Azure-adatszolgáltatások által biztosított oszlop szintű titkosítás| Igen | [Always Encryptedon](sql-database-always-encrypted.md)keresztül. |
-| Titkosított API-hívások| Igen | HTTPS/SSL használatával. |
+| Titkosított API-hívások| Igen | HTTPS/TLS használatával. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | None |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | Nincs |
 
 ## <a name="additional-security-controls-for-sql-database"></a>További biztonsági vezérlők SQL Database
 
@@ -71,6 +71,6 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 | Megelőző: adatfelderítés és besorolás  | Igen | Lásd: [Azure SQL Database és SQL Data Warehouse az adatfelderítés & besorolása](sql-database-data-discovery-and-classification.md). |
 | Észlelés: fenyegetések észlelése | Igen | Lásd: [a Azure SQL Database összetett veszélyforrások elleni védelme](sql-database-threat-detection-overview.md). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

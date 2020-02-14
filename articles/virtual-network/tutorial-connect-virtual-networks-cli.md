@@ -1,11 +1,9 @@
 ---
-title: Virtuális hálózatok összekötése virtuális hálózattal – Azure CLI | Microsoft Docs
+title: Virtuális hálózatok összekötése VNet-társítással – Azure CLI
 description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok virtuális hálózati kapcsolattal az Azure CLI használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
@@ -17,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b3a2c47aa1bcb624294a95db4218b311db747760
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016068"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201407"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok összekötése virtuális hálózati kapcsolattal az Azure CLI használatával
 

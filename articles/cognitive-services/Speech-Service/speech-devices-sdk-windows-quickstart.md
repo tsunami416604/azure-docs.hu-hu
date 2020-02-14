@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 78d9dc8c2302de6a9bdbfef62d47d10d252cf0c5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815556"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189035"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Windows rendszeren
 
@@ -39,7 +39,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 * Töltse le a Javához készült [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
    > [!NOTE]
-   > A JRE-Sample-Release. zip fájl tartalmazza a JRE minta alkalmazást, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás ki van kinyerve a C:\SDSDK\JRE-Sample-Release
+   > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a C:\SDSDK\JRE-Sample-Release
 
 A beszélgetés átírása jelenleg csak az "en-US" és a "zh-CN" esetében érhető el az "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
@@ -81,7 +81,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -132,9 +132,9 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![A Java-alkalmazás kiválasztása – képernyőfelvétel](media/speech-devices-sdk/eclipse-run-sample.png)
 
-1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
+1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/java-sample-app-windows.png)
 
 1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. A **munkamenet** - > **indításának**megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor a projekt mappájában lévő **cél/osztályok**fájlba `participants.properties`. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](how-to-use-conversation-transcription-service.md).
 

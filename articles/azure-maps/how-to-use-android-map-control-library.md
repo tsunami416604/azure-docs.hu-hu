@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911402"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198190"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -28,7 +28,7 @@ A cikkben ismertetett eljárások elvégzéséhez először [létre kell hoznia 
 
 A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-### <a name="download-android-studio"></a>Az Android Studio letöltése
+### <a name="download-android-studio"></a>Android Studio letöltése
 
 Töltse le Android Studio, és hozzon létre egy üres tevékenységgel rendelkező projektet a Azure Maps Android SDK telepítése előtt. A Google-tól ingyenesen [letöltheti Android Studioeit](https://developer.android.com/studio/) . 
 
@@ -103,15 +103,15 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     </FrameLayout>
     ```
 
-4. A **MainActivity. Java** fájlban a következőkre lesz szüksége:
+4. A **MainActivity. Java** fájlban a következőket kell tennie:
     
     * importálások hozzáadása az Azure Maps SDK-hoz
-    * a Azure Maps hitelesítési adatainak beállítása
-    * a Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
+    * A Azure Maps hitelesítési adatainak beállítása
+    * A Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
 
     Ha a hitelesítési adatokat a `AzureMaps` osztályban globálisan a `setSubscriptionKey` vagy a `setAadProperties` módszer használatával állítja be, akkor a hitelesítési adatokat nem kell minden nézetben felvennie. 
 
-    A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez, amelyet közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás megfelelően működjön, hívja meg a Map Control életciklusának módszereit, a Térkép vezérlőelemet tartalmazó tevékenységen felül kell bírálnia a következő életciklus-metódusokat, és meg kell hívnia a megfelelő leképezés-vezérlési módszert. 
+    A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez. Ezeket az életciklus-metódusokat közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás helyesen hívja meg a Map Control életciklusának módszereit, felül kell bírálnia a következő életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben. És meg kell hívnia a megfelelő leképezés-vezérlési módszert. 
 
     * onCreate (csomag) 
     * onStart () 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775000"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198734"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Virtuális gépek (VM) lemezképeit áthelyezjük az Azure Marketplace-en a felügyelt lemezes tárolásra
 
@@ -61,6 +61,6 @@ A virtuálisgép-lemezképek frissítései nem hozhatók létre az áthelyezés 
 
 Nem, a közzétételi folyamat változatlan marad. 
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>A közzétevő áthelyezheti az ajánlatait a felügyelt lemezre?
 
-Látogasson el a [Virtual Machine ajánlat kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) oldalára.
+Nem, a közzétevők nem helyezhetik át az ajánlatokat a felügyelt lemezre. Meg kell várniuk, és a rendszer automatikusan áthelyezi a lemezképeket. A módosítások elvégzése előtt értesítést küldünk a közzétevőnek.

@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379764"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194466"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
 
 Ez a témakör arról nyújt tájékoztatást, hogyan lehet elhárítani és diagnosztizálni a Enterprise State Roamingával kapcsolatos problémákat, és megjeleníti az ismert problémák listáját.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>A hibaelhárítással kapcsolatos előzetes lépések 
 
@@ -31,7 +34,7 @@ A hibaelhárítás megkezdése előtt ellenőrizze, hogy a felhasználó és az 
 1. A Windows 10 és a legújabb frissítések, valamint a 1511-es vagy újabb verzió (OS Build 10586-es vagy újabb) verziója telepítve van az eszközön. 
 1. Az eszköz az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakozik. További információkért lásd: [eszköz beszerzése az Azure ad felügyelete alatt](overview.md).
 1. Győződjön meg arról, hogy az **Enterprise State roaming** engedélyezve van az Azure ad-bérlő számára az [Enterprise State roaming engedélyezéséhez](enterprise-state-roaming-enable.md). Engedélyezheti a barangolást minden felhasználó számára, vagy csak a kiválasztott felhasználói csoport számára.
-1. A felhasználónak már hozzá kell rendelnie egy prémium szintű Azure Active Directory-licencet.  
+1. A felhasználóhoz prémium szintű Azure Active Directory licenc van rendelve.  
 1. Az eszközt újra kell indítani, és a felhasználónak újra be kell jelentkeznie Enterprise State Roaming szolgáltatások eléréséhez.
 
 ## <a name="information-to-include-when-you-need-help"></a>A segítségre szoruló információk
@@ -46,6 +49,7 @@ Ha nem tudja megoldani a problémát az alábbi útmutatással, vegye fel a kapc
 Ezek az információk a lehető leggyorsabban segítenek a probléma megoldásában.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Hibaelhárítás és a problémák diagnosztizálása
+
 Ez a szakasz a Enterprise State Roaming kapcsolatos problémák elhárításával és diagnosztizálásával kapcsolatban nyújt javaslatokat.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>A szinkronizálás ellenőrzése és a "beállítások szinkronizálása" Beállítások lap 
@@ -66,9 +70,9 @@ Enterprise State Roaming megköveteli, hogy az eszköz regisztrálva legyen az A
 1. Miután megnyitotta a parancssort, írja be a "*dsregcmd. exe/status*" kifejezést.
 1. A várt kimenet esetén a **AzureAdJoined** értékének "yes" értékűnek kell lennie, a **WamDefaultSet** mező értéke pedig "yes" kell legyen, és a **WamDefaultGUID** mező értékének egy "(AzureAd)" értékű GUID-nek kell lennie.
 
-**Lehetséges probléma**: a **WamDefaultSet** és a **AzureAdJoined** egyaránt "nem" értékkel rendelkezik a mező értékeként, az eszköz tartományhoz lett csatlakoztatva és regisztrálva van az Azure ad-ben, és az eszköz nem szinkronizál. Ha ezt mutatja, előfordulhat, hogy az eszköznek várnia kell a szabályzat alkalmazására, vagy az eszköz hitelesítése meghiúsult az Azure AD-hez való csatlakozáskor. Előfordulhat, hogy a felhasználónak néhány órát várnia kell a szabályzat alkalmazására. Az egyéb hibaelhárítási lépések magukban foglalhatják az automatikus regisztrációt a kijelentkezéssel és vissza, vagy a Feladatütemezőben a feladat elindításával. Bizonyos esetekben a "*dsregcmd. exe/Leave*" futtatása egy rendszergazda jogú parancssorban, újraindítást végez, és a regisztráció újbóli kipróbálása segíthet a probléma megoldásában.
+**Lehetséges probléma**: a **WamDefaultSet** és a **AzureAdJoined** egyaránt "nem" értékkel rendelkezik a mező értékeként, az eszköz tartományhoz lett csatlakoztatva és regisztrálva van az Azure ad-ben, és az eszköz nem szinkronizál. Ha ezt mutatja, előfordulhat, hogy az eszköznek várnia kell a szabályzat alkalmazására, vagy az eszköz hitelesítése meghiúsult az Azure AD-hez való csatlakozáskor. Előfordulhat, hogy a felhasználónak néhány órát várnia kell a szabályzat alkalmazására. Az egyéb hibaelhárítási lépések közé tartozhat az automatikus regisztráció újrapróbálása a kijelentkezéssel és vissza, vagy a Feladatütemezőben a feladat elindításával. Bizonyos esetekben a "*dsregcmd. exe/Leave*" futtatása egy rendszergazda jogú parancssorban, újraindítást végez, és a regisztráció újbóli kipróbálása segíthet a probléma megoldásában.
 
-**Lehetséges probléma**: a **SettingsUrl** mezője üres, és az eszköz nem szinkronizál. Előfordulhat, hogy a felhasználó utoljára bejelentkezett az eszközre, mielőtt a Enterprise State Roaming engedélyezve lett volna a Azure Active Directory portálon. Indítsa újra az eszközt, és jelentkezzen be a felhasználói bejelentkezéssel. Ha szeretné, a portálon próbálja meg, hogy a rendszergazda navigáljon **Azure Active Directory** > - **eszközökhöz** > **Enterprise State roaming** letiltásához és újbóli engedélyezéséhez a **felhasználók szinkronizálhatják a beállításokat és az alkalmazásadatok az eszközök között**. Az ismételt engedélyezés után indítsa újra az eszközt, és jelentkezzen be a felhasználói bejelentkezéssel. Ha ez nem oldja meg a problémát, a **SettingsUrl** hibás eszköz tanúsítványa esetén üres is lehet. Ebben az esetben a "*dsregcmd. exe/Leave*" futtatása egy rendszergazda jogú parancssorban, újraindítás és a regisztráció újbóli kipróbálása segíthet a probléma megoldásában.
+**Lehetséges probléma**: a **SettingsUrl** mezője üres, és az eszköz nem szinkronizál. Előfordulhat, hogy a felhasználó utoljára bejelentkezett az eszközre, mielőtt a Enterprise State Roaming engedélyezve lett volna a Azure Active Directory portálon. Indítsa újra az eszközt, és jelentkezzen be a felhasználói bejelentkezéssel. Ha szeretné, a portálon próbálja meg, hogy a rendszergazda navigáljon **Azure Active Directory** > - **eszközökhöz** > **Enterprise State roaming** letiltásához és újbóli engedélyezéséhez a **felhasználók szinkronizálhatják a beállításokat és az alkalmazásadatok az eszközök között**. Az ismételt engedélyezés után indítsa újra az eszközt, és jelentkezzen be a felhasználói bejelentkezéssel. Ha ez nem oldja meg a problémát, akkor előfordulhat, hogy a **SettingsUrl** üres, ha hibás az eszköz tanúsítványa. Ebben az esetben a "*dsregcmd. exe/Leave*" futtatása egy rendszergazda jogú parancssorban, újraindítás és a regisztráció újbóli kipróbálása segíthet a probléma megoldásában.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és Multi-Factor Authentication 
 
@@ -149,12 +153,12 @@ Az eszköz csatlakoztatása a vállalati hálózathoz a szinkronizálás folytat
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Az Azure AD-hez csatlakoztatott eszköz nem szinkronizálható, és a felhasználónak van egy vegyes esete egyszerű neve.
 
-Ha a felhasználó kevert kis-és nagybetűket tartalmaz (például Felhasználónév helyett Felhasználónév), és a felhasználó egy Azure AD-hez csatlakoztatott eszközön található, amely a Windows 10 10586-ről 14393-re frissített, a felhasználó eszközének szinkronizálása sikertelen lehet. 
+Ha a felhasználó kevert kis-és nagybetűket (például Felhasználónév helyett felhasználónevet) használ, és a felhasználó egy Azure AD-hez csatlakoztatott eszközön található, amely a Windows 10 10586-ről 14393-re frissült, akkor előfordulhat, hogy a felhasználó eszköze nem tud szinkronizálni. 
 
 **Javasolt művelet**  
 A felhasználónak meg kell adnia a csatlakozást, és újra csatlakoztatnia kell az eszközt a felhőhöz. Ehhez jelentkezzen be a helyi rendszergazda felhasználóként, és szüntesse meg az eszköz csatlakoztatását. ehhez lépjen a **beállítások** > **rendszer** > **a névjegy** elemre, és válassza a "kezelés vagy a Leválasztás a munkából vagy az iskolából" lehetőséget. Törölje az alábbi fájlokat, majd az Azure AD ismét csatlakozzon az eszközhöz a **beállítások** > **rendszer** > **a** "Csatlakozás a munkához vagy az iskolához" elemre kattintva. Folytassa az eszköz csatlakoztatását Azure Active Directory és fejezze be a folyamatot.
 
-A razzia lépésben a következő fájlokat kell kitisztítani:
+A karbantartás lépésben törölje a következő fájlokat:
 - Settings. dat a `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`ban
 - A mappában található összes fájl `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 

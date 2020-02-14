@@ -3,12 +3,12 @@ title: Azure Functions C# fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti C#Azure functions a használatával.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921048"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198377"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# fejlesztői dokumentáció
 
@@ -157,7 +157,7 @@ A generált *function. JSON* fájl egy `configurationSource` tulajdonságot tart
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 A *function. JSON* -fájl létrehozását a [Microsoft\.NET\.SDK\.functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)NuGet csomag hajtja végre. 
 
@@ -204,7 +204,7 @@ Ha a NPM használatával telepíti az alapvető eszközöket, amelyek nem érint
 
 ## <a name="supported-types-for-bindings"></a>A kötések támogatott típusai
 
-Minden kötés saját támogatott típusokkal rendelkezik; például egy blob trigger attribútumot lehet alkalmazni egy karakterlánc-paraméterre, egy POCO paraméterre, egy `CloudBlockBlob` paraméterre vagy számos más támogatott típusra. A [blob-kötések kötési útmutatója](functions-bindings-storage-blob.md#trigger---usage) felsorolja az összes támogatott paraméter-típust. További információ: [triggerek és kötések](functions-triggers-bindings.md) , valamint az [egyes kötési típusok kötési dokumentációja](functions-triggers-bindings.md#next-steps).
+Minden kötés saját támogatott típusokkal rendelkezik; például egy blob trigger attribútumot lehet alkalmazni egy karakterlánc-paraméterre, egy POCO paraméterre, egy `CloudBlockBlob` paraméterre vagy számos más támogatott típusra. A [blob-kötések kötési útmutatója](functions-bindings-storage-blob-trigger.md#usage) felsorolja az összes támogatott paraméter-típust. További információ: [triggerek és kötések](functions-triggers-bindings.md) , valamint az [egyes kötési típusok kötési dokumentációja](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -353,7 +353,7 @@ A következő módon adjon meg egy kötelező kötést:
 
 ### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
 
-A következő mintakód létrehoz egy [tárolási blob kimeneti kötést](functions-bindings-storage-blob.md#output) a futási időben definiált blob elérési úttal, majd karakterláncot ír a blobba.
+A következő mintakód létrehoz egy [tárolási blob kimeneti kötést](functions-bindings-storage-blob-output.md) a futási időben definiált blob elérési úttal, majd karakterláncot ír a blobba.
 
 ```cs
 public static class IBinderExample
@@ -378,7 +378,7 @@ A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Mic
 
 ### <a name="multiple-attribute-example"></a>Több attribútum – példa
 
-Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (`AzureWebJobsStorage`) az alkalmazás beállítását. A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömb `BindAsync<T>()`ba való átadásával adhat meg egyéni alkalmazás-beállítást. `Binder` paraméter használata nem `IBinder`.  Példa:
+Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (`AzureWebJobsStorage`) az alkalmazás beállítását. A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömb `BindAsync<T>()`ba való átadásával adhat meg egyéni alkalmazás-beállítást. `Binder` paraméter használata nem `IBinder`.  Például:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

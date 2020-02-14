@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840281"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197986"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -34,7 +34,7 @@ Előfordulhat, hogy a házirend bemeneti jogcímeket küld a REST APInak. A REST
 - **Érvényesítési technikai profil** – egy érvényesítési műszaki profil meghívja a REST-szolgáltatást. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon megjelenik egy hibaüzenet, amelyet a rendszer a kimeneti jogcímek között ad vissza.
 - **Jogcímek cseréje** – a REST-szolgáltatás hívása egy előkészítési lépésen keresztül történik. Ebben az esetben nincs felhasználói felület a hibaüzenet megjelenítéséhez. Ha a REST API hibát ad vissza, a rendszer visszairányítja a felhasználót a függő entitás alkalmazására a hibaüzenettel.
 
-## <a name="protocol"></a>Protocol (Protokoll)
+## <a name="protocol"></a>Protokoll
 
 A **protokoll** elem **Name** attribútumát `Proprietary`értékre kell állítani. A **kezelő** attribútumnak tartalmaznia kell a Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`által használt protokollkezelő-szerelvény teljesen minősített nevét.
 
@@ -121,14 +121,15 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| serviceUrl | Igen | Az REST API végpont URL-címe |
+| ServiceUrl | Igen | Az REST API végpont URL-címe |
 | AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None`, `Basic`, `Bearer`vagy `ClientCertificate`. A `None` érték azt jelzi, hogy a REST API nem anonim. A `Basic` érték azt jelzi, hogy a REST API a HTTP alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (ajánlott) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatával korlátozza a hozzáférést. |
 | SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`vagy `QueryString`. A `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&", a kulcs értékének formátuma. A `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. A `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nem | Megadja a kimeneti jogcímek formátumát. Lehetséges értékek: `Body` (alapértelmezett), `Form`, `Header`vagy `QueryString`. A `Body` érték a kérelem törzsében a JSON formátumban elküldhető kimeneti jogcím. A `Form` érték a kérés törzsében az "&" és a kulcs értékének megadásával elválasztott kimeneti jogcím. A `Header` érték a kérelem fejlécében elküldhető kimeneti jogcím. A `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető kimeneti jogcím. |
 | ClaimUsedForRequestPayload| Nem | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
 | DebugMode | Nem | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-error-message) szakaszt. |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -148,7 +149,7 @@ Ha a hitelesítés típusa `None`értékre van beállítva, a rendszer nem haszn
 
 Ha a hitelesítés típusa `Basic`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Igen | A hitelesítéshez használt Felhasználónév. |
 | BasicAuthenticationPassword | Igen | A hitelesítéshez használt jelszó. |
@@ -173,7 +174,7 @@ Az alábbi példa egy egyszerű hitelesítéssel rendelkező technikai profilt m
 
 Ha a hitelesítés típusa `ClientCertificate`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClientCertificate | Igen | A hitelesítéshez használandó X509-tanúsítvány (RSA-kulcs). |
 
@@ -194,7 +195,7 @@ Ha a hitelesítés típusa `ClientCertificate`értékre van beállítva, a **Cry
 
 Ha a hitelesítés típusa `Bearer`értékre van beállítva, a **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Nem | A OAuth 2,0 tulajdonosi jogkivonata. |
 
@@ -217,11 +218,11 @@ Ha a hitelesítés típusa `Bearer`értékre van beállítva, a **CryptographicK
 
 Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felhasználó nem található a CRM rendszerben". Hiba esetén a REST API a következő attribútumokkal rendelkező HTTP 409 hibaüzenetet (ütközési válasz állapotkódot) kell visszaadnia:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | version | Igen | 1.0.0 |
 | status | Igen | 409 |
-| Kód | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
+| code | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
 | Kérelemazonosító | Nem | A REST végpont-szolgáltatótól származó kérelem azonosítója, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
 | userMessage | Igen | Egy hibaüzenet jelenik meg, amely megjelenik a felhasználó számára. |
 | developerMessage | Nem | A probléma részletes leírása és a kijavítása, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |

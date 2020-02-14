@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845593"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190463"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -27,9 +27,9 @@ A virtuális hálózatnak a kísérletezéshez való létrehozása elég egyszer
 
 ## <a name="naming"></a>Elnevezés
 
-Minden Azure-erőforrásnak van neve. A névnek egyedinek kell lennie egy hatókörön belül, amely az egyes erőforrástípusok esetében eltérő lehet. Például egy virtuális hálózat nevének egyedinek kell lennie egy [erőforráscsoporthoz](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)belül, de az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy az Azure- [régióban](https://azure.microsoft.com/regions/#services)is duplikálható. Olyan elnevezési konvenció meghatározása, amely következetesen használható, ha az erőforrások elnevezése hasznos, amikor több hálózati erőforrást kezel egyszerre. Javaslatokért lásd: [elnevezési konvenciók](/azure/architecture/best-practices/resource-naming#networking).
+Minden Azure-erőforrásnak van neve. A névnek egyedinek kell lennie egy hatókörön belül, amely az egyes erőforrástípusok esetében eltérő lehet. Például egy virtuális hálózat nevének egyedinek kell lennie egy [erőforráscsoporthoz](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)belül, de az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy az Azure- [régióban](https://azure.microsoft.com/regions/#services)is duplikálható. Olyan elnevezési konvenció meghatározása, amely következetesen használható, ha az erőforrások elnevezése hasznos, amikor több hálózati erőforrást kezel egyszerre. Javaslatokért lásd: [elnevezési konvenciók](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork).
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 
 Az összes Azure-erőforrás egy Azure-régióban és-előfizetésben jön létre. Egy erőforrás csak olyan virtuális hálózatban hozható létre, amely ugyanabban a régióban és előfizetésben található, mint az erőforrás. Azonban a különböző előfizetésekben és régiókban található virtuális hálózatokat is összekapcsolhatjuk. További információ: [kapcsolat](#connectivity). Annak eldöntése során, hogy mely régió (k) hoz üzembe erőforrásokat a alkalmazásban, gondolja át, hogy az erőforrások felhasználóinak fizikailag hol találhatók:
 
@@ -87,7 +87,7 @@ Az Azure több alapértelmezett útvonalat hoz létre a kimenő forgalomhoz egy 
 
 Ha egyéni útválasztást kell megvalósítani, javasoljuk, hogy ismerkedjen meg az [Azure-beli útválasztással](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Kapcsolatok
 
 Az Azure VPN Gateway használatával virtuális hálózatokat is összekapcsolhat más virtuális hálózatokkal vagy a helyszíni hálózattal.
 

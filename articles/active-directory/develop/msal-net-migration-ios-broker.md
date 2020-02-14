@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 17c7949f2bbd6d75343bb2e6825be36b56a20967
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695330"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185831"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -37,7 +37,7 @@ A brókerek a Microsoft által az Android és az iOS rendszerhez biztosított al
 Ezek a következőket teszik lehetővé:
 
 - Egyszeri bejelentkezés.
-- A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md)által igényelt eszköz azonosítása. További információ: [eszközkezelés](../conditional-access/conditions.md#device-platforms).
+- A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md)által igényelt eszköz azonosítása. További információ: [eszközkezelés](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
 - Az alkalmazás azonosításának ellenőrzése, amely bizonyos vállalati helyzetekben is szükséges. További információ: az [Intune Mobile Application Management (MAM)](https://docs.microsoft.com/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
@@ -189,7 +189,7 @@ A ADAL.NET és a MSAL.NET egyaránt a `-canOpenURL:` használatával ellenőrizz
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
 <tr><td>
-Használati területek 
+Használja 
 
 `msauth`
 
@@ -201,7 +201,7 @@ Használati területek
 </array>
 ```
 </td><td>
-Használati területek 
+Használja 
 
 `msauthv2`
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: af8542ccc8fad8d833d8329999ded2f5a52b3d03
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564198"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201475"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows-licenc alkalmazása a munkamenet-gazdagép virtuális gépei számára
 
@@ -38,7 +38,7 @@ Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
 ## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Ellenőrizze, hogy a munkamenet-gazda virtuális gép használja-e a licencelési kedvezményt
 A virtuális gép üzembe helyezése után futtassa ezt a parancsmagot, és ellenőrizze a licenc típusát:
 ```powershell
-Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
+Get-AzVM -ResourceGroupName <resourceGroupName> -Name <vmName>
 ```
 
 Az alkalmazott Windows-licenccel rendelkező munkamenet-gazda virtuális gép az alábbihoz hasonló módon fog megjelenni:
@@ -61,5 +61,5 @@ A következő parancsmag futtatásával tekintheti meg az Azure-előfizetésébe
 
 ```powershell
 $vms = Get-AzVM
-$vms | ?{$_.LicenseType -like "Windows_Client"} | select ResourceGroupName, Name, LicenseType
+$vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object ResourceGroupName, Name, LicenseType
 ```

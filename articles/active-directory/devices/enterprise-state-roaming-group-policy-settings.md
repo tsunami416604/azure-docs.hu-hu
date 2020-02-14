@@ -1,58 +1,62 @@
 ---
-title: Házirend- és MDM-beállítások |} A Microsoft Docs
-description: Információ a csoportházirend és a mobileszköz-felügyelet (MDM) beállítások telepíthetők, amelyek kell a vállalat által birtokolt eszközöket biztosít.
+title: Az ESR-Azure Active Directory Csoportházirend és MDM beállításai
+description: Enterprise State Roaming felügyeleti beállításai
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2b1afa67ec36da4d4da57b296e696fd6c6910
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481945"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194313"
 ---
-# <a name="group-policy-and-mdm-settings"></a>A csoportházirend és a mobileszköz-kezelési beállítások
-Használja ezeket a csoportházirend és a mobileszköz-felügyelet (MDM) beállítások csak a vállalat által birtokolt eszközök, mert ezek a szabályzatok érvénybe lépnek a felhasználó-eszköz teljes. Letiltja a személyes beállítások szinkronizálása egy mobileszköz-kezelési házirend alkalmazása, felhasználó által birtokolt eszközök hátrányosan befolyásolhatja, hogy az eszköz használatát. Ezenkívül az eszközön más felhasználói fiókok is érinti a szabályzatot.
+# <a name="group-policy-and-mdm-settings"></a>Csoportházirend és MDM beállítások
 
-Olyan vállalatok, amelyek személyes (nem felügyelt) eszközök központi kezeléséhez használhatja az Azure Portalon engedélyezheti vagy tilthatja le a barangolás, nem pedig a csoportházirend vagy a mobileszköz-kezelést.
-Az alábbi táblázatok ismertetik a rendelkezésre álló házirend-beállításokat.
+Ezeket a csoportházirend-és mobileszköz-kezelési (MDM) beállításokat csak a vállalati tulajdonú eszközökön használja, mivel ezeket a házirendeket a felhasználó teljes eszközére alkalmazza a rendszer. Ha egy MDM házirendet alkalmaz a beállítások szinkronizálásának letiltására egy személyes, a felhasználó tulajdonában lévő eszköz számára, negatív hatással lesz az adott eszköz használatára. Az eszközön az egyéb felhasználói fiókokat is érinteni fogja a szabályzat.
 
-## <a name="mdm-settings"></a>Mobileszköz-kezelési beállítások
-A mobileszköz-kezelési házirend-beállítások Windows 10 és Windows 10 Mobile is vonatkozik.  Windows 10 Mobile-támogatás csak a Microsoft-fiók roaming a felhasználó OneDrive-fiók létezik.  Tekintse meg [eszközök és a végpontok](enterprise-state-roaming-windows-settings-reference.md) milyen eszközökön használható az Azure AD-alapú szinkronizálása részleteiért.
+Azok a vállalatok, amelyek személyes (nem felügyelt) eszközök barangolását szeretnék kezelni, a Azure Portal használatával engedélyezhetik vagy letilthatják a barangolást Csoportházirend vagy MDM helyett.
+A következő táblázatok ismertetik az elérhető házirend-beállításokat.
+
+> [!NOTE]
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+
+## <a name="mdm-settings"></a>MDM-beállítások
+
+A MDM házirend-beállítások a Windows 10 és a Windows 10 Mobile rendszerre egyaránt érvényesek.  A Windows 10 Mobile-támogatás csak a felhasználó OneDrive-fiókján keresztül Microsoft-fiók-alapú barangoláshoz van. Az Azure AD-alapú szinkronizálás által támogatott eszközökről az eszközök [és végpontok](enterprise-state-roaming-windows-settings-reference.md) című témakörben talál további információt.
 
 | Name (Név) | Leírás |
 | --- | --- |
-| Microsoft-fiók-kapcsolat engedélyezése |Lehetővé teszi a felhasználóknak a hitelesítést a Microsoft-fiókkal az eszközön |
-| Beállítások szinkronizálásának engedélyezése |Lehetővé teszi a felhasználók számára a Windows-beállításokat és alkalmazásadatokat; Ez a szabályzat letiltását letiltja a szinkronizálása, valamint a biztonsági mentések a mobileszközökön |
+| Microsoft-fiókok közötti kapcsolatok engedélyezése |Lehetővé teszi a felhasználók számára, hogy egy Microsoft-fiók használatával hitelesítsék az eszközt |
+| Beállítások szinkronizálásának engedélyezése |Lehetővé teszi a felhasználóknak a Windows-beállítások és az alkalmazásadatok barangolását; A szabályzat letiltásával letilthatja a szinkronizálást és a mobileszközök biztonsági mentését |
 
 ## <a name="group-policy-settings"></a>Csoportházirend-beállítások
-A csoportházirend-beállítások Active Directory-tartományhoz csatlakoztatott Windows 10-es eszközökre vonatkoznak. A táblázat az örökölt beállítások, amely a következőképpen fog szinkronizálási beállítások kezelését, de, amely nem működnek a vállalati állapota a központi Windows 10-es, amelyek jeleztük, a "Ne használjon" leírásában is tartalmaz.
+
+A csoportházirend-beállítások olyan Windows 10-es eszközökre vonatkoznak, amelyek Active Directory tartományhoz csatlakoznak. A táblázat olyan örökölt beállításokat is tartalmaz, amelyek úgy tűnik, hogy a szinkronizálási beállításokat kezelik, de nem működnek Enterprise State Roaming for Windows 10 esetében, amelyeket a leírásban a "ne használja" kifejezéssel jegyeztek fel.
 
 Ezek a beállítások a következő helyen találhatók: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Name (Név) | Leírás |
 | --- | --- |
-| Fiókok: A Microsoft-fiókok blokkolása |A házirend-beállítás megakadályozza, hogy a felhasználók új Microsoft-fiókok felvételének ezen a számítógépen |
-| Szinkronizálja a |Megakadályozza, hogy a felhasználók számára a Windows-beállításokat és alkalmazásadatokat |
-| Szinkronizálja a személyre szabása |Letiltja a témák csoport szinkronizálása |
-| Szinkronizálja a böngésző beállításai |Letiltja az Internet Explorer csoport szinkronizálása |
-| Szinkronizálja a jelszavakat |Letiltja a jelszavakat csoport szinkronizálása |
-| Szinkronizálja a többi Windows-beállítások |Egyéb Windows-beállítások csoport szinkronizálása letiltása |
-| Asztal személyre szabása nem szinkronizálhatók |Ne használjon; nem lesz hatása |
-| Szinkronizálja a forgalmi díjas kapcsolatok használata esetén |Letiltja a roaming díjköteles, például a mobiltelefonos 3 G-kapcsolatok |
-| Nem alkalmazások szinkronizálása |Ne használjon; nem lesz hatása |
-| Szinkronizálja a beállításai |Az alkalmazásadatok barangolás letiltása |
-| Szinkronizálja a kezdő beállítások |Ne használjon; nem lesz hatása |
+| Fiókok: Microsoft-fiókok blokkolása |Ezzel a házirend-beállítással megakadályozható, hogy a felhasználók új Microsoft-fiókokat adjanak hozzá a számítógépen |
+| Ne szinkronizáljon |Megakadályozza, hogy a felhasználók barangolják a Windows beállításait és az alkalmazásadatok |
+| Ne szinkronizáljon személyre |Letiltja a témák csoport szinkronizálását |
+| Ne szinkronizálja a böngésző beállításait |Letiltja az Internet Explorer csoport szinkronizálását |
+| Ne szinkronizáljon jelszavakat |Letiltja a jelszavak csoportjának szinkronizálását |
+| Ne szinkronizáljon más Windows-beállításokat |Más Windows-beállítások csoport szinkronizálásának letiltása |
+| Ne szinkronizálja az asztal személyre szabását |Ne használja; nincs hatása |
+| Ne szinkronizáljon mért kapcsolatokon |Letiltja a barangolást mért kapcsolatokon, például a mobil 3G-ben |
+| Alkalmazások szinkronizálásának mellőzése |Ne használja; nincs hatása |
+| Alkalmazás-beállítások szinkronizálásának mellőzése |Az alkalmazásadatok barangolásának letiltása |
+| Ne szinkronizáljon indítási beállításokat |Ne használja; nincs hatása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Áttekintéséhez lásd: [vállalati Állapothordozás áttekintése](enterprise-state-roaming-overview.md).
-
-
+Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

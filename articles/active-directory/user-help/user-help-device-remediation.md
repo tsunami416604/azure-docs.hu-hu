@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062183"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190025"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>A "nem érhető el innen" hibaüzenet lehetséges javításai
 
@@ -29,7 +29,7 @@ Ha úgy látja, hogy **nem tud** innen üzenetet kapni, mondván, hogy nem támo
 
 ![A böngésző támogatásával kapcsolatos hibaüzenet](media/user-help-device-remediation/browser-version.png)
 
-A probléma megoldásához telepítenie és futtatnia kell egy támogatott böngészőt az operációs rendszere alapján. Ha a Windows 10 rendszert használja, a támogatott böngészők közé tartoznak a Microsoft Edge, az Internet Explorer és a Google Chrome. Ha más operációs rendszert használ, a [támogatott böngészők](../conditional-access/technical-reference.md#supported-browsers)teljes listáját is megtekintheti.
+A probléma megoldásához telepítenie és futtatnia kell egy támogatott böngészőt az operációs rendszere alapján. Ha a Windows 10 rendszert használja, a támogatott böngészők közé tartoznak a Microsoft Edge, az Internet Explorer és a Google Chrome. Ha más operációs rendszert használ, a [támogatott böngészők](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)teljes listáját is megtekintheti.
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Győződjön meg arról, hogy támogatott operációs rendszert használ
 Győződjön meg arról, hogy az operációs rendszer támogatott verzióját futtatja, beleértve a következőket:

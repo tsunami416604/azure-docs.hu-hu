@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8035cce1482c3c441cc956272a7300f0d0ea8194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815305"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189079"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Linuxon
 
@@ -38,11 +38,11 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 * Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](get-started.md).
 * Töltse le a Javához készült [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
    > [!NOTE]
-   > A JRE-Sample-Release. zip fájl tartalmazza a JRE minta alkalmazást, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás ki van kinyerve a/home/wcaltest/JRE-Sample-Release
+   > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a/home/wcaltest/JRE-Sample-Release
 
 Az Eclipse elindítása előtt győződjön meg róla, hogy ezek a függőségek telepítve vannak.
 
-* Ubuntu rendszeren:
+* On Ubuntu:
 
   ```sh
   sudo apt-get update
@@ -96,7 +96,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -155,9 +155,9 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az Eclipse menüsávban **futtassa** > **Run** parancsot. 
 
-1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
+1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. A **munkamenet** - > **indításának**megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor azokat `participants.properties`ba helyezheti a projekt mappájában **célként vagy osztályokban**. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](how-to-use-conversation-transcription-service.md).
 

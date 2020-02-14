@@ -1,22 +1,22 @@
 ---
-title: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
-description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Standard .NET SDK használatával.
+title: Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatterhelést az Azure Adatkezelőba a .NET Standard SDK használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496888"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187915"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)
 
-Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatok. ADX két ügyfélkódtárakat biztosít a .NET Standard: egy [könyvtár betöltési](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy könyvtára](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben, először hozzon létre egy tábla és a egy teszt fürtben megfeleltetése. A fürt egy feldolgozó várólistára és ellenőrzik az eredményeket.
+Az Azure Adatkezelő (ADX) egy gyors és rugalmasan méretezhető adatelemzési szolgáltatás a naplózási és telemetria-adatelemzéshez. A ADX két ügyféloldali kódtárat biztosít a .NET standardhoz: egy betöltési [függvénytárat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) és [egy adattárat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben először létrehoz egy táblát és egy adatleképezést egy tesztelési fürtben. Ezután várólistára helyezi a betöltést a fürtön, és érvényesíti az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,13 +24,13 @@ Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető explo
 
 * [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
-## <a name="install-the-ingest-library"></a>A betöltés erőforrástár telepítése
+## <a name="install-the-ingest-library"></a>A betöltési függvénytár telepítése
 
 ```
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az alkalmazás hitelesítéséhez az Azure Data Explorer az AAD-bérlő azonosítóját használja. A bérlőazonosító megkereséséhez használja a következő URL-címet úgy, hogy a *YourDomain* kifejezés helyére a saját tartományát írja be.
 
@@ -46,7 +46,7 @@ Ha például a tartomány a *contoso.com*, az URL-cím a következő: [https://l
 
 A bérlőazonosító ebben az esetben a következő: `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
-Ebben a példában egy AAD-felhasználót és egy jelszót a hitelesítéshez használja a fürt eléréséhez. AAD-alkalmazás tanúsítványának és AAD-alkalmazás kulcsa is használhatja. Állítsa be a saját értékeit `tenantId`, `user`, és `password` Ez a kód futtatása előtt.
+Ez a példa egy HRE-felhasználót és-jelszót használ a hitelesítéshez a fürt eléréséhez. Emellett használhatja a HRE és a HRE alkalmazás kulcsát is. A kód futtatása előtt állítsa be `tenantId`, `user`és `password` értékeit.
 
 ```csharp
 var tenantId = "<TenantId>";
@@ -54,7 +54,7 @@ var user = "<User>";
 var password = "<Password>";
 ```
 
-## <a name="construct-the-connection-string"></a>A kapcsolati karakterlánc létrehozása
+## <a name="construct-the-connection-string"></a>Hozza létre a kapcsolatot megadó karakterláncot
 Most hozza létre a kapcsolati sztringet. Egy későbbi lépésben fogja létrehozni a céltáblát és a leképezést.
 
 ```csharp
@@ -74,14 +74,14 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>A forrásfájl adatainak beállítása
 
-Állítsa be a forrásfájl elérési útja. Ez a példa egy Azure Blob Storage-ban üzemeltetett mintafájlt használ. A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaiból](https://www.ncdc.noaa.gov/stormevents/) származó, időjárással kapcsolatos adatokat tartalmaz.
+Állítsa be a forrásfájl elérési útját. Ez a példa egy Azure Blob Storage-ban üzemeltetett mintafájlt használ. A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaiból](https://www.ncdc.noaa.gov/stormevents/) származó, időjárással kapcsolatos adatokat tartalmaz.
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Tábla létrehozása a tesztfürtön
-Hozzon létre egy táblát nevű `StormEvents` , amely megfelel a séma az adatok a `StormEvents.csv` fájlt.
+Hozzon létre egy `StormEvents` nevű táblázatot, amely megfelel a `StormEvents.csv` fájlban lévő adatsémának.
 
 ```csharp
 var table = "StormEvents";
@@ -122,8 +122,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>Adatbetöltési leképezés meghatározása
 
-Képezze le a bejövő CSV-adatokat az oszlopok neveit, a tábla létrehozásakor használt.
-Üzembe helyezése egy [CSV oszlop fájlleképezési objektumot](/azure/kusto/management/tables#create-ingestion-mapping) az adott táblához
+Képezze le a bejövő CSV-fájlokat a tábla létrehozásakor használt oszlopnevek.
+CSV- [oszlop hozzárendelési objektumának](/azure/kusto/management/create-ingestion-mapping-command) kiépítése a táblán
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -165,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="queue-a-message-for-ingestion"></a>Üzenet várólistába helyezése a betöltéshez
 
-Egy üzenet várólistára segítségével szerez adatokat a blob storage-ból, és az adatokat tölti be ADX.
+Az adatok a blob Storage-ból való lekérésére és az adatok ADX való betöltésére szolgáló üzenet várólistára helyezése.
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -193,9 +193,9 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 }
 ```
 
-## <a name="validate-data-was-ingested-into-the-table"></a>Ellenőrizze a táblába betöltött adatok volt
+## <a name="validate-data-was-ingested-into-the-table"></a>Ellenőrzi, hogy az adatgyűjtés bekerült-e a táblába.
 
-Várjon, amíg a sorban álló bevitelt a betöltés ütemezése és az adatok betöltése az ADX öt-tíz percet. Ezután futtassa a következő kódot a `StormEvents`-táblában lévő rekordok számának lekérdezéséhez.
+Várjon öt – tíz percet, amíg a várakozási sor betöltődik a betöltés és az adatterhelés ADX. Ezután futtassa a következő kódot a `StormEvents`-táblában lévő rekordok számának lekérdezéséhez.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
@@ -226,12 +226,12 @@ Futtassa a következő parancsot az elmúlt négy órában végzett összes bet�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hajtsa végre a más cikkeket, megtarthatja a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
+Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforrásokat. Ha nem szeretné, futtassa a következő parancsot az adatbázisban a `StormEvents`-tábla felesleges elemeinek eltávolításához.
 
 ```Kusto
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lekérdezések írása](write-queries.md)

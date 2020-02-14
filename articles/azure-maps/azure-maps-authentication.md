@@ -3,50 +3,49 @@ title: Hitelesítési módszerek | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, Azure Active Directory (Azure AD) és a megosztott kulcsos hitelesítést. Mindkettő a Microsoft Azure Maps-szolgáltatásokhoz használatos. Útmutató Azure Maps előfizetési kulcs beszerzéséhez.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025622"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189786"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 
-Azure Maps a kérelmek hitelesítésének két módját támogatja: megosztott kulcsos hitelesítés és Azure Active Directory hitelesítés. Ez a cikk ismerteti ezeket a hitelesítési módszereket, amelyek segítenek a megvalósításában.
+Azure Maps a kérelmek hitelesítésének két módját támogatja: megosztott kulcsos hitelesítés és Azure Active Directory hitelesítés. Ez a cikk ezeket a hitelesítési módszereket ismerteti Azure Maps szolgáltatások megvalósításának elősegítése érdekében.
 
 ## <a name="shared-key-authentication"></a>Megosztott kulcsos hitelesítés
 
-A megosztott kulcsos hitelesítés egy Azure Maps fiók által generált kulcsokat ad át, és minden kérést Azure Maps. A szolgáltatásokra Azure Maps minden egyes kérelem esetében az *előfizetési kulcsot* hozzá kell adni paraméterként az URL-címhez. Az elsődleges és a másodlagos kulcsok a Azure Maps fiók létrehozása után jönnek létre. Azt javasoljuk, hogy az elsődleges kulcsot használja előfizetési kulcsként, ha megosztott kulcsos hitelesítést használ a Azure Maps hívásakor. A másodlagos kulcsot olyan helyzetekben lehet használni, mint például a kulcsok változásai.  
+ Az elsődleges és a másodlagos kulcsok a Azure Maps fiók létrehozása után jönnek létre. Javasoljuk, hogy a megosztott kulcsos hitelesítés használatával Azure Maps meghívásakor az elsődleges kulcsot használja előfizetési kulcsként. A megosztott kulcsos hitelesítés egy Azure Maps fiók által generált kulcsot ad át egy Azure Maps szolgáltatáshoz. A szolgáltatásokra Azure Maps minden egyes kérelemhez adja hozzá az *előfizetési kulcsot* paraméterként az URL-címhez. A másodlagos kulcsot olyan helyzetekben lehet használni, mint például a kulcsok változásai.  
 
 A kulcsok a Azure Portalban való megtekintésével kapcsolatos információkért lásd: a [hitelesítés kezelése](https://aka.ms/amauthdetails).
 
 > [!Tip]
 > Javasoljuk, hogy rendszeresen újragenerálja a kulcsokat. Két kulccsal van ellátva, így a kapcsolatok egy kulccsal kezelhetők, miközben újragenerálja a másikat. A kulcsok újragenerálása után frissítenie kell minden olyan alkalmazást, amely hozzáfér a fiókjához az új kulcsokkal.
 
-
-
 ## <a name="authentication-with-azure-active-directory-preview"></a>Hitelesítés Azure Active Directory (előzetes verzió)
 
-A Azure Maps mostantól a [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)használatával Azure Maps szolgáltatásokhoz történő hitelesítést kér. Az Azure AD identitás-alapú hitelesítést biztosít, beleértve a [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). A RBAC felhasználói szintű, csoport szintű vagy alkalmazás-szintű hozzáférést biztosít a Azure Maps erőforrásaihoz. A következő részekben megismerheti az Azure AD-vel való Azure Maps-integráció fogalmait és összetevőit.
+A Azure Maps mostantól a [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)használatával Azure Maps szolgáltatásokhoz történő hitelesítést kér. Az Azure AD identitás-alapú hitelesítést biztosít, beleértve a [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). A RBAC felhasználói szintű, csoport szintű vagy alkalmazás-szintű hozzáférést biztosít a Azure Maps erőforrásaihoz. A következő részekben a Azure Maps integrációjának az Azure AD-val való integrálásával kapcsolatos fogalmakat és összetevőket tárgyaljuk.
+
 ## <a name="authentication-with-oauth-access-tokens"></a>Hitelesítés OAuth hozzáférési jogkivonatokkal
 
-Azure Maps elfogadja a **OAuth 2,0** hozzáférési jogkivonatokat egy Azure Maps-fiókot tartalmazó Azure-előfizetéshez társított Azure ad-bérlők számára. Azure Maps a következő jogkivonatokat fogadja el:
+Azure Maps elfogadja a **OAuth 2,0** hozzáférési jogkivonatokat egy Azure Maps-fiókot tartalmazó Azure-előfizetéshez társított Azure ad-bérlők számára. A Azure Maps a következő jogkivonatokat is elfogadja:
 
 * Azure AD-felhasználók
 * A felhasználók által delegált engedélyeket használó partneri alkalmazások
 * Azure-erőforrások felügyelt identitásai
 
-A Azure Maps minden Azure Maps-fiókhoz létrehoz egy *egyedi azonosítót (ügyfél-azonosítót)* . Ha az ügyfél-azonosítót további paraméterekkel kombinálja, kérhet tokeneket az Azure AD-től. Token igényléséhez a következő táblázatban szereplő értékeket kell megadnia az Azure-környezet alapján.
+A Azure Maps minden Azure Maps-fiókhoz létrehoz egy *egyedi azonosítót (ügyfél-azonosítót)* . Ha az ügyfél-azonosítót további paraméterekkel kombinálja, kérhet tokeneket az Azure AD-től. Jogkivonat igényléséhez adja meg az alábbi táblázatban szereplő értékeket az Azure-környezet alapján.
 
 | Azure-környezet   | Azure AD-jogkivonat végpontja |
 | --------------------|-------------------------|
-| Nyilvános Azure        | https://login.microsoftonline.com |
+| Azure Public        | https://login.microsoftonline.com |
 | Azure Government    | https://login.microsoftonline.us |
 
 
@@ -56,11 +55,11 @@ Az Azure AD-jogkivonatok igénylésével kapcsolatos általános információké
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>Azure Map-erőforrások igénylése OAuth-tokenekkel
 
-Miután az Azure AD-ben kapott tokent, a rendszer elküldi a kérést a Azure Mapsnak a következő szükséges kérelmek fejlécével:
+Miután az Azure AD jogkivonatot kap, Azure Maps egy kérést küld a következő kötelező kérelmek fejlécével:
 
-| Kérelem fejléce    |    Value (Díj)    |
+| Kérelem fejléce    |    Érték    |
 |:------------------|:------------|
-| x-MS-Client-ID    | 30d7cc....9f55|
+| x-ms-client-id    | 30d7cc….9f55|
 | Engedélyezés     | Tulajdonos eyJ0e.... HNIVN |
 
 > [!Note]
@@ -79,7 +78,7 @@ Az ügyfél-azonosító megtekintésével kapcsolatos információkért lásd a 
 
 ## <a name="control-access-with-rbac"></a>Hozzáférés vezérlése a RBAC
 
-Az Azure AD-ben a RBAC használatával vezérelheti a biztonságos erőforrásokhoz való hozzáférést. Állítsa be Azure Maps-fiókját, és regisztrálja az Azure Maps Azure AD-BÉRLŐt. A Azure Maps támogatja az Azure AD-felhasználók,-csoportok,-alkalmazások, Azure-erőforrások és Azure-szolgáltatások olvasási hozzáférés-vezérlését az Azure-erőforrások felügyelt identitásai révén. A Azure Maps-portál lapon beállíthatja a kívánt szerepkörökhöz tartozó RBAC.
+Az Azure AD-ben a RBAC használatával vezérelheti a biztonságos erőforrásokhoz való hozzáférést. Állítsa be Azure Maps-fiókját, és regisztrálja az Azure Maps Azure AD-bérlőt. A Azure Maps támogatja az Azure AD-felhasználók,-csoportok,-alkalmazások, Azure-erőforrások és Azure-szolgáltatások olvasási hozzáférés-vezérlését az Azure-erőforrások felügyelt identitásai révén. A Azure Maps-portál lapon beállíthatja a kiválasztott szerepkörökhöz tartozó RBAC.
 
 ![Azure Maps Adatolvasó (előzetes verzió)](./media/azure-maps-authentication/concept.png)
 

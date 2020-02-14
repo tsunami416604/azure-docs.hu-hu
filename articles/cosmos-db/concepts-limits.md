@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759772"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200044"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -77,7 +77,7 @@ A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot ké
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Adatbázisok maximális száma | Korlátlan |
-| Tárolók maximális száma adatbázison (vagy fiók) | Korlátlan |
+| A megosztott átviteli sebességgel rendelkező adatbázisban üzembe helyezhető tárolók maximális száma |25 |
 | Régiók maximális száma | Nincs korlát (az összes Azure-régió) |
 
 ## <a name="per-container-limits"></a>/Tároló korlátok

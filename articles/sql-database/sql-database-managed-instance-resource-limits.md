@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443832"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201730"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -38,8 +38,8 @@ A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal
 | Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
-> - A Gen4 hardvere folyamatban van. Ajánlott új felügyelt példányokat telepíteni a Gen5 hardveren.
-> - A Gen4 hardver jelenleg csak a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, USA 2. nyugati régiója, az USA középső régiója, Közép-India, Délkelet-Ázsia és Közép-Korea.
+> - A Gen4 hardverek fokozatos kiépítése folyamatban van, és az új központi telepítések esetében már nem érhető el. Minden új felügyelt példányt telepíteni kell a Gen5 hardveren.
+> - Érdemes [áthelyezni a felügyelt példányokat az Gen 5](sql-database-service-tiers-vcore.md) hardverre a virtuális mag és a tárterület méretezhetőségének, a gyorsított hálózatkezelésnek, a legjobb IO-teljesítménynek és a minimális késésnek a megtapasztalása érdekében.
 
 ### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
 
@@ -78,7 +78,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[a fájlméret növelése a jobb IO-teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
+| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 
@@ -134,10 +134,10 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 |Előfizetés típusa| Felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
-|Utólagos, használatalapú fizetés|3|320|
-|Felhőszolgáltató (CSP) |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
+|Utólagos elszámolás|3|320|
+|CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
-|Nagyvállalati Szerződés – Fejlesztés és tesztelés|3|320|
+|Enterprise Dev/Test|3|320|
 |EA|8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
@@ -178,7 +178,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

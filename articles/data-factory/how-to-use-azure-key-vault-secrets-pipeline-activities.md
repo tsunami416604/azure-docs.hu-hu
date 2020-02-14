@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031492"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200112"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 
@@ -63,7 +63,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     > [!CAUTION]
     > Állítsa a Secure output (biztonságos kimenet) beállítást igaz értékre, hogy megakadályozza a titkos érték egyszerű szövegként való naplózását.  Az értéket használó további tevékenységeknek a biztonságos bemenet beállítását True értékre kell állítani.
 
-5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity("web"). output. Value**.
+5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity("Web1"). output. Value**.
 
     ![Kód kifejezése](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

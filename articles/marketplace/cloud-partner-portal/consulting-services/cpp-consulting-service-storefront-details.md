@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818084"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191170"
 ---
 # <a name="storefront-details-tab"></a>Áruház részletei lap
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan adhatja meg a kirakat részleteit. A **kirakat r
 ![Új tanácsadói szolgáltatási ajánlat – kirakat részletei lap](media/consultingoffer-storefront-details.png)
 
 
-## <a name="offer-details"></a>Az ajánlat részletei
+## <a name="offer-details"></a>Ajánlat részletei
 
 Az **ajánlat részletei** szakasz a következő mezőket tartalmazza:
 
@@ -71,7 +71,7 @@ Adja meg a tanácsadási szolgáltatás ajánlatának leírását az **ajánlat 
 
 Ne adja meg az e-mail-címét vagy telefonszámát az ajánlat leírásában. A **Contact me (Kapcsolatfelvétel** ) gomb szerepel a feltöltési ajánlatban, amely az Ön ajánlatához azonosított vezető felügyeleti célra vezet.
 
-Adja meg az ajánlat leírását Markdown formátumban. Ha még nem ismeri a Markdown vagy a HTML-formázást, olvassa el a [Markdown használata a docs írásához](https://docs.microsoft.com/contribute/how-to-write-use-markdown)című témakört.
+Adja meg az ajánlat leírását Markdown formátumban. Ha még nem ismeri a Markdown vagy a HTML-formázást, olvassa el a [Markdown használata a docs írásához](/contribute/markdown-reference)című témakört.
 
 Ezekkel a formátumokkal biztosíthatja, hogy ajánlata könnyen olvasható legyen az ügyfelek számára.
 
@@ -87,11 +87,11 @@ Az alábbi példa egy jól összeállított ajánlat leírását, valamint annak
 
 Program
 
-1\. nap
+1\. napi
 
 -   Az Azure Data Lake, az Azure HDInsight vagy a Azure SQL Data Warehouse használatával a Microsoft-felhőben tárolt adatai biztonságossá tételét, méretezését és rendszerezését összpontosíthatja.
 
-2\. nap
+2\. napon
 
 -   Bemutatja, hogyan konfigurálhatja és telepítheti a Microsoft R és Azure Machine Learning fejlett elemzési megoldásait.
 
@@ -207,6 +207,6 @@ Töltse fel a tanácsadási szolgáltatással kapcsolatban részletesen ismertet
 Töltsön fel akár öt képet, amely további információkat nyújt az ajánlatáról, a termékeiről és a vállalatáról. Néhány példa a marketing-brosúra, a bemutatóból származó releváns dia, vagy egy, a vállalat lendületét vagy szakértelmét ábrázoló képre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a [tanácsadási szolgáltatások ajánlatának közzétételére](./cpp-consulting-service-publish-offer.md) .

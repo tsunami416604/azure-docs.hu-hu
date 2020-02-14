@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460740"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190959"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -55,7 +55,7 @@ Az indexelő ütemezése fontos mechanizmus a nagyméretű adatkészletek feldol
 
 A tervezés szerint a ütemezett indexelés adott időközönként indul el, és a következő ütemezett időközön végzett folytatás előtt a feladatok általában befejeződik. Ha azonban a feldolgozás nem fejeződik be az intervallumon belül, az indexelő leáll (mert elfogyott az idő). A következő időszakban a feldolgozás folytatja az utolsó leállást, és a rendszer nyomon követi, hogy hol történik. 
 
-A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
+A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -99,7 +99,7 @@ Az ütemezett időpontban minden indexelő megkezdi a végrehajtást, az adattö
 > [!Note]
 > A replikák növelésekor érdemes lehet növelni a partíciók darabszámát, ha az index mérete várhatóan jelentősen megnő. A partíciók az indexelt tartalom szeleteit tárolják; minél több partíció van, annál kisebb a szelet, amelyet egyenként tárolnia kell.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Indexelés a portálon](search-import-data-portal.md)

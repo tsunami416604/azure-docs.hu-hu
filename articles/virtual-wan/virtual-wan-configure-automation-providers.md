@@ -1,20 +1,20 @@
 ---
-title: Azure-beli virtuális WAN-partnerek | Microsoft Docs
+title: Azure Virtual WAN-partnerek automatizálási útmutatója | Microsoft Docs
 description: Ez a cikk segítséget nyújt a partnereknek az Azure Virtual WAN Automation üzembe állításában.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775314"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190420"
 ---
-# <a name="virtual-wan-partners"></a>Virtuális WAN-partnerek
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizálási irányelvek virtuális WAN-partnerekhez
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be az automatizálási környezetet egy fiókirodai eszköz (helyszíni VPN-eszköz vagy SDWAN CPE) Azure Virtual WAN-hoz való csatlakoztatásához és konfigurálásához. Ha Ön olyan szolgáltató, amely az IPsec/IKEv2 vagy az IPsec/IKEv1 VPN-kapcsolaton keresztül képes fiókirodai eszközöket biztosít, akkor ez a cikk Önnek szól.
 
@@ -27,7 +27,7 @@ Az ág-eszköz (a helyszíni VPN-eszköz vagy a SDWAN CPE) általában egy vezé
 * Próbálja ki az Azure Virtual WAN portáljának tapasztalatait.
 * Ezután döntse el, hogy a kapcsolódási lépések melyik részét szeretné automatizálni. Legalább az automatizálást javasoljuk:
 
-  * Access Control
+  * Hozzáférés-vezérlés
   * Ág-eszköz adatainak feltöltése az Azure Virtual WAN-ba
   * Az Azure-konfiguráció letöltése és az ág-eszköz kapcsolatának beállítása az Azure Virtual WAN-ba
 

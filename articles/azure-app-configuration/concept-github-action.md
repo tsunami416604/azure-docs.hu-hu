@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899622"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190382"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Az alkalmazás konfigurációs példányának szinkronizálása a GitHub-műveletekkel
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Az App Configuration-példány szinkronizálása GitHub-műveletek segítségével
 Az Azure-alkalmazás konfigurációja GitHub-műveleteket használ egy alkalmazás konfigurációs példányának frissítéséhez, amikor egy GitHub-adattáron végrehajtott művelet aktiválja. A GitHub-munkafolyamatok segítségével frissítheti az alkalmazások konfigurációját, így az alkalmazás-konfiguráció frissítéseinek az alkalmazás kódjának frissítéséhez használt munkafolyamatba való integrálásával is felhasználható.
 
 A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) a GitHub-tárházban definiált automatizált folyamat. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe GitHub-projektet a GitHubon. Az Azure-alkalmazás konfigurációja lehetővé teszi az *Azure-alkalmazás konfigurációjának szinkronizálását* , amely lehetővé teszi az alkalmazás-konfigurációs példányok frissítéseinek frissítését a forrás tárházban végzett módosítások során. 
@@ -25,8 +25,7 @@ A GitHub-események, például az adattárba való leküldés megindíthatnak eg
 A GitHub [dokumentációja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
-A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** fület. Keresse meg és válassza ki a GitHub műveletet a piactéren az "Azure app Configuration Sync" kifejezésre való kereséssel. 
-
+A GitHub-művelet elindításához nyissa meg az adattárat, és válassza a **műveletek** fület. kattintson az "új munkafolyamat" elemre, majd a "saját munkafolyamat beállítása" lehetőségre. Itt keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
 > [!div class="mx-imgBorder"]
 > ![válassza a művelet fület](media/find-github-action.png)
 
@@ -131,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>A GitHub-művelet maximális mélységének használata
 A beágyazott JSON-attribútumok alapértelmezett viselkedése a teljes objektum összeolvasztása.  Az alábbi JSON a kulcs-érték párokat határozza meg:
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | --- |
 | Objektum: belső: InnerKey | InnerValue |
 
@@ -173,7 +172,7 @@ jobs:
 
 A 2. mélység miatt a fenti példa a következő kulcsot adja vissza: érték pár:
 
-| Jelmagyarázat | Value (Díj) |
+| Paraméter | Érték |
 | --- | --- |
 | Objektum: belső | {"InnerKey":"InnerValue"} |
 
@@ -184,15 +183,15 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 > A bemeneti azonosítók a kis-és nagybetűk megkülönböztetése.
 
 
-| Bemeneti név | Kötelező? | Value (Díj) |
+| Bemeneti név | Kötelező? | Érték |
 |----|----|----|
 | configurationFile | Igen | A tárházban lévő konfigurációs fájl elérési útja, a tárház gyökeréhez képest.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
-| formátumban | Igen | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
+| format | Igen | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
 | connectionString | Igen | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
 | elválasztó | Igen | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |
-| előtag | Nem | A kulcsok elejéhez hozzáadandó előtag. |
+| prefix | Nem | A kulcsok elejéhez hozzáadandó előtag. |
 | label | Nem | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
-| szigorú | Nem | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték false (hamis). |
+| szigorú | Nem | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett értéke FALSE (hamis). |
 | mélység | Nem | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
 | tags | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
 

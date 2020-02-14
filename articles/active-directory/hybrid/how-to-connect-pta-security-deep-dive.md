@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174437"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185556"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory átmenő hitelesítés biztonsági mélye
 
@@ -42,10 +42,10 @@ Ezek a funkció legfontosabb biztonsági szempontjai:
 - Csak a standard portokat (80 és 443) használja a rendszer a hitelesítési ügynököktől az Azure AD felé irányuló kimenő kommunikációhoz. Nem kell megnyitnia a bejövő portokat a tűzfalon. 
   - Az 443-es port minden hitelesített kimenő kommunikációhoz használatos.
   - Az 80-es portot csak a visszavont tanúsítványok listáinak (CRL-ek) letöltésére használja a rendszer, hogy a szolgáltatás által használt egyik tanúsítványt sem vonták vissza.
-  - A hálózati követelmények teljes listájáért lásd [: Azure Active Directory átmenő hitelesítés: gyors üzembe helyezés](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+  - A hálózati követelmények teljes listájáért lásd [: Azure Active Directory átmenő hitelesítés:](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)gyors útmutató.
 - A felhasználók által a bejelentkezés során megadott jelszavak titkosítva vannak a felhőben, mielőtt a helyszíni hitelesítési ügynökök elfogadják őket a Active Directory való érvényesítéshez.
 - Az Azure AD és a helyszíni hitelesítési ügynök közötti HTTPS-csatornát kölcsönös hitelesítéssel védi a szolgáltatás.
-- Az [Azure ad feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), például a multi-Factor Authentication (MFA) és az [örökölt hitelesítés blokkolásával](../conditional-access/conditions.md) , valamint a [találgatásos jelszó elleni támadások kiszűrésével](../authentication/howto-password-smart-lockout.md)védi a felhasználói fiókokat.
+- Az [Azure ad feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), például a multi-Factor Authentication (MFA) és az [örökölt hitelesítés blokkolásával](../conditional-access/concept-conditional-access-conditions.md) , valamint a [találgatásos jelszó elleni támadások kiszűrésével](../authentication/howto-password-smart-lockout.md)védi a felhasználói fiókokat.
 
 ## <a name="components-involved"></a>Érintett összetevők
 
@@ -141,7 +141,7 @@ Az átmenő hitelesítés a következő módon kezeli a felhasználó bejelentke
 8. Az Azure AD STS elhelyezi a jelszó-ellenőrzési kérelmet, amely a felhasználónevet és a titkosított jelszó értékét tartalmazza a bérlőre jellemző Service Bus várólistára.
 9. Mivel a inicializált hitelesítési ügynökök tartósan csatlakoztatva vannak a Service Bus-várólistához, az egyik rendelkezésre álló hitelesítési ügynök lekéri a jelszó-ellenőrzési kérelmet.
 10. A hitelesítési ügynök megkeresi a titkosított jelszó értékét, amely a nyilvános kulcsra vonatkozik, azonosító használatával, majd visszafejti azt a titkos kulcs használatával.
-11. A hitelesítési ügynök megkísérli érvényesíteni a felhasználónevet és a jelszót a helyszíni Active Directory a [Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) és a **dwLogonType** paraméter **LOGON32_LOGON_NETWORK**értékre állításával. 
+11. A hitelesítési ügynök megkísérli érvényesíteni a felhasználónevet és a jelszót a helyszíni Active Directory a [Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) -val a **dwLogonType** paraméterrel **LOGON32_LOGON_NETWORK**értékre állítva. 
     - Ez az API ugyanaz az API, amelyet a Active Directory összevonási szolgáltatások (AD FS) (AD FS) használ a felhasználók bejelentkezésére egy összevont bejelentkezési forgatókönyvben.
     - Ez az API a Windows Server standard megoldási folyamatán alapul a tartományvezérlő megkereséséhez.
 12. A hitelesítési ügynök megkapja a Active Directory eredményét, például a sikeres, a Felhasználónév vagy a jelszó helytelen, vagy a jelszó lejárt.
@@ -167,7 +167,7 @@ A hitelesítési ügynök megbízhatóságának megújítása az Azure AD-vel:
     - Ezek a kulcsok a standard RSA 2048 bites titkosítással jönnek létre.
     - A titkos kulcs soha nem hagyja el a helyszíni kiszolgálót.
 3. A hitelesítési ügynök ezután a "tanúsítvány megújítása" kérést küld az Azure AD-nak HTTPS-kapcsolaton keresztül, a kérelemben szereplő következő összetevőkkel:
-    - A meglévő, a Windows tanúsítványtárolóban található CERT_SYSTEM_STORE_LOCAL_MACHINE helyről beolvasott tanúsítvány. Ebben az eljárásban nincs olyan globális rendszergazda, amely a globális rendszergazda nevében nem igényel hozzáférési jogkivonatot.
+    - A Windows tanúsítványtároló CERT_SYSTEM_STORE_LOCAL_MACHINE helyétől beolvasott meglévő tanúsítvány. Ebben az eljárásban nincs olyan globális rendszergazda, amely a globális rendszergazda nevében nem igényel hozzáférési jogkivonatot.
     - A 2. lépésben létrehozott nyilvános kulcs.
     - Tanúsítvány-aláírási kérelem (CSR vagy tanúsítványkérelem). Ez a kérelem egy új digitális azonosító tanúsítványra vonatkozik, az Azure AD-t pedig hitelesítésszolgáltatóként.
 4. Az Azure AD a tanúsítvány megújítására vonatkozó kérelemben ellenőrzi a meglévő tanúsítványt. Ezután ellenőrzi, hogy a kérelem érkezett-e a bérlőn regisztrált hitelesítési ügynöktől.
@@ -176,12 +176,12 @@ A hitelesítési ügynök megbízhatóságának megújítása az Azure AD-vel:
     - A tanúsítvány aláírásához használja az Azure AD legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját.
     - Állítsa be a tanúsítvány tulajdonosát (megkülönböztető név vagy DN) a bérlői AZONOSÍTÓra, amely egyedi módon azonosítja a bérlőt. A DN a tanúsítványt csak a bérlőre vonatkozik.
 6. Az Azure AD a hitelesítési ügynök új nyilvános kulcsát egy olyan Azure SQL Database-adatbázisban tárolja, amelyhez csak hozzáfér. A hitelesítési ügynökhöz társított régi nyilvános kulcsot is érvényteleníti.
-7. A rendszer ezután az új, az 5. lépésben kiadott tanúsítványt tárolja a kiszolgálón a Windows tanúsítványtárolóban (kifejezetten a [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) helyen).
+7. A rendszer ezután az új, az 5. lépésben kiadott tanúsítványt tárolja a kiszolgálón a Windows tanúsítványtárolóban (különösen a [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) helyen).
     - Mivel a megbízhatóság megújítási eljárása nem interaktív módon történik (a globális rendszergazda jelenléte nélkül), a hitelesítési ügynök már nem fér hozzá a meglévő tanúsítvány frissítéséhez a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen. 
     
    > [!NOTE]
    > Ez az eljárás nem távolítja el magát a tanúsítványt a CERT_SYSTEM_STORE_LOCAL_MACHINE helyről.
-8. Az új tanúsítvány erre a pontra történő hitelesítésre szolgál. A tanúsítvány minden későbbi megújítása lecseréli a tanúsítványt a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen.
+8. Az új tanúsítvány erre a pontra történő hitelesítésre szolgál. A tanúsítvány minden későbbi megújítása helyettesíti a tanúsítványt a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen.
 
 ## <a name="auto-update-of-the-authentication-agents"></a>A hitelesítési ügynökök automatikus frissítése
 
@@ -213,7 +213,7 @@ Hitelesítési ügynök automatikus frissítése:
 
 ## <a name="next-steps"></a>Következő lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
-- [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
+- Gyors [útmutató: az](how-to-connect-pta-quick-start.md)Azure ad átmenő hitelesítésének megkezdése és futtatása.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoptadpdownload) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
 - [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): konfigurálja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
 - [Hogyan működik](how-to-connect-pta-how-it-works.md): megismerheti az Azure ad átmenő hitelesítés működésének alapjait.

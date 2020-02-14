@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a423b123626633eac761122583c5c494af68ca65
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020437"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200095"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -34,7 +34,7 @@ Ez a cikk az autoskálázási képleteket alkotó különböző entitásokat ism
 > [!IMPORTANT]
 > Batch-fiók létrehozásakor megadhatja a [fiók konfigurációját](batch-api-basics.md#account), amely meghatározza, hogy a készleteket a Batch szolgáltatás előfizetésében (az alapértelmezett) vagy a felhasználói előfizetésben kell-e lefoglalni. Ha létrehozta a Batch-fiókot az alapértelmezett batch szolgáltatás konfigurációjában, akkor a fiókja legfeljebb a feldolgozásra felhasználható magok maximális számára korlátozódik. A Batch szolgáltatás csak az adott alapkorlátig méretezi a számítási csomópontokat. Ezért előfordulhat, hogy a Batch szolgáltatás nem éri el az autoscale Formula által meghatározott számítási csomópontok céljának számát. A fiók kvótáinak megtekintésével és növelésével kapcsolatos információkért tekintse meg [a Azure batch szolgáltatás kvótáit és korlátait](batch-quota-limit.md) .
 >
->Ha a felhasználói előfizetés konfigurációjával hozta létre a fiókját, a fiók az előfizetés fő kvótájában osztozik. További információkért lásd [az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozásokat, kvótákat és megkötéseket](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető témakör [a virtuális gépek korlátaira](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) vonatkozó részét.
+>Ha a felhasználói előfizetés konfigurációjával hozta létre a fiókját, a fiók az előfizetés fő kvótájában osztozik. További információkért lásd [az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozásokat, kvótákat és megkötéseket](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) ismertető témakör [a virtuális gépek korlátaira](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkozó részét.
 >
 >
 
@@ -189,11 +189,11 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 | időbélyeg- *operátor* időbélyege |- |timeinterval |
 | *operátor*dupla |-, ! |double |
 | *operátor*TimeInterval |- |timeinterval |
-| dupla *operátor* dupla |<, < =, = =, > =, >,! = |double |
-| karakterlánc- *operátor* karakterlánca |<, < =, = =, > =, >,! = |double |
-| időbélyeg- *operátor* időbélyege |<, < =, = =, > =, >,! = |double |
-| TimeInterval *operátor* TimeInterval |<, < =, = =, > =, >,! = |double |
-| dupla *operátor* dupla |& &,&#124;&#124; |double |
+| dupla *operátor* dupla |<, <=, ==, >=, >, != |double |
+| karakterlánc- *operátor* karakterlánca |<, <=, ==, >=, >, != |double |
+| időbélyeg- *operátor* időbélyege |<, <=, ==, >=, >, != |double |
+| TimeInterval *operátor* TimeInterval |<, <=, ==, >=, >, != |double |
+| dupla *operátor* dupla |&&, &#124;&#124; |double |
 
 Ternáris operátorral (`double ? statement1 : statement2`) való dupla teszteléskor a nem nulla érték **igaz**, és a nulla **hamis**.
 
@@ -202,7 +202,7 @@ Ezek az előre definiált **függvények** használhatók az automatikus skálá
 
 | Függvény | Visszatérési típus | Leírás |
 | --- | --- | --- |
-| átlag (doubleVecList) |double |A doubleVecList lévő összes érték átlagos értékét adja vissza. |
+| avg(doubleVecList) |double |A doubleVecList lévő összes érték átlagos értékét adja vissza. |
 | Len (doubleVecList) |double |A doubleVecList létrehozott vektor hosszát adja vissza. |
 | LG (dupla) |double |A dupla log-alapot adja vissza. |
 | LG (doubleVecList) |doubleVec |Az összetevő – a doubleVecList 2. alapszintű log-alapját adja vissza. A paraméternek explicit módon át kell adni egy VEC (Double). Ellenkező esetben a rendszer a kettős LG (Double) verziót feltételezi. |
@@ -210,19 +210,19 @@ Ezek az előre definiált **függvények** használhatók az automatikus skálá
 | ln (doubleVecList) |doubleVec |A Double típusú természetes naplót adja vissza. |
 | napló (dupla) |double |A Double napló alapját adja vissza. |
 | napló (doubleVecList) |doubleVec |A doubleVecList összetevő-Wise log Base 10-es értékét adja vissza. Az egyszeres dupla paraméterhez explicit módon át kell adni egy VEC (Double). Ellenkező esetben a rendszer a kettős napló (Double) verzióját feltételezi. |
-| Max (doubleVecList) |double |A doubleVecList maximális értékét adja vissza. |
+| max(doubleVecList) |double |A doubleVecList maximális értékét adja vissza. |
 | min (doubleVecList) |double |A doubleVecList minimális értékét adja vissza. |
-| norma (doubleVecList) |double |A doubleVecList létrehozott vektor két normáját adja vissza. |
+| norm(doubleVecList) |double |A doubleVecList létrehozott vektor két normáját adja vissza. |
 | percentilis (doubleVec v, Double p) |double |A Vector v percentilis elemét adja vissza. |
-| rand () |double |0,0 és 1,0 közötti véletlenszerű értéket ad vissza. |
-| tartomány (doubleVecList) |double |A doubleVecList minimális és maximális értékei közötti különbséget adja vissza. |
-| STD (doubleVecList) |double |A doubleVecList lévő értékek mintájának szórását adja vissza. |
-| Leállítás () | |Leállítja az automatikus skálázási kifejezés kiértékelését. |
+| rand() |double |0,0 és 1,0 közötti véletlenszerű értéket ad vissza. |
+| range(doubleVecList) |double |A doubleVecList minimális és maximális értékei közötti különbséget adja vissza. |
+| std(doubleVecList) |double |A doubleVecList lévő értékek mintájának szórását adja vissza. |
+| stop() | |Leállítja az automatikus skálázási kifejezés kiértékelését. |
 | Sum (doubleVecList) |double |A doubleVecList összes összetevőjének összegét adja vissza. |
-| idő (karakterlánc dateTime = "") |időbélyeg |Az aktuális idő időbélyegzőjét adja vissza, ha a rendszer nem ad át paramétereket, vagy ha a dateTime karakterlánc időbélyegzője átadásra kerül. A támogatott dateTime formátumok a W3C-DTF és az RFC 1123. |
+| time(string dateTime="") |időbélyeg |Az aktuális idő időbélyegzőjét adja vissza, ha a rendszer nem ad át paramétereket, vagy ha a dateTime karakterlánc időbélyegzője átadásra kerül. A támogatott dateTime formátumok a W3C-DTF és az RFC 1123. |
 | val (doubleVec v, dupla i) |double |A Vector v helyen található elem értékének visszaadása a nulla kezdő indexével. |
 
-Az előző táblázatban leírt függvények némelyike argumentumként is elfogadhatja a listát. A vesszővel tagolt lista a *kettős* és a *doubleVec*bármely kombinációját tartalmazza. Példa:
+Az előző táblázatban leírt függvények némelyike argumentumként is elfogadhatja a listát. A vesszővel tagolt lista a *kettős* és a *doubleVec*bármely kombinációját tartalmazza. Például:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -240,9 +240,9 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | --- | --- |
 | GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>`GetSample(1)` az utolsó elérhető mintát adja vissza. A metrikák, például a `$CPUPercent`esetében azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen, mert csak a minták 90 százaléka érhető el.<br/><br/>a `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. A `GetSample` metódus használatakor vegye figyelembe ezt a késleltetést. Lásd alább `GetSamplePercent`. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
-| Darabszám () |A metrikus előzményekben szereplő minták teljes számát adja vissza. |
+| Count() |A metrikus előzményekben szereplő minták teljes számát adja vissza. |
 | HistoryBeginTime() |A metrika legrégebbi rendelkezésre állási mintájának időbélyegét adja vissza. |
-| GetSamplePercent() |Egy adott időintervallumhoz elérhető minták százalékos arányát adja vissza. Példa:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Mivel a `GetSample` metódus meghiúsul, ha a visszaadott minták százalékos aránya kisebb, mint a megadott `samplePercent`, az `GetSamplePercent` metódussal lehet először megtekinteni. Ezt követően másik műveletet is végrehajthat, ha nincs elegendő minta, az automatikus skálázás kiértékelésének megállítása nélkül. |
+| GetSamplePercent() |Egy adott időintervallumhoz elérhető minták százalékos arányát adja vissza. Például:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Mivel a `GetSample` metódus meghiúsul, ha a visszaadott minták százalékos aránya kisebb, mint a megadott `samplePercent`, az `GetSamplePercent` metódussal lehet először megtekinteni. Ezt követően másik műveletet is végrehajthat, ha nincs elegendő minta, az automatikus skálázás kiértékelésének megállítása nélkül. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Minták, minta százalék és a *GetSample ()* metódus
 Az automatikusan méretezhető képletek alapvető működése a feladat-és erőforrás-metrikai adatok beszerzése, majd a készlet méretének módosítása az adatok alapján. Ezért fontos, hogy tisztában legyen azzal, hogy az autoskálázási képletek hogyan hatnak a metrikák adataira (minták).
@@ -267,7 +267,7 @@ Ehhez használja a `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Ha a fenti sort kiértékeli a Batch, a több mintát ad vissza az értékek vektora. Példa:
+Ha a fenti sort kiértékeli a Batch, a több mintát ad vissza az értékek vektora. Például:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -288,7 +288,7 @@ Mivel előfordulhat, hogy a minta rendelkezésre állása késésben van, fontos
 >
 >
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Képletek definiálásakor az erőforrás és a tevékenység mérőszámait is használhatja. A készletben lévő dedikált csomópontok számát a beszerzett és kiértékelt metrikai adatok alapján állíthatja be. Az egyes metrikákkal kapcsolatos további információkért tekintse meg a fenti [változók](#variables) szakaszt.
 
@@ -472,7 +472,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Automatikus skálázás engedélyezése meglévő készleten
 
-Minden batch SDK lehetővé teszi az automatikus skálázást. Példa:
+Minden batch SDK lehetővé teszi az automatikus skálázást. Például:
 
 * [BatchClient. PoolOperations. EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .net)
 * [Automatikus skálázás engedélyezése egy készleten][rest_enableautoscale] (REST API)
@@ -675,10 +675,10 @@ Ebben a példában a készlet méretét a várólista feladatai száma alapján 
 
 ```csharp
 // Get pending tasks for the past 15 minutes.
-$samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
+$samples = $PendingTasks.GetSamplePercent(TimeInterval_Minute * 15);
 // If we have fewer than 70 percent data points, we use the last sample point,
 // otherwise we use the maximum of last sample point and the history average.
-$tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+$tasks = $samples < 70 ? max(0,$PendingTasks.GetSample(1)) : max( $PendingTasks.GetSample(1), avg($PendingTasks.GetSample(TimeInterval_Minute * 15)));
 // If number of pending tasks is not 0, set targetVM to pending tasks, otherwise
 // half of current dedicated.
 $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);

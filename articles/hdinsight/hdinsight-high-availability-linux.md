@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030870"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198939"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -27,7 +27,7 @@ A Hadoop magas rendelkezésre állást és megbízhatóságot biztosít a szolg�
 A HDInsight-fürtök csomópontjai az Azure Virtual Machines használatával valósíthatók meg. A következő fejezetek a HDInsight-mel használt egyes csomópont-típusokat tárgyalják.
 
 > [!NOTE]  
-> Nem minden csomópont-típust használ a fürt típusához. Például egy Hadoop-fürt típusa nem rendelkezik Nimbus-csomópontokkal. A HDInsight-fürtök által használt csomópontokkal kapcsolatos további információkért tekintse meg a [Linux-alapú Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentumban című szakaszt.
+> Nem minden csomópont-típust használ a fürt típusához. Például egy Hadoop-fürt típusa nem rendelkezik Nimbus-csomópontokkal. A HDInsight-fürtök által használt csomópontokkal kapcsolatos további információkért tekintse meg a [Linux-alapú Hadoop-fürtök létrehozása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) dokumentumban című szakaszt.
 
 ### <a name="head-nodes"></a>Átjárócsomópontok
 

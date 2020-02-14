@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828343"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190570"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>A Linux Virtual Machines biztonsági vezérlői
 
@@ -22,7 +22,7 @@ Ez a cikk a Linux Virtual Machines beépített biztonsági vezérlőket dokument
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
@@ -44,7 +44,7 @@ Ez a cikk a Linux Virtual Machines beépített biztonsági vezérlőket dokument
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
 | Authentication| Igen |  |
-| Authorization| Igen |  |
+| Engedélyezés| Igen |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -53,8 +53,8 @@ Ez a cikk a Linux Virtual Machines beépített biztonsági vezérlőket dokument
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md). |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az Azure Virtual Machines támogatja a [ExpressRoute](/azure/expressroute) és a VNet titkosítást. Lásd: [tranzitraktár titkosítás a virtuális gépeken](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure-titkosítási forgatókönyv; Lásd: az [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Oszlop szintű titkosítás (Azure Data Services)| – | |
-| Titkosított API-hívások| Igen | HTTPS és SSL használatával. |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
+| Titkosított API-hívások| Igen | HTTPS és TLS protokollon keresztül. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
@@ -62,6 +62,6 @@ Ez a cikk a Linux Virtual Machines beépített biztonsági vezérlőket dokument
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).

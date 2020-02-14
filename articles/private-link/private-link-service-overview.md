@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647373"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191086"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -55,6 +55,7 @@ A Private link Service a következő tulajdonságokat adja meg:
 |Előtér-IP-konfiguráció Load Balancer (loadBalancerFrontendIpConfigurations)    |    A Private link Service egy standard Load Balancer előtérbeli IP-címéhez van kötve. A szolgáltatásnak szánt összes forgalom elérheti a SLB felületét. A SLB szabályokat úgy is konfigurálhatja, hogy a forgalmat a megfelelő háttér-készletekbe irányítsa, ahol az alkalmazásai futnak. A Load Balancer előtér-IP-konfigurációi eltérnek a NAT IP-konfigurációtól.      |
 |NAT IP-konfiguráció (ipConfigurations)    |    Ez a tulajdonság a magánhálózati kapcsolati szolgáltatás NAT (hálózati címfordítás) IP-konfigurációjához hivatkozik. A NAT IP-címet a szolgáltató virtuális hálózatában található bármely alhálózatból lehet kiválasztani. A Private link Service a privát kapcsolat forgalmán végzi a cél oldali NAT-nek. Ez biztosítja, hogy a forrás (fogyasztói oldal) és a cél (szolgáltató) címterület között ne legyenek IP-ütközések. A cél oldalon (szolgáltató oldalon) a NAT IP-címe forrás IP-ként jelenik meg a szolgáltatás által fogadott összes csomaghoz és a cél IP-címéhez a szolgáltatás által küldött összes csomag esetében.       |
 |Magánhálózati végponti kapcsolatok (privateEndpointConnections)     |  Ez a tulajdonság felsorolja a Private link Service-hez csatlakozó privát végpontokat. Több magánhálózati végpont is csatlakozhat ugyanahhoz a privát kapcsolati szolgáltatáshoz, és a szolgáltató szabályozhatja az egyes privát végpontok állapotát.        |
+|TCP-proxy v2 (EnableProxyProtocol)     |  Ez a tulajdonság lehetővé teszi, hogy a szolgáltató a TCP proxy v2 használatával lekérje a szolgáltatás felhasználójának kapcsolódási adatait. A szolgáltató feladata a fogadó konfigurációk beállítása, hogy képes legyen elemezni a proxy protokoll v2-fejlécét.        |
 |||
 
 
@@ -95,14 +96,28 @@ Azok a felhasználók, akik számára expozíció (láthatósági beállítás �
 
 A kapcsolatok jóváhagyásának művelete automatizálható a privát kapcsolat szolgáltatás automatikus jóváhagyási tulajdonságának használatával. Az automatikus jóváhagyás lehetővé teszi, hogy a szolgáltatók előre jóváhagyják a szolgáltatáshoz való automatikus hozzáférést előfizetések készletét. Az ügyfeleknek meg kell osztaniuk az előfizetéseket a szolgáltatók számára az automatikus jóváhagyási listához való hozzáadáshoz. Az automatikus jóváhagyás a láthatósági tömb egy részhalmaza. A láthatóság szabályozza az expozíciós beállításokat, míg az automatikus jóváhagyás vezérli a szolgáltatás jóváhagyási beállításait. Ha egy ügyfél az automatikus jóváhagyási listán szereplő előfizetéshez kapcsolódik, a rendszer automatikusan jóváhagyja a kapcsolatokat, és a kapcsolatok létrejöttek. A szolgáltatóknak nem kell manuálisan jóváhagynia a kérést. Ha azonban egy ügyfél egy, a láthatósági tömbben lévő előfizetésből kér kapcsolatot, és nem az automatikus jóváhagyási tömbben, akkor a kérelem eléri a szolgáltatót, de a szolgáltatónak manuálisan kell jóváhagynia a kapcsolatokat.
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>A kapcsolatok adatainak beolvasása a TCP proxy v2 használatával
+
+A privát kapcsolati szolgáltatás használatakor a magánhálózati végpontból érkező csomagok forrás IP-címe a szolgáltató virtuális hálózata által lefoglalt NAT IP-cím (NAT). Ezért az alkalmazások a lefoglalt NAT IP-címet kapják meg a szolgáltatás felhasználóinak tényleges forrás IP-címe helyett. Ha az alkalmazásnak tényleges forrás IP-címet kell használnia a fogyasztói oldalról, engedélyezheti a proxy protokollt a szolgáltatásban, és lekérheti az adatokat a proxy protokoll fejlécében. A forrás IP-címe mellett a proxy protokoll fejléce is a magánhálózati végpont LinkID azonosítóját is elvégzi. A forrás IP-címének és a LinkID-nak a kombinációja segíti a szolgáltatók számára a felhasználók egyedi azonosítását. További információ a proxy protokollról:. 
+
+Ezeket az adatokat a következőképpen kódolja a rendszer az egyéni típus-érték (TLV) vektor használatával:
+
+Egyéni TLV-részletek:
+
+|Mező |Hossz (oktettek)  |Leírás  |
+|---------|---------|----------|
+|Típus  |1        |PP2_TYPE_AZURE (0xEE)|
+|Hossz  |2      |Érték hossza|
+|Érték  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |A privát végpont LINKID-UINT32 (4 bájt). Kódolása kis endian formátumban.|
+
+
 ## <a name="limitations"></a>Korlátozások
 
 A Private link Service használatának ismert korlátai a következők:
 - Csak standard Load Balancer támogatott 
 - Csak az IPv4-forgalmat támogatja
 - Csak a TCP-forgalmat támogatja
-- Nem támogatott a Azure Portali élmény létrehozása és kezelése
-- A proxy protokollt használó ügyfelek kapcsolati adatai nem érhetők el a szolgáltató számára
 
 ## <a name="next-steps"></a>Következő lépések
 - [Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)

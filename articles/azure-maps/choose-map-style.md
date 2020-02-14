@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911796"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189743"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Válasszon egy térképi stílust Azure Maps
 
-[Azure Maps számos támogatott térképi stílusa](./supported-map-styles.md) elérhető a web SDK-ban. Ez a cikk bemutatja, hogyan használhatók a stílussal kapcsolatos funkciók a térképes betöltések stílusának beállításához, új stílus beállítása és a Style Picker vezérlőelem használata.
+[Azure Maps számos támogatott térképi stílusa](./supported-map-styles.md) elérhető a web SDK-ban. Ez a cikk bemutatja, hogyan használhatja a stílussal kapcsolatos funkciókat. Megtudhatja, hogyan állíthat be egy stílust a Térkép betöltésekor, és megtudhatja, hogyan állíthat be új leképezési stílust a Style Picker vezérlőelem használatával.
 
 ## <a name="set-style-on-map-load"></a>Stílus beállítása a Térkép betöltéséhez
 
@@ -30,7 +30,7 @@ A következő kódban a Térkép `style` beállításának értéke `grayscale_d
 
 ## <a name="update-the-style"></a>A stílus frissítése
 
-A következő kódban a térképi példány betöltését követően a Térkép stílusa `road`ról `satellite`ra frissül a Térkép [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkciójával.
+A következő kódban a térképi példány betöltését követően a Térkép stílusa `road`ról `satellite`ra frissül a [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) függvény használatával.
 
 <br/>
 
@@ -39,7 +39,7 @@ A következő kódban a térképi példány betöltését követően a Térkép 
 
 ## <a name="add-the-style-picker"></a>A Style Picker hozzáadása
 
-A következő kód egy [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) helyez el a térképhez, így a felhasználó könnyedén válthat a különböző térképi stílusok között. 
+A következő kód egy [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) helyez el a térképhez, így a felhasználó könnyedén válthat a különböző térképi stílusok között. A Térkép stílusa a jobb felső sarokban látható Térkép stílusa vezérlőelem használatával válthat.
 
 <br/>
 
@@ -47,7 +47,7 @@ A következő kód egy [StyleControl](/javascript/api/azure-maps-control/atlas.c
 </iframe>
 
 > [!TIP]
-> Alapértelmezés szerint a Style Picker vezérlő felsorolja az összes olyan stílust, amely a Azure Maps S0 díjszabási szintje alapértelmezett használatakor elérhető. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a Style Picker `mapStyle` lehetőségével. Ha S1-et használ, és az összes rendelkezésre álló stílust meg szeretné jeleníteni, állítsa `"all"`re a Style Picker `mapStyles` lehetőségét.
+> Alapértelmezés szerint a Azure Maps S0 díjszabási szintje használatakor a Style Picker vezérlő felsorolja az összes elérhető stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a Style Picker `mapStyle` lehetőségével. Ha S1-et használ, és az összes rendelkezésre álló stílust meg szeretné jeleníteni, állítsa `"all"`re a Style Picker `mapStyles` lehetőségét.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Mik azok a hozzáférési felülvizsgálatok? – Azure Active Directory | Microsoft Docs
+title: Mik azok a hozzáférési felülvizsgálatok? – Az azure Active Directory |} A Microsoft Docs
 description: A Azure Active Directory hozzáférési felülvizsgálatok segítségével szabályozhatja a csoporttagság és az alkalmazások elérését, hogy megfeleljen a szervezet irányítási, kockázatkezelési és megfelelőségi kezdeményezéseinek.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932644"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185758"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -58,13 +58,13 @@ Attól függően, hogy mit szeretne áttekinteni, az Azure AD hozzáférési fel
 | --- | --- | --- | --- |
 | Biztonsági csoport tagjai</br>Office-csoporttagok | Megadott véleményezők</br>Csoport tulajdonosainak</br>Önálló felülvizsgálat | Azure AD hozzáférési felülvizsgálatok</br>Azure AD-csoportok | Hozzáférési panel |
 | Hozzárendelve egy csatlakoztatott alkalmazáshoz | Megadott véleményezők</br>Önálló felülvizsgálat | Azure AD hozzáférési felülvizsgálatok</br>Azure AD Enterprise-alkalmazások (előzetes verzió) | Hozzáférési panel |
-| Azure AD-szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portál |
-| Azure-erőforrás szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portál |
+| Azure AD-szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure-erőforrás szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 
 
-## <a name="onboard-access-reviews"></a>A fedélzeti hozzáférési felülvizsgálatok
+## <a name="create-access-reviews"></a>Hozzáférési felülvizsgálatok létrehozása
 
-A hozzáférési felülvizsgálatok előkészítéséhez kövesse az alábbi lépéseket.
+Hozzáférési felülvizsgálatok létrehozásához kövesse az alábbi lépéseket:
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) a hozzáférési felülvizsgálatok kezeléséhez, és jelentkezzen be globális rendszergazdaként vagy felhasználói rendszergazdaként.
 
@@ -74,13 +74,9 @@ A hozzáférési felülvizsgálatok előkészítéséhez kövesse az alábbi lé
 
 1. Válassza az **identitás szabályozása**lehetőséget.
 
-1. Kattintson a **hozzáférési felülvizsgálatok**lehetőségre.
- 
-    ![Hozzáférési felülvizsgálatok kezdőlapja](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. A kezdeti lépések lapon kattintson a hozzáférés- **ellenőrzés létrehozása** gombra.
 
-1. A lapon kattintson a beléptetés **most** gombra.
-    
-      ![Hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![Hozzáférési felülvizsgálatok kezdőlapja](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>Tudnivalók a hozzáférési felülvizsgálatokról
@@ -118,7 +114,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Alkalmazási helyzet | Számítás | Licencek száma |
+| Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |

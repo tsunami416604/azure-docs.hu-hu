@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 179bb5c9d718a556b829af8f860cb284597835aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821895"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190757"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatikus hangolás a Azure SQL Databaseban
 
@@ -71,7 +71,7 @@ A Azure SQL Databaseban elérhető Automatikus hangolási lehetőségek a követ
 | **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket nem használtak hosszú ideig (> 90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
 | **Utolsó jó csomag kényszerítése** (automatikus terv helyesbítése) – az SQL-lekérdezéseket az előző helyes csomagnál lassabb végrehajtási terv alapján azonosítja, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
 
-Az automatikus hangolás azonosítja a **create index**, a **drop index**és az **utolsó jó csomagra** vonatkozó ajánlásokat, amelyek optimalizálják az adatbázis teljesítményét, és megjelenítik őket a [Azure PORTALban](sql-database-advisor-portal.md), és a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) [-en keresztül is elérhetővé válnak. REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Ha többet szeretne megtudni a KÉNYSZERÍTett utolsó jó CSOMAGról és az Automatikus hangolási lehetőségekről a T-SQL-en keresztül, tekintse meg az automatikus [hangolás](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)bevezetését.
+Az automatikus hangolás azonosítja a **create index**, a **drop index**és az **utolsó jó tervezési** javaslatokat, amelyek segítségével optimalizálhatja az adatbázis teljesítményét, és megjelenítheti őket a [Azure Portalban](sql-database-advisor-portal.md), és a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és a [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)használatával teszi elérhetővé. Ha többet szeretne megtudni a KÉNYSZERÍTett utolsó jó CSOMAGról és az Automatikus hangolási lehetőségekről a T-SQL-en keresztül, tekintse meg az automatikus [hangolás](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)bevezetését.
 
 Manuálisan is alkalmazhatja a hangolási javaslatokat a portál használatával, vagy engedélyezheti az automatikus finomhangolást a hangolási javaslatok önálló alkalmazásával. Az előnye, hogy a rendszer önállóan alkalmazza a hangolási javaslatokat, hogy automatikusan ellenőrizze, hogy van-e pozitív nyereség a munkaterhelés teljesítményében, és ha nem észlelhető jelentős teljesítmény-javulás, akkor a hangolási javaslat automatikus visszaállítása. Vegye figyelembe, hogy a gyakran nem végrehajtott hangolási javaslatok által érintett lekérdezések esetében az ellenőrzési fázis akár 72 órával is eltarthat.
 
@@ -79,9 +79,16 @@ Ha T-SQL-n keresztül alkalmazza a hangolási javaslatokat, az automatikus telje
 
 Az Automatikus hangolási beállítások egymástól függetlenül engedélyezhetők vagy letilthatók az adatbázison, vagy konfigurálható SQL Database-kiszolgálókon, és minden olyan adatbázison alkalmazható, amely a kiszolgáló beállításait örökli. SQL Database-kiszolgálók öröklik az Azure alapértelmezett beállításait az Automatikus hangolási beállításokhoz. Az Azure alapértelmezett beállításai jelenleg FORCE_LAST_GOOD_PLAN engedélyezve vannak, CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
 
+> [!IMPORTANT]
+> Március 2020 az automatikus hangoláshoz tartozó Azure-beli alapértelmezett beállítások változásai az alábbiak szerint lépnek életbe:
+> - Az új Azure alapértékek FORCE_LAST_GOOD_PLAN = engedélyezve, CREATE_INDEX = letiltva, és DROP_INDEX = letiltva lesznek.
+> - Az Automatikus hangolási beállításokkal nem rendelkező meglévő kiszolgálók automatikusan konfigurálva lesznek az új Azure alapértékekkel. Ez minden olyan ügyfélre vonatkozik, amely jelenleg nem definiált állapotú automatikus hangolású.
+> - A létrehozott új kiszolgálók automatikusan az új Azure alapértékekkel lesznek konfigurálva (a korábbitól eltérően, ha az Automatikus hangolási konfiguráció nem definiált állapotú az új kiszolgáló létrehozása után).
+>
+
 Ha az Automatikus hangolási beállításokat egy kiszolgálón konfigurálja, és a fölérendelt kiszolgálóhoz tartozó adatbázisok beállításait örökli, ajánlott módszer az automatikus Finomhangolás konfigurálására, mivel az leegyszerűsíti a nagy számú adatbázis Automatikus hangolási beállításainak kezelését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A számítási feladatok kezeléséhez Azure SQL Database automatikus hangolásának engedélyezéséhez tekintse meg az [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md)című témakört.
 - Az Automatikus hangolási javaslatok manuális áttekintéséhez és alkalmazásához tekintse [meg a teljesítményre vonatkozó javaslatok keresése és alkalmazása](sql-database-advisor-portal.md)című témakört.

@@ -1,6 +1,6 @@
 ---
-title: Hibaüzenet jelenik meg az alkalmazás lapjának bejelentkezés után |} A Microsoft Docs
-description: Ha az alkalmazás hibaüzenetet ad vissza az Azure AD bejelentkezési problémák megoldása hogyan.
+title: Hibaüzenet jelenik meg az alkalmazás oldalán a bejelentkezés után | Microsoft Docs
+description: Az Azure AD-bejelentkezéssel kapcsolatos hibák elhárítása, amikor az alkalmazás hibaüzenetet ad vissza.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,152 +16,152 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612665"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185491"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Alkalmazáslap egy hibaüzenetet jelenít meg, a felhasználó bejelentkezése után az
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Egy alkalmazás lap hibaüzenetet jelenít meg, miután a felhasználó bejelentkezik
 
-Ebben a forgatókönyvben az Azure Active Directory (Azure AD) a felhasználó jelentkezik be. Azonban az alkalmazás hibaüzenetet jelenít meg, és nem teszi lehetővé a felhasználó a bejelentkezési folyamat befejezéséhez. A probléma oka, hogy az alkalmazás nem fogadja el a választ, amely a kiállított Azure ad-ben.
+Ebben az esetben Azure Active Directory (Azure AD) aláírja a felhasználót a alkalmazásban. Az alkalmazás azonban hibaüzenetet jelenít meg, és nem teszi lehetővé, hogy a felhasználó befejezze a bejelentkezési folyamatot. A probléma az, hogy az alkalmazás nem fogadta el az Azure AD által kiadott választ.
 
-Miért érdemes az alkalmazás nem fogadja el az Azure ad-ből a válasz több lehetséges oka is van. Ha a hibaüzenet nem egyértelműen azonosítható, mi az a válaszból hiányzik, próbálja meg a következőt:
+Számos lehetséges oka van annak, hogy az alkalmazás miért nem fogadta el a választ az Azure AD-től. Ha a hibaüzenet nem azonosítja egyértelműen a válaszból hiányzókat, próbálkozzon a következőkkel:
 
--   Ha az alkalmazás az Azure AD katalógusából származó, győződjön meg arról, hogy követte a lépéseket a [az Azure ad-ben az SAML-alapú egyszeri bejelentkezés alkalmazások hibakeresése](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+-   Ha az alkalmazás az Azure AD-katalógus, ellenőrizze, hogy követte-e az [SAML-alapú egyszeri bejelentkezés az Azure ad-ben való hibakeresésének](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)lépéseit.
 
--   Egy hasonló eszközzel [Fiddler](https://www.telerik.com/fiddler) a SAML-kérelem, válasz és jogkivonat-rögzítéséhez.
+-   Használjon olyan eszközt, mint a [Hegedűs](https://www.telerik.com/fiddler) , és rögzítse az SAML-kérelmet, a választ és a tokent.
 
--   Az alkalmazás gyártójával, a SAML-válasz küldése, és kérje meg, mi hiányzik.
+-   Küldje el az SAML-választ az alkalmazás forgalmazójától, és kérje meg, hogy mi hiányzik.
 
-## <a name="attributes-are-missing-from-the-saml-response"></a>Attribútumok hiányoznak az SAML-válasz
+## <a name="attributes-are-missing-from-the-saml-response"></a>Hiányzó attribútumok az SAML-válaszból
 
-Attribútum hozzáadása az Azure AD választ kap az Azure AD-konfigurációban, kövesse az alábbi lépéseket:
+Az Azure ad-válaszban elküldeni kívánt attribútum hozzáadásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. A bal oldali navigációs ablak tetején válassza **minden szolgáltatás** megnyitásához az Azure AD-bővítményben.
+2. A bal oldali navigációs ablaktábla tetején a **minden szolgáltatás** elemre kattintva nyissa meg az Azure ad-bővítményt.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amelyet szeretne konfigurálni az egyszeri bejelentkezés.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a navigációs ablaktáblán.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a navigációs ablaktáblán.
 
-8. Az a **felhasználói attribútumok** szakaszban jelölje be **megtekintése és egyéb felhasználói attribútumok szerkesztése**. Itt módosíthatja a melyik attribútumok legyenek az alkalmazás SAML-jogkivonatban küld, amikor bejelentkeznek.
+8. A **felhasználói attribútumok** szakaszban válassza az **összes többi felhasználói attribútum megtekintése és szerkesztése**lehetőséget. Itt módosíthatja, hogy mely attribútumok legyenek elküldve az alkalmazásnak az SAML-jogkivonatban, amikor a felhasználók bejelentkeznek.
 
    Attribútum hozzáadása:
 
-   1. Válassza ki **attribútum hozzáadása**. Adja meg a **neve**, és válassza ki a **érték** a legördülő listából.
+   1. Válassza az **attribútum hozzáadása**elemet. Adja meg a **nevet**, és válassza ki az **értéket** a legördülő listából.
 
-   1.  Kattintson a **Mentés** gombra. Látni fogja a táblázatban az új attribútumot.
+   1.  Kattintson a **Mentés** gombra. Ekkor megjelenik az új attribútum a táblában.
 
 9. Mentse a konfigurációt.
 
-   A felhasználó bejelentkezik az alkalmazásba, amikor legközelebb az Azure AD elküldi az új attribútumot, a SAML-válasz.
+   Amikor a felhasználó legközelebb bejelentkezik az alkalmazásba, az Azure AD az SAML-válaszban fogja elküldeni az új attribútumot.
 
-## <a name="the-app-doesnt-identify-the-user"></a>Az alkalmazás nem azonosítani a felhasználót
+## <a name="the-app-doesnt-identify-the-user"></a>Az alkalmazás nem azonosítja a felhasználót
 
-Az alkalmazás a bejelentkezés meghiúsul, mert a SAML-válasz hiányzik egy attribútum, például egy szerepkör. Vagy, sikertelen lesz, mivel az alkalmazás más formátumú vagy értéket vár. a **NameID** (felhasználóazonosító) attribútum.
+Az alkalmazásba való bejelentkezés sikertelen, mert az SAML-válaszból hiányzik egy attribútum, például egy szerepkör. Vagy sikertelen, mert az alkalmazás eltérő formátumot vagy értéket vár a **NameID** (felhasználói azonosító) attribútumhoz.
 
-Ha használ [Azure ad-ben automatizált felhasználókiépítése](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) szeretne létrehozni, karbantartását, és távolítsa el a felhasználókat az alkalmazásban, győződjön meg arról, hogy a felhasználó az SaaS-alkalmazás lett kiépítve. További információkért lásd: [egyetlen felhasználó sem lett létrehozva az Azure AD katalógusából származó alkalmazásba való](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned).
+Ha az [Azure ad automatizált felhasználói üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) helyezését használja az alkalmazásban lévő felhasználók létrehozására, karbantartására és eltávolítására, ellenőrizze, hogy a felhasználó ki lett-e építve az SaaS-alkalmazásba. További információ: [egyetlen felhasználó sincs kiépítve egy Azure ad Gallery-alkalmazásba](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
-## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Attribútum hozzáadása az Azure AD-alkalmazások konfigurálása
+## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Attribútum hozzáadása az Azure AD-alkalmazás konfigurációjához
 
 A felhasználói azonosító értékének módosításához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. Válassza ki **minden szolgáltatás** az Azure AD-bővítmény megnyitásához a bal oldali navigációs ablak tetején.
+2. Az Azure AD-bővítmény megnyitásához kattintson a bal oldalon található navigációs ablaktábla tetején található **összes szolgáltatás** elemre.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
-
-   > [!NOTE]
-   > Ha nem látja a kívánt alkalmazást, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
-
-6. Válassza ki az alkalmazást, amely az egyszeri bejelentkezéshez konfigurálandó.
-
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a navigációs ablaktáblán.
-
-8. A **felhasználói attribútumok**, válassza ki, hogy a felhasználó egyedi azonosítója a **felhasználóazonosító** legördülő listából.
-
-## <a name="change-the-nameid-format"></a>Módosítsa a NameID-formátum
-
-Ha az alkalmazás egy másik formátumú vár a **NameID** (felhasználói azonosító) attribútummal, lásd: [szerkesztési nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) nameid-formátumához módosításához.
-
-Az Azure AD kiválasztása formátumát a **NameID** (felhasználóazonosító) attribútum alapján a kiválasztott érték, vagy a SAML AuthRequest az alkalmazás által kért formátumban. További információkért lásd: a "NameIDPolicy" szakaszában [egyszeri bejelentkezéses SAML-protokoll](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
-
-## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Az alkalmazás vár módszert más aláírás a SAML-válasz
-
-Az SAML-jogkivonat mely részeit írja alá digitálisan az Azure AD módosításához kövesse az alábbi lépéseket:
-
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
-
-2. Válassza ki **minden szolgáltatás** az Azure AD-bővítmény megnyitásához a bal oldali navigációs ablak tetején.
-
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
-
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
-
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazásra, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amelyet szeretne konfigurálni az egyszeri bejelentkezés.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** a navigációs ablaktáblán.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a navigációs ablaktáblán.
 
-8. A **SAML-aláíró tanúsítvány**válassza **speciális tanúsítvány-aláírási beállítások megjelenítése**.
+8. A **felhasználói attribútumok**területen válassza ki a felhasználó egyedi azonosítóját a **felhasználói azonosító** legördülő listából.
 
-9. Válassza ki a **aláírási beállítás** , amelyeket az alkalmazás vár, ezek a lehetőségek közül:
+## <a name="change-the-nameid-format"></a>NameID formátumának módosítása
+
+Ha az alkalmazás egy másik formátumot vár a **NameID** (felhasználóazonosító) attribútumhoz, tekintse meg a [NameID szerkesztése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) című témakört a NameID formátumának módosításához.
+
+Az Azure AD kiválasztja a **NameID** attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az SAML-AuthRequest alkalmazás által kért formátum alapján. További információ: az [egyszeri bejelentkezéses SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)"NameIDPolicy" szakasza.
+
+## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Az alkalmazás eltérő aláírási módszert vár az SAML-válaszhoz
+
+Az alábbi lépéseket követve módosíthatja, hogy az SAML-jogkivonat mely részeit digitálisan aláírta az Azure AD:
+
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
+
+2. Az Azure AD-bővítmény megnyitásához kattintson a bal oldalon található navigációs ablaktábla tetején található **összes szolgáltatás** elemre.
+
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
+
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
+
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
+
+   > [!NOTE]
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
+
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
+
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a navigációs ablaktáblán.
+
+8. Az **SAML-aláíró tanúsítvány**területen válassza a **speciális tanúsítvány-aláírási beállítások megjelenítése**lehetőséget.
+
+9. Válassza ki azt az **aláírási lehetőséget** , amelyet az alkalmazás a következő lehetőségek közül vár:
 
    * **SAML-válasz aláírása**
-   * **SAML-válasz és -előfeltétel aláírása**
-   * **SAML-előfeltétel aláírása**
+   * **SAML-válasz és-érvényesítés aláírása**
+   * **SAML-állítás aláírása**
 
-   Amikor legközelebb a felhasználó bejelentkezik az alkalmazásba, az Azure AD alá fogja írni a kiválasztott SAML-válasz részét.
+   Amikor a felhasználó legközelebb bejelentkezik az alkalmazásba, az Azure AD aláírja a kiválasztott SAML-válasz részét.
 
-## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Az alkalmazás vár az SHA-1 algoritmust
+## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Az alkalmazás az SHA-1 aláíró algoritmust várja.
 
-Alapértelmezés szerint az Azure AD SAML-jogkivonatban aláírja a legtöbb biztonságos algoritmus használatával. Azt javasoljuk, hogy nem módosítja az aláíró algoritmus *SHA-1* , kivéve, ha az alkalmazásnak szüksége van az SHA-1.
+Alapértelmezés szerint az Azure AD a legbiztonságosabb algoritmus használatával aláírja az SAML-tokent. Azt javasoljuk, hogy ne módosítsa az aláíró algoritmust *SHA-1* értékre, kivéve, ha az alkalmazáshoz SHA-1 szükséges.
 
 Az aláíró algoritmus módosításához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be egy globális rendszergazdai vagy társadminisztrátorként.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és jelentkezzen be globális rendszergazdaként vagy társ-rendszergazdaként.
 
-2. Válassza ki **minden szolgáltatás** az Azure AD-bővítmény megnyitásához a bal oldali navigációs ablak tetején.
+2. Az Azure AD-bővítmény megnyitásához kattintson a bal oldalon található navigációs ablaktábla tetején található **összes szolgáltatás** elemre.
 
-3. Típus **Azure Active Directory** a szűrőt a keresési mezőbe, és válassza ki a **Azure Active Directory**.
+3. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza a **Azure Active Directory**lehetőséget.
 
-4. Válassza ki **vállalati alkalmazások** az Azure ad-ben navigációs ablaktáblán.
+4. Válassza a **vállalati alkalmazások** lehetőséget az Azure ad navigációs ablaktábláján.
 
-5. Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Az alkalmazások listájának megtekintéséhez kattintson a **minden alkalmazás** elemre.
 
    > [!NOTE]
-   > Ha nem látja a kívánt alkalmazásra, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**. Állítsa be a **megjelenítése** beállítást az "Összes alkalmazás."
+   > Ha nem látja a kívánt alkalmazást, használja a **minden alkalmazás lista**tetején található **szűrő** vezérlőelemet. Állítsa a **show (megjelenítés** ) lehetőséget a "minden alkalmazás" értékre.
 
-6. Válassza ki az alkalmazást, amelyet szeretne konfigurálni az egyszeri bejelentkezés.
+6. Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 
-7. Miután betölti az alkalmazást, válassza ki **egyszeri bejelentkezési** az alkalmazás a bal oldali navigációs panelről.
+7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget az alkalmazás bal oldalán található navigációs ablaktáblán.
 
-8. A **SAML-aláíró tanúsítvány**válassza **speciális tanúsítvány-aláírási beállítások megjelenítése**.
+8. Az **SAML-aláíró tanúsítvány**területen válassza a **speciális tanúsítvány-aláírási beállítások megjelenítése**lehetőséget.
 
-9. Válassza ki **SHA-1** , a **aláíró algoritmus**.
+9. Válassza az **SHA-1** lehetőséget az **aláíró algoritmusként**.
 
-   A felhasználó bejelentkezik az alkalmazásba, amikor legközelebb az Azure AD fog használatával írja alá az SAML-jogkivonat az SHA-1 algoritmust.
+   Amikor a felhasználó legközelebb bejelentkezik az alkalmazásba, az Azure AD aláírja az SAML-jogkivonatot az SHA-1 algoritmus használatával.
 
-## <a name="next-steps"></a>További lépések
-[Az Azure ad-ben az SAML-alapú egyszeri bejelentkezés alkalmazások hibakeresése](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+## <a name="next-steps"></a>Következő lépések
+Az [SAML-alapú egyszeri bejelentkezések hibakeresése az Azure ad-beli alkalmazásokban](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).

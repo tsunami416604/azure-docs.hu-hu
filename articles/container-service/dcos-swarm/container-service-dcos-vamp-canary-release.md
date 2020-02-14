@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275660"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189107"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>ELAVULT Az Azure Container Service DC/OS-fürtön található vamp kiadási szolgáltatásokkal rendelkező csicsörke
 
@@ -127,13 +127,13 @@ A Elasticsearch jelentések **futtatása**után felveheti a vamp DC/os Universe 
 
 Most, hogy a vamp már működik, üzembe helyezi a szolgáltatást egy tervből. 
 
-A legegyszerűbb formájában a [vamp tervrajza](https://vamp.io/documentation/using-vamp/blueprints/) a telepítendő végpontokat (átjárókat), fürtöket és szolgáltatásokat ismerteti. A vamp a fürtök használatával csoportosítja ugyanazon szolgáltatás különböző változatait logikai csoportokba a Kanári-kibocsátáshoz vagy A/B teszteléshez.  
+A legegyszerűbb formájában a [vamp tervrajza](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) a telepítendő végpontokat (átjárókat), fürtöket és szolgáltatásokat ismerteti. A vamp a fürtök használatával csoportosítja ugyanazon szolgáltatás különböző változatait logikai csoportokba a Kanári-kibocsátáshoz vagy A/B teszteléshez.  
 
 Ez a forgatókönyv egy Száva nevű, a 1,0-es verzióban található, a [**savat**](https://github.com/magneticio/sava)használó minta monolitikus alkalmazást használ. A Monolith egy Docker-tárolóba van csomagolva, amely a magneticio/Sava: 1.0.0 alatt található Docker hub-ban. Az alkalmazás általában a 8080-es porton fut, de ebben az esetben az 9050-es porton keresztül szeretné közzétenni. Az alkalmazás üzembe helyezése a vamp segítségével egy egyszerű terv használatával.
 
 1. Ugrás az üzemelő **példányokra**.
 
-2. Kattintson a **Hozzáadás** parancsra.
+2. Kattintson az **Hozzáadás** parancsra.
 
 3. Illessze be a következő terv YAML. Ez a terv egy olyan fürtöt tartalmaz, amely csak egy szolgáltatási változattal rendelkezik, amely egy későbbi lépésben módosul:
 
@@ -151,7 +151,7 @@ Ez a forgatókönyv egy Száva nevű, a 1,0-es verzióban található, a [**sava
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. Kattintson a **Mentés** gombra. A vamp elindítja az üzembe helyezést.
+4. Kattintson a **Save** (Mentés) gombra. A vamp elindítja az üzembe helyezést.
 
 A központi telepítés a **központi telepítések** lapon jelenik meg. Kattintson a központi telepítésre az állapotának figyeléséhez.
 
@@ -211,7 +211,7 @@ Az új Száva 1,1 szolgáltatás egyesítése a futó üzembe helyezéssel:
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. Kattintson a **Mentés** gombra. A tervet a **tervrajzok** oldalon tároljuk és listázjuk.
+3. Kattintson a **Save** (Mentés) gombra. A tervet a **tervrajzok** oldalon tároljuk és listázjuk.
 
 4. Nyissa meg a művelet menüt a Sava: 1.1 tervben, majd kattintson az **Egyesítés a**következőre elemre.
 
@@ -287,9 +287,9 @@ A vamp néhány hatékony funkcióját is megérintettük: új szolgáltatási v
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a vamp-műveletek a [vamp REST API](https://vamp.io/documentation/api/api-reference/)való kezeléséről.
+* További információ a vamp-műveletek a [vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)való kezeléséről.
 
-* Készítsen vamp Automation-parancsfájlokat a Node. js-ben, és futtassa őket [vamp-munkafolyamatként](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
+* Készítsen vamp Automation-parancsfájlokat a Node. js-ben, és futtassa őket [vamp-munkafolyamatként](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows).
 
-* További [vamp-oktatóanyagokat](https://vamp.io/documentation/tutorials/)talál.
+* További [vamp-oktatóanyagokat](https://docs.vamp.io/tutorials/)talál.
 

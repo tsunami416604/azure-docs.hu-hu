@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911665"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198309"
 ---
 # <a name="drawing-tool-events"></a>Rajzolási eszköz eseményei
 
-A térképeken a rajzolási eszközök használatakor gyakran hasznos bizonyos eseményekre reagálni, amikor a felhasználó a térképen rajzol. A következő táblázat felsorolja a `DrawingManager` osztály által támogatott összes eseményt.
+Térképeken a rajzolási eszközök használatakor hasznos lehet reagálni bizonyos eseményekre, amikor a felhasználó a térképen rajzol. Ez a táblázat felsorolja a `DrawingManager` osztály által támogatott összes eseményt.
 
 | Esemény | Leírás |
 |-------|-------------|
 | `drawingchanged` | Az alakzatban lévő bármely koordináta hozzáadása vagy módosítása történt. | 
-| `drawingchanging` | Akkor aktiválódik, amikor megjelenik egy alakzat előnézeti koordinátái. Például a rendszer többször is kiváltja, ahogy egy koordináta van húzva. | 
+| `drawingchanging` | Akkor aktiválódik, amikor megjelenik egy alakzat előnézeti koordinátái. Ez az esemény például többször is kigyullad, mivel a rendszer a koordinátákat húzza. | 
 | `drawingcomplete` | Egy alakzat szerkesztési módból való befejezése vagy kilépésekor fellépett. |
 | `drawingmodechanged` | A rajzolási mód módosult. Az új rajzolási mód átkerül az eseménykezelőbe. |
 | `drawingstarted` | Akkor aktiválódik, amikor a felhasználó megkezdi az alakzat rajzolását, vagy szerkesztési módba helyezi az alakzatot.  |
@@ -39,11 +39,11 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>rajzolás
 
 ## <a name="examples"></a>Példák
 
-A következő példák a rajzolási eszközök eseményeit használó gyakori forgatókönyvekre mutatnak.
+Lássuk néhány olyan gyakori forgatókönyvet, amely a rajzolási eszközök eseményeit használja.
 
 ### <a name="select-points-in-polygon-area"></a>Pontok kijelölése a sokszög területen
 
-A következő kód bemutatja, hogyan figyelheti meg a sokszögeket (sokszögeket, téglalapokat és köröket) ábrázoló alakzatokat, és meghatározhatja, hogy a Térkép mely adatpontjain belül legyen a rajzolt terület. A `drawingcomplete` eseményt a Select logika kiváltására használjuk. A választás logikában a térképen lévő összes adatpontot a rendszer körkörösen és teszteli a rajzolt alakzat sokszög területével együtt. Ez a példa a nyílt forráskódú [Turf. js](https://turfjs.org/) függvénytár használatát teszi lehetővé a térbeli metszet számításának végrehajtásához.
+Ez a kód azt mutatja be, hogyan lehet figyelni a felhasználói rajzok alakzatainak eseményeit. Ebben a példában a kód a sokszögek, a téglalapok és a körök alakzatait figyeli. Ezután meghatározza, hogy a térképen mely adatpontok vannak a rajzolt területen. A `drawingcomplete` eseményt a Select logika kiváltására használjuk. A válassza ki a logikát, a kód a térképen lévő összes adatponton keresztül hurkot. Ellenőrzi, hogy van-e metszéspontja a pontnak és a rajzolt alakzat területének. Ez a példa a nyílt forráskódú [Turf. js](https://turfjs.org/) függvénytár használatát teszi lehetővé a térbeli metszet számításának végrehajtásához.
 
 <br/>
 
@@ -55,7 +55,7 @@ Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/XWJdeja'>rajzo
 
 ### <a name="draw-and-search-in-polygon-area"></a>Rajzolás és keresés a sokszög területén
 
-A következő kód bemutatja, hogyan végezheti el az érdeklődési pontok keresését egy alakzat területén, miután a felhasználó befejezte az alakzat rajzolását. A rendszer a `drawingcomplete` eseményt használja a keresési logika elindításához. Ha a felhasználó téglalapot vagy sokszöget rajzol, a rendszer a geometrián belüli keresést hajtja végre. Ha kört rajzol, a rendszer a sugár és a középpont pozícióját használja egy érdekes hely kereséséhez. A `drawingmodechanged` eseményt a rendszer annak meghatározására használja, hogy a felhasználó mikor váltson át rajzolási módba, és törli a vásznat.
+Ez a kód egy alakzat területén belüli érdeklődési pontokat keres, miután a felhasználó befejezte az alakzat rajzolását. A kód módosításához és végrehajtásához kattintson a keret jobb felső sarkában található "szerkesztés a kódban" elemre. A rendszer a `drawingcomplete` eseményt használja a keresési logika elindításához. Ha a felhasználó téglalapot vagy sokszöget rajzol, a rendszer a geometrián belüli keresést hajtja végre. Ha kört rajzol, a rendszer a sugár és a középpont pozícióját használja egy érdekes hely kereséséhez. A `drawingmodechanged` eseményt a rendszer annak meghatározására használja, hogy mikor váltson át a felhasználó a rajzolási módba, és ez az esemény törli a vásznat.
 
 <br/>
 
@@ -67,7 +67,7 @@ Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>Rajzol�
 
 ### <a name="create-a-measuring-tool"></a>Mérési eszköz létrehozása
 
-A következő kód azt mutatja be, hogyan használhatók a rajzolási események egy mérési eszköz létrehozásához. A `drawingchanging` a rajzolt alakzat figyelésére szolgál. Ahogy a felhasználó áthelyezi az egeret, a rendszer kiszámítja az alakzat dimenzióit. A `drawingcomplete` eseményt a rendszer az alakzat végső számításának végrehajtásához használja a megrajzolása után. A `drawingmodechanged` esemény segítségével határozható meg, hogy a felhasználó mikor váltson át rajzolási módba, és törli a vászon és a régi mérési adatokat.
+Az alábbi kód azt mutatja be, hogy a rajzolási események hogyan használhatók mérési eszköz létrehozásához. A `drawingchanging` a rajzolt alakzat figyelésére szolgál. Ahogy a felhasználó áthelyezi az egeret, a rendszer kiszámítja az alakzat dimenzióit. A `drawingcomplete` eseményt a rendszer az alakzat végső számításának végrehajtásához használja a megrajzolása után. A `drawingmodechanged` eseményt a rendszer annak meghatározására használja, hogy mikor váltson át a felhasználó rajzolási módba. Emellett a `drawingmodechanged` esemény törli a rajzolási vászonat, és törli a régi mérési adatokat.
 
 <br/>
 

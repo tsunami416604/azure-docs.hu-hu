@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613091"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189820"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan használhatók időzítő eseményindítók a Az
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
 Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet csomagban, 2. x verzióban kell megadnia. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) tárházban található.
 
@@ -65,7 +65,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-A C# szkript kódja:
+Íme a C#-szkriptkódot:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -93,7 +93,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-Itt látható a JavaScript-kód:
+A következő JavaScript-kódot:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -215,11 +215,11 @@ public void keepAlive(
 
 Az alábbi táblázat a *function. JSON* fájlban és a `TimerTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | – | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | – | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
+|**type** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
+|**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
 |**schedule**|**ScheduleExpression**|Egy [cron kifejezés](#ncrontab-expressions) vagy egy [TimeSpan](#timespan) érték. `TimeSpan` csak egy App Service-csomagon futó Function alkalmazás esetében használható. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot becsomagolhatja **%** -jelekbe becsomagolt alkalmazás-beállítási névre, ahogy az a következő példában látható: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Ha `true`, a rendszer meghívja a függvényt a futtatókörnyezet indításakor. Például a futtatókörnyezet akkor indul el, amikor a Function alkalmazás felébred, miután inaktivitás miatt tétlen marad. Ha a Function alkalmazás újraindul a függvény változásai miatt, és a függvény alkalmazás skálázása. Így a **runOnStartup** -nek ritkán kell lennie, ha minden eddiginél `true`re van állítva, különösen éles környezetben. |
 |**useMonitor**|**UseMonitor**|Állítsa `true` vagy `false` értékre, hogy jelezze, az ütemtervet figyelni kell-e. Az ütemterv figyelése továbbra is fenntartja az ütemezett előfordulásokat, hogy a támogatás az ütemterv megfelelő karbantartása legyen, még akkor is, ha a Function app instances újraindul Ha nincs beállítva explicit módon, az alapértelmezett érték `true` az olyan ütemezések esetében, amelyek ismétlődési időköze 1 percnél nagyobb vagy azzal egyenlő. Az olyan ütemtervek esetében, amelyek percenként többször aktiválódnak, az alapértelmezett érték `false`.
@@ -256,13 +256,13 @@ Azure Functions a [NCronTab](https://github.com/atifaziz/NCrontab) -függvényt�
 
 Minden mezőhöz a következő típusú értékek tartozhatnak:
 
-|Type (Típus)  |Példa  |Aktiváláskor  |
+|Típus  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>"0 5 * * * *"</nobr>|óó: 05:00, ahol hh óránként (óránként)|
 |Minden érték (`*`)|<nobr>"0 * 5 * * *"</nobr>|minden nap 5: PP: 00, ahol a mm az óra minden percében (naponta 60 alkalommal)|
 |Tartomány (`-` operátor)|<nobr>"5-7 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 06 és óó: PP: 07, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
 |Értékek halmaza (`,` operátor)|<nobr>"5, 8, 10 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 08 és óó: PP: 10, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
-|Intervallum érték (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh: 05:00, óó: 10:00, óó: 15:00, és így tovább hh: 55:00, ahol hh óránként (12 alkalommal óránként)|
+|Intervallum érték (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh: 00:00, óó: 05:00, óó: 10:00, és így tovább a hh: 55:00, ahol hh óránként (12 alkalommal óránként)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -319,7 +319,7 @@ Karakterláncként kifejezve a `TimeSpan` formátum `hh:mm:ss`, ha a `hh` kevese
 |"24:00:00" | 24 óránként        |
 |"1.00:00:00" | minden nap        |
 
-## <a name="scale-out"></a>Kiterjesztés
+## <a name="scale-out"></a>Vertikális felskálázás
 
 Ha egy függvény alkalmazás több példányra is kiterjed, csak egy időzítő által aktivált függvény egyetlen példánya fut az összes példányon.
 
@@ -340,7 +340,7 @@ Az időzítő-trigger tároló-zárolással biztosítja, hogy csak egy időzít�
 
 A várólista-triggertől eltérően az időzítő trigger nem próbálkozik újra a függvény meghibásodása után. Ha egy függvény meghibásodik, azt a rendszer nem hívja újra az ütemezés következő időpontjáig.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 További információ arról, hogy mi a teendő, ha az időzítő trigger nem a várt módon működik, lásd: [kivizsgálás és jelentéskészítési hibák az időzítő által aktivált függvények nem égetéssel](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 

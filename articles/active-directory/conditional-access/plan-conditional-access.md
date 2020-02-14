@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880275"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185888"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Útmutató: a feltételes hozzáférési telepítés megtervezése Azure Active Directory
 
@@ -53,7 +53,7 @@ A következő példa sablonnal feltételes hozzáférési szabályzatokat hozhat
 |Hozzáférési kísérlet történt:<br>-Cloud app *<br>– felhasználók és csoportok szerint*<br>Használatával<br>– 1. feltétel (például a Corp hálózaton kívül)<br>– 2. feltétel (például az eszközök platformja)|Hozzáférés biztosítása a következővel (és):<br>– 1. követelmény (például MFA)<br>– 2. követelmény (például eszköz megfelelősége)|
 |Hozzáférési kísérlet történt:<br>-Cloud app *<br>– felhasználók és csoportok szerint*<br>Használatával<br>– 1. feltétel (például a Corp hálózaton kívül)<br>– 2. feltétel (például az eszközök platformja)|Hozzáférés biztosítása (vagy):<br>– 1. követelmény (például MFA)<br>– 2. követelmény (például eszköz megfelelősége)|
 
-**Ha ez megtörténik, akkor ez** határozza meg azt a rendszerbiztonsági tag (**WHO**), amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz (**mi**). Szükség esetén megadhatja a hozzáférési kísérlet **módját** is. A feltételes hozzáférésben azok az elemek határozzák meg, amelyek meghatározzák a WHO, mi, és hogyan ismert feltételeket. További információ: [Mi a feltételek a Azure Active Directory feltételes hozzáférésben?](conditions.md) 
+**Ha ez megtörténik, akkor ez** határozza meg azt a rendszerbiztonsági tag (**WHO**), amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz (**mi**). Szükség esetén megadhatja a hozzáférési kísérlet **módját** is. A feltételes hozzáférésben azok az elemek határozzák meg, amelyek meghatározzák a WHO, mi, és hogyan ismert feltételeket. További információ: [Mi a feltételek a Azure Active Directory feltételes hozzáférésben?](concept-conditional-access-conditions.md) 
 
 **Ezt követően**megadhatja a házirendre adott választ a hozzáférési feltételnek. A válaszában a további követelményekkel, például a többtényezős hitelesítéssel (MFA) is blokkolhatja vagy engedélyezheti a hozzáférést. A teljes áttekintést lásd: [Mi a hozzáférés-vezérlés Azure Active Directory feltételes hozzáférés?](controls.md)  
 
@@ -116,7 +116,7 @@ Az MFA megkövetelésének gyakori felhasználási esetei a következők:
 
 A feltételes hozzáférési szabályzatokkal automatizált válaszokat alkalmazhat a bejelentkezések potenciálisan feltört identitásokból való bevezetésére. A fiók biztonságának valószínűsége kockázati szintek formájában van kifejezve. Az Identity Protection két kockázati szintet számít ki: a bejelentkezési kockázat és a felhasználói kockázat. A bejelentkezési kockázatra adott válasz megvalósításához két lehetőség közül választhat:
 
-- [A bejelentkezési kockázati feltétel](conditions.md#sign-in-risk) a feltételes hozzáférési házirendben
+- [A bejelentkezési kockázati feltétel](concept-conditional-access-conditions.md#sign-in-risk) a feltételes hozzáférési házirendben
 - [A bejelentkezési kockázati szabályzat](../identity-protection/howto-sign-in-risk-policy.md) az Identity Protectionben 
 
 A bejelentkezési kockázat feltételként való kezelése az előnyben részesített módszer, mert további testreszabási lehetőségeket biztosít.
@@ -131,7 +131,7 @@ A támogatott eszközöknek a Felhőbeli erőforrások eléréséhez való elter
 
 ### <a name="require-approved-client-apps"></a>Jóváhagyott ügyfélalkalmazások megkövetelése
 
-A saját eszközök (BYOD) használatának egyik első döntése, hogy szükség van-e a teljes eszköz vagy csak a rajta lévő adatok kezelésére. Az alkalmazottak a személyes és munkahelyi feladatokhoz egyaránt használnak mobileszköz-eszközöket. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a Felhőbeli alkalmazásokhoz való hozzáférést a vállalati adatai védelme érdekében jóváhagyott ügyfélalkalmazások számára. További információkért lásd: [jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md).
+A saját eszközök (BYOD) használatának egyik első döntése, hogy szükség van-e a teljes eszköz vagy csak a rajta lévő adatok kezelésére. Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a Felhőbeli alkalmazásokhoz való hozzáférést a vállalati adatai védelme érdekében jóváhagyott ügyfélalkalmazások számára. További információkért lásd: [jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása
 
@@ -158,7 +158,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
-|Szabályzat |Alkalmazási helyzet |Várt eredmény | Eredmény |
+|Szabályzat |Forgatókönyv |Várt eredmény | Eredmény |
 |---|---|---|---|
 |[MFA megkövetelése, ha nem működik](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|A meghatalmazott felhasználó bejelentkezik az *alkalmazásba* egy megbízható helyen/munkahelyen|A felhasználónak nem kell megadnia az MFA-t| |
 |[MFA megkövetelése, ha nem működik](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Az engedélyezve lévő felhasználó bejelentkezik az *alkalmazásba* , és nem megbízható helyen/munkahelyen|A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet| |
@@ -220,7 +220,7 @@ Ha vissza kell állítania az újonnan megvalósított szabályzatokat, az aláb
 
 1. **A házirend letiltása** – a szabályzat letiltásával gondoskodhat arról, hogy ne legyen érvényes, amikor egy felhasználó megpróbál bejelentkezni. Bármikor visszatérhet, és engedélyezheti a szabályzatot, ha azt szeretné használni.
 
-   ![házirend letiltása](media/plan-conditional-access/07.png)
+   ![Szabályzat letiltása](media/plan-conditional-access/07.png)
 
 1. **Felhasználó/csoport kizárása egy házirendből** – ha a felhasználó nem tud hozzáférni az alkalmazáshoz, dönthet úgy, hogy kizárja a felhasználót a szabályzatból.
 

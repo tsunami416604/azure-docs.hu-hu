@@ -1,31 +1,31 @@
 ---
-title: Ügyfélalkalmazások a feltételes hozzáférési házirendben – Azure Active Directory
-description: ''
+title: Felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési házirendben – Azure Active Directory
+description: Mi a felhőalapú alkalmazások vagy műveletek egy Azure AD feltételes hozzáférési szabályzatban
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544055"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186386"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások és műveletek
+# <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
-A felhőalapú alkalmazások vagy műveletek egy feltételes hozzáférési szabályzat kulcsfontosságú részét képezik. A feltételes hozzáférési házirendek lehetővé teszik a rendszergazdák számára, hogy bizonyos alkalmazásokhoz vagy műveletekhez rendeljenek vezérlőket. 
+A felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési szabályzatok kulcsfontosságú jelei. A feltételes hozzáférési házirendek lehetővé teszik a rendszergazdák számára, hogy bizonyos alkalmazásokhoz vagy műveletekhez rendeljenek vezérlőket.
 
 - A rendszergazdák választhatnak a beépített Microsoft-alkalmazásokat és bármely [Azure ad integrált alkalmazást](../manage-apps/what-is-application-management.md) , beleértve a katalógust, a nem katalógust és az [Application proxyn](../manage-apps/what-is-application-proxy.md)keresztül közzétett alkalmazásokat is.
 - A rendszergazdák dönthetnek úgy, hogy nem felhőalapú alkalmazáson, hanem felhasználói műveleten alapuló szabályzatot határoznak meg. Az egyetlen támogatott művelet a biztonsági adatok (előzetes verzió) regisztrálása, amely lehetővé teszi, hogy a feltételes hozzáférés a [kombinált biztonsági információk regisztrációs felülete](../authentication/howto-registration-mfa-sspr-combined.md)körüli ellenőrzéseket kényszerítse ki.
 
-![Feltételes hozzáférési szabályzat definiálása és felhőalapú alkalmazások megadása](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Feltételes hozzáférési szabályzat definiálása és felhőalapú alkalmazások megadása](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft Cloud-alkalmazások
 
@@ -49,7 +49,7 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune regisztráció](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)
-- Microsoft Planner
+- A Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Search a Bingben
 - Microsoft StaffHub
@@ -61,7 +61,7 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Office Delve
 - Office-Sway
 - Outlook Groups
-- A Power BI szolgáltatás
+- Power BI szolgáltatás
 - Project Online
 - Skype Vállalati online verzió
 - Virtuális magánhálózat (VPN)
@@ -124,6 +124,7 @@ A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégez
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Feltételes hozzáférési szabályzat összetevői](concept-conditional-access-policies.md)
+- [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
+
+- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 - [Ügyfélalkalmazás függőségei](service-dependencies.md)
-- [Microsoft Intune: MFA megkövetelése az eszközök regisztrálásához](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

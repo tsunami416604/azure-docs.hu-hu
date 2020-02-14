@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony létesítésével – oktatóanyag – Azure Portal | Microsoft Docs
+title: Virtuális hálózatok összekötése VNet-társítással – oktatóanyag – Azure Portal
 description: Ebben az oktatóanyagban megismerheti, hogy kapcsolhat össze virtuális hálózatokat virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,16 +13,16 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016051"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201298"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
 
-A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ezek a virtuális hálózatok lehetnek azonos vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítése). Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ezek a virtuális hálózatok lehetnek azonos vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítése). Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Két virtuális gép létrehozása
@@ -34,7 +34,7 @@ Igény szerint az oktatóanyagot az [Azure CLI](tutorial-connect-virtual-network
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
@@ -44,11 +44,11 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 2. Válassza a **Hálózatkezelés**, majd a **Virtuális hálózat** elemet.
 3. Az **alapvető** beállítások lapon adja meg vagy válassza ki az alábbi adatokat, és fogadja el a többi beállítás alapértelmezett beállításait:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Előfizetést| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-    |Region (Régió)| Válassza az **USA keleti régiója** lehetőséget.|
+    |Régió| Válassza az **USA keleti régiója** lehetőséget.|
     |Name (Név)|myVirtualNetwork1|
 
 4. Az **IP-címek** lapon adja meg a 10.0.0.0/16 értéket a **címterület** mezőben. Kattintson a lenti **alhálózat hozzáadása** gombra, és adja meg a *Subnet1* az alhálózat **neve** és a 10.0.0.0/24 **alhálózati címtartomány**mezőben.
@@ -56,7 +56,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
    
 5. Végezze el ismét az 1–5. lépést az alábbi módosításokkal:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Name (Név)|myVirtualNetwork2|
     |Címtér|10.1.0.0/16|
@@ -73,7 +73,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |A myVirtualNetwork1-ből távoli virtuális hálózatra irányuló társ neve|myVirtualNetwork1-myVirtualNetwork2 – az oldal első betöltésekor Itt láthatja a "távoli virtuális hálózat" kifejezést. A távoli virtuális hálózat kiválasztása után a "távoli virtuális hálózat" kifejezés a távoli virtuális hálózat nevével lesz lecserélve.|
     |Előfizetést| Válassza ki előfizetését.|
@@ -98,18 +98,18 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. Választhat másik operációs rendszert is, de a következő lépések itt azt feltételezik, hogy a **Windows Server 2016 Datacentert** választotta. 
 3. Adja meg vagy válassza ki az alábbi adatokat az **Alapvető beállítások** területen, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Erőforráscsoport| Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget.|
     |Name (Név)|myVm1|
-    |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    
 4. Válasszon egy virtuálisgép-méretet a **méret** beállításhoz.
 5. Válassza ki az alábbi értékeket a **hálózat**területen:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| myVirtualNetwork1 – ha még nincs kiválasztva, válassza a **virtuális hálózat** elemet, majd válassza a **myVirtualNetwork1**lehetőséget.|
     |Alhálózat| Subnet1 – ha még nincs kiválasztva, válassza az **alhálózat** lehetőséget, majd válassza a **Subnet1**lehetőséget.|
@@ -122,7 +122,7 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
 
 Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
 
-|Beállítás|Value (Díj)|
+|Beállítás|Érték|
 |---|---|
 |Name (Név) | myVm2|
 |Virtuális hálózat | myVirtualNetwork2|

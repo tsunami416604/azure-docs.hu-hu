@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163109"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186945"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépések útmutató Azure-fejlesztőknek
 
@@ -60,7 +60,7 @@ Mivel mindhárom alkalmazás típusa megosztja a App Service futtatókörnyezete
 
 App Service a DevOps szem előtt tartva lett tervezve. Különböző eszközöket támogat a közzétételhez és a folyamatos integrációs telepítésekhez. Ezek az eszközök például a GitHub-webhookok, a Jenkins, az Azure DevOps, a TeamCity és mások.
 
-A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepítési eszköz](https://www.migratetoazure.net/)használatával.
+A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepítési eszköz](https://appmigration.microsoft.com/)használatával.
 
 > **Használat esetén**: app Service használata, amikor meglévő webalkalmazásokat telepít át az Azure-ba, és ha egy teljes körűen felügyelt üzemeltetési platformra van szüksége a Web Apps számára. App Service akkor is használhatja, ha a mobileszközök támogatásához vagy a REST API-k az alkalmazással való eléréséhez szükséges.
 >

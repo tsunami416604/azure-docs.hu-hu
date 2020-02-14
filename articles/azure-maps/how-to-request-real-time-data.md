@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 169764f015f332d07c21ef815e6044c653489774
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 053e6c84f69e8b3d3fed0a90a8b632aa4eb311cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911433"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198156"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Valós idejű adatkérés a Azure Maps mobilitási szolgáltatás használatával
 
@@ -23,13 +23,13 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Azure Maps [mobilitási sz
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 
- * A következő valós idejű érkezések kérése az összes olyan sorra, amely az adott leállítás alkalmával érkezik
+ * A következő valós idejű érkezések kérése az adott leállítás során beérkező összes sorra
  * Valós idejű információk kérése egy adott Bike Docker-állomásról.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha bármilyen hívást szeretne tenni a Azure Maps nyilvános átviteli API-khoz, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával és a kulcsok lekérésével kapcsolatos információkért kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című részben leírt lépéseket. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+Először rendelkeznie kell egy Azure Maps-fiókkal és egy előfizetési kulccsal, hogy bármilyen hívást lehessen kezdeményezni a Azure Maps nyilvános átviteli API-khoz. További információért kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók létrehozásához című témakör utasításait. A fiók elsődleges kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 
 Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
@@ -37,17 +37,17 @@ Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a 
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Valós idejű érkezések igénylése leállításhoz
 
-Egy adott nyilvános továbbítási időszakra vonatkozó valós idejű beérkező adatok igényléséhez a Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) [valós idejű beérkezési API-](https://aka.ms/AzureMapsMobilityRealTimeArrivals) ját kell kérnie. A kérelem elvégzéséhez szüksége lesz a **metroID** és a **stopID** . Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg az útmutató a [nyilvános átviteli útvonalak igényléséhez](https://aka.ms/AMapsHowToGuidePublicTransitRouting)című témakört. 
+Egy adott nyilvános adatátviteli leálláshoz tartozó valós idejű beérkező adatok igényléséhez a Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) [valós idejű beérkezési API-](https://aka.ms/AzureMapsMobilityRealTimeArrivals) ját kell kérnie. A kérelem elvégzéséhez szüksége lesz a **metroID** és a **stopID** . Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [nyilvános átviteli útvonalak igénylését](https://aka.ms/AMapsHowToGuidePublicTransitRouting)ismertető útmutatót. 
 
-A "522" Metro ID-t használjuk, amely a "Seattle – Tacoma – Bellevue, WA" területen található Metro ID, és a "522---2060603" leállítási AZONOSÍTÓval rendelkezik, amely egy buszmegálló a "ne 24 St & 162nd Ave ne, Bellevue WA" címen. Ha a következő öt valós idejű beérkező adatbevitelt szeretné leállítani a következő élő beérkezések esetében, hajtsa végre a következő lépéseket:
+A "522" a Metro ID-ként használjuk, amely a "Seattle – Tacoma – Bellevue, WA" területen található Metro-azonosító. A "522---2060603" érték leállítási AZONOSÍTÓként való használata esetén ez a buszmegálló a következő címen érhető el: "ne 24 St & 162nd Ave ne, Bellevue WA". Ha a következő öt valós idejű beérkező adatbevitelt szeretné kérelmezni, az összes következő élő érkezésnél végezze el a következő lépéseket:
 
-1. Hozzon létre egy gyűjteményt, amelyben tárolni szeretné a kérelmeket. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet. Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
+1. Nyissa meg a Poster alkalmazást, és hozzon létre egy gyűjteményt a kérések tárolásához. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
 
-2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** , válassza ki az előző lépésben létrehozott gyűjteményt a kérelem mentési helyeként, majd kattintson a **Mentés**gombra.
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** . Válassza ki azt a gyűjteményt, amelyet az előző lépésben hozott létre, a kérelem mentési helyeként. Ezt követően válassza a **Mentés** lehetőséget.
 
     ![Kérelem létrehozása a Poster-ban](./media/how-to-request-transit-data/postman-new.png)
 
-3. Válassza a HTTP beolvasása metódust a Builder (szerkesztő) lapon, majd a GET kérelem létrehozásához adja meg a következő URL-címet.
+3. Válassza a http **beolvasása** metódust a Builder (szerkesztő) lapon, majd a Get kérelem létrehozásához adja meg a következő URL-címet. Cserélje le a `{subscription-key}`t a Azure Maps elsődleges kulcsára.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
@@ -121,9 +121,9 @@ A "522" Metro ID-t használjuk, amely a "Seattle – Tacoma – Bellevue, WA" te
 
 ## <a name="real-time-data-for-bike-docking-station"></a>A bike Docker-állomás valós idejű adatvédelme
 
-Az Azure Maps mobilitási szolgáltatás [továbbítási Dock info API](https://aka.ms/AzureMapsMobilityTransitDock) -ját lehetővé teszi a statikus és valós idejű információk, például a rendelkezésre állási és a rendelkezésre állási információk kérését egy adott kerékpár vagy robogós dokkolóegység számára. A rendszer bekéri a beérkező állomások valós idejű adatgyűjtését a kerékpárok számára.
+A [továbbítási Dock info API](https://aka.ms/AzureMapsMobilityTransitDock) -val a felhasználók statikus és valós idejű információkat igényelhetnek. A felhasználók például igényelhetnek rendelkezésre állási és üresedési információt egy kerékpárhoz vagy egy robogós dokkolóegységhez. A [Transit Dock info API](https://aka.ms/AzureMapsMobilityTransitDock) a Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService)részét képezi.
 
-Ahhoz, hogy kérést kapjon a tranzit Dock info API-hoz, szüksége lesz az adott állomás **dockId** . A Dock ID-t úgy érheti el, hogy keresési kérelmet küld a [közeli tranzit API](https://aka.ms/AzureMapsMobilityNearbyTransit) -hoz, és a **objektumtípus** paramétert "bikeDock" értékre állítja. Az alábbi lépéseket követve szerezzen be egy Docker-állomást a Bikes szolgáltatáshoz.
+Ahhoz, hogy kérést [kapjon a tranzit Dock info API](https://aka.ms/AzureMapsMobilityTransitDock)-hoz, szüksége lesz az adott állomás **dockId** . A Dock ID-t úgy érheti el, hogy keresési kérelmet küld a [közeli tranzit API](https://aka.ms/AzureMapsMobilityNearbyTransit) -hoz a "bikeDock" elemhez rendelt **objektumtípus** paraméterrel. Az alábbi lépéseket követve szerezzen be egy Docker-állomást a Bikes szolgáltatáshoz.
 
 
 ### <a name="get-dock-id"></a>Dock AZONOSÍTÓjának lekérése

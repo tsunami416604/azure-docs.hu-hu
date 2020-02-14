@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.author: aahi
-ms.openlocfilehash: d67075fad719b1780682c705f0e17f15c5801559
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f4b6bad38992a9e0146d6324bc3a3fc7632ded2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136150"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201254"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rövid útmutató: a Bing Custom Search végpont meghívása a Python SDK használatával 
 
@@ -47,17 +47,17 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="create-a-search-client-and-send-a-request"></a>Keresési ügyfél létrehozása és kérelem küldése
 
-1. Hozzon létre egy változót az előfizetési kulcshoz.
+1. Hozzon létre egy változót az előfizetési kulcs és a végpont számára.
 
     ```python
     subscription_key = 'your-subscription-key'
-    endpoint = 'your-custom-endpoint'
+    endpoint = 'your-endpoint'
     ```
 
 2. Hozzon létre egy `CustomSearchClient`egy példányát egy `CognitiveServicesCredentials` objektummal az előfizetési kulccsal. 
 
     ```python
-    client = CustomSearchClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 3. Keresési kérelem küldése `client.custom_instance.search()`sal. Fűzze hozzá a keresési kifejezést a `query` paraméterhez, és állítsa be a `custom_config`t az egyéni konfigurációs AZONOSÍTÓra a keresési példány használatához. Az azonosítót a [Bing Custom Search-portálon](https://www.customsearch.ai/)szerezheti be, az **éles** lapon kattintva.

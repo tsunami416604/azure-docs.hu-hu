@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460360"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190649"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -36,10 +36,10 @@ További információ a Azure Filesről: [Mi az Azure Files?](storage-files-intr
 
 Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-en belül a `System.IO` és `WindowsAzure.Storage` API-k elvonták ezeket a megközelítést.
 
-API | When to use | Megjegyzések
+API | A következő esetekben használja | Megjegyzések
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB használatával kell olvasni/írni a fájlokat</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A Azure Files SMB protokollon keresztül megvalósított fájl I/O általában ugyanaz, mint a hálózati fájlmegosztás vagy a helyi tárolóeszköz I/O-értéke. A .NET-szolgáltatások számos funkciójának bevezetéséhez, beleértve a fájl I/O-t, tekintse meg a [konzol alkalmazás](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) oktatóanyagát.
-[Microsoft. Azure. Storage. file](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja be, hogyan használhatók a fájlok I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST-`Microsoft.Azure.Storage.File`.
+[Microsoft. Azure. Storage. file](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja be, hogyan használhatók a fájlok I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST-`Microsoft.Azure.Storage.File`.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
 
@@ -491,14 +491,14 @@ További információ a Azure Filesről:
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 
-* [Bevezetés az AzCopy használatába](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Ismerkedés a AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Azure Files-problémák hibaelhárítása Windowson](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Leírások
+### <a name="reference"></a>Referencia
 
 * [Azure Storage API-k a .NET-hez](/dotnet/api/overview/azure/storage)
-* [A File szolgáltatás REST API-ja](/rest/api/storageservices/File-Service-REST-API)
+* [Fájlszolgáltatások REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>Blogbejegyzések
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262733"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190855"
 ---
 # <a name="connect-your-domain-name-server"></a>Connect your domain name server
 
@@ -50,7 +50,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 ### <a name="data-collection-details"></a>Adatok gyűjtése részletei
 
-A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
+A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az eseményekkel kapcsolatos adatokat a rendszer valós időben gyűjti a továbbfejlesztett DNS-naplózás és diagnosztika által biztosított [analitikai és naplózási naplókból](https://technet.microsoft.com/library/dn800669.aspx#enhanc) a Windows Server 2012 R2 rendszerben.
 
 
 ## <a name="connect-your-dns-appliance"></a>A DNS-berendezés összekötése
@@ -73,7 +73,17 @@ A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kis
 
 A Log Analyticsban keresse meg a séma **DnsEvents** , és győződjön meg arról, hogy vannak események.
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshooting"></a>Hibakeresés
+
+Ha a keresési lekérdezések nem jelennek meg az Azure Sentinelben, kövesse az alábbi lépéseket, hogy a lekérdezések megfelelően jelenjenek meg:
+1. Kapcsolja be a [DNS Analytics naplókat a kiszolgálókon](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+2. Győződjön meg arról, hogy a DNSEvents megjelenik a Log Analytics gyűjtemény listájában.
+3. [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md)bekapcsolása.
+4. Azure DNS Analytics szolgáltatásban a **konfiguráció**területen módosítsa a beállításokat, mentse, majd állítsa vissza, ha szükséges, majd mentse újra.
+5. Győződjön meg arról, Azure DNS analitika, hogy a lekérdezések most megjelenjenek.
+
+## <a name="next-steps"></a>Következő lépések
+
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a helyi DNS-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

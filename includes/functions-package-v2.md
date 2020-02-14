@@ -2,26 +2,25 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: functions
-author: ggailey777
+author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
-ms.author: glenga
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 81971a1c56a51e0c110337fb645f0b84bb5d20b8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2eb82eb8b4a64cbbfef91539f46ba084aa73f207
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914923"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205753"
 ---
-Az alábbi táblázat azt ismerteti, hogyan adhat hozzá ehhez a kötéshez minden fejlesztési környezetben támogatást.
+A következő módszerekkel adhat hozzá támogatást az előnyben részesített fejlesztési környezetben.
 
-| Fejlesztési környezet               | Támogatás hozzáadása  |
-|----------------------|----------------|
-|Helyi fejlesztés – C# osztály könyvtára       | [A csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) |
-|Helyi fejlesztés – C# parancsfájl, JavaScript, F#, Java és Python |[A bővítmény regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|Portál fejlesztése| Telepítés kimeneti kötés hozzáadásakor    |
-
-Ha szeretné megtudni, hogyan frissítheti a meglévő kötési bővítményeket a portálon anélkül, hogy újra közzé kellene tennie a Function app-projektet, tekintse meg [a bővítmények frissítése](../articles/azure-functions/install-update-binding-extensions-manual.md)című részt.
+| Fejlesztési környezet  | Alkalmazás típusa      | Támogatás hozzáadása |
+|--------------------------|-----------------------|----------------|
+| Visual Studio            | C#osztály könyvtára      | [A NuGet-csomag telepítése](../articles/azure-functions/functions-bindings-register.md#vs) |
+| Visual Studio Code       | [Alapvető eszközök](../articles/azure-functions/functions-run-local.md) alapján | [A kiterjesztési csomag regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles)<br><br>Az [Azure Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) telepítése ajánlott. |
+| Bármely más szerkesztő/IDE     | [Alapvető eszközök](../articles/azure-functions/functions-run-local.md) alapján | [A kiterjesztési csomag regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles) |
+| Azure portálon             | Csak online a portálon | Telepítés kötés hozzáadásakor<br /><br /> Tekintse meg a [bővítmények frissítése](../articles/azure-functions/install-update-binding-extensions-manual.md) a meglévő kötési bővítmények frissítése a Function app ismételt közzététele nélkül című témakört. |

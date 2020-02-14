@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967131"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190442"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -141,7 +141,7 @@ Ha Hibrid kapcsolatokt használ a SQL Server eléréséhez, Microsoft .NET a 201
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Felbontás
+### <a name="resolution"></a>Megoldás:
 
 A kivételt az a hibridkapcsolat-kezelő, amely azóta megoldódott. Ügyeljen rá, hogy a probléma megoldásához [frissítse a hibridkapcsolat-kezelő](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
@@ -314,4 +314,4 @@ Megadhatja a tömöríteni kívánt dinamikus és statikus MIME-típusokat is. T
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hogyan Migrálás egy helyszíni környezetből a App Serviceba?
 
-Ha Windows és Linux rendszerű webkiszolgálókról kíván áttelepíteni helyeket App Serviceba, használhatja a Azure App Service Migration Assistant. Az áttelepítési eszköz szükség szerint hozza létre a webalkalmazásokat és-adatbázisokat az Azure-ban, majd közzéteszi a tartalmat. További információ: [Azure App Service Migration Assistant](https://www.migratetoazure.net/).
+Ha Windows és Linux rendszerű webkiszolgálókról kíván áttelepíteni helyeket App Serviceba, használhatja a Azure App Service Migration Assistant. Az áttelepítési eszköz szükség szerint hozza létre a webalkalmazásokat és-adatbázisokat az Azure-ban, majd közzéteszi a tartalmat. További információ: [Azure App Service Migration Assistant](https://appmigration.microsoft.com/).

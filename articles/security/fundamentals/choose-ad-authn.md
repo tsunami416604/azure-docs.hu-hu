@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064427"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190911"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -185,7 +185,7 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Mik a többtényezős hitelesítési lehetőségek?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-kiszolgáló](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Harmadik féltől származó MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Feltételes hozzáféréssel rendelkező egyéni vezérlők *](../../active-directory/conditional-access/controls.md)|
 |Milyen felhasználói fiókok támogatottak?|Letiltott fiókok<br>(legfeljebb 30 perces késleltetés)|Letiltott fiókok<br><br>Fiók kizárva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Bejelentkezési idő|Letiltott fiókok<br><br>Fiók kizárva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Bejelentkezési idő|
 |Mik a feltételes hozzáférési lehetőségek?|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)|[Azure AD feltételes hozzáférés prémium szintű Azure AD](../../active-directory/conditional-access/overview.md)<br><br>[AD FS jogcím szabályai](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|A örökölt protokollok blokkolása támogatott?|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](../../active-directory/conditional-access/conditions.md)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|A örökölt protokollok blokkolása támogatott?|[Igen](../../active-directory/conditional-access/overview.md)|[Igen](../../active-directory/conditional-access/overview.md)|[Igen](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Testre szabhatja az emblémát, a képet és a leírást a bejelentkezési lapokon?|[Igen, prémium szintű Azure AD](../../active-directory/fundamentals/customize-branding.md)|[Igen, prémium szintű Azure AD](../../active-directory/fundamentals/customize-branding.md)|[Igen](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Milyen speciális forgatókönyvek támogatottak?|[Intelligens jelszó zárolása](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Kiszivárgott hitelesítő adatok jelentései prémium szintű Azure AD P2-vel](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligens jelszó zárolása](../../active-directory/authentication/howto-password-smart-lockout.md)|Többhelyes, kis késleltetésű hitelesítési rendszerek<br><br>[Extranetes zárolás AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integráció harmadik féltől származó személyazonossági rendszerekkel](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 

@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928733"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187478"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
 
@@ -142,7 +142,7 @@ Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul telep
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Hibaüzenet: "előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {" OperationErrorMessages ":" hiba: a kért OLE DB szolgáltató... nincs regisztrálva. Ha a 64 bites illesztőprogram nincs telepítve, futtassa a csomagot 32 bites módban... "
 
-Győződjön meg arról, hogy a csomagban lévő OLE DB-összekötők által használt megfelelő szolgáltatót a rendszer megfelelően telepíti a saját üzemeltetésű Integration Runtime Machine gépre. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) című rész tartalmaz.
+Győződjön meg arról, hogy a csomagban lévő OLE DB-összekötők által használt megfelelő szolgáltatót a rendszer megfelelően telepíti a saját üzemeltetésű Integration Runtime Machine gépre. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) című rész tartalmaz.
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hibaüzenet: "előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {" OperationErrorMessages ":" hiba: System. IO. FileLoadException: nem tölthető be a fájl vagy szerelvény "Microsoft. WindowsAzure. Storage, verzió =..., Culture = semleges, PublicKeyToken = 31bf3856ad364e35 ' vagy annak valamelyik függősége. Az elhelyezkedő szerelvény jegyzékfájljának definíciója nem egyezik a szerelvény hivatkozásával. ..."
 
@@ -157,7 +157,7 @@ Az egyik lehetséges ok a saját üzemeltetésű integrációs modul telepítés
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hibaüzenet: "az előkészítési feladat állapota: sikertelen. Előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása sikertelen., kimenet: {"OperationErrorMessages": "SSIS végrehajtó kilépési kód:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration":..., "durationInQueue": {"integrationRuntimeQueue":...}} "
 
-Győződjön meg arról C++ , hogy a Visual Runtime telepítve van a saját üzemeltetésű Integration Runtime-gépen. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) című rész tartalmaz.
+Győződjön meg arról C++ , hogy a Visual Runtime telepítve van a saját üzemeltetésű Integration Runtime-gépen. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) című rész tartalmaz.
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>A csomagok végrehajtásának végrehajtása váratlanul megtörténik
 

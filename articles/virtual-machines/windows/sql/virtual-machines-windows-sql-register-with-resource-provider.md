@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122487"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201628"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Könnyűsúlyú felügyeleti mód
 
-Ha a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nincs telepítve a virtuális gépen, akkor a javaslat az SQL VM erőforrás-szolgáltató egyszerűsített módban való regisztrálására szolgál. Ez a művelet [egyszerűsített módban](#management-modes) telepíti az SQL IaaS bővítményt, és megakadályozza a SQL Server szolgáltatás újraindítását. Ezt követően bármikor frissítheti a teljes üzemmódra, de ez a művelet újraindítja a SQL Server szolgáltatást, ezért ajánlott megvárni az ütemezett karbantartási időszakot. A saját licenc használatáért a használati díj megfizetéséhez meg kell adnia a SQL Server-licenc típusát (`PAYG`), vagy Azure Hybrid Benefit (`AHUB`).
+Ha a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nincs telepítve a virtuális gépen, akkor a javaslat az SQL VM erőforrás-szolgáltató egyszerűsített módban való regisztrálására szolgál. Ez a művelet [egyszerűsített módban](#management-modes) telepíti az SQL IaaS bővítményt, és megakadályozza a SQL Server szolgáltatás újraindítását. Ezt követően bármikor frissítheti a teljes üzemmódra, de ez a művelet újraindítja a SQL Server szolgáltatást, ezért ajánlott megvárni az ütemezett karbantartási időszakot. 
+
+Az [ingyenes Dr replika-licenc](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)aktiválásához a használati, Azure Hybrid Benefit (`AHUB`) és a vész-helyreállítási (`DR`-) licencek használatának megköveteléséhez adja meg SQL Server`PAYG`fizetési típust.
 
 A feladatátvevő fürtök példányai és a többpéldányos központi telepítések csak az SQL VM erőforrás-szolgáltatón keresztül regisztrálhatók egyszerűsített módban. 
 
@@ -176,7 +178,7 @@ Ha a SQL Server VMt közvetlenül teljes módban szeretné regisztrálni (és va
 
 A Windows Server 2008 (_nem R2_) rendszerre telepített 2008-es és 2008 R2-es SQL Server a nem [ügynök módban](#management-modes)regisztrálható az SQL VM erőforrás-szolgáltatónál. Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi a SQL Server VM figyelését a Azure Portal korlátozott funkcionalitással.
 
-Adjon meg `AHUB` vagy `PAYG` **sqlLicenseType**, valamint `SQL2008-WS2008` vagy `SQL2008R2-WS2008` **sqlImageOffer**. 
+`AHUB`, `PAYG`vagy `DR` adjon meg **sqlLicenseType**, valamint `SQL2008-WS2008` vagy `SQL2008R2-WS2008` **sqlImageOffer**. 
 
 Ha regisztrálni szeretné a SQL Server 2008-es vagy 2008 R2-példányt a Windows Server 2008-példányon, használja a következőt az parancssori felület vagy a PowerShell-kódrészlet használatával: 
 

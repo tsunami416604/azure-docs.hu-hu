@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372703"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201271"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -204,22 +204,26 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-A pg_stat_statements bővítmény minden Azure Database for PostgreSQL-kiszolgálón előre be van töltve, így biztosíthatja az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
+A [pg_stat_statements bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) minden Azure Database for PostgreSQL-kiszolgálón előre be van töltve, így biztosíthatja az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
 A beállítás `pg_stat_statements.track`, amely meghatározza, hogy a bővítmény hány utasítást számol be, alapértelmezés szerint `top`, ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint `none` és `all`. Ez a beállítás kiszolgálói paraméterként konfigurálható a [Azure Portalon](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
 
 Az egyes SQL-utasítások beolvasása során kompromisszumot pg_stat_statements a lekérdezés végrehajtási információi, valamint a kiszolgáló teljesítményére gyakorolt hatás. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa be a `pg_stat_statements.track`t `none`re. Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások felhasználhatják a lekérdezési teljesítménnyel kapcsolatos megállapítások kézbesítésének pg_stat_statementsét, így meggyőződhet arról, hogy ez a helyzet-e az Ön számára.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
-a dblink és a postgres_fdw lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezekkel a bővítményekkel csatlakozik Azure Database for PostgreSQL kiszolgálók között, ezt az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítással teheti meg. Erre akkor is szükség van, ha a bővítmények használatával szeretne visszakapcsolni ugyanarra a kiszolgálóra. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás megtalálhatók a postgres-kiszolgáló Azure Portal lapján, a kapcsolat biztonsága lehetőségnél. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás bekapcsolásával az összes Azure-beli IP-címet az engedélyezési listán helyezheti el.
+a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezekkel a bővítményekkel csatlakozik Azure Database for PostgreSQL kiszolgálók között, ezt az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítással teheti meg. Erre akkor is szükség van, ha a bővítmények használatával szeretne visszakapcsolni ugyanarra a kiszolgálóra. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás megtalálhatók a postgres-kiszolgáló Azure Portal lapján, a kapcsolat biztonsága lehetőségnél. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás bekapcsolásával az összes Azure-beli IP-címet az engedélyezési listán helyezheti el.
 
 A Azure Database for PostgreSQL kimenő kapcsolatai jelenleg nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
 
 ## <a name="uuid"></a>uuid
-Ha az UUID-ossp bővítménnyel `uuid_generate_v4()`t kíván használni, vegye figyelembe az összehasonlítást a pgcrypto-bővítmény `gen_random_uuid()`ával a teljesítménnyel kapcsolatos előnyök érdekében.
-
+Ha az [UUID-ossp bővítménnyel](https://www.postgresql.org/docs/current/uuid-ossp.html)`uuid_generate_v4()`t kíván használni, vegye figyelembe az összehasonlítást a [pgcrypto-bővítmény](https://www.postgresql.org/docs/current/pgcrypto.html) `gen_random_uuid()`ával a teljesítménnyel kapcsolatos előnyök érdekében.
 
 ## <a name="pgaudit"></a>pgAudit
-Az pgAudit bővítmény munkamenet-és objektum-naplózási naplózást biztosít. Ha meg szeretné tudni, hogyan használhatja ezt a bővítményt Azure Database for PostgreSQLban, tekintse meg a [naplózási fogalmakat ismertető cikket](concepts-audit.md). 
+Az [pgAudit bővítmény](https://github.com/pgaudit/pgaudit/blob/master/README.md) munkamenet-és objektum-naplózási naplózást biztosít. Ha meg szeretné tudni, hogyan használhatja ezt a bővítményt Azure Database for PostgreSQLban, tekintse meg a [naplózási fogalmakat ismertető cikket](concepts-audit.md). 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+A pg_prewarm-bővítmény a kapcsolatot a gyorsítótárba tölti be. A gyorsítótárak előmelegítése azt jelenti, hogy a lekérdezések az újraindítás után az első futtatáskor jobb válaszidőt rendelkeznek. A 10. és az alatti postgres az előmelegítés manuálisan történik az [előmelegítő függvény](https://www.postgresql.org/docs/10/pgprewarm.html)használatával.
+
+A postgres 11 vagy újabb verziójában beállíthatja, hogy az előmelegítő [automatikusan](https://www.postgresql.org/docs/current/pgprewarm.html)történjen. Meg kell adnia pg_prewarm a `shared_preload_libraries` paraméter listájában, és újra kell indítania a kiszolgálót a módosítás alkalmazásához. A paraméterek a [Azure Portal](howto-configure-server-parameters-using-portal.md), a [CLI](howto-configure-server-parameters-using-cli.md), az REST API vagy az ARM sablonból állíthatók be. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 A TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-bővítményként van csomagolva. A TimescaleDB időalapú analitikai funkciókat, optimalizálásokat és skálázási postgres biztosít az idősoros számítási feladatokhoz.

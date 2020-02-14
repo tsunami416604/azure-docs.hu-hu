@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 03b23d86bca10077ede43f3b4e5a6c5fa6f5dd28
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165461"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186801"
 ---
 # <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nem sikerült létrehozni a Jupyter-jegyzetfüzetet az Azure HDInsight
 
@@ -52,9 +52,9 @@ A verziószám nem egyezik.
 
     Mentse a módosításokat a **CTRL + X**, **Y**, **ENTER**billentyűkombináció megadásával.
 
-1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net`, ahol a `CLUSTERNAME` a fürt neve.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER`, ahol a `CLUSTERNAME` a fürt neve.
 
-1. Válassza a **Jupyter** lehetőséget, majd indítsa újra a szolgáltatást.
+1. Indítsa újra a Jupyter szolgáltatást.
 
 ## <a name="next-steps"></a>Következő lépések
 

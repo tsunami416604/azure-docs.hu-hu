@@ -1,25 +1,25 @@
 ---
 title: Hitelesítés hozzáadása az egyéni API-khoz irányuló hívások biztonságossá tételéhez
-description: Hitelesítés beállítása a Azure Logic Apps egyéni API-khoz érkező hívások biztonságossá tételéhez
+description: A hitelesítés beállítása az egyéni API-khoz érkező hívások biztonságának növeléséhez Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666890"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191410"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Egyéni API-k biztonságos hívása Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>A Azure Logic Apps egyéni API-khoz érkező hívások biztonságának fokozása
 
-Az API-k felé irányuló hívások biztonságossá tételéhez beállíthatja Azure Active Directory (Azure AD) hitelesítését a Azure Portal segítségével, így nem kell frissítenie a kódot. Alternatív megoldásként a hitelesítés előírásához és kényszerítéséhez az API kódját is használhatja.
+Az API-k hívásának biztonsága érdekében beállíthatja Azure Active Directory (Azure AD) hitelesítését a Azure Portal segítségével, így nem kell frissítenie a kódot. Alternatív megoldásként a hitelesítés előírásához és kényszerítéséhez az API kódját is használhatja.
 
 ## <a name="authentication-options-for-your-api"></a>Az API hitelesítési beállításai
 
-A következő módokon teheti biztonságossá a hívásokat az egyéni API-hoz:
+Az egyéni API-hívások biztonsága az alábbi módokon javítható:
 
 * [Nem változik a kód módosítása](#no-code): az API-t az [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) segítségével az Azure Portal keresztül biztosíthatja, így nem kell frissítenie a kódot, vagy újra kell telepítenie az API-t.
 
@@ -197,16 +197,16 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 }
 ```
 
-| Tulajdonság | Szükséges | Leírás | 
+| Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| ügyfél-azonosító | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| tenant | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| audience | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| clientId | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
 | type | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
 |||| 
 
-Példa:
+Például:
 
 ``` json
 {
@@ -248,7 +248,7 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 } 
 ```
 
-| Tulajdonság | Szükséges | Leírás |
+| Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
 | `type` | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az értéknek `ClientCertificate`nak kell lennie. |
 | `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
@@ -271,7 +271,7 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 }
 ```
 
-| Tulajdonság | Szükséges | Leírás | 
+| Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
 | type | Igen | A használni kívánt hitelesítési típus. Az alapszintű hitelesítés esetében az értéknek `Basic`nak kell lennie. | 
 | felhasználónév | Igen | A hitelesítéshez használni kívánt Felhasználónév | 

@@ -7,22 +7,22 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773936"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188191"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-event-hub.md)
+> * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
@@ -59,9 +59,9 @@ Ebben a cikkben mintaadatok létrehozásához és az Event hub-hoz való elküld
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Előfizetés | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
+    | Előfizetést | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *test-hub-rg* | Hozzon létre egy új erőforráscsoportot. |
-    | Földrajzi egység | *USA nyugati régiója* | A cikkhez válassza az *USA nyugati* régiója lehetőséget. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Hozza létre az Event hub-névteret ugyanabban a helyen, mint a Kusto-fürtöt a legjobb teljesítmény érdekében (amely a nagy átviteli sebességű Event hub-névterek esetében fontos
+    | Hely | *USA nyugati régiója* | A cikkhez válassza az *USA nyugati* régiója lehetőséget. Éles üzemben az igényeinek leginkább megfelelő régiót válassza. Hozza létre az Event hub-névteret ugyanabban a helyen, mint a Kusto-fürtöt a legjobb teljesítmény érdekében (amely a nagy átviteli sebességű Event hub-névterek esetében fontos
     | Névtér neve | A névtér egyedi neve | Válasszon egy egyedi nevet a névtér azonosításához. Például: *mytestnamespace*. A rendszer hozzáfűzi a *servicebus.windows.net* tartománynevet a megadott névhez. A név csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel kell kezdődnie, és betűvel vagy számmal kell végződnie. Az érték 6 és 50 karakter közötti hosszúságú lehet.
     | Event Hubs neve | *test-hub* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. Az eseményközpont nevének egyedinek kell lennie a névtéren belül. |
     | Fogyasztói csoport neve | *test-group* | A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
@@ -117,7 +117,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
     | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
-    | Eseményvezérelt rendszerek tulajdonságai | Válassza ki a megfelelő tulajdonságokat | Az [Event hub rendszertulajdonságai](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/tables#create-table) vagy [frissítsen](/azure/kusto/management/tables#alter-table-and-alter-merge-table) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. |
+    | Eseményvezérelt rendszerek tulajdonságai | Válassza ki a megfelelő tulajdonságokat | Az [Event hub rendszertulajdonságai](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/create-table-command) vagy [frissítsen](/azure/kusto/management/alter-table-command) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. |
     | Tömörítés | *NEz egy* | Az Event hub-üzenetek adattartalom tömörítési típusa. Támogatott tömörítési típusok: *nincs, gzip*.|
     | | |
 
@@ -128,7 +128,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Table | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
+    | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ork és parketta. |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase**-ben létrehozott [leképezés](/azure/kusto/management/mappings) , amely leképezi a bejövő JSON-adattípusokat a **TestTable**tartozó oszlopnevek és adattípusok számára. JSON-vagy többsoros JSON-hoz szükséges, és nem kötelező más formátumokhoz.|
     | | |

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056682"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198751"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
-Ha a terheléselosztási szabályokat Azure Load Balancer használatával használja, meg kell adnia egy állapot-mintavételt, hogy az Load Balancer a háttérbeli végpont állapotának észlelését.  Az állapot-mintavétel és a mintavételi válaszok konfigurációja határozza meg, hogy mely háttérbeli készlet-példányok kapják meg az új folyamatokat. Az állapot-mintavételek segítségével észlelhető egy alkalmazás meghibásodása egy háttér-végponton. Egyéni választ is létrehozhat az állapot-mintavételre, és a Flow Control állapot-ellenőrzésével kezelheti a terhelést vagy a tervezett állásidőt. Ha az állapot-mintavétel sikertelen, Load Balancer leállítja az új folyamatok küldését a megfelelő sérült példányra. A kimenő kapcsolatra nincs hatással, csak a bejövő kapcsolatok érintettek.
+Ha a Azure Load Balancer terheléselosztási szabályokat használ, meg kell adnia az állapot-mintavételt, hogy az Load Balancer a háttérbeli végpont állapotának észlelését.  Az állapot-mintavétel és a mintavételi válaszok konfigurációja határozza meg, hogy mely háttérbeli készlet-példányok kapják meg az új folyamatokat. Az állapot-mintavételek segítségével észlelhető egy alkalmazás meghibásodása egy háttér-végponton. Egyéni választ is létrehozhat az állapot-mintavételre, és a Flow Control állapot-ellenőrzésével kezelheti a terhelést vagy a tervezett állásidőt. Ha az állapot-mintavétel sikertelen, Load Balancer leállítja az új folyamatok küldését a megfelelő sérült példányra. A kimenő kapcsolatra nincs hatással, csak a bejövő kapcsolatok érintettek.
 
 Az állapotadatok több protokollt is támogatnak. Egy adott állapot mintavételi protokolljának rendelkezésre állása Load Balancer SKU-tól függ.  Emellett a szolgáltatás működése Load Balancer SKU-ban is változik a táblázatban látható módon:
 

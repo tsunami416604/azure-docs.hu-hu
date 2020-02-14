@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863723"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201560"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
@@ -20,7 +20,7 @@ ms.locfileid: "75863723"
 Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a klasszikus üzemi modellre vonatkoznak, és nem vonatkoznak az aktuális üzemi modellre, a Resource Managerre. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -39,7 +39,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
-* Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. A parancsmagok telepítéséhez lásd: [Service Management](/powershell/azure/servicemanagement/install-azure-ps). Az általános PowerShell-telepítésekkel kapcsolatos további információkért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia.
+* A megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShell szükséges. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
 
@@ -69,17 +69,17 @@ Amikor helyek közötti használatra hoz létre virtuális hálózatot, gondosko
 
 ### <a name="to-create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Egy böngészőből keresse fel az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel az [Azure portált](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 2. Kattintson*a * + erőforrás létrehozása*elemre. A **Piactér keresése** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és rákattintva nyissa meg a **Virtuális hálózat** lapot.
 3. kattintson **a (klasszikusra váltás)** elemre, majd kattintson a **Létrehozás**gombra.
-4. A **Virtuális hálózat létrehozása (klasszikus)** lapon konfigurálja a virtuális hálózat beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A VNet létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
+4. A **Virtuális hálózat létrehozása (klasszikus)** lapon konfigurálja a virtuális hálózat beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A VNet létrehozása után visszatérhet, és további alhálózatokat és címeket is hozzáadhat.
 
    ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Virtuális hálózat létrehozása lap")
-5. Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg az **Előfizetés** résznél. Az előfizetéseket a legördülő menüben módosíthatja.
+5. Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg a **Subscription** (Előfizetés) résznél. Az előfizetéseket a legördülő menüben módosíthatja.
 6. Kattintson az **Erőforráscsoport** elemre, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat egy név beírásával. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
-7. Ezután válassza ki a virtuális hálózatához tartozó **Hely** beállításokat. Ez a hely határozza meg a VNeten üzembe helyezett erőforrások helyét.
+7. Ezután válassza ki a VNethez tartozó **Location** (Hely) beállításokat. Ez a hely határozza meg a VNeten üzembe helyezett erőforrások helyét.
 8. A VNet létrehozásához kattintson a **Létrehozás** gombra.
-9. A Létrehozás gombra kattintva létrejön egy csempe az irányítópulton, amely a virtuális hálózat állapotát mutatja. A virtuális hálózat létrejöttével a csempe is módosul.
+9. A Létrehozás gombra kattintva létrejön egy csempe az irányítópulton, amely a virtuális hálózat állapotát mutatja. A VNet létrejöttével a csempe is módosul.
 
 ## <a name="additionaladdress"></a>2. további címterület hozzáadása
 
@@ -159,23 +159,24 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
 
 ### <a name="step-1-connect-to-your-azure-account"></a>1\. lépés Csatlakozás az Azure-fiókhoz
 
-Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
+Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. 
 
-```powershell
-azure config mode asm
-```
+1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
 
-1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
+   ```powershell
+   azure config mode asm
+   ```
+2. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
 
    ```powershell
    Add-AzureAccount
    ```
-2. Keresse meg a fiókot az előfizetésekben.
+3. Keresse meg a fiókot az előfizetésekben.
 
    ```powershell
    Get-AzureSubscription
    ```
-3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
+4. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
@@ -183,7 +184,7 @@ azure config mode asm
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\. lépés A megosztott kulcs beállítása és a kapcsolat létrehozása
 
-Amikor klasszikus VNet hoz létre a portálon (nem a PowerShell használatával), az Azure hozzáadja az erőforráscsoport nevét a rövid névhez. Például az Azure szerint az ehhez a gyakorlathoz létrehozott VNet neve "Group TestRG1 TestVNet1", nem "TestVNet1". A PowerShell használatához a virtuális hálózat teljes neve szükséges, nem pedig a portálon megjelenő rövid név. A hosszú név nem látható a portálon. A következő lépések segítségével exportálhatja a hálózati konfigurációs fájlt a virtuális hálózat nevének pontos értékeinek beszerzéséhez. 
+Ha klasszikus VNet hoz létre a portálon (nem a PowerShell használatával), az Azure hozzáadja az erőforráscsoport nevét a rövid névhez. Például az Azure szerint az ehhez a gyakorlathoz létrehozott VNet neve "Group TestRG1 TestVNet1", nem "TestVNet1". A PowerShell használatához a virtuális hálózat teljes neve szükséges, nem pedig a portálon megjelenő rövid név. A hosszú név nem látható a portálon. A következő lépések segítségével exportálhatja a hálózati konfigurációs fájlt a virtuális hálózat nevének pontos értékeinek beszerzéséhez. 
 
 1. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre exportálja.
 

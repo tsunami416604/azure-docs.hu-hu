@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118920"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188997"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
 
@@ -79,9 +79,9 @@ Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, 
 
    > [!NOTE]
    > Az Office 365 Enterprise ügyfelei Észak-Amerika jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf, az ügyfél kulcsa vagy az Office 365 Government-ügyfél, akkor ez a funkció nem érhető el. A következő témakörben találhatja meg, hogy Ügyfélszéf vagy az ügyfél kulcsának ügyfele-e:
-   > * [Ügyfélszéf](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [Ügyfél kulcsa](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Office 365-kormány](https://www.microsoft.com/microsoft-365/government)
+   > * [Ügyfélszéf](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Ügyfél kulcsa](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365-kormány](/microsoft-365/government)
 
 1. Válassza a **jóváhagyási** lehetőséget.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180328"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186115"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Mi a csak feltételes hozzáférés jelentési módja?
 
@@ -25,7 +25,8 @@ A feltételes hozzáférést ügyfeleink széles körben használják a megfelel
 A csak jelentési mód egy új feltételes hozzáférési szabályzat, amely lehetővé teszi a rendszergazdák számára a feltételes hozzáférési házirendek hatásának kiértékelését, mielőtt engedélyezné azokat a környezetében.  A csak jelentési mód kiadásával:
 
 - A feltételes hozzáférési szabályzatok csak jelentési módban engedélyezhetők.
-- Bejelentkezéskor a rendszer kiértékeli a szabályzatokat, de nem kényszeríti ki őket. Az eredményeket a rendszer a bejelentkezési napló részleteinek **feltételes hozzáférés** és **jelentés – (előzetes verzió)** lapjain naplózza.
+- Bejelentkezéskor a rendszer kiértékeli a szabályzatokat, de nem kényszeríti ki őket.
+- Az eredményeket a rendszer a bejelentkezési napló részleteinek **feltételes hozzáférés** és **jelentés – (előzetes verzió)** lapjain naplózza.
 - A Azure Monitor-előfizetéssel rendelkező ügyfelek a feltételes hozzáférési szabályzatok segítségével figyelheti a feltételes hozzáférési házirendek hatását.
 
 > [!WARNING]

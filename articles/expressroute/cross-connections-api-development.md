@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: 143f2f36cc93a9d67a3ab800782c9a6bb8a52af0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067356"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187012"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-fejlesztés és-integráció
 
@@ -51,7 +51,7 @@ A tesztelési társítási helyszínek: a dummy-eszközök és-portok alapértel
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. regisztrálja a Dev_Provider-előfizetést a expressRouteCrossConnections API eléréséhez
 
-A expressRouteCrossConnections API-hoz való hozzáféréshez a partner-előfizetést regisztrálni kell a **Microsoft. Network erőforrás-szolgáltatóban**. A regisztrációs folyamat befejezéséhez kövesse az [Azure Resource Providers és types](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#portal) című cikk lépéseit.
+A expressRouteCrossConnections API-hoz való hozzáféréshez a partner-előfizetést regisztrálni kell a **Microsoft. Network erőforrás-szolgáltatóban**. A regisztrációs folyamat befejezéséhez kövesse az [Azure Resource Providers és types](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) című cikk lépéseit.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Azure Resource Manager REST API-hívások hitelesítésének beállítása
 

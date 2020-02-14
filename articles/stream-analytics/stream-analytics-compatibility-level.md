@@ -1,19 +1,19 @@
 ---
 title: Azure Stream Analytics kompatibilitási szintek
-description: Megtudhatja, hogyan állíthatja be a kompatibilitási szintet egy Azure Stream Analytics feladatokhoz és a legújabb kompatibilitási szinten történt jelentős változásokhoz
+description: Ismerje meg, hogyan állíthatja be az Azure Stream Analytics-feladat és a fontosabb változását foglalja össze a kompatibilitási szintje a legújabb kompatibilitási szinten
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989858"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201798"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
 
 Ez a cikk a Azure Stream Analytics kompatibilitási szintjének beállítását ismerteti. A Stream Analytics felügyelt szolgáltatás, amely rendszeres frissítésekkel és teljesítménnyel kapcsolatos újdonságokkal rendelkezik. A szolgáltatás futtatókörnyezetének legtöbb frissítése automatikusan elérhetővé válik a végfelhasználók számára. 
 
@@ -21,7 +21,7 @@ A szolgáltatás egyes új funkciói azonban jelentős változást is bevezethet
 
 ## <a name="choose-a-compatibility-level"></a>Kompatibilitási szint kiválasztása
 
-A kompatibilitási szint vezérli a stream Analytics-feladatok futásidejű viselkedését. 
+Kompatibilitási szint szabályozza a stream analytics-feladat működését. 
 
 A Azure Stream Analytics jelenleg három kompatibilitási szintet támogat:
 
@@ -40,18 +40,22 @@ A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható 
 A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
 1. A Stream Analytics feladatainak megkereséséhez használja a [Azure Portal](https://portal.azure.com) .
-2. A kompatibilitási szint frissítése előtt **állítsa le** a feladatot. A kompatibilitási szint nem frissíthető, ha a feladata futó állapotban van.
+2. A kompatibilitási szint frissítése előtt **állítsa le** a feladatot. A kompatibilitási szint nem frissíthető, ha a feladat nem futó állapotban.
 3. A **configure (Konfigurálás** ) fejléc alatt válassza a **kompatibilitási szint**lehetőséget.
 4. Válassza ki a kívánt kompatibilitási szint értékét.
 5. Kattintson a lap alján található **Mentés** gombra.
 
-![Stream Analytics kompatibilitási szintje Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Stream Analytics kompatibilitási szintje az Azure Portalon](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
 A kompatibilitási szint frissítésekor a T-Compiler érvényesíti a feladatot a kiválasztott kompatibilitási szintnek megfelelő szintaxissal.
 
-## <a name="compatibility-level-12"></a>Kompatibilitási szint 1.2
+## <a name="compatibility-level-12"></a>Kompatibilitási szint 1,2
 
 A kompatibilitási szint 1,2-as verziójában a következő jelentős változások következnek be:
+
+###  <a name="amqp-messaging-protocol"></a>AMQP üzenetküldési protokoll
+
+**1,2 szint**: Azure stream Analytics a [speciális üzenetsor-kezelési protokoll (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) üzenetkezelő protokollt használja a Service Bus várólistákba és témakörökbe való íráshoz. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával.
 
 ### <a name="geospatial-functions"></a>Térinformatikai funkciók
 
@@ -115,11 +119,11 @@ A "System" előtag használata bármely felhasználó által definiált függvé
 
 ## <a name="compatibility-level-11"></a>Kompatibilitási szint 1,1
 
-A kompatibilitási szint 1,1-as verziójában a következő jelentős változások következnek be:
+1\.1-kompatibilitási szinten a következő jelentős változások történtek:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-formátum
 
-**1,0 szint:** Azure Stream Analytics használt DataContractSerializer, így az üzenet tartalma XML-címkéket tartalmaz. Példa:
+**1,0 szint:** Azure Stream Analytics használt DataContractSerializer, így az üzenet tartalma XML-címkéket tartalmaz. Például:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
@@ -132,19 +136,19 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 **1,1 szint:** a kis-és nagybetűk megkülönböztetése megmarad a mezők neveinél, amikor azokat a Azure stream Analytics motor dolgozza fel.
 
 > [!NOTE]
-> A kis-és nagybetűk megkülönböztetése még nem érhető el a peremhálózati környezet használatával futtatott stream analitikus feladatokhoz. Ennek eredményeképpen az összes mezőnév kisbetűsre lesz konvertálva, ha a feladata az Edge-ben fut.
+> Persisting Kisbetű/nagybetű megkülönböztetése még nem érhető el az Edge-környezetben üzemeltetett Stream elemzési feladatok. Ennek eredményeképpen minden mezőnevek vannak kisbetűssé konvertált, ha a feladat az Edge-ben üzemel.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1,0 szint:** CREATE TABLE parancs nem szűrte az eseményeket NaN (nem-a-Number) értékkel. Például: Infinity,-Infinity) egy LEBEGŐPONTos oszlopban, mivel ezek a számok nem tartoznak a dokumentált tartományhoz.
+**1,0 szint:** CREATE TABLE parancs nem szűrte az eseményeket NaN (nem-a-Number) értékkel. Például végtelenig, - Infinity) egy LEBEGŐPONTOS oszlop írja be, mert ezek a számok a dokumentált tartományon vannak.
 
-**1,1 szint:** CREATE TABLE lehetővé teszi egy erős séma megadását. A Stream Analytics motor ellenőrzi, hogy az adathalmaz megfelel-e a sémának. Ezzel a modellel a parancs a NaN-értékekkel szűrheti az eseményeket.
+**1,1 szint:** CREATE TABLE lehetővé teszi egy erős séma megadását. A Stream Analytics-motor ellenőrzi, hogy az adatok megfelel-e a séma. Ebben a modellben a parancs szűrheti NaN értéket tartalmazó eseményeket.
 
 ### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatikus leküldési idő letiltása a JSON-beli datetime-karakterláncokhoz
 
 **1,0 szint:** A JSON-elemző automatikusan a dátum/idő/zóna információval rendelkező karakterlánc-értékeket a DateTime típusúra konvertálja, majd átalakítja az UTC értékre. Ez a viselkedés az időzóna-információk elvesztését eredményezte.
 
-**1,1 szint:** A dátum/idő/zóna információval rendelkező karakterlánc-értékek nem rendelkeznek automatikusan DateTime típussal. Ennek eredményeképpen az időzóna-információk megmaradnak.
+**1,1 szint:** A dátum/idő/zóna információval rendelkező karakterlánc-értékek nem rendelkeznek automatikusan DateTime típussal. Ennek eredményeképpen az időzónaadatok tartani.
 
 ## <a name="next-steps"></a>Következő lépések
 

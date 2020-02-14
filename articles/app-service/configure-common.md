@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666183"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198581"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -84,13 +84,13 @@ Az Alkalmazásbeállítások a következő JSON-formátummal rendelkeznek:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Csatlakozási sztringek konfigurálása
+## <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
 
 A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **Alkalmazásbeállítások**elemet.
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
-A ASP.NET és a ASP.NET Core fejlesztők számára a kapcsolati karakterláncok a App Serviceban való beállítása olyanok, mint a *web. config fájlban `<connectionStrings>`.* a app Service a *web. config fájlban*megadott értékek felülbírálják. A fejlesztői beállításokat (például egy adatbázisfájlt) megtarthatja a *web. config* és a termelési titkokban (például SQL Database hitelesítő adatokban) a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
+A ASP.NET és a ASP.NET Core fejlesztők számára a kapcsolati karakterláncok a App Serviceban való beállítása olyanok, mint a *web. config fájlban `<connectionStrings>`.* a app Service a *web. config fájlban*megadott értékek felülbírálják. A fejlesztői beállításokat (például egy adatbázisfájlt) a *web. config* fájlban és a termelési titkokban (például SQL Database hitelesítő adatokban) biztonságosan megtarthatja app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
 Más nyelvi stackek esetében érdemes inkább az [Alkalmazásbeállítások](#configure-app-settings) használatát használni, mert a kapcsolati karakterláncok speciális formázást igényelnek a változó kulcsokban az értékek eléréséhez. Íme egy kivétel, azonban bizonyos Azure-adatbázisok biztonsági mentése az alkalmazással együtt történik, ha az alkalmazásban konfigurálja a kapcsolatok karakterláncait. További információ: [Mi történik a biztonsági mentésben](manage-backup.md#what-gets-backed-up). Ha nincs szüksége erre az automatikus biztonsági mentésre, használja az Alkalmazásbeállítások szolgáltatást.
 
@@ -192,7 +192,7 @@ Ha az alkalmazás olyan modulokat használ, amelyek az URL-cím alapján statiku
 
 A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **útvonal-hozzárendelések**lehetőséget.
 
-![Elérésiút-hozzárendelések](./media/configure-common/open-path.png)
+![Elérésiút-megfeleltetések](./media/configure-common/open-path.png)
 
 Az **elérési út leképezése** lapon az operációs rendszer típusa alapján különböző dolgok láthatók.
 

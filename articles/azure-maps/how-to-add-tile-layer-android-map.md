@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4113f632e70bf1008c688066b51a27f1bc3c6345
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911514"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198258"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
 Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csempéket a térképeken a Azure Maps Android SDK használatával. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md) dokumentációját.
 
-Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón a csempe rétege által értelmezett elnevezési konvencióval vagy olyan dinamikus szolgáltatással, amely menet közben hozza létre a képeket. Az Azure Maps TileLayer osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat. 
+Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón, a csempe rétegének értelmezési elnevezési konvenció használatával. Ezeket a képeket olyan dinamikus szolgáltatással is megjelenítheti, amely a képeket közel valós időben hozza létre. Az Azure Maps TileLayer osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat:
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
@@ -35,7 +35,7 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 * `{z}` – a csempe nagyítási szintje. `{x}` és `{y}`is szükséges.
 * `{quadkey}` csempe quadkey azonosítóját a Bing Maps csempe rendszer-elnevezési konvenciója alapján.
 * `{bbox-epsg-3857}` – egy, a EPSG 3857 térbeli hivatkozási rendszerében `{west},{south},{east},{north}` formátumú határolókeret-karakterlánc.
-* `{subdomain}` – itt adható meg az altartomány értékeit tartalmazó helyőrző.
+* `{subdomain}` – a altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Csempe réteg hozzáadása a térképhez
 
- Ez a minta bemutatja, hogyan hozhat létre egy csempe réteget, amely az x, y, zoom csempe rendszerű csempe-készletre mutat. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
+ Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ezek a csempék az "x, y, zoom" csemperendszer használatát használják. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
 
 Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
 

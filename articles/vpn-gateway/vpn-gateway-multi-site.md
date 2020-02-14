@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902433"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198095"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 >
@@ -49,16 +49,19 @@ Ha már rendelkezik egy statikus átjáróval, amely a virtuális hálózathoz c
 
 A többhelyes eljárás befejezése után érdemes a hálózati konfigurációs fájl használatát használni. Ha azonban több ember dolgozik a hálózati konfigurációban, meg kell győződnie arról, hogy mindenki ismeri ezt a korlátozást. Ez nem jelenti azt, hogy egyáltalán nem használhatja a portált. Minden más számára felhasználható, kivéve az adott virtuális hálózat konfigurációjának módosításait.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt ellenőrizze, hogy rendelkezik-e a következőkkel:
 
 * Kompatibilis VPN-hardver az egyes helyszíni helyekhez. Tekintse át a [Virtual Network kapcsolat VPN-eszközeit](vpn-gateway-about-vpn-devices.md) annak ellenőrzéséhez, hogy a használni kívánt eszköz a kompatibilis-e.
 * Az egyes VPN-eszközök kifelé irányuló, nyilvános IPv4 IP-címei. Az IP-cím nem helyezhető el NAT mögött. Ez a követelmény.
-* Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. Győződjön meg arról, hogy a Resource Manager-verzión kívül telepíti a Service Management (SM) verziót. További információért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview) .
 * Valaki, aki jártas a VPN-hardver konfigurálásában. A VPN-eszköz konfigurálásának és a munkát végző személynek is alapos ismeretekkel kell rendelkeznie.
 * A virtuális hálózathoz használni kívánt IP-címtartományok (ha még nem hozott létre egyet).
 * Az egyes helyi hálózati helyek IP-címtartományok, amelyekhez csatlakozni fog. Győződjön meg arról, hogy az összes olyan helyi hálózati telephely IP-címtartományok, amelyhez csatlakozni szeretne, nem fedik át egymást. Ellenkező esetben a portál vagy a REST API el fogja utasítani a feltöltött konfigurációt.<br>Ha például két olyan helyi hálózati hellyel rendelkezik, amelyek egyaránt tartalmazzák a 10.2.3.0/24 IP-címtartományt, és egy 10.2.3.3 rendelkező csomaggal rendelkezik, az Azure nem tudja, hogy melyik helyen szeretné elküldeni a csomagot, mivel a címtartományok átfedésben vannak. Az útválasztási problémák megelőzése érdekében az Azure nem teszi lehetővé, hogy olyan konfigurációs fájlt töltsön fel, amely átfedésben lévő tartományokkal rendelkezik.
+
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. helyek közötti VPN létrehozása
 Ha már van egy helyek közötti VPN dinamikus útválasztási átjáróval, nagyszerű! Folytathatja [a virtuális hálózat konfigurációs beállításainak exportálását](#export). Ha nem, tegye a következőket:
@@ -72,6 +75,19 @@ Ha már van egy helyek közötti VPN dinamikus útválasztási átjáróval, nag
 2. Konfigurálja a dinamikus útválasztási átjárót a következő utasítások használatával: [VPN Gateway konfigurálása](vpn-gateway-configure-vpn-gateway-mp.md). Ügyeljen arra, hogy a **dinamikus útválasztást** válassza az átjáró típusaként.
 
 ## <a name="export"></a>2. a hálózati konfigurációs fájl exportálása
+
+Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
+
+```powershell
+azure config mode asm
+```
+
+Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
+
+```powershell
+Add-AzureAccount
+```
+
 Exportálja az Azure hálózati konfigurációs fájlját a következő parancs futtatásával. Ha szükséges, módosíthatja a fájl helyét egy másik helyre való exportáláshoz.
 
 ```powershell
@@ -156,7 +172,7 @@ Importálja a hálózati konfigurációs fájlt. Ha ezt a fájlt a módosításo
 ## <a name="6-download-keys"></a>6. kulcsok letöltése
 Az új alagutak hozzáadása után a "Get-AzureVNetGatewayKey" PowerShell-parancsmag használatával lekérheti az egyes alagutakhoz tartozó IPsec/IKE előmegosztott kulcsokat.
 
-Példa:
+Például:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

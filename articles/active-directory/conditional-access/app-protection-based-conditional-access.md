@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964089"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186619"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Alkalmazás-védelmi szabályzat megkövetelése a Cloud app Accesshez feltételes hozzáféréssel (előzetes verzió)
 
@@ -36,7 +36,7 @@ A feltételes hozzáférési terminológiában ezek az ügyfélalkalmazások az 
 
 ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
 
-A szabályzattal védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](technical-reference.md#approved-client-app-requirement).
+A szabályzattal védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md).
 
 Az alkalmazás-védelem alapú feltételes hozzáférési szabályzatokat más házirendekkel kombinálhatja, például az [eszközökön alapuló feltételes hozzáférési szabályzatok](require-managed-devices.md)segítségével. Így rugalmasságot biztosíthat a személyes és a vállalati eszközök adatainak védelme terén is.
 
@@ -51,12 +51,12 @@ Az Intune által az iOS-hez és az Androidhoz egy felügyelt eszközön jelentet
 - Azok a felhasználók, akik nem tudnak Intune app Protection-szabályzatot fogadni.
 - Az Intune app Protection-szabályzatok nem a szabályzatok fogadására konfigurált alkalmazásai.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy már ismeri a következőket:
 
-- Az [alkalmazás védelmi házirendjének követelménye](technical-reference.md#app-protection-policy-requirement) technikai útmutató.
-- A [jóváhagyott ügyfélalkalmazás-követelmény](technical-reference.md#approved-client-app-requirement) technikai útmutatója.
+- Az [alkalmazás védelmi házirendjének követelménye](concept-conditional-access-grant.md).
+- A [jóváhagyott ügyfélalkalmazás-követelmény](concept-conditional-access-grant.md).
 - A [Azure Active Directoryban a feltételes hozzáférés](overview.md)alapvető fogalmai.
 - [Feltételes hozzáférési szabályzat konfigurálása](app-based-mfa.md).
 

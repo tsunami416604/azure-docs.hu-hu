@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426992"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190944"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>A Search Traffic Analytics megvalósítása az Azure-ban Cognitive Search
 
@@ -106,7 +106,7 @@ Minden alkalommal, amikor egy felhasználó egy keresési kérelmet ad ki, a kö
 **SearchServiceName**: (karakterlánc) keresési szolgáltatás neve **SearchId**: (GUID) a keresési lekérdezés egyedi azonosítója (a keresési válaszban szerepel) **IndexName**: (karakterlánc) keresési szolgáltatási index a lekérdezhető **QueryTerms**: (karakterlánc) a felhasználói **ResultCount**által megadott keresési kifejezések: (int) a visszaadott dokumentumok száma (a keresés válasza) **ScoringProfile**: (karakterlánc) a használt pontozási profil neve, ha van ilyen
 
 > [!NOTE]
-> A kérések száma a felhasználó által generált lekérdezésekben $count = True hozzáadásával a keresési lekérdezéshez. További információk [itt](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) találhatók
+> A kérések száma a felhasználó által generált lekérdezésekben $count = True hozzáadásával a keresési lekérdezéshez. További információ [itt](/rest/api/searchservice/search-documents#counttrue--false)található.
 >
 
 > [!NOTE]
@@ -179,9 +179,9 @@ Miután felkészítette az alkalmazást, és ellenőrizte, hogy az alkalmazás m
 
 3. A jelentés Power BI Desktopban nyílik meg, és a rendszer felszólítja, hogy kapcsolódjon Application Insightshoz, és adja meg a hitelesítő adatokat. A Application Insights-erőforrás Azure Portal lapjain a kapcsolatok adatai találhatók. A hitelesítő adatok esetében adja meg ugyanazt a felhasználónevet és jelszót, amelyet a portálon való bejelentkezéshez használ.
 
-   ![Kapcsolódás Application Insightshoz](./media/search-traffic-analytics/connect-to-app-insights.png "Csatlakozás az Application Insightshoz")
+   ![Kapcsolódás Application Insightshoz](./media/search-traffic-analytics/connect-to-app-insights.png "Kapcsolódás Application Insightshoz")
 
-4. Kattintson a **Betöltés** lehetőségre.
+4. Kattintson a **Betöltés**elemre.
 
 A jelentés olyan diagramokat és táblázatokat tartalmaz, amelyek segítségével jobban tájékozott döntéseket hozhat a keresési teljesítmény és a relevancia javítása érdekében.
 
@@ -199,7 +199,7 @@ A keresési alkalmazás hatékony és átgondolt adatainak beszerzése a keresé
 
 A [Application Insightsról](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) további információt talál, és megtekintheti a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-insights/) , ahol további információkat találhat a különböző szolgáltatási szintjeiről.
 
-További információ a csodálatos jelentések létrehozásáról. A részletekért tekintse meg [a Power bi Desktop első lépéseit](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) ismertető témakört.
+További információ a lenyűgöző jelentések létrehozásához. A részletekért tekintse meg [a Power bi Desktop első lépéseit](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) ismertető témakört.
 
 <!--Image references-->
 [1]: ./media/search-traffic-analytics/azuresearch-trafficanalytics.png

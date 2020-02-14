@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0e35efc0da929136a889b1611a48a60671ed2af8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828332"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190550"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>A Windows Virtual Machines biztonsági vezérlői
 
@@ -22,7 +22,7 @@ Ez a cikk a Windows Virtual Machines beépített biztonsági vezérlőket dokume
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
@@ -44,7 +44,7 @@ Ez a cikk a Windows Virtual Machines beépített biztonsági vezérlőket dokume
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
 | Authentication| Igen |  |
-| Authorization| Igen |  |
+| Engedélyezés| Igen |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -53,8 +53,8 @@ Ez a cikk a Windows Virtual Machines beépített biztonsági vezérlőket dokume
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [virtuális lemezek titkosítása egy Windows rendszerű virtuális gépen](/azure/virtual-machines/windows/encrypt-disks). |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az Azure Virtual Machines támogatja a [ExpressRoute](/azure/expressroute) és a VNet titkosítást. Lásd: [tranzitraktár titkosítás a virtuális gépeken](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure-titkosítási forgatókönyv; Lásd: az [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Oszlop szintű titkosítás (Azure Data Services)| – | |
-| Titkosított API-hívások| Igen | HTTPS és SSL használatával. |
+| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
+| Titkosított API-hívások| Igen | HTTPS és TLS protokollon keresztül. |
 
 
 
@@ -64,6 +64,6 @@ Ez a cikk a Windows Virtual Machines beépített biztonsági vezérlőket dokume
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).

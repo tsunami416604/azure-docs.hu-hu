@@ -3,20 +3,20 @@ title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759892"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198054"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
-A tárolók Azure Monitor az Azure-ban üzemeltetett Azure Kubernetes szolgáltatás (ak) és az AK-os motor-fürtök széles körű figyelését teszi lehetővé. Ez a cikk bemutatja, hogyan engedélyezheti az Azure-on kívül üzemeltetett Kubernetes-fürtök figyelését, és így hasonló figyelési élményt érhet el.
+A tárolók Azure Monitor széles körű monitorozási élményt biztosítanak az Azure-ban üzemeltetett Azure Kubernetes szolgáltatás (ak) és az AK-os [motor](https://github.com/Azure/aks-engine)számára, amely az Azure-ban üzemeltetett, önállóan felügyelt Kubernetes-fürt. Ez a cikk bemutatja, hogyan engedélyezheti az Azure-on kívül üzemeltetett Kubernetes-fürtök figyelését, és így hasonló figyelési élményt érhet el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 * Egy Log Analytics-munkaterület.
 
@@ -34,10 +34,10 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
     |Ügynök erőforrása|Portok |
     |------|---------|   
-    |*.ods.opinsights.azure.com |443-es port |  
-    |*.oms.opinsights.azure.com |443-es port |  
-    |*.blob.core.windows.net |443-es port |  
-    |*. dc.services.visualstudio.com |443-es port |
+    |*.ods.opinsights.azure.com |443-as port |  
+    |*.oms.opinsights.azure.com |443-as port |  
+    |*.blob.core.windows.net |443-as port |  
+    |*. dc.services.visualstudio.com |443-as port |
 
 * A tároló ügynök a Kubelet `cAdvisor secure port: 10250` vagy `unsecure port :10255` megnyitását igényli a fürt összes csomópontján a teljesítmény-metrikák gyűjtéséhez. Javasoljuk, hogy konfigurálja `secure port: 10250` a Kubelet cAdvisor, ha még nincs konfigurálva.
 
@@ -68,15 +68,15 @@ A hibrid Kubernetes-fürthöz tartozó tárolók Azure Monitorának engedélyez�
 
 A megoldás a megadott Azure Resource Manager sablonnal is üzembe helyezhető a Azure PowerShell parancsmaggal `New-AzResourceGroupDeployment` vagy az Azure CLI használatával.
 
-Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
+Ha ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalmát, lásd:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
-Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figyelés engedélyezésének konfigurációját, a másik pedig a konfigurált paramétereket az alábbiak megadásához:
+Ez a módszer két JSON-sablont tartalmaz. Egy sablon határozza meg, a konfigurációt a figyelés, és a másik paraméterértékeket, hogy adja meg az alábbiakat tartalmazza:
 
 - **workspaceResourceId** – a log Analytics munkaterület teljes erőforrás-azonosítója.
 - **workspaceRegion** – az a régió, amely a munkaterületet hozza létre, és a munkaterület **tulajdonságai között a** Azure Portal.
@@ -89,7 +89,7 @@ A **containerSolutionParams. JSON** fájlban lévő `workspaceResourceId` param�
     az account list --all -o table
     ```
 
-    A kimenet a következőhöz hasonló lesz:
+    A kimenet az alábbihoz hasonló lesz:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -174,7 +174,7 @@ A **containerSolutionParams. JSON** fájlban lévő `workspaceResourceId` param�
 
 5. Mentse ezt a fájlt containerSolution. JSON néven egy helyi mappába.
 
-6. Illessze be a következő JSON-szintaxist a fájlba:
+6. A következő JSON-szintaxist illessze be a fájlba:
 
     ```json
     {
@@ -214,7 +214,7 @@ A **containerSolutionParams. JSON** fájlban lévő `workspaceResourceId` param�
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
 
-       A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
+       A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
        ```powershell
        provisioningState       : Succeeded
@@ -231,13 +231,13 @@ A **containerSolutionParams. JSON** fájlban lévő `workspaceResourceId` param�
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
+       A konfiguráció módosításának befejezése néhány percet is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
 
-       A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
+       Miután engedélyezte a figyelés, a fürt mérőszámok megtekintéséhez nagyjából 15 percet igénybe vehet.
 
 ## <a name="install-the-chart"></a>A diagram telepítése
 
@@ -279,14 +279,14 @@ A diagram sikeres üzembe helyezését követően áttekintheti a hibrid Kuberne
 >[!NOTE]
 >A betöltési késés körülbelül öt – tíz perc az ügynöktől az Azure Log Analytics-munkaterületen véglegesítve. A fürt állapota megjelenítheti a **nem adat** vagy **ismeretlen** értéket, amíg a Azure monitor összes szükséges figyelési adata nem érhető el.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha a hibrid Kubernetes-fürt figyelésének engedélyezésére tett kísérlet során hiba lép fel, másolja a [TroubleshootError_nonAzureK8s. Ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) PowerShell-parancsfájlt, és mentse a számítógép egyik mappájába. Ez a parancsfájl az észlelt problémák észleléséhez és megoldásához nyújt segítséget. A probléma megoldásához a következő problémák észlelhetők:
 
 * A megadott Log Analytics munkaterület érvényes
 * A Log Analytics munkaterület a Azure Monitor for containers megoldáshoz van konfigurálva. Ha nem, konfigurálja a munkaterületet.
-* A OmsAgent REPLICASET Pod fut
-* A OmsAgent daemonset elemet Pod fut
+* OmsAgent REPLICASET hüvely fut
+* OmsAgent daemonset elemet hüvely fut
 * A OmsAgent állapotfigyelő szolgáltatás fut
 * A tároló ügynökön konfigurált Log Analytics munkaterület azonosítója és kulcsa megegyezik azzal a munkaterülettel, amelyhez az Insight konfigurálva van.
 * Ellenőrizze, hogy az összes linuxos feldolgozó csomópont rendelkezik-e `kubernetes.io/role=agent` címkével az RS Pod-hoz. Ha nem létezik, adja hozzá.

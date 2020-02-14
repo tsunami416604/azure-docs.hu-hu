@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 02/11/2020
 ms.author: aahi
-ms.openlocfilehash: 33ab516b5b501a79ba84c5aba9c3231634f3c662
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6b62f7ab95f7b2720434c0cf59cce33b0adb1b4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448701"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201237"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rövid útmutató: A Bing Entity Search SDK a Python használatával
 
@@ -47,16 +47,17 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasításokat. 
 
     ```python
-    from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
+    from azure.cognitiveservices.search.entitysearch import EntitySearchClient
     from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Hozzon létre egy változót az előfizetési kulcshoz, és hozza létre az ügyfelet egy új `CognitiveServicesCredentials` objektum létrehozásával.
+2. Hozzon létre egy változót az előfizetési kulcs és a végpont számára. Hozza létre az ügyfelet egy új `CognitiveServicesCredentials` objektum létrehozásával a kulccsal.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
-    client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
+    endpoint = "YOUR-ENDPOINT"
+    client = EntitySearchclient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-a-search-request-and-receive-a-response"></a>Keresési kérelem küldése és válasz fogadása

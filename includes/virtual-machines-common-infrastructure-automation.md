@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260758"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205722"
 ---
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
 
@@ -29,9 +29,9 @@ A [Ansible](https://www.ansible.com/) egy automatizálási motor a konfiguráci�
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- A [Ansible telepítése és konfigurálása Linux rendszeren az Azure](../articles/virtual-machines/linux/ansible-install-configure.md)-hoz való használatra.
-- [Hozzon létre egy linuxos virtuális gépet](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Linux rendszerű virtuális gép kezelése](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- A [Ansible telepítése és konfigurálása Linux rendszeren az Azure](../articles/ansible/ansible-install-configure.md)-hoz való használatra.
+- [Hozzon létre egy linuxos virtuális gépet](../articles/ansible/ansible-create-vm.md).
+- [Linux rendszerű virtuális gép kezelése](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef

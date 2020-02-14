@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972686"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191423"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
@@ -145,10 +145,10 @@ Ez a példa az Azure-beli erőforrások létrehozásához és üzembe helyezés�
 
 A bizalmas vagy védeni kívánt értékeket (például felhasználóneveket, jelszavakat és titkokat) kezelő paraméterek kivételével az összes paraméter `defaultValue` attribútumot tartalmaz, bár bizonyos esetekben az alapértelmezett értékek üres értékek. A sablon paramétereinek használatára szolgáló központi telepítési értékeket a jelen témakör későbbi részében ismertetett példa [paraméterrel rendelkező fájl](#template-parameter-files) tartalmazza.
 
-A sablon paramétereinek biztonságossá tételéhez tekintse meg a következő témaköröket:
+A sablon paramétereinek biztonságossá tételével kapcsolatos további információkért tekintse meg a következő témaköröket:
 
 * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [A sablon paramétereinek biztonságának javítása](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Más sablon-objektumok gyakran hivatkoznak a sablon paramétereinek használatára, így például a sablon paraméterei között továbbított értékeket használhatják, például:
@@ -171,7 +171,7 @@ Ha a paraméterekre hivatkozik, a sablon kifejezései és a függvények eltér�
 
   * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [A sablon paramétereinek biztonságának javítása](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
   * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -319,7 +319,7 @@ A logikai alkalmazás erőforrás-definíciója a `properties` objektummal kezd�
 
 A logikai alkalmazás erőforrás-definíciójának attribútumai a következők:
 
-| Attribútum | Szükséges | Type (Típus) | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor, ahol a `Enabled` azt jelenti, hogy a logikai alkalmazás élő, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a Piszkozat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
 | `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza a `id` attribútumot, amely meghatározza az integrációs fiók AZONOSÍTÓját. |
@@ -413,7 +413,7 @@ A munkafolyamat-definíciós paraméter értékének megadásához használja a 
 
 Ez a példa azt mutatja be, hogyan végezheti el ezeket a feladatokat a biztonságos paraméterek meghatározásával, ha szükséges, hogy az értékeket a Azure Key Vaultban lehessen tárolni:
 
-* A hozzáférés hitelesítéséhez használt értékek biztonságos paramétereinek deklarálása.
+* Deklaráljon biztonságos paramétereket a hozzáférés hitelesítéséhez használt értékekhez.
 * Ezeket az értékeket a sablon és a munkafolyamat-definíció szintjén is használhatja.
 * Adja meg ezeket az értékeket a parameters (paraméterek) fájl használatával.
 

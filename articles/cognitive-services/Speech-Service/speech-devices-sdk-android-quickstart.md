@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380320"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189125"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Androidon
 
@@ -23,7 +23,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz k
 
 Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](get-started.md) -fiókra van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
-A minta alkalmazás forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
 - Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
 
   > [!NOTE]
-  > A Android-Sample-Release. zip fájl tartalmazza az Android minta alkalmazást, és ez a rövid útmutató azt feltételezi, hogy az alkalmazás ki van kinyerve a C:\SDSDK\Android-Sample-Release
+  > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a C:\SDSDK\Android-Sample-Release
 
 - [Azure-előfizetési kulcs beszerzése a Speech Service-hez](get-started.md)
 
@@ -59,30 +59,53 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
    > [!NOTE]
-   > Ha a vállalata rendelkezik házirendekkel az eszközök Wi-Fi rendszerhez való csatlakoztatásáról, be kell szereznie a MAC-címeket, és kapcsolatba kell lépnie az informatikai részleggel arról, hogy miként lehet csatlakoztatni a vállalati Wi-Fi-hez.
+   > Ha a vállalati eszközök csatlakoztatása a Wi-Fi rendszer kapcsolatos házirendek, a MAC-cím beszerzése, és hogyan lehet csatlakozni a vállalati Wi-Fi kapcsolatban az informatikai részlegtől szüksége.
    >
-   > A fejlesztői csomag MAC-címeinek megkereséséhez válassza ki a fájl mappa ikont a fejlesztői csomag asztalán.
+   > A fejlesztői csomag a MAC-cím megkereséséhez válassza ki a fájlmappa ikonra az asztalon, a fejlesztői csomag.
    >
-   > ![Vysor fájl mappája](media/speech-devices-sdk/qsg-10.png)
+   > ![Vysor fájlmappa](media/speech-devices-sdk/qsg-10.png)
    >
-   > Válassza a **Beállítások** lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek** > **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
+   > Válassza a **Beállítások**lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek** > **speciális WLAN**lehetőséget. Írja le a MAC-cím, amely a párbeszédpanel alján jelenik meg.
    >
-   > ![Vysor MAC-címe](media/speech-devices-sdk/qsg-11.png)
+   > ![Vysor MAC-cím](media/speech-devices-sdk/qsg-11.png)
    >
-   > Előfordulhat, hogy egyes vállalatoknak van időkorlát arra vonatkozóan, hogy mennyi ideig csatlakozhatnak egy eszköz a Wi-Fi rendszerhez. Előfordulhat, hogy egy adott számú nap elteltével ki kell terjesztenie a fejlesztői készlet regisztrációját a Wi-Fi rendszerbe.
+   > Egyes vállalatok előfordulhat, hogy mennyi ideig lehet egy eszköz időkorlátja a Wi-Fi rendszer csatlakozik. Szüksége lehet egy adott számú nap eltelte után a fejlesztői csomag regisztrálása a Wi-Fi-rendszer a kiterjesztése.
 
 ## <a name="run-the-sample-application"></a>A mintaalkalmazás futtatása
 
 A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepítse a minta alkalmazást:
 
-1. Android Studio elindítása.
+1. Indítsa el az Android Studio.
 
 1. Válassza az **Open an existing Android Studio project** (Létező Android Studio-projekt megnyitása) lehetőséget.
 
-   ![Android Studio – meglévő projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
+   ![Android Studio – egy meglévő projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
 
 1. Ugrás a C:\SDSDK\Android-Sample-Release\example. A példa projekt megnyitásához kattintson **az OK gombra** .
 
+1. Konfigurálja a gradle a Speech SDK-ra való hivatkozáshoz. Az alábbi fájlok a Android Studio-ban található **Gradle-szkriptek** alatt találhatók.
+
+    A **Build. gradle (projekt: példa)** frissítéséhez a allprojects blokknak a Maven-sorok hozzáadásával meg kell egyeznie az alábbi lépésekkel.
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    A **Build. gradle (modul: alkalmazás)** frissítéséhez adja hozzá ezt a sort a függőségek szakaszhoz. 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
 1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
 
    A Speech and LUIS esetében az adatai a MainActivity. Java-ba kerülnek:
@@ -118,7 +141,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
      private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
-1. Frissítse a következő sorokat, amelyek tartalmazzák a mikrofon tömb geometriájának beállításait:
+1. Frissítse a következő sorokat a mikrofon tömb geometriai beállításokat tartalmazzák:
 
    ```java
    private static final String DeviceGeometry = "Circular6+1";
@@ -129,9 +152,9 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
    | Változó | Jelentés | Elérhető értékek |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fizikai MIC-konfiguráció | Körkörös fejlesztői csomag esetén: `Circular6+1` |
+   | `DeviceGeometry` | Fizikai mic-konfiguráció | Körkörös fejlesztői csomag esetén: `Circular6+1` |
    |          |         | Lineáris fejlesztői csomag esetén: `Linear4` |
-   | `SelectedGeometry` | Szoftveres MIC-konfiguráció | Az összes mikrofont használó körkörös fejlesztői csomag esetében: `Circular6+1` |
+   | `SelectedGeometry` | Szoftver mic-konfiguráció | Az összes mikrofont használó körkörös fejlesztői csomag esetében: `Circular6+1` |
    |          |         | Négy mikrofont használó körkörös fejlesztői csomag esetén: `Circular3+1` |
    |          |         | Az összes mikrofont használó lineáris fejlesztői csomag esetében: `Linear4` |
    |          |         | Két mikrofont használó lineáris fejlesztői csomag esetén: `Linear2` |
@@ -140,11 +163,11 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
 1. Válassza ki az eszközt, majd kattintson **az OK** gombra az alkalmazás telepítéséhez az eszközön.
 
-   ![Telepítési cél kiválasztása párbeszédpanel](media/speech-devices-sdk/qsg-7.png)
+   ![Válassza ki a központi telepítési cél párbeszédpanel](media/speech-devices-sdk/qsg-7.png)
 
-1. Elindul a Speech Devices SDK példa alkalmazás, amely a következő lehetőségeket jeleníti meg:
+1. A Speech Devices SDK-val példa alkalmazás elindul, és megjeleníti a következő beállításokat:
 
-   ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](media/speech-devices-sdk/qsg-8.png)
+   ![Beszéd Devices SDK-val példa mintaalkalmazás és beállítások](media/speech-devices-sdk/qsg-8.png)
 
 1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor az eszközön lévő `/video/participants.properties`ba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](how-to-use-conversation-transcription-service.md).
 
@@ -152,7 +175,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
 1. Kísérlet!
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha nem tud csatlakozni a beszédfelismerési eszközhöz. Írja be a következő parancsot egy parancssori ablakba. Az eszköz az eszközök listáját fogja visszaadni:
 

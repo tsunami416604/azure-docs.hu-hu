@@ -16,12 +16,12 @@ ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ed74e779ea87c4d6ddf58c7607c9a1e900021b48
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 638c265fda3c8b331415d54047180b3c0ee2174a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164018"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197544"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory fejlesztők számára (v 1.0) – áttekintés
 
@@ -57,5 +57,8 @@ A következő cikkekben az API-król, a protokollüzenetekről és az Azure AD �
 | [Szószedet](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
 |  |  |
 
+## <a name="videos"></a>Videók
+
+Az új Microsoft Identity platformra történő Migrálás érdekében tekintse meg [Azure Active Directory fejlesztői platform videóit](videos.md) .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

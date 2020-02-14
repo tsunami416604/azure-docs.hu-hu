@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.author: juliako
-ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186018"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198717"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -59,9 +59,9 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
-Szolgáltatás|Standard|Prémium
+Funkció|Standard|Premium
 ---|---|---
-Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Naponta|Naponta
 Dinamikus titkosítás|Igen|Igen
@@ -134,7 +134,7 @@ Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdons�
 
 A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban a maximális párhuzamosságot a 500 megjelenítőnél alacsonyabbra tervezi, akkor javasoljuk, hogy tiltsa le a CDN-t, mivel a CDN a legjobb párhuzamosságot használja.
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 
 * A streaming Endpoint `hostname` és a folyamatos átviteli URL-cím ugyanaz marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
 * Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, hozzon létre egy másik, CDN-t nem támogató streaming-végpontot.
@@ -155,8 +155,10 @@ A standard folyamatos átviteli végpont létrehozásakor a rendszer alapértelm
 
 A CDN-integráció az összes Azure-adatközpontban engedélyezve van, kivéve Kínát és a szövetségi kormányzati régiókat.
 
+A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming-végpontok **Azure CDNján** valósul meg. A prémium szintű streaming végpontok az összes **Azure CDN árképzési szint és szolgáltató**használatával konfigurálhatók. 
+
 > [!IMPORTANT]
-> A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming-végpontok **Azure CDNján** valósul meg. A prémium szintű streaming végpontok az összes **Azure CDN árképzési szint és szolgáltató**használatával konfigurálhatók. Azure CDN szolgáltatásokkal kapcsolatos további információkért tekintse meg a [CDN áttekintését](../../cdn/cdn-overview.md).
+> A Azure CDNről a [CDN áttekintése](../../cdn/cdn-overview.md)című témakörben olvashat bővebben.
 
 ### <a name="determine-if-dns-change-was-made"></a>Annak megállapítása, hogy a DNS-módosítás történt-e
 
@@ -166,6 +168,10 @@ Megadhatja, hogy a rendszer a DNS-módosítást egy streaming végponton hajtott
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="see-also"></a>Lásd még
+
+[A CDN áttekintése](../../cdn/cdn-overview.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.

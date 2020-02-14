@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "70934103"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192769"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
 Az alábbi szakaszok az új ASP.NET WebAPI hátterrendszer létrehozását ismertetik. E folyamat három fő célja:
 
-- **Ügyfelek hitelesítése**: Egy üzenetkezelővel hitelesítheti az ügyfelek kérelmeit, és hozzárendelheti a felhasználót a kérelemhez.
-- **Regisztrálja az értesítéseket a WebAPI háttérrendszer használatával**: Hozzáadhat egy vezérlőt az ügyféleszközök új regisztrációinak kezeléséhez az értesítések fogadásához. A rendszer [címke](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) formájában automatikusan hozzáadja a hitelesített felhasználó nevét a regisztrációhoz.
-- **Értesítések küldése az ügyfeleknek**: A vezérlő hozzáadásával lehetővé teheti, hogy a felhasználók biztonságos leküldést indítsanak a címkéhez társított eszközökre és ügyfelekre.
+- **Ügyfelek hitelesítése**: Az ügyfélkérések hitelesítéséhez és a kérés adott felhasználóhoz való hozzárendeléséhez egy üzenetkezelőt fog hozzáadni a rendszerhez.
+- **Regisztrálás értesítésekre a WebAPI háttérrendszer használatával**: Annak érdekében, hogy az ügyféleszközön értesítéseket lehessen fogadni, egy vezérlőt fog hozzáadni az új regisztrációk kezeléséhez. A rendszer [címke](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) formájában automatikusan hozzáadja a hitelesített felhasználó nevét a regisztrációhoz.
+- **Értesítések küldése az ügyfeleknek**: Egy vezérlőt is hozzá fog adni annak érdekében, hogy a felhasználók biztonságos leküldést indíthassanak az eszközökre és a címkéhez társított ügyfelek számára.
 
 Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel történik:
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -140,7 +140,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
     ```
 
     > [!NOTE]
-    > Biztonsági Megjegyzés: Az `AuthenticationTestHandler` osztály nem biztosít valódi hitelesítést. A rendszer azt csak az alapszintű hitelesítés utánzására használja, és nem tekinthető biztonságosnak. Az éles alkalmazásokban és szolgáltatásokban implementálnia kell egy biztonságos hitelesítési mechanizmust.
+    > Biztonsági megjegyzés: Az `AuthenticationTestHandler` osztály nem biztosít valós hitelesítést. A rendszer azt csak az alapszintű hitelesítés utánzására használja, és nem tekinthető biztonságosnak. Az éles alkalmazásokban és szolgáltatásokban implementálnia kell egy biztonságos hitelesítési mechanizmust.
 5. Az üzenetkezelő regisztrálásához adja hozzá a következő kódot a `Register` metódus végéhez az **App_Start/WebApiConfig.cs** osztályban:
 
     ```csharp

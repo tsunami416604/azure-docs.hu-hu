@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792030"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191334"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTP-végpontok használatával Azure Logic Apps
 
@@ -36,7 +36,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg a [Mi az a Azure
 
 ## <a name="create-a-callable-endpoint"></a>Hívható végpont létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a kérelem triggert használja, de bármilyen olyan triggert használhat, amely képes fogadni a bejövő HTTP-kérelmeket. Ezek az eseményindítók mindegyike azonos elveket alkalmaz. További információ a kérések triggeréről: [fogadás és válaszadás a bejövő HTTPS-hívásokra Azure Logic Apps használatával](../connectors/connectors-native-reqres.md).
 
@@ -302,17 +302,17 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 }
 ```
 
-## <a name="q--a"></a>Kérdések és válaszok
+## <a name="q--a"></a>Q & A
 
 #### <a name="q-what-about-url-security"></a>K: Mi az URL-biztonság?
 
 **A**: az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
 
 > [!IMPORTANT]
-> Éles és biztonságos rendszerek esetében erősen ajánljuk, hogy a logikai alkalmazást közvetlenül a böngészőből hívja meg a következő okok miatt:
+> A termelési és a magasabb biztonsági rendszerek esetében erősen ajánljuk, hogy a logikai alkalmazás közvetlenül a böngészőből hívja meg a következő okokat:
 >
 > * A megosztott elérési kulcs megjelenik az URL-címben.
-> * Azure Logic Apps ügyfelek megosztott tartományai miatt nem kezelhetők biztonságos tartalmi házirendek.
+> * A biztonsági tartalmi házirendeket nem kezelheti Azure Logic Apps ügyfelek megosztott tartományai miatt.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>K: tud további HTTP-végpontokat konfigurálni?
 

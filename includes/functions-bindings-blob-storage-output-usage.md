@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 414381d42c52e7489fbd6aaacf0f079cdd978ebe
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642096"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202098"
 ---
 A Blobok írásához a következő típusokat lehet kötni:
 
@@ -30,12 +30,12 @@ A Blobok írásához a következő típusokat lehet kötni:
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> a "in" kötést kötelező `direction` megadni a *function. JSON* fájlban vagy `FileAccess.Read` egy C# Class könyvtárban. Azonban használhatja azt a Container objektumot is, amellyel a futtatókörnyezet írási műveleteket hajthat végre, például blobokat tölthet fel a tárolóba.
+<sup>1</sup> a *function. JSON* fájlban lévő "in" kötési `direction` szükséges, vagy C# a `FileAccess.Read` egy Class könyvtárban. Azonban használhatja azt a Container objektumot is, amellyel a futtatókörnyezet írási műveleteket hajthat végre, például blobokat tölthet fel a tárolóba.
 
-<sup>2</sup> a "be `direction` " kötést igényli a *function. JSON* fájlban vagy `FileAccess.ReadWrite` egy C# Class könyvtárban.
+a <sup>2</sup> "be" `direction` kötést igényel a *function. JSON* fájlban, C# vagy `FileAccess.ReadWrite` egy osztály-függvénytárban.
 
-Ha egy Storage SDK-típushoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e a [megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással.
+Ha egy Storage SDK-típushoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e a [megfelelő Storage SDK-verzióra](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-Az aszinkron funkciók, a visszaadott értékének használata vagy `IAsyncCollector` helyett egy `out` paraméter.
+Az aszinkron függvények esetében `out` paraméter helyett a visszaadott értéket vagy a `IAsyncCollector` használja.
 
-A vagy `string` `Byte[]` a alkalmazáshoz való kötés csak akkor ajánlott, ha a blob mérete kicsi, mivel a blob teljes tartalma betöltődik a memóriába. Általában a vagy `Stream` `CloudBlockBlob` a típus használata javasolt. További információ: a jelen cikk [párhuzamosságok és memóriahasználat](#trigger---concurrency-and-memory-usage) című szakasza.
+`string` vagy `Byte[]`hoz való kötés csak akkor ajánlott, ha a blob mérete kicsi, mert a blob teljes tartalma betöltődik a memóriába. Általában érdemes `Stream` vagy `CloudBlockBlob` típust használni. További információ: a jelen cikk [párhuzamosságok és memóriahasználat](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) című szakasza.

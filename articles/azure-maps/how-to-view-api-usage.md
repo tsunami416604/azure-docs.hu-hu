@@ -1,6 +1,6 @@
 ---
 title: A Azure Maps API használati metrikáinak megtekintése | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan tekintheti meg Microsoft Azure Maps API-hívások metrikáit a Azure Portal.
+description: Ebből a cikkből megtudhatja, hogyan tekintheti meg Microsoft Azure Maps API-hívások metrikáit a Azure Portalban.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/06/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911338"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198122"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Az Azure Maps API használati metrikáinak megtekintése
 
-Ez a cikk bemutatja, hogyan tekintheti meg Azure Maps-fiókjához tartozó API-használati metrikákat a [portálon](https://portal.azure.com). A metrikák kényelmes gráf formátumban jelennek meg, a testreszabható idő időtartama alatt.
+Ez a cikk bemutatja, hogyan tekintheti meg Azure Maps-fiókja API-használati metrikáit a [Azure Portal](https://portal.azure.com). A metrikák kényelmes gráf formátumban jelennek meg, a testreszabható idő időtartama alatt.
 
 ## <a name="view-metric-snapshot"></a>Metrika pillanatképének megtekintése
 
@@ -35,7 +35,7 @@ Folytassa a következő szakasszal, ha testre kell szabnia ezeket a diagramokat 
 
 3. Miután megnyitotta a Maps-fiókját, kattintson a bal oldali **mérőszámok** menüre.
 
-4. A **metrikák** panelen válasszon az alábbiak közül:
+4. A **metrikák** ablaktáblán válasszon a következő lehetőségek közül:
 
    1. **Rendelkezésre állás** – az API rendelkezésre állásának *átlagát* mutatja egy adott időszakban.
    2. **Használat** – ez azt mutatja, hogy a fiók használati *száma* hogyan használható.
@@ -46,11 +46,11 @@ Folytassa a következő szakasszal, ha testre kell szabnia ezeket a diagramokat 
 
     ![Azure Maps metrikák időtartománya](media/how-to-view-api-usage/time-range.png)
 
-6. Miután hozzáadta a metrikát, **hozzáadhat szűrőt** a metrikához tartozó tulajdonságok közül, majd kiválaszthatja annak a tulajdonságnak az értékét, amelynek a diagramját meg szeretné jeleníteni.
+6. Miután hozzáadta a metrikát, **szűrőt adhat hozzá** az adott metrikához tartozó tulajdonságok közül. Ezután válassza ki a diagramon megjeleníteni kívánt tulajdonság értékét.
 
     ![Azure Maps használati metrikák szűrője](media/how-to-view-api-usage/filter.png)
 
-7. A mérőszám felosztását a kiválasztott metrikai tulajdonság alapján is **alkalmazhatja** . Ez lehetővé teszi, hogy a gráf több gráfra legyen felosztva, egyet pedig az adott tulajdonság minden értékéhez. Az alábbi képen az egyes diagramok színe a gráf alján látható tulajdonság értékének felel meg.
+7. A mérőszám felosztását a kiválasztott metrikai tulajdonság alapján is **alkalmazhatja** . Lehetővé teszi, hogy a gráf több gráfra legyen felosztva az adott tulajdonság minden értékéhez. Az alábbi képen az egyes diagramok színe a gráf alján látható tulajdonság értékének felel meg.
 
     ![Azure Maps használati metrikák felosztása](media/how-to-view-api-usage/splitting.png)
 

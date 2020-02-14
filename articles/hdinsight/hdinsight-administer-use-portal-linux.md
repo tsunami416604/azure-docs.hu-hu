@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264291"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186841"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -35,7 +35,7 @@ A **HDInsight-fürtök** lapon megjelenik a meglévő fürtök listája.  A port
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
 2. Válassza ki a **HDInsight-fürtöket** az **elemzés**alatt.
 
-## <a name="homePage"></a>Fürt kezdőlapja 
+## <a name="homePage"></a>Fürt kezdőlapja
 
 Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ekkor megnyílik az **Áttekintés** nézet, amely az alábbi képhez hasonlóan néz ki:
 
@@ -43,7 +43,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
 **Felső menü:**  
 
-| Tétel| Leírás |
+| Elem| Leírás |
 |---|---|
 |Áthelyezés|Áthelyezi a fürtöt egy másik erőforráscsoporthoz vagy egy másik előfizetésbe.|
 |Törlés|Törli a fürtöt. |
@@ -53,24 +53,24 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Bal felső menü**
 
-    | Tétel| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Áttekintés|A fürt általános információit tartalmazza.|
     |Tevékenységnapló|Tevékenységek naplóinak megjelenítése és lekérdezése.|
     |Hozzáférés-vezérlés (IAM)|Szerepkör-hozzárendelések használata.  Lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).|
     |Címkék|Lehetővé teszi a kulcs/érték párok beállítását a Cloud Services egyéni besorolásának meghatározásához. Létrehozhat például egy **Project**nevű kulcsot, majd közös értéket használhat egy adott projekthez társított összes szolgáltatáshoz.|
     |Problémák diagnosztizálása és megoldása|Hibaelhárítási információk megjelenítése.|
-    |Gyors útmutató|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
+    |Első lépések|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
     |Eszközök|Súgó a HDInsight-hez kapcsolódó eszközökről.|
 
   - **Beállítások menü**  
 
-    | Tétel| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Fürt mérete|A fürt munkavégző csomópontjainak megkeresése, növelése és csökkentése. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kvóta korlátai|Az előfizetéshez használt és elérhető magok megjelenítése.|
     |SSH + fürt bejelentkezés|A fürthöz a Secure Shell (SSH) kapcsolat használatával történő kapcsolódáshoz szükséges utasításokat jeleníti meg. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Hozzáférési Data Lake Storage Gen1 konfigurálása.  Lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |1\. generációs Data Lake Storage|Hozzáférési Data Lake Storage Gen1 konfigurálása.  Lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Tárfiókok|Tekintse meg a Storage-fiókokat és a kulcsokat. A Storage-fiókok konfigurálása a fürt létrehozási folyamata során történik.|
     |Alkalmazások|HDInsight-alkalmazások hozzáadása/eltávolítása.  Lásd: [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).|
     |Parancsfájlok műveletei|Futtasson bash-parancsfájlokat a fürtön. Lásd: [a Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -82,25 +82,25 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Figyelés menü**
 
-    | Tétel| Leírás |
+    | Elem| Leírás |
     |---|---|
-    |Értesítések|A riasztások és műveletek kezelése.|
-    |Metrikák|A fürt metrikáinak figyelése Azure Monitor naplókban.|
+    |Riasztások|A riasztások és műveletek kezelése.|
+    |Mérőszámok|A fürt metrikáinak figyelése Azure Monitor naplókban.|
     |Diagnosztikai beállítások|A diagnosztikai metrikák tárolására szolgáló beállítások.|
     |Azure Monitor|A fürt figyelése Azure Monitorban.|
 
   - **Támogatás + hibaelhárítás menü**
 
-    | Tétel| Leírás |
+    | Elem| Leírás |
     |---|---|
-    |Resource Health|Lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).|
+    |Erőforrás állapota|Lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).|
     |Új támogatási kérelem|Lehetővé teszi, hogy támogatási jegyet hozzon létre a Microsoft támogatási szolgálatával.|
 
 ## <a name="properties"></a>Fürt tulajdonságai
 
 A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a **Tulajdonságok**lehetőséget.
 
-|Tétel | Leírás |
+|Elem | Leírás |
 |---|---|
 |HOSTNAME|Fürt neve.|
 |FÜRT URL-CÍME|A Ambari webes felületének URL-címe.|
@@ -112,6 +112,7 @@ A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a 
 |OPERÁCIÓS RENDSZER|**Windows** vagy **Linux**.|
 |TÍPUS|Hadoop, HBase, Storm, Spark.|
 |Verzió|Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).|
+|TLS minimális verziója|A TLS verziója.|
 |ELŐFIZETÉS|Előfizetés neve.|
 |ALAPÉRTELMEZETT ADATFORRÁS|Az alapértelmezett fürt fájlrendszere.|
 |Munkavégző csomópontok mérete|A munkavégző csomópontok kiválasztott virtuálisgép-mérete.|
@@ -218,12 +219,12 @@ A jelszó a fürt összes csomópontján módosul.
 4. A **parancsfájl-műveletek** lapon válassza az **új küldése**lehetőséget.
 5. A **parancsfájl elküldése művelet** lapon adja meg a következő adatokat:
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Név |"SSH-jelszó módosítása" |
+   | Name (Név) |"SSH-jelszó módosítása" |
    | Bash-parancsfájl URI-ja |A changepassword.sh-fájl URI-ja |
-   | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető, Zookeeper stb.) |✓ Minden felsorolt csomópont-típushoz |
+   | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
    | A parancsfájl megtartása művelet... |Hagyja üresen ezt a mezőt. |
 

@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970200"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201385"
 ---
-# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
+# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage használata egy Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
 Az alábbi információk azt mutatják be, hogyan használhatók a blob Storage a Hudson folyamatos integrációs (CI) megoldás által létrehozott Build-összetevők tárháza, vagy a felépítési folyamat során felhasználható letölthető fájlok forrásaként. Az egyik forgatókönyv, ahol hasznosnak találta ezt a megoldást, ha egy agilis fejlesztési környezetben (Java vagy más nyelv használatával) végez kódolást, a buildek folyamatos integráción alapulnak, és szüksége van a Build-összetevők tárházára, így Ön is megoszthatja például azokat más szervezet tagjaival, ügyfeleivel vagy megtarthatja az archívumot.  Egy másik forgatókönyv, ha a felépítési feladatnak más fájlokra is szüksége van, például a Build bemenet részeként letölteni kívánt függőségekre.
 
@@ -42,7 +42,7 @@ A következőkre lesz szüksége a Blob service és a Hudson CI megoldás haszn�
   
     Ha jelenleg nem rendelkezik Hudson CI-megoldással, a következő módszer használatával futtathat egy Hudson CI-megoldást:
   
-  1. Egy Java-kompatibilis gépen töltse le a Hudson WAR-t a <http://hudson-ci.org/>ról.
+  1. A Java-kompatibilis gépen [töltse le a Hudson War-fájlt](https://www.eclipse.org/hudson/download.php).
   2. Nyisson meg egy parancssort, amely a Hudson WAR-t tartalmazó mappához van megnyitva. Futtassa a Hudson WAR-t. Ha például letöltötte a 3.1.2-es verziót:
      
       `java -jar hudson-3.1.2.war`
@@ -116,7 +116,7 @@ Ahhoz, hogy a Blob servicet a Hudson használatával használhassa, telepítenie
 13. A Hudson-irányítópulton kattintson a **Build most** gombra a **MyJob**futtatásához. Ellenőrizze a konzol kimenetét az állapothoz. Az Azure Storage-hoz tartozó állapotüzenetek a konzol kimenetében jelennek meg, amikor a Build utáni művelet elindítja a Build-összetevők feltöltését.
 14. A feladatok sikeres befejezését követően a nyilvános blob megnyitásával ellenőrizheti a Build-összetevőket.
     
-    a. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+    a. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
     
     b. Kattintson a **tárterület**elemre.
     

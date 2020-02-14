@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048582"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198769"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,6 +173,8 @@ Néhány példa:
     ```
 
 A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és egy hasonló algoritmus-készletet használ `regression` feladatokhoz) határozza meg az alkalmazandó modellek listáját. A `whitelist` vagy `blacklist` paraméterekkel további módosításokat is módosíthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája megtalálható a [SupportedModels osztályban](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([besorolás](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Előrejelzés](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)és [regresszió](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
+
+Az automatikus ML érvényesítési szolgáltatás teljesítményszámláló megköveteli, hogy az időtúllépési hibák elkerülése érdekében a `experiment_timeout_minutes` 15 perces minimális időkorlát legyen beállítva.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.

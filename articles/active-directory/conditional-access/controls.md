@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424969"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186213"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?
 
@@ -51,7 +51,7 @@ A Grant Controls segítségével a kívánt vezérlők kiválasztásával letilt
 
 ![Vezérlés](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Ezzel a vezérlőelemmel megkövetelheti a többtényezős hitelesítés használatát a megadott felhőalapú alkalmazás eléréséhez. Ez a vezérlő a következő multi-Factor providerket támogatja:
 
@@ -85,18 +85,18 @@ További információ: [Azure Active Directory eszközön alapuló feltételes h
 Mivel az alkalmazottak a személyes és a munkahelyi feladatokhoz egyaránt használják a mobileszközök használatát, érdemes lehet az eszköz használatával hozzáférni a vállalati adatokhoz, még abban az esetben is, ha azokat nem Ön felügyeli.
 Az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy) segítségével megvédheti vállalata adatait a mobileszköz-kezelési (Mdm) megoldástól függetlenül.
 
-A jóváhagyott ügyfélalkalmazások esetében olyan ügyfélalkalmazás szükséges, amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy)támogatásához. Például korlátozhatja az Exchange Online-hoz való hozzáférést az Outlook alkalmazáshoz. A jóváhagyott ügyfélalkalmazások használatát igénylő feltételes hozzáférési szabályzatot az [alkalmazás-alapú feltételes hozzáférési szabályzatnak](app-based-conditional-access.md)is nevezzük. A támogatott jóváhagyott ügyfélalkalmazások listáját lásd: az ügyfél- [alkalmazásra vonatkozó jóváhagyott követelmény](technical-reference.md#approved-client-app-requirement).
+A jóváhagyott ügyfélalkalmazások esetében olyan ügyfélalkalmazás szükséges, amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy)támogatásához. Például korlátozhatja az Exchange Online-hoz való hozzáférést az Outlook alkalmazáshoz. A jóváhagyott ügyfélalkalmazások használatát igénylő feltételes hozzáférési szabályzatot az [alkalmazás-alapú feltételes hozzáférési szabályzatnak](app-based-conditional-access.md)is nevezzük. A támogatott jóváhagyott ügyfélalkalmazások listáját lásd: az ügyfél- [alkalmazásra vonatkozó jóváhagyott követelmény](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>App Protection-házirend (előzetes verzió)
 
 Mivel az alkalmazottak a személyes és a munkahelyi feladatokhoz egyaránt használják a mobileszközök használatát, érdemes lehet az eszköz használatával hozzáférni a vállalati adatokhoz, még abban az esetben is, ha azokat nem Ön felügyeli.
 Az [Intune app Protection-szabályzatok](https://docs.microsoft.com/intune/app-protection-policy) segítségével megvédheti vállalata adatait a mobileszköz-kezelési (Mdm) megoldástól függetlenül.
 
-Az alkalmazás-védelmi szabályzattal korlátozhatja az Azure AD-be jelentett ügyfélalkalmazások hozzáférését az [Intune app Protection-házirendekkel](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja az Exchange Online-hoz való hozzáférést az Intune app Protection-szabályzattal rendelkező Outlook alkalmazáshoz. Az alkalmazás-védelmi szabályzatot igénylő feltételes hozzáférési szabályzatok [alkalmazás-védelmi alapú feltételes hozzáférési szabályzatként](app-protection-based-conditional-access.md)is ismertek. 
+Az alkalmazás-védelmi szabályzattal korlátozhatja az Azure AD-be jelentett ügyfélalkalmazások hozzáférését az [Intune app Protection-házirendekkel](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja az Exchange Online-hoz való hozzáférést az Intune app Protection-szabályzattal rendelkező Outlook alkalmazáshoz. Az alkalmazás-védelmi szabályzatot igénylő feltételes hozzáférési szabályzatok [alkalmazás-védelmi alapú feltételes hozzáférési szabályzatként](concept-conditional-access-session.md#application-enforced-restrictions)is ismertek. 
 
 Az eszköznek regisztrálva kell lennie az Azure AD-ben ahhoz, hogy egy alkalmazás védett házirendként legyen megjelölve.
 
-A támogatott szabályzatok által védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](technical-reference.md#app-protection-policy-requirement).
+A támogatott szabályzatok által védett ügyfélalkalmazások listáját lásd: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-session.md#application-enforced-restrictions).
 
 ### <a name="terms-of-use"></a>Használati feltételek
 

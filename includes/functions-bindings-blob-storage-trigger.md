@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 557e34e8a6bddd36a92b0e212bda3609baa14407
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642161"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202111"
 ---
 A következő típusú paramétereket használhatja az indító blobhoz:
 
@@ -28,8 +28,8 @@ A következő típusú paramétereket használhatja az indító blobhoz:
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-az <sup>1</sup> érték "be" `direction` kötést igényel a *function. JSON* fájlban vagy `FileAccess.ReadWrite` egy C# Class könyvtárban.
+<sup>1</sup> "be" `direction` kötést igényel a *function. JSON* fájlban, vagy C# `FileAccess.ReadWrite` egy osztály-függvénytárban.
 
-Ha egy Storage SDK-típushoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e a [megfelelő Storage SDK](#azure-storage-sdk-version-in-functions-1x)-verzióra mutató hivatkozással.
+Ha egy Storage SDK-típushoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e a [megfelelő Storage SDK-verzióra](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-`string` A(,)vagyaPocotípusúkötéscsakakkorajánlott,haablobméretekicsi,mertablobteljestartalmabetöltődik`Byte[]`a memóriába. Általában a vagy `Stream` `CloudBlockBlob` a típus használata javasolt. További információ: [párhuzamosság és memóriahasználat](#trigger---concurrency-and-memory-usage) a cikk későbbi részében.
+`string`hoz, `Byte[]`hoz vagy POCOhöz való kötés csak akkor ajánlott, ha a blob mérete kicsi, mert a blob teljes tartalma betöltődik a memóriába. Általában érdemes `Stream` vagy `CloudBlockBlob` típust használni. További információ: [párhuzamosság és memóriahasználat](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) a cikk későbbi részében.

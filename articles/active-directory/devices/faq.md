@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207388"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185847"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -55,9 +55,9 @@ Csak a következő eszközök szerepelnek a **felhasználói eszközök**terüle
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>K: a felhasználók miért látnak hibaüzenetet arról, hogy "a szervezet törölte az eszközt" vagy "a szervezete letiltotta az eszközt" a Windows 10-es eszközökön?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>K: a felhasználók miért látnak hibaüzenetet arról, hogy "a szervezet törölte az eszközt" vagy "a szervezete letiltotta az eszközt" a Windows 10-es eszközökön?
 
-**A:** Az Azure AD-hez csatlakoztatott vagy regisztrált Windows 10-es eszközökön a felhasználóknak egy [elsődleges frissítési tokent (PRT)](concept-primary-refresh-token.md) kell kiállítaniuk, amely lehetővé teszi az egyszeri bejelentkezést. A PRT érvényessége az eszköz validaity alapul. Ez az üzenet akkor jelenik meg, ha az eszköz törölve van vagy le van tiltva az Azure AD-ben anélkül, hogy magáról az eszközről kezdeményezze a műveletet. Egy eszköz törölhető vagy letiltható az Azure AD-ben az alábbi forgatókönyvek egyikével: 
+**A:** Az Azure AD-hez csatlakoztatott vagy regisztrált Windows 10-es eszközökön a felhasználóknak egy [elsődleges frissítési tokent (PRT)](concept-primary-refresh-token.md) kell kiállítaniuk, amely lehetővé teszi az egyszeri bejelentkezést. A PRT érvényessége az eszköz érvényességén alapul. Ez az üzenet akkor jelenik meg, ha az eszköz törölve van vagy le van tiltva az Azure AD-ben anélkül, hogy magáról az eszközről kezdeményezze a műveletet. Egy eszköz törölhető vagy letiltható az Azure AD-ben az alábbi forgatókönyvek egyikével: 
 
 - A felhasználó letiltja az eszközt a saját alkalmazások portálján. 
 - A rendszergazda (vagy felhasználó) törli vagy letiltja az eszközt a Azure Portal vagy a PowerShell használatával
@@ -119,7 +119,7 @@ A műveletek kijavításának menetét alább találja.
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>K: a Windows 10-es eszközök regisztrálása az Azure AD-ben TPM FIPS módban?
 
-**A:** A Windows 10-es eszközök regisztrációja csak a FIPS-kompatibilis TPM 2,0-es verzióban támogatott, és a TPM 1,2-es verziója nem támogatott. Ha az eszközei rendelkeznek FIPS-kompatibilis TPM 1,2-mel, le kell tiltania azokat az Azure AD JOIN vagy a Hybrid Azure AD JOIN szolgáltatással való továbblépés előtt. Vegye figyelembe, hogy a Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez. 
+**A:** A Windows 10-es eszközök regisztrációja csak a FIPS-kompatibilis TPM 2,0-es verzióban támogatott, és a TPM 1,2-es verziója nem támogatott. Ha az eszközei rendelkeznek FIPS-kompatibilis TPM 1,2-mel, le kell tiltania azokat az Azure AD JOIN vagy a Hybrid Azure AD JOIN szolgáltatással való továbblépés előtt. A Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez. 
 
 ---
 
@@ -288,12 +288,12 @@ A hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD regisztrált ál
 **V:** 
 - A Windows 10 Azure AD-ban regisztrált eszközökhöz lépjen a **beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás**lehetőséget. Az eszköz regisztrálása felhasználónkénti profil a Windows 10 rendszeren.
 - Az iOS és az Android esetében használhatja a Microsoft Authenticator **alkalmazásbeállítások > ** **eszköz regisztrációját** , és válassza az **eszköz regisztrációjának törlése**lehetőséget.
-- MacOS esetén a Microsoft Intune Céges portál alkalmazással visszavonhatja az eszközt a felügyelet alól, és törölheti a regisztrációt. 
+- MacOS esetén a Microsoft Intune Céges portál alkalmazással törölheti az eszközt a felügyelet alól, és eltávolíthatja a regisztrációt. 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>K: Hogyan tiltható le a felhasználók további munkahelyi fiókok (Azure AD-regisztráció) hozzáadására a vállalati Windows 10-es eszközökön?
 
-**A:** A következő beállításjegyzék engedélyezésével letilthatja, hogy a felhasználók további munkahelyi fiókokat adjanak hozzá a vállalati tartományhoz, az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökhöz. Ezzel a szabályzattal letilthatja a tartományhoz csatlakozó gépeket, hogy véletlenül ugyanazzal a felhasználói fiókkal regisztrálják az Azure AD-t. 
+**A:** A következő beállításjegyzék engedélyezésével letilthatja, hogy a felhasználók további munkahelyi fiókokat adjanak hozzá a vállalati tartományhoz csatlakoztatott, Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökhöz. Ezzel a szabályzattal letilthatja a tartományhoz csatlakozó gépeket, hogy véletlenül ugyanazzal a felhasználói fiókkal regisztrálják az Azure AD-t. 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
@@ -312,11 +312,11 @@ A hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD regisztrált ál
 
 **Megjegyzéseket tartalmazó**
 
-- A feltételes hozzáférési szabályzatban szereplő felhasználóknak a macOS- [hez készült Office támogatott verziójára](../conditional-access/technical-reference.md#client-apps-condition) van szükségük az erőforrások eléréséhez. 
+- A feltételes hozzáférési szabályzatban szereplő felhasználóknak a macOS- [hez készült Office támogatott verziójára](../conditional-access/concept-conditional-access-conditions.md) van szükségük az erőforrások eléréséhez. 
 - Az első hozzáférés kipróbálásakor a rendszer felszólítja a felhasználókat, hogy regisztrálják az eszközt a vállalati portál használatával.
 
 ---
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
 - További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)

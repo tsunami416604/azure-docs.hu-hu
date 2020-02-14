@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121973"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198666"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -422,7 +422,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Azonosító** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Műveletek** |  |
 > | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
-> | Microsoft.Insights/alertRules/* | Riasztási szabályok létrehozása és kezelése |
+> | Microsoft.Insights/alertRules/* | Klasszikus riasztási szabályok létrehozása és kezelése |
+> | Microsoft. bepillantások/metricAlerts/* | Új riasztási szabályok létrehozása és kezelése |
 > | Microsoft.Insights/components/* | Az adatáttekintési összetevők létrehozása és kezelése |
 > | Microsoft.Insights/webtests/* | Webes tesztek létrehozása és kezelése |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064988"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188364"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Adatok beolvasása IoT Hubból az Azure-ba Adatkezelő 
 
@@ -83,7 +83,7 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
     | IoT Hub | IoT Hub neve |
     | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie |
     | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport |
-    | Eseményvezérelt rendszerek tulajdonságai | A [IoT hub eseményrendszer tulajdonságai](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/tables#create-table) vagy [frissítsen](/azure/kusto/management/tables#alter-table-and-alter-merge-table) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. | | | 
+    | Eseményvezérelt rendszerek tulajdonságai | A [IoT hub eseményrendszer tulajdonságai](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/create-table-command) vagy [frissítsen](/azure/kusto/management/alter-table-command) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. | | | 
 
     > [!NOTE]
     > [Manuális feladatátvétel](/azure/iot-hub/iot-hub-ha-dr#manual-failover)esetén újra létre kell hoznia az adathálózatot.

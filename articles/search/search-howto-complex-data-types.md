@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754352"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190997"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -125,7 +125,7 @@ Ha a keresési eredmények között szeretné, a mezőket beolvasható értékk�
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Összetett mezők szűrése, aspektusa és rendezése
 
-A szűréshez és a mezőkben végzett keresésekhez használt [OData-elérésiút-szintaxis](query-odata-filter-orderby-syntax.md) is használható a keresési kérelemben található mezők aspektusának, rendezésének és kiválasztásához. Összetett típusok esetén a szabályok érvényesek, amelyek meghatározzák, hogy mely almezőket lehet csoportosított vagy sokrétűként megjelölni. További információt ezekről a szabályokról a [create index API-referenciát](https://docs.microsoft.com/rest/api/searchservice/create-index#request)ismertető témakörben talál.
+A szűréshez és a mezőkben végzett keresésekhez használt [OData-elérésiút-szintaxis](query-odata-filter-orderby-syntax.md) is használható a keresési kérelemben található mezők aspektusának, rendezésének és kiválasztásához. Összetett típusok esetén a szabályok érvényesek, amelyek meghatározzák, hogy mely almezőket lehet csoportosított vagy sokrétűként megjelölni. További információt ezekről a szabályokról a [create index API-referenciát](/rest/api/searchservice/create-index)ismertető témakörben talál.
 
 ### <a name="faceting-sub-fields"></a>Metszeti almezők
 
@@ -149,7 +149,7 @@ Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőben, ha az index definíciójában a **szűrhető** attribútum értéke `true`. További információ: [create index API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőben, ha az index definíciójában a **szűrhető** attribútum értéke `true`. További információ: [create index API Reference](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>Következő lépések
 

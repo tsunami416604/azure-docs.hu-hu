@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161800"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190360"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Az API-k védelemmel való ellátása a OAuth 2,0-mel a Azure Active Directory és API Management használatával
 
@@ -71,7 +71,7 @@ Az API-k Azure AD-vel való ellátásához az első lépés egy olyan alkalmazá
 
 Minden ügyfélalkalmazás, amely meghívja az API-t, alkalmazásként kell regisztrálni az Azure AD-ben is. Ebben a példában az ügyfélalkalmazás a fejlesztői konzol a API Management fejlesztői portálon. A következő témakörből megtudhatja, hogyan regisztrálhat egy másik alkalmazást az Azure AD-ben a fejlesztői konzol megjelenítéséhez.
 
-1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **API-regisztrációkat**.
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **alkalmazások regisztrációját**.
 
 1. Válassza az **új regisztráció**lehetőséget.
 
@@ -97,7 +97,7 @@ A titkos kód létrehozásakor jegyezze fel a kulcs értékét egy későbbi lé
 
 Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képviseletére, engedélyeket kell megadnia ahhoz, hogy az ügyfél-alkalmazás meghívni lehessen a háttér-alkalmazást.  
 
-1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki az **API-regisztrációkat**.
+1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki az **alkalmazások regisztrációját**.
 
 1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek**lehetőséget.
 
@@ -202,7 +202,7 @@ A [JWT szabályzat érvényesítésével](api-management-access-restriction-poli
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

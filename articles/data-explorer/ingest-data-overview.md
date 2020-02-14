@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157244"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187979"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Adatkezelő adatfeldolgozás
 
@@ -133,8 +133,8 @@ A lekérdezésből bekövetkező összes betöltési módszernél formázza az a
 
 A séma-hozzárendelés segíti a forrásadatok mezőinek kötését a céltábla oszlopaihoz.
 
-* A [CSV-megfeleltetés](/azure/kusto/management/mappings?branch=master#csv-mapping) (nem kötelező) az összes sorszám-alapú formátummal működik. A Betöltés parancs paraméterrel vagy [előre létrehozott](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) paranccsal végezhető el a betöltési parancs paraméterének használatával.
-* A [JSON-megfeleltetés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és az Avro- [leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltési parancs paraméterrel hajtható végre. Emellett előre létrehozhatók a [táblában](/azure/kusto/management/tables#create-ingestion-mapping) , és a betöltési parancs paraméterében is szerepelhetnek.
+* A [CSV-megfeleltetés](/azure/kusto/management/mappings?branch=master#csv-mapping) (nem kötelező) az összes sorszám-alapú formátummal működik. A Betöltés parancs paraméterrel vagy [előre létrehozott](/azure/kusto/management/create-ingestion-mapping-command) paranccsal végezhető el a betöltési parancs paraméterének használatával.
+* A [JSON-megfeleltetés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és az Avro- [leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltési parancs paraméterrel hajtható végre. Emellett előre létrehozhatók a [táblában](/azure/kusto/management/create-ingestion-mapping-command) , és a betöltési parancs paraméterében is szerepelhetnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

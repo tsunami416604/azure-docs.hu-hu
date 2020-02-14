@@ -8,26 +8,28 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 267579f7b4bbfe026f3aa01b00f01f3b872cf4a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911662"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198292"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>A rajzolási eszközök modulban található interakciós típusok és billentyűparancsok
 
-Ez a cikk a Térkép alakzatainak egérrel, érintőképernyővel vagy billentyűparancsokkal történő rajzolásának és szerkesztésének különböző módjait ismerteti.
+Ez a cikk az alakzatok rajzolásának és szerkesztésének különböző módjait ismerteti egérrel, érintőképernyővel vagy billentyűparancsokkal.
 
 A rajzolási kezelő három különböző módszert támogat a térképekkel való interakciók rajzolásához.
 
 * `click` – a koordinátákat az egér vagy érintés gombra kattintva adja hozzá a rendszer.
-* `freehand ` – a koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés a térképen van húzva. 
+* `freehand ` – a koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés a térképen van húzva.
 * `hybrid` – a koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés kattint.
 
 ## <a name="how-to-draw-shapes"></a>Alakzatok rajzolása
 
-Az alábbi, az alakzatokat ábrázoló különböző módokat vázolja fel a térképen. Bármely alakzat rajzolásának megkezdése előtt a Rajzfigyelő `drawingMode` beállítását egy támogatott rajzolási beállításra kell beállítani. Ezt programozott módon teheti meg, vagy lenyomhatja az eszköztár egyik rajzolási gombját. A rajzolási mód engedélyezve marad, még egy alakzat rajzolása után is, így könnyen megrajzolhatja az azonos típusú további alakzatokat. A rajzolási mód programozott állapotba helyezhető, vagy az eszköztár aktuális rajzolási módok gombjára kattintva. 
+ A rajzolási művelet megkezdése előtt állítsa be a Rajzfigyelő `drawingMode` lehetőségét egy támogatott rajzolási beállításra. Ez a beállítás programozható vagy meghívható az eszköztár egyik rajzolási gombjának megnyomásával. A rajzolási mód engedélyezve marad, még egy alakzat rajzolása után is, így könnyen megrajzolhatja az azonos típusú további alakzatokat. Programozott módon állíthatja be a rajzolási módot üresjárati állapotra. Vagy váltson tétlen állapotba úgy, hogy az eszköztár aktuális rajzolási módok gombjára kattint.
+
+A következő fejezetek körvonalazzák az alakzatok térképre rajzolt különböző módszereit.
 
 ### <a name="how-to-draw-a-point"></a>Pont rajzolása
 
@@ -35,7 +37,7 @@ Ha a Rajzfigyelő `draw-point` rajzolási módban van, az alábbi műveleteket v
 
 **Rajzolás indítása**
  - Kattintson a bal egérgombra, vagy érintse meg a térképet, és adjon hozzá egy pontot a térképhez. 
- - Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és a rendszer az egérmutatót tartalmazó koordináta használatával adja hozzá a pontot. Ez nagyobb pontossági módszert biztosít a pontnak a térképhez való hozzáadására, mivel a bal oldali egérgomb lenyomása miatt kevesebb mozgás lesz az egéren.
+ - Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
  - Ha további pontokat szeretne felvenni a térképre, kattintson a gombra, érintse meg vagy nyomja meg `F`.
  
 **Rajzolás befejezése**
@@ -48,17 +50,17 @@ Ha a Rajzfigyelő `draw-point` rajzolási módban van, az alábbi műveleteket v
 
 ### <a name="how-to-draw-a-line"></a>Vonal rajzolása
 
-Ha a Rajzfigyelő `draw-line` módban van, a következő műveleteket végezheti el a térképi pontok rajzolásához, attól függően, hogy milyen interakciós mód van beállítva.
+Ha a Rajzfigyelő `draw-line` módban van, az alábbi műveleteket végezheti el a térképen lévő pontok rajzolásához a kapcsolati mód függvényében.
 
 **Rajzolás indítása**
  - Kattintási mód
-   * Kattintson a bal egérgombra, vagy koppintson a térképre egy sor minden pontjának a térképen való hozzáadásához. Az egyes kattintásokhoz/érintésekhez tartozó vonalhoz egy koordináta kerül. 
-   * Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és a rendszer az egérmutatót tartalmazó koordináta használatával adja hozzá a pontot. Ez nagyobb pontossági módszert biztosít a pontnak a térképhez való hozzáadására, mivel a bal oldali egérgomb lenyomása miatt kevesebb mozgás lesz az egéren.
+   * Kattintson a bal egérgombra, vagy érintse meg a térképet, hogy egy sor minden pontját hozzáadja a térképen. Az egyes kattintásokhoz vagy érintésekhez egy koordináta kerül a sorba. 
+   * Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
    * Tartsa a kattintást, amíg az összes kívánt pont hozzá nem lett adva a sorhoz.
  - Szabadkézi mód
-   * Nyomja le a bal oldali egérgombot, vagy koppintson lefelé a térképen, és húzza az egeret vagy az érintési pontot. A koordinátákat a rendszer hozzáadja az egérrel vagy érintési ponttal a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők `freehandInterval` lehetőség határozza meg.
+   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja az egérrel vagy érintési ponttal a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők `freehandInterval` lehetőség határozza meg.
  - Hibrid mód
-   * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, egy sor rajzolásakor. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
+   * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, egyetlen sor rajzolásakor. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
 
 **Rajzolás befejezése**
  - Hibrid/kattintásos mód
@@ -74,17 +76,17 @@ Ha a Rajzfigyelő `draw-line` módban van, a következő műveleteket végezheti
 
 ### <a name="how-to-draw-a-polygon"></a>Sokszög rajzolása
 
-Ha a Rajzfigyelő `draw-polygon` módban van, a következő műveleteket végezheti el a térképi pontok rajzolásához, attól függően, hogy milyen interakciós mód van beállítva.
+Ha a Rajzfigyelő `draw-polygon` módban van, az alábbi műveleteket végezheti el a térképen lévő pontok rajzolásához a kapcsolati mód függvényében.
 
 **Rajzolás indítása**
  - Kattintási mód
-   * Kattintson a bal egérgombra, vagy koppintson a térképre a sokszög minden pontjának a térképen való hozzáadásához. Az egyes kattintásokhoz és érintésekhez egy koordináta kerül a sokszögbe. 
-   * Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és a rendszer az egérmutatót tartalmazó koordináta használatával adja hozzá a pontot. Ez nagyobb pontossági módszert biztosít a pontnak a térképhez való hozzáadására, mivel a bal oldali egérgomb lenyomása miatt kevesebb mozgás lesz az egéren.
+   * Kattintson a bal egérgombra, vagy érintse meg a térképet a sokszög minden pontjának a térképen való hozzáadásához. Az egyes kattintásokhoz vagy érintésekhez egy koordináta kerül a sokszögbe. 
+   * Ha az egér a Térkép fölé esik, nyomja le a `F` kulcsot, és az egérmutató koordinátáiban egy pontot fog hozzáadni. Ez a módszer nagyobb pontosságot biztosít a pontnak a térképhez való hozzáadásához. Az egér bal oldali gombjának lenyomása miatt kevesebb mozgás lesz az egérrel.
    * Tartsa a kattintást, amíg az összes kívánt pont hozzá nem lett adva a sokszöghez.
  - Szabadkézi mód
-   * Nyomja le a bal oldali egérgombot, vagy koppintson lefelé a térképen, és húzza az egeret vagy az érintési pontot. A koordinátákat a rendszer hozzáadja a sokszöghez, mert az egér vagy az érintési pont mozog a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. Vegye figyelembe, hogy a koordináták hozzáadásának gyakoriságát a Rajzeszközök `freehandInterval` lehetőség határozza meg.
+   * Nyomja le a bal oldali egérgombot, vagy koppintson a térképre, és húzza az egeret, vagy koppintson a pontra. A koordinátákat a rendszer hozzáadja a sokszöghez, mert az egér vagy az érintési pont mozog a Térkép körül. Amint megtörtént az egér vagy az érintéses esemény elindítása, a rendszer befejezi a rajzolást. A koordináták hozzáadásának gyakoriságát a rajzolási kezelők `freehandInterval` lehetőség határozza meg.
  - Hibrid mód
-   * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, miközben egyetlen sokszöget rajzol. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
+   * A kattintások és a szabadkézi módszerek közötti váltás a kívánt módon, egyetlen sokszög rajzolásakor. Például kattintson a néhány pontra, majd az egér húzásával adjon hozzá egy csomó pontot, majd kattintson a továbbiak elemre. 
 
 **Rajzolás befejezése**
  - Hibrid/kattintásos mód
@@ -101,10 +103,10 @@ Ha a Rajzfigyelő `draw-polygon` módban van, a következő műveleteket végezh
 
 ### <a name="how-to-draw-a-rectangle"></a>Négyszög rajzolása
 
-Ha a Rajzfigyelő `draw-rectangle` módban van, a következő műveleteket végezheti el a térképi pontok rajzolásához, attól függően, hogy milyen interakciós mód van beállítva. A generált alakzat a [téglalapok kiterjesztett GeoJSON-specifikációját](extend-geojson.md#rectangle)követi.
+Ha a Rajzfigyelő `draw-rectangle` módban van, az alábbi műveleteket végezheti el a térképen lévő pontok rajzolásához a kapcsolati mód függvényében. A generált alakzat a [téglalapok kiterjesztett GeoJSON-specifikációját](extend-geojson.md#rectangle)követi.
 
 **Rajzolás indítása**
- - Nyomja le a bal oldali egérgombot, vagy érintse meg a térképen a téglalap első sarkának hozzáadásához, majd húzza a téglalapot a négyszög létrehozásához. 
+ - Nyomja le a bal oldali egérgombot, vagy koppintson a térképen a téglalap első sarkának hozzáadásához, majd húzza a mutatót a téglalap létrehozásához. 
 
 **Rajzolás befejezése**
  - Adja meg az egérgombot vagy az érintési pontot.
@@ -116,7 +118,7 @@ Ha a Rajzfigyelő `draw-rectangle` módban van, a következő műveleteket vége
 
 ### <a name="how-to-draw-a-circle"></a>Kör rajzolása
 
-Ha a Rajzfigyelő `draw-circle` módban van, a következő műveleteket végezheti el a térképi pontok rajzolásához, attól függően, hogy milyen interakciós mód van beállítva. A generált alakzat a [körök kibővített GeoJSON-specifikációját](extend-geojson.md#circle)fogja követni.
+Ha a Rajzfigyelő `draw-circle` módban van, az alábbi műveleteket végezheti el a térképen lévő pontok rajzolásához a kapcsolati mód függvényében. A generált alakzat a [körök kibővített GeoJSON-specifikációját](extend-geojson.md#circle)fogja követni.
 
 **Rajzolás indítása**
  - Nyomja le a bal oldali egérgombot, vagy koppintson a térképen a kör középpontjának hozzáadásához, és húzza a köröket egy sugárba. 
@@ -131,13 +133,13 @@ Ha a Rajzfigyelő `draw-circle` módban van, a következő műveleteket végezhe
 
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
 
-A rajzolási eszközök támogatják a billentyűparancsokat, amelyek megkönnyítik a Térkép alakzatainak rajzolását és szerkesztését. Ezek a billentyűparancsok akkor működőképesek, ha a Térkép fókuszban van.
+A rajzolási eszközök támogatják a billentyűparancsokat. Ezek a billentyűparancsok akkor működőképesek, ha a Térkép fókuszban van.
 
-| Jelmagyarázat      | Műveletek                            |
+| Paraméter      | Műveletek                            |
 |----------|-----------------------------------|
 | `C` | Befejezi a folyamatban lévő összes rajzot, és a rajzolási módot Üresjáratra állítja. A fókusz a legfelső szintű Térkép elemre lép.  |
 | `Escape` | Megszakítja a folyamatban lévő összes rajzot, és a rajzolási módot Üresjáratra állítja. A fókusz a legfelső szintű Térkép elemre lép.  |
-| `F` | Egy pontot, vonalat vagy sokszöget tartalmazó koordinátákat helyez el, ha az egér a Térkép fölé esik. A térképre kattintáskor vagy hibrid módban való kattintással egyenértékű művelet. Ez a parancsikon lehetővé teszi, hogy pontosabb és gyorsabb rajzok legyenek, mivel az egérmutatót az egér mozgatásával, a másikkal pedig a gomb megnyomásával lehet lenyomni. |
+| `F` | Egy pontot, vonalat vagy sokszöget tartalmazó koordinátákat helyez el, ha az egér a Térkép fölé esik. A térképre kattintáskor vagy hibrid módban való kattintással egyenértékű művelet. Ez a parancsikon pontosabb és gyorsabb rajzok használatát teszi lehetővé. Az egér mozgatásához és a többi gomb megnyomásához használhatja az egeret a lenyomásos kézmozdulattal. |
 
 ## <a name="next-steps"></a>Következő lépések
 

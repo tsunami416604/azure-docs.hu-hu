@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563666"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190880"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Adatok összekapcsolásának Azure Security Center
 
@@ -26,11 +26,10 @@ Az Azure Sentinel lehetővé teszi a riasztások összekapcsolását [Azure Secu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha Azure Security Centerről szeretne riasztásokat exportálni, akkor olyan előfizetésben közreműködőnek kell lennie, amelyik a naplókat továbbítja.
+- A riasztások Azure Security Centerból való exportálásához a továbbított naplók előfizetésében a biztonsági olvasó szerepkörrel kell rendelkeznie.
 
 - Az előfizetésben az [Azure Security Center standard szintű](../security-center/security-center-pricing.md) csomagnak kell futnia. Ha nem, [frissítse az előfizetést a standard szintre](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Olyan felhasználóval kell bejelentkeznie, amely globális rendszergazdai vagy biztonsági rendszergazdai jogosultságokkal rendelkezik minden olyan előfizetéshez, amelyhez csatlakozni szeretne.
 
 
 ## <a name="connect-to-azure-security-center"></a>Kapcsolódás Azure Security Centerhoz

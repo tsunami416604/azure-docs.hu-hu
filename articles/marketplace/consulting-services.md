@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825972"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191134"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
 Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
@@ -52,7 +52,7 @@ A partnereknek **Silver vagy Gold kompetenciára** van szükségük a szolgálta
 
 |Kompetencia  |Megoldási térség  |
 |---------|---------|
-|Felhőalapú platform és infrastruktúra     |   Cloud platform, adatközpont      |
+|Felhőalapú platform és infrastruktúra     |   Cloud Platform, Data Center      |
 |Alkalmazásfejlesztés és ISV     |  Alkalmazásfejlesztés, alkalmazás-integráció, DevOps       |
 |adatkezelés és elemzés    |  Adatelemzés, adatplatform       |
 
@@ -94,7 +94,7 @@ A regisztráció előtt megkezdheti a tartalmak összegyűjtését és előkész
 
 |Új közzétevők beállítása  |
 |---------|
-|MPN-azonosító     |
+|MPN-AZONOSÍTÓ     |
 |Vállalati emblémák ( &#215; 48 48, &#215; 216 216)     |
 |Érdeklődő célhelye     |
 
@@ -151,7 +151,7 @@ Példák:
 
 Az ajánlatok leírásának és az ajánlatok összegzésének áttekintésekor a csapat a következő feltételeket fogja alkalmazni:
 
-|Csomag típusa  |Kötelező |Ajánlott  |
+|Ajánlat típusa  |Kötelező |Ajánlott  |
 |---------|---------|---------|
 |**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen kihasználható      |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
 |**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. A tájékoztatót személyesen kell megadnia. Ha virtuális szolgáltatást biztosít, válasszon másik ajánlatot.    |  Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal       |
@@ -159,7 +159,7 @@ Az ajánlatok leírásának és az ajánlatok összegzésének áttekintésekor 
 |**A koncepció igazolása**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően     | Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal        |
 |**Workshop**    |   Az ajánlat kiválasztott időtartamától függően naponta, hetente vagy havonta részletes napirendet is felvehet. Megfogalmazhatja, hogy mi a tanulási célok vagy más termékek a workshopon     |   Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal      |
 
-Cloud Partner Portalon belül a [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown)használatával adhat hozzá formázást a listához. Ez egy egyszerű kialakítási nyelv, amely segítséget nyújt a lengyel hozzáadásához a listához. 
+Cloud Partner Portalon belül a [Markdown](/contribute/markdown-reference)használatával adhat hozzá formázást a listához. Ez egy egyszerű kialakítási nyelv, amely segítséget nyújt a lengyel hozzáadásához a listához. 
 
 **Minta Markdown-megjegyzések**
 * A * Hozzáadás a másolási blokk elején és végén – szóközzel nem hozható létre dőlt érték (pl.: *tartalom*)
@@ -171,7 +171,7 @@ Cloud Partner Portalon belül a [Markdown](https://docs.microsoft.com/contribute
 * \* Dőlt betűssé tétele ajánlat összegzése
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, 
 

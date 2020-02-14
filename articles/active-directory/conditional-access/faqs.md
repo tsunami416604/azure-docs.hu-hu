@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816216"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186051"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Feltételes hozzáférés Azure Active Directory – gyakori kérdések
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Mely alkalmazások működnek a feltételes hozzáférési szabályzatokkal?
 
-A feltételes hozzáférési szabályzatokkal működő alkalmazásokkal kapcsolatos további információkért tekintse [meg a Azure Active Directory a feltételes hozzáférési szabályokat használó alkalmazásokat és böngészőket](technical-reference.md).
+A feltételes hozzáférési szabályzatokkal működő alkalmazásokkal kapcsolatos további információkért tekintse [meg a Azure Active Directory a feltételes hozzáférési szabályokat használó alkalmazásokat és böngészőket](concept-conditional-access-cloud-apps.md).
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>A feltételes hozzáférési szabályzatok érvénybe lépjenek a VÁLLALATKÖZI együttműködés és a vendég felhasználók számára?
 
@@ -56,6 +56,6 @@ A Microsoft Teams szolgáltatást a Azure Active Directory feltételes hozzáfé
 
 A Microsoft Teams asztali Windows-és Mac-ügyfelei támogatják a modern hitelesítést. A modern hitelesítés a Azure Active Directory Authentication Library (ADAL) alapján a különböző platformokon Microsoft Office ügyfélalkalmazások számára teszi lehetővé a bejelentkezést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A környezet feltételes hozzáférési házirendjeinek konfigurálásához tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 

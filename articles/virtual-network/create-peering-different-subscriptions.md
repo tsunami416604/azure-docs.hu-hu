@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális hálózat társítása – Resource Manager – különböző előfizetések
+title: VNet-társítás létrehozása – különböző előfizetések
 titlesuffix: Azure Virtual Network
 description: Megtudhatja, hogyan hozhat létre virtuális hálózatokat a Resource Managerrel létrehozott virtuális hálózatok között, amelyek különböző Azure-előfizetésekben találhatók.
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020012"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201747"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Hozzon létre egy virtuális hálózati társ-erőforrás-kezelőt, különböző előfizetéseket
 
@@ -27,8 +27,8 @@ A virtuális hálózati társítások létrehozásának lépései eltérőek, at
 
 |Azure üzembehelyezési modell  | Azure-előfizetés  |
 |--------- |---------|
-|[Erőforrás-kezelő](tutorial-connect-virtual-networks-portal.md) |Azonos|
-|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
+|[Erőforrás-kezelő](tutorial-connect-virtual-networks-portal.md) |azonos|
+|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models.md) |azonos|
 |[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Különböző|
 
 Nem hozható létre virtuális hálózati társítás a klasszikus üzemi modellen keresztül üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott virtuális hálózatokat is össze kell kapcsolni, használhat Azure- [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a virtuális hálózatok összekapcsolásához.

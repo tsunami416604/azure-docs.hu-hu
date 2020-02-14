@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845123"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191177"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher-példány létrehozása
 
@@ -27,7 +27,7 @@ Network Watcher egy regionális szolgáltatás, amely lehetővé teszi az Azure-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="network-watcher-is-automatically-enabled"></a>A Network Watcher automatikusan engedélyezve van
-Amikor létrehoz vagy frissít egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a Virtual Network régiójában. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra.
+Amikor létrehoz vagy frissít egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a Virtual Network régiójában. A Network Watcher automatikus engedélyezéséhez nincs hatással az erőforrásokra vagy a kapcsolódó díjakra.
 
 #### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Network Watcher automatikus engedélyezés
 Ha a Network Watcher automatikus engedélyezését szeretné letiltani, a következő parancsok futtatásával teheti meg:
@@ -132,5 +132,3 @@ Most, hogy Network Watcher egy példánya van, ismerkedjen meg az elérhető fun
 * [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
 * [NSG folyamat naplózása](network-watcher-nsg-flow-logging-overview.md)
 * [Virtual Network átjáró hibaelhárítása](network-watcher-troubleshoot-overview.md)
-
-Network Watcher példány esetén engedélyezheti a csomagok rögzítését a virtuális gépeken belül. További információ: [riasztások által aktivált csomagok rögzítésének létrehozása](network-watcher-alert-triggered-packet-capture.md)

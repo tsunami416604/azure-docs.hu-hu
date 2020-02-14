@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161715"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186816"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -33,21 +33,20 @@ Az API-król további információkat az Apache dokumentációjának [Producer A
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Apache Kafka a HDInsight 3,6. Ha szeretné megtudni, hogyan hozhat létre egy Kafka-t a HDInsight-fürtön, tekintse meg a következőt: [Apache Kafka a HDInsight](apache-kafka-get-started.md)webhelyen.
-
+* Apache Kafka a HDInsight-fürtön. A fürt létrehozásával kapcsolatos további információkért tekintse [meg a Start with apache Kafka on HDInsight](apache-kafka-get-started.md)című témakört.
 * A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks) vagy azzal egyenértékű, például OpenJDK.
-
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
-
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél, például a Putty. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A példaalkalmazás helye: [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) (`Producer-Consumer` alkönyvtár). Az alkalmazás elsődlegesen négy fájlból áll:
+A példaalkalmazás helye: [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) (`Producer-Consumer` alkönyvtár). Ha **Enterprise Security Package (ESP)** engedélyezett Kafka-fürtöt használ, a `DomainJoined-Producer-Consumer` alkönyvtárban található alkalmazás verzióját kell használnia.
 
+Az alkalmazás elsődlegesen négy fájlból áll:
 * `pom.xml`: Ez a fájl határozza meg a projektfüggőségeket, a Java-verziót és a csomagolási módszereket.
 * `Producer.java`: Ez a fájl véletlenszerű mondatokat küld a Kafkának a Producer API használatával.
 * `Consumer.java`: Ez a fájl a Consumer API-t használatával olvas ki adatokat a Kafkából, és az STDOUT-ba küldi el azokat.
+* `AdminClientWrapper.java`: Ez a fájl a rendszergazdai API-t használja a Kafka-témakörök létrehozására, leírására és törlésére.
 * `Run.java`: A Producer- és Consumer-kód futtatásához a rendszer a parancssori felületet használja.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -116,9 +115,11 @@ A [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/
 
 ## <a name="build-and-deploy-the-example"></a>A példa létrehozása és üzembe helyezése
 
+Ha ki szeretné hagyni ezt a lépést, az előre összeépített tégelyek a `Prebuilt-Jars` alkönyvtárból tölthetők le. Töltse le a Kafka-producer-Consumer. jar fájlt. Ha a fürt **Enterprise Security Package (ESP)** engedélyezve van, használja a Kafka-producer-Consumer-ESP. jar fájlt. Futtassa a 3. lépést a jar a HDInsight-fürtre történő másolásához.
+
 1. Töltse le és csomagolja ki a példákat [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Állítsa be az aktuális könyvtárat az `hdinsight-kafka-java-get-started\Producer-Consumer` könyvtár helyére, és használja a következő parancsot:
+2. Állítsa be az aktuális könyvtárat a `hdinsight-kafka-java-get-started\Producer-Consumer` könyvtárának helyére. Ha **Enterprise Security Package (ESP)** engedélyezett Kafka-fürtöt használ, a helyet `DomainJoined-Producer-Consumer`alkönyvtárra kell beállítania. Az alkalmazás létrehozásához használja a következő parancsot:
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ A [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Telepítse a [jQ](https://stedolan.github.io/jq/)parancssori JSON-processzort. Az Open SSH-kapcsolatban adja meg a következő parancsot a `jq`telepítéséhez:
+1. A Kafka-átvitelszervező gazdagépek beszerzéséhez helyettesítse `<clustername>` és `<password>` értékeit a következő parancsban, majd hajtsa végre. Használja ugyanazt a burkolatot `<clustername>` a Azure Portalban látható módon. Cserélje le a `<password>`t a fürt bejelentkezési jelszavára, majd hajtsa végre a következőket:
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. Jelszó-változó beállítása. Cserélje le a `PASSWORD`t a fürt bejelentkezési jelszavára, majd írja be a parancsot:
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. Helyesen kibontott fürt neve. A fürt nevének tényleges burkolata különbözhet attól függően, hogy a fürt hogyan lett létrehozva. Ez a parancs beolvassa a tényleges burkolatot, majd egy változóban tárolja. Írja be a következő parancsot:
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > Ha ezt a folyamatot a fürtön kívülről hajtja végre, a fürt nevének tárolására eltérő eljárás szükséges. A fürt nevének lekérése kisbetűvel a Azure Portalból. Ezután helyettesítse be a fürt nevét `<clustername>` a következő parancsban, majd hajtsa végre: `export clusterName='<clustername>'`.  
-
-1. A Kafka-közvetítő gazdagépek beszerzéséhez használja a következő parancsot:
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

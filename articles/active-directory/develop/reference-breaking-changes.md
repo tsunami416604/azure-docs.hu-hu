@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160360"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185804"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai 
 
@@ -42,7 +42,7 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 
 Jelenleg nincs ütemezve.  Tekintse meg az alábbi, a vagy az éles környezetben futó módosításokat. 
 
-## <a name="february-2020"></a>Február 2020: 
+## <a name="february-2020"></a>Február 2020 
 
 ### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>A rendszer az összes HTTP-átirányításhoz hozzáfűzi az üres töredékeket a bejelentkezési végpontról. 
 

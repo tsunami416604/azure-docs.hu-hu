@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793225"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191432"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -206,9 +206,9 @@ A webhook-eseményindítók ugyanúgy működnek, mint a témakörben korábban 
 > [!TIP]
 > Egy példa webhook-minta esetén tekintse át ezt a [webhook-indító vezérlő mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Az API-k biztonságos hívása a Logic appsből
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Az API-k hívásai biztonságának növelése a Logic Apps használatával
 
-Az egyéni API-k létrehozása után állítsa be az API-k hitelesítését, hogy biztonságosan meghívja őket a Logic apps szolgáltatásból. Megtudhatja, [hogyan védheti meg az egyéni API-kat a Logic apps](../logic-apps/logic-apps-custom-api-authentication.md)használatával.
+Az egyéni API-k létrehozása után állítsa be az API-k hitelesítését, hogy biztonságosan meghívja őket a Logic apps szolgáltatásból. Ismerje meg [, hogyan javíthatja az egyéni API-kon érkező hívások biztonságát a Logic apps szolgáltatásban](../logic-apps/logic-apps-custom-api-authentication.md).
 
 ## <a name="deploy-and-call-your-apis"></a>API-k üzembe helyezése és meghívása
 

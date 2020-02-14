@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 59670742586f596a817ad52383160a38358a6786
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fda65e900b7faf0ff77d533e8dbfd2e7369ad602
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911381"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198139"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Adatvisszajelzés biztosítása Azure Maps
 
-A Azure Maps a május 2018 óta általánosan elérhető, amely friss térképi adatokkal, könnyen használható REST API-kkal és nagy teljesítményű SDK-kkal segíti a nagyvállalati ügyfeleket a különböző üzleti használati esetekben. A valós világ minden másodpercen át változik, és fontos számunkra, hogy tényszerű digitális képviseletet nyújtson ügyfeleinknek. Azon ügyfeleinknek, akik nyitva vagy le szeretnék nyitni a létesítményeket, gondoskodni kell arról, hogy a Maps frissítése azonnal megtörténjen, hogy hatékonyan tervezzenek a szállításra, a karbantartásra vagy az ügyfélszolgálatra a megfelelő létesítményekben. Létrehoztuk a Azure Maps adatvisszajelzési webhelyet, amely lehetővé teszi ügyfeleink számára, hogy közvetlen adatvisszajelzéseket nyújtsanak. Az ügyfelek adatvisszajelzése közvetlenül az adatszolgáltatókhoz és azok Térkép-szerkesztőjéhez kapcsolódik, akik gyorsan kiértékelik és beépíthetik a leképezési termékekre vonatkozó visszajelzéseket.  
+A Azure Maps a 2018. május óta elérhető. Azure Maps a friss térképi adatok, a könnyen használható REST API-k és a nagy teljesítményű SDK-k lehetővé teszik, hogy a nagyvállalati ügyfelek különböző üzleti célú használati eseteket használjanak. A valós világ minden másodpercen át változik, és fontos számunkra, hogy tényszerű digitális képviseletet nyújtson ügyfeleinknek. A létesítmények megnyitását vagy bezárását tervező ügyfeleinknek azonnal frissíteniük kell a térképeket. Így hatékonyan tudják tervezni a szállítást, a karbantartást vagy az ügyfélszolgálatot a megfelelő létesítményekben. Létrehoztuk a Azure Maps adatvisszajelzési webhelyet, amely lehetővé teszi ügyfeleink számára, hogy közvetlen adatvisszajelzéseket nyújtsanak. Az ügyfelek adatvisszajelzése közvetlenül az adatszolgáltatókba és a Térkép-szerkesztőkbe kerül. Gyorsan kiértékelik és beépíthetik a leképezési termékeinkre vonatkozó visszajelzéseket.  
 
 [Azure Maps adatvisszajelzési webhely](https://feedback.azuremaps.com) egyszerű módszert kínál ügyfeleinknek a térképes adatvisszajelzések megadására, különösen az üzleti pontokra és a lakossági címekre. Ez a cikk bemutatja, hogyan biztosíthat különböző visszajelzést a Azure Maps visszajelzési webhelyen.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Üzleti hely vagy lakcím hozzáadása 
 
-Előfordulhat, hogy visszajelzést szeretne küldeni a Térkép hiányzó hasznos pontjáról vagy lakcíméről. Ezt kétféleképpen teheti meg, nyissa meg az Azure Map adatvisszajelzési webhelyét, és keresse meg a hiányzó hely koordinátáit, majd kattintson a "hely hozzáadása" gombra.
+Előfordulhat, hogy visszajelzést szeretne küldeni egy hiányzó hasznos pontról vagy egy lakcímről. Ezt kétféleképpen teheti meg. Nyissa meg az Azure Térkép adatvisszajelzési webhelyét, keresse meg a hiányzó hely koordinátáit, majd kattintson a "hely hozzáadása" elemre.
 
   ![hiányzó hely keresése](./media/how-to-use-feedback-tool/search-poi.png)
 
-Vagy használhatja a térképet, és a helyre kattintva elhúzhatja a PIN-kódot a koordinátákon, és kattintson a "hely hozzáadása" gombra. 
+Vagy használhatja a térképet is. Kattintson a helyre a PIN-kód eldobásához a koordinátákon, majd kattintson a "hely hozzáadása" gombra.
 
   ![PIN-kód hozzáadása](./media/how-to-use-feedback-tool/add-poi.png)
 
-Ha rákattint, a rendszer egy űrlapra irányítja, hogy megadja a helyhez tartozó adatokat.
+Ha a gombra kattint, a rendszer átirányítja egy űrlapra, hogy megadja a helyhez tartozó adatokat.
 
   ![hely hozzáadása](./media/how-to-use-feedback-tool/add-a-place.png)
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Üzleti vagy lakossági címek javítása 
 
-A visszajelzési webhely lehetővé teszi, hogy megkeresse és keresse meg a munkahelyi helyet vagy a címeket, és visszajelzést küldjön a címnek vagy a PIN-kód helyének kijavításához, ha azok nem megfelelőek. Ha visszajelzést szeretne küldeni a címnek a kijavításához, használja a keresősáv-t egy üzleti hely vagy egy lakcím megkereséséhez. Kattintson a kívánt helyre a találatok listájában, és kattintson a "megoldás kijavítása" gombra.
+A visszajelzési webhely lehetővé teszi, hogy megkeresse és keresse meg a munkahelyi helyet vagy a címeket. Ha nem megfelelő, visszajelzést adhat a címnek vagy a PIN-kód helyének kijavításához. Ha visszajelzést szeretne küldeni a címnek a kijavításához, használja a keresősáv-t egy üzleti hely vagy egy lakcím megkereséséhez. A találatok listájában kattintson a kívánt helyre. Kattintson a hely kijavítása gombra.
 
   ![keresési hely a javításhoz](./media/how-to-use-feedback-tool/fix-place.png)
 
@@ -46,19 +46,19 @@ Ha visszajelzést szeretne küldeni a címe kijavításához, töltse ki a "hely
 
   ![űrlap javítása](./media/how-to-use-feedback-tool/fix-form.png)
 
-Ha a hely PIN-kódjának helye nem megfelelő, jelölje be az "olyan hely kijavítása" űrlap jelölőnégyzetét, amely szerint "a PIN-kód helye helytelen", és helyezze át a PIN-kódot a megfelelő helyre, majd kattintson a Submit (küldés) gombra.
+Ha a hely PIN-kódjának helye nem megfelelő, jelölje be a "hely kijavítása" űrlap jelölőnégyzetét, amely szerint a "PIN-kód helye helytelen". Helyezze át a PIN-kódot a megfelelő helyre, majd kattintson a Submit (küldés) gombra.
 
   ![PIN-kód helyének áthelyezése](./media/how-to-use-feedback-tool/move-pin.png)
 
 ## <a name="add-a-comment"></a>Megjegyzés hozzáadása 
 
-A tartózkodási hely keresése mellett a visszajelzési eszköz is lehetővé teszi, hogy a helyhez kapcsolódó részletekhez adjon hozzá egy ingyenes szöveges megjegyzést. Ha megjegyzést szeretne adni a helyhez, vagy kattintson a "Megjegyzés hozzáadása" gombra, írja be a megjegyzést, és kattintson a "Küldés" gombra. 
+A tartózkodási hely keresésének megkezdése mellett a visszajelzési eszköz is lehetővé teszi, hogy a helyhez kapcsolódó részletekhez adjon hozzá egy ingyenes szöveges megjegyzést. Megjegyzés hozzáadásához keresse meg a helyet, vagy kattintson a helyére. Kattintson a Megjegyzés hozzáadása elemre, írja be a megjegyzést, majd kattintson a "Küldés" gombra.
 
-  ![és megjegyzés](./media/how-to-use-feedback-tool/add-comment.png)
+  ![Megjegyzés hozzáadása](./media/how-to-use-feedback-tool/add-comment.png)
 
 ## <a name="track-status"></a>Állapot nyomon követése 
 
-A kérés állapotát nyomon követheti is, ha az "állapot nyomon követése" négyzet bejelölésével bejelöli az e-mail-címet a kérelem végrehajtása közben. A rendszer egy nyomkövetési hivatkozást fog kapni az e-mailben, amely naprakész állapotot biztosít a kérelme számára. 
+A kérés állapotát nyomon követheti is, ha az "állapot nyomon követése" négyzet bejelölésével bejelöli az e-mail-címet a kérelem végrehajtása közben. A rendszer egy nyomkövetési hivatkozást fog kapni az e-mailben, amely naprakész állapotot biztosít a kérelemnek. 
 
   ![visszajelzés állapota](./media/how-to-use-feedback-tool/feedback-status.png)
 

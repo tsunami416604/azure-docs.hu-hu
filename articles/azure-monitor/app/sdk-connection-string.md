@@ -8,12 +8,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992065"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190093"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -41,7 +41,7 @@ Felhasználói forgatókönyvek, ahol a legnagyobb hatással van a következőre
     A felhasználók egy meghatározott [Azure Government régióba](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)küldhetik az adatküldést.
     A kapcsolódási karakterláncok lehetővé teszik a végponti beállítások megadását az intranetes kiszolgálókhoz vagy a hibrid felhő beállításaihoz. 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 ### <a name="finding-my-connection-string"></a>A saját kapcsolatok karakterláncának megkeresése?
 
@@ -140,10 +140,10 @@ Ebben a példában ez a hálózati karakterlánc explicit felülbírálásokat h
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k az explicit felülbírálási értékeken alapulnak: 
-   - Betöltés: https://custom.com:111/
-   - Élő metrikák: https://custom.com:222/
-   - Profiler: https://custom.com:333/ 
-   - Hibakereső: https://custom.com:444/   
+   - Betöltés: https:\//custom.com:111/
+   - Élő metrikák: https:\//custom.com:222/
+   - Profiler: https:\//custom.com:333/ 
+   - Hibakereső: https:\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>A kapcsolódási karakterlánc beállítása
@@ -204,7 +204,7 @@ A Java explicit módon be van állítva:
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. XML
+ApplicationInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

@@ -8,45 +8,45 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155757"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190289"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 
-A Azure Maps két díjszabási szintet kínál: S0 és S1. Ennek a cikknek a célja, hogy segítséget nyújtson az igényeinek megfelelő díjszabási csomag kiválasztásában. A megfelelő árképzési szint kiválasztásához forduljon a következő két kérdéshez.
-
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai funkciókat kívánok használni?
-A S0 díjszabási szintje abban az esetben megfelelő, ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ha fejlettebb funkciókat szeretne használni az alkalmazáshoz, érdemes megfontolnia az S1 árképzési szintet. Példa speciális képességekre: antenna és hibrid képek, az útválasztási tartomány és a Batch-helymeghatározáshoz. A **díjszabási szintű képességek** tábla segítségével kiválaszthatja az alkalmazás számára legmegfelelőbb árképzési szintet.
+A Azure Maps két díjszabási szintet kínál: S0 és S1. Ennek a cikknek a célja, hogy segítséget nyújtson az igényeinek megfelelő díjszabási csomag kiválasztásában. A megfelelő árképzési szint kiválasztásához Kérdezzen rá a következő két kérdésre.
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Hány egyidejű felhasználót tervezek támogatni? 
-A S0 és S1 díjszabási szintjei különböző mennyiségű adatátviteli sebességet kezelnek. A S0 díjszabási szintje másodpercenként legfeljebb **50 lekérdezést**kezel, míg az S1 csomag másodpercenként **több mint 50 lekérdezést**kezel.
+A S0 és S1 díjszabási szintjei különböző mennyiségű adatátviteli sebességet kezelnek. A S0 díjszabási szintje másodpercenként legfeljebb **50 lekérdezést**kezel. Míg az S1-es **szinten másodpercenként több mint 50 lekérdezés**kezelhető.
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai funkciókat kívánok használni?
+A S0 díjszabási szintje Önnek megfelelő, ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ha fejlettebb funkciókat szeretne használni az alkalmazáshoz, érdemes megfontolnia az S1 árképzési szintet. A speciális képességek többek között a következők: antenna és hibrid képek, az útválasztási tartomány és a Batch-helymeghatározáshoz. Tekintse át a **díjszabási csomag képességeinek** táblázatát, és válassza ki az alkalmazása számára legmegfelelőbb árképzési szintet.
 
 ### <a name="pricing-tier-capabilities"></a>Díjszabási csomag képességei
 
-| Szolgáltatás                              |        S0           |  S1      |
+| Képesség                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Leképezés megjelenítése                              | ✓                   | ✓       |
 | Szatellit képek                       |                     | ✓        |
-| Search                                  | ✓                    | ✓        |
-| Batch Search                            |                     | ✓        |
+| Keresés                                  | ✓                    | ✓        |
+| Batch-keresés                            |                     | ✓        |
 | Útválasztás                                   | ✓                    |✓        |
-| Batch Routing                            |                    | ✓        |
-| Matrix Routing                          |                     | ✓        |
-| Route Range (Isochrones)                |                     | ✓        |
-| Forgalom                                |✓                    |✓        |
+| Kötegelt Útválasztás                            |                    | ✓        |
+| Mátrix-Útválasztás                          |                     | ✓        |
+| Útvonal tartománya (izokrón)                |                     | ✓        |
+| Adatforgalom                                |✓                    |✓        |
 | Időzóna                               |✓                    |✓        |
 | Földrajzi hely (előzetes verzió)                    |✓                   |✓        |
-| Térműveletek                        |                    |✓        |
-| Geokerítések kezelése                                |                    |✓        |
+| Térbeli műveletek                        |                    |✓        |
+| Geokerítések                                |                    |✓        |
 | AdatAzure Maps (előzetes verzió)                |                     | ✓        |
 | Mobilitás (előzetes verzió)                       |                     | ✓        |
 | Időjárás (előzetes verzió)                        |✓                    |✓        |
 
-Ezeket a további adatpontokat érdemes figyelembe venni:
+Vegye figyelembe ezeket a további pontokat:
 * Milyen típusú vállalattal rendelkezik?
 * Mennyire kritikus az alkalmazása?
 
@@ -54,10 +54,10 @@ Ezeket a további adatpontokat érdemes figyelembe venni:
 
 Tekintse meg a **díjszabási szinten megcélozott ügyfelek** táblázatát, hogy jobban érthető legyen a S0 és az S1 díjszabása. További információ: [Azure Maps díjszabása](https://azure.microsoft.com/pricing/details/azure-maps/). 
 
-| Díjcsomag  |     Megcélzó ügyfelek                                                                |
+| Tarifacsomag  |     Megcélzó ügyfelek                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>A S0 díjszabási szintje az éles környezetben futó alkalmazások számára is működik: a megvalósíthatósági fejlesztéstől és a korai teszteléstől az alkalmazások gyártásához és üzembe helyezéséhez. Ez a réteg azonban kisméretű fejlesztésre, vagy alacsony egyidejű felhasználókkal rendelkező ügyfelekre, vagy mindkettőre lett tervezve. <p>|
-| S1            |    <p>Az S1 díjszabási szintje olyan ügyfelek számára szükséges, akik nagyvállalati, kritikus fontosságú alkalmazások vagy nagy mennyiségű egyidejű felhasználó támogatására szorulnak. Azok az ügyfelek is, akik speciális térinformatikai szolgáltatásokat igényelnek.</p>|
+| S1            |    <p>Az S1 díjszabási szintje olyan ügyfelek számára készült, akik nagyméretű nagyvállalati alkalmazásokat, kritikus fontosságú alkalmazásokat vagy nagy mennyiségű egyidejű felhasználót foglalnak magukban. Azok az ügyfelek is, akik speciális térinformatikai szolgáltatásokat igényelnek.</p>|
 
 ## <a name="next-steps"></a>Következő lépések
 

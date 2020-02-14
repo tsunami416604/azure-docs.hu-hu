@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 667fa1c85c63ffb87e49c4bf99112f57d0c85a72
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031919"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191039"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>A magánhálózati kapcsolati szolgáltatás kapcsolódási problémáinak elhárítása
+# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Privát kapcsolat szolgáltatás kapcsolati problémáinak hibaelhárítása
 
 Ez az útmutató lépésről lépésre bemutatja, hogyan lehet érvényesíteni és diagnosztizálni a privát kapcsolati szolgáltatás beállítását. 
 
@@ -112,4 +112,4 @@ Ha a magánhálózati kapcsolat beállításával kapcsolatban problémák lépt
 
  * [Privát kapcsolati szolgáltatás (CLI) létrehozása](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
 
- * [Privát végpont hibaelhárítási útmutatója](https://docs.microsoft.com/azure/private-link/private-endpoint-connectivity-troubleshooting)
+ * [Privát végpont hibaelhárítási útmutatója](troubleshoot-private-endpoint-connectivity.md)

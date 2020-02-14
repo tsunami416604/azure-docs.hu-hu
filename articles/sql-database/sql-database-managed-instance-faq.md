@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835014"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201679"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -44,7 +44,7 @@ A rendelkezésre álló szolgáltatási szintek és azok jellemzői a [szolgált
 
 Hibák és ismert problémák esetén tekintse meg az [ismert problémákat](sql-database-managed-instance-transact-sql-information.md#Issues).
 
-## <a name="new-features"></a>ÚJ funkciók
+## <a name="new-features"></a>Új funkciók
 
 **Hol találhatók a legújabb funkciók és a szolgáltatások a nyilvános előzetes verzióban?**
 
@@ -82,21 +82,11 @@ Az egyik lehetőség az, hogy [exportálja az adatbázist egy BACPAC](sql-databa
 
 Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb. A tranzakciós replikáció akkor használható, ha az adatbázis minden táblája rendelkezik elsődleges kulccsal.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 vs. gen 5 
-
-**Hogyan választani a Gen 4 és az 5. generációs hardveres generáció között a felügyelt példányhoz?**
-
-Ez a számítási feladattól függ, mivel egyes hardver-generációk jobbak bizonyos típusú számítási feladatokhoz, mint a többi. Míg a teljesítmény tárgya eléggé összetett az egyik egyszerűsítése érdekében, a következő különbségek vannak a számítási feladatok teljesítményét befolyásoló hardveres generációk között:
-- A Gen 4 jobb számítási támogatást biztosít, mivel a fizikai processzorokon alapul, a Gen 5-öt pedig a virtuális mag processzorok alapján. Előnyösebb lehet a nagy számítási igényű munkaterhelések esetében.
-- A Gen 5 támogatja a gyorsított hálózatkezelést, ami jobb IO-sávszélességet eredményez a távoli tárterület számára. Előnyösebb lehet az IO-igényes számítási feladatokhoz általános célú szolgáltatási szinten. A Gen 5 gyorsabb SSD helyi lemezeket használ, mint a 4. generációs. Az üzleti szempontból kritikus fontosságú szolgáltatási szintek esetében előnyös lehet az IO-igényes számítási feladatok ellátása.
-
-Határozottan javasoljuk, hogy tesztelje az éles környezetbe szánt tényleges munkaterhelések teljesítményét, mielőtt megkezdi a működést annak meghatározásához, hogy melyik hardver-létrehozási folyamat egy adott esetben jobban fog működni.
-
 ## <a name="switch-hardware-generation"></a>Hardver generálásának váltása 
 
 **Átválthatom a felügyelt példányok hardveres generációját a Gen 4 és a Gen 5 online között?**
 
-A hardveres generációk közötti automatizált online váltás akkor lehetséges, ha mindkét hardveres generáció elérhető abban a régióban, ahol a felügyelt példány kiépítve van. Ebben az esetben a [blogbejegyzésben található parancsfájl](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) használatával elmagyarázza, hogyan válthat a hardveres generációk között.
+A hardveres generációk közötti automatizált online váltás akkor lehetséges, ha mindkét hardveres generáció elérhető abban a régióban, ahol a felügyelt példány kiépítve van. Ebben az esetben megtekintheti a [virtuális mag-modell áttekintését ismertető oldalt](sql-database-service-tiers-vcore.md) , amely ismerteti, hogyan válthat a hardveres generációk között.
 
 Ez egy hosszan futó művelet, mivel új felügyelt példány lesz kiépítve a háttérben, és az adatbázisok automatikusan átkerülnek a régi és az új példány között a folyamat végén található gyors feladatátvételsel. 
 
@@ -109,11 +99,9 @@ Ha a hardveres generációk nem támogatottak ugyanabban a régióban, akkor a h
 
 Általános célú felügyelt példány a távoli tárterületet használja, mert az adatmennyiség és a naplófájlok teljesítménye fontos. További információ: a [naplófájl méretének hatása általános célú felügyelt példány teljesítményére](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-Az i/o-igényes számítási feladatoknál érdemes lehet a Gen 5 hardvert használni, a 4. generációs számítási feladatokhoz pedig a Gen 4 használatát. További információ: Hogyan a [Gen 4 és a Gen 5 közötti választás](#gen-4-vs-gen-5).
-
 Ha a munkaterhelés sok kis tranzakcióból áll, érdemes lehet átváltani a csatlakozás típusát a proxyról átirányítási módba.
 
-## <a name="maximum-storage-size"></a>Maximális tárterület
+## <a name="maximum-storage-size"></a>Maximális tárterület méretét
 
 **Mi a felügyelt példányok maximális tárolási mérete?**
 

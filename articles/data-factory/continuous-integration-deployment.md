@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110186"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187807"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -139,6 +139,9 @@ Az alábbi útmutató az Azure-folyamatok kiadásának beállításához nyújt 
 
    ![Válassza a kiadás létrehozása lehetőséget](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> A CI/CD-helyzetekben a különböző környezetekben lévő Integration Runtime (IR) típusnak azonosnak kell lennie. Ha például saját üzemeltetésű integrációs modult használ a fejlesztési környezetben, akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell eltárolni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.
+
 ### <a name="get-secrets-from-azure-key-vault"></a>Titkok beolvasása Azure Key Vault
 
 Ha Azure Resource Manager-sablonban titkos kulcsokkal rendelkezik, javasoljuk, hogy a Azure Key Vaultt az Azure-folyamatok kiadásával használja.
@@ -184,11 +187,11 @@ A titkokat kétféleképpen kezelheti:
 
 A központi telepítés meghiúsulhat, ha megpróbál frissíteni az aktív eseményindítókat. Az aktív eseményindítók frissítéséhez manuálisan kell leállítania azokat, majd újra kell indítania őket a telepítés után. Ezt egy Azure PowerShell feladat használatával teheti meg:
 
-1.  A kiadás **feladatok** lapján adjon hozzá egy **Azure PowerShell** feladatot.
+1.  A kiadás **feladatok** lapján adjon hozzá egy **Azure PowerShell** feladatot. Válassza a feladat 4-es verziója. * lehetőséget. 
 
-1.  Válassza a **Azure Resource Manager** lehetőséget a kapcsolattípus mezőben, majd válassza ki az előfizetését.
+1.  Válassza ki azt az előfizetést, amelyben a gyár található.
 
-1.  A parancsfájl típusaként válassza a **beágyazott parancsfájl** lehetőséget, majd adja meg a kódot. A következő kód leállítja az eseményindítókat:
+1.  Adja meg a **parancsfájl elérési útját** parancsfájl típusaként. Ehhez mentenie kell a PowerShell-szkriptet a tárházba. Az eseményindítók leállításához a következő PowerShell-parancsfájl használható:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ A központi telepítés meghiúsulhat, ha megpróbál frissíteni az aktív esem
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell feladat](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 A telepítés után az eseményindítók újraindításához hasonló lépések hajthatók végre (az `Start-AzDataFactoryV2Trigger` függvénnyel).
 
-> [!IMPORTANT]
-> A CI/CD-helyzetekben a különböző környezetekben lévő Integration Runtime (IR) típusnak azonosnak kell lennie. Ha például saját üzemeltetésű integrációs modult használ a fejlesztési környezetben, akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell eltárolni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.
+### <a name="sample-pre--and-post-deployment-script"></a>Példa előtti és utáni parancsfájl
 
-#### <a name="sample-pre--and-post-deployment-script"></a>Példa előtti és utáni parancsfájl
+A következő minta-parancsfájl segítségével leállíthatja az eseményindítókat a telepítés előtt, és később újraindíthatja őket. A parancsfájl emellett kódot is tartalmaz az eltávolított erőforrások törléséhez. Mentse a parancsfájlt egy Azure DevOps git-tárházban, és hivatkozzon egy Azure PowerShell-feladaton keresztül a 4-es verziójú. * használatával.
 
-Az alábbi példa azt mutatja be, hogyan állíthatja le az eseményindítókat az üzembe helyezés előtt, majd később újraindíthatja őket. A parancsfájl emellett kódot is tartalmaz az eltávolított erőforrások törléséhez. A Azure PowerShell legújabb verziójának telepítéséhez tekintse [meg a Azure PowerShell telepítése Windows rendszerre a PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps)használatával című témakört.
+Az üzembe helyezés előtti parancsfájl futtatásakor meg kell adnia a következő paraméterek variációját a **parancsfájl argumentumai** mezőben.
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+Üzembe helyezés utáni parancsfájl futtatásakor meg kell adnia a következő paraméterek variációját a **parancsfájl argumentumai** mezőben.
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+Itt látható az üzembe helyezés előtti és utáni telepítéshez használható szkript. A törölt erőforrásokhoz és erőforrás-hivatkozásokhoz tartozó fiókok.
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

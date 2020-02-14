@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157533"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198700"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
 > [!NOTE]
 > Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon AskAzureDBforPostgreSQL@service.microsoft.comhoz.
 
-Az Azure Database for PostgreSQL egyetlen kiszolgálón az ügyfél által felügyelt kulcsokkal történő adattitkosítás lehetővé teszi, hogy a qwn kulcsot (BYOK) a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
+Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
 
 Az ügyfél által felügyelt kulcsokkal rendelkező adattitkosítást Azure Database for PostgreSQL egyetlen kiszolgáló esetén a kiszolgáló szintjén kell beállítani. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 

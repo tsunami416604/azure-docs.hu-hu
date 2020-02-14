@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112592"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190974"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Az Azure Cognitive Search használata .NET-alkalmazásokból
 
@@ -33,8 +33,8 @@ Az SDK-ban található egyéb NuGet-csomagok a következők:
 
 A különböző ügyféloldali kódtárak olyan osztályokat határoznak meg, mint a `Index`, a `Field`és a `Document`, valamint a `Documents.Search` és `SearchServiceClient` osztályok `Indexes.Create` és `SearchIndexClient` műveletei. Ezek az osztályok a következő névterekben vannak rendszerezve:
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft. Azure. Search. models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Ha visszajelzést szeretne küldeni az SDK jövőbeli frissítéséről, tekintse meg a [Visszajelzés oldalt](https://feedback.azure.com/forums/263029-azure-search/) , vagy hozzon létre egy problémát a [githubon](https://github.com/azure/azure-sdk-for-net/issues) , és nevezze el az "Azure Cognitive Search" kifejezést a probléma címében.
 
@@ -462,7 +462,7 @@ Az első dolog, hogy a `Hotel` osztály minden nyilvános tulajdonságának neve
 > 
 > 
 
-A második lehetőség, hogy az egyes tulajdonságok olyan attribútumokkal vannak díszítve, mint a `IsFilterable`, a `IsSearchable`, a `Key`és a `Analyzer`. Ezek az attribútumok közvetlenül [egy Azure Cognitive Search index megfelelő mező attribútumaira](https://docs.microsoft.com/rest/api/searchservice/create-index#request)mutatnak. A `FieldBuilder` osztály ezeket a tulajdonságokat használja az indexhez tartozó mező-definíciók összeállításához.
+A második lehetőség, hogy az egyes tulajdonságok olyan attribútumokkal vannak díszítve, mint a `IsFilterable`, a `IsSearchable`, a `Key`és a `Analyzer`. Ezek az attribútumok közvetlenül [egy Azure Cognitive Search index megfelelő mező attribútumaira](/rest/api/searchservice/create-index)mutatnak. A `FieldBuilder` osztály ezeket a tulajdonságokat használja az indexhez tartozó mező-definíciók összeállításához.
 
 A `Hotel` osztály harmadik fontos dologa a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `Category` típusú `category` szöveges tulajdonságot a `Edm.String` mezőbe képezi le. Hasonló típusú leképezések vannak `bool?`, `Edm.Boolean`, `DateTimeOffset?`és `Edm.DateTimeOffset` között, és így tovább. A típus-hozzárendelésre vonatkozó konkrét szabályokat az [Azure Cognitive Search .net SDK dokumentációjának](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)`Documents.Get` metódusával dokumentálja. A `FieldBuilder` osztály gondoskodik a leképezésről, de hasznos lehet az esetleges szerializálási problémák elhárításához is.
 
@@ -752,7 +752,7 @@ WriteDocuments(results);
 
 Ez a lépés befejezi az oktatóanyagot, de nem áll le itt. \* * A következő lépések további forrásokat biztosítanak az Azure Cognitive Search megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
 * Tekintse át az [elnevezési konvenciókat](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
 * Tekintse át az Azure Cognitive Search [támogatott adattípusait](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) .

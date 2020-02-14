@@ -1,19 +1,19 @@
 ---
-title: Azure Virtual WAN-partnerek helyei | Microsoft Docs
+title: Azure-beli virtuális WAN-partnerek és-helyszínek | Microsoft Docs
 description: Ez a cikk az Azure-beli virtuális WAN-partnerek és a központ helyeinek listáját tartalmazza.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: afa808c95c88184fb531e858fbfe6d102a6f1f08
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 68379fd2334e517df4011c05bb32543f7ce4a173
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157159"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190406"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
@@ -34,7 +34,7 @@ A következő magas szintű automatizálás van beállítva az Eszközkezelőben
 * Azure-kapcsolati információk automatikus letöltése
 * Helyszíni ág-eszköz konfigurálása 
 
-Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazza az Azure Virtual hub VNet és VPN Gateway létrehozását. Ha többet szeretne megtudni az automatizálásról, tekintse meg az [Automation konfigurálása – WAN-partnerek](virtual-wan-configure-automation-providers.md)című témakört.
+Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazza az Azure Virtual hub VNet és VPN Gateway létrehozását. Ha többet szeretne megtudni az automatizálásról, tekintse meg [a virtuális WAN-partnerek automatizálási irányelveit](virtual-wan-configure-automation-providers.md).
 
 ## <a name="partners"></a>Kapcsolódás partnereken keresztül
 
@@ -50,4 +50,4 @@ A következő partnereink a közeljövőben: Arista, Aruba HPE, Cisco Systems, F
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 
-* További információ az Azure Virtual WAN-kapcsolat automatizálásával kapcsolatban: [Virtual WAN-partnerek – útmutató az automatizáláshoz](virtual-wan-configure-automation-providers.md).
+* További információ az Azure Virtual WAN-kapcsolat automatizálásával kapcsolatban: [automatizálási irányelvek a virtuális WAN-partnerek számára](virtual-wan-configure-automation-providers.md).

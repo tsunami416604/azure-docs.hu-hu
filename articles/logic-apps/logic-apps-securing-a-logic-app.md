@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116931"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191314"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -29,7 +29,7 @@ A Azure Logic Appsban lévő adathozzáférés szabályozásához és védelméh
 
 Ha a logikai alkalmazás egy kérelem alapú triggert használ, amely fogadja a bejövő hívásokat vagy kéréseket, például a [kérést](../connectors/connectors-native-reqres.md) vagy a [webhookot](../connectors/connectors-native-webhook.md) , korlátozhatja a hozzáférést, hogy csak a jogosult ügyfelek tudják meghívni a logikai alkalmazást. A logikai alkalmazások által fogadott összes kérelem titkosítva van, és a SSL (SSL) protokollon keresztül biztosítva van.
 
-Az alábbi módokon biztosíthatja az ilyen típusú triggerekhez való hozzáférést:
+Az alábbi lehetőségek segítségével biztonságossá teheti az ehhez az indító típushoz való hozzáférést:
 
 * [Közös hozzáférési aláírások előállítása](#sas)
 * [Bejövő IP-címek korlátozása](#restrict-inbound-ip-addresses)
@@ -62,7 +62,7 @@ Az SAS-vel való hozzáférés biztonságossá tételével kapcsolatos további 
 
 #### <a name="regenerate-access-keys"></a>Hozzáférési kulcsok újragenerálása
 
-Ha bármikor új biztonságos hozzáférési kulcsot szeretne készíteni, használja az Azure REST API vagy Azure Portal. Az összes korábban létrehozott, a régi kulcsot használó URL-cím érvénytelenítve lett, és már nincs engedélye a logikai alkalmazás aktiválására. Az újragenerálás után lekért URL-címek az új hozzáférési kulccsal lesznek aláírva.
+Ha bármikor új biztonsági hozzáférési kulcsot szeretne előállítani, használja az Azure REST API vagy Azure Portal. Az összes korábban létrehozott, a régi kulcsot használó URL-cím érvénytelenítve lett, és már nincs engedélye a logikai alkalmazás aktiválására. Az újragenerálás után lekért URL-címek az új hozzáférési kulccsal lesznek aláírva.
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg azt a logikai alkalmazást, amely rendelkezik az újragenerált kulccsal.
 
@@ -92,7 +92,7 @@ A kérelem alapú trigger visszahívási URL-címeinek létrehozásakor vagy lis
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben adja meg a `KeyType` tulajdonságot `Primary` vagy `Secondary`. Ez a tulajdonság a megadott biztonságos kulcs által aláírt URL-címet adja vissza.
+A törzsben adja meg a `KeyType` tulajdonságot `Primary` vagy `Secondary`. Ez a tulajdonság a megadott biztonsági kulcs által aláírt URL-címet adja vissza.
 
 <a name="restrict-inbound-ip"></a>
 
@@ -188,7 +188,7 @@ A logikai alkalmazás futtatási előzményeiben található bemenetekhez és ki
 
 * [Korlátozza a hozzáférést az IP-címtartomány alapján](#restrict-ip).
 
-  Ez a beállítás lehetővé teszi a futtatási előzmények biztonságos elérését egy adott IP-címtartomány kérései alapján.
+  Ezzel a beállítással biztonságos hozzáférést biztosíthat a futtatási előzményekhez egy adott IP-címtartomány kérései alapján.
 
 * [Adatok elrejtése a futtatási előzményekből a elhomályosítás használatával](#obfuscate).
 
@@ -259,19 +259,19 @@ Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzemb
 
 Számos eseményindító és művelet rendelkezik olyan beállításokkal, amelyekkel elrejtheti a bemeneteket, kimeneteket vagy mindkettőt egy logikai alkalmazás futtatási előzményeiből. Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
 
-#### <a name="secure-inputs-and-outputs-in-the-designer"></a>Biztonságos bemenetek és kimenetek a tervezőben
+#### <a name="hide-inputs-and-outputs-in-the-designer"></a>Bemenetek és kimenetek elrejtése a Designerben
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    ![Logikai alkalmazás megnyitása a Logic app Designerben](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. Az aktiválás vagy művelet esetében, ahol az adatvédelmet szeretné biztosítani, kattintson a három pontra ( **..** .), majd válassza a **Beállítások**lehetőséget.
+1. A bizalmas adatok elrejtésére szolgáló triggeren vagy műveleten válassza a három pontot ( **..** .), majd válassza a **Beállítások**lehetőséget.
 
    ![Trigger vagy művelet beállításainak megnyitása](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Kapcsolja be a **biztonságos bemeneteket**, a **biztonságos kimeneteket**vagy mindkettőt. Ha elkészült, válassza a **Kész** lehetőséget.
 
-   ![Biztonságos bemenetek és kimenetek bekapcsolása](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
+   ![A "biztonságos bemenetek" vagy a "biztonságos kimenetek" bekapcsolása](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
    A művelet vagy az aktiválás mostantól egy lakat ikont jelenít meg a címsorban.
 
@@ -287,13 +287,13 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
    1. A **logikai alkalmazás futtatása** ablaktáblán bontsa ki az áttekinteni kívánt műveleteket.
 
-      Ha úgy döntött, hogy mindkét bemenetet és kimenetet is biztonságossá teszi, akkor ezek az értékek már rejtve maradnak.
+      Ha úgy döntött, hogy mindkét bemenetet és kimenetet elrejti, akkor ezek az értékek már rejtve maradnak.
 
       ![Rejtett bemenetek és kimenetek a futtatási előzményekben](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
-#### <a name="secure-inputs-and-outputs-in-code-view"></a>Biztonságos bemenetek és kimenetek kód nézetben
+#### <a name="hide-inputs-and-outputs-in-code-view"></a>Bemenetek és kimenetek elrejtése kód nézetben
 
 Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy frissítse a `runtimeConfiguration.secureData.properties` tömböt az alábbi értékek egyikével vagy mindkettővel:
 
@@ -324,13 +324,13 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>A bemenetek és kimenetek elrejtésével kapcsolatos megfontolások
 
-* Ha a bemeneteket és kimeneteket egy triggerhez vagy művelethez védi, Logic Apps nem küldi el a védett adatokat az Azure Log Analyticsnak. Emellett nem adhat hozzá [nyomon követett tulajdonságokat](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) az adott triggerhez vagy művelethez a figyeléshez.
+* Ha eltakarja egy trigger vagy művelet bemeneteit vagy kimeneteit, Logic Apps nem küldi el a védett adatokat az Azure Log Analyticsnak. Emellett nem adhat hozzá [nyomon követett tulajdonságokat](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) az adott triggerhez vagy művelethez a figyeléshez.
 
 * A [munkafolyamat-előzmények kezelésére szolgáló Logic apps API](https://docs.microsoft.com/rest/api/logic/) nem ad vissza biztonságos kimenetet.
 
-* Ha olyan művelet kimeneteit szeretné biztonságossá tenni, amely védelmet biztosít a bemenetek számára, vagy explicit módon biztonságos kimeneteket használ, manuálisan kapcsolja be a **biztonságos kimeneteket** az adott műveletben.
+* Ha olyan művelet kimeneteit szeretné elrejteni, amely elrejti a bemeneteket, vagy explicit módon eltakarja a kimeneteket, manuálisan kapcsolja be a **biztonságos kimeneteket** az adott műveletben.
 
-* Győződjön meg arról, hogy be van kapcsolva a **biztonságos bemenetek** vagy a **biztonságos kimenetek** az alsóbb rétegbeli műveletekben, ahol az adatok védelméhez várható a futtatási előzmények.
+* Győződjön meg arról, hogy be van kapcsolva a **biztonságos bemenetek** vagy a **biztonságos kimenetek** az alsóbb rétegbeli műveletekben, ahol a futtatási előzmények az adatok elrejtésére várnak.
 
   **Biztonságos kimenetek beállítása**
 
@@ -358,7 +358,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így elkerülhetők a rögzített adatok egy [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) a logikai alkalmazás üzembe helyezéséhez, a bizalmas adatok védelméhez a biztonságos paraméterek meghatározásával, valamint az adatoknak a [sablon paraméterei](../azure-resource-manager/templates/template-parameters.md) között külön bemenetként való továbbítása a [paraméter](../azure-resource-manager/templates/parameter-files.md)használatával.
 
-Ha például [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a Logic apps munkafolyamat-definíciójának `parameters` szakaszát, és a Resource Manager-sablont a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek elrejtéséhez adja meg a paramétereket a `securestring` vagy `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. Ha a paraméter értékeit futásidőben szeretné elérni, használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definíciójában. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
+Ha például [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)hitelesíti a http-műveleteket, megadhatja és eltakarhatja azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a Logic apps munkafolyamat-definíciójának `parameters` szakaszát, és a Resource Manager-sablont a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek elrejtéséhez adja meg a paramétereket a `securestring` vagy `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. Ha a paraméter értékeit futásidőben szeretné elérni, használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definíciójában. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
 
 > [!NOTE]
 > Ha a kérelem fejlécében vagy törzsében paramétert használ, akkor ez a paraméter látható lesz a logikai alkalmazás futtatási előzményeinek és a kimenő HTTP-kérések megtekintésekor. Győződjön meg arról, hogy a tartalom-hozzáférési házirendeket is megfelelően állította be. A futtatási előzményekben lévő bemenetek és kimenetek elrejtéséhez is használhatja a [elhomályosítás](#obfuscate) lehetőséget. Az engedélyezési fejlécek soha nem láthatók bemeneteken vagy kimeneteken keresztül. Tehát ha van titok, a titkos kód nem kérhető le.
@@ -586,13 +586,13 @@ Ez a példa több olyan biztonságos paraméter-definíciót tartalmaz, amelyek 
 
   A Logic apps-végpontokra irányuló összes hívás a logikai alkalmazások régiói alapján megadott kijelölt IP-címekről származik. Hozzáadhat olyan szűrést, amely csak az adott IP-címekről fogad kérelmeket. Ezeknek az IP-címeknek a megszerzéséhez tekintse meg [Azure Logic apps korlátozásait és konfigurációját](logic-apps-limits-and-config.md#configuration).
 
-* Biztonságos kapcsolatok a helyszíni rendszerekkel.
+* A helyszíni rendszerekkel létesített kapcsolatok biztonságának javítása.
 
-  Azure Logic Apps a biztonságos és megbízható helyszíni kommunikációhoz biztosít integrációt ezekkel a szolgáltatásokkal.
+  Azure Logic Apps ezen szolgáltatásokkal való integrációt biztosít a biztonságosabb és megbízható helyszíni kommunikáció biztosításához.
 
   * Helyszíni adatátjáró
 
-    Azure Logic Apps számos felügyelt összekötő biztosít biztonságos kapcsolatot a helyszíni rendszerekkel, például a fájlrendszerrel, az SQL-, a SharePoint-és a DB2-szolgáltatással. Az átjáró a helyszíni forrásokból érkező adatokat a Azure Service Bus keresztül küldi el titkosított csatornákon. Minden forgalom biztonságos kimenő adatforgalomból származik az átjáró ügynökének. Ismerje meg, [Hogyan működik a helyszíni adatátjáró](logic-apps-gateway-install.md#gateway-cloud-service).
+    Azure Logic Apps számos felügyelt összekötő segíti a helyszíni rendszerek, például a fájlrendszer, az SQL, a SharePoint és a DB2 biztonságos kapcsolatait. Az átjáró a helyszíni forrásokból érkező adatokat a Azure Service Bus keresztül küldi el titkosított csatornákon. Az összes forgalom biztonságos kimenő forgalomnak minősül az átjáró ügynöktől. Ismerje meg, [Hogyan működik a helyszíni adatátjáró](logic-apps-gateway-install.md#gateway-cloud-service).
 
   * Kapcsolódjon az Azure API Management
 
@@ -680,9 +680,9 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 A szolgáltatások ügyféltanúsítvány-alapú hitelesítéssel történő biztonságossá tételével kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [API-k biztonságossá tétele az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
-* [Az ügyféltanúsítvány-alapú hitelesítést használó Azure-API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [Az API-k biztonságának növelése az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [A háttérbeli szolgáltatások biztonságának növelése az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management](../api-management/api-management-howto-mutual-certificates.md)
+* [A REST-szolgáltatás biztonságának növelése Ügyféltanúsítványok használatával](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Használjon SSL-tanúsítványt az alkalmazás kódjában Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 

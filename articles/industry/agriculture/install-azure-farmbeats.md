@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131884"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198854"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
 
@@ -83,7 +83,9 @@ Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek az A
 - Előfizetés – tulajdonos
 - Az erőforráscsoport, amelyben a FarmBeats telepítve van – tulajdonos
 
-Az első két engedélyre van szükség a [HRE alkalmazás létrehozásának lépéseinek létrehozásához](#create-an-aad-application) . Ha szükséges, a HRE-alkalmazás létrehozásához a megfelelő engedélyekkel rendelkező személyt is beszerezhet. A FarmBeats telepítő személynek azon erőforráscsoport tulajdonosának kell lennie, amelyben a FarmBeats telepítve van.
+Az első két engedélyre van szükség a [HRE alkalmazás létrehozásának lépéseinek létrehozásához](#create-an-aad-application) . Ha szükséges, a HRE-alkalmazás létrehozásához a megfelelő engedélyekkel rendelkező személyt is beszerezhet.
+
+A FarmBeats-telepítést futtató személynek azon erőforráscsoport tulajdonosának kell lennie, amelyben a FarmBeats telepítve van. Az előfizetési tulajdonosok esetében ez automatikusan megtörténik az erőforráscsoport létrehozásakor. Mások számára hozza létre előre az erőforráscsoportot, és kérje meg az előfizetés tulajdonosát, hogy az erőforráscsoport tulajdonosa legyen.
 
 A Azure Portal a [szerepköralapú hozzáférés-vezérlésre](https://docs.microsoft.com/azure/role-based-access-control/check-access)vonatkozó utasításokat követve ellenőrizheti a hozzáférési engedélyeit.
 
@@ -120,7 +122,15 @@ Futtassa az alábbi lépéseket egy Cloud Shell-példányban a PowerShell-körny
         ./create_aad_script.ps1
     ```
 
-4. A HRE parancsfájl körülbelül 2 percet vesz igénybe, és megjeleníti a képernyőn látható értékeket, valamint egy ugyanabban a könyvtárban található JSON-fájlt. Ha valaki más futtatta a szkriptet, kérje meg őket, hogy ossza meg Önnel ezt a kimenetet.
+4. A parancsfájl a következő három bemenetet kéri:
+
+    - FarmBeats-webhely neve: Ez a FarmBeats-webalkalmazás egyedi URL-előtagja. Ha az előtag már használatban van, a parancsfájl kikerül a hibába. A telepítés után a FarmBeats üzemelő példánya elérhető lesz a https://\<FarmBeats-website-Name >. azurewebsites. net és a hencegő API-k a következő címen lesznek: https://\<FarmBeats-website-Name >-api.azurewebsites.net
+
+    - Azure bejelentkezési azonosító: adja meg az Azure bejelentkezési azonosítót azon felhasználó számára, akit hozzá kíván adni a FarmBeats-rendszergazdaként. Ez a felhasználó ezután hozzáférést biztosíthat a FarmBeats webalkalmazásokhoz más felhasználók számára. A bejelentkezési azonosító általában a john.doe@domain.coműrlap. Az Azure UPN is támogatott.
+
+    - Előfizetés azonosítója: Ez annak az előfizetésnek az azonosítója, amelyben telepíteni szeretné az Azure FarmBeats
+
+5. A HRE parancsfájl körülbelül 2 percet vesz igénybe, és megjeleníti a képernyőn látható értékeket, valamint egy ugyanabban a könyvtárban található JSON-fájlt. Ha valaki más futtatta a szkriptet, kérje meg őket, hogy ossza meg Önnel ezt a kimenetet.
 
 ### <a name="create-sentinel-account"></a>Sentinel-fiók létrehozása
 

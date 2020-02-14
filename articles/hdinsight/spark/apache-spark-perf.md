@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177367"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198871"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark feladatok optimalizálása a HDInsight-ben
 
-Megtudhatja, hogyan optimalizálhatja [Apache Spark](https://spark.apache.org/) -fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória nyomása, a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes műveletet eredményező feladatok miatt. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását.
+Megtudhatja, hogyan optimalizálhatja [Apache Spark](https://spark.apache.org/) -fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória nyomása, a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes műveletet eredményező feladatok miatt. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását. A HDInsight Apache Spark használatának első lépéseivel kapcsolatos információkért lásd: [Apache Spark-fürt létrehozása Azure Portal használatával](apache-spark-jupyter-spark-sql-use-portal.md).
 
 A következő szakaszok ismertetik a Spark-feladatok gyakori optimalizálásait és javaslatait.
 
@@ -57,13 +57,15 @@ A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely 
 
 Új Spark-fürt létrehozásakor kiválaszthatja az Azure Blob Storage vagy Azure Data Lake Storaget a fürt alapértelmezett tárolója. Mindkét lehetőség biztosítja a hosszú távú tárolás előnyeit az átmeneti fürtök esetében, így az adatai nem törlődnek automatikusan a fürt törlésekor. Újra létrehozhat egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
 
-| Áruház típusa | Fájlrendszer | Gyorsaság | Átmeneti | Használati példák |
+| Áruház típusa | Fájlrendszer | Sebesség | Átmeneti | Használati esetek |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //URL/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Blob Storage (biztonságos) | **wasbs:** //URL/ | **Standard** | Igen | Átmeneti fürt |
 | 2\. generációs Azure Data Lake Storage| **abfs:** //URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| 1\. generációs Azure Data Lake Storage| **ADL:** //URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Helyi HDFS | **hdfs:** //URL/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
+
+A HDInsight-fürtökhöz elérhető tárolási lehetőségek teljes leírását lásd: a [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használatra](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
 
@@ -74,7 +76,7 @@ A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek k�
     * Nem működik a particionálással, ami megváltozhat a jövőbeli Spark-kiadásokban.
 
 * Tárolási szint gyorsítótárazása (ajánlott)
-    * A [Alluxio](https://www.alluxio.io/)használatával valósítható meg.
+    * Az [i/o-gyorsítótár](apache-spark-improve-performance-iocache.md) funkciójának használatával valósítható meg a HDInsight.
     * Memóriabeli és SSD-gyorsítótárazást használ.
 
 * Helyi HDFS (ajánlott)
@@ -106,6 +108,8 @@ A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel
 * Inkább `TreeReduce`, amely több munkát hajt végre a végrehajtók vagy a partíciók számára, hogy `Reduce`, amely az illesztőprogramon működik.
 * Az alsó szintű RDD-objektumok helyett használja a DataFrames.
 * Hozzon létre olyan ComplexTypes, amelyek műveleteket (például "Top N"), különböző összesítéseket vagy ablakkezelő műveleteket ágyaznak be.
+
+További hibaelhárítási lépésekért lásd: [működése OutOfMemoryError-kivételek Apache Spark az Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
 ## <a name="optimize-data-serialization"></a>Az adatszerializálás optimalizálása
 
@@ -193,7 +197,11 @@ Az egyidejű lekérdezések futtatásakor vegye figyelembe a következőket:
 3. Lekérdezések terjesztése párhuzamos alkalmazások között.
 4. A méretet a próbaverziós futtatások és az előző tényezők, például a GC terhelése alapján módosíthatja.
 
-A lekérdezés teljesítményének figyelése kiugró vagy egyéb teljesítménnyel kapcsolatos problémák esetén, az Idősor nézet, az SQL Graph, a feladatok statisztikái és így tovább. Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez gyakran előfordul a nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A `conf: spark.speculation = true`használatával is engedélyezheti a feladatok spekulációs végrehajtását.
+További információ a végrehajtók konfigurálásáról a Ambari használatával: [Apache Spark Settings-Spark végrehajtók](apache-spark-settings.md#configuring-spark-executors).
+
+A lekérdezés teljesítményének figyelése kiugró vagy egyéb teljesítménnyel kapcsolatos problémák esetén, az Idősor nézet, az SQL Graph, a feladatok statisztikái és így tovább. A (z) és a Spark-előzményeket használó Spark-feladatok hibakeresésével kapcsolatos információkért lásd: [Apache Spark Azure HDInsight futó feladatok hibakeresése](apache-spark-job-debugging.md). A fonal idővonal-kiszolgálójának használatáról a következő témakörben talál további információt: [Apache HADOOP fonalak alkalmazási naplói](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+
+Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez gyakran előfordul a nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A `conf: spark.speculation = true`használatával is engedélyezheti a feladatok spekulációs végrehajtását.
 
 ## <a name="optimize-job-execution"></a>Feladatok végrehajtásának optimalizálása
 

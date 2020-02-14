@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961598"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205747"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Felügyelt lemezek
 
 **Mi az Azure Managed Disks?**
 
@@ -33,7 +33,7 @@ Igen. Minden tranzakcióért díjat számítunk fel. További tájékoztatás a 
 
 **Standard szintű felügyelt lemez esetén a lemezre vagy a lemez kiosztott kapacitására vonatkozó adatok tényleges mérete után kell díjat fizetni?**
 
-A fizetendő díj az üzembe helyezett lemez kapacitásától függően változik. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
+A díjat a lemez kiépített kapacitása alapján számítjuk fel. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
 **Miben különbözik a prémium szintű felügyelt lemezek díjszabása a nem felügyelt lemezekkel?**
 
@@ -148,7 +148,7 @@ Prémium SSD, standard SSD és standard szintű HDD-támogatási Pillanatképek.
 **Mik azok az Azure Disk Reservations?**
 A lemezes foglalás az a lehetőség, hogy egy évig előre megvásárolja a lemezes tárolást, ami csökkenti a teljes költségeket. Az Azure-lemezek foglalásával kapcsolatos részletekért tekintse meg a tárgyat ismertető cikket: a [foglalási kedvezményt az Azure diskre alkalmazza](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Milyen lehetőségeket kínál az Azure Disk foglalás?** Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett egyetlen összegben, előre kifizetheti a díjat, vagy havidíjas fizetést választhat. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj. 
+**Milyen lehetőségeket kínál az Azure Disk foglalás?** Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett dönthet úgy is, hogy egyszeri, előzetes fizetési vagy havi fizetéssel fizet. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj. 
 
 A foglalások lemezek formájában, nem kapacitással történnek. Más szóval, ha P80 (32 TiB) lemezt foglal le, egyetlen P80-lemezt kap, akkor az adott foglalást nem lehet két kisebb P70 (16 TiB) lemezre osztani. Természetesen a lehető legtöbb vagy kevés lemezt is lefoglalhatja, többek között két külön P70 (16 TiB) lemezt.
 
@@ -160,6 +160,44 @@ Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. 
 
 **Mi történik, ha az Azure-lemezek foglalása lejár?**    
 Az e-mail-értesítéseket a lejárat előtt 30 nappal, a lejárati dátum után pedig újra megkapja. Ha a foglalás lejár, a telepített lemezek továbbra is futni fognak, és az utólagos elszámolású [díjszabással](https://azure.microsoft.com/pricing/details/managed-disks/)számolunk fel díjat.
+
+### <a name="azure-shared-disks"></a>Azure-beli megosztott lemezek
+
+**Támogatottak-e a megosztott lemezek szolgáltatás nem felügyelt lemezek vagy Blobok esetén?**
+
+Nem, csak a prémium szintű SSD által felügyelt lemezek esetében támogatott.
+
+**Mely régiók támogatják a megosztott lemezeket?**
+
+Jelenleg csak az USA nyugati középső régiója.
+
+**Használhatók-e a megosztott lemezek operációsrendszer-lemezként?**
+
+Nem, a megosztott lemezek csak adatlemezek esetén támogatottak.
+
+**Milyen méretű lemezek támogatják a megosztott lemezeket?**
+
+Csak a P15 vagy nagyobb támogatást biztosító SSD-k támogatják a megosztott lemezeket.
+
+**Ha van meglévő prémium SSD-je, Engedélyezem a megosztott lemezeket?**
+
+Az API 2019-07-01-es vagy újabb verziójával létrehozott összes felügyelt lemez engedélyezheti a megosztott lemezeket. Ehhez le kell választania a lemezt az összes olyan virtuális gépről, amelyhez hozzá van csatolva. Ezután szerkessze a lemez `maxShares` tulajdonságát.
+
+**Ha már nem szeretném használni a lemezt megosztott módban, hogyan lehet letiltani?**
+
+Válassza le a lemezt az összes olyan virtuális gépről, amelyhez hozzá van csatolva. Ezután szerkessze a maxShare tulajdonságot a lemezen az 1 értékre.
+
+**Át lehet méretezni egy megosztott lemezt?**
+
+Igen.
+
+**Engedélyezhető az írási gyorssegéd olyan lemezen, amelyen engedélyezve vannak a megosztott lemezek is?**
+
+Nem.
+
+**Engedélyezhető a gazdagép gyorsítótárazása olyan lemez esetében, amelyen engedélyezve van a megosztott lemez?**
+
+Az egyetlen támogatott gazdagép-gyorsítótárazási beállítás a "None".
 
 ## <a name="ultra-disks"></a>Ultra-lemezek
 
@@ -246,7 +284,7 @@ Az standard SSD-lemezek sablonnal történő létrehozásával kapcsolatos péld
 
 **Átválthatom a meglévő lemezeket standard SSDre?**
 Igen. Tekintse át az [Azure Managed Disks Storage standard és Premium közötti átalakítását, és fordítva](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a Managed Disks átalakítására vonatkozó általános irányelveket. Továbbá a következő érték használatával frissítse a lemez típusát standard SSDra.
-– AccountType StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Milyen előnyökkel jár a standard SSD lemezek használata a HDD helyett?**
 Standard SSD lemezek jobb késést, következetességet, rendelkezésre állást és megbízhatóságot biztosítanak a HDD-lemezekhez képest. Az alkalmazás munkaterhelései sokkal simábban futnak a standard SSD miatt. Vegye figyelembe, prémium SSD lemezek a legtöbb IO-igényes éles számítási feladathoz ajánlott megoldás.
@@ -257,7 +295,7 @@ Nem, a standard SSD lemezek csak Managed Disksként érhetők el.
 **Standard SSD lemezek támogatják az "egypéldányos VM SLA" szolgáltatást?**
 Nem, a standard SSD-k nem rendelkeznek egyetlen példányú VM SLA-val. Az Egypéldányos VM SLA-hoz prémium SSD lemezeket használjon.
 
-## <a name="migrate-to-managed-disks"></a>Áttérés a Managed Disks szolgáltatásra
+## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
 
 **Van-e hatással az áttelepítés a Managed Disks teljesítményére?**
 

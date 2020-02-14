@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157907"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201849"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
 
@@ -61,9 +61,9 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, [A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok](#faq) című részben talál.
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="powershell"></a>A Azure PowerShell használata
 
-A gyakorlat megkezdése előtt töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. A legtöbb lépésben a portált használjuk, de a PowerShell használatával kell létrehoznia a virtuális hálózatok közötti kapcsolatokat. A kapcsolatok nem hozhatók létre a Azure Portal használatával.
+A legtöbb lépésben a portált használjuk, de a PowerShell használatával kell létrehoznia a virtuális hálózatok közötti kapcsolatokat. A kapcsolatok nem hozhatók létre a Azure Portal használatával. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>1. lépés – Az IP-címtartományok megtervezése
 
@@ -209,37 +209,34 @@ Ha a Azure Portal klasszikus virtuális hálózatok hoz létre, a megtekintett n
 
 A következő lépésekben csatlakozni fog az Azure-fiókjához, és letölti és megtekinti a hálózati konfigurációs fájlt a kapcsolatokhoz szükséges értékek beszerzéséhez.
 
-1. Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+1. Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információ: [a Azure PowerShell használata](#powershell).
 
-2. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   Keresse meg a fiókot az előfizetésekben.
+2. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. Az alábbi példák segítséget nyújtanak a kapcsolódáshoz. Ezeket a parancsokat helyileg kell futtatni a PowerShell Service Management modul használatával. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
+3. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
 
    ```powershell
    Add-AzureAccount
    ```
-3. Exportálja és tekintse meg a hálózati konfigurációs fájlt. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a rendszer a **C:\AzureNet**exportálja.
+4. Keresse meg a fiókot az előfizetésekben.
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. Exportálja és tekintse meg a hálózati konfigurációs fájlt. Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ebben a példában a hálózati konfigurációs fájlt a rendszer a **C:\AzureNet**exportálja.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a virtuális hálózatok és a webhelyek nevét. Ezek a nevek a kapcsolatok létrehozásakor lesznek használva.<br>A VNet nevei a **VirtualNetworkSite neve =**<br>A helyek nevei a **LocalNetworkSiteRef neve =**
+7. Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a virtuális hálózatok és a webhelyek nevét. Ezek a nevek lesznek a kapcsolatok létrehozásakor használt nevek.<br>A VNet nevei a **VirtualNetworkSite neve =**<br>A helyek nevei a **LocalNetworkSiteRef neve =**
 
 ## <a name="createconnections"></a>8. lépés – a VPN Gateway-kapcsolatok létrehozása
 
@@ -273,7 +270,7 @@ A példákban figyelje meg, hogy a megosztott kulcs pontosan ugyanaz. A megoszto
 ## <a name="faq"></a>VNet – VNet megfontolások klasszikus virtuális hálózatok
 * A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben.
 * A virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban (helyeken).
-* A felhőszolgáltatás és a terheléselosztási végpont nem ívelhet át több virtuális hálózaton, akkor sem, ha ezek össze vannak kapcsolva.
+* A felhőalapú szolgáltatás vagy egy terheléselosztási végpont nem terjedhet ki a virtuális hálózatok között még akkor sem, ha azok össze vannak kapcsolva.
 * Több virtuális hálózat összekapcsolása nem igényel VPN-eszközöket.
 * A VNet – VNet támogatja az Azure-beli virtuális hálózatok csatlakoztatását. Nem támogatja a virtuális hálózatokra telepített virtuális gépek és felhőalapú szolgáltatások összekapcsolását.
 * A VNet – VNet dinamikus útválasztási átjárók szükségesek. Az Azure statikus útválasztási átjárók nem támogatottak.

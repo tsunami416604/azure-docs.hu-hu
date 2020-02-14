@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637335"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191219"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: Távoli fájl kódolása URL-cím alapján és stream a video-.NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET
 
 Ebből az oktatóanyagból megtudhatja, hogy milyen egyszerűen kódolhatja és indíthatja el a streaming-videókat számos különböző böngészőn és eszközön a Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
@@ -34,7 +34,7 @@ Az oktatóanyag végére egy videót is továbbíthat.
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
-- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
@@ -47,13 +47,13 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
 
 A minta az [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) mappában található.
 
-Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az [API](access-api-cli-how-to.md)-k eléréséhez kapott hitelesítő adatokkal.
+Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az API-k [eléréséhez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
 
 A minta a következő műveleteket hajtja végre:
 
 1. Létrehoz egy **átalakítót** (először ellenőrzi, hogy létezik-e a megadott átalakító). 
-2. Létrehozza a kódolási **feladatok**kimenetéhez használt kimeneti objektumot.
-3. Egy HTTPSURL-cím alapján hozza létre a feladathoz tartozó bemenetet.
+2. Létrehozza a kódolási **feladatok** **kimenetéhez használt kimeneti objektumot** .
+3. Egy HTTPS URL-cím alapján hozza létre a **feladathoz**tartozó bemenetet.
 4. Elküldi a kódolási **feladatot** a korábban létrehozott bemenet és kimenet használatával.
 5. Ellenőrzi a feladat állapotát.
 6. Adatfolyam- **keresőt**hoz létre.
@@ -61,14 +61,14 @@ A minta a következő műveleteket hajtja végre:
 
 A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse meg az [ebben a forrásfájlban](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) található megjegyzéseket.
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Az alkalmazás futtatásakor megjelennek a videó különböző protokollokkal való lejátszására szolgáló URL-ek. 
 
 1. Az *EncodeAndStreamFiles* alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 2. Válassza az Apple **HLS** protokollját (a vége *manifest(format=m3u8-aapl)* ), és másolja a streamelési URL-címet a konzolról.
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![Kimenet](./media/stream-files-tutorial-with-api/output.png)
 
 A minta [forráskódjában](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) láthatja az URL felépítését. A létrehozásához össze kell fűznie a streamelési végpont gazdanevét és a streamelési lokátor elérési útját.  
 
@@ -105,13 +105,13 @@ A [fájlok feltöltésével, kódolásával és streamelésével](stream-files-t
 
 ### <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd [](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode): hibakódok.
+Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Több szál használata
 
 Az Azure Media Services v3 SDK-k nem szálbiztosak. Többszálas alkalmazások használatakor minden szálhoz ajánlott létrehozni egy új AzureMediaServicesClient objektumot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

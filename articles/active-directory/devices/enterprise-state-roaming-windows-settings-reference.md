@@ -1,180 +1,189 @@
 ---
-title: A Windows 10 roaming beállítások referenciája |} A Microsoft Docs
-description: Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját.
+title: Windows 10 barangolási beállítások referenciája – Azure Active Directory
+description: A Windows 10-es verzióban az ESR-ben barangoló vagy biztonsági mentésre kerülő beállítások
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481810"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194330"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
-Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
 
-## <a name="devices-and-endpoints"></a>Eszközök és a végpontok
-Az alábbi táblázat összefoglalja azokat az eszközöket és a szinkronizálás, a biztonsági mentési és által támogatott fióktípusok, és állítsa vissza a Windows 10-keretrendszer.
+A következő lista felsorolja azokat a beállításokat, amelyek a Windows 10 rendszerben barangolnak vagy biztonsági mentést végeznek. 
 
-| Fiók típusa és a művelet | Asztali | mobil |
+## <a name="devices-and-endpoints"></a>Eszközök és végpontok
+
+A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keretrendszere által támogatott eszközök és fióktípus összefoglalását a következő táblázat tartalmazza.
+
+| Fiók típusa és művelet | Asztal | Mobiltelefon |
 | --- | --- | --- |
 | Azure Active Directory: sync |Igen |Nem |
-| Az Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
+| Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
 | Microsoft-fiók: szinkronizálás |Igen |Igen |
 | Microsoft-fiók: biztonsági mentés/visszaállítás |Nem |Igen |
 
-## <a name="what-is-backup"></a>Mi a biztonsági mentési?
-Windows beállítások általában alapértelmezés szerint szinkronizálja, de az egyes beállítások csak készül biztonsági másolat, például az eszközön telepített alkalmazások listáját. Biztonsági mentés: a mobileszközök csak a és a jelenleg nem érhető el a felhasználók számára Enterprise State Roaming. Biztonsági mentés Microsoft-fiókot használ, és a beállítások és az alkalmazás adatokat tárolja a OneDrive-bA. Ha egy felhasználó letiltja az eszközön a gépház alkalmazás szinkronizálása, általában Szinkronizáló alkalmazásadatok csak biztonsági mentési válik. Biztonsági mentési adatok csak a visszaállítási művelet során az első futtatási élmény az új eszköz keresztül érhető el. Biztonsági másolatok is tiltható le az eszközbeállításokban és kezelhető és törli a felhasználó OneDrive-fiókon keresztül.
+## <a name="what-is-backup"></a>Mi az a biztonsági mentés?
 
-## <a name="windows-settings-overview"></a>Windows-beállítások – áttekintés
-A következő beállítások csoportok szinkronizálását a Windows 10-es eszközök engedélyezése vagy letiltása a végfelhasználók számára érhetők el.
+A Windows-beállítások általában alapértelmezés szerint szinkronizálhatók, de egyes beállítások csak a biztonsági mentésre kerülnek, például az eszközön telepített alkalmazások listájára. A biztonsági mentés csak a mobileszközök számára lehetséges, és jelenleg nem érhető el Enterprise State Roaming felhasználók számára. A Backup egy Microsoft-fiók használ, és tárolja a beállításokat és az alkalmazásadatok a OneDrive. Ha a felhasználó a beállítások alkalmazás használatával letiltja a szinkronizálást az eszközön, a szokásos módon szinkronizált alkalmazásadatok csak biztonsági mentést készítenek. A biztonsági mentési információ csak a visszaállítási művelettel érhető el az új eszköz első futtatási élménye során. A biztonsági mentések az eszközbeállítások használatával letilthatók, és a felhasználó OneDrive fiókján keresztül kezelhetők és törölhetők.
 
-* Téma: asztali háttérkép, felhasználói csempe, tálca pozícióját, stb. 
-* Az Internet Explorer beállításainak: böngészési előzményeket beírt URL-címeket, a Kedvencek, stb. 
-* Jelszó: Windows hitelesítőadat-kezelő, beleértve a Wi-Fi profilok 
-* Nyelvi beállítások: helyesírás-ellenőrzés szótárban, a rendszer nyelvi beállítások 
-* Könnyű elérés: Narrátor, Nagyító, képernyő-billentyűzet 
-* Egyéb Windows-beállítások: tekintse meg a Windows-beállítások részletei
-* A Microsoft Edge böngésző beállításai: A Microsoft Edge-beli Kedvencek, olvassa és egyéb beállítások
+## <a name="windows-settings-overview"></a>Windows-beállítások áttekintése
+
+A következő beállítási csoportok érhetők el a végfelhasználók számára a beállítások szinkronizálásának engedélyezéséhez vagy letiltásához a Windows 10-es eszközökön.
+
+* Téma: asztali háttér, felhasználói csempe, tálca pozíciója stb. 
+* Internet Explorer beállításai: böngészési előzmények, beírt URL-címek, kedvencek stb. 
+* Jelszavak: Windows Hitelesítőadat-kezelő, beleértve a Wi-Fi profilokat 
+* Nyelvi beállítások: helyesírási szótár, rendszernyelv beállításai 
+* Könnyű hozzáférés: Narrátor, képernyő-billentyűzet, nagyító 
+* Egyéb Windows-beállítások: lásd a Windows-beállítások részleteit.
+* Microsoft Edge böngésző beállítása: Microsoft Edge kedvencek, olvasási lista és egyéb beállítások
 
 ![Beállítások szinkronizálása](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-A Microsoft Edge-böngészőbeállítások (Kedvencek, olvassa) csoportszinkronizálását is engedélyezhető vagy letiltható a végfelhasználók számára – Microsoft Edge böngésző beállításainak menüpont.
+> [!NOTE]
+> Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)című cikket.
+
+A Microsoft Edge böngésző beállítási csoportjának (Kedvencek, olvasások listája) szinkronizálása engedélyezhető vagy letiltható a végfelhasználók számára a Microsoft Edge böngésző beállításai menüpontban.
 
 ![Fiók](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
-A Windows 10-es verzió 1803 vagy újabb, az Internet Explorer beállítási csoport (Kedvencek, beírt URL-címek) szinkronizálása is engedélyezhető vagy letiltható a végfelhasználók számára az Internet Explorer beállításainak menüelem keresztül. 
+A Windows 10 1803-es vagy újabb verziója esetén az Internet Explorer beállítási csoport (Kedvencek, begépelt URL-címek) szinkronizálása engedélyezhető vagy letiltható a végfelhasználók számára az Internet Explorer beállítások menüpontban. 
 
 ![Beállítások](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows-beállítások részletei
-Az alábbi táblázatban más bejegyzéseket a csoport oszlop hivatkozik beállításokat, amelyeket le lehet tiltani a beállítások > fiókok > Beállítások szinkronizálása > Other Windows-beállításait. 
 
-Belső bejegyzéseket a csoport oszlopban tekintse meg a beállításokat és alkalmazásokat, amelyek csak letiltható az alkalmazáson belül, vagy tiltsa le a szinkronizálást a teljes eszköz mobileszköz-felügyelet (MDM) vagy a csoportházirend-beállítások szinkronizálása.
-Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog tartozni.
+A következő táblázatban a Settings Group (beállítások) csoport oszlopában található egyéb bejegyzések a beállítások > fiókok > a beállítások szinkronizálása > más Windows-beállítások lehetőségre kattintva letilthatók. 
 
-| Beállítások | Asztali | mobil | Csoport |
+A beállítások csoport oszlop belső bejegyzései olyan beállításokat és alkalmazásokat mutatnak be, amelyek csak az alkalmazáson belüli szinkronizálásból, vagy a teljes eszköz szinkronizálásának a mobileszköz-kezelés (MDM) vagy a Csoportházirend beállítások használatával történő letiltásával érhetők el.
+A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
+
+| Beállítások | Asztal | Mobiltelefon | Csoport |
 | --- | --- | --- | --- |
-| **Fiókok**: fiók kép |Szinkronizálás |X |Téma |
+| **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |
-| **Speciális mobil szélessávú**: Internetkapcsolat megosztása a hálózat nevét (lehetővé teszi, hogy a Bluetooth használatával mobil Wi-Fi elérési pontokhoz történő automatikus észlelés) |X |X |Jelszavak |
-| **Az alkalmazásadatok**: egyéni alkalmazásokat is szinkronizálja az adatokat |szinkronizálási biztonsági mentés |szinkronizálási biztonsági mentés |Belső |
-| **Alkalmazáslista**: a telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
-| **Bluetooth**: az összes Bluetooth-beállítások |X |X | |
-| **Parancssor**: Parancsot a parancssorba "Alapértelmezett" beállítások |Szinkronizálás |X |Belső |
-| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |password |
-| **Dátum, idő és régióját**: automatikus idő (Internet idő szinkronizálása) |Szinkronizálás |Szinkronizálás |language |
-| **Dátum, idő és régióját**: 24 órás formátumban |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: dátum és idő |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: időzóna | |X |language |
-| **Dátum, idő és régióját**: a nyári időszámítás |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: ország/régió |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: hét első napja |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: régió formátum (területi beállítás) |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: rövid dátum |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: hosszú dátum |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: rövid idő |Szinkronizálás |X |language |
-| **Dátum, idő és régióját**: hosszú idő |Szinkronizálás |X |language |
-| **Asztal személyre szabása**: asztali téma (háttérben, systémovou barvou, alapértelmezett rendszer hangok, képernyőkímélő) |Szinkronizálás |X |Téma |
-| **Asztal személyre szabása**: diavetítés háttérkép |Szinkronizálás |X |Téma |
-| **Asztal személyre szabása**: tálca beállítások (pozícióját, automatikus elrejtése, stb.) |Szinkronizálás |X |Téma |
-| **Asztal személyre szabása**: start képernyő elrendezése |X |biztonsági mentés | |
-| **Eszközök**: megosztott nyomtatókhoz, kapcsolódik |X |X |egyéb |
-| **A Microsoft Edge böngésző**: könyvjelzőkhöz |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: Kedvencek |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: az első hely <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: beírt URL-címek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: Kedvencek sáv beállítások <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: a kezdőlap gombjának megjelenítése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: előugró ablakok letiltása <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: Mit tegyen az egyes letöltési kérdezzen <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: elérhetővé teheti a jelszavak mentése egyszerű <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: küldési kérelmek nyomon követése nem <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: űrlap bejegyzéseinek mentése <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: keresés és a hely javaslatok megjelenítése a szöveg beírása közben <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: cookie-kat szabályozó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: lehetővé teszik a védett médiafájlok licencek mentse az eszköz helyek <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **A Microsoft Edge böngésző**: beállítás képernyőolvasó <sup> [[1]](#footnote-1)</sup> |Szinkronizálás |Szinkronizálás |Belső |
-| **Kontrasztos**: Be- vagy kikapcsolása |Szinkronizálás |X |könnyű elérés |
-| **Kontrasztos**: Témák beállításai |Szinkronizálás |X |könnyű elérés |
-| **Az Internet Explorer**: Nyissa meg a lapok (URL-cím és cím) |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: könyvjelzőkhöz |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: beírt URL-címek |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: böngészési előzmények |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: Kedvencek |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: kizárt URL-címek |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: kezdőlapján |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Az Internet Explorer**: tartomány javaslatok |Szinkronizálás |Szinkronizálás |Internet Explorer |
-| **Billentyűzet**: felhasználók is kapcsolja be/ki képernyő-billentyűzet |Szinkronizálás |X |könnyű elérés |
-| **Billentyűzet**: kapcsolja be a kiemelt Igen (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Billentyűzet**: kapcsolja be a szűrő kulcsok (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Billentyűzet**: kapcsolja be az állapotjelző (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Az Internet Explorer**: tartomány nyelv: Kínai (CHS) QWERTY - engedélyezése helyi tanulási |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - enable dinamikus jelölt rangsorolása |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - char-set egyszerűsített kínai |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - char-set kínai (hagyományos) |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY – intelligens átírhatók |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Nyelvi**: CHS QWERTY – intelligens párok |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Nyelvi**: CHS QWERTY – teljes átírhatók |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - dupla átírhatók |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - olvasó automatikus javítás |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - C/E kapcsoló kulcsot, a SHIFT billentyűt |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS QWERTY - C/E kapcsoló kulcs, Ctrl |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS WUBI – egyetlen karakter beviteli mód |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS WUBI - megjelenítése a fennmaradó kódolási pályázó |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHS WUBI – 4 kódolási érvénytelen hangjelzés |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: CHT Bopomofo - CJK Ext-A belefoglalása |Szinkronizálás |X |Nyelv |
-| **Nyelvi**: A japán nyelvű Írásjegybevivő – prediktív beírásával és az egyéni szavakat |Szinkronizálás |Szinkronizálás |Nyelv |
-| **Nyelvi**: Koreai (KOR) időpontja |X |X |Nyelv |
-| **Nyelvi**: a kézírás-felismerés |X |X |Nyelv |
-| **Nyelvi**: nyelv profil |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Nyelvi**: helyesírás-ellenőrzés – az automatikus javítás és a kiemelés elírások |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Nyelvi**: billentyűzetek listája |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Zárolási képernyő**: összes zárolási képernyő beállításai |X |X | |
-| **A Nagyító**: be- vagy kikapcsolása (fő váltógomb) |X |X |könnyű elérés |
-| **A Nagyító**: szín invertálásának engedélyezése vagy letiltása (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **A Nagyító**: nyomon követése – kövesse a billentyűzetfókusz |Szinkronizálás |X |könnyű elérés |
-| **A Nagyító**: nyomon követése – hajtsa végre az egérmutatót |Szinkronizálás |X |könnyű elérés |
-| **A Nagyító**: kezdődik, amikor a felhasználók bejelentkezhetnek (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Egér**: egérmutatót méretének módosítása |Szinkronizálás |X |egyéb |
-| **Egér**: egérmutatót színének módosítása |Szinkronizálás |X |egyéb |
-| **Egér**: a többi beállítás |X |X | |
-| **A Narrátor**: Gyorsindítás |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: a felhasználók megváltoztathatják a Narrátor, és beszéljen felébresztve |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása a Narrátor mutatók gyakori elemek olvasása (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása e is beírt karakterek nélkül (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: felhasználók is be- és kikapcsolása e azok hallható beírt szavakat (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: Narrátor következő beszúrása a kurzor rendelkezik (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: engedélyezése a Narrátor kurzor visual kiemelés (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: hangjelzések lejátszása (az alapértelmezés szerint) |Szinkronizálás |X |könnyű elérés |
-| **A Narrátor**: a touch billentyűzet aktiválása, ha Ön helyezheti át az ujját (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Könnyű elérés**: állítsa be a parancssorablakba vastagsága |Szinkronizálás |X |könnyű elérés |
-| **Könnyű elérés**: távolítsa el a háttérképeket (alapértelmezés szerint kikapcsolva) |Szinkronizálás |X |könnyű elérés |
-| **Energiagazdálkodási és alvási**: összes beállítás |X |X | |
-| **Indítsa el a képernyőn személyre szabása**: hangsúlyos színe (csak phone) |X |Szinkronizálás |Téma |
-| **Írja be**: helyesírási szótár |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: automatikus javítás rosszul írta be a word |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: kijavítsa a hibásan leírt szavakat kiemelése |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: szöveg javaslatok megjelenítése a szöveg beírása közben |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: Adjon hozzá egy szóközt, egy szövegjavaslat kiválasztása után |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: vegyen fel egy időtartamot követően I koppinthat a szóköz |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: minden mondat első betűje |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: csupa nagybetűssé akkor használja, ha szeretnék koppinthat shift billentyűt |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: kulcs hang lejátszása a szöveg beírása közben |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Írja be**: data individuálního nastavení Pro érintőbillentyűzet |Szinkronizálás |biztonsági mentés |Nyelv |
-| **Wi-Fi**: Wi-Fi profilok (csak WPA) |Szinkronizálás |Szinkronizálás |Jelszavak |
+| **Speciális mobil szélessáv**: internetkapcsolat megosztási hálózatának neve (lehetővé teszi a mobil Wi-Fi elérési pontok automatikus észlelését Bluetooth-kapcsolaton keresztül) |X |X |Jelszavak |
+| **Alkalmazásadatok: az**egyes alkalmazások szinkronizálhatja az adatszinkronizálást |biztonsági másolat szinkronizálása |biztonsági másolat szinkronizálása |belső |
+| **Alkalmazások listája**: telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
+| **Bluetooth**: minden Bluetooth-beállítás |X |X | |
+| **Parancssor**: parancssor "Defaults" beállítások |szinkronizálás |X |belső |
+| **Hitelesítő adatok**: hitelesítő adatok zárolása |szinkronizálás |szinkronizálás |jelszó |
+| **Dátum, idő és régió**: automatikus idő (internetes idő szinkronizálása) |szinkronizálás |szinkronizálás |language |
+| **Dátum, idő és régió**: 24 órás óra |szinkronizálás |X |language |
+| **Dátum, idő és régió**: dátum és idő |szinkronizálás |X |language |
+| **Dátum, idő és régió**: időzóna | |X |language |
+| **Dátum, idő és régió**: nyári megtakarítási idő |szinkronizálás |X |language |
+| **Dátum, idő és régió**: ország/régió |szinkronizálás |X |language |
+| **Dátum, idő és régió**: a hét első napja |szinkronizálás |X |language |
+| **Dátum, idő és régió**: régió formátuma (területi beállítás) |szinkronizálás |X |language |
+| **Dátum, idő és régió**: rövid dátum |szinkronizálás |X |language |
+| **Dátum, idő és régió**: hosszú dátum |szinkronizálás |X |language |
+| **Dátum, idő és régió**: rövid idő |szinkronizálás |X |language |
+| **Dátum, idő és régió**: hosszú idő |szinkronizálás |X |language |
+| **Asztal személyre szabása**: asztali téma (háttér, rendszerszín, alapértelmezett rendszerhangok, képernyőkímélő) |szinkronizálás |X |Téma |
+| **Asztal személyre szabása**: diavetítés háttérképe |szinkronizálás |X |Téma |
+| **Asztal személyre szabása**: tálca beállításai (pozíció, automatikus elrejtés stb.) |szinkronizálás |X |Téma |
+| **Asztal személyre szabása**: kezdőképernyő elrendezése |X |biztonsági mentés | |
+| **Eszközök**: megosztott nyomtatók, amelyekhez kapcsolódott |X |X |egyéb |
+| **Microsoft Edge böngésző**: olvasások listája |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: Kedvencek |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: legnépszerűbb helyek <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: beírt URL-címek <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: Kedvencek sáv beállításai <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: a Kezdőlap gomb <sup> [[1]](#footnote-1) megjelenítése</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: előugró ablakok tiltása <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: Kérdezzen rá, mi a teendő az egyes letöltésekkel <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: a jelszavak mentésére szolgáló ajánlat <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: a nem követett kérelmek küldése <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: űrlapok bejegyzéseinek mentése <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: a keresés és a webhely javaslatainak megjelenítése I Type <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: cookie-k preferencia <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: lehetővé teszi a webhelyek számára a védett adathordozó-licencek mentését az eszközön <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Microsoft Edge böngésző**: képernyőolvasó-beállítás <sup> [[1]](#footnote-1)</sup> |szinkronizálás |szinkronizálás |belső |
+| **Kontrasztos megjelenítés**: be vagy ki |szinkronizálás |X |könnyű hozzáférés |
+| **Kontrasztos**: téma beállításai |szinkronizálás |X |könnyű hozzáférés |
+| **Internet Explorer**: lapok megnyitása (URL és cím) |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: olvasások listája |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: beírt URL-címek |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: böngészési előzmények |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: Kedvencek |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: kizárt URL-címek |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: kezdőlapok |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Internet Explorer**: tartományi javaslatok |szinkronizálás |szinkronizálás |Internet Explorer |
+| **Billentyűzet**: a felhasználók be-és kikapcsolhatják a képernyő-billentyűzetet |szinkronizálás |X |könnyű hozzáférés |
+| **Billentyűzet**: Sticky Yes (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Billentyűzet**: szűrési kulcsok bekapcsolása (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Billentyűzet**: a váltási kulcsok bekapcsolása (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Internet Explorer**: tartomány nyelve: kínai (CHS) QWERTY – önálló tanulás engedélyezése |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY – dinamikus jelölt rangsor engedélyezése |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY-char-set egyszerűsített kínai |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY-char-set hagyományos kínai |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY – fuzzy pinjin |szinkronizálás |biztonsági mentés |Nyelv |
+| **Nyelv**: CHS QWERTY-fuzzy pár |szinkronizálás |biztonsági mentés |Nyelv |
+| **Nyelv**: CHS QWERTY – teljes pinjin |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY – dupla pinjin |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY – automatikus javítás olvasása |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY-C/E kapcsoló kulcsa, eltolás |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS QWERTY-C/E kapcsoló kulcsa, CTRL |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS Wubi – egyetlen karakteres beviteli mód |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS Wubi – a jelölt fennmaradó kódolásának megjelenítése |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHS Wubi-Beep if 4 – kódolás érvénytelen |szinkronizálás |X |Nyelv |
+| **Nyelv**: CHT bopomofo – include CJK ext-A |szinkronizálás |X |Nyelv |
+| **Nyelv**: Japán IME – prediktív gépelés és egyéni szavak |szinkronizálás |szinkronizálás |Nyelv |
+| **Nyelv**: koreai (kor) IME |X |X |Nyelv |
+| **Nyelv**: kézírás-felismerés |X |X |Nyelv |
+| **Nyelv**: nyelvi profil |szinkronizálás |biztonsági mentés |Nyelv |
+| **Nyelv**: helyesírás – automatikus javítás és kiemelési hibák |szinkronizálás |biztonsági mentés |Nyelv |
+| **Nyelv**: billentyűzetek listája |szinkronizálás |biztonsági mentés |Nyelv |
+| **Zárolási képernyő**: az összes zárolási képernyő beállításai |X |X | |
+| **Nagyító**: be vagy ki (fő váltógomb) |X |X |könnyű hozzáférés |
+| **Nagyító**: inverziós szín be-vagy kikapcsolása (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Nagyító**: követés – a billentyűzet fókuszának követése |szinkronizálás |X |könnyű hozzáférés |
+| **Nagyító**: követés – az egérmutató követése |szinkronizálás |X |könnyű hozzáférés |
+| **Nagyító**: indítás felhasználói bejelentkezéskor (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Egér**: az egérmutató méretének módosítása |szinkronizálás |X |egyéb |
+| **Egér**: az egérmutató színének módosítása |szinkronizálás |X |egyéb |
+| **Egér**: minden egyéb beállítás |X |X | |
+| **Narrátor**: Gyors indítás |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: a felhasználók módosíthatják a Narrátor beszédét |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: a felhasználók be-és kikapcsolhatják a Narrátor beolvasási ajánlatait az általános elemekhez (alapértelmezés szerint). |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: a felhasználók be-vagy kikapcsolhatják, hogy hallják-e a begépelt karaktereket (alapértelmezés szerint) |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: a felhasználók be-és kikapcsolhatják, hogy tudnak-e begépelt szavakat hallani (alapértelmezés szerint) |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: kurzor beszúrása a narrátorba (alapértelmezés szerint) |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: a Narrátor kurzorának vizuális kiemelésének engedélyezése (alapértelmezés szerint) |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: hangjelek lejátszása (alapértelmezés szerint) |szinkronizálás |X |könnyű hozzáférés |
+| **Narrátor**: kulcsok aktiválása az érintési billentyűzeten az ujját kiemelve (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Egyszerű hozzáférés**: a villogó kurzor vastagságának beállítása |szinkronizálás |X |könnyű hozzáférés |
+| **Könnyű hozzáférés**: háttérképek eltávolítása (alapértelmezés szerint kikapcsolva) |szinkronizálás |X |könnyű hozzáférés |
+| **Energiaellátás és alvó állapot**: minden beállítás |X |X | |
+| **Kezdőképernyő személyre szabása**: ékezetes szín (csak telefonos) |X |szinkronizálás |Téma |
+| **Gépelés**: helyesírási szótár |szinkronizálás |biztonsági mentés |Nyelv |
+| Gépelés: hibásan írt szöveg automatikus **kiírása** |szinkronizálás |biztonsági mentés |Nyelv |
+| **Gépelés**: a hibásan írt szavak kiemelése |szinkronizálás |biztonsági mentés |Nyelv |
+| **Beírás**: szövegbeli javaslatok megjelenítése típusként |szinkronizálás |biztonsági mentés |Nyelv |
+| **Begépelés**: szóköz hozzáadása a szöveges javaslat kiválasztása után |szinkronizálás |biztonsági mentés |Nyelv |
+| **Beírás**: adjon meg egy pontot, miután duplán koppint a szóközre. |szinkronizálás |biztonsági mentés |Nyelv |
+| **Begépelés**: nagybetűssé tétel az egyes mondatok első betűje |szinkronizálás |biztonsági mentés |Nyelv |
+| **Begépelés**: az összes nagybetűs karakterek használata, ha duplán koppintok a SHIFT billentyűre |szinkronizálás |biztonsági mentés |Nyelv |
+| Begépelés: lejátszási kulcs hangok **beírása** |szinkronizálás |biztonsági mentés |Nyelv |
+| **Beírás**: személyre szabási adatainak érintéses billentyűzethez |szinkronizálás |biztonsági mentés |Nyelv |
+| **Wi-Fi**: Wi-Fi profilok (csak WPA) |szinkronizálás |szinkronizálás |Jelszavak |
 
 ###### <a name="footnote-1"></a>1\. lábjegyzet
-Minimális Windows Creators Update (Build 15063) operációsrendszer-verziója támogatott. 
 
-## <a name="next-steps"></a>További lépések
+A Windows Creators Update minimális támogatott operációsrendszer-verziója (Build 15063). 
 
-Áttekintéséhez lásd: [vállalati állapothordozás áttekintése](enterprise-state-roaming-overview.md).
+## <a name="next-steps"></a>Következő lépések
+
+Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe tároló csoportokat egy új 
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901871"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200061"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -63,7 +63,7 @@ A virtuális hálózat határozza meg azt a címtartományt, amelyben egy vagy t
 
 ### <a name="subnet-delegated"></a>Alhálózat (delegált)
 
-Az alhálózatok a virtuális hálózatot különálló, a bennük található Azure-erőforrások által használható címekre osztják. Létrehoz egy vagy több alhálózatot egy virtuális hálózaton belül.
+Alhálózatok, külön címterek használható a virtuális hálózat szegmentáljon az Azure-erőforrások bennük. Létrehoz egy vagy több alhálózatot egy virtuális hálózaton belül.
 
 A tárolók csoportjaihoz használt alhálózat csak tároló csoportokat tartalmazhat. Amikor először telepít egy tároló csoportot egy alhálózatra, az Azure delegálja az alhálózatot Azure Container Instances. A delegálás után az alhálózat csak a tároló csoportok esetében használható. Ha a tárolói csoportokon kívül más erőforrásokat is telepít egy delegált alhálózatra, a művelet sikertelen lesz.
 
@@ -77,7 +77,7 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 
 ![Virtuális hálózaton belüli tároló-csoportok][aci-vnet-01]
 
-## <a name="deployment-scenarios"></a>Üzembe helyezési helyzetek
+## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
 Az [az Container Create][az-container-create] paranccsal telepíthet tároló csoportokat egy új virtuális hálózatra, és engedélyezheti az Azure számára a szükséges hálózati erőforrások létrehozását, vagy üzembe helyezését egy meglévő virtuális hálózaton. 
 
@@ -260,7 +260,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Hálózati erőforrások törlése
 
-Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat.
+Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat. A parancsfájl feltételezi, hogy az erőforráscsoport egyetlen hálózati profillal rendelkező egyetlen virtuális hálózatot tartalmaz.
 
 A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törölni kívánt virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport nevére. Frissítse a virtuális hálózat nevét, ha nem a korábban javasolt `aci-vnet` nevet használta. A parancsfájl a bash-rendszerhéjhoz van formázva. Ha inkább egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, akkor ennek megfelelően módosítania kell a változó hozzárendelés és a hozzáférési jogosultságokat.
 
@@ -269,9 +269,11 @@ A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törö
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
+# Assumes one virtual network in resource group
 RES_GROUP=<my-resource-group>
 
 # Get network profile ID
+# Assumes one profile in virtual network
 NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
 
 # Delete the network profile

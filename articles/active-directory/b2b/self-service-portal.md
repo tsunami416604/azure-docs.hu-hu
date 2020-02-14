@@ -5,32 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272108"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195793"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Önkiszolgáló portál Azure AD B2B-együttműködésre való regisztrációhoz
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Önkiszolgáló Azure AD B2B együttműködési regisztrációhoz
 
-Az ügyfelek sokféleképpen hasznát vehetik a végfelhasználók számára az [Azure Portalon](https://portal.azure.com) és az [alkalmazás-hozzáférési panelen](https://myapps.microsoft.com) elérhetővé tett, beépített funkcióknak. A B2B-felhasználók bevezetésének munkafolyamatát azonban szükséges lehet a vállalat igényeinek megfelelően testre szabni. Ez [a meghívó API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) segítségével tehető meg.
+Az ügyfelek sokféleképpen hasznát vehetik a végfelhasználók számára az [Azure Portalon](https://portal.azure.com) és az [alkalmazás-hozzáférési panelen](https://myapps.microsoft.com) elérhetővé tett, beépített funkcióknak. A B2B-felhasználók bevezetésének munkafolyamatát azonban szükséges lehet a vállalat igényeinek megfelelően testre szabni.
 
-A meghívó vállalat esetleg nem tudja előre, hogy kik azok a külső együttműködők, akiknek hozzá kell férniük az erőforrásaihoz. Olyan módszerre van szükség, amellyel a partnervállalatok a meghívó vállalat által kezelt szabályzatok alapján regisztrálhatják magukat. Ez a forgatókönyv valósítható meg az API-k használatával. Van egy [mintaprojekt a GitHubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web), amely éppen ezt teszi.
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>Azure AD-jogosultságok kezelése VÁLLALATKÖZI vendég felhasználói regisztrációhoz
 
-Ez a GitHub-projekt bemutatja, hogyan biztosíthatnak a vállalatok szabályokon alapuló, önkiszolgáló regisztrálási lehetőséget megbízható partnereiknek API-k használatával, az általuk elérhető alkalmazásokat meghatározó szabályokkal. A partner felhasználók akkor kaphatnak hozzáférést az erőforrásokhoz, amikor azokra szükségük van. Mindezt biztonságos módon, anélkül tehetik meg, hogy a meghívó vállalatnak manuálisan kellene regisztrálnia őket. A projekt egyszerűen üzembe helyezhető az Ön által választott Azure-előfizetésben.
+Meghívó szervezetként előfordulhat, hogy nem tudja, hogy az egyes külső közreműködők Mikor férhetnek hozzá az erőforrásaihoz. Az Ön által felügyelt szabályzatoknak megfelelő módon kell megadnia a partnerek vállalatai számára a bejelentkezést. Ha engedélyezni szeretné a más szervezetek felhasználói számára a hozzáférés kérését, és a jóváhagyást a vendég fiókkal kell kiépíteni, és a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez van rendelve, akkor az [Azure ad jogosultság-kezelési](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) szolgáltatással konfigurálhatja azokat a házirendeket, amelyek [a külső felhasználók hozzáférését kezelik](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
 
-## <a name="as-is-code"></a>Módosítás nélküli kód
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B meghívó API
 
-A kód mintaként lett elérhetővé téve, hogy bemutassa az Azure Active Directory B2B meghívó API használatát. Saját fejlesztői csapatának vagy egy partnerének kell módosítania, és ellenőriznie egy éles helyzetben való üzembe helyezés előtt.
+A szervezetek használhatják a [Microsoft Graph meghívó Manager API](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) -t, hogy saját bevezetési tapasztalatokat hozzanak létre a B2B vendég felhasználói számára. Ha önkiszolgáló B2B vendég felhasználói regisztrációt szeretne biztosítani, javasoljuk, hogy használja az [Azure ad-jogosultságok kezelését](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Ha azonban saját felhasználói élményt szeretne létrehozni, a [meghívás API létrehozása](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) lehetőséggel automatikusan elküldheti a testreszabott meghívót a B2B-felhasználónak, például a következőt:. Vagy az alkalmazás használhatja a létrehozási válaszban visszaadott inviteRedeemUrl a saját meghívóját (a választott kommunikációs mechanizmuson keresztül) a meghívott felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [Az Azure AD B2B-együttműködés licencelése](licensing-guidance.md)

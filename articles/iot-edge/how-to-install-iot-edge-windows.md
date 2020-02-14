@@ -9,16 +9,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510005"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186466"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>A Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren
 
-Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Ha egy eszköz konfigurálva van a IoT Edge futtatókörnyezettel, megkezdheti az üzleti logika telepítését a felhőből.
+Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-eszköz. A futtatókörnyezet kis Raspberry Pi-t vagy akkora, mint egy ipari kiszolgáló eszközökön is telepíthető. Miután egy eszközt az IoT Edge-futtatókörnyezet van beállítva, a üzembe helyezése a üzleti logika, hogy a felhőben is elindítható.
 
 További információ a IoT Edge futtatókörnyezetről: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
@@ -29,7 +29,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyekkel Windows-tárolók használa
 >
 > Áthidaló megoldásként használja a `Stop-Service iotedge` parancsot a futó IoT Edge modulok leállításához, mielőtt használja ezeket a Power állapotokat.
 
-A Linux-tárolók használata Windows rendszereken nem ajánlott vagy támogatott éles környezetben a Azure IoT Edge számára. Azonban fejlesztési és tesztelési célokra is használható. További információ: [IoT Edge használata Windows rendszeren Linux-tárolók futtatásához](how-to-install-iot-edge-windows-with-linux.md).
+A Linux-tárolók használata Windows rendszereken nem ajánlott vagy támogatott éles környezetben a Azure IoT Edge számára. Azonban ez használható fejlesztési és tesztelési célra. További információ: [IoT Edge használata Windows rendszeren Linux-tárolók futtatásához](how-to-install-iot-edge-windows-with-linux.md).
 
 További információ a IoT Edge legújabb verziójában található információkról: [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases).
 
@@ -56,18 +56,18 @@ A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tárol�
 ## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge telepítése új eszközre
 
 >[!NOTE]
->Azure IoT Edge szoftvercsomagok a csomagokban (a LICENCek könyvtárában) található licencfeltételek hatálya alá esnek. A csomag használata előtt olvassa el a licencfeltételeket. A csomag telepítése és használata jelenti a jelen feltételek elfogadását. Ha nem fogadja el a licencfeltételeket, ne használja a csomagot.
+>Az Azure IoT Edge szoftvercsomagok feltételei vonatkoznak rá a licencet (a címtárban licenccel) a csomagokban található. Kérjük, olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
 A PowerShell-parancsfájlok letöltik és telepítik a Azure IoT Edge biztonsági démont. A biztonsági démon ezután elindítja az első két futásidejű modult, a IoT Edge ügynököt, amely lehetővé teszi más modulok távoli központi telepítését.
 
 >[!TIP]
 >A IoT Core-eszközök esetében javasoljuk, hogy a telepítési parancsokat RemotePowerShell-munkamenet használatával futtassa. További információ: a [PowerShell használata a Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
 
-Amikor első alkalommal telepíti a IoT Edge futtatókörnyezetet az eszközön, az eszközt egy IoT hub identitásával kell kiépíteni. Egy IoT Edge eszköz manuálisan is kiépíthető a IoT Hub által biztosított eszköz-összekapcsolási karakterlánc használatával. Vagy a Device kiépítési szolgáltatás (DPS) használatával automatikusan kiépítheti az eszközöket, ami hasznos lehet, ha több eszköz is be van állítva. A kiépítési döntéstől függően válassza ki a megfelelő telepítési parancsfájlt.
+Amikor első alkalommal telepíti a IoT Edge futtatókörnyezetet az eszközön, az eszközt egy IoT hub identitásával kell kiépíteni. Egy IoT Edge eszköz manuálisan is kiépíthető a IoT Hub által biztosított eszköz-összekapcsolási karakterlánc használatával. Vagy a Device kiépítési szolgáltatás (DPS) használatával automatikusan kiépítheti az eszközöket, ami hasznos lehet, ha több eszköz is be van állítva. Üzembe helyezési válaszaitól függően válassza ki a megfelelő telepítési parancsfájlt.
 
 A következő szakaszok ismertetik az új eszközön a IoT Edge telepítési parancsfájl általános használati eseteit és paramétereit.
 
-### <a name="option-1-install-and-manually-provision"></a>1\. lehetőség: telepítés és manuális kiépítés
+### <a name="option-1-install-and-manually-provision"></a>1\. lehetőség: Telepítés és a manuális üzembe helyezése
 
 Ebben az első lehetőségben egy IoT Hub által generált **eszköz-kapcsolódási karakterláncot biztosít az eszköz kiépítéséhez** .
 
@@ -75,7 +75,7 @@ Ez a példa egy manuális telepítést mutat be Windows-tárolókkal:
 
 1. Ha még nem tette meg, regisztráljon egy új IoT Edge eszközt, és kérje le az **eszköz csatlakoztatási karakterláncát**. Másolja a kapcsolódási karakterláncot a szakasz későbbi részében való használatra. Ezt a lépést a következő eszközök használatával végezheti el:
 
-   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portalra](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -118,7 +118,7 @@ Ha manuálisan telepít és helyez üzembe egy eszközt, további paraméterek h
 
 További információ ezekről a telepítési lehetőségekről: ugorjon előre az [összes telepítési paraméter](#all-installation-parameters)megismeréséhez.
 
-### <a name="option-2-install-and-automatically-provision"></a>2\. lehetőség: telepítés és automatikus kiépítés
+### <a name="option-2-install-and-automatically-provision"></a>2\. lehetőség: Telepítse és automatikus kiépítése
 
 Ebben a második lehetőségben az eszközt a IoT Hub Device Provisioning Service használatával kell kiépíteni. Adja meg az eszköz kiépítési szolgáltatásának **hatókör-azonosítóját** , valamint az Ön által előnyben részesített [igazolási mechanizmusra](../iot-dps/concepts-security.md#attestation-mechanism)vonatkozó egyéb információkat:
 
@@ -133,14 +133,14 @@ Amikor automatikusan telepít és kiépít egy eszközt, további paramétereket
 
 A telepítési lehetőségekkel kapcsolatos további információkért olvassa el a jelen cikk olvasását, vagy ugorjon az [összes telepítési paraméter](#all-installation-parameters)megismerése elemre.
 
-## <a name="offline-installation"></a>Offline telepítés
+## <a name="offline-or-specific-version-installation"></a>Offline vagy adott verzió telepítése
 
 A telepítés során két fájl töltődik le:
 
 * Microsoft Azure IoT Edge CAB, amely tartalmazza a IoT Edge biztonsági démont (iotedged), a Moby Container Engine-t és a Moby CLI-t.
-* Vizuális C++ Újraterjeszthető csomag (VC Runtime) MSI
+* Vizuális C++ Újraterjeszthető csomag (VC RUNTIME) MSI
 
-A fájlok közül egyet vagy mindkettőt bármikor letöltheti az eszközre, majd a telepítési parancsfájlt a fájlokat tartalmazó könyvtárba irányíthatja. A telepítő először ellenőrzi a könyvtárat, és csak azokat az összetevőket tölti le, amelyek nem találhatók. Ha az összes fájl offline állapotban érhető el, az internetkapcsolat nélkül is telepíthető. Ezzel a funkcióval az összetevők egy adott verzióját is telepítheti.  
+Ha az eszköz a telepítés során offline állapotba kerül, vagy ha a IoT Edge egy adott verzióját szeretné telepíteni, akkor a fájlok közül egyet vagy mindkettőt letöltheti az eszközre. A telepítés ideje alatt a letöltött fájlokat tartalmazó könyvtárban mutasson a telepítési parancsfájlra. A telepítő először ellenőrzi a könyvtárat, és csak azokat az összetevőket tölti le, amelyek nem találhatók. Ha az összes fájl offline állapotban érhető el, az internetkapcsolat nélkül is telepíthető.
 
 A legújabb IoT Edge telepítési fájlokról a korábbi verziók mellett lásd: [Azure IoT Edge kiadások](https://github.com/Azure/azure-iotedge/releases).
 
@@ -151,9 +151,19 @@ Ha offline összetevőkkel szeretné telepíteni a szolgáltatást, használja a
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-Használhatja az offline telepítési útvonal paramétert is az Update-IoTEdge paranccsal, amely a cikk későbbi részében is elérhető.
+>[!NOTE]
+>A `-OfflineInstallationPath` paraméter egy **Microsoft-Azure-IoTEdge. cab** nevű fájlt keres a megadott könyvtárban. A IoT Edge 1.0.9-rc4-es verziótól kezdődően két. cab fájl használható, egyet az AMD64-eszközökhöz, egyet pedig a ARM32. Töltse le az eszközének megfelelő fájlt, majd nevezze át a fájlt az architektúra utótagjának eltávolításához.
 
-## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
+A `Deploy-IoTEdge` parancs telepíti a IoT Edge összetevőket, majd továbbra is a `Initialize-IoTEdge` paranccsal kiépíti az eszközt a IoT Hub-eszköz azonosítójával és kapcsolatával. Futtassa közvetlenül a parancsot, és adjon meg egy kapcsolati karakterláncot a IoT Hubból, vagy használja az előző szakaszban található hivatkozások egyikét, hogy megtudja, hogyan lehet automatikusan kiépíteni eszközöket az eszközök kiépítési szolgáltatásával.
+
+```powershell
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+Initialize-IoTEdge
+```
+
+Az Update-IoTEdge paranccsal használhatja az offline telepítési útvonal paramétert is.
+
+## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
 Ellenőrizze az IoT Edge-szolgáltatás állapotát. A lista futtatásaként kell szerepelnie.  
 
@@ -161,7 +171,7 @@ Ellenőrizze az IoT Edge-szolgáltatás állapotát. A lista futtatásaként kel
 Get-Service iotedge
 ```
 
-A szolgáltatási naplók vizsgálata az elmúlt 5 percben. Ha befejezte a IoT Edge futtatókörnyezet telepítését, akkor előfordulhat, hogy az **üzembe helyezés-IoTEdge** és az **inicializálás-IoTEdge**futtatása között elérkezett hibák listája látható. A rendszer ezeket a hibákat várta, mivel a szolgáltatás a konfigurálás előtt megpróbálja elindítani a szolgáltatást.
+Vizsgálja meg a szolgáltatási naplók az elmúlt 5 percben. Ha befejezte a IoT Edge futtatókörnyezet telepítését, akkor előfordulhat, hogy az **üzembe helyezés-IoTEdge** és az **inicializálás-IoTEdge**futtatása között elérkezett hibák listája látható. A rendszer ezeket a hibákat várta, mivel a szolgáltatás a konfigurálás előtt megpróbálja elindítani a szolgáltatást.
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -173,7 +183,7 @@ Futtasson automatizált vizsgálatot a leggyakoribb konfigurációs és hálóza
 iotedge check
 ```
 
-Futó modulok listázása. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön.
+Futó modulok listája. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön.
 
 ```powershell
 iotedge list
@@ -205,29 +215,6 @@ A motor URI-ja megjelenik a telepítési parancsfájl kimenetében, vagy megkere
 
 További információ az eszközön futó tárolókkal és képekkel való kommunikációhoz használható parancsokról: [Docker parancssori felületek](https://docs.docker.com/engine/reference/commandline/docker/).
 
-## <a name="update-an-existing-installation"></a>Meglévő telepítés frissítése
-
-Ha már telepítette az IoT Edge futtatókörnyezetet az eszközön, és kiépíti azt egy IoT Hub identitásával, akkor az eszköz adatainak újbóli megadása nélkül is frissítheti a futtatókörnyezetet.
-
-További információ: [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md).
-
-Ez a példa egy olyan telepítést mutat be, amely egy meglévő konfigurációs fájlra mutat, és Windows-tárolókat használ:
-
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Update-IoTEdge
-```
-
-IoT Edge frissítésekor további paramétereket is használhat a frissítés módosításához, beleértve a következőket:
-
-* Egy proxykiszolgálón keresztüli közvetlen forgalom, vagy
-* A telepítő átirányítása offline könyvtárba
-* Újraindítás anélkül, hogy szükség lenne rá
-
-Parancsfájl-paraméterekkel nem deklarálható IoT Edge ügynök-tároló rendszerképe, mert ez az információ már be van állítva az előző telepítés konfigurációs fájljába. Ha módosítani szeretné az ügynök tárolójának rendszerképét, tegye a következőt a config. YAML fájlban.
-
-A frissítési lehetőségekkel kapcsolatos további információkért használja az parancsot `Get-Help Update-IoTEdge -full` vagy tekintse át az [összes telepítési paramétert](#all-installation-parameters).
-
 ## <a name="uninstall-iot-edge"></a>IoT Edge eltávolítása
 
 Ha el szeretné távolítani a IoT Edge telepítését a Windows-eszközről, használja a következő parancsot egy felügyeleti PowerShell-ablakból. Ez a parancs eltávolítja a IoT Edge futtatókörnyezetet, valamint a meglévő konfigurációt és a Moby Engine-adatait.
@@ -245,7 +232,7 @@ Az eltávolítási lehetőségekkel kapcsolatos további információkért haszn
 
 Az előző részekben gyakori telepítési forgatókönyvek jelentek meg, példákkal, hogy miként lehet paramétereket használni a telepítési parancsfájl módosításához. Ez a szakasz a IoT Edge telepítésére, frissítésére és eltávolítására szolgáló közös paraméterek táblázatait tartalmazza.
 
-### <a name="deploy-iotedge"></a>Üzembe helyezés – IoTEdge
+### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
 Az Deploy-IoTEdge parancs letölti és telepíti a IoT Edge biztonsági démont és annak függőségeit. Az üzembe helyezési parancs elfogadja ezeket a közös paramétereket többek között. A teljes listához használja a következő parancsot: `Get-Help Deploy-IoTEdge -full`.  
 
@@ -253,18 +240,18 @@ Az Deploy-IoTEdge parancs letölti és telepíti a IoT Edge biztonsági démont 
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** vagy **Linux** | Ha nincs megadva tároló operációs rendszer, a Windows az alapértelmezett érték.<br><br>Windows-tárolók esetén a IoT Edge a telepítésben található Moby Container Engine-t használja. Linux-tárolók esetén a telepítés megkezdése előtt telepítenie kell egy tároló motort. |
 | **Proxy** | Proxy URL-címe | Adja meg ezt a paramétert, ha az eszköznek egy proxykiszolgálón keresztül kell átesnie az Internet eléréséhez. További információ: [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztüli kommunikációhoz](how-to-configure-proxy-support.md). |
-| **OfflineInstallationPath** | Címtár útvonala | Ha ez a paraméter szerepel a rendszerben, a telepítő megkeresi a felsorolt könyvtárat a IoT Edge cab és a VC Runtime MSI-fájlokhoz, amelyek szükségesek a telepítéséhez. A címtárban nem található fájlok letöltődnek. Ha mindkét fájl szerepel a címtárban, a IoT Edge internetkapcsolat nélkül is telepítheti. Ezt a paramétert egy adott verzió használatára is használhatja. |
+| **OfflineInstallationPath** | Könyvtár elérési útja | Ha ez a paraméter szerepel a rendszerben, a telepítő megkeresi a felsorolt könyvtárat a IoT Edge cab és a VC Runtime MSI-fájlokhoz, amelyek szükségesek a telepítéséhez. A címtárban nem található fájlok letöltődnek. Ha mindkét fájl szerepel a címtárban, a IoT Edge internetkapcsolat nélkül is telepítheti. Ezt a paramétert egy adott verzió használatára is használhatja. |
 | **InvokeWebRequestParameters** | Paraméterek és értékek szórótábla | A telepítés során több webes kérelem készül. Ezt a mezőt használhatja a webes kérelmek paramétereinek megadásához. Ez a paraméter hasznos a proxykiszolgálók hitelesítő adatainak konfigurálásához. További információ: [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztüli kommunikációhoz](how-to-configure-proxy-support.md). |
 | **RestartIfNeeded** | Nincs | Ez a jelző lehetővé teszi, hogy az üzembe helyezési parancsfájl szükség esetén anélkül újraindítsa a gépet. |
 
-### <a name="initialize-iotedge"></a>Inicializálás – IoTEdge
+### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
 Az inicializálás-IoTEdge parancs a IoT Edge az eszköz kapcsolati karakterláncával és a működési adatokkal konfigurálja. A parancs által generált információk nagy részét ezután a iotedge\config.YAML fájlban tárolja a rendszer. Az inicializálási parancs elfogadja ezeket a közös paramétereket többek között. A teljes listához használja a következő parancsot: `Get-Help Initialize-IoTEdge -full`.
 
 | Paraméter | Elfogadott értékek | Megjegyzések |
 | --------- | --------------- | -------- |
-| **Kézi** | None | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális beállítás az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy eszköz-kapcsolódási karakterláncot. |
-| **DPS** | None | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális beállítás az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez.  |
+| **Kézi** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális beállítás az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy eszköz-kapcsolódási karakterláncot. |
+| **DPS** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális beállítás az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez.  |
 | **DeviceConnectionString** | Egy IoT Hubban, egyetlen idézőjelben regisztrált IoT Edge eszközhöz tartozó kapcsolatok karakterlánca | Manuális telepítéshez **szükséges** . Ha nem ad meg egy kapcsolatok karakterláncot a parancsfájl paraméterei között, a rendszer a telepítés során kérni fogja az egyiket. |
 | **Hatókör** | A IoT Hubhoz társított eszköz-kiépítési szolgáltatás példányának hatókör-azonosítója. | A DPS telepítéséhez **szükséges** . Ha nem ad meg hatókör-azonosítót a parancsfájl paraméterei között, a rendszer a telepítés során kérni fogja az egyiket. |
 | **Regisztrációban** | Az eszköz által generált regisztrációs azonosító | A DPS telepítéséhez **szükséges** a TPM vagy szimmetrikus kulcsú tanúsítvány használata esetén. |
@@ -275,17 +262,17 @@ Az inicializálás-IoTEdge parancs a IoT Edge az eszköz kapcsolati karakterlán
 | **Felhasználónév** | Tároló beállításjegyzékbeli felhasználóneve | Ezt a paramétert csak akkor használja, ha a-AgentImage paramétert egy privát beállításjegyzékben lévő tárolóra állítja be. Adjon meg egy felhasználónevet a beállításjegyzékhez való hozzáféréssel. |
 | **Jelszó** | Biztonságos jelszó karakterlánca | Ezt a paramétert csak akkor használja, ha a-AgentImage paramétert egy privát beállításjegyzékben lévő tárolóra állítja be. Adja meg a beállításjegyzék eléréséhez szükséges jelszót. |
 
-### <a name="update-iotedge"></a>Frissítés – IoTEdge
+### <a name="update-iotedge"></a>Update-IoTEdge
 
 | Paraméter | Elfogadott értékek | Megjegyzések |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** vagy **Linux** | Ha nincs megadva tároló operációs rendszer, a Windows az alapértelmezett érték. Windows-tárolók esetén a rendszer a tároló motort fogja tartalmazni a telepítésben. Linux-tárolók esetén a telepítés megkezdése előtt telepítenie kell egy tároló motort. |
 | **Proxy** | Proxy URL-címe | Adja meg ezt a paramétert, ha az eszköznek egy proxykiszolgálón keresztül kell átesnie az Internet eléréséhez. További információ: [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztüli kommunikációhoz](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Paraméterek és értékek szórótábla | A telepítés során több webes kérelem készül. Ezt a mezőt használhatja a webes kérelmek paramétereinek megadásához. Ez a paraméter hasznos a proxykiszolgálók hitelesítő adatainak konfigurálásához. További információ: [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztüli kommunikációhoz](how-to-configure-proxy-support.md). |
-| **OfflineInstallationPath** | Címtár útvonala | Ha ez a paraméter szerepel a rendszerben, a telepítő megkeresi a felsorolt könyvtárat a IoT Edge cab és a VC Runtime MSI-fájlokhoz, amelyek szükségesek a telepítéséhez. A címtárban nem található fájlok letöltődnek. Ha mindkét fájl szerepel a címtárban, a IoT Edge internetkapcsolat nélkül is telepítheti. Ezt a paramétert egy adott verzió használatára is használhatja. |
+| **OfflineInstallationPath** | Könyvtár elérési útja | Ha ez a paraméter szerepel a rendszerben, a telepítő megkeresi a felsorolt könyvtárat a IoT Edge cab és a VC Runtime MSI-fájlokhoz, amelyek szükségesek a telepítéséhez. A címtárban nem található fájlok letöltődnek. Ha mindkét fájl szerepel a címtárban, a IoT Edge internetkapcsolat nélkül is telepítheti. Ezt a paramétert egy adott verzió használatára is használhatja. |
 | **RestartIfNeeded** | Nincs | Ez a jelző lehetővé teszi, hogy az üzembe helyezési parancsfájl szükség esetén anélkül újraindítsa a gépet. |
 
-### <a name="uninstall-iotedge"></a>Eltávolítás – IoTEdge
+### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Paraméter | Elfogadott értékek | Megjegyzések |
 | --------- | --------------- | -------- |

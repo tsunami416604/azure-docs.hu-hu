@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: az első ML-modell R-vel'
+title: 'Oktatóanyag: logisztikai regressziós modell az R-ben'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapszintű kialakítási mintáit, és az R-csomagok azuremlsdk és a kalap használatával betanítja a logisztikai regressziós modell modelljét, hogy megjósolja a végzetes valószínűségét egy autóbeli balesetben.
+description: Ebben az oktatóanyagban egy logisztikai regressziós modellt hoz létre az R Packages azuremlsdk és a kalap használatával, hogy megjósolja a végzetesség valószínűségét egy autóbeli balesetben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,35 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533446"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191251"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: az első modell betanítása és üzembe helyezése az R-ben Azure Machine Learning
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: logisztikai regressziós modell létrehozása az R-ben a Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapszintű kialakítási mintáit.  Egy olyan **kalap** -modellt fog betanítani és üzembe helyezni, amely megjósolja, hogy milyen valószínűséggel lehet végzetesnek lennie egy autóbeli balesetben. Az oktatóanyag elvégzése után az R SDK gyakorlati ismeretekkel fog rendelkezni az összetettebb kísérletek és munkafolyamatok fejlesztéséhez.
+Ebben az oktatóanyagban az R és a Azure Machine Learning segítségével létrehoz egy logisztikai regressziós modellt, amely előre jelezheti a végzetes valószínűségét egy autóbeli balesetben. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni a Azure Machine Learning R SDK-ról, hogy összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
-Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
-
+Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > [!div class="checklist"]
-> * A munkaterület összekötése
+> * Azure Machine Learning-munkaterület létrehozása
+> * Egy jegyzetfüzet-mappa klónozása az oktatóanyag munkaterületen való futtatásához szükséges fájlokkal
+> * RStudio megnyitása a munkaterületről
 > * Adatgyűjtés és felkészülés a képzésre
-> * Adatok feltöltése az adattárba, hogy elérhető legyen a távoli képzéshez
-> * Számítási erőforrás létrehozása
-> * Egy Kalapos modell betanítása a halálozás valószínűségének előrejelzésére
+> * Adatok feltöltése adattárba, hogy elérhető legyen a távoli képzéshez
+> * Számítási erőforrás létrehozása a modell távoli betanításához
+> * `caret` modell betanítása a halálozás valószínűségének előrejelzésére
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
-## <a name="create-a-workspace"></a>Munkaterületek létrehozása
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
@@ -66,13 +67,11 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. Nyissa meg a mappát egy verziószámmal.  Ez a szám az R SDK aktuális kiadását jelöli.
 
-1. Nyissa meg a **vignettálások** mappát.
-
-1. Válassza a **"..."** lehetőséget a **Train-and-Deploy-ACI** mappa jobb oldalán, majd válassza a **klónozás**lehetőséget.
+1. Válassza a **"..."** lehetőséget a **vignettálások** mappa jobb oldalán, majd válassza a **klónozás**elemet.
 
     ![Klónozási mappa](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. A mappák listája megjeleníti a munkaterülethez hozzáférő összes felhasználót.  Válassza ki azt a mappát, amelybe be szeretné **helyezni a vonattal és a-Deploy-ACI** mappát.
+1. A mappák listája megjeleníti a munkaterülethez hozzáférő összes felhasználót.  Válassza ki a mappát, amelybe a **matricákat** tartalmazó mappát el szeretné klónozott.
 
 ## <a name="a-nameopenopen-rstudio"></a>RStudio megnyitása <a name="open">
 
@@ -84,10 +83,11 @@ Az oktatóanyag futtatásához használja az RStudio-t egy számítási példán
 
 1. Ha a számítási szolgáltatás fut, a **RStudio** hivatkozásra kattintva nyissa meg a RStudio.
 
-1. A RStudio-ben a **betanítási és--üzembe helyezés – ACI** mappa a jobb alsó sarokban lévő **Files (fájlok** ) szakaszban lévő **felhasználóknál** néhány szint.  A jelen oktatóanyagban szükséges fájlok megkereséséhez válassza a **vonattal és a-Deploy – ACI** mappát.
+1. A RStudio-ben a *matricák* mappája a jobb alsó sarokban lévő Files ( **fájlok** ) szakaszban lévő *felhasználóknál* néhány szint.  A *matricák*területen válassza a *vonat-és üzembe helyezés – ACI* mappát az oktatóanyagban szükséges fájlok megkereséséhez.
 
 > [!Important]
-> A cikk többi része ugyanazokat a tartalmakat tartalmazza, mint amit a **Train-and-Deploy-ACI-ban lát. RMD** -fájl. Ha a RMarkdown-t használja, nyugodtan használhatja az adott fájl kódját.  Vagy másolhatja vagy beillesztheti a kódrészleteket onnan, vagy ebből a cikkből egy R-parancsfájlba vagy a parancssorba.  
+> A cikk többi része ugyanazokat a tartalmakat tartalmazza, mint amit a *Train-and-Deploy-ACI-ban lát. RMD* -fájl. Ha a RMarkdown-t használja, nyugodtan használhatja az adott fájl kódját.  Vagy másolhatja vagy beillesztheti a kódrészleteket onnan, vagy ebből a cikkből egy R-parancsfájlba vagy a parancssorba.  
+
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 Az oktatóanyagban a fejlesztési munka beállítása a következő műveleteket tartalmazza:
@@ -102,12 +102,6 @@ Ez az oktatóanyag feltételezi, hogy már telepítette az Azure ML SDK-t. Lépj
 
 ```R
 library(azuremlsdk)
-```
-
-Az oktatóanyag a [ **DAAG** -csomag](https://cran.r-project.org/package=DAAG)adatait használja. Ha nem rendelkezik ezzel a csomaggal, telepítse a csomagot.
-
-```R
-install.packages("DAAG")
 ```
 
 A betanítási és pontozási parancsfájlok (`accidents.R` és `accident_predict.R`) további függőségekkel rendelkeznek. Ha a parancsfájlok helyi futtatását tervezi, győződjön meg arról, hogy rendelkezik a szükséges csomagokkal is.
@@ -127,7 +121,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Számítási cél létrehozása
+### <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 Azure Machine Learning számítás (AmlCompute) használatával a felügyelt szolgáltatás, az adatszakértők pedig gépi tanulási modelleket hozhatnak létre az Azure-beli virtuális gépek fürtjén. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban egy egycsomópontos AmlCompute-fürtöt hoz létre oktatási környezetként. Az alábbi kód létrehozza a számítási fürtöt, ha még nem létezik a munkaterületen.
 
 Előfordulhat, hogy néhány percet várnia kell, amíg a számítási fürt kiépíthető, ha még nem létezik.
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>Az adatképzés előkészítése
-Ez az oktatóanyag a **DAAG** -csomag adatait használja. Ez az adatkészlet több mint 25 000 autóbalesetben tartalmaz adatokat az Egyesült Államokban, és a változókat a végzetes valószínűségének előrejelzésére használhatja. Először importálja az adatfájlokat az R-be, és alakítsa át egy új dataframe-`accidents` elemzésre, és exportálja egy `Rdata` fájlba.
+Ez az oktatóanyag az USA [nemzeti országúti közlekedésbiztonsági adminisztrációjának](https://cdan.nhtsa.gov/tsftables/tsfar.htm) adatait használja (a [Mary C. Meyer és a Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)köszönhetően).
+Ez az adatkészlet több mint 25 000 autóbalesetben tartalmaz adatokat az Egyesült Államokban, és a változókat a végzetes valószínűségének előrejelzésére használhatja. Először importálja az adatfájlokat az R-be, és alakítsa át egy új dataframe-`accidents` elemzésre, és exportálja egy `Rdata` fájlba.
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -290,7 +290,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 A modell segítségével előre megjósolhatja, hogy az ütközésből származó halál veszélye. Használja az Azure ML-t a modell előrejelzési szolgáltatásként való üzembe helyezéséhez. Ebben az oktatóanyagban üzembe helyezi a webszolgáltatást [Azure Container Instancesban](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
-### <a name="register-the-model"></a>A modell regisztrálása
+### <a name="register-the-model"></a>Regisztrálja a modellt
 
 Először regisztrálja a munkaterületre letöltött modellt [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)használatával. A regisztrált modell lehet fájlok gyűjteménye, de ebben az esetben az R Model objektum elegendő. Az Azure ML a regisztrált modellt fogja használni az üzembe helyezéshez.
 
@@ -394,5 +394,6 @@ Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
+* Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 
+* További információ az R-Azure Machine Learningekről a más *matricák* mappáiban található példákkal.

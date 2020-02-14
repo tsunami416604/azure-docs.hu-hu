@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833935"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192938"
 ---
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-- A kezdeti kiadás a következő virtuálisgép-sorozatot támogatja: DSv3 és ESv3. 
+- A kezdeti kiadás a következő VM-sorozatot támogatja: DSv3, ESv3 és Fsv2. 
 
 ## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása
 
@@ -54,7 +54,7 @@ Csak néhány percet vehet igénybe a gazda csoport létrehozásakor.
 
 ## <a name="create-a-dedicated-host"></a>Dedikált gazdagép létrehozása
 
-Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját. A következő gazdagép SKU-értékek támogatottak: DSv3_Type1 és ESv3_Type1.
+Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.
 
 A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 

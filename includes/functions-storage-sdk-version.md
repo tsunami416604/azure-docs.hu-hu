@@ -2,20 +2,20 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: functions
-author: ggailey777
-manager: cfowler
+author: craigshoemaker
+manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/17/2018
-ms.author: tdykstra
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: c2fff707dcaafac69efcad3dbf33446a7b797396
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608225"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198418"
 ---
-### <a name="azure-storage-sdk-version-in-functions-1x"></a>A Functions az Azure Storage SDK-verzió 1.x
+#### <a name="azure-storage-sdk-version-in-functions-1x"></a>Az Azure Storage SDK verziója a functions 1. x verziójában
 
-Függvények 1.x, tároló-eseményindítók és kötések használata az Azure Storage SDK 7.2.1 verzióját ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet-csomag). A Storage SDK-t egy másik verziója hivatkozik, és a függvényfej a kötés Storage SDK-t típusra, a Functions futtatókörnyezete, hogy nem köthető az adott típusú feltétlenül jelentik. A megoldás az, hogy ellenőrizze, hogy a projekt referenciáihoz [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+Az 1. x függvények esetében a tároló-eseményindítók és-kötések az Azure Storage SDK ([WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet-csomag) verzióját használják a 7.2.1. Ha a Storage SDK egy másik verziójára hivatkozik, és egy Storage SDK-típushoz kötődik a függvény aláírása során, akkor a functions futtatókörnyezet azt jelentheti, hogy az nem köthető ehhez a típushoz. A megoldás annak biztosítása, hogy a projekt a [WindowsAzure. Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1)hivatkozik.

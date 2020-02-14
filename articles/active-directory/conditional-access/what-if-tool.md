@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379980"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185882"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
 
@@ -26,13 +26,13 @@ Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférés
 
 ## <a name="what-it-is"></a>Mi ez?
 
-A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a feltételes hozzáférési szabályzatok környezetre gyakorolt hatásának megismerését. Nem szükséges manuálisan végrehajtott bejelentkezésekkel tesztelni a szabályzatokat, az eszköz használatával egy szimulált felhasználói bejelentkezést értékelhet ki. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési szabályzatokat sorolja fel, hanem a [klasszikus szabályzatokat](policy-migration.md#classic-policies) is, ha vannak ilyenek.    
+A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a feltételes hozzáférési szabályzatok környezetre gyakorolt hatásának megismerését. Ahelyett, hogy tesztelje a szabályzatokat több bejelentkezés manuális elvégzésével, ez az eszköz lehetővé teszi egy felhasználó szimulált bejelentkezésének kiértékelését. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem csak az alkalmazott feltételes hozzáférési szabályzatokat sorolja fel, hanem a [klasszikus szabályzatokat](policy-migration.md#classic-policies) is, ha vannak ilyenek.    
 
 Az **What if** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat például akkor használhatja, ha problémát kell elhárítani.    
 
 ## <a name="how-it-works"></a>Működés
 
-A **feltételes hozzáférés What if eszközben**először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások a következők:
+A **feltételes hozzáférés What if eszközben**először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között a következők:
 
 - A tesztelni kívánt felhasználó 
 - Azok a felhőalapú alkalmazások, amelyeket a felhasználó megkísérel elérni
@@ -48,7 +48,7 @@ Az **What if** eszközt a Azure Portal **[feltételes hozzáférési szabályzat
 
 Az eszköz elindításához a házirendek listájának tetején található eszköztáron kattintson a **What if**elemre.
 
-![What If](./media/what-if-tool/01.png)
+![WhatIf](./media/what-if-tool/01.png)
 
 A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
@@ -56,7 +56,7 @@ A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
 Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos információkat tartalmaz.
 
-![What If](./media/what-if-tool/02.png)
+![WhatIf](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Felhasználó
 
@@ -72,11 +72,11 @@ Az IP-cím egyetlen IPv4-cím, amely a [hely feltételét](location-condition.md
 
 ### <a name="device-platforms"></a>Eszköz platformok
 
-Ez a beállítás az [eszköz platformjának feltételeit](conditions.md#device-platforms) utánozza, és az **összes platform (beleértve a nem támogatott)** megfelelőjét jelöli. 
+Ez a beállítás az [eszköz platformjának feltételeit](concept-conditional-access-conditions.md#device-platforms) utánozza, és az **összes platform (beleértve a nem támogatott)** megfelelőjét jelöli. 
 
 ### <a name="client-apps"></a>Ügyfélalkalmazások
 
-Ez a beállítás a [Client apps-feltételt](conditions.md#client-apps)utánozza.
+Ez a beállítás a [Client apps-feltételt](concept-conditional-access-conditions.md#client-apps-preview)utánozza.
 Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértékelését okozza, amelyeken a **böngésző** vagy a **Mobile apps, illetve az asztali ügyfelek** egyenként vagy mindkettőben vannak kiválasztva. Emellett észleli azokat a házirendeket, amelyek kikényszerítik az **Exchange ActiveSync (EAS)** szolgáltatást. Ezt a beállítást a következő lehetőség kiválasztásával szűkítheti le:
 
 - **Böngésző** az összes olyan házirend kiértékeléséhez, amelynél legalább **böngésző** van kiválasztva. 
@@ -84,13 +84,13 @@ Alapértelmezés szerint ez a beállítás az összes olyan házirend kiértéke
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-Ez a beállítás a [bejelentkezési kockázat feltételét](conditions.md#sign-in-risk)utánozza.   
+Ez a beállítás a [bejelentkezési kockázat feltételét](concept-conditional-access-conditions.md#sign-in-risk)utánozza.   
 
 ## <a name="evaluation"></a>Értékelési 
 
 A kiértékelés elindításához kattintson a **What if**gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
 
-![What If](./media/what-if-tool/03.png)
+![WhatIf](./media/what-if-tool/03.png)
 
 - Annak jelzése, hogy a klasszikus szabályzatok léteznek-e a környezetben
 - A felhasználóra érvényes házirendek
@@ -102,7 +102,7 @@ A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhat
 
 Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
 - Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 

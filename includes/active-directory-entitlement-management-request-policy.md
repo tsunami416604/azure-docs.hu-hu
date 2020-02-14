@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980742"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192772"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -25,7 +25,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
     ![Hozzáférési csomag – kérelmek – a címtárban lévő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+1. Válasszon egyet a következő lehetőségek közül:
 
     |  |  |
     | --- | --- |
@@ -60,7 +60,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 
     ![Hozzáférési csomag – kérelmek – a címtárban nem szereplő felhasználók számára](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+1. Válasszon egyet a következő lehetőségek közül:
 
     |  |  |
     | --- | --- |
@@ -198,7 +198,7 @@ Ha például az Alice és a Bob, mint az első jóváhagyó (k) szerepel, a Caro
 
 ## <a name="enable-requests"></a>Kérelmek engedélyezése
 
-1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhető legyen a kérési házirendben szereplő felhasználók számára, kattintson az **Igen** gombra az engedélyezéshez.
+1. Ha azt szeretné, hogy a hozzáférési csomag azonnal elérhető legyen a kérési házirendben szereplő felhasználók számára a kérelemhez, helyezze át az engedélyezés kapcsolót **Igen**értékre.
 
     A jövőben bármikor engedélyezheti azt a hozzáférési csomag létrehozása után.
 

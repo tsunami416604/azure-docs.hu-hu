@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120641"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198496"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
 
@@ -203,7 +203,7 @@ A típusok ellenőrzésének biztosításán kívül a felületek hasznosak lehe
 
 ### <a name="example-client-signals-entity-through-interface"></a>Példa: ügyfél-jeleket kezelő entitás kapcsolaton keresztül
 
-Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` használatával jeleket küldhet a `TEntityInterface`t megvalósító entitásoknak. Példa:
+Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` használatával jeleket küldhet a `TEntityInterface`t megvalósító entitásoknak. Például:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 A normál függvényektől eltérően az Entity Class metódusok nem rendelkeznek közvetlen hozzáféréssel a bemeneti és kimeneti kötésekhez. Ehelyett a kötési adatrögzítést a belépési pont függvény deklarációjában kell rögzíteni, majd át kell adni a `DispatchAsync<T>` metódusnak. A rendszer a `DispatchAsync<T>` átadott objektumokat argumentumként automatikusan átadja az entitás osztály konstruktorának.
 
-Az alábbi példa azt szemlélteti, hogyan lehet elérhetővé tenni egy `CloudBlobContainer` hivatkozást a [blob bemeneti kötésből](../functions-bindings-storage-blob.md#input) egy osztály alapú entitás számára.
+Az alábbi példa azt szemlélteti, hogyan lehet elérhetővé tenni egy `CloudBlobContainer` hivatkozást a [blob bemeneti kötésből](../functions-bindings-storage-blob-input.md) egy osztály alapú entitás számára.
 
 ```csharp
 public class BlobBackedEntity

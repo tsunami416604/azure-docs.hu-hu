@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732144"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190671"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
-A standard fájlmegosztás eredetileg legfeljebb 5 TiB-ra méretezhető. A nagyméretű fájlmegosztás révén akár 100 TiB-ra is méretezhető. Ezt a skálázást engedélyezheti meglévő fájlmegosztási fiókjaihoz. Alapértelmezés szerint a prémium szintű fájlmegosztás akár 100 TiB-ra is méretezhető.
+Ha nagyméretű fájlmegosztást engedélyez a Storage-fiókjában, a fájlmegosztás akár 100 TiB-ra is méretezhető. Ezt a skálázást engedélyezheti meglévő fájlmegosztási fiókjaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,14 +26,14 @@ A standard fájlmegosztás eredetileg legfeljebb 5 TiB-ra méretezhető. A nagym
 
 ## <a name="restrictions"></a>Korlátozások
 
-Egyelőre csak nagyméretű fájlmegosztás – engedélyezett fiókok esetében használhatja a LRS vagy a ZRS. A GZRS, a GRS és az RA-GRS nem használható.
+Egyelőre csak helyileg redundáns tárolást (LRS) vagy zóna-redundáns tárolást (ZRS) használhat a nagyméretű fájlmegosztás – engedélyezve fiókok esetében. Nem használhatja a Geo-Zone-redundáns tárolást (GZRS), a Geo-redundáns tárolást (GRS) vagy az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS).
 A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíthatatlan folyamat. Miután engedélyezte, nem fogja tudni átalakítani a fiókját GZRS, GRS vagy RA-GRS-re.
 
 ## <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
 
 ### <a name="portal"></a>Portál
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. 
 1. Az erőforrások listájában adja meg a **Storage-fiókokat**. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza a **Tárfiókok** lehetőséget.
 1. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás**lehetőséget.
@@ -47,12 +47,12 @@ A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíth
 1. Állítsa a replikálást **helyileg redundáns tárterületre** vagy a **zóna redundáns tárolására**.
 1. Hagyja meg a következő mezőket az alapértelmezett értékeken:
 
-   |Mező  |Value (Díj)  |
+   |Mező  |Érték  |
    |---------|---------|
-   |Üzemi modell     |Erőforrás-kezelő         |
+   |Üzemi modell     |Resource Manager         |
    |Teljesítmény     |Standard         |
    |Fióktípus     |StorageV2 (általános célú v2)         |
-   |Elérési szint     |Gyakori         |
+   |Hozzáférési szint     |Gyakori         |
 
 1. Válassza a **speciális**lehetőséget, majd a **nagyméretű fájlmegosztás**jobb oldalán kattintson az **engedélyezve** lehetőségre.
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
@@ -61,7 +61,7 @@ A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíth
 
 1. Kattintson a **Létrehozás** gombra.
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 
 Először [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
 
@@ -100,7 +100,7 @@ Ezzel engedélyezte a nagyméretű fájlmegosztás használatát a Storage-fiók
 
 Ha a "nagyméretű fájlmegosztás nem érhető el a fiókhoz" hibaüzenet jelenik meg, akkor előfordulhat, hogy a régió a bevezetésének megkezdése közepén található. Ha a nagyméretű fájlmegosztást sürgősen kell megadnia, forduljon az ügyfélszolgálathoz.
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 
 Ha nagy fájlmegosztást szeretne engedélyezni a meglévő fiókjában, használja a következő parancsot. Cserélje le a `<yourStorageAccountName>`t, és `<yourResourceGroup>` az adataival.
 
@@ -130,7 +130,7 @@ A nagyméretű fájlmegosztás létrehozása majdnem azonos a szabványos fájlm
 
 ![A név és a kvóta mezőket megjelenítő Azure Portal felhasználói felület](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 
 Nagyméretű fájlmegosztás létrehozásához használja a következő parancsot. Cserélje le `<yourStorageAccountName>`, `<yourStorageAccountKey>`és `<yourFileShareName>` adatait.
 
@@ -163,7 +163,7 @@ Miután engedélyezte a nagyméretű fájlmegosztást a Storage-fiókon, a megl�
 
 ![A meglévő fájlmegosztás kvótáját tartalmazó Azure Portal felhasználói felület](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 
 Ha a kvótát a maximális méretre szeretné beállítani, használja a következő parancsot. Cserélje le `<yourStorageAccountName>`, `<yourStorageAccountKey>`és `<yourFileShareName>` adatait.
 

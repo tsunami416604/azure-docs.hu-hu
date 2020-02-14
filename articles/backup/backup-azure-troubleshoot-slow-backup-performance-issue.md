@@ -4,12 +4,12 @@ description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítmé
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172583"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198616"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 
@@ -25,6 +25,18 @@ A hibaelhárítási problémák megkezdése előtt javasoljuk, hogy töltse le �
 Javasoljuk továbbá, hogy tekintse át a [Azure Backup szolgáltatással](backup-azure-backup-faq.md) kapcsolatos gyakori kérdéseket, és győződjön meg arról, hogy nem tapasztalt a gyakori konfigurációs problémák egyikét sem.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Ok: a biztonsági mentési feladatok nem optimalizált módban futnak
+
+* A MARS-ügynök **optimalizált módban** futtathatja a biztonsági mentési FELADATOT az USN (frissítési sorszám) módosítási napló vagy a nem **optimalizált mód** használatával úgy, hogy a teljes kötet vizsgálatával ellenőrzi a címtárakban vagy fájlokban történt módosításokat.
+* A nem optimalizált üzemmód lassú, mert az ügynöknek a kötet összes fájlját be kell olvasnia, és össze kell hasonlítani a metaadatokat a módosított fájlok meghatározásához.
+* Ennek ellenőrzéséhez nyissa meg a **feladatok részleteit** a Mars-ügynök konzolján, és ellenőrizze az állapotot, hogy látható-e az **adatok átvitele (nem optimalizált, több időt is igénybe vehet)** az alábbi ábrán látható módon:
+
+    ![Nem optimalizált módban fut](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* A következő feltételek okozhatják, hogy a biztonsági mentési feladatok nem optimalizált módban fussanak:
+  * Az első biztonsági mentés (más néven kezdeti replikálás) mindig nem optimalizált módban fog futni
+  * Ha az előző biztonsági mentési művelet meghiúsul, akkor a következő ütemezett biztonsági mentési feladatnak nem optimalizáltnak kell futnia.
 
 <a id="cause1"></a>
 

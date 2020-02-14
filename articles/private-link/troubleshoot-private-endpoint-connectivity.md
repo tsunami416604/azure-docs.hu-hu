@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031854"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191067"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>A magánhálózati végpontok csatlakozási problémáinak elhárítása
+# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Privátvégpont-kapcsolati problémák hibaelhárítása
 
 Ez az útmutató részletes útmutatást nyújt a privát végponti kapcsolat beállításának ellenőrzéséhez és diagnosztizálásához. 
 
@@ -100,7 +100,7 @@ Az alábbi lépések elvégzésével győződjön meg arról, hogy az összes sz
        ![NSG kimenő szabályai](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. Ha a kapcsolat érvényesítve lett, a csatlakozási probléma az alkalmazási rétegben található titkokkal, jogkivonatokkal és jelszavakkal kapcsolatos egyéb szempontokhoz is kapcsolódhat.
-   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. Tekintse meg a [privát hivatkozás hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting). 
+   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. Tekintse meg a [privát hivatkozás hibaelhárítási útmutatóját](troubleshoot-private-link-connectivity.md). 
 
 6. Ha a probléma továbbra is megoldatlan, és a kapcsolati probléma továbbra is fennáll, forduljon az [Azure támogatási](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) csapatához. 
 
@@ -108,4 +108,4 @@ Az alábbi lépések elvégzésével győződjön meg arról, hogy az összes sz
 
  * [Hozzon létre egy privát végpontot a frissített alhálózaton (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Privát hivatkozás hibaelhárítási útmutatója](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [Privát hivatkozás hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)

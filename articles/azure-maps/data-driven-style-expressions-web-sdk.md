@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911778"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189647"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
-A kifejezések lehetővé teszik, hogy üzleti logikát alkalmazzon az adatforrásban lévő egyes alakzatokban definiált tulajdonságokat betekintő formázási lehetőségekre. A kifejezések az adatforrásban vagy a rétegben lévő adatszűréshez is használhatók. A kifejezések tartalmazhatnak feltételes logikát, például if-utasítást, és az adatkezeléshez is használhatók; karakterlánc-, logikai és matematikai operátorok. 
+A kifejezések lehetővé teszik, hogy üzleti logikát alkalmazzon az adatforrásban lévő egyes alakzatokban definiált tulajdonságokat betekintő formázási lehetőségekre. A kifejezések adatforrásban vagy rétegben szűrhetik az adatszűrést. A kifejezések tartalmazhatnak feltételes logikát, például if-utasítások. A és a segítségével a következő műveleteket végezheti el az adatkezeléshez: karakterlánc-operátorok, logikai operátorok és matematikai operátorok.
 
-Az adatvezérelt stílusok csökkenthetik a szükséges kód mennyiségét, hogy az üzleti logikát a stílus alapján lehessen megvalósítani. A rétegekkel való használat esetén a kifejezések kiértékelése egy külön szálon történik, amely nagyobb teljesítményt biztosít a felhasználói felületi szál üzleti logikájának kiértékeléséhez képest.
+Az adatvezérelt stílusok csökkentik az üzleti logika stíluson belüli megvalósításához szükséges kód mennyiségét. A rétegekkel való használatkor a kifejezések kiértékelése a renderelés időpontjában történik egy külön szálon. Ez a funkció nagyobb teljesítményt nyújt, mint az üzleti logika kiértékelése a felhasználói felületi szálon.
 
-Az alábbi videó áttekintést nyújt az adatvezérelt stílusról a Azure Maps web SDK-ban.
+Ez a videó áttekintést nyújt az adatvezérelt stílusról a Azure Maps web SDK-ban.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének első eleme egy olyan karakterlánc, amely megadja a kifejezés operátor nevét. Például: "+" vagy "Case". A következő elemek (ha vannak ilyenek) a kifejezés argumentumai. Minden argumentum vagy egy literális érték (karakterlánc, szám, logikai vagy `null`) vagy egy másik Expression tömb. A következő pseudocode határozzák meg a kifejezés alapszerkezetét. 
+A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének első eleme egy olyan karakterlánc, amely megadja a kifejezés operátor nevét. Például: "+" vagy "Case". A következő elemek (ha vannak ilyenek) a kifejezés argumentumai. Minden argumentum vagy egy literális érték (karakterlánc, szám, logikai vagy `null`) vagy egy másik Expression tömb. A következő pseudocode határozzák meg egy kifejezés alapszintű szerkezetét. 
 
 ```javascript
 [ 
@@ -39,11 +39,11 @@ A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének el
 ] 
 ```
 
-A Azure Maps web SDK számos olyan típust támogat, amelyek a saját vagy más kifejezésekkel együtt használhatók.
+A Azure Maps web SDK számos típusú kifejezést támogat. A kifejezések saját vagy más kifejezésekkel kombinálva is használhatók.
 
 | Kifejezések típusa | Leírás |
 |---------------------|-------------|
-| [Összesítő kifejezés](#aggregate-expression) | Egy olyan kifejezés, amely meghatározza egy adathalmazon feldolgozott számítást, és a `DataSource``clusterProperties` lehetőséggel használható. |
+| [Összesítő kifejezés](#aggregate-expression) | Egy olyan kifejezés, amely egy adathalmazon feldolgozott számítást határoz meg, és a `DataSource``clusterProperties` lehetőséggel használható. |
 | [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
 | [Színkifejezések](#color-expressions) | A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését. |
 | [Feltételes kifejezések](#conditional-expressions) | A feltételes kifejezések olyan logikai műveleteket biztosítanak, amelyek például if-utasítások. |
@@ -53,10 +53,10 @@ A Azure Maps web SDK számos olyan típust támogat, amelyek a saját vagy más 
 | [Matematikai kifejezések](#math-expressions) | Matematikai operátorokat biztosít az adatvezérelt számítások végrehajtásához a kifejezés-keretrendszeren belül. |
 | [Karakterlánc-operátor kifejezései](#string-operator-expressions) | A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. |
 | [Típus kifejezések](#type-expressions) | A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak. |
-| [Változó kötési kifejezések](#variable-binding-expressions) | A változó kötési kifejezések lehetővé teszik, hogy a számítás eredményei egy változóban legyenek tárolva, és többször is hivatkoznak egy kifejezésben, anélkül, hogy újra kellene számítani a tárolt értéket. |
+| [Változó kötési kifejezések](#variable-binding-expressions) | A változó kötési kifejezések egy változóban lévő számítás eredményét tárolják, és többször is hivatkoznak egy kifejezésben, anélkül, hogy újra kellene számítani a tárolt értéket. |
 | [Nagyítás kifejezése](#zoom-expression) | Lekéri a Térkép jelenlegi nagyítási szintjét renderelési időben. |
 
-A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja be a különböző típusú kifejezések használatának különböző módjait. 
+A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja be a különböző típusú kifejezések használatának különböző módszereit. 
 
 ```javascript
 {
@@ -94,7 +94,7 @@ Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található
 
 **Példák**
 
-A szolgáltatások tulajdonságai közvetlenül egy kifejezésben érhetők el egy `get` kifejezés használatával. A következő példa a szolgáltatás "zoneColor" értékét használja a buborékdiagram szín tulajdonságának megadásához. 
+A szolgáltatások tulajdonságai közvetlenül egy kifejezésben érhetők el egy `get` kifejezés használatával. Ez a példa a szolgáltatás "zoneColor" értékét használja a buborékdiagram szín tulajdonságának megadásához. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -102,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-A fenti példa akkor működik, ha az összes funkció rendelkezik a `zoneColor` tulajdonsággal, de ha nem, akkor a szín valószínűleg vissza fog térni a "fekete" értékre. A tartalék szín módosításához `case` kifejezés használható a `has` kifejezéssel együtt annak ellenőrzéséhez, hogy a tulajdonság létezik-e, és ha nem ad vissza egy tartalék színt.
+A fenti példa megfelelően fog működni, ha az összes funkció rendelkezik a `zoneColor` tulajdonsággal. Ha nem, a szín valószínűleg "fekete" lesz. A tartalék szín módosításához használjon `case` kifejezést a `has` kifejezéssel együtt annak ellenőrzéséhez, hogy a tulajdonság létezik-e. Ha a tulajdonság nem létezik, egy tartalék színt ad vissza.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -117,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-A buborék és a szimbólum rétegek alapértelmezés szerint az adatforrásban lévő összes alakzat koordinátáit fogják megjeleníteni. Ezt megteheti egy sokszög vagy vonal csúcspontjának kiemeléséhez. A réteg `filter` beállításával korlátozhatja az általa megjelenített szolgáltatások geometriájának típusát egy logikai kifejezésen belüli `['geometry-type']` kifejezés használatával. Az alábbi példa egy buborék réteget korlátozza, hogy csak `Point` szolgáltatások legyenek megjelenítve.
+A buborék és a szimbólum rétegek alapértelmezés szerint az adatforrás összes alakzatának koordinátáit jelenítik meg. Ez a viselkedés kiemelheti a sokszög vagy a vonal csúcspontját. A réteg `filter` beállításával korlátozhatja az általa megjelenített szolgáltatások geometriájának típusát egy logikai kifejezésen belüli `['geometry-type']` kifejezés használatával. Az alábbi példa egy buborék réteget korlátozza, hogy csak `Point` szolgáltatások legyenek megjelenítve.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -125,7 +125,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi példa a `Point` és `MultiPoint` szolgáltatások megjelenítését is lehetővé teszi. 
+A következő példa lehetővé teszi a `Point` és `MultiPoint` szolgáltatások megjelenítését. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -172,21 +172,21 @@ A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezér
 
 Az összesítő kifejezés egy adathalmazon feldolgozott számítást határoz meg, amely egy `DataSource``clusterProperties` lehetőséggel használható. A kifejezések kimenetének számnak vagy logikai értéknek kell lennie. 
 
-Az összesítő kifejezés három értéket vesz igénybe; egy operátor értéke és a kezdeti érték, valamint egy kifejezés, amely egy tulajdonságot kér le egy olyan adatokból, amely az összesített műveletet alkalmazza a alkalmazásban. A kifejezés formátuma a következő:
+Az összesítő kifejezés három értéket vesz igénybe: egy operátor értékét és a kezdeti értéket, valamint egy olyan kifejezést, amely az adatok egyes funkcióinak egy tulajdonságát kéri le az összesített művelet alkalmazásához. A kifejezés formátuma a következő:
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- operátor: egy Expression függvény, amely a fürt minden pontjára vonatkozóan a `mapExpression` által kiszámított összes értékre vonatkozik. Támogatott operátorok; 
+- operátor: egy Expression függvény, amely a fürt minden pontjára vonatkozóan a `mapExpression` által kiszámított összes értékre vonatkozik. Támogatott operátorok: 
     - Számok: `+`, `*`, `max`, `min`
     - Logikai értékek esetén: `all`, `any`
 - initialValue: a kezdeti érték, amelyben az első számított érték összesítve lesz.
-- mapExpression: az adathalmaz minden pontjára alkalmazott kifejezés.
+- mapExpression: az adathalmaz minden pontján alkalmazott kifejezés.
 
 **Példák**
 
-Ha az adathalmaz összes funkciója rendelkezik egy számmal rendelkező `revenue` tulajdonsággal. Az adatkészletből létrehozott fürt összes pontjának teljes bevételét a következő összesítő kifejezéssel számíthatja ki: `['+', 0, ['get', 'revenue']]`
+Ha az adathalmaz összes funkciója rendelkezik egy `revenue` tulajdonsággal, amely egy szám. Ezt követően az adatkészletből létrehozott összes pont teljes bevételét kiszámíthatja a fürtben. Ezt a számítást a következő összesítő kifejezéssel hajtja végre: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Logikai kifejezések
 
@@ -214,7 +214,7 @@ A következő kifejezések feltételes logikai műveleteket hajtanak végre a be
 
 ### <a name="case-expression"></a>Case kifejezés
 
-A `case` kifejezés olyan feltételes kifejezés, amely megadja a if-utasítás, például a Logic (IF/then/Else) értéket. Ez a típusú kifejezés a logikai feltételek listáján keresztül történik, és az első logikai feltétel kimeneti értékét adja vissza igaz értékként.
+A `case` kifejezés olyan feltételes kifejezés típusa, amely "If/then/Else" logikát biztosít. Az ilyen típusú kifejezés lépései a logikai feltételek listáján keresztül jelennek meg. Az első logikai feltétel kimeneti értékét adja vissza az igaz érték kiértékeléséhez.
 
 A következő pseudocode határozzák meg a `case` kifejezés szerkezetét. 
 
@@ -294,7 +294,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Az alábbi példa egy tömböt használ a címkék egy halmazának listázásához, amelynek minden esetben ugyanazt az értéket kell visszaadnia. Ez sokkal hatékonyabb, mint a címkék egyenkénti listázása. Ebben az esetben, ha a `entityType` tulajdonság "Restaurant" vagy "grocery_store", a "piros" színt adja vissza.
+Az alábbi példa egy tömböt használ a címkék egy halmazának listázásához, amelynek minden esetben ugyanazt az értéket kell visszaadnia. Ez a megközelítés sokkal hatékonyabb, mint a címkék egyenkénti listázása. Ebben az esetben, ha a `entityType` tulajdonság "Restaurant" vagy "grocery_store", a "piros" színt adja vissza.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -315,7 +315,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-A következő példa egy egyezési kifejezést használ egy "in Array" vagy "Array" típusú szűrő elvégzéséhez, ebben az esetben olyan adatszűrési értékeket tartalmaz, amely az engedélyezett azonosítók listáján szereplő azonosító értékkel rendelkezik. Ha szűrőket használó kifejezéseket használ, az eredménynek logikai értéknek kell lennie.
+A következő példa egy egyezési kifejezést használ egy "in Array" vagy "Array" típusú szűrő végrehajtásához. Ebben az esetben a kifejezés a megengedett azonosítók listáján szereplő azonosító értékkel rendelkező értékeket szűri. Ha szűrőket használó kifejezéseket használ, az eredménynek logikai értéknek kell lennie.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -441,7 +441,7 @@ A színkifejezések egyszerűbbé teszik a színértékek létrehozását és ke
 
 **Példa**
 
-A következő példa létrehoz és RGB színértéket tartalmaz, amely a `255`*vörös* értékkel rendelkezik, és a kiszámított *zöld* és *kék* értékeket a `temperature` tulajdonság értéke alapján `2.5` szorozza. Ahogy a hőmérséklet megváltozik, a szín különböző árnyalatú *vörös*színűre változik.
+Az alábbi példa egy olyan RGB színértéket hoz létre, amely a `255`*vörös* értékkel rendelkezik, és a kiszámított *zöld* és *kék* értékeket a `temperature` tulajdonság értéke alapján `2.5` szorozva. Ahogy a hőmérséklet változik, a szín különböző árnyalatú *vörös*színűre változik.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -492,7 +492,7 @@ A fenti kifejezés egy PIN-kódot jelenít meg a térképen a "64 °F" szövegge
 
 ## <a name="interpolate-and-step-expressions"></a>Interpolációs és Step kifejezések
 
-Az interpolációs és a Step kifejezésekkel az értékek kiszámíthatók az interpolált görbe vagy a Step függvény használatával. Ezek a kifejezések olyan kifejezéssel rendelkeznek, amely egy numerikus értéket ad vissza bemenetként, például `['get',  'temperature']`. A bemeneti érték kiértékelése a "leállítások" nevű bemeneti és kimeneti értékekkel, az interpolált görbe vagy a Step függvényhez legjobban illeszkedő érték meghatározásával történik. Az egyes leállítás bemeneti értékének számnak kell lennie, és növekvő sorrendben kell lennie. A kimeneti értékeknek számnak, számok tömbének vagy színnek kell lenniük.
+Az interpolációs és a Step kifejezésekkel az értékek kiszámíthatók az interpolált görbe vagy a Step függvény használatával. Ezek a kifejezések olyan kifejezéssel rendelkeznek, amely egy numerikus értéket ad vissza bemenetként, például `['get',  'temperature']`. A bemeneti érték kiértékelése a bemeneti és a kimeneti érték párokkal történik, hogy meghatározza az interpolált görbe vagy a Step függvénynek legjobban illeszkedő értéket. A kimeneti értékeket "leáll" értéknek nevezzük. Az egyes leállítás bemeneti értékének számnak kell lennie, és növekvő sorrendben kell lennie. A kimeneti értékeknek számnak, számok tömbének vagy színnek kell lenniük.
 
 ### <a name="interpolate-expression"></a>Interpolációs kifejezés
 
@@ -527,7 +527,7 @@ A következő pseudocode határozzák meg a `interpolate` kifejezés szerkezeté
 
 **Példa**
 
-Az alábbi példa egy `linear interpolate` kifejezést használ a buborék réteg `color` tulajdonságának beállításához a pont funkció `temperature` tulajdonsága alapján. Ha a `temperature` értéke kisebb, mint 60, akkor a "Blue" értéket adja vissza, ha 60 és kevesebb, mint 70, a sárga értéket adja vissza, ha a 70 és kisebb, mint 80, a rendszer a "narancssárga" értéket adja vissza, ha az 80 vagy nagyobb értéknél a "Red" értéket adja vissza.
+Az alábbi példa egy `linear interpolate` kifejezést használ a buborék réteg `color` tulajdonságának beállításához a pont funkció `temperature` tulajdonsága alapján. Ha a `temperature` értéke kisebb, mint 60, akkor a "Blue" értéket adja vissza. Ha 60-es és 70-nál kisebb, akkor a sárga értéket adja vissza. Ha 70 és kevesebb, mint 80, a rendszer a "narancssárga" értéket adja vissza. Ha 80 vagy nagyobb, akkor a rendszer a "vörös" értéket adja vissza.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -576,7 +576,7 @@ A Step kifejezésekkel közvetlenül a bemeneti érték előtt, vagy az első le
 
 **Példa**
 
-Az alábbi példa egy `step` kifejezést használ a buborék réteg `color` tulajdonságának beállításához a pont funkció `temperature` tulajdonsága alapján. Ha a `temperature` értéke kisebb, mint 60, akkor a "Blue" értéket adja vissza, ha 60 és kevesebb, mint 70, a "sárga" érték lesz visszaadva, ha a 70 és kisebb, mint 80, a "narancssárga" értéket adja vissza, ha az 80 vagy a nagyobb, a "Red" értéket adja vissza a rendszer.
+Az alábbi példa egy `step` kifejezést használ a buborék réteg `color` tulajdonságának beállításához a pont funkció `temperature` tulajdonsága alapján. Ha a `temperature` értéke kisebb, mint 60, akkor a "Blue" értéket adja vissza. Ha 60 és kevesebb, mint 70, a rendszer a "sárga" értéket adja vissza. Ha 70 és kevesebb, mint 80, a rendszer a "narancssárga" értéket adja vissza. Ha 80 vagy nagyobb, akkor a rendszer a "vörös" értéket adja vissza.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -607,10 +607,10 @@ Speciális kifejezések, amelyek csak bizonyos rétegekre érvényesek.
 
 ### <a name="heat-map-density-expression"></a>Hő-Térkép sűrűségének kifejezése
 
-A Heat Map sűrűség kifejezés lekérdezi a Heat Térkép sűrűségének értékét a Heat Térkép réteg minden egyes képpontjához, és `['heatmap-density']`ként van definiálva. Ez az érték egy `0` és `1` közötti szám, amely egy `interpolation` vagy `step` kifejezéssel együtt használatos a hő-Térkép színezéséhez használt színátmenet definiálásához. Ez a kifejezés csak a Heat Map réteg [szín beállításában](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) használható.
+A Heat Map sűrűség kifejezés lekérdezi a Heat Térkép sűrűségének értékét a Heat Térkép réteg minden egyes képpontjához, és `['heatmap-density']`ként van definiálva. Ez az érték `0` és `1`közötti szám. A rendszer `interpolation` vagy `step` kifejezéssel együtt használja, hogy meghatározza a Heat Térkép színezéséhez használt színátmenetet. Ez a kifejezés csak a Heat Map réteg [szín beállításában](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) használható.
 
 > [!TIP]
-> A 0 indexű szín egy interpolációs kifejezésben vagy egy lépés színének alapértelmezett színe határozza meg annak a területnek a színét, amelynél nincs olyan érték, amely a háttér színének meghatározására használható. Számos előnyben részesítette ezt az értéket áttetszőre vagy félig átlátszó feketére állítani. 
+> A 0 indexű szín egy interpolációs kifejezésben vagy egy lépés színének alapértelmezett színe határozza meg annak a területnek a színét, ahol nincs adatmennyiség. A 0. indexben szereplő szín használható a háttér színének meghatározására. Számos előnyben részesítette ezt az értéket áttetszőre vagy félig átlátszó feketére állítani.
 
 **Példa**
 
@@ -630,7 +630,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Amellett, hogy a zökkenőmentes átmenetet egy hő-Térkép színezésére használja, a színek egy `step` kifejezés használatával adhatók meg a tartományokon belül. Ha `step` kifejezést használ a Heat-Térkép színezésére, a sűrűség vizuálisan olyan tartományba kerül, amely jobban hasonlít egy kontúr vagy egy radar stílusú térképre.  
+Amellett, hogy a zökkenőmentes átmenetet egy hő-Térkép színezésére használja, a színek egy `step` kifejezés használatával adhatók meg a tartományokon belül. Ha `step` kifejezést használ a Heat Térkép színezésére, a rendszer vizuálisan lebontja a sűrűséget olyan tartományokra, amelyek egy kontúr vagy egy radar stílusú térképhez hasonlítanak.  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -651,14 +651,14 @@ További információkért lásd a [Heat Map-réteg hozzáadása](map-add-heat-m
 
 ### <a name="line-progress-expression"></a>Vonal állapota kifejezés
 
-Egy sor folyamatjelző kifejezés lekérdezi az előrehaladást egy vonal rétegében lévő átmenetes vonal mentén, és `['line-progress']`ként van definiálva. Ez az érték 0 és 1 közötti szám, és `interpolation` vagy `step` kifejezéssel együtt használatos. Ez a kifejezés csak a vonal rétegének [strokeGradient kapcsolóval]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) használható. 
+Egy sor folyamatjelző kifejezés lekérdezi az előrehaladást egy vonal rétegében lévő átmenetes vonal mentén, és `['line-progress']`ként van definiálva. Ez az érték 0 és 1 közötti szám. `interpolation` vagy `step` kifejezéssel együtt használható. Ez a kifejezés csak a vonal rétegének [strokeGradient kapcsolóval]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) használható. 
 
 > [!NOTE]
 > A vonal rétegének `strokeGradient` beállításához az adatforrás `lineMetrics` beállításának `true`értékre kell állítani.
 
 **Példa**
 
-Az alábbi példa a `['line-progress']` kifejezést használja a színátmenetek egy vonal körvonalára való alkalmazásához.
+Ez a példa a `['line-progress']` kifejezést használja a színátmenetek egy vonal körvonalára való alkalmazásához.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -793,11 +793,11 @@ Ez a réteg az alábbi képen látható módon fogja megjeleníteni a pont funkc
 
 ## <a name="zoom-expression"></a>Nagyítás kifejezése
 
-`zoom` kifejezéssel lehet lekérdezni a Térkép jelenlegi nagyítási szintjét a leképezés időpontjában, és `['zoom']`ként van definiálva. Ez a kifejezés a Térkép minimális és maximális nagyítási szintje közötti számot adja vissza. A kifejezés használata lehetővé teszi, hogy a stílusok dinamikusan legyenek módosítva, mivel módosul a Térkép nagyítási szintje. A `zoom` kifejezés csak `interpolate` és `step` kifejezésekkel használható.
+`zoom` kifejezéssel lehet lekérdezni a Térkép jelenlegi nagyítási szintjét a leképezés időpontjában, és `['zoom']`ként van definiálva. Ez a kifejezés a Térkép minimális és maximális nagyítási szintje közötti számot adja vissza. Azure Maps a web és Android rendszerhez készült interaktív térkép-vezérlőelemek 25 nagyítási szintet (0 – 24) támogatnak. A `zoom` kifejezés használata lehetővé teszi a stílusok dinamikus módosítását, mivel a Térkép nagyítási szintje megváltozik. A `zoom` kifejezés csak `interpolate` és `step` kifejezésekkel használható.
 
 **Példa**
 
-Alapértelmezés szerint a Heat Map rétegben megjelenített adatpontok sugara rögzített képpont-sugárral rendelkezik az összes nagyítási szinthez. Mivel a Térkép kinagyítja az adatösszesítéseket, és a Heat Map-réteg eltérőnek tűnik. Egy `zoom` kifejezés használható a sugár méretezésére az egyes nagyítási szintekhez úgy, hogy az egyes adatpontok a Térkép ugyanazon fizikai területére terjednek ki. Így a Heat Térkép rétegének statikus és konzisztensnek kell lennie. A Térkép minden nagyítási szintje kétszer annyi képpontot tartalmaz függőlegesen és vízszintesen, mint az előző nagyítási szint. A sugár méretezése úgy, hogy az minden nagyítási szinten megduplázódik, egy olyan hő-térképet hoz létre, amely minden nagyítási szinten konzisztensnek tűnik. Ezt a `zoom` kifejezésnek a `base 2 exponential interpolation` kifejezéssel történő használatával lehet elvégezni, ahogy az alábbi ábrán látható. 
+Alapértelmezés szerint a Heat Map rétegben megjelenített adatpontok sugara rögzített képpont-sugárral rendelkezik az összes nagyítási szinthez. Ahogy a Térkép nagyítva van, az adatösszesítések együtt, a Heat Map-réteg pedig eltérőnek tűnik. Egy `zoom` kifejezés használható a sugár méretezésére az egyes nagyítási szintekhez úgy, hogy az egyes adatpontok a Térkép ugyanazon fizikai területére terjednek ki. Így a Heat Térkép rétegének statikus és konzisztensnek kell lennie. A Térkép minden nagyítási szintje kétszer annyi képpontot tartalmaz függőlegesen és vízszintesen, mint az előző nagyítási szint. A sugár skálázása úgy, hogy az minden nagyítási szinten megduplázódik, egy olyan hő-térképet hoz létre, amely minden nagyítási szinten konzisztensnek tűnik. A `zoom` kifejezéssel egy `base 2 exponential interpolation` kifejezéssel is elvégezhető az alább látható módon. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -819,7 +819,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>Változó kötési kifejezések
 
-A változó kötési kifejezések egy változóban tárolják a számítás eredményét, így a kifejezésben máshol is hivatkozhatók, anélkül, hogy újra kellene számítani. Ez egy hasznos optimalizálás olyan kifejezésekhez, amelyek sok számítást tartalmaznak
+Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
 | Kifejezés | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
@@ -828,7 +828,7 @@ A változó kötési kifejezések egy változóban tárolják a számítás ered
 
 **Példa**
 
-Ez a példa egy olyan kifejezést használ, amely a bevételt a hőmérséklet arányhoz viszonyítva kiszámítja, majd egy `case` kifejezés használatával értékeli ki a különböző logikai műveleteket ezen az értéken. A `let` kifejezés a bevételt a hőmérsékleti arányhoz viszonyítva tárolja, így azt csak egyszer kell kiszámítani, és a `var` kifejezés a szükségesnél gyakrabban hivatkozik erre a változóra anélkül, hogy újra kellene számítania.
+Ez a példa egy olyan kifejezést használ, amely a bevételt a hőmérséklet arányhoz viszonyítva kiszámítja, majd egy `case` kifejezés használatával értékeli ki a különböző logikai műveleteket ezen az értéken. A `let` kifejezés a bevétel hőmérsékleti arányhoz viszonyított tárolására szolgál, így csak egyszer kell kiszámítani. A `var` kifejezés a szükségesnél gyakrabban hivatkozik erre a változóra anélkül, hogy újra kellene számítania.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {

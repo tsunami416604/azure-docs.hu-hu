@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133833"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190504"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -175,7 +175,7 @@ A következő példa egy parancsfájlt mutat be. Az erőforráscsoport, a hely, 
 
 Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-képeket [Azure Disk Encryption](../../linux/disk-encryption-overview.md)használatával biztosíthatja. A titkosítás engedélyezése előtt azonban **regisztrálni kell az előfizetést** .  A RHEL BYOS Gold-képek regisztrálásával kapcsolatos részletek a Red Hat webhelyen érhetők el. Lásd: a [rendszer regisztrálása és előfizetése a Red Hat Customer Portalra a Red Hat Subscription-Manager használatával](https://access.redhat.com/solutions/253273). Ha aktív Red Hat-előfizetéssel rendelkezik, akkor olvassa el a [Red Hat Customer Portal aktiválási kulcsainak létrehozását](https://access.redhat.com/articles/1378093)is.
 
-A Azure Disk Encryption [Red Hat egyéni rendszerképeken](/linux/redhat-create-upload-vhd)nem támogatott. A [Linux rendszerű virtuális gépekhez Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements)további ade-követelmények és előfeltételek vannak dokumentálva.
+A Azure Disk Encryption [Red Hat egyéni rendszerképeken](../../linux/redhat-create-upload-vhd.md)nem támogatott. A [Linux rendszerű virtuális gépekhez Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements)további ade-követelmények és előfeltételek vannak dokumentálva.
 
 A Azure Disk Encryption alkalmazására vonatkozó lépések a [Linux rendszerű virtuális gépeken és a kapcsolódó cikkeken Azure Disk Encryption forgatókönyvekben](../../linux/disk-encryption-linux.md) érhetők el.
 

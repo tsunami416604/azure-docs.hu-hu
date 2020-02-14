@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180302"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186088"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban (előzetes verzió)
 
@@ -41,6 +41,9 @@ Egy adott bejelentkezéshez tartozó jelentés-házirend eredményének megtekin
 1. Válasszon ki egy bejelentkezést, vagy adjon hozzá szűrőket a szűkített eredményekhez.
 1. A **részletek** legördülő menüben válassza a **csak jelentés (előzetes verzió)** fület a bejelentkezés során kiértékelt szabályzatok megtekintéséhez.
 
+> [!NOTE]
+> A bejelentkezési naplók letöltésekor válassza a JSON-formátum lehetőséget a feltételes hozzáférés jelentési eredményeinek befoglalásához.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure Monitor integráció beállítása az Azure AD-vel
 
 Ha szeretné megtekinteni a feltételes hozzáférési szabályzatok összesített hatását az új feltételes hozzáférési elemzések használatával, integrálnia kell Azure Monitor az Azure AD-vel, és exportálnia kell a bejelentkezési naplókat. Az integráció beállítása két lépésből áll: 
@@ -61,7 +64,7 @@ Miután Azure Monitorrel integrálta Azure AD-naplóit, a feltételes hozzáfér
 1. Válasszon időtartományt (ha az időtartomány meghaladja a rendelkezésre álló adatkészletet, a jelentés megjeleníti az összes elérhető adatokat). Miután beállította a **feltételes hozzáférési házirendet** és az **időtartomány** paramétereit, a rendszer betölti a jelentést.
    1. Ha szeretné, megkeresheti az egyes **felhasználókat** vagy **alkalmazásokat** , hogy szűkítse a jelentés hatókörét.
 1. Válassza ki az időtartományban lévő, a felhasználók számával vagy a bejelentkezések számával megtekintett értékeit.
-1. Az **adatnézettől**függően a **hatás összegzése** a kiválasztott paraméterek hatókörében lévő felhasználók vagy bejelentkezések számát jeleníti meg, a teljes szám, a **sikeres**, a **hiba**, a **felhasználói beavatkozás**és a nem alkalmazott művelet szerint csoportosítva. Válasszon ki egy csempét egy adott eredményhalmaz bejelentkezésének vizsgálatához. 
+1. Az **adatnézettől**függően a **hatás összegzése** a kiválasztott paraméterek hatókörében lévő felhasználók vagy bejelentkezések számát jeleníti meg, a teljes szám, a **siker**, a **hiba**, a **szükséges felhasználói beavatkozás**és a **nem alkalmazott**beállítások szerint csoportosítva. Válasszon ki egy csempét egy adott eredményhalmaz bejelentkezésének vizsgálatához. 
    1. Ha módosította a munkafüzet paramétereit, dönthet úgy, hogy a későbbi használat érdekében menti a másolatokat. Válassza a Mentés ikont a jelentés tetején, és adjon meg egy nevet és egy helyet a mentéshez.
 1. Görgessen lefelé az egyes feltételekhez tartozó bejelentkezések részletezésének megtekintéséhez.
 1. Tekintse meg a jelentés alján található **bejelentkezési adatokat** , és vizsgálja meg az egyéni bejelentkezési eseményeket, amelyeket a fenti beállítások alapján szűr.

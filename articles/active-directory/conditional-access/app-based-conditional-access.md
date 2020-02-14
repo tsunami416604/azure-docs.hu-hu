@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381126"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186457"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel 
 
-Az alkalmazottak a személyes és munkahelyi feladatokhoz egyaránt használnak mobileszköz-eszközöket. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a Felhőbeli alkalmazásokhoz való hozzáférést a vállalati adatai védelme érdekében jóváhagyott ügyfélalkalmazások számára.  
+Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a Felhőbeli alkalmazásokhoz való hozzáférést a vállalati adatai védelme érdekében jóváhagyott ügyfélalkalmazások számára.  
 
 Ez a témakör azt ismerteti, hogyan konfigurálhat olyan feltételes hozzáférési szabályzatokat, amelyek jóváhagyott ügyfélalkalmazások használatát igénylik.
 
@@ -36,7 +36,7 @@ A feltételes hozzáférési terminológiában ezek az ügyfélalkalmazások **j
 
 ![Feltételes hozzáférés](./media/app-based-conditional-access/05.png)
 
-A jóváhagyott ügyfélalkalmazások listáját itt tekintheti meg: [jóváhagyott ügyfélalkalmazás-követelmény](technical-reference.md#approved-client-app-requirement).
+A jóváhagyott ügyfélalkalmazások listáját itt tekintheti meg: [jóváhagyott ügyfélalkalmazás-követelmény](concept-conditional-access-grant.md).
 
 Az alkalmazás-alapú feltételes hozzáférési szabályzatokat más házirendekkel kombinálhatja, például az [eszközökön alapuló feltételes hozzáférési szabályzatok](require-managed-devices.md) segítségével biztosítható, hogy a személyes és a vállalati eszközök adatainak védelme hogyan védhető.
 
@@ -44,7 +44,7 @@ Az alkalmazás-alapú feltételes hozzáférési szabályzatokat más házirende
 
 Ez a témakör azt feltételezi, hogy már ismeri a következőt:
 
-- A [jóváhagyott ügyfélalkalmazás-követelmény](technical-reference.md#approved-client-app-requirement) technikai útmutatója.
+- A [jóváhagyott ügyfélalkalmazás-követelmény](concept-conditional-access-grant.md).
 - A [Azure Active Directoryban a feltételes hozzáférés](overview.md)alapvető fogalmai.
 - [Feltételes hozzáférési szabályzat konfigurálása](app-based-mfa.md).
 - [Feltételes hozzáférési szabályzatok áttelepítése](best-practices.md#policy-migration).
@@ -262,7 +262,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzathoz a következő ös
 
 További információért lásd: [alkalmazások és adatok védelme Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
 

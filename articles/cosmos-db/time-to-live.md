@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498314"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188720"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) Azure Cosmos DB 
 
@@ -44,9 +44,7 @@ Az élettartam értéke másodpercben van megadva, és a rendszer az elem utols�
 
 * Ha az élettartam nincs beállítva egy tárolón, akkor az ebben a tárolóban lévő elemhez tartozó időtartam nem lép érvénybe. 
 
-* Ha a tárolón lévő TTL-1 értékre van állítva, akkor a tároló egyik eleme, amelynek az élettartama n értékre van állítva, a (z) n másodperc után lejár, és a fennmaradó elemek nem fognak lejárni. 
-
-Az ÉLETTARTAMon alapuló elemek törlése ingyenes. A TTL lejárata miatt a rendszer nem számít fel további költségeket (azaz nincs további RUs felhasználva).
+* Ha a tárolón lévő TTL-1 értékre van állítva, akkor a tároló egyik eleme, amelynek az élettartama n értékre van állítva, a (z) n másodperc után lejár, és a fennmaradó elemek nem fognak lejárni.
 
 ## <a name="examples"></a>Példák
 
@@ -84,7 +82,7 @@ A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 |TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
 |TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhatja az élettartamot a következő cikkekben:
 

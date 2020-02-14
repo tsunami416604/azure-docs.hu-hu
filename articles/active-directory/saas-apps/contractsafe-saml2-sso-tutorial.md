@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291532"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185619"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a ContractSafe egy saml2 SSO-val
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátum használatával: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot a [ContractSafe egy SAML2 SSO-ügyfél támogatási csapatával](mailto:donne@contractsafe.com) az értékek lekéréséhez. A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot a [ContractSafe egy SAML2 SSO-ügyfél támogatási csapatával](mailto:support@contractsafe.com) az értékek lekéréséhez. A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
 
 1. A ContractSafe egy saml2 SSO adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -95,18 +95,18 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
     | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
-    | EmailName | User. userPrincipalName |
+    | EmailName | user.userprincipalname |
     | e-mail | User. onpremisesuserprincipalname |
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját**. Válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez, majd mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
 1. A **ContractSafe egy saml2-SSO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-## <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+## <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal **B. Simon**néven.
 
@@ -118,7 +118,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal **B.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
-## <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+## <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban a **B. Simon** számára engedélyezi az Azure SSO használatát azáltal, hogy hozzáférést biztosít a CONTRACTSAFE egy saml2 SSO-hoz.
 
@@ -126,7 +126,7 @@ Ebben a szakaszban a **B. Simon** számára engedélyezi az Azure SSO használat
 1. Az alkalmazások listában válassza a **ContractSafe egy saml2 egyszeri bejelentkezés**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, majd válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -138,11 +138,11 @@ Ebben a szakaszban a **B. Simon** számára engedélyezi az Azure SSO használat
 
 ## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe egy saml2 SSO konfigurálása
 
-Ha az SSO-t a **ContractSafe egy SAML2 SSO** oldalon szeretné konfigurálni, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [ContractSafe egy saml2 SSO támogatási csapatának](mailto:donne@contractsafe.com). A csapat feladata az SAML SSO-kapcsolatok megfelelő beállítása mindkét oldalon.
+Ha az SSO-t a **ContractSafe egy SAML2 SSO** oldalon szeretné konfigurálni, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [ContractSafe egy saml2 SSO támogatási csapatának](mailto:support@contractsafe.com). A csapat feladata az SAML SSO-kapcsolatok megfelelő beállítása mindkét oldalon.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>ContractSafe-egy saml2 SSO-teszt felhasználó létrehozása
 
-Hozzon létre egy B. Simon nevű felhasználót a ContractSafe egy saml2 SSO-ban. A [ContractSafe egy SAML2 SSO támogatási csapatával](mailto:donne@contractsafe.com) a felhasználókat a CONTRACTSAFE egy saml2 SSO platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Hozzon létre egy B. Simon nevű felhasználót a ContractSafe egy saml2 SSO-ban. A [ContractSafe egy SAML2 SSO támogatási csapatával](mailto:support@contractsafe.com) a felhasználókat a CONTRACTSAFE egy saml2 SSO platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: b9d2b3916e4509e5ce3aa8a9ddd66f1cf14a8827
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 27682863a96e2f190a0dafe6e4d783029e987453
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690874"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201645"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 
 Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépített lemezképével végezheti el. Ez a cikk az új funkciókkal és fejlesztésekkel kapcsolatos dokumentációs módosításokat összegzi az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)legújabb kiadásaiban. 
 
 
-## <a name="january-2020"></a>Január 2020
+## <a name="january-2020"></a>2020. január
 
 | Változások | Részletek |
 | --- | --- |
@@ -50,11 +50,11 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | **Egyéni rendszerkép-támogatás** | Most már telepítheti a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) az egyéni operációs rendszerre és az SQL-lemezképekre, amely a [rugalmas licencelés](virtual-machines-windows-sql-ahb.md)korlátozott funkcionalitását kínálja. Ha az egyéni rendszerképét az SQL-erőforrás-szolgáltatóval regisztrálja, adja meg a licenc típusát "AHUB" néven. Ellenkező esetben a regisztráció sikertelen lesz. | 
 | **Megnevezett példányok támogatása** | Mostantól a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) megnevezett példánnyal is használhatja, ha az alapértelmezett példány eltávolítása megfelelő volt. | 
 | **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg [a rövid útmutatót, valamint](quickstart-sql-vm-create-portal.md) a SQL Server VM üzembe helyezésének részletes [leírását](virtual-machines-windows-portal-sql-server-provision.md) .|
-|  **Portál fejlesztése** | Mostantól lehetőség van egy SQL Server VM licencelési modelljének módosítására, ha a saját licencét a [Azure Portal](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)használatával szeretné felvenni.|
+| **Portál fejlesztése** | Mostantól lehetőség van egy SQL Server VM licencelési modelljének módosítására, ha a saját licencét a [Azure Portal](virtual-machines-windows-sql-ahb.md#vms-already-registered-with-the-resource-provider)használatával szeretné felvenni.|
 | **A rendelkezésre állási csoport központi telepítésének egyszerűsítése az Azure SQL Server VM parancssori felülettel** | Mostantól minden eddiginél könnyebben üzembe helyezhet egy rendelkezésre állási csoportot az Azure-SQL Server VM. Az [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) használatával létrehozhatja a Windows feladatátvevő fürtöt, a belső terheléselosztó és a rendelkezésre állási csoport figyelőit a parancssorból. További információ: [az azure SQL Server VM CLI használata az Always On rendelkezésre állási csoport konfigurálásához az Azure-beli virtuális](virtual-machines-windows-sql-availability-group-cli.md)gépeken való SQL Serverhoz. | 
 | &nbsp; | &nbsp; |
 
-## <a name="2018"></a>2018 
+## <a name="2018"></a>2018. 
 
  Változások | Részletek |
 | --- | --- |

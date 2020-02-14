@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836048"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193379"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -48,32 +48,32 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {Kulturális környezet: LanguageName} | A nyelv két betűs ISO-kódja. | en |
+| {Kulturális környezet: LanguageName} | A nyelv két betűs ISO-kódja. | hu |
 | {Kulturális környezet: LCID}   | A nyelvi kód LCID-je. | 1033 |
-| {Kulturális környezet: RegionName} | A régió két betűs ISO-kódja. | Egyesült Államok |
-| {Kulturális környezet: RFC5646} | A RFC5646 nyelvének kódja | en-US |
+| {Kulturális környezet: RegionName} | A régió két betűs ISO-kódja. | USA |
+| {Kulturális környezet: RFC5646} | A RFC5646 nyelvének kódja | hu-HU |
 
 ### <a name="policy"></a>Szabályzat
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {Policy: PolicyId} | A függő entitás házirendjének neve. | B2C_1A_signup_signin |
-| {Policy: RelyingPartyTenantId} | A függő entitás házirendjének bérlői azonosítója. | your-tenant.onmicrosoft.com |
-| {Policy: TenantObjectId} | A függő entitás házirendjének bérlői objektumának azonosítója. | 00000000-0000-0000-0000-000000000000 |
-| {Policy: TrustFrameworkTenantId} | A megbízhatósági keretrendszer bérlői azonosítója. | your-tenant.onmicrosoft.com |
+| {Policy:PolicyId} | A függő entitás házirendjének neve. | B2C_1A_signup_signin |
+| {Policy:RelyingPartyTenantId} | A függő entitás házirendjének bérlői azonosítója. | your-tenant.onmicrosoft.com |
+| {Policy:TenantObjectId} | A függő entitás házirendjének bérlői objektumának azonosítója. | 00000000-0000-0000-0000-000000000000 |
+| {Policy:TrustFrameworkTenantId} | A megbízhatósági keretrendszer bérlői azonosítója. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | – |
-| {OIDC: ClientId} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | facebook.com |
-| {OIDC: LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
-| {OIDC: MaxAge} | A `max_age`. | – |
-| {OIDC: alkalom} |A `Nonce` lekérdezési karakterlánc paraméter. | defaultNonce |
-| {OIDC: prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
-| {OIDC: erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | – |
+| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N/A |
+| {OIDC:ClientId} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC:DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | facebook.com |
+| {OIDC:LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
+| {OIDC:MaxAge} | A `max_age`. | N/A |
+| {OIDC:Nonce} |A `Nonce` lekérdezési karakterlánc paraméter. | defaultNonce |
+| {OIDC:Prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
+| {OIDC: erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: hatókör} |A `scope` lekérdezési karakterlánc paraméter. | OpenID |
 
 ### <a name="context"></a>Környezet
@@ -81,10 +81,10 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {Context: BuildNumber} | Az Identity Experience Framework verziószáma (Build száma).  | 1.0.507.0 |
-| {Context: CorrelationId} | A korrelációs azonosító.  | 00000000-0000-0000-0000-000000000000 |
-| {Context: DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
-| {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Éles üzem |
-| {Context: Ip_cím} | A felhasználó IP-címe. | 11.111.111.11 |
+| {Context:CorrelationId} | A korrelációs azonosítót.  | 00000000-0000-0000-0000-000000000000 |
+| {Context:DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
+| {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Production |
+| {Context:IPAddress} | A felhasználó IP-címe. | 11.111.111.11 |
 
 
 ### <a name="non-protocol-parameters"></a>Nem protokoll paraméterek
@@ -93,16 +93,38 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV: campaignId} | Egy lekérdezési karakterlánc paraméter. | Hawaii |
-| {OAUTH-KV: app_session} | Egy lekérdezési karakterlánc paraméter. | A3C5R |
-| {OAUTH-KV: loyalty_number} | Egy lekérdezési karakterlánc paraméter. | 1234 |
-| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | – |
+| {OAUTH-KV:campaignId} | Egy lekérdezési karakterlánc paraméter. | Hawaii |
+| {OAUTH-KV:app_session} | Egy lekérdezési karakterlánc paraméter. | A3C5R |
+| {OAUTH-KV:loyalty_number} | Egy lekérdezési karakterlánc paraméter. | 1234 |
+| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | N/A |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {oauth2: access_token} | A hozzáférési jogkivonat. | – |
+| {oauth2: access_token} | A hozzáférési jogkivonat. | N/A |
+
+## <a name="using-claim-resolvers"></a>Jogcímek feloldóinak használata 
+
+A jogcímek feloldóit a következő elemekkel használhatja: 
+
+| Elem | Elem | Beállítások |
+| ----- | ----------------------- | --------|
+|Application Insights műszaki profil |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) – technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[Jogcím-átalakítási](claims-transformation-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[Rest-szolgáltató](restful-technical-profile.md) technikai profilja| `InputClaim`| 1, 2|
+|[Egy saml2](saml-technical-profile.md) műszaki profil| `OutputClaim`| 1, 2|
+|[Önérvényesített](self-asserted-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile) műszaki profil| `OutputClaim`| 2 |
+
+Beállítások 
+1. A `IncludeClaimResolvingInClaimsHandling` metaadatokat a következőre kell beállítani `true`
+1. A bemeneti vagy kimeneti jogcímek attribútumának `AlwaysUseDefaultValue` értéknek kell lennie `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>A jogcím-feloldók használata
 

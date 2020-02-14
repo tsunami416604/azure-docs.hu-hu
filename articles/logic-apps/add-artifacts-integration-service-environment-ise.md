@@ -1,17 +1,17 @@
 ---
-title: Összetevők hozzáadása az integrációs szolgáltatási környezethez
-description: Logikai alkalmazások, integrációs fiókok és egyéni összekötők hozzáadása az integrációs szolgáltatási környezethez (ISE) az Azure Virtual Networks (virtuális hálózatok) eléréséhez
+title: Összetevők felvétele integrációs szolgáltatási környezetekbe
+description: Logikai alkalmazások, integrációs fiókok, egyéni összekötők és felügyelt összekötők hozzáadása az integrációs szolgáltatási környezethez (ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 02/10/2020
+ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732237"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191663"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Összetevők hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -33,18 +33,19 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    ![Új logikai alkalmazás hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   – vagy –
+1. Adja meg a létrehozni kívánt logikai alkalmazás adatait, például:
 
-   Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integráció** > **logikai alkalmazás**lehetőséget.
+   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-1. Adja meg a logikai alkalmazáshoz használni kívánt nevet, Azure-előfizetést és Azure-erőforráscsoportot (új vagy meglévő).
+   | Tulajdonság | Kötelező | Leírás |
+   |----------|----------|-------------|
+   | **Name (Név)** | Igen | A létrehozandó logikai alkalmazás neve |
+   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   ||||
 
-1. A **hely** listában az **integrációs szolgáltatási környezetek** szakaszban válassza ki az ISE-t, például:
-
-   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-logic-app-with-integration-service-environment.png)
-
-   > [!IMPORTANT]
-   > Ha a logikai alkalmazásait egy integrációs fiókkal szeretné használni, akkor ezeknek a logikai alkalmazásoknak és az integrációs fióknak ugyanazt az ISE-t kell használniuk.
+1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. Folytassa a [logikai alkalmazás létrehozását a szokásos módon](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -64,15 +65,20 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
    ![Új integrációs fiók hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   – vagy –
+1. Adja meg a létrehozni kívánt logikai alkalmazás adatait, például:
 
-   Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integráció** > **integrációs fiók**lehetőséget.
+   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-1. Adja meg az integrációs fiókjához használni kívánt nevet, Azure-előfizetést, Azure-erőforráscsoportot (új vagy meglévő) és díjszabási szintet.
+   | Tulajdonság | Kötelező | Leírás |
+   |----------|----------|-------------|
+   | **Name (Név)** | Igen | A létrehozni kívánt integrációs fiók neve |
+   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Tarifacsomag** | Igen | Az integrációs fiókhoz használandó díjszabási csomag |
+   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   ||||
 
-1. A **hely** lista **integrációs szolgáltatási környezetek** szakaszában válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, például:
-
-   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-integration-account-with-integration-service-environment.png)
+1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. [Kapcsolja össze a logikai alkalmazást az integrációs fiókjával a szokásos módon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -110,7 +116,7 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
 1. A **hely** listában az **integrációs szolgáltatási környezetek** szakaszban válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, majd válassza a **Létrehozás**lehetőséget, például:
 
-   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-with-integration-service-environment.png)
+   ![Integrációs szolgáltatási környezet kiválasztása](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Válassza ki az új egyéni összekötőt, majd válassza a **Szerkesztés**lehetőséget, például:
 

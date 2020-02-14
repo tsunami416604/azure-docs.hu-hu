@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057209"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190893"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -107,7 +107,7 @@ A saját örökölt módszereiket használó alkalmazások az Azure AD-vel való
 
 1. [Az örökölt hitelesítés letiltása, ha AD FS használ](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. [A SharePoint Online és az Exchange Online beállítása modern hitelesítés használatára](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Ha prémium szintű Azure AD rendelkezik, használja a [feltételes hozzáférési szabályzatokat](../../active-directory/conditional-access/conditions.md) az örökölt hitelesítés blokkolására, ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
+3. Ha prémium szintű Azure AD rendelkezik, használja a [feltételes hozzáférési szabályzatokat](../../active-directory/conditional-access/overview.md) az örökölt hitelesítés blokkolására, ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Érvénytelen hitelesítési belépési pontok blokkolása
 

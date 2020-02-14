@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846171"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185911"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>A feltételes hozzáférés klasszikus szabályzatának áttelepítése
 
@@ -89,7 +89,7 @@ Ha van olyan új szabályzata, amely **Exchange Active Sync** ügyfél-alkalmaz�
 
 ![Feltételes hozzáférési feltételek](./media/policy-migration/16.png)
  
-Az Office 365 Exchange Online-hoz készült, [alkalmazáson alapuló](technical-reference.md#approved-client-app-requirement) klasszikus házirendek, amelyek tartalmazzák a **Exchange Active Sync** as Client apps-feltételt, lehetővé teszik a **támogatott** és nem **támogatott** [eszközök platformját](technical-reference.md#device-platform-condition) Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](technical-reference.md#device-platform-condition) korlátozhatja a támogatást. 
+Az Office 365 Exchange Online-hoz készült, alkalmazáson alapuló klasszikus házirendek, amelyek tartalmazzák a **Exchange Active Sync** as Client apps-feltételt, lehetővé teszik a **támogatott** és nem **támogatott** eszközök platformját Habár a kapcsolódó új házirendekben nem konfigurálhat egyedi eszközöket, csak a [támogatott eszközökre](concept-conditional-access-conditions.md#device-platforms) korlátozhatja a támogatást. 
 
 ![Feltételes hozzáférés az Exchange ActiveSync kiválasztása](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ Ebben az esetben a klasszikus szabályzatokat egy új házirendbe összevonhatja
 
 ### <a name="device-platforms"></a>Eszköz platformok
 
-Az [alkalmazáson alapuló vezérlőkkel](technical-reference.md#approved-client-app-requirement) rendelkező klasszikus szabályzatok előre konfigurálva vannak az iOS és az Android [platformon az eszköz platformjának feltétele](technical-reference.md#device-platform-condition). 
+Az alkalmazáson alapuló vezérlőkkel rendelkező klasszikus szabályzatok előre konfigurálva vannak az iOS és az Android platformon az eszköz platformjának feltétele. 
 
-Egy új szabályzatban ki kell választania a támogatni kívánt [eszközök platformját](technical-reference.md#device-platform-condition) .
+Egy új szabályzatban ki kell választania a támogatni kívánt [eszközök platformját](concept-conditional-access-conditions.md#device-platforms) .
 
 ![Feltételes hozzáférésű eszköz platformok kiválasztása](./media/policy-migration/41.png)
 

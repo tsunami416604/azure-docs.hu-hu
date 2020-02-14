@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906850"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201781"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -46,6 +46,8 @@ Jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előny
 a 10ZiG technológia, amelynek élvonalbeli vékony és zéró ügyfélszoftvere és szoftvere, régóta partner a Microsofttal és egy dedikált Microsoft Azure és Windowsos virtuális asztali partnerrel. a 10ZiG Windows 10 IoT-alapú vékony ügyfelek hatékony, megbízható és megfizethető végpontok a Windows rendszerű virtuális asztali felhasználók számára. a 10ZiG Manager szoftver kivételes felügyeletet és üzembe helyezést biztosít a licencek korlátozásai nélkül. A 10ZiG Tech csapata, a Advance jótállási program és a problémamentes bemutatók egy Windowsos virtuális asztali többmunkamenetes támogatási megoldás a felhőben.
 
 a 10ZiG's globális piaci vezetése a virtuális asztalok esetében a vékony és a nulla ügyfél-végponti eszközökön és a felügyeleti szoftvereken alapul, és az ügyfelekre való munkavégzésük példája. A vékony ügyfél hardvere elgondolkodva kiépített juttatási funkciókkal és lehetőségekkel rendelkezik, amelyekkel biztosítható, hogy az ügyfelek az igényeik alapján kapják meg a megfelelő ügyféleszközök igényeit. a 10ZiG testreszabja az eszközeit úgy, hogy a Windows-alapú és Linux-alapú ügyfelekkel is illeszkedjenek az ügyfél-környezetekhez, amelyek a lehető legjobb teljesítményt biztosítják a virtuális asztalok számára a felhőn belül és kívül is.
+
+- [Lépjen a partner webhelyére](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -148,6 +150,8 @@ A Liquidware Essentials a felhasználói profilok hatékony betakarításával �
 A Liquit alkalmazás-összesítés és-továbbítási szoftver lehetővé teszi a vállalatok és szolgáltatók számára, hogy az összes munkaterület-háttér (Citrix, VMWare, Windows virtuális asztal, RDP és örökölt) használatával csatlakozzanak és kombinálva legyenek, és testre szabott és konzisztens ügyfeleket nyújtsanak. felhasználói élmény, függetlenül attól, hogy hol találhatók az ügyfél alkalmazásai. Amikor egy ügyfél közzéteszi az intelligens ikont, a Liquit eldönti, hogy hol szeretné elindítani az alkalmazást az ügyfél helyének, eszközének és profiljának jogai alapján.
 
 Certified Integration partnerként a Liquit a felhőbe való áttérést a RIP és a csere késleltetése nélkül segíti. A Windows virtuális asztal egyszerűen csatlakozhat egy meglévő környezethez, létrehozhat egy munkaterületet, és elvégezheti az asztalt. Ezt követően elvégezheti a régi platformok áttelepítését, és a felhasználók közötti változások nélkül végezheti el a módosításokat. Következetes végfelhasználói élményt és rugalmas infrastruktúrát nyerhet, és kezelheti az alkalmazásait, függetlenül attól, hogy hol vannak.
+
+- [Lépjen a partner webhelyére](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Bejelentkezési VSI
 

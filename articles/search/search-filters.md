@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406742"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191019"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
@@ -51,7 +51,7 @@ Ha szűkítő hatást szeretne a keresési eredményekre, a szűrők nem az Ön 
 
 + `$select` paraméterrel határozható meg, hogy mely mezők szerepeljenek egy eredményhalmaz számára, és hogy a válasz ténylegesen a hívó alkalmazásba való küldés előtt legyen kimetszve. Ez a paraméter nem pontosítja a lekérdezést, vagy nem csökkenti a dokumentum-gyűjteményt, de ha a cél kisebb válasz, ez a paraméter egy megfontolandó lehetőség. 
 
-A paraméterekkel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paraméterek](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+A paraméterekkel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paraméterek](/rest/api/searchservice/search-documents#query-parameters).
 
 
 ## <a name="how-filters-are-executed"></a>A szűrők végrehajtása
@@ -197,8 +197,8 @@ További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search](search-lucene-query-architecture.md)
-+ [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
++ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

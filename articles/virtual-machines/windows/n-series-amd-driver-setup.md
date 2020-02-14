@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 7527cd59ef812c108cc53f84ad19f4d2cff9ec5e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893566"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190545"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -37,7 +37,7 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 
 1. Kapcsolódjon Távoli asztal az egyes NVv4-sorozatú virtuális gépekhez.
 
-1. Letölt és kinyeri az illesztőprogram-telepítő fájljait. Navigáljon a mappához, és futtassa a Setup. exe fájlt a támogatott illesztőprogram telepítéséhez a Windows operációs rendszerhez.
+1. Töltse le és csomagolja ki az illesztőprogram-telepítő fájljait. Navigáljon a mappához, és futtassa a Setup. exe fájlt a támogatott illesztőprogram telepítéséhez a Windows operációs rendszerhez.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 

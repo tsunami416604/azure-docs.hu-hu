@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 495fa3837681fb2a78d86e6c34d4b4888b1e37f4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863682"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198649"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Virtuális hálózati átjáró törlése a PowerShell (klasszikus) használatával
 
@@ -29,15 +29,22 @@ Ez a cikk segítséget nyújt a VPN-átjárók törlésében a klasszikus üzemi
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Telepítse a legújabb PowerShell-parancsmagokat.
 
-Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="2-connect-to-your-azure-account"></a>2. kapcsolódjon az Azure-fiókhoz. 
+### <a name="2-connect-to-your-azure-account"></a>2. kapcsolódjon az Azure-fiókhoz.
 
 Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
-```powershell
-Add-AzureAccount
-```
+1. Nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal. A Service Management szolgáltatásra való váltáshoz használja a következő parancsot:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Csatlakozás a fiókhoz. A következő példa segít a kapcsolódásban:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="export"></a>2. lépés: a hálózati konfigurációs fájl exportálása és megtekintése
 

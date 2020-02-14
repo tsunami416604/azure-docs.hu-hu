@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Szószedet | Microsoft Docs
-description: A Azure Maps, a Location based Services és a GIS szolgáltatáshoz kapcsolódó általánosan használt kifejezések glosszáriuma.
+description: A Azure Maps, a hely-alapú szolgáltatásokhoz és a GIS-hez kapcsolódó általánosan használt kifejezések glosszáriuma.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408871"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198241"
 ---
-# <a name="glossary"></a>Fogalmak
+# <a name="glossary"></a>Szószedet
 
-A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
+Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat ismerteti.
 
 ## <a name="a"></a>A
 
 <a name="address-validation"></a>**Címek ellenőrzése**: a címek létezésének ellenőrzésének folyamata.
 
-<a name="advanced-routing"></a>**Speciális útválasztás**: olyan szolgáltatások gyűjteménye, amelyek a közúti útválasztási adatok használatával végzik az előzetes műveleteket, például a elérhető tartományok (izokrón), a távolsági mátrixok és a kötegelt útvonal-kérelmek kiszámítását.
+<a name="advanced-routing"></a>**Speciális útválasztás**: olyan szolgáltatások gyűjteménye, amelyek a közúti útválasztási adatok használatával végzik az előzetes műveleteket. például a elérhető tartományok (izokrón), a távolsági mátrixok és a kötegelt útválasztási kérelmek kiszámítása.
 
 <a name="aerial-imagery"></a>**Légi képképek**: lásd a [műholdképeket](#satellite-imagery). 
 
-<a name="along-a-route-search"></a>**Útvonal-keresés**: olyan térbeli lekérdezés, amely egy megadott lefoglalási időponton vagy távolságon belül található adatokra keres.
+<a name="along-a-route-search"></a>**Útvonal-keresés**: egy térbeli lekérdezés, amely egy megadott leadási idő vagy távolság alapján keresi az adatok útvonalon belüli elérését.
 
 <a name="altitude"></a>**Magasság**: egy pont magassága vagy függőleges megemelése egy hivatkozási felület fölé. A magassági mérések egy adott hivatkozási adaton alapulnak, például az átlagos tengeri szinten. Lásd még: Jogosultságszint-emelés.
 
-<a name="ambiguous"></a>Nem **egyértelmű**: az adatbesorolásban olyan bizonytalansági állapot áll fenn, amely akkor fordulhat elő, ha egy adott attribútumhoz legalább két érték van hozzárendelve. Ha például a "CA" helymeghatározáshoz két kétértelmű eredményt ad vissza; A "Kanada" és a "Kalifornia", mint "CA", az egyes országok és az állam kódja. 
+<a name="ambiguous"></a>Nem **egyértelmű**: az adatbesorolásban olyan bizonytalansági állapot áll fenn, amely akkor fordulhat elő, ha egy adott attribútumhoz legalább két érték van hozzárendelve. Ha például a "CA" helymeghatározáshoz, a rendszer két kétértelmű eredményt ad vissza: "Kanada" és "Kalifornia". A "CA" egy ország és egy állapotkód a "Kanada" és "Kalifornia" esetében. 
 
 <a name="annotation"></a>**Jegyzet**: a térképen megjelenített szöveg vagy grafika, amely információkat biztosít a felhasználónak. A jegyzet azonosíthatja vagy leírhatja egy adott Térkép entitást, általános információkat adhat meg a Térkép egy területéről, vagy magáról a térképről szolgáltathat információkat.
 
-<a name="antimeridian"></a>**Antimeridian**: az 180<sup>th</sup> meridián az a pont, ahol a-180 fok és a 180 fok a hosszúságnak felel meg. Ez a fő meridián a világon.
+<a name="antimeridian"></a>**Antimeridian**: az 180<sup>th</sup> meridián néven is ismert. Ez az a pont, ahol az-180 fok és a 180 fok hosszúsága megfelel. Ez a Prime Meridian ellentéte a világon.
 
 <a name="application-programming-interface-api"></a>Alkalmazásprogramozási **felület (API)** : olyan specifikáció, amely lehetővé teszi, hogy a fejlesztők alkalmazásokat hozzanak létre.
 
 <a name="api-key"></a>**API-kulcs**: Tekintse meg a [megosztott kulcsos hitelesítést](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a>**Érdeklődési terület (AOI)** : a Térkép-vagy adatbázis-előállítás fókusz területének meghatározásához használt mérték.
+<a name="area-of-interest-aoi"></a>**Érdeklődési terület (AOI)** : a Térkép vagy az adatbázis-termelés fókusz területének meghatározásához használt mérték.
 
-<a name="asset-tracking"></a>**Eszköz nyomon követése**: egy eszköz, például személy, jármű vagy más objektum helyének nyomon követési folyamata.
+<a name="asset-tracking"></a>**Eszköz nyomon követése**: egy eszköz helyének (például személy, jármű vagy más objektum) nyomon követésének folyamata.
 
 <a name="asynchronous-request"></a>**Aszinkron kérelem**: egy olyan HTTP-kérelem, amely megnyit egy kapcsolódást, és kérést küld a kiszolgálónak, amely visszaadja az aszinkron kérelem azonosítóját, majd bezárja a kapcsolódást. A kiszolgáló továbbra is feldolgozza a kérést, és a felhasználó az azonosítót használva megtekintheti az állapotot. A kérelem feldolgozása után a felhasználó letöltheti a választ. Ez a típusú kérelem hosszú ideig futó folyamatokhoz használható.
 
@@ -71,15 +71,15 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="bounding-box"></a>**Határolókeret**: a térképen egy téglalap alakú terület ábrázolására szolgáló koordináták halmaza. 
 
-## <a name="c"></a>C#
+## <a name="c"></a>C
 
 <a name="cadastre"></a>**Kataszter**: a regisztrált földterületek és tulajdonságok nyilvántartása. Lásd még: [parcella](#parcel).
 
-<a name="camera"></a>**Kamera**: egy interaktív térkép vezérlőelem kontextusában a kamera a térképek mezőt határozza meg. A kamera nézetablaka több térképi paraméter alapján van meghatározva. középpont, nagyítási szint, szurok, csapágy. 
+<a name="camera"></a>**Kamera**: egy interaktív térkép vezérlőelem kontextusában a kamera a térképek mezőt határozza meg. A kamera nézetablaka több térképi paraméter alapján van meghatározva: középpont, nagyítási szint, pitch, csapágy. 
 
 <a name="centroid"></a>**Középpontját**: egy szolgáltatás geometriai középpontja. A vonal középpontját a középpont, miközben a sokszög középpontját a terület középpontja lenne.
 
-<a name="choropleth-map"></a>**Choropleth Térkép**: egy tematikus Térkép, amelyben a területek árnyékolva vannak egy, a térképen megjelenített statisztikai változó mértékének arányában. Például az egyes államokbeli állapotok határait az összes többi államra vonatkozó relatív populációjuk alapján színezheti.
+<a name="choropleth-map"></a>**Choropleth Térkép**: egy tematikus Térkép, amelyben a területek árnyékolva vannak egy statisztikai változó mértékének arányában. Ez a statisztikai változó megjelenik a térképen. Például az egyes államokbeli állapotok határait az összes többi államra vonatkozó relatív populációjuk alapján színezheti.
 
 <a name="concave-hull"></a>**Konkáv hajótest**: egy olyan alakzat, amely egy lehetséges homorú geometriát jelöl, amely a megadott adatkészletben lévő összes alakzatot befedi. A generált alakzat hasonló az adatcsomagoláshoz a műanyag becsomagolással, majd a fűtéssel, így nagy mértékben átível a pontok közötti, és az egyéb adatpontok felé irányuló kapcsolat.
 
@@ -127,11 +127,11 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a>**Jogosultságszint-emelés**: egy pont vagy objektum függőleges távolsága egy hivatkozási felület vagy egy adat alatt (általában a tengerszint szintjén). A Jogosultságszint-emelés általában a föld függőleges magasságára utal.
+<a name="elevation"></a>**Jogosultságszint-emelés**: egy pont vagy egy objektum függőleges távolsága a hivatkozási felület vagy az adat alatt. A hivatkozási felület általában a tengerszint szintjének minősül. A Jogosultságszint-emelés általában a föld függőleges magasságára utal.
 
 <a name="envelope"></a>**Boríték**: lásd a [határolókeret mezőt](#bounding-box).
 
-<a name="extended-postal-code"></a>**Kiterjesztett irányítószám**: olyan postai kód, amely további információkat tartalmazhat. Az USA-ban például a zip-kódok öt számjegyből állnak, de egy zip + 4 néven bővített zip-kód is tartalmaz négy további számjegyet. Ezek a további számjegyek egy földrajzi szegmens azonosítására szolgálnak az öt számjegyből álló kézbesítési területen, például egy város blokkban, egy apartmanban vagy egy posta mezőben, amely a hatékony levelezés rendezését és kézbesítését segíti.
+<a name="extended-postal-code"></a>**Kiterjesztett irányítószám**: olyan postai kód, amely további információkat tartalmazhat. Az USA-ban például a zip-kódok öt számjegyből állnak. A zip + 4 néven ismert kiterjesztett zip-kód azonban négy további számjegyet tartalmaz. Ezek a további számjegyek a földrajzi szegmensek azonosítására szolgálnak az öt számjegyből álló kézbesítési területen, például a város blokkjában, az apartmanok csoportjain vagy egy posta mezőben. Annak ismerete, hogy a földrajzi szegmensek hogyan segítik a hatékony levelezés rendezését és kézbesítését.
 
 <a name="extent"></a>**Mérték**: lásd a [határolókeret mezőt](#bounding-box).
 
@@ -147,7 +147,7 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="find-nearby"></a>A **közelben található**: olyan térbeli lekérdezés, amely egy pontról rögzített egyenes távolságú (például a varjú legyek).
 
-<a name="fleet-management"></a>**Flotta-felügyelet**: a kereskedelmi járművek, például az autók, teherautók, hajók és repülőgépek felügyeletét. A flotta-felügyelet számos függvényt tartalmazhat, például a járművek finanszírozását, karbantartását, telematikai (követési és diagnosztikai), valamint az illesztőprogramok, a sebesség, az üzemanyag, valamint az állapot-és biztonsági felügyeletet. A flotta-felügyelet a vállalaton belüli szállítást használó vállalatok által használt folyamat, amely minimalizálja a kockázatokat, és csökkenti a teljes szállítási és személyzeti költségeket, miközben biztosítja a kormányzati jogszabályoknak való megfelelést.
+<a name="fleet-management"></a>**Flotta-felügyelet**: a kereskedelmi járművek, például az autók, teherautók, hajók és repülőgépek felügyeletét. A flotta-felügyelet számos függvényt tartalmazhat, például a járművek finanszírozását, karbantartását, telematikai (követési és diagnosztikai), valamint az illesztőprogramok, a sebesség, az üzemanyag, valamint az állapot-és biztonsági felügyeletet. A flotta-felügyelet a vállalatok által a vállalaton belüli szállításra támaszkodó folyamat. A vállalatok minimalizálni szeretnék a kockázatokat, és csökkentik a teljes szállítási és személyzeti költségeket, miközben biztosítják a kormányzati jogszabályoknak való megfelelést.
 
 <a name="free-flow-speed"></a>**Szabad áramlási sebesség**: az ideális körülmények között a szabad áramlási sebesség várható. Általában a sebességkorlátozás.
 
@@ -217,7 +217,7 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a>**Landsat**: többspektrumos, a NASA által fejlesztett, föld által keringő szatellitek, amelyek számos iparágban, például a mezőgazdaságban, az erdészetben és a térképészeti területeken használt képeket gyűjtenek.
+<a name="landsat"></a>**Landsat**: többspektrumos, a NASA által fejlesztett, a föld képének begyűjtését biztosító műholdak. Ez a képek számos iparágban, például a mezőgazdaságban, az erdészetben és a térképészeti szolgáltatásokban használatosak.
 
 <a name="latitude"></a>**Szélesség**: a szögletes távolság az Egyenlítőtől az Észak-vagy Dél irányában mérve.
 
@@ -247,7 +247,7 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="multipoint"></a>**Multipoint**: a pont objektumok gyűjteményét jelképező geometria.
 
-<a name="multipolygon"></a>**Többsokszögű**: a sokszög objektumok gyűjteményét jelképező geometria. Ha például a Hawaii határát szeretné megjeleníteni, az egyes szigeteket egy sokszögtel láthatja el, és a Hawaii határa így egy több sokszög.
+<a name="multipolygon"></a>**Többsokszögű**: a sokszög objektumok gyűjteményét jelképező geometria. Ha például a Hawaii határát szeretné megjeleníteni, az egyes szigeteket sokszögtel kell megrajzolni. Így a Hawaii határa egy többsokszögű.
 
 <a name="municipality"></a>**Település**: város vagy város. 
 
@@ -285,13 +285,13 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="post-code"></a>**Irányítószám: lásd**a [postai irányítószámot](#postal-code).
 
-<a name="postal-code"></a>**Irányítószám**: egy ország/régió postai szolgáltatása által a földrajzi területek zónákra osztására használt, betűk vagy számok, illetve mindkettők egy sorozata, amely egyszerűbbé teszi a levelek kézbesítését.
+<a name="postal-code"></a>**Irányítószám**: több betű vagy szám, vagy mindkettő egy adott formátumban. A postai irányítószámot egy ország/régió postai szolgáltatása használja a földrajzi területek zónákra osztására a levelezés leegyszerűsítése érdekében.
 
 <a name="primary-key"></a>**Elsődleges kulcs**: a Azure Maps megosztott kulcsú hitelesítéshez megadott két előfizetési kulcs első része. Lásd: [megosztott kulcsos hitelesítés](#shared-key-authentication).
 
 <a name="prime-meridian"></a>**Prime meridián**: a hosszúság 0 fokos hosszúságú vonalát jelöli. A hosszúsági értékek általában akkor csökkennek, ha a nyugati irányba utaznak, amíg 180 fok, és a keleti irányban a-180-fokban való utazás megnövekszik. 
 
-<a name="prj"></a>**PRJ**: egy szövegfájl, amely gyakran tartalmaz egy alakzatfájl-fájlt, amely az adathalmazban található tervezett koordináta-rendszerrel kapcsolatos információkat tartalmazza.
+<a name="prj"></a>**PRJ**: egy szövegfájl, amely gyakran tartalmaz egy alakzatfájl-fájlt, amely az adathalmazban található, előre jelzett koordináta-rendszerrel kapcsolatos információkat tartalmazza.
 
 <a name="projection"></a>**Kivetítés**: egy térképes kivetítésen alapuló tervezett koordináta-rendszer, például a transzverzális Mercator, a Albers egyenlő terület és a Robinson. Ezek lehetővé teszik a Föld gömb alakú felületének leképezését egy kétdimenziós Descartes koordináta-síkra. A tervezett koordináta-rendszereket időnként Térkép-kivetítésnek is nevezzük.
 
@@ -321,7 +321,7 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="reproject"></a>**Újratervezés**: lásd az [átalakítást](#transformation).
 
-<a name="rest-service"></a>**Rest-szolgáltatás**: betűszó a reprezentációs állapot átviteléhez. Architektúra egy decentralizált, elosztott környezetben található társak közötti információcseréhez. A REST lehetővé teszi, hogy a különböző számítógépeken lévő programok az operációs rendszertől vagy a platformtól függetlenül kommunikáljanak, ha Hypertext Transfer Protocol (HTTP) kérelmet küldenek egy egységes erőforrás-keresőnek (URL), és visszakapják az adatokat.
+<a name="rest-service"></a>**Rest-szolgáltatás**: betűszó a reprezentációs állapot átviteléhez. Architektúra egy decentralizált, elosztott környezetben található társak közötti információcseréhez. A REST lehetővé teszi, hogy a különböző számítógépeken lévő programok az operációs rendszertől vagy a platformtól függetlenül kommunikáljanak egymással. A szolgáltatások küldhetnek Hypertext Transfer Protocol (HTTP) kérelmet egy egységes erőforrás-lokátornak (URL), és visszakérhetik az adatforrást.
 
 <a name="route"></a>**Route**: két vagy több helyszín közötti elérési út, amely további információkat is tartalmazhat, például a fordulópontokra vonatkozó utasításokat az útvonal mentén.
 
@@ -337,7 +337,7 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="shapefile-shp"></a>**Alakzatfájl (SHP)** : más néven ESRI-alakzatfájl, egy vektoros adattárolási formátum, amely a földrajzi funkciók helyét, alakját és attribútumait tárolja. A alakzatfájl a rendszer a kapcsolódó fájlok készletében tárolja.
 
-<a name="shared-key-authentication"></a>**Megosztott kulcsos hitelesítés**: a megosztott kulcsos hitelesítés a Azure Maps fiók által generált kulcsok átadását adja meg minden egyes Azure Mapsre vonatkozó kéréssel. Ezeket a kulcsokat gyakran előfizetési kulcsoknak nevezzük. Javasoljuk, hogy a kulcsokat a rendszer rendszeresen újragenerálja a biztonsághoz. Két kulcs van megadva, így a kapcsolatok egy kulccsal kezelhetők, miközben újragenerálja a másikat. A kulcsok újragenerálása után frissítenie kell minden olyan alkalmazást, amely hozzáfér ehhez a fiókhoz az új kulcsok használatához. A Azure Maps hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
+<a name="shared-key-authentication"></a>**Megosztott kulcsos hitelesítés**: a megosztott kulcsos hitelesítés a Azure Maps fiók által generált kulcsok átadását adja meg minden egyes Azure Mapsre vonatkozó kéréssel. Ezeket a kulcsokat gyakran előfizetési kulcsoknak nevezzük. Javasoljuk, hogy a kulcsokat rendszeresen újragenerálja a biztonsághoz. Két kulcs van megadva, így a kapcsolatok egy kulccsal kezelhetők, miközben újragenerálja a másikat. A kulcsok újragenerálása után frissítenie kell minden olyan alkalmazást, amely hozzáfér ehhez a fiókhoz az új kulcsok használatához. A Azure Maps hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure Maps és az Azure ad](azure-maps-authentication.md) és [a hitelesítés kezelése a Azure Maps-ben](how-to-manage-authentication.md)című témakört.
 
 <a name="software-development-kit-sdk"></a>**Szoftverfejlesztői készlet (SDK)** : dokumentáció, mintakód és minta alkalmazások gyűjteménye, amelyek segítségével a fejlesztők API-t használhatnak alkalmazások készítéséhez.
 
@@ -345,13 +345,13 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="spatial-query"></a>**Térbeli lekérdezés**: egy olyan szolgáltatásra irányuló kérelem, amely térbeli műveletet hajt végre. Például egy kör alakú keresés vagy egy útvonalon történő keresés.
 
-<a name="spatial-reference"></a>**Térbeli hivatkozás**: a földrajzi entitások pontos megtalálásához használt koordináta-alapú helyi, regionális vagy globális rendszer. Meghatározza azt a koordináta-rendszert, amely a Térkép-koordinátákat a valós világ helyeihez rendeli. A térbeli hivatkozások biztosítják, hogy a különböző rétegekből vagy forrásokból származó térbeli adatok integrálva legyenek a pontos megtekintéshez vagy elemzéshez. A Azure Maps a következő [EPSG használja: 3857](https://epsg.io/3857) koordináta-hivatkozási rendszer és WGS 84 a bemeneti geometriai adatokhoz. 
+<a name="spatial-reference"></a>**Térbeli hivatkozás**: a földrajzi entitások pontos megtalálásához használt koordináta-alapú helyi, regionális vagy globális rendszer. Meghatározza azt a koordináta-rendszert, amely a Térkép-koordinátákat a valós világ helyeihez rendeli. A térbeli hivatkozások biztosítják a különböző rétegekből vagy forrásokból származó térbeli adatok integrálását a pontos megtekintéshez vagy elemzéshez. A Azure Maps a következő [EPSG használja: 3857](https://epsg.io/3857) koordináta-hivatkozási rendszer és WGS 84 a bemeneti geometriai adatokhoz.
 
 <a name="sql-spatial"></a>**SQL térbeli**: az SQL Azureba és SQL Server 2008-es vagy újabb verzióba épített térbeli funkciókra hivatkozik. Ez a térbeli funkció olyan .NET-függvénytárként is elérhető, amely a SQL Servertól függetlenül is használható. További információt a [térbeli adatok (SQL Server) dokumentációjában](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) talál.
 
 <a name="subscription-key"></a>**Előfizetési kulcs**: lásd a [megosztott kulcsos hitelesítést](#shared-key-authentication).
 
-<a name="synchronous-request"></a>**Szinkron kérés**: egy HTTP-kérelem megnyitja a kapcsolatokat, és megvárja a választ. A böngészők korlátozzák az oldalon elérhető egyidejű HTTP-kérelmek számát. Ha egyszerre több hosszú ideig futó szinkron kérést hajt végre, akkor ez a korlát elérhető, és a kérelmek késleltetve lesznek, amíg az egyik másik kérelem nem fejeződött be.
+<a name="synchronous-request"></a>**Szinkron kérés**: egy HTTP-kérelem megnyitja a kapcsolatokat, és megvárja a választ. A böngészők korlátozzák az oldalon elérhető egyidejű HTTP-kérelmek számát. Ha egyszerre több hosszú ideig futó szinkron kérést hajt végre, akkor ez a korlát elérhető. A rendszer késlelteti a kérelmeket, amíg az egyik másik kérelem nem fejeződött be.
 
 ## <a name="t"></a>T
 
@@ -363,20 +363,20 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="thematic-maps"></a>**Tematikus térképek**: egy tematikus Térkép egy egyszerű Térkép, amely egy földrajzi területtel kapcsolatos témát tükröz. Az ilyen típusú leképezések gyakori forgatókönyve, hogy bizonyos mérőszámok alapján a felügyeleti régiókat, például az országokat/régiókat kell megszínezni.
 
-<a name="tile-layer"></a>**Csempe rétege**: a Térkép csempéi (téglalap alakú szakasz) egy folytonos rétegbe való összeállításával megjelenített réteg. A csempék raszteres képcsempék vagy vektoros csempék. A raszteres csempék rétegei általában az idő előtt jelennek meg, és képként tárolódnak a kiszolgálón. Ez sok tárolóhelyet is igénybe vehet. A vektoros csempe rétegek az ügyfélalkalmazás szerint jelennek meg, így a kiszolgálóoldali tárolási követelmények kisebbek.
+<a name="tile-layer"></a>**Csempe rétege**: a Térkép csempéi (téglalap alakú szakasz) egy folytonos rétegbe való összeállításával megjelenített réteg. A csempék raszteres képcsempék vagy vektoros csempék. A raszteres csempék rétegei általában az idő előtt jelennek meg, és képként tárolódnak a kiszolgálón. A raszteres csempék rétegei nagy tárterületet használhatnak. A vektoros csempe rétegei az ügyfélalkalmazás közelében valós időben jelennek meg. Így a kiszolgálóoldali tárolási követelmények kisebbek a vektoros csempék rétegeinél.
 
 <a name="time-zone"></a>**Időzóna**: a világ egyik régiója, amely a jogi, kereskedelmi és közösségi célokra egységes, általános időt vesz figyelembe. Az időzónák általában követik az országok/régiók és az albontások határait.
 
 <a name="transaction"></a>**Tranzakció**: a Azure Maps tranzakciós licencelési modellt használ, ahol;
 
 - Egy tranzakció jön létre minden 15 térképhez vagy a kért forgalmi csempéhez.
-- Minden API-híváshoz létrejön egy tranzakció a Azure Maps egyik szolgáltatásához, például a kereséshez vagy az útválasztáshoz.
+- Egy tranzakció jön létre minden API-híváshoz Azure Maps egyik szolgáltatásához. A keresés és az Útválasztás Azure Maps szolgáltatásra mutat példát.
 
 <a name="transformation"></a>**Átalakítás**: az Adatátalakítási folyamat különböző földrajzi koordináta-rendszerek között. Előfordulhat például, hogy van néhány, az Egyesült Királyságban rögzített és a OSGB 1936 földrajzi koordináta-rendszeren alapuló információ. A Azure Maps a [EPSG: 3857](https://epsg.io/3857) koordináta hivatkozási rendszer WGS84-változatát használja. Az adatok megfelelő megjelenítéséhez az szükséges, hogy a koordinátáit az egyik rendszerről a másikra alakítsa át.
 
 <a name="traveling-salesmen-problem-tsp"></a>**Utazási ügynökökkel kapcsolatos probléma (TK)** : egy Hamilton áramköri probléma, amelyben az üzletkötőnek meg kell találnia a leghatékonyabb módot a leállások sorozatának megkeresésére, majd vissza kell térnie a kiindulási helyhez.  
 
-<a name="trilateration"></a>**Trilateration**: egy pont pozíciójának meghatározása a Föld felszínén két másik pontra vonatkozóan, a három pont közötti távolság mérésével.
+<a name="trilateration"></a>**Trilateration**: egy pont pozíciójának meghatározása a Föld felszínén, két további pontra vonatkozóan, a három pont közötti távolság mérésével.
 
 <a name="turn-by-turn-navigation"></a>**Kapcsolja be a navigációt**: egy olyan alkalmazás, amely útvonalat ad meg az útvonal egyes lépéseihez, mivel a felhasználók a következő manővert közelítik meg.
 
@@ -386,19 +386,19 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="vector-tile"></a>**Vector csempe**: egy nyílt adatspecifikáció a térinformatikai vektoros adatok tárolásához ugyanazzal a csempe-rendszerrel, mint a Térkép vezérlőelem. Lásd még: [csempe réteg](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a>**Jármű-útválasztási probléma (VRP)** : az a probléma, amely során a rendszer kiszámítja a járműpark megrendelt útvonalait a megkötések készletének figyelembevételével. Ezek a korlátozások olyan dolgokat tartalmazhatnak, mint például a szállítási idő, a több útvonal kapacitása és az utazási időtartam megkötései.
+<a name="vehicle-routing-problem-vrp"></a>**Jármű-útválasztási probléma (VRP)** : a problémák olyan csoportja, amely során a rendszer kiszámítja a járműpark megrendelt útvonalait a megkötések készletének figyelembevételével. Ezek a korlátozások magukban foglalhatják a kézbesítési időt, a több útvonal-kapacitást és az utazási időtartamra vonatkozó korlátozásokat.
 
-<a name="voronoi-diagram"></a>**Voronoi ábra**: a területekre vagy cellákra mutató, a geometriai objektumokat (általában a pontok funkcióit) körülvevő partíció. Ezeknek a celláknak vagy sokszögeknek meg kell felelniük a Delaunay-háromszögek feltételeinek. Egy adott helyen belüli összes hely közelebb van az objektumhoz, mint a készletben lévő többi objektumhoz. A Voronoi-diagramok gyakran használják a földrajzi funkciók körét befolyásoló területeket. 
+<a name="voronoi-diagram"></a>**Voronoi ábra**: a területekre vagy cellákra mutató, a geometriai objektumokat tartalmazó partíciók, amelyek általában a pontok funkciói. Ezeknek a celláknak vagy sokszögeknek meg kell felelniük a Delaunay-háromszögek feltételeinek. Egy adott helyen belüli összes hely közelebb van az objektumhoz, mint a készletben lévő többi objektumhoz. A Voronoi-diagramok gyakran használják a földrajzi funkciók körét befolyásoló területeket. 
 
 ## <a name="w"></a>W
 
 <a name="waypoint"></a>**Útpont**: az útpont egy meghatározott földrajzi hely, amelyet a hosszúság és a szélesség a navigációs célokra használ. Gyakran használják arra a pontra, amelyben valaki navigál az útvonalon.
 
-<a name="waypoint-optimization"></a>**Útpont optimalizálás**: az útpontok egy halmazának átrendezésének folyamata az összes megadott útpont eléréséhez szükséges utazási idő vagy távolság minimálisra csökkentése érdekében. Az optimalizálás összetettsége alapján gyakran az [Utazási ügynökök problémájának](#traveling-salesmen-problem-tsp) vagy a [jármű-útválasztási problémának](#vehicle-routing-problem-vrp) nevezik.
+<a name="waypoint-optimization"></a>**Útpont optimalizálás**: az útpontok egy halmazának átrendezésének folyamata az összes megadott útpont eléréséhez szükséges utazási idő vagy távolság minimálisra csökkentése érdekében. Az optimalizálás összetettségétől függően ez az optimalizálás gyakran az [Utazási ügynökök problémája](#traveling-salesmen-problem-tsp) vagy a [jármű-útválasztási probléma](#vehicle-routing-problem-vrp).
 
 <a name="web-map-service-wms"></a>**Web Map szolgáltatás (WMS)** : a WMS egy nyílt földrajzi konzorcium (OGC) szabvány, amely a képalapú térképi szolgáltatásokat határozza meg. A WMS szolgáltatások a térképen igény szerint meghatározott területekhez biztosítanak leképezési képeket. A képek tartalmazhatnak előre megjelenített jelképeket, és a szolgáltatás által definiált különböző elnevezett stílusok egyikében is megjeleníthető.
 
-<a name="web-mercator"></a>**Webes Mercator**: a gömb Mercator kivetítése a Mercator-vetítés enyhe változata, amely elsősorban a webes leképezési programokban használatos. Ugyanazokat a képleteket használja, mint a szabványos Mercator-leképezés, amelyet a kisméretű térképekhez használtak. A web Mercator azonban a gömb képleteit minden skálán használja, míg a nagyméretű Mercator-térképek általában a kivetítés ellipsoidal formáját használják. Az eltérés nem észlelhető globális méretekben, de a helyi területek térképeit az azonos skálán lévő valódi ellipsoidal Mercator-térképektől némileg eltérnek.
+<a name="web-mercator"></a>**Web Mercator**: más néven gömb-Mercator kivetítés. Ez a Mercator-vetítés enyhe változata, amely elsősorban a webes leképezési programokban használatos. Ugyanazokat a képleteket használja, mint a szabványos Mercator-leképezés, amelyet a kisméretű térképekhez használtak. A web Mercator azonban a gömb képleteit minden skálán használja, de a nagyméretű Mercator-térképek általában a kivetítés ellipsoidal formáját használják. Az eltérés a globális méretekben nem észlelhető, de a helyi területek térképeit kiváltva kis mértékben eltér a valódi ellipsoidal Mercator-térképektől, ugyanazon a skálán.
 
 <a name="wgs84"></a>**WGS84**: a Térkép felszínén található térbeli koordinátákat használó állandók halmaza. A WGS84 Datum a legtöbb online leképezési szolgáltató és a GPS-eszköz által használt standard. A Azure Maps a [EPSG: 3857](https://epsg.io/3857) koordináta hivatkozási rendszer WGS84-változatát használja.
 
@@ -408,5 +408,5 @@ A következő lista felsorolja a Azure Mapshoz használt általános szavakat.
 
 <a name="zip-code"></a>**Zip-kód**: lásd az [irányítószámot](#postal-code).
 
-<a name="Zoom level"></a>**Nagyítási szint**: meghatározza a részletes részletességi szintet, valamint azt, hogy a Térkép mekkora legyen látható. Ha egy 0. szintre nagyítja a nagyítást, a teljes világtérkép gyakran megtekinthető, de a korlátozott részleteket, például az ország/régió nevét, a szegélyeket és az óceán nevét is megjeleníti. A 17. szinthez közelebbi nagyítás esetén a Térkép néhány város területét jeleníti meg, részletes információkkal. További információkért lásd a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációját.
+<a name="Zoom level"></a>**Nagyítási szint**: meghatározza a részletes részletességi szintet, valamint azt, hogy a Térkép mekkora legyen látható. Ha a 0. szintre nagyítva van, a teljes globális Térkép gyakran láthatóvá válik. A Térkép azonban a korlátozott részleteket jeleníti meg, például az ország/régió nevét, a szegélyeket és az óceán nevét. A 17. szinthez közelebbi nagyítás esetén a Térkép néhány város területét jeleníti meg, részletes információkkal. Az Azure Maps-ben a legmagasabb nagyítási szint 22. További információkért lásd a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációját.
 

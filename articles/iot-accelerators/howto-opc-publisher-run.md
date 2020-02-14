@@ -4,16 +4,16 @@ description: Ez a cikk az OPC-közzétevő futtatását és hibakeresését isme
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712898"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198786"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
 

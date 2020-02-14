@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766034"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198207"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
-Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](https://docs.microsoft.com/rest/api/maps/render/getmapimage) a képösszeállítási funkcióval a raszteres térképeken található átfedések engedélyezéséhez. A képösszeállítás lehetővé teszi a raszteres csempék visszaszerzését, további adatokkal (például egyéni pushpins, címkékkel és geometriai átfedésekkel).
+Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](https://docs.microsoft.com/rest/api/maps/render/getmapimage)a képösszeállítási funkcióval a raszteres térképeken található átfedések engedélyezéséhez. A képösszeállítás lehetővé teszi a raszteres csempék visszaszerzését, további adatokkal (például egyéni pushpins, címkékkel és geometriai átfedésekkel).
 
 Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps [adatszolgáltatási API-kat](https://docs.microsoft.com/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
 
@@ -43,7 +43,7 @@ A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa
 
 1. Hozzon létre egy gyűjteményt, amelyben tárolni szeretné a kérelmeket. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet. Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot. 
 
-2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a pushpins tartozó **kérelem nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt a kérelem mentési helyeként, majd kattintson a **Mentés**gombra.
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a pushpins tartozó **kérelem nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, amely a kérés mentési helye. Ezt követően válassza a **Mentés** lehetőséget.
     
     ![Kérelem létrehozása a Poster-ban](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. A udId lekéréséhez nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és hozzon igénybe egy GET kérelmet az állapot URI- Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
+6. A udId beszerzéséhez nyisson meg egy új lapot a Poster alkalmazásban. Válassza a HTTP-módszer beolvasása lehetőséget a szerkesztő lapon. a GET kérést az állapot URI-ja alapján teheti meg. Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
 
    ```JSON
    {

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077606"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186236"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -32,21 +32,21 @@ A hozzárendelések rész a feltételes hozzáférési szabályzatot határozza 
 
 ### <a name="users-and-groups"></a>Felhasználók és csoportok
 
-A felhasználók és csoportok hozzárendelik a szabályzatot, vagy kizárják azokat. Ez a hozzárendelés magában foglalhatja az összes felhasználót, a felhasználók adott csoportjait, a címtárbeli szerepköröket vagy a külső vendég felhasználókat. 
+A [felhasználók és csoportok](concept-conditional-access-users-groups.md) hozzárendelik a szabályzatot, vagy kizárják azokat. Ez a hozzárendelés magában foglalhatja az összes felhasználót, a felhasználók adott csoportjait, a címtárbeli szerepköröket vagy a külső vendég felhasználókat. 
 
-### <a name="cloud-apps-or-actions"></a>Felhőalkalmazások vagy -műveletek
+### <a name="cloud-apps-or-actions"></a>Felhőalapú alkalmazások vagy műveletek
 
-A felhőalapú alkalmazások vagy műveletek magukban foglalhatják vagy kizárhatják a szabályzat hatálya alá eső felhőalapú alkalmazásokat vagy felhasználói műveleteket.
+A [felhőalapú alkalmazások vagy műveletek](concept-conditional-access-cloud-apps.md) magukban foglalhatják vagy kizárhatják a szabályzat hatálya alá eső felhőalapú alkalmazásokat vagy felhasználói műveleteket.
 
 ### <a name="conditions"></a>Feltételek
 
-Egy házirend több feltételt is tartalmazhat.
+Egy házirend több [feltételt](concept-conditional-access-conditions.md)is tartalmazhat.
 
 #### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
 Az [Azure ad Identity Protection](../identity-protection/overview.md)-t használó szervezetek esetében az ott létrehozott kockázati észlelések befolyásolhatják a feltételes hozzáférési szabályzatokat.
 
-#### <a name="device-platforms"></a>Eszközplatformok
+#### <a name="device-platforms"></a>Eszköz platformok
 
 Azok a szervezetek, amelyeken több eszköz operációs rendszere van, különböző platformokon szeretnének kikényszeríteni bizonyos szabályzatokat. 
 
@@ -66,11 +66,13 @@ Ez a hozzárendelési feltétel lehetővé teszi, hogy a feltételes hozzáfér�
 
 Ez a vezérlő a hibrid Azure AD-hez csatlakoztatott vagy az Intune-ban megfelelőnek jelölt eszközök kizárására szolgál. Ezt a kizárást megteheti a nem felügyelt eszközök blokkolásához. 
 
-## <a name="access-controls"></a>Hozzáférés-szabályozás
+## <a name="access-controls"></a>Hozzáférés-vezérlés
 
 A feltételes hozzáférési házirend hozzáférés-vezérlési része szabályozza a szabályzatok betartatásának módját.
 
-### <a name="grant"></a>Hozzáférés
+### <a name="grant"></a>Grant
+
+A [Grant](concept-conditional-access-grant.md) lehetővé teszi a rendszergazdák számára a szabályzatok betartatását, ahol letilthatják vagy megadhatják a hozzáférést.
 
 #### <a name="block-access"></a>Hozzáférés letiltása
 
@@ -93,12 +95,12 @@ A rendszergazdák dönthetnek úgy, hogy az alábbi beállítások használatáv
 
 ### <a name="session"></a>Munkamenet
 
-A munkamenet-vezérlőelemek korlátozhatják a felhasználói élményt 
+A [munkamenet-vezérlőelemek](concept-conditional-access-session.md) korlátozhatják a felhasználói élményt 
 
 - Alkalmazás által kényszerített korlátozások használata
    - Jelenleg csak az Exchange Online és a SharePoint Online szolgáltatással működik.
       - Az eszköz adatainak átadásával lehetővé teszi a teljes vagy korlátozott hozzáférést biztosító élmény vezérlését.
-- Feltételes hozzáférést biztosító alkalmazás-vezérlő használata
+- feltételes hozzáférést biztosító alkalmazás-vezérlő használata
    - A Microsoft Cloud App Security jeleket használ a következőkhöz hasonló módon: 
       - Bizalmas dokumentumok letöltésének, kivágásának, másolásának és nyomtatásának letiltása.
       - A kockázatos munkamenet viselkedésének figyelése.
@@ -121,11 +123,11 @@ A feltételes hozzáférési szabályzatnak legalább a következőket kell tart
 
 ![Üres feltételes hozzáférési szabályzat](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-## <a name="next-steps"></a>További lépések
+Az [általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md) a legtöbb szervezet számára hasznosnak bizonyuló szabályzatokat tartalmaznak.
+
+## <a name="next-steps"></a>Következő lépések
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
-
-[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
 
 [Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése](../authentication/howto-mfa-getstarted.md)
 

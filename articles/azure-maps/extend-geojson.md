@@ -8,19 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911623"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198275"
 ---
 # <a name="extended-geojson-geometries"></a>Kiterjesztett GeoJSON geometriák
 
-Azure Maps a földrajzi funkciókon belüli és azok mentén történő keresésre szolgáló hatékony API-k listáját tartalmazza.
-Ezek az API-k a GeoJSON spec-ra szabványosítják a földrajzi funkciókat (például az állami határokat, az útvonalakat) jelképező [specifikációkat][1] .  
+Azure Maps a földrajzi funkciókon belül és azok mentén történő keresésre szolgáló hatékony API-k listáját tartalmazza. Ezek az API-k megfelelnek a földrajzi funkciók ábrázolására szolgáló szabványos [GeoJSON-specifikációnak][1] .  
 
-A [GeoJSON spec][1] csak a következő geometriákat támogatja:
+A [GeoJSON specifikáció][1] csak a következő geometriákat támogatja:
 
 * GeometryCollection
 * LineString
@@ -30,7 +29,7 @@ A [GeoJSON spec][1] csak a következő geometriákat támogatja:
 * Pont
 * Sokszög
 
-Egyes Azure Maps API-k (például a [geometrián belüli keresés](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) olyan geometriákat fogadnak el, mint a "Circle", amelyek nem részei a [GeoJSON-specifikációnak][1].
+Egyes Azure Maps API-k olyan geometriákat fogadnak el, amelyek nem részei az [GeoJSON specifikációjának][1]. A geometria API-on [belüli keresés](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) például a Circle és a sokszögeket is elfogadja.
 
 Ez a cikk részletesen ismerteti, hogy Azure Maps kiterjeszti a [GeoJSON SPECT][1] bizonyos geometriák ábrázolására.
 
@@ -38,13 +37,13 @@ Ez a cikk részletesen ismerteti, hogy Azure Maps kiterjeszti a [GeoJSON SPECT][
 
 Az [GeoJSON specifikáció][1]nem támogatja a `Circle` geometriát. Egy kört jelölő `GeoJSON Point Feature` objektumot használunk.
 
-A `GeoJSON Feature` objektummal jelölt `Circle` geometriának a következőket __kell__ tartalmaznia:
+A `GeoJSON Feature` objektummal jelölt `Circle` geometriának a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
 
-- Középső
+- Center
 
     A kör középpontja `GeoJSON Point` objektum használatával van ábrázolva.
 
-- Sugár
+- RADIUS-
 
     A kör `radius` `GeoJSON Feature`tulajdonságainak használatával van ábrázolva. A sugár értéke _méterben_ , és `double`típusúnak kell lennie.
 
@@ -54,7 +53,7 @@ A `GeoJSON Feature` objektummal jelölt `Circle` geometriának a következőket 
 
 #### <a name="example"></a>Példa
 
-A következőkben egy `GeoJSON Feature` objektummal 100 rendelkező, a (szélesség: 47,639754, hosszúság:-122,126986) körben megjelenő kör jelenik meg.
+A kör `GeoJSON Feature` objektummal való ábrázolását mutatja be. Nézzük középre a kört a következő szélességben: 47,639754 és hosszúság:-122,126986, és rendeljen hozzá egy 100 méternél nagyobb sugarat:
 
 ```json            
 {
@@ -74,15 +73,15 @@ A következőkben egy `GeoJSON Feature` objektummal 100 rendelkező, a (széless
 
 Az [GeoJSON specifikáció][1]nem támogatja a `Rectangle` geometriát. Egy téglalapot jelölő `GeoJSON Polygon Feature` objektumot használunk. A téglalap-bővítményt elsősorban a web SDK rajzolási eszközei modulja használja.
 
-A `GeoJSON Polygon Feature` objektummal jelölt `Rectangle` geometriának a következőket __kell__ tartalmaznia:
+A `GeoJSON Polygon Feature` objektummal jelölt `Rectangle` geometriának a következő koordinátákat és tulajdonságokat __kell__ tartalmaznia:
 
 - Sarkok
 
-    A téglalap sarkai egy `GeoJSON Polygon` objektum koordinátái alapján jelennek meg. Öt koordinátáknak kell lennie, egyet az egyes sarokokhoz, és egy ötödik koordináta, amely ugyanaz, mint az 1. a sokszög-gyűrű bezárásához. A rendszer azt feltételezi, hogy a fejlesztő a kívánt módon igazítja és elforgatja ezeket a koordinátákat.
+    A téglalap sarkai egy `GeoJSON Polygon` objektum koordinátái alapján jelennek meg. Öt koordinátáknak kell lennie, egyet mindegyik sarokhoz. És egy olyan ötödik koordináta, amely megegyezik az első koordinátaval, a sokszög gyűrű bezárásához. A rendszer feltételezi, hogy ezek a koordináták összehangolják, és a fejlesztő a kívánt módon elforgathatja őket.
 
 - Altípus
 
-    A négyszög geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a `GeoJSON Feature`tulajdonságainak egy részének kell lennie, és az értékének _téglalapnak_ kell lennie
+    A négyszög geometriájának tartalmaznia kell a `subType` tulajdonságot is. Ennek a tulajdonságnak a `GeoJSON Feature`tulajdonságainak kell lennie, és az értékének _négyszögnek_ kell lennie
 
 ### <a name="example"></a>Példa
 

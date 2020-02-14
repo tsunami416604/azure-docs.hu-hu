@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483473"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195062"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
 
@@ -51,6 +51,23 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 - Dynamics CRM Online
 - Azure Portal
 
+### <a name="user-sign-in-frequency-and-device-identities"></a>Felhasználói bejelentkezés gyakorisága és az eszközök identitása
+
+Ha van csatlakoztatva az Azure AD-hez, a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökhöz, amikor a felhasználó feloldja az eszközt, vagy interaktív módon jelentkezik be, akkor ez az esemény is megfelel a bejelentkezési gyakoriságra vonatkozó házirendnek. A következő 2 példában a felhasználói bejelentkezés gyakorisága 1 órára van beállítva:
+
+1\. példa:
+
+- 00:00-kor a felhasználók bejelentkeznek a Windows 10 Azure AD-hez csatlakoztatott eszközre, és megkezdik a munkát a SharePoint Online-on tárolt dokumentumon.
+- A felhasználó egy órán keresztül folytatja az eszközön való munkát ugyanazon a dokumentumon.
+- A (z) 01:00-es időpontban a felhasználónak újra be kell jelentkeznie a bejelentkezési gyakoriság követelménye alapján a rendszergazda által konfigurált feltételes hozzáférési házirendben.
+
+2\. példa
+
+- 00:00-kor a felhasználók bejelentkeznek a Windows 10 Azure AD-hez csatlakoztatott eszközre, és megkezdik a munkát a SharePoint Online-on tárolt dokumentumon.
+- A 00:30-es időpontban a felhasználó felveszi a felhasználót, és az eszköz zárolását megszakítja.
+- A (z) 00:45-es verzióban a felhasználó visszatér a helyükről, és feloldja az eszköz zárolását.
+- A (z) 01:45-es időpontban a felhasználónak a bejelentkezés gyakorisága alapján újra be kell jelentkeznie a rendszergazda által az utolsó bejelentkezés óta konfigurált feltételes hozzáférési szabályzatban, a 00:45-es verziónál.
+
 ## <a name="persistence-of-browsing-sessions"></a>Böngészési munkamenetek megőrzése
 
 Az állandó böngésző-munkamenet lehetővé teszi a felhasználók számára, hogy a böngészőablak bezárása és újbóli megnyitása után is bejelentkezve maradjanak.
@@ -67,7 +84,7 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
 
 ### <a name="policy-1-sign-in-frequency-control"></a>1\. szabályzat: a bejelentkezés gyakoriságának szabályozása
 
-1. Új szabályzat létrehozása
+1. Új házirend létrehozása
 1. Válassza ki az ügyfél környezetének összes kötelező feltételét, beleértve a felhőalapú alkalmazásokat is.
 
    > [!NOTE]
@@ -86,7 +103,7 @@ Ha az azonos böngésző-munkamenetben futó különböző webalkalmazásokhoz e
 
 ### <a name="policy-2-persistent-browser-session"></a>2\. szabályzat: állandó böngésző-munkamenet
 
-1. Új szabályzat létrehozása
+1. Új házirend létrehozása
 1. Válassza ki az összes szükséges feltételt.
 
    > [!NOTE]
@@ -107,7 +124,7 @@ A What-if eszköz használatával szimulálhatja a felhasználót a célalkalmaz
 
 ![Feltételes hozzáférés What If eszköz eredményei](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
-## <a name="policy-deployment"></a>Házirend központi telepítése
+## <a name="policy-deployment"></a>Házirend alkalmazása
 
 Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információkért tekintse meg a [Azure Active Directory a feltételes hozzáférésre vonatkozó ajánlott eljárásokat](best-practices.md)ismertető cikket.
 

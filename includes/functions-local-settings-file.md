@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: c505909599b6b69719de1cb9224db52d2f524b2b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935803"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205695"
 ---
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
@@ -40,7 +40,7 @@ Ezek a beállítások akkor támogatottak, ha helyileg futtatja a projekteket:
 | Beállítás      | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | Ha a beállítás értéke `true`, a rendszer minden értéket a helyi számítógép kulcsával titkosít. `func settings` parancsokkal használható. Az alapértelmezett érték `false`. |
-| **`Values`** | Az Alkalmazásbeállítások és a kapcsolódási karakterláncok tömbje, amely akkor használatos, amikor egy projekt helyileg fut. Ezek a kulcs-érték (String-String) párok megfelelnek az Azure-beli Function alkalmazás beállításainak, például [`AzureWebJobsStorage`]. Számos eseményindító és kötés olyan tulajdonsággal rendelkezik, amely egy kapcsolati sztring alkalmazási beállításra hivatkozik, például a [blob Storage-eseményindítóhoz](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---configuration)`Connection`. Ezen tulajdonságok esetében szükség van egy, az `Values` tömbben definiált alkalmazás-beállításra. <br/>a [`AzureWebJobsStorage`] a HTTP-n kívüli eseményindítók kötelező alkalmazási beállítása. <br/>A functions Runtime 2. x és újabb verziójához a [`FUNCTIONS_WORKER_RUNTIME`] beállítás szükséges, amelyet a projekthez a Core Tools generál. <br/> Ha az [Azure Storage-emulátor](../articles/storage/common/storage-use-emulator.md) helyileg van telepítve, és a [`AzureWebJobsStorage`] `UseDevelopmentStorage=true`, a Core Tools az emulátort használja. Az emulátor a fejlesztés során hasznos, de a telepítés előtt tesztelni kell egy tényleges tárolási kapcsolatban.<br/> Az értékeknek karakterláncnak és nem JSON-objektumoknak vagy tömböknek kell lenniük. A nevek beállítása nem tartalmazhat kettőspontot (`:`) vagy dupla aláhúzást (`__`). Ezeket a karaktereket a futtatókörnyezet foglalta le.  |
+| **`Values`** | Az Alkalmazásbeállítások és a kapcsolódási karakterláncok tömbje, amely akkor használatos, amikor egy projekt helyileg fut. Ezek a kulcs-érték (String-String) párok megfelelnek az Azure-beli Function alkalmazás beállításainak, például [`AzureWebJobsStorage`]. Számos eseményindító és kötés olyan tulajdonsággal rendelkezik, amely egy kapcsolati sztring alkalmazási beállításra hivatkozik, például a [blob Storage-eseményindítóhoz](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)`Connection`. Ezen tulajdonságok esetében szükség van egy, az `Values` tömbben definiált alkalmazás-beállításra. <br/>a [`AzureWebJobsStorage`] a HTTP-n kívüli eseményindítók kötelező alkalmazási beállítása. <br/>A functions Runtime 2. x és újabb verziójához a [`FUNCTIONS_WORKER_RUNTIME`] beállítás szükséges, amelyet a projekthez a Core Tools generál. <br/> Ha az [Azure Storage-emulátor](../articles/storage/common/storage-use-emulator.md) helyileg van telepítve, és a [`AzureWebJobsStorage`] `UseDevelopmentStorage=true`, a Core Tools az emulátort használja. Az emulátor a fejlesztés során hasznos, de a telepítés előtt tesztelni kell egy tényleges tárolási kapcsolatban.<br/> Az értékeknek karakterláncnak és nem JSON-objektumoknak vagy tömböknek kell lenniük. A nevek beállítása nem tartalmazhat kettőspontot (`:`) vagy dupla aláhúzást (`__`). Ezeket a karaktereket a futtatókörnyezet foglalta le.  |
 | **`Host`** | Az ebben a szakaszban található beállítások testre szabják a functions gazdagép folyamatát, amikor helyileg futtat projekteket. Ezek a beállítások eltérhetnek a gazdagép. JSON beállításaitól, amelyek akkor is érvényesek, amikor projekteket futtatnak az Azure-ban. |
 | **`LocalHttpPort`** | Beállítja a helyi functions-gazdagép (`func host start` és `func run`) futtatásakor használt alapértelmezett portot. A `--port` parancssori kapcsoló elsőbbséget élvez ezzel a beállítással szemben. |
 | **`CORS`** | Meghatározza a [több eredetű erőforrás-megosztás (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)számára engedélyezett származási erőforrásokat. Az eredetek vesszővel tagolt listaként vannak megadva, szóközök nélkül. A helyettesítő karakteres érték (\*) támogatott, amely bármilyen forrásból engedélyezi a kérelmeket. |

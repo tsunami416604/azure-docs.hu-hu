@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: eb4b51c94a62ad9f700b7cd448ff0f53485a16bf
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/13/2020
+ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110458"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191871"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
-Olyan esetekben, amikor a Logic apps és az integrációs fiókoknak hozzáférésre van szüksége egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE egy magán-és elszigetelt környezet, amely dedikált tárolót és más, a nyilvános, "globális", több-bérlős Logic Apps szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
+Olyan esetekben, amikor a Logic apps és az integrációs fiókoknak hozzáférésre van szüksége egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE egy elszigetelt környezet, amely dedikált tárolót és más, a nyilvános, "globális", több-bérlős Logic Apps szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
 
 Ha ISE-t hoz létre, az Azure *befecskendezi* az ISE-t az Azure-beli virtuális hálózatba, amely ezután telepíti a Logic Apps szolgáltatást a virtuális hálózatba. Logikai alkalmazás vagy integrációs fiók létrehozásakor válassza ki az ISE helyét. A logikai alkalmazás vagy integrációs fiók ezután közvetlenül hozzáférhet az erőforrásokhoz, például a virtuális gépekhez, a kiszolgálókhoz, a rendszerekhez és a szolgáltatásokhoz a virtuális hálózaton.
 
@@ -49,7 +49,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
   * Győződjön meg arról, hogy a virtuális hálózat [lehetővé teszi az ISE hozzáférését](#enable-access) , hogy az ISE megfelelően működjön, és elérhető maradjon.
 
-  * Ha a [ExpressRoute](../expressroute/expressroute-introduction.md)-t használja, amely privát kapcsolatot biztosít a Microsoft Cloud Services szolgáltatással, [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat tartalmazza, és a táblázatot az ISE által használt összes alhálózathoz csatolja:
+  * Ha a [ExpressRoute](../expressroute/expressroute-introduction.md)-t használja, amely privát kapcsolatot biztosít a kapcsolati szolgáltató által megkönnyített Microsoft Cloud Services-szolgáltatásokkal, [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat tartalmazza, és az ISE által használt összes alhálózathoz csatolja a táblázatot:
 
     **Név**: <*route-Name*><br>
     **Címzési előtag**: 0.0.0.0/0<br>
@@ -75,9 +75,10 @@ Győződjön meg arról, hogy az ISE elérhető, és hogy az ISE logikai alkalma
 
 * Ha új Azure-beli virtuális hálózatot és alhálózatokat hozott létre korlátozás nélkül, nem kell beállítania [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) a virtuális hálózatban az alhálózatok közötti adatforgalom szabályozásához.
 
-* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat választja, azon a virtuális hálózaton, amelyen be szeretné állítani a NSG, győződjön meg arról, hogy a [táblázatban található portokat nyitja](#network-ports-for-ise)meg. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat szeretné használni, vagy ha már használja a NSG-t, győződjön meg arról, hogy [megnyitta a táblázatban található portokat](#network-ports-for-ise) azon a virtuális hálózaton, ahol a NSG vagy a NSG-t szeretné beállítani.
 
-* Ha korábban már meglévő NSG rendelkezik, győződjön meg róla, hogy [megnyitotta a portokat ebben a táblázatban](#network-ports-for-ise). [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+  > [!NOTE]
+  > Ha [NSG biztonsági szabályokat](../virtual-network/security-overview.md#security-rules)használ, akkor a TCP és az UDP protokollt *is* használnia kell. A NSG biztonsági szabályai azokat a portokat írják le, amelyeknek meg kell nyitni azokat az IP-címeket, amelyeknek hozzá kell férniük a portokhoz. Győződjön meg arról, hogy a végpontok között található tűzfalak, útválasztók vagy egyéb elemek is megőrzik ezeket a portokat az IP-címek számára.
 
 <a name="network-ports-for-ise"></a>
 
@@ -94,17 +95,17 @@ Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amel
 | Alhálózati kommunikáció | Bejövő & kimenő | 80, 443 | VirtualNetwork | VirtualNetwork | Az alhálózatok közötti kommunikációhoz |
 | Kommunikáció a Azure Logic Apps | Kimenő | 80, 443 | VirtualNetwork | Internet | A port a külső szolgáltatástól függ, amellyel a Logic Apps szolgáltatás kommunikál |
 | Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage-függőség | Kimenő | 80, 443 | VirtualNetwork | Tárterület | |
+| Azure Storage-függőség | Kimenő | 80, 443, 445 | VirtualNetwork | Tárterület | |
 | Kommunikáció Azure Logic Apps | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak az IP-címe, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat. A port bezárása vagy blokkolása megakadályozza a HTTP-hívásokat a logikai alkalmazásokhoz kérelem-eseményindítókkal. |
 | Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek az IP-címe, ahonnan meg szeretné tekinteni a logikai alkalmazás futtatási előzményeit. Bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, a futtatási előzményekben nem tekintheti meg az egyes lépések bemeneteit és kimeneteit. |
 | Kapcsolatok kezelése | Kimenő | 443 | VirtualNetwork  | AppService | |
 | Diagnosztikai naplók közzététele & metrikák | Kimenő | 443 | VirtualNetwork  | AzureMonitor | |
 | Kommunikáció az Azure Traffic Manager | Bejövő | Belső ISE: 454 <p><p>Külső ISE: 443 | AzureTrafficManager | VirtualNetwork | |
-| Logic Apps Designer – dinamikus tulajdonságok | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó megjegyzések oszlop: | VirtualNetwork | A kérelmek az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-címeiből származnak. |
-| Hálózati állapot-ellenőrzési | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó megjegyzések oszlop: | VirtualNetwork | A kérelmek az adott régió [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) és [kimenő](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-címeihez tartozó Logic apps hozzáférési végpontból származnak. |
+| Logic Apps Designer – dinamikus tulajdonságok | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó **Megjegyzések** oszlop: | VirtualNetwork | A kérelmek az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-címeiből származnak. |
+| Hálózati állapot-ellenőrzési | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó **Megjegyzések** oszlop: | VirtualNetwork | A kérelmek az adott régió [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) és [kimenő](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-címeihez tartozó Logic apps hozzáférési végpontból származnak. |
 | App Service felügyeleti függőség | Bejövő | 454, 455 | AppServiceManagement | VirtualNetwork | |
 | Összekötő üzembe helyezése | Bejövő | 454 | AzureConnectors | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
-| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | Internet | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | APIManagement | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
 | Azure SQL-függőség | Kimenő | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Kimenő | 1886 | VirtualNetwork | AzureMonitor | Állapot közzétételének Resource Health |
 | API Management felügyeleti végpont | Bejövő | 3443 | APIManagement | VirtualNetwork | |
@@ -117,16 +118,13 @@ Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amel
 
 ## <a name="create-your-ise"></a>Az ISE létrehozása
 
-Az integrációs szolgáltatási környezet (ISE) létrehozásához kövesse az alábbi lépéseket:
+1. A [Azure Portal](https://portal.azure.com)a fő Azure-Keresés mezőbe írja be szűrőként a `integration service environments` értéket, majd válassza az **integrációs szolgáltatási környezetek**lehetőséget.
 
-1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza az **erőforrás létrehozása**lehetőséget.
-A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környezet" kifejezést.
+   ![Az "integrációs szolgáltatási környezetek" megkeresése és kiválasztása](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-   ![Új erőforrás létrehozása](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
+1. Az **integrációs szolgáltatási környezetek** ablaktáblán válassza a **Hozzáadás**lehetőséget.
 
-1. A integrációs szolgáltatási környezet létrehozás ablaktáblán válassza a **Létrehozás**lehetőséget.
-
-   ![Válassza a létrehozás lehetőséget](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
+   ![Az "integrációs szolgáltatási környezetek" megkeresése és kiválasztása](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
 1. Adja meg ezeket az adatokat a környezetében, majd válassza a **felülvizsgálat + létrehozás**lehetőséget, például:
 
@@ -135,13 +133,13 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | A környezetéhez használni kívánt Azure-előfizetés |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport neve*> | Az Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
+   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport neve*> | Új vagy meglévő Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
    | **Integrációs szolgáltatási környezet neve** | Igen | <*környezet neve*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`) és pontokat (`.`) tartalmazhat. |
    | **Hely** | Igen | <*Azure-Datacenter – régió*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
    | **Termékváltozat** | Igen | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
    | **További kapacitás** | Prémium szintű <br>Igen <p><p>Fejlesztő <br>Nem alkalmazható | Prémium szintű <br>0 – 10 <p><p>Fejlesztő <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](#add-capacity). |
    | **Hozzáférési végpont** | Igen | **Belső** vagy **külső** | Az ISE számára használandó hozzáférési végpontok típusa. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. <p><p>A kiválasztott módszer azt is befolyásolja, hogyan lehet megtekinteni és elérni a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
-   | **Virtuális hálózat** | Igen | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p>**Fontos**: ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
+   | **Virtuális hálózat** | Igen | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p><p>**Fontos**: ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
    | **Alhálózatok** | Igen | <*alhálózat – erőforrás-lista*> | Az ISE négy *üres* alhálózatot igényel ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe a környezetben. Az egyes alhálózatok létrehozásához [kövesse az ebben a táblázatban szereplő lépéseket](#create-subnet). |
    |||||
 
@@ -177,20 +175,20 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
    1. Az **alhálózatok** listában válassza az **alhálózat konfigurációjának kezelése**lehetőséget.
 
-      ![Alhálózat konfigurációjának kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Alhálózat konfigurációjának kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet-configuration.png)
 
    1. Az **alhálózatok** ablaktáblán válassza az **alhálózat**lehetőséget.
 
-      ![Alhálózat hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Négy üres alhálózat hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/add-empty-subnets.png)
 
    1. Az **alhálózat hozzáadása** panelen adja meg ezt az információt.
 
       * **Name (név**): az alhálózat neve
       * **Címtartomány (CIDR blokk)** : az alhálózat tartománya a virtuális hálózatban és CIDR formátumban
 
-      ![Alhálózat adatainak hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+      ![Alhálózat adatainak hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
-   1. Ha elkészült, kattintson **az OK gombra**.
+   1. Amikor elkészült, válassza az **OK** lehetőséget.
 
    1. Ismételje meg ezeket a lépéseket három további alhálózatra.
 
@@ -201,7 +199,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
 1. Miután az Azure sikeresen ellenőrizte az ISE-információkat, válassza a **Létrehozás**lehetőséget, például:
 
-   ![Sikeres ellenőrzés után válassza a létrehozás lehetőséget.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
+   ![A sikeres ellenőrzés után válassza a létrehozás lehetőséget.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
    Az Azure elindítja a környezet üzembe helyezését, amely általában két órán belül befejeződik. Alkalmanként az üzembe helyezés akár négy órát is igénybe vehet. A központi telepítés állapotának megtekintéséhez az Azure eszköztárán válassza az értesítések ikont, amely megnyitja az értesítések panelt.
 
@@ -209,7 +207,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
    Ha a telepítés sikeresen befejeződött, az Azure megjeleníti ezt az értesítést:
 
-   ![Az üzembe helyezés sikerült](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+   ![Az üzembe helyezés sikerült](./media/connect-virtual-network-vnet-isolated-environment/deployment-success-message.png)
 
    Ellenkező esetben kövesse az üzembe helyezés hibaelhárításához Azure Portal utasításokat.
 
@@ -220,7 +218,7 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
    > A virtuális hálózatok törlésekor győződjön meg arról, hogy egyetlen erőforrás sincs még csatlakoztatva. 
    > Lásd: [virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
-1. Ha szeretné megtekinteni a környezetét, válassza az **Ugrás az erőforráshoz** lehetőséget, ha az Azure nem automatikusan a környezetbe lép az üzembe helyezés befejeződése után.
+1. Ha szeretné megtekinteni a környezetet, válassza az **Ugrás az erőforráshoz** lehetőséget, ha az Azure nem automatikusan a környezetbe lép a telepítés befejeződése után.
 
 1. Az ISE hálózati állapotának ellenõrzéséhez tekintse meg az [integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)című témakört.
 
@@ -233,23 +231,42 @@ A keresőmezőbe írja be szűrőként az "integrációs szolgáltatási környe
 
 ## <a name="add-ise-capacity"></a>ISE-kapacitás hozzáadása
 
-A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár utána több skálázási egységet is hozzáadhat. A teljesítmény mérőszámai alapján vagy számos további feldolgozó egységen alapuló autoskálázást használhat. Ha mérőszámok alapján választja ki az automatikus skálázást, különböző feltételek közül választhat, és megadhatja a feltételek teljesítésének küszöbértékét. A fejlesztői SKU nem tartalmazza a méretezési egységek hozzáadásának képességét.
+A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár utána több skálázási egységet is hozzáadhat. A fejlesztői SKU nem tartalmazza a méretezési egységek hozzáadásának képességét.
 
 1. A Azure Portal keresse meg az ISE-t.
 
-1. Az ISE használati és teljesítmény-metrikáinak áttekintéséhez az ISE főmenüjében válassza az **Áttekintés**lehetőséget.
+1. Az ISE használati és teljesítmény-metrikáinak áttekintéséhez az ISE menüben válassza az **Áttekintés**lehetőséget.
 
    ![Az ISE használatának megtekintése](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
 
-1. Az automatikus skálázás beállításához a **Beállítások**területen válassza a horizontális **felskálázás**lehetőséget. A **Konfigurálás** lapon válassza az **autoskálázás engedélyezése**lehetőséget.
+1. A **Beállítások**területen válassza a **felskálázás**lehetőséget. A **Konfigurálás** ablaktáblán válasszon a következő lehetőségek közül:
 
-   ![Automatikus skálázás bekapcsolása](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+   * [**Manuális méretezés**](#manual-scale): méretezés a használni kívánt feldolgozási egységek számától függően.
+   * [**Egyéni autoscale**](#custom-autoscale): méretezés teljesítmény-mérőszámok alapján, különböző feltételek kiválasztásával és a feltételek teljesítéséhez szükséges küszöbértékek megadásával.
 
-1. Az **autoskálázási beállítás neve**mezőben adja meg a beállítás nevét.
+   ![Válassza ki a kívánt skálázási típust](./media/connect-virtual-network-vnet-isolated-environment/select-scale-out-options.png)
 
-1. Az **alapértelmezett** szakaszban válassza a **skála alapján mérőszámot** vagy a **skálázást egy adott példányszámra**.
+<a name="manual-scale"></a>
 
-   * Ha a példány-alapú lehetőséget választja, adja meg a 0 és 10 közötti feldolgozási egységek számát.
+### <a name="manual-scale"></a>Manuális méretezés
+
+1. A **manuális méretezés**kiválasztása után a **további kapacitáshoz**válassza ki a használni kívánt skálázási egységek számát.
+
+   ![Válassza ki a kívánt skálázási típust](./media/connect-virtual-network-vnet-isolated-environment/select-manual-scale-out-units.png)
+
+1. Amikor elkészült, válassza a **Mentés** lehetőséget.
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>Egyéni méretezés
+
+1. Miután kiválasztotta az **Egyéni autoskálázást**, az **autoskálázási beállítás neve**mezőben adja meg a beállítás nevét, és szükség esetén válassza ki azt az Azure-erőforráscsoportot, amelyben a beállítás tartozik.
+
+   ![Adja meg az autoskálázási beállítás nevét, majd válassza az erőforráscsoport lehetőséget.](./media/connect-virtual-network-vnet-isolated-environment/select-custom-autoscale.png)
+
+1. Az **alapértelmezett feltétel beállításnál** válassza ki a **skála alapján mérőszámot** vagy **méretezést egy adott példányszámra**.
+
+   * Ha a példány-alapú lehetőséget választja, adja meg a feldolgozási egységek számát, amely a 0 és 10 közötti érték.
 
    * Ha a metrika-alapú elemet választja, kövesse az alábbi lépéseket:
 
@@ -257,7 +274,13 @@ A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több 
 
      1. A **skálázási szabály** ablaktáblán állítsa be a feltételek és a művelet végrehajtását, ha a szabály eseményindítót végez.
 
-     1. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
+     1. A **példányokra vonatkozó korlátokat**a következő értékek megadásával adhatja meg:
+
+        * **Minimum**: a használandó feldolgozó egységek minimális száma
+        * **Maximum**: a használni kívánt feldolgozási egységek maximális száma
+        * **Alapértelmezett**: Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás az alapértelmezett számú feldolgozási egységre lesz kibővítve. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető a-ben.
+
+1. Egy másik feltétel hozzáadásához válassza a **skálázási feltétel hozzáadása**lehetőséget.
 
 1. Ha elkészült az autoskálázási beállításokkal, mentse a módosításokat.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911569"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198224"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -24,7 +24,7 @@ A képek HTML-jelölővel és a Azure Maps web SDK-n belüli különböző réte
  - A sokszög rétegek kitöltési minta képpel is megjeleníthető. 
  - A HTML-jelölők képek és más HTML-elemek használatával adhatnak ki pontokat.
 
-A megfelelő teljesítmény biztosítása érdekében ezeket a képeket a renderelés előtt be kell tölteni a Térkép rendszerképének sprite-erőforrásba. A SymbolLayer [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) előre betölt néhány jelölő képet néhány színben a térképi kép sprite-ban alapértelmezés szerint. Ugyanezek a jelölő rendszerképek és további SVG-sablonok is elérhetők, és használhatók egyéni léptékű rendszerképek létrehozására, valamint az ügyfél elsődleges és másodlagos színére. Összesen 42 rendszerkép-sablon van megadva; 27 szimbólum ikonjai és 15 sokszög kitöltési mintázata
+A megfelelő teljesítmény biztosítása érdekében a renderelés előtt töltse be a lemezképeket a Térkép rendszerképéhez tartozó sprite-erőforrásba. A SymbolLayer [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)előre betölt néhány jelölő képet néhány színben a Térkép képének sprite-ba, alapértelmezés szerint. Ezek a jelölő képek és egyebek SVG-sablonokként érhetők el. Felhasználhatók egyéni léptékű rendszerképek létrehozására, vagy ügyfél elsődleges és másodlagos színként való használatára. Összesen 42 képsablonok vannak megadva: 27 szimbólum ikon és 15 sokszög kitöltési minta.
 
 A képsablonok a `map.imageSprite.createFromTemplate` függvény használatával adhatók hozzá a Térkép képének-erőforrásaihoz. Ez a függvény legfeljebb öt paraméter átadását teszi lehetővé;
 
@@ -32,9 +32,9 @@ A képsablonok a `map.imageSprite.createFromTemplate` függvény használatával
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-ahol a `id` egy egyedi azonosító, amelyet a rendszer akkor hoz létre, amikor a rendszer hozzáadja a képhez a Maps-képhez sprite-hoz. Használja ezt az azonosítót a rétegek között annak meghatározásához, hogy melyik képerőforrást szeretné megjeleníteni. A `templateName` megadja, hogy melyik képsablont kell használni. A `color` beállítás megadja a rendszerkép elsődleges színét, és a `secondaryColor` beállítások a rendszerkép másodlagos színét állítja be. A `scale` lehetőség a Képsablon méretezése előtt méretezi a képet a sprite-ra. Ha a képet a rendszer a képre alkalmazza a sprite-ra, a rendszer PNG-re konvertálja. A ropogós renderelés érdekében érdemes a képsablont a sprite-ra méretezni, mielőtt felvenné azt egy rétegben.
+A `id` egy egyedi azonosító, amelyet Ön hozott létre. A `id` hozzá van rendelve a képhez, amikor az megjelenik a Maps-képhez a sprite-ban. Használja ezt az azonosítót a rétegek között annak meghatározásához, hogy melyik képerőforrást szeretné megjeleníteni. A `templateName` megadja, hogy melyik képsablont kell használni. A `color` beállítás megadja a rendszerkép elsődleges színét, és a `secondaryColor` beállítások a rendszerkép másodlagos színét állítja be. A `scale` lehetőség a Képsablon méretezése előtt méretezi a képet a sprite-ra. Ha a képet a rendszer a képre alkalmazza a sprite-ra, a rendszer PNG-re konvertálja. A ropogós renderelés érdekében érdemes a képsablont a sprite-ba felvenni, mint a rétegben való méretezéshez.
 
-Ez a függvény aszinkron módon tölti be a képet a sprite-ba, így egy olyan ígéretet ad vissza, amely megvárhatja, hogy a függvény befejeződjön.
+Ez a függvény aszinkron módon tölti be a képet a sprite-ba. Így egy olyan ígéretet ad vissza, amely megvárhatja, hogy a függvény befejeződjön.
 
 A következő kód bemutatja, hogyan hozhat létre egy rendszerképet az egyik beépített sablonból, és hogyan használhatja azt egy szimbólum réteggel.
 
@@ -106,13 +106,13 @@ A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codep
 
 ## <a name="create-custom-reusable-templates"></a>Egyéni újrafelhasználható sablonok létrehozása
 
-Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhat és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból a `atlas` névtér következő statikus funkcióival.
+Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhatja és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból. Használja az alábbi statikus függvényeket a `atlas` névtérben.
 
-| Név | Visszatérési típus | Leírás | 
+| Name (Név) | Visszatérési típus | Leírás | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
 |  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
-| `getAllImageTemplateNames()` | karakterlánc [] |  Egy SVG-sablon beolvasása név alapján. |
+| `getAllImageTemplateNames()` | string[] |  Egy SVG-sablon beolvasása név alapján. |
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
 
@@ -133,7 +133,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Egyéni i
 
 ## <a name="list-of-image-templates"></a>Képsablonok listája
 
-A következő táblázat felsorolja a Azure Maps web SDK-ban jelenleg elérhető összes képsablont az egyes rendszerképek feletti sablon nevével. Alapértelmezés szerint az elsődleges szín kék színű, a másodlagos szín pedig fehér. Ahhoz, hogy a másodlagos szín könnyebben látható legyen a fehér háttéren, a következő képeknél a másodlagos szín feketére van állítva.
+Ez a táblázat felsorolja az Azure Maps web SDK-ban jelenleg elérhető összes rendszerkép-sablont. A sablon neve az egyes rendszerképeknél nagyobb. Alapértelmezés szerint az elsődleges szín kék színű, a másodlagos szín pedig fehér. Ahhoz, hogy a másodlagos szín könnyebben látható legyen a fehér háttéren, a következő képeknél a másodlagos szín feketére van állítva.
 
 **Szimbólum ikon sablonjai**
 
@@ -145,7 +145,7 @@ A következő táblázat felsorolja a Azure Maps web SDK-ban jelenleg elérhető
 | jelölő – négyzet | jelölő-négyzet-fürt | jelölő – nyíl | jelölő – golyós PIN-kód | 
 |![jelölő – négyzet ikon](./media/image-templates/marker-square.png)|![jelölő – négyzet-fürt ikon](./media/image-templates/marker-square-cluster.png)|![jelölő – nyíl ikon](./media/image-templates/marker-arrow.png)|![jelölő-labda-PIN ikon](./media/image-templates/marker-ball-pin.png)|
 ||||
-| jelölő – négyzet kerekített | jelölő-négyzet-kerekített fürt | flag | jelölő – háromszög |
+| jelölő – négyzet kerekített | jelölő-négyzet-kerekített fürt | zászló | jelölő – háromszög |
 | ![jelölő – négyzet alakú lekerekített ikon](./media/image-templates/marker-square-rounded.png) | ![jelölő-négyzet-lekerekített fürt ikonja](./media/image-templates/marker-square-rounded-cluster.png) | ![jelölő ikon](./media/image-templates/flag.png) | ![jelölő – háromszög ikon](./media/image-templates/flag-triangle.png) |
 ||||
 | háromszög | háromszög – vastag | háromszög – nyíl fel | háromszög – nyíl balra |
@@ -155,9 +155,9 @@ A következő táblázat felsorolja a Azure Maps web SDK-ban jelenleg elérhető
 | ![hatszög ikon](./media/image-templates/hexagon.png) | ![hatszögletű – vastag ikon](./media/image-templates/hexagon-thick.png) | ![hatszög – lekerekített ikon](./media/image-templates/hexagon-rounded.png) | ![hatszög – kerekített vastagságú ikon](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
 | PIN kód | rögzítési kör | lekerekített négyzet | lekerekített négyzetes vastag |
-| ![gombostű ikon](./media/image-templates/pin.png) | ![rögzítési kör ikonja](./media/image-templates/pin-round.png) | ![lekerekített négyzet ikon](./media/image-templates/rounded-square.png) | ![lekerekített négyzetes vastagságú ikon](./media/image-templates/rounded-square-thick.png) |
+| ![rögzítés ikon](./media/image-templates/pin.png) | ![rögzítési kör ikonja](./media/image-templates/pin-round.png) | ![lekerekített négyzet ikon](./media/image-templates/rounded-square.png) | ![lekerekített négyzetes vastagságú ikon](./media/image-templates/rounded-square-thick.png) |
 ||||
-| nyíl fel | nyíl – vékony | car ||
+| nyíl fel | nyíl – vékony | autó ||
 | ![nyíl ikon](./media/image-templates/arrow-up.png) | ![nyíl – vékony ikon](./media/image-templates/arrow-up-thin.png) | ![autós ikon](./media/image-templates/car.png) | |
 
 **Sokszög kitöltési mintájának sablonjai**

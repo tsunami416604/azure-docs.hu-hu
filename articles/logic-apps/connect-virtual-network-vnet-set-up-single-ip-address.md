@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453482"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191501"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
 
@@ -49,7 +49,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    ![Szabály beállítása a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Tulajdonság | Value (Díj) | Leírás |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
    | **Címelőtag** | <*cél – címek*> | A célrendszer címe, ahová a forgalmat el szeretné hajtani. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. |
@@ -71,7 +71,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    **Hálózati szabályok gyűjteményének tulajdonságai**
 
-   | Tulajdonság | Value (Díj) | Leírás |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | <*Network-Rule-Collection-name*> | A hálózati szabály gyűjteményének neve |
    | **Priority (Prioritás)** | <*prioritási szintű*> | A szabály gyűjteményének futtatásához használandó prioritási sorrend. További információ: [Mi a Azure Firewall fogalmak](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
@@ -80,7 +80,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    **Hálózati szabály tulajdonságai**
 
-   | Tulajdonság | Value (Díj) | Leírás |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Name (Név)** | <*Network-rule-name*> | A hálózati szabály neve |
    | **Protocol (Protokoll)** | <*kapcsolatok – protokollok*> | A használandó kapcsolódási protokollok. Ha például NSG-szabályokat használ, válassza a **TCP** és az **UDP**beállítást, nem csak a **TCP protokollt**. |
