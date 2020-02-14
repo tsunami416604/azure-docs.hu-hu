@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 11eb2e0363682d39a00a3f47cd3cc6c4badc040f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086491"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208302"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Migrálás a Google Mapsből a Azure Mapsba
 
@@ -22,11 +22,11 @@ Ebből az oktatóanyagból megtudhatja, hogyan telepíthet át webes, mobil-és 
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps platform áttekintése
 
-Azure Maps az összes iparágban hatékony térinformatikai képességeket biztosít a fejlesztőknek. A funkciók a webes és mobil alkalmazások földrajzi kontextusának biztosítása érdekében rendszeresen frissített térképi információkkal vannak becsomagolva. Azure Maps rendelkezik egy Azure-beli API-kompatibilis REST API-készlettel. Ezek a REST API-k a térképek renderelését, keresését, útválasztását, forgalmát, időzónáit, földrajzi elhelyezkedését, Geokerítések, leképezési adatokat, időjárási, mobilitási és térbeli műveleteit nyújtják. A műveletek a webes és az Android SDK-k együttes használatával könnyen, rugalmasan és több platformon is elérhetővé teszik a fejlesztést.
+Azure Maps az összes iparágban hatékony térinformatikai képességeket biztosít a fejlesztőknek. A funkciók a gyakran frissített térképi információkkal vannak becsomagolva, amelyek földrajzi kontextust biztosítanak a webes és a mobil alkalmazások számára. Azure Maps rendelkezik egy Azure-beli API-kompatibilis REST API-készlettel. A REST API-k a térképek renderelését, keresését, útválasztását, forgalmát, időzónáit, földrajzi elhelyezkedését, Geokerítések, leképezési adatokat, időjárási, mobilitási és térbeli műveleteit teszik lehetővé. A műveletek a webes és az Android SDK-k együttes használatával könnyen, rugalmasan és több platformon is elérhetővé teszik a fejlesztést.
 
 ## <a name="high-level-platform-comparison"></a>Magas szintű platform-összehasonlítás
 
-A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók magas szintű listáját tartalmazza. Ez a lista nem jeleníti meg az összes Azure Maps funkciót. A további Azure Maps funkciók közé tartozik a kisegítő lehetőségek, a geokerítések API-k, a izokrón, a térbeli műveletek, a közvetlen Térkép csempe-hozzáférés, a Batch-szolgáltatások és az adatlefedettség-összehasonlítás (azaz a képek lefedettsége).
+A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók magas szintű listáját tartalmazza. Ez a lista nem jeleníti meg az összes Azure Maps funkciót. A további Azure Maps funkciók közé tartoznak a következők: kisegítő lehetőségek, geokerítések, izokrón, térbeli műveletek, közvetlen Térkép csempe-hozzáférés, batch-szolgáltatások és adatlefedettség-összehasonlítás (azaz a képkezelési lefedettség).
 
 | Google Maps szolgáltatás         | Azure Maps támogatás                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók m
 | Maps Embedded API           | N/A                                    |
 | Térkép URL-címei                    | N/A                                    |
 
-A Google Maps alapszintű kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítést és Azure Active Directory hitelesítést is biztosítja. Azure Active Directory több biztonsági funkcióval rendelkezik, mint az alapszintű kulcs-alapú hitelesítés.
+A Google Maps alapszintű kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítés és a Azure Active Directory hitelesítés is rendelkezésre áll. Azure Active Directory hitelesítés nagyobb biztonsági funkciókat biztosít, mint az alapszintű kulcs-alapú hitelesítés.
 
 ## <a name="licensing-considerations"></a>Licencelési megfontolások
 
 Ha a Google Maps szolgáltatásból Azure Mapsra végez áttelepítést, vegye figyelembe a következő szempontokat a licenceléssel kapcsolatban:.
 
-- Az interaktív térképek használatának Azure Maps díja, amely a betöltött Térkép csempék számától függ. Másfelől a Google a Térkép vezérlőelem betöltésének díját is leképezi. Az interaktív Azure Maps SDK-k esetében a Térkép csempéi automatikusan gyorsítótárazva vannak, hogy csökkentsék a fejlesztési költségeket. Egy Azure Maps tranzakció jön létre minden betöltött 15 Térkép csempéhez. Az interaktív Azure Maps SDK-k 512 képpont méretű csempéket használnak, és átlagosan egy vagy kevesebb tranzakciót állítanak elő oldalanként.
-- Gyakran költséghatékony, hogy a Google Maps webszolgáltatások statikus térképi képeit cserélje le a Azure Maps web SDK-val. A Azure Maps web SDK Térkép csempéket használ, és ha a felhasználó serpenyőben és nagyítja a térképet, a szolgáltatás gyakran csak egy tranzakció töredékét generálja a leképezési terhelésnek megfelelően. A Azure Maps web SDK-val lehetőség van a pásztázás és a nagyítás letiltására, ha szükséges. Emellett a Azure Maps web SDK sokkal több vizualizációs lehetőséget kínál, mint a statikus Térkép webszolgáltatása.
+- Az interaktív térképek használatának Azure Maps díja, amely a betöltött Térkép csempék számától függ. Másfelől a Google a Térkép vezérlőelem betöltésének díját is leképezi. Az interaktív Azure Maps SDK-k esetében a Térkép csempéi automatikusan gyorsítótárazva vannak, hogy csökkentsék a fejlesztési költségeket. Egy Azure Maps tranzakció jön létre minden betöltött 15 Térkép csempéhez. Az interaktív Azure Maps SDK-k 512 képpont méretű csempéket használnak, és átlagosan csak egy vagy kevesebb tranzakciót állítanak ki oldalanként.
+- Az Azure Maps web SDK-val gyakran a Google Maps webszolgáltatásokból származó statikus térképi rendszerképek cseréjére is költséghatékony. A Azure Maps web SDK Térkép csempéket használ. Kivéve, ha a felhasználó serpenyőben és kicsinyíti a térképet, a szolgáltatás gyakran csak egy tranzakció töredékét generálja a leképezések terhelése alapján. A Azure Maps web SDK-val lehetőség van a pásztázás és a nagyítás letiltására, ha szükséges. Emellett a Azure Maps web SDK sokkal több vizualizációs lehetőséget kínál, mint a statikus Térkép webszolgáltatása.
 - Azure Maps lehetővé teszi, hogy a platformról származó adatok az Azure-ban legyenek tárolva. Emellett a használati [feltételeknek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)megfelelően akár hat hónapig is gyorsítótárazhatja az adatmennyiséget.
 
 Íme néhány kapcsolódó erőforrás a Azure Mapshoz:

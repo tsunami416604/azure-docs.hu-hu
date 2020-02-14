@@ -1,24 +1,24 @@
 ---
 title: 'Oktatóanyag: elektromos járművek irányítása Azure Notebooks (Python) használatával | Microsoft Azure térképek'
 description: Az elektromos járművek átirányítása Microsoft Azure Maps útválasztási API-k és Azure Notebooks használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844751"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208165"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
-Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezekkel az API-kkal a fejlesztők, a vállalatok és az ISV-k létrehozhatnak Location-kompatibilis alkalmazásokat, IoT, mobilitási, logisztikai és Asset Tracking megoldásokat. 
+Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezek az API-k lehetővé teszik a fejlesztők, a vállalatok és az ISV-k számára, hogy helymeghatározó alkalmazásokat, IoT, mobilitást, logisztikai és Asset Tracking megoldásokat fejlesszenek. 
 
 A Azure Maps REST API-k olyan nyelvekről hívhatók, mint például a Python és az R a térinformatikai adatok elemzésének és a gépi tanulási forgatókönyvek engedélyezéséhez. Azure Maps az [útválasztási API](https://docs.microsoft.com/rest/api/maps/route) -k robusztus készletét kínálja, amelyek lehetővé teszik a felhasználók számára az útvonalak kiszámítását több adatpont között. A számítások különböző feltételeken, például járműtípuson vagy elérhető területen alapulnak. 
 
@@ -74,11 +74,11 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-
 
 1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra, hogy megnyissa Jupyter jegyzetfüzetként.
 
-A jegyzetfüzet-fájlban megvalósított funkciók jobb megismeréséhez futtassa a kódot a jegyzetfüzetben egyszerre egy cellában. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
+Próbálja meg megismerni a jegyzetfüzet-fájlban megvalósított funkciókat. Futtassa a kódot a jegyzetfüzet-fájlban egyszerre egy cellával. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
+## <a name="install-project-level-packages"></a>Projekt szolgáltatásiszint-csomagok telepítése
 
 A kód a jegyzetfüzetben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
 
@@ -156,7 +156,7 @@ boundsData = {
 
 Miután meghatározta az elektromos jármű elérhető tartományát (isochrone), megkeresheti a díjszabási állomásokat az adott tartományon belül. 
 
-A következő szkript meghívja a Azure Maps [utáni keresést a geometriai API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)-ban. A szolgáltatás az autó maximálisan elérhető tartományának határain belül keresi az elektromos járművek díjszabási állomásait, majd a rendelkezésre álló helyekre adott válaszokat elemzi.
+A következő szkript meghívja a Azure Maps [utáni keresést a geometriai API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)-ban. Megkeresi az elektromos járművek díjszabását az autó maximálisan elérhető tartományának határain belül. Ezt követően a parancsfájl a elérhető helyeinek egy tömbje alapján elemzi a választ.
 
 A rendelkezésre álló tartományon belüli elektromos járművek díjszabásának kereséséhez futtassa a következő parancsfájlt:
 

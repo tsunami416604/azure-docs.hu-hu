@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086297"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209732"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Android-alkalmazás migrálása a Google Mapsből
 
@@ -365,7 +365,7 @@ A második lehetőség, hogy átadja a nyelvet, és megtekinti az adatokat a Té
     />
 ```
 
-A harmadik lehetőség az, hogy a Maps `setStyle` metódussal program a nyelv és a regionális Térkép nézetet használja. Ez a beállítás a kód végrehajtásakor minden alkalommal frissíti a nyelvet és a regionális nézetet.
+A harmadik lehetőség az, hogy a Maps `setStyle` metódussal program a nyelv és a regionális Térkép nézetet használja. Ez a beállítás a kód végrehajtásának bármikor frissíti a nyelvet és a regionális nézetet.
 
 ```java
 mapControl.onReady(map -> {
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 A térképhez hasonló módon adhat hozzá egy csempe réteget, mint bármely más réteget. Olyan formázott URL-cím, amely x, y és nagyítási helyőrzőket tartalmaz; a `{x}`, `{y}`, `{z}` vagy annak a rétegnek a használatával kell eldönteni, hogy hová fér hozzá a csempék. Emellett a rétegek Azure Maps támogatás `{quadkey}`, `{bbox-epsg-3857}`és `{subdomain}` helyőrzők. A csempék félig áttetszővé tételéhez a rendszer 0,8-es opacitási értéket használ. A fedettség és az átlátszóság, bár hasonló, fordított értékeket használjon. A két lehetőség közötti átalakításhoz vonja ki az értékét az első számból.
 
 > [!TIP]
-> A Azure Maps-ben a rétegek a többi réteg alá kerülnek, beleértve az alapszintű leképezési rétegeket is. Gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempe rétegeit, hogy azok könnyen olvashatók legyenek. A `map.layers.add` metódus egy második paramétert használ, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. Ha a Térkép feliratai alá szúr be egy csempe réteget, a következő kódot használhatja: `map.layers.add(myTileLayer, "labels");`
+> A Azure Maps-ben a rétegek a többi réteg alá kerülnek, beleértve az alapszintű leképezési rétegeket is. Emellett gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempéket, hogy könnyen olvashatóak legyenek. A `map.layers.add` metódus egy második paramétert használ, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. Ha a Térkép feliratai alá szúr be egy csempe réteget, a következő kódot használhatja: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

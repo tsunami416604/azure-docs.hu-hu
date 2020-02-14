@@ -1,24 +1,24 @@
 ---
 title: 'Oktatóanyag: áruházbeli lokátor alkalmazás létrehozása Azure Maps használatával | Microsoft Azure térképek'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre áruházbeli lokátor webalkalmazást Microsoft Azure Maps web SDK használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987005"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209562"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
     
 > [!div class="checklist"]
 > * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
@@ -381,7 +381,7 @@ Az alkalmazás futtatása most megjelenik a fejléc, a keresőmező és a Keres�
 
 Minden most már be van állítva a felhasználói felületen. Továbbra is hozzá kell adnia a JavaScriptet az betöltéshez és az elemzéshez, majd a térképen megjeleníteni az adatmennyiséget. Első lépésként nyissa meg az *index. js fájlt* , és adja hozzá a kódot az alábbi lépések szerint.
 
-1. Globális beállítások hozzáadásával könnyebben frissítheti a beállításokat. Határozza meg a Térkép, a felugró ablak, az adatforrás, az ikon réteg, a keresési terület középpontját és a Azure Maps keresési szolgáltatás ügyfelének egy példányát megjelenítő HTML-jelölő változóit.
+1. Globális beállítások hozzáadásával könnyebben frissítheti a beállításokat. Adja meg a Térkép, a felugró ablak, az adatforrás, az ikon réteg és a HTML-jelölő változóit. A HTML-jelölő beállítása a keresési terület középpontjának jelzésére. És határozza meg a Azure Maps keresési szolgáltatás ügyfelének egy példányát.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
 
 1. Adja hozzá a kódot az *index. js*fájlhoz. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
 
-   Ha a felhasználó a Keresés gombra kattint, vagy amikor a felhasználó megnyomja az ENTER billentyűt a keresőmezőbe való belépés után, a rendszer megkezdi a felhasználó lekérdezésével kapcsolatos fuzzy keresést. Adja át az ország ISO 2 értékének egy tömbjét a `countrySet` lehetőségre a keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
+   Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország ISO 2 értékének egy tömbjét a `countrySet` lehetőségre a keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
-   Ha a keresés elkészült, végezze el az első eredményt, és állítsa be a Térkép kamerát ezen a területen. Amikor a felhasználó kiválasztja a saját hely gombot, használja a böngészőben beépített HTML5 Térinformatikai API-t, hogy lekérje a felhasználó helyét, és középpontba helyezi a térképet a helyükön.  
+   A keresés befejezése után végezze el az első eredményt, és állítsa be a Térkép kamerát ezen a területen. Amikor a felhasználó kiválasztja a saját hely gombot, kérje le a felhasználó helyét a HTML5 Térinformatikai API használatával. Ez az API a böngészőben van beépítve. Ezt követően a térképet középpontba kell lépnie a helyükön.  
 
    > [!Tip]
    > Amikor felugró ablakokat használ, érdemes létrehoznia egy `Popup` példányt, és újra felhasználni a példányt a tartalom és a pozíció frissítésével. Minden, a kódhoz hozzáadott `Popup`-példányhoz több DOM-elemet adnak hozzá a laphoz. Minél több DOM-elem van egy oldalon, annál több dolog szükséges a böngésző nyomon követésében. Ha túl sok elem van, előfordulhat, hogy a böngésző lassú lesz.
@@ -527,7 +527,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     map.markers.add(centerMarker);
     ```
 
-1. A Térkép `ready` esemény-figyelőben adjon hozzá egy adatforrást. Ezután hívja meg az adatkészlet betöltését és elemzését. Fürtözés engedélyezése az adatforráson. Az adatforrás-csoportok fürtözése a fürtben egymással átfedésben lévő pontokra mutat. A fürtök különálló pontokra vannak osztva, ahogy a felhasználó nagyítja. Ez a felhasználói élmény növelését és a teljesítmény javítását teszi lehetővé.
+1. A Térkép `ready` esemény-figyelőben adjon hozzá egy adatforrást. Ezután hívja meg az adatkészlet betöltését és elemzését. Fürtözés engedélyezése az adatforráson. Az adatforrás-csoportok fürtözése a fürtben egymással átfedésben lévő pontokra mutat. A fürtök különálló pontokra vannak osztva, ahogy a felhasználó nagyítja. Ez a viselkedés jobb felhasználói élményt nyújt, és javítja a teljesítményt.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ Amikor a felhasználó először kiválasztja a saját hely gombot, a böngész�
 
 ![képernyőkép a böngésző azon kérelméről, amely hozzáfér a felhasználó helyéhez](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Ha egy Coffee Shop-hellyel rendelkező területen közelíti meg a nagyítást, a fürtök különálló helyekre vannak osztva. Válassza ki az egyik ikont a térképen, vagy válasszon ki egy elemet az oldalsó panelen egy előugró ablak megjelenítéséhez, amely az adott hely információit jeleníti meg.
+Ha egy Coffee Shop-hellyel rendelkező területen közelíti meg a nagyítást, a fürtök különálló helyekre vannak osztva. Válassza ki az egyik ikont a térképen, vagy válasszon egy elemet az oldalsó panelen az előugró ablak megjelenítéséhez. Az előugró ablak a kiválasztott hely információit jeleníti meg.
 
 <center>
 

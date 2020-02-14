@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Azure térképek'
 description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja az érzékelő adatait Microsoft Azure Maps időjárási szolgáltatásból Azure Notebooks (Python) használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989620"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208029"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatgyűjtés kérése
 
-Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](https://aka.ms/AzureMapsWeatherDailyForecast) -ját, amely az aktuális dátumtól számított 15 napon belül napi időjárási előrejelzést biztosít az egyes szélturbinák esetében.
+Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](https://aka.ms/AzureMapsWeatherDailyForecast) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Turbina-helyszínek](./media/weather-service-tutorial/location-map.png)
 
 
-Az előrejelzési adatközpontot az időjárási adatközpont állomás-azonosítója alapján csoportosítjuk a bemutatóba. Ez a csoportosítás fokozza a bemutatót az előrejelzési adattal. 
+Az előrejelzési adatgyűjtést az állomás azonosítója alapján csoportosítjuk a bemutatóba. Az állomás azonosítója az időjárási adatközponthoz. Ez a csoportosítás fokozza a bemutatót az előrejelzési adattal.
 
 ```python
 # Group forecasted data for all locations

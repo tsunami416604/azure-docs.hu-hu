@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846482"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210191"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -18,7 +18,7 @@ Ebben az oktatóanyagban Python-kódot hoz létre és helyez üzembe Azure Funct
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -256,7 +256,7 @@ Ezt az oktatóanyagot követheti Windows, Mac OS vagy Linux rendszerű számít�
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080`, amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy, a *function. JSON* fájlban megadott hozzáférési kulcs védi a `"authLevel": "function"` tulajdonsággal. A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha helyileg szeretne tesztelni, állítsa le a Docker-t, módosítsa az engedélyezési tulajdonságot `"authLevel": "anonymous"`re, hozza létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa vissza `"authLevel": "function"` a *function. JSON*fájlban. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook.md#authorization-keys).
+1. Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080`, amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy, a *function. JSON* fájlban megadott hozzáférési kulcs védi a `"authLevel": "function"` tulajdonsággal. A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha helyileg szeretne tesztelni, állítsa le a Docker-t, módosítsa az engedélyezési tulajdonságot `"authLevel": "anonymous"`re, hozza létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa vissza `"authLevel": "function"` a *function. JSON*fájlban. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     ![Helyőrző képe, amely azt jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -370,7 +370,7 @@ Az Azure-beli Function alkalmazásban üzembe helyezett képpel a függvényt HT
 
 1. A függvény URL-címének lekérése a hozzáférési (Function) kulccsal a Azure Portal használatával vagy az `az rest` paranccsal az Azure CLI használatával.)
 
-    # <a name="portaltabportal"></a>[Portál](#tab/portal)
+    # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
     1. Jelentkezzen be a Azure Portalba, majd keresse meg a Function alkalmazást a függvény alkalmazás nevének megadásával az oldal tetején található **keresőmezőbe** . Az eredmények között válassza ki a **app Service** erőforrást.
 

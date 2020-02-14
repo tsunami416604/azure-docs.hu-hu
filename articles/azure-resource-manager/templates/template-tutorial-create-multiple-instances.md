@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472743"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209477"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozása Resource Manager-sablonokkal
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
+Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/) néven található meg. A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
 1. A Visual Studio Code-ban válassza a **File** (Fájl) >**Open File** (Fájl megnyitása) elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
@@ -45,7 +45,7 @@ Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Res
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A sablonban definiálva van egy Microsoft.Storage/storageAccounts nevű erőforrás. Hasonlítsa össze a sablont a [sablonreferenciával](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
-5. A **Fájl**>**Mentés másként** elem kiválasztásával mentse a fájlt a helyi számítógépre **azuredeploy.json** néven.
+5. A **File** (Fájl) >**Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -108,7 +108,7 @@ A befejezett sablon ehhez hasonlóan néz ki:
 }
 ```
 
-Több példány létrehozásával kapcsolatban további információt az [Erőforrás vagy tulajdonság több példányának üzembe helyezése az Azure Resource Manager sablonjaival](./create-multiple-instances.md) című témakörben találhat
+Több példány létrehozásával kapcsolatban további információt az [Erőforrás vagy tulajdonság több példányának üzembe helyezése az Azure Resource Manager sablonjaival](./copy-resources.md) című témakörben találhat
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

@@ -1,24 +1,24 @@
 ---
 title: 'Oktatóanyag: a IoT térbeli elemzésének megvalósítása | Microsoft Azure térképek'
 description: IoT Hub integrálása a Microsoft Azure Maps Service API-kkal.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24295e27a3b94f6960777a8704fdf448697da4e1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987268"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208369"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
-A térben és időben előforduló releváns események nyomon követése és rögzítése gyakori IoT forgatókönyv. Ilyenek például a flotta kezelése, az eszközök nyomon követése, a mobilitás és az intelligens városi alkalmazások. Ez az oktatóanyag végigvezeti a Azure Maps API-k használatának megoldási mintáján. A kapcsolódó eseményeket a IoT Hub rögzíti a Event Grid által biztosított esemény-előfizetési modell használatával.
+Egy IoT-forgatókönyv esetében gyakori, hogy rögzítse és nyomon követhesse a térben és időben előforduló releváns eseményeket. Ilyenek például a flotta kezelése, az eszközök nyomon követése, a mobilitás és az intelligens városi alkalmazások. Ez az oktatóanyag végigvezeti a Azure Maps API-kat használó megoldási mintákon. A kapcsolódó eseményeket a IoT Hub rögzíti a Event Grid által biztosított esemény-előfizetési modell használatával.
 
 Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
@@ -34,9 +34,9 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 ## <a name="use-case"></a>Használati eset
 
-Ez a megoldás egy olyan forgatókönyvet mutat be, amelyben egy autókölcsönző cég tervezi a bérelt személygépkocsik eseményeinek figyelését és naplózását. A bérelt vállalatok gyakran egy adott földrajzi régióhoz tartozó autókat bérelnek, és a bérletük után nyomon kell követniük a tartózkodási helyüket. A kiválasztott földrajzi régiót elhagyó autó példányait naplózni kell. A naplózási adatai biztosítják, hogy a szabályzatok, díjak és egyéb üzleti szempontok megfelelően kezelhetők legyenek.
+Ez a megoldás egy olyan forgatókönyvet mutat be, amelyben egy autókölcsönző cég tervezi a bérelt személygépkocsik eseményeinek figyelését és naplózását. Az autókölcsönző vállalatok általában egy adott földrajzi régióba bérelnek autót. Az autókat a bérletük ideje alatt nyomon kell követni. A kiválasztott földrajzi régiót elhagyó autó példányait naplózni kell. A naplózási adatai biztosítják, hogy a szabályzatok, díjak és egyéb üzleti szempontok megfelelően kezelhetők legyenek.
 
-A használati esetünkben a bérleti autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-és Azure-IoT Hub. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a [térinformatikai IoT Plug and Play sémájának](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
+A használati esetünkben a bérelt autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-t az Azure IoT Hubba. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a [térinformatikai IoT Plug and Play sémájának](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
 
 ```JSON
 {
@@ -63,9 +63,13 @@ A használati esetünkben a bérleti autók olyan IoT-eszközökkel vannak ellá
 }
 ```
 
-A következő lépésekkel végezheti el a járműbeli eszközök telemetria a célunk eléréséhez. Geokerítések-szabályokat szeretnénk végrehajtani, és válaszolunk, amikor egy olyan eseményt kapunk, amely az autó áthelyezését jelzi. Ehhez az eszközön IoT Hub telemetria-eseményeit Event Grid-on keresztül kell előfizetni. A Event Gridra való előfizetésnek számos módja van, ebben az oktatóanyagban a Azure Functionst használjuk. A Azure Functions a Event Grid közzétett eseményekre lép át. Emellett autókölcsönzési üzleti logikát is megvalósít, amely Azure Maps térbeli elemzéseken alapul. Az Azure-függvényen belüli kód ellenőrzi, hogy a jármű elhagyta-e a geokerítésen. Ha a jármű elhagyta a geokerítésen, az Azure-függvény további információkat gyűjt, például az aktuális helyhez társított címeket. A függvény emellett olyan logikát is megvalósít, amely egy adatblob-tárolóban található, az eseményekre vonatkozó körülmények leírását megkönnyítő, értelmezhető esemény-adatmennyiséget tárol. Az esemény körülményei hasznosak lehetnek az autókölcsönző vállalat és a bérleti ügyfél számára.
+A következő lépésekkel végezheti el a járműbeli eszközök telemetria a célunk eléréséhez. Geokerítések-szabályokat szeretnénk végrehajtani. És azt szeretnénk, hogy válaszoljon arra az esetre, amikor az autót áthelyezték. Ehhez az IoT Hub telemetria-eseményeit Event Grid-on keresztül előfizetjük az eszközre. 
 
-A következő diagram áttekintést nyújt a rendszerről.
+A Event Gridra való előfizetésnek számos módja van, ebben az oktatóanyagban a Azure Functionst használjuk. A Azure Functions a Event Grid közzétett eseményekre lép át. Emellett autókölcsönzési üzleti logikát is megvalósít, amely Azure Maps térbeli elemzéseken alapul. 
+
+Az Azure-függvényen belüli kód ellenőrzi, hogy a jármű elhagyta-e a geokerítésen. Ha a jármű elhagyta a geokerítésen, az Azure-függvény további információkat gyűjt, például az aktuális helyhez társított címeket. A függvény emellett olyan logikát is megvalósít, amely egy adatblob-tárolóban található, az eseményekre vonatkozó körülmények leírását megkönnyítő, értelmezhető esemény-adatmennyiséget tárol. 
+
+Az esemény körülményei hasznosak lehetnek az autókölcsönző vállalat és a bérleti ügyfél számára. A következő diagram áttekintést nyújt a rendszerről.
 
  
   <center>
@@ -74,18 +78,18 @@ A következő diagram áttekintést nyújt a rendszerről.
   
   </center>
 
-Az alábbi ábrán a kék színnel jelölt geokerítésen, valamint a bérleti jármű útvonala látható, amelyet zöld vonal jelöl.
+A következő ábra a kék színnel jelölt geokerítésen jelöli. A bérleti jármű útvonalát zöld vonallal jelölik.
 
   ![Geokerítésen útvonal](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy erőforráscsoportot a Azure Portal. Erőforráscsoport létrehozásához tegye a következőket:
+Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy erőforráscsoportot a Azure Portal. Erőforráscsoport létrehozásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza az **Erőforráscsoportok** lehetőséget.
     
@@ -106,11 +110,11 @@ Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy er
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához című témakör utasításait. A fiók elsődleges kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az események naplózásához hozzon létre egy általános célú **v2storage** -fiókot a "ContosoRental" erőforráscsoporthoz az adat blobként való tárolásához. A Storage-fiók létrehozásához kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)című témakör utasításait. Ezután létre kell hoznia egy tárolót a Blobok tárolásához. Ehhez kövesse az alábbi lépéseket:
 
@@ -127,11 +131,11 @@ Az események naplózásához hozzon létre egy általános célú **v2storage**
     ![hozzáférési kulcsok](./media/tutorial-iot-hub-maps/access-keys.png)
 
 
-Most már rendelkezik egy Storage-fiókkal és egy tárolóval az események naplózásához. Ezután létrehozunk egy IoT hub-t.
+Most már rendelkezik egy Storage-fiókkal és egy tárolóval az események naplózásához. Ezután létrehozunk egy IoT hubot.
 
 ### <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Az IoT Hub egy olyan felügyelt szolgáltatás a felhőben, amely központi üzenetsorként működik a IoT-alkalmazások és az általa felügyelt eszközök közötti kétirányú kommunikációhoz. Az eszköz telemetria-üzeneteinek egy Event Gridba való átirányításához hozzon létre egy IoT Hub a "ContosoRental" erőforráscsoporthoz. Egy üzenet-útválasztási integráció beállítása, ahol az üzenetek szűrése az autó motorjának állapota alapján történik. Az telemetria üzeneteket a Event Grid is küldi a rendszer az autó áthelyezésekor.
+A IoT Hub a felhőben felügyelt szolgáltatás. A IoT Hub a IoT-alkalmazás és az általa felügyelt eszközök közötti kétirányú kommunikációhoz központi üzenetsorként működik. Az eszköz telemetria-üzeneteinek egy Event Gridba való átirányításához hozzon létre egy IoT Hub a "ContosoRental" erőforráscsoporthoz. Egy üzenet-útválasztási integráció beállítása, ahol az üzenetek szűrése az autó motorjának állapota alapján történik. Az telemetria üzeneteket a Event Grid is küldi a rendszer az autó áthelyezésekor.
 
 > [!Note] 
 > A IoT Hub funkciói az eszközön telemetria események közzétételét Event Grid a nyilvános előzetes verzióban. A nyilvános előzetes verzió funkciói az USA keleti régiója, az USA nyugati régiója, **Nyugat-Európa, Azure Government, az Azure China 21Vianet** és az **Azure Germany**kivételével minden régióban elérhetők. 
@@ -154,7 +158,7 @@ Ahhoz, hogy csatlakozhasson a IoT Hubhoz, regisztrálni kell egy eszközt. Az Io
 
 ## <a name="upload-geofence"></a>Geokerítésen feltöltése
 
-A [Poster alkalmazást](https://www.getpostman.com) használva [feltöltjük a geokerítésen](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) a Azure Maps szolgáltatásba a Azure Maps adatfeltöltő API-val. Minden olyan esemény, amely a geokerítésen kívül esik, a rendszer naplózza.
+A [Poster alkalmazást](https://www.getpostman.com) használva [feltöltjük a geokerítésen](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) a Azure Maps szolgáltatásba a Azure Maps adatfeltöltő API használatával. Minden olyan esemény, amely a geokerítésen kívül esik, a rendszer naplózza.
 
 Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerítésen feltöltéséhez a Azure Maps, az adatfeltöltő API használatával.  
 
@@ -204,7 +208,11 @@ A következő lépésben létrehozunk egy Azure-függvényt a "ContosoRental" er
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Azure-függvény létrehozása és Event Grid-előfizetés hozzáadása
 
-A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi a kód igény szerinti futtatását anélkül, hogy explicit módon kellene kiépíteni vagy kezelni a számítási infrastruktúrát. Ha többet szeretne megtudni a Azure Functionsről, tekintse meg az [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) dokumentációját. A függvényben megvalósított logika a geokerítésen állapotának értékeléséhez a járművön kívüli eszköz telemetria érkező helyadatok használatával történik. Abban az esetben, ha egy adott jármű a geokerítésen kívül esik, a függvény ezután további információkat gyűjt, például a hely címét a [Search reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -n keresztül, amely egy adott hely koordinálását egy emberi érthető lakcímre fordítja. A rendszer ezután a blob-tárolóban tárolja az összes kapcsolódó eseményt. Az alábbi 5. lépés az ilyen logikát megvalósító végrehajtható kódra mutat. Az alábbi lépéseket követve hozzon létre egy Azure-függvényt, amely adatnaplókat küld a Storage-fiók blob-tárolójába, és adjon hozzá egy Event Grid-előfizetést.
+Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi a kód igény szerinti futtatását anélkül, hogy explicit módon kellene kiépíteni vagy kezelni a számítási infrastruktúrát. Ha többet szeretne megtudni a Azure Functionsről, tekintse meg az [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) dokumentációját. 
+
+A függvényben megvalósított logika a geokerítésen állapotának értékeléséhez a járművön kívüli eszköz telemetria érkező helyadatok használatával történik. Abban az esetben, ha egy adott jármű a geokerítésen kívül esik, a függvény további információkat gyűjt, például a hely címét a [keresési címek fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-n keresztül. Ez az API egy adott helyet hangol le egy emberi, érthető lakcímre. 
+
+Ekkor a rendszer a blob-tárolóban tárolja az összes releváns eseményt. Az alábbi 5. lépés az ilyen logikát megvalósító végrehajtható kódra mutat. Az alábbi lépéseket követve hozzon létre egy Azure-függvényt, amely adatnaplókat küld a blob Storage-fiókban található blob tárolóba, és adjon hozzá egy Event Grid-előfizetést.
 
 1. Az Azure Portal irányítópulton válassza az erőforrás létrehozása lehetőséget. Válassza a **számítás** lehetőséget az elérhető erőforrástípusok listájából, majd válassza a **Function app**elemet.
 
@@ -216,7 +224,7 @@ A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely 
 
 2. Tekintse át a Function app részleteit, és válassza a létrehozás lehetőséget.
 
-3. Az alkalmazás létrehozása után hozzá kell adnia egy függvényt. Nyissa meg a Function alkalmazást, és kattintson az **új függvény** lehetőségre egy függvény hozzáadásához, válassza a **portálon** a fejlesztői környezet lehetőséget, majd válassza a **Folytatás**lehetőséget.
+3. Az alkalmazás létrehozása után hozzá kell adnia egy függvényt. Nyissa meg a Function alkalmazást. A függvény hozzáadásához kattintson az **új függvény** elemre, majd válassza a **portálon** a fejlesztői környezet lehetőséget. Ezután válassza a **Folytatás**lehetőséget.
 
     ![Create-Function](./media/tutorial-iot-hub-maps/function.png)
 
@@ -231,20 +239,20 @@ A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely 
 7. A c# parancsfájlban cserélje le a következő paramétereket:
     * Cserélje le a **SUBSCRIPTION_KEYt** a Azure Maps fiók elsődleges előfizetési kulcsára.
     * Cserélje le a **UDID** a feltöltött geokerítésen UDID. 
-    * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, **ACCOUNT_NAME** és **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, a fiók nevére és az adattároló-tárolóra.
+    * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, **ACCOUNT_NAME**és **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, a fiók nevére és az adattároló-tárolóra.
 
 10. Kattintson a **Event Grid-előfizetés hozzáadása**elemre.
     
     ![Event-Grid hozzáadása](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Töltse ki az előfizetés részleteit az **esemény-előfizetés részletei** név alatt az előfizetés és az esemény-séma területen válassza a "Event Grid séma" lehetőséget. A **témakör részletek** területén válassza az "Azure IoT hub fiókok" lehetőséget a témakör típusaként. Válassza ki ugyanazt az előfizetést, amelyet az erőforráscsoport létrehozásához használt, válassza az "ContosoRental" lehetőséget "erőforráscsoportként", majd válassza ki a létrehozott IoT Hub erőforrásként. Válassza ki az **eszköz telemetria** . Miután kiválasztotta ezeket a beállításokat, a "témakör típusa" beállítás automatikusan "IoT Hub" értékre vált.
+11. Töltse ki az előfizetés részleteit az **esemény-előfizetés részletei** név alatt az előfizetés és az esemény-séma területen válassza a "Event Grid séma" lehetőséget. A **témakör részletek** területén válassza az "Azure IoT hub fiókok" lehetőséget a témakör típusaként. Válassza ki ugyanazt az előfizetést, amelyet az erőforráscsoport létrehozásához használt, válassza az "ContosoRental" lehetőséget az "erőforráscsoport" elemnél. Válassza ki az erőforrásként létrehozott IoT Hub. Válassza ki az **eszköz telemetria** . Miután kiválasztotta ezeket a beállításokat, a "témakör típusa" beállítás automatikusan "IoT Hub" értékre vált.
 
     ![Event-Grid-előfizetés](./media/tutorial-iot-hub-maps/af-egs.png)
  
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>Események szűrése IoT Hub üzenet-útválasztás használatával
 
-Miután hozzáadta Event Grid-előfizetést az Azure-függvényhez, megjelenik egy alapértelmezett üzenet, amely az IoT Hub **üzenet-útválasztási** paneljén Event Grid jelenik meg. Az üzenet-útválasztás lehetővé teszi különböző adattípusok, például az eszköz telemetria üzenetei, az eszköz életciklusa eseményeinek és az eszközök kettős változási eseményeinek különböző végpontokra való továbbítását. További információ az IoT hub üzenet-útválasztásáról: [IoT hub üzenet-útválasztás használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Miután hozzáadta Event Grid-előfizetést az Azure-függvényhez, megjelenik egy alapértelmezett üzenet, amely az IoT Hub **üzenet-útválasztási** paneljén Event Grid jelenik meg. Az üzenet-útválasztás lehetővé teszi különböző adattípusok különböző végpontokra való továbbítását. Átirányíthatja például az eszköz telemetria-üzeneteit, az eszközök életciklusával kapcsolatos eseményeket és az eszközök kettős változási eseményeit. További információ az IoT hub üzenet-útválasztásáról: [IoT hub üzenet-útválasztás használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
 ![központ – például útvonal](./media/tutorial-iot-hub-maps/hub-route.png)
 

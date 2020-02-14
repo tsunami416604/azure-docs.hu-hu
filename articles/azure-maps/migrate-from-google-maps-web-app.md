@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086414"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208743"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
 
 A Google Maps-et használó webalkalmazások többsége a Google Maps v3 JavaScript SDK-t használja. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi az interaktív térképek egyéni tartalommal és képekkel való testreszabását. Az alkalmazást webes vagy mobil alkalmazásokon is futtathatja. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
 
-Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlő függvénytárat használ-e. Példák a nyílt forráskódú Térkép vezérlőelem-függvénytárra: cézium, betegtájékoztató és OpenLayers. Ha az alkalmazás egy nyílt forráskódú Térkép vezérlőelem-függvénytárat használ, és nem kívánja használni a Azure Maps web SDK-t, akkor továbbra is áttelepíthető. Ebben az esetben az alkalmazást a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| a [műholdas csempék](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) kapcsolja össze. A következő pontok részletesen ismertetik, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
+Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlő függvénytárat használ-e. Példák a nyílt forráskódú Térkép vezérlőelem-függvénytárra: cézium, betegtájékoztató és OpenLayers. Az alkalmazást továbbra is áttelepítheti, még akkor is, ha nyílt forráskódú Térkép vezérlőelem-függvénytárat használ, és nem kívánja használni a Azure Maps web SDK-t. Ilyen esetben az alkalmazást a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| a [műholdas csempék](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) kapcsolja össze. A következő pontok részletesen ismertetik, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
 - Cézium – a webes 3D Térkép vezérlőelem. [Mintakód \|](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) [dokumentáció](https://cesiumjs.org/)
 - Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód \|](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) [dokumentáció](https://leafletjs.com/)
@@ -62,7 +62,7 @@ A következőkben a Google Maps és a Azure Maps web SDK-k közötti főbb kül�
 
 ## <a name="web-sdk-side-by-side-examples"></a>A web SDK párhuzamos példái
 
-Ez a gyűjtemény minden egyes platformhoz tartalmaz kód-mintákat, és mindegyik minta közös használati esetet takar. Célja, hogy a webalkalmazást a Google Maps v3 JavaScript SDK-ból telepítse át a Azure Maps web SDK-ba. A webalkalmazásokhoz kapcsolódó kódok a JavaScriptben érhetők el. A Azure Maps azonban a [NPM-modulon](how-to-use-map-control.md)keresztül kiegészítő lehetőségként is biztosít írógéppel-definíciókat.
+Ez a gyűjtemény az egyes platformokhoz tartalmaz kód-mintákat, és mindegyik minta általános használati esetet takar. Célja, hogy a webalkalmazást a Google Maps v3 JavaScript SDK-ból telepítse át a Azure Maps web SDK-ba. A webalkalmazásokhoz kapcsolódó kódok a JavaScriptben érhetők el. A Azure Maps azonban a [NPM-modulon](how-to-use-map-control.md)keresztül kiegészítő lehetőségként is biztosít írógéppel-definíciókat.
 
 ### <a name="load-a-map"></a>Térkép betöltése
 
@@ -80,7 +80,7 @@ A Térkép betöltéséhez mindkét SDK-nak ugyanaz a lépései vannak:
 - Amikor a leképezést megjelenítő `div` elemre hivatkozik, a `Map` osztálynak Azure Maps csak a `id` értéket kell megadnia, amíg a Google Maps-nek `HTMLElement` objektumra van szüksége.
 - A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg `[longitude, latitude]`formátumban.
 - A Azure Maps nagyítási szintje a Google Maps-ben a nagyítási szintnél alacsonyabb szinten van. Ez az eltérés azért van, mert a két platform mozaikszerű elrendezési rendszerének különbsége.
-- Azure Maps nem ad hozzá navigációs vezérlőket a Térkép vászonhoz. Így alapértelmezés szerint a Térkép nem rendelkezik nagyítási gombokkal és a Térkép stílusa gombokkal. Vannak azonban olyan vezérlők, amelyekkel hozzáadhat egy Térkép stílusú választót, nagyítási gombokat, iránytűt vagy rotációs vezérlőelemet, valamint egy pitch vezérlőelemet.
+- Azure Maps nem ad hozzá navigációs vezérlőket a Térkép vászonhoz. Így alapértelmezés szerint a Térkép nem rendelkezik nagyítási gombokkal és a Térkép stílusa gombokkal. Azonban lehetőség van a Térkép stílusú választó, a nagyítási gombok, az iránytű vagy a rotációs vezérlők hozzáadására, valamint egy pitch vezérlőelemre.
 - A rendszer egy eseménykezelőt ad a Azure Maps a Térkép példány `ready` eseményének figyeléséhez. Ez az esemény akkor indul el, ha a Térkép befejezte a WebGL-környezet és az összes szükséges erőforrás betöltését. Adja hozzá a Térkép befejezése után futtatni kívánt kódokat az eseménykezelőhöz.
 
 Az alábbi alapszintű példák a Google Maps szolgáltatást használják, hogy a koordinátákon keresztül középre igazított térképet töltsön be. A hosszúság:-73,985, szélesség: 40,747, és a Térkép a nagyítási szint 12.
@@ -212,7 +212,7 @@ Itt látható egy példa arra, hogy a Google Maps a "fr-FR" nyelvre van állítv
 
 **Utána: Azure Maps**
 
-Azure Maps két különböző módszert biztosít a Térkép nyelvének és regionális nézetének beállításához. Az első lehetőség az, hogy hozzáadja ezt az információt a globális *atlasz* -névtérhez, ami az alkalmazás összes leképezés-vezérlési példányát az alapértelmezett beállítások alapján fogja eredményezni. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet az "Auto" értékre:
+Azure Maps két különböző módszert biztosít a Térkép nyelvének és regionális nézetének beállításához. Az első lehetőség az adatok hozzáadása a globális *atlasz* -névtérhez. Ennek eredményeképpen az alkalmazás minden Térkép vezérlőelem-példánya alapértelmezés szerint ezekkel a beállításokkal fog szerepelni. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet az "Auto" értékre:
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ Itt látható egy példa arra, hogy a "FR" és a "fr-FR" értékre beállított 
 
 ### <a name="setting-the-map-view"></a>A Térkép nézet beállítása
 
-Az Azure Maps és a Google Maps szolgáltatásban a dinamikus térképek programozott módon áthelyezhetők új földrajzi helyekre. Ehhez hívja meg a megfelelő függvényeket a JavaScriptben. A példa bemutatja, hogyan jelenítheti meg a Térkép műhold antennáját, középre teheti a térképet, és módosíthatja a nagyítási szintet a Google Maps-ben 15 értékre. A rendszer a következő földrajzi koordinátákat használja: hosszúság:-111,0225 és szélesség: 35,0272.
+Az Azure Maps és a Google Maps szolgáltatásban a dinamikus térképek programozott módon áthelyezhetők új földrajzi helyekre. Ehhez hívja meg a megfelelő függvényeket a JavaScriptben. A példa bemutatja, hogyan jelenítheti meg a Térkép műhold antennáját, középpontba veheti a térképet egy adott helyen, és módosíthatja a nagyítási szintet. A rendszer a következő földrajzi koordinátákat használja: hosszúság:-111,0225 és szélesség: 35,0272.
 
 > [!NOTE]
 > A Google Maps a méretekben 256 képpontos csempéket használ, míg a Azure Maps nagyobb 512 képpont csempét használ. Így a Azure Maps kevesebb hálózati kérést igényel, hogy ugyanazt a térképi terület legyen betöltve a Google Maps szolgáltatásban. Mivel a csempe-piramisok a Térkép vezérlőelemekben működnek, ki kell vonnia a Google Maps-ben használt nagyítási szintet Azure Maps használatakor. Ez az aritmetikai művelet biztosítja, hogy a Azure Maps nagyobb csempéi a Google Maps-ben azonos ábrázolási területtel rendelkeznek.
@@ -856,7 +856,7 @@ Egyetlen visszahívási függvényt kell megadnia a `map.data.setStyle` metódus
 
 **Utána: Azure Maps**
 
-A GeoJSON az Azure Maps alapadatának típusa. Importálja egy adatforrásba a `datasource.importFromUrl` metódus használatával. Használjon buborék réteget, amely az adatforrás szolgáltatásainak tulajdonságai alapján méretezhető körök megjelenítését teszi lehetővé. A visszahívási függvény helyett az üzleti logikát egy kifejezésre alakítja át a rendszer, és átadja a stílus beállításait. A kifejezések határozzák meg az üzleti logika működését. A kifejezések átadhatók egy másik szálnak, és kiértékelhető a szolgáltatásra vonatkozó adattal. Több adatforrást és réteget is hozzáadhat a Azure Mapshoz, amelyek mindegyike különböző üzleti logikával rendelkezik. Ez a funkció lehetővé teszi több adatkészlet megjelenítését a térképen különböző módokon.
+A GeoJSON az Azure Maps alapadatának típusa. Importálja egy adatforrásba a `datasource.importFromUrl` metódus használatával. Buborék-réteg használata A buborék réteg az adatforrás szolgáltatásainak tulajdonságai alapján méretezhető körök megjelenítésére szolgáló funkciókat biztosít. A visszahívási függvény helyett az üzleti logikát egy kifejezésre alakítja át a rendszer, és átadja a stílus beállításait. A kifejezések határozzák meg az üzleti logika működését. A kifejezések átadhatók egy másik szálnak, és kiértékelhető a szolgáltatásra vonatkozó adattal. Több adatforrást és réteget is hozzáadhat a Azure Mapshoz, amelyek mindegyike különböző üzleti logikával rendelkezik. Ez a funkció lehetővé teszi több adatkészlet megjelenítését a térképen különböző módokon.
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ A következő példákban a kód betölt egy GeoJSON-hírcsatornát az elmúlt h
 
 **Előtte: Google Maps**
 
-A MarkerCluster-függvénytárat használja a fürt jelölői számára. A fürt ikonjai csak a képekre korlátozódnak, amelyek neve a következő: öt, és ugyanabban a címtárban van tárolva.
+A MarkerCluster-függvénytárat használja a fürt jelölői számára. A fürt ikonjai csak a képekre korlátozódnak, amelyek neve a következő számokat tartalmazhatja. Ugyanabban a címtárban futnak.
 
 ```html
 <!DOCTYPE html>
@@ -1151,7 +1151,7 @@ Közvetlenül importálhatja a GeoJSON-fájlokat a `importDataFromUrl` függvén
 
 A Heat Maps (más néven a pont sűrűsége) az adatvizualizáció típusa. Ezek az adatmennyiség színskáláját jelölik. Emellett gyakran használják a "gyors elérésű pontok" megjelenítését a térképen. A Heat Maps nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére.
 
-Az alábbi példák betöltenek egy GeoJSON-hírcsatornát az elmúlt hónapban az USGS-ből, és felszámítják őket súlyozott hő-térképként. A `"mag"` tulajdonság a súlyozásként használható.
+Az alábbi példák betöltenek egy GeoJSON-hírcsatornát az elmúlt hónapban az összes földrengésről az USGS-ből, és súlyozott hő-térképként jeleníti meg őket. A `"mag"` tulajdonság a súlyozásként használható.
 
 **Előtte: Google Maps**
 
@@ -1395,7 +1395,7 @@ Ha a Azure Maps egyik forgalmi ikonjára kattint, további információk jelenne
 
 ### <a name="add-a-ground-overlay"></a>Vízszintes átfedés hozzáadása
 
-Az Azure és a Google Maps is támogatja a georeferens-lemezképek átfedését a térképen. A georeferens-képek mozgatása és méretezése a Térkép pásztázása és nagyítása révén. A Google Maps-ben a georeferens rendszerképeket nevezzük, miközben Azure Maps képrétegként hivatkoznak rájuk. Ezek kiválóan használhatók az alapszintű tervek létrehozásához, a régi térképek és a képek átfedéséhez egy drone-ből.
+Az Azure és a Google Maps is támogatja a georeferens-lemezképek átfedését a térképen. A georeferens-képek mozgatása és méretezése a Térkép pásztázása és nagyítása révén. A Google Maps-ben a georeferens rendszerképeket nevezzük, miközben Azure Maps képrétegként hivatkoznak rájuk. Kiválóan használhatók alapszintű csomagok létrehozásához, a régi térképek és képek átfedéséhez egy droneből.
 
 **Előtte: Google Maps**
 
