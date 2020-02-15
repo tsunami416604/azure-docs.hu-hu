@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/05/2020
+ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445598"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210334"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cosmosdb-resources-portal.md)
+> * [Azure Portalra](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,7 +26,7 @@ ms.locfileid: "75445598"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezheti a kulcs/érték adatbázisait, a dokumentum-adatbázisokat és a Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Azure Cosmos DB középpontjában. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB segítségével gyorsan létrehozhat és lekérdezheti a kulcs/érték adatbázisait, a dokumentum-adatbázisokat és a Graph-adatbázisokat, amelyek mindegyike kihasználja a globális elosztási és horizontális méretezési képességeket Azure Cosmos DB középpontjában. 
 
 Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Azure Cosmos DB [SQL API](sql-api-introduction.md) -fiók létrehozásához, egy dokumentum-adatbázis és-tároló létrehozásához, valamint az adattárolóhoz való hozzáadásához. 
 
@@ -51,7 +51,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     
     Előfordulhat, hogy a **tároló hozzáadása** ablak megjelenítéséhez jobbra kell görgetni.
     
-    ![Az Azure Portal Adatkezelője a Tároló hozzáadása panellel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![A Azure Portal Adatkezelő, tároló hozzáadása panel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
 1.  A **tároló hozzáadása** panelen adja meg az új tároló beállításait.
     
@@ -59,8 +59,8 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     |---|---|---|
     |**Adatbázis-azonosító**|Teendők|Adja meg a *ToDoList* nevet az új adatbázis neveként. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?`vagy záró szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
     |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
-    |**Tároló azonosítója**|Elemek|Adja meg az *elemeket* az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.|
-    |**Partíciókulcs**| /kategória| A cikkben ismertetett minta a */category* használja a partíciós kulcsként.|
+    |**Tároló azonosítója**|Elemek|Adja meg az *elemeket* az új tároló neveként. A tároló-azonosítók ugyanazokkal a karakterekkel rendelkeznek, mint az adatbázis neve.|
+    |**Partíciós kulcs**| /kategória| A cikkben ismertetett minta a */category* használja a partíciós kulcsként.|
 
     
     Ne adjon **egyedi kulcsokat** ehhez a példához. Az egyedi kulcsok lehetővé teszik adatintegritási réteg hozzáadását az adatbázishoz, ha a partíciós kulcs egy vagy több értékének egyediségét biztosítja. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
@@ -73,7 +73,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 1. A **adatkezelő**bontsa ki a **ToDoList** -adatbázist, és bontsa ki az **elemek** tárolót. Ezután válassza az **elemek elemet**, majd válassza az **új elem elemet**. 
    
-   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Új dokumentumok létrehozása az Adatkezelővel az Azure Portalon](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
 1. Adja hozzá a következő struktúrát a dokumentumhoz a **dokumentumok** ablaktábla jobb oldalán:
 

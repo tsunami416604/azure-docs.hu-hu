@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025707"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212415"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.81 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy van egy AK-fürt a *standard* SKU Azure Load Balancer. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -57,7 +57,10 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 
 ## <a name="use-the-standard-sku-load-balancer"></a>A *standard* SKU Load Balancer használata
 
-Ha egy AK-fürtöt hoz létre, a rendszer alapértelmezés szerint a *standard* SKU Load balancert használja, amikor szolgáltatásokat futtat a fürtben. Az [Azure CLI][aks-quickstart-cli] -t használó rövid útmutató például telepíti a *standard* SKU Load balancert használó minta alkalmazást. 
+Ha egy AK-fürtöt hoz létre, a rendszer alapértelmezés szerint a *standard* SKU Load balancert használja, amikor szolgáltatásokat futtat a fürtben. Az [Azure CLI][aks-quickstart-cli] -t használó rövid útmutató például telepíti a *standard* SKU Load balancert használó minta alkalmazást.
+
+> [!IMPORTANT]
+> A nyilvános IP-címek elkerülhetők a felhasználó által megadott útvonal (UDR) testreszabásával. Egy AK-fürt kimenő típusának megadása a UDR kihagyhatja az IP-kiépítés és a háttérbeli készlet beállítását az AK-hoz létrehozott Azure Load Balancer számára. Lásd: [a fürt `outboundType`ának beállítása a "userDefinedRouting"](egress-outboundtype.md)értékre.
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
 
@@ -186,7 +189,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 A példa kimenete a *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes*alapértelmezett értékét jeleníti meg. A *AllocatedOutboundPorts* 0 értéke állítja be a kimenő portok számát a háttérbeli készlet méretétől függően a kimenő portok számának automatikus hozzárendelése használatával. Ha például a fürt 50 vagy kevesebb csomóponttal rendelkezik, az egyes csomópontok 1024 portjai vannak lefoglalva.
 
-Érdemes lehet módosítani a *allocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* beállítást, ha a fenti alapértelmezett konfiguráció alapján szeretné szembenézni a SNAT-kimerüléssel. Minden további IP-cím lehetővé teszi a 64 000 további portok kiosztását, az Azure-standard Load Balancer azonban nem növekszik automatikusan a portok száma csomóponton, ha további IP-címek vannak hozzáadva. Ezeket az értékeket módosíthatja a *Load-Balancer-kimenő-portok* és a *Load-Balancer – Idle-timeout* paraméterek beállításával. Példa:
+Érdemes lehet módosítani a *allocatedOutboundPorts* vagy a *IdleTimeoutInMinutes* beállítást, ha a fenti alapértelmezett konfiguráció alapján szeretné szembenézni a SNAT-kimerüléssel. Minden további IP-cím lehetővé teszi a 64 000 további portok kiosztását, az Azure-standard Load Balancer azonban nem növekszik automatikusan a portok száma csomóponton, ha további IP-címek vannak hozzáadva. Ezeket az értékeket módosíthatja a *Load-Balancer-kimenő-portok* és a *Load-Balancer – Idle-timeout* paraméterek beállításával. Például:
 
 ```azurecli-interactive
 az aks update \
@@ -199,7 +202,7 @@ az aks update \
 > [!IMPORTANT]
 > A kapcsolat vagy a skálázási problémák elkerülése érdekében [ki kell számítania a szükséges kvótát][calculate-required-quota] , mielőtt testreszabja a *allocatedOutboundPorts* . A *allocatedOutboundPorts* megadott értéknek a 8-as többszörösének is kell lennie.
 
-Fürt létrehozásakor a *Load-Balancer-kimenő-portok* és a *Load-Balancer-Idle-timeout* paramétereket is használhatja, de a *terheléselosztás által felügyelt-kimenő-IP-darabszám*, a *Load-Balancer-kimenő-* IP-címek vagy a *Load-Balancer-kimenő-IP-előtag* is megadható.  Példa:
+Fürt létrehozásakor a *Load-Balancer-kimenő-portok* és a *Load-Balancer-Idle-timeout* paramétereket is használhatja, de a *terheléselosztás által felügyelt-kimenő-IP-darabszám*, a *Load-Balancer-kimenő-* IP-címek vagy a *Load-Balancer-kimenő-IP-előtag* is megadható.  Például:
 
 ```azurecli-interactive
 az aks create \

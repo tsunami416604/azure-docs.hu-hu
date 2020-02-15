@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024347"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252212"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 
@@ -22,7 +22,7 @@ ms.locfileid: "77024347"
 >
 > Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával konfigurálható. A rendelkezésre állási csoport erőforrásainak konfigurálására vonatkozó parancsok megváltoztak a RHEL 8-ban, és érdemes megtekinteni a [rendelkezésre állási csoport erőforrásának](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásoknak a megfelelő parancsokkal kapcsolatos további információkért.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > - Új erőforráscsoport, rendelkezésre állási csoport és Azure Linux Virtual Machines (VM) létrehozása
@@ -356,15 +356,15 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Új alkalmazás regisztrálása Azure Active Directory
  
  1. Nyissa meg a következőt: https://portal.azure.com
- 2. Nyissa meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)panelt. Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a `tenant ID`
+ 2. Nyissa meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)panelt. Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a `tenant ID`
  3. Kattintson [ **Alkalmazásregisztrációk**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Kattintson az **új regisztráció** elemre.
  5. Adjon meg egy **nevet** , például `<resourceGroupName>-app`, válassza a **csak a szervezeti címtárban lévő fiókok** elemet.
- 6. Válassza az alkalmazás típusa **web**lehetőséget, írja be a bejelentkezési URL-címet (például http://localhost), majd kattintson a Hozzáadás gombra. A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
+ 6. Válassza az alkalmazás típusa **web**lehetőséget, írja be a bejelentkezési URL-címet (például http://localhost), majd kattintson a Hozzáadás gombra. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
  7. Válassza a **tanúsítványok és titkos kulcsok**lehetőséget, majd kattintson az **új ügyfél titka** elemre.
  8. Adja meg az új kulcs leírását (ügyfél titkos kulcsa), válassza a **soha nem jár le** lehetőséget, majd kattintson a **Hozzáadás** gombra.
  9. Jegyezze fel a titok értékét. Az egyszerű szolgáltatás jelszavaként van használatban
-10. Válassza az **Áttekintés** lehetőséget. Jegyezze fel az alkalmazás AZONOSÍTÓját. A szolgáltatás felhasználóneveként (bejelentkezési AZONOSÍTÓként az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
+10. Válassza az **Áttekintés** lehetőséget. Jegyezze fel az alkalmazás azonosítóját. A szolgáltatás felhasználóneveként (bejelentkezési AZONOSÍTÓként az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Egyéni szerepkör létrehozása a kerítési ügynökhöz
 
@@ -433,11 +433,11 @@ A következő kimenetnek kell megjelennie:
 
 ### <a name="assign-the-custom-role-to-the-service-principal"></a>Az egyéni szerepkör társítása az egyszerű szolgáltatáshoz
 
-Rendelje hozzá az előző lépésben az egyszerű szolgáltatáshoz létrehozott egyéni szerepkör-`Linux Fence Agent Role-<username>`. Ne használja többé a tulajdonosi szerepkört!
+Rendelje hozzá az előző lépésben az egyszerű szolgáltatáshoz létrehozott egyéni szerepkör-`Linux Fence Agent Role-<username>`. A tulajdonosi szerepkör ne használjon többé!
  
 1. Nyissa meg a következőt: https://portal.azure.com
 2. Nyissa meg az [összes erőforrás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll) panelt
-3. Válassza ki az első fürtcsomópont virtuális gépét.
+3. Válassza ki a virtuális gépet, az első fürtcsomópontra
 4. Kattintson a **hozzáférés-vezérlés (iam)** elemre.
 5. Kattintson **a szerepkör-hozzárendelés hozzáadása** elemre.
 6. **A szerepkör listából válassza** ki a szerepkört `Linux Fence Agent Role-<username>`
@@ -786,7 +786,7 @@ A [rendelkezésre állási csoport erőforrásainak a pacemaker-fürtön törté
 
 ### <a name="create-the-ag-cluster-resource"></a>Az AG-fürt erőforrásának létrehozása
 
-1. A következő parancs használatával hozza létre az erőforrás-`ag_cluster` a rendelkezésre álló csoport `ag1`.
+1. A következő parancs használatával hozza létre az erőforrás-`ag_cluster` a rendelkezésre állási csoport `ag1`.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true

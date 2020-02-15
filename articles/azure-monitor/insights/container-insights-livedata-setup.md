@@ -1,23 +1,24 @@
 ---
-title: A tárolók élő adattárolásának Azure Monitor beállítása (előzetes verzió) | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet beállítani a tároló-naplók (StdOut/stderr) valós idejű nézetét és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
+title: Azure Monitor beállítása az élő adattárolók számára (előzetes verzió) | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók valós idejű nézetét (StdOut/stderr) és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/14/2019
+ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063764"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251787"
 ---
-# <a name="how-to-setup-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) funkciójának beállítása
+# <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
-Ha szeretné megtekinteni az Azure Kubernetes Service-(ak-) fürtökön Azure Monitorekkel rendelkező élő adatok (előzetes verzió) megtekintését, konfigurálnia kell a hitelesítést, hogy engedélyt adjon a Kubernetes adataihoz való hozzáférésre. Ez a biztonsági konfiguráció valós idejű hozzáférést tesz lehetővé az adataihoz a Kubernetes API-n keresztül közvetlenül a Azure Portal.
+Ha szeretné megtekinteni az Azure Kubernetes Service-(ak-) fürtökön Azure Monitorekkel rendelkező élő adatok (előzetes verzió) megtekintését, konfigurálnia kell a hitelesítést, hogy engedélyt adjon a Kubernetes adataihoz való hozzáférésre. Ez a biztonsági konfiguráció lehetővé teszi a valós idejű hozzáférést az adataihoz a Kubernetes API-n keresztül közvetlenül a Azure Portal.
 
-Ez a funkció három különböző módszert támogat a naplókhoz, eseményekhez és mérőszámokhoz való hozzáférés szabályozásához:
+Ez a szolgáltatás a következő módszereket támogatja a naplók, események és metrikák elérésének vezérléséhez:
 
 - Az AKS nélküli Kubernetes RBAC-hitelesítés engedélyezve
 - Az AKS Kubernetes RBAC-hitelesítés engedélyezve
+    - A fürt szerepkörének kötési  **[CLUSTERMONITORINGUSER](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0) konfigurált AK**
 - Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel engedélyezett AK
 
 Ezek az utasítások rendszergazdai hozzáférést igényelnek a Kubernetes-fürthöz, és ha úgy konfigurálja, hogy az Azure Active Directory (AD) felhasználó-hitelesítésre, rendszergazdai hozzáférés az Azure AD-hoz.  
@@ -45,11 +46,19 @@ A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejele
 >[!IMPORTANT]
 >Ennek a funkciónak a felhasználóinak az [Azure Kubernetes-fürt felhasználói szerepkört](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) kell használniuk a fürthöz a `kubeconfig` letöltéséhez és a szolgáltatás használatához. A szolgáltatás használatához a felhasználóknak **nincs** szükségük közreműködői hozzáférésre a fürthöz. 
 
+## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser használata RBAC-kompatibilis fürtökkel
+
+Annak érdekében, hogy ne kelljen további konfigurációs módosításokat alkalmaznia, hogy a Kubernetes-felhasználó szabályának kötése **clusterUser** az élő adat (előzetes verzió) szolgáltatáshoz, miután engedélyezte a [RBAC](#configure-kubernetes-rbac-authorization) engedélyezését, az AK új Kubernetes-clusterMonitoringUser kötést kapott anéven. Ez a fürtcsomópont-kötés minden szükséges engedéllyel rendelkezik a Kubernetes API és a végpontok eléréséhez az élő adat (előzetes verzió) funkció kihasználása érdekében. 
+
+Ahhoz, hogy az élő adat (előzetes verzió) funkciót ezzel az új felhasználóval is használni lehessen, a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. A tárolók Azure Monitor, ha engedélyezve van, alapértelmezés szerint ez a felhasználó használja a hitelesítést. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez.
+
+Az AK január 2020-én kiadta ezt az új szerepkör-kötést, így a január 2020 előtt létrehozott fürtök nem rendelkeznek. Ha rendelkezik egy, a január 2020 előtt létrehozott fürttel, akkor az új **clusterMonitoringUser** hozzáadhatók egy meglévő fürthöz egy Put művelet a fürtön való végrehajtásával, vagy a THA-fürt bármely más műveletének végrehajtása a fürtön, például a fürt verziójának frissítése.
+
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-fürt nélkül RBAC engedélyezve
 
 Ha egy Kubernetes-fürtöt, amely nincs beállítva a Kubernetes RBAC-hitelesítés vagy az Azure AD egyszeri bejelentkezéses integrálva van, nem kell az alábbi lépésekkel. Ennek az az oka, hogy a rendszergazdai engedélyek alapértelmezés szerint nem RBAC konfigurációban vannak.
 
-## <a name="configure-kubernetes-rbac-authentication"></a>Kubernetes RBAC-hitelesítés konfigurálása
+## <a name="configure-kubernetes-rbac-authorization"></a>Kubernetes RBAC-hitelesítés konfigurálása
 
 Ha engedélyezi a Kubernetes RBAC-engedélyezést, a rendszer két felhasználót használ: a **clusterUser** és a **CLUSTERADMIN** a Kubernetes API eléréséhez. Ez hasonló a `az aks get-credentials -n {cluster_name} -g {rg_name}` futtatásához a felügyeleti beállítás nélkül. Ez azt jelenti, hogy a **clusterUser** hozzáférést kell biztosítani a Kubernetes API végponti pontjaihoz.
 
@@ -96,7 +105,7 @@ A következő példa lépései bemutatják, hogyan konfigurálhatja a fürt szer
 
 A felhasználói hitelesítéshez Azure Active Directory (AD) használatára konfigurált AK-fürt a szolgáltatáshoz hozzáférő személy bejelentkezési hitelesítő adatait használja. Ebben a konfigurációban az Azure AD-hitelesítési token használatával tud bejelentkezni egy AK-fürtbe.
 
-Az Azure AD-ügyfél regisztrációját újra kell konfigurálni, hogy a Azure Portal átirányítsa az engedélyezési lapokat megbízható átirányítási URL-címként. Az Azure AD-felhasználók közvetlenül a **ClusterRoles** és a **ClusterRoleBindings**-en keresztül kapnak hozzáférést ugyanahhoz a Kubernetes API-végponthoz. 
+Az Azure AD-ügyfél regisztrációját újra be kell állítani, hogy a Azure Portal átirányítsa az engedélyezési lapokat megbízható átirányítási URL-címként. Az Azure AD-felhasználók közvetlenül a **ClusterRoles** és a **ClusterRoleBindings**-en keresztül kapnak hozzáférést ugyanahhoz a Kubernetes API-végponthoz. 
 
 A Kubernetes speciális biztonsági beállításaival kapcsolatos további információkért tekintse át a [Kubernetes dokumentációját](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
@@ -124,7 +133,7 @@ A Kubernetes speciális biztonsági beállításaival kapcsolatos további infor
 
 ## <a name="grant-permission"></a>Engedély megadása
 
-Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a Kubernetes-ben az élő adat(előzetes verzió) funkció eléréséhez. A Azure Active Directory fiók megadásának lépései hasonlóak a [KUBERNETES RBAC hitelesítés](#configure-kubernetes-rbac-authentication) szakaszban leírt lépésekhez. Mielőtt alkalmazza a YAML-konfigurációs sablont a fürtre, cserélje le a **clusterUser** a **ClusterRoleBinding** elemre a kívánt felhasználóval. 
+Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a Kubernetes-ben az élő adat(előzetes verzió) funkció eléréséhez. A Azure Active Directory fiók megadásának lépései hasonlóak a [KUBERNETES RBAC hitelesítés](#configure-kubernetes-rbac-authorization) szakaszban leírt lépésekhez. Mielőtt alkalmazza a YAML-konfigurációs sablont a fürtre, cserélje le a **clusterUser** a **ClusterRoleBinding** elemre a kívánt felhasználóval. 
 
 >[!IMPORTANT]
 >Ha az RBAC-kötést megadó felhasználó ugyanabban az Azure AD-bérlőben található, akkor a userPrincipalName alapján rendeljen engedélyeket. Ha a felhasználó egy másik Azure AD-bérlőben található, a objectId tulajdonság lekérdezése és használata.

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988861"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252042"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -73,6 +73,8 @@ A szoftverfrissítés során az ügyfél-hozzáférés nem szakad meg, a gyorsí
 A szoftverfrissítés több órát is igénybe vehet. A magasabb átviteli sebességgel konfigurált gyorsítótárak hosszabb ideig tartanak, mint a kisebb csúcsérték-értékekkel rendelkező gyorsítótárak.
 
 Ha egy szoftverfrissítés elérhető, akkor a rendszer hetente vagy manuálisan alkalmazza azt. A befejezési dátum a frissítési üzenetben jelenik meg. Ha ez idő alatt nem végez frissítést, az Azure automatikusan alkalmazza a frissítést a gyorsítótárba. Az automatikus frissítés ütemezése nem konfigurálható. Ha aggódik a gyorsítótár teljesítményére gyakorolt hatás miatt, a szoftvert saját kezűleg kell frissítenie az időtartam lejárta előtt.
+
+Ha a rendszer leállítja a gyorsítótárat a befejezési dátum után, a gyorsítótár a következő indításakor automatikusan frissíti a szoftvert. (Előfordulhat, hogy a frissítés nem indul el azonnal, de az első órában indul el.)
 
 A szoftverfrissítés megkezdéséhez kattintson a **frissítés** gombra. A gyorsítótár állapota a **frissítésig** változik, amíg a művelet be nem fejeződik.
 

@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845723"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210293"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
@@ -51,13 +51,13 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. Az utasításokat követve adja meg a következő információkat a kívánt nyelvhez:
 
-    | Kérdés | Value (Díj) | Leírás |
+    | Kérdés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Válasszon nyelvet a Function app-projekthez | JavaScript | Hozzon létre egy helyi Node. js functions-projektet. |
     | Válasszon verziót | Azure Functions v2 | Ez a beállítás csak akkor jelenik meg, ha az alapvető eszközök még nincsenek telepítve. Ebben az esetben a rendszer az alkalmazás első futtatásakor telepíti az alapvető eszközöket. |
     | Válasszon sablont a projekt első függvényéhez | HTTP eseményindító | Hozzon létre egy HTTP által aktivált függvényt az új Function alkalmazásban. |
     | Adja meg a függvény nevét | HttpTrigger | Az alapértelmezett név használatához nyomja le az ENTER billentyűt. |
-    | Authorization level (Engedélyszint) | Függvény | A `function` engedélyezési szint használatához hozzáférési kulcsot kell megadnia a függvény HTTP-végpontjának meghívásakor. Ez nehezebbé teszi a nem biztonságos végpontokhoz való hozzáférést. További információ: [engedélyezési kulcsok](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Authorization level (Engedélyszint) | Függvény | A `function` engedélyezési szint használatához hozzáférési kulcsot kell megadnia a függvény HTTP-végpontjának meghívásakor. Ez nehezebbé teszi a nem biztonságos végpontokhoz való hozzáférést. További információ: [engedélyezési kulcsok](../functions-bindings-http-webhook-trigger.md#authorization-keys).  |
     | Válassza ki, hogyan szeretné megnyitni a projektet? | Hozzáadás a munkaterülethez | Létrehozza a Function alkalmazást az aktuális munkaterületen. |
 
 A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. Emellett egy Function app-projektet is létrehoz egy új munkaterületen. Ez a projekt tartalmazza a [Host. JSON](../functions-host-json.md) és a [Local. Settings. JSON](../functions-run-local.md#local-settings-file) konfigurációs fájlokat. Emellett létrehoz egy HttpExample mappát, amely tartalmazza a [function. JSON definíciós fájlt](../functions-reference-node.md#folder-structure) és az [index. js fájlt](../functions-reference-node.md#exporting-a-function), a függvény kódját tartalmazó Node. js fájlt.

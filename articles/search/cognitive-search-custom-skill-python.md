@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122422"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210465"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
 
@@ -52,7 +52,7 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 1. Válassza ki a Python-verziót (a 3.7.5 verzióját a Azure Functions támogatja)
 1. Válassza ki a projekt első függvényének sablonját. Válassza a **http-trigger** lehetőséget egy http által aktivált függvény létrehozásához az új Function alkalmazásban.
 1. Adja meg a függvény nevét. Ebben az esetben használja az **összefűzést** 
-1. Engedélyezési szintként válassza a **függvény** lehetőséget. Ez azt jelenti, hogy egy [funkcióbillentyű](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) megadásával hívja meg a függvény http-végpontját. 
+1. Engedélyezési szintként válassza a **függvény** lehetőséget. Ez azt jelenti, hogy egy [funkcióbillentyű](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) megadásával hívja meg a függvény http-végpontját. 
 1. Válassza ki, hogyan szeretné megnyitni a projektet. Ehhez a lépéshez válassza a **Hozzáadás a munkaterülethez** lehetőséget a Function alkalmazás létrehozásához az aktuális munkaterületen.
 
 A Visual Studio Code létrehozza a függvényalkalmazást egy új munkaterületen. Ez a projekt a [host.json](../azure-functions/functions-host-json.md) és a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) konfigurációs fájlokat tartalmazza, valamint az esetleges nyelvspecifikus projektfájlokat is. 

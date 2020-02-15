@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679959"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207025"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Az Azure Function tevékenység Azure Data Factory
 
@@ -30,16 +30,16 @@ A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a
 
 Az Azure-függvény visszatérési típusának érvényes `JObject`nak kell lennie. (Ne feledje, hogy [](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) a JArray *nem* `JObject`.) A `JObject`tól eltérő visszatérési típusok sikertelenek, és a felhasználói hibákra *adott tartalom nem érvényes JObject*.
 
-| **Tulajdonság** | **Leírás** | **Kötelező** |
+| **Tulajdonság** | **Leírás** | **Szükséges** |
 | --- | --- | --- |
 | type   | A Type tulajdonságot a következőre kell beállítani: **AzureFunction** | igen |
 | function alkalmazás URL-címe | Az Azure-függvényalkalmazás URL-címe. A formátum `https://<accountname>.azurewebsites.net`. Ez az URL-cím az **URL-** cím szakaszban található, amikor a függvényalkalmazás megtekinti a Azure Portal  | igen |
-| függvény kulcsa | Az Azure-függvény elérési kulcsa. Kattintson a **Manage (kezelés** ) szakaszra a megfelelő függvényhez, és másolja a **függvény** vagy a **gazda kulcsot**. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | igen |
+| függvény kulcsa | Az Azure-függvény elérési kulcsa. Kattintson a **Manage (kezelés** ) szakaszra a megfelelő függvényhez, és másolja a **függvény** vagy a **gazda kulcsot**. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | igen |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure Function tevékenység
 
-| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Kötelező** |
+| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Szükséges** |
 | --- | --- | --- | --- |
 | név  | A folyamatban szereplő tevékenység neve  | Sztring | igen |
 | type  | A tevékenység típusa "AzureFunctionActivity". | Sztring | igen |

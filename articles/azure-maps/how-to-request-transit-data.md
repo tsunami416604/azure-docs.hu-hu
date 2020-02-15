@@ -1,20 +1,20 @@
 ---
 title: Adatátviteli kérelem továbbítása | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan kérhet nyilvános tranzit-információkat a Microsoft Azure Maps mobilitási szolgáltatással.
-author: walsehgal
-ms.author: v-musehg
+description: Ebből a cikkből megtudhatja, hogyan kérhet nyilvános adatátviteli információkat a Microsoft Azure Maps mobilitási szolgáltatással.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 08a35492a61d7e75680603308aa31bf7a184c036
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 17fbc78b34237c6f5e1e688a88c68bb0a321884f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198173"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209868"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással nyilvános árutovábbítási adatai igényelhetők 
 

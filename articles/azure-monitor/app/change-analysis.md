@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665357"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211816"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -31,7 +31,7 @@ A következő ábra a változások elemzésének architektúráját szemlélteti
 
 ![Architektúra-diagram, amely bemutatja, hogyan módosulnak az elemzések, és hogyan biztosítható az ügyféleszközök számára](./media/change-analysis/overview.png)
 
-A Change Analysis jelenleg a App Service webalkalmazásban található **problémák diagnosztizálásához és megoldásához** , valamint Azure Portal önálló paneljéhez van integrálva.
+A Change Analysis jelenleg a App Service webalkalmazásban található **problémák diagnosztizálásához és megoldásához** , valamint a Azure Portal önálló lapján érhető el.
 Tekintse meg a *változások megtekintése az Azure-ban az összes erőforrásról* című szakaszt a Change Analysis panel eléréséhez és a *Web Apps funkciójának változási elemzéséhez* a jelen cikk későbbi, webalkalmazás-portálon való használatához.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>A nyomon követett tulajdonságok változásai Azure Resource Manager
@@ -39,7 +39,7 @@ Tekintse meg a *változások megtekintése az Azure-ban az összes erőforrásr�
 Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A nyomon követett beállítások, például a felügyelt identitások, a platform operációsrendszer-frissítése és az állomásnevek is észlelhetők.
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager proxyn végzett beállítások változásai
-A beállítások, például az IP-konfigurációs szabály, az SSL-beállítások és a bővítmény-verziók még nem érhetők el az ARG-ben, ezért az elemzési lekérdezések módosítása és a módosítások biztonságos kiszámításával további részleteket tudhat meg az alkalmazásban megváltoztatott adatokról. Ezek az információk még nem érhetők el az Azure Resource Graph-ban, de hamarosan elérhetők lesznek.
+A beállítások, például az IP-konfigurációs szabály, az SSL-beállítások és a bővítmény-verziók még nem érhetők el az ARG-ben, ezért az elemzési lekérdezések módosítása és a módosítások biztonságos kiszámításával további részleteket adhat meg az alkalmazásban megváltoztatott adatokról. Ezek az információk még nem érhetők el az Azure Resource Graph-ban, de hamarosan elérhetők lesznek.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>A webalkalmazások telepítésének és konfigurációjának változásai (a vendég módosításaiban)
 
@@ -51,13 +51,14 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 Jelenleg a következő függőségek támogatottak:
-- Webalkalmazások
+- Web Apps
 - Azure Storage
 - Azure SQL
 
 ### <a name="enablement"></a>Engedélyezése
-A (z) "Microsoft. ChangeAnalysis" erőforrás-szolgáltatót regisztrálni kell egy előfizetésben a Azure Resource Manager követett tulajdonságok és a proxyn lévő beállítások módosítására vonatkozó adatváltozások számára. Amikor beírja a webalkalmazást a problémák diagnosztizálásához és megoldásához, vagy a Change Analysis önálló panelt, ez az erőforrás-szolgáltató automatikusan regisztrálva lesz. Az előfizetéshez nem tartozik teljesítmény és Cost implementáció.
-A webalkalmazások vendégen belüli változásaihoz külön engedélyezés szükséges a programkódok webalkalmazásban való vizsgálatához. További részletekért tekintse meg *a változás elemzésének engedélyezése a problémák diagnosztizálása és megoldása eszközben* című szakaszát.
+A (z) "Microsoft. ChangeAnalysis" erőforrás-szolgáltatót regisztrálni kell egy előfizetésben a Azure Resource Manager követett tulajdonságok és a proxyn lévő beállítások módosítására vonatkozó adatváltozások számára. A webalkalmazás diagnosztizálása és megoldása eszköz beírásakor vagy a Change Analysis standalone (önálló módosítás) lapon az erőforrás-szolgáltató automatikusan regisztrálva lesz. Az előfizetéshez nem tartozik teljesítmény és Cost implementáció. Ha engedélyezi a webalkalmazások módosítási elemzését (vagy a problémák diagnosztizálására és megoldására szolgáló eszközben való engedélyezést), akkor az a webalkalmazásra és a számlázási díjakra nézve elhanyagolható hatással lesz a teljesítményre.
+A webalkalmazások vendégen belüli változásaihoz külön engedélyezés szükséges a programkódok webalkalmazásban való vizsgálatához. További részletekért lásd a cikk későbbi, [a változások elemzése a problémák diagnosztizálásához és megoldásához](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) című szakaszát.
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Az Azure összes erőforrásának változásainak megtekintése
 Azure Monitor az elemzések és az alkalmazás-függőségek erőforrásaival végzett módosítások megtekintéséhez különálló panel áll rendelkezésre a Change Analysis szolgáltatáshoz.
@@ -73,7 +74,7 @@ Válassza ki az erőforráscsoportot és az erőforrásokat a módosítások meg
 Megtekintheti az alkalmazást üzemeltető információk és a kapcsolódó függőségek erőforrásait. Ez a nézet a fejlesztők számára készült alkalmazás-központú megoldás, amellyel elháríthatja a problémákat.
 
 A jelenleg támogatott erőforrások a következők:
-- Virtual Machines
+- Virtuális gépek
 - Virtuálisgép-méretezési csoport
 - Azure hálózati erőforrások
 - Webalkalmazás és a vendégen belüli fájlok követése és környezeti változók változásai

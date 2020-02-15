@@ -1,19 +1,19 @@
 ---
 title: Támogatott térképi stílusok | Microsoft Azure térképek
 description: Ebben a cikkben megismerheti a Microsoft Azure Maps által támogatott különböző leképezési stílusokat.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910641"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208284"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
 A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
@@ -31,7 +31,7 @@ A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes 
 
 ## <a name="blank-and-blank_accessible"></a>üres és blank_accessible
 
-Az **üres** és a **blank_accessible** Térkép stílusa üres vásznat biztosít az adatmegjelenítéshez. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, még akkor is, ha az alap térkép nem jelenik meg.
+Az **üres** és a **blank_accessible** Térkép stílusa üres vásznat biztosít az adatmegjelenítéshez. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseit a Térkép helyének részleteivel, noha az alaptérkép nem jelenik meg.
 
 > [!Note]
 > A web SDK-ban megváltoztathatja a Térkép háttérszínét úgy, hogy beállítja a Térkép DIV elemének CSS-`background-color` stílusát.
@@ -39,7 +39,7 @@ Az **üres** és a **blank_accessible** Térkép stílusa üres vásznat biztos�
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
 
-## <a name="satellite"></a>satellite 
+## <a name="satellite"></a>műholdas 
 A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
 
 ![műholdas csempe Térkép stílusa](./media/supported-map-styles/satellite.png)
@@ -80,7 +80,7 @@ a **szürkeárnyalatos fény** a közúti Térkép stílusának egyszerűsített
 * Android Térkép vezérlőelem
 
 
-## <a name="night"></a>éjszaka
+## <a name="night"></a>Éjszaka
 a **Night** a közúti Térkép stílusa sötét változata, amely színes utakat és szimbólumokat is mutat.
 
 ![éjszakai Térkép stílusa](./media/supported-map-styles/night.png)

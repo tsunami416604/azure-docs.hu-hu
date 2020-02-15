@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757303"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251855"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az üzembe helyezési parancsfájl előnyei:
 
 - Egyszerű kód, használat és hibakeresés. Az üzembe helyezési parancsfájlokat kedvenc fejlesztői környezetekben is kifejlesztheti. A szkriptek sablonokba vagy külső parancsfájlokban is beágyazva lehetnek.
 - Megadhatja a parancsfájl nyelvét és platformját. Jelenleg csak Azure PowerShell telepítési parancsfájlok támogatottak a Linux-környezetben.
-- A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak az [Azure-felhasználóhoz rendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) támogatott.
+- A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak az [Azure-felhasználóhoz rendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
 - A parancssori argumentumok parancsfájlba való átadásának engedélyezése.
 - Megadhatja a parancsfájlok kimeneteit, és visszaküldheti azokat az üzembe helyezéshez.
 
@@ -59,7 +59,7 @@ Az üzembe helyezési parancsfájl előnyei:
 
 - **Azure PowerShell verzió: 2.7.0, 2.8.0 vagy 3.0.0**. A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
-## <a name="resource-schema"></a>Erőforrás-séma
+## <a name="sample-template"></a>Példasablon
 
 A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templates/microsoft.resources/deploymentscripts)található.
 
@@ -87,7 +87,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json",
+    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -122,7 +122,7 @@ A következő sablon egyetlen erőforrással van definiálva a `Microsoft.Resour
 > [!NOTE]
 > Mivel a beágyazott telepítési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő karakterláncokat csak egyszeres idézőjelek közé kell foglalni. A PowerShell escape-karaktere **&#92;** . Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon. Tekintse meg a name paraméter alapértelmezett értékét.
 
-A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. a `Write-Output` hibakeresés céljára szolgál. A kimeneti fájl elérésének megismeréséhez tekintse meg az [üzembe helyezési parancsfájlok hibakeresését](#debug-deployment-scripts)ismertető témakört.  A tulajdonságok leírását lásd: [erőforrás-séma](#resource-schema).
+A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. a `Write-Output` hibakeresés céljára szolgál. A kimeneti fájl elérésének megismeréséhez tekintse meg az [üzembe helyezési parancsfájlok hibakeresését](#debug-deployment-scripts)ismertető témakört.  A tulajdonságok leírását lásd: [minta sablon](#sample-template).
 
 A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj ablaktáblába.
 
@@ -144,7 +144,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Jelenleg csak a **ps1** fájlkiterjesztés PowerShell-szkriptek támogatottak. Külső parancsfájlok használatához cserélje le a `scriptContent`t a `primaryScriptUri`ra. Példa:
+A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Jelenleg csak a **ps1** fájlkiterjesztés PowerShell-szkriptek támogatottak. Külső parancsfájlok használatához cserélje le a `scriptContent`t a `primaryScriptUri`ra. Például:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",

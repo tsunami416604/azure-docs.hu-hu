@@ -1,19 +1,19 @@
 ---
 title: A Azure Maps API használati metrikáinak megtekintése | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan tekintheti meg Microsoft Azure Maps API-hívások metrikáit a Azure Portalban.
-author: walsehgal
-ms.author: v-musehg
+description: Ebből a cikkből megtudhatja, hogyan tekintheti meg Microsoft Azure Maps API-hívások metrikáit a Azure Portal.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198122"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208685"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Az Azure Maps API használati metrikáinak megtekintése
 

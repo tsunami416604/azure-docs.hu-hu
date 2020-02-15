@@ -14,12 +14,12 @@ ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7e19e9067052c516427391adcc615767446c4049
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697149"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212228"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: bejelentkezés bármely Azure Active Directory felhasználó számára a több-bérlős alkalmazás mintájának használatával
 
@@ -134,7 +134,7 @@ Előfordulhat, hogy az alkalmazásnak több rétege is van, amelyek mindegyike a
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Több réteg egyetlen bérlőn
 
-Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. A viselkedés engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját `knownClientApplications`ként az [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Példa:
+Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. A viselkedés engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját `knownClientApplications`ként az [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Például:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -176,7 +176,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-* [Több-bérlős alkalmazások mintái](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
+* [Több-bérlős alkalmazás mintája](https://github.com/mspnp/multitenant-saas-guidance)
 * [Az alkalmazásokra vonatkozó branding-irányelvek][AAD-App-Branding]
 * [Alkalmazás-és egyszerű szolgáltatások objektumai][AAD-App-SP-Objects]
 * [Alkalmazások integrálása az Azure Active Directoryval][AAD-Integrating-Apps]

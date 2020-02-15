@@ -1,23 +1,23 @@
 ---
 title: Időjárási lefedettség | Microsoft Azure térképek
 description: Ebben a cikkben a Microsoft Azure Maps időjárási lefedettségével kapcsolatos tudnivalókat talál.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989603"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207944"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
-Ez a cikk a Azure Maps [időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárási előrejelzések és az időjárás az útvonal mentén.
+Ez a cikk a Azure Maps [időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
 
 Azure Maps az összes ország és régió esetében nem rendelkezik azonos szintű információval és pontossággal.
 
@@ -28,7 +28,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+## <a name="americas"></a>Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -146,7 +146,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Niger                       | ✓               |                              |        ✓| 
 | Nigéria                     | ✓               |                              |        ✓| 
 | Omán                        | ✓               |                              |        ✓| 
-| Palesztin Hatóság       | ✓               |                              |        ✓| 
+| Palesztin hatóság       | ✓               |                              |        ✓| 
 | Katar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Ruanda                      | ✓               |                              |        ✓| 
@@ -157,7 +157,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Seychelle                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Szomália                     | ✓               |                              |        ✓| 
-| Dél-afrikai Köztársaság                | ✓               |                              |        ✓| 
+| Dél-Afrika                | ✓               |                              |        ✓| 
 | Dél-Szudán                 | ✓               |                              |        ✓| 
 | Szudán                       | ✓               |                              |        ✓| 
 | Szíria                       | ✓               |                              |        ✓| 
@@ -181,7 +181,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Ausztrália                         | ✓ | ✓ |  ✓| 
 | Banglades                        | ✓ |   |  ✓| 
 | Bhután                            | ✓ |   |  ✓| 
-| Brit Indiai-óceáni Terület    | ✓ |   |  ✓| 
+| Brit Indiai-óceáni terület    | ✓ |   |  ✓| 
 | Brunei                            | ✓ |   |  ✓| 
 | Kambodzsa                          | ✓ |   |  ✓| 
 | Kína                             | ✓ | ✓ |  ✓| 
@@ -198,7 +198,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Japán                             | ✓ | ✓ |  ✓| 
 | Kazahsztán                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
-| Dél-Korea                             | ✓ | ✓ |  ✓| 
+| Korea                             | ✓ | ✓ |  ✓| 
 | Kirgizisztán                        | ✓ |   |  ✓| 
 | Laosz                              | ✓ |   |  ✓| 
 | Makaó KKT                         | ✓ |   |  ✓| 
@@ -262,7 +262,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Franciaország                 | ✓ | ✓ |  ✓| 
 | Grúzia                | ✓ |   |  ✓| 
 | Németország                | ✓ | ✓ |  ✓| 
-| Gibraltár              | ✓ | ✓ |  ✓| 
+| Gibraltári              | ✓ | ✓ |  ✓| 
 | Görögország                 | ✓ |   |  ✓| 
 | Guernsey               | ✓ |   |  ✓| 
 | Magyarország                | ✓ | ✓ |  ✓| 

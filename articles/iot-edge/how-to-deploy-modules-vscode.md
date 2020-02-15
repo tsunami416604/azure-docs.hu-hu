@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d8c90c2a13d111d01a1e7a1bd9b63da180621ded
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e1b2e2a80670cf0409f8f8477563b9a209cc8706
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772091"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209205"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modulok üzembe helyezése a Visual Studio Code-ból
+# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>A Visual Studio Code-ból az Azure IoT Edge-modulok telepítése
 
-Miután létrehozta IoT Edge modulokat az üzleti logikával, üzembe helyezheti azokat az eszközökön a peremhálózat működéséhez. Ha több modullal is együttműködik az adatok gyűjtéséhez és feldolgozásához, egyszerre telepítheti őket, és deklarálhatja az azokat összekötő útválasztási szabályokat.
+Miután létrehozott egy IoT Edge modulok az üzleti logikával rendelkező, érdemes őket az eszközökre telepíteni kívánt megfelelően működjenek a peremhálózaton. Ha több modulokat, amelyek együttműködve gyűjtenek és dolgoznak fel adatokat, és egyszerre telepítheti őket, és deklarálja az útválasztási szabályokat, amelyek csatlakoztathatja őket.
 
-Ez a cikk bemutatja, hogyan hozhat létre JSON központi telepítési jegyzéket, majd ezzel a fájllal leküldheti a központi telepítést egy IoT Edge eszközre. További információ a megosztott címkék alapján több eszközt célzó központi telepítések létrehozásáról: [IoT Edge modulok méretezése a Visual Studio Code használatával](how-to-deploy-monitor-vscode.md).
+Ez a cikk bemutatja, hogyan hozzon létre egy JSON-manifest nasazení, majd küldje le az üzembe helyezés IoT Edge-eszköz fájl használatával. További információ a megosztott címkék alapján több eszközt célzó központi telepítések létrehozásáról: [IoT Edge modulok méretezése a Visual Studio Code használatával](how-to-deploy-monitor-vscode.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,13 +29,13 @@ Ez a cikk bemutatja, hogyan hozhat létre JSON központi telepítési jegyzéket
 * [Visual Studio Code](https://code.visualstudio.com/).
 * A Visual Studio Code-hoz készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
 
-## <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
+## <a name="configure-a-deployment-manifest"></a>A manifest nasazení konfigurálása
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
+A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok üzembe helyezéséhez a modulokat, és az ikermodulokkal tulajdonságaiként közti adatfolyamok. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
 
-Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse helyileg a telepítési jegyzéket. JSON-fájl. A fájl elérési útját a következő szakaszban fogja használni, amikor a parancs futtatásával alkalmazza a konfigurációt az eszközre.
+A Visual Studio Code modulok üzembe helyezéséhez az üzembe helyezés a jegyzék mentése helyileg, egy. JSON-fájlt. A fájl elérési útja fogja használni a következő szakaszban, amikor futtatja a parancsot a alkalmazni a konfigurációt az eszközre.
 
-Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
+Íme egy modult az alapszintű üzemelő példányhoz jegyzék példaként:
 
    ```json
    {
@@ -65,7 +65,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
                "restartPolicy": "always",
                "settings": {
                  "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                 "createOptions": "{}"
+                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                }
              }
            },
@@ -103,7 +103,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Jelentkezzen be az IoT hub eléréséhez
 
-A Visual Studio Code-hoz készült Azure IoT Extensions használatával műveleteket hajthat végre az IoT hub segítségével. Ezeknek a műveleteknek a működéséhez be kell jelentkeznie az Azure-fiókjába, és ki kell választania azt az IoT hub-t, amelyen dolgozik.
+Használhatja a Visual Studio Code az Azure IoT-bővítmények az IoT hub-műveletek végrehajtásához. Ezeket a műveleteket működéséhez kell jelentkezzen be az Azure-fiókjával, és válassza ki az IoT hubot, amelyen dolgozik.
 
 1. A Visual Studio Code-ban nyissa meg a **Explorer** nézetet.
 
@@ -111,19 +111,19 @@ A Visual Studio Code-hoz készült Azure IoT Extensions használatával művelet
 
    ![Az Azure IoT Hub szakasz kibontása](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. Kattintson a **...** elemre az **Azure IoT hub** szakasz fejlécében. Ha nem látja a három pontot, vigye a kurzort a fejléc fölé.
+1. Kattintson a **...** elemre az **Azure IoT hub** szakasz fejlécében. Ha nem látja a három pontra, a kurzort a fejléc.
 
 1. Válassza a **IoT hub kiválasztása**lehetőséget.
 
-1. Ha nem jelentkezett be az Azure-fiókjába, kövesse az utasításokat.
+1. Ha nem jelentkezett be az Azure-fiókját, kövesse az ehhez az utasításokat.
 
 1. Válassza ki az Azure-előfizetését.
 
-1. Válassza ki az IoT hubot.
+1. Válassza ki az IoT hubnak.
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 
-A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataival konfigurált telepítési jegyzékfájlt.
+A modul információkkal konfigurált manifest nasazení alkalmazása modulok üzembe az eszközre.
 
 1. A Visual Studio Code Explorer nézetében bontsa ki az **Azure IoT hub** szakaszt, majd bontsa ki az **eszközök** csomópontot.
 
@@ -136,17 +136,17 @@ A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataiva
 
 1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása**elemre.
 
-   ![Edge központi telepítési jegyzékfájljának kiválasztása](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
+   ![Válassza ki a peremhálózati Manifest Nasazení](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
-Az üzembe helyezés eredményét a VS Code kimenetében kell kinyomtatni. A sikeres telepítések néhány percen belül alkalmazhatók, ha a célként megadott eszköz fut, és az internethez csatlakozik.
+Az eredmények az üzembe helyezés a VS Code-kimenetben nyomtatott. A sikeres telepítések telepített néhány percen belül, ha a cél-eszközön fut, és csatlakozik az internethez.
 
-## <a name="view-modules-on-your-device"></a>Az eszközön található modulok megtekintése
+## <a name="view-modules-on-your-device"></a>Modulok megjelenítése az eszközön
 
-Miután telepítette a modulokat az eszközre, megtekintheti az összeset az **Azure IoT hub** szakaszban. Kattintson a IoT Edge eszköz melletti nyílra a kibontásához. A jelenleg futó modulok jelennek meg.
+Miután telepítette a modulokat az eszközre, megtekintheti az összeset az **Azure IoT hub** szakaszban. Válassza ki az IoT Edge-eszköz annak kibontásához melletti nyílra. A jelenleg futó modulok jelennek meg.
 
 Ha nemrég telepített új modulokat egy eszközre, vigye az egérmutatót az **Azure IoT hub-eszközök** szakasz fejlécére, és kattintson a frissítés ikonra a nézet frissítéséhez.
 
-Kattintson a jobb gombbal egy modul nevére a különálló modul megtekintéséhez és szerkesztéséhez.
+Kattintson a jobb gombbal megtekintheti és szerkesztheti az ikermodul modul nevét.
 
 ## <a name="next-steps"></a>Következő lépések
 

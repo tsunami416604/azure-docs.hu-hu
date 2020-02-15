@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561738"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251736"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A bővítmények elérése
 > * Istio eltávolítása az AK-ból
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
@@ -98,7 +98,9 @@ A Istio [Helm][helm] telepítési megközelítése a jövőben elavulttá válik
 > A Istio jelenleg Linux-csomópontokon történő futtatásra kell ütemezni. Ha a fürtben Windows Server-csomópontok vannak, meg kell győződnie arról, hogy a Istio-hüvelyek csak Linux-csomópontokon futnak. A csomópont- [választókkal][kubernetes-node-selectors] gondoskodunk róla, hogy a hüvelyek a megfelelő csomópontokra legyenek ütemezve.
 
 > [!CAUTION]
-> Az [SDS (Secret Discovery Service)][istio-feature-sds] és a [Istio CNI][istio-feature-cni] Istio funkciók jelenleg az [Alpha][istio-feature-stages]-ben találhatók, ezért ezeket a lépéseket meg kell adni. Emellett a szolgáltatásfiók- [jogkivonat mennyiségi kivetítési][kubernetes-feature-sa-projected-volume] Kubernetes funkciója (az SDS követelménye) nincs engedélyezve a jelenlegi AK-verziókban.
+> Az [SDS (Secret Discovery Service)][istio-feature-sds] és a [Istio CNI][istio-feature-cni] Istio funkciók jelenleg az [Alpha][istio-feature-stages]-ben találhatók, ezért ezeket a lépéseket meg kell adni. 
+>
+> Vegye figyelembe, hogy a [szolgáltatásfiók-jogkivonat mennyiségi kivetítési][kubernetes-feature-sa-projected-volume] Kubernetes funkciója (az SDS követelménye) mostantól minden Kubernetes 1,13-es és újabb verziójú AK-ra **engedélyezett** .
 
 Hozzon létre egy `istio.aks.yaml` nevű fájlt az alábbi tartalommal. Ez a fájl a Istio konfigurálásának részletes leírását fogja tárolni a [Istio-vezérlési síkon][istio-control-plane] .
 

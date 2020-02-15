@@ -2,13 +2,13 @@
 title: Sablon szintaxisa és kifejezések
 description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ismerteti.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120600"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207400"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések a Azure Resource Manager-sablonokban
 
@@ -16,11 +16,9 @@ A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban el
 
 A sablon kifejezése nem lehet hosszabb 24 576 karakternél.
 
-A kifejezések támogatják a JSON-t ("NULL"), a tulajdonságok pedig a null literál értékét támogatják. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nem szerepel.
-
 ## <a name="use-functions"></a>Függvények használata
 
-Az alábbi példa egy paraméter alapértelmezett értékében egy kifejezést mutat be:
+A Azure Resource Manager a sablonban használható [függvényeket](template-functions.md) biztosít. Az alábbi példa egy olyan kifejezést mutat be, amely egy függvényt használ egy paraméter alapértelmezett értékében:
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ Ha karakterlánc-értéket szeretne átadni paraméterként egy függvénynek, h
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+A legtöbb függvény ugyanúgy működik, hogy az erőforráscsoport, az előfizetés, a felügyeleti csoport vagy a bérlő számára van-e telepítve. A következő függvények korlátozásai a hatókörön alapulnak:
+
+* [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
+* [resourceId](template-functions-resource.md#resourceid) – bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
+* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoporthoz vagy előfizetéshez használható központi telepítések esetén.
 
 ## <a name="escape-characters"></a>Escape-karakterek
 
@@ -65,6 +69,15 @@ Ha az idézőjeleket egy kifejezésben szeretné kipróbálni, például egy JSO
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Null értékek
+
+Ha a tulajdonságot NULL értékre kívánja beállítani, használhatja a null vagy a **[JSON ("NULL")]** **értéket** . A [JSON-függvény](template-functions-array.md#json) üres objektumot ad vissza, amikor paraméterként megadja `null`. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nem szerepel.
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>Következő lépések

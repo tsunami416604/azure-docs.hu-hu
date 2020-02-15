@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841182"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210601"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -38,7 +38,7 @@ Az egyes felügyelt lemezek szintjén is kezelheti a titkosítást a saját kulc
 
 A következő ábra azt mutatja be, hogy a felügyelt lemezek hogyan használják a Azure Active Directory és Azure Key Vault a kérelmeket az ügyfél által felügyelt kulcs használatával:
 
-![Felügyelt lemezek – ügyfél által felügyelt kulcsok munkafolyamata](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Felügyelt lemez és ügyfél által felügyelt kulcsok munkafolyamata. A rendszergazda létrehoz egy Azure Key Vault, majd létrehoz egy lemezes titkosítási készletet, és beállítja a lemez titkosítási készletét. A készlet egy olyan virtuális géphez van társítva, amely lehetővé teszi, hogy a lemez használhassa az Azure AD-t a hitelesítéshez](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 A következő lista a diagramot mutatja be még részletesebben:
@@ -73,7 +73,7 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
 - Az ügyfél által felügyelt kulcsokkal titkosított lemezek, Pillanatképek és lemezképek nem helyezhetők át másik előfizetésbe.
 - Ha a Azure Portal használatával hozza létre a lemez titkosítási készletét, a pillanatképek jelenleg nem használhatók.
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>parancssori felület
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>A Azure Key Vault és a DiskEncryptionSet beállítása
 
 1. Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és bejelentkezett egy Azure-fiókba az az [login](/cli/azure/reference-index)paranccsal.

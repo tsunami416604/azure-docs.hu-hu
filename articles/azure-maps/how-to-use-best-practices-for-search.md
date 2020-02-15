@@ -1,19 +1,19 @@
 ---
 title: Hatékony keresés Azure Maps Search Service használatával | Microsoft Azure térképek
 description: Ismerje meg, hogyan alkalmazhatja az ajánlott eljárásokat a Search Service Microsoft Azure Maps használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e29b3d70c576955637424208aeb0f980669b67bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899168"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209800"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service
 
@@ -89,7 +89,7 @@ Ha fordított geocode keresést végez a [keresési fordított API](https://docs
 
 Az eredményül kapott válasz tartalmazza a földrajzi azonosítót és az egyező entitás típusát. Ha egynél több entitást ad meg, a végpont az *elérhető legkisebb entitást*adja vissza. A visszaadott geometriai azonosító használatával lekérheti a földrajz geometriáját a [keresési sokszög szolgáltatáson](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)keresztül.
 
-#### <a name="sample-request"></a>Példa a kérelemre
+#### <a name="sample-request"></a>Mintakérelem
 
 ```HTTP
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
@@ -443,7 +443,7 @@ Java:
 URLEncoder.encode(query, "UTF-8") 
 ```
 
-Python:
+Python
 ```Python
 import urllib.parse 
 urllib.parse.quote(query)
@@ -455,7 +455,7 @@ C++:
 curl_easy_escape(query)
 ```
 
-PHP:
+PHP
 ```PHP
 urlencode(query)
 ```

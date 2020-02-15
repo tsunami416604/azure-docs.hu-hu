@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933211"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209715"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Képréteg hozzáadása térképhez
 
-Ebből a cikkből megtudhatja, hogyan helyezhet át egy képet egy rögzített koordináta-készletbe a térképen. Íme néhány példa arra, hogy milyen típusú képeket gyakran helyez el a térképeken:
+Ez a cikk bemutatja, hogyan fedi le a képeket egy rögzített koordináta-készletbe. Íme néhány példa a térképeken áthelyezhető különböző képtípusokra:
 
 * A herékből rögzített képek
 * Alaprajzok építése
@@ -62,9 +62,9 @@ Itt látható az előző kód teljes futtatási kódjának mintája.
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>KML-fájl importálása a felszín alatti átfedésként
 
-Ez a következő minta bemutatja, hogyan fedi le a KML-alapú átfedési adatokat képrétegként a térképen. A KML-alapú átfedések Észak-, Dél-, Kelet-és Nyugat-koordinátákat biztosítanak, és a megegyező irányú rotációs, míg a képréteg a rendszerkép minden sarkánál koordinátákat vár. A példában szereplő KML-borító a Chartres-székesegyházból származik, és a [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)-ből származik.
+Ez a minta azt mutatja be, hogyan adhat hozzá a KML-terepi átfedési adatokat képrétegként a térképen. A KML-borítók Észak-, Dél-, Kelet-és Nyugat-koordinátákat biztosítanak, és az óramutató járásával megegyező irányú rotációt tartalmaznak. A képréteg azonban a rendszerkép minden sarkánál koordinátákat vár. Ebben a példában a KML-terület a Chartres-székesegyházhoz van kiszervezve, és a [wikimediaből](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)származik.
 
-A következő kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály statikus `getCoordinatesFromEdges` függvényét használja. Kiszámítja a rendszerkép négy sarkát az Észak-, Dél-, Kelet-és Nyugat-és rotációs adatokból a KML-terület átfedése alapján.
+A kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály statikus `getCoordinatesFromEdges` függvényét használja. Kiszámítja a rendszerkép négy sarkát a KML terület Észak-, déli, keleti, nyugati és rotációs információi alapján.
 
 <br/>
 

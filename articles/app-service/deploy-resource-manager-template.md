@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422096"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211701"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
 
@@ -90,7 +90,7 @@ Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek neh
 
 1. Nyissa meg a hely [kudu-konzolját](https://github.com/projectkudu/kudu/wiki/Kudu-console).
 2. Tallózással keresse meg a mappát a következő címen: D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Keresse meg a appManagerStatus. XML és a appManagerLog. xml fájlt. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a fórumon.
+3. Keresse meg a appManagerStatus. XML és a appManagerLog. xml fájlt. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a [fórumon](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Egyedi webalkalmazás nevének kiválasztása
 

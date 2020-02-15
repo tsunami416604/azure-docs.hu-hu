@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910895"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208420"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 
 A Azure Mapsban kétféle forgalmi adatok érhetők el:
 
 - Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
-- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. A forgalomra vonatkozó adatokat gyakran használják az utak színezésére, attól függően, hogy mekkora forgalom lassul le a folyamat során a sebességi korláthoz képest, vagy egy másik metrika. Azure Maps adatforgalmának adatai három különböző mérőszámtal rendelkeznek:
+- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Azure Maps adatforgalmának adatai három különböző mérőszámtal rendelkeznek:
     - `relative` – az út szabad áramlási sebességéhez viszonyítva.
     - `absolute` – az összes jármű teljes sebessége az úton.
     - `relative-delay` – az átlagosan vártnál lassabban jeleníti meg a területeket.

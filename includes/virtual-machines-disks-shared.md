@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202202"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211395"
 ---
 Az Azure Shared Disks (előzetes verzió) az Azure Managed Disks új funkciója, amely lehetővé teszi egy Azure felügyelt lemez egyidejű csatlakoztatását több virtuális géphez (VM). A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
@@ -55,7 +55,7 @@ A Linux-fürtök képesek kihasználni a fürtszolgáltatásokat, például a [p
 
 A következő ábra egy minta 2 csomópontos fürtözött adatbázis-alkalmazást mutat be, amely az SCSI PR-t használja az egyik csomópontról a másikra történő feladatátvétel engedélyezéséhez.
 
-![Shared-Disk-updated-Two-Node-cluster-diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Két csomópontos fürt. A fürtön futó alkalmazások kezelik a lemezhez való hozzáférést.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 A folyamat a következő:
 
@@ -68,7 +68,7 @@ A folyamat a következő:
 
 Az alábbi ábrán egy olyan gyakori fürtözött munkaterhelés látható, amely több csomópontból származó adatok olvasását mutatja be a lemezről a párhuzamos folyamatok futtatásához, például a gépi tanulási modellek betanításához.
 
-![Shared-Disk-updated-Machine-learning-trainer-Model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Négy csomópontos virtuálisgép-fürt, az egyes csomópontok az írási szándékot regisztrálják, az alkalmazás kizárólagos foglalást tart az írási eredmények megfelelő kezelésére.](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 A folyamat a következő:
 

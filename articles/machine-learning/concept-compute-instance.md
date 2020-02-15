@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169842"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252076"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
 
@@ -141,11 +141,11 @@ A számítási példányok a Azure Machine Learning számítási képzési fürt
 
 ## <a name="notebookvm"></a>Mi történt a notebook virtuális géppel?
 
-A számítási példányok a notebook virtuális gépet cserélik le.  Azokon a régiókban, ahol a számítási példányok még nem érhetők el, továbbra is használhatja a teljes funkcionalitással rendelkező notebook virtuális gépeket, és új virtuális gépeket hozhat létre.
+A számítási példányok a notebook virtuális gépet cserélik le.  
 
 A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok egy számítási példányból lesznek elérhetők. Azonban a notebook virtuális gépen korábban telepített egyéni csomagokat újra kell telepíteni a számítási példányon. A számítási fürtök létrehozására vonatkozó kvóta-korlátozások a számítási példányok létrehozására is érvényesek lesznek. 
 
-Azokon a régiókban, ahol elérhetők a számítási példányok, nem hozhatók létre új notebook virtuális gépek. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre. 
+Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre. 
 
 
 ## <a name="next-steps"></a>Következő lépések

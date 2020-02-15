@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933306"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209783"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
@@ -61,13 +61,13 @@ A Térkép több különböző módon nagyítható, megpárolt, elforgatható é
 - A térképre koncentrálva a SHIFT billentyűt, valamint a fel vagy a le nyílbillentyűt használja. 
 - A Pitch vezérlő használata egérrel, érintéssel vagy billentyűzettel, illetve kulcsok bevitele.
 
-**Térkép stílusának módosítása** Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa elérhető legyen az alkalmazásában. A fejlesztő programozott módon állíthatja be a Térkép stílusát, és tetszés szerint módosíthatja azt. Ha a fejlesztő megjeleníti a Térkép stílusa választó vezérlőelemet, a felhasználó az egérrel, érintéssel vagy a billentyűzettel módosíthatja a Térkép stílusát a TAB/ENTER kulcsok használatával. A fejlesztő megadhatja, hogy mely térképi stílusokat szeretné elérhetővé tenni a Térkép stílusa választó vezérlőelemben. 
+**Térkép stílusának módosítása** Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa elérhető legyen az alkalmazásában. A fejlesztő programozott módon állíthatja be és módosíthatja a Térkép stílusát. Ha a fejlesztő a Térkép Style Picker vezérlőelemét jeleníti meg, akkor a felhasználó az egérrel, érintéssel vagy a TAB billentyűvel megváltoztathatja a Térkép stílusát, vagy megadhatja a kulcsot. A fejlesztő megadhatja, hogy mely térképi stílusokat szeretné elérhetővé tenni a Térkép stílusa választó vezérlőelemben. 
 
 ## <a name="keyboard-shortcuts"></a>Billentyűparancsok
 
 A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térkép használatát. Ezek a billentyűparancsok akkor működnek, ha a Térkép fókuszban van.
 
-| Jelmagyarázat      | Műveletek                            |
+| Paraméter      | Műveletek                            |
 |----------|-----------------------------------|
 | `Tab` | Navigáljon a térképen a vezérlők és az előugró ablakok között. |
 | `ESC` | Mozgassa a fókuszt a Térkép bármely eleméről a legfelső szintű Térkép elemre. |
@@ -94,7 +94,7 @@ Az alaptérképre helyezett további információknak megfelelő szöveges infor
 
 ## <a name="make-popups-keyboard-accessible"></a>Felugró ablakok billentyűzetének elérhetővé tétele
 
-Egy jelölőt vagy szimbólumot gyakran használnak a térképen egy hely ábrázolására. A hellyel kapcsolatos további információ általában egy előugró ablakban jelenik meg, amikor a felhasználó a jelölővel kommunikál. A legtöbb alkalmazás előugró ablaka akkor jelenik meg, amikor egy felhasználó egy jelölőre kattint vagy koppint, azonban a felhasználónak egeret vagy érintőképernyőt kell használnia. Jó megoldás, ha billentyűzet használatakor elérhetővé teszi a felugró ablakokat. Ez a funkció úgy érhető el, hogy létrehoz egy előugró ablakokat az egyes adatpontokhoz, és hozzáadja azt a térképhez. 
+Egy jelölőt vagy szimbólumot gyakran használnak a térképen egy hely ábrázolására. A hellyel kapcsolatos további információ általában egy előugró ablakban jelenik meg, amikor a felhasználó a jelölővel kommunikál. A legtöbb alkalmazásban az előugró ablakok akkor jelennek meg, amikor a felhasználó egy jelölőre kattint vagy koppint. Ha azonban a gombra kattint, koppintson a felhasználó egér és érintőképernyő használatára van szüksége. Jó megoldás, ha billentyűzet használatakor elérhetővé teszi a felugró ablakokat. Ez a funkció úgy érhető el, hogy létrehoz egy előugró ablakokat az egyes adatpontokhoz, és hozzáadja azt a térképhez. 
 
 A következő példa egy szimbólum réteget használ a Térkép érdeklődési pontjainak betöltésére, és felugró ablakokat helyez el a térképhez minden egyes hasznos ponthoz. Az egyes előugró ablakokra mutató hivatkozást az egyes adatpontok tulajdonságaiban tárolja a rendszer. Lekérhető egy jelölőre is, például ha egy jelölőre kattintanak. A térképre fókuszálva a TAB billentyű lenyomásával lehetővé válik, hogy a felhasználó átlépjen a térképen lévő összes előugró ablakon.
 
@@ -116,12 +116,12 @@ A következő példa egy szimbólum réteget használ a Térkép érdeklődési 
     - A frissítések szabályozása néhány másodpercenként egyszer. 
     - Az üzenetek összevonása logikai módon. 
 - Kerülje a színek használatát kizárólag az adatok továbbítására. Szöveg, ikonok vagy mintázatok használata a szín kiegészítéséhez vagy cseréjéhez. Néhány szempont:
-    - Ha buborék réteget használ az adatpontok közötti relatív érték megjelenítéséhez, érdemes megfontolnia az egyes buborékok sugarának skálázását, illetve a színezésük alternatívájaként. 
+    - Ha buborék réteget használ az adatpontok közötti relatív érték megjelenítéséhez, érdemes megfontolnia az egyes buborékok sugarának méretezését, a buborék színezését vagy mindkettőt. 
     - A különböző metrikák, például a háromszögek, a csillagok és a négyzetek különböző ikonjait tartalmazó szimbólum-réteget használjon. A szimbólum réteg az ikon méretének méretezését is támogatja. Egy szöveges címke is megjeleníthető.
     - A sorokban lévő értékek megjelenítéséhez a vastagságot és a méretet is felhasználhatja. A kötőjel-tömb minta a sorok különböző kategóriáinak ábrázolására használható. A szimbólum réteg a vonal mentén átfedésben lévő ikonokkal együtt is használható. A nyíl ikon használata hasznos a vonal folyamatának vagy irányának megjelenítéséhez.
     - A sokszögek adatainak megjelenítésekor a mintázat (például a sávok) a szín alternatívájaként is használható. 
 - Bizonyos vizualizációk, például a intenzitástérképei, a csempe rétegei és a képrétegek nem érhetők el a látássérültekkel rendelkező felhasználók számára. Néhány szempont:
-    - A képernyő-olvasó leírja, hogy a réteg hogyan jelenjen meg a térképhez való hozzáadáskor. Ha például egy időjárási radar csempe réteg jelenik meg, a képernyőolvasóhoz hasonló "időjárási radar-adatelemek tartoznak a térképen."
+    - A képernyő-olvasó leírja, hogy a réteg hogyan jelenjen meg a térképhez való hozzáadáskor. Ha például egy időjárási radar csempe réteg jelenik meg, akkor a képernyőolvasón a "Weather radar-adatcsatorna látható a térképen."
 - Korlátozza az egérmutatót igénylő funkciók mennyiségét. Ezek a funkciók nem lesznek elérhetők azon felhasználók számára, akik billentyűzetet vagy érintőképernyős eszközt használnak az alkalmazással való kommunikációhoz. Vegye figyelembe, hogy az interaktív tartalmak, például a kattintható ikonok, hivatkozások és gombok láthatók.
 - Próbálja megnavigálni az alkalmazást a billentyűzet használatával. Győződjön meg arról, hogy a tabulátorok sorrendje logikai.
 - Ha billentyűparancsokat hoz létre, próbálja meg korlátozni két vagy kevesebb kulcsra. 

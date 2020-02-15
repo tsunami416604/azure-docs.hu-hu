@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 88e3077fb64446f5fa70c1785ad3df1d3746de33
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084195"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209324"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
+# <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
 
 > [!IMPORTANT]

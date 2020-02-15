@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964013"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210242"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -71,7 +71,7 @@ A functions bővítmény lehetővé teszi egy Function app-projekt létrehozás�
 
     ![A HTTP-eseményindító sablon kiválasztása](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Írja be a **HttpExample** nevet a függvény neveként, majd válassza az ENTER, majd a **függvény** engedélyezése lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [funkcióbillentyűk](functions-bindings-http-webhook.md#authorization-keys) használatát a függvény végpontjának meghívásakor.
+1. Írja be a **HttpExample** nevet a függvény neveként, majd válassza az ENTER, majd a **függvény** engedélyezése lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [funkcióbillentyűk](functions-bindings-http-webhook-trigger.md#authorization-keys) használatát a függvény végpontjának meghívásakor.
 
     ![Függvény engedélyezésének kiválasztása](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -184,7 +184,7 @@ A Visual Studio Code lehetővé teszi kötések hozzáadását a function. JSON 
 
 A következő példa arra kéri, hogy adjon meg egy új tárolási kimeneti kötést:
 
-| Kérdés | Value (Díj) | Leírás |
+| Kérdés | Érték | Leírás |
 | -------- | ----- | ----------- |
 | **Kötési irány kiválasztása** | `out` | A kötés kimeneti kötés. |
 | **Kötés kijelölése iránysal** | `Azure Queue Storage` | A kötés egy Azure Storage-várólista kötése. |
@@ -248,7 +248,7 @@ A következő lépésekkel teheti közzé a projektjét a speciális létrehozá
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Value (Díj) | Leírás |
+    | Kérdés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Function app kiválasztása az Azure-ban | Új függvényalkalmazás létrehozása az Azure-ban | A következő üzenetben írjon be egy globálisan egyedi nevet, amely azonosítja az új Function alkalmazást, majd válassza az ENTER billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
     | Operációs rendszer kiválasztása | Windows | A Function alkalmazás Windows rendszeren fut. |
@@ -277,7 +277,7 @@ A projekt újraépítése, újracsomagolása és feltöltése az Azure-ba tört�
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Az üzembe helyezett függvény URL-címének beolvasása
 
-Egy HTTP által aktivált függvény meghívásához szüksége lesz a függvény URL-címére, amikor a rendszer üzembe helyezi a Function alkalmazásban. Ez az URL-cím tartalmazza az összes szükséges [funkcióbillentyűk](functions-bindings-http-webhook.md#authorization-keys). A bővítmény használatával lekérheti a telepített függvények URL-címeit.
+Egy HTTP által aktivált függvény meghívásához szüksége lesz a függvény URL-címére, amikor a rendszer üzembe helyezi a Function alkalmazásban. Ez az URL-cím tartalmazza az összes szükséges [funkcióbillentyűk](functions-bindings-http-webhook-trigger.md#authorization-keys). A bővítmény használatával lekérheti a telepített függvények URL-címeit.
 
 1. Válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a parancsot **Azure functions: Copy Function URL-cím**.
 

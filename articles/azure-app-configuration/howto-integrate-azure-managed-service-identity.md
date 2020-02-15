@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7461f378a4f95a43971f5893fe70739511e942ff
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732001"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212210"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrálás az Azure felügyelt identitásokkal
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag azt is bemutatja, hogyan használható a felügyelt identitá
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, MacOS és Linux platformokon.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Felügyelt identitás elérésének biztosítása az alkalmazás konfigurációjához.
@@ -95,7 +95,6 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
     ```csharp-interactive
     using Azure.Identity;
-    using Microsoft.Azure.Services.AppAuthentication;
     ```
 
 1. Ha csak az alkalmazás konfigurációjában közvetlenül tárolt értékeket kívánja elérni, frissítse a `CreateWebHostBuilder` metódust a `config.AddAzureAppConfiguration()` metódus cseréjével.

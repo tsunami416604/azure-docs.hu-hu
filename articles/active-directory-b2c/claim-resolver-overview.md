@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193379"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251770"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -123,16 +123,16 @@ A jogcímek feloldóit a következő elemekkel használhatja:
 |[RelyingParty](relyingparty.md#technicalprofile) műszaki profil| `OutputClaim`| 2 |
 
 Beállítások 
-1. A `IncludeClaimResolvingInClaimsHandling` metaadatokat a következőre kell beállítani `true`
-1. A bemeneti vagy kimeneti jogcímek attribútumának `AlwaysUseDefaultValue` értéknek kell lennie `true`
+1. A `IncludeClaimResolvingInClaimsHandling` metaadatokat a `true`értékre kell beállítani.
+1. A bemeneti vagy kimeneti jogcímek attribútumának `AlwaysUseDefaultValue` `true`értékre kell állítani.
 
-## <a name="how-to-use-claim-resolvers"></a>A jogcím-feloldók használata
+## <a name="claim-resolvers-samples"></a>A jogcím-feloldók mintái
 
 ### <a name="restful-technical-profile"></a>REST-technikai profil
 
 A [Rest](restful-technical-profile.md) -alapú műszaki profilokban érdemes lehet elküldeni a felhasználó nyelvét, a szabályzat nevét, a hatókört és az ügyfél-azonosítót. Ezen jogcímek alapján a REST API képes egyéni üzleti logikát futtatni, és ha szükséges, honosított hibaüzenetet kell létrehoznia.
 
-Az alábbi példa egy REST-technikai profilt mutat be:
+A következő példa egy REST-alapú műszaki profilt mutat be ebben a forgatókönyvben:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ Az alábbi példa egy REST-technikai profilt mutat be:
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ A jogcímek feloldóinak használatával előre feltöltheti a bejelentkezési n
 
 ### <a name="dynamic-ui-customization"></a>Dinamikus felhasználói felület testreszabása
 
-A Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára, így dinamikusan megjelenítheti az oldal tartalmát. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásából származó egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization-dynamic.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
+Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára az oldal tartalmának dinamikus megjelenítéséhez. Ez lehetővé teszi például a háttérkép módosítását a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásból átadott egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization-dynamic.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
 
-A következő példa egy **campaignId** nevű paramétert ad át a lekérdezési karakterláncban, amelynek értéke `hawaii`, a `en-US`**nyelvi** kódja és az ügyfél-azonosítót jelképező **alkalmazás** :
+A következő példa a **campaignId** nevű lekérdezési karakterlánc paramétert adja át `hawaii`értékkel, `en-US`**és az ügyfél** -azonosítót jelképező **alkalmazással** :
 
 ```XML
 <UserJourneyBehaviors>
@@ -177,6 +178,17 @@ Ennek eredményeképpen a Azure AD B2C elküldi a fenti paramétereket a HTML-ta
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>Tartalom definíciója
+
+A [ContentDefinition](contentdefinitions.md) `LoadUri`elküldheti a jogcímek feloldóit a tartalmak különböző helyekről való lekéréséhez a használt paraméterek alapján. 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Application Insights műszaki profil
@@ -195,4 +207,29 @@ Az Azure Application Insights és a jogcím-feloldók segítségével elemzések
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>Függő entitások házirendje
+
+A [függő entitások](relyingparty.md) szabályzatának technikai profiljában érdemes lehet a bérlői azonosítót vagy korrelációs azonosítót küldeni a függő entitás alkalmazásnak a JWT belül. 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

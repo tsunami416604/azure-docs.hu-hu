@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767441"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251702"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.61 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A Windows Server-tárolókat futtató fürt létrehozása után hozzá kell adnia egy további csomópont-készletet. Egy későbbi lépésben egy további Node-készlet hozzáadására van szükség, de először engedélyeznie kell néhány előzetes verziót.
 
@@ -148,6 +148,10 @@ az aks create \
 > [!Note]
 > Ha jelszó-érvényesítési hibát kap, próbálja meg létrehozni az erőforráscsoportot egy másik régióban.
 > Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
+
+> [!Note]
+> Ha nem tudja létrehozni az AK-fürtöt, mert a verzió nem támogatott ebben a régióban, akkor az [az AK Get-Versions--Location eastus] paranccsal megkeresheti a régió támogatott verzióinak listáját.
+
 
 Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A fürt esetenként több percig is eltarthat. Ezekben az esetekben akár 10 percet is igénybe vehet. 
 
@@ -289,7 +293,10 @@ A minta alkalmazás működés közbeni megtekintéséhez nyisson meg egy webbö
 
 ![A ASP.NET-minta alkalmazás tallózásának képe](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Fürt törlése
+> [!Note]
+> Ha a lap betöltésére tett kísérlet közben kapcsolati időtúllépést kap, ellenőrizze, hogy a minta alkalmazás készen áll-e a következő paranccsal [kubectl Get hüvelyek--Watch]. Előfordulhat, hogy a Windows-tárolót nem indítja el a külső IP-cím elérhetővé tételének időpontjában.
+
+## <a name="delete-cluster"></a>A fürt törlése
 
 Ha a fürtre már nincs szükség, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot, a Container Service-t és az összes kapcsolódó erőforrást.
 

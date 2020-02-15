@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964117"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208948"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával
 
@@ -93,7 +93,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
     + **Adja meg a névteret**: írja be a `My.Functions`. 
     ::: zone-end
 
-    + **Engedélyezési szint**: válassza a `Anonymous`lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook.md#authorization-keys)című témakört.
+    + **Engedélyezési szint**: válassza a `Anonymous`lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
 
     + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a `Add to workspace`lehetőséget.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909120"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206300"
 ---
 ### <a name="portal"></a>Portál
 
@@ -34,18 +34,18 @@ Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, h
 1. Adja meg a kulcstároló nevét, válasszon ki egy régiót, és válasszon ki egy díjszabási szintet.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, ellenőrizze a beállításokat, majd kattintson a **Létrehozás**gombra.
 
-    ![SSE-Create-a-Key-Vault. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![Képernyőkép a Azure Key Vault létrehozási felületéről. A létrehozott megadott értékek megjelenítése](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
 1. Ha a Key Vault üzembe helyezése befejeződött, válassza ki.
 1. A **Beállítások**területen válassza a **kulcsok** lehetőséget.
 1. **Előállítási/importálási** lehetőség kiválasztása
 
-    ![SSE-Key-Vault-Generate-Settings. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![Képernyőkép a Key Vault erőforrás-beállítások panelről. Megjeleníti a beállításokban a generált/importálás gombot.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
 1. Hagyja a **kulcs típusát** az **RSA** és az **RSA-kulcs méretének** értékeként **2080**-re.
 1. Adja meg a többi kijelölést, majd válassza a **Létrehozás**lehetőséget.
 
-    ![SSE-Create-a-Key-Generate. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![A kulcs létrehozása/importálása gomb kiválasztásakor megjelenő, a Key (létrehozás/importálás) gombra kattintva megjelenő képernyőkép](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
 #### <a name="setting-up-your-disk-encryption-set"></a>A lemez titkosítási készletének beállítása
 
@@ -54,7 +54,7 @@ A lemezes titkosítási készletek létrehozásához és konfigurálásához a k
 1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
 1. Válassza a **+ Hozzáadás**lehetőséget.
 
-    ![SSE-Create-Disk-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![Képernyőkép a lemez titkosítási portálján Főképernyőről. A Hozzáadás gomb kiemelése](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
 1. Válassza ki az erőforráscsoportot, nevezze el a titkosítási csoportot, és válassza ki ugyanazt a régiót, mint a kulcstartó.
 1. Válassza **a Key Vault és a kulcs**elemet.
@@ -62,15 +62,15 @@ A lemezes titkosítási készletek létrehozásához és konfigurálásához a k
 1. Kattintson a **kiválasztás**gombra.
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
 
-    ![SSE-Disk-ENC-set-Blade-Key. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![Képernyőkép a lemez titkosítás-létrehozási paneljéről. Az előfizetés, az erőforráscsoport, a lemez titkosítási készlet neve, a régió és a Key Vault + Key választó megjelenítése.](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
 1. Nyissa meg a lemez titkosítási készletet a létrehozás befejeződése után, és válassza ki a felugró riasztást.
 
-    ![SSE-Disk-ENC-Alert-fix. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![Képernyőkép a riasztás előugró ablakáról: "lemez, lemezkép vagy pillanatkép lemezes titkosítási készlettel való hozzárendeléséhez engedélyeket kell biztosítania a kulcstartó számára". A folytatáshoz válassza ki ezt a riasztást](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
 Két értesítésnek kell megjelennie, és sikeresnek kell lennie. Ezzel lehetővé teszi a lemezes titkosítási készlet használatát a kulcstartóval.
 
-![Disk-ENC-Notification-success. png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
+![A Key Vault sikeres engedélyének és szerepkör-hozzárendelésének képernyőképe.](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
 #### <a name="deploy-a-vm"></a>Virtuális gép üzembe helyezése
 
@@ -82,13 +82,13 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
 1. Az **alapszintű** lapon válassza ki ugyanazt a régiót, mint a lemez titkosítási készletét, és Azure Key Vault.
 1. Adja meg a többi értéket az **Alap** lapon, ahogy szeretné.
 
-    ![SSE-Create-a-VM-Region. png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![Képernyőfelvétel a virtuális gépek létrehozásának élményéről, a régió értékének kiemelésével.](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
 1. A **lemezek** lapon válassza a titkosítás inaktív állapotban lehetőséget **egy ügyfél által felügyelt kulccsal**.
 1. Válassza ki a lemez titkosítási készletét a **lemez titkosítási készlete** legördülő menüből.
 1. Végezze el a többi kijelölést úgy, ahogy szeretné.
 
-    ![SSE-Create-VM-Select-CMK-encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![Képernyőkép a virtuális gép létrehozási felületéről, a lemezek panelről. A lemez titkosítási készletének legördülő menüje kiemelve.](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
 
 #### <a name="enable-on-an-existing-disk"></a>Engedélyezés meglévő lemezen
 
@@ -101,16 +101,16 @@ A lemezek titkosításának kezeléséhez és konfigurálásához a meglévő le
 1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
 1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
 
-    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+    ![Képernyőkép a példaként szolgáló virtuális gép fő átfedéséről. A Leállítás gomb kiemelve](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
 
 1. A virtuális gép leállítása után válassza a **lemezek** lehetőséget, majd válassza ki a titkosítani kívánt lemezt.
 
-    ![SSE-existing-Disk-Select. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+    ![Képernyőkép a példaként szolgáló virtuális gépről a lemezek panel megnyitásával. Az operációsrendszer-lemez ki van emelve, mint például a kiválasztható lemez.](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. Válassza a **titkosítás** lehetőséget, majd válassza a titkosítás lehetőséget az **ügyfél által felügyelt kulccsal** , majd válassza ki a lemez titkosítási készletét a legördülő listából.
 1. Kattintson a **Mentés** gombra.
 
-    ![SSE-encrypt-existing-Disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+    ![Képernyőkép a példa operációsrendszer-lemezéről. A titkosítás panel meg van nyitva, és az ügyfél által felügyelt kulccsal történő titkosítás van kiválasztva, valamint a példa Azure Key Vault. A beállítások megadása után a Mentés gomb van kiválasztva.](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 
 1. Ismételje meg ezt a folyamatot a titkosítani kívánt virtuális géphez csatlakoztatott bármely más lemez esetében.
 1. Ha a lemezek befejezik a váltást az ügyfél által felügyelt kulcsokra, ha nincsenek olyan csatlakoztatott lemezek, amelyeket titkosítani szeretne, elindíthatja a virtuális gépet.

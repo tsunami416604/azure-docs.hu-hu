@@ -3,12 +3,12 @@ title: Gyermekek erőforrásai a sablonokban
 description: Ismerteti, hogyan lehet a Azure Resource Manager sablonban megadhatja a gyermek-erőforrások nevét és típusát.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122015"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207893"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
@@ -27,7 +27,7 @@ Egy Resource Manager-sablonban megadhatja a gyermek erőforrást a szülő erőf
 ]
 ```
 
-A következő példa a alárendelt erőforrást a szülő erőforráson kívül mutatja. Ezt a módszert akkor érdemes használni, ha a fölérendelt erőforrás nem ugyanabban a sablonban van telepítve, vagy ha a [Másolás](create-multiple-instances.md) használatával több alárendelt erőforrást szeretne létrehozni.
+A következő példa a alárendelt erőforrást a szülő erőforráson kívül mutatja. Ezt a módszert akkor érdemes használni, ha a fölérendelt erőforrás nem ugyanabban a sablonban van telepítve, vagy ha a [Másolás](copy-resources.md) használatával több alárendelt erőforrást szeretne létrehozni.
 
 ```json
 "resources": [

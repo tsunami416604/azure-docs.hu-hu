@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988282"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208505"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be
 
@@ -43,7 +43,7 @@ A kód hatodik blokkja lekérdezi a Azure Maps útválasztási szolgáltatást, 
 
 A kód utolsó blokkja a Térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával állítja be a leképezés határait.
 
-Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai a Térkép [esemény-figyelőján](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)belül jönnek létre és állíthatók be. A kód szerkezete biztosítja, hogy az eredmények csak a Térkép teljes betöltése után jelenjenek meg.
+Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)belül jönnek létre. A kód szerkezete biztosítja, hogy az eredmények csak a Térkép teljes betöltése után jelenjenek meg.
 
 ## <a name="query-the-route-via-fetch-api"></a>Az útvonal lekérdezése a fetch API használatával
 
@@ -54,7 +54,7 @@ A fenti kódban a kód első blokkja létrehozza a Térkép objektumot, és beá
 
 A kód második blokkja létrehoz és hozzáadja a térképhez egy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) objektumot.
 
-A harmadik kódrészlet létrehozza a kezdő és a célhelyet az útvonalhoz, és hozzáadja azokat az adatforráshoz. A [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)használatával kapcsolatos utasításokért tekintse [meg a térképen a PIN-kód hozzáadása](map-add-pin.md) című témakört.
+A harmadik kódú blokk létrehozza az útvonal kezdő és célhelyét. Ezután hozzáadja azokat az adatforráshoz. A [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)használatával kapcsolatos utasításokért tekintse [meg a térképen a PIN-kód hozzáadása](map-add-pin.md) című témakört.
 
 A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) az [adatforrásban](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sorokként burkolt vonalakat jeleníti meg a térképen. A kód negyedik blokkja létrehoz egy sor réteget a térképhez, és hozzáadja azt. Lásd: egy sor rétegének tulajdonságai a következő helyen: [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
@@ -64,7 +64,7 @@ A következő kódrészlet `SouthWest` és `NorthEast` pontokat hoz létre a kez
 
 A kód utolsó blokkja a [beolvasás API](https://fetch.spec.whatwg.org/) -t használja a [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)-ra irányuló keresési kérések elvégzéséhez. A rendszer elemzi a választ. Ha a válasz sikeres volt, a szélességi és a hosszúsági adatokat a rendszer egy sor létrehozásához használja a pontok összekapcsolásával. Ekkor a rendszer hozzáadja az adatforráshoz a sor-adatforrást, hogy az útvonalat a térképen jelenítse meg. Útmutatásért lásd: [vonal hozzáadása a térképen](map-add-line-layer.md) .
 
-Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai a Térkép [esemény-figyelőján](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)belül jönnek létre és állíthatók be. Azt szeretnénk, hogy az eredmények a Térkép teljes betöltése után is megjelenjenek.
+Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera határai az esemény- [figyelőn](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)belül jönnek létre. Azt szeretnénk, hogy az eredmények a Térkép teljes betöltése után is megjelenjenek.
 
 ## <a name="next-steps"></a>Következő lépések
 

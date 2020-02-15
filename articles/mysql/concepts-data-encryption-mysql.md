@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162361"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210431"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
 > [!NOTE]
 > Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon AskAzureDBforMySQL@service.microsoft.comhoz.
 
-A Azure Database for MySQL ügyfél által felügyelt kulcsaival történő adattitkosítás lehetővé teszi, hogy a qwn kulcsot (BYOK) a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
+Az ügyfél által felügyelt kulcsokkal rendelkező adatok titkosítása Azure Database for MySQL lehetővé teszi saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
 
 A Azure Database for MySQL ügyfél által felügyelt kulcsaival rendelkező adattitkosítás a kiszolgáló szintjén van beállítva. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 

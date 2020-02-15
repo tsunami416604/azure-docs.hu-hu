@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718026"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252059"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -31,7 +31,7 @@ A laborhoz beállított kvóta minden tanuló számára a labor teljes időtarta
 ## <a name="schedules"></a>Ütemezések
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>A laborban lévő összes virtuális gép automatikusan elindul, ha be van állítva egy ütemterv? 
-Nem. Nem minden virtuális gép. Csak azok a virtuális gépek, amelyek egy adott időpontban vannak hozzárendelve a felhasználókhoz. A felhasználóhoz nem rendelt virtuális gépek nem indulnak el automatikusan. Ez a tervezés. 
+Nem. Nem minden virtuális gép. Csak azok a virtuális gépek, amelyek egy adott időpontban vannak hozzárendelve a felhasználókhoz. A nem a felhasználóhoz rendelt virtuális gépek nem indulnak el automatikusan. Ez a tervezés. 
 
 ## <a name="lab-accounts"></a>Tesztkörnyezetfiókok
 
@@ -47,6 +47,12 @@ A portok a következők: 49152 – 65535. Az osztályterem Labs egy terheléselo
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen nyilvános IP-címtartományt nyitok meg a szervezetem tűzfal beállításai között, hogy az RDP/SSH-n keresztül csatlakozzanak a labor virtuális gépekhez?
 Lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519), amely a nyilvános IP-címtartományt biztosítja az Azure-beli adatközpontok számára. Megnyithatja azon régiók IP-címeit, amelyeken a labor fiókjai vannak.
 
+## <a name="virtual-machine-images"></a>Virtuálisgép-lemezképek
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>A tesztkörnyezet létrehozója, miért nem engedélyezhető további képbeállítások a virtuálisgép-lemezképek legördülő menüjében új Labor létrehozásakor?
+
+Ha egy rendszergazda labor-létrehozóként adja hozzá Önt labor-fiókhoz, a rendszer engedélyeket kap a Labs létrehozásához. Azonban nincs engedélye arra, hogy szerkessze a beállításokat a labor-fiókon belül, beleértve az engedélyezett virtuálisgép-rendszerképek listáját is. További lemezképek engedélyezéséhez lépjen kapcsolatba a labor-fiók rendszergazdájával, vagy kérje meg a rendszergazdát, hogy vegye fel Önt közreműködő szerepkörként a labor-fiókba. A közreműködői szerepkör lehetővé teszi a virtuális gép rendszerkép-listájának szerkesztését a labor-fiókban.
+
 ## <a name="users"></a>Felhasználók
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>Hány felhasználó lehet egy osztályterem laborban?
@@ -58,7 +64,7 @@ Fizessen elő a [Azure Lab Services blogra](https://azure.microsoft.com/blog/tag
 ## <a name="update-notifications"></a>Frissítési értesítések
 Fizessen elő a [labor Services frissítéseire](https://azure.microsoft.com/updates/?product=lab-services) , és tájékozódjon a labor Services új funkcióiról.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 

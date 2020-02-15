@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169376"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209273"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -47,7 +47,7 @@ A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő 
 
     Ha ez egy privát URL-cím, a hozzáférési jogkivonatot meg kell adni a kérelemben.
 - Az URL-címnek egy érvényes médiafájlra kell mutatnia, nem pedig egy weboldalra, például a `www.youtube.com` lapra mutató hivatkozást.
-- Percenként akár 60 filmet is feltölthet.
+- Fizetős fiók esetén percenként akár 50-es filmeket is feltölthet, és egy próbaverziós fiókban akár 5 filmet is beállíthat percenként.
 
 > [!Tip]
 > Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
@@ -91,7 +91,7 @@ Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóh
 Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére szolgál az alábbi eseményekről:
 
 - Az indexelési állapot változása: 
-    - Tulajdonságok:    
+    - Tulajdonságok    
     
         |Name (Név)|Leírás|
         |---|---|
@@ -126,7 +126,7 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
-#### <a name="priority"></a>prioritású
+#### <a name="priority"></a>priority
 
 A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett) és **magas**.
 
@@ -348,6 +348,7 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
+|429||A próbaverziós fiókok percenként 5 feltöltést vehetnek igénybe. A fizetős fiókok percenként 50 feltöltést engedélyeznek.|
 
 ## <a name="next-steps"></a>Következő lépések
 

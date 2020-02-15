@@ -3,14 +3,14 @@ title: A mobilitási szolgáltatás automatizálása a Azure Site Recovery telep
 description: A mobilitási szolgáltatás automatikus telepítése a VMware/Physical Server rendszerbeli vész-helyreállításra Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896012"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252227"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
 
@@ -20,7 +20,7 @@ Ha a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba tör
 
 - **Leküldéses telepítés**: site Recovery telepítse a mobilitási szolgáltatás ügynököt, amikor engedélyezi a replikációt a Azure Portal lévő gépeken.
 - **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
-- **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager, vagy külső gyártótól származó eszközök, például a Intigua JetPatch.
+- **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager vagy más eszközök, például a JetPatch.
 
 Az automatikus telepítés és a frissítés megoldást nyújt, ha:
 
@@ -355,8 +355,8 @@ cd /tmp
     **Paraméter** | **Windows-érték** | **Linux-érték**
     --- | --- | ---
     **Name (Név)** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
-    **Parancssor** | install. bat | ./install_linux. sh
-    **A program futtatható** | Annak megadása, hogy van-e bejelentkezett felhasználó | Annak megadása, hogy van-e bejelentkezett felhasználó
+    **Parancssor** | install. bat | ./install_linux.sh
+    **A program futtatható** | Függetlenül attól, hogy van-e bejelentkezett felhasználó | Függetlenül attól, hogy van-e bejelentkezett felhasználó
     **Egyéb paraméterek** | Alapértelmezett beállítás használata | Alapértelmezett beállítás használata
 
    ![A csomag és program létrehozása varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -375,7 +375,7 @@ cd /tmp
    ![Képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
 1. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információk](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
-1. Fejezze be a varázslót. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
+1. A varázsló befejezése. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
 1. A csomag terjesztésének befejeződése után kattintson a jobb gombbal a csomagra > az **üzembe helyezés**elemre.
 
    ![Képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)

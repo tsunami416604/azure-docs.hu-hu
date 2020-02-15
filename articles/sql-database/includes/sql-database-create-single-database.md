@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496127"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252128"
 ---
 Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni. 
 
@@ -19,7 +20,7 @@ Ebben a lépésben egy Azure SQL Database önálló adatbázist fog létrehozni.
 >
 > További információért lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) vagy a számítógép kiszolgáló szintű tűzfalszabály által használt IP-cím meghatározása: [kiszolgálói szintű tűzfal létrehozása](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal használatával.
 
@@ -29,14 +30,14 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
 
    ![Önálló adatbázis létrehozása](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. Az **alapvető beállítások** lap **projekt részletei** területén írja be vagy válassza ki a következő értékeket:
+4. Az **alapvető beállítások** lap **projekt részletei** területén írja be vagy válassza ki a következő értékeket:
 
    - **Előfizetés**: legördülő menüből válassza ki a megfelelő előfizetést, ha az nem jelenik meg.
    - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be a `myResourceGroup`lehetőséget, majd kattintson **az OK gombra**.
 
      ![Új SQL Database-adatbázis – alapszintű lap](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. Az **adatbázis részletei** szakaszban írja be vagy válassza ki a következő értékeket:
+5. Az **adatbázis részletei** szakaszban írja be vagy válassza ki a következő értékeket:
 
    - **Adatbázis neve**: írja be a `mySampleDatabase`.
    - **Kiszolgáló**: válassza az **új létrehozása**elemet, adja meg a következő értékeket, majd válassza a **kiválasztás**lehetőséget.
@@ -63,18 +64,22 @@ Hozza létre az erőforráscsoportot és az önálló adatbázist a Azure Portal
      - Lehetőség van arra is, hogy a **konfiguráció módosítása** elemre kattintva módosítsa a hardver generációját.
    - Kattintson az **Alkalmaz** gombra.
 
-5. Válassza a **További beállítások** lapot. 
-6. Az **adatforrás** szakasz **meglévő adat használata**területén válassza a `Sample`lehetőséget.
+6. Válassza a **hálózatkezelés** fület, és döntse el, hogy engedélyezni szeretné- [**e az Azure-szolgáltatások és-erőforrások számára a kiszolgáló elérését**](../sql-database-networkaccess-overview.md), vagy adjon hozzá egy [privát végpontot](../../private-link/private-endpoint-overview.md).
+
+   ![Hálózatkezelés lap](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. Válassza a **További beállítások** lapot. 
+8. Az **adatforrás** szakasz **meglévő adat használata**területén válassza a `Sample`lehetőséget.
 
    ![További SQL-adatbázis-beállítások](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Ügyeljen arra, hogy a **minta-(AdventureWorksLT-)** adatértékek könnyen követhető legyenek, és más, az ezeket az adatAzure SQL Databaset használó rövid útmutatók.
 
-7. Hagyja meg a többi értéket alapértelmezettként, és válassza a **felülvizsgálat + létrehozás** elemet az űrlap alján.
-8. Tekintse át a végső beállításokat, és válassza a **Létrehozás**lehetőséget.
+9. Hagyja meg a többi értéket alapértelmezettként, és válassza a **felülvizsgálat + létrehozás** elemet az űrlap alján.
+10. Tekintse át a végső beállításokat, és válassza a **Létrehozás**lehetőséget.
 
-9. A **SQL Database** űrlapon válassza a **Létrehozás** lehetőséget az erőforráscsoport, a kiszolgáló és az adatbázis üzembe helyezéséhez és kiépítéséhez.
+11. A **SQL Database** űrlapon válassza a **Létrehozás** lehetőséget az erőforráscsoport, a kiszolgáló és az adatbázis üzembe helyezéséhez és kiépítéséhez.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

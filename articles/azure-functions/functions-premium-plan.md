@@ -1,18 +1,18 @@
 ---
-title: Prémium szintű Azure Functions-csomag
+title: Prémium csomag Azure Functions
 description: Részletek és konfigurációs beállítások (VNet, nem hideg indítás, korlátlan végrehajtási időtartam) a Azure Functions Premium csomaghoz.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024636"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212472"
 ---
-# <a name="azure-functions-premium-plan"></a>Prémium szintű Azure Functions-csomag
+# <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
 A Azure Functions Prémium csomag (más néven a rugalmas Prémium csomag) egy üzemeltetési lehetőség a Function apps számára. A Prémium csomag olyan szolgáltatásokat nyújt, mint például a VNet-kapcsolat, a hidegindító és a prémium szintű hardverek.  Több Function apps is telepíthető ugyanarra a prémium csomagra, és a csomag lehetővé teszi a számítási példány méretének, az alapcsomag méretének és a maximális méretnek a konfigurálását.  A Prémium csomag és az egyéb csomag-és üzemeltetési típusok összehasonlítását lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
 
@@ -31,7 +31,7 @@ Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, 
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Jellemzők
+## <a name="features"></a>Szolgáltatások
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -57,7 +57,7 @@ A prémium csomagra telepített Azure Functions a [webalkalmazások új VNet-int
 
 Amikor prémium szintű csomagban rendel hozzá egy alhálózatot a Function alkalmazáshoz, szüksége van egy alhálózatra, amely minden lehetséges példányhoz elegendő IP-címmel rendelkezik. Legalább 100 rendelkezésre álló címmel rendelkező IP-blokkra van szükség.
 
-További információk: [a Function app integrálása VNet](functions-create-vnet.md).
+További információ: [a Function app integrálása VNet](functions-create-vnet.md).
 
 ### <a name="rapid-elastic-scale"></a>Gyors rugalmas skála
 
@@ -88,21 +88,26 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|SKU (Cikkszám)|Processzormagok|Memória|Adattárolás|
+|SKU|Processzormagok|Memory (Memória)|Tárterület|
 |--|--|--|--|
-|EP1|1|3.5 GB|250 GB|
-|EP2|2|7GB|250 GB|
-|EP3|4|14 GB|250 GB|
+|EP1|1|3.5 GB|250GB|
+|EP2|2|7GB|250GB|
+|EP3|4|14 GB|250GB|
 
-## <a name="regions"></a>Térségek
+### <a name="memory-utilization-considerations"></a>Memóriahasználat szempontjai
+A több memóriával rendelkező gépeken való futtatás nem mindig jelenti azt, hogy a Function alkalmazás az összes rendelkezésre álló memóriát fogja használni.
+
+A JavaScript-függvények alkalmazásait például korlátozza a Node. js alapértelmezett memória-korlátja. A rögzített memória korlátjának növeléséhez adja hozzá az `languageWorkers:node:arguments` `--max-old-space-size=<max memory in MB>`értékkel.
+
+## <a name="regions"></a>Régiók
 
 Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott régiói.
 
-|Region (Régió)| Windows | Linux |
+|Régió| Windows | Linux |
 |--| -- | -- |
 |Ausztrália középső régiója| ✔<sup>1</sup> | |
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
-|Ausztrália keleti régiója| ✔ | |
+|Kelet-Ausztrália| ✔ | |
 |Délkelet-Ausztrália | ✔ | ✔<sup>1</sup> |
 |Dél-Brazília| ✔<sup>2</sup> |  |
 |Közép-Kanada| ✔ |  |
@@ -114,18 +119,18 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |Középnyugat-Németország| ✔ | |
 |Kelet-Japán| ✔ | ✔<sup>1</sup> |
 |Nyugat-Japán| ✔ | |
-|Dél-Korea középső régiója| ✔ |  |
+|Korea középső régiója| ✔ |  |
 |USA északi középső régiója| ✔ |  |
 |Észak-Európa| ✔ | ✔<sup>1</sup> |
 |USA déli középső régiója| ✔ | ✔<sup>1</sup> |
 |Dél-India | ✔ | |
 |Délkelet-Ázsia| ✔ | ✔<sup>1</sup> |
-|Egyesült Királyság déli régiója| ✔ | |
-|Egyesült Királyság nyugati régiója| ✔ |  |
+|Az Egyesült Királyság déli régiója| ✔ | |
+|Az Egyesült Királyság nyugati régiója| ✔ |  |
 |Nyugat-Európa| ✔ | ✔<sup>1</sup> |
 |Nyugat-India| ✔ |  |
 |USA nyugati régiója| ✔ | ✔<sup>1</sup> |
-|USA 2. nyugati régiója| ✔ |  |
+|USA nyugati régiója, 2.| ✔ |  |
 
 <sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  
 <sup>2</sup> A maximális felskálázás 60 példányra korlátozódik.

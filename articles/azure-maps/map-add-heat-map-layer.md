@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986240"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208539"
 ---
 # <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
 
@@ -79,10 +79,10 @@ Az előző példában a sugár-és opacitási beállítások megadásával testr
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"interpoláció",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["lineáris"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transzparens",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "lila",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["hő-sűrűség"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"átlátszó",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Navy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zöld",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "sárga",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "Red"<br/>\] |   
 
 - `opacity`: azt határozza meg, hogy a Heat Térkép rétege milyen átlátszatlan vagy átlátszó legyen.
-- `intensity`: szorzót alkalmaz az egyes adatpontok súlyozására a hő teljes intenzitásának növeléséhez. Ez segít különbséget tenni az adatpontok súlyozásában, így könnyebben láthatóvá válik.
+- `intensity`: szorzót alkalmaz az egyes adatpontok súlyozására a hő teljes intenzitásának növeléséhez. Az adatpontok súlyozásával különbséget okoz, így könnyebben láthatóvá válik.
 - `weight`: alapértelmezés szerint az összes adatponthoz 1 érték tartozik, és a súlyozása egyenlő. A súlyozási beállítás szorzóként funkcionál, és beállíthatja számként vagy kifejezésként. Ha egy szám a súlyozáshoz van beállítva, akkor a rendszer az egyes adatpontokat a térképen kétszer helyezi el. Ha például a súlyozás 2, akkor a sűrűség megduplázódik. Ha a súlyozási beállítást egy számra állítja, akkor a rendszer hasonló módon jeleníti meg a hő-hozzárendelést az intenzitás lehetőség használatával. 
 
-  Ha azonban egy kifejezést használ, az egyes adatpontok súlyozása az egyes adatpontok tulajdonságai alapján lehetséges. Tegyük fel például, hogy az egyes adatpontok földrengést jelentenek. Egy fontos mérőszám az egyes földrengés-adatpontok értékének nagysága. A földrengések minden alkalommal történnek, de a legtöbb esetben alacsony a jelentősége, és a rendszer nem észlelt. Ha egy kifejezésben a magnitúdó értékkel rendeli a súlyozást az egyes adatpontokhoz, a földrengések jelentőségét jobban áttekintheti a meleg térképen.
+  Ha azonban egy kifejezést használ, az egyes adatpontok súlyozása az egyes adatpontok tulajdonságai alapján lehetséges. Tegyük fel például, hogy az egyes adatpontok földrengést jelentenek. A magnitúdó értéke az egyes földrengés-adatpontok fontos mérőszáma volt. A földrengések minden alkalommal történnek, de a legtöbb esetben alacsony a jelentősége, és a rendszer nem észlelt. Egy kifejezésben szereplő magnitúdó értékkel rendelheti hozzá a súlyozást az egyes adatpontokhoz. A súlyozás kiosztásához a magnitúdó értékének használatával jobban áttekinthető a földrengések jelentősége a hő-térképen belül.
 - `source` és `source-layer`: lehetővé teszi az adatforrás frissítését.
 
 Itt talál egy eszközt a különböző Heat Térkép réteg beállításainak teszteléséhez.

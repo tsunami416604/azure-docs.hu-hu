@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768367"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209341"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Árképzési szintek Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -23,15 +23,15 @@ A Azure Database for PostgreSQL-kiszolgálót a három különböző díjszabás
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Memória/virtuális mag | 2 GB | 5 GB | 10 GB |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Tárhely típusa | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure standard Storage | Azure-Premium Storage | Azure-Premium Storage |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Árképzési szintek kiválasztásához használja a következő táblázatot kiindulási pontként.
 
-| Díjcsomag | Kívánt teljesítményprofilok |
+| Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
-| Általános rendeltetés | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
+| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
+| Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriára optimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
 A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és az árképzési szint (kivéve az alapszintű és az alapszintű) számát másodpercek alatt módosíthatja. A tárolási mennyiség és a biztonsági mentés megőrzési időszaka egymástól függetlenül is beállítható az alkalmazás leállása nélkül. A biztonsági mentési tár típusa nem módosítható a kiszolgáló létrehozása után. További információ: [Scale Resources (erőforrások méretezése](#scale-resources) ) szakasz.
@@ -40,19 +40,19 @@ A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és
 
 A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. Kelet-Kína 1, Észak-Kína 1, US DoD – középső régió és US DoD – keleti régió az Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapuló Gen 4 logikai processzorokat használ. Minden más régió az Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokon alapuló Gen 5 logikai CPU-ket használ.
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Tárterület
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
 |    | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárhely típusa | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Azure standard Storage | Azure-Premium Storage | Azure-Premium Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
+| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
+| IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Kelet-Ausztrália, Ausztrália Dél-Kelet.
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, USA északi középső régiója, USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső , Dél-Korea, Kelet-Ausztrália, Kelet-Ausztrália.
 >
 > Minden más régió támogatja a 4TB és a 6000 IOPS.
 >
@@ -86,7 +86,7 @@ Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság megha
 
 Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A biztonsági mentések minimális megőrzési ideje hét nap. 35 napos megőrzési időtartamot is beállíthat. A megőrzés a kiszolgáló élettartama alatt bármikor módosítható. A helyileg redundáns és a Geo-redundáns biztonsági mentések közül választhat. A Geo-redundáns biztonsági mentéseket a kiszolgáló által létrehozott régió [földrajzi összepárosítású régiójában](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) is tárolja a rendszer. Ez a redundancia katasztrófa esetén nyújt védelmet. Lehetősége van arra is, hogy a kiszolgálót bármely olyan Azure-régióba visszaállítsa, amelyben a szolgáltatás a Geo-redundáns biztonsági mentésekkel elérhető. A kiszolgáló létrehozása után a két biztonsági mentési tárolási lehetőség között nem lehet módosítani.
 

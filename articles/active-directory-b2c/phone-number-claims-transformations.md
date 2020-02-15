@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185472"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212190"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Telefonszám-jogcímek átalakításának meghatározása Azure AD B2C
 
@@ -32,7 +32,8 @@ Ez a jogcím érvényesíti a telefonszám formátumát. Ha érvényes formátum
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | sztring | A karakterlánc-típusra való áttérés jogcíme. |
+| inputClaim | phoneNumberString | sztring |  A telefonszámhoz tartozó karakterlánc-jogcím. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie a kezdő "+" és az országkód értékének. Ha a bemeneti jogcím `country` van megadva, a telefonszám helyi formátumú (az országkód nélkül). |
+| inputClaim | ország | sztring | Választható A ISO3166 (kétbetűs ISO-3166 országkód) a telefonszám országkód szerinti jogcíme. |
 | outputClaim | outputClaim | Telefonszám | A jogcímek átalakításának eredménye. |
 
 A **ConvertStringToPhoneNumberClaim** jogcímek átalakítását a rendszer mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md) vagy [megjelenítési vezérlő](display-controls.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre. A **UserMessageIfClaimsTransformationInvalidPhoneNumber** önérvényesített technikai profil metaadatai a felhasználónak megjelenített hibaüzenetet vezérlik.
@@ -44,7 +45,8 @@ A jogcím-átalakítással ellenőrizheti, hogy a megadott karakterlánc-jogcím
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Példa
+### <a name="example-1"></a>1\. példa
 
 - Bemeneti jogcímek:
-  - **inputClaim**: + 1 (123) 456-7890
+  - **phoneNumberString**: 045 456-7890
+  - **ország**: DK
 - Kimeneti jogcímek:
+  - **outputClaim**: + 450546148120
+
+### <a name="example-2"></a>2\. példa
+
+- Bemeneti jogcímek:
+  - **phoneNumberString**: + 1 (123) 456-7890
+- Kimeneti jogcímek: 
   - **outputClaim**: + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString

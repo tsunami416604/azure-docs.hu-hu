@@ -1,14 +1,14 @@
 ---
-title: Ajánlott sablontervezési eljárások
+title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484245"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207485"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager sablon – ajánlott eljárások
 
@@ -156,7 +156,7 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 
 * Adja meg azokat az erőforrásnevek változóit, amelyeknek egyedinek kell lenniük.
 
-* Használjon egy [másolási hurkot a változók között](create-multiple-instances.md#variable-iteration) , hogy ismétlődő JSON-objektumokat hozzon létre.
+* Használjon egy [másolási hurkot a változók között](copy-variables.md) , hogy ismétlődő JSON-objektumokat hozzon létre.
 
 * Távolítsa el a nem használt változókat.
 
@@ -174,7 +174,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>Segédanyagok és eszközök
+## <a name="resources"></a>További források
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 

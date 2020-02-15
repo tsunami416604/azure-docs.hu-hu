@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718091"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210575"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezet-fiókok konfigurálása Azure Lab Services 
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
@@ -37,18 +37,6 @@ Ha egy virtuális hálózatot egyenrangú hálózatként szeretne csatlakozni a 
 Az ebben a fiókban létrehozott laborok a kiválasztott virtuális hálózathoz csatlakoznak. Hozzáférhetnek a kiválasztott virtuális hálózatban lévő erőforrásokhoz. További információ: [a tesztkörnyezet hálózatának összekötése egy társ virtuális hálózattal Azure Lab Servicesban](how-to-connect-peer-virtual-network.md).
 
 Ha kijelöl egy virtuális hálózatot a **társ virtuális hálózat** mezőhöz, akkor a **tesztkörnyezet-létrehozó engedélyezése a laborban hely** beállítás le van tiltva. Ez azért van, mert a labor-fiókban lévő laboroknak ugyanabban a régióban kell lenniük, mint a társ virtuális hálózatban lévő erőforrásokhoz való kapcsolódáshoz. 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>A labor Creator számára a tesztkörnyezet helyének kiválasztása
-Az alábbi lépéseket követve engedélyezheti a labor Creator számára, hogy a labor-fiók helyétől eltérő helyen hozza létre a laborokat: 
-
-1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-konfiguráció** elemét.
-2. Ahhoz, hogy a labor létrehozója kiválassza a **labor helyét**, válassza az **engedélyezve** lehetőséget, ha azt szeretné, hogy a labor létrehozója ki tudja választani a tesztkörnyezet helyét. Ha a szolgáltatás le van tiltva, a rendszer automatikusan létrehozza a laborokat ugyanazon a helyen, ahol a labor-fiók létezik. 
-    
-    Ez a mező le van tiltva, amikor kiválaszt egy virtuális hálózatot a **társ virtuális hálózat** mezőhöz. Ez azért van, mert a labor-fiókban lévő laboroknak ugyanabban a régióban kell lenniük, mint a társ virtuális hálózat erőforrásaihoz való hozzáféréshez. 
-1. Válassza az eszköztár **Save** (Mentés) elemét. 
-
-    ![Tesztkörnyezet helyének beállítása](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Címtartomány megadása a virtuális gépek számára a tesztkörnyezetben
 A következő eljárás a virtuális gépekhez tartozó címtartomány megadásának lépéseit írja le a laborban. Ha frissíti a korábban megadott tartományt, a módosított címtartomány csak a módosítás után létrehozott virtuális gépekre vonatkozik. 

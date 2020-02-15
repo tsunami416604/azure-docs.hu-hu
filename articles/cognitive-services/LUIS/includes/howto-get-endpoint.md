@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 39bfa5b6800c65112850faa8842b915ceedb9312
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5b1b361778de145a5e32a07bb0164ff2293d9a1a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648278"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279739"
 ---
-A **kezelés** szakaszban (a jobb felső menüben) az Azure- **erőforrások** lapon (bal oldali menü) másolja a **példaként szolgáló lekérdezési** URL-címet, majd illessze be az új böngésző lapra. 
+A **kezelés** szakaszban (a jobb felső menüben) az Azure- **erőforrások** lapon (bal oldali menü) másolja a **példaként szolgáló lekérdezési** URL-címet, majd illessze be az új böngésző lapra.
 
 A végpont URL-címének formátuma a következő, a saját alkalmazás-azonosító és a végpont kulcsa pedig az APP-ID és a KEY-ID azonosítóját váltja ki:
 

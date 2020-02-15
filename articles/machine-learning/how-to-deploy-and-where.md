@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083237"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210499"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) dokumentáció.
+
+### <a name="understanding-service-state"></a>A szolgáltatás állapotának ismertetése
+
+A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megváltozik a teljes üzembe helyezése során.
+
+Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
+
+| Webszolgáltatás állapota | Leírás | Végső állapot?
+| ----- | ----- | ----- |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 ### <a id="notebookvm"></a>Számítási példány webszolgáltatás (dev/test)
 

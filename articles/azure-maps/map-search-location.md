@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 08d9245201a8e0899d47847eb10dcdff3c0d8d16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984676"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209647"
 ---
 # <a name="show-search-results-on-the-map"></a>Keresési eredmények megjelenítése a térképen
 
@@ -37,7 +37,7 @@ A negyedik kódú blokk a [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.se
 
 A kód utolsó blokkja a Térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával módosítja a térképhez tartozó kamera-határokat.
 
-A keresési kérelem, az adatforrás, a szimbólum és a kamera határai a Térkép kész [eseményének figyelőján](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)belül találhatók. Szeretnénk biztosítani, hogy az eredmények a Térkép teljes betöltése után megjelenjenek.
+A keresési kérelem, az adatforrás, a szimbólum réteg és a kamera határai a Térkép [esemény-figyelőján](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) belül találhatók. Szeretnénk biztosítani, hogy az eredmények a Térkép teljes betöltése után megjelenjenek.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Keresési kérelem készítése a fetch API használatával

@@ -3,12 +3,12 @@ title: Sablon functions – erőforrások
 description: A funkciók az Azure Resource Manager-sablon használatával lekérheti az erőforrásokra vonatkozó értékeket ismerteti.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120542"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207008"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -124,7 +124,7 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
-A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](create-multiple-instances.md#property-iteration)használ, használhatja a `input` listázása funkciót, mert a kifejezés hozzá van rendelve az erőforrás-tulajdonsághoz. Ezeket nem használhatja `count`, mert a Count meghatározása előtt meg kell határozni a darabszámot.
+A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a `input` listázása funkciót, mert a kifejezés hozzá van rendelve az erőforrás-tulajdonsághoz. Ezeket nem használhatja `count`, mert a Count meghatározása előtt meg kell határozni a darabszámot.
 
 ### <a name="implementations"></a>Megvalósítások
 
@@ -496,7 +496,7 @@ Akkor használja a `'Full'`, ha olyan erőforrás-értékekre van szüksége, am
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
-A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Ha tulajdonság- [iterációt](create-multiple-instances.md#property-iteration)használ, használhatja a `input` hivatkozási függvényét, mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. A `count` nem használható, mert a számnak meg kell határoznia a hivatkozási függvény feloldása előtt.
+A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a `input` hivatkozási függvényét, mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. A `count` nem használható, mert a számnak meg kell határoznia a hivatkozási függvény feloldása előtt.
 
 A [beágyazott](linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](linked-templates.md#linked-template).
 
@@ -758,7 +758,7 @@ Adja vissza egy adott erőforrás egyedi azonosítója. A függvény akkor haszn
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, amikor szüksége van egy másik előfizetésben egy erőforrás lekérése. |
+| subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, amikor szüksége van egy másik előfizetésben egy erőforrás lekérése. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
 | resourceGroupName |Nem |sztring |Alapértelmezett érték az aktuális erőforráscsoportban. Adja meg ezt az értéket, amikor szüksége van egy másik erőforráscsoportban található egy erőforrás lekérése. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
 | resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
 | resourceName1 |Igen |sztring |Erőforrás neve. |
@@ -1064,6 +1064,6 @@ Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforr
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](create-multiple-instances.md)című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
 * A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
 

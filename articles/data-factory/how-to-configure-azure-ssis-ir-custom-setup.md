@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187712"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251974"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -121,8 +121,12 @@ A Azure-SSIS IR testreszabásához a következő elemek szükségesek:
 
      * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. ](https://hedda.io/ssis-component/)A szolgáltatás megvásárlása után IO-adatminőség/-tisztító összetevő a Azure-SSIS IR oh22. Az aktuálisan integrált verzió a **1.0.13**.
 
-      * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.43**.
-   
+     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.43**.
+
+     * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing-felhő stb Azure-SSIS IR. számára, és a **licenc kulcs** mezőjébe írja be a számukra megvásárolt termékkulcsot. Az aktuálisan integrált verzió a **2019,2**.
+
+     * Ha a **KINGSWAYSOFT SSIS Productivity Pack** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagját](https://www.kingswaysoft.com/products/ssis-productivity-pack) telepítheti a Azure-SSIS IR a KingswaySoft-ből a **licenc kulcs** mezőjébe, ha beírja a tőlük vásárolt termékkulcsot. Az aktuálisan integrált verzió a **10,0**.
+
    A hozzáadott expressz egyéni telepítések a **Speciális beállítások** szakaszban fognak megjelenni. Ha el szeretné távolítani őket, jelölje be a jelölőnégyzeteket, majd válassza a **Törlés**lehetőséget.
 
    ![Speciális beállítások egyéni telepítésekkel](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

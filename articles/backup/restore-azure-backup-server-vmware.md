@@ -3,12 +3,12 @@ title: VMware virtuális gépek visszaállítása az Azure Backup Server haszná
 description: A VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek visszaállításához használja a Azure Backup Server (MABS) szolgáltatást.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: 7c93c3100d8756fd9faf8cf02152a870bd0c106c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171920"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212357"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware virtuális gépek visszaállítása
 
@@ -52,24 +52,28 @@ Ez a cikk bemutatja, hogyan állíthatja vissza a VMware virtuális gépek helyr
 
 A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja az egyes fájlokat. Ez a funkció csak Windows Server rendszerű virtuális gépek esetén érhető el. Az egyes fájlok visszaállítása hasonló a teljes virtuális gép visszaállításához, kivéve, ha a VMDK navigál, és a kívánt fájl (oka) t keresi a helyreállítási folyamat elindítása előtt. Egyéni fájl helyreállítása vagy Windows Server rendszerű virtuális gépről származó fájlok kiválasztása:
 
+>[!NOTE]
+>Egy különálló fájl virtuális gépről való visszaállítása csak a Windows rendszerű virtuális gépek és a lemezes helyreállítási pontok esetében érhető el.
+
 1. A MABS felügyeleti konzol kattintson a **helyreállítási** nézet elemre.
 
 2. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a helyreállítási pontok ablaktáblán megjelennek a rendelkezésre álló helyreállítási pontok.
 
-    ![Rendelkezésre álló helyreállítási pontok](./media/restore-azure-backup-server-vmware/recovery-points.png)
+    ![Rendelkezésre álló helyreállítási pontok](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
 3. A **helyreállítási pontok:** ablaktáblán a naptár használatával válassza ki a kívánt helyreállítási pont (ok) t tartalmazó dátumot. A biztonsági mentési házirend konfigurálásának módjától függően a dátumok több helyreállítási ponttal is rendelkezhetnek. Miután kiválasztotta a helyreállítási pont készítésének napját, győződjön meg arról, hogy a megfelelő **helyreállítási időt**választotta. Ha a kiválasztott dátum több helyreállítási ponttal rendelkezik, válassza ki a helyreállítási pontot a helyreállítási idő legördülő menüben. Miután kiválasztotta a helyreállítási pontot, megjelenik a helyreállítható elemek listája az **elérési út:** ablaktáblán.
 
 4. A visszaállítani kívánt fájlok megkereséséhez az **elérési út** ablaktáblán kattintson duplán a helyreállítható **elem** oszlopban található elemre a megnyitásához. Válassza ki a helyreállítani kívánt fájlt, fájlokat vagy mappákat. Több elem kiválasztásához nyomja le a **CTRL** billentyűt az egyes elemek kiválasztásakor. Az **elérési út** ablaktáblán keresse meg a **helyreállítható elem** oszlopban megjelenő fájlok vagy mappák listáját. Az **alábbi keresési lista** nem keres almappákban. Az almappákban való kereséshez kattintson duplán a mappára. A **fel** gomb használatával lépjen át egy alárendelt mappából a szülőmappa mappájába. Több elemet is kijelölhet (fájlok és mappák), de ugyanabban a szülő mappában kell lenniük. Ugyanabban a helyreállítási feladatokban nem állíthatók helyre több mappából származó elemek.
 
+    ![Visszaállítási kijelölés áttekintése](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
+
 5. Ha kiválasztotta az elem (eke) t a helyreállításhoz, a felügyeleti konzol eszköz menüszalagján kattintson **a helyreállítás gombra** a **helyreállítási varázsló**megnyitásához. A helyreállítási varázslóban a helyreállítási beállítások **áttekintése** képernyő megjeleníti a helyreállítandó kijelölt elemeket.
-    ![a helyreállítás kijelölésének áttekintése](./media/restore-azure-backup-server-vmware/review-recovery.png)
 
 6. A **helyreállítási beállítások megadása** képernyőn, ha engedélyezni szeretné a hálózati sávszélesség szabályozását, kattintson a **módosítás**gombra. A hálózati sávszélesség-szabályozás letiltásához kattintson a **tovább**gombra. A varázsló ezen képernyőjén nem érhetők el más beállítások a VMware virtuális gépekhez. Ha úgy dönt, hogy módosítja a hálózati sávszélesség szabályozását, a szabályozás párbeszédpanelen válassza a **hálózati sávszélesség-használat szabályozásának engedélyezése** lehetőséget a beállítás bekapcsolásához. Ha engedélyezve van, konfigurálja a **beállításokat** és a **munkatervet**.
 7. A **helyreállítási típus kiválasztása** képernyőn kattintson a **tovább**gombra. A fájl (ok) vagy mappa (ok) csak a hálózati mappába állíthatók helyre.
 8. A **cél megadása** képernyőn kattintson a **Tallózás** gombra a fájlok vagy mappák hálózati helyének megkereséséhez. A MABS létrehoz egy mappát, ahol az összes helyreállított elem másolása történik. A Mappanév az előtaggal, MABS_day-hónaptal rendelkezik. Ha kijelöl egy helyet a helyreállított fájlokhoz vagy mappához, a rendszer megadja a hely részleteit (a célhely, a célhely elérési útja és a rendelkezésre álló terület).
 
-       ![Specify location to recover files](./media/restore-azure-backup-server-vmware/specify-destination.png)
+    ![A fájlok visszaállítási helyének meghatározása](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
 9. A **helyreállítási beállítások megadása** képernyőn válassza ki, hogy melyik biztonsági beállítást kívánja alkalmazni. Dönthet úgy, hogy módosítja a hálózati sávszélesség-használat szabályozását, de alapértelmezés szerint le van tiltva a szabályozás. Továbbá a **Tárolóhálózati helyreállítás** és az **értesítés** nincs engedélyezve.
 10. Az **Összefoglalás** képernyőn tekintse át a beállításokat, majd **kattintson a helyreállítás** elemre a helyreállítási folyamat elindításához. A **helyreállítás állapota** képernyőn a helyreállítási művelet előrehaladása látható.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910005"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251838"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -20,14 +20,14 @@ Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-c
 
 Az egyik lehetőség az, hogy a különböző típusú tartalmakra vonatkozó kéréseket a megfelelő háttér-kiszolgálókészlethez irányítja.
 
-A következő példában a Application Gateway a három háttér-contoso.com származó forgalmat szolgálja ki, például: VideoServerPool, ImageServerPool és DefaultServerPool.
+Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja ki a VideoServerPool, az ImageServerPool és a DefaultServerPool háttér-kiszolgálókészlettel.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A http\://contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool\:, a http//contoso.com/images/* pedig a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http-\://contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool, és a http-\://contoso.com/images/* a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
-> A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
+> A v1 SKU esetében a szabályok a portálon felsorolt sorrendben lesznek feldolgozva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Azonban javasoljuk, hogy először konfigurálja a többhelyes figyelőket az alapszintű figyelő konfigurálása előtt. Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva.
 
 ## <a name="urlpathmap-configuration-element"></a>Az UrlPathMap konfigurációs elem
 
@@ -121,6 +121,6 @@ A PathBasedRouting szabály kódrészlete:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](create-url-route-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag üzembe helyezése egy meglévő virtuális hálózatban az Azure CLI használatával – Azure dedikált HSM | Microsoft Docs
-description: Oktatóanyag, amely bemutatja, hogyan helyezhet üzembe egy dedikált HSM-t a CLI használatával egy meglévő virtuális hálózatban
+title: Az oktatóanyag egy meglévő virtuális hálózatot az Azure CLI - Azure dedikált HSM használatával üzembe helyezése |} A Microsoft Docs
+description: 'Oktatóanyag: hogyan kell telepíteni a parancssori felület használatával a meglévő virtuális hálózatban egy dedikált HSM'
 services: dedicated-hsm
 documentationcenter: na
 author: msmbaldwin
@@ -13,49 +13,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e3bddef75bcf41b8c7a4d9693b622429130217
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4750673eb60529d812e4df71de9203d4d59a0cc9
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930468"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212259"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM üzembe helyezése meglévő virtuális hálózaton a parancssori felület használatával
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM-EK telepítése egy meglévő virtuális hálózatban, CLI-vel
 
-Az Azure dedikált HSM egy fizikai eszközt biztosít az egyéni felhasználók számára, teljes körű felügyeleti felügyelettel és teljes körű felügyelettel. A fizikai eszközök használata azt a követelményt hozza létre a Microsoft számára, hogy felügyelje az eszközök kiosztását, hogy a kapacitás hatékonyan kezelhető legyen. Ennek eredményeképpen az Azure-előfizetésen belül a dedikált HSM szolgáltatás általában nem jelenik meg az erőforrás-kiépítés során. A dedikált HSM szolgáltatáshoz hozzáférést igénylő Azure-ügyfeleknek először kapcsolatba kell lépniük a Microsoft-fiók Executive-vel, hogy a dedikált HSM szolgáltatás regisztrációját kérhetik. Csak a folyamat sikeres befejezését követően lehet kiépíteni. 
+Az Azure, a dedikált HSM biztosít egy fizikai eszköz az egyetlen ügyfél szolgáltatással, teljes körű rendszergazdai felügyeletet és a teljes felügyeleti feladata. Fizikai eszközök használata szükséges a Microsoft szabályozhatók az eszközök foglalási kapacitás hatékonyan felügyelt hoz létre. Ennek eredményeképpen egy Azure-előfizetésen belül a dedikált HSM-szolgáltatást nem általában lesz látható az erőforrás-kiépítés. A dedikált HSM szolgáltatáshoz való hozzáférést igénylő bármely Azure-ügyfél először kapcsolatba kell lépnie a kérelem regisztráció a Microsoft fiókért a dedikált HSM-szolgáltatás. Csak egyszer, a folyamat sikeresen befejeződött-kiépítés nem lehetséges. 
 
-Ez az oktatóanyag egy tipikus kiépítési folyamatot mutat be, ahol:
+Ez az oktatóanyag bemutatja egy tipikus kiépítési folyamat ahol:
 
-- Az ügyfél már rendelkezik egy virtuális hálózattal
-- Virtuális géppel rendelkeznek
-- A meglévő környezetbe hozzá kell adni a HSM-erőforrásokat.
+- Egy ügyfél már rendelkezik egy virtuális hálózatot
+- A virtuális gépek rendelkeznek
+- HSM-erőforrások hozzáadása a meglévő környezetben van szükségük.
 
-Egy tipikus, magas rendelkezésre állású, több régióból álló üzembe helyezési architektúra a következőképpen nézhet ki:
+Egy tipikus, magas rendelkezésre állású, több régióban történő üzembe helyezés architektúrája előfordulhat, hogy hasonlítania:
 
-![többrégiós üzembe helyezés](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
+![Több régióban történő üzembe helyezés](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
 
-Ez az oktatóanyag egy HSM és kötelező ExpressRoute-átjáróra koncentrál (lásd a fenti 1. alhálózatot) egy meglévő virtuális hálózatba (lásd a fenti 1. VNET).  Minden más erőforrás szabványos Azure-erőforrások. Ugyanez az integrációs folyamat a 4. alhálózatban található HSM is használható a fenti 3. VNET.
+Ebben az oktatóanyagban a HSM-EK párjai összpontosít, és a szükséges ExpressRoute-átjárót (lásd a fenti Subnet-1) történő integrálását egy meglévő virtuális hálózati (lásd a fenti 1 virtuális hálózat).  Minden egyéb erőforrás Azure-erőforrások. Integráció eljárást 4-alhálózatot a virtuális hálózatok közötti 3 fenti HSM-eket is használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban. A szolgáltatással való interakció a parancssoron keresztül vagy a PowerShell használatával történik. Ez az oktatóanyag a parancssori (CLI) felületet fogja használni a Azure Cloud Shell. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon. A szolgáltatás való minden interakció parancssori vagy a Powershellen keresztül lesz. Ebben az oktatóanyagban a parancssori felület (CLI) az Azure Cloud Shell fogja használni. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-Előfeltevésekbe
+Előfeltételek:
 
-- Elvégezte az Azure dedikált HSM regisztrációs folyamatát
-- Ön jóváhagyta a szolgáltatás használatát. Ha nem, a részletekért forduljon a Microsoft-fiók képviselőjéhez.
-- Ehhez az erőforráshoz létrehozott egy erőforráscsoportot, és az ebben az oktatóanyagban üzembe helyezett új eszközök csatlakoznak ehhez a csoporthoz.
-- Már létrehozta a szükséges virtuális hálózatot, alhálózatot és virtuális gépeket a fenti ábrán látható módon, és most integrálni szeretné a 2 HSM az adott üzembe helyezésbe.
+- Ha befejezte az Azure dedikált HSM-regisztrációs folyamathoz
+- A szolgáltatás már engedélyezett. Ha nem, részletekért forduljon a Microsoft-fiók kapcsolattartójához.
+- Hozott létre egy erőforráscsoportot, ezekhez az erőforrásokhoz, és ebben az oktatóanyagban üzembe helyezett újakat csatlakozni fog az adott csoporthoz.
+- Már létrehozta a szükséges virtuális hálózat, alhálózat és virtuális gépek megfelelően a fenti ábrán, és most alkalmazásaiba kívánják integrálni 2 HSM-EK a telepítés.
 
 Az alábbi utasítások feltételezik, hogy már elindította a Azure Portal, és megnyitotta a Cloud Shellt (a portál jobb felső részén válassza a "\>\_" lehetőséget).
 
-## <a name="provisioning-a-dedicated-hsm"></a>Dedikált HSM kiépítés
+## <a name="provisioning-a-dedicated-hsm"></a>A dedikált HSM-kiépítés
 
-A HSM kiépítése és a meglévő virtuális hálózatba való integrálása a ExpressRoute-átjárón keresztül történik az SSH-val. Ez az ellenőrzés segít biztosítani a HSM-eszköz elérhetőségét és alapszintű rendelkezésre állását minden további konfigurációs tevékenységhez. A következő parancsok egy Azure Resource Manager sablont használnak a HSM-erőforrások és a társított hálózati erőforrások létrehozásához.
+HSM-EK kiépítése, és integrálja az ExpressRoute-átjárót egy meglévő virtuális hálózatban érvényesíti az ssh használata. Az érvényesítés biztosítja, hogy a lemezekről és a HSM eszközt, további konfigurációs tevékenységek alapszintű rendelkezésre állását. A következő parancsokat egy Azure Resource Manager-sablon használatával hozza létre a HSM-erőforrások és a kapcsolódó hálózati erőforrások.
 
-### <a name="validating-feature-registration"></a>Szolgáltatás regisztrációjának ellenőrzése
+### <a name="validating-feature-registration"></a>A funkció regisztrálásának ellenőrzése
 
-A fentiekben leírtaknak megfelelően a kiépítési tevékenységekhez a dedikált HSM szolgáltatás regisztrálása szükséges az előfizetéséhez. Ennek ellenőrzéséhez futtassa a következő parancsokat a Azure Portal Cloud shellben.
+Mint már említettük, a kiépítési tevékenység, hogy a dedikált HSM szolgáltatás regisztrálva van-e az előfizetés szükséges. Ellenőrizze, hogy, a portál Azure cloud shellben futtassa a következő parancsokat.
 
 ```azurecli
 az feature show \
@@ -63,7 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-A következő parancs ellenőrzi a dedikált HSM szolgáltatáshoz szükséges hálózatkezelési funkciókat.
+A következő parancs ellenőrzi a hálózatkezelési szolgáltatásokat, a dedikált HSM-szolgáltatás szükséges.
 
 ```azurecli
 az feature show \
@@ -71,15 +71,15 @@ az feature show \
    --name AllowBaremetalServers
 ```
 
-Mindkét parancsnak "regisztrált" állapotot kell visszaadnia (az alább látható módon). Ha a parancsok nem adnak vissza "regisztrált" értéket a szolgáltatáshoz való regisztrációhoz, forduljon a Microsoft-fiók képviselőjéhez.
+Mindkét parancsot egy "Regisztrálva" állapotát adja vissza (ahogy az alább látható). Ha a parancsok nem ad vissza "Regisztrálva" szeretne regisztrálni ezt a szolgáltatást, forduljon a Microsoft-ügyfélmenedzserhez.
 
 ![előfizetés állapota](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM-erőforrások létrehozása
 
-A HSM üzembe helyezése egy ügyfél virtuális hálózatában történik, így a virtuális hálózat és az alhálózat szükséges. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok elérhetőségét közvetlenül a Microsofttól HSMrequest@Microsoft.com.
+Egy HSM-be egy ügyfelei virtuális hálózatban van kiépítve, ezért szükség egy virtuális hálózatot és alhálózatot. A HSM-hez a virtuális hálózat és a fizikai eszköz közötti kommunikáció engedélyezéséhez felvettek egy ExpressRoute-átjárót, és végül egy virtuális gépet a HSM eszközt az Gemalto ügyfélszoftverrel eléréséhez szükséges. Ezeket az erőforrásokat egy sablon fájlt, a kapcsolódó alkalmazásparaméter-fájlt, a használat megkönnyítése érdekében történő összegyűjtése. A fájlok elérhetőségét közvetlenül a Microsofttól HSMrequest@Microsoft.com.
 
-Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Sorok szerkesztése a "value": "" értékkel.
+Miután a fájlokat, szerkesztenie kell a alkalmazásparaméter-fájlt az előnyben részesített nevét erőforrásokhoz beszúrásához. A "value" sorok szerkesztése: "".
 
 - a HSM-erőforrások neveinek `namingInfix` előtagja
 - a HSM használt virtuális hálózat `ExistingVirtualNetworkName` neve
@@ -88,7 +88,7 @@ Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, ho
 - Alhálózat IP-címtartomány `hsmSubnetRange` HSM
 - Alhálózat IP-címtartomány `ERSubnetRange` a VNET-átjáróhoz
 
-Ilyen változások például a következők:
+Ezek a változások, például a következőképpen történik:
 
 ```json
 {
@@ -117,22 +117,22 @@ Ilyen változások például a következők:
 }
 ```
 
-A társított Azure Resource Manager sablonfájl 6 erőforrást hoz létre a következő információkkal:
+A társított Azure Resource Manager-sablonfájl 6 erőforrásokat hozza létre ezt az információt:
 
-- A megadott VNET lévő HSM alhálózata
-- A virtuális hálózati átjáró alhálózata
-- Egy virtuális hálózati átjáró, amely a VNET csatlakoztatja a HSM-eszközökhöz
-- Az átjáróhoz tartozó nyilvános IP-cím
-- Egy HSM az 1. stampben
-- Egy HSM a 2. stampben
+- A HSM-eket a megadott virtuális hálózat alhálózat
+- A virtuális hálózati átjáró-alhálózat
+- A hardveres biztonsági modulokhoz a virtuális hálózathoz csatlakozó virtuális hálózati átjáró
+- Az átjáró nyilvános IP-cím
+- A stamp 1 HSM
+- A stamp 2 HSM
 
-A paraméterek beállítása után a fájlokat fel kell tölteni Azure Portal Cloud Shell-fájlmegosztás használatára. A Azure Portal kattintson a jobb felső sarokban található "\>\_" Cloud Shell szimbólumra, így a képernyő alsó részén egy parancssori környezet jelenik meg. Az ehhez tartozó beállítások a BASH és a PowerShell, és ha még nincs beállítva, válassza a BASH lehetőséget.
+Miután beállította a paraméterértékeket, a fájlokat fel kell tölteni a portál Azure cloud shell-megosztás használatra kell. A Azure Portal kattintson a jobb felső sarokban található "\>\_" Cloud Shell szimbólumra, így a képernyő alsó részén egy parancssori környezet jelenik meg. A beállítások a BASH és a PowerShell, és meg kell BASH válassza, ha nem már be van állítva.
 
-A parancs rendszerhéjának feltöltési/letöltési lehetősége van az eszköztáron, és ezt a beállítást kell választania a sablon és a paraméter fájljainak a fájlmegosztás számára való feltöltéséhez:
+A parancs-rendszerhéj elemre az eszköztárban feltöltési/letöltési lehetősége van, és ezzel a sablonnal és paraméterfájlokkal fájlok feltöltése a fájlmegosztás választhat:
 
 ![fájlmegosztás](media/tutorial-deploy-hsm-cli/file-share.png)
 
-A fájlok feltöltése után készen áll arra, hogy erőforrásokat hozzon létre. Az új HSM-erőforrások létrehozása előtt meg kell győződnie néhány előfeltételt jelentő erőforrásról. A számítási, a HSM és az átjáróhoz tartozó alhálózati tartományokkal rendelkező virtuális hálózatnak kell lennie. Az alábbi parancsok példaként szolgálnak a virtuális hálózat létrehozásához.
+A fájlok feltöltése után készen áll az erőforrások létrehozásához. Új HSM létrehozása előtt biztosítania kell néhány előfeltételként erőforrás erőforrások érvényben vannak. Számítási, a HSM-EK és az átjáró-alhálózat címtartományai rendelkező virtuális hálózaton kell rendelkeznie. A következő parancsokat szolgálja ki, mit kell létrehoznia egy virtuális hálózat egy példa.
 
 ```azurecli
 az network vnet create \
@@ -160,9 +160,9 @@ az network vnet subnet create \
 ```
 
 >[!NOTE]
->A virtuális hálózatra vonatkozó legfontosabb konfiguráció, hogy a HSM-eszköz alhálózatának delegálással kell rendelkeznie a "Microsoft. HardwareSecurityModules/dedicatedHSMs" értékre.  A HSM-kiépítés nem fog működni anélkül, hogy ez a beállítás be legyen állítva.
+>Vegye figyelembe a virtuális hálózathoz, a legfontosabb konfigurációs, hogy az IP-alhálózatot a HSM eszközt kell rendelkeznie a delegálásokat "Microsoft.HardwareSecurityModules/dedicatedHSMs" értékre.  A HSM-kiépítés nélkül nem fog működni a beállítás folyamatban van.
 
-Ha az összes előfeltétel teljesült, futtassa a következő parancsot a Azure Resource Manager sablon használatához, hogy az egyedi nevekkel (legalább az erőforráscsoport nevével) frissítette az értékeket:
+Miután teljesüljenek érvényesítve van, futtassa a következő parancsot annak biztosítása, az egyedi névvel ellátott értékek frissítése az Azure Resource Manager-sablon használata (legalább az erőforráscsoport neve):
 
 ```azurecli
 az group deployment create \
@@ -173,15 +173,15 @@ az group deployment create \
    --verbose
 ```
 
-Az üzemelő példány körülbelül 25 – 30 percet vesz igénybe, hogy a HSM-eszközök az adott idő nagy részével befejeződjön
+A telepítés körülbelül 25 – 30 percet az adott idő alatt a hardveres biztonsági modulokhoz tömeges megtétele
 
-![Kiépítési állapot](media/tutorial-deploy-hsm-cli/progress-status.png)
+![kiépítési állapot](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Ha az üzembe helyezés sikeresen befejeződött, a "provisioningState": "sikeres" üzenet jelenik meg. Csatlakozhat a meglévő virtuális géphez, és az SSH használatával biztosíthatja a HSM-eszköz rendelkezésre állását.
+Amikor befejeződik az üzembe helyezés sikerült "provisioningState": "Sikeres" jelennek meg. Csatlakozás a meglévő virtuális géphez, és az SSH használata a HSM eszközt rendelkezésre állásának biztosításához.
 
-## <a name="verifying-the-deployment"></a>A központi telepítés ellenőrzése
+## <a name="verifying-the-deployment"></a>A telepítés ellenőrzése
 
-Az eszközök kiépített állapotának ellenőrzéséhez és az eszköz attribútumainak megtekintéséhez futtassa a következő parancsot. Győződjön meg arról, hogy az erőforráscsoport megfelelően van beállítva, és az erőforrás neve pontosan megegyezik a paraméter fájljával.
+Az eszközök vannak kiépítve, és tekintse meg az eszköz attribútumait ellenőrzéséhez futtassa a következő parancsot. Győződjön meg arról, megfelelően van-e állítva az erőforráscsoportot, és az erőforrás neve pontosan, ahogy a paraméterfájlban rendelkezik.
 
 ```azurecli
 subid=$(az account show --query id --output tsv)
@@ -191,61 +191,54 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![kiépítés kimenete](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![regisztrációs kimenet](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
-Ekkor az [Azure Resource Explorer](https://resources.azure.com/)használatával is megtekintheti az erőforrásokat.   Egyszer a Explorerben bontsa ki az "előfizetések" elemet a bal oldalon, bontsa ki a dedikált HSM-hez tartozó előfizetést, bontsa ki az "erőforráscsoportok" csomópontot, bontsa ki a használt erőforráscsoportot, és végül válassza ki az "erőforrások" elemet.
+Ekkor az [Azure Resource Explorer](https://resources.azure.com/)használatával is megtekintheti az erőforrásokat.   Egyszer az a Explorerben bontsa ki a bal oldali "előfizetések", bontsa ki az adott dedikált HSM-előfizetést, bontsa ki a "erőforráscsoportok", bontsa ki a használt erőforráscsoportot, és végül válassza ki a "resources" elemet.
 
 ## <a name="testing-the-deployment"></a>A központi telepítés tesztelése
 
-Az üzembe helyezés tesztelése olyan virtuális géphez való csatlakozás, amely hozzáférhet a HSM-hez, majd közvetlenül a HSM-eszközhöz csatlakozik. Ezek a műveletek megerősítik, hogy a HSM elérhető.
-Az SSH-eszköz a virtuális géphez való kapcsolódásra szolgál. A parancs a következőhöz hasonló lesz, de a paraméterben megadott rendszergazdai névvel és DNS-névvel.
+A telepítés tesztelésére egy virtuális gépet, amely hozzáférhet a HSM(s) csatlakozik, majd közvetlenül a HSM eszközt csatlakozzon egy esetet. Ezek a műveletek megerősíti a HSM érhető el.
+Az ssh eszköz segítségével csatlakozzon a virtuális géphez. A parancs a következőhöz hasonló lesz, de a rendszergazda nevét és a dns-név, paraméterben megadott.
 
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
-A virtuális gép IP-címe a DNS-név helyett is használható a fenti parancsban. Ha a parancs sikeres, a rendszer kérni fogja a jelszót, és adja meg a következőt:. Miután bejelentkezett a virtuális gépre, bejelentkezhet a HSM-be a HSM-hez társított hálózati adapter-erőforráshoz tartozó privát IP-cím használatával.
+A virtuális gép IP-címe felhasználható helyett a DNS-név, a fenti parancsban is. A parancs végrehajtása sikeres, ha a rendszer jelszót kér, és meg kell adnia, amely. Miután bejelentkezett a virtuális gép, bejelentkezhet a HSM-be a portálon, a HSM társított hálózati adapter erőforrás található privát IP-cím használatával.
 
-![összetevők listája](media/tutorial-deploy-hsm-cli/resources.png)
+![összetevőinek listája](media/tutorial-deploy-hsm-cli/resources.png)
 
 >[!NOTE]
->Figyelje meg a "rejtett típusok megjelenítése" jelölőnégyzetet, amely akkor jelenik meg, ha a kijelöléskor a HSM-erőforrások jelennek meg.
+>Figyelje meg, hogy a "Show rejtett típusok" jelölőnégyzetet, amikor lesz kiválasztva HSM erőforrások megjelenítéséhez.
 
-A fenti képernyőképen a "HSM1_HSMnic" vagy a "HSM2_HSMnic" elemre kattintva megjelenik a megfelelő magánhálózati IP-cím. Ellenkező esetben a fent használt `az resource show` parancs a megfelelő IP-cím azonosítására szolgál. 
+A fenti képernyőképen kattintson a "HSM1_HSMnic" vagy "HSM2_HSMnic" jelenik meg a megfelelő magánhálózati IP-címet. Ellenkező esetben a fent használt `az resource show` parancs a megfelelő IP-cím azonosítására szolgál. 
 
-Ha a megfelelő IP-címmel rendelkezik, futtassa a következő parancsot a cím behelyettesítésével:
+Ha rendelkezik a megfelelő IP-címet, futtassa a következő parancsot, és cserélje le ezt a címet:
 
 `ssh tenantadmin@10.0.2.4`
 
-Ha a művelet sikeres, a rendszer jelszót kér. Az alapértelmezett jelszó jelszó, és a HSM először megkéri, hogy változtassa meg a jelszavát, hogy erős jelszót állítson be, és használja a szervezete által előnyben részesített bármely mechanizmust a jelszó tárolásához és a veszteség elkerüléséhez.
+Ha sikeres kéri a jelszót. Az alapértelmezett jelszót pedig a JELSZÓT, és a hardveres biztonsági MODULT először megkérdezi, hogy a jelszó módosítása tehát egy erős jelszót, ha a szervezet részesíti előnyben a jelszó tárolásához és az adatvesztés elkerülése érdekében mechanizmus.
 
 >[!IMPORTANT]
->ha elveszíti ezt a jelszót, a HSM alaphelyzetbe kell állítani, és ez a kulcs elvesztését jelenti.
+>Ha elveszíti a ezt a jelszót, a hardveres biztonsági MODULT kell állítani, és azt jelenti, hogy elveszítenék a kulcsokat.
 
-Ha SSH-val csatlakozik a HSM-hez, futtassa a következő parancsot a HSM működésének biztosításához.
+A HSM-be az ssh használata csatlakoztatott, futtassa a következő parancsot annak biztosítására, hogy működik a hardveres biztonsági MODULT.
 
 `hsm show`
 
 A kimenetnek az alábbi képen látható módon kell kinéznie:
 
-![összetevők listája](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
+![összetevőinek listája](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-Ezen a ponton az összes erőforrást lefoglalta egy nagy rendelkezésre állású, két HSM üzembe helyezési és érvényesített hozzáférés és működési állapot számára. Minden további konfiguráció vagy tesztelés több munkát is magában foglal a HSM-eszközzel. Ehhez kövesse a Gemalto Luna hálózati HSM 7 felügyeleti útmutató 7. fejezetének utasításait a HSM inicializálásához és a partíciók létrehozásához. Az összes dokumentáció és szoftver közvetlenül a Gemalto érhető el, ha a Gemalto ügyfélszolgálati portálon regisztrálva van, és rendelkezik ügyfél-AZONOSÍTÓval. Töltse le az ügyfélszoftver 7,2-es verzióját az összes szükséges összetevő lekéréséhez.
+Ezen a ponton minden erőforrások magas rendelkezésre állású, két HSM üzembe helyezési és ellenőrzött hozzáférési és működési állapotot van lefoglalva. Minden további konfigurációs vagy a tesztelés magában foglalja a több munkát magát a HSM eszközzel. Ehhez kövesse a Gemalto Luna hálózati HSM 7 felügyeleti útmutató inicializálása a hardveres biztonsági MODULT, és hozzon létre partíciókat 7. fejezet utasításait. Az összes dokumentáció, szoftvereszközök érhetők el közvetlenül letölthető Gemalto regisztrálva lettek a Gemalto Ügyfélportál-támogatás a, és van egy ügyfél-azonosító. Töltse le az ügyfélszoftvert verzió 7.2 beolvasni minden szükséges összetevőt.
 
-## <a name="delete-or-clean-up-resources"></a>Erőforrások törlése vagy eltávolítása
+## <a name="delete-or-clean-up-resources"></a>Törölje vagy az erőforrások törlése
 
-Ha csak a HSM-eszközzel fejeződött be, akkor azt erőforrásként is törölheti, és visszaküldheti az ingyenes készletbe. Ha ezt a problémát tapasztalja, az eszközön található bizalmas vásárlói adatok is megtalálhatók. A bizalmas ügyféladatok eltávolításához az eszköznek gyári alaphelyzetbe kell állítania a Gemalto-ügyfél használatával. Tekintse meg a Gemalto-rendszergazdák útmutatóját a SafeNet Network Luna 7 eszközhöz, és vegye figyelembe a következő parancsokat.
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+Ha ezzel végzett, az csak a HSM eszközt, ezután képes lehet erőforrásként törlése és a szabad készlethez adott vissza. A nyilvánvaló kérdés, ha ez az eszköz bizalmas felhasználói adatok. A legjobb módszer a "zeroize", hogy az eszköz a HSM-rendszergazda jelszavának rossz 3 alkalommal való beszerzését kéri (Megjegyzés: ez nem a berendezés rendszergazdája, hanem a tényleges HSM-rendszergazda). A kulcsfontosságú anyagok védelme érdekében az eszköz nem törölhető Azure-erőforrásként, amíg a nulla állapotba nem kerül.
 
 > [!NOTE]
 > Ha bármilyen Gemalto-eszköz konfigurációval kapcsolatos problémát tapasztal, vegye fel a kapcsolatot a [Gemalto ügyfélszolgálatával](https://safenet.gemalto.com/technical-support/).
 
 
-Ha az erőforráscsoport erőforrásaival végzett, akkor a következő paranccsal távolíthatja el őket:
+Ha befejezte az erőforráscsoport összes erőforrását, akkor a következő paranccsal távolíthatja el őket:
 
 ```azurecli
 az group deployment delete \
@@ -257,8 +250,8 @@ az group deployment delete \
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag lépéseinek elvégzése után a dedikált HSM-erőforrások kiépítve vannak, és rendelkezik egy olyan virtuális hálózattal, amely a szükséges HSM és további hálózati összetevőkkel teszi lehetővé a kommunikációt a HSM használatával.  Most már olyan helyzetben van, hogy ezt az üzembe helyezést az előnyben részesített üzembe helyezési architektúrához szükséges további erőforrásokkal kiegészítse. Az üzembe helyezés megtervezésével kapcsolatos további információkért tekintse meg a fogalmakat ismertető dokumentumokat.
-Az elsődleges régió két HSM rendelkező kialakítás az állvány szintjén kezeli a rendelkezésre állást, a másodlagos régióban pedig két HSM ajánlott. Az oktatóanyagban használt sablonfájl egyszerűen használható két HSM-telepítés alapjaként, de a hozzájuk tartozó paramétereket módosítani kell, hogy megfeleljenek a követelményeinek.
+Az oktatóanyagban a lépések elvégzése után a dedikált HSM-erőforrások kiépítése, és szükséges HSM-ekről és a további hálózati összetevők a HSM-kommunikáció engedélyezése a virtuális hálózatot.  Most már Ön olyan helyzetben, hogy kiegészítsék a központi telepítés által előnyben részesített üzemi architektúra szükség szerint több erőforrást. Útmutatás nyújtása a központi telepítésének tervezése a további információkért lásd: a fogalmak dokumentumokat.
+Egy kialakítás a két HSM-EK egy elsődleges régióban, rendelkezésre állást, az állvány szintjén addressing és a egy másodlagos régióban régiónkénti rendelkezésre állás címzés két HSM-EK használata javasolt. A sablonfájl, a jelen oktatóanyagban használt két HSM központi telepítés alapjaként könnyen használható, de rendelkeznie kell módosítani az igényeinek paramétereket.
 
 * [Magas rendelkezésre állás](high-availability.md)
 * [Fizikai biztonság](physical-security.md)

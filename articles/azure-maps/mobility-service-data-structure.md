@@ -1,19 +1,19 @@
 ---
 title: Mobilitási szolgáltatás adatstruktúrája Azure Mapsban | Microsoft Azure térképek
 description: Ebből a cikkből megismerheti a Microsoft Azure Maps mobilitási szolgáltatásaival visszaadott általános mezőket és adatstruktúrákat.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 685810a6efa46c8eb3ad6cee0c2424299f0347d8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989008"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209613"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásban
 
@@ -27,7 +27,7 @@ A `metroID` egy olyan Metro-körzet azonosítója, amely felhasználható a [beo
 
 **metroID:** 522 **neve:** Seattle-Tacoma-Bellevue
 
-![Seattle – Metro-térség](./media/mobility-service-data-structure/seattle-metro.png)
+![Seattle-metro-area](./media/mobility-service-data-structure/seattle-metro.png)
 
 ## <a name="stop-ids"></a>Azonosítók leállítása
 

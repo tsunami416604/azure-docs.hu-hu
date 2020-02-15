@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112253"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251991"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST-oktatóanyag: részben strukturált adatok (JSON-Blobok) indexelése és keresése az Azure Cognitive Search
 
@@ -83,7 +83,7 @@ Hajtsa végre az alábbi három API-hívást a REST-ügyfélről.
 
 ## <a name="create-a-data-source"></a>Adatforrás létrehozása
 
-Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
+Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
 
 A hívás végpontja: `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
@@ -126,7 +126,7 @@ A válasznak így kell kinéznie:
 
 ## <a name="create-an-index"></a>Index létrehozása
     
-A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-indexer), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
+A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
 A hívás URL-címe: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
@@ -287,7 +287,7 @@ A `$filter` paraméter csak olyan metaadatokkal működik, amelyek szűrhetőké
 
 Az oktatóanyag után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. A következő lépésként tekintse át és tesztelje a különböző lehetőségeket, hogy megnézze, mi a legmegfelelőbb a forgatókönyvhöz.
 

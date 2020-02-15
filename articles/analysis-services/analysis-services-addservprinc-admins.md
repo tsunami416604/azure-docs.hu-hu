@@ -7,16 +7,20 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573619"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212503"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
- A felügyelet nélküli PowerShell-feladatok automatizálásához egy egyszerű szolgáltatásnak **rendszergazdai** jogosultságokkal kell rendelkeznie a felügyelt Analysis Services kiszolgálón. Ez a cikk azt ismerteti, hogyan adhat hozzá egy egyszerű szolgáltatást egy Azure-beli kiszolgáló-rendszergazdák szerepkörhöz.
+ A felügyelet nélküli PowerShell-feladatok automatizálásához egy egyszerű szolgáltatásnak **rendszergazdai** jogosultságokkal kell rendelkeznie a felügyelt Analysis Services kiszolgálón. Ez a cikk azt ismerteti, hogyan adhat hozzá egy egyszerű szolgáltatást egy Azure-beli kiszolgáló-rendszergazdák szerepkörhöz. Ezt a SQL Server Management Studio vagy egy Resource Manager-sablon használatával teheti meg.
+ 
+> [!NOTE]
+> Azure PowerShell-parancsmagokat használó kiszolgálói műveletek esetén az egyszerű szolgáltatásnak az [Azure szerepköralapú Access Control (RBAC)-beli](../role-based-access-control/overview.md)erőforrás **tulajdonosi** szerepköréhez is tartoznia kell. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban regisztrált egyszerű szolgáltatással.
@@ -24,10 +28,9 @@ A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban reg
 [Egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Szolgáltatásnév létrehozása – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>Szükséges engedélyek
-A feladat elvégzéséhez [kiszolgálói rendszergazdai](analysis-services-server-admins.md) engedélyekkel kell rendelkeznie az Azure-ban kiszolgálóként. 
+## <a name="using-sql-server-management-studio"></a>Az SQL Server Management Studio használata
 
-## <a name="add-service-principal-to-server-administrators-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdák szerepkörhöz
+A kiszolgáló-rendszergazdákat SQL Server Management Studio (SSMS) használatával is konfigurálhatja. A feladat elvégzéséhez [kiszolgálói rendszergazdai](analysis-services-server-admins.md) engedélyekkel kell rendelkeznie az Azure-ban kiszolgálóként. 
 
 1. A SSMS-ben kapcsolódjon az Azure-hoz kiszolgálóként.
 2. A **kiszolgáló tulajdonságai** > **Biztonság**területen kattintson a **Hozzáadás**gombra.
@@ -39,9 +42,60 @@ A feladat elvégzéséhez [kiszolgálói rendszergazdai](analysis-services-serve
     
     ![Egyszerű szolgáltatásnév-fiók keresése](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
+## <a name="using-a-resource-manager-template"></a>Resource Manager-sablon használata
 
-> [!NOTE]
-> Azure PowerShell parancsmagokat használó kiszolgálói műveletek esetében az ütemező szolgáltatást futtató szolgáltatásnak az [Azure szerepköralapú Access Control (RBAC)](../role-based-access-control/overview.md)erőforrás **tulajdonosi** szerepköréhez is tartoznia kell. 
+A kiszolgáló-rendszergazdákat úgy is konfigurálhatja, hogy Azure Resource Manager sablonnal telepíti a Analysis Services kiszolgálót. A központi telepítést futtató identitásnak az erőforrás **közreműködői** szerepköréhez kell tartoznia az [Azure szerepköralapú Access Controlban (RBAC)](../role-based-access-control/overview.md).
+
+> [!IMPORTANT]
+> Az egyszerű szolgáltatásnevet a `app:{service-principal-client-id}@{azure-ad-tenant-id}`formátum használatával kell hozzáadni.
+
+A következő Resource Manager-sablon központilag telepít egy Analysis Services kiszolgálót egy megadott egyszerű szolgáltatással a Analysis Services rendszergazdai szerepkörhöz:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "analysisServicesServerName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "analysisServicesSkuName": {
+            "type": "string"
+        },
+        "analysisServicesCapacity": {
+            "type": "int"
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalTenantId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('analysisServicesServerName')]",
+            "type": "Microsoft.AnalysisServices/servers",
+            "apiVersion": "2017-08-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('analysisServicesSkuName')]",
+                "capacity": "[parameters('analysisServicesCapacity')]"
+            },
+            "properties": {
+                "asAdministrators": {
+                    "members": [
+                        "[concat('app:', parameters('servicePrincipalClientId'), '@', parameters('servicePrincipalTenantId'))]"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

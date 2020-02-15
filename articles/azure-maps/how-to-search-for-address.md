@@ -1,19 +1,19 @@
 ---
 title: Hely keresése Azure Maps Search Services használatával | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan kereshet meg egy helyet a helymeghatározáshoz és fordított helymeghatározáshoz Microsoft Azure Maps Search Service használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899231"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209885"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 
@@ -55,9 +55,9 @@ Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.micros
 
 ![Keresési címek](./media/how-to-search-for-address/address_search_params.png) 
 
-| Jelmagyarázat | Value (Díj) | 
+| Paraméter | Érték | 
 |------------------|-------------------------| 
-| API-Version | 1.0 | 
+| api-version | 1.0 | 
 | előfizetés – kulcs | \<a Azure Maps kulcsot\> | 
 | lekérdezés | 400 Broad St, Seattle, WA 98109 | 
 
@@ -73,9 +73,9 @@ Ebben az esetben teljes címzési lekérdezést adott meg, és egyetlen eredmén
 
 6. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra: 
 
-| Jelmagyarázat | Value (Díj) | 
+| Paraméter | Érték | 
 |-----|------------| 
-| typeahead | igaz | 
+| typeahead | true | 
 
 A **typeahead** jelző azt jelzi, hogy a címek keresési API-ját részleges bemenetként kezeli a lekérdezés, és a prediktív értékek tömbjét adja vissza.
 
@@ -105,9 +105,9 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
     ![Fuzzy keresés](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |------------------|-------------------------|
-    | API-Version | 1.0 |
+    | api-version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | pizza |
 
@@ -119,9 +119,9 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
 5. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |------------------|-------------------------|
-    | countrySet | Egyesült Államok |
+    | countrySet | USA |
   
     Az eredmények mostantól az országkód szerint vannak kötve, és a lekérdezés a Egyesült Államok pizzás éttermeit adja vissza.
   
@@ -131,7 +131,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
     ![Fuzzy keresés](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |-----|------------|
     | Lat | 47,620525 |
     | Lon | – 122,349274 |
@@ -159,9 +159,9 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
     ![Fordított címek keresési paramétereinek megadása](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |------------------|-------------------------|
-    | API-Version | 1.0 |
+    | api-version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | 47.591180,-122,332700 |
   
@@ -171,33 +171,33 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
 5. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |-----|------------|
-    | szám | igaz |
+    | szám | true |
 
     Ha a kérelemben a [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert küldi a rendszer, akkor a válasz az utca oldalát (balra vagy jobbra), valamint az adott szám eltolási pozícióját is tartalmazhatja.
   
 6. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |-----|------------|
-    | returnSpeedLimit | igaz |
+    | returnSpeedLimit | true |
   
     Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a válasz a közzétett sebesség korlátot adja vissza.
 
 7. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |-----|------------|
-    | returnRoadUse | igaz |
+    | returnRoadUse | true |
 
     Ha a [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a válasz a közúti használatot a fordított geocodes az utca szintjén adja vissza.
 
 8. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |-----|------------|
-    | roadUse | igaz |
+    | roadUse | true |
 
     A fordított geocode-lekérdezést egy adott típusú útra korlátozhatja a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter használatával.
   
@@ -217,9 +217,9 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében:
   
-    | Jelmagyarázat | Value (Díj) |
+    | Paraméter | Érték |
     |------------------|-------------------------|
-    | API-Version | 1.0 |
+    | api-version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | 47.591180,-122,332700 |
   

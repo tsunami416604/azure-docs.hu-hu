@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645769"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251957"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -70,12 +70,6 @@ A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tár
 
 Mindegyik tárolási típushoz konkrét előfeltételek vonatkoznak.
 
-### <a name="nfs-storage-requirements"></a>NFS-tárolási követelmények
-
-Helyszíni hardveres tároló használata esetén a gyorsítótárnak nagy sávszélességű hálózati hozzáféréssel kell rendelkeznie az adatközponthoz az alhálózatról. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy hasonló hozzáférés ajánlott.
-
-Az NFS-háttérbeli tárterületnek kompatibilis hardver/szoftver platformnak kell lennie. Részletekért forduljon az Azure HPC cache csapatához.
-
 ### <a name="blob-storage-requirements"></a>BLOB Storage-követelmények
 
 Ha az Azure Blob Storage-t a gyorsítótárral szeretné használni, egy kompatibilis Storage-fiókra és egy üres blob-tárolóra vagy egy olyan tárolóra van szükség, amely az [adatok áthelyezése az Azure Blob Storage](hpc-cache-ingest.md)-ba című témakörben leírtak szerint feltölti az Azure HPC gyorsítótárral formázott adatokat.
@@ -93,6 +87,52 @@ Célszerű a Storage-fiókot a gyorsítótárral megegyező helyen használni.
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 Meg kell adnia a gyorsítótár-alkalmazásnak az Azure Storage-fiókhoz való hozzáférését is, ahogy az a fenti [engedélyekben](#permissions)is szerepel. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) lehetőséget a szükséges hozzáférési szerepkörök gyorsítótárazásához. Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
+
+### <a name="nfs-storage-requirements"></a>NFS-tárolási követelmények
+
+Ha NFS-tárolót használ (például egy helyszíni hardveres NAS-rendszer), ellenőrizze, hogy az megfelel-e a követelményeknek. A beállítások ellenőrzéséhez előfordulhat, hogy a hálózati rendszergazdák vagy a tűzfal kezelőjével kell dolgoznia a tárolási rendszer (vagy az adatközpont) számára.
+
+> [!NOTE]
+> A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem rendelkezik megfelelő hozzáféréssel az NFS-tárolási rendszerhez.
+
+* **Hálózati kapcsolat:** Az Azure HPC-gyorsítótár nagy sávszélességű hálózati hozzáférést igényel a gyorsítótár-alhálózat és az NFS-szolgáltatás adatközpontja között. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy hasonló hozzáférés ajánlott. VPN használata esetén előfordulhat, hogy úgy kell beállítania, hogy a 1350-es számú TCP-MSS-t használja, hogy a nagyméretű csomagok ne legyenek letiltva.
+
+* **Port hozzáférése:** A gyorsítótárnak hozzá kell férnie az adott TCP/UDP-portokhoz a tárolási rendszeren. A különböző típusú tárolók különböző portokra vonatkozó követelményekkel rendelkeznek.
+
+  A tárolási rendszerek beállításainak vizsgálatához kövesse az alábbi eljárást.
+
+  * `rpcinfo` parancs kiadása a tárolási rendszernek a szükséges portok vizsgálatához. Az alábbi parancs felsorolja a portokat, és formázza a kapcsolódó eredményeket egy táblában. (A *< storage_IP >* kifejezés helyett használja a számítógép IP-címét.)
+
+    Ezt a parancsot bármely olyan Linux-ügyfélről kiállíthatja, amelyen telepítve van az NFS-infrastruktúra. Ha a fürt alhálózatán belül használ ügyfelet, az az alhálózat és a tárolási rendszer közötti kapcsolat ellenőrzéséhez is segítséget nyújt.
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * A `rpcinfo` parancs által visszaadott portok mellett győződjön meg arról, hogy ezek a gyakran használt portok engedélyezik a bejövő és kimenő forgalmat:
+
+    | Protokoll | Port  | Szolgáltatás  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | mountd   |
+    | TCP/UDP  | 4047  | status   |
+
+  * Ellenőrizze, hogy a tűzfalbeállítások engedélyezik-e a forgalmat az összes szükséges porton. Ügyeljen arra, hogy ellenőrizze az Azure-ban használt tűzfalakat és a helyszíni tűzfalakat az adatközpontban.
+
+* **Címtár-hozzáférés:** Engedélyezze a `showmount` parancsot a tárolási rendszeren. Az Azure HPC cache ezt a parancsot használja annak ellenőrzéséhez, hogy a tárolási cél konfigurációja érvényes exportálásra mutat-e, valamint hogy több csatlakoztatás nem fér hozzá ugyanahhoz az alkönyvtárakhoz (amelyek a fájlok ütközését veszélyeztetik).
+
+  > [!NOTE]
+  > Ha az NFS-tárolási rendszer a NetApp ONTAP 9,2 operációs rendszert használja, ne **engedélyezze `showmount`** . Segítségért [forduljon a Microsoft szolgáltatáshoz és a támogatási](hpc-cache-support-ticket.md) szolgálathoz.
+
+* **Legfelső szintű hozzáférés:** A cache 0 felhasználói AZONOSÍTÓként csatlakozik a háttérrendszer-rendszerhez. A következő beállítások megadásával a tárolási rendszeren:
+  
+  * `no_root_squash`engedélyezése. Ezzel a beállítással biztosíthatja, hogy a távoli legfelső szintű felhasználó hozzáférhessen a root tulajdonában lévő fájlokhoz.
+
+  * Ellenőrizze az exportálási szabályzatokat, és győződjön meg arról, hogy nem tartalmaznak korlátozásokat a gyorsítótár alhálózatához való rendszergazdai hozzáféréshez.
+
+* Az NFS-háttérbeli tárterületnek kompatibilis hardver/szoftver platformnak kell lennie. Részletekért forduljon az Azure HPC cache csapatához.
 
 ## <a name="next-steps"></a>Következő lépések
 

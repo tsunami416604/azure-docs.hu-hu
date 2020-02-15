@@ -3,12 +3,12 @@ title: Erőforrások telepítési sorrendjének beállítása
 description: Ismerteti, hogyan lehet egy erőforrást egy másik erőforrástól függőként beállítani az üzembe helyezés során, hogy az erőforrások megfelelően legyenek telepítve a megfelelő sorrendben.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121964"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207689"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása Azure Resource Manager-sablonokban
 
@@ -40,7 +40,7 @@ Az alábbi példa egy virtuálisgép-méretezési készletet mutat be, amely egy
 }
 ```
 
-Az előző példában egy **storageLoop**nevű másolási hurokon keresztül létrehozott erőforrások függősége szerepel. Példaként tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](create-multiple-instances.md)című témakört.
+Az előző példában egy **storageLoop**nevű másolási hurokon keresztül létrehozott erőforrások függősége szerepel. Példaként tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](copy-resources.md)című témakört.
 
 A függőségek meghatározásakor belefoglalhatja az erőforrás-szolgáltatói névteret és az erőforrástípust is a kétértelműség elkerülése érdekében. Például egy olyan terheléselosztó és virtuális hálózat tisztázásához, amelynek neve azonos a többi erőforrás nevével, használja a következő formátumot:
 

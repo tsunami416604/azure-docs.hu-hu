@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911895"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212487"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -130,6 +130,9 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>A Send telemetria minta szerkesztése az elosztott nyomkövetés engedélyezéséhez
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">A minta beolvasása a githubon</a>
+
 1. A `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` forrásfájl megnyitásához használja a szerkesztőt.
 
 1. Keresse meg a `connectionString` konstans deklarációját:
@@ -152,7 +155,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_sleep&highlight=8)]
 
-### <a name="compile-and-run"></a>Fordítás és futtatás
+### <a name="compile-and-run"></a>Fordítás és Futtatás
 
 1. Navigáljon a korábban létrehozott CMak-könyvtárból (`azure-iot-sdk-c/cmake`) *iothub_ll_telemetry_sample* projekt könyvtárába, és fordítsa le a mintát:
 
@@ -198,7 +201,7 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 1. Válasszon ki egy 0 és 100% közötti **mintavételi sebességet** .
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 1. Várjon néhány másodpercet, és kattintson a **frissítés**gombra, majd ha az eszköz sikeresen visszaigazolja az eszközt, a szinkronizálás ikon látható.
 
@@ -241,7 +244,7 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 }
 ```
 
-| Elem neve | Szükséges | Type (Típus) | Leírás |
+| Elem neve | Kötelező | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` be van kapcsolva, és `2` ki van kapcsolva. |
 | `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` és `100` (beleértve a) értékek megengedettek.  |
@@ -266,9 +269,9 @@ Példák a Log Analytics által megjelenített naplókra:
 
 | TimeGenerated | OperationName | Kategória | Szint | CorrelationId | Átl | Tulajdonságok |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
-| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub", "Végpontneve": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 A különböző típusú naplók megismeréséhez tekintse meg az [Azure IoT hub diagnosztikai naplók](iot-hub-monitor-resource-health.md#distributed-tracing-preview)című témakört.
 

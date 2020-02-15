@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198717"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206106"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -147,17 +147,20 @@ Azt is meg kell fontolnia, hogyan működik az adaptív adatfolyam. A rendszer m
 
 ### <a name="enable-azure-cdn-integration"></a>Azure CDN integráció engedélyezése
 
+> [!IMPORTANT]
+> A CDN nem engedélyezhető próbaverziós vagy tanulói Azure-fiókokhoz.
+>
+> A CDN-integráció az összes Azure-adatközpontban engedélyezve van, kivéve a szövetségi kormányzati és a kínai régiókat.
+
 Ha egy streaming-végpontot engedélyeztek a CDN szolgáltatással, akkor a Media Services várakozási idő van a DNS-frissítés végrehajtása előtt, hogy leképezje a folyamatos átviteli végpontot a CDN-végpontra.
 
 Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. Akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. Az adatfolyam-végpontot és az adatfolyamot megszakítások nélkül is elindíthatja a folyamatos átviteli végponton, és az integráció befejezése után a stream a CDN-ből lesz továbbítva. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
 
 A standard folyamatos átviteli végpont létrehozásakor a rendszer alapértelmezés szerint a standard Verizon-t konfigurálja. A Premium Verizon vagy a standard szintű Akamai-szolgáltatók a REST API-k használatával konfigurálhatók.
 
-A CDN-integráció az összes Azure-adatközpontban engedélyezve van, kivéve Kínát és a szövetségi kormányzati régiókat.
-
 A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming-végpontok **Azure CDNján** valósul meg. A prémium szintű streaming végpontok az összes **Azure CDN árképzési szint és szolgáltató**használatával konfigurálhatók. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > A Azure CDNről a [CDN áttekintése](../../cdn/cdn-overview.md)című témakörben olvashat bővebben.
 
 ### <a name="determine-if-dns-change-was-made"></a>Annak megállapítása, hogy a DNS-módosítás történt-e

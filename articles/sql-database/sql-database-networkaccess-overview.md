@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894795"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251906"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése
 
@@ -113,7 +113,7 @@ Vegye figyelembe a következő Azure-hálózatkezelési feltételeket az Virtual
 
 **Alhálózat:** Egy virtuális hálózat **alhálózatokat**tartalmaz. Az alhálózatokhoz társított bármely Azure-beli virtuális gép (VM). Egy alhálózat több virtuális gépet vagy más számítási csomópontot is tartalmazhat. A virtuális hálózatán kívüli számítási csomópontok nem férnek hozzá a virtuális hálózathoz, kivéve, ha úgy konfigurálja a biztonságot, hogy engedélyezze a hozzáférést.
 
-**Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont] [VM-Virtual-Network-Service-endpoints – Overview-649d] olyan alhálózat, amelynek a tulajdonságai egy vagy több formális Azure szolgáltatástípus-nevet tartalmaznak. Ebben a cikkben a **Microsoft. SQL**típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik.
+**Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont](../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. Ebben a cikkben a **Microsoft. SQL**típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik.
 
 **Virtuális hálózati szabály:** A SQL Database-kiszolgáló virtuális hálózati szabálya egy alhálózat, amely a SQL Database-kiszolgáló hozzáférés-vezérlési listájában (ACL) szerepel. Ahhoz, hogy a SQL Database hozzáférés-vezérlési listájában legyen, az alhálózatnak tartalmaznia kell a **Microsoft. SQL** típus nevét. Egy virtuális hálózati szabály közli a SQL Database-kiszolgálóval, hogy fogadja a kommunikációt az alhálózaton lévő összes csomópontról.
 
@@ -122,7 +122,7 @@ Vegye figyelembe a következő Azure-hálózatkezelési feltételeket az Virtual
 
 Az Azure SQL Server tűzfal lehetővé teszi olyan IP-címtartományok megadását, amelyekről a rendszer a kommunikációt SQL Databaseba fogadja. Ez a megközelítés az Azure-magánhálózaton kívüli stabil IP-címekre is kiváló. Az Azure-beli magánhálózaton lévő virtuális gépek (VM-EK) azonban *dinamikus* IP-címekkel vannak konfigurálva. A dinamikus IP-címek a virtuális gép újraindításakor változhatnak, és az IP-alapú tűzfalszabály érvénytelenné válik. Az éles környezetben nem lehet dinamikus IP-címet megadni egy tűzfalszabály számára.
 
-Ezt a korlátozást a virtuális gép *statikus* IP-címének beszerzésével lehet megkerülni. Részletekért lásd: [magánhálózati IP-címek konfigurálása virtuális géphez a Azure Portal használatával] [VM-configure-Private-IP-Addresss-for-a-Virtual-Machine-using-the-Azure-Portal-321w]. A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. 
+Ezt a korlátozást a virtuális gép *statikus* IP-címének beszerzésével lehet megkerülni. Részletekért lásd: [a virtuális gép magánhálózati IP-címeinek konfigurálása a Azure Portal használatával](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. 
 
 A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gépeket tartalmazó adott alhálózat elérésének létrehozásához és kezeléséhez.
 

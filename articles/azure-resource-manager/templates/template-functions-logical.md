@@ -3,12 +3,12 @@ title: Sablon functions – logikai
 description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483959"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207213"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok logikai funkciói
 
@@ -28,13 +28,13 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Igen |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | További argumentumok |Nem |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 **Igaz** értéket ad vissza, ha az összes érték igaz; Ellenkező esetben **hamis**.
 
@@ -66,13 +66,13 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | Hamis |
-| orExampleOutput | Logikai | Igaz |
-| notExampleOutput | Logikai | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
-## <a name="bool"></a>logikai
+## <a name="bool"></a>bool
 
 `bool(arg1)`
 
@@ -80,11 +80,11 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 Az átalakított érték logikai értéke.
 
 ### <a name="examples"></a>Példák
@@ -117,16 +117,16 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 }
 ```
 
-Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| trueString | Logikai | Igaz |
-| falseString | Logikai | Hamis |
-| trueInt | Logikai | Igaz |
-| falseInt | Logikai | Hamis |
+| trueString | Bool | True (Igaz) |
+| falseString | Bool | False (Hamis) |
+| trueInt | Bool | True (Igaz) |
+| falseInt | Bool | False (Hamis) |
 
-## <a name="if"></a>if
+## <a name="if"></a>Ha
 
 `if(condition, trueValue, falseValue)`
 
@@ -134,13 +134,13 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |logikai |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| condition |Igen |logikai |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
 | trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
 | falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező esetben a harmadik paramétert adja vissza.
 
@@ -177,7 +177,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | yesOutput | Sztring | igen |
 | nincs kimenet | Sztring | nem |
@@ -231,7 +231,7 @@ A következő [példa](https://github.com/krnese/AzureDeploy/blob/master/ARM/dep
 }
 ```
 
-## <a name="not"></a>not
+## <a name="not"></a>nem
 
 `not(arg1)`
 
@@ -239,11 +239,11 @@ Logikai érték konvertálása az ellenkező értékre.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Az átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 **Igaz** értéket ad eredményül, ha a paraméter **hamis**. **Hamis** értéket ad vissza, ha a paraméter **igaz**.
 
@@ -275,11 +275,11 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | Hamis |
-| orExampleOutput | Logikai | Igaz |
-| notExampleOutput | Logikai | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
 A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon **nem** [egyenlő](template-functions-comparison.md#equals).
 
@@ -299,9 +299,9 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | Logikai | Igaz |
+| checkNotEquals | Bool | True (Igaz) |
 
 ## <a name="or"></a>vagy
 
@@ -311,13 +311,13 @@ Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Igen |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | További argumentumok |Nem |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 **Igaz** értéket ad vissza, ha bármelyik érték igaz; Ellenkező esetben **hamis**.
 
@@ -349,16 +349,16 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | Hamis |
-| orExampleOutput | Logikai | Igaz |
-| notExampleOutput | Logikai | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
+| orExampleOutput | Bool | True (Igaz) |
+| notExampleOutput | Bool | False (Hamis) |
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](create-multiple-instances.md)című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
 * A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
 

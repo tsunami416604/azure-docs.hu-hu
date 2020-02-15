@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967344"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251209"
 ---
-# <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév beállítása
+# <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
 Azure API Management Service-példány létrehozásakor az Azure `azure-api.net` altartományát rendeli hozzá (például `apim-service-name.azure-api.net`). Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
 
@@ -27,7 +27,7 @@ Azure API Management Service-példány létrehozásakor az Azure `azure-api.net`
 > A API Management csak olyan kérelmeket fogad el, amelyek [állomásfejléc](https://tools.ietf.org/html/rfc2616#section-14.23) -értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
 
 > [!WARNING]
-> Azok az ügyfelek, akik a tanúsítvány-rögzítést szeretnék használni az alkalmazásaik biztonságának javítása érdekében, egyéni tartománynevet > és az általuk kezelt tanúsítványokat kell használniuk, nem az alapértelmezett tanúsítványt. Azok az ügyfelek, amelyek az alapértelmezett tanúsítványt rögzítik, a nem felügyelt tanúsítvány tulajdonságaitól, illetve a nem javasolt eljárástól függenek.
+> Azok az ügyfelek, akik a tanúsítvány-rögzítést szeretnék használni az alkalmazásaik biztonságának javítása érdekében, az alapértelmezett tanúsítvány helyett egyéni tartománynevet és tanúsítványt kell használniuk. Azok az ügyfelek, amelyek az alapértelmezett tanúsítványt rögzítik, a nem felügyelt tanúsítvány tulajdonságaitól, illetve a nem javasolt eljárástól függenek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     - **SCM** (alapértelmezett érték: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > A felhasználási szinten csak a rendelkezésre álló **átjáró** -végpont használható a konfigurációhoz.
+    > Csak az **átjáró** végpontja érhető el a felhasználási szinten való konfiguráláshoz.
     > Frissítheti az összes végpontot vagy azok némelyikét. Általában az ügyfelek Update **Gateway** (ez az URL-cím a API Management) és a **portálon** (a fejlesztői portál URL-címe) elérhetővé tett API meghívására szolgál.
     > A **felügyeleti** és az **SCM** -végpontokat csak a API Management példány tulajdonosai használják, így ritkábban rendelnek hozzá egyéni tartománynevet.
     > A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
@@ -73,7 +73,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > Javasoljuk, hogy használjon Azure Key Vault a tanúsítványok kezeléséhez, és állítsa be őket az autoforgatáshoz.
     > Ha az egyéni tartomány SSL-tanúsítványának kezeléséhez Azure Key Vault használ, győződjön meg róla, hogy a tanúsítvány a Key Vault [ _tanúsítványként_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem pedig _titkosként_van beillesztve.
     >
-    > Az SSL-tanúsítvány lekéréséhez API Managementnak rendelkeznie kell a tanúsítvány beszerzése engedéllyel a tanúsítványt tartalmazó Azure Key Vault. Azure Portal használatakor a rendszer az összes szükséges konfigurációs lépést automatikusan végrehajtja. Parancssori eszközök vagy felügyeleti API használatakor ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a API Management-példány felügyelt identitások lapját, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az oldalon megjelenő résztvevő azonosítóját. Másodszor, adja meg az engedélyek listáját, és szerezzen be titkokat a rendszerbiztonsági tag számára a tanúsítványt tartalmazó Azure Key Vault.
+    > Az SSL-tanúsítvány lekéréséhez API Managementnak rendelkeznie kell a listához, és meg kell adnia a titkokat a tanúsítványt tartalmazó Azure Key Vault. Azure Portal használatakor a rendszer az összes szükséges konfigurációs lépést automatikusan végrehajtja. Parancssori eszközök vagy felügyeleti API használatakor ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a API Management-példány felügyelt identitások lapját, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az oldalon megjelenő résztvevő azonosítóját. Másodszor, adja meg az engedélyek listáját, és szerezzen be titkokat a rendszerbiztonsági tag számára a tanúsítványt tartalmazó Azure Key Vault.
     >
     > Ha a tanúsítvány automatikus elforgatásra van beállítva, akkor API Management automatikusan a szolgáltatás leállása nélkül fogja felvenni a legújabb verziót (ha a API Managementi szint SLA-i. e. az összes szinten, kivéve a fejlesztői szintet).
 

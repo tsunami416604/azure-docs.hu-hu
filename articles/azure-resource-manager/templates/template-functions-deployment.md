@@ -3,12 +3,12 @@ title: Sablon functions – üzembe helyezés
 description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484037"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207281"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
@@ -27,7 +27,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekérésé
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy a központi telepítési objektum hivatkozásként vagy beágyazott objektumként van-e átadva. Ha a központi telepítési objektum átadásra kerül, például ha a Azure PowerShell a **-TemplateFile** paramétert használja egy helyi fájlra, a visszaadott objektum formátuma a következő:
 
@@ -139,7 +139,7 @@ Az üzembe helyezési funkciót használó előfizetési szintű sablonért lás
 
 Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az alábbi példa a globális Azure tulajdonságait mutatja be. A szuverén felhők némileg eltérő tulajdonságokat adhatnak vissza.
 
@@ -239,11 +239,11 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A megadott paraméter értéke.
 
@@ -324,9 +324,9 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 }
 ```
 
-Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | 1\. lehetőség |
 | intOutput | Int | 1 |
@@ -344,11 +344,11 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Type (Típus) | Leírás |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A megadott változó értéke.
 
@@ -416,9 +416,9 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 }
 ```
 
-Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |
@@ -430,6 +430,6 @@ További információ a változók használatáról: [változók Azure Resource 
 ## <a name="next-steps"></a>Következő lépések
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](create-multiple-instances.md)című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
 * A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
 

@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845441"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208846"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
 
@@ -67,7 +67,7 @@ mvn archetype:generate ^
 
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse. Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | ----- | ----------- |
 | **groupId** | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. Az ebben a rövid útmutatóban szereplő példák a `com.fabrikam.functions`t használják. |
 | **artifactId** | Egy érték, amely a jar neve, verziószám nélkül. Az ebben a rövid útmutatóban szereplő példák a `fabrikam-functions`t használják. |
@@ -119,7 +119,7 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```Output
 Hello AzureFunctions!
 ```
-Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) nem szükséges. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
+Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
@@ -150,7 +150,7 @@ Ez a `azure-functions:deploy` Maven-cél a következő erőforrásokat hozza lé
 
 Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
-Az üzembe helyezés befejezése után megjelenik az URL-cím, amellyel elérheti a Function app-végpontokat. Mivel a közzétett HTTP-trigger `authLevel = AuthorizationLevel.FUNCTION`használ, le kell kérnie a Function-végpontot a HTTP protokollon keresztül. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
+Az üzembe helyezés befejezése után megjelenik az URL-cím, amellyel elérheti a Function app-végpontokat. Mivel a közzétett HTTP-trigger `authLevel = AuthorizationLevel.FUNCTION`használ, le kell kérnie a Function-végpontot a HTTP protokollon keresztül. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portalra].
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
@@ -161,7 +161,7 @@ Az üzembe helyezés befejezése után megjelenik az URL-cím, amellyel elérhet
 
 A függvény elindításához szükséges URL-címet a Azure Portalból kérheti le. 
 
-1. Keresse meg a [Azure Portal], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
+1. Keresse meg a [Azure Portalra], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
  
 1. A Function alkalmazásban bontsa ki a **függvények elemet (csak olvasható)** , válassza ki a függvényt, majd válassza a **</> a függvény URL-címének beolvasása** lehetőséget a jobb felső sarokban. 
 
@@ -197,4 +197,4 @@ Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnye
 
 
 [Azure CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

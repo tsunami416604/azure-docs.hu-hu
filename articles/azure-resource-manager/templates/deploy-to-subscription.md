@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120614"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207655"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -135,7 +135,7 @@ A következő sablon egy üres erőforráscsoportot hoz létre.
 }
 ```
 
-Több erőforráscsoport létrehozásához használja a [Másolás elemet](create-multiple-instances.md) az erőforráscsoportok használatával.
+Több erőforráscsoport létrehozásához használja a [Másolás elemet](copy-resources.md) az erőforráscsoportok használatával.
 
 ```json
 {
@@ -170,7 +170,7 @@ Több erőforráscsoport létrehozásához használja a [Másolás elemet](creat
 }
 ```
 
-Az erőforrás-iterációval kapcsolatos információkért tekintse [meg az erőforrás vagy tulajdonság több példányának telepítése Azure Resource Manager sablonokban](./create-multiple-instances.md)és [oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonokkal](./template-tutorial-create-multiple-instances.md)című témakört.
+Az erőforrás-iterációval kapcsolatos további információkért lásd: az [erőforrás több példányának telepítése Azure Resource Manager-sablonokban](./copy-resources.md)és [oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonokkal](./template-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-group-and-resources"></a>Erőforráscsoport és erőforrások
 

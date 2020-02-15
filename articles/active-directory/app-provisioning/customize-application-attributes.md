@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161613"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207196"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -300,7 +300,7 @@ Bizonyos attribútumok, például a phoneNumbers és az e-mailek olyan többért
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Az alapértelmezett attribútumok és attribútumok leképezésének visszaállítása
 
-Ha újra kell indítania a meglévő leképezéseket, és vissza kell állítania az alapértelmezett állapotukat, akkor jelölje be az **alapértelmezett leképezések visszaállítása** jelölőnégyzetet, és mentse a konfigurációt. Ez úgy állítja be az összes leképezést, mintha az alkalmazás már hozzá lett adva az Azure AD-bérlőhöz az alkalmazás-katalógusból.
+Ha újra kell indítania a meglévő leképezéseket, és vissza kell állítania az alapértelmezett állapotukat, akkor jelölje be az **alapértelmezett leképezések visszaállítása** jelölőnégyzetet, és mentse a konfigurációt. Ezzel beállítja az összes leképezést és hatókör-szűrőt úgy, mintha az alkalmazás csak az alkalmazás-katalógusból lett hozzáadva az Azure AD-bérlőhöz.
 
 Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben minden felhasználó újraszinkronizálását fogja kényszeríteni.
 

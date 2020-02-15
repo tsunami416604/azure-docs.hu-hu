@@ -5,19 +5,19 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93ce54262fe6dd38ef2ebc07d676608dae7cfff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bbdafde85097d0052edd5984b594fd37066dc1e6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968907"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279428"
 ---
 Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Az Azure kezdőlapján kattintson a **+ erőforrás létrehozása** gombra, majd írja be a *IoT hub* **kifejezést a keresés a piactéren** mezőbe.
 
@@ -35,7 +35,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Hub létrehozása a Azure Portalban](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
+   ![Hub létrehozása a Azure Portalban](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
 1. Válassza a **Next (tovább): méret és méretezés** lehetőséget a központ létrehozásának folytatásához.
 
@@ -48,10 +48,18 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
     - **IoT hub egységek**: a napi egységenként engedélyezett üzenetek száma a központ díjszabási szintjétől függ. Ha például azt szeretné, hogy a központ támogassa a 700 000-es bejövő üzeneteket, két S1 szintű egységet választ.
     További információ a többi lehetőségről: [a megfelelő IoT hub](../articles/iot-hub/iot-hub-scaling.md)-szinten való választás.
 
+    - **Azure Security Center**: kapcsolja be ezt a beállítást, ha további veszélyforrások elleni védelmet szeretne hozzáadni a IoT és az eszközeihez. Ez a lehetőség az ingyenes szinten lévő hubok esetében nem érhető el. További információ erről a szolgáltatásról: [Azure Security Center a IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+
     - Az **eszközről a felhőbe irányuló partíciók** > **Speciális beállítások** : Ez a tulajdonság az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. A legtöbb hubhoz csak négy partíció szükséges.
 
-1. Ehhez a cikkhez fogadja el az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg.
+1. Ebben a cikkben fogadja el az alapértelmezett beállításokat, majd kattintson a **Next (tovább** ) gombra a következő képernyőre való áttéréshez.
 
-   ![Tekintse át az új központ létrehozásával kapcsolatos információkat](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
+    A címkék név/érték párok. Ugyanazt a címkét több erőforráshoz és erőforráscsoporthoz is hozzárendelheti az erőforrások kategorizálása és a számlázás konszolidálása céljából.
+
+   ![Egy új hub méretének és méretezésének beállítása a Azure Portal használatával](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+
+    Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet a választási lehetőségek áttekintéséhez. Ehhez hasonló képernyő jelenik meg.
+
+   ![Tekintse át az új központ létrehozásával kapcsolatos információkat](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 1. Válassza a **Létrehozás** lehetőséget az új központ létrehozásához. A hub létrehozása eltarthat néhány percig.

@@ -4,12 +4,12 @@ description: Kiszolgáló nélküli Python-kód létrehozása és üzembe helyez
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157890"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212429"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: Python-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -97,7 +97,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     cd LocalFunctionProj
     ```
     
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol a `--name` argumentum a függvény egyedi neve, a `--template` argumentum pedig megadja a függvény triggerét. `func new` hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
+1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol a `--name` argumentum megadja a függvény egyedi nevét (ebben az esetben a HttpExample), a `--template` argumentum pedig megadja a függvény triggerét (HTTP-trigger). Ez a `func new` parancs egy olyan almappát hoz létre, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ a *function. JSON* egy olyan konfigurációs fájl, amely meghatározza a függv
 }
 ```
 
-Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A HTTP-trigger [`httpTrigger`](functions-bindings-http-webhook.md#trigger) típusú, [`http`](functions-bindings-http-webhook.md#output)típusú kimeneti kötést tartalmaz.
+Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A HTTP-trigger [`httpTrigger`](functions-bindings-http-webhook-trigger.md) típusú, [`http`](functions-bindings-http-webhook-output.md)típusú kimeneti kötést tartalmaz.
 
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086884"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211408"
 ---
 ## <a name="general-entity-types"></a>Általános entitások típusai:
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086884"
 Nevek felismerése szövegben.
 
 Nyelvek
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
 
 | Altípus neve | Leírás                                                      | A modell verziójától kezdődően érhető el |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ Természetes és emberi által készített tereptárgyak, struktúrák, földraj
 
 Nyelvek
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
 
 | Altípus neve              | Leírás                                                                              | A modell verziójától kezdődően érhető el |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | N/A                       | helyszínek, például `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitikai entitás (GPE) | Városok, országok, például `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+| Geopolitikai entitás (GPE) – csak angol nyelven| Városok, országok, például `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
@@ -57,7 +57,7 @@ Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például:
 
 Nyelvek 
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
 
 | Altípus neve | Leírás                                                                                             | A modell verziójától kezdődően érhető el |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -156,7 +156,7 @@ Dátum és idő entitások.
 
 Nyelvek
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió: `Chinese-Simplified`, `English`, `French`, `German` és `Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Számok és numerikus mennyiségek.
 
 Nyelvek
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió: `Chinese-Simplified`, `English`, `French`, `German` és `Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|

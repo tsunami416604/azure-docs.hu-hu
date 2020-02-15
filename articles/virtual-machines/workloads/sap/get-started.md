@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087368"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212597"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -121,6 +121,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Változásnapló
 
+- 02/13/2020: az Azure-beli [virtuális gépek magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) megváltozása a RHEL és az Azure-beli virtuális gépek magas rendelkezésre állása esetén az SAP [netweaver számára a Azure NetApp Files RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) -ben a fürt erőforrásainak időtúllépése a Red Hat időtúllépési javaslataihoz
+- 02/11/2020: SAP HANA kiadása az [Azure-beli nagyméretű példányok Azure-ba való áttelepítésének Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)
 - 02/07/2020: változás a [nyilvános végponti kapcsolaton a virtuális gépekhez az Azure standard ILB használatával SAP ha-forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) a minta NSG-képernyőkép frissítése
 - 02/03/2020: a magas rendelkezésre állás megváltozása az SAP NW-ben Azure-beli [virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) az SAP-alkalmazások SLES és [magas rendelkezésre ÁLLÁSa SAP NW-hez az Azure-beli virtuális gépeken a SLES-ben a ANF for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) használatával a SLES-beli fürtcsomópontok állomásneve
 - 01/28/2020: a [RHEL Azure-beli virtuális gépeken a SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) megváltozása a SAP HANA-fürt erőforrásainak a Red Hat időtúllépési javaslataihoz való igazításához

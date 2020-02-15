@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024534"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206174"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
@@ -47,11 +47,11 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 > [!NOTE]
 > Az elnevezett Entity Recognition (megnevezett entitások) v3 nyilvános előzetes verziójának részletes nyelvi támogatását lásd: [nevesített entitások típusai](named-entity-types.md).
 
-| Nyelv              | Nyelvkód | Vélemény | Kulcskifejezések | Nevesített entitások felismerése | Entitás összekapcsolása |       Megjegyzések        |
+| Nyelv              | Nyelvkód | Hangulat | Legfontosabb kifejezések | Megnevezett entitások felismerése | Entitás összekapcsolása |       Megjegyzések        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | arab                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | cseh                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Egyszerűsített kínai    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Egyszerűsített kínai    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` is elfogadva                   |
 | Kínai – hagyományos   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | dán                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | holland                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
@@ -64,11 +64,11 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 | olasz               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | japán              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | koreai                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Norvég (nyelven)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Norvég (nyelven)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` is elfogadva                   |
 | lengyel                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Portugál (portugáliai) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is elfogadva |
-| Portugál (brazíliai)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
-| orosz               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| portugál (általános) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is elfogadva |
+| portugál (brazíliai)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
+| Orosz               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | spanyol               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
 | svéd               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | török               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
@@ -77,7 +77,7 @@ a \* nyelvi támogatása előzetes verzióban érhető el
 
 a \** a [Hangulatelemzés v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) és/vagy a [named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) nyilvános előzetes verzióban is elérhető.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Cognitive Services dokumentációs oldal](https://docs.microsoft.com/azure/cognitive-services/)   
 [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)

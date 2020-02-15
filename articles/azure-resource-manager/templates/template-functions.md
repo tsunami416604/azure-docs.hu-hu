@@ -2,19 +2,21 @@
 title: Sablonfüggvények
 description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483972"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207042"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager sablon függvények
 
 Ez a cikk a Azure Resource Manager-sablonokban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
 
 Saját függvények létrehozásához tekintse meg a [felhasználó által definiált függvények](template-syntax.md#functions)című témakört.
+
+A legtöbb függvény ugyanúgy működik, amikor az erőforráscsoportot, az előfizetést, a felügyeleti csoportot vagy a bérlőt telepíti. Néhány függvény nem használható minden hatókörben. Ezeket az alábbi listán fel kell tüntetni.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,14 +37,15 @@ Saját függvények létrehozásához tekintse meg a [felhasználó által defin
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Tömb- és objektumfüggvények
+
 A Resource Manager számos funkciót biztosít a tömbök és objektumok használatához.
 
-* [array](template-functions-array.md#array) (tömb)
+* [tömb](template-functions-array.md#array)
 * [összefonódik](template-functions-array.md#coalesce)
 * [concat](template-functions-array.md#concat)
 * [tartalmaz](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [empty](template-functions-array.md#empty)
+* [üres](template-functions-array.md#empty)
 * [első](template-functions-array.md#first)
 * [kereszteződés](template-functions-array.md#intersection)
 * [JSON](template-functions-array.md#json)
@@ -62,12 +65,13 @@ A Resource Manager számos funkciót biztosít a tömbök és objektumok haszná
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Összehasonlító függvények
+
 A Resource Manager számos funkciót biztosít a sablonokban való összehasonlításhoz.
 
 * [egyenlő](template-functions-comparison.md#equals)
-* [less](template-functions-comparison.md#less)
+* [kisebb](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [greater](template-functions-comparison.md#greater)
+* [nagyobb](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
@@ -75,6 +79,7 @@ A Resource Manager számos funkciót biztosít a sablonokban való összehasonl�
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>Központi telepítési érték függvények
+
 A Resource Manager a következő függvényeket biztosítja a sablon és a telepítéshez kapcsolódó értékek beolvasásához:
 
 * [telepítési](template-functions-deployment.md#deployment)
@@ -89,6 +94,7 @@ A Resource Manager a következő függvényeket biztosítja a sablon és a telep
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logikai függvények
+
 A Resource Manager a következő funkciókat biztosítja a logikai feltételekkel való együttműködéshez:
 
 * [és](template-functions-logical.md#and)
@@ -109,6 +115,7 @@ A Resource Manager a következő funkciókat biztosítja a logikai feltételekke
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerikus függvények
+
 A Resource Manager a következő függvényeket biztosítja az egész számokkal való használathoz:
 
 * [hozzáadása](template-functions-numeric.md#add)
@@ -134,7 +141,8 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Erőforrásfüggvények
-A Resource Manager a következő függvényeket biztosítja az erőforrások értékeinek lekéréséhez:
+
+Resource Manager az alábbi funkciókat biztosít erőforrás-értékeinek beolvasása:
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
 * [listAccountSas](template-functions-resource.md#list)
@@ -143,9 +151,9 @@ A Resource Manager a következő függvényeket biztosítja az erőforrások ér
 * [listáját](template-functions-resource.md#list)
 * [szolgáltatók](template-functions-resource.md#providers)
 * [referencia](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [előfizetést](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
+* [resourceId](template-functions-resource.md#resourceid) – bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
+* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoporthoz vagy előfizetéshez használható központi telepítések esetén.
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,6 +189,7 @@ A Resource Manager a következő függvényeket biztosítja az erőforrások ér
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Sztringfüggvények
+
 A Resource Manager a következő függvényeket biztosítja a karakterláncok használatához:
 
 * [Base64](template-functions-string.md#base64)
@@ -190,10 +199,10 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [tartalmaz](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [empty](template-functions-string.md#empty)
+* [üres](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
 * [első](template-functions-string.md#first)
-* [format](template-functions-string.md#format)
+* [formátumban](template-functions-string.md#format)
 * [GUID](template-functions-string.md#guid)
 * [indexOf](template-functions-string.md#indexof)
 * [utolsó](template-functions-string.md#last)
@@ -205,7 +214,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [kihagyása](template-functions-string.md#skip)
 * [felosztás](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
+* [karakterlánc](template-functions-string.md#string)
 * [substring](template-functions-string.md#substring)
 * [eltarthat](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
@@ -221,5 +230,5 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 
 * Azure Resource Manager sablonban található részekről a következő témakörben talál leírást: [Azure Resource Manager sablonok készítése](template-syntax.md)
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md) című témakört.
-* Ha meg szeretné ismételni a megadott számú alkalommal egy erőforrás-típus létrehozásakor, tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](create-multiple-instances.md) című témakört.
+* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
 * A létrehozott sablon üzembe helyezéséről lásd: [alkalmazás központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md)

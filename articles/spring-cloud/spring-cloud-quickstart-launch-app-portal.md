@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201543"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251821"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -65,6 +65,9 @@ az extension add --name spring-cloud
 1. Kattintson **a felülvizsgálat és létrehozás**gombra.
 
 1. Ellenőrizze a specifikációkat, majd kattintson a **Létrehozás**gombra.
+
+>[!Note]
+> Ha a sablon ellenőrzése több mint 3 percet vesz igénybe, próbálja meg letiltani a nyomkövetést, és próbálkozzon újra.
 
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A telepítés után megjelenik a szolgáltatási példány **Áttekintés** lapja.
 

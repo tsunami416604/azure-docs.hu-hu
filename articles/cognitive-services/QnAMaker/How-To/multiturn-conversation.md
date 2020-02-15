@@ -1,22 +1,14 @@
 ---
 title: Több-turn beszélgetések – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: A kérdésekkel és környezettel kezelheti a több fordulatot, más néven a robotot az egyik kérdésből a másikba. A többszörös bekapcsolás lehetősége van arra, hogy olyan háttérbeli beszélgetést lehessen használni, ahol az előző kérdés kontextusa befolyásolja a következő kérdést és választ.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843260"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210414"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -31,6 +23,9 @@ Ha szeretné megtekinteni, hogyan működik a több funkció, tekintse meg az al
 Néhány kérdés nem válaszolható meg egyetlen fordulatban sem. Amikor megtervezi az ügyfélalkalmazás (chat bot) beszélgetéseit, a felhasználók megtehetnek egy olyan kérdést, amelyet szűrni vagy finomítani kell a helyes válasz megállapítása érdekében. Ezt a folyamatot a lehetséges kérdések segítségével teheti meg, ha a felhasználót a *követő kérésekkel*mutatja be.
 
 Amikor egy felhasználó kérdést tesz fel, QnA Maker visszaadja a választ _és_ a követő utasításokat. Ez a válasz lehetővé teszi, hogy választási lehetőségként bemutassa a követő kérdéseket.
+
+> [!CAUTION]
+> A többszörös kapcsolású kérések nem a GYIK-dokumentumokból lettek kinyerve. Ha több kibontásra van szüksége, távolítsa el azokat a kérdőjeleket, amelyek a QnA-párokat GYIK-ként jelölik.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Multi-turn beszélgetés a csevegő robottal
 
@@ -113,7 +108,7 @@ Olyan meglévő kérdés-válasz párokhoz adja hozzá a követési kérést, am
 1. A **kijelentkezés**sorában, a **Válasz** oszlopban válassza a **követő kérés hozzáadása**lehetőséget.
 1. A következő értékeket kell megadnia a **követési kérés** előugró ablakának mezőiben:
 
-    |Mező|Value (Díj)|
+    |Mező|Érték|
     |--|--|
     |Szöveg megjelenítése|Adja meg **az eszköz kikapcsolását**. Ez a követési parancssorban megjelenítendő egyéni szöveg.|
     |Csak kontextus| Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza a választ, ha a kérdés a kontextust adja meg.|
@@ -150,7 +145,7 @@ Amikor új kérdés-válasz párokat ad hozzá a tudásbázishoz, az egyes páro
 1. A kérdéshez tartozó **Válasz** oszlopban válassza a **következő üzenet hozzáadása**lehetőséget.
 1. A követő **üzenet (előzetes verzió)** alatt hozzon létre egy új követő kérdést a következő értékek megadásával:
 
-    |Mező|Value (Díj)|
+    |Mező|Érték|
     |--|--|
     |Szöveg megjelenítése|*Hozzon létre egy Windows-fiókot*. A követő parancssorban megjelenítendő egyéni szöveg|
     |Csak kontextus|Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza ezt a választ, ha a kérdés a kontextust adja meg.|

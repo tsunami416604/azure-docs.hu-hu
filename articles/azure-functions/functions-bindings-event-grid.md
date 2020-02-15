@@ -1,24 +1,25 @@
 ---
-title: Azure Functions Event Grid trigger
+title: Azure Functions-kötések Azure Event Grid
 description: Ismerje meg, hogyan kezelheti Event Grid eseményeit Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/04/2018
+ms.date: 02/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df851a79ef3fbb7473e100619f58b7f35bce1d45
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167507"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212009"
 ---
-# <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions Event Grid trigger
+# <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Event Grid
 
 Ez a cikk bemutatja, hogyan kezelheti [Event Grid](../event-grid/overview.md) eseményeit Azure Functionsban. Az Event Grid üzenetek HTTP-végponton való kezelésével kapcsolatos részletekért olvassa el [az események fogadása http-végpontra](../event-grid/receive-events.md)című témakört.
 
 Event Grid egy olyan Azure-szolgáltatás, amely HTTP-kéréseket küld, hogy értesítse a *kiadói*eseményekről. A közzétevő az eseményt kezdeményező szolgáltatás vagy erőforrás. Egy Azure Blob Storage-fiók például közzétevő, [a blob feltöltése vagy törlése pedig egy esemény](../storage/blobs/storage-blob-event-overview.md). Egyes [Azure-szolgáltatások beépített támogatást biztosítanak az események Event Grid való közzétételéhez](../event-grid/overview.md#event-sources).
 
-Az *eseménykezelők fogadják* és dolgozzák fel az eseményeket. A Azure Functions számos olyan [Azure-szolgáltatás egyike, amelyek beépített támogatást biztosítanak a Event Grid események kezeléséhez](../event-grid/overview.md#event-handlers). Ebből a cikkből megtudhatja, hogyan használhat egy Event Grid eseményindítót egy függvény meghívásához, amikor egy esemény érkezik a Event Gridból.
+Az *eseménykezelők fogadják* és dolgozzák fel az eseményeket. A Azure Functions számos olyan [Azure-szolgáltatás egyike, amelyek beépített támogatást biztosítanak a Event Grid események kezeléséhez](../event-grid/overview.md#event-handlers). Ebből a cikkből megtudhatja, hogyan használhat egy Event Grid eseményindítót egy függvény meghívásához, ha a rendszer egy eseményt fogad Event Gridtól, és a kimeneti kötés használatával küldi az eseményeket egy [Event Grid egyéni témakörbe](../event-grid/post-to-custom-topic.md).
 
 Ha szeretné, használhat egy HTTP-triggert Event Grid események kezelésére; Lásd: [események fogadása http-végpontra](../event-grid/receive-events.md). Jelenleg nem használhat Event Grid eseményindítót egy Azure Functions alkalmazáshoz, ha az esemény a [CloudEvents-sémában](../event-grid/cloudevents-schema.md#azure-functions)kerül kézbesítésre. Ehelyett használjon HTTP-triggert.
 
@@ -26,7 +27,7 @@ Ha szeretné, használhat egy HTTP-triggert Event Grid események kezelésére; 
 
 ## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
-A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet csomagban, 2. x verzióban kell megadnia. A csomag forráskódja az [Azure-functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub-tárházban található.
+A Event Grid kötések a [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet csomagban találhatók, 2. x verzióban. A csomag forráskódja az [Azure-functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -36,7 +37,11 @@ A Event Grid triggert a [Microsoft. Azure. webjobs. Extensions. EventGrid](https
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Példa
+## <a name="trigger"></a>Eseményindító
+
+A függvény eseményindítójának használatával válaszolhat egy Event Grid témakörbe küldött eseményre.
+
+## <a name="trigger---example"></a>Az eseményindító – példa
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -66,7 +71,7 @@ namespace Company.Function
 }
 ```
 
-További információ: csomagok, [attribútumok](#attributes), [konfiguráció](#configuration)és [használat](#usage).
+További információ: csomagok, [attribútumok](#trigger---attributes), [konfiguráció](#trigger---configuration)és [használat](#trigger---usage).
 
 ### <a name="version-1x"></a>1\. x verzió
 
@@ -127,7 +132,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-További információ: csomagok, [attribútumok](#attributes), [konfiguráció](#configuration)és [használat](#usage).
+További információ: csomagok, [attribútumok](#trigger---attributes), [konfiguráció](#trigger---configuration)és [használat](#trigger---usage).
 
 ### <a name="version-1x"></a>1\. x verzió
 
@@ -284,7 +289,7 @@ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-b
 
 ---
 
-## <a name="attributes"></a>Attribútumok
+## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -316,11 +321,11 @@ A Python nem támogatja az attribútumokat.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) jegyzet lehetővé teszi a Event Grid kötések deklaratív konfigurálását a konfigurációs értékek megadásával. További részletekért tekintse meg a [példa](#example) és a [konfigurációs](#configuration) szakaszt.
+A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) jegyzet lehetővé teszi a Event Grid kötések deklaratív konfigurálását a konfigurációs értékek megadásával. További részletekért tekintse meg a [példa](#trigger---example) és a [konfigurációs](#trigger---configuration) szakaszt.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
 A következő táblázat a *function. JSON* fájlban beállított kötési konfigurációs tulajdonságokat ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok a `EventGridTrigger` attribútumban.
 
@@ -330,7 +335,7 @@ A következő táblázat a *function. JSON* fájlban beállított kötési konfi
 | **direction** | Kötelező – `in`értékre kell állítani. |
 | **név** | Kötelező – a függvény kódjában használt változó neve az esemény-adatfogadási paraméterhez. |
 
-## <a name="usage"></a>Használat
+## <a name="trigger---usage"></a>Eseményindító - használat
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -370,11 +375,11 @@ A Event Grid-példány elérhető a *function. JSON* fájl `name` tulajdonságá
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Az Event Grid-esemény a `EventGridTrigger` attribútumhoz társított paraméterrel érhető el, `EventSchema`ként beírva. További részletekért tekintse meg a [példát](#example) .
+Az Event Grid-esemény a `EventGridTrigger` attribútumhoz társított paraméterrel érhető el, `EventSchema`ként beírva. További részletekért tekintse meg a [példát](#trigger---example) .
 
 ---
 
-## <a name="event-schema"></a>Eseményséma
+## <a name="trigger---event-schema"></a>Eseményindító – esemény sémája
 
 Egy Event Grid eseményhez tartozó adatmennyiség egy HTTP-kérelem törzsében JSON-objektumként érkezik. A JSON a következő példához hasonlóan néz ki:
 
@@ -412,7 +417,7 @@ A Common és az Event-specifikus tulajdonságok magyarázatát az Event Grid [do
 
 A `EventGridEvent` típus csak a legfelső szintű tulajdonságokat definiálja, a `Data` tulajdonság egy `JObject`.
 
-## <a name="create-a-subscription"></a>Előfizetés létrehozása
+## <a name="trigger---create-a-subscription"></a>Trigger – előfizetés létrehozása
 
 Event Grid HTTP-kérelmek fogadásának megkezdéséhez hozzon létre egy Event Grid-előfizetést, amely megadja a függvényt meghívó végpont URL-címét.
 
@@ -486,7 +491,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_exten
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Ez egy felügyeleti API, ezért a Function app [főkulcsát](functions-bindings-http-webhook.md#authorization-keys)igényli. Ne tévesszük össze a rendszerkulcsot (egy Event Grid trigger függvény meghívásához) a főkulccsal (a Function alkalmazás felügyeleti feladatainak végrehajtásához). Amikor előfizet egy Event Grid témakörre, ügyeljen arra, hogy a rendszerkulcsot használja.
+Ez egy felügyeleti API, ezért a Function app [főkulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys)igényli. Ne tévesszük össze a rendszerkulcsot (egy Event Grid trigger függvény meghívásához) a főkulccsal (a Function alkalmazás felügyeleti feladatainak végrehajtásához). Amikor előfizet egy Event Grid témakörre, ügyeljen arra, hogy a rendszerkulcsot használja.
 
 Íme egy példa a rendszerkulcsot biztosító válaszra:
 
@@ -508,11 +513,11 @@ A Function alkalmazás főkulcsát a portál **Function app Settings** lapján s
 > [!IMPORTANT]
 > A főkulcs rendszergazdai hozzáférést biztosít a Function alkalmazáshoz. Ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt natív ügyfélalkalmazásokba.
 
-További információ: [engedélyezési kulcsok](functions-bindings-http-webhook.md#authorization-keys) a http-trigger dokumentációjában.
+További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys) a http-trigger dokumentációjában.
 
 Azt is megteheti, hogy HTTP-PUT-t küld a kulcs értékének megadásához.
 
-## <a name="local-testing-with-viewer-web-app"></a>Helyi tesztelés a megjelenítői webalkalmazással
+## <a name="trigger---local-testing-with-viewer-web-app"></a>Trigger – helyi tesztelés a megjelenítői webalkalmazással
 
 Event Grid-trigger helyi teszteléséhez be kell szereznie Event Grid HTTP-kéréseket a felhőből a helyi gépre. Ennek egyik módja a kérelmek online rögzítésének és manuális újraküldése a helyi gépen:
 
@@ -584,6 +589,239 @@ A következő Képernyőképek a Poster fejléceit és a kérelem törzsét muta
 A Event Grid trigger függvény végrehajtja és megjeleníti a következő példához hasonló naplókat:
 
 ![Minta Event Grid trigger-függvények naplói](media/functions-bindings-event-grid/eg-output.png)
+
+## <a name="output"></a>Kimenet
+
+A Event Grid kimeneti kötés használatával írhat eseményeket egyéni témakörbe. [Az egyéni témakörhöz érvényes hozzáférési kulccsal](../event-grid/security-authentication.md#custom-topic-publishing)kell rendelkeznie.
+
+> [!NOTE]
+> A Event Grid kimeneti kötés nem támogatja a közös hozzáférésű aláírásokat (SAS-tokeneket). A témakör elérési kulcsát kell használnia.
+
+A kimeneti kötés megvalósítása előtt győződjön meg arról, hogy a szükséges csomagokra vonatkozó hivatkozások vannak érvényben.
+
+> [!IMPORTANT]
+> A Event Grid kimeneti kötés csak a 2. x és újabb függvények esetében érhető el.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy Event Grid egyéni témakörbe ír egy üzenetet, amely a metódus visszatérési értékét használja kimenetként:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    return new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Az alábbi példa azt szemlélteti, hogyan lehet a `IAsyncCollector` felületen elküldeni egy köteg üzenetet.
+
+```csharp
+[FunctionName("EventGridAsyncOutput")]
+public static async Task Run(
+    [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+    [EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]IAsyncCollector<EventGridEvent> outputEvents,
+    ILogger log)
+{
+    for (var i = 0; i < 3; i++)
+    {
+        var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+        await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az alábbi példa a *function. JSON* fájlban lévő Event Grid kimeneti kötési adatokat mutatja be.
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Az alábbi C# szkript kód egy eseményt hoz létre:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogger log)
+{
+    outputEvent = new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Az alábbi C# parancsfájl-kód több eseményt hoz létre:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent, ILogger log)
+{
+    outputEvent.Add(new EventGridEvent("message-id-1", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+    outputEvent.Add(new EventGridEvent("message-id-2", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Az alábbi példa a *function. JSON* fájlban lévő Event Grid kimeneti kötési adatokat mutatja be.
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Az alábbi JavaScript-kód egyetlen eseményt hoz létre:
+
+```javascript
+module.exports = async function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = {
+        id: 'message-id',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    };
+    context.done();
+};
+```
+
+Az alábbi JavaScript-kód több eseményt hoz létre:
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = [];
+
+    context.bindings.outputEvent.push({
+        id: 'message-id-1',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.bindings.outputEvent.push({
+        id: 'message-id-2',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.done();
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Event Grid kimeneti kötés nem érhető el a Javához.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Kimenet – attribútumok és jegyzetek
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Az [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) attribútumot használja az [ C# osztályok könyvtáraihoz](functions-dotnet-class-library.md).
+
+Az attribútum konstruktora egy olyan Alkalmazásbeállítás nevét adja meg, amely az egyéni témakör nevét és egy, a témakör kulcsát tartalmazó Alkalmazásbeállítás nevét tartalmazza. További információ ezekről a beállításokról: [kimeneti konfiguráció](#output---configuration). Példa `EventGrid` attribútumra:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    ...
+}
+```
+
+Teljes példa: [kimenet – C# példa](#output).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az C# attribútumokat a parancsfájl nem támogatja.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Event Grid kimeneti kötés nem érhető el a Javához.
+
+---
+
+## <a name="output---configuration"></a>Kimenete – konfiguráció
+
+Az alábbi táblázat a *function. JSON* fájlban és a `EventGrid` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+
+|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|---------|---------|----------------------|
+|**type** | n/a | "EventGrid" értékre kell állítani. |
+|**direction** | n/a | Állítsa "out". Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**topicEndpointUri** |**TopicEndpointUri** | Az egyéni témakör URI azonosítóját tartalmazó Alkalmazásbeállítás neve, például `MyTopicEndpointUri`. |
+|**topicKeySetting** |**TopicKeySetting** | Az egyéni témakör elérési kulcsát tartalmazó Alkalmazásbeállítás neve. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy a `TopicEndpointUri` konfiguráció tulajdonság értékét az egyéni témakör URI-JÁT tartalmazó Alkalmazásbeállítás nevére állítja be. Ne határozza meg az egyéni témakör URI-JÁT közvetlenül ebben a tulajdonságban.
+
+## <a name="output---usage"></a>Kimenet – használat
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Üzenetek küldése egy metódus-paraméter (például `out EventGridEvent paramName`) használatával. Több üzenet írásához `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>`t is használhat `out EventGridEvent`helyett.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Üzenetek küldése egy metódus-paraméter (például `out EventGridEvent paramName`) használatával. A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. Több üzenet írásához `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>`t is használhat `out EventGridEvent`helyett.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A kimeneti eseményt `context.bindings.<name>` használatával érheti el, ahol `<name>` a *function. json*`name` tulajdonságában megadott érték.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Event Grid kimeneti kötés nem érhető el a Javához.
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845901"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210225"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Az első PowerShell-függvény létrehozása az Azure-ban
 
@@ -25,7 +25,7 @@ A következő lépések támogatottak a macOS, a Windows és a Linux rendszerű 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+A gyorsútmutató elvégzéséhez:
 
 * A [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows) telepítése
 
@@ -61,7 +61,7 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 1. Válassza ki a **http-triggert** az első függvény sablonja, használja a `HTTPTrigger` nevet, és válassza ki a **függvény**engedélyezési szintjét.
 
     > [!NOTE]
-    > A **függvény engedélyezési szintjének** függvény [kulcsának](functions-bindings-http-webhook.md#authorization-keys) értékét kell megadnia a függvény végpontjának az Azure-ban való meghívásakor. Ez megnehezíti a függvény meghívását.
+    > A **függvény engedélyezési szintjének** függvény [kulcsának](functions-bindings-http-webhook-trigger.md#authorization-keys) értékét kell megadnia a függvény végpontjának az Azure-ban való meghívásakor. Ez megnehezíti a függvény meghívását.
 
 1. Amikor a program kéri, válassza az **Add to workspace** (Hozzáadás munkaterülethez) lehetőséget.
 

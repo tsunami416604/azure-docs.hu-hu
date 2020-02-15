@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029860"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210157"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -51,7 +51,7 @@ Néhány kulcsfontosságú fogalom fontos, hogy megértsük, hogyan működnek a
 Az eseményindítók módosításakor a functions infrastruktúrájának tisztában kell lennie a változásokkal. A szinkronizálás számos üzembe helyezési technológia esetében automatikusan megtörténik. Bizonyos esetekben azonban manuálisan kell szinkronizálnia az eseményindítókat. Ha a frissítéseket egy külső csomag URL-címére, a helyi git-ra, a felhő-szinkronizálásra vagy az FTP-re hivatkozva telepíti, manuálisan kell szinkronizálnia az eseményindítókat. Az eseményindítók szinkronizálása háromféleképpen végezhető el:
 
 * Indítsa újra a Function alkalmazást a Azure Portal
-* HTTP POST-kérés küldése `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` a [főkulcs](functions-bindings-http-webhook.md#authorization-keys)használatával.
+* HTTP POST-kérés küldése `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` a [főkulcs](functions-bindings-http-webhook-trigger.md#authorization-keys)használatával.
 * HTTP POST-kérelem küldése a `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`nak. Cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és a függvény alkalmazásának nevére.
 
 ### <a name="remote-build"></a>Távoli Build

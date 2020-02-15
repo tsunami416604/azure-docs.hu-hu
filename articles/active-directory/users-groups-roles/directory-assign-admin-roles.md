@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158162"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251617"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -246,7 +246,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 > Ezek a funkciók jelenleg fejlesztés alatt állnak.
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[Csoport rendszergazdája](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[Csoportok rendszergazdája](#groups-administrator-permissions)
 
 A szerepkör felhasználói létrehozhatnak és kezelhetnek csoportokat és azok beállításait, például az elnevezési és lejárati házirendeket. Fontos tisztában lenni azzal, hogy egy felhasználó ehhez a szerepkörhöz rendelése lehetővé teszi, hogy a bérlő összes csoportját a különböző munkaterhelések, például a csapatok, a SharePoint, a Yammer és az Outlook mellett is kezelhesse. Emellett a felhasználók a különböző csoportok beállításait is kezelhetik különböző felügyeleti portálokon, például a Microsoft felügyeleti központban, a Azure Portalon, valamint a munkaterhelések, például a csapatok és a SharePoint-felügyeleti központok között.
 
@@ -1081,7 +1081,7 @@ Mindent megtudhat, hogy globális rendszergazda tud-e, de nem szerkeszthet semmi
 | microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 | Microsoft. Office 365. Webportal/allEntities/standard/olvasás   | A Microsoft. Office 365. webporting összes erőforrásának általános tulajdonságainak olvasása. |
 
-### <a name="group-administrator-permissions"></a>Rendszergazdai engedélyek csoportosítása
+### <a name="groups-administrator-permissions"></a>Rendszergazdai engedélyek csoportok
 Kezelheti a csoportok és a csoportházirend-beállítások összes aspektusát, például az elnevezési és lejárati házirendeket.
 
 | **Műveletek** | **Leírás** |
@@ -1701,7 +1701,7 @@ B2C IEF házirend rendszergazdája | B2C IEF házirend rendszergazdája | 3edaf6
 Számlázási rendszergazda | Számlázási rendszergazda | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Cloud Application Administrator | Cloud Application Administrator | 158c047a-c907-4556-b7ef-446551a6b5f7
 Felhőalapú eszköz rendszergazdája | Felhőalapú eszköz rendszergazdája | 7698a772-787b-4ac8-901f-60d6b08affd2
-Vállalati rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
+Céges rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
 Megfelelőségi rendszergazda | Megfelelőségi rendszergazda | 17315797-102d-40b4-93e0-432062caca18
 Megfelelőségi adatkezelő | Megfelelőségi adatkezelő | e6d1a23a-da11-4be4-9570-befc86d067a7
 Feltételes hozzáférésű rendszergazda | Feltételes hozzáférésű rendszergazda | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
@@ -1718,7 +1718,7 @@ Címtár-írók | Címtár-írók | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange szolgáltatás rendszergazdája | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Külső identitás-szolgáltató rendszergazdája | Külső identitás-szolgáltató rendszergazdája | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globális olvasó | Globális olvasó | f2ef992c-3afb-46b9-b7cf-a126ee74c451
-Csoport rendszergazdája | Csoport rendszergazdája | fdd7a751-b60b-444a-984c-02652fe8fa1c 
+Csoportok rendszergazdája | Csoportok rendszergazdája | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Vendég meghívója | Vendég meghívója | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Segélyszolgálat rendszergazdája | Segélyszolgálat rendszergazdája | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune szolgáltatás rendszergazdája | Intune-rendszergazda | 3a2c62db-5318-420d-8d74-23affee5d9d5

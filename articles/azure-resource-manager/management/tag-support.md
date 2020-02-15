@@ -2,13 +2,13 @@
 title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: e17e6a996f54d6211f87ec20765d3fde782b7d6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715604"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207927"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -116,6 +116,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. Migrálás](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
 > - [Microsoft. NetApp](#microsoftnetapp)
+> - [Microsoft. notebookok](#microsoftnotebooks)
 > - [Microsoft. Network](#microsoftnetwork)
 > - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft. ObjectStore](#microsoftobjectstore)
@@ -148,6 +149,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SpoolService](#microsoftspoolservice)
 > - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft. Storage](#microsoftstorage)
@@ -367,6 +369,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts/billingProfiles/utasítások | Nem | Nem |
 > | billingAccounts/billingProfiles/számlák | Nem | Nem |
 > | billingAccounts/billingProfiles/számlák/árlista | Nem | Nem |
+> | billingAccounts/billingProfiles/számlák/tranzakciók | Nem | Nem |
 > | billingAccounts / billingProfiles / invoiceSections | Nem | Nem |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | Nem | Nem |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | Nem | Nem |
@@ -430,7 +433,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | részlegek | Nem | Nem |
 > | enrollmentAccounts | Nem | Nem |
 > | számlák | Nem | Nem |
-> | transzferek | Nem | Nem |
+> | Transzferek | Nem | Nem |
 > | átvitelek/acceptTransfer | Nem | Nem |
 > | átvitelek/declineTransfer | Nem | Nem |
 > | átvitelek/operationStatus | Nem | Nem |
@@ -484,7 +487,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | Redis | Igen | Igen |
-> | RedisConfigDefinition | Nem | Nem |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -707,6 +709,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kibocsátásiegység-forgalmi jegyzékek/getBuildSourceUploadUrl | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/GetCredentials | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/importImage | Nem | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnectionProxies | Nem | Nem |
+> | nyilvántartások/privateEndpointConnectionProxies/érvényesítés | Nem | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateLinkResources | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/queueBuild | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/regenerateCredential | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/regenerateCredentials | Nem | Nem |
@@ -745,13 +750,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | Riasztások | Nem | Nem |
-> | billingAccounts | Nem | Nem |
+> | BillingAccounts | Nem | Nem |
 > | Költségvetések | Nem | Nem |
 > | CloudConnectors | Nem | Nem |
 > | Összekötők | Igen | Igen |
-> | részlegek | Nem | Nem |
-> | Méretek | Nem | Nem |
-> | enrollmentAccounts | Nem | Nem |
+> | Részlegek | Nem | Nem |
+> | Dimenziók | Nem | Nem |
+> | EnrollmentAccounts | Nem | Nem |
 > | export | Nem | Nem |
 > | ExternalBillingAccounts | Nem | Nem |
 > | ExternalBillingAccounts/riasztások | Nem | Nem |
@@ -792,7 +797,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | feladatok | Igen | Igen |
+> | Feladatok | Igen | Igen |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
@@ -942,7 +947,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | serviceTopologies | Igen | Igen |
 > | serviceTopologies/szolgáltatások | Igen | Igen |
 > | serviceTopologies/szolgáltatások/serviceUnits | Igen | Igen |
-> | Lépések | Igen | Igen |
+> | lépések | Igen | Igen |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
@@ -970,7 +975,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | IotHubs | Igen | Igen |
 > | IotHubs/eventGridFilters | Nem | Nem |
 > | IotHubs/securitySettings | Nem | Nem |
-> | ProvisioningServices | Igen | Igen |
+> | provisioningServices | Igen | Igen |
 > | használat | Nem | Nem |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
@@ -1170,7 +1175,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | feladatok | Igen | Igen |
+> | Feladatok | Igen | Igen |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
@@ -1393,6 +1398,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | netAppAccounts/capacityPools/kötetek/mountTargets | Igen | Nem |
 > | netAppAccounts/capacityPools/kötetek/Pillanatképek | Igen | Nem |
 
+## <a name="microsoftnotebooks"></a>Microsoft. notebookok
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | Nem | Nem |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1514,7 +1526,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | fürtök | Igen | Igen |
-> | eszközök | Nem | Nem |
 > | linkTargets | Nem | Nem |
 > | storageInsightConfigs | Nem | Nem |
 > | munkaterületek | Igen | Igen |
@@ -1525,6 +1536,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | munkaterületek/privateEndpointConnections | Nem | Nem |
 > | munkaterületek/privateLinkResources | Nem | Nem |
 > | munkaterületek/lekérdezés | Nem | Nem |
+> | munkaterületek/scopedPrivateLinkProxies | Nem | Nem |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1614,7 +1626,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | fiókok | Nem | Nem |
-> | gyűjtemények | Igen | Igen |
+> | Gyűjtemények | Igen | Igen |
 > | gyűjtemények/alkalmazások | Nem | Nem |
 > | gyűjtemények/securityprincipals | Nem | Nem |
 > | templateImages | Nem | Nem |
@@ -1658,7 +1670,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | notifyResourceJobs | Nem | Nem |
 > | Szolgáltatók | Nem | Nem |
 > | resourceGroups | Igen | Nem |
-> | előfizetések | Nem | Nem |
+> | előfizetések | Igen | Nem |
 > | bérlők | Nem | Nem |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1747,8 +1759,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | könyvjelzők | Nem | Nem |
 > | esetekben | Nem | Nem |
 > | dataConnectors | Nem | Nem |
+> | dataConnectorsCheckRequirements | Nem | Nem |
 > | szervezetek | Nem | Nem |
 > | entityQueries | Nem | Nem |
+> | Események | Nem | Nem |
 > | officeConsents | Nem | Nem |
 > | beállítások | Nem | Nem |
 
@@ -1782,11 +1796,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | containerGroupSets | Igen | Igen |
 > | edgeclusters | Igen | Igen |
 > | edgeclusters/alkalmazások | Nem | Nem |
+> | managedclusters | Igen | Igen |
+> | managedclusters / nodetypes | Nem | Nem |
 > | hálózatok | Igen | Igen |
 > | secretstores | Igen | Igen |
 > | secretstores/tanúsítványok | Nem | Nem |
 > | secretstores/titkok | Nem | Nem |
-> | kötegek | Igen | Igen |
+> | volumes | Igen | Igen |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
@@ -1798,7 +1814,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | átjárók | Igen | Igen |
 > | hálózatok | Igen | Igen |
 > | titkok | Igen | Igen |
-> | kötegek | Igen | Igen |
+> | volumes | Igen | Igen |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -1839,6 +1855,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | applicationDefinitions | Igen | Igen |
 > | alkalmazások | Igen | Igen |
 > | jitRequests | Igen | Igen |
+
+## <a name="microsoftspoolservice"></a>Microsoft. SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
+> | ------------- | ----------- | ----------- |
+> | registeredSubscriptions | Nem | Nem |
+> | orsók | Igen | Igen |
 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -2004,6 +2028,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | eszközök | Igen | Igen |
 > | szállítók | Nem | Nem |
 > | szállítók/SKU-i | Nem | Nem |
+> | szállítók/vnfs | Nem | Nem |
 > | vnfs | Igen | Igen |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

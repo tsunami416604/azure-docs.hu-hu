@@ -1,19 +1,19 @@
 ---
 title: Azure Maps fiók kezelése a Azure Portalban | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan kezelheti a Microsoft Azure Maps-fiókját a Azure Portal használatával.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025605"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209970"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
@@ -23,7 +23,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 

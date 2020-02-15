@@ -1,19 +1,19 @@
 ---
 title: Forgalom lefedettsége | Microsoft Azure térképek
 description: Ebben a cikkben megtudhatja, hogyan tekintheti meg Microsoft Azure Maps forgalom lefedettségét.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988145"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209528"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
@@ -21,9 +21,9 @@ A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes
 
 A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal minden országban vagy régióban. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+## <a name="americas"></a>Amerika
 
-|Ország/régió  |Események  |Flow  |
+|Ország/régió  |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
 |Argentína      |✓         |✓         |
 |Brazília     |✓         |✓         |
@@ -33,13 +33,13 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Mexikó     |✓         |✓         |
 |Peru       |✓         |✓         | 
 |Egyesült Államok     |✓         |✓        |
-|\+ Puerto Rico     |✓         |✓         |
+|+Puerto Rico     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-|Ország/régió   |Események  |Flow  |
+|Ország/régió   |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
 |Ausztrália     |✓         |✓        |
 |Brunei   |✓         |✓        |
@@ -59,7 +59,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 
 ## <a name="europe"></a>Európa
 
-|Ország/régió   |Események  |Flow  |
+|Ország/régió   |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Ausztria     |✓         |✓         |
@@ -68,7 +68,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Bosznia-Hercegovina    |✓         |✓         |
 |Bulgária     |✓         |✓         |
 |Horvátország     |✓         |✓         |
-|Csehország     |✓         |✓         |
+|Cseh Köztársaság     |✓         |✓         |
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
@@ -101,7 +101,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Szlovákia     |✓         |✓         |
 |Szlovénia     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
-|\+ Andorra     |✓         |✓         |
+|+Andorra     |✓         |✓         |
 |\+ Baleár-szigetek     |✓         |✓         |
 |\+ Kanári-szigetek     |✓         |✓         |
 |Svédország     |✓         |✓         |
@@ -117,7 +117,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-|Ország/régió |Események  |Flow  |
+|Ország/régió |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egyiptom     |✓         |✓         |
@@ -130,7 +130,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Omán     |✓         |✓         |
 |Katar     |✓         |✓         |
 |Szaúd-Arábia     |✓         |✓         |
-|Dél-afrikai Köztársaság     |✓         |✓         |
+|Dél-Afrika     |✓         |✓         |
 |Egyesült Arab Emírségek  |✓         |✓         |
 
 ## <a name="next-steps"></a>Következő lépések

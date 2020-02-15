@@ -3,12 +3,12 @@ title: Üzembehelyezési módok
 description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207587"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
@@ -24,7 +24,7 @@ Teljes módban a Resource Manager **törli** az erőforráscsoport meglévő er�
 
 Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, mert a [feltétel](conditional-resource-deployment.md) hamis értéket ad vissza, akkor az eredmény attól függ, hogy melyik REST API-verziót használja a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. Az Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást.
 
-Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](create-multiple-instances.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
+Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](copy-resources.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
 
 Ha [egy sablonban több erőforráscsoporthoz](cross-resource-group-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68de948261ec8bad429daafcb27e63ca5f7efb7a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207298"
+ms.locfileid: "77251685"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory SSO-integráció a JAMF Pro-val
 
@@ -151,16 +151,16 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
   b. Jelölje be az **egyszeri bejelentkezéses hitelesítés engedélyezése** jelölőnégyzetet.
 
-    c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
+  c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
 
-    d. Másolja az **entitás-azonosító** értékét, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **azonosító (entitás azonosítója)** mezőjébe.
+  d. Másolja az **entitás-azonosító** értékét, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **azonosító (entitás azonosítója)** mezőjébe.
 
-    > [!NOTE]
-    > A `<SUBDOMAIN>` mezőben található érték használatával fejezze be a bejelentkezési URL-címet és a válasz URL-címét a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+> [!NOTE]
+> A `<SUBDOMAIN>` mezőben található érték használatával fejezze be a bejelentkezési URL-címet és a válasz URL-címét a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    e. Válassza ki a **metaadatok URL-címét** az **Identity Provider metaadatok forrása** legördülő menüből. A megjelenő mezőben illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
+  e. Válassza ki a **metaadatok URL-címét** az **Identity Provider metaadatok forrása** legördülő menüből. A megjelenő mezőben illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
-    f. Választható Szerkessze a jogkivonat lejárati értékét, vagy válassza az "SAML-jogkivonat lejáratának letiltása" lehetőséget.
+  f. Választható Szerkessze a jogkivonat lejárati értékét, vagy válassza az "SAML-jogkivonat lejáratának letiltása" lehetőséget.
 
 7. Ugyanazon a lapon görgessen le a felhasználó- **hozzárendelés** szakaszhoz. Ezután hajtsa végre az alábbi lépéseket.
 

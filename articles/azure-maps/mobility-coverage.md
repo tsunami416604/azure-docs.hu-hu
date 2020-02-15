@@ -1,25 +1,25 @@
 ---
 title: Mobilitási (tranzit) lefedettség | Microsoft Azure térképek
 description: Ebben a cikkben megismerheti a mobilitási lefedettséget Microsoft Azure Maps-ben
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048920"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208250"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps mobilitási lefedettség
 
-A Azure Maps [mobilitási szolgáltatást](https://aka.ms/AzureMapsMobilityService)biztosít. A mobilitási szolgáltatás javítja a nyilvános tranzittal, a kerékpár-megosztással és a robogó-megosztási funkciókkal rendelkező alkalmazások fejlesztési idejét. Lehetőséget kínál a multimodális kirándulások tervezési lehetőségeinek továbbítására. A nyilvános átvitel funkciói közé tartozik a közeli állomások keresése, a leállások keresése, az átviteli sorok keresése, az ütemtervek lekérése, a valós idejű nyilvános továbbítások beolvasása, valamint a lista leállítása és útvonal-útmutatók. A szolgáltatás valós idejű és statikus rendelkezésre állási információkat ad vissza a megosztott járművek, például az autók, a kerékpárok és a robogók számára. Az API részletes és multimodális lépésenkénti útvonalakat és szolgáltatás-riasztásokat ad vissza.
+A Azure Maps [mobilitási szolgáltatást](https://aka.ms/AzureMapsMobilityService)biztosít. A mobilitási szolgáltatás javítja a nyilvános tranzittal, a kerékpár-megosztással és a robogó-megosztási funkciókkal rendelkező alkalmazások fejlesztési idejét. A nyilvános átvitel funkciói közé tartozik a közeli állomások keresése, a leállások keresése, az átviteli sorok keresése, az ütemtervek lekérése, a valós idejű nyilvános továbbítások beolvasása, a lista leállítása és a lista útvonal-útmutatók. A szolgáltatás valós idejű és statikus rendelkezésre állási információkat ad vissza a megosztott járművek, például az autók, a kerékpárok és a robogók számára. Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális kirándulások megtervezése magában foglalja a biciklis, a Ride-jégeső és a tranzit lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes és a multimodális lépésenkénti útvonalakat és szolgáltatási riasztásokat is használhatják.
 
-Azure Maps nem rendelkezik azonos szintű információval és pontossággal az összes város és ország/régió tekintetében. A továbbítási adatok hívásának lehetősége a várostól függ. Előfordulhat, hogy az adat nem tartalmazza a várost kiszolgáló összes nyilvános átviteli lehetőséget és Ügynökséget.
+Azure Maps nem rendelkezik azonos szintű információval és pontossággal az összes város és ország/régió tekintetében. A továbbítási adatok hívásának lehetősége a várostól függ. Továbbá előfordulhat, hogy az adat nem tartalmazza az összes nyilvános árutovábbítási lehetőséget és a várost kiszolgáló ügynökségeket.
 
 Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi információit tartalmazza.
 
@@ -134,7 +134,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Marokkó | Casablanca, Khouribga, Tétouan|
 | Katar| Doha|
 | Szaúd-Arábia | Thuwal |
-| Dél-afrikai Köztársaság | Cape Town |
+| Dél-Afrika | Cape Town |
 | Tunézia | Kairouan |
 | Egyesült Arab Emírségek  | Abu Dhabi, Dubai |
 

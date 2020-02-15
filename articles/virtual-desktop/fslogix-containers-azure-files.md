@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891644"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212400"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -56,7 +56,7 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 #### <a name="performance"></a>Teljesítmény
 
-A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.  
+A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.  
 
 #### <a name="cost"></a>Költségek
 
@@ -70,15 +70,15 @@ A S2D-fürtök olyan operációs rendszert igényelnek, amely egy javított, fri
 
 2018. november 19-én a [Microsoft megszerezte a FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). A FSLogix számos profillal kapcsolatos kihívást jelent. A kulcsok közül a következők:
 
-- **Teljesítmény:** A [FSLogix-profil tárolói](https://fslogix.com/products/profile-containers) nagy teljesítményű és olyan teljesítménnyel kapcsolatos problémák megoldására szolgálnak, amelyek történelmileg letiltották a gyorsítótáras Exchange üzemmódot.
-- **OneDrive:** FSLogix-profilok nélkül a OneDrive for Business nem állandó RDSH-vagy VDI-környezetekben nem támogatott. [A OneDrive for Business és az FSLogix ajánlott eljárásai](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) ismertetik, hogyan hatnak egymásra. További információ: [a szinkronizálási ügyfél használata a virtuális asztalokon](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
+- **Teljesítmény:** A [FSLogix-profil tárolói](/fslogix/configure-profile-container-tutorial/) nagy teljesítményű és olyan teljesítménnyel kapcsolatos problémák megoldására szolgálnak, amelyek történelmileg letiltották a gyorsítótáras Exchange üzemmódot.
+- **OneDrive:** FSLogix-profilok nélkül a OneDrive for Business nem állandó RDSH-vagy VDI-környezetekben nem támogatott. [A OneDrive for Business és az FSLogix ajánlott eljárásai](/fslogix/overview/) ismertetik, hogyan hatnak egymásra. További információ: [a szinkronizálási ügyfél használata a virtuális asztalokon](/deployoffice/rds-onedrive-business-vdi/).
 - **További mappák:** A FSLogix lehetővé teszi a felhasználói profilok kiterjesztését további mappák befoglalására.
 
 A beszerzés óta a Microsoft megkezdte a meglévő felhasználói profil-megoldások, például a UPD FSLogix-profilok tárolására való lecserélését.
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integráció Azure Active Directory tartományi szolgáltatással
 
-A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
+A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](../storage/files/storage-files-active-directory-overview.md). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez
 
@@ -87,19 +87,19 @@ A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést
 Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali környezet az ajánlott eljárásokat követi:
 
 - Azure Files Storage-fióknak ugyanabban a régióban kell lennie, mint a munkamenet-gazdagép virtuális gépei.
-- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](https://docs.microsoft.com/fslogix/overview#requirements)című cikkben ismertetett engedélyekkel.
+- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](/fslogix/overview#requirements/)című cikkben ismertetett engedélyekkel.
 - Mindegyik gazdagépnek azonos típusú és méretű virtuális gépről kell kiépíteni, ugyanazon fő rendszerkép alapján.
 - Minden egyes gazdagép-készlet virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, hogy segítse a felügyeletet, a skálázást és a frissítést.
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
 - A fő lemezképet tartalmazó Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, ahol a virtuális gépek üzembe lettek kiépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 
 - Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
 - A Windows rendszerű virtuális asztali bérlőn belüli gazdagépek létrehozásával kapcsolatban lásd: [állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md).
-- A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](/azure/storage/files/storage-files-active-directory-enable).
+- A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](/azure/storage/files/storage-files-active-directory-enable/).
 - A FSLogix-profilok tárolók konfigurálásáról további információt a [fájlmegosztás létrehozása a címkészlet számára](create-host-pools-user-profile.md)című témakörben talál.
 - A felhasználók egy gazdagéphez való hozzárendelésével kapcsolatban lásd: [Manage app groups for Windows Virtual Desktop](manage-app-groups.md).
 - A Windows rendszerű virtuális asztali erőforrások webböngészőből való eléréséhez tekintse meg a [Kapcsolódás a Windows rendszerű virtuális asztalhoz](connect-web.md)című témakört.

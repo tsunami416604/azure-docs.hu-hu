@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457860"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251634"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -50,7 +50,7 @@ A .NET Core/C# Development szolgáltatáshoz a következő előfeltételeket kel
 * [.Net Core](https://www.microsoft.com/net/learn/get-started) (2.0.0 vagy újabb verzió)
 * [Visual Studio Code (OmniSharp-alapú) vs Code-bővítmény C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) A szolgáltatások hibakereséséhez C# szükséges. A-t a VS Code **tevékenység sávján** található Extensions (bővítmények) ikonra kattintva telepítheti, és megkeresheti a bővítményt, vagy a vs Code piactéren is.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 1. Nyissa meg a VS Code-ot.
 2. Kattintson a VS Code bal oldalán található **Activity sávban** a bővítmények ikonra. Keressen rá a "Service Fabric" kifejezésre. Kattintson a **telepítés** elemre a Service Fabric Reliable Services bővítményhez.
@@ -69,7 +69,7 @@ A VS Code Service Fabric Reliable Services bővítménye számos parancsot bizto
 
 A **Service Fabric: Create Application** parancs létrehoz egy új Service Fabric alkalmazást az aktuális munkaterületen. Attól függően, hogy mely Yeoman-generátorok vannak telepítve a fejlesztői gépen, többféle Service Fabric alkalmazást hozhat létre, beleértve a Java- C#, a tároló-és a vendég-projekteket is. 
 
-1.  Válassza ki a **Service Fabric: szolgáltatás hozzáadása** parancsot
+1.  Válassza ki a **Service Fabric: Create Application** parancs
 2.  Válassza ki az új Service Fabric alkalmazás típusát. 
 3.  Adja meg a létrehozni kívánt alkalmazás nevét
 3.  Válassza ki a Service Fabric alkalmazáshoz hozzáadni kívánt szolgáltatás típusát. 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114419"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212251"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -78,7 +78,7 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
-* Dél-Korea középső régiója
+* Korea középső régiója
 * Közép-India
 * Dél-India
 * Kelet-Japán 
@@ -109,7 +109,7 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * Délkelet-Ausztrália
 * Kelet-Ázsia
 * Délkelet-Ázsia
-* Dél-Korea középső régiója
+* Korea középső régiója
 * Közép-India
 * Kelet-Japán
 * USA-beli államigazgatás – Virginia
@@ -182,7 +182,7 @@ Válassza ki a következő beállításokat a képen látható módon:
 
 1. **Állapot** *kiválasztása*
 2. Válassza a *2. verziót* a flow- **naplók verziójának**kiválasztásához. A 2. verzió folyamat-munkameneti statisztikát tartalmaz (bájtok és csomagok)
-3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie. Győződjön meg arról, hogy a tároló nem rendelkezik "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" beállítás értéke TRUE (igaz). Emellett a NSG nem tárolhatók tűzfallal rendelkező Storage-fiókban. 
+3. Válasszon ki egy meglévő Storage-fiókot a folyamat naplófájljainak tárolásához a alkalmazásban. Ha örökre szeretné tárolni az adattárolást, állítsa az értéket *0-ra*. A Storage-fiókhoz Azure Storage-díjakat kell fizetnie. Győződjön meg arról, hogy a tároló nem rendelkezik "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" beállítás értéke TRUE (igaz).
 4. Állítsa be a **megőrzési** időt arra, hogy hány napig szeretné tárolni az adatok tárolását.
 > [!IMPORTANT]
 > Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).

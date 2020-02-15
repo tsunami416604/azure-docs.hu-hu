@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988532"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208522"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
 Ebből a cikkből megtudhatja, hogyan végezhet fordított címtartomány-keresést, amely megjeleníti egy rákattintott előugró hely címeit.
 
-A fordított címek keresésének kétféleképpen végezhető el. Az egyik módszer az, ha lekérdezi az [Azure Maps fordított címtartomány-keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t egy szolgáltatási modulon keresztül. A másik lehetőség, hogy a [beolvasás API](https://fetch.spec.whatwg.org/) -t használja, hogy egy adott címnek megfelelő kérést kérjen a [Azure Maps fordított CÍMTARTOMÁNY-kereső API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -nak. Az alábbiakban mindkét módszert megvizsgáljuk.
+A fordított címek keresésének kétféleképpen végezhető el. Az egyik módszer az, ha lekérdezi az [Azure Maps fordított címtartomány-keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t egy szolgáltatási modulon keresztül. A másik lehetőség, hogy a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérelmet küld a [Azure Maps fordított CÍMTARTOMÁNY-kereső API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -nak a címek kereséséhez. Az alábbiakban mindkét módszert megvizsgáljuk.
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Fordított keresési kérelem küldése a szolgáltatási modulon keresztül
 
@@ -37,7 +37,7 @@ A kód negyedik blokkja egy egérkattintással jeleníti meg az [esemény-figyel
 
 A kód ötödik blokkja beállítja a HTML-előugró tartalmat, hogy megjelenjen a válasz címe a rákattintott koordináta-pozícióhoz.
 
-A Térkép [betöltési esemény-figyelőben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a kurzor, egy előugró objektum és a click (kattintás) esemény módosul, így biztosítva, hogy a Térkép teljes mértékben betöltse a koordináták információinak beolvasása előtt.
+A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fordított keresési kérelem készítése a fetch API használatával
 
@@ -52,7 +52,7 @@ A kód második blokkja frissíti az egérmutató stílusát egy mutatóra. Elő
 
 A kód harmadik blokkja egy esemény-figyelőt hoz létre egérkattintáshoz. Ha egérkattintásra kattint, a [beolvasás API](https://fetch.spec.whatwg.org/) használatával kérdezi le a [Azure Maps fordított CÍMTARTOMÁNY-keresés API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -t a rákattintott koordináták címeire. A sikeres válaszhoz a rendszer a kijelölt helyhez tartozó címeket gyűjti. Meghatározza az előugró tartalmat és a pozíciót az előugró osztály [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkciójával.
 
-A Térkép [betöltési eseményének figyelője](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a kurzor, egy előugró objektum és a click (kattintás) esemény módosításával gondoskodik arról, hogy a Térkép betöltése teljes mértékben megtörténjen a koordináták adatainak beolvasása előtt.
+A kurzor, a felugró objektum és a click esemény változása mind a Térkép [betöltési eseményének figyelőben](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)jön létre. A kód szerkezete biztosítja a Térkép teljes terhelését a koordináták adatainak beolvasása előtt.
 
 ## <a name="next-steps"></a>Következő lépések
 

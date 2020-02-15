@@ -1,10 +1,10 @@
 ---
-title: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linuxon | Microsoft Docs
+title: Azure-beli virtuális gépek magas rendelkezésre állása SAP NW-hez a RHEL-on | Microsoft Docs
 description: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905036"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212793"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
 
@@ -154,7 +154,7 @@ Az Azure Marketplace egy Red Hat Enterprise Linux rendszerképet tartalmaz, amel
    1. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
       Létrejön egy új felhasználó, amely a gépre való bejelentkezéshez használható.
    1. Alhálózat azonosítója  
-   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /subnets/ **&lt;alhálózat neve&gt;**
+   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózat neve&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -178,7 +178,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például **NW1-ASCs-frontend**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.7**).
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. A ASCS IP-10.0.0.8
          * A fenti lépések megismétlésével hozzon létre egy IP-címet az ERS számára (például **10.0.0.8** és **NW1-AERS-backend**)
    1. A háttér-készletek létrehozása
@@ -196,7 +196,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapot-mintavétel nevét (például **NW1-ASCs-HP**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. Port 621**02** ASCS-esekhöz
          * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621**02** és **NW1-AERS-HP**)
    1. Terheléselosztási szabályok
@@ -207,7 +207,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. **Ha portok** kiválasztása
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **NW1-LB-ERS**)
 1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
@@ -215,7 +215,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például **NW1-ASCs-frontend**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.7**).
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. A ASCS IP-10.0.0.8
          * A fenti lépések megismétlésével hozzon létre egy IP-címet az ERS számára (például **10.0.0.8** és **NW1-AERS-backend**)
    1. A háttér-készletek létrehozása
@@ -225,7 +225,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Kattintson a virtuális gép hozzáadása elemre.
          1. Válassza ki a korábban létrehozott rendelkezésre állási készletet
          1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. Háttérbeli készlet létrehozása a ASCS-ESEK számára
          * A fenti lépések megismétlésével hozzon létre egy háttér-készletet az ERS számára (például **NW1-AERS-backend**)
    1. Az állapot-mintavételek létrehozása
@@ -233,7 +233,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapot-mintavétel nevét (például **NW1-ASCs-HP**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. Port 621**02** ASCS-esekhöz
          * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621**02** és **NW1-AERS-HP**)
    1. Terheléselosztási szabályok
@@ -244,7 +244,7 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
          1. Tartsa meg a protokoll **TCP**-t, írja be a **3200** portot
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra
+         1. Kattintson az OK gombra.
       1. További portok a ASCS
          * Ismételje meg a fenti lépéseket a**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
@@ -262,9 +262,9 @@ Kövesse a [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](high-
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]**  Állomásnév-feloldás beállítása
+1. **[A]** telepítési állomásnév feloldása
 
    DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
@@ -403,7 +403,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[1]** az SAP NetWeaver ASCS telepítése  
 
-   Telepítse az SAP NetWeaver ASCS root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó-felületi konfigurációjának IP-címét képezi le, például <b>NW1-ASCS</b>, <b>10.0.0.7</b> és a mintavételhez használt példány számát. a terheléselosztó, például <b>00</b>.
+   Telepítse az SAP NetWeaver ASCS-t root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó felületi konfigurációjának IP-címére mutat, például: <b>NW1-ASCS</b>, <b>10.0.0.7</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>00</b>.
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
@@ -459,7 +459,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[2]** SAP NETWEAVER-ERS telepítése  
 
-   Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely a hálózati terheléselosztási felület konfigurációjának IP-címét képezi le az ERS számára, például <b>NW1-AERS</b>, <b>10.0.0.8</b> és a mintavételhez használt példány számát. a terheléselosztó, például: <b>02</b>.
+   Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely leképezi a terheléselosztó előtér-konfigurációjának IP-címét, például: <b>NW1-AERS</b>, <b>10.0.0.8</b> és a terheléselosztó mintavételéhez használt példány számát, például: <b>02</b>.
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
@@ -535,12 +535,15 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    </code></pre>
 
    Ha egy régebbi verzióról frissít, és átvált a 2. sorba helyezni-kiszolgálóra, tekintse meg a következőt: SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > A fenti konfiguráció időtúllépései csak példák, és előfordulhat, hogy az adott SAP-beállításhoz kell igazítani őket. 
 
    Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
 

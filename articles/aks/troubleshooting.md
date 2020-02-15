@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120961"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209222"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -120,7 +120,7 @@ Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. H
 
 * A fürt nevének 1-63 karakterből kell állnia. Az egyetlen megengedett karakter betű, szám, kötőjel és aláhúzás. Az első és az utolsó karakternek betűnek vagy számnak kell lennie.
 * Az AK *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. `MC_resourceGroupName_resourceName_AzureRegion` automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
-* A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
+* A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
@@ -155,8 +155,8 @@ Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy
 
 | Kubernetes verziója | Ajánlott verzió |
 | -- | :--: |
-| 1.12 | 1.12.9 vagy újabb |
-| 1.13 | 1.13.6 vagy újabb |
+| 1,12 | 1.12.9 vagy újabb |
+| 1,13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
 
 
@@ -164,8 +164,8 @@ Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy
 
 | Kubernetes verziója | Ajánlott verzió |
 | -- | :--: |
-| 1.12 | 1.12.0 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
+| 1,12 | 1.12.0 vagy újabb |
+| 1,13 | 1.13.0 vagy újabb |
 | 1,14 | 1.14.0 vagy újabb |
 
 
@@ -173,14 +173,14 @@ Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy
 
 A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach sikertelen lehet az Azure-lemez újracsatlakoztatásával.
 
-Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Példa:
+Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Például:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Példa:
+A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Például:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -191,9 +191,9 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.10 | 1.10.2 vagy újabb |
+| 1,10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | – |
+| 1,12 és újabb verziók | N/A |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
 
@@ -226,7 +226,7 @@ spec:
   >[!NOTE]
   > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a Kubernetes `chown` fogja használni az adott lemezen található összes könyvtár és fájl módosítására. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
 
-* A GID és az UID beállításához használja a initContainers `chown` a következőben:. Példa:
+* A GID és az UID beállításához használja a initContainers `chown` a következőben:. Például:
 
 ```yaml
 initContainers:
@@ -240,7 +240,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Hiba történt az Azure-lemezek Pod-beli PersistentVolumeClaim való törlésekor
 
-Ha olyan Azure-beli PersistentVolumeClaim próbál törölni, amelyet egy Pod használ, előfordulhat, hogy hibaüzenet jelenik meg. Példa:
+Ha olyan Azure-beli PersistentVolumeClaim próbál törölni, amelyet egy Pod használ, előfordulhat, hogy hibaüzenet jelenik meg. Például:
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -263,11 +263,11 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.10 | 1.10.10 vagy újabb |
+| 1,10 | 1.10.10 vagy újabb |
 | 1,11 | 1.11.5 vagy újabb |
-| 1.12 | 1.12.3 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,12 | 1.12.3 vagy újabb |
+| 1,13 | 1.13.0 vagy újabb |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához várjon néhány percet, és próbálkozzon újra.
 
@@ -284,11 +284,11 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.10 | 1.10.12 vagy újabb |
+| 1,10 | 1.10.12 vagy újabb |
 | 1,11 | 1.11.6 vagy újabb |
-| 1.12 | 1.12.4 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,12 | 1.12.4 vagy újabb |
+| 1,13 | 1.13.0 vagy újabb |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához próbálkozzon az alábbiakkal:
 
@@ -296,7 +296,7 @@ Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javít�
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Az Azure-lemez határozatlan idejű leválasztásra vár
 
-Bizonyos esetekben, ha az első kísérlet során az Azure Disk leválasztási művelete meghiúsul, nem próbálkozik újra a leválasztási művelettel, és továbbra is az eredeti csomópont virtuális géphez lesz csatolva. Ez a hiba akkor fordulhat elő, ha a lemezt egyik csomópontról a másikra helyezi át. Példa:
+Bizonyos esetekben, ha az első kísérlet során az Azure Disk leválasztási művelete meghiúsul, nem próbálkozik újra a leválasztási művelettel, és továbbra is az eredeti csomópont virtuális géphez lesz csatolva. Ez a hiba akkor fordulhat elő, ha a lemezt egyik csomópontról a másikra helyezi át. Például:
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -307,9 +307,9 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
 | 1,11 | 1.11.9 vagy újabb |
-| 1.12 | 1.12.7 vagy újabb |
-| 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,12 | 1.12.7 vagy újabb |
+| 1,13 | 1.13.4 vagy újabb |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a lemez manuális leválasztásával enyhítheti a problémát.
 
@@ -321,10 +321,10 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.12 | 1.12.9 vagy újabb |
-| 1.13 | 1.13.6 vagy újabb |
+| 1,12 | 1.12.9 vagy újabb |
+| 1,13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | – |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe elavult lemezzel rendelkezik, a probléma megoldásához leválaszthatja a virtuális gépről származó összes nem létező lemezt egyetlen, tömeges műveletként. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -341,10 +341,10 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.12 | 1.12.10 vagy újabb |
-| 1.13 | 1.13.8 vagy újabb |
+| 1,12 | 1.12.10 vagy újabb |
+| 1,13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | – |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe hibás állapotban van, a probléma megoldásához manuálisan frissítse a virtuális gép állapotát az alábbi lépések egyikével:
 
@@ -364,16 +364,16 @@ Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javít�
  
 | Kubernetes verziója | Ajánlott verzió |
 | -- | :--: |
-| 1.12 | 1.12.6 vagy újabb |
-| 1.13 | 1.13.4 vagy újabb |
+| 1,12 | 1.12.6 vagy újabb |
+| 1,13 | 1.13.4 vagy újabb |
 | 1,14 | 1.14.0 vagy újabb |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>A Kubernetes mely verziói támogatják Azure Files támogatást a szuverén felhőben?
 
 | Kubernetes verziója | Ajánlott verzió |
 | -- | :--: |
-| 1.12 | 1.12.0 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
+| 1,12 | 1.12.0 vagy újabb |
+| 1,13 | 1.13.0 vagy újabb |
 | 1,14 | 1.14.0 vagy újabb |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Mi az alapértelmezett mountOptions a Azure Files használatakor?
@@ -459,9 +459,9 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
 | -- | :--: |
-| 1.12 | 1.12.6 vagy újabb |
-| 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,12 | 1.12.6 vagy újabb |
+| 1,13 | 1.13.4 vagy újabb |
+| 1,14 és újabb verziók | N/A |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>A Azure Files csatlakoztatása a Storage-fiók kulcsának módosítása miatt meghiúsult
 
@@ -469,13 +469,13 @@ Ha a Storage-fiók kulcsa módosult, Azure Files csatlakoztatási hibák merülh
 
 A probléma megoldásához végezze el manuálisan a *azurestorageaccountkey* -mező manuális frissítését az Azure file Secret-ben a Base64-kódolású Storage-fiók kulcsával.
 
-A Storage-fiók kulcsa Base64-ben történő kódolásához használhatja a `base64`. Példa:
+A Storage-fiók kulcsa Base64-ben történő kódolásához használhatja a `base64`. Például:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Az Azure Secret-fájl frissítéséhez használja a `kubectl edit secret`. Példa:
+Az Azure Secret-fájl frissítéséhez használja a `kubectl edit secret`. Például:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

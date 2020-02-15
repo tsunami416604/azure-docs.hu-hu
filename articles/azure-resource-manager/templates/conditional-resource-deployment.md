@@ -3,12 +3,12 @@ title: Feltételes üzembe helyezés sablonokkal
 description: Ismerteti, hogyan lehet erőforrást feltételesen üzembe helyezni egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121998"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207791"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Feltételes üzembe helyezés Resource Manager-sablonokban
 
@@ -88,4 +88,4 @@ Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az er
 ## <a name="next-steps"></a>Következő lépések
 
 * A sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
-* Egy erőforrás több példányának létrehozásához tekintse [meg Azure Resource Manager sablonok erőforrás, tulajdonság vagy változó iterációját](create-multiple-instances.md).
+* Egy erőforrás több példányának létrehozásához tekintse [meg az erőforrás-iteráció Azure Resource Manager-sablonokban](copy-resources.md)című témakört.

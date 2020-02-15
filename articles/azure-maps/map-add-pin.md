@@ -1,6 +1,6 @@
 ---
 title: Szimbólum-réteg hozzáadása térképhez | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan szabhatja testre és hogyan adhat hozzá szimbólumokat a térképeken a Microsoft Azure Maps web SDK használatával.
+description: Ebből a cikkből megtudhatja, hogyan szabhatja testre a szimbólumokat a Symbol réteggel, és hogyan adhat hozzá szimbólumokat a térképen a Microsoft Azure Maps web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933127"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209698"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
 
-Egy adatforráshoz csatlakozó szimbólum, amely egy ikon és/vagy egy adott pont szövegének megjelenítésére szolgál. A szimbólumok rétegei a WebGL használatával jelennek meg, és a térképeken a pontok nagy gyűjteményeit teszik lehetővé. A HTML-jelölőhöz képest a szimbólum réteg nagy számú pontot jelenít meg a térképen a jobb teljesítmény érdekében. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
+Csatlakoztasson egy szimbólumot egy adatforráshoz, és használja egy ikon vagy szöveg megjelenítésére egy adott ponton. 
+
+A szimbólumok rétegei a WebGL használatával jelennek meg. A térképen a pontok nagy gyűjteményének megjelenítéséhez használjon szimbólum réteget. A HTML-jelölőhöz képest a szimbólum réteg nagy számú pontot jelenít meg a térképen a jobb teljesítmény érdekében. A szimbólum réteg azonban nem támogatja a hagyományos CSS-és HTML-elemeket a stílushoz.  
 
 > [!TIP]
 > A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha korlátozni szeretné a réteget úgy, hogy az csak a pont geometriai funkcióit jelenítse meg, állítsa a réteg `filter` tulajdonságát `['==', ['geometry-type'], 'Point']`re vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`ra, ha kívánja, a multipoint-funkciókat is befoglalhatja.
@@ -33,7 +35,9 @@ A Maps Image sprite Manager betölti a szimbólum réteg által használt egyén
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány lépést végre kell hajtania. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Ezután létrehozhatja és átadhat egy szimbólum réteget az adatforrásban az adatok lekéréséhez az adatforrásból. Végül fel kell venni az adatforrásba az adatforrást, hogy meg lehessen jeleníteni valamit. A következő kód a betöltését követően a térképhez hozzáadni kívánt kódot mutatja. A kód egyetlen pontot jelenít meg a térképen egy szimbólum réteg használatával. 
+Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány lépést végre kell hajtania. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Hozzon létre egy szimbólum réteget. Ezután továbbítsa az adatforrást a szimbólum rétegbe az adatoknak az adatforrásból való lekéréséhez. Végül vegyen fel egy adatforrást az adatforrásba, hogy valami legyen megjelenítve. 
+
+Az alábbi kód azt mutatja be, hogy mit kell hozzáadni a térképhez a betöltését követően. Ez a minta egy pontot jelenít meg a térképen egy szimbólum réteg használatával. 
 
 ```javascript
 //Create a data source and add it to the map.

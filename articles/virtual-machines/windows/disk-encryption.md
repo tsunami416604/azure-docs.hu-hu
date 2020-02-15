@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048860"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206301"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -38,7 +38,7 @@ Az egyes felügyelt lemezek szintjén is kezelheti a titkosítást a saját kulc
 
 A következő ábra azt mutatja be, hogy a felügyelt lemezek hogyan használják a Azure Active Directory és Azure Key Vault a kérelmeket az ügyfél által felügyelt kulcs használatával:
 
-![Felügyelt lemezek – ügyfél által felügyelt kulcsok munkafolyamata](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Felügyelt lemez és ügyfél által felügyelt kulcsok munkafolyamata. A rendszergazda létrehoz egy Azure Key Vault, majd létrehoz egy lemezes titkosítási készletet, és beállítja a lemez titkosítási készletét. A készlet egy olyan virtuális géphez van társítva, amely lehetővé teszi, hogy a lemez használhassa az Azure AD-t a hitelesítéshez](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 A következő lista a diagramot mutatja be még részletesebben:
