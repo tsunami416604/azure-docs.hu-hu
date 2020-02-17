@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121372"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367775"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -91,7 +91,7 @@ Vegye figyelembe, hogy a vendég felhasználó userPrincipalName gyakran "alias 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 
-Ha az Azure AD a forrásoldali rendszer, a kiépítési szolgáltatás az [Azure ad Graph API különbözeti lekérdezési funkciójával](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) figyeli a felhasználókat és a csoportokat. A kiépítési szolgáltatás kezdeti ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusok után.
+Ha az Azure AD a forrásrendszer, a kiépítési szolgáltatás a [különbözeti lekérdezés használatával követi nyomon](https://docs.microsoft.com/graph/delta-query-overview) a felhasználók és csoportok figyelését a Microsoft Graph-adatértékeken. A kiépítési szolgáltatás kezdeti ciklust futtat a forrásrendszer és a célként megadott rendszeren, majd az időszakos növekményes ciklusok után.
 
 ### <a name="initial-cycle"></a>Kezdeti ciklus
 
@@ -142,8 +142,8 @@ A kezdeti ciklus után az összes többi ciklus a következő lesz:
 
 A kiépítési szolgáltatás továbbra is határozatlan időre futtatja az [egyes alkalmazásokra vonatkozó oktatóanyagban](../saas-apps/tutorial-list.md)meghatározott időközöket. A növekményes ciklusok addig folytatódnak, amíg az alábbi események egyike nem következik be:
 
-- A szolgáltatás kézi leállítása a Azure Portal használatával vagy a megfelelő Graph API parancs használatával történik. 
-- A rendszer az új kezdeti ciklust a **Törlés állapota és az újraindítás** lehetőség használatával indítja el a Azure Portalban, vagy a megfelelő Graph API parancs használatával. Ez a művelet törli a tárolt vízjeleket, és az összes forrásobjektum kiértékelését okozza.
+- A szolgáltatás kézi leállítása a Azure Portal használatával vagy a megfelelő Microsoft Graph API-parancs használatával történik.
+- A rendszer az új kezdeti ciklust a Azure Portal **törlési állapot és újraindítás** lehetőségével, vagy a megfelelő Microsoft Graph API-parancs használatával indítja el. Ez a művelet törli a tárolt vízjeleket, és az összes forrásobjektum kiértékelését okozza.
 - Az attribútum-hozzárendelések és a hatóköri szűrők változása miatt új kezdeti ciklust indít a rendszer. Ezzel a művelettel az összes tárolt vízjel törlődik, és az összes forrásoldali objektum újbóli kiértékelését okozza.
 - A kiépítési folyamat Karanténba kerül (lásd alább), magas hiba miatt, és több mint négy hétig karanténba marad. Ebben az esetben a szolgáltatás automatikusan le lesz tiltva.
 

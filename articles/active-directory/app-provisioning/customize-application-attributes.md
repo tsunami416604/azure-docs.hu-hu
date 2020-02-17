@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207196"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367805"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -112,7 +112,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
+- Azure Active Directory ([Microsoft Graph REST API 1.0-s verzió referenciája](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
 - Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
 
 > [!NOTE]
@@ -133,7 +133,7 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
 - **Több érték?** – Azt határozza meg, hogy az attribútum több értéket is támogat-e.
 - **Pontos eset?** – Azt határozza meg, hogy az attribútumok értékei kis-és nagybetűk megkülönböztetésével legyenek kiértékelve.
 - **API-kifejezés** – ne használja, kivéve, ha erre a célra egy adott kiépítési összekötő (például a munkanap) dokumentációja kéri.
-- **Hivatkozott Object attribútum** – ha ez egy hivatkozástípus attribútum, akkor ezzel a menüvel kiválaszthatja a célalkalmazás azon tábláját és attribútumát, amely az attribútumhoz társított értéket tartalmazza. Ha például egy "részleg" nevű attribútummal rendelkezik, amelynek tárolt értéke egy különálló "részleg" táblában található objektumra hivatkozik, akkor válassza a "Departments.Name" elemet. Az adott alkalmazáshoz támogatott hivatkozási táblák és elsődleges azonosító mezők előre vannak konfigurálva, és jelenleg nem szerkeszthetők a Azure Portal használatával, de a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)használatával szerkeszthetők.
+- **Hivatkozott Object attribútum** – ha ez egy hivatkozástípus attribútum, akkor ezzel a menüvel kiválaszthatja a célalkalmazás azon tábláját és attribútumát, amely az attribútumhoz társított értéket tartalmazza. Ha például egy "részleg" nevű attribútummal rendelkezik, amelynek tárolt értéke egy különálló "részleg" táblában található objektumra hivatkozik, akkor válassza a "Departments.Name" elemet. Az adott alkalmazáshoz támogatott hivatkozási táblák és az elsődleges azonosító mezők előre konfigurálva vannak, és jelenleg nem szerkeszthetők a Azure Portal használatával, de a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)használatával szerkeszthető.
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Egyéni kiterjesztési attribútum kiépítés egy SCIM-kompatibilis alkalmazásba
 A SCIM RFC egy alapszintű felhasználót és csoportot határoz meg, és lehetővé teszi, hogy a bővítmények megfeleljenek a sémának az alkalmazás igényeinek megfelelően. Egyéni attribútum hozzáadása SCIM-alkalmazáshoz:

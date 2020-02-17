@@ -1,6 +1,6 @@
 ---
-title: Kiépítési konfiguráció exportálása vagy importálása Graph API használatával | Microsoft Docs
-description: Megtudhatja, hogyan exportálhatja és importálhatja az üzembe helyezési konfigurációt Graph API használatával.
+title: A kiépítési konfiguráció exportálása vagy importálása a Microsoft Graph API használatával | Microsoft Docs
+description: Ismerje meg, hogyan exportálhatja és importálhatja az üzembe helyezési konfigurációt a Microsoft Graph API használatával.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066615"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367795"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Kiépítési konfiguráció exportálása vagy importálása Graph API használatával
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>A kiépítési konfiguráció exportálása vagy importálása a Microsoft Graph API használatával
 
-A Microsoft Graph API és a Graph Explorer használatával exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure AD-be. Az itt rögzített lépéseket az üzembe helyezési konfiguráció biztonsági másolatának létrehozásához is használhatja. 
+A Microsoft Graph API-val és a Microsoft Graph Explorerrel exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure AD-be. Az itt rögzített lépéseket az üzembe helyezési konfiguráció biztonsági másolatának létrehozásához is használhatja. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1\. lépés: a kiépítési App Service rendszerbiztonsági tag AZONOSÍTÓjának beolvasása (objektumazonosító)
 
 1. Indítsa el a [Azure Portal](https://portal.azure.com), és navigáljon a kiépítési alkalmazás tulajdonságok szakaszába. Például ha a *munkanapokat az ad-felhasználók kiépítési alkalmazás-* hozzárendeléséhez szeretné exportálni, navigáljon az alkalmazás tulajdonságok szakaszába. 
-1. A kiépítési alkalmazás tulajdonságok szakaszában másolja az *objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId** is nevezik, és a Graph Explorer műveleteiben fogja használni.
+1. A kiépítési alkalmazás tulajdonságok szakaszában másolja az *objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId** is nevezik, és Microsoft Graph Explorer-műveletekben lesz használva.
 
    ![Munkanapok App Service résztvevő azonosítója](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ A Microsoft Graph API és a Graph Explorer használatával exportálhatja a felh
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
 1. Kattintson a "Bejelentkezés Microsofttal" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy az alkalmazás-rendszergazdai hitelesítő adataival.
 
-    ![Gráf bejelentkezés](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Bejelentkezés Microsoft Graph](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. A sikeres bejelentkezés után a bal oldali ablaktáblán megjelenik a felhasználói fiók adatai.
 

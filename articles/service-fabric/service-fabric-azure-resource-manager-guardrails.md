@@ -5,14 +5,14 @@ services: service-fabric
 documentationcenter: .net
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426739"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368575"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Service Fabric-fürt telepítésekor a rendszer behelyezi a guardrails-t, így az érvénytelen fürtkonfiguráció esetén sikertelen lesz a Azure Resource Manager központi telepítés. A következő szakaszokban áttekintheti a fürtökkel kapcsolatos gyakori problémákat és a problémák enyhítéséhez szükséges lépéseket. 
@@ -60,11 +60,26 @@ A következő szakasz a virtuálisgép-méretezési csoport bővítmény tartós
 * A virtuálisgép-méretezési csoport tartóssága nem felel meg a cél Service Fabric csomópont típusú tartóssági szintnek.
 * A virtuálisgép-méretezési csoport tartóssága megfelel a jelenlegi Service Fabric tartóssági szintnek vagy a cél Service Fabric csomópont típusú tartóssági szintnek. 
 
-
 ### <a name="mitigation"></a>Kezelés
 A fenti hibaüzenetek bármelyike által jelzett tartóssági eltérés kijavítása:
 1. Módosítsa a tartóssági szintet a Azure Resource Manager sablon virtuálisgép-méretezési csoport bővítmény vagy Service Fabric csomópont típusa szakaszában, hogy az értékek megegyezzenek.
 2. Telepítse újra a Azure Resource Manager sablont a frissített értékekkel.
+
+
+## <a name="seed-node-deletion"></a>Mag csomópontjának törlése 
+### <a name="overview"></a>Áttekintés
+A Service Fabric-fürtök [megbízhatósági szint](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) tulajdonsággal rendelkeznek, amely meghatározza a fürt elsődleges csomópont-típusán futó rendszerszolgáltatások replikáinak számát. A szükséges replikák száma határozza meg, hogy hány csomópontot kell fenntartani a fürt elsődleges csomópont-típusában. Ha az elsődleges csomópont típusú csomópontok száma a megbízhatósági szinthez szükséges minimális érték alá esik, akkor a fürt instabillá válik.  
+
+### <a name="error-messages"></a>Hibaüzenetek 
+A rendszer a magok csomópontjának eltávolítási műveletét észlelte, és el lesz utasítva. 
+* A művelet eredményeképpen csak {0} lehetséges magok csomópontjai maradnak a fürtben, míg {1} minimálisan szükségesek.
+* {0} magok {1}ból való eltávolítása azt eredményezi, hogy a fürt a mag csomópont Kvórumának elvesztése miatt leáll. Az egyszerre eltávolítható mag-csomópontok maximális száma {2}.
+ 
+### <a name="mitigation"></a>Kezelés 
+Győződjön meg arról, hogy az elsődleges csomópont típusa elegendő Virtual Machines a fürtben megadott megbízhatósághoz. Nem távolíthat el virtuális gépet, ha a virtuálisgép-méretezési csoport a megadott megbízhatósági szinthez tartozó csomópontok minimális száma alá kerül.
+* Ha a megbízhatósági szintet helyesen adta meg, győződjön meg arról, hogy az elsődleges csomópont-típusban elegendő csomópont van a megbízhatósági szinten. 
+* Ha a megbízhatósági szint helytelen, indítson el egy változást a Service Fabric erőforráson, hogy először csökkentse a megbízhatósági szintet, mielőtt elindítja a virtuálisgép-méretezési csoport műveleteit, és várjon, amíg befejeződik.
+* Ha a megbízhatósági szintet bronz, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürt zökkenőmentes leskálázásához.
 
 ## <a name="next-steps"></a>Következő lépések
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)

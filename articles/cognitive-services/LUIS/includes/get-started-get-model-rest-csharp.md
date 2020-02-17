@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 7800edafca46a2210b9552299605d54c9db07f1f
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966776"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368388"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966776"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>Modell programozott módosítása
-
-A C# használatával géppel megtanult entitás [API](https://aka.ms/luis-apim-v3-authoring) -t adhat hozzá az alkalmazáshoz.
 
 1. Hozzon létre egy új, a C# nyelvet célzó alkalmazást, amelyben a projekt és a mappa neve `model-with-rest`.
 
@@ -168,7 +166,7 @@ A C# használatával géppel megtanult entitás [API](https://aka.ms/luis-apim-v
 
 1. Cserélje le a `YOUR-`-től kezdődő értékeket a saját értékeire.
 
-    |Információ|Rendeltetés|
+    |Információ|Cél|
     |--|--|
     |`YOUR-KEY`|Az 32 karakteres szerzői kulcs.|
     |`YOUR-ENDPOINT`| Az authoring URL-végpontja. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
