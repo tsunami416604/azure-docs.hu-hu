@@ -482,7 +482,7 @@ Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földra
 
         - CF (Közép-afrikai Köztársaság)
 
-        - CI (Elefántcsontpart)
+        - Côte d'Ivoire
 
         - CM (Kamerun)
 

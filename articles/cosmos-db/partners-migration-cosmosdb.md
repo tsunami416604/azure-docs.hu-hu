@@ -28,7 +28,7 @@ A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és
 |**Partner**  |**Képességek & felület**  |**Támogatott országok/régiók**  |**Kapcsolat**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL migrálása; Új alkalmazások fejlesztése | USA | [Honlap](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése |   Egyesült Államok, Norvégia, Finnország, Fehéroroszország, Argentína |  [Honlap](https://www.altoros.com/)     |
+|![Altoros Development LLC][3]    |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése |   Belarusz, Egyesült Államok, Norvégia, Finnország, Argentína |  [Honlap](https://www.altoros.com/)     |
 |![Attunix Redapt][4]     |   NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése      |    USA     |  [Honlap](https://www.attunix.com/)       |
 | ![Avanade][26] | Új alkalmazások fejlesztése, <br/> Alkalmazás-innováció (meglévő alkalmazások) | Ausztria, Németország, Svájc, Olaszország, Norvégia, Spanyolország, Egyesült Királyság | [Honlap](https://www.avanade.com/)
 |![Bluemetal-építészek][5]     |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése       |    Észak-Amerika, Ázsia – csendes-óceáni térség     |  [Honlap](https://www.bluemetal.com/)       |
