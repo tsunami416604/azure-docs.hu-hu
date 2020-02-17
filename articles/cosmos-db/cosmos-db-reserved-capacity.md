@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan vásárolhat Azure Cosmos DB fenntartott kapaci
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 17f6787cddf2800663d37b153b3e1b8cf33390f8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201176"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367687"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Példa erre a javaslatra:
 
 ![Fenntartott kapacitásra vonatkozó javaslatok](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
 
-Az 3 000 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy a 3 éves foglalások között a 3 000 000 RU/s foglalás mérete maximalizálja a megtakarítás mértékét. Ebben az esetben a javaslat kiszámítása a Azure Cosmos DB használat elmúlt 30 napja alapján történik. Ha ez az ügyfél azt várja, hogy az elmúlt 30 nap Azure Cosmos DB használat a jövőbeli használatra jellemző, a megtakarítás a 3 000 000 RU/s foglalás megvásárlásával maximalizálható.
+Az 30 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy a 3 éves foglalások között a 30 000 RU/s foglalás mérete maximalizálja a megtakarítás mértékét. Ebben az esetben a javaslat kiszámítása a Azure Cosmos DB használat elmúlt 30 napja alapján történik. Ha ez az ügyfél azt várja, hogy az elmúlt 30 nap Azure Cosmos DB használat a jövőbeli használatra jellemző, a megtakarítás a 30 000 RU/s foglalás megvásárlásával maximalizálható.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB fenntartott kapacitás vásárlása
 

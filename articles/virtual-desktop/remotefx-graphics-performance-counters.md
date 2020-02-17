@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607465"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367242"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
 
@@ -69,9 +69,9 @@ A kihagyott keretek bármelyikének nagy értéke, a másodpercenkénti számlá
 
 Ha a kimeneti keretek/második számláló megegyezik a bemeneti képkockákkal/a második számlálóval, de továbbra is szokatlan késést vagy leállást észlel, az átlagos kódolási idő lehet a bűnös. A kódolás egy szinkron folyamat, amely a kiszolgálón az egymunkamenetes (vGPU) forgatókönyvben és a többmunkamenetes forgatókönyvben lévő virtuális gépen történik. Az átlagos kódolási időtartamnak 33 MS alatt kell lennie. Ha az átlagos kódolási idő 33 MS alatt van, de továbbra is teljesítménnyel kapcsolatos problémái vannak, előfordulhat, hogy probléma van a használt alkalmazással vagy operációs rendszerrel.
 
-Az alkalmazással kapcsolatos problémák diagnosztizálásával kapcsolatos további információkért lásd: [felhasználói bemeneti késleltetési](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)teljesítményszámlálók.
+Az alkalmazással kapcsolatos problémák diagnosztizálásával kapcsolatos további információkért lásd: [felhasználói bemeneti késleltetési](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)teljesítményszámlálók.
 
-Mivel az RDP a 33 ms-os átlagos kódolási időt támogatja, a bemeneti képkockákat legfeljebb 30 képkocka/másodperc értékre támogatja. Vegye figyelembe, hogy az 33 MS a támogatott képkockák maximális száma. Sok esetben a felhasználó által tapasztalt Képkockasebesség alacsonyabb lesz, attól függően, hogy milyen gyakran biztosítanak keretet az RDP számára a forrás. Például a videók megtekintésére szolgáló feladatok esetében a teljes bemeneti képkockák száma 30 képkocka/másodperc, de kevésbé számítási feladatokhoz, például a dokumentumok ritkán történő szerkesztéséhez sokkal alacsonyabb érték szükséges a bemeneti képkockák/másodpercek romlásának hiányában a felhasználó a tapasztalatok minősége.
+Mivel az RDP a 33 ms-os átlagos kódolási időt támogatja, a bemeneti képkockákat legfeljebb 30 képkocka/másodperc értékre támogatja. Vegye figyelembe, hogy az 33 MS a támogatott képkockák maximális száma. Sok esetben a felhasználó által tapasztalt Képkockasebesség alacsonyabb lesz, attól függően, hogy milyen gyakran biztosítanak keretet az RDP számára a forrás. Például a videók megtekintésére szolgáló feladatok esetében a teljes bemeneti képkockák száma 30 képkocka/másodperc, de a számítási keretek kevésbé nagy mennyiségű, például a dokumentum gyakori szerkesztésekor a bemeneti képkockáknál sokkal alacsonyabb értéket eredményeznek, ha a felhasználó a felhasználói élmény minőségét nem csökkenti.
 
 ### <a name="addressing-poor-frame-quality"></a>Gyenge képkockák minőségének kezelése
 
@@ -99,8 +99,8 @@ Ha az ügyfél erőforrásai a szűk keresztmetszetet okozzák, próbálkozzon a
 > [!NOTE]
 > Jelenleg nem támogatjuk a forrás-és a második számlálót. Egyelőre a forrás-és a második számláló mindig a 0 értéket fogja megjeleníteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A GPU-ra optimalizált Azure-beli virtuális gépek létrehozásával kapcsolatban lásd: [Graphics Processing Unit (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztali környezethez](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- A hibaelhárítási és eszkalációs sávok áttekintését lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)című témakört.
+- A GPU-ra optimalizált Azure-beli virtuális gépek létrehozásával kapcsolatban lásd: [Graphics Processing Unit (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztali környezethez](configure-vm-gpu.md).
+- A hibaelhárítási és eszkalációs sávok áttekintését lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
+- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali környezet](environment-setup.md)című témakört.

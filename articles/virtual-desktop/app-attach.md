@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772550"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367629"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -38,7 +38,7 @@ Először be kell szereznie a MSIX alkalmazáshoz használni kívánt operáció
 1. Nyissa meg a [Windows Insider portált](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) , és jelentkezzen be.
 
      >[!NOTE]
-     >A Windows Insider portálhoz való hozzáféréshez a Windows Insider program tagjának kell lennie. Ha többet szeretne megtudni a Windows Insider programról, tekintse meg a [Windows Insider dokumentációját](https://docs.microsoft.com/windows-insider/at-home/).
+     >A Windows Insider portálhoz való hozzáféréshez a Windows Insider program tagjának kell lennie. Ha többet szeretne megtudni a Windows Insider programról, tekintse meg a [Windows Insider dokumentációját](/windows-insider/at-home/).
 
 2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19035** vagy újabb lehetőséget.
 
@@ -79,7 +79,7 @@ Miután feltöltötte a VHD-t az Azure-ba, hozzon létre egy, az új rendszerké
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Az alkalmazás előkészítése MSIX-alkalmazás csatolásához 
 
-Ha már rendelkezik MSIX-csomaggal, ugorjon előre a [Windows rendszerű virtuális asztali infrastruktúra konfigurálásához](#configure-windows-virtual-desktop-infrastructure). Ha az örökölt alkalmazásokat szeretné tesztelni, kövesse az [MSIX-csomag létrehozása egy virtuális gépen asztali telepítőből](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) című témakör utasításait, hogy az örökölt alkalmazást egy MSIX-csomagba alakítsa át.
+Ha már rendelkezik MSIX-csomaggal, ugorjon előre a [Windows rendszerű virtuális asztali infrastruktúra konfigurálásához](#configure-windows-virtual-desktop-infrastructure). Ha az örökölt alkalmazásokat szeretné tesztelni, kövesse az [MSIX-csomag létrehozása egy virtuális gépen asztali telepítőből](/windows/msix/packaging-tool/create-app-package-msi-vm/) című témakör utasításait, hogy az örökölt alkalmazást egy MSIX-csomagba alakítsa át.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>VHD-vagy VHDX-csomag létrehozása a MSIX
 
@@ -184,8 +184,8 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 
 A MSIX-alkalmazás csatolása négy különböző fázist tartalmaz, amelyeket a következő sorrendben kell végrehajtani:
 
-1. Szakasz
-2. Regisztráció
+1. Fázis
+2. Regisztráljon
 3. Képes
 4. Kilépés
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Szimulációs parancsfájlok beállítása a MSIX alkalmazáshoz csatolható ügynökhöz
 
-A parancsfájlok létrehozása után a felhasználók manuálisan futtathatják azokat, vagy beállíthatja, hogy a rendszer automatikusan futtassa az indítási, bejelentkezési, kijelentkezési és leállítási parancsfájlok futtatását. Az ilyen típusú parancsfájlokkal kapcsolatos további információkért lásd: [indítási, leállítási, bejelentkezési és kijelentkezési parancsfájlok használata Csoportházirendban](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+A parancsfájlok létrehozása után a felhasználók manuálisan futtathatják azokat, vagy beállíthatja, hogy a rendszer automatikusan futtassa az indítási, bejelentkezési, kijelentkezési és leállítási parancsfájlok futtatását. Az ilyen típusú parancsfájlokkal kapcsolatos további információkért lásd: [indítási, leállítási, bejelentkezési és kijelentkezési parancsfájlok használata Csoportházirendban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
 Ezen automatikus parancsfájlok mindegyike az alkalmazás egy fázisát futtatja a parancsfájlok csatolásához:
 
@@ -407,7 +407,7 @@ A licencfájl telepítéséhez egy PowerShell-szkriptet kell használnia, amely 
 
 A következő módon állíthatja be a licenceket offline használatra: 
 
-1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)találhatók.
+1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)találhatók.
 2. Frissítse a következő változókat a 3. lépéshez tartozó parancsfájlban:
       1. `$contentID` a nem kódolt licencfájl (. xml) ContentID értéke. A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
       2. `$licenseBlob` a licencelt blob teljes karakterlánca a kódolt licencfájl (. bin) számára. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben. 

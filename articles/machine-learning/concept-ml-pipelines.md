@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905728"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366216"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
 Azure Machine Learning folyamatok lehetővé teszik munkafolyamatok létrehozását a gépi tanulási projektekben. Ezek a munkafolyamatok számos előnnyel rendelkeznek: 
 
-+ Egyszerűség
-+ Gyorsaság
++ Egyszerűség kedvéért
++ Sebesség
 + Ismételhetőség
 + Rugalmasság
 + Verziószámozás és nyomon követés
@@ -40,11 +40,12 @@ Ismerje meg, hogyan [hozhatja létre első folyamatát](how-to-create-your-first
 
 Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
 
-| Folyamat | Funkció | Kanonikus cső |
-| ---- | ---- | ---- |
-| Azure Machine Learning folyamatok | Az újrafelhasználható gépi tanulási munkafolyamatokat definiálja, amelyek sablonként használhatók a gépi tanulási forgatókönyvekhez. | Adat> modell |
-| [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | A feladatok végrehajtásához szükséges adatáthelyezési,-átalakítási és-ellenőrzési tevékenységek csoportjai.  | Adat>i adatszolgáltatások |
-| [Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Az alkalmazás folyamatos integrációja és továbbítása bármely platformra/felhőbe  | Code-> alkalmazás/szolgáltatás |
+| Forgatókönyv | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| Modell-előkészítés (gépi tanulás) | Adatelemző | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
+| Adat-előkészítés (adat-előkészítés) | Adatmérnök | [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache légáram | Adat>i adatszolgáltatások | Erősen beírt mozgás. Adatközpontú tevékenységek. |
+| Kód & alkalmazás-előkészítés (CI/CD) | Alkalmazás fejlesztője/Ops | [Azure DevOps-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > alkalmazás/szolgáltatás | A legtöbb nyitott és flexibile tevékenység támogatása, jóváhagyási várólisták, fázisok és kapuzás | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehet az Azure ML-folyamatok?
 
@@ -52,7 +53,7 @@ Az Azure Machine Learning folyamat egy teljes gépi tanulási feladat egymástó
 
 + Adat-előkészítés, beleértve az importálást, az érvényesítést és a tisztítást, a kezelést és az átalakítást, a normalizálást és az előkészítést
 + Betanítás konfigurálása, beleértve az argumentumok, a fájlok elérési útvonalai és a naplózási/jelentéskészítési konfigurációk paraméterezését
-+ Hatékonyan és ismételten betaníthat és érvényesítheti azokat, amelyek tartalmazhatnak konkrét adatrészhalmazokat, különböző hardveres számítási erőforrásokat, elosztott feldolgozást és előrehaladás-figyelést.
++ Hatékony és ismételt betanítás és ellenőrzés. A hatékonyság az adott adathalmazok, a különböző hardveres számítási erőforrások, az elosztott feldolgozás és a folyamat figyelésének megadásával lehetséges.
 + Üzembe helyezés, beleértve a verziószámozást, a méretezést, a kiépítést és a hozzáférés-vezérlést 
 
 A független lépések lehetővé teszik, hogy több adatszakértő egyszerre működjön ugyanazon a folyamaton, és ne legyenek túlterhelő számítási erőforrások. A külön lépések azt is megkönnyítik, hogy az egyes lépésekhez különböző számítási típusokat/méreteket lehessen használni.
@@ -69,7 +70,7 @@ Röviden, a gépi tanulási életciklus összes összetett feladata segíthet a 
 
 Az Azure ML-folyamat egy teljes logikai munkafolyamatot hajt végre, amely a lépések rendezett sorrendjét adja meg. Mindegyik lépés egy diszkrét feldolgozási művelet. A folyamatok egy Azure Machine Learning [kísérlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)kontextusában futnak.
 
-Egy ML-projekt nagyon korai szakaszában egy Jupyter notebook-vagy Python-szkripttel rendelkezhet, amely az Azure munkaterület és az erőforrás-konfiguráció összes műveletét, az adat-előkészítést, a konfigurációt, a képzést és az érvényesítést végzi. De ahogy a függvények és az osztályok gyorsan válnak a kód egyetlen kötelező blokkjában, a ML-munkafolyamatok gyorsan válnak a monolitikus notebookok vagy szkriptek számára. 
+Egy ML-projekt korai szakaszaiban egy Jupyter notebook-vagy Python-szkripttel rendelkezhet, amely az Azure munkaterület és az erőforrás-konfiguráció összes műveletét, az adatelőkészítést, a konfigurációt, a képzést és az érvényesítést végzi. De ahogy a függvények és az osztályok gyorsan válnak a kód egyetlen kötelező blokkjában, a ML-munkafolyamatok gyorsan válnak a monolitikus notebookok vagy szkriptek számára. 
 
 A modularizing ML-feladatok esetében a folyamatok támogatják a számítógép tudományos feladatait, hogy egy összetevőnek "do (only)" (csak) egy dolgot kell használnia. " A modularitás egyértelműen elengedhetetlen a projekt sikerességéhez a csapatok programozása során, de még akkor is, ha egyedül dolgozik, még egy kis ML-projekt külön feladatokat is magában foglal, amelyek mindegyike megfelelő mennyiségű összetettséggel rendelkezik. A feladatok közé tartoznak a munkaterület konfigurációja és az adatokhoz való hozzáférés, az adatok előkészítése, a modell definíciója és a konfiguráció, valamint az üzembe helyezés. Míg egy vagy több feladat kimenetei egy másikba kerülnek, az egyik tevékenység pontos megvalósítási adatai, a legjobb esetben a következőben nem relevánsak. A legrosszabb esetben az egyik feladat számítási állapota hibát okozhat egy másikban. 
 
@@ -195,7 +196,7 @@ Amíg egy projekt nagy vagy közel kerül a központi telepítéshez, a folyamat
 
 A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a következők:
 
-|Kulcs előnye|Leírás|
+|Legfontosabb előnye|Leírás|
 |:-------:|-----------|
 |**Felügyelet nélküli&nbsp;-futtatások**|A lépéseket párhuzamosan vagy egymás után, megbízható és felügyelet nélküli módon történő futtatásra ütemezze. Az adatok előkészítése és modellezése az elmúlt napokban vagy hetekben is elvégezhető, és a folyamatok lehetővé teszik, hogy a folyamat futása közben más feladatokra összpontosítson. |
 |**Különböző számítás**|Több folyamat is használható, amelyek megbízhatóan vannak összehangolva a heterogén és skálázható számítási erőforrások és a tárolási hely között. A rendelkezésre álló számítási erőforrások hatékony felhasználása a különböző számítási célokon, például a HDInsight, a GPU-adatelemzési virtuális gépeken és a Databricks futó egyes folyamatok lépéseinek futtatásával.|

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013150"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368793"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -22,13 +22,13 @@ Ebből a cikkből megtudhatja, hogyan készítse elő a fő virtuális merevleme
 
 A Windows 10 Enterprise multi-session szolgáltatás elérhető az Azure rendszerkép-katalógusában. A rendszerkép testreszabására két lehetőség áll rendelkezésre.
 
-Az első lehetőség egy virtuális gép (VM) üzembe helyezése az Azure-ban a virtuális gépek [felügyelt rendszerképből való létrehozása](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)című témakör útmutatásai alapján, majd a [szoftver előkészítése és telepítése](set-up-customize-master-image.md#software-preparation-and-installation)előtt ugorjon.
+Az első lehetőség egy virtuális gép (VM) üzembe helyezése az Azure-ban a virtuális gépek [felügyelt rendszerképből való létrehozása](../virtual-machines/windows/create-vm-generalized-managed.md)című témakör útmutatásai alapján, majd a [szoftver előkészítése és telepítése](set-up-customize-master-image.md#software-preparation-and-installation)előtt ugorjon.
 
 A második lehetőség a rendszerkép helyi létrehozása a rendszerkép letöltésével, egy Hyper-V virtuális gép üzembe helyezésével és az igényeinek megfelelő testreszabásával, amelyet a következő szakaszban talál.
 
 ### <a name="local-image-creation"></a>Helyi rendszerkép létrehozása
 
-Miután letöltötte a rendszerképet egy helyi helyre, nyissa meg a **Hyper-V kezelőjét** , és hozzon létre egy virtuális gépet a másolt VHD-vel. Az alábbi utasítások egyszerűek, de részletesebb útmutatást talál a [virtuális gép Hyper-V-ben történő létrehozásához](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Miután letöltötte a rendszerképet egy helyi helyre, nyissa meg a **Hyper-V kezelőjét** , és hozzon létre egy virtuális gépet a másolt VHD-vel. Az alábbi utasítások egyszerűek, de részletesebb útmutatást talál a [virtuális gép Hyper-V-ben történő létrehozásához](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
 Virtuális gép létrehozása a másolt VHD-vel:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Rögzített lemez
 
-Ha meglévő virtuális merevlemezről hoz létre virtuális gépet, alapértelmezés szerint dinamikus lemezt hoz létre. A rögzített lemezre a **lemez szerkesztése...** lehetőség kiválasztásával módosítható, ahogy az alábbi képen is látható. Részletesebb útmutatásért lásd: [Windows VHD vagy VHDX előkészítése az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)-ba való feltöltéshez.
+Ha meglévő virtuális merevlemezről hoz létre virtuális gépet, alapértelmezés szerint dinamikus lemezt hoz létre. A rögzített lemezre a **lemez szerkesztése...** lehetőség kiválasztásával módosítható, ahogy az alábbi képen is látható. Részletesebb útmutatásért lásd: [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez.
 
 ![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, java
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Felhasználói profil tárolójának (FSLogix) beállítása
 
-Ha a FSLogix-tárolót a rendszerkép részeként szeretné felvenni, kövesse a következő témakör utasításait: [create a profile Container for an Host Pool with a file share (fájlmegosztás használatával](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)). [Ezzel](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)a rövid útmutatóval ellenőrizheti a FSLogix tároló funkcióit.
+Ha a FSLogix-tárolót a rendszerkép részeként szeretné felvenni, kövesse a következő témakör utasításait: [create a profile Container for an Host Pool with a file share (fájlmegosztás használatával](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)). [Ezzel](/fslogix/configure-cloud-cache-tutorial/)a rövid útmutatóval ellenőrizheti a FSLogix tároló funkcióit.
 
 ### <a name="configure-windows-defender"></a>A Windows Defender konfigurálása
 
@@ -78,9 +78,9 @@ Ha a Windows Defender konfigurálva van a virtuális gépen, győződjön meg ar
 
 Ez a konfiguráció csak a VHD-és a VHDX-fájlok vizsgálatát távolítja el a mellékletben, de nem befolyásolja a valós idejű vizsgálatokat.
 
-A Windows Defender Windows Serveren történő konfigurálásával kapcsolatos további információkért lásd: [Windows Defender víruskereső-kizárások konfigurálása Windows Serveren](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+A Windows Defender Windows Serveren történő konfigurálásával kapcsolatos további információkért lásd: [Windows Defender víruskereső-kizárások konfigurálása Windows Serveren](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
 
-Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert bizonyos fájlok vizsgálatból való kizárására, tekintse [meg a kizárások konfigurálása és ellenőrzése a fájlkiterjesztés és a mappa helye alapján](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)című témakört.
+Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert bizonyos fájlok vizsgálatból való kizárására, tekintse [meg a kizárások konfigurálása és ellenőrzése a fájlkiterjesztés és a mappa helye alapján](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)című témakört.
 
 ### <a name="disable-automatic-updates"></a>Automatikus frissítések letiltása
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
 
-- [Nyelvek hozzáadása Windows-lemezképekhez](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Igény szerinti szolgáltatások](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Igény szerinti nyelvi és területi funkciók (Franciaország)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Igény szerinti nyelvi és területi funkciók (Franciaország)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Egyéb alkalmazások és beállításjegyzék-konfiguráció
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>A rendszerkép előkészítése az Azure-ba való feltöltésre
 
-Miután befejezte a konfigurálást, és telepítette az összes alkalmazást, kövesse a [Windows VHD vagy VHDX előkészítése az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) -ba való feltöltéséhez című témakör utasításait a rendszerkép előkészítéséhez.
+Miután befejezte a konfigurálást, és telepítette az összes alkalmazást, kövesse a [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) -ba való feltöltéséhez című témakör utasításait a rendszerkép előkészítéséhez.
 
 A rendszerkép feltöltésre való előkészítése után győződjön meg arról, hogy a virtuális gép ki van kapcsolva vagy fel van foglalva.
 

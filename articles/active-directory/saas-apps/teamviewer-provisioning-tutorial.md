@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150697"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366432"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Oktatóanyag: a TeamViewer konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a TeamViewer rendszergazdai hitelesítő adatait és a felhasználónevet. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg `ttps://webapi.teamviewer.com/scim/v2` a **sátor URL-címe** mezőben, és adja meg a **titkos jogkivonatban**korábban létrehozott parancsfájl-tokent. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni a teamviewerhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a TeamViewer-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

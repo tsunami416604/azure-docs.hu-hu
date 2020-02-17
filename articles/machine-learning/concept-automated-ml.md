@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191206"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366247"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -211,22 +211,71 @@ Az alábbi módszerek további lehetőségeket biztosítanak az automatikus ML-n
 
 A Azure Machine Learning használatával a Python-modell létrehozásához és a ONNX-formátumra való átalakításához használhatja az automatikus ML-t. Az ONNX Runtime támogatja C#, így az C# alkalmazásokban automatikusan létrehozott modell újrakódolás vagy a REST-végpontok által bevezethető hálózati késések nélkül is használható. Próbálja ki ezt a folyamatot ebben a [Jupyter-jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
 
-## <a name="automated-ml-across-microsoft"></a>Automatizált ML a Microsofton belül
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML Azure Machine Learning
 
-Az automatikus ML más Microsoft-megoldásokban is elérhető, például:
+A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
 
-|Integráció|Leírás|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatikus modell kiválasztása és betanítása .NET-alkalmazásokban a Visual Studio és a Visual Studio Code ML.NET automatizált ML használatával.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|A HDInsight-fürtökön párhuzamosan végezheti el az automatizált ML-betanítási feladatok felskálázását a Sparkban.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Gépi tanulási modellek meghívása közvetlenül a Power BIban.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Új gépi tanulási modelleket hozhat létre SQL Server 2019 big data-fürtök adatain keresztül.|
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) -t 
+
+* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning studiót [https://ml.azure.com](https://ml.azure.com/)  
+
+A következő összefoglalja az egyes élményekben támogatott magas szintű automatizált ML-funkciókat.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Kísérletezési beállítások 
+
+A következő beállítások lehetővé teszik az automatikus ML-kísérlet konfigurálását. 
+
+| | Python SDK| Studio
+----|:----:|:----:
+Adat felosztása a betanítási/ellenőrzési készletekbe| ✓|✓
+A ML-feladatok támogatása: besorolás, regresszió és előrejelzés| ✓| ✓
+Optimalizálás az elsődleges metrika alapján| ✓| ✓
+A pénzmosás-számítást számítási célként támogatja | ✓|✓
+Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak|✓|✓
+Kilépési feltételek beállítása |✓|✓ 
+Egyidejű ismétlések beállítása| ✓|✓
+Oszlopok eldobása| ✓|✓
+Algoritmusok letiltása|✓|✓
+Keresztellenőrzés |✓|✓
+A Azure Databricks-fürtökön betanítást támogatja| ✓|
+Megjelenő szolgáltatások nevének megtekintése|✓|
+Featurization összegzése| ✓|
+Üdülési featurization|✓|
+Naplófájlok részletességi szintje| ✓|
+
+### <a name="model-settings"></a>Modell beállításai
+
+Ezek a beállítások a legjobb modellre alkalmazhatók az automatikus ML-kísérlet eredményeképpen.
+
+||Python SDK|Studio
+----|:----:|:----:
+A legjobb modell regisztrációja| ✓|✓
+A legjobb modell üzembe helyezése| ✓| ✓
+A legjobb modell magyarázata| ✓|✓
+Szavazói Ensemble & stack Ensemble-modellek engedélyezése| ✓|✓
+A legjobb modell megjelenítése a nem elsődleges metrika alapján|✓|ONNX-modell kompatibilitásának engedélyezése/letiltása|✓|
+A modell tesztelése | ✓| |
+
+### <a name="run-control-settings"></a>Vezérlési beállítások futtatása
+
+Ezekkel a beállításokkal áttekintheti és szabályozhatja a kísérlet futtatását és a gyermeke futtatását. 
+
+||Python SDK| Studio
+----|:----:|:----:
+Összegző táblázat futtatása| ✓|✓
+Futtatás megszakítása| ✓|✓
+Gyermek futtatásának megszakítása| ✓| ✓
+Guardrails beolvasása| ✓|✓
+Futtatás szüneteltetése| ✓| 
+Futtatás folytatása| ✓| 
 
 ## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 
-+ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása az Azure automatizált Machine learning](tutorial-auto-train-models.md)
++ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md)
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
   + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-create-portal-experiments.md).
@@ -235,3 +284,5 @@ Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket auto
 + Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.
 
 + Próbálja ki [Jupyter notebook mintákat az automatizált gépi tanuláshoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* Az automatikus ML más Microsoft-megoldásokban is elérhető, például:, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

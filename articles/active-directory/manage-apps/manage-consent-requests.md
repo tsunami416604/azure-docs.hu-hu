@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290699"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367853"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével
 
@@ -100,7 +100,7 @@ Az Azure AD PowerShell-lel vagy a hozzájárulási kéréssel megadhatja, hogy a
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Jóváhagyás megadása egy adott felhasználó nevében
 
-Ahelyett, hogy a teljes szervezet számára engedélyezte a jóváhagyást, a rendszergazda az [Azure ad-Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) használatával egyetlen felhasználó nevében engedélyezheti a delegált engedélyek megadását. Ehhez `POST` kérelmet kell küldenie egy olyan [OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) -entitás létrehozásához, amelyben a `consentType` "Principal" értékre van állítva, és a `principalId` értéke annak az objektumnak az azonosítója, amelynek a nevében az engedélyt megadták.
+Ahelyett, hogy a teljes szervezet számára engedélyezte a jóváhagyást, a rendszergazda a [mikroszkóp Graph API](https://docs.microsoft.com/graph/use-the-api) használatával is megadhatja, hogy egy adott felhasználó nevében jóváhagyja a delegált engedélyeket. További információ: [hozzáférés beszerzése egy felhasználó nevében](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Az alkalmazásokhoz való felhasználói hozzáférés korlátozása
 
@@ -110,7 +110,7 @@ További információk a további összetett forgatókönyvek kezeléséről: az
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Öt lépés az identitás-infrastruktúra védelmére](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+[Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
 [Rendszergazdai engedélyezési munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
 

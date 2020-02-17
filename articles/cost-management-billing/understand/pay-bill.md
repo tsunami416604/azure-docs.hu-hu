@@ -2,22 +2,22 @@
 title: Microsoft Azure-számlák befizetése | Microsoft Docs
 description: A cikk a számlák az Azure Portalon történő befizetését ismerteti
 keywords: számlázás, késedelem, egyenleg, azonnali fizetés,
-author: jureid
-manager: jureid
+author: banders
+manager: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989708"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188121"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>A Microsoft Azure-számlák befizetésének módja
 
@@ -35,21 +35,12 @@ Az Azure Portalon történő fizetéshez egy számlázási profil tulajdonosána
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-1. Az **Áttekintés** panelen kattintson az *Összegzés* lapra.
-
-    ![az összegzés lapot ábrázoló képernyőkép](./media/pay-bill/billing-account-overview.png)
-
-1. Ha van esedékes vagy lejárt számlája, megjelenik a teljes tartozás összege.
-1. Kattintson a kék színű **Fizetés most** gombra.
-
-    ![a fizetés most gombot ábrázoló képernyőkép](./media/pay-bill/paynow-button-overview.png)
-
-1. A megjelenő panelen kattintson a **Fizetési mód kiválasztása** elemre, és válasszon ki egy meglévő bankkártyát, vagy adjon hozzá egy újat.<!-- screenshot of select payment method link -->
+1. A bal oldali menüben válassza a Számlázás területen lévő **Számlák** elemet.
+1. Ha a számlák bármelyike esedékes vagy lejárt, akkor az adott számlához megjelenik egy kék **Azonnali fizetés** hivatkozás. Válassza **Azonnali fizetés** lehetőséget.
+1. A megjelenő panelen kattintson a **Fizetési mód kiválasztása** elemre, és válasszon ki egy meglévő bankkártyát, vagy adjon hozzá egy újat.
 1. Ha kiválasztotta a fizetési módot, kattintson a **Fizetés most** parancsra.
 
 A számla állapota befizetettre módosul a számlák lapon.
-
-<!-- pay now from invoice blade -->
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

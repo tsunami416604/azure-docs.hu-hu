@@ -3,19 +3,19 @@ title: Ismerkedés a Custom Speech-Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
 description: A Custom Speech olyan online eszközöket biztosít, amelyekkel kiértékelheti és javíthatja az alkalmazásaihoz, eszközeihez és termékeihez tartozó beszéd-szöveg pontosságot. Minden, ami az első lépések elvégzéséhez szükséges, néhány teszt hangfájlt használ. Az alábbi hivatkozásokat követve hozzon létre egy egyéni beszéd – szöveg élményt.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806011"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368326"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -60,6 +60,9 @@ Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be 
 A tartalmak, például az adattípusok, a modellek, a tesztek és a végpontok a [Custom Speech portálon](https://speech.microsoft.com/customspeech)belüli **projektekben** vannak rendszerezve. Minden projekt egy tartományra és országra/nyelvre vonatkozik. Létrehozhat például egy olyan projektet a hívási központok számára, amelyek az angol nyelvet használják a Egyesült Államok.
 
 Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd**lehetőséget, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. Miután létrehozott egy projektet, négy lapot kell látnia: **az adatelemzést**, a **tesztelést**, a **betanítást**és az **üzembe helyezést**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
+
+> [!IMPORTANT]
+> A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha olyan korábbi projekteket hozott létre a CRIS portálon vagy API-kkal, amelyek adat, modellek, tesztek és közzétett végpontokkal lettek létrehozva, akkor a régi entitásokhoz való kapcsolódáshoz létre kell hoznia egy új projektet az új portálon.
 
 ## <a name="next-steps"></a>Következő lépések
 

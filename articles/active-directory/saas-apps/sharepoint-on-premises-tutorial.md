@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7feb62bb3e38452a441c505107569457d7c90a3f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233451"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: a helyszíni SharePoint-integráció Azure Active Directory
 
@@ -206,7 +206,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 
@@ -330,7 +330,7 @@ A felhasználók mostantól bejelentkezhetnek a SharePoint 2016-be az Azure AD-i
 
 A keresett értékeket nem érvényesíti a rendszer, ami olyan hibákhoz vezethet, vagy a felhasználók véletlenül nem megfelelő jogcím-típust választanak ki, mint például a **vezetéknév** jogcímet. Így megakadályozható, hogy a felhasználók hozzáférjenek az erőforrásokhoz.
 
-Ennek a forgatókönyvnek a támogatásához egy [AzureCP](https://yvand.github.io/AzureCP/) nevű nyílt forráskódú megoldás létezik, amely egyéni jogcím-szolgáltatót biztosít a SharePoint 2016-hez. Az Azure AD Graph használatával oldja fel, hogy a felhasználók hogyan adja meg és hajtják végre az érvényesítést. További információ: [AzureCP](https://yvand.github.io/AzureCP/).
+Ennek a forgatókönyvnek a támogatásához egy [AzureCP](https://yvand.github.io/AzureCP/) nevű nyílt forráskódú megoldás létezik, amely egyéni jogcím-szolgáltatót biztosít a SharePoint 2016-hez. A Microsoft Graph API használatával oldja meg, hogy a felhasználók hogyan adja meg és hajtják végre az érvényesítést. További információ: [AzureCP](https://yvand.github.io/AzureCP/).
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Rendelje hozzá az Azure AD biztonsági csoportot a Azure Portal
 

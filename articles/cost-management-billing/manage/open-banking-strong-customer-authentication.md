@@ -2,21 +2,21 @@
 title: Nyílt bankolás (PSD2) és erős ügyfél-hitelesítés (SCA) Azure-ügyfeleknek
 description: Ez a cikk ismerteti, hogy miért szükséges a többtényezős hitelesítés egyes Azure-vásárlásokhoz, és bemutatja a hitelesítés menetét.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996039"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133563"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Nyílt bankolás (PSD2) és erős ügyfél-hitelesítés (SCA) Azure-ügyfeleknek
 
@@ -53,14 +53,13 @@ Ha a bank elutasítja a terhelést, az Azure-fiók állapota **Lejárt** lesz az
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>A Marketplace- és foglalásvásárlások kiegyenlítetlen díjainak rendezése
 
-A Marketplace- és foglalásvásárlásokat az Azure-szolgáltatásoktól külön számlázzuk. Ha a bank elutasítja a Marketplace- vagy foglalásvásárlások terheléseit, a számla állapota **Lejárt** lesz az Azure Portalon. A Marketplace- és foglalásvásárlásokról készült számlák állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
+A Marketplace- és foglalásvásárlásokat az Azure-szolgáltatásoktól külön számlázzuk. Ha a bank elutasítja a Marketplace- vagy foglalásvásárlások terheléseit, a számla lejárt esedékességű lesz, és az Azure Portalon megjelenik az **Azonnali fizetés** lehetőség. A Marketplace- és foglalásvásárlásokról lejárt esedékességű számlák kifizetéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) fiókadminisztrátorként.
 2. Végezzen keresést a **Költségkezelés + számlázás** oldalon.
 3. A Számlázás területen válassza a **Számlák** elemet.
-4. Kattintson az **Azure Marketplace és foglalások** lapra a jobb oldalon.
-5. Válassza ki a megfelelő előfizetést.
-6. A számlák táblázatában tekintse át az Állapot oszlopot. Ha a számla **Esedékes** vagy **Lejárt**, kattintson a **Fizetés most** elemre. A rendszer kéri, hogy végezze el a többtényezős hitelesítést a folyamat során.
+5. Az előfizetés legördülő szűrőjében válassza ki a Marketplace- vagy foglalásvásárláshoz tartozó előfizetést.
+6. A számlák táblázatában tekintse át a Típus oszlopot. Ha a típus **Azure Marketplace és foglalások**, és a számla esedékes vagy lejárt, megjelenik az **Azonnali fizetés** lehetőség. Ha nem jelenik meg az **Azonnali fizetés**, az azt jelenti, hogy a számla már rendezve lett. A rendszer kéri, hogy végezze el a többtényezős hitelesítést az azonnali fizetés során.
 
 ## <a name="next-steps"></a>További lépések
 - Az Azure-számlák befizetéséről további információt talál [Az Azure-előfizetés lejárt esedékességű tartozásának rendezése](resolve-past-due-balance.md) című szakaszban.

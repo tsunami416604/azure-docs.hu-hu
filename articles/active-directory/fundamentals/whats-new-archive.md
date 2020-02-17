@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185868"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368018"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -1698,7 +1698,7 @@ Ez a frissítés lehetővé teszi, hogy láthatja, hogy mely házirendek kiért�
 **Szolgáltatás kategóriája:** Jelentési  
 A **termék képességei:** & Jelentéskészítés figyelése
  
-A bejelentkezési tevékenység naplóiban a **Client app (ügyfélalkalmazás** ) mező bevezetésével az ügyfelek már láthatják az örökölt hitelesítést használó felhasználókat. Az ügyfelek hozzáférhetnek ezekhez az adatokhoz a bejelentkezési MS Graph API használatával vagy az Azure AD-portál bejelentkezési tevékenység naplófájljaiban, ahol az **ügyfélalkalmazás** vezérlőelem használatával szűrheti a régi hitelesítéseket. Tekintse meg a dokumentáció További részletekért.
+A bejelentkezési tevékenység naplóiban a **Client app (ügyfélalkalmazás** ) mező bevezetésével az ügyfelek már láthatják az örökölt hitelesítést használó felhasználókat. Az ügyfelek a bejelentkezések Microsoft Graph API-val vagy az Azure AD-portálon keresztül érhetik el ezeket az információkat, ahol az **ügyfélalkalmazás** vezérlőelem használatával szűrheti az örökölt hitelesítéseket. Tekintse meg a dokumentáció További részletekért.
 
 ---
 
@@ -2092,7 +2092,7 @@ Hozzáférési felülvizsgálat csoportok és alkalmazások már általánosan e
 **Szolgáltatás kategóriája:** Jelentési  
 A **termék képességei:** & Jelentéskészítés figyelése
  
-Az Azure AD tevékenységeket tartalmazó naplók, amely tartalmazza a bejelentkezések és auditnaplók, mostantól elérhetők az MS Graph használatával. A Microsoft közzétette a két végpontok keresztül az MS Graph ezek a naplók eléréséhez. Az első lépésekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) az Azure ad Reporting API-k programozott eléréséhez. 
+Az Azure AD-tevékenységek naplói, amelyek a bejelentkezéseket és a naplókat is tartalmazzák, mostantól elérhetők a Microsoft Graph API-n keresztül. A naplók eléréséhez két végpontot tettünk elérhetővé a Microsoft Graph API-n keresztül. Az első lépésekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) az Azure ad Reporting API-k programozott eléréséhez. 
 
 ---
  
@@ -2596,7 +2596,7 @@ További információ a jelentések használatáról: [Azure Active Directory je
 **Szolgáltatás kategóriája:** Jelentési  
 A **termék képességei:** & Jelentéskészítés figyelése
 
-Tartozó ügyfelek visszajelzés engedélyezése nem rendszergazda szerepkörök férnek hozzá az Azure Active Directory-naplókat, engedélyeztük a lehetőségét, hogy a felhasználók számára a "Jelentés olvasó" szerepkör a bejelentkezések hozzáférési és naplózási tevékenység belül az Azure Portalon, valamint a Graph API-k használatával. 
+Az ügyfelek visszajelzései részeként, hogy a nem rendszergazdai szerepkörök hozzáférjenek az Azure AD-tevékenység naplóihoz, engedélyezte, hogy a "jelentéskészítő" szerepkörrel rendelkező felhasználók hozzáférjenek a bejelentkezésekhez és a naplózási tevékenységhez a Azure Portalon belül, valamint a Microsoft Graph API. 
 
 További információ a jelentések használatáról: [Azure Active Directory jelentéskészítés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
 

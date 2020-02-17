@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169307"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368898"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -27,6 +27,10 @@ További információ az Azure-beli RHEL-lemezképekről, beleértve a közzét�
 
 A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
 
+> [!IMPORTANT]
+> A RHUI kizárólag utólagos elszámolású (ÁTTÉRÉSHEZ) rendszerképekhez készült. Az egyéni és az arany lemezképek, más néven a saját előfizetések (BYOS-EK) esetében a rendszernek a frissítések fogadásához csatolni kell a RHSM vagy a Satellite szolgáltatáshoz. További részletek: [Red Hat cikk](https://access.redhat.com/solutions/253273) .
+
+
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI vonatkozó fontos információk
 
 * Az Azure RHUI a frissítési infrastruktúra, amely támogatja az Azure-ban létrehozott összes RHEL TB virtuális gépet. Ez nem zárja ki, hogy regisztrálja a TB RHEL-alapú virtuális gépeket az előfizetés-kezelővel, illetve a műholdon vagy más frissítési forrásokkal, de a TB virtuális géppel való használata esetén a rendszer közvetett kettős számlázást eredményez. A részletekért tekintse meg a következő pontot.
@@ -35,6 +39,7 @@ A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes v
 * Az Azure-ban elérhető SAP-TB (RHEL for SAP, RHEL for SAP HANA és RHEL for SAP Business Applications) olyan dedikált RHUI-csatornákhoz csatlakoznak, amelyek az adott RHEL alverzióban maradnak, és az SAP-minősítéshez szükségesek.
 
 * Az Azure által üzemeltetett RHUI való hozzáférés az [Azure-adatközpont IP-tartományán](https://www.microsoft.com/download/details.aspx?id=41653)belüli virtuális gépekre korlátozódik. Ha Ön a proxyhasználat minden virtuális gép forgalom keresztül egy helyszíni hálózati infrastruktúrát, szüksége lehet a RHEL Használatalapú virtuális gépeket az Azure RHUI eléréséhez a felhasználó által megadott útvonalak beállítása. Ha ez a helyzet, a felhasználó által megadott útvonalakat hozzá kell adni az _összes_ RHUI IP-címhez.
+
 
 ## <a name="image-update-behavior"></a>Rendszerkép-frissítési viselkedés
 

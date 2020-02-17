@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452427"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368849"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -36,8 +36,8 @@ Az eszközhöz tartozó Azure Resource Manager sablon üzembe helyezéséhez lé
 
 Ezt a két PowerShell-modult is telepítenie kell az első lépések előtt:
 
-- [Azure PowerShell modul](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell modul](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Győződjön meg arról, hogy az előfizetés-azonosítója készen áll a bejelentkezéskor.
 
@@ -253,7 +253,7 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
     - Küszöbérték: a 80%-nál nagyobb érték van megjelölve sérültként.
 
-- [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.
 

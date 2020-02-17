@@ -6,19 +6,25 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123466"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368354"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor egy Event hub-ből tesz közzé vagy használ eseményeket/információkat, az ügyfél megpróbál hozzáférni Event Hubs erőforrásokhoz. A biztonságos erőforrásokra vonatkozó minden kérést engedélyezni kell, hogy a szolgáltatás biztosítsa, hogy az ügyfél rendelkezik a szükséges engedélyekkel az adatközzétételhez/felhasználáshoz. 
 
 Az Azure Event Hubs a következő lehetőségeket kínálja a biztonságos erőforrásokhoz való hozzáférés engedélyezéséhez:
+
+- Azure Active Directory
+- Közös hozzáférési aláírás
+
+> [!NOTE]
+> Ez a cikk a Event Hubs és [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) forgatókönyvekre egyaránt vonatkozik. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 A Azure Active Directory (Azure AD) integrációja Event Hubs erőforrásokhoz szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek erőforrásaihoz való hozzáférés részletes szabályozásához. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket biztosíthat a rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A token használatával engedélyezhető egy Event Hubs erőforrás elérésére irányuló kérés.
@@ -37,7 +43,7 @@ Alapértelmezés szerint az összes Event Hubs erőforrás biztonságos, és csa
 
 Az SAS használatával történő engedélyezéssel kapcsolatos további információkért lásd: [hozzáférés engedélyezése Event Hubs erőforrásokhoz közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a GitHub-tárházban közzétett [RBAC-mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) . 
 - Lásd az alábbi cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)

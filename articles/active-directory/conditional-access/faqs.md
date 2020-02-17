@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186051"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368087"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Feltételes hozzáférés Azure Active Directory – gyakori kérdések
 
@@ -40,7 +40,7 @@ A feltételes hozzáférési szabályzatok a szolgáltatások elérésére vonat
 
 A feltételes hozzáférési szabályzatok minden felhasználói fiókra érvényesek. Ez magában foglalja a szolgáltatásfiókokként használt felhasználói fiókokat is. Gyakran előfordul, hogy egy felügyelet nélküli szolgáltatást futtató szolgáltatásfiók nem tudja kielégíteni a feltételes hozzáférési szabályzat követelményeit. Előfordulhat például, hogy a többtényezős hitelesítésre van szükség. A szolgáltatási fiókok kizárhatók a szabályzatból a feltételes hozzáférési házirend kezelési beállításaival. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Használhatók-e a feltételes hozzáférési szabályzatok konfigurálására szolgáló Graph API-k?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Rendelkezésre állnak Microsoft Graph API-k a feltételes hozzáférési házirendek konfigurálásához?
 
 Jelenleg nem. 
 

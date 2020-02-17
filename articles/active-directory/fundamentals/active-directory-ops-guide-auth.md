@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511892"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368056"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -105,7 +105,7 @@ A hitelesítési lehetőségek jobb megismeréséhez tekintse [meg a megfelelő 
 
 ### <a name="programmatic-usage-of-credentials"></a>A hitelesítő adatok programozott használata
 
-A PowerShellt vagy a Graph APIt használó alkalmazásokat használó Azure AD-parancsfájlok biztonságos hitelesítést igényelnek. A parancsfájlokat és eszközöket végrehajtó, helytelen hitelesítő adatok kezelése növelheti a hitelesítő adatok ellopásának kockázatát. Ha olyan parancsfájlokat vagy alkalmazásokat használ, amelyek nehezen kódolt jelszavakat vagy jelszó kérését használják, először tekintse át a jelszavakat a konfigurációs fájlokban vagy a forráskódban, majd cserélje le ezeket a függőségeket, és használja az Azure által felügyelt identitásokat, az integrált Windows-hitelesítést vagy a [tanúsítványokat](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) , amikor csak lehetséges. Az olyan alkalmazások esetében, amelyeknél az előző megoldások nem lehetségesek, érdemes lehet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használni.
+A PowerShellt vagy az Microsoft Graph API-t használó alkalmazásokat használó Azure AD-parancsfájlok biztonságos hitelesítést igényelnek. A parancsfájlokat és eszközöket végrehajtó, helytelen hitelesítő adatok kezelése növelheti a hitelesítő adatok ellopásának kockázatát. Ha olyan parancsfájlokat vagy alkalmazásokat használ, amelyek nehezen kódolt jelszavakat vagy jelszó kérését használják, először tekintse át a jelszavakat a konfigurációs fájlokban vagy a forráskódban, majd cserélje le ezeket a függőségeket, és használja az Azure által felügyelt identitásokat, az integrált Windows-hitelesítést vagy a [tanúsítványokat](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) , amikor csak lehetséges. Az olyan alkalmazások esetében, amelyeknél az előző megoldások nem lehetségesek, érdemes lehet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használni.
 
 Ha azt állapítja meg, hogy vannak-e olyan egyszerű szolgáltatások, amelyek jelszavas hitelesítő adatokkal rendelkeznek, és nem biztos benne, hogy ezek a jelszavak hitelesítő adatai a parancsfájlok vagy alkalmazások által védettek, a használati minták jobb megismeréséhez lépjen kapcsolatba az alkalmazás tulajdonosával.
 
@@ -141,7 +141,7 @@ Ha MDM vagy Microsoft Intune eszközzel felügyeli az eszközöket, de a feltét
 #### <a name="device-trust-access-policies-recommended-reading"></a>Az eszköz megbízhatóságához való hozzáférési szabályzatok ajánlott olvasmányok
 
 - [Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Vállalati Windows Hello
 
@@ -194,7 +194,7 @@ Ha azonban olyan alkalmazásokat talál, amelyek egyéni felhasználókhoz rende
 
 ## <a name="access-policies"></a>Hozzáférési szabályzatok
 
-### <a name="named-locations"></a>Nevesített helyek
+### <a name="named-locations"></a>Elnevezett helyszínek
 
 Az Azure AD-ben [elnevezett helyekkel](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) megbízható IP-címtartományok is felcímkézhető a szervezetében. Az Azure AD a nevesített helyeket a következő célokra használja:
 
@@ -256,7 +256,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 #### <a name="conditional-access-recommended-reading"></a>Feltételes hozzáférés ajánlott olvasmánya
 
 - [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Identitás- és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory feltételes hozzáférési beállítások ismertetése](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Általános feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -305,23 +305,22 @@ Az alábbi lista azokat az alkalmazásokat tartalmazza, amelyekkel megvizsgálha
 | Office 365 Exchange Online | EAS. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
-| Microsoft Graph | Mail. Read |
+| Microsoft Graph API | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Példa:
+- Az alkalmazások a bejelentkezett felhasználó teljes körű felhasználó megszemélyesítését adtak meg. Például:
 
 |Erőforrás | Engedély |
 | :- | :- |
-| Azure AD Graph | Directory. AccessAsUser. All |
-| Microsoft Graph | Directory. AccessAsUser. All |
-| Azure REST API | user_impersonation |
+| Microsoft Graph API| Directory. AccessAsUser. All |
+| Azure-REST API | user_impersonation |
 
 Ennek elkerüléséhez tekintse meg a [tiltott engedélyezési támogatások észlelését és szervizelését az Office 365-ben](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) , hogy azonosítsa és javítsa azokat az alkalmazásokat, amelyek nem rendelkeznek olyan illegális támogatásokkal vagy alkalmazásokkal, amelyek a szükségesnél több támogatással rendelkeznek. Ezután [távolítsa el](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) az önkiszolgáló szolgáltatást teljesen, és [hozzon létre irányítási eljárásokat](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Végezetül ütemezze az alkalmazás engedélyeinek rendszeres felülvizsgálatát, és távolítsa el őket, ha nincs rá szükség.
 
 #### <a name="consent-grants-recommended-reading"></a>Hozzájárulás a javasolt olvasáshoz
 
-- [Microsoft Graph-engedélyek](https://docs.microsoft.com/graph/permissions-reference)
+- [API-engedélyek Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Felhasználói és csoport beállításai
 
@@ -373,7 +372,7 @@ A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási 
 - [Office 365 felügyeleti tevékenység API-referenciája](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
 - [A Azure Active Directory Power BI Content Pack használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segítséget nyújt a hitelesítő adatok biztonságossá tételéhez és kezeléséhez, a hitelesítési élmény meghatározásához, a hozzárendelés delegálásához, a használat méréséhez és a hozzáférési házirendek definiálásához a vállalati biztonsági helyzet alapján.
 

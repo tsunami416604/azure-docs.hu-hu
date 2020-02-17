@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480111"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368148"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B – ajánlott eljárások
 Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok közötti (B2B) együttműködéshez Azure Active Directory (Azure AD).
@@ -33,7 +33,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok köz
 | Multi-Factor Authenticationra vonatkozó feltételes hozzáférési szabályzatok betartatása (MFA) | Javasoljuk, hogy az MFA-szabályzatokat a partner B2B-felhasználókkal megosztani kívánt alkalmazásokra érvényesítse. Így az MFA-t következetesen érvényesítjük a bérlő alkalmazásaiban, függetlenül attól, hogy a partnerszervezet használ-e MFA-t. Tekintse [meg a vállalatközi csoportmunka-felhasználók feltételes hozzáférését](conditional-access.md)ismertető témakört. |
 | Ha az eszközökön alapuló feltételes hozzáférési szabályzatokat kényszeríti, a kizárási listával engedélyezheti a hozzáférést a B2B-felhasználók számára | Ha az eszközön alapuló feltételes hozzáférési szabályzatok engedélyezve vannak a munkahelyen, a B2B vendég felhasználói eszközei le lesznek tiltva, mert nem a szervezet felügyeli. Létrehozhat olyan kizárási listát, amely adott partner felhasználókat tartalmaz, hogy kizárják őket az eszközön alapuló feltételes hozzáférési szabályzatból. Tekintse [meg a vállalatközi csoportmunka-felhasználók feltételes hozzáférését](conditional-access.md)ismertető témakört. |
 | Bérlő-specifikus URL-cím használata, ha közvetlen hivatkozásokat biztosít a B2B vendég felhasználóinak | A meghívót tartalmazó e-mailek alternatívájaként az alkalmazásra vagy a portálra mutató közvetlen hivatkozást is megadhat. A közvetlen hivatkozásnak bérlőre jellemzőnek kell lennie, vagyis tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Tekintse [meg a vendég felhasználó beváltási élményét](redemption-experience.md). |
-| Alkalmazás fejlesztésekor a UserType használatával határozza meg a vendég felhasználói élményt  | Ha alkalmazást fejleszt, és különböző élményeket szeretne biztosítani a bérlői felhasználók és a vendég felhasználók számára, használja a UserType tulajdonságot. A UserType jogcím jelenleg nem szerepel a jogkivonatban. Az alkalmazásoknak a Graph API segítségével le kell kérdezni a felhasználó címtárát, hogy megkapják a UserType. |
+| Alkalmazás fejlesztésekor a UserType használatával határozza meg a vendég felhasználói élményt  | Ha alkalmazást fejleszt, és különböző élményeket szeretne biztosítani a bérlői felhasználók és a vendég felhasználók számára, használja a UserType tulajdonságot. A UserType jogcím jelenleg nem szerepel a jogkivonatban. Az alkalmazásoknak a Microsoft Graph API-t kell használniuk ahhoz, hogy lekérdezzek a felhasználó címtárát, hogy megkapják a UserType. |
 | A UserType tulajdonság *csak* akkor módosítható, ha a felhasználó kapcsolata a szervezet változásával | Habár lehetséges, hogy a PowerShell használatával a tag UserType tulajdonságát a vendégnek (és fordítva) is át lehet alakítani, ezt a tulajdonságot csak akkor kell módosítania, ha a felhasználó a szervezethez való viszonya megváltozik. Tekintse meg [a B2B vendég felhasználó tulajdonságait](user-properties.md).|
 
 ## <a name="next-steps"></a>Következő lépések

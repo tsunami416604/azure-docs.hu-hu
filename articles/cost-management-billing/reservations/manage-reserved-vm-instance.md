@@ -3,19 +3,17 @@ title: Az Azure Reservations kezelése
 description: Ismerje meg, hogyan kezelhető az Azure Reservations.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994050"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188517"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -128,7 +126,7 @@ A foglalás optimalizálási beállításának frissítése:
 
 ## <a name="optimize-reservation-use"></a>Foglalás kihasználtságának optimalizálása
 
-Az Azure-foglalások használatából eredő megtakarítások kizárólag a tartós erőforrás-használatból származnak. Ha megvásárol egy foglalást, akkor előre fizet azért, ami tulajdonképpen a 100%-ig lehetséges erőforrás-használat egy egy- vagy hároméves időszak alatt. Igyekezzen maximálisan kihasználni a foglalást, hogy ezzel minél több megtakarítást érhessen el. Az alábbi szakaszok leírják, hogyan érdemes monitorozni a foglalásokat, és optimalizálni a használatukat.
+Az Azure-foglalások használatából eredő megtakarítások kizárólag a tartós erőforrás-használatból származnak. Ha megvásárol egy foglalást, akkor azért fizet, ami tulajdonképpen a 100%-ig lehetséges erőforrás-használat egy egy- vagy hároméves időszak alatt. Igyekezzen maximálisan kihasználni a foglalást, hogy ezzel minél több megtakarítást érhessen el. Az alábbi szakaszok leírják, hogyan érdemes monitorozni a foglalásokat, és optimalizálni a használatukat.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Foglalás kihasználtságának megtekintése az Azure Portalon
 

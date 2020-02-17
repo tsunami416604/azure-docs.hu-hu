@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294150"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188649"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -61,6 +61,13 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába.
 **Kimutatásdiagramok (fánkdiagramok)** : Dinamikus kimutatásokat tesznek lehetővé azzal, hogy a teljes költséget alapvető jellemzők alapján bontják le. Az aktuális hónap költségeit jelenítik meg a legnagyobbaktól a legkisebbekig. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségek alapértelmezetten a következő kategóriákba vannak sorolva: szolgáltatás (fogyasztásmérő kategóriája), hely (régió), valamint gyermekhatókör. Például a regisztrációs fiókok a számlázási fiókok alatt, az erőforráscsoportok az előfizetések alatt, az erőforrások pedig az erőforráscsoportok alatt jelennek meg.
 
 ![A költségelemzés kezdőnézete az Azure Portalon](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+### <a name="understand-forecast"></a>Az előrejelzés ismertetése
+
+A költség-előrejelzés a becsült költségek kivetítése a kiválasztott időszakra. A modell egy idősoros regressziós modellen alapul. Legalább 10 napnyi előzetes költség- és felhasználási adat szükséges a költségek pontos előrejelzéséhez. Egy adott időszakra vonatkozóan az előrejelzési modellnek az időszak hosszával megegyező mennyiségű betanítási adatra van szüksége. Például a három hónapos előrejelzéshez legalább három hónapnyi friss költség- és felhasználási adat szükséges. 
+
+A modell legfeljebb hat hónapos betanítási adatmennyiséget használ a költségek egy éves előrevetítéséhez. Legalább hét napnyi betanítási adatra van szüksége az előrejelzés megváltoztatásához. Az előrejelzés a költség- és felhasználási mintákban végbemenő jelentős változásokon, pl. kiugróan magas és alacsony értékeken alapul. Az előrejelzés nem hoz létre előrevetítést a **Csoportosítási szempont** tulajdonság alatt található minden egyes elemhez. Csak az összesített költségekről ad előrejelzést. Ha több pénznemet használ, a modell csak amerikai dollárban biztosítja a költségek előrejelzését. 
+
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
@@ -113,7 +120,7 @@ Alapértelmezés szerint a költségelemzés az összes keletkező és számlán
 
 ![Váltson a tényleges és az amortizált költség között, hogy megtekinthesse a teljes időszakra leosztott, illetve a foglalást használó erőforrásokhoz rendelt foglalásvásárlásokat](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Az amortizált költség nézete a foglalásvásárlási díjakat napi adagokra osztja, és ezeket egyenletesen elosztja a foglalási időszak teljes tartamára. Például ahelyett, hogy január 1-én kiugrana egy 365 dollár értékű vásárlás, január 1-től december 31-ig minden nap egy 1 dollár értékű vásárlás jelenik meg. Az alapvető amortizáción felül ezek a költségek a foglalást használó konkrét erőforrásokhoz vannak rendelve, és közöttük vannak szétosztva. Ha például az 1 dolláros napi díj két virtuális gép között oszlik meg, két 0,50 dolláros napi díj jelenik meg. Ha a foglalás egyik része az adott napon nincs felhasználva, a megfelelő virtuális gépnél egy 0,50 dolláros díj látható, egy másik 0,50 dolláros díj pedig `UnusedReservation` díjtípussal jelenik meg. Vegye figyelembe, hogy a fel nem használt foglalási költségek csak akkor láthatók, ha az amortizált költségeket jeleníti meg.
+Az amortizált költség nézete a foglalásvásárlási díjakat napi adagokra osztja, és ezeket egyenletesen elosztja a foglalási időszak teljes tartamára. Például ahelyett, hogy január 1-én kiugrana egy 365 dollár értékű vásárlás, január 1-től december 31-ig minden nap egy 1,00 dollár értékű vásárlás jelenik meg. Az alapvető amortizáción felül ezek a költségek a foglalást használó konkrét erőforrásokhoz vannak rendelve, és közöttük vannak szétosztva. Ha például az 1,00 dolláros napi díj két virtuális gép között oszlik meg, két 0,50 dolláros napi díj jelenik meg. Ha a foglalás egyik része az adott napon nincs felhasználva, a megfelelő virtuális gépnél egy 0,50 dolláros díj látható, egy másik 0,50 dolláros díj pedig `UnusedReservation` díjtípussal jelenik meg. Vegye figyelembe, hogy a fel nem használt foglalási költségek csak akkor láthatók, ha az amortizált költségeket jeleníti meg.
 
 Fontos megjegyezni, hogy a költségek megjelenítésének eltérései miatt a tényleges és az amortizált költség nézete eltérő végösszeget mutat. Általánosságban elmondható, hogy az amortizált költségek megtekintése esetén a foglalásvásárlást tartalmazó hónapok teljes költsége csökken, a foglalásvásárlásokat követő hónapok költségei pedig növekednek. Az amortizáció csak foglalásvásárlások esetén érhető el, és jelenleg az Azure Marketplace-beli vásárlásokra nem vonatkozik.
 

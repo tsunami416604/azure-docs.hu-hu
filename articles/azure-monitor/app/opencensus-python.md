@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989518"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368265"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -26,7 +26,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Application Insights erőforrás létrehozása Azure Monitor
 
@@ -38,7 +38,7 @@ Először létre kell hoznia egy Application Insights erőforrást a Azure Monit
 
 1. Megjelenik egy konfigurációs ablak. A beviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-   | Beállítás        | Value (Díj)           | Leírás  |
+   | Beállítás        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
@@ -107,7 +107,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a `SpanData` Azure Monitor. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a `SpanData` Azure Monitor. Adja át a hozzáférési karakterláncot közvetlenül az exportőrnek, vagy megadhatja egy környezeti változóban `APPLICATIONINSIGHTS_CONNECTION_STRING`. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -140,7 +140,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
 
 6. A nyomkövetési adatok telemetria kapcsolatos részletekért tekintse meg a OpenCensus [telemetria korrelációt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)ismertető részt.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 1. Először hozzon elő néhány helyi metrikai adatokat. Egy egyszerű mérőszámot hozunk létre, amely nyomon követheti, hogy a felhasználó hányszor nyomja meg az ENTER billentyűt.
 
@@ -193,7 +193,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a metrikus adatokat Azure Monitor. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a metrikus adatokat Azure Monitor. Adja át a hozzáférési karakterláncot közvetlenül az exportőrnek, vagy megadhatja egy környezeti változóban `APPLICATIONINSIGHTS_CONNECTION_STRING`. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
 
     ```python
     from datetime import datetime
@@ -277,7 +277,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     90
     ```
 
-3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a napló adatait Azure Monitor. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
+3. Bár az értékek beírása a bemutató céljára hasznos, végső soron azt szeretnénk, hogy a napló adatait Azure Monitor. Adja át a hozzáférési karakterláncot közvetlenül az exportőrnek, vagy megadhatja egy környezeti változóban `APPLICATIONINSIGHTS_CONNECTION_STRING`. Módosítsa a kódot az előző lépésből a következő kód minta alapján:
 
     ```python
     import logging
@@ -393,7 +393,7 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
 * [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.

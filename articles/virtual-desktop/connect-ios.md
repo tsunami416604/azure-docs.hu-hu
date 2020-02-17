@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/08/2020
 ms.author: helohr
-ms.openlocfilehash: 92e11edf3b28017ac73702e3f71dfc491d3986e3
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: aba2202f0d33609400588e379a4ed3bb9bb798d9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110623"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367526"
 ---
 # <a name="connect-with-the-ios-client"></a>Kapcsolódás az iOS-ügyfélhez
 
@@ -47,4 +47,4 @@ Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az iOS-ügyfél használatáról, tekintse meg az iOS-ügyfél dokumentációjának használatának [első lépéseit](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .
+Ha többet szeretne megtudni az iOS-ügyfél használatáról, tekintse meg az iOS-ügyfél dokumentációjának használatának [első lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/) .

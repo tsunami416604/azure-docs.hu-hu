@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965733"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367210"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -53,7 +53,7 @@ Nyers hiba – példa:
 
 **OK:** A bejelentkezett felhasználó nem rendelte hozzá a TenantCreator szerepkört a Azure Active Directory.
 
-**Javítás:** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben lévő felhasználóhoz való hozzárendelésével kapcsolatos](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
+**Javítás:** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben lévő felhasználóhoz való hozzárendelésével kapcsolatos](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
 
 ![Képernyőkép a hozzárendelt TenantCreator-szerepkörről.](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ Ha a műveleti sablon túllépi a kvóta korlátját, akkor a következő művel
 
 A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi telepítésének hibakereséséhez kövesse az alábbi utasításokat.
 
-1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
-2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) a probléma megoldásához.
+1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](../azure-resource-manager/resource-manager-deployment-operations.md).
+2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](../azure-resource-manager/resource-group-audit.md).
+3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) a probléma megoldásához.
 4. Törölje az előző központi telepítés során létrehozott erőforrásokat, majd próbálkozzon újra a sablon üzembe helyezésével.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült...\<állomásnév >/JoinDomain

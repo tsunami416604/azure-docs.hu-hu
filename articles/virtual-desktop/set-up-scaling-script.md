@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061506"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367250"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -35,7 +35,7 @@ A skálázási eszköz Azure Automation PowerShell-runbookok, webhookok és Azur
 A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenetek aktuális számát és az aktuálisan futó munkamenet-gazdagép virtuálisgép-kapacitását az egyes gazdagépek esetében. Ezt az információt használja annak kiszámításához, hogy a futó munkamenet-gazda virtuális gépek támogatni tudják-e a meglévő munkameneteket a **createazurelogicapp. ps1** fájlhoz definiált *SessionThresholdPerCPU* paraméter alapján. Ha a munkamenet-gazdagép virtuális gépei nem támogatják a meglévő munkameneteket, a feladatokban további munkamenet-gazda virtuális gépek indulnak a gazdagép-készletben.
 
 >[!NOTE]
->A *SessionThresholdPerCPU* nem korlátozza a virtuális gépen futó munkamenetek számát. Ez a paraméter csak azt határozza meg, hogy mikor kell elindítani az új virtuális gépeket a kapcsolatok terheléselosztásához. A munkamenetek számának korlátozásához kövesse a [set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) utasítást, hogy ennek megfelelően konfigurálja a *MaxSessionLimit* paramétert.
+>A *SessionThresholdPerCPU* nem korlátozza a virtuális gépen futó munkamenetek számát. Ez a paraméter csak azt határozza meg, hogy mikor kell elindítani az új virtuális gépeket a kapcsolatok terheléselosztásához. A munkamenetek számának korlátozásához kövesse a [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) utasítást, hogy ennek megfelelően konfigurálja a *MaxSessionLimit* paramétert.
 
 A maximális kihasználtsági idő alatt a feladattípus határozza meg, hogy a *MinimumNumberOfRDSH* paraméter alapján melyik munkamenet-gazda virtuális gépek legyenek leállítva. A feladattípus beállítja a munkamenet-gazda virtuális gépek kiürítési módját, hogy megakadályozza, hogy az új munkamenetek csatlakozzanak a gazdagépekhez. Ha a *LimitSecondsToForceLogOffUser* paramétert nem nulla értékű pozitív értékre állítja be, a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat, hogy mentse a munkáját, várjon a beállított időtartamra, majd kényszerítse ki a felhasználókat a kijelentkezésre. Ha a munkamenet-gazda virtuális gépen lévő összes felhasználói munkamenet ki lett jelentkezve, a parancsfájl leállítja a virtuális gépet.
 
@@ -126,7 +126,7 @@ Futtató fiók létrehozása az Azure-fiókban:
 
 Ezután létre kell hoznia egy szerepkör-hozzárendelést, hogy a Azurerunasconnection elemet kommunikálni tudjon a Windows virtuális asztallal. Ügyeljen arra, hogy a PowerShell használatával jelentkezzen be egy olyan fiókkal, amely jogosultságokkal rendelkezik a szerepkör-hozzárendelések létrehozásához.
 
-Először töltse le és importálja a PowerShell-munkamenetben használni kívánt [Windows virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , ha még nem tette meg. Futtassa a következő PowerShell-parancsmagokat a Windows rendszerű virtuális asztalhoz való kapcsolódáshoz és a bérlők megjelenítéséhez.
+Először töltse le és importálja a PowerShell-munkamenetben használni kívánt [Windows virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , ha még nem tette meg. Futtassa a következő PowerShell-parancsmagokat a Windows rendszerű virtuális asztalhoz való kapcsolódáshoz és a bérlők megjelenítéséhez.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

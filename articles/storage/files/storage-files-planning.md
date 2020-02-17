@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157217"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368618"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -177,8 +177,6 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 Az 100 TiB kapacitási korláttal rendelkező standard fájlmegosztás globálisan elérhető az összes Azure-régióban –
 
 - LRS: minden régió, Dél-Afrika északi régiója és Dél-Afrika nyugati régiója kivételével.
-   - USA keleti régiója és Nyugat-Európa: minden új fiók támogatott. Néhány meglévő fiók nem végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
-
 - ZRS: minden régió, kivéve a Kelet-Japán, Észak-Európa, Dél-Afrika északi régióját.
 - GRS/GZRS: nem támogatott.
 

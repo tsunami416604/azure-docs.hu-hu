@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031748"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365205"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookok kapcsolatos hibák elhárítása
 
@@ -569,53 +569,77 @@ A Linux rendszerhez készült Log Analytics-ügynök nxautomationuser-fiókja he
 
 * Ellenőrizze a nxautomationuser-fiók konfigurációját a sudoers fájlban. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Forgatókönyv: a parancsmag sikertelen a PnP PowerShell runbook Azure Automation
+
+### <a name="issue"></a>Probléma
+
+Amikor egy runbook egy PnP PowerShell által generált objektumot ír közvetlenül a Azure Automation kimenetre, a parancsmag kimenete nem tud visszaküldeni az Automation szolgáltatásba.
+
+### <a name="cause"></a>Ok
+
+Ezt a problémát általában az okozza, ha Azure Automation feldolgozza a PnP PowerShell-parancsmagokat meghívó runbookok, például az **Add-pnplistitem**, anélkül, hogy a visszaadott objektumokat kellene befognia.
+
+### <a name="resolution"></a>Megoldás:
+
+Szerkessze a parancsfájlokat úgy, hogy bármilyen visszatérési értéket rendeljen a változókhoz, hogy a parancsmagok ne próbáljanak teljes objektumokat írni a standard kimenetre. Egy parancsfájl átirányíthatja a kimeneti adatfolyamot egy parancsmagra az alább látható módon.
+
+```azurecli
+  $null = add-pnplistitem
+```
+Ha a parancsfájl a parancsmag kimenetét elemzi, a szkriptnek egy változóban kell tárolnia a kimenetet, és a változót csak a kimenet továbbítása helyett kell módosítania.
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>A probléma nem szerepel a fenti felsorolásban
 
 Az alábbi részekben a probléma megoldásához segítséget nyújtó dokumentáción kívül más gyakori hibák is szerepelnek.
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>A hibrid runbook-feldolgozó nem futtat feladatokat vagy nem válaszol
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>A hibrid runbook-feldolgozó nem futtat feladatokat vagy nem válaszol
 
 Ha Azure Automation helyett hibrid feldolgozót használó feladatokat futtat, előfordulhat, hogy [a hibrid feldolgozót is](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)le kell állítania.
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>A runbook „Nincs engedély” hibaüzenettel vagy annak valamelyik variációjával meghiúsul
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>A runbook „Nincs engedély” hibaüzenettel vagy annak valamelyik variációjával meghiúsul
 
 Előfordulhat, hogy a futtató fiókok nem rendelkeznek ugyanazokkal az engedélyekkel az Azure-erőforrásokhoz, mint az aktuális fiók. Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
 
 * Ha a runbookok korábban már elvégezték, de leállították, győződjön meg arról, hogy a [futtató fiók](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) nem járt le.
 * Ha webhookokat használ a runbookok elindításához, győződjön meg arról, hogy a [webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) nem járt le.
 
-## <a name="issues-passing-parameters-into-webhooks"></a>Paraméterek átadása webhookokra
+### <a name="issues-passing-parameters-into-webhooks"></a>Paraméterek átadása webhookokra
 
 A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [runbook indítása webhookból](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="issues-using-az-modules"></a>Az az modulok használatával kapcsolatos problémák
+### <a name="issues-using-az-modules"></a>Az az modulok használatával kapcsolatos problémák
 
-Az Az modulok és az AzureRM modulok használata ugyanabban az Automation-fiókban nem támogatott. További információt az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakörben talál.
+Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. További információt az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakörben talál.
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Következetlen viselkedés a runbookokban
+### <a name="inconsistent-behavior-in-runbooks"></a>Következetlen viselkedés a runbookokban
 
 Kövesse a [Runbook végrehajtásának](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) utasításait, hogy elkerülje az egyidejű feladatokkal, a több alkalommal létrehozott erőforrásokkal vagy más, az runbookok-ben lévő, időzítésre érzékeny logikával kapcsolatos problémákat.
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>A Runbook sikertelen a következő hiba miatt: nem engedélyezett, tiltott (403), vagy valamilyen variáció
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>A Runbook sikertelen a következő hiba miatt: nem engedélyezett, tiltott (403), vagy valamilyen variáció
 
 Előfordulhat, hogy a futtató fiókok nem rendelkeznek ugyanazokkal az engedélyekkel az Azure-erőforrásokhoz, mint az aktuális fiók. Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
 
 * Ha a runbookok korábban már elvégezték, de leállították, győződjön meg arról, hogy a futtató fiók nem járt le. Lásd: a [tanúsítvány megújítása](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Ha webhookokat használ a runbookok elindításához, győződjön meg arról, hogy a webhook [nem járt le](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
 
-## <a name="passing-parameters-into-webhooks"></a>Paraméterek átadása a webhookoknak
+### <a name="passing-parameters-into-webhooks"></a>Paraméterek átadása a webhookoknak
 
 A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [runbook indítása webhookból](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="using-az-modules"></a>Az modulok használata
+### <a name="using-az-modules"></a>Az modulok használata
 
-Az Az modulok és az AzureRM modulok használata ugyanabban az Automation-fiókban nem támogatott. Lásd [az az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules).
+Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. Lásd [az az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Önaláírt tanúsítványok használata
+### <a name="using-self-signed-certificates"></a>Önaláírt tanúsítványok használata
 
 Önaláírt tanúsítványok használatához tekintse meg az [új tanúsítvány létrehozása](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)című témakört.
 

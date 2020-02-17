@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861387"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368632"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Idősorozat-modell Azure Time Series Insights előzetes verzióban
 
@@ -26,7 +26,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modelljein
 > * Az idősorozat-modell felhasználói felületének megismeréséhez olvassa el a [Azure Time Series Insights Preview Explorer böngészőt](time-series-insights-update-explorer.md) .
 > * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](time-series-insights-update-how-to-tsm.md) a Time Series Insights webkezelő használatával.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. Az idősorozat-modell fő motivációja a IoT és az idősoros adatok megkeresésének és elemzésének egyszerűbbé tétele. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
 
@@ -55,7 +55,7 @@ Az **idősorozat-modell kényelmes megoldást kínál** a kitalált példán bel
 * Az adatok továbbra is környezetfüggők, mert a Time Series-modellben megőrzött adatok megőrzik a Time Series lekérdezési számításait változókként, és a lekérdezéskor újra felhasználják őket.
 * Az idősorozat-modell rendszerezi és összesíti az adatokat a jobb vizualizációs és felügyeleti képességekhez. (**B**) 
 
-### <a name="key-capabilities"></a>Főbb képességek
+### <a name="key-capabilities"></a>Főbb funkciók
 
 Azzal a céllal, hogy egyszerű és könnyedebb legyen a Time Series contextualization kezelése, az idősorozat-modell a következő képességeket teszi lehetővé Time Series Insights előzetes verzióban. A következőkkel segíti Önt:
 
@@ -224,7 +224,7 @@ A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek me
 
 Az idősorozat *-modellek segítségével* változók vagy képletek definiálhatók a számítások végrehajtásához. A típusok egy adott Time Series Insights-példánnyal vannak társítva.
 
-Egy típus egy vagy több változóval is rendelkezhet. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet*és a *maximális hőmérsékletet*tartalmazza.
+A típus lehet egy vagy több változót. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet*és a *maximális hőmérsékletet*tartalmazza.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több idősorozat-modellt jelenít meg a saját példányaihoz társítva.
 

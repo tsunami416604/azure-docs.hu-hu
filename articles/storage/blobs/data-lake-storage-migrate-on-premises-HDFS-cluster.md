@@ -3,17 +3,17 @@ title: Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Dat
 description: Adatok migrálása helyszíni HDFS-tárolóból az Azure Storage-ba
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990963"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368673"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
 
@@ -25,19 +25,19 @@ Ez a cikk a következő feladatok elvégzését segíti elő:
 > * Készítse elő az adatáttelepítés előkészítését.
 > * Másolja az adatait egy Data Box vagy egy Data Box Heavy eszközre.
 > * Az eszköz újbóli szállítása a Microsoftnak.
-> * Helyezze át az adataikat Data Lake Storage Gen2ba.
+> * Hozzáférési engedélyek alkalmazása fájlokra és könyvtárakra (csak Data Lake Storage Gen2)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az áttelepítés befejezéséhez ezeket a dolgokat kell végrehajtania.
 
-* Két Storage-fiók; az egyik, hogy engedélyezve van egy hierarchikus névtér, és egy nem.
+* Egy Azure Storage-fiók.
 
 * A forrásadatokat tartalmazó helyszíni Hadoop-fürt.
 
 * Egy [Azure Data Box eszköz](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Rendeljen Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Az eszköz megrendelése közben ne felejtsen el olyan Storage-fiókot választani **, amelyen nincs** engedélyezve a hierarchikus névterek. Ennek az az oka, hogy Data Box-eszközök még nem támogatják a közvetlen betöltést Azure Data Lake Storage Gen2ba. Egy Storage-fiókba kell másolnia, majd második másolatot kell készítenie a ADLS Gen2-fiókba. Ehhez az alábbi lépésekben talál útmutatást.
+  * [Rendeljen Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
 
   * Csatlakoztassa a [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) a helyszíni hálózathoz.
 
@@ -173,36 +173,14 @@ Az alábbi lépéseket követve előkészítheti és szállíthatja a Data Box e
 
     * Data Box Heavy eszközökhöz tekintse [meg a Data Box Heavy szállítása](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)című témakört.
 
-5. Miután a Microsoft megkapja az eszközét, az az adatközpont-hálózathoz csatlakozik, és a rendszer feltölti az adatait a megadott Storage-fiókba (a hierarchikus névterek letiltásával) az eszköz sorrendjének elhelyezésekor. Ellenőrizze azokat az ANYAGJEGYZÉK-fájlokat, amelyeket az összes adattal feltölt az Azure-ba. Ezután áthelyezheti ezeket az adatData Lake Storage Gen2 Storage-fiókba.
+5. Miután a Microsoft megkapja az eszközét, az az adatközpont-hálózathoz csatlakozik, és a rendszer feltölti az adatait az eszközök sorrendbe helyezése során megadott Storage-fiókba. Ellenőrizze azokat az ANYAGJEGYZÉK-fájlokat, amelyeket az összes adattal feltölt az Azure-ba. 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2ba helyezi át az adatátvitelt
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Hozzáférési engedélyek alkalmazása fájlokra és könyvtárakra (csak Data Lake Storage Gen2)
 
-Már rendelkezik az Azure Storage-fiókjában tárolt adataival. Most átmásolja az adatait a Azure Data Lake Storage-fiókjába, és hozzáférési engedélyeket fog alkalmazni a fájlokhoz és könyvtárakhoz.
+Már rendelkezik az Azure Storage-fiókjában tárolt adataival. Mostantól hozzáférési engedélyeket fog alkalmazni a fájlokra és könyvtárakra.
 
 > [!NOTE]
-> Erre a lépésre akkor van szükség, ha az adattárat Azure Data Lake Storage Gen2 használja. Ha csak egy blob Storage-fiókot használ hierarchikus névtér nélküli adattárként, akkor kihagyhatja ezt a szakaszt.
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Adatmásolás a Azure Data Lake Storage Gen 2 fiókba
-
-Az Adatmásolás Azure Data Factory használatával vagy az Azure-alapú Hadoop-fürt használatával végezhető el.
-
-* A Azure Data Factory használatához lásd: [Azure Data Factory az adatáthelyezéshez ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Győződjön meg arról, hogy az **Azure Blob Storage** forrásként van megadva.
-
-* Az Azure-alapú Hadoop-fürt használatához futtassa ezt a DistCp-parancsot:
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * Cserélje le a `<source_account>` és `<dest_account>` helyőrzőket a forrás és a cél Storage-fiókok nevével.
-
-    * Cserélje le a `<source_container>`t, és `<dest_container>` helyőrzőket a forrás-és a cél tárolók nevével.
-
-    * Cserélje le a `<source_path>` és `<dest_path>` helyőrzőket a forrás és a cél könyvtár elérési útjaira.
-
-    * Cserélje le az `<source_account_key>` helyőrzőt az adattárolási fiók hozzáférési kulcsára.
-
-    Ez a parancs a Storage-fiókból származó adatokat és metaadatokat a Data Lake Storage Gen2 Storage-fiókba másolja.
+> Erre a lépésre csak akkor van szükség, ha az adattárat Azure Data Lake Storage Gen2 használja. Ha csak egy blob Storage-fiókot használ hierarchikus névtér nélküli adattárként, akkor kihagyhatja ezt a szakaszt.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Egyszerű szolgáltatásnév létrehozása a Azure Data Lake Storage Gen2-fiókhoz
 

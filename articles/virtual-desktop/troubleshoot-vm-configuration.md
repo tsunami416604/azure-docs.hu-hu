@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980217"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367162"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -26,7 +26,7 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépek tartományhoz való csatlakoztatásakor.
 
-- Csatlakoztassa manuálisan a virtuális gépet a [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) vagy a [tartományhoz való csatlakozás sablonjának](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)használatával.
+- Csatlakoztassa manuálisan a virtuális gépet a [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](../active-directory-domain-services/join-windows-vm.md) vagy a [tartományhoz való csatlakozás sablonjának](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)használatával.
 - Próbálja pingelni a tartománynevet a parancssorból a virtuális gépen.
 - Tekintse át a tartományhoz való [Csatlakozás hibaüzeneteit a következő témakörben](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx): tartományi csatlakozási hibaüzenetek.
 
@@ -37,7 +37,7 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 **Javítás:** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
 - Manuálisan adja hozzá a virtuális gépeket egy tartományhoz.
-- A sablon újbóli üzembe helyezése a hitelesítő adatok megerősítése után. Lásd: [állomáslista létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel.
+- A sablon újbóli üzembe helyezése a hitelesítő adatok megerősítése után. Lásd: [állomáslista létrehozása a PowerShell](create-host-pools-powershell.md)-lel.
 - Csatlakoztassa a virtuális gépeket egy tartományhoz egy olyan sablonnal, amely egy [meglévő Windows-alapú virtuális GÉPET ad tartományhoz csatlakozik](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Hiba: a felhasználói bevitelre való várakozás időtúllépése
@@ -62,17 +62,17 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 
 **1. ok:** A virtuális gépek olyan virtuális hálózaton vannak, amely nincs társítva a virtuális hálózathoz (VNET), ahol a tartomány található.
 
-**1. javítás:** Hozzon létre VNET-társítást a virtuális gépek kiépített VNET és a tartományvezérlőt (DC) futtató VNET között. Lásd: [virtuális hálózati társ-erőforrás-kezelő létrehozása, különböző előfizetések](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**1. javítás:** Hozzon létre VNET-társítást a virtuális gépek kiépített VNET és a tartományvezérlőt (DC) futtató VNET között. Lásd: [virtuális hálózati társ-erőforrás-kezelő létrehozása, különböző előfizetések](../virtual-network/create-peering-different-subscriptions.md).
 
 **2. ok:** Azure Active Directory Domain Services (Azure AD DS) használata esetén a virtuális hálózat nem frissült a DNS-kiszolgáló beállításaival, hogy azok a felügyelt tartományvezérlőkre mutassanak.
 
-**2. javítás:** Az Azure AD DSt tartalmazó virtuális hálózat DNS-beállításainak frissítéséhez tekintse meg [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)című témakört.
+**2. javítás:** Az Azure AD DSt tartalmazó virtuális hálózat DNS-beállításainak frissítéséhez tekintse meg [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)című témakört.
 
 **3. ok:** A hálózati adapter DNS-kiszolgálójának beállításai nem a virtuális hálózaton lévő megfelelő DNS-kiszolgálóra mutatnak.
 
 **3. javítás:** Hajtsa végre a következő műveletek egyikét a megoldáshoz a [DNS-kiszolgálók módosítása] című témakörben leírtak szerint.
-- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait **Egyéni** értékre a [DNS-kiszolgálók módosítása](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) lépésekkel, és a virtuális hálózaton lévő DNS-kiszolgálók magánhálózati IP-címeinek megadásával.
-- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait úgy, hogy azok a **virtuális hálózatról öröklik** a [DNS-kiszolgálók módosításának](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)lépéseit, majd módosítsa a virtuális hálózat DNS-KISZOLGÁLÓJÁNAK beállításait a [DNS-kiszolgálók módosítása](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)című témakör lépéseit követve.
+- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait **Egyéni** értékre a [DNS-kiszolgálók módosítása](../virtual-network/virtual-network-network-interface.md#change-dns-servers) lépésekkel, és a virtuális hálózaton lévő DNS-kiszolgálók magánhálózati IP-címeinek megadásával.
+- Módosítsa a hálózati adapter DNS-kiszolgálójának beállításait úgy, hogy azok a **virtuális hálózatról öröklik** a [DNS-kiszolgálók módosításának](../virtual-network/virtual-network-network-interface.md#change-dns-servers)lépéseit, majd módosítsa a virtuális hálózat DNS-KISZOLGÁLÓJÁNAK beállításait a [DNS-kiszolgálók módosítása](../virtual-network/manage-virtual-network.md#change-dns-servers)című témakör lépéseit követve.
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nincs telepítve a Windows rendszerű virtuális asztali ügynök és a Windows rendszerű virtuális asztali rendszerindító betöltő
 
@@ -88,7 +88,7 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 
 **1. ok:** A Azure Resource Manager sablon bemenete során megadott hitelesítő adatok helytelenek voltak, vagy az engedélyek elégtelenek voltak.
 
-**1. javítás:** Manuálisan adja hozzá a hiányzó összetevőket a virtuális gépekhez a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel használatával.
+**1. javítás:** Manuálisan adja hozzá a hiányzó összetevőket a virtuális gépekhez a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)-lel használatával.
 
 **2. ok:** A PowerShell DSC elindítása és végrehajtása sikerült, de nem fejeződött be, mert nem tud bejelentkezni a Windows rendszerű virtuális asztalra, és beszerezni a szükséges információkat.
 
@@ -147,7 +147,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 **2. javítás:** A 443-es port megnyitásához kövesse az alábbi utasításokat.
 
-1. Győződjön meg arról, hogy a 443-es port meg van nyitva a PSPing eszköz a [Sysinternal Tools](https://docs.microsoft.com/sysinternals/downloads/psping)webhelyről való letöltés
+1. Győződjön meg arról, hogy a 443-es port meg van nyitva a PSPing eszköz a [Sysinternal Tools](/sysinternals/downloads/psping/)webhelyről való letöltés
 2. Telepítse a PSPing a munkamenet-gazda virtuális gépre, amelyen az ügynök fut.
 3. Nyissa meg a parancssort rendszergazdaként, és adja ki az alábbi parancsot:
 
@@ -189,7 +189,7 @@ A **qwinsta** kimenete az **RDP-SxS** fogja listázni a kimenetben, ha a párhuz
 
 ![Az egymás melletti verem telepítve van vagy engedélyezve van a kimenetben RDP-SxS-ként felsorolt qwinsta.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és ellenőrizze, hogy az értékek egyeznek-e. Ha a beállításkulcsok hiányoznak, vagy az értékek nem egyeznek, kövesse a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) -lel című témakör utasításait a párhuzamos verem újratelepítésének módjáról.
+Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és ellenőrizze, hogy az értékek egyeznek-e. Ha a beállításkulcsok hiányoznak, vagy az értékek nem egyeznek, kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) -lel című témakör utasításait a párhuzamos verem újratelepítésének módjáról.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 **Javítás:** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
-2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
+2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)használatával című részből.
+3. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)használatával című részből.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>A Windows rendszerű virtuális asztalok egymás melletti veremének kijavítása
 
@@ -226,14 +226,14 @@ Vannak olyan ismert körülmények, amelyek az egymás melletti verem meghibáso
 - Enablesxsstackrc. ps1 többszöri futtatása
 - A enablesxsstackrc. ps1 futtatása olyan fiókban, amely nem rendelkezik helyi rendszergazdai jogosultságokkal
 
-Az ebben a szakaszban található utasítások segítséget nyújtanak a Windows rendszerű virtuális asztal egymás melletti verem eltávolításához. A párhuzamos verem eltávolítása után nyissa meg a "virtuális gép regisztrálása a Windows rendszerű virtuális asztali készlettel" című részt a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) -lel című részből a párhuzamos verem újratelepítéséhez.
+Az ebben a szakaszban található utasítások segítséget nyújtanak a Windows rendszerű virtuális asztal egymás melletti verem eltávolításához. A párhuzamos verem eltávolítása után nyissa meg a "virtuális gép regisztrálása a Windows rendszerű virtuális asztali készlettel" című részt a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) -lel című részből a párhuzamos verem újratelepítéséhez.
 
 A szervizelés futtatásához használt virtuális gépnek ugyanazon az alhálózaton és tartományban kell lennie, mint a virtuális gépnek, amely a meghibásodott párhuzamos verem.
 
 Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhálózatról és tartományról:
 
 1. Kapcsolódjon a standard RDP protokoll (RDP) szolgáltatáshoz a virtuális géphez, ahonnan a javítást alkalmazni fogja.
-2. A PsExec letöltése https://docs.microsoft.com/sysinternals/downloads/psexec ról.
+2. A PsExec letöltése https://docs.microsoft.com/sysinternals/downloads/psexecról.
 3. Bontsa ki a letöltött fájlt.
 4. Indítsa el a parancssort helyi rendszergazdaként.
 5. Navigáljon a mappához, ahol a PsExec ki lett csomagolva.
@@ -305,7 +305,7 @@ Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a t
 Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.  
 
 >[!NOTE]
->A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)című témakört.
+>A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](/windows-server/remote/remote-desktop-services/rds-client-access-license/)című témakört.
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 

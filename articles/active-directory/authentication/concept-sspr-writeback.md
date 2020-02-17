@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161579"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368172"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszó visszaírási?
 
@@ -158,13 +158,13 @@ A jelszavakat a következő helyzetekben kell visszaírni:
 A jelszavakat a következő helyzetekben *nem* írja vissza a rendszer:
 
 * **Nem támogatott végfelhasználói műveletek**
-   * Bármely végfelhasználó alaphelyzetbe állítja a saját jelszavát a PowerShell 1. vagy 2-es verziójának használatával, vagy az Azure AD Graph API
+   * Bármely végfelhasználó alaphelyzetbe állítja a saját jelszavát a PowerShell 1-es vagy 2-es verziójának használatával vagy a Microsoft Graph API-val
 * **Nem támogatott rendszergazdai műveletek**
-   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy az Azure AD-Graph API
+   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy a Microsoft Graph API-ról
    * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 > [!WARNING]
-> A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)című cikket.
+> A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni Active Directory felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információkért lásd a [jelszó-kivonatok szinkronizálásának megvalósítása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md)című cikket.
 
 ## <a name="next-steps"></a>Következő lépések
 

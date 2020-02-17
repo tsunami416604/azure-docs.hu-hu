@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769659"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367264"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan tehet közzé alkalmazásokat a Windows re
 Beépített alkalmazás közzététele:
 
 1. Kapcsolódjon az egyik virtuális géphez a gazdagép-készletben.
-2. A [cikkben](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)szereplő utasítások alapján szerezze be a közzétenni kívánt alkalmazás **PackageFamilyName** .
+2. A [cikkben](/powershell/module/appx/get-appxpackage?view=win10-ps/)szereplő utasítások alapján szerezze be a közzétenni kívánt alkalmazás **PackageFamilyName** .
 3. Végül futtassa a következő parancsmagot `<PackageFamilyName>` lecserélte az előző lépésben megtalált **PackageFamilyName** :
    
    ```powershell

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539134"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368814"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
@@ -20,20 +20,20 @@ Ebből a cikkből megtudhatja, hogyan telepítheti az Office 365 ProPlus, OneDri
 
 Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet (VM). Ha nem, tekintse meg [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md#create-a-vm) című témakört.
 
-A cikk azt is feltételezi, hogy emelt szintű hozzáféréssel rendelkezik a virtuális gépen, függetlenül attól, hogy az Azure-ban vagy a Hyper-V kezelőjében van-e kiépítve. Ha nem, tekintse [meg az Azure-előfizetések és-felügyeleti csoportok kezelésének megemelt hozzáférési](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)jogosultságát.
+A cikk azt is feltételezi, hogy emelt szintű hozzáféréssel rendelkezik a virtuális gépen, függetlenül attól, hogy az Azure-ban vagy a Hyper-V kezelőjében van-e kiépítve. Ha nem, tekintse [meg az Azure-előfizetések és-felügyeleti csoportok kezelésének megemelt hozzáférési](../role-based-access-control/elevate-access-global-admin.md)jogosultságát.
 
 >[!NOTE]
 >Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Az Office telepítése megosztott számítógép-aktiválási módban
 
-A megosztott számítógép aktiválása lehetővé teszi az Office 365 ProPlus üzembe helyezését a szervezet egyik számítógépén, amelyet több felhasználó is elérhet. A megosztott számítógép aktiválásával kapcsolatos további információkért lásd: [az Office 365 ProPlus megosztott számítógép-aktiválásának áttekintése](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
+A megosztott számítógép aktiválása lehetővé teszi az Office 365 ProPlus üzembe helyezését a szervezet egyik számítógépén, amelyet több felhasználó is elérhet. A megosztott számítógép aktiválásával kapcsolatos további információkért lásd: [az Office 365 ProPlus megosztott számítógép-aktiválásának áttekintése](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
 
 Az Office telepítéséhez használja az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117) . A Windows 10 Enterprise multi-session csak az Office következő verzióit támogatja:
 - Office 365 ProPlus
 - Microsoft 365 Vállalati verzió-előfizetéssel rendelkező Office 365 Business
 
-Az Office-telepítő eszköznek konfigurációs XML-fájlt kell megadnia. Az alábbi minta testreszabásához tekintse meg az [Office-telepítési eszköz konfigurációs beállításait](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Az Office-telepítő eszköznek konfigurációs XML-fájlt kell megadnia. Az alábbi minta testreszabásához tekintse meg az [Office-telepítési eszköz konfigurációs beállításait](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 A példaként megadott konfigurációs XML-fájl a következő műveleteket végzi el:
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9baaf6c39f85f82b034bee42f01cf3c0dd2a610
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771308"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367453"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -20,7 +20,7 @@ A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Wi
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>A PowerShell-ügyfél használata a gazdagépek létrehozásához
 
-Először [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
+Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
 
 Futtassa a következő parancsmagot a Windows rendszerű virtuális asztali környezetbe való bejelentkezéshez
 
@@ -60,9 +60,9 @@ Most létrehozhat egy Azure-beli virtuális gépet, amely csatlakoztatható a Wi
 
 Több módon is létrehozhat egy virtuális gépet:
 
-- [Virtuális gép létrehozása Azure Gallery-rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [Virtuális gép létrehozása felügyelt rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [Virtuális gép létrehozása nem felügyelt rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Virtuális gép létrehozása Azure Gallery-rendszerképből](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Virtuális gép létrehozása felügyelt rendszerképből](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [Virtuális gép létrehozása nem felügyelt rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
 
 >[!NOTE]
 >Ha a Windows 7 operációs rendszert futtató virtuális gépet a gazdagép operációs rendszereként telepíti, a létrehozási és a telepítési folyamat némileg eltérő lesz. További részletek: Windows 7 rendszerű virtuális [gépek üzembe helyezése Windows rendszerű virtuális asztalon](deploy-windows-7-virtual-machine.md).
@@ -78,7 +78,7 @@ A virtuális gépek előkészítéséhez a következő műveleteket kell elvége
 
 A tartományhoz való csatlakozás sikeres végrehajtásához tegye a következőket az egyes virtuális gépeken:
 
-1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
+1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer**elemet.
 3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása**lehetőséget, majd válassza a **módosítás...** lehetőséget.
 4. Válassza a **tartomány** lehetőséget, majd adja meg a Active Directory tartományt a virtuális hálózaton.
@@ -93,18 +93,18 @@ A virtuális gépek egy Windows rendszerű virtuális asztali készletbe való r
 
 A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a következőket az egyes virtuális gépeken:
 
-1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
+1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynököt.
    - Töltse le a [Windows rendszerű virtuális asztali ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
    - Kattintson a jobb gombbal a letöltött telepítőre, válassza a **Tulajdonságok**, majd a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez lehetővé teszi a rendszer számára, hogy megbízzon a telepítőben.
-   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-RdsRegistrationInfo** parancsmagból kapott értéket.
+   - Futtassa a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-RdsRegistrationInfo** parancsmagból kapott értéket.
 3. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynök rendszerbetöltőjét.
    - Töltse le a [Windows rendszerű virtuális asztali ügynök Rendszerbetöltőjét](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Kattintson a jobb gombbal a letöltött telepítőre, válassza a **Tulajdonságok**, majd a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez lehetővé teszi a rendszer számára, hogy megbízzon a telepítőben.
-   - Indítsa el a telepítőt.
+   - Futtassa a telepítőt.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195904"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Oktatóanyag: Azure Active Directory integráció több Amazon Web Services (AWS) fiókkal
 
@@ -42,7 +42,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 
 **Vegye figyelembe, hogy a következő okok miatt nem ajánlott ezt a módszert használni:**
 
-* A Graph Explorer megközelítésével kell kijavítani az összes szerepkört az alkalmazásban. A manifest file megközelítést nem ajánlott használni.
+* Az alkalmazás összes szerepkörének javításához a Microsoft Graph Explorer megközelítését kell használnia. A manifest file megközelítést nem ajánlott használni.
 
 * Láttuk ügyfeleinket, hogy egy AWS-alkalmazáshoz hozzáadott ~ 1200 alkalmazási Szerepkörök hozzáadása után az alkalmazás minden művelete megkezdte a mérettel kapcsolatos hibák ledobását. Az Application objektumon rögzített méret van korlátozva.
 
@@ -139,7 +139,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Név  | Forrás attribútum  | Névtér |
+    | Name (Név)  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Szerepkör            | User. assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -247,7 +247,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 16. Hajtsa végre a fenti lépést az összes fiókban lévő összes szerepkörhöz, és tárolja őket a Jegyzettömbben található **Megbízható entitások** formátumban.
 
-17. Nyissa meg az [Azure ad Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
+17. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
 
     a. Jelentkezzen be a Graph Explorer-webhelyre a bérlőhöz tartozó globális rendszergazdai vagy társ-rendszergazdai hitelesítő adatok használatával.
 
@@ -325,9 +325,9 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
     > [!Note]
     > A javítási művelet **msiam_access** után csak új szerepköröket adhat hozzá. Azt is megteheti, hogy annyi szerepkört ad hozzá, amennyit csak szeretne, ha a szervezetnek szüksége van rá. Az Azure AD a következő szerepkörök **értékét** küldi el az SAML-válaszban szereplő jogcím-értékként.
 
-    j. Lépjen vissza a Graph Explorerben, és változtassa meg a **Get** to **patch**metódust. Az egyszerű szolgáltatásnév objektumának javításához a appRoles tulajdonság frissítésével a példában láthatóhoz hasonló módon frissítse a kívánt szerepköröket. A javítási művelet végrehajtásához kattintson a **lekérdezés futtatása** elemre. A sikeres üzenet megerősíti a Amazon Web Services alkalmazás szerepkörének létrehozását.
+    j. Lépjen vissza Microsoft Graph Explorer-re, és módosítsa a metódust a **Get** to **patch**elemre. Az egyszerű szolgáltatásnév objektumának javításához a appRoles tulajdonság frissítésével a példában láthatóhoz hasonló módon frissítse a kívánt szerepköröket. A javítási művelet végrehajtásához kattintson a **lekérdezés futtatása** elemre. A sikeres üzenet megerősíti a Amazon Web Services alkalmazás szerepkörének létrehozását.
 
-    ![Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Microsoft Graph Explorer párbeszédpanel](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 18. Ha a szolgáltatásnév több szerepkörrel is rendelkezik, akkor felhasználókat és csoportokat rendelhet hozzá a megfelelő szerepkörökhöz. Ezt a portálon teheti meg, és megnyithatja a Amazon Web Services alkalmazást. Kattintson a felül található **felhasználók és csoportok** fülre.
 
@@ -363,7 +363,7 @@ További információ a hozzáférési panelről: [Bevezetés a hozzáférési p
 
 ## <a name="additional-resources"></a>További források
 
-* [A kiépítés konfigurálása az MS Graph API-k használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [Kiépítés konfigurálása Microsoft Graph API-k használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 

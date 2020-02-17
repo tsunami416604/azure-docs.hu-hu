@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887359"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367308"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
@@ -36,7 +36,7 @@ A felügyeleti eszköz telepítése előtt szüksége lesz egy Azure Active Dire
 
 - Az Azure Multi-Factor Authentication (MFA) le van tiltva
 - Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
-- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)utasításait követve.
+- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)utasításait követve.
 
 A felügyeleti eszköz üzembe helyezése és konfigurálása után javasoljuk, hogy kérje meg a felhasználót, hogy indítsa el a felügyeleti felhasználói felületet, és győződjön meg róla, hogy minden működik. A felügyeleti felhasználói felületet indító felhasználónak szerepkör-hozzárendeléssel kell rendelkeznie, amely lehetővé teszi a Windows rendszerű virtuális asztali bérlő megtekintését vagy szerkesztését.
 

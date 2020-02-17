@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137972"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367638"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -28,7 +28,9 @@ Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás
 
 ### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
-A nevesített entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálhatja. Például: személyek, helyek és szervezetek.
+Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálhatja, például: személy, hely, esemény, termék és szervezet.  
+
+A 3. verziótól kezdődően a Text Analytics API ezen funkciója a személyes és bizalmas adattípusokat is képes azonosítani, például a telefonszámot, a társadalombiztosítási számot, az e-mail-címet és a bankszámla-számot.  Az entitások azonosítása segíthet a bizalmas dokumentumok besorolásában és a személyes adatok kivonásában.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Elnevezett entitás-felismerési verziók és szolgáltatások
 

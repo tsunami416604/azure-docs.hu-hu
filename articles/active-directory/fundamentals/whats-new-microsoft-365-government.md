@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805284"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367946"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>A Microsoft 365 Government Azure Active Directory újdonságai
 
@@ -53,9 +53,8 @@ A következő táblázat az összes ügyfél végpontját tartalmazza:
 
 | Name (Név) | Végpont részletei |
 |------|------------------|
-| Portals |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – magas GCC: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
+| Portálok |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – magas GCC: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
 | Azure Active Directory Authority végpont | https://login.microsoftonline.us |
-| Azure Active Directory – Graph API | https://graph.windows.net |
 | Microsoft Graph API Microsoft 365 Government számára – magas GCC | https://graph.microsoft.us |
 | Microsoft Graph API Microsoft 365 Government számára – DoD | https://dod-graph.microsoft.us |
 | Azure Government Services-végpontok | Részletekért lásd: [Azure Government fejlesztői útmutató](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |

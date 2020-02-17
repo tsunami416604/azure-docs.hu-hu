@@ -1,5 +1,5 @@
 ---
-title: Kisegítő lehetőségek használata a Designerben
+title: Kisegítő lehetőségek használata a Designerben (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerkedjen meg a Designerben elérhető billentyűparancsokkal és képernyőolvasó kisegítő lehetőségekkel.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314232"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366194"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Billentyűzet használata Azure Machine Learning Designer használatához
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
 
 Ismerje meg, hogyan használható a billentyűzet és a képernyőolvasó a Azure Machine Learning Designer használatához. A Azure Portalban mindenhol működő billentyűparancsok listáját a [Azure Portal billentyűparancsok](../azure-portal/azure-portal-keyboard-shortcuts.md) című témakörben találhatja meg.
 
@@ -24,7 +24,7 @@ Ezt a munkafolyamatot a [Narrátorral](https://support.microsoft.com/help/22798/
 
 ## <a name="navigate-the-pipeline-graph"></a>A folyamat gráfjának navigálása
 
-A folyamat gráf listaként van rendszerezve. A legfelső szintű modulok listája a folyamat összes modulját tartalmazza. A modul összes eleme egy olyan kapcsolati listát tartalmaz, amely leírja az összes kapcsolatát. 
+A folyamat gráfja beágyazott listaként van rendszerezve. A külső lista egy modul-lista, amely a folyamat gráfban található összes modult ismerteti. A belső lista egy kapcsolati lista, amely egy adott modul összes kapcsolatát ismerteti.  
 
 1. A modulok listájában a nyíl billentyűt használva válthat ki modulokat.
 1. A lap használatával nyissa meg a cél modulhoz tartozó kapcsolatok listáját.
@@ -54,7 +54,7 @@ A modul tulajdonságainak módosítása:
 
 | Billentyűleütés | Leírás |
 |-|-|
-| Ctrl + F6 | A vászon és a modul faszerkezete közötti fókusz váltása |
+| CTRL + F6 | A vászon és a modul faszerkezete közötti fókusz váltása |
 | CTRL + F1   | Az információs kártya megnyitása a modul fáján lévő csomópontra fókuszálva |
 | CTRL + SHIFT + H | A kapcsolódási segítő megnyitása, ha a fókusz egy csomóponton van |
 | CTRL + SHIFT + E | Modul tulajdonságainak megnyitása, ha a fókusz egy csomóponton van |
@@ -66,7 +66,7 @@ Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférés
 
 | Billentyűleütés | Műveletek |
 |-|-|
-| Elérési kulcs + R | Futtatás |
+| Elérési kulcs + R | Futtassa a következőt: |
 | Elérési kulcs + P | Közzététel |
 | Elérési kulcs + C | Klónozás |
 | Elérési kulcs + D | Üzembe helyezés |

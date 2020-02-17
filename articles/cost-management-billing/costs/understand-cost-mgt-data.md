@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901758"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188535"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -85,8 +85,6 @@ Ha nem látja az előfizetéshez tartozó adatokat, és meg szeretné állapíta
 
 Az alábbi táblázatok azt mutatják, hogy a Cost Management mely adatokat tartalmazza, illetve melyeket nem. A számla létrehozásáig minden költség csak becsült költség. A feltüntetett költségek nem tartalmazzák az ingyenes és előre fizetett jóváírásokat.
 
-**Költség- és használati adatok**
-
 | **Tartalmazza** | **Nem tartalmazza** |
 | --- | --- |
 | Azure-szolgáltatás használata<sup>5</sup>        | Támogatási díjak – További információért tekintse meg a [számlában használatos kifejezések ismertetését](../understand/understand-invoice.md). |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> A Marketplace-vásárlások jelenleg nem érhetők el használ
 
 _<sup>**7**</sup> A foglalásvásárlások jelenleg csak Nagyvállalati Szerződéses (EA-) fiókokhoz érhetők el._
 
-**Metaadatok**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Címkék használata költség- és használati adatokban
 
-| **Tartalmazza** | **Nem tartalmazza** |
-| --- | --- |
-| Erőforráscímkék<sup>8</sup> | Erőforráscsoport-címkék |
+Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött használati adatok részeként fogadja. Ezekre a címkékre a következő korlátozások érvényesek:
 
-_<sup>**8**</sup> A rendszer a használati adatok egyes szolgáltatásokból való kibocsátásával egyidejűleg alkalmazza az erőforráscímkéket, amelyek nem érhetők el visszamenőlegesen a korábbi használathoz._
+- A címkéket közvetlenül az erőforrásokra kell alkalmazni, és nem öröklődnek implicit módon a szülő erőforráscsoportból.
+- Az erőforráscímkék csak az erőforráscsoportokban üzembe helyezett erőforrások esetén támogatottak.
+- Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban – lásd: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
+- Az erőforráscímkék csak a címke alkalmazásának idején szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
+- Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben – lásd: [A használati adatok frissítési gyakorisága változó](#usage-data-update-frequency-varies).
+- Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre (például akkor nem, ha a virtuális gép felszabadított állapotban van).
+- A címkék kezeléséhez minden erőforrás esetében közreműködői hozzáférés szükséges.
+- A címkeszabályzatok kezeléséhez tulajdonosi vagy szabályzat-közreműködői hozzáférés szükséges egy felügyeleti csoporthoz, egy előfizetéshez vagy egy erőforráscsoporthoz.
+    
+Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a következőket:
+
+- A címke közvetlenül az erőforrásra lett alkalmazva?
+- A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [A használati adatok frissítési gyakorisága változó](#usage-data-update-frequency-varies)
+- Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
+    - Azure Active Directory B2C-címtárak
+    - Azure-tűzfalak
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - Terheléselosztók
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN-átjáró
+    
+Íme, néhány tipp a címkék használatához:
+
+- Előre tervezhet és meghatározhat egy címkézési stratégiát, amely lehetővé teszi a költségek szervezet, alkalmazás, környezet stb. szerinti lebontását.
+- Az Azure Policy használatával az erőforráscsoportok címkéit egyéni erőforrásokra másolhatja, és biztosíthatja a címkézési stratégia betartását.
+- A Tags API és a Query vagy a UsageDetails API együttes használatával az összes költség lekérhető az aktuális címkék alapján.
+
 
 **Ingyenes próbalehetőség használatalapú fizetésre való frissítéshez**
 

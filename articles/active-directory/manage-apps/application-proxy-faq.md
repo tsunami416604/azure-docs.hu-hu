@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443418"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367911"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -146,6 +146,8 @@ Nem. Az Azure AD Application Proxy úgy lett kialakítva, hogy az Azure AD-vel m
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>A WebSocket-támogatás a QlikSense-től eltérő alkalmazásokhoz is működik?
 
 A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el visszajelzését aadapfeedback@microsoft.comcímen.
+
+A Windows felügyeleti központban (WAC) vagy Távoli asztal webes ügyfélprogramban a funkciók (eseménynaplók, PowerShell és Távoli asztali szolgáltatások) nem működnek az Azure-AD Application Proxy.
 
 ## <a name="link-translation"></a>Fordítás csatolása
 

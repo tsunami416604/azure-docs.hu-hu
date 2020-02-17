@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159165"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367875"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
 
@@ -100,9 +100,7 @@ A szabályzatok csak akkor lépnek érvénybe, ha egy adott alkalmazáshoz csato
 
 Egyszerre csak egy HRD-házirend lehet aktív egy egyszerű szolgáltatásban.  
 
-A HRD szabályzat létrehozásához vagy kezeléséhez használhatja közvetlenül a Microsoft Azure Active Directory Graph API-t, vagy a Azure Active Directory PowerShell-parancsmagokat.
-
-A házirendet kezelő Graph API az MSDN-beli [Operations on Policy](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) című cikk ismerteti.
+A HRD szabályzat létrehozásához és kezeléséhez használhatja a Azure Active Directory PowerShell-parancsmagokat.
 
 A következő példa egy HRD házirend-definíciót mutat be:
     
@@ -209,7 +207,7 @@ Ha az HRD szabályzatot a létrehozása után szeretné alkalmazni, azt hozzáre
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. lépés: az egyszerű szolgáltatásnév megkeresése, amelyhez a szabályzatot hozzá kell rendelni  
 Szüksége lesz azon **ObjectId** , amelyekhez hozzá szeretné rendelni a szabályzatot. Az egyszerű szolgáltatások **ObjectId** többféleképpen is megtalálhatja.    
 
-Használhatja a portált, vagy lekérdezheti [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Lépjen a [Graph Explorer eszközre](https://developer.microsoft.com/graph/graph-explorer) , és jelentkezzen be az Azure ad-fiókjába, és tekintse meg az összes szervezet egyszerű szolgáltatását. 
+Használhatja a portált, vagy lekérdezheti [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). Lépjen a [Graph Explorer eszközre](https://developer.microsoft.com/graph/graph-explorer) , és jelentkezzen be az Azure ad-fiókjába, és tekintse meg az összes szervezet egyszerű szolgáltatását. 
 
 Mivel a PowerShellt használja, az alábbi parancsmaggal listázhatja az egyszerű szolgáltatásokat és azok azonosítóit.
 

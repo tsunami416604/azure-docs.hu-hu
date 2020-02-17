@@ -1,25 +1,28 @@
 ---
 title: Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842418"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117592"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
-Az Azure Cost Management natív módon érhető el azon partnerek számára, akik előkészítették ügyfeleiket egy Microsoft Ügyfélszerződésre, illetve [vásároltak egy Azure-csomagot](/partner-center/purchase-azure-plan). Ez a cikk ismerteti, hogyan használják a partnerek az [Azure Cost Management](../index.yml) funkcióit az Azure-csomagba tartozó előfizetések költségeinek megtekintéséhez. Azt is bemutatja, miként engedélyezik a partnerek a Cost Managementhez való hozzáférést az ügyfeleik számára. Az ügyfelek a CSP-partnerük által engedélyezett Cost Management-funkciókat használhatják.
+Az Azure Cost Management natív módon érhető el azon közvetlen partnerek számára, akik előkészítették ügyfeleiket egy Microsoft Ügyfélszerződésre, illetve [vásároltak egy Azure-csomagot](/partner-center/purchase-azure-plan). Ez a cikk ismerteti, hogyan használják a partnerek az [Azure Cost Management](../index.yml) funkcióit az Azure-csomagba tartozó előfizetések költségeinek megtekintéséhez. Azt is bemutatja, miként engedélyezik a partnerek a Cost Managementhez való hozzáférést az ügyfeleik számára.
+
+Közvetlen partnerek és közvetett szolgáltatók esetén a globális rendszergazda és a közvetett szolgáltató rendszergazdai ügynökei hozzáférhetnek a Cost Managementhez a partnerbérlőben. A viszonteladók és az ügyfelek az ügyfélbérlőben érhetik el a Cost Managementet, illetve tekinthetik meg az előfizetések költségeit, amelyek kiszámítása és megjelenítése kiskereskedelmi ár mellett történik. Az előfizetéshez azonban RBAC-hozzáféréssel kell rendelkezni az ügyfélbérlőben a költségek megtekintéséhez. A szolgáltatónak engedélyeznie kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára.
+
+Az ügyfelek a CSP-partnerük által engedélyezett Cost Management-funkciókat használhatják.
 
 A CSP-partnerek a következő célokra használják a Cost Managementet:
 

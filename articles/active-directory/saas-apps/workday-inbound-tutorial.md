@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121737"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365639"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -801,7 +801,7 @@ Nem, a megoldás nem tart fenn felhasználói profilok gyorsítótárát. Az Azu
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?
 
-Ez a funkció jelenleg nem támogatott. Az ajánlott Áthidaló megoldás egy olyan PowerShell-parancsfájl üzembe helyezése, amely lekérdezi az Azure AD Graph API végpontot a naplózási adatokhoz, és ezzel olyan forgatókönyveket indít el, mint például a csoport hozzárendelése. Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
+Ez a funkció jelenleg nem támogatott. Ajánlott megkerülő megoldásként olyan PowerShell-parancsfájlt helyezzen üzembe, amely lekérdezi a Microsoft Graph API-végpontot a [naplózási adatokhoz](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) , és ezzel olyan forgatókönyveket indít el, mint a csoport hozzárendelése Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?
 

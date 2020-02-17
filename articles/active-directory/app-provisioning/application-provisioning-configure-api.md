@@ -1,6 +1,6 @@
 ---
-title: Az MS Graph API-k használata a kiépítés konfigurálásához – Azure Active Directory | Microsoft Docs
-description: Be kell állítania egy alkalmazás több példányának kiépítés beállítását? Ismerje meg, hogyan takaríthat meg időt az MS Graph API-k segítségével az automatikus kiépítés konfigurációjának automatizálásához.
+title: Microsoft Graph API-k használata a kiépítés konfigurálásához – Azure Active Directory | Microsoft Docs
+description: Be kell állítania egy alkalmazás több példányának kiépítés beállítását? Megtudhatja, hogyan takaríthat meg időt a Microsoft Graph API-k használatával az automatikus kiépítés konfigurációjának automatizálásához.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067187"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367821"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása Microsoft Graph API-k használatával
 
-A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása a Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **A kiépítési konfiguráció automatizálásához Microsoft Graph API-k használatával kapcsolatos lépések áttekintése**
 

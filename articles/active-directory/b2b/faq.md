@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608608"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368094"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -58,14 +58,14 @@ Ha egy felhasználó a korlátozott rendszergazda szerepkörhöz van rendelve, a
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Letilthatom a Azure Portal a vendég felhasználóinak hozzáférését?
 
-Igen. Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
+Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) biztonsági rendszergazdaként vagy feltételes hozzáférésű rendszergazdaként.
 2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget. 
 3. A **kezelés**területen válassza a **Biztonság**elemet.
 4. A **védelem**területen válassza a **feltételes hozzáférés**lehetőséget. Válassza az **új szabályzat**lehetőséget.
 5. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét (például "a vendégek blokkolják a portál elérését").
-6. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
+6. A **hozzárendelések**alatt válassza a **felhasználók és csoportok**lehetőséget.
 7. A **beágyazás** lapon válassza a **felhasználók és csoportok kiválasztása**lehetőséget, majd válassza az **összes vendég és külső felhasználó (előzetes verzió)** lehetőséget.
 9. Válassza a **Done** (Kész) lehetőséget.
 10. Az **új** lap **hozzárendelések** területén válassza a **Cloud apps vagy műveletek**elemet.
@@ -97,7 +97,7 @@ Az Azure AD egy rögzített karakter-, jelszó-és fiókzárolási követelmény
 Összevont fiókok esetén a jelszóházirend a helyszíni bérletben alkalmazott házirendtől és a felhasználó Microsoft-fiók beállításaitól függ.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Előfordulhat, hogy a szervezet a bérlői felhasználók és a vendég felhasználók számára különböző tapasztalatokat kíván használni az alkalmazásaikban. Van erre vonatkozó általános útmutató? A megfelelő modellt kell használni a személyazonosság-szolgáltató számára?
-A vendég felhasználó bármilyen identitás-szolgáltatót használhat a hitelesítéshez. További információ: [B2B csoportmunka-felhasználó tulajdonságai](user-properties.md). A felhasználói élmény megállapításához használja a **UserType** tulajdonságot. A **UserType** jogcím jelenleg nem szerepel a jogkivonatban. Az alkalmazásoknak a Graph API segítségével le kell kérdezni a felhasználó címtárát, és le kell kérniük a UserType.
+A vendég felhasználó bármilyen identitás-szolgáltatót használhat a hitelesítéshez. További információ: [B2B csoportmunka-felhasználó tulajdonságai](user-properties.md). A felhasználói élmény megállapításához használja a **UserType** tulajdonságot. A **UserType** jogcím jelenleg nem szerepel a jogkivonatban. Az alkalmazásoknak a Microsoft Graph API-t kell használniuk a felhasználó címtárának lekérdezéséhez és a UserType lekéréséhez.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Hol találhatok egy B2B együttműködési Közösséget a megoldások megosztására és ötletek beküldésére?
 Folyamatosan figyelünk visszajelzést a B2B-együttműködés javítására. Ossza meg a felhasználói forgatókönyveket, az ajánlott eljárásokat és az Azure AD B2B-együttműködéshez hasonló információkat. Csatlakozzon a [Microsoft technikai közösségének](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)vitafórumához.

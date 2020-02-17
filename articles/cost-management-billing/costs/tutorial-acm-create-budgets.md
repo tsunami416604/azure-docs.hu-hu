@@ -1,21 +1,20 @@
 ---
 title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése | Microsoft Docs
 description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznált Azure-szolgáltatások költségeit.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769795"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132102"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -34,13 +33,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Költségvetés létrehozása az Azure Portalon
+> * Költségvetés létrehozása és szerkesztése a PowerShell-lel
 > * Költségvetés szerkesztése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A költségvetések számos különféle Azure-fióktípus esetén támogatottak. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md). A költségvetés megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
 
- Az Azure EA-előfizetések esetében a költségvetések megtekintéséhez olvasási jogosultsággal kell rendelkeznie. A költségvetések létrehozásához és kezeléséhez közreműködői jogosultsággal kell rendelkeznie. Létrehozhat külön költségvetéseket EA-előfizetésekhez és -erőforráscsoportokhoz. EA-számlázási fiókokhoz azonban nem hozhat létre költségvetéseket.
+ Az Azure EA-előfizetések esetében a költségvetések megtekintéséhez olvasási jogosultsággal kell rendelkeznie. A költségvetések létrehozásához és kezeléséhez közreműködői jogosultsággal kell rendelkeznie. Létrehozhat külön költségvetéseket EA-előfizetésekhez és -erőforráscsoportokhoz. Nagyvállalati szerződéssel rendelkező számlázási fiókokhoz azonban nem hozhat létre költségvetéseket.
 
 Az alábbi Azure-engedélyek, vagy -hatókörök, támogatottak az egyes előfizetésekben a költségvetések felhasználó vagy csoport általi létrehozásához. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
@@ -62,7 +62,7 @@ Költségvetés létrehozásához vagy megtekintéséhez nyissa meg a kívánt h
 
 A költségvetések létrehozása után egy egyszerű nézetben tekintheti meg a hozzájuk tartozó jelenlegi kiadásait.
 
-Kattintson a **Hozzáadás** parancsra.
+Válassza a **Hozzáadás** lehetőséget.
 
 ![A példa a már létrehozott költségvetések listáját mutatja](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,7 +78,11 @@ A költségvetésben eddig kiválasztott mezők alapján egy grafikon jelenik me
 
 ![Példa költségvetés létrehozására havi költségadatokkal ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-A költségvetés összegének konfigurálása után kattintson a **Következő** lehetőségre a költségvetési riasztások konfigurálásához. A költségvetésekhez meg kell adnia legalább egy költségküszöbértéket (a költségvetés %-ában) és egy hozzá tartozó e-mail-címet. Igény szerint akár öt küszöbértéket és öt e-mail-címet is megadhat egyetlen költségvetéshez. Ha elér egy költségvetési küszöbértéket, az e-mail-értesítések általában 20 órán belül megérkeznek. Az értesítésekkel kapcsolatban a [költségriasztások használatát](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) ismertető cikkben tekinthet meg további információt. Az alábbi példában a rendszer egy e-mail-riasztást hoz létre a költségvetés 90%-ának az elérésekor. Ha a Budgets API-val hoz létre költségvetést, szerepköröket is rendelhet adott személyekhez, hogy riasztásokat kaphassanak. A szerepkörök személyekhez rendelése nem támogatott az Azure Portalon. További információ a Budgets API-ról: [Budgets API](/rest/api/consumption/budgets).
+A költségvetés összegének konfigurálása után válassza a **Következő** lehetőséget a költségvetési riasztások konfigurálásához. A költségvetésekhez meg kell adnia legalább egy költségküszöbértéket (a költségvetés %-ában) és egy hozzá tartozó e-mail-címet. Igény szerint akár öt küszöbértéket és öt e-mail-címet is megadhat egyetlen költségvetéshez. Ha elér egy költségvetési küszöbértéket, az e-mail-értesítések általában 20 órán belül megérkeznek.
+
+Ha e-maileket szeretne kapni, vegye fel az azure-noreply@microsoft.com címet a jóváhagyott küldők listájára, hogy az e-mailek ne kerüljenek a levélszemét mappájába. Az értesítésekkel kapcsolatban a [költségriasztások használatát](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) ismertető cikkben tekinthet meg további információt.
+
+Az alábbi példában a rendszer egy e-mail-riasztást hoz létre a költségvetés 90%-ának az elérésekor. Ha a Budgets API-val hoz létre költségvetést, szerepköröket is rendelhet adott személyekhez, hogy riasztásokat kaphassanak. A szerepkörök személyekhez rendelése nem támogatott az Azure Portalon. További információ a Budgets API-ról: [Budgets API](/rest/api/consumption/budgets).
 
 ![Példa a riasztási feltételekkel](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -86,7 +90,7 @@ Miután létrehozta a költségvetést, a rendszer megjeleníti annak költsége
 
 ![Példa költségelemzésben kimutatott költségvetésre és kiadásokra](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Az előző példában létrehozott egy költségvetést egy előfizetéshez. Költségvetést azonban erőforráscsoportokhoz is létrehozhat. Ha erőforráscsoporthoz szeretne költségvetést létrehozni, lépjen a **Költségkezelés + számlázás** &gt; **Előfizetések** területre &gt; válasszon ki egy előfizetést > **Erőforráscsoportok** > válasszon ki egy erőforráscsoportot > **Költségvetések** > végül a **Hozzáadás** lehetőséggel adjon hozzá egy költségvetést.
+Az előző példában létrehozott egy költségvetést egy előfizetéshez. Költségvetést erőforráscsoportokhoz is létrehozhat. Ha erőforráscsoporthoz szeretne költségvetést létrehozni, lépjen a **Költségkezelés + számlázás** &gt; **Előfizetések** területre &gt; válasszon ki egy előfizetést > **Erőforráscsoportok** > válasszon ki egy erőforráscsoportot > **Költségvetések** > végül a **Hozzáadás** lehetőséggel adjon hozzá egy költségvetést.
 
 ## <a name="costs-in-budget-evaluations"></a>Költségek a költségvetések kiértékelésében
 
@@ -106,12 +110,12 @@ Amikor költségvetést hoz létre vagy módosít egy előfizetés vagy erőforr
 
 
 
-A műveletcsoportok létrehozásához vagy frissítéséhez kattintson a **Műveletcsoportok kezelése** elemre a költségvetés létrehozásakor vagy szerkesztésekor.
+A műveletcsoportok létrehozásához vagy frissítéséhez válassza a **Műveletcsoportok kezelése** elemet a költségvetés létrehozásakor vagy szerkesztésekor.
 
 ![Példa egy költségvetés létrehozására a Műveletcsoportok kezelése megjelenítéséhez](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Ezután a kattintson a **Műveletcsoport hozzáadása** elemre a műveletcsoport létrehozásához.
+Ezután válassza a **Műveletcsoport hozzáadása** elemet a műveletcsoport létrehozásához.
 
 
 ![A Műveletcsoport hozzáadása panel képe](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ A következő példában az 50%, 75% és 100% értékre beállított költségve
 
 A költségvetés műveletcsoportokkal való integrációja csak olyan műveletcsoportok esetén működik, amelyeken le van tiltva a gyakori riasztási séma. A séma letiltásával kapcsolatban a [gyakori riasztási séma engedélyezését](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) ismertető szakaszban tekinthet meg további információt.
 
+## <a name="create-and-edit-budgets-with-powershell"></a>Költségvetés létrehozása és szerkesztése a PowerShell-lel
+
+Az EA-ügyfelek programozott módon hozhatnak létre és szerkeszthetnek költségvetéseket az Azure PowerShell-modullal.  Az Azure PowerShell legújabb verziójának letöltéséhez futtassa az alábbi parancsot:
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+Az alábbi példaparancsok költségvetést hoznak létre.
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Költségvetés létrehozása az Azure Portalon
+> * Költségvetés létrehozása és szerkesztése a PowerShell-lel
 > * Költségvetés szerkesztése
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhatja létre a Cost Management-adatok ismétlődő exportálását.

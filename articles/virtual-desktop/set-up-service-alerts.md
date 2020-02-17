@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676448"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368770"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Oktatóanyag: szolgáltatási riasztások beállítása
 
@@ -27,9 +27,9 @@ Ha többet szeretne megtudni a Azure Service Healthről, tekintse meg az [Azure 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell-lel](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban](tenant-setup-azure-active-directory.md)
+- [Oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell-lel](create-service-principal-role-powershell.md)
+- [Oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>Szolgáltatás-riasztások létrehozása
 
@@ -48,7 +48,7 @@ Javasoljuk, hogy hozzon létre szolgáltatási riasztásokat a következő álla
 
 A szolgáltatási riasztások konfigurálása:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Válassza a **Service Health lehetőséget.**
 3. A riasztások és értesítések beállításához használja a [műveletnapló riasztások létrehozása a szolgáltatás értesítéseire](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) című témakör utasításait.
 

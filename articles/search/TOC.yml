@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Szolgáltatási korlátozások
           href: search-limits-quotas-capacity.md
-        - name: Partíciók és replikák skálázása
+        - name: Kapacitás módosítása
           href: search-capacity-planning.md
-        - name: Üzembehelyezési stratégiák és ajánlott eljárások
+        - name: Teljesítményorientált skálázás
           href: search-performance-optimization.md
         - name: Több-bérlős architektúra
           href: search-modeling-multitenant-saas-applications.md

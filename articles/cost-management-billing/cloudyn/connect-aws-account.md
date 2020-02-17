@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770330"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086845"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Amazon Web Services-fiók csatlakoztatása
 
@@ -41,10 +41,10 @@ Első lépésként keresse meg az egyedi kapcsolati jelszót a Cloudyn portálj�
 
 ### <a name="add-aws-read-only-role-based-access"></a>Csak olvasható, szerepköralapú AWS-hozzáférés hozzáadása
 
-1. Jelentkezzen be az AWS-konzolba a https://console.aws.amazon.com/iam/home webhelyen, és válassza a **Roles** (Szerepkörök) lehetőséget.
+1. Jelentkezzen be az AWS-konzolba a [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) webhelyen, és válassza a **Roles** (Szerepkörök) lehetőséget.
 2. Kattintson a **Create Role** (Szerepkör létrehozása) elemre, majd válassza az **Another AWS account** (Másik AWS-fiók) lehetőséget.
 3. Az **Account ID** (Fiókazonosító) mezőbe másolja be a `432263259397` értéket. Ez a fiókazonosító az AWS által a Cloudyn szolgáltatáshoz hozzárendelt Cloudyn adatgyűjtő fiók. Használja a megjelenített fiókazonosítót.
-4. Az **Options** (Beállítások) mellett válassza a **Require external ID** (Külső azonosító szükséges) elemet. Illessze be a korábban a Cloudyn **External ID** (Külső azonosító) mezőjéből kimásolt egyedi értéket. Ezután kattintson a **Next: Permissions** (Következő: Engedélyek) elemre.  
+4. Az **Options** (Beállítások) mellett válassza a **Require external ID** (Külső azonosító szükséges) elemet. Illessze be a korábban a Cloudyn **External ID** (Külső azonosító) mezőjéből kimásolt egyedi értéket. Ezután kattintson a **Tovább: Permissions** (Következő: Engedélyek) elemre.  
     ![külső azonosító beillesztése a Cloudynből a Create role (Szerepkör létrehozása) lapon](./media/connect-aws-account/create-role01.png)
 5. Az **Attach permissions policies** (Engedélyszabályzatok csatolása) területen, a **Policy type** (Szabályzattípus) keresőmezőbe írja be a `ReadOnlyAccess` kifejezést, válassza a **ReadOnlyAccess** lehetőséget, majd kattintson a **Next: Review** (Következő: Áttekintés) elemre.  
     ![csak olvasási hozzáférés kiválasztása a szabályzatnevek listájából](./media/connect-aws-account/readonlyaccess.png)
@@ -76,7 +76,7 @@ A következő szakaszok végigvezetik egy csak olvasható felhasználó létreho
 
 ### <a name="add-aws-read-only-user-based-access"></a>Csak olvasható, felhasználóalapú AWS-hozzáférés hozzáadása
 
-1. Jelentkezzen be az AWS-konzolba a https://console.aws.amazon.com/iam/home webhelyen, és válassza a **Users** (Felhasználók) lehetőséget.
+1. Jelentkezzen be az AWS-konzolba a [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) webhelyen, és válassza a **Users** (Felhasználók) lehetőséget.
 2. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 3. A **User name** (Felhasználónév) mezőbe írjon be egy felhasználónevet.
 4. **Access type** (Hozzáférési típusként) esetében válassza a **Programmatic access** (Szoftveres hozzáférés) lehetőséget, majd kattintson a **Next: Permissions** (Következő: Engedélyek) elemre.  
@@ -107,7 +107,7 @@ A Cloudyn elkezdi gyűjteni az adatokat és kitölteni a jelentéseket. Ezután 
 
 Az AWS-szerepkör ARN-jének megismeréséhez hajtsa végre a következő lépéseket. A szerepkör ARN-jével olvasási engedélyt adhat egy számlázási tárolóhoz.
 
-1. Jelentkezzen be az AWS-konzolba a https://console.aws.amazon.com webhelyen, és válassza a **Services** (Szolgáltatások) lehetőséget.
+1. Jelentkezzen be az AWS-konzolba a [https://console.aws.amazon.com](https://console.aws.amazon.com) webhelyen, és válassza a **Services** (Szolgáltatások) lehetőséget.
 2. A szolgáltatások keresésére szolgáló mezőbe írja be az *IAM* kifejezést, majd válassza ki ezt a beállítást.
 3. A bal oldali menüben válassza a **Roles** (Szerepkörök) lehetőséget.
 4. A szerepkörök listájában válassza ki a Cloudyn-hozzáféréshez létrehozott szerepkört.
@@ -117,7 +117,7 @@ Az AWS-szerepkör ARN-jének megismeréséhez hajtsa végre a következő lépé
 
 Az S3-gyűjtőben részletes számlázási adatokat tárolhat.
 
-1. Jelentkezzen be az AWS-konzolba a https://console.aws.amazon.com webhelyen, és válassza a **Services** (Szolgáltatások) lehetőséget.
+1. Jelentkezzen be az AWS-konzolba a [https://console.aws.amazon.com](https://console.aws.amazon.com) webhelyen, és válassza a **Services** (Szolgáltatások) lehetőséget.
 2. A szolgáltatások keresésére szolgáló mezőbe írja be az *S3* kifejezést, majd válassza az **S3** lehetőséget.
 3. Az Amazon S3 lapon kattintson a **Create bucket** (Gyűjtő létrehozása) gombra.
 4. A Create bucket (Gyűjtő létrehozása) varázslóban, válassza ki a gyűjtő nevét és régióját, majd kattintson a **Next** (Tovább) elemre.  

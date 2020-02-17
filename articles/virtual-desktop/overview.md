@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772781"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367282"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -35,7 +35,7 @@ Ismerje meg a Windows rendszerű virtuális asztalt, hogy miért egyedi, és mi 
 
 További videók a Windows rendszerű virtuális asztalról: [lejátszási lista](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 A Windows virtuális asztal használatával méretezhető és rugalmas környezetet állíthat be:
 
@@ -72,7 +72,7 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
 
-* Egy [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Egy [Azure Active Directory](/active-directory/)
 * A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következők egyikével konfigurálhatja:
   * Azure AD Connect (hibrid szervezetekhez)
   * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)
@@ -80,7 +80,7 @@ Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszer�
   
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
-* [Szabványos tartományhoz csatlakoztatott](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [hibrid ad-csatlakozás](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
+* [Szabványos tartományhoz csatlakoztatott](../active-directory-domain-services/active-directory-ds-comparison.md) vagy [hibrid ad-csatlakozás](../active-directory/devices/hybrid-azuread-join-plan.md). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
 * A következő [támogatott operációsrendszer-lemezképek](#supported-virtual-machine-os-images)egyikének futtatása.
 
 >[!NOTE]
@@ -88,11 +88,11 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
 
-|Cím|Kimenő port|Rendeltetés|
+|Cím|Kimenő port|Cél|
 |---|---|---|
 |*. wvd.microsoft.com|443-as TCP-port|Szolgáltatás forgalma|
 |*.blob.core.windows.net|443-as TCP-port|Ügynök, SXS-verem frissítései és ügynöki forgalom|
-|*. core.windows.net|443-as TCP-port|Ügynök forgalma|
+|*.core.windows.net|443-as TCP-port|Ügynök forgalma|
 |*.servicebus.windows.net|443-as TCP-port|Ügynök forgalma|
 |prod.warmpath.msftcloudes.com|443-as TCP-port|Ügynök forgalma|
 |catalogartifact.azureedge.net|443-as TCP-port|Azure Piactér|

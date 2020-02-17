@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5b07416f785ad263b4dbb9a0d249cb6022c01b13
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605754"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367469"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
 
@@ -28,7 +28,7 @@ A Azure Resource Manager sablon futtatása előtt győződjön meg arról, hogy 
 - A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
 - A Windows rendszerű virtuális asztali hitelesítő adatai.
 
-Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
 
 ## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Az új címkészlet kiépítés Azure Resource Manager sablonjának futtatása
 
@@ -52,7 +52,7 @@ A forgatókönyvhöz szükséges paraméterekkel kapcsolatos útmutatásért tek
 
 Miután a GitHub Azure Resource Manager sablon befejeződik, rendeljen hozzá felhasználói hozzáférést, mielőtt megkezdené a teljes munkamenet-asztalok tesztelését a virtuális gépeken.
 
-Először [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
+Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
 
 Ha felhasználókat szeretne hozzárendelni az asztali alkalmazás csoportjához, nyisson meg egy PowerShell-ablakot, és futtassa ezt a parancsmagot a Windows rendszerű virtuális asztali környezetbe való bejelentkezéshez:
 
@@ -71,4 +71,4 @@ A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával Azure 
 A lépések elvégzése után az asztali alkalmazás csoportba felvett felhasználók bejelentkezhetnek a Windows rendszerű virtuális asztalra a támogatott Távoli asztal ügyfelekkel, és megtekinthetik a munkamenet-asztal erőforrásait.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md).

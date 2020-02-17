@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f8aebee72105e4f3218e7ae5f867962d0ed8e23d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896225"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367366"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -44,7 +44,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
      shutdown /r /t 0
      ```
     
-12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) található utasításokat.
+12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) található utasításokat.
 13. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
 15. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 12. lépésben létrehozott regisztrációs kulcsot.

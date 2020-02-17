@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990293"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168771"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: Javaslatok alapján történő költségoptimalizálás
 
@@ -79,7 +79,7 @@ A virtuális gép részletes adatai között ellenőrizze a virtuális gép kiha
 
 Vegye figyelembe az aktuális virtuális gép méretét. Miután ellenőrizte, hogy a virtuális gépet át kell-e méretezni, zárja be a virtuális gép részletes adatait, hogy megtekinthesse a virtuális gépek listáját.
 
-A leállítandó vagy átméretezendő jelöltek listájában válassza a következőt: ** *&lt;FromVirtualMachineSKU&gt;* átméretezése a következőre: *&lt;ToVirtualMachineSKU&gt;***.
+A leállítandó vagy átméretezendő jelöltek listájában válassza a következőt: **_&lt;FromVirtualMachineSKU&gt;_ átméretezése a következőre: _&lt;ToVirtualMachineSKU&gt;_** .
 ![Példa javaslatra a virtuális gép átméretezésére vonatkozó lehetőséggel](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Ezt követően megjelenik a rendelkezésre álló átméretezési beállítások listája. Válassza ki azt, amelyik a legjobb teljesítményt és költséghatékonyságot biztosítja a forgatókönyve esetében. Az alábbi példában a kiválasztott átméretezési beállítás: **Standard_D8s_v3** – **Standard_D2s_v3**.

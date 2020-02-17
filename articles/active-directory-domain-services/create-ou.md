@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705347"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367141"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure AD Domain Services felügyelt tartományban
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozhat létre szervezeti egységet az Azure AD DS fe
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
@@ -54,7 +54,7 @@ Amikor egyéni szervezeti egységeket hoz létre egy Azure AD DS felügyelt tart
 * A rendszer létrehoz egy alapértelmezett szervezeti egységet a *AADDC felhasználók számára* , amely az Azure ad-bérlő összes szinkronizált felhasználói fiókját tartalmazza.
     * A felhasználók vagy csoportok nem helyezhetők át a *AADDC felhasználói* szervezeti egységből a létrehozott egyéni szervezeti egységekre. Csak az Azure AD DS felügyelt tartományában létrehozott felhasználói fiókok és erőforrások helyezhetők át egyéni szervezeti egységbe.
 * Az egyéni szervezeti egységek alatt létrehozott felhasználói fiókok, csoportok, szolgáltatásfiókok és számítógép-objektumok nem érhetők el az Azure AD-bérlőben.
-    * Ezek az objektumok nem jelennek meg az Azure AD Graph API vagy az Azure AD felhasználói felületén. Ezek csak az Azure AD DS felügyelt tartományában érhetők el.
+    * Ezek az objektumok nem jelennek meg a Microsoft Graph API vagy az Azure AD felhasználói felületén. Ezek csak az Azure AD DS felügyelt tartományában érhetők el.
 
 ## <a name="create-a-custom-ou"></a>Egyéni szervezeti egység létrehozása
 

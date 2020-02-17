@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 61c11e342f3b4f906b453e0962018a8f8c34acd4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1b341732dd844ba172c7e682fb7089c98ca9c165
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605871"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367602"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
 
@@ -25,7 +25,7 @@ A gazdagép terheléselosztási módszerének konfigurálása lehetővé teszi a
 
 Szélesség – az első terheléselosztás az új, nem állandó gazdagép-készletek alapértelmezett konfigurációja. Szélesség – az első terheléselosztás az új felhasználói munkameneteket az összes elérhető munkamenet-gazdagépen elosztja a gazdagépen. A szélesség – első terheléselosztás konfigurálásakor a gazdagép-készletben beállíthatja a munkamenetek maximális számát.
 
-Először [töltse le és importálja a](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

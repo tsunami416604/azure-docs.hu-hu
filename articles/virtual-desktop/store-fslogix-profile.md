@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451316"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367202"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -24,21 +24,21 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 ## <a name="azure-platform-details"></a>Azure-platform – részletek
 
-|Jellemzők|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
 |Platform szolgáltatás|Igen, Azure-natív megoldás|Igen, Azure-natív megoldás|Nem, önállóan felügyelt|
-|Regionális elérhetőség|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
-|Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Locally redundant (Helyileg redundáns)|Helyileg redundáns/Zone-redundáns/geo-redundáns|
-|Rétegek és teljesítmény|Standard<br>Prémium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultranagy<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
+|Régiónkénti rendelkezésre állás|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
+|Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Helyileg redundáns|Helyileg redundáns/Zone-redundáns/geo-redundáns|
+|Rétegek és teljesítmény|Standard<br>Premium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Premium<br>Ultranagy<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
 |Kapacitás|100 TiB/megosztás|100 TiB/kötet, akár 12,5 PiB/előfizetés|Maximális 32 TiB/lemez|
 |Szükséges infrastruktúra|Minimális megosztás mérete 1 GiB|Minimális kapacitási készlet 4 TiB, min. kötet mérete 100 GiB|Két virtuális gép az Azure IaaS (+ Felhőbeli tanúsító) vagy legalább három virtuális gép nélkül, valamint a lemezek költségei|
 |Protokollok|SMB 2.1/3. és REST|NFSv3, NFSv 4.1 (előzetes verzió), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
 
 ## <a name="azure-management-details"></a>Azure-felügyelet részletei
 
-|Jellemzők|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
-|Hozzáférés|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
+|Access|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
 |Biztonsági mentés|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
 |Biztonság és megfelelőség|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO befejezve|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-integráció|Azure Active Directory és Azure Active Directory Domain Services|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
@@ -53,6 +53,6 @@ Ha készen áll a saját FSLogix-profil tárolóinak létrehozására, ismerkedj
 
 - [FSLogix-profilok tárolóinak első lépései a Windows rendszerű virtuális asztali Azure Files](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
 - [FSLogix-profil tároló létrehozása az Azure NetApp-fájlokat használó gazdagép-készletekhez](create-fslogix-profile-container.md)
-- A [két csomópontos közvetlen tárolóhelyek kibővített fájlkiszolgáló üzembe helyezése az Azure-ban UPD-tárolóban](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) című témakör útmutatása akkor is érvényes, ha a FSLogix-profil tárolóját használja a felhasználói profil lemeze helyett.
+- A [két csomópontos közvetlen tárolóhelyek kibővített fájlkiszolgáló üzembe helyezése az Azure-ban UPD-tárolóban](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) című témakör útmutatása akkor is érvényes, ha a FSLogix-profil tárolóját használja a felhasználói profil lemeze helyett.
 
 A kezdettől kezdve a Windows rendszerű [virtuális asztali bérlő létrehozása](tenant-setup-azure-active-directory.md)lehetőséggel is elindíthatja a saját Windowsos virtuális asztali megoldását.

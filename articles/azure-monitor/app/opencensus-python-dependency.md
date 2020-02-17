@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 18354881b7bf2899bdd109b47d6a10e29073cc36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6217798f8175e7ecc1c1ec4068d7765444e4d2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432501"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368293"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
@@ -101,8 +101,8 @@ További beállítások is megadhatók, a [testreszabások](https://github.com/c
 OPENCENSUS = {
     'TRACE': {
         'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1)',
-        'EXPORTER': '''opencensus.ext.ocagent.trace_exporter.TraceExporter(
-            service_name='foobar',
+        'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
+            connection_string="InstrumentationKey=<your-ikey-here>"
         )''',
     }
 }
@@ -170,6 +170,6 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Keresés](../../azure-monitor/app/diagnostic-search.md)
+* [Search](../../azure-monitor/app/diagnostic-search.md)
 * [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
 * [Tranzakció-diagnosztika](../../azure-monitor/app/transaction-diagnostics.md)

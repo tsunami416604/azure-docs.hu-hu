@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273111"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368133"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták
 
@@ -26,7 +26,7 @@ Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban
 
 1. Készítse elő a .CSV-fájlt. Hozzon létre egy új CSV-fájlt, és adja neki az „invitations.csv” nevet. Ebben a példában a fájlt a C:\Data helyre mentjük, és a következő információkat tartalmazza:
   
-   Név                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
+   Name (Név)                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
    --------------------- | --------------------------
    Gmail B2B Invitee (Gmail B2B meghívott személy)     | b2binvitee@gmail.com
    Outlook B2B Invitee (Outlook B2B meghívott személy)   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ Ez a parancsmag meghívót küld az invitations.csv fájlban szereplő e-mail-c�
 - Üzenetek küldése másolat címzettjeinek vagy minden e-mail-üzenet blokkolása
 
 ## <a name="code-sample"></a>Kódminta
-Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mailt megírhatja egy HTTP-ügyfélben, ahol testre szabhatja az üzenet külalakját, majd a Graph API-val elküldheti.
+Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mailek HTTP-ügyféllel is összeállíthatók, így testre szabhatja az Microsoft Graph API-val való megjelenését és küldését.
 
 ```csharp
 namespace SampleInviteApp
@@ -70,12 +70,12 @@ namespace SampleInviteApp
     class Program
     {
         /// <summary>
-        /// Microsoft graph resource.
+        /// Microsoft Graph resource.
         /// </summary>
         static readonly string GraphResource = "https://graph.microsoft.com";
  
         /// <summary>
-        /// Microsoft graph invite endpoint.
+        /// Microsoft Graph invite endpoint.
         /// </summary>
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
  
@@ -173,14 +173,14 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Get the access token for our application to talk to microsoft graph.
+        /// Get the access token for our application to talk to Microsoft Graph.
         /// </summary>
-        /// <returns>Returns the access token for our application to talk to microsoft graph.</returns>
+        /// <returns>Returns the access token for our application to talk to Microsoft Graph.</returns>
         private static string GetAccessToken()
         {
             string accessToken = null;
  
-            // Get the access token for our application to talk to microsoft graph.
+            // Get the access token for our application to talk to Microsoft Graph.
             try
             {
                 AuthenticationContext testAuthContext =
@@ -229,7 +229,7 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 

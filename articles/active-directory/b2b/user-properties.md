@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608856"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368116"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -59,7 +59,7 @@ A 2. állapotú vendég felhasználók esetében a **forrás** a **Microsoft-fi�
 A 3. állapotú és a 4. állapotú vendég felhasználók esetében a **forrás** tulajdonság értéke **Azure Active Directory** vagy a **Windows Server Active Directory**, a következő szakaszban leírtak szerint.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Az Azure AD B2B csoportmunka-felhasználó legfontosabb tulajdonságai
-### <a name="usertype"></a>UserType (Felhasználótípus)
+### <a name="usertype"></a>UserType
 Ez a tulajdonság jelzi a felhasználó kapcsolatát a gazdagép bérletével. Ennek a tulajdonságnak két értéke lehet:
 - Tag: ez az érték a gazda szervezet alkalmazottját és a szervezet bérszámfejtésében lévő felhasználót jelöli. Ez a felhasználó például arra vár, hogy csak a belső webhelyekhez férhessen hozzá. Ez a felhasználó nem minősül külső közreműködőnek.
 
@@ -73,7 +73,7 @@ Ez a tulajdonság azt jelzi, hogy a felhasználó hogyan jelentkezik be.
 
 - Meghívott felhasználó: Ez a felhasználó meghívást kapott, de még nem váltott ki meghívót.
 
-- Külső Active Directory: Ez a felhasználó külső szervezetnek van felhasználva, és egy másik szervezethez tartozó Azure AD-fiók használatával hitelesíti magát. Ez a bejelentkezési típus az 1. állapotnak felel meg.
+- Külső Azure Active Directory: Ez a felhasználó külső szervezetnek van felhasználva, és egy másik szervezethez tartozó Azure AD-fiók használatával hitelesíti magát. Ez a bejelentkezési típus az 1. állapotnak felel meg.
 
 - Microsoft-fiók: Ez a felhasználó egy Microsoft-fiók, és egy Microsoft-fiók használatával hitelesíti magát. Ez a bejelentkezési típus a 2. állapotnak felel meg.
 
