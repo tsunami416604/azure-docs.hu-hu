@@ -1,5 +1,5 @@
 ---
-title: Az Azure Virtual Machines újraindítása megakadt a szolgáltatások újraindításakor, leállításakor vagy leállításakor | Microsoft Docs
+title: Az Azure Virtual Machines leállítása megakadt a szolgáltatások újraindítása, leállítása vagy leállítása esetén | Microsoft Docs
 description: Ez a cikk segítséget nyújt az Azure Windows Virtual Machines szolgáltatásbeli hibák elhárításában.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477407"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371354"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows rendszerű virtuális gépek újraindítása az "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" esetén megakadt
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows rendszerű virtuális gépek leállítása a "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" esetén beragadt
 
 Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure történő újraindításakor előforduló "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" problémáinak elhárításához nyújt útmutatást.
 
@@ -99,7 +99,7 @@ Ha nem találja a memóriaképet, helyezze át a következő lépést a memória
 
 **A memóriakép és a soros konzol engedélyezése**
 
-A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkriptet.
+Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következő szkriptet.
 
 1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 

@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/13/2019
+ms.date: 02/14/2019
 ms.author: aahi
-ms.openlocfilehash: efeb8581bd300f393d3447e3303273f5139d86dd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b553cd2bed68bc8df7241f4f843b32ec13b1a08a
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054896"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371862"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-[v3 hivatkozási dokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b1/azure.ai.textanalytics.html) | [v3 könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 hivatkozási dokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 minta](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
 
@@ -66,9 +66,9 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 #### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-A Text Analytics ügyfél egy `TextAnalyticsClient`-objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg kötegként való elemzéséhez. Ez a rövid útmutató a függvények egy gyűjteményét használja az egyetlen dokumentum gyors elküldéséhez.
+A Text Analytics ügyfél egy `TextAnalyticsClient`-objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg kötegként való elemzéséhez. 
 
-Ha a kötegelt feldolgozás szövegét az API-nak `documents`-listaként küldik el, `dictionary` a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet. Az egyes dokumentumok feldolgozásakor csak `text` bemenetre van szükség, ahogy az alábbi példákban is látható.  
+Ha a kötegelt feldolgozás szövegét az API-nak `documents`-listaként küldik el, `dictionary` a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet. 
 
 A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
@@ -84,65 +84,91 @@ A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a haszn
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Pythonhoz készült Text Analytics ügyféloldali kódtár használatával:
 
+* [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner) 
 * [Entitás összekapcsolása](#entity-linking)
 * [Fő kifejezés kibontása](#key-phrase-extraction)
 
+## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
+
+#### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+Hozzon létre egy függvényt a `TextAnalyticsClient` objektum létrehozásához a `key` és a fent létrehozott `endpoint`. Ezután hozzon létre egy új ügyfelet. 
+
+```python
+from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
+
+def authenticate_client():
+    ta_credential = TextAnalyticsApiKeyCredential(key)
+    text_analytics_client = TextAnalyticsClient(
+            endpoint=endpoint, credential=ta_credential)
+    return text_analytics_client
+
+client = authenticate_client()
+```
+
+#### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
+
+[!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
+
+Hozzon létre egy függvényt a `TextAnalyticsClient` objektum létrehozásához a `key` és a fent létrehozott `endpoint`. Ezután hozzon létre egy új ügyfelet. 
+
+[!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
+
+--- 
+
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 #### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy új, `sentiment_analysis_example()` nevű függvényt, amely a végpontot és a kulcsot argumentumként veszi fel, majd meghívja a `single_analyze_sentiment()` függvényt. A visszaadott válasz objektum a teljes bemeneti dokumentum hangulati címkéjét és pontszámát, valamint az egyes mondatok hangulati elemzését fogja tartalmazni.
+Hozzon létre egy `sentiment_analysis_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `analyze_sentiment()` függvényt. A visszaadott válasz objektum a teljes bemeneti dokumentum hangulati címkéjét és pontszámát, valamint az egyes mondatok hangulati elemzését fogja tartalmazni.
 
 
 ```python
-from azure.ai.textanalytics import single_analyze_sentiment
+def sentiment_analysis_example(client):
 
-def sentiment_analysis_example(endpoint, key):
-
-    document = "I had the best day of my life. I wish you were there with me."
-
-    response = single_analyze_sentiment(endpoint=endpoint, credential=key, input_text=document)
+    document = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(inputs=document)[0]
     print("Document Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.3f}; neutral={1:.3f}; negative={2:.3f} \n".format(
-        response.document_scores.positive,
-        response.document_scores.neutral,
-        response.document_scores.negative,
+        response.sentiment_scores.positive,
+        response.sentiment_scores.neutral,
+        response.sentiment_scores.negative,
     ))
     for idx, sentence in enumerate(response.sentences):
         print("[Offset: {}, Length: {}]".format(sentence.offset, sentence.length))
         print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
         print("Sentence score:\nPositive={0:.3f}\nNeutral={1:.3f}\nNegative={2:.3f}\n".format(
-            sentence.sentence_scores.positive,
-            sentence.sentence_scores.neutral,
-            sentence.sentence_scores.negative,
+            sentence.sentiment_scores.positive,
+            sentence.sentiment_scores.neutral,
+            sentence.sentiment_scores.negative,
         ))
 
             
-sentiment_analysis_example(endpoint, key)
+sentiment_analysis_example(client)
 ```
 
 ### <a name="output"></a>Kimenet
 
 ```console
 Document Sentiment: positive
-Overall scores: positive=0.999; neutral=0.001; negative=0.000 
+Overall scores: positive=1.000; neutral=0.000; negative=0.000 
 
 [Offset: 0, Length: 30]
 Sentence 1 sentiment: positive
 Sentence score:
-positive=0.999
-neutral=0.001
-negative=0.000
+Positive=1.000
+Neutral=0.000
+Negative=0.000
 
 [Offset: 31, Length: 30]
 Sentence 2 sentiment: neutral
 Sentence score:
-positive=0.212
-neutral=0.771
-negative=0.017
+Positive=0.210
+Neutral=0.770
+Negative=0.020
 ```
 
 #### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
@@ -166,23 +192,21 @@ Document ID: 4 , Sentiment Score: 1.00
 
 #### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy új, `language_detection_example()` nevű függvényt, amely a végpontot és a kulcsot argumentumként veszi fel, majd meghívja a `single_detect_languages()` függvényt. A visszaadott válasz objektum az észlelt nyelvet `detected_languages` ha sikeres, és egy `error`, ha nem.
+Hozzon létre egy `language_detection_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `detect_language()` függvényt. A visszaadott válasz objektum az észlelt nyelvet `primary_language` ha sikeres, és egy `error`, ha nem.
 
 > [!Tip]
 > Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `country_hint` paraméterrel megadhatja a kétbetűs országkódot. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztring `country_hint : ""`értékre állítja. 
 
 ```python
-from azure.ai.textanalytics import single_detect_language
-
-def language_detection_example(endpoint, key):
+def language_detection_example(client):
     try:
-        document = "Ce document est rédigé en Français."
-        response = single_detect_language(endpoint=endpoint, credential=key, input_text= document)
+        document = ["Ce document est rédigé en Français."]
+        response = client.detect_language(inputs = document, country_hint = 'us')[0]
         print("Language: ", response.primary_language.name)
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-language_detection_example(endpoint, key)
+language_detection_example(client)
 ```
 
 
@@ -218,26 +242,24 @@ Document ID: 3 , Language: Chinese_Simplified
 > * A tájékoztató külön módszereket tartalmaz a személyes adatok észlelésére. 
 > * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
 
-Hozzon létre egy `entity_recognition_example` nevű új függvényt, amely argumentumként fogadja a végpontot és a kulcsot, majd meghívja a `single_recognize_entities()` függvényt, és megismétli az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni `entity` ha sikeres, és egy `error`, ha nem. Minden észlelt entitás esetében nyomtassa ki a típusát és altípusát, ha létezik.
+Hozzon létre egy új, `entity_recognition_example` nevű függvényt, amely argumentumként fogadja az ügyfelet, majd meghívja a `recognize_entities()` függvényt, és megismétli az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni `entity` ha sikeres, és egy `error`, ha nem. Minden észlelt entitás esetében nyomtassa ki a kategóriáját és alkategóriáját, ha van ilyen.
 
 ```python
-from azure.ai.textanalytics import single_recognize_entities
-
-def entity_recognition_example(endpoint, key):
+def entity_recognition_example(client):
 
     try:
-        document = "I had a wonderful trip to Seattle last week."
-        result = single_recognize_entities(endpoint=endpoint, credential=key, input_text= document)
-        
+        document = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(inputs= document)[0]
+
         print("Named Entities:\n")
         for entity in result.entities:
-                print("\tText: \t", entity.text, "\tType: \t", entity.type, "\tSubType: \t", entity.subtype,
+                print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
                       "\n\tOffset: \t", entity.offset, "\tLength: \t", entity.offset, 
                       "\tConfidence Score: \t", round(entity.score, 3), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_recognition_example(endpoint, key)
+entity_recognition_example(client)
 ```
 
 ### <a name="output"></a>Kimenet
@@ -245,60 +267,56 @@ entity_recognition_example(endpoint, key)
 ```console
 Named Entities:
 
-    Text:    Seattle    Type:    Location   SubType:     None 
-    Offset:      26     Length:      26     Confidence Score:    0.806 
+    Text:    Seattle    Category:    Location   SubCategory:     GPE 
+    Offset:      26     Length:      26     Confidence Score:    0.92 
 
-    Text:    last week  Type:    DateTime   SubType:     DateRange 
+    Text:    last week  Category:    DateTime   SubCategory:     DateRange 
     Offset:      34     Length:      34     Confidence Score:    0.8 
 ```
 
 ## <a name="using-ner-to-detect-personal-information"></a>A személyes adatok észlelése a következővel
 
-Hozzon létre egy új, `entity_pii_example()` nevű függvényt, amely a végpontot és a kulcsot argumentumként veszi át, majd meghívja a `single_recognize_pii_entities()` függvényt, és lekéri az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az entitásokat.
+Hozzon létre egy `entity_pii_example()` nevű új függvényt, amely argumentumként fogadja az ügyfelet, majd meghívja a `recognize_pii_entities()` függvényt, és beolvassa az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az entitásokat.
 
 ```python
-from azure.ai.textanalytics import single_recognize_pii_entities
+def entity_pii_example(client):
 
-def entity_pii_example(endpoint, key):
-
-        document = "Insurance policy for SSN on file 123-12-1234 is here by approved."
+        document = ["Insurance policy for SSN on file 123-12-1234 is here by approved."]
 
 
-        result = single_recognize_pii_entities(endpoint=endpoint, credential=key, input_text= document)
+        result = client.recognize_pii_entities(inputs= document)[0]
         
         print("Personally Identifiable Information Entities: ")
         for entity in result.entities:
-            print("\tText: ",entity.text,"\tType: ", entity.type,"\tSub-Type: ", entity.subtype)
+            print("\tText: ",entity.text,"\tCategory: ", entity.category,"\tSubCategory: ", entity.subcategory)
             print("\t\tOffset: ", entity.offset, "\tLength: ", entity.length, "\tScore: {0:.3f}".format(entity.score), "\n")
         
-entity_pii_example(endpoint, key)
+entity_pii_example(client)
 ```
 
 ### <a name="output"></a>Kimenet
 
 ```console
 Personally Identifiable Information Entities: 
-    Text:  123-12-1234  Type:  U.S. Social Security Number (SSN)    Sub-Type:  
+    Text:  123-12-1234  Category:  U.S. Social Security Number (SSN)    SubCategory:  None
         Offset:  33     Length:  11     Score: 0.850 
 ```
 
 
 ## <a name="entity-linking"></a>Entitáskapcsolás
 
-Hozzon létre egy `entity_linking_example()` nevű új függvényt, amely argumentumként fogadja a végpontot és a kulcsot, majd meghívja a `single_recognize_linked_entities()` függvényt, és megismétli az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni `entities` ha sikeres, és egy `error`, ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az ugyanahhoz az entitáshoz tartozó előfordulások egy `entity` objektum alatt vannak csoportosítva `match` objektumok listájában.
+Hozzon létre egy új, `entity_linking_example()` nevű függvényt, amely argumentumként fogadja az ügyfelet, majd meghívja a `recognize_linked_entities()` függvényt, és megismétli az eredményeket. A visszaadott válasz objektum az észlelt entitások listáját fogja tartalmazni `entities` ha sikeres, és egy `error`, ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az ugyanahhoz az entitáshoz tartozó előfordulások egy `entity` objektum alatt vannak csoportosítva `match` objektumok listájában.
 
 ```python
-from azure.ai.textanalytics import single_recognize_linked_entities
-
-def entity_linking_example(endpoint, key):
+def entity_linking_example(client):
 
     try:
-        document = """Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+        document = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
         to develop and sell BASIC interpreters for the Altair 8800. 
         During his career at Microsoft, Gates held the positions of chairman,
         chief executive officer, president and chief software architect, 
-        while also being the largest individual shareholder until May 2014."""
-        result = single_recognize_linked_entities(endpoint=endpoint, credential=key, input_text= document)
+        while also being the largest individual shareholder until May 2014."""]
+        result = client.recognize_linked_entities(inputs= document)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -312,7 +330,7 @@ def entity_linking_example(endpoint, key):
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_linking_example(endpoint, key)
+entity_linking_example(client)
 ```
 
 ### <a name="output"></a>Kimenet
@@ -324,7 +342,7 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: Altair 8800
-        Score: 0.777    Offset:  116    Length: 11
+        Score: 0.777    Offset:  125    Length: 11
 
     Name:  Bill Gates   Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
     Data Source:  Wikipedia
@@ -333,7 +351,7 @@ Linked Entities:
         Score: 0.555    Offset:  25     Length: 10
 
         Text: Gates
-        Score: 0.555    Offset:  161    Length: 5
+        Score: 0.555    Offset:  179    Length: 5
 
     Name:  Paul Allen   Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
     Data Source:  Wikipedia
@@ -348,7 +366,7 @@ Linked Entities:
         Score: 0.469    Offset:  0  Length: 9
 
         Text: Microsoft
-        Score: 0.469    Offset:  150    Length: 9
+        Score: 0.469    Offset:  168    Length: 9
 
     Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4 
     Data Source:  Wikipedia
@@ -360,7 +378,8 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: BASIC
-        Score: 0.281    Offset:  89     Length: 5
+        Score: 0.281    Offset:  98     Length: 5
+
 ```
 
 #### <a name="version-21tabversion-2"></a>[2,1-es verzió](#tab/version-2)
@@ -418,17 +437,15 @@ Document ID: 2
 
 #### <a name="version-30-previewtabversion-3"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy új, `key_phrase_extraction_example()` nevű függvényt, amely a végpontot és a kulcsot argumentumként veszi fel, majd meghívja a `single_extract_key_phrases()` függvényt. Ha a művelet sikeres, az eredmény tartalmazni fogja a `key_phrases` észlelt kulcsos kifejezéseket, és egy `error`, ha nem. Minden észlelt kulcs kifejezésének nyomtatása.
+Hozzon létre egy `key_phrase_extraction_example()` nevű új függvényt, amely argumentumként veszi át az ügyfelet, majd meghívja a `extract_key_phrases()` függvényt. Ha a művelet sikeres, az eredmény tartalmazni fogja a `key_phrases` észlelt kulcsos kifejezéseket, és egy `error`, ha nem. Minden észlelt kulcs kifejezésének nyomtatása.
 
 ```python
-from azure.ai.textanalytics import single_extract_key_phrases
-
-def key_phrase_extraction_example(endpoint, key):
+def key_phrase_extraction_example(client):
 
     try:
-        document = "My cat might need to see a veterinarian."
+        document = ["My cat might need to see a veterinarian."]
 
-        response = single_extract_key_phrases(endpoint=endpoint, credential=key, input_text= document)
+        response = client.extract_key_phrases(inputs= document)[0]
 
         if not response.is_error:
             print("\tKey Phrases:")
@@ -440,7 +457,7 @@ def key_phrase_extraction_example(endpoint, key):
     except Exception as err:
         print("Encountered exception. {}".format(err))
         
-key_phrase_extraction_example(endpoint, key)
+key_phrase_extraction_example(client)
 ```
 
 

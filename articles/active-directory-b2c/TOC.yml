@@ -101,7 +101,7 @@
               href: user-flow-self-service-password-reset.md
         - name: Felhasználói felület testreszabása
           items:
-            - name: Felhasználói felület testreszabása
+            - name: A felhasználói felület testreszabása
               href: customize-ui-overview.md
             - name: JavaScript és oldalelrendezések
               href: user-flow-javascript-overview.md
@@ -177,8 +177,6 @@
             - name: A felhasználói felület testreszabása
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: A felhasználói felület dinamikus testreszabása
-              href: custom-policy-ui-customization-dynamic.md
             - name: Egyéni e-mail-cím
               href: custom-email.md
               displayName: verification

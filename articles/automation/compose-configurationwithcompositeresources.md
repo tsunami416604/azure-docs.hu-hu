@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418730"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370671"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>DSC-konfigurációk összeállítása Azure Automation állapot-konfigurációban (DSC) összetett erőforrások használatával
 
 Ha egy erőforrást egynél több, a kívánt állapot-konfiguráció (DSC) konfigurációval kell felügyelni, a legjobb elérési út az [összetett erőforrások](/powershell/scripting/dsc/resources/authoringresourcecomposite)használata. Az összetett erőforrás egy beágyazott és paraméteres konfiguráció, amely DSC-erőforrásként van használatban egy másik konfiguráción belül. Ez lehetővé teszi az összetett konfigurációk létrehozását, miközben lehetővé teszi az alapul szolgáló összetett erőforrások (paraméteres konfigurációk) egyedi felügyeletét és kialakítását.
 
-Azure Automation lehetővé teszi az [összetett erőforrások importálását és összeállítását](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Azure Automation lehetővé teszi az [összetett erőforrások importálását és összeállítását](automation-dsc-compile.md).
 Miután importálta az összetett erőforrásokat az Automation-fiókjába, használhatja az **összeállítási konfigurációs** élményt az **állapot konfigurálása (DSC)** lapon.
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Konfiguráció összeállítása összetett erőforrásokból
 
 A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárendeléséhez létre kell hoznia azt. Ez az **állapot-konfiguráció (DSC)** lapon található összeállítási **konfiguráció** használatával végezhető el, a **konfigurációk** vagy a **lefordított konfigurációk** lapjain.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon válassza az **állapot konfigurálása (DSC)** lehetőséget a **konfiguráció kezelése**területen.
 1. Az **állapot-konfiguráció (DSC)** lapon kattintson a **konfigurációk** vagy a **lefordított konfigurációk** fülre, majd kattintson a **konfiguráció összeállítása** lehetőségre a lap tetején található menüben.

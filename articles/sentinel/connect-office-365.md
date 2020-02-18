@@ -12,28 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 02/12/2020
 ms.author: rkarlin
-ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 709961fe63e5ed862a0e8dc3fa735d426dd02998
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815785"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371330"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Adatok összekötése az Office 365-naplókból
 
 
 
-Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) -naplókat az Azure sentinelbe. A naplókat több bérlőről is továbbíthatja egyetlen munkaterületre az Azure Sentinelben. Az Office 365 Activity log-összekötő betekintést nyújt a folyamatban lévő felhasználói tevékenységekre. Az Office 365 különböző felhasználói, rendszergazdai, rendszer-és házirend-műveleteivel és eseményeivel kapcsolatos információkat talál. Az Office 365-naplók Azure Sentinelbe való csatlakoztatásával ezek az adatai megtekinthetik az irányítópultokat, létrehozhatnak egyéni riasztásokat, és javíthatják a vizsgálat folyamatát.
+Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) -naplókat az Azure sentinelbe. Az Office 365-naplókat az Azure Sentinel-munkaterületére is továbbíthatja ugyanazon a bérlőn. Az Office 365 Activity log-összekötő betekintést nyújt a folyamatban lévő felhasználói tevékenységekre. Az Office 365 különböző felhasználói, rendszergazdai, rendszer-és házirend-műveleteivel és eseményeivel kapcsolatos információkat talál. Az Office 365-naplók Azure Sentinelbe való csatlakoztatásával ezek az adatai megtekinthetik az irányítópultokat, létrehozhatnak egyéni riasztásokat, és javíthatják a vizsgálat folyamatát.
 
 > [!IMPORTANT]
 > Ha E3 licenccel rendelkezik, mielőtt az Office 365 felügyeleti tevékenység API-n keresztül fér hozzá az adataihoz, engedélyeznie kell az egyesített naplózási naplózást az Office 365-szervezet számára. Ezt az Office 365-napló bekapcsolásával teheti meg. Útmutatásért lásd: [az Office 365 naplózási naplójának keresése be-és kikapcsolása](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). További információt az [Office 365 felügyeleti tevékenység API-referenciája](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A bérlő globális rendszergazdájának vagy biztonsági rendszergazdájának kell lennie
-- A számítógépen, amelyről bejelentkezett az Azure Sentinelbe a kapcsolat létrehozásához, ellenőrizze, hogy a 4433-es port nyitva van-e a webes forgalom számára. A csatlakozás sikeres elvégzése után a portot újra be lehet zárni.
+- A bérlőn globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal kell rendelkeznie.
 - Ha a bérlő nem rendelkezik Office 365 E3 vagy Office 365 E5 licenccel, engedélyeznie kell az egyesített naplózást a bérlőn a következő folyamatok egyikének használatával:
     - [Használja a set-AdminAuditLogConfig parancsmagot](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) , és engedélyezze a "UnifiedAuditLogIngestionEnabled" paramétert.
     - [Vagy használja a biztonsági és megfelelőségi központ felhasználói felületét](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
@@ -42,13 +41,9 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 
 1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson az **Office 365** csempére.
 
-2. Ha még nem tette volna meg, ezt az **Adatösszekötők** panelen, az **Office 365** -összekötő kiválasztásával teheti meg. Itt rákattinthat az **összekötő megnyitása lapra** , és a konfiguráció szakaszban címkézve **engedélyezheti az Office 365-megoldás használatát a munkaterületen** a **megoldás telepítése** gombra kattintva engedélyezheti. Ha már engedélyezve van, akkor a rendszer a már engedélyezett módon azonosítja a kapcsolatok képernyőjén.
-1. Az Office 365 lehetővé teszi az adatok több bérlőről az Azure Sentinelbe való továbbítását. Minden olyan bérlőhöz, amelyhez csatlakozni szeretne, adja hozzá a bérlőt az **Azure sentinelhez a bérlők összekapcsolásához**. 
-1. Megnyílik egy Active Directory képernyő. A rendszer arra kéri, hogy a globális rendszergazda felhasználóval hitelesítse magát minden olyan bérlőn, amelyhez csatlakozni szeretne az Azure Sentinel szolgáltatáshoz, és adja meg az Azure Sentinel számára a naplók olvasásához szükséges engedélyeket. 
-5. A bérlői listában láthatja az Azure AD-címtár AZONOSÍTÓját (bérlői AZONOSÍTÓját) és két jelölőnégyzetet az Exchange-és SharePoint-naplókhoz. Kiválaszthatja azokat a felsorolt szolgáltatásokat, amelyeket be szeretne venni a Sentinelbe. Jelenleg az Azure Sentinel támogatja az Exchange-és SharePoint-naplókat a meglévő Office 365-szolgáltatásokon belül.
-
-4. Miután kiválasztotta a szolgáltatásokat (Exchange, SharePoint stb.), kattintson a Save (Mentés) gombra a bérlői hozzáadási kereten az oldalon. 
-
+2. Ha még nem tette volna meg, ezt az **Adatösszekötők** panelen, az **Office 365** -összekötő kiválasztásával teheti meg. Itt rákattinthat az **összekötő megnyitása lapra** , és a konfiguráció feliratú **konfiguráció területen válassza ki az** összes Office 365-tevékenység naplóit, amelyeket az Azure sentinelhez szeretne csatlakoztatni. 
+   > [!NOTE]
+   > Ha már csatlakozott több bérlőhöz az Office 365-összekötő egy korábban támogatott verziójában az Azure Sentinelben, megtekintheti és módosíthatja az egyes bérlők által gyűjtött naplókat. Nem adhat hozzá további bérlőket, de a korábban hozzáadott bérlőket is eltávolíthatja.
 3. Az Office 365-naplókhoz tartozó Log Analytics vonatkozó sémájának használatához keresse meg a **OfficeActivity**.
 
 

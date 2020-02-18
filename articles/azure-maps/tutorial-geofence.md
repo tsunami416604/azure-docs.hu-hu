@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209596"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370170"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
@@ -176,7 +176,7 @@ Ebben a szakaszban egy, az értesítéseket fogadó eseménykezelőt hozunk lét
 
 Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) szolgáltatást teszünk elérhetővé a belépési és kilépési események kezeléséhez. A Logic Apps trigger eseményeinél több esemény is aktiválódik a sorozatban. Az a gondolat, hogy a riasztásokat, ebben az esetben e-maileket küld a Operations Manager. Az alábbi ábra bemutatja, hogyan kell létrehozni egy logikai alkalmazást a geokerítésen esemény megadásához. Hasonlóképpen, létrehozhat egy másikat a kilépési eseményhez. További információért tekintse meg az összes [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
-1. Logikai alkalmazás létrehozása Azure Portal
+1. Logikai alkalmazás létrehozása Azure Portalban. Válassza ki a logikai alkalmazást az Azure Marketplace-en. Ezután kattintson a **Létrehozás** gombra.
 
    ![Azure Logic Apps létrehozása a geokerítésen-események kezeléséhez](./media/tutorial-geofence/logic-app.png)
 

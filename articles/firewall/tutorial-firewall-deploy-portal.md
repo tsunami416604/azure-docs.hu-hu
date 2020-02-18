@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195778"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371338"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban az üzembe helyezés érdekében egyetlen egyszerű vir
 
 ![Az oktatóanyag hálózati infrastruktúrája](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Tesztelési hálózati környezet beállítása
@@ -125,7 +125,7 @@ A következő táblázatban található információk segítségével konfigurá
 
 |Beállítás  |Érték  |
 |---------|---------|
-|Subnet|**Munkaterhelés – SN**|
+|Alhálózat|**Munkaterhelés – SN**|
 |Nyilvános IP-cím|**NEz egy**|
 |Nyilvános bejövő portok|**NEz egy**|
 
@@ -140,12 +140,12 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Előfizetés     |\<az Ön előfizetése\>|
+   |Előfizetést     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Teszt – FW-RG** |
-   |Név     |**Teszt – FW01**|
+   |Name (Név)     |**Teszt – FW01**|
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **test-FW-vn**|
-   |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
+   |Nyilvános IP-cím     |**Új hozzáadása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
@@ -254,7 +254,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

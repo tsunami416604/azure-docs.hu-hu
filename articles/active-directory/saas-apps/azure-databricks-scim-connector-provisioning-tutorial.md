@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050446"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370520"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Oktatóanyag: Azure Databricks SCIM-összekötő konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -96,7 +96,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Azure Databricks scim-összekötő rendszergazdai hitelesítő adatait és a felhasználónevet. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni Azure Databricks scim-összekötőhöz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Azure Databricks SCIM-összekötő fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim-végpont értékét a **bérlői URL-címben**. A bérlői URL-címnek `https://<region>.azuredatabricks.net/api/2.0/preview/scim` formátumban kell lennie, ahol a **régió** megtalálható a Azure Databricks kezdőlapjának URL-címében. A **westus** régió scim-végpontja például `https://westus.azuredatabricks.net/api/2.0/preview/scim`lesz. Adja meg a **titkos jogkivonatban**korábban lekért jogkivonat-értéket. Kattintson a kapcsolat tesztelése elemre annak **ellenőrzéséhez** , hogy az Azure ad tud-e csatlakozni Azure Databricks scim-összekötőhöz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Azure Databricks SCIM-összekötő fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![kiépítési](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
