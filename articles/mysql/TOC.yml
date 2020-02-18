@@ -95,8 +95,6 @@
           href: concepts-data-access-security-private-link.md
         - name: Adattitkosítás
           href: concepts-data-encryption-mysql.md
-        - name: Adattitkosítás
-          href: concepts-data-encryption-mysql.md
         - name: Azure AD-hitelesítés
           href: concepts-azure-ad-authentication.md
     - name: Az üzletmenet folytonossága
@@ -222,6 +220,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: Nézetek használata a rendszersémában
           href: howto-troubleshoot-sys-schema.md
+        - name: Adattitkosítás hibaelhárítása
+          href: howto-data-encryption-troubleshoot.md
     - name: Fejlett fenyegetésvédelem
       items:
         - name: Azure Portal

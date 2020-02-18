@@ -245,6 +245,8 @@
           items:
             - name: Csatlakozási hibák elhárítása
               href: howto-troubleshoot-common-connection-issues.md
+            - name: Adattitkosítás hibaelhárítása
+              href: howto-data-encryption-troubleshoot.md
         - name: Fejlett fenyegetésvédelem
           items:
             - name: Azure Portal

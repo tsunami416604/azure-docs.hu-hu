@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251770"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425646"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -104,6 +104,18 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | ----- | ----------------------- | --------|
 | {oauth2: access_token} | A hozzáférési jogkivonat. | N/A |
 
+
+### <a name="saml"></a>SAML
+
+| Jogcím | Leírás | Példa |
+| ----- | ----------- | --------|
+| {SAML: AuthnContextClassReferences} | A `AuthnContextClassRef` elem értéke az SAML-kérelemből. | urn: Oasis: nevek: TC: SAML: 2.0: AC: osztályok: PasswordProtectedTransport |
+| {SAML: NameIdPolicyFormat} | A `Format` attribútum az SAML-kérelem `NameIDPolicy` elemétől. | urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress |
+| {SAML: kiállító} |  Az SAML-kérelem SAML `Issuer` elemének értéke.| https://contoso.com |
+| {SAML: AllowCreate} | A `AllowCreate` attribútum értéke az SAML-kérelem `NameIDPolicy` elemében. | True (Igaz) |
+| {SAML: ForceAuthn} | A `ForceAuthN` attribútum értéke az SAML-kérelem `AuthnRequest` elemében. | True (Igaz) |
+| {SAML: ProviderName} | A `ProviderName` attribútum értéke az SAML-kérelem `AuthnRequest` elemében.| Contoso.com |
+
 ## <a name="using-claim-resolvers"></a>Jogcímek feloldóinak használata 
 
 A jogcímek feloldóit a következő elemekkel használhatja: 
@@ -160,7 +172,7 @@ A jogcímek feloldóinak használatával előre feltöltheti a bejelentkezési n
 
 ### <a name="dynamic-ui-customization"></a>Dinamikus felhasználói felület testreszabása
 
-Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára az oldal tartalmának dinamikus megjelenítéséhez. Ez lehetővé teszi például a háttérkép módosítását a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásból átadott egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization-dynamic.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
+Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára az oldal tartalmának dinamikus megjelenítéséhez. Ez lehetővé teszi például a háttérkép módosítását a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásból átadott egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
 
 A következő példa a **campaignId** nevű lekérdezési karakterlánc paramétert adja át `hawaii`értékkel, `en-US`**és az ügyfél** -azonosítót jelképező **alkalmazással** :
 

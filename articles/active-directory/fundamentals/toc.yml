@@ -39,8 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Az európai ügyfelek identitásadatainak tárolása
       href: active-directory-data-storage-eu.md
-    - name: Az ausztrál ügyfelek identitásadatainak tárolása
-      href: active-directory-data-storage-australia.md
+    - name: Az ausztrál és új-zélandi ügyfelek identitásadatainak tárolása
+      href: active-directory-data-storage-australia-newzealand.md
     - name: Újdonságok a Microsoft 365 Kormányzati verzióban
       href: whats-new-microsoft-365-government.md
     - name: Azure AD-üzemeltetési referencia
