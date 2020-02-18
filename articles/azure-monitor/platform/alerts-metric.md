@@ -1,22 +1,22 @@
 ---
 title: Metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
-description: Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal vagy a parancssori felület használatával.
+description: Megtudhatja, hogyan hozhatja létre, tekintheti meg és kezelheti a metrikus riasztási szabályokat a Azure Portal vagy a parancssori felület használatával.
 author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/16/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705530"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372756"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
-Az Azure Monitor metrikaalapú riasztásai lehetőséget nyújtanak arra, hogy értesítést kapjon, ha az egyik metrika átlép egy küszöbértéket. A metrikaalapú riasztások többdimenziós platformmetrikák, egyéni metrikák és az Application Insights standard és egyéni metrikáinak széles skálájával működnek. Ebben a cikkben leírjuk, hogyan hozhat létre, tekinthet meg és kezelhet metrikariasztási szabályokat az Azure Portalon és az Azure CLI-n keresztül. Metrikus riasztási szabályokat Azure Resource Manager sablonok használatával is létrehozhat, amelyeket [külön cikkben](alerts-metric-create-templates.md)ismertetünk.
+A metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám átlép egy küszöbértéket. A metrikaalapú riasztások többdimenziós platformmetrikák, egyéni metrikák és az Application Insights standard és egyéni metrikáinak széles skálájával működnek. Ebben a cikkben bemutatjuk, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal és az Azure CLI használatával. A metrikus riasztási szabályokat Azure Resource Manager sablonok használatával is létrehozhatja, amelyek [külön cikkben](alerts-metric-create-templates.md)vannak leírva.
 
 További információ a metrikus riasztások működéséről a [metrikus riasztások áttekintése című](alerts-metric-overview.md)témakörben olvasható.
 
@@ -39,21 +39,30 @@ Az alábbi eljárás azt ismerteti, hogyan hozhat létre metrikus riasztási sza
 
 6. Megjelenik az erőforrás által támogatott jelek listája, majd válassza ki azt a metrikát, amelyhez riasztást kíván létrehozni.
 
-7. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés**beállításával. Ha a metrika dimenziókkal rendelkezik, megjelenik a **dimenziók** táblázat. Jelöljön ki egy vagy több értéket egy dimenzióban. A metrika riasztása lefuttatja a kiválasztott értékek összes kombinációjának feltételét. [További információ a többdimenziós metrikák működésével kapcsolatos riasztásokról](alerts-metric-overview.md). Bármelyik dimenzióhoz **\*is kiválaszthat** . A **\*kiválasztása** esetén a rendszer dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
+7. Ekkor megjelenik egy diagram a metrikához az elmúlt hat órában. A **diagram időszakának** legördülő menüjéből kiválaszthatja, hogy a mérőszám hosszabb előzményeit jelenítse meg.
 
-8. Ekkor megjelenik egy diagram a metrikához az elmúlt 6 órában. A riasztás paramétereinek megadása; A **feltétel típusa**, **gyakorisága**, **operátora** és **küszöbértéke** vagy **érzékenysége**határozza meg azt a logikát, amelyet a metrika riasztási szabálya kiértékel. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
+8. Ha a metrika dimenziókat tartalmaz, megjelenik egy megjelenített dimenziós tábla. Jelöljön ki egy vagy több értéket egy dimenzióban.
+    - A megjelenített dimenzió értékei az elmúlt három nap mérőszám-adatain alapulnak.
+    - Ha a keresett dimenzióérték nem jelenik meg, kattintson a "+" elemre egyéni érték hozzáadásához.
+    - Bármelyik dimenzióhoz **\*is kiválaszthat** . A **\*kiválasztása** esetén a rendszer dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
 
-9. Ha statikus küszöbértéket használ, a mérőszám diagram segíthet meghatározni, hogy mi lehet az ésszerű küszöbérték. Dinamikus küszöbértékek használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
+    A metrika riasztási szabálya kiértékeli a kiválasztott értékek összes kombinációjának feltételeit. [További információ a többdimenziós metrikák működésével kapcsolatos riasztásokról](alerts-metric-overview.md).
 
-10. Kattintson a **Kész** gombra.
+9. Válassza ki a **küszöbérték** típusát, az **operátort**és az **összesítési típust**. Ez határozza meg azt a logikát, amelyet a metrika riasztási szabálya értékelni fog.
+    - Ha **statikus** küszöbértéket használ, folytassa a **küszöbérték**meghatározásával. A metrikai diagram segítségével meghatározhatja, hogy mi lehet az ésszerű küszöbérték.
+    - Ha **dinamikus** küszöbértéket használ, folytassa a **küszöbérték érzékenységének**meghatározásával. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
 
-11. Ha szeretne egy összetett riasztási szabályt figyelni, vegyen fel további feltételeket. A felhasználók jelenleg egyetlen feltételként rendelkezhetnek dinamikus küszöbértékekkel rendelkező riasztási szabályokkal.
+10. Szükség esetén pontosíthatja a feltételt az **Összesítés részletességének** és **a kiértékelés gyakoriságának**beállításával. 
 
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**
+11. Kattintson a **Done** (Kész) gombra.
 
-13. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+12. Ha szeretne egy összetett riasztási szabályt figyelni, vegyen fel további feltételeket. A felhasználók jelenleg egyetlen feltételként rendelkezhetnek dinamikus küszöbértékekkel rendelkező riasztási szabályokkal.
 
-14. Kattintson a **kész** gombra a metrika riasztási szabályának mentéséhez.
+13. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
+
+14. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+
+15. Kattintson a **kész** gombra a metrika riasztási szabályának mentéséhez.
 
 > [!NOTE]
 > A portálon létrehozott metrikai riasztási szabályok ugyanabban az erőforráscsoporthoz jönnek létre, mint a célként megadott erőforrás.
@@ -66,7 +75,7 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 2. Kattintson a **riasztások** elemre, és a **szabályok kezelése** lehetőségre
 
-3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az **erőforráscsoport**, az **Erőforrás típusa** és az **erőforrás**alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
+3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az **erőforráscsoport**, az **Erőforrás típusa**és az **erőforrás**alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
 
     > [!TIP]
     > A **szabályok kezelése** panelen több riasztási szabályt is kijelölhet, és engedélyezheti vagy tilthatja le őket. Ez akkor lehet hasznos, ha bizonyos cél erőforrásokat a karbantartás alá kell helyezni
@@ -82,9 +91,9 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 ## <a name="with-azure-cli"></a>Az Azure CLI-vel
 
-Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)keresztül. Ebben a cikkben a Cloud shellt fogjuk használni.
+Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)keresztül. Ebben a cikkben a Cloud Shell fogjuk használni.
 
-1. Lépjen Azure Portal a **Cloud Shell**elemre.
+1. Lépjen a Azure Portalra, majd a **Cloud Shell**elemre.
 
 2. A parancssorban az ``--help`` lehetőséggel rendelkező parancsok használatával többet tudhat meg a parancsról és annak használatáról. A következő parancs például megjeleníti a metrikai riasztások létrehozásához, megtekintéséhez és kezeléséhez elérhető parancsok listáját.
 

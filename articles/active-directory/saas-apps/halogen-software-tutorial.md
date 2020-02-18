@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a halogén szoftverrel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és halogén szoftverek között.
+title: 'Oktatóanyag: Azure Active Directory-integráció Saba TalentSpace | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Saba TalentSpace között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,143 +11,137 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 02/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 220fa6bf16bf92f1907002100dc46895a9807251
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6ef7d5ec33786c3c4c38525cd5ab15bee53b3493
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159146"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373248"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Oktatóanyag: Azure Active Directory-integráció a halogén szoftverrel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Saba TalentSpace
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a halogén szoftvereket Azure Active Directory (Azure AD) használatával.
-A halogén szoftverek Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Saba TalentSpace-t Azure Active Directory (Azure AD) használatával. Ha a Saba TalentSpace-t az Azure AD-vel integrálja, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a halogén szoftverekhez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az halogén szoftverbe (egyszeri bejelentkezés) az Azure AD-fiókkal.
+* A Saba TalentSpace hozzáféréssel rendelkező Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Saba TalentSpace az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció halogén szoftverrel való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Halogén szoftveres egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Saba TalentSpace egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A halogén szoftver támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Saba TalentSpace támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Saba TalentSpace konfigurálása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak kiszűrése és beszivárgását valós időben teszi elérhetővé. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-halogen-software-from-the-gallery"></a>Halogén szoftver hozzáadása a katalógusból
+## <a name="adding-saba-talentspace-from-the-gallery"></a>Saba TalentSpace hozzáadása a gyűjteményből
 
-A halogén szoftverek Azure AD-be való integrálásának konfigurálásához halogén szoftvert kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Saba TalentSpace az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Saba TalentSpace a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a katalógusból szeretne halogén szoftvert hozzáadni, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a " **Saba TalentSpace** " kifejezést a keresőmezőbe.
+1. Válassza ki a **Saba TalentSpace** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-saba-talentspace"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Saba TalentSpace
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Saba TalentSpace egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Saba TalentSpace-ben.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO a Saba TalentSpace való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[Saba TALENTSPACE SSO konfigurálása](#configure-saba-talentspace-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre Saba TalentSpace-teszt felhasználót](#create-saba-talentspace-test-user)** – ha a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli párja van a Saba TalentSpace-ben.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be a **halogén szoftver**kifejezést, válassza a **halogén szoftver** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A [Azure Portal](https://portal.azure.com/)a **Saba TalentSpace** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Halogén szoftver az eredmények listájában](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést egy **Britta Simon**nevű teszt felhasználó alapján konfigurálja és teszteli a halogén szoftverekkel.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://global.hgncloud.com/[companyname]/saml/login`
 
-Az Azure AD egyszeri bejelentkezés halogén szoftverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[halogén szoftveres egyszeri bejelentkezés konfigurálása](#configure-halogen-software-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Halogén szoftveres tesztelési felhasználó létrehozása](#create-halogen-software-test-user)** – ha a Britta Simon-t a felhasználó Azure ad-képviseletéhez kapcsolódó halogén szoftverben szeretné létrehozni.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés halogén szoftverrel való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/)a **halogén szoftveres** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![A halogén szoftverek tartománya és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://global.hgncloud.com/<companyname>`
-
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    | |
-    |--|
-    | `https://global.halogensoftware.com/<companyname>`|
-    | `https://global.hgncloud.com/<companyname>`|
-    | |
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://global.hgncloud.com/[companyname]/saml/metadata`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez forduljon a [halogén szoftveres](https://support.halogensoftware.com/) ügyfélszolgálathoz. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez lépjen kapcsolatba a [Saba TalentSpace-ügyfél támogatási csapatával](https://support.halogensoftware.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. A **halogén szoftver beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelménynek megfelelően.
+1. A **Saba TalentSpace beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL-cím
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
 
-### <a name="configure-halogen-software-single-sign-on"></a>A halogén szoftveres egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-1. Egy másik böngészőablakban jelentkezzen be a **halogén szoftveres** alkalmazásba rendszergazdaként.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Saba TalentSpace-hoz.
+
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza ki a **Saba TalentSpace**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-saba-talentspace-sso"></a>Saba TalentSpace SSO konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a **Saba TalentSpace** alkalmazásba rendszergazdaként.
 
 2. Kattintson a **Beállítások** fülre.
   
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_12.png)
+    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. A bal oldali navigációs ablaktáblán kattintson az **SAML-konfiguráció**elemre.
   
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_13.png)
+    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. Az **SAML-konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_14.png)
+    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. **Egyedi azonosítóként**válassza a **NameID**lehetőséget.
 
@@ -164,93 +158,46 @@ Az Azure AD egyszeri bejelentkezés halogén szoftverrel való konfigurálásáh
 
     f. Kattintson a **módosítások mentése**gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-saba-talentspace-test-user"></a>Saba TalentSpace-teszt felhasználó létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Saba TalentSpace-ben.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+**Ha Britta Simon nevű felhasználót szeretne létrehozni a Saba TalentSpace-ben, hajtsa végre a következő lépéseket:**
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a  **Create** (Létrehozás) gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a halogén szoftverekhez.
-
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **halogén szoftver**lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **halogén szoftver**elemet.
-
-    ![A halogén szoftver hivatkozása az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-halogen-software-test-user"></a>Halogén szoftveres tesztelési felhasználó létrehozása
-
-Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása az halogén szoftverben.
-
-**Ha Britta Simon nevű felhasználót szeretne létrehozni a halogén szoftverben, hajtsa végre a következő lépéseket:**
-
-1. Jelentkezzen be a **halogén szoftveres** alkalmazásba rendszergazdaként.
+1. Jelentkezzen be a **Saba TalentSpace** -alkalmazásba rendszergazdaként.
 
 2. Kattintson a **felhasználói központ** fülre, majd a **felhasználó létrehozása**elemre.
 
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_300.png)  
+    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. Az **új felhasználó** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_301.png)
+    ![Mi az az Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-301.png)
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó nevét (például **Britta**).
+    a. Az **Utónév** szövegmezőbe írja be a (z) " **B**" nevű felhasználó utónevét.
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. A **Felhasználónév** szövegmezőbe írja be a **Britta Simon**nevet, a felhasználónevet pedig a Azure Portal.
+    c. A Felhasználónév szövegmezőbe írja be a **B. Simon** **nevet** , a felhasználónevet pedig a Azure Portal.
 
-    d. A **jelszó** szövegmezőbe írja be a Britta jelszavát.
+    d. A **jelszó** szövegmezőbe írja be a következőt: B. Simon.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Amikor a hozzáférési panelen a halogén szoftver csempére kattint, automatikusan be kell jelentkeznie arra a halogén szoftverre, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a Saba TalentSpace csempére kattint, automatikusan be kell jelentkeznie a Saba TalentSpace, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A Saba TalentSpace kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

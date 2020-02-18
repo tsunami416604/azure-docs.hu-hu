@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa1e6d8705cf4aed975ed0940087f243a06a9019
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836342"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372698"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Az alkalmazások *b2clogin.com*való áttelepíteni több módosítást is szük
 
 * Módosítsa az átirányítási URL-címet az identitás-szolgáltató alkalmazásaiban a *b2clogin.com*hivatkozására.
 * Frissítse Azure AD B2C alkalmazásait a *b2clogin.com* használatára a felhasználói folyamat és a jogkivonat-végpont hivatkozásaiban.
-* Frissítse a [felhasználói felület testreszabására](custom-policy-ui-customization-dynamic.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
+* Frissítse a [felhasználói felület testreszabására](custom-policy-ui-customization.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
 
 ## <a name="change-identity-provider-redirect-urls"></a>Identitás-szolgáltató átirányítási URL-címeinek módosítása
 
@@ -58,7 +58,7 @@ A b2clogin.com-átirányítási URL-címekhez két formátumot használhat. Az e
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-A második lehetőség `your-tenant-name.onmicrosoft.com`formájában használja a bérlői tartománynevet. Példa:
+A második lehetőség `your-tenant-name.onmicrosoft.com`formájában használja a bérlői tartománynevet. Például:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -73,8 +73,8 @@ Mindkét formátum esetében:
 
 A Azure AD B2C-kompatibilis alkalmazások és API-k kódja több helyen is hivatkozhat `login.microsoftonline.com`re. Előfordulhat például, hogy a kód a felhasználói folyamatokra és a jogkivonat-végpontokra mutató hivatkozásokat tartalmaz. Frissítse a következőt a hivatkozás helyett `your-tenant-name.b2clogin.com`:
 
-* engedélyezési végpont
-* jogkivonat-végpont
+* Engedélyezési végpont
+* Jogkivonat-végpont
 * Jogkivonat kiállítója
 
 Például a contoso regisztrációs/bejelentkezési szabályzatának Authority végpontja a következő lesz:

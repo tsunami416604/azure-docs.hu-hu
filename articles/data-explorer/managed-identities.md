@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725974"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373378"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz
 
-[Azure Active Directory felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszi, hogy a fürt könnyedén HOZZÁFÉRHESSEN más HRE-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Az identitást az Azure platform kezeli, és nincs szükség titkos kódok kiépítésére vagy elforgatására. Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Adatkezelő-fürtökhöz. 
+[Azure Active Directory felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszi, hogy a fürt könnyedén HOZZÁFÉRHESSEN más HRE-védelemmel ellátott erőforrásokhoz, például a Azure Key Vaulthoz. Az identitást az Azure platform kezeli, és nincs szükség titkos kódok kiépítésére vagy elforgatására. Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Adatkezelő-fürtökhöz. A felügyelt identitás konfigurálása jelenleg csak az [ügyfél által felügyelt kulcsoknak a fürthöz való engedélyezése](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)esetén támogatott.
 
 > [!Note]
 > Az Azure Adatkezelő felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések vagy a bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a szolgáltatás [identitásának eltávolításával](#remove-an-identity)és újbóli engedélyezésével végezhető el. Az alsóbb rétegbeli erőforrások hozzáférési házirendjeit is frissíteni kell az új identitás használatára.
@@ -92,7 +92,7 @@ A rendszer által hozzárendelt típus hozzáadásával közli az Azure-t, hogy 
 }    
 ```
 
-Példa:
+Például:
 
 ```json
 {

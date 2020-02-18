@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157873"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372792"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -82,7 +82,7 @@ A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2
 | Oldal azonosítója | Leírás |
 | ----- | ----------- |
 | `globalexception` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
-| `providerselection` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. |
+| `providerselection`, `idpselection` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak.  |
 | `unifiedssp` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. Ez az érték a "bejelentkezési funkciók megtartása" funkciót és az "elfelejtette jelszavát?" is tartalmazza hivatkozás. |
 | `unifiedssd` | Megjeleníti a helyi fiókkal való bejelentkezéshez használt űrlapot, amely egy e-mail-cím vagy egy Felhasználónév alapján jelenik meg. |
 | `multifactor` | Megerősíti a telefonszámokat szöveg vagy hang használatával a regisztráció vagy a bejelentkezés során. |

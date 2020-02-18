@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762512"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373414"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
 
@@ -64,7 +64,7 @@ A következő három feltétel egyikén aktiválhatja a riasztást:
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Mit jelentenek a dinamikus küszöbértékek speciális beállításai?
 
-**Sikertelen időszakok** – a dinamikus küszöbértékek lehetővé teszik a "a riasztás kiváltásához szükséges számok megsértésének megadását", a rendszer egy adott időszakon belül egy adott időintervallumban megkövetelt eltérések minimális számát (az alapértelmezett időablak négy eltérés 20 perc alatt). A felhasználó beállíthatja a sikertelen időszakokat, és kiválaszthatja, hogy mi legyen a riasztás, ha módosítja a sikertelen időszakokat és az időintervallumot. Ez a képesség csökkenti az átmeneti tüskék által generált riasztási zajt. Példa:
+**Sikertelen időszakok** – a dinamikus küszöbértékek lehetővé teszik a "a riasztás kiváltásához szükséges számok megsértésének megadását", a rendszer egy adott időszakon belül egy adott időintervallumban megkövetelt eltérések minimális számát (az alapértelmezett időablak négy eltérés 20 perc alatt). A felhasználó beállíthatja a sikertelen időszakokat, és kiválaszthatja, hogy mi legyen a riasztás, ha módosítja a sikertelen időszakokat és az időintervallumot. Ez a képesség csökkenti az átmeneti tüskék által generált riasztási zajt. Például:
 
 Ha a probléma 20 percen belül folyamatos, 4 egymást követő alkalommal, 5 perces csoportosításban, akkor a következő beállításokat kell használnia:
 
@@ -92,11 +92,11 @@ Valószínűleg nem. A dinamikus küszöbértékek kiválóan alkalmasak a jelen
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adattal kell megtekinteni, majd kiszámítani a küszöbértékeket?
 
-A és a riasztás első létrehozásakor a diagramon megjelenő küszöbértékek az óra vagy napi szezonális mintázatok (10 nap) kiszámításához elegendő múltbeli érték alapján számítjuk ki a számítást. A riasztási szabály létrehozása után a dinamikus küszöbértékek a rendelkezésre álló összes szükséges korábbi információt használják, és az új értékek alapján folyamatosan tanulnak és alkalmazkodnak, hogy a küszöbértékek pontosabbak legyenek. Ez azt jelenti, hogy a számítás után a diagram hetente mintákat is fog megjeleníteni.
+A riasztási szabályok első létrehozásakor a diagramon megjelenő küszöbértékek kiszámítása az óra vagy napi szezonális mintázatok (10 nap) alapján számított, elegendő múltbeli érték alapján történik. A riasztási szabály létrehozása után a dinamikus küszöbértékek a rendelkezésre álló összes szükséges korábbi információt használják, és az új értékek alapján folyamatosan tanulnak és alkalmazkodnak, hogy a küszöbértékek pontosabbak legyenek. Ez azt jelenti, hogy a számítás után a diagram hetente mintákat is fog megjeleníteni.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi információra van szükség a riasztás indításához?
 
-Ha új erőforrással vagy hiányzó metrikai adatokkal rendelkezik, a dinamikus küszöbértékek nem indítanak riasztást, mielőtt a rendszer a pontos küszöbértékek megadását követően három napig elérhetővé válik.
+Ha új erőforrást vagy hiányzó metrikai adatokat tartalmaz, a dinamikus küszöbértékek nem indítanak riasztásokat három nap múlva, vagy 30 minta metrikus adat áll rendelkezésre a pontos küszöbértékek biztosításához.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbértékek – ajánlott eljárások
 

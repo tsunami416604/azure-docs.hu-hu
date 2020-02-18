@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908936"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373159"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -39,7 +39,7 @@ A [Azure Portal](tutorial-customize-ui.md) használatával konfigurálhatja a fe
 
 Ha [egyéni házirendeket](custom-policy-overview.md) használ a regisztrációhoz vagy a bejelentkezéshez, a jelszó-visszaállításhoz vagy a profil szerkesztéséhez az alkalmazásban, [a felhasználói felület testreszabásához használjon házirend-fájlokat](custom-policy-ui-customization.md).
 
-Ha az ügyfél döntése alapján dinamikus tartalmat kell megadnia, használjon olyan egyéni házirendeket, amelyek az [oldal tartalmát dinamikusan módosíthatják](custom-policy-ui-customization-dynamic.md) , a lekérdezési karakterláncban elküldett paraméterektől függően. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon egy olyan paraméter alapján, amelyet a webes vagy a mobil alkalmazásból továbbít.
+Ha az ügyfél döntése alapján dinamikus tartalmat kell megadnia, használjon olyan egyéni házirendeket, amelyek az [oldal tartalmát dinamikusan módosíthatják](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) , a lekérdezési karakterláncban elküldett paraméterektől függően. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon egy olyan paraméter alapján, amelyet a webes vagy a mobil alkalmazásból továbbít.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -61,7 +61,7 @@ A bal oldali menü **Testreszabás** **területén válassza a lapelrendezések 
 
 Ezután válasszon ki egy sablont a listából. Íme néhány példa az egyes sablonok bejelentkezési lapjaira:
 
-| Ocean Blue | Szürke pala | Hagyományos |
+| Ocean Blue | Szürke pala | Klasszikus |
 |:-:|:-:|:-:|
 |![Példa a bejelentkezési oldalon megjelenített Ocean Blue-sablonra](media/customize-ui-overview/template-ocean-blue.png)|![Példa a regisztrálási bejelentkezési oldalon megjelenített szürke sablonra](media/customize-ui-overview/template-slate-gray.png)|![Példa a regisztrálási bejelentkezési oldalon megjelenített klasszikus sablonra](media/customize-ui-overview/template-classic.png)|
 
@@ -150,7 +150,7 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 | Helyi fiók regisztrálása | Egy űrlapot tartalmaz a helyi fiók regisztrálásához egy e-mail-cím vagy egy Felhasználónév alapján. Az űrlap különböző beviteli vezérlőket tartalmazhat, mint például a szövegbeviteli mező, a jelszó-beviteli mező, a választógomb, az egyszeres kijelölés legördülő lista és a többszörös kijelölés jelölőnégyzet. |
 | Közösségi fiók regisztrálása | Akkor jelenhet meg, ha egy közösségi identitás-szolgáltató, például a Facebook vagy a Google egy meglévő fiókjának használatával regisztrál. Akkor használatos, ha az ügyféltől további információkat kell gyűjteni a regisztrációs űrlap használatával. |
 | Egyesített regisztráció vagy bejelentkezés | A olyan ügyfelek regisztrációját és bejelentkezését kezeli, akik használhatják a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t vagy a helyi fiókokat. |
-| Többtényezős hitelesítés | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
+| Multi-Factor Authentication | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
 | Hiba | Információt nyújt az ügyfélnek. |
 
 ## <a name="company-branding-preview"></a>Vállalati arculat (előzetes verzió)
@@ -165,7 +165,7 @@ A felhasználói folyamatok lapjain való testreszabáshoz először a vállalat
 
 Először állítsa be a szalagcím emblémáját, a háttérképet és a háttérszínt a **vállalati arculaton**belül.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. A **kezelés**területen válassza a **vállalati védjegyezés**lehetőséget.

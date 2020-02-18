@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271589"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373350"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure Adatkezelő-fürtök védelme az Azure-ban
 
@@ -34,10 +34,10 @@ A probléma megoldásához a Azure Active Directory (Azure AD) felügyelt identi
 
 Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat, amelyeket az adattitkosításhoz használhat. A tárolási szinten kezelheti az adatai titkosítását a saját kulcsaival. Az ügyfél által felügyelt kulcs használatával biztosítható a legfelső szintű titkosítási kulcshoz való hozzáférés, amely az összes információ titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
-Az ügyfél által felügyelt kulcsok tárolásához használja a Azure Key Vault. Létrehozhat saját kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhat egy Azure Key Vault API-t kulcsok létrehozásához. Az Azure Adatkezelő-fürtnek és a Azure Key Vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview) Az ügyfél által felügyelt kulcsok részletes ismertetését lásd: [ügyfél által felügyelt kulcsok Azure Key Vault](/azure/storage/common/storage-service-encryption)
+Az ügyfél által felügyelt kulcsok tárolásához használja a Azure Key Vault. Létrehozhat saját kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhat egy Azure Key Vault API-t kulcsok létrehozásához. Az Azure Adatkezelő-fürtnek és a Azure Key Vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview) Az ügyfél által felügyelt kulcsok részletes ismertetését lásd: [ügyfél által felügyelt kulcsok Azure Key Vault](/azure/storage/common/storage-service-encryption). Az ügyfél által felügyelt kulcsok konfigurálása az Azure Adatkezelő- [C#](/azure/data-explorer/customer-managed-keys-csharp) fürtön a vagy a [Azure Resource Manager sablon](/azure/data-explorer/customer-managed-keys-resource-manager) használatával
 
 > [!Note]
-> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok Azure Portal konfigurálásához konfigurálnia kell egy **SystemAssigned** által felügyelt identitást a fürtön.
+> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok Azure Portal való konfigurálásához konfigurálnia kell egy **SystemAssigned** által felügyelt identitást a fürthöz a [felügyelt identitások konfigurálása az Azure adatkezelő-fürthöz](/azure/data-explorer/managed-identities)című részletesen.
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása Azure Key Vault
 
@@ -60,8 +60,8 @@ A [szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-co
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz](managed-identities.md)
 * [A fürt biztonságossá tétele az Azure adatkezelő-Portalon](manage-cluster-security.md) a titkosítás nyugalmi állapotban való engedélyezésével.
+* [Felügyelt identitások konfigurálása az Azure Adatkezelő-fürthöz](managed-identities.md)
 * [Az ügyfél által felügyelt kulcsok konfigurálása a Azure Resource Manager sablon használatával](customer-managed-keys-resource-manager.md)
 * [Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#](customer-managed-keys-csharp.md)
 

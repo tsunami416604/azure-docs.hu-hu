@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185588"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372990"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -51,13 +51,31 @@ A **claimType** elem a következő elemeket tartalmazza:
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
-| Adattípus | 1:1 | A jogcím típusa. A logikai, dátum, dateTime, int, Long, string, StringCollection stb és telefonszám adattípusok használhatók. A primitív adattípus a C# változó adattípusának megfelelő értéket jelöli. a StringCollection stb karakterláncok gyűjteményét jelöli. További információ: [ C# típusok és változók](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). A dátum az ISO 8601-es konvenciót követi. |
+| Adattípus | 1:1 | A jogcím típusa. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcím-típusai, amelyeket egy adott protokollhoz kell használni. Az érték felülírható a **InputClaim** vagy a **OutputClaim** elemekben megadott **PartnerClaimType** . Ezzel az elemmel adhatja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | A jogcímek megjelenítésekor alkalmazható maszkolási karakterek nem kötelező karakterlánca. Például a 324-232-4343-as telefonszám a XXX-XXX-4343 lehet. |
 | UserHelpText | 0:1 | A jogcím típusának leírása, amely hasznos lehet a felhasználók számára, hogy megértsék a célját. Az érték [honosítható](localization.md). |
 | UserInputType | 0:1 | A felhasználó számára elérhető bemeneti vezérlő típusa, amikor manuálisan adja meg a jogcím-adatokat a jogcím típusához. Tekintse meg az ezen a lapon később definiált felhasználói beviteli típusokat. |
 | Korlátozás | 0:1 | A jogcím korlátozásai, például reguláris kifejezés (regex) vagy elfogadható értékek listája. Az érték [honosítható](localization.md). |
 PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mutató hivatkozás. A **PredicateValidationReference** elemek lehetővé teszik egy ellenőrzési folyamat elvégzését annak érdekében, hogy csak a megfelelően formázott adatok legyenek megadva. További információ: [predikátumok](predicates.md). |
+
+### <a name="datatype"></a>Adattípus
+
+Az **adattípus** elem a következő értékeket támogatja:
+
+| Típus | Leírás |
+| ------- | ----------- | 
+|logikai|A logikai (`true` vagy `false`) értéket jelöli.|
+|dátum| Egy azonnali időpontot jelöl, amely általában nap dátumként van kifejezve. A dátum értéke az ISO 8601 konvenciót követi.|
+|Dátum és idő|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. A dátum értéke az ISO 8601 konvenciót követi.|
+|duration|Az év, hónap, nap, óra, perc és másodperc időtartamot jelöli. A formátuma `PnYnMnDTnHnMnS`, ahol a `P` pozitív vagy `N` negatív értéket jelez. `nY` az évek száma, amelyet egy literál `Y`követ. `nMo` az a hónapok száma, amelyet egy literál `Mo`követ. `nD` az a napok száma, amelyet egy literál `D`követ. Példák: a `P21Y` 21 évet jelöl. `P1Y2Mo` egy évet és két hónapot jelöl. `P1Y2Mo5D` egy évet, két hónapot és öt napot jelöl.  `P1Y2M5DT8H5M620S` egy évet, két hónapot, öt napot, nyolc órát, öt percet és húsz másodpercet jelöl.  |
+|Telefonszám|A telefonszámot jelöli. |
+|int| A-2 147 483 648 és a 2 147 483 647 közötti számot jelöli|
+|hosszú| A-9223372036854775808 és a 9 223 372 036 854 775 807 közötti számot jelöli |
+|sztring| UTF-16 kód egységként jeleníti meg a szöveget.|
+|StringCollection stb|`string`gyűjteményét jelöli.|
+|userIdentity| Felhasználói identitást jelöl.|
+|userIdentityCollection|`userIdentity`gyűjteményét jelöli.|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -155,7 +173,7 @@ A **korlátozási** elem a következő elemeket tartalmazza:
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
 | Mintázat | 1:1 | A használandó reguláris kifejezés. |
 
-### <a name="enumeration"></a>Enumerálás
+#### <a name="enumeration"></a>Enumerálás
 
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
@@ -214,11 +232,26 @@ Az Identity Experience Framework az e-mail-cím jogcímet a bemeneti ellenőrzé
 
 ![A regex-korlátozás által aktivált hibaüzenetet megjelenítő szövegmező](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-A Azure AD B2C számos felhasználói beviteli típust támogat, például a szövegmezőt, a jelszót és a legördülő listát, amely akkor használható, ha a jogcím-adatok manuális bevitele a jogcím típusához történik. A **UserInputType** akkor kell megadnia, amikor adatokat gyűjt a felhasználótól egy [önérvényesített technikai profil](self-asserted-technical-profile.md)használatával.
+A Azure AD B2C számos felhasználói beviteli típust támogat, például a szövegmezőt, a jelszót és a legördülő listát, amely akkor használható, ha a jogcím-adatok manuális bevitele a jogcím típusához történik. A **UserInputType** akkor kell megadnia, amikor adatokat gyűjt a felhasználótól egy [önérvényesített technikai profil](self-asserted-technical-profile.md) és [megjelenítési vezérlő](display-controls.md)használatával.
 
-### <a name="textbox"></a>TextBox
+A **UserInputType** elem elérhető felhasználói bemeneti típusok:
+
+| UserInputType | Támogatott ClaimType | Leírás |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |Többszörös kijelölés legördülő lista A jogcím értéke a kijelölt értékek vesszővel elválasztó karakterláncában jelenik meg. |
+|DateTimeDropdown | `date`, `dateTime` |Legördülő menüből kiválaszthatja a napot, a hónapot és az évet. |
+|DropdownSingleSelect |`string` |Egyetlen Select legördülő lista. A jogcím értéke a kijelölt érték.|
+|EmailBox | `string` |E-mail-beviteli mező. |
+|Bekezdés | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Egy olyan mező, amely csak szöveget jelenít meg egy bekezdés címkéjében. |
+|Jelszó | `string` |Jelszó szövegmezője|
+|RadioSingleSelect |`string` | Választógombok gyűjteménye A jogcím értéke a kijelölt érték.|
+|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Csak olvasási szövegmező. |
+|TextBox |`boolean`, `int`, `string` |Egy egysoros szövegmező. |
+
+
+#### <a name="textbox"></a>TextBox
 
 A **szövegmező** felhasználói beviteli típus egy egysoros szövegmező megadására szolgál.
 
@@ -233,7 +266,7 @@ A **szövegmező** felhasználói beviteli típus egy egysoros szövegmező mega
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 Az **EmailBox** felhasználói bevitel típusa egy alapszintű e-mail-beviteli mező biztosítására szolgál.
 
@@ -251,7 +284,7 @@ Az **EmailBox** felhasználói bevitel típusa egy alapszintű e-mail-beviteli m
 </ClaimType>
 ```
 
-### <a name="password"></a>Jelszó
+#### <a name="password"></a>Jelszó
 
 A **jelszó** felhasználói beviteli típusa a felhasználó által megadott jelszó rögzítésére szolgál.
 
@@ -266,7 +299,7 @@ A **jelszó** felhasználói beviteli típusa a felhasználó által megadott je
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 A **DateTimeDropdown** felhasználói bevitel típusa legördülő listát biztosít egy nap, hónap és év kiválasztásához. A predikátumok és a PredicateValidations elemek segítségével szabályozhatja a minimális és a maximális dátumérték értékét. További információt a [predikátumok és a PredicateValidations](predicates.md) **konfigurálása** című témakörben talál.
 
@@ -281,7 +314,7 @@ A **DateTimeDropdown** felhasználói bevitel típusa legördülő listát bizto
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 A **RadioSingleSelect** felhasználói beviteli típus a választógombok egy gyűjteményének megadására szolgál, amely lehetővé teszi, hogy a felhasználó kiválasszon egy lehetőséget.
 
@@ -300,7 +333,7 @@ A **RadioSingleSelect** felhasználói beviteli típus a választógombok egy gy
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 A **DropdownSingleSelect** felhasználói bevitel típusa legördülő lista megadására szolgál, amely lehetővé teszi, hogy a felhasználó kiválasszon egy lehetőséget.
 
@@ -319,7 +352,7 @@ A **DropdownSingleSelect** felhasználói bevitel típusa legördülő lista meg
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 A **CheckboxMultiSelect** felhasználói beviteli típusa jelölőnégyzetek gyűjteményének megadására szolgál, amely lehetővé teszi a felhasználó számára több lehetőség kiválasztását.
 
@@ -338,7 +371,7 @@ A **CheckboxMultiSelect** felhasználói beviteli típusa jelölőnégyzetek gy�
 </ClaimType>
 ```
 
-### <a name="readonly"></a>ReadOnly
+#### <a name="readonly"></a>ReadOnly
 
 A **readonly** felhasználói bevitel típusa írásvédett mező biztosítására szolgál a jogcím és az érték megjelenítéséhez.
 
@@ -354,9 +387,9 @@ A **readonly** felhasználói bevitel típusa írásvédett mező biztosításá
 ```
 
 
-### <a name="paragraph"></a>Bekezdés
+#### <a name="paragraph"></a>Bekezdés
 
-A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget. Például &lt;p&gt;Text&lt;/p&gt;.
+A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget.  Például &lt;p&gt;Text&lt;/p&gt;. Az önérvényesített technikai profil **`OutputClaim` felhasználói beviteli** típusa beállításnál a `Required` attribútumot `false` (alapértelmezett) értékre kell állítani.
 
 ![Jogcím típusának használata bekezdéssel](./media/claimsschema/paragraph.png)
 

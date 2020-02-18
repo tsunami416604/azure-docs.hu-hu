@@ -1,18 +1,18 @@
 ---
 title: Azure-Blobok betöltése az Azure-ba Adatkezelő
 description: Ebből a cikkből megtudhatja, hogyan küldhet a Storage-fiókadatok az Azure Adatkezelőba egy Event Grid-előfizetés használatával.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 728f4d4f6cc4a2d34e3a7b8f4ca1b150fd7a56c7
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667485"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373386"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobok betöltése az Azure Adatkezelőba Event Grid értesítésekre való feliratkozással
 
@@ -44,13 +44,13 @@ Ebből a cikkből megtudhatja, hogyan állíthat be [Azure Event Grid](/azure/ev
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Név | *test-Grid – kapcsolatok* | A létrehozni kívánt Event Grid neve.|
+    | Name (Név) | *test-Grid – kapcsolatok* | A létrehozni kívánt Event Grid neve.|
     | Esemény sémája | *Event Grid séma* | Az Event gridhez használandó séma. |
     | Témakör típusa | *Storage-fiók* | Az Event Grid-témakör típusa |
     | Témakör erőforrása | *gridteststorage* | A Storage-fiók neve. |
     | Előfizetés minden eseménytípus esetében | *egyértelmű* | Ne kapjon értesítést minden eseményről. |
     | Definiált események típusai | *BLOB létrehozva* | Mely adott eseményekről kap értesítést. |
-    | Végpont típusa | *Event hubok* | Az eseményeket küldő végpont típusa. |
+    | Végpont típusa | *Event Hubs* | Az eseményeket küldő végpont típusa. |
     | Végpont | *test-hub* | A létrehozott eseményközpont. |
     | | |
 
@@ -117,7 +117,7 @@ Most kapcsolódjon az Azure Adatkezelő Event Grid, hogy a blob-tárolóba áram
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Table | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
+    | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: zip és GZip |
     | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
     | | |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251685"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373200"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory SSO-integráció a JAMF Pro-val
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a JAMF Pro-t Azure
 * Az Azure AD-fiókokkal automatikusan bejelentkezhet a felhasználók JAMF Pro-ba.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg [az egyszeri bejelentkezést Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)használatával.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg [az egyszeri bejelentkezést Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,10 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A JAMF Pro az **SP által kezdeményezett** és a **identitásszolgáltató által kezdeményezett** egyszeri bejelentkezést támogatja.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. 
+
+* A JAMF Pro az **SP által kezdeményezett** és a **identitásszolgáltató által kezdeményezett** egyszeri bejelentkezést támogatja.
+* A JAMF Pro konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>A JAMF Pro hozzáadása a katalógusból
 
@@ -147,9 +150,9 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
     ![Az egyszeri bejelentkezési oldal a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. Válassza a **Szerkesztés** elemet.
+    a. Válassza a **Szerkesztés** elemet.
 
-  b. Jelölje be az **egyszeri bejelentkezéses hitelesítés engedélyezése** jelölőnégyzetet.
+    b. Jelölje be az **egyszeri bejelentkezéses hitelesítés engedélyezése** jelölőnégyzetet.
 
   c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
 
@@ -200,7 +203,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![A standard fiók létrehozása lehetőség a JAMF Pro felhasználói fiókok & csoportok lapon](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. Az **új fiók** párbeszédpanelen hajtsa végre az alábbi lépéseket.
+6. Az **új fiók** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Új fiók beállítási lehetőségei a JAMF Pro rendszerbeállításokban](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -228,8 +231,8 @@ Amikor kiválasztja a JAMF Pro csempét a hozzáférési panelen, automatikusan 
 
 - [Oktatóanyagok az SaaS-alkalmazások integrálásához a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [A JAMF Pro kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
