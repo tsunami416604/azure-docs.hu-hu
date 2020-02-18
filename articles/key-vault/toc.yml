@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: Hozzáférés-vezérlési szabályzat használata
           href: key-vault-group-permissions-for-apps.md
+        - name: HSM által védett kulcsok importálása
+          items:
+            - name: Áttekintés
+              href: key-vault-hsm-protected-keys.md
+            - name: HSM által védett kulcsok importálása a Key Vaultba (előzetes verzió)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: HSM által védett kulcsok importálása a Key Vaultba (örökölt)
+              href: hsm-protected-keys-legacy.md
     - name: Key Vault-értesítések irányítása az Event Griddel
       href: event-grid-tutorial.md
     - name: Értesítések fogadása az Event Gridben és a Logic Appsben
@@ -170,8 +178,6 @@
       items:
         - name: Fejlesztői útmutató
           href: key-vault-developers-guide.md
-        - name: HSM-védett kulcsok
-          href: key-vault-hsm-protected-keys.md
         - name: Áttelepítés az .NET 2.0-ba
           href: key-vault-dotnet2api-release-notes.md
         - name: Webalkalmazás titkos kulcsának mentése
