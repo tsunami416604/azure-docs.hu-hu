@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922002"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423629"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Séma-hozzárendelés másolási tevékenységben
 
@@ -87,18 +87,18 @@ Megadhatja a másolási tevékenységben leképezni kívánt oszlopokat – > `t
 
 A következő tulajdonságok támogatottak `translator` -> `mappings`-> objektum esetében `source` és `sink`esetén:
 
-| Tulajdonság | Leírás                                                  | Szükséges |
+| Tulajdonság | Leírás                                                  | Kötelező |
 | -------- | ------------------------------------------------------------ | -------- |
 | név     | A forrás vagy a fogadó oszlop neve.                           | Igen      |
-| sorszámok  | Oszlop indexe Első lépések: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | Nem       |
+| ordinal  | Oszlop indexe Első lépések: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | Nem       |
 | elérési út     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus adatokra vonatkozik például MongoDB/REST.<br>A root objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. `collectionReference` tulajdonság által kiválasztott tömb mezőihez a JSON-útvonal a tömb elemtől indul. | Nem       |
 | type     | Data Factory a forrás vagy a fogadó oszlop közbenső adattípusa. | Nem       |
-| kulturális környezet  | A forrás vagy a fogadó oszlop kulturális környezete. <br>Akkor alkalmazza, ha a típus `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem       |
-| formátum   | A típus `Datetime` vagy `Datetimeoffset`esetén használandó formázó karakterlánc. A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| culture  | A forrás vagy a fogadó oszlop kulturális környezete. <br>Akkor alkalmazza, ha a típus `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem       |
+| format   | A típus `Datetime` vagy `Datetimeoffset`esetén használandó formázó karakterlánc. A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
 
 A következő tulajdonságok támogatottak `translator` -> `mappings` mellett `source` és `sink`objektumon kívül:
 
-| Tulajdonság            | Leírás                                                  | Szükséges |
+| Tulajdonság            | Leírás                                                  | Kötelező |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Csak akkor támogatott, ha a hierarchikus adatok például a MongoDB/REST forrása.<br>Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. | Nem       |
 
@@ -200,7 +200,7 @@ Ha a `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` szinta
 
 Megadhatja a másolási tevékenység – > `translator` -> `schemaMapping` a hierarchikusan formázott adatok és a táblázatos adatok között, például a MongoDB/REST-ből a szövegfájlba való másolást és az Oracle-ből a Azure Cosmos DB API-ra való másolását a MongoDB. A másolási tevékenység `translator` szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fordítójának Type tulajdonságát a következőre kell beállítani: **TabularTranslator** | Igen |
 | schemaMapping | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **kulcs:** a forrást jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Value:** a fogadót jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. `collectionReference` tulajdonság által kiválasztott tömb mezőihez a JSON-útvonal a tömb elemtől indul.  | Igen |
@@ -259,11 +259,11 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -284,21 +284,21 @@ A natív típus és az átmeneti típus közötti leképezést az egyes összek�
 
 A Data Factory a következő közbenső adattípusokat támogatja: az [adatkészletek struktúrájának](concepts-datasets-linked-services.md#dataset-structure-or-schema) konfigurálásakor az alábbi értékeket adhatja meg:
 
-* Bájt []
+* Byte[]
 * Logikai
-* Dátum/idő
-* DateTimeOffset
-* Decimális
-* Double
-* GUID
+* Dátum és idő
+* Datetimeoffset
+* tizedes tört
+* Dupla
+* Guid
 * Int16
 * Int32
 * Int64
-* Önálló
+* Single
 * Sztring
 * Időtartomány
 
 ## <a name="next-steps"></a>Következő lépések
-Lásd a másolási tevékenység egyéb cikkeit:
+A másolási tevékenység egyéb cikkekben talál:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

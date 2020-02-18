@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280934"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426207"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Privát hivatkozás létrehozása és kezelése Azure Database for MariaDB (előzetes verzió) a CLI használatával
 
@@ -38,7 +38,7 @@ Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoporto
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+## <a name="create-a-virtual-network"></a>Virtual Network létrehozása
 Hozzon létre egy Virtual Network az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. Ez a példa egy *myVirtualNetwork* nevű alapértelmezett Virtual Network hoz létre egy *mySubnet*nevű alhálózattal:
 
 ```azurecli-interactive
@@ -131,7 +131,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a letöltött. rdp fájlt.
+1. Nyissa meg a *letöltött. rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
@@ -159,27 +159,28 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Tesztelje a MariaDB-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
 
-4. In **New connection**, enter or select this information:
+4. Az **új kapcsolatok**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Setting | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | Kapcsolat neve| Válassza ki az Ön által választott kapcsolatok nevét.|
+    | Gazdanév | *Mydemoserver.privatelink.MariaDB.database.Azure.com* kiválasztása |
+    | Felhasználónév | Adja meg a felhasználónevet *username@servername* , amely a MariaDB-kiszolgáló létrehozásakor van megadva. |
+    | Jelszó | Adja meg a MariaDB-kiszolgáló létrehozásakor megadott jelszót. |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. Válassza a **kapcsolatok tesztelése** vagy **az OK gombot**.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. Opcionálisan A bal oldali menüben lévő adatbázisok tallózása, valamint a MariaDB-adatbázisból származó információk létrehozása vagy lekérdezése
 
-8. Close the remote desktop connection to myVm.
+8. A távoli asztali kapcsolat bezárásával myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

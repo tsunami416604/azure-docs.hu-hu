@@ -3,16 +3,16 @@ title: Fájlok és mappák biztonsági mentése – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720361"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425068"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
-Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz a fájlok és mappák biztonsági mentésére a [Azure Backup](backup-overview.md) szolgáltatásban található Microsoft Azure Recovery Services-(MARS-) ügynökkel.
+Ez a cikk a [Azure Backup](backup-overview.md) szolgáltatásban található Microsoft Azure Recovery Services-(MARS-) ügynökkel a fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="configure-backups"></a>Biztonsági mentések konfigurálása
 
@@ -90,7 +90,7 @@ Ez a figyelmeztetés akkor is megjelenhet, ha a biztonsági mentési szabályzat
 A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít.
 
 * A gyorsítótár-mappák köteteinek szabad területtel kell rendelkezniük, amely a biztonsági másolatok teljes méretének legalább 5-10%-ával egyenlő.
-* Ha a kötet kevesebb, mint 5% szabad területtel rendelkezik, növelje a kötet méretét, vagy helyezze át a gyorsítótár mappáját egy elegendő hellyel rendelkező kötetre.
+* Ha a kötet kevesebb, mint 5% szabad területtel rendelkezik, növelje a kötet méretét, vagy helyezze át a gyorsítótár mappát egy olyan kötetre, amely elegendő hellyel rendelkezik a következő [lépések végrehajtásával](#how-do-i-change-the-cache-location-for-the-mars-agent).
 * A Windows rendszerállapotának biztonsági mentése esetén további 30-35 GB szabad terület szükséges a gyorsítótár mappát tartalmazó köteten.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Hogyan ellenőrizhető, hogy a kaparós mappa érvényes és elérhető-e?
@@ -98,35 +98,35 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 1. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Győződjön meg arról, hogy a mappa helyének elérési útja megegyezik az alább látható beállításkulcs-bejegyzések értékeivel:
 
-  | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Value (Díj) |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Hogyan módosítja a MARS-ügynök gyorsítótárának helyét?
 
 1. Futtassa ezt a parancsot egy rendszergazda jogú parancssorban a biztonsági mentési motor leállításához:
 
     ```Net stop obengine```
-
 2. Ha beállította a rendszerállapot biztonsági mentését, nyissa meg a Lemezkezelés segédprogramot, és válassza le a (z) `"CBSSBVol_<ID>"`formátumú lemez (eke) t.
-3. Ne helyezze át a fájlokat. Ehelyett másolja a gyorsítótár-terület mappáját egy olyan meghajtóra, amely elegendő lemezterülettel rendelkezik.
-4. Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótár mappájának elérési útjával.
+3. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. Másolja a teljes `\Scratch` mappát egy másik, elegendő lemezterülettel rendelkező meghajtóra. Győződjön meg arról, hogy a tartalom másolása megtörtént, nincs áthelyezve.
+5. Frissítse a következő beállításjegyzékbeli bejegyzéseket az újonnan áthelyezett Scratch mappa elérési útjával.
 
-    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Value (Díj) |
+    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új mappa helye* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új mappa helye* |
 
-5. Indítsa újra a Backup motort egy rendszergazda jogú parancssorban:
+6. Indítsa újra a Backup motort egy rendszergazda jogú parancssorban:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. Futtasson egy igény szerinti biztonsági mentést. Miután a biztonsági mentés sikeresen befejeződött az új hely használatával, eltávolíthatja az eredeti gyorsítótár mappáját.
+7. Futtasson egy igény szerinti biztonsági mentést. Miután a biztonsági mentés sikeresen befejeződött az új hely használatával, eltávolíthatja az eredeti gyorsítótár mappáját.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Hol kell elhelyezni a gyorsítótár mappáját?
 
@@ -158,7 +158,7 @@ Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állít
 **Visszaállíthatók, ha elfelejtettem a jelszavam?**
 A Azure Backup ügynöknek szüksége van egy jelszóra (amelyet a regisztráció során megadott) a biztonsági másolatban tárolt információk visszafejtéséhez. Tekintse át az alábbi forgatókönyveket az elveszett hozzáférési kódok kezelési lehetőségeinek megismeréséhez:
 
-| Eredeti gép <br> *(forrásoldali gép, ahol a biztonsági másolatok készültek)* | Jelszót | Elérhető beállítások |
+| Eredeti gép <br> *(forrásoldali gép, ahol a biztonsági másolatok készültek)* | Passphrase | Elérhető beállítások |
 | --- | --- | --- |
 | Elérhető |Elveszett |Ha az eredeti gép (ahol a biztonsági másolatok készültek) elérhető, és továbbra is ugyanazon a Recovery Services-tárolóban van regisztrálva, akkor a következő [lépésekkel](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)újból létrehozhatja a jelszót.  |
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |
@@ -177,7 +177,7 @@ Vegye figyelembe a következő feltételeket:
 
 Ha ugyanazzal a jelszóval rendelkezik (amelyet a regisztráció során megadott), akkor visszaállíthatja a biztonsági másolatban szereplő összes adathalmazt egy másik gépre. A visszaállítási lehetőségek megismeréséhez tekintse át az alábbi forgatókönyveket.
 
-| Eredeti gép | Jelszót | Elérhető beállítások |
+| Eredeti gép | Passphrase | Elérhető beállítások |
 | --- | --- | --- |
 | Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg. Válassza a **helyreállítás lehetőséget** > **egy másik helyet** a visszaállítás végrehajtásához. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |

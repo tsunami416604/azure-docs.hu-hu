@@ -2,21 +2,22 @@
 title: Gyakori kérdések – felderítés, értékelés és függőség elemzése Azure Migrate
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059487"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426292"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Gyakori kérdések a felderítéssel, az értékeléssel és a függőségek elemzésével kapcsolatban
 
-Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre ad választ a Azure Migrateban. Ha további lekérdezésekre van szüksége a cikk elolvasása után, tegye fel őket a [Azure Migrate fórumba](https://aka.ms/AzureMigrateForum). Ha további kérdései vannak, tekintse át a következő cikkeket:
+Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre ad választ a Azure Migrateban. Ha további kérdései vannak, tekintse át a következő cikkeket:
 
 - [Általános kérdések](resources-faq.md) a Azure Migrateról.
 - Az Azure Migrate berendezéssel kapcsolatos [kérdések](common-questions-appliance.md) .
 - A kiszolgálók áttelepítésével kapcsolatos [kérdések](common-questions-server-migration.md) .
+- Kérdések közzététele a [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum)
 
 
 

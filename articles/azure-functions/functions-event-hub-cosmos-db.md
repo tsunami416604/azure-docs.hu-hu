@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849836"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425323"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -36,6 +36,8 @@ Az oktatóanyag elvégzéséhez a következőket kell telepíteni:
 
 > [!IMPORTANT]
 > Az oktatóanyag befejezéséhez a `JAVA_HOME` környezeti változót a JDK telepítési helyére kell beállítani.
+
+Ha közvetlenül az oktatóanyag kódját szeretné használni, tekintse meg a következőt: [Java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) Sample repo.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -71,7 +73,7 @@ LOCATION=<value>
 
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
 
@@ -201,7 +203,7 @@ Az Azure-erőforrások létrehozása és konfigurálása sikeresen megtörtént 
 
 ## <a name="create-and-test-your-functions"></a>Függvények létrehozása és tesztelése
 
-Ezután hozzon létre egy projektet a helyi gépen, adja hozzá a Java-kódot, és tesztelje. Olyan parancsokat fog használni, amelyek a Azure Functions és a Azure Functions Core Tools Maven beépülő modullal működnek. A függvények helyileg futnak, de a létrehozott felhőalapú erőforrásokat fogják használni. A függvények helyi működésének megkezdése után a Maven használatával üzembe helyezheti őket a felhőben, és megtekintheti az adatok és az elemzések összegyűjtését.
+Ezután hozzon létre egy projektet a helyi gépen, adja hozzá a Java-kódot, és tesztelje. Olyan parancsokat fog használni, amelyek a Maven és a Azure Functions Core Tools Azure Functions beépülő modullal működnek. A függvények helyileg futnak, de a létrehozott felhőalapú erőforrásokat fogják használni. A függvények helyi működésének megkezdése után a Maven használatával üzembe helyezheti őket a felhőben, és megtekintheti az adatok és az elemzések összegyűjtését.
 
 Ha az erőforrások létrehozásához Cloud Shell használt, akkor nem fog helyileg csatlakozni az Azure-hoz. Ebben az esetben használja a `az login` parancsot a böngészőalapú bejelentkezési folyamat elindításához. Ha szükséges, állítsa az alapértelmezett előfizetést `az account set --subscription`, majd az előfizetés-AZONOSÍTÓval. Végül futtassa a következő parancsokat a környezeti változók újbóli létrehozásához a helyi gépen. Cserélje le a `<value>` helyőrzőket a korábban használt értékekre.
 

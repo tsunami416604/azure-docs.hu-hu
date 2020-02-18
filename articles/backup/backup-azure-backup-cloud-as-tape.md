@@ -3,19 +3,19 @@ title: A szalagos infrastruktúra cseréje
 description: Ismerje meg, hogyan biztosíthatja az Azure-ban tárolt adatok biztonsági mentését és helyreállítását lehetővé tevő szalagos szemantikai Azure Backup?
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173317"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425102"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>A hosszú távú tároló áthelyezése szalagról az Azure-felhőbe
 
 A Azure Backup és a System Center Data Protection Manager ügyfelei a következőket tehetik:
 
 * A szervezeti igényeknek leginkább megfelelő ütemtervek adatairól biztonsági másolatot készíthet.
-* A biztonsági mentési adat hosszabb ideig tartása
+* A biztonsági mentési adat hosszabb ideig tartása.
 * Az Azure-t a hosszú távú adatmegőrzési igényeknek (szalag helyett) egy részévé teheti.
 
 Ez a cikk azt ismerteti, hogy az ügyfelek hogyan engedélyezhetik a biztonsági mentési és adatmegőrzési házirendeket. Azok az ügyfelek, akik szalagokat használnak a hosszú távú adatmegőrzési igények kielégítésére, mostantól hatékony és életképes alternatívát biztosítanak a szolgáltatás rendelkezésre állásával. A szolgáltatás a Azure Backup legújabb kiadásában van engedélyezve (amely [itt](https://aka.ms/azurebackup_agent)érhető el). A System Center DPM ügyfeleinek legalább DPM 2012 R2 UR5 kell frissíteniük, mielőtt a DPM szolgáltatást használják a Azure Backup szolgáltatással.
@@ -43,9 +43,9 @@ Az ebben a házirendben megadott "adatmegőrzési pontok" teljes száma 90 (napi
 ![Minta képernyő](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Napi adatmegőrzési szabályzat**: a naponta készített biztonsági mentések hét napig tárolódnak.
-2. **Heti adatmegőrzési szabály**: a biztonsági másolatok minden nap éjfélkor készültek, és a 6. szombat időtartamot négy hétig őrzi meg a rendszer
-3. **Havi adatmegőrzési szabály**: minden hónap utolsó szombatján éjfélkor és 18:00-kor tartott biztonsági másolatok 12 hónapig őrződnek meg
-4. **Éves adatmegőrzési szabály**: minden március utolsó szombatján éjfélkor készített biztonsági másolatok 10 évig őrződnek meg
+2. **Heti adatmegőrzési szabály**: az éjfélkor és 6 órakor szombatig készített biztonsági másolatok négy hétig őrződnek meg.
+3. **Havi adatmegőrzési szabály**: az éjfélkor és 6 órakor készített biztonsági másolatok 12 hónapig őrződnek meg.
+4. **Éves adatmegőrzési szabály**: minden március utolsó szombatján éjfélkor készített biztonsági másolatok 10 évig őrződnek meg.
 
 A "megőrzési pontok" (az ügyfelek által az adatok visszaállítására szolgáló pontok) teljes száma az előző ábrán a következőképpen számítható ki:
 
@@ -57,7 +57,7 @@ A "megőrzési pontok" (az ügyfelek által az adatok visszaállítására szolg
 A helyreállítási pontok teljes száma 56.
 
 > [!NOTE]
-> A Azure Backup használatával a védett példányok esetében akár 9999 helyreállítási pontot is létrehozhat. A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy munkaterhelések, amelyek az Azure-ba készülnek.
+> A Azure Backup használatával a védett példányok esetében akár 9999 helyreállítási pontot is létrehozhat. A védett példányok olyan számítógépek, (fizikai vagy virtuális) kiszolgálók vagy számítási feladatok, amelyeknek a biztonsági másolatai az Azure-ba kerülnek.
 >
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898704"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425221"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -25,7 +25,7 @@ A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizon
 
 Az alkalmazás konfigurációjában tárolt kulcsok kis-és nagybetűket megkülönböztető, Unicode-alapú karakterláncok. Az *App1* és a *App1* kulcsok eltérnek az alkalmazás konfigurációs tárolójában. Ne feledje, hogy ha a konfigurációs beállításokat egy alkalmazáson belül használja, mert egyes keretrendszerek kis-és nagybetűk nélkül kezelik a konfigurációs kulcsokat. Például a ASP.NET Core konfigurációs rendszer a kulcsokat kis-és nagybetűket nem megkülönböztető karakterláncként kezeli. Ha el szeretné kerülni az alkalmazások konfigurációjának ASP.NET Core alkalmazáson belüli lekérdezését, ne használjon olyan kulcsokat, amelyek csak a burkolattól eltérőek.
 
-Az alkalmazások konfigurációjában megadott összes Unicode-karaktert használhat `*`, `,`és `\`kivételével. Ezek a karakterek le vannak foglalva. Ha foglalt karaktert kell tartalmaznia, el kell menekülnie `\{Reserved Character}`használatával. A kulcs-érték párokban egy 10 000 karakterből álló, kombinált méretkorlát található. Ez a korlát a kulcs, a hozzá tartozó érték és az összes hozzá tartozó opcionális attribútum összes karakterét tartalmazza. Ezen a korláton belül számos hierarchikus szintet is megadhat a kulcsokhoz.
+Az alkalmazások konfigurációjában megadott összes Unicode-karaktert használhat `*`, `,`és `\`kivételével. Ezek a karakterek le vannak foglalva. Ha foglalt karaktert kell tartalmaznia, el kell menekülnie `\{Reserved Character}`használatával. A kulcs-érték párokban egy összesített méretkorlát 10 KB. Ez a korlát a kulcs, a hozzá tartozó érték és az összes hozzá tartozó opcionális attribútum összes karakterét tartalmazza. Ezen a korláton belül számos hierarchikus szintet is megadhat a kulcsokhoz.
 
 ### <a name="design-key-namespaces"></a>Tervezési kulcs névterei
 
@@ -51,7 +51,7 @@ Az alkalmazások konfigurációjában többféleképpen rendezheti a kulcsokat. 
 
 ### <a name="label-keys"></a>Címkék kulcsai
 
-Az alkalmazás konfigurációjában a kulcs értékei opcionálisan rendelkezhetnek Label attribútummal is. A címkék használatával a kulcs értékeit ugyanazzal a kulccsal lehet megkülönböztetni. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs értékének címkéje üres vagy `null`.
+Az alkalmazás konfigurációjában a kulcs értékei opcionálisan rendelkezhetnek Label attribútummal is. A címkék használatával a kulcs értékeit ugyanazzal a kulccsal lehet megkülönböztetni. Az *a* és *B* címkével ellátott *App1* két különálló kulcsot alkotnak az alkalmazás konfigurációs tárolójában. Alapértelmezés szerint a kulcs értéke nem rendelkezik címkével. Ha címkével nem rendelkező kulcsot szeretne explicit módon hivatkozni, használja a `\0` (az URL-cím `%00`ként van kódolva).
 
 A Label kényelmes módszert biztosít a kulcsok változatának létrehozásához. A címkék gyakori használata több környezet megadására szolgál ugyanahhoz a kulcshoz:
 
@@ -69,13 +69,11 @@ A címkékben bármilyen Unicode-karaktert használhat, `*`, `,`és `\`kivétel�
 
 Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címkét, amely `null`lehet. A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
-| Jelmagyarázat | |
+| Paraméter | |
 |---|---|
 | `key` ki van hagyva vagy `key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |
 | `key=abc*` | Az **ABC** -vel kezdődő kulcsok neveinek felel meg |
-| `key=*abc` | Az **ABC** -végződésű kulcsok neveinek felel meg |
-| `key=*abc*` | Az **ABC** -t tartalmazó kulcsok neveinek felel meg |
 | `key=abc,xyz` | Az **ABC** -vagy **XYZ**-kulcsok neveinek felel meg, legfeljebb öt CSV |
 
 A következő címke mintákat is tartalmazhatja:
@@ -86,8 +84,6 @@ A következő címke mintákat is tartalmazhatja:
 | `label=%00` | Megfelel `null` címkének |
 | `label=1.0.0` | Pontosan megfelel a Label **1.0.0** -nak |
 | `label=1.0.*` | Az 1,0 karakterrel kezdődő címkéket tartalmazza **.** |
-| `label=*.0.0` | A **. 0,0** végződésű címkékre illeszkedik. |
-| `label=*.0.*` | A **. 0** karakterláncot tartalmazó címkéket tartalmazza. |
 | `label=%00,1.0.0` | A `null` vagy a **1.0.0**címkének felel meg, legfeljebb öt CSV |
 
 ## <a name="values"></a>Értékek

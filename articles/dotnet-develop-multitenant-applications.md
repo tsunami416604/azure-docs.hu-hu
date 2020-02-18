@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás több-Bérlős Alkalmazásminta |} A Microsoft Docs
-description: Architekturális áttekintéseket és tervezési mintákat, amelyek bemutatják, hogyan valósíthat meg egy több-bérlős webalkalmazás az Azure-ban található.
+title: Több-bérlős webalkalmazás mintája | Microsoft Docs
+description: A több-bérlős webalkalmazások Azure-ban való megvalósítását ismertető építészeti áttekintéseket és tervezési mintákat talál.
 services: ''
 documentationcenter: .net
 author: wadepickett
@@ -14,80 +14,80 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 92a0caedca34756228dbf57ec9099fd2ece3d84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225969"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425901"
 ---
-# <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazásokban az Azure-ban
-Egy több-bérlős alkalmazásban, amely lehetővé teszi a különböző felhasználók vagy "bérlőkkel", az alkalmazás megtekintéséhez, mintha az volt a saját megosztott erőforrás. Jellemzően olyan helyzetben, amely egy több-bérlős alkalmazás adatmodelljeinek egyike, amelyben az alkalmazás minden felhasználójának Kezdésként testreszabhatják a felhasználói élményt, de egyébként külön ugyanazon alapvető üzleti követelmények. Nagy több-bérlős alkalmazások olyan Office 365, az Outlook.com-os és a visualstudio.com webhelyen.
+# <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazások az Azure-ban
+A több-bérlős alkalmazás olyan megosztott erőforrás, amely lehetővé teszi a "felhasználók számára a különböző bérlők számára", hogy megtekintsék az alkalmazást, mintha a tulajdonosa lenne. Egy tipikus forgatókönyv, amely egy több-bérlős alkalmazáshoz rendeli, a különböző bérlők által az alkalmazás összes felhasználója testreszabhatja a felhasználói élményt, de egyébként ugyanazok az alapvető üzleti követelmények. Többek között a nagyméretű több-bérlős alkalmazások például az Office 365, a Outlook.com és a visualstudio.com.
 
-Egy alkalmazás szolgáltatója szempontból a több-bérlős módhoz előnyeinek többnyire vonatkoznak működési és költséghatékonyan növelhető a hatékonyság. Számos bérlők vagy ügyfelek igényeit, így a rendszer összevonása felügyeleti feladatokat, például a figyelés, teljesítményhangolás, szoftverkarbantartást és biztonsági mentések megfelel az alkalmazás egy verzióját.
+Az alkalmazás-szolgáltató szemszögéből a bérlős előnyei többnyire a működési és a költséghatékonysági előnyökkel kapcsolatosak. Az alkalmazás egyik verziója képes kielégíteni számos bérlő vagy ügyfél igényeit, így lehetővé teszi a rendszerfelügyeleti feladatok, például a figyelés, a teljesítmény finomhangolása, a szoftveres karbantartás és az adatok biztonsági mentéseinak összevonását.
 
-A következők a legfontosabb célok és a egy szolgáltató szempontjából követelmények listáját tartalmazza.
+A következő lista felsorolja a szolgáltatók szempontjából legjelentősebb célokat és követelményeket.
 
-* **Kiépítés**: Meg kell tudni az alkalmazást az új bérlők kiépítése.  Több-bérlős alkalmazások bérlők nagy számú Ez a folyamat automatizálására önkiszolgáló kiépítés engedélyezésével általában szükség.
-* **Karbantarthatóság**: Az alkalmazás frissítése és egyéb karbantartási feladatok végrehajtása, amíg több bérlőt használ, azt kell lennie.
-* **Figyelés**: Az alkalmazás mindig az esetleges problémák felismeréséhez és elhárításához nyomon kell lennie. Ez magában foglalja, minden bérlő hogyan használja az alkalmazás figyelését.
+* **Kiépítés**: az alkalmazáshoz új bérlőket kell kiépíteni.  A nagy számú Bérlővel rendelkező több-bérlős alkalmazások esetében általában az önkiszolgáló kiépítés engedélyezésével kell automatizálni ezt a folyamatot.
+* **Karbantartás**: képesnek kell lennie az alkalmazás frissítésére és más karbantartási feladatok végrehajtására, miközben több bérlő használja azt.
+* **Figyelés**: a problémák azonosításához és a hibaelhárításhoz mindig képesnek kell lennie az alkalmazás figyelésére. Ez magában foglalja annak figyelését, hogy az egyes bérlők hogyan használják az alkalmazást.
 
-Egy megfelelően kivitelezett több-bérlős alkalmazásban a következő előnyöket biztosítja a felhasználók számára.
+A megfelelően megvalósított több-bérlős alkalmazás a következő előnyöket biztosítja a felhasználók számára.
 
-* **Elkülönítés**: Az egyes bérlők tevékenységének nem érinti a többi bérlő által az alkalmazás használatát. Bérlők egymás adataihoz nem fér hozzá. Megjelenik a bérlőhöz, mintha rendelkeznek kizárólagos használja az alkalmazást.
-* **Rendelkezésre állási**: Az egyes bérlői szeretnének az alkalmazás folyamatosan elérhető legyen, esetleg a garanciákkal meghatározott SLA-t. Más bérlők tevékenységének ismét nem érinti az alkalmazás rendelkezésre állását.
-* **Méretezhetőség**: Az alkalmazás az egyes bérlők igény szerint méretezhető. A jelenléti és a többi bérlő műveletek nem érinti az alkalmazás teljesítményét.
-* **Költségek**: Költségek alacsonyabbak, mint egy dedikált, egybérlős alkalmazás fut, mert a több-bérlős lehetővé teszi, hogy az erőforrás-megosztás.
-* **Testreszabhatóság**. Az alkalmazás különböző módokon, például hozzáadása vagy a szolgáltatások eltávolítása, szín és emblémák módosítása vagy akár a saját kódot vagy szkriptet hozzáadása egy adott bérlő testre szabhatók.
+* **Elkülönítés**: az egyes bérlők tevékenységei nem érintik az alkalmazás más bérlők általi használatát. A bérlők nem férhetnek hozzá egymáshoz. A bérlő úgy tűnik, mintha kizárólagos módon használják az alkalmazást.
+* **Rendelkezésre állás**: az egyes bérlők azt szeretnék, hogy az alkalmazás folyamatosan elérhető legyen, például az SLA-ban meghatározott garanciákkal. A többi bérlő tevékenysége nem érintheti az alkalmazás rendelkezésre állását.
+* **Méretezhetőség**: az alkalmazás az egyes bérlők igényei szerint méretezhető. Más bérlők jelenléte és műveletei nem érinthetik az alkalmazás teljesítményét.
+* **Költségek**: a költségek alacsonyabbak, mint a dedikált, egybérlős alkalmazások futtatása, mivel a többszörös kiszolgálás lehetővé teszi az erőforrások megosztását.
+* **Testreszabhatóság**. Az alkalmazás egyéni bérlők számára történő testreszabása különböző módokon, például funkciók hozzáadásával vagy eltávolításával, színek és logók módosításával, vagy akár saját kód vagy parancsfájl hozzáadásával.
 
-Röviden közben számos szempontot kell figyelembe venniük nagy mértékben skálázható szolgáltatás, számos is a célokat és követelményeket, amelyek közösek a több-bérlős megoldásokból. Releváns bizonyos forgatókönyvek esetén is, és az egyes célokat és követelményeket fontossága eltérőek lehetnek az egyes esetekben. A több-bérlős alkalmazás szolgáltatója ki is célokat és követelményeket, mint például felel meg a bérlő célok és követelmények, jövedelmezőség, Számlázás, több szolgáltatási szintek, kiépítés, Karbantarthatóság figyelése és automation.
+Röviden, míg számos szempontot figyelembe kell vennie, hogy nagy mértékben skálázható szolgáltatást biztosítson, számos olyan célt és követelményt is igénybe vehetik, amelyek számos több-bérlős alkalmazás esetében közösek. Előfordulhat, hogy egyes helyzetekben nem relevánsak, és az egyes célok és követelmények fontossága eltérő lesz az egyes forgatókönyvekben. A több-bérlős alkalmazás szolgáltatója olyan célokat és követelményeket is tartalmaz, mint a bérlői célok és követelmények, a jövedelmezőség, a számlázás, a több szolgáltatási szint, a kiépítés, a karbantartási monitorozás és az automatizálás.
 
-Egy több-bérlős alkalmazás további kialakítási szempontokkal kapcsolatban további információkért lásd: [üzemeltetése az Azure-ban több-Bérlős alkalmazás][Hosting a Multi-Tenant Application on Azure]. A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+További információ a több-bérlős alkalmazások tervezési szempontjairól: [több-bérlős alkalmazás üzemeltetése az Azure-][Hosting a Multi-Tenant Application on Azure]ban. A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
-Az Azure számos funkciót, amelyek lehetővé teszik, hogy a kulcs problémákra a több-bérlős rendszerek tervezése során észlelt biztosít.
+Az Azure számos funkciót kínál, amelyek lehetővé teszik a több-bérlős rendszer tervezésekor felmerülő problémák megoldását.
 
 **Elkülönítés**
 
-* Állomásfejléc és SSL-kommunikáció anélkül szegmens webhely bérlőket
-* Lekérdezési paraméterek szegmens webhely bérlőket
-* A webes feldolgozói szerepkörök szolgáltatásokat
-  * Feldolgozói szerepkörök, amelyek általában a háttérbeli egy alkalmazás adatokat feldolgozni.
-  * Webes szerepkörök általában alkalmazásokhoz az előtér-kiszolgálóként működő.
+* Szegmensek webhelyeinek bérlői az SSL-kommunikációval vagy anélkül történő gazdagép-fejlécek
+* Szegmens webhely bérlői lekérdezési paraméterek alapján
+* Webszolgáltatások a feldolgozói szerepkörökben
+  * Olyan feldolgozói szerepkörök, amelyek jellemzően egy alkalmazás hátterén lévő adatfeldolgozást dolgozzák fel.
+  * Olyan webes szerepkörök, amelyek jellemzően az alkalmazások előtérben működnek.
 
 **Storage**
 
-Például az Azure SQL Database vagy az Azure Storage szolgáltatások, például a Table service, amely szolgáltatásokat kínál a nagy mennyiségű strukturálatlan adat tárolására és a Blob szolgáltatás, amely nagy mennyiségű strukturálatlan szöveges tárolására szolgáltatásokat nyújt a Data management vagy bináris adatot, például video-, hang- és képfájlokat.
+Adatkezelés, például Azure SQL Database vagy Azure Storage-szolgáltatások, mint például a Table service, amely nagy mennyiségű strukturálatlan adat tárolására és a Blob servicere kínál szolgáltatásokat, amelyek nagy mennyiségű strukturálatlan szöveg tárolására szolgálnak. bináris adatok, például videó, hang és képek.
 
-* Az SQL Database több-Bérlős adatok biztonságossá tétele bérlőnként felügyelt SQL Server-bejelentkezésekről.
-* Az alkalmazás-erőforrások Azure-beli táblák használatával tároló az Objektumszintű hozzáférési házirendet, akkor is állíthatja be az engedélyek nélkül adja ki az új URL-CÍMEK a közös hozzáférésű jogosultságkódok használata védett erőforrásokhoz.
-* Alkalmazás-erőforrások Azure-üzenetsorok az Azure-üzenetsorok gyakran használják a bérlők nevében meghajtó feldolgozásra, de a kiépítés vagy felügyeleti szükséges munkát egymás között is használható.
-* Service Bus-üzenetsorok, hogy az alkalmazás-erőforrások használhatók, ha egy megosztott egy szolgáltatást, használja egyetlen üzenetsorhoz ahol minden egyes bérlő küldő csak engedélyezett (mivel az ACS-ből kiadott jogcímek származtatva) nyomni az üzenetsornak, csak a fogadók a szolgáltatástól Az üzenetsorból lekérheti az adatokat, egyszerre több bérlőtől érkező engedély.
+* Több-bérlős adatok biztonságossá tétele SQL Database bérlői SQL Server bejelentkezések esetében.
+* Ha Azure-táblákat használ az alkalmazás-erőforrásokhoz a tároló szintű hozzáférési szabályzat megadásával, lehetősége van az engedélyek módosítására anélkül, hogy új URL-címet kellene kiadnia a közös hozzáférési aláírásokkal védett erőforrásokhoz.
+* Az Azure Queues for Application Resources Azure Queues szolgáltatást általában a bérlők nevében történő feldolgozásra használják, de a kiépítés vagy a felügyelethez szükséges munka elosztására is felhasználhatók.
+* Service Bus várólisták olyan alkalmazás-erőforrásokhoz, amelyek egy megosztott szolgáltatáshoz küldenek munkát, egyetlen várólistát is használhat, amelyben minden bérlői feladónak csak engedélyekkel kell rendelkeznie (az ACS-ből kiállított jogcímekből származtatva) a várólistára való leküldéshez, miközben csak a szolgáltatás fogadói rendelkeznek a több bérlőtől érkező adatok várólistából való lekérésének engedélyezése.
 
-**Kapcsolati és biztonsági szolgáltatások**
+**Kapcsolatok és biztonsági szolgáltatások**
 
-* Az Azure Service Bus olyan üzenetküldési infrastruktúra, amely az alkalmazások működve az alkalmazásközi üzenetváltást lazán kötődő módon a és a rugalmasság.
+* Azure Service Bus, az alkalmazások közötti üzenetküldési infrastruktúra, amely lehetővé teszi, hogy az üzeneteket egy lazán összekapcsolt módon cserélje le a jobb méretezés és rugalmasság érdekében.
 
 **Hálózati szolgáltatások**
 
-Az Azure számos olyan hálózati szolgáltatás, amely támogatja a hitelesítést, és javíthatja az alkalmazások kezelhetőségi biztosít. Ezek a szolgáltatások a következők:
+Az Azure számos olyan hálózati szolgáltatást biztosít, amelyek támogatják a hitelesítést, és javítják az üzemeltetett alkalmazások kezelhetőségét. Ezek a szolgáltatások többek között a következők:
 
-* Az Azure virtuális hálózat lehetővé teszi, üzembe helyezése és kezelése a virtuális magánhálózatok (VPN) az Azure-ban, valamint biztonságos módon összekapcsolhatók a helyszíni informatikai infrastruktúrát.
-* Virtuális hálózat a Traffic Manager lehetővé teszi a bejövő adatforgalom elosztását több üzemeltetett Azure-szolgáltatást, ugyanabban az adatközpontban vagy a világ különböző pontjain üzemelő.
-* Az Azure Active Directory (Azure AD) szolgáltatás modern REST-alapú szolgáltatás, amely identitás és hozzáférés-vezérlési funkciókat biztosít a felhőbeli alkalmazásokhoz. Az Azure AD alkalmazás-erőforrások eléréséhez a webes alkalmazások és szolgáltatások miközben lehetővé teszi a hitelesítés és engedélyezés a kód kívül megosztani, funkcióit és felhasználók hitelesítésére egyszerű megoldást kínál.
-* Az Azure Service Bus egy biztonságos üzenetküldést biztosít, és elosztott adatok folyamat funkció és hibrid alkalmazások, például az Azure közötti kommunikáció üzemeltetett alkalmazások és a helyszíni alkalmazások és szolgáltatások, anélkül, hogy bonyolult tűzfal- és biztonsági infrastruktúra. A Service Bus Közvetítőjével az alkalmazás-erőforrások eléréséhez a szolgáltatásokat, amelyek ki vannak téve végpontként előfordulhat, hogy a bérlő (például kívül a rendszer, például a helyszínen üzemeltetett) tartozik, és lehetnek (mivel kifejezetten a bérlő számára kiosztott szolgáltatásokhoz adat-és nagybetűket, a bérlő-specifikus halad át őket).
+* Az Azure Virtual Network lehetővé teszi virtuális magánhálózatok (VPN-ek) kiépítését és kezelését az Azure-ban, valamint a helyszíni informatikai infrastruktúrával való biztonságos összekapcsolást.
+* Virtual Network Traffic Manager lehetővé teszi a bejövő forgalom terheléselosztását több üzemeltetett Azure-szolgáltatás között, függetlenül attól, hogy azok ugyanabban az adatközpontban vagy a világ különböző pontjain futnak.
+* Azure Active Directory (Azure AD) egy modern, REST-alapú szolgáltatás, amely Identitáskezelés és hozzáférés-vezérlési képességeket biztosít a felhőalapú alkalmazásokhoz. Az Azure AD for Application-erőforrások használatával egyszerűen hitelesítheti és engedélyezheti a felhasználók számára, hogy hozzáférjenek a webalkalmazásokhoz és szolgáltatásokhoz, miközben lehetővé teszi a hitelesítés és az engedélyezés funkcióinak kiszámítását a kódból.
+* A Azure Service Bus biztonságos üzenetkezelési és adatáramlási képességet biztosít az elosztott és hibrid alkalmazások számára, például az Azure által üzemeltetett alkalmazások és a helyszíni alkalmazások és szolgáltatások közötti kommunikációt anélkül, hogy bonyolult tűzfalat és biztonságot kellene igénybe helyeznie infrastruktúrák. A Service Bus Relay használata az alkalmazás erőforrásaihoz a végpontként elérhetővé tett szolgáltatásokhoz való hozzáféréshez (például a rendszeren kívül, például a helyszínen), vagy lehet, hogy kifejezetten a bérlő számára kiépített szolgáltatások tartoznak hozzá (mivel bizalmas, bérlő-specifikus adatok áthaladnak egymás között).
 
-**Erőforrások kiépítése**
+**Erőforrások kiépítés**
 
-Az Azure számos módon az alkalmazás új bérlők kiépítése biztosít. Több-bérlős alkalmazások bérlők nagy számú Ez a folyamat automatizálására önkiszolgáló kiépítés engedélyezésével általában szükség.
+Az Azure számos lehetőséget kínál új bérlők kiépítésére az alkalmazás számára. A nagy számú Bérlővel rendelkező több-bérlős alkalmazások esetében általában az önkiszolgáló kiépítés engedélyezésével kell automatizálni ezt a folyamatot.
 
-* Feldolgozói szerepkörök lehetővé teszi a kiépítés és bérlőnként megszüntetni hozzárendeléseket erőforrásokat (például amikor egy új bérlőt regisztrál vagy megszakítása), a szoftverhasználat-mérő használatát és kezelését a méretezési csoport meghatározott ütemezés vagy a teljesítmény küszöbértékeit átlépésével válaszul begyűjtése mutatók. Ez a szerepkör is használható frissítések leküldenie és a megoldáshoz.
-* Azure-Blobok számítási épít ki, vagy előre inicializálva tárolási erőforrások védelme érdekében a számítási művelet során gondoskodik a tároló hozzáférési házirendek az új bérlők számára szolgáltatás Virtuálismerevlemez-képek és más erőforrások, a csomagok.
-* Az SQL Database-erőforrások kiépítése egy bérlő lehetőségek a következők:
+* A feldolgozói szerepkörök lehetővé teszik a bérlői erőforrások kiépítését és kiépítését (például egy új bérlő regisztrálása vagy megszakítása), a mérési használat mérőszámait, valamint egy adott ütemtervet követő, illetve a fő teljesítmény küszöbértékének átlépését eredményező skála kezelését. mutatók. Ugyanez a szerepkör felhasználható a frissítések leküldésére és a megoldás verziófrissítésére is.
+* Az Azure-Blobok használhatók számítási vagy előzetesen inicializált tárolási erőforrások kiépítésére az új bérlők számára, miközben hozzáférési szabályzatokat biztosítanak a számítási szolgáltatás csomagjainak, a VHD-lemezképeknek és más erőforrásoknak a biztosításához.
+* A bérlők SQL Database erőforrásainak kiépítési lehetőségei a következők:
   
-  * DDL-szkriptekkel vagy beágyazott belül szerelvények erőforrásként.
-  * Az SQL Server 2008 R2 DAC-csomagok üzembe helyezett programozott módon.
-  * A fő referencia-adatbázisból másol.
-  * Adatbázis importálása és exportálása használatával egy új adatbázisok létrehozásához.
+  * DDL parancsfájlokban vagy beágyazott erőforrásként a szerelvényeken belül.
+  * SQL Server 2008 R2 DAC-csomagokat programozott módon helyeztek üzembe.
+  * Másolás egy fő hivatkozási adatbázisból.
+  * Adatbázisok importálásával és exportálásával új adatbázisok hozhatók létre egy fájlból.
 
 <!--links-->
 

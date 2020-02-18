@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031526"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426258"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Privát hivatkozás létrehozása és kezelése Azure Database for MySQL (előzetes verzió) a CLI használatával
 
@@ -127,7 +127,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
-1. Nyissa meg a letöltött. rdp fájlt.
+1. Nyissa meg a *letöltött. rdp* fájlt.
 
     1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
@@ -155,30 +155,31 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     Non-authoritative answer:
     Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Tesztelje a MySQL-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
 
 
-4. In **New connection**, enter or select this information:
+4. Az **új kapcsolatok**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Setting | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MySQL server creation. |
-    | Password | Enter a password provided during the MySQL server creation. |
+    | Kapcsolat neve| Válassza ki az Ön által választott kapcsolatok nevét.|
+    | Gazdanév | *Mydemoserver.privatelink.mysql.database.Azure.com* kiválasztása |
+    | Felhasználónév | Adja meg a felhasználónevet *username@servername* , amelyet a MySQL-kiszolgáló létrehozásakor adott meg. |
+    | Jelszó | Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
     ||
 
-5. Select Connect.
+5. Válassza a kapcsolat lehetőséget.
 
-6. Browse databases from left menu.
+6. A bal oldali menüben lévő adatbázisok tallózása.
 
-7. (Optionally) Create or query information from the MySQL database.
+7. Opcionálisan Információk létrehozása vagy lekérdezése a MySQL-adatbázisból.
 
-8. Close the remote desktop connection to myVm.
+8. A távoli asztali kapcsolat bezárásával myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

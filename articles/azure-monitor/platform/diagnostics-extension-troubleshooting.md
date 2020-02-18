@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450557"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425085"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás Azure Diagnostics
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -38,7 +38,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID >.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 | Összetevő | Útvonal |
 | --- | --- |
 | **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verziója > \RuntimeSettings |
@@ -51,7 +51,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
-A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a WADMetrics\* táblázatot a Azure Diagnostics Storage-fiókban, és ellenőrizze, hogy vannak-e a megfelelő metrikai rekordok.
+A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a WADMetrics\* táblázatot a Azure Diagnostics Storage-fiókban, és ellenőrizze, hogy a megfelelő metrikai rekordok léteznek-e, és győződjön meg arról, hogy az [erőforrás-szolgáltató](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) a Microsoft. elemzések regisztrálva van.
 
 Itt a tábla **PartitionKey** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési csoport. A **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
 
@@ -65,11 +65,11 @@ Ha nincs adat az adott metrika esetében, ellenőrizze, hogy a **diagnosztikai k
 - \ASP.NET\Requests várólistán
 - \ASP.NET\Requests elutasítva
 - \Processor (w3wp)\% processzoridő
-- \Process (w3wp) \Private bájtok
+- \Process(w3wp)\Private Bytes
 - \Process (WaIISHost)\% processzoridő
-- \Process (WaIISHost) \Private bájtok
+- \Process(WaIISHost)\Private Bytes
 - \Process (WaWorkerHost)\% processzoridő
-- \Process (WaWorkerHost) \Private bájtok
+- \Process(WaWorkerHost)\Private Bytes
 - \Memory\Page hibák másodpercenként
 - \.NET CLR memória (_globális_)\% idő a GC-ben
 - \Logikai lemez (C:) \ írási sebesség (bájt/s)
@@ -109,7 +109,7 @@ Ha a folyamatok futnak, ugorjon a következőre: az adatrögzítés [helyileg?](
 
 Ha ez nem oldja meg a problémát, próbálja meg a következőket:
 
-1. Ügynök eltávolítása
+1. Az ügynök eltávolítása
 2. Könyvtár C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics eltávolítása
 3. Ügynök újbóli telepítése
 
@@ -213,7 +213,7 @@ Ez a kód négy táblát hoz létre:
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>A diagnosztikai bővítmény konfigurációjának megkeresése
 A bővítmény konfigurálásának legegyszerűbb módja, ha a [Azure erőforrás-kezelő](https://resources.azure.com), majd a Azure Diagnostics bővítményt (IaaSDiagnostics/PaaDiagnostics) futtató virtuális gépre vagy Felhőbeli szolgáltatásra lép.
@@ -231,7 +231,7 @@ A beépülő modul a következő kilépési kódokat adja vissza:
 
 | Kilépési kód | Leírás |
 | --- | --- |
-| 0 |Siker. |
+| 0 |Sikeres. |
 | -1 |Általános hiba. |
 | -2 |Nem tölthető be a RCF-fájl.<p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
 | -3 |Nem tölthető be a diagnosztikai konfigurációs fájl.<p><p>Megoldás: egy konfigurációs fájl nem továbbítja a séma-ellenőrzést. A megoldás egy olyan konfigurációs fájl megadása, amely megfelel a sémának. |
@@ -239,17 +239,17 @@ A beépülő modul a következő kilépési kódokat adja vissza:
 | -6 |A vendég ügynök plugin-indítója érvénytelen parancssorral próbálta elindítani a diagnosztikát.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
 | -10 |A diagnosztikai beépülő modul nem kezelt kivétellel kilépett. |
 | -11 |A vendég ügynök nem tudta létrehozni a figyelési ügynök elindításához és figyeléséhez felelős folyamatot.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához.<p> |
-| – 101 |Érvénytelen argumentumok a diagnosztikai beépülő modul meghívásakor.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
-| – 102 |A beépülő modul folyamata nem tudja inicializálni magát.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
-| – 103 |A beépülő modul folyamata nem tudja inicializálni magát. Konkrétan nem tudja létrehozni a naplózó objektumot.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
-| – 104 |Nem tölthető be a vendég ügynök által biztosított RCF-fájl.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
-| – 105 |A diagnosztikai beépülő modul nem tudja megnyitni a diagnosztikai konfigurációs fájlt.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, helytelenül hívja meg a virtuális gépen. |
-| – 106 |A diagnosztikai konfigurációs fájl nem olvasható.<p><p>Egy konfigurációs fájl okozta, amely nem továbbítja a séma-ellenőrzést. <br><br>Megoldás: adjon meg egy olyan konfigurációs fájlt, amely megfelel a sémának. További információ: [a diagnosztikai bővítmények konfigurációjának megkeresése](#how-to-check-diagnostics-extension-configuration). |
-| – 107 |Az erőforrás-könyvtár a figyelési ügynöknek való továbbítása érvénytelen.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a figyelési ügynököt manuálisan, helytelenül hívja meg a virtuális gépen.</p> |
-| – 108 |A diagnosztikai konfigurációs fájl nem alakítható át a figyelési ügynök konfigurációs fájljába.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
-| – 110 |Általános diagnosztikai konfigurációs hiba.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
-| – 111 |Nem sikerült elindítani a figyelési ügynököt.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás. |
-| – 112 |Általános hiba |
+| -101 |Érvénytelen argumentumok a diagnosztikai beépülő modul meghívásakor.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| -102 |A beépülő modul folyamata nem tudja inicializálni magát.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
+| -103 |A beépülő modul folyamata nem tudja inicializálni magát. Konkrétan nem tudja létrehozni a naplózó objektumot.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás az új folyamatok indításához. |
+| -104 |Nem tölthető be a vendég ügynök által biztosított RCF-fájl.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a vendég ügynök beépülő modulját manuálisan, helytelenül hívja meg a virtuális gépen. |
+| -105 |A diagnosztikai beépülő modul nem tudja megnyitni a diagnosztikai konfigurációs fájlt.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, helytelenül hívja meg a virtuális gépen. |
+| -106 |A diagnosztikai konfigurációs fájl nem olvasható.<p><p>Egy konfigurációs fájl okozta, amely nem továbbítja a séma-ellenőrzést. <br><br>Megoldás: adjon meg egy olyan konfigurációs fájlt, amely megfelel a sémának. További információ: [a diagnosztikai bővítmények konfigurációjának megkeresése](#how-to-check-diagnostics-extension-configuration). |
+| -107 |Az erőforrás-könyvtár a figyelési ügynöknek való továbbítása érvénytelen.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a figyelési ügynököt manuálisan, helytelenül hívja meg a virtuális gépen.</p> |
+| -108 |A diagnosztikai konfigurációs fájl nem alakítható át a figyelési ügynök konfigurációs fájljába.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
+| -110 |Általános diagnosztikai konfigurációs hiba.<p><p>Ez a belső hiba csak akkor fordulhat elő, ha a diagnosztikai beépülő modult manuálisan, érvénytelen konfigurációs fájllal hívja meg. |
+| -111 |Nem sikerült elindítani a figyelési ügynököt.<p><p>Megoldás: Ellenőrizze, hogy rendelkezésre áll-e elegendő rendszererőforrás. |
+| -112 |Általános hiba |
 
 ### <a name="local-log-extraction"></a>Helyi napló kibontása
 A figyelési ügynök a naplókat és összetevőket `.tsf` fájlként gyűjti. A `.tsf` fájl nem olvasható, de a következőképpen konvertálható `.csv`re:

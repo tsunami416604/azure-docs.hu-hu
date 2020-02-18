@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688832"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425272"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -20,7 +20,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -136,7 +136,7 @@ public class TodoItem {
     private boolean finished;
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 A minta futtatásához használja a Mavent.
 
@@ -144,7 +144,7 @@ A minta futtatásához használja a Mavent.
 mvn package spring-boot:run
 ```
 
-A kimenetnek az alábbihoz hasonlóan kell kinéznie.
+A kimenet a következőhöz hasonlóan kell kinéznie.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run
@@ -173,7 +173,7 @@ Ha a "Started TodoApplication" üzenet helyett kivételek jelennek meg, ellenőr
 
 ## <a name="configure-azure-deployment"></a>Az Azure-telepítés konfigurálása
 
-Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` könyvtárban, és adja hozzá a következő [Maven beépülő modult Azure app Service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) konfigurációhoz.
+Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` könyvtárban, és adja hozzá a következő [Azure Web App beépülő modult a Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) -konfigurációhoz.
 
 ```xml    
 <plugins> 

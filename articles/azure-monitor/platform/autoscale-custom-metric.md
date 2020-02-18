@@ -4,17 +4,18 @@ description: Ismerje meg, hogyan méretezheti az erőforrásokat az Azure-beli e
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364543"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425119"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Ismerkedés az Azure-beli egyéni metrika automatikus méretezésével
 Ez a cikk azt ismerteti, hogyan méretezhető az erőforrás a Azure Portalban lévő egyéni metrika alapján.
 
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
+Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [Azure adatkezelő-fürtre](https://azure.microsoft.com/services/data-explorer/) vonatkozik,   
+Integrációs szolgáltatási környezet és [API Management szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="lets-get-started"></a>Lehetővé teszi az első lépéseket
 Ez a cikk azt feltételezi, hogy van egy webalkalmazása, amelyen be van állítva az Application betekintő szolgáltatás. Ha még nem rendelkezik ilyennel, beállíthatja [a ASP.net webhelyéhez Application Insights][1]

@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026115"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425765"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban (ak)
 
-A Kubernetes-közösség körülbelül háromhavonta ad ki alverziókat. Ezek a kiadások új funkciókat és fejlesztéseket tartalmaznak. A javítások kiadásai gyakoribbak (esetenként heti rendszerességűek), és csak az alverziók kritikus hibáinak javítására szolgálnak. Ezek a javítások a biztonsági rések vagy a nagy mennyiségű, éles környezetben futó, Kubernetes alapuló termékkel kapcsolatos hibákat érintik.
+A Kubernetes-Közösség nagyjából három havonta kibocsátja a kisebb verziókat. Ezek a kiadások új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (esetenként hetente), és csak a kritikus hibajavítások számára készültek egy kisebb verzióban. Ezek a javítások a biztonsági rések vagy a nagy mennyiségű, éles környezetben futó, Kubernetes alapuló termékkel kapcsolatos hibákat érintik.
 
 Az AK célja, hogy az új Kubernetes-verziókat egy felsőbb rétegbeli kiadástól számított 30 napon belül hitelesítse és bocsássa ki, a kiadás stabilitásának függvényében.
 
@@ -45,7 +45,7 @@ A felhasználóknak törekedniük kell arra, hogy futtassák a futtatott alverzi
 Az AK támogatja a Kubernetes három kisebb verzióját:
 
 * Az AK-ban megjelent aktuális másodlagos verzió (N)
-* Két korábbi másodlagos verzió. Mindegyik támogatott alverzió két stabil javítást támogat.
+* Két korábbi másodlagos verzió. Mindegyik támogatott alverzió két stabil javítást is támogat.
 
 Ez az úgynevezett "N-2": (N (legújabb kiadás) – 2 (másodlagos verzió)).
 
@@ -99,7 +99,7 @@ New Supported Version List
   * Az ügyfelek a nyilvános értesítés dátumától számított **30 napon belül** frissíthetnek egy támogatott alverzióra.
 * A Kubernetes új **javítócsomag** -verzióihoz
   * Az összes felhasználó értesítést kap az új javítási verzió kiadásáról, és a legújabb patch kiadásra frissít.
-  * A felhasználók **30 napig** frissíthetnek újabb, támogatott javítási kiadásra. A felhasználók **30 napon belül** frissítenek egy támogatott patch kiadásra a legrégebbi eltávolítása előtt.
+  * A felhasználók **30 napig** frissíthetnek újabb, támogatott javítási kiadásra a legrégebbi eltávolítása előtt.
 
 Az AK az általánosan elérhető verzióként határozza meg a "kiadott verziót", amely minden SLO/minőségi szolgáltatásbeli mérésben engedélyezve van, és minden régióban elérhető. Az AK is támogathatja a explicit módon címkézett és az előzetes verzióra vonatkozó használati feltételek hatálya alá tartozó előzetes verziót.
 
@@ -135,18 +135,18 @@ Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen 
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Mi történik, ha egy ügyfél olyan Kubernetes-fürtöt frissít, amely nem támogatott másodlagos verzióval?**
 
-Ha az *n-3* verziót használ, a rendszer a támogatási szolgálaton kívülre kerül, és a frissítésre kéri. Ha az n-3 verzióról n-2-ra való frissítés sikeres, akkor már a támogatási szabályzatok között van. Példa:
+Ha az *n-3* verziót használ, a rendszer a támogatási szolgálaton kívülre kerül, és a frissítésre kéri. Ha az n-3 verzióról n-2-ra való frissítés sikeres, akkor már a támogatási szabályzatok között van. Például:
 
 - Ha a legrégebbi támogatott AK-verzió a *1.13. a* , és a *1.12. b* vagy régebbi verziója van, akkor a támogatáson kívül van.
-- Ha a *1.12. b* verzióról *1.13* -re való frissítés sikeres volt, a támogatási szabályzaton belül visszakerül.
+- Ha a *1.12. b* verzióról *1.13* -re való frissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül.
 
 Az *N-2* támogatott ablaknál régebbi verzióra történő frissítés nem támogatott. Ilyen esetekben azt javasoljuk, hogy az ügyfelek új AK-fürtöket hozzanak létre, és a támogatott ablakban lévő verziókkal újra üzembe helyezik a munkaterheléseket.
 
-**Mit jelent a "nem támogatott" kifejezés**
+**Mit jelent a "támogatáson kívül" kifejezés**
 
 A "támogatáson kívül" kifejezés azt jelenti, hogy a futtatott verzió a támogatott verziók listáján kívül esik, és a rendszer arra kéri, hogy a támogatás kérelmezése után frissítse a fürtöt egy támogatott verzióra. Emellett az AK nem hajt végre semmilyen futtatókörnyezetet vagy egyéb garanciát a támogatott verziók listáján kívüli fürtökre.
 

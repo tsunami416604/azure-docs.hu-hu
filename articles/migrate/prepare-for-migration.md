@@ -2,18 +2,18 @@
 title: Gépek előkészítése a Azure Migrate való áttelepítéshez
 description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure Migrate való áttelepítéshez.
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 02/17/2020
 ms.custom: MVC
-ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: adbe9e4b30bf57e8a2038b970306c126035abbe1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028749"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426248"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
-Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni gépeket az Azure-ba való Migrálás megkezdése [Azure Migrate kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool)előtt.
+Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni gépeket az Azure-ba való Migrálás megkezdése előtt [Azure Migrate: kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
 Ebben a cikkben:
@@ -40,7 +40,7 @@ Ebben a cikkben:
 
 ## <a name="check-whats-supported"></a>A támogatott elemek kikeresése
 
-- A VMware virtuális gépek esetében Azure Migrate kiszolgáló áttelepítése az [ügynök nélküli vagy az ügynökön alapuló áttelepítést](server-migrate-overview.md)támogatja. A VMware virtuális gépek [áttelepítési követelményeinek és támogatásának](migrate-support-matrix-vmware-migration.md)ellenőrzése.
+- A VMware virtuális gépek esetében a kiszolgáló áttelepítése az [ügynök nélküli vagy az ügynök-alapú áttelepítést](server-migrate-overview.md)is támogatja. A VMware virtuális gépek [áttelepítési követelményeinek és támogatásának](migrate-support-matrix-vmware-migration.md)ellenőrzése.
 - Ellenőrizze az [áttelepítési követelményeket, és támogassa](migrate-support-matrix-hyper-v-migration.md) a Hyper-V-t.
 - Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical-migration.md) a helyszíni fizikai gépek vagy más virtualizált kiszolgálók támogatását. 
 

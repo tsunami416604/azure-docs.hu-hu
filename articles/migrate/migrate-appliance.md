@@ -2,13 +2,13 @@
 title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031663"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425459"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -55,7 +55,7 @@ Fizikai gép |  Azure Migrate: kiszolgáló értékelése |  Fizikai kiszolgál�
 **Kivonat értéke** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V gazdagép** | Windows Server 2012 R2 vagy újabb operációs rendszer fut.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
-**Felfedezés** | A készülékek akár 5000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
+**Felfedezés** | Egy készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **Berendezés összetevői** | Felügyeleti alkalmazás: webalkalmazás a berendezésben felhasználói bevitelhez a telepítés során.<br/> Felderítési ügynök: a számítógép konfigurációs adatainak összegyűjtése.<br/> Assessment Agent: teljesítményadatokat gyűjt.<br/>  Automatikus frissítési szolgáltatás: összetevők frissítése (24 óránként fut).
 
 
@@ -107,7 +107,7 @@ Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készü
 
 **Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-Processzorkihasználtság | cpu.usage.average | Ajánlott virtuális gép mérete/díja
+Processzorhasználat | cpu.usage.average | Ajánlott virtuális gép mérete/díja
 Memória kihasználtsága | mem.usage.average | Ajánlott virtuális gép mérete/díja
 Lemez olvasási sebessége (MB/s) | virtualDisk.read.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
 Lemez írási sebessége (MB/s) | virtualDisk.write.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
@@ -139,7 +139,7 @@ Memória (MB) | vm.Config.Hardware.MemoryMB
 Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
 Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
-Processzorkihasználtság | cpu.usage.average
+Processzorhasználat | cpu.usage.average
 Memória kihasználtsága |mem.usage.average
 **/Lemez adatai** | 
 Lemez kulcsának értéke | lemez. Kulcs
@@ -159,7 +159,7 @@ IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Név | container.GetType().Name
+Name (Név) | container.GetType().Name
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent

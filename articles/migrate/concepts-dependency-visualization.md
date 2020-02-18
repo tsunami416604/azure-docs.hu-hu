@@ -1,17 +1,14 @@
 ---
 title: Függőségek vizualizációja az Azure Migrate-ben
 description: Áttekintést nyújt az értékelési számításokról a Azure Migrate Server Assessment Service-ben
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: hamusa
-ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/17/2020
+ms.openlocfilehash: 65a99e230262ae05d34dc8c04e87252c15133fda
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772312"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425680"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -91,7 +88,7 @@ További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.mi
 - Ha törli a társított Azure Migrate projektet, a munkaterület nem törlődik automatikusan. [Manuálisan kell törölnie](../azure-monitor/platform/manage-access.md).
 - Ne törölje a Azure Migrate által létrehozott munkaterületet, hacsak nem törli a Azure Migrate projektet. Ha így tesz, a függőségi vizualizáció funkció nem a várt módon fog működni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gépek csoportosítása számítógép-függőségek használatával](how-to-create-group-machine-dependencies.md)
 - [További](common-questions-discovery-assessment.md#what-is-dependency-visualization) információ a függőségi vizualizációval kapcsolatos gyakori kérdésekért.
 

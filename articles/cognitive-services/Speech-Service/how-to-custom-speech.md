@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368326"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425000"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -62,7 +62,7 @@ A tartalmak, például az adattípusok, a modellek, a tesztek és a végpontok a
 Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd**lehetőséget, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. Miután létrehozott egy projektet, négy lapot kell látnia: **az adatelemzést**, a **tesztelést**, a **betanítást**és az **üzembe helyezést**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 
 > [!IMPORTANT]
-> A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha olyan korábbi projekteket hozott létre a CRIS portálon vagy API-kkal, amelyek adat, modellek, tesztek és közzétett végpontokkal lettek létrehozva, akkor a régi entitásokhoz való kapcsolódáshoz létre kell hoznia egy új projektet az új portálon.
+> A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

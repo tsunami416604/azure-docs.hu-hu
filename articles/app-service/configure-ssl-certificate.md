@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046417"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425307"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -39,7 +39,7 @@ A következő útmutató követése:
 ## <a name="private-certificate-requirements"></a>Magánjellegű tanúsítványokra vonatkozó követelmények
 
 > [!NOTE]
-> Az Azure Web Apps **nem támogatja a** AES256, és az összes pfx-fájlt titkosítani kell a TrippleDES-mel.
+> Az Azure Web Apps **nem támogatja a** AES256, és az összes pfx-fájlt titkosítani kell a TripleDES-mel.
 
 Az [ingyenes app Service felügyelt tanúsítvány](#create-a-free-certificate-preview) vagy a [app Service tanúsítvány](#import-an-app-service-certificate) már megfelel a app Service követelményeinek. Ha úgy dönt, hogy feltölt vagy importál egy privát tanúsítványt App Serviceba, a tanúsítványnak meg kell felelnie a következő követelményeknek:
 
@@ -115,7 +115,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Név | A App Service tanúsítvány rövid neve. |
+| Name (Név) | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
 | Előfizetést | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
 | Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
@@ -136,7 +136,7 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
 | Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |

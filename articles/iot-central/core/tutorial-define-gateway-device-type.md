@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027691"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423715"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáró típusú eszköz definiálása az Azure IoT Central-alkalmazásban
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag egy **S1 szenzoros** eszközhöz és egy **RS40-befoglalási 
 
 Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
-1. A bal oldali navigációs panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
 
 1. Görgessen lefelé, amíg meg nem jelenik az **S1 érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -48,7 +48,7 @@ Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
 Eszköz sablonjának létrehozása ***RS40 foglaltság érzékelő** eszközhöz:
 
-1. A bal oldali navigációs panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
 
 1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 foglaltság érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -59,13 +59,13 @@ Most már rendelkezik a két alsóbb rétegbeli eszközhöz tartozó eszközök 
 ![Eszköz sablonjai az alárendelt eszközökhöz](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
-## <a name="create-a-gateway-device-template"></a>Átjáró-eszköz sablonjának létrehozása
+## <a name="create-a-gateway-device-template"></a>Átjáró-eszközsablon létrehozása
 
 Ebben az oktatóanyagban egy eszköz sablonját hozza létre az átjáró-eszköz számára. Ezt a sablont később egy szimulált átjáró-eszköz létrehozásához használhatja az alkalmazásban.
 
 Új Gateway-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
-1. A bal oldali navigációs panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a **+** lehetőséget a sablon hozzáadásának megkezdéséhez.
 
 1. A **sablon típusának kiválasztása** lapon válassza ki a **IoT-eszköz** csempéjét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -105,8 +105,8 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Utolsó szervizelés dátuma | Nincs          | Dátum   |
+    | Ügyfél neve     | Nincs          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
 

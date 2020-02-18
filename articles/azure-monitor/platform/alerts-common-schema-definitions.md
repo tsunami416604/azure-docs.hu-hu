@@ -4,15 +4,15 @@ description: A Azure Monitor általános riasztási séma-definícióinak ismert
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765677"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425170"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -77,7 +77,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 |:---|:---|
 | alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
 | alertRule | Annak a riasztási szabálynak a neve, amely a riasztási példányt generálta. |
-| Súlyosság | A riasztás súlyossága. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3 vagy Sev4. |
+| Severity | A riasztás súlyossága. Lehetséges értékek: Sev0, Sev1, Sev2, Sev3 vagy Sev4. |
 | signalType | Meghatározza azt a jelet, amelyen a riasztási szabályt meghatározták. Lehetséges értékek: metrika, napló vagy tevékenység naplója. |
 | monitorCondition | Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van **állítva.** Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele **Megoldottra**van állítva.   |
 | monitoringService | A riasztást létrehozó figyelési szolgáltatás vagy megoldás. A riasztási környezet mezőit a figyelési szolgáltatás diktálja. |
@@ -151,7 +151,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ### <a name="log-alerts"></a>Naplóriasztások
 
 > [!NOTE]
-> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt úgy is meghatározhatja, hogy ellenőrzi a jelzőt `IncludedSearchResults`. Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
+> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt úgy is meghatározhatja, hogy ellenőrzi a jelzőt `IncludeSearchResults`. Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

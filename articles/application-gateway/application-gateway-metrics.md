@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046317"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425256"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -95,10 +95,20 @@ Application Gateway esetén a következő metrikák érhetők el:
 - **Aktuális kapcsolatok**
 
    Az ügyfelektől a Application Gatewayig aktív egyidejű kapcsolatok teljes száma
+   
+- **Becsült számlázott kapacitási egységek**
+
+  Azon kapacitási egységek száma, amelyek használatával a számlázás becsült. Ez a calcutaed a *jelenlegi kapacitási egységek* és a *rögzített számlázandó kapacitások*közötti nagyobb érték.  
 
 - **Sikertelen kérelmek**
 
    A Application Gateway által kiszolgált sikertelen kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+   
+- **Rögzített számlázandó kapacitási egységek** A Application Gateway konfigurációban a *minimális skálázási egységek* beállításával kiépített kapacitási egységek minimális száma.
+   
+ - **Új kapcsolatok másodpercenként**
+
+   Az ügyfelek és a Application Gateway közötti új TCP-kapcsolatok átlagos száma másodpercenként, a háttérbeli tagoktól a Application Gateway.
 
 
 - **Válasz állapota**

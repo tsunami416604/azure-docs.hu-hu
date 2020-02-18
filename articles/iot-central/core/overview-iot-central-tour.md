@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024160"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426198"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -59,10 +59,10 @@ A IoT Central alkalmazás elindításához nyissa meg az URL-címet, amelyet Ön
 
 ## <a name="navigate-your-application"></a>Navigáljon az alkalmazáshoz
 
-A IoT alkalmazásban a bal oldali ablaktábla használatával férhet hozzá a különböző területekhez. A navigációs sáv kibontásához vagy összecsukásához válassza a navigációs sáv tetején látható három soros ikont:
+A IoT alkalmazásban a bal oldali ablaktábla használatával férhet hozzá a különböző területekhez. A bal oldali ablaktábla kibontásához vagy összecsukásához válassza ki a három soros ikont a panel tetején:
 
 > [!NOTE]
-> A navigációs sávon megjelenő elemek a felhasználói szerepkörtől függenek. További információ a [felhasználók és a szerepkörök kezeléséről](howto-manage-users-roles.md). 
+> A bal oldali panelen megjelenő elemek a felhasználói szerepkörtől függenek. További információ a [felhasználók és a szerepkörök kezeléséről](howto-manage-users-roles.md). 
 
 :::row:::
   :::column span="":::
@@ -133,7 +133,7 @@ Az Explorer oldalon láthatók az Azure IoT Central alkalmazásban található _
 
 További információ: az [eszközök monitorozása](./quick-monitor-devices.md) . 
 
-### <a name="device-groups"></a>Eszközök csoportjai
+### <a name="device-groups"></a>Eszközcsoportok
 
 > [!div class="mx-imgBorder"]
 > ![eszközcsoport lap](media/overview-iot-central-tour/device-groups-pnp.png)
@@ -182,7 +182,7 @@ További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalm
 
 Az adatok exportálása lehetővé teszi az adatstreamek (például telemetria) beállítását az alkalmazásból a külső rendszerekre. További információ: az [Azure-beli adatexportálás IoT Central](./howto-export-data.md) cikk.
 
-### <a name="administration"></a>Felügyelet
+### <a name="administration"></a>Adminisztráció
 > [!div class="mx-imgBorder"]
 > ![adminisztrációs lap](media/overview-iot-central-tour/administration-pnp.png)
 

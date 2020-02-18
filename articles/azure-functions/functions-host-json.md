@@ -3,12 +3,12 @@ title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208824"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425204"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Host. JSON-hivatkozás Azure Functions 2. x és újabb verziókhoz 
 
@@ -21,9 +21,9 @@ A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat t
 > [!NOTE]
 > Ez a cikk Azure Functions 2. x és újabb verziókban használható.  Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
 
-Az [alkalmazás beállításaiban](functions-app-settings.md)az egyéb Function app konfigurációs beállításai is kezelhetők.
+A Function app más konfigurációs beállításait az [Alkalmazásbeállítások](functions-app-settings.md) (a telepített alkalmazások esetében) vagy a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájl kezeli (helyi fejlesztéshez).
 
-Néhány gazdagép. JSON-beállítás csak akkor használatos, ha helyileg fut a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájlban.
+A gazdagép. JSON-ben a kötésekhez kapcsolódó konfigurációk a Function alkalmazás minden függvényére egyformán vonatkoznak. 
 
 ## <a name="sample-hostjson-file"></a>Példa Host. JSON fájlra
 
@@ -69,11 +69,11 @@ A 2. x + verzióban a következő minta *Host. JSON* fájl minden lehetséges be
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"

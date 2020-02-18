@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 736cf03b58ec09b291c91857177a32c7dad89c6a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892045"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423810"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -44,7 +44,6 @@ Pontosabban, ez az Oracle-összekötő a következőket támogatja:
     - Oracle 9i R2 (9,2) és újabb
     - Oracle 8i R3 (8.1.7) és újabb verziók
     - Oracle Database Cloud Exadata szolgáltatás
-- Adatok másolása alapszintű vagy OID hitelesítés használatával.
 - Párhuzamos másolás Oracle-forrásból. Részletekért tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát.
 
 > [!Note]
@@ -56,7 +55,7 @@ Pontosabban, ez az Oracle-összekötő a következőket támogatja:
 
 Az Integration Runtime egy beépített Oracle-illesztőprogramot biztosít. Ezért nem kell manuálisan telepítenie az illesztőprogramot, amikor a és az Oracle rendszerbe másol adatokból.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -66,11 +65,11 @@ A következő szakaszokban részletesen ismertetjük az Oracle-összekötőhöz 
 
 Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot az **Oracle**értékre kell beállítani. | Igen |
 | connectionString | Megadja az Oracle Database-példányhoz való kapcsolódáshoz szükséges adatokat. <br/>A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . <br><br>**Támogatott kapcsolattípus**: az **Oracle SID** vagy az **Oracle szolgáltatás nevét** használhatja az adatbázis azonosításához:<br>– Ha SID-t használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás nevét használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>A speciális Oracle natív kapcsolódási lehetőségeihez hozzáadhat egy bejegyzést a TNSNAMES-ben [. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) -fájl az Oracle-kiszolgálón, és az ADF Oracle társított szolgáltatásában válassza az Oracle-szolgáltatásnév kapcsolat típusának használata lehetőséget, és konfigurálja a megfelelő szolgáltatásnevet. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
+| connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!TIP]
 >Ha hibaüzenet jelenik meg, "ORA-01025: UPI paraméter a tartományon kívül", és az Oracle verziója 8i, adja hozzá a `WireProtocolMode=1` a kapcsolódási karakterlánchoz. Ezután próbálkozzon újra.
@@ -171,12 +170,12 @@ Ez a szakasz az Oracle-adatkészlet által támogatott tulajdonságok listáját
 
 Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet Type (típus) tulajdonságát `OracleTable`értékre. A következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát `OracleTable`értékre kell beállítani. | Igen |
-| séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
-| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nem, forrás, igen, fogadó |
+| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
+| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table`. | Nincs forrás, a fogadó Igen |
 
 **Példa**
 
@@ -210,10 +209,10 @@ Ez a szakasz az Oracle-forrás és a fogadó által támogatott tulajdonságok l
 
 Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevékenységbe `OracleSource`. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát `OracleSource`értékre kell állítani. | Igen |
-| oracleReaderQuery | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
+| oracleReaderQuery | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
 | partitionOptions | Az Oracle-adatok betöltéséhez használt adatparticionálási beállításokat adja meg. <br>Az engedélyezett értékek a következők: **none** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), az Oracle-adatbázisok adatainak párhuzamos betöltési fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítása szabályozza. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció beállítása nem `None`. | Nem |
 | partitionNames | A másolandó fizikai partíciók listája. <br>Akkor alkalmazza, ha a partíció beállítása `PhysicalPartitionsOfTable`. Ha lekérdezést használ a forrásadatok beolvasásához, a Hook `?AdfTabularPartitionName` a WHERE záradékban. Példaként tekintse meg az [Oracle párhuzamos másolási](#parallel-copy-from-oracle) szakaszát. | Nem |
@@ -257,7 +256,7 @@ Az Oracle-adatok másolásához állítsa a forrás típusát a másolási tevé
 
 Az Oracle-be való másoláshoz állítsa a fogadó típusát a másolási tevékenységbe `OracleSink`. A másolási tevékenység fogadója szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának Type tulajdonságát `OracleSink`értékre kell beállítani. | Igen |
 | writeBatchSize | Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri `writeBatchSize`.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
@@ -305,7 +304,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az Oracle-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Alkalmazási helyzet                                                     | Javaslatokra vonatkozó beállítások                                           |
+| Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés nagyméretű táblából, fizikai partíciókkal.          | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. |
 | Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, míg az adatparticionálás egész oszlopa. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop**: az adatparticionáláshoz használt oszlop megadására szolgál. Ha nincs megadva, a rendszer az elsődleges kulcs oszlopot használja. |
@@ -347,27 +346,27 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
 
 Amikor a és az Oracle rendszerbe másol adatokból, a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
-| Oracle-adattípus | Data Factory időközi adattípus |
+| Oracle-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
-| BFÁJL |Bájt [] |
-| BLOB |Bájt []<br/>(csak Oracle 10g és újabb verziók esetén támogatott) |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(csak Oracle 10g és újabb verziók esetén támogatott) |
 | CHAR |Sztring |
 | CLOB |Sztring |
-| DATE |Dátum és idő |
-| FLOAT |Decimális, karakterlánc (ha a pontosság > 28) |
-| EGÉSZ SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
-| HOSSZÚ |Sztring |
-| HOSSZÚ NYERS |Bájt [] |
+| DATE |DateTime |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
+| LONG |Sztring |
+| LONG RAW |Byte[] |
 | NCHAR |Sztring |
 | NCLOB |Sztring |
-| SZÁM |Decimális, karakterlánc (ha a pontosság > 28) |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
 | NVARCHAR2 |Sztring |
-| NYERS |Bájt [] |
+| RAW |Byte[] |
 | ROWID |Sztring |
-| IDŐBÉLYEG |Dátum és idő |
-| IDŐBÉLYEG HELYI IDŐZÓNÁVAL |Sztring |
-| IDŐBÉLYEG IDŐZÓNÁVAL |Sztring |
-| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Sztring |
+| TIMESTAMP WITH TIME ZONE |Sztring |
+| UNSIGNED INTEGER |Szám |
 | VARCHAR2 |Sztring |
 | XML |Sztring |
 

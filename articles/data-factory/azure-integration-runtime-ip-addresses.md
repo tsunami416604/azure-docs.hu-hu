@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: d64475ce524a3e859ed68a46552fedf30068f71d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8b1fd7b1962a4d46d38287e5faf8f1ba4cbb40bd
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514782"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423630"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
 
@@ -31,11 +31,11 @@ A Azure Integration Runtime által használt IP-címek attól a régiótól füg
 
 Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók:
 
-|                | Region (Régió)              | IP-címek                                                 |
+|                | Régió              | IP-címek                                                 |
 | -------------- | ------------------- | ------------------------------------------------------------ |
 | Ázsia           | Kelet-Ázsia           | 20.189.104.128/25, </br>20.189.106.0/26, </br>13.75.39.112/28 |
 | &nbsp;         | Délkelet-Ázsia      | 20.43.128.128/25, </br>20.43.130.0/26, </br>40.78.236.176/28 |
-| Ausztrália      | Ausztrália keleti régiója      | 20.37.193.0/25,</br>20.37.193.128/26,</br>13.70.74.144/28    |
+| Ausztrália      | Kelet-Ausztrália      | 20.37.193.0/25,</br>20.37.193.128/26,</br>13.70.74.144/28    |
 | &nbsp;         | Délkelet-Ausztrália | 20.42.225.0/25,</br>20.42.225.128/26,</br>13.77.53.160/28    |
 | Brazília         | Dél-Brazília        | 191.235.224.128/25,</br>191.235.225.0/26,</br>191.233.205.160/28 |
 | Kanada         | Közép-Kanada      | 52.228.80.128/25,</br>52.228.81.0/26,</br>13.71.175.80/28    |
@@ -46,7 +46,7 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 | Japán          | Kelet-Japán          | 20.43.64.128/25,</br>20.43.65.0/26,</br>13.78.109.192/28     |
 | Dél-Korea          | Dél-Korea középső régiója       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
 | Dél-afrikai Köztársaság   | Dél-Afrika északi régiója  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |
-| Egyesült Királyság | Egyesült Királyság déli régiója            | 51.104.24.128/25,</br>51.104.25.0/26,</br>51.104.9.32/28     |
+| Egyesült Királyság | Az Egyesült Királyság déli régiója            | 51.104.24.128/25,</br>51.104.25.0/26,</br>51.104.9.32/28     |
 | Egyesült Államok  | USA középső régiója          | 20.37.154.0/23,</br>20.37.156.0/26,</br>20.44.10.64/28       |
 |                | USA keleti régiója             | 20.42.2.0/23,</br>20.42.4.0/26,</br>40.71.14.32/28           |
 |                | USA 2. keleti régiója            | 20.41.2.0/23,</br>20.41.4.0/26,</br>20.44.17.80/28           |
@@ -56,6 +56,7 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 |                | USA nyugati középső régiója     | 52.150.137.128/25,</br>52.150.136.192/26,</br>13.71.199.0/28 |
 |                | USA nyugati régiója             | 40.82.250.0/23,</br>40.82.249.64/26,</br>13.86.219.208/28    |
 |                | USA 2. nyugati régiója            | 20.42.132.0/23,</br>20.42.129.64/26,</br>13.66.143.128/28    |
+|                | USA-beli államigazgatás – Virginia     | 52.127.45.96/28,</br>52.127.48.128/25,</br>52.127.49.0/26    |
 
 ## <a name="known-issue-with-azure-storage"></a>Ismert probléma az Azure Storage-ban
 

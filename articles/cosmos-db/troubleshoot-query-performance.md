@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132066"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424932"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -302,7 +302,7 @@ Ha a beolvasott dokumentumok száma nagyjából megegyezik a kimeneti dokumentum
 
 A Azure Cosmos DB [particionálás](partitioning-overview.md) használatával méretezi az egyes tárolókat a kérelmek egysége és az adattárolási igények növekedésével. Mindegyik fizikai partíció külön és független indexszel rendelkezik. Ha a lekérdezésben olyan esélyegyenlőségi szűrő szerepel, amely megfelel a tároló partíciós kulcsának, akkor csak a megfelelő partíció indexét kell ellenőriznie. Ez az optimalizálás csökkenti a lekérdezés által igényelt RU-k teljes számát.
 
-Ha nagy számú kiépített RU-t (több mint 30 000) vagy nagy mennyiségű adat van tárolva (több mint ~ 100 GB), valószínűleg elég nagy tárolóval rendelkezik ahhoz, hogy jelentősen csökkentse a lekérdezés RU-díjait.
+Ha nagy számú kiépített RU (több mint 30 000) vagy nagy mennyiségű adat (körülbelül 100 GB) van, akkor valószínűleg elég nagy tárolóval rendelkezik ahhoz, hogy jelentős mértékben csökkentse a lekérdezés RU-díjait.
 
 Ha például létrehozunk egy tárolót a partíciós kulcs foodGroup, a következő lekérdezéseknek csak egyetlen fizikai partíciót kell ellenőriznie:
 
@@ -383,7 +383,7 @@ A Azure Cosmos DB fióktól eltérő régióból futtatott lekérdezések nagyob
 
 ## <a name="increase-provisioned-throughput"></a>Kiosztott átviteli sebesség növelése
 
-Azure Cosmos DB a kiosztott átviteli sebességet a kérelmek egységében (RU) mérjük. Tegyük fel, hogy rendelkezik egy olyan lekérdezéssel, amely 5 RU átviteli sebességet használ. Ha például 1 000 RU-t épít ki, akkor az adott lekérdezést a másodpercenként 200-szor futtathatja. Ha a lekérdezés futtatására tett kísérlet sikertelen volt, mert nem áll rendelkezésre elegendő átviteli sebesség, Azure Cosmos DB HTTP 429-hibát ad vissza. A jelenlegi Core (SQL) API SDK-k bármelyike automatikusan újrapróbálkozik a lekérdezéssel egy rövid időszak várakozása után. A szabályozott kérelmek hosszabb időt is igénybe vehetnek, így a kiépített átviteli sebesség növelhető a lekérdezés késésének növelésével. Megfigyelheti a [kérelmek teljes számát](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) a Azure Portal metrikák paneljén.
+Azure Cosmos DB a kiosztott átviteli sebességet a kérelmek egységében (RU) mérjük. Tegyük fel, hogy rendelkezik egy olyan lekérdezéssel, amely 5 RU átviteli sebességet használ. Ha például 1 000 RU-t épít ki, akkor az adott lekérdezést a másodpercenként 200-szor futtathatja. Ha a lekérdezés futtatására tett kísérlet sikertelen volt, mert nem áll rendelkezésre elegendő átviteli sebesség, Azure Cosmos DB HTTP 429-hibát ad vissza. A jelenlegi Core (SQL) API SDK-k bármelyike automatikusan újrapróbálkozik a lekérdezéssel egy rövid időszak várakozása után. A szabályozott kérelmek hosszabb időt is igénybe vehetnek, így a kiépített átviteli sebesség növelhető a lekérdezés késésének növelésével. A Azure Portal mérőszámok paneljén megfigyelheti a [szabályozott kérelmek teljes számát](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) .
 
 ## <a name="increase-maxconcurrency"></a>MaxConcurrency javítása
 

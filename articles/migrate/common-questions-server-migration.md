@@ -1,60 +1,66 @@
 ---
 title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérdések
-description: Válaszok a Azure Migrate-kiszolgáló áttelepítésével kapcsolatos gyakori kérdésekre
+description: Válaszok a gépek Azure Migrate kiszolgáló áttelepítésével való áttelepítésével kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: bae3447f0fada18de5473e1ef1a1c1d431535f63
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 0c967027457b925b45ea19d994cfadfdbd0b8ab3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067382"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425833"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
-Ez a cikk a Azure Migrate: kiszolgáló áttelepítésével kapcsolatos gyakori kérdésekre ad választ. Ha további lekérdezésekre van szüksége a cikk elolvasása után, tegye fel őket a [Azure Migrate fórumba](https://aka.ms/AzureMigrateForum). Ha további kérdései vannak, tekintse át a következő cikkeket:
+Ez a cikk a Azure Migrate: Server áttelepítési eszközzel kapcsolatos gyakori kérdésekre ad választ. Ha további kérdései vannak a cikk elolvasása után, tekintse át a következő cikkeket:
 
 - [Általános kérdések](resources-faq.md) a Azure Migrateról.
 - Az Azure Migrate berendezéssel kapcsolatos [kérdések](common-questions-appliance.md) .
 - A felderítéssel, az értékeléssel és a függőségi vizualizációval kapcsolatos [kérdések](common-questions-discovery-assessment.md) .
+- Tegye fel kérdéseit a [Azure Migrate fórumon](https://aka.ms/AzureMigrateForum).
 
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Hogyan működik az ügynök nélküli VMware-replikáció?
 
-A VMware-hez készült ügynök nélküli replikációs módszer VMware-pillanatképeket és VMware changed Block Tracking (CBT) módszert használ. A kezdeti replikálási ciklus akkor van ütemezve, amikor a felhasználó elindítja a replikálást. A kezdeti replikálási ciklusban létrejön a virtuális gép pillanatképe, és ez a pillanatkép a virtuális gépek VMDK (lemezek) replikálására szolgál. A kezdeti replikálási ciklus befejezése után a különbözeti replikálási ciklusok ütemezése rendszeres időközönként történik. A különbözeti replikálási ciklusban pillanatkép készül, és az előző replikálási ciklus óta módosult adatblokkok replikálódnak. A VMware changed Block Tracking az utolsó ciklus óta módosult blokkok meghatározására szolgál.
-Az időszakos replikálási ciklusok gyakoriságát a szolgáltatás automatikusan kezeli, attól függően, hogy hány másik virtuális gép/lemez párhuzamosan replikálódik ugyanabból az adattárolóból, és az ideális körülmények között a virtuális gép óránként 1 ciklusba kerül.
+A VMware-hez készült ügynök nélküli replikációs módszer VMware-pillanatképeket és VMware changed Block Tracking (CBT) módszert használ.
 
-A Migrálás során egy igény szerinti replikációs ciklus ütemezve van a virtuális gép számára, hogy rögzítse a fennmaradó adatmennyiséget. Dönthet úgy, hogy leállítja a virtuális gépet az áttelepítés részeként, így biztosítva a nulla adatvesztést és az alkalmazások konzisztenciáját.
+1. A replikálás megkezdése után a kezdeti replikálási ciklus ütemezve lesz. A kezdeti ciklusban a virtuális gép pillanatképe készül. Ez a pillanatkép a virtuális gépek VMDK (lemezek) replikálására szolgál. 
+2. A kezdeti replikálási ciklus befejeződése után a különbözeti replikálási ciklusok ütemezése rendszeres időközönként történik.
+    - A különbözeti replikáció során pillanatkép készül, és az előző replikálási ciklus óta módosult adatblokkok replikálódnak.
+    - A VMware CBT a legutóbbi ciklus óta megváltoztatott blokkok meghatározására szolgál.
+    - Az időszakos replikálási ciklusok gyakoriságát a Azure Migrate automatikusan kezeli, attól függően, hogy hány másik virtuális gép/lemez párhuzamosan replikálódik ugyanabból az adattárból. Az ideális körülmények között a replikáció minden virtuális gép esetében óránként egy ciklusba konvergál.
 
-## <a name="why-is-the-resynchronization-option-not-exposed-in-agentless-stack"></a>Miért nem érhető el az újraszinkronizálási lehetőség az ügynök nélküli veremben?
+A Migrálás során a rendszer egy igény szerinti replikációs ciklust ütemez a gép számára, hogy rögzítse a fennmaradó adatmennyiséget. Dönthet úgy, hogy az áttelepítés során leállítja a gépet, így biztosítva a nulla adatvesztést és az alkalmazások konzisztenciáját.
 
-Az ügynök nélküli veremben az összes változási ciklusban az aktuális pillanatkép és az elvégzett korábbi pillanatkép közötti különbözetet helyezzük át. Mivel mindig diff a pillanatképek között, ez biztosítja az adatok összehajtásának előnyeit (azaz ha egy adott szektor a pillanatképek között "n" van írva, csak a legutóbbi írást kell átadnia, mert csak az utolsó szinkronizálás érdekli). Ez eltér az ügynök-alapú veremtől, amelyben nyomon követjük az összes írást, és alkalmazza őket. Ez azt jelenti, hogy minden különbözeti ciklus Újraszinkronizálás. Ezért nincs elérhető újraszinkronizálási beállítás. 
+## <a name="why-isnt-resynchronization-exposed"></a>Miért nem teszi elérhetővé az újraszinkronizálást?
 
-Ha a lemezek meghibásodása miatt még nincsenek szinkronban, a következő ciklusban rögzíti a rendszer. 
+Az ügynök nélküli áttelepítés során az összes különbözeti ciklusban az aktuális pillanatkép és a korábban készített pillanatkép közötti különbség van megírva. Mivel mindig a pillanatképek közötti különbségről van szó, a. Annak érdekében, hogy ha egy adott szektor a pillanatképek között N-szor van írva, csak az utolsó írási időt kell átvinni, mert csak a legutóbbi szinkronizálás érdekli. Ez eltér az ügynök-alapú replikációtól, ahol nyomon követheti és alkalmazhatja az összes írást. Ez azt jelenti, hogy minden különbözeti ciklus Újraszinkronizálás. Ezért nincs elérhető újraszinkronizálási beállítás. Ha a lemezek soha nem szinkronizálhatók egy hiba miatt, azt a következő ciklusban rögzíti a rendszer. 
 
-## <a name="what-is-the-impact-of-churn-rate-if-i-use-agentless-replication"></a>Milyen hatással van a forgalom arányára, ha ügynök nélküli replikációt használok?
+## <a name="how-does-churn-rate-impact-agentless-replication"></a>Hogyan befolyásolja a forgalmi arány az ügynök nélküli replikációt?
 
-Mivel a verem a hajtogatott adatforgalomtól függ, az adatvesztési aránynál nagyobb a változási minta az ebben a veremben. Az a minta, amelyben egy fájl írása folyamatban van, és ismét nem lesz nagy hatással. A következő ciklusban azonban a minta, amelyben minden más szektor íródott, magas adatváltozást okoz. Mivel minimálisra csökkentjük az átvitt adatok mennyiségét, a következő ciklus ütemezése előtt a lehető legnagyobb mértékben engedélyezzük az adatok bedobását.  
+Mivel az ügynök nélküli replikáció eldobása megtörténik, az adatváltozási minta nagyobb jelentőséggel bír, mint a forgalom aránya. Ha egy fájl újra és újra íródik, a ráta nem befolyásolja a nagy hatást. A következő ciklusban azonban egy minta, amelyben minden más ágazat írásos, magas adatváltozást okoz. Mivel minimálisra csökkentjük az átvitt adatok mennyiségét, a következő ciklus ütemezése előtt a lehető legnagyobb mértékben engedélyezzük az adatok bedobását.  
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Milyen gyakran ütemezik a replikálási ciklust?
 
-A következő replikálási ciklust tartalmazó képlet: (előző ciklus ideje/2) vagy 1 óra, amelyik a magasabb. Ha például egy virtuális gép négy órát vett igénybe egy különbözeti ciklus esetében, akkor 2 órán belül beütemezhetjük a következő ciklust, és nem a következő órában. Ez akkor különbözik, ha a ciklus közvetlenül az IR után van, ahol azonnal beütemezhetjük az első különbözeti ciklust.
+A következő replikálási ciklust ütemezett képlet: (előző ciklus ideje/2) vagy 1 óra, amelyik a magasabb.
 
-## <a name="what-is-the-impact-on-performance-of-vcenter-server-or-esxi-host-while-using-agentless-replication"></a>Milyen hatással van vCenter Server vagy ESXi-gazdagép teljesítményére az ügynök nélküli replikáció használata során?
+Ha például egy virtuális gép négy órát vesz igénybe egy különbözeti ciklus esetében, a következő ciklus két órán belül ütemezve van, és nem a következő órában. Ez a kezdeti replikáció után azonnal eltér, amikor az első különbözeti ciklust azonnal ütemezi.
 
-Mivel az ügynök nélküli replikáció pillanatképeket használ, a tárolás során IOPs kell lennie, és az ügyfeleknek szükségük lesz némi IOPs-belmagasságra a tárterületen. Ezt a veremet nem ajánlott a Storage/IOPs korlátozott környezetben használni.
+## <a name="how-does-agentless-replication-impact-vmware-servers"></a>Hogyan befolyásolja az ügynök nélküli replikáció a VMware-kiszolgálókat?
 
-## <a name="does-agentless-migration-stack-support-migration-of-uefi-vms-to-azure-gen-2-vms"></a>Támogatja az ügynök nélküli áttelepítési verem az UEFI virtuális gépek Azure Gen 2 virtuális gépekre való áttelepítését?
+VCenter Server/ESXi-gazdagépek teljesítményére gyakorolt hatás. Mivel az ügynök nélküli replikáció pillanatképeket használ, a IOPs használja a tárterületen, és bizonyos IOPS-sávszélességre van szükség. Nem ajánlott ügynök nélküli replikálást használni, ha a környezetében korlátozások vannak a tároló-vagy IOPs.
 
-Nem, a virtuális gépeknek a 2. generációs Azure-beli virtuális gépekre való áttelepítéséhez Azure Site Recoveryt kell használnia. 
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Az UEFI virtuális gépek ügynök nélkül áttelepíthetők az Azure Gen 2-be?
 
-## <a name="can-i-pin-my-vms-to-azure-availability-zones-when-i-migrate"></a>Tudom rögzíteni a virtuális gépeket, hogy Azure Availability Zones az áttelepítés során?
+Nem. A Azure Site Recovery használatával telepítse át ezeket a virtuális gépeket a 2. generációs Azure-beli virtuális gépekre. 
 
-Nem, a Azure Availability Zones támogatása nem létezik.
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Rögzíthetek Azure Availability Zones a virtuális gépeket a Migrálás során?
+
+Nem, Azure Availability Zones nem támogatottak.
 
 ## <a name="which-transport-protocol-is-used-by-azure-migrate-during-replication"></a>Milyen átviteli protokollt használ a Azure Migrate a replikálás során?
 
-Azure Migrate hálózati blokk-eszköz (NBD) protokollt használ SSL-titkosítással.
+Azure Migrate a hálózati blokk-eszköz (NBD) protokollt használja SSL-titkosítással.
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Milyen minimális vCenter Server verzió szükséges az áttelepítéshez?
 
@@ -64,10 +70,10 @@ Legalább vCenter Server 5,5 és VMware vSphere ESXi-gazdagép 5,5-es verziójá
 
 Nem. Azure Migrate csak a felügyelt lemezekre (standard HDD, prémium SSD) való áttelepítést támogatja.
 
-## <a name="how-many-vms-can-replicate-simultaneously-using-agentless-vmware-stack"></a>Hány virtuális gépet tud párhuzamosan replikálni az ügynök nélküli VMware stack használatával?
+## <a name="how-many-vms-can-i-replicate-together-with-agentless-migration"></a>Hány virtuális gépet replikálhat az ügynök nélküli áttelepítés használatával?
 
-Az ügyfelek jelenleg vCenter Server egyidejűleg telepíthetnek 100 virtuális gépeket. Ezt 10 virtuális gépet tartalmazó kötegekben lehet elvégezni.
-
+Jelenleg vCenter Server egyszerre telepítheti át a 100 virtuális gépeket. Migrálás 10 virtuális gép kötegei között.
+ 
 
 
 

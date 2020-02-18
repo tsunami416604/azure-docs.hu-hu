@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016493"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426360"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
@@ -129,7 +129,7 @@ A **csatlakoztatott hulladékkezelési** alkalmazáshoz egy minta csatlakoztatot
 
 Az eszköz sablonjának megtekintése:
 
-1. Az alkalmazás bal oldali navigációs paneljén kattintson az **eszközök sablonok** elemre IoT Central. 
+1. Az alkalmazás bal oldali paneljén kattintson az **eszközök sablonok** elemre IoT Central. 
 
     ![Eszköz sablonja](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ A **csatlakoztatott hulladékkezelési** alkalmazáshoz két szimulált eszköz 
 
 ### <a name="to-view-the-devices"></a>Az eszközök megtekintése:
 
-1. Navigáljon az **eszközre** IoT Central bal oldali navigációs ablaktáblán. 
+1. IoT Central bal oldali ablaktáblán navigáljon az **eszközre** . 
 
    ![Eszközök](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ Az Azure IoT Central-ban létrehozhat olyan szabályokat, amelyek automatikusan 
 A **csatlakoztatott hulladékkezelési** alkalmazásnak négy minta szabálya van.
 
 ### <a name="to-view-rules"></a>Szabályok megtekintése:
-1. IoT Central bal oldali navigációs ablaktáblában navigáljon a **szabályokhoz**
+1. IoT Central bal oldali ablaktáblában navigáljon a **szabályokhoz**
 
    ![Szabályok](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ A beállított **feltétel** teljesülése esetén e-mailt kell kapnia.
 > Az alkalmazás minden alkalommal elküld e-mailt, amikor egy feltétel teljesül. **Tiltsa le** a szabályt, hogy ne kapjon e-mailt az automatizált szabálytól. 
   
 Új szabály létrehozása: 
-1. Válassza a bal oldali navigációs ablaktábla **szabályok** elemének **+ új** elemét.
+1. A bal oldali panelen válassza az **+ új** lehetőséget a **szabályoknál** .
 
 ## <a name="configure-jobs"></a>Feladatok konfigurálása
 
 IoT Central a feladatok lehetővé teszik az eszköz vagy a felhő tulajdonságainak frissítését több eszközön. A tulajdonságok mellett a feladatok segítségével több eszközön is aktiválhatja az eszközök parancsait. IoT Central automatizálja a munkafolyamatot. 
 
-1. Nyissa meg a **feladatok** elemet a bal oldali navigációs ablaktáblán. 
+1. Nyissa meg a **feladatok** elemet a bal oldali ablaktáblán. 
 2. Kattintson az **+ új** elemre, és konfiguráljon egy vagy több feladatot. 
 
 

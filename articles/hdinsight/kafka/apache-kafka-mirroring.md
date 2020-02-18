@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552202"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425884"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a HDInsight-beli Kafka-vel kapcsolatos témakörök Apache Kafka replikálásához
 
@@ -63,7 +63,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 1. Hozzon létre két új erőforráscsoportot:
 
-    |Erőforráscsoport | Földrajzi egység |
+    |Erőforráscsoport | Hely |
     |---|---|
     | Kafka – elsődleges – RG | USA középső régiója |
     | Kafka – másodlagos – RG | USA északi középső régiója |
@@ -73,7 +73,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
 1. Hozzon létre két új Kafka-fürtöt:
 
-    | Fürt neve | Erőforráscsoport | Virtual Network (Virtuális hálózat) | Tárfiók |
+    | Fürt neve | Erőforráscsoport | Virtual Network | Tárfiók |
     |---|---|---|---|
     | Kafka – elsődleges – fürt | Kafka – elsődleges – RG | Kafka – elsődleges – vnet | kafkaprimarystorage |
     | Kafka – másodlagos – fürt | Kafka – másodlagos – RG | Kafka – másodlagos – vnet | kafkasecondarystorage |
@@ -305,7 +305,7 @@ A jelen dokumentum lépései különböző Azure-erőforráscsoportok által lé
 Ebből a dokumentumból megtudhatta, hogyan használhatja a [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) -t egy [Apache Kafka](https://kafka.apache.org/) -fürt replikájának létrehozásához. Az alábbi hivatkozásokat követve megismerheti a Kafka használatának egyéb módjait:
 
 * [Apache Kafka MirrorMaker dokumentációját](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a cwiki.Apache.org címen.
+* [A Kafka Mirror Maker ajánlott eljárásai](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Ismerkedés a HDInsight Apache Kafkaával](apache-kafka-get-started.md)
 * [Apache Spark használata a HDInsight Apache Kafka használatával](../hdinsight-apache-spark-with-kafka.md)
-* [Apache Storm használata a HDInsight Apache Kafka használatával](../hdinsight-apache-storm-with-kafka.md)
 * [Kapcsolódás Apache Kafka Azure-beli Virtual Network](apache-kafka-connect-vpn-gateway.md)

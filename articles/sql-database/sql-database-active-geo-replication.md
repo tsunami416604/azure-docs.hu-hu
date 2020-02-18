@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2019
-ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842655"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426273"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
@@ -113,7 +113,7 @@ Annak biztosítása érdekében, hogy az alkalmazás azonnal hozzáférhessen az
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 
-Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Javasoljuk továbbá, hogy a másodlagos adatbázist ugyanazzal a számítási mérettel (DTU vagy virtuális mag) hozza létre, mint az elsődlegesként. Ha az elsődleges adatbázis nagy mennyiségű írási feladatot észlel, akkor előfordulhat, hogy az alacsonyabb számítási mérettel rendelkező másodlagos nem tud lépést tartani. Ennek hatására az ismételt késés a másodlagos és lehetséges elérhetetlenség miatt nem lesz elérhető. A másodlagos adatbázis esetében, amely az elsődleges adatbázishoz képest késik, szintén felmerülhet a nagy adatvesztés kockázata, és kényszerített feladatátvételre lehet szükség. A kockázatok enyhítése érdekében a hatékony aktív földrajzi replikálás az elsődleges napló sebességét fogja szabályozni, hogy a formátumú másodlagos zónák felkerüljön. Egy kiegyensúlyozatlan másodlagos konfiguráció másik következménye, hogy a feladatátvételt követően az alkalmazás teljesítménye az új elsődleges számítási kapacitás hiánya miatt fog szenvedni. A szükséges szintre kell frissíteni a magasabb számítási kapacitást, amely a leállás mérséklése előtt nem lesz lehetséges. 
+Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Javasoljuk továbbá, hogy a másodlagos adatbázist ugyanazzal a számítási mérettel (DTU vagy virtuális mag) hozza létre, mint az elsődlegesként. Ha az elsődleges adatbázis nagy mennyiségű írási feladatot észlel, akkor előfordulhat, hogy az alacsonyabb számítási mérettel rendelkező másodlagos nem tud lépést tartani. Ennek hatására az ismételt késés a másodlagos és lehetséges elérhetetlenség miatt nem lesz elérhető. Egy másodlagos adatbázis, amely az elsődleges mögött marad, nagy adatvesztést is okozhat, ha kényszerített feladatátvételre van szükség. A kockázatok enyhítése érdekében a hatékony aktív földrajzi replikálás az elsődleges napló sebességét fogja szabályozni, hogy a formátumú másodlagos zónák felkerüljön. Egy kiegyensúlyozatlan másodlagos konfiguráció másik következménye, hogy a feladatátvételt követően az alkalmazás teljesítménye az új elsődleges számítási kapacitás hiánya miatt fog szenvedni. A szükséges szintre kell frissíteni a magasabb számítási kapacitást, amely a leállás mérséklése előtt nem lesz lehetséges. 
 
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ A módosításokat végző ügyfélnek hálózati hozzáférésre van szüksége
 1. Hozzon létre egy megfelelő felhasználót, és rendelje hozzá a DBManager szerepkörhöz: 
 
    ```sql
-   create user geodrsetup for login gedrsetup
+   create user geodrsetup for login geodrsetup
    alter role geodrsetup dbmanager add member geodrsetup
    ```
 
