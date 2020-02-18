@@ -43,8 +43,6 @@
           href: tutorial-python-postgresql-app.md
         - name: Java és Spring Data
           href: tutorial-java-spring-cosmosdb.md
-        - name: Java Enterprise és Postgres
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: Többtárolós alkalmazás
       href: tutorial-multi-container-app.md
     - name: Tároló futtatása az ACR-ből
