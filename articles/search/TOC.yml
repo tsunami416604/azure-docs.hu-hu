@@ -323,10 +323,10 @@
       items:
         - name: Alapok
           href: search-monitor-usage.md
-        - name: Lekérdezési tevékenységek figyelése
-          href: search-monitor-queries.md
         - name: Diagnosztikai naplózás
           href: search-monitor-logs.md
+        - name: Lekérdezési tevékenységek figyelése
+          href: search-monitor-queries.md
         - name: Forgalmi elemzések keresése
           href: search-traffic-analytics.md
     - name: Hibaelhárítás

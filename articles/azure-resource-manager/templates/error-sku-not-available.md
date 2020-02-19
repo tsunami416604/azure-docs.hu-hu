@@ -2,17 +2,17 @@
 title: Nem érhető el az SKU-hibák
 description: Ismerteti, hogyan lehet elhárítani az SKU nem elérhető hibáját az erőforrások Azure Resource Manager használatával történő telepítésekor.
 ms.topic: troubleshooting
-ms.date: 10/19/2018
-ms.openlocfilehash: a79f55b4d3baf33126807fa099ed2d7b8b48aac5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/18/2020
+ms.openlocfilehash: be341a5ed5321fe71b0e3b34ba5f6cc823958c8b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477459"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462292"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Az SKU-hoz nem elérhető hibák elhárítása
 
-Ez a cikk a **SkuNotAvailable** -hiba elhárítását ismerteti. Ha nem talál megfelelő SKU-t az adott régióban vagy egy olyan alternatív régióban, amely megfelel az Ön üzleti igényeinek, küldjön be egy [SKU-kérést](https://aka.ms/skurestriction) az Azure támogatási szolgálatának.
+Ez a cikk a **SkuNotAvailable** -hiba elhárítását ismerteti. Ha nem talál megfelelő SKU-t az adott régióban vagy zónában, vagy egy másik régióban vagy zónában, amely megfelel az Ön üzleti igényeinek, küldjön egy [SKU-kérelmet](https://aka.ms/skurestriction) az Azure támogatási szolgálatának.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ Egy erőforrás (általában egy virtuális gép) telepítésekor a következő 
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
+Message: The requested tier for resource '<resource>' is currently not available in location '<location>'
 for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 ```
 
@@ -32,9 +32,9 @@ Ez a hiba akkor jelenik meg, ha a kiválasztott erőforrás-SKU (például a vir
 
 Ha egy Azure spot VM-vagy direktszín-méretezési csoport példányát telepíti, akkor ezen a helyen nem áll rendelkezésre kapacitás az Azure-hoz. További információ: [spot hibaüzenetek](../../virtual-machines/error-codes-spot.md).
 
-## <a name="solution-1---powershell"></a>1\. megoldás – PowerShell
+## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 
-Az egyes régiókban elérhető SKU-ket a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) parancs használatával állapíthatja meg. Az eredmények kiszűrése hely szerint. Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
+Egy adott régióban vagy zónában elérhető SKU-ket a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) parancs használatával állapíthatja meg. Az eredmények kiszűrése hely szerint. Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -43,14 +43,24 @@ Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 Az eredmények közé tartozik a helyhez tartozó SKU-lista és az adott SKU korlátozásai. Figyelje meg, hogy az SKU lehet `NotAvailableForSubscription`ként listázva.
 
 ```powershell
-ResourceType          Name        Locations   Restriction                      Capability           Value
-------------          ----        ---------   -----------                      ----------           -----
-virtualMachines       Standard_A0 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   20480
-virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   71680
-virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
+ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
+------------          ----           ---------   ----      -----------                      ----------           -----
+virtualMachines       Standard_A0    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1    centralus             NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2    centralus             NotAvailableForSubscription      MaxResourceVolumeMB  138240
+virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-## <a name="solution-2---azure-cli"></a>2\. megoldás – Azure CLI
+Néhány további minta:
+
+```azurepowershell-interactive
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
+Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
+```
+
+A "FC" hozzáfűzése a végén további részleteket ad vissza.
+
+## <a name="solution-2---azure-cli"></a>2 – Azure CLI megoldás
 
 Az adott régióban elérhető SKU-ket a `az vm list-skus` parancs használatával állapíthatja meg. A `--location` paraméter használatával szűrheti a kimenetet a használt helyre. A `--size` paraméterrel megkeresheti a részleges méret nevét.
 
@@ -70,7 +80,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>3\. megoldás – Azure Portal
+## <a name="solution-3---azure-portal"></a>3 – Azure portal megoldás
 
 Az adott régióban elérhető SKU-ket a [portálon](https://portal.azure.com)állapíthatja meg. Jelentkezzen be a portálra, és adjon hozzá egy erőforrást az interfészen keresztül. Az értékek megadásakor az adott erőforráshoz rendelkezésre álló SKU-ket láthatja. Nem kell végrehajtania az üzembe helyezést.
 
@@ -80,7 +90,7 @@ Megkezdheti például a virtuális gép létrehozásának folyamatát. Ha más e
 
 A rendelkezésre álló méretek szűrése és görgetése lehetséges.
 
-![Elérhető termékváltozatok](./media/error-sku-not-available/available-sizes.png)
+![Rendelkezésre álló SKU-i](./media/error-sku-not-available/available-sizes.png)
 
 ## <a name="solution-4---rest"></a>4\. megoldás – REST
 

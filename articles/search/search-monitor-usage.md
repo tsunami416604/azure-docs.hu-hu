@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443601"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462326"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
@@ -52,7 +52,7 @@ Az áttekintő lapokra épülő, Többlapos lapok az erőforrás-használattal k
 
 Ha az éles számítási feladatokhoz [használt szintet](search-sku-tier.md)véglegesíti, vagy ha [módosítani szeretné az aktív replikák és partíciók számát](search-capacity-planning.md), akkor ezek a mérőszámok segítséget nyújthatnak ezekhez a döntésekhez azáltal, hogy megmutatják, hogy az erőforrások milyen gyorsan legyenek felhasználva, és hogy a jelenlegi konfiguráció milyen mértékben kezeli a meglévő terhelést.
 
-A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. Létre kell hoznia egy egyéni megoldást, amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ. További információ a tárolási metrikákkal kapcsolatban: [szolgáltatás statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
+A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. Létre kell hoznia [egy egyéni megoldást](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) , amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ. További információ a tárolási metrikákkal kapcsolatban: [szolgáltatás statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
 A portálon a vizualizáció figyeléséhez a **használat** lapon az erőforrás rendelkezésre állása látható a szolgáltatási szinten kiszabott jelenlegi [korlátokhoz](search-limits-quotas-capacity.md) képest. 
 
@@ -63,7 +63,7 @@ Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektum�
 
 ## <a name="monitor-workloads"></a>Munkaterhelések figyelése
 
-A naplózott események tartalmazzák az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
+A naplózott események magukban foglalják az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
 
 A naplózott adatok többsége csak olvasási műveletekhez használható. A naplóban nem rögzített további frissítési-törlési műveletekhez a keresési szolgáltatást a rendszerinformációk lekérdezése céljából kérdezheti le.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425136"
+ms.locfileid: "77444009"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Több erőforrást figyelő metrikai riasztás sablonja
 
-Az előző szakaszokban a minta Azure Resource Manager sablonokat, amelyek egyetlen erőforrást figyelő metrikai riasztásokat hoznak létre. Azure Monitor mostantól több erőforrás figyelését is lehetővé teszi egyetlen metrikai riasztási szabállyal. Ez a funkció jelenleg csak az Azure nyilvános felhőben támogatott, és csak a Virtual Machines, az SQL Database, az SQL rugalmas készletek és a Databox Edge-eszközök esetében.
+Az előző szakaszokban a minta Azure Resource Manager sablonokat, amelyek egyetlen erőforrást figyelő metrikai riasztásokat hoznak létre. Azure Monitor mostantól támogatja több, egyazon típusú erőforrás figyelését egyetlen metrikai riasztási szabállyal az azonos Azure-régióban található erőforrások esetében. Ez a funkció jelenleg csak az Azure nyilvános felhőben támogatott, csak virtuális gépek, SQL Server-adatbázisok, SQL Server rugalmas készletek és Databox Edge-eszközök esetén. Ez a funkció csak a platform metrikái esetében érhető el, és az egyéni metrikák esetében nem támogatott.
 
 A dinamikus küszöbértékek riasztási szabálya segítséget nyújt a testre szabott küszöbértékek létrehozásához egyszerre több száz metrikus adatsorozathoz (akár különböző típusokhoz is), így kevesebb riasztási szabályt kell kezelni.
 
 Ebből a szakaszból megtudhatja, hogy három forgatókönyv esetén hogyan figyelheti meg a több erőforrás egyetlen szabállyal való figyelésére Azure Resource Manager sablonokat.
 
 - Egy vagy több erőforráscsoport összes virtuális gép (egy Azure-régióban) figyelése.
-- Egy előfizetésben lévő összes virtuális gép (egy Azure-régióban) figyelése
+- Egy előfizetésben lévő összes virtuális gép (egy Azure-régióban) figyelése.
 - A virtuális gépek listájának figyelése (egy Azure-régióban) egy előfizetésben.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statikus küszöbérték riasztása egy vagy több erőforráscsoport összes virtuális gépen
