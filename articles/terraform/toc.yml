@@ -4,16 +4,16 @@
   items:
     - name: Az Azure-on futtatott Terraform ismertetése
       href: terraform-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: A Terraform telepítése és konfigurálása
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: Terraform-konfiguráció létrehozása
       href: terraform-create-configuration.md
     - name: Linux rendszerű virtuális gép létrehozása
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: Oktatóanyagok
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktúra
       items:
-        - name: Terraform virtuális gép létrehozása az Azure-erőforrásokhoz engedélyezett felügyelt identitásokkal
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
           href: terraform-create-vm-cluster-module.md
         - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
