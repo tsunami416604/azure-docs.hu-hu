@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: aab16b860440ff1fc304cbc200209c1dd6cc85c4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a879dbc7d43cb2bedf35fe7fb78a33d8ccf012c6
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156131"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446228"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,8 +44,7 @@ Az első lépések előtt ügyeljen a következőre:
    void TranslateSpeechToSpeech()
    {
        // Creates an instance of a speech translation config with specified subscription key and service region.
-       // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-       // from here: https://aka.ms/speech/sdkregion).   
+       // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
        auto config = SpeechTranslationConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
        // Sets source and target languages.
@@ -135,6 +134,6 @@ RECOGNIZED 'en-US': What's the weather in Seattle?
 TRANSLATED into 'de': Wie ist das Wetter in Seattle?
 ````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

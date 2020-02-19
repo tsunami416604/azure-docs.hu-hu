@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cd00fb2df0063bd8bc753f9078194648f6745f1b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: eb131f3f53e04809ca21efda7367f03a79081bbc
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156636"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445837"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Az első lépések előtt:
 
 1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" `YourServiceRegion` sztringjét (például `westus` az ingyenes próbaverziós előfizetéshez).
+1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) **azonosítójával** (például `westus` az ingyenes próbaverziós előfizetéshez).
 
 1. Mentse a projekt módosításait.
 
@@ -49,6 +49,6 @@ A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felism
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

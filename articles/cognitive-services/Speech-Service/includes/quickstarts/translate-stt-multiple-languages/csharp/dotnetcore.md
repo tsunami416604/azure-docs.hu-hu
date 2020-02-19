@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: dace37626c488d711c8f1e8b677d380c5cd3ba7c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 85799f7bf55a69eaec39f3d4c4a46e105553db9c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156004"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446460"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,8 +43,7 @@ Az első lépések előtt ügyeljen a következőre:
            public static async Task TranslateSpeechToText()
            {
                // Creates an instance of a speech translation config with specified subscription key and service region.
-               // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-               // from here: https://aka.ms/speech/sdkregion).   
+               // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
                var config = SpeechTranslationConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
                // Sets source and target languages.
@@ -127,6 +126,6 @@ TRANSLATED into 'de': Wie ist das Wetter in Seattle?
 TRANSLATED into 'fr': Quel temps fait-il à Seattle ?
 ````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

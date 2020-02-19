@@ -56,6 +56,10 @@
           href: create-cluster-database-resource-manager.md
     - name: Adatok betöltése
       items:
+        - name: Egykattintásos feldolgozás
+          href: ingest-data-one-click.md
+        - name: Streamek feldolgozása
+          href: ingest-data-streaming.md
         - name: Eseményközpont
           items:
             - name: Azure Portal
@@ -86,10 +90,6 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager-sablon
               href: data-connection-iot-hub-resource-manager.md
-        - name: Egykattintásos feldolgozás
-          href: ingest-data-one-click.md
-        - name: Streamek feldolgozása
-          href: ingest-data-streaming.md
         - name: SDK-k használata
           items:
             - name: Python
