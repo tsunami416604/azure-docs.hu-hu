@@ -87,6 +87,8 @@
           href: built-in-vulnerability-assessment.md
         - name: Külső ellenőrzők használata
           href: partner-vulnerability-assessment.md
+    - name: Saját tárolók figyelése
+      href: monitor-container-security.md
     - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
       href: security-center-wdatp.md
     - name: Az Advanced Data Security használata Azure-beli virtuális gépeken futó SQL-hez

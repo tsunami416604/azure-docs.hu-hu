@@ -7,10 +7,14 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: A felhőhálózat védelme – portál
+    - name: A virtuális WAN biztonságossá tétele – portál
       href: secure-cloud-network.md
+    - name: Központi virtuális hálózat biztonságossá tétele – portál
+      href: secure-hybrid-network.md
 - name: Alapelvek
   items:
+    - name: Szabályzatok áttekintése
+      href: policy-overview.md
     - name: Mi az a biztonságos virtuális központ?
       href: secured-virtual-hub.md
     - name: Az üzembe helyezés általános folyamata
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: Szabályfeldolgozási logika
       href: rule-processing.md
+    - name: Architektúralehetőségek
+      href: vhubs-and-vnets.md
 - name: Útmutatók
   items:
     - name: Megbízható biztonsági partnerek hozzáadása
       href: deploy-trusted-security-partner.md
-    - name: Migrálás tűzfalszabályzatba
+    - name: Migrálás tűzfalszabályzatba – PowerShell
       href: migrate-to-policy.md
 - name: Referencia
   items:

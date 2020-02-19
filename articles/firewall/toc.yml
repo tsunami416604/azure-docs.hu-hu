@@ -35,8 +35,14 @@
       href: rule-processing.md
     - name: Szolgáltatáscímkék
       href: service-tags.md
+    - name: IP-csoportok
+      href: ip-groups.md
+    - name: Alagúthasználat kényszerítése
+      href: forced-tunneling.md
     - name: Megfelelőségi tanúsítványok
       href: compliance-certifications.md
+    - name: Központi felügyelet
+      href: central-management.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel
@@ -55,6 +61,10 @@
       href: integrate-lb.md
     - name: Alkalmazásszabályok SQL FQDN-ek használata esetén
       href: sql-fqdn-filtering.md
+    - name: Privát SNAT-tartományok
+      href: snat-private-range.md
+    - name: IP-csoportok létrehozása
+      href: create-ip-group.md
 - name: Referencia
   items:
     - name: Azure CLI

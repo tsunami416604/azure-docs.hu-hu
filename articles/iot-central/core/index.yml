@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: cddfdbe709849f81f585ad7537556945ec14c990
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
+  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77023429"
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77431179"
 landingContent:
 - title: Tudnivalók az Azure IoT Centralról
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: Mi az az Azure IoT Central?
       url: overview-iot-central.md
-    - text: Az IoT-megoldás beállításai
-      url: overview-iot-central-tour.md
     - text: Felhasználói felület bemutatása
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Az Azure IoT Central architektúrája
       url: concepts-architecture.md
+    - text: Alkalmazássablonok
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: Új alkalmazás létrehozása
@@ -39,12 +39,12 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Eszközsablon beállítása
-      url: howto-set-up-template.md
     - text: IoT Plug and Play-eszköz (előzetes verzió) csatlakoztatása
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: Eszközsablon beállítása
+      url: howto-set-up-template.md
     - text: MX Chip IoT DevKit előkészítése és csatlakoztatása
       url: howto-connect-devkit.md
     - text: Más IoT-felhők csatlakoztatása
@@ -53,8 +53,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Használatos eszközök készletei
-      url: howto-use-device-sets.md
+    - text: Eszközcsoportok használata
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Eszközök kezelése
@@ -68,9 +68,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Telemetriaszabályok létrehozása
-      url: howto-create-telemetry-rules.md
-    - text: Exportálás a Blob Storage-ba
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: Adatok exportálása
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Egyéni szabályok létrehozása
