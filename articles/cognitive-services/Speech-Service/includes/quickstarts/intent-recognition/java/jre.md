@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 6bd276f07f75ecad21ffb0bf19150f6158eb7b7c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: bd15a19a352120e01da04aeca0f3b27d3fce092f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156646"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445470"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 Szúrja be ezt a kódot a `main()`kipróbálás/Catch blokkjában. Győződjön meg róla, hogy frissíti ezeket az értékeket:
 
 * Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra.
-* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére. A "Speech SDK paraméter" használata a [régióból](https://aka.ms/speech/sdkregion)
+* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére. Régió **azonosítójának** használata [régióból](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
 > Ha segítségre van szüksége ezeknek az értékeknek a megtalálásához, tekintse meg [a Luis-alkalmazás létrehozása a szándék felismeréséhez](#create-a-luis-app-for-intent-recognition)című témakört.
@@ -104,6 +104,6 @@ Ezen a ponton a kódnak így kell kinéznie:
 Nyomja le az <kbd>F11</kbd>billentyűt, vagy válassza a **Futtatás** > **hibakeresés**lehetőséget.
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
