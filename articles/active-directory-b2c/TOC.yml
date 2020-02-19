@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: Fiókkezelés
           href: manage-user-accounts-graph-api.md
+        - name: Üzembe helyezés az Azure Pipelines használatával
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: Szabályzatok kezelése a PowerShell-lel
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: Naplók
       href: view-audit-logs.md
     - name: Felhasználók kezelése – Azure Portal

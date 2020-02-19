@@ -50,7 +50,7 @@
           href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs 2-es verzió)
           href: event-hubs-node-get-started-send.md
-        - name: .NET-keretrendszer (Microsoft.Azure.EventHubs)
+        - name: .NET-keretrendszer (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események rögzítése
       items:

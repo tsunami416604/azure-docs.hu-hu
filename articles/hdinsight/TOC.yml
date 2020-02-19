@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Alapelvek
       items:
+        - name: Vállalati biztonság – Általános irányelvek
+          href: ./domain-joined/general-guidelines.md
         - name: ESP-fürtök tervezése
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight virtuális hálózati architektúra
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
           href: ./disk-encryption.md
+        - name: LDAP-szinkronizálás a Ranger és az Apache Ambari szolgáltatásban
+          href: ./domain-joined/ldap-sync.md
     - name: Útmutató
       items:
         - name: Identitásközvetítő használata a hitelesítő adatok kezeléséhez

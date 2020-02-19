@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Virtuális hálózatok közötti globális társviszony konfigurálása
       href: global-peering-vnet.md
-    - name: VPN-kapcsolat létrehozása ExpressRoute-on keresztül
+    - name: ExpressRoute-titkosítás konfigurálása
       href: vpn-over-expressroute.md
     - name: Virtuális WAN SKU-jának frissítése
       href: upgrade-virtual-wan.md
