@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668839"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461555"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Az ügyfél és a kiszolgáló verziószámozása Mobile Apps és Mobile Services
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Az Azure Mobile Services legújabb verziója a Azure App Service **Mobile apps** szolgáltatása.
 
@@ -29,7 +25,7 @@ Megjegyzés: Ha ez a dokumentum egy *Mobile Services* háttérre hivatkozik, nem
 ## <a name="header-specification"></a>Fejléc-specifikáció
 A kulcs `ZUMO-API-VERSION` a HTTP-fejlécben vagy a lekérdezési karakterláncban adható meg. Az érték az **x. y. z**formátumú Version karakterlánc.
 
-Példa:
+Például:
 
 https://service.azurewebsites.net/tables/TodoItem beolvasása
 
@@ -64,10 +60,10 @@ A verzió ellenőrzése a következő kiszolgálói SDK-verziókba tartozik:
 ### <a name="behavior-of-mobile-apps-backends"></a>Mobile Apps háttérrendszer működése
 | ZUMO-API-VERSION | MS_SkipVersionCheck értéke | Válasz |
 | --- | --- | --- |
-| x. y. z vagy Null |Igaz |200 – OK |
+| x. y. z vagy Null |True (Igaz) |200 - OK |
 | Null |Hamis/nincs megadva |400 – Hibás kérés |
 | 1. x. y |Hamis/nincs megadva |400 – Hibás kérés |
-| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 – OK |
+| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 - OK |
 | 3.0.0-3. x. y |Hamis/nincs megadva |400 – Hibás kérés |
 
 [Mobile Services clients]: #MobileServicesClients

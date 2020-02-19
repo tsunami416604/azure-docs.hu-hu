@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977607"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462428"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>A Azure Database for PostgreSQL-nagy kapacitású (Citus) metrikáinak beállítása a Azure Portal használatával
 
-Ez a cikk bemutatja, hogyan állíthat be Azure Database for PostgreSQL riasztásokat a Azure Portal használatával. Riasztást az Azure-szolgáltatások metrikáinak monitorozása alapján kaphat.
+Ez a cikk bemutatja, hogyan állíthat be Azure Database for PostgreSQL riasztásokat a Azure Portal használatával. Riasztást az Azure-szolgáltatások [metrikáinak monitorozása](concepts-hyperscale-monitoring.md) alapján kaphat.
 
 A rendszer riasztást állít be, amely akkor aktiválódik, ha egy adott metrika értéke átlép egy küszöbértéket. A riasztás akkor aktiválódik, ha a feltétel először teljesül, és ezt követően folytatódik.
 
@@ -81,13 +81,31 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
     Néhány percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-## <a name="manage-your-alerts"></a>A riasztások kezelése
+### <a name="managing-alerts"></a>Riasztások kezelése
 
 Miután létrehozott egy riasztást, kiválaszthatja, és elvégezheti a következő műveleteket:
 
 * Megtekintheti a metrika küszöbértékét és a riasztásra vonatkozó előző naptól számított tényleges értékeket bemutató diagramot.
 * A riasztási szabály **szerkesztése** vagy **törlése** .
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
+
+## <a name="suggested-alerts"></a>Javasolt riasztások
+
+### <a name="disk-space"></a>Lemezterület
+
+A figyelés és a riasztás fontos az összes éles nagy kapacitású (Citus) kiszolgáló csoport számára. Az alapul szolgáló PostgreSQL-adatbázis megfelelő működéséhez szabad lemezterület szükséges. Ha a lemez megtelik, az adatbázis-kiszolgáló csomópont offline állapotba kerül, és elutasítja az indítást, amíg a szabad terület elérhetővé válik. Ezen a ponton a probléma megoldásához Microsoft támogatási kérelem szükséges.
+
+Javasoljuk, hogy a lemezterület-riasztásokat az összes kiszolgálócsoport minden csomópontján állítsa be, még a nem éles használatra is. A lemezterület-használattal kapcsolatos riasztások gondoskodnak arról, hogy milyen előre figyelmeztetés szükséges a csomópontok Kifogástalan állapotba lépéséhez. A legjobb eredmények érdekében próbálkozzon a riasztások sorozatával 75%, 85% és 95% használatban. A kiválasztható százalékértékek az adatfeldolgozási sebességtől függenek, mivel a gyors adatfeldolgozás gyorsabban kitölti a lemezt.
+
+Mivel a lemez megközelíti a lemezterület korlátját, próbálja ki a következő technikákat, hogy több szabad terület álljon rendelkezésre:
+
+* Tekintse át az adatmegőrzési szabályzatot. Ha lehetséges, helyezze át a régi adattárolást a hűtőházi tárolóba.
+* Érdemes lehet [csomópontokat hozzáadni](howto-hyperscale-scaling.md#add-worker-nodes) a kiszolgálócsoport és a szegmensek újrakiegyensúlyozásához. Az újrakiegyensúlyozás több számítógép között osztja el az adatmegosztást.
+* Vegye fontolóra a munkavégző csomópontok [kapacitásának növekedését](howto-hyperscale-scaling.md#increase-vcores) . Minden dolgozó legfeljebb 2 TiB tárterületet tartalmazhat. A csomópontok átméretezése előtt azonban meg kell adni a csomópontok hozzáadását, mivel a csomópontok hozzáadása gyorsabban megtörtént.
+
+### <a name="cpu-usage"></a>CPU-használat
+
+A CPU-használat figyelése hasznos a teljesítmény alapkonfigurációjának létrehozásához. Észreveheti például, hogy a CPU-használat általában 40-60% körül van. Ha a CPU-használat hirtelen megkezdődik a 95% körül, akkor felismerheti az anomáliát. A CPU-használat a szerves növekedést is tükrözheti, de felfedi a kóbor lekérdezést is. A CPU-riasztások létrehozásakor állítsa be a hosszú összesítés részletességét a hosszan tartó növekedéshez, és hagyja figyelmen kívül a pillanatnyi tüskéket.
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).

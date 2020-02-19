@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442989"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460467"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -129,7 +129,9 @@ A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tool
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>A hálózati virtuális berendezésre kényszerített bújtatás/láncolás?
 
-A kényszerített bújtatás jelenleg nem támogatott. Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
+A kényszerített bújtatás támogatott. További információ: [Azure Firewall kényszerített bújtatás (előzetes verzió)](forced-tunneling.md). 
+
+Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 
 Ha a konfigurációhoz kényszerített bújtatásra van szükség egy helyszíni hálózathoz, és meghatározhatja az internetes célhelyek cél IP-előtagjait, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a felhasználó által megadott útvonalon keresztül a AzureFirewallSubnet. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
@@ -166,7 +168,7 @@ Nem. Azure Firewall a/26-nál nagyobb alhálózatra nincs szükség.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan javíthatom a tűzfal átviteli sebességét?
 
-Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s. A vertikális felskálázás jelenleg csak a CPU-használaton alapul. Bizonyos esetekben a hálózati szabályokkal rendelkező tűzfal csak az átviteli sebesség növelése érdekében nem méretezhető, mert a hálózati szabályok nem befolyásolják jelentősen a CPU-használatot. Ha a tűzfalnál nagyobb átviteli sebességre van szüksége, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
+Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s. A vertikális felskálázás jelenleg a CPU-használat és az átviteli sebesség alapján történik. Bizonyos esetekben a hálózati szabályokkal rendelkező tűzfal csak az átviteli sebesség növelése érdekében nem méretezhető, mert a hálózati szabályok nem befolyásolják jelentősen a CPU-használatot. Ha a tűzfalnál nagyobb átviteli sebességre van szüksége, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi időt vesz igénybe a Azure Firewall felskálázása?
 

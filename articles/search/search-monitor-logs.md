@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 2849dc94f1c45dda3da09120adebba6e004eb96b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211177"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462358"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
 
-A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a naplófájlok a háttérben, rövid idő alatt léteznek, elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatokra vonatkozó önirányítást szeretne, állítson be egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve. 
+A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a naplófájlok a háttérben, rövid idő alatt léteznek, elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatokra vonatkozó önirányítást szeretne, állítson be egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
 
 A naplók beállítása a diagnosztika és a működési Előzmények megőrzése esetén hasznos. A naplózás engedélyezése után lekérdezéseket futtathat, és jelentéseket készíthet a strukturált elemzéshez.
 
@@ -25,9 +25,9 @@ Az alábbi táblázat az adatok gyűjtésére és megőrzésére vonatkozó beá
 
 | Erőforrás | Alkalmazási cél |
 |----------|----------|
-| [Küldés Log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események naplózása egy Log Analytics munkaterületre történik. A Log Analytics használatával lekérdezések futtatásával részletes információkat adhat vissza. További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [Archiválás blob Storage-val](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események egy blob-tárolóba kerülnek, és JSON-fájlokban tárolódnak. A naplók meglehetősen részletesek (óránként/percenként), ami hasznos lehet egy adott incidens kereséséhez, de a nyílt végű vizsgálathoz nem. Egy JSON-szerkesztő használatával megtekintheti a naplófájlt.|
-| [Stream az Event hub-ba](https://docs.microsoft.com/azure/event-hubs/) | A naplózott események és a lekérdezési metrikák a cikkben leírt sémák alapján. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
+| [Küldés Log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Az eseményeket és mérőszámokat egy Log Analytics munkaterületre küldi a rendszer, amely lekérdezhető a portálon, és részletes információkat adhat vissza. Bevezetés: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Archiválás blob Storage-val](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Az események és a metrikák archiválása egy blob-tárolóba történik, és JSON-fájlokban tárolódik. A naplók meglehetősen részletesek (óránként/percenként), ami hasznos lehet egy adott incidens kereséséhez, de a nyílt végű vizsgálathoz nem. Egy JSON-szerkesztővel megtekintheti a naplófájlok összesítéséhez és megjelenítéséhez használható nyers naplófájlt vagy Power BI.|
+| [Stream az Event hub-ba](https://docs.microsoft.com/azure/event-hubs/) | Az események és mérőszámok továbbítása egy Azure Event Hubs szolgáltatásba történik. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
 
 A Azure Monitor naplók és a blob Storage is ingyenes szolgáltatásként érhető el, így ingyenesen kipróbálható az Azure-előfizetés élettartama. Application Insights ingyenesen regisztrálhatók és használhatók, amíg az alkalmazás adatainak mérete bizonyos korlátok között van (a részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/monitor/) ).
 
@@ -37,38 +37,59 @@ Ha Log Analytics vagy Azure Storage-t használ, az erőforrásokat előre is lé
 
 + [Log Analytics-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-+ Ha log-archívumra van szüksége, [hozzon létre egy Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) .
++ [Tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
-## <a name="create-a-log"></a>Napló létrehozása
+## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 
-A diagnosztikai beállítások határozzák meg az adatgyűjtést. A beállítás határozza meg, hogyan és mit gyűjt a rendszer. 
+A diagnosztikai beállítások határozzák meg a naplózott események és metrikák gyűjtésének módját.
 
-1. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
+1. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
 
    ![Diagnosztikai beállítások](./media/search-monitor-usage/diagnostic-settings.png "Diagnosztikai beállítások")
 
 1. Válassza a **+ diagnosztikai beállítás hozzáadása** lehetőséget
 
-1. Válassza ki az adatokat szeretne exportálni: naplók, metrikák, vagy mindkettőt. Adatokat gyűjthet egy Storage-fiókban, egy log Analytics-munkaterületen, vagy továbbíthatja azt az Event hub-nak.
-
-   A log Analytics használata ajánlott, mert a munkaterületet a portálon kérdezheti le.
-
-   Ha a blob Storage-t is használja, a tárolók és Blobok a naplózási adatexportáláskor szükségesek lesznek.
+1. Jelölje be **log Analytics**, válassza ki a munkaterületet, és válassza a **OperationLogs** és a **AllMetrics**lehetőséget.
 
    ![Adatgyűjtés konfigurálása](./media/search-monitor-usage/configure-storage.png "Adatgyűjtés konfigurálása")
 
 1. Mentse a beállítást.
 
-1. Tesztelés objektumok létrehozásával vagy törlésével (napló-események létrehozása) és lekérdezések elküldésével (metrikák létrehozása). 
+1. A naplózás engedélyezése után a keresési szolgáltatással megkezdheti a naplók és mérőszámok generálását. A naplózott események és a mérőszámok elérhetővé válása előtt időbe telik.
 
-A blob Storage szolgáltatásban a tárolók csak akkor jönnek létre, ha van egy tevékenység a naplóba vagy a mértékbe. Amikor az adat egy Storage-fiókba másolódik, az adat JSON-ként van formázva, és két tárolóba kerül:
+Log Analytics esetén több percet is igénybe vehet, hogy az adatforrások elérhetők legyenek, miután az Kusto-lekérdezések futtatásával visszatérhetnek az adatforrásokhoz. További információ: [lekérdezési kérelmek figyelése](search-monitor-logs.md).
 
-* insights-logs-operationlogs: a keresési forgalmi naplók
-* insights-mérőszámok – pt1m: metrikák
+A blob Storage esetében a tárolók a blob Storage-ban való megjelenítése előtt egy órával tartanak. Nincs óránként, a tároló és a egy blob. A tárolók csak akkor jönnek létre, ha van egy tevékenység a naplóba vagy a mértékbe. Amikor az adat egy Storage-fiókba másolódik, az adat JSON-ként van formázva, és két tárolóba kerül:
 
-**A tárolók a blob Storage-ban való megjelenítése előtt egy órával tartanak. A tárolók száma óránként egy blob.**
++ insights-logs-operationlogs: a keresési forgalmi naplók
++ insights-mérőszámok – pt1m: metrikák
 
-A naplók archiválása minden olyan órában történik, amelyben a tevékenység zajlik. A következő elérési út egy példa a január 12 2020-kor, 9:00 órakor létrehozott naplófájlra ahol minden `/` egy mappa: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2020/m=01/d=12/h=09/m=00/name=PT1H.json`
+## <a name="query-log-information"></a>Lekérdezési napló adatai
+
+A diagnosztikai naplókban két táblázat tartalmazza az Azure Cognitive Search: **AzureDiagnostics** és a **AzureMetrics**naplóit és mérőszámait.
+
+1. A **figyelés**területen válassza a **naplók**lehetőséget.
+
+1. Adja meg a **AzureMetrics** a lekérdezési ablakban. Ezt az egyszerű lekérdezést futtatva megismerheti az ebben a táblázatban gyűjtött adatokat. A metrikák és értékek megtekintéséhez görgessen végig a táblázaton. Figyelje meg, hogy a rekordok száma felül van, és ha a szolgáltatás egy ideig gyűjt metrikákat, érdemes lehet módosítani az időintervallumot, hogy kezelhető adatkészletet kapjon.
+
+   ![AzureMetrics táblázat](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics táblázat")
+
+1. Táblázatos eredményhalmaz visszaadásához adja meg a következő lekérdezést.
+
+   ```
+   AzureMetrics
+    | project MetricName, Total, Count, Maximum, Minimum, Average
+   ```
+
+1. Ismételje meg az előző lépéseket, kezdve a **AzureDiagnostics** az összes oszlop tájékoztatási céllal való visszaküldéséhez, majd egy szelektívebb lekérdezés, amely további érdekes információkat gyűjt.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search" 
+   ```
+
+   ![AzureDiagnostics táblázat](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics táblázat")
 
 ## <a name="log-schema"></a>Séma
 
@@ -123,7 +144,7 @@ A másodpercenkénti **keresési lekérdezések** esetében a minimális érték
 
 A **szabályozott keresési lekérdezések aránya**, a minimum, a maximum, az átlag és az összes érték azonos értékű: a megadott keresési lekérdezések százalékos aránya, a keresési lekérdezések teljes száma egy percen belül.
 
-## <a name="view-log-files"></a>Naplófájlok megtekintése
+## <a name="view-raw-log-files"></a>Nyers naplófájlok megtekintése
 
 A blob Storage a naplófájlok archiválására szolgál. A naplófájl megtekintéséhez bármely JSON-szerkesztőt használhat. Ha még nem rendelkezik ilyennel, javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/download)-ot ajánljuk.
 

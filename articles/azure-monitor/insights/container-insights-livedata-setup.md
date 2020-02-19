@@ -3,12 +3,12 @@ title: Azure Monitor beállítása az élő adattárolók számára (előzetes v
 description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók valós idejű nézetét (StdOut/stderr) és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251787"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459922"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -48,7 +48,7 @@ A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejele
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser használata RBAC-kompatibilis fürtökkel
 
-Annak érdekében, hogy ne kelljen további konfigurációs módosításokat alkalmaznia, hogy a Kubernetes-felhasználó szabályának kötése **clusterUser** az élő adat (előzetes verzió) szolgáltatáshoz, miután engedélyezte a [RBAC](#configure-kubernetes-rbac-authorization) engedélyezését, az AK új Kubernetes-clusterMonitoringUser kötést kapott anéven. Ez a fürtcsomópont-kötés minden szükséges engedéllyel rendelkezik a Kubernetes API és a végpontok eléréséhez az élő adat (előzetes verzió) funkció kihasználása érdekében. 
+Annak érdekében, hogy ne kelljen további konfigurációs módosításokat alkalmaznia ahhoz, hogy a Kubernetes felhasználói szerepköre **clusterUser** a RBAC engedélyezésének [engedélyezése](#configure-kubernetes-rbac-authorization) után az élő adat (előzetes verzió) szolgáltatáshoz való hozzáférést, az AK új Kubernetes-clusterMonitoringUser kötést kapott anéven. Ez a fürtcsomópont-kötés minden szükséges engedéllyel rendelkezik a Kubernetes API és a végpontok eléréséhez az élő adat (előzetes verzió) funkció kihasználása érdekében.
 
 Ahhoz, hogy az élő adat (előzetes verzió) funkciót ezzel az új felhasználóval is használni lehessen, a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. A tárolók Azure Monitor, ha engedélyezve van, alapértelmezés szerint ez a felhasználó használja a hitelesítést. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez.
 

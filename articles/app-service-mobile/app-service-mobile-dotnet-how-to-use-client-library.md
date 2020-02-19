@@ -6,25 +6,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668469"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459191"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
-
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a felügyelt ügyféloldali kódtár használatával a Windows-és Xamarin-alkalmazások Azure App Service Mobile Apps. Ha még nem Mobile Apps, érdemes megfontolnia az [Azure Mobile apps][1] gyors üzembe helyezési oktatóanyagának elvégzését. Ebben az útmutatóban az ügyféloldali felügyelt SDK-ra fogunk összpontosítani. A Mobile Apps kiszolgálóoldali SDK-k további megismeréséhez tekintse meg a [.NET Server SDK][2] vagy a [Node. js Server SDK][3]dokumentációját.
 
-## <a name="reference-documentation"></a>Segédanyagok
+## <a name="reference-documentation"></a>Dokumentáció
 Az ügyfél-SDK dokumentációja itt található: [Azure Mobile apps .net-ügyfél referenciája][4].
 Az [Azure-Samples GitHub-tárházban][5]számos ügyfél-mintát is talál.
 
@@ -34,7 +29,7 @@ A .NET platform a következő platformokat támogatja:
 * Xamarin Android-kiadások a 19 – 24. API-hoz (KitKat – nugát)
 * Xamarin iOS-kiadások az iOS 8,0-es és újabb verzióihoz
 * Univerzális Windows-platform
-* Windows Phone-telefon 8,1
+* Windows Phone 8.1
 * Windows Phone-telefon 8,0 Silverlight-alkalmazások kivételével
 
 A "kiszolgálói folyamat" hitelesítés webnézetet használ a bemutatott felhasználói felületen.  Ha az eszköz nem tud Webnézeti felhasználói felületet bemutatni, akkor más hitelesítési módszerekre is szükség van.  Ez az SDK ezért nem alkalmas a Watch-Type vagy a hasonló módon korlátozott eszközökre.
@@ -89,7 +84,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 Az előző kódban cserélje le a `MOBILE_APP_URL` a Mobile apps-háttér URL-címére, amely a [Azure Portalra]a Mobile apps-háttér paneljén található. A MobileServiceClient objektumnak egypéldányos kell lennie.
 
 ## <a name="work-with-tables"></a>Táblázatok használata
-A következő szakasz részletesen ismerteti a rekordok keresését és beolvasását, valamint a táblázaton belüli adatok módosítását.  A következő témákat tárgyalja:
+A következő szakasz részletesen ismerteti a rekordok keresését és beolvasását, valamint a táblázaton belüli adatok módosítását.  A szakasz az alábbi témaköröket tartalmazza:
 
 * [Táblázatos hivatkozás létrehozása](#instantiating)
 * [Adatlekérdezés](#querying)
@@ -375,7 +370,7 @@ Két vagy több ügyfél egyszerre is írhat módosításokat ugyanarra az objek
 
 Mobile Apps támogatja az optimista Egyidejűség-vezérlést az egyes elemek változásainak nyomon követésével a Mobile apps-háttér minden egyes táblájához megadott `version` rendszertulajdonság oszlop használatával. Minden alkalommal, amikor egy rekord frissül, Mobile Apps beállítja a rekord `version` tulajdonságát egy új értékre. Az egyes frissítési kérelmek során a kérésben szereplő rekord `version` tulajdonsága a kiszolgálón lévő rekordhoz képest ugyanahhoz a tulajdonsághoz lesz hasonlítva. Ha a kérelemmel átadott verzió nem felel meg a háttérnek, akkor az ügyféloldali kódtár `MobileServicePreconditionFailedException<T>` kivételt vált ki. A kivételben szereplő típus a rekord kiszolgáló verzióját tartalmazó háttérbeli rekord. Az alkalmazás ezt az információt felhasználva eldöntheti, hogy a frissítési kérést újra végrehajtja-e a megfelelő `version` értékkel a háttérből a módosítások elvégzéséhez.
 
-Adjon meg egy oszlopot a Table osztályban a `version` rendszer tulajdonsághoz az optimista Egyidejűség engedélyezéséhez. Példa:
+Adjon meg egy oszlopot a Table osztályban a `version` rendszer tulajdonsághoz az optimista Egyidejűség engedélyezéséhez. Például:
 
 ```csharp
 public class TodoItem
@@ -613,7 +608,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 Ez az űrlap egy begépelt metódus hívása, amely megköveteli, hogy a **MarkAllResult** visszatérési típusa meg legyen adva. A beírt és a nem típusos metódusok egyaránt támogatottak.
 
 A InvokeApiAsync () metódus "/API/" paraméterként megadott a hívni kívánt API-ra, kivéve, ha az API egy "/" karakterrel kezdődik.
-Példa:
+Például:
 
 * `InvokeApiAsync("completeAll",...)` hívások/api/completeAll a háttéren
 * `InvokeApiAsync("/.auth/me",...)` hívások/.auth/Me a háttéren
@@ -651,10 +646,10 @@ A Active Directory-hitelesítési tár (ADAL) használatával kezdeményezheti a
 2. A Visual Studióban vagy a Xamarin Studióban nyissa meg a projektet, és adjon hozzá egy hivatkozást a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet csomaghoz. Kereséskor adja meg a kiadás előtti verziókat.
 3. Adja hozzá a következő kódot az alkalmazáshoz a használt platform alapján. Minden esetben végezze el a következő cseréket:
 
-   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com nak kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
+   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.comnak kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
    * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
    * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
-   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/done hoz* hasonlónak kell lennie.
+   * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/donehoz* hasonlónak kell lennie.
 
      Az egyes platformokhoz szükséges kód a következő:
 

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030812"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462173"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -23,10 +23,53 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Azure Machine Learning SDK for Python v 1.1.1 RC0
+
++ **Hibajavítások és javítások**
+  + **Azure-CLI-ml**
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+  + **azureml-automl-Core**
+    + A hiba naplózása javult.
+  + **azureml-automl-futtatókörnyezet**
+    + Kijavítottuk az előrejelzéssel kapcsolatos problémát, ha az adathalmaz rövid, hosszú idejű hézagokat tartalmazó gabonát tartalmaz.
+    + Kijavítottuk a problémát, ha az automatikus maximális horizont be van kapcsolva, és a Date oszlop karakterláncok formájában tartalmaz dátumokat. A megfelelő átalakítást és az értelmes hibát adta hozzá, ha a dátumra történő átalakítás nem lehetséges
+    + Natív NumPy és SciPy használata a FileCacheStore köztes adatközpont szerializálásához és deszerializálásához (a helyi AutoML futtatásához használatos)
+    + Kijavítva a hiba, ahol a gyermek futása meghiúsult a futó állapotban.
+  + **azureml – CLI – gyakori**
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+  + **azureml – mag**
+    + `--grant-workspace-msi-access` hozzáadva további paraméterként az adattár CLI-hez az Azure Blob-tároló regisztrálásához, amely lehetővé teszi a VNet mögötti blob-tároló regisztrálását.
+    + Az Egypéldányos profilkészítés egy javaslat előállítására lett javítva, és elérhetővé tettük az alap SDK-ban.
+    + Kijavítva a problémát a aks.py _deploy
+    + Ellenőrzi a feltöltés alatt álló modellek integritását a csendes tárolási hibák elkerülése érdekében.
+  + **azureml – értelmezés**
+    + azureml-stílusú kivételek hozzáadva a azureml-értelmezéshez
+    + rögzített DeepScoringExplainer szerializálás kerasz-modellekhez
+  + **azureml – folyamat – mag**
+    + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja
+  + **azureml – folyamat – lépések**
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps`-csomagban. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+  + **azureml – egytörzsű folyamatok – lépések**
+    + A nem kötelező paraméter side_inputs hozzáadva a ParallelRunStep-hez. Ezzel a paraméterrel lehet csatlakoztatni a mappát a tárolón. A jelenleg támogatott típusok a következők: DataReference és PipelineData.
+  + **azureml – tensorboard**
+    + Frissítve azureml-tensorboard a tensorflow 2,0 támogatásához
+  + **azureml-Train-automl-Client**
+    + rögzített FeaturizationConfig-felülbírálási probléma, amely az egyéni featurization-konfigurációt szűri.
+  + **azureml-Train-automl-Runtime**
+    + Áthelyezte a `AutoMLStep` a `azureml-pipeline-steps`-csomagban. A `AutoMLStep` elavult a `azureml-train-automl-runtime`on belül.
+  + **azureml-Train-Core**
+    + A PyTorch 1,4-es verziójának támogatása a PyTorch-Kalkulátorban
+  
 ## <a name="2020-02-04"></a>2020-02-04
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning SDK for Python v 1.1.0 RC0
 
++ **Változtatások megszakítása**
+  + **Szemantikai verziószámozás 2.0.0**
+    + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [További tudnivalók itt](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
+  
 + **Hibajavítások és javítások**
   + **azureml-automl-futtatókörnyezet**
     + Nagyobb sebesség a featurization.
@@ -118,8 +161,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + CreatedBy-információ hozzáadva a modell-és szolgáltatás-objektumokhoz. <var>on keresztül érhető el. created_by
     + Rögzített ContainerImage. Run (), amely nem volt megfelelően beállítva a Docker-tároló HTTP-portjának beállítása.
     + `az ml dataset register` CLI-parancshoz `azureml-dataprep` választhatóvé tétele
-  + **azureml – adatelőkészítés**
-    + Kijavítva a hiba, ahol a TabularDataset. to_pandas_dataframe helytelenül fog visszaesni egy másik olvasóba, és ki kell nyomtatnia egy figyelmeztetést.
+    + Kijavított egy hibát, amelyben a `TabularDataset.to_pandas_dataframe` helytelenül térhet vissza egy másik olvasóhoz, és kinyomtat egy figyelmeztetést.
   + **azureml – magyarázat – modell**
     + a Shap-függőség elhalasztása a azureml értelmezéséhez
   + **azureml – folyamat – mag**
@@ -878,7 +920,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Az előrejelzési feladatokban a `target_lags` paraméter mostantól egyetlen egész értéket, vagy egész számok listáját fogadja el. Ha az egész számot adta meg, csak egy késés lesz létrehozva. Ha egy lista van megadva, a rendszer a lemaradás egyedi értékeit veszi figyelembe. target_lags = [1, 2, 2, 4] egy, 2 és 4 időszakból álló késéseket fog létrehozni.
     + Javítsa ki a hibát az oszlopok típusának elvesztése után az átalakítás után (hiba összekapcsolva);
     + A `model.forecast(X, y_query)`ban engedélyezze a nem (ka) t tartalmazó objektumtípus y_query használatát a BEGIN (#459519) elemnél.
-    + Várt értékek hozzáadása `automl` kimenethez
+    + várt értékek hozzáadása `automl` kimenethez
   + **azureml – datadrift**
     +  Többek között a jegyzetfüzetek fejlesztése, beleértve a azureml-opendatasets való váltást, a azureml-opendatasets és a teljesítmény javítását az adatgazdagítás során
   + **azureml – feltörzs – magyarázat – modell**

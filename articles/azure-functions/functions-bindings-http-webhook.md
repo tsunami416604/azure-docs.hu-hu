@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.openlocfilehash: ebf0728184a5fc104e3e1e7d8a199fec328dbdc0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210174"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462105"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions HTTP-eseményindítók és-kötések áttekintése
 
@@ -27,7 +27,7 @@ A cikkben szereplő kód a .NET Core szintaxisra vonatkozik, amelyet a functions
 
 ### <a name="functions-2x-and-higher"></a>2\. x és újabb függvények
 
-Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. Az a NuGet-csomag a .NET-osztály könyvtáraihoz használatos, míg a bővítmény minden más típusú alkalmazást tartalmaz.
+Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
 | Nyelv                                        | Hozzáadás...                                   | Megjegyzések 
 |-------------------------------------------------|---------------------------------------------|-------------|

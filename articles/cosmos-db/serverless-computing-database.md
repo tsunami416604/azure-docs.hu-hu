@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444876"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462445"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
 
@@ -41,7 +41,7 @@ A Azure Cosmos DBhoz tartozó Azure Functions trigger, bemeneti kötés és kime
 * A Azure Cosmos DBhoz tartozó bemeneti kötések és kimeneti kötések ugyanabban az Azure-függvényben használhatók. Ez jól működik olyan esetekben, amikor bizonyos adatokat szeretne keresni a bemeneti kötéssel, módosítsa azt az Azure-függvényben, majd mentse azt ugyanabba a tárolóba vagy egy másik tárolóba a módosítás után.
 * Az Azure Cosmos-tárolóhoz tartozó bemeneti kötések ugyanabban a függvényben használhatók, mint a Cosmos DB Azure Functions-triggere, és kimeneti kötéssel vagy anélkül is használhatók. Ezt a kombinációt használhatja a legfrissebb valutaváltó-információk (egy Exchange-tárolóba bevitt bemeneti kötés) a bevásárlókocsi-szolgáltatásban lévő új megrendelések változási csatornán való alkalmazásához. A frissített bevásárlókocsi összege a jelenlegi pénznem-konverzióval együtt egy harmadik tárolóba is írható egy kimeneti kötés használatával.
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 A következő használati esetek azt mutatják be, hogy miként hozhatja ki a legtöbbet a Azure Cosmos DB-adataival – az adatai az eseményvezérelt Azure Functionshoz való csatlakoztatásával.
 
@@ -148,10 +148,4 @@ Most kapcsolódjon Azure Cosmos DB és Azure Functions a Realhoz:
 
 * [Hozzon létre egy Azure Functions triggert a Cosmos DBhoz a Azure Portal](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel](https://aka.ms/cosmosdbinputbind)
-* [Kötések és triggerek Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Kötések és triggerek Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md)

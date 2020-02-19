@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664843"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461249"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: biztonsági ügynökök konfigurálása
 
@@ -120,7 +120,7 @@ A következő táblázat a IoT biztonsági ügynökök Azure Security Centeréne
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.| 
@@ -131,22 +131,21 @@ Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-def
 
 ### <a name="supported-security-events"></a>Támogatott biztonsági események
 
-|Esemény neve| PropertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
+|Esemény neve| a propertyName | Alapértelmezett érték| Pillanatkép-esemény| Részletek állapota  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| Hamis| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.| 
-|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |Hamis |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.| 
-|Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |Igaz|Ügynökkel kapcsolatos események statisztikája. |
-|Üzenet statisztikája|eventPriorityMessageStatistics |Alacsony |Igaz |Ügynökkel kapcsolatos üzenet statisztikája. |
-|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |Igaz |Az eszközhöz csatlakoztatott összes hardver pillanatképe.|
-|Portok figyelése|eventPriorityListeningPorts |Magas |Igaz |Az eszközön futó összes nyitott figyelő port pillanatképe.|
-|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |Hamis |Naplózza a folyamat létrehozását az eszközön.|
-|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |Hamis |Naplózza a folyamat befejezését az eszközön.| 
-|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |Igaz |A rendszerinformációk pillanatképe (például operációs rendszer vagy CPU).| 
-|Helyi felhasználók| eventPriorityLocalUsers |Magas |Igaz|A rendszeren belüli regisztrált helyi felhasználók pillanatképe. |
-|Bejelentkezés|  eventPriorityLogin |Magas|Hamis|Naplózza a bejelentkezési eseményeket az eszközre (helyi és távoli bejelentkezések).|
-|Kapcsolatok létrehozása |eventPriorityConnectionCreate|Alacsony|Hamis|Az eszközre és az eszközről létrehozott TCP-kapcsolatok naplózása. |
-|Tűzfal konfigurációja| eventPriorityFirewallConfiguration|Alacsony|Igaz|Az eszköz tűzfal-konfigurációjának pillanatképe (tűzfalszabályok). |
-|OPERÁCIÓSRENDSZER-alapterv| eventPriorityOSBaseline| Alacsony|Igaz|Az eszköz operációs rendszer alapkonfigurációjának vizsgálatának pillanatképe.|
+|Diagnosztikai esemény|eventPriorityDiagnostic| Ki| False (Hamis)| Ügynökkel kapcsolatos diagnosztikai események. Ezt az eseményt részletes naplózásra használhatja.| 
+|Konfigurációs hiba |eventPriorityConfigurationError |Alacsony |False (Hamis) |Az ügynök nem tudta elemezni a konfigurációt. Ellenőrizze a konfigurációt a sémán.| 
+|Eldobott események statisztikája |eventPriorityDroppedEventsStatistics |Alacsony |True (Igaz)|Ügynökkel kapcsolatos események statisztikája. |
+|Csatlakoztatott hardver|eventPriorityConnectedHardware |Alacsony |True (Igaz) |Az eszközhöz csatlakoztatott összes hardver pillanatképe.|
+|Portok figyelése|eventPriorityListeningPorts |Magas |True (Igaz) |Az eszközön futó összes nyitott figyelő port pillanatképe.|
+|Folyamat létrehozása |eventPriorityProcessCreate |Alacsony |False (Hamis) |Naplózza a folyamat létrehozását az eszközön.|
+|Folyamat leállítása|eventPriorityProcessTerminate |Alacsony |False (Hamis) |Naplózza a folyamat befejezését az eszközön.| 
+|Rendszerinformáció |eventPrioritySystemInformation |Alacsony |True (Igaz) |A rendszerinformációk pillanatképe (például operációs rendszer vagy CPU).| 
+|Helyi felhasználók| eventPriorityLocalUsers |Magas |True (Igaz)|A rendszeren belüli regisztrált helyi felhasználók pillanatképe. |
+|Bejelentkezés|  eventPriorityLogin |Magas|False (Hamis)|Naplózza a bejelentkezési eseményeket az eszközre (helyi és távoli bejelentkezések).|
+|Kapcsolatok létrehozása |eventPriorityConnectionCreate|Alacsony|False (Hamis)|Az eszközre és az eszközről létrehozott TCP-kapcsolatok naplózása. |
+|Tűzfal konfigurációja| eventPriorityFirewallConfiguration|Alacsony|True (Igaz)|Az eszköz tűzfal-konfigurációjának pillanatképe (tűzfalszabályok). |
+|OPERÁCIÓSRENDSZER-alapterv| eventPriorityOSBaseline| Alacsony|True (Igaz)|Az eszköz operációs rendszer alapkonfigurációjának vizsgálatának pillanatképe.|
 |
  
 

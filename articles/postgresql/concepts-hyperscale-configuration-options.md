@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975635"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462411"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) teljesítményének beállításai
 
@@ -25,28 +25,31 @@ A számítási és tárolási beállításokat a munkavégző csomópontok és a
 | Számítás, virtuális mag       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | Memória/virtuális mag, GiB | 8                     | 4                     |
 | Tároló mérete, TiB     | 0,5, 1, 2             | 0,5, 1, 2             |
-| Tárhely típusa          | Általános célú (SSD) | Általános célú (SSD) |
-| IO                  | Legfeljebb 3 IOPS/GiB      | Legfeljebb 3 IOPS/GiB      |
+| Tárolási típus          | Általános célú (SSD) | Általános célú (SSD) |
+| IOPS                  | Legfeljebb 3 IOPS/GiB      | Legfeljebb 3 IOPS/GiB      |
 
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókban érhetők el:
 
 * Amerika
-    * Közép-Kanada *
+    * Közép-Kanada
+    * USA középső régiója
     * USA keleti régiója
     * USA 2. keleti régiója
-    * USA északi középső régiója *
-    * USA 2. nyugati régiója
+    * USA északi középső régiója
+    * USA nyugati régiója, 2.
 * Ázsia és a Csendes-óceáni térség:
-    * Kelet-Ausztrália *
+    * Kelet-Ausztrália
+    * Kelet-Japán
+    * Dél-Korea középső régiója
     * Délkelet-Ázsia
 * Európa
     * Észak-Európa
-    * Egyesült Királyság déli régiója
+    * Az Egyesült Királyság déli régiója
     * Nyugat-Európa
 
-A csillaggal (\*) rendelkező régiók még nem támogatják a [magas rendelkezésre állást](concepts-hyperscale-high-availability.md).
+Előfordulhat, hogy a régiók némelyike nem aktiválódik minden Azure-előfizetésen. Ha a fenti listából szeretne egy régiót használni, és nem látja az előfizetésben, vagy ha a listán nem szereplő régiót szeretne használni, nyisson meg egy [támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="pricing"></a>Díjszabás
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/postgresql/).

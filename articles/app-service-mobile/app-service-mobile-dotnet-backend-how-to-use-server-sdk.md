@@ -8,20 +8,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668864"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461538"
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
+# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure-hoz készült .NET backend Server SDK használata Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ebből a témakörből megtudhatja, hogyan használhatja a .NET backend Server SDK-t a Azure App Service Mobile Apps forgatókönyvekben. Az Azure Mobile Apps SDK segítségével a ASP.NET-alkalmazásból származó mobil ügyfelekkel dolgozhat.
 
@@ -30,7 +25,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja a .NET backend Server S
 >
 >
 
-## <a name="reference-documentation"></a>Segédanyagok
+## <a name="reference-documentation"></a>Dokumentáció
 A Server SDK dokumentációja itt található: [Azure Mobile apps .net Reference][1].
 
 ## <a name="create-app"></a>Útmutató: .NET-alapú mobil alkalmazások háttérbeli létrehozása
@@ -52,7 +47,7 @@ Telepítse az Azure-beli számítási feladatot a Visual Studio telepítőjének
 1. Nyissa meg az **új projekt** párbeszédpanelt ( **fájlból** > **új** > **projektből...** ).
 2. Bontsa ki a **vizualizáció C#**  elemet, és válassza a **web**lehetőséget.
 3. Válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet.
-4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
+4. Adja meg a projekt nevét. Végül kattintson az **OK** gombra.
 5. Válassza ki az **Azure Mobile App** elemet a sablonok listájában.
 6. A megoldás létrehozásához kattintson **az OK** gombra.
 7. Kattintson a jobb gombbal a projektre a **megoldáskezelő** , majd válassza a **Közzététel...** lehetőséget, majd válassza ki a **app Service** közzétételi célként.
@@ -65,7 +60,7 @@ Telepítse a [.net-hez készült Azure SDK][4] -t (2.9.0 vagy újabb verzió) eg
 1. Nyissa meg az **új projekt** párbeszédpanelt ( **fájlból** > **új** > **projektből...** ).
 2. Bontsa ki a **sablonok** > a **vizualizáció C#** elemet, és válassza a **web**lehetőséget.
 3. Válassza az **ASP.NET Web Application** (ASP.NET-es webalkalmazás) lehetőséget.
-4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
+4. Adja meg a projekt nevét. Végül kattintson az **OK** gombra.
 5. Az *ASP.net 4.5.2-sablonok*területen válassza az **Azure Mobile App**elemet. A **felhőben** keresse meg a gazdagépet, és hozzon létre egy mobil hátteret a felhőben, amelyen közzéteheti a projektet.
 6. Kattintson az **OK** gombra.
 
@@ -164,7 +159,7 @@ Definiáljon egy tábla-vezérlőt, amely egy SQL-táblázatot tesz elérhetőv�
 2. Konfigurálja a táblázat hivatkozását a Mobile DbContext osztályban.
 3. Hozzon létre egy tábla-vezérlőt.
 
-A Adatátvitel objektum (DTO) egy egyszerű C# objektum, amely a `EntityData`tól örököl.  Példa:
+A Adatátvitel objektum (DTO) egy egyszerű C# objektum, amely a `EntityData`tól örököl.  Például:
 
     public class TodoItem : EntityData
     {
@@ -201,7 +196,7 @@ Ha telepítette az Azure SDK-t, mostantól a következőképpen hozhat létre eg
    * A **modell osztály** legördülő menüben válassza ki az új DTO.
    * A **DbContext** legördülő menüben válassza ki a Mobile Service DbContext osztályt.
    * A rendszer létrehozza a vezérlő nevét.
-4. Kattintson a **Hozzáadás** parancsra.
+4. Kattintson az **Hozzáadás** parancsra.
 
 A gyors üzembe helyezési kiszolgáló projekt egy példát tartalmaz egy egyszerű **TodoItemController**.
 

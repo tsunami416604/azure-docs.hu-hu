@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553069"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461806"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 
@@ -33,7 +33,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 ### <a name="create-failover-group"></a>Feladatátvételi csoport létrehozása
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbázisát a Azure Portal használatával.
 
 
@@ -53,7 +53,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbá
         
     ![SQL-adatbázis hozzáadása a feladatátvételi csoporthoz](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázisát a PowerShell használatával. 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá egyetlen adatbázis�
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használatával. 
 
@@ -129,7 +129,7 @@ A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használat�
 1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
 1. Válassza újra a **feladatátvételt** , hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatával.  
 
@@ -200,7 +200,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 Hozza létre a rugalmas készlet feladatátvételi csoportját a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét a Azure Portal használatával.
 
 1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
@@ -221,7 +221,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét
         
 1. Válassza a **kiválasztás** elemet a rugalmas készlet beállításainak a feladatátvételi csoportra való alkalmazásához, majd válassza a **Létrehozás** lehetőséget a feladatátvételi csoport létrehozásához. A rugalmas készlet a feladatátvételi csoportba való felvétele automatikusan elindítja a Geo-replikálási folyamatot. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét a PowerShell használatával. 
 
@@ -271,7 +271,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét
 
 A rugalmas készlet feladatátvételének tesztelése a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A feladatátvételi csoport feladatátvétele a másodlagos kiszolgálóra történik, majd a Azure Portal használatával visszatérhet. 
 
@@ -293,7 +293,7 @@ A feladatátvételi csoport feladatátvétele a másodlagos kiszolgálóra tört
 1. Tekintse át, hogy melyik kiszolgáló elsődleges, melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie. 
 1. Válassza újra a **feladatátvételt** , hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatával.
 
@@ -353,7 +353,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 Ha még nem konfigurálta a [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), az elsődleges virtuális hálózati átjárót a Azure Portal vagy a PowerShell segítségével hozhatja létre. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal használatával. 
 
@@ -370,7 +370,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
 
    Az alábbi táblázat az elsődleges felügyelt példány átjárója számára szükséges értékeket tartalmazza:
  
-    | **Mező** | Value (Díj) |
+    | **Mező** | Érték |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Name (Név)** | A virtuális hálózati átjáró neve. | 
@@ -390,7 +390,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
 
 1. Válassza a **Létrehozás** lehetőséget az új virtuális hálózati átjáró létrehozásához. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre az elsődleges virtuális hálózati átjárót a PowerShell használatával. 
 
@@ -426,12 +426,12 @@ Hozza létre az elsődleges virtuális hálózati átjárót a PowerShell haszn�
 
 Hozza létre a másodlagos virtuális hálózati átjárót a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Az előző szakaszban leírt lépések megismétlésével hozza létre a virtuális hálózati alhálózatot és az átjárót a másodlagos felügyelt példányhoz. Adja meg a szükséges mezőket a másodlagos felügyelt példány átjárójának konfigurálásához. 
 
    A következő táblázat a másodlagos felügyelt példány átjárója számára szükséges értékeket tartalmazza:
 
-   | **Mező** | Value (Díj) |
+   | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
    | **Name (Név)** | A virtuális hálózati átjáró neve, például `secondary-mi-gateway`. | 
@@ -447,7 +447,7 @@ Az előző szakaszban leírt lépések megismétlésével hozza létre a virtuá
 
    ![Másodlagos átjáró beállításai](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre a másodlagos virtuális hálózati átjárót a PowerShell használatával. 
 
@@ -488,7 +488,7 @@ Két kapcsolatot kell létrehoznia: az elsődleges átjáró és a másodlagos �
 
 Mindkét kapcsolathoz ugyanazt a megosztott kulcsot kell használni, mint az egyes kapcsolatok esetében. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használatával. 
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
@@ -510,7 +510,7 @@ Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használat�
 
 1. Az **Összefoglalás** lapon tekintse át a kétirányú kapcsolatok beállításait, majd kattintson **az OK** gombra a kapcsolódás létrehozásához. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozzon létre kapcsolatokat a két átjáró között a PowerShell használatával. 
 
@@ -546,7 +546,7 @@ Hozzon létre kapcsolatokat a két átjáró között a PowerShell használatáv
 ### <a name="create-the-failover-group"></a>A feladatátvételi csoport létrehozása 
 Hozza létre a felügyelt példányok feladatátvételi csoportját a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Hozzon létre egy feladatátvételi csoportot a felügyelt példányok számára Azure Portal használatával. 
 
@@ -562,7 +562,7 @@ Hozzon létre egy feladatátvételi csoportot a felügyelt példányok számára
 
 1. A feladatátvételi csoport központi telepítésének befejezése után vissza fog térni a **feladatátvételi csoport** lapra. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozzon létre egy feladatátvételi csoportot a felügyelt példányok számára a PowerShell használatával. 
 
@@ -588,11 +588,11 @@ Hozzon létre egy feladatátvételi csoportot a felügyelt példányok számára
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal vagy a PowerShell használatával. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használatával. 
 
-1. Navigáljon a felügyelt példányhoz a [Azure Portalon](https://portal.azure.com) belül, és válassza a **példányok feladatátvételi csoportok** lehetőséget a beállítások területen. 
+1. Navigáljon a _másodlagos_ felügyelt példányhoz a [Azure Portalon](https://portal.azure.com) belül, és válassza a **példányok feladatátvételi csoportok** lehetőséget a beállítások területen. 
 1. Tekintse át, hogy melyik felügyelt példány az elsődleges, és melyik felügyelt példány a másodlagos. 
 1. Válassza a **feladatátvétel** lehetőséget, majd válassza az **Igen** lehetőséget a TDS-munkamenetek leválasztására vonatkozó figyelmeztetésben. 
 
@@ -602,9 +602,9 @@ A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használat�
 
    ![A felügyelt példányok a feladatátvételt követően váltanak át szerepköröket](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Ismét válassza a **feladatátvétel** lehetőséget, ha az elsődleges példányt vissza szeretné adni az elsődleges szerepkörnek. 
+1. Nyissa meg az új _másodlagos_ felügyelt példányt, és kattintson ismét a **feladatátvétel** lehetőségre, hogy az elsődleges példány vissza legyen hajtva az elsődleges szerepkörre. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatával. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 209eb6ed93ed12f97b116b648a36d14e09b822f7
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083151"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461181"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Az AVS Private Cloud beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
 
@@ -223,7 +223,7 @@ Teljes körűen szabályozhatja az vSphere-replikációs és az SRM szoftvereket
 
 * [A VMware Site Recovery Manager dokumentációja](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [A Site Recovery Manager 6,5 működési korlátai](https://kb.vmware.com/s/article/2147110)
-* [A vSphere-replikáció sávszélesség-követelményének kiszámítása](https://kb.vmware.com/s/article/2037268)
+* [A vSphere-replikáció sávszélesség-követelményének kiszámítása](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 * [OVF-beállítások az vSphere-replikáció telepítésekor 6,5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere replikáció 6,5 telepítés és konfigurálás](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [Előfeltételek és ajánlott eljárások az SRM 6,5-hez](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)

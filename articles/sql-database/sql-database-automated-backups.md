@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157508"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461772"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -81,10 +81,14 @@ A megőrzési időtartamnál régebbi biztonsági mentések az időbélyegző al
 
 Azure SQL Database a teljes adatmegőrzési biztonsági mentési tárterületet összesítő értékként számítja ki. Ezt az értéket óránként jelenteni kell az Azure számlázási folyamatának, amelynek feladata az óránkénti használat összesítése az egyes hónapok végén a felhasználás kiszámításához. Az adatbázis eldobása után a felhasználás a biztonsági mentések kora értékre csökken. Ha a biztonsági másolatok régebbiek lesznek a megőrzési időtartamnál, a számlázás leáll. 
 
+   > [!IMPORTANT]
+   > Az adatbázisok biztonsági másolatait a rendszer megőrzi a megadott megőrzési időtartamra, még akkor is, ha az adatbázis el lett dobva. Az adatbázis eldobása és újbóli létrehozása közben előfordulhat, hogy a tárolási és a számítási költségek miatt a biztonsági másolatok tárolási költségei megnövekednek, mivel a biztonsági mentést a megadott megőrzési időtartam (amely legalább 7 nap) minden egyes eldobott adatbázis esetében megőrzi. 
 
-### <a name="monitoring-consumption"></a>Figyelési felhasználás
 
-A biztonsági másolatok (teljes, különbözeti és napló) minden típusa külön metrikaként van jelenteni az adatbázis figyelési paneljén. Az alábbi ábra bemutatja, hogyan figyelheti a biztonsági másolatok tárolásának felhasználását.  
+
+### <a name="monitor-consumption"></a>Használat figyelése
+
+A biztonsági másolatok (teljes, különbözeti és napló) minden típusa külön metrikaként van jelenteni az adatbázis figyelési paneljén. Az alábbi ábra bemutatja, hogyan figyelheti meg a biztonsági másolatok tárolási felhasználását egy adott adatbázisra vonatkozóan. Ez a funkció jelenleg nem érhető el a felügyelt példányok számára.
 
 ![Az adatbázis biztonsági mentési felhasználásának figyelése a Azure Portal adatbázis-figyelési paneljén](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ A biztonsági másolatok tárolásának túlzott mérete az egyes adatbázisok m
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
+A tárolási díj akkor változik, ha a DTU modellt vagy a virtuális mag modellt használja. 
 
 ### <a name="dtu-model"></a>DTU modell
 
@@ -120,11 +125,14 @@ Tegyük fel, hogy az adatbázis 744 GB-nyi biztonsági mentési tárterülettel 
 
 Most egy összetettebb példa. Tegyük fel, hogy az adatbázis megőrzésének időtartama 14 nap a hónap közepén, és ez (elméletileg) a teljes biztonsági mentési tárterületet 1488 GB-ra megduplázza. Az SQL DB 1 GB-nyi használatot jelent a 1-372 órán belül, majd az 373-744-es órákon belül 2 GB-ot jelent a használatban. Ez a végleges számla 1116 GB/hó. 
 
-Az Azure-előfizetések Cost Analysis segítségével meghatározhatja a biztonsági mentési tárterület aktuális kiadásait.
+### <a name="monitor-costs"></a>Költségek figyelése
+
+A biztonsági másolatok tárolási költségeinek megismeréséhez lépjen a **Cost Management + számlázás** elemre a Azure Portal, válassza a **Cost Management**lehetőséget, majd válassza a **Cost Analysis**elemet. Válassza ki a kívánt előfizetést **hatókörként**, majd szűrje azt az időtartamot és szolgáltatást, amelyre kíváncsi. 
+
+Adjon hozzá egy szűrőt a **szolgáltatás neveként**, majd válassza az **SQL Database** lehetőséget a legördülő listából. A **mérési alkategória** szűrővel válassza ki a szolgáltatás számlázási számlálóját. Egyetlen adatbázis vagy egy rugalmas készlet esetében válassza a **pitr egy-egy vagy rugalmas készletet**. Felügyelt példány esetén válassza a **mi pitr biztonsági mentési tár**lehetőséget. A **tárolási** és a **számítási** alkategóriák is hasznosak lehetnek, bár nincsenek a biztonsági mentési tárolási költségekhez társítva. 
 
 ![A biztonsági mentési tár költséghatékonyságának elemzése](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Például a felügyelt példány biztonsági mentési tárolási költségeinek megismeréséhez lépjen az előfizetésre Azure Portal, és nyissa meg a Cost Analysis panelt. Válassza ki a **pitr biztonsági mentési tárterületének** mérési alkategóriáját, és tekintse meg az aktuális biztonsági mentési költséget és a díjszabási előrejelzést. Más mérőszám-alkategóriákat is tartalmazhat, például a **felügyelt példány általános célú tárolását** vagy a **felügyelt példány általános célú számítási gen5** , hogy a biztonsági mentési tárolási költségeket más költségkategóriák alapján hasonlítsa össze.
 
 ## <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
@@ -169,13 +177,13 @@ Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Por
 
 Ha módosítani szeretné a PITR biztonsági mentés megőrzési időszakát a Azure Portal használatával, Navigáljon arra a kiszolgáló-objektumra, amelynek megőrzési időszakát módosítani szeretné a portálon, majd válassza ki a megfelelő beállítást, amely alapján módosítani kívánja a kiszolgáló objektumát.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Önálló adatbázis & rugalmas készletek](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Önálló adatbázis & rugalmas készletek](#tab/single-database)
 
 Az Azure SQL Database-adatbázisok PITR biztonsági mentésének megőrzése a kiszolgáló szintjén történik. A kiszolgáló szintjén végzett módosítás az adott kiszolgálón lévő adatbázisokra vonatkozik. Ha Azure SQL Database-kiszolgáló PITR szeretné módosítani Azure Portalról, lépjen a kiszolgáló áttekintés paneljére, kattintson a biztonsági másolatok kezelése elemre a navigációs menüben, majd kattintson a megőrzés konfigurálása a navigációs sávon lehetőségre.
 
 ![PITR Azure Portal módosítása](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
 SQL Database felügyelt példány PITR biztonsági másolatának megtartásának módosítása külön adatbázis szintjén történik. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázisból a Azure Portalból, lépjen az egyes adatbázis-áttekintés panelre, majd kattintson a biztonsági mentés megőrzésének konfigurálása elemre a navigációs sávon.
 

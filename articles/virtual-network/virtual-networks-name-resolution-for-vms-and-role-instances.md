@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991031"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462666"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Az Azure Virtual Networks erőforrásainak névfeloldása
 
@@ -55,7 +55,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 >
 >
 
-### <a name="features"></a>Jellemzők
+### <a name="features"></a>Szolgáltatások
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
 * Egyszerű használat. Nincs szükség konfigurációra.
@@ -65,7 +65,7 @@ Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza
 * Névfeloldást használhat a virtuális hálózatokban lévő virtuális hálózatok között, amelyek az Azure Resource Manager üzemi modellt használják, anélkül, hogy teljes tartománynevet kellene használnia. A klasszikus üzemi modellben lévő virtuális hálózatoknak teljes tartománynevet kell megkövetelniük a különböző felhőalapú szolgáltatásokban található nevek feloldásához. 
 * Az automatikusan létrehozott nevek helyett használhatja az üzemelő példányokat legjobban leíró állomásneveket.
 
-### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolások
 
 Az Azure által biztosított névfeloldás használatakor megfontolandó szempontok:
 * Az Azure által létrehozott DNS-utótag nem módosítható.
@@ -105,8 +105,7 @@ Számos különböző DNS-gyorsítótárazási csomag elérhető (például DNSM
 
 > [!NOTE]
 > A DNSMasq-csomag csak a Linuxon elérhető számos DNS-gyorsítótár egyike. A használata előtt győződjön meg arról, hogy megfelel az igényeinek, és győződjön meg arról, hogy nincs telepítve más gyorsítótár.
->
->
+
     
 ### <a name="client-side-retries"></a>Ügyféloldali újrapróbálkozások
 
@@ -169,8 +168,7 @@ Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igénye
 * A külső ügynökök által jelentett fenyegetések enyhítése érdekében biztosítani kell az internetről való hozzáférést.
 
 > [!NOTE]
-> A legjobb teljesítmény érdekében, ha Azure-beli virtuális gépeket használ DNS-kiszolgálóként, az IPv6-ot le kell tiltani. A [nyilvános IP-címet](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális géphez hozzá kell rendelni. Ha a Windows Servert DNS-kiszolgálóként használja, további teljesítmény-elemzést és optimalizálást a [rekurzív Windows DNS-kiszolgáló 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)névfeloldási teljesítménye című témakörben talál.
-> 
+> A legjobb teljesítmény érdekében, ha Azure-beli virtuális gépeket használ DNS-kiszolgálóként, az IPv6-ot le kell tiltani. A [nyilvános IP-címet](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális géphez hozzá kell rendelni. 
 > 
 
 ### <a name="web-apps"></a>Webalkalmazások

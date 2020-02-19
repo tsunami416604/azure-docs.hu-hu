@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976109"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462547"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -51,7 +51,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Azure komplex veszélyforrások elleni védelem](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Windows biztonsági események](connect-windows-security-events.md) 
     - [Windows tűzfal](connect-windows-firewall.md)
@@ -96,7 +96,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 
 | **Adattípus** | **Kapcsolódás** | **Adatösszekötő?** | **Megjegyzések** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Az AWS csatlakoztatása](connect-aws.md) | V | |
+| AWSCloudTrail | [Az AWS összekötése](connect-aws.md) | V | |
 | AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/platform-logs-overview.md)| V | |
 | AuditLogs | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
@@ -104,9 +104,9 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | InformationProtectionLogs_CL  | [Jelentések Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection összekötése](connect-azure-information-protection.md)  | V | Ez általában az adattípuson kívül a **InformationProtectionEvents** függvényt használja. További információ: [a jelentések módosítása és egyéni lekérdezések létrehozása](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
 | AzureNetworkAnalytics_CL  | [Traffic analitikai séma](../network-watcher/traffic-analytics.md) [Traffic Analytics](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [CEF összekötése](connect-common-event-format.md)  | V | |
-| OfficeActivity | [Kapcsolódás az Office 365-höz](connect-office-365.md) | V | |
+| OfficeActivity | [Az Office 365 összekötése](connect-office-365.md) | V | |
 | SecurityEvents | [Windows biztonsági események összekötése](connect-windows-security-events.md)  | V | A nem biztonságos protokollok-munkafüzetek esetében lásd: nem [biztonságos protokollok beállítása](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
-| Syslog | [A syslog összekötése](connect-syslog.md) | V | |
+| Rendszernapló | [A syslog összekötése](connect-syslog.md) | V | |
 | Microsoft webalkalmazási tűzfal (WAF) – (AzureDiagnostics) |[A Microsoft webalkalmazási tűzfal összekapcsolása](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [A Symantec összekötése](connect-symantec.md) | V | |
 | ThreatIntelligenceIndicator  | [A fenyegetés intelligenciának összekapcsolása](connect-threat-intelligence.md)  | V | |
@@ -123,7 +123,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [VM-leltár automatizálása](../automation/automation-vm-inventory.md)| X | |
 | Konfigurációváltozás  | [VIRTUÁLIS gépek követésének automatizálása](../automation/change-tracking.md) | X | |
-| F5 BIG-IP | [Az F5 BIG-IP összekötése](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
+| F5 BIG-IP | [Az F5 BIG-IP összekötése](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |
 | McasShadowItReporting  |  | X | |
 | Barracuda_CL | [Barracuda-kapcsolat](connect-barracuda.md) | V | |
 

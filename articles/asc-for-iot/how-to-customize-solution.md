@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c189ece9763e484b969b91f9c1ab9120e5665261
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c385be0c21e7a61f66eb274ec293f4aabd4208ba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71305950"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458885"
 ---
 # <a name="customize-your-azure-security-center-for-iot-solution"></a>A Azure Security Center testreszabása IoT-megoldáshoz 
 
@@ -32,7 +32,7 @@ Ebből az útmutatóból megtudhatja, hogyan szabhatja testre a különböző be
 
 ## <a name="change-settings"></a>Beállítások módosítása
 
-"A Azure Security Center kezelése IoT-beállításhoz:
+Azure Security Center kezelése a IoT-beállításhoz:
 
 A IoT Hub kattintson a bal felső sarokban található biztonsági áttekintés panelre, majd a "beállítások" lehetőségre a Azure Security Center IoT-beállításokhoz való konfigurálásához tegye a következőket:
 
@@ -51,7 +51,7 @@ A IoT-megoldásra vonatkozó javaslatok Azure Security Center konfigurálásáho
 1. Tiltsa le/engedélyezze a szervezete és munkafolyamatai számára releváns megoldási ajánlásokat. 
 1. A beállítások mentéséhez kattintson a **Mentés** gombra a képernyő tetején. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Azure Security Center a IoT szolgáltatás [áttekintéséhez](overview.md)
 - [A biztonsági adatai elérésének](how-to-security-data-access.md) megismerése

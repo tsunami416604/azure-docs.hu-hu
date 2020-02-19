@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169771"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462002"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -111,6 +111,12 @@ A paraméter a következő tulajdonságokkal rendelkezik, amelyek a szabályzat-
 - `metadata`: a Azure Portal által elsődlegesen használt altulajdonságok meghatározása a felhasználóbarát információk megjelenítéséhez:
   - `description`: a paraméter használatának magyarázata. A használható az elfogadható értékek példáinak megadására.
   - `displayName`: a (z) paraméterhez tartozó portálon megjelenő rövid név.
+  - `version`: (nem kötelező) a szabályzat-definíció tartalmának részletes adatait követi nyomon.
+
+    > [!NOTE]
+    > A Azure Policy szolgáltatás `version`, `preview`és `deprecated` tulajdonságokat használ a beépített szabályzatok definíciójának vagy kezdeményezésének és állapotának továbbítására. `version` formátuma: `{Major}.{Minor}.{Patch}`. Bizonyos állapotokat, például az _elavult_ vagy az _előzetes_verziót, a rendszer a `version` tulajdonsághoz vagy egy másik tulajdonsághoz ( **Boolean**) fűzi hozzá.
+
+  - `category`: (nem kötelező) meghatározza, hogy a házirend-definíció milyen kategóriába tartozik Azure Portalban.
   - `strongType`: (nem kötelező) a házirend-definíciónak a portálon való hozzárendeléséhez használatos. Környezetfüggő listát biztosít. További információ: [strongType](#strongtype).
   - `assignPermissions`: (nem kötelező) állítsa _igaz_ értékre, hogy Azure Portal szerepkör-hozzárendeléseket hozzon létre a házirend-hozzárendelés során. Ez a tulajdonság akkor hasznos, ha az engedélyeket a hozzárendelési hatókörön kívül szeretné hozzárendelni. Szerepkör-definícióban egy szerepkör-hozzárendelés van a házirendben (vagy a szerepkör-definícióban a kezdeményezés összes házirendje esetében). A paraméter értékének érvényes erőforrásnak vagy hatókörnek kell lennie.
 - `defaultValue`: (nem kötelező) megadja a paraméter értékét egy hozzárendelésben, ha nincs megadva érték.

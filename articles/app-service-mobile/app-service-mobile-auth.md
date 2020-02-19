@@ -3,19 +3,14 @@ title: Hitelesítés és engedélyezés
 description: A Azure App Service hitelesítési/engedélyezési funkciójának fogalmi referenciája és áttekintése, különösen a Mobile apps esetében.
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668515"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459463"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Hitelesítés és engedélyezés Azure App Service Mobile apps esetén
-
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ez a cikk azt ismerteti, hogyan működik a hitelesítés és az engedélyezés, ha natív Mobile apps-t fejleszt App Service háttérrel. A App Service integrált hitelesítést és engedélyezést biztosít, így a Mobile apps a App Serviceban lévő kódok módosítása nélkül is képes aláírni a felhasználókat. Egyszerű módszert biztosít az alkalmazás védelme és a felhasználónkénti adatmennyiség használata. 
 
@@ -48,7 +43,7 @@ Ha nem szeretne szolgáltatói SDK-t beállítani, engedélyezheti a Azure App S
 A folyamat elindítására szolgáló kód az egyes platformokhoz tartozó hitelesítési oktatóanyag részét képezi. A folyamat végén az ügyfél-SDK App Service tokent tartalmaz, és a jogkivonat automatikusan csatolva lesz az alkalmazás-háttérbeli összes kérelemhez.
 
 A hitelesítési folyamattal kapcsolatos további információkért lásd: [app Service hitelesítési folyamat](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>További források
+## <a name="more-resources"></a>További segédanyagok
 
 A következő oktatóanyagok azt mutatják be, hogyan adhat hozzá hitelesítést a mobil ügyfelekhez a [kiszolgáló által irányított folyamat](../app-service/overview-authentication-authorization.md#authentication-flow)használatával:
 

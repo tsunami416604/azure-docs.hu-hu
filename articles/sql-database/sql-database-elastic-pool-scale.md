@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823819"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462598"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Rugalmas készlet erőforrásainak méretezése Azure SQL Database
 
@@ -57,12 +57,12 @@ A szolgáltatási réteg módosításának becsült késése vagy egy önálló 
 > - Ha az adatbázist egy rugalmas készletre vagy-re helyezi át, csak az adatbázis által használt terület befolyásolja a késést, nem a rugalmas készlet által használt területet.
 >
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának és a számítási méret átméretezésének további szempontjai
 
 - A rugalmas készlet virtuális mag vagy Edtu lecsökkentésekor a készlet felhasznált területének kisebbnek kell lennie, mint a cél szolgáltatási szintje és a készlet Edtu maximálisan megengedett mérete.
-- Rugalmas készlet virtuális mag vagy Edtu átméretezése esetén a rendszer extra tárterületet alkalmaz, ha (1) a készlet tárterületének maximális méretét a cél készlet támogatja, és (2) a tárterület maximális mérete meghaladja a cél készletben foglalt tárterületet. Ha például egy 100 eDTU standard szintű, 100 GB-os maximális mérettel rendelkező készletet egy 50 eDTU standard készletbe foglal le, akkor a rendszer extra tárolási díjat számít fel, mivel a célként megadott készlet támogatja a 100 GB-os maximális méretet, és a benne foglalt tárolási mennyiség csak 50 GB. Így a további tárterület mérete 100 GB – 50 GB = 50 GB. Az extra tárterület díjszabását lásd: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/). Ha a felhasznált terület tényleges mennyisége kisebb, mint a foglalt tárterület, akkor ez az extra díj elkerülhető, ha az adatbázis maximális méretét a benne foglalt mennyiségre csökkenti.
+- A rugalmas készletek Edtu átméretezése esetén a rendszer extra tárterületet alkalmaz, ha (1) a készlet tárterületének maximális méretét a cél készlet támogatja, és (2) a tárterület maximális mérete meghaladja a cél készletben foglalt tárterületet. Ha például egy 100 eDTU standard szintű, 100 GB-os maximális mérettel rendelkező készletet egy 50 eDTU standard készletbe foglal le, akkor a rendszer extra tárolási díjat számít fel, mivel a célként megadott készlet támogatja a 100 GB-os maximális méretet, és a benne foglalt tárolási mennyiség csak 50 GB. Így a további tárterület mérete 100 GB – 50 GB = 50 GB. Az extra tárterület díjszabását lásd: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/). Ha a felhasznált terület tényleges mennyisége kisebb, mint a foglalt tárterület, akkor ez az extra díj elkerülhető, ha az adatbázis maximális méretét a benne foglalt mennyiségre csökkenti.
 
 ### <a name="billing-during-rescaling"></a>Számlázás az átméretezés során
 
@@ -71,7 +71,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 ## <a name="change-elastic-pool-storage-size"></a>Rugalmas készlet tárolási méretének módosítása
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
@@ -83,7 +83,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - A rugalmas készlet tárterületének ára a tárolási kapacitás, a szolgáltatási szintet tartalmazó tárolási egység árával megszorozva. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -92,8 +92,8 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - A rugalmas készlet extra tárterületének díja a további tárterület mérete, a szolgáltatási szinten található extra tárolási egység árával megszorozva. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md) és [SQL Database DTU-alapú erőforrás-korlátok – rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md).

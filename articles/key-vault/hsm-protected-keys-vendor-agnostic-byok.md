@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429292"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461743"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (előzetes verzió)
 
@@ -52,13 +52,13 @@ Az alábbi táblázatban megtekintheti a saját kulcs (BYOK) használatának el�
 | Előfizetés az Azure-ba |Azure Key Vault létrehozásához Azure-előfizetésre van szükség: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | Key Vault (prémium SKU) a HSM-védelemmel ellátott kulcsok importálásához |A Azure Key Vault szolgáltatási szintjeivel és képességeivel kapcsolatos további információkért tekintse meg a [Azure Key Vault díjszabási](https://azure.microsoft.com/pricing/details/key-vault/) webhelyét. |
 | Egy HSM a támogatott HSM-listából, valamint a BYOK eszközzel és a HSM-gyártó által biztosított utasításokkal | Hozzá kell férnie egy hardveres biztonsági modulhoz és a HSM alapvető működési ismereteihez. Lásd: [támogatott HSM](#supported-hsms). |
-| Azure CLI-verzió 2.0.82 vagy újabb verziója | További információért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Azure CLI-verzió 2.1.0 vagy újabb verziója | További információért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
 
 ## <a name="supported-hsms"></a>Támogatott HSM
 
 |HSM-szállító neve|Támogatott HSM-modellek|További részletek|
 |---|---|---|
-|Thales|SafeNet Luna HSM 7 termékcsalád a belső vezérlőprogram 7,3-es vagy újabb verziójával| [SafeNet Luna BYOK eszköz és dokumentáció](https://safenet.gemalto.com/blah-blah)|
+|Thales|SafeNet Luna HSM 7 termékcsalád a belső vezérlőprogram 7,3-es vagy újabb verziójával| [SafeNet Luna BYOK eszköz és dokumentáció](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

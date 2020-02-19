@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162922"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462632"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -66,7 +66,7 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 |    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
-<sup>2</sup> a virtuális gépekhez tartozó Azure-lemezek, beleértve a felügyelt és a nem felügyelt lemezeket is, csak a LRS támogatják. Nem támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](/pricing/details/managed-disks/).
+<sup>2</sup> a virtuális gépekhez tartozó Azure-lemezek, beleértve a felügyelt és a nem felügyelt lemezeket is, csak a LRS támogatják. Nem támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks).
 
 További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint** a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
 
@@ -131,7 +131,7 @@ Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos r
 
 Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontból és a Storage-fiók elsődleges végpontján is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net`, akkor a másodlagos végpont `myaccount-secondary.blob.core.windows.net`. A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
-### <a name="check-the-last-sync-time-property"></a>A legutóbbi szinkronizálási idő tulajdonságának keresése
+### <a name="check-the-last-sync-time-property"></a>Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
 
 Mivel a rendszer aszinkron módon replikálja az adatfájlokat a másodlagos régióba, a másodlagos régió gyakran az elsődleges régió mögött van. Ha hiba történik az elsődleges régióban, akkor valószínű, hogy az elsődlegesnél az összes írás még nem lett replikálva a másodlagosra.
 

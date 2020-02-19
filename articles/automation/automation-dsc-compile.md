@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5462d0fae44217f6217d5be1b321df53c4706aaa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: HT
+ms.openlocfilehash: a4bdd28d2ad8f692b561d414af15b90b1609bac4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430567"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462122"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -37,19 +37,17 @@ A fordítás részleteiért lásd: [a kívánt állapot konfigurációs bővítm
 1. Kattintson a **konfigurációk** fülre, majd a fordításhoz kattintson a konfiguráció nevére.
 1. Kattintson a **fordítás**gombra.
 1. Ha a konfiguráció nem rendelkezik paraméterekkel, a rendszer felszólítja, hogy erősítse meg, hogy szeretné-e lefordítani. Ha a konfiguráció paraméterekkel rendelkezik, megnyílik a **fordítási konfiguráció** panel, ahol megadhatja a paraméterek értékét.
-1. Megnyílik a **fordítási feladat** lap, amelyen nyomon követheti a fordítási feladat állapotát, valamint a csomópont-konfigurációkat (MOF konfigurációs dokumentumok), amelyeket a rendszer a Azure Automation állapot-konfiguráció lekérési kiszolgálójára helyez.
+1. Megnyílik a fordítási feladatok lap, hogy nyomon tudja követni a fordítási feladatok állapotát. Ezen a lapon nyomon követheti azokat a csomópont-konfigurációkat (MOF-konfigurációs dokumentumokat), amelyeket a feladat a Azure Automation állapot-konfiguráció lekérési kiszolgálóján helyez el.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A [`Start-AzAutomationDscCompilationJob`](/powershell/module/az.automation/start-azautomationdsccompilationjob) segítségével megkezdheti a fordítást a Windows PowerShell használatával. Az alábbi mintakód elindítja a **SampleConfig**nevű DSC-konfiguráció fordítását.
+A [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) segítségével megkezdheti a fordítást a Windows PowerShell használatával. Az alábbi mintakód megkezdi a SampleConfig nevű DSC-konfiguráció fordítását.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob` egy fordítási feladattípust ad vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladattípust használhatja [`Get-AzAutomationDscCompilationJob`](/powershell/module/az.automation/get-azautomationdsccompilationjob)
-a fordítási feladatok állapotának megállapítása és [`Get-AzAutomationDscCompilationJobOutput`](/powershell/module/az.automation/get-azautomationdscconfiguration)
-a streamek (kimenet) megtekintéséhez. Az alábbi mintakód elindítja a **SampleConfig** -konfiguráció fordítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
+A **Start-AzAutomationDscCompilationJob** egy fordítási feladattípust ad vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladatot a [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) használatával határozhatja meg a fordítási feladatok állapotát, valamint a [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) használatával megtekintheti a streameket (kimenet). Az alábbi mintakód elindítja a SampleConfig-konfiguráció fordítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -125,19 +123,18 @@ További információ a PSCredentials paraméterként való átadásáról: az a
 Az **összetett erőforrások** funkció lehetővé teszi, hogy a DSC-konfigurációkat beágyazott erőforrásként használja egy konfiguráción belül. Ez lehetővé teszi, hogy több konfigurációt alkalmazzon egyetlen erőforrásra. Az összetett erőforrásokkal kapcsolatos további információkért tekintse meg az [összetett erőforrások: DSC-konfiguráció használata erőforrásként](/powershell/scripting/dsc/resources/authoringresourcecomposite) című témakört.
 
 > [!NOTE]
-> Annak érdekében, hogy az **összetett erőforrásokat** tartalmazó konfigurációk megfelelően legyenek lefordítva, először be kell állítani a (z) Azure Automationba való importáláshoz szükséges összes DSC-erőforrást.
+> Ahhoz, hogy az összetett erőforrásokat tartalmazó konfigurációk megfelelően legyenek lefordítva, meg kell győződnie arról, hogy az összetett DSC-erőforrások importálása a Azure Automationba történik.
 
-A DSC **összetett erőforrások** hozzáadása nem különbözik a PowerShell-modulok Azure Automationhoz való hozzáadásával.
-A folyamat lépésenkénti utasításait a [Azure Automation moduljainak kezelése](/azure/automation/shared-resources/modules)című cikk ismerteti.
+A DSC összetett erőforrások hozzáadása nem különbözik a PowerShell-modulnak a Azure Automationhoz való hozzáadásával. A folyamat a [Azure Automation moduljainak kezelése](/azure/automation/shared-resources/modules)című dokumentumban található.
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData kezelése a konfigurációk fordításakor Azure Automation
 
-A **ConfigurationData** lehetővé teszi a strukturális konfiguráció elkülönítését bármely környezet-specifikus konfigurációból a PowerShell DSC használata közben. További információ a **ConfigurationData**-ről: ["mi" a "hol" a PowerShell DSC-ben](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) .
+A **ConfigurationData** funkció lehetővé teszi a strukturális konfiguráció elkülönítését bármely környezet-specifikus konfigurációból a PowerShell DSC használata közben. További információ a ConfigurationData-ről: ["mi" a "hol" a POWERSHELL DSC-ben](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) .
 
 > [!NOTE]
-> A **ConfigurationData** a Azure Automation állapot-konfiguráció összeállításakor Azure PowerShell, de nem a Azure Portalban is használhatja.
+> A ConfigurationData a Azure Automation állapot-konfiguráció összeállításakor Azure PowerShell használatával, de nem a Azure Portalban is használhatja.
 
-A következő példában a DSC-konfiguráció a **ConfigurationData** -t használja a **$ConfigurationData** és a **$AllNodes** kulcsszavak használatával. Ehhez a példához a [ **xWebAdministration** modulra](https://www.powershellgallery.com/packages/xWebAdministration/) is szüksége lesz:
+A következő példában a DSC-konfiguráció a ConfigurationData-t használja a $ConfigurationData és a $AllNodes kulcsszavak használatával. Ehhez a példához a [xWebAdministration modulra](https://www.powershellgallery.com/packages/xWebAdministration/) is szüksége lesz:
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -158,7 +155,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-A korábbi DSC-konfiguráció a Windows PowerShell használatával fordítható le. A következő parancsfájl két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési szolgáltatáshoz: **ConfigurationDataSample. MyVM1** és **ConfigurationDataSample. MyVM3**:
+A korábbi DSC-konfiguráció a Windows PowerShell használatával fordítható le. A következő parancsfájl két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési szolgáltatáshoz: ConfigurationDataSample. MyVM1 és ConfigurationDataSample. MyVM3.
 
 ```powershell
 $ConfigData = @{
@@ -187,7 +184,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="work-with-assets-in-azure-automation-during-compilation"></a>Azure Automation-eszközök használata a fordítás során
 
-Az eszközök hivatkozásai megegyeznek a Azure Automation állapot-konfigurációban és a runbookok. További információt a következő témakörben talál:
+Az eszközök hivatkozásai a Azure Automation állapot-konfigurációban és a runbookok egyaránt megegyeznek. További információt a következő témakörben talál:
 
 - [Tanúsítványok](automation-certificates.md)
 - [Kapcsolatok](automation-connections.md)
@@ -196,11 +193,11 @@ Az eszközök hivatkozásai megegyeznek a Azure Automation állapot-konfiguráci
 
 #### <a name="credential-assets"></a>Hitelesítőadat-eszközök
 
-A Azure Automation DSC-konfigurációk hivatkozhatnak az Automation hitelesítőadat-eszközökre a `Get-AutomationPSCredential` parancsmag használatával. Ha egy konfiguráció egy **PSCredential** típusú paraméterrel rendelkezik, akkor az `Get-AutomationPSCredential` parancsmagot a hitelesítő adatok lekéréséhez adja át egy Azure Automation hitelesítőadat-eszköz sztring nevét a parancsmagba. Ezt az objektumot használhatja a **PSCredential** objektumot igénylő paraméterhez. A színfalak mögött a rendszer beolvassa a Azure Automation hitelesítő adatokat, és átadja a konfigurációnak. Az alábbi példa ezt mutatja be működés közben.
+A Azure Automation DSC-konfigurációk a **Get-AutomationPSCredential** parancsmag használatával hivatkozhatnak az Automation hitelesítőadat-eszközeire. Ha egy konfiguráció egy PSCredential típusú paraméterrel rendelkezik, akkor a **Get-AutomationPSCredential** paranccsal a hitelesítő adatok lekéréséhez adja meg egy Azure Automation hitelesítőadat-eszköz sztring nevét. Ezt az objektumot használhatja a PSCredential objektumot igénylő paraméterhez. A színfalak mögött a rendszer beolvassa a Azure Automation hitelesítő adatokat, és átadja a konfigurációnak. Az alábbi példa a műveletet mutatja be működés közben.
 
-A hitelesítő adatok biztonságos tárolásához a csomópont-konfigurációkban (MOF konfigurációs dokumentumok) a hitelesítő adatok titkosítását igényli a csomópont-konfiguráció MOF-fájljában. Jelenleg azonban meg kell adnia a PowerShell DSC-t, hogy a hitelesítő adatok egyszerű szövegként legyenek kiválasztva a csomópont-konfiguráció MOF-generációja során, mert a PowerShell DSC nem tudja, hogy Azure Automation a teljes MOF-fájlt a létrehozás után titkosítja. fordítási feladatokon keresztül.
+A hitelesítő adatoknak a csomópont-konfigurációban való biztonságossá tételéhez titkosítani kell a hitelesítő adatokat a csomópont-konfiguráció MOF-fájljában. Tájékoztassa a PowerShell DSC-t kifejezetten arról, hogy jogosult a hitelesítő adatok egyszerű szövegként való kiírására a csomópont-konfiguráció MOF-generálásakor. A PowerShell DSC nem tudja, hogy Azure Automation egy fordítási feladatokon keresztül titkosítja a teljes MOF-fájlt.
 
-Megadhatja a PowerShell DSC-t, hogy a hitelesítő adatok egyszerű szövegként legyenek leképezve a generált csomópont-konfigurációs MOF a konfigurációs adatok használatával. `PSDscAllowPlainTextPassword = $true` a **ConfigurationData** -on keresztül kell átadnia a DSC-konfigurációban megjelenő összes csomópont-blokk nevéhez, és hitelesítő adatokat használ.
+Ahhoz, hogy a PowerShell DSC engedélyt nyújtson a hitelesítő adatok egyszerű szövegként való kiírására a generált csomópont-konfigurációs MOF a konfigurációs adatok használatával, pass `PSDscAllowPlainTextPassword = $true`. Ezeket az információkat a ConfigurationData-on keresztül adhatja át a DSC-konfigurációban megjelenő összes csomópont-blokk nevével, és hitelesítő adatokat használ.
 
 Az alábbi példa egy olyan DSC-konfigurációt mutat be, amely egy Automation hitelesítőadat-eszközt használ.
 
@@ -222,7 +219,9 @@ Configuration CredentialSample
 }
 ```
 
-Az előző DSC-konfigurációt a PowerShell használatával fordíthatja le. A következő PowerShell két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési kiszolgálóhoz: **CredentialSample. MyVM1** és **CredentialSample. MyVM2**.
+Az előző DSC-konfigurációt a PowerShell használatával fordíthatja le. 
+
+A következő PowerShell két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési kiszolgálóhoz: CredentialSample. MyVM1 és CredentialSample. MyVM2.
 
 ```powershell
 $ConfigData = @{
@@ -243,34 +242,27 @@ $ConfigData = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'CredentialSample' -ConfigurationData $ConfigData
 ```
 
-> [!NOTE]
-> A fordítás befejezésekor a következő hibaüzenet jelenhet meg: **a "Microsoft. PowerShell. Management" modul nem lett importálva, mert a "Microsoft. PowerShell. Management" beépülő modul már be lett importálva.** Ez a figyelmeztetés nyugodtan figyelmen kívül hagyható.
+>[!NOTE]
+>A fordítás befejezésekor a következő hibaüzenet jelenhet meg: **a "Microsoft. PowerShell. Management" modul nem lett importálva, mert a "Microsoft. PowerShell. Management" beépülő modul már be lett importálva.** Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-## <a name="compiling-configurations-in-windows-powershell"></a>Konfigurációk fordítása a Windows PowerShellben
-
-Az Azure-on kívül lefordított csomópont-konfigurációk (MOF) is importálhatók.
-Ebbe beletartozik egy fejlesztői munkaállomás vagy egy olyan szolgáltatás fordítása, mint például az [Azure DevOps](https://dev.azure.com).
-Ennek a megközelítésnek több előnye is van, beleértve a teljesítményt és a megbízhatóságot.
-A Windows PowerShellben való fordítás lehetőséget biztosít a konfigurációs tartalom aláírására is.
-Az aláírt csomópontok konfigurációját helyileg ellenőrzik a DSC-ügynök által felügyelt csomóponton, így biztosítva, hogy a csomópontra alkalmazott konfiguráció egy hitelesített forrásból származik.
-
-> [!NOTE]
-> A csomópont-konfigurációs fájlok nem lehetnek nagyobbak 1 MB-nál, hogy azt Azure Automationba lehessen importálni.
-
-A csomópont-konfigurációk aláírásával kapcsolatos további információkért lásd: [a WMF 5,1-es verziójának fejlesztése – a konfiguráció és a modul aláírása](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
-
-### <a name="compile-a-configuration-in-windows-powershell"></a>Konfiguráció fordítása a Windows PowerShellben
+## <a name="compiling-a-dsc-configuration-in-windows-powershell"></a>DSC-konfiguráció fordítása a Windows PowerShellben
 
 A DSC-konfigurációk Windows PowerShellben való fordításának folyamata tartalmazza a PowerShell DSC dokumentációjának [írását, fordítását és konfigurációjának alkalmazását](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration).
-Ezt egy fejlesztői munkaállomáson vagy egy olyan Build szolgáltatáson belül lehet végrehajtani, mint például az [Azure DevOps](https://dev.azure.com).
+A folyamatot egy fejlesztői munkaállomáson vagy egy Build szolgáltatáson belül, például az [Azure DevOps](https://dev.azure.com)lehet végrehajtani.
+Ezután importálhatja az MOF az eredményül kapott csomópont-konfigurációkhoz közvetlenül az Azure állapot-konfigurációs szolgáltatásba. 
 
-A konfiguráció fordításával létrehozott MOF-fájl vagy-fájlok ezután közvetlenül importálhatók az Azure állapot-konfigurációs szolgáltatásba.
+>[!NOTE]
+>A csomópont-konfigurációs fájlok nem lehetnek nagyobbak 1 MB-nál, hogy azt Azure Automationba lehessen importálni.
+
+Az Azure-on kívül lefordított csomópont-konfigurációk (MOF) is importálhatók. Ennek a megközelítésnek több előnye is van, beleértve a teljesítményt és a megbízhatóságot.
+
+A Windows PowerShellben való fordítás lehetővé teszi a konfigurációs tartalom aláírását, a DSC-ügynök pedig helyileg ellenőrzi az aláírt csomópontok konfigurációját egy felügyelt csomóponton. Az ellenőrzéssel biztosítható, hogy a csomópontra alkalmazott konfiguráció egy erre vonatkozó forrásból származik. További információ az aláírási csomópontok konfigurációjáról: [a WMF 5,1-es verziójának fejlesztése – a konfiguráció és a modul aláírása](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Csomópont-konfiguráció importálása a Azure Portal
 
 1. Az Automation-fiókban kattintson az **állapot konfigurációja (DSC)** elemre a **konfiguráció**felügyelete alatt.
-1. Az **állapot-konfiguráció (DSC)** lapon kattintson a **konfigurációk** fülre, majd a **+ Hozzáadás**gombra.
-1. Az **Importálás** lapon kattintson a **csomópont-konfigurációs fájl** szövegmező melletti mappa ikonra, és keresse meg a csomópont-konfigurációs fájlt (MOF) a helyi számítógépen.
+1. Az állapot-konfiguráció (DSC) lapon kattintson a **konfigurációk** fülre, majd a **+ Hozzáadás**gombra.
+1. Az importálás lapon kattintson a **csomópont-konfigurációs fájl** szövegmező melletti mappa ikonra, és keresse meg a csomópont-konfigurációs fájlt (MOF) a helyi számítógépen.
 
    ![Helyi fájl keresése tallózással](./media/automation-dsc-compile/import-browse.png)
 
@@ -287,7 +279,7 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Első lépésként tekintse meg a [Azure Automation állapot konfigurációjának első lépései] (Automation-DSC-Getting-started.md.
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/az.automation).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).

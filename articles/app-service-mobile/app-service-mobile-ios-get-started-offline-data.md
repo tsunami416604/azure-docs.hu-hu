@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668483"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459174"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Az iOS Mobile apps szolgáltatással való offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag az iOS rendszerhez készült Azure App Service Mobile Apps szolgáltatásával folytatott offline szinkronizálást ismerteti. A kapcsolat nélküli szinkronizálással a végfelhasználók akkor is kezelhetik a mobil alkalmazásokat, ha nem rendelkeznek hálózati kapcsolattal. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli háttérrel.
@@ -156,43 +151,43 @@ Ha az offline szinkronizálás funkciót használja, adja meg a három rendszert
 
 ![MS_TableOperations táblázat attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
-| id | Egész szám 64 |
+| id | Integer 64 |
 | elemazonosító | Sztring |
-| properties | Bináris adatértékek |
-| tábla | Sztring |
-| tableKind | 16. egész szám |
+| properties | Binary Data |
+| table | Sztring |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
 
  ![MS_TableOperationErrors táblázat attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
 | id |Sztring |
-| operationId |Egész szám 64 |
-| properties |Bináris adatértékek |
-| tableKind |16. egész szám |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Type (Típus) |
+| Attribútum | Típus |
 | --- | --- |
 | id |Sztring |
 | kulcs |Sztring |
-| keyType |Egész szám 64 |
-| tábla |Sztring |
+| keyType |Integer 64 |
+| table |Sztring |
 | érték |Sztring |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Type (Típus) | Megjegyzés |
+| Attribútum | Típus | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, megjelölve kötelező |Elsődleges kulcs a távoli tárolóban |
 | teljes | Logikai | Teendő mező |
@@ -258,7 +253,7 @@ Megjelenik egy folyamatjelző.
 
 7. Tekintse meg ismét a **TodoItem** -adatbázisokat. Ekkor meg kell jelennie az új és a módosított teendő elemek megjelenítésének.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az offline szinkronizálási funkció támogatásához a `MSSyncTable` felületet használtuk, és a `MSClient.syncContext` helyi tárolóval inicializálva. Ebben az esetben a helyi tároló egy alapszintű adatalapú adatbázis volt.
 
 Ha alapszintű adattárat használ, több táblát kell megadnia a [megfelelő rendszer-tulajdonságokkal](#review-core-data).

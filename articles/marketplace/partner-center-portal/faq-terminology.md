@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 559c0e2a56bfb452f1faf10f68c19d4f406427e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/17/2020
+ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480553"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462139"
 ---
 # <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez
 
@@ -29,7 +29,6 @@ Ez a szakasz a partner Centerben **még nem elérhető Analytics** -üzenetekkel
 
 Miért lehetséges a következő üzenet beszerzése:
 
-- A piactéren felsorolt ajánlatok nem SaaS-ajánlatok. Jelenleg a partner Center csak az SaaS-ajánlatok elemzését kínálja. A Dynamics 365-ajánlatokat közzéteheti a partner Centerben, de az ilyen ajánlatokhoz tartozó elemzések még nincsenek engedélyezve a partner Centerben.
 - Jelenleg nem léteznek beszerzések a közzétett ajánlatokhoz a piactéren. Ez azt is jelentheti, hogy az ajánlatok a piactéren működnek, és a termékek megjelenítési oldalain lévő ügyfelektől származó nézeteket szereznek, de az ügyfelek még nem tettek lépéseket a vásárlásra és a telepítésre.
 - Lehetséges, hogy az ajánlat közzététele folyamatban van, és még nem él. Az ügyfelek csak élő ajánlatokat szerezhetnek be. Az ajánlatok állapotának vizsgálatához tekintse meg az Áttekintés az [irányítópult elemzése](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)című témakört. További információ: [Összefoglalás irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
 - Az ajánlatok **felvehetik Önnel a kapcsolatot**, csak a listában szereplő ajánlatokat, és nem vásárolhatják meg az ügyfelek a piactéren. Bár ezek az ajánlatok létrehoznak érdeklődőket, és megosztották Önnel, a megrendelések nem jönnek létre ezekhez az ajánlatokhoz, mert nem vásárolhatók meg. Az ajánlat-lista típusának megadásához lépjen a telepítés lapra.
@@ -72,8 +71,8 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 | Marketplace-licenc típusa: ingyenes| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
 | Marketplace-licenc típusa: Microsoft as viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
 | Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
-| Csomag neve  | Rendelés| A Piactéri ajánlat neve.|| |
-| Csomag típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
+| Offer Name  | Rendelés| A Piactéri ajánlat neve.|| |
+| Ajánlat típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
 | Ajánlat típusa: felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa a következő feltételek teljesülése esetén: egy vagy több virtuális gép vagy egy teljes IaaS-alapú megoldás használatával telepítheti az ügyfél előfizetéses megoldását. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
 | Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
 | Ajánlat típusa: tanácsadási szolgáltatás| Rendelés| Az Azure piactéren elérhető tanácsadói szolgáltatások segítségével az ügyfeleket a szolgáltatásokkal összekapcsolhatják az Azure használatának támogatásához és kiterjesztéséhez.| |
@@ -86,14 +85,14 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 | Ajánlat típusa: virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
 | Ajánlat típusa: Visual Studio Marketplace bővítmény  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
 | Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
-| Order ID (Rendelésazonosító)| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Rendelésazonosító| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
 | Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
 | Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
 | Megrendelés állapota: aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |
 | Megrendelés állapota: megszakítva | Rendelés| Az ügyfél korábban megvásárolt egy rendelést, és később megszakította a rendelését.||
 | Szolgáltatói E-mail cím| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
 | Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
-| SKU (Cikkszám)| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
+| SKU| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
 | Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||
 
 ## <a name="next-steps"></a>Következő lépések

@@ -6,19 +6,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668895"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461589"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Androidhoz készült Azure Mobile Apps SDK használata
-
-> [!NOTE]
-> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
->
-> Ha szeretné a felhőszolgáltatásokat a mobilalkalmazásba integrálni, regisztráljon az [App Centerbe](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ez az útmutató bemutatja, hogyan használhatók a Mobile Apps androidos ügyfél-SDK a gyakori forgatókönyvek megvalósításához, például:
 
@@ -106,7 +101,7 @@ A `<MobileAppUrl>` egy karakterlánc vagy egy URL-objektum, amely a mobil hátt�
 
 Az ügyfélnek szüksége van a tevékenységhez vagy a környezethez – a példában a `this` paramétert is használhatja.  A MobileServiceClient-konstrukciónak a `AndroidManifest.xml` fájlban hivatkozott tevékenység `onCreate()` metódusán belül kell történnie.
 
-Ajánlott eljárásként az absztrakt kiszolgáló kommunikációját a saját (egyedi minta) osztályba kell bevezetni.  Ebben az esetben át kell adnia a tevékenységet a konstruktoron belül a szolgáltatás megfelelő konfigurálásához.  Példa:
+Ajánlott eljárásként az absztrakt kiszolgáló kommunikációját a saját (egyedi minta) osztályba kell bevezetni.  Ebben az esetben át kell adnia a tevékenységet a konstruktoron belül a szolgáltatás megfelelő konfigurálásához.  Például:
 
 ```java
 package com.example.appname.services;
@@ -205,7 +200,7 @@ Az Azure Mobile Apps háttérbeli táblázat öt speciális mezőt határoz meg,
 * `byte[] version`: általában karakterláncként van megjelölve, a-kiszolgáló is beállítja a verziót.
 * `boolean deleted`: azt jelzi, hogy a rekordot törölték, de még nem törölte.  Ne használja a `deleted` tulajdonságként az osztályban.
 
-Az `id` mező kötelező.  Az offline szinkronizáláshoz a `updatedAt` mező és a `version` mező használatos (növekményes szinkronizáláshoz és ütközés feloldásához).  A `createdAt` mező egy hivatkozási mező, amelyet az ügyfél nem használ.  A nevek "over-the-wire" névvel rendelkeznek a tulajdonságok között, és nem állíthatók be.  Azonban létrehozhat egy leképezést az objektum és az "over-the-wire" nevek között a [gson][3] könyvtár használatával.  Példa:
+Az `id` mező kötelező.  Az offline szinkronizáláshoz a `updatedAt` mező és a `version` mező használatos (növekményes szinkronizáláshoz és ütközés feloldásához).  A `createdAt` mező egy hivatkozási mező, amelyet az ügyfél nem használ.  A nevek "over-the-wire" névvel rendelkeznek a tulajdonságok között, és nem állíthatók be.  Azonban létrehozhat egy leképezést az objektum és az "over-the-wire" nevek között a [gson][3] könyvtár használatával.  Például:
 
 ```java
 package com.example.zumoappname;
@@ -454,7 +449,7 @@ A metódust használó összes rekordra vonatkozó kérelem legalább két kére
 
 ### <a name="chaining"></a>Útmutató: lekérdezési módszerek összefűzése
 
-A háttérbeli táblázatok lekérdezésében használt módszerek összefűzése is lehetséges. A láncolási lekérdezési módszerek lehetővé teszik a rendezett és lapozható szűrt sorok adott oszlopainak kiválasztását. Létrehozhat összetett logikai szűrőket.  Minden lekérdezési metódus egy lekérdezési objektumot ad vissza. A metódusok sorozatának befejezéséhez és a lekérdezés tényleges futtatásához hívja meg a **végrehajtás** metódust. Példa:
+A háttérbeli táblázatok lekérdezésében használt módszerek összefűzése is lehetséges. A láncolási lekérdezési módszerek lehetővé teszik a rendezett és lapozható szűrt sorok adott oszlopainak kiválasztását. Létrehozhat összetett logikai szűrőket.  Minden lekérdezési metódus egy lekérdezési objektumot ad vissza. A metódusok sorozatának befejezéséhez és a lekérdezés tényleges futtatásához hívja meg a **végrehajtás** metódust. Például:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -524,7 +519,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Felülbírálja az adapterek **getView** metódusát. Példa:
+Felülbírálja az adapterek **getView** metódusát. Például:
 
 ```java
     @Override
@@ -1107,10 +1102,10 @@ A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat
 
 3. Adja hozzá a következő kódot az alkalmazáshoz, és végezze el a következő cseréket:
 
-    * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com nak kell lennie.
+    * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.comnak kell lennie.
     * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
     * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
-    * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/done hoz* hasonlónak kell lennie.
+    * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a *https://contoso.azurewebsites.net/.auth/login/donehoz* hasonlónak kell lennie.
 
 ```java
 private AuthenticationContext mContext;

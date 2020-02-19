@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275588"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461283"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
@@ -41,17 +41,15 @@ Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdem�
 
 1. A Azure Portal válassza a **Azure Active Directory > vállalati alkalmazások** lehetőséget, és válassza az **új alkalmazás**lehetőséget.
 
-2. A helyszíni **alkalmazások** szakaszban válassza **a helyszíni alkalmazás hozzáadása**lehetőséget.
+2. Adja meg az új alkalmazás megjelenítendő nevét, válassza a katalógusban **nem található bármely más alkalmazás integrálása**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
-3. Adja meg az új alkalmazás megjelenítendő nevét, majd kattintson a **Hozzáadás**gombra.
+3. Az alkalmazás **Áttekintés** lapján válassza az **egyszeri bejelentkezés**lehetőséget.
 
-4. Az alkalmazás **Áttekintés** lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+4. Válassza az **SAML** lehetőséget az egyszeri bejelentkezési módszerként.
 
-5. Válassza az **SAML** lehetőséget az egyszeri bejelentkezési módszerként.
+5. Először állítsa be az SAML SSO-t, hogy működjön a vállalati hálózaton. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az alkalmazás SAML-alapú hitelesítésének konfigurálásához kövesse az [alapszintű SAML-konfiguráció megadása](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) című témakör lépéseit.
 
-6. Először állítsa be az SAML SSO-t, hogy működjön a vállalati hálózaton. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az alkalmazás SAML-alapú hitelesítésének konfigurálásához kövesse az [alapszintű SAML-konfiguráció megadása](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) című témakör lépéseit.
-
-7. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
+6. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
 
    > [!NOTE]
    > Az alkalmazásproxy beállítása után visszatérhet és frissítheti az SAML **-Válasz URL-címét**.
@@ -74,7 +72,7 @@ A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt
 
 1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **egyszeri bejelentkezés**lehetőséget. 
 
-2. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az Application proxyban konfigurált **külső URL-cím** automatikusan kitölti **az azonosítót**, a **Válasz URL-címét**és a **kijelentkezési URL-** mezőket. Ne szerkessze ezeket az URL-címeket, mert az alkalmazásproxy megfelelő működéséhez szükség van rájuk.
+2. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító**, a **Válasz URL-cím**és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
 
 3. Szerkessze a korábban konfigurált **Válasz URL-címet** , hogy a tartománya elérhető legyen az alkalmazásproxy számára. Ha például a **külső URL** -cím `https://contosotravel-f128.msappproxy.net`, és az eredeti **Válasz url-címe** `https://contosotravel.com/acs`volt, frissítenie kell az eredeti **válasz URL-címét** a `https://contosotravel-f128.msappproxy.net/acs`re. 
 

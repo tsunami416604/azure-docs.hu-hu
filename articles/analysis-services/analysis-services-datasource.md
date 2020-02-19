@@ -4,15 +4,15 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922286"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461657"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -23,7 +23,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |Adatforrás  |Memóriabeli  |DirectQuery  |Megjegyzések |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Igen      |    Igen      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
+|Azure szinapszis Analytics (SQL Data Warehouse)      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Igen        |  Nem        |<sup>[1](#tab1400a)</sup> |
@@ -40,7 +40,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 <a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.   
 <a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.   
 
-## <a name="other-data-sources"></a>Más adatforrások
+## <a name="other-data-sources"></a>Egyéb adatforrások
 
 |Adatforrás | Memóriabeli | DirectQuery |Megjegyzések   |
 |  --- | --- | --- | --- |
@@ -51,24 +51,24 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |CSV-fájl  |Igen | Nem |  |
 |Dynamics 365     |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Excel-munkafüzet     |  Igen | Nem |  |
-|Adatcsere      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Exchange      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Mappa      |Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |Igen | Nem |  |
 |JSON-dokumentum      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Bináris sorok      | Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |MySQL-adatbázis     | Igen | Nem |  |
-|OData-adatcsatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|OData-csatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |ODBC-lekérdezés     | Igen | Nem |  |
 |OLE DB     |   Igen | Nem |  |
 |Oracle  | Igen  |Igen  | <sup>[9](#oracle)</sup> |
-|PostgreSQL Database   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
-|Salesforce-objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|PostgreSQL-adatbázis   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Salesforce objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Salesforce-jelentések |Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Igen | Nem |  |
 |SAP Business Warehouse    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SharePoint-lista      |   Igen | Nem | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
 |SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
-|Adattárház SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Az SQL Server Data Warehouse |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-adatbázis     |  Igen | Nem |  |
 |Teradata | Igen  | Igen  | <sup>[10](#teradata)</sup> |
 |TXT-fájl  |Igen | Nem |  |
@@ -120,7 +120,7 @@ Felhőbeli adatforrások esetén:
 
 ## <a name="oauth-credentials"></a>OAuth hitelesítő adatai
 
-A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 és SharePoint-lista használatával támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
+A 1400-es és magasabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis Analytics (SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
 
 A OAuth hitelesítő adatai nem támogatják a közvetlen lekérdezési módot.
 
