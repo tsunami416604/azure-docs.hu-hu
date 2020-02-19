@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312413"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444145"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -26,7 +26,7 @@ Ha Cloud Service-t használ, az ajánlott eljárás a hozzáférés korlátozás
 > [!NOTE]
 > A cikkben található információk a Python SDK Azure Machine Learning 1.0.83.1 vagy újabb verziójával működnek.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (Azure AD) használatára van konfigurálva. A hitelesítési folyamat a következő:
 
@@ -45,14 +45,14 @@ Azure Machine Learning a következő két hitelesítési módszert támogatja a 
 
 |Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
 |---|---|---|---|
-|Jelmagyarázat|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett?|
-|Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nincs| Alapértelmezés szerint letiltva |
+|Paraméter|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett?|
+|Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem érhető el| Alapértelmezés szerint letiltva |
 
 A kódokra vonatkozó példákat a [webszolgáltatások hitelesítése című szakaszban](how-to-setup-authentication.md#web-service-authentication)találja.
 
 ## <a name="authorization"></a>Engedélyezés
 
-Több munkaterületet is létrehozhat, és az egyes munkaterületek több személy számára is megoszthatók. Munkaterületek megosztásakor a hozzáférését a következő szerepköröknek a felhasználókhoz való hozzárendelésével szabályozhatja:
+Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Munkaterületek megosztásakor a hozzáférését a következő szerepköröknek a felhasználókhoz való hozzárendelésével szabályozhatja:
 
 * Tulajdonos
 * Közreműködő
@@ -71,7 +71,7 @@ A következő táblázat a főbb Azure Machine Learning-műveleteit és az azoka
 | Kísérlet futtatása | ✓ | ✓ | |
 | Futtatások/mérőszámok megtekintése | ✓ | ✓ | ✓ |
 | Modell regisztrálása | ✓ | ✓ | |
-| Lemezkép létrehozása | ✓ | ✓ | |
+| Rendszerkép létrehozása | ✓ | ✓ | |
 | Webszolgáltatás üzembe helyezése | ✓ | ✓ | |
 | Modellek/lemezképek megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
@@ -191,7 +191,7 @@ Minden virtuális gép helyi ideiglenes lemezzel is rendelkezik az operációs r
 
 További információ arról, hogyan működik a titkosítás az Azure-ban: inaktív [Azure-adattitkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
-### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 
 Az SSL használatával biztonságossá teheti a Azure Machine Learning-szolgáltatások közötti belső kommunikációt, és a pontozási végpont felé irányuló külső hívásokat is biztonságossá teheti. Az Azure Storage összes hozzáférése egy biztonságos csatornán is megtörténik.
 
@@ -215,7 +215,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 A Microsoft a nem felhasználótól származó azonosító adatokat (például az adathalmaz nevét vagy a Machine learning-kísérlet nevét) vagy a munkahelyi környezeti változókat diagnosztikai célokra gyűjtheti. Az összes ilyen adatokat a Microsoft által felügyelt kulcsok tárolják a Microsoft tulajdonában lévő előfizetésekben üzemeltetett tárolókban, és a [Microsoft szabványos adatvédelmi szabályzatát és adatkezelési szabványait](https://privacy.microsoft.com/privacystatement)követi.
 
-A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik.
+A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik. Hasonlóképpen a [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)elnevezése esetén Kerülje a bizalmas adatokat, például a felhasználóneveket vagy a titkos projektek nevét. Ezek az információk megjelenhetnek Microsoft ügyfélszolgálata mérnökök számára elérhető telemetria-naplókban.
 
 Előfordulhat, hogy a `hbi_workspace` paraméter `TRUE` a munkaterület kiépítés közben történő beállításával letilthatja a gyűjtött diagnosztikai adatokat. Ez a funkció a AzureML Python SDK, a CLI, a REST API-k vagy a Azure Resource Manager-sablonok használata esetén támogatott.
 
@@ -225,9 +225,9 @@ Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Le
 
 Érdemes lehet titkosítani az [üzembe helyezett végpontból naplózott diagnosztikai adatokat](how-to-enable-app-insights.md) az Azure Application Insights-példányba.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
 
@@ -251,8 +251,8 @@ A pontozási kérelmek részleteit a Application Insights tárolja. A munkaterü
 * UserAgent
 * ComputeType
 * RequestUrl
-* StatusCode
-* RequestId
+* statusCode
+* Kérelemazonosító
 * Időtartam
 
 > [!IMPORTANT]

@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111465"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444026"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -70,9 +70,9 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 
 **Forgatókönyv** | **DPM/MABS**
 --- | ---
-**MABS egy Azure-beli virtuális gépen** | Windows Server 2012 R2.<br/><br/> Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális a2 standard két maggal és 3,5 GB RAM-mal.
-**DPM egy Azure-beli virtuális gépen** | System Center 2012 R2, 3. frissítéssel vagy újabb verzióval.<br/><br/> Windows operációs rendszer a [System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)módon.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális a2 standard két maggal és 3,5 GB RAM-mal.
-**Helyszíni MABS** | Támogatott 64 bites operációs rendszerek:<br/><br/> MABS v3 és újabb verziók: Windows Server 2019 (standard, Datacenter, Essentials). <br/><br/> MABS v2 és újabb verziók: Windows Server 2016 (standard, Datacenter, Essentials).<br/><br/> Minden MABS-verzió: Windows Server 2012 R2.<br/><br/>Minden MABS-verzió: Windows Storage Server 2012 R2.
+**MABS egy Azure-beli virtuális gépen** |  Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+**DPM egy Azure-beli virtuális gépen** | System Center 2012 R2, 3. frissítéssel vagy újabb verzióval.<br/><br/> Windows operációs rendszer a [System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)módon.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+**Helyszíni MABS** |  MABS v3 és újabb verziók: Windows Server 2016 vagy Windows Server 2019
 **Helyszíni DPM** | Fizikai kiszolgáló vagy Hyper-V virtuális gép: System Center 2012 SP1 vagy újabb.<br/><br/> VMware virtuális gép: System Center 2012 R2, 5. frissítéssel vagy újabb verzióval.
 
 >[!NOTE]

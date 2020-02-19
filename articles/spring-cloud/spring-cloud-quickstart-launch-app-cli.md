@@ -4,14 +4,14 @@ description: Ebben a rövid útmutatóban egy minta alkalmazást helyez üzembe 
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190773"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431255"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>Nyilvános végpont kiosztása az átjáróhoz
 
-Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az átjáró alkalmazásnak nyilvános végpontra van szüksége, amely a következő paranccsal rendelhető hozzá:
+Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az átjáró alkalmazásnak nyilvános végpontra van szüksége.
+
+1. Rendelje hozzá a végpontot a következő parancs használatával:
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. A nyilvános IP-címhez tartozó **átjáró** alkalmazás lekérdezése, hogy ellenőrizze, hogy fut-e az alkalmazás:
 
-Végül kérdezze le az **átjáró** alkalmazást a nyilvános IP-címére, hogy ellenőrizze, hogy fut-e az alkalmazás:
-
+Linux:
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-Navigáljon az előző parancs által megadott URL-címhez a PiggyMetrics alkalmazás futtatásához.
+Windows:
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. Navigáljon az előző parancs által megadott URL-címhez a PiggyMetrics alkalmazás futtatásához.
     ![képernyőkép a futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 Az URL-cím megkereséséhez navigáljon a Azure Portal is. 
 1. Navigáljon a szolgáltatáshoz
-1. **Alkalmazások** kiválasztása
-1. **Átjáró** kiválasztása
+2. **Alkalmazások** kiválasztása
+3. **Átjáró** kiválasztása
 
     ![A PiggyMetrics-t futtató képernyőkép](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. Keresse meg az **átjáró áttekintő** oldalán található URL-címet ![képernyőképet a futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+    
+4. Keresse meg az **átjáró áttekintő** oldalán található URL-címet ![képernyőképet a futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

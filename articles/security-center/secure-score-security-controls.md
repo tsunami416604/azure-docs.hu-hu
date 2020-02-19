@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278028"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443584"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>A fokozottan biztonságos pontszám (előzetes verzió) 
 
@@ -91,7 +91,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
 > [!TIP]
 > Ha másképp szeretné szűrni vagy rendezni a listát, másolja és illessze be az Excelbe.
 
-|Biztonsági ellenőrzés|Maximális biztonságos pontszám pontok|Ajánlatok|
+|Biztonsági ellenőrzés|Maximális biztonságos pontszám pontok|Javaslatok|
 |----------------|:-------------------:|---------------|
 |**MFA engedélyezése**|10|– Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon<br>-Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon<br>– Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak|
 |**Biztonságos felügyeleti portok**|8|-Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken<br>– A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>– A felügyeleti portokat be kell zárni a virtuális gépeken|
@@ -101,7 +101,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
 |**Adatforgalom titkosítása**|4|– Az API-alkalmazás csak HTTPS-kapcsolaton keresztül érhető el<br>– Függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el<br>– Csak a Redis Cache biztonságos kapcsolatait kell engedélyezni<br>– Engedélyezze a biztonságos átvitelt a Storage-fiókoknak.<br>– A webalkalmazásnak csak HTTPS protokollon keresztül kell elérhetőnek lennie|
 |**Hozzáférés és engedélyek kezelése**|4|– Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni<br>-Az elavult fiókokat el kell távolítani az előfizetésből (előzetes verzió)<br>– A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből (előzetes verzió)<br>– A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből (előzetes verzió)<br>– Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből<br>– Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből (előzetes verzió)<br>– Az előfizetéshez több tulajdonost kell hozzárendelni<br>-Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban (előzetes verzió)<br>– Service Fabric-fürtöknek csak Azure Active Directory kell használnia az ügyfél-hitelesítéshez|
 |**Biztonsági konfigurációk javítása**|4|-Pod biztonsági házirendeket kell meghatározni a Kubernetes-szolgáltatásokban (előzetes verzió)<br>– A tároló biztonsági konfigurációinak javításait orvosolni kell<br>– A gépek biztonsági beállításainak javításait szervizelni kell<br>– A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell<br>– A figyelési ügynököt telepíteni kell a virtuális gépekre<br>– A figyelési ügynököt telepíteni kell a gépekre<br>– A figyelési ügynököt a virtuálisgép-méretezési csoportokra kell telepíteni<br>– A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken|
-|**Jogosulatlan hálózati hozzáférés korlátozása**|4|-Az IP-továbbítást a virtuális gépen le kell tiltani<br>-A Kubernetes-szolgáltatásokban (előzetes verzió) meg kell határozni a jóváhagyott IP-tartományokat.<br>– A App Services elérését korlátozni kell (előzetes verzió)<br>– A IaaS NSG webalkalmazásaira vonatkozó szabályokat meg kell erősíteni<br>– A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>– A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését<br>– A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését<br>– A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazás elérését<br>– A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz<br>– A távoli hibakeresést ki kell kapcsolni függvényalkalmazás<br>– A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz<br>– A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak<br>– Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani|
+|**Jogosulatlan hálózati hozzáférés korlátozása**|4|-Az IP-továbbítást a virtuális gépen le kell tiltani<br>-A Kubernetes-szolgáltatásokban (előzetes verzió) meg kell határozni a jóváhagyott IP-tartományokat.<br>-(Elavult) App Services hozzáférését korlátozni kell (előzetes verzió)<br>-(Elavult) a IaaS NSG webalkalmazásaira vonatkozó szabályokat meg kell erősíteni<br>– A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>– A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését<br>– A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését<br>– A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazás elérését<br>– A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz<br>– A távoli hibakeresést ki kell kapcsolni függvényalkalmazás<br>– A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz<br>– A hozzáférésnek korlátozva kell lennie az internetre irányuló virtuális gépekkel rendelkező, engedékeny hálózati biztonsági csoportoknak<br>– Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani|
 |**Adaptív alkalmazások vezérlésének alkalmazása**|3|-Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken<br>– A figyelési ügynököt telepíteni kell a virtuális gépekre<br>– A figyelési ügynököt telepíteni kell a gépekre<br>– A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken|
 |**Az adatbesorolás alkalmazása**|2|– Az SQL-adatbázisok bizalmas adatait be kell sorolni (előzetes verzió)|
 |**Alkalmazások elleni védelem a DDoS-támadások ellen**|2|-DDoS Protection szabványt engedélyezni kell|

@@ -1,6 +1,6 @@
 ---
-title: SCIM-végpont létrehozása az Azure AD-ből származó alkalmazásokhoz való felhasználói üzembe helyezéshez
-description: Ismerje meg, hogyan hozhat létre egy SCIM-végpontot, hogyan integrálhatja a SCIM API-t a Azure Active Directorykal, és megkezdheti a felhasználók és csoportok kiépítésének automatizálását a felhőalapú alkalmazásokba.
+title: SCIM-végpont fejlesztése az Azure AD-ből származó alkalmazások felhasználó általi üzembe helyezéséhez
+description: A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosítja a felhasználók automatikus kiépítési folyamatát. Ismerje meg, hogyan fejleszthet SCIM-végpontokat, hogyan integrálhatja a SCIM API-t a Azure Active Directoryval, és megkezdheti a felhasználók és csoportok kiépítésének automatizálását a felhőalapú alkalmazásokba.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/18/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368219"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442020"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
 
@@ -49,15 +49,53 @@ Az alkalmazások kiépítésének automatizálásához az Azure AD SCIM-kompatib
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>1\. lépés: a felhasználó és a csoport sémájának megtervezése
 
-Minden alkalmazáshoz különböző attribútumok szükségesek egy felhasználó vagy csoport létrehozásához. Az integráció megkezdéséhez azonosítsa az alkalmazás által igényelt objektumokat (felhasználókat, csoportokat) és attribútumokat (név, felettes, beosztás stb.). Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás által igényelt attribútumok hogyan képezhetők le az Azure AD-ben és a SCIM RFC-ben található attribútumokra. Vegye figyelembe, hogy [testreszabhatja](customize-application-attributes.md) az attribútumok leképezését az Azure ad és a scim végpontja között. 
+Minden alkalmazáshoz különböző attribútumok szükségesek egy felhasználó vagy csoport létrehozásához. Az integráció megkezdéséhez azonosítsa az alkalmazás által igényelt objektumokat (felhasználókat, csoportokat) és attribútumokat (név, felettes, beosztás stb.). A SCIM standard definiál egy sémát a felhasználók és csoportok kezeléséhez. Az alapvető felhasználói sémához csak három attribútum szükséges: **azonosító** (szolgáltató által definiált azonosító), **externalId** (ügyfél által definiált azonosító) és **meta** (csak olvasható metaadatok a szolgáltató által karbantartva). Az összes többi attribútum nem kötelező. Az alapszintű felhasználói sémán kívül a SCIM standard definiál egy vállalati felhasználói bővítményt és egy modellt a felhasználói séma kibővítéséhez, hogy megfeleljen az alkalmazás igényeinek. Ha például az alkalmazás egy felhasználó felettesét igényli, a vállalati felhasználói sémával összegyűjtheti a felhasználó felettesét és a központi sémát a felhasználó e-mail-címének összegyűjtéséhez. A séma kialakításához kövesse az alábbi lépéseket:
+  1. Az alkalmazás által igényelt attribútumok listázása. Hasznos lehet a követelményeknek a hitelesítéshez (pl. loginName és e-mailek) való bontása, a felhasználó életciklusának kezeléséhez szükséges attribútumok (pl. állapot/aktív) és az adott alkalmazás működéséhez szükséges egyéb attribútumok (például a kezelő, a címke).
+  2. Győződjön meg arról, hogy ezek az attribútumok már definiálva vannak-e az alapszintű felhasználói sémában vagy a vállalati felhasználói sémában. Ha az alapszintű vagy a vállalati felhasználói sémák nem fedik le az összes szükséges attribútumot, akkor meg kell adnia egy bővítményt a felhasználói sémához, amely tartalmazza a szükséges attribútumokat. Az alábbi példában egy bővítményt adtunk hozzá a felhasználóhoz, amely lehetővé teszi a felhasználó számára a "címke" kiépítési lehetőséget. A legjobb, ha csak az alapszintű és a vállalati felhasználói sémákkal indul, és később további egyéni sémákat szeretne kibővíteni.  
+  3. Képezze le a SCIM attribútumokat az Azure AD felhasználói attribútumaira. Ha a SCIM-végpontban definiált attribútumok egyike nem rendelkezik egyértelmű jogosultsággal az Azure AD felhasználói sémájában, akkor az adatai nem a legtöbb bérlőn található felhasználói objektumon vannak tárolva. Vegye figyelembe, hogy ez az attribútum nem kötelező-e a felhasználók létrehozásához. Ha az attribútum kritikus fontosságú az alkalmazás működéséhez, a bérlői rendszergazdát a séma kiterjesztéséhez, vagy a "címkék" tulajdonsághoz az alábbi ábrán látható módon használja.
 
-A felhasználói erőforrásokat a séma azonosítója azonosítja, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, amely a protokoll specifikációjában szerepel: https://tools.ietf.org/html/rfc7643.  Az Azure AD-beli felhasználók attribútumainak alapértelmezett hozzárendelése a felhasználói erőforrások attribútumaihoz az 1. táblázatban található.  
+### <a name="table-1-outline-the-attributes-that-you-need"></a>1\. táblázat: a szükséges attribútumok körvonalazása 
+| 1\. lépés: az alkalmazás által igényelt attribútumok meghatározása| 2\. lépés: az alkalmazásra vonatkozó követelmények leképezése a SCIM standard értékre| 3\. lépés: SCIM-attribútumok leképezése az Azure AD-attribútumokra|
+|--|--|--|
+|loginName|userName|userPrincipalName|
+|firstName|name.givenName|givenName|
+|lastName|név. lastName|lastName|
+|workMail|E-mailek [type EQ "work"]. Value|Mail|
+|kezelő|kezelő|kezelő|
+|tag|urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtension: címke|extensionAttribute1|
+|status|aktív|isSoftDeleted (nem a felhasználó által tárolt számított érték)|
 
-A csoport erőforrásait a séma azonosítója azonosítja, `urn:ietf:params:scim:schemas:core:2.0:Group`. A 2. táblázat az Azure AD-beli csoportok attribútumainak alapértelmezett leképezését jeleníti meg a csoport erőforrásainak attribútumaiban.
+A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye figyelembe, hogy az alkalmazáshoz szükséges attribútumok mellett a JSON-ábrázolás a szükséges "id", "externalId" és "meta" attribútumokat is tartalmazza.
 
-Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat, sem az összes alább látható attribútumot. Ezek arra utalnak, hogy az Azure AD-beli attribútumok gyakran a SCIM protokoll tulajdonságaira vannak leképezve.  
+```json
+{
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "Manager": "123456"
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "tag": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ ```
 
-### <a name="table-1-default-user-attribute-mapping"></a>1\. táblázat: Alapértelmezett felhasználói attribútumleképezés
+### <a name="table-2-default-user-attribute-mapping"></a>2\. táblázat: alapértelmezett felhasználói attribútum leképezése
+Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás által igényelt attribútumok hogyan képezhetők le az Azure AD-ben és a SCIM RFC-ben található attribútumokra. [Testreszabhatja](customize-application-attributes.md) az attribútumok leképezését az Azure ad és a scim végpontja között. Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat, sem az összes alább látható attribútumot. Ezek arra utalnak, hogy az Azure AD-beli attribútumok gyakran a SCIM protokoll tulajdonságaira vannak leképezve. 
 
 | Az Azure Active Directory-felhasználó | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -81,7 +119,7 @@ Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat
 | felhasználó-PrincipalName |userName |
 
 
-### <a name="table-2-default-group-attribute-mapping"></a>2\. táblázat: Alapértelmezett csoport attribútumleképezés
+### <a name="table-3-default-group-attribute-mapping"></a>3\. táblázat: az alapértelmezett Group attribútum leképezése
 
 | Azure Active Directory-csoport | urn: IETF: params: scim: sémák: Core: 2.0: Group |
 | --- | --- |
@@ -91,6 +129,19 @@ Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat
 | tag |tag |
 | objectId |externalId |
 | proxyAddresses |e-mailek [Írja be a eq "egyéb"]. Érték |
+
+A SCIM RFC-ben több végpont is definiálva van. Megkezdheti a/User-végpont megkezdését, majd onnan kiterjesztheti. Az/schemas-végpont hasznos lehet egyéni attribútumok használatakor, vagy ha a séma gyakran változik. Lehetővé teszi, hogy az ügyfél automatikusan lekérje a legfrissebb sémát. A/bulk végpont különösen hasznos a csoportok támogatásakor. Az alábbi táblázat a SCIM standardban definiált különböző végpontokat ismerteti. Az/schemas-végpont hasznos lehet egyéni attribútumok használatakor, vagy ha a séma gyakran változik. Lehetővé teszi, hogy az ügyfél automatikusan beolvassa a legnaprakészebb sémát. A/bulk végpont különösen hasznos a csoportok támogatásakor. Az alábbi táblázat a SCIM standardban definiált különböző végpontokat ismerteti. 
+ 
+### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>4\. táblázat: a fejleszteni kívánt végpontok meghatározása
+|VÉGPONT|LEÍRÁS|
+|--|--|
+|/User|SZIFILISZ-műveletek végrehajtása felhasználói objektumon.|
+|/Group|SZIFILISZ-műveletek végrehajtása egy csoport objektumon.|
+|/ServiceProviderConfig|A SCIM szabvány által támogatott funkciók részleteit tartalmazza, például a támogatott erőforrásokat és a hitelesítési módszert.|
+|/ResourceTypes|Az egyes erőforrásokra vonatkozó metaadatok megadása|
+|/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok különbözőek lehetnek. Míg az egyik szolgáltató tartalmazhatja a "Name", a "title" és az "e-maileket", míg egy másik szolgáltató a "Name", a "title" és a "phoneNumbers" nevet használja. A sémák végpont lehetővé teszi a támogatott attribútumok felderítését.|
+|/Bulk|A tömeges műveletek lehetővé teszik, hogy az erőforrás-objektumok nagy gyűjteményében műveleteket hajtson végre egyetlen műveletben (például egy nagy csoport frissítési tagsága).|
+
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>2\. lépés: az Azure AD SCIM implementációjának ismertetése
 > [!IMPORTANT]
@@ -671,6 +722,34 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 *HTTP/1.1 204 nincs tartalom*
 
+### <a name="security-requirements"></a>Biztonsági követelmények
+**TLS protokoll verziói**
+
+Az egyetlen elfogadható TLS protokoll-verzió a TLS 1,2 és a TLS 1,3. A TLS más verziói nem engedélyezettek. Nem engedélyezett az SSL verziója. 
+- Az RSA-kulcsoknak legalább 2 048 bitenek kell lenniük.
+- Az ECC-kulcsoknak legalább 256 bitenek kell lenniük, jóváhagyott elliptikus görbe használatával létrehozva
+
+
+**Kulcs hossza**
+
+Az összes szolgáltatásnak a megfelelő hosszúságú titkosítási kulcsok használatával generált X. 509 tanúsítványokat kell használnia, ami azt jelenti, hogy:
+
+**Titkosítási csomagok**
+
+Minden szolgáltatást úgy kell konfigurálni, hogy a következő titkosítási csomagokat használja az alább megadott sorrendben. Vegye figyelembe, hogy ha csak RSA-tanúsítvánnyal rendelkezik, akkor a ECDSA titkosítási csomagok nem lépnek érvénybe. </br>
+
+TLS 1,2 titkosítási csomagok minimális sávja:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+
 ## <a name="step-3-build-a-scim-endpoint"></a>3\. lépés: SCIM-végpont létrehozása
 
 Ha olyan SCIM webszolgáltatást hoz létre, amely a Azure Active Directory felülettel rendelkezik, engedélyezheti az automatikus felhasználók üzembe helyezését gyakorlatilag bármely alkalmazáshoz vagy identitás-tárolóhoz.
@@ -885,7 +964,7 @@ A szolgáltatás Internet Information Serviceson belüli üzemeltetéséhez a fe
 
 ### <a name="handling-endpoint-authentication"></a>Kezelési végpont hitelesítés
 
-Az Azure Active Directoryból kérések az OAuth 2.0 tulajdonosi jogkivonat tartalmazzák. A kérést fogadó bármely szolgáltatásnak hitelesítenie kell a kibocsátót úgy, hogy Azure Active Directory a várt Azure Active Directory bérlő számára, hogy hozzáférjen a Microsoft Graph API szolgáltatáshoz. A jogkivonatban a kiállítót egy ISS jogcím azonosítja, például az "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Ebben a példában a jogcím értéke, https://sts.windows.net, azonosítja Azure Active Directoryt a kiállítóként, míg a relatív cím szegmens, a cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, annak a Azure Active Directory-bérlőnek az egyedi azonosítója, amelynek a jogkivonatát kiállították. A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban. Az összes egyéni alkalmazáshoz tartozó 8adf8e6e-67b2-4cf2-a259-e3dc5476c621-azonosító. A katalógusban szereplő alkalmazások sablonjának azonosítója változó. Vegye fel a kapcsolatot a ProvisioningFeedback@microsoft.com kérdéseivel a Gallery-alkalmazáshoz tartozó Application Template-AZONOSÍTÓval kapcsolatban. Az egyetlen bérlőben regisztrált összes alkalmazás ugyanazon `iss` jogcímet kaphat SCIM-kérésekkel.
+Az Azure Active Directoryból kérések az OAuth 2.0 tulajdonosi jogkivonat tartalmazzák.   A kérést fogadó bármely szolgáltatásnak hitelesítenie kell a kibocsátót úgy, hogy Azure Active Directory a várt Azure Active Directory bérlő számára, hogy hozzáférjen a Microsoft Graph API szolgáltatáshoz.  A jogkivonatban a kiállítót egy ISS jogcím azonosítja, például az "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Ebben a példában a jogcím értéke, https://sts.windows.net, azonosítja Azure Active Directoryt a kiállítóként, míg a relatív cím szegmens, a cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, annak a Azure Active Directory-bérlőnek az egyedi azonosítója, amelynek a jogkivonatát kiállították. A jogkivonat célközönsége lesz az alkalmazás sablon-azonosítója a katalógusban. Az összes egyéni alkalmazáshoz tartozó 8adf8e6e-67b2-4cf2-a259-e3dc5476c621-azonosító. A katalógusban szereplő alkalmazások sablonjának azonosítója változó. Vegye fel a kapcsolatot a ProvisioningFeedback@microsoft.com kérdéseivel a Gallery-alkalmazáshoz tartozó Application Template-AZONOSÍTÓval kapcsolatban. Az egyetlen bérlőben regisztrált összes alkalmazás ugyanazon `iss` jogcímet kaphat SCIM-kérésekkel.
 
 A SCIM szolgáltatás létrehozásához a Microsoft által biztosított CLI Azure Active Directory-kódtárakat használó fejlesztők a Microsoft. Owin. Security. ActiveDirectory csomag használatával hitelesíthetők a következő lépésekkel: 
 
@@ -1370,11 +1449,20 @@ Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Engedélyezés a kiépítési összekötők számára az alkalmazás-katalógusban
 A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az engedélyezéshez. A meglévő iparági szabványok használatára támaszkodik. Az Azure AD-kiépítési ügyfél két engedélyezési módszert támogat a katalógusban lévő alkalmazásokhoz. 
 
+|Engedélyezési módszer|Szakemberek számára|Hátrányok|Támogatás|
+|--|--|--|--|
+|Felhasználónév és jelszó (az Azure AD nem javasolja vagy támogatja)|Könnyen megvalósítható|Nem biztonságos – [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|A Gallery-alkalmazások eseti alapon támogatottak. Nem Gallery-alkalmazások esetében nem támogatott.|
+|Hosszú élettartamú tulajdonosi jogkivonat (jelenleg az Azure AD által támogatott)|A hosszú élettartamú tokenek nem igénylik a felhasználó jelenlétét. A rendszergazdák egyszerűen használhatók a kiépítés beállításakor.|A hosszú élettartamú tokenek nehezen oszthatók meg rendszergazdaként anélkül, hogy nem biztonságos módszereket, például e-maileket kellene használnia. |A katalógus és a nem Gallery-alkalmazások esetében támogatott. |
+|OAuth engedélyezési kód engedélyezése (jelenleg az Azure AD által támogatott)|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|Gallery-alkalmazások esetén támogatott. Nem Gallery-alkalmazások támogatása folyamatban van.|
+|OAuth-ügyfél hitelesítő adatainak megadása (nem támogatott, az ütemterven)|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
+
 **OAuth engedélyezési kód engedélyezése:** A kiépítési szolgáltatás támogatja az [engedélyezési kód engedélyezését](https://tools.ietf.org/html/rfc6749#page-24). Miután elküldte az alkalmazást a katalógusban való közzétételre vonatkozó kérelmét, a csapat együttműködik Önnel a következő információk összegyűjtéséhez:
 *  Engedélyezési URL-cím: az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. 
 *  Jogkivonat-Exchange URL-cím: az ügyfél URL-címe, amely egy hozzáférési jogkivonat engedélyezési engedélyének kiváltására használható, jellemzően az ügyfél-hitelesítéssel.
 *  Ügyfél-azonosító: az engedélyezési kiszolgáló kiállítja a regisztrált ügyfelet az ügyfél-azonosítóval, amely egy egyedi karakterlánc, amely az ügyfél által megadott regisztrációs adatokat jelképezi.  Az ügyfél-azonosító nem titok; az erőforrás tulajdonosának van kitéve, és **nem** használható egyedül az ügyfél-hitelesítéshez.  
 *  Ügyfél titka: az ügyfél titkos kulcsa az engedélyezési kiszolgáló által generált titok. Egyedi értéknek kell lennie, amely csak az engedélyezési kiszolgáló számára ismert. 
+
+Vegye figyelembe, hogy az OAuth v1 nem támogatott az ügyfél titkos kulcsa miatt. A OAuth v2 támogatott.  
 
 Ajánlott eljárások (javasolt, de nem kötelező):
 * Több átirányítási URL-cím támogatása. A rendszergazdák a "portal.azure.com" és a "aad.portal.azure.com" típusból is konfigurálhatják az üzembe helyezést. Több átirányítási URL-cím támogatása biztosítja, hogy a felhasználók bármelyik portálról engedélyezzék a hozzáférést.

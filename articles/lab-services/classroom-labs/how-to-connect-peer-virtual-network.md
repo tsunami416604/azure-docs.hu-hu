@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701667"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443190"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának összekötése egy társ virtuális hálózattal Azure Lab Services 
 Ez a cikk a labor-hálózat más hálózattal való társításával kapcsolatos információkat tartalmaz. 
@@ -34,7 +34,7 @@ Előfordulhat, hogy a tesztkörnyezet hálózatát egy társ virtuális hálóza
 Bizonyos helyszíni hálózatok az Azure-Virtual Networkhoz kapcsolódnak [ExpressRoute](../../expressroute/expressroute-introduction.md) vagy [Virtual Network átjárón](../../vpn-gateway/vpn-gateway-about-vpngateways.md)keresztül. Ezeket a szolgáltatásokat Azure Lab Serviceson kívül kell beállítani. Ha szeretne többet megtudni arról, hogyan csatlakoztathat helyszíni hálózatot az Azure-hoz az ExpressRoute használatával, tekintse meg az [ExpressRoute áttekintése](../../expressroute/expressroute-introduction.md)című témakört. Virtual Network átjárót használó helyszíni kapcsolat esetén az átjárónak, a megadott virtuális hálózatnak és a labor-fióknak ugyanabban a régióban kell lennie.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
-Az új Labor-fiók létrehozása során kiválaszthat egy meglévő virtuális hálózatot, amely a **társ virtuális hálózat** legördülő listában látható. A kiválasztott virtuális hálózat csatlakoztatva van a labor-fiókban létrehozott laborokhoz. Az összes olyan virtuális gép, amely a módosítás létrehozása után jön létre, hozzáférhet a virtuális hálózatban lévő erőforrásokhoz. 
+Az új Labor-fiók létrehozása során kiválaszthat egy meglévő virtuális hálózatot, amely a **speciális** lapon, a **társ virtuális hálózat** legördülő listában látható. A kiválasztott virtuális hálózat csatlakoztatva van a labor-fiókban létrehozott laborokhoz. Az összes olyan virtuális gép, amely a módosítás létrehozása után jön létre, hozzáférhet a virtuális hálózatban lévő erőforrásokhoz. 
 
 ![VNet kiválasztása társként](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -56,8 +56,8 @@ Ha kijelöl egy virtuális hálózatot a **társ virtuális hálózat** mezőhö
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
-- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
-- [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
-- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)
-
+- [Tesztkörnyezet helyének engedélyezése a labor Creator számára](allow-lab-creator-pick-lab-location.md)
+- [Megosztott képgyűjtemény csatolása laborhoz](how-to-attach-detach-shared-image-gallery.md)
+- [Felhasználó hozzáadása labor tulajdonosként](how-to-add-user-lab-owner.md)
+- [Tesztkörnyezet beállításainak megtekintése](how-to-configure-firewall-settings.md)
+- [A labor egyéb beállításainak konfigurálása](how-to-configure-lab-accounts.md)

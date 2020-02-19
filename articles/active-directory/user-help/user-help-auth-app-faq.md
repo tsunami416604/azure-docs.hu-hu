@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063883"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443618"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -52,6 +52,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Miért kapok értesítést a fiókommal kapcsolatos tevékenységről? | Ha többet szeretne megtudni arról, hogy mi történik a személyes Microsoft-fiókával kapcsolatban, tevékenység-értesítéseket küldünk a Microsoft Authenticator alkalmazásnak. Ezek az értesítések azonnal megjelennek valami változás után, így segítve a biztonság megőrzését. Korábban elküldte ezeket az értesítéseket e-mailben és SMS-ben, és már kiterjesztjük az alkalmazást is. További információ ezekről a tevékenységi értesítésekről: [Mi történik, ha szokatlan bejelentkezés van a fiókjába](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Ha meg szeretné változtatni, hogy hol kapja meg az értesítéseket, jelentkezzen be, ahol kapcsolatba léphet a fiókja [nem kritikus fiókkal kapcsolatos riasztások](https://account.live.com/SecurityNotifications/Update) oldalával. |
 | A munkahelyi vagy iskolai fiókba való bejelentkezéskor az iOS-hez készült alapértelmezett e-mail-alkalmazás használatával a rendszer rákérdez a biztonsági ellenőrzési információk Microsoft Authenticator alkalmazásra. Miután megtörtént az információ megadása és a posta alkalmazásba való visszatérés, hibaüzenetet kapok. Mit tehetek? | Ez valószínűleg azért történik, mert a bejelentkezés és a levelező alkalmazás két különböző alkalmazásban fordul elő, így a kezdeti háttér-bejelentkezési folyamat leáll, és sikertelen lesz. Ha szeretné kijavítani ezt a megoldást, javasoljuk, hogy a képernyő jobb alsó sarkában lévő **Safari** ikonra kattintva jelentkezzen be a levelező alkalmazásba. A Safariba való áthelyezéssel a teljes bejelentkezési folyamat egyetlen alkalmazásban történik, amely lehetővé teszi, hogy sikeresen bejelentkezzen az alkalmazásba. |
 | Az egyszeri jelszavas (OTP) kódok nem működnek. Mit tegyek? | Győződjön meg arról, hogy az eszközön megadott dátum és idő megfelelő, és hogy a rendszer automatikusan szinkronizálja őket. Ha a dátum és az idő helytelen, vagy nincs szinkronban, a kód nem fog működni. |
+| A Windows 10 Mobile operációs rendszer elavulttá vált a 2019 decemberében. A Windows Mobile operációs rendszerek Microsoft Authenticator is elavulttá válik? | A Microsoft Authenticator alkalmazás az összes Windows Mobile operációs rendszeren a 2020. február 28. után nem lesz támogatott. A felhasználók nem jogosultak arra, hogy a fenti dátum után új frissítéseket kapjanak az alkalmazásnak. Február 28. után a 2020-es Microsoft-szolgáltatások, amelyek jelenleg támogatják a Microsoft Authenticator összes Windows Mobile operációs rendszeren történő hitelesítését, megkezdik a támogatásuk kivonását. A Microsoft-szolgáltatásokban való hitelesítéshez határozottan javasoljuk, hogy minden felhasználó számára a jelen dátum előtt váltson át egy másik hitelesítési mechanizmusra. |
 
 ## <a name="next-steps"></a>Következő lépések
 

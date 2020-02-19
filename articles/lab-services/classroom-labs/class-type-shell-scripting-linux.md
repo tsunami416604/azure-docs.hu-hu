@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133679"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443550"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Tesztkörnyezet beállítása a rendszerhéj-parancsfájlok Linuxon való tanításához
 Ez a cikk bemutatja, hogyan állíthat be egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához. A parancsfájlok hasznos részét képezik a rendszerfelügyeletnek, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a példában az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat tartalmazza. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek a bash-parancsokat és a Ruby-t ötvözik. Ez a módszer lehetővé teszi a Ruby számára, hogy a Shell használatával kommunikáljon a környékre és bash-parancsokra. 
@@ -32,7 +32,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ----------- | ------------ |  
-| Marketplace-rendszerképek | Engedélyezze az [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -rendszerkép használatát a labor-fiókjában. További információ: a [piactéren elérhető rendszerképek megadása a labor-készítők](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) számára | 
+| Marketplace-rendszerképek | Engedélyezze az [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -rendszerkép használatát a labor-fiókjában. További információ: a [piactéren elérhető rendszerképek megadása a labor-készítők](specify-marketplace-images.md)számára. | 
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, és alkalmazza a következő beállításokat:
 

@@ -1,6 +1,6 @@
 ---
-title: Felhasználó hozzáadása labor tulajdonosként Azure Lab Services
-description: Ez a cikk bemutatja, hogyan adhat hozzá felhasználót tulajdonosként egy laborhoz.
+title: További tulajdonosok hozzáadása laborhoz Azure Lab Services
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá egy felhasználót tulajdonosként egy laborhoz Azure Lab Servicesban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,20 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480852"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443516"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Felhasználó hozzáadása osztálytermi labor tulajdonosaként Azure Lab Services
-Ebből a cikkből megtudhatja, hogyan adhat hozzá egy felhasználót egy labor tulajdonosaként a Azure Lab Services-ben.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>További tulajdonosok hozzáadása meglévő laborhoz Azure Lab Services
+Ez a cikk bemutatja, hogyan adhat hozzá további tulajdonosokat egy meglévő laborhoz a rendszergazdaként.
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Felhasználó hozzáadása az olvasó szerepkörhöz a labor-fiókhoz
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Ha egy felhasználót további tulajdonosként szeretne hozzáadni egy meglévő laborhoz, először meg kell adnia a felhasználó **olvasási** engedélyeit a labor-fiókban.
+
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Keresse meg a **labor Services**elemet, majd válassza ki.
 3. Válassza ki a **labor-fiókját** a listából. 
 2. A **labor-fiók lapon**válassza a bal oldali menüben a **Access Control (iam)** lehetőséget. 

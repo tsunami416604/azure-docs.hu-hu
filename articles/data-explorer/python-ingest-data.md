@@ -7,26 +7,28 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355931"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442003"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Adatbevitel az Azure Adatkezelő Python Library használatával
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezekkel a kódtárakkal adatokat tölthet be egy fürtbe, illetve adatokat kérdezhet le a kódból. Ebben a cikkben először létrehoz egy táblát és egy adatleképezést egy fürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+Ebben a cikkben az Azure Adatkezelő Python Library használatával végezheti el az adatfeldolgozást. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer két ügyfélkódtárat biztosít a Python számára: egy [betöltési kódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) és [egy adatkódtárat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ezek a kódtárak lehetővé teszik az adatok betöltését vagy betöltését egy fürtbe, illetve a kód adatainak lekérdezését.
 
-Ez a cikk [Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)-jegyzetfüzetként is elérhető.
+Először hozzon létre egy táblát és egy adatleképezést a fürtben. Ezután sorba helyezi a fürtbe való betöltést, és ellenőrzi az eredményeket.
+
+Ez a cikk [Azure-jegyzetfüzetként](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Egy fürt és egy adatbázis](create-cluster-database-portal.md)
+* [Python 3.4 +](https://www.python.org/downloads/).
 
-* A fejlesztői számítógépen telepített [Python](https://www.python.org/downloads/)
+* [Egy fürt és egy adatbázis](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Az adatok telepítése és a kódtárak betöltése
 
@@ -103,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>Tábla létrehozása a fürtön
 
-Hozzon létre egy táblát, amely megfelel a StormEvents.csv fájlban szereplő adatok sémájának. A kód futtatásakor a következőhöz hasonló üzenetet ad vissza: A *bejelentkezéshez egy webböngésző segítségével nyissa meg a lapot https://microsoft.com/devicelogin , és adja meg a hitelesíteni kívánt F3W4VWZDM*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
+Hozzon létre egy táblát, amely megfelel a StormEvents.csv fájlban szereplő adatok sémájának. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az F3W4VWZDM kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához. A kapcsolatot létrehozó későbbi kódblokkokhoz ismét be kell jelentkeznie.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -181,6 +183,6 @@ Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforr
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatlekérdezés a Python használatával](python-query-data.md)

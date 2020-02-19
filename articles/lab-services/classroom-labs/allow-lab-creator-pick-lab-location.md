@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211008"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444366"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>A labor létrehozójának kiválasztási helyének engedélyezése a laborban Azure Lab Services
 Azure Lab Services a labor-fiók tulajdonosa engedélyezheti a labor-létrehozók (oktatók) számára, hogy kiválasszák a létrehozott labor helyét. Ez a hely eltérő lehet a labor-fiók helyétől. A hely az Azure-régiók egy csoportja. Például Egyesült Államok hely olyan régiók csoportja, mint például az USA keleti régiója, az USA nyugati régiója és így tovább. 
@@ -73,6 +73,8 @@ Korábban a díjszabás a laborhoz választott virtuálisgép-mérettől függ. 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
-- [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
-- [Tesztkörnyezet tulajdonosaként konfigurálhatja és szabályozhatja a labor használatát](how-to-configure-student-usage.md)
+- [A labor hálózatának összekötése egy társ virtuális hálózattal](how-to-connect-peer-virtual-network.md)
+- [Megosztott képgyűjtemény csatolása laborhoz](how-to-attach-detach-shared-image-gallery.md)
+- [Felhasználó hozzáadása labor tulajdonosként](how-to-add-user-lab-owner.md)
+- [Tesztkörnyezet beállításainak megtekintése](how-to-configure-firewall-settings.md)
+- [A labor egyéb beállításainak konfigurálása](how-to-configure-lab-accounts.md)

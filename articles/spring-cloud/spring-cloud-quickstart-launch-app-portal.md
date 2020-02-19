@@ -4,14 +4,14 @@ description: Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást helyezhe
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251821"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431329"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -54,20 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Szolgáltatási példány kiépítése a Azure Portal
 
-1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
+1. Az új lapon nyissa meg a [Azure Portal](https://ms.portal.azure.com/). 
 
-1. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
-    - Szolgáltatás neve: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - Előfizetés: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
-    - Erőforráscsoport: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás.
-    - Hely: válassza ki a szolgáltatás példányának helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
+2. A felső keresőmezőbe keressen az **Azure Spring Cloud**kifejezésre.
 
-1. Kattintson **a felülvizsgálat és létrehozás**gombra.
+3. Válassza az **Azure Spring Cloud** lehetőséget az eredmények közül.
 
-1. Ellenőrizze a specifikációkat, majd kattintson a **Létrehozás**gombra.
+ ![ASC ikon](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
->[!Note]
-> Ha a sablon ellenőrzése több mint 3 percet vesz igénybe, próbálja meg letiltani a nyomkövetést, és próbálkozzon újra.
+4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás**gombra.
+
+ ![ASC ikon](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
+    - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
+    - **Erőforráscsoport**: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás.
+    - **Szolgáltatás részletei/név**: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - **Hely**: válassza ki a szolgáltatás példányának helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
+
+    ![ASC-portál indítása](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Kattintson a **diagnosztikai beállítások** lapra a következő párbeszédpanel megnyitásához.
+
+7. Beállíthatja, hogy a **naplók engedélyezése** *Igen* vagy *nem* a követelmények szerint történjen.
+
+    ![Naplók engedélyezése](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. Kattintson a **nyomkövetés** fülre.
+
+9. A **nyomkövetés engedélyezése** beállítást *Igen* vagy *nem* értékre állíthatja a követelmények szerint.  Ha a **nyomkövetés engedélyezése** beállítást Igen értékre állítja, válasszon ki egy meglévő alkalmazás-betekintést, vagy hozzon létre egy újat. A **Application Insights** specifikáció nélkül érvényesítési hiba történik.
+
+
+    ![Nyomkövetés](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. Kattintson **a felülvizsgálat és létrehozás**gombra.
+
+11. Ellenőrizze a specifikációkat, majd kattintson a **Létrehozás**gombra.
 
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A telepítés után megjelenik a szolgáltatási példány **Áttekintés** lapja.
 
@@ -79,9 +101,9 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
 
-1. Az **alapértelmezett adattár** szakaszban állítsa az **URI** -t "https://github.com/Azure-Samples/piggymetrics-config" értékre.
+2. Az **alapértelmezett adattár** szakaszban állítsa az **URI** -t "https://github.com/Azure-Samples/piggymetrics-config" értékre.
 
-1. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
+3. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -98,27 +120,27 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Hozza létre a klónozott csomagot.
+2. Hozza létre a klónozott csomagot.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Neveket rendelhet hozzá az erőforráscsoporthoz és a szolgáltatáshoz. Ügyeljen arra, hogy az alábbi helyőrzőket az oktatóanyag korábbi részében kiépített erőforráscsoport-névvel és szolgáltatás nevével helyettesítse.
+3. Neveket rendelhet hozzá az erőforráscsoporthoz és a szolgáltatáshoz. Ügyeljen arra, hogy az alábbi helyőrzőket az oktatóanyag korábbi részében kiépített erőforráscsoport-névvel és szolgáltatás nevével helyettesítse.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Hozza létre a `gateway` alkalmazást, és telepítse a JAR-fájlt.
+4. Hozza létre a `gateway` alkalmazást, és telepítse a JAR-fájlt.
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Ugyanezt a mintát követve hozza létre a `account-service` és `auth-service` alkalmazásokat, és telepítse a JAR-fájljait.
+5. Ugyanezt a mintát követve hozza létre a `account-service` és `auth-service` alkalmazásokat, és telepítse a JAR-fájljait.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -127,7 +149,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Az alkalmazások üzembe helyezésének befejezése néhány percet vesz igénybe. Annak ellenőrzéséhez, hogy telepítve vannak-e, nyissa meg az **alkalmazások** panelt a Azure Portal. A három alkalmazás sorát kell látnia.
+6. Az alkalmazások üzembe helyezésének befejezése néhány percet vesz igénybe. Annak ellenőrzéséhez, hogy telepítve vannak-e, nyissa meg az **alkalmazások** panelt a Azure Portal. A három alkalmazás sorát kell látnia.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -136,13 +158,13 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Nyissa meg a bal oldali menü **alkalmazások** lapját.
 
-1. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
+2. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
 
-1. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez eltarthat néhány percig.
+3. Válassza a **végpont társítása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez eltarthat néhány percig.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános végpontot (címkével ellátott **URL-címet**) a böngészőben.
+4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános végpontot (címkével ellátott **URL-címet**) a böngészőben.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

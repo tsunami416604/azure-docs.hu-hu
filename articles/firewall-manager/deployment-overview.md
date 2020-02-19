@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502029"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443125"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager előzetes verziójának üzembe helyezése – áttekintés
 
@@ -20,23 +20,32 @@ ms.locfileid: "73502029"
 
 Azure Firewall Manager előzetes verzióját több módon is üzembe helyezheti, de a következő általános folyamat ajánlott.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="general-deployment-process"></a>Az üzembe helyezés általános folyamata
 
-> [!IMPORTANT]
-> A Azure Firewall Manager előzetes verzióját explicit módon engedélyezni kell a `Register-AzProviderFeature` PowerShell-paranccsal.
->Futtassa a következő parancsokat egy PowerShell-parancssorból:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. Futtassa a következő parancsot a > regisztrációs állapotának megtekintéséhez:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+### <a name="hub-virtual-networks"></a>Hub virtuális hálózatok
+
+1.  Tűzfalszabály létrehozása
+
+    - Új szabályzat létrehozása
+<br>*vagy*<br>
+    - Alapszintű házirend származtatása és helyi házirend testreszabása
+<br>*vagy*<br>
+    - Szabályok importálása meglévő Azure Firewallból. Győződjön meg arról, hogy eltávolítja a NAT-szabályokat a több tűzfalon alkalmazni kívánt házirendekről
+1. A hub és a küllő architektúra létrehozása
+   - Központi Virtual Network létrehozása a Azure Firewall Manager és a társ-küllős virtuális hálózatok használatával a virtuális hálózati kapcsolatok használatával
+<br>*vagy*<br>
+    - Virtuális hálózat létrehozása és virtuális hálózati kapcsolatok és társ-küllős virtuális hálózatok hozzáadása virtuális hálózati kapcsolaton keresztül
+
+3. Válassza a biztonsági szolgáltatók lehetőséget, és rendeljen hozzá tűzfal-házirendet. Jelenleg csak Azure Firewall támogatott szolgáltató.
+
+   - Ez egy központi Virtual Network létrehozásakor történik.
+<br>*vagy*<br>
+    - Meglévő virtuális hálózat konvertálása központi Virtual Networkra. Több virtuális hálózat is konvertálható.
+
+4. Konfigurálja a felhasználói útvonalakat úgy, hogy átirányítsa a forgalmat a hubhoz Virtual Network tűzfalon.
 
 
-
-## <a name="general-deployment-process"></a>Általános telepítési folyamat
+### <a name="secured-virtual-hubs"></a>Biztonságos virtuális hubok
 
 1. A hub és a küllő architektúra létrehozása
 
@@ -59,6 +68,6 @@ Azure Firewall Manager előzetes verzióját több módon is üzembe helyezheti,
 > - A vWAN lévő hubok esetében nem lehet átfedésben lévő IP-szóközök.
 > - A hub-VNet kapcsolatainak ugyanabban a régióban kell lenniük, mint a hub-nak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával](secure-cloud-network.md)

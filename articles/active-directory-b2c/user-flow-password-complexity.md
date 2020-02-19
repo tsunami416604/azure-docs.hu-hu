@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847809"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430329"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
@@ -37,7 +37,7 @@ Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni sza
 
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 3. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
@@ -73,7 +73,7 @@ Lehetővé teszi a jelszó hosszára vonatkozó követelmények szabályozását
 Lehetővé teszi a jelszóban használt különböző karakterkészletek szabályozását.
 
 - **2/4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám és egy kisbetűs karakter.
-- **3 – 4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám, egy kisbetűs karakter és egy nagybetűs karakter.
+- **3 – 4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó legalább három karaktert tartalmazzon. Például egy szám, egy kisbetűs karakter és egy nagybetűs karakter.
 - **4/4: kisbetűs karakter, nagybetűs karakter, szám (0-9), a szimbólum biztosítja,** hogy a jelszó tartalmazza az összes karaktert.
 
     > [!NOTE]

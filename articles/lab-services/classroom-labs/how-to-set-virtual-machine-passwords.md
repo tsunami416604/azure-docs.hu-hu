@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583494"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443227"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -97,7 +97,10 @@ A labor Creator (oktató/professzor) a következő feltételek teljesülése ese
 
 ![Kapcsolódás tanulói virtuális géphez gomb](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> Ha a professzor elindítja a virtuális gépet, és csatlakozik hozzá, a tanulói kvóta nincs hatással. 
+
+## <a name="next-steps"></a>Következő lépések
 Ha szeretne többet megtudni a tanulók által beállítható egyéb használati lehetőségekről, tekintse meg a következő cikket: a [tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 A virtuális gépek jelszavának alaphelyzetbe állításáról a következő témakörben olvashat: [Virtual Machines-jelszó beállítása vagy alaphelyzetbe állítása a tanterem Labs-ban (diákok)](how-to-set-virtual-machine-passwords-student.md).

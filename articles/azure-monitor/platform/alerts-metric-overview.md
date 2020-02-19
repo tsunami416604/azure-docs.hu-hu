@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850057"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444162"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikai riasztások működésének ismertetése Azure Monitor
 
@@ -20,7 +20,7 @@ A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett műk
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikus riasztások?
 
-Meghatározhatja a metrika riasztási szabályát úgy, hogy megadhatja a figyelni kívánt cél erőforrást, a metrika nevét, a feltétel típusát (statikus vagy dinamikus), valamint a feltételt (egy operátort és egy küszöbértéket/érzékenységet), valamint egy, a riasztási szabály által kiváltott műveleti csoportot. A feltétel típusa befolyásolja a küszöbértékek meghatározásának módját. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
+Meghatározhatja a metrika riasztási szabályát úgy, hogy megadhatja a figyelni kívánt cél erőforrást, a metrika nevét, a feltétel típusát (statikus vagy dinamikus), valamint a feltételt (egy operátort és egy küszöbértéket/érzékenységet), valamint egy, a riasztási szabály által kiváltott műveleti csoportot. A feltételtípusok befolyásolják a küszöbértékek meghatározási módját. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
 
 ### <a name="alert-rule-with-static-condition-type"></a>Riasztási szabály statikus feltétel típussal
 
@@ -125,15 +125,15 @@ A visszapillantási időszakok és a szabálysértések számának növelése is
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Méretezés a metrikus riasztások használatával Azure Monitor
 
-Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor egy metrikai riasztási szabállyal több erőforrás figyelését is támogatja. Ez a funkció jelenleg csak virtuális gépeken, SQL Server-adatbázisokon, az SQL Server rugalmas készleteken és az adatbox Edge-eszközökön támogatott. Egyetlen metrikai riasztás is képes figyelni az erőforrásokat egy Azure-régióban.
+Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor az ugyanazon az Azure-régióban található erőforrások esetében is támogatja több erőforrás (azonos típusú) figyelését egy metrikai riasztási szabállyal. Ez a funkció jelenleg csak az Azure nyilvános felhőben támogatott, és csak a Virtual Machines, az SQL Server-adatbázisok, az SQL Server rugalmas készletei és az adatbox Edge-eszközök esetében. Ez a funkció csak a platform metrikái esetében érhető el, és az egyéni metrikák esetében nem támogatott.
 
-A figyelés hatókörét egyetlen metrikai riasztással adhatja meg a háromféle módon:
+A figyelés hatókörét egyetlen metrikai riasztási szabály szerint adhatja meg a háromféle módon:
 
 - egy Azure-régióban lévő virtuális gépek listája egy előfizetésen belül
 - az előfizetésben lévő egy vagy több erőforráscsoport összes virtuális gépe (egy Azure-régióban)
 - minden virtuális gép (egy Azure-régióban) egy előfizetésben
 
-Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes virtuális géphez külön értesítést fog kapni.
+Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes megfigyelt erőforráshoz külön értesítést fog kapni.
 
 ## <a name="typical-latency"></a>Jellemző késés
 

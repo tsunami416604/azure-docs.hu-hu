@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206301"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430408"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -58,7 +58,7 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához l
 
 Jelenleg csak a következő régiók támogatottak:
 
-- Elérhető az USA keleti régiójában, az USA 2. nyugati régiójában és az USA déli középső régiójában.
+- Elérhető az USA keleti régiójában, az USA 2. nyugati régiójában, az USA déli középső régiójában, Egyesült Királyság déli régiója régióban.
 - Elérhető nyilvános előzetesként az USA nyugati középső régiójában, az USA 2. keleti régiójában, Közép-Kanada és Észak-Európa régióban.
 
 ### <a name="restrictions"></a>Korlátozások

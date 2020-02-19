@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center és az Azure Kubernetes Service | Microsoft Docs
+title: Azure Security Center és az Azure Kubernetes szolgáltatás
 description: Ismerkedjen meg Azure Security Center Azure Kubernetes-szolgáltatásokkal való integrálásával
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a5d01978d8a4883d760e7ecf84afa381dfd563d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868558"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441952"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Az Azure Kubernetes Services integrációja Security Center (előzetes verzió)
 Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. 
@@ -34,21 +34,26 @@ Ez a két eszköz együttesen a legjobb Felhőbeli natív Kubernetes biztonsági
 
 A két szolgáltatás együttes használata a következőket biztosítja:
 
-* **Biztonsági javaslatok** – Security Center AZONOSÍTJA az AK-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az egyes erőforrásokra vonatkozó biztonsági javaslatokat. További információ: [a biztonsági javaslatok implementálása](security-center-recommendations.md). 
+* **Biztonsági javaslatok** – Security Center AZONOSÍTJA az AK-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az egyes erőforrásokra vonatkozó biztonsági javaslatokat. További információkért tekintse meg a tárolók javaslatait a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-computeapp). 
 
     > [!NOTE]
-    > Ha egy Security Center javaslat neve "(előzetes verzió)" címkével végződik, a javaslat előnézeti természetére hivatkozik; nem a funkció.
+    > Ha egy Security Center javaslat neve "(előzetes verzió)" címkével végződik, a javaslat előnézeti természetére hivatkozik, nem a szolgáltatásra.
 
-* **Környezet megerősítése** – Security Center folyamatosan figyeli a Kubernetes-fürtök konfigurációját, és biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
+* **Környezet megerősítése** – Security Center folyamatosan figyeli a Kubernetes-fürtök és a Docker-konfigurációk konfigurációját. Ezután biztonsági javaslatokat hoz létre az iparági szabványoknak megfelelően.
 
-* **Futásidejű védelem** – a következő AK-források folyamatos elemzése révén Security Center riasztásokat küld a gazdagépen és az AK *-* fürt szintjén észlelt fenyegetésekkel és rosszindulatú tevékenységgel kapcsolatban (További információ: az [Azure-tárolók veszélyforrások észlelése](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)):
+* **Futásidejű védelem** – a következő AK-források folyamatos elemzése révén Security Center riasztást küld, és a gazdagépen és az AK *-* beli fürt szintjén észlelt kártékony tevékenységekre figyelmeztet:
     * Nyers biztonsági események, például a hálózati adatfeldolgozás és a folyamat létrehozása
     * A Kubernetes naplója
+
+    További információ: [veszélyforrások észlelése Azure-tárolók esetén](security-center-alerts-compute.md#azure-containers-)
+
+    A lehetséges riasztások listájáért tekintse meg a riasztások hivatkozási táblázatának következő részeit: [AK-fürt szintű riasztások](alerts-reference.md#alerts-akscluster) és [tároló-gazdagép szintű riasztások](alerts-reference.md#alerts-containerhost).  
 
 ![Azure Security Center és az Azure Kubernetes szolgáltatás (ak) részletesebben](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
 > A Kubernetes-környezet Azure Security Center által beolvasott adatok némelyike bizalmas adatokat is tartalmazhat.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -57,7 +62,5 @@ Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkci
 * [Azure Security Center és tárolók biztonsága](container-security.md)
 
 * [Integráció a Azure Container Registry](azure-container-registry-integration.md)
-
-* [Virtuális gépek védelme](security-center-virtual-machine-protection.md) – a Security Center javaslatainak ismertetése
 
 * [Adatkezelés a Microsoftnál](https://www.microsoft.com/trust-center/privacy/data-management) – ismerteti a Microsoft-szolgáltatások (például az Azure, az Intune és az Office 365) adatszabályzatait, a Microsoft adatkezelésének részleteit és az adatokat érintő adatmegőrzési házirendeket.

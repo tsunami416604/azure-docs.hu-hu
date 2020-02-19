@@ -1,22 +1,24 @@
 ---
-title: A Tárházak engedélyei
-description: Hozzon létre egy jogkivonatot, amely a beállításjegyzékben meghatározott adattárakra vonatkozik a képek lekéréséhez vagy leküldéséhez.
+title: Engedélyek a Azure Container Registry adattárakhoz
+description: Hozzon létre egy jogkivonatot, amely a beállításjegyzék adott tárházára vonatkozik a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához.
 ms.topic: article
-ms.date: 10/31/2019
-ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 02/13/2020
+ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454907"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444295"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Tárház – hatókörön belüli engedélyek Azure Container Registry 
+# <a name="create-a-token-with-repository-scoped-permissions"></a>Token létrehozása adattárral hatókörrel rendelkező engedélyekkel
 
-A Azure Container Registry számos [hitelesítési lehetőséget](container-registry-authentication.md) támogat olyan identitások használatával, amelyek [szerepköralapú hozzáféréssel](container-registry-roles.md) rendelkeznek a teljes beállításjegyzékhez. Bizonyos esetekben azonban előfordulhat, hogy csak a beállításjegyzékben lévő egyes *adattárakhoz* kell hozzáférést biztosítania. 
+Ez a cikk azt ismerteti, hogyan hozhatók létre tokenek és hatókör-leképezések az adattárra vonatkozó hatókörrel rendelkező engedélyek kezeléséhez a tároló-beállításjegyzékben. A jogkivonatok létrehozásával a beállításjegyzék tulajdonosa a felhasználók vagy szolgáltatások hatókörön belüli, időkorlátos hozzáférését biztosíthatja a Tárházak számára a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához. A tokenek részletesebb engedélyeket biztosítanak, mint a beállításjegyzék más [hitelesítési beállításai](container-registry-authentication.md), amelyek hatóköre a teljes beállításjegyzékre érvényes. 
 
-Ez a cikk bemutatja, hogyan hozhat létre és használhat olyan hozzáférési jogkivonatot, amely jogosultsággal rendelkezik a beállításjegyzékben csak bizonyos adattárakban végzett műveletek végrehajtásához. Hozzáférési jogkivonattal a felhasználók vagy szolgáltatások hatókörön belüli, időkorlátos hozzáférést biztosítanak a Tárházak számára a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához. 
+Tokenek létrehozásához a következő forgatókönyvek tartoznak:
 
-A jelen cikk későbbi, a jogkivonat-fogalmakkal és-forgatókönyvekkel kapcsolatos hátterével kapcsolatos tudnivalókat lásd a [tárház hatókörű engedélyeiről](#about-repository-scoped-permissions).
+* IoT-eszközök egyéni jogkivonatokkal való lekérésének engedélyezése egy adattárból
+* Adjon meg egy olyan külső szervezetet, amely rendelkezik engedélyekkel egy adott tárházhoz 
+* Korlátozza a tárház hozzáférését a szervezet különböző felhasználói csoportjaihoz. Adjon meg például írási és olvasási hozzáférést azoknak a fejlesztőknek, akik adott adattárakra irányuló képeket készítenek, és olvasási hozzáférést biztosítanak az ezekből a tárházból üzembe helyezett csapatokhoz.
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -24,50 +26,73 @@ A jelen cikk későbbi, a jogkivonat-fogalmakkal és-forgatókönyvekkel kapcsol
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
 * Ez a funkció csak a **Premium** Container registryben érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
-* Jelenleg nem rendelhet tárház-hatókörű engedélyeket egy Azure Active Directory objektumhoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
+* Jelenleg nem rendelhet hozzá tárház hatókörű engedélyeket egy Azure Active Directory identitáshoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
+
+## <a name="concepts"></a>Alapelvek
+
+A tárház hatókörű engedélyeinek konfigurálásához hozzon létre egy *jogkivonatot* egy társított *hatókör-térképpel*. 
+
+* A generált jelszóval ellátott **tokenek** lehetővé teszi, hogy a felhasználó hitelesítse magát a beállításjegyzékben. Megadhat egy jogkivonat-jelszó lejárati dátumát, vagy bármikor letilthatja a tokent.  
+
+  A jogkivonat használatával végzett hitelesítés után a felhasználó vagy a szolgáltatás egy *vagy több tárházra hatókört* is végrehajthat.
+
+  |Műveletek  |Leírás  | Példa |
+  |---------|---------|--------|
+  |`content/delete`    | Adatok eltávolítása az adattárból  | Adattár vagy jegyzékfájl törlése |
+  |`content/read`     |  Adatok beolvasása az adattárból |  Összetevő lekérése |
+  |`content/write`     |  Adatgyűjtés az adattárba     | Összetevő leküldése a `content/read` használatával |
+  |`metadata/read`    | Metaadatok olvasása a tárházból   | Címkék vagy jegyzékfájlok listázása |
+  |`metadata/write`     |  Metaadatok írása a tárházba  | Olvasási, írási és törlési műveletek engedélyezése vagy letiltása |
+
+* A **hatókör-hozzárendelési** csoportok a jogkivonatra alkalmazott adattár-engedélyeket, és más jogkivonatokra is vonatkozhatnak. Minden jogkivonat társítva van egyetlen hatókör-leképezéssel. 
+
+   Hatókör-hozzárendeléssel:
+
+    * Több, azonos engedélyekkel rendelkező token konfigurálása Tárházak számára
+    * Jogkivonat-engedélyek frissítése a hatókör-leképezésben szereplő adattár-műveletek hozzáadásakor vagy eltávolításakor, vagy egy másik hatókör-hozzárendelés alkalmazása 
+
+  A Azure Container Registry számos, a rendszeren definiált hatókör-leképezést is biztosít, amelyek a rögzített engedélyekkel rendelkeznek az összes tárházban.
+
+Az alábbi képen a tokenek és a hatóköri térképek közötti kapcsolat látható. 
+
+![Beállításjegyzék-tokenek és hatókör-leképezések](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure CLI** – ez a cikk az Azure CLI (2.0.76 vagy újabb verzió) helyi telepítését igényli. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
-* **Docker** – a beállításjegyzékben való hitelesítéshez szükség van egy helyi Docker-telepítésre is. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
-* **Tároló beállításjegyzéke adattárakkal** – ha nem rendelkezik ilyennel, hozzon létre egy tároló-beállításjegyzéket az Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. 
+* **Azure CLI** – a tokenek létrehozásához és kezeléséhez használható Azure CLI-parancsok az Azure CLI 2.0.76 vagy újabb verzióiban érhetők el. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+* **Docker** – a rendszerképek lekéréséhez vagy leküldéséhez szükséges beállításjegyzékbeli hitelesítéshez helyi Docker-telepítésre van szükség. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
+* **Container Registry** – ha még nem rendelkezik ilyennel, hozzon létre egy prémium szintű tároló-beállításjegyzéket az Azure-előfizetésében, vagy frissítsen egy meglévőt. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. 
 
-  Tesztelési célból [leküldheti](container-registry-get-started-docker-cli.md) vagy [importálhatja](container-registry-import-images.md) egy vagy több minta lemezképét a beállításjegyzékbe. A jelen cikkben szereplő példák a következő rendszerképekre mutatnak két tárházban: `samples/hello-world:v1` és `samples/nginx:v1`. 
+## <a name="create-token---cli"></a>Jogkivonat létrehozása – parancssori felület
 
-## <a name="create-an-access-token"></a>Hozzáférési jogkivonat létrehozása
+### <a name="create-token-and-specify-repositories"></a>Jogkivonat létrehozása és adattárak meghatározása
 
-Hozzon létre egy jogkivonatot az az [ACR token Create][az-acr-token-create] parancs használatával. Token létrehozásakor meg kell adnia egy vagy több adattárat és kapcsolódó műveletet az egyes adattárokon, vagy egy meglévő hatókör-hozzárendelést is meg kell adnia ezekkel a beállításokkal.
+Hozzon létre egy jogkivonatot az az [ACR token Create][az-acr-token-create] parancs használatával. Token létrehozásakor megadhat egy vagy több tárházat és a hozzájuk társított műveleteket az egyes adattárakban. A Tárházak még nem szükségesek a beállításjegyzékben. Ha egy meglévő hatókör-hozzárendelés megadásával szeretne tokent létrehozni, tekintse meg a következő szakaszt.
 
-### <a name="create-access-token-and-specify-repositories"></a>Hozzáférési jogkivonat létrehozása és adattárak meghatározása
-
-Az alábbi példa egy hozzáférési jogkivonatot hoz létre, amely a `content/write` és `content/read` műveletek végrehajtásához szükséges engedélyekkel rendelkezik a `samples/hello-world` adattáron, valamint a `content/read` műveletet a `samples/nginx` adattáron. Alapértelmezés szerint a parancs két jelszót hoz létre. 
-
-Ez a példa a jogkivonat állapotát `enabled` (az alapértelmezett beállítás) állítja be, de bármikor frissítheti a tokent, és beállíthatja az állapotot `disabled`re.
+A következő példa egy jogkivonatot hoz létre a beállításjegyzék *myregistry* a következő engedélyekkel a `samples/hello-world`-tárházban: `content/write` és `content/read`. Alapértelmezés szerint a parancs a token alapértelmezett állapotát `enabled`értékre állítja, de bármikor frissítheti az állapotot `disabled`re.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
-  --repository samples/hello-world content/write content/read \
-  --repository samples/nginx content/read --status enabled
+  --repository samples/hello-world \
+  content/write content/read
 ```
 
-A kimenet a token részleteit jeleníti meg, beleértve a generált jelszavakat és a hatókör-leképezést. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később a `docker login`használhassa. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
-
-A kimenet azt is jelzi, hogy a rendszer automatikusan létrehoz egy hatókör-leképezést `MyToken-scope-map`. A hatókör-hozzárendelés használatával ugyanazon adattárbeli műveleteket is alkalmazhatja más jogkivonatokra. Vagy frissítse a hatókör-leképezést később, hogy megváltoztassa a jogkivonat-engedélyeket.
+A kimenet a token részleteit jeleníti meg, beleértve a két létrehozott jelszót is. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később is használhassa a hitelesítést. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
 ```console
 {
-  "creationDate": "2019-10-22T00:15:34.066221+00:00",
+  "creationDate": "2020-01-18T00:15:34.066221+00:00",
   "credentials": {
     "certificates": [],
     "passwords": [
       {
-        "creationTime": "2019-10-22T00:15:52.837651+00:00",
+        "creationTime": "2020-01-18T00:15:52.837651+00:00",
         "expiry": null,
         "name": "password1",
         "value": "uH54BxxxxK7KOxxxxRbr26dAs8JXxxxx"
       },
       {
-        "creationTime": "2019-10-22T00:15:52.837651+00:00",
+        "creationTime": "2020-01-18T00:15:52.837651+00:00",
         "expiry": null,
         "name": "password2",
         "value": "kPX6Or/xxxxLXpqowxxxxkA0idwLtmxxxx"
@@ -85,62 +110,98 @@ A kimenet azt is jelzi, hogy a rendszer automatikusan létrehoz egy hatókör-le
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Hatókör-hozzárendelés és társított jogkivonat létrehozása
+A kimenet tartalmazza a parancs által létrehozott hatókör-hozzárendelés részleteit. A hatókör-leképezést `MyToken-scope-map`néven is használhatja, hogy ugyanazokat a tárház-műveleteket alkalmazza más jogkivonatokra. Vagy frissítse a hatókör-leképezést később, hogy megváltoztassa a társított jogkivonatok engedélyeit.
 
-Másik lehetőségként megadhatja a hatókör-hozzárendelést a Tárházak és a társított műveletek között a jogkivonat létrehozásakor. Hatókör-hozzárendelés létrehozásához használja az az [ACR scope-Map Create][az-acr-scope-map-create] parancsot.
+### <a name="create-token-and-specify-scope-map"></a>Jogkivonat létrehozása és a hatókör-hozzárendelés meghatározása
 
-A következő példában a parancs létrehoz egy hatókör-leképezést az előző példában használt engedélyekkel. Lehetővé teszi `content/write` és `content/read` műveleteket a `samples/hello-world` adattáron, valamint a `content/read` műveletet a `samples/nginx` adattáron:
+A jogkivonatok létrehozásának másik módja egy meglévő hatókör-hozzárendelés megadására szolgál. Ha még nem rendelkezik hatókör-leképezéssel, először hozzon létre egyet a Tárházak és a társított műveletek megadásával. Ezután adja meg a hatókör-leképezést jogkivonat létrehozásakor. 
+
+Hatókör-hozzárendelés létrehozásához használja az az [ACR scope-Map Create][az-acr-scope-map-create] parancsot. A következő parancs egy hatókör-leképezést hoz létre ugyanazzal az engedélyekkel a korábban használt `samples/hello-world` adattárhoz. 
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
-  --repository samples/hello-world content/write content/read \
-  --repository samples/nginx content/read \
+  --repository samples/hello-world \
+  content/write content/read \
   --description "Sample scope map"
 ```
 
-A kimenet a következőkhöz hasonló:
-
-```console
-{
-  "actions": [
-    "repositories/samples/hello-world/content/write",
-    "repositories/samples/nginx/content/read"
-  ],
-  "creationDate": "2019-10-22T05:07:35.194413+00:00",
-  "description": "Sample scope map.",
-  "id": "/subscriptions/fxxxxxxxx-adbd-4cb4-c864-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry/scopeMaps/MyScopeMap",
-  "name": "MyScopeMap",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myresourcegroup",
-  "scopeMapType": "UserDefined",
-  "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
-```
-
-Az az [ACR token Create][az-acr-token-create] paranccsal hozzon létre egy jogkivonatot, amely társítva van a *MyScopeMap* hatókör-leképezéséhez. Alapértelmezés szerint a parancs két jelszót hoz létre. Ez a példa a jogkivonat állapotát `enabled` (az alapértelmezett beállítás) állítja be, de bármikor frissítheti a tokent, és beállíthatja az állapotot `disabled`re.
+Az [az ACR token Create][az-acr-token-create] paranccsal hozzon létre egy jogkivonatot, és adja meg a *MyScopeMap* hatókör-leképezését. Ahogy az előző példában is látható, a parancs a token alapértelmezett állapotát `enabled`értékre állítja.
 
 ```azurecli
-az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
+az acr token create --name MyToken \
+  --registry myregistry \
+  --scope-map MyScopeMap
 ```
 
-A kimenet a token részleteit jeleníti meg, beleértve a generált jelszavakat és az alkalmazott hatókör-térképet. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később a `docker login`használhassa. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
+A kimenet a token részleteit jeleníti meg, beleértve a két létrehozott jelszót is. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később is használhassa a hitelesítést. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
-## <a name="generate-passwords-for-token"></a>Jelszavak előállítása jogkivonat számára
+## <a name="create-token---portal"></a>Jogkivonat létrehozása – portál
 
-Ha a jogkivonat létrehozásakor létrehozott jelszavakat, folytassa a [hitelesítést a beállításjegyzékkel](#authenticate-using-token).
+A Azure Portal a tokenek és a hatókör-leképezések létrehozására használható. A `az acr token create` CLI-parancshoz hasonlóan alkalmazhat meglévő hatókör-leképezést is, vagy létrehozhat egy hatókör-leképezést, ha tokent hoz létre egy vagy több tárház és társított művelet megadásával. A Tárházak még nem szükségesek a beállításjegyzékben. 
 
-Ha nem rendelkezik jogkivonat-jelszóval, vagy új jelszavakat szeretne előállítani, futtassa az az [ACR token hitelesítő adatok létrehozása][az-acr-token-credential-generate] parancsot.
+A következő példa létrehoz egy jogkivonatot, és létrehoz egy hatókör-leképezést a `samples/hello-world` adattár következő engedélyeivel: `content/write` és `content/read`.
 
-Az alábbi példa új jelszót hoz létre a létrehozott jogkivonathoz, amelynek lejárati időtartama 30 nap. A TOKEN_PWD környezeti változóban tárolja a jelszót. Ez a példa a bash-rendszerhéjhoz van formázva.
+1. A portálon navigáljon a tároló-beállításjegyzékhez.
+1. A **szolgáltatások**területen válassza a **tokenek (előzetes verzió) > + Hozzáadás**lehetőséget.
+  ![jogkivonat létrehozása a portálon](media/container-registry-repository-scoped-permissions/portal-token-add.png)
+1. Adja meg a jogkivonat nevét.
+1. A **hatókör-hozzárendelés**területen válassza az **új létrehozása**lehetőséget.
+1. A hatókör-leképezés konfigurálása:
+    1. Adja meg a hatókör-hozzárendelés nevét és leírását. 
+    1. A **Tárházak**területen adja meg a `samples/hello-world`, majd az **engedélyek**területen válassza a `content/read` és `content/write`lehetőséget. Ezután válassza a **+ Hozzáadás**lehetőséget.  
+    ![hatókör-leképezés létrehozása a portálon](media/container-registry-repository-scoped-permissions/portal-scope-map-add.png)
 
-```azurecli
-TOKEN_PWD=$(az acr token credential generate \
-  --name MyToken --registry myregistry --days 30 \
-  --password1 --query 'passwords[0].value' --output tsv)
+    1. A Tárházak és engedélyek hozzáadása után válassza a **Hozzáadás** lehetőséget a hatókör-hozzárendelés hozzáadásához.
+1. Fogadja el az **engedélyezett** alapértelmezett jogkivonat- **állapotot** , majd válassza a **Létrehozás**lehetőséget.
+
+A jogkivonat ellenőrzése és létrehozása után a jogkivonat részletei megjelennek a **jogkivonatok képernyőjén** .
+
+### <a name="add-token-password"></a>Jogkivonat-jelszó hozzáadása
+
+Hozzon létre egy jelszót a jogkivonat létrehozása után. A beállításjegyzékben való hitelesítéshez engedélyezni kell a tokent, és érvényes jelszót kell tartalmaznia.
+
+Létrehozhat egy vagy két jelszót, és beállíthat egy lejárati dátumot. 
+
+1. A portálon navigáljon a tároló-beállításjegyzékhez.
+1. A **szolgáltatások**területen válassza a **tokenek (előzetes verzió)** lehetőséget, és válasszon ki egy jogkivonatot.
+1. A jogkivonat részletei között válassza a **jelszó1** vagy a **password2**lehetőséget, majd válassza a létrehozás ikont.
+1. A jelszó képernyőn opcionálisan beállíthat egy lejárati dátumot a jelszóhoz, és válassza a **Létrehozás**lehetőséget.
+1. A jelszó létrehozása után másolja és mentse egy biztonságos helyre. A képernyő bezárása után nem kérhető le generált jelszó, de létrehozhat egy újat.
+
+    ![Jogkivonat-jelszó létrehozása a portálon](media/container-registry-repository-scoped-permissions/portal-token-password.png)
+
+## <a name="authenticate-with-token"></a>Hitelesítés jogkivonat használatával
+
+Ha egy felhasználó vagy szolgáltatás jogkivonatot használ a célként megadott beállításjegyzékben való hitelesítéshez, a jogkivonat nevét felhasználóneveként és annak egy generált jelszavával adja meg. A hitelesítési módszer a tokenhez társított konfigurált művelettől vagy művelettől függ.
+
+|Műveletek  |Hitelesítés  |
+  |---------|---------|
+  |`content/delete`    | `az acr repository delete` az Azure CLI-ben |
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` az Azure CLI-ben  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` az Azure CLI-ben     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` az Azure CLI-ben   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` az Azure CLI-ben |
+
+## <a name="examples-use-token"></a>Példák: token használata
+
+Az alábbi példák a cikkben korábban létrehozott jogkivonatot használják a gyakori műveletek végrehajtásához egy adattáron: leküldéses és lekéréses lemezképek, lemezképek törlése és a lista tára címkék. A jogkivonat kezdetben a leküldéses engedélyekkel (`content/write` és `content/read` műveletekkel) lett beállítva a `samples/hello-world` adattárban.
+
+### <a name="pull-and-tag-test-images"></a>Tesztelési lemezképek lekérése és címkézése
+
+Az alábbi példákban lekéri a `hello-world` és `alpine` képeket a Docker hub-ból, és címkézheti azokat a beállításjegyzékben és a tárházban.
+
+```bash
+docker pull hello-world
+docker pull alpine
+docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
+docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
 ```
 
-## <a name="authenticate-using-token"></a>Hitelesítés token használatával
+### <a name="authenticate-using-token"></a>Hitelesítés token használatával
 
-`docker login` futtatásával hitelesítheti magát a beállításjegyzékben a jogkivonat hitelesítő adatainak használatával. Adja meg a jogkivonat nevét felhasználónévként, és adja meg az egyik jelszavát. A következő példa a bash-rendszerhéjhoz van formázva, és környezeti változók használatával biztosítja az értékeket.
+Futtassa `docker login` a beállításjegyzékben való hitelesítéshez, adja meg a jogkivonat nevét felhasználónévként, és adja meg az egyik jelszavát. A tokennek `Enabled` állapottal kell rendelkeznie.
+
+A következő példa a bash-rendszerhéjhoz van formázva, és környezeti változók használatával biztosítja az értékeket.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -155,109 +216,206 @@ A kimenetnek sikeres hitelesítést kell mutatnia:
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Hatókörön belüli hozzáférés ellenőrzése
+### <a name="push-images-to-registry"></a>Rendszerképek leküldése a regisztrációs adatbázisba
 
-Azt is ellenőrizheti, hogy a jogkivonat hatókörön belüli engedélyeket biztosít-e a beállításjegyzékben található adattárakhoz. Ebben a példában a következő `docker pull` parancsok sikeresen elvégezték a `samples/hello-world` és `samples/nginx` adattárakban elérhető rendszerképek lekérését:
+A sikeres bejelentkezést követően próbálja meg leküldeni a címkézett képeket a beállításjegyzékbe. Mivel a jogkivonat jogosult a rendszerképek leküldésére a `samples/hello-world` adattárba, a következő leküldése sikeres:
 
-```console
-docker pull myregistry.azurecr.io/samples/hello-world:v1
-docker pull myregistry.azurecr.io/samples/nginx:v1
+```bash
+docker push myregistry.azurecr.io/samples/hello-world:v1
 ```
 
-Mivel a példa tokenje csak a `samples/hello-world` adattáron engedélyezi a `content/write` műveletet, `docker push` a tárház sikeres, de `samples/nginx`esetén sikertelen:
+A jogkivonat nem rendelkezik a `samples/alpine`-tárházhoz tartozó engedélyekkel, ezért a következő leküldéses kísérlet a `requested access to the resource is denied`hoz hasonló hibával meghiúsul:
 
-```console
-# docker push succeeds
-docker pull myregistry.azurecr.io/samples/hello-world:v1
-
-# docker push fails
-docker pull myregistry.azurecr.io/samples/nginx:v1
+```bash
+docker push myregistry.azurecr.io/samples/alpine:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Hatókör-leképezés és jogkivonat frissítése
+### <a name="change-pushpull-permissions"></a>Leküldéses/lekérési engedélyek módosítása
 
-A jogkivonat engedélyeinek frissítéséhez frissítse az engedélyeket a társított hatókör-térképen az [az ACR scope-Map Update][az-acr-scope-map-update]paranccsal. Ha például frissíteni szeretné a *MyScopeMap* , hogy eltávolítsa a `content/write` műveletet a `samples/hello-world` adattáron:
+Egy jogkivonat engedélyeinek frissítéséhez frissítse az engedélyeket a társított hatókör-térképen. A frissített hatókör-leképezést a rendszer azonnal alkalmazza az összes társított jogkivonatra. 
+
+Például frissítse `MyToken-scope-map` `content/write` és `content/read` műveletekkel az `samples/alpine` adattáron, és távolítsa el a `content/write` műveletet a `samples/hello-world` adattáron.  
+
+Az Azure CLI használatához futtassa az az [ACR scope-Map Update][az-acr-scope-map-update] parancsot a hatókör-hozzárendelés frissítéséhez:
 
 ```azurecli
-az acr scope-map update --name MyScopeMap --registry myregistry \
-  --remove samples/hello-world content/write
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/alpine content/write content/read \
+  --remove samples/hello-world content/write 
 ```
 
-Ha a hatókör-hozzárendelés egynél több tokenhez van társítva, a parancs frissíti az összes társított jogkivonat engedélyét.
+Az Azure Portalon:
 
-Ha másik hatókör-térképpel rendelkező tokent szeretne frissíteni, futtassa [az az ACR token Update][az-acr-token-update]parancsot. Például:
+1. Navigáljon a tároló-beállításjegyzékhez.
+1. A **szolgáltatások**területen válassza a **hatókör-térképek (előzetes verzió)** lehetőséget, majd válassza ki a frissítendő hatókör-leképezést.
+1. A **Tárházak**területen adja meg a `samples/alpine`, majd az **engedélyek**területen válassza a `content/read` és `content/write`lehetőséget. Ezután válassza a **+ Hozzáadás**lehetőséget.
+1. A **Tárházak**területen válassza a `samples/hello-world` lehetőséget, majd az **engedélyek**területen törölje a jelölést `content/write`. Ezután válassza a **Save** (Mentés) lehetőséget.
+
+A hatókör-hozzárendelés frissítése után a következő leküldése sikeres:
+
+```bash
+docker push myregistry.azurecr.io/samples/alpine:v1
+```
+
+Mivel a hatókör-leképezés csak a `content/read` engedéllyel rendelkezik a `samples/hello-world` adattáron, a `samples/hello-world`-tárház leküldéses kísérlete most meghiúsul:
+ 
+```bash
+docker push myregistry.azurecr.io/samples/hello-world:v1
+```
+
+A lemezképek mindkét repóból való kihúzása sikeres, mert a hatókör-hozzárendelés `content/read` engedélyeket biztosít mindkét tárházhoz:
+
+```bash
+docker pull myregistry.azurecr.io/samples/alpine:v1
+docker pull myregistry.azurecr.io/samples/hello-world:v1
+```
+### <a name="delete-images"></a>Rendszerképek törlése
+
+Frissítse a hatókör-leképezést úgy, hogy hozzáadja a `content/delete` műveletet a `alpine` adattárhoz. Ez a művelet lehetővé teszi a lemezképek törlését a tárházban, vagy a teljes tárház törlését.
+
+Rövid ideig csak az [az ACR scope-Map Update][az-acr-scope-map-update] parancs jelenik meg a hatókör-hozzárendelés frissítéséhez:
+
+```azurecli
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/alpine content/delete
+``` 
+
+A hatókör-leképezés a portál használatával történő frissítéséhez tekintse meg az előző szakaszt.
+
+A `samples/alpine` adattár törléséhez használja a következő az [ACR repository delete][az-acr-repository-delete] parancsot. Képek vagy adattárak törléséhez a jogkivonat nem hitelesíti a `docker login`. Ehelyett adja át a token nevét és jelszavát a parancsnak. A következő példa a cikkben korábban létrehozott környezeti változókat használja:
+
+```azurecli
+az acr repository delete \
+  --name myregistry --repository samples/alpine \
+  --username $TOKEN_NAME --password $TOKEN_PWD
+```
+
+### <a name="show-repo-tags"></a>Tárház-címkék megjelenítése 
+
+Frissítse a hatókör-leképezést úgy, hogy hozzáadja a `metadata/read` műveletet a `hello-world` adattárhoz. Ez a művelet lehetővé teszi a jegyzékfájlok és a címkézett adattárban lévő információk olvasását.
+
+Rövid ideig csak az [az ACR scope-Map Update][az-acr-scope-map-update] parancs jelenik meg a hatókör-hozzárendelés frissítéséhez:
+
+```azurecli
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/hello-world metadata/read 
+```  
+
+A hatókör-leképezés a portál használatával történő frissítéséhez tekintse meg az előző szakaszt.
+
+A `samples/hello-world` adattár metaadatainak olvasásához futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] vagy [az ACR repository show-Tags][az-acr-repository-show-tags] parancsot. 
+
+A metaadatok olvasásához a jogkivonat nem hitelesíti a `docker login`. Ehelyett adja át a token nevét és jelszavát bármelyik parancsnak. A következő példa a cikkben korábban létrehozott környezeti változókat használja:
+
+```azurecli
+az acr repository show-tags \
+  --name myregistry --repository samples/hello-world \
+  --username $TOKEN_NAME --password $TOKEN_PWD
+```
+
+Példa a kimenetre:
+
+```console
+[
+  "v1"
+]
+```
+## <a name="manage-tokens-and-scope-maps"></a>Jogkivonatok és hatóköri leképezések kezelése
+
+### <a name="list-scope-maps"></a>Lista hatókörének leképezése
+
+Használja az az [ACR scope-Térkép List][az-acr-scope-map-list] parancsot, vagy a portál **hatókör-térképek (előzetes verzió)** képernyőjét a beállításjegyzékben konfigurált összes hatókör-leképezés listázásához. Például:
+
+```azurecli
+az acr scope-map list \
+  --registry myregistry --output table
+```
+
+A kimenet megjeleníti a megadott hatókör-leképezéseket, és több, a rendszeren definiált hatókör-leképezést is konfigurálhat a tokenek konfigurálásához:
+
+```
+NAME                 TYPE           CREATION DATE         DESCRIPTION
+-------------------  -------------  --------------------  ------------------------------------------------------------
+_repositories_admin  SystemDefined  2020-01-20T09:44:24Z  Can perform all read, write and delete operations on the ...
+_repositories_pull   SystemDefined  2020-01-20T09:44:24Z  Can pull any repository of the registry
+_repositories_push   SystemDefined  2020-01-20T09:44:24Z  Can push to any repository of the registry
+MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
+```
+
+### <a name="show-token-details"></a>Jogkivonat részleteinek megjelenítése
+
+Ha meg szeretné tekinteni a token részleteit, például az állapotát és a jelszó lejárati dátumát, futtassa az az [ACR token show][az-acr-token-show] parancsot, vagy válassza ki a tokent a portál **tokenek (előzetes verzió)** képernyőjén. Például:
+
+```azurecli
+az acr scope-map show \
+  --name MyScopeMap --registry myregistry
+```
+
+A portálon az az [ACR token List][az-acr-token-list] parancs vagy a **tokens (előnézet)** képernyő használatával listázhatja a beállításjegyzékben konfigurált összes jogkivonatot. Például:
+
+```azurecli
+az acr token list --registry myregistry --output table
+```
+
+### <a name="generate-passwords-for-token"></a>Jelszavak előállítása jogkivonat számára
+
+Ha nem rendelkezik jogkivonat-jelszóval, vagy új jelszavakat szeretne előállítani, futtassa az az [ACR token hitelesítő adatok létrehozása][az-acr-token-credential-generate] parancsot. 
+
+Az alábbi példa új értéket hoz létre a *MyToken* -token jelszó1, amelynek lejárati időtartama 30 nap. A `TOKEN_PWD`környezeti változóban tárolja a jelszót. Ez a példa a bash-rendszerhéjhoz van formázva.
+
+```azurecli
+TOKEN_PWD=$(az acr token credential generate \
+  --name MyToken --registry myregistry --days 30 \
+  --password1 --query 'passwords[0].value' --output tsv)
+```
+
+Ha a Azure Portalt szeretné használni a jogkivonat jelszavának létrehozásához, tekintse meg a jelen cikk a [Jogkivonat létrehozása – portál](#create-token---portal) című szakaszának lépéseit.
+
+### <a name="update-token-with-new-scope-map"></a>Jogkivonat frissítése új hatókör-hozzárendeléssel
+
+Ha másik hatókör-leképezéssel rendelkező tokent szeretne frissíteni, futtassa az [az ACR token Update][az-acr-token-update] parancsot, és adja meg az új hatókör-leképezést. Például:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-A tokenek frissítése vagy a tokenhez társított hatókör-hozzárendelések módosítása után az engedély a következő `docker login` vagy más, a tokent használó hitelesítésre lép érvénybe.
+A portálon a **tokenek (előzetes verzió)** képernyőn válassza ki a tokent, és a **hatókör térképe**területen válasszon egy másik hatókör-leképezést.
 
-A token frissítése után létrehozhat új jelszavakat a beállításjegyzék eléréséhez. Futtatás [az ACR token hitelesítőadat-létrehozás][az-acr-token-credential-generate]. Például:
+> [!TIP]
+> Miután frissített egy jogkivonatot egy új hatókör-térképpel, új jogkivonat-jelszavakat szeretne előállítani. Használja az az [ACR token regenerált][az-acr-token-credential-generate] parancsot, vagy a Azure Portalban regenerált jogkivonat-jelszót.
+
+## <a name="disable-or-delete-token"></a>Jogkivonat letiltása vagy törlése
+
+Előfordulhat, hogy átmenetileg le kell tiltania a token hitelesítő adatainak használatát egy adott felhasználóhoz vagy szolgáltatáshoz. 
+
+Az Azure CLI használatával futtassa az az [ACR token Update][az-acr-token-update] parancsot a `status` `disabled`hoz való beállításához:
 
 ```azurecli
-az acr token credential generate \
-  --name MyToken --registry myregistry --days 30
+az acr token update --name MyToken --registry myregistry \
+  --status disabled
 ```
 
-## <a name="about-repository-scoped-permissions"></a>Az adattár – hatókörön belüli engedélyek
+A portálon válassza ki a jogkivonatot a **tokenek (előzetes verzió)** képernyőn, és válassza a **Letiltva** **állapotot**.
 
-### <a name="concepts"></a>Alapelvek
+Ha törölni szeretne egy jogkivonatot, hogy a hitelesítő adatai alapján bárki véglegesen érvénytelenítse a hozzáférést, futtassa az az [ACR token delete][az-acr-token-delete] parancsot. 
 
-A tárház hatókörű engedélyeinek konfigurálásához létre kell hoznia egy *hozzáférési jogkivonatot* és egy hozzárendelt *hatókör-leképezést* az Azure CLI parancsainak használatával.
+```azurecli
+az acr token delete --name MyToken --registry myregistry
+```
 
-* A **hozzáférési jogkivonat** a beállításjegyzékben való hitelesítéshez jelszóval használt hitelesítő adat. Az egyes jogkivonatokhoz társított *műveletek* egy vagy több tárházra terjednek ki. Megadhatja az egyes tokenek lejárati idejét. 
-
-* Az egyes adattárakon **végrehajtott műveletek** az alábbiak közül egyet vagy többet tartalmaznak.
-
-  |Műveletek  |Leírás  |
-  |---------|---------|
-  |`content/read`     |  Adatok beolvasása az adattárból. Például lehívhat egy összetevőt.  |
-  |`metadata/read`    | Metaadatok olvasása az adattárból. Például a címkék listázása vagy a jegyzékfájl metaadatainak megjelenítése.   |
-  |`content/write`     |  Az adattárban lévő adatbevitel. A with `content/read` használatával leküldheti az adott összetevőt.    |
-  |`metadata/write`     |  Metaadatok írása a tárházba. Például frissítse a jegyzékfájl attribútumait.  |
-  |`content/delete`    | Adatok eltávolítása az adattárból. Törölheti például a tárházat vagy a jegyzékfájlt. |
-
-* A **hatókör-hozzárendelés** egy olyan beállításjegyzék-objektum, amely a jogkivonatra alkalmazott adattár-engedélyeket csoportosítja, vagy más jogkivonatokra is alkalmazható. Ha nem alkalmaz hatókör-leképezést jogkivonat létrehozásakor, a rendszer automatikusan létrehozza a hatókör-leképezést az engedély beállításainak mentéséhez. 
-
-  A hatókör-térkép segítségével több, azonos hozzáféréssel rendelkező felhasználó konfigurálható a Tárházak készletéhez. A Azure Container Registry a rendszer által meghatározott hatókör-térképeket is biztosít, amelyeket a hozzáférési jogkivonatok létrehozásakor alkalmazhat.
-
-Az alábbi képen összefoglalja a tokenek és a hatóköri térképek közötti kapcsolatot. 
-
-![A beállításjegyzék hatókörének leképezései és jogkivonatai](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
-
-### <a name="scenarios"></a>Forgatókönyvek
-
-Hozzáférési token használatára vonatkozó forgatókönyvek a következők:
-
-* Egyéni tokenekkel rendelkező IoT-eszközök biztosítása a rendszerkép lekéréséhez adattárból
-* Adjon meg egy olyan külső szervezetet, amely rendelkezik engedélyekkel egy adott tárházhoz 
-* Korlátozza a tárház hozzáférését a szervezet adott felhasználói csoportjaihoz. Adjon meg például írási és olvasási hozzáférést azoknak a fejlesztőknek, akik adott adattárakra irányuló képeket készítenek, és olvasási hozzáférést biztosítanak az ezekből a tárházból üzembe helyezett csapatokhoz.
-
-### <a name="authentication-using-token"></a>Hitelesítés token használatával
-
-Használja a jogkivonat nevét felhasználónévként és a hozzá tartozó jelszavak egyikét a célként megadott beállításjegyzékben való hitelesítéshez. A hitelesítési módszer a konfigurált művelettől függ.
-
-### <a name="contentread-or-contentwrite"></a>tartalom/olvasás vagy tartalom/írás
-
-Ha a jogkivonat csak `content/read` vagy `content/write` műveletet engedélyez, adja meg a jogkivonat hitelesítő adatait a következő hitelesítési folyamatok bármelyikében:
-
-* Hitelesítés a Docker használatával `docker login`
-* Hitelesítés a beállításjegyzék használatával az az [ACR login][az-acr-login] paranccsal az Azure CLI-ben
-
-A hitelesítés után a jogkivonat engedélyezi a konfigurált műveleteket a hatókörön belüli adattáron vagy adattárakon. Ha például a jogkivonat engedélyezi a `content/read` műveletet egy adattáron, `docker pull` műveleteket a tárházban lévő lemezképeken engedélyezheti.
-
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metaadatok/olvasás, metaadatok/írás, vagy tartalom/törlés
-
-Ha a jogkivonat engedélyezi `metadata/read`, `metadata/write`vagy `content/delete` műveleteit egy adattáron, a jogkivonat hitelesítő adatait paraméterként kell megadni az Azure CLI-ben a kapcsolódó az [ACR adattár][az-acr-repository] parancsaival.
-
-Ha például `metadata/read` műveletek engedélyezve vannak egy adattáron, adja át a jogkivonat hitelesítő adatait az az [ACR repository show-Tags][az-acr-repository-show-tags] parancsnak a címkék listázásához való futtatásakor.
+A portálon válassza ki a tokent a **jogkivonatok (előzetes verzió)** képernyőn, és válassza az **Elvetés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A hatóköri térképek és a hozzáférési tokenek kezeléséhez használja az az [ACR scope-Map][az-acr-scope-map] és [az ACR token][az-acr-token] Command groups további parancsait.
-* Tekintse meg a [hitelesítés áttekintését](container-registry-authentication.md) olyan forgatókönyvek esetén, amelyek egy rendszergazdai fiók vagy egy Azure Active Directory identitás használatával hitelesítik magukat az Azure Container registryben.
+* A hatóköri térképek és tokenek kezeléséhez használja az az [ACR scope-Map][az-acr-scope-map] és [az ACR token][az-acr-token] Command groups további parancsait.
+* Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos további beállításokért tekintse meg a [hitelesítés áttekintését](container-registry-authentication.md) , beleértve a Azure Active Directory identitást, egy szolgáltatásnevet vagy egy rendszergazdai fiókot.
 
 
 <!-- LINKS - External -->
@@ -267,12 +425,18 @@ Ha például `metadata/read` műveletek engedélyezve vannak egy adattáron, adj
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-repository]: /cli/azure/acr/repository/
 [az-acr-repository-show-tags]: /cli/azure/acr/repository/#az-acr-repository-show-tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az-acr-repository-show-manifests
+[az-acr-repository-delete]: /cli/azure/acr/repository/#az-acr-repository-delete
 [az-acr-scope-map]: /cli/azure/acr/scope-map/
 [az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az-acr-scope-map-create
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-show
+[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
 [az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az-acr-scope-map-update
 [az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
 [az-acr-token]: /cli/azure/acr/token/
 [az-acr-token-show]: /cli/azure/acr/token/#az-acr-token-show
+[az-acr-token-list]: /cli/azure/acr/token/#az-acr-token-list
+[az-acr-token-delete]: /cli/azure/acr/token/#az-acr-token-delete
 [az-acr-token-create]: /cli/azure/acr/token/#az-acr-token-create
 [az-acr-token-update]: /cli/azure/acr/token/#az-acr-token-update
 [az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az-acr-token-credential-generate

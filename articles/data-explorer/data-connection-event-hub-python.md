@@ -7,30 +7,36 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 81aded7639cc0bed86c3d3ab3be9e6ef7b355734
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964532"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444179"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz a Python használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-event-hub.md)
+> * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Python használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz.
+Ebben a cikkben a Python használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést, illetve az adatok betöltését Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Fürt és adatbázis](create-cluster-database-python.md) létrehozása
-* [Tábla-és oszlop-hozzárendelés](python-ingest-data.md#create-a-table-on-your-cluster) létrehozása
-* [Adatbázis-és táblázat-házirendek](database-table-policies-python.md) beállítása (nem kötelező)
-* Hozzon létre egy [Event hub-t a](ingest-data-event-hub.md#create-an-event-hub)betöltéshez szükséges adattal. 
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Egy fürt és egy adatbázis](create-cluster-database-python.md).
+
+* [Tábla-és oszlop-hozzárendelés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Adatbázis-és táblázat-házirendek](database-table-policies-python.md) (nem kötelező).
+
+* Az [Event hub és a](ingest-data-event-hub.md#create-an-event-hub)betöltési adatmennyiség.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

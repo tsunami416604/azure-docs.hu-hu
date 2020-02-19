@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210541"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443601"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
 Ez a cikk a szolgáltatás (erőforrás) szintjén, a munkaterhelés szintjén (lekérdezések és indexelés), valamint a felhasználói hozzáférés figyelésére szolgáló keretrendszert mutat be.
 
-A spektrumon a beépített infrastruktúra és az alapszintű szolgáltatások, például a Azure Monitor, valamint a statisztikát, darabszámot és állapotot visszaadó szolgáltatás API-k kombinációját fogja használni. A képességek tartományának megismerése segít az olyan hatékony kommunikációs rendszer konfigurálásában vagy létrehozásában, amely proaktív választ ad a problémákra.
+A spektrumon a beépített infrastruktúra és az alapszintű szolgáltatások, például a Azure Monitor, valamint a statisztikát, darabszámot és állapotot visszaadó szolgáltatás API-k kombinációját fogja használni. A funkciók körének megismerése segíthet egy visszajelzési hurok összeállításában, így problémák merülhetnek fel, ahogy azok megjelentek.
 
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
@@ -52,9 +52,9 @@ Az áttekintő lapokra épülő, Többlapos lapok az erőforrás-használattal k
 
 Ha az éles számítási feladatokhoz [használt szintet](search-sku-tier.md)véglegesíti, vagy ha [módosítani szeretné az aktív replikák és partíciók számát](search-capacity-planning.md), akkor ezek a mérőszámok segítséget nyújthatnak ezekhez a döntésekhez azáltal, hogy megmutatják, hogy az erőforrások milyen gyorsan legyenek felhasználva, és hogy a jelenlegi konfiguráció milyen mértékben kezeli a meglévő terhelést.
 
-A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárterület-felhasználás nincs összesítve, vagy be van jelentkezve a **AzureMetrics**. Létre kell hoznia egy egyéni megoldást az erőforrásokkal kapcsolatos értesítések beszerzéséhez.
+A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. Létre kell hoznia egy egyéni megoldást, amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ. További információ a tárolási metrikákkal kapcsolatban: [szolgáltatás statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
-A portálon a **használat** lap az erőforrás rendelkezésre állását mutatja a szolgáltatási szinten kiszabott jelenlegi [korlátokhoz](search-limits-quotas-capacity.md) képest. 
+A portálon a vizualizáció figyeléséhez a **használat** lapon az erőforrás rendelkezésre állása látható a szolgáltatási szinten kiszabott jelenlegi [korlátokhoz](search-limits-quotas-capacity.md) képest. 
 
 Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektumára, illetve 50 MB tárterületre van korlátozva. Egy alapszintű vagy standard szolgáltatás magasabb korláttal rendelkezik, és ha megnöveli a partíciók számát, a maximális tárterület arányosan növekszik.
 
@@ -63,7 +63,7 @@ Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektum�
 
 ## <a name="monitor-workloads"></a>Munkaterhelések figyelése
 
-A naplózott események tartalmazzák az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **Azure Diagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
+A naplózott események tartalmazzák az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
 
 A naplózott adatok többsége csak olvasási műveletekhez használható. A naplóban nem rögzített további frissítési-törlési műveletekhez a keresési szolgáltatást a rendszerinformációk lekérdezése céljából kérdezheti le.
 
@@ -115,9 +115,9 @@ Az Azure Cognitive Search REST API és a .NET SDK egyaránt biztosít programozo
 
 ## <a name="monitor-user-access"></a>Felhasználói hozzáférés figyelése
 
-Mivel a keresési indexek egy nagyobb ügyfélalkalmazás összetevői, nincs beépített, felhasználónkénti módszer az indexekhez való hozzáférés szabályozására. A rendszer a kérelmeket egy ügyfélalkalmazás, rendszergazdai vagy lekérdezési kérelmek esetében feltételezi. A rendszergazdai írási és olvasási műveletek közé tartozik a teljes szolgáltatáson belüli objektumok létrehozása, frissítése és törlése. A csak olvasási műveletek a dokumentumok gyűjteményére vonatkozó lekérdezések, amelyek hatóköre egyetlen indexre van korlátozva. 
+Mivel a keresési indexek egy nagyobb ügyfélalkalmazás összetevői, a felhasználónkénti hozzáférés-vezérléshez és-figyeléshez nem áll rendelkezésre beépített módszertan az indexekhez. A rendszer a kérelmeket egy ügyfélalkalmazás, rendszergazdai vagy lekérdezési kérelmek esetében feltételezi. A rendszergazdai írási és olvasási műveletek közé tartozik a teljes szolgáltatáson belüli objektumok létrehozása, frissítése és törlése. A csak olvasási műveletek a dokumentumok gyűjteményére vonatkozó lekérdezések, amelyek hatóköre egyetlen indexre van korlátozva. 
 
-A naplókban láthatók a rendszergazdai kulcsokat vagy a lekérdezési kulcsokat használó hívásokra mutató hivatkozások. A megfelelő kulcsot az ügyfél kódjából származó kérelmek tartalmazzák. A szolgáltatás nem alkalmas az identitás-tokenek vagy a megszemélyesítés kezelésére.
+Így a tevékenység naplóiban láthatók a rendszergazdai kulcsokat vagy a lekérdezési kulcsokat használó hívásokra mutató hivatkozások. A megfelelő kulcsot az ügyfél kódjából származó kérelmek tartalmazzák. A szolgáltatás nem alkalmas az identitás-tokenek vagy a megszemélyesítés kezelésére.
 
 Ha a felhasználónkénti hitelesítéshez üzleti követelmények léteznek, a javaslat a Azure Active Directory integrációja. $Filter és felhasználói identitások használatával levágja a dokumentumok azon [keresési eredményeit](search-security-trimming-for-azure-search-with-aad.md) , amelyeket a felhasználó nem láthat. 
 

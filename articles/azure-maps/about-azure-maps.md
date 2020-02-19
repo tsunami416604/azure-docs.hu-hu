@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07a78dc81d121874db5e59ad267ea8eb08a69c91
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210140"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443711"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -45,13 +45,13 @@ A következő videó részletesen bemutatja az Azure Mapset:
 
 A Azure Maps web SDK lehetővé teszi az interaktív térképek egyéni tartalommal és képekkel való testreszabását. Ezt az interaktív térképet használhatja webes vagy mobil alkalmazásaihoz is. A Térkép vezérlőelem a WebGL használatát teszi lehetővé, így nagy teljesítményű nagyméretű adatkészleteket lehet megjeleníteni. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
 
-![Példa a populáció változásának térképére](media/about-azure-maps/Introduction_WebMapControl.png)
+![Példa a populáció változásának térképére](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 Mobil leképezési alkalmazások létrehozásához használja a Azure Maps Android SDK-t. 
 
-![Példák megjelenítése mobileszközön](media/about-azure-maps/AndroidSDK.png)
+![Példák megjelenítése mobileszközön](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Az Azure Maps szolgáltatásai
 
@@ -73,7 +73,7 @@ A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilit
 
 A renderelési szolgáltatás segítségével a fejlesztők webes és mobil alkalmazásokat hozhatnak létre a leképezési funkciókkal. A szolgáltatás használhat nagy felbontású rasztergrafikákat, amelyek 19 nagyítási szinten érhetők el, vagy teljes körűen testreszabható, vektorformátumú térképeket.
 
-![Példa a render szolgáltatásból származó térképre](media/about-azure-maps/Introduction_Map.png)
+![Példa a render szolgáltatásból származó térképre](media/about-azure-maps/intro_map.png)
 
 A megjelenítő szolgáltatás mostantól előzetes verziójú API-kat biztosít, amelyeken keresztül a fejlesztők műholdképekkel dolgozhatnak. További részletekért olvassa el a [Render API dokumentációját](https://docs.microsoft.com/rest/api/maps/render).
 
@@ -81,7 +81,7 @@ A megjelenítő szolgáltatás mostantól előzetes verziójú API-kat biztosít
 
 Az útvonal szolgáltatás robusztus geometriai számításokat biztosít valós infrastruktúrákat és több közlekedési módot alkalmazó útvonalak számításához. A szolgáltatás lehetővé teszi, hogy a fejlesztők számos utazási mód (például autó, kamion, kerékpár vagy gyaloglás) alapján számítsanak az útvonalakat. A szolgáltatás olyan bemeneteket is figyelembe vesz, mint például a forgalmi feltételek, a súlyozási korlátozások vagy a veszélyes anyagok szállítása.
 
-![Példa egy térképre az útvonal-szolgáltatásból](media/about-azure-maps/Introduction_Route.png)
+![Példa egy térképre az útvonal-szolgáltatásból](media/about-azure-maps/intro_route.png)
 
 Az útvonal-szolgáltatás a speciális funkciók előzetes verzióját kínálja, például: 
 
@@ -95,7 +95,7 @@ Az útválasztási képességekkel kapcsolatos részletekért olvassa el az [Rou
 
 A Search szolgáltatás segítségével a fejlesztők megkereshetik a címeket, a helyeket, az üzleti listákat név vagy kategória alapján, valamint egyéb földrajzi információkat. A keresési szolgáltatás a földrajzi szélesség és a hosszúságok alapján fordított geocode-címeket és-utcákat is [megfordíthatja](https://en.wikipedia.org/wiki/Reverse_geocoding) .
 
-![Térképes keresés – példa](media/about-azure-maps/Introduction_Search.png)
+![Térképes keresés – példa](media/about-azure-maps/intro_search.png)
 
 A Search szolgáltatás olyan speciális funkciókat is kínál, mint például a következők:
 
@@ -149,7 +149,7 @@ A Traffic szolgáltatás olyan webszolgáltatások csomagja, amelyeket a fejlesz
 * Forgalmi folyamat: valós idejű megfigyelt sebesség és utazási idő a hálózaton lévő összes kulcsfontosságú útvonalon.
 * Forgalmi incidensek: a forgalmi torlódások és a közúti hálózatokra vonatkozó incidensek naprakész áttekintését.
 
-![Példa a forgalmi adatokat tartalmazó térképre](media/about-azure-maps/Introduction_Traffic.png)
+![Példa a forgalmi adatokat tartalmazó térképre](media/about-azure-maps/intro_traffic.png)
 
 További információt a [Traffic API dokumentációjában](https://docs.microsoft.com/rest/api/maps/traffic)talál.
 

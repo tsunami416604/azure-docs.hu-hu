@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169952"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444349"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Ha egy virtuális hálózatban Azure Machine Learning számítási példányt va
 > * Ha egy virtuális hálózatban több számítási példányt vagy fürtöt szeretne létrehozni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
 > * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban kell lenniük. 
 
-A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
-
-* Egy hálózati biztonsági csoport
-* One public IP address
-* Egy Load Balancer
-
-Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.
+> [!TIP]
+> A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoporthoz. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
+> 
+> * Egy hálózati biztonsági csoport
+> * One public IP address
+> * Egy Load Balancer
+> 
+> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.
 
 
 ### <a id="mlcports"></a>Szükséges portok
@@ -500,6 +501,10 @@ Azure Firewall használatakor konfigurálnia kell egy hálózati szabályt, hogy
 A szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és a portokat `*`.
 
 A hálózati szabályok konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+
+## <a name="use-azure-container-registry"></a>Az Azure Container Registry használata
+
+Ha Azure Machine Learning-vel rendelkező virtuális hálózatot használ, __ne__ helyezze a virtuális hálózatban lévő munkaterülethez a Azure Container Registry. Ez a konfiguráció nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

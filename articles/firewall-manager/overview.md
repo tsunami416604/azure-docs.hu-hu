@@ -5,22 +5,33 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 12/06/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869561"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443149"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Az Azure Firewall Manager előzetes verziója olyan biztonságkezelési szolgáltatás, amely központi biztonsági házirendet és útvonalkezelést biztosít a felhőalapú biztonsági szegélyek számára. Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre hub-és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
+A Azure Firewall Manager előzetes verziója egy biztonsági felügyeleti szolgáltatás, amely központi biztonsági házirendet és útválasztási felügyeletet biztosít a felhőalapú biztonsági körzetek számára. 
 
-![tűzfal – kezelő](media/overview/firewallmanagerv3.png)
+A Firewall Manager két hálózati architektúra-típushoz biztosít biztonsági felügyeletet:
+
+- **biztonságos virtuális központ**
+
+   Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources) egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre sugaras és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
+- **hub virtuális hálózata**
+
+   Ez egy szabványos Azure-beli virtuális hálózat, amelyet saját maga hozhat létre és kezelhet. Ha a biztonsági szabályzatok egy ilyen hubhoz vannak társítva, akkor azt *hub virtuális hálózatnak*nevezzük. Jelenleg csak Azure Firewall házirend támogatott. A munkaterhelési kiszolgálókat és szolgáltatásokat tartalmazó társ-küllős virtuális hálózatokat is használhatja. Az önálló virtuális hálózatokban olyan tűzfalak is kezelhetők, amelyek nem kapcsolódnak egyetlen küllőhöz sem.
+
+A *biztonságos virtuális központ* és a *hub virtuális hálózati* architektúráinak részletes összehasonlítását lásd: [Mik a Azure Firewall Manager architektúra lehetőségei?](vhubs-and-vnets.md).
+
+![tűzfal – kezelő](media/overview/firewallmanagerv5.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure Firewall Manager előzetes verziójának funkciói
 
@@ -38,6 +49,8 @@ A Azure Firewall Manager előzetes verziójának használatával központilag ke
 
 A Azure Firewallon kívül a külső gyártótól származó biztonsági szolgáltatásokat (SECaaS) is integrálhatja, így további hálózati védelmet biztosíthat a VNet és az ág internetes kapcsolatai számára.
 
+Ez a szolgáltatás csak biztonságos virtuális központú üzemelő példányokkal érhető el.
+
 - VNet az internetre (V2I) forgalom szűrése
 
    - A kimenő virtuális hálózati forgalom szűrése az Ön által előnyben részesített külső biztonsági szolgáltatóval.
@@ -51,18 +64,15 @@ További információ a megbízható biztonsági szolgáltatókról: [Mi a Azure
 
 ### <a name="centralized-route-management"></a>Központosított útválasztás kezelése
 
-A biztonságos hubhoz irányíthatja át a forgalmat a szűréshez és a naplózáshoz anélkül, hogy manuálisan be kellene állítania a felhasználó által megadott útvonalakat (UDR) a küllős virtuális hálózatokon. Harmadik féltől származó szolgáltatókat is használhat a fiókirodák internetes (B2I) adatforgalmának szűrésére, egymás mellett Azure Firewall a ágat a VNet (B2V), a VNet VNet (V2V) és az internetre (VNET). Külső szolgáltatókat is használhat a V2I, ha a B2V vagy a V2V esetében nem szükséges a Azure Firewall. 
+A biztonságos hubhoz irányíthatja át a forgalmat a szűréshez és a naplózáshoz anélkül, hogy manuálisan be kellene állítania a felhasználó által megadott útvonalakat (UDR) a küllős virtuális hálózatokon. 
+
+Ez a szolgáltatás csak biztonságos virtuális központú üzemelő példányokkal érhető el.
+
+Harmadik féltől származó szolgáltatókat is használhat a fiókirodák internetes (B2I) adatforgalmának szűrésére, egymás mellett Azure Firewall a ágat a VNet (B2V), a VNet VNet (V2V) és az internetre (VNET). Külső szolgáltatókat is használhat a V2I, ha a B2V vagy a V2V esetében nem szükséges a Azure Firewall. 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A nyilvános előzetes verzióban a következő régiók támogatottak:
-
-- Nyugat-Európa, Észak-Európa, Közép-Franciaország, Dél-Franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
-- Kelet-Ausztrália, Ausztrália középső régiója, Ausztrália középső régiója 2, Délkelet-Ausztrália
-- Közép-Kanada
-- USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA déli középső régiója, USA 2. nyugati régiója, USA középső régiója, USA északi középső régiója
-
-Azure Firewall szabályzatok csak ezekben a régiókban hozhatók létre, de régiónként is használhatók. Létrehozhat például egy szabályzatot az USA nyugati régiójában, és használhatja azt az USA keleti régiójában. 
+A Azure Firewall házirendek a régiók között is használhatók. Létrehozhat például egy szabályzatot az USA nyugati régiójában, és használhatja azt az USA keleti régiójában. 
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -70,13 +80,13 @@ A Azure Firewall Manager előzetes verziója a következő ismert problémákkal
 
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
-|A manuálisan létrehozott központi virtuális hálózatok nem támogatottak|A Azure Firewall Manager jelenleg a virtuális Hubokkal létrehozott hálózatokat támogatja. A saját manuálisan létrehozott hub-VNet használata még nem támogatott.|Egyelőre használja a Azure Firewall Managert a virtuális Hubokkal létrehozott, központi és küllős hálózatokkal.<br>Javítás folyamatban.
 |Harmadik féltől származó szűrési korlátozások|A V2I külső szolgáltatókkal való kiszűrése nem támogatott a Azure Firewall B2V és a V2V.|Jelenleg vizsgálja.|
 |A forgalom felosztása jelenleg nem támogatott|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|Jelenleg vizsgálja a forgalom felosztását a központban.
-|Régiónként egy hub|Régiónként legfeljebb egy hub lehet|Több virtuális WAN-t hozhat létre egy régióban.|
+|Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ tartozhat|Több virtuális WAN-t hozhat létre egy régióban.|
 |Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Jelenleg vizsgálja.|
 |A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Jelenleg vizsgálja.|
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
+|Az IP-csoportok nem támogatottak a tűzfal házirendjében|Az IP-csoportok nyilvános előzetes verzióban érhetők el, és jelenleg csak a hagyományos tűzfalszabályok támogatottak|Javítás folyamatban
 
 ## <a name="next-steps"></a>Következő lépések
 

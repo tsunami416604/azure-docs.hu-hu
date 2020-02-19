@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845772"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442989"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -22,15 +22,15 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Milyen képességeket támogat a Azure Firewall?
 
-* Állapotalapú tűzfal mint szolgáltatás
-* Beépített magas rendelkezésre állás korlátlan felhőbeli skálázással
+* Állapot-nyilvántartó tűzfal szolgáltatásként
+* Beépített magas rendelkezésre állás a korlátlan felhő méretezhetőségével
 * FQDN-szűrés
 * FQDN-címkék
 * Hálózati forgalomra vonatkozó szűrési szabályok
 * Kimenő SNAT-támogatás
 * Bejövő DNAT-támogatás
 * Alkalmazás-és hálózati csatlakozási szabályzatok központi létrehozása, betartatása és naplózása az Azure-előfizetések és a virtuális hálózatok között
-* Teljes integráció az Azure Monitorral a naplózáshoz és az elemzéshez
+* Teljes mértékben integrált Azure Monitor a naplózáshoz és az elemzéshez
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi a Azure Firewall általános telepítési modellje?
 
@@ -88,7 +88,7 @@ Lásd: [Azure Firewall díjszabása](https://azure.microsoft.com/pricing/details
 
 Használhatja Azure PowerShell felszabadítási és *lefoglalási* metódusokat.
 
-Példa:
+Például:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -125,7 +125,7 @@ Igen. Ha azonban a UDR úgy konfigurálja, hogy átirányítsa az alhálózatok 
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall kimenő SNAT a magánhálózati hálózatok között?
 
-A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány. Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére.
+A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány. Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. A Azure Firewall konfigurálhatja úgy, hogy **ne** SNAT a nyilvános IP-címtartományt. További információ: [Azure Firewall SNAT magánhálózati IP-címtartományok](snat-private-range.md).
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>A hálózati virtuális berendezésre kényszerített bújtatás/láncolás?
 

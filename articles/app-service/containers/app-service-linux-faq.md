@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251804"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443856"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -33,7 +33,7 @@ A [githubon](https://github.com/azure-app-service)található összes Docker-fá
 | Verem           | Várt érték                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | a JAR-alkalmazás elindítására szolgáló parancs (például `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat, Wildfly | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh`)          |
+| Tomcat          | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | a PM2 konfigurációs fájl vagy a parancsfájl                                |
 | .Net Core       | a lefordított DLL-név `dotnet <myapp>.dll`                                 |
 | Ruby            | a Ruby-parancsfájl, amelybe az alkalmazást inicializálni szeretné                     |

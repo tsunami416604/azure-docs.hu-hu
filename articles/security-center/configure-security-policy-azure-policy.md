@@ -1,5 +1,5 @@
 ---
-title: Azure Policy biztonsági szabályzatok létrehozása és szerkesztése a REST API használatával | Microsoft Docs
+title: Azure Policy biztonsági szabályzatok létrehozása és szerkesztése a REST API használatával
 description: Ismerkedjen meg Azure Policy házirend-kezelés REST API használatával.
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522020"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430941"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása Azure Policy a REST API használatával
 
@@ -125,7 +125,7 @@ Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
 |Storage-titkosítás |Hiányzó blob-titkosítás naplózása a Storage-fiókoknál |storageEncryptionMonitoringEffect|
 |JIT hálózati hozzáférés |A lehetséges hálózati igény szerinti (JIT) hozzáférés figyelése Azure Security Center |jitNetworkAccessMonitoringEffect |
 |Adaptív alkalmazásvezérlők |A lehetséges alkalmazások engedélyezési listájának figyelése Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Hálózati biztonsági csoportok |A megengedhető hálózati hozzáférés figyelése Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Network security groups (Hálózati biztonsági csoportok) |A megengedhető hálózati hozzáférés figyelése Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Biztonsági konfigurációk |Operációs rendszer biztonsági réseinak figyelése Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Endpoint protection (Végpontok védelme) |Hiányzó Endpoint Protection figyelése Azure Security Center |endpointProtectionMonitoringEffect |
 |Disk encryption (Lemeztitkosítás) |Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center |diskEncryptionMonitoringEffect|
@@ -134,7 +134,7 @@ Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
 |Next generation firewall (Új generációs tűzfal) |Nem védett hálózati végpontok figyelése Azure Security Center| |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
 

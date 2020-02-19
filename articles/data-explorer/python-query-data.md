@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827530"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443975"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Adatlekérdezés az Azure Adatkezelő Python Library használatával
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer [adatügyfélkódtárat biztosít a Pythonhoz](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ez a kódtár lehetővé teszi adatok lekérdezését a kódból. Ebben a cikkben egy olyan táblához csatlakozik a Súgó- *fürtön* , amelyet a tanulás támogatásához állítottunk be. Ezután lekérdezi a fürt egy tábláját, és visszaadja az eredményeket.
+Ebben a cikkben az Azure Adatkezelő használatával kérdez le adatlekérdezéseket. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz.
 
-Ez a cikk [Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)-jegyzetfüzetként is elérhető.
+Az Azure Data Explorer [adatügyfélkódtárat biztosít a Pythonhoz](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ez a kódtár lehetővé teszi adatok lekérdezését a kódból. Kapcsolódjon egy olyan táblához a *Súgó-fürtön* , amelyet a tanulás támogatásához állítottunk be. Lekérdezheti a fürtben található táblát, és visszaküldheti az eredményeket.
+
+Ez a cikk [Azure-jegyzetfüzetként](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Vállalati e-mail-fiók, amely az Azure Active Directory (AAD) tagja
+* [Python 3.4 +](https://www.python.org/downloads/)
 
-* A fejlesztői számítógépen telepített [Python](https://www.python.org/downloads/)
+* Vállalati e-mail-fiók, amely az Azure Active Directory (AAD) tagja
 
 ## <a name="install-the-data-library"></a>Az adatkódtár telepítése
 
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Csatlakozás az Azure Data Explorerhez és lekérdezés végrehajtása
 
-Hajtson végre egy lekérdezést a fürtön, és tárolja a kimenetet egy adatkeretben. A kód futtatásakor a következőhöz hasonló üzenetet ad vissza: A *bejelentkezéshez egy webböngésző segítségével nyissa meg a lapot https://microsoft.com/devicelogin , és adja meg a hitelesíteni kívánt F3W4VWZDM*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához.
+Hajtson végre egy lekérdezést a fürtön, és tárolja a kimenetet egy adatkeretben. Amikor ez a kód fut, a következőhöz hasonló üzenetet ad vissza: *A bejelentkezéshez webböngészőben nyissa meg a https://microsoft.com/devicelogin oldalt, és írja be az F3W4VWZDM kódot a hitelesítéshez*. Kövesse a bejelentkezési lépéseket, majd térjen vissza a következő kódblokk futtatásához.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)
@@ -95,7 +97,7 @@ df
 
 Meg kell jelennie a StormEvents táblában szereplő első tíz eredménynek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbevitel az Azure Adatkezelő Python Library használatával](python-ingest-data.md)

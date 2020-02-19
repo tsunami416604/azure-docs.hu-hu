@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173534"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444060"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -60,11 +60,11 @@ A MABS a következőképpen végzi a biztonsági mentést a VSS-vel. A leírásb
 
 A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltételei a következők:
 
-|Előfeltétel|Részletek|
+|Előfeltételek|Részletek|
 |------------|-------|
 |A MABS előfeltételei|– Ha elemszintű helyreállítást szeretne végrehajtani a virtuális gépeken (fájlok, mappák, kötetek helyreállítása), akkor telepítenie kell a Hyper-V szerepkört a MABS-kiszolgálóra.  Ha csak a virtuális gépet kívánja helyreállítani, és nem elemszintű, akkor a szerepkör nem szükséges.<br />– Akár 800 virtuális gépet is véd 100 GB-onként egy MABS-kiszolgálón, és engedélyezheti a nagyobb fürtöket támogató több MABS-kiszolgálót.<br />– A MABS kizárja a lapozófájlt a növekményes biztonsági mentésből a virtuális gép biztonsági mentési teljesítményének növelése érdekében.<br />– A MABS képes biztonsági másolatot készíteni egy Hyper-V-kiszolgálóról vagy-fürtről, amely ugyanabban a tartományban van, mint a MABS-kiszolgáló, vagy egy gyermek vagy egy megbízható tartomány. Ha a Hyper-V biztonsági mentését munkacsoportban vagy nem megbízható tartományban szeretné végrehajtani, akkor be kell állítania a hitelesítést. Egyetlen Hyper-V kiszolgáló esetén NTLM-vagy tanúsítványalapú hitelesítést használhat. Fürt esetén csak tanúsítványalapú hitelesítést használhat.<br />– A gazdagép szintű biztonsági mentés használatával a virtuális gép adatai nem támogatottak az áteresztő lemezeken. Ebben az esetben azt javasoljuk, hogy a gazdagép szintű biztonsági mentéssel készítsen biztonsági másolatot a VHD-fájlokról, és a vendég szintű biztonsági mentéssel készítsen biztonsági másolatot a gazdagépen nem látható egyéb adatfájlokról.<br />   – Elvégezheti a deduplikált köteteken tárolt virtuális gépek biztonsági mentését.|
 |Hyper-V virtuális gépek előfeltételei|– A virtuális gépen futó integrációs összetevők verziójának meg kell egyeznie a Hyper-V-gazdagép verziójával. <br />– Minden virtuális gép biztonsági mentése esetén szabad területnek kell lennie a virtuális merevlemez-fájlokat futtató köteten, hogy a biztonsági mentés során a Hyper-V elég helyet különbséglemezek-lemezek (AVHD) számára. A területnek legalább akkora kell lennie, mint a **kezdeti lemez méretének\*a forgalom\*a biztonsági mentés** időpontjában. Ha egy fürtön több biztonsági mentést futtat, elegendő tárolókapacitással kell rendelkeznie ahhoz, hogy az egyes virtuális gépek Különbséglemezeinek megfeleljenek a számításnak.<br />-A Windows Server 2012 R2 rendszerű Hyper-V-gazdagépeken található virtuális gépek biztonsági mentéséhez a virtuális gépnek rendelkeznie kell egy SCSI-vezérlővel, még akkor is, ha az nem csatlakozik semmihöz. (A Windows Server 2012 R2 online biztonsági mentésében a Hyper-V-gazdagép egy új virtuális merevlemezt csatlakoztat a virtuális géphez, majd később leválasztja azt. Ezt csak az SCSI-vezérlő tudja támogatni, ezért szükséges a virtuális gép online biztonsági mentéséhez.  A beállítás nélkül a 10103-es AZONOSÍTÓJÚ esemény lesz kiadva, amikor megkísérli a virtuális gép biztonsági mentését.)|
-|A Linux előfeltételei|– A Linux rendszerű virtuális gépek biztonsági mentését a MABS 2012 R2 használatával végezheti el. Csak a fájl-konzisztens Pillanatképek támogatottak.|
+|A Linux előfeltételei|– A Linux rendszerű virtuális gépek biztonsági mentését a MABS használatával végezheti el. Csak a fájl-konzisztens Pillanatképek támogatottak.|
 |Virtuális gépek biztonsági mentése CSV-tárolóval|– A CSV-tároláshoz telepítse a Kötet árnyékmásolata szolgáltatás (VSS) hardver-szolgáltatót a Hyper-V-kiszolgálón. Vegye fel a kapcsolatot a Tárolóhálózati (SAN) gyártójával a VSS-hardver szolgáltatónál.<br />– Ha egy csomópont váratlanul leáll egy CSV-fürtben, a MABS konzisztencia-ellenőrzést hajt végre az adott csomóponton futó virtuális gépeken.<br />– Ha újra kell indítania egy olyan Hyper-V-kiszolgálót, amelynek BitLocker meghajtótitkosítás engedélyezve van a CSV-fürtön, konzisztencia-ellenőrzést kell futtatnia a Hyper-V virtuális gépeken.|
 |Virtuális gépek biztonsági mentése SMB-tárolóval|– Kapcsolja be az automatikus csatlakoztatást a Hyper-V-t futtató kiszolgálón a virtuális gép védelmének engedélyezéséhez.<br />   – Tiltsa le a TCP-kémény kiszervezését.<br />– Győződjön meg arról, hogy az összes Hyper-V Machine $-fiók teljes körű engedélyekkel rendelkezik az adott távoli SMB-fájlmegosztás számára.<br />– Győződjön meg arról, hogy az összes virtuálisgép-összetevő fájljának elérési útja a másik helyre történő helyreállítás során kevesebb, mint 260 karakter. Ha nem, a helyreállítás sikeres lehet, de a Hyper-V nem fogja tudni csatlakoztatni a virtuális gépet.<br />– A következő forgatókönyvek nem támogatottak:<br />     Olyan központi telepítések, ahol a virtuális gép egyes összetevői helyi köteteken találhatók, és egyes összetevők távoli köteteken találhatók; egy IPv4-vagy IPv6-cím a tárolási hely fájlkiszolgáló számára, valamint egy virtuális gép helyreállítása olyan számítógépre, amely távoli SMB-megosztásokat használ.<br />– Engedélyeznie kell a Fájlkiszolgálói VSS-ügynök szolgáltatást minden SMB-kiszolgálón – adja hozzá a **szerepkörök és szolgáltatások hozzáadása** > **kiszolgálói szerepkörök kiválasztása** > **fájl-és tárolási szolgáltatások** > **Fájlszolgáltatások** > **file Service** > **fájlkiszolgáló VSS-ügynök szolgáltatás**.|
 
@@ -209,7 +209,7 @@ Ha egy biztonsági másolattal rendelkező virtuális gépet állít helyre, a h
 
 3. A **műveletek** menüben kattintson a **helyreállítás** elemre a helyreállítási varázsló megnyitásához.
 
-    A kiválasztott virtuális gép és helyreállítási pont megjelenik a **helyreállítási beállítások áttekintése** képernyőn. Kattintson a **Tovább**gombra.
+    A kiválasztott virtuális gép és helyreállítási pont megjelenik a **helyreállítási beállítások áttekintése** képernyőn. Kattintson a **Tovább** gombra.
 
 4. A **helyreállítási típus kiválasztása** képernyőn válassza ki, hogy hová szeretné visszaállítani az adatkészletet, majd kattintson a **tovább**gombra.
 

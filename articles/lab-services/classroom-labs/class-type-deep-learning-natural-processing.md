@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133769"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444094"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek.  
@@ -32,7 +32,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ----------- | ------------ |  
-| Marketplace-rendszerképek | Engedélyezze a Data Science Virtual Machine for Linux (Ubuntu) rendszerképet a labor-fiókban való használathoz.  A következő cikkekben talál útmutatást: a [tesztkörnyezet-készítők számára elérhető Piactéri lemezképek megadása](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
+| Marketplace-rendszerképek | Engedélyezze a Data Science Virtual Machine for Linux (Ubuntu) rendszerképet a labor-fiókban való használathoz.  A következő cikkben talál útmutatást: a [tesztkörnyezet-készítők számára elérhető Piactéri lemezképek megadása](specify-marketplace-images.md). | 
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, és alkalmazza a következő beállításokat:
 

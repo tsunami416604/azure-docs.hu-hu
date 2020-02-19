@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201152"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431162"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
 
@@ -44,7 +44,7 @@ Ha a [SPEECH SDK](speech-sdk.md)-t használja, a régiókat a **régió azonosí
 
 Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szándék-felismeréshez** a következők:
 
-| Globális régió | Régió           | Beszéd SDK paraméter |
+| Globális régió | Régió           | Régió azonosítója |
 | ------------- | ---------------- | -------------------- |
 | Ázsia          | Kelet-Ázsia        | `eastasia`           |
 | Ázsia          | Délkelet-Ázsia   | `southeastasia`      |
@@ -65,7 +65,7 @@ Ez a [Language Understanding szolgáltatás (Luis)](/azure/cognitive-services/lu
 
 A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegéd** képességeit:
 
-| Régió         | Beszéd SDK paraméter |
+| Régió         | Régió azonosítója |
 | -------------- | -------------------- |
 | USA nyugati régiója        | `westus`             |
 | USA nyugati régiója, 2.      | `westus2`            |

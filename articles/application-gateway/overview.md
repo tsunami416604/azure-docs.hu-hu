@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658270"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443822"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -50,7 +50,7 @@ Az Standard_v2 vagy WAF_v2 SKU alatt Application Gateway vagy WAF-alapú telepí
 
 Az Application Gateway VIP Standard_v2 vagy WAF_v2 SKU-ban kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
 
-## <a name="web-application-firewall"></a>Webalkalmazási tűzfal
+## <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
 
 A webalkalmazási tűzfal (WAF) egy olyan szolgáltatás, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF a [OWASP (webalkalmazás-biztonsági projekt megnyitása) alapszabálya](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) , a 3,1 (csak WAF_v2), a 3,0 és a 2.2.9. 
 
@@ -61,7 +61,7 @@ További információ: [Mi az az Azure webalkalmazási tűzfal?](../web-applicat
 ## <a name="ingress-controller-for-aks"></a>Bejövőforgalom-vezérlő az AKS-hez
 A Application Gateway beáramlási vezérlő (AGIC) lehetővé teszi, hogy a Application Gateway használja az [Azure Kubernetes-szolgáltatás (ak)](https://azure.microsoft.com/services/kubernetes-service/) fürtjének bemenő példánya számára. 
 
-A bejövő vezérlő egy Pod-ként fut az AK-fürtön belül, és a [Kubernetes bejövő erőforrásait](https://kubernetes.io/docs/concepts/services-networking/ingress/) használja, és átalakítja azokat egy Application Gateway konfigurációba, amely lehetővé teszi az átjáró számára a forgalom terheléselosztását a Kubernetes-hüvelybe. A bejövő vezérlő csak Application Gateway v2 SKU-t támogatja. 
+A bejövő vezérlő egy Pod-ként fut az AK-fürtön belül, és a [Kubernetes bejövő erőforrásait](https://kubernetes.io/docs/concepts/services-networking/ingress/) használja, és átalakítja azokat egy Application Gateway konfigurációba, amely lehetővé teszi az átjáró számára a forgalom terheléselosztását a Kubernetes-hüvelybe. A bejövő vezérlő csak Application Gateway Standard_v2 és WAF_v2 SKU-t támogat. 
 
 További információ: [Application Gateway Inbehatolási vezérlő (AGIC)](ingress-controller-overview.md).
 
@@ -145,8 +145,8 @@ Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos telje
 
 | Az átlagos háttér-oldal válaszának mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |
-| 6 KB |7,5 Mbps |13 Mbps |50 Mb/s |
-| 100 KB |35 Mbps |100 Mb/s |200 Mb/s |
+| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.

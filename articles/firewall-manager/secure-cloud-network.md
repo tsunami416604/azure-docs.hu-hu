@@ -1,41 +1,38 @@
 ---
-title: 'Oktatóanyag: a Azure Firewall Manager előzetes verziójának használatával biztonságossá teheti a felhőalapú hálózatot a Azure Portal'
-description: Ebből az oktatóanyagból megtudhatja, hogyan védheti meg a felhőalapú hálózatot a Azure Firewall Managerrel a Azure Portal használatával.
+title: 'Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával'
+description: Ebből az oktatóanyagból megtudhatja, hogyan védheti a virtuális WAN-t a Azure Firewall Managerrel a Azure Portal használatával.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501910"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443057"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-A Azure Firewall Manager előzetes verziójának használatával biztonságos hubokat hozhat létre a privát IP-címekre, az Azure Pástire és az internetre irányuló Felhőbeli hálózati forgalom biztonságossá tételéhez. A tűzfal felé irányuló forgalom-útválasztás automatizált, így nem kell felhasználó által megadott útvonalakat (UDR-ket) létrehoznia.
+A Azure Firewall Manager előzetes verziójának használatával biztonságos virtuális hubokat hozhat létre, amelyekkel biztonságossá teheti a saját IP-címekre, az Azure-ra és az internetre irányuló Felhőbeli hálózati forgalmat. A tűzfal felé irányuló forgalom-útválasztás automatizált, így nem kell felhasználó által megadott útvonalakat (UDR-ket) létrehoznia.
 
 ![a felhőalapú hálózat védelme](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Előfeltételek
+A Firewall Manager egy hub virtuális hálózati architektúrát is támogat. A biztonságos virtuális központ és a hub virtuális hálózati architektúrájának összevetéséhez tekintse meg [a mi a Azure Firewall Manager architektúrájának beállításait?](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> A Azure Firewall Manager előzetes verzióját explicit módon engedélyezni kell a `Register-AzProviderFeature` PowerShell-paranccsal.
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
-Futtassa a következő parancsokat egy PowerShell-parancssorból:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztráció állapotának megtekintéséhez futtassa a következő parancsot:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * A küllős virtuális hálózat létrehozása
+> * Biztonságos virtuális központ létrehozása
+> * A hub és a küllős virtuális hálózatok összekötése
+> * Tűzfal-házirend létrehozása és a központ biztonságossá tétele
+> * Forgalom irányítása a hubhoz
+> * A tűzfal tesztelése
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Sugaras architektúra létrehozása
 
@@ -151,7 +148,7 @@ A tűzfalszabályok teszteléséhez néhány kiszolgálót kell telepítenie. Ü
    |Virtuális gép neve     |**Ugrás – SRV**|
    |Régió     |**USA USA keleti régiója)**|
    |Rendszergazda felhasználóneve     |**azureuser**|
-   |Jelszó     |A jelszó **Azure123456!**|
+   |Jelszó     |írja be a jelszót|
 
 4. A **bejövő portszabályok**területen a **nyilvános bejövő portok**esetében válassza a **kijelölt portok engedélyezése**lehetőséget.
 5. A **bejövő portok kiválasztása**lapon válassza az **RDP (3389)** lehetőséget.
@@ -215,7 +212,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)

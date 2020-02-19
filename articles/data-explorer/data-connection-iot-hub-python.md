@@ -7,30 +7,36 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 86e966cc3bf98e63edbe90d7649242dcb1ccdf42
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964379"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444213"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>IoT Hub adatkapcsolatok létrehozása az Azure Adatkezelőhoz a Python (előzetes verzió) használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](ingest-data-iot-hub.md)
+> * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-iot-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést (az adatok betöltését) Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja. Ebben a cikkben a Python használatával hoz létre IoT Hub adatösszekötő Azure Adatkezelő.
+Ebben a cikkben a Python használatával hoz létre IoT Hub adatösszekötő Azure Adatkezelő. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést, illetve az adatok betöltését Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Fürt és adatbázis](create-cluster-database-python.md) létrehozása
-* [Tábla-és oszlop-hozzárendelés](python-ingest-data.md#create-a-table-on-your-cluster) létrehozása
-* [Adatbázis-és táblázat-házirendek](database-table-policies-python.md) beállítása (nem kötelező)
-* Hozzon létre egy [IoT hub megosztott hozzáférési házirenddel konfigurálva](ingest-data-iot-hub.md#create-an-iot-hub).
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Egy fürt és egy adatbázis](/create-cluster-database-python.md).
+
+* [Tábla-és oszlop-hozzárendelés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Adatbázis-és táblázat-házirendek](database-table-policies-python.md) (nem kötelező).
+
+* [Egy IoT hub konfigurált megosztott hozzáférési házirenddel](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252059"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443499"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -27,6 +27,9 @@ Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kap
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Felhasználónként vagy hetente, vagy a labor teljes időtartama alatt a kvóta? 
 A laborhoz beállított kvóta minden tanuló számára a labor teljes időtartamára vonatkozik. A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a felhasználó számára kiosztott kvótába. A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt.  A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md#set-quotas-for-users)számára.
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Ha a professzor bekapcsol egy tanuló virtuális gépet, akkor ez befolyásolja a tanulói kvótát? 
+Nem. Nem. Amikor a professzor bekapcsolja a tanuló virtuális gépet, nem befolyásolja a tanuló számára kiosztott kvótát. 
 
 ## <a name="schedules"></a>Ütemezések
 
@@ -42,7 +45,9 @@ Ha például egy blokk/19-10.0.0.0/19, ez a címtartomány 8192 IP-címet és 16
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen porttartomány-beállításokat kell megnyitnia a szervezetem tűzfal-beállításán, hogy az RDP/SSH használatával kapcsolódjon a labor virtuális gépekhez?
 
-A portok a következők: 49152 – 65535. Az osztályterem Labs egy terheléselosztó mögött található, így a laborban lévő összes virtuális gép egyetlen IP-címmel rendelkezik, és a laborban található minden virtuális gép egyedi porttal rendelkezik. A portok száma és a nyilvános IP-cím minden alkalommal megváltozhat, amikor újra közzéteszi a labort.
+A portok a következők: 49152 – 65535. A tanterem Labs a terheléselosztó mögött található. Mindegyik tesztkörnyezet egyetlen nyilvános IP-címmel rendelkezik, és a tesztkörnyezet minden virtuális gépe egyedi porttal rendelkezik. 
+
+Az egyes virtuális gépek magánhálózati IP-címét a Azure Portalban található labor kezdőlapjának **virtuálisgép-készlet** lapján is megtekintheti. Ha újra közzétesz egy labort, a tesztkörnyezet nyilvános IP-címe nem változik, de a laborban lévő egyes virtuális gépek magánhálózati IP-címe és portszáma is változhat. További információt a következő cikkben talál: [Azure Lab Services](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen nyilvános IP-címtartományt nyitok meg a szervezetem tűzfal beállításai között, hogy az RDP/SSH-n keresztül csatlakozzanak a labor virtuális gépekhez?
 Lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519), amely a nyilvános IP-címtartományt biztosítja az Azure-beli adatközpontok számára. Megnyithatja azon régiók IP-címeit, amelyeken a labor fiókjai vannak.
