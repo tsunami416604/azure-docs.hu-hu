@@ -55,10 +55,10 @@ Végezze el az alábbi példát a hosszúságú kimondott szöveg:
 
 |Példák kimondott szövegekre|
 |--|
-|Hogyan szerezhetek be számítógépet?|
-|Hol szerezhetek be számítógépet?|
-|Szeretnék beolvasni egy számítógépet, hogyan tudok?|
-|Mikor lehet a számítógépem?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 A "számítógép" alapvető kifejezés nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligens módon kikövetkeztetheti a szinonimákat a kontextusból, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, mindig érdemes megváltoznia.
 
@@ -144,8 +144,8 @@ A következő hosszúságú kimondott szöveg a Word `fair` egy homográfia. Akk
 
 |Kimondott szöveg|
 |--|
-|Milyen típusú megye vásárokon Seattle környékén lévő történik az Ez évi riói nyári?|
-|Az a jelenlegi besorolása a Seattle felülvizsgálatra valós?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézse a szót `fair` az első kiíráskor, de a másodikban nem.
 
