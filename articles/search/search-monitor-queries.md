@@ -7,39 +7,39 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211151"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462521"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
 
-Ez a cikk azt ismerteti, hogyan mérhető a lekérdezés teljesítménye és mennyisége a metrikák használatával. Emellett azt is ismerteti, hogyan kell összegyűjteni a lekérdezésekben használt beviteli kifejezéseket, ha az eszköz értékelése és a keresési Corpus hatékonysága szükséges.
+Ez a cikk azt ismerteti, hogyan mérhető a lekérdezés teljesítménye és mennyisége a metrikák és a diagnosztikai naplózás használatával. Emellett azt is ismerteti, hogyan kell összegyűjteni a lekérdezésekben használt beviteli kifejezéseket, ha az eszköz értékelése és a keresési Corpus hatékonysága szükséges.
 
-A metrikákat tartalmazó korábbi adatok 30 napig őrződnek meg. A hosszú megőrzéshez, illetve az operatív adatok és a lekérdezési karakterláncok jelentéséhez mindenképpen engedélyezzen egy tárolási beállítást megadó [diagnosztikai beállítást](search-monitor-logs.md) .
+A metrikákat tartalmazó korábbi adatok 30 napig őrződnek meg. A hosszú megőrzéshez, illetve az operatív adatok és a lekérdezési karakterláncok jelentéséhez mindenképpen engedélyezzen egy olyan [diagnosztikai beállítást](search-monitor-logs.md) , amely a naplózott események és metrikák megőrzésére szolgáló tárolási lehetőséget határozza meg.
 
-Az adatmérések integritását maximalizáló feltételek a következők:
+Az adatmérés integritását maximalizáló feltételek a következők:
 
 + Használjon számlázható szolgáltatást (az alapszintű vagy a standard szinten létrehozott szolgáltatás). Az ingyenes szolgáltatást több előfizető is megosztja, ami egy bizonyos mértékű volatilitást vezet be, amely terhelési elmozdulást mutat be.
 
-+ Ha lehetséges, használjon egy replikát, hogy a számítások egyetlen gépre legyenek korlátozva. Ha több replikát használ, a lekérdezési mérőszámok átlaga több csomópont között történik, amelyek némelyike gyorsabb lehet. Ha a lekérdezési teljesítmény finomhangolását végzi, az egyetlen csomópont a teszteléshez stabilabb környezetet biztosít.
++ Egy replika és egy partíció használata, ha lehetséges, egy foglalt és elkülönített környezet létrehozásához. Ha több replikát használ, a lekérdezési mérőszámok átlaga több csomópont között történik, ami csökkentheti az eredmények pontosságát. Hasonlóképpen, a több partíció azt is jelenti, hogy az adatmegosztás történik, és a lehetséges, hogy egyes partíciók eltérő adattal rendelkezhetnek, ha az indexelés is folyamatban van. A lekérdezési teljesítmény finomhangolása esetén egyetlen csomópont és partíció a teszteléshez stabilabb környezetet biztosít.
 
 > [!Tip]
 > A további ügyféloldali kóddal és Application Insightsekkel a mélyebb betekintéshez is rögzítheti az átkattintási adatait, hogy mi vonzza az alkalmazás felhasználóinak érdeklődését. További információ: [Search Traffic Analytics](search-traffic-analytics.md).
 
 ## <a name="query-volume-qps"></a>Lekérdezési kötet (QPS)
 
-A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhető, amely egy percen belül végrehajtható lekérdezések átlagos, darabszámú, minimális vagy maximális értékének jelentésére szolgál. A metrikák esetében egy perces intervallum (TimeGrain = "PT1M") rögzített a rendszeren belül.
+A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhető, amely egy egyperces időszakon belül végrehajtható lekérdezések átlagos, darabszámbeli, minimális vagy maximális értékének jelentésére szolgál. A metrikák esetében az egyperces időközök (TimeGrain = "PT1M") a rendszeren belül vannak kijavítva.
 
 A lekérdezések végrehajtása általában ezredmásodpercben történik, ezért a mérőszámokban csak a másodpercben lekérdezett lekérdezések jelennek meg.
 
 | Aggregáció típusa | Leírás |
 |------------------|-------------|
 | Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
-| Darabszám | A naplóba egy perces intervallumon belül kibocsátott metrikák száma. |
+| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Egy percen belül másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma. |
 | Minimális | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
 | Összeg | A percen belül végrehajtott lekérdezések összege.  |
@@ -57,7 +57,7 @@ Az egész szolgáltatásra kiterjedő lekérdezési teljesítmény a keresési k
 | Aggregáció típusa | Késés | 
 |------------------|---------|
 | Átlag | Lekérdezés átlagos időtartama ezredmásodpercben. | 
-| Darabszám | A naplóba egy perces intervallumon belül kibocsátott metrikák száma. |
+| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Leghosszabb ideig futó lekérdezés a mintában. | 
 | Minimális | A legrövidebb futó lekérdezés a mintában.  | 
 | Összesen | A mintában lévő összes lekérdezés teljes végrehajtási ideje (egy perc) az intervallumon belül.  |
@@ -85,7 +85,7 @@ A szabályozott lekérdezések megerősítéséhez használja a **szabályozott 
 | Aggregáció típusa | Szabályozás |
 |------------------|-----------|
 | Átlag | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
-| Darabszám | A naplóba egy perces intervallumon belül kibocsátott metrikák száma. |
+| Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Az intervallumon belül eldobott lekérdezések százalékos aránya.|
 | Minimális | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Összesen | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
@@ -116,6 +116,45 @@ A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüb
 
 1. Nagyítás egy fontos területre a vonalas diagramon. Vigye az egérmutatót a terület elejére, kattintson és tartsa nyomva a bal egérgombot, húzza a terület másik oldalára, és szabadítsa fel a gombot. A diagram az adott időtartományon nagyítja fel.
 
+## <a name="identify-strings-used-in-queries"></a>A lekérdezésekben használt karakterláncok azonosítása
+
+A diagnosztikai naplózás engedélyezésekor a rendszeren a **AzureDiagnostics** táblában rögzíti a lekérdezési kérelmeket. Előfeltételként engedélyezni kell a [diagnosztikai naplózást](search-monitor-logs.md), meg kell adnia egy log Analytics-munkaterületet vagy egy másik tárolási lehetőséget.
+
+1. A figyelés szakaszban válassza a **naplók** lehetőséget a log Analytics egy üres lekérdezési ablak megnyitásához.
+
+1. Futtassa a következő kifejezést a lekérdezés kereséséhez. keresési műveletek, táblázatos eredményhalmaz visszaadása, amely a művelet nevét, a lekérdezési karakterláncot, a lekérdezett indexet és a talált dokumentumok számát tartalmazza. Az utolsó két utasítás kizárja a lekérdezési karakterláncokat, amelyek egy üres vagy nem meghatározott keresésből állnak, mint egy minta index, amely csökkenti az eredményekben lévő zajt.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. Szükség esetén beállíthat egy oszlop szűrőt *Query_s* egy adott szintaxis vagy karakterlánc kereséséhez. Előfordulhat például, hogy a szűrést a `?api-version=2019-05-06&search=*&%24filter=HotelName`*értékkel egyenlővé* teszi.
+
+   ![Naplózott lekérdezési karakterláncok](./media/search-monitor-usage/log-query-strings.png "Naplózott lekérdezési karakterláncok")
+
+Habár ez a technika ad hoc vizsgálathoz működik, a jelentések készítése lehetővé teszi, hogy a lekérdezési karakterláncokat egy adott elrendezésben jobban áttekintse az elemzéshez.
+
+## <a name="identify-long-running-queries"></a>Hosszú ideig futó lekérdezések azonosítása
+
+Adja hozzá az időtartam oszlopot az összes lekérdezés számának lekéréséhez, nem csak azokat, amelyek mérőszámként lettek kiválasztva. Az Adatrendezés során megtekintheti, hogy mely lekérdezések a leghosszabb ideig tartó lekérdezéseket hajtják végre.
+
+1. A figyelés szakaszban válassza a **naplók** lehetőséget a naplózási adatok lekérdezéséhez.
+
+1. Futtassa a következő lekérdezést a lekérdezések visszaadásához, időtartam szerint, ezredmásodpercben rendezve. A leghosszabb ideig futó lekérdezések felül vannak.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![Lekérdezések rendezése időtartam szerint](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Lekérdezések rendezése időtartam szerint")
+
 ## <a name="create-a-metric-alert"></a>Metrikai riasztás létrehozása
 
 A metrikai riasztások egy küszöbértéket határoznak meg, amelyen értesítést kap, vagy egy előre meghatározott javítási műveletet indít el. 
@@ -144,31 +183,9 @@ Egy adott replika-partíciós konfiguráció korlátainak leküldésekor a rends
 
 Ha e-mailes értesítést adott meg, a "Microsoft Azure" üzenet jelenik meg az "Azure: aktivált súlyosság: 3 `<your rule name>`" tárgy sorával.
 
-## <a name="query-strings-used-in-queries"></a>A lekérdezésekben használt lekérdezési karakterláncok
+<!-- ## Report query data
 
-A diagnosztikai naplózás engedélyezésekor a rendszeren a **AzureDiagnostics** táblában rögzíti a lekérdezési kérelmeket. Előfeltételként engedélyezni kell a [diagnosztikai naplózást](search-monitor-logs.md), meg kell adnia egy log Analytics-munkaterületet vagy egy másik tárolási lehetőséget.
-
-1. A figyelés szakaszban válassza a **naplók** lehetőséget a log Analytics egy üres lekérdezési ablak megnyitásához.
-
-1. Futtassa a következő kifejezést a lekérdezés kereséséhez. keresési műveletek, táblázatos eredmények visszaadása, amely a művelet nevét, a lekérdezési karakterláncot, a lekérdezett indexet és a talált dokumentumok számát tartalmazza. Az utolsó két utasítás kizárja a lekérdezési karakterláncokat, amelyek egy üres vagy nem meghatározott keresésből állnak, mint egy minta index, amely csökkenti az eredményekben lévő zajt.
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. Szükség esetén beállíthat egy oszlop szűrőt *Query_s* egy adott szintaxis vagy karakterlánc kereséséhez. Előfordulhat például, hogy a szűrést a `?api-version=2019-05-06&search=*&%24filter=HotelName`*értékkel egyenlővé* teszi.
-
-   ![Naplózott lekérdezési karakterláncok](./media/search-monitor-usage/log-query-strings.png "Naplózott lekérdezési karakterláncok")
-
-Habár ez a technika ad hoc vizsgálathoz működik, a jelentések készítése lehetővé teszi, hogy a lekérdezési karakterláncokat egy adott elrendezésben jobban áttekintse az elemzéshez.
-
-## <a name="report-query-data"></a>Jelentés lekérdezési adatkészlete
-
-A Power BI egy analitikus jelentéskészítő eszköz, amelyet a blob Storage-ban vagy egy Log Analytics-munkaterületen tárolt naplófájlok esetében használhat.
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>Következő lépések
 

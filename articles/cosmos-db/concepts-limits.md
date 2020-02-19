@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200044"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460211"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -77,7 +77,8 @@ A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot ké
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Adatbázisok maximális száma | Korlátlan |
-| A megosztott átviteli sebességgel rendelkező adatbázisban üzembe helyezhető tárolók maximális száma |25 |
+| Tárolók maximális száma a megosztott átviteli sebességgel rendelkező adatbázisokban |25 |
+| Tárolók maximális száma adatbázis vagy fiók számára dedikált átviteli sebességgel  |korlátlan |
 | Régiók maximális száma | Nincs korlát (az összes Azure-régió) |
 
 ## <a name="per-container-limits"></a>/Tároló korlátok
@@ -103,7 +104,7 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 | --- | --- |
 | Elemek maximális mérete | 2 MB (UTF-8 a JSON-ábrázolás hossza) |
 | Partíciós kulcs értékének maximális hossza | 2048 bájt |
-| Azonosító érték maximális hossza | 1024 bájt |
+| Azonosító érték maximális hossza | 1023 bájt |
 | Tulajdonságok maximális száma cikkenként | Nincs gyakorlati korlát |
 | Maximális beágyazási mélység | Nincs gyakorlati korlát |
 | Tulajdonságnév maximális hossza | Nincs gyakorlati korlát |

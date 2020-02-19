@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442020"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461232"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
 
@@ -126,7 +126,7 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 | displayName |displayName |
 | mail |e-mailek [típus eq "work"] .value |
 | mailNickname |displayName |
-| tag |tag |
+| tagok |tagok |
 | objectId |externalId |
 | proxyAddresses |e-mailek [Írja be a eq "egyéb"]. Érték |
 
@@ -1445,6 +1445,16 @@ A kezdeti ciklus elindítása után a bal oldali panelen kiválaszthatja a **ki�
 
 Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD Application Galleryben teheti elérhetővé. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a mások számára elérhető kiépítés egyszerűvé tétele. Tekintse meg a lépéseket [itt](../develop/howto-app-gallery-listing.md). A Microsoft együttműködik Önnel, hogy integrálja az alkalmazást a katalógusba, tesztelje a végpontot, és bocsásson ki a használati [dokumentációt](../saas-apps/tutorial-list.md) az ügyfelek számára. 
 
+### <a name="gallery-onboarding-checklist"></a>Katalógus-előkészítési ellenőrzőlista
+Kövesse az alábbi feladatlistát, és győződjön meg arról, hogy az alkalmazás készen áll, és az ügyfelek zökkenőmentes üzembe helyezési tapasztalattal rendelkeznek. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
+> [!div class="checklist"]
+> * [Támogatás SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (kötelező)
+> * Legalább 25 kérelem támogatása a bérlők számára másodpercenként (kötelező)
+> * Támogatási séma felderítése (ajánlott)
+> * Támogassa a OAuth engedélyezési kód támogatását vagy az alább leírtak szerint a hosszú élettartamú tokent (kötelező)
+> * Hozzon létre egy mérnöki és támogatási kapcsolattartási pontot az ügyfél támogatásához a katalógus bevezetéséhez (kötelező)
+> * A SCIM-végpont nyilvánosan történő dokumentálása (ajánlott) 
+
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Engedélyezés a kiépítési összekötők számára az alkalmazás-katalógusban
 A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az engedélyezéshez. A meglévő iparági szabványok használatára támaszkodik. Az Azure AD-kiépítési ügyfél két engedélyezési módszert támogat a katalógusban lévő alkalmazásokhoz. 
@@ -1471,6 +1481,17 @@ Ajánlott eljárások (javasolt, de nem kötelező):
 **Hosszú életű OAuth-tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer. Ennek a tokennek a méretnél kisebbnek kell lennie a 1KB.  
 
 További hitelesítési és engedélyezési módszerek esetén tudassa velünk a [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
+
+### <a name="gallery-go-to-market-launch-check-list"></a>A katalógus piacról indított indítási ellenőrzési listája
+Ha segítségre van szüksége a közös integrációval kapcsolatos ismeretek és igények kielégítéséhez, javasoljuk, hogy frissítse a meglévő dokumentációját, és bővítse az integrációt a marketing-csatornákon.  Az alábbi ellenőrzőlista-tevékenységeket ajánljuk az indítás támogatásához.
+
+* **Értékesítési és ügyféltámogatási készültség.** Gondoskodjon arról, hogy az értékesítési és támogatási csapatok tisztában legyenek, és beszéljenek az integrációs képességekről. Küldje el az értékesítési és támogatási csapatát, és adja meg a gyakori kérdéseket, és foglalja bele az értékesítési anyagokba való integrációt. 
+* **Blogbejegyzés és/vagy sajtóközlemény.** Készítsen egy blogbejegyzést, vagy nyomja meg a kiadást, amely leírja a közös integrációt, az előnyöket és az első lépéseket. [Példa: inprivata és Azure Active Directory Press sajtóközlemény](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+* **Közösségi média.** A közösségi média, például a Twitter, a Facebook vagy a LinkedIn segítségével népszerűsítheti ügyfelei integrációját. Ügyeljen arra, hogy @AzureAD, hogy a postát is meg lehessen retweet. [Példa: inprivata Twitter post](https://twitter.com/azuread/status/1123964502909779968)
+* **Marketing webhely.** Hozza létre vagy frissítse a marketing-oldalakat (például integrációs oldal, partner oldal, díjszabási oldal stb.), hogy tartalmazza a közös integráció rendelkezésre állását. [Példa: Pingboard Integration Page](https://pingboard.com/org-chart-for), [Smartsheet Integration Page](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Monday.com díjszabása oldal](https://monday.com/pricing/) 
+* **Technikai dokumentáció.** Hozzon létre egy Help Center-cikket vagy technikai dokumentációt arról, hogy az ügyfelek hogyan kezdhetik meg az első lépéseket. [Példa: megbízottat + Microsoft Azure Active Directory Integration.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+) 
+* **Ügyfél-kommunikáció.** Az ügyfél-kommunikáció (havi hírlevél, e-mail-kampányok, termék-kibocsátási megjegyzések) révén riasztást készíthet az ügyfelektől az új integrációról. 
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Az Azure AD-kiépítési szolgáltatás által az SCIM-kérések elvégzéséhez használt IP-címek engedélyezése
 
