@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ed37e4f5b84431355b63b3d59b0e49b78eaeed86
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156164"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445287"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,13 +48,13 @@ Az általános HelloWorld projekt platform-független implementációkat tartalm
 1. A forrásfájl `OnRecognitionButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
 
 
-1. A `OnRecognitionButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceregion`, és cserélje le az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) "Speech SDK paraméterének" helyére. (Például az ingyenes próbaverziós előfizetés `westus` használata.)
+1. A `OnRecognitionButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceregion`, és cserélje le az előfizetéséhez [tartozó régió](https://aka.ms/speech/sdkregion) - **azonosítóra** . (Például az ingyenes próbaverziós előfizetés `westus` használata.)
 
 1. Ezután létre kell hoznia egy [Xamarin szolgáltatást](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), amely a különböző platform-projektekben, például a UWP, az Androidban és az iOS-ben lévő mikrofon-engedélyek lekérdezésére szolgál. Ehhez vegyen fel egy új, *Services* nevű mappát a HelloWorld projekt alatt, és hozzon létre C# egy új forrásfájlt. Kattintson a jobb gombbal a *szolgáltatások* mappára, és válassza az **új elem** **hozzáadása** > a **fájl** > elemet. Nevezze át a fájlt `IMicrophoneService.cs`, és az alábbi kódrészletből helyezze el az összes kódot:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Mintakód hozzáadása a `helloworld.Android` projekthez
 
 Most adja hozzá C# a kódot, amely meghatározza az alkalmazás Android-specifikus részét.
@@ -75,7 +75,7 @@ Most adja hozzá C# a kódot, amely meghatározza az alkalmazás Android-specifi
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>Mintakód hozzáadása a `helloworld.iOS` projekthez
 
 Most adja hozzá C# a kódot, amely meghatározza az alkalmazás iOS-specifikus részét. Hozzon létre az Apple Device-specifikus konfigurációkat is az HelloWorld. iOS projekthez.
@@ -100,7 +100,7 @@ Most adja hozzá C# a kódot, amely meghatározza az alkalmazás iOS-specifikus 
 
 1. Ha Windows rendszerű számítógépet használ, hozzon létre egy kapcsolatot a Mac-eszközzel **a > ** **iOS** - > **pár Mac-re való**létrehozásához. A Mac-eszközhöz való kapcsolódás engedélyezéséhez kövesse a Visual Studio által biztosított utasítások varázslót.
 
-#### <a name="uwptabhelloworlduwp"></a>[UWP](#tab/helloworlduwp)
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Mintakód hozzáadása a `helloworld.UWP` projekthez
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Mintakód hozzáadása a HelloWorld. UWP projekt
@@ -145,6 +145,6 @@ Most adja hozzá C# a kódot, amely meghatározza az alkalmazás UWP-specifikus 
 
 Az Android-és iOS-alkalmazások kiépítése és futtatása az eszközön vagy a szimulátoron hasonló módon történik a UWP. Győződjön meg arról, hogy az összes SDK megfelelően van telepítve a jelen cikk "Előfeltételek" szakaszában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 910ced472fe2d565c0de8a9605af487d6f909473
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1ebd40fdc63512e0cc60e0e1d473075e3a8ae53a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156125"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446077"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,8 +52,7 @@ Az első lépések előtt ügyeljen a következőre:
        {
            // Creates an instance of a speech translation config with specified
            // subscription key and service region. Replace with your own subscription key
-           // and service region (e.g., "westus", use the one of SpeechSDKParameters
-           // from here: https://aka.ms/speech/sdkregion).   
+           // and region identifier from here: https://aka.ms/speech/sdkregion
 
            int exitCode = 1;
            SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey",  "YourServiceRegion");
@@ -146,6 +145,6 @@ TRANSLATED into 'de': Wie ist das Wetter in Seattle?
 TRANSLATED into 'fr': Quel temps fait-il à Seattle ?
 ````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

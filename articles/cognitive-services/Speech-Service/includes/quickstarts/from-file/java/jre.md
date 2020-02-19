@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: ee34993a41f280b9bb5944533b0bae66bedc24ac
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: e154eae5e57988c77d9af46c7d236b6c7f52dc46
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156345"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446290"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,8 +49,7 @@ ms.locfileid: "77156345"
                // Replace below with your own subscription key
                String speechSubscriptionKey = "YourSubscriptionKey";
 
-               // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-               // from here: https://aka.ms/speech/sdkregion).
+               // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
                String serviceRegion = "YourServiceRegion";
 
                // Replace below with your own filename.
@@ -130,6 +129,6 @@ A hangfájl első 15 másodpercét a rendszer felismeri és naplózza a konzol a
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

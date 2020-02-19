@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752415"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446847"
 ---
 A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
 
@@ -23,7 +23,7 @@ A növekményes Pillanatképek egy különbözeti képességet is biztosítanak,
 
 ## <a name="restrictions"></a>Korlátozások
 
-- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, az USA nyugati középső régiójában, Közép-Kanadában és Észak-Európában érhetők el.
+- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, az USA nyugati középső régiójában, Kelet-Kanadában, Közép-és Észak-Európában, Kelet-Ázsia Dél-
 - A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
@@ -74,7 +74,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>parancssori felület
 
 Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. 
 
@@ -152,6 +152,6 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.
