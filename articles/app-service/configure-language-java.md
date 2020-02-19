@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461266"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -29,6 +29,7 @@ A [mavenhez készült Azure Web App beépülő modullal](/java/api/overview/azur
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 
 - A. War fájlok Tomcatbe való üzembe helyezéséhez használja a `/api/wardeploy/` végpontot az archív fájl KÖZZÉTÉTELéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- A. jar fájlok Java SE-re való telepítéséhez használja a kudu webhely `/api/zipdeploy/` végpontját. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Ne telepítse a. War-t FTP használatával. Az FTP-eszköz indítási parancsfájlok, függőségek vagy más futásidejű fájlok feltöltésére szolgál. A webalkalmazások üzembe helyezése nem optimális megoldás.
 
@@ -287,6 +288,10 @@ A Tomcat `server.xml` vagy más konfigurációs fájlok szerkesztéséhez elősz
 
 Végezetül indítsa újra a App Service. A központi telepítések csak az előzőekben `D:\home\site\wwwroot\webapps`.
 
+## <a name="configure-java-se"></a>A Java SE konfigurálása
+
+A futtatásakor. JAR-alkalmazás Java SE-on Windows rendszeren, `server.port` az alkalmazás indításakor a parancssori kapcsolóként lesz átadva. A HTTP-portot manuálisan is feloldható a környezeti változóból, `HTTP_PLATFORM_PORT`. Ennek a környezeti változónak az értéke lesz az alkalmazás által figyelni kívánt HTTP-port. 
+
 ## <a name="java-runtime-statement-of-support"></a>A Java futtatókörnyezet támogatási nyilatkozata
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és-karbantartás
@@ -300,6 +305,8 @@ A támogatott JDK minden év januárjában, áprilisban, júliusban és október
 ### <a name="security-updates"></a>Biztonsági frissítések
 
 A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2. verziójában](https://nvd.nist.gov/cvss.cfm).
+
+A Tomcat 8,0 [2018. szeptember 30-ig elérte az élettartamot (EOL)](https://tomcat.apache.org/tomcat-80-eol.html). Habár a futtatókörnyezet továbbra is a Azure App Service avialable, az Azure nem fogja alkalmazni a Tomcat 8,0-es biztonsági frissítéseit. Ha lehetséges, telepítse át az alkalmazásokat a Tomcat 8,5 vagy a 9,0-es verzióra. A Tomcat 8,5 és 9,0 egyaránt elérhető Azure App Serviceon. További információért tekintse meg a [hivatalos tomcat-webhelyet](https://tomcat.apache.org/whichversion.html) . 
 
 ### <a name="deprecation-and-retirement"></a>Elavulás és nyugdíjazás
 
