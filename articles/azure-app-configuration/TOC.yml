@@ -1,4 +1,4 @@
-- name: Az Azure App Configuration (előzetes verzió) dokumentációja
+- name: Az Azure App Configuration dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Kulcs-érték tároló
       href: concept-key-value.md
+    - name: Titkosítás az ügyfelek által felügyelt kulcsokkal
+      href: concept-customer-managed-keys.md
     - name: Adott időpontban készült pillanatképek
       href: concept-point-time-snapshot.md
     - name: Funkciókezelés
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Eseménykezelés
       href: concept-app-configuration-event.md
+    - name: Hitelesítés
+      items:
+        - name: Integráció az Azure Managed Identityvel
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Hozzáférés engedélyezése az Azure Active Directoryval
+          href: concept-enable-rbac.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás
           href: concept-disaster-recovery.md
 - name: Útmutatók
   items:
-    - name: Integráció az Azure Managed Identityvel
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md
     - name: Események átirányítása egyéni végponthoz
@@ -86,7 +92,7 @@
     - name: Konfiguráció
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-szolgáltató
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET-keretrendszer készítője

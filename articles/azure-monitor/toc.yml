@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Virtuális gépek és a számítási teljesítmény monitorozása
+    - name: Virtuális gépek és a vendég operációs rendszer monitorozása
       items:
         - name: Ügynökök
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics bővítmény
               items:
+                - name: Áttekintés
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: Áttekintés
-                      href: platform/diagnostics-extension-overview.md
                     - name: Telepítés és konfigurálás
                       items:
+                        - name: Telepítési lehetőségek
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Resource Manager-sablon
@@ -561,13 +563,11 @@
                     - name: Küldés az Event Hubsba
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: Küldés a naplókba
-                      href: platform/azure-storage-iis-table.md
-                    - name: Küldés az Azure Storage-be
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: Küldés az Application Insightsba
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Verzióelőzmények
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: JSON-sorok erőforrásnapló-formátuma
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Hibaelhárítás
@@ -588,9 +588,9 @@
                 - name: Linux-ügynökök
                   href: platform/agent-linux.md
                 - name: Virtuálisgép-bővítmény Windowshoz
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Virtuálisgép-bővítmény Linuxhoz
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics-átjáró
                   href: platform/gateway.md
                 - name: Ügynökkezelés
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: Diagnosztikai bővítmény
       items:
-        - name: Séma
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Konfigurációs séma Windows-alapú eszközökhöz
+          href: platform/diagnostics-extension-schema-windows.md
     - name: Terminológiai változások
       href: terminology.md
     - name: Application Insights

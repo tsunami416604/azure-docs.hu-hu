@@ -36,6 +36,8 @@
           href: exchange-and-refund-azure-reservations.md
         - name: Foglalások kezelése
           href: manage-reserved-vm-instance.md
+        - name: Az optimalizálási beállítás módosítása
+          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Foglalások megtekintése
           href: view-reservations.md
     - name: Alapelvek
