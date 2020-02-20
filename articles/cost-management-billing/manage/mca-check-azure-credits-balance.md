@@ -2,21 +2,18 @@
 title: A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 description: Megtudhatja, hogyan ellenőrizheti a Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegét.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2019
 ms.author: banders
-ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991333"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199687"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
@@ -28,7 +25,7 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vo
 
 ## <a name="check-your-credit-balance"></a>A kreditegyenleg ellenőrzése
 
-### <a name="azure-portaltabportal"></a>[Azure Portalra](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -99,7 +96,7 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vo
 
     ![Képernyőkép a számlázási fiókhoz tartozó kreditek listájáról](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
-### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+### <a name="rest-api"></a>[REST API](#tab/rest)
 
 Használhatja az [Azure számlázási](https://docs.microsoft.com/rest/api/billing/) vagy [használati](https://docs.microsoft.com/rest/api/consumption/) API-jait a számlázási fiókhoz tartozó kreditegyenleg programozott módon való lekérdezéséhez.
 

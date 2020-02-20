@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425085"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467913"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás Azure Diagnostics
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -297,5 +297,5 @@ A virtuális gépeken a portál felülete alapértelmezés szerint bizonyos telj
 
 - Azt határozza meg, hogy a tárolóban lévő összes számláló neve angol nyelven van-e. Ha a számlálók nevei nem angol nyelvűek, a portál metrikai diagramja nem tudja felismerni. Megoldás **: módosítsa**a gép nyelvét angolra a rendszerfiókok számára. Ehhez válassza a **vezérlőpult** > **régió** > **felügyeleti** > **másolási beállítások**lehetőséget. Ezután törölje az **üdvözlőképernyő és a rendszerfiókok** kijelölését, hogy a rendszer ne alkalmazza az egyéni nyelvet a rendszerfiókra.
 
-- Ha helyettesítő karaktereket (\*) használ a teljesítményszámlálók neveiben, a portál nem fogja tudni összekapcsolni a konfigurált és az összegyűjtött számlálót, amikor a teljesítményszámlálók az Azure Storage-tárolóba kerülnek. Megoldás **: Győződjön**meg arról, hogy használhat helyettesítő karaktereket, és a portál kibontása a (\*), a teljesítményszámlálók átirányítása a ["Azure monitor"](diagnostics-extension-schema.md#diagnostics-extension-111)fogadóba.
+- Ha helyettesítő karaktereket (\*) használ a teljesítményszámlálók neveiben, a portál nem fogja tudni összekapcsolni a konfigurált és az összegyűjtött számlálót, amikor a teljesítményszámlálók az Azure Storage-tárolóba kerülnek. Megoldás **: Győződjön**meg arról, hogy használhat helyettesítő karaktereket, és a portál kibontása a (\*), a teljesítményszámlálók átirányítása a Azure monitor fogadóba.
 

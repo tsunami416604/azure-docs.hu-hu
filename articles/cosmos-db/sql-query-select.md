@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469935"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék Azure Cosmos DB
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Az eredményhalmaz számára kijelölhető tulajdonságok vagy értékek.  
+  Tulajdonságok vagy ki kell választania a az eredményhalmaz érték.  
   
 - `'*'`  
 
-  Megadja, hogy az értéket a módosítások végrehajtása nélkül kell beolvasni. Különösen, ha a feldolgozott érték egy objektum, az összes tulajdonságot lekéri a rendszer.  
+  Itt adhatja meg, hogy az érték legyen beolvasva módosítása nélkül. Kifejezetten a feldolgozott értéke egy objektumot, ha a rendszer lekéri az összes tulajdonság.  
   
 - `<object_property_list>`  
   
-  Meghatározza a lekérdezni kívánt tulajdonságok listáját. Minden visszaadott érték egy objektum lesz, amely a megadott tulajdonságokkal rendelkezik.  
+  Meghatározza a lekérdezni kívánt tulajdonságok listája. Minden egyes visszaküldött érték a megadott tulajdonságokkal rendelkező objektum lesz.  
   
 - `VALUE`  
 
-  Megadja, hogy a JSON-értéket a teljes JSON-objektum helyett le kell olvasni. Ez a `<property_list>` értékkel ellentétben a kijelzett értéket nem zárja be egy objektumban.  
+  Itt adhatja meg, hogy a JSON értéke legyen beolvasva a teljes JSON-objektum helyett. Ez a `<property_list>`tól eltérően nem takarja el a tervezett értéket egy objektumban.  
  
 - `DISTINCT`
   
@@ -56,29 +56,29 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  A kiszámítani kívánt értéket jelölő kifejezés. Részletekért lásd a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
+  A kifejezés a következő időpontban számítja értéket jelölő. Részletekért lásd a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
 
 ## <a name="remarks"></a>Megjegyzések
 
-A `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban pontosan egy alias van deklarálva. a `SELECT *` egy identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség leképezésre. A SELECT * utasítás csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást mutat be.  
+Az `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban pontosan egy alias van deklarálva. a `SELECT *` identitás-kivetítést biztosít, ami hasznos lehet, ha nincs szükség leképezésre. Válassza ki * csak akkor érvényes, ha a FROM záradék van megadva, és csak egyetlen bemeneti forrás bevezetni.  
   
-Mind a `SELECT <select_list>`, mind a `SELECT *` a "szintaktikai cukor", és az alábbiakban látható egyszerű SELECT utasításokkal is megadható.  
+Mind a `SELECT <select_list>`, mind a `SELECT *` "szintaktikai cukor", és az alábbiakban látható egyszerű SELECT utasításokkal is megadható.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   egyenértékű a következővel:  
+   a következő azonos:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   egyenértékű a következővel:  
+   a következő azonos:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Példák
 
-A következő SELECT lekérdezési példa a `address` értéket adja vissza `Families` közül, amelynek `id` értéke `AndersenFamily`:
+A következő SELECT lekérdezési példa olyan `Families` `address` adja vissza, amelynek `id` `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -99,7 +99,7 @@ Az eredmények a következők:
 ```
 
 ### <a name="quoted-property-accessor"></a>Idézett tulajdonság-hozzáférés
-A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti el. Például a `SELECT c.grade` és a `SELECT c["grade"]` egyenértékű. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
+A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti el. A `SELECT c.grade` és a `SELECT c["grade"]` például egyenértékűek. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti
 
 ### <a name="nested-properties"></a>Beágyazott tulajdonságok
 
-Az alábbi példa két beágyazott tulajdonságot, `f.address.state` és `f.address.city`.
+A következő példában két beágyazott tulajdonságot (`f.address.state` és `f.address.city`) tervezünk.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -168,6 +168,50 @@ Az eredmények a következők:
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>Fenntartott kulcsszavak és speciális karakterek
+
+Ha az adatai olyan tulajdonságokat tartalmaznak, amelyek neve megegyezik a fenntartott kulcsszavakkal (például "Order" vagy "Group"), akkor a dokumentumok lekérdezése szintaktikai hibákat eredményez. A lekérdezés sikeres futtatásához explicit módon fel kell vennie a tulajdonságot `[]` karakterbe.
+
+Például itt található egy `order` nevű és egy speciális karaktereket tartalmazó `price($)` tulajdonságot tartalmazó dokumentum:
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+Ha olyan lekérdezéseket futtat, amelyek tartalmazzák a `order` tulajdonságot vagy `price($)` tulajdonságot, szintaktikai hibaüzenetet fog kapni.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+Az eredmény a következőket eredményezi:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+Az alábbihoz hasonló lekérdezéseket kell újraírnia:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Következő lépések

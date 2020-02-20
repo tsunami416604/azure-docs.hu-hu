@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.date: 12/23/2019
-ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552270"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471023"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor
 
 Megtudhatja, hogyan tölthetők be [Apache Hive](https://hive.apache.org/) -kódtárak a HDInsight. Ez a dokumentum a fürt létrehozása során a kódtárak előzetes betöltésére szolgáló parancsfájl-művelettel kapcsolatos információkat tartalmaz. A jelen dokumentumban ismertetett lépések használatával hozzáadott könyvtárak globálisan elérhetők a kaptárban – nem szükséges a [jar hozzáadása](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) a betöltéshez.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Fürt létrehozásakor parancsfájl-művelettel módosíthatja a fürt csomópontjait a létrehozásuk során. A dokumentumban szereplő parancsfájl egyetlen paramétert fogad el, amely a kódtárak helye. Ennek a helynek egy Azure Storage-fiókban kell lennie, és a kódtárakat jar-fájlként kell tárolni.
 
@@ -33,7 +33,7 @@ A cikkben szereplő parancsfájl-művelettel elérhetővé válik a kódtárak h
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**Követelmények**
+### <a name="requirements"></a>Követelmények
 
 * A parancsfájlokat a **főcsomópontokra** és a **munkavégző csomópontokra**egyaránt alkalmazni kell.
 
@@ -50,19 +50,22 @@ A cikkben szereplő parancsfájl-művelettel elérhetővé válik a kódtárak h
 
 ## <a name="create-a-cluster-using-the-script"></a>Fürt létrehozása a parancsfájl használatával
 
-1. Hozzon létre egy fürtöt a [HDInsight-fürtök Linuxon](hdinsight-hadoop-provision-linux-clusters.md)való üzembe helyezésének lépéseivel, de ne fejezze be a telepítést. A parancsfájl használatával a Azure PowerShell vagy a HDInsight .NET SDK használatával is létrehozhat fürtöt. A módszerek használatával kapcsolatos további információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletekkel](hdinsight-hadoop-customize-cluster-linux.md). A Azure Portal esetében válassza az **Ugrás a klasszikus létrehozási** lehetőségre lehetőséget, majd az **Egyéni (méret, beállítások, alkalmazások)** elemet.
+1. Hozzon létre egy fürtöt a [HDInsight-fürtök Linuxon](hdinsight-hadoop-provision-linux-clusters.md)való üzembe helyezésének lépéseivel, de ne fejezze be a telepítést. A parancsfájl használatával a Azure PowerShell vagy a HDInsight .NET SDK használatával is létrehozhat fürtöt. A módszerek használatával kapcsolatos további információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletekkel](hdinsight-hadoop-customize-cluster-linux.md). A Azure Portal a **konfiguráció + díjszabás** lapon válassza a **+ parancsfájl hozzáadása műveletet**.
 
 1. A **Storage**esetében, ha a JAR-fájlok könyvtárát tartalmazó Storage-fiók eltér a fürthöz használt fióktól, akkor végezze el a **további Storage-fiókokat**.
 
 1. A **parancsfájlok műveleteihez**adja meg a következő információkat:
 
-    |Tulajdonság |Value (Díj) |
+    |Tulajdonság |Érték |
     |---|---|
     |Parancsfájl típusa|– Egyéni|
-    |Név|Kódtárak |
+    |Name (Név)|Kódtárak |
     |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Csomópont típusa (i)|Head, Worker|
     |Paraméterek|Adja meg az WASB-címeket az edényt tartalmazó tároló-és Storage-fiókhoz. Például: `wasbs://libs@mystorage.blob.core.windows.net/`.|
+
+    > [!NOTE]
+    > Apache Spark 2,1 esetében használja ezt a bash-parancsfájl URI-JÁT: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
 1. Folytassa a fürt kiépítését a [Linuxon futó HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)című témakörben leírtak szerint.
 

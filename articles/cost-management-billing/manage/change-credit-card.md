@@ -2,21 +2,18 @@
 title: Azure-beli hitelkártya módosítása
 description: A cikk ismerteti az Azure-előfizetéshez használt hitelkártya módosításának lépéseit.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 10d475b9c0c33dfd17c3d87beed00154511e1ab6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188418"
+ms.locfileid: "77199857"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban
 
@@ -118,7 +115,7 @@ Ha a hitelkártya a Microsoft-előfizetések bármelyikének aktív fizetési m�
 
 A következő szakaszok olyan ügyfelekre vonatkozik, akik Microsoft Ügyfélszerződéssel rendelkeznek, valamint hitelkártyával regisztráltak az Azure-ba online. [Ismerje meg, hogyan ellenőrizheti, hogy Microsoft Ügyfélszerződéssel rendelkezik-e](#check-the-type-of-your-account).
 
-### <a name="change-default-credit-card"></a>Alapértelmezett hitelkártya módosítása 
+### <a name="change-default-credit-card"></a>Alapértelmezett hitelkártya módosítása
 Ha Microsoft Ügyfélszerződéssel, hitelkártyája egy számlázási profilhoz van társítva. A számlázási profilhoz tartozó fizetési mód megváltoztatásához Önnek kellett regisztrálnia az Azure-fiókot, illetve létrehoznia a számlázási fiókot.
 
 Ha számlázási fiókjának alapértelmezett fizetési módját csekkes/banki átutalásos fizetésre kívánja módosítani, tekintse meg a következőt: [Azure-előfizetések fizetése számla alapján](pay-by-invoice.md).

@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag az adatok virtuális merevlemezekről a felügyelt lemezekre történő másolásához Azure Data Box használatával | Microsoft Docs
+title: 'Oktatóanyag: másolás virtuális merevlemezekről a felügyelt lemezekre'
+titleSuffix: Azure Data Box
 description: Útmutató a virtuális merevlemezekről származó adatok másolásához a helyszíni virtuálisgép-munkaterhelésekről a Azure Data Box
 services: databox
 author: alkohli
@@ -8,18 +9,18 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240464"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471227"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: Az Azure-beli felügyelt lemezként való importálás Data Box használata
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box használata felügyelt lemezként az Azure-ban
 
 Ez az oktatóanyag leírja, hogyan telepítheti át a helyszíni virtuális merevlemezeket a felügyelt lemezekre az Azure-ban a Azure Data Box használatával. A helyszíni virtuális gépekről származó virtuális merevlemezeket a rendszer átmásolja Data Boxba, és az Azure-ba felügyelt lemezként feltölti őket. Ezek a felügyelt lemezek ezután az Azure-beli virtuális gépekhez csatlakoztathatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Előfeltételek áttekintése
@@ -31,8 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box](data-box-deploy-set-up.md)beállítása.
-2. Megkapta a Data Boxt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
+1. Elvégezte az [oktatóanyagot: Azure Data Box beállítása](data-box-deploy-set-up.md).
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Nagy sebességű hálózathoz csatlakozik. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, használjon 1 GbE adatkapcsolatot, de a másolási sebességet is érinti.
 4. Áttekintette a következőket:
 
@@ -41,16 +42,16 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
-A megadott erőforráscsoportok alapján Data Box létrehoz egy megosztást az egyes társított erőforráscsoportok számára. Például ha `mydbmdrg1` a és `mydbmdrg2` a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
+A megadott erőforráscsoportok alapján Data Box létrehoz egy megosztást az egyes társított erőforráscsoportok számára. Ha például `mydbmdrg1` és `mydbmdrg2` jött létre a rendelés elhelyezésekor, a következő megosztások jönnek létre:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
 Az egyes megosztásokon belül a következő három mappa jön létre, amelyek a Storage-fiókban lévő tárolóknak felelnek meg.
 
-- Prémium SSD
-- Standard HDD
-- Standard SSD
+- prémium SSD
+- standard HDD
+- standard SSD
 
 A következő táblázat a Data Box megosztások UNC elérési útját mutatja be.
  
@@ -66,7 +67,7 @@ Attól függően, hogy az SMB vagy az NFS használatával csatlakozik-e Data Box
 
 ### <a name="connect-to-data-box-via-smb"></a>Kapcsolódás Data Box SMB-n keresztül
 
-Ha Windows Server rendszert futtató számítógépet használ, a következő lépésekkel csatlakozhat a Data Boxhoz.
+Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépéseket a Data Boxhoz történő csatlakozáshoz.
 
 1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson a **hitelesítő adatok beolvasása** elemre az erőforráscsoporthoz társított megosztások hozzáférési hitelesítő adatainak beszerzéséhez. A hozzáférési hitelesítő adatokat a Azure Portalban található **eszköz adatainál** is lekérheti.
 
@@ -97,7 +98,7 @@ Ha Windows Server rendszert futtató számítógépet használ, a következő l�
     C: \>
     ```
 
-4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. A fájlkezelő megnyitásához kattintson **az OK** gombra.
+4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>\<ShareName>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -135,9 +136,9 @@ Miután csatlakozott az adatkiszolgálóhoz, a következő lépés az Adatmásol
 
 Az Adatmásolás megkezdése előtt tekintse át a következő szempontokat:
 
-- Mindig másolja a virtuális merevlemezeket az egyik előlétrehozott mappába. Ha a virtuális merevlemezeket ezen mappákon kívül vagy egy Ön által létrehozott mappában másolja, a VHD-k az Azure Storage-fiókba lesznek feltöltve, és nem felügyelt lemezként.
-- A felügyelt lemezek létrehozásához csak a rögzített VHD-k tölthetők fel. A VHDX-fájlok, illetve a dinamikus és a különbséglemezek VHD-k nem támogatottak.
-- Az összes előlétrehozott mappában csak egy felügyelt lemez tartozhat egy adott névvel. Ez azt jelenti, hogy az előlétrehozott mappákba feltöltött virtuális merevlemezeknek egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik egy erőforráscsoport már meglévő felügyelt lemezével.
+- Mindig másolja át a VHD-kat az egyik előre létrehozott mappába. Ha a virtuális merevlemezeket ezen mappákon kívül vagy egy Ön által létrehozott mappában másolja, a VHD-k az Azure Storage-fiókba lesznek feltöltve, és nem felügyelt lemezként.
+- Csak a rögzített VHD-ket lehet feltölteni felügyelt lemezek létrehozásához. A VHDX-fájlok, illetve a dinamikus és a különbséglemezek VHD-k nem támogatottak.
+- Az összes előlétrehozott mappában csak egy felügyelt lemez tartozhat egy adott névvel. Ez azt is jelenti, hogy az előre létrehozott mappákba feltöltött VHD-knak egyedi névvel kell rendelkezniük. Győződjön meg arról, hogy a megadott név nem egyezik meg egy erőforráscsoport meglévő felügyelt lemez nevével sem.
 - Tekintse át a felügyelt lemezek korlátozásait az [Azure-objektumok méretének korlátaiban](data-box-limits.md#azure-object-size-limits).
 
 Attól függően, hogy SMB-n vagy NFS-en keresztül csatlakozik, használhatja a következőt:
@@ -166,7 +167,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
 A másolási feladatok befejezése után **szállításra való előkészítés**léphet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
@@ -176,7 +177,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 > * Adatok másolása a Data Boxra
 
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan szállíthatja vissza a Data Boxt a Microsoftnak.
+Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti vissza a Data Boxot a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)

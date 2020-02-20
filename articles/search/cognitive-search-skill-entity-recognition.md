@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479741"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472332"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
@@ -26,7 +26,7 @@ Az **entitás-felismerési** képesség Kinyeri a szövegből származó külön
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. Skills. Text. EntityRecognitionSkill
+Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
 A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
@@ -38,7 +38,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | kategóriák    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `de, en, es, fr, it`|
+|defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nem minden entitás-kategória támogatott az összes nyelven; lásd az alábbi megjegyzést.|
 |minimumPrecision | 0 és 1 közötti érték. Ha a megbízhatósági pontszám (a `namedEntities` kimenetében) alacsonyabb ennél az értéknél, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0. |
 |includeTypelessEntities | Állítsa `true` értékre, ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az elismert entitások a `entities` összetett kimenet mezőben lesznek visszaadva. Például a "Windows 10" egy jól ismert entitás (a termék), de mivel a "Products" nem támogatott kategória, ez az entitás szerepel az entitások kimenet mezőjében. Az alapértelmezett érték `false` |
 
@@ -47,18 +47,18 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 
 | Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
-| languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
+| languageCode  | Választható. Az alapértelmezett érték a `"en"`.  |
 | szöveg          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 > [!NOTE]
-> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. Csak az _en_, _es_ támogatja a `"Quantity"`, `"Datetime"`, `"URL"`és `"Email"` típusok kinyerését.
+> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A fenti nyelvek teljes listája a `"Person"`, a `"Location"`és a `"Organization"` entitások kategóriáit támogatja. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-hans_ támogatja a `"Quantity"`, `"Datetime"`, `"URL"`és `"Email"` típusok kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
 | Kimenet neve     | Leírás                   |
 |---------------|-------------------------------|
 | személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
-| Helyek  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
+| locations  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
 | organizations  | Karakterláncok tömbje, amelyben minden sztring egy szervezetet jelöl. |
 | mennyiségek  | Karakterláncok tömbje, amelyben minden sztring egy mennyiséget jelöl. |
 | Dátum  | Karakterláncok tömbje, amelyben minden karakterlánc egy DateTime értéket jelöl (ahogy a szövegben jelenik meg). |

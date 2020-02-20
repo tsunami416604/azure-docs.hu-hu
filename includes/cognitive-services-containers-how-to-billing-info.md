@@ -1,32 +1,30 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: a24300958c27daaaf49cc3045a5e99d77c938ab7
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "67704279"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474234"
 ---
-A tárolóra irányuló lekérdezések számlázása a `<ApiKey>`használt Azure-erőforrás díjszabási szintjénél történik.
+A tárolóra irányuló lekérdezések számlázása a `ApiKey`használt Azure-erőforrás díjszabási szintjénél történik.
 
-Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel, ha nem csatlakoznak a számlázási végponthoz a méréshez. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak. 
+Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
 
 ### <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 
-A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az értékek lehetővé teszik a tárolónak a számlázási végponthoz való kapcsolódást. A tároló 10 – 15 percen belül jelentést készít a használatról. Ha a tároló nem csatlakozik az Azure-hoz az engedélyezett időtartományon belül, a tároló továbbra is futni fog, de addig nem szolgál lekérdezéseket, amíg a számlázási végpont vissza nem áll. A rendszer 10 – 15 percen belül 10 alkalommal kísérli meg a kapcsolódást. Ha a 10 próbálkozáson belül nem tud csatlakozni a számlázási végponthoz, a tároló leáll. 
+A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az értékek lehetővé teszik a tárolónak a számlázási végponthoz való kapcsolódást. A tároló 10 – 15 percen belül jelentést készít a használatról. Ha a tároló nem csatlakozik az Azure-hoz az engedélyezett időtartományon belül, a tároló továbbra is futni fog, de addig nem szolgál lekérdezéseket, amíg a számlázási végpont vissza nem áll. A rendszer 10 – 15 percen belül 10 alkalommal kísérli meg a kapcsolódást. Ha a 10 próbálkozáson belül nem tud csatlakozni a számlázási végponthoz, a tároló leállítja a kérelmek kiszolgálását.
 
 ### <a name="billing-arguments"></a>Számlázási argumentumok
 
-Ahhoz, hogy a `docker run` parancs elindítsa a tárolót, az alábbi két lehetőség közül mindhárom beállítást érvényes értékekkel kell megadni:
+A <a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank">`docker run` <span class="docon docon-navigate-external x-hidden-focus"></span> </a> parancs a tárolót akkor indítja el, ha az alábbi két lehetőség mind a három értéke érvényes értékkel rendelkezik:
 
-| Lehetőség | Leírás |
+| Beállítás | Leírás |
 |--------|-------------|
 | `ApiKey` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás API-kulcsa.<br/>Ennek a beállításnak az értékét a `Billing`ban megadott kiépített erőforráshoz tartozó API-kulcsra kell beállítani. |
 | `Billing` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás végpontja.<br/>Ennek a beállításnak az értékét egy kiépített Azure-erőforrás végpont-URI-azonosítójának kell beállítania.|
 | `Eula` | Azt jelzi, hogy elfogadta a tároló licencét.<br/>Ennek a beállításnak az értékét az **elfogadás**értékre kell beállítani. |
-
-

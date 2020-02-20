@@ -1,21 +1,19 @@
 ---
 title: Az AWS-költségek és -használat kezelése az Azure Cost Managementben
 description: Ez a cikk segít megérteni, hogyan használhatja a költségelemzést és a költségvetéseket a Cost Managementben saját AWS-költségei és -használata kezeléséhez.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: ormaoz
+ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: a7520d7b3bd46aa9151c68598574f9cbec84d6fc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd4d4a16642e764276d49dd732a785be48197d01
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988616"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200027"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Az AWS-költségek és -használat kezelése az Azure-ban
 

@@ -2,21 +2,18 @@
 title: Az Azure-használati API áttekintése
 description: Megtudhatja, hogyan biztosítanak az Azure-használati API-k programozott hozzáférést az Azure-erőforrások költség- és használati adataihoz.
 author: bandersmsft
-manager: dougeby
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5ac0918fcd8c5a1eb9242d603a7e3433d0f709ed
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d838bf6d2df72299df2796f3cc47c463ba95be
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988460"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200897"
 ---
 # <a name="azure-consumption-api-overview"></a>Az Azure-használati API áttekintése
 

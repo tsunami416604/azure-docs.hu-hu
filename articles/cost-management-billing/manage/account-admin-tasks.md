@@ -2,21 +2,18 @@
 title: Fiókadminisztrátori feladatok az Azure Portalon
 description: Ismerteti, hogyan hajthatók végre fizetési műveletek az Azure Portalon
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132134"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200999"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
 
@@ -25,35 +22,35 @@ Ez a cikk azt ismerteti, hogyan hajthatók végre a következő feladatok az Azu
 - Az előfizetés költségkeretének eltávolítása
 - Kreditek hozzáadása az Azure in Open-előfizetéshez
 
-Ezen feladatok elvégzéséhez fiókadminisztrátornak kell lennie. 
+Ezen feladatok elvégzéséhez fiókadminisztrátornak kell lennie.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigáljon az előfizetés fizetési módjaihoz
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-    
+
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listából válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát. 
-   
+1. A **Saját előfizetések** listából válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
+
    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést. 
+   > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
 
 1. Válassza a **Fizetési módok** elemet.
 
     ![Képernyőkép kiválasztott fizetési módok panellel.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-Itt új hitelkártyát adhat hozzá, módosíthatja az aktív fizetési módszert, szerkesztheti a hitelkártya adatait, és hitelkártyákat törölhet. 
+Itt új hitelkártyát adhat hozzá, módosíthatja az aktív fizetési módszert, szerkesztheti a hitelkártya adatait, és hitelkártyákat törölhet.
 
 ### <a name="change-active-payment-method"></a>Aktív fizetési mód módosítása
 
 Az aktív fizetési mód módosításához hozzáadhat egy új hitelkártyát, vagy kiválaszthat egy már mentettet. Az aktív fizetési mód módosítása új hitelkártyára:
 
 1. Hitelkártya hozzáadásához válassza a „+” gombot a bal felső sarokban.
-    
+
     ![Képernyőkép a pluszjelről](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Adja meg a hitelkártya adatait a jobb oldali űrlapon.
@@ -111,7 +108,7 @@ Ha szeretne jogosulttá válni a számlás fizetésre, tekintse meg [a számla a
 
 ### <a name="edit-invoice-payment-address"></a>Számla fizetési címének szerkesztése
 
-Ha szerkeszteni szeretné a számlás fizetési mód címét, kattintson az előfizetés fizetési módjainak listájában lévő **Számla** lehetőségre. A jobb oldalon megnyílik a cím űrlap. 
+Ha szerkeszteni szeretné a számlás fizetési mód címét, kattintson az előfizetés fizetési módjainak listájában lévő **Számla** lehetőségre. A jobb oldalon megnyílik a cím űrlap.
 
 ## <a name="remove-spending-limit"></a>Költségkeret eltávolítása
 
@@ -124,15 +121,15 @@ A költségkeret nem érhető el hűségszerződéses csomagokat és használata
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listában válassza ki a Visual Studio Enterprise-előfizetését. 
+1. A **Saját előfizetések** listában válassza ki a Visual Studio Enterprise-előfizetését.
 
    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Ha bizonyos Visual Studio-előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította egy előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
-    
+
 1. Az előfizetés áttekintésében kattintson a narancssárga szalagcímre a költségkeret eltávolításához.
-    
+
     ![Képernyőkép a költségkeret eltávolítása szalagcímről](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Válassza ki, hogy határozatlan időre vagy csak az aktuális számlázási időszakra szeretné-e eltávolítani a költségkeretet.
@@ -152,15 +149,15 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/account-admin-tasks/search-bar.png)
 
-1. A **Saját előfizetések** listában válassza ki Azure in Open-előfizetését. 
+1. A **Saját előfizetések** listában válassza ki Azure in Open-előfizetését.
 
     ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Módosítania kell az előfizetés könyvtárát az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
-    
+
 1. Válassza a **Kreditelőzmények** lehetőséget.
-    
+
     ![A kreditelőzményeket bemutató képernyőkép](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. További kreditek hozzáadásához válassza a „+” gombot a bal felső sarokban.
@@ -168,7 +165,7 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
     ![A kreditek hozzáadása gombot megjelenítő képernyőkép](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. Válassza ki a fizetési mód típusát a legördülő menüből. Hozzáadhat egy termékkulcsot, vagy hitelkártyával krediteket vásárolhat.
-    
+
     ![Képernyőkép a kreditek hozzáadása panel fizetési mód legördülő menüjéről](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. Ha a termékkulcsot választotta:

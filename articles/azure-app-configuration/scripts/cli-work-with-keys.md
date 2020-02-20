@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433581"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468150"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>A Key-Values használata egy Azure-alkalmazás konfigurációs tárolójában
 
@@ -31,10 +31,6 @@ Ez a példa egy új kulcsot hoz létre egy Azure-alkalmazás konfigurációs tá
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
-
-Először telepítenie kell az Azure app Configuration CLI bővítményt a következő parancs végrehajtásával:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -89,9 +85,9 @@ Ez a szkript a következő parancsokat használja az alkalmazás konfigurációs
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig kV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Létrehoz vagy frissít egy kulcs-értéket. |
-| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Az alkalmazás-konfigurációs tárolóban található kulcsok értékeit sorolja fel. |
-| [az appconfig kV delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Egy kulcs-érték törlése. |
+| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Létrehoz vagy frissít egy kulcs-értéket. |
+| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Az alkalmazás-konfigurációs tárolóban található kulcsok értékeit sorolja fel. |
+| [az appconfig kV delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Egy kulcs-érték törlése. |
 
 ## <a name="next-steps"></a>Következő lépések
 

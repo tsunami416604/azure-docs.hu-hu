@@ -1,19 +1,18 @@
 ---
 title: Ismerkedés az Azure Enterprise portállal
 description: Ez a cikk azt ismerteti, hogyan használják az Azure Nagyvállalati Szerződéssel (Azure EA) rendelkező ügyfelek az Azure Enterprise portált.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023344"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200829"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -235,7 +234,7 @@ Fiókok átvitelekor vegye figyelembe ezeket a fontos információkat:
   - Az egyik munkahelyi vagy iskolai fiókról egy másik munkahelyi vagy iskolai fiókra.
   - Egy Microsoft-fiókról egy munkahelyi vagy iskolai fiókra.
   - Az egyik Microsoft-fiókról egy másik Microsoft-fiókra.
-  
+
     A célfióknak érvényes Azure Commerce-fióknak kell lennie, hogy érvényes átviteli cél lehessen. Új fiókok esetén új Azure Commerce-fiókot kell létrehoznia az Azure Enterprise portálra való bejelentkezéskor. Meglévő fiókok esetén először új Azure-előfizetést kell létrehoznia ahhoz, hogy a fiók jogosulttá váljon.
 
 - Nem végezhet átvitelt munkahelyi vagy iskolai fiókról Microsoft-fiókra.
@@ -285,7 +284,7 @@ A fióktulajdonosok megtekinthetik és kezelhetik az előfizetéseket. Az előfi
 
 Amikor különböző előfizetéseket hoz létre az egyes alkalmazáskörnyezetekhez, elősegíti a környezetek védelmét.
 
-- Mindegyik előfizetéshez különböző szolgáltatásadminisztrátori fiókot rendelhet. 
+- Mindegyik előfizetéshez különböző szolgáltatásadminisztrátori fiókot rendelhet.
 - Az előfizetéseket korlátlan számú szolgáltatáshoz hozzárendelheti.
 - A fiók tulajdonosa hoz létre előfizetéseket, és rendel hozzá egy szolgáltatásadminisztrátori fiókot a fiókjában lévő összes előfizetéshez.
 
@@ -309,7 +308,7 @@ Előfizetés hozzáadásához:
 1. Válassza az **Előfizetések** elemet, majd válassza ki a létrehozott előfizetést.
 1. Válassza **Az előfizetés adatainak szerkesztése** elemet.
 1. Módosítsa az **Előfizetés neve** és a **Szolgáltatásadminisztrátor** adatait, majd jelölje be a jelölőnégyzetet.
-  
+
    Az előfizetés neve megjelenik a jelentéseken. Ez a fejlesztési portálon az előfizetéshez rendelt projekt neve.
 
 Akár 24 órába is telhet, amíg az új előfizetések megjelennek az előfizetések listáján. Az előfizetés létrehozása után elvégezheti az alábbiakat:
@@ -509,14 +508,14 @@ Az Azure Enterprise portál két előfizetés-típust kínál a vállalati ügyf
 - A Microsoft Azure Enterprise a következőkhöz ideális:
   - Minden éles használat
   - A legjobb árak az infrastruktúrakiadások alapján
-  
+
   Bővebb információkért [lépjen kapcsolatba az Azure értékesítési csapatával](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
 - Az Enterprise Dev/Test a következőkhöz ideális:
   - Minden, csapatban zajló fejlesztési/tesztelési számítási feladat
   - A közepestől a nagy méretűig terjedő egyéni fejlesztési/tesztelési számítási feladatok
   - Hozzáférés különleges MSDN-lemezképekhez és kedvezményes szolgáltatási díjakhoz
-  
+
   Bővebb információért lásd az [Enterprise Dev/Test ajánlatot](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Lehetséges az előfizetés tulajdonjogának átadása egy másik fióknak?

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367129"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470572"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -28,7 +28,7 @@ Hány interaktív munkamenet lehet aktív egyszerre a rendszer hardveres erőfor
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Miért jelent az alkalmazásom a Windows 10-es nagyvállalati többmunkamenetes kiszolgáló operációs rendszert?
 
-A Windows 10 Enterprise multi-session a Windows 10 Enterprise virtuális kiadása. Az egyik különbség az, hogy ez az operációs rendszer (OS) a [ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/) a 3 értékkel, a Windows Serverrel megegyező értékkel jelenti. Ezzel a tulajdonsággal az operációs rendszer kompatibilis a meglévő RDSH-kezelési eszközökkel, RDSH több munkamenetet támogató alkalmazásokat, és többnyire alacsony szintű rendszerteljesítmény-optimalizálást biztosít a RDSH környezetekhez. Egyes alkalmazás-telepítők letilthatják a telepítést a Windows 10-es rendszeren attól függően, hogy a ProductType az ügyfélre van-e állítva. Ha az alkalmazás nem lesz telepítve, a frissített verzióért forduljon az alkalmazás forgalmazójához. 
+A Windows 10 Enterprise multi-session a Windows 10 Enterprise virtuális kiadása. Az egyik különbség az, hogy ez az operációs rendszer (OS) a [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) a 3 értékkel, a Windows Serverrel megegyező értékkel jelenti. Ezzel a tulajdonsággal az operációs rendszer kompatibilis a meglévő RDSH-kezelési eszközökkel, RDSH több munkamenetet támogató alkalmazásokat, és többnyire alacsony szintű rendszerteljesítmény-optimalizálást biztosít a RDSH környezetekhez. Egyes alkalmazás-telepítők letilthatják a telepítést a Windows 10-es rendszeren attól függően, hogy a ProductType az ügyfélre van-e állítva. Ha az alkalmazás nem lesz telepítve, a frissített verzióért forduljon az alkalmazás forgalmazójához. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Futtathatom a Windows 10 Enterprise multi-session szolgáltatást a helyszínen?
 

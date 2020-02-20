@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4487beffd0e6a0643f4d3d88f5bb342f23eb848f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202254"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471690"
 ---
 ## <a name="limitations"></a>Korlátozások
 
@@ -143,4 +143,4 @@ PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha érdekli a megosztott lemezek kipróbálása, [regisztráljon az előzetes](https://aka.ms/shareddisksignup)verzióra.
+Ha érdekli a megosztott lemezek kipróbálása, [regisztráljon az előzetes](https://aka.ms/AzureSharedDiskPreviewSignUp)verzióra.

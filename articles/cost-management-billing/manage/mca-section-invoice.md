@@ -2,24 +2,21 @@
 title: A számla rendszerezése az igényeinek megfelelően – Azure
 description: Ismerje meg, hogyan rendszerezheti a számlán szereplő költségeket.
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843888"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200744"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>A költségek rendszerezése a számlázási fiók testreszabásával
 
-A Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal rugalmasan rendszerezheti a költségeit az igényeinek megfelelően, például részleg, projekt vagy fejlesztési környezet szerint. 
+A Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal rugalmasan rendszerezheti a költségeit az igényeinek megfelelően, például részleg, projekt vagy fejlesztési környezet szerint.
 
 Ez a cikk azt ismerteti, hogyan rendszerezheti a költségeit az Azure Portal használatával. A Microsoft Ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
@@ -33,7 +30,7 @@ A Microsoft Ügyfélszerződésekhez tartozó számlázási fiókokban számláz
 
 A számlázási profil a számlázást és a kapcsolódó számlázási adatokat, például a fizetési módokat és a számlázási címet jeleníti meg. A hónap elején a fiókhoz tartozó összes számlázási profilhoz létrejön egy havi számla. A számla az Azure-használat és az egyéb vásárlások előző havi díjait tartalmazza.
 
-Amikor regisztrál az Azure-ba, a számlázási fiókkal együtt automatikusan létrejön egy számlázási profil is. A több havi számlához tartozó költségek rendszerezéséhez létrehozhat további számlázási profilokat. 
+Amikor regisztrál az Azure-ba, a számlázási fiókkal együtt automatikusan létrejön egy számlázási profil is. A több havi számlához tartozó költségek rendszerezéséhez létrehozhat további számlázási profilokat.
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Amikor regisztrál az Azure-ba, a számlázási fiókkal együtt automatikusan l
 
 ### <a name="invoice-section"></a>Számlázási szakasz
 
-A számlaszakasz egy költségcsoportosítást jelöl a számlán belül. A rendszer automatikusan létrehoz egy számlaszakaszt a fiók egyes számlázási profiljai számára. A költségek igényei szerinti rendszerezéséhez létrehozhat további szakaszokat. Az egyes számlaszakaszok az adott hónapban felszámolt díjakat jelenítik meg a számlán. 
+A számlaszakasz egy költségcsoportosítást jelöl a számlán belül. A rendszer automatikusan létrehoz egy számlaszakaszt a fiók egyes számlázási profiljai számára. A költségek igényei szerinti rendszerezéséhez létrehozhat további szakaszokat. Az egyes számlaszakaszok az adott hónapban felszámolt díjakat jelenítik meg a számlán.
 
-Az alábbi kép egy két számlaszakasszal (mérnöki tevékenység és marketing) rendelkező számlát mutat. A számlán megjelennek az egyes szakaszok összegzései és részletes díjai. A képen látható árak csak példák, és nem az Azure-szolgáltatások tényleges árát jelzik. 
+Az alábbi kép egy két számlaszakasszal (mérnöki tevékenység és marketing) rendelkező számlát mutat. A számlán megjelennek az egyes szakaszok összegzései és részletes díjai. A képen látható árak csak példák, és nem az Azure-szolgáltatások tényleges árát jelzik.
 
 ![Egy szakaszokkal rendelkező számlát bemutató kép](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Számlázási szakasz létrehozásához a **számlázási profil tulajdonosának
 
    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/mca-section-invoice/search-cmb.png)
 
-3. Válassza a **Számlázási profilok** lehetőséget a bal oldali panelen. Válasszon ki egy számlázási profilt a listából. Az új szakasz megjelenik a kiválasztott számlázási profilhoz tartozó számlán. 
+3. Válassza a **Számlázási profilok** lehetőséget a bal oldali panelen. Válasszon ki egy számlázási profilt a listából. Az új szakasz megjelenik a kiválasztott számlázási profilhoz tartozó számlán.
 
    [![Képernyőkép a számlázási profilok listájáról](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Számlázási szakasz létrehozásához a **számlázási profil tulajdonosának
 
    [![Képernyőkép a számlaszakaszok hozzáadásáról](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. Adjon egy nevet a számlaszakasznak. 
+5. Adjon egy nevet a számlaszakasznak.
 
    [![Képernyőkép a számlaszakasz-létrehozási oldalról](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Miután az igényeinek megfelelően személyre szabta a számlázási fiókot, a
 
 6. Válassza ki azt a számlaszakaszt, amelyhez csatolni szeretné az előfizetés költségeit. A díjak a számlázási profilhoz tartozó számla ezen szakasza alatt jelennek meg.
 
-7. Válasszon ki egy Azure-csomagot, és adjon egy felhasználóbarát nevet az előfizetésnek. 
+7. Válasszon ki egy Azure-csomagot, és adjon egy felhasználóbarát nevet az előfizetésnek.
 
 9. Kattintson a **Create** (Létrehozás) gombra.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Meglévő előfizetések és termékek csatolása
 
-Ha már rendelkezik Azure-előfizetésekkel vagy egyéb termékekkel (például Azure Marketplace- és AppSource-erőforrásokkal), a költségek átrendezéséhez áthelyezheti őket a meglévő számlaszakaszból egy másik számlaszakaszba. 
+Ha már rendelkezik Azure-előfizetésekkel vagy egyéb termékekkel (például Azure Marketplace- és AppSource-erőforrásokkal), a költségek átrendezéséhez áthelyezheti őket a meglévő számlaszakaszból egy másik számlaszakaszba.
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ Most tegyük fel, hogy létrehozott egy másik számlázási profilt, és 50 GB-
 |---------|---------|---------|
 |1,84/TB az első 50 TB esetében havonta    | 50 TB        | 92,0  |
 |1,77/TB a következő 450 TB esetében havonta    |  0 TB         | 0,0  |
-|Összesen     |     50 TB  | 92,0 
+|Összesen     |     50 TB  | 92,0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ Most tegyük fel, hogy létrehozott egy másik számlázási profilt, és 50 GB-
 |---------|---------|---------|
 |1,84/TB az első 50 TB esetében havonta    | 50 TB        | 92,0  |
 |1,77/TB a következő 450 TB esetében havonta    |  0 TB         | 0,0  |
-|Összesen     |     50 TB  | 92,0 
+|Összesen     |     50 TB  | 92,0
 
 Ebben a forgatókönyvben 100 TB adat használatának teljes díja **184,0** (92,0*2) amerikai dollár.
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Az Azure-foglalásokra vonatkozó kedvezmények nem feltétlenül érvényesek minden előfizetésre
 
-A megosztott hatókörrel rendelkező Azure-foglalások az egyetlen számlázási profilhoz tartozó előfizetésekre érvényesek, és nincsenek megosztva a számlázási profilok között. 
+A megosztott hatókörrel rendelkező Azure-foglalások az egyetlen számlázási profilhoz tartozó előfizetésekre érvényesek, és nincsenek megosztva a számlázási profilok között.
 
 ![A foglalás különböző fiókstruktúrák esetében történő alkalmazását bemutató infografika](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-A fenti képen a Contoso két előfizetéssel rendelkezik. Az Azure-foglalási kedvezmény alkalmazása a számlázási fiók struktúrájától függően eltér. A bal oldali forgatókönyvben a foglalási kedvezmény a mérnöki számlázási profilhoz kiszámlázott mindkét előfizetésre alkalmazva lesz. A jobb oldali forgatókönyvben a foglalási kedvezmény csak az 1. előfizetésre lesz alkalmazva, mivel ez az egyetlen előfizetés, amely a mérnöki számlázási profilhoz van kiszámlázva. 
+A fenti képen a Contoso két előfizetéssel rendelkezik. Az Azure-foglalási kedvezmény alkalmazása a számlázási fiók struktúrájától függően eltér. A bal oldali forgatókönyvben a foglalási kedvezmény a mérnöki számlázási profilhoz kiszámlázott mindkét előfizetésre alkalmazva lesz. A jobb oldali forgatókönyvben a foglalási kedvezmény csak az 1. előfizetésre lesz alkalmazva, mivel ez az egyetlen előfizetés, amely a mérnöki számlázási profilhoz van kiszámlázva.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

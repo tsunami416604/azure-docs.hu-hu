@@ -1,31 +1,23 @@
 ---
 title: Azure-beli nagyvállalati regisztráció számlázási adatainak áttekintése REST API-val | Microsoft Docs
 description: Megtudhatja, hogyan tekintheti át a nagyvállalati regisztrációk számlázási adatait Azure REST API-kkal.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993465"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199568"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Nagyvállalati regisztráció számlázásának áttekintése REST API-kkal
 
 Az Azure Reporting API-k az Azure-költségek áttekintésében és kezelésében segítenek.
 
-Ebből a cikkből megtudhatja, hogyan kérheti le a számlázási fiókokkal, részlegekkel vagy Nagyvállalati Szerződéssel (EA) rendelkező regisztrációs fiókokkal kapcsolatos számlázási adatokat az Azure REST API-k használatával. 
+Ebből a cikkből megtudhatja, hogyan kérheti le a számlázási fiókokkal, részlegekkel vagy Nagyvállalati Szerződéssel (EA) rendelkező regisztrációs fiókokkal kapcsolatos számlázási adatokat az Azure REST API-k használatával.
 
 ## <a name="individual-account-billing"></a>Egyéni fiókok számlázása
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 A `{billingAccountId}` paraméter megadása kötelező, és tartalmaznia kell a fiók azonosítóját.
 
-A következő fejlécek megadása kötelező: 
+A következő fejlécek megadása kötelező:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Sikeres válasz esetén a rendszer a 200-as (OK) állapotkódot adja vissza, ame
 
 Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [számlázási fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
-## <a name="department-billing"></a>Részleg számlázása 
+## <a name="department-billing"></a>Részleg számlázása
 
-Lekérheti egy részleg összes fiókjának összesített használati adatait. 
+Lekérheti egy részleg összes fiókjának összesített használati adatait.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 A `{departmentId}` paraméter megadása kötelező, és tartalmaznia kell a regisztrációs fiók részlegének azonosítóját.
 
-A következő fejlécek megadása kötelező: 
+A következő fejlécek megadása kötelező:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 Az `{enrollmentAccountId}` paraméter megadása kötelező, és tartalmaznia kell a regisztrációs fiók azonosítóját.
 
-A következő fejlécek megadása kötelező: 
+A következő fejlécek megadása kötelező:
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ Az alábbi példa az `1234` vállalati regisztráció REST API-jának kimenetét
     }
   ]
 }
-``` 
+```
 
 Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [regisztrációs fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>További lépések
 - Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
 - Vizsgálja meg az [Enterprise Billing REST API](https://docs.microsoft.com/rest/api/billing/) használatának lehetőségét   
 - [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)   

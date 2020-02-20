@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209273"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468762"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -123,6 +123,10 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 - `VideoOnly` – az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása)
 - `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
 - `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
+
+> [!NOTE]
+> A Video Indexer akár két hangsávot is magában foglalhat. Ha a fájlban további hangsávok szerepelnek, a rendszer egyetlen számként kezeli őket.<br/>
+Ha a sávokat külön szeretné indexelni, ki kell bontania a megfelelő hangfájlt, és `AudioOnly`ként kell indexelni.
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 

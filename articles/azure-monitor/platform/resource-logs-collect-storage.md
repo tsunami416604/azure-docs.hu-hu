@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980077"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467181"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-beli erőforrás-naplók archiválása a Storage-fiókba
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról.  Ez a cikk ismerteti a platform-naplók Azure Storage-fiókba való gyűjtését az archiváláshoz szükséges adatok megőrzése érdekében.
@@ -33,7 +33,7 @@ Platform-naplók küldése a tárolóba és más célállomásokra az Azure-erő
 
 
 ## <a name="collect-data-from-compute-resources"></a>Adatok gyűjtése a számítási erőforrásokból
-A diagnosztikai beállítások olyan erőforrás-naplókat gyűjtenek az Azure számítási erőforrásaihoz, mint bármely más erőforrás, nem pedig a vendég operációs rendszerük vagy a munkaterhelések. Az adatok gyűjtéséhez telepítse a [Windows Azure Diagnostics Agent ügynököt](diagnostics-extension-overview.md). A részletekért lásd: [diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](diagnostics-extension-to-storage.md) .
+A diagnosztikai beállítások olyan erőforrás-naplókat gyűjtenek az Azure számítási erőforrásaihoz, mint bármely más erőforrás, nem pedig a vendég operációs rendszerük vagy a munkaterhelések. Az adatok gyűjtéséhez telepítse a [Windows Azure Diagnostics Agent ügynököt](diagnostics-extension-overview.md). 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>A Storage-fiókban található platform-naplók sémája

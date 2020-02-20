@@ -3,12 +3,12 @@ title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása 
 description: Ismerje meg, hogyan konfigurálhatja és telepítheti az Azure virtuálisgép-méretezési csoportját a Terraform használatával.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369473"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472230"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása a Terraform használatával
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a [Azure Cloud Shel
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **A Terraform telepítése**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](/azure/virtual-machines/linux/terraform-install-configure) található utasításokat
+- **A Terraform telepítése**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](terraform-install-configure.md) található utasításokat
 
 - **SSH-kulcspár létrehozása**: további információért tekintse meg a [Linux rendszerű virtuális gépekhez készült nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban](/azure/virtual-machines/linux/mac-create-ssh-keys)című témakört.
 
@@ -190,7 +190,7 @@ A konfigurációs fájlokat (. TF) létrehozó könyvtárból származó Azure C
    terraform apply
    ```
 
-   A Terraform megkéri `location` érték megadását, mivel a `location` változó a `variables.tf`ben van definiálva, de soha nem van beállítva. Bármely érvényes helyet megadhat, például a „West US” értéket, majd nyomja le az Enter billentyűt. (Használjon zárójelet a szóközt tartalmazó értékekhez.)
+   A Terraform megkéri `location` érték megadását, mivel a `location` változó a `variables.tf`ben van definiálva, de soha nem van beállítva. Bármely érvényes helyet megadhat, például a „USA nyugati régiója” értéket, majd nyomja le az Enter billentyűt. (Használjon zárójelet a szóközt tartalmazó értékekhez.)
 
 1. A Terraform a `output.tf` fájlban megadottak szerint jeleníti meg a kimenetet. Ahogy az a következő képernyőképen is látható, a teljes tartománynév a következő formát ölti: `<ID>.<location>.cloudapp.azure.com`. Az azonosító a számított érték és a hely a Terraform futtatásakor megadott érték.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658508"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469834"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, virtuális gépek méretére vonatkozó korlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (ak)
 
@@ -33,7 +33,7 @@ Az üzembe helyezett infrastruktúrára minden egyéb hálózati, számítási �
 
 ## <a name="restricted-vm-sizes"></a>Korlátozott virtuálisgép-méretek
 
-Az AK-fürtök mindegyik csomópontja rögzített mennyiségű számítási erőforrást (például vCPU és memóriát) tartalmaz. Ha egy AK-csomópont nem elegendő számítási erőforrást tartalmaz, előfordulhat, hogy a hüvelyek nem fognak megfelelően futni. Annak érdekében, hogy a szükséges *Kube* hüvelyek és az alkalmazásai megbízhatóan ütemezhetők legyenek, ne használja a következő virtuálisgép-SKU-ket az AK-ban:
+Az AK-fürtök mindegyik csomópontja rögzített mennyiségű számítási erőforrást (például vCPU és memóriát) tartalmaz. Ha egy AK-csomópont nem elegendő számítási erőforrást tartalmaz, előfordulhat, hogy a hüvelyek nem fognak megfelelően futni. Annak érdekében, hogy a szükséges *Kube* hüvelyek és az alkalmazásai megbízhatóan ütemezhetők legyenek, **ne használja a következő virtuálisgép-SKU-ket az AK-ban**:
 
 - Standard_A0
 - Standard_A1

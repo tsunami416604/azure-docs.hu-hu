@@ -1,21 +1,20 @@
 ---
 title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával | Microsoft Docs
 description: Ez a cikk segítséget nyújt a felhővel kapcsolatos befektetések leghatékonyabb kihasználásához, a költségek csökkentéséhez és annak kiértékeléséhez, mire költ pénzt.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988382"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201067"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -85,20 +84,20 @@ A Cost Management nyújtotta felhasználói élmény maximalizálásának első 
 
 A különböző lehetőségekkel kapcsolatos további információkért lásd [az Azure megvásárlásával foglalkozó részt](https://azure.microsoft.com/pricing/purchase-options/). Alább néhány példát láthat a leggyakoribb számlázási modellekre.
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Ingyenes](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Ingyenes](https://azure.microsoft.com/free/)
 
 - 12 hónapig ingyenesen használható, népszerű szolgáltatások
 - 200 dollár értékű kredit a szolgáltatások 30 napos használatához
 - 25+ mindig ingyenes szolgáltatás
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Nincs minimális költési szint és elköteleződés
 - Versenyképes díjszabás
 - Csak a valóban használt funkciókért kell fizetni
 - Bármikor lemondható
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Nagyvállalati Szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Nagyvállalati Szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - Lehetőségek az előzetes pénzügyi kötelezettségvállalásra
 - Hozzáférés a kedvezményes Azure-díjszabáshoz

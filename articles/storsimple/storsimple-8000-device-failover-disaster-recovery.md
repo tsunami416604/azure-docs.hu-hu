@@ -1,6 +1,6 @@
 ---
-title: A feladatátvétel a StorSimple 8000-es sorozatú eszközökön vész-helyreállítási |} A Microsoft Docs
-description: Ismerje meg, hogyan végezhet feladatátvételt magát, egy másik fizikai eszközt vagy a felhőalapú berendezés a StorSimple-eszköz.
+title: Feladatátvétel és vész-helyreállítás a StorSimple 8000 Series-eszközökön
+description: Ismerje meg, hogyan végezhet feladatátvételt a StorSimple-eszközön, egy másik fizikai eszközön vagy egy felhőalapú berendezésen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,130 +14,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576372"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468592"
 ---
-# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Feladatátvétel és vészhelyreállítás a StorSimple 8000 sorozatú eszköz helyreállítása
+# <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Feladatátvétel és vész-helyreállítás a StorSimple 8000 Series-eszközön
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk ismerteti a StorSimple 8000 sorozatú eszközöket, és hogyan Ez a funkció segítségével helyreállítja a StorSimple-eszközök, ha katasztrófa történik az eszköz feladatátvételi funkciót. A StorSimple eszköz feladatátvételi használ az adatok áttelepítését az adatközpontban a forráseszközről származó másik céleszközt. Ebben a cikkben leírtakat a StorSimple 8000 sorozatú fizikai eszközök és a felhőalapú berendezések szoftververziók Update 3 és újabb verzióit futtató vonatkozik.
+Ez a cikk az StorSimple 8000 sorozatú eszközök eszköz-feladatátvételi funkcióját ismerteti, valamint azt, hogy ez a funkció hogyan használható a StorSimple-eszközök helyreállítására vészhelyzet esetén. A StorSimple az eszköz feladatátvételét használja az adatközpontban lévő forrás-eszközről egy másik eszközre való Migrálás során. A jelen cikkben található útmutatás a StorSimple 8000 sorozatú fizikai eszközökre és a 3. frissítést és újabb verziókat futtató felhőalapú készülékekre vonatkozik.
 
-StorSimple használja a **eszközök** panelen egy esetleges vészhelyzet esetén az eszköz feladatátvételi szolgáltatás elindításához. A panel felsorolja a StorSimple-Eszközkezelő szolgáltatáshoz csatlakozó összes StorSimple eszközt.
+A StorSimple az **eszközök** panel használatával indítja el az eszköz feladatátvételi funkcióját vészhelyzet esetén. Ez a panel a StorSimple Eszközkezelő szolgáltatáshoz csatlakoztatott összes StorSimple-eszközt listázza.
 
-![Eszközök panelen](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
+![Eszközök panel](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>Vészhelyreállítás (DR) és az eszköz feladatátvétele
+## <a name="disaster-recovery-dr-and-device-failover"></a>Vész-helyreállítás (DR) és eszköz feladatátvétele
 
-A vész-helyreállítási helyzetekre az elsődleges eszköz leáll a működése. A StorSimple használja az elsődleges eszköz _forrás_ és a felhőbeli adatok áthelyezése egy másik _cél_ eszköz. Ezt a folyamatot nevezzük a *feladatátvételi*. A következő ábra szemlélteti a feladatátvételi folyamat.
+Vész-helyreállítási (DR) forgatókönyv esetén az elsődleges eszköz működése leáll. A StorSimple az elsődleges eszközt használja _forrásként_ , és áthelyezi a kapcsolódó Felhőbeli adategységeket egy másik _céleszköz_ . Ezt a folyamatot *feladatátvételnek*nevezzük. A következő ábra a feladatátvétel folyamatát szemlélteti.
 
-![Mi történik, az eszköz feladatátvételi?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
+![Mi történik az eszköz feladatátvételével?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
-A céleszközön a feladatátvétel lehet fizikai eszközt vagy akár a felhőalapú berendezés. A céleszköz azonos, vagy egy másik földrajzi helyen található, mint a forráseszközt található.
+A feladatátvétel céljának eszköze lehet fizikai eszköz, vagy akár egy felhőalapú készülék is. Előfordulhat, hogy a célként megadott eszköz azonos vagy egy másik földrajzi helyen található, mint a forrásoldali eszköz.
 
-A feladatátvétel során kiválaszthatja áttelepítésre kötettárolók. A StorSimple majd változik ezen kötettárolók tulajdonjogát a forráseszközről származó a céleszközön. Kötettárolók tulajdonjogai módosulnak, miután a StorSimple tárolók törlése a forráseszközről származó. A Törlés befejezése után visszaadhatja a céleszközön. _Feladat-visszavétel_ vissza az eredeti eszköz tulajdonjogát továbbítja.
+A feladatátvétel során kiválaszthatja a kötetek tárolóit az áttelepítéshez. A StorSimple ezután módosítja a kötet-tárolók tulajdonosát a forrásoldali eszközről a céleszköz. Miután a mennyiségi tárolók megváltoztatják a tulajdonjogot, a StorSimple törli ezeket a tárolókat a forrás eszközről. A törlés befejezése után visszatérhet a céleszköz. A feladat- _visszavételi_ feladat visszaküldi a tulajdonjogot az eredeti forrásoldali eszközre.
 
-### <a name="cloud-snapshot-used-during-device-failover"></a>Eszköz-feladatátvétel során használt felhőbeli pillanatkép
+### <a name="cloud-snapshot-used-during-device-failover"></a>Az eszköz feladatátvétele során használt Felhőbeli pillanatkép
 
-A Vészhelyreállítás, az alábbi a legutóbbi felhőbeli biztonsági mentés segítségével állítsa vissza az adatokat a céleszköznek. A felhőbeli pillanatképekkel további információkért lásd: [manuális biztonsági mentés készítése a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
+A DR-t követően a legutóbbi Felhőbeli biztonsági mentés használatával visszaállíthatja az adattároló eszközét. A Felhőbeli pillanatképekkel kapcsolatos további információkért lásd: [a StorSimple Eszközkezelő szolgáltatás használata manuális biztonsági mentéshez](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
 
-A StorSimple 8000-es sorozat, a biztonsági mentési szabályzatok társítva a biztonsági mentések. Ha több biztonsági mentési szabályzatok ugyanazt a kötetet, StorSimple kiválasztja a legnagyobb számú kötetet a biztonsági mentési szabályzat. A StorSimple a kiválasztott biztonsági mentési házirend a legfrissebb biztonsági másolat használja fel az adatok a céleszközön.
+A StorSimple 8000 sorozaton a biztonsági mentési szabályzatok a biztonsági másolatokhoz vannak társítva. Ha ugyanahhoz a kötethez több biztonsági mentési szabályzat is van, akkor a StorSimple kiválasztja a legtöbb kötetet tartalmazó biztonsági mentési házirendet. A StorSimple ezután a kiválasztott biztonsági mentési szabályzat legutóbbi biztonsági mentését használja a céleszköz adatainak visszaállításához.
 
-Tegyük fel, hogy két biztonsági mentési házirend, *defaultPol* és *customPol*:
+Tegyük fel, hogy van két biztonsági mentési szabályzat, a *defaultPol* és a *customPol*:
 
-* *defaultPol*: Egy kötet *vol1*, 10:30 = 1997031213 napi díjért futtatja.
-* *customPol*: Négy kötetek *vol1*, *vol2*, *vol3*, *vol4*, 10:00 Órakor napi díjért futtatja.
+* *defaultPol*: egy kötet, *Vol1*, naponta fut, 10:30 órakor.
+* *customPol*: négy kötet, *Vol1*, *vol2*, *vol3*, *vol4*, naponta fut, 10:00 órakor.
 
-Ebben az esetben a StorSimple priorizálja az összeomlás-konzisztens, és használja *customPol* , mert több köteten. A legutóbbi biztonsági mentés a szabályzat szolgál az adatok helyreállítását. Hogyan hozhat létre, és a biztonsági mentési házirendek kezelése további információkért látogasson el [biztonsági mentési házirendek kezelése a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manage-backup-policies-u2.md).
+Ebben az esetben a StorSimple rangsorolja az összeomlás-konzisztencia szolgáltatást, és a *customPol* használja, mivel több kötetet tartalmaz. A szabályzat legutóbbi biztonsági másolata az adatok visszaállítására szolgál. A biztonsági mentési szabályzatok létrehozásával és kezelésével kapcsolatos további információkért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a biztonsági mentési házirendek kezeléséhez](storsimple-8000-manage-backup-policies-u2.md).
 
-## <a name="common-considerations-for-device-failover"></a>Az eszköz feladatátvételéhez általános szempontok
+## <a name="common-considerations-for-device-failover"></a>Az eszközök feladatátvételének gyakori szempontjai
 
-Mielőtt átadja a feladatokat egy eszközt, tekintse át a következő információkat:
+Az eszköz feladatátvétele előtt tekintse át a következő információkat:
 
-* Egy eszköz-feladatátvétel megkezdése előtt kötettárolók belül minden kötet offline állapotban kell lennie. Egy nem tervezett feladatátvétel StotSimple kötetek automatikusan megnyitja offline állapotban van. Azonban ha (a tesztelje a DR) egy tervezett feladatátvételt végez, végre kell hajtania minden kötet offline.
-* Csak kötettárolók, tartozik felhőbeli pillanatkép DR fel vannak sorolva. Adatok helyreállítása egy felhőbeli pillanatképpel legalább egy kötettárolót kell lennie.
-* Ha több kötettárolóba fedik felhőbeli pillanatképekkel, StorSimple átadja a feladatokat a kötettárolók készletként. Ritka esetben, ha vannak a helyi pillanatképet, amelyekre ívelhet át több több kötettárolóba, de a felhőbeli pillanatképek nem, StorSimple átadja a feladatokat a helyi pillanatképek és a helyi adatok elvesznek DR után.
-* A rendelkezésre álló Céleszközök vészhelyreállítás olyan eszközöket, amelyek áll rendelkezésre elegendő lemezterület a kijelölt kötettárolók befogadásához. Céleszközök nem szerepel minden olyan eszközök, amelyek nem rendelkeznek elegendő lemezterület.
-* A DR-(esetében korlátozott időtartamra) után az adatelérési teljesítményét érintheti, jelentősen, az eszköznek kell elérni az adatokat a felhőben és helyileg tárolja.
+* Az eszköz feladatátvételének elindítása előtt a mennyiségi tárolókban lévő összes kötetnek offline állapotban kell lennie. Nem tervezett feladatátvétel esetén a StotSimple-kötetek automatikusan offline állapotba kerülnek. Ha azonban tervezett feladatátvételt hajt végre (a DR-teszt teszteléséhez), akkor az összes kötetet offline állapotba kell helyeznie.
+* A DR-hez csak a társított Felhőbeli pillanatképtel rendelkező kötetek vannak felsorolva. Az adatok helyreállításához legalább egy olyan kötet-tárolónak kell tartoznia, amelyhez hozzá van rendelve egy Felhőbeli pillanatkép.
+* Ha vannak olyan Felhőbeli Pillanatképek, amelyek több mennyiségi tárolóra kiterjednek, a StorSimple készletként adja át ezeket a mennyiségi tárolókat. Ritka példányban, ha vannak olyan helyi Pillanatképek, amelyek több mennyiségi tárolóra terjednek ki, de a kapcsolódó Felhőbeli Pillanatképek nem, a StorSimple a helyi Pillanatképek feladatátvételét hajtja végre, és a helyi adatvesztést a DR. után elvész.
+* A DR számára elérhető céleszköz olyan eszközök, amelyeken elegendő hely van a kiválasztott mennyiségi tárolók elhelyezésére. Minden olyan eszköz, amely nem rendelkezik elegendő hellyel, nem jelenik meg célként megadott eszközként.
+* A DR (korlátozott időtartamra szóló) után az adatelérési teljesítmény jelentős hatással lehet, mivel az eszköznek a felhőből kell hozzáférnie az adatokhoz, és helyileg kell tárolnia azokat.
 
-#### <a name="device-failover-across-software-versions"></a>Eszköz feladatátvételi szoftver verziója között
+#### <a name="device-failover-across-software-versions"></a>Eszköz feladatátvétele a szoftverek verziói között
 
-Előfordulhat, hogy a központi telepítés egy StorSimple-Eszközkezelő szolgáltatás több eszközön, mindkét fizikai és a felhőben, az összes futó eltérő szoftververzió.
+Az üzemelő példányok StorSimple Eszközkezelő szolgáltatása több, fizikai és Felhőbeli eszközzel is rendelkezhet, amelyek mindegyike különböző szoftveres verziót futtat.
 
-A következő táblázat segítségével határozza meg, ha átadja a feladatokat, vagy a feladat-visszavételhez egy másik szoftver verziója és a Vészhelyreállítás során a kötettípusok működése fut egy másik eszközt.
+A következő táblázat segítségével meghatározhatja, hogy feladatátvételt hajthat végre, vagy visszatérhet egy másik, eltérő verziót futtató eszközre, és hogy a kötetek típusai hogyan viselkednek a DR-ben.
 
-#### <a name="failover-and-failback-across-software-versions"></a>Feladatátvétel és feladat-visszavétel szoftver verziója között
+#### <a name="failover-and-failback-across-software-versions"></a>Feladatátvétel és feladat-visszavétel a szoftver verziói között
 
-| Feladatátvétel / feladat-visszavétel ból | Fizikai eszköz | Felhőalapú készülék |
+| Feladatátvétel/feladat-visszavétel | Fizikai eszköz | Felhőalapú készülék |
 | --- | --- | --- |
-| Update 3-4-es frissítés |Rétegzett kötetek feladatátvételét a rétegzett sikertelen. <br></br>A gyors helyi kötetek feladatátvételét a helyileg rögzített. <br></br> Készítsen pillanatképet az Update 4 eszközre, amikor a következő feladatátvétel [intenzitástérkép-alapú követési](storsimple-update4-release-notes.md#whats-new-in-update-4) lép működésbe. |Helyileg rögzítve, a rétegzett kötetek feladatait. |
-| A 3-as frissítés 4-es frissítés |Rétegzett kötetek feladatátvételét a rétegzett sikertelen. <br></br>A gyors helyi kötetek feladatátvételét a helyileg rögzített. <br></br> Visszaállítható biztonsági másolatok megőrzése intenzitástérkép metaadatait. <br></br>A következő feladat-visszavétel Update 3 Intenzitástérkép-alapú követési nem érhető el. |Helyileg rögzítve, a rétegzett kötetek feladatait. |
+| 3\. frissítés a 4. frissítéshez |A többszintes kötetek átadása lépcsőzetesen történik. <br></br>A helyileg rögzített kötetek feladatátvétele helyileg rögzítettként történik. <br></br> A feladatátvételt követően, amikor pillanatképet készít a 4. frissítés eszközről, a [hő-alapú nyomkövetési](storsimple-update4-release-notes.md#whats-new-in-update-4) rúgások szerepelnek a alkalmazásban. |A helyileg rögzített kötetek átadása lépcsőzetesen történik. |
+| 4\. frissítés a 3. frissítéshez |A többszintes kötetek átadása lépcsőzetesen történik. <br></br>A helyileg rögzített kötetek feladatátvétele helyileg rögzítettként történik. <br></br> A hő-metaadatok visszaállításához használt biztonsági másolatok. <br></br>A hő-alapú nyomon követés nem érhető el a 3. frissítésben a feladat-visszavételt követően. |A helyileg rögzített kötetek átadása lépcsőzetesen történik. |
 
 
-## <a name="device-failover-scenarios"></a>Eszközök feladatátvétel esetén
+## <a name="device-failover-scenarios"></a>Eszközök feladatátvételi forgatókönyvei
 
-Katasztrófa esetén dönthet úgy, hogy átadja a feladatokat a StorSimple-eszköz:
+Ha katasztrófa van, dönthet úgy, hogy feladatátvételt hajt végre a StorSimple-eszközön:
 
-* [Egy fizikai eszközre történő](storsimple-8000-device-failover-physical-device.md).
-* [Saját maga](storsimple-8000-device-failover-same-device.md).
-* [A felhőalapú berendezés](storsimple-8000-device-failover-cloud-appliance.md).
+* [Egy fizikai eszközre](storsimple-8000-device-failover-physical-device.md).
+* [Önmagához](storsimple-8000-device-failover-same-device.md).
+* [Egy felhőalapú készülékre](storsimple-8000-device-failover-cloud-appliance.md).
 
-A fenti cikk ismerteti részletesen a fenti feladatátvételi esetek mindegyike esetében.
+Az előző cikkek részletesen ismertetik a fenti feladatátvételi esetekre vonatkozó lépéseket.
 
 
 ## <a name="failback"></a>Feladat-visszavétel
 
-Az Update 3 és újabb verziókban a StorSimple is támogatja a feladat-visszavétel. Feladat-visszavétel csak feladatátvételi fordítva, a cél válik az adatforrás és az eredeti forrás most már a feladatátvétel során válik a céleszközön. 
+A 3. és újabb verziók esetében a StorSimple a feladat-visszavételt is támogatja. A feladat-visszavételi feladat csak a feladatátvétel fordítottja, a cél lesz a forrás és az eredeti forrásoldali eszköz a feladatátvétel során. 
 
-A feladat-visszavétel során a StorSimple újra szinkronizálja az adatokat az elsődleges helyen, akad az i/o és alkalmazás-tevékenységet, és átmenetek biztonsági másolatot az eredeti helyre.
+A feladat-visszavétel során a StorSimple újraszinkronizálja az adatokat az elsődleges helyre, megállítja az I/O-és az alkalmazási tevékenységet, és visszavált az eredeti helyre.
 
 A feladatátvétel befejezése után a StorSimple a következő műveleteket hajtja végre:
 
-* A StorSimple, melyek feladatai át a forráseszközről származó kötettárolók törlése.
-* StorSimple kezdeményezi a háttérfeladat (sikertelen keresztül) a forrás-eszközön kötetet tárolónként. Ha megpróbálja újra, amíg folyamatban van a feladat sikertelen lesz, erről értesítést kap. Várjon, amíg a feladat befejeződött, indítsa el a feladat-visszavétel.
-* A kötettároló törlésének befejezéséhez szükséges idő számos tényező befolyásolja, például az adatok mennyiségét, a művelet az adatokat, biztonsági másolatok számát és a rendelkezésre álló hálózati sávszélesség életkor függ.
+* A StorSimple megtisztítja a forrás eszközön átadott mennyiségű tárolót.
+* A StorSimple a forrásoldali eszközön mennyiségi tárolóként (feladatátvétel után) kezdeményezi a háttérben futó feladatot. Ha a feladat végrehajtása közben megkísérli a feladatátvételt, a rendszer értesítést küld erről a hatásról. Várjon, amíg a feladat be nem fejeződik a feladat-visszavétel elindításához.
+* A mennyiségi tárolók törlésének befejezéséhez szükséges idő számos tényezőtől függ, például az adatok mennyiségétől, a biztonsági másolatok számától és a művelethez rendelkezésre álló hálózati sávszélességtől.
 
-Ha tervezi, feladatátvételi teszteket, illetve visszavételek tesztelése, azt javasoljuk, akkor tesztelje a kötettárolók a kevesebb adat (GB). Általában elindíthatja a feladat-visszavételi 24 órával a feladatátvétel befejezése után.
+Ha feladatátvételi tesztet vagy failbacks tesztet tervez, javasoljuk, hogy tesztelje a kötetek tárolóit kevesebb adattal (GB). Általában a feladatátvétel befejezése után 24 órával a feladat-visszavételt is elindíthatja.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-K. **Mi történik, ha a DR meghibásodik vagy részben sikeres rendelkezik?**
+K. **Mi történik, ha a DR sikertelen vagy részleges sikeres?**
 
-A. Ha nem sikerül a DR, azt javasoljuk, hogy, próbálkozzon újra. A második eszköz feladatátvételi feladat felismeri az első feladat előrehaladását, és ettől kezdve elindul.
+A. Ha a DR sikertelen, javasoljuk, hogy próbálkozzon újra. A második eszköz feladatátvételi feladata tisztában van az első feladatok előrehaladásával, és ettől kezdve ettől kezdve kezdődik.
 
-K. **Törölhetem egy eszközt, amíg folyamatban van az eszköz feladatátvételi?**
+K. **Törölhetek egy eszközt, miközben az eszköz feladatátvétele folyamatban van?**
 
-A. Egy eszköz nem törölhető, amíg folyamatban van egy DR. A DR befejeződése után az eszköz csak törölheti. Az eszköz feladatátvételi feladatok előrehaladásának figyelheti a **feladatok** panelen.
+A. Egy eszköz nem törölhető, amíg a DR folyamatban van. Az eszközt csak a DR befejezése után törölheti. Az eszköz feladatátvételi feladatának előrehaladását a **feladatok** panelen figyelheti.
 
-K. **Mikor nem a szemétgyűjtés először a forrás-eszközön, hogy a forrás helyi adatok törlődik?**
+K. **Mikor kezdődik a szemetet tartalmazó gyűjtemény a forrásoldali eszközön, hogy a forrás eszközön lévő helyi adategység törölve legyen?**
 
-A. A szemétgyűjtés engedélyezve van a forráseszközt csak azt követően az eszköz teljes egészében törlődik. A karbantartás tartalmaz objektumokat, például kötetek, a biztonsági mentési objektumokat (adatokat nem), a kötettárolók és a szabályzatok a forráseszközről származó feladatátadása karbantartása.
+A. A szemét-gyűjtemény csak az eszköz teljes tisztítása után engedélyezhető a forrásoldali eszközön. A tisztítás magában foglalja az olyan objektumok tisztítását, amelyek feladatátvételét a forrás eszközről, például a kötetekről, a biztonsági mentési objektumokról (nem adatokról), a mennyiségi tárolóról és a házirendekről.
 
-K. **Mi történik, ha a társított eszköz a kötettárolók törlése feladat sikertelen volt?**
+K. **Mi történik, ha a forrásoldali eszközön a kötethez tartozó tárolók törlési feladata sikertelen?**
 
-A.  Ha a törlési feladat sikertelen, akkor a kötettárolók manuálisan törölheti. Az a **eszközök** panelen válassza ki a forráseszközt, majd kattintson a **kötettárolók**. Válassza ki a kötettárolókat, amely felett, és a panel alján található nem sikerült, kattintson **törlése**. Összes törlése után a sikertelen keresztül az eszköz kötettárolók, indítsa el a feladat-visszavétel. További információért ugorjon [törölni a kötettárolót](storsimple-8000-manage-volume-containers.md#delete-a-volume-container).
+A.  Ha a törlési feladatot nem sikerül végrehajtani, manuálisan törölheti a kötetek tárolóit. Az **eszközök** panelen válassza ki a forrás eszközt, majd kattintson a **kötetek tárolók**elemre. Válassza ki a fellépett, majd a panel alján található tárolókat, és kattintson a **Törlés**gombra. Miután törölte az összes feladatátvételi mennyiségű tárolót a forrásoldali eszközön, elindíthatja a feladat-visszavételt. További információért látogasson el [a mennyiségi tároló törlése](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)elemre.
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>Üzleti folytonosság – vészhelyreállítás (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>Üzletmenet-folytonossági katasztrófa-helyreállítás (BCDR)
 
-Egy üzleti folytonossági vészhelyreállítási (BCDR) forgatókönyv akkor fordul elő, amikor a teljes Azure-adatközpont leáll a működése. Ebben a forgatókönyvben a StorSimple-Eszközkezelő szolgáltatás és az ahhoz tartozó StorSimple-berendezések hatással lehet.
+Az üzletmenet folytonossága vész-helyreállítási (BCDR) forgatókönyv akkor fordul elő, ha a teljes Azure-adatközpont működése leáll. Ez a forgatókönyv hatással lehet a StorSimple Eszközkezelő szolgáltatásra és a kapcsolódó StorSimple-eszközökre.
 
-Ha a StorSimple eszköz regisztrálva lett, csak egy esetleges bekövetkezése előtt, majd az eszköz kell végezni a gyári beállítások visszaállítását. A vészhelyzet után a StorSimple-eszköz megjelenik-e az Azure Portalon offline állapotúként. Ez az eszköz törlését a portálról. Az eszköz visszaállítása a gyári beállításokat, és regisztrálja újra a szolgáltatással.
+Ha egy StorSimple-eszköz közvetlenül a katasztrófa előtt lett regisztrálva, akkor előfordulhat, hogy az eszköznek a gyári beállítások visszaállítását kell végeznie. A katasztrófa után a StorSimple-eszköz offline állapotban jelenik meg a Azure Portal. Ezt az eszközt törölni kell a portálról. Állítsa vissza az eszközt a gyári beállításokra, és regisztrálja újra a szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha egy eszközön feladatátvétel végrehajtásához készen áll, részletes utasításokat az alábbi eseteket ajánlott közül választhat:
+Ha készen áll az eszköz feladatátvételének végrehajtására, válasszon a következő forgatókönyvek közül a részletes utasítások közül:
 
-- [Átadja a feladatokat egy másik fizikai eszköz](storsimple-8000-device-failover-physical-device.md)
+- [Feladatátvétel egy másik fizikai eszközre](storsimple-8000-device-failover-physical-device.md)
 - [Feladatátvétel ugyanarra az eszközre](storsimple-8000-device-failover-same-device.md)
-- [A StorSimple Cloud Appliance átadása](storsimple-8000-device-failover-cloud-appliance.md)
+- [Feladatátvétel StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)
 
-Ha az eszköz feladatátvétel az alábbi lehetőségek közül választhat:
+Ha az eszköz feladatátvétele megtörtént, válasszon az alábbi lehetőségek közül:
 
-* [A StorSimple-eszköz törölheti vagy inaktiválhatja](storsimple-8000-deactivate-and-delete-device.md).
-* [A StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
+* [Inaktiválja vagy törölje a StorSimple-eszközt](storsimple-8000-deactivate-and-delete-device.md).
+* A [StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).
 

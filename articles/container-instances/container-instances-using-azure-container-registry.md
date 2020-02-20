@@ -1,21 +1,21 @@
 ---
 title: Tároló lemezképének üzembe helyezése Azure Container Registry
-description: Megtudhatja, hogyan helyezhet üzembe tárolókat a Azure Container Instances tároló-lemezképek használatával egy Azure Container registryben.
+description: Megtudhatja, hogyan helyezhet üzembe tárolókat a Azure Container Instancesban tároló-lemezképek Azure Container registryből való húzásával.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981694"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468915"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés a Azure Container Instances Azure Container Registry
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) egy Azure-alapú, felügyelt tároló beállításjegyzék-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez a cikk azt ismerteti, hogyan helyezhetők üzembe az Azure Container registryben tárolt tároló lemezképek Azure Container Instances.
+[Azure Container Registry](../container-registry/container-registry-intro.md) egy Azure-alapú, felügyelt tároló beállításjegyzék-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez a cikk azt ismerteti, hogyan hívhat le egy Azure Container registryben tárolt tároló-lemezképet a Azure Container Instances üzembe helyezése során. A beállításjegyzék-hozzáférés konfigurálásának ajánlott módja egy Azure Active Directory egyszerű szolgáltatásnév és jelszó létrehozása, és a bejelentkezési hitelesítő adatok tárolása egy Azure Key vaultban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981694"
 Olyan éles környezetben, ahol hozzáférést biztosít a "fej nélküli" szolgáltatásokhoz és alkalmazásokhoz, javasoljuk, hogy konfigurálja a beállításjegyzék-hozzáférést egy [egyszerű szolgáltatásnév](../container-registry/container-registry-auth-service-principal.md)használatával. Az egyszerű szolgáltatás lehetővé teszi, hogy [szerepköralapú hozzáférés-vezérlést](../container-registry/container-registry-roles.md) biztosítson a tároló lemezképéhez. Konfigurálhat például egy olyan szolgáltatásnevet, amely csak lekérés céljából férhet hozzá a regisztrációs adatbázishoz.
 
 A Azure Container Registry további [hitelesítési lehetőségeket](../container-registry/container-registry-authentication.md)biztosít.
+
+> [!NOTE]
+> Nem végezheti el a hitelesítést úgy, hogy Azure Container Registry a lemezképek lekérését a tároló csoportjának telepítése során egy ugyanazon a tároló csoportban konfigurált [felügyelt identitás](container-instances-managed-identity.md) használatával.
 
 A következő szakaszban létrehoz egy Azure Key vaultot és egy szolgáltatásnevet, és tárolja az egyszerű szolgáltatásnév hitelesítő adatait a tárolóban. 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Létrehozott egy Azure Key Vault-tárolót, és tárolt benne két titkos kulcsot:
+Létrehozott egy Azure Key vaultot, és két titkos kulcsot tárolt:
 
 * `$ACR_NAME-pull-usr`: A szolgáltatásnév azonosítója, amely a tárolóregisztrációs adatbázis **felhasználóneveként** szolgál.
 * `$ACR_NAME-pull-pwd`: A szolgáltatásnév jelszava, amely a tárolóregisztrációs adatbázis **jelszavaként** szolgál.

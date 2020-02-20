@@ -2,21 +2,18 @@
 title: Azure-költségkeret | Microsoft Docs
 description: Ez a cikk az Azure-költségkeret működését és eltávolításának módját ismerteti.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188272"
+ms.locfileid: "77200554"
 ---
 # <a name="azure-spending-limit"></a>Azure-költségkeret
 
@@ -47,21 +44,21 @@ Amennyiben ingyenes Azure-fiókkal rendelkezik, tekintse meg az [Azure-előfizet
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/spending-limit/search-bar.png)
 
-1. A **Saját előfizetések** listából válassza ki az előfizetését. Például *Visual Studio Enterprise*. 
+1. A **Saját előfizetések** listából válassza ki az előfizetését. Például *Visual Studio Enterprise*.
 
    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Ha bizonyos Visual Studio-előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította egy előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
-    
+
 1. Az előfizetés áttekintésében kattintson a narancssárga szalagcímre a költségkeret eltávolításához.
-    
+
     ![Képernyőkép a költségkeret eltávolítása szalagcímről](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. Válassza ki, hogy határozatlan időre vagy csak az aktuális számlázási időszakra szeretné-e eltávolítani a költségkeretet.
-    
+
       ![Képernyőkép a költségkeret eltávolítása panelről](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | Beállítás | Hatás |
       | --- | --- |
       | A költségkeret eltávolítása határozatlan időre | A költségkeretet nem kapcsolódik vissza automatikusan a következő számlázási időszak kezdetekor. Ön azonban bármikor visszakapcsolhatja. |
@@ -91,13 +88,13 @@ Ez a funkció csak akkor érhető el, ha a költségkeretet határozatlan időre
 
     ![Képernyőkép a keresőmezőről a költségkezelés + számlázás keresőkifejezéssel ](./media/spending-limit/search-bar.png)
 
-1. A **Saját előfizetések** listából válassza ki az előfizetését. Például *Visual Studio Enterprise*. 
+1. A **Saját előfizetések** listából válassza ki az előfizetését. Például *Visual Studio Enterprise*.
 
    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Ha bizonyos Visual Studio-előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította egy előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
-    
+
 1. Az Előfizetés áttekintés lapon kattintson a lap tetején látható szalagcímre a költségkeret visszakapcsolásához.
 
 ## <a name="custom-spending-limit"></a>Egyéni költségkeret

@@ -3,12 +3,12 @@ title: Oktatóanyag – Terraform alapsablon létrehozása az Azure-ban a Yeoman
 description: Megtudhatja, hogyan hozhat létre Terraform alapszintű sablont az Azure-ban a Yeoman használatával.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159169"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472145"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Oktatóanyag: Terraform-alapú alapsablon létrehozása az Azure-ban a Yeoman használatával
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő feladatokat
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 - **Visual Studio Code**: töltse le a platformhoz készült [Visual Studio Code](https://code.visualstudio.com/download) -ot.
-- **Terraform**: [telepítse a Terraform](/azure/virtual-machines/linux/terraform-install-configure ) -t a Yeoman által létrehozott modul futtatásához.
+- **Terraform**: [telepítse a Terraform](terraform-install-configure.md) -t a Yeoman által létrehozott modul futtatásához.
 - **Docker**: [telepítse a Docker](https://www.docker.com/get-started) -t a Yeoman-generátor által létrehozott modul futtatásához.
 - **Go programozási nyelv**: [telepítse a go](https://golang.org/) -t Yeoman által generált tesztelési esetekben a go nyelv használatával.
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő feladatokat
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
-### <a name="install-nodejs"></a>A Node.js telepítése
+### <a name="install-nodejs"></a>Node.js telepítése
 
 A Terraform Cloud Shellben való használatához [telepítenie kell a Node.js](https://nodejs.org/en/download/) 6.0-s vagy újabb verzióját.
 

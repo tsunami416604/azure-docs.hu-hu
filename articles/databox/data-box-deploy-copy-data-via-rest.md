@@ -1,6 +1,7 @@
 ---
-title: 'Oktatóanyag: adatok másolása az Azure Data Box Blob storage REST API-kon keresztül |} A Microsoft Docs'
-description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box Blob storage REST API-kon keresztül
+title: 'Oktatóanyag: REST API-k használata a blob Storage-ba való másoláshoz'
+titleSuffix: Azure Data Box
+description: Megtudhatja, hogyan másolhat adatok a Azure Data Box blob Storage-ba REST API-k használatával
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,95 +9,95 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800540"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471839"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
+# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
 
-Ez az oktatóanyag leírja keresztül csatlakozni az Azure Data Box Blob storage REST API-kon keresztül eljárások *http* vagy *https*. A csatlakozás után az adatok másolása az adatok be Blob storage, és készítse elő szállításra, a Data Box szükséges lépéseket is ismerteti.
+Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https*-kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * Data Box Blob storage-n keresztül kapcsolódni *http* vagy *https*
+> * Kapcsolódás Data Box blob Storage-hoz *http* -vagy *https* -kapcsolaton keresztül
 > * Adatok másolása a Data Boxra
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Ön teljesítette a [oktatóanyag: Állítsa be az Azure Data Box](data-box-deploy-set-up.md).
-2. A Data Box kapott, és a rendelés állapota a portálon **kézbesítések**.
-3. Áttekintette a [Data Box Blob storage rendszerkövetelményei](data-box-system-requirements-rest.md) , és ismeri az API-k, SDK-k és eszközök támogatott verzióival.
-4. Megismerte a gazdaszámítógép másolja át a Data Box kívánt adatokat a hozzáférést. A gazdaszámítógépen:
+1. Elvégezte az [oktatóanyagot: Azure Data Box beállítása](data-box-deploy-set-up.md).
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
+3. Áttekintette [Data Box blob Storage rendszerkövetelményeit](data-box-system-requirements-rest.md) , és ismeri az API-k, SDK-k és eszközök támogatott verzióit.
+4. Olyan gazdagéphez fér hozzá, amely a Data Boxba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
-    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10-GbE kapcsolatot nem érhető el, ha egy 1-GbE adatkapcsolat is használható, de a másolási sebességek érinti.
-5. [Töltse le az AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) a gazdaszámítógépen. Adatok másolása az Azure Data Box Blob storage a gazdaszámítógépet az AzCopy fogja használni.
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, a rendszer egy 1 GbE adatkapcsolatot használ, de a másolási sebesség hatással lesz rá.
+5. [Töltse le a AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) a gazdagépen. A AzCopy használatával másolhatja át az adatait Azure Data Box blob Storage-ba a gazdagép számítógépről.
 
 
-## <a name="connect-via-http-or-https"></a>Csatlakozás a http vagy https
+## <a name="connect-via-http-or-https"></a>Kapcsolat http-n vagy HTTPS-en keresztül
 
-Data Box Blob storage keresztül kapcsolódhat *http* vagy *https*.
+Data Box blob Storage-hoz *http* -vagy *https*-kapcsolaton keresztül is csatlakozhat.
 
-- *HTTPS* csatlakozhat a Data Box Blob storage és ajánlott módja.
-- *Http* használatos, amikor keresztül csatlakozó megbízható hálózatok.
+- A *https* a Data Box blob Storage-hoz való kapcsolódás biztonságos és ajánlott módja.
+- A *http* -t megbízható hálózatokhoz való csatlakozáskor használja a rendszer.
 
-Csatlakozás más lépéseket kell végrehajtania, ha a Data Box Blob Storage-kapcsolattal csatlakozik *http* vagy *https*.
+A csatlakozás lépései eltérőek, amikor *http* -vagy *https*-kapcsolaton keresztül csatlakozik Data Box blob Storage-hoz.
 
-## <a name="connect-via-http"></a>Kapcsolódás http-n keresztül
+## <a name="connect-via-http"></a>Kapcsolat http-n keresztül
 
-A Data Box Blob storage REST API-k kapcsolati keresztül *http* a következő lépéseket:
+A Data Box blob Storage REST API-khoz *http* -n keresztül történő kapcsolódáshoz a következő lépések szükségesek:
 
-- Az eszköz IP-cím hozzáadása és a blob-szolgáltatásvégpont a távoli gazdagéphez
-- Harmadik féltől származó szoftverek beállítása és a kapcsolat ellenőrzése
+- Az eszköz IP-címe és a blob Service-végpont hozzáadása a távoli gazdagéphez
+- Külső gyártótól származó szoftver konfigurálása és a kapcsolatok ellenőrzése
 
-A következő szakaszokban ismertetett egyes lépéseket.
+Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-cím hozzáadása és a blob-szolgáltatásvégpont
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-címének és blob szolgáltatásbeli végpontjának hozzáadása
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-### <a name="configure-partner-software-and-verify-connection"></a>Partner szoftver konfigurálása és a kapcsolat ellenőrzése
+### <a name="configure-partner-software-and-verify-connection"></a>A partner szoftver konfigurálása és a kapcsolat ellenőrzése
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
 [!INCLUDE [data-box-verify-connection](../../includes/data-box-verify-connection.md)]
 
-## <a name="connect-via-https"></a>Https-kapcsolaton keresztül csatlakozni
+## <a name="connect-via-https"></a>Csatlakozási HTTPS-kapcsolaton keresztül
 
-Az Azure Blob storage REST API-k https-kapcsolaton keresztüli kapcsolat szükséges az alábbi lépéseket:
+Az Azure Blob Storage REST API-khoz HTTPS-kapcsolaton keresztül történő kapcsolódáshoz a következő lépések szükségesek:
 
-- Töltse le a tanúsítványt az Azure Portalról
-- Importálja a tanúsítványt az ügyfél vagy a távoli gazdagépen
-- Az eszköz IP-cím hozzáadása és a blob-szolgáltatásvégpont az ügyfél vagy a távoli állomás
-- Harmadik féltől származó szoftverek beállítása és a kapcsolat ellenőrzése
+- A tanúsítvány letöltése Azure Portal
+- A tanúsítvány importálása az ügyfélen vagy a távoli gazdagépen
+- Az eszköz IP-címe és a blob szolgáltatás végpontjának hozzáadása az ügyfélhez vagy a távoli gazdagéphez
+- Külső gyártótól származó szoftver konfigurálása és a kapcsolatok ellenőrzése
 
-A következő szakaszokban ismertetett egyes lépéseket.
+Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
 ### <a name="download-certificate"></a>Tanúsítvány letöltése
 
-Az Azure portal használatával töltse le a tanúsítványt.
+A tanúsítvány letöltéséhez használja a Azure Portal.
 
-1. Jelentkezzen be az Azure Portalon.
-2. Nyissa meg a Data Box-rendelés, és navigáljon a **általános > eszközadatok**.
-3. A **hitelesítő adatai**, lépjen a **API-hozzáférés** eszközre. Kattintson a **Letöltés** gombra. Ez a művelet letölt egy  **\<a rendelés nevét > .cer** tanúsítványfájlt. **Mentés** ezt a fájlt. Ez a tanúsítvány a számítógépen az ügyfélszámítógépre vagy gazdagépre, amelyekkel fog csatlakozni az eszközhöz telepíti.
+1. Jelentkezzen be a Azure Portalba.
+2. Lépjen a Data Box sorrendbe, és keresse meg az **általános > eszköz adatait**.
+3. Az **eszköz hitelesítő adatai**területen nyissa meg az eszköz **API-hozzáférését** . Kattintson a **Letöltés** gombra. Ez a művelet letölt egy **\<a megrendelés neve >. cer** tanúsítványfájl. **Mentse** ezt a fájlt. Ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen kell telepíteni, amelyet az eszközhöz való kapcsolódáshoz használni fog.
 
-    ![Töltse le a tanúsítványt az Azure Portalon](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
+    ![Tanúsítvány letöltése Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
 ### <a name="import-certificate"></a>Tanúsítvány importálása 
 
-Az eszköz Data Box Blob tárolók elérése során a HTTPS-kapcsolaton keresztül egy SSL-tanúsítványt igényel. A módszer, amelyben ez a tanúsítvány szeretné elérhetővé tenni az ügyfélalkalmazásnak változik, alkalmazások és a különböző operációs rendszereket és disztribúció. Egyes alkalmazások férhetnek hozzá a tanúsítvány importálás a rendszer tanúsítványtárolóba, míg más alkalmazások ne után az adott mechanizmus használata.
+Data Box blob Storage HTTPS-kapcsolaton keresztüli eléréséhez SSL-tanúsítvány szükséges az eszközhöz. A tanúsítványnak az ügyfélalkalmazás számára elérhetővé tételének módja az alkalmazástól az alkalmazásig, illetve az operációs rendszerek és a disztribúciók között változik. Egyes alkalmazások hozzáférnek a tanúsítványhoz a rendszer tanúsítványtárolóba való importálása után, míg más alkalmazások nem használják ezt a mechanizmust.
 
-Ebben a szakaszban leírt bizonyos alkalmazások információi. A többi alkalmazással kapcsolatos további információkért dokumentációjában az alkalmazás és a használt operációs rendszert.
+Az egyes alkalmazásokra vonatkozó konkrét információkat ebben a szakaszban talál. Az egyéb alkalmazásokkal kapcsolatos további információkért olvassa el az alkalmazás dokumentációját és a használt operációs rendszert.
 
-Kövesse az alábbi lépéseket importálása a `.cer` fájlt egy Windows vagy Linux-ügyfél a legfelső szintű tárolóba. A Windows rendszeren használhatja Windows PowerShell vagy a Windows Server felhasználói felület importálhatja, és telepítse a tanúsítványt a rendszer.
+A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux-ügyfél főtárolójába. Windows rendszeren a Windows PowerShell vagy a Windows Server felhasználói felület használatával importálhatja és telepítheti a tanúsítványt a rendszeren.
 
-#### <a name="use-windows-powershell"></a>Windows PowerShell-lel
+#### <a name="use-windows-powershell"></a>A Windows PowerShell használata
 
 1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként.
 2. A parancssorba írja be a következőt:
@@ -107,78 +108,78 @@ Kövesse az alábbi lépéseket importálása a `.cer` fájlt egy Windows vagy L
 
 #### <a name="use-windows-server-ui"></a>A Windows Server felhasználói felületének használata
 
-1.  Kattintson a jobb gombbal a `.cer` fájlt, és válassza ki **telepítése tanúsítvány**. Ez a művelet a Tanúsítványimportáló varázsló elindul.
-2.  A **hely Store**válassza **helyi gépen**, és kattintson a **tovább**.
+1.  Kattintson a jobb gombbal a `.cer` fájlra, majd válassza a **tanúsítvány telepítése**lehetőséget. Ez a művelet elindítja a tanúsítvány importálása varázslót.
+2.  Az **áruház helye**területen válassza a **helyi számítógép**lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  Válassza ki **minden tanúsítvány tárolása ebben a tárolóban**, és kattintson a **Tallózás**. Keresse meg a gyökérszintű tárolóban. a távoli állomás, és kattintson a **tovább**.
+3.  Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Kattintson a **Befejezés**gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
+4.  Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux rendszer használata
 
-A tanúsítvány importálása metódus terjesztési eltérő.
+A tanúsítvány importálásának módszere az eloszlástól függ.
 
 Több, mint például az Ubuntu és a Debian, használja a `update-ca-certificates` parancsot.  
 
-- Nevezze át a Base64-kódolású tanúsítványt fájlban egy `.crt` bővítményt, és másolja be a `/usr/local/share/ca-certificates directory`.
+- Nevezze át a Base64 kódolású tanúsítványfájl `.crt` kiterjesztéssel, és másolja a `/usr/local/share/ca-certificates directory`ba.
 - Futtassa a parancsot `update-ca-certificates`.
 
-RHEL, Fedora és CentOS legújabb verzióit használja a `update-ca-trust` parancsot.
+A RHEL, Fedora és CentOS legújabb verziói a `update-ca-trust` parancsot használják.
 
-- Másolja be a tanúsítványfájlt a `/etc/pki/ca-trust/source/anchors` könyvtár.
+- Másolja a tanúsítványfájl a `/etc/pki/ca-trust/source/anchors` könyvtárba.
 - Futtassa az `update-ca-trust` parancsot.
 
-A részletekért tekintse meg a adott a disztribúció dokumentációjában.
+A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-cím hozzáadása és a blob-szolgáltatásvégpont 
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-címének és blob szolgáltatásbeli végpontjának hozzáadása 
 
-Ugyanezekkel a lépésekkel, [eszköz IP-cím hozzáadása és a blob-szolgáltatásvégpont keresztül kapcsolódó *http*](#add-device-ip-address-and-blob-service-endpoint).
+[Ha *http*-kapcsolaton keresztül csatlakozik, kövesse ugyanezen lépéseket az eszköz IP-címének és a blob-szolgáltatás végpontjának hozzáadásához](#add-device-ip-address-and-blob-service-endpoint).
 
-### <a name="configure-partner-software-and-verify-connection"></a>Partner szoftver konfigurálása és a kapcsolat ellenőrzése
+### <a name="configure-partner-software-and-verify-connection"></a>A partner szoftver konfigurálása és a kapcsolat ellenőrzése
 
-Kövesse a lépéseket a [keresztüli csatlakoztatása során használt partnerszoftver konfigurálása *http*](#configure-partner-software-and-verify-connection). Az egyetlen különbség, hogy hagyja a *http-beállítással* nincs bejelölve.
+Kövesse a lépéseket a [ *http*-kapcsolaton keresztül használt partneri szoftverek konfigurálásához](#configure-partner-software-and-verify-connection). Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
-Miután csatlakozott a Data Box Blob Storage, a következő lépés az adatok másolása. Adatok másolása, előtt tekintse át az alábbiakat:
+Ha csatlakozott a Data Box blob Storage-hoz, a következő lépés az Adatmásolás. Az Adatmásolás előtt tekintse át a következő szempontokat:
 
 -  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
-- Adatok feltöltése folyamatban van a Data Box, Data Box-en kívül más alkalmazás egyidejűleg fel, ha lehetséges, hogy emiatt feltöltési feladat hibák és az adatok sérülését.
+- Ha az Data Box által feltöltött adatok párhuzamosan fel vannak töltve a Data Boxon kívül más alkalmazásokkal, ez a feladatok feltöltésével és az adatok sérülésével járhat.
 
-Ebben az oktatóanyagban az AzCopy segítségével adatmásolás a Data Box blobtárolóba. Használhatja az Azure Storage Explorer (Ha inkább a GUI-alapú eszköz) vagy egy partneri szoftver az adatok másolásához.
+Ebben az oktatóanyagban a AzCopy az Adatmásolás Data Box blob Storage-ba való másolására szolgál. A Azure Storage Explorer is használhatja (ha a GUI-alapú eszköz) vagy a partner szoftverét az adatmásoláshoz.
 
-A másolási eljárás rendelkezik az alábbi lépéseket:
+A másolási eljárás a következő lépésekből áll:
 
 - Tároló létrehozása
-- Egy mappa tartalmának feltöltése a Data Box Blob storage
-- Módosított fájlok feltöltése a Data Box Blob storage
+- Mappa tartalmának feltöltése Data Box blob Storage-ba
+- Módosított fájlok feltöltése Data Box blob Storage-ba
 
-Az egyes ezeket a lépéseket az alábbiakban részletesen ismertetjük.
+Ezeket a lépéseket a következő szakaszokban részletesen ismertetjük.
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
-Az első lépéseként hozzon létre egy tárolót, mert blobok minden esetben a rendszer feltölti egy tárolót. Tárolók a blobok csoportjait ugyanúgy rendszerezheti, ahogy mappákban lévő fájlokat a számítógépre. Kövesse az alábbi lépéseket egy blobtároló létrehozásához.
+Első lépésként hozzon létre egy tárolót, mivel a Blobok mindig egy tárolóba lesznek feltöltve. A tárolók a Blobok csoportjait rendezik, például a fájlok mappákba rendezését a számítógépén. A blob-tárolók létrehozásához kövesse az alábbi lépéseket.
 
 1. Nyissa meg a Storage Explorert.
-2. A bal oldali ablaktáblán bontsa ki a tárfiókot, amelyen belül szeretné a blobtároló létrehozásához.
-3. Kattintson a jobb gombbal **Blobtárolók**, és a helyi menüből válassza ki a **Blobtároló létrehozása**.
+2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amelyen létre kívánja hozni a BLOB-tárolót.
+3. Kattintson a jobb gombbal a **blob-tárolók**elemre, majd a helyi menüben válassza a **blob-tároló létrehozása**lehetőséget.
 
-   ![Místní nabídka objektu blob tárolók létrehozása](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![BLOB-tárolók létrehozása helyi menü](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. Szövegmező alatt megjelenik a **Blobtárolók** mappát. Adja meg a blobtároló nevét. Tekintse meg a [hozza létre a tárolót, valamint engedélyeket állíthat be](../storage/blobs/storage-quickstart-blobs-dotnet.md) információ a blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat.
-5. Nyomja meg **Enter** billentyűt a blobtároló létrehozásához vagy **Esc** megszakítja. Ha a blob-tároló sikeresen létrejött, megjelenik a **Blobtárolók** a kiválasztott tárfiókhoz tartozó mappában.
+4. A **blob-tárolók** mappa alatt egy szövegmező jelenik meg. Adja meg a blobtároló nevét. Tekintse meg a [tároló létrehozása és az engedélyek beállítása](../storage/blobs/storage-quickstart-blobs-dotnet.md) a blob-tárolók elnevezésére vonatkozó szabályokra és korlátozásokra vonatkozó információkat.
+5. Nyomja le az **ENTER** billentyűt, amikor elkészült a blob-tároló létrehozásához, vagy az **ESC billentyűt** a megszakításhoz. A blob-tároló sikeres létrehozása után a rendszer a kiválasztott Storage-fiók **blob containers** mappájában jelenik meg.
 
-   ![Létrehozott BLOB-tárolóba](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
+   ![BLOB-tároló létrehozva](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
 
-### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Egy mappa tartalmának feltöltése a Data Box Blob storage
+### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Mappa tartalmának feltöltése Data Box blob Storage-ba
 
-Az AzCopy segítségével egy mappában található összes fájl feltöltése a Blob storage Windows vagy Linux rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
+A AzCopy használatával feltöltheti a mappában lévő összes fájlt a blob Storage-ba Windows vagy Linux rendszeren. Egy mappa összes blobjának feltöltéséhez írja be a következő AzCopy-parancsot:
 
 #### <a name="linux"></a>Linux
 
@@ -193,15 +194,15 @@ Az AzCopy segítségével egy mappában található összes fájl feltöltése a
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
 
-Cserélje le `<key>` értékeket a fiók kulcsára. Az Azure Portalon a fiókkulcs lekéréséhez lépjen a tárfiókhoz. Lépjen a **beállítások > hozzáférési kulcsok**, válasszon ki egy kulcsot, és illessze be az AzCopy-parancsot.
+Cserélje le a `<key>`t a fiókja kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok**elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
 
-Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba. A forrás elérési útjának frissítse az adatkönyvtár, és cserélje le `data-box-storage-account-name` a cél URL-CÍMÉT a tárfiók nevét a Data Box társított.
+Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba. Frissítse a forrás elérési útját az adatkönyvtárra, és cserélje le az `data-box-storage-account-name` a cél URL-címére a Data Box társított Storage-fiók nevével.
 
 A megadott könyvtár tartalmának a Blob Storage-ba való rekurzív feltöltéséhez adja meg a `--recursive` (Linux) vagy az `/S` (Windows) beállítást. Ha az AzCopyt ezen beállítások egyikével futtatja, minden almappa és a bennük tárolt fájlok is feltöltődnek.
 
-### <a name="upload-modified-files-to-data-box-blob-storage"></a>Módosított fájlok feltöltése a Data Box Blob storage
+### <a name="upload-modified-files-to-data-box-blob-storage"></a>Módosított fájlok feltöltése Data Box blob Storage-ba
 
-Az azcopyval a legutóbbi módosításuk ideje alapján fájlok feltöltéséhez. Ha szeretné kipróbálni ezt a funkciót, tesztelési céllal módosítson vagy hozzon létre fájlokat a forráskönyvtárban. Ha csak a frissített vagy új fájlokat szeretné feltölteni, adja hozzá az `--exclude-older` (Linux) vagy az `/XO` (Windows) paramétert az AzCopy-parancshoz.
+A AzCopy használatával tölthet fel fájlokat a legutóbbi módosítási idejük alapján. Ha szeretné kipróbálni ezt a funkciót, tesztelési céllal módosítson vagy hozzon létre fájlokat a forráskönyvtárban. Ha csak a frissített vagy új fájlokat szeretné feltölteni, adja hozzá az `--exclude-older` (Linux) vagy az `/XO` (Windows) paramétert az AzCopy-parancshoz.
 
 Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek nem léteznek a célhelyen, adja meg az `--exclude-older` és az `--exclude-newer` (Linux), vagy az `/XO` és az `/XN` (Windows) paramétereket az AzCopy-parancsban. Az AzCopy az időbélyegek alapján csak a frissített adatokat tölti fel.
 
@@ -217,21 +218,21 @@ Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek n
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
-Ha a csatlakozás vagy másolási művelet során bármilyen hiba merül fel, tekintse meg [Data Box Blob storage-problémák hibaelhárítása](data-box-troubleshoot-rest.md).
+Ha a csatlakozás vagy a másolás művelet során hibák léptek fel, tekintse meg a [Data Box blob Storage problémáinak elhárítása](data-box-troubleshoot-rest.md)című témakört.
 
-Következő lépés, hogy az eszköz szállításra való előkészítése.
+A következő lépés az eszköz szállításra való előkészítése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * Data Box Blob storage-n keresztül kapcsolódni *http* vagy *https*
+> * Kapcsolódás Data Box blob Storage-hoz *http* -vagy *https* -kapcsolaton keresztül
 > * Adatok másolása a Data Boxra
 
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
+Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti vissza a Data Boxot a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)

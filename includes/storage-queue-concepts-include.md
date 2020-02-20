@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 59dd5d38b1cb89ce966a74284f0e392af52e9827
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 317e47144a716bd1bea5549aed1db0a02250d353
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457684"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77465948"
 ---
 ## <a name="what-is-queue-storage"></a>Mi a várólista-tároló?
 
@@ -26,7 +26,7 @@ Az Azure Queue szolgáltatás a következő összetevőket tartalmazza:
   
     Az ábra egyik üzenetsora a következő URL-címmel érhető el:  
   
-    `http://myaccount.queue.core.windows.net/images-to-download`
+    `http://myaccount.queue.core.windows.net/incoming-orders`
 
 * **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. További információ a Storage-fiókokról: [Storage-fiók áttekintése] [.. /articles/storage/common/storage-account-overview.md].
 * **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. Az összes üzenetnek üzenetsorban kell lennie. Vegye figyelembe, hogy az üzenetsor neve csak kisbetűket tartalmazhat. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513847"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469136"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -64,6 +64,7 @@ Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépe
 
 - Ez a probléma akkor fordulhat elő, ha a helyreállítási pont erőforráscsoport zárolása megakadályozza a helyreállítási pontok automatikus törlését.
 - Ez a probléma akkor is előfordulhat, ha naponta több biztonsági mentést indítanak el. Jelenleg csak egy biztonsági mentést ajánlunk naponta, mivel az azonnali visszaállítási pontok megőrzése a beállított pillanatkép-megőrzési időtartam 1-5 nap, míg a virtuális gépeket csak 18 Instant RPs lehet egy adott időpontban társítani. <br>
+- A helyreállítási pontok gyűjteményei és a virtuális gépek csoportjai közötti helyreállítási pontok száma nem haladhatja meg a 18-at. Új visszaállítási pont létrehozásához törölje a meglévő visszaállítási pontokat.
 
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport zárolását, majd próbálja megismételni a műveletet a tisztítás elindításához.
@@ -217,10 +218,10 @@ Távolítsa el a bővítményt a VMSnapshot-bővítmény újratöltésének kén
 A bővítmény eltávolítása:
 
 1. A [Azure Portal](https://portal.azure.com/)lépjen a biztonsági mentési hibát észlelő virtuális gépre.
-2. Válassza a **Beállítások** lehetőséget.
+2. Válassza a **Beállítások**lehetőséget.
 3. Kattintson az **Extensions** (Bővítmények) gombra.
 4. Válassza a **Pillanatkép-kiterjesztés**lehetőséget.
-5. Válassza az **Eltávolítás** lehetőséget.
+5. Válassza az **Eltávolítás**lehetőséget.
 
 Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a biztonsági mentést.
 
@@ -228,7 +229,7 @@ Ezeknek a lépéseknek a végrehajtásával a bővítmény újratelepíthető a 
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>A helyreállítási pont erőforráscsoporthoz tartozó zárolás eltávolítása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Lépjen a **minden erőforrás lehetőségre**, és válassza a visszaállítási pont gyűjteménye erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`.
 3. A zárolások megjelenítéséhez a **Beállítások** szakaszban válassza a **zárolások** lehetőséget.
 4. A zárolás eltávolításához válassza a három pontot, majd kattintson a **Törlés**gombra.
@@ -257,7 +258,7 @@ A zárolás eltávolítását követően indítson el egy igény szerinti bizton
 
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nem törlődik, próbálkozzon a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A **központi** menüben kattintson a **minden erőforrás**lehetőségre, válassza ki az erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`, ahol a virtuális gép található.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)

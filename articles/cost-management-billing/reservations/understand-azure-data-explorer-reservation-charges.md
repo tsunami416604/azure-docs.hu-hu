@@ -1,19 +1,18 @@
 ---
 title: A foglalási kedvezmény alkalmazása az Azure Data Explorerre
 description: Megtudhatja, hogyan alkalmazható a foglalási kedvezmény az Azure Data Explorer árrésmérőjére.
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995623"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199330"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>A foglalási kedvezmény alkalmazása az Azure Data Explorerre
 
@@ -36,23 +35,23 @@ A foglalási kedvezmény az Azure Data Explorer árréshasználatára való alka
 ## <a name="examples"></a>Példák
 
 Az alábbi példák bemutatják, hogyan lesz alkalmazva a fenntartott Azure Data Explorer-kapacitásra érvényes kedvezmény a megvásárolt árrésegységek száma alapján, és az alapján, mikor futnak.
-Például a **2 D11_v2 virtuális gép esetén** motorfürtméret esetében a teljes igény szerinti díj óránként négy Azure Data Explorer-árrésmérő egységre vonatkozik. 
+Például a **2 D11_v2 virtuális gép esetén** motorfürtméret esetében a teljes igény szerinti díj óránként négy Azure Data Explorer-árrésmérő egységre vonatkozik.
 
-**1. forgatókönyv** 
+**1. forgatókönyv**
 
 8 Azure Data Explorer-árrésegységnek megfelelő Azure Data Explorer fenntartott kapacitást vásárol. Két D13_v2 virtuális gépből álló motorfürtöt futtat összesen 16 maggal, amely után 16 egységnyi Azure Data Explorer-árrésegységet kell fizetnie óránként, és amely megegyezik a foglalás többi attribútumával. A nyolcmagos Azure Data Explorer számításierőforrás-használata után használatalapú díjat kell fizetnie, a foglalási kedvezményt pedig a nyolcmagos Azure Data Explorer-árrésegység egy órányi használata után kapja meg.
 
 A többi példa esetében azt feltételezzük, hogy a fenntartott Azure Data Explorer-kapacitást egy 16 magos Azure Data Explorer-fürthöz vásárolta, és a többi foglalási attribútum megegyezik a futó Azure Data Explorer-fürttel.
 
-**2. forgatókönyv** 
+**2. forgatókönyv**
 
 Két Azure Data Explorer-motorfürtöt futtat nyolc-nyolc maggal egy órán keresztül két különböző régióban. A 16 magos foglalási kedvezményt a rendszer a fürtökre és a felhasznált 16 egységnyi Azure Data Explorer-árrésegységre is alkalmazza.
 
-**3. forgatókönyv** 
+**3. forgatókönyv**
 
 Egy 16 magos Azure Data Explorer-motorfürtöt futtat 13:00 és 13:30 között. Egy másik 16 magos Azure Data Explorer-motorfürtöt pedig 13:30 és 14:00 között futtat. A foglalási kedvezmény mindkettőt fedezi.
 
-**4. forgatókönyv** 
+**4. forgatókönyv**
 
 Egy 16 magos Azure Data Explorer-motorfürtöt futtat 13:00 és 13:45 között. Egy másik 16 magos Azure Data Explorer-motorfürtöt pedig 13:30 és 14:00 között futtat. A 15 perces átfedésért használatalapú díjat kell fizetnie. A fennmaradó idő Azure Data Explorer-árréshasználatára érvényes a foglalási kedvezmény.
 

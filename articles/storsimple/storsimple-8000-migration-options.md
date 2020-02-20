@@ -1,5 +1,5 @@
 ---
-title: Kiértékelési beállítások az adatok áttelepíthetők a StorSimple 5000-7000 sorozatból | Microsoft Docs
+title: Adatáttelepítési lehetőségek a StorSimple 5000-7000 Series-eszközökről
 description: Áttekintést nyújt az adatok StorSimple 5000-7000 sorozatból való átadásának lehetőségeiről.
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227767"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471822"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Beállítások az adatok áttelepíthetők a StorSimple 5000-7000 sorozatból 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74227767"
 
 A StorSimple 5000-7000-es sorozat [támogatásának vége a](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) 2019. júliusában érhető el. A StorSimple 5000-7000 sorozatú ügyfeleknek lehetősége van arra, hogy más Azure-beli hibrid szolgáltatásokra frissítsen. Ez a cikk az adatáttelepítés során elérhető Azure Hybrid-beállításokat ismerteti. 
 
-## <a name="migration-options"></a>Áttelepítési beállítások
+## <a name="migration-options"></a>Áttelepítési lehetőségek
 
 Az StorSimple 5000-7000 sorozatú ügyfelek az Azure-ban vagy a külső felektől származó lehetőségeket is igénybe vehetik.
 
@@ -125,6 +125,6 @@ A. Az adatok áttelepítésének ideje az adatok mennyiségétől és a kiválas
 A. A StorSimple 8000 sorozat támogatási dátumának vége [itt](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)jelenik meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  - [Adatok migrálása StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre](storsimple-8000-migrate-from-5000-7000.md).
  - [Adatok migrálása StorSimple 5000-7000-sorozatból Azure File Sync](storsimple-5000-7000-afs-migration.md)

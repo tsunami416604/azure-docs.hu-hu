@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 16b0727a78ad8ad582535fa1f5b0e57079cc4c05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385586"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469527"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Teljesítményszámlálók gyűjtése az Azure Cloud Service-hez
 
@@ -121,7 +121,7 @@ A Cloud Services Azure Diagnostics bővítménye lehetővé teszi a gyűjteni k�
 
 A gyűjteni kívánt teljesítményszámlálók a **Diagnostics. wadcfgx** fájlban vannak meghatározva. A Visual Studióban nyissa meg ezt a fájlt (ez a szerepkör definiálva van), és keresse meg a **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** elemet. Adjon hozzá egy új **PerformanceCounterConfiguration** elemet gyermekként. Ez az elem két attribútummal rendelkezik: `counterSpecifier` és `sampleRate`. A `counterSpecifier` attribútum határozza meg, hogy az összegyűjtéshez melyik System teljesítményszámláló-készletre (az előző szakaszban vázolt) vonatkozik. Az `sampleRate` érték azt jelzi, hogy az adott érték milyen gyakran van lekérdezve. Teljes egészében az összes teljesítményszámláló átkerül az Azure-ba a szülő `PerformanceCounters` elem `scheduledTransferPeriod` attribútumának értéke alapján.
 
-A `PerformanceCounters` Schema elemmel kapcsolatos további információkért tekintse meg a [Azure Diagnostics sémát](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
+A `PerformanceCounters` Schema elemmel kapcsolatos további információkért tekintse meg a [Azure Diagnostics sémát](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 A `sampleRate` attribútum által meghatározott időszak az XML-időtartam adattípust használja a teljesítményszámláló lekérdezési gyakoriságának jelzésére. Az alábbi példában a ráta `PT3M`értékre van állítva, ami azt jelenti, hogy `[P]eriod[T]ime[3][M]inutes`: 3 percenként.
 
@@ -291,7 +291,7 @@ Ahogy azt korábban említettük, a gyűjteni kívánt teljesítményszámláló
 - [Application Insights az Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Rendszerteljesítmény-számlálók a Application Insightsban](../azure-monitor/app/performance-counters.md)
 - [Számláló elérési útjának megadása](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure Diagnostics séma – teljesítményszámlálók](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+- [Azure Diagnostics séma – teljesítményszámlálók](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
 
 
 

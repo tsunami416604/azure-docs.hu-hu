@@ -3,21 +3,18 @@ title: A Microsoft Azure-számla megtekintése és letöltése
 description: A cikk a Microsoft Azure-számlák megtekintését és letöltését mutatja be.
 keywords: számlázás,számla,számla letöltése,azure-számla,azure-használat
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987823"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200265"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
@@ -87,7 +84,7 @@ A számlák e-mailben történő kézbesítését lemondhatja az alábbi lépés
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>A Microsoft-ügyfélszerződés számláinak e-mailben történő kézbesítése
 
-Ha rendelkezik Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal, engedélyezheti a számlák e-mailes kézbesítését. A számlázási profil esetében tulajdonos, közreműködő, olvasó, illetve számlakezelő szerepkörhöz tartozó felhasználók egyaránt megkapják a számlát e-mailben. 
+Ha rendelkezik Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal, engedélyezheti a számlák e-mailes kézbesítését. A számlázási profil esetében tulajdonos, közreműködő, olvasó, illetve számlakezelő szerepkörhöz tartozó felhasználók egyaránt megkapják a számlát e-mailben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -109,11 +106,11 @@ Ha rendelkezik Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal,
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>A számlák e-mailben történő kézbesítésének lemondása Microsoft-ügyfélszerződés esetében
 
-A számlák e-mailben történő kézbesítését lemondhatja az alábbi lépések követésével és a **lemondásra** való kattintással. A tulajdonos, közreműködő, olvasó, illetve számlakezelő szerepkörökhöz tartozó felhasználók nem kapják meg e-mailben a számlát. 
+A számlák e-mailben történő kézbesítését lemondhatja az alábbi lépések követésével és a **lemondásra** való kattintással. A tulajdonos, közreműködő, olvasó, illetve számlakezelő szerepkörökhöz tartozó felhasználók nem kapják meg e-mailben a számlát.
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Hozzáférés megadása másoknak a Microsoft Ügyfélszerződéshez tartozó számláihoz
 
-Engedélyezheti másoknak a számlák megtekintését, letöltését és befizetését, amennyiben számlakezelő szerepkört rendel hozzájuk a számlázási profilra vonatkozóan. Ha jogosult arra, hogy megkapja a számlát e-mailben, ezek a felhasználók szintén jogosulttá válnak rá. 
+Engedélyezheti másoknak a számlák megtekintését, letöltését és befizetését, amennyiben számlakezelő szerepkört rendel hozzájuk a számlázási profilra vonatkozóan. Ha jogosult arra, hogy megkapja a számlát e-mailben, ezek a felhasználók szintén jogosulttá válnak rá.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 

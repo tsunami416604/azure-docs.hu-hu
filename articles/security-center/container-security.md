@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430992"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470768"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -71,9 +71,9 @@ A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részlete
 ## <a name="container-security-faq"></a>Container Security – gyakori kérdések
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Milyen típusú képeket tud Azure Security Center a vizsgálat?
-A Security Center Linux operációs rendszert futtató rendszerképeket vizsgál. 
+Security Center a rendszerhéj-hozzáférést biztosító Linux operációs rendszerű lemezképeket vizsgálja. 
 
-A Qualys képolvasó nem támogatja a "eltérítetlen" lemezképeket, amelyek csak az alkalmazást és a hozzá tartozó futásidejű függőségeket tartalmazzák.
+A Qualys képolvasó nem támogatja a Super minimalista rendszerképeket, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképeket vagy a "eltérítetlen" lemezképeket, amelyek csak az alkalmazást és a futásidejű függőségeit tartalmazzák (csomagkezelő, rendszerhéj vagy operációs rendszer nélkül).
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Hogyan vizsgáljuk meg Azure Security Center a képek vizsgálatát?
 A rendszer kinyeri a rendszerképet a beállításjegyzékből. Ezután egy elkülönített homokozóban fut a Qualys szkennerrel, amely kibontja az ismert sebezhetőségek listáját.

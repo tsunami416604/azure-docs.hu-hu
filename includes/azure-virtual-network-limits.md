@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021114"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466068"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager a következő korlátozások érvényesek csak a **Azure Resource Manager** /régiónként felügyelt hálózati erőforrásokra. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
@@ -35,7 +35,7 @@ ms.locfileid: "76021114"
 | Nyilvános IP-címek virtuális gépenként |256 |
 | [Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
 | Hálózati kártyák |65 536 |
-| Hálózati biztonsági csoportok |5000 |
+| Network Security Groups (Hálózati biztonsági csoportok) |5000 |
 | NSG-ben szereplő NSG-szabályok |1,000 |
 | A forráshoz vagy célhoz megadott IP-címek és tartományok egy biztonsági csoportban |4,000 |
 | Alkalmazásbiztonsági csoportok |3,000 |
@@ -51,10 +51,13 @@ ms.locfileid: "76021114"
 #### <a name="publicip-address"></a>Nyilvános IP-címek korlátai
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Nyilvános IP-címek – dinamikus | 1 000 alapszintű. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
-| Nyilvános IP-címek – statikus | 1 000 alapszintű. |Vegye fel a kapcsolatot az ügyfélszolgálattal. |
-| Nyilvános IP-címek – statikus | 1 000 standard.|Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-címek<sup>1</sup> | 10 alapszintű. | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Statikus nyilvános IP-címek<sup>1</sup> | 10 alapszintű. | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Standard nyilvános IP-címek<sup>1</sup> | 10 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| Nyilvános IP-előtagok | korlátozott a standard nyilvános IP-címek száma egy előfizetésben | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 | Nyilvános IP-előtag hossza | /28 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+
+<sup>1</sup> A nyilvános IP-címekre vonatkozó alapértelmezett korlátok az ajánlati kategória típusa szerint változnak, például az ingyenes próbaverzió, az utólagos elszámolású, a CSP. A Nagyvállalati Szerződés-előfizetések alapértelmezett értéke például 1000.
 
 #### <a name="load-balancer"></a>Terheléselosztó korlátai
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -64,7 +67,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Erőforrás                                | Alapértelmezett/maximális korlát         |
 |-----------------------------------------|-------------------------------|
 | Terheléselosztók                          | 1,000                         |
-| Szabályok/erőforrás                      | 1500                         |
+| Szabályok/erőforrás                      | 1,500                         |
 | Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                           |
 | Előtér-IP-konfigurációk              | 600                           |
 | Háttérbeli készlet mérete                       | 1 000 IP-konfiguráció, egyetlen virtuális hálózat |
@@ -98,6 +101,6 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Felhasználó által definiált útvonalak útválasztási táblázatban |400 |400 |
 | Nyilvános IP-címek (dinamikus) |500 |500 |
 | Fenntartott nyilvános IP-címek |500 |500 |
-| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel a támogatási szolgáltatással |
 | Privát VIP (belső terheléselosztás) üzembe helyezése |1 |1 |
 | Végpontok hozzáférés-vezérlési listái (ACL-ek) |50 |50 |

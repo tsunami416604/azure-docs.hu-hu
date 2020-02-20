@@ -1,17 +1,17 @@
 ---
-title: StorSimple-eszközök kezelése Azure Resource Manager-parancsfájlok használatával
+title: AzureRM PowerShell-parancsfájlok használata a StorSimple-eszközök felügyeletéhez
 description: Megtudhatja, hogyan használhatja Azure Resource Manager szkripteket a StorSimple-feladatok automatizálásához
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276644"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471958"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsfájlok használata a StorSimple-eszközök kezeléséhez
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a Azure Resource Manager SDK-alap
 
 Ez a cikk a StorSimple 8000 sorozatú, csak Azure Portal rendszerű eszközökre vonatkozik.
 
-## <a name="sample-scripts"></a>Mintaszkriptek
+## <a name="sample-scripts"></a>Mintaparancsfájlok
 
 A különböző StorSimple-feladatok automatizálásához a következő minta-parancsfájlok érhetők el.
 

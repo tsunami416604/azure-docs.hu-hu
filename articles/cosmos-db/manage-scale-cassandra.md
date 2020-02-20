@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 668e9ddadf151a86be0d8c09fc91b4c70db12f3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210787"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468830"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
@@ -23,7 +23,7 @@ A Azure Cosmos DB API-ját a Cassandra-hez való rugalmas jellegének megismeré
 
 A Azure Cosmos DB a korlátozott számú (429) hibát eredményez, ha az ügyfelek több erőforrást használnak (RU/s), mint a kiépített mennyiség. A Azure Cosmos DB Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibák esetén. 
 
-Ha a rendszer nem érzékeny a késésre, akkor elegendő lehet az átviteli sebesség korlátozására az újrapróbálkozások használatával. Tekintse meg a Java- [kódrészletet](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) , amely bemutatja, hogyan kezelheti a ráta-korlátozásokat a Java-ban található [Cassandra újrapróbálkozási szabályzat](https://docs.datastax.com/drivers/java/2.0/com/datastax/driver/core/policies/RetryPolicy.html) [Azure Cosmos db-bővítményének](https://github.com/Azure/azure-cosmos-cassandra-extensions) használatával. A [Spark-bővítményt](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) is használhatja a ráta korlátozására.
+Ha a rendszer nem érzékeny a késésre, akkor elegendő lehet az átviteli sebesség korlátozására az újrapróbálkozások használatával. Tekintse meg a Java- [kódrészletet](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) , amely bemutatja, hogyan kezelheti a ráta-korlátozásokat a Java-ban található [Cassandra újrapróbálkozási szabályzat](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) [Azure Cosmos db-bővítményének](https://github.com/Azure/azure-cosmos-cassandra-extensions) használatával. A [Spark-bővítményt](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) is használhatja a ráta korlátozására.
 
 ## <a name="manage-scaling"></a>Skálázás kezelése
 
