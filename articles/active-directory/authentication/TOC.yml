@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Az Azure Multi-Factor Authentication engedélyezése
       href: tutorial-enable-azure-mfa.md
-    - name: Az SSPR helyszíni integrációjának engedélyezése
-      href: tutorial-enable-writeback.md
+    - name: Jelszóvisszaíró engedélyezése a helyszíni rendszerhez
+      href: tutorial-enable-sspr-writeback.md
     - name: Az Azure Identity Protection integrálása
       href: tutorial-risk-based-sspr-mfa.md
 - name: Alapelvek
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: A hitelesítési adatok előzetes regisztrációja
           href: howto-sspr-authenticationdata.md
-        - name: Jelszóvisszaíró engedélyezése
-          href: howto-sspr-writeback.md
         - name: SSPR Windows rendszerű ügyfelekhez
           href: howto-sspr-windows.md
     - name: Felhőalapú MFA

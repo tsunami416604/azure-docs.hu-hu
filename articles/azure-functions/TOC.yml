@@ -371,11 +371,23 @@
         - name: Notification Hubs
           href: functions-bindings-notification-hubs.md
         - name: Queue Storage
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: Áttekintés
+              href: functions-bindings-storage-queue.md
+            - name: Eseményindító
+              href: functions-bindings-storage-queue-trigger.md
+            - name: Kimenet
+              href: functions-bindings-storage-queue-output.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
-          href: functions-bindings-service-bus.md
+          items:
+            - name: Áttekintés
+              href: functions-bindings-service-bus.md
+            - name: Eseményindító
+              href: functions-bindings-service-bus-trigger.md
+            - name: Kimenet
+              href: functions-bindings-service-bus-output.md
         - name: SignalR szolgáltatás
           href: functions-bindings-signalr-service.md
         - name: Table Storage
