@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185888"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468437"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Útmutató: a feltételes hozzáférési telepítés megtervezése Azure Active Directory
 
@@ -31,6 +31,9 @@ Ha további funkciókra van szükség, szükség lehet a kapcsolódó licencek b
 A feltételes hozzáférési szabályzatok két típusa létezik: alapterv és standard. Az alapkonfiguráció [szabályzata](baseline-protection.md) előre definiált feltételes hozzáférési szabályzat. Ezen szabályzatok célja, hogy ellenőrizze, hogy rendelkezik-e legalább az alapszintű biztonsági beállítással. Alapterv-házirendek. Az alapkonfigurációs házirendek az Azure AD minden kiadásában elérhetők, és csak korlátozott testreszabási lehetőségeket biztosítanak. Ha egy forgatókönyv nagyobb rugalmasságot igényel, tiltsa le az alapszintű szabályzatot, és alkalmazza a követelményeit egy egyéni szabványos házirendben.
 
 A standard feltételes hozzáférési szabályzatban az összes beállítást testreszabhatja, hogy a szabályzatot az üzleti igényeknek megfelelően módosítsa. A standard szabályzatokhoz prémium szintű Azure AD P1 licenc szükséges.
+
+>[!NOTE]
+> Azt javasoljuk, hogy az Azure AD-alapú feltételes hozzáférési szabályzat használatával a kezdeti eszköz hitelesítése után a legjobb kényszerítést kapja meg. Ez magában foglalja a záró munkameneteket, ha az eszköz nem felel meg a megfelelőségi és az eszköz kódjának.
 
 ## <a name="draft-policies"></a>Piszkozat-szabályzatok
 

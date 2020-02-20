@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839792"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471788"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Karbantartási ütemtervek használata a szolgáltatások frissítéseinek és karbantartásának kezeléséhez
 
@@ -55,7 +55,7 @@ Alapértelmezés szerint minden újonnan létrehozott Azure SQL Data Warehouse-p
 
 Az adattárház karbantartási ütemezésének megtekintéséhez hajtsa végre az alábbi lépéseket:
 
-1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2.  Válassza ki a megtekinteni kívánt adatraktárat. 
 3.  A kiválasztott adattárház megnyílik az Áttekintés panelen. Az adatraktárra alkalmazott karbantartási ütemterv a **karbantartási ütemterv**alatt jelenik meg.
 
@@ -71,9 +71,9 @@ A karbantartási ütemtervet bármikor frissítheti vagy módosíthatja. Ha a ki
 Az elsődleges és a másodlagos Windowsnak külön napi tartományokkal kell rendelkeznie. Ilyen például a kedd – csütörtök elsődleges ablak és a szombat – vasárnap egy másodlagos ablak.
 
 Az adattárház karbantartási ütemtervének módosításához hajtsa végre a következő lépéseket:
-1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2.  Válassza ki a frissíteni kívánt adatraktárat. Megnyílik az oldal az Áttekintés panelen. 
-3.  Nyissa meg a karbantartási ütemterv beállításainak lapját. Ehhez válassza a **karbantartási ütemterv (előzetes verzió) összefoglalás** hivatkozást az Áttekintés panelen. Vagy válassza a **karbantartási ütemterv** lehetőséget a bal oldali erőforrás menüjében.  
+3.  Nyissa meg a karbantartási ütemterv beállításainak lapját a **karbantartási ütemterv összegzése** hivatkozásra kattintva az Áttekintés panelen. Vagy válassza a **karbantartási ütemterv** lehetőséget a bal oldali erőforrás menüjében.  
 
     ![Áttekintő panel beállításai](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
@@ -94,7 +94,7 @@ Az adattárház karbantartási ütemtervének módosításához hajtsa végre a 
 
    ![A régió elérhetőségével kapcsolatos üzenet](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) információ a riasztások létrehozásáról, megtekintéséről és kezeléséről Azure monitor használatával.
 - [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) információ a napló riasztási szabályaival kapcsolatos webhook-műveletekről.
 - [További információ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Műveleti csoportok létrehozása és kezelése.

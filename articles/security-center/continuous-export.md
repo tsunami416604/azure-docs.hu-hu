@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459183"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470792"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Biztonsági riasztások és javaslatok exportálása (előzetes verzió)
 
@@ -41,7 +41,7 @@ Az alábbi eszközöket használhatja:
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>Folyamatos Exportálás az Azure Event Hubs  
 
@@ -105,7 +105,7 @@ Ekkor megjelenik az új Azure Security Center riasztások vagy javaslatok (a kon
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Biztonsági riasztások manuális egyszeri exportálása
 
-A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **biztonsági riasztások** vagy **javaslatok** lapot, és kattintson a **CSV-jelentés letöltése (előzetes verzió)** gombra.
+A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **biztonsági riasztások** vagy **javaslatok** lapot, és kattintson a **CSV-jelentés letöltése** gombra.
 
 [riasztási adat![ek letöltése CSV-fájlként](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 

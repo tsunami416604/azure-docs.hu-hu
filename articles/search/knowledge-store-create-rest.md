@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754081"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472315"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob Storage és az [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) használatát használja az AI-hoz. 
 
-Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy naponta akár 20 tranzakciót is biztosítson az Azure-Cognitive Search. Az általunk megadott mintaadatok használata esetén kihagyhatja Cognitive Services erőforrás létrehozását vagy csatolását.
+Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy naponta legfeljebb 20 tranzakció szabad feldolgozását biztosítsa. Mivel az adatkészlet olyan kicsi, hogy kihagy egy Cognitive Services erőforrás létrehozását vagy csatolását.
 
 1. [Töltse le HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)fájlt. Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
@@ -78,7 +78,7 @@ A **változók** lapon olyan értékeket adhat hozzá a Poster-feladatokhoz, ame
 ![Poster-alkalmazás változók lapja](media/knowledge-store-create-rest/postman-variables-window.png "A Poster változói ablaka")
 
 
-| Változó    | Hol szerezhető be |
+| Változó    | Honnan szerezhető be? |
 |-------------|-----------------|
 | `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
 | `api-version` | **2019-05-06 – előzetes**verzióként érhető el. |
@@ -108,7 +108,7 @@ A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 > Az összes kérelemben be kell állítania `api-key` és `Content-type` fejléceket. Ha a Poster egy változót is felismer, a változó narancssárga szövegben jelenik meg, mint az előző képernyőképen `{{admin-key}}`. Ha a változó hibásan van írva, vörös szövegben jelenik meg.
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Egy Azure Cognitive Search-index létrehozása
+## <a name="create-an-azure-cognitive-search-index"></a>Azure Cognitive Search index létrehozása
 
 Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelem `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`ba való kiállításával. A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}`, `{{index-name}}`és `{{api-version}}`), a [Poster konfigurálása](#configure-postman)beállításban megadott értékekkel. Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
 
@@ -155,7 +155,7 @@ Válassza a **Küldés** lehetőséget a Put kérelem kiválasztásához. Ekkor 
 
 Következő lépésként kapcsolja össze az Azure Cognitive Search a blob Storage-ban tárolt a szállodai adatkapcsolattal. Az adatforrás létrehozásához küldjön POST-kérést `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. A korábban leírtaknak megfelelően be kell állítania a `api-key` és `Content-Type` fejléceket. 
 
-A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. Az alábbi kódot kell látnia:
+A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. A következő kódot kell megjelennie:
 
 ```json
 {

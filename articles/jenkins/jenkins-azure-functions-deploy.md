@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe Azure Functions a Jenkins Azu
 keywords: Jenkins, Azure, devops, Java, Azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158769"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470666"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Üzembe helyezés Azure Functions a Jenkins Azure Functions beépülő modullal
 
@@ -131,7 +131,7 @@ Ebben a szakaszban létrehozza a [Jenkins](https://jenkins.io/doc/book/pipeline/
 
 Most már ideje futtatni a Jenkins-feladatot.
 
-1. Először szerezze be az engedélyezési kulcsot a [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) című cikkben található utasítások alapján.
+1. Először szerezze be az engedélyezési kulcsot a [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys) című cikkben található utasítások alapján.
 
 1. A böngészőben adja meg az alkalmazás URL-címét. Cserélje le a helyőrzőket a megfelelő értékekre, és adjon meg egy numerikus értéket a **&lt;input_number >** a Java-függvény bemenete.
 

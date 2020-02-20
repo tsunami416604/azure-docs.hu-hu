@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198452"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474109"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
 
@@ -37,6 +37,6 @@ A következő eseményindítók beépített újrapróbálkozási támogatással 
 * [Azure üzenetsor-tároló](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Üzenetsor/témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Alapértelmezés szerint ezek az eseményindítók legfeljebb ötször kérik újra a kérelmeket. Az ötödik újrapróbálkozás után az Azure üzenetsor-tároló és a Azure Service Bus eseményindítók is írhatnak egy üzenetet a [méreg-várólistába](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
+Alapértelmezés szerint ezek az eseményindítók legfeljebb ötször kérik újra a kérelmeket. Az ötödik újrapróbálkozás után az Azure üzenetsor-tároló és a Azure Service Bus eseményindítók is írhatnak egy üzenetet a [méreg-várólistába](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
 
 Az újrapróbálkozási szabályzatokat minden más eseményindítóhoz vagy kötési típushoz manuálisan kell végrehajtania. A manuális megvalósítások tartalmazhatják a hibákra vonatkozó információkat a [Megmérgező üzenetek várólistáján](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Egy Megmérgező várólistába való írással lehetősége van arra, hogy egy későbbi időpontban újrapróbálkozjon a műveletekkel. Ez a módszer ugyanaz, mint amelyet a blob Storage-trigger használ.

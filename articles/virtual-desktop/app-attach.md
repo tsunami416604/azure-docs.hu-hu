@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367629"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470887"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -407,7 +407,7 @@ A licencfájl telepítéséhez egy PowerShell-szkriptet kell használnia, amely 
 
 A következő módon állíthatja be a licenceket offline használatra: 
 
-1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)találhatók.
+1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)találhatók.
 2. Frissítse a következő változókat a 3. lépéshez tartozó parancsfájlban:
       1. `$contentID` a nem kódolt licencfájl (. xml) ContentID értéke. A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
       2. `$licenseBlob` a licencelt blob teljes karakterlánca a kódolt licencfájl (. bin) számára. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben. 

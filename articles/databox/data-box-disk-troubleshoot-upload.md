@@ -1,6 +1,7 @@
 ---
-title: Az Azure Data Box-lemezek hibaelhárítási adatokat kapcsolatos problémákat naplók feltöltése |} A Microsoft Docs
-description: A naplók és elhárítása problémáinak, amikor az adatok feltöltése az Azure Data Box-lemezek módját ismerteti.
+title: Adatfeltöltés a naplók használatával – problémamegoldás
+titleSuffix: Azure Data Box Disk
+description: Leírja, hogyan használhatók a naplók és a hibák elhárítása, amikor az adatfeltöltés Azure Data Box Disk.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,44 +9,44 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807496"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471975"
 ---
-# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Az Azure Data Box-lemezek adatok feltöltési hibáinak elhárítása naplók megértése
+# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Az adatok feltöltésével kapcsolatos problémák elhárításához szükséges naplók ismertetése Azure Data Box Disk
 
-Ez a cikk a Microsoft Azure Data Box-lemezek vonatkozik, és láthatja, mikor az Azure-bA feltöltött adatok problémákat ismerteti.
+Ez a cikk Microsoft Azure Data Box Diskra vonatkozik, és leírja az adatok Azure-ba való feltöltésekor megjelenő problémákat.
 
-## <a name="about-upload-logs"></a>Tudnivalók a naplók feltöltése
+## <a name="about-upload-logs"></a>A naplók feltöltése
 
-Ha az adatokat az Azure-bA feltöltött az Adatközpont `_error.xml` és `_verbose.xml` fájlok jönnek létre minden olyan tárfiókhoz. Ezeket a naplókat a rendszer feltölti a tárfiókon, amellyel az adatok feltöltése. 
+Az adatközpontban az Azure-ba feltöltött adatkészletek esetében `_error.xml` és `_verbose.xml` fájlok jönnek létre minden egyes Storage-fiókhoz. Ezeket a naplókat a rendszer ugyanarra a Storage-fiókba tölti fel, amelyet az adatok feltöltéséhez használt. 
 
-Mindkét a naplók ugyanebben a formátumban és az eseményeket, másolja az adatokat a lemezről az Azure Storage-fiók történt XML leírását tartalmazzák.
+Mindkét napló ugyanabban a formátumban van, és XML-leírást tartalmaz azokról az eseményekről, amelyek az adatok lemezről az Azure Storage-fiókba való másolása során történtek.
 
-A részletes napló a másolási művelet minden egyes blob vagy fájlt, az állapot teljes körű információkat tartalmaz, mivel a hibanapló csak a blobok vagy fájlokat, amelyek hibába ütközött a feltöltés során adatait tartalmazza.
+A részletes napló tartalmazza az összes blob vagy fájl másolási műveletének állapotát, míg a hibanapló csak a feltöltés során hibákat észlelő Blobok vagy fájlok adatait tartalmazza.
 
-A hibanapló szerkezete ugyanaz, mint a részletes napló, de a sikeres műveletek kiszűri rendelkezik.
+A hibanapló ugyanazzal a szerkezettel rendelkezik, mint a részletes napló, de kiszűri a sikeres műveleteket.
 
 ## <a name="download-logs"></a>Naplók letöltése
 
-Az alábbi lépéseket, keresse meg a naplók feltöltése.
+A feltöltési naplók megkereséséhez hajtsa végre az alábbi lépéseket.
 
-1. Ha bármilyen hiba merül fel, ha az adatok feltöltése az Azure-ba, a portálon azt a mappát, ahol a diagnosztikai naplók találhatók jeleníti meg egy elérési utat.
+1. Ha bármilyen hiba merül fel az Azure-ba való feltöltéskor, a portál megjeleníti a diagnosztikai naplókat tartalmazó mappa elérési útját.
 
-    ![A portálon a naplók csatolása](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+    ![A portálon található naplókra mutató hivatkozás](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. Lépjen a **waies**.
+2. Nyissa meg a **waies**.
 
-    ![Hiba történt, és részletes naplók](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
+    ![hibák és részletes naplók](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
-Minden esetben tekintse meg a hibanaplókat, és a részletes naplókat. Válassza ki az egyes naplókhoz, és töltse le a helyi másolatot.
+Minden esetben megjelenik a hibák naplói és a részletes naplók. Válassza ki az egyes naplókat, és töltsön le egy helyi másolatot.
 
-## <a name="sample-upload-logs"></a>Minta naplók feltöltése
+## <a name="sample-upload-logs"></a>Minta feltöltési naplók
 
-A minta a `_verbose.xml` alább találja. Ebben az esetben a rendelés sikeresen befejeződött hiba nélkül.
+Alább látható a `_verbose.xml` mintája. Ebben az esetben a rendelés sikeresen befejeződött, hibák nélkül.
 
 ```xml
 
@@ -90,7 +91,7 @@ A minta a `_verbose.xml` alább találja. Ebben az esetben a rendelés sikeresen
 </DriveLog>
 ```
 
-Az ugyanabban a sorrendben, egy mintát a `_error.xml` alább találja.
+Ugyanezen megrendelésnél az alábbi minta látható a `_error.xml`.
 
 ```xml
 
@@ -109,13 +110,13 @@ Az ugyanabban a sorrendben, egy mintát a `_error.xml` alább találja.
 </DriveLog>
 ```
 
-A minta a `_error.xml` közül, where a rendelés hibákkal fejeződött be. 
+A `_error.xml` mintája látható, ahol a sorrend hibákkal fejeződött be. 
 
-A hiba történt a fájl ebben az esetben van egy `Summary` és, amely tartalmazza az összes fájlt egy másik szakaszban szintű hibákat. 
+Ebben az esetben a hibaüzenet egy `Summary` szakaszt és egy másik szakaszt tartalmaz, amely az összes fájl szintű hibát tartalmazza. 
 
-A `Summary` tartalmazza a `ValidationErrors` és a `CopyErrors`. Ebben az esetben 8 fájlok vagy mappák feltöltése az Azure-ba, és nincs érvényesítési hiba történt. Ha az adatok Azure Storage-fiók másolta, 5 fájlok vagy mappák feltöltése sikerült. A fennmaradó 3 fájlokat vagy mappákat is megfelelően az Azure container elnevezési konvencióinak átnevezve, és majd feltöltése sikeresen befejeződött az Azure-bA.
+A `Summary` tartalmazza a `ValidationErrors` és a `CopyErrors`. Ebben az esetben a rendszer 8 fájlt vagy mappát töltött fel az Azure-ba, és nincs érvényesítési hiba. Az Azure Storage-fiókba való másoláskor 5 fájl vagy mappa sikeresen feltöltve. A fennmaradó 3 fájlt vagy mappát az Azure-tároló elnevezési konvenciói alapján átnevezték, majd sikeresen feltöltöttük az Azure-ba.
 
-A fájlállapot szintű szerepelnek `BlobStatus` , amely ismerteti a blobfeltöltéshez végrehajtott műveletek. Ebben az esetben a három tárolót is átnevezni, mert nem felelt meg a mappákat, amelyhez az adatokat a rendszer átmásolta-tárolókhoz az Azure elnevezési konvencióinak. Az ezen tárolókban feltöltött blobok az új tároló nevét, az Azure-ban a blob elérési útja, érvénytelen fájl eredeti elérési útja és a blob mérete szerepelnek.
+A fájl szintjének állapota `BlobStatus`, amely leírja a Blobok feltöltésére tett műveleteket. Ebben az esetben a rendszer három tárolót nevez át, mert azok a mappák, amelyekhez az adatmásolt, nem feleltek meg a tárolók Azure elnevezési konvencióinak. A tárolókban feltöltött Blobok esetében az új tároló neve, az Azure-beli blob elérési útja, az eredeti érvénytelen elérési út és a blob mérete is szerepel.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -151,35 +152,35 @@ A fájlállapot szintű szerepelnek `BlobStatus` , amely ismerteti a blobfeltöl
     </DriveLog>
 ```
 
-## <a name="data-upload-errors"></a>Adatok feltöltéssel kapcsolatos hibák
+## <a name="data-upload-errors"></a>Adatfeltöltési hibák
 
-A hibák jönnek létre, ha az adatok feltöltése az Azure-bA az alábbi táblázat foglalja össze.
+Az Azure-ba történő adatfeltöltés során generált hibák a következő táblázatban láthatók.
 
 | Hibakód | Leírás                   |
 |-------------|------------------------------|
-|`None` |  Sikeresen befejeződött.           |
-|`Renamed` | A blob az Átnevezés sikeres volt.   |
-|`CompletedWithErrors` | A feltöltés hibákkal fejeződött be. A fájlok a hiba részletei megtalálhatók a naplófájlban.  |
-|`Corrupted`|Adatbetöltés során számított CRC nem felel meg a feltöltés számított CRC Értéknek.  |  
-|`StorageRequestFailed` | Az Azure storage-kérés sikertelen volt.   |     
-|`LeasePresent` | Ez az elem egy bérelt és a egy másik felhasználó használja. |
-|`StorageRequestForbidden` |Nem sikerült feltölteni a hitelesítési problémák miatt. |
-|`ManagedDiskCreationTerminalFailure` | Nem sikerült feltölteni a felügyelt lemezként. A fájlok és az előkészítési tárfiókból érhető el. A lapblobok manuálisan átalakítása felügyelt lemezeket.  |
-|`DiskConversionNotStartedTierInfoMissing` | A VHD-fájlt a precreated szint mappák kívül másolták, mivel nincs létrehozva. egy felügyelt lemezt. Feltöltötte a fájlt, a megadott átmeneti tárfiókban lapblob rendelés létrehozása során. Átalakíthatja manuálisan egy felügyelt lemezre.|
-|`InvalidWorkitem` | Nem sikerült feltölteni az adatokat, mert nem felel meg az Azure elnevezési és konvenciói korlátozza.|
-|`InvalidPageBlobUploadAsBlockBlob` | Előtaggal rendelkező tárolóban blokkblobként feltölteni `databoxdisk-invalid-pb-`.|
-|`InvalidAzureFileUploadAsBlockBlob` | Előtaggal rendelkező tárolóban blokkblobként feltölteni `databoxdisk-invalid-af`–.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Előtaggal rendelkező tárolóban blokkblobként feltölteni `databoxdisk-invalid-md`–.|
-|`InvalidManagedDiskUploadAsPageBlob` |Feltöltött előtaggal rendelkező tárolóban lapblobként `databoxdisk-invalid-md-`. |
-|`MovedToOverflowShare` |Feltöltött fájlokat egy új megosztást, mint az eredeti megosztás mérete túllépte a maximális mérete legfeljebb az Azure. Az új megosztás nevét az eredeti nevén utótaggal rendelkezik `-2`.   |
-|`MovedToDefaultAzureShare` |Nem tartozik egy alapértelmezett megosztást tetszőleges mappájába feltöltött fájlokat. A megosztás neve kezdődik `databox-`. |
-|`ContainerRenamed` |A fájlok a tároló nem felel meg az Azure elnevezési konvencióinak, és valaki új nevet. Az új neve kezdődik `databox-` és a rendszer az eredeti nevén SHA1 kivonatát utótaggal |
-|`ShareRenamed` |A megosztáshoz a fájlok nem felelnek meg az Azure elnevezési konvencióinak, és új neve. Az új neve kezdődik `databox-` és a rendszer az eredeti nevén SHA1 kivonatát utótaggal. |
-|`BlobRenamed` |Ezek a fájlok nem felelnek meg az Azure elnevezési konvencióinak, és lett átnevezve. Ellenőrizze a `BlobPath` az új név mezőt. |
-|`FileRenamed` |Ezek a fájlok nem felelnek meg az Azure elnevezési konvencióinak, és lett átnevezve. Ellenőrizze a `FileStoragePath` az új név mezőt. |
-|`DiskRenamed` |Ezek a fájlok nem felelnek meg az Azure elnevezési konvencióinak, és lett átnevezve. Ellenőrizze a `BlobPath` az új név mezőt. |
+|`None` |  A művelet sikeresen befejeződött.           |
+|`Renamed` | Sikerült átnevezni a blobot.   |
+|`CompletedWithErrors` | A feltöltés hibákkal fejeződött be. A hibás fájlok részletei a naplófájlban találhatók.  |
+|`Corrupted`|Az adatfeldolgozás során kiszámított CRC nem felel meg a feltöltés során kiszámított CRC-nek.  |  
+|`StorageRequestFailed` | Az Azure Storage-kérelem sikertelen.   |     
+|`LeasePresent` | Ez az tétel bérletbe kerül, és egy másik felhasználó használja. |
+|`StorageRequestForbidden` |Hitelesítési problémák miatt nem lehet feltölteni. |
+|`ManagedDiskCreationTerminalFailure` | Nem sikerült feltölteni a felügyelt lemezként. A fájlok az átmeneti Storage-fiókban az oldal Blobok néven érhetők el. Manuálisan is átalakíthatja a blobokat a felügyelt lemezekre.  |
+|`DiskConversionNotStartedTierInfoMissing` | Mivel a VHD-fájlt az előkészített rétegek mappáján kívül másolták, a felügyelt lemez nem lett létrehozva. A fájlt a rendszer a rendelés létrehozásakor megadott módon feltölti az átmeneti tárolási fiókba. Manuálisan is konvertálhatja egy felügyelt lemezre.|
+|`InvalidWorkitem` | Nem tölthetők fel az adatok, mert nem felel meg az Azure elnevezési és korlátozási konvencióinak.|
+|`InvalidPageBlobUploadAsBlockBlob` | Egy `databoxdisk-invalid-pb-`előtaggal rendelkező tárolóban lévő blokk blobként van feltöltve.|
+|`InvalidAzureFileUploadAsBlockBlob` | Egy tárolóban lévő blobként van feltöltve, `databoxdisk-invalid-af`előtaggal.|
+|`InvalidManagedDiskUploadAsBlockBlob` | Egy tárolóban lévő blobként van feltöltve, `databoxdisk-invalid-md`előtaggal.|
+|`InvalidManagedDiskUploadAsPageBlob` |Feltöltve blobként egy tárolóban `databoxdisk-invalid-md-`előtaggal. |
+|`MovedToOverflowShare` |A fájlok új megosztásra való feltöltésekor az eredeti megosztás mérete túllépte az Azure-beli maximális méretkorlátot. Az új fájlmegosztás nevének az eredeti neve `-2`.   |
+|`MovedToDefaultAzureShare` |Olyan feltöltött fájlok, amelyek egyetlen mappa sem részei az alapértelmezett megosztásnak. A megosztás neve `databox-`vel kezdődik. |
+|`ContainerRenamed` |A fájlok tárolója nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név a `databox-`vel kezdődik, és az eredeti név SHA1 kivonatával van utótag. |
+|`ShareRenamed` |A fájlok megosztása nem felelt meg az Azure elnevezési konvencióinak, és át lett nevezve. Az új név `databox-`tel kezdődik, és az eredeti név SHA1 kivonatával van utótag. |
+|`BlobRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg az új név `BlobPath` mezőjét. |
+|`FileRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg az új név `FileStoragePath` mezőjét. |
+|`DiskRenamed` |Ezek a fájlok nem feleltek meg az Azure elnevezési konvencióknak, és át lettek nevezve. Keresse meg az új név `BlobPath` mezőjét. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Nyisson egy támogatási jegyet a Data Box-lemezek problémák](data-box-disk-contact-microsoft-support.md).
+- [Támogatási jegy megnyitása Data Box Disk problémákhoz](data-box-disk-contact-microsoft-support.md).

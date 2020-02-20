@@ -3,12 +3,12 @@ title: Oktatóanyag – hub és küllős hibrid hálózati topológia létrehoz�
 description: Az oktatóanyag bemutatja, hogyan hozhat létre egy teljes hibrid hálózati hivatkozási architektúrát az Azure-ban a Terraform használatával
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159034"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472179"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Oktatóanyag: hub és küllős hibrid hálózati topológia létrehozása az Azure-ban a Terraform használatával
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 - **Azure-előfizetés**: Ha még nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a Kezdés előtt.
 
-- A **Terraform telepítése és konfigurálása**: virtuális gépek és más infrastruktúra kiépítése az Azure-ban, a [Terraform telepítése és konfigurálása](/azure/virtual-machines/linux/terraform-install-configure)
+- A **Terraform telepítése és konfigurálása**: virtuális gépek és más infrastruktúra kiépítése az Azure-ban, a [Terraform telepítése és konfigurálása](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Hub és küllős topológia architektúrája
 

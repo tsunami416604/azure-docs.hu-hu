@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053809"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466926"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Apache Hive a HDInsight JDBC-illesztőn keresztül
 
@@ -25,7 +25,7 @@ További információ a kaptár JDBC felületéről: [HiveJDBCInterface](https:/
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* An méretű HDInsight Hadoop-fürt. Az első lépésekhez tekintse meg [Az Azure HDInsight megismerését](apache-hadoop-linux-tutorial-get-started.md)ismertető témakört.
+* An méretű HDInsight Hadoop-fürt. Az első lépésekhez tekintse meg [Az Azure HDInsight megismerését](apache-hadoop-linux-tutorial-get-started.md)ismertető témakört. Győződjön meg arról, hogy a szolgáltatás HiveServer2 fut.
 * A [Java Developer Kit (JDK) 11-es](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) vagy újabb verziója.
 * [Mókus SQL](http://squirrel-sql.sourceforge.net/). A mókus egy JDBC ügyfélalkalmazás.
 
@@ -37,7 +37,7 @@ Az Azure-beli HDInsight-fürtökkel létesített JDBC-kapcsolatok az 443-as port
 
 Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A csatlakozás létrehozásakor a HDInsight-fürt rendszergazdájának felhasználónevét és jelszavát kell használnia a fürt átjárójának hitelesítéséhez. Ha olyan JDBC-ügyfelekről csatlakozik, mint például a mókus SQL, meg kell adnia a rendszergazda nevét és jelszavát az ügyfél beállításai között.
 
@@ -71,9 +71,9 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 5. Az illesztőprogram hozzáadása párbeszédpanelen adja meg a következő adatokat:
 
-    |Tulajdonság | Value (Díj) |
+    |Tulajdonság | Érték |
     |---|---|
-    |Név|Hive|
+    |Name (Név)|Hive|
     |Példa URL-címére|JDBC: hive2://localhost: 443/default; transportMode = http; SSL = True; httpPath =/hive2|
     |Extra osztály elérési útja|A **Hozzáadás** gomb használatával adja hozzá a korábban letöltött összes jar-fájlt.|
     |Osztály neve|org. Apache. kaptár. JDBC. HiveDriver|
@@ -88,9 +88,9 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 7. Használja az alábbi értékeket az **alias hozzáadása** párbeszédpanelen:
 
-    |Tulajdonság |Value (Díj) |
+    |Tulajdonság |Érték |
     |---|---|
-    |Név|Struktúra a HDInsight|
+    |Name (Név)|Struktúra a HDInsight|
     |Illesztőprogram|A **struktúra** -illesztőprogram kiválasztásához használja a legördülő listát.|
     |URL-cím|JDBC: hive2://CLUSTERNAME.azurehdinsight.net: 443/default; transportMode = http; SSL = True; httpPath =/hive2. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.|
     |Felhasználónév|A fürt bejelentkezési fiókjának neve a HDInsight-fürthöz. Az alapértelmezett érték a **rendszergazda**.|

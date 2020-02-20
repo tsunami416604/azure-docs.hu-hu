@@ -1,7 +1,7 @@
 ---
 title: 'Ismert problémák: a PostgreSQL-ből való online áttelepítés Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Ismerje meg a PostgreSQL-ről online áttelepítéssel kapcsolatos ismert problémákat és áttelepítési korlátozásokat a Azure Database Migration Service használatával Azure Database for PostgreSQL-egyetlen kiszolgálóra.
+description: Ismerje meg az ismert problémákat és az áttelepítési korlátozásokat a PostgreSQL-ről az Azure Database-be való online áttelepítéssel a Azure Database Migration Service használatával történő PostgreSQ.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -13,38 +13,37 @@ ms.custom:
 - seo-lt-2019
 - seo-dt-2019
 ms.topic: article
-ms.date: 10/27/2019
-ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: ecc3075bbddd313e7c6471abef0d201a79cb87ec
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437859"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471363"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online Migrálás és az Azure DB for PostgreSQL – egyetlen kiszolgáló között
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online áttelepítéssel a PostgreSQL-hez készült Azure DB-be
 
-A PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra történő online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
+A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
 
 ## <a name="online-migration-configuration"></a>Online áttelepítési konfiguráció
 
-- A forrás PostgreSQL-kiszolgálónak 9.5.11, 9.6.7 vagy 10,3 vagy újabb verziójúnak kell futnia. További információkért lásd a [PostgreSQL-adatbázisok támogatott verzióit](../postgresql/concepts-supported-versions.md)ismertető cikket.
-- Csak a verzió-áttelepítések támogatottak. Például a PostgreSQL-9.5.11 áttelepítése Azure Database for PostgreSQL 9.6.7 nem támogatott.
-
-    > [!NOTE]
-    > A PostgreSQL 10-es verziójában a DMS jelenleg csak az 10,3-es verzió áttelepítését támogatja Azure Database for PostgreSQLra. Hamarosan a PostgreSQL újabb verzióinak támogatását tervezzük.
-
+- A forrás PostgreSQL-kiszolgálónak a 9,4, 9,5, 9,6, 10 vagy 11 verziót kell futtatnia. További információkért lásd a [PostgreSQL-adatbázisok támogatott verzióit](../postgresql/concepts-supported-versions.md)ismertető cikket.
+- Csak az azonos vagy újabb verzióra történő áttelepítések támogatottak. Ha például a PostgreSQL 9,5-et Azure Database for PostgreSQL 9,6-re vagy 10-re szeretné áttelepíteni, de a PostgreSQL 11-es verzióról a PostgreSQL 9,6-re való Migrálás nem támogatott.
 - A logikai replikáció engedélyezéséhez a **forrás PostgreSQL PostgreSQL. conf** fájlban adja meg a következő paramétereket:
   - **wal_level** = logikai
-  - **max_replication_slots** = [az adatbázisok maximális száma az áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket 4 értékre.
+  - **max_replication_slots** = [legalább az adatbázisok maximális száma az áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket legalább 4 értékre.
   - **max_wal_senders** = [egyidejűleg futó adatbázisok száma]; a javasolt érték 10
 - DMS-ügynök IP-címének hozzáadása a forrás PostgreSQL pg_hba. conf
-  1. Jegyezze fel a DMS IP-címét, miután befejezte a DMS-példány üzembe helyezését.
+  1. A Azure Database Migration Service-példány üzembe helyezésének befejezése után jegyezze fel a DMS IP-címét.
   2. Adja hozzá az IP-címet a pg_hba. conf fájlhoz az alábbiak szerint:
 
-        az összes 172.16.136.18/10 MD5 gazdagép replikációs postgres 172.16.136.18/10 MD5
+      ```
+          host  all     172.16.136.18/10    md5
+          host  replication postgres    172.16.136.18/10    md5
+      ```
 
-- A felhasználónak rendelkeznie kell a felügyelői engedélyekkel a forrás-adatbázist üzemeltető kiszolgálón.
-- A forrás-adatbázis sémáján kívül a forrás-és a célként megadott adatbázis sémáinak egyezniük kell.
+- A felhasználónak rendelkeznie kell a replikációs szerepkörrel a forrás-adatbázist üzemeltető kiszolgálón.
+- A forrás-és a célként megadott adatbázis-sémáknak egyezniük kell.
 - A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
 
     ```
@@ -84,80 +83,9 @@ A PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra tör
 
 ## <a name="datatype-limitations"></a>Adattípus-korlátozások
 
-- **Korlátozás**: Ha enumerálási adattípus szerepel a forrás PostgreSQL-adatbázisban, akkor az áttelepítés a folyamatos szinkronizálás során meghiúsul.
+  **Korlátozás**: Ha a táblák nem rendelkeznek elsődleges kulccsal, akkor előfordulhat, hogy a módosítások nem szinkronizálhatók a céladatbázis használatával.
 
-    **Megkerülő megoldás**: módosítsa az enumerálási adattípust a Azure Database for PostgreSQL eltérő karakterre.
-
-- **Korlátozás**: Ha nincs elsődleges kulcs a táblákon, a folyamatos szinkronizálás sikertelen lesz.
-
-    **Megkerülő megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
-
-- **Korlátozás**: a JSONB adattípusa nem támogatott Migrálás esetén.
-
-## <a name="lob-limitations"></a>LOB-korlátozások
-
-A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiségű növekedést okozhatnak. A PostgreSQL esetében például a LOB-adattípusok például az XML, a JSON, a képek, a szöveg stb.
-
-- **Korlátozás**: Ha a LOB-adattípusok elsődleges kulcsként használatosak, az áttelepítés sikertelen lesz.
-
-    **Áthidaló megoldás**: cserélje le az elsődleges kulcsot más adattípusokra vagy nem LOB oszlopokra.
-
-- **Korlátozás**: Ha a nagyméretű objektum (LOB) oszlop hossza meghaladja a 32 KB-ot, a rendszer az adatmennyiséget csonkolja a célhelyen. A LOB-oszlop hosszát a következő lekérdezéssel tekintheti meg:
-
-    ```
-    SELECT max(length(cast(body as text))) as body FROM customer_mail
-    ```
-
-    **Megkerülő megoldás**: Ha olyan LOB-objektummal rendelkezik, amely meghaladja a 32 KB-ot, forduljon az [Azure-adatbázis áttelepítésének kérdéseit](mailto:AskAzureDatabaseMigrations@service.microsoft.com)ismertető csapathoz.
-
-- **Korlátozás**: Ha LOB-oszlopok vannak a táblában, és nincs elsődleges kulcs beállítva a táblához, előfordulhat, hogy a rendszer nem telepíti át az adatátviteli kulcsot ehhez a táblához.
-
-    **Áthidaló megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
-
-## <a name="postgresql10-workaround"></a>PostgreSQL10 megkerülő megoldás
-
-A PostgreSQL 10. x különböző módosításokat hajt végre pg_xlog mappanevek esetében, így az áttelepítés nem a várt módon fut. Ha a PostgreSQL 10. x verzióról Azure Database for PostgreSQL 10,3-re végez áttelepítést, hajtsa végre a következő parancsfájlt a forrás PostgreSQL-adatbázison, és hozzon létre burkoló függvényt a pg_xlog függvények köré.
-
-```
-BEGIN;
-CREATE SCHEMA IF NOT EXISTS fnRenames;
-CREATE OR REPLACE FUNCTION fnRenames.pg_switch_xlog() RETURNS pg_lsn AS $$ 
-   SELECT pg_switch_wal(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_xlog_replay_pause() RETURNS VOID AS $$ 
-   SELECT pg_wal_replay_pause(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_xlog_replay_resume() RETURNS VOID AS $$ 
-   SELECT pg_wal_replay_resume(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_current_xlog_location() RETURNS pg_lsn AS $$ 
-   SELECT pg_current_wal_lsn(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_is_xlog_replay_paused() RETURNS boolean AS $$ 
-   SELECT pg_is_wal_replay_paused(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_xlogfile_name(lsn pg_lsn) RETURNS TEXT AS $$ 
-   SELECT pg_walfile_name(lsn); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_last_xlog_replay_location() RETURNS pg_lsn AS $$ 
-   SELECT pg_last_wal_replay_lsn(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_last_xlog_receive_location() RETURNS pg_lsn AS $$ 
-   SELECT pg_last_wal_receive_lsn(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_current_xlog_flush_location() RETURNS pg_lsn AS $$ 
-   SELECT pg_current_wal_flush_lsn(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_current_xlog_insert_location() RETURNS pg_lsn AS $$ 
-   SELECT pg_current_wal_insert_lsn(); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_xlog_location_diff(lsn1 pg_lsn, lsn2 pg_lsn) RETURNS NUMERIC AS $$ 
-   SELECT pg_wal_lsn_diff(lsn1, lsn2); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_xlogfile_name_offset(lsn pg_lsn, OUT TEXT, OUT INTEGER) AS $$ 
-   SELECT pg_walfile_name_offset(lsn); $$ LANGUAGE SQL;
-CREATE OR REPLACE FUNCTION fnRenames.pg_create_logical_replication_slot(slot_name name, plugin name, 
-   temporary BOOLEAN DEFAULT FALSE, OUT slot_name name, OUT xlog_position pg_lsn) RETURNS RECORD AS $$ 
-   SELECT slot_name::NAME, lsn::pg_lsn FROM pg_catalog.pg_create_logical_replication_slot(slot_name, plugin, 
-   temporary); $$ LANGUAGE SQL;
-ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
-
--- DROP SCHEMA fnRenames CASCADE;
--- ALTER USER PG_User SET search_path TO DEFAULT;
-COMMIT;
-```
-
-  > [!NOTE]
-  > Az előző szkriptben a "PG_User" az áttelepítési forráshoz való kapcsolódáshoz használt felhasználónévre hivatkozik.
+  **Megkerülő megoldás**: átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez a folytatáshoz. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Az AWS RDS PostgreSQL-ről történő online áttelepítés korlátozásai
 
@@ -171,11 +99,13 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 - **Hiba**: a (z) {Database} céladatbázis {number of Tables} táblát tartalmaz, ahol a (z) {Database} forrásoldali adatbázis {number of Tables} táblát tartalmaz. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás-és a cél-adatbázis között.
+
   **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 - **Hiba:** A forrás-adatbázis ({Database}) üres.
 
-  **Korlátozás**: Ez a hiba akkor fordul elő, ha a forrásadatbázis üres. Ennek az lehet az oka, hogy rossz adatbázist választott ki forrásként.
+  **Korlátozás**: Ez a hiba akkor fordul elő, ha a forrásadatbázis üres. Valószínűleg azért, mert a megfelelő adatbázist választotta forrásként.
+
   **Áthidaló megoldás**: Ellenőrizze az áttelepítéshez kiválasztott forrásadatbázis-adatbázist, majd próbálkozzon újra.
 
 - **Hiba:** A célként megadott adatbázis ({Database}) üres. Migrálja a sémát.
@@ -186,27 +116,8 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 ## <a name="other-limitations"></a>Egyéb korlátozások
 
 - Az adatbázis neve nem tartalmazhatja a pontosvesszőt (;).
-- A kapcsos zárójelek ({}) megnyitása és bezárása nem támogatja a jelszó-karakterláncot. Ez a korlátozás a forrás PostgreSQL-hez és a TARGET Azure Database for PostgreSQLhoz való csatlakozásra egyaránt vonatkozik.
 - A rögzített táblának rendelkeznie kell egy elsődleges kulccsal. Ha egy tábla nem rendelkezik elsődleges kulccsal, a törlés és a rekord frissítése művelet eredménye kiszámíthatatlan lesz.
 - Az elsődleges kulcs szegmensének frissítése figyelmen kívül lesz hagyva. Ilyen esetekben az ilyen frissítés alkalmazását a cél olyan frissítésként azonosítja, amely nem módosította a sorokat, és egy, a kivételek táblába írt rekordot fog eredményezni.
 - Több tábla ugyanazzal a névvel való áttelepítése, de egy másik eset (például Tábla1, TÁBLA1 és tábla1) kiszámíthatatlan működést eredményezhet, ezért nem támogatott.
-- A (z) [CREATE | feldolgozásának módosítása ALTER | DROP] a Table DDLs csak akkor támogatottak, ha egy belső függvény/eljárás törzsében vagy más beágyazott szerkezetekben vannak tárolva. Például a következő módosítás nem lesz rögzítve:
-
-    ```
-    CREATE OR REPLACE FUNCTION pg.create_distributors1() RETURNS void
-    LANGUAGE plpgsql
-    AS $$
-    BEGIN
-    create table pg.distributors1(did serial PRIMARY KEY,name varchar(40)
-    NOT NULL);
-    END;
-    $$;
-    ```
-
-- A CSONKOLT műveletek feldolgozásának módosítása (folyamatos szinkronizálás) nem támogatott. A particionált táblák áttelepítése nem támogatott. Particionált tábla észlelésekor a következő dolgok történnek:
-
-  - Az adatbázis a szülő és a gyermek táblák listáját fogja jelenteni.
-  - A tábla a célhelyen lesz létrehozva, a kijelölt táblákkal megegyező tulajdonságokkal.
-  - Ha a forrásadatbázis fölérendelt táblája ugyanazzal az elsődleges kulccsal rendelkezik, mint a gyermektábla, "duplikált kulcs" hiba jön létre.
-
-- A DMS-ben az egyetlen áttelepítési tevékenységben az áttelepítéshez szükséges adatbázisok maximális száma négy.
+- A (z) [CREATE | feldolgozásának módosítása ALTER | DROP | CSONKOLT] a Table DDLs nem támogatott.
+- Azure Database Migration Service egyetlen áttelepítési tevékenység legfeljebb négy adatbázist tud fogadni.

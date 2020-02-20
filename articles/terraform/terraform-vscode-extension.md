@@ -3,12 +3,12 @@ title: Oktatóanyag – az Azure Terraform Visual Studio Code-bővítmény konfi
 description: Itt elsajátíthatja a Visual Studio Code Azure Terraform bővítményének telepítését és használatát.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159235"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472281"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Oktatóanyag: az Azure Terraform Visual Studio Code-bővítmény konfigurálása
 
@@ -23,7 +23,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Terraform**: [Telepítse és konfigurálja a Terraformot](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Telepítse és konfigurálja a Terraformot](terraform-install-configure.md).
 
 - **Visual Studio Code**: Telepítse a [Visual Studio Code](https://code.visualstudio.com/download) a környezetnek megfelelő verzióját.
 
@@ -44,7 +44,7 @@ Kövesse a HashiCorp [a Terraform telepítését](https://www.terraform.io/intro
 >[!Tip]
 >Mindenképp hajtsa végre a PATH rendszerváltozó beállítására vonatkozó utasításokat.
 
-### <a name="install-nodejs"></a>A Node.js telepítése
+### <a name="install-nodejs"></a>Node.js telepítése
 
 A Terraform Cloud Shellben való használatához [telepítenie kell a Node.js](https://nodejs.org/) 6.0-s vagy újabb verzióját.
 

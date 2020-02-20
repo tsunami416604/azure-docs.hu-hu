@@ -8,18 +8,18 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: e7d5438c03fa8fd61dc0d5b89bbb197092c6873e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7b1bd3f78c004022be15278ce390a571e44bdd01
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772074"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471907"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
 A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk a blob Storage-hoz használható példaként szolgáló parancsokat tartalmaz.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
@@ -49,7 +49,7 @@ A részletes dokumentációt a következő témakörben tekintheti meg: [azcopy 
 
 A [azcopy másolás](storage-ref-azcopy-copy.md) parancs használatával fájlokat és könyvtárakat tölthet fel a helyi számítógépről.
 
-Ez a szakasz a következő példákat tartalmazza:
+Ez a szakasz tartalmazza az alábbi példák:
 
 > [!div class="checklist"]
 > * Fájl feltöltése
@@ -143,7 +143,7 @@ A `--include-pattern` és `--exclude-pattern` beállítások csak a fájlnevekre
 
 A [azcopy másolás](storage-ref-azcopy-copy.md) parancs használatával blobokat, címtárakat és tárolókat tölthet le a helyi számítógépre.
 
-Ez a szakasz a következő példákat tartalmazza:
+Ez a szakasz tartalmazza az alábbi példák:
 
 > [!div class="checklist"]
 > * Fájl letöltése
@@ -224,7 +224,7 @@ A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. To
 
 A `--include-pattern` és `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, az elérési útra nem.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` kapcsolót a teljes könyvtár faszerkezetének beolvasásához, majd használja a `–include-pattern`, és adja meg `*.txt` az összes szövegfájl beolvasásához.
 
-## <a name="copy-blobs-between-storage-accounts"></a>Blobok másolása tárfiókok között
+## <a name="copy-blobs-between-storage-accounts"></a>Blobok másolása a Storage-fiókok között
 
 A AzCopy a Blobok más Storage-fiókba való másolására is használható. A másolási művelet szinkronban van, így amikor a parancs visszatér, ez azt jelzi, hogy az összes fájl másolása megtörtént. 
 
@@ -236,7 +236,7 @@ A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put
 > - Minden forrás URL-címhez hozzá kell fűzni egy SAS-tokent. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről.
 >-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. A másolási műveletből kihagyhatja a blob hozzáférési szintjét úgy, hogy a `s2s-preserve-access-tier` `false`re állítja (például: `--s2s-preserve-access-tier=false`).
 
-Ez a szakasz a következő példákat tartalmazza:
+Ez a szakasz tartalmazza az alábbi példák:
 
 > [!div class="checklist"]
 > * BLOB másolása másik Storage-fiókba
@@ -288,8 +288,8 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
-| **Példa** (hierarchikus névtér)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 ## <a name="synchronize-files"></a>Fájlok szinkronizálása
 
@@ -350,7 +350,7 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 
 További példákat a következő cikkekben talál:
 
-- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 
 - [Oktatóanyag: helyszíni adatáttelepítés a Felhőbeli tárhelyre a AzCopy használatával](storage-use-azcopy-migrate-on-premises-data.md)
 

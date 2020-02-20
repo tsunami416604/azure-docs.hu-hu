@@ -3,16 +3,16 @@ title: Oktatóanyag – Azure virtuálisgép-fürt létrehozása a Terraform a m
 description: Megtudhatja, hogyan használhatók a Terraform-modulok Windows rendszerű virtuálisgép-fürtök létrehozásra az Azure-ban
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185550"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472203"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
 
-Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket: 
+Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket: 
 
 > [!div class="checklist"]
 > * Hitelesítés beállítása az Azure-ral
@@ -25,9 +25,9 @@ A Terraformról a [Terraform dokumentációjában](https://www.terraform.io/docs
 ## <a name="set-up-authentication-with-azure"></a>Hitelesítés beállítása az Azure-ral
 
 > [!TIP]
-> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure) vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview) futtatja ezt az oktatóanyagot, hagyja ki ezt a lépést.
+> Ha [Terraform környezeti változókat használ](terraform-install-configure.md) vagy az [Azure Cloud Shellben](/azure/cloud-shell/overview) futtatja ezt az oktatóanyagot, hagyja ki ezt a lépést.
 
- Tekintse át a [Terraform telepítésével és az Azure-hoz való hozzáféréssel](/azure/virtual-machines/linux/terraform-install-configure) foglalkozó cikket az Azure-szolgáltatásnév létrehozásához. Használja ezt a szolgáltatásnevet egy új `azureProviderAndCreds.tf` fájl kitöltéséhez egy üres könyvtárban az alábbi kóddal:
+ Tekintse át a [Terraform telepítésével és az Azure-hoz való hozzáféréssel](terraform-install-configure.md) foglalkozó cikket az Azure-szolgáltatásnév létrehozásához. Használja ezt a szolgáltatásnevet egy új `azureProviderAndCreds.tf` fájl kitöltéséhez egy üres könyvtárban az alábbi kóddal:
 
 ```hcl
 variable subscription_id {}

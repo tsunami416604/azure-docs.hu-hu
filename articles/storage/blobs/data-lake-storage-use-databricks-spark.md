@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462576"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471873"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
 4. Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
-## <a name="ingest-data"></a>Adatok kigyűjtése
+## <a name="ingest-data"></a>Adatok betöltése
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 
@@ -129,7 +129,7 @@ A AzCopy segítségével másolja át az adatait a *. csv* -fájlból a Data Lak
 
    * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
 
-   * Cserélje le a `<container-name>` helyőrzőt a tárolóhoz adni kívánt névre.
+   * Cserélje le a `<container-name>` helyőrzőt egy tároló nevére a Storage-fiókban.
 
 ## <a name="create-a-container-and-mount-it"></a>Tároló létrehozása és csatlakoztatása
 
@@ -161,20 +161,7 @@ Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiók
     extra_configs = configs)
     ```
 
-18. Ebben a kódban a blokkban cserélje le a `appId`, `password`, `tenant`és `storage-account-name` helyőrző értékeit az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `container-name` helyőrző értékét az előző lépésben a tárolóhoz megadott névre.
-
-Ezeknek az értékeknek a használatával cserélheti le az említett helyőrzőket.
-
-   * A `appId`és az `password` az Active Directory szolgáltatásban regisztrált alkalmazásból származnak.
-
-   * A `tenant-id` az előfizetésből származik.
-
-   * A `storage-account-name` a Azure Data Lake Storage Gen2 Storage-fiók neve.
-
-   * Cserélje le a `container-name` helyőrzőt a tárolóhoz adni kívánt névre.
-
-   > [!NOTE]
-   > Éles környezetben érdemes megfontolni a jelszó tárolását Azure Databricks. Ezután adjon hozzá egy megkeresési kulcsot a kódhoz a jelszó helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
+18. Ebben a kódban a blokkban cserélje le a `appId`, `password`, `tenant`és `storage-account-name` helyőrző értékeit az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `container-name` helyőrző értékét a tároló nevére.
 
 19. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 

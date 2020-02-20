@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108513"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468388"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI-specifikáció importálása
 
 Ez a cikk bemutatja, hogyan importálható egy „OpenAPI-specifikációjú” háttérrendszeri API, amely a https://conferenceapi.azurewebsites.net?format=json helyen található. Ezt a háttérrendszeri API-t a Microsoft biztosítja, és az Azure-ban üzemel. A cikk az APIM API tesztelését is ismerteti.
 
 > [!IMPORTANT]
-> Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
+> Az OpenAPI-importálásról ebben a [dokumentumban](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/) talál fontos információt és cikkeket.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -39,7 +39,7 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Háttérrendszeri API importálása és közzététele
+## <a name="create-api"> </a>Háttérbeli API importálása és közzététele
 
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
 2. Az **Új API hozzáadása** listáról válassza az **OpenAPI-specifikáció** lehetőséget.

@@ -1,17 +1,17 @@
 ---
-title: Új hitelesítés használata a StorSimple 8000 Eszközkezelő Service-hez az Azure-ban
+title: Azure AD-hitelesítés a Eszközkezelő StorSimple 8000-es verziójában
 description: Ismerteti, hogyan használható az HRE-alapú hitelesítés a szolgáltatáshoz, új regisztrációs kulcs előállítása, valamint az eszközök manuális regisztrálásának elvégzése.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b16132c24d35ee2c9902fa2b21c44416d8376b4d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276944"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470904"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
@@ -39,10 +39,10 @@ Annak biztosítása érdekében, hogy a szolgáltatás HRE-alapú hitelesítést
 
 StorSimple 8000 sorozat használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmazzák:
 
-| URL-minta                         | Felhőbeli | Összetevő/funkció         |
+| URL-minta                         | Felhő | Összetevő/funkció         |
 |------------------------------------|-------|----------------------------------|
 | `https://login.windows.net`        | Azure Public |HRE hitelesítési szolgáltatás      |
-| `https://login.microsoftonline.us` | Az USA kormányzata |HRE hitelesítési szolgáltatás      |
+| `https://login.microsoftonline.us` | USA kormánya |HRE hitelesítési szolgáltatás      |
 
 Az StorSimple 8000 Series-eszközök URL-mintáinak teljes listáját a [Tűzfalszabályok URL-mintái](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules)című részében teheti meg.
 
@@ -55,7 +55,7 @@ Ha StorSimple 8000 sorozatú eszközt használ, a következő táblázat segíts
 | Ha az eszköz fut| Végezze el a következő műveletet                                    |
 |--------------------------|------------------------|
 | 5-ös vagy újabb frissítése, és az eszköz offline állapotban van. <br> Megjelenik egy riasztás, amely szerint az URL-cím nem engedélyezett.|1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys).<br>3. [kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. a `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
-| 5-ös vagy újabb, illetve az eszköz online állapotának frissítése.| Nincs szükség műveletre.                                       |
+| 5-ös vagy újabb, illetve az eszköz online állapotának frissítése.| Semmit nem kell tenni.                                       |
 | A 4-es vagy korábbi frissítés, és az eszköz offline állapotban van. |1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához.<br>2. [töltse le az 5. frissítést a Catalog Server használatával](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [az 5. frissítést alkalmazza a gyorsjavítási módszer használatával](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys).<br>5. [kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. a `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | A 4-es vagy korábbi frissítés, az eszköz pedig online állapotban van. |A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br> Telepítse az 5. frissítést a Azure Portal.              |
 | Állítsa vissza a gyári verziót az 5. frissítés előtt.      |A portálon egy HRE-alapú regisztrációs kulcs látható, miközben az eszköz régebbi szoftvert futtat. Kövesse az előző forgatókönyv lépéseit, amikor az eszköz a 4-es vagy korábbi frissítést futtatja.              |

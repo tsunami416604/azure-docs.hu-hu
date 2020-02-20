@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020938"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474176"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
 - A lemezképek felügyelt globális replikálása.
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
-- A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS ellenállóbbá teszi a lemezképeket a zónán belüli hibákkal szemben.
+- A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
 - Megosztás az előfizetések között, és akár Active Directory (AD) bérlők között a RBAC használatával.
 - Az üzembe helyezések skálázása minden egyes régióban képreplikákkal.
 
@@ -49,11 +49,11 @@ A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai 
 
 Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
-|Rendszerkép-definíció|Gyártó/kiadó|Ajánlat|Termékváltozat|
+|Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
 |---|---|---|---|
-|myImage1|Contoso|Pénzügy|Háttérszolgáltatás|
-|myImage2|Contoso|Pénzügy|Előtér|
-|myImage3|Tesztelés|Pénzügy|Előtér|
+|myImage1|Contoso|Pénzügy|Backend|
+|myImage2|Contoso|Pénzügy|Frontend|
+|myImage3|Tesztelés|Pénzügy|Frontend|
 
 Mindhárom ilyen egyedi értéket tartalmaz. A formátum hasonló ahhoz, ahogyan jelenleg az [Azure Marketplace-lemezképekhez](../articles/virtual-machines/windows/cli-ps-findimage.md) tartozó közzétevőt, ajánlatot és SKU-t megadhatja Azure PowerShell a Piactéri lemezkép legújabb verziójának beszerzéséhez. Minden rendszerkép-definíciónak egyedi készlettel kell rendelkeznie ezeknek az értékeknek.
 
@@ -94,20 +94,20 @@ A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános r�
 | Forrásoldali régiók        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Ausztrália középső régiója     | Kelet-Kína        | Dél-India        | Nyugat-Európa        |
-| Ausztrália 2. középső régiója   | Kína 2. keleti régiója      | Délkelet-Ázsia     | Egyesült Királyság déli régiója           |
-| Ausztrália keleti régiója        | Észak-Kína       | Kelet-Japán         | Egyesült Királyság nyugati régiója            |
-| Délkelet-Ausztrália   | Kína 2. északi régiója     | Nyugat-Japán         | US DoD – középső régió     |
-| Dél-Brazília          | Kelet-Ázsia         | Dél-Korea középső régiója      | US DoD – keleti régió        |
-| Közép-Kanada        | USA keleti régiója           | Dél-Korea déli régiója        | US Gov Arizona     |
-| Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | US Gov Texas       |
-| Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | US Gov Virginia    |
+| Ausztrália 2. középső régiója   | Kelet-Kína 2      | Délkelet-Ázsia     | Az Egyesült Királyság déli régiója           |
+| Kelet-Ausztrália        | Észak-Kína       | Kelet-Japán         | Az Egyesült Királyság nyugati régiója            |
+| Délkelet-Ausztrália   | Észak-Kína 2     | Nyugat-Japán         | US DoD – Középső régió     |
+| Dél-Brazília          | Kelet-Ázsia         | Dél-Korea középső régiója      | US DoD – Kelet        |
+| Közép-Kanada        | USA keleti régiója           | Dél-Korea déli régiója        | USA-beli államigazgatás – Arizona     |
+| Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | USA-beli államigazgatás – Texas       |
+| Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | USA-beli államigazgatás – Virginia    |
 | USA középső régiója            | Közép-Franciaország    | USA déli középső régiója   | Nyugat-India         |
 | USA középső – EUAP       | Dél-Franciaország      | USA nyugati középső régiója    | USA nyugati régiója            |
-|                       |                   |                    | USA 2. nyugati régiója          |
+|                       |                   |                    | USA nyugati régiója, 2.          |
 
 
 
-## <a name="limits"></a>Korlátozások 
+## <a name="limits"></a>Korlátok 
 
 Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok, előfizetések vonatkoznak:
 - 100 megosztott képtárak, előfizetések száma régiónként
@@ -144,13 +144,13 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
-| Felhasználóval megosztva     | Megosztott lemezképkatalógus | Rendszerkép-definíció | Rendszerképverzió |
+| Felhasználóval megosztva     | Megosztott rendszerkép-katalógus | Rendszerkép-definíció | Rendszerképverzió |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott lemezképkatalógus | Igen                  | Igen          | Igen                  |
+| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
 | Rendszerkép-definíció     | Nem                   | Igen          | Igen                  |
 
 A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a katalógus szintjén. Az egyes rendszerkép-verziók megosztását nem ajánlott. További információ a RBAC: az [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC használatával](../articles/role-based-access-control/role-assignments-portal.md).
@@ -158,8 +158,8 @@ A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a kat
 A képek a több-bérlős alkalmazások regisztrálásával is megoszthatók, akár a bérlők között is. A képek bérlők közötti megosztásával kapcsolatos további információkért lásd: katalógus virtuálisgép- [rendszerképeinek megosztása az Azure-bérlők között](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Számlázás
-A megosztott lemezkép-katalógus használata nem jár többletdíjakkal. A következő erőforrásokért kell fizetnie:
-- A megosztott rendszerkép-verziók tárolásának tárolási költségei. A díj a rendszerkép-verzió replikáinak számától és azon régiók számától függ, amelyre a verzió replikálódik. Ha például két lemezkép van, és mindkettő 3 régióba van replikálva, akkor a méretük alapján 6 felügyelt lemez lesz módosítva. További információ: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+A megosztott rendszerkép-katalógus szolgáltatás használata nem díjköteles. A következő erőforrásokért kell fizetnie:
+- A megosztott rendszerkép-verziók tárolásának tárolási költségei. A díj a rendszerkép-verzió replikáinak számától és azon régiók számától függ, amelyre a verzió replikálódik. Ha például két lemezkép van, és mindkettő 3 régióba van replikálva, akkor a méretük alapján 6 felügyelt lemez után kell fizetnie. További információ: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 - A hálózati kimenő forgalom díja a forrás régióból a replikált régiókba való első lemezkép-verzió replikálásához. A későbbi replikákat a régión belül kezeljük, így nincs további díj. 
 
 ## <a name="updating-resources"></a>Erőforrások frissítése
@@ -222,7 +222,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
-1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg az **összes erőforrást**.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
 1. Keressen a **privát**katalógus típusú erőforrásokat.

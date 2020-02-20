@@ -3,12 +3,12 @@ title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása 
 description: A Terraform használatával a Packer által létrehozott egyéni rendszerképből konfigurálhatja és verziószámozhatja az Azure-beli virtuális gépek méretezési csoportját (virtuális hálózattal és felügyelt csatolt lemezekkel együtt).
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159282"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472204"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása egy csomagoló egyéni rendszerképből a Terraform használatával
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Terraform**: [telepítse a Terraform-t, és konfigurálja az Azure-hoz való hozzáférést](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [telepítse a Terraform-t, és konfigurálja az Azure-hoz való hozzáférést](terraform-install-configure.md).
 - **SSH-kulcspár**: [hozzon létre egy SSH-kulcspárt](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Csomagoló**: a [csomagoló telepítése](https://www.packer.io/docs/install/index.html).
 

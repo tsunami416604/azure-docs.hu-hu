@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184737"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467777"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
 A Azure Cosmos DB API-MongoDB való [adatcsatorna](change-feed.md) -támogatás módosítása a Streams API-t használva érhető el. Az adatfolyamok módosítása API használatával az alkalmazások beszerezhetik a gyűjteményen vagy az egyetlen szegmensben lévő elemeken végrehajtott módosításokat. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjtemény elemeinek módosításait a rendszer a módosítási idő sorrendjében rögzíti, és a rendezési sorrendet a rendszer a szegmens kulcsa szerint biztosítja.
+
+> [!NOTE]
+> Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha a változás stream-példákat egy korábbi verzióra futtatja, előfordulhat, hogy a `Unrecognized pipeline stage name: $changeStream` hibaüzenet jelenik meg. 
 
 Az alábbi példa azt szemlélteti, hogyan lehet módosítani a gyűjtemény összes elemének változásait. Ez a példa létrehoz egy kurzort, amellyel megtekintheti a beszúrt, frissített vagy lecserélt elemeket. A változtatási adatfolyamok beolvasásához a $match szakasz, a $project színpad és a fullDocument beállítás szükséges. A módosítási streameket használó törlési műveletek figyelése jelenleg nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez, és beállíthatja "igaz" értékre, és beállíthatja az elem ÉLETTARTAMát, így automatikusan törölheti azt, és nyomon követheti is.
 

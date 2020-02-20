@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760981"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471737"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -204,6 +204,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
 1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának tetején, az osztály deklarációja előtt:
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -220,18 +221,23 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
 
     `ServiceBusConnectionString` változóként adja meg a névtérhez tartozó kapcsolatok karakterláncát. Adja meg a várólista nevét.
 
-1. Cserélje le a `Main()` tartalmát a következő kódsorral:
+1. Cserélje le az `Main()` metódust az alábbi kódra:
 
     ```csharp
-    public static async Task Main(string[] args)
-    {    
+    static void Main(string[] args)
+    {
+        MainAsync().GetAwaiter().GetResult();
+    }
+
+    static async Task MainAsync()
+    {
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
         Console.WriteLine("======================================================");
 
-        // Register the queue message handler and receive messages in a loop
+        // Register QueueClient's MessageHandler and receive messages in a loop
         RegisterOnMessageHandlerAndReceiveMessages();
 
         Console.ReadKey();

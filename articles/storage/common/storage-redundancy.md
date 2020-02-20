@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462632"
+ms.locfileid: "77471346"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -66,7 +66,7 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 |    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
-<sup>2</sup> a virtuális gépekhez tartozó Azure-lemezek, beleértve a felügyelt és a nem felügyelt lemezeket is, csak a LRS támogatják. Nem támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks).
+<sup>2</sup> a virtuális gépekhez tartozó Azure-lemezek, beleértve a felügyelt és a nem felügyelt lemezeket is, csak a LRS támogatják. Nem támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint** a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
 

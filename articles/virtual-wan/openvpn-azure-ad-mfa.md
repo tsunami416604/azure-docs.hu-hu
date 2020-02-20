@@ -7,32 +7,32 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: fcb60e80189da89b3f634c14582be606307536e6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 13f012af95bb2b6098317e59e5293fb72804a6a6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166695"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471530"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) engedélyezése a VPN-felhasználók számára
 
-Ha azt szeretné, hogy a felhasználók a hozzáférés megadását megelőzően egy második hitelesítési tényezőt kérjenek, konfigurálhatja az Azure Multi-Factor Authentication (MFA) az Azure AD-bérlőhöz. A cikkben ismertetett lépések segítségével engedélyezheti a kétlépéses ellenőrzés követelményeit.
+[!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 
-## <a name="prereq"></a>Előfeltétele
+## <a name="enableauth"></a>Hitelesítés engedélyezése
 
-Ennek a konfigurációnak az előfeltétele egy konfigurált Azure AD-bérlő a [bérlő konfigurálása](openvpn-azure-ad-tenant.md)című szakaszban ismertetett lépések alapján.
-
-[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
+[!INCLUDE [enable authentication](../../includes/vpn-gateway-vwan-openvpn-enable-auth.md)]
 
 ## <a name="enablesign"></a>Bejelentkezési beállítások konfigurálása
 
-Az **Azure VPN-Properties** lapon adja meg a bejelentkezési beállításokat.
+[!INCLUDE [sign in](../../includes/vpn-gateway-vwan-openvpn-sign-in.md)]
 
-1. **Engedélyezi a felhasználók számára a bejelentkezést?** **Igen**értékre. Ez lehetővé teszi, hogy az AD-bérlő összes felhasználója sikeresen kapcsolódjon a VPN-hez.
-2. **Kötelezővé teszi a felhasználó-hozzárendelést?** ha a bejelentkezést csak olyan felhasználókra szeretné korlátozni, akik engedéllyel rendelkeznek az Azure VPN-hez, akkor az **Igen** értékre kell állítani.
-3. Mentse a módosításokat.
+## <a name="peruser"></a>1. lehetőség – felhasználónkénti hozzáférés
 
-   ![Engedélyek](./media/openvpn-azure-ad-mfa/user2.jpg)
+[!INCLUDE [per user](../../includes/vpn-gateway-vwan-openvpn-per-user.md)]
+
+## <a name="conditional"></a>2. lehetőség – feltételes hozzáférés
+
+[!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

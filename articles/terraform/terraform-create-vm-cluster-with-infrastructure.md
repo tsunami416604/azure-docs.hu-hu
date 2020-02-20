@@ -3,12 +3,12 @@ title: Oktatóanyag – Azure-beli virtuálisgép-fürt létrehozása a Terrafor
 description: A Terraform és a HCL használatával hozzon létre egy linuxos virtuálisgép-fürtöt az Azure-beli terheléselosztó segítségével
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665358"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470870"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform és a HCL-val
 
@@ -28,11 +28,11 @@ Megtudhatja, hogyan hajthatja végre a következő feladatokat:
 ## <a name="1-set-up-azure-authentication"></a>1. Azure-hitelesítés beállítása
 
 > [!NOTE]
-> Ha [Terraform környezeti változókat használ](/azure/virtual-machines/linux/terraform-install-configure), vagy az [Azure Cloud Shellben](terraform-cloud-shell.md) futtatja ezt az oktatóanyagot, ugorja át ezt a szakaszt.
+> Ha [Terraform környezeti változókat használ](terraform-install-configure.md), vagy az [Azure Cloud Shellben](terraform-cloud-shell.md) futtatja ezt az oktatóanyagot, ugorja át ezt a szakaszt.
 
 Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Terraform konfigurációs fájlt, amelyek a rendszerbiztonsági tag hitelesítő adatait tárolják.
 
-1. [Állítson be egy Azure AD-szolgáltatásnevet](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure), amelynek használatával a Terraform erőforrásokat foglalhat le az Azure-ban. A szolgáltatásnév létrehozása során jegyezze fel a subscription ID (előfizetés-azonosító), a tenant (bérlő), az appId (alkalmazásazonosító) és a password (jelszó) értékét.
+1. [Állítson be egy Azure AD-szolgáltatásnevet](terraform-install-configure.md#set-up-terraform-access-to-azure), amelynek használatával a Terraform erőforrásokat foglalhat le az Azure-ban. A szolgáltatásnév létrehozása során jegyezze fel a subscription ID (előfizetés-azonosító), a tenant (bérlő), az appId (alkalmazásazonosító) és a password (jelszó) értékét.
 
 2. Nyisson meg egy parancssort.
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. Gyakran előfordul, hogy a `terraform.tfvars` Terraform nevet adja a Terraform, mivel a automatikusan betölt minden `terraform.tfvars` nevű fájlt (vagy `*.auto.tfvars`), ha az aktuális könyvtárban van. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `tenant` által visszaadott `az ad sp create-for-rbac` értéket. A `client_id` helyett használja az `appId` által visszaadott `az ad sp create-for-rbac` értéket. A `client_secret` helyett használja az `password` által visszaadott `az ad sp create-for-rbac` értéket.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"

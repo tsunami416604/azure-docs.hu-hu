@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894259"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471180"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka naplók elemzése a HDInsight
 
 Megtudhatja, hogyan használhatja a Azure Monitor naplókat a HDInsight Apache Kafka által generált naplók elemzéséhez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Naplók helye
+
+A fürt Apache Kafka naplófájljai a következő helyen találhatók: `/var/log/kafka`. A kafka-naplók nem tárolódnak és nem maradnak meg a fürt életciklusa között, függetlenül attól, hogy a rendszer felügyelt lemezeket használ-e. A következő táblázat az elérhető naplókat mutatja be.
+
+|Napló |Leírás |
+|---|---|
+|Kafka. out|a Kafka-folyamat stdout és stderr. Ebben a fájlban megtalálja a Kafka indítási és leállítási naplóit.|
+|Server. log|A Kafka-kiszolgáló fő naplója. A Kafka-átvitelszervező összes naplója itt fejeződik be.|
+|vezérlő. log|A vezérlő naplófájljai, ha a közvetítő vezérlőként működik.|
+|statechange. log|A rendszer naplózza a fájlban lévő összes állapotváltozás-eseményt.|
+|Kafka-GC. log|Kafka-Garbage gyűjtemény statisztikái.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor naplók engedélyezése Apache Kafka számára
 
@@ -86,7 +98,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker Server. log |
     | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
-    | mérőszámok\_Kafka-\_CL | Kafka JMX metrikák |
+    | mérőszámok\_Kafka-\_CL | Kafka JMX metrics |
 
     ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 

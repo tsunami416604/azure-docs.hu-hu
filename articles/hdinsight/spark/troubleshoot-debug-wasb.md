@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 02/07/2020
-ms.openlocfilehash: 1256575eea7ee80b41a875c6bcd9b281b98aa360
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/18/2020
+ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163849"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470717"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>WASB hibakeresése az Azure HDInsight
 
@@ -26,19 +26,17 @@ A létrehozott napló a következőhöz hasonlóan fog kinézni:
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>A WASB hibakeresési naplójának bekapcsolása
 
-1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net`, ahol a `CLUSTERNAME` a Spark-fürt neve.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`, ahol a `CLUSTERNAME` a Spark-fürt neve.
 
-1. Navigáljon a **Spark2** > **configs** > **speciális Spark2-log4j-Properties**elemre.
+1. Navigáljon a **speciális spark2-log4j-Properties**elemre.
 
-1. `log4j.appender.console.Threshold=INFO` módosítása `log4j.appender.console.Threshold=DEBUG`re.
+    1. `log4j.appender.console.Threshold=INFO` módosítása `log4j.appender.console.Threshold=DEBUG`re.
+
+    1. `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`hozzáadása.
 
 1. Navigáljon a **speciális livy2-log4j-Properties**elemre.
 
-1. Adja hozzá a következő tulajdonságot:
-
-    ```
-    log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG
-    ```
+    `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`hozzáadása.
 
 1. Mentse a módosításokat.
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898889"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468847"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -133,6 +133,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50178|A munkamenet-vezérlő továbbító felhasználók számára nem támogatott.|
 |50180|Integrált Windows-hitelesítés szükséges. Engedélyezze a Seamless SSO-t a bérlőn.|
 |50181|Az OTP-hez kapcsolódó hiba a bejelentkezés során. |
+|50194|A (z) {appId} alkalmazás ({appName}) nem több-bérlős alkalmazásként van konfigurálva. A/gyakori hibák-végpont használata nem támogatott a (z) {Time} után létrehozott ilyen alkalmazások esetében. Használjon egy bérlőre jellemző végpontot, vagy konfigurálja úgy az alkalmazást, hogy több-bérlő legyen.|
 |50201|Ez az üzenet jelenik meg a felhasználó bejelentkezésekor, amikor további információt kell megadni a felhasználónak.|
 |51001|A tartományi útmutató nem található a helyszíni biztonsági azonosító – helyszíni egyszerű felhasználónév szolgáltatással.|
 |51004|A felhasználói fiók nem létezik a címtárban.|
@@ -185,16 +186,22 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |90010|A kérés különböző okokból nem támogatott. A kérést például nem támogatott kérési módszer használatával (csak a POST metódus támogatott) vagy a kért jogkivonat-aláírási algoritmus nem támogatja. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
 |90014| A protokoll üzeneteihez kötelező mező hiányzik, lépjen kapcsolatba az alkalmazás tulajdonosával. Ha Ön az alkalmazás tulajdonosa, ellenőrizze, hogy rendelkezik-e az összes szükséges paraméterrel a bejelentkezési kéréshez. |
 |90051| Érvénytelen delegálási jogkivonat. Érvénytelen nemzeti felhő-azonosító ({cloudId}) van megadva.|
-|90072| Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
+|90072| Előbb a bérlőn külső felhasználóként hozzá kell adni a fiókot. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
 |90094| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó le lett tiltva. |
 |90095| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó megmutatta a [rendszergazdai engedélyezési kérelem](../manage-apps/configure-admin-consent-workflow.md) űrlapját. |
+|130500|A telefonos bejelentkezés a felhasználói hitelesítő adatok házirendje miatt le lett tiltva.|
 |500011| Az <site address> nevű egyszerű erőforrás nem található a (z) <tenant ID>nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
+|500014|A (z) {Identifier} erőforrás le van tiltva.|
 |500021| A bérlőt a vállalati proxy korlátozza. Az erőforrás-hozzáférés megtagadása.|
 |500121| Az erős hitelesítési kérelem során sikertelen volt a hitelesítés.|
 |500133| Az érvényesítés nem az érvényes időtartományán belül van. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, mielőtt felhasználói állításhoz használta, vagy kérjen új jogkivonatot.|
+|500172|A (z) {issueer} által kiadott {Name} tanúsítvány érvénytelen. Aktuális idő: {curTime}. Tanúsítvány NotBefore: {kezdő időpont}. Tanúsítvány: "{Befejezés}".|
+|501291|Az ügyfélalkalmazás egy MAM-alkalmazás, az eszköz nincs regisztrálva, és a rendszer közvetítő használatával küldi el a kérést. Ahhoz, hogy az alkalmazás elérhető legyen, a munkahelyi csatlakoztatást kell elvégezni az eszköz regisztrálásához.|
+|530003|Az eszköznek az erőforráshoz való hozzáféréshez szükségesnek kell lennie.|
 |530021|Az alkalmazás nem felel meg a feltételes hozzáférés jóváhagyott alkalmazási követelményeinek.|
 |530032|Biztonsági házirend tiltja.| 
 |700016|A (z) {appIdentifier} azonosítójú alkalmazás nem található a (z) {tenantName} címtárban. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldi el a hitelesítési kérést.|
+|700051|Response_type "token" nincs engedélyezve az alkalmazáshoz. Az alkalmazás a következő okok miatt nem támogatott választ kért: response_type "token" nincs engedélyezve az alkalmazáshoz. Az alkalmazás tulajdonosának a Azure Portal vagy az MS Graph hívásával engedélyeznie kell az implicit hozzáférési jogkivonat engedélyezését.|
 |900432|A bizalmas ügyfél nem támogatott a felhőalapú kérelemben.|
 |5000811|Nem ellenőrizhető az SAML-jogkivonat aláírása. Az aláíró kulcs azonosítója nem egyezik az érvényes regisztrált kulcsokkal.|
 |7000215|Érvénytelen ügyfél-titkos kulcs lett megadva.|

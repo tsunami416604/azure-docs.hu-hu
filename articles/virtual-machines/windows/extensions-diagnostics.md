@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033482"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471618"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure Diagnostics bővítmény a Windows rendszerű virtuális gépekhez
 
@@ -37,7 +37,7 @@ A Azure Diagnostics bővítmény megköveteli, hogy a célként megadott virtuá
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-[A jelen dokumentum a Azure Diagnostics-bővítmény sémáját és a tulajdonság értékeit írja le.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[A jelen dokumentum a Azure Diagnostics-bővítmény sémáját és a tulajdonság értékeit írja le.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
@@ -88,8 +88,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>További lépések
 * [További információ a Azure Diagnostics bővítménnyel kapcsolatban](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [A bővítmény sémájának és verzióinak áttekintése](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [A bővítmény sémájának és verzióinak áttekintése](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

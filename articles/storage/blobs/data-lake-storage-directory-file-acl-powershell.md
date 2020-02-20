@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153349"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471210"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Könyvtárak, fájlok és ACL-ek kezelése a PowerShell használatával Azure Data Lake Storage Gen2ban (előzetes verzió)
 
@@ -339,7 +339,7 @@ Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olva
 
 A `Get-AzDataLakeGen2Item` parancsmaggal kérheti le egy könyvtár vagy fájl hozzáférés-vezérlési listáját. Ezután a `New-AzDataLakeGen2ItemAclObject` parancsmag használatával hozzon létre egy új ACL-bejegyzést. Az új ACL alkalmazásához használja az `Update-AzDataLakeGen2Item` parancsmagot.
 
-Ez a példa egy felhasználó írási és végrehajtási engedélyét adja meg egy címtárban.
+Ez a példa egy csoport írási és végrehajtási engedélyét adja meg egy címtárban.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-Ez a példa egy felhasználó írási és végrehajtási engedélyét adja meg egy fájlra vonatkozóan.
+Ez a példa egy csoport írási és végrehajtási engedélyét adja meg egy fájlra vonatkozóan.
 
 ```powershell
 $filesystemName = "my-file-system"

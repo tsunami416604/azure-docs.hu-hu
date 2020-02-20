@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152357"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470751"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatmodellezés Azure Time Series Insights előzetes verzióban
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan dolgozhat az idősorozat-modellel Azure Time Series 
 > * További információ az előnézeti [Idősorozat modelljéről](time-series-insights-update-tsm.md).
 > * További információ az előnézet felhasználói felületének a [Azure Time Series Insights Preview Explorerben](./time-series-insights-update-explorer.md)való navigálásáról.
 
-## <a name="instances"></a>Példányok
+## <a name="instances"></a>példányok
 
 A Azure Time Series Insights Explorer támogatja a példányok **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben. 
 
