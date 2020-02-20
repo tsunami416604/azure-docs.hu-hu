@@ -9,59 +9,54 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 89b35a6372aa10948e947f2783cc228d500dea92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462071"
+ms.locfileid: "77470683"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Gyors útmutató: az SSH és az RDP engedélyezése IoT Hub eszköz streamen egy Node. js-alkalmazásproxy használatával (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök adatfolyamait.
-
-[IoT hub az eszközökön elérhető streamek](./iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon alapuló kommunikációt. 
-
-Ez a rövid útmutató azt ismerteti, hogyan hajtható végre a szolgáltatás oldalán futó Node. js-alkalmazásproxy, hogy engedélyezze a Secure Shell (SSH) és a RDP protokoll (RDP) forgalmat az eszközre az eszközön. A telepítés áttekintését lásd: [helyi proxy minta](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp). 
-
-A nyilvános előzetes verzióban a Node. js SDK csak a szolgáltatási oldalon található eszköz-adatfolyamokat támogatja. Ennek eredményeképpen ez a rövid útmutató a csak a szolgáltatás helyi proxybeállításait futtató alkalmazások futtatására vonatkozó utasításokat tartalmazza. Az eszközön belüli alkalmazásproxy futtatásához tekintse meg a következőt:  
-
-   * [Az SSH és az RDP engedélyezése IoT Hub eszköz streamen C proxy alkalmazás használatával](./quickstart-device-streams-proxy-c.md)
-   * [SSH és RDP engedélyezése IoT Hub eszközön lévő streamek számára C# egy proxy alkalmazás használatával](./quickstart-device-streams-proxy-csharp.md)
-
-Ez a cikk az SSH beállítását ismerteti (a 22-es port használatával), majd leírja, hogyan lehet módosítani az RDP-t (amely a 3389-es portot használja). Mivel az eszköz-adatfolyamok alkalmazás-és protokoll-függetlenek, ugyanezt a mintát úgy módosíthatja, hogy az ügyfél-kiszolgáló alkalmazások más típusú forgalmát is kielégítse, általában a kommunikációs port módosításával.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ebben a rövid útmutatóban engedélyezi, hogy a Secure Shell (SSH) és a RDP protokoll (RDP) forgalmat az eszközre egy eszközön keresztül továbbítsa. Az Azure IoT Hub-eszközök lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon keresztüli kommunikációt. Ez a rövid útmutató egy, a szolgáltatási oldalon futó Node. js-proxy alkalmazás végrehajtását ismerteti. A nyilvános előzetes verzióban a Node. js SDK csak a szolgáltatási oldalon található eszköz-adatfolyamokat támogatja. Ennek eredményeképpen ez a rövid útmutató a csak a szolgáltatás helyi proxybeállításait futtató alkalmazások futtatására vonatkozó utasításokat tartalmazza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
+* Az [SSH és az RDP használatának engedélyezése IoT hub eszköz streameken egy C proxy alkalmazás használatával](./quickstart-device-streams-proxy-c.md) , illetve az [SSH és az RDP engedélyezése IoT hub eszközön lévő C# adatfolyamok számára egy proxy alkalmazás használatával](./quickstart-device-streams-proxy-csharp.md).
 
-  * USA középső régiója
-  * USA középső – EUAP
-  * Délkelet-Ázsia
-  * Észak-Európa
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Node. js 10 +](https://nodejs.org).
+
+* [Egy példa Node. js-projekt](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
+
+A következő parancs használatával ellenőrizheti a Node. js aktuális verzióját a fejlesztői gépen:
+
+```cmd/sh
+node --version
+```
+
+A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök adatfolyamait.
+
+> [!IMPORTANT]
+> Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
+>
+> * USA középső régiója
+> * USA középső – EUAP
+> * Észak-Európa
+> * Délkelet-Ázsia
   
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* A szolgáltatás helyi alkalmazásának ebben a rövid útmutatóban való futtatásához a fejlesztői gépen a Node. js v10. x. x vagy újabb verziójára van szükség.
-  * Töltse le a [Node. js](https://nodejs.org) -t több platformra.
-  * A következő parancs használatával ellenőrizze a Node. js aktuális verzióját a fejlesztői gépen:
+### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
-   ```
-   node --version
-   ```
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Azure IoT-bővítményt a Cloud Shell-példányához. Az IoT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
 
-* A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Azure IoT-bővítményt a Cloud Shell-példányához. Az IOT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* Ha még nem tette meg, [töltse le a minta Node. js-projektet](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) , és bontsa ki a zip-archívumot.
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -109,9 +104,11 @@ Ahogy korábban említettük, a IoT Hub Node. js SDK csak az eszközön lévő a
    * [Az SSH és az RDP engedélyezése IoT Hub eszköz streamen C proxy alkalmazás használatával](./quickstart-device-streams-proxy-c.md)
    * [SSH és RDP engedélyezése IoT Hub eszközön lévő streamek számára C# egy proxy alkalmazás használatával](./quickstart-device-streams-proxy-csharp.md) 
 
-Mielőtt továbblép a következő lépésre, győződjön meg arról, hogy az eszközön helyi alkalmazásproxy fut.
+Mielőtt továbblép a következő lépésre, győződjön meg arról, hogy az eszközön helyi alkalmazásproxy fut. A telepítés áttekintését lásd: [helyi proxy minta](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 ### <a name="run-the-service-local-proxy-application"></a>A szolgáltatás helyi proxy alkalmazásának futtatása
+
+Ez a cikk az SSH beállítását ismerteti (a 22-es port használatával), majd leírja, hogyan lehet módosítani az RDP-t (amely a 3389-es portot használja). Mivel az eszköz-adatfolyamok alkalmazás-és protokoll-függetlenek, ugyanezt a mintát úgy módosíthatja, hogy az ügyfél-kiszolgáló alkalmazások más típusú forgalmát is kielégítse, általában a kommunikációs port módosításával.
 
 A-t futtató helyi alkalmazásproxy-alkalmazás futtatásával futtassa a Node. js-ben írt szolgáltatás-helyi proxykiszolgálót a következő helyi terminál-ablakban történő végrehajtásával:
 

@@ -1,23 +1,21 @@
 ---
-title: Mi az Azure app Configuration?
+title: Az Azure App Configurationről
 description: Az Azure app Configuration szolgáltatás áttekintése.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899329"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467555"
 ---
-# <a name="what-is-azure-app-configuration"></a>Mi az Azure app Configuration?
+# <a name="what-is-azure-app-configuration"></a>Az Azure App Configurationről
 
 Az Azure app Configuration szolgáltatással központilag kezelhető az Alkalmazásbeállítások és a funkciók jelzői. A modern programok, különösen a felhőben futó programok általában számos, természetben terjesztett összetevővel rendelkeznek. A konfigurációs beállítások ezen összetevők között történő terjesztése a hibák elhárításához vezethet az alkalmazások központi telepítése során. Az alkalmazás konfigurációja segítségével tárolhatja az alkalmazás összes beállítását, és egy helyen biztonságossá teheti a hozzáférését.
-
-Az alkalmazás konfigurációja jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verzió ideje alatt ingyenesen használható. A [Azure Portal](https://portal.azure.com)regisztrálhat.
 
 ## <a name="why-use-app-configuration"></a>Miért érdemes az alkalmazás konfigurációját használni?
 
@@ -53,12 +51,12 @@ Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.mic
 
 Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A programozási nyelv és keretrendszer alapján a következő legjobb módszerek érhetők el Önnek.
 
-| Programozási nyelv és keretrendszer | A csatlakozás lépései |
+| Programozási nyelv és keretrendszer | Csatlakozás |
 |---|---|
-| .NET Core és ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
+| .NET Core and ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
 | .NET-keretrendszer és ASP.NET | A .NET-hez készült app Configuration Builder |
 | Java Spring | Alkalmazás-konfigurációs ügyfél a Spring Cloud-hoz |
-| Egyebek | Alkalmazás-konfiguráció REST API |
+| Egyéb | Alkalmazás-konfiguráció REST API |
 
 ## <a name="next-steps"></a>Következő lépések
 
