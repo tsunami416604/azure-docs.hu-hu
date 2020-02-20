@@ -1,5 +1,5 @@
 - name: Media Services – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   href: media-services-overview.md
   items:
