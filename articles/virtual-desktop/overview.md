@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367282"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471771"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -72,7 +72,7 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
 
-* Egy [Azure Active Directory](/active-directory/)
+* Egy [Azure Active Directory](/azure/active-directory/)
 * A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következők egyikével konfigurálhatja:
   * Azure AD Connect (hibrid szervezetekhez)
   * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)

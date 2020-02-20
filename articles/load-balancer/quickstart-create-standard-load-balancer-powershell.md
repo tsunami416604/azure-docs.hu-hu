@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846514"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470428"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Rövid útmutató: Load Balancer létrehozása Azure PowerShell használatával
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert a
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A terheléselosztó létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myresourcegroupslb erőforráscsoportban* nevű erőforráscsoportot a *EastUS* helyen:
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Hozzon létre egy alapszintű nyilvános IP-címet a ```-SKU Basic``` használatával. A Microsoft a standard szintű használatot javasolja a termelési munkaterhelésekhez.
+Hozzon létre egy alapszintű nyilvános IP-címet a ```-SKU Basic``` használatával. Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** Load balancerrel. A Microsoft a **standard szintű** használatot javasolja a termelési munkaterhelésekhez.
+
+> [!IMPORTANT]
+> A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
 
 ## <a name="create-load-balancer"></a>Load Balancer létrehozása
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 Alapszintű Load Balancer létrehozásához használja a ```-SKU Basic```. A Microsoft a standard szintű használatot javasolja a termelési munkaterhelésekhez.
+
+> [!IMPORTANT]
+> A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 Mielőtt üzembe helyezne néhány virtuális gépet és tesztelhetné a terheléselosztót, hozza létre a támogató virtuális hálózati erőforrásokat: a virtuális hálózatot és a virtuális hálózati kártyákat. 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838003"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472434"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Az AI bemutatása az Azure-ban Cognitive Search
 
@@ -101,13 +101,13 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 
 <a name="feature-concepts"></a>
 
-## <a name="key-features-and-concepts"></a>Alapfunkciók és -fogalmak
+## <a name="key-features-and-concepts"></a>A legfontosabb jellemzők és fogalmak
 
 | Fogalom | Leírás| Hivatkozások |
 |---------|------------|-------|
 | Készségkészlet | A legfelső szintű névvel ellátott erőforrás, amely a szaktudás gyűjteményét tartalmazza. A készségkészlet a dúsítási folyamat. Egy indexelő indexelése során hívja meg. | Lásd: [Készségkészlet megadása](cognitive-search-defining-skillset.md) |
 | Kognitív képességek | Egy dúsítási folyamat atomi átalakítása. Gyakran előfordul, hogy egy olyan összetevő, amely kinyeri vagy kikövetkezteti a struktúrát, így fokozza a bemeneti adatok megértését. Szinte minden esetben a kimenet Text-alapú, a feldolgozás pedig természetes nyelvi feldolgozás vagy képfeldolgozás, amely a képbemenetek szövegét kinyeri vagy hozza létre. A szaktudás kimenete egy index egy mezőjéhez rendelhető hozzá, vagy az alsóbb rétegbeli dúsítás bemenetként használható. A szaktudás előre definiált és a Microsoft által biztosított, vagy egyéni: Ön által létrehozott és telepített. | [Beépített kognitív képességek](cognitive-search-predefined-skills.md) |
-| Adatbányászat | A feldolgozás széles körét fedi le, de az AI-bővítésre is vonatkozik, az entitás-felismerési képesség általában az adatok (entitások) olyan forrásból való kinyerésére szolgál, amely nem biztosítja az adott információt natív módon. | Lásd: [entitás-felismerési szakértelem](cognitive-search-skill-entity-recognition.md) és [dokumentum-kinyerési képesség (előzetes verzió)](cognitive-search-skill-document-extraction.md)| 
+| Adatok kinyerése | A feldolgozás széles körét fedi le, de az AI-bővítésre is vonatkozik, az entitás-felismerési képesség általában az adatok (entitások) olyan forrásból való kinyerésére szolgál, amely nem biztosítja az adott információt natív módon. | Lásd: [entitás-felismerési szakértelem](cognitive-search-skill-entity-recognition.md) és [dokumentum-kinyerési képesség (előzetes verzió)](cognitive-search-skill-document-extraction.md)| 
 | Képfeldolgozás | Kikövetkezteti a szöveget egy képből, például felismerhetővé teszi a tereptárgyak felismerését vagy szöveg kinyerését egy képből. Gyakori példák a beolvasott dokumentumokból (JPEG-fájlokból) származó karakterek feloldására szolgáló OCR-t, illetve az utca nevének felismerését egy utcai aláírást tartalmazó fényképen. | Lásd: [képelemzési szakértelem](cognitive-search-skill-image-analysis.md) vagy [OCR-képesség](cognitive-search-skill-ocr.md)
 | Természetes nyelvek feldolgozása | Szöveg-feldolgozás a szöveges bemenetekkel kapcsolatos információkhoz és adatokhoz. A nyelvfelismerés, a hangulat elemzése és a kulcsfontosságú kifejezés kinyerése a természetes nyelvi feldolgozás alá eső képességek.  | Lásd: [kulcsszókeresés skill](cognitive-search-skill-keyphrases.md), [nyelvfelismerés skill](cognitive-search-skill-language-detection.md), [szöveg fordítási készség](cognitive-search-skill-text-translation.md), [Hangulatelemzés készség](cognitive-search-skill-sentiment.md), személyre vonatkozó [észlelési képesség (előzetes verzió)](cognitive-search-skill-pii-detection.md) |
 | a dokumentum repedése | Szöveges tartalom kinyerésének vagy létrehozásának folyamata a nem szöveges forrásokból az indexelés során. Az optikai karakterfelismerés (OCR) egy példa, de általában az alapszintű indexelő funkcióra hivatkozik, mivel az indexelő Kinyeri a tartalmat az alkalmazás fájljaiból. A forrásfájl helyét biztosító adatforrás és az indexelő definíciója, amely a mezők leképezéseit biztosítja, a dokumentumok repedésének kulcsfontosságú tényezői. | Lásd: [Indexelő – áttekintés](search-indexer-overview.md) |
@@ -131,7 +131,7 @@ Az indexek olyan index-sémából jönnek létre, amely meghatározza az adott i
 + [Oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
 + [Példa: egyéni képesség létrehozása AI-dúsításhoz (C#)](cognitive-search-create-custom-skill-example.md)
 
-Javasoljuk, hogy az ingyenes szolgáltatás tanulási célokra legyen elérhető, azonban az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha a gyors üzembe helyezést és az oktatóanyagot egy nap alatt szeretné futtatni, használjon kisebb fájlméretet (10 dokumentumot), hogy mindkét gyakorlatban illeszkedjen, vagy törölje a gyors útmutatóban vagy oktatóanyagban használt indexelő, hogy a számlálót nulla értékre állítsa.
+Javasoljuk, hogy az ingyenes szolgáltatás tanulási célokra legyen elérhető, azonban az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha többször szeretné futtatni a leckéket, törölje, majd hozza létre újra az indexelő, hogy nullára állítsa vissza a számlálót.
 
 **3. lépés: az API áttekintése**
 

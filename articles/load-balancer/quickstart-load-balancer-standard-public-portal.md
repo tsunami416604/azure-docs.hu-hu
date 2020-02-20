@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843871"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470190"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -39,17 +39,21 @@ Ebben a szakaszban egy olyan Load Balancer hoz létre, amely a virtuális gépek
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancer**lehetőséget.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
-    | Beállítás                 | Value (Díj)                                              |
+    | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Előfizetést               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegroupslb erőforráscsoportban* szöveget a szövegmezőbe.|
-    | Név                   | *myLoadBalancer*                                   |
-    | Region (Régió)         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Type (Típus)          | Válassza a **nyilvános**lehetőséget.                                        |
-    | SKU (Cikkszám)           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja.  |
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Típus          | Válassza a **nyilvános**lehetőséget.                                        |
+    | SKU           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata** lehetőséget. |
-    | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
-    | Rendelkezésre állási zóna | Rugalmas Load Balancer létrehozásához írja be a következőt: *Zone-redundáns* . A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
+    | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   Hozzon létre egy alapszintű nyilvános IP-címet a ```-SKU Basic``` használatával. Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** Load balancerrel. A Microsoft a **standard szintű** használatot javasolja a termelési munkaterhelésekhez.|
+    | Rendelkezésreállási zóna | Rugalmas Load Balancer létrehozásához írja be a következőt: *Zone-redundáns* . A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
+
+> [!IMPORTANT]
+> A rövid útmutató további része azt feltételezi, hogy a **standard** SKU a fenti SKU kiválasztási folyamat során lett kiválasztva.
+
 
 3. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.   
 
@@ -74,10 +78,10 @@ Ha engedélyezni szeretné a Load Balancer számára az alkalmazás állapotána
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
 2. A **Beállítások**területen válassza az **állapot**-mintavételek, majd a **Hozzáadás**lehetőséget.
     
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a *myHealthProbe*. |
-    | Protocol (Protokoll) | Válassza a **http**lehetőséget. |
+    | Name (Név) | Adja meg a *myHealthProbe*. |
+    | Protokoll | Válassza a **http**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
     | Intervallum | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a *15* értéket. |
     | Nem Kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
@@ -91,10 +95,10 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
 2. A **Beállítások**területen válassza a terheléselosztási **szabályok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 3. Konfigurálja a terheléselosztási szabályt az alábbi értékekkel:
     
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a *: myhttprule*. |
-    | Protocol (Protokoll) | Válassza a **TCP**lehetőséget. |
+    | Name (Név) | Adja meg a *: myhttprule*. |
+    | Protokoll | Válassza a **TCP**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
     | Háttér-port | Adja meg a *80*értéket. |
     | Háttér-készlet | Válassza a *myBackendPool*lehetőséget.|
@@ -111,13 +115,13 @@ Ebben a szakaszban létrehoz egy virtuális hálózatot, három virtuális gépe
 
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Value (Díj) |
+    | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a *myVNet* értéket. |
+    | Name (Név) | Adja meg a *myVNet* értéket. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válasszon ki egy meglévő erőforrás- *myresourcegroupslb erőforráscsoportban*. |
-    | Földrajzi egység | Válassza a **Nyugat-Európa** régiót.|
+    | Hely | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat – név | Adja meg a *myBackendSubnet* értéket. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
 1. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Létrehozás**lehetőséget.
@@ -153,10 +157,10 @@ A nyilvános IP-címek és a Load Balancer SKU-nak egyezniük kell. Standard Loa
 1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 1. A 2 – 6. lépés végrehajtásával hozzon létre két további virtuális gépet a következő értékekkel, és az összes többi olyan beállítást, amely ugyanaz, mint a *myVM1*:
 
-    | Beállítás | 2\. VM| 3\. VIRTUÁLIS GÉP|
+    | Beállítás | VM 2| VM 3|
     | ------- | ----- |---|
-    | Név |  *myVM2* |*myVM3*|
-    | Rendelkezésre állási zóna | 2 |3|
+    | Name (Név) |  *myVM2* |*myVM3*|
+    | Rendelkezésreállási zóna | 2 |3|
     |Nyilvános IP-cím| **Standard szintű** SKU|**Standard szintű** SKU|
     | Nyilvános IP-cím rendelkezésre állási zónája| **Felesleges zóna** |**Felesleges zóna**|
     | Hálózati biztonsági csoport | A meglévő *myNetworkSecurity-csoport* kiválasztása| A meglévő *myNetworkSecurity-csoport* kiválasztása|

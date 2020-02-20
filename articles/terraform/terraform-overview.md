@@ -3,12 +3,12 @@ title: A Terraform használata az Azure-ral
 description: Bevezetés a Terraform használatára és az Azure-infrastruktúra üzembe helyezésére.
 ms.topic: overview
 ms.date: 10/26/2019
-ms.openlocfilehash: d1754594c651206a0d4d15e659e2926557f9e912
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158989"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472162"
 ---
 # <a name="terraform-with-azure"></a>A Terraform használata az Azure-ral
 
@@ -40,6 +40,6 @@ A Terraform egy infrastruktúra üzembe helyezése több felhőalapú szolgálta
 
 Most, hogy áttekintette a Terraformot és előnyeit, tekintse meg a javasolt következő lépéseket:
 
-- Első lépésként a [telepítse a Terraformot, majd konfigurálja az Azure használatához](/azure/virtual-machines/linux/terraform-install-configure).
-- [Hozzon létre egy Azure-beli virtuális gépet a Terraformmal](/azure/virtual-machines/linux/terraform-create-complete-vm).
+- Első lépésként a [telepítse a Terraformot, majd konfigurálja az Azure használatához](terraform-install-configure.md).
+- [Hozzon létre egy Azure-beli virtuális gépet a Terraformmal](terraform-create-complete-vm.md).
 - Fedezze fel a [Terraform Azure Resource Manager-modulját](https://www.terraform.io/docs/providers/azurerm/). 

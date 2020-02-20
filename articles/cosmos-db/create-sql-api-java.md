@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134493"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469044"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
 
@@ -69,15 +69,17 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben folytathatja [Az alkalmazás futtatása](#run-the-app) szakasszal. 
 
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Adatbázis-erőforrások kezelése a szinkron (Sync) API használatával
+
 * `CosmosClient` inicializálás. A `CosmosClient` ügyféloldali logikai ábrázolást biztosít az Azure Cosmos Database szolgáltatáshoz. Ezzel az ügyféllel a szolgáltatásra irányuló kérések konfigurálhatók és hajthatók végre.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* CosmosDatabase létrehozása.
+* `CosmosDatabase` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* CosmosContainer létrehozása.
+* `CosmosContainer` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* A pontok olvasása `getItem` és `read` metódus használatával történik
+* A pontok olvasása `readItem` metódus használatával történik.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * A JSON-alapú SQL-lekérdezések a `queryItems` metódus használatával végezhetők el.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Adatbázis-erőforrások kezelése az aszinkron (aszinkron) API használatával
+
+* Az aszinkron API-hívások azonnal visszatérnek, és nem kell várakozni a kiszolgáló válaszára. Ennek fényében a következő kódrészletek megfelelő tervezési mintákat mutatnak az összes korábbi felügyeleti feladat aszinkron API-val történő végrehajtásához.
+
+* `CosmosAsyncClient` inicializálás. A `CosmosAsyncClient` ügyféloldali logikai ábrázolást biztosít az Azure Cosmos Database szolgáltatáshoz. Ez az ügyfél a szolgáltatással kapcsolatos aszinkron kérelmek konfigurálásához és végrehajtásához használható.
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* `CosmosAsyncDatabase` létrehozása.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* `CosmosAsyncContainer` létrehozása.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* A szinkronizálási API-hoz hasonlóan a `createItem` metódus használatával történik az elemek létrehozása. Ez a példa azt mutatja be, hogyan lehet hatékonyan kiadni számos aszinkron `createItem` kérelmet egy olyan reaktív adatfolyamra való feliratkozással, amely a kérelmeket és a kinyomtatási értesítéseket adja ki Mivel ez az egyszerű példa a befejezésre és a befejezésre fut, `CountDownLatch` példányok használatával biztosítható, hogy a program ne fusson le az elem létrehozása során. **A megfelelő aszinkron programozási gyakorlat nem blokkolja az aszinkron hívásokat – a reális használati esetekben a fő () ciklusból származó kérelmeket, amelyek határozatlan ideig hajtják végre a zárolást, így nincs szükség az aszinkron hívásokra.**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* A szinkronizálási API-hoz hasonlóan az olvasások a `readItem` metódus használatával történnek.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* A szinkronizálási API-hoz hasonlóan a JSON-en keresztüli SQL-lekérdezések a `queryItems` metódus használatával lesznek elvégezve.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -109,10 +139,10 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
     mvn package
     ```
 
-3. A git terminálablakában futtassa a következő parancsot a Java-alkalmazás indításához (a YOUR_COSMOS_DB_HOSTNAME helyére a portálról lekért URI-értéket, a YOUR_COSMOS_DB_MASTER_KEY helyére pedig a portálról lekért elsődleges kulcsot írja, idézőjelek között)
+3. A git-terminál ablakban a következő paranccsal indítsa el a Java-alkalmazást (cserélje le a SYNCASYNCMODE-t `sync` vagy `async` attól függően, hogy melyik mintát kívánja futtatni, cserélje le a YOUR_COSMOS_DB_HOSTNAMEt az idézett URI értékre a portálról, és cserélje le a YOUR_COSMOS_DB_MASTER_KEYt az idézett elsődleges kulcsra a portálról)
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

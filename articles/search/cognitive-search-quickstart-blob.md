@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720673"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472417"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ez a rövid útmutató az Azure Cognitive Search, az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)és az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) használatát használja az AI-hoz. 
 
-Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy az Azure-Cognitive Search meghívásakor akár 20 tranzakciót is igénybe vesz az indexelő szolgáltatásban. Az általunk megadott mintaadatok használata esetén kihagyhatja Cognitive Services erőforrás létrehozását vagy csatolását.
+Mivel a számítási feladatok olyan kicsik, Cognitive Services a jelenetek mögött, hogy akár 20 tranzakciót is biztosítson az ingyenes feldolgozáshoz. Ilyen kis adathalmaz esetén kihagyhatja Cognitive Services erőforrás létrehozását vagy csatolását.
 
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. Bontsa ki a fájlokat.
 
@@ -170,12 +170,12 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-> [!Tip]
-> Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje az indexelő a portálon. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját a Cognitive Services feldolgozáshoz.
-
 ## <a name="next-steps"></a>Következő lépések
 
 Szakértelmével a portál, a .NET SDK vagy a REST API használatával hozhat létre. Az ismeretek megismeréséhez próbálja ki a REST API a Poster és a több mintaadatok használatával.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a JSON-Blobok szövegének és szerkezetének kinyerése a REST API-k használatával](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje az indexelő a portálon. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját a Cognitive Services feldolgozáshoz.
