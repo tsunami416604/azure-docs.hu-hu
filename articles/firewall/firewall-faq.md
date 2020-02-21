@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 41cc058d09c3bca114ba5a469f23a27ff88fed19
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505792"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526512"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -137,7 +137,7 @@ Ha a konfigurációhoz kényszerített bújtatásra van szükség egy helyszíni
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak olyan tűzfal-erőforráscsoport korlátozásai?
 
-Igen. A tűzfalnak, az alhálózatnak, a VNet és a nyilvános IP-címnek ugyanabban az erőforráscsoporthoz kell tartoznia.
+Igen. A tűzfalnak, a VNet és a nyilvános IP-címnek ugyanabban az erőforráscsoporthoz kell tartoznia.
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>A bejövő hálózati forgalom DNAT konfigurálásakor szükség van egy megfelelő hálózati szabály konfigurálására is a forgalom engedélyezéséhez?
 
