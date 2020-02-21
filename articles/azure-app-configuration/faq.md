@@ -1,31 +1,26 @@
 ---
-title: Azure-alkalmazás konfigurálása – GYIK | Microsoft Docs
+title: Azure-alkalmazás konfigurálása – gyakori kérdések
 description: Az Azure-alkalmazás konfigurálásával kapcsolatos gyakori kérdések
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467589"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523492"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
-Ez a cikk az Azure-alkalmazás konfigurálásával kapcsolatos gyakori kérdéseket tárgyalja.
+Ez a cikk az Azure-alkalmazás konfigurálásával kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Miben különbözik az alkalmazások konfigurációjának Azure Key Vault?
 
-Az alkalmazás konfigurációja különböző használati esetekhez készült: segít a fejlesztőknek az Alkalmazásbeállítások és a vezérlési funkciók rendelkezésre állásának kezelésében. Célja, hogy leegyszerűsítse az összetett konfigurációs adatok használatának számos feladatát.
+Az alkalmazás konfigurációja segítségével a fejlesztők kezelhetik az Alkalmazásbeállítások és a vezérlési funkciók rendelkezésre állását. Célja, hogy leegyszerűsítse az összetett konfigurációs adatok használatának számos feladatát.
 
 Az alkalmazás konfigurációja a következőket támogatja:
 
@@ -36,7 +31,7 @@ Az alkalmazás konfigurációja a következőket támogatja:
 - Speciális felügyeleti műveletek
 - Egy szolgáltatás-felügyeleti felhasználói felület
 
-Az alkalmazás konfigurációja kiegészíti a Key Vault, a kettőt pedig a legtöbb alkalmazás-telepítésnél egymás mellett kell használni.
+Az alkalmazás konfigurációja kiegészíti a Key Vault, a kettőt pedig a legtöbb alkalmazás-telepítés egymás mellett kell használni.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>A titkokat az alkalmazás konfigurációjában kell tárolni?
 
@@ -62,7 +57,7 @@ Egy kulcs-érték elemhez legfeljebb 10 KB mennyiség használható.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Hogyan tárolhatom a konfigurációkat több környezethez (tesztelés, előkészítés, gyártás stb.)?
 
-Jelenleg azt szabályozhatja, hogy ki férhet hozzá az alkalmazás-konfigurációhoz egy áruházbeli szinten. Használjon külön tárolót minden olyan környezethez, amelyhez eltérő engedélyek szükségesek. Ez a megközelítés biztosítja a legjobb biztonsági elkülönítést.
+Ön határozza meg, hogy ki férhet hozzá az alkalmazás konfigurálásához egy áruházbeli szinten. Használjon külön tárolót minden olyan környezethez, amelyhez eltérő engedélyek szükségesek. Ez a megközelítés biztosítja a legjobb biztonsági elkülönítést.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Mik az alkalmazások konfigurációjának használatának ajánlott módjai?
 
@@ -70,9 +65,14 @@ Lásd: [ajánlott eljárások](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Mennyibe kerül az alkalmazás konfigurációja?
 
-Kétféle árképzési szint létezik: 1), egy ingyenes szint és 2) standard szint.
+Kétféle árképzési szint létezik: 
 
-Ha a standard szint bevezetését megelőzően hozta létre a tárolót, a rendszer automatikusan áthelyezi az ingyenes szintet az általánosan elérhetővé tételig. Megadhatja, hogy a standard szintre frissítsen, vagy az ingyenes szinten maradjon, ha az megfelel az igényeinek.
+- Ingyenes szintű
+- Standard szint.
+
+Ha a standard szint bevezetését megelőzően hozta létre a tárolót, a rendszer automatikusan áthelyezi az ingyenes szintet az általánosan elérhetővé tételig. Megadhatja, hogy a standard szintre frissítsen, vagy az ingyenes szinten maradjon.
+
+A standard szintről az ingyenes szintre nem lehet visszaminősíteni egy áruházat. Létrehozhat egy új tárolót az ingyenes szinten, majd importálhatja a konfigurációs adattárakat a tárolóba.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Melyik alkalmazás-konfigurációs szintet érdemes használni?
 

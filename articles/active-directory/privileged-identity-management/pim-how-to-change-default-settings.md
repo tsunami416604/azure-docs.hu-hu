@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048089"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498976"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -32,11 +32,11 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-    ![Azure AD-szerepkörök új verziója](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyásához vagy elutasításához.
 
-# <a name="new-versiontabnew"></a>[Új verzió](#tab/new)
+# <a name="new-version"></a>[Új verzió](#tab/new)
 
 ## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 
@@ -46,15 +46,15 @@ Kövesse az alábbi lépéseket egy Azure AD-szerepkör beállításainak megnyi
 gt
 1. Nyissa meg **Azure AD Privileged Identity Management** &gt; **Azure AD-szerepkörök** &gt; **szerepkör-beállítások menüpontot**.
 
-    ![Szerepkör-beállítások lap, amely Azure-erőforrás-szerepköröket listáz](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Szerepkör-beállítások lap Azure AD-szerepkörök listázása](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Válassza ki azt a szerepkört, amelynek beállításait konfigurálni kívánja.
 
-    ![Szerepkör-beállítás részletei lap, amely több hozzárendelési és aktiválási beállítást listáz](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Szerepkör-beállítás részletei lap, amely több hozzárendelési és aktiválási beállítást listáz](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. A szerepkör-beállítások lap megnyitásához válassza a **Szerkesztés** lehetőséget.
 
-    ![Szerepkör-beállítások szerkesztése lap a hozzárendelési és aktiválási beállítások frissítésére szolgáló beállításokkal](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Szerepkör-beállítások szerkesztése lap a hozzárendelési és aktiválási beállítások frissítésére szolgáló beállításokkal](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     Az egyes szerepkörökhöz tartozó szerepkör-beállítás ablaktáblán több beállítás is konfigurálható.
 
@@ -66,18 +66,18 @@ A következő **jogosult** hozzárendelések időtartamára vonatkozó lehetős�
 
 | | |
 | --- | --- |
-| **Állandó jogosult hozzárendelés engedélyezése** | Az erőforrás-rendszergazdák állandó jogosult hozzárendelést rendelhetnek hozzá. |
-| **Jogosult hozzárendelés lejárta a következő után** | Az erőforrás-rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés megadott kezdési és befejezési dátummal rendelkezzen. |
+| **Állandó jogosult hozzárendelés engedélyezése** | A globális rendszergazdák és a Kiemelt szerepkörök rendszergazdái állandó jogosult hozzárendelést rendelhetnek hozzá. |
+| **Jogosult hozzárendelés lejárta a következő után** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés megadott kezdő és záró dátumot biztosítson. |
 
 Emellett az alábbi **aktív** hozzárendelések időtartamára vonatkozó lehetőségek közül választhat:
 
 | | |
 | --- | --- |
-| **Állandó aktív hozzárendelés engedélyezése** | Az erőforrás-rendszergazdák kioszthatnak állandó aktív hozzárendelést. |
-| **Aktív hozzárendelés lejárta a következő után** | Az erőforrás-rendszergazdák megkövetelhetik, hogy minden aktív hozzárendeléshez meg legyen adva a kezdő és a záró dátum. |
+| **Állandó aktív hozzárendelés engedélyezése** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák állandó aktív hozzárendelést is hozzárendelhet. |
+| **Aktív hozzárendelés lejárta a következő után** | A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák megkövetelhetik, hogy minden aktív hozzárendeléshez meg legyen adva a kezdő és a záró dátum. |
 
 > [!NOTE]
-> Az erőforrás-rendszergazdák megújítják a megadott befejezési dátummal rendelkező hozzárendeléseket. Emellett a felhasználók önkiszolgáló kérelmeket is indíthatnak a [szerepkör-hozzárendelések meghosszabbításához vagy megújításához](pim-resource-roles-renew-extend.md).
+> A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák a megadott befejezési dátummal rendelkező hozzárendeléseket is megújítják. Emellett a felhasználók önkiszolgáló kérelmeket is indíthatnak a [szerepkör-hozzárendelések meghosszabbításához vagy megújításához](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Többtényezős hitelesítés megkövetelése
 
@@ -87,13 +87,13 @@ A Privileged Identity Management két különböző forgatókönyv esetén az Az
 
 Bizonyos esetekben előfordulhat, hogy egy felhasználót egy rövid ideig (például egy nap) szeretne hozzárendelni egy szerepkörhöz. Ebben az esetben a hozzárendelt felhasználóknak nem kell aktiválást kérniük. Ebben a forgatókönyvben a Privileged Identity Management nem tudja kikényszeríteni a többtényezős hitelesítést, ha a felhasználó a szerepkör-hozzárendelését használja, mert már aktívak a szerepkörben a hozzárendelésük időpontjában.
 
-Annak biztosítása érdekében, hogy az erőforrás-rendszergazda teljesítse a hozzárendelést, ki is mondhatja őket, a többtényezős hitelesítés az aktív hozzárendelésre való kikényszeríthető az **aktív hozzárendelés multi-Factor Authenticationának megkövetelése** jelölőnégyzet bejelölésével.
+Annak biztosítása érdekében, hogy a hozzárendelést teljesítő rendszergazda kik mondják, a többtényezős hitelesítés kikényszeríthető az aktív hozzárendeléshez, ha bejelöli a **kötelező multi-Factor Authentication az aktív hozzárendeléshez** jelölőnégyzetet.
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication megkövetelése aktiváláskor
 
 Megkövetelheti, hogy azok a felhasználók, akik jogosultak a szerepkörre, bizonyítani tudják, kik használják az Azure Multi-Factor Authentication az aktiválás előtt. A többtényezős hitelesítés biztosítja, hogy a felhasználó, aki azt mondják, ésszerű bizonyossággal rendelkeznek. A beállítás érvényesítése megvédi a kritikus erőforrásokat olyan helyzetekben, amikor a felhasználói fiók biztonsága sérült.
 
-Ha a többtényezős hitelesítést az aktiválás előtt szeretné megkövetelni, jelölje be a **multi-Factor Authentication aktiválása az aktiváláskor** jelölőnégyzetet.
+Ha a többtényezős hitelesítést az aktiválás előtt szeretné megkövetelni, jelölje be a **szerepkör-beállítások szerkesztése**a hozzárendelés lapon a **multi-Factor Authentication megkövetelése aktiváláskor** jelölőnégyzetet.
 
 További információ: [multi-Factor Authentication és Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -121,7 +121,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 1. Miután megadta az összes szerepkör-beállítást, válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-# <a name="previous-versiontabprevious"></a>[Előző verzió](#tab/previous)
+# <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
 ## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 

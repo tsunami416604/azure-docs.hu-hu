@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369687"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500644"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többlépcsős támadások észlelése az Azure Sentinelben
+
+
+> [!IMPORTANT]
+> Az Azure Sentinel néhány fúziós funkciója jelenleg nyilvános előzetes verzióban érhető el.
+> Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
 
 A gépi tanuláson alapuló fúziós technológiával az Azure Sentinel automatikusan észleli a többszörös támadásokat a rendellenes viselkedés és a gyanús tevékenységek kombinálásával, amelyek a kill-Chain különböző szakaszaiban figyelhetők meg. Az Azure Sentinel ezután olyan incidenseket hoz létre, amelyek egyébként nagyon nehézek lesznek a fogáshoz. Ezek az incidensek két vagy több riasztást vagy tevékenységet foglalnak magukban. A tervezés szerint ezek az incidensek alacsony mennyiségű, magas megbízhatóságú és nagy fontossággal rendelkeznek.
 
@@ -41,13 +48,32 @@ Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben
 
 A szabály sablonjai nem alkalmazhatók a fejlett többlépcsős támadás észlelésére.
 
+> [!NOTE]
+> Az Azure Sentinel jelenleg 30 napos korábbi adatmennyiséget használ a gépi tanulási rendszerek betanításához. Ezeket az adategységeket a rendszer mindig a Microsoft kulcsaival titkosítja, ahogy az a Machine learning-folyamaton halad át. A betanítási adatait azonban nem titkosítja az [ügyfél által felügyelt kulcsokkal (CMK)](customer-managed-keys.md) , ha engedélyezte a CMK használatát az Azure Sentinel-munkaterületen. A fúzió letiltásához navigáljon az **Azure Sentinel** \> **Configuration** \> **Analytics \> aktív szabályok \> Advanced többlépcsős támadás észlelése** és az **állapot** oszlopban válassza a **Letiltás lehetőséget.**
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúzió a Palo Alto Networks és a Microsoft Defender ATP használatával
 
-- Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ
+Ezek a forgatókönyvek a biztonsági elemzők által használt alapvető naplók közül kettőt kombinálnak: a tűzfal naplóit a Palo Alto hálózatokból és a Microsoft Defender ATP-ből származó végpontok észlelési naplóiból. Az alább felsorolt forgatókönyvekben a rendszer gyanús tevékenységet észlel a végponton, amely egy külső IP-címet is magában foglal, majd ezt követi a külső IP-címről érkező rendellenes forgalom a tűzfalon. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek).
 
-- A PowerShell gyanús hálózati kapcsolatokat követett, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
 
-- Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+Ebben az esetben az Azure Sentinel először riasztást észlel arról, hogy a Microsoft Defender komplex veszélyforrások elleni védelem hálózati kérelmet észlelt egy olyan TOR névtelenítésével-szolgáltatáshoz, amely rendellenes tevékenységeket eredményezett. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} nevű fiókban kezdeményezték. A kapcsolódás kimenő IP-címe: {IndividualIp}.
+Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózati forgalom célként megadott IP-címe {DestinationIP}.
+
+Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatokat követett, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+
+Ebben az esetben az Azure Sentinel először riasztást észlel, miszerint a Microsoft Defender komplex veszélyforrások elleni védelem észlelte, hogy a PowerShell gyanús hálózati kapcsolatot hozott létre, amely a Palo Alto hálózati tűzfal által észlelt rendellenes tevékenységekhez vezet. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks-tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
+
+Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
+
+Ebben az esetben az Azure Sentinel olyan riasztást észlel, amely szerint a Microsoft Defender komplex veszélyforrások elleni védelem kimenő kapcsolatot észlelt egy IP-címmel, és a nem engedélyezett hozzáférési kísérletek előzményeit a Palo Alto által észlelt rendellenes tevékenységekhez vezet. Hálózati tűzfal. Ezt a (z) {Time} SID-AZONOSÍTÓJÚ {SID} fiókkal kezdeményezte. A kapcsolódás kimenő IP-címe: {IndividualIp}. Ezt követően a Palo Alto Networks tűzfal szokatlan tevékenységet észlelt a következő helyen: {TimeGenerated}. Ez azt jelzi, hogy a hálózatban a rosszindulatú forgalom lett megadva. A hálózati forgalom cél IP-címe: {DestinationIP}.
+
+Ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el.
 
 
 

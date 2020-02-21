@@ -1,5 +1,6 @@
 ---
-title: A Pásti web-és Mobile-alkalmazások biztonságossá tétele a Azure App Service használatával | Microsoft Docs
+title: A Pásti Web & Mobile-alkalmazások biztonságossá tétele
+titleSuffix: Azure App Service
 description: 'Ismerkedjen meg Azure App Service biztonsági bevált gyakorlattal a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. '
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999154"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500285"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure App Service használatával
 
@@ -43,7 +44,7 @@ Nem számít, hogy mennyire jó a biztonsága, ha elveszíti az előfizetési ku
 A Windows App Service esetében a web. config fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk App Service biztonsági bevált eljárások gyűjteményét mutatta be a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. További információ a Pásti-telepítések biztonságossá tételéről:
 
 - [PaaS-környezetek védelme](paas-deployments.md)

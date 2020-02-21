@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan vásárolhat Azure Cosmos DB fenntartott kapaci
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367687"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505963"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
 
@@ -30,7 +30,9 @@ A [Azure Portal](https://portal.azure.com)Azure Cosmos db fenntartott kapacitás
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>A szükséges átviteli sebesség meghatározása a vásárlás előtt
 
-A foglalás méretének a meglévő vagy hamarosan üzembe helyezett Azure Cosmos DB erőforrások teljes átviteli sebességén kell alapulnia. A Azure Portal javasolt foglalási méretek a következő lépésekkel tekinthetők meg:
+A fenntartott kapacitások megvásárlásának mérete a meglévő vagy hamarosan üzembe helyezett Azure Cosmos DB erőforrások óránkénti teljes átviteli sebességén alapulni fog. Például: vásárolja meg a 30 000 RU/s fenntartott kapacitást, ha az a konzisztens óradíjas használati minta. Ebben a példában a 30 000 RU/s feletti kiépített átviteli sebesség az utólagos elszámolású díjszabás alapján lesz kiszámlázva. Ha a kiépített átviteli sebesség egy órán belül 30 000 RU/s alatt van, akkor az adott órának külön fenntartott kapacitása kárba vész.
+
+Az óránkénti használati minta alapján számítjuk ki a vásárlási javaslatokat. Az elmúlt 7, 30 és 60 napos használatot elemezzük, és a lefoglalt kapacitás megvásárlása ajánlott. A Azure Portal javasolt foglalási méretek a következő lépésekkel tekinthetők meg:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).  
 
@@ -46,7 +48,7 @@ A következő attribútumok alapján szűrheti a javaslatokat:
 - **Számlázási gyakoriság** (havi vagy előzetes)
 - **Átviteli sebesség típusa** (ru vs multi-Master ru)
 
-Emellett a hatókörre vonatkozó javaslatok egyetlen erőforráscsoport, egy előfizetés vagy a teljes Azure-regisztráción belül lehetnek. A használati javaslatokat az elmúlt 7 nap, 30 nap vagy 60 nap alapján lehet megjeleníteni.
+Emellett a hatókörre vonatkozó javaslatok egyetlen erőforráscsoport, egy előfizetés vagy a teljes Azure-regisztráción belül lehetnek. 
 
 Példa erre a javaslatra:
 

@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/04/2020
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 164d156be030aa4a177ea77ed61782780338abb0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066342"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522373"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei
 Ez a cikk a kiadott Azure Active Directory Connect kiépítési ügynök verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti a kiépítési ügynököt új funkciókkal és funkciókkal. A kiépítési ügynök automatikusan frissül, amikor megjelent egy új verzió. 

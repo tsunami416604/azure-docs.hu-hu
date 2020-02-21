@@ -2,13 +2,13 @@
 title: GPU-t használó Container-példány üzembe helyezése
 description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances szolgáltatásban nagy számítási igényű tároló-alkalmazásokat GPU-erőforrásokkal.
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: c3b202d1f35194d59090c3cc310226d6cfc4dfea
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.date: 02/19/2020
+ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482955"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525286"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
 
@@ -32,6 +32,9 @@ A további régiók támogatása az idő múlásával történik.
 **További korlátozások**: a GPU-erőforrások nem használhatók tároló-csoportok [virtuális hálózatra](container-instances-vnet.md)történő telepítésekor.
 
 ## <a name="about-gpu-resources"></a>Tudnivalók a GPU-erőforrásokról
+
+> [!IMPORTANT]
+> A GPU-erőforrások csak kérés esetén érhetők el. Ha hozzáférést szeretne kérni a GPU-erőforrásokhoz, küldjön egy [Azure-támogatási kérést][azure-support].
 
 ### <a name="count-and-sku"></a>Darabszám és SKU
 
@@ -230,6 +233,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

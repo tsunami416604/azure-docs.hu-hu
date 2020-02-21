@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461215"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505640"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc-jogcímek átalakítása
 
@@ -34,7 +34,8 @@ Hasonlítsa össze a két jogcímet, és kivételt képez, ha a megadott összeh
 | inputClaim | inputClaim2 | sztring | A második jogcím típusa, amelyet össze kell hasonlítani. |
 | InputParameter | Stringcomparison argumentummal | sztring | karakterlánc-összehasonlítás, az értékek egyike: sorszám, OrdinalIgnoreCase. |
 
-Az **AssertStringClaimsAreEqual** jogcímek átalakítását mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre a rendszer. A **UserMessageIfClaimsTransformationStringsAreNotEqual** önérvényesített technikai profil metaadatai a felhasználónak megjelenített hibaüzenetet vezérlik.
+Az **AssertStringClaimsAreEqual** jogcím-átalakítás mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md)vagy egy [DisplayConrtol](display-controls.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) történik. Az önellenőrzött technikai profilok `UserMessageIfClaimsTransformationStringsAreNotEqual` metaadatai a felhasználó számára megjelenített hibaüzenetet vezérlik.
+
 
 ![AssertStringClaimsAreEqual-végrehajtás](./media/string-transformations/assert-execution.png)
 
@@ -122,7 +123,7 @@ Használja ezt a jogcím-átalakítást, ha bármilyen karakterláncot ClaimType
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-Karakterlánc-jogcímet hoz létre a megadott bemeneti paraméterből a házirendben.
+Létrehoz egy karakterlánc-jogcímet a megadott bemeneti paraméterből az átalakításban.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 |----- | ----------------------- | --------- | ----- |
@@ -157,7 +158,7 @@ Annak megállapítása, hogy egy karakterlánc-jogcím egyenlő-e egy másikkal.
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | sztring | Az első jogcím típusa, amelyet össze kell hasonlítani. |
 | inputClaim | inputClaim2 | sztring | Második jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | operátor | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | operator | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | ignoreCase | logikai | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
 | outputClaim | outputClaim | logikai | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
@@ -197,7 +198,7 @@ Meghatározza, hogy a jogcím értéke megegyezik-e a bemeneti paraméter érté
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | operátor | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | operator | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | Compareto metódus végrehajtása | sztring | karakterlánc-összehasonlítás, az értékek egyike: sorszám, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | logikai | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
 | outputClaim | outputClaim | logikai | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
@@ -516,6 +517,42 @@ A következő példa az egyik inputParameters-gyűjteményben keresi a tartomán
     - **errorOnFailedLookup**: hamis
 - Kimeneti jogcímek:
     - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
+
+Ha a `errorOnFailedLookup` bemeneti paraméter értéke `true`, a rendszer mindig az **LookupValue** jogcím-átalakítást hajtja végre egy olyan [érvényesítési technikai profilból](validation-technical-profile.md) , amelyet egy [önérvényesített technikai profil](self-asserted-technical-profile.md)vagy egy [DisplayConrtol](display-controls.md)hívnak. Az önellenőrzött technikai profilok `LookupNotFound` metaadatai a felhasználó számára megjelenített hibaüzenetet vezérlik.
+
+![AssertStringClaimsAreEqual-végrehajtás](./media/string-transformations/assert-execution.png)
+
+A következő példa az egyik inputParameters-gyűjteményben keresi a tartománynevet. A jogcím-átalakítás megkeresi a tartománynevet az azonosítóban, és visszaadja az értékét (egy alkalmazás AZONOSÍTÓját), vagy hibaüzenetet jelenít meg.
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti jogcímek:
+    - **inputParameterId**: Live.com
+- Bemeneti paraméterek:
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
+- Hiba:
+    - Nem található egyezés a bemeneti jogcím értékéhez a bemeneti paraméterek azonosítóinak és errorOnFailedLookup listájában.
+
 
 ## <a name="nullclaim"></a>NullClaim
 

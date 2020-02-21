@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671305"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500022"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Node. js-és MongoDB-alkalmazás létrehozása az Azure-ban
 
@@ -67,7 +67,7 @@ Ebben a lépésben a helyi Node.js-projektet állítja be.
 
 A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.  
 
-Futtassa a következő parancsot a minta tárház klónozásához. 
+Az alábbi parancs futtatásával klónozhatja a mintatárházat. 
 
 ```bash
 git clone https://github.com/Azure-Samples/meanjs.git
@@ -120,7 +120,7 @@ Ebben a lépésben egy MongoDB-adatbázist hoz létre az Azure-ban. Miután az a
 
 A MongoDB esetében ez az oktatóanyag az [Azure Cosmos DB-t](/azure/documentdb/) használja. A Cosmos DB támogatja a MongoDB-ügyfélkapcsolatokat.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -304,10 +304,10 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ``` 
 
-Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](https://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez: 
+Azt tapasztalhatja, hogy az üzembehelyezési folyamat az [ után kezdi meg a ](https://gulpjs.com/)Gulp`npm install` futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez: 
 
 - _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
-- _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot. 
+- _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `gulp prod` és a `npm install` után futtatja a `bower install` parancsot. 
 
 Ezzel a módszerrel adhat hozzá további lépéseket a Git-alapú üzemelő példányhoz. Ha bármikor újraindítja az Azure-alkalmazást, App Service nem futtatja újra ezeket az automatizálási feladatokat.
 
@@ -337,7 +337,7 @@ Ebben a lépésben módosítja az `article` adatmodellt, és közzéteszi a mód
 
 Nyissa meg a _modules/articles/server/models/article.server.model.js_ fájlt.
 
-Az `ArticleSchema` sémában adjon hozzá egy `comment` nevű `String` típust. Amikor elkészült, a séma kódjának így kell kinéznie:
+Az `ArticleSchema` sémában adjon hozzá egy `String` nevű `comment` típust. Amikor elkészült, a séma kódjának így kell kinéznie:
 
 ```javascript
 const ArticleSchema = new Schema({

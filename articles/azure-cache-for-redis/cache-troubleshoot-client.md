@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433373"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523339"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén
 
@@ -51,7 +51,7 @@ Az előző kivételben számos érdekes probléma van:
 - Figyelje meg, hogy a `IOCP` szakaszban és a `WORKER` szakaszban `Busy` értéke nagyobb, mint a `Min` érték. Ez a különbség azt jelenti, hogy a `ThreadPool` beállításait módosítani kell.
 - `in: 64221`is megtekintheti. Ez az érték azt jelzi, hogy az ügyfél kernel szoftvercsatorna rétegében 64 211 bájt érkezett, de az alkalmazás nem olvasta el. Ez a különbség általában azt jelenti, hogy az alkalmazás (például a StackExchange. Redis) nem olvas be adatokat a hálózatról olyan gyorsan, ahogy a kiszolgáló elküldi Önnek.
 
-[Konfigurálhatja a `ThreadPool` beállításait](https://gist.github.com/JonCole/e65411214030f0d823cb) , hogy ellenőrizze, hogy a szál készlete gyorsan méretezhető-e a burst forgatókönyvek alatt.
+[Konfigurálhatja a `ThreadPool` beállításait](cache-faq.md#important-details-about-threadpool-growth) , hogy ellenőrizze, hogy a szál készlete gyorsan méretezhető-e a burst forgatókönyvek alatt.
 
 ## <a name="high-client-cpu-usage"></a>Magas ügyféloldali CPU-használat
 
@@ -102,7 +102,7 @@ A nagyméretű válaszok méretének felbontása változó, azonban a következ�
 1. Növelje az alkalmazás által használt kapcsolatok objektumainak számát.
     - A különböző kapcsolati objektumokra irányuló kérelmeket ciklikus multiplexelés használatával hajthatja végre.
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
 - [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162157"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499983"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 
@@ -28,7 +28,13 @@ Számos alkalmazás rendelkezik olyan szabályozással, megfelelőséggel vagy m
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database hosszú távú adatmegőrzés működése
 
-A biztonsági másolatok hosszú távú megőrzése (LTR) az [automatikusan létrehozott](sql-database-automated-backups.md) teljes adatbázis biztonsági másolatait használja az időponthoz kötött visszaállítás (PITR) engedélyezéséhez. Ha egy LTR házirend konfigurálva van, a rendszer a biztonsági másolatokat különböző blobokra másolja a hosszú távú tároláshoz. A másolási művelet olyan háttérben futó feladat, amely nem befolyásolja az adatbázis számítási feladatát. A LTR biztonsági mentéseit a rendszer a LTR szabályzat által beállított ideig őrzi meg. Az egyes SQL-adatbázisok LTR házirendje azt is megadhatja, hogy milyen gyakran legyenek létrehozva a LTR biztonsági mentések. Ennek a rugalmasságnak a megadásához négy paraméter kombinációja alapján határozhatja meg a házirendet: heti biztonsági mentési megőrzés (W), havi biztonsági mentés megőrzése (M), éves biztonsági mentési megőrzés (Y) és év hetének (WeekOfYear). Ha a W lehetőséget választja, a rendszer minden héten a hosszú távú tárterületre másolja a biztonsági mentést. Az M érték megadásával az egyes hónapok első hetében az egyik biztonsági mentést a rendszer a hosszú távú tárterületre másolja. Ha az Y értéket adja meg, a WeekOfYear által megadott hét során a rendszer a hosszú távú tárterületre másolja az egyik biztonsági mentést. Minden biztonsági mentés a hosszú távú tárolóban történik a paraméterek által megadott időszakra vonatkozóan. A LTR szabályzat minden változása a jövőbeli biztonsági másolatokra vonatkozik. Ha például a megadott WeekOfYear a házirend konfigurálásakor a múltban van, akkor az első LTR biztonsági másolat jön létre a következő évben. 
+A biztonsági másolatok hosszú távú megőrzése (LTR) az [automatikusan létrehozott](sql-database-automated-backups.md) teljes adatbázis biztonsági másolatait használja az időponthoz kötött visszaállítás (PITR) engedélyezéséhez. Ha egy LTR házirend konfigurálva van, a rendszer a biztonsági másolatokat különböző blobokra másolja a hosszú távú tároláshoz. A másolás olyan háttérben futó feladat, amely nem befolyásolja az adatbázis számítási feladatait. Az egyes SQL-adatbázisok LTR házirendje azt is megadhatja, hogy milyen gyakran legyenek létrehozva a LTR biztonsági mentések.
+
+A LTR engedélyezéséhez adjon meg egy szabályzatot négy paraméter kombinációjának használatával: heti biztonsági másolatok megőrzése (W), havi biztonsági másolatok megőrzése (M), éves biztonsági másolat megőrzése (Y) és év hete (WeekOfYear). Ha a W lehetőséget választja, a rendszer minden héten a hosszú távú tárterületre másolja a biztonsági mentést. Az M érték megadásával az egyes hónapok első biztonsági másolatát a rendszer a hosszú távú tárterületre másolja. Ha az Y értéket adja meg, a WeekOfYear által megadott hét során a rendszer a hosszú távú tárterületre másolja az egyik biztonsági mentést. Ha a megadott WeekOfYear a házirend konfigurálásakor a múltban van, akkor az első LTR biztonsági mentés a következő évben jön létre. Minden biztonsági mentés a LTR biztonsági mentésének létrehozásakor konfigurált házirend-paramétereknek megfelelően hosszú távú tárolóban marad.
+
+> [!NOTE]
+> A LTR szabályzat módosítása csak a jövőbeli biztonsági másolatokra vonatkozik. Ha például a heti biztonsági másolatok megőrzése (W), a havi biztonsági másolatok megőrzése (M) vagy az éves biztonsági másolatok megőrzése (Y) módosul, az új adatmegőrzési beállítás csak az új biztonsági másolatokra lesz érvényes. A meglévő biztonsági másolatok megőrzése nem lesz módosítva. Ha a régi LTR biztonsági mentéseket a megőrzési időtartam lejárta előtt szeretné törölni, [manuálisan kell törölnie a biztonsági mentéseket](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> 
 
 Példák a LTR házirendre:
 
@@ -75,7 +81,7 @@ Ha meg szeretné tudni, hogyan konfigurálhatja a hosszú távú adatmegőrzést
 
 ## <a name="restore-database-from-ltr-backup"></a>Adatbázis visszaállítása a LTR biztonsági mentésből
 
-Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja az időbélyeg alapján egy adott biztonsági mentést. Az adatbázis az eredeti adatbázissal megegyező előfizetéshez tartozó meglévő kiszolgálókra állítható vissza. Ha szeretné megtudni, hogyan állíthatja vissza az adatbázist egy LTR biztonsági másolatból a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](sql-database-long-term-backup-retention-configure.md)című témakört.
+Ha egy adatbázist szeretne visszaállítani a LTR-tárolóból, kiválaszthatja az időbélyeg alapján egy adott biztonsági mentést. Az adatbázis az eredeti adatbázissal megegyező előfizetéshez tartozó meglévő kiszolgálókra állítható vissza. Ha szeretné megtudni, hogyan állíthatja vissza az adatbázist egy LTR biztonsági másolatból, a Azure Portal vagy a PowerShell használatával, tekintse meg a [Azure SQL Database hosszú távú biztonsági mentés kezelése](sql-database-long-term-backup-retention-configure.md)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

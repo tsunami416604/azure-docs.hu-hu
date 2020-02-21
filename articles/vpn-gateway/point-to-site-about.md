@@ -1,18 +1,18 @@
 ---
-title: Tudnivalók az Azure pont – hely VPN-kapcsolatokról | Microsoft Docs
+title: Tudnivalók az Azure pont – hely VPN-kapcsolatokról | VPN Gateway
 description: Ez a cikk segítséget nyújt a pont – hely kapcsolatok megismeréséhez, és segít eldönteni, hogy a P2S VPN-átjáró milyen hitelesítési típust használjon.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110446"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500601"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN-ről
 
@@ -53,16 +53,16 @@ Magas szinten az alábbi lépéseket kell elvégeznie az Azure AD-hitelesítés 
 
 1. [Azure AD-bérlő konfigurálása](openvpn-azure-ad-tenant.md)
 
-2. [Azure AD-hitelesítés engedélyezése az átjárón](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Azure AD-hitelesítés engedélyezése az átjárón](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Azure VPN-ügyfél letöltése és konfigurálása](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományi kiszolgáló használatával
 
-Az AD tartományi hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a szervezeti tartományi hitelesítő adataik használatával. Ehhez egy olyan RADIUS-kiszolgáló szükséges, amely integrálva van az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítést is kihasználhatják.   
+Az AD tartományi hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a szervezeti tartományi hitelesítő adataik használatával. Ehhez egy olyan RADIUS-kiszolgáló szükséges, amely integrálva van az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítést is kihasználhatják.
   
-A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNET is üzembe helyezhető. A hitelesítés során az Azure VPN Gateway továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos, hogy az átjáró elérhető legyen a RADIUS-kiszolgáló számára. Ha a RADIUS-kiszolgáló a helyszínen található, az Azure-ból a helyszíni helyre létesített VPN-S2S szükséges a rendelkezésre álláshoz.  
+A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető. A hitelesítés során az Azure VPN Gateway továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos, hogy az átjáró elérhető legyen a RADIUS-kiszolgáló számára. Ha a RADIUS-kiszolgáló a helyszínen található, az Azure-ból a helyszíni helyre létesített VPN-S2S szükséges a rendelkezésre álláshoz.  
   
 A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal is integrálható. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány központi telepítésének használatát a P2S-tanúsítvány hitelesítéséhez az Azure-tanúsítvány hitelesítésének alternatívájaként. Ennek az az előnye, hogy a főtanúsítványokat és a visszavont tanúsítványokat nem kell feltölteni az Azure-ba.
 
@@ -156,9 +156,6 @@ A zip-fájl az Azure-oldal néhány fontos beállításának értékeit is megad
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>Hogyan konfigurálni a P2S-kapcsolatokat?
 
 Egy P2S-konfigurációhoz elég néhány konkrét lépés szükséges. A következő cikkek a P2S konfigurációjának lépéseit és a VPN-ügyféleszközök konfigurálására mutató hivatkozásokat tartalmazzák:
@@ -169,11 +166,9 @@ Egy P2S-konfigurációhoz elég néhány konkrét lépés szükséges. A követk
 
 * [Az OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Hogyan eltávolítja a P2S-kapcsolatok konfigurációját?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>P2S-kapcsolatok konfigurációjának eltávolítása
 
-A P2S-konfiguráció az az parancssori felülettel és a következő paranccsal távolítható el: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+A lépésekért lásd az alábbi [gyakori kérdéseket](#removeconfig).
  
 ## <a name="faqcert"></a>A natív Azure tanúsítványalapú hitelesítéssel kapcsolatos gyakori kérdések
 

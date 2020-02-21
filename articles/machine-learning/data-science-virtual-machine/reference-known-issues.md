@@ -1,5 +1,5 @@
 ---
-title: Ismert problémák & hibaelhárítás során
+title: 'Hivatkozás: ismert problémák & hibaelhárítás'
 titleSuffix: Azure Data Science Virtual  Machine
 description: Az Azure Data Science Virtual Machine ismert problémáinak, megkerülő megoldásainak és hibaelhárítási listájának beolvasása
 services: machine-learning
@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: a0b22326a429edfa2f2b8741453215b42910891c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301918"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526547"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Ismert problémák és hibaelhárítás az Azure Data Science Virtual Machine
 
@@ -24,7 +24,7 @@ Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machin
 
 ### <a name="installing-packages-with-pip-breaks-dependencies-on-linux"></a>Csomagok telepítése pip Breaks-függőségekkel Linux rendszeren
 
-Csomagok telepítésekor a `sudo pip install` helyett használja a `pip install` értéket.
+Csomagok telepítésekor a `sudo pip install` használata `pip install` helyett.
 
 ## <a name="disk-encryption-issues"></a>Lemezes titkosítási problémák
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191871"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500370"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
 * Egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, Ismerje meg, hogyan [hozhat létre Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md).
 
-  * A virtuális hálózatnak négy *üres* alhálózattal kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe az ISE-ben. Mindegyik alhálózat egy másik Logic Apps összetevőt támogat az ISE számára. Ezeket az alhálózatokat előre is létrehozhatja, vagy megvárhatja, amíg létre nem hozza az ISE-t, ahol egyszerre létrehozhat alhálózatokat. További információ az [alhálózatokra vonatkozó követelményekről](#create-subnet).
+  * A virtuális hálózatnak négy *üres* alhálózattal kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe az ISE-ben. Az egyes alhálózatok egy másik Logic Apps-összetevőt támogatnak, amelyet az ISE használ. Ezeket az alhálózatokat előre is létrehozhatja, vagy megvárhatja, amíg létre nem hozza az ISE-t, ahol egyszerre létrehozhat alhálózatokat. További információ az [alhálózatokra vonatkozó követelményekről](#create-subnet).
 
   * Az alhálózatok nevének alfabetikus karakterrel vagy aláhúzással kell kezdődnie, és nem használhatja ezeket a karaktereket: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
   
@@ -91,27 +91,25 @@ Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amel
 
 | Cél | Irány | Célportok | Forrásoldali szolgáltatás címkéje | Cél szolgáltatáscímkéje | Megjegyzések |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intrasubnet kommunikáció | Bejövő & kimenő | * | Az ISE alhálózatokkal rendelkező virtuális hálózat címterület | Az ISE alhálózatokkal rendelkező virtuális hálózat címterület | Szükség van arra, hogy a forgalom az egyes alhálózatokon belül is áramlson. <p><p>**Fontos**: az alhálózatokon belüli összetevők közötti kommunikációhoz ellenőrizze, hogy az alhálózatokon belül az összes portot megnyitotta-e. |
-| Alhálózati kommunikáció | Bejövő & kimenő | 80, 443 | VirtualNetwork | VirtualNetwork | Az alhálózatok közötti kommunikációhoz |
-| Kommunikáció a Azure Logic Apps | Kimenő | 80, 443 | VirtualNetwork | Internet | A port a külső szolgáltatástól függ, amellyel a Logic Apps szolgáltatás kommunikál |
-| Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage-függőség | Kimenő | 80, 443, 445 | VirtualNetwork | Tárterület | |
-| Kommunikáció Azure Logic Apps | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak az IP-címe, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat. A port bezárása vagy blokkolása megakadályozza a HTTP-hívásokat a logikai alkalmazásokhoz kérelem-eseményindítókkal. |
-| Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek az IP-címe, ahonnan meg szeretné tekinteni a logikai alkalmazás futtatási előzményeit. Bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, a futtatási előzményekben nem tekintheti meg az egyes lépések bemeneteit és kimeneteit. |
-| Kapcsolatok kezelése | Kimenő | 443 | VirtualNetwork  | AppService | |
-| Diagnosztikai naplók közzététele & metrikák | Kimenő | 443 | VirtualNetwork  | AzureMonitor | |
-| Kommunikáció az Azure Traffic Manager | Bejövő | Belső ISE: 454 <p><p>Külső ISE: 443 | AzureTrafficManager | VirtualNetwork | |
+| Alhálózati kommunikáció a virtuális hálózaton belül | Bejövő & kimenő | * | Az ISE alhálózatait tartalmazó virtuális hálózat címterület | Az ISE alhálózatait tartalmazó virtuális hálózat címterület | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
+| Kommunikáció a logikai alkalmazással | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak a forrás IP-címe, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat. <p><p>**Fontos**: a port bezárása vagy blokkolása MEGAKADÁLYOZZA a http-hívásokat olyan logikai alkalmazásokban, amelyeken kérelem-eseményindítók vannak. |
+| Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet | VirtualNetwork | Annak a számítógépnek vagy szolgáltatásnak a forrás IP-címe, ahonnan a logikai alkalmazás futtatási előzményeit szeretné megtekinteni. <p><p>**Fontos**: bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, nem tekintheti meg a futtatási előzményekben szereplő egyes lépések bemeneteit és kimeneteit. |
 | Logic Apps Designer – dinamikus tulajdonságok | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó **Megjegyzések** oszlop: | VirtualNetwork | A kérelmek az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-címeiből származnak. |
+| Összekötő üzembe helyezése | Bejövő | 454 | AzureConnectors | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
 | Hálózati állapot-ellenőrzési | Bejövő | 454 | Az engedélyezni kívánt IP-címekhez tartozó **Megjegyzések** oszlop: | VirtualNetwork | A kérelmek az adott régió [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) és [kimenő](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-címeihez tartozó Logic apps hozzáférési végpontból származnak. |
 | App Service felügyeleti függőség | Bejövő | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Összekötő üzembe helyezése | Bejövő | 454 | AzureConnectors | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
-| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | APIManagement | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
-| Azure SQL-függőség | Kimenő | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Kimenő | 1886 | VirtualNetwork | AzureMonitor | Állapot közzétételének Resource Health |
+| Kommunikáció az Azure Traffic Manager | Bejövő | Belső ISE: 454 <p><p>Külső ISE: 443 | AzureTrafficManager | VirtualNetwork | |
 | API Management felügyeleti végpont | Bejövő | 3443 | APIManagement | VirtualNetwork | |
+| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | APIManagement | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Kommunikáció a logikai alkalmazásból | Kimenő | 80, 443 | VirtualNetwork | A célhelytől függően változik | A külső szolgáltatáshoz tartozó végpontok, amelyeknek a logikai alkalmazásnak kommunikálnia kell. |
+| Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Kapcsolatok kezelése | Kimenő | 443 | VirtualNetwork  | AppService | |
+| Diagnosztikai naplók közzététele & metrikák | Kimenő | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Storage-függőség | Kimenő | 80, 443, 445 | VirtualNetwork | Tárterület | |
+| Azure SQL-függőség | Kimenő | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Kimenő | 1886 | VirtualNetwork | AzureMonitor | A Resource Health állapotának közzétételéhez szükséges. |
 | Függőség a naplótól az Event hub-házirendbe és a figyelési ügynökbe | Kimenő | 5672 | VirtualNetwork | EventHub | |
-| Azure cache elérése Redis-példányok között szerepkör-példányok között | Bejövő <br>Kimenő | 6379-6383 | VirtualNetwork | VirtualNetwork | Emellett ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat az Azure cache Redis – gyakori kérdések című témakörben](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Bejövő | * | AzureLoadBalancer | VirtualNetwork | |
+| Azure cache elérése Redis-példányok között szerepkör-példányok között | Bejövő <br>Kimenő | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Emellett ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat az Azure cache Redis – gyakori kérdések című témakörben](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 ||||||
 
 <a name="create-environment"></a>
@@ -147,23 +145,19 @@ Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amel
 
    **Alhálózat létrehozása**
 
-   Ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe a környezetében, az ISE-nek négy olyan *üres* alhálózatra van szüksége, amely nem delegál semmilyen szolgáltatást. A környezet létrehozása után ezeket az alhálózati címeket *nem* módosíthatja.
+   Ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe a környezetében, az ISE-nek négy olyan *üres* alhálózatra van szüksége, amely nem delegál semmilyen szolgáltatást. Az egyes alhálózatok egy másik Logic Apps-összetevőt támogatnak, amelyet az ISE használ. A környezet létrehozása után ezeket az alhálózati címeket *nem* módosíthatja. Minden alhálózatnak meg kell felelnie a következő követelményeknek:
 
-   > [!IMPORTANT]
-   > 
-   > Az alhálózatok nevének alfabetikus karakterrel vagy aláhúzással (No Number) kell kezdődnie, és nem használja ezeket a karaktereket: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-
-   Emellett minden alhálózatnak meg kell felelnie a következő követelményeknek:
+   * Olyan nevet tartalmaz, amely alfabetikus karakterrel vagy aláhúzással (No Numbers) kezdődik, és nem használja ezeket a karaktereket: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Az [osztály nélküli Inter-domain Routing (CIDR) formátumot](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és egy B osztályú címtartományt használ.
 
-   * Legalább egy `/27`t használ a címtartomány esetében, mert az egyes alhálózatok *legalább 32 címet* igényelnek *.* Például:
+   * A a címtartomány legalább egy `/27`ét használja, mert az egyes alhálózatok legalább *32*-es címet igényelnek. Például:
+
+     * `10.0.0.0/28` csak 16 címmel rendelkezik, és túl kicsi, mert 2<sup>(32-28)</sup> 2<sup>4</sup> vagy 16.
 
      * a `10.0.0.0/27` 32-es címmel rendelkezik, mert 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32.
 
-     * a `10.0.0.0/24` 256-es címmel rendelkezik, mert 2<sup>(32-24)</sup> 2<sup>8</sup> vagy 256.
-
-     * `10.0.0.0/28` csak 16 címmel rendelkezik, és túl kicsi, mert 2<sup>(32-28)</sup> 2<sup>4</sup> vagy 16.
+     * a `10.0.0.0/24` 256-es címmel rendelkezik, mert 2<sup>(32-24)</sup> 2<sup>8</sup> vagy 256. Azonban további címek nem biztosítanak további előnyöket.
 
      A címek kiszámításával kapcsolatos további tudnivalókért lásd: [IPv4-CIDR blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

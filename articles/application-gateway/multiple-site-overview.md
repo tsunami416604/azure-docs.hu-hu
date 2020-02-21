@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719953"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523781"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
@@ -21,7 +21,7 @@ Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálásá
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
+> A szabályok feldolgozása a v1 SKU-ban található portálon megjelenő sorrendben történik. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191086"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500411"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -98,7 +98,7 @@ A kapcsolatok jóváhagyásának művelete automatizálható a privát kapcsolat
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>A kapcsolatok adatainak beolvasása a TCP proxy v2 használatával
 
-A privát kapcsolati szolgáltatás használatakor a magánhálózati végpontból érkező csomagok forrás IP-címe a szolgáltató virtuális hálózata által lefoglalt NAT IP-cím (NAT). Ezért az alkalmazások a lefoglalt NAT IP-címet kapják meg a szolgáltatás felhasználóinak tényleges forrás IP-címe helyett. Ha az alkalmazásnak tényleges forrás IP-címet kell használnia a fogyasztói oldalról, engedélyezheti a proxy protokollt a szolgáltatásban, és lekérheti az adatokat a proxy protokoll fejlécében. A forrás IP-címe mellett a proxy protokoll fejléce is a magánhálózati végpont LinkID azonosítóját is elvégzi. A forrás IP-címének és a LinkID-nak a kombinációja segíti a szolgáltatók számára a felhasználók egyedi azonosítását. További információ a proxy protokollról:. 
+A privát kapcsolati szolgáltatás használatakor a magánhálózati végpontból érkező csomagok forrás IP-címe a szolgáltató virtuális hálózata által lefoglalt NAT IP-cím (NAT). Ezért az alkalmazások a lefoglalt NAT IP-címet kapják meg a szolgáltatás felhasználóinak tényleges forrás IP-címe helyett. Ha az alkalmazásnak tényleges forrás IP-címet kell használnia a fogyasztói oldalról, engedélyezheti a proxy protokollt a szolgáltatásban, és lekérheti az adatokat a proxy protokoll fejlécében. A forrás IP-címe mellett a proxy protokoll fejléce is a magánhálózati végpont LinkID azonosítóját is elvégzi. A forrás IP-címének és a LinkID-nak a kombinációja segíti a szolgáltatók számára a felhasználók egyedi azonosítását. További információ a proxy protokollról [:.](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) 
 
 Ezeket az adatokat a következőképpen kódolja a rendszer az egyéni típus-érték (TLV) vektor használatával:
 

@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964955"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525549"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
+Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -201,9 +201,9 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Figyelje meg, hogy az elérési út `history/v1.0` a modellek listázása közben megjelenő kísérletekkel kezdődik, és az elérési út `modelmanagement/v1.0`. A REST API több operatív csoportba vannak osztva, amelyek mindegyike külön elérési úttal rendelkezik. Az alábbi hivatkozásokon található API-referenciák a különböző műveletekhez tartozó műveletekkel, paraméterekkel és válaszokkal kapcsolatos kódokat felsorolják.
 
-|Terület|Útvonal|Leírások|
+|Terület|Útvonal|Referencia|
 |-|-|-|
-|Artifacts|összetevő/v 2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Összetevők|összetevő/v 2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Adattárak|adattár/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |hiperparaméter finomhangolása|HyperDrive/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |Modellek|modelmanagement/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|

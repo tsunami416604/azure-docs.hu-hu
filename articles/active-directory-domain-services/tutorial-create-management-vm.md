@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931583"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522999"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -22,7 +22,7 @@ A Azure Active Directory Domain Services (AD DS) olyan felügyelt tartományi sz
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartomány felügyeletéhez szükséges eszközöket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az Azure AD DS felügyelt tartományában elérhető felügyeleti feladatok ismertetése
@@ -44,6 +44,8 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server-alapú virtuális gép.
     * Ha szükséges, tekintse meg az előző oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+* Az Azure-beli AD DS virtuális hálózatban üzembe helyezett Azure Bastion-gazdagép.
+    * Ha szükséges, [hozzon létre egy Azure Bastion-gazdagépet][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -84,16 +86,15 @@ Az előző oktatóanyagban egy Windows Server rendszerű virtuális gép lett l�
 Első lépésként kapcsolódjon a Windows Server rendszerű virtuális géphez a következő módon:
 
 1. A Azure Portal válassza az **erőforráscsoportok** lehetőséget a bal oldalon. Válassza ki azt az erőforráscsoportot, amelyben a virtuális gép létrejött, például *myResourceGroup*, majd válassza ki a virtuális gépet, például *myVM*.
-1. A virtuális gép **áttekintő** ablakában válassza a **kapcsolat**lehetőséget.
+1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
 
-    ![Kapcsolódás a Windows rendszerű virtuális géphez a Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Kapcsolódás Windows rendszerű virtuális géphez a Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    [Létrehozhat és használhat egy Azure Bastion-gazdagépet (amely jelenleg előzetes][azure-bastion] verzióban érhető el) ahhoz, hogy csak az SSL protokollon keresztül engedélyezze a hozzáférést a Azure Portal.
+1. Adja meg a virtuális gép hitelesítő adatait, majd válassza a **kapcsolat**lehetőséget.
 
-1. Válassza az RDP- *fájl letöltésének*lehetőségét. Mentse ezt az RDP-fájlt a böngészőjébe.
-1. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
-1. Adja meg egy olyan felhasználó hitelesítő adatait, aki az *Azure ad DC-rendszergazdák* csoport tagja, például *contoso\dee*
-1. Ha a bejelentkezési folyamat során megjelenik a tanúsítványra vonatkozó figyelmeztetés, válassza az **Igen** lehetőséget, vagy **folytassa** a csatlakozást.
+   ![Kapcsolódjon a megerősített gazdagépen a Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+Ha szükséges, engedélyezze a webböngésző számára az előugró ablak megnyitását a megerősített kapcsolat megjelenítéséhez. A virtuális géphez való kapcsolódás elvégzése néhány másodpercig tart.
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory felügyeleti eszközök telepítése
 

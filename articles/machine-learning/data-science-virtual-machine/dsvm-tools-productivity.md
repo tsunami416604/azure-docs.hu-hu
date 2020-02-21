@@ -1,8 +1,8 @@
 ---
-title: Hatékonyságnövelő eszközök a DSVM
+title: Hatékonyságnövelő eszközök
 titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg az adatelemzési Virtual Machines hatékonyságnövelő eszközeit.
-keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, térinformatikai elemzés, csoportos adatelemzési folyamat
+keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés, a csoportos adatelemzési folyamat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,19 +10,19 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: df415ce06afa8be80c0e0ed4375950e20474bcbb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cfafd680e4f4907248d3d79a504aa04696988021
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615475"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526076"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Hatékonyságnövelő eszközök a Data Science Virtual Machine
 
 Az adatelemzési és programozási eszközökön kívül a DSVM olyan hatékonyságnövelő eszközöket is tartalmaz, amelyek segítséget nyújtanak a munkatársakkal való bepillantások rögzítéséhez és megosztásához. Az Office 365 ProPlus a legtermelékenyebb és legbiztonságosabb Office-élmény a vállalatok számára, így a csapatok zökkenőmentesen dolgozhatnak együtt bárhonnan, bármikor. A Power BI Desktop segítségével az adatokból betekintést nyerhet a műveletbe. A Microsoft Edge böngésző pedig egy modern, gyors és biztonságos böngésző. 
 
 
-|   Eszköz                                                                                                                                       |                                                                                              Windowsos DSVM                                                                                             |                                                                             Linux DSVM                                                                            |                                                                                             Windows 2019 Server DSVM (előzetes verzió)                                                                       |                                                                            Ubuntu 19,04 DSVM (előzetes verzió)                                                           |                                                         Használati megjegyzések                                                         |
+|   Eszköz                                                                                                                                       |                                                                                              Windowsos DSVM                                                                                             |                                                                             Linuxos DSVM                                                                            |                                                                                             Windows 2019 Server DSVM (előzetes verzió)                                                                       |                                                                            Ubuntu 19,04 DSVM (előzetes verzió)                                                           |                                                         Használati megjegyzések                                                         |
 |----------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
 | [Microsoft Office](https://www.microsoft.com/p/office-365-proplus/CFQ7TTC0K8R0)  ProPlus megosztott aktiválással: Excel, Word és PowerPoint |                                                                               <span class='green-check'>&#9989;</span>                                                                               |                                                                <span class='red-x'>&#10060;</span>                                                               |                                                                               <span class='green-check'>&#9989;</span>                                                                               |                                                                <span class='red-x'>&#10060;</span>                                                               |                                                                                                                             |
 | [Power BI Desktop](https://powerbi.microsoft.com/)                                                                                           |                                                                       <span class='green-check'>&#9989;</span></br> (2.73.55 XX)                                                                      |                                                                <span class='red-x'>&#10060;</span>                                                               |                                                                       <span class='green-check'>&#9989;</span></br> (2.73.55 XX)                                                                      |                                                                <span class='red-x'>&#10060;</span>                                                               |                                                                                                                             |

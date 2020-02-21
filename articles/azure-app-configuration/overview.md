@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467555"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523475"
 ---
 # <a name="what-is-azure-app-configuration"></a>Az Azure App Configurationről
 
@@ -19,9 +19,9 @@ Az Azure app Configuration szolgáltatással központilag kezelhető az Alkalmaz
 
 ## <a name="why-use-app-configuration"></a>Miért érdemes az alkalmazás konfigurációját használni?
 
-A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. A robusztus és skálázható elosztott alkalmazások létrehozása kihívást jelent.
+A felhőalapú alkalmazások gyakran több virtuális gépen vagy tárolón futnak több régióban, és több külső szolgáltatást használnak. A robusztus és skálázható alkalmazások elosztott környezetben való létrehozása jelentős kihívást jelent.
 
-A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A [tizenkét faktoros alkalmazás](https://12factor.net/) például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Ebben az esetben az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és az alkalmazást a futtató környezetből vagy egy külső forrásból kell beolvasni.
+A különböző programozási módszerek segítenek a fejlesztőknek az alkalmazások készítésének egyre összetettebb bonyolultságával kapcsolatban. A [tizenkét faktoros alkalmazás](https://12factor.net/) például számos jól tesztelt építészeti mintát és ajánlott eljárásokat ismertet a felhőalapú alkalmazásokkal való használathoz. Az útmutató egyik kulcsfontosságú javaslata, hogy elkülönítse a konfigurációt a kódból. Az alkalmazás konfigurációs beállításait a végrehajtható fájlon kívül kell tartani, és a rendszerből kell beolvasni a futásidejű környezetből vagy egy külső forrásból.
 
 Habár bármely alkalmazás használhatja az alkalmazások konfigurációját, az alábbi példák az alkalmazás használatának előnyeit hasznosító alkalmazások típusai:
 
@@ -38,7 +38,7 @@ Az alkalmazás konfigurálása a következő előnyöket kínálja:
 * Dedikált felhasználói felület a szolgáltatás-jelölők felügyeletéhez
 * Két konfiguráció összehasonlítása egyéni által definiált dimenziókra
 * Fokozott biztonság az Azure által felügyelt identitások révén
-* Adattitkosítások teljes egészében vagy az átvitel során
+* Bizalmas adatok titkosítása a nyugalmi állapotban és az átvitel során
 * Natív integráció népszerű keretrendszerekkel
 
 Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely az alkalmazások titkos kulcsainak tárolására szolgál. Az alkalmazás konfigurálása megkönnyíti a következő forgatókönyvek megvalósítását:
@@ -49,7 +49,7 @@ Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.mic
 
 ## <a name="use-app-configuration"></a>Alkalmazás konfigurációjának használata
 
-Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A programozási nyelv és keretrendszer alapján a következő legjobb módszerek érhetők el Önnek.
+Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A választott nyelvtől és keretrendszertől függően az alábbi módszerek érhetők el az alkalmazáshoz való csatlakozáshoz
 
 | Programozási nyelv és keretrendszer | Csatlakozás |
 |---|---|

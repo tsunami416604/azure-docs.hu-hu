@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188774"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525515"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -60,11 +60,10 @@ A kiosztott átviteli sebességgel rendelkező adatbázisban létrehozott össze
 
 Ha egy logikai partíció munkaterhelése több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek díja korlátozott. A ráta korlátozása esetén növelheti a teljes adatbázis átviteli sebességét, vagy próbálja megismételni a műveletet. További információ a particionálásról: [logikai partíciók](partition-data.md).
 
-A megosztott átviteli sebességű adatbázisban lévő tárolók megosztják az adott adatbázishoz lefoglalt átviteli sebességet (RU/s). Megosztott átviteli sebességű adatbázisban:
+A megosztott átviteli sebességű adatbázisban lévő tárolók megosztják az adott adatbázishoz lefoglalt átviteli sebességet (RU/s). Legfeljebb négy tárolót tartalmazhat, amelyek legalább 400 RU/s értékkel rendelkeznek az adatbázison. Az első négy után minden új tárolónál további 100 RU/s értékre lesz szükség. Ha például egy megosztott átviteli sebességű adatbázis nyolc tárolóval rendelkezik, az adatbázishoz tartozó minimum RU/s 800 RU/s lesz.
 
-* Legfeljebb négy tárolót tartalmazhat, amelyek legalább 400 RU/s értékkel rendelkeznek az adatbázison. Az első négy után minden új tárolónál további 100 RU/s értékre lesz szükség. Ha például egy megosztott átviteli sebességű adatbázis nyolc tárolóval rendelkezik, az adatbázishoz tartozó minimum RU/s 800 RU/s lesz.
-
-* Az adatbázisban legfeljebb 25 tároló lehet. Ha egy megosztott átviteli sebességű adatbázisban már több mint 25 tároló található, nem fog tudni további tárolókat létrehozni, amíg a tárolók száma nem éri el a 25-et.
+> [!NOTE]
+> Egy megosztott átviteli sebességű adatbázisban legfeljebb 25 tároló lehet az adatbázisban. Ha egy megosztott átviteli sebességű adatbázisban már több mint 25 tároló található, nem fog tudni további tárolókat létrehozni, amíg a tárolók száma nem éri el a 25-et.
 
 Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törlését és újbóli létrehozását vonják maguk után, akkor azt javasoljuk, hogy a gyűjtemény létrehozása előtt dobja el az üres adatbázist, és hozzon létre egy új adatbázist. Az alábbi képen látható, hogyan tárolhat egy fizikai partíció egy vagy több olyan logikai partíciót, amely különböző tárolókban található egy adatbázison belül:
 

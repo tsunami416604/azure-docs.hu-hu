@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462547"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500707"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -45,35 +45,46 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
 - **Szolgáltatás-szolgáltatás integrációja**:<br> Egyes szolgáltatások natív módon csatlakoznak, mint például az AWS és a Microsoft Services, ezek a szolgáltatások kihasználják az Azure Foundation-t a Box-integrációhoz, a következő megoldások néhány kattintással csatlakoztathatók:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD-naplók és-bejelentkezések](connect-azure-active-directory.md)
     - [Azure-tevékenység](connect-azure-activity.md)
+    - [Azure AD-naplók és-bejelentkezések](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure komplex veszélyforrások elleni védelem](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Tartománynév-kiszolgáló](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft webalkalmazási tűzfal](connect-microsoft-waf.md)
     - [Windows biztonsági események](connect-windows-security-events.md) 
     - [Windows tűzfal](connect-windows-firewall.md)
+    - [Windows biztonsági események](connect-windows-security-events.md)
 
 - **Külső megoldások API-n keresztül**: egyes adatforrások a csatlakoztatott adatforrás által biztosított API-k használatával kapcsolódnak egymáshoz. A legtöbb biztonsági technológia jellemzően olyan API-kat biztosít, amelyeken keresztül az eseménynaplók kérhetők le. Az API-k az Azure Sentinelhez csatlakoznak, és konkrét adattípusokat gyűjtenek, és elküldhetik azokat az Azure Log Analyticsba. Az API-n keresztül csatlakoztatott berendezések a következők:
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen tűzfal](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (biztonság)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies integrálása](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Külső megoldások az ügynökön keresztül**: az Azure Sentinel minden más olyan adatforráshoz csatlakoztatható, amely valós idejű naplózást végez a syslog protokoll használatával egy ügynökön keresztül. <br>A legtöbb készülék a syslog protokollt használja az olyan események küldésére, amelyek magukban foglalják a naplót és a naplóval kapcsolatos információkat. A naplók formátuma változó, de a legtöbb készülék támogatja a Common Event Format (CEF) alapú formázást a naplók adataihoz. <br>Az Log Analytics ügynökön alapuló Azure Sentinel-ügynök átalakítja a CEF formázott naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynököt közvetlenül a készülékre vagy egy dedikált Linux-kiszolgálóra telepíti. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
     - Tűzfalak, proxyk és végpontok:
-        - [F5 billentyűt](connect-f5.md)
         - [Ellenőrzési pont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop-megjelenítés (x)](connect-extrahop.md)
+        - [F5 billentyűt](connect-f5.md)
+        - [Forcepoint termékek](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto hálózatok](connect-paloalto.md)
+        - [Az egyik identitás védelme](connect-one-identity.md)
         - [Egyéb CEF készülékek](connect-common-event-format.md)
         - [Egyéb syslog-készülékek](connect-syslog.md)
-        - [Barracuda CloudGen tűzfal](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop-megjelenítés (x)](connect-extrahop.md)
-        - [Az egyik identitás védelme](connect-one-identity.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP-megoldások
     - [Veszélyforrások elleni intelligencia szolgáltatók](connect-threat-intelligence.md)
     - [DNS-gépek](connect-dns.md) – közvetlenül a DNS-gépen telepített ügynök

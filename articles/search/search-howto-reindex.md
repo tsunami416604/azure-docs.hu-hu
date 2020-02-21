@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212303"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498380"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
 
@@ -33,7 +33,7 @@ Ha a következő feltételek bármelyike teljesül, dobja el és hozza létre ú
 | Analizátor kiosztása egy mezőhöz | Az [elemzők](search-analyzers.md) definiálva vannak egy indexben, majd a mezőkhöz vannak rendelve. Bármikor hozzáadhat egy új Analyzer-definíciót egy indexhez, de a mező létrehozásakor csak az analizátort lehet *hozzárendelni* . Ez az **elemző** és a **indexAnalyzer** tulajdonság esetében is igaz. A **searchAnalyzer** tulajdonság kivétel (ezt a tulajdonságot egy meglévő mezőhöz rendelheti hozzá). |
 | Elemző definíciójának frissítése vagy törlése egy indexben | Az indexben nem lehet törölni vagy módosítani egy meglévő Analyzer-konfigurációt (analizátor, tokenizer, token Filter vagy char Filter), kivéve, ha újra létrehozza a teljes indexet. |
 | Mező hozzáadása egy javaslathoz | Ha már létezik egy mező, és hozzá kívánja adni egy [javaslat](index-add-suggesters.md) létrehozásához, újra kell építenie az indexet. |
-| Mező törlése | Egy mező összes nyomának fizikai eltávolításához újra kell építenie az indexet. Ha egy azonnali Újraépítés nem praktikus, módosíthatja az alkalmazás kódját a "törölt" mező elérésének letiltásához. Fizikailag a mező meghatározása és tartalma a következő Újraépítés marad az indexben, amikor olyan sémát alkalmaz, amely kihagyja a szóban forgó mezőt. |
+| Mező törlése | Egy mező összes nyomának fizikai eltávolításához újra kell építenie az indexet. Ha egy azonnali Újraépítés nem praktikus, módosíthatja az alkalmazás kódját, hogy letiltsa a hozzáférést a "törölt" mezőhöz, vagy a [$Select lekérdezési paraméterrel](search-query-odata-select.md) kiválaszthatja, hogy mely mezők legyenek megjelenítve az eredményhalmazban. Fizikailag a mező meghatározása és tartalma a következő Újraépítés marad az indexben, amikor olyan sémát alkalmaz, amely kihagyja a szóban forgó mezőt. |
 | Rétegek váltása | Ha nagyobb kapacitásra van szüksége, nincs helyben történő frissítés a Azure Portalban. Létre kell hozni egy új szolgáltatást, és az indexeket teljesen fel kell építeni az új szolgáltatásból. Ennek a folyamatnak az automatizálásához használhatja az [Azure Cognitive Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) **-tárház index-Backup-Restore** mintakód elemét. Az alkalmazás biztonsági mentést készít az indexről egy sor JSON-fájlra, majd újból létrehozza az indexet egy Ön által megadott keresési szolgáltatásban.|
 
 ## <a name="update-conditions"></a>Frissítési feltételek
@@ -52,9 +52,11 @@ Számos más módosítás is végezhető a meglévő fizikai szerkezetek befoly�
 
 ## <a name="how-to-rebuild-an-index"></a>Index újraépítése
 
-A fejlesztés során az index séma gyakran változik. Megtervezheti, hogy olyan indexeket hozzon létre, amelyek törölhetők, újra létrehozhatók, és gyorsan újratölthetők egy kis reprezentatív adathalmaz használatával. 
+A fejlesztés során az index séma gyakran változik. Megtervezheti, hogy olyan indexeket hozzon létre, amelyek törölhetők, újra létrehozhatók, és gyorsan újratölthetők egy kis reprezentatív adathalmaz használatával.
 
 A már üzemben lévő alkalmazások esetében javasoljuk, hogy hozzon létre egy új indexet, amely párhuzamosan fut egy meglévő indextel, hogy elkerülje a lekérdezés leállását. Az alkalmazás kódja átirányítást biztosít az új indexre.
+
+Az indexelés nem fut a háttérben, és a szolgáltatás kiegyenlíti a további indexelést a folyamatban lévő lekérdezéseknél. Az indexelés során [figyelheti a lekérdezési kérelmeket](search-monitor-queries.md) a portálon, így biztosítva a lekérdezések időben történő végrehajtását.
 
 1. Döntse el, hogy szükség van-e újraépítésre. Ha csak mezőket ad hozzá, vagy megváltoztatja az index egy részét, amely nem kapcsolódik a mezőkhöz, akkor előfordulhat, hogy a [definíciót csak a](https://docs.microsoft.com/rest/api/searchservice/update-index) törlés, az újbóli létrehozás és a teljes újratöltés nélkül tudja frissíteni.
 
@@ -78,6 +80,10 @@ Amikor betölti az indexet, az egyes mezők fordított indexe az egyes dokumentu
 ## <a name="check-for-updates"></a>Frissítések keresése
 
 Az első dokumentum betöltését követően azonnal megkezdheti az index lekérdezését. Ha ismeri a dokumentum AZONOSÍTÓját, a [keresési dokumentum REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) az adott dokumentumot adja vissza. A szélesebb körű teszteléshez várnia kell, amíg az index teljesen be nem töltődik, majd a lekérdezések segítségével ellenőrizze a várt környezetet.
+
+A [Search Explorer](search-explorer.md) vagy egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md) használatával keresheti a frissített tartalmakat.
+
+Ha hozzáadta vagy átnevezte a mezőt, a [$Select](search-query-odata-select.md) használatával adja vissza a következő mezőt: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Lásd még
 

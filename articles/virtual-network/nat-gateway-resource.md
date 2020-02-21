@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/19/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 3ae1e3e595e9be9709e8a3d4808100d7f0e48eb8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485012"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526365"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
 
@@ -339,7 +339,6 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 
 - A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 - Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.
-- Az alhálózat vagy hálózati adapter NSG nem felel meg a kimenő forgalomnak a NAT-t használó nyilvános végpontoknak.
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 - A NAT nem tud több virtuális hálózatot kifogni.
 

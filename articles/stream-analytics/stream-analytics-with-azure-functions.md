@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772877"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505710"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -20,7 +20,7 @@ Az Azure Functions az Azure Stream Analytics szolgáltatásból való futtatás�
 
 A Stream Analytics HTTP-eseményindítókkal hívja meg a Functionst. A Functions kimeneti adaptere segítségével a felhasználók a Stream Analyticshez csatlakoztathatják a Functionst, és így az események a Stream Analytics-lekérdezések alapján aktiválhatók. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Stream Analytics-feladatok létrehozása és futtatása
@@ -150,7 +150,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
    |Függvény| A függvény neve a Functions-alkalmazásban (a run.csx függvény neve).|
    |Maximális kötegméret|Beállítja az egyes kimeneti kötegek maximális méretét, amelyet a függvénynek bájtban kell elküldeni. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB).|
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
-   |Jelmagyarázat|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
+   |Paraméter|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 
 3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a neve **saop1**, de bármilyen nevet használhat. Adja meg az egyéb adatokat.
 
@@ -197,9 +197,11 @@ Amikor az Azure Portalon megpróbálja üres (alapértelmezett) értékre vissza
 
 Az Stream Analytics jelenleg nem támogatja a [http-útválasztás](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) használatát a Azure Functionson.
 
+A virtuális hálózatban üzemeltetett Azure Functionshoz való kapcsolódás támogatása nincs engedélyezve.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megelőzheti a feladat által használt streamelési egységek kiszámlázását. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha többé már nem kívánja használni ezt a feladatot, az alábbi lépéseket követve törölheti a gyors útmutató által létrehozott összes erőforrást:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.

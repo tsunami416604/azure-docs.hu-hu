@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200078"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500012"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -87,14 +87,55 @@ A konfigurációs paraméterek JSON-ként vannak megadva:
 
 Ezeket a választható tulajdonságokat az átírás konfigurálásához használhatja:
 
-| Paraméter | Leírás |
-|-----------|-------------|
-| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `Masked` amely a csillagokkal való káromkodást váltja fel, `Removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `Tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `Masked`. |
-| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `Dictated` amely explicit írásjeleket feltételez, `Automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `DictatedAndAutomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
-| `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
-| `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |
-| `AddDiarization` | Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a diarization és a `false` (az alapértelmezett érték) letiltását. Azt is megköveteli, hogy a `AddWordLevelTimestamps` True értékre legyen állítva.|
-|`TranscriptionResultsContainerUrl`|Opcionális URL-cím a [Service sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban lesz tárolva.
+:::row:::
+   :::column span="1":::
+      **Paraméter**
+   :::column-end:::
+   :::column span="2":::
+      **Leírás**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Adja meg a felismerési eredményeket cenzúrázása kezelése. Az elfogadott értékek `None` a káromkodás szűrésének letiltására, `Masked` a káromkodásnak a csillagokkal való lecserélésére, `Removed` az eredményből való káromkodás eltávolítására, vagy `Tags` a "káromkodás" címkék hozzáadására. Az alapértelmezett beállítás a `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Adja meg a felismerési eredményeket írásjelek kezelése. Az elfogadott értékek `None` az írásjelek letiltására, `Dictated` a explicit (szóbeli) írásjelekre, `Automatic`, hogy a dekóder a központozással foglalkozzon, vagy `DictatedAndAutomatic` a diktált és automatikus írásjelek használatára. Az alapértelmezett beállítás a `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek `true` a Word-időbélyegek engedélyezéséhez, és `false` (az alapértelmezett érték) a letiltásához.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true` a vélemények kiértékelésének és a `false` (az alapértelmezett érték) a letiltásához.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek `true` engedélyezik a diarization és a `false` (az alapértelmezett érték) a letiltásához. Azt is megköveteli, hogy a `AddWordLevelTimestamps` True értékre legyen állítva.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Opcionális URL-cím a [Service sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban lesz tárolva.
+:::row-end:::
 
 ### <a name="storage"></a>Tárterület
 

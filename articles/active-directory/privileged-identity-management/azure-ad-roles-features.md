@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896430"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499047"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
 
 Az Azure ad-szerepkörök kezelési felülete Privileged Identity Management frissült az Azure AD-szerepkörök és az Azure-erőforrás-szerepkörök kezelésének egységesítése érdekében. Korábban az Azure-beli erőforrás-szerepkörökhöz tartozó Privileged Identity Management néhány kulcsfontosságú funkciója volt, amelyek nem voltak elérhetők az Azure AD-szerepkörökhöz.
 
 Ha a frissítés jelenleg ki van építve, a kettőt egyetlen felügyeleti kezelőfelületbe egyesítjük, és a szolgáltatásban ugyanazokat a funkciókat fogja használni az Azure AD-szerepkörökhöz, mint az Azure erőforrás-szerepkörökhöz. Ez a cikk a frissített funkciókról és a szükséges követelményekről tájékoztat.
+
 
 ## <a name="time-bound-assignments"></a>Időhöz kötött hozzárendelések
 

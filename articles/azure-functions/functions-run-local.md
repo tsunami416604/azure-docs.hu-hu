@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208882"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523271"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -43,6 +43,9 @@ Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatk
 
 [Azure functions Core Tools] tartalmaz egy olyan verziót, amely a helyi fejlesztési számítógépen futtatható Azure functions futtatókörnyezetet is felhasználja. Emellett parancsokat is biztosít a függvények létrehozásához, az Azure-hoz való kapcsolódáshoz és a functions-projektek üzembe helyezéséhez.
 
+>[!IMPORTANT]
+>Az Azure [CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni ahhoz, hogy közzé lehessen tenni az Azure-ban Azure functions Core Tools.  
+
 ### <a name="v2"></a>2. x és 3. x verzió
 
 Az eszközök 2. x/3. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2)is. 
@@ -50,7 +53,7 @@ Az eszközök 2. x/3. x verziója a .NET Core-ra épülő Azure Functions futtat
 > [!IMPORTANT]
 > A .NET Core SDK telepítési követelményeit kihagyhatja a [bővítmények]használatával.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 A következő lépések a NPM segítségével telepítik a Windows rendszerhez tartozó alapvető eszközöket. A [csokit](https://chocolatey.org/)is használhatja. További információ: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
 
@@ -76,7 +79,7 @@ A következő lépések a NPM segítségével telepítik a Windows rendszerhez t
 
 1. Ha nem tervezi a [bővítmények]használatát, telepítse a [Windowshoz készült .net Core 2. x SDK](https://www.microsoft.com/net/download/windows)-t.
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 A következő lépések a Homebrew-t használják a fő eszközök macOS rendszeren való telepítéséhez.
 
@@ -100,7 +103,7 @@ A következő lépések a Homebrew-t használják a fő eszközök macOS rendsze
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.debian.org/Apt) eszközöket az Ubuntu/Debian Linux-disztribúción. Más Linux-disztribúciók esetében tekintse meg az [alapvető eszközök readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)című témakört.
 
@@ -454,6 +457,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Közzététel az Azure-ban
 
 A Azure Functions Core Tools kétféle telepítési típust támogat: a Function-projektfájlok közvetlen üzembe helyezése a Function alkalmazásban a [zip üzembe helyezésével](functions-deployment-technologies.md#zip-deploy) és az [Egyéni Docker-tároló üzembe helyezésével](functions-deployment-technologies.md#docker-container). Már létre kell hoznia [egy Function alkalmazást az Azure-előfizetésében](functions-cli-samples.md#create), amelyre telepíteni fogja a kódot. A fordítást igénylő projekteket úgy kell felépíteni, hogy a bináris fájlok üzembe helyezhetők legyenek.
+
+>[!IMPORTANT]
+>Az Azure [CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni ahhoz, hogy közzé lehessen tenni az Azure-ban az alapvető eszközökről.  
 
 A Project mappa olyan nyelvspecifikus fájlokat és címtárakat tartalmazhat, amelyeket nem lehet közzétenni. A kizárt elemek a legfelső szintű projekt mappában található. funcignore fájlban szerepelnek.     
 

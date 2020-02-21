@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048593"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506042"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Cosmos-fiókhoz Azure Key Vault
 
@@ -61,7 +61,7 @@ Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meg
 
    ![A megfelelő engedélyek kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keresse meg **Azure Cosmos db** rendszerbiztonsági tag elemet, majd válassza ki. Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, lehet, hogy újra regisztrálnia kell a **Microsoft. DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
+1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régióban, kivéve Azure Government régiókat, ahol a résztvevő azonosítója `57506a73-e302-42a9-b869-6f12d9ec29e9`). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, lehet, hogy újra regisztrálnia kell a **Microsoft. DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
 
    ![Azure Cosmos DB rendszerbiztonsági tag kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 

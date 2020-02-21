@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f444ad9b32ca5da923ce5ac711c9947971c4d1e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672013"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500075"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service
 
@@ -82,7 +82,7 @@ Ebben a lépésben egy SQL Database-adatbázist hozhat létre az Azure-ban. Miut
 
 Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-database/) használja.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -310,7 +310,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Nyissa meg a _Views\Todos\Create.cshtml_ fájlt.
 
-A Razor-kódban látnia kell a `Description` alá tartozó `<div class="form-group">` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
+A Razor-kódban látnia kell a `<div class="form-group">` alá tartozó `Description` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
 
 ```csharp
 <div class="form-group">
@@ -332,7 +332,7 @@ Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következ�
 </th>
 ```
 
-Keresse meg a `asp-action` címke-segítőket tartalmazó `<td>` elemet. Az elem felett adja hozzá a következő Razor-kódot:
+Keresse meg a `<td>` címke-segítőket tartalmazó `asp-action` elemet. Az elem felett adja hozzá a következő Razor-kódot:
 
 ```csharp
 <td>

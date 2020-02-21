@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642165"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498632"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB adatai indexelése az Azure-ban indexelő használatával Cognitive Search 
 
@@ -29,13 +29,13 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Cosmos db [Indexelő](searc
 
 Mivel a terminológia zavaró lehet, érdemes megjegyezni, hogy [Azure Cosmos db indexelés](https://docs.microsoft.com/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelés](search-what-is-an-index.md) különböző műveletek, amelyek egyediek az egyes szolgáltatásokhoz. Az Azure Cognitive Search indexelésének megkezdése előtt a Azure Cosmos DB-adatbázisnak már léteznie kell, és tartalmaznia kell az adatait.
 
-Az Azure Cognitive Search Cosmos DB indexelő képes a különböző protokollokon keresztül elért [Azure Cosmos db elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) bejárására.
+Az Azure Cognitive Search Cosmos DB indexelő képes a különböző protokollokon keresztül elért [Azure Cosmos db elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) bejárására. 
 
-+ A általánosan elérhető [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)-k esetében használhatja a [portált](#cosmos-indexer-portal), a [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)-t.
++ A általánosan elérhető [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)-k esetében a [portál](#cosmos-indexer-portal), a [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) segítségével hozhatja létre az adatforrást és az indexelő.
 
-+ A [MongoDB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) és a [Gremlin API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)esetében használhatja a [portált](#cosmos-indexer-portal) vagy a [REST API 2019-05-06-es verzióját](search-api-preview.md) a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) hívásával az indexelő létrehozásához.
++ A [MONGODB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)esetében használhatja a [portált](#cosmos-indexer-portal) vagy a [REST API 2019-05-06-es verzióját – előzetes verzióként](search-api-preview.md) az adatforrás és az indexelő létrehozásához.
 
-+ A [Cassandra API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)esetében csak az [REST API 2019-05-06-es verziót](search-api-preview.md) használhatja a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) híváshoz.
++ A [Cassandra API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) és a [Gremlin API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)esetében csak a [REST API 2019-05-06-es verziójának előzetes verzióját](search-api-preview.md) használhatja az adatforrás és az indexelő létrehozásához.
 
 
 > [!Note]
@@ -254,14 +254,14 @@ Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>A JSON-adattípusok és az Azure Cognitive Search adattípusok közötti leképezés
 | JSON-adattípus | Kompatibilis cél index típusú mezők |
 | --- | --- |
-| Logikai |EDM. Boolean, EDM. String |
-| Egész számokhoz hasonló számok |EDM. Int32, EDM. Int64, EDM. String |
-| A lebegő pontokhoz hasonló számok |EDM. Double, EDM. String |
+| Bool |Edm.Boolean, Edm.String |
+| Egész számokhoz hasonló számok |Edm.Int32, Edm.Int64, Edm.String |
+| A lebegő pontokhoz hasonló számok |Edm.Double, Edm.String |
 | Sztring |Edm.String |
-| Egyszerű típusok tömbje, például ["a", "b", "c"] |Collection(Edm.String) |
-| A dátumokhoz hasonló karakterláncok |EDM. DateTimeOffset, EDM. String |
+| Egyszerű típusok tömbje, például ["a", "b", "c"] |Gyűjtemény (Edm.String) |
+| A dátumokhoz hasonló karakterláncok |Edm.DateTimeOffset, Edm.String |
 | GeoJSON objektumok, például {"type": "pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
-| Egyéb JSON-objektumok |– |
+| Egyéb JSON-objektumok |N/A |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – az indexelő konfigurálása és futtatása
 

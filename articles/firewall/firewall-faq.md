@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 41cc058d09c3bca114ba5a469f23a27ff88fed19
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460467"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505792"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -117,7 +117,7 @@ Azure Firewall szolgáltatási korlátokat az [Azure-előfizetések és-szolgál
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Egy hub-alapú virtuális hálózatban Azure Firewall a hálózati forgalmat két küllős virtuális hálózat között?
 
-Igen, a hub virtuális hálózat Azure Firewall használatával irányíthatja és szűrheti a forgalmat két küllős virtuális hálózat között. Az egyes küllős virtuális hálózatokban lévő alhálózatoknak UDR kell lenniük a Azure Firewallre mutató alapértelmezett átjáróként a forgatókönyv megfelelő működéséhez.
+Igen, a hub virtuális hálózat Azure Firewall használatával irányíthatja és szűrheti a forgalmat két küllős virtuális hálózat között. Az egyes küllős virtuális hálózatok alhálózatai számára egy UDR kell mutatnia, amely a forgatókönyv megfelelő működéséhez az Azure Firewallre mutat.
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Firewall az alhálózatok közötti hálózati adatforgalmat ugyanabban a virtuális hálózatban vagy összekapcsolt virtuális hálózatban?
 
@@ -168,11 +168,11 @@ Nem. Azure Firewall a/26-nál nagyobb alhálózatra nincs szükség.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan javíthatom a tűzfal átviteli sebességét?
 
-Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s. A vertikális felskálázás jelenleg a CPU-használat és az átviteli sebesség alapján történik. Bizonyos esetekben a hálózati szabályokkal rendelkező tűzfal csak az átviteli sebesség növelése érdekében nem méretezhető, mert a hálózati szabályok nem befolyásolják jelentősen a CPU-használatot. Ha a tűzfalnál nagyobb átviteli sebességre van szüksége, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
+Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s, amely 30 GB/s-ig méretezhető. A CPU-használat és az átviteli sebesség alapján méretezhető. Vegye fel a kapcsolatot az ügyfélszolgálattal, hogy növelje a tűzfal átviteli kapacitását, ha a tűzfal nem horizontálisan igazodik az igényeinek kielégítéséhez, és nagyobb átviteli kapacitásra van szüksége.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi időt vesz igénybe a Azure Firewall felskálázása?
 
-Jelenleg a Azure Firewall a vertikális felskálázás érdekében öt – hét percet vesz igénybe. Ha olyan törtek vannak, amelyek gyorsabb autoskálázást igényelnek, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
+A felskálázáshoz Azure Firewall 5 – hét percet vesz igénybe. Forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását, ha olyan törtek vannak, amelyek gyorsabb méretezést igényelnek.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848442"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504943"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -40,7 +40,9 @@ A webalkalmazásokhoz és szolgáltatásokhoz való bejelentkezéshez szüksége
 
 ## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-A teszteléshez használt eszközökön a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
+Az Azure AD-hez csatlakoztatott eszközökön a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
+
+A hibrid Azure AD-hez csatlakoztatott eszközökön a Windows 10 bennfentes Build 18945 vagy újabb verziójának kell futnia.
 
 ## <a name="enable-passwordless-authentication-method"></a>Jelszóval nem rendelkező hitelesítési módszer engedélyezése
 
@@ -50,7 +52,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 biztonsági kulcs módszerének engedélyezése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Tallózással keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési módszereit** > **hitelesítési módszer házirendje (előzetes verzió)** .
 1. A Method **FIDO2 biztonsági kulcs**alatt válassza a következő beállításokat:
    1. **Engedélyezés** – igen vagy nem
@@ -59,7 +61,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 biztonsági kulcsok felhasználói regisztrációja és kezelése
 
-1. Lépjen a [https://myprofile.microsoft.com](https://myprofile.microsoft.com) lapra.
+1. Tallózással keresse meg [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
 1. Ha még nem tette meg, jelentkezzen be.
 1. Kattintson a **biztonsági adatok**elemre.
    1. Ha a felhasználónak már van legalább egy Azure Multi-Factor Authentication-metódusa, akkor azonnal regisztrálhatnak egy FIDO2 biztonsági kulcsot.
@@ -79,13 +81,13 @@ Az alábbi példában a felhasználó már kiépített egy FIDO2 biztonsági kul
 
 ## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés
 
-Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül.
+Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépésekkel:
 
 1. Indítsa el a **visszajelzési** központot, és ellenőrizze, hogy be van-e jelentkezve.
 1. Küldjön visszajelzést a következő kategorizálás alá:
-   1. Kategória: biztonság és adatvédelem
-   1. Alkategória:
-1. A naplók rögzítéséhez használja a következő lehetőséget: a **probléma újbóli létrehozása**
+   - Kategória: biztonság és adatvédelem
+   - Alkategória:
+1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -95,7 +97,7 @@ A nyilvános előzetes verzióban nem érhető el a rendszergazdai kiépítés �
 
 ### <a name="upn-changes"></a>UPN-változások
 
-Ha a felhasználó egyszerű felhasználóneve megváltozik, már nem módosíthatja a FIDO2 biztonsági kulcsait a módosításhoz. A megoldás az eszköz alaphelyzetbe állítása, és a felhasználónak újra regisztrálnia kell a FIDO2 biztonsági kulcsait.
+Dolgozunk azon funkció támogatásán, amely lehetővé teszi az UPN-változást a hibrid Azure AD-hez csatlakoztatott és az Azure AD-hez csatlakoztatott eszközökön. Ha a felhasználó egyszerű felhasználóneve megváltozik, már nem módosíthatja a FIDO2 biztonsági kulcsait a módosításhoz. A megoldás az eszköz alaphelyzetbe állítása, és a felhasználónak újra regisztrálnia kell.
 
 ## <a name="next-steps"></a>Következő lépések
 

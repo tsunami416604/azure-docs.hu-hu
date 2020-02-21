@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766832"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505894"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapot figyelésének áttekintése
 
@@ -49,7 +49,7 @@ Az alábbi feltételeknek megfelelő feltételek:
 
 Az egyeztetési feltételek a `New-AzApplicationGatewayProbeHealthResponseMatch` parancsmag használatával adhatók meg.
 
-Példa:
+Például:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -59,7 +59,7 @@ Miután megadta a megfeleltetési feltételeket, a PowerShellben `-Match` param�
 
 ### <a name="default-health-probe-settings"></a>Alapértelmezett állapot mintavételi beállításai
 
-| Mintavételi tulajdonság | Value (Díj) | Leírás |
+| Mintavételi tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Mintavételi URL-cím |http://127.0.0.1:\<port\>/ |URL-cím elérési útja |
 | Intervallum |30 |Az az időtartam másodpercben, ameddig a következő állapotú mintavétel elküldése előtt várni kell.|
@@ -87,8 +87,8 @@ Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatko
 
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Név |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
-| Protocol (Protokoll) |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
+| Name (Név) |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
+| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
 | Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha a többhelyes Application Gateway van konfigurálva, ellenkező esetben a "127.0.0.1"-t használja. Ez az érték különbözik a virtuális gép gazdagépének nevétől. |
 | Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. |
 | Intervallum |Mintavételi időköz másodpercben. Ez az érték a két egymást követő mintavétel közötti időtartam. |
@@ -101,9 +101,11 @@ Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatko
 
 ## <a name="nsg-considerations"></a>NSG szempontok
 
-Ha van hálózati biztonsági csoport (NSG) egy Application Gateway-alhálózaton, a 65503-65534-es porttartomány meg kell nyitni az Application Gateway alhálózatban a bejövő forgalom számára. Ezek a portok szükségesek a backend Health API működéséhez.
+Engedélyeznie kell a bejövő internetes forgalmat a 65503-65534 **-as TCP** -portokon a Application Gateway v1 SKU-hoz, valamint a 65200-65535-es TCP-portokat a v2 SKU-hoz a célként megadott alhálózattal a **GatewayManager** szolgáltatás címkéjének megfelelően. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges.
 
-Emellett a kimenő internetkapcsolatot nem lehet letiltani, a AzureLoadBalancer címkétől érkező bejövő forgalmat pedig engedélyezni kell.
+Emellett a kimenő internetkapcsolatot nem lehet letiltani, a **AzureLoadBalancer** címkétől érkező bejövő forgalmat pedig engedélyezni kell.
+
+További információ: [Application Gateway konfiguráció áttekintése](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
 
 ## <a name="next-steps"></a>Következő lépések
 Miután megtanulta Application Gateway Health monitoringot, beállíthatja az [Egyéni állapot](application-gateway-create-probe-portal.md) -mintavételt a Azure Portalban vagy egy [Egyéni állapot](application-gateway-create-probe-ps.md) -mintavételt a PowerShell és a Azure Resource Manager üzembe helyezési modell használatával.

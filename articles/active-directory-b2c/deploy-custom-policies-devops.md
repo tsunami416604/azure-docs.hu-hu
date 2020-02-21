@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463140"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498554"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
 
@@ -35,6 +35,7 @@ Három fő lépés szükséges ahhoz, hogy lehetővé tegye az Azure-folyamatok 
 
 * [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) szerepkörrel
 * A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
+* A bérlőben regisztrált [felügyeleti alkalmazás](microsoft-graph-get-started.md) a Microsoft Graph API Permission *Policy. ReadWrite. TrustFramework*
 * [Azure-folyamat](https://azure.microsoft.com/services/devops/pipelines/)és hozzáférés egy [Azure DevOps Services-projekthez][devops-create-project]
 
 ## <a name="client-credentials-grant-flow"></a>Ügyfél-hitelesítő adatok megadása folyamat
@@ -43,47 +44,11 @@ Az itt leírt forgatókönyv az Azure-folyamatok és a Azure AD B2C közötti, a
 
 ## <a name="register-an-application-for-management-tasks"></a>Alkalmazás regisztrálása felügyeleti feladatokhoz
 
-Először hozzon létre egy alkalmazás-regisztrációt, amelyet az Azure-folyamatok által futtatott PowerShell-parancsfájlok a Azure AD B2C való kommunikációra használnak majd. Ha már rendelkezik az automatizálási feladatokhoz használt alkalmazás-regisztrációval, ugorjon az [engedélyek megadása](#grant-permissions) szakaszra.
+Az [Előfeltételek](#prerequisites)között említettek szerint az alkalmazás regisztrálása szükséges az Azure-folyamatok által végrehajtott PowerShell-szkriptek számára – a segítségével hozzáférhet a bérlő erőforrásaihoz.
 
-### <a name="register-application"></a>Alkalmazás regisztrálása
+Ha már rendelkezik az automatizálási feladatokhoz használt alkalmazás-regisztrációval, győződjön meg róla, hogy a **Microsoft Graph** > **Policy** > **Policy. ReadWrite. TrustFramework** engedélyt adta meg az alkalmazás regisztrációjának **API-engedélyein** belül.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>Engedélyek megadása
-
-Ezután adja meg az alkalmazás számára, hogy a Microsoft Graph API használatával olvassa és írja be az egyéni házirendeket a Azure AD B2C-bérlőben.
-
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
-1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
-1. Válassza a **Hozzáadás**lehetőséget, majd **válasszon ki egy API**-t.
-1. Válassza a **Microsoft Graph**, majd a **lehetőséget**.
-1. Az **alkalmazás engedélyei**területen válassza **a szervezeti megbízhatósági keretrendszer szabályzatának olvasása és írása**lehetőséget.
-1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
-1. Válassza az **engedélyek megadása**lehetőséget, majd válassza az **Igen**lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza ki azt a webalkalmazást, amelynek hozzáféréssel kell rendelkeznie a Microsoft Graph API-hoz. Például: *managementapp1*.
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
-1. Válassza a **Microsoft API** -k fület, majd válassza a **Microsoft Graph**lehetőséget.
-1. Válassza ki az **alkalmazás engedélyeit**.
-1. Bontsa ki a **házirend** elemet, és válassza a **Policy. ReadWrite. TrustFramework**lehetőséget.
-1. Válassza az **engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
-1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
-1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
-1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." az **állapot**területen jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
-
-* * *
-
-### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
-
-A Azure AD B2C való hitelesítéshez a PowerShell-parancsfájlnak meg kell adnia az alkalmazáshoz létrehozott ügyfél-titkos kulcsot.
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+A felügyeleti alkalmazások regisztrálásával kapcsolatos utasításokért lásd: [Azure ad B2C kezelése Microsoft Graphsal](microsoft-graph-get-started.md).
 
 ## <a name="configure-an-azure-repo"></a>Azure-tárház konfigurálása
 
@@ -200,7 +165,7 @@ Ezután adjon hozzá egy feladatot a házirendfájl telepítéséhez.
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. Válassza a **Mentés** lehetőséget az ügynök feladatainak mentéséhez.

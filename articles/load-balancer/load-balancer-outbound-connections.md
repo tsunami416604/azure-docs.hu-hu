@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: d3e4a794a948dd6bd9860c9b7e6f06ac981f86b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 56c48e9a64ec1fd000f98a20d5005305f522ff41
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162497"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500656"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -42,8 +42,8 @@ A Azure Load Balancer és a kapcsolódó erőforrások explicit módon vannak me
 
 | SKUs | Forgatókönyv | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- | --- |
-| Standard, alapszintű | [1. nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. A standard Load Balancer használatakor a kimenő kapcsolatok explicit módon történő megadásakor a [kimeneti szabályokat](load-balancer-outbound-rules-overview.md) kell használni |
-| Standard, alapszintű | [1. a példány szintű nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. Standard Load Balancer használata esetén a [Kimenő szabályok](load-balancer-outbound-rules-overview.md) nem támogatottak, ha egy nyilvános IP-cím van hozzárendelve a virtuális géphez |
+| Standard, alapszintű | [1. a példány szintű nyilvános IP-címmel rendelkező virtuális gép (Load Balancer) vagy anélkül](#ilpip) | SNAT, nem használt port | TCP, UDP, ICMP, ESP | Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja. A példányhoz minden elérhető ideiglenes port tartozik. Standard Load Balancer használata esetén a [Kimenő szabályok](load-balancer-outbound-rules-overview.md) nem támogatottak, ha egy nyilvános IP-cím van hozzárendelve a virtuális géphez. |
+| Standard, alapszintű | [2. a virtuális géphez társított nyilvános Load Balancer (nincs nyilvános IP-cím a példányon)](#lb) | SNAT a Load Balancer előtérrel (PAT) rendelkező portokkal | TCP, UDP |Az Azure megosztja a nyilvános Load Balancer a több magánhálózati IP-címmel rendelkező előtér nyilvános IP-címét. Az Azure a frontendek ideiglenes portjait használja a PAT számára. A kimenő kapcsolatok explicit meghatározásához használjon [kimenő szabályokat](load-balancer-outbound-rules-overview.md) . |
 | none vagy alapszintű | [3. önálló virtuális gép (nincs Load Balancer, nincs nyilvános IP-cím)](#defaultsnat) | SNAT a port maszkolásával (PAT) | TCP, UDP | Az Azure automatikusan kijelöl egy nyilvános IP-címet a SNAT számára, megosztja ezt a nyilvános IP-címet a rendelkezésre állási csoport több magánhálózati IP-címével, és a nyilvános IP-cím ideiglenes portjait használja. Ez a forgatókönyv az előző forgatókönyvek tartaléka. Ha láthatóságra és vezérlésre van szüksége, nem ajánlott. |
 
 Ha nem szeretné, hogy a virtuális gép kommunikáljon az Azure-on kívüli végpontokkal a nyilvános IP-címtartomány területén, a hálózati biztonsági csoportok (NSG) használatával letilthatja a hozzáférést igény szerint. A [Kimenő kapcsolatok megakadályozása](#preventoutbound) című szakasz részletesebben tárgyalja a NSG. A virtuális hálózatok kimenő hozzáférés nélküli kialakításával, megvalósításával és kezelésével kapcsolatos útmutató a jelen cikk hatókörén kívül esik.

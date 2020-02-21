@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786775"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523170"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions fejlesztés és konfigurálás az Azure Signaler szolgáltatással
 
@@ -27,12 +27,12 @@ A Azure Portal keresse meg a szignáló szolgáltatás erőforrásának *Beáll�
 
 ![Jelző szolgáltatás üzemmódja](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Azure Functions fejlesztés
+## <a name="azure-functions-development"></a>Az Azure Functions fejlesztése
 
-A Azure Functions és az Azure Signaler szolgáltatással létrehozott kiszolgáló nélküli valós idejű alkalmazásnak általában két Azure Functions kell lennie:
+Az Azure Functions és az Azure SignalR szolgáltatással létrehozott kiszolgáló nélküli, valós idejű alkalmazásokhoz két Azure-függvényre van szükség:
 
-* Egy "egyeztetés" függvény, amelyet az ügyfél hív meg egy érvényes jelző szolgáltatás hozzáférési jogkivonatának és szolgáltatási végpont URL-címének beszerzéséhez.
-* Egy vagy több olyan függvény, amely üzeneteket küld vagy kezel csoporttagság
+* A „negotiate” függvényre, amelyet az ügyfél egy érvényes SignalR-szolgáltatási hozzáférési jogkivonat és a szolgáltatásvégpont URL-címének lekéréséhez hív meg
+* Egy vagy több olyan függvényre, amelyek üzeneteket küldenek, vagy csoporttagságokat kezelnek
 
 ### <a name="negotiate-function"></a>egyeztetési függvény
 
@@ -40,7 +40,7 @@ Az ügyfélalkalmazás érvényes hozzáférési jogkivonatot igényel az Azure 
 
 A kapcsolati információ objektum létrehozásához használjon HTTP-triggert használó Azure-függvényt és a *SignalRConnectionInfo* bemeneti kötését. A függvénynek olyan HTTP-útvonalon kell lennie, amely `/negotiate`ban ér véget.
 
-Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service.md#input).
+Az egyeztetési függvény létrehozásával kapcsolatos további információkért tekintse meg a [ *SignalRConnectionInfo* bemeneti kötési referenciáját](../azure-functions/functions-bindings-signalr-service-input.md).
 
 A hitelesített tokenek létrehozásáról a [app Service hitelesítés használata](#using-app-service-authentication)című témakörben olvashat bővebben.
 
@@ -50,7 +50,7 @@ A *signaler* kimeneti kötés használatával üzeneteket küldhet az Azure Sign
 
 A felhasználók hozzáadhatók egy vagy több csoporthoz. A *jelző* kimeneti kötés használatával felhasználókat adhat hozzá vagy távolíthat el a csoportokból.
 
-További információ: a [ *signaler* output kötési referenciája](../azure-functions/functions-bindings-signalr-service.md#output).
+További információ: a [ *signaler* output kötési referenciája](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Szignáló hubok
 
@@ -100,7 +100,7 @@ A Signaler szolgáltatás kötéseit használó alkalmazások esetében azonban 
 
 A JavaScript/írógéppel ügyfél HTTP-kérelmeket tesz elérhetővé az egyeztetési függvénynek a kapcsolódási egyeztetés elindításához. Ha az ügyfélalkalmazás az Azure Function alkalmazástól eltérő tartományban található, az eltérő eredetű erőforrás-megosztást (CORS) engedélyezni kell a Function alkalmazásban, vagy a böngésző letiltja a kérelmeket.
 
-#### <a name="localhost"></a>Localhost
+#### <a name="localhost"></a>localhost
 
 Ha a Function alkalmazást a helyi számítógépen futtatja, a CORS engedélyezéséhez hozzáadhat egy `Host` szakaszt a *Local. Settings. JSON* fájlhoz. A `Host` szakaszban vegyen fel két tulajdonságot:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446847"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520706"
 ---
 A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
 
@@ -21,10 +21,15 @@ A növekményes pillanatfelvétel és a rendszeres Pillanatképek között néh�
 
 A növekményes Pillanatképek egy különbözeti képességet is biztosítanak, amely egyedi módon elérhető a felügyelt lemezeken. Lehetővé teszik az azonos felügyelt lemezek két növekményes pillanatképének változását a blokk szintjére. Ezzel a képességgel csökkentheti az adatlábnyomot a pillanatképek régiók közötti másolásakor.
 
-## <a name="restrictions"></a>Korlátozások
+### <a name="supported-regions"></a>Támogatott régiók
 
-- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, az USA nyugati középső régiójában, Kelet-Kanadában, Közép-és Észak-Európában, Kelet-Ázsia Dél-
-- A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
+Jelenleg csak a következő régiók támogatottak:
+
+- Elérhető az USA nyugati középső régiójában, Kelet-Kanadában, Közép-Kanadában.
+- Elérhető nyilvános előzetesként az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, Észak-Európában, Dél-Kelet-Ázsia régióban.
+
+## <a name="restrictions"></a>Korlátozások
+- A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után (csak az előzetes verzióban).
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
 - Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez.
@@ -152,6 +157,6 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.

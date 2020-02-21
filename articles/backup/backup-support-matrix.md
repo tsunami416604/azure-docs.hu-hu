@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936246"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505869"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -78,8 +78,9 @@ Ha a Linux rendszerű gépek biztonsági mentését kívánja végezni, a követ
 --- | ---
 **A Linux rendszerű helyszíni gép közvetlen biztonsági mentése** | Nem támogatott. A MARS-ügynököt csak Windows rendszerű gépekre lehet telepíteni.
 **Az ügynök-bővítmény használata a Linux rendszerű Azure-beli virtuális gépek biztonsági mentésére** | Alkalmazás-konzisztens biztonsági mentés [egyéni parancsfájlok](backup-azure-linux-app-consistent.md)használatával.<br/><br/> Fájl szintű helyreállítás.<br/><br/> Visszaállítás egy virtuális gép helyreállítási pontról vagy lemezről történő létrehozásával.
-**A DPM használata a Linux rendszerű helyszíni vagy Azure-beli virtuális gépek biztonsági mentésére** | A Linux vendég virtuális gépek fájl-konzisztens biztonsági mentése a Hyper-V-ben és a VMWare-en.<br/><br/> A Hyper-V és a VMWare Linux vendég virtuális gépek virtuálisgép-helyreállítása.<br/><br/> A fájl-konzisztens biztonsági mentés nem érhető el az Azure-beli virtuális gépen.
-**A MABS használata a Linux rendszerű helyszíni vagy Azure-beli virtuális gépek biztonsági mentésére** | A Linux vendég virtuális gépek fájl-konzisztens biztonsági mentése a Hyper-V-ben és a VMWare-en.<br/><br/> A Hyper-V és a VMWare Linux vendég virtuális gépek virtuálisgép-helyreállítása.<br/><br/> A fájl-konzisztens biztonsági mentés nem érhető el az Azure-beli virtuális gépekhez.
+**A DPM használata a Linux rendszerű helyszíni gépek biztonsági mentésére** | A Linux vendég virtuális gépek fájl-konzisztens biztonsági mentése a Hyper-V-ben és a VMWare-en.<br/><br/> A Hyper-V és a VMWare Linux vendég virtuális gépek virtuálisgép-helyreállítása.
+**A MABS használata a Linux rendszerű helyszíni gépek biztonsági mentésére** | A Linux vendég virtuális gépek fájl-konzisztens biztonsági mentése a Hyper-V-ben és a VMWare-en.<br/><br/> A Hyper-V és a VMWare Linux vendég virtuális gépek virtuálisgép-helyreállítása.
+**A MABS vagy a DPM használata a Linux Azure-beli virtuális gépek biztonsági mentésére** | Nem támogatott.
 
 ## <a name="daylight-saving-time-support"></a>Nyári időtakarékosság támogatása
 
@@ -119,7 +120,7 @@ A Azure Backup támogatja a titkosítást az átvitel közbeni és a nyugalmi ad
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek DPM-mel** | ![Igen][green] | ![Igen][green]
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek MABS-mel** | ![Igen][green] | ![Igen][green]
 
-## <a name="compression-support"></a>Tömörítés támogatása
+## <a name="compression-support"></a>A tömörítés támogatása
 
 A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom tömörítését támogatja.
 
@@ -128,8 +129,8 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 
 **Gép** | **Tömörítés a MABS/DPM (TCP)** | **Tömörítés a tárolóba (HTTPS)**
 --- | --- | ---
-**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | n/a | ![Igen][green]
-**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | n/a | n/a
+**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Igen][green]
+**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | NA | NA
 **Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Igen][green]
 
 ## <a name="retention-limits"></a>Megőrzési korlátok
@@ -151,9 +152,9 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen. A korlátozott, 4 TB-nál kisebb lemezekkel rendelkező virtuális gépek és virtuális gépek esetében a nyilvános korlátozott előzetes verzió támogatott | USA nyugati középső régiója   |
-| MARS-ügynök/helyszíni | Nem                                                           | –               |
-| SQL/SAP HANA          | Nem                                                           | –               |
-| AFS                    | Nem                                                           | –               |
+| MARS-ügynök/helyszíni | Nem                                                           | N/A               |
+| SQL/SAP HANA          | Nem                                                           | N/A               |
+| AFS                    | Nem                                                           | N/A               |
 
 
 

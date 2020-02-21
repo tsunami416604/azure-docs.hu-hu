@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025554"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498769"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -29,28 +29,28 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használa
 
 ## <a name="determine-your-version-of-pim"></a>A PIM verziójának meghatározása
 
-A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szerepkörök részét egy új verzióra frissíti a rendszer, amely megfelel az Azure-erőforrás-szerepkörökkel kapcsolatos élményeknek. Ez további funkciókat hoz létre, valamint [a meglévő API módosításait](azure-ad-roles-features.md#api-changes)is. Az új verzió bevezetését követően a cikkben ismertetett eljárások a jelenleg használt Privileged Identity Management verziójától függenek. Az ebben a szakaszban ismertetett lépéseket követve meghatározhatja, hogy a Privileged Identity Management melyik verzióját kell megadnia. A Privileged Identity Management-verziójának megismerése után kiválaszthatja a jelen cikkben szereplő, az adott verziónak megfelelő eljárásokat.
+A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szerepkörök részét egy új verzióra frissíti a rendszer, amely megfelel az Azure-szerepkörökkel kapcsolatos élményeknek. Ez további funkciókat hoz létre, valamint [a meglévő API módosításait](azure-ad-roles-features.md#api-changes)is. Az új verzió bevezetését követően a cikkben ismertetett eljárások a jelenleg használt Privileged Identity Management verziójától függenek. Az ebben a szakaszban ismertetett lépéseket követve meghatározhatja, hogy a Privileged Identity Management melyik verzióját kell megadnia. A Privileged Identity Management-verziójának megismerése után kiválaszthatja a jelen cikkben szereplő, az adott verziónak megfelelő eljárásokat.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-    ![Azure AD-szerepkörök új verziója](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyásához vagy elutasításához.
 
-# <a name="new-versiontabnew"></a>[Új verzió](#tab/new)
+# <a name="new-version"></a>[Új verzió](#tab/new)
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
-Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-erőforrás szerepkörre vonatkozó kérelem jóváhagyásra vár. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
+Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
 1. Válassza a **kérelmek jóváhagyása**lehetőséget.
 
-    ![Kérések jóváhagyása – Azure-erőforrások lap, amely a felülvizsgálati kérelmet tartalmazza](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Kérelmek jóváhagyása – az Azure AD-szerepkörök felülvizsgálatára vonatkozó kérést megjelenítő lap](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     A **szerepkör-aktiválási kérések** szakaszban megtekintheti a jóváhagyásra váró kérelmek listáját.
 
@@ -64,7 +64,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Válassza a **jóváhagyás**lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
 
-    ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
 ## <a name="deny-requests"></a>Kérelmek megtagadása
 
@@ -83,18 +83,18 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 - E-mailben értesítjük a jóváhagyókat, ha a szerepkörre vonatkozó kérések a felülvizsgálattól függőben vannak. Az e-mail-értesítések közé tartozik egy közvetlen hivatkozás a kérésre, ahol a jóváhagyó jóváhagyhatja vagy megtagadhatja a kérelmet.
 - A kérelmeket az első jóváhagyó, aki jóváhagyja vagy megtagadja.
 - Ha egy jóváhagyó válaszol a kérelemre, az összes jóváhagyó értesítést kap a műveletről.
-- Az erőforrás-rendszergazdák értesítést kapnak, ha egy jóváhagyott felhasználó aktív lesz a szerepkörében.
+- A globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák értesítést kapnak, ha egy jóváhagyott felhasználó aktív lesz a szerepkörében.
 
 >[!NOTE]
->Egy erőforrás-rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív, el tudja távolítani az aktív szerepkör-hozzárendelést Privileged Identity Management. Bár az erőforrás-rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, kivéve, ha a jóváhagyók, megtekinthetik és megszakítják az összes felhasználóra vonatkozó függőben lévő kérelmek megtekintését Privileged Identity Management.
+>Globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív, távolítsa el az aktív szerepkör-hozzárendelést Privileged Identity Management. Bár a rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, hacsak nem jóváhagyók, megtekinthetik és megtörölhetik az összes felhasználóra vonatkozó függőben lévő kéréseket a Privileged Identity Management függőben lévő kérelmek megtekintésével.
 
-# <a name="previous-versiontabprevious"></a>[Előző verzió](#tab/previous)
+# <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -132,7 +132,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     ![A kijelölt kérések ablaktábla megtagadása megtagadás miatt](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Kattintson a **Megtagadás**gombra.
+1. Válassza a **Megtagadás**lehetőséget.
 
     A rendszer a megtagadásával frissíti az állapotjelző szimbólumot.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136231"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505657"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -39,7 +39,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Egy saml2](saml-technical-profile.md) – összevonás bármely SAML protokoll identitás-szolgáltatóval.
 - [Önérvényesített](self-asserted-technical-profile.md) – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
 - [Munkamenet-kezelés](custom-policy-reference-sso.md) – különböző típusú munkamenetek kezelése.
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - [Egyszeri jelszó](one-time-password-technical-profile.md) – támogatást nyújt az egyszeri jelszavak létrehozásának és ellenőrzésének kezeléséhez. 
 
 ## <a name="technical-profile-flow"></a>Technikai profil folyamata

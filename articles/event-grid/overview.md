@@ -1,24 +1,24 @@
 ---
 title: Mi az Azure Event Grid?
-description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
+description: Küldjön forrásból származó eseményadatokat az Azure Event Griddel kezelők számára. Esemény-alapú alkalmazásokat fejleszthet, és az Azure-szolgáltatásokkal integrálva.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437307"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505909"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
-Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Először válassza ki azt az Azure-erőforrást, amelyhez elő szeretne fizetni, majd adja meg az eseménykezelőt vagy a webhook-végpontot az esemény elküldéséhez. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Az Event Grid egyéni témakörök használatával a saját események használatát is támogatja. 
+Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Első lépésként válassza ki az Azure-erőforrás szeretne előfizetni, és adjon a az eseménykezelő vagy WebHook-végpontot, az eseményt. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Az Event Grid egyéni témakörök használatával a saját események használatát is támogatja. 
 
 Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
 
@@ -26,9 +26,9 @@ Azure Event Grid üzembe helyezése a rendelkezésre állás maximalizálása é
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
-![A források és a kezelők Event Grid modellje](./media/overview/functional-model.png)
+![Event Grid modell források és a kezelők](./media/overview/functional-model.png)
 
-Ez a rendszerkép azt mutatja be, hogy Event Grid hogyan csatlakozik a forrásokhoz és a kezelőhöz, és nem a támogatott integrációk átfogó listája.
+Ez a kép bemutatja, hogyan Event Grid források és a kezelők csatlakozik, és nem támogatott Integrációk átfogó listáját.
 
 ## <a name="event-sources"></a>Eseményforrások
 
@@ -39,11 +39,15 @@ Az egyes források képességeire és a kapcsolódó cikkekre vonatkozó részle
 * [Egyéni témakörök](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)
+* [Key Vault (előzetes verzió)](event-sources.md#key-vault-preview)
 * [Médiaszolgáltatások](event-sources.md#media-services)
 * [Erőforráscsoportok (felügyeleti műveletek)](event-sources.md#resource-groups)
 * [Szolgáltatásbusz](event-sources.md#service-bus)
 * [Storage-blob](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
+* [Alkalmazás konfigurációja](event-sources.md#app-configuration)
+* [R jel](event-sources.md#azure-signalr)
+* [Machine Learning](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
@@ -55,8 +59,8 @@ Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részlet
 * [Hibrid kapcsolatok](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Power automatizálás (korábbi nevén Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Queue Storage](event-handlers.md#queue-storage)
 * [Szolgáltatásbusz](event-handlers.md#service-bus)
+* [Queue Storage](event-handlers.md#queue-storage)
 * [Webhookok](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Alapelvek
@@ -71,7 +75,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az Azure Event Grid néhány főbb jellemzője:
 
@@ -90,23 +94,23 @@ Az Event Grid, az Event Hubs és a Service Bus összehasonlítása: [Az üzenetk
 
 Azure Event Grid számos olyan funkciót kínál, amelyek jelentősen javítják a kiszolgáló nélküli, az Ops Automation és az [integrációs](https://azure.com/integration) munkákat: 
 
-### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazás-architektúrák
+### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazásarchitektúrák
 
-![Kiszolgáló nélküli alkalmazás architektúrája](./media/overview/serverless_web_app.png)
+![Kiszolgáló nélküli architektúra](./media/overview/serverless_web_app.png)
 
-Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Például a Event Grid használatával aktiválhat egy kiszolgáló nélküli függvényt, amely elemzi a lemezképeket a blob Storage-tárolóhoz való hozzáadáskor. 
+Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Ha például Event Grid használatával kiszolgáló nélküli függvény, amely elemzi a blob storage-tárolóba való hozzáadásakor aktiválja. 
 
 ### <a name="ops-automation"></a>Műveletek automatizálása
 
 ![Műveletek automatizálása](./media/overview/Ops_automation.png)
 
-Az Event Grid lehetővé teszi az automatizálás felgyorsítását és a szabályzatok érvényesítésének egyszerűsítését. Ha például egy virtuális gépet vagy SQL-adatbázist hoz létre, a Event Grid használatával értesítheti Azure Automationt. Az események használatával automatikusan ellenőrizhető, hogy a szolgáltatás konfigurációja megfelelő-e, a metaadatokat az Operations eszközökre, a virtuális gépek címkézésére vagy a fájl munkaelemeire tegye.
+Az Event Griddel felgyorsíthatja az automatizálást és egyszerűsítheti a szabályzatok kikényszerítését. Ha például Event Grid használatával az Azure Automation értesítése, ha a virtuális gép vagy SQL-adatbázis létrehozása. Használatával az események automatikusan ellenőrizzük, hogy a szolgáltatáskonfiguráció megfelelő, put metaadatok műveleti eszközöknek, címke virtuális gépek vagy munkatétel-fájlok.
 
-### <a name="application-integration"></a>Alkalmazásintegrálás
+### <a name="application-integration"></a>Alkalmazásintegráció
 
-![Alkalmazás-integráció az Azure-nal](./media/overview/app_integration.png)
+![Alkalmazásintegráció az Azure-ral](./media/overview/app_integration.png)
 
-Az Event Grids más szolgáltatásokkal kapcsolja össze alkalmazását. Létrehozhat például egy egyéni témakört, hogy az alkalmazása eseményadatait az Event Gridbe küldje, és kihasználja az általa kínált megbízható kézbesítést, fejlett átirányítást és a közvetlen Azure-integrációt. Vagy használhatja a Event Gridt is Logic Apps az adatfeldolgozást bárhol, kód írása nélkül. 
+Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létrehozhat például egy egyéni témakört, hogy az alkalmazása eseményadatait az Event Gridbe küldje, és kihasználja az általa kínált megbízható kézbesítést, fejlett átirányítást és a közvetlen Azure-integrációt. Vagy használhatja a Logic Apps Event Grid adatfeldolgozásra tetszőleges helyen, kód írása nélkül. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Mennyibe kerül az Event Grid?
 
@@ -123,4 +127,4 @@ Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fi
 * [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)  
   Ez az oktatóanyag az Azure Functions használatával streameli az adatokat az Event Hubsból az SQL Data Warehouse-ba.
 * [Event Grid REST API-referencia](/rest/api/eventgrid)  
-  Az esemény-előfizetések, az Útválasztás és a szűrés kezelésére szolgáló hivatkozási tartalmat tartalmaz.
+  Segédanyagok biztosít esemény-előfizetések kezeléséhez útválasztást és a szűrést.

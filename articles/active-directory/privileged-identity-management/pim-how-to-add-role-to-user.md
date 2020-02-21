@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047100"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498848"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -33,9 +33,9 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-    ![Azure AD-szerepkörök új verziója](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Új verzió](#tab/new)
+# <a name="new-version"></a>[Új verzió](#tab/new)
 
 ## <a name="assign-a-role"></a>Szerepkör kiosztása
 
@@ -75,11 +75,11 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Egy adott hozzárendelés időtartamának megadásához törölje a jelölőnégyzet jelölését, és módosítsa a kezdő és/vagy befejező dátum és idő mezőket. Ha elkészült, válassza a **kész**gombot.
 
-    ![Tagsági beállítások – dátum és idő](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Tagsági beállítások – dátum és idő](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
 
-    ![Új hozzárendelés – értesítés](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Új hozzárendelés – értesítés](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Meglévő szerepkör-hozzárendelés frissítése vagy eltávolítása
 
@@ -87,23 +87,19 @@ A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításáh
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza ki az **Azure-erőforrásokat**.
+1. Válassza az **Azure ad-szerepkörök**elemet.
 
-1. Válassza ki a kezelni kívánt erőforrást, például egy előfizetést vagy egy felügyeleti csoportot.
-
-1. A kezelés területen válassza ki a **szerepkörök** elemet az Azure-erőforrások szerepköreinek megtekintéséhez.
+1. Válassza ki a **szerepköröket** az Azure ad-szerepkörök listájának megtekintéséhez.
 
 1. Válassza ki a frissíteni vagy eltávolítani kívánt szerepkört.
 
 1. Keresse meg a szerepkör-hozzárendelést a **jogosult szerepkörök** vagy az **aktív szerepkörök** lapon.
 
-    ![Szerepkör-hozzárendelés frissítése vagy eltávolítása](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Szerepkör-hozzárendelés frissítése vagy eltávolítása](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. A szerepkör-hozzárendelés frissítéséhez vagy eltávolításához válassza a **frissítés** vagy az **Eltávolítás** lehetőséget.
 
-    További információ a szerepkör-hozzárendelés kibővítéséről: [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Managementban](pim-resource-roles-renew-extend.md).
-
-# <a name="previous-versiontabprevious"></a>[Előző verzió](#tab/previous)
+# <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Szerepkörre jogosult felhasználó létrehozása
 

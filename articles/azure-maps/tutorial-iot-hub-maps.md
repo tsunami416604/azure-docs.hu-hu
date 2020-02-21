@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208369"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505848"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -85,7 +85,7 @@ A következő ábra a kék színnel jelölt geokerítésen jelöli. A bérleti j
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy erőforráscsoportot a Azure Portal. Erőforráscsoport létrehozásához hajtsa végre a következő lépéseket:
 
@@ -116,9 +116,9 @@ Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához l
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Az események naplózásához hozzon létre egy általános célú **v2storage** -fiókot a "ContosoRental" erőforráscsoporthoz az adat blobként való tárolásához. A Storage-fiók létrehozásához kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)című témakör utasításait. Ezután létre kell hoznia egy tárolót a Blobok tárolásához. Ehhez kövesse az alábbi lépéseket:
+Az események naplózásához hozzunk létre egy általános célú **v2storage** , amely hozzáférést biztosít az összes Azure Storage-szolgáltatáshoz: Blobok, fájlok, várólisták, táblák és lemezek.  Ezt a Storage-fiókot a "ContosoRental" erőforráscsoporthoz kell helyezni az adatblobok tárolásához. A Storage-fiók létrehozásához kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)című témakör utasításait. Ezután létre kell hoznia egy tárolót a Blobok tárolásához. Ehhez kövesse az alábbi lépéseket:
 
-1. A Storage-fiókban navigáljon a tárolók elemre.
+1. A "Storage-fiók – blob, fájl, tábla, üzenetsor" területen navigáljon a tárolók elemre.
 
     ![Blobok](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ Ahhoz, hogy csatlakozhasson a IoT Hubhoz, regisztrálni kell egy eszközt. Az Io
     
     ![eszköz regisztrálása](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. Mentse az eszköz **elsődleges kapcsolódási karakterláncát** egy későbbi lépésben való használatra, amelyben módosítania kell egy helyőrzőt ezzel a kapcsolódási karakterlánccal.
+
+    ![eszköz hozzáadása](./media/tutorial-iot-hub-maps/connection-string.png)
 
 ## <a name="upload-geofence"></a>Geokerítésen feltöltése
 
@@ -188,7 +191,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Másolja ki az állapot-URI-t, és fűzze hozzá a `subscription-key` paramétert a Azure Maps fiókja előfizetési kulcsának értékeként. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie:
+6. Másolja ki az állapot-URI-t, és fűzze hozzá `subscription-key` paramétert. Rendelje hozzá a Azure Maps fiók előfizetési kulcsának értékét a `subscription-key` paraméterhez. Az állapot URI-formátumának az alábbihoz hasonlóan kell lennie, és `{Subscription-key}` cserélni az előfizetési kulccsal.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -214,11 +217,11 @@ A függvényben megvalósított logika a geokerítésen állapotának értékel�
 
 Ekkor a rendszer a blob-tárolóban tárolja az összes releváns eseményt. Az alábbi 5. lépés az ilyen logikát megvalósító végrehajtható kódra mutat. Az alábbi lépéseket követve hozzon létre egy Azure-függvényt, amely adatnaplókat küld a blob Storage-fiókban található blob tárolóba, és adjon hozzá egy Event Grid-előfizetést.
 
-1. Az Azure Portal irányítópulton válassza az erőforrás létrehozása lehetőséget. Válassza a **számítás** lehetőséget az elérhető erőforrástípusok listájából, majd válassza a **Function app**elemet.
+1. Az Azure Portal irányítópulton válassza az erőforrás létrehozása lehetőséget. Válassza ki a **számítás** elemet az elérhető erőforrástípusok listájából, majd válassza a **függvényalkalmazás**lehetőséget.
 
     ![erőforrás létrehozása](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. A **függvényalkalmazás** létrehozás lapon nevezze el a Function alkalmazást. Az **erőforráscsoport**területen válassza a **meglévő használata**lehetőséget, majd a legördülő listából válassza a "ContosoRental" lehetőséget. Válassza a ".NET Core" lehetőséget a futásidejű Veremként. A **tárterület**területen válassza a **meglévő használata**lehetőséget, válassza a "contosorentaldata" elemet a legördülő listából, majd válassza a **felülvizsgálat + létrehozás**elemet.
+2. A **függvényalkalmazás** létrehozás lapon nevezze el a Function alkalmazást. Az **erőforráscsoport**területen válassza a **meglévő használata**lehetőséget, majd a legördülő listából válassza a "ContosoRental" lehetőséget. Válassza a ".NET Core" lehetőséget a futásidejű Veremként. A tárolás **alatt,** a **Storage-fiók**területen válassza ki a Storage-fiók nevét egy korábbi lépésből. Az előző lépésben elnevezte a Storage-fiók **v2storage**.  Ezután válassza a **felülvizsgálat + létrehozás**elemet.
     
     ![létrehozás – alkalmazás](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Ekkor a rendszer a blob-tárolóban tárolja az összes releváns eseményt. Az 
 5. Válassza ki a sablont **Azure Event Grid triggerrel**. Ha a rendszer kéri, telepítse a bővítményeket, nevezze el a függvényt, és válassza a **Létrehozás**lehetőséget.
 
     ![függvény – sablon](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    Az **Azure Event hub eseményindítójának** és a **Azure Event Grid eseményindítónak** hasonló ikonjai vannak. Győződjön meg arról, hogy a **Azure Event Grid triggert**választotta.
 
-6. Másolja a [c#-kódot](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) a függvénybe, és kattintson a **Save (Mentés**) gombra.
+6. Másolja a [ C# kódot](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) a függvénybe.
  
-7. A c# parancsfájlban cserélje le a következő paramétereket:
+7. A C# parancsfájlban cserélje le a következő paramétereket. Kattintson a **Save** (Mentés) gombra. Még ne kattintson a **Futtatás** gombra
     * Cserélje le a **SUBSCRIPTION_KEYt** a Azure Maps fiók elsődleges előfizetési kulcsára.
     * Cserélje le a **UDID** a feltöltött geokerítésen UDID. 
     * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, **ACCOUNT_NAME**és **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, a fiók nevére és az adattároló-tárolóra.
@@ -245,7 +250,7 @@ Ekkor a rendszer a blob-tárolóban tárolja az összes releváns eseményt. Az 
     
     ![Event-Grid hozzáadása](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Töltse ki az előfizetés részleteit az **esemény-előfizetés részletei** név alatt az előfizetés és az esemény-séma területen válassza a "Event Grid séma" lehetőséget. A **témakör részletek** területén válassza az "Azure IoT hub fiókok" lehetőséget a témakör típusaként. Válassza ki ugyanazt az előfizetést, amelyet az erőforráscsoport létrehozásához használt, válassza az "ContosoRental" lehetőséget az "erőforráscsoport" elemnél. Válassza ki az erőforrásként létrehozott IoT Hub. Válassza ki az **eszköz telemetria** . Miután kiválasztotta ezeket a beállításokat, a "témakör típusa" beállítás automatikusan "IoT Hub" értékre vált.
+11. Töltse ki az előfizetés részleteit az esemény- **előfizetés részletei** területen az esemény-előfizetés mezőben. Az Event Schema esetében válassza a "Event Grid séma" lehetőséget. A **témakör részletek** területén válassza az "Azure IoT hub fiókok" lehetőséget a témakör típusaként. Válassza ki ugyanazt az előfizetést, amelyet az erőforráscsoport létrehozásához használt, válassza az "ContosoRental" lehetőséget az "erőforráscsoport" elemnél. Válassza ki az erőforrásként létrehozott IoT Hub. Válassza ki az **eszköz telemetria** . Miután kiválasztotta ezeket a beállításokat, a "témakör típusa" beállítás automatikusan "IoT Hub" értékre vált.
 
     ![Event-Grid-előfizetés](./media/tutorial-iot-hub-maps/af-egs.png)
  
@@ -263,9 +268,9 @@ Példánkban szeretnénk kiszűrni az összes olyan üzenetet, ahol a kölcsönz
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Telemetria-IoT Hub küldése
 
-Ha már működik az Azure-függvény, mostantól elküldhetjük a telemetria a IoT Hubba, amely átirányítja a Event Grid. Alkalmazzunk egy c#-alkalmazást, amellyel szimulálható a helyszíni eszközre vonatkozó helyadatok egy bérelt autóban. Az alkalmazás futtatásához szüksége lesz a fejlesztői gépen a .NET Core SDK 2.1.0 vagy annál nagyobbra. Kövesse az alábbi lépéseket a szimulált telemetria-adatIoT Hubek küldéséhez.
+Ha már működik az Azure-függvény, mostantól elküldhetjük a telemetria a IoT Hubba, amely átirányítja a Event Grid. Alkalmazzunk egy C# alkalmazással, amely egy bérelt autó járműbeli eszközére vonatkozó helyadatok szimulálása. Az alkalmazás futtatásához szüksége lesz a fejlesztői gépen a .NET Core SDK 2.1.0 vagy annál nagyobbra. Kövesse az alábbi lépéseket a szimulált telemetria-adatIoT Hubek küldéséhez.
 
-1. Töltse le a [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) c# projektet. 
+1. Töltse le a [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# projektet. 
 
 2. Nyissa meg a simulatedCar.cs-fájlt egy tetszőleges szövegszerkesztőben, és cserélje le a `connectionString` értékét az eszköz regisztrálásakor mentett értékre, és mentse a fájl módosításait.
  
