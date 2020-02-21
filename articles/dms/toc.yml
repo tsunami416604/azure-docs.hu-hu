@@ -73,7 +73,7 @@
           href: known-issues-azure-sql-db-managed-instance-online.md
         - name: Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be
           href: known-issues-azure-mysql-online.md
-        - name: Ismert problémák – Online migrálás PostgreSQL-ből Azure DB for PostgreSQL-be – Egyetlen kiszolgáló
+        - name: Ismert problémák – Online migrálás PostgreSQL-ből Azure DB for PostgreSQL-be
           href: known-issues-azure-postgresql-online.md
         - name: Ismert problémák – Online migrálás Oracle-ből Azure DB for PostgreSQL-be – Egyetlen kiszolgáló
           href: known-issues-oracle-azure-postgresql-online.md

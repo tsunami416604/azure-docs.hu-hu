@@ -1,52 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure Media Services Video Indexer dokumentációja
+### YamlMime:Landing
+title: Megismerheti az Azure Media Services Video Indexert
+summary: Az Azure Media Services Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Cognitive Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel.
 metadata:
-  title: Az Azure Media Services Video Indexer dokumentációja | Microsoft Docs
-  description: A Video Indexer ismertetése.
+  title: Az Azure Media Services Video Indexer dokumentációja
+  description: Az Azure Media Services Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Cognitive Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel.
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.subservice: video-indexer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Az Azure Media Services Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Cognitive Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel.<br/>Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">összehasonlító dokumentumot</a>.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: video-indexer-overview.md
-            html: <p>A Video Indexer médiakezelő MI-technológiákkal segíti a megállapítások kinyerését a videókból.</p>
-            image:
-              src: media/index/AMSIcons-media_servicesV3.svg
-            title: Mi az az Azure Media Services Video Indexer?
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Jelentkezzen be a Video Indexer webhelyére, és töltse fel első videóját:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: Megállapítások kinyerése
-            href: /azure/media-services/video-indexer/video-indexer-get-started
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan nyerhet ki megállapításokat a videóiból a Video Indexer API-val:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: Megállapítások kinyerése
-            href: /azure/media-services/video-indexer/video-indexer-use-apis
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77485114"
+landingContent:
+- title: Az Azure Media Services Video Indexer bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Video Indexer?
+      url: video-indexer-overview.md
+    - text: A Video Indexer és a Media Services v3 előzetes beállításainak összehasonlítása
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: Gyakori kérdések
+      url: faq.md
+    - text: Felhasználói vélemény
+      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - linkListType: whats-new
+    links:
+    - text: A Video Indexer újdonságai
+      url: release-notes.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Regisztráljon, és töltsön fel egy videót
+      url: video-indexer-get-started.md
+    - text: Felhasználók meghívása
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure-hoz csatlakoztatott fiók létrehozása
+      url: connect-to-azure.md
+    - text: A Video Indexer API használata
+      url: video-indexer-use-apis.md
+    - text: Videók feltöltése és indexelése
+      url: upload-index-videos.md
+    - text: Vizsgálja meg az API által előállított kimenetet
+      url: video-indexer-output-json-v2.md
+    - text: Video Indexer-vezérlők beágyazása az alkalmazásokba
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: Kódminták
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: Tartalommodellek testreszabása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Márkamodell testreszabása
+      url: customize-brands-model-with-website.md
+    - text: Nyelvi modell testreszabása
+      url: customize-language-model-with-website.md
+    - text: Személymodell testreszabása
+      url: customize-person-model-with-website.md

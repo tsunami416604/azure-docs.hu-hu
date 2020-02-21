@@ -431,53 +431,9 @@
           items:
             - name: Apache Hadoop-tesztkörnyezet használata
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Az Apache Pig használata
+              href: use-pig.md
         - name: Fejlesztés
-          items:
-            - name: A MapReduce használata az Apache Hadooppal
-              items:
-                - name: A MapReduce áttekintése
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: Az SSH használata
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: A cURL használata
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Azure PowerShell használatával
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: A .NET-hez készült SDK használata
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: A MapReduce-minták futtatása
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: Egyéni Apache Hadoop MapReduce-programok futtatása
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Streamelő MapReduce programok fejlesztése C# nyelven'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Java MapReduce programok fejlesztése
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 'Az Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként'
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 'Kinyerés, átalakítás és betöltés nagy léptékben'
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: Big Data típusú adatok elemzése
-              items:
-                - name: Elemzés a Power Queryvel
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: A Power BI csatlakoztatása az interaktív lekérdezéshez
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: A Power BI csatlakoztatása az Apache Hadoophoz
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Az Excel csatlakoztatása az Apache Hadoophoz
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Kapcsolódás az Apache Hive JDBC-illesztővel
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: Tárolt tweetek elemzése
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Javaslatok létrehozása az Apache Mahout használatával
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: Speciális elemzések a HDInsighthoz
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: Kezelés
           items:
             - name: Üres élcsomópontok használata
               href: ./hdinsight-apps-use-edge-node.md

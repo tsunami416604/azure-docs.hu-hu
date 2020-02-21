@@ -130,10 +130,14 @@
       items:
         - name: Jelszó nélküli használat üzembe helyezése
           href: howto-authentication-passwordless-deployment.md
-        - name: Jelszó nélküli biztonsági kulcsok
-          href: howto-authentication-passwordless-security-key.md
-        - name: Jelszó nélküli Windows 10
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Jelszó nélküli FIDO2 biztonsági kulcsok
+          items:
+            - name: FIDO2 biztonsági kulcsok engedélyezése a bérlő számára
+              href: howto-authentication-passwordless-security-key.md
+            - name: Bejelentkezés Windows 10-eszközökre
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Jelszó nélküli telefonos bejelentkezés
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello

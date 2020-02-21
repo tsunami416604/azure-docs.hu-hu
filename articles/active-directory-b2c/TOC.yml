@@ -81,6 +81,9 @@
         - name: SAML-szolgáltató regisztrálása
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: Gráfalkalmazás regisztrálása
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: Webes API-alkalmazás hozzáadása
           href: add-web-application.md
         - name: Natív ügyfélalkalmazás hozzáadása
@@ -377,8 +380,6 @@
       items:
         - name: Felhasználók migrálása
           href: user-migration.md
-        - name: Felhasználók migrálása külső identitásokkal
-          href: migrate-social-identities.md
 - name: Referencia
   items:
     - name: Az Identity Experience Framework kibocsátási megjegyzései
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: Hibakódok
       href: error-codes.md
+    - name: Microsoft Graph API-műveletek
+      href: microsoft-graph-operations.md
     - name: Régiónkénti elérhetőség és az adatok tárolási helye
       href: data-residency.md
-    - name: Számlázás engedélyezése
+    - name: Számlázási modell
       href: billing.md
     - name: Fenyegetések kezelése
       href: threat-management.md

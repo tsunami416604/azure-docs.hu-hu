@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: Windows rendszerű Azure-beli virtuális gépek hibaelhárítása
+summary: Az Azure-beli virtuális gépek hibaelhárításával kapcsolatos dokumentáció
+metadata:
+  title: Windows rendszerű Azure-beli virtuális gépek hibaelhárítása
+  description: Windows rendszerű virtuális gépek Azure-ban való hibaelhárításának és kezelésének dokumentációja.
+  services: virtual-machines-windows
+  ms.service: virtual-machines-windows
+  ms.topic: landing-page
+  author: genlin
+  ms.author: genli
+  ms.date: 09/09/2019
+  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
+  ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77519240"
+landingContent:
+- title: Üzembehelyezési problémák megoldása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A virtuális gépek Azure-beli telepítése, újraindítása vagy átméretezése során jelentkező foglalási hibák elhárítása
+      url: allocation-failure.md
+    - text: Az új virtuális gépek létrehozásakor felmerülő üzembehelyezési hibák elhárítása az Azure-ban
+      url: troubleshoot-deployment-new-vm-windows.md
+    - text: Érvénytelen sablonnal kapcsolatos hibák elhárítása
+      url: ../../azure-resource-manager/templates/error-invalid-template.md
+    - text: Nem elérhető termékváltozattal kapcsolatos hibák elhárítása
+      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+- title: Útmutatás a virtuális gépek üzembe helyezéséhez
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+    - text: Ügyféloldali Windows operációs rendszerek üzembe helyezése vagy létrehozása az Azure-ban
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+    - text: Kvótákhoz kapcsolódó hibák elhárítása
+      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+- title: Nem tudok csatlakozni a virtuális gépemhez
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gyorsműveletek az RDP-kapcsolatok gyakori hibáinak megoldásához
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+    - text: Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+    - text: Azure-beli virtuális géphez RDP használatával való csatlakozáskor jelentkező hitelesítési hibák elhárítása
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+    - text: A virtuálisgép-vendég hálózati kártyája le van tiltva
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+- title: Új jelszó létrehozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A távoli asztali szolgáltatás, illetve a hozzá tartozó bejelentkezési jelszó visszaállítása Windows rendszerű virtuális gépen
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+    - text: Azure-beli virtuális gép helyi Windows-jelszavának visszaállítása kapcsolat nélküli módszerrel
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+    - text: Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+    - text: Távoli asztali kapcsolatok hibaelhárítása Azure-beli virtuális gépeken
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+- title: A virtuális gép nem indul
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Lemez ellenőrzésével kapcsolatos rendszerindítási hiba
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+    - text: BitLocker rendszerindítási hiba
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+    - text: Hiba történt az ügynökkonfiguráció frissítése közben
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: Gyakori kék képernyős hiba
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+- title: Nem lehet elindítani vagy leállítani a virtuális gépet
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Virtuális gép üzembehelyezési problémáinak elhárítása
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+    - text: Foglalási hibák elhárítása (klasszikus üzemi modell)
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+    - text: Hiba történt az ügynökkonfiguráció frissítése közben
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: Virtuális gép életciklusa és állapotai
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+- title: A virtuális gép váratlanul újraindul
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Virtuális gépek újraindítási naplóinak megtekintése az újraindítás okának azonosításához
+      url: https://azure.microsoft.com/blog/viewing-vm-reboot-logs
+    - text: Rendszerindítási hibák diagnosztizálása és helyreállítása újraindítás után
+      url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
+    - text: Az Azure-beli virtuális gépek tervezett karbantartásának megismerése
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+    - text: Az Azure-beli virtuális gép indítása elakadt a Windows Update-nél
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+- title: Virtuális lemezek kezelésével kapcsolatos problémák
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Virtuális lemezek – GYIK
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+    - text: Foglalási hibák elhárítása egy virtuális gép átméretezésekor
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+    - text: A virtuális gépen található ideiglenes meghajtó megismerése
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+    - text: Az Azure Managed Disks áttekintése
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+- title: A Disk Encryptionnel kapcsolatos problémák
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Disk Encryption hibaelhárítása
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+    - text: Azure Disk Encryption – GYIK
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+    - text: Azure-bővítmények hibaelhárítása
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+- title: Virtuális gép teljesítményével kapcsolatos problémák
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hibaelhárítás – A megosztott rendszerképek replikációja lassú
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+- title: Virtuálisgép-bővítményekkel kapcsolatos problémák
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A bővítmények általános hibaelhárítási útmutatója
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+    - text: A bővítmény telepítése a virtuális gépre
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+    - text: Egyéniszkript-bővítmény Windows rendszerre
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+- title: Biztonsági mentés és visszaállítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása az Azure Portalon
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot

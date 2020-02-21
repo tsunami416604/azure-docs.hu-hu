@@ -305,46 +305,50 @@
       items:
         - name: Mi az a hangvezérelt asszisztens?
           href: voice-assistants.md
-    - name: Asszisztens létrehozása
+    - name: Egyéni parancsok (előzetes verzió)
       items:
-        - name: Egyéni parancsok (előzetes verzió)
+        - name: Mik azok az egyéni parancsok?
           href: custom-commands.md
-        - name: Direct Line Speech
+        - name: Rövid útmutatók
+          items:
+            - name: Egyéni parancs létrehozása (előzetes verzió)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: Egyéni parancsok használata Custom Voice-szal (előzetes verzió)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Egyéni parancsok használata a Speech SDK-val (előzetes verzió)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: Útmutatók
+          items:
+            - name: Egyéni parancsok teljesítése a Speech SDK-val
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: Paraméter-ellenőrzés hozzáadása az egyéni parancsokhoz
+              href: how-to-custom-speech-commands-validations.md
+            - name: Megerősítés hozzáadása egyéni parancshoz
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: Egylépéses javítás hozzáadása egyéni parancshoz
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: Mi az a Direct Line Speech?
           href: direct-line-speech.md
-    - name: Rövid útmutatók
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: 'Java (Windows, macOS, Linux)'
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: Egyéni parancs létrehozása (előzetes verzió)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Egyéni parancsok használata Custom Voice-szal (előzetes verzió)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Egyéni parancsok használata a Speech SDK-val (előzetes verzió)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Útmutatók
-      items:
-        - name: Egyéni parancsok teljesítése a Speech SDK-val
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Paraméter-ellenőrzés hozzáadása az egyéni parancsokhoz
-          href: how-to-custom-speech-commands-validations.md
-        - name: Megerősítés hozzáadása egyéni parancshoz
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: Egylépéses javítás hozzáadása egyéni parancshoz
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Oktatóanyagok
-      items:
-        - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: További források
-      items:
-        - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
-          href: faq-voice-assistants.md
+        - name: Rövid útmutatók
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: Oktatóanyagok
+          items:
+            - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: További források
+          items:
+            - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+              href: faq-voice-assistants.md
 - name: Testreszabás
   expanded: false
   items:

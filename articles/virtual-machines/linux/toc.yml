@@ -79,35 +79,94 @@
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Virtuálisgép-típusok és -méretek
       items:
-        - name: Méretcsaládok
+        - name: A virtuális gépek mérete
           href: sizes.md
         - name: 2. generációs virtuális gépek
           href: generation-2.md
         - name: Általános célú
-          href: sizes-general.md
           items:
+            - name: Áttekintés
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2-sorozat
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B sorozat – adatlöket-kezelés
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DC sorozat
+              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 és DSv2 sorozat
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv3 és DSv3 sorozat
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dav4 és Dasv4 sorozat
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Számításra optimalizált
-          href: sizes-compute.md
-        - name: Memóriaoptimalizált
-          href: sizes-memory.md
           items:
+            - name: Áttekintés
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Fsv2 sorozat
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Memóriaoptimalizált
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Áttekintés
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 és DSv2 sorozat – 11–15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev3 és Esv3 sorozat
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Eav4 és Easv4 sorozat
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: M sorozat
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Mv2 sorozat
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Korlátozott vCPU-k
               href: constrained-vcpu.md
         - name: Tárolásra optimalizált
-          href: sizes-storage.md
           items:
+            - name: Áttekintés
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Lsv2 sorozat
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Teljesítmény optimalizálása
               href: storage-performance.md
         - name: Gyorsított számítás
           items:
             - name: GPU-optimalizált
-              href: sizes-gpu.md
+              items:
+                - name: Áttekintés
+                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NC sorozat
+                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv2 sorozat
+                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv3 sorozat
+                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: ND sorozat
+                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NDv2 sorozat
+                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NV sorozat
+                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv3 sorozat
+                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv4 sorozat
+                  href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GPU-illesztők beállítása
               href: n-series-driver-setup.md
         - name: Nagy teljesítményű számítás
-          href: sizes-hpc.md
+          displayName: H-series
+          items:
+            - name: Áttekintés
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H-sorozat
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HB-sorozat
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HBv2 sorozat
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HC-sorozat
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Fenntartott példányok
           items:
             - name: Előre fizetés virtuális gépekért
@@ -119,11 +178,11 @@
         - name: Spot virtuális gépek
           href: spot-vms.md
         - name: Előző generációk
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Izolált méretek
           href: isolation.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
-          href: acu.md
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-kvóták
           href: quotas.md
         - name: Fenntartott példányok
@@ -322,7 +381,7 @@
         - name: Frissítések és javítások
           items:
             - name: A Red Hat frissítési infrastruktúrája
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure virtuálisgép-ügynök
           items:
             - name: Áttekintés
@@ -712,4 +771,4 @@
     - name: GYIK
       href: faq.md
 - name: Hibaelhárítás
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
