@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025146"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524256"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
 
@@ -58,7 +58,7 @@ Előfordulhat, hogy meg kívánja őrizni a feladatok által létrehozott napló
 > 
 
 ## <a name="job-preparation-task"></a>Feladat-előkészítési feladat
-A feladat műveleteinek végrehajtása előtt a Batch végrehajtja a feladat-előkészítési feladatot minden olyan számítási csomóponton, amely a feladatok futtatására van ütemezve. Alapértelmezés szerint a Batch szolgáltatás megvárja a feladat-előkészítési feladat befejeződését, mielőtt futtatja a csomóponton végrehajtott végrehajtásra ütemezett feladatokat. Azonban beállíthatja, hogy a szolgáltatás ne várjon. Ha a csomópont újraindul, a feladat-előkészítési feladat újra lefut, de ezt a viselkedést is letilthatja.
+A feladat műveleteinek végrehajtása előtt a Batch végrehajtja a feladat-előkészítési feladatot minden olyan számítási csomóponton, amely a feladatok futtatására van ütemezve. Alapértelmezés szerint a Batch szolgáltatás megvárja a feladat-előkészítési feladat befejeződését, mielőtt futtatja a csomóponton végrehajtott végrehajtásra ütemezett feladatokat. Azonban beállíthatja, hogy a szolgáltatás ne várjon. Ha a csomópont újraindul, a feladat-előkészítési feladat újra lefut, de ezt a viselkedést is letilthatja. Ha a feladat egy feladat-előkészítési feladattal és egy Feladatkezelő feladattal van konfigurálva, a feladat-előkészítési feladat a Feladatkezelő feladat előtt fut, ugyanúgy, mint az összes többi feladathoz. A feladat-előkészítési feladat mindig először fut.
 
 A feladat-előkészítési feladat csak a feladat futtatására ütemezett csomópontokon hajtható végre. Ez megakadályozza az előkészítési feladatok szükségtelen végrehajtását abban az esetben, ha egy csomóponthoz nincs hozzárendelve feladat. Ez akkor fordulhat elő, ha egy adott feladathoz tartozó tevékenységek száma kisebb, mint a készletben lévő csomópontok száma. Ez akkor is érvényes, ha az [egyidejű feladat-végrehajtás](batch-parallel-node-tasks.md) engedélyezve van, így a csomópontok üresjáratban maradnak, ha a feladatok száma nem éri el az összes lehetséges egyidejű feladatot. Ha nem futtatja a feladat-előkészítési feladatot az üresjárati csomópontokon, kevesebb pénzt tölthet fel az adatátviteli költségekkel.
 

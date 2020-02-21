@@ -4,15 +4,15 @@ description: Ez a cikk a webalkalmazási tűzfalakra vonatkozó kérelmek méret
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839971"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526790"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
 
@@ -26,7 +26,7 @@ A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését. Gyako
 
 A következő attribútumok adhatók hozzá a kizárási listához név szerint. A kiválasztott mező értékeit a rendszer nem értékeli ki a WAF-szabályok alapján, de a nevük továbbra is fennáll (lásd az alábbi 1. példát, a felhasználói ügynök fejlécének értékét a rendszer kizárja a WAF kiértékelése alól). A kizárási listán el kell távolítani a mező értékének ellenőrzését.
 
-* Kérések fejlécei
+* Kérelem fejlécei
 * Cookie-k kérése
 * A kérelem attribútumának neve (ARG) kizárási elemként vehető fel, például:
 
@@ -91,10 +91,16 @@ Tehát ha az URL-címet `http://www.contoso.com/?user%281%29=fdafdasfda` átadni
 A webalkalmazási tűzfal lehetővé teszi, hogy az alsó és felső határokon belül konfigurálja a kérelmek méretére vonatkozó korlátozásokat. A következő két méretkorlát-konfiguráció érhető el:
 
 - A kérelem törzsének maximális mérete mezője kilobájtban van megadva, és a kérelmek teljes méretére vonatkozó korlátozásokat a fájlok feltöltése nélkül szabályozza. Ez a mező 1 KB-os minimum 128 – KB-os maximális értékre terjedhet. Az alapértelmezett érték a kérelem törzsének mérete 128 KB.
-- A fájlfeltöltés korlátozása mező a MB-ban van megadva, és a maximálisan megengedett fájlfeltöltés-méretet szabályozza. Ennek a mezőnek legalább 1 MB-nyi értéke lehet, és legfeljebb 500 MB a nagyméretű SKU-példányok esetében, míg a közepes SKU-ban legfeljebb 100 MB van. A fájl feltöltési korlátjának alapértelmezett értéke 100 MB.
+- A fájlfeltöltés korlátozása mező a MB-ban van megadva, és a maximálisan megengedett fájlfeltöltés-méretet szabályozza. Ennek a mezőnek legalább 1 MB-nyi értéke lehet, a következő maximális értékekkel:
+
+   - 100 MB v1 közepes WAF-átjárók esetén
+   - 500 MB a v1 nagyméretű WAF-átjárók esetében
+   - 750 MB a v2 WAF-átjárók számára 
+
+ A fájl feltöltési korlátjának alapértelmezett értéke 100 MB.
 
 A WAF egy konfigurálható gombot is kínál a kérelem törzsének be-és kikapcsolásához. Alapértelmezés szerint a kérelem törzsének ellenőrzése engedélyezve van. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a WAF nem értékeli ki a HTTP-üzenet törzsének tartalmát. Ilyen esetekben a WAF folytatja a WAF-szabályok betartatását a fejléceken, a cookie-kon és az URI-n. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a kérelem törzsének maximális mérete mezője nem alkalmazható, és nem állítható be. A kérelem törzsének kikapcsolásával a 128 KB-nál nagyobb üzenetek küldhetők a WAF, de az üzenettörzs nem kerül ellenőrzésre a biztonsági rések esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).

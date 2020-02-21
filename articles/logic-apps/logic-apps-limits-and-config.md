@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366422"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485046"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -155,7 +155,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. |
 | Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p>Az integrációs szolgáltatási környezet esetében a Logic Apps motor támogatja ezt a korlátot, de az összekötők a motor korlátján belül saját darabolási korlátokkal rendelkeznek, például lásd: az [Azure Blob Storage CONNECTOR API-referenciája](https://docs.microsoft.com/connectors/azureblob/). További információk a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>Karakterek korlátai
 
@@ -248,12 +248,16 @@ A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.mic
 | Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy BLOB-tárolót](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
-| Futásidejű végpont | Korlát | Megjegyzések |
-|------------------|-------|-------|
-| Olvasási hívások száma 5 percenként | 60,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Hívások hívása 5 percenként | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Hívások követése 5 percenként | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
-| Egyidejű hívások blokkolása | ~1,000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>Átviteli sebesség korlátai
+
+| Futásidejű végpont | Ingyenes | Alapszintű | Standard | Megjegyzések |
+|------------------|------|-------|----------|-------|
+| Olvasási hívások száma 5 percenként | 3,000 | 30,000 | 60,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Hívások hívása 5 percenként | 3,000 | 30,000 | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Hívások követése 5 percenként | 3,000 | 30,000 | 45,000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Egyidejű hívások blokkolása | ~1,000 | ~1,000 | ~1,000 | Minden SKU esetében azonos. Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 ||||
 
 <a name="b2b-protocol-limits"></a>

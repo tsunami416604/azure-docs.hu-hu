@@ -1,13 +1,12 @@
 ---
 title: Csatlakozáskezelő (előzetes verzió) | Microsoft Docs
-description: Ismerje meg, hogyan figyelheti a hálózati kommunikációt egy elosztott környezetben a Csatlakozáskezelő (előzetes verzió) használatával
+description: Ismerje meg, hogyan figyelheti a hálózati kommunikációt egy elosztott környezetben a kapcsolatkezelő (előzetes verzió) használatával.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
 manager: agummadi
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,119 +15,142 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 8f3a6f002fbebe215699c9b97a6dce63177c446f
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169320"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506251"
 ---
-# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Egyesített kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
+# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
-A kapcsolódási figyelő (előzetes verzió) egységes, végpontok közötti kapcsolat-figyelési képességeket biztosít az Azure Network Watcher a hibrid és az Azure-beli Felhőbeli üzembe helyezéshez. Az Azure Network Watcher eszközeivel figyelheti, diagnosztizálhatja és tekintheti meg az Azure-beli üzemelő példányok kapcsolattal kapcsolatos metrikáit.
+A kapcsolódási figyelő (előzetes verzió) egységes, végpontok közötti kapcsolatok figyelését teszi lehetővé az Azure Network Watcherban. A kapcsolódási figyelő (előzetes verzió) funkció támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést. A Network Watcher eszközöket biztosít az Azure-környezetek kapcsolattal kapcsolatos metrikáinak figyelésére, diagnosztizálására és megtekintésére.
 
-Legfontosabb használati esetek:
+Íme néhány használati eset a Csatlakozáskezelő (előzetes verzió) szolgáltatáshoz:
 
-- Rendelkezik egy előtér-webkiszolgáló virtuális géppel, amely egy többrétegű alkalmazásban található adatbázis-kiszolgáló virtuális géppel kommunikál. Szeretné megtekinteni a két virtuális gép közötti hálózati kapcsolatot.
-- Azt szeretné, hogy az USA keleti régiójában lévő virtuális gépek Pingelje a virtuális gépeket az USA középső régiójában, és hasonlítsa össze a régiók közötti
-- Több helyi Office-hellyel rendelkezik, mint például Seattle. Csatlakozás az Office 365 URL-címekhez. Össze szeretné hasonlítani a felhasználók által tapasztalt késéseket a Seattle és a Ashburn Office 365 URL-címeivel.
-- Egy olyan hibrid alkalmazásra van beállítva, amelyhez kapcsolódnia kell egy Azure Storage-végponthoz. Szeretné összehasonlítani a késést egy helyszíni hely és az Azure-alkalmazás között ugyanahhoz az Azure Storage-végponthoz való csatlakozással.
-- Szeretné megtekinteni a Felhőbeli alkalmazást üzemeltető Azure-beli virtuális gépek kapcsolódását a helyszíni telepítésekhez.
+- Az előtér-webkiszolgáló virtuális gépe egy adatbázis-kiszolgáló virtuális géppel kommunikál egy többrétegű alkalmazásban. Szeretné megtekinteni a két virtuális gép közötti hálózati kapcsolatot.
+- Azt szeretné, hogy az USA keleti régiójában lévő virtuális gépek Pingelje a virtuális gépeket az USA középső régiójában, és szeretné összehasonlítani a régiók közötti hálózati késéseket.
+- Több helyszíni Office-telephelye is van Seattle-ben, Washingtonban és Ashburn-ben, Virginia államban. Az Office-helyek az Office 365 URL-címekhez csatlakoznak. Az Office 365 URL-címeinek felhasználói számára hasonlítsa össze a Seattle és a Ashburn közötti késéseket.
+- A hibrid alkalmazásnak kapcsolódnia kell egy Azure Storage-végponthoz. A helyszíni hely és az Azure-alkalmazás ugyanahhoz az Azure Storage-végponthoz csatlakozik. Össze szeretné hasonlítani a helyszíni hely késéseit az Azure-alkalmazás késésével.
+- Szeretné megtekinteni a helyszíni telepítések és a felhőalapú alkalmazást futtató Azure-beli virtuális gépek közötti kapcsolatot.
 
-Ebben az előzetes verzióban a megoldás két fő funkció közül a legjobbat egyesíti: Network Watcher a [kapcsolat figyelője](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) és a Network Performance monitor (NPM) [szolgáltatás kapcsolódási figyelője](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity).
+Az előzetes verzióban a kapcsolati figyelő a két funkció közül a legjobbat ötvözi: a Network Watcher a [kapcsolat figyelője](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) funkciót és a Network Performance monitor (NPM) [szolgáltatás-kapcsolat figyelője](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) funkciót.
 
-Kiemeli
+Íme néhány előny a Csatlakozáskezelő (előzetes verzió) szolgáltatáshoz:
 
 * Egységes, intuitív élmény az Azure-hoz és a hibrid monitorozási igényekhez
-* Régiók közötti kapcsolat, több munkaterület közötti kapcsolatok figyelése
+* Régiók közötti, több-munkaterület közötti kapcsolat figyelése
 * Nagyobb Szondázási gyakoriságok és a hálózati teljesítmény jobb láthatósága
 * Gyorsabb riasztás a hibrid üzembe helyezésekhez
-* HTTP-, TCP-és ICMP-alapú kapcsolat-ellenőrzések támogatása
+* HTTP-, TCP-és ICMP-alapú kapcsolatok ellenőrzésének támogatása 
 * Metrikák és Log Analytics támogatás az Azure és a nem Azure-beli tesztelési beállításokhoz
 
-![Kapcsolatfigyelő](./media/connection-monitor-2-preview/hero-graphic.png)
+![Ábra, amely bemutatja, hogyan kommunikál a kapcsolatkezelő az Azure-beli virtuális gépekkel, a nem Azure-beli gazdagépekkel,-végpontokkal és az adattárolási hellyel](./media/connection-monitor-2-preview/hero-graphic.png)
 
-Kövesse az alábbi lépéseket a figyelés megkezdéséhez a Csatlakozáskezelő használatával (előzetes verzió)
+A Csatlakozáskezelő (előzetes verzió) figyeléshez való használatának megkezdéséhez kövesse az alábbi lépéseket: 
 
-## <a name="step-1-install-monitoring-agents"></a>1\. lépés: figyelési ügynökök telepítése
+1. Figyelési ügynökök telepítése.
+1. Network Watcher engedélyezése az előfizetésben.
+1. Hozzon létre egy összekötő-figyelőt.
+1. Az adatelemzés és a riasztások beállítása.
+1. A hálózatban felmerülő problémák diagnosztizálása.
 
-A kapcsolati figyelő egyszerűsített végrehajtható fájlok használatával futtatja a kapcsolati ellenőrzéseket.  Az Azure és a helyszíni környezetek közötti kapcsolati ellenőrzéseket is támogatjuk. A használni kívánt végrehajtható fájl attól függ, hogy a virtuális gép az Azure-ban vagy a helyszínen van-e tárolva.
+A következő szakaszokban részletesen ismertetjük ezeket a lépéseket.
+
+## <a name="install-monitoring-agents"></a>Figyelési ügynökök telepítése
+
+A kapcsolati figyelő egyszerűsített végrehajtható fájlokra támaszkodik a kapcsolati ellenőrzések futtatásához.  Az Azure-környezetek és a helyszíni környezetek közötti kapcsolati ellenőrzéseket is támogatja. A használt végrehajtható fájl attól függ, hogy a virtuális gép az Azure-ban vagy a helyszínen van-e tárolva.
 
 ### <a name="agents-for-azure-virtual-machines"></a>Az Azure Virtual Machines-ügynökök
 
-Ahhoz, hogy a Csatlakozáskezelő felismerje az Azure-beli virtuális gépeket a monitorozás forrásaként, telepítenie kell a Network Watcher Agent virtuálisgép-bővítményt (más néven Network Watcher bővítményt). A Network Watcher ügynök bővítménye az Azure-beli virtuális gépek végpontok közötti figyelésének és egyéb speciális funkcióinak indítására vonatkozó követelmény. [Létrehozhat egy virtuális gépet, és telepítheti az Network Watcher-bővítményt](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)[is.](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)  A [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) és a [Windows rendszerhez](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows) készült Network Watcher-bővítményt külön is telepítheti, konfigurálhatja és elháríthatja.
+Ahhoz, hogy a Csatlakozáskezelő felismerje az Azure-beli virtuális gépeket megfigyelési forrásként, telepítse a Network Watcher-ügynök virtuálisgép-bővítményét. Ezt a bővítményt *Network Watcher bővítménynek*is nevezzük. Az Azure Virtual Machines használatához a bővítménynek teljes körű monitorozást és egyéb speciális funkciókat kell elindítania. 
 
-Ha a NSG vagy a tűzfalszabályok blokkolja a forrás és a cél közötti kommunikációt, a kapcsolati figyelő felismeri a problémát, és diagnosztikai üzenetként jeleníti meg a topológiában. A kapcsolat figyelésének engedélyezéséhez győződjön meg arról, hogy a NSG és a tűzfalszabályok engedélyezik a TCP-vagy ICMP-csomagokat a forrás és a cél között.
+A [virtuális gép létrehozásakor](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)a Network Watcher bővítményt is telepítheti. A [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) és a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)Network Watcher bővítményét külön is telepítheti, konfigurálhatja és elháríthatja.
 
-### <a name="agents-for-on-premise-machines"></a>Helyszíni gépek ügynökei
+A hálózati biztonsági csoport (NSG) vagy a tűzfal szabályai letilthatják a forrás és a cél közötti kommunikációt. A Csatlakozáskezelő észleli ezt a problémát, és diagnosztikai üzenetként jeleníti meg a topológiában. A kapcsolat figyelésének engedélyezéséhez győződjön meg arról, hogy a NSG és a tűzfalszabályok engedélyezik a TCP-vagy ICMP-csomagok használatát a forrás és a cél között.
 
-Ahhoz, hogy a kapcsolatkezelő felismerje a helyszíni gépeket a figyeléshez, telepítenie kell a Log Analytics-ügynököt a gépekre, és engedélyeznie kell a hálózati teljesítmény figyelésére szolgáló megoldást. Ezek az ügynökök Log Analytics munkaterületekhez kapcsolódnak, és a figyelés megkezdése előtt be kell állítani a munkaterület-azonosítót és az elsődleges kulcsot.
+### <a name="agents-for-on-premises-machines"></a>Helyszíni gépek ügynökei
 
-A Windows rendszerű gépek Log Analytics ügynökének telepítéséhez kövesse a [hivatkozásban](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows) említett utasításokat
+Ahhoz, hogy a Csatlakozáskezelő felismerje a helyszíni gépeket a figyeléshez, telepítse a Log Analytics ügynököt a gépekre. Ezután engedélyezze a Network Performance Monitor megoldást. Ezek az ügynökök Log Analytics munkaterületekhez vannak társítva, ezért be kell állítania a munkaterület-azonosítót és az elsődleges kulcsot, mielőtt az ügynökök el tudják indítani a figyelést.
 
-Győződjön meg arról, hogy a célhely elérhető, ha vannak tűzfalak vagy virtuális hálózati berendezések (NVA) az elérési útban.
+A Windows rendszerű gépek Log Analytics ügynökének telepítéséhez lásd: [Azure monitor virtuálisgép-bővítmény a Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)rendszerhez.
 
-## <a name="step-2-enable-network-watcher-on-your-subscription"></a>2\. lépés: az előfizetéshez tartozó Network Watcher engedélyezése
+Ha az elérési út tartalmazza a tűzfalakat vagy a hálózati virtuális berendezéseket (NVA), akkor győződjön meg arról, hogy a célhely elérhető.
 
-A VNET összes előfizetése engedélyezve van a Network Watcher. Amikor létrehoz egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz az adott Virtual Network régiójában és előfizetésében. A Network Watcher automatikus engedélyezéséhez nincs hatással az erőforrásokra vagy a kapcsolódó díjakra. Győződjön meg arról, hogy a Network Watcher nincs explicit módon letiltva az előfizetésen. További információ: [Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+## <a name="enable-network-watcher-on-your-subscription"></a>Network Watcher engedélyezése az előfizetésen
 
-## <a name="step-3-create-connection-monitor"></a>3\. lépés: a kapcsolatkezelő létrehozása 
+A virtuális hálózattal rendelkező összes előfizetés engedélyezve van a Network Watcher. Amikor létrehoz egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában és előfizetésében. Ez az automatikus engedélyezés nem befolyásolja az erőforrásokat, vagy díjköteles. Győződjön meg arról, hogy a Network Watcher nincs explicit módon letiltva az előfizetésen. 
 
-A _kapcsolati figyelő_ rendszeres időközönként figyeli a kommunikációt, és tájékoztatja a forrás-és a cél végpontok közötti elérhetőségi, késési és hálózati topológiai változásokról. A források lehetnek olyan Azure-beli virtuális gépek vagy helyszíni számítógépek, amelyeken telepítve van egy figyelési ügynök. A célként megadott végpontok lehetnek Office 365 URL-címek, Dynamics 365 URL-címek, egyéni URL-címek, Azure-beli virtuális gépek erőforrás-azonosítói, IPv4, IPv6, FQDN vagy bármely tartománynév.
+További információ: [Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
 
-### <a name="accessing-connection-monitor-preview"></a>A Csatlakozáskezelő elérése (előzetes verzió)
+## <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása 
 
-1. A Azure Portal kezdőlapján keresse fel a Network Watcher
-2. A Network Watcher bal oldali paneljének figyelés szakaszában kattintson a "kapcsolatbeállítások (előzetes verzió)" fülre.
-3. A Csatlakozáskezelő (előzetes verzió) használatával létrehozott összes figyelőt láthatja. A rendszer a Csatlakozáskezelő lap klasszikus felhasználói felületének használatával létrehozott összes figyelőt a Csatlakozáskezelő lapon fogja látni.
+A kapcsolati figyelő rendszeres időközönként figyeli a kommunikációt. Tájékoztatja Önt a Elérhetőség és a késés változásairól. A forrás-és a cél végpontok közötti aktuális és korábbi hálózati topológiát is megtekintheti.
 
-    ![Figyelő létrehozása](./media/connection-monitor-2-preview/cm-resource-view.png)
+A források lehetnek olyan Azure-beli virtuális gépek vagy helyszíni számítógépek, amelyeken telepítve van egy felügyeleti ügynök. A célként megadott végpontok lehetnek Office 365 URL-címek, Dynamics 365 URL-címek, egyéni URL-címek, Azure-beli virtuális gépek erőforrás-azonosítói, IPv4, IPv6, FQDN vagy bármely tartománynév.
+
+### <a name="access-connection-monitor-preview"></a>Elérési kapcsolat figyelője (előzetes verzió)
+
+1. A Azure Portal kezdőlapján válassza a **Network Watcher**lehetőséget.
+1. A bal oldalon a **figyelés** szakaszban válassza a **Csatlakozáskezelő (előzetes verzió)** lehetőséget.
+1. Megjelenik az összes, a Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott figyelő. A kapcsolódási figyelő klasszikus felhasználói felületén létrehozott kapcsolódási figyelők megtekintéséhez lépjen a **Csatlakozáskezelő** lapra.
+
+    ![A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel](./media/connection-monitor-2-preview/cm-resource-view.png)
 
 
-### <a name="creating-a-connection-monitor"></a>Csatlakozáskezelő létrehozása
+### <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása
 
-A kapcsolat figyelője (előzetes verzió) használatával létrehozott csatlakozási figyelők lehetővé teszik a helyszíni és az Azure-beli virtuális gépek forrásként történő hozzáadását és a végpontokhoz való kapcsolódás figyelését, amely az Azure-t vagy bármely más URL-címet vagy IP-címet képes biztosítani.
+A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolódó figyelőkben a helyszíni és az Azure-beli virtuális gépeket is felveheti forrásként. Ezek a kapcsolati figyelők a végpontokhoz való kapcsolódás figyelésére is használhatók. A végpontok lehetnek az Azure-ban vagy bármely más URL-címen vagy IP-címen.
 
-A következő entitások szerepelnek a Csatlakozáskezelőben:
+A Csatlakozáskezelő (előzetes verzió) a következő entitásokat tartalmazza:
 
-* Csatlakozáskezelő erőforrás – régió-specifikus Azure-erőforrás. Az alább említett entitások a kapcsolatkezelő erőforrásának tulajdonságai.
-* Végpontok – a kapcsolati ellenőrzésekben részt vevő összes forrást és célhelyet végpontoknak nevezzük. Példa végpontra – Azure-beli virtuális gépek, helyszíni ügynökök, URL-címek és IP-címek
-* Konfiguráció tesztelése – minden teszt-konfiguráció protokoll-specifikus. A választott protokoll alapján megadhatja a portot, a küszöbértékeket, a tesztelés gyakoriságát és az egyéb paramétereket.
-* Test Group (tesztelési csoport) – minden tesztelési csoport forrás-és cél-végpontokat, valamint tesztelési konfigurációkat tartalmaz. Minden egyes Csatlakozáskezelő több tesztelési csoportot is tartalmazhat
-* Test – a forrás-végpont, a cél végpont és a tesztelési konfiguráció kombinációja egy tesztet hajt végre. A teszt az a legalacsonyabb szint, amelyen a figyelési adatellenőrzés (sikertelen volt a (z)% és a RTT)
+* **Csatlakozáskezelő erőforrás** – régióra jellemző Azure-erőforrás. A következő entitások mindegyike egy Csatlakozáskezelő erőforrás tulajdonságait képezi.
+* **Endpoint (végpont** ) – a kapcsolati ellenőrzésekben részt vevő forrás vagy cél. Ilyen végpontok például az Azure-beli virtuális gépek, a helyszíni ügynökök, az URL-címek és az IP-címek.
+* **Teszt konfiguráció** – egy adott protokollra jellemző konfiguráció. A választott protokoll alapján megadhatja a portot, a küszöbértékeket, a tesztelési gyakoriságot és az egyéb paramétereket.
+* **Test Group (tesztelési csoport** ) – a forrás-végpontokat, a célként megadott végpontokat és a tesztelési konfigurációkat tartalmazó csoport. Egy Csatlakozáskezelő több tesztelési csoportot is tartalmazhat.
+* **Test (teszt** ) – a forrás-végpont, a cél végpont és a tesztelési konfiguráció kombinációja. A teszt a legrészletesebben használt szint, amelyen a figyelési adatokat elérhetővé kell tennie. A figyelési adatmennyiség magában foglalja a sikertelen ellenőrzések százalékos arányát és az oda-és visszaút idejét (RTT).
 
- ![Figyelő létrehozása](./media/connection-monitor-2-preview/cm-tg-2.png)
+ ![A kapcsolati figyelőt bemutató diagram, a tesztelési csoportok és tesztek közötti kapcsolat meghatározása](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-#### <a name="from-portal"></a>A portálról
+#### <a name="create-a-connection-monitor-from-the-azure-portal"></a>Figyelő létrehozása a Azure Portalból
 
-A kapcsolódási figyelő létrehozásához kövesse az alábbi lépéseket:
+A Azure Portal a következő lépésekkel hozhat létre egy kapcsolódási figyelőt:
 
-1. A Csatlakozáskezelő (előzetes verzió) Irányítópultján kattintson a "létrehozás" gombra a bal felső sarokban.
-2. Az alapszintű lapon adja meg a kapcsolatok figyelője adatait
-   1. Csatlakozáskezelő neve – a figyelő neve. Az Azure-erőforrások szabványos elnevezési szabályai itt érvényesek.
-   2. Előfizetés – válasszon egy előfizetést a kapcsolatok figyelője számára.
-   3. Régió – válasszon egy régiót a Csatlakozáskezelő-erőforráshoz. Csak az ebben a régióban létrehozott forrás virtuális gépeket lehet kiválasztani.
-   4. Munkaterület konfigurációja – az alapértelmezett jelölőnégyzetre kattintva a Csatlakozáskezelő által létrehozott alapértelmezett munkaterületet használhatja a figyelési adatai tárolásához. Egyéni munkaterület kiválasztásához törölje a jelet a jelölőnégyzetből. Válassza ki az előfizetést és régiót a munkaterület kiválasztásához, amely a figyelési adatait fogja tárolni.
-   5. Tesztelési csoportok hozzáadásához kattintson a "Next: test groups" elemre.
+1. A **Csatlakozáskezelő (előzetes verzió)** irányítópultján, a bal felső sarokban kattintson a **Létrehozás**elemre.
+1. Az **alapvető beállítások** lapon adja meg a Csatlakozáskezelő adatait:
+   * **Csatlakozáskezelő neve** – adja hozzá a Csatlakozáskezelő nevét. Használja az Azure-erőforrások szabványos elnevezési szabályait.
+   * **Előfizetés** – válasszon egy előfizetést a kapcsolatok figyelője számára.
+   * **Régió** – válasszon régiót a kapcsolatok figyelője számára. Csak az ebben a régióban létrehozott forrás virtuális gépeket lehet kiválasztani.
+   * **Munkaterület konfigurációja** – a munkaterület tárolja a figyelési adatait. Használhat egyéni munkaterületet vagy az alapértelmezett munkaterületet is. 
+       * Az alapértelmezett munkaterület használatához jelölje be a jelölőnégyzetet. 
+       * Egyéni munkaterület kiválasztásához törölje a jelet a jelölőnégyzetből. Ezután válassza ki az előfizetést és a régiót az egyéni munkaterülethez. 
+1. A lap alján kattintson a Next ( **Tovább) gombra: csoportok tesztelése**.
 
-      ![Figyelő létrehozása](./media/connection-monitor-2-preview/create-cm-basics.png)
+   ![A Csatlakozáskezelő alapjai lapját ábrázoló képernyőfelvétel](./media/connection-monitor-2-preview/create-cm-basics.png)
 
-3. A test groups (tesztelési csoportok) lapon kattintson a "+ test Group" elemre egy tesztelési csoport hozzáadásához. Tesztelési csoportok hozzáadásához használja _a kapcsolódási figyelőben a tesztkörnyezet létrehozását_ . A kapcsolódási figyelő áttekintéséhez kattintson a "felülvizsgálat + létrehozás" gombra.
+1. A **test groups (tesztelési csoportok** ) lapon válassza a **+ teszt csoport**elemet. A tesztelési csoportok beállításával kapcsolatban lásd: [tesztkörnyezet létrehozása a kapcsolódási figyelőben](#create-test-groups-in-a-connection-monitor). 
+1. A lap alján válassza a **Tovább: Áttekintés + létrehozás** elemet a kapcsolódási figyelő áttekintéséhez.
 
-   ![Figyelő létrehozása](./media/connection-monitor-2-preview/create-tg.png)
+   ![A test groups (tesztelési csoportok) lapot és a tesztelési csoport részleteit tartalmazó panelt ábrázoló képernyőfelvétel](./media/connection-monitor-2-preview/create-tg.png)
 
-4. A "felülvizsgálat + létrehozás" lapon tekintse át az alapszintű információkat és a tesztelési csoportokat a Csatlakozáskezelő létrehozása előtt. A kapcsolódási figyelő szerkesztése a "felülvizsgálat + létrehozás" nézetből:
-   1. Az alapszintű adatok szerkesztéséhez használja a ceruza ikont a 2. képen szereplő 1. mezőben megadott módon.
-   2. Az egyes tesztelési csoportok szerkesztéséhez kattintson arra a tesztelési csoportra, amelyet szerkeszteni szeretne, és nyissa meg a tesztelési csoportot szerkesztési módban.
-   3. Az aktuális ár/hó az előzetes verzió során felmerülő költségeket jelzi. Jelenleg nem számítunk fel díjat a Csatlakozáskezelő használatához, így ez az oszlop nullát fog mutatni. Tényleges költség/hónap jelezte, hogy az általános elérhetőség után fizetendő díj. Ne feledje, hogy a log Analytics betöltési díjait a rendszer még az előzetes verzióban is alkalmazza.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át az alapszintű információkat és a tesztelési csoportokat a Csatlakozáskezelő létrehozása előtt. Ha módosítania kell a kapcsolódási figyelőt:
+   * Az alapszintű részletek szerkesztéséhez válassza a ceruza ikont.
+   * Egy tesztelési csoport szerkesztéséhez válassza ki azt.
 
-5. A "felülvizsgálat + létrehozás" lapon kattintson a "létrehozás" gombra a kapcsolódási figyelő létrehozásához.
+   > [!NOTE] 
+   > A **felülvizsgálat + létrehozás** lapon a Csatlakozáskezelő előzetes verziójának havi díja látható. Jelenleg az **aktuális költség** oszlop nem számít fel díjat. Ha a kapcsolódási figyelő általánosan elérhetővé válik, ebben az oszlopban a havi díj jelenik meg. 
+   > 
+   > Még a Csatlakozáskezelő előzetes verziójának szakasza is érvényes, Log Analytics betöltési díjat számítunk fel.
 
-   ![Figyelő létrehozása](./media/connection-monitor-2-preview/review-create-cm.png)
+1. Amikor készen áll a kapcsolódási figyelő létrehozására, a **felülvizsgálat + létrehozás** lap alján válassza a **Létrehozás**lehetőséget.
 
-6.  A Csatlakozáskezelő (előzetes verzió) létrehozza a figyelő erőforrást a háttérben.
+   ![Képernyőkép a Csatlakozáskezelőról, amely a felülvizsgálat + létrehozás lapot mutatja](./media/connection-monitor-2-preview/review-create-cm.png)
 
-#### <a name="from-armclient"></a>Armclient
+A Csatlakozáskezelő (előzetes verzió) létrehozza a figyelő erőforrást a háttérben.
+
+#### <a name="create-a-connection-monitor-by-using-armclient"></a>ARMClient használatával létesített figyelő létrehozása
+
+A következő kód használatával hozzon létre egy ARMClient a kapcsolódási figyelő használatával.
 
 ```armclient
 $connectionMonitorName = "sampleConnectionMonitor"
@@ -159,7 +181,7 @@ filter: {
 
 type: 'AgentAddress',
 
-address: '\&lt;FQDN of your on-premise agent'
+address: '\&lt;FQDN of your on-premises agent'
 
 }]
 
@@ -360,78 +382,85 @@ address: '\&lt;URL\&gt;'
 } "
 ```
 
-Üzembe helyezési parancs:
+Az üzembe helyezési parancs a következő:
 ```
 armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-version=2019-07-01 $body -verbose
 ```
 
-### <a name="creating-test-groups-in-connection-monitor"></a>Tesztelési csoportok létrehozása a Csatlakozáskezelőben
+### <a name="create-test-groups-in-a-connection-monitor"></a>Tesztelési csoportok létrehozása egy figyelőben
 
-A kapcsolati figyelő mindegyik tesztelési csoportja olyan forrásokat és célhelyeket tartalmaz, amelyek az ellenőrzések hálózati paramétereinek tesztelését végezik, és RTT a tesztelési konfigurációkon.
+A-figyelő minden egyes tesztelési csoportja olyan forrásokat és célhelyeket tartalmaz, amelyek a hálózati paramétereken keresztül teszteltek. A rendszer a sikertelen ellenőrzések százalékos arányát és a RTT.
 
-#### <a name="from-portal"></a>A portálról
+A Azure Portal a következő mezők értékeinek megadásával hozzon létre egy tesztelési csoportot a kapcsolódási figyelőben:
 
-Ha egy figyelőhöz szeretne létrehozni egy tesztelési csoportot, akkor a lent említett mezők értékét kell megadnia:
+* **Tesztelési csoport letiltása** – ezt a mezőt kiválasztva letilthatja az összes olyan forrás és cél figyelését, amelyet a tesztelési csoport meghatároz. Ez a beállítás alapértelmezés szerint nincs bejelölve.
+* **Név** – a tesztelési csoport neve.
+* **Források** – az Azure-beli virtuális gépeket és a helyszíni gépeket forrásként is megadhatja, ha az ügynökök telepítve vannak rajtuk. A forráshoz tartozó ügynök telepítéséhez tekintse meg a [figyelési ügynökök telepítése](#install-monitoring-agents)című témakört.
+   * Az Azure-ügynökök kiválasztásához válassza az **Azure-ügynökök** fület. Itt csak a kapcsolódási figyelő létrehozásakor megadott régióhoz kötött virtuális gépek jelennek meg. Alapértelmezés szerint a virtuális gépek a hozzájuk tartozó előfizetésbe vannak csoportosítva. Ezek a csoportok össze vannak csukva. 
+   
+       Az előfizetések szintjéről a hierarchiában lévő többi szintre is lebonthatja a részletezést:
 
-1. Tesztelési csoport letiltása – a mező ellenőrzése letiltja a tesztelési csoportban megadott összes forrás és cél figyelését. Ez a beállítás alapértelmezés szerint nincs bejelölve.
-2. Név – a tesztelési csoport neve
-3. Források – az Azure-beli és a helyszíni gépeket is megadhatja forrásként, ha az ügynökök telepítve vannak bennük. A forrásra vonatkozó ügynök telepítéséhez tekintse meg az 1. lépést.
-   1. Az Azure-ügynökök kiválasztásához kattintson az "Azure-ügynökök" fülre. Csak azok a virtuális gépek jelennek meg, amelyek a kapcsolódási figyelő létrehozásakor megadott régióhoz vannak kötve. A virtuális gépek alapértelmezés szerint a hozzájuk tartozó előfizetésbe vannak csoportosítva, és a csoportok össze vannak csukva. Az előfizetések szintjéről a hierarchiában lévő többi szintre is lebonthatja a részletezést:
+      Az **előfizetés** > **erőforráscsoportok** > **virtuális hálózatok** > **alhálózatok** > **virtuális gépek ügynökkel**
 
-      ```Subscription -\&gt; resource groups -\&gt; VNETs -\&gt; Subnets -\&gt; VMs with agents Y```
+      A **Group By** mező értékét úgy is megváltoztathatja, hogy bármely más szintről elindítsa a fát. Ha például a virtuális hálózat alapján csoportosítja a csoportot, akkor a hierarchiában lévő ügynökökkel rendelkező virtuális gépeket a **virtuális hálózatok** > **alhálózatokat** > **ügynökökkel rendelkező virtuális**gépeket.
 
-      A "Group By" mező értékét is megváltoztathatja a fa bármely más szintről való elindításához. Például: Group By – VNET megjeleníti a virtuális gépeket a virtuális hálózatok-\&gt; hierarchiában lévő ügynökökkel. Alhálózatok –\&gt; Ügynökökkel rendelkező virtuális gépek.
+      ![Képernyőfelvétel a kapcsolatkezelő szolgáltatásról, amely a források hozzáadása panelt és az Azure Agents fület jeleníti meg](./media/connection-monitor-2-preview/add-azure-sources.png)
 
-      ![Források hozzáadása](./media/connection-monitor-2-preview/add-azure-sources.png)
+   * A helyszíni ügynökök kiválasztásához válassza a **nem – Azure ügynökök** lapot. Alapértelmezés szerint az ügynökök régiónként vannak csoportosítva. Mindegyik munkaterülethez konfigurálva van a Network Performance Monitor-megoldás. 
+   
+       Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+   
+       A **Csatlakozáskezelő létrehozása** nézetben az **alapok** lapon az alapértelmezett régió van kiválasztva. Ha megváltoztatja a régiót, az ügynököket az új régióban lévő munkaterületekről is kiválaszthatja. A **Group By** mező értékét is módosíthatja alhálózatok szerint csoportosítva.
 
-   2. Kattintson a "nem – Azure-ügynökök" fülre a helyi ügynökök kiválasztásához. Alapértelmezés szerint az ügynökök az adott régióban munkaterületekre csoportosítva jelennek meg. Csak azok a munkaterületek jelennek meg, amelyeken Network Performance Monitor megoldás van konfigurálva. Adja hozzá a Network Performance Monitor megoldást a munkaterülethez az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Használhatja a [Solutions Gallery Azure monitor megoldások hozzáadása](https://docs.microsoft.com/azure/azure-monitor/insights/solutions) című témakörben ismertetett eljárást is. Alapértelmezés szerint a Csatlakozáskezelő létrehozása nézet alapinformációk lapján kiválasztott régió jelenik meg. Módosíthatja a régiót, és az újonnan kiválasztott régióból származó ügynököket is választhat. Az alhálózatok csoportosításához a "Group By" mező értékét is módosíthatja.
-
-      ![Nem Azure-források](./media/connection-monitor-2-preview/add-non-azure-sources.png)
+      ![Képernyőfelvétel a kapcsolatkezelő szolgáltatásról, amely a források hozzáadása panelt és a nem Azure-ügynökök lapot mutatja](./media/connection-monitor-2-preview/add-non-azure-sources.png)
 
 
-   3. Kattintson a "felülvizsgálat" gombra a kiválasztott Azure-és nem Azure-ügynökök áttekintéséhez.
+   * A kiválasztott Azure-és nem Azure-ügynökök áttekintéséhez lépjen a **felülvizsgálat** lapra.
 
-      ![Források áttekintése](./media/connection-monitor-2-preview/review-sources.png)
+      ![Képernyőfelvétel a kapcsolatok Figyelőről, a források hozzáadása panel és a felülvizsgálat lap](./media/connection-monitor-2-preview/review-sources.png)
 
-   4. Kattintson a kész gombra a források kiválasztásának befejezése után.
+   * Amikor befejezte a források beállítását, a **források hozzáadása** panel alján válassza a **kész**lehetőséget.
 
-4. Célhelyek – az Azure-beli virtuális gépekhez vagy bármely végponthoz (nyilvános IP-címhez, URL-címekhez, FQDN) való csatlakozást megfigyelheti célhelyként megadva. Egyetlen tesztelési csoportban Azure-beli virtuális gépeket, O365 URL-címeket, D365 URL-címeket vagy egyéni végpontokat adhat hozzá.
+* **Célhelyek** – az Azure-beli virtuális gépekkel vagy bármely végponttal (nyilvános IP-címmel, URL-lel vagy FQDN-vel) való kapcsolat figyeléséhez megadhatja őket célhelyként. Egyetlen tesztelési csoportban Azure-beli virtuális gépeket, Office 365 URL-címeket, Dynamics 365 URL-címeket és egyéni végpontokat adhat hozzá.
 
-   1. Kattintson az "Azure-beli virtuális gépek" fülre az Azure-beli virtuális gépek célhelyként való kiválasztásához. Alapértelmezés szerint az előfizetési hierarchiába csoportosított Azure-beli virtuális gépek ugyanabban a régióban találhatók, mint a Csatlakozáskezelő létrehozása nézet alapinformációk lapján. Módosíthatja a régiót, és az újonnan kiválasztott régióból is kiválaszthatja az Azure-beli virtuális gépeket. Az előfizetések szintjéről a hierarchiában lévő más szintekre, például az Azure-ügynökökre is lebonthatja a részletezést.
+    * Az Azure-beli virtuális gépek célhelyként való kiválasztásához válassza az Azure-beli **virtuális gépek** fület. Alapértelmezés szerint az Azure-beli virtuális gépek olyan előfizetési hierarchiába vannak csoportosítva, amely ugyanabban a régióban található, mint amelyet a **kapcsolatkezelő létrehozása** nézetben kiválasztott, az **alapok** lapon. Módosíthatja a régiót, és az újonnan kiválasztott régióból is kiválaszthatja az Azure-beli virtuális gépeket. Ezután részletezheti az előfizetések szintjét a hierarchia más szintjeire, például az Azure-ügynökök szintjére.
 
-      ![Célhelyek hozzáadása](./media/connection-monitor-2-preview/add-azure-dests1.png)<br>
+       ![Képernyőkép a célhelyek hozzáadása panelről, amely az Azure-beli virtuális gépek lapot mutatja](./media/connection-monitor-2-preview/add-azure-dests1.png)
 
-      ![2\. célhely hozzáadása](./media/connection-monitor-2-preview/add-azure-dests2.png)
+       ![Képernyőkép a célhelyek hozzáadása panelről, amely az előfizetés szintjét mutatja](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Kattintson a "végpontok" fülre a végpontok célhelyként való kiválasztásához. A végpontok listája O365 és D365-teszt URL-címekkel lesz feltöltve, név szerint csoportosítva.  Egy másik tesztelési csoportban létrehozott végpontot is kiválaszthat ugyanabban a figyelőben. Új végpont hozzáadásához kattintson a képernyő jobb felső sarkában található "+ végpont" elemre, és adja meg a végpont URL-címét/IP-címét/FQDN-jét és nevét.
+    * A végpontok célhelyként való kiválasztásához válassza a **végpontok** fület. A végpontok listája az Office 365 test URL-címeit és a Dynamics 365 teszt URL-címeket tartalmazza, név szerint csoportosítva. Ezen végpontok mellett olyan végpontot is kiválaszthat, amelyet más tesztelési csoportokban hoztak létre ugyanabban a kapcsolódási figyelőben. 
+    
+        Új végpont hozzáadásához kattintson a jobb felső sarokban található **+ végpontok**elemre. Ezután adja meg a végpont nevét és URL-címét, az IP-címet vagy a teljes tartománynevet.
 
-      ![Végpontok hozzáadása](./media/connection-monitor-2-preview/add-endpoints.png)
+       ![Képernyőfelvétel: a végpontok célhelyként való hozzáadásának helye a kapcsolódási figyelőben](./media/connection-monitor-2-preview/add-endpoints.png)
 
-   3. Kattintson a "felülvizsgálat" gombra a kiválasztott Azure-és nem Azure-ügynökök áttekintéséhez.
-   4. Kattintson a kész gombra a források kiválasztásának befejezése után.
+    * A kiválasztott Azure-beli virtuális gépek és végpontok áttekintéséhez válassza a **felülvizsgálat** lapot.
+    * Amikor befejezte a célhelyek kiválasztását, válassza a **kész**lehetőséget.
 
-5. Tesztelési konfiguráció – tetszőleges számú tesztelési konfigurációt rendelhet egy adott tesztelési csoportban. A portál egy tesztelési csoportra korlátozza a tesztelési konfigurációt, de a Armclient használatával további műveleteket is felvehet.
-   1. Név – a teszt konfigurációjának neve
-   2. Protokoll – a TCP, az ICMP vagy a HTTP beállítás közül választhat. A HTTP HTTPS-re való módosításához válassza a HTTP as Protocol és a 443 as port lehetőséget.
-   3. Hálózati teszt konfigurációjának létrehozása – Ez a jelölőnégyzet csak akkor jelenik meg, ha a protokoll mezőben a HTTP lehetőséget választja. Ha engedélyezi ezt a mezőt, a 3. és a 4. lépésben megadott forrás-és célhelyek használatával hozzon létre egy másik tesztelési konfigurációt a TCP/ICMP protokollal. Az újonnan létrehozott tesztelési konfiguráció neve "\&lt; név van megadva 5. a\&gt;\_networkTestConfig "
-   4. Traceroute letiltása – ez a mező a TCP vagy ICMP protokollt használó tesztelési csoportok esetében alkalmazható lesz.  Ennek a mezőnek a bejelölésével leállíthatja a forrásokat a topológia és a hop-ugrások közötti időpontra.
-   5. Célport – testreszabhatja ezt a mezőt úgy, hogy az Ön által választott cél portot helyezzen el.
-   6. Tesztelési gyakoriság – ebben a mezőben határozható meg, hogy a források milyen gyakran fognak pingelni a protokollon és a fent megadott porton. 30 másodperc, 1 perc, 5 perc, 15 perc és 30 perc között lehet választani. A források a választott érték alapján próbálják meg a célokhoz való kapcsolódást.  Ha például 30 másodpercet választ, a források legalább egyszer, 30 másodperc alatt ellenőrizhetik a kapcsolatot a célhelykel.
-   7. Állapot küszöbértékei – az alább említett hálózati paraméterek küszöbértékeit beállíthatja
-      1. Az ellenőrzés sikertelen volt, mert a (z)% – az ellenőrzések százalékos aránya meghiúsult, amikor a források megkeresik a fent megadott feltételek alapján a célhelyet A TCP/ICMP protokoll esetében a (z)%-os sikertelen ellenőrzések a (z)%-os csomag elvesztésével egyenértékűek lehetnek. HTTP protokoll esetén ez a mező azoknak a http-kérelmeknek a számát jelöli, amelyek nem kaptak választ.
-      2. RTT ezredmásodpercben – oda-és visszaúti idő ezredmásodpercben, amikor a források a fent megadott tesztelési konfiguráción keresztül csatlakoznak a célhoz.
+* **Tesztelési konfigurációk** – tesztelési konfigurációkat rendelhet a tesztelési csoportokhoz. A Azure Portal tesztelési csoportonként csak egy tesztelési konfigurációt engedélyez, de a ARMClient használatával további műveleteket is felvehet.
 
-      ![TG hozzáadása](./media/connection-monitor-2-preview/add-test-config.png)
+    * **Név** – a teszt konfigurációjának neve.
+    * **Protokoll** – válassza a TCP, az ICMP vagy a http lehetőséget. A HTTP HTTPS-re való módosításához válassza a **http** protokollt, és válassza a **443** portot.
+        * **Hálózati teszt konfigurációjának létrehozása** – ez a jelölőnégyzet csak akkor jelenik meg, ha a **protokoll** mezőben a **http** lehetőséget választja. Jelölje be ezt a jelölőnégyzetet, ha olyan tesztelési konfigurációt szeretne létrehozni, amely ugyanazokat a forrásokat és célhelyeket használja, amelyeket a konfigurációban máshol adott meg. Az újonnan létrehozott teszt-konfiguráció neve `<the name of your test configuration>_networkTestConfig`.
+        * **Traceroute letiltása** – ez a mező olyan tesztelési csoportokra vonatkozik, amelyek TCP vagy ICMP protokollal rendelkeznek. Jelölje be ezt a jelölőnégyzetet, ha le szeretné állítani, hogy a források felfedjék a topológiát és a hop-by-hop RTT.
+    * **Célport** – a mező testreszabható a választott célport használatával.
+    * **Tesztelési gyakoriság** – ezzel a mezővel kiválaszthatja, hogy a források milyen gyakran fognak pingelni a protokollon és a megadott porton. 30 másodpercet, 1 percet, 5 percet, 15 percet vagy 30 percet is kiválaszthat. A források a választott érték alapján próbálják meg a célokhoz való kapcsolódást.  Ha például 30 másodpercet választ, a források legalább egyszer ellenőrizhetik a kapcsolatot a célhoz, 30 másodpercen belül.
+    * **Sikerességi küszöb** – a következő hálózati paraméterek küszöbértékeit állíthatja be:
+       * Az **ellenőrzések sikertelenek** – megadhatja a sikertelen ellenőrzések százalékos arányát, ha a források a megadott feltételek használatával ellenőrzik a csatlakozást a célhelyekhez. A TCP vagy az ICMP protokoll esetében a sikertelen ellenőrzések százalékaránya a csomagok elvesztésének százalékában is egyenlő lehet. HTTP protokoll esetén ez a mező a nem válaszoló HTTP-kérelmek százalékos arányát jelöli.
+       * **Oda-** és bekapcsolási idő – állítsa be a RTT ezredmásodpercben, hogy mennyi ideig tart a források kapcsolódása a célhoz a tesztelési konfiguráción keresztül.
+    
+       ![Képernyőkép a tesztelési konfiguráció beállításáról a kapcsolódási figyelőben](./media/connection-monitor-2-preview/add-test-config.png)
 
-Az egyes tesztelési csoportokhoz hozzáadott összes forrást és célhelyet az egyes tesztekre bontva lehet megadni. Például:
+A tesztelési csoportba felvett összes forrás, cél és tesztelési konfiguráció az egyes tesztekre bontva kerül. Íme egy példa arra, hogyan oszlanak meg a források és a célhelyek:
 
 * Tesztelési Csoport: TG1
 * Források: 3 (A, B, C)
 * Célhelyek: 2 (D, E)
-* Tesztelési konfiguráció: 2 (config 1, 2. konfiguráció)
-* Létrehozott tesztek: összesen = 12
+* Tesztelési konfigurációk: 2 (config 1, 2. konfiguráció)
+* Létrehozott tesztek összesen: 12
 
-| **Teszt száma** | **Forrás** | **Cél** | **Teszt konfigurációjának neve** |
+| Teszt száma | Forrás | Cél | Konfiguráció tesztelése |
 | --- | --- | --- | --- |
 | 1 | A | D | 1\. konfiguráció |
 | 2 | A | D | 2\. konfiguráció |
@@ -448,179 +477,211 @@ Az egyes tesztelési csoportokhoz hozzáadott összes forrást és célhelyet az
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
-* Az előfizetések maximális száma/régiónként – 100
-* A tesztelési csoportok maximális száma kapcsolatonként – 20
-* A # forrás-és célhelyek maximális száma kapcsolatonként – 100
-* A Armclient-n keresztüli kapcsolatonként a tesztelési konfigurációk maximális száma. 2 a portálon keresztül.
+A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 
-## <a name="step-4--data-analysis-and-alerts"></a>4\. lépés: az adatelemzés és a riasztások
+* Az előfizetések maximális száma régiónként: 100
+* Tesztelési csoportok maximális száma kapcsolatonként: 20
+* Maximális források és célhelyek kapcsolatonként: 100
+* A tesztelési konfigurációk maximális száma kapcsolatonként: 
+    * 20 ARMClient keresztül
+    * 2 a Azure Portal keresztül
 
-A kapcsolati figyelő létrehozása után a források a megadott tesztelési konfiguráció alapján ellenőrizhetik a helyekhez való kapcsolódást.
+## <a name="analyze-monitoring-data-and-set-alerts"></a>Figyelési adatelemzés és riasztások beállítása
+
+A kapcsolati figyelő létrehozása után a források a tesztelési konfiguráció alapján ellenőrizhetik a helyekhez való kapcsolódást.
 
 ### <a name="checks-in-a-test"></a>Tesztek ellenőrzése
 
-A tesztelési konfigurációban a felhasználó által kiválasztott protokoll alapján a kapcsolat figyelője (előzetes verzió) egy sor ellenőrzést futtat a forrás célhelyen a kiválasztott tesztelési gyakorisággal.
+A tesztelési konfigurációban kiválasztott protokoll alapján a kapcsolat figyelője (előzetes verzió) a forrás-cél párokhoz tartozó ellenőrzések sorozatát futtatja. Az ellenőrzések a választott tesztelési gyakoriságnak megfelelően futnak.
 
-Ha a HTTP van kiválasztva, a szolgáltatás kiszámítja, hogy a rendszer hány HTTP-választ adott vissza, és nem sikerült meghatározni az ellenőrzéseket (%).  A RTT kiszámításához a HTTP-hívás válaszának fogadására tett időt mérjük.
+Ha HTTP-t használ, a szolgáltatás kiszámítja a válasz kódját visszaadó HTTP-válaszok számát. Az eredmény meghatározza a sikertelen ellenőrzések százalékos arányát. A RTT kiszámításához a szolgáltatás a HTTP-hívás és a válasz közötti időt méri.
 
-Ha a TCP vagy az ICMP lehetőséget választotta, a szolgáltatás kiszámítja a (z)%-os csomagot az ellenőrzések megállapításához. A RTT kiszámításához mérjük meg az elküldött csomagok NYUGTÁjának fogadásához szükséges időt. Ha engedélyezte a traceroute-adatelemzést a hálózati tesztek számára, a helyszíni hálózatra vonatkozóan megtekintheti az ugrások közötti adatvesztést és a késést.
+Ha a TCP vagy az ICMP protokollt használja, a szolgáltatás kiszámítja a csomagok elvesztésének százalékos arányát a sikertelen ellenőrzések százalékos arányának megállapításához. A RTT kiszámításához a szolgáltatás megméri az elküldött csomagok nyugtájának (ACK) fogadására tett időt. Ha engedélyezte a traceroute-adatelemzést a hálózati tesztek számára, a helyszíni hálózatra vonatkozó ugrások közötti adatvesztést és késést láthatja.
 
 ### <a name="states-of-a-test"></a>Teszt állapota
 
-A tesztek ellenőrzései által visszaadott adathalmazok alapján minden teszt után a következő állapotok szerepelhetnek:
+A csekkek által visszaadott adathalmazok alapján a tesztek a következő állapotokkal rendelkezhetnek:
 
-* Pass = ha az ellenőrzések tényleges értékei sikertelenek (%), és a RTT a megadott küszöbértékeken belül vannak
-* Fail = ha a csekkek tényleges értékei nem sikerültek% vagy a RTT több megadott küszöbértéket adott meg. Ha nem ad meg küszöbértéket, akkor a teszt sikertelen lesz, ha az ellenőrzések meghiúsultak:% = 100%
-* Figyelmeztetés – ha a sikertelen ellenőrzések feltételei% nincs megadva. Ebben az esetben a kapcsolatkezelő (előzetes verzió) egy automatikus beállított feltételt használ küszöbértékként, és ha a teszt megszegése megszegi az állapotot, a "figyelmeztetés" értékre van állítva.
+* **Pass** – a sikertelen ellenőrzések és RTT százalékos arányának tényleges értékei a megadott küszöbértékeken belül vannak.
+* **Fail (sikertelen** ) – a sikertelen ellenőrzések százalékos arányának tényleges értékei, vagy a RTT túllépte a megadott küszöbértéket. Ha nem ad meg küszöbértéket, akkor a teszt meghiúsul, ha a sikertelen ellenőrzések százalékaránya 100.
+* **Figyelmeztetés** – a sikertelen ellenőrzések százalékarányához nem adtak meg feltételeket. A megadott feltételek hiányában a Csatlakozáskezelő (előzetes verzió) automatikusan hozzárendel egy küszöbértéket. Ha túllépi a küszöbértéket, a teszt állapota figyelmeztetésre változik.
 
 ### <a name="data-collection-analysis-and-alerts"></a>Adatgyűjtés, elemzés és riasztások
 
-A rendszer a Csatlakozáskezelő (előzetes verzió) által összegyűjtött összes adatokat a Log Analytics munkaterületen tárolja, amelyet a rendszer a Csatlakozáskezelő létrehozásakor konfigurált. A figyelési adatok Azure Monitor Metrikákban is elérhetők. A Log Analytics használatával a figyelési adatokat akár úgy is megtarthatja, hogy az adott állapotban maradjon, de a metrikák alapértelmezés szerint 30 napig Azure Monitor **.** Ezután mérőszám- [alapú riasztásokat állíthat be az adatokon](https://azure.microsoft.com/blog/monitor-at-scale-in-azure-monitor-with-multi-resource-metric-alerts/).
+A Csatlakozáskezelő (előzetes verzió) által gyűjtött adatokat a Log Analytics munkaterületen tárolja a rendszer. Ezt a munkaterületet a kapcsolódási figyelő létrehozásakor állíthatja be. 
 
-#### <a name="monitoring-dashboards-in-connection-monitor-solution"></a>Irányítópultok figyelése a Csatlakozáskezelő megoldásban
+A figyelési adatok Azure Monitor Metrikákban is elérhetők. A figyelési adatait a kívánt ideig a Log Analytics használatával is megőrizheti. Alapértelmezés szerint a Azure Monitor csak 30 napig tárolja a metrikákat. 
 
-Megjelenik a kapcsolati figyelő azon listája, amelyhez hozzáférése van az előfizetések, a régiók, az időbélyeg, a forrás és a célhelyek adott kiválasztásához.
+[Metrikus riasztásokat is beállíthat az adatokra vonatkozóan](https://azure.microsoft.com/blog/monitor-at-scale-in-azure-monitor-with-multi-resource-metric-alerts/).
 
-Ha Network Watcher szolgáltatásból navigál a kapcsolódási figyelőhöz (előzetes verzió), **megtekintheti**a következőt:
+#### <a name="monitoring-dashboards"></a>Irányítópultok figyelése
 
-* Csatlakozáskezelő (alapértelmezett) – a kiválasztott előfizetésekhez, régióokhoz, időbélyegekhez, forrásokhoz és célhelyekhez létrehozott kapcsolatok összes figyelő listája
-* Tesztelési csoportok – a kiválasztott előfizetésekhez, régióokhoz, időbélyeg-, forrás-és célhelyekhez létrehozott összes tesztelési csoport listája. Ezek a tesztelési csoportok nem szűrve vannak a kapcsolatok figyelője szolgáltatásban
-* Tesztek – a kiválasztott előfizetésekhez, régiókhoz, időbélyegekhez, forrásokhoz és célhelyekhez futtatott tesztek listája. Ezeket a teszteket a rendszer nem szűri a kapcsolatok figyelője vagy a tesztelési csoportok között.
+A figyelési irányítópultokon megtekintheti az előfizetések, a régiók, az időbélyegek, a források és a célhelyek számára elérhető kapcsolati figyelők listáját.
 
-Az egyes kapcsolatok figyelőit kiterjesztheti a tesztelési csoportokba és az egyes tesztelési csoportba az irányítópulton futó különböző tesztekre. Az alábbi képen [1] van megjelölve.
+Ha Network Watcherról nyit meg a kapcsolódási figyelőt (előzetes verzió), az adatok az alábbiak szerint jeleníthetők meg:
+
+* **Csatlakozáskezelő** – az előfizetésekhez, a régiókhoz, az időbélyegekhez, a forrásokhoz és a célhelyekhez létrehozott összes összekötő-figyelő listája. Ez a nézet az alapértelmezett.
+* **Tesztelési csoportok** – az előfizetésekhez, a régiókhoz, az időbélyegekhez, a forrásokhoz és a célhelyekhez létrehozott összes tesztelési csoport listája. Ezeket a tesztelési csoportokat nem a kapcsolatok figyelői szűrik.
+* **Test** – az előfizetésekhez, a régiókhoz, az időbélyegekhez, a forrásokhoz és a célhelyekhez futtatott tesztek listája. Ezek a tesztek nem a kapcsolatok figyelője vagy a tesztelési csoportok szerint vannak szűrve.
+
+Az alábbi ábrán a három adatnézetet az 1. nyíl jelzi.
+
+Az irányítópulton kibonthatja az egyes kapcsolati figyelőket a tesztelési csoportok megjelenítéséhez. Ezután az egyes tesztelési csoportok kibontásával megtekintheti a rajta futó teszteket. 
 
 A listát a következő alapján szűrheti:
 
-* Legfelső szintű szűrők – előfizetések, régiók, időbélyeg-forrás és rendeltetési típusok. Az alábbi képen [2] jelöléssel van megjelölve.
-* Állapot-alapú szűrők – második szintű szűrő a Csatlakozáskezelő/tesztelési csoport/tesztelés állapota alapján. Az alábbi képen [3] van megjelölve.
-* Keresőmező – válassza az "összes" lehetőséget egy általános keresés végrehajtásához. Egy adott entitáson való kereséshez használja a legördülő listát a keresési eredmények szűkítéséhez. Az alábbi képen [4] jelöléssel van megjelölve.
+* **Legfelső szintű szűrők** – válassza az előfizetések, a régiók, az időbélyegző-források és a célhelyek lehetőséget. Lásd a 2. négyzetet az alábbi képen.
+* **Állapot-alapú szűrők** – a Csatlakozáskezelő, a test Group vagy a test állapota alapján szűrhet. Lásd az alábbi képen látható 3. nyilat.
+* **Egyéni szűrők** – válassza az **összes kijelölése** lehetőséget egy általános keresés végrehajtásához. Egy adott entitás általi kereséshez válassza ki a elemet a legördülő listából. Lásd az alábbi képen látható 4. nyilat.
 
-![Tesztek szűrése](./media/connection-monitor-2-preview/cm-view.png)
+![A kapcsolódási figyelők, a tesztelési csoportok és a tesztek nézeteinek szűrését bemutató képernyőkép (előzetes verzió)](./media/connection-monitor-2-preview/cm-view.png)
 
-Például:
+Ha például meg szeretné tekinteni az összes tesztet a 10.192.64.56 (előzetes verzió), ahol a forrás IP-címe a következő:
+1. Módosítsa a nézetet a **tesztre**.
+1. A Keresés mezőbe írja be a következőt: *10.192.64.56*
+1. A legördülő listában válassza a **források**elemet.
 
-1. Az összes olyan teszt megtekintése az összes (előzetes verzióban), ahol a Source IP = 10.192.64.56:
-   1. Nézet módosítása a "tesztek" értékre
-   2. Keresés iktatott = 10.192.64.56
-   3. A "források" kiválasztásához használja az érték melletti legördülő menüt.
-2. Ha csak a sikertelen teszteket szeretné kiszűrni az összes kapcsolódási figyelőben (előzetes verzió), ahol a forrás IP-címe = 10.192.64.56
-   1. Nézet módosítása a "tesztek" értékre
-   2. Az állapot-alapú szűrők közül válassza a "sikertelen" lehetőséget.
-   3. Keresési mező = 10.192.64.56
-   4. A "források" kiválasztásához használja az érték melletti legördülő menüt.
-3. Csak a sikertelen tesztek szűrése az összes outlook.office365.com (előzetes verzió), ahol a cél
-   1. Nézet módosítása a "tesztek" értékre
-   2. Az állapot-alapú szűrők közül válassza a "sikertelen" lehetőséget.
-   3. Keresési mező = outlook.office365.com
-   4. Az érték melletti legördülő menüben válassza a "célhelyek" lehetőséget.
+Csak a sikertelen tesztek megjelenítése a 10.192.64.56 (előzetes verzió), ahol a forrás IP-címe a következő:
+1. Módosítsa a nézetet a **tesztre**.
+1. Az állapot-alapú szűrő esetében válassza a **sikertelen**lehetőséget.
+1. A Keresés mezőbe írja be a következőt: *10.192.64.56*
+1. A legördülő listában válassza a **források**elemet.
 
-   ![Sikertelen tesztek](./media/connection-monitor-2-preview/tests-view.png)
+Csak a sikertelen tesztek megjelenítése a outlook.office365.com (előzetes verzió), ahol a cél a következő:
+1. Váltás a nézetre a **teszteléshez**.
+1. Az állapot-alapú szűrő esetében válassza a **sikertelen**lehetőséget.
+1. A Keresés mezőbe írja be a *Outlook.office365.com*
+1. A legördülő listában válassza a **Célhelyek**lehetőséget.
 
-A (z)% és a RTT sikertelen ellenőrzések trendjeinek megtekintéséhez:
+   ![Képernyőfelvétel: a szűrt nézetet megjelenítő nézet, amely csak a Outlook.Office365.com célhelyének sikertelen teszteit jeleníti meg](./media/connection-monitor-2-preview/tests-view.png)
 
-1. Kapcsolatfigyelő
-   1. Kattintson a vizsgálni kívánt Csatlakozáskezelő részletes adataira
-   2. Alapértelmezés szerint a figyelési értékeket "tesztelési csoportok" nézetben tekintheti meg
+A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megtekintéséhez:
+1. Válassza ki a vizsgálni kívánt kapcsolódási figyelőt. Alapértelmezés szerint a figyelési adatcsoportot a rendszer a test Group alapján rendezi.
 
-      ![Metrikák megtekintése](./media/connection-monitor-2-preview/cm-drill-landing.png)
+   ![A Csatlakozáskezelő metrikáit bemutató képernyőkép, amelyet a test Group megjelenít](./media/connection-monitor-2-preview/cm-drill-landing.png)
 
-   3. Válassza ki a vizsgálni kívánt tesztelési csoportot.
+1. Válassza ki a vizsgálni kívánt tesztelési csoportot.
 
-      ![Mérőszámok TG szerint](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+   ![A tesztelési csoport kiválasztásának helyét bemutató képernyőkép](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
 
-   4. Az ellenőrzések során az első 5 sikertelen teszt sikertelen volt% vagy RTT ezredmásodperc az előző lépésben kiválasztott tesztelési csoportra vonatkozóan. Minden tesztnél látni fogja a (z)% és a RTT MS
-   5. Válasszon ki egy tesztet a fenti listából, vagy válasszon egy másik tesztet a részletek kivizsgálásához.
-   6. A kiválasztott időintervallum esetében a (z)%-os ellenőrzésekhez nem sikerült a küszöbértéket és a tényleges értékeket látni. A RTT MS a küszöbértéket, az átlagot, a minimumot és a maximális értéket fogja látni.
+    A tesztelési csoport első öt sikertelen tesztjét láthatja a sikertelen ellenőrzések RTT vagy százaléka alapján. Minden tesztnél megjelenik a RTT és a trend sorok a sikertelen ellenőrzések százalékos arányához.
+1. Válasszon ki egy tesztet a listából, vagy válasszon egy másik tesztet a vizsgálathoz. Az időintervallum és a sikertelen ellenőrzések százalékos aránya a küszöbértéket és a tényleges értékeket jeleníti meg. A RTT a küszöbérték, az átlag, a minimum és a maximum értékek láthatók.
 
-      ![RTT](./media/connection-monitor-2-preview/cm-drill-charts.png)
+   ![A teszt eredményeit bemutató képernyőkép a RTT és a sikertelen ellenőrzések százalékos arányáról](./media/connection-monitor-2-preview/cm-drill-charts.png)
 
-  7. Az időintervallum módosítása további adatértékek megtekintéséhez
-  8. A b lépésben megváltoztathatja a nézetet, és megtekintheti forrás, célhely vagy tesztelési konfiguráció alapján. Ezután válasszon ki egy forrást a sikertelen tesztek alapján, és vizsgálja meg az 5 leggyakoribb sikertelen tesztet.  Például: válassza a nézet: források és célhelyek lehetőséget, hogy vizsgálja meg az adott kombináció között futó összes tesztet a kiválasztott kapcsolati figyelőben.
+1. Módosítsa az időintervallumot a további adatértékek megtekintéséhez.
+1. A nézet módosításával megtekintheti a forrásokat, a célhelyeket és a tesztelési konfigurációkat. 
+1. Válasszon egy forrást a sikertelen tesztek alapján, és vizsgálja meg az első öt sikertelen tesztet. Válassza például a **megtekintés** > **források** alapján lehetőséget, és **tekintse meg** > **célhely** alapján, hogy vizsgálja meg a kapcsolódó teszteket a kapcsolódási figyelőben.
 
-      ![RTT2](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+   ![Képernyőfelvétel: az első öt sikertelen teszt teljesítmény-mérőszámai](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
-2. Tesztelési csoport
-   1. Kattintson a vizsgálni kívánt tesztelési csoportra részletesen
-   2. Alapértelmezés szerint a "forrás + cél + tesztelési konfiguráció" (teszt) alapján megtekintheti a figyelési adatpontokat.
+A RTT trendjeinek és a tesztelési csoport sikertelen ellenőrzésének százalékos arányának megtekintéséhez:
 
-      ![RTT3](./media/connection-monitor-2-preview/tg-drill.png)
+1. Válassza ki a vizsgálni kívánt tesztelési csoportot. 
 
-   3. Válassza ki a vizsgálni kívánt tesztet részletesen
-   4. A kiválasztott időintervallum esetében a (z)%-os ellenőrzésekhez nem sikerült a küszöbértéket és a tényleges értékeket látni. A RTT MS a küszöbértéket, az átlagot, a minimumot és a maximális értéket fogja látni. A kiválasztott teszthez kapcsolódó felgyújtott riasztásokat is láthat.
-   5. Az időintervallum módosítása további adatértékek megtekintéséhez
-   6. A b lépésben megváltoztathatja a nézetet, és megtekintheti forrás, célhely vagy tesztelési konfiguráció alapján. Ezután válasszon ki egy entitást az 5 leggyakoribb sikertelen teszt kivizsgálásához.  Például: válassza a nézet: források és célhelyek lehetőséget, hogy vizsgálja meg az adott kombináció között futó összes tesztet a kiválasztott kapcsolati figyelőben.
+    Alapértelmezés szerint a figyelési adatforrások, a célhelyek és a tesztelési konfigurációk (tesztek) szerint vannak rendezve. Később megváltoztathatja a nézetet a tesztelési csoportokból a forrásokra, a célhelyekre vagy a tesztelési konfigurációkra. Ezután válasszon ki egy entitást az első öt sikertelen teszt kivizsgálásához. Például módosítsa a nézetet a forrásokra és a célhelyekre, hogy kivizsgálja a megfelelő teszteket a kiválasztott figyelőben.
+1. Válassza ki a vizsgálni kívánt tesztet.
 
-3. Tesztelés
-   1. Kattintson a vizsgálni kívánt forrás + cél + tesztelési konfigurációra.
-   2. A kiválasztott időintervallum esetében a (z)%-os ellenőrzésekhez nem sikerült a küszöbértéket és a tényleges értékeket látni. A RTT MS a küszöbértéket, az átlagot, a minimumot és a maximális értéket fogja látni. A kiválasztott teszthez kapcsolódó felgyújtott riasztásokat is láthat.
+   ![A teszt kiválasztásának helyét bemutató képernyőkép](./media/connection-monitor-2-preview/tg-drill.png)
 
-      ![Test1](./media/connection-monitor-2-preview/test-drill.png)
+    Az adott időintervallumban és a sikertelen ellenőrzések százalékos arányában a küszöbértékek és a tényleges értékek láthatók. A RTT esetében a küszöbérték, az átlag, a minimum és a maximum értékek láthatók. A kiválasztott teszthez kilőtt riasztásokat is láthat.
+1. Módosítsa az időintervallumot a további adatértékek megtekintéséhez.
 
-   3. A topológia lehetőségre kattintva bármikor megtekintheti a hálózati topológiát.
+A RTT trendjeinek és a tesztek sikertelen ellenőrzésének százalékos arányának megtekintéséhez:
+1. Válassza ki a vizsgálni kívánt forrás-, cél-és tesztelési konfigurációt.
 
-      ![Teszt2](./media/connection-monitor-2-preview/test-topo.png)
+    Az adott időintervallumban és a sikertelen ellenőrzések százalékos arányában a küszöbértékek és a tényleges értékek láthatók. A RTT esetében a küszöbérték, az átlag, a minimum és a maximum értékek láthatók. A kiválasztott teszthez kilőtt riasztásokat is láthat.
 
-   4. A kapcsolódási figyelő által azonosított problémák megtekintéséhez kattintson bármelyik ugrásra az Azure-hálózatra mutató hivatkozásra. Ez a funkció jelenleg nem érhető el helyszíni hálózatokhoz.
+   ![A teszt mérőszámait bemutató képernyőkép](./media/connection-monitor-2-preview/test-drill.png)
 
-       ![Test3](./media/connection-monitor-2-preview/test-topo-hop.png)
+1. A hálózati topológia megtekintéséhez válassza a **topológia**lehetőséget.
 
-#### <a name="log-queries-in-azure-monitor-log-analytics"></a>Lekérdezések naplózása Azure Monitor Log Analytics
+   ![A hálózati topológia lapot ábrázoló képernyőfelvétel](./media/connection-monitor-2-preview/test-topo.png)
 
-A Log Analytics használatával egyéni nézeteket hozhat létre a figyelési adatairól. A felhasználói felületen megjelenő összes adatot Log Analytics-ból tölti ki a rendszer. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból (például az ügynökök állapotáról és más Log Analytics-alapú alkalmazásokból) származó adatokkal is korrelálhat. Az Excelbe, Power BIba vagy egy megosztható hivatkozásba is exportálhatja az adatfájlokat.
+1. Az azonosított problémák megjelenítéséhez a topológiában válassza ki az ugrást az elérési úton. (Ezek a komló Azure-erőforrások.) Ez a funkció jelenleg nem érhető el a helyszíni hálózatokhoz.
+
+   ![A topológia lapon a kiválasztott ugrási hivatkozásra mutató képernyőkép](./media/connection-monitor-2-preview/test-topo-hop.png)
+
+#### <a name="log-queries-in-log-analytics"></a>Lekérdezések naplózása Log Analytics
+
+A Log Analytics használatával egyéni nézeteket hozhat létre a figyelési adatairól. A felhasználói felület által megjelenített összes adatok forrása Log Analytics. Interaktív módon elemezheti az adattárat. A Agent Health vagy más, Log Analyticson alapuló megoldások adatainak összekapcsolása. Exportálja az Excelbe vagy Power BIba, vagy hozzon létre egy megosztható hivatkozást.
 
 #### <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
-A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létrehozott figyelőhöz mind a 4 metrika elérhetővé válik. A Csatlakozáskezelő (előzetes verzió) használatával létrehozott kapcsolatok figyelője esetében az adatok csak az "(előzetes)" címkével ellátott Mérőszámokhoz lesznek elérhetők.
+A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létrehozott AverageRoundtripMs a következő négy metrika érhető el:% Probes sikertelen,, ChecksFailedPercent (előzetes) és RoundTripTimeMs (előzetes verzió). A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott hálózati figyelők esetében az adatok csak a *(előzetes)* címkével megjelölt mérőszámokhoz érhetők el.
 
-Erőforrás típusa – Microsoft. Network/networkWatchers/connectionMonitors
+![A Csatlakozáskezelő metrikáit bemutató képernyőkép (előzetes verzió)](./media/connection-monitor-2-preview/monitor-metrics.png)
 
-| Metrika | Metrika megjelenített neve | Unit (Egység) | Aggregáció típusa | Leírás | Dimenziók |
+Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
+
+| Metrika | Megjelenített név | Unit (Egység) | Összesítés típusa | Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | a kapcsolat figyelési mintavételének%-a meghiúsult | Nincs dimenzió |
-| AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS) |             Nincs dimenzió |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | teszt esetén sikertelen volt az ellenőrzések százaléka | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Sourceresourceid azonosítónak <br> * Forrás típusa <br> * Protokoll <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Régió |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodperc | Átlag | A forrás és a cél között eljuttatott ellenőrzések időkorlátja (MS). Ez az érték nem átlag | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Sourceresourceid azonosítónak <br> * Forrás típusa <br> * Protokoll <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Régió |
-
- ![Metrikák figyelése](./media/connection-monitor-2-preview/monitor-metrics.png)
+| ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
+| AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodperc | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>forrás típusa <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodperc | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>forrás típusa <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Metrikus riasztások Azure Monitor
 
-Riasztás létrehozása:
+Riasztás létrehozása Azure Monitorban:
 
-1. Válassza ki a Csatlakozáskezelő használatával létrehozott Csatlakozáskezelő-erőforrást (előzetes verzió)
-2. Győződjön meg arról, hogy a "metrika" megjelenik az előző lépésben kiválasztott erőforráshoz tartozó jel típusaként
-3. A feltétel hozzáadása területen válassza a jel neve ChecksFailedPercent (előzetes verzió) vagy a RoundTripTimeMs (előzetes verzió) és a jel típusa Mérőszámként lehetőséget. Például: Choose ChecksFailedPercent (előzetes verzió)
-4. A rendszer a metrikák szerint alkalmazandó összes dimenziót listázza.  Válassza ki a dimenzió nevét és a dimenzió értékét. Például: válassza a forrás címe lehetőséget, és adja meg az 1. lépésben kiválasztott, a Csatlakozáskezelő erőforrásban érintett bármely forrás IP-címét.
-5. A riasztási logika területen válassza a következőket:
-   1. Feltétel típusa – statikus
-   2. Feltétel és küszöbérték
-   3. Az Összesítés részletessége és a kiértékelés gyakorisága – a Csatlakozáskezelő (előzetes verzió) 1 percenként frissíti az adatokat.
-6.  A műveletek területen válassza ki a műveleti csoportot
-7. Riasztás részleteinek megadása
-8. Riasztási szabály létrehozása
+1. Válassza ki a Csatlakozáskezelő (előzetes verzió) eszközben létrehozott Csatlakozáskezelő-erőforrást.
+1. Győződjön meg arról, hogy a **metrika** a Csatlakozáskezelő jel típusaként jelenik meg.
+1. A **feltétel hozzáadása**területen a **jel neveként**válassza a **ChecksFailedPercent (előzetes verzió)** vagy a **RoundTripTimeMs (előzetes verzió)** lehetőséget.
+1. A **jel típusa**beállításnál válassza a **metrikák**lehetőséget. Válassza például a **ChecksFailedPercent (előzetes verzió)** lehetőséget.
+1. Megjelenik a metrika összes dimenziója. Válassza ki a dimenzió nevét és a dimenzió értékét. Válassza például a **forrás címe** lehetőséget, majd adja meg a Csatlakozáskezelő bármelyik FORRÁSÁNAK IP-címét.
+1. A **riasztási logikában**adja meg a következő adatokat:
+   * **Feltétel típusa**: **statikus**.
+   * **Feltétel** és **küszöbérték**.
+   * **Összesítés részletessége és a kiértékelés gyakorisága: a**Csatlakozáskezelő (előzetes verzió) minden percben frissíti az adatokat.
+1. A **műveletek**területen válassza ki a műveleti csoportot.
+1. Adja meg a riasztás részleteit.
+1. Hozzon létre egy riasztási szabályt.
 
-   ![Riasztások](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+   ![Képernyőfelvétel a szabály létrehozása területén Azure Monitor; A "forrás címe" és a "forrás végpont neve" ki van emelve](./media/connection-monitor-2-preview/mdm-alerts.jpg)
 
-## <a name="step-5-diagnose-issues-in-your-network"></a>5\. lépés: a hálózatban felmerülő problémák diagnosztizálása
+## <a name="diagnose-issues-in-your-network"></a>A hálózatban felmerülő problémák diagnosztizálása
 
-A kapcsolódási figyelő segít a kapcsolódási figyelő erőforrásának és a hálózatának megfelelő problémák diagnosztizálásában. A hibrid hálózattal kapcsolatos problémákat az 1. lépésben telepített Log Analytics ügynökök fogják észlelni, és az Azure-ban az Network Watcher-bővítmény észleli a problémákat.  A hibrid hálózatban felmerülő problémák a diagnosztika lapon jelennek meg, és az Azure-hálózatban felmerülő problémák a hálózati topológiában lesznek láthatók.
+A Csatlakozáskezelő (előzetes verzió) segítségével diagnosztizálhatja a kapcsolatok figyelője és a hálózat hibáit. A hibrid hálózattal kapcsolatos problémákat a korábban telepített Log Analytics ügynökök észlelik. Az Azure-beli problémákat a Network Watcher bővítmény észleli. 
 
-A helyszíni virtuális gépekkel rendelkező hálózatok forrásaként a rendszer az alábbiakat vizsgálja:
+A hálózati topológiában megtekintheti az Azure-hálózatban felmerülő problémákat.
 
-* A kérelem időkorlátja lejárt
+Azokon a hálózatokon, amelyek forrásai a helyszíni virtuális gépek, a következő problémák észlelhetők:
+
+* A kérelem időkorlátja lejárt.
 * A végpontot nem oldja fel a DNS – ideiglenes vagy állandó. Érvénytelen URL-cím.
 * Nem található gazdagép.
 * A forrás nem tud kapcsolódni a célhelyhez. A cél nem érhető el az ICMP protokollon keresztül.
-* Tanúsítványhoz kapcsolódó probléma – az ügynök hitelesítéséhez szükséges ügyféltanúsítvány, a tanúsítvány-áthelyezési lista nem érhető el, a végpont állomásneve nem felel meg a tanúsítvány tulajdonosának vagy tulajdonosának alternatív nevének, a forrás helyi számítógépének megbízható hitelesítésszolgáltatók tárolójában hiányzó főtanúsítvány, az SSL-tanúsítvány lejárt/érvénytelen/visszavont, nem kompatibilis
+* Tanúsítványokkal kapcsolatos problémák: 
+    * Az ügynök hitelesítéséhez szükséges ügyféltanúsítvány. 
+    * A tanúsítvány-áthelyezési lista nem érhető el. 
+    * A végpont állomásneve nem felel meg a tanúsítvány tulajdonosának vagy a tulajdonos alternatív nevének. 
+    * A főtanúsítvány hiányzik a forrás helyi számítógépének megbízható hitelesítésszolgáltatók tárolójából. 
+    * Az SSL-tanúsítvány lejárt, érvénytelen, visszavont vagy nem kompatibilis.
 
-Az Azure-beli virtuális gépekkel rendelkező hálózatok forrásai a következők:
+Az Azure-beli virtuális gépeket forrásként szolgáló hálózatok esetében a következő problémák észlelhetők:
 
-* Ügynökkel kapcsolatos problémák – az ügynök leállt, sikertelen DNS-feloldás, nincs alkalmazás/figyelő a célport figyelésére, a szoftvercsatorna nem nyitható meg.
-* VIRTUÁLIS gépek állapotával kapcsolatos problémák – indítás, Leállítás, leállítva, felszabadítás, felszabadítva, újraindítás, nincs lefoglalva
-* Hiányzik az ARP-tábla bejegyzése
-* A helyi tűzfal problémái miatt letiltott forgalom, NSG-szabályok
-* VNET-átjáró – hiányzó útvonalak, a két átjáró közötti alagút le van választva, vagy hiányzik, vagy a másik átjáró nem található meg az alagútban, nem találhatók peering információ
-* Hiányzó útvonal az MS Edge-ben.
-* A forgalom a rendszerútvonalak vagy a UDR miatt leállt
-* A BGP nincs engedélyezve az átjárón keresztüli kapcsolatban
-* DIP-mintavétel a Load Balancer
+* Ügynökkel kapcsolatos problémák:
+    * Az ügynök leállt.
+    * Sikertelen DNS-feloldás.
+    * Nincs figyelő alkalmazás vagy figyelő a célport számára.
+    * A szoftvercsatorna nem nyitható meg.
+* VIRTUÁLIS gépek állapotával kapcsolatos problémák: 
+    * Indítás
+    * Leállítás
+    * Leállítva
+    * Felszabadítás
+    * Felszabadítva
+    * Újraindítás
+    * Nincs lefoglalva
+* Hiányzik az ARP-tábla bejegyzése.
+* A forgalmat a helyi tűzfal problémái vagy a NSG-szabályok miatt blokkolta a rendszer.
+* Virtuális hálózati átjáróval kapcsolatos problémák: 
+    * Hiányzó útvonalak.
+    * A két átjáró közötti alagút le van választva vagy hiányzik.
+    * A második átjáró nem található az alagútban.
+    * Nem található egyenrangú információ.
+* Az útvonal hiányzik a Microsoft Edge-ben.
+* A forgalom a rendszerútvonalak vagy a UDR miatt leállt.
+* A BGP nincs engedélyezve az átjáró-kapcsolatban.
+* A DIP-mintavétel le van töltve a terheléselosztó számára.

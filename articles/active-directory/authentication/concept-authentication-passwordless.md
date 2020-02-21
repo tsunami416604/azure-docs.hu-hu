@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756793"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505767"
 ---
-# <a name="passwordless-authentication-options"></a>Jelszóval nem rendelkező hitelesítési lehetőségek
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
 A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók gyakran frusztráltak a további biztonsági réteggel szemben, hogy emlékezzenek a jelszavára. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, vagy valamire, amit tud.
 
@@ -26,7 +26,7 @@ A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet bizton
 | --- | --- | --- |
 | Jelszó nélküli | Windows 10-es eszköz, telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
-A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft háromféle jelszavas hitelesítési lehetőséget kínál:
+A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft a következő három jelszavas hitelesítési lehetőséget kínálja:
 
 - Vállalati Windows Hello
 - A Microsoft Authenticator alkalmazás
@@ -52,7 +52,7 @@ A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval ne
 
 A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. A parancs lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközbe épített platform-kulccsal.
 
-A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsokkal jelentkezhetnek be az Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést is kaphatnak a Felhőbeli és helyszíni erőforrásaik számára. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
+A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsok használatával jelentkezhetnek be az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést kapnak a felhőbe és a helyszíni erőforrásokhoz. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -69,7 +69,7 @@ A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **k
 
 A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. Javasoljuk, hogy a kulcsok biztonsági tulajdonságainak kiértékeléséhez vegye fel a kapcsolatot a gyártóval, valamint a következőt:.
 
-| Szolgáltató | Kapcsolatfelvétel |
+| Szolgáltató | Kapcsolattartó |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

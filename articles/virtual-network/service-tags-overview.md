@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486168"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526246"
 ---
-# <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi 
+# <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
 
-A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. 
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét.
 
-A szolgáltatási címkék használatával hálózati hozzáférés-vezérlést határozhat meg a [hálózati biztonsági csoportokon](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) vagy [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags). A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. Ha a szolgáltatási címke nevét (például **ApiManagement**) adja meg egy szabály megfelelő *forrás* vagy *cél* mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
+A szolgáltatási címkék használatával hálózati hozzáférés-vezérlést határozhat meg a [hálózati biztonsági csoportokon](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) vagy [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags). A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. Ha a szolgáltatási címke nevét (például **ApiManagement**) adja meg egy szabály megfelelő *forrás* vagy *cél* mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-A szolgáltatás-címkék használatával hálózati elkülönítést érhet el, és biztosíthatja az Azure-erőforrásokat az általános internetről, miközben nyilvános végpontokkal rendelkező Azure-szolgáltatásokhoz fér hozzá. Bejövő/kimenő hálózati biztonsági csoportokra vonatkozó szabályok létrehozása az **internetre** irányuló adatforgalom megtagadásához, valamint az adott Azure-szolgáltatások **AzureCloud** vagy más [elérhető szolgáltatás-címkévé](#available-service-tags) tételének engedélyezése. 
+A szolgáltatás-címkék használatával hálózati elkülönítést érhet el, és biztosíthatja az Azure-erőforrásokat az általános internetről, miközben nyilvános végpontokkal rendelkező Azure-szolgáltatásokhoz fér hozzá. Bejövő/kimenő hálózati biztonsági csoportokra vonatkozó szabályok létrehozása az **internetre** irányuló adatforgalom megtagadásához, valamint az adott Azure-szolgáltatások **AzureCloud** vagy más [elérhető szolgáltatás-címkévé](#available-service-tags) tételének engedélyezése.
 
 ## <a name="available-service-tags"></a>Elérhető szolgáltatás címkéi
 A következő táblázat tartalmazza a [hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) szabályaiban használható összes szolgáltatás címkéjét.

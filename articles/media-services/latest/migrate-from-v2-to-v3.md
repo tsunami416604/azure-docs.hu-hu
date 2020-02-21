@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133418"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505774"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -79,7 +79,7 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 * A v2-ben az XML [bemeneti](../previous/media-services-input-metadata-schema.md) és [kimeneti](../previous/media-services-output-metadata-schema.md) metaadat-fájljai a kódolási feladatok eredményeképpen jönnek létre. A v3-as verzióban a metaadatok formátuma XML-ből JSON-ra változott. 
 
 > [!NOTE]
-> Tekintse át [Media Services v3 erőforrásokra](media-services-apis-overview.md#naming-conventions)alkalmazott elnevezési konvenciókat. Tekintse át a [Blobok elnevezését](assets-concept.md#naming-blobs)is.
+> Tekintse át [Media Services v3 erőforrásokra](media-services-apis-overview.md#naming-conventions)alkalmazott elnevezési konvenciókat. Tekintse át a [Blobok elnevezését](assets-concept.md#naming)is.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Hiányosságok a v2 API-k tekintetében
 

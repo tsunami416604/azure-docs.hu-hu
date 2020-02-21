@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470572"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484604"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
-Ez a cikk a gyakori kérdések megválaszolásával és a Windows 10 Enterprise multi-Sessions szolgáltatással kapcsolatos ajánlott eljárásokat tárgyalja.
+Ez a cikk a gyakori kérdésekre adott válaszokat és a Windows 10 Enterprise több munkamenetre vonatkozó ajánlott eljárásokat ismerteti.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Mi a Windows 10 Enterprise több munkamenet? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Mi a Windows 10 Enterprise több munkamenet?
 
-A Windows 10 Enterprise multi-session (korábbi nevén Windows 10 Enterprise for Virtual desktops) egy új Távoli asztal EVD, amely egyszerre több egyidejű interaktív munkamenetet tesz lehetővé, amelyek korábban csak a Windows Servert tudták elvégezni. Ez a funkció lehetővé teszi a felhasználók számára a Windows 10 ismerős élményét, miközben a több munkamenetre kiterjedő, illetve a meglévő felhasználónkénti Windows-licencelést használja az RDS ügyféllicencek (CAL) helyett. A licencekkel és a díjszabással kapcsolatos további információkért lásd: a [Windows rendszerű virtuális asztali díjszabása](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+A Windows 10 Enterprise multi-session, korábbi nevén Windows 10 Enterprise for Virtual desktops (EVD) egy új Távoli asztal munkamenet-gazdagép, amely több egyidejű interaktív munkamenetet tesz lehetővé. Korábban csak a Windows Server képes erre. Ez a funkció lehetővé teszi a felhasználók számára a Windows 10 ismerős élményét, miközben a több munkamenetre kiterjedő, illetve a meglévő felhasználónkénti Windows-licencelést használja az RDS ügyféllicencek (CAL) helyett. A licencekkel és a díjszabással kapcsolatos további információkért lásd: a [Windows rendszerű virtuális asztali díjszabása](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Hány felhasználó tud egyidejűleg interaktív munkamenetet összekapcsolni a Windows 10-es nagyvállalati munkamenetben?
 
@@ -40,7 +40,7 @@ Elindíthat egy virtuális gépet (VM) az Azure-ban a Windows 10 rendszerű Wind
  
 Első lépésként hozzon létre egy virtuális gépet az Azure-ban a Windows 10 Windows 10 Enterprise multi-session. A virtuális gép Azure-beli elindítása helyett közvetlenül letöltheti a virtuális merevlemezt. Ezután használhatja a letöltött VHD-t egy új generációs 1 virtuális gép létrehozásához egy Windows 10 rendszerű számítógépen, amelyen engedélyezve van a Hyper-V.
 
-A rendszerképet a LOB-alkalmazások telepítésével és a Sysprep eszközzel testreszabhatja igényei szerint. Ha elkészült a testreszabással, töltse fel a rendszerképet az Azure-ba a virtuális merevlemezen belül. Ezt követően szerezze be a Windows rendszerű virtuális asztalt az Azure Marketplace-ről, és használja azt egy új címkészlet üzembe helyezéséhez a testreszabott rendszerkép használatával.
+A rendszerképet a LOB-alkalmazások telepítésével és a Sysprep eszközzel testreszabhatja igényei szerint. Ha elkészült a testreszabással, töltse fel a rendszerképet az Azure-ba a virtuális merevlemezen belül. Ezt követően szerezze be a Windows rendszerű virtuális asztalt az Azure Marketplace-ről, és használja egy új címkészlet üzembe helyezéséhez a testreszabott rendszerkép használatával.
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Az üzembe helyezést követően Hogyan a Windows 10 Enterprise multi-session-munkamenet kezelése?
 
@@ -71,6 +71,31 @@ A FSLogix-profilok tárolójának konfigurálásával kapcsolatos további infor
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Milyen licencre van szükségem a Windows 10 Enterprise multi-session szolgáltatáshoz?
 
 A megfelelő licencek teljes listáját a [Windows rendszerű virtuális asztali díjszabás](https://azure.microsoft.com/pricing/details/virtual-desktop/)című témakörben tekintheti meg.
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Miért tűnnek el az alkalmazások a kijelentkezés után?
+
+Ennek az az oka, hogy a Windows 10 Enterprise több munkamenetet használ egy profil-felügyeleti megoldással (például FSLogix). A rendszergazda vagy a profil megoldása úgy konfigurálta a rendszerét, hogy törölje a felhasználói profilokat, amikor a felhasználók kijelentkeznek. Ez a konfiguráció azt jelenti, hogy ha a rendszer törli a felhasználói profilt a kijelentkezés után, akkor a munkamenet során telepített alkalmazásokat is eltávolítja. Ha meg szeretné tartani a telepített alkalmazásokat, meg kell kérnie a rendszergazdát, hogy a Windows rendszerű virtuális asztali környezetben lévő összes felhasználó számára kiépítse ezeket az alkalmazásokat.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Hogyan, hogy az alkalmazások ne legyenek eltűnnek a felhasználók kijelentkezése után?
+
+A legtöbb virtualizált környezet alapértelmezés szerint úgy van konfigurálva, hogy megakadályozza, hogy a felhasználók további alkalmazásokat telepítsenek a profiljába. Ha meg szeretné győződni arról, hogy az alkalmazás nem szűnik meg, amikor a felhasználó kijelentkezik a Windows rendszerű virtuális asztalról, az alkalmazást a környezetében lévő összes felhasználói profilhoz ki kell építenie. Az alkalmazásokkal kapcsolatos további információkért tekintse meg ezeket az erőforrásokat:
+
+- [Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon](publish-apps.md)
+- [DISM-alkalmazáscsomag karbantartási parancssori kapcsolói](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Hogyan győződjön meg arról, hogy a felhasználók nem töltik le és nem telepítik az alkalmazásokat a Microsoft Storeból?
+
+A Microsoft Store alkalmazás letiltásával meggyőződhet arról, hogy a felhasználók nem töltenek le további alkalmazásokat a számukra már üzembe helyezett alkalmazásokon kívül.
+
+Az áruházbeli alkalmazás letiltása:
+
+1. Hozzon létre egy új Csoportházirend.
+2. Válassza ki a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevőket**.
+3. Válassza az **áruház**lehetőséget.
+4. Válassza az **áruházbeli alkalmazás**lehetőséget.
+5. Válassza a **Letiltva**lehetőséget, majd kattintson **az OK gombra**.
+6. Kattintson az **Alkalmaz** gombra.
  
 ## <a name="next-steps"></a>Következő lépések
 

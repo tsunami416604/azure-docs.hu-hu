@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047845"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482884"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
 
@@ -24,7 +24,9 @@ Megjelent a Azure Monitor for VMs új verziója. A virtuális gépek Azure-figye
 
 Ezzel a frissítéssel a Azure Monitor for VMs teljesítményadatokat ugyanabban a *InsightsMetrics* -táblában tároljuk, mint a [tárolók Azure monitor](container-insights-overview.md), ami megkönnyíti a két adathalmaz lekérdezését. Azt is megteheti, hogy több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
 
-A következő héten vagy kettőben a teljesítmény nézetei is frissülni fognak az új táblázat használatára.
+A teljesítménnyel kapcsolatos nézeteink mostantól a *InsightsMetrics* táblában tárolt adathalmazokat használják.  Ha még nem frissítette a legújabb VMInsights-megoldás használatát a munkaterületen, a diagramok többé nem fognak adatokat megjeleníteni.  Az alább leírtak szerint frissíthet az **első lépések** lapról.
+
+Ezzel a frissítéssel Azure Monitor for VMs teljesítményadatokat ugyanabban a *InsightsMetrics* -táblában tárolják, mint a [tárolók Azure monitor](container-insights-overview.md) , így könnyebben lehet lekérdezni a két adathalmazt. Emellett több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
 
 Tisztában vagyunk azzal, hogy a meglévő ügyfelek frissítésének megkérdezése megszakítja a munkafolyamatot, ezért most úgy döntöttünk, hogy a GA után még a nyilvános előzetes verzióban is elvégezték.
 
@@ -34,6 +36,8 @@ Tisztában vagyunk azzal, hogy a meglévő ügyfelek frissítésének megkérdez
 Megjelent egy VMInsights nevű új megoldás, amely az adatgyűjtés további funkcióit tartalmazza, valamint egy új helyet az adattároláshoz a Log Analytics munkaterületen. 
 
 A múltban engedélyezte a ServiceMap megoldást a munkaterületen, és a Log Analytics munkaterületen a teljesítményszámlálók beállításával elküldheti az adatait a *perf* táblába. Ez az új megoldás a *InsightsMetrics* nevű táblába küldi az adatokat, amelyet a tárolók Azure monitor is használ. Ez a táblázatos séma lehetővé teszi, hogy olyan további mérőszámokat és szolgáltatási adatkészleteket tároljon, amelyek nem kompatibilisek a *perf* Table formátumával.
+
+Frissítettük a teljesítmény diagramokat a *InsightsMetrics* táblában tárolt adat használatához. Az alábbi lépésekkel frissítheti a *InsightsMetrics* táblázatot az **első lépések** oldaláról.
 
 
 ## <a name="how-do-i-upgrade"></a>Hogyan frissíteni?

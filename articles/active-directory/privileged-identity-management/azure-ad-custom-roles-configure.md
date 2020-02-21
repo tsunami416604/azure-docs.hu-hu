@@ -16,16 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048115"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498678"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Management
 
 A Kiemelt szerepkörű rendszergazdák megváltoztathatják a felhasználókra vonatkozó szerepkör-beállításokat, amikor a hozzárendelést egy egyéni szerepkörhöz és más, egyéni szerepköröket hozzárendelő alkalmazás-rendszergazdákhoz használják.
+
+> [!NOTE]
+> Az Azure AD egyéni szerepkörei nincsenek integrálva az előzetes verzióban a beépített címtárbeli szerepkörökbe. Miután a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök felületén történik. Ha a következő szalagcím jelenik meg, ezeket a szerepköröket [a beépített szerepkörökkel kapcsolatos felhasználói élményben](pim-how-to-activate-role.md) kell kezelni, és ez a cikk nem alkalmazható:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 
@@ -95,7 +100,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
+- [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-activate.md)
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
 - [Szerepkör-definíciók az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md)

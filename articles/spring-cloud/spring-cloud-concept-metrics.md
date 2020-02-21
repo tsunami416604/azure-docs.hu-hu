@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: e6517f1a7374b3960c3b749e63a90fe9eb21e7b0
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277944"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500326"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -52,16 +52,18 @@ Először válassza ki a megtekinteni kívánt metrikákat:
 
 ![Metrika nézet kiválasztása](media/metrics/metrics-4.png)
 
+Az összes mérőszám beállítás részleteit az alábbi [szakaszban](#user-metrics-options) találja.
+
 Ezután válassza ki az egyes metrikák összesítési típusát:
 
 ![Metrika összesítése](media/metrics/metrics-5.png)
 
-Az összesítési típus azt jelzi, hogyan kell összesíteni az időt. Percenként egy metrikai pont van.
-* Összesen: az összes mérőszámot célként megadott kimenetként összesíti.
+Az összesítési típus azt jelzi, hogyan összesíthető a diagram metrikai pontjainak ideje. Percenként egy nyers metrikai pont van, és az összesítési típust egy percen belül előre definiáljuk a metrikák típusa szerint.
+* Sum: az összes értéket célként megadott kimenetként összesíti.
 * Átlag: az időszakban az átlagos értéket célként megadott kimenetként használja.
 * Max/min: használja a maximális/legkisebb értéket az időszakban célként megadott kimenetként.
 
-A megjelenítendő időtartomány is módosítható.  Az időtartomány az elmúlt 30 perctől az utolsó 30 napban, vagy egy egyéni időtartományban is kiválasztható.
+A megjelenítendő időtartomány is módosítható. Az időtartomány az elmúlt 30 perctől az utolsó 30 napban, vagy egy egyéni időtartományban is kiválasztható.
 
 ![Metrika módosítása](media/metrics/metrics-6.png)
 
@@ -80,36 +82,53 @@ Használhatja a **felosztás alkalmazása** lehetőséget is, amely egy alkalmaz
 >[!TIP]
 > Saját diagramokat hozhat létre a metrikák lapon, és rögzítheti őket az **irányítópulton**. Először nevezze el a diagramot.  Ezután válassza **a rögzítés az irányítópulton lehetőséget a jobb felső sarokban**. Mostantól a portál **irányítópultján**is megtekintheti az alkalmazását.
 
-## <a name="user-portal-metrics-options"></a>Felhasználói portál metrikáinak beállításai
+## <a name="user-metrics-options"></a>Felhasználói mérőszámok beállításai
 
-A következő táblázat az elérhető metrikákat és részleteket tartalmazza.
->[!div class="mx-tdBreakAll"]
->| Name (Név) | Megjelenítendő név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
->|----|----|----|----|------------|
->| SystemCpuUsagePercentage | CPU-használat százalékos aránya | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során. Az 0,0 és 1,0 közötti összes érték a rendszeren folytatott tevékenységtől függően lehetséges. Ha a rendszer legutóbbi CPU-használata nem érhető el, a metódus negatív értéket ad vissza. |
->| AppCpuUsagePercentage | Alkalmazás CPU-kihasználtságának százalékos aránya | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak. Az 0,0 és 1,0 közötti összes érték lehetséges a JVM folyamaton és a teljes rendszeren folytatott tevékenységektől függően. Ha a Java virtuális gép legutóbbi CPU-használat nem érhető el, a metódus negatív értéket ad vissza. |
->| AppMemoryCommitted | Az alkalmazáshoz hozzárendelt memória | JVM. Memory. véglegesített | Bájt | Azt a memóriát jelenti (bájtban), amelyet a Java virtuális gép számára biztosítani kell. Az előjegyzett memória mennyisége idővel változhat (növekvő vagy csökkenő). Előfordulhat, hogy a Java virtuális gép memóriát szabadít fel a rendszeren, és a véglegesítése kisebb lehet, mint az init. a véglegesítés mindig nagyobb vagy egyenlő, mint a használat. |
->| AppMemoryUsed | Használt alkalmazás memóriája | JVM. Memory. felhasználva | Bájt | A bájtban jelenleg használt memória mennyiségét jelöli. |
->| AppMemoryMax | Az alkalmazás memóriájának maximális száma | JVM. Memory. max | Bájt | A memória-kezeléshez használható memória maximális méretét (bájtban) jelöli. Lehet, hogy az értéke nem definiált. A memória maximális mennyisége idővel változhat, ha meg van adva. A felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, ha a maximális érték meg van adva. Előfordulhat, hogy a memória kiosztása meghiúsul, ha a használt memóriát úgy próbálja megjavítani, hogy az < = Max használata esetén is igaz legyen (például ha a rendszer kevés a virtuális memóriában), ha a használni próbált >. |
->| MaxOldGenMemoryPoolBytes | A rendelkezésre álló régi generációs adatméret maximális száma | JVM. GC. max. az adatméret | Bájt | A régi generációs memória maximális kihasználtsága a Java virtuális gép elindítása óta. |
->| OldGenMemoryPoolBytes | A régi generációs adatméret | JVM. GC. Live. Resize | Bájt | A régi generációs memória-készlet mérete teljes GC után. |
->| OldGenPromotedBytes | Előléptetés a régi generációs adatméretre | JVM. GC. Memory. előléptetve | Bájt | A régi generációs memória-készlet méretének pozitív növekedésének száma, mielőtt a GC-t a GC után. |
->| YoungGenPromotedBytes | Népszerűsítse a fiatal generáció adatméretét | JVM. GC. Memory. lefoglalt | Bájt | Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután az egyik GC a következőre kerül. |
->| GCPauseTotalCount | GC-szüneteltetések száma | JVM. GC. pause (összesen-Count) | Mennyiség | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
->| GCPauseTotalTime | GC felfüggesztésének teljes ideje | JVM. GC. pause (teljes idő) | Ezredmásodperc | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
->| TomcatSentBytes | Tomcat összesen eljuttatott bájtok száma | tomcat. Global. elküldve | Bájt | Az adattomcat-webkiszolgáló által elküldett adat mennyisége (bájt) |
->| TomcatReceivedBytes | Tomcat összesen fogadott bájtok | tomcat. Global. Received | Bájt | A Tomcat-webkiszolgáló által fogadott adat mennyisége (bájt) |
->| TomcatRequestTotalTime | Tomcat-kérelem teljes ideje | tomcat. Global. Request (teljes idő) | Ezredmásodperc | A Tomcat webkiszolgáló teljes ideje, hogy feldolgozza a kérelmeket. |
->| TomcatRequestTotalCount | Tomcat-kérelem összesített száma | tomcat. Global. Request (összesen-Count) | Mennyiség | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
->| TomcatRequestMaxTime | Tomcat-kérelem maximális ideje | tomcat. Global. Request. max | Ezredmásodperc | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
->| TomcatErrorCount | Tomcat globális hiba | tomcat. Global. error | Mennyiség | A feldolgozott kérelmekben előforduló hibák száma |
->| TomcatSessionActiveMaxCount | Tomcat-munkamenet maximális aktív száma | tomcat. Sessions. Active. max | Mennyiség | Egy időben aktív munkamenetek maximális száma |
->| TomcatSessionAliveMaxTime | Tomcat-munkamenet maximális élettartama | tomcat. Sessions. Alive. max | Ezredmásodperc | A lejárt munkamenet életben lévő leghosszabb ideje (másodpercben) |
->| TomcatSessionCreatedCount | Tomcat-munkamenet létrehozva szám | tomcat. Sessions. created | Mennyiség | A létrehozott munkamenetek száma |
->| TomcatSessionExpiredCount | A Tomcat-munkamenet lejárt | tomcat. Sessions. lejárt | Mennyiség | Lejárt munkamenetek száma |
->| TomcatSessionRejectedCount | A Tomcat-munkamenet elutasította a darabszámot | tomcat. Sessions. elutasítva | Mennyiség | Azon munkamenetek száma, amelyek nem lettek létrehozva, mert elérte az aktív munkamenetek maximális számát. |
+Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
-## <a name="see-also"></a>Lásd még:
+### <a name="error"></a>Hiba
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Név) | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>|----|----|----|------------|
+>| Tomcat globális hiba | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
+
+### <a name="performance"></a>Teljesítmény
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Név) | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>|----|----|----|------------|
+>|CPU-használat százalékos aránya | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
+>| Alkalmazás CPU-kihasználtságának százalékos aránya | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
+>| Az alkalmazáshoz hozzárendelt memória | JVM. Memory. véglegesített | Bájt | A JVM számára elérhetővé tett memória mennyiségét jelöli. Előfordulhat, hogy a JVM memóriát szabadít fel a rendszeren, és a véglegesítése kisebb lehet, mint az init. a véglegesítés mindig nagyobb vagy egyenlő, mint a használat. |
+>| Használt alkalmazás memóriája | JVM. Memory. felhasználva | Bájt | A bájtban jelenleg használt memória mennyiségét jelöli. |
+>| Az alkalmazás memóriájának maximális száma | JVM. Memory. max | Bájt | A memória-kezeléshez használható maximális memóriát jelöli. A felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, ha a maximális érték meg van adva. Előfordulhat, hogy a memória kiosztása meghiúsul, ha a használt memóriát úgy próbálja megjavítani, hogy az < = Max használata esetén is igaz legyen (például ha a rendszer kevés a virtuális memóriában), ha a használni próbált >. |
+>| A rendelkezésre álló régi generációs adatméret maximális száma | JVM. GC. max. az adatméret | Bájt | A régi generációs memória maximális kihasználtsága a Java virtuális gép elindítása óta. |
+>| A régi generációs adatméret | JVM. GC. Live. Resize | Bájt | A régi generációs memória-készlet mérete teljes GC után. |
+>| Előléptetés a régi generációs adatméretre | JVM. GC. Memory. előléptetve | Bájt | A régi generációs memória-készlet méretének pozitív növekedésének száma, mielőtt a GC-t a GC után. |
+>| Népszerűsítse a fiatal generáció adatméretét | JVM. GC. Memory. lefoglalt | Bájt | Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután az egyik GC a következőre kerül. |
+>| GC-szüneteltetések száma | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
+>| GC felfüggesztésének teljes ideje | JVM. GC. pause (teljes idő) | Ezredmásodperc | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
+
+### <a name="request"></a>Kérés
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Név) | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>|----|----|----|------------|
+>| Tomcat összesen eljuttatott bájtok száma | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
+>| Tomcat összesen fogadott bájtok | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
+>| Tomcat-kérelem teljes ideje | tomcat. Global. Request (teljes idő) | Ezredmásodperc | A Tomcat webkiszolgáló teljes ideje a kérelmek feldolgozására |
+>| Tomcat-kérelem összesített száma | tomcat. Global. Request (összesen-Count) | Darabszám | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
+>| Tomcat-kérelem maximális ideje | tomcat. Global. Request. max | Ezredmásodperc | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
+
+### <a name="session"></a>Munkamenet
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Név) | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>|----|----|----|------------|
+>| Tomcat-munkamenet maximális aktív száma | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
+>| Tomcat-munkamenet maximális élettartama | tomcat. Sessions. Alive. max | Ezredmásodperc | A lejárt munkamenet életben lévő leghosszabb ideje (másodpercben) |
+>| Tomcat-munkamenet létrehozva szám | tomcat. Sessions. created | Darabszám | A létrehozott munkamenetek száma |
+>| A Tomcat-munkamenet lejárt | tomcat. Sessions. lejárt | Darabszám | Lejárt munkamenetek száma |
+>| A Tomcat-munkamenet elutasította a darabszámot | tomcat. Sessions. elutasítva | Darabszám | Azon munkamenetek száma, amelyek nem lettek létrehozva, mert elérte az aktív munkamenetek maximális számát. |
+
+## <a name="see-also"></a>Lásd még
 * [Bevezetés az Azure Metrikaböngésző használatába](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

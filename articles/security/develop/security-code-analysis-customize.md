@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure biztonsági kód elemzése feladat testreszabási útmutatója
+title: A Microsoft biztonsági kód elemzési feladatainak testreszabása
+titleSuffix: Azure
 description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény feladatainak testreszabását ismerteti
 author: vharindra
 manager: sukhans
@@ -12,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851536"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499986"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -97,7 +98,7 @@ Az elérhető lehetőségek a következők:
   - **Keresők**fájltípusa: a vizsgálathoz használt kereső fájl megkeresésének lehetőségei.
   - **Mellőzési fájl**: egy [JSON](https://json.org/) -fájl letiltja a kimeneti napló hibáit. A letiltási forgatókönyvekkel kapcsolatos további információkért tekintse meg a jelen cikk gyakori kérdések című szakaszát.
   - **Részletes kimenet**: magától értetődő.
-  - **Batch mérete**: a hitelesítő adatok beolvasójának futtatásához használt egyidejű szálak száma. Az alapértelmezett érték 20. A lehetséges értékek 1 és 2 147 483 647 közötti tartományba esnek.
+  - **Batch mérete**: a hitelesítő adatok beolvasójának futtatásához használt egyidejű szálak száma. Az alapértelmezett értéke 20. A lehetséges értékek 1 és 2 147 483 647 közötti tartományba esnek.
   - **Egyeztetési időkorlát**: az az időtartam másodpercben, ameddig a keresőnek meg kell felelnie az ellenőrzések elhagyása előtt.
   - **Fájl vizsgálata olvasási puffer mérete**: a tartalom olvasásakor használt puffer mérete bájtban megadva. Az alapértelmezett érték a 524 288.  
   - **Maximális fájl vizsgálatának olvasási bájtjai**: egy fájlból beolvasott bájtok maximális száma a tartalom elemzése során. Az alapértelmezett érték a 104 857 600.

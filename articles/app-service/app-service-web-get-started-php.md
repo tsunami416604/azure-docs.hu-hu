@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672099"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500143"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -68,7 +68,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az `myAppServicePlan`[`az webapp create` paranccsal hozzon létre egy webalkalmazást a ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) App Service-csomagban. 
 
 A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot. 
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688920"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524087"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>ASP.NET Core-és SQL Database-alkalmazás létrehozása Linux rendszeren Azure App Service
 
@@ -23,7 +23,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ![Linux App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * SQL Database-adatbázis létrehozása az Azure-ban
@@ -83,7 +83,7 @@ Ebben a lépésben egy SQL Database-adatbázist hozhat létre az Azure-ban. Miut
 
 Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-database/) használja.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -303,7 +303,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Nyissa meg a _Views\Todos\Create.cshtml_ fájlt.
 
-A Razor-kódban látnia kell a `Description` alá tartozó `<div class="form-group">` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
+A Razor-kódban látnia kell a `<div class="form-group">` alá tartozó `Description` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
 
 ```csharp
 <div class="form-group">
@@ -325,7 +325,7 @@ Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következ�
 </th>
 ```
 
-Keresse meg a `asp-action` címke-segítőket tartalmazó `<td>` elemet. Az elem felett adja hozzá a következő Razor-kódot:
+Keresse meg a `<td>` címke-segítőket tartalmazó `asp-action` elemet. Az elem felett adja hozzá a következő Razor-kódot:
 
 ```csharp
 <td>

@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 302757eb40d52a8dca5dbcb1147deb0532a0cf00
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460535"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506158"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
-Az alábbi lista a Azure Data Factory csapat által létrehozott, a leképezési folyamatokról szóló oktatóanyagot mutatja be.
+Az alábbi lista a Azure Data Factory csapat által létrehozott, a leképezési folyamatokról szóló oktatóanyagot mutatja be. 
 
 Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data Factory felhasználói élményben vannak hozzáadva vagy más funkciókkal.
 
@@ -100,6 +100,8 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 [Indítási idő csökkentése](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [SQL-adatbázis teljesítménye](https://youtu.be/iyZT5CY3V_4)
+
+[Naplózás](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>Adatfolyam-forgatókönyvek leképezése
 

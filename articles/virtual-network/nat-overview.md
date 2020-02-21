@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431417"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526314"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Mi az Virtual Network NAT (nyilvános előzetes verzió)?
 
@@ -168,7 +168,7 @@ Az előfizetéseket regisztrálni kell a nyilvános előzetes verzióban való r
 2. regisztráció aktiválása
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Díjszabás
@@ -197,9 +197,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
 
 - A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 - Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.
-- Az alhálózat vagy hálózati adapter NSG nem felel meg a kimenő forgalomnak a NAT-t használó nyilvános végpontoknak.
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
-- Ha egy virtuális hálózat több alhálózattal rendelkezik, az egyes alhálózatok eltérő NAT-konfigurációval rendelkezhetnek.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="next-steps"></a>Következő lépések

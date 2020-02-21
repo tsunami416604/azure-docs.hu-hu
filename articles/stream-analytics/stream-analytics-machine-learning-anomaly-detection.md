@@ -1,18 +1,18 @@
 ---
 title: Anomáliák észlelése Azure Stream Analytics
-description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Stream Analytics és Azure Machine Learning együtt a rendellenességek észlelésére.
+description: Ez a cikk ismerteti, hogyan használhatja az Azure Stream Analytics és az Azure Machine Learning együtt észlelje a rendellenességeket.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459613"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525532"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliák észlelése Azure Stream Analytics
 
@@ -21,6 +21,12 @@ A felhőben és Azure IoT Edgeban egyaránt elérhető, Azure Stream Analytics b
 A gépi tanulási modellek egységesen mintául szolgáló idősorozatot feltételeznek. Ha az idősorozat nem egységes, a rendellenesség észlelésének meghívása előtt beillesztheti az összesítési lépést egy elválasztó ablakba.
 
 A gépi tanulási műveletek jelenleg nem támogatják a szezonális trendeket vagy a többváltozós korrelációkat.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomáliák észlelése a Machine learning használatával Azure Stream Analytics
+
+A következő videó bemutatja, hogyan észlelhető egy anomália valós időben a Machine learning functions használatával Azure Stream Analyticsban. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Modell viselkedése
 
@@ -113,7 +119,7 @@ Ezeknek a modelleknek a teljesítménye az előzmények méretétől, az időtar
 * **Esemény betöltése** – minél nagyobb az **esemény terhelése**, annál több munka van, amelyet a modellek végeznek, ami hatással van a CPU-felhasználásra. A feladatot zavaróan párhuzamosan lehet kibővíteni, feltételezve, hogy az üzleti logika több bemeneti partíció használatát teszi lehetővé.
 * A függvények szintjének **particionálásához** - a **függvények szintjének particionálását** a rendellenesség-észlelési függvény hívásának ```PARTITION BY``` használatával végezheti el. Ez a particionálási típus felveszi a terhelést, mivel az állapotot egyszerre több modell esetében is fenn kell tartani. A függvények szintjének particionálását olyan forgatókönyvek használják, mint az eszközök szintjének particionálás.
 
-### <a name="relationship"></a>Relationship
+### <a name="relationship"></a>Kapcsolat
 Az előzmények mérete, az ablak időtartama és az összes esemény terhelése a következő módon kapcsolódik:
 
 windowDuration (MS) = 1000 * historySize/(összes bemeneti esemény másodpercenként/bemeneti partíciók száma)
@@ -125,20 +131,20 @@ A következő táblázat a nem particionált esetekhez tartozó egyetlen csomóp
 
 | Előzmények mérete (események) | Ablak időtartama (MS) | Összes bemeneti esemény másodpercenként |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2200 |
+| 60 | 55 | 2 200 |
 | 600 | 728 | 1 650 |
-| 6000 | 10 910 | 1100 |
+| 6,000 | 10 910 | 1 100 |
 
 A következő táblázat a particionált eset egyetlen csomópontjának (6 SU) átviteli sebességét tartalmazza:
 
 | Előzmények mérete (események) | Ablak időtartama (MS) | Összes bemeneti esemény másodpercenként | Eszközök száma |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1 091 | 1100 | 10 |
-| 600 | 10 910 | 1100 | 10 |
-| 6000 | 218 182 | < 550 | 10 |
+| 60 | 1 091 | 1 100 | 10 |
+| 600 | 10 910 | 1 100 | 10 |
+| 6,000 | 218 182 | < 550 | 10 |
 | 60 | 21 819 | 550 | 100 |
 | 600 | 218 182 | 550 | 100 |
-| 6000 | 2 181 819 | < 550 | 100 |
+| 6,000 | 2 181 819 | < 550 | 100 |
 
 A fentiekben nem particionált konfigurációk futtatásához használandó mintakód az Azure-minták [streaming skáláján](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) található. A kód olyan stream Analytics-feladatot hoz létre, amely nem rendelkezik működési szintű particionálással, ami az Event hub bemenetként és kimenetként való használatát is felhasználja. A bemeneti terhelés a tesztelési ügyfelek használatával jön létre. Minden bemeneti esemény egy 1KB JSON-dokumentum. Az események a JSON-adatokat küldő IoT-eszközt szimulálják (legfeljebb 1K-eszközök esetén). Az előzmények mérete, az ablak időtartama és az események teljes terhelése két bemeneti partíción keresztül változhat.
 
@@ -147,12 +153,6 @@ A fentiekben nem particionált konfigurációk futtatásához használandó mint
 
 ### <a name="identifying-bottlenecks"></a>Szűk keresztmetszetek azonosítása
 A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át a **bemeneti/kimeneti eseményeket** az átviteli sebesség és a "küszöbértékek [késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy a **várakozó események** között, és ellenőrizze, hogy a feladatban szerepel-e a bemeneti sebesség. Az Event hub mérőszámai esetében keresse meg a **szabályozott kérelmeket** , és ennek megfelelően módosítsa a küszöbértékeket. Cosmos DB metrikák esetében tekintse át a **maximálisan felhasznált ru/s** értékeit az átviteli sebesség alatt, hogy a partíciós kulcsok tartománya egységesen legyen felhasználva. Az Azure SQL DB esetében figyelje a **log IO** és a **CPU**-t.
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomáliák észlelése a Machine learning használatával Azure Stream Analytics
-
-A következő videó bemutatja, hogyan észlelhető egy anomália valós időben a Machine learning functions használatával Azure Stream Analyticsban. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 79dd6160b65469d6a44167913adb7e319f0f583a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987899"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525345"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -24,10 +24,10 @@ Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az al�
 
 A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali függvénytárat:
 
-* Véleményelemzés
+* Hangulatelemzés
 * Nyelvfelismerés
 * Entitások felismerése
-* A kulcsfontosságú kifejezések kinyerése
+* Kulcskifejezések kinyerése
 
 ::: zone pivot="programming-language-csharp"
 
@@ -37,17 +37,6 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * A Text Analytics API legújabb előzetes verziója `3.0-preview`, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és az [elnevezett entitás-felismeréshez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). A legújabb stabil verzió a `2.1`.
->    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
-> * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt. 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * A Text Analytics API legújabb előzetes verziója `3.0-preview`, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és az [elnevezett entitás-felismeréshez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). A legújabb stabil verzió a `2.1`.
+>    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
+> * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>További nyelvi támogatás
@@ -81,8 +81,8 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 
 | Nyelv | Elérhető verzió | 
 |----------|------------------------|
-| Ruby     | [2,1-es verzió](ruby-sdk.md)          | 
-| Indítás       | [2,1-es verzió](go-sdk.md)          | 
+| Ruby     | [2,1-es verzió](ruby-sdk.md) | 
+| Indítás       | [2,1-es verzió](go-sdk.md) | 
 
 ::: zone-end
 
@@ -90,7 +90,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések

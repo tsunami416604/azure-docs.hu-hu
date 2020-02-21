@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905259"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526495"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -38,7 +38,7 @@ A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` k�
 
 A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő proxykat.
 
-## <a name="optimize-performance"></a>A teljesítmény optimalizálása
+## <a name="optimize-performance"></a>Teljesítmény optimalizálása
 
 A teljesítmény és az erőforrás-felhasználás közötti optimális kompromisszum megtalálásához használhatja a teljesítményt, majd parancsokat és környezeti változókat használhat.
 
@@ -121,6 +121,8 @@ A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megter
 A naplók a hiba (`UPLOADFAILED`, `COPYFAILED`és `DOWNLOADFAILED`) állapotát, a teljes elérési utat és a hiba okát is tartalmazzák.
 
 Alapértelmezés szerint a napló-és a megtervezési fájlok a `%USERPROFILE%\.azcopy` könyvtárban találhatók a Windows rendszeren, vagy `$HOME$\.azcopy` a Mac és Linux rendszerű címtárban, de ha kívánja, módosíthatja ezt a helyet.
+
+A kapcsolódó hiba nem feltétlenül a fájlban megjelenő első hiba. Hibák, például hálózati hibák, időtúllépések és a kiszolgáló foglalt hibái esetén a AzCopy legfeljebb 20 alkalommal próbálkozik újra, és általában az újrapróbálkozási folyamat sikeres lesz.  A megjelenő első hiba lehet valami ártalmatlan, amely sikeresen újrapróbálkozott.  Ezért ahelyett, hogy a fájl első hibáját keresi, keresse meg a `UPLOADFAILED`, `COPYFAILED`vagy `DOWNLOADFAILED`hoz közeli hibákat. 
 
 > [!IMPORTANT]
 > Amikor kérelmet küld a Microsoft ügyfélszolgálata (vagy bármely harmadik féltől származó probléma elhárítása), ossza meg a futtatni kívánt parancs kivont verzióját. Ez biztosítja, hogy az SAS véletlenül senkivel se legyen megosztva. A leválasztott verziót a naplófájl elején találja.

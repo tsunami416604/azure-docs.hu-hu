@@ -1,5 +1,6 @@
 ---
-title: 'Gyors útmutató: Geo AI DSVM létrehozása'
+title: 'Gyors útmutató: Geo AI-Data Science Virtual Machine létrehozása'
+titleSuffix: Azure Data Science Virtual Machine
 description: Geo AI-Data Science Virtual Machine konfigurálása és létrehozása az Azure-ban térinformatikai elemzésekhez és gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,16 +8,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170725"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525889"
 ---
-# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Gyors útmutató: Az Azure-beli geo mesterséges intelligencia-beli virtuális gép beállítása 
+# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Gyors útmutató: Geo mesterséges intelligencia virtuális gép beállítása az Azure-ban 
 
-A Geo AI Data Science Virtual Machine (Geo-DSVM) a népszerű [Azure-Data Science Virtual Machine](https://aka.ms/dsvm) kiterjesztése, amely kifejezetten az AI és a térinformatikai elemzések összevonására van konfigurálva. A térinformatikai elemzés, a virtuális gép működteti [ArcGIS Pro](https://www.arcgis.com/features/index.html). A Data Science Virtual Machine (DSVM) lehetővé teszi a gépi tanulási és még mélyebb tanulási modellek gyors betanítását. A modellek fejlesztéséhez a földrajzi adatokkal dúsított adatokat használ. A Geo-DSVM csak a Windows 2016 DSVM támogatott. 
+A Geo AI Data Science Virtual Machine (Geo-DSVM) a népszerű [Azure-Data Science Virtual Machine](https://aka.ms/dsvm) kiterjesztése, amely kifejezetten az AI és a térinformatikai elemzések összevonására van konfigurálva. A térinformatikai elemzést a virtuális gépen a [ArcGIS Pro](https://www.arcgis.com/features/index.html)működteti. A Data Science Virtual Machine (DSVM) lehetővé teszi a gépi tanulási és még mélyebb tanulási modellek gyors betanítását. A modellek fejlesztéséhez a földrajzi adatokkal dúsított adatokat használ. A Geo-DSVM csak a Windows 2016 DSVM támogatott. 
 
 A Geo-DSVM található AI-eszközök közé a következők tartoznak:
 
@@ -39,26 +40,26 @@ A Geo AI Data Science VM példányának létrehozásához kövesse az alábbi l�
 
 ### <a name="wizard-details"></a>Varázsló részletei ###
 
-**Alapvető beállítások**:
+**Alapismeretek**:
 
-- **Név**: Neve az adatelemzési kiszolgálót hoz létre.
+- **Name (név**): a létrehozandó adatelemzési kiszolgáló neve.
     
-- **Felhasználónév**: Rendszergazdai fiók bejelentkezési azonosítója.
+- **User Name (Felhasználónév**): rendszergazdai fiók bejelentkezési azonosítója.
     
-- **Jelszó**: Rendszergazdai fiók jelszava.
+- **Password (jelszó**): rendszergazdai fiók jelszava.
     
-- **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
+- **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet létre szeretne hozni, és számlázni kell.
     
-- **Erőforráscsoport**: Létrehozhat egy újat, vagy egy **üres** meglévő Azure-erőforráscsoportot is használhat az előfizetésében.
+- **Erőforráscsoport**: létrehozhat egy újat, vagy használhat egy **üres** meglévő Azure-erőforráscsoportot az előfizetésében.
     
-- **Hely**: Válassza ki a legmegfelelőbb adatközpontot. Általában ez az, amely a legtöbb adattal rendelkezik, vagy amely a leggyorsabb hálózati hozzáféréshez legközelebb esik a fizikai helyhez. Ha a GPU-ra kiterjedő mély tanulást szeretne futtatni, ki kell választania az Azure-ban található egyik olyan helyet, amely NC sorozatú GPU VM-példányokkal rendelkezik. Jelenleg ezek a helyszínek a következők: USA keleti régiója, USA északi középső régiója, USA déli középső régiója, USA 2. nyugati régiója, **Észak-Európa, Nyugat-Európa**. A legfrissebb listán tekintse meg az [Azure-termékek régiónként](https://azure.microsoft.com/regions/services/) lapot, és keresse meg az **NC-sorozatot** a **számítás**területen. 
+- **Hely**: válassza ki a legmegfelelőbb adatközpontot. Általában ez az, amely a legtöbb adattal rendelkezik, vagy amely a leggyorsabb hálózati hozzáféréshez legközelebb esik a fizikai helyhez. Ha a GPU-ra kiterjedő mély tanulást szeretne futtatni, ki kell választania az Azure-ban található egyik olyan helyet, amely NC sorozatú GPU VM-példányokkal rendelkezik. Jelenleg a következők: az USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, **Észak-Európa, Nyugat-Európa** A legfrissebb listán tekintse meg az [Azure-termékek régiónként](https://azure.microsoft.com/regions/services/) lapot, és keresse meg az **NC-sorozatot** a **számítás**területen. 
     
     
-**Beállítások**: Válassza ki az egyik NC sorozatú GPU virtuálisgép-méretet, ha mély tanulást szeretne futtatni a földrajzi DSVM található GPU-val. Ellenkező esetben kiválaszthatja a CPU-alapú példányok egyikét. Hozzon létre egy tárfiókot a virtuális géphez. 
+**Beállítások**: válassza ki az egyik NC-sorozat GPU virtuálisgép-méretet, ha mély tanulást szeretne futtatni a Geo-DSVM található GPU-val. Ellenkező esetben kiválaszthatja a CPU-alapú példányok egyikét. Hozzon létre egy tárfiókot a virtuális géphez. 
        
-**Összefoglalás**: Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt.
+**Összefoglalás**: Ellenőrizze, hogy helyesek-e a megadott információk.
     
-**Vásároljon**: A létesítési folyamat elindításához kattintson a **vásárlás**gombra. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik további költségekkel a **méret** lépésben kiválasztott kiszolgáló méretére vonatkozó számítási díjakon túl. 
+**Vásárlás**: a kiépítési folyamat elindításához kattintson a **vásárlás**gombra. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik további költségekkel a **méret** lépésben kiválasztott kiszolgáló méretére vonatkozó számítási díjakon túl. 
  
  >[!NOTE]
  > A kiépítés körülbelül 20 – 30 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
@@ -83,8 +84,8 @@ A standard ArcGIS-fiókra vagy ingyenes próbaverzióra való regisztráció ut�
 
 Miután bejelentkezett a ArcGIS Pro Desktopba a ArcGIS-fiókkal, készen áll arra, hogy a térinformatikai elemzési és gépi tanulási projektek számára a virtuális gépen telepített és konfigurált adatelemzési eszközöket használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Geo AI Data Science VM használatának megkezdése a következő erőforrás útmutatásával:
 
-* [A földrajzi mesterséges Intelligencia adatelemzési virtuális gép használata](use-geo-ai-dsvm.md)
+* [A Geo AI Data Science VM használata](use-geo-ai-dsvm.md)

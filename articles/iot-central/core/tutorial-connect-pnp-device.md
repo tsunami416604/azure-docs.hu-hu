@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027719"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500508"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képesség modell használata IoT Plug and Play (előzetes verzió) eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
 
 Az _eszköz képességi modellje_ (DCM) a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) eszköz képességeit ismerteti. IoT Central a DCM használatával létrehozhat egy eszköz sablont és vizualizációkat az eszközhöz, amikor az eszköz az első alkalommal csatlakozik.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A Visual Studio Code használatával hozzon létre egy IoT Plug and Play (előzetes verzió) eszközt a DCM használatával.
@@ -80,7 +80,7 @@ Ebben az oktatóanyagban a [Vcpkg](https://github.com/microsoft/vcpkg) Library M
 
 Egy eszköz IoT Central alkalmazáshoz való csatlakoztatásához szükség van egy eszköz kulcsára. Eszköz kulcsának létrehozása:
 
-1. Jelentkezzen be az **egyéni alkalmazás > előzetes verziójú alkalmazás** sablonjában létrehozott IoT Central alkalmazásba az [Azure-IoT Central alkalmazás létrehozása](./quick-deploy-iot-central.md) című rövid útmutatóban.
+1. Jelentkezzen be a létrehozott IoT Central alkalmazásba az **egyéni alkalmazás** sablonnal az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) rövid útmutatójában.
 
 1. Lépjen az **Adminisztráció** lapra, és válassza az **eszköz csatlakoztatása**lehetőséget.
 

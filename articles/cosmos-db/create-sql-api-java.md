@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3cdd558a8b14498e981c9c60a077a7286188e02e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469044"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500096"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
 
@@ -35,6 +35,18 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 - [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson a `JAVA_HOME` környezeti változót arra a mappára, ahol a JDK telepítve van.
 - A [Maven bináris archívuma](https://maven.apache.org/download.cgi). Ubuntu rendszeren futtassa `apt-get install maven` a Maven telepítéséhez.
 - [Git](https://www.git-scm.com/downloads). Ubuntu rendszeren futtassa `sudo apt-get install git` a git telepítéséhez.
+
+## <a name="introductory-notes"></a>Bevezető megjegyzések
+
+*Egy Cosmos DB fiók szerkezete.* Az API-tól vagy programozási nyelvtől függetlenül Cosmos DB *fiók* nulla vagy több *adatbázist*tartalmaz, egy *adatbázis* (db) nulla vagy több *tárolót*tartalmaz, és egy *tároló* nulla vagy több elemet tartalmaz, ahogy az alábbi ábrán is látható:
+
+![Azure Cosmos-fiók entitások](./media/databases-containers-items/cosmos-entities.png)
+
+Az adatbázisokról, a tárolók és az elemek [itt](databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
+
+A kiépített átviteli sebességet a kérések egységei (*RUs*) mérik, amelyek monetáris díjszabással rendelkeznek, és a fiók működési költsége jelentősen meghatározó tényező. A kiépített átviteli sebesség a tároló részletessége vagy az adatbázis-részletesség alapján választható ki, azonban a tároló szintű átviteli specifikáció általában előnyben részesített. Az átviteli sebességről itt olvashat bővebben [.](set-throughput.md)
+
+Ahogy az elemek bekerülnek egy Cosmos DB tárolóba, az adatbázis horizontálisan nő, ha további tárterületet és számítási műveleteket ad hozzá a kérelmek kezeléséhez. A tárolási és a számítási kapacitás a *partícióknak*nevezett különálló egységekben lett felvéve, és a dokumentumokban egy mezőt kell kiválasztania, amely az egyes dokumentumokat egy partícióra képező partíciós kulcs. A partíciók kezelése az, hogy az egyes partíciók nagyjából egyenlő szeletet kapnak a partíciós kulcsok értékeinek tartományába. Ezért javasoljuk, hogy olyan partíciós kulcsot válasszon, amely viszonylag véletlenszerű vagy egyenletes eloszlású. Ellenkező esetben előfordulhat, hogy egyes partíciók lényegesen több kérést (*gyors partíciót*) látnak, míg más partíciók lényegesen kevesebb kérést látnak (*hideg partíció*), és ezt el kell kerülni. További információ a particionálásról [itt](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
