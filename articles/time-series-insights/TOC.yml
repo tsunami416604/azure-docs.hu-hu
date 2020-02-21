@@ -136,24 +136,47 @@
         - name: JavaScript ügyféloldali SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: További források
+  expanded: true
   items:
-    - name: Támogatási és súgólehetőségek
-      href: /azure/iot-fundamentals/iot-support-help
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Régiónkénti elérhetőség
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-    - name: Támogatási lehetőségek
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: Videók
+    - name: Fejlesztői erőforrások
+      items:
+        - name: Azure Time Series Insights-kódminták
+          href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
+        - name: JavaScript ügyféloldali SDK
+          href: 'https://github.com/Microsoft/tsiclient'
+        - name: Futtatottügyfél-minták
+          href: 'https://tsiclientsample.azurewebsites.net/'
+        - name: Azure IoT-kódminták
+          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+    - name: Díjszabás és rendelkezésre állás
+      items:
+        - name: Díjszabás
+          href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+        - name: Díjkalkulátor
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Régiónkénti elérhetőség
+          href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási és súgólehetőségek
+      items:
+        - name: Azure-támogatási lehetőségek
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT – Támogatási és súgólehetőségek
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: Visszajelzés és fórumok
+      items:
+        - name: MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Termékkérések és javaslatok
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
+    - name: Azure-videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
+    - name: Channel 9-videók
+      href: 'https://channel9.msdn.com/Search?term=time%20series%20insights'
+    - name: Azure IoT-frissítések
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'

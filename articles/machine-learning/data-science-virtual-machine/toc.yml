@@ -6,20 +6,20 @@
   items:
     - name: Mi az a Data Science Virtual Machine (DSVM)?
       href: overview.md
-    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
+    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
       href: geo-ai-dsvm-overview.md
-    - name: A DSVM-en elérhető eszközök
+    - name: Az adatelemzési virtuális géphez mellékelt eszközök
       href: tools-included.md
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Windows rendszerű DSVM létrehozása
+    - name: Windows rendszerű adatelemzési virtuális gép létrehozása
       href: provision-vm.md
-    - name: Ubuntu rendszerű DSVM létrehozása
+    - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
       href: dsvm-ubuntu-intro.md
-    - name: CentOS rendszerű DSVM létrehozása
+    - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
       href: linux-dsvm-intro.md
-    - name: Geo AI DSVM létrehozása
+    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
       href: provision-geo-ai-dsvm.md
 - name: Alapelvek
   items:
@@ -43,13 +43,13 @@
   href: dsvm-samples-and-walkthroughs.md
 - name: Útmutatók
   items:
-    - name: Windowsos DSVM használata
+    - name: Windows rendszerű adatelemzési virtuális gép használata
       href: vm-do-ten-things.md
-    - name: Linuxos DSVM használata
+    - name: Linux rendszerű adatelemzési virtuális gép használata
       href: linux-dsvm-walkthrough.md
-    - name: Geo AI DSVM használata
+    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép használata
       href: use-geo-ai-dsvm.md
-    - name: Automatikus skálázású DSVM-készlet létrehozása
+    - name: Automatikus skálázású adatelemzési virtuálisgép-készlet létrehozása
       href: dsvm-pools.md
     - name: Az integrációt az Active Directoryval.
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Referencia
   items:
-    - name: Ubuntu DSVM
+    - name: Ubuntu rendszerű adatelemzési virtuális gép
       href: reference-ubuntu-vm.md
-    - name: CentOS DSVM
+    - name: CentOS rendszerű adatelemzési virtuális gép
       href: reference-centos-vm.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md

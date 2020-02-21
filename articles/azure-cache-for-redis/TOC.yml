@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Georeplikáció beállítása
           href: cache-how-to-geo-replication.md
+        - name: Mentés lefoglalt kapacitással
+          href: cache-reserved-pricing.md
         - name: Áttelepítés Managed Cache Service szolgáltatásból
           href: cache-migrate-to-redis.md
     - name: Automatizálás

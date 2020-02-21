@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b569377fd5408f40df080ad63fdfea720a8f9e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506559"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522091"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
@@ -33,7 +33,7 @@ Azure Active Directory (AD) kiállíthat egy vagy több Active Directory-tartom�
 
 Létrejön egy Azure AD Kerberos-kiszolgálói objektum a helyszíni Active Directory, majd biztonságosan közzétéve Azure Active Directory. Az objektum nincs fizikai kiszolgálókhoz társítva. Ez egyszerűen egy olyan erőforrás, amelyet a Azure Active Directory használhat a Active Directory-tartomány Kerberos-TGT létrehozásához.
 
-![TGT és PRT beszerzése az Azure AD-ből és AD DS](./media/howto-authentication-passwordless-on-premises/fido2-tgt-exchange-process.png)
+![Jegy beszerzése (TGT) az Azure AD-ből és AD DS](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
 
 1. A felhasználó egy FIDO2 biztonsági kulccsal jelentkezik be a Windows 10-es eszközre, és hitelesíti magát az Azure AD-ben.
 1. Az Azure AD ellenőrzi a felhasználó helyszíni AD-tartományának megfelelő Kerberos-kiszolgálói kulcs címtárát.

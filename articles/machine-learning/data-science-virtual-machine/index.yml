@@ -11,36 +11,36 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: db6cebf4b4114a97fd86a173208cc639a5e1f7ed
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3996c34b4ac1acfa040c38712f7b96fa546c8eb9
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73500136"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526042"
 landingContent:
-- title: Bevezetés a DSVM használatába
+- title: Adatelemzési virtuális gép – Első lépések
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az a DSVM?
+    - text: Mi az az adatelemzési virtuális gép?
       url: overview.md
-    - text: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
+    - text: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
       url: geo-ai-dsvm-overview.md
-    - text: A DSVM-en elérhető eszközök
+    - text: Az adatelemzési virtuális géphez mellékelt eszközök
       url: tools-included.md
     - text: Kibocsátási megjegyzések
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: Windows rendszerű DSVM létrehozása
+    - text: Windows rendszerű adatelemzési virtuális gép létrehozása
       url: provision-vm.md
-    - text: Ubuntu rendszerű DSVM létrehozása
+    - text: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
       url: dsvm-ubuntu-intro.md
-    - text: CentOS rendszerű DSVM létrehozása
+    - text: CentOS rendszerű adatelemzési virtuális gép létrehozása
       url: linux-dsvm-intro.md
-    - text: Geo AI DSVM létrehozása
+    - text: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
       url: provision-geo-ai-dsvm.md
-- title: A DSVM kezelése
+- title: Adatelemzési virtuális gép kezelése
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Automatikus skálázású DSVM-készletek létrehozása
+    - text: Automatikus skálázású adatelemzési virtuálisgép-készletek létrehozása
       url: dsvm-pools.md
     - text: Az integrációt az Active Directoryval.
       url: dsvm-common-identity.md

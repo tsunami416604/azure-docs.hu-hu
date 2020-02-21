@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/07/2020
+ms.date: 02/20/2020
 ms.author: raiye
-ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506028"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+## <a name="february-2020-guest-os"></a>Február 2020 vendég operációs rendszer
+
+>[!NOTE]
+>A februári vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások a februári vendég operációs rendszer részét képezik. A lista módosítása változhat.
+
+| Termék kategóriája | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2,85, 3,82, 4,75 | Február 11., 2020 |
+|  Rel 20-02 |  [4537813]  |  Windows-Biztonság | 2,85 | Február 11., 2020 |
+|  Rel 20-02 |  [4537794]  |  Windows-Biztonság | 3,82 | Február 11., 2020 |
+|  Rel 20-02 |  [4537803]  |  Windows-Biztonság | 4,75 | Február 11., 2020 |
+|  Rel 20-02 |  [4537764]  |  Legújabb összesített frissítés (LCU) | 5.4 | Február 11., 2020 |
+|  Rel 20-02 |  [4532691]  |  Legújabb összesített frissítés (LCU) | 6,16 | Február 11., 2020 |
+|  Rel 20-02 |  [4534310]  |  Havi összesítés | 2,85 | Jan. január 14., 2020 |
+|  Rel 20-02 |  [4536952]  |  Karbantartási verem frissítése (SSU) | 2,85 | Jan. január 14., 2020 |
+|  Rel 20-02 |  [4537829]  |  Karbantartási verem frissítése (SSU) | 2,85 | Február 11., 2020 |
+|  Rel 20-02 |  [4538483]  |  Bővített biztonsági frissítések (EUME) | 2,85 | Február 11., 2020 |
+|  Rel 20-02 |  [4537820]  |  Havi összesítés | 2,85 | Február 11., 2020 |
+|  Rel 20-02 |  [4537759]  |  Biztonsági frissítés (Flash) | 3,82, 4,75 | Február 11., 2020 |
+|  Rel 20-02 |  [4534283]  |  Havi összesítés | 3,82 | Jan. január 14., 2020 |
+|  Rel 20-02 |  [4532920]  |  Karbantartási verem frissítése (SSU) | 3,82 | Dec. 10, 2020 |
+|  Rel 20-02 |  [4534297]  |  Nem biztonsági | 4,75 | Jan. január 14., 2020 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>Január 2020 vendég operációs rendszer
 

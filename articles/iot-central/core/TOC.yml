@@ -35,7 +35,7 @@
       items:
         - name: Szabály létrehozása
           href: tutorial-create-telemetry-rules.md
-        - name: A REST API használata
+        - name: Ismerkedés az IoT Central API-kkal
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Alapelvek
   items:
@@ -83,8 +83,10 @@
           href: howto-version-device-template.md
     - name: Átalakítás
       items:
-        - name: Folyamatos adatexportálás konfigurálása
+        - name: Adatok exportálása Azure-célhelyekre
           href: howto-export-data.md
+        - name: Ismerkedés az IoT Central API-kkal
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Szabályokra vonatkozó webhookok létrehozása
           href: howto-create-webhooks.md
         - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
@@ -159,7 +161,7 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
-    - name: REST API
+    - name: IoT Central API – Referencia
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Ügyfelek adatkérései
       href: iot-central-customer-data-requests.md

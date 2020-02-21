@@ -68,6 +68,8 @@
           href: understand-rhel-reservation-charges.md
         - name: Azure Database for MariaDB-kedvezmények
           href: understand-reservation-charges-mariadb.md
+        - name: Azure Cache for Redis-kedvezmények
+          href: understand-azure-cache-for-redis-reservation-charges.md
         - name: App Service-kedvezmények
           href: reservation-discount-app-service-isolated-stamp.md
         - name: Azure-szoftvercsomagokra vonatkozó kedvezmények
