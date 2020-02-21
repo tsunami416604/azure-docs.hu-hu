@@ -1,5 +1,6 @@
 ---
-title: 'Gyors útmutató: CentOS-Data Science Virtual Machine létrehozása'
+title: 'Gyors útmutató: CentOS Data Science Virtual Machine létrehozása'
+titleSuffix: Azure Data Science Virtual Machine
 description: A Linux (CentOS) Data Science Virtual Machine konfigurálása és létrehozása az elemzéshez és a gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204178"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526025"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Gyors útmutató: CentOS (Linux) Data Science Virtual Machine beállítása az Azure-ban
 
@@ -26,14 +27,14 @@ CentOS Data Science Virtual Machine létrehozásához **Azure-előfizetéssel**k
 
 A CentOS Data Science Virtual Machine példányának létrehozásának lépései a következők:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve. 
 1. Írja be a "adatelemzési virtuális gép" kifejezést a keresőmezőbe, és válassza ki a CentOS DSVM.
 
     ![CentOS keresési eredmény](./media/linux-dsvm-intro/search-centos.png)
 
 1. A következő ablakban válassza a **Létrehozás**lehetőséget.
 
-    [![](media/linux-dsvm-intro/create-centos.png "CentOS-gép létrehozásához szükséges gomb")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
    
@@ -41,25 +42,25 @@ A CentOS Data Science Virtual Machine példányának létrehozásának lépései
 
 1. Adja meg a következő adatokat a varázsló egyes lépéseinek konfigurálásához:
 
-    1. **Alapvető beállítások**:
+    1. **Alapismeretek**:
     
-       * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létrehoz és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-       * **Erőforráscsoport**: Hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-       * **Virtuális gép neve**: Adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
-       * **Régió**: Válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Rendszerkép**: Ne módosítsa az alapértelmezett értéket.
-       * **Méret**: Az automatikus feltöltésnek az általános számítási feladatokhoz megfelelő méretűnek kell lennie. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
-       * **Hitelesítés típusa**: A gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
+       * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+       * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
+       * **Virtuális gép neve**: adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
+       * **Régió**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
+       * **Méret**: az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
+       * **Hitelesítés típusa**: a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
          
          > [!NOTE]
          > Ha a JupyterHub-t szeretné használni, ügyeljen arra, hogy válassza a "jelszó" lehetőséget, mivel a JupyterHub *nem* az SSH nyilvános kulcsok használatára van konfigurálva.
 
-       * **Felhasználónév**: Adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
+       * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
          
          > [!NOTE]
          > Ha nagybetűs betűket használ a felhasználónévben, a JupyterHub nem fog működni, és 500 belső kiszolgálóhiba lép fel.
 
-       * **Jelszó**: Adja meg azt a jelszót, amelyet a virtuális gépre való bejelentkezéshez használni fog.    
+       * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
     
    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
    1. **Felülvizsgálat + létrehozás**
@@ -80,7 +81,7 @@ Data Science Virtual Machine is csatolhat, hogy Azure Notebooks Jupyter jegyzetf
 
 ### <a name="ssh"></a>SSH
 
-Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva, akkor az SSH használatával bejelentkezhet. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren egy SSH-ügyfél eszközt (például a [Putty](https://www.putty.org)-t) tölthet le. Ha a grafikus asztali számítógép (X rendszer) használatát részesíti előnyben, használhat X11-továbbítást a PuTTY-on.
+Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva, akkor az SSH használatával bejelentkezhet. Használja a szöveges rendszerhéj felületének 3. lépésének **alapok** szakaszában létrehozott fiók hitelesítő adatait. Windows rendszeren egy SSH-ügyfél eszközt (például a [Putty](https://www.putty.org)-t) tölthet le. Ha a grafikus asztali számítógép (X rendszer) használatát részesíti előnyben, használhat X11-továbbítást a PuTTY-on.
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint továbbítási tesztelés X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
@@ -89,7 +90,7 @@ Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva
 
 A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. Ha csatlakozni szeretne a Linuxos virtuális gép grafikus asztali, az alábbi eljárással az ügyfélen:
 
-1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Töltse le és telepítse a X2Go-ügyfelet az [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)-ből származó ügyféloldali platformra.
 1. Jegyezze fel a virtuális gép nyilvános IP-címét, amelyet az imént létrehozott virtuális gép megnyitásával talál a Azure Portal.
 
    ![CentOS gép IP-címe](./media/linux-dsvm-intro/centos-ip-address.png)
@@ -97,13 +98,13 @@ A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, 
 1. Futtassa a X2Go-ügyfelet. Ha az "új munkamenet" ablak nem jelenik meg automatikusan, ugorjon a munkamenet-> új munkamenet elemre.
 
 1. Az eredményül kapott konfigurációs ablakban adja meg a következő konfigurációs paramétereket:
-   * **Munkamenet lapon**:
-     * **Gazdagép**: Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzést készített.
-     * **Bejelentkezés**: Adja meg a felhasználónevet a Linux rendszerű virtuális gépen.
-     * **SSH-port**: Hagyja meg az alapértelmezett értéket 22-én.
-     * **Munkamenet típusa**: Módosítsa az értéket az **Xfce**értékre. A Linux rendszerű virtuális gép jelenleg csak az XFCE Desktopot támogatja.
-   * **Média lap**: Ha nem szükséges, ki is kapcsolhatja a hangtámogatást és az ügyfél-nyomtatást.
-   * **Megosztott mappák**: Ha a Linux rendszerű virtuális gépen csatlakoztatni kívánja a címtárakat az ügyfélgépekről, adja hozzá azokat az ügyfélszámítógép-könyvtárakat, amelyeket meg szeretne osztani a virtuális géppel ezen a lapon.
+   * **Munkamenet lap**:
+     * **Gazdagép**: adja meg a virtuális gép IP-címét, amelyet korábban jegyzett készített.
+     * **Bejelentkezés**: adja meg a felhasználónevet a Linux rendszerű virtuális gépen.
+     * **SSH-port**: hagyja meg az alapértelmezett értéket 22-én.
+     * **Munkamenet típusa**: módosítsa az értéket az **Xfce**értékre. A Linux rendszerű virtuális gép jelenleg csak az XFCE Desktopot támogatja.
+   * **Média lap**: kikapcsolhatja a hangtámogatást és az ügyfél-nyomtatást, ha nincs szükség rájuk.
+   * **Megosztott mappák**: Ha a Linux rendszerű virtuális gépen csatlakoztatni kívánja az ügyfélgépekről származó címtárakat, adja hozzá a lapon a virtuális géppel megosztani kívánt ügyfélszámítógép-címtárakat.
 
    ![X2go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Kattintson az **OK** gombra.
@@ -122,7 +123,7 @@ A CentOS DSVM a [JupyterHub](https://github.com/jupyterhub/jupyterhub)-t, egy t�
 
        ![CentOS gép IP-címe](./media/linux-dsvm-intro/centos-ip-address.png)
 
-   1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a\/https:/Your-VM-IP: 8000 fájlhoz, és cserélje le a "Your-VM-IP" kifejezést a korábban jegyzett IP-címre.
+   1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a https:\//Your-VM-IP: 8000 értékre, és cserélje le a "Your-VM-IP" kifejezést a korábban jegyzett IP-címre.
    1. Adja meg a virtuális gép létrehozásához használt felhasználónevet és jelszót, majd jelentkezzen be. 
 
       ![Adja meg a Jupyter-bejelentkezést](./media/dsvm-ubuntu-intro/jupyter-login.png)
@@ -131,18 +132,18 @@ A CentOS DSVM a [JupyterHub](https://github.com/jupyterhub/jupyterhub)-t, egy t�
 
 JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre.
 
-A JupyterLab az alapértelmezett jegyzetfüzet- `/etc/jupyterhub/jupyterhub_config.py`kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a következőhöz:
+A JupyterLab alapértelmezett jegyzetfüzet-kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a `/etc/jupyterhub/jupyterhub_config.py`hoz:
 
 ```python
 c.Spawner.default_url = '/lab'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Itt látható, hogyan a tanulási és feltárásra továbbra is:
 
 * A [linux Data Science Virtual Machine bemutatójának adatelemzési](linux-dsvm-walkthrough.md) útmutatója azt mutatja be, hogyan végezheti el a gyakori adatelemzési feladatokat az itt kiépített Linux-DSVM. 
-* A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. Az alapszintű `dsvm-more-info` bevezetéshez a virtuális gép rendszerhéjában is futtatható, valamint a DSVM telepített eszközökről további információkat kaphat.  
-* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](https://aka.ms/tdsp).
-* Látogasson el a [Azure AI-katalógusban](https://gallery.azure.ai/) machine learning és a data analytics minták, amelyek használják az Azure AI-szolgáltatások.
+* A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. Az alapszintű bevezetéshez és a DSVM telepített eszközökről további információkat a virtuális gép rendszerhéjában is futtathat `dsvm-more-info`.  
+* Ismerje meg, hogyan hozhat létre rendszeresen teljes körű analitikai megoldásokat a [csoportos adatelemzési folyamat](https://aka.ms/tdsp)használatával.
+* Látogasson el az Azure AI-szolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.azure.ai/) .
 * Olvassa el a virtuális gép megfelelő [dokumentációját](./reference-centos-vm.md) .

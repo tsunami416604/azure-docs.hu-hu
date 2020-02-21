@@ -8,27 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861812"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526814"
 ---
-# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights – előzetes környezet beállításával.
 
 Ez az oktatóanyag végigvezeti a Azure Time Series Insights előzetes *utólagos* elszámolású (TB) környezet létrehozásának folyamatán.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
 > * Azure Time Series Insights előnézeti környezet létrehozása.
 > * Az Azure Time Series Insights előnézeti környezetének összekötése egy IoT Hub.
 > * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előzetes verziójának környezetében.
-> * Végezze el az adatok alapszintű elemzését.
+> * Alapvető adatok elemzését, a.
 > * Definiáljon egy idősorozat-modell típusát és hierarchiáját, és társítsa azt a példányokhoz.
 > * Használja az Power BI-összekötőt, és jelenítse meg az adatPower BIokban.
 
@@ -93,7 +93,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
     | **Hely** | Válasszon ki egy adatközpont-régiót Azure Time Series Insights előnézeti környezetéhez. A további késés elkerülése érdekében érdemes létrehozni a Azure Time Series Insights előnézeti környezetet ugyanabban a régióban, mint az IoT hub, amelyet az eszköz-szimulátor hozott létre. |
     | **Tier** |  Válassza*a* **TB** (utólagos elszámolású) lehetőséget. Ez a Azure Time Series Insights előzetes termékhez tartozó SKU. |
     | **Tulajdonság neve** | Adjon meg egy értéket, amely egyedileg azonosítja a Time Series-példányt. A **tulajdonság azonosítója** mezőben megadott érték később nem módosítható. Ebben az oktatóanyagban adja meg a ***iothub--kapcsolatok-Device-ID***értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, olvassa el az [ajánlott eljárásokat az idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). |
-    | **Tárfiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
+    | **Storage-fiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
     |**Meleg tároló engedélyezése**|Válassza az **Igen** lehetőséget a meleg tároló engedélyezéséhez. Később is visszatérhet, és engedélyezheti ezt a beállítást. |
     |**Adatmegőrzés (nap)**|Válassza az alapértelmezett beállítást 7 nap. |
 
@@ -345,7 +345,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 * Hozzon létre egy Azure Time Series Insights előzetes verziójú TB-környezetet.
 * Csatlakoztathatja a Azure Time Series Insights előnézeti környezetet egy IOT hubhoz.
 * Egy megoldás-gyorsító minta futtatásával továbbíthatja az adatátvitelt a Azure Time Series Insights előnézeti környezetbe.
-* Végezze el az adatok alapszintű elemzését.
+* Az adatok egy alapszintű elemzéseket végezhet.
 * Definiáljon egy idősorozat-modell típusát és hierarchiáját, majd társítsa azokat a példányokhoz.
 
 Most, hogy már tudja, hogyan hozhat létre saját Azure Time Series Insights előnézeti környezetet, további információt olvashat a Azure Time Series Insights főbb fogalmakról.
@@ -355,7 +355,7 @@ További információ a Azure Time Series Insights Storage-konfigurációról:
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights előnézet tároló és bejövő forgalom](./time-series-insights-update-storage-ingress.md)
 
-További információ a Time Series-modellekről:
+További tudnivalók a Time Series modellek:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights előzetes verziójú adatmodellezés](./time-series-insights-update-tsm.md)

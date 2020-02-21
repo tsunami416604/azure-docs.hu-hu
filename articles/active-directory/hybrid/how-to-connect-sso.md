@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367961"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483754"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés Azure Active Directory
 
@@ -36,7 +36,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 ![Zökkenőmentes egyszeri bejelentkezés](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének csak **tartományhoz csatlakoztatottnak** kell lennie, de nem használható az [Azure ad-hez csatlakoztatott](../active-directory-azureadjoin-overview.md) vagy [hibrid Azure ad-hez csatlakoztatott] (.. /active-directory-azureadjoin-overview.md) eszközök. Az SSO PN Azure AD-hez csatlakoztatott és a hibrid Azure AD-hez csatlakozott Works az [elsődleges frissítési jogkivonat] alapján (.. /active-directory/devices/concept-primary-refresh-token.md)
+>A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének csak **tartományhoz csatlakoztatottnak** kell lennie, de az [Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join.md) vagy [hibrid Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join-hybrid.md) eszközökön nem használható. Az Azure AD-hez csatlakoztatott és hibrid Azure AD-hez csatlakoztatott egyszeri bejelentkezés az [elsődleges frissítési jogkivonat](../devices/concept-primary-refresh-token.md)alapján működik.
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -78,7 +78,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 \*\*\*[további konfigurálást](how-to-connect-sso-quick-start.md#browser-considerations) igényel
 
 >[!NOTE]
->A Windows 10 esetében ajánlott az Azure [ad JOIN](../active-directory-azureadjoin-overview.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
+>A Windows 10 esetében ajánlott az Azure [ad JOIN](../devices/concept-azure-ad-join.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 

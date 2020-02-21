@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847302"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483295"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -59,7 +59,7 @@ Nem. A közösségi identitás-szolgáltatók támogatott készletéhez használ
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Az alkalmazásnak az Azure-ban kell futnia, hogy működjön a Azure AD B2C?
 
-Nem, bárhol is üzemeltetheti az alkalmazást (a felhőben vagy a helyszínen). Az Azure AD B2C-vel való kapcsolattartáshoz csak annyi kell, hogy a nyilvánosan elérhető végpontokon képes legyen HTTP-kérelmek kiküldésére és fogadására.
+Nem, bárhol is üzemeltetheti az alkalmazást (a felhőben vagy a helyszínen). Ahhoz, hogy a Azure AD B2C kommunikáljon, képesnek kell lennie HTTP-kérések küldésére és fogadására nyilvánosan elérhető végpontokon.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Több Azure AD B2C Bérlővel rendelkezem. Hogyan kezelhetem ezeket a Azure Portal?
 
@@ -86,15 +86,17 @@ Jelenleg nincs lehetőség a "from:" mező módosítására az e-mailben.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan telepíthetem át a meglévő felhasználóneveket, jelszavakat és profilokat az adatbázisból a Azure AD B2Cba?
 
-Az Azure AD Graph API segítségével megírhatja az áttelepítési eszközt. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
+Az áttelepítési eszköz írásához a Microsoft Graph API-t használhatja. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszó-felhasználói folyamatot használ a Azure AD B2C helyi fiókjaihoz?
 
-A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért olvassa el az [Azure ad-beli jelszavas szabályzatot](/previous-versions/azure/jj943764(v=azure.100)) . A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](threat-management.md).
+A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért tekintse [meg a jelszóházirend és a korlátozások a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)című témakört.
+
+A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Használhatom Azure AD Connect a helyszíni Active Directory tárolt fogyasztói identitások áttelepíthetők a Azure AD B2Cre?
 
-Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Érdemes lehet az [Azure AD Graph API](manage-user-accounts-graph-api.md) használni a felhasználók áttelepítéséhez. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
+Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Érdemes lehet a [Microsoft Graph API](manage-user-accounts-graph-api.md) -t használni a felhasználók áttelepítéséhez. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Megnyithatom az alkalmazásom Azure AD B2C oldalakat egy iFrame-kereten belül?
 
@@ -120,7 +122,7 @@ Nem, Azure AD B2C nem támogatja ugyanazokat a jelentéseket, mint a prémium sz
 * A **naplózási jelentések** magukban foglalják a rendszergazdai tevékenységeket és az alkalmazás tevékenységeit is.
 * A **használati jelentések** közé tartozik a felhasználók száma, a bejelentkezések száma és az MFA mennyisége.
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Honosítható a Azure AD B2C által kiszolgált lapok felhasználói felülete? Milyen nyelvek vannak támogatva?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Honosítható a Azure AD B2C által kiszolgált lapok felhasználói felülete? Milyen nyelveket támogat a rendszer?
 
 Igen, lásd: [nyelvi Testreszabás](user-flow-language-customization.md). 36 nyelvű fordítást biztosítunk, és bármilyen karakterláncot felülbírálhat az igényeinek megfelelően.
 
@@ -134,7 +136,7 @@ A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket.
 
 Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
@@ -155,7 +157,7 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.

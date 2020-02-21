@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell hasz
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974240"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485131"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -73,13 +73,13 @@ A `TriggerMetadata` paraméterrel további információkat adhat meg az triggerr
 $TriggerMetadata.sys
 ```
 
-| Tulajdonság   | Leírás                                     | Type (Típus)     |
+| Tulajdonság   | Leírás                                     | Típus     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Ha UTC-ben a függvény aktiválva lett        | Dátum és idő |
+| utcNow     | Ha UTC-ben a függvény aktiválva lett        | DateTime |
 | MethodName | Az aktivált függvény neve     | sztring   |
 | RandGuid   | a függvény végrehajtásának egyedi GUID azonosítója | sztring   |
 
-Minden trigger típushoz eltérő metaadatok vannak megadva. A `QueueTrigger` `$TriggerMetadata` például tartalmazza a `InsertionTime`, `Id`, `DequeueCount`, többek között. Az üzenetsor-eseményindító metaadataival kapcsolatos további információkért nyissa meg a [várólista-eseményindítók hivatalos dokumentációját](functions-bindings-storage-queue.md#trigger---message-metadata). Tekintse meg a dokumentációt azon [Eseményindítók](functions-triggers-bindings.md) használatával kapcsolatban, amelyekkel megtudhatja, mi történik az eseményindító metaadatainak között.
+Minden trigger típushoz eltérő metaadatok vannak megadva. A `QueueTrigger` `$TriggerMetadata` például tartalmazza a `InsertionTime`, `Id`, `DequeueCount`, többek között. Az üzenetsor-eseményindító metaadataival kapcsolatos további információkért nyissa meg a [várólista-eseményindítók hivatalos dokumentációját](functions-bindings-storage-queue-trigger.md#message-metadata). Tekintse meg a dokumentációt azon [Eseményindítók](functions-triggers-bindings.md) használatával kapcsolatban, amelyekkel megtudhatja, mi történik az eseményindító metaadatainak között.
 
 ## <a name="bindings"></a>Kötések
 
@@ -125,11 +125,11 @@ a `Push-OutputBinding` a `-Name`megadott érték alapján eltérően viselkedik:
 
 A következő `Push-OutputBinding`meghívásához használható paraméterek érvényesek:
 
-| Név | Type (Típus) | Pozíció | Leírás |
+| Name (Név) | Típus | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
 | **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
-| **`-Clobber`** | Kapcsolóparaméter | Elemzi | Választható Ha meg van adva, a megadott kimeneti kötéshez beállított értéket kényszeríti ki. | 
+| **`-Clobber`** | SwitchParameter | Elemzi | Választható Ha meg van adva, a megadott kimeneti kötéshez beállított értéket kényszeríti ki. | 
 
 A következő közös paraméterek is támogatottak: 
 * `Verbose`
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Leküldéses OutputBinding – példa: várólista kimeneti kötése
 
-`Push-OutputBinding` az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue.md#output). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
+`Push-OutputBinding` az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue-output.md). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -294,7 +294,7 @@ A HTTP-és webhook-eseményindítók és a HTTP-kimeneti kötések a HTTP-üzene
 
 A parancsfájlba átadott kérelem-objektum `HttpRequestContext`típusú, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Leírás                                                    | Type (Típus)                      |
+| Tulajdonság  | Leírás                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. a `Body` a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | objektum |
 | **`Headers`** | A kérések fejléceit tartalmazó szótár.                | Szótár < karakterlánc, karakterlánc ><sup>*</sup> |
@@ -309,7 +309,7 @@ A parancsfájlba átadott kérelem-objektum `HttpRequestContext`típusú, amely 
 
 A visszaküldeni kívánt válasz-objektum típusa `HttpResponseContext`, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Leírás                                                 | Type (Típus)                      |
+| Tulajdonság      | Leírás                                                 | Típus                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Egy objektum, amely tartalmazza a válasz törzsét.           | objektum                    |
 | **`ContentType`** | Egy rövid kéz a válasz tartalomtípusának beállításához. | sztring                    |
@@ -494,7 +494,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functions-run-local.md#local-settings-file) Project fájlból lesznek beolvasva.
 
-## <a name="concurrency"></a>Párhuzamosság
+## <a name="concurrency"></a>Egyidejűség
 
 Alapértelmezés szerint a függvények PowerShell-futtatókörnyezete egyszerre csak egy függvény hívását képes feldolgozni. Előfordulhat azonban, hogy ez a párhuzamossági szint nem elegendő a következő helyzetekben:
 

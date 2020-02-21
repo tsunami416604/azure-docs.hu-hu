@@ -1,36 +1,35 @@
 ---
-title: Ütemezett feladatok létrehozása az Azure Portal Azure Scheduler szolgáltatásával | Microsoft Docs
-description: Elsajátíthatja, hogyan hozhatja létre, ütemezheti és futtathatja az első automatizált feladatát az Azure Scheduler használatával az Azure Portalon
+title: Ütemezett feladatok létrehozása – Azure Portal
+description: Az első automatizált feladatot az Azure Scheduler használatával hozhatja létre, ütemezheti és futtathatja az Azure Portal
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300988"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524801"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Az első feladat létrehozása és ütemezése az Azure Scheduler használatával az Azure Portalon
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Az első feladatainak létrehozása és beütemezés az Azure Scheduler használatával – Azure Portal
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
-Ebből az oktatóanyagból megtudhatja, milyen egyszerűen hozhat létre és ütemezhet feladatot, majd monitorozhatja és kezelheti a feladatot. 
+Ebből az oktatóanyagból megtudhatja, milyen egyszerűen hozhat létre és ütemezhet feladatot, majd monitorozhatja és kezelheti a feladatot.
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
+Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="create-job"></a>Feladat létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-1. Az Azure főmenüjében válassza az **Erőforrás létrehozása** lehetőséget. A keresőmezőbe írja be a „scheduler” kifejezést. Az eredmények listájában válassza a **Scheduler** elemet, majd kattintson a **Létrehozás** gombra.
+1. Az Azure Search mezőbe írja be a `scheduler` szűrőt. Az eredmények listából válassza ki a **Scheduler-feladatok gyűjteményeit**, és válassza a **Létrehozás**lehetőséget.
 
    ![A Scheduler-erőforrás létrehozása](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -40,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
 
    | Tulajdonság | Példaérték | Leírás |
    |----------|---------------|-------------| 
-   | **Name** | getMicrosoft | A feladat neve | 
+   | **Name (Név)** | getMicrosoft | A feladat neve | 
    | **Feladatgyűjtemény** | <*feladatgyűjtemény-neve*> | Hozzon létre egy feladatgyűjteményt, vagy válasszon ki egy meglévő gyűjteményt. | 
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve | 
    |||| 
@@ -93,7 +92,7 @@ Ezekről a területekről további információért jelöljön ki egy területet
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 A kezelési metaadatokat leíró, csak olvasható tulajdonságok megtekintéséhez a feladatnál válassza a **Tulajdonságok** lehetőséget.
 
@@ -144,7 +143,7 @@ Az egyes futtatásokhoz tartozó előzmények részleteinek, például az egyes 
 
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával részletes beállításokat adhat meg az egyes felhasználók számára az Azure Scheduler eléréséhez. Ha szeretné megtudni, hogyan adhat meg szerepköralapú hozzáférés-beállítást, tekintse át a [Hozzáférés kezelése RBAC-vel](../role-based-access-control/role-assignments-portal.md) című szakaszt
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md) megismerése
 * [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)

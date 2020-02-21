@@ -1,18 +1,18 @@
 ---
 title: Eseménykezelők Azure Event Grid
-description: A Azure Event Grid támogatott eseménykezelőit ismerteti. A kezelő további műveletet hajt végre az esemény feldolgozásához.
+description: A Azure Event Grid támogatott eseménykezelőit ismerteti. Azure Automation, functions, Event Hubs, Hibrid kapcsolatok, Logic Apps, Service Bus, Queue Storage, webhookok.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 3cef32cd204e8bd4b21353cf66575a721315b387
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511314"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525804"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Eseménykezelők a Azure Event Gridban
 
@@ -42,7 +42,7 @@ Ha az Azure Functionst használja kezelőként, használja az Event Grid-trigger
 | [Oktatóanyag: stream big data adattárházba](event-grid-event-hubs-integration.md) | Amikor Event Hubs létrehoz egy rögzítési fájlt, Event Grid küld egy eseményt egy Function alkalmazásnak. Az alkalmazás lekéri a rögzítési fájlt, és áttelepíti az adattárházba. |
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 
-## <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
+## <a name="event-hubs"></a>Event Hubs
 
 Event Hubs akkor használja, ha a megoldás az eseményeket gyorsabban szerzi be, mint amennyit az események feldolgozhatnak. Az alkalmazás az eseményeket a Event Hubs saját ütemterv alapján dolgozza fel. Az események feldolgozását méretezheti úgy, hogy kezelni tudja a bejövő eseményeket.
 
@@ -73,9 +73,9 @@ A Logic Apps segítségével automatizálhatja az üzleti folyamatokat az esemé
 | [Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | A logikai alkalmazások minden alkalommal elküldenek egy értesítő e-mailt, amikor egy eszköz bekerül az IoT hubhoz. |
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 
-## <a name="service-bus"></a>Szolgáltatásbusz
+## <a name="service-bus"></a>Service Bus
 
-### <a name="service-bus-queues"></a>Service Bus üzenetsorok
+### <a name="service-bus-queues"></a>Service Bus-üzenetsorok
 
 A Event Gridban lévő eseményeket közvetlenül átirányíthatja Service Bus várólistákba a pufferelés vagy parancs & a vállalati alkalmazásokban való használathoz.
 
@@ -97,7 +97,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-### <a name="service-bus-topics"></a>Service Bus-témák
+### <a name="service-bus-topics"></a>Service Bus témakörök
 
 Event Grid közvetlenül Service Bus témakörökre irányíthatja az eseményeket, hogy az Azure rendszereseményeit Service Bus témakörökkel vagy a parancs & vezérlő üzenetkezelési forgatókönyvek kezelésére lehessen használni.
 
@@ -140,5 +140,5 @@ Webhookok használata az eseményekre reagáló testreszabható végpontokhoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

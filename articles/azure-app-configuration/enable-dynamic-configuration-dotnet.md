@@ -1,24 +1,19 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurációjának dinamikus konfigurációjának használatához a .NET-keretrendszerbeli alkalmazásokban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan frissítheti dinamikusan a .NET-keretrendszer alkalmazásaihoz tartozó konfigurációs információkat
+title: 'A .NET-keretrendszer oktatóanyaga: dinamikus konfiguráció az Azure-alkalmazás konfigurációjában'
+description: Ebből az oktatóanyagból megtudhatja, hogyan frissítheti dinamikusan a .NET-keretrendszer alkalmazásaihoz tartozó konfigurációs információkat az Azure app Configuration használatával.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185237"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484876"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET-keretrendszerbeli alkalmazásokban
 

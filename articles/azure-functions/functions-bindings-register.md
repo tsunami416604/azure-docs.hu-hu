@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766233"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484723"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
@@ -26,10 +26,10 @@ A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a k
 
 | Fejlesztési környezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure portál|Automatikus|Automatikus|
+|Azure Portal|Automatikus|Automatikus|
 |Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
 |C#osztály könyvtára a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C#a Visual Studio Code-ot használó osztály könyvtára|–|[A .NET Core parancssori felülete használata](#vs-code)|
+|C#a Visual Studio Code-ot használó osztály könyvtára|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
 
 ## <a name="extension-bundles"></a>Kiterjesztési csomagok helyi fejlesztéshez
 
@@ -55,7 +55,7 @@ A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Az adott kötéshez használt csomag neve az adott kötéshez tartozó hivatkozási cikkben található. Példaként tekintse meg a [Service Bus kötési útmutató csomagok szakaszát](functions-bindings-service-bus.md#packages---functions-1x).
+Az adott kötéshez használt csomag neve az adott kötéshez tartozó hivatkozási cikkben található. Példaként tekintse meg a [Service Bus kötési útmutató csomagok szakaszát](functions-bindings-service-bus.md#functions-1x).
 
 Cserélje le a példában szereplő `<TARGET_VERSION>`t a csomag egy adott verziójára, például `3.0.0-beta5`. Az érvényes verziók a [NuGet.org](https://nuget.org)-on található egyedi csomag oldalain találhatók. Az 1. x vagy 2. x függvényeknek megfelelő főverziók a kötésre vonatkozó hivatkozási cikkben vannak megadva.
 

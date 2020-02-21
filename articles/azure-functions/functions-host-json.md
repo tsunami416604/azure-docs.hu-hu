@@ -3,12 +3,12 @@ title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425204"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484434"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Host. JSON-hivatkozás Azure Functions 2. x és újabb verziókhoz 
 
@@ -341,7 +341,7 @@ A felügyelt függőség egy olyan szolgáltatás, amely jelenleg csak PowerShel
 
 ## <a name="queues"></a>üzenetsorok
 
-A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue.md#host-json)szolgáltatásban találhatók.  
+A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-output.md#host-json)szolgáltatásban találhatók.  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -349,7 +349,7 @@ A konfigurációs beállítás a SendGrid- [Eseményindítók és-kötések](fun
 
 ## <a name="servicebus"></a>serviceBus
 
-A konfigurációs beállítás [Service Bus eseményindítókban és kötésekben](functions-bindings-service-bus.md#host-json)található.
+A konfigurációs beállítás [Service Bus eseményindítókban és kötésekben](functions-bindings-service-bus-output.md#host-json)található.
 
 ## <a name="singleton"></a>Singleton
 

@@ -1,22 +1,22 @@
 ---
-title: Újraműködés az Azure-alkalmazás konfigurációs kulcs-érték eseményeivel | Microsoft Docs
+title: Reagálás az Azure app Configuration kulcs-érték eseményeire
 description: Azure Event Grid használata az alkalmazás-konfigurációs eseményekre való előfizetéshez.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185300"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523798"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Az Azure-alkalmazás konfigurációs eseményeire való reagálás
 
-Az Azure-alkalmazás konfigurációs eseményei lehetővé teszik az alkalmazások számára a Key-Values változásokra való reagálást. Ez bonyolult kód vagy költséges és nem hatékony lekérdezési szolgáltatások szükségessége nélkül történik. Ehelyett az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az előfizetők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni HTTP-figyelő számára is leküldik, és csak azért kell fizetnie, amit ténylegesen használ.
+Az Azure-alkalmazás konfigurációs eseményei lehetővé teszik az alkalmazások számára a Key-Values változásokra való reagálást. Ez bonyolult kód vagy költséges és nem hatékony lekérdezési szolgáltatások szükségessége nélkül történik. Ehelyett az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az előfizetők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni HTTP-figyelő számára is leküldik. Kritikus fontosságú, hogy csak a ténylegesen használt funkciókért kell fizetnie.
 
 Az Azure-alkalmazás konfigurációs eseményeit a rendszer elküldi a Azure Event Grid, amely megbízható kézbesítési szolgáltatásokat biztosít az alkalmazásai számára a részletes újrapróbálkozási szabályzatok és a kézbesítetlen levelek kézbesítése révén. További információ: [Event Grid üzenet kézbesítése, és próbálkozzon újra](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
@@ -73,11 +73,12 @@ Az Azure-alkalmazás konfigurációs eseményei tartalmazzák az adatok változ�
 További információ: Azure- [alkalmazás konfigurációs eseményeinek sémája](../event-grid/event-schema-app-configuration.md).
 
 ## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
-Az alkalmazás-konfigurációs eseményeket kezelő alkalmazásoknak néhány ajánlott eljárást kell követniük:
+Az alkalmazás-konfigurációs eseményeket kezelő alkalmazásoknak az alábbi ajánlott eljárásokat kell követniük:
 > [!div class="checklist"]
-> * Mivel több előfizetést is konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához, fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak, de az üzenet témakörének ellenőrzésével biztosíthatja, hogy a várt alkalmazás-konfigurációból származik.
-> * Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
-> * Mivel az üzenetek nem érkeznek meg a sorrendbe, és némi késés után a ETAG mezőkből megtudhatja, hogy az objektumokkal kapcsolatos információk továbbra is naprakészek-e.  Emellett a Sequencer mezőket is használhatja az események sorrendjének megismeréséhez egy adott objektumra vonatkozóan.
+> * Több előfizetés is konfigurálható úgy, hogy az eseményeket ugyanahhoz az eseménykezelőhöz irányítsák, ezért ne Tételezzük fel, hogy az események egy adott forrásból származnak. Ehelyett ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az alkalmazás konfigurációs példánya küldi az eseményt.
+> * Tekintse meg a eventType, és ne Tételezzük fel, hogy minden kapott esemény a várt típus lesz.
+> * A ETAG mezőkkel megtudhatja, hogy az objektumok adatai továbbra is naprakészek-e.  
+> * Az események sorrendjének megismeréséhez használja a Sequencer mezőket az adott objektumon.
 > * A tulajdonos mező használatával férhet hozzá a módosított kulcs-értékhez.
 
 

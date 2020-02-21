@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f34fe324f22be41d8cdff0df67777bc254bbc290
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840060"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484264"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
@@ -27,7 +27,7 @@ A következő típusú fiókok érhetők el:
 - **Vendégfiók** – a vendég fiók csak olyan Microsoft-fiók vagy Azure Active Directory felhasználó lehet, amely használható az alkalmazások eléréséhez vagy a bérlők kezeléséhez.
 - **Fogyasztói fiók** – a Azure ad B2C regisztrált alkalmazások felhasználója használja a fogyasztói fiókot. A felhasználói fiókokat a alábbiakkal hozhatja létre:
   - A felhasználó egy Azure AD B2C alkalmazásban egy regisztrációs felhasználói folyamaton keresztül zajlik
-  - Az Azure AD Graph API használata
+  - Microsoft Graph API használata
   - Az Azure Portal használata
 
 ## <a name="work-account"></a>Munkahelyi fiók
@@ -49,21 +49,21 @@ A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő szá
 
 Új munkahelyi fiók létrehozásához a következő információkat használhatja:
 
-- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure Portalra](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Felhasználói profil frissítése
 
 A következő információk segítségével frissítheti a felhasználó profilját:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure Portalra](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Felhasználó jelszavának alaphelyzetbe állítása
 
 A felhasználó jelszavának alaphelyzetbe állításához a következő információkat használhatja:
 
-- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure Portalra](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Vendég felhasználó
@@ -76,12 +76,12 @@ Használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invit
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 
-A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiókot a rendszer egy [regisztrációs vagy bejelentkezési felhasználói folyamattal](user-flow-overview.md), az Azure ad Graph API vagy a Azure Portal használatával hozza létre.
+A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiók a Microsoft Graph API használatával vagy a Azure Portal használatával jön létre a [regisztrációs vagy bejelentkezési felhasználói folyamat](user-flow-overview.md)használatával.
 
 Megadhatja azokat az adatokat, amelyeket a rendszer akkor gyűjt, amikor egyéni felhasználói attribútumokkal hozza létre a fogyasztói felhasználói fiókot. További információ: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](user-flow-custom-attributes.md).
 
-Az [Azure AD Graph API használatával](manage-user-accounts-graph-api.md) a **fogyasztói felhasználói fiókok létrehozása** szakaszban található információk segítségével Azure ad B2C fogyasztói fiókot hozhat létre. A fiók tulajdonságainak kezeléséhez a **felhasználó felhasználói fiókjainak frissítése** című szakaszban található információkat is használhatja.
+A fogyasztói fiókok kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](manage-user-accounts-graph-api.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok migrálása
 
-Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználó áttelepítése](user-migration.md) vagy [felhasználók áttelepítése közösségi identitásokkal](migrate-social-identities.md).
+Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználók Áttelepítése Azure ad B2Cra](user-migration.md).

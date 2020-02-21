@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905451"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484587"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-és Avro-adatelemzés Azure Stream Analytics
 
@@ -63,7 +63,7 @@ FROM input
 
 Az eredmény a következőket eredményezi:
 
-|deviceID|Lat|Hosszú|Hőmérséklet|Verzió|
+|DeviceID|Lat|Hosszú|Hőmérséklet|Verzió|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -80,7 +80,7 @@ FROM input
 
 Az eredmény a következőket eredményezi:
 
-|deviceID|Lat|Hosszú|
+|DeviceID|Lat|Hosszú|
 |-|-|-|
 |12345|47|122|
 
@@ -123,7 +123,7 @@ A **GetRecordPropertyValue** kiválasztja a tulajdonságot a *SensorReadings*-be
 
 Az eredmény a következőket eredményezi:
 
-|deviceID|sensorName|alertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
 |12345|Páratartalom|Riasztás: a küszöbérték feletti érzékelő|
 
@@ -144,7 +144,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 Az eredmény a következőket eredményezi:
 
-|deviceID|sensorName|alertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
 |12345|Hőmérséklet|80|
 |12345|Páratartalom|70|
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>JSON-rekord elemzése az SQL Reference-adatokban
+Ha a feladataiban a Azure SQL Database hivatkozási adatként használják, lehetséges, hogy van egy olyan oszlopa, amely JSON formátumú adatokkal rendelkezik. Alább látható egy példa.
+
+|DeviceID|Adatok|
+|-|-|
+|12345|{"Key": "érték1"}|
+|54321|{"Key": "érték2"}|
+
+*Az adatoszlop JSON* -rekordját egy egyszerű JavaScript felhasználó által definiált függvény írásával elemezheti.
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+Ezután létrehozhat egy lépést a Stream Analytics lekérdezésben az alább látható módon a JSON-rekordok mezőinek eléréséhez.
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>Tömb adattípusai

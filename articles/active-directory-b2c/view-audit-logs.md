@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847757"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505625"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -35,9 +35,9 @@ A naplókban a **B2C** kategória a következő típusú tevékenységeket tarta
 |Tevékenység típusa |Leírás  |
 |---------|---------|
 |Engedélyezés |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
-|Könyvtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
-|Jelentkezés | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
-|Jelmagyarázat |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
+|Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
+|Alkalmazás | A B2C-alkalmazásokhoz tartozó létrehozási, olvasási, frissítési és törlési (szifilisz-) műveletek. |
+|Paraméter |A B2C-kulcstárolóban tárolt kulcsokra vonatkozó szifilisz-műveletek. |
 |Erőforrás |A B2C-erőforrásokra vonatkozó szifilisz-műveletek. Például házirendek és identitás-szolgáltatók.
 |Authentication |A felhasználói hitelesítő adatok és a jogkivonatok kiadásának ellenőrzése.|
 
@@ -53,12 +53,12 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 |Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Név | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
-| Kezdeményező (színész) | objectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
+| Tevékenység | Name (Név) | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
-| Cél (ok) | objectId | A bejelentkezett felhasználó **objektumazonosító** . |
-| További részletek | tenantId | A Azure AD B2C bérlő **bérlői azonosítója** . |
-| További részletek | policyId | Annak a felhasználói folyamatnak (házirendnek) a **házirend-azonosítója** , amellyel a rendszer aláírja a felhasználót a alkalmazásban. |
+| Cél (ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
+| További részletek | TenantId | A Azure AD B2C bérlő **bérlői azonosítója** . |
+| További részletek | PolicyId | Annak a felhasználói folyamatnak (házirendnek) a **házirend-azonosítója** , amellyel a rendszer aláírja a felhasználót a alkalmazásban. |
 | További részletek | ApplicationId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Naplófájlok megtekintése a Azure Portal
@@ -88,51 +88,15 @@ A naplók ugyanazon a folyamaton lesznek közzétéve, mint a Azure Active Direc
 
 ### <a name="enable-reporting-api-access"></a>Jelentéskészítési API-hozzáférés engedélyezése
 
-Az Azure AD Reporting API-hoz való parancsfájl-vagy alkalmazás-hozzáférés engedélyezéséhez Azure Active Directory alkalmazásra van szükség a Azure AD B2C-bérlőben a következő API-engedélyekkel:
+Az Azure AD Reporting API-hoz való parancsfájl-vagy alkalmazás-hozzáférés engedélyezéséhez az alábbi API-engedélyekkel kell regisztrálnia a Azure AD B2C-bérlőben. Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő alkalmazás-regisztrációhoz, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
 
-* Microsoft Graph > alkalmazás engedélyei > AuditLog. Read. All
+* Microsoft Graph > alkalmazás engedélyei > AuditLog > AuditLog. Read. All
 
-Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő Azure Active Directory alkalmazások regisztrálásához, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
+Az alábbi cikk lépéseit követve regisztráljon egy alkalmazást a szükséges engedélyekkel:
 
-Kövesse az alábbi lépéseket egy alkalmazás regisztrálásához, adja meg a szükséges Microsoft Graph API-engedélyeket, majd hozzon létre egy ügyfél-titkot.
+[Azure AD B2C kezelése Microsoft Graph](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Alkalmazás regisztrálása a Azure Active Directoryban
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>API-hozzáférési engedélyek kiosztása
-
-#### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
-
-1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
-1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
-1. Válassza a **Hozzáadás**lehetőséget, majd **válasszon ki egy API**-t.
-1. Válassza a **Microsoft Graph**lehetőséget, majd **válassza a elemet**.
-1. Az **alkalmazás engedélyei**területen válassza az **összes naplózási napló adatának olvasása**elemet.
-1. Kattintson a **kiválasztás** gombra, majd válassza a **kész**lehetőséget.
-1. Válassza az **engedélyek megadása**lehetőséget, majd válassza az **Igen**lehetőséget.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
-1. Válassza a **Microsoft API** -k fület.
-1. Válassza a **Microsoft Graph**lehetőséget.
-1. Válassza ki az **alkalmazás engedélyeit**.
-1. Bontsa ki a **AuditLog** elemet, majd válassza ki a **AuditLog. Read. All** jelölőnégyzetet.
-1. Válassza az **engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
-1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
-1. Válassza ki a jelenleg bejelentkezett fiókot, ha az hozzá van rendelve a *globális rendszergazdai* szerepkörhöz, vagy jelentkezzen be egy olyan fiókkal, amely a *globális rendszergazdai* szerepkörhöz lett rendelve a Azure ad B2C-bérlőben.
-1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." az *AuditLog. Read. All* engedély **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
-
-* * *
-
-### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-Most már rendelkezik egy alkalmazással a szükséges API-hozzáféréssel, egy alkalmazás-AZONOSÍTÓval és egy, az Automation-parancsfájlokban használható kulccsal. A cikk későbbi részében a PowerShell-szkript című szakaszban talál példát arra, hogyan kérhető le a tevékenység eseményei egy parancsfájl használatával.
+Miután regisztrált egy alkalmazást a megfelelő engedélyekkel, tekintse meg a cikk későbbi részében található PowerShell-szkriptet, amelyből megtudhatja, hogyan kérhet le tevékenységi eseményeket parancsfájlokkal.
 
 ### <a name="access-the-api"></a>Hozzáférés az API-hoz
 
@@ -149,13 +113,14 @@ Az alábbi PowerShell-szkript bemutatja, hogyan lehet lekérdezni az Azure AD Re
 Ezt a szkriptet a [Azure Cloud Shell](overview.md)is kipróbálhatja. Ne felejtse el frissíteni az alkalmazás-azonosítóval, az ügyfél titkos kódjával és a Azure AD B2C bérlő nevével.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-
 
 ## <a name="next-steps"></a>Következő lépések
 
-Automatizálhat más felügyeleti feladatokat, például [kezelheti a felhasználókat a .net](manage-user-accounts-graph-api.md)használatával.
+Más felügyeleti feladatokat is automatizálhat, például [felügyelheti Azure ad B2C felhasználói fiókjait Microsoft Graph](manage-user-accounts-graph-api.md)használatával.

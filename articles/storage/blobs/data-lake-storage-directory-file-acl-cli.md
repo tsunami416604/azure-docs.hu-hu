@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835112"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486134"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2 (előzetes verzió)
 
@@ -42,7 +42,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fá
    ```
    Ha az Azure CLI verziója alacsonyabb, mint `2.0.67`, telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. A(z) `storage-preview` bővítmény telepítése.
+3. Telepítse a `storage-preview` bővítményt.
 
    ```azurecli
    az extension add -n storage-preview
@@ -77,7 +77,7 @@ A fájlrendszer tárolóként működik a fájlok számára. A `az storage conta
 Ez a példa egy `my-file-system`nevű fájlrendszert hoz létre.
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -239,6 +239,12 @@ Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasznál
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
+Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók könyvtárának *alapértelmezett* ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
 A `az storage blob access set` parancs használatával állítsa be egy **fájl**ACL-listáját. 
 
 Ez a példa egy fájl ACL-fájlját állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
@@ -299,7 +305,7 @@ Ebben a példában a `my-directory`nevű könyvtár összes felhasználó által
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Minta](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

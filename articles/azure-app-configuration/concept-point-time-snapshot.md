@@ -1,33 +1,59 @@
 ---
-title: Azure-alkalmazás konfigurációs időpontjának pillanatképe
-description: Áttekintés arról, hogy az adott időponthoz tartozó pillanatkép hogyan működik az Azure app Configuration szolgáltatásban
+title: Kulcs-érték párok beolvasása egy adott időpontban
+titleSuffix: Azure App Configuration
+description: Régi kulcs-érték párok lekérése az Azure-alkalmazás konfigurációjában időponthoz kötődő Pillanatképek használatával
 services: azure-app-configuration
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.openlocfilehash: 4a352ba913b6ad4e3c8607677078e21070f294fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 1e2a4f7a7bc5db1b6a49f085821f7fa2bde54229
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899595"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523657"
 ---
 # <a name="point-in-time-snapshot"></a>Adott időpontban készült pillanatképek
 
-Az Azure-alkalmazás konfigurációja rögzíti a pontos időpontokat, amikor létrejön egy új kulcs-érték pár, majd módosul. Ezek a rekordok teljes idővonalat alkotnak a kulcs-érték változásaiban. Az alkalmazás-konfigurációs tárolók újraállíthatják a kulcsok előzményeit, és egy adott pillanatban újra visszajátszják a korábbi értékeket, akár a jelenre. Ezzel a funkcióval a "Time-Travel" visszafelé, a régi kulcs értékét pedig lekérheti. A tegnapi konfigurációs beállításokat például közvetlenül a legutóbbi üzembe helyezés előtt is beolvashatja, hogy helyreállítsa az előző konfigurációt, és visszaállítsa az alkalmazást.
+Az Azure-alkalmazás konfigurációja nyilvántartja a kulcs-érték párokban történt módosításokat. Ez a rekord a kulcs-érték változások ütemezését jeleníti meg. Bármely kulcs-érték előzményeit rekonstruálhatja, és az előző hét nap során bármikor megadhatja a korábbi értékét. Ezzel a szolgáltatással visszafelé is lekérheti az időpontot, és lekérheti a régi kulcs értékét. Például helyreállíthatja a legutóbbi telepítés előtt használt konfigurációs beállításokat, hogy visszaállítsa az alkalmazást az előző konfigurációra.
 
 ## <a name="key-value-retrieval"></a>Kulcs-érték lekérése
 
-A korábbi kulcsok értékének lekéréséhez adja meg azt az időpontot, amikor a kulcs értéke pillanatkép egy REST API hívás HTTP-fejlécében. Példa:
+A korábbi kulcsok értékeinek lekéréséhez Azure PowerShellt használhat.  A szükséges értékek beolvasásához használja a `az appconfig revision list`t, és adja hozzá a megfelelő paramétereket.  Adja meg az Azure-alkalmazás konfigurációs példányát úgy, hogy az áruház nevét (`--name {app-config-store-name}`) vagy egy kapcsolatok karakterláncát (`--connection-string {your-connection-string}`) használja. Korlátozza a kimenetet egy adott időpontok (`--datetime`) megadásával és a visszaadni kívánt elemek maximális számának megadásával (`--top`).
 
-```rest
-GET /kv HTTP/1.1
-Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+A Key-Values összes rögzített módosításának beolvasása.
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name}.
 ```
 
-Az alkalmazás konfigurációja jelenleg hét nappal korábbi változási előzményeket tart fenn.
+Beolvassa az összes rögzített módosítást a kulcs `environment` és a címkéket `test` és `prod`.
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment --label test,prod
+```
+
+A hierarchikus kulcs területének `environment:prod`összes rögzített módosításának beolvasása.
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment:prod:* 
+```
+
+A kulcs összes rögzített módosításának beolvasása egy adott időpontban `color`.
+
+```azurepowershell
+az appconfig revision list --connection-string {your-app-config-connection-string} --key color --datetime "2019-05-01T11:24:12Z" 
+```
+
+Kérje le az utolsó 10 rögzített módosítást a kulcs-értékekre, és csak a `key`, `label`és `last-modified` időbélyeg értékét adja vissza.
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --top 10 --fields key,label,last-modified
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

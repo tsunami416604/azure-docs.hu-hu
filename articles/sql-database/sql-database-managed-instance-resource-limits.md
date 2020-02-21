@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/18/2020
+ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201730"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526858"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -96,7 +96,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 
 Általános célú szolgáltatási szinten minden adatbázisfájl dedikált IOPS és adatátviteli sebességet kap, amely a fájlmérettől függ. A nagyobb fájlok egyre több IOPS és átviteli sebességgel rendelkeznek. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
 
-| Fájlméret           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| Fájlméret | > = 0 és < = 128 GiB | > 128 és < = 256 GiB | > 256 és < = 512 GiB | > 0,5 és < = 1 TiB    | > 1 és < = 2 TiB    | > 2 és < = 4 TiB | > 4 és < = 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
 | Átviteli sebesség fájlonként | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
@@ -178,7 +178,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a  **Create** (Létrehozás) gombra.
+7. Kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

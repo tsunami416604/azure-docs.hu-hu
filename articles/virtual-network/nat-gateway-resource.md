@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444383"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485012"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
 
@@ -341,7 +341,6 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 - Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.
 - Az alhálózat vagy hálózati adapter NSG nem felel meg a kimenő forgalomnak a NAT-t használó nyilvános végpontoknak.
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
-- Ha egy virtuális hálózat több alhálózattal rendelkezik, az egyes alhálózatok eltérő NAT-konfigurációval rendelkezhetnek.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="preview-participation"></a>Előzetes verzió részvétele

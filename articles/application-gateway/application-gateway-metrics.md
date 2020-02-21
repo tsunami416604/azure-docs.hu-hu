@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425256"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485182"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -22,7 +22,7 @@ A Application Gateway a metrikák nevű adatpontokat teszi közzé a Application
 
 ### <a name="timing-metrics"></a>Időzítési mérőszámok
 
-A Application Gateway számos beépített időzítési metrikát biztosít a kérelemhez és a válaszhoz, amely minden ezredmásodpercben mérhető. 
+Application Gateway számos beépített időzítési metrikát biztosít a kérelemhez és a válaszhoz, amelyek mindegyike ezredmásodpercben van kifejezve. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
@@ -66,7 +66,7 @@ Ha például van egy tüske a *háttérbeli első bájtban* , de a *háttérbeli
 
 Ha egy tüske látható a *háttérbeli utolsó bájtban* , de a *háttérbeli első bájt válaszideje* stabil, akkor azt is lekövetkeztetheti, hogy a nyárs egy nagyobb fájl kérése miatt van.
 
-Hasonlóképpen, ha az *Application Gateway teljes ideje* elérte a nyársat, de a *háttérbeli utolsó bájt válaszideje* stabil, akkor a teljesítmény szűk keresztmetszetének jele lehet a Application Gateway vagy a hálózatban az ügyfél és a Application Gateway közötti szűk keresztmetszet. Továbbá, ha az *ügyfél RTT* is rendelkezik, akkor ez azt jelzi, hogy a romlás az ügyfél és a Application Gateway közötti hálózat miatt történt.
+Hasonlóképpen, ha az *Application Gateway teljes ideje* elérte a nyársat, de a *háttérbeli utolsó bájt válaszideje* stabil, akkor a teljesítmény szűk keresztmetszetének jele lehet a Application Gateway vagy a hálózatban az ügyfél és a Application Gateway közötti szűk keresztmetszet. Továbbá, ha az *ügyfél RTT* is rendelkezik, akkor azt jelzi, hogy a romlás az ügyfél és a Application Gateway közötti hálózat miatt van.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrikák
 
@@ -86,7 +86,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 - **Aktuális kapacitási egységek**
 
-   A felhasznált kapacitási egységek száma. A kapacitási egységek a rögzített költség mellett felszámított felhasználáson alapuló költségeket mérik fel. A kapacitás mértékegysége – számítási egység, állandó kapcsolatok és átviteli sebesség – három tényező. Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
+   A forgalom elosztásához felhasznált kapacitási egységek száma. A kapacitás mértékegysége – számítási egység, állandó kapcsolatok és átviteli sebesség – három tényező. Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
 
 - **Aktuális számítási egységek**
 
@@ -98,13 +98,15 @@ Application Gateway esetén a következő metrikák érhetők el:
    
 - **Becsült számlázott kapacitási egységek**
 
-  Azon kapacitási egységek száma, amelyek használatával a számlázás becsült. Ez a calcutaed a *jelenlegi kapacitási egységek* és a *rögzített számlázandó kapacitások*közötti nagyobb érték.  
+  A v2 SKU-val a díjszabási modellt a felhasználás vezérli. A kapacitási egységek a rögzített költség mellett felszámított felhasználáson alapuló költségeket mérik fel. A *becsült számlázott kapacitási egységek* azt a kapacitási egységeket jelzik, amelyek használatával a számlázás becsült. Ezt a rendszer a *jelenlegi kapacitási egységek* (a forgalom terheléselosztásához szükséges kapacitási egységek) és a *rögzített számlázandó kapacitási egységek* (a minimálisan kiépített kapacitási egységek) közötti nagyobb értékként számítja ki.
 
 - **Sikertelen kérelmek**
 
-   A Application Gateway által kiszolgált sikertelen kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+  A Application Gateway által kiszolgált sikertelen kérelmek száma. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
    
-- **Rögzített számlázandó kapacitási egységek** A Application Gateway konfigurációban a *minimális skálázási egységek* beállításával kiépített kapacitási egységek minimális száma.
+- **Rögzített számlázandó kapacitási egységek**
+
+  A *minimális skálázási egység* beállítása szerint kiépített kapacitási egységek minimális száma (az egyik példány 10 kapacitási egységre van lefordítva) a Application Gateway konfigurációban.
    
  - **Új kapcsolatok másodpercenként**
 
@@ -143,7 +145,9 @@ Application Gateway esetén a következő metrikák érhetők el:
 
   Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy adott háttérbeli készletben lévő nem kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
   
-- Percenkénti kérelmek száma kifogástalan állapotú **gazdagépen** Egy percen belül a háttérbeli készletben lévő minden kifogástalan tag által fogadott kérelmek átlagos száma. A háttér-készletet a *Háttérkészletek háttérkészletek* -dimenzió használatával kell megadnia.  
+- **Percenkénti kérelmek száma kifogástalan állapotú gazdagépen**
+
+  Egy percen belül a háttérbeli készletben lévő minden kifogástalan tag által fogadott kérelmek átlagos száma. A háttér-készletet a *Háttérkészletek háttérkészletek* -dimenzió használatával kell megadnia.  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU által támogatott metrikák

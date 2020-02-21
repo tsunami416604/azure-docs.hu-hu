@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022494"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484536"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Az Azure AD-séma ismertetése
 A Azure Active Directory (Azure AD) egyik objektuma, például bármely címtár, egy programozott, magas szintű adatszerkezet, amely felhasználók, csoportok és névjegyek számára is jelent. Amikor új felhasználót vagy kapcsolatot hoz létre az Azure AD-ben, az adott objektum új példányát hozza létre. Ezek a példányok a tulajdonságaik alapján különböztethetők meg.
@@ -67,12 +67,15 @@ Az alábbi táblázat a gyakori attribútumokat és az Azure AD-vel való szinkr
 |ProxyAdress|Direct|ProxyAddress|
 
 ## <a name="view-the-schema"></a>A séma megtekintése
+> [!WARNING]
+> A Felhőbeli kiépítési konfiguráció létrehoz egy szolgáltatásnevet. Az egyszerű szolgáltatásnév a Azure Portal látható. Ne módosítsa az attribútum-hozzárendeléseket a Azure Portal egyszerű szolgáltatásnév használatával.  Ez nem támogatott.
+
 A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
 
 1.  Lépjen a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer).
 1.  Jelentkezzen be a globális rendszergazdai fiókjával.
 1.  A bal oldalon válassza az **engedélyek módosítása** lehetőséget, és győződjön meg arról, hogy a **könyvtár. ReadWrite. All** .
-1.  Futtassa a lekérdezést https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith (DisplayName, "Active"). Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
+1.  Futtassa a lekérdezést https://graph.microsoft.com/beta/serviceprincipals/?$filter = startswith (DisplayName, "Active"). Ez a lekérdezés az egyszerű szolgáltatások szűrt listáját adja vissza.
 1.  Keresse meg `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` és jegyezze fel `"id"`értékét.
     ```
     "value": [

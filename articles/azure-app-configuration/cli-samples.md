@@ -1,18 +1,17 @@
 ---
-title: Azure CLI-minták – Azure app Configuration | Microsoft Docs
-description: Információt nyújt az Azure app Configuration szolgáltatáshoz elérhető minta-parancsfájlokról
+title: Azure CLI-minták – Azure-alkalmazás konfigurációja
+description: Információk az Azure-alkalmazások konfigurálásához elérhető minta-parancsfájlokról
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
-ms.date: 02/24/2019
-ms.custom: mvc
-ms.openlocfilehash: 0e559b3aa5d04cfdc2ab1152ae11bd80b9f89415
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/19/2020
+ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899662"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523747"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-minták
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120894"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526229"
 ---
 # <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
 
@@ -28,11 +28,17 @@ A következő lista a Key Lab Services alapfogalmait és definícióit tartalmaz
 
 A kvóta az az időkorlátja (órában), ameddig a tanár beállíthatja, hogy a tanulók laboratóriumi virtuális gépet használjanak. A beállítás értéke 0 vagy adott számú óra lehet. Ha a kvóta 0 értékű, a tanulók csak akkor használhatják a virtuális gépet, ha egy ütemterv fut, vagy amikor egy tanár manuálisan bekapcsolja a tanuló virtuális gépét.  
 
-A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy tanár manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja a kvóta időtartamát az adott tanuló számára.
+A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy tanár manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja az adott diákra vonatkozó kvóta-időt.
 
 ## <a name="schedules"></a>Ütemezések
 
-Az ütemtervek a tanárok által az osztály számára létrehozható időpontok (egyszer vagy ismétlődő). A laborban lévő összes virtuális gép automatikusan elindul az ütemterv elején, és leállt az ütemterv végén. Az ütemterv futtatásakor a rendszer nem használja a kvóta-órákat.
+Az ütemtervek azt az időpontot jelentik, amelyet a tanár létrehozhat az osztály számára, így a tanuló virtuális gépek az osztály idejére elérhetők.  Az ütemtervek lehetnek egyszeri vagy ismétlődőek.  A kvóta órája nem használatos az ütemterv futtatásakor.
+
+Az ütemtervek három típusa létezik: standard, csak indítás és leállítás.
+
+- **Standard**.  Ez az ütemterv elindítja az összes tanuló virtuális gépet a megadott kezdési időpontban, és leállítja az összes tanuló virtuális gépet a megadott leállítás időpontjában.
+- **Csak indítás**.   Ez az ütemterv az összes tanuló virtuális gépet a megadott időpontban indítja el.  A tanuló virtuális gépek nem állnak le, amíg egy tanuló leállítja a virtuális gépet a Azure Lab Services-portálon, vagy csak leállítási ütemezés történik.
+- **Csak leállítás**.  Ez az ütemterv az összes tanuló virtuális gépet leállítja a megadott időpontban.  
 
 ## <a name="template-virtual-machine"></a>Sablon virtuális gépe
 

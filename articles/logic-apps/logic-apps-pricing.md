@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896385"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526144"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -40,13 +40,15 @@ További információ a számlázás működéséről [Eseményindítók](#trigg
 
 ## <a name="fixed-pricing-model"></a>Rögzített díjszabási modell
 
-Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) olyan logikai alkalmazások létrehozását és futtatását teszi lehetővé, amelyek hozzáférhetnek az Azure-beli virtuális hálózatok erőforrásaihoz. Az ISE-on belül futó új Logic apps esetén a következő képességekhez [rögzített havi árat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie:
+Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) elkülönített módszert biztosít olyan logikai alkalmazások létrehozására és futtatására, amelyek hozzáférhetnek egy Azure-beli virtuális hálózat erőforrásaihoz. Az ISE-on belül futó új Logic apps esetén a következő képességekhez [rögzített havi árat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie:
 
-* [Beépített eseményindítók és műveletek](../connectors/apis-list.md#built-in)
+* [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek
 
-* [Standard szintű összekötők](../connectors/apis-list.md#managed-connectors)
+  Az ISE-ben a beépített eseményindítók és műveletek megjelenítik az **alapcímkét** , és UGYANABBAN az ISE-ben futnak, mint a Logic apps.
 
-* [Vállalati összekötők](../connectors/apis-list.md#enterprise-connectors) tetszőleges számú kapcsolattal
+* [Standard szintű](../connectors/apis-list.md#managed-connectors) összekötők és [vállalati](../connectors/apis-list.md#enterprise-connectors) összekötők (tetszőleges számú vállalati kapcsolat)
+
+   A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Az ISE-címkét nem megjelenítő összekötők a globális Logic Apps szolgáltatásban futnak. A rögzített havi díjszabás a globális szolgáltatásban futó összekötők esetében is érvényes, ha az ISE-ben futó Logic Apps használatával használja őket.
 
 * [Integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használata további díjak nélkül, az [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)alapján:
 
@@ -60,12 +62,9 @@ Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-vir
 
   * **Fejlesztői SKU**: legfeljebb 4 standard fiók, vagy akár 5 teljes standard fiók is lehet. Nincsenek alapszintű fiókok.
 
-További információ az integrációs fiók korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben.
+  További információ az integrációs fiók korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben.
 
-A prémium ISE SKU esetében az alapegység rögzített kapacitással rendelkezik, így ha több átviteli sebességre van szüksége, akkor akár a létrehozáskor, akár a későbbiekben [több skálázási egységet is hozzáadhat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). A fejlesztői ISE SKU nem képes további skálázási egységek hozzáadására. Az ISE-ben futó logikai alkalmazások nem vállalnak adatmegőrzési költségeket.
-
-> [!NOTE]
-> Az ISE-ben a beépített eseményindítók és műveletek megjelenítik az **alapcímkét** , és UGYANABBAN az ISE-ben futnak, mint a Logic apps. A standard és a vállalati összekötők, amelyek megjelenítik az **ISE** -címkét, UGYANABBAN az ISE-ben futnak, mint a Logic apps. Az ISE-címkét nem megjelenítő összekötők a globális Logic Apps szolgáltatásban futnak.
+Ha a prémium ISE SKU-t választja, az alapegység kapacitása rögzített. Ha több átviteli sebességre van szüksége, [több skálázási egységet is hozzáadhat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)a létrehozás vagy utána. A fejlesztői ISE SKU nem képes további skálázási egységek hozzáadására. Az ISE-ben futó logikai alkalmazások nem vállalnak adatmegőrzési költségeket.
 
 A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
@@ -108,7 +107,7 @@ A letiltott logikai alkalmazások nem számítanak fel díjat, mert nem tudnak �
 
 <a name="integration-accounts"></a>
 
-## <a name="integration-accounts"></a>Integration-fiókok
+## <a name="integration-accounts"></a>Integrációs fiókok
 
 A [rögzített díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps) olyan [integrációs fiókokra](logic-apps-enterprise-integration-create-integration-account.md) vonatkozik, ahol a [B2B-és EDI](logic-apps-enterprise-integration-b2b.md) -és [XML-feldolgozási](logic-apps-enterprise-integration-xml.md) funkcióit a Azure Logic apps további költség nélkül vizsgálhatja, fejlesztheti és tesztelheti. Az egyes Azure-előfizetések esetében az [integrációs fiókok egy adott korlátja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)is lehet. [Az egyes](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)integrációs fiókok akár a kereskedelmi partnereket, a szerződéseket, a térképeket, a sémákat, a szerelvényeket, a tanúsítványokat, a Batch-konfigurációkat és egyebeket is tartalmazhatnak.
 

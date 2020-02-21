@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443584"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500248"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>A fokozottan biztonságos pontszám (előzetes verzió) 
 
@@ -65,15 +65,15 @@ Például a "rendszerfrissítések alkalmazása" nevű biztonsági vezérlő leg
 
 A "System updates" (rendszerfrissítések alkalmazása) lehetőség a fenti képernyőképen a "2% (1 pont)" értékre mutat. Ez azt jelenti, hogy ha szervizelni kívánja az összes javaslatot, a pontszám 2%-kal (ebben az esetben egy pont) fog növekedni. Az egyszerűség kedvéért a javaslatok listájának "lehetséges növekedés" oszlopában szereplő értékek egész számra vannak kerekítve. Az elemleírások a pontos értékeket mutatják:
 
+* Maximális **pontszám** – az összes, a vezérlőn belüli javaslat végrehajtásával elnyerhető pontok maximális száma. Egy vezérlőelem maximális pontszáma a vezérlőelem relatív jelentőségét jelzi. A maximális pontszám értékekkel osztályozhatja, hogy mely problémákkal kell először dolgozni. 
 * **Lehetséges növekedés** – a vezérlőn belül elérhető további pontok. Ha ezeket a pontokat hozzá szeretné adni a biztonságos pontszámhoz, javítsa az összes vezérlő javaslatát. A fenti példában a vezérlőhöz megjelenített egy pont valójában 0,96 pont.
 * **Aktuális pontszám** – a vezérlő aktuális pontszáma. Az egyes vezérlőelemek a teljes pontszám irányába járulnak hozzá. Ebben a példában a vezérlő a 5,04-as számmal járul hozzá. 
-* **Maximális pontszám** – az előző két érték összege.
 
 ### <a name="calculations---understanding-your-score"></a>Számítások – a pontszám megismerése
 
 |Metrika|Képlet és példa|
 |-|-|
-|**Biztonsági vezérlő aktuális pontszáma**|<br>![egyenlet a biztonsági vezérlő aktuális pontszámának kiszámításához](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Minden egyes biztonsági ellenőrzés hozzájárul a biztonsági pontszám eléréséhez. A vezérlőn belüli javaslat által érintett összes erőforrás a vezérlő aktuális pontszámának irányába járul hozzá. Az egyes vezérlők aktuális pontszáma *a vezérlőben lévő erőforrások* állapotának mértéke.<br>![elemleírások, amelyek a biztonsági vezérlő aktuális pontszámának kiszámításakor használt értékeket mutatják](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Ebben a példában a 6 maximális pontszáma 78-re osztható, mert ez az egészséges és a nem kifogástalan erőforrások összege.<br>6/78 = 0,0769<br>A jelenlegi pontszám a (74) megfelelő számú erőforrással való szorzásával jár:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Biztonsági vezérlő aktuális pontszáma**|<br>![egyenlet a biztonsági vezérlő aktuális pontszámának kiszámításához](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Minden egyes biztonsági ellenőrzés hozzájárul a biztonsági pontszám eléréséhez. A vezérlőn belüli javaslat által érintett összes erőforrás a vezérlő aktuális pontszámának irányába járul hozzá. Az egyes vezérlők aktuális pontszáma *a vezérlőben lévő erőforrások* állapotának mértéke.<br>![elemleírások, amelyek a biztonsági vezérlő aktuális pontszámának kiszámításakor használt értékeket mutatják](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Ebben a példában a 6 maximális pontszáma 78-re osztható, mert ez az egészséges és a nem kifogástalan erőforrások összege.<br>6/78 = 0,0769<br>A jelenlegi pontszám a (4) kifogástalan állapotú erőforrások számával való szorzását eredményezi:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Biztonsági pontszám**<br>Egyetlen előfizetés|<br>![A jelenlegi biztonságos pontszám kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Egyszeri előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Ebben a példában egyetlen előfizetés van az összes rendelkezésre álló biztonsági vezérlővel (a 60-pontok lehetséges maximális pontszáma). A pontszám 28 pontot mutat a lehetséges 60-ből, a fennmaradó 32 pont pedig a biztonsági vezérlők "lehetséges pontszám növelésének" számadatait tükrözi.<br>![A vezérlőelemek listája és a lehetséges pontszám növekedése](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Biztonsági pontszám**<br>Több előfizetés|<br>Az összes előfizetés összes erőforrásának aktuális pontszáma hozzáadva, a számítás pedig azonos, mint egyetlen előfizetés esetén.<br><br>Több előfizetés megtekintésekor a biztonságos pontszám kiértékeli az összes engedélyezett szabályzaton belüli összes erőforrást, és a biztonsági vezérlők maximális pontszámára vonatkozó együttes hatásukat.<br>![biztonságos pontszám több előfizetéshez az összes engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Az összesített pontszám **nem** átlag; Ehelyett az összes előfizetés összes erőforrása állapotának kiértékelt testtartása.<br>Itt is, ha a javaslatok lapra lép, és hozzáadja az elérhető lehetséges pontokat, akkor a jelenlegi pontszám (24) és a rendelkezésre álló maximális pontszám (60) közötti különbség jelenik meg.|
 ||||

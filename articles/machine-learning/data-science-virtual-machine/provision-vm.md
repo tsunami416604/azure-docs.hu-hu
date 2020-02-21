@@ -1,24 +1,25 @@
 ---
-title: 'Gyors útmutató: Windows DSVM létrehozása'
-description: Azure-beli Data Science Virtual Machine konfigurálása és létrehozása az elemzéshez és a gépi tanuláshoz.
+title: 'Gyors útmutató: Windows Data Science Virtual Machine létrehozása'
+titleSuffix: Azure Data Science Virtual Machine
+description: Konfigurálja és a egy adatelemző virtuális gép létrehozása az Azure-ban Analytics és a gépi tanulás.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611917"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525872"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
 Ismerkedjen meg a Windows Server 2019 Data Science Virtual Machine rendszerrel.
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisite"></a>Előfeltételek
 
 Windows Data Science Virtual Machine létrehozásához Azure-előfizetéssel kell rendelkeznie. [Próbálja ki ingyenesen az Azure](https://azure.com/free)-t.
 Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
@@ -45,7 +46,7 @@ DSVM-példány létrehozása:
       * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. **Felülvizsgálat + létrehozás**
-   * Győződjön meg arról, hogy a megadott összes adat helyes. 
+   * Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt. 
    * Kattintson a **Létrehozás** gombra.
 
 
@@ -57,7 +58,7 @@ DSVM-példány létrehozása:
 
 A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorolt lépéseket az [Azure-alapú virtuális géphez való kapcsolódáshoz](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Használja a virtuális gép létrehozásának **alapjai** lépésében konfigurált rendszergazdai fiók hitelesítő adatait. 
 
-Készen áll a virtuális gépen telepített és konfigurált eszközök használatának megkezdésére. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
+Készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
 
 Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a virtuális gépen, és megkerülheti az ingyenes szolgáltatási szintek korlátozásait. További információ: [notebook-projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
 

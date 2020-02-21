@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817954"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481374"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>A WinRM konfigurálása a virtuális gépek létrehozása után
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy meglévő Azure-beli virtuális g
 
 ## <a name="enabling-port-traffic"></a>A portok forgalmának engedélyezése
 
-A felügyeleti webszolgáltatások HTTPS protokollon keresztüli használata a 5896-es portot használja, amely alapértelmezés szerint nincs engedélyezve az Azure piactéren kínált előre konfigurált Windows-alapú virtuális gépeken. A protokoll engedélyezéséhez kövesse az alábbi lépéseket egy új szabály hozzáadásához a hálózati biztonsági csoport (NSG) számára a [Azure Portal](https://portal.azure.com)használatával.  További információ a NSG: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview).
+A felügyeleti webszolgáltatások HTTPS protokollon keresztüli használata a 5986-es portot használja, amely alapértelmezés szerint nincs engedélyezve az Azure piactéren kínált előre konfigurált Windows-alapú virtuális gépeken. A protokoll engedélyezéséhez kövesse az alábbi lépéseket egy új szabály hozzáadásához a hálózati biztonsági csoport (NSG) számára a [Azure Portal](https://portal.azure.com)használatával.  További információ a NSG: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.  Navigáljon a panel **virtuális gépei >**   <*virtuális gép neve*>   **> Beállítások/hálózatkezelés**elemre.
 2.  Kattintson a NSG nevére (ebben a példában a **testvm11002**) a tulajdonságainak megjelenítéséhez:
@@ -60,6 +60,6 @@ A következő lépésekkel engedélyezheti és konfigurálhatja a Rendszerfelüg
     Ez a parancsfájl attól függ, hogy a másik két fájl ugyanabban a mappában van-e.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta a WinRM szolgáltatást, készen áll a [virtuális gép üzembe helyezésére az összetevő virtuális merevlemezéről](./cpp-deploy-vm-vhd.md).

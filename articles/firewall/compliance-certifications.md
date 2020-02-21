@@ -1,22 +1,22 @@
 ---
-title: Megfelelőségi tanúsítványok Azure Firewall
-description: A PCI, SOC és ISO szabványoknak megfelelő Azure Firewall megfelelőségi tanúsítványok listája
+title: Azure Firewall minősítések
+description: A PCI, SOC, ISO és ICSA Labs Azure Firewall-tanúsítványok listája
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158181"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482180"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Megfelelőségi tanúsítványok Azure Firewall
+# <a name="azure-firewall-certifications"></a>Azure Firewall minősítések
 
-Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO) és a HITRUST-kompatibilis.
+A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO), a ICSA Labs és a HITRUST megfelelője.
 
 A következő minősítések a globális Azure-ra és a Azure Governmentra vonatkoznak.
 
@@ -29,25 +29,25 @@ A következő Azure Firewall minősítések a globális Azure-ra vonatkoznak:
 - AMF és ACPR (Franciaország)
 - APRA (Ausztrália)
 - Argentína PDPA
-- Ausztrália – IRAP
+- Ausztráliai IRAP
 - CDSA
 - CFTC 1,31
-- CSA STAR igazolás
-- CSA STAR minősítés
+- CSA STAR-igazolás
+- CSA STAR-minősítés
 - CSA STAR önértékelés
 - Kanadai adatvédelmi törvények
 - DPP (EGYESÜLT KIRÁLYSÁG)
 - EU ENISA IAF
-- Uniós modellként szolgáló szerződéses klauzulák
+- Az EU Model záradékai
 - Európai Bankfelügyeleti Hatóság
 - FCA és PRA (Egyesült Királyság)
-- FERPA (USA)
+- FERPA (US)
 - FFIEC (US)
 - FINMA (Svájc)
 - FSA (Dánia)
-- GLBA (USA)
+- GLBA (US)
 - Németországi C5
-- GxP (FDA 21 CFR rész 11)
+- GxP (FDA 21 CFR Part 11)
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -65,17 +65,17 @@ A következő Azure Firewall minősítések a globális Azure-ra vonatkoznak:
 - NHS IG Toolkit (Egyesült Királyság)
 - Holland BIR 2012
 - OSFI (Kanada)
-- PCI DSS 1
+- PCI DSS 1. szint
 - REGISZTRÁCIÓRA és IRDAI (India)
 - SOC 1 típus 2
 - SOC 2 Type 2
 - SOC 3
-- SOX (USA)
+- SOX (US)
 - Spanyolországi DPA
 - TISAX
 - TruSight
-- Egyesült Királyság – G-Cloud
-- WCAG 2.0
+- Egyesült Királyságbeli G-Cloud
+- WCAG 2,0
 
 
 ## <a name="azure-government-certifications"></a>Azure Government minősítések
@@ -84,25 +84,33 @@ A következő Azure Firewall minősítések a Azure Government:
 
 - CJIS
 - CNSSI 1253
-- CSA STAR igazolás
+- CSA STAR-igazolás
 - DFARS
 - DoD DISA SRG 2. szint
 - DoE 10 CFR rész 810
-- EAR
+- BIOTERMIKUS
 - FIPS 140-2
-- FedRAMP magas
+- FedRAMP High
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (USA)
+- MARS-E (US)
 - NERC
 - NIST kiberbiztonsági-keretrendszer
 - NIST SP 800-171
 - SOC 1 típus 2
 - SOC 2 Type 2
 - SOC 3
-- SOX (USA)
-- Section 508 VPATs
+- SOX (US)
+- 508. szakasz Vpat
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs vállalati tűzfal minősítése
+
+![ICSA-tanúsítvány](media/overview/icsa-cert-firewall-small.png)
+
+A ICSA Labs egy vezető gyártó a harmadik féltől származó biztonsági és egészségvédelmi termékek, valamint a hálózattal összekapcsolt eszközök tesztelésében és minősítésében. A termékek megfelelőségét, megbízhatóságát és teljesítményét mérik a világ legfontosabb technológiai szállítóinak többségében.
+
+Azure Firewall az első felhőalapú tűzfal-szolgáltatás a ICSA Labs vállalati tűzfal-tanúsítványának eléréséhez. A Azure Firewall minősítési jelentéssel kapcsolatban lásd: [ICSA Labs minősítési teszt és naplózási jelentés](https://aka.ms/ICSALabsCertification). További információkért lásd a [ICSA Labs-tűzfal minősítési programjának](https://www.icsalabs.com/technology-program/firewalls) oldalát.
 
 
 ## <a name="next-steps"></a>Következő lépések

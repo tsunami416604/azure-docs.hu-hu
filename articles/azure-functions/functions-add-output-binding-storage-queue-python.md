@@ -3,12 +3,12 @@ title: Azure Storage-várólista kötésének hozzáadása a Python-függvényhe
 description: Egy Azure Storage-várólista integrálása egy Python-függvénnyel egy kimeneti kötés használatával.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198479"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485165"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
 
@@ -100,7 +100,7 @@ Ha a függvényből szeretne írni egy Azure Storage-várólistába, adjon hozz�
 
 Ebben az esetben `msg` van megadva a függvény kimeneti argumentumként. `queue` típus esetén meg kell adnia a várólista nevét is `queueName`, és meg kell adnia az Azure Storage-kapcsolatok *nevét* (a *Local. Settings. JSON*fájlból) a `connection`ban.
 
-További információ a kötések részleteiről: [Azure functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md) és [üzenetsor kimenetének konfigurálása](functions-bindings-storage-queue.md#output---configuration).
+További információ a kötések részleteiről: [Azure functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md) és [üzenetsor kimenetének konfigurálása](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
@@ -176,19 +176,19 @@ Ha a függvény HTTP-választ hoz létre a webböngészőhöz, a `msg.set(name)`
 
 1. Nyissa meg a Function projekt *Local. Setting. JSON* fájlt, és másolja a kapcsolatok karakterláncának értékét. Egy terminál-vagy parancssori ablakban futtassa a következő parancsot egy `AZURE_STORAGE_CONNECTION_STRING`nevű környezeti változó létrehozásához, és illessze be az adott kapcsolódási karakterláncot a `<connection_string>`helyére. (Ez a környezeti változó azt jelenti, hogy a `--connection-string` argumentum használatával nem kell megadnia a kapcsolódási karakterláncot minden további parancshoz.)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Ha a függvény HTTP-választ hoz létre a webböngészőhöz, a `msg.set(name)`
     
 1. Választható A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs használatával megtekintheti a fiókban található tárolási várólistákat. A parancs kimenetének tartalmaznia kell egy `outqueue`nevű várólistát, amely akkor jött létre, amikor a függvény első üzenetét írta az adott várólistára.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ Ha a függvény HTTP-választ hoz létre a webböngészőhöz, a `msg.set(name)`
     ---
 
 
-1. A [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) parancs használatával megtekintheti az ebben a várólistában lévő üzeneteket, amelyeknek a függvény korábbi tesztelésekor használt utónévnek kell lennie. A parancs [Base64 kódolásban](functions-bindings-storage-queue.md#encoding)kérdezi le az első üzenetet a várólistában, ezért a szövegként való megjelenítéshez is dekódolnia kell az üzenetet.
+1. A [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) parancs használatával megtekintheti az ebben a várólistában lévő üzeneteket, amelyeknek a függvény korábbi tesztelésekor használt utónévnek kell lennie. A parancs [Base64 kódolásban](functions-bindings-storage-queue-trigger.md#encoding)kérdezi le az első üzenetet a várólistában, ezért a szövegként való megjelenítéshez is dekódolnia kell az üzenetet.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Mivel az üzenetek gyűjtését és a Base64-ből való dekódolását kell elvégeznie, futtassa a PowerShellt, és használja a PowerShell-parancsot.
 
@@ -251,13 +251,13 @@ Most, hogy a funkciót helyileg tesztelte, és ellenőrizte, hogy üzenetet írt
     
 1. Ahogy az előző rövid útmutatóban is, az újratelepített függvény teszteléséhez használjon böngészőt vagy CURL-t.
 
-    # <a name="browsertabbrowser"></a>[Böngésző](#tab/browser)
+    # <a name="browser"></a>[Böngésző](#tab/browser)
     
     Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Meghívási URL-** címet egy böngésző címsorába, és illessze be a lekérdezési paramétert `&name=Azure`. A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
 
     ![A függvény kimenete az Azure-ban egy böngészőben fut](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[Curl](#tab/curl)
+    # <a name="curl"></a>[Curl](#tab/curl)
     
     Futtassa a [curlot](https://curl.haxx.se/) a **Meghívási URL-lel**, és adja hozzá a `&name=Azure`paramétert. A parancs kimenetének a "Hello Azure" szövegnek kell lennie.
     

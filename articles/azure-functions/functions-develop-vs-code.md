@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210242"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484774"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -92,11 +92,11 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Egy Package. JSON fájl a gyökérkönyvtárban.
 
@@ -122,7 +122,7 @@ Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -130,7 +130,7 @@ A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A projekthez új C# Class Library (. cs) fájl van hozzáadva.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Egy új mappa jön létre a projektben. A mappa egy új function. JSON fájlt és az új JavaScript-kódrészletet tartalmaz.
 
@@ -158,7 +158,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy `outqueue`nevű tárolási várólistához csatlakoznak, ahol a Storage-fiók kapcsolati karakterlánca a local. Settings. JSON fájl `MyStorageConnection` alkalmazás beállításában van beállítva.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus definícióhoz:
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Egy vagy több üzenetet ad hozzá a gyűjteményhez. Ezeket az üzeneteket a rendszer a függvény befejeződése után elküldi a várólistára.
 
-További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue.md#output) dokumentációjában talál.
+További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue-output.md) dokumentációjában talál.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 A Visual Studio Code lehetővé teszi kötések hozzáadását a function. JSON fájlhoz a promptok kényelmes készletének követésével. Kötés létrehozásához kattintson a jobb gombbal (CTRL + kattintás macOS rendszeren) a Function **. JSON** fájlt a Function mappában, és válassza a **kötés hozzáadása**elemet:
 
@@ -212,7 +212,7 @@ A függvény kódjában a `msg` kötés a `context`ból érhető el, az alábbi 
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue.md#output) referenciáját.
+További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue-output.md) referenciáját.
 
 ---
 

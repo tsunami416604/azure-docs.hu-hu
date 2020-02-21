@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549087"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486342"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményvezérelt háttérben végzett feldolgozáshoz
 
@@ -277,7 +277,7 @@ Az alapszolgáltatások részét képező időzítő vagy fájlok kötésének h
 
 Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek. a `Microsoft.Azure.WebJobs` csomag *x* :
 
-* Blobtároló
+* Blob Storage
 * Queue Storage
 * Table Storage
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-További részletekért tekintse meg a [várólista-tároló kötését](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) ismertető cikket.
+További részletekért tekintse meg a [várólista-tároló kötését](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) ismertető cikket.
 
 #### <a name="version-2x"></a>2\. verzió. *x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-További részletekért tekintse meg a [Service Bus kötést](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) ismertető cikket.
+További részletekért tekintse meg a [Service Bus kötést](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) ismertető cikket.
 
 ### <a name="configuration-for-other-bindings"></a>Egyéb kötések konfigurálása
 
@@ -565,7 +565,7 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>Kötéskifejezések
+## <a name="binding-expressions"></a>Kötési kifejezések
 
 Az attribútumok konstruktorának paraméterei között olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva. Például a következő kódban a `BlobTrigger` attribútum elérési útja létrehoz egy `filename`nevű kifejezést. Ha a kimeneti kötést használja, `filename` az kiváltó blob nevére lesz feloldva.
 
@@ -680,11 +680,11 @@ További információkért lásd: a Azure Functions dokumentációjában a [fut�
 
 Az Azure Functions dokumentációja az egyes kötési típusokra vonatkozó hivatkozási információkat tartalmazza. Az alábbi információkat az egyes kötési dokumentációban találja. (Ez a példa a tárolási üzenetsor alapján történik.)
 
-* [Csomagok](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). A telepíteni kívánt csomag tartalmazza a kötés támogatását egy webjobs SDK-projektben.
-* [Példák](../azure-functions/functions-bindings-storage-queue.md#trigger). Kód minták. Az C# osztály könyvtára példa a webjobs SDK-ra. Csak hagyja ki a `FunctionName` attribútumot.
-* [Attribútumok](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). A kötési típushoz használandó attribútumok
-* [Konfiguráció](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Az attribútum tulajdonságainak és a konstruktor paramétereinek magyarázata.
-* [Használat](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) – A kötéshez köthető típusok, valamint a kötés működésével kapcsolatos információk. Például: lekérdezési algoritmus, méreg-várólista feldolgozása.
+* [Csomagok](../azure-functions/functions-bindings-storage-queue.md). A telepíteni kívánt csomag tartalmazza a kötés támogatását egy webjobs SDK-projektben.
+* [Példák](../azure-functions/functions-bindings-storage-queue-trigger.md). Kód minták. Az C# osztály könyvtára példa a webjobs SDK-ra. Csak hagyja ki a `FunctionName` attribútumot.
+* [Attribútumok](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). A kötési típushoz használandó attribútumok
+* [Konfiguráció](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Az attribútum tulajdonságainak és a konstruktor paramétereinek magyarázata.
+* [Használat](../azure-functions/functions-bindings-storage-queue-trigger.md#usage) – A kötéshez köthető típusok, valamint a kötés működésével kapcsolatos információk. Például: lekérdezési algoritmus, méreg-várólista feldolgozása.
   
 A kötési hivatkozási cikkek listáját a Azure Functions [Eseményindítók és kötések](../azure-functions/functions-triggers-bindings.md#supported-bindings) című cikkben, a "támogatott kötések" című részben találja. Ebben a listában a HTTP-t, webhookokat és Event Grid kötéseket csak Azure Functions, a webjobs SDK nem támogatja.
 
@@ -739,7 +739,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode. Listener
+### <a name="singletonmodelistener"></a>SingletonMode.Listener
 
 Egyes eseményindítók beépített támogatást biztosítanak a párhuzamosságok kezeléséhez:
 
@@ -769,7 +769,7 @@ public class WorkItem
 }
 ```
 
-### <a name="singletonscopehost"></a>SingletonScope. Host
+### <a name="singletonscopehost"></a>SingletonScope.Host
 
 A zárolás alapértelmezett hatóköre `SingletonScope.Function`, ami azt jelenti, hogy a zárolási hatókör (a blob címbérleti útvonala) a teljes függvény nevéhez van kötve. A függvények közötti zároláshoz adja meg a `SingletonScope.Host`, és használja a hatókör-azonosító nevét, amely ugyanaz, mint az összes olyan függvény, amelyet nem szeretne egyszerre futtatni. A következő példában `AddItem` vagy `RemoveItem` egyszerre csak egy példánya fut:
 
@@ -829,7 +829,7 @@ Minden `ILogger`-példány által létrehozott naplóhoz társított `Category` 
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincs        | 6 |
 
 Az egyes kategóriák egymástól függetlenül szűrhetők egy adott [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-trigger feldolgozásához, de csak `Error` és magasabb minden más számára.
 

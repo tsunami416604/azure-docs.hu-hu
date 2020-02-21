@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407694"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485148"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -77,7 +77,7 @@ Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson a **
 
 ![Képernyőkép az elemzési élményről. Az elmúlt 12 órában egy kérelem átlagos válaszának időtartamát összefoglaló grafikon.](media/app-map/log-analytics.png)
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
 
@@ -236,11 +236,11 @@ Egy olyan forgatókönyv, amelyben érdemes lehet felülbírálni a Felhőbeli s
 
 További információ arról, hogyan bírálható felül a Felhőbeli szerepkör Name tulajdonsága a telemetria inicializálók használatával [: tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
@@ -276,6 +276,6 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](correlation.md).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.
 * A ASP.NET Core-és ASP.NET kapcsolatos speciális korrelációs forgatókönyvek esetében tekintse meg az [Egyéni műveletek nyomon követése](custom-operations-tracking.md) című cikket.

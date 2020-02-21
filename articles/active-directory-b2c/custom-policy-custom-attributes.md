@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847055"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482768"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: egyéni attribútumok használata egyéni profil-szerkesztési házirendben
 
@@ -34,7 +34,7 @@ A Azure AD B2C könyvtára egy beépített attribútumokkal rendelkezik. Ilyenek
 * Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, például **uniqueUserGUID** , amelyet menteni kell.
 * Egy egyéni felhasználói útra van szükség egy olyan felhasználó állapotára, mint a **migrationStatus**.
 
-Azure AD B2C kiterjeszti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat az [Azure AD Graph API](manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti.
+Azure AD B2C kiterjeszti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti.
 
 A bővítmény tulajdonságai a címtárban lévő felhasználói objektumok sémáját bővítik. A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attribútum*és az *egyéni jogcím* a jelen cikk kontextusában ugyanezt a dolgot tekinti át. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változhat.
 
@@ -295,9 +295,9 @@ Az alkalmazásnak visszaadott azonosító jogkivonat magában foglalja az új b�
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Referencia
 
-További információ a bővítmények tulajdonságairól: [Directory sémakezelő bővítmények | Graph API fogalmakat](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+A bővítmény tulajdonságaival kapcsolatos további információkért tekintse meg az [Egyéni adatok hozzáadása az erőforrásokhoz bővítmények használatával](https://docs.microsoft.com/graph/extensibility-overview)című cikket.
 
 > [!NOTE]
 > * A **kivonatjogcím** egy olyan elemtípus vagy függvény, amely meghatározza a végpont nevét, metaadatait és protokollját. A **kivonatjogcím** részletezi az identitási keretrendszer által végrehajtott jogcímek cseréjét. Ha ezt a függvényt egy előkészítési lépésben vagy egy másik **kivonatjogcím**hívja meg, a **Szabályzattípushoz** és a **OutputClaims** paraméterként van megadva a hívónak.

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services áttekintése | Microsoft Docs
-description: A Microsoft Azure Media Services egy bővíthető felhőalapú platform, amellyel a fejlesztők skálázható médiakezelő és -szolgáltató alkalmazásokat készíthetnek. Ez a cikk áttekintést nyújt a Azure Media Servicesról.
+description: Microsoft Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. Ez a cikk áttekintést nyújt a Azure Media Servicesról.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8cc6211f9ddecf21301765266b17e88e4e734eed
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895882"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499963"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74895882"
 > * [2-es verzió](media-services-overview.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Nincs új szolgáltatás hozzáadva a Media Services v2-hez. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -77,7 +77,7 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 
 Részletes információkért lásd az [AMS-forgatókönyvek és a funkciók és szolgáltatások az egyes adatközpontokban történő rendelkezésre állását](scenarios-and-availability.md) ismertető cikket.
 
-## <a name="service-level-agreement-sla"></a>Szolgáltatási szerződés (SLA)
+## <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
 
 További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)
 

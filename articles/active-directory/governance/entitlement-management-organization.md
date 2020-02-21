@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548900"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483856"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -96,6 +96,23 @@ Kövesse az alábbi lépéseket egy külső Azure AD-címtár vagy-tartomány cs
 1. A **felülvizsgálat + létrehozás** lapon tekintse át a szervezet beállításait, majd kattintson a **Létrehozás**gombra.
 
     ![Hozzáférési csomag – házirend – csatlakoztatott szervezet hozzáadása – áttekintés + Létrehozás lap](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Csatlakoztatott szervezet frissítése 
+
+Ha a csatlakoztatott szervezet egy másik tartományra vált, ha új névvel rendelkezik a szervezet számára, vagy módosítani szeretné a szponzorokat, frissítheti a csatlakoztatott szervezetet.
+
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy vendég meghívója
+
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+
+1. A bal oldali menüben kattintson a **csatlakoztatott szervezetek** elemre, majd a csatlakoztatott szervezet megnyitásához kattintson a elemre.
+
+1. Az Áttekintés lapon kattintson a **Szerkesztés** elemre a szervezet nevének vagy leírásának módosításához.  
+
+1. A címtár + tartomány lapon kattintson a **könyvtár és tartomány frissítése** lehetőségre egy másik könyvtárra vagy tartományra való váltáshoz.
+
+1. A szponzorok lapon kattintson a **belső szponzorok hozzáadása** vagy a **külső szponzorok hozzáadása** lehetőségre a felhasználó szponzorként való hozzáadásához.  Egy szponzor eltávolításához kattintson a szponzorra, majd a jobb oldali menüben kattintson a **Törlés**parancsra.
+
 
 ## <a name="delete-a-connected-organization"></a>Csatlakoztatott szervezet törlése
 

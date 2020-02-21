@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962509"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525251"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -32,16 +32,18 @@ A végpont egy jól ismert, nem irányítható IP-címen (`169.254.169.254`) ér
 > [!IMPORTANT]
 > Ez a szolgáltatás **általánosan elérhető** az összes Azure-régióban.  Rendszeresen frissítéseket kap a virtuálisgép-példányokkal kapcsolatos új információk megjelenítéséhez. Ez az oldal az elérhető naprakész [metaadat-API-kat](#metadata-apis) mutatja.
 
-## <a name="service-availability"></a>Elérhető szolgáltatások
+## <a name="service-availability"></a>Szolgáltatás rendelkezésre állása
 
 A szolgáltatás az általánosan elérhető Azure-régiókban érhető el. Nem minden API-verzió érhető el az összes Azure-régióban.
 
-Térségek                                        | Rendelkezésre állási?                                 | Támogatott verziók
+Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure China 21Vianet](https://www.azure.cn/)                                            | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+Az 2019-11-01-es verzió jelenleg üzembe kerül, és nem minden régióban érhető el.
 
 Ez a tábla akkor frissül, ha a szolgáltatás frissítései és/vagy új támogatott verziók érhetők el.
 
@@ -108,7 +110,7 @@ API | Alapértelmezett adatformátum | Egyéb formátumok
 /scheduledevents | JSON | Nincs
 /attested | JSON | Nincs
 
-A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Példa:
+A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Például:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -124,16 +126,16 @@ A kéréseknek tartalmazniuk kell egy `Metadata: true` fejlécet is, amely bizto
 
 ### <a name="error"></a>Hiba
 
-Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Példa:
+Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Például:
 
 HTTP-állapotkód | Ok
 ----------------|-------
 200 OK |
 400 hibás kérelem | Hiányzó `Metadata: true` fejléc, vagy hiányzik a formátum a levél csomópontjainak lekérdezése során
-404 – Nem található | A kért elem nem létezik
+404 nem található | A kért elem nem létezik
 405 metódus nem engedélyezett | Csak `GET` kérelmek támogatottak
 429 túl sok kérés | Az API jelenleg legfeljebb 5 lekérdezést támogat másodpercenként
-500 szolgáltatási hiba     | Némi idő elteltével próbálkozzon újra
+500 Service Error     | Némi idő elteltével próbálkozzon újra
 
 ### <a name="examples"></a>Példák
 
@@ -451,8 +453,8 @@ A metaadatok végpontján a következő API-k érhetők el:
 Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
 igazolt | [Igazolt](#attested-data) információ | 2018-10-01
-identitáskezelés | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-például | Lásd: [példány API](#instance-api) | 2017-04-02
+identity | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+instance | Lásd: [példány API](#instance-api) | 2017-04-02
 scheduledevents | Lásd: [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Példány API
@@ -473,13 +475,13 @@ osType | Linux vagy Windows | 2017-04-02
 placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 csomag | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
 platformUpdateDomain |  A virtuális gépet futtató [tartomány frissítése](manage-availability.md) | 2017-04-02
-Platformfaultdomain tulajdonságot | A virtuális gép által futtatott tartalék [tartomány](manage-availability.md) | 2017-04-02
-Szolgáltató | A virtuális gép szolgáltatója | 2018-10-01
+platformFaultDomain | A virtuális gép által futtatott tartalék [tartomány](manage-availability.md) | 2017-04-02
+szolgáltató | A virtuális gép szolgáltatója | 2018-10-01
 publicKeys | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
-Publisher | A virtuális gép rendszerképének közzétevője | 2017-04-02
+publisher | A virtuális gép rendszerképének közzétevője | 2017-04-02
 resourceGroupName | A virtuális géphez tartozó [erőforráscsoport](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Az erőforrás [teljes](https://docs.microsoft.com/rest/api/resources/resources/getbyid) azonosítója | 2019-03-11
-SKU | A virtuális gép rendszerképének adott SKU-jának | 2017-04-02
+sku | A virtuális gép rendszerképének adott SKU-jának | 2017-04-02
 storageProfile | Lásd: [tárolási profil](#storage-profile) | 2019-06-01
 subscriptionId | Azure-előfizetés a virtuális géphez | 2017-08-01
 tags | A virtuális gép [címkéi](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -487,7 +489,7 @@ tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott C
 version | A VM-rendszerkép verziója | 2017-04-02
 vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | A virtuálisgép-méretezési csoport virtuálisgép-méretezési [készletének neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
-VmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
+vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
 zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) | 2017-12-01
 
 A következő hálózati kategóriák érhetők el a példány API-n keresztül:
@@ -497,11 +499,11 @@ A következő hálózati kategóriák érhetők el a példány API-n keresztül:
 
 Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
-IPv4/Privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe | 2017-04-02
-IPv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe | 2017-04-02
-alhálózat/címe | A virtuális gép alhálózati címe | 2017-04-02
+ipv4/privateIpAddress | A virtuális gép helyi IPv4-címe | 2017-04-02
+ipv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe | 2017-04-02
+subnet/address | A virtuális gép alhálózati címe | 2017-04-02
 alhálózat/előtag | Alhálózat előtagja, 24. példa | 2017-04-02
-IPv6/IP-cím | A virtuális gép helyi IPv6-címe | 2017-04-02
+ipv6/ipAddress | A virtuális gép helyi IPv6-címe | 2017-04-02
 macAddress | VM MAC-címe | 2017-04-02
 
 ## <a name="attested-data"></a>Igazolt adatértékek
@@ -720,7 +722,7 @@ AzurePublicCloud
 ```
 A felhő és az Azure-környezet értékei az alábbiakban láthatók.
 
- Felhőbeli   | Azure-környezet
+ Felhő   | Azure-környezet
 ---------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -819,13 +821,13 @@ Verification successful
 
 Adatok | Leírás
 -----|------------
-egyszeri | A felhasználó nem kötelező karakterláncot adott meg a kérelemmel. Ha a kérelemben nem adtak meg egy adott időpontot, a rendszer az aktuális UTC-időbélyeget adja vissza
+nonce | A felhasználó nem kötelező karakterláncot adott meg a kérelemmel. Ha a kérelemben nem adtak meg egy adott időpontot, a rendszer az aktuális UTC-időbélyeget adja vissza
 csomag | [Tervezze](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) meg, hogy a virtuális gép egy Azure Marketplace-rendszerkép, amely tartalmazza a nevet, a terméket és a közzétevőt
-időbélyeg/createdOn | Az első aláírt dokumentum létrehozásának UTC-időbélyege
+timestamp/createdOn | Az első aláírt dokumentum létrehozásának UTC-időbélyege
 időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időpontjának UTC-időbélyege
 vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | Azure-előfizetés a virtuális géphez, amely `2019-04-30`
-SKU | A virtuálisgép-rendszerkép adott SKU-jának `2019-11-01`ban bemutatott
+sku | A virtuálisgép-rendszerkép adott SKU-jának `2019-11-01`ban bemutatott
 
 #### <a name="verifying-the-signature"></a>Az aláírás ellenőrzése
 
@@ -834,7 +836,7 @@ Miután megszerezte a fenti aláírást, ellenőrizheti, hogy az aláírás a Mi
 > [!NOTE]
 > A nyilvános felhő és a szuverén felhő tanúsítványa eltérő lesz.
 
- Felhőbeli | Tanúsítvány
+ Felhő | Tanúsítvány
 ---------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
@@ -914,8 +916,8 @@ Adatok    | Leírás
 --------|-----------------
 id      | Erőforrás-azonosító
 offer   | A platform vagy a piactér rendszerképének ajánlata
-Publisher | Rendszerkép kiadója
-SKU     | Rendszerkép SKU
+publisher | Rendszerkép kiadója
+sku     | Rendszerkép SKU
 version | A platform vagy a piactér rendszerképének verziója
 
 Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
@@ -1035,7 +1037,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 1. `400 Bad Request, Required metadata header not specified`hibaüzenetet kapok. Ez mit jelent?
    * A Instance Metadata Service megköveteli, hogy a fejléc `Metadata: true` átadja a kérést. Ha ezt a fejlécet a REST-hívásban adja át, akkor a Instance Metadata Servicehoz való hozzáférést is lehetővé teszi.

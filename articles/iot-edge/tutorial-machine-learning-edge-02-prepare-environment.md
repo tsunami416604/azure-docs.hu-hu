@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722286"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482904"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -26,7 +26,7 @@ Ez a cikk segít felkészülni a környezet fejlesztésére és üzembe helyezé
 
 Ezt a lépést általában egy felhőalapú fejlesztő hajtja végre. Néhány szoftver hasznos lehet egy adattudós számára is.
 
-Létrehoztunk egy PowerShell-szkriptet, amely létrehoz egy Azure-beli virtuális gépet a már konfigurált előfeltételek közül. Az általunk létrehozott virtuális gépnek képesnek kell lennie a [beágyazott virtualizálás](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kezelésére, ezért a [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) gép méretét választotta.
+Létrehoztunk egy PowerShell-szkriptet, amely létrehoz egy Azure-beli virtuális gépet a már konfigurált előfeltételek közül. Az általunk létrehozott virtuális gépnek képesnek kell lennie a [beágyazott virtualizálás](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kezelésére, ezért a [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) gép méretét választotta.
 
 A fejlesztői virtuális gép a következőket fogja beállítani:
 

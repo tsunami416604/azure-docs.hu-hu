@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122338"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486376"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezés és monitorozás Azure Machine Learning
 
@@ -89,7 +89,7 @@ Megadhatja a cél telepítési platform konfigurációját is. Például a virtu
 
 A rendszerkép létrehozásakor a Azure Machine Learning által igényelt összetevőket is hozzáadja a rendszer. Például a webszolgáltatás futtatásához és a IoT Edgehoz való interakcióhoz szükséges eszközök.
 
-#### <a name="batch-scoring"></a>Kötegelt kiértékelés
+#### <a name="batch-scoring"></a>Batch-pontozás
 A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-use-parallel-run-step.md).
 
 #### <a name="real-time-web-services"></a>Valós idejű webszolgáltatások
@@ -120,7 +120,7 @@ A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adat
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Rögzítse a végpontok közötti ML életciklus rögzítéséhez szükséges irányítási adatmennyiséget
 
-Az Azure ML lehetővé teszi az összes ML-eszköz végpontok közötti naplózásának nyomon követését. Konkrétan:
+Az Azure ML lehetővé teszi az összes ML-eszköz végpontok közötti naplózásának nyomon követését. Ezek:
 
 - Az Azure ML a git szolgáltatással [integrálva](how-to-set-up-training-targets.md#gitintegration) követheti azokat az információkat, amelyeken a tárház/ág/a kód véglegesítve származik.
 - Az [Azure ml-adatkészletek](how-to-create-register-datasets.md) segítenek a nyomon követésben, a profilban és a verziószámozásban. 
@@ -138,6 +138,19 @@ A figyelés lehetővé teszi, hogy megtudja, milyen adatok kerülnek a modellbe,
 Ez az információ segít megérteni a modell felhasználásának módját. A begyűjtött bemeneti adatok is hasznosak lehetnek a modell jövőbeli verzióinak betanításához.
 
 További információ: [a Model-adatok gyűjtésének engedélyezése](how-to-enable-data-collection.md).
+
+## <a name="retrain-your-model-on-new-data"></a>A modell újratanítása új adatértékekre
+
+Gyakran érdemes frissíteni a modellt, vagy akár teljesen újra betanítani azt a semmiből, ahogy új információkat kap. Időnként az új adatfogadás a tartomány várt részét képezi. Más időpontokban, ahogy azt az [adathalmazok észlelése (előzetes verzió) az adatkészletek](how-to-monitor-datasets.md)esetében is tárgyalja, a modell teljesítménye csökkentheti az adott érzékelő, a természetes adatváltozások, például az idényjellegű hatások vagy a más funkciókhoz képest változó funkciók változásait. 
+
+Nincs univerzális válasz arra, hogy "Hogyan tudni, ha újra kell tanítani?" Az Azure ML-es esemény-és figyelési eszközei azonban az automatizáláshoz megfelelő kiindulási pontokat mutatnak. Ha úgy döntött, hogy újratanítást végez, a következőket kell tennie: 
+
+- Az adatai előfeldolgozása ismételhető, automatizált folyamat használatával
+- Az új modell betanítása
+- Hasonlítsa össze az új modell kimeneteit a régi modellel
+- Előre definiált feltételek használata annak kiválasztásához, hogy a régi modellt kell-e cserélni 
+
+A fenti lépések témája, hogy az átképzésnek automatizáltnak kell lennie, nem ad hoc. [Azure Machine learning folyamatok](concept-ml-pipelines.md) jó választ adnak az adatelőkészítéssel, a képzéssel, az ellenőrzéssel és az üzembe helyezéssel kapcsolatos munkafolyamatok létrehozásához. A [Azure Machine learning Designer (előzetes verzió) használatával olvassa be a modellek újratanítása](how-to-retrain-designer.md) című témakört, amelyből megtudhatja, hogyan illeszkedik a folyamatok és a Azure Machine learning Designer egy átképzési forgatókönyv 
 
 ## <a name="automate-the-ml-lifecycle"></a>A ML életciklus automatizálása 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847796"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484315"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Felhasználói folyamatok Azure Active Directory B2C
 
@@ -81,10 +81,8 @@ Egy e-mail-cím a felhasználói folyamat részeként is megkövetelhető. Ha a 
 
 Az e-mail-cím nem garantálható az ilyen esetekben. A bérlői rendszergazda letilthatja az e-mailek ellenőrzését a helyi fiókok alapszintű házirendjeiben. Még ha az e-mail cím ellenőrzése is engedélyezve van, a rendszer nem ellenőrzi a címeket, ha azok egy közösségi identitás-szolgáltatótól származnak, és nem változtak.
 
-A Active Directory Graph API csak a **otherMails** és a **signInNames** tulajdonságot teszi elérhetővé. Az erős hitelesítés részletei tulajdonságban szereplő e-mail-cím nem érhető el.
+A Microsoft Graph API-n keresztül csak a **otherMails** és a **signInNames** tulajdonságok jelennek meg. Az erős hitelesítés részletei tulajdonságban szereplő e-mail-cím nem érhető el.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az ajánlott felhasználói folyamatok létrehozásához kövesse az [oktatóanyag: felhasználói folyamat létrehozása](tutorial-create-user-flows.md)című témakör utasításait.
-
-

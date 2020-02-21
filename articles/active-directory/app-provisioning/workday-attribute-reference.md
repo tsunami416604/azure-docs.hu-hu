@@ -7,25 +7,25 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066056"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521931"
 ---
 # <a name="workday-attribute-reference"></a>Workday-attribútumok referenciája
 
 Az alábbi táblázat rögzíti a munkanapokhoz tartozó attribútumok és a hozzájuk tartozó olyan XPATH-kifejezések listáját, amelyeket a rendszer a munkanap bejövő kiépítési alkalmazás-összekötővel kiszállít. 
 
-| \# | Név                                  | Munkanap API kifejezés                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Name (Név)                                  | Munkanap API kifejezés                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktív                                | WD: Worker/WD: Worker\_-beli adatkezelés/WD: Working\_-adatkezelés/WD: Worker\_status\_-beli adatkezelési/WD: Active/Text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | WD: Worker/WD: Worker\_adatai/WD: Working\_adatai/WD: position\_adatai/WD: Business\_site\_Summary\_adatai/WD: címek\_adatai/WD: címek\_line\_adatai\[@wd:Type= "címe\_LINE\_2"\]/Text\(\)                                                                                                                                                                                                                             |
@@ -57,7 +57,7 @@ Az alábbi táblázat rögzíti a munkanapokhoz tartozó attribútumok és a hoz
 | 28 | LocalReference                        | WD: Worker/WD: Worker\_adatai/WD: Working\_adatai/WD: position\_/WD: Business\_site\_Summary\_adatai/WD: Local\_Reference/WD: ID\[@wd:type= "locale\_ID"\]/Text\(\)                                                                                                                                                                                                                                                 |
 | 29 | LocationIdentifier                    | WD: Worker/WD: Worker\_adatai/WD: Working\_adatai/WD: position\_adatai/WD: Business\_site\_Summary\_adatai/WD: Location\_Reference/WD: ID\[@wd:type= "location\_ID"\]/Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker\_adatai/WD: Management\_lánc\_adatai/WD: Worker\_felügyeleti\_Management\_lánc\_adat\[i pozíció\(\)= 1\]/WD: felügyeleti\_lánc\_adatai\[utolsó\(\)= pozíció\(\)\]/WD: Manager\_Reference/WD: ID\[@wd:type= "WID"\]/Text\(\)                                                                                                                                                                            |
-| 31 | MiddleName                            | WD: Worker/WD: Worker\_adatok/WD: Personal\_adatok/WD: név\_adat/WD: jogi\_neve\_adat/WD: név\_részletek\_adat/WD: középső\_név/szöveg\(\)                                                                                                                                                                                                                                                                                |
+| 31 | middleName                            | WD: Worker/WD: Worker\_adatok/WD: Personal\_adatok/WD: név\_adat/WD: jogi\_neve\_adat/WD: név\_részletek\_adat/WD: középső\_név/szöveg\(\)                                                                                                                                                                                                                                                                                |
 | 32 | Mobiltelefon                                | WD: Worker/WD: Worker\_adatok/WD: Personal\_adatok/WD: contact\_adatok/WD: Phone\_adatok\[fordítás\(sztring\(WD: Phone\_eszköz\_típus\_Reference/@wd:Descriptor\), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "MOBILE", és fordítás\(sztring\(WD: használati\_adatok/WD: Type\_adatok/WD: Type\_, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "WORK"\]/@wd:Formatted\_telefonReference/@wd:Descriptor\)    |
 | 33 | Önkormányzat                          | WD: Worker/WD: Worker\_adatai/WD: Working\_adatai/WD: position\_adatai/WD: Business\_site\_Summary\_adatai/WD: címek\_adatai/WD: önkormányzat/Text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | WD: Worker/WD: Worker\_-beli adatkezelés/WD: Working\_-beli adatkezelési/WD: pozíció\_adat/WD: pozíció\_azonosító/szöveg\(\)                                                                                                                                                                                                                                                                                                                     |

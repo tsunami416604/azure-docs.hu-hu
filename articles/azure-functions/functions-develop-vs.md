@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseke
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547370"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484706"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions fejlesztése a Visual Studióval  
 
@@ -48,7 +48,7 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
 1. Jegyezze fel a telepített **verziót**. Ezt a verziót a [kibocsátási megjegyzésekben](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)felsorolt legújabb verzióval is összehasonlíthatja. 
 
-1. Ha régebbi verziójú, frissítse az eszközöket a Visual Studióban, ahogy az a következő szakaszban is látható.
+1. Ha a verzió régebbi, frissítse az eszközök a Visual Studióban, a következő szakaszban látható módon.
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Eszközök frissítése a Visual Studio 2017-ban
 
@@ -56,7 +56,7 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
     ![A functions Tools verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Az eszközök frissítésének letöltése után a Visual Studio bezárásával aktiválja az eszközök frissítését a VSIX telepítő használatával.
+1. Után az eszközök a frissítés letöltését követően zárja be a Visual Studióban az eszközök frissítése a VSIX telepítővel eseményindítóra.
 
 1. A telepítőben kattintson az **OK** gombra a kezdéshez, majd **módosítsa** az eszközök frissítéséhez. 
 
@@ -136,7 +136,7 @@ Az C# osztály-függvénytár függvények a függvény által használt kötés
     }
     ```
 
-    A rendszer a belépési pont metódusához megadott kötési paraméterekre alkalmazza a kötés-specifikus attribútumot. Az attribútum paraméterként a kötési adatokat veszi fel. Az előző példában az első paraméter egy **QueueTrigger** attribútummal rendelkezik, amely jelzi az üzenetsor által aktivált függvényt. A várólista neve és a kapcsolódási karakterlánc beállításának neve paraméterként a **QueueTrigger** attribútumnak lesz átadva. További információ: [Azure üzenetsor-tárolási kötések Azure Functionshoz](functions-bindings-storage-queue.md#trigger).
+    A rendszer a belépési pont metódusához megadott kötési paraméterekre alkalmazza a kötés-specifikus attribútumot. Az attribútum paraméterként a kötési adatokat veszi fel. Az előző példában az első paraméter egy **QueueTrigger** attribútummal rendelkezik, amely jelzi az üzenetsor által aktivált függvényt. A várólista neve és a kapcsolódási karakterlánc beállításának neve paraméterként a **QueueTrigger** attribútumnak lesz átadva. További információ: [Azure üzenetsor-tárolási kötések Azure Functionshoz](functions-bindings-storage-queue-trigger.md).
 
 A fenti eljárás segítségével további függvényeket adhat hozzá a Function app-projekthez. A projekt egyes függvényei eltérő triggerrel rendelkezhetnek, de a függvénynek pontosan egy triggerrel kell rendelkeznie. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 

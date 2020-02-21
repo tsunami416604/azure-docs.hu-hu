@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e3661797ea408f219a67a1862901fee7c27a1d58
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123918"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526416"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure szinapszis Analytics (korábbi nevén SQL DW) kapacitásának korlátai
 
@@ -36,7 +36,7 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret | Gen1:240 TB tömörített lemezen. Ez a terület független a tempdb és a naplózási területtől, ezért ez a terület állandó táblákhoz van hozzárendelve.  A fürtözött oszlopcentrikus-tömörítés becsült értéke 5X.  Ez a tömörítés lehetővé teszi, hogy az adatbázis körülbelül 1 PB-re növelje, ha az összes tábla fürtözött oszlopcentrikus (az alapértelmezett tábla típusa). <br/><br/> Gen2:240TB a sortárindex létrehozását és a korlátlan tárolási oszlopcentrikus táblákhoz |
-| Tábla |Maximális méret |60 TB tömörített lemezen |
+| Tábla |Maximális méret | Oszlopcentrikus táblák esetében nincs uppper korlát. <br/><br/>Sorok tárolására szolgáló táblák esetében 60 TB tömörített lemezen |
 | Tábla |Táblák/adatbázis | 100 000 |
 | Tábla |Oszlopok száma táblában |1024 oszlop |
 | Tábla |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A határérték 8000 karakteres adattípusok esetén, 4000 nvarchar, vagy 2 GB a maximális adattípusokhoz. |
@@ -87,5 +87,5 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |A sys. dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure szinapszis használatával kapcsolatos javaslatokért tekintse meg a [Cheat lapot](cheat-sheet.md).

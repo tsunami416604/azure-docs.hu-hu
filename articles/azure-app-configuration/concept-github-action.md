@@ -3,39 +3,39 @@ title: GitHub-műveletek használata az Azure app Configuration Sync használat�
 description: A GitHub-műveletek használatával aktiválhatja az alkalmazás konfigurációs példányának frissítését, ha a meghatározott műveleteket egy GitHub-adattáron hajtja végre.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 01/14/2020
+ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190382"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523713"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Az App Configuration-példány szinkronizálása GitHub-műveletek segítségével
-Az Azure-alkalmazás konfigurációja GitHub-műveleteket használ egy alkalmazás konfigurációs példányának frissítéséhez, amikor egy GitHub-adattáron végrehajtott művelet aktiválja. A GitHub-munkafolyamatok segítségével frissítheti az alkalmazások konfigurációját, így az alkalmazás-konfiguráció frissítéseinek az alkalmazás kódjának frissítéséhez használt munkafolyamatba való integrálásával is felhasználható.
+Az Azure app Configuration a GitHub-műveletek használatával indítja el az alkalmazás-konfigurációs példány frissítéseit egy GitHub-adattáron végrehajtott műveletek alapján. A GitHub-munkafolyamatok olyan konfigurációs frissítéseket indítanak el, amelyek lehetővé teszik a frissítések integrálását az alkalmazás kódjának frissítéséhez használt munkafolyamatba.
 
-A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) a GitHub-tárházban definiált automatizált folyamat. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe GitHub-projektet a GitHubon. Az Azure-alkalmazás konfigurációja lehetővé teszi az *Azure-alkalmazás konfigurációjának szinkronizálását* , amely lehetővé teszi az alkalmazás-konfigurációs példányok frissítéseinek frissítését a forrás tárházban végzett módosítások során. 
+A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) a GitHub-tárházban automatikus folyamatot határoz meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe GitHub-projektet a GitHubon. Az Azure-alkalmazás konfigurációja lehetővé teszi az *Azure-alkalmazás konfigurációjának szinkronizálását* , amely lehetővé teszi az alkalmazás-konfigurációs példányok frissítéseinek frissítését a forrás tárházban végzett módosítások során. 
 
-A munkafolyamatot egy YAML (. YML) határozza meg, amely a tárház `/.github/workflows/` útvonalán található. Ez a definíció a munkafolyamatot meghatározó különböző lépéseket és paramétereket tartalmazza.
+A tárház `/.github/workflows/` útvonalán található YAML (. YML) a munkafolyamatot határozza meg. Ez a definíció tartalmazza a munkafolyamat lépéseit és paramétereit.
 
-A GitHub-események, például az adattárba való leküldés megindíthatnak egy GitHub-műveleti munkafolyamatot.  Az Azure biztosítja az *Azure app Configuration Sync* műveletet, amely lehetővé teszi, hogy egy adott GitHub-művelet bekövetkeztekor egy alkalmazás-konfigurációs példány frissítését aktiválja. Ez lehetővé teszi a csapatok számára, hogy a GitHub alapvető funkcióit használják az alkalmazás-konfigurációs fájlok leküldésekor, áttekintésekor vagy elágazásakor ugyanúgy, mint az alkalmazás kódjával.
+A GitHub-események, például az adattárba való leküldés megindíthatnak egy GitHub-műveleti munkafolyamatot.  Az *Azure-alkalmazás konfigurációs szinkronizálási* művelete lehetővé teszi, hogy egy adott GitHub-művelet bekövetkeztekor egy alkalmazás-konfigurációs példány frissítését aktiválja. A konfigurációs frissítéseket aktiválhatja az alkalmazás konfigurációs fájljainak leküldésekor, áttekintésekor vagy elágazásakor ugyanúgy, mint az alkalmazás kódjával.
 
 A GitHub [dokumentációja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
-A GitHub-művelet elindításához nyissa meg az adattárat, és válassza a **műveletek** fület. kattintson az "új munkafolyamat" elemre, majd a "saját munkafolyamat beállítása" lehetőségre. Itt keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
+A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** fület. kattintson az **Új munkafolyamat**elemre, majd **állítsa be a munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
 > [!div class="mx-imgBorder"]
 > ![válassza a művelet fület](media/find-github-action.png)
 
 > [!div class="mx-imgBorder"]
-> ![válassza ki az alkalmazás konfigurációjának SYN műveletét](media/app-configuration-sync-action.png)
+> ![válassza ki az alkalmazás-konfiguráció szinkronizálása műveletet](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>Konfigurációs fájlok szinkronizálása leküldéses üzenet után
-Ez a művelet szinkronizálja az Azure-alkalmazás konfigurációs fájljait, ha a módosítást `appsettings.json`ba küldi. Ha egy fejlesztő a `appsettings.json`módosítást hajt végre, az alkalmazás konfigurációs szinkronizálási művelete frissíti az alkalmazás konfigurációs példányát az új értékekkel.
+Ez a művelet szinkronizálja az Azure-alkalmazás konfigurációs fájljait, ha a módosítást `appsettings.json`ba küldi. Amikor egy fejlesztő leküldi a `appsettings.json`módosítást, az alkalmazás konfigurációja szinkronizálási művelet frissíti az alkalmazás konfigurációs példányát az új értékekkel.
 
-A munkafolyamat első szakasza azt határozza meg, hogy a művelet *elindít egy* `appsettings.json`t tartalmazó *leküldéses* műveletet a *fő* ágra. A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A titkoknak a githubon való használatáról további információt a titkosított titkok létrehozásáról és használatáról szóló [cikkben](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) talál.
+A munkafolyamat első szakasza azt határozza meg, hogy a művelet *elindít egy* `appsettings.json`t tartalmazó *leküldéses* műveletet a *fő* ágra. A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A GitHubon található titkok használatával kapcsolatos további információkért lásd a [githubról szóló cikket](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) a titkosított titkok létrehozásával és használatával kapcsolatban.
 
 ```json
 on: 
@@ -62,9 +62,9 @@ jobs:
 ```
 
 ## <a name="use-a-dynamic-label-on-sync"></a>Dinamikus felirat használata szinkronizáláskor
-Az előző művelettel egyszerűen frissült az alkalmazás konfigurációs példánya, amikor `appsettings.json` frissül. Ez a művelet minden egyes szinkronizáláshoz beszúr egy dinamikus címkét, így biztosítva, hogy minden egyes szinkronizálás egyedi módon azonosítható legyen.  Ez lehetővé teszi, hogy a kód módosításai gyorsan le legyenek képezve a konfiguráció módosításaira.
+Az előző művelet frissíti az alkalmazás konfigurációs példányát, amikor `appsettings.json` frissül. Ez a művelet minden egyes szinkronizáláshoz beszúr egy dinamikus címkét, így biztosítva, hogy minden egyes szinkronizálás egyedi módon azonosítható legyen, és lehetővé tegye a kód módosításának hozzárendelését a konfiguráció módosításaira.
 
-A munkafolyamat első szakasza azt határozza meg, hogy a művelet *elindít egy* `appsettings.json`t tartalmazó *leküldéses* műveletet a *fő* ágra. A második szakasz egy feladatot futtat, amely létrehoz egy egyedi címkét a konfigurációs frissítéshez a véglegesítő kivonat alapján. Ekkor a rendszer frissíti az alkalmazás konfigurációs példányát az új értékekkel és a frissítés egyedi címkéjével.
+A munkafolyamat első szakasza azt határozza meg, hogy a művelet *elindít egy* `appsettings.json`t tartalmazó *leküldéses* műveletet a *fő* ágra. A második szakasz egy olyan feladatot futtat, amely egyedi címkét hoz létre a konfigurációs frissítéshez a véglegesítő kivonat alapján. Ekkor a rendszer frissíti az alkalmazás konfigurációs példányát az új értékekkel és a frissítés egyedi címkéjével.
 
 ```json
 on: 
@@ -143,6 +143,7 @@ A beágyazott JSON-attribútumok alapértelmezett viselkedése a teljes objektum
     }
 }
 ```
+
 Ha a beágyazott objektum a konfigurációs példánynak leküldhető értékre van kiválasztva, a *mélység* értékével állíthatja le az összeolvasztást a megfelelő mélységben. 
 
 ```json
@@ -170,7 +171,7 @@ jobs:
           depth: 2 
 ```
 
-A 2. mélység miatt a fenti példa a következő kulcsot adja vissza: érték pár:
+A 2. mélysége miatt a fenti példa a következő kulcs-érték párokat adja vissza:
 
 | Paraméter | Érték |
 | --- | --- |
@@ -185,7 +186,7 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 
 | Bemeneti név | Kötelező? | Érték |
 |----|----|----|
-| configurationFile | Igen | A tárházban lévő konfigurációs fájl elérési útja, a tárház gyökeréhez képest.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
+| configurationFile | Igen | A tárházban található konfigurációs fájl relatív elérési útja.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
 | format | Igen | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
 | connectionString | Igen | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
 | elválasztó | Igen | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |

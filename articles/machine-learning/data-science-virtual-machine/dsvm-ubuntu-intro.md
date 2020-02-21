@@ -1,5 +1,6 @@
 ---
-title: 'Gyors útmutató: Ubuntu-DSVM létrehozása'
+title: 'Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása'
+titleSuffix: Azure Data Science Virtual Machine
 description: A Linux (Ubuntu) Data Science Virtual Machine konfigurálása és létrehozása az elemzéshez és a gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612087"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526110"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -23,7 +24,7 @@ Az Ubuntu 18,04 Data Science Virtual Machine használatba veheti a szolgáltatá
 Ubuntu 18,04 Data Science Virtual Machine létrehozásához Azure-előfizetéssel kell rendelkeznie. [Próbálja ki ingyenesen az Azure](https://azure.com/free)-t.
 Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
 
-## <a name="create-your-data-science-virtual-machine-for-linux"></a>A Linux-Data Science Virtual Machine létrehozása
+## <a name="create-your-data-science-virtual-machine-for-linux"></a>Az adatelemző virtuális gép létrehozása Linux rendszeren
 
 Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine Ubuntu 18,04-példányát:
 
@@ -58,7 +59,7 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
     
    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
    1. **Felülvizsgálat + létrehozás**
-      * Győződjön meg arról, hogy a megadott összes adat helyes. 
+      * Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt. 
       * Kattintson a **Létrehozás** gombra.
     
     A kiépítés körülbelül 5 percet vesz igénybe. Az állapot megjelenik a Azure Portalban.
@@ -67,9 +68,9 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
 
 Az Ubuntu DSVM háromféle módon érheti el:
 
-  * SSH terminál-munkamenetekhez
-  * X2Go grafikus munkamenetekhez
-  * JupyterHub és JupyterLab Jupyter-notebookokhoz
+  * SSH-munkamenetet a Terminálszolgáltatások
+  * Grafikus munkamenetek X2Go
+  * JupyterHub és JupyterLab Jupyter notebookokhoz
 
 Data Science Virtual Machine is csatolhat, hogy Azure Notebooks Jupyter jegyzetfüzeteket futtasson a virtuális gépen, és megkerüli az ingyenes szolgáltatási szintet. További információ: [Azure Notebooks projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
@@ -78,11 +79,11 @@ Data Science Virtual Machine is csatolhat, hogy Azure Notebooks Jupyter jegyzetf
 Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva, akkor az SSH használatával bejelentkezhet. Használja a szöveges rendszerhéj felületének 3. lépésének **alapok** szakaszában létrehozott fiók hitelesítő adatait. Windows rendszeren egy SSH-ügyfél eszközt (például a [Putty](https://www.putty.org)-t) tölthet le. Ha a grafikus asztali számítógép (X rendszer) használatát részesíti előnyben, használhat X11-továbbítást a PuTTY-on.
 
 > [!NOTE]
-> A X2Go-ügyfél jobban teljesített, mint az X11 továbbítása a tesztelés során. Azt javasoljuk, hogy a X2Go-ügyfelet egy grafikus asztali felületen használja.
+> A X2Go ügyfél jobban teljesített, mint továbbítási tesztelés X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
 
 ### <a name="x2go"></a>X2Go
 
-A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. A Linux rendszerű virtuális gép grafikus asztalához való kapcsolódáshoz végezze el az alábbi eljárást az ügyfélen:
+A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. Ha csatlakozni szeretne a Linuxos virtuális gép grafikus asztali, az alábbi eljárással az ügyfélen:
 
 1. Töltse le és telepítse a X2Go-ügyfelet az [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)-ből származó ügyféloldali platformra.
 1. Jegyezze fel a virtuális gép nyilvános IP-címét, amelyet az imént létrehozott virtuális gép megnyitásával talál a Azure Portal.
@@ -123,7 +124,7 @@ Az Ubuntu DSVM egy többfelhasználós Jupyter-kiszolgálót futtat [JupyterHub]
 
    1. Böngésszen a rendelkezésre álló számos jegyzetfüzetben.
 
-JupyterLab, a Jupyter-jegyzetfüzetek és-JupyterHub következő generációja is elérhető. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre.
+JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre.
 
 A JupyterLab alapértelmezett jegyzetfüzet-kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a `/etc/jupyterhub/jupyterhub_config.py`hoz:
 
@@ -133,7 +134,7 @@ c.Spawner.default_url = '/lab'
 
 ## <a name="next-steps"></a>Következő lépések
 
-Így folytathatja a tanulást és a kutatást:
+Itt látható, hogyan a tanulási és feltárásra továbbra is:
 
 * A [Linux rendszerhez készült Data Science Virtual Machine adatelemzés](linux-dsvm-walkthrough.md) azt mutatja be, hogyan végezhető el számos általános adatelemzési feladat az itt kiépített Linux-DSVM. 
 * A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. A virtuális gépen lévő rendszerhéjon `dsvm-more-info` is futtathat egy alapszintű bevezetéshez és mutatókhoz, hogy további információkat lehessen megtudni a virtuális GÉPRE telepített eszközökről.  

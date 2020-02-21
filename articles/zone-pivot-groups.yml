@@ -1,29 +1,5 @@
 ### YamlMime:ZonePivotGroups
 groups:
-- id: programming-languages-set-one
-  title: Programozási nyelvek
-  prompt: Válasszon egy programozási nyelvet
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-nodejs
-    title: Node.js
-  - id: programming-language-go
-    title: Indítás
-- id: cogsvcs-text-analytics-features
-  title: Text Analytics-funkciók
-  prompt: Válasszon ki egy Text Analytics-funkcióajánlatot
-  pivots:
-  - id: text-analytics-key-phrase-extraction
-    title: Kulcskifejezések kinyerése
-  - id: text-analytics-language-detection
-    title: Nyelvfelismerés
-  - id: text-analytics-sentiment-analysis
-    title: Hangulatelemzés
 - id: client-operating-system
   title: Programozási nyelvek
   prompt: Válasszon egy ügyféloldali operációs rendszert
@@ -34,6 +10,28 @@ groups:
     title: MacOS
   - id: client-operating-system-windows
     title: Windows
+- id: URL-test-interface
+  title: URL-tesztelőeszköz
+  prompt: 'Válasszon egyet a következő lehetőségek közül:'
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: Postman
+- id: programming-languages-set-one
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Indítás
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-two
   title: Programozási nyelvek
   prompt: Válasszon egy programozási nyelvet
@@ -78,12 +76,12 @@ groups:
   pivots:
   - id: programming-language-csharp
     title: C#
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-nodejs
-    title: Node.js
   - id: programming-language-go
     title: Indítás
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
   - id: programming-language-ruby
     title: Ruby
 - id: programming-languages-set-six
@@ -92,10 +90,10 @@ groups:
   pivots:
   - id: programming-language-csharp
     title: C#
+  - id: programming-language-javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
-  - id: programming-language-nodejs
-    title: Node.js
 - id: programming-languages-set-seven
   title: Programozási nyelvek
   prompt: Válasszon egy programozási nyelvet
@@ -104,28 +102,6 @@ groups:
     title: C#
   - id: programming-language-cpp
     title: C++
-- id: programming-languages-set-functions
-  title: Programozási nyelvek
-  prompt: Válasszon egy programozási nyelvet
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-javascript
-    title: JavaScript
-  - id: programming-language-powershell
-    title: PowerShell
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-typescript
-    title: TypeScript
-- id: URL-test-interface
-  title: URL-tesztelőeszköz
-  prompt: 'Válasszon egyet a következő lehetőségek közül:'
-  pivots:
-  - id: url-test-tool-curl
-    title: cURL
-  - id: url-test-tool-postman
-    title: Postman
 - id: programming-languages-set-eight
   title: Programozási nyelvek
   prompt: Válasszon egy programozási nyelvet
@@ -162,13 +138,23 @@ groups:
   pivots:
   - id: programming-language-csharp
     title: C#
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-nodejs
-    title: Node.js
   - id: programming-language-java
     title: Java
-- id: programming-languages-set-functions01
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: cogsvcs-text-analytics-features
+  title: Text Analytics-funkciók
+  prompt: Válasszon ki egy Text Analytics-funkcióajánlatot
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: Kulcskifejezések kinyerése
+  - id: text-analytics-language-detection
+    title: Nyelvfelismerés
+  - id: text-analytics-sentiment-analysis
+    title: Hangulatelemzés
+- id: programming-languages-set-functions
   title: Programozási nyelvek
   prompt: Válasszon egy programozási nyelvet
   pivots:
@@ -182,20 +168,34 @@ groups:
     title: Python
   - id: programming-language-typescript
     title: TypeScript
+- id: programming-languages-text-analytics
+  title: Programozási nyelvek
+  prompt: Válasszon egy programozási nyelvet.
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-other
+    title: További nyelvek...
 - id: programming-languages-set-diberry-3core
   title: Programozási nyelvek
   prompt: Válasszon egy programozási nyelvet
   pivots:
   - id: programming-language-csharp
     title: C#
+  - id: programming-language-javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
-  - id: programming-language-nodejs
-    title: Node.js
 metadata:
-  ms.openlocfilehash: 033752fef517ff3e1903f02fcbaf263cae244c15
-  ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+  ms.openlocfilehash: dcdb8bae9eaeb9ec06f3ceb10d6966e8e040724b
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/04/2020
-  ms.locfileid: "76986121"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526705"

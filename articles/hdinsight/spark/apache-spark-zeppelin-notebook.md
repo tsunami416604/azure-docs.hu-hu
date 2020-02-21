@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664613"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484808"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin notebookok használata Apache Spark-fürttel az Azure HDInsight
 
@@ -21,7 +21,6 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 * A fürtök elsődleges tárolójának URI-sémája. Ez `wasb://` az Azure Blob Storage, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` számára Azure Data Lake Storage Gen1. Ha a biztonságos átvitel engedélyezve van a Blob Storage számára, akkor az URI `wasbs://`.  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
 
@@ -154,7 +153,7 @@ Ekkor a rendszer a jegyzetfüzetet JSON-fájlként menti a letöltési helyen.
 
 ## <a name="livy-session-management"></a>Livy munkamenet-kezelés
 
-Ha a Zeppelin-jegyzetfüzet első kód bekezdését futtatja, a rendszer egy új Livy-munkamenetet hoz létre a HDInsight Spark-fürtben. Ez a munkamenet az összes később létrehozott Zeppelin-jegyzetfüzetben meg van osztva. Ha valamilyen oknál fogva a Livy-munkamenetet elveszik (a fürt újraindítása stb.), nem fog tudni feladatokat futtatni a Zeppelin jegyzetfüzetből.
+Ha a Zeppelin-jegyzetfüzet első kód bekezdését futtatja, a rendszer egy új Livy-munkamenetet hoz létre a HDInsight Spark-fürtben. Ez a munkamenet az összes később létrehozott Zeppelin-jegyzetfüzetben meg van osztva. Ha valamilyen oknál fogva a Livy-munkamenetet elveszik (a fürt újraindítása stb.), nem fog tudni futtatni feladatokat a Zeppelin jegyzetfüzetből.
 
 Ilyen esetben az alábbi lépéseket kell elvégeznie, mielőtt elkezdené a feladatok futtatását egy Zeppelin-jegyzetfüzetből.  
 
@@ -168,9 +167,44 @@ Ilyen esetben az alábbi lépéseket kell elvégeznie, mielőtt elkezdené a fel
 
 3. Kód cellájának futtatása meglévő Zeppelin-jegyzetfüzetből. Ez létrehoz egy új Livy-munkamenetet a HDInsight-fürtben.
 
-## <a name="seealso"></a>Lásd még:
+## <a name="general-information"></a>Általános információk
 
-* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
+### <a name="validate-service"></a>Szolgáltatás ellenőrzése
+
+A szolgáltatás Ambari való ellenőrzéséhez navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, ahol a CLUSTERNAME a fürt neve.
+
+A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csomóponthoz kell bejelentkeznie. Váltson a felhasználóra a Zeppelin-re a Command `sudo su zeppelin`használatával. Állapot parancsai:
+
+|Parancs |Leírás |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|A szolgáltatás állapota.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Szolgáltatás verziója.|
+|`ps -aux | grep zeppelin`|Azonosítsa a PID-t.|
+
+### <a name="log-locations"></a>Naplók helye
+
+|Szolgáltatás |Útvonal |
+|---|---|
+|Zeppelin – kiszolgáló|/usr/hdp/current/zeppelin-server/|
+|Kiszolgálói naplók|/var/log/zeppelin|
+|Konfiguráció-értelmező, Shiro, site. XML, log4j|/usr/HDP/current/Zeppelin-Server/conf vagy/etc/Zeppelin/conf|
+|PID-könyvtár|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
+
+1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, ahol a CLUSTERNAME a fürt neve.
+
+1. Navigáljon a **konfigurációk** > **Advanced Zeppelin-log4j-Properties** > **log4j_properties_content**.
+
+1. `log4j.appender.dailyfile.Threshold = INFO` módosítása `log4j.appender.dailyfile.Threshold = DEBUG`re.
+
+1. `log4j.logger.org.apache.zeppelin.realm=DEBUG`hozzáadása.
+
+1. Mentse a módosításokat, és indítsa újra a szolgáltatást.
+
+## <a name="next-steps"></a>Következő lépések
+
+[Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Forgatókönyvek
 

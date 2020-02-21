@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932390"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484417"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -35,11 +35,11 @@ Tekintse át [ezt az útmutatót](https://docs.microsoft.com/azure/security/fund
 
 Az átmenő hitelesítés ingyenes szolgáltatás. Nincs szüksége az Azure AD fizetős kiadásaira a használatához.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Elérhető-e átmenő hitelesítés a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Elérhető-e átmenő hitelesítés a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)?
 
 Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában érhető el.
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) átmenő hitelesítéssel?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) átmenő hitelesítéssel?
 
 Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
@@ -54,7 +54,7 @@ Nem. Az átmenő hitelesítés _nem végez_ automatikusan feladatátvételt a je
 
 Ha a Azure AD Connect használatával vált át a bejelentkezési módszer a jelszó-kivonatos szinkronizálásról az átmenő hitelesítésre, az átmenő hitelesítés lesz az elsődleges bejelentkezési módszer a felügyelt tartományokban lévő felhasználók számára. Vegye figyelembe, hogy a jelszó-kivonatoló szinkronizálás által korábban szinkronizált összes felhasználó jelszavas kivonata továbbra is az Azure AD-ben tárolódik.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthetek [Azure ad Application proxy](../manage-apps/application-proxy.md) -összekötőt ugyanarra a kiszolgálóra, mint egy átmenő hitelesítési ügynököt?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthetek [Azure ad Application proxy](../manage-apps/application-proxy.md) -összekötőt ugyanarra a kiszolgálóra, mint egy átmenő hitelesítési ügynököt?
 
 Igen. Ez a konfiguráció támogatja az átmenő hitelesítési ügynök (1.5.193.0 vagy újabb verzió) rebranded verzióit.
 
@@ -107,7 +107,7 @@ Nem, csak egy átmenő hitelesítési ügynököt telepíthet egyetlen kiszolgá
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Kell-e manuálisan megújítani a továbbított hitelesítési ügynökök által használt tanúsítványokat?
 
-Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommunikáció tanúsítványalapú hitelesítéssel védett. Ezeket a [tanúsítványokat az Azure ad minden hónapban automatikusan megújítja](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Ezeket a tanúsítványokat nem kell manuálisan megújítani. Szükség szerint törölheti a régebbi lejárt tanúsítványokat.
+Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommunikáció tanúsítványalapú hitelesítéssel védett. Ezeket a [tanúsítványokat az Azure ad minden hónapban automatikusan megújítja](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Ezeket a tanúsítványokat nem kell manuálisan megújítani. Szükség szerint törölheti a régebbi lejárt tanúsítványokat.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan egy átmenő hitelesítési ügynököt?
 

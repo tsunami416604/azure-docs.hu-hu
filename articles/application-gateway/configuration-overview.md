@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714852"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485080"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -210,7 +210,7 @@ Elérésiút-alapú szabály esetén adjon hozzá több háttérbeli HTTP-beáll
 
 Ha az átirányítás alapszintű szabályhoz van konfigurálva, a rendszer a társított figyelő összes kérelmét átirányítja a célhelyre. Ez *globális* átirányítás. Ha az átirányítás egy elérésiút-alapú szabályhoz van konfigurálva, akkor a rendszer csak egy adott hely területén lévő kérelmeket irányítja át. Ilyenek például a */cart/\** által jegyzett bevásárlókosár-területek. Ez az *elérésiút-alapú* átirányítás.
 
-További információ az átirányításokról: [Application Gateway átirányítások áttekintése](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+További információ az átirányításokról: [Application Gateway átirányítások áttekintése](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Átirányítás típusa
 
@@ -227,24 +227,24 @@ Válassza a figyelő lehetőséget, hogy átirányítsa a forgalmat az egyik fig
 ![Összetevők Application Gateway párbeszédpanel](./media/configuration-overview/configure-redirection.png)
 
 További információ a HTTP – HTTPS átirányítással kapcsolatban:
-- [HTTP – HTTPS átirányítás a Azure Portal használatával](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [HTTP – HTTPS átirányítás a PowerShell használatával](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [HTTP – HTTPS átirányítása az Azure CLI használatával](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [HTTP – HTTPS átirányítás a Azure Portal használatával](redirect-http-to-https-portal.md)
+- [HTTP – HTTPS átirányítás a PowerShell használatával](redirect-http-to-https-powershell.md)
+- [HTTP – HTTPS átirányítása az Azure CLI használatával](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Külső hely
 
 Válassza a külső hely lehetőséget, ha át szeretné irányítani a szabályhoz társított figyelő forgalmát egy külső helyre. Dönthet úgy, hogy a lekérdezési karakterláncot az eredeti kérelemből adja meg az átirányítási célra továbbított kérelemben. Az elérési út nem továbbítható az eredeti kérelemben szereplő külső helyhez.
 
 További információ az átirányítással kapcsolatban:
-- [Forgalom átirányítása egy külső helyre a PowerShell használatával](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [Forgalom átirányítása egy külső helyre a parancssori felület használatával](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [Forgalom átirányítása egy külső helyre a PowerShell használatával](redirect-external-site-powershell.md)
+- [Forgalom átirányítása egy külső helyre a parancssori felület használatával](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>A HTTP-fejléc beállításának újraírása
 
 Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információkért lásd:
 
- - [HTTP-fejlécek újraírása – áttekintés](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [HTTP-fejléc újraírásának konfigurálása](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [HTTP-fejlécek újraírása – áttekintés](rewrite-http-headers.md)
+ - [HTTP-fejléc újraírásának konfigurálása](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP-beállítások
 
@@ -252,7 +252,18 @@ Az Application Gateway az itt megadott konfiguráció használatával irányítj
 
 ### <a name="cookie-based-affinity"></a>Cookie-alapú affinitás
 
-Ez a funkció akkor hasznos, ha ugyanazon a kiszolgálón szeretné megőrizni a felhasználói munkamenetet. Az átjáró által felügyelt cookie-k lehetővé teszik, hogy az Application Gateway közvetlenül a felhasználói munkamenetből egy adott kiszolgálóra irányuló adatforgalmat dolgozza fel feldolgozásra. Ez akkor fontos, ha a munkamenet-állapotot helyileg mentik a kiszolgálón egy felhasználói munkamenethez. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitást, nem használhatja ezt a funkciót. A használatához győződjön meg arról, hogy az ügyfelek támogatják a cookie-kat.
+Az Azure Application Gateway átjáróval felügyelt cookie-kat használ a felhasználói munkamenetek karbantartásához. Amikor egy felhasználó az első kérést Application Gateway küldi el, az egy affinitási cookie-t állít be a válaszban egy olyan kivonatoló értékkel, amely tartalmazza a munkamenet részleteit, így az affinitási cookie-t tartalmazó további kérelmeket ugyanarra a háttér-kiszolgálóra irányítja a rendszer a stickiion karbantartása. 
+
+Ez a funkció akkor hasznos, ha egy felhasználói munkamenetet szeretne megőrizni ugyanazon a kiszolgálón, és amikor a munkamenet-állapotot helyileg menti a kiszolgálón egy felhasználói munkamenethez. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitást, nem használhatja ezt a funkciót. A használatához győződjön meg arról, hogy az ügyfelek támogatják a cookie-kat.
+
+A **2020. február 17**-én kezdődően a [Chromium](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) olyan mandátumot tartalmaz, amelyben a SameSite attribútum nélküli http-cookie-kat SameSite = LAX-ként kell kezelni. CORS (eltérő eredetű erőforrás-megosztási) kérelmek esetén, ha a cookie-t harmadik féltől származó kontextusban kell elküldeni, a "SameSite = None;" értéket kell használnia. Biztonságos "attribútumok, és csak HTTPS protokollal lehet elküldeni. Ellenkező esetben a böngésző nem küldi el a cookie-kat a harmadik féltől származó környezetben. Ennek a frissítésnek a célja, hogy fokozza a biztonságot, és elkerülje a helyek közötti kérelmek hamisításának (CSRF) elleni támadásait. 
+
+Ennek a változásnak a támogatásához Application Gateway (az összes SKU-típus) egy másik, **ApplicationGatewayAffinityCORS** nevű cookie-t kell beadnia a meglévő **ApplicationGatewayAffinity** -cookie mellett, amely hasonló, de ez a cookie most még két attribútummal rendelkezik: **"SameSite = None". A biztonságos** Hozzáadás úgy történik, hogy a Sticky-munkamenetek még a származási kérelmek esetében is fennmaradnak.
+
+Vegye figyelembe, hogy az alapértelmezett affinitási cookie neve **ApplicationGatewayAffinity** , és a felhasználók módosíthatják azt. Ha egyéni affinitási cookie-nevet használ, további cookie-t fog hozzáadni a CORS utótagként, például **CustomCookieNameCORS**.
+
+> [!NOTE]
+> Kötelező megadni, hogy ha a **SameSite = none** attribútum be van állítva, a cookie-nak tartalmaznia kell a **biztonságos** jelzőt is, és a **https**protokollon keresztül kell elküldeni. Így ha a CORS-kapcsolaton keresztül szükséges a munkamenet-affinitás, a munkaterhelést HTTPS-re kell áttelepítenie. Tekintse meg az SSL-alapú kiszervezést és a teljes körű SSL-dokumentációt Application Gateway itt – [Áttekintés](ssl-overview.md), [útmutató az SSL-kiszervezés konfigurálásához](create-ssl-portal.md), a [végpontok közötti SSL konfigurálásához](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 
@@ -262,7 +273,7 @@ A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak bizto
 
 A Application Gateway a HTTP-t és a HTTPS-t is támogatja a háttér-kiszolgálókra irányuló útválasztási kérelmek esetében. Ha a HTTP lehetőséget választja, a háttér-kiszolgálókra irányuló forgalom titkosítatlan. Ha a titkosítatlan kommunikáció nem elfogadható, válassza a HTTPS lehetőséget.
 
-A figyelőben lévő HTTPS-vel kombinált beállítás támogatja a [végpontok közötti SSL-t](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ez lehetővé teszi, hogy biztonságosan továbbítsa a háttérben titkosított bizalmas adatokat. A végpontok közötti SSL-t használó háttérbeli készletben lévő minden háttér-kiszolgálót tanúsítvány használatával kell konfigurálni a biztonságos kommunikáció érdekében.
+A figyelőben lévő HTTPS-vel kombinált beállítás támogatja a [végpontok közötti SSL-t](ssl-overview.md). Ez lehetővé teszi, hogy biztonságosan továbbítsa a háttérben titkosított bizalmas adatokat. A végpontok közötti SSL-t használó háttérbeli készletben lévő minden háttér-kiszolgálót tanúsítvány használatával kell konfigurálni a biztonságos kommunikáció érdekében.
 
 ### <a name="port"></a>Port
 
@@ -301,7 +312,7 @@ Ez egy felhasználói felületi parancsikon, amely kiválasztja a Azure App Serv
 
 ### <a name="use-custom-probe"></a>Egyéni mintavétel használata
 
-Ez a beállítás egy [Egyéni](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) mintavételt TÁRSÍT egy http-beállítással. Egy HTTP-beállítással csak egy egyéni mintavételt rendelhet hozzá. Ha nem kifejezetten egyéni mintavételt rendel hozzá, az [alapértelmezett](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) mintavétel a háttér állapotának figyelésére szolgál. Javasoljuk, hogy hozzon létre egy egyéni mintavételt a háttér állapotának monitorozásához.
+Ez a beállítás egy [Egyéni](application-gateway-probe-overview.md#custom-health-probe) mintavételt TÁRSÍT egy http-beállítással. Egy HTTP-beállítással csak egy egyéni mintavételt rendelhet hozzá. Ha nem kifejezetten egyéni mintavételt rendel hozzá, az [alapértelmezett](application-gateway-probe-overview.md#default-health-probe-settings) mintavétel a háttér állapotának figyelésére szolgál. Javasoljuk, hogy hozzon létre egy egyéni mintavételt a háttér állapotának monitorozásához.
 
 > [!NOTE]
 > Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon hozzá van rendelve egy figyelőhöz.
@@ -335,7 +346,7 @@ Miután létrehozta a háttér-készletet, hozzá kell rendelnie egy vagy több 
 
 ## <a name="health-probes"></a>Állapotminták
 
-Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás állapotát a háttérben. Javasoljuk azonban, hogy az egyes háttérbeli HTTP-beállításokhoz hozzon létre egy egyéni mintavételt, hogy jobban kézben legyen az állapot figyelése. Az egyéni mintavétel konfigurálásával kapcsolatos további információkért lásd: [Egyéni állapot mintavételi beállításai](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás állapotát a háttérben. Javasoljuk azonban, hogy az egyes háttérbeli HTTP-beállításokhoz hozzon létre egy egyéni mintavételt, hogy jobban kézben legyen az állapot figyelése. Az egyéni mintavétel konfigurálásával kapcsolatos további információkért lásd: [Egyéni állapot mintavételi beállításai](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.

@@ -1,36 +1,34 @@
 ---
 title: Azure CLI parancsfájl-minta – a Key-Values használata az alkalmazás konfigurációs tárolójában
 titleSuffix: Azure App Configuration
-description: Információt nyújt a kulcs-értékeknek az Azure app Configuration Store-ban való használatáról
+description: Alapértékek létrehozása, megtekintése, frissítése és törlése az alkalmazás konfigurációs tárolójából az Azure CLI-parancsfájllal
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468150"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523648"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>A Key-Values használata egy Azure-alkalmazás konfigurációs tárolójában
 
-Ez a példa egy új kulcsot hoz létre egy Azure-alkalmazás konfigurációs tárolójában, felsorolja az összes létező kulcs-értéket, frissíti az újonnan létrehozott kulcs értékét, és végül törli azt.
+Ez a példa a következőket mutatja be:
+* Új kulcs-érték párok létrehozása
+* Az összes létező kulcs-érték pár listázása
+* Újonnan létrehozott kulcs értékének frissítése
+* Az új kulcs-érték pár törlése
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja az alkalmazás konfigurációs tárolójában lévő kulcs-értékekhez való működéshez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a táblázat a minta parancsfájlban használt parancsokat sorolja fel. 
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Létrehoz vagy frissít egy kulcs-értéket. |
-| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Az alkalmazás-konfigurációs tárolóban található kulcsok értékeit sorolja fel. |
-| [az appconfig kV delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Egy kulcs-érték törlése. |
+| [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Kulcs-érték párok létrehozása vagy frissítése. |
+| [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Egy alkalmazás-konfigurációs tárolóban található kulcs-érték párok listázása. |
+| [az appconfig kV delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Kulcs-érték párok törlése. |
 
 ## <a name="next-steps"></a>Következő lépések
 

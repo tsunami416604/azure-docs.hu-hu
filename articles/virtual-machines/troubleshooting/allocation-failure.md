@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471890"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484400"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Az Azure-beli virtuális gépek létrehozásakor, újraindításakor vagy átméretezésével kapcsolatos foglalási hibák elhárítása
 
@@ -87,9 +87,9 @@ Az Azure-infrastruktúra kibővítésekor üzembe helyezünk újabb generációs
 
 |Örökölt VM-sorozat/méret|Ajánlott újabb VM-sorozat/méret|További információ|
 |----------------------|----------------------------|--------------------|
-|Av1 sorozat|[Av2 sorozat](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 vagy DSv1 sorozat (D1 – D5)|[Dv3 vagy DSv3 sorozat](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 vagy DSv1 sorozat (D11 – D14)|[Ev3 vagy ESv3 sorozat](../windows/sizes-memory.md#ev3-series)|
+|Av1 sorozat|[Av2 sorozat](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 vagy DSv1 sorozat (D1 – D5)|[Dv3 vagy DSv3 sorozat](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 vagy DSv1 sorozat (D11 – D14)|[Ev3 vagy ESv3 sorozat](../ev3-esv3-series.md)|
 |D15v2 vagy DS15v2|Ha a theResource Manager-alapú üzemi modellt használja a nagyobb méretű virtuálisgép-méretek kihasználása érdekében, érdemes áthelyeznie a D16v3/DS16v3 vagy a D32v3/DS32v3. Ezek úgy lettek kialakítva, hogy a legújabb generációs hardveren fussanak. Ha a Resource Manager-alapú üzemi modellt használja annak biztosítására, hogy a virtuálisgép-példány egyetlen ügyfél számára dedikált hardveren legyen elkülönítve, érdemes lehet áthelyezni az új elkülönített virtuálisgép-méretekre, E64i_v3 vagy E64is_v3re, amelyeket a legújabb generációs hardveren való futtatásra terveztek. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Foglalási hibák nagyméretű központi telepítések esetén (több mint 500 mag)

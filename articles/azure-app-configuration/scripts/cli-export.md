@@ -1,26 +1,20 @@
 ---
 title: Azure CLI-parancsfájl mintája – exportálás Azure-alkalmazás konfigurációs tárolójából
 titleSuffix: Azure App Configuration
-description: Információkat és példákat biztosít az Azure app Configuration Store-ból való exportáláshoz
+description: Az Azure CLI-szkript használata a konfiguráció exportálására az Azure-alkalmazások konfigurációjától
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: c4fc8f1cd1159f296d37fd67634d1c3171f7d7a9
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468268"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523620"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Exportálás Azure app Configuration Store-ból
 
