@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472468"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539620"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -87,7 +87,7 @@ A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést
 Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali környezet az ajánlott eljárásokat követi:
 
 - Azure Files Storage-fióknak ugyanabban a régióban kell lennie, mint a munkamenet-gazdagép virtuális gépei.
-- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](/fslogix/overview#requirements)című cikkben ismertetett engedélyekkel.
+- Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](/fslogix/fslogix-storage-config-ht)című cikkben ismertetett engedélyekkel.
 - Mindegyik gazdagépnek azonos típusú és méretű virtuális gépről kell kiépíteni, ugyanazon fő rendszerkép alapján.
 - Minden egyes gazdagép-készlet virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, hogy segítse a felügyeletet, a skálázást és a frissítést.
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.

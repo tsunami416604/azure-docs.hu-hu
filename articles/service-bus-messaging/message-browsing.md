@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756396"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539365"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
 
@@ -34,7 +34,7 @@ A betekintés a zárolt és jelenleg más fogadók által feldolgozott üzenetek
 
 ## <a name="peek-apis"></a>Betekintési API-k
 
-A [betekintés/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódus az összes .net-és Java-ügyfél-függvénytárban és minden fogadó objektumon megtalálható: **MessageReceiver**, **MessageSession**, **QueueClient**és **SubscriptionClient**. A betekintés az összes várólistán és előfizetésen, valamint a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
+A [betekintés/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódus minden .net-és Java-ügyfél-függvénytárban és minden fogadó objektumon megtalálható: **MessageReceiver**, **MessageSession**. A betekintés az összes várólistán és előfizetésen, valamint a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
 
 Ha többször is meghívják, a betekintés metódus a várólista vagy az előfizetési naplóban található összes üzenetet enumerálja sorszám sorrendben, a legalacsonyabb rendelkezésre álló sorozatszámtól a legmagasabb értékig. Ez az a sorrend, amelyben az üzenetek várólistán lévő, és nem az, hogy milyen sorrendben lehet az üzenetek lekérése.
 

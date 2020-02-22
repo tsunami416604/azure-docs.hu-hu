@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522339"
+ms.locfileid: "77538175"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
 
@@ -1448,12 +1448,13 @@ Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD
 ### <a name="gallery-onboarding-checklist"></a>Katalógus-előkészítési ellenőrzőlista
 Kövesse az alábbi feladatlistát, és győződjön meg arról, hogy az alkalmazás készen áll, és az ügyfelek zökkenőmentes üzembe helyezési tapasztalattal rendelkeznek. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
 > [!div class="checklist"]
-> * [Támogatás SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (kötelező)
+> * [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) felhasználói és csoportos végpont támogatása (csak egy szükséges, de mindkettő ajánlott)
 > * Legalább 25 kérelem támogatása a bérlők számára másodpercenként (kötelező)
-> * Támogatási séma felderítése (ajánlott)
 > * Támogassa a OAuth engedélyezési kód támogatását vagy az alább leírtak szerint a hosszú élettartamú tokent (kötelező)
-> * Hozzon létre egy mérnöki és támogatási kapcsolattartási pontot az ügyfél támogatásához a katalógus bevezetéséhez (kötelező)
+> * Hozzon létre egy mérnöki és támogatási pontot az ügyfelek támogatásához a katalógus bevezetése után (kötelező)
+> * Több csoporttagság frissítésének támogatása egyetlen JAVÍTÁSsal (ajánlott) 
 > * A SCIM-végpont nyilvánosan történő dokumentálása (ajánlott) 
+> * [Támogatási séma felderítése](https://tools.ietf.org/html/rfc7643#section-6) (ajánlott)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Engedélyezés a kiépítési összekötők számára az alkalmazás-katalógusban

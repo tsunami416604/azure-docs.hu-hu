@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 0f61a0968922d009b8ba60d80dde132fedaece29
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134121"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539075"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -72,7 +72,7 @@ Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban.
     4. **Állítsa le** a sablon virtuális gépet.  
 
 ## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele
-Ebben a lépésben közzéteszi a sablon virtuális gépet. A közzétételi folyamat olyan Tesztkörnyezet virtuális gépeket hoz létre, amelyek alapvetően a sablon virtuális gépe másolatai. 
+Ebben a lépésben közzéteszi a sablon virtuális gépet. Amikor közzéteszi a sablon virtuális gépet, Azure Lab Services létrehozza a virtuális gépeket a laborban a sablon használatával. A virtuális gépek konfigurációja megegyezik a sablonéval.
 
 1. A **sablon** lapon válassza a **Közzététel** lehetőséget az eszköztáron. 
 

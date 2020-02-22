@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 1b7fbea6c572d220a29b7779e3ca665f01248220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 353c8c1db5b5f7c6134388788799a6dccef69f9c
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867535"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538857"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: Visual Studio Code és .NET Core az Azure dev Spaces használatával
 
@@ -98,19 +98,19 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
 1. Futtassa ezt a parancsot (győződjön meg róla, hogy a **webfrontend** a jelenlegi mappája):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
 * A `./Dockerfile` ismerteti az alkalmazás tárolólemezképét, illetve hogy a forráskód hogyan épül fel és hogyan fut a tárolón belül.
-* A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
+* A [ alatt található ](https://docs.helm.sh)Helm-diagram`./charts/webfrontend` ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
 > [!TIP]
 > A projekthez tartozó [Docker és Helm diagramot](how-dev-spaces-works.md#prepare-your-code) az Azure dev Spaces használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
 Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
  
-A `prep` parancs egy `./azds.yaml` nevű fájlt is létrehoz, amely az Azure Dev Spaces konfigurációs fájlja. Ez olyan további konfigurációval egészíti ki a Docker- és Kubernetes-munkadarabokat, amely engedélyez az Azure-ban egy iteratív fejlesztési környezetet.
+A `./azds.yaml` parancs egy `prep` nevű fájlt is létrehoz, amely az Azure Dev Spaces konfigurációs fájlja. Ez olyan további konfigurációval egészíti ki a Docker- és Kubernetes-munkadarabokat, amely engedélyez az Azure-ban egy iteratív fejlesztési környezetet.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 Most futtassuk a kódunkat! Futtassa ezt a parancsot a terminálablakban a webfrontend nevű kódolási **gyökérmappából**:
@@ -226,7 +226,7 @@ Az `up` parancshoz hasonlóan a kód szinkronizálva lesz a Dev Spaces-térbe, t
 
 ![](media/common/vscode-status-bar-url.png)
 
-Állítson be egy töréspontot egy kiszolgálóoldali kódfájlban, például a `Controllers/HomeController.cs` forrásfájl `About()` függvényében. Az oldal a böngészőben való frissítésével a töréspont érintve lesz.
+Állítson be egy töréspontot egy kiszolgálóoldali kódfájlban, például a `About()` forrásfájl `Controllers/HomeController.cs` függvényében. Az oldal a böngészőben való frissítésével a töréspont érintve lesz.
 
 Ugyanúgy teljes körű hozzáférése van a hibakeresési információkhoz, mint ha helyileg futna a kód (pl. hívási verem, helyi változók, kivételek adatai stb.).
 
@@ -249,7 +249,7 @@ Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üz
 
 Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldalra. Az egyedi üzenetnek meg kell jelennie a felhasználói felületen.
 
-**Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
+**Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést!** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
 ## <a name="next-steps"></a>Következő lépések
 

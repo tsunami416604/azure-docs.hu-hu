@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264831"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539450"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
@@ -41,6 +41,9 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     6. Kattintson a **Mentés** gombra.
 
         ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > Megtekintheti a tesztkörnyezet helyét, ha a labor-fiók úgy lett konfigurálva, hogy a labor [-létrehozó engedélyezze a labor helyének](allow-lab-creator-pick-lab-location.md) kiválasztását. 
 4. A **virtuális gép hitelesítő adatai** lapon a tesztkörnyezet összes virtuális gépe alapértelmezett hitelesítő adatait adhatja meg.
     1. Adja meg a **felhasználónevet** a tesztkörnyezet összes virtuális gépéhez.
     2. Adja meg a felhasználó **jelszavát**. 
@@ -52,12 +55,14 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
         A tanár dönthet úgy, hogy ugyanazt a jelszót használja a laborban lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux-lemezkép esetében engedélyezve van. Ha az **Ubuntu** virtuális gépet választja, akkor ez a beállítás le van tiltva, így a tanulóknak először be kell állítania egy jelszót, amikor első alkalommal jelentkeznek be.  
 
         ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.    
     4. Ezután válassza a **tovább** lehetőséget a **virtuális gép hitelesítő adatai** lapon. 
-5. A **labor-házirendek** lapon adja meg, hogy az egyes felhasználók számára hány óra legyen kiválasztva (az**egyes felhasználókra vonatkozó kvóta**) a tesztkörnyezet ütemezett idején kívül, majd válassza a **Befejezés**gombot. 
+5. A **labor-házirendek** oldalon hajtsa végre a következő lépéseket:
+    1. Adja meg az egyes felhasználók számára kiosztott órák számát (az**egyes felhasználók kvótáját**) a laborhoz tartozó ütemezett időpontban kívül. 
+    2. A **virtuális gépek automatikus leállításához** válassza ki, hogy szeretné-e automatikusan leállítani a virtuális gépet a felhasználó leválasztásakor. Azt is megadhatja, hogy a virtuális gép mennyi ideig várjon, amíg a felhasználó újra csatlakozik, mielőtt automatikusan leáll. További információ: a [virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor](how-to-enable-shutdown-disconnect.md).
+    3. Ezután válassza a **Befejezés**lehetőséget. 
 
-    ![Kvóta az egyes felhasználók számára](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Kvóta az egyes felhasználók számára](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Az alábbi képernyő jelenik meg, amely a sablon virtuális gépek létrehozásának állapotát jeleníti meg. A sablon létrehozása a tesztkörnyezetben akár 20 percig is eltarthat. 
 
     ![A sablon virtuális gép létrehozási állapota](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -90,7 +95,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     2. Ha az összes virtuális gépet egyszerre szeretné elindítani, válassza az **összes elindítása** lehetőséget az eszköztáron. 
     3. Egy adott virtuális gép indításához válassza a lefelé mutató nyilat az **állapotban**, majd kattintson a **Start**gombra. Egy virtuális gépet úgy is elindíthat, ha kijelöl egy virtuális gépet az első oszlopban, majd kiválasztja az **Indítás** lehetőséget az eszköztáron.                
 
-### <a name="vm-sizes"></a>Virtuálisgép-méretek  
+### <a name="vm-sizes"></a>A virtuális gépek mérete  
 
 | Méret | Processzormagok | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
@@ -107,7 +112,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
 ## <a name="view-all-classroom-labs"></a>Az összes tantermi labor megtekintése
 1. Navigáljon [Azure Lab Services portálra](https://labs.azure.com).
-2. Válassza **a bejelentkezés**lehetőséget. Válasszon ki vagy adjon meg egy olyan **felhasználói azonosítót** , amely tagja a **labor Creator** szerepkörnek a labor-fiókban, majd írja be a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
+2. Válassza a **Bejelentkezés** lehetőséget. Válasszon ki vagy adjon meg egy olyan **felhasználói azonosítót** , amely tagja a **labor Creator** szerepkörnek a labor-fiókban, majd írja be a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Ellenőrizze, hogy megjelenik-e az összes labor a kiválasztott labor-fiókban. A labor csempén láthatja a laborban található virtuális gépek számát és az egyes felhasználók kvótáját (az ütemezett időponton kívül).
 
     ![Minden labor](../media/how-to-manage-classroom-labs/all-labs.png)

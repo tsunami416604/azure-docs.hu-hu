@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932595"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544232"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
@@ -31,13 +31,33 @@ A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásb
 * Az Azure CLI 2.0.77-es vagy újabb verziója, valamint az Azure CLI-bővítmény előzetes verziója 0.4.18
 
 ## <a name="currently-supported-regions"></a>Jelenleg támogatott régiók
-* USA nyugati régiója
-* USA 2. nyugati régiója
-* USA 2. keleti régiója
+
+* Kelet-Ausztrália
+* Délkelet-Ausztrália
+* Dél-Brazília
 * Közép-Kanada
+* Kelet-Kanada
+* Cenral minket
+* Kelet-Ázsia
+* USA keleti régiója
+* USA 2. keleti régiója
+* USA 2. keleti – EUAP
+* Közép-Franciaország
+* Észak-Németország
+* Kelet-Japán
+* Nyugat-Japán
+* Dél-Korea középső régiója
+* Dél-Korea déli régiója
+* USA északi középső régiója
 * Észak-Európa
+* Észak-Európa
+* USA déli középső régiója
+* Az Egyesült Királyság déli régiója
 * Nyugat-Európa
-* Ausztrália keleti régiója
+* USA nyugati régiója
+* USA nyugati régiója, 2.
+* USA 2. keleti régiója
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Az Azure CLI legújabb előzetes verziójának telepítése
 

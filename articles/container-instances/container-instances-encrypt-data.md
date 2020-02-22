@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934302"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544317"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -89,7 +89,7 @@ A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáféré
 > A központi telepítési adatai ügyfél által felügyelt kulccsal történő titkosítása a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg ki van vezetve. Adja meg ezt az API-verziót a telepítési sablonban. Ha problémája merül fel, forduljon az Azure ügyfélszolgálatához.
 
 A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* A `resources`alatt állítsa be a `apiVersion` a `2012-12-01`re.
+* A `resources`alatt állítsa be a `apiVersion` a `2019-12-01`re.
 * A telepítési sablon tároló csoport tulajdonságai szakaszában adjon hozzá egy `encryptionProperties`, amely a következő értékeket tartalmazza:
   * `vaultBaseUrl`: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
   * `keyName`: a korábban generált kulcs neve

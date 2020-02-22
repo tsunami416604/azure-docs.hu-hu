@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776481"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538464"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
@@ -79,6 +79,7 @@ Hozza létre a `.github/workflow/main.yml` fájlt az adattárban:
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ Az az `run` parancs az Azure CLI legújabb verzióját fogja használni. A vált
 Hozza létre a. GitHub/munkafolyamat/Main. YML fájlt az adattárban:
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ Egy másik lehetőség, hogy a [Maven beépülő modult](https://docs.microsoft.
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:

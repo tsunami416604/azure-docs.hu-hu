@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node. js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: de60a45126539cdd39b951eeb503fc349004797a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: cc59d5693740d1d2d6550af3aa61fa9b66420a39
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121348"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539416"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio Code és a Node. js az Azure dev Spaces szolgáltatással
 
@@ -98,7 +98,7 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
 1. Futtassa ezt a parancsot (győződjön meg róla, hogy a **webfrontend** a jelenlegi mappája):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:

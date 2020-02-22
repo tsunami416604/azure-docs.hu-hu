@@ -3,16 +3,16 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972816"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544130"
 ---
-# <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
+# <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
 
-Az Azure Policyban minden egyes szabályzatdefiníció egyetlen hatással bír. Ez a hatás határozza meg, hogy mi történik, ha a házirend-szabály kiértékelése megfelel a feltételeknek. A hatások másképp viselkednek, ha egy új erőforráshoz, egy frissített erőforráshoz vagy egy meglévő erőforráshoz tartoznak.
+Minden egyes szabályzatdefiníciót az Azure Policy egy egyetlen hatása. A hatás határozza meg, mi történik, ha a szabály kiértékelése történik az egyeztetéshez. A hatás eltérően viselkednek, ha azok egy új erőforrást, egy frissíteni az erőforrás vagy egy meglévő erőforrást.
 
 Ezek a hatások jelenleg a szabályzatok definíciójában támogatottak:
 
@@ -24,15 +24,15 @@ Ezek a hatások jelenleg a szabályzatok definíciójában támogatottak:
 - [Letiltva](#disabled)
 - [EnforceOPAConstraint](#enforceopaconstraint) (előzetes verzió)
 - [EnforceRegoPolicy](#enforceregopolicy) (előzetes verzió)
-- [Módosítás](#modify)
+- [Módosítása](#modify)
 
 ## <a name="order-of-evaluation"></a>Kiértékelési sorrend
 
-Az Azure Resource Manageren keresztül küldött, az erőforrások létrehozására és frissítésére vonatkozó kérelmeket először az Azure Policy értékeli ki. Azure Policy létrehoz egy listát az erőforrásra vonatkozó összes hozzárendelésről, majd kiértékeli az erőforrást az egyes definíciók alapján. Azure Policy dolgozza fel a hatásokat, mielőtt átadná a kérést a megfelelő erőforrás-szolgáltatónak. Ez megakadályozza az erőforrás-szolgáltató általi szükségtelen feldolgozást, ha az erőforrás nem teljesíti a Azure Policy tervezett irányítási vezérlőit.
+Az erőforrásoknak a Azure Resource Manager alapján történő létrehozására vagy frissítésére vonatkozó kérelmeket először Azure Policy kiértékeli. Azure Policy létrehoz egy listát az erőforrásra vonatkozó összes hozzárendelésről, majd kiértékeli az erőforrást az egyes definíciók alapján. Azure Policy dolgozza fel a hatásokat, mielőtt átadná a kérést a megfelelő erőforrás-szolgáltatónak. Ez megakadályozza az erőforrás-szolgáltató általi szükségtelen feldolgozást, ha az erőforrás nem teljesíti a Azure Policy tervezett irányítási vezérlőit.
 
 - A **Letiltva** érték megadásával megállapíthatja, hogy ki kell-e értékelni a házirend-szabályt.
 - Ezután kiértékeli a **hozzáfűzést** és a **módosítást** . Mivel bármelyik megváltoztathatja a kérést, a módosítás miatt előfordulhat, hogy egy naplózási vagy megtagadási hatás megakadályozza az indítást.
-- A **Megtagadás** ekkor kiértékelésre kerül. A Megtagadás kiértékelésével a nem kívánt erőforrások kettős naplózása megakadályozható.
+- A **Megtagadás** ekkor kiértékelésre kerül. Kiértékelésével megtagadása naplózás, mielőtt egy nemkívánatos erőforrás dupla naplózása a rendszer letiltja.
 - A rendszer ezt követően kiértékeli a **naplózást** , mielőtt az erőforrás-szolgáltatóra felveszi a kérelmet.
 
 Miután az erőforrás-szolgáltató egy sikerességi kódot ad vissza, a **AuditIfNotExists** és a **DeployIfNotExists** kiértékelésével megállapíthatja, hogy szükséges-e további megfelelőségi naplózás vagy művelet.
@@ -41,25 +41,25 @@ Jelenleg nincs kiértékelési sorrend a **EnforceOPAConstraint** vagy a **Enfor
 
 ## <a name="disabled"></a>Letiltva
 
-Ez a hatás akkor hasznos, ha tesztelési helyzetekben vagy ha a házirend-definícióban a hatás szerepel. Ez a rugalmasság lehetővé teszi egyetlen hozzárendelés letiltását ahelyett, hogy letiltja a szabályzat összes hozzárendelését.
+Ez a hatás tesztelési helyzetek, vagy ha a szabályzatdefiníció rendelkezik paraméterezni a hatás hasznos. Ezt a rugalmasságot lehetővé teszi egy egyetlen hozzárendelési helyett letiltása a szabályzat-hozzárendelések mindegyikét letiltása.
 
 A letiltott effektus alternatívájaként a szabályzat-hozzárendelés **enforcementMode** van beállítva.
 Ha a enforcementMode _le van tiltva_, a rendszer továbbra is kiértékeli az erőforrásokat. A naplózás, például a tevékenységek naplói, és a házirend hatása nem történik meg. További információ: [szabályzat-hozzárendelés – kényszerítési mód](./assignment-structure.md#enforcement-mode).
 
 ## <a name="append"></a>Hozzáfűzés
 
-A Hozzáfűzés használatával további mezőket adhat hozzá a kért erőforráshoz a létrehozás vagy a frissítés során. Gyakori példa egy tárolási erőforrás engedélyezett IP-címeinek megadására.
+Hozzáfűzés további mezőket hozzáadni a kért erőforrás létrehozása vagy módosítása során használatos. Gyakori példa egy tárolási erőforrás engedélyezett IP-címeinek megadására.
 
 > [!IMPORTANT]
 > A Hozzáfűzés a nem címkével ellátott tulajdonságokkal való használatra készült. Míg a hozzáfűzéssel hozzáadhat címkéket egy erőforráshoz egy létrehozási vagy frissítési kérelem során, azt javasoljuk, hogy használja inkább a címkék [módosítási](#modify) effektusát.
 
-### <a name="append-evaluation"></a>Kiértékelés hozzáfűzése
+### <a name="append-evaluation"></a>Értékelés hozzáfűzése
 
-A kiértékelések hozzáfűzésével a rendszer az erőforrás létrehozásakor vagy frissítésekor egy erőforrás-szolgáltató dolgozza fel a kérést. A Hozzáfűzés mezők hozzáadása az erőforráshoz, **Ha a házirend-szabály feltételei** teljesülnek. Ha a hozzáfűzési effektus felülbírálja az eredeti kérelemben szereplő értéket eltérő értékkel, akkor megtagadási hatásként viselkedik, és elutasítja a kérelmet. Új érték meglévő tömbhöz való hozzáfűzéséhez használja az alias **[\*]** verzióját.
+Hozzáfűzés kiértékeli, mielőtt a kérést egy erőforrás-szolgáltató feldolgozza a létrehozása vagy egy adott erőforrás frissítése során. A Hozzáfűzés mezők hozzáadása az erőforráshoz, **Ha a házirend-szabály feltételei** teljesülnek. Ha Hozzáfűzés hatása lenne bírálja felül az eredeti kérelmet egy másik érték egy értéket, egy megtagadási hatást funkcionál, és elutasítja a kérelmet. Új érték meglévő tömbhöz való hozzáfűzéséhez használja az alias **[\*]** verzióját.
 
-Ha a hozzáfűzési effektust használó házirend-definíció egy értékelési ciklus részeként fut, akkor nem módosítja a már létező erőforrásokat. Ehelyett olyan erőforrást jelöl, amely megfelel az **IF** feltétel nem megfelelőnek.
+Ha egy szabályzatdefiníciót a Hozzáfűzés hatással egy kiértékelési ciklusa részeként fut, azt nem módosítások már meglévő erőforrásokat. Ehelyett olyan erőforrást jelöl, amely megfelel az **IF** feltétel nem megfelelőnek.
 
-### <a name="append-properties"></a>Hozzáfűzési tulajdonságok
+### <a name="append-properties"></a>Tulajdonságok hozzáfűzése
 
 A hozzáfűzési effektushoz csak a **részletek** tömbje szükséges. A **részletek** egy tömb, amely egyetlen **mező/érték** párokat vagy többszöröseket is igénybe vehet. Tekintse meg az elfogadható mezők listáját a [definíciós struktúrában](definition-structure.md#fields) .
 
@@ -113,11 +113,11 @@ Ha a módosítási hatást használó házirend-definíció egy értékelési ci
 A Modify Effect **details** tulajdonsága minden olyan altulajdonsággal rendelkezik, amely meghatározza a szervizeléshez szükséges engedélyeket, valamint a címkék hozzáadásához, frissítéséhez vagy eltávolításához használt **műveleteket** .
 
 - **roleDefinitionIds** [kötelező]
-  - Ennek a tulajdonságnak tartalmaznia kell egy olyan karakterlánc-tömböt, amely megfelel az előfizetés által elérhető szerepköralapú hozzáférés-vezérlési szerepkör-AZONOSÍTÓnak. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
+  - Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepköralapú hozzáférés-vezérlési szerepkör azonosítója elérhető-e az előfizetés-tartalmaznia kell. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
   - A definiált szerepkörnek tartalmaznia kell a [közreműködő](../../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz megadott összes műveletet.
 - **műveletek** [kötelező]
   - Az összes címkéző művelet tömbje, amely a megfelelő erőforrásokon fejeződik be.
-  - Tulajdonságok:
+  - Tulajdonságok
     - **művelet** [kötelező]
       - Meghatározza, hogy milyen műveletet kell végrehajtani a megfelelő erőforráson. A lehetőségek a következők: _addOrReplace_, _Hozzáadás_, _Eltávolítás_. A _Hozzáadás_ a [hozzáfűzési](#append) effektushoz hasonló.
     - **mező** [kötelező]
@@ -212,21 +212,21 @@ A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 
 ## <a name="deny"></a>Megtagadás
 
-A Megtagadás megakadályozza egy olyan erőforrás-kérelem használatát, amely nem felel meg a meghatározott szabványoknak egy házirend-definíción keresztül, és a kérést nem teljesíti.
+Megtagadási szolgál, hogy egy erőforrás-kérelmet, amely nem felel meg a szabályzat-definíció segítségével meghatározott előírásoknak, és a kérelem sikertelen.
 
-### <a name="deny-evaluation"></a>Kiértékelés megtagadása
+### <a name="deny-evaluation"></a>Értékelés megtagadása
 
-Egyeztetett erőforrás létrehozásakor vagy frissítésekor a Megtagadás megakadályozza a kérést az erőforrás-szolgáltatónak való küldés előtt. A kérést a rendszer `403 (Forbidden)`ként adja vissza. A portálon a tiltott megtekinthető állapotként az üzemelő példányon, amelyet a szabályzat-hozzárendelés megakadályozott.
+Ha megtagadja a létrehozása vagy frissítése egy egyező erőforrás, megakadályozza, hogy az a kérelem erőforrás-szolgáltatónál elküldése előtt. A kérést a rendszer `403 (Forbidden)`ként adja vissza. A portálon a tiltott állapot, amely szerint a szabályzat-hozzárendelés nem sikerült elindítani az üzemelő példányon, tekinthet meg.
 
-A meglévő erőforrások kiértékelése során a megtagadási szabályzat definíciójának megfelelő erőforrások nem megfelelőként vannak megjelölve.
+Meglévő erőforrások értékelése során az erőforrások, amelyek megfelelnek egy megtagadási szabályzatdefiníciót nem megfelelőként vannak megjelölve.
 
-### <a name="deny-properties"></a>Megtagadási tulajdonságok
+### <a name="deny-properties"></a>Megtagadási tulajdonságai
 
 A megtagadási effektus nem rendelkezik további tulajdonságokkal a házirend-definíció **feltételében** való használathoz.
 
-### <a name="deny-example"></a>Megtagadási példa
+### <a name="deny-example"></a>Példa megtagadása
 
-Példa: a Megtagadás effektus használata.
+Példa: A Megtagadás hatás használatával.
 
 ```json
 "then": {
@@ -236,19 +236,19 @@ Példa: a Megtagadás effektus használata.
 
 ## <a name="audit"></a>Naplózás
 
-A naplózás egy figyelmeztetési esemény létrehozására szolgál a tevékenység naplójában a nem megfelelő erőforrások kiértékelése során, de nem állítja le a kérést.
+Naplózási figyelmeztetési esemény létrehozása a tevékenységnaplóban a nem megfelelő erőforrások kiértékelésekor szolgál, de azt nem állítsa le a kérést.
 
-### <a name="audit-evaluation"></a>Naplózás kiértékelése
+### <a name="audit-evaluation"></a>Értékelés naplózása
 
-Az erőforrás létrehozása vagy frissítése során az Azure Policy által ellenőrzött legutóbb végrehajtott ellenőrzés. Azure Policy ezután elküldi az erőforrást az erőforrás-szolgáltatónak. A naplózás ugyanúgy működik, mint egy erőforrás-kérelem és egy értékelési ciklus. Azure Policy egy `Microsoft.Authorization/policies/audit/action` műveletet hoz létre a tevékenység naplójába, és nem megfelelőként jelöli meg az erőforrást.
+Az erőforrás létrehozása vagy frissítése során az Azure Policy által ellenőrzött legutóbb végrehajtott ellenőrzés. Azure Policy ezután elküldi az erőforrást az erőforrás-szolgáltatónak. Naplózási egy erőforrás-kérés és a egy kiértékelési ciklusa ugyanúgy működik. Azure Policy egy `Microsoft.Authorization/policies/audit/action` műveletet hoz létre a tevékenység naplójába, és nem megfelelőként jelöli meg az erőforrást.
 
 ### <a name="audit-properties"></a>Naplózási tulajdonságok
 
 A naplózási effektus nem rendelkezik további tulajdonságokkal a házirend-definíció **feltételében** való használathoz.
 
-### <a name="audit-example"></a>Példa naplózásra
+### <a name="audit-example"></a>Naplózási példa
 
-Példa: a naplózási effektus használata.
+Példa: A naplózási hatás használatával.
 
 ```json
 "then": {
@@ -262,25 +262,25 @@ A AuditIfNotExists lehetővé teszi a naplózást olyan erőforrásokon, amelyek
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists kiértékelése
 
-A AuditIfNotExists azt követően fut, hogy egy erőforrás-szolgáltató kezelt egy erőforrás-létrehozási vagy frissítési kérelmet, és sikeres állapotkódot adott vissza. A naplózás akkor fordul elő, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket. Azure Policy egy `Microsoft.Authorization/policies/audit/action` műveletet hoz létre a tevékenység naplójába, ugyanúgy, mint a naplózási effektus. Az aktiváláskor az az erőforrás, amely megfelel az **IF** feltételnek, nem megfelelőként megjelölt erőforrás.
+AuditIfNotExists futtatása után egy erőforrás-szolgáltató rendelkezik kezelt létrehozásának vagy frissítésének erőforrás kérelmet, és sikeres állapotkódot adott vissza. A naplózás akkor fordul elő, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket. Azure Policy egy `Microsoft.Authorization/policies/audit/action` műveletet hoz létre a tevékenység naplójába, ugyanúgy, mint a naplózási effektus. Az aktiváláskor az az erőforrás, amely megfelel az **IF** feltételnek, nem megfelelőként megjelölt erőforrás.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists tulajdonságai
 
 A AuditIfNotExists-effektusok **részletek** tulajdonsága az összes olyan altulajdonsággal rendelkezik, amely meghatározza a kapcsolódó erőforrásokat.
 
 - **Típus** [kötelező]
-  - Meghatározza a kapcsolódó erőforrás típusát.
+  - Határozza meg a megfelelő kapcsolódó erőforrás.
   - Ha a **details. Type** egy erőforrástípus az **IF** feltétel erőforrása alatt, a szabályzat a kiértékelt erőforrás hatókörén belül lekérdezi az ilyen **típusú** erőforrásokat. Ellenkező esetben a házirend-lekérdezések a kiértékelt erőforrással megegyező erőforráscsoport alatt vannak.
 - **Név** (nem kötelező)
-  - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
+  - A megfelelő erőforrás pontos nevét adja meg, és a egy adott erőforrás helyett a megadott típusú összes erőforrást beolvasni a szabályzat okoz.
   - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]`nak kell lennie. A [naplózási](#audit) hatást azonban figyelembe kell venni.
 - **ResourceGroupName** (nem kötelező)
-  - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
+  - Lehetővé teszi, hogy a rendszer a kapcsolódó erőforrás egy másik erőforráscsoportban található származnak.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
   - Az alapértelmezett érték a **IF** Condition erőforrás erőforráscsoport.
 - **ExistenceScope** (nem kötelező)
   - Az engedélyezett értékek az _előfizetések_ és a _ResourceGroup_.
-  - Azt a hatókört állítja be, ahová a kapcsolódó erőforrást be kell olvasni.
+  - Beállítja a hatókört, hova felel meg a kapcsolódó erőforrást beolvasni.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
   - A _ResourceGroup_esetében korlátozni kellene az **IF** feltétel erőforrásának erőforráscsoport vagy a **ResourceGroupName**megadott erőforráscsoport esetében.
   - Az _előfizetés_a kapcsolódó erőforrás teljes előfizetését kérdezi le.
@@ -288,13 +288,13 @@ A AuditIfNotExists-effektusok **részletek** tulajdonsága az összes olyan altu
 - **ExistenceCondition** (nem kötelező)
   - Ha nincs megadva, az összes kapcsolódó erőforrás **megfelel a** hatásnak, és nem indítja el a naplózást.
   - Ugyanazt a nyelvet használja, mint az **IF** feltétel házirend-szabálya, de a rendszer minden kapcsolódó erőforrásra külön kiértékeli.
-  - Ha bármely egyező kapcsolódó erőforrás igaz értéket ad vissza, a hatás teljesül, és nem indítja el a naplózást.
+  - Ha minden egyező kapcsolódó erőforrás igaz értéket ad vissza, a hatás teljesült, és nem aktiválja a naplózási.
   - A [Field ()] paranccsal az egyenértékűséget az **IF** feltétel értékeivel is megtekintheti.
   - Például arra használható, hogy ellenőrizze, hogy a szülő erőforrás ( **Ha** a feltétel) ugyanabban az erőforrásban van-e, mint a megfelelő kapcsolódó erőforrás.
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists példa
 
-Példa: kiértékeli a Virtual Machines annak megállapítására, hogy a kártevők bővítménye létezik-e, majd naplózza a hiányzó állapotot.
+Példa: Kiértékeli a virtuális gépek határozza meg, ha a kártevőirtó bővítmény létezik, akkor naplózza, ha valóban hiányzik.
 
 ```json
 {
@@ -331,28 +331,29 @@ A AuditIfNotExists hasonlóan a DeployIfNotExists házirend-definíciója is vé
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists kiértékelése
 
-A DeployIfNotExists azt követően fut, hogy egy erőforrás-szolgáltató kezelt egy erőforrás-létrehozási vagy frissítési kérelmet, és sikeres állapotkódot adott vissza. A sablonok központi telepítése akkor történik, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket.
+Az DeployIfNotExists körülbelül 15 perccel azután fut le, hogy egy erőforrás-szolgáltató kezelte az erőforrás-létrehozási vagy-frissítési kérelmet, és sikeres állapotkódot adott vissza. A sablonok központi telepítése akkor történik, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket.
+A központi telepítés időtartama a sablonban található erőforrások bonyolultságával függ.
 
-A kiértékelési ciklusokban az erőforrásoknak megfelelő DeployIfNotExists-effektussal rendelkező házirend-definíciók nem megfelelőként vannak megjelölve, de az adott erőforráson nem végeznek műveleteket.
+Egy értékelési ciklus során a szabályzatdefiníciók egy DeployIfNotExists hatást, amelyek megfelelnek az erőforrások nem megfelelőként lesznek megjelölve, de nem tesz az erőforráson.
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists tulajdonságai
 
 A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altulajdonsággal rendelkezik, amely meghatározza a kapcsolódó erőforrásokat, valamint a sablon központi telepítését.
 
 - **Típus** [kötelező]
-  - Meghatározza a kapcsolódó erőforrás típusát.
+  - Határozza meg a megfelelő kapcsolódó erőforrás.
   - A parancs elindítja az erőforrás lekérését az **IF** feltétel erőforrása alatt, majd az adott erőforráscsoporthoz tartozó, az **IF** feltétel erőforrással rendelkező lekérdezéseket.
 - **Név** (nem kötelező)
-  - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
+  - A megfelelő erőforrás pontos nevét adja meg, és a egy adott erőforrás helyett a megadott típusú összes erőforrást beolvasni a szabályzat okoz.
   - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]`nak kell lennie.
 - **ResourceGroupName** (nem kötelező)
-  - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
+  - Lehetővé teszi, hogy a rendszer a kapcsolódó erőforrás egy másik erőforráscsoportban található származnak.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
   - Az alapértelmezett érték a **IF** Condition erőforrás erőforráscsoport.
-  - Ha egy sablon központi telepítését hajtja végre, a rendszer az adott érték erőforráscsoporthoz helyezi üzembe.
+  - Ha egy sablon telepítésének, ezt az értéket az erőforráscsoportban üzembe helyezett.
 - **ExistenceScope** (nem kötelező)
   - Az engedélyezett értékek az _előfizetések_ és a _ResourceGroup_.
-  - Azt a hatókört állítja be, ahová a kapcsolódó erőforrást be kell olvasni.
+  - Beállítja a hatókört, hova felel meg a kapcsolódó erőforrást beolvasni.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
   - A _ResourceGroup_esetében korlátozni kellene az **IF** feltétel erőforrásának erőforráscsoport vagy a **ResourceGroupName**megadott erőforráscsoport esetében.
   - Az _előfizetés_a kapcsolódó erőforrás teljes előfizetését kérdezi le.
@@ -360,11 +361,11 @@ A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altul
 - **ExistenceCondition** (nem kötelező)
   - Ha nincs megadva, az összes kapcsolódó erőforrás **megfelel a** hatásnak, és nem indítja el a telepítést.
   - Ugyanazt a nyelvet használja, mint az **IF** feltétel házirend-szabálya, de a rendszer minden kapcsolódó erőforrásra külön kiértékeli.
-  - Ha bármely egyező kapcsolódó erőforrás igaz értéket ad vissza, a hatás teljesül, és nem indítja el a telepítést.
+  - Minden egyező kapcsolódó erőforrás igaz értéket ad vissza, ha a hatás teljesült, és nem aktiválja a központi telepítést.
   - A [Field ()] paranccsal az egyenértékűséget az **IF** feltétel értékeivel is megtekintheti.
   - Például arra használható, hogy ellenőrizze, hogy a szülő erőforrás ( **Ha** a feltétel) ugyanabban az erőforrásban van-e, mint a megfelelő kapcsolódó erőforrás.
 - **roleDefinitionIds** [kötelező]
-  - Ennek a tulajdonságnak tartalmaznia kell egy olyan karakterlánc-tömböt, amely megfelel az előfizetés által elérhető szerepköralapú hozzáférés-vezérlési szerepkör-AZONOSÍTÓnak. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
+  - Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepköralapú hozzáférés-vezérlési szerepkör azonosítója elérhető-e az előfizetés-tartalmaznia kell. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (nem kötelező)
   - Az engedélyezett értékek az _előfizetések_ és a _ResourceGroup_.
   - Az aktiválni kívánt központi telepítés típusának beállítása. Az _előfizetés_ az [előfizetési szinten](../../../azure-resource-manager/templates/deploy-to-subscription.md)üzemelő telepítést jelzi, a _ResourceGroup_ pedig egy erőforráscsoporthoz történő központi telepítést jelez.
@@ -378,7 +379,7 @@ A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altul
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists példa
 
-Példa: kiértékeli SQL Server adatbázisokat annak megállapítására, hogy engedélyezve van-e a transparentDataEncryption. Ha nem, akkor a rendszer végrehajtja az engedélyezéshez szükséges központi telepítést.
+Példa: SQL Server-adatbázisok, hogy ha engedélyezve van-e a transparentDataEncryption értékeli ki. Ha nem, akkor a rendszer végrehajtja az engedélyezéshez szükséges központi telepítést.
 
 ```json
 "if": {
@@ -537,34 +538,34 @@ Példa: forgalomirányító v2 belépésvezérlési szabály, amely csak a megad
 }
 ```
 
-## <a name="layering-policies"></a>Rétegbeli házirendek
+## <a name="layering-policies"></a>Rétegezett házirendek
 
-Egy erőforrásra több hozzárendelés is hatással lehet. Ezek a hozzárendelések lehetnek ugyanazon a hatókörön vagy eltérő hatókörökben. Ezen hozzárendelések mindegyike valószínűleg más effektust is meghatároz. Az egyes szabályzatok feltételeit és hatásait egymástól függetlenül ki kell értékelni. Példa:
+Több hozzárendelések hatással lehet egy erőforrást. Ezeket a hozzárendeléseket lehet ugyanabban a hatókörben vagy egy másik hatókört. Ezeket a hozzárendeléseket mindegyike valószínűleg is definiálva másik hatást. Egymástól függetlenül értékeli a feltételt és minden szabályzat érvénybe. Például:
 
-- 1\. szabályzat
-  - Erőforrás helyének korlátozása a következőre: "westus"
-  - Az A előfizetéshez rendelve
-  - Megtagadási hatás
-- 2\. szabályzat
-  - Erőforrás helyének korlátozása a következőre: "eastus"
-  - Az A előfizetéshez tartozó B erőforráscsoport számára hozzárendelve
-  - Naplózási hatás
+- 1 házirend
+  - Korlátozza a 'westus' erőforrás helye
+  - Egy előfizetéshez hozzárendelt
+  - Hatás megtagadása
+- Szabályzat 2
+  - Korlátozza az "eastus" erőforrás helye
+  - Előfizetés A B erőforráscsoportban rendelve
+  - Naplózási
   
-Ez a beállítás a következő eredményt eredményezheti:
+A telepítő a következő eredmény eredményez:
 
-- A (z) "eastus" B erőforráscsoporthoz tartozó összes erőforrás megfelel a 2. házirendnek, és nem felel meg az 1. házirendnek
-- A B erőforráscsoport egyik erőforrása, amely nem a "eastus", nem felel meg a 2. házirendnek, és nem felel meg az 1. házirendnek, ha nem a "westus"
-- A (z) "westus" nem a következő előfizetésben lévő új erőforrást a szabályzat 1.
-- A (z) "westus" nevű és "B" erőforráscsoport összes új erőforrása létrehozva és nem megfelelő a (z) 2. házirendben
+- "Eastus" B erőforráscsoportban már található valamilyen erőforrás a szabályzat 2 megfelelő és nem megfelelő házirendhez 1
+- Minden erőforrás már nem az "eastus" B erőforráscsoport a nem megfelelő szabályzat 2 és a nem megfelelő, 1, ha nem található 'westus' házirend
+- Bármilyen új erőforrást az előfizetésben A nem a 'westus' 1 házirend által megtagadva
+- Bármilyen új erőforrást az előfizetésben A és B erőforráscsoport 'westus' létrehozva, és nem kompatibilis a szabályzat 2
 
-Ha az 1. és a 2. házirend mindkét esetben megtagadta a Megtagadás hatását, a helyzet a következőre változik:
+Ha a szabályzat 1 és 2 szabályzat is hatással volt a Megtagadás, a helyzet változik:
 
-- A B erőforráscsoport egyik erőforrása, amely nem a "eastus", nem felel meg a 2. házirendnek
-- A B erőforráscsoport egyik erőforrása, amely nem a "westus", nem felel meg az 1. szabályzatnak
-- A (z) "westus" nem a következő előfizetésben lévő új erőforrást a szabályzat 1.
-- A (z) "A" előfizetéshez tartozó B erőforráscsoport új erőforrásai megtagadva
+- Minden erőforrás már nem az "eastus" B erőforráscsoport a nem megfelelő szabályzat 2
+- Minden erőforrás már nem található 'westus' B erőforráscsoport a nem megfelelő házirendhez 1
+- Bármilyen új erőforrást az előfizetésben A nem a 'westus' 1 házirend által megtagadva
+- Bármilyen új erőforrást erőforráscsoportban B előfizetés, A rendszer megtagadja.
 
-Minden hozzárendelés külön kiértékelésre kerül. Ilyen esetben nincs lehetőség arra, hogy egy erőforrás a hatókörben lévő eltérések miatt nem csúszik meg. A rétegbeli házirendek vagy a szabályzatok átfedésének nettó eredménye az **összesítő legszigorúbbnak**minősül. Ha például az 1. és a 2. szabályzat is megtagadási hatást gyakorolt, az átfedésben lévő és ütköző házirendek letiltják az erőforrásokat. Ha továbbra is szüksége van az erőforrás létrehozására a célként megadott hatókörben, tekintse át az egyes hozzárendelések kizárásait, hogy a megfelelő házirendek a megfelelő hatókörökre legyenek hatással.
+Minden hozzárendelés egyenként értékeli ki. Mint ilyen nem erőforrás lehetőséget bérjegyzékes eseményáramlási kimaradást keresztül, a hatókör közötti különbségek. A rétegbeli házirendek vagy a szabályzatok átfedésének nettó eredménye az **összesítő legszigorúbbnak**minősül. Például ha mindkét házirend 1. és 2 hatást megtagadás, erőforrás blokkolná-e az átfedésben lévő és az ütköző szabályzatok. Ha továbbra is kell lennie az erőforrás létrehozott célhatóköre, tekintse át a kivételeket a megfelelő házirendek ellenőrzéséhez minden egyes hozzárendelés hatással vannak a megfelelő hatókörök.
 
 ## <a name="next-steps"></a>Következő lépések
 

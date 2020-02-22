@@ -1,29 +1,26 @@
 ---
 title: SharePoint-fájlok – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843292"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544164"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
-Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa.
+A Tudásbázisban biztonságos felhőalapú SharePoint-adatforrásokat adhat hozzá, hogy a tudásbázist a Active Directoryekkel biztonságossá tehető kérdésekkel és válaszokkal gazdagítsa.
 
 Amikor biztonságos SharePoint-dokumentumot ad hozzá a tudásbázishoz, a QnA Maker Managernek Active Directory engedélyt kell kérnie QnA Maker. Ha ezt az engedélyt a Active Directory managerből QnA Maker a SharePointhoz való hozzáféréshez, azt nem kell újból megadni. A Tudásbázis minden további dokumentuma nem igényel hitelesítést, ha ugyanazon a SharePoint-erőforráson van.
 
 Ha a QnA Maker Tudásbázis-kezelő nem a Active Directory Manager, akkor a folyamat befejezéséhez kommunikálni kell a Active Directory kezelőjével.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A QnA Maker az engedélyeket Microsoft Graph használja. Ha a SharePoint helyszíni, nem tud kinyerni a SharePointból, mert Microsoft Graph nem fogja tudni meghatározni az engedélyeket.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok hozzáadása a tudásbázishoz
 

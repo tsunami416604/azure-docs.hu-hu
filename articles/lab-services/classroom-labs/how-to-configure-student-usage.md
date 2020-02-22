@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169213"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539181"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználókat a laborhoz, hogyan regisztrálhatja őket a laborban, hogy hány órát használhat a virtuális gép, és így tovább. 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználókat a laborhoz, hogyan
     ![Felhasználói e-mail-címek hozzáadása](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Kattintson a **Mentés** gombra. A listában megjelenik a felhasználók e-mail-címe és állapota (regisztrált vagy nem). 
 
-    ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > A listában szereplő felhasználók nevét a laborba való regisztráció után fogja látni. A listában megjelenő név a Azure Active Directory felhasználójának első és utolsó neveivel jön létre. 
@@ -60,7 +60,7 @@ Felhasználókat úgy is hozzáadhat, ha feltölt egy CSV-fájlt a felhasználó
 ## <a name="send-invitations-to-users"></a>Meghívók küldése a felhasználóknak
 A következő módszerek egyikével elküldheti a regisztrációs hivatkozást a tanulóknak. Az első módszer azt mutatja be, hogyan küldhet e-maileket a tanulóknak a regisztrációs hivatkozással és egy opcionális üzenettel. A második módszer azt mutatja be, hogyan kérheti le a másokkal megosztható regisztrációs hivatkozást a kívánt módon. 
 
-Ha a **hozzáférés korlátozása** engedélyezve van a laborban, csak a felhasználók listájában lévő felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. A beállítás alapértelmezés szerint engedélyezett. 
+Ha a **hozzáférés korlátozása** engedélyezve van a laborban, csak a felhasználók listájában lévő felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. Ez a beállítás alapértelmezés szerint engedélyezve van. 
 
 ### <a name="invite-all-users"></a>Minden felhasználó meghívása
 1. Váltson a **felhasználók** nézetre, ha már nincs a lapon, és válassza az **összes meghívása** lehetőséget az eszköztáron. 
@@ -101,11 +101,14 @@ A regisztrációs hivatkozást a portálról is lekérheti, és a saját e-mail-
 2. A **felhasználó regisztrálása** párbeszédpanelen válassza a **kész**lehetőséget. 
 4. Küldje el a **regisztrációs hivatkozást** egy tanulónak, hogy a tanuló regisztráljon az osztályra. 
 
-## <a name="view-users-registered-with-the-lab"></a>A tesztkörnyezetben regisztrált felhasználók megtekintése
+## <a name="view-registered-users"></a>Regisztrált felhasználók megtekintése
 
-A bal oldali menüben válassza a **felhasználók** lehetőséget a laborban regisztrált felhasználók listájának megtekintéséhez. 
+1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). 
+2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is.
+3. A **Saját tesztkörnyezetek** lapon válassza ki azt a tesztkörnyezetet, amelynek a használatát nyomon szeretné követni. 
+4. A bal oldali menüben vagy a **felhasználók** csempén válassza a **felhasználók** lehetőséget. Megjelenik a tesztkörnyezetben regisztrált felhasználók listája.  
 
-![A laborban regisztrált felhasználók listája](../media/how-to-configure-student-usage/students-registered.png)
+    ![Regisztrált felhasználók](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Kvóták beállítása a felhasználók számára
 A kvótákat felhasználónként is beállíthatja a következő lépésekkel: 
@@ -115,7 +118,7 @@ A kvótákat felhasználónként is beállíthatja a következő lépésekkel:
 3. A **kvóta felhasználónként** lapon adja meg, hogy hány órát szeretne megadni az egyes felhasználóknak (tanulóknak) az ütemezett osztály időpontján kívül, majd válassza a **Mentés**lehetőséget.
 
     ![Kvóta felhasználónként](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Ekkor megjelennek a módosított értékek az eszköztáron: **kvóta felhasználónként: \<óra >** . 
+5. Ekkor megjelennek a módosított értékek az eszköztáron: **kvóta felhasználónként: \<órák száma >** és a felhasználók listájában is.
 
     ![Kvóta felhasználónként – utána](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

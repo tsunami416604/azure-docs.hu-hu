@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443839"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539552"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -115,7 +115,7 @@ Linux esetén a gépnek hozzá kell férnie egy frissítési tárházhoz. A fris
 
 További információ a Linux rendszerhez készült Log Analytics-ügynök telepítéséről és a legújabb verzió letöltéséről: [log Analytics Agent for Linux](https://github.com/microsoft/oms-agent-for-linux). További információ a Windows rendszerű Log Analytics ügynök telepítéséről: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../log-analytics/log-analytics-windows-agent.md).
 
-Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) . Minden más Linux-disztribúciót a terjesztés támogatott módszereinek használatával kell frissíteni a disztribúció online fájl-tárházában.
+Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) . Minden más Linux-disztribúciót a terjesztés támogatott módszereinek használatával kell frissíteni a disztribúció online fájl-tárházában.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -184,7 +184,7 @@ A következő címek megadása kifejezetten a Update Management. A címekkel fol
 
 Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat. A szükséges végpontok frissített listáját a [http/proxy szolgáltatással kapcsolatos problémák](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)között találja. Ha helyi [Windows Update-kiszolgálóval](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)rendelkezik, engedélyeznie kell a forgalmat a [WSUS-kulcsban](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)megadott kiszolgálóra is.
 
-A Red Hat Linux rendszerű gépek esetében tekintse meg [az IP-címek a RHUI](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) a szükséges végpontokhoz című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
+A Red Hat Linux rendszerű gépek esetében tekintse meg [az IP-címek a RHUI](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) a szükséges végpontokhoz című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
 
 További információ a hibrid Runbook Worker által igényelt portokról: [hibrid feldolgozói szerepkör portjai](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

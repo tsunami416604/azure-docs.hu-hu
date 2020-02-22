@@ -3,12 +3,12 @@ title: Azure Functions futtatókörnyezet-verziók áttekintése
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290376"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539501"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -16,7 +16,7 @@ Az Azure Functions futtatókörnyezet főverziói a futtatókörnyezet alapjául
 
 | Futtatókörnyezet verziója | <sup>1</sup> . kiadási szint | .NET-verzió | 
 | --------------- | ------------- | ------------ |
-| 3. x | FE | .NET Core 3,1 | 
+| 3.x | FE | .NET Core 3,1 | 
 | 2. x | FE | .NET Core 2.2 |
 | 1. x | <sup>2</sup> . ga | .NET-keretrendszer 4,6<sup>3</sup> |
 
@@ -38,7 +38,7 @@ További információk: [Támogatott nyelvek](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Futtatás adott verzión
 
-Alapértelmezés szerint a Azure Portal és az Azure CLI-ben létrehozott Function apps a 2. x verzióra van beállítva. Igény szerint módosíthatja ezt a verziót. A futásidejű verziót csak 1. x értékre módosíthatja, miután létrehozta a Function alkalmazást, de a függvények hozzáadása előtt is.  A 2. x és 3. x közötti váltás akkor is engedélyezett, ha a functions alkalmazással rendelkezik, de az új alkalmazásban való tesztelés még ajánlott.
+Alapértelmezés szerint a Azure Portal és az Azure CLI-ben létrehozott Function apps a 3. x verzióra van beállítva. Igény szerint módosíthatja ezt a verziót. A futásidejű verziót csak 1. x értékre módosíthatja, miután létrehozta a Function alkalmazást, de a függvények hozzáadása előtt is.  A 2. x és 3. x közötti váltás akkor is engedélyezett, ha a functions alkalmazással rendelkezik, de az új alkalmazásban való tesztelés még ajánlott.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrálás 1. x verzióról a későbbi verziókra
 
@@ -104,9 +104,9 @@ A 2. x alkalmazás 3. x verzióra való frissítése előtt a következő módos
 
 Az Azure-ban közzétett alkalmazások által használt functions futtatókörnyezet verzióját a [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) alkalmazás-beállítás határozza meg. A következő fő futásidejű verziók értékei támogatottak:
 
-| Value (Díj) | Futtatókörnyezet célja |
+| Érték | Futtatókörnyezet célja |
 | ------ | -------- |
-| `~3` | 3. x |
+| `~3` | 3.x |
 | `~2` | 2. x |
 | `~1` | 1. x |
 
@@ -206,4 +206,4 @@ További információkért lásd a következőket:
 
 * [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
 * [A Azure Functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md)
-* [Kiadási megjegyzések](https://github.com/Azure/azure-functions-host/releases)
+* [Kibocsátási megjegyzések](https://github.com/Azure/azure-functions-host/releases)

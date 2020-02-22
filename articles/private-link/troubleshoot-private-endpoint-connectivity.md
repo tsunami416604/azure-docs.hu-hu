@@ -1,5 +1,5 @@
 ---
-title: Az Azure Private Endpoint kapcsolódási problémáinak elhárítása
+title: Az Azure privát végpont kapcsolati problémáinak hibaelhárítása
 description: Részletes útmutató a privát végpontok kapcsolatának diagnosztizálásához
 services: private-endpoint
 documentationcenter: na
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191067"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538534"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Privátvégpont-kapcsolati problémák hibaelhárítása
+# <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Az Azure privát végpont kapcsolati problémáinak hibaelhárítása
 
-Ez az útmutató részletes útmutatást nyújt a privát végponti kapcsolat beállításának ellenőrzéséhez és diagnosztizálásához. 
+Ez a cikk részletes útmutatást nyújt az Azure Private Endpoint connectivity telepítőjének ellenőrzéséhez és diagnosztizálásához.
 
-Az Azure Private Endpoint egy olyan hálózati adapter, amely privát és biztonságos kapcsolatot létesít a privát kapcsolati szolgáltatással. Ez a megoldás segít az Azure-beli számítási feladatok biztonságossá tételében azáltal, hogy a virtuális hálózatról privát kapcsolatot biztosít az Azure-szolgáltatás erőforrásaihoz. Ez hatékonyan hozza a szolgáltatásokat a virtuális hálózatba. 
+Az Azure Private Endpoint egy olyan hálózati adapter, amely privát és biztonságos kapcsolatot létesít a privát kapcsolati szolgáltatással. Ez a megoldás segít az Azure-beli számítási feladatok biztonságossá tételében azáltal, hogy a virtuális hálózatról privát kapcsolatot biztosít az Azure-szolgáltatás erőforrásaihoz. Ez a megoldás hatékonyan hozza ezeket a szolgáltatásokat a virtuális hálózatra.
 
-A privát végpontokkal elérhető kapcsolódási forgatókönyvek 
-- azonos régióból származó virtuális hálózat 
+Itt láthatók a magánhálózati végponttal elérhető csatlakozási forgatókönyvek:
+
+- azonos régióból származó virtuális hálózat
 - regionálisan egymással összekötött virtuális hálózatok
 - globálisan egyenrangú virtuális hálózatok
-- helyszíni ügyfelek VPN-vagy Express Route-áramkörökkel
+- Helyszíni ügyfelek VPN-en vagy Azure ExpressRoute-áramkörökben
 
-## <a name="diagnosing-connectivity-problems"></a>Kapcsolódási problémák diagnosztizálása 
-Az alábbi lépések elvégzésével győződjön meg arról, hogy az összes szokásos konfiguráció a várt módon oldja meg a kapcsolati problémákat a privát végpontok beállításával.
+## <a name="diagnose-connectivity-problems"></a>Kapcsolódási problémák diagnosztizálása 
 
-1. Privát végpont konfigurációjának áttekintése az erőforrás tallózásával 
+Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szokásos konfiguráció a várt módon oldja fel a kapcsolódási problémákat a privát végpontok beállításával.
 
-    a) nyissa meg a **Private link centert**
+1. Tekintse át a privát végpontok konfigurációját az erőforrás tallózásával.
+
+    a. Nyissa meg a **Private link centert**.
 
       ![Privát kapcsolati központ](./media/private-endpoint-tsg/private-link-center.png)
 
-    b) a bal oldali navigációs panelen válassza a privát végpontok lehetőséget.
+    b. A bal oldali panelen válassza a **privát végpontok**lehetőséget.
     
       ![Privát végpontok](./media/private-endpoint-tsg/private-endpoints.png)
 
-    c) szűrje és jelölje ki a diagnosztizálni kívánt privát végpontot.
+    c. Szűrje és jelölje ki a diagnosztizálni kívánt privát végpontot.
 
-    d) a virtuális hálózat és a DNS-információk áttekintése
+    d. Tekintse át a virtuális hálózat és a DNS-információkat.
+     - Ellenőrizze, hogy a rendszer **jóváhagyja**-e a kapcsolatok állapotát.
+     - Győződjön meg arról, hogy a virtuális gép rendelkezik a magánhálózati végpontokat üzemeltető virtuális hálózattal.
+     - Győződjön meg arról, hogy a teljes tartománynév-információ (másolás) és a magánhálózati IP-cím hozzá van rendelve.
     
-     - A kapcsolatok állapotának ellenőrzése **jóváhagyva**
-     - Ellenőrizze, hogy a virtuális gép rendelkezik-e kapcsolattal a privát végpontokat üzemeltető VNet
-     - Kiosztott FQDN-információ (másolás) és magánhálózati IP-cím
+       ![Virtuális hálózat és DNS-konfiguráció](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-       ![VNet és DNS-konfiguráció](./media/private-endpoint-tsg/vnet-dns-configuration.png)    
-    
-2. A [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) használatával áttekintheti az adatforgalmat
+1. A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) használatával megtekintheti, hogy folyik-e az adatforgalom.
 
-    a) privát végponti erőforráson válassza a **figyelő** lehetőséget.
-     - Válassza ki az adatforgalom vagy a kijelentkezés lehetőséget, és tekintse át, hogy az adatai áramlanak-e a magánhálózati végponthoz való kapcsolódási kísérlet során. Körülbelül 10 perc késést várhat.
+    a. A privát végpont erőforráson válassza a **figyelés**lehetőséget.
+     - Válassza ki az adatelemet vagy **a** **kimenő adatvesztést**. 
+     - A magánhálózati végponthoz való kapcsolódáskor megtekintheti, hogy vannak-e adatfolyamok. Körülbelül 10 perc késés várható.
     
        ![Privát végpont telemetria ellenőrzése](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-3. Virtuálisgép-kapcsolatok hibáinak használata **Network Watcher**
+1.  Virtuálisgép- **kapcsolatok hibakeresése** az Azure Network Watcher használatával.
 
-    a) válassza ki az ügyfél virtuális gépet
+    a. Válassza ki az ügyfél virtuális gépet.
 
-    b) válassza a **kapcsolatok hibakeresése** szakaszt, majd a **Kimenő kapcsolatok** fület
+    b. Válassza a **kapcsolódási hibák**, majd a **Kimenő kapcsolatok** fület.
     
       ![Network Watcher – kimenő kapcsolatok tesztelése](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
-    c) válassza **a Network Watcher használata a részletes kapcsolatok nyomon követéséhez** lehetőséget.
+    c. Válassza **a Network Watcher használata lehetőséget a kapcsolatok részletes nyomkövetéséhez**.
     
       ![Network Watcher – csatlakoztatási hibák](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d) válassza **a teszt a teljes tartománynév alapján** lehetőséget
-     - A teljes tartománynév beillesztése a magánhálózati végponti erőforrásból
-     - Adjon meg egy portot (*általában 443 az Azure Storage vagy a Cosmos, 1336 for SQL..* .)
+    d. Válassza **a teszt a teljes tartománynév alapján**lehetőséget.
+     - Illessze be a teljes tartománynevet a privát végponti erőforrásból.
+     - Adjon meg egy portot. Az Azure Storage vagy a Azure Cosmos DB és a 1336 for SQL esetében általában az 443-et használja.
 
-    e) kattintson a **tesztelés** gombra, és ellenőrizze a teszt eredményeit
+    e. Válassza a **teszt**lehetőséget, és ellenőrizze a teszt eredményeit.
     
       ![Network Watcher – teszteredmények](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
-4. A tesztelési eredmények DNS-feloldásához a magánhálózati végponthoz rendelt magánhálózati IP-címnek kell tartoznia.
+1. A teszt eredményeinek DNS-feloldásához ugyanazt a magánhálózati IP-címet kell rendelni, mint a privát végponthoz.
 
-    a) Ha a DNS-beállítások helytelenek, tegye a következőket
-     - Saját zóna használata: 
-       - Győződjön meg arról, hogy az ügyfél virtuális VNet társítva van a privát zónához
-       - Saját DNS zóna rekordjának áttekintése, létrehozás, ha nem létező
-    
-     - Egyéni DNS használata:
-       - Tekintse át az ügyfél DNS-beállításait, és ellenőrizze, hogy helyes-e a DNS-konfiguráció.
-       Tekintse át a [privát végpont áttekintése – DNS-konfiguráció](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration) útmutatáshoz című témakört.
+    a. Ha a DNS-beállítások helytelenek, kövesse az alábbi lépéseket:
+     - Ha saját zónát használ: 
+       - Győződjön meg arról, hogy az ügyfél virtuális gép virtuális hálózata hozzá van rendelve a saját zónához.
+       - Ellenőrizze, hogy létezik-e a saját DNS-zóna rekordja. Ha nem létezik, hozza létre.
+     - Ha egyéni DNS-t használ:
+       - Tekintse át az egyéni DNS-beállításokat, és ellenőrizze, hogy helyes-e a DNS-konfiguráció.
+       Útmutatásért lásd a [privát végpont áttekintése: DNS-konfiguráció](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)című témakört.
 
-    b) Ha a NSG/UDR miatt sikertelen volt a kapcsolat
-     - Tekintse át a NSG kimenő szabályait, és hozzon létre megfelelő kimenő szabályokat a forgalom engedélyezéséhez
+    b. Ha a hálózati biztonsági csoportok (NSG) vagy a felhasználó által megadott útvonalak miatt sikertelen volt a kapcsolat:
+     - Tekintse át a NSG kimenő szabályait, és hozza létre a megfelelő kimenő szabályokat a forgalom engedélyezéséhez.
     
        ![NSG kimenő szabályai](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-5. Ha a kapcsolat érvényesítve lett, a csatlakozási probléma az alkalmazási rétegben található titkokkal, jogkivonatokkal és jelszavakkal kapcsolatos egyéb szempontokhoz is kapcsolódhat.
-   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. Tekintse meg a [privát hivatkozás hibaelhárítási útmutatóját](troubleshoot-private-link-connectivity.md). 
+1. Ha a kapcsolat érvényesített eredményekkel rendelkezik, a csatlakozási probléma az alkalmazási rétegben található titkokkal, jogkivonatokkal és jelszavakkal kapcsolatos egyéb szempontokhoz is kapcsolódhat.
+   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. További információt az [Azure Private link hibaelhárítási útmutatójában](troubleshoot-private-link-connectivity.md)talál.
 
-6. Ha a probléma továbbra is megoldatlan, és a kapcsolati probléma továbbra is fennáll, forduljon az [Azure támogatási](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) csapatához. 
+1. Ha a probléma továbbra is megoldatlan, forduljon az [Azure ügyfélszolgálatához](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és a kapcsolati probléma továbbra is fennáll.
 
 ## <a name="next-steps"></a>Következő lépések
 
  * [Hozzon létre egy privát végpontot a frissített alhálózaton (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
-
- * [Privát hivatkozás hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)
+ * [Az Azure Private link hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)

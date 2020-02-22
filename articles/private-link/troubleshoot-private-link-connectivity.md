@@ -1,5 +1,5 @@
 ---
-title: Az Azure Private link kapcsolódási problémáinak elhárítása
+title: Az Azure privát kapcsolati szolgáltatás csatlakoztathatósági problémáinak elhárítása
 description: Részletes útmutató a privát kapcsolati kapcsolatok diagnosztizálásához
 services: private-link
 documentationcenter: na
@@ -13,103 +13,103 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191039"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539467"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Privát kapcsolat szolgáltatás kapcsolati problémáinak hibaelhárítása
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Az Azure privát kapcsolati szolgáltatás csatlakoztathatósági problémáinak elhárítása
 
-Ez az útmutató lépésről lépésre bemutatja, hogyan lehet érvényesíteni és diagnosztizálni a privát kapcsolati szolgáltatás beállítását. 
+Ez a cikk részletes útmutatást nyújt az Azure Private-kapcsolat beállításához szükséges kapcsolatok ellenőrzéséhez és diagnosztizálásához.
 
-Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfelek/partnerek szolgáltatásainak elérését a virtuális hálózat privát végpontján keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját privát kapcsolati szolgáltatását is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. 
+Az Azure Private link használatával a virtuális hálózat egy privát végpontján keresztül elérheti az Azure platform szolgáltatásként nyújtott szolgáltatásokat, például az Azure Storage, a Azure Cosmos DB és a Azure SQL Database, valamint az Azure által üzemeltetett ügyfél-vagy partneri szolgáltatásokat. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át, ami kiküszöböli a nyilvános internetről való kivonást. Létrehozhatja saját privát kapcsolati szolgáltatását is a virtuális hálózatban, és a saját ügyfelei számára elérhetővé teheti azt.
 
-Engedélyezheti az Azure standard Load Balancer mögött futó szolgáltatást a privát kapcsolatokhoz való hozzáféréshez. A szolgáltatás felhasználói létrehozhatnak egy privát végpontot a virtuális hálózaton belül, és leképezhetők a szolgáltatásba, hogy magánjellegű módon férhessenek hozzá.
+Engedélyezheti, hogy a szolgáltatás a Azure Load Balancer standard szintje mögött fusson a privát kapcsolatok eléréséhez. A szolgáltatás felhasználói létrehozhatnak egy privát végpontot a virtuális hálózaton belül, és leképezhetők a szolgáltatásba, hogy magánjellegű módon férhessenek hozzá.
 
-A Private link Service-ben elérhető kapcsolódási forgatókönyvek
-- azonos régióból származó virtuális hálózat 
+A privát hivatkozással elérhető csatlakozási forgatókönyvek a következők:
+
+- azonos régióból származó virtuális hálózat
 - regionálisan egymással összekötött virtuális hálózatok
 - globálisan egyenrangú virtuális hálózatok
-- helyszíni ügyfelek VPN-vagy Express Route-áramkörökkel
+- Helyszíni ügyfelek VPN-en vagy Azure ExpressRoute-áramkörökben
 
 ## <a name="deployment-troubleshooting"></a>Üzembe helyezés hibaelhárítása
 
-A hibaelhárítási esetekben tekintse át a [hálózati házirendek letiltásával kapcsolatos információkat a privát kapcsolat szolgáltatásban](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) , ahol nem tudja kijelölni a forrás IP-címet a privát kapcsolati szolgáltatáshoz választott alhálózatból.
+A hibaelhárítási esetekben tekintse át a [hálózati házirendek letiltásával kapcsolatos információkat a privát kapcsolat szolgáltatásban](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) , ahol nem tudja kijelölni a forrás IP-címet az Ön által választott alhálózatból a privát kapcsolati szolgáltatáshoz.
 
-Győződjön meg arról, hogy a **privateLinkServiceNetworkPolicies** beállítás le van tiltva azon alhálózat esetében, amelyből a forrás IP-címet kiválasztja.
+Győződjön meg arról, hogy a **privateLinkServiceNetworkPolicies** beállítás le van tiltva azon alhálózat esetében, amelynek a forrás IP-címét kiválasztja.
 
-## <a name="diagnosing-connectivity-problems"></a>Kapcsolódási problémák diagnosztizálása
+## <a name="diagnose-connectivity-problems"></a>Kapcsolódási problémák diagnosztizálása
 
-Ha a magánhálózati kapcsolat beállításával kapcsolatban problémák léptek fel, az alábbi lépésekkel ellenőrizze, hogy az összes szokásos konfiguráció a várt módon működik-e.
+Ha kapcsolódási problémák merülnek fel a privát kapcsolat beállításakor, tekintse át ezeket a lépéseket, és győződjön meg arról, hogy az összes szokásos konfiguráció a vártnak megfelelően van-e
 
-1. Privát hivatkozás szolgáltatás konfigurációjának áttekintése az erőforrás tallózásával 
+1. Tekintse át a privát kapcsolat konfigurációját az erőforrás tallózásával.
 
-    a) nyissa meg a **Private link centert**
+    a. Nyissa meg a **Private link centert**.
 
       ![Privát kapcsolati központ](./media/private-link-tsg/private-link-center.png)
 
-    b) a bal oldali navigációs panelen válassza a **privát kapcsolati szolgáltatások** lehetőséget.
+    b. A bal oldali panelen válassza a **Private link Services**elemet.
 
       ![Private link Services](./media/private-link-tsg/private-link-service.png)
 
-    c) szűrő és válassza ki a diagnosztizálni kívánt privát kapcsolati szolgáltatást
+    c. Szűrje és válassza ki a diagnosztizálni kívánt privát kapcsolati szolgáltatást.
 
-    d) tekintse át a magánhálózati végpontok kapcsolatait
-     - Győződjön meg arról, hogy az a magánhálózati végpont, amelyhez csatlakozni szeretne, szerepel a **jóváhagyott** kapcsolati állapot listáján. 
-     - Ha **függőben**van, válassza ki és hagyja jóvá. 
+    d. Tekintse át a magánhálózati végpontok kapcsolatait.
+     - Győződjön meg arról, hogy a kapcsolatot kérő privát végpont **jóváhagyott** kapcsolati állapottal van listázva.
+     - Ha az állapot **függőben**van, válassza ki és hagyja jóvá.
 
        ![Magánhálózati végpontok kapcsolatai](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Navigáljon ahhoz a privát végponthoz, amelyhez csatlakozni kíván, ehhez kattintson a névre. Győződjön meg arról, hogy a kapcsolatok állapota **jóváhagyva**értékre van állítva.
+     - A név kiválasztásával nyissa meg azt a privát végpontot, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a kapcsolatok állapota **jóváhagyva**értékre van állítva.
 
        ![Privát végpontok kapcsolatainak áttekintése](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
-     - A két oldal jóváhagyása után próbálkozzon újra a kapcsolattal.
+     - Mindkét oldal jóváhagyása után próbálja megismételni a kapcsolatot.
 
-    e) az Áttekintés lapon és az erőforrás- **azonosítóban** található **alias** áttekintése a Tulajdonságok lapon 
-     - Győződjön meg arról, hogy az **alias/erőforrás-azonosító** megegyezik azzal az **alias/erőforrás-azonosítóval** , amelyet a szolgáltatáshoz tartozó privát végpont létrehozásához használ. 
+    e. Tekintse át az **aliast** az **Áttekintés** lapon és az **erőforrás-azonosítót** a **Tulajdonságok** lapon.
+     - Győződjön meg arról, hogy az **alias** és az **erőforrás-azonosító** információ megegyezik azzal az **ALIASsal** és **erőforrás-azonosítóval** , amelyet a szolgáltatáshoz tartozó privát végpont létrehozásához használ.
 
-       ![Alias ellenőrzése](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![Alias adatainak ellenőrzése](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![Erőforrás-azonosító ellenőrzése](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![Erőforrás-azonosító adatainak ellenőrzése](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f) tekintse át a láthatósági (áttekintés) információkat
-     - Győződjön meg arról, hogy az előfizetése a **láthatósági** hatókör alá esik
+    f. Tekintse át a **láthatósági** információkat az **Áttekintés** lapon.
+     - Győződjön meg arról, hogy az előfizetése a **láthatósági** hatókör alá esik.
 
-       ![Láthatóság ellenőrzése](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![Láthatósági információk ellenőrzése](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g) a Load Balancer (áttekintés) adatainak áttekintése
-     - A Load Balancer hivatkozásra kattintva megnyithatja a terheléselosztó hivatkozást
+    g. Tekintse **át a terheléselosztó** információit az **Áttekintés** lapon.
+     - A Load balancert a terheléselosztó hivatkozásra kattintva érheti el.
 
-       ![Load Balancer ellenőrzése](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![Terheléselosztó adatainak ellenőrzése](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
-     - Győződjön meg arról, hogy a Load Balancer beállítások a saját elvárásai szerint vannak konfigurálva
-       - Előtér-IP-konfiguráció áttekintése
-       - Háttérbeli készletek áttekintése
-       - Terheléselosztási szabályok áttekintése
+     - Győződjön meg arról, hogy a terheléselosztó beállításai a saját elvárásainak megfelelően vannak konfigurálva.
+       - Tekintse át a előtér **-IP-konfigurációt**.
+       - Tekintse át a **háttérbeli készleteket**.
+       - Tekintse át a terheléselosztási **szabályokat**.
 
-       ![Load Balancer tulajdonságainak ellenőrzése](./media/private-link-tsg/pls-ilb-properties.png)
+       ![Terheléselosztó tulajdonságainak ellenőrzése](./media/private-link-tsg/pls-ilb-properties.png)
 
-     - Győződjön meg arról, hogy Load Balancer a fenti beállítások szerint működik
-       - Válasszon ki egy virtuális gépet az alhálózaton kívül minden olyan alhálózaton, ahol a Load Balancer háttér-készlet elérhető
-       - Próbálja meg elérni a terheléselosztó előtér-végpontját a fenti virtuális gépről
-       - Ha a kapcsolat terheléselosztási szabályok szerint a háttér-készletre kerül, a terheléselosztó működőképes
-       - Áttekintheti a Load Balancer metrikát a Azure Monitor segítségével, hogy megtudja, az adatok a terheléselosztó segítségével áramlanak-e
+     - Győződjön meg arról, hogy a terheléselosztó az előző beállításoknak megfelelően működik.
+       - Válasszon ki egy virtuális gépet az alhálózaton kívül minden olyan alhálózaton, ahol a terheléselosztó háttér-készlete elérhető.
+       - Próbálja meg elérni a terheléselosztó kezelőfelületét az előző virtuális gépről.
+       - Ha a kapcsolat terheléselosztási szabályok szerint végzi a háttér-készletet, akkor a terheléselosztó működőképes.
+       - A terheléselosztó metrikáját a Azure Monitor segítségével is ellenőrizheti, így ellenőrizheti, hogy az adatok áramlanak-e a terheléselosztó használatával.
 
-2. A [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) használatával áttekintheti az adatforgalmat
+1. A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) használatával megtekintheti, hogy folyik-e az adatforgalom.
 
-    a) a Private link SErvice-erőforráson válassza a **metrikák** lehetőséget.
-     - **Bájtok** vagy **bájtok** kiválasztása
-     - Áttekintheti az adatforgalmat, amikor megpróbál csatlakozni a privát kapcsolati szolgáltatáshoz. Körülbelül 10 perc késést várhat.
+    a. A Private link Service-erőforrás lapon válassza a **metrikák**lehetőséget.
+     - Válassza ki **a bájtok vagy a** **bájtok**lehetőséget.
+     - Ellenőrizze, hogy a magánhálózati kapcsolati szolgáltatáshoz való kapcsolódási kísérlet során az adatforgalom áramlik-e. Körülbelül 10 perc késés várható.
 
        ![Privát kapcsolati szolgáltatás metrikáinak ellenőrzése](./media/private-link-tsg/pls-metrics.png)
 
-3. Ha a probléma továbbra is megoldatlan, és a kapcsolati probléma továbbra is fennáll, forduljon az [Azure támogatási](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) csapatához. 
+1. Ha a probléma továbbra is megoldatlan, forduljon az [Azure ügyfélszolgálatához](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és a kapcsolati probléma továbbra is fennáll.
 
 ## <a name="next-steps"></a>Következő lépések
 
  * [Privát kapcsolati szolgáltatás (CLI) létrehozása](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
-
- * [Privát végpont hibaelhárítási útmutatója](troubleshoot-private-endpoint-connectivity.md)
+ * [Azure Private Endpoint – hibaelhárítási útmutató](troubleshoot-private-endpoint-connectivity.md)

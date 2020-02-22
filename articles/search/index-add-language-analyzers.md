@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460793"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539399"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -44,7 +44,7 @@ Az alapértelmezett elemző a standard Lucene, amely az angol nyelvhez jól műk
  
 + A Lucene angol analizátora kiterjeszti a standard Analyzert. Eltávolítja a birtokosok (záró) szavakat a szavakból, és a porton kívüli algoritmust alkalmazza, és eltávolítja az angol leállítási szavakat.  
 
-+ A Microsoft angol Analyzer morfológiai elemzéshez hajt végre a művelet helyett. Ez azt jelenti, hogy képes kezelni az ragozott és a szabálytalan Word-űrlapokat, ami sokkal jobbat jelent, ami nagyobb jelentőségű keresési eredményeket eredményez 
++ A Microsoft angol Analyzer morfológiai elemzéshez hajt végre a művelet helyett. Ez azt jelenti, hogy az ragozott és a szabálytalan Word-űrlapokat sokkal jobban kezelheti, ami több releváns keresési eredményt eredményez 
 
 ## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 
@@ -64,66 +64,66 @@ További információ az index tulajdonságairól: [create index &#40;Azure Cogn
 
 |Nyelv|Microsoft Analyzer neve|Lucene Analyzer neve|  
 |--------------|-----------------------------|--------------------------|  
-|arab|ar. Microsoft|ar. Lucene|  
+|arab|ar.microsoft|ar. Lucene|  
 |örmény||Lucene|  
-|Bangla|bn. Microsoft||  
-|Baszk||EU. Lucene|  
-|bolgár|BG. Microsoft|BG. Lucene|  
+|Bengáli|bn.microsoft||  
+|baszk||EU. Lucene|  
+|bolgár|bg.microsoft|bg.lucene|  
 |katalán|CA. Microsoft|CA. Lucene|  
-|kínai (egyszerűsített)|zh-Hans. Microsoft|zh-Hans. Lucene|  
-|Kínai (hagyományos)|zh-Hant. Microsoft|zh-Hant. Lucene|  
+|kínai (egyszerűsített)|zh-Hans.microsoft|zh-Hans.lucene|  
+|kínai (hagyományos)|zh-Hant.microsoft|zh-Hant. Lucene|  
 |horvát|HR. Microsoft||  
-|Cseh|cs. Microsoft|cs. Lucene|  
-|dán|da. Microsoft|da. Lucene|  
-|Holland|nl. Microsoft|nl. Lucene|  
+|cseh|cs. Microsoft|cs. Lucene|  
+|dán|da.microsoft|da. Lucene|  
+|holland|nl. Microsoft|nl. Lucene|  
 |Angol|en. Microsoft|en. Lucene|  
 |észt|et. Microsoft||  
-|finn|Fi. Microsoft|Fi. Lucene|  
-|Francia|fr. Microsoft|fr. Lucene|  
-|gallego||Gl. Lucene|  
-|Német|de. Microsoft|de. Lucene|  
+|finn|fi.microsoft|Fi. Lucene|  
+|francia|fr. Microsoft|fr. Lucene|  
+|galíciai||Gl. Lucene|  
+|német|de.microsoft|de. Lucene|  
 |görög|el. Microsoft|el. Lucene|  
-|gudzsaráti|Gu. Microsoft||  
+|gudzsaráti|gu.microsoft||  
 |héber|ő. Microsoft||  
-|hindi|Hi. Microsoft|Hi. Lucene|  
+|hindi|hi.microsoft|Hi. Lucene|  
 |magyar|hu. Microsoft|hu. Lucene|  
-|Izlandi|a. Microsoft||  
-|Indonéz (Bahasa)|azonosító. Microsoft|ID. Lucene|  
-|Ír||ga. Lucene|  
+|izlandi|is.microsoft||  
+|Indonéz (Bahasa)|id.microsoft|id.lucene|  
+|ír||ga. Lucene|  
 |olasz|it. Microsoft|it. Lucene|  
 |japán|ja. Microsoft|ja. Lucene|  
-|kannada|KN. Microsoft||  
-|koreai|ko. Microsoft|ko. Lucene|  
-|lett|lv. Microsoft|lv. Lucene|  
-|litván|lt. Microsoft||  
-|malajálam|ml. Microsoft||  
-|Maláj (latin betűs)|MS. Microsoft||  
-|marathi|Mr. Microsoft||  
-|norvég|NB. Microsoft|nem. Lucene|  
+|kannada|kn.microsoft||  
+|koreai|ko.microsoft|ko. Lucene|  
+|lett|lv.microsoft|lv. Lucene|  
+|litván|lt.microsoft||  
+|malajálam|ml.microsoft||  
+|Maláj (latin betűs)|ms.microsoft||  
+|marathi|mr.microsoft||  
+|norvég|nb.microsoft|nem. Lucene|  
 |perzsa||fa. Lucene|  
-|lengyel|pl. Microsoft|pl. Lucene|  
-|Portugál (brazíliai)|pt-br. Microsoft|pt-br. Lucene|  
-|portugál (Portugália)|PT-pt. Microsoft|PT-pt. Lucene|  
-|pandzsábi|PA. Microsoft||  
-|román|ro. Microsoft|ro. Lucene|  
-|orosz|ru. Microsoft|ru. Lucene|  
-|Szerb (cirill betűs)|SR-cirill betűs. Microsoft||  
-|szerb (latin betűs)|SR-latin. Microsoft||  
-|szlovák|sk. Microsoft||  
+|lengyel|pl.microsoft|pl. Lucene|  
+|portugál (brazíliai)|pt-Br.microsoft|pt-Br.lucene|  
+|portugál (általános)|pt-Pt.microsoft|pt-Pt.lucene|  
+|pandzsábi|pa.microsoft||  
+|román|ro.microsoft|ro. Lucene|  
+|Orosz|ru.microsoft|ru. Lucene|  
+|szerb (cirill betűs)|sr-cyrillic.microsoft||  
+|szerb (latin betűs)|sr-latin.microsoft||  
+|szlovák|sk.microsoft||  
 |szlovén|SL. Microsoft||  
-|Spanyol|es. Microsoft|es. Lucene|  
-|svéd|Sv. Microsoft|Sv. Lucene|  
-|tamil|ta. Microsoft||  
+|spanyol|es. Microsoft|es. Lucene|  
+|svéd|sv.microsoft|Sv. Lucene|  
+|tamil|ta.microsoft||  
 |telugu|te. Microsoft||  
-|thai|th. Microsoft|th. Lucene|  
+|thai|th.microsoft|th. Lucene|  
 |török|TR. Microsoft|TR. Lucene|  
-|ukrán|Egyesült Királyság. Microsoft||  
-|Urdu|a. Microsoft||  
-|vietnami|VI. Microsoft||  
+|ukrán|uk.microsoft||  
+|urdu|a. Microsoft||  
+|vietnami|vi.microsoft||  
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
 
 + [Index &#40;létrehozása az Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

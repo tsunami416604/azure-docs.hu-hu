@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 9be3c14bb435aaa1cddf008a27389bb3b1fdbc3d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493539"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538772"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuálisgép-méretek
 
@@ -37,9 +37,9 @@ A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépe
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA GPU-illesztőprogramokat.
 
-Az [NVIDIA GPU illesztőprogram-bővítmény](/extensions/hpccompute-gpu-windows.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](/extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/extensions/overview.md).
+Az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/azure/virtual-machines/extensions/overview).
 
-Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](/windows/n-series-driver-setup.md) vagy [N sorozatú GPU-illesztőhöz Linux](/linux/n-series-driver-setup) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a következőt: [n-sorozat GPU-illesztőprogram beállítása Windows](/azure/virtual-machines/windows/n-series-driver-setup) vagy [N sorozatú GPU-illesztőhöz Linux](/azure/virtual-machines/linux/n-series-driver-setup) rendszeren támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 

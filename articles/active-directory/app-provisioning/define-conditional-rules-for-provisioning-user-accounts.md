@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522560"
+ms.locfileid: "77544266"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -98,10 +98,12 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
    i. **Greater_Than.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nagyobb az értéknél. A hatóköri szűrőben megadott értéknek egész számnak kell lennie, és a felhasználó attribútumának egész számnak ([0, 1, 2,...]) kell lennie. 
    
    j. **Greater_Than_OR_EQUALS.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke nagyobb vagy egyenlő, mint az érték. A hatóköri szűrőben megadott értéknek egész számnak kell lennie, és a felhasználó attribútumának egész számnak ([0, 1, 2,...]) kell lennie. 
+   
+   k. **Tartalmazza.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum tartalmazza a sztringet (kis-és nagybetűk megkülönböztetése) az [itt](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)leírt módon 
 
 
 >[!IMPORTANT] 
-> A includes és a IsMemberOf szűrők nem támogatottak. Hamarosan el lesznek távolítva a felhasználói felületen.
+> A IsMemberOf szűrő jelenleg nem támogatott.
 
 9. Szükség esetén ismételje meg a 7-8. lépést további hatókör-záradékok hozzáadásához.
 

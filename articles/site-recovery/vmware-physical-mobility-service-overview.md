@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513558"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539382"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
 
@@ -21,6 +21,9 @@ Ha a [Azure site Recovery](site-recovery-overview.md)használatával állítja b
 - [Leküldéses telepítés](#push-installation): a site Recovery a mobilitási ügynököt a kiszolgálón telepíti, ha a védelem Azure Portalon keresztül engedélyezve van.
 - Manuális telepítés: a mobilitási szolgáltatást manuálisan is telepítheti az egyes gépeken a [felhasználói felületen](#install-mobility-agent-through-ui) vagy a [parancssorban](#install-mobility-agent-through-command-prompt).
 - [Automatikus telepítés](vmware-azure-mobility-install-configuration-mgr.md): a telepítést automatizálhatja a szoftver központi telepítési eszközeivel, például a Configuration Manager használatával.
+
+> [!NOTE]
+> A mobilitási ügynök körülbelül 6%-10%-os memóriát használ a VMware virtuális gépekhez vagy fizikai gépekhez.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Vírusirtó a replikált gépeken
 
@@ -35,7 +38,7 @@ A leküldéses telepítés a portálon aktivált "[replikáció engedélyezése]
 
 A leküldéses telepítési munkafolyamat részletei a következő szakaszokban olvashatók.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>[9,23 verziótól](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) kezdődően
+### <a name="from-923-version-onwards"></a>[9,23 verziótól](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) kezdődően
 
 A mobilitási ügynök leküldéses telepítése során a következő lépéseket kell végrehajtania
 
@@ -55,7 +58,7 @@ A mobilitási ügynök leküldéses telepítése során a következő lépéseke
 
 ## <a name="install-mobility-agent-through-ui"></a>A mobilitási ügynök telepítése felhasználói felületen
 
-### <a name="prerequisite"></a>Előfeltétel
+### <a name="prerequisite"></a>Előfeltételek
 
 - Győződjön meg arról, hogy a kiszolgálók összes konfigurációja a [VMware-ből az Azure Dr-re vonatkozó támogatási mátrix](vmware-physical-azure-support-matrix.md)alá esik.
 - [Keresse meg a telepítőt](#locate-installer-files) a-kiszolgáló operációs rendszere alapján.
@@ -73,7 +76,7 @@ A mobilitási ügynök leküldéses telepítése során a következő lépéseke
 
     ![Mobilitási szolgáltatás regisztrációs lapja](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. A **konfigurációs kiszolgáló részletei**területen válassza ki a konfigurált IP-címet és jelszót.  
+5. A **konfigurációs kiszolgáló részletei**területen válassza ki a konfigurált IP-címet és jelszót.
 
     ![Mobilitási szolgáltatás regisztrációs lapja](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -83,7 +86,7 @@ A mobilitási ügynök leküldéses telepítése során a következő lépéseke
 
 ## <a name="install-mobility-agent-through-command-prompt"></a>A mobilitási ügynök telepítése parancssorból
 
-### <a name="prerequisite"></a>Előfeltétel
+### <a name="prerequisite"></a>Előfeltételek
 
 - Győződjön meg arról, hogy a kiszolgálók összes konfigurációja a [VMware-ből az Azure Dr-re vonatkozó támogatási mátrix](vmware-physical-azure-support-matrix.md)alá esik.
 - [Keresse meg a telepítőt](#locate-installer-files) a-kiszolgáló operációs rendszere alapján.
@@ -116,9 +119,9 @@ A mobilitási ügynök leküldéses telepítése során a következő lépéseke
 **Beállítás** | **Részletek**
 --- | ---
 Használat | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<telepítési hely >/platform "VmWare"/Silent
-Telepítési naplók | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log. alatt
+Telepítési naplók | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
-/InstallLocation| Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét (bármely mappa).
+/InstallLocation| Nem kötelező paraméter. Megadja a mobilitási szolgáltatás telepítési helyét (bármely mappa).
 /Platform | Kötelező. Meghatározza azt a platformot, amelyen a mobilitási szolgáltatás telepítve van. **VMware** a VMWare virtuális gépekhez/fizikai kiszolgálókhoz; **Azure** Azure-beli virtuális gépekhez.<br/><br/> Ha fizikai gépekként kezeli az Azure-beli virtuális gépeket, a **VMware**-et kell megadnia.
 /Silent| Választható. Megadja, hogy a telepítőt csendes módban kell-e futtatni.
 
@@ -126,7 +129,7 @@ Telepítési naplók | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 **Beállítás** | **Részletek**
 --- | ---
 Használat | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
-Ügynök konfigurációs naplói | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log. alatt
+Ügynök konfigurációs naplói | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 /PassphraseFilePath |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
 
@@ -156,16 +159,16 @@ Használat | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePat
 --- | ---
 Használat | ./install-d \<telepítési hely >-r \<MS/MT >-v VmWare-q
 -r | Kötelező telepítési paraméter. Megadja, hogy kell-e telepíteni a mobilitási szolgáltatást (MS) vagy a fő célt (MT).
-d | Nem kötelező megadni. Megadja a mobilitási szolgáltatás telepítési helyét:/usr/local/ASR
+-d | Nem kötelező paraméter. Megadja a mobilitási szolgáltatás telepítési helyét:/usr/local/ASR
 -v | Kötelező. Meghatározza azt a platformot, amelyen a mobilitási szolgáltatás telepítve van. **VMware** a VMWare virtuális gépekhez/fizikai kiszolgálókhoz; **Azure** Azure-beli virtuális gépekhez.
 -q | Választható. Megadja, hogy a telepítőt csendes módban kell-e futtatni.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások
 **Beállítás** | **Részletek**
 --- | ---
-Használat | CD-/usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+Használat | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
 -i | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
-– P |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
+-P |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-beli virtuálisgép-ügynök
 
@@ -179,8 +182,8 @@ Nyissa meg a%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository mappát a
 **Telepítőfájl** | **Operációs rendszer (csak 64-bit)**
 --- | ---
 Microsoft-ASR\_UA\*Windows\*Release. exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*64 bites RHEL6-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6. *
-Microsoft-ASR\_UA\*RHEL7-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7. *
+Microsoft-ASR\_UA\*64 bites RHEL6-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
+Microsoft-ASR\_UA\*RHEL7-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
 Microsoft-ASR\_UA\*SLES12-64\*Release. tar. gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
 Microsoft-ASR\_UA\*SLES11-SP3-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP3
 Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz| 11 SP4 SUSE Linux Enterprise Server

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212487"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539535"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -308,8 +308,8 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 1. A IoT-eszköz elküldi az üzenetet a IoT Hubnak.
 1. Az üzenet megérkezik az IoT hub-átjáróra.
 1. IoT Hub megkeresi a `tracestate` az üzenet alkalmazás tulajdonságaiban, és ellenőrzi, hogy a formátuma megfelelő-e.
-1. Ha igen, IoT Hub hozza létre és naplózza a `trace-id` és a `span-id` a `DiagnosticIoTHubD2C`kategóriába tartozó diagnosztikai naplók Azure Monitoréhez.
-1. Az üzenetek feldolgozásának befejeződése után IoT Hub egy másik `span-id` hoz létre, és a `DiagnosticIoTHubIngress`kategóriába tartozó meglévő `trace-id`t naplózza.
+1. Ha igen, IoT Hub létrehoz egy globálisan egyedi `trace-id` az üzenethez, egy `span-id` a "hop"-hoz, és naplózza őket Azure Monitor diagnosztikai naplókba a művelet `DiagnosticIoTHubD2C`.
+1. Az üzenetek feldolgozásának befejeződése után IoT Hub létrehoz egy másik `span-id`, és a művelet `DiagnosticIoTHubIngress`alatt naplózza a meglévő `trace-id`.
 1. Ha az útválasztás engedélyezve van az üzenethez, IoT Hub írja azt az egyéni végpontba, és egy másik `span-id` naplózza ugyanazzal a `trace-id` a `DiagnosticIoTHubEgress`kategóriába.
 1. A fenti lépéseket minden generált üzenet esetében meg kell ismételni.
 

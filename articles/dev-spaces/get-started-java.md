@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes Service-ben egy Java-alkalmazás hibakereséséhez és gyors megismétléséhez
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 47948b0ce4ac0cb9a78552891e42d7634335839e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: cb79b60cdc1b9e417b402ffe8c29151f7790a390
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121760"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538601"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio Code és a Java az Azure dev Spaces szolgáltatással
 
@@ -103,7 +103,7 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
 1. Futtassa ezt a parancsot (győződjön meg róla, hogy a **webfrontend** a jelenlegi mappája):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
