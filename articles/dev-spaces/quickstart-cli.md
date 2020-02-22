@@ -1,17 +1,17 @@
 ---
 title: Alkalmazás fejlesztése a Kubernetes-on
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a parancssor az alkalmazások fejlesztéséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867247"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538430"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése a Kubernetes-ben – Azure dev Spaces
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -76,7 +76,7 @@ Ahhoz, hogy alkalmazást futtasson az Azure dev Spaces szolgáltatásban, szüks
 A Docker és a Helm diagram eszközeinek előállítása az alkalmazás Kubernetes való futtatásához a `azds prep` parancs használatával:
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 A Docker és a Helm diagram eszközeinek megfelelő létrehozásához futtatnia kell a `prep` parancsot a *dev-Spaces/Samples/NodeJS/Getting-Started/webfrontend* könyvtárból.
@@ -119,7 +119,7 @@ Ha leállítja a `azds up` parancsot a *CTRL + c billentyűkombinációval*, a s
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a `azds up` parancsot. Példa:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a `azds up` parancsot. Például:
 
 1. Ha `azds up` még fut, nyomja le a *CTRL + c*billentyűkombinációt.
 1. [A `server.js`13. sorának frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
