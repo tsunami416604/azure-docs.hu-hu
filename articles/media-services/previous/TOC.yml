@@ -397,8 +397,6 @@
       items:
         - name: Médiatartalom lejátszása meglévő lejátszókkal
           href: media-services-playback-content-with-existing-players.md
-        - name: Médiatartalom lejátszása a Media Playerrel
-          href: media-services-develop-video-players.md
         - name: Egyéb lejátszási beállítások
           items:
             - name: Zökkenőmentes streamet biztosító Windows Áruházbeli alkalmazás
