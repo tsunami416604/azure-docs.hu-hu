@@ -6,12 +6,14 @@
       href: overview.md
 - name: Rövid útmutatók
   items:
-    - name: MFA megkövetelése adott alkalmazásokhoz
-      href: app-based-mfa.md
     - name: A használati feltételek elfogadásának kötelezővé tétele
       href: require-tou.md
     - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
       href: app-sign-in-risk.md
+- name: Oktatóanyagok
+  items:
+    - name: Azure Multi-Factor Authentication szükséges
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: Alapelvek
   expanded: false
   items:

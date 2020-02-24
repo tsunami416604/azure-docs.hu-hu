@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: e2851f7087151b09b5f859b7142aa28e5b18a4e5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514085"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200129"
 ---
 ::: zone target="docs"
 
@@ -100,7 +100,7 @@ Az adatok Azure-ba történő feltöltését az alábbi lépésekkel ellenőrizh
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Adatok törlése a Data Box Diskről
 
-Miután a másolás befejeződött, és meggyőződött róla, hogy az adatok megtalálhatók az Azure Storage-fiókban, a lemezekről az NIST szabványnak megfelelően minden adat biztonságosan törlődik.
+Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) szabványnak megfelelően.
 
 ::: zone target="docs"
 

@@ -2,17 +2,17 @@
 title: Mi az az Azure Reservations?
 description: Megismerheti az Azure Reservationst és annak díjszabását a virtuális gépek, az SQL Database-adatbázisok, az Azure Cosmos DB és más erőforrások költségeinek csökkentéséhez.
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841880"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443635"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -37,11 +37,19 @@ Szolgáltatáscsomagok:
 - **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. A licenc számlázása külön történik.
 - **SQL Data Warehouse** – A foglalás a cDWU-használatot fedezi. Nem fedezi azonban az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 - **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Azure Data Explorer
+- **Azure Databricks** – A foglalás csak a DBU-használatot fedezi. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
+- **Azure Database for MySQL** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a MySQL-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
+- **Azure Database for PostgreSQL** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a PostgreSQL-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
+- **Azure Database for MariaDB** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a MariaDB-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
+- **Azure Data Explorer** – A foglalás magában foglalja az árrés díját. A foglalás nem fedezi a fürtökhöz kapcsolódó számítási feladatok, hálózatkezelés és tárolás költségeit.
+- **Premium SSD Managed Disks** – A foglalás egy megadott lemez-termékváltozatra vonatkozik. 
 
+Szoftvercsomagok:
+
+- **SUSE Linux** – A foglalás a szoftvercsomag költségeit foglalja magában. A kedvezmények csak a SUSE-mérőszámokra vonatkoznak, a virtuálisgép-használatra nem.
+- **Red Hat-csomagok** – A foglalás a szoftvercsomag költségeit foglalja magában. A kedvezmények csak a RedHat-mérőszámokra vonatkoznak, a virtuálisgép-használatra nem.
+- **VMware Solution by CloudSimple** – A foglalás a VMWare CloudSimple-csomópontokat foglalja magában. További szoftverköltségek is felmerülhetnek.
+- **Azure Red Hat OpenShift** – A foglalás az OpenShift-költségeket foglalja magában, az Azure-infrastruktúra költségeit nem.
 
 A Windows rendszerű virtuális gépek és az SQL Database esetében a licencelési költségek fedezéséhez használhatja az [Azure Hybrid Benefitet](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -132,7 +140,7 @@ A foglalási kedvezmény csak nagyvállalati, Microsoft-ügyfélszerződéses, C
 
 ## <a name="when-the-reservation-term-expires"></a>A foglalási időszak lejárata
 
-A foglalási időszak végén a számlázási kedvezmény lejár, és az erőforrások számlázása használatalapú díjjal történik. Alapértelmezés szerint a foglalások automatikus megújítása nincs beállítva. A megújítási beállításokban elérhető lehetőség kiválasztásával engedélyezheti a foglalások automatikus megújítását. Az automatikus megújítás esetén a rendszer a meglévő foglalás lejáratakor megvásárol egy cserefoglalást. Alapértelmezés szerint a cserefoglalás ugyanolyan jellemzőkkel rendelkezik, mint a lejáró foglalás. Igény szering módosíthatja a számlázási gyakoriságot, az időszakot vagy a mennyiséget a megújítási beállításokban. A megújítást bármely felhasználó beállíthatja, aki tulajdonosi hozzáféréssel rendelkezik a foglaláshoz, valamint a számlázáshoz használt előfizetéshez.  
+A foglalási időszak végén a számlázási kedvezmény lejár, és az erőforrások számlázása használatalapú díjjal történik. Alapértelmezés szerint a foglalások automatikus megújítása nincs beállítva. A megújítási beállításokban elérhető lehetőség kiválasztásával engedélyezheti a foglalások automatikus megújítását. Az automatikus megújítás esetén a rendszer a meglévő foglalás lejáratakor megvásárol egy cserefoglalást. Alapértelmezés szerint a cserefoglalás ugyanolyan jellemzőkkel rendelkezik, mint a lejáró foglalás. Igény szerint módosíthatja a számlázási gyakoriságot, az időszakot vagy a mennyiséget a megújítási beállításokban. A megújítást bármely felhasználó beállíthatja, aki tulajdonosi hozzáféréssel rendelkezik a foglaláshoz, valamint a számlázáshoz használt előfizetéshez.  
 
 ## <a name="discount-applies-to-different-sizes"></a>A kedvezmény különböző méretekre érvényes
 

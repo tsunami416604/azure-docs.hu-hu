@@ -2,20 +2,16 @@
 title: Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 description: Ismerje meg, hogyan cserélheti be vagy térítheti vissza az Azure Reservations foglalásait.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773886"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200435"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -72,12 +68,10 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 - A cserékre semmilyen pótdíj vagy éves korlát nem vonatkozik.
 
 **Visszatérítési szabályzatok**
-- A foglalás lemondásáért 12%-os korai felmondási díj számítható fel.
-- A lemondás után kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. Ha le szeretne mondani egy foglalást, nyissa meg az Azure Portalon, majd válassza a **Visszatérítés** lehetőséget.
+- A foglalás jövőbeli lemondásáért 12%-os korai felmondási díj számítható fel. Ezt jelenleg nem alkalmazzuk.
 - A teljes visszatérítési összeg nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
-- A visszatérítéseket csak foglalások tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- A Microsoft fenntartja a jogot, hogy bármely visszatérítésre 12%-os pótdíjat alkalmazzon. Ez a pótdíj jelenleg nincs érvényben, de a későbbiekben érvénybe lép majd.
+- A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Nem prémium szintű tároló cseréje prémium tárolóra
 

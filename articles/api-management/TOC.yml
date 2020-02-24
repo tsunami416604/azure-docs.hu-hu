@@ -123,6 +123,8 @@
       items:
         - name: Az API védelme az Azure AD-vel
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Az SPA háttérrendszeri API védelme az Azure AD B2C-vel
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: Csatlakozás virtuális hálózathoz
           href: api-management-using-with-vnet.md
         - name: Csatlakozás belső virtuális hálózathoz
