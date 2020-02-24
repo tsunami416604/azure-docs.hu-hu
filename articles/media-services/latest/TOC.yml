@@ -99,6 +99,8 @@
         - name: Streamvégpontok
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: Streamelés méretezése CDN-nel
+          href: scale-streaming-cdn.md
         - name: Streamelési lokátor
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: Feladatok létrehozása – parancssori felület
           href: cli-create-jobs.md
+        - name: Feladatok egyszerre több transzformált adattal
+          href: job-multiple-transform-outputs.md
     - name: Tartalom kódolása
       items:
         - name: HTTPS mint feladatbemenet – .NET

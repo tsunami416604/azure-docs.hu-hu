@@ -1,26 +1,30 @@
 - name: A Speech szolgáltatás dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   expanded: true
   items:
     - name: Mi az a beszédszolgáltatás?
       href: overview.md
+    - name: A Speech Service ingyenes kipróbálása
+      href: get-started.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Diktálás
   expanded: false
   items:
+    - name: A Beszédfelismerés dokumentációja
+      href: index-speech-to-text.yml
     - name: Áttekintés
       items:
         - name: Mi az a diktálás?
           href: speech-to-text.md
-    - name: Rövid útmutatók
+    - name: Első lépések
       items:
-        - name: Beszéd felismerése hangfájlból
-          href: quickstarts/speech-to-text-from-file.md
         - name: Beszéd felismerése mikrofonbemenettel
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: Beszéd felismerése hangfájlból
+          href: quickstarts/speech-to-text-from-file.md
         - name: Blobtárolóban tárolt beszéd felismerése
           href: quickstarts/from-blob.md
     - name: Útmutatók
@@ -45,8 +49,20 @@
           href: how-to-use-codec-compressed-audio-input-streams-ios.md
         - name: Tömörített hangbemeneti formátumok használata (Android)
           href: how-to-use-codec-compressed-audio-input-streams-android.md
-        - name: Beszédfelismerés használata Docker-tárolókkal
-          href: speech-container-howto.md?tabs=stt
+    - name: Testreszabás
+      items:
+        - name: Adatok előkészítése
+          href: how-to-custom-speech-test-data.md
+        - name: Adatok vizsgálata
+          href: how-to-custom-speech-inspect-data.md
+        - name: Pontosság értékelése
+          href: how-to-custom-speech-evaluate-data.md
+        - name: Egyéni modell betanítása
+          href: how-to-custom-speech-train-model.md
+        - name: Egyéni modell üzembe helyezése
+          href: how-to-custom-speech-deploy-model.md
+        - name: Ember által címkézett átiratok létrehozása
+          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Referencia
       items:
         - name: Beszéd SDK API-k
@@ -86,33 +102,68 @@
 - name: Szövegfelolvasás
   expanded: false
   items:
+    - name: A Szövegfelolvasás dokumentációja
+      href: index-text-to-speech.yml
     - name: Áttekintés
       items:
         - name: Mi az a szövegfelolvasás?
           href: text-to-speech.md
-    - name: Rövid útmutatók
+    - name: Első lépések
       items:
-        - name: Beszédszintézis egy hangfájlba
-          href: quickstarts/text-to-speech-audio-file.md
         - name: Beszédszintézis hangszóróra
           href: quickstarts/text-to-speech.md
-        - name: Aszinkron szintézis a hosszú formátumú hangokhoz
+        - name: Beszédszintézis egy hangfájlba
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: Beszédszintézis hosszú formátumú hangokkal
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
     - name: Útmutatók
       items:
-        - name: Kimenet javítása SSML-lel
+        - name: Szintézis javítása az SSML-lel
           href: speech-synthesis-markup.md
-        - name: Kimenet javítása a Custom Voices használatával
+        - name: Szintézis javítása a Custom Voice-szal
           href: how-to-custom-voice.md
           displayName: custom voice
         - name: Beszédszintézis a Long Audio API-val
           href: long-audio-api.md
-        - name: Beszédszintézis használata Docker-tárolókkal
-          href: speech-container-howto.md?tabs=tts
         - name: Hangok listájának lekérése a REST (Python) használatával
           href: quickstart-python-get-text-to-speech-voices.md
         - name: Szöveg átalakítása beszéddé a REST (Python) használatával
           href: quickstart-python-text-to-speech.md
+    - name: Testreszabás
+      items:
+        - name: Felelős üzembe helyezés
+          items:
+            - name: Custom Voice korlátozása
+              href: concepts-gating-overview.md
+            - name: Szintetikus technológia üzembe helyezése
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: Hangszolgáltatókra vonatkozó nyilatkozat
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: Közzététel-tervezési irányelvek
+              href: concepts-disclosure-guidelines.md
+            - name: Közzététel-tervezési minták
+              href: concepts-disclosure-patterns.md
+            - name: Etikai kódex
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Custom Voice portál
+          items:
+            - name: Bevezetés a Custom Voice szolgáltatásba
+              href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
+            - name: Adatok előkészítése
+              href: how-to-custom-voice-prepare-data.md
+            - name: Custom Voice-modellek létrehozása és használata
+              href: how-to-custom-voice-create-voice.md
+            - name: Hangminták felvétele
+              href: record-custom-voice-samples.md
+            - name: Egyéni kulcsszóelnevezési irányelvek
+              href: speech-devices-sdk-kws-guidelines.md
+            - name: Egyéni kulcsszófelismerés
+              href: speech-devices-sdk-create-kws.md
+        - name: Hanganyag létrehozása
+          items:
+            - name: Hanganyag létrehozása
+              href: how-to-audio-content-creation.md
     - name: Referencia
       items:
         - name: Beszéd SDK
@@ -147,55 +198,16 @@
         - name: Szövegfelolvasás – GYIK
           href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
-- name: Szándékfelismerés
-  expanded: false
-  items:
-    - name: Rövid útmutatók
-      items:
-        - name: 'Beszéd, szándékok és entitások felismerése'
-          href: quickstarts/intent-recognition.md
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: Útmutatók
-      items:
-        - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-    - name: Referencia
-      items:
-        - name: Beszéd SDK
-          items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: Kibocsátási megjegyzések
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: LUIS szolgáltatás
-          items:
-            - name: LUIS fejlesztői forrásanyagok
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Beszédfordítás
   expanded: false
   items:
+    - name: A Beszédfordítás dokumentációja
+      href: index-speech-translation.yml
     - name: Áttekintés
       items:
         - name: Mi az a beszédfordítás?
           href: speech-translation.md
-    - name: Rövid útmutatók
+    - name: Első lépések
       items:
         - name: Diktálás fordítása
           href: quickstarts/translate-speech-to-text.md
@@ -236,17 +248,65 @@
       items:
         - name: Beszédfordítás – GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: Szándékfelismerés
+  expanded: false
+  items:
+    - name: A Szándékfelismerés dokumentációja
+      href: index-intent-recognition.yml
+    - name: Első lépések
+      items:
+        - name: 'Beszéd, szándékok és entitások felismerése'
+          href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: Útmutatók
+      items:
+        - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: Referencia
+      items:
+        - name: Beszéd SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+            - name: Kibocsátási megjegyzések
+              href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+        - name: LUIS szolgáltatás
+          items:
+            - name: LUIS fejlesztői forrásanyagok
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Beszélgetési forgatókönyvek
   expanded: false
   items:
+    - name: A Beszélgetési forgatókönyvek dokumentációja
+      href: index-conversation-scenarios.yml
     - name: Beszédátírás
       items:
         - name: Áttekintés
           items:
-            - name: Mi az a beszédátírás?
+            - name: A Beszédátírás ismertetése
               href: conversation-transcription.md
         - name: Útmutatók
           items:
+            - name: Telefonos ügyfélszolgálati helyzetek kezelése
+              href: call-center-transcription.md
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
             - name: Valós idejű beszédátírás
               href: how-to-use-conversation-transcription.md
             - name: Aszinkron beszédátírás
@@ -284,9 +344,9 @@
       items:
         - name: Áttekintés
           items:
-            - name: Mi az a több eszközös beszélgetés?
+            - name: A többeszközös beszélgetések ismertetése
               href: multi-device-conversation.md
-        - name: Rövid útmutatók
+        - name: Első lépések
           items:
             - name: Beszélgetések indítása és az azokhoz való csatlakozás
               href: quickstarts/multi-device-conversation.md
@@ -301,6 +361,8 @@
 - name: Hangvezérelt asszisztensek
   expanded: false
   items:
+    - name: A hangvezérelt asszisztensek dokumentációja
+      href: index-voice-assistants.yml
     - name: Áttekintés
       items:
         - name: Mi az a hangvezérelt asszisztens?
@@ -349,115 +411,25 @@
           items:
             - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
               href: faq-voice-assistants.md
-- name: Testreszabás
+- name: Üzemeltetés
   expanded: false
   items:
-    - name: Diktálás
-      items:
-        - name: Custom Speech portál
-          items:
-            - name: Bevezetés a Custom Speech szolgáltatásba
-              href: how-to-custom-speech.md
-            - name: Adatok előkészítése
-              href: how-to-custom-speech-test-data.md
-            - name: Adatok vizsgálata
-              href: how-to-custom-speech-inspect-data.md
-            - name: Pontosság értékelése
-              href: how-to-custom-speech-evaluate-data.md
-            - name: Egyéni modell betanítása
-              href: how-to-custom-speech-train-model.md
-            - name: Egyéni modell üzembe helyezése
-              href: how-to-custom-speech-deploy-model.md
-            - name: Ember által címkézett átiratok létrehozása
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Bérlőmodellek
-          items:
-            - name: 'Modell létrehozása, közzététele és használata'
-              href: tutorial-tenant-model.md
-    - name: Szövegfelolvasás
-      items:
-        - name: Felelős üzembe helyezés
-          items:
-            - name: Custom Voice korlátozása
-              href: concepts-gating-overview.md
-            - name: Szintetikus technológia üzembe helyezése
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Hangszolgáltatókra vonatkozó nyilatkozat
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: Közzététel-tervezési irányelvek
-              href: concepts-disclosure-guidelines.md
-            - name: Közzététel-tervezési minták
-              href: concepts-disclosure-patterns.md
-            - name: Etikai kódex
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: Custom Voice portál
-          items:
-            - name: Bevezetés a Custom Voice szolgáltatásba
-              href: how-to-custom-voice.md
-              displayName: 'custom voice, neural voice'
-            - name: Adatok előkészítése
-              href: how-to-custom-voice-prepare-data.md
-            - name: Custom Voice-modellek létrehozása és használata
-              href: how-to-custom-voice-create-voice.md
-            - name: Hangminták felvétele
-              href: record-custom-voice-samples.md
-        - name: Hanganyag létrehozása
-          items:
-            - name: Hanganyag létrehozása
-              href: how-to-audio-content-creation.md
-    - name: Egyéni kulcsszóelnevezési irányelvek
-      href: speech-devices-sdk-kws-guidelines.md
-    - name: Egyéni kulcsszófelismerés
-      href: speech-devices-sdk-create-kws.md
-- name: Speech szolgáltatás
-  expanded: false
-  items:
-    - name: Forgatókönyvek
-      items:
-        - name: Ügyfélszolgálatok
-          href: call-center-transcription.md
-          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+    - name: Az üzemeltetés dokumentációja
+      href: index-hosting.yml
     - name: Útmutatók
       items:
-        - name: A Speech Service ingyenes kipróbálása
-          href: get-started.md
-        - name: Speech Service-erőforrás létrehozása
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-        - name: Containers
-          expanded: false
-          items:
-            - name: Tárolók telepítése és futtatása
-              href: speech-container-howto.md
-              displayName: 'containers,install container,run container'
-            - name: Tárolók konfigurálása
-              href: speech-container-configuration.md
-              displayName: 'containers,configure containers,container config,configuration'
-            - name: Kubernetes és Helm
-              href: speech-container-howto-on-premises.md
-              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-            - name: Azure Container Instances
-              href: deploy-speech-on-container-instances.md
-              displayName: 'ACI,azure container instances,container instances,containers'
-    - name: Példák
-      items:
-        - name: Szövegfelolvasási REST-minták
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: Kötegelt átírási REST-minták
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: Referencia
-      items:
-        - name: REST API-k
-          items:
-            - name: Kötegelt átírási és testreszabási REST API
-              href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Beszédátírási REST API
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-            - name: Diktálás REST API
-              href: rest-speech-to-text.md
-            - name: Szövegfelolvasás REST API
-              href: rest-text-to-speech.md
-        - name: A Swagger dokumentációja
-          href: swagger-documentation.md
+        - name: Tárolók telepítése és futtatása
+          href: speech-container-howto.md
+          displayName: 'containers,install container,run container'
+        - name: Tárolók konfigurálása
+          href: speech-container-configuration.md
+          displayName: 'containers,configure containers,container config,configuration'
+        - name: Kubernetes és Helm
+          href: speech-container-howto-on-premises.md
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+        - name: Azure Container Instances
+          href: deploy-speech-on-container-instances.md
+          displayName: 'ACI,azure container instances,container instances,containers'
 - name: Beszéd SDK
   expanded: false
   items:
@@ -469,7 +441,7 @@
           href: scenario-availability.md
         - name: Alkalmazáskészítés
           href: ship-application.md
-    - name: Rövid útmutatók
+    - name: Első lépések
       items:
         - name: Projekt létrehozása
           href: quickstarts/create-project.md
@@ -510,6 +482,8 @@
 - name: Eszközök
   expanded: false
   items:
+    - name: A Speech Devices dokumentációja
+      href: index-devices.yml
     - name: Áttekintés
       items:
         - name: A Beszédeszközök SDK ismertetése
@@ -522,14 +496,10 @@
           href: speech-devices-sdk-microphone.md
         - name: Roobo v1 készlet
           href: speech-devices-sdk-roobo-v1.md
-    - name: Rövid útmutatók
+    - name: Első lépések
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: A Speech Devices SDK használata
+          href: speech-devices-sdk-quickstart.md
     - name: További források
       items:
         - name: A Beszédeszközök SDK hibaelhárítása
@@ -555,6 +525,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Régiók
       href: regions.md
+    - name: A Swagger dokumentációja
+      href: swagger-documentation.md
     - name: Független felhők
       href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'

@@ -1,0 +1,211 @@
+### YamlMime:Hub
+title: A Speech szolgáltatás dokumentációja
+summary: Beszédfelismerés, beszédszintézis, valós idejű fordítások, beszédátírás vagy beszéd integrálása a robotokba.
+brand: azure
+metadata:
+  title: A Speech szolgáltatás dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: Beszédfelismerés, beszédszintézis, valós idejű fordítások, beszédátírás vagy beszéd integrálása a robotokba.
+  author: IEvangelist
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563023"
+highlightedContent:
+  items:
+  - title: Mi az a beszédszolgáltatás?
+    itemType: overview
+    url: overview.md
+  - title: A Speech SDK kibocsátási megjegyzései
+    itemType: whats-new
+    url: releasenotes.md
+  - title: Nyelvek támogatása a Speech-szolgáltatásokban
+    itemType: reference
+    url: language-support.md
+  - title: Speech-szolgáltatások erőforrásainak létrehozása
+    itemType: how-to-guide
+    url: get-started.md
+conceptualContent:
+  items:
+  - title: Diktálás
+    links:
+    - itemType: quickstart
+      text: Beszéd felismerése mikrofonbemenettel
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: Beszéd felismerése hangfájlból
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: quickstart
+      text: Blobtárolóban tárolt beszéd felismerése
+      url: quickstarts/from-blob.md
+    footerLink:
+      text: Részletek
+      url: index-speech-to-text.yml
+  - title: Szövegfelolvasás
+    links:
+    - itemType: quickstart
+      text: Beszédszintézis hangszóróra
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: Beszédszintézis egy hangfájlba
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: quickstart
+      text: Beszédszintézis hosszú formátumú hangokkal
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    footerLink:
+      text: Részletek
+      url: index-text-to-speech.yml
+  - title: Beszédfordítás
+    links:
+    - itemType: quickstart
+      text: Diktálás fordítása
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: Beszéd fordítása több célnyelvre
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: quickstart
+      text: Beszéd fordítása beszédre
+      url: quickstarts/translate-speech-to-speech.md
+    footerLink:
+      text: Részletek
+      url: index-speech-translation.yml
+  - title: Szándékfelismerés
+    links:
+    - itemType: quickstart
+      text: Beszéd, szándékok és entitások felismerése
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: A beszélő szándékának felismerése a LUIS szolgáltatással és a C#-pal
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: A Language Understanding (LUIS) portálja
+      url: https://www.luis.ai
+    footerLink:
+      text: Részletek
+      url: index-intent-recognition.yml
+  - title: Beszélgetési forgatókönyvek
+    links:
+    - itemType: overview
+      text: A beszédátírás ismertetése
+      url: conversation-transcription.md
+    - itemType: overview
+      text: A többeszközös beszélgetések ismertetése
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: Telefonos ügyfélszolgálati felvételek átírása
+      url: call-center-transcription.md
+    footerLink:
+      text: Részletek
+      url: index-conversation-scenarios.yml
+  - title: Hangvezérelt asszisztensek
+    links:
+    - itemType: overview
+      text: A hangvezérelt asszisztensek ismertetése
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Hangvezérelt asszisztens létrehozása egyéni parancsokkal
+      url: custom-commands.md
+    - itemType: get-started
+      text: Hangvezérelt asszisztens létrehozása Bot Frameworkkel
+      url: direct-line-speech.md
+    footerLink:
+      text: Részletek
+      url: index-voice-assistants.yml
+  - title: Üzemeltetés
+    links:
+    - itemType: how-to-guide
+      text: Speech-szolgáltatástárolók
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: Kubernetest használó Speech-szolgáltatástárolók
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Speech-szolgáltatástárolók az Azure Container Instancesben
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: Részletek
+      url: index-hosting.yml
+  - title: Eszközök
+    links:
+    - itemType: overview
+      text: A Beszédeszközök SDK ismertetése
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: Beszédeszközök SDK letöltése
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: A Speech Devices SDK használata
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: Részletek
+      url: index-devices.yml
+  - title: Migrálás
+    links:
+    - itemType: how-to-guide
+      text: Migrálás a Bing Speechből
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: Migrálás a Custom Speech Service-ből
+      url: how-to-migrate-from-custom-speech-service.md
+    - itemType: how-to-guide
+      text: Migrálás a Translator Speech API-ból
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: Szoftverfejlesztői készletek (SDK-k)
+  summary: Bevezetés a Speech SDK az előnyben részesített programozási nyelvben történő használatába.
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Az Objective-C és a Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
+  - items:
+    - title: REST API-k
+      links:
+      - text: Diktálás
+        url: rest-speech-to-text.md
+      - text: Kötegelt átírás
+        url: batch-transcription.md
+      - text: Szövegfelolvasás
+        url: rest-text-to-speech.md
+      - text: Beszédátírás
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: További források
+      links:
+      - text: Díjszabás
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: Régiók
+        url: regions.md
+      - text: Tanulás
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: Támogatás
+      links:
+      - text: Súgó és támogatás
+        url: support.md
+      - text: GitHub-problémák
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: Stack Overflow
+        url: https://aka.ms/SOspeechquestions
