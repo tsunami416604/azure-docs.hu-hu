@@ -1,5 +1,5 @@
 ---
-title: Statikus IP-cím használata az Azure Kubernetes szolgáltatás (ak) terheléselosztó használatával
+title: Statikus IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
 services: container-service
 author: mlearned
@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325444"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558905"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím használata az Azure Kubernetes szolgáltatással (ak) terheléselosztó
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
 Alapértelmezés szerint egy AK-fürt által létrehozott terheléselosztó-erőforráshoz hozzárendelt nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
 
@@ -98,6 +98,30 @@ Hozza létre a szolgáltatást és az üzembe helyezést az `kubectl apply` para
 kubectl apply -f load-balancer-service.yaml
 ```
 
+## <a name="apply-a-dns-label-to-the-service"></a>DNS-címke alkalmazása a szolgáltatásra
+
+Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, akkor a szolgáltatás megjegyzése `service.beta.kubernetes.io/azure-dns-label-name` használatával megadhatja a nyilvános DNS-címkét. Ez egy teljes tartománynevet tesz közzé a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya segítségével. A jegyzet értékének egyedinek kell lennie az Azure-helyen belül, ezért ajánlott egy megfelelően minősített címkét használni.   
+
+Az Azure ezt követően automatikusan hozzáfűz egy alapértelmezett alhálózatot, például a `<location>.cloudapp.azure.com` (ahol a hely a kiválasztott régió), a megadott névre, hogy létrehozza a teljesen minősített DNS-nevet. Például:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> A szolgáltatás saját tartományon való közzétételéhez tekintse meg a [Azure DNS][azure-dns-zone] és a [külső DNS-][external-dns] projektet.
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Ha a Kubernetes szolgáltatás jegyzékfájljának *loadBalancerIP* tulajdonságában definiált statikus IP-cím nem létezik, vagy nem lett létrehozva a csomópont-erőforráscsoporthoz, és nincs további delegálás konfigurálva, a terheléselosztó szolgáltatás létrehozása sikertelen lesz. A hibák megoldásához tekintse át a szolgáltatás-létrehozási eseményeket a [kubectl leíró][kubectl-describe] paranccsal. Adja meg a szolgáltatás nevét a YAML jegyzékfájlban megadott módon, az alábbi példában látható módon:
@@ -136,6 +160,8 @@ Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdek
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

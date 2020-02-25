@@ -1,19 +1,19 @@
 ---
 title: Riasztás kiváltó okainak elemzése – Azure | Microsoft Docs
 description: Ebben az oktatóanyagban a riasztások kiváltó okainak az Azure Time Series Insights használatával végzett elemzését sajátíthatja el.
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444619"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565468"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Oktatóanyag: Riasztás kiváltó okainak elemzése
 
@@ -40,7 +40,7 @@ Az **Irányítópult** oldalon megjelenítendő csatlakoztatott eszközök kivá
 
 [![Teherautók keresése szűréssel az irányítópulton](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-Amikor alkalmazza a szűrőt, csak azokat az eszközöket a szűrési feltételeknek megfelelő jelennek meg a térképen, és a telemetriai adatok panelen a **irányítópult**. Láthatja, hogy a megoldásgyorsítóhoz két teherautó csatlakozik, beleértve a **truck-02** teherautót is.
+Szűrő alkalmazása esetén csak a szűrési feltételeknek megfelelő eszközök jelennek meg a térképen és az **irányítópult**telemetria paneljén. Láthatja, hogy a megoldásgyorsítóhoz két teherautó csatlakozik, beleértve a **truck-02** teherautót is.
 
 ## <a name="view-real-time-telemetry"></a>Valós idejű telemetriai adatok megtekintése
 
@@ -62,25 +62,25 @@ Amikor az Explorer megnyílik, megjelenik az eszközök teljes listája:
 
 [![TSI Explorer kezdő nézet](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-Az eszközök szűrése beírásával **szállítójárműhöz** a Szűrő mezőbe, és válassza a **hőmérséklet** , a **mérték** a bal oldali panelen:
+Az eszközök szűréséhez írja be a **Delivery-Truck** kifejezést a szűrő mezőbe, és **válassza a** **hőmérséklet** lehetőséget a bal oldali panelen:
 
 [![TSI Explorer – teherautó hőmérséklete](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-A távoli figyelési irányítópult a látott ugyanabban a nézetben láthatja. Ezenkívül mostantól nagyítás is közelebb a az időkeretet, amely a riasztás aktiválódott belül:
+Ugyanazt a nézetet látja, amelyet a távoli figyelési irányítópulton látott. Emellett most már közelebb is nagyíthatja azt az időkeretet, amelyen a riasztást aktiválták:
 
 [![TSI Explorer – zoom](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
-Hozzáadhat a teherautóktól származó további telemetria-streameket is. Kattintson a **Hozzáadás** gomb bal felső sarokban. Ekkor új panel nyílik meg:
+Hozzáadhat a teherautóktól származó további telemetria-streameket is. Kattintson a **Hozzáadás** gombra a bal felső sarokban. Ekkor új panel nyílik meg:
 
 [![TSI Explorer új panellel](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-Az új panelen módosítsa az új címke nevét az **Eszközök** névre, hogy megegyezzen az előzővel. Válassza ki **magasság** , a **mérték** és **iothub-kapcsolat-eszközazonosító** , a **Split által** , tengerszint telemetriát hozzáadandó érték a nézet:
+Az új panelen módosítsa az új címke nevét az **Eszközök** névre, hogy megegyezzen az előzővel. Válassza a **magasság** lehetőséget a **mérték** és a **iothub-Device-ID** érték szerint a **felosztás** értékeként, hogy hozzáadja a magassági telemetria a nézethez:
 
 [![TSI Explorer a hőmérséklettel és a magassággal](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>A riasztás diagnosztizálása
 
-Ha megnézi a streameket, az aktuális nézet, láthatja, hogy a két látható a magasság profilok különböznek. Az is látható, hogy a **delivery-truck-02** esetében a hőmérséklet-csökkenés akkor következik be, amikor a teherautó nagy magasságot ér el. Az eredmény meglepő, hiszen a két teherautó számára ugyanaz az útvonal volt kijelölve.
+Ha az aktuális nézetben megtekinti a streameket, láthatja, hogy a két teherautó magassági profiljai eltérőek. Az is látható, hogy a **delivery-truck-02** esetében a hőmérséklet-csökkenés akkor következik be, amikor a teherautó nagy magasságot ér el. Az eredmény meglepő, hiszen a két teherautó számára ugyanaz az útvonal volt kijelölve.
 
 Sejtését, hogy a teherautók más útvonalon haladtak, úgy igazolhatja, hogy újabb panelt vesz fel az oldalpanelre a **Hozzáadás** gomb használatával. Az új panelen módosítsa az új címke nevét az **Eszközök** névre, hogy megegyezzen az előzővel. A földrajzi hosszúsági telemetriát úgy veheti fel ebbe a nézetbe, hogy **Mértékként** a **földrajzi hosszúságot**, a **Felosztás** szempontjaként pedig az **iothub-connection-device-id** értéket választja. A **földrajzi hosszúsági** stream alapján megállapítható, hogy a teherautók különböző útvonalon haladtak:
 
@@ -88,7 +88,7 @@ Sejtését, hogy a teherautók más útvonalon haladtak, úgy igazolhatja, hogy 
 
 ## <a name="create-a-new-rule"></a>Új szabály létrehozása
 
-Teherautó útvonalak optimalizált általában előzetes, miközben kiderülhet, hogy forgalmi mintázatait, időjárás és más előre nem látható események is késésekhez vezethet, és hagyja meg az elmúlt percben útválasztási döntéseket teherautó illesztőprogramokat a legjobb ítéletét alapján. Azonban mivel a hőmérsékletet, a vehicle belüli eszközök a kritikus fontosságú, érdemes további szabály létrehozása a távoli figyelési megoldásban. Ez a szabály annak érdekében, hogy figyelmeztetést kap, ha egy 1 perces időszakban az átlagos magasság túllépik 350 feet:
+Míg a tehergépkocsi-útvonalakat általában előre optimalizálták, a forgalmi minták, az időjárás és az egyéb előre nem látható események késéseket okozhatnak, és a legjobb döntésük alapján elhagyják az utolsó perc útvonalra vonatkozó döntéseket a tehergépkocsi-járművezetők számára. Mivel azonban az eszközeinek a járművön belüli hőmérséklete kritikus, egy további szabályt kell létrehoznia a távoli figyelési megoldásban. Ez a szabály annak biztosítására szolgál, hogy figyelmeztetést kapjon, ha egy 1 perces intervallum átlagos magassága 350 méternél magasabb:
 
 [![Távoli figyelési szabályok lapja a magasságra vonatkozó szabály beállításával](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 

@@ -110,7 +110,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | India                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
-| Korea                                         |                 |                |              |      ✓     |          ✓         |
+| Dél-Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Laosz                                                |                 |                |              |      ✓     |          ✓         |
 | Makaó KKT                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajzia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -280,7 +280,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Seychelle                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Szomália                                             |                 |                |              |      ✓     |          ✓         |
-| Dél-Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Dél-afrikai Köztársaság                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dél-Szudán                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Szudán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Szváziföld                                           |                 |                |       ✓      |      ✓     |          ✓         |

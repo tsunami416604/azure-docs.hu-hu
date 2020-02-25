@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539535"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562428"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -131,7 +131,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>A Send telemetria minta szerkesztése az elosztott nyomkövetés engedélyezéséhez
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">A minta beolvasása a githubon</a>
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">A minta beolvasása a GitHubon</a>
 
 1. A `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` forrásfájl megnyitásához használja a szerkesztőt.
 
@@ -244,7 +244,7 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 }
 ```
 
-| Elem neve | Kötelező | Típus | Leírás |
+| Elem neve | Szükséges | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` be van kapcsolva, és `2` ki van kapcsolva. |
 | `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` és `100` (beleértve a) értékek megengedettek.  |
@@ -280,7 +280,7 @@ A különböző típusú naplók megismeréséhez tekintse meg az [Azure IoT hub
 A IoT-üzenetek folyamatának megjelenítéséhez állítsa be az alkalmazás-hozzárendelési minta alkalmazást. A minta alkalmazás egy Azure-függvény és egy Event hub használatával küldi el az elosztott nyomkövetési naplókat az [Application Map](../application-insights/app-insights-app-map.md) szolgáltatásnak.
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">A minta beolvasása a githubon</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">A minta beolvasása a GitHubon</a>
 
 Az alábbi képen az App Map elosztott nyomkövetése látható három útválasztási végponttal:
 
@@ -320,7 +320,7 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 - A felhőből az eszközre történő kettős képesség nem érhető el [IoT hub alapszintű csomaghoz](iot-hub-scaling.md#basic-and-standard-tiers). A IoT Hub azonban továbbra is Azure Monitor, ha a megfelelő számú nyomkövetési környezeti fejlécet lát.
 - A hatékony működés biztosítása érdekében a IoT Hub a naplózás mértékét fogja alkalmazni, amely az elosztott nyomkövetés részeként fordulhat elő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha többet szeretne megtudni az általános elosztott nyomkövetési mintával kapcsolatban, tekintse meg a következő témakört [: a Service architektúrájának mintája: elosztott nyomkövetés](https://microservices.io/patterns/observability/distributed-tracing.html).
 - Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](iot-hub-auto-device-config.md)című témakört

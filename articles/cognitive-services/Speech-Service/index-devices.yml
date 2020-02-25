@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Beszédfelismerési eszközök dokumentációja
+summary: A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
+metadata:
+  title: Beszédfelismerési eszközök dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562855"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Beszédeszközök SDK ismertetése
+      url: speech-devices-sdk.md
+  - linkListType: quickstart
+    links:
+    - text: A Speech Device SDK (Windows) használata
+      url: speech-devices-sdk-quickstart.md?pivots=platform-windows
+    - text: A Speech Device SDK (Linux) használata
+      url: speech-devices-sdk-quickstart.md?pivots=platform-linux
+    - text: A Speech Device SDK (Android) használata
+      url: speech-devices-sdk-quickstart.md?pivots=platform-android
+- title: Lépésenkénti útmutatók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Mikrofon tömb kialakítása
+      url: speech-devices-sdk-microphone.md
+    - text: A Roobo v1 csomag beállítása
+      url: speech-devices-sdk-roobo-v1.md
+- title: Referencia
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Kibocsátási megjegyzések
+      url: devices-sdk-release-notes.md
+  - linkListType: reference
+    links:
+    - text: Hibaelhárítás
+      url: speech-devices-sdk-troubleshooting.md

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251855"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561153"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure
 Az üzembe helyezési parancsfájl előnyei:
 
 - Egyszerű kód, használat és hibakeresés. Az üzembe helyezési parancsfájlokat kedvenc fejlesztői környezetekben is kifejlesztheti. A szkriptek sablonokba vagy külső parancsfájlokban is beágyazva lehetnek.
-- Megadhatja a parancsfájl nyelvét és platformját. Jelenleg csak Azure PowerShell telepítési parancsfájlok támogatottak a Linux-környezetben.
+- Megadhatja a parancsfájl nyelvét és platformját. Jelenleg a Linux-környezetben a Azure PowerShell és az Azure CLI üzembe helyezési parancsfájljai támogatottak.
 - A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak az [Azure-felhasználóhoz rendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
 - A parancssori argumentumok parancsfájlba való átadásának engedélyezése.
 - Megadhatja a parancsfájlok kimeneteit, és visszaküldheti azokat az üzembe helyezéshez.
@@ -48,16 +48,29 @@ Az üzembe helyezési parancsfájl előnyei:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Használja az alábbi PowerShell-szkriptet az azonosító beszerzéséhez az erőforráscsoport nevének és az identitás nevének megadásával.
+  Az alábbi CLI-vagy PowerShell-parancsfájl használatával szerezze be az azonosítót az erőforráscsoport nevének és az identitás nevének megadásával.
+
+  # <a name="cli"></a>[Parancssori felület](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell verzió: 2.7.0, 2.8.0 vagy 3.0.0**. A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
+- **Azure PowerShell a 3.0.0, a 2.8.0 vagy a 2.7.0** vagy **Az Azure CLI verziója 2.0.80, 2.0.79, 2.0.78 vagy 2.0.77**. A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
 ## <a name="sample-template"></a>Példasablon
 
@@ -67,9 +80,9 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 Tulajdonság értékének részletei:
 
 - **Identitás**: az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
-- **Típus: adja**meg a parancsfájl típusát. Jelenleg csak Azure PowerShell-parancsfájlok támogatottak. Az érték a **AzurePowerShell**.
+- **Típus: adja**meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Használja a newGuid () vagy a utcNow () függvényt, amelyet a paraméter defaultValue értékeként kell beállítani. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
-- **azPowerShellVersion**: Itt adhatja meg a használni kívánt Azure PowerShell modul verzióját. Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 verziót támogatja.
+- **azPowerShellVersion**/**azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. Az üzembe helyezési parancsfájl jelenleg a Azure PowerShell 2.7.0, a 2.8.0, az 3.0.0 és az Azure CLI 2.0.80, 2.0.79, 2.0.78 és 2.0.77 verzióját támogatja.
 - **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
 - **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja a `primaryScriptUri` helyet. Példák: [beágyazott parancsfájl használata](#use-inline-scripts) és [külső parancsfájl használata](#use-external-scripts).
-- **primaryScriptUri**: adjon meg egy nyilvánosan elérhető URL-címet az elsődleges PowerShell-parancsfájlhoz a PowerShell fájlkiterjesztés támogatott bővítménnyel.
-- **supportingScriptUris**: adja meg a nyilvánosan elérhető URL-címek egy olyan tömbjét, amely támogatja a `ScriptContent` vagy `PrimaryScriptUri`meghívott PowerShell-fájlokat.
+- **primaryScriptUri**: adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával.
+- **supportingScriptUris**: adja meg a nyilvánosan elérhető URL-címek egy olyan tömbjét, amely a `ScriptContent` vagy `PrimaryScriptUri`nevű fájlokat támogatja.
 - **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
 - **cleanupPreference**. Adja meg a telepítési erőforrások törlésének előnyét, ha a parancsfájl végrehajtása terminál állapotba kerül. Az alapértelmezett beállítás **mindig**, ami azt jelenti, hogy a rendszer a terminál állapota (sikeres, sikertelen, megszakított) ellenére törli az erőforrásokat. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
 - **retentionInterval**: adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az alapértelmezett érték a **P1D**, ami hét napot jelent. Ezt a tulajdonságot akkor használja a rendszer, ha a cleanupPreference értéke *OnExpiration*. A *OnExpiration* tulajdonság jelenleg nincs engedélyezve. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
@@ -124,7 +137,7 @@ A következő sablon egyetlen erőforrással van definiálva a `Microsoft.Resour
 
 A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. a `Write-Output` hibakeresés céljára szolgál. A kimeneti fájl elérésének megismeréséhez tekintse meg az [üzembe helyezési parancsfájlok hibakeresését](#debug-deployment-scripts)ismertető témakört.  A tulajdonságok leírását lásd: [minta sablon](#sample-template).
 
-A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj ablaktáblába.
+A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához, majd illessze be a következő kódot a rendszerhéj ablaktáblába.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Jelenleg csak a **ps1** fájlkiterjesztés PowerShell-szkriptek támogatottak. Külső parancsfájlok használatához cserélje le a `scriptContent`t a `primaryScriptUri`ra. Például:
+A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. Külső parancsfájlok használatához cserélje le a `scriptContent`t a `primaryScriptUri`ra. Például:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ A bonyolult logikai műveleteket egy vagy több támogató parancsfájlba is elk
 ],
 ```
 
-A támogató parancsfájlok a beágyazott parancsfájlokból és az elsődleges parancsfájlokból is meghívhatók.
+A támogató parancsfájlok a beágyazott parancsfájlokból és az elsődleges parancsfájlokból is meghívhatók. A támogató parancsfájlok nem rendelkeznek korlátozásokkal a fájlkiterjesztés esetében.
 
 A rendszer a támogató fájlokat a futtatókörnyezet azscripts/azscriptinput másolja. Relatív elérési út használatával hivatkozhat a beágyazott parancsfájlokból és az elsődleges parancsfájlokból származó támogató fájlokra.
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>Az üzembe helyezési parancsfájlok kimenetének használata
+## <a name="work-with-outputs-from-powershell-script"></a>Kimenetek használata PowerShell-parancsfájlból
 
 A következő sablon bemutatja, hogyan adhat át értékeket két deploymentScripts-erőforrás között:
 
@@ -185,6 +198,16 @@ Az első erőforrásban definiál egy **$DeploymentScriptOutputs**nevű változ�
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>Kimenetek használata a CLI-szkriptből
+
+Eltér a PowerShell telepítési parancsfájltól, a CLI/bash-támogatás nem tesz elérhetővé egy közös változót a parancsfájlok kimenetének tárolásához, hanem egy **AZ_SCRIPTS_OUTPUT_PATH** nevű környezeti változót, amely a parancsfájl kimeneti fájljának helyét tárolja. Ha egy üzembe helyezési parancsfájl egy Resource Manager-sablonból fut, akkor a bash rendszerhéj automatikusan beállítja ezt a környezeti változót.
+
+Az üzembe helyezési parancsfájl kimeneteit a AZ_SCRIPTS_OUTPUT_PATH helyre kell menteni, és a kimeneteknek érvényes JSON karakterlánc-objektumnak kell lenniük. A fájl tartalmát kulcs-érték párokként kell menteni. A karakterláncok tömbjét például {"MyResult": ["foo", "Bar"]} tárolja.  A csak a tömb eredményeinek tárolása (például ["foo", "Bar"]) érvénytelen.
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+a [jQ](https://stedolan.github.io/jq/) az előző mintában van használatban. A tároló lemezképeit tartalmazza. Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
 ## <a name="debug-deployment-scripts"></a>Üzembe helyezési parancsfájlok hibakeresése
 
@@ -264,7 +287,7 @@ A telepítési parancsfájl végrehajtása egy idempotens művelet. Ha a deploym
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 Azure PowerShell verzióját támogatja.  Ha rendelkezik Windows-számítógéppel, telepítheti a támogatott Azure PowerShell verziók egyikét, és megkezdheti az üzembe helyezési parancsfájlok fejlesztését és tesztelését.  Ha nem rendelkezik Windows-számítógéppel, vagy ha nem rendelkezik a telepített Azure PowerShell verziók egyikével sem, használhat egy előre konfigurált Docker-tároló rendszerképet. Az alábbi eljárás bemutatja, hogyan konfigurálhatja a Docker-rendszerképet Windows rendszeren. Linux és Mac rendszereken az interneten talál információt.
+Egy előre konfigurált Docker-tároló rendszerképet is használhat a telepítési parancsfájl fejlesztési környezete számára. Az alábbi eljárás bemutatja, hogyan konfigurálhatja a Docker-rendszerképet Windows rendszeren. Linux és Mac rendszereken az interneten talál információt.
 
 1. Telepítse a [Docker Desktopot](https://www.docker.com/products/docker-desktop) a fejlesztői számítógépen.
 1. Nyissa meg a Docker Desktopot.
@@ -281,7 +304,15 @@ Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 Azure P
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    A példa a 2.7.0 verzióját használja.
+    A példa a PowerShell-2.7.0 verzióját használja.
+
+    CLI-rendszerkép lekérése Microsoft Container Registryról (MCR):
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    Ez a példa a CLI-2.0.80 verzióját használja. Az üzembe helyezési parancsfájl az [itt](https://hub.docker.com/_/microsoft-azure-cli)található alapértelmezett CLI-tárolók rendszerképeit használja.
 
 1. Futtassa helyileg a Docker-rendszerképet.
 
@@ -297,14 +328,20 @@ Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 Azure P
 
     **– Ez azt jelenti, hogy** a tároló rendszerképét életben tartja.
 
+    Egy CLI-példa:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. Válassza a **megosztás** lehetőséget, amikor megjelenik a kérdés.
-1. Futtasson egy PowerShell-parancsfájlt az alábbi képernyőképen látható módon (mivel a d:\docker mappában található HelloWorld. ps1 fájl)
+1. Az alábbi képernyőfelvételen egy PowerShell-szkript futtatását láthatja, mivel a d:\docker mappában található egy HelloWorld. ps1 fájl.
 
     ![Resource Manager-sablon üzembe helyezési parancsfájl Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-A PowerShell-parancsfájl sikeres tesztelése után üzembe helyezési parancsfájlként is használható.
+A parancsfájl sikeres tesztelése után üzembe helyezési parancsfájlként is használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

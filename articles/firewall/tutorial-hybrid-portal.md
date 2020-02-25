@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442581"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561442"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban három virtuális hálózatot fog létrehozni:
 
 ![Tűzfal a hibrid hálózatban](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Változók deklarálása
@@ -153,9 +153,9 @@ Most telepítse a tűzfalat a tűzfal hub virtuális hálózatára.
 
    |Beállítás  |Érték  |
    |---------|---------|
-   |Előfizetést     |\<az Ön előfizetése\>|
+   |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**FW-Hybrid-test** |
-   |Name (Név)     |**AzFW01**|
+   |Név     |**AzFW01**|
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**:<br> **VNet – központ**|
    |Nyilvános IP-cím     |Új létrehozása: <br>**Név** - **FW-pip**. |
@@ -179,9 +179,10 @@ Először adjon hozzá egy hálózati szabályt a webes forgalom engedélyezés�
 6. A **Művelet** beállításnál válassza az **Engedélyezés** lehetőséget.
 6. A **szabályok**területen a **név**mezőbe írja be a következőt: **AllowWeb**.
 7. A **Protokoll** beállításnál válassza a **TCP** lehetőséget.
-8. A **forrásoldali címeknél**írja be a következőt: **192.168.1.0/24**.
-9. A cél címe mezőbe írja be a következőt: **10.6.0.0/16**
-10. A **célport**mezőbe írja be a következőt: **80**.
+8. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
+9. A **forrás**mezőbe írja be a következőt: **192.168.1.0/24**.
+10. A **cél címe**mezőbe írja be a következőt: **10.6.0.0/16**
+11. A **célport**mezőbe írja be a következőt: **80**.
 
 Most adjon hozzá egy szabályt, amely engedélyezi az RDP-forgalmat.
 
@@ -189,10 +190,11 @@ A második szabály sorába írja be a következő adatokat:
 
 1. **Név**mezőbe írja be a következőt: **AllowRDP**.
 2. A **Protokoll** beállításnál válassza a **TCP** lehetőséget.
-3. A **forrásoldali címeknél**írja be a következőt: **192.168.1.0/24**.
-4. A cél címe mezőbe írja be a következőt: **10.6.0.0/16**
-5. A **célport**mezőbe írja be a következőt: **3389**.
-6. Válassza a **Hozzáadás** lehetőséget.
+3. A **forrás típusa**beállításnál válassza az **IP-cím**lehetőséget.
+4. A **forrás**mezőbe írja be a következőt: **192.168.1.0/24**.
+5. A **cél címe**mezőbe írja be a következőt: **10.6.0.0/16**
+6. A **célport**mezőbe írja be a következőt: **3389**.
+7. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>A VPN-átjárók létrehozása és csatlakoztatása
 
@@ -448,7 +450,7 @@ A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asz
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

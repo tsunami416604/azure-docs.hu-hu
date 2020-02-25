@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5379bf3c0a5127e5114ac819bd3e0e2ad12e8d69
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82b6e3c1a3c17c624dec67093379e8a493b7264f
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045255"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561527"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Oktatóanyag: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Gyorsindítási sablon megnyitása
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
-> * A telepítés ellenőrzése
+> * Az üzemelő példány ellenőrzése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -109,7 +109,7 @@ Az erőforrás-definícióval kapcsolatos további információkért tekintse me
 
 Az üzembe helyezési eljárással kapcsolatban tekintse meg a "sablon központi telepítése" című részt a következő [oktatóanyagban: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Javasoljuk, hogy a virtuális gép rendszergazdai fiókjához generált jelszót használjon. Tekintse meg ezt a cikk [előfeltételeit](#prerequisites) ismertető szakaszt.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 1. A Azure Portal válassza ki a virtuális gépet.
 1. A virtuális gép áttekintése lapon másolja ki az IP-címet a **Másolás gombra kattintva**, majd illessze be egy böngészőbe. Megnyílik az alapértelmezett Internet Information Services (IIS) Kezdőlap:
@@ -126,7 +126,7 @@ Ha már nincs szüksége az üzembe helyezett Azure-erőforrásokra, törölje a
     Az erőforráscsoporthoz hat erőforrás jelenik meg.
 4. A felső menüben válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy virtuális gépet és egy virtuális gépi bővítményt. A bővítmény telepítette az IIS-webkiszolgálót a virtuális gépen. A következő témakörből megtudhatja, hogyan használhatja a Azure SQL Database bővítményt egy BACPAC-fájl importálásához:
 

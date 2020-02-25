@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844517"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559233"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -67,7 +67,7 @@ Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az
 
 ### <a name="forcedelete-option"></a>ForceDelete beállítás
 
-A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciátuser@contoso.com(például "") a kezdeti alapértelmezett tartománynévreuser@contoso.onmicrosoft.com(például "") frissítik. 
+A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévtől (például "user@contoso.com") származó összes hivatkozást frissítik a kezdeti alapértelmezett tartománynévre, például a "user@contoso.onmicrosoft.com" névre. 
 
 A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ez magában foglalja az Exchange-levelezésre képes biztonsági csoportokat és az elosztott listát; További információ: [levelezésre képes biztonsági csoportok eltávolítása](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
@@ -87,14 +87,14 @@ A rendszer a következő hibaüzenetet adja vissza:
 
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K: Miért nem sikerül a tartomány törlése olyan hibával, amely azt jelzi, hogy ezen a tartománynévn van Exchange-főkiszolgáló?** <br>
-**V:** Napjainkban bizonyos csoportok, például a levelezésre képes biztonsági csoportok és az elosztott listák az Exchange-ben vannak kiépítve, és manuálisan kell tisztítani az [Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Előfordulhat, hogy a ProxyAddresses az egyéni tartománynévre támaszkodik, és manuálisan kell frissítenie egy másik tartománynévre. 
+**K: Miért nem sikerül a tartomány törlése olyan hibával, amely azt jelzi, hogy az Exchange-főkiszolgáló ezen a tartománynévn van?** <br>
+**A:** Napjainkban bizonyos csoportok, például a levelezésre képes biztonsági csoportok és az elosztott listák az Exchange-ben vannak kiépítve, és manuálisan kell tisztítani az [Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Előfordulhat, hogy a ProxyAddresses az egyéni tartománynévre támaszkodik, és manuálisan kell frissítenie egy másik tartománynévre. 
 
-**K: Rendszergazdai\@contoso.com vagyok bejelentkezve, de nem tudom törölni a "contoso.com" nevű tartománynevet?**<br>
-**V:** A törölni kívánt egyéni tartománynév nem hivatkozhat a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiók a kezdeti alapértelmezett tartománynevet (. onmicrosoft.com) használja admin@contoso.onmicrosoft.com, például:. Jelentkezzen be egy másik globális rendszergazdai fiókkal, például admin@contoso.onmicrosoft.com a "fabrikam.com" névvel, ahol a fiók található. admin@fabrikam.com
+**K: rendszergazdai\@contoso.com vagyok bejelentkezve, de nem tudom törölni a "contoso.com" nevű tartománynevet?**<br>
+**A:** A törölni kívánt egyéni tartománynév nem hivatkozhat a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiók a kezdeti alapértelmezett tartománynevet (. onmicrosoft.com) használja, például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiókkal, például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynévvel, például a "fabrikam.com" névvel, ahol a fiók admin@fabrikam.com.
 
-**K: Rákattintok a tartomány törlése gombra, `In Progress` és megtekintjük a törlési művelet állapotát. Mennyi ideig tart? Mi történik, ha nem sikerül?**<br>
-**V:** A tartomány törlése művelet egy aszinkron háttérbeli feladat, amely átnevezi az összes hivatkozást a tartománynévre. Egy-két percen belül elvégezhető. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nincs:
+**K: rákattintok a tartomány törlése gombra, és megtekinthető a törlési művelet `In Progress` állapota. Mennyi ideig tart? Mi történik, ha nem sikerül?**<br>
+**A:** A tartomány törlése művelet egy aszinkron háttérbeli feladat, amely átnevezi az összes hivatkozást a tartománynévre. Egy-két percen belül elvégezhető. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nincs:
 
 * A tartománynévre konfigurált alkalmazások a appIdentifierURI
 * Minden olyan levelezési csoport, amely az egyéni tartomány nevére hivatkozik
@@ -102,12 +102,12 @@ A rendszer a következő hibaüzenetet adja vissza:
 
 Ha úgy látja, hogy a feltételek bármelyike nem teljesült, manuálisan törölje a hivatkozásokat, és próbálja meg újból törölni a tartományt.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Tartománynevek kezelése a PowerShell vagy a Graph API használatával
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Tartománynevek kezelése a PowerShell vagy a Microsoft Graph API használatával
 
-Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon az Azure AD-Graph API használatával is elvégezhető.
+Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon, a Microsoft Graph API használatával is elvégezhető.
 
 * [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Tartománynevek kezelése Graph API használatával az Azure AD-ben](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Tartományi erőforrás típusa](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>További lépések
 

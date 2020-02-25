@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f0b4d1f557006ba8a343a0497262cc5c8254e86c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484043"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561582"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -117,7 +117,7 @@ Egy terminál ablakban navigáljon a letöltött mintakód nevű mappához, és 
 > 1. Build & az alkalmazás futtatása!
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 > [!div renderon="docs"]
 >
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
@@ -281,7 +281,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` az egyéni webes API-khoz Microsoft Graph vagy `[ "<Application ID URL>/scope" ]`hoz (`api://<Application ID>/access_as_user`) |
 > | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia azt a logikát, amely meghatározza, hogy melyik fiókot használja a jogkivonat-kérelmekhez `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az iOS-oktatóanyagot, amely részletes útmutatót nyújt az alkalmazások létrehozásához, beleértve a gyors útmutató részletes ismertetését is.
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026295"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562258"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>A Azure Active Directory-bérlők interakciójának megismerése
 
@@ -46,8 +46,8 @@ Az egyes Azure AD-bérlők egymástól függetlenül konfigurálhatók úgy, hog
 Ha Azure AD-bérlőt szeretne felvenni a Azure Portalba, jelentkezzen be [a Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely az Azure ad globális rendszergazdája, és a bal oldalon válassza az **új**lehetőséget.
 
 > [!NOTE]
-> A többi Azure-erőforrástól eltérően a bérlők nem az Azure-előfizetések alárendelt erőforrásai. Ha az Azure-előfizetését megszakították vagy lemondják, a bérlői adatait Azure PowerShell, az Azure Graph API vagy a Microsoft 365 felügyeleti központ használatával is elérheti. [Egy másik előfizetést is társíthat a bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> A többi Azure-erőforrástól eltérően a bérlők nem az Azure-előfizetések alárendelt erőforrásai. Ha az Azure-előfizetését megszakították vagy lejártak, a bérlői adatait Azure PowerShell, a Microsoft Graph API-val vagy a Microsoft 365 felügyeleti központtal is elérheti. [Egy másik előfizetést is társíthat a bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure AD licencelési problémáinak és az ajánlott eljárások átfogó áttekintését lásd: [Mi az az Azure Active bérlői licencelés?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure Adatkezelő-fürt és-adatbázis létrehozása a PowerShell használatával
+title: Azure Adatkezelő-fürt létrehozása & DB-vel a PowerShell használatával
 description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist a PowerShell használatával
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,24 +7,24 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978340"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560592"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM-sablon](create-cluster-database-resource-manager.md)  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a PowerShell használatával. A PowerShell-parancsmagokat és parancsfájlokat Windows, Linux vagy [Azure Cloud Shell](../cloud-shell/overview.md) rendszeren is futtathatja az [az. Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) használatával az Azure adatkezelő-fürtök és-adatbázisok létrehozásához és konfigurálásához.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a PowerShell használatával. A PowerShell-parancsmagokat és parancsfájlokat Windows, Linux vagy [Azure Cloud Shell](../cloud-shell/overview.md) rendszeren is futtathatja az [az. Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) használatával az Azure adatkezelő-fürtök és-adatbázisok létrehozásához és konfigurálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,7 +68,7 @@ A következő lépések nem szükségesek, ha parancsokat futtat Azure Cloud She
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | Név | *mykustocluster* | A fürt kívánt neve.|
-   | Termékváltozat | *D13_v2* | A fürthöz használni kívánt SKU. |
+   | SKU | *D13_v2* | A fürthöz használni kívánt SKU. |
    | ResourceGroupName | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
     További választható paramétereket is használhat, például a fürt kapacitását.
@@ -114,7 +114,7 @@ Most már rendelkezik egy fürttel és egy adatbázissal.
     Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További az. Kusto parancsok](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
 * [Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)](net-standard-ingest-data.md)

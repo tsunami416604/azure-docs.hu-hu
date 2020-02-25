@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805909"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560898"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrálás a Translator Speech APIról a beszédfelismerési szolgáltatásba
 
-Ebből a cikkből megtudhatja, hogyan telepíthet alkalmazásokat a Microsoft Translator Speech APIból a [Speech szolgáltatásba](index.md). Ez az útmutató ismerteti a Translator Speech API és a beszédfelismerési szolgáltatás közötti különbségeket, és javaslatot tesz az alkalmazások áttelepítésére vonatkozó stratégiákra.
+Ebből a cikkből megtudhatja, hogyan telepíthet alkalmazásokat a Microsoft Translator Speech APIból a [Speech szolgáltatásba](index.yml). Ez az útmutató ismerteti a Translator Speech API és a beszédfelismerési szolgáltatás közötti különbségeket, és javaslatot tesz az alkalmazások áttelepítésére vonatkozó stratégiákra.
 
 > [!NOTE]
 > A beszédfelismerési szolgáltatás nem fogadja el a Translator Speech API előfizetési kulcsát. Létre kell hoznia egy új Speech Service-előfizetést.
 
 ## <a name="comparison-of-features"></a>Funkciók összehasonlítása
 
-| Szolgáltatás                                           | Beszédfordító API                                  | Beszédfelismerési szolgáltatás | Részletek                                                                                                                                                                                                                                                                            |
+| Szolgáltatás                                           | Translator Speech API                                  | Speech szolgáltatás | Részletek                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Fordítás szöveggé                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Fordítás a beszédbe                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja, hogyan telepíthet alkalmazásokat a Microsoft Tr
 | Kapcsolatok időbeli korlátja                             | 90 perc                                               | Korlátlan az SDK-val. 10 perc WebSockets-kapcsolattal.                                                                                                                                                                                                                                                                                   |
 | Hitelesítési kulcs a fejlécben                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Több nyelv lett lefordítva egyetlen kérelemben | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Elérhető SDK-k                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Tekintse meg az elérhető SDK-k [Speech Service-dokumentációját](index.md) .                                                                                                                                                    |
+| Elérhető SDK-k                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Tekintse meg az elérhető SDK-k [Speech Service-dokumentációját](index.yml) .                                                                                                                                                    |
 | WebSocket-kapcsolatok                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Nyelvek API                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | A beszédfelismerési szolgáltatás a [Translator API languages Reference](../translator-speech/languages-reference.md) cikkben leírt nyelvek széles körét támogatja. |
 | Trágár szűrő és jelölő                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan telepíthet alkalmazásokat a Microsoft Tr
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 
-Ha Ön vagy a szervezete rendelkezik olyan alkalmazásokkal, amelyeket a Translator Speech API használó fejlesztési vagy éles környezetben használ, frissítse őket a beszédfelismerési szolgáltatás használatára. Tekintse meg a [beszédfelismerési szolgáltatás](index.md) dokumentációját, amely tartalmazza az elérhető SDK-kat, a kódot és az oktatóanyagokat. A Migrálás során vegye figyelembe a következőket:
+Ha Ön vagy a szervezete rendelkezik olyan alkalmazásokkal, amelyeket a Translator Speech API használó fejlesztési vagy éles környezetben használ, frissítse őket a beszédfelismerési szolgáltatás használatára. Tekintse meg a [beszédfelismerési szolgáltatás](index.yml) dokumentációját, amely tartalmazza az elérhető SDK-kat, a kódot és az oktatóanyagokat. A Migrálás során vegye figyelembe a következőket:
 
 * A beszédfelismerési szolgáltatás nem biztosít globális végpontot. Állapítsa meg, hogy az alkalmazás hatékonyan működik-e, ha egyetlen regionális végpontot használ az összes adatforgalmához. Ha nem, a leghatékonyabb végpont meghatározásához használja a térinformatikat.
 
@@ -59,12 +59,12 @@ Ha Ön vagy a szervezete rendelkezik olyan alkalmazásokkal, amelyeket a Transla
 
 * A Translator Speech APItól eltérően a beszédfelismerési szolgáltatás több nyelven is elvégezheti a fordítást egyetlen kérelemben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Próbálja ki ingyenesen a Speech szolgáltatást](get-started.md)
 * [Gyors útmutató: beszédfelismerés felismerése UWP-alkalmazásban a Speech SDK használatával](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Mi a beszédfelismerési szolgáltatás?](overview.md)
 * [A Speech Service és a Speech SDK dokumentációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

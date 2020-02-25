@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843939"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564967"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -137,7 +137,7 @@ Az adatközpontokban lévő rendelkezésre állásról információért lásd a 
 
 ## <a name="consuming-content"></a>Tartalmak felhasználása
 
-Az Azure Media Services biztosította eszközökkel részletes, dinamikus ügyféloldali lejátszóalkalmazások hozhatók létre a legtöbb platformra, köztük a következőkre: iOS, Android, Windows, Windows Phone, Xbox és dekóderek. A következő témakor hivatkozásokat tartalmaz azokhoz az SDK-khoz és lejátszó-keretrendszerekhez, amelyekkel kifejlesztheti a saját ügyfélalkalmazásait a Media Services médiafolyamainak fogadására. További információkért lásd a [videólejátszó alkalmazások fejlesztését](media-services-develop-video-players.md) ismertető cikket.
+Az Azure Media Services biztosította eszközökkel részletes, dinamikus ügyféloldali lejátszóalkalmazások hozhatók létre a legtöbb platformra, köztük a következőkre: iOS, Android, Windows, Windows Phone, Xbox és dekóderek. 
 
 ## <a name="enabling-azure-cdn"></a>Az Azure CDN engedélyezése
 
@@ -167,7 +167,7 @@ Ez a szakasz a Media Services-funkciók az adatközpontok közötti rendelkezés
 
 ### <a name="ams-accounts"></a>AMS-fiókok
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 Annak megállapításához, hogy a Media Services elérhető-e az adatközpontban, lépjen a https://azure.microsoft.com/status/ helyre, és görgessen a MEDIA táblázathoz.
 
@@ -175,16 +175,16 @@ Annak megállapításához, hogy a Media Services elérhető-e az adatközpontba
 
 A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium** szintű streamvégpontot választhatnak. További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 |Név|Állapot|Adatközpontok
 |---|---|---|
-|Standard|FE|Mind|
-|Prémium|FE|Mind|
+|Standard|FE|Összes|
+|Prémium|FE|Összes|
 
 ### <a name="live-encoding"></a>Live Encoding
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 Az összes adatközpontban elérhető a következők kivételével: Németország, Dél-Brazília, Nyugat-India, Dél-India és Közép-India. 
 
@@ -192,40 +192,40 @@ Az összes adatközpontban elérhető a következők kivételével: Németorszá
 
 Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódolót és a **Media Encoder Premium-munkafolyamatot**. További információkért olvassa el [az Azure igény szerinti médiakódolók áttekintését és összehasonlítását](media-services-encode-asset.md). 
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 |Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
-|Media Encoder Standard|FE|Mind|
+|Media Encoder Standard|FE|Összes|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
 
 ### <a name="analytics-media-processors"></a>Elemzési médiafeldolgozók
 
 A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 |Médiafeldolgozó neve|Állapot|Adatközpontok
 |---|---|---|
-|Azure Media Face Detector|Előzetes verzió|Mind|
-|Azure Media Indexer|FE|Mind|
-|Azure Media Motion Detector|Előzetes verzió|Mind|
-|Azure Media OCR|Előzetes verzió|Mind|
-|Azure Media Redactor|FE|Mind|
-|Azure Media Video Thumbnails|Előzetes verzió|Mind|
+|Azure Media Face Detector|Előzetes verzió|Összes|
+|Azure Media Indexer|FE|Összes|
+|Azure Media Motion Detector|Előzetes verzió|Összes|
+|Azure Media OCR|Előzetes verzió|Összes|
+|Azure Media Redactor|FE|Összes|
+|Azure Media Video Thumbnails|Előzetes verzió|Összes|
 
 ### <a name="protection"></a>Védelem
 
 A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét attól a ponttól kezdve, ahogy az elhagyja a számítógépét, egészen a tároláson, a feldolgozáson és a továbbításon át. További információért olvassa el az [AMS-tartalmak védelmét](media-services-content-protection-overview.md) ismertető cikket.
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
-|Titkosítás|Állapot|Adatközpontok|
+|Encryption|Állapot|Adatközpontok|
 |---|---|---| 
-|Adattárolás|FE|Mind|
-|AES-128-kulcsok|FE|Mind|
-|FairPlay|FE|Mind|
-|PlayReady|FE|Mind|
+|Storage|FE|Összes|
+|AES-128-kulcsok|FE|Összes|
+|FairPlay|FE|Összes|
+|PlayReady|FE|Összes|
 |Widevine|FE|Mindenhol, kivéve Németországot, a szövetségi kormányzati régiót és Kínát.
 
 ### <a name="reserved-units-rus"></a>Fenntartott egységek (RU-k)
@@ -234,7 +234,7 @@ A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy 
 
 További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 Minden adatközpontban elérhető.
 
@@ -244,11 +244,11 @@ A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely 
 
 További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
-#### <a name="availability"></a>Elérhetőség
+#### <a name="availability"></a>Rendelkezésre állás
 
 |RU típusának neve|Állapot|Adatközpontok
 |---|---|---|
-|S1|FE|Mind|
+|S1|FE|Összes|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
 |S3|FE|Mindenhol, kivéve Nyugat-Indiát|
 
@@ -256,7 +256,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Media Services képzési terveket.
 

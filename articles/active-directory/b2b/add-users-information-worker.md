@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268854"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565417"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
 
@@ -105,7 +105,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3. A **kezelés**területen válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
 4. Az alkalmazás listában keresse meg és nyissa meg az alkalmazást.
-5. A **kezelés**területen válassza az **egyszeri bejelentkezés**lehetőséget, és konfigurálja az alkalmazást az egyszeri bejelentkezéshez. (Részletekért lásd: [egyszeri bejelentkezés kezelése vállalati alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+5. A **kezelés**területen válassza az **egyszeri bejelentkezés**lehetőséget, és konfigurálja az alkalmazást az egyszeri bejelentkezéshez. (Részletekért lásd: [egyszeri bejelentkezés kezelése vállalati alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
 6. A **kezelés**területen válassza az **önkiszolgáló**lehetőséget, és állítsa be az önkiszolgáló alkalmazás-hozzáférést. (Részletekért lásd: az önkiszolgáló [alkalmazás-hozzáférés használata](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]

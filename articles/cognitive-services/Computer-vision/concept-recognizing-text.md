@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946299"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566250"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -26,10 +26,10 @@ Computer Vision számos olyan szolgáltatást biztosít, amely a képeken megjel
 
 Az olvasási API a legújabb felismerési modellek használatával észleli a képek szöveges tartalmát, és átalakítja az azonosított szöveget egy géppel olvasható, a gép számára olvasható adatfolyamba. Ez a szöveg-nagy méretű képekre (például a digitálisan ellenőrzött dokumentumokra) és a sok vizuális zajjal rendelkező képekre van optimalizálva. Meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, valamint a nyomtatott és a kézzel írott szöveggel is alátámasztott képeket. Az olvasási API aszinkron módon hajtható végre, mert a nagyobb dokumentumok több percet is igénybe vehetnek.
 
-Az olvasási művelet megőrzi a felismert szavak eredeti sorát a kimenetében. Az egyes sorokhoz tartozik egy határolókeret koordinátái, és a sorban lévő minden szó saját koordinátákkal is rendelkezik. Ha egy szót alacsony megbízhatósággal ismertek fel, akkor az adatokat is továbbítjuk. További információért tekintse meg az [API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -k olvasása című dokumentációt.
+Az olvasási művelet megőrzi a felismert szavak eredeti sorát a kimenetében. Az egyes sorokhoz tartozik egy határolókeret koordinátái, és a sorban lévő minden szó saját koordinátákkal is rendelkezik. Ha egy szót alacsony megbízhatósággal ismertek fel, akkor az adatokat is továbbítjuk. További információért tekintse meg az [API-dokumentáció olvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és az API-k [olvasása](https://go.microsoft.com/fwlink/?linkid=2118322) című dokumentációt.
 
 > [!NOTE]
-> Ez a funkció csak angol nyelvű szöveg esetén érhető el.
+> Ez a funkció csak az angol és a spanyol (előzetes verzió) szöveghez érhető el.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
@@ -51,7 +51,7 @@ Ha szükséges, az OCR kijavította a felismert szöveg forgását úgy, hogy a 
 
 ![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/vision-overview-ocr.png)
 
-További információt az [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -dokumentációban talál.
+További információt az [OCR-dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) talál.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
@@ -70,7 +70,7 @@ Azokon a fényképeken, ahol a szöveg domináns, a hamis pozitív szavak a rés
 > [!NOTE]
 > A szövegfelismerés API az olvasási API mellett elavult. Az olvasási API hasonló képességekkel rendelkezik, és frissül a PDF-, a TIFF-és a többoldalas fájlok kezeléséhez.
 
-A szövegfelismerés API hasonló az OCR-hez, de aszinkron módon fut, és frissített felismerő modelleket használ. További információért tekintse meg az [SZÖVEGFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) -dokumentációt.
+A szövegfelismerés API hasonló az OCR-hez, de aszinkron módon fut, és frissített felismerő modelleket használ. További információért tekintse meg az [SZÖVEGFELISMERÉS API-dokumentációt](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) .
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
@@ -94,4 +94,4 @@ A szöveges felismerési műveletek pontossága a képek minőségétől függ. 
 
 ## <a name="next-steps"></a>További lépések
 
-A szöveges felismerés egyszerű C# alkalmazásban való megvalósításához kövesse a [nyomtatott szöveg kibontása (OCR)](./quickstarts/csharp-print-text.md) rövid útmutatót.
+A szöveges felismerés egyszerű C# alkalmazásban való megvalósításához kövesse a [szöveg kinyerése (olvasás)](./QuickStarts/CSharp-hand-text.md) rövid útmutatót.

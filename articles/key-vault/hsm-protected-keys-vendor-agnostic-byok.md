@@ -1,6 +1,6 @@
 ---
 title: HSM-védelemmel ellátott kulcsok generálása és átvitele a Azure Key Vault-Azure Key Vaulthoz | Microsoft Docs
-description: Ez a cikk segítséget nyújt a saját HSM-védelemmel ellátott kulcsok tervezéséhez, létrehozásához és átviteléhez a Azure Key Vault használatával. Más néven BYOK vagy saját kulcs használata.
+description: Ennek a cikknek a segítségével megtervezheti, létrehozhatja és átviheti a saját HSM-védelemmel ellátott kulcsait a Azure Key Vault használatával való használatra. Más néven a saját kulcs használata (BYOK).
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -9,117 +9,127 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461743"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566114"
 ---
-# <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (előzetes verzió)
+# <a name="import-hsm-protected-keys-to-key-vault-preview"></a>HSM által védett kulcsok importálása a Key Vaultba (előzetes verzió)
 
 > [!NOTE]
-> Ez a funkció előzetes verzióban érhető el, és csak az **USA 2. keleti – euap** és az **USA középső** régiójában elérhető – euap régióban érhető el. 
+> Ez a funkció előzetes verzióban érhető el, és csak az *USA 2. keleti* régiójában, a – euap és az *USA középső – euap*található Azure-régióban érhető el. 
 
-A Azure Key Vault használatakor a rendszer a hardveres biztonsági modulokban (HSM) található kulcsokat importálhatja vagy generálhatja, amelyek soha nem hagyják el a HSM határt. Ezt a forgatókönyvet gyakran a *saját kulcs*használatára vagy BYOK kell hivatkozni. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
+A Azure Key Vault használata esetén a rendszer a hardveres biztonsági modulban (HSM) is importálhat vagy létrehozhat egy kulcsot. a kulcs soha nem hagyja el a HSM határt. Ezt a forgatókönyvet gyakran nevezik a *saját kulcsának* (BYOK). A Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
 
-A témakörben található információk segítségével megtervezheti, létrehozhatja és átviheti a saját HSM-védelemmel ellátott kulcsait, hogy azok a Azure Key Vault használatával legyenek használatban.
+A cikkben található információk segítségével megtervezheti, létrehozhatja és átviheti a saját HSM-védelemmel ellátott kulcsait a Azure Key Vault használatával való használatra.
 
 > [!NOTE]
 > Ez a funkció az Azure China 21Vianet esetében nem érhető el. 
 > 
 > Ez az importálási módszer csak a [támogatott HSM](#supported-hsms)esetében érhető el. 
 
-További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](key-vault-overview.md)  Az első lépéseket ismertető oktatóanyaghoz, amely magában foglalja a HSM-védelemmel ellátott kulcsok kulcstartójának létrehozását, lásd: [Mi az Azure Key Vault?](key-vault-overview.md)
+További információért és a Key Vault használatának megkezdéséhez (például a Key Vault HSM-védelemmel ellátott kulcsokhoz való létrehozásával) kapcsolatos oktatóanyagért lásd: [Mi az Azure Key Vault?](key-vault-overview.md)
 
 ## <a name="overview"></a>Áttekintés
 
-* Kulcs (más néven Key Exchange-kulcs vagy KEK) létrehozása a Key vaultban. Ennek egy RSA-HSM-kulcsnak kell lennie, amely csak az "import" lehet, az egyetlen kulcsfontosságú művelet. Csak a Key Vault Premium SKU támogatja az RSA-HSM-kulcsokat.
-* A KEK nyilvános kulcsának letöltése. PEM-fájlként
-* KEK nyilvános kulcsának átvitele a helyszíni HSM-hez csatlakoztatott offline munkaállomásra.
-* A kapcsolat nélküli munkaállomáson használja a HSM-gyártó által biztosított BYOK eszközt egy BYOK-fájl létrehozásához. 
-* A célként megadott kulcs egy KEK-mel van titkosítva, amely titkosítva marad, amíg át nem kerül a Azure Key Vault HSM. Csak a kulcs titkosított verziója hagyhatja a helyszíni HSM-et.
-* Az Azure Key Vault HSM-ben generált KEK, és nem exportálható. A HSM azt kényszeríti, hogy nem lehet a KEK tiszta verziója a Key Vault HSM kívül.
+A folyamat áttekintése. A végrehajtáshoz szükséges konkrét lépéseket a cikk későbbi részében ismertetjük.
+
+* A Key Vaultban állítson elő egy kulcsot (ún. *Key Exchange Key* (KEK)). A KEK-nek olyan RSA-HSM-kulcsnak kell lennie, amely csak a `import` kulcs művelettel rendelkezik. Csak Key Vault Premium SKU támogatja az RSA-HSM-kulcsokat.
+* Töltse le a KEK nyilvános kulcsát. PEM-fájlként.
+* Vigye át a KEK nyilvános kulcsát egy offline számítógépre, amely egy helyszíni HSM-hez csatlakozik.
+* Az offline számítógépen a HSM gyártója által biztosított BYOK eszközt használva hozzon létre egy BYOK-fájlt. 
+* A célként megadott kulcs egy KEK-mel van titkosítva, amely titkosítva marad, amíg át nem kerül a Key Vault HSM-be. Csak a kulcs titkosított verziója hagyhatja el a helyszíni HSM-et.
+* Egy Key Vault HSM-ben generált KEK nem exportálható. A HSM kényszeríti azt a szabályt, hogy a KEK tiszta verziója nem létezik Key Vault HSM-en kívül.
 * A KEK-nek ugyanabban a kulcstartóban kell lennie, ahol a célként megadott kulcsot importálni kívánja.
-* Ha a BYOK-fájlt feltöltötte Key Vaultre, Key Vault HSM a KEK titkos kulcsával visszafejti a célként megadott kulcs anyagát, és azt HSM-kulcsként importálja. Ez a művelet teljes egészében bekövetkezik Key Vault HSM, és a célként megadott kulcs mindig a HSM védelmi határain belül marad.
+* Ha a BYOK-fájlt feltölti a Key Vaultba, a Key Vault HSM a KEK titkos kulcsával visszafejti a célként megadott kulcsot, és azt HSM-kulcsként importálja. Ez a művelet teljes egészében egy Key Vault HSM-ben történik. A célként megadott kulcs mindig a HSM védelmi határán marad.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az alábbi táblázatban megtekintheti a saját kulcs (BYOK) használatának előfeltételeit a Azure Key Vaulthoz.
+A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azure Key Vaultban:
 
 | Követelmény | További információ |
 | --- | --- |
-| Előfizetés az Azure-ba |Azure Key Vault létrehozásához Azure-előfizetésre van szükség: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
-| Key Vault (prémium SKU) a HSM-védelemmel ellátott kulcsok importálásához |A Azure Key Vault szolgáltatási szintjeivel és képességeivel kapcsolatos további információkért tekintse meg a [Azure Key Vault díjszabási](https://azure.microsoft.com/pricing/details/key-vault/) webhelyét. |
-| Egy HSM a támogatott HSM-listából, valamint a BYOK eszközzel és a HSM-gyártó által biztosított utasításokkal | Hozzá kell férnie egy hardveres biztonsági modulhoz és a HSM alapvető működési ismereteihez. Lásd: [támogatott HSM](#supported-hsms). |
-| Azure CLI-verzió 2.1.0 vagy újabb verziója | További információért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Azure-előfizetés |A Key Vault Azure Key Vaultban való létrehozásához Azure-előfizetésre van szükség. [Regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/). |
+| Egy Key Vault Premium SKU a HSM-védelemmel ellátott kulcsok importálásához |További információ a Azure Key Vault szolgáltatási szintjeiről és képességeiről: [Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Egy HSM a támogatott HSM-listáról és egy BYOK eszközről és a HSM-gyártó által biztosított utasításokról | A HSM használatára vonatkozó engedélyekkel és alapszintű ismeretekkel kell rendelkeznie. Lásd: [támogatott HSM](#supported-hsms). |
+| Azure CLI-verzió 2.1.0 vagy újabb verziója | Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).|
 
 ## <a name="supported-hsms"></a>Támogatott HSM
 
-|HSM-szállító neve|Támogatott HSM-modellek|További részletek|
+|HSM-szállító neve|Támogatott HSM-modellek|További információ|
 |---|---|---|
 |Thales|SafeNet Luna HSM 7 termékcsalád a belső vezérlőprogram 7,3-es vagy újabb verziójával| [SafeNet Luna BYOK eszköz és dokumentáció](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
-
 > [!NOTE]
-> HSM-védelemmel ellátott kulcsok importálása a nCipher nShield-HSM-családból [örökölt BYOK eljárás használata](hsm-protected-keys-legacy.md)
+> A HSM-védelemmel ellátott kulcsok a HSM nCipher nShield-családból történő importálásához használja az [örökölt BYOK eljárást](hsm-protected-keys-legacy.md).
 
+## <a name="supported-key-types"></a>Támogatott kulcsok típusai
 
-## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>A kulcs előállítása és átvitele Azure Key Vault HSM-be
+|Kulcsnév|Kulcs típusa|Kulcs mérete|Forrás|Leírás|
+|---|---|---|---|---|
+|Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Azure Key Vault HSM|HSM-alapú RSA-kulcspár generálása Azure Key Vault|
+|Célként megadott kulcs|RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|
 
-Az alábbi lépéseket követve hozhatja elő és viheti át a kulcsot egy Azure Key Vault HSM-be:
+## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>A kulcs előállítása és átvitele a Key Vault HSM-be
+
+Kulcs létrehozása és átvitele egy Key Vault HSM-be:
 
 * [1. lépés: KEK létrehozása](#step-1-generate-a-kek)
-* [2. lépés: a KEK nyilvános kulcsának letöltése](#step-2-download-kek-public-key)
+* [2. lépés: a KEK nyilvános kulcsának letöltése](#step-2-download-the-kek-public-key)
 * [3. lépés: a kulcs előállítása és előkészítése az átvitelhez](#step-3-generate-and-prepare-your-key-for-transfer)
 * [4. lépés: a kulcs átvitele Azure Key Vaultre](#step-4-transfer-your-key-to-azure-key-vault)
 
 ### <a name="step-1-generate-a-kek"></a>1\. lépés: KEK létrehozása
 
-A KEK (kulcscsere-kulcs) a Key Vault HSM-ben generált RSA-kulcs. Ezzel a kulccsal lehet titkosítani az importálandó kulcsot (célként megadott kulcs).
+A KEK egy Key Vault HSM-ben generált RSA-kulcs. A KEK az importálni kívánt kulcs (a *célként* megadott kulcs) titkosítására szolgál.
 
-A KEK a következőket kell tennie:
-1. egy **RSA-HSM-** kulcs (2048 bites vagy 3072 bites vagy 4096 bites)
-2. ugyanabban a kulcstartóban lett létrehozva, amelyben importálni kívánja a célként megadott kulcsot
-3. létrehozva az **importálásra** beállított engedélyezett kulcs-műveletekkel
+A KEK-nek a következőket kell tennie:
+- RSA-HSM-kulcs (2 048 bites; 3 072 bites; vagy 4 096 bites)
+- ugyanabban a kulcstartóban lett létrehozva, amelyben importálni kívánja a célként megadott kulcsot
+- Létrehozva az engedélyezett Key Operations beállítással `import`
 
-Az az kulcstartó [kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) paranccsal hozzon létre KEK-et az importálásra beállított fő műveletekkel. Jegyezze fel az alábbi parancs által visszaadott "Kid" azonosítójú kulcsot. A [3. lépésben](#step-3-generate-and-prepare-your-key-for-transfer)szüksége lesz rá.
-
+Az az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) paranccsal hozzon létre egy KEK-t, amely a `import`re beállított kulcsfontosságú műveletekkel rendelkezik. Jegyezze fel a következő parancs által visszaadott kulcs-azonosítót (`kid`). (A [3. lépésben](#step-3-generate-and-prepare-your-key-for-transfer)a `kid` értéket fogja használni.)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
 ```
 
-### <a name="step-2-download-kek-public-key"></a>2\. lépés: a KEK nyilvános kulcsának letöltése
+### <a name="step-2-download-the-kek-public-key"></a>2\. lépés: a KEK nyilvános kulcsának letöltése
 
-Az az [kulcstartó kulcs letöltése](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) paranccsal töltse le a KEK nyilvános kulcsát egy. PEM-fájlba. Az importált célként megadott kulcs a KEK nyilvános kulcsával van titkosítva.
+Az az [kulcstartó kulcs letöltése](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) paranccsal töltse le a KEK nyilvános kulcsát egy. PEM-fájlba. Az importált célként megadott kulcsot a KEK nyilvános kulcsával titkosítja a rendszer.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
 ```
 
-Vigye át a KEKforBYOK. PUBLICKEY. PEM fájlt a kapcsolat nélküli munkaállomásra. A következő lépésben szüksége lesz erre a fájlra.
+Vigye át a KEKforBYOK. PUBLICKEY. PEM fájlt a kapcsolat nélküli számítógépre. A következő lépésben szüksége lesz erre a fájlra.
 
 ### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>3\. lépés: a kulcs előállítása és előkészítése az átvitelhez
 
-A BYOK eszköz letöltéséhez és telepítéséhez tekintse meg a HSM gyártójának dokumentációját. A HSM-gyártó utasításait követve hozzon létre egy célként megadott kulcsot, majd hozzon létre egy kulcs-átviteli csomagot (egy BYOK-fájlt). A BYOK eszköz a [2](#step-2-download-kek-public-key) . lépésben letöltött [1](#step-1-generate-a-kek) . és KEKforBYOK. PUBLICKEY. PEM fájl kulcs-azonosítóját fogja használni egy BYOK-fájlban lévő titkosított célként generált kulcs létrehozásához.
+A BYOK eszköz letöltéséhez és telepítéséhez tekintse meg a HSM gyártójának dokumentációját. A HSM gyártójától kapott utasításokat követve hozzon létre egy célként megadott kulcsot, majd hozzon létre egy kulcs-átviteli csomagot (egy BYOK-fájlt). A BYOK eszköz az [1. lépés](#step-1-generate-a-kek) és a [2. lépésben](#step-2-download-the-kek-public-key) letöltött KEKforBYOK. publickey. PEM fájl `kid` fogja használni a titkosított CÉLKÉNT megadott kulcs egy BYOK-fájlban való létrehozásához.
 
-Vigye át a BYOK-fájlt a csatlakoztatott munkaállomásra.
+Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 
 > [!NOTE] 
-> A célként megadott kulcsnak 2048 bites vagy 3072 bites vagy 4096 bites RSA-kulcsnak kell lennie. Az elliptikus görbe kulcsok importálása jelenleg nem támogatott.
-> <br/><strong>Ismert probléma:</strong> A SafeNet Luna HSM nem tudja importálni az RSA 4K-beli célként megadott kulcsot. A probléma megoldásakor a rendszer frissíti a dokumentumot.
+> Az RSA 1 024 bites kulcsok importálása nem támogatott. Jelenleg egy elliptikus görbe (EC) kulcs importálása nem támogatott.
+> 
+> **Ismert probléma**: az RSA 4k-beli cél kulcsának importálása a SafeNet Luna HSM sikertelen. A probléma megoldásakor a cikk frissülni fog.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4\. lépés: a kulcs átvitele Azure Key Vaultre
 
-Ebben az utolsó lépésben vigye át a kulcs átvitele csomagot (egy BYOK-fájlt) a leválasztott munkaállomásról az internethez kapcsolódó munkaállomásra, majd az az kulcstartó [kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) paranccsal töltse fel a BYOK-fájlt a Azure Key Vault HSM-be a kulcs importálásának befejezéséhez.
+A kulcs importálásának befejezéséhez vigye át a kulcs-átviteli csomagot (egy BYOK-fájlt) a leválasztott számítógépről az internethez csatlakozó számítógépre. Az az [kulcstartó kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) paranccsal töltse fel a BYOK-fájlt a Key Vault HSM-be.
 
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
-Ha a feltöltés sikeres, megjelenik az imént importált kulcs tulajdonságai.
+Ha a feltöltés sikeres, az Azure CLI megjeleníti az importált kulcs tulajdonságait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg ezt az árat és a szolgáltatás [összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).
+Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg [ezt az árat és a szolgáltatás összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).
+
+
+

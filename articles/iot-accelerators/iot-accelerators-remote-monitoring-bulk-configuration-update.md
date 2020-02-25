@@ -1,19 +1,19 @@
 ---
 title: Távoli figyeléshez csatlakoztatott eszközök tömeges kezelése – Azure | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti a távoli figyelési megoldáshoz kapcsolódó eszközöket tömegesen.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980553"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565578"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: a csatlakoztatott eszközök tömeges kezelése
 
@@ -137,7 +137,7 @@ Használja Azure Storage-fiókját az új belső vezérlőprogram-fájl Felhőbe
 
 1. A VS Code-ban nyissa meg a **FirmwareOTA. Ino** fájlt, és módosítsa a `currentFirmwareVersion` vissza a `1.0.0`ra:
 
-    ![A 1.0.0 verziója](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
+    ![1\.0.0-s verziójának](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
 1. Nyissa meg a parancssort, majd írja be és válassza a **IoT Workbench: eszköz**elemet. Ezután válassza az **eszköz feltöltése**elemet:
 
@@ -226,12 +226,12 @@ Ebben a szakaszban olyan központi telepítést hoz létre és hajt végre, amel
 
 1. Az **új központi telepítés** panelen hozzon létre egy központi telepítést a következő beállításokkal:
 
-    |Lehetőség|Value (Díj)|
+    |Beállítás|Érték|
     |---|---|
     |Név|Belső vezérlőprogram frissítésének telepítése|
-    |Csomag típusa|Eszközkonfiguráció|
+    |Csomag típusa|Eszköz konfigurációja|
     |Konfiguráció típusa|Belső vezérlőprogram|
-    |Csomag|belső vezérlőprogram – Update. JSON|
+    |Csomag|firmware-update.json|
     |Eszközcsoport|IoT fejlesztői készlet-eszközök|
     |Prioritás|10|
 
@@ -268,10 +268,10 @@ Ha az újraindítás befejeződött, a IoT fejlesztői készlet-eszköz mostant�
 
 A **központi telepítések** lapon kattintson a központi telepítésre, és tekintse meg az eszközök állapotát a frissítéskor. Megtekintheti az egyes eszközök állapotát az eszköz csoportjában, valamint a definiált egyéni metrikákat is.
 
-![Telepítés részletei](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
+![Helyi környezet részletei](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan frissítheti a megoldáshoz csatlakoztatott eszközök egy csoportjának belső vezérlőprogram-eszközét. Az eszközök frissítéséhez a megoldás automatikus eszközkezelés használatával működik. Ha többet szeretne megtudni a megoldás alapjául szolgáló IoT hub automatikus eszközkezelés szolgáltatásával kapcsolatban, tekintse meg a következő témakört: [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-auto-device-config.md).

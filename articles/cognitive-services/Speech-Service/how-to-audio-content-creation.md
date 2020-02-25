@@ -3,21 +3,21 @@ title: Hangtartalom létrehozása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A hangtartalom létrehozása egy online eszköz, amely lehetővé teszi a Microsoft szöveg-beszéd kimenetének testreszabását és finomhangolását az alkalmazásokhoz és termékekhez.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806205"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561034"
 ---
-# <a name="audio-content-creation"></a>Hanganyag létrehozása
+# <a name="improve-synthesis-with-audio-content-creation"></a>Hanganyag-létrehozással javíthatja a szintézist
 
 A [hangtartalom létrehozása](https://aka.ms/audiocontentcreation) egy online eszköz, amely lehetővé teszi a Microsoft szöveg-beszéd kimenetének testreszabását és finomhangolását az alkalmazásokhoz és termékekhez. Ezzel az eszközzel pontosabban hangolhatja a nyilvános és az egyéni hangokat, és kezelheti a felhőben a kimenetet.
 
@@ -104,11 +104,11 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 | WAV | riff-16khz-16bit-mono-PCM | riff-24khz-16bit-mono-PCM |
 | MP3 | hang-16khz-128kbitrate-mono-MP3 | hang-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)

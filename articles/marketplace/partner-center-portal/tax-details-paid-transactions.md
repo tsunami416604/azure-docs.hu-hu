@@ -140,7 +140,7 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Kazahsztán                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Kenya                            | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.  | Ár mínusz tárolási díj                 | Közzétevő          |
 | Kiribati                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
-| Korea                            | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 10% áfa, mínusz tárolási díj | Microsoft          |
+| Dél-Korea                            | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 10% áfa, mínusz tárolási díj | Microsoft          |
 | Kuvait                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Kirgizisztán                       | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Laosz                             | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
@@ -223,7 +223,7 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Szlovénia                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 22% adó, mínusz tárolási díj | Microsoft          |
 | Salamon-szigetek                  | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Szomália                          | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
-| Dél-Afrika                     | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Díj mínusz 15% adó, mínusz tárolási díj  | Microsoft          |
+| Dél-afrikai Köztársaság                     | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Díj mínusz 15% adó, mínusz tárolási díj  | Microsoft          |
 | Spanyolország                            | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. Az adókat a kifizetés előtt kivonják a díjakból.              | Ár mínusz 21% Tax, mínusz tárolási díj | Microsoft          |
 | Srí Lanka                        | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Suriname                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
@@ -279,7 +279,7 @@ Bizonyos Microsoft számlázási partnereink értékesítési, használati, áru
 
 | Vegyes átutalási országok/régiók |
 |------------------------------------|
-| Dél-Afrika                       |
+| Dél-afrikai Köztársaság                       |
 | Vietnam                            |
 
 ## <a name="reseller-countriesregions"></a>Viszonteladói országok/régiók

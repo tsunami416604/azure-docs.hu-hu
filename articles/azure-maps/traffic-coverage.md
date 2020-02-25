@@ -130,7 +130,7 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 |Omán     |✓         |✓         |
 |Katar     |✓         |✓         |
 |Szaúd-Arábia     |✓         |✓         |
-|Dél-Afrika     |✓         |✓         |
+|Dél-afrikai Köztársaság     |✓         |✓         |
 |Egyesült Arab Emírségek  |✓         |✓         |
 
 ## <a name="next-steps"></a>Következő lépések

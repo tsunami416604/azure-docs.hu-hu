@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/09/2019
-ms.openlocfilehash: e37571b0078b4966aab9f505ddf88c2edb353197
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435627"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560354"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával
 
@@ -73,47 +73,16 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
  A fürtök méretezésével kapcsolatos további információkért lásd: [HDInsight-fürtök](./hdinsight-scaling-best-practices.md)méretezése.
 
-## <a name="grantrevoke-access"></a>Hozzáférés engedélyezése/visszavonása
-
-A HDInsight-fürtök a következő HTTP-webszolgáltatásokkal rendelkeznek (az összes szolgáltatás REST-végpontokkal rendelkezik):
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-Alapértelmezés szerint ezek a szolgáltatások hozzáférést kapnak. Visszavonhatja vagy megadhatja a hozzáférést. Visszavonás:
-
-```powershell
-Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
-```
-
-A következő megadása:
-
-```powershell
-$clusterName = "<HDInsight Cluster Name>"
-
-# Credential option 1
-$hadoopUserName = "admin"
-$hadoopUserPassword = '<Enter the Password>'
-$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
-
-# Credential option 2
-#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
-
-Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
-```
-
-> [!NOTE]  
-> A hozzáférés megadásával/visszavonásával alaphelyzetbe állítja a fürt felhasználónevét és jelszavát.
-
-A hozzáférés megadása és visszavonása a portálon keresztül is megtehető. Lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md).
-
 ## <a name="update-http-user-credentials"></a>HTTP-felhasználói hitelesítő adatok frissítése
 
-Ez ugyanaz az eljárás, mint a HTTP-hozzáférés engedélyezése/visszavonása. Ha a fürtön engedélyezve van a HTTP-hozzáférés, először vissza kell vonnia azt.  Ezután adja meg a hozzáférést az új HTTP-felhasználói hitelesítő adatokkal.
+A [set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) az Azure HDInsight-fürt ÁTJÁRÓjának http-hitelesítő adatait állítja be.
+
+```powershell
+$clusterName = "CLUSTERNAME"
+$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+
+Set-AzHDInsightGatewayCredential -ClusterName $clusterName -HttpCredential $credential
+```
 
 ## <a name="find-the-default-storage-account"></a>Az alapértelmezett Storage-fiók keresése
 

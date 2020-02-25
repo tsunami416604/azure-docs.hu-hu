@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure Ügyfélszéf
 description: A Microsoft Azure Ügyfélszéf technikai áttekintése, amely lehetővé teszi a felhőalapú szolgáltatói hozzáférés szabályozását, ha a Microsoftnak szüksége lehet az ügyféladatok elérésére.
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466405"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561969"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure Ügyfélszéf
 
@@ -42,37 +42,37 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
     - Az erőforrás hatóköre
     - Azt határozza meg, hogy a kérelmező izolált identitás-e vagy többtényezős hitelesítést használ-e
     - Engedélyek szintjei
-    
+
     Az JIT-szabály alapján ez a kérelem tartalmazhatja a belső Microsoft-jóváhagyók jóváhagyását is. A jóváhagyó lehet például az ügyfél-támogatási érdeklődő vagy a DevOps-kezelő.
 
 6. Ha a kérelemhez közvetlen hozzáférésre van szükség az ügyféladatok eléréséhez, a rendszer egy Ügyfélszéf kérelmet kezdeményez. Például távoli asztali hozzáférés az ügyfél virtuális géphez.
-    
+
     A kérés most már egy **ügyfél által bejelentett** állapotban van, és az ügyfél jóváhagyására vár a hozzáférés megadása előtt.
 
 7. Az ügyfél szervezetében az Azure-előfizetéshez tartozó [tulajdonosi szerepkörrel](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles) rendelkező felhasználó e-mailt kap a Microsofttól, hogy értesítést kapjon a függőben lévő hozzáférési kérelemről. Ügyfélszéf kérelmek esetében ez a személy a kijelölt jóváhagyó.
-    
+
     Példa e-mailre:
-    
+
     ![Azure Ügyfélszéf – értesítő e-mail](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. Az e-mail-értesítés a Azure Portal **Ügyfélszéf** paneljére mutató hivatkozást tartalmaz. Ha ezt a hivatkozást használja, a kijelölt jóváhagyó bejelentkezik a Azure Portalba, és megtekintheti a szervezete által Ügyfélszéf függőben lévő kérelmeket:
-    
+
     ![Azure Ügyfélszéf – Kezdőlap](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    A kérelem négy napig az ügyfél-várólistában marad. Ezt követően a hozzáférési kérelem automatikusan lejár, és a Microsoft-mérnökök nem kapnak hozzáférést.
 
 9. A függőben lévő kérelem részleteinek beszerzéséhez a kijelölt jóváhagyó kiválaszthatja a **függőben lévő kérelmekből**származó kulcstároló-kéréseket:
-    
+
     ![Azure Ügyfélszéf – a függőben lévő kérelem megtekintése](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. A kijelölt jóváhagyó azt is kiválaszthatja, hogy a **szolgáltatási kérelem azonosítója** megtekintse az eredeti felhasználó által létrehozott támogatási jegyre vonatkozó kérelmet. Ez az információ kontextust biztosít a Microsoft ügyfélszolgálata és a jelentett probléma előzményeihez. Példa:
-    
+10. A kijelölt jóváhagyó azt is kiválaszthatja, hogy a **szolgáltatási kérelem azonosítója** megtekintse az eredeti felhasználó által létrehozott támogatási jegyre vonatkozó kérelmet. Ez az információ kontextust biztosít a Microsoft ügyfélszolgálata és a jelentett probléma előzményeihez. Például:
+
     ![Azure Ügyfélszéf – a támogatási jegyre vonatkozó kérelem megtekintése](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. A kérelem áttekintése után a kijelölt jóváhagyó kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget:
-    
+
     ![Azure Ügyfélszéf – válassza a jóváhagyás vagy a Megtagadás lehetőséget](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     A kijelölés eredményeképpen:
     - **Jóváhagyás**: a Microsoft mérnöke hozzáférést kap. A hozzáférés az alapértelmezett nyolc órás időszakra van megadva.
     - **Megtagadás**: a Microsoft mérnök emelt szintű hozzáférési kérelmét a rendszer elutasítja, és nem végez további műveletet.
@@ -87,7 +87,7 @@ Naplózási célokra az ebben a munkafolyamatban végrehajtott műveletek napló
 - **Kulcstároló-kérelem jóváhagyása**
 - **Kulcstároló-kérelem lejárata**
 
-Lássunk erre egy példát:
+Példa:
 
 ![Azure Ügyfélszéf – tevékenységek naplói](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
@@ -113,20 +113,20 @@ A távoli asztal elérését érintő forgatókönyvek esetében a Windows-esem�
 
 A következő szolgáltatások jelenleg előzetes verzióban érhetők el a Ügyfélszéf számára:
 
-- Azure Storage 
+- Azure Storage
 
-- Azure SQL DB 
+- Azure SQL DB
 
-- Azure Data Explorer 
+- Azure Data Explorer
 
-- Virtual Machines (mostantól a memóriaképek és a felügyelt lemezek hozzáférését is magában foglalja) 
+- Virtual Machines (mostantól a memóriaképek és a felügyelt lemezek hozzáférését is magában foglalja)
 
 - Azure-előfizetés továbbítása
 
 Ha engedélyezni szeretné a Ügyfélszéf a szervezete számára az előzetes verzióhoz, regisztráljon a [Ügyfélszéf az Azure nyilvános előzetes](https://aka.ms/customerlockbox/insiderprogram)verziójára.
 
 
-## <a name="exclusions"></a>Korlátozások
+## <a name="exclusions"></a>Kizárások
 
 Ügyfélszéf kérelmeket a következő mérnöki támogatási helyzetekben nem indítja el a rendszer:
 

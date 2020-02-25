@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689336"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560792"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
 
@@ -45,7 +45,7 @@ Felhasználói termékkel kapcsolatos visszajelzések figyelése a termék Twitt
 
 ![Egy rendszerkép, amely leírja, hogyan figyelheti meg a termékeit és a vállalati visszajelzéseket a közösségi médián a kulcsfontosságú kifejezés kibontásával](media/use-cases/social-feed.svg)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Text Analytics API?](overview.md)
 * [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)

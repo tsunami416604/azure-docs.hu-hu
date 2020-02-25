@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Beszéd és szöveg közötti dokumentáció
+summary: A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből származó beszéd – szöveg lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé.
+metadata:
+  title: Beszédfelismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562932"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a diktálás?
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: Beszéd felismerése mikrofonbemenettel
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: Beszéd felismerése hangfájlból
+      url: quickstarts/speech-to-text-from-file.md
+    - text: Blobtárolóban tárolt beszéd felismerése
+      url: quickstarts/from-blob.md
+- title: Lépésenkénti útmutatók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Beszédfelismerési forrásnyelv módosítása
+      url: how-to-specify-source-language.md
+    - text: Beszédfelismerési mód kiválasztása
+      url: how-to-choose-recognition-mode.md
+    - text: Pontosság javítása kifejezéslistákkal
+      url: how-to-phrase-lists.md
+    - text: Pontosság javítása bérlőmodellekkel
+      url: tutorial-tenant-model.md
+    - text: Pontosság javítása Custom Speech segítségével
+      url: how-to-custom-speech.md
+    - text: Válasszon ki egy adott mikrofon típusú bemeneti eszközt
+      url: how-to-select-audio-input-devices.md
+    - text: Automatikus forrásnyelv-felismerés használata
+      url: how-to-automatic-language-detection.md
+    - text: Tömörített hangbemeneti formátumok használata
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Tömörített hangbemeneti formátumok használata (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: Tömörített hangbemeneti formátumok használata (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: Custom Speech-adatfeldolgozás előkészítése
+      url: how-to-custom-speech-test-data.md
+    - text: Custom Speech-adatellenőrzés
+      url: how-to-custom-speech-inspect-data.md
+    - text: Custom Speech pontosságának kiértékelése
+      url: how-to-custom-speech-evaluate-data.md
+    - text: Egyéni modell betanítása
+      url: how-to-custom-speech-train-model.md
+    - text: Egyéni modell üzembe helyezése
+      url: how-to-custom-speech-deploy-model.md
+    - text: Ember által címkézett átiratok létrehozása
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Nyelvi támogatás
+      url: language-support.md#speech-to-text
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Diktálás – GYIK
+      url: faq-stt.md

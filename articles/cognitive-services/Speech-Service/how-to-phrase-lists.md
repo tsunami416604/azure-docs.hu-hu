@@ -3,20 +3,20 @@ title: Kifejezések listája – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan biztosíthatja a beszédfelismerési szolgáltatást egy kifejezési listával a `PhraseListGrammar` objektum használatával a beszédfelismerési eredmények javítása érdekében.
 services: cognitive-services
-author: rhurey
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: rhurey
+ms.date: 02/04/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2ceb53b50810aef501278710ae990c57fc45030c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971672"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560847"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>A beszédfelismerés szövegéhez tartozó kifejezések listája
 
@@ -136,6 +136,6 @@ phraseListGrammar.clear();
 > [!NOTE]
 > Egy `PhraseListGrammar` objektum módosításai érvénybe lépnek a következő felismeréskor, vagy a beszédfelismerési szolgáltatáshoz való Újrakapcsolódás után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Speech SDK dokumentációja](speech-sdk.md)

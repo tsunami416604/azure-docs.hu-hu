@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025345"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559147"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása Graph API használatával Azure Active Directory 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása a Microsoft Graph API használatával Azure Active Directory 
 
-Automatizálhatja, hogyan rendeljen hozzá szerepköröket felhasználói fiókokhoz Microsoft Graph API-hoz. Ez a cikk a roleAssignments POST, GET és DELETE műveleteit ismerteti.
+Automatizálhatja, hogyan rendeljen hozzá szerepköröket a felhasználói fiókokhoz a Microsoft Graph API használatával. Ez a cikk a roleAssignments POST, GET és DELETE műveleteit ismerteti.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -35,7 +35,8 @@ HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
 ```
 
 Törzs
@@ -59,7 +60,7 @@ HTTP-kérelem olyan szerepkör-hozzárendelés létrehozásához, amelyben a ren
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Törzs
@@ -86,7 +87,7 @@ HTTP-kérelem egyetlen erőforrás-hatókörű szerepkör-hozzárendelés létre
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Törzs
@@ -130,7 +131,7 @@ HTTP-kérelem egy adott résztvevő szerepkör-hozzárendelésének beszerzésé
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=principalId eq ‘<object-id-of-principal>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
 Válasz
@@ -156,7 +157,7 @@ HTTP-kérelem egy adott szerepkör-definícióhoz tartozó szerepkör-hozzárend
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
 Válasz
@@ -176,7 +177,7 @@ HTTP-kérelem a szerepkör-hozzárendelés azonosító alapján való lekérés�
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Válasz
@@ -184,7 +185,7 @@ Válasz
 ``` HTTP
 HTTP/1.1 200 OK
 { 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
     "resourceScopes":["/"]
@@ -198,7 +199,7 @@ HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Válasz
@@ -211,7 +212,7 @@ HTTP-kérelem a már nem létező szerepkör-hozzárendelés törléséhez
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Válasz
@@ -225,7 +226,7 @@ HTTP-kérelem az önálló és a beépített szerepkör-definíció közötti sz
 DELETE
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Válasz
@@ -246,7 +247,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).

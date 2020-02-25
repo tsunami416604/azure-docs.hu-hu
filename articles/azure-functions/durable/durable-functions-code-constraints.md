@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232979"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562139"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
 
@@ -38,7 +38,7 @@ A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell ke
 | API-k blokkolása | Az olyan API-k blokkolása, mint a .NET és a hasonló API-k `Thread.Sleep`, a Orchestrator függvények teljesítmény-és skálázási problémáit okozhatják, és kerülendő A Azure Functions fogyasztási tervben a szükségtelen futtatókörnyezeti díjakat is eredményezhetnek. | A rendelkezésre álló API-k blokkolására alternatívákat használhat. Például a `CreateTimer` használatával késleltetheti a hangelőkészítési végrehajtást. A [tartós időzítő](durable-functions-timers.md) késései nem számítanak bele egy Orchestrator függvény végrehajtási idejébe. |
 | Aszinkron API-k | A Orchestrator-kódnak soha nem kell elindítania az aszinkron műveleteket, kivéve a `IDurableOrchestrationContext` API vagy a `context.df` objektum API-ját használva. Nem használhatja például `Task.Run`, `Task.Delay`és `HttpClient.SendAsync` a .NET-ben, illetve a `setTimeout` és a `setInterval` JavaScriptben. Az állandó feladatok keretrendszere egyetlen szálon futtatja a Orchestrator-kódot. Más aszinkron API-k által hívható más szálakkal nem tud működni. | A Orchestrator függvény csak tartós aszinkron hívásokat hajt végre. A Activity functions szolgáltatásnak más aszinkron API-hívásokat kell végeznie. |
 | Aszinkron JavaScript-függvények | A JavaScript Orchestrator függvények nem deklarálható `async`ként, mert a Node. js futtatókörnyezet nem garantálja, hogy az aszinkron függvények determinisztikus. | A JavaScript-Orchestrator funkcióinak deklarálása szinkron létrehozó függvényekként. |
-| Többszálú API-k | Az állandó feladat-keretrendszer egyetlen szálon futtatja az Orchestrator-kódot, és nem tud más szálakkal kommunikálni. Az új szálaknak egy előkészítési folyamatba való bevezetéséhez determinált végrehajtás vagy holtpont is vezethet. | A Orchestrator függvények szinte soha nem használhatnak többszálú API-kat. Ha ilyen API-k szükségesek, csak a tevékenységi funkciókra korlátozzák a használatukat. |
+| Többszálú API-k | Az állandó feladat-keretrendszer egyetlen szálon futtatja az Orchestrator-kódot, és nem tud más szálakkal kommunikálni. Az új szálaknak egy előkészítési folyamatba való bevezetéséhez determinált végrehajtás vagy holtpont is vezethet. | A Orchestrator függvények szinte soha nem használhatnak többszálú API-kat. A .NET-ben például ne használja a `ConfigureAwait(continueOnCapturedContext: false)`; Ez biztosítja a feladat folytatását a Orchestrator függvény eredeti `SynchronizationContext`ján. Ha ilyen API-k szükségesek, csak a tevékenységi funkciókra korlátozzák a használatukat. |
 | Statikus változók | Kerülje a nem állandó statikus változók használatát a Orchestrator függvények esetében, mert az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | Használjon állandókat, vagy korlátozza a statikus változók használatát a tevékenység funkcióihoz. |
 | Környezeti változók | Ne használjon környezeti változókat a Orchestrator functions szolgáltatásban. Az értékek idővel változhatnak, ami a determinált futásidejű viselkedését eredményezi. | A környezeti változókat csak az ügyfél-vagy a tevékenységi függvényekből kell hivatkozni. |
 | Végtelen hurkok | Kerülje a végtelen hurkokat a Orchestrator functions szolgáltatásban. Mivel a tartós feladatok keretrendszere a folyamat előrehaladásának előrehaladtával menti a végrehajtási előzményeket, egy végtelen hurok miatt előfordulhat, hogy egy Orchestrator-példány elfogyott a memóriából. | Végtelen hurkos forgatókönyvek esetén használjon olyan API-kat, mint például a .NET vagy a `continueAsNew` a JavaScriptben a függvény végrehajtásának újraindításához és a korábbi végrehajtási előzmények elvetéséhez `ContinueAsNew`. |
@@ -66,7 +66,7 @@ Ez a szakasz a futásidejű viselkedés leírásában segít megérteni, hogy mi
 
 Ha többet szeretne megtudni arról, hogy a tartós feladat-keretrendszer hogyan hajtja végre a Orchestrator functions szolgáltatást, tekintse [meg a tartós feladat forráskódját a githubon](https://github.com/Azure/durabletask). Különösen lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megtudhatja, hogyan hívhat meg alfolyamatokat](durable-functions-sub-orchestrations.md)

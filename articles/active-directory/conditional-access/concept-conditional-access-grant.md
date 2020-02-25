@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192115"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561646"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -55,13 +55,17 @@ Ha bejelöli ezt a jelölőnégyzetet, a felhasználóknak az Azure Multi-Factor
 
 A Microsoft Intune központilag telepített szervezetek a megfelelőségi követelményeknek megfelelő eszközök azonosítására használhatják az eszközük által visszaadott adatokat. A szabályzat megfelelőségi információi továbbítva lesznek az Intune-ból az Azure AD-ba, ahol a feltételes hozzáférés az erőforrásokhoz való hozzáférés engedélyezésére vagy letiltására vonatkozó döntéseket hozhat. A megfelelőségi szabályzatokkal kapcsolatos további információkért tekintse [meg az eszközökön a szervezet erőforrásaihoz való hozzáférés engedélyezése az Intune-](https://docs.microsoft.com/intune/protect/device-compliance-get-started)nal című cikket.
 
+Az eszközök az Intune (bármilyen eszköz operációs rendszer esetén) vagy külső gyártótól származó, Windows 10-es eszközökhöz tartozó MDM-rendszerek szerint megfelelőként jelölhetők meg. A harmadik féltől származó MDM rendszerek nem Windows 10 rendszerű eszközökön használhatók.
+
+Az eszközöknek regisztrálva kell lenniük az Azure AD-ben, mielőtt azok megfelelőként jelölhetők meg. Az eszközök regisztrálásával kapcsolatos további információkért tekintse meg a következő cikket: [Mi az az eszköz identitása](../devices/overview.md).
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 
 A szervezetek dönthetnek úgy, hogy az eszköz identitását használják a feltételes hozzáférési szabályzat részeként. A szervezeteknek meg kell követelniük, hogy az eszközök hibrid Azure AD-hez legyenek csatlakoztatva ezzel a jelölőnégyzettel. Az eszközök identitásával kapcsolatos további információkért tekintse meg a [Mi az eszköz identitása?](../devices/overview.md)című cikket.
 
 ### <a name="require-approved-client-app"></a>Jóváhagyott ügyfélalkalmazás megkövetelése
 
-A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani.
+A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani. Ezek a jóváhagyott ügyféloldali APS a mobileszköz-kezelési (MDM) megoldástól függetlenül támogatják az [Intune app Protection-szabályzatokat](/intune/app-protection-policy) .
 
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
@@ -102,9 +106,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 ### <a name="require-app-protection-policy"></a>Alkalmazásvédelmi szabályzat megkövetelése
 
-A feltételes hozzáférési házirendben megkövetelheti, hogy az alkalmazás védelmi szabályzata elérhető legyen az ügyfélalkalmazás számára, mielőtt a kiválasztott felhőalapú alkalmazások hozzáférhessenek a hozzáféréshez. 
-
-![Hozzáférés vezérlése az App Protection-házirenddel](./media/technical-reference/22.png)
+A feltételes hozzáférési házirendben megkövetelheti, hogy az [Intune app Protection szabályzata](/intune/app-protection-policy) elérhető legyen az ügyfélalkalmazás számára, mielőtt a kiválasztott felhőalapú alkalmazások hozzáférhessenek a hozzáféréshez. 
 
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
@@ -119,7 +121,11 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - Az **alkalmazás-védelmi házirend követelményeinek megkövetelése** :
     - A csak az iOS és az Android for Device platform feltételeit támogatja.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="terms-of-use"></a>Használati feltételek
+
+Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
+
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

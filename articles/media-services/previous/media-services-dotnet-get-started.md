@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11754e8e98e13cffefaf4a8c1fa08bc60d650105
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016547"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566063"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával  
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszint
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * A .NET-keretrendszer 4.0-s vagy újabb verziója.
 * Visual Studio.
 
@@ -88,7 +88,7 @@ A streamvégpont elindításához tegye a következőket:
 
 A .NET-keretrendszerű Media Services-szolgáltatások használatakor a **CloudMediaContext** osztályt kell használnia a legtöbb Media Services-programozási feladathoz – ilyenek például a Media Services-fiókhoz való csatlakozás, továbbá az adategységek, adategységfájlok, feladatok, hozzáférési házirendek, keresők és egyebek létrehozása, frissítése, elérése és törlése.
 
-Írja felül az alapértelmezett program osztályt a következő kóddal: A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információ: [Connecting to the Media Services API](media-services-use-aad-auth-to-access-ams-api.md) (Csatlakozás a Media Services API-hoz).
+Írja felül az alapértelmezett Program osztályt a következő kóddal: A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információ: [Connecting to the Media Services API](media-services-use-aad-auth-to-access-ams-api.md) (Csatlakozás a Media Services API-hoz).
 
 Ne feledje frissíteni a fájl nevét és elérési útvonalát a médiafájl helyének megfelelően.
 
@@ -152,7 +152,7 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Új adategység létrehozása és videofájl feltöltése
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **Adategység** entitás tartalmazhat videót, hangot, képeket, miniatűröket, szövegsávokat és feliratfájlokat (valamint mindezen fájlok metaadatait).  A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és adatfolyam-továbbítás céljából. Az adategységben található fájlokat **adategység-fájloknak** nevezzük.
+A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **eszköz** entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok feltöltése után a rendszer biztonságosan tárolja a tartalmat a felhőben a további feldolgozáshoz és folyamatos átvitelhez. Az adategységben található fájlokat **adategység-fájloknak** nevezzük.
 
 Az alábbiakban meghatározott **UploadFile** módszer a **CreateFromFile** módszert hívja meg (amely a .NET SDK-bővítmények között van meghatározva). A **CreateFromFile** létrehoz egy új adategységet, amelybe a megadott forrásfájl fel lesz töltve.
 
@@ -190,7 +190,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>Forrásfájl kódolása adaptív sávszélességű MP4-fájlsorozattá
 Miután az adategységek bevitele a Media Services szolgáltatásba megtörtént, a médiatartalmak többek között kódolhatók, transzmultiplexálás végezhető rajtuk vagy vízjelezhetők, mielőtt továbbítva lennének az ügyfelek felé. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük. Minden egyes feladat több részműveletből áll, ezek végzik el a valódi munkát az adategységfájlon.
 
-Mint azt korábban már említettük, az Azure Media Services használatának egyik leggyakoribb forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services az adaptív sávszélességű MP4-fájlok készletét az alábbi formátumokba tudja dinamikusan csomagolni: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
+Mint azt korábban már említettük, az Azure Media Services használatának egyik leggyakoribb forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services az adaptív sávszélességű MP4-fájlokat a következő formátumokba tudja dinamikusan csomagolni: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
 
 A dinamikus csomagolás kihasználásához kódolja a mezzanine forrásfájlt egy adaptív sávszélességű MP4- vagy Smooth Streaming-fájlsorozattá.  
 
@@ -238,7 +238,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Adatkészlet közzététele és az adatfolyam-továbbításhoz és progresszív letöltéshez szükséges URL-címek lekérése
 
-Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: A médiafájlok letöltéséhez használt OnDemandOrigin-lokátorok (például MPEG DASH, HLS vagy Smooth Streaming) és hozzáférési aláírási (SAS-) lokátorok.
+Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services két lokátortípust támogat: az egyik az OnDemandOrigin lokátortípus, amely médiafájlok (például MPEG DASH, HLS vagy Smooth Streaming) streamelésére használható, a másik pedig a hozzáférési aláírás (SAS) lokátortípus, amely médiafájlok letöltésére alkalmas.
 
 ### <a name="some-details-about-url-formats"></a>Néhány információ az URL-formátumokról
 
@@ -378,7 +378,6 @@ A progresszív letöltés teszteléséhez másoljon egy URL-címet a böngésző
 További információkért tekintse át a következők témaköröket:
 
 - [A tartalom lejátszása meglévő lejátszókkal](media-services-playback-content-with-existing-players.md)
-- [Videolejátszó alkalmazások fejlesztése](media-services-develop-video-players.md)
 - [MPEG-DASH adaptív streamelt videók beágyazása DASH.js-sel rendelkező HTML5-alkalmazásba](media-services-embed-mpeg-dash-in-html5.md)
 
 ## <a name="download-sample"></a>Minta letöltése

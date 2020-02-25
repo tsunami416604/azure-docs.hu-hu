@@ -1,6 +1,6 @@
 ---
 title: A HDInsight-alapú Apache Kafka bemutatása – Azure
-description: 'További információ a HDInsight Apache Kafkaáról: Leírja, mi ez, mire szolgál, illetve hol találhat példákat és információt a használatának első lépéseiről.'
+description: 'Ismerje meg a HDInsight-alapú Apache Kafkát: Mi ez, mire való, hol találhat rá példákat, és hol találhatja meg az első lépésekre vonatkozó információt?'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960095"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560099"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Mi az Azure HDInsight Apache Kafka
 
@@ -59,41 +59,43 @@ A partíciók csomópontok közötti duplikálásához a rendszer replikációt 
 
 Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvégezhetők:
 
-* **Apache Kafka-adatmennyiség replikálása**: A Kafka biztosítja a MirrorMaker segédprogramot, amely a Kafka-fürtök között replikálja az adatgyűjtést.
+* **Apache Kafka-adatreplikálás**: a Kafka biztosítja a MirrorMaker segédprogramot, amely a Kafka-fürtök között replikálja az adatmennyiséget.
 
     További információ a MirrorMaker használatáról: [Apache Kafka témakörök replikálása Apache Kafka a HDInsight](apache-kafka-mirroring.md).
 
-* **Közzététel – előfizetés üzenetkezelési mintája**: A Kafka egy termelői API-t biztosít a rekordok egy Kafka-témakörbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség.
+* **Közzétételi-feliratkozási üzenetkezelési minta**: A Kafka egy előállítói API-t biztosít a rekordok Kafka-témakörökbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség.
 
     További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).
 
-* **Adatfolyam-feldolgozás**: A Kafka használatát gyakran használják Apache Storm vagy Spark a valós idejű adatfolyam-feldolgozáshoz. A Kafka 0.10.0.0 (HDInsight 3.5-ös és 3.6-os verzió) egy olyan streamelési API-t vezetett be, amely lehetővé teszi a streammegoldások Storm vagy Spark nélküli fejlesztését.
+* **Streamfeldolgozás**: A Kafkát gyakran használják valós idejű streamfeldolgozásra az Apache Stormmal vagy Sparkkal. A Kafka 0.10.0.0 (HDInsight 3.5-ös és 3.6-os verzió) egy olyan streamelési API-t vezetett be, amely lehetővé teszi a streammegoldások Storm vagy Spark nélküli fejlesztését.
 
     További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).
 
-* **Vízszintes skála**: A Kafka partíciók a HDInsight-fürt csomópontjain találhatóak. A fogyasztói folyamatok társíthatók az egyes partíciókkal, így biztosítható a terheléselosztás a rekordok használatakor.
+* **Horizontális skálázhatóság**: a Kafka szétosztja a streameket a HDInsight-fürtben található csomópontok között. A fogyasztói folyamatok társíthatók az egyes partíciókkal, így biztosítható a terheléselosztás a rekordok használatakor.
 
     További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).
 
-* **Sorrendben történő kézbesítés**: Minden partíción belül a rendszer a rekordokat a kapott sorrendben tárolja a streamben. Partíciónként egy fogyasztói folyamat társításával garantálhatja, hogy a rekordok feldolgozása érkezési sorrendben történjen.
+* **Érkezési sorrendben történő kézbesítés**: a stream minden egyes partíción belül érkezési sorrendben tárolja a rekordokat. Partíciónként egy fogyasztói folyamat társításával garantálhatja, hogy a rekordok feldolgozása érkezési sorrendben történjen.
 
     További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).
 
 ## <a name="use-cases"></a>Használati esetek
 
-* **Üzenetküldés**: Mivel támogatja a közzétételi-előfizetési üzenet mintáját, a Kafka-t gyakran használják a Message brokerként.
+* **Üzenetkezelés**: sokszor használják a Kafkát üzenetközvetítőként, mivel támogatja a közzétételi-feliratkozási üzenetmintát.
 
-* **Tevékenységek követése**: Mivel a Kafka a rekordok sorrendbe rendezését biztosítja, felhasználhatja a tevékenységek nyomon követését és újbóli létrehozását. Ilyen tevékenységek például a felhasználók műveletei egy webhelyen vagy egy alkalmazásban.
+* **Tevékenységkövetés**: mivel a Kafka lehetővé teszi a rekordok érkezési sorrend szerinti naplózását, használható tevékenységek nyomon követésére és ismételt létrehozására. Ilyen tevékenységek például a felhasználók műveletei egy webhelyen vagy egy alkalmazásban.
 
-* **Összesítés**: Az adatfolyam-feldolgozás használatával a különböző streamekről származó információk összevonhatók az adatoknak az operatív adatokba való összevonásához és központosításához.
+* **Összesítés**: streamfeldolgozással összesítheti a különböző streamek információit, hogy működési adatokká egyesítse és központosítsa az információt.
 
-* **Átalakítás**: Az adatfolyam-feldolgozás használatával több bemeneti témakörből származó adatok egyesíthetők és bővíthetők egy vagy több kimeneti témakörbe.
+* **Átalakítás**: streamfeldolgozás használatával egyesítheti és bővítheti az adatokat több bemeneti témakörből egy vagy több kimeneti témakörbe.
 
 ## <a name="next-steps"></a>További lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 
 * [Rövid útmutató: Apache Kafka létrehozása a HDInsight-on](apache-kafka-get-started.md)
+
+* [A Kafka és a REST proxy használata](rest-proxy.md)
 
 * [Oktatóanyag: Apache Spark használata a HDInsight Apache Kafka használatával](../hdinsight-apache-spark-with-kafka.md)
 

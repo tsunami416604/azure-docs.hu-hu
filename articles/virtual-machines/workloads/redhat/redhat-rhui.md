@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368898"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562547"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -28,7 +28,7 @@ További információ az Azure-beli RHEL-lemezképekről, beleértve a közzét�
 A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
 
 > [!IMPORTANT]
-> A RHUI kizárólag utólagos elszámolású (ÁTTÉRÉSHEZ) rendszerképekhez készült. Az egyéni és az arany lemezképek, más néven a saját előfizetések (BYOS-EK) esetében a rendszernek a frissítések fogadásához csatolni kell a RHSM vagy a Satellite szolgáltatáshoz. További részletek: [Red Hat cikk](https://access.redhat.com/solutions/253273) .
+> A RHUI kizárólag utólagos elszámolású (TB) rendszerképekhez készült. Az egyéni és az arany lemezképek, más néven a saját előfizetések (BYOS-EK) esetében a rendszernek a frissítések fogadásához csatolni kell a RHSM vagy a Satellite szolgáltatáshoz. További részletek: [Red Hat cikk](https://access.redhat.com/solutions/253273) .
 
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI vonatkozó fontos információk
@@ -105,7 +105,7 @@ Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott 
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. A releasever változó zárolása (futtató gyökér):
+1. A `releasever` változó zárolása (futtató gyökér):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Az alábbi útmutatást követve zárolhat egy RHEL virtuális gépet egy adott 
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL virtuális gép átváltása nem EUS (verziók zárolásának eltávolítása)
 Futtassa a következőt root-ként:
-1. Távolítsa el a releasever fájlt:
+1. Távolítsa el a `releasever` fájlt:
     ```bash
     rm /etc/yum/vars/releasever
      ```
@@ -240,7 +240,7 @@ Ez az eljárás csak referenciaként van megadva. RHEL Használatalapú lemezké
         ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Red Hat Enterprise Linux virtuális gép Azure Marketplace-TB rendszerképből való létrehozásához, valamint az Azure által üzemeltetett RHUI használatához látogasson el az [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)-re.
 * Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./redhat-images.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

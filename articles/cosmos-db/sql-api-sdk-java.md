@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718173"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558928"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az SQL API-t az Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,12 +36,16 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatásh
 |---|---|
 |**SDK letöltése**|[Maven 3](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-dokumentáció**|[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.documentdb)|
-|**Közreműködés az SDK-val**|[GitHubon](https://github.com/Azure/azure-documentdb-java/)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Bevezetés**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
+* Megjavítja a kapcsolati készlet időtúllépési hibáját.
+* Megjavítja az Auth-jogkivonat frissítését a belső újrapróbálkozások során.
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
 * Frissítette a megfelelő ügyféloldali replika házirend-címkét a databaseAccount-ben, és a databaseAccount konfigurációját a gyorsítótárból olvassa be.
@@ -259,8 +263,19 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
-| [2.1.2](#2.1.2) |Mar 09, 2018 |--- |
+| [2.4.7](#2.4.7) |Február 20, 2020 |--- |
+| [2.4.6](#2.4.6) |Január 24, 2020 |--- |
+| [2.4.5](#2.4.5) |November 10, 2019 |--- |
+| [2.4.4](#2.4.4) |Oct 24, 2019 |--- |
+| [2.4.2](#2.4.2) |Szeptember 26., 2019 |--- |
+| [2.4.1](#2.4.1) |Július 18., 2019 |--- |
+| [2.4.0](#2.4.0) |Május 04., 2019 |--- |
+| [2.3.0](#2.3.0) |Április 24., 2019 |--- |
+| [2.2.3](#2.2.3) |Április 16., 2019 |--- |
+| [2.2.2](#2.2.2) |Apr 05, 2019 |--- |
+| [2.2.0](#2.2.0) |Mar 27, 2019 |--- |
+| [2.1.3](#2.1.3) |Mar 13, 2019 |--- |
+| [2.1.2](#2.1.2) |Mar 09, 2019 |--- |
 | [2.1.1](#2.1.1) |Dec. 13, 2018 |--- |
 | [2.1.0](#2.1.0) |November 20, 2018 |--- |
 | [2.0.0](#2.0.0) |2018. Szeptembertől 21. |--- |

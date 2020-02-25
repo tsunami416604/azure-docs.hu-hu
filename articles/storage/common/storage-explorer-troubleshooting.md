@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931211"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561680"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -60,6 +60,17 @@ Ha nincs olyan szerepköre, amely felügyeleti rétegbeli engedélyeket biztosí
 
 Jelenleg nincs RBAC kapcsolatos megoldás ehhez a problémához. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
+### <a name="recommended-built-in-rbac-roles"></a>Ajánlott beépített RBAC-szerepkörök
+
+Több beépített RBAC-szerepkör is rendelkezésre áll, amelyek biztosítják a Storage Explorer használatához szükséges engedélyeket. A szerepkörök némelyike:
+- [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner): mindent kezelhet, beleértve az erőforrásokhoz való hozzáférést is. **Megjegyzés**: Ez a szerepkör a kulcs elérését biztosítja.
+- [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor): mindent kezelhet, kivéve az erőforrásokhoz való hozzáférést. **Megjegyzés**: Ez a szerepkör a kulcs elérését biztosítja.
+- [Olvasó](/azure/role-based-access-control/built-in-roles#reader): erőforrások olvasása és listázása.
+- [Storage-fiók közreműködői](/azure/role-based-access-control/built-in-roles#storage-account-contributor): teljes körű felügyelet a Storage-fiókok esetében. **Megjegyzés**: Ez a szerepkör a kulcs elérését biztosítja.
+- [Storage blob-adat tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): teljes hozzáférés az Azure Storage blob-tárolók és-adattárakhoz.
+- [Storage blob-adatközreműködői](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): az Azure Storage-tárolók és-Blobok olvasása, írása és törlése.
+- [Storage blob Adatolvasó](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): az Azure Storage-tárolók és-Blobok olvasása és listázása.
+
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: önaláírt tanúsítvány a tanúsítványláncot (és hasonló hibák)
 
 A tanúsítványok hibái általában az alábbi helyzetekben fordulnak elő:
@@ -89,7 +100,7 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alább
 
 Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, lépjen kapcsolatba velünk a visszajelzési eszköz használatával. Storage Explorer a parancssorból is megnyithatja a `--ignore-certificate-errors` jelző használatával. Ezzel a jelzővel megnyitva Storage Explorer figyelmen kívül hagyja a tanúsítvány hibáit.
 
-## <a name="sign-in-issues"></a>Bejelentkezéssel kapcsolatos problémák
+## <a name="sign-in-issues"></a>Bejelentkezési problémák
 
 ### <a name="blank-sign-in-dialog-box"></a>Üres bejelentkezési párbeszédpanel
 
@@ -98,7 +109,7 @@ Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, 
 1. A bal oldali függőleges eszköztáron nyissa meg a **Beállítások menüpontot**. A beállítások panelen lépjen az **alkalmazás** > **Bejelentkezés elemre**. Engedélyezze **az eszköz kódjának áramlását a bejelentkezést**.
 2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
 3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
-4. Válassza a **Bejelentkezés** lehetőséget.
+4. Válassza **a bejelentkezés**lehetőséget.
 5. Kövesse a következő panelen megjelenő utasításokat.
 
 Ha nem tud bejelentkezni a használni kívánt fiókba, mert az alapértelmezett böngésző már be van jelentkezve egy másik fiókba, tegye a következők egyikét:
@@ -244,20 +255,20 @@ Ha meg szeretné őrizni a nem sérült kapcsolatokat, a következő lépésekke
 
 Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat nevében törölje a sérült adataikat (ha van ilyen), és adja hozzá őket a Storage Explorer alábbi szabványos lépéseivel:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. A **Start** menüben keresse meg a **hitelesítőadat-kezelőt** , és nyissa meg.
 2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat**.
 3. Az **általános hitelesítő adatok**területen keresse meg azokat a bejegyzéseket, amelyek rendelkeznek a `<connection_type_key>/<corrupted_connection_name>` kulccsal (például `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Nyisson meg egy reflektorfényt (Command + szóköz), és keressen rá a **kulcstartó-hozzáférés**kifejezésre.
 2. Keresse meg a `<connection_type_key>/<corrupted_connection_name>` kulcsot tartalmazó bejegyzéseket (például `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 A helyi hitelesítő adatok kezelése a Linux-disztribúciótól függően változhat. Ha a Linux-disztribúció nem biztosít beépített GUI-eszközt a helyi hitelesítő adatok kezeléséhez, telepíthet egy külső gyártótól származó eszközt a helyi hitelesítő adatok kezeléséhez. Használhatja például a [csikóhalat](https://wiki.gnome.org/Apps/Seahorse/), amely egy nyílt forráskódú GUI-eszköz a Linux helyi hitelesítő adatainak kezeléséhez.
 
@@ -309,7 +320,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
 > [!NOTE]
 > Storage Explorer 1.7.0 és korábbi verziókhoz a .NET Core 2,0 szükséges. Ha a .NET Core újabb verziója van telepítve, akkor a [Storage Explorer javításra](#patching-storage-explorer-for-newer-versions-of-net-core)van szükség. Ha Storage Explorer 1.8.0-t vagy újabb verziót futtat, akkor akár a .NET Core 2,2-as verzióját is használhatja. Az 2,2-nál újabb verziók nem lettek ellenőrizve a működéshez.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19,04](#tab/1904)
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -318,7 +329,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18,04](#tab/1804)
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
@@ -327,7 +338,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +347,7 @@ Ezek a csomagok a leggyakoribb követelmények a Linux Storage Explorer esetén:
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14,04](#tab/1404)
 
 1. Storage Explorer letöltése.
 2. Telepítse a [.net Core futtatókörnyezetet](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
@@ -366,7 +377,7 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 

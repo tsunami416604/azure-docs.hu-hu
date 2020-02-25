@@ -1,5 +1,5 @@
 ---
-title: A fürt vertikális skálázása (horizontális felskálázás) kezelése az Azure Adatkezelő a változó igények kielégítése érdekében
+title: A fürt függőleges skálázásának kezelése (vertikális felskálázás) az Azure-Adatkezelő igényének megfelelően
 description: Ez a cikk az Azure Adatkezelő-fürt vertikális felskálázásának és méretezésének lépéseit ismerteti az igények módosítása alapján.
 author: radennis
 ms.author: radennis
@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 80bbdf3a5d936719b06782cd78d56088b36cb21d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 95275598febae2b6b0355a7bc3e512490dae500d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985487"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560439"
 ---
 # <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt vertikális skálázása (horizontális felskálázás) kezelése az Azure Adatkezelő a változó igények kielégítése érdekében
 
 A fürt megfelelő méretezése az Azure-Adatkezelő teljesítményének szempontjából kritikus fontosságú. A statikus fürt mérete a használaton kívüli vagy túlzott kihasználtságot eredményezhet, ami egyik ideális megoldás.
 
-Mivel a fürt iránti igényt nem lehet abszolút pontossággal előre jelezni, a jobb megoldás  a fürt méretezése, a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
+Mivel a fürt iránti igényt nem lehet abszolút pontossággal előre jelezni, a jobb megoldás a fürt *méretezése* , a kapacitás és a CPU-erőforrások hozzáadása és eltávolítása a változó igényekkel. 
 
 Az Azure Adatkezelő-fürtök méretezésére két munkafolyamat áll rendelkezésre:
 
@@ -29,7 +29,7 @@ Ez a cikk a vertikális skálázási munkafolyamatot ismerteti:
 
 ## <a name="configure-vertical-scaling"></a>Vertikális skálázás konfigurálása
 
-1. A Azure Portal lépjen az Azure Adatkezelő fürterőforrás elemre. A **Beállítások**területen válassza a vertikális felskálázás lehetőséget.
+1. A Azure Portal lépjen az Azure Adatkezelő fürterőforrás elemre. A **Beállítások**területen válassza a vertikális **felskálázás**lehetőséget.
 
 1. A **felskálázás** ablakban megjelenik a fürthöz elérhető SKU-ket tartalmazó lista. Az alábbi ábrán például csak négy SKU érhető el.
 
@@ -50,5 +50,5 @@ Most beállította a vertikális skálázást az Azure Adatkezelő-fürthöz. Ad
 
 * A [fürt vízszintes skálázásának kezelése](manage-cluster-horizontal-scaling.md) a megadott mérőszámok alapján a példányszám dinamikusan horizontális felskálázásához.
 
-* Figyelje meg az erőforrás-használatot a következő cikk alapján: [Az Azure adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal](using-metrics.md).
+* Figyelje meg az erőforrás-használatot a következő cikk alapján: az [Azure adatkezelő teljesítményének, állapotának és használatának mérőszámokkal történő figyelése](using-metrics.md).
 

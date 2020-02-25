@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840451"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565893"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -40,13 +40,13 @@ A cikk a következő alapvető Azure Identity Management-képességekre összpon
 
 * Egyszeri bejelentkezés
 * Fordított proxy
-* Multi-Factor Authentication
+* Többtényezős hitelesítés
 * Szerepköralapú hozzáférés-vezérlés (RBAC)
 * Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
-* A felhasználói identitások és hozzáférés kezelése
+* Felhasználói identitás és hozzáférés-kezelés
 * Eszközregisztráció
 * Privilegizált identitások kezelése
-* Identity Protection
+* Identitásvédelem
 * Hibrid Identitáskezelés/Azure AD-kapcsolat
 * Azure AD hozzáférési felülvizsgálatok
 
@@ -60,30 +60,30 @@ Az Azure AD kiterjeszti a helyszíni Active Directory környezeteket a felhőbe,
 
 Nem csak a felhasználóknak több felhasználónevet és jelszót kell kezelnie, a szervezeti csoportok és az alkalmazotti állapotuk alapján automatikusan kiépítheti vagy kiépítheti az alkalmazásokhoz való hozzáférést. Az Azure AD olyan biztonsági és hozzáférési irányítási ellenőrzéseket vezet be, amelyekkel központilag kezelheti a felhasználók hozzáférését az SaaS-alkalmazásokban.
 
-Részletek:
+További információ:
 
 * [Az egyszeri bejelentkezés áttekintése](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Azure Active Directory egyszeri bejelentkezés integrálása SaaS-alkalmazásokkal](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [Azure Active Directory egyszeri bejelentkezés integrálása SaaS-alkalmazásokkal](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>Fordított proxy
 
 Az Azure AD Application Proxy lehetővé teszi a helyszíni alkalmazások, például a [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) -webhelyek, az [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx)és az [IIS](https://www.iis.net/)-alapú alkalmazások közzétételét a magánhálózaton belül, és biztonságos hozzáférést biztosít a hálózaton kívüli felhasználók számára. Az alkalmazásproxy távoli hozzáférést és egyszeri bejelentkezést biztosít számos különböző típusú helyszíni webalkalmazáshoz az Azure AD által támogatott több ezer SaaS-alkalmazással. Az alkalmazottak bejelentkezhetnek az alkalmazásaiba otthonról a saját eszközein, és ezen a felhőalapú proxyn keresztül hitelesíthetők.
 
-Részletek:
+További információ:
 
 * [Az Azure AD Application Proxy engedélyezése](/azure/active-directory/manage-apps/application-proxy-enable)
 * [Alkalmazások közzététele az Azure AD Application Proxy használatával](/azure/active-directory/active-directory-application-proxy-publish)
 * [Egyszeri bejelentkezés az Application proxyval](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Feltételes hozzáférés használata](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Az Azure Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
 
-Részletek:
+További információ:
 
-* [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+* [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
@@ -91,7 +91,7 @@ Részletek:
 
 A RBAC egy Azure Resource Managerra épülő engedélyezési rendszer, amely részletes hozzáférés-kezelést biztosít az Azure-beli erőforrásokhoz. A RBAC lehetővé teszi a felhasználók által használt hozzáférés szintjének részletes szabályozását. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört tartalmaz, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
-Részletek:
+További információ:
 
 * [Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?](/azure/role-based-access-control/overview)
 * [Beépített szerepkörök Azure-erőforrásokhoz](/azure/role-based-access-control/built-in-roles)
@@ -108,13 +108,13 @@ A Azure Portal a jelentések a következő kategóriákba sorolhatók:
 * **Felhasználó-specifikus jelentések**: az eszköz bejelentkezési tevékenységére vonatkozó információk megjelenítése egy adott felhasználó számára.
 * **Tevékenységnaplók**: az elmúlt 24 órában, az elmúlt 7 napban vagy az elmúlt 30 napban található összes naplózott esemény rekordját tartalmazza, valamint a csoport tevékenységeinek változásait, valamint a jelszó-visszaállítási és a regisztrációs tevékenységet.
 
-Részletek:
+További információ:
 
 * [A hozzáférési és használati jelentések megtekintése](/azure/active-directory/active-directory-view-access-usage-reports)
 * [Ismerkedés a Azure Active Directory jelentéskészítéssel](/azure/active-directory/active-directory-reporting-getting-started)
 * [Azure Active Directory jelentéskészítési útmutató](/azure/active-directory/active-directory-reporting-guide)
 
-## <a name="consumer-identity-and-access-management"></a>A felhasználói identitások és hozzáférés kezelése
+## <a name="consumer-identity-and-access-management"></a>Felhasználói identitás és hozzáférés-kezelés
 
 A Azure AD B2C egy nagyszámú, globális, identitás-kezelési szolgáltatás, amely több száz millió identitásra méretezhető. Mobil- és webes platformokba is integrálható. A felhasználók a meglévő közösségi fiókjaik használatával vagy új hitelesítő adatok létrehozásával jelentkezhetnek be az összes alkalmazásba.
 
@@ -122,7 +122,7 @@ A múltban az alkalmazások fejlesztői számára, akik szeretnék regisztrálni
 
 Azure AD B2C használatakor a felhasználók a meglévő közösségi fiókjaik (Facebook, Google, Amazon, LinkedIn) használatával regisztrálhatják alkalmazásaikat, vagy új hitelesítő adatokat (e-mail-címet, jelszót vagy felhasználónevet és jelszót) hoznak létre.
 
-Részletek:
+További információ:
 
 * [Mi az az Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
 * [Azure Active Directory B2C előzetes verzió: felhasználók regisztrálása és bejelentkezés az alkalmazásokban](../../active-directory-b2c/overview.md)
@@ -134,7 +134,7 @@ Az Azure AD-eszközök regisztrációja az eszköz alapú [feltételes hozzáfé
 
 A mobileszköz-kezelési megoldással, például az Intune-nal kombinálva az Azure AD-ben az eszköz attribútumai frissülnek az eszközre vonatkozó további információkkal. Ezután létrehozhat olyan feltételes hozzáférési szabályokat, amelyek kikényszerítik az eszközök hozzáférését, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak.
 
-Részletek:
+További információ:
 
 * [Ismerkedés az Azure AD-eszközök regisztrálásával](/azure/active-directory/active-directory-conditional-access-device-registration-overview)
 * [Automatikus eszköz regisztrálása az Azure AD-vel Windows-tartományhoz csatlakoztatott eszközökhöz](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
@@ -153,16 +153,16 @@ A Azure AD Privileged Identity Management a következőket teheti:
 * A rendszergazdai hozzáférési előzményekkel és a rendszergazdai hozzárendelések változásaival kapcsolatos jelentések beolvasása.
 * Riasztást kaphat a Kiemelt szerepkörhöz való hozzáférésről.
 
-Részletek:
+További információ:
 
 * [Mi az Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD-címtárbeli szerepkörök kiosztása a PIM-ben](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Identitásvédelem
 
 A Azure AD Identity Protection egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection kihasználja a meglévő Azure AD-anomáliák – észlelési képességeket, amelyek az Azure AD rendellenes tevékenységi jelentéseiben érhetők el. Az Identity Protection olyan új kockázati észlelési típusokat is tartalmaz, amelyek valós időben észlelik a rendellenességeket.
 
-Részletek:
+További információ:
 
 * [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
 * [9. csatorna: Azure AD-és identitás-megjelenítés: Identity Protection előnézet](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
@@ -176,7 +176,7 @@ A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőa
 * Hitelesítés továbbítása
 * Állapotfigyelés
 
-Részletek:
+További információ:
 
 * [Hibrid identitás – tanulmány](https://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
@@ -186,7 +186,7 @@ Részletek:
 
 Az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal a cégek hatékonyan kezelhetik a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a kiemelt szerepkörök hozzárendeléseit.
 
-Részletek:
+További információ:
 
 * [Azure AD-hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)
 * [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](../../active-directory/governance/access-reviews-overview.md)

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024411"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559045"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: korlátlan alkalmazás-regisztrációk létrehozásának engedélyezése
 
-Ebben a rövid útmutatóban egy egyéni szerepkört hoz létre, amely lehetővé teszi korlátlan számú alkalmazás regisztrációjának létrehozását, majd ezt a szerepkört hozzárendelheti egy felhasználóhoz. A hozzárendelt felhasználó ezután használhatja az Azure AD-portált, az Azure AD PowerShellt, az Azure AD Graph API vagy Microsoft Graph API-t az alkalmazások regisztrációjának létrehozásához. A beépített alkalmazás-fejlesztői szerepkörtől eltérően ez az egyéni szerepkör korlátlan számú alkalmazás-regisztráció létrehozását teszi lehetővé. Az alkalmazás fejlesztői szerepköre biztosítja a képességet, de a létrehozott objektumok teljes száma a 250-ra van korlátozva, hogy ne verjék [a teljes címtárra kiterjedő objektum kvótáját](directory-service-limits-restrictions.md).
+Ebben a rövid útmutatóban egy egyéni szerepkört hoz létre, amely lehetővé teszi korlátlan számú alkalmazás regisztrációjának létrehozását, majd ezt a szerepkört hozzárendelheti egy felhasználóhoz. A hozzárendelt felhasználó ezután az Azure AD portál, az Azure AD PowerShell vagy a Microsoft Graph API használatával hozhat létre alkalmazás-regisztrációkat. A beépített alkalmazás-fejlesztői szerepkörtől eltérően ez az egyéni szerepkör korlátlan számú alkalmazás-regisztráció létrehozását teszi lehetővé. Az alkalmazás fejlesztői szerepköre biztosítja a képességet, de a létrehozott objektumok teljes száma a 250-ra van korlátozva, hogy ne verjék [a teljes címtárra kiterjedő objektum kvótáját](directory-service-limits-restrictions.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -188,7 +188,7 @@ Törzs
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521914"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561612"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Feltételes hozzáférés: megfelelő eszközök megkövetelése
 
@@ -49,11 +49,14 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
+> [!NOTE]
+> Az új eszközöket regisztrálhatja az Intune-ban, még akkor is, ha bejelöli az **eszköz megfelelőként való megjelölésének megkövetelése** az **összes felhasználó** és az **összes felhőalapú alkalmazás** számára a fenti lépésekkel. Az **eszköz megfelelőségi vezérlőként való megjelölésének megkövetelése** nem blokkolja az Intune-regisztrációt. 
+
 ### <a name="known-behavior"></a>Ismert viselkedés
 
 Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

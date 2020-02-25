@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag adatok másolásához Azure Data Box Heavy blob Storage-ba REST API-k használatával | Microsoft Docs
+title: 'Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül'
 description: Megtudhatja, hogyan másolhat adatok a Azure Data Box Heavy blob Storage-ba REST API-k használatával
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606296"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560337"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
 
@@ -124,7 +124,7 @@ A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
+4.  Kattintson a **Finish** (Befejezés) gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 

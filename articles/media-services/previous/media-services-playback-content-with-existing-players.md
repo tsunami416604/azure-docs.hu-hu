@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895858"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565825"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Tartalom lejátszása meglévő lejátszókkal
 A Azure Media Services számos népszerű streaming formátumot támogat, például a Smooth Streaming, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör egy meglévő, a streamek tesztelésére használható játékost mutat be.
@@ -65,9 +65,6 @@ A HLS URL-címek teszteléséhez használhatja a következőket is:
 
 * **Safari** iOS-eszközön vagy
 * **3IVX HLS-lejátszó** Windows rendszeren.
-
-## <a name="developing-video-players"></a>Videós lejátszók fejlesztése
-További információ a saját játékosok fejlesztéséről: [videolejátszó fejlesztése](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

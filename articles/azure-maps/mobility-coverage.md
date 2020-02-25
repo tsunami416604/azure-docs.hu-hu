@@ -134,7 +134,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Marokkó | Casablanca, Khouribga, Tétouan|
 | Katar| Doha|
 | Szaúd-Arábia | Thuwal |
-| Dél-Afrika | Cape Town |
+| Dél-afrikai Köztársaság | Cape Town |
 | Tunézia | Kairouan |
 | Egyesült Arab Emírségek  | Abu Dhabi, Dubai |
 

@@ -1,5 +1,5 @@
 ---
-title: Adatmegjelenítés az Azure Adatkezelő Connector használatával Power BI
+title: Az Azure Adatkezelő Connectort tartalmazó adatmegjelenítés Power BI
 description: 'Ebből a cikkből megtudhatja, hogyan használható a három lehetőség a Power BIban található adatmegjelenítéshez: az Azure Adatkezelő Power BI-összekötője.'
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024219"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560490"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Adatmegjelenítés az Azure Adatkezelő Connector használatával Power BI
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket. Az Azure Adatkezelő három lehetőséget biztosít az adatokhoz való kapcsolódáshoz Power BI: a beépített összekötő használata, lekérdezés importálása az Azure-ból Adatkezelő vagy SQL-lekérdezés használata. Ebből a cikkből megtudhatja, hogyan érheti el és jelenítheti meg Power BI jelentésekben a beépített összekötőt. Egyszerű az Azure Adatkezelő natív összekötő használata Power BI irányítópultok létrehozásához. Az Power BI-összekötő támogatja az [importálási és közvetlen lekérdezési csatlakozási módokat](https://docs.microsoft.com/power-bi/desktop-directquery-about). Az irányítópultokat az **importálási** vagy **DirectQuery** mód alapján hozhatja létre a forgatókönyvtől, a méretezéstől és a teljesítménytől függően. 
+Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket. Az Azure Adatkezelő három lehetőséget biztosít az adatokhoz való kapcsolódáshoz Power BI: a beépített összekötő használata, lekérdezés importálása az Azure-ból Adatkezelő vagy SQL-lekérdezés használata. Ebből a cikkből megtudhatja, hogyan érheti el és jelenítheti meg Power BI jelentésekben a beépített összekötőt. Egyszerű az Azure Adatkezelő natív összekötő használata Power BI irányítópultok létrehozásához. Az Power BI-összekötő támogatja az [importálási és közvetlen lekérdezési csatlakozási módokat](https://docs.microsoft.com/power-bi/desktop-directquery-about). Az irányítópultokat az **importálási** vagy **DirectQuery** mód alapján hozhatja létre a forgatókönyvtől, a méretezéstől és a teljesítménytől függően. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +69,7 @@ Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEven
 
 1. A **navigátor** képernyőjén bontsa ki a **minták** adatbázist, és válassza a **StormEvents** , majd a **Szerkesztés**lehetőséget.
 
-    ![tábla kiválasztása](media/power-bi-connector/select-table.png)
+    ![Tábla kiválasztása](media/power-bi-connector/select-table.png)
 
     A tábla megnyílik a Power Query-szerkesztőben, ahol az adatok importálása előtt Ön szerkesztheti a sorokat és oszlopokat.
 
@@ -93,6 +93,6 @@ Először kapcsolódjon az Azure Adatkezelő Súgó fürthöz, majd a *StormEven
 
 Ha már nincs szüksége a cikkhez létrehozott jelentésre, törölje a Power BI Desktop (. pbix) fájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tippek az Azure Adatkezelő-összekötő használatához a Power BI az adatlekérdezéshez](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

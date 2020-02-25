@@ -1,5 +1,5 @@
 ---
-title: Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal
+title: Az Azure Adatkezelő teljesítményének, az állapot & a metrikák használatának monitorozása
 description: Ismerje meg, hogyan használhatja az Azure Adatkezelő mérőszámait a fürt teljesítményének, állapotának és használatának figyelésére.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: f8078d8bae00ac4789a679be4d7a1944c749cce6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423844"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560304"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Az Azure Adatkezelő teljesítményének, állapotának és használatának monitorozása metrikákkal
 
@@ -52,9 +52,9 @@ A fürt állapotának mérőszámai követik a fürt általános állapotát. Ez
 | Gyorsítótár kihasználtsága | Százalék | Avg, Max, Min | A fürt által jelenleg használt lefoglalt gyorsítótár-erőforrások százalékos aránya. A gyorsítótár a felhasználói tevékenység számára lefoglalt SSD mérete a megadott gyorsítótár-házirend szerint. A gyorsítótár átlagos kihasználtsága 80%-os vagy annál kevesebb a fürt fenntartható állapota. Ha az átlagos gyorsítótár kihasználtsága 80% fölé esik, a fürtöt egy tárterületre optimalizált díjszabási [szinten kell méretezni](manage-cluster-vertical-scaling.md) , vagy több példányra kell [méretezni](manage-cluster-horizontal-scaling.md) . Azt is megteheti, hogy a gyorsítótár-szabályzatot (kevesebb nap a gyorsítótárban) módosítja. Ha a gyorsítótár kihasználtsága meghaladja a 100%-ot, a gyorsítótárazási házirendnek megfelelően a gyorsítótárazott adat mérete nagyobb, mint a fürt gyorsítótárának teljes mérete. | Nincs |
 | CPU | Százalék | Avg, Max, Min | A fürtben lévő gépek által jelenleg használt lefoglalt számítási erőforrások százalékos aránya. Egy fürt számára a 80%-os vagy annál kisebb átlagos CPU-érték fenntartható. A CPU maximális értéke 100%, ami azt jelenti, hogy nincs további számítási erőforrás az adatok feldolgozásához. Ha egy fürt nem jól teljesítő, ellenőrizze a CPU maximális értékét annak megállapításához, hogy vannak-e letiltott processzorok. | Nincs |
 | Betöltés kihasználtsága | Százalék | Avg, Max, Min | A rendelkezésre álló erőforrások százalékos aránya a kapacitási szabályzatban a betöltés végrehajtásához felhasznált összes erőforrásból. Az alapértelmezett kapacitási szabályzat nem több mint 512 egyidejű betöltési művelet, vagy a betöltésbe fektetett fürterőforrások 75%-a. A betöltés átlagos kihasználtsága 80% vagy kevesebb a fürt fenntartható állapota. A betöltés kihasználtságának maximális értéke 100%, ami azt jelenti, hogy az összes fürtön lévő betöltési képesség használatos, és a betöltési várólista is eredményezhet. | Nincs |
-| Életben tartása | Darabszám | AVG | Nyomon követi a fürt érzékenységét. A teljes mértékben válaszoló fürt 1 értéket ad vissza, a letiltott vagy leválasztott fürt pedig 0 értéket ad vissza. |
-| A szabályozott parancsok teljes száma | Darabszám | AVG, Max, min, Sum | A fürtben lévő szabályozott (visszautasított) parancsok száma, mivel elérte az egyidejű (párhuzamos) parancsok maximálisan megengedett számát. | Nincs |
-| Egységek teljes száma | Darabszám | AVG, Max, min, Sum | Az adategységek teljes száma a fürtben. Az ebben a metrikaban bekövetkező változások nagy adatszerkezetbeli változásokat és nagy terhelést okozhatnak a fürtben, mivel az adategységek összevonása egy CPU-nehéz tevékenység. | Nincs |
+| Életben tartása | Száma | AVG | Nyomon követi a fürt érzékenységét. A teljes mértékben válaszoló fürt 1 értéket ad vissza, a letiltott vagy leválasztott fürt pedig 0 értéket ad vissza. |
+| A szabályozott parancsok teljes száma | Száma | AVG, Max, min, Sum | A fürtben lévő szabályozott (visszautasított) parancsok száma, mivel elérte az egyidejű (párhuzamos) parancsok maximálisan megengedett számát. | Nincs |
+| Egységek teljes száma | Száma | AVG, Max, min, Sum | Az adategységek teljes száma a fürtben. Az ebben a metrikaban bekövetkező változások nagy adatszerkezetbeli változásokat és nagy terhelést okozhatnak a fürtben, mivel az adategységek összevonása egy CPU-nehéz tevékenység. | Nincs |
 | | | | |
 
 ### <a name="export-health-and-performance-metrics"></a>Állapot-és teljesítmény-mérőszámok exportálása
@@ -63,10 +63,10 @@ Az állapot-és teljesítmény-mérőszámok exportálásával nyomon követheti
 
 **Metrika** | **Egység** | **Összesítés** | **Metrika leírása** | **Méretek** |
 |---|---|---|---|---|
-Exportált rekordok folyamatos exportálásának száma    | Darabszám | Összeg | Az exportált rekordok száma az összes folyamatos exportálási feladatban. | Nincs |
-Folyamatos exportálás maximális késői |    Darabszám   | Max   | A fürt folyamatos exportálási feladatai által jelentett késői idő (percben). | Nincs |
-Folyamatos exportálás függőben lévő darabszáma | Darabszám | Max   | A függőben lévő folyamatos exportálási feladatok száma. Ezek a feladatok készen állnak a futtatásra, de várólistára várnak, valószínűleg nem elegendő kapacitás miatt. 
-Folyamatos exportálás eredménye    | Darabszám |   Darabszám   | Az egyes folyamatos exportálási futtatások hibája/sikerességi eredménye. | ContinuousExportName |
+Exportált rekordok folyamatos exportálásának száma    | Száma | Összeg | Az exportált rekordok száma az összes folyamatos exportálási feladatban. | Nincs |
+Folyamatos exportálás maximális késői |    Száma   | Max   | A fürt folyamatos exportálási feladatai által jelentett késői idő (percben). | Nincs |
+Folyamatos exportálás függőben lévő darabszáma | Száma | Max   | A függőben lévő folyamatos exportálási feladatok száma. Ezek a feladatok készen állnak a futtatásra, de várólistára várnak, valószínűleg nem elegendő kapacitás miatt. 
+Folyamatos exportálás eredménye    | Száma |   Száma   | Az egyes folyamatos exportálási futtatások hibája/sikerességi eredménye. | ContinuousExportName |
 Exportálás kihasználtsága |    Százalék | Max   | Exportálási kapacitás, a fürt teljes exportálási kapacitásán kívül (0 és 100 között). | Nincs |
 | | | | |
 
@@ -76,10 +76,10 @@ A betöltési állapot és a teljesítmény mérőszámai nyomon követik a bet�
 
 **Metrika** | **Egység** | **Összesítés** | **Metrika leírása** | **Méretek** |
 |---|---|---|---|---|
-| Feldolgozott események (Event/IoT hubok esetében) | Darabszám | Max., min. összeg | Az Event hubokból beolvasott és a fürt által feldolgozott események teljes száma. Az események az elutasított eseményekre oszlanak, és a fürt motorja által elfogadott eseményeket. | EventStatus |
+| Feldolgozott események (Event/IoT hubok esetében) | Száma | Max., min. összeg | Az Event hubokból beolvasott és a fürt által feldolgozott események teljes száma. Az események az elutasított eseményekre oszlanak, és a fürt motorja által elfogadott eseményeket. | EventStatus |
 | Betöltési késés | Másodperc | Avg, Max, Min | A betöltött adatok késése, az adatoknak a fürtön való kézhezvételének időpontjáig, amíg a lekérdezésre készen áll. A betöltési késés időtartama a betöltési forgatókönyvtől függ. | Nincs |
-| Betöltés eredménye | Darabszám | Darabszám | A meghiúsult és sikeres betöltési műveletek teljes száma. A **felosztás alkalmazása** paranccsal hozhat létre sikereket, és nem végezheti el az eredményeket, és elemezheti a dimenziókat (**érték** > **állapot**).| IngestionResultDetails |
-| Betöltési mennyiség (MB) | Darabszám | Max. összeg | A fürtbe betöltött adatmennyiség teljes mérete (MB) a tömörítés előtt. | Adatbázis |
+| Betöltés eredménye | Száma | Száma | A meghiúsult és sikeres betöltési műveletek teljes száma. A **felosztás alkalmazása** paranccsal hozhat létre sikereket, és nem végezheti el az eredményeket, és elemezheti a dimenziókat (**érték** > **állapot**).| IngestionResultDetails |
+| Betöltési mennyiség (MB) | Száma | Max. összeg | A fürtbe betöltött adatmennyiség teljes mérete (MB) a tömörítés előtt. | Adatbázis |
 | | | | |  
 
 ### <a name="query-performance"></a>Lekérdezési teljesítmény
@@ -89,8 +89,8 @@ A lekérdezési teljesítmény mérőszámai nyomon követhetik a lekérdezés i
 **Metrika** | **Egység** | **Összesítés** | **Metrika leírása** | **Méretek** |
 |---|---|---|---|---|
 | Lekérdezés időtartama | Ezredmásodperc | AVG, min, Max, Sum | A lekérdezési eredmények fogadásának teljes ideje (nem tartalmazza a hálózati késést). | QueryStatus |
-| Az egyidejű lekérdezések teljes száma | Darabszám | AVG, Max, min, Sum | A fürtben párhuzamosan futtatott lekérdezések száma. Ez a mérőszám jó módszer a fürt terhelésének becslésére. | Nincs |
-| A szabályozott lekérdezések teljes száma | Darabszám | AVG, Max, min, Sum | A fürtben a szabályozott (visszautasított) lekérdezések száma. Az egyidejű (párhuzamos) lekérdezések megengedett maximális száma az egyidejű lekérdezési házirendben van meghatározva. | Nincs |
+| Az egyidejű lekérdezések teljes száma | Száma | AVG, Max, min, Sum | A fürtben párhuzamosan futtatott lekérdezések száma. Ez a mérőszám jó módszer a fürt terhelésének becslésére. | Nincs |
+| A szabályozott lekérdezések teljes száma | Száma | AVG, Max, min, Sum | A fürtben a szabályozott (visszautasított) lekérdezések száma. Az egyidejű (párhuzamos) lekérdezések megengedett maximális száma az egyidejű lekérdezési házirendben van meghatározva. | Nincs |
 | | | | |
 
 ### <a name="streaming-ingest-metrics"></a>Adatfolyamok betöltésének mérőszámai
@@ -99,16 +99,16 @@ A streaming betöltési mérőszámok nyomon követik az adatfolyam-betöltési 
 
 **Metrika** | **Egység** | **Összesítés** | **Metrika leírása** | **Méretek** |
 |---|---|---|---|---|
-Adatforgalom adatátviteli sebessége |    Darabszám   | RateRequestsPerSecond | A fürtbe bevitt összes adatmennyiség. | Nincs |
+Adatforgalom adatátviteli sebessége |    Száma   | RateRequestsPerSecond | A fürtbe bevitt összes adatmennyiség. | Nincs |
 Folyamatos átvitel időtartama   | Ezredmásodperc  | Avg, Max, Min | Az összes adatfolyam-betöltési kérelem teljes időtartama. | Nincs |
-Folyamatos átviteli kérelmek gyakorisága   | Darabszám | Darabszám, átlag, Max, min, Sum | A folyamatos átviteli kérelmek teljes száma. | Nincs |
-Folyamatos átvitel eredménye | Darabszám | AVG   | Az adatfolyam-betöltési kérelmek teljes száma eredményhalmaz szerint. | Eredmény |
+Folyamatos átviteli kérelmek gyakorisága   | Száma | Darabszám, átlag, Max, min, Sum | A folyamatos átviteli kérelmek teljes száma. | Nincs |
+Folyamatos átvitel eredménye | Száma | AVG   | Az adatfolyam-betöltési kérelmek teljes száma eredményhalmaz szerint. | Eredmény |
 | | | | |
 
 További információ a [támogatott Azure adatkezelő-fürtök metrikáinak](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)használatáról.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő](/azure/data-explorer/ingest-data-no-code)
 * [Azure Adatkezelő-betöltési műveletek figyelése diagnosztikai naplók használatával](/azure/data-explorer/using-diagnostic-logs)

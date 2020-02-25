@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
+title: Adatlekérdezés Azure Monitor az Azure Adatkezelő (előzetes verzió)
 description: Ebben a témakörben egy Azure Adatkezelő proxy létrehozásával Azure Monitor a Application Insights és a Log Analytics
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843579"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560422"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
@@ -34,7 +34,7 @@ Az Azure Adatkezelő proxy folyamata:
 
     ![ADX natív fürt](media/adx-proxy/web-ui-help-cluster.png)
 
-1. Az Azure Adatkezelő felhasználói felületén (https://dataexplorer.azure.com/clusters) válassza a **fürt hozzáadása**elemet.
+1. Az Azure Adatkezelő felhasználói felületén (https://dataexplorer.azure.com/clusters)válassza a **fürt hozzáadása**elemet.
 
 1. A **fürt hozzáadása** ablakban adja hozzá a La vagy AI-fürthöz tartozó URL-címet. 
     
@@ -100,6 +100,6 @@ A Application Insights (AI) vagy Log Analytics (LA) fürtök meghívásakor a k�
 |Az előfizetésben szereplő összes alkalmazást/munkaterületet tartalmazó fürt, amely az erőforráscsoport tagjai.    |   fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
 |Ebben az előfizetésben csak a definiált erőforrást tartalmazó fürt      |    fürt (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  fürt (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Lekérdezések írása](write-queries.md)

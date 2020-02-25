@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 6ad8726e61f4f8e79cfa9c437b3f0ea876b55e27
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425476"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561663"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Azure Database for MySQL (előzetes verzió) privát hivatkozásának létrehozása és kezelése a portál használatával
 
@@ -37,9 +37,9 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16*értéket. |
-    | Előfizetést | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
     | Hely | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
@@ -56,7 +56,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
@@ -84,7 +84,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
-    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
+    | Subnet | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
     | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
@@ -106,7 +106,7 @@ Ebben a szakaszban egy Azure Database for MySQL-kiszolgálót fog létrehozni az
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
     |Kiszolgálónév  | Adja meg a *myServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
@@ -137,10 +137,10 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetést | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Példány részletei** |  |
-    | Name (Név) | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    | Név | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |Régió|Válassza a **Nyugat-Európa** régiót.|
     |||
 
@@ -150,9 +150,9 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | Beállítás | Érték |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
-    | Előfizetést| Válassza ki előfizetését. |
+    | Előfizetés| Válassza ki előfizetését. |
     | Erőforrás típusa | Válassza a **Microsoft. DBforMySQL/kiszolgálók**lehetőséget. |
-    | Erőforrás |*MyServer* kiválasztása|
+    | Resource |*MyServer* kiválasztása|
     |Cél alerőforrása |*Portra beállított mysqlserver* kiválasztása|
     |||
 7. Válassza a **Tovább: konfigurálás**lehetőséget.
@@ -162,7 +162,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | ------- | ----- |
     |**HÁLÓZATI**| |
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
+    | Subnet | Válassza a *mySubnet*lehetőséget. |
     |**MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
     |saját DNS zóna |Válassza az *(új) privatelink. mysql. database. Azure. com* elemet |
@@ -172,6 +172,9 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
 2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
 
     ![Saját hivatkozás létrehozva](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+
+    > [!NOTE] 
+    > Az ügyfél DNS-beállításában lévő teljes tartománynév nem oldható fel a magánhálózati IP-címekre konfigurálva. Az [itt](../dns/dns-operations-recordsets-portal.md)látható módon konfigurálnia kell egy DNS-zónát a beállított FQDN-hez.
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás virtuális géphez Távoli asztal (RDP) használatával
 
@@ -242,6 +245,6 @@ Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális g
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).

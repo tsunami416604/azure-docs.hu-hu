@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460994"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561920"
 ---
-# <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
 A Speech szintézis Markup Language (SSML) egy XML-alapú Markup Language, amely lehetővé teszi a fejlesztők számára, hogy a szöveg-beszéd szolgáltatás segítségével hogyan konvertálja a bemeneti szöveget a szintetizált beszédbe. Az egyszerű szöveghez képest a SSML lehetővé teszi a fejlesztők számára a hangfelvétel, a kiejtés, a beszéd arány, a kötet és még több szöveg-beszéd típusú kimenet finomhangolását. Normál írásjelek, például egy időszak utáni felfüggesztés vagy a megfelelő hanglejtés használata, ha a mondatot kérdőjeltel végződik, automatikusan kezeli a rendszer.
 
@@ -57,9 +57,9 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `version` | Megadja a dokumentum korrektúrájának értelmezéséhez használt SSML-specifikáció verzióját. Az aktuális verzió 1,0. | Kötelező |
-| `xml:lang` | Megadja a legfelső szintű dokumentum nyelvét. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például `en`), illetve a nyelvi kódot és a nagybetűs országot/régiót (például `en-US`). | Kötelező |
-| `xmlns` | Megadja a dokumentumhoz tartozó URI-t, amely meghatározza a SSML dokumentum Markup szókincsét (az elemek típusát és az attribútum nevét). Az aktuális URI https://www.w3.org/2001/10/synthesis. | Kötelező |
+| `version` | Megadja a dokumentum korrektúrájának értelmezéséhez használt SSML-specifikáció verzióját. Az aktuális verzió 1,0. | Szükséges |
+| `xml:lang` | Megadja a legfelső szintű dokumentum nyelvét. Az érték tartalmazhat kisbetűs, kétbetűs nyelvi kódot (például `en`), illetve a nyelvi kódot és a nagybetűs országot/régiót (például `en-US`). | Szükséges |
+| `xmlns` | Megadja a dokumentumhoz tartozó URI-t, amely meghatározza a SSML dokumentum Markup szókincsét (az elemek típusát és az attribútum nevét). Az aktuális URI https://www.w3.org/2001/10/synthesis. | Szükséges |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Hang kiválasztása szöveg és beszéd között
 
@@ -77,7 +77,7 @@ A `voice` elem megadása kötelező. A szövegről beszédre használt hang mega
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
+| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Szükséges |
 
 **Példa**
 
@@ -100,7 +100,7 @@ A `speak` elemen belül több hang is megadható a szöveg-beszéd kimenethez. E
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
+| `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Szükséges |
 
 > [!IMPORTANT]
 > Több hang nem kompatibilis a szó határával. Több hang használata érdekében le kell tiltani a szó határát.
@@ -447,7 +447,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 | Attribútum | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
-| `interpret-as` | Megadja az elem szövegének tartalomtípusát. A típusok listáját az alábbi táblázat tartalmazza. | Kötelező |
+| `interpret-as` | Megadja az elem szövegének tartalomtípusát. A típusok listáját az alábbi táblázat tartalmazza. | Szükséges |
 | `format` | További információkat nyújt az elem szövegének pontos formázásáról olyan tartalomtípusok esetében, amelyek kétértelmű formátummal rendelkezhetnek. A SSML az azokat használó tartalomtípusok formátumait határozzák meg (lásd az alábbi táblázatot). | Optional |
 | `detail` | Megadja a megbeszélni kívánt részletességi szintet. Ez az attribútum például kérheti, hogy a Speech szintézis motor "központozás" jelölést küldjön. Nincsenek definiálva szabványos értékek a `detail`hoz. | Optional |
 
@@ -561,6 +561,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. Azonban 
 </speak>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

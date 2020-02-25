@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/29/2020
 ms.author: aahi
-ms.openlocfilehash: bde8d418792e3d481c9e9a74ee98998492754aae
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992407"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560782"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata a Go-hoz
 
@@ -119,7 +119,7 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 }
 ```
 
-## <a name="sentiment-analysis"></a>Véleményelemzés
+## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 Hozzon létre egy `SentimentAnalysis()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `Language` és egy `text` attribútumot. A `text` attribútum az elemezni kívánt szöveget tárolja, `language` a dokumentum nyelve, a `id` pedig bármilyen érték lehet. 
 
@@ -196,7 +196,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
+## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 Hozzon létre egy `ExtractKeyPhrases()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. A `text` attribútum az elemezni kívánt szöveget tárolja, `language` a dokumentum nyelve, a `id` pedig bármilyen érték lehet.
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772500"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565961"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -48,7 +48,7 @@ A képeket elemezheti a vizualizáció funkcióinak és jellemzőinek észlelés
 
 ## <a name="extract-text-from-images"></a>Szöveg kinyerése a képekből
 
-A Computer Vision [READ](concept-recognizing-text.md#read-api) API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttérbeli szöveggel dolgozik, például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Jelenleg az egyetlen támogatott nyelv az angol.
+A Computer Vision [READ](concept-recognizing-text.md#read-api) API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttérbeli szöveggel dolgozik, például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Jelenleg az egyetlen támogatott nyelv az angol és a spanyol.
 
 Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatával több nyelven is kinyerheti a nyomtatott szöveget. Ha szükséges, az OCR kijavította a felismert szöveg forgását, és megadja az egyes szavak keretének koordinátáit. Az OCR 25 nyelvet támogat, és automatikusan észleli a felismert szöveg nyelvét.
 
@@ -60,7 +60,7 @@ A Computer Vision használatával [felderítheti a felnőtt tartalmakat](concept
 
 [Computer Vision tárolók használatával](computer-vision-how-to-install-containers.md) helyileg ismeri fel a nyomtatott és a kézírásos szövegeket, ha a szabványos Docker-tárolót az adataihoz közelebb telepíti.
 
-## <a name="image-requirements"></a>A lemezképre vonatkozó követelmények
+## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
 A Computer Vision a következő követelményeknek megfelelő képeket képes elemezni:
 
@@ -73,7 +73,7 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
 

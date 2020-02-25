@@ -8,22 +8,15 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 5c45dbe29bb86150c76cf5bc136c4a7504270f86
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b248bbb526baf355faf2564358884fd83422b037
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854556"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565085"
 ---
-[Azure Files](../articles/storage/files/storage-files-introduction.md) támogatja az identitás-alapú hitelesítést a Server Message Block (SMB) protokollon keresztül [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md)használatával. A tartományhoz csatlakoztatott Windows rendszerű virtuális gépek (VM-EK) [Azure Active Directory (Azure ad)](../articles/active-directory/fundamentals/active-directory-whatis.md) hitelesítő adatok használatával férhetnek hozzá az Azure-fájlmegosztást.
+[Azure Files](../articles/storage/files/storage-files-introduction.md) támogatja az identitás-alapú hitelesítést a Server Message Block (SMB) protokollon keresztül [Active Directory (ad)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) (előzetes verzió) és [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md) (GA) használatával. Ez a cikk arra összpontosít, hogy a Azure Files hogyan használhatja ki a helyszíni vagy az Azure-beli tartományi szolgáltatásokat az SMB-alapú Azure Files identitáson alapuló hozzáférésének támogatásához. Így egyszerűen lecserélheti a meglévő fájlkiszolgálók Azure Files és továbbra is használhatja a meglévő címtárszolgáltatást, így zökkenőmentesen kezelheti a felhasználók hozzáférését a megosztásokhoz. 
 
-[Szerepköralapú hozzáférés-vezérlés (RBAC)](../articles/role-based-access-control/overview.md)használatával kezelheti Azure Files megosztási szintű hozzáférését egy identitáshoz, például egy felhasználóhoz vagy egy csoporthoz az Azure ad-ben. Meghatározhatja azokat az egyéni RBAC-szerepköröket, amelyek a Azure Files eléréséhez használt engedélyek közös készleteit tartalmazzák. Ha az egyéni RBAC szerepkört egy Azure AD-identitáshoz rendeli hozzá, az identitás hozzáférést kap az Azure-fájlmegosztás számára az engedélyek alapján.
+Azure Files érvényesíti az engedélyezést a felhasználói hozzáféréshez a megosztáshoz és a könyvtárhoz/fájlhoz. A megosztási szintű engedélyek hozzárendelése a tipikus [szerepköralapú hozzáférés-vezérlési (RBAC)](../articles/role-based-access-control/overview.md) modell által felügyelt Azure ad-felhasználókhoz vagy-csoportokhoz rendelhető hozzá. A RBAC a fájlokhoz való hozzáféréshez használt hitelesítő adatokat elérhetővé kell tennie vagy szinkronizálni kell az Azure AD-vel. Az Azure AD-ben olyan beépített RBAC-szerepköröket rendelhet hozzá, mint például a Storage file-adatsmb-megosztás olvasója az Azure AD-beli felhasználókhoz vagy csoportokhoz olvasási hozzáférést biztosítva az Azure-fájlmegosztást.
 
-A Azure Files a fájlmegosztás összes fájlján és könyvtárán is támogatja az [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) -fájlok megőrzését, öröklését és érvényesítését. Ha egy fájlmegosztás adatait átmásolja Azure Filesra, vagy fordítva, megadhatja, hogy az NTFS DACL-fájlok karbantartása megtörténjen. Így a biztonsági mentési forgatókönyvek Azure Files használatával valósíthatók meg, megőrizve az NTFS-DACL-t a helyszíni fájlmegosztás és a Felhőbeli fájlmegosztás között. 
-
-> [!NOTE]
-> - A Linux rendszerű virtuális gépek esetében az Azure AD DS-hitelesítés nem támogatott a Server Message Block (SMB) eléréséhez. Kizárólag Windows-alapú virtuális gépek támogatottak.
-> - Az Azure AD DS-hitelesítés SMB-hozzáféréshez Active Directory tartományhoz csatlakoztatott gépek esetében nem támogatott. Az átmeneti környezetekben érdemes [Azure file Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) az adatok áttelepítésének megkezdéséhez Azure Files és a hozzáférés-vezérlés kényszerítéséhez Active Directory hitelesítő adatok használatával a helyszíni Active Directory tartományhoz csatlakoztatott gépekről. 
-> - Az Azure AD DS-hitelesítés az SMB-hozzáféréshez csak a 2018. szeptember 24. után létrehozott Storage-fiókok esetében érhető el.
-> - Az Azure AD DS hitelesítés az SMB-hozzáféréshez és az NTFS-DACL megőrzése nem támogatott a Azure File Sync által felügyelt Azure-fájlmegosztás esetén.
-> - Az Azure AD DS-hitelesítés nem támogatja az Azure AD DS-ben létrehozott gépi fiókok hitelesítését.
+A könyvtár/fájl szintjén a Azure Files [a Windows-fájlkiszolgálók ugyanúgy,](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) mint bármely Windows-fájlkiszolgáló megőrzését, öröklését és kényszerítését támogatja. Ha egy fájlmegosztás SMB-kapcsolatát másolja Azure Filesre, vagy fordítva, megtarthatja a Windows-DACL-t. Függetlenül attól, hogy szeretné-e kikényszeríteni az engedélyezést vagy sem, kihasználhatja a Azure Filest az ACL-ek biztonsági mentési listáival együtt. 

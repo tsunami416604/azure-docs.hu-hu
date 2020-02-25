@@ -1,23 +1,23 @@
 ---
-title: Mi az a többeszközes beszélgetés (előzetes verzió) – Speech Service
+title: A több eszközre kiterjedő beszélgetés (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268074"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560813"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>Mi a multi-Device beszélgetés (előzetes verzió)?
+# <a name="about-multi-device-conversation-preview"></a>A többeszközes beszélgetés ismertetése (előzetes verzió)
 
 A **többeszközes beszélgetés** révén egyszerűen hozhat létre beszéd-vagy szöveges beszélgetést több ügyfél között, és koordinálhatja a közöttük küldött üzeneteket.
 
@@ -34,7 +34,7 @@ Míg a [**társalgási átirat**](conversation-transcription.md) egyetlen eszkö
 >[!IMPORTANT]
 > A többeszközes beszélgetés **nem** támogatja az ügyfelek közötti hangfájlok küldését: csak az átírást és/vagy fordítást.
 
-## <a name="key-features"></a>Fő funkciók
+## <a name="key-features"></a>A legfontosabb jellemzők
 
 - **Valós idejű átirat** – mindenki megkapja a beszélgetés átiratát, így a szöveg valós időben is követhető, vagy később is elmenthető.
 - **Valós idejű fordítás** – a szöveges fordításhoz több mint 60 [támogatott nyelv](language-support.md#text-languages) használható, a felhasználók lefordítják a beszélgetést az előnyben részesített nyelv (ek) re.
@@ -43,7 +43,7 @@ Míg a [**társalgási átirat**](conversation-transcription.md) egyetlen eszkö
 - **Üzenetküldés** – a többeszközes beszélgetési szolgáltatás az egyik ügyfél által küldött üzeneteket az összes többi felhasználó számára továbbítja, a választott nyelv (ek) szerint.
 - **Üzenet azonosítója** – minden üzenet, amelyet a felhasználók a beszélgetésben kapnak, az azt küldő felhasználó becenevével lesz megjelölve.
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 ### <a name="lightweight-conversations"></a>Könnyűsúlyú beszélgetések
 
@@ -60,9 +60,9 @@ A valós idejű átírás és a fordítás segíthet a különböző nyelveket b
 Emellett feliratok is megadhatók a bemutatók és előadások számára a képernyőn és a célközönség tagjainak saját eszközein is. Miután a célközönség csatlakozott a beszélgetési kódhoz, a saját eszközén láthatják a átiratot a kívánt nyelven.
 
 > [!NOTE]
-> Ha szeretné megtekinteni egy példát, tekintse meg a [bemutató fordítót](https://www.microsoft.com/translator/apps/presentation-translator/), amely egy PowerPoint-bővítmény, amely a multi-Device beszélgetési szolgáltatást használja. A fájlt [innen](https://www.microsoft.com/download/details.aspx?id=55024) töltheti le.
+> Ha szeretné megtekinteni egy példát, tekintse meg a [bemutató fordítót](https://www.microsoft.com/translator/apps/presentation-translator/), amely egy PowerPoint-bővítmény, amely a multi-Device beszélgetési szolgáltatást használja. [Innen](https://www.microsoft.com/download/details.aspx?id=55024)töltheti le.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Az összes ügyfél a Speech SDK használatával hoz létre vagy csatlakozhat egy beszélgetéshez. A beszédfelismerési SDK együttműködik a többeszközes beszélgetési szolgáltatással, amely kezeli a beszélgetés élettartamát, beleértve a résztvevők listáját, az egyes ügyfelek választott nyelvét és az elküldött üzeneteket.  
 
@@ -112,7 +112,7 @@ Az elsődleges nyelvtől függetlenül minden résztvevő további nyelveket is 
 Az alábbi összefoglalás azt mutatja be, hogy a felhasználó hogyan teheti meg a több eszközből álló beszélgetéseket a választott elsődleges nyelv alapján.
 
 
-| A felhasználó által a beszélgetésben elvégezhető műveletek | Diktálás | Csak szöveg |
+| A felhasználó által a beszélgetésben elvégezhető műveletek | Speech-to-text | Csak szöveg |
 |-----------------------------------|----------------|------|
 | Beszédfelismerési bemenet használata | ✔️ | ❌ |
 | Azonnali üzenetek küldése | ✔️ | ✔️ |
@@ -123,7 +123,7 @@ Az alábbi összefoglalás azt mutatja be, hogy a felhasználó hogyan teheti me
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű fordítása](quickstarts/multi-device-conversation.md)

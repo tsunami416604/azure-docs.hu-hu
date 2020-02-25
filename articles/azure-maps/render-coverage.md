@@ -79,7 +79,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Szenegál                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Szomália                          | ✓ | ✓ |
-| Dél-Afrika                     | ✓ | ✓ |
+| Dél-afrikai Köztársaság                     | ✓ | ✓ |
 | Dél-Szudán                      | ✓ | ✓ |
 | Szudán                            | ✓ | ✓ |
 | Szváziföld                        | ✓ | ✓ |

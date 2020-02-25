@@ -1,27 +1,27 @@
 ---
-title: Mi a beszélgetés átírása (előzetes verzió)? -Speech Service
+title: A beszélgetés átirata (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszélgetés átírása egy beszéd-szöveg típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes beszélők (más néven diarization) számára a valós idejű és/vagy aszinkron átírások biztosításához beszélgetés.
+description: A beszélgetés átirata egy beszéd-szöveg típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórók (más néven diarization) számára, hogy valós idejű és/vagy aszinkron átírást nyújtson a beszélgetésekhez.
 services: cognitive-services
-author: markamos
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806286"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561068"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>Mi a beszélgetés átírása (előzetes verzió)?
+# <a name="about-conversation-transcription-preview"></a>A beszélgetés átírása (előzetes verzió)
 
 A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórók (más néven _diarization_) számára, hogy valós idejű és/vagy aszinkron átírást nyújtson a beszélgetésekhez. A beszélgetés átirata megkülönbözteti a beszélőket a beszélgetésekben, hogy kiderítse, ki mit és mikor, és hogyan könnyíti meg a fejlesztők számára, hogy beszéd-szövegeket adjanak a több hangszórót használó diarization.
 
-## <a name="key-features"></a>Fő funkciók
+## <a name="key-features"></a>A legfontosabb jellemzők
 
 - **Időbélyegek** – az egyes hangszórók teljes időbélyegzővel rendelkeznek, így könnyen megtalálhatja a kifejezést.
 - **Olvasható átiratok** – a átiratok formátuma és az írásjelek automatikusan hozzáadódnak, hogy a szöveg pontosan illeszkedjen a megjelenő szöveghez.
@@ -34,7 +34,7 @@ A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megol
 > [!NOTE]
 > Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
 ### <a name="inclusive-meetings"></a>Befogadó értekezletek
 
@@ -44,7 +44,7 @@ Ahhoz, hogy a találkozók mindenki számára elérhetők legyenek, például a 
 
 Az értekezlet résztvevői az értekezletre összpontosítanak, és nem veszik figyelembe a beszélgetés átírását. A résztvevők aktívan részt vehetnek az értekezleten, és gyorsan követhetik nyomon a következő lépéseket, és nem a jegyzeteket, hanem a találkozó során esetlegesen hiányzókat is felhasználhatják.
 
-## <a name="how-it-works"></a>Működési elv
+## <a name="how-it-works"></a>Működés
 
 Ez magas szintű áttekintést nyújt a beszélgetések átírásának működéséről.
 
@@ -75,7 +75,7 @@ A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és
 
 Jelenleg a beszélgetés átirata a következő régiókban támogatja az "en-US" és a "zh-CN" használatát: *CentralUS* és *eastasia*. Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription-service.md)

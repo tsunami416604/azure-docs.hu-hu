@@ -1,30 +1,28 @@
 ---
-title: Beszédfelismerés és a szöveges tároló végpontjának lekérdezése
-services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 01/21/2020
 ms.author: dapine
-ms.openlocfilehash: 2d96385f2d2d34d161739c55228220cf28871048
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74132625"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563309"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>Beszéd – szöveg vagy Custom Speech – szöveg
 
-A tároló olyan WebSocket-alapú lekérdezési végpont API-kat biztosít, amelyek a [SPEECH SDK](../index.md)-n keresztül érhetők el. Alapértelmezés szerint a Speech SDK az online Speech Services szolgáltatást használja. A tároló használatához módosítania kell az inicializálási módszert.
+A tároló olyan WebSocket-alapú lekérdezési végpont API-kat biztosít, amelyek a [SPEECH SDK](../index.yml)-n keresztül érhetők el. Alapértelmezés szerint a Speech SDK az online Speech Services szolgáltatást használja. A tároló használatához módosítania kell az inicializálási módszert.
 
 > [!TIP]
 > Ha a Speech SDK-t tárolókkal használja, nem kell megadnia az Azure Speech Resource [-előfizetés kulcsát vagy egy hitelesítési tulajdonosi jogkivonatot](../rest-speech-to-text.md#authentication).
 
-Ez az alábbi példákon látható.
+Tekintse meg az alábbi példákat.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Váltás az Azure-felhő inicializálási hívásának használatával:
 
@@ -38,7 +36,7 @@ Ehhez a híváshoz a Container [Host](https://docs.microsoft.com/dotnet/api/micr
 var config = SpeechConfig.FromHost(
     new Uri("ws://localhost:5000"));
 ```
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Váltás az Azure-felhő inicializálási hívásának használatával:
 

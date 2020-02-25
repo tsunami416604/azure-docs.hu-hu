@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639921"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559011"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -31,7 +31,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Alkalmazásproxy alkalmazásának konfigurálása | Alkalmazás-rendszergazda | 
 Összekötő csoport tulajdonságainak konfigurálása | Alkalmazás-rendszergazda | 
-Alkalmazás-regisztráció létrehozása, ha a képesség le van tiltva az összes felhasználónál | Alkalmazásfejlesztő | Cloud Application Administrator, alkalmazás-rendszergazda
+Alkalmazás-regisztráció létrehozása, ha a képesség le van tiltva az összes felhasználónál | Alkalmazás-fejlesztő | Cloud Application Administrator, alkalmazás-rendszergazda
 Összekötő-csoport létrehozása | Alkalmazás-rendszergazda | 
 Összekötő-csoport törlése | Alkalmazás-rendszergazda | 
 Alkalmazásproxy letiltása | Alkalmazás-rendszergazda | 
@@ -44,7 +44,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Azure AD B2C könyvtárak létrehozása | Minden nem vendég felhasználó ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 B2C-alkalmazások létrehozása | Globális rendszergazda | 
-Vállalati alkalmazások létrehozása | Cloud Application Administrator | Alkalmazás-rendszergazda
+Vállalati alkalmazások létrehozása | Cloud Application Administrator | alkalmazás-rendszergazda
 B2C-szabályzatok létrehozása, olvasása, frissítése és törlése | Globális rendszergazda | 
 Identitás-szolgáltatók létrehozása, olvasása, frissítése és törlése | Globális rendszergazda | 
 Jelszó-visszaállítási felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Globális rendszergazda | 
@@ -59,7 +59,7 @@ B2C-naplók olvasása | Globális olvasó ([lásd a dokumentációt](https://doc
 > [!NOTE]
 > Azure AD B2C globális olvasók nem rendelkeznek ugyanazzal az engedélyekkel, mint az Azure AD globális rendszergazdái. Ha Azure AD B2C globális rendszergazdai jogosultságokkal rendelkezik, győződjön meg róla, hogy Azure AD B2C könyvtárban van, és nem Azure AD-címtár.
 
-## <a name="company-branding"></a>Vállalati védjegyzés
+## <a name="company-branding"></a>Vállalati arculat
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -126,8 +126,8 @@ BitLocker-kulcsok olvasása | Biztonsági olvasó | Jelszó-rendszergazda, bizto
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Beleegyezik a delegált engedélyekkel | Cloud Application Administrator | Alkalmazás-rendszergazda
-Az alkalmazás engedélyeinek belefoglalása a Microsoft Graph vagy az Azure AD gráf nélkül | Cloud Application Administrator | Alkalmazás-rendszergazda
-Az alkalmazás engedélyeinek Microsoft Graph vagy Azure AD Graphba való beleegyezett | Globális rendszergazda | 
+Az alkalmazás engedélyeinek belefoglalása nem tartalmazza a Microsoft Graph | Cloud Application Administrator | Alkalmazás-rendszergazda
+Az alkalmazás engedélyeinek Microsoft Graphhoz való beleegyezett | Globális rendszergazda | 
 A saját adatokhoz hozzáférő alkalmazások beleegyezett | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Vállalati alkalmazás létrehozása | Cloud Application Administrator | Alkalmazás-rendszergazda
 Alkalmazásproxy kezelése | Alkalmazás-rendszergazda | 
@@ -152,7 +152,7 @@ SharePoint Online-webhelyek hozzáadása a katalógushoz | Globális rendszergaz
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Felhasználói rendszergazda | 
+Licenc kiosztása | Felhasználói rendszergazda | 
 Csoport létrehozása | Felhasználói rendszergazda | 
 Csoport vagy alkalmazás hozzáférési felülvizsgálatának létrehozása, frissítése vagy törlése | Felhasználói rendszergazda | 
 Csoport lejáratának kezelése | Felhasználói rendszergazda | 
@@ -184,7 +184,7 @@ Biztonsági rések beolvasása | Biztonsági olvasó |
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc kiosztása | Licenc rendszergazdája | Felhasználói rendszergazda
 Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
 Előfizetés kipróbálása vagy megvásárlása | Számlázási rendszergazda | 
@@ -202,22 +202,22 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Bejelentkezési naplók olvasása | Jelentések olvasója | Biztonsági olvasó, biztonsági rendszergazda
 
-## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-A kiválasztott felhasználók által létrehozott összes meglévő alkalmazásjelszó törlése | Globális rendszergazda | 
+A kiválasztott felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése | Globális rendszergazda | 
 MFA letiltása | Globális rendszergazda | 
 MFA engedélyezése | Globális rendszergazda | 
 MFA szolgáltatás beállításainak kezelése | Globális rendszergazda | 
-A kapcsolattartási módok újbóli megadásának megkövetelése a kiválasztott felhasználóktól | Hitelesítés rendszergazdája | 
-Többtényezős hitelesítés visszaállítása az összes megjegyzett eszközön  | Hitelesítés rendszergazdája | 
+A kapcsolatfelvételi módszerek megadásának megkövetelése a kiválasztott felhasználóknak | Hitelesítés rendszergazdája | 
+A többtényezős hitelesítés visszaállítása az összes megjegyzett eszközön  | Hitelesítés rendszergazdája | 
 
 ## <a name="mfa-server"></a>MFA-kiszolgáló
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználók letiltása vagy a tiltásuk feloldása | Globális rendszergazda | 
+Felhasználók blokkolása/feloldása | Globális rendszergazda | 
 Fiókzárolási konfigurálása | Globális rendszergazda | 
 Gyorsítótárazási szabályok konfigurálása | Globális rendszergazda | 
 Csalási riasztás konfigurálása | Globális rendszergazda
@@ -230,7 +230,7 @@ Tevékenység jelentésének olvasása | Globális olvasó |
 Az összes konfiguráció olvasása | Globális olvasó | 
 Kiszolgáló állapotának olvasása | Globális olvasó |  
 
-## <a name="organizational-relationships"></a>Céges kapcsolatok
+## <a name="organizational-relationships"></a>Szervezeti kapcsolatok
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -251,7 +251,7 @@ Jelszó-visszaállítási tulajdonságok konfigurálása | Felhasználói rendsz
 Regisztráció konfigurálása | Globális rendszergazda |
 Az összes konfiguráció olvasása | Biztonsági rendszergazda | Felhasználói rendszergazda |
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>Privilegizált identitások kezelése
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -260,7 +260,7 @@ Szerepkör-beállítások konfigurálása | Kiemelt szerepkörű rendszergazda |
 Naplózási tevékenység megtekintése | Biztonsági olvasó | 
 Szerepkör-tagságok megtekintése | Biztonsági olvasó | 
 
-## <a name="roles-and-administrators"></a>Szerepkörök és a rendszergazdák
+## <a name="roles-and-administrators"></a>Szerepkörök és rendszergazdák
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -324,7 +324,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Felhasználó hozzáadása a címtárbeli szerepkörhöz | Kiemelt szerepkörű rendszergazda | 
 Felhasználó felvétele a csoportba | Felhasználói rendszergazda | 
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc kiosztása | Licenc rendszergazdája | Felhasználói rendszergazda
 Vendég felhasználó létrehozása | Vendég meghívója | Felhasználói rendszergazda
 Felhasználó létrehozása | Felhasználói rendszergazda | 
 Felhasználók törlése | Felhasználói rendszergazda | 
@@ -348,7 +348,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Támogatási jegy beküldése | Szolgáltatás-rendszergazda | Alkalmazás-rendszergazda, Azure Information Protection rendszergazda, számlázási rendszergazda, Felhőbeli alkalmazás rendszergazdája, megfelelőségi rendszergazda, Dynamics 365-rendszergazda, asztali elemzési rendszergazda, Exchange-rendszergazda, jelszó Rendszergazda, Intune-rendszergazda, Skype vállalati rendszergazda, Power BI rendszergazda, emelt szintű hitelesítési rendszergazda, SharePoint-rendszergazda, csapat kommunikációs rendszergazda, csapat rendszergazdája, felhasználói rendszergazda, Munkahelyi elemzési rendszergazda
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure AD-rendszergazdai szerepkörök kiosztása vagy eltávolítása](directory-manage-roles-portal.md)
 * [Az Azure AD rendszergazdai szerepköreinek referenciája](directory-assign-admin-roles.md)

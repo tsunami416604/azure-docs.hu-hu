@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – VMware virtuális gép létrehozása az AVS Private Cloud-on
-description: Útmutató VMware virtuális gép létrehozásához egy AVS Private-felhőben
+title: Rövid útmutató – Azure VMware virtuális gép létrehozása privát felhőben – Azure VMware-megoldás CloudSimple
+description: Útmutató Azure VMware virtuális gép létrehozásához CloudSimple privát felhőben
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020063"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566148"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>VMware virtuális gépek létrehozása az AVS Private Cloud-on
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
 
-Ha virtuális gépeket szeretne létrehozni az AVS Private-felhőben, először nyissa meg az AVS-portált a Azure Portal.
+Ahhoz, hogy virtuális gépeket hozzon létre a saját felhőben, először nyissa meg a CloudSimple-portált a Azure Portal.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="access-the-avs-portal"></a>Hozzáférés az AVS-portálhoz
+## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keressen rá az **AVS-szolgáltatások**kifejezésre.
-3. Válassza ki azt az AVS-szolgáltatást, amelyen létre szeretné hozni a saját AVS-Felhőjét.
-4. Az **Áttekintés** lapon kattintson **az Ugrás az AVS-portálra** elemre az AVS-portál új böngésző lapjának megnyitásához. Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival. 
+2. Keressen rá a **CloudSimple Services**kifejezésre.
+3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
+4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra** elemre, és nyissa meg a CloudSimple-portál új böngésző lapját.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
 
-    ![Az AVS-portál elindítása](media/launch-cloudsimple-portal.png)
+    ![A CloudSimple-portál elindítása](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>Webes vCenter elindítása – felhasználói felület
 
 Most már elindíthatja a vCenter-t a virtuális gépek és házirendek beállításához.
 
-A vCenter eléréséhez kezdje az AVS-portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre. Válassza ki az AVS Private-felhőt, majd kattintson az **vSphere-ügyfél elindítása** elemre az AVS Private Cloud-on.
+A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
 
    ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>ISO-vagy vSphere-sablon feltöltése
 
   > [!WARNING]
-  > Az ISO-feltöltéshez használja a vSphere HTML5-ügyfelet. A Flash-ügyfél használata hibát okozhat.
+  > Az ISO-feltöltéshez használja a vSphere HTML5-ügyfelet.  A Flash-ügyfél használata hibát okozhat.
 
 1. Szerezze be a vCenter feltölteni kívánt ISO-vagy vSphere-sablont, és hozzon létre egy virtuális gépet, és legyen elérhető a helyi rendszeren.
 2. A vCenter-ben kattintson a **lemez** ikonra, és válassza a **vsanDatastore**lehetőséget. Kattintson a **fájlok** , majd az **új mappa**elemre.
@@ -78,7 +78,7 @@ A vCenter eléréséhez kezdje az AVS-portálról. A Kezdőlap **Általános fel
 8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább**gombra.
     Új virtuális gép ![](media/vcvm07.png)
 
-9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja**lehetőséget. Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
+9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja**lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
     Új virtuális gép ![](media/vcvm08.png)
 
 10. Megnyílik egy kiválasztási ablak. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK**gombra.
@@ -90,17 +90,17 @@ A vCenter eléréséhez kezdje az AVS-portálról. A Kezdőlap **Általános fel
 A virtuális gép most már hozzá van adva a munkaterhelés számítási erőforrásaihoz, és készen áll a használatra. 
 Új virtuális gép ![](media/vcvm12.png)
 
-Az alapszintű telepítés már befejeződött. Az AVS Private Cloud használatát a helyszíni virtuálisgép-infrastruktúra használatának megkezdéséhez hasonlóan használhatja.
+Az alapszintű telepítés már befejeződött. A saját Felhőjét ugyanúgy használhatja, mint a helyszíni virtuálisgép-infrastruktúrát.
 
-A következő fejezetek opcionális információkat tartalmaznak a DNS-és DHCP-kiszolgálók beállításához az AVS Private Cloud számítási feladatokhoz és az alapértelmezett hálózati konfiguráció módosításához.
+A következő szakaszban a DNS-és DHCP-kiszolgálók saját Felhőbeli számítási feladatokhoz való beállításával és az alapértelmezett hálózati konfiguráció módosításával kapcsolatos opcionális információk szerepelnek.
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Felhasználók és identitási források hozzáadása a vCenter (nem kötelező)
 
-Az AVS az alapértelmezett vCenter felhasználói fiókot rendeli hozzá a Felhasználónév `cloudowner@AVS.local`. A kezdéshez nincs szükség további fiók beállítására. Az AVS általában a normál műveletek végrehajtásához szükséges jogosultságokat rendeli a rendszergazdákhoz. Állítsa be a helyszíni Active Directoryt vagy az Azure AD-t egy [további Identity forrásként](set-vcenter-identity.md) az AVS Private Cloud-on.
+A CloudSimple egy alapértelmezett vCenter-felhasználói fiókot rendel a Felhasználónév `cloudowner@cloudsimple.local`. A kezdéshez nincs szükség további fiók beállítására.  A CloudSimple szabályosan rendeli hozzá a rendszergazdákat a normál működéshez szükséges jogosultságok végrehajtásához.  Állítsa be a helyszíni Active Directoryt vagy az Azure AD-t egy [további személyazonossági forrásként](set-vcenter-identity.md) a privát felhőben.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS-és DHCP-kiszolgáló létrehozása (nem kötelező)
 
-Az AVS Private Cloud Environment-környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a kereséshez és az IP-címek kiosztásához. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A vCenter virtuális gépeket úgy konfigurálhatja, hogy ezeket a szolgáltatásokat az AVS privát felhőalapú környezetében adja meg.
+A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresési és IP-címek hozzárendeléséhez. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A vCenter virtuális gépet úgy is konfigurálhatja, hogy ezeket a szolgáltatásokat a saját felhőalapú környezetében adja meg.
 
 Előfeltételek
 
@@ -114,7 +114,7 @@ A következő hivatkozások útmutatást nyújtanak a DHCP-és DNS-kiszolgálók
 
 #### <a name="linux-based-dns-server-setup"></a>Linux-alapú DNS-kiszolgáló beállítása
 
-A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához. Az alábbi hivatkozás egy nyílt forráskódú kötési DNS-kiszolgáló beállítására vonatkozó útmutatást tartalmaz.
+A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához.  Az alábbi hivatkozás egy nyílt forráskódú kötési DNS-kiszolgáló beállítására vonatkozó útmutatást tartalmaz.
 
 [Példa a telepítőre](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ Ezek a Microsoft-témakörök leírják, hogyan állíthat be egy Windows-kiszol
 
 ## <a name="customize-networking-configuration-optional"></a>Hálózati konfiguráció testreszabása (nem kötelező)
 
-Az AVS-portál hálózati lapjai lehetővé teszik a tűzfalak és a virtuális gépek nyilvános IP-címei konfigurációjának megadását.
+A CloudSimple-portál hálózati lapjai lehetővé teszik a tűzfalak és a virtuális gépek nyilvános IP-címei konfigurációjának megadását.
 
 ### <a name="allocate-public-ips"></a>Nyilvános IP-címek lefoglalása
 
-1. Navigáljon a **hálózati > nyilvános IP** -címére az AVS-portálon.
+1. Navigáljon a CloudSimple **-portál hálózati > nyilvános IP** -címére.
 2. Kattintson a **nyilvános IP-cím lefoglalása**elemre.
 3. Adja meg az IP-cím bejegyzését azonosító nevet.
 4. Tartsa meg az alapértelmezett helyet.
@@ -200,17 +200,17 @@ Indítsa el a 80-es portot figyelő http-kiszolgálót.
 python2.7 -m SimpleHTTPServer 80
 ```
 
-vagy
+or
 
 ```
 python3 -m http.server 80
 ```
 Nyisson meg egy böngészőt az asztalon, és mutasson a 80-es portra a nyilvános IP-cím megadásához a virtuális gépen található fájlok tallózásához.
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>Alapértelmezett AVS-tűzfalszabályok a nyilvános IP-címekhez
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Alapértelmezett CloudSimple tűzfalszabályok a nyilvános IP-címekhez
 
 * VPN-forgalom: a VPN és az összes munkaterhelés-hálózat és felügyeleti hálózat közötti összes forgalom engedélyezett.
-* AVS Private Cloud belső forgalom: a ((z) és a (z) és a (z) közötti összes kelet-nyugati forgalom, valamint a felügyeleti hálózat (fent látható) használata engedélyezett.
+* Privát felhő belső forgalma: a (z) és a (z) és a (z) közötti összes kelet-nyugati forgalom engedélyezett.
 * Internetes forgalom:
   * Az internetről érkező összes bejövő forgalom megtagadva a munkaterhelés-hálózatok és a felügyeleti hálózat számára.
   * Az internetre irányuló összes kimenő forgalom a munkaterhelés-hálózatokból vagy a felügyeleti hálózatból engedélyezett.
@@ -219,12 +219,12 @@ A tűzfalszabályok funkció használatával módosíthatja a forgalom védelmé
 
 ## <a name="install-solutions-optional"></a>Megoldások telepítése (nem kötelező)
 
-Az AVS Private Cloud megoldásait telepítheti, így teljes mértékben kihasználhatja az AVS Private Cloud vCenter-környezet előnyeit. Beállíthatja a biztonsági mentést, a vész-helyreállítást, a replikálást és a virtuális gépeket védő egyéb funkciókat. Ilyenek például a VMware Site Recovery Manager (VMware SRM) és a Veeam Backup & replikációja.
+A saját felhőalapú vCenter-környezete teljes körű kihasználása érdekében telepíthet megoldásokat a saját CloudSimple-felhőbe. Beállíthatja a biztonsági mentést, a vész-helyreállítást, a replikálást és a virtuális gépeket védő egyéb funkciókat. Ilyenek például a VMware Site Recovery Manager (VMware SRM) és a Veeam Backup & replikációja.
 
 Megoldás telepítéséhez további jogosultságokat kell megadnia korlátozott időtartamra. Lásd: a [jogosultságok kiterjesztésének](escalate-private-cloud-privileges.md)megtalálása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)
-* [VPN-átjárók beállítása az AVS-hálózaton](vpn-gateway.md)
+* [VPN-átjárók beállítása a CloudSimple hálózaton](vpn-gateway.md)

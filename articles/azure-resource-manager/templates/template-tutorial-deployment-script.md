@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988804"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561459"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
 
@@ -74,7 +74,7 @@ Az ebben a rövid útmutatóban használt sablon [létrehozásához Azure Key Va
     ```
 
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A **Fájl**>**Mentés másként** elem kiválasztásával mentse a fájlt a helyi számítógépre **azuredeploy.json** néven.
+4. A **File** (Fájl) >**Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -266,13 +266,13 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     * **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
     * **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
     * **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja helyette a **primaryScriptURI** . További információ: [külső parancsfájl használata](./deployment-script-template.md#use-external-scripts).
-        **$DeploymentScriptOutputs** deklarálása csak akkor szükséges, ha a parancsfájlt egy helyi gépen teszteli. A változó deklarálása lehetővé teszi, hogy a parancsfájl egy helyi gépen és egy deploymentScript-erőforráson fusson anélkül, hogy módosítani kellene. Az $DeploymentScriptOutputshoz rendelt érték az üzemelő példányokban kimenetként érhető el. További információ: [az üzembehelyezési szkriptek kimenetének használata](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+        **$DeploymentScriptOutputs** deklarálása csak akkor szükséges, ha a parancsfájlt egy helyi gépen teszteli. A változó deklarálása lehetővé teszi, hogy a parancsfájl egy helyi gépen és egy deploymentScript-erőforráson fusson anélkül, hogy módosítani kellene. Az $DeploymentScriptOutputshoz rendelt érték az üzemelő példányokban kimenetként érhető el. További információkért lásd a [PowerShell üzembe helyezési parancsfájlokból származó kimenetek használata](./deployment-script-template.md#work-with-outputs-from-powershell-script) , illetve a [CLI üzembe helyezési parancsfájlokból származó kimenetek használata](./deployment-script-template.md#work-with-outputs-from-cli-script)című témakört.
     * **cleanupPreference**: adja meg a telepítési parancsfájl erőforrásainak törlésére vonatkozó beállítást.  Az alapértelmezett érték **mindig**, ami azt jelenti, hogy az üzembe helyezési parancsfájl erőforrásai törlődnek a terminál állapota (sikeres, sikertelen, megszakított) ellenére. Ebben az oktatóanyagban a **OnSuccess** -t használjuk, így a szkriptek végrehajtási eredményei is megtekinthetők.
     * **retentionInterval**: adja meg azt az intervallumot, ameddig a szolgáltatás megőrzi a parancsfájl erőforrásait, miután elérte a terminál állapotát. Az erőforrások az adott időtartam lejárta után törlődnek. Az időtartam az ISO 8601 mintán alapul. Ez az oktatóanyag P1D használ, ami egy napot jelent.  Ezt a tulajdonságot akkor használja a rendszer, ha a **cleanupPreference** értéke **OnExpiration**. Ez a tulajdonság jelenleg nincs engedélyezve.
 
     Az üzembe helyezési parancsfájl három paramétert fogad: a kulcstároló nevét, a tanúsítvány nevét és a tulajdonos nevét.  Létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz.
 
-    A **$DeploymentScriptOutputs** a kimeneti érték tárolására szolgál.  További információért lásd: [az üzembehelyezési szkriptek kimenetének használata](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+    A **$DeploymentScriptOutputs** a kimeneti érték tárolására szolgál.  További információért lásd: [a PowerShell telepítési parancsfájljai kimenetének használata](./deployment-script-template.md#work-with-outputs-from-powershell-script) vagy [a parancssori felületi telepítési parancsfájlok kimenetének használata](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
     Az elkészült sablon [itt](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)található.
 
@@ -320,7 +320,7 @@ A telepítési parancsfájl végrehajtási eredménye a hibaelhárítási célb�
 
 ## <a name="debug-the-failed-script"></a>A sikertelen parancsfájl hibakeresése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. Ez a projekt neve, **RG** hozzáfűzéssel. Az erőforráscsoport két további erőforrást fog látni. Ezeket az erőforrásokat *telepítési parancsfájl-erőforrásoknak*nevezzük.
 
     ![Resource Manager-sablon üzembe helyezési parancsfájl erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
@@ -346,7 +346,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja az üzembe helyezési parancsfájlt Azure Resource Manager-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 

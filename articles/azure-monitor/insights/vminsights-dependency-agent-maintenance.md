@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400796"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565553"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
 
@@ -39,22 +39,15 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
 2. A telepítővarázsló elindításához futtassa a **InstallDependencyAgent-Windows. exe fájlt** .
+   
+3. A **Dependency Agent telepítővarázsló** segítségével távolítsa el a függőségi ügynök előző verzióját, majd telepítse a legújabb verziót.
 
-3. A **Dependency Agent 9.9.1 beállítása** **párbeszédpanelen kattintson az Elfogadom** gombra a licencszerződés elfogadásához.
-
-5. A **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen kattintson a **tovább**gombra. Az állapot lap megjeleníti az előző verzió eltávolításának előrehaladását.
-
-6. Az **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen kattintson az **Eltávolítás** gombra, és folytassa az előző verzió eltávolításával a párbeszédpanelen megadott elérési útról. 
-
-7. A **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen megjelenik az eltávolítási folyamat, és amikor elkészült, megjelenik a **Dependency Agent eltávolításának befejezése** lap. Kattintson a **Befejezés** gombra.
-
-8. A **Dependency Agent 9.9.1 telepítése** párbeszédpanelen megjelenik a telepítési folyamat. Amikor megjelenik a **Dependency Agent eltávolításának befejezése** lap, kattintson a **Befejezés**gombra. 
 
 ### <a name="from-the-command-line"></a>A parancssorból
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa az alábbi parancsot.
+2. Futtassa a következő parancsot.
 
     ```dos
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
@@ -74,8 +67,8 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentl
 
 2. Futtassa a következő parancsot root`sh InstallDependencyAgent-Linux64.bin -s`ként. 
 
-Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár. 
+Ha a függőségi ügynök nem indul el, ellenőrizze a hibával kapcsolatos részletes információk a naplókat. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha le szeretné állítani a virtuális gépek figyelését egy adott időtartamra, vagy Azure Monitor for VMs teljes egészében, tekintse [meg a virtuális gépek figyelésének letiltása Azure monitor for VMS-ben](vminsights-optout.md)című témakört.

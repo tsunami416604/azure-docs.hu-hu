@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987153"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561561"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -34,7 +34,7 @@ A csoport alapú licencelés használatához a következő licencek egyike szük
 
 - Fizetős vagy próbaverziós előfizetés prémium szintű Azure AD P1 és újabb rendszerekhez
 
-- Fizetős vagy próbaverziós Office 365 Enterprise E3 vagy Office 365 a3 vagy Office 365 GCC G3 vagy újabb verzió
+- Fizetős vagy próbaverziós Office 365 Enterprise E3 vagy Office 365 a3 vagy Office 365 GCC G3 vagy Office 365 E3 for GCCH vagy Office 365 E3 – DOD és újabb verziók
 
 ### <a name="required-number-of-licenses"></a>Szükséges licencek száma
 A licenccel rendelkező csoportok esetében az egyes egyedi tagokhoz is licenccel kell rendelkeznie. Noha nem kell hozzárendelni az a csoport minden tagját, legalább annyi licenccel kell rendelkeznie, hogy tartalmazza az összes tagot. Ha például olyan egyedi tagokkal 1 000 rendelkezik, akik a bérlőhöz tartozó licencelt csoportok részét képezik, legalább 1 000 licenccel kell rendelkeznie a licencszerződés teljesítéséhez.
@@ -49,7 +49,7 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 - A felhasználószintű licencelést igénylő Microsoft-felhőszolgáltatások mindegyike támogatott. Ez a támogatás magában foglalja az Office 365-termékek, a Enterprise Mobility + Security és a Dynamics 365.
 
-- A csoport alapú licencelés jelenleg csak a Azure Portalon érhető [](https://portal.azure.com)el. Ha elsődlegesen más felügyeleti portálokat használ a felhasználók és a csoportok felügyeletéhez, például a [Microsoft 365 felügyeleti](https://admin.microsoft.com)központot, továbbra is megteheti. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
+- A csoport alapú licencelés jelenleg csak a [Azure Portalon](https://portal.azure.com)érhető el. Ha elsődlegesen más felügyeleti portálokat használ a felhasználók és a csoportok felügyeletéhez, például a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com), továbbra is megteheti. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
 
 - Az Azure AD automatikusan kezeli a csoporttagság változásaiból eredő licencmódosításokat. A licencmódosítások általában a tagság változása után pár percen belül érvénybe lépnek.
 
@@ -68,6 +68,6 @@ A csoportalapú licencelés segítségével folytatott licenckezelés egyéb for
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](../users-groups-roles/licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../users-groups-roles/licensing-group-advanced.md)
-* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)
+* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789919"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566012"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storageban Azure Logic Apps használatával
 
@@ -23,11 +23,11 @@ Tegyük fel, hogy rendelkezik egy olyan eszközzel, amely frissítve lesz egy Az
 Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információk az [Azure Blob Storage-összekötő dokumentációjában](https://docs.microsoft.com/connectors/azureblobconnector/)olvashatók.
 
 > [!IMPORTANT]
-> Ha engedélyezni szeretné a Azure Logic Appsről a tűzfalak mögötti Storage-fiókokhoz való hozzáférést, tekintse meg a témakör későbbi, a [tűzfalak mögött található hozzáférés Storage-fiókokat](#storage-firewalls) ismertető szakaszát.
+> A Logic apps nem fér hozzá közvetlenül a tűzfalak mögött lévő Storage-fiókokhoz, ha mindkettő ugyanabban a régióban található. Megkerülő megoldásként különböző régiókban lehet a Logic apps és a Storage-fiók. További információ a Azure Logic Apps és a tűzfalak mögötti Storage-fiókok hozzáférésének engedélyezéséről: [hozzáférés a tűzfal mögötti fiókokhoz](#storage-firewalls) szakasz a jelen témakör későbbi részében.
 
 <a name="blob-storage-limits"></a>
 
-## <a name="limits"></a>Korlátozások
+## <a name="limits"></a>Korlátok
 
 * Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom beolvasása** művelet implicit módon adatdarabolást használ.
 
@@ -121,15 +121,15 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 1. Amikor a rendszer felszólítja a kapcsolódás létrehozására, adja meg a következő információkat:
 
-   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   | Tulajdonság | Szükséges | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | **Tárfiók** | Igen | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
    ||||
 
-   Példa:
+   Például:
 
-   ![Azure Blob Storage-fiókkal létesített kapcsolatok létrehozása](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Azure Blob Storage-fiókkal létesített kapcsolatok létrehozása](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
@@ -159,9 +159,12 @@ Az Azure Blob Storage Connector vagy más megoldások használatával a Azure Lo
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>Hozzáférés más régiókban lévő Storage-fiókokhoz
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>Problémák a Storage-fiókok ugyanabban a régióban való elérésekor
 
-A Logic apps nem tud közvetlenül hozzáférni a tűzfalszabályok, és ugyanabban a régióban található Storage-fiókokhoz. Ha azonban engedélyezi a hozzáférést az adott [régióban felügyelt összekötők kimenő IP-címeihez](../logic-apps/logic-apps-limits-and-config.md#outbound), a logikai alkalmazások más régiókban is hozzáférhetnek a Storage-fiókokhoz, kivéve ha az Azure Table Storage-összekötőt vagy az Azure Queue Storage-összekötőt használja. Table Storage vagy Queue Storage eléréséhez továbbra is használhatja a beépített HTTP-triggert és műveleteket.
+A Logic Apps szolgáltatás nem tud közvetlenül hozzáférni a tűzfal mögötti Storage-fiókokhoz, ha mindkettő ugyanabban a régióban van. Áthidaló megoldásként helyezze el a logikai alkalmazásokat egy olyan régióban, amely eltér a Storage-fióktól, és hozzáférést biztosít a [régiójában lévő felügyelt összekötők kimenő IP-címeihez](../logic-apps/logic-apps-limits-and-config.md#outbound).
+
+> [!NOTE]
+> Ez a megoldás nem vonatkozik az Azure Table Storage connectorra és az Azure Queue Storage-összekötőre. Ehelyett a Table Storage vagy Queue Storage eléréséhez használja a beépített HTTP-triggert és műveleteket.
 
 <a name="access-trusted-virtual-network"></a>
 
@@ -198,6 +201,6 @@ A kivétel és a felügyelt identitás támogatásának beállításához köves
 
 Ha [API Management](../api-management/api-management-key-concepts.md)dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

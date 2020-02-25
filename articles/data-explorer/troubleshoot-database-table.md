@@ -1,42 +1,42 @@
 ---
-title: Hozzon létre vagy adatbázis vagy az Adatkezelőben az Azure tábla törlése
-description: Ez a cikk létrehozásához és törléséhez, adatbázisok és táblák az Azure Data Explorer hibaelhárítási lépéseket ismerteti.
+title: Nem sikerült adatbázist vagy táblát létrehozni vagy törölni az Azure Adatkezelő
+description: Ez a cikk az adatbázisok és táblák Azure Adatkezelőban való létrehozásának és törlésének hibaelhárítási lépéseit ismerteti.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0d221138914230d5455dc0addbe08cdaaed36a0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67e4c33498b05884fe667a7977ddb40e647ab4c8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826254"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562394"
 ---
-# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Hibaelhárítás: Hozzon létre vagy adatbázis vagy az Adatkezelőben az Azure tábla törlése
+# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Hibaelhárítás: nem sikerült adatbázist vagy táblát létrehozni vagy törölni az Azure-ban Adatkezelő
 
-Az Adatkezelőben az Azure rendszeresen használható adatbázisok és táblák. A cikk ismerteti a hibaelhárítási lépéseket a problémákra, amelyek is kapja meg.
+Az Azure Adatkezelőban rendszeresen együttműködik adatbázisokkal és táblázatokkal. Ez a cikk hibaelhárítási lépéseket tesz elérhetővé a felmerülő problémák esetén.
 
 ## <a name="creating-a-database"></a>Adatbázis létrehozása
 
-1. Győződjön meg arról, hogy a megfelelő engedélyekkel. Hozzon létre egy adatbázist, tagjának kell lennie a *közreműködői* vagy *tulajdonosa* szerepkör esetében az Azure-előfizetést. Ha szükséges, ahol az előfizetés-rendszergazdától, azokat is hozzáadhatja a megfelelő szerepkört.
+1. Győződjön meg arról, hogy rendelkezik a szükséges jogosultságokkal. Adatbázis létrehozásához az Azure-előfizetéshez tartozó *közreműködő* vagy *tulajdonos* szerepkör tagjának kell lennie. Ha szükséges, működjön együtt az előfizetés rendszergazdájával, hogy hozzá lehessen adni a megfelelő szerepkörhöz.
 
-1. Győződjön meg arról, hogy nincsenek-e az adatbázis nevét neve érvényesítési hibák. A név alfanumerikus karakterek, és a egy legfeljebb 260 karakter hosszúságú lehet.
+1. Győződjön meg arról, hogy az adatbázis neve nem rendelkezik a név-ellenőrzési hibákkal. A névnek alfanumerikusnak kell lennie, legfeljebb 260 karakter hosszú lehet.
 
-1. Ellenőrizze, hogy az adatbázis megőrzési és gyorsítótárazás értékek megengedett tartományba. Adatmegőrzési 1 és 36500 nap (100 éves) között kell lennie. Gyorsítótárazás 1 és a megőrzési beállítva maximális érték között kell lennie.
+1. Győződjön meg arról, hogy az adatbázis-megőrzési és a gyorsítótárazási értékek engedélyezett tartományokon belül vannak. Az adatmegőrzési értéknek 1 és 36500 nap között kell lennie (100 év). A gyorsítótárazásnak 1 és a megőrzéshez beállított maximális értéknek kell lennie.
 
-## <a name="deleting-or-renaming-a-database"></a>Törlése és a egy adatbázis átnevezése
+## <a name="deleting-or-renaming-a-database"></a>Adatbázis törlése vagy átnevezése
 
-Győződjön meg arról, hogy a megfelelő engedélyekkel. Törlése és a egy adatbázis átnevezése, tagjának kell lennie a *közreműködői* vagy *tulajdonosa* szerepkör esetében az Azure-előfizetést. Ha szükséges, ahol az előfizetés-rendszergazdától, azokat is hozzáadhatja a megfelelő szerepkört.
+Győződjön meg arról, hogy rendelkezik a szükséges jogosultságokkal. Adatbázis törléséhez vagy átnevezéséhez az Azure-előfizetéshez tartozó *közreműködő* vagy *tulajdonos* szerepkör tagjának kell lennie. Ha szükséges, működjön együtt az előfizetés rendszergazdájával, hogy hozzá lehessen adni a megfelelő szerepkörhöz.
 
 ## <a name="creating-a-table"></a>Tábla létrehozása
 
-1. Győződjön meg arról, hogy a megfelelő engedélyekkel. Hozzon létre egy táblát, tagjának kell lennie a *adatbázis rendszergazdai* vagy *adatbázis-felhasználót* szerepkör az adatbázisban vagy a *közreműködői* vagy *tulajdonosa* az Azure-előfizetés szerepkör. Szükség esetén az előfizetés használata, vagy a fürt rendszergazdai így azokat is hozzáadhatja a megfelelő szerepkört.
+1. Győződjön meg arról, hogy rendelkezik a szükséges jogosultságokkal. Tábla létrehozásához az adatbázis- *rendszergazdai* vagy *adatbázis-felhasználói* szerepkör tagjának kell lennie az adatbázisban vagy az Azure-előfizetés *közreműködői* vagy *tulajdonosi* szerepkörében. Ha szükséges, működjön együtt az előfizetéssel vagy a fürt rendszergazdájával, hogy hozzá lehessen adni a megfelelő szerepkörhöz.
 
-    Engedélyekkel kapcsolatos további információkért lásd: [adatbázis-engedélyek kezeléséhez](manage-database-permissions.md).
+    További információk a jogosultságokról: [Adatbázis-engedélyek kezelése](manage-database-permissions.md).
 
-1. Győződjön meg arról, hogy egy azonos nevű tábla nem létezik. Ha létezik, majd a következőket teheti: Hozzon létre egy táblát egy másik nevet; a meglévő táblázat átnevezése (igényel *tábla rendszergazdai* szerepkör); vagy dobja el a meglévő táblázat (igényel *adatbázis rendszergazdai* szerepkör). Használja a következő parancsokat.
+1. Győződjön meg arról, hogy még nem létezik ugyanilyen nevű tábla. Ha létezik, a következőket teheti: hozzon létre egy másik nevű táblát; a meglévő tábla átnevezése ( *tábla-rendszergazdai* szerepkör szükséges); vagy dobja el a meglévő táblát ( *adatbázis-rendszergazdai* szerepkör szükséges). Használja az alábbi parancsokat.
 
     ```Kusto
     .drop table <TableName>
@@ -44,20 +44,20 @@ Győződjön meg arról, hogy a megfelelő engedélyekkel. Törlése és a egy a
    .rename table <OldTableName> to <NewTableName>
     ```
 
-## <a name="deleting-or-renaming-a-table"></a>Törlése, illetve egy táblázat átnevezése
+## <a name="deleting-or-renaming-a-table"></a>Tábla törlése vagy átnevezése
 
-Győződjön meg arról, hogy a megfelelő engedélyekkel. Törlése és a egy tábla átnevezése, tagjának kell lennie a *adatbázis rendszergazdai* vagy *tábla rendszergazdai* szerepkör az adatbázisban. Szükség esetén az előfizetés használata, vagy a fürt rendszergazdai így azokat is hozzáadhatja a megfelelő szerepkört.
+Győződjön meg arról, hogy rendelkezik a szükséges jogosultságokkal. Egy tábla törléséhez vagy átnevezéséhez az adatbázis- *rendszergazda* vagy a *tábla rendszergazdai* szerepkör tagjának kell lennie. Ha szükséges, működjön együtt az előfizetéssel vagy a fürt rendszergazdájával, hogy hozzá lehessen adni a megfelelő szerepkörhöz.
 
-Engedélyekkel kapcsolatos további információkért lásd: [adatbázis-engedélyek kezeléséhez](manage-database-permissions.md).
+További információk a jogosultságokról: [Adatbázis-engedélyek kezelése](manage-database-permissions.md).
 
 ## <a name="general-guidance"></a>Általános útmutatás
 
-1. Ellenőrizze a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/). Keresse meg az Azure Data Explorer a régióban, ahol szeretne dolgozni, adatbázis vagy táblázat állapotát.
+1. Ellenőrizze az [Azure Service Health irányítópultját](https://azure.microsoft.com/status/). Keresse meg az Azure-Adatkezelő állapotát abban a régióban, ahol az adatbázist vagy a táblázatot kívánja dolgozni.
 
-    Ha az állapot nem **jó** (zöld pipa), az állapot javítja után próbálja újra.
+    Ha az állapot nem **jó** (zöld pipa), próbálkozzon újra az állapot javulása után.
 
-1. Ha továbbra is a probléma megoldásához segítségre van szüksége, nyisson egy támogatási kérelmét a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Ha továbbra is segítségre van szüksége a probléma megoldásához, nyisson meg egy támogatási kérést a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="next-steps"></a>További lépések
 
-[Fürt állapotának ellenőrzése](check-cluster-health.md)
+[A fürt állapotának megtekintése](check-cluster-health.md)

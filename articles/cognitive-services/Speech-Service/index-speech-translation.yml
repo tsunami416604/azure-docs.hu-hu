@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Beszéd fordítási dokumentáció
+summary: A beszédfelismerési szolgáltatásból való beszéd fordítás lehetővé teszi a hangadatfolyamok valós idejű, több nyelvű beszéd-beszéd és beszéd – szöveg fordítását.
+metadata:
+  title: Beszédfelismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562921"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a beszédfordítás?
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: Diktálás fordítása
+      url: quickstarts/translate-speech-to-text.md
+    - text: Beszéd fordítása több megcélzott nyelvre
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: Beszéd fordítása beszédre
+      url: quickstarts/translate-speech-to-speech.md
+- title: Lépésenkénti útmutatók
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Beszéd valós idejű fordítása
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: Szöveg fordítása és szintetizálása REST API-kkal
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Nyelvi támogatás
+      url: language-support.md#speech-translation
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: Beszédfordítás – GYIK
+      url: https://www.microsoft.com/translator/business/faq/

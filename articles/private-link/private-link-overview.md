@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f683ae79a2b68391e4bda2b81bcbab3eccc5b2e
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: aea424d4e74f0744f5891a0d7b3b08008fa227b5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500719"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562037"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
@@ -38,18 +38,18 @@ Az Azure Private link a következő előnyöket biztosítja:
 ## <a name="availability"></a>Rendelkezésre állás 
  A következő táblázat felsorolja a privát kapcsolati szolgáltatásokat, valamint azokat a régiókat, ahol elérhetők. 
 
-|Forgatókönyv  |Támogatott szolgáltatások  |Elérhető régiók | status  |
+|Forgatókönyv  |Támogatott szolgáltatások  |Elérhető régiók | Állapot  |
 |:---------|:-------------------|:-----------------|:--------|
-|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  | FE  |
-|Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  Összes nyilvános régió      | Előzetes verzió <br/> [További információk](/azure/storage/common/storage-private-endpoints).  |
-|  | 2\. generációs Azure Data Lake Storage        |  Összes nyilvános régió      | Előzetes verzió <br/> [További információk](/azure/storage/common/storage-private-endpoints).  |
-|  |  Azure SQL Database         | Összes nyilvános régió      |   Előzetes verzió      |
-||Azure SQL Data Warehouse| Összes nyilvános régió |Előzetes verzió|
-||Azure Cosmos DB| USA nyugati középső régiója, WestUS, USA északi középső régiója |Előzetes verzió|
-|  |  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió      |   Előzetes verzió      |
-|  |  Azure Database for MySQL         | Összes nyilvános régió      |   Előzetes verzió      |
-|  |  Azure Database for MariaDB         | Összes nyilvános régió      |   Előzetes verzió      |
-|  |  Azure Key Vault         | Összes nyilvános régió      |   Előzetes verzió      |
+|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  | FE <br/> [További információ](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  Összes nyilvános régió      | Előzetes verzió <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+|  | 2\. generációs Azure Data Lake Storage        |  Összes nyilvános régió      | Előzetes verzió <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+|  |  Azure SQL Database         | Összes nyilvános régió      |   Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+||Azure SQL Data Warehouse| Összes nyilvános régió |Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+||Azure Cosmos DB| USA nyugati középső régiója, WestUS, USA északi középső régiója |Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió      |   Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  Azure Database for MySQL         | Összes nyilvános régió      |   Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  Azure Database for MariaDB         | Összes nyilvános régió      |   Előzetes verzió <br/> [További információ](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure Key Vault         | Összes nyilvános régió      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 
 A legfrissebb értesítésekért keresse fel az [Azure Virtual Network Updates oldalt](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -74,7 +74,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)

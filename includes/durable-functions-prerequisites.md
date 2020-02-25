@@ -4,16 +4,23 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: db7cf0ee5fa7d89e6072249396b3f969c380dfb6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 85fbd7a65fe19e785488714411d671c8ee29ab40
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178919"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562062"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a rövid útmutató cikk:
+# <a name="c"></a>[C#](#tab/csharp)
 
-* [Az első tartós függvény létrehozása C# nyelven](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-* [Az első tartós függvény létrehozása a JavaScriptben](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [A gyors üzembe helyezési cikk befejezése](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
+* [A Samples projekt klónozása vagy letöltése a GitHubról](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [A gyors üzembe helyezési cikk befejezése](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [A Samples projekt klónozása vagy letöltése a GitHubról](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
+
+---

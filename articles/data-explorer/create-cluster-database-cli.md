@@ -1,5 +1,5 @@
 ---
-title: Azure Adatkezelő-fürt és-adatbázis létrehozása az Azure CLI használatával
+title: Azure Adatkezelő-fürt létrehozása & ADATBÁZIShoz az Azure CLI-vel
 description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist az Azure CLI használatával
 author: radennis
 ms.author: radennis
@@ -7,17 +7,17 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bd53a8e29254af617b6cfa68935a191a50fc526c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326767"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561935"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása az Azure CLI használatával
 
 > [!div class="op_single_selector"]
-> * [Portál](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -44,7 +44,7 @@ A következő lépések nem szükségesek, ha parancsokat futtat Azure Cloud She
     az login
     ```
 
-1. Állítsa be azt az előfizetést, amelyben létre szeretné hozni a fürtöt. Cserélje le a `MyAzureSub` értéket a használni kívánt Azure-előfizetés nevére:
+1. Állítsa be azt az előfizetést, amelyben létre szeretné hozni a fürtöt. A `MyAzureSub` helyére írja be a használni kívánt Azure-előfizetés nevét:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -60,7 +60,7 @@ A következő lépések nem szükségesek, ha parancsokat futtat Azure Cloud She
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
-   | name | *azureclitest* | A fürt kívánt neve.|
+   | név | *azureclitest* | A fürt kívánt neve.|
    | sku | *D13_v2* | A fürthöz használni kívánt SKU. |
    | resource-group | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
@@ -72,7 +72,7 @@ A következő lépések nem szükségesek, ha parancsokat futtat Azure Cloud She
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-Ha az eredmény tartalmazza `provisioningState` az `Succeeded` értéket, a fürt létrehozása sikeresen megtörtént.
+Ha az eredmény `provisioningState`t tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása sikeresen megtörtént.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
@@ -85,7 +85,7 @@ Ha az eredmény tartalmazza `provisioningState` az `Succeeded` értéket, a für
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | fürt neve | *azureclitest* | Annak a fürtnek a neve, ahová az adatbázist létre kívánja hozni.|
-   | name | *clidatabase* | Az adatbázis neve.|
+   | név | *clidatabase* | Az adatbázis neve.|
    | resource-group | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
    | soft-delete-period | *P365D* | Azt jelzi, hogy mennyi időt kell megőrizni az adat a lekérdezés számára. További információ: [adatmegőrzési szabályzat](/azure/kusto/concepts/retentionpolicy) . |
    | Gyors gyorsítótár – időszak | *P31D* | Azt jelzi, hogy mennyi ideig maradnak az adat a gyorsítótárban. További információért lásd: [gyorsítótár](/azure/kusto/concepts/cachepolicy) -szabályzat. |

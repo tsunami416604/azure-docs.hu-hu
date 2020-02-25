@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024860"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558978"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -74,7 +74,7 @@ Bizonyos esetekben az alkalmazás-katalógusból létrehozott vállalati alkalma
 
 Az Azure AD beépített rendszergazdai szerepkörökkel rendelkezik, amelyek hozzáférést biztosítanak az Azure AD-ben az összes alkalmazás konfigurációjának kezeléséhez. Ezek a szerepkörök ajánlottak az informatikai szakértők számára a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést biztosítanak az Azure AD egyéb részeinek kezeléséhez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
 
-- Alkalmazás-rendszergazda: ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát. Ez a szerepkör lehetővé teszi a delegált engedélyekhez való hozzájárulást, valamint az Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kizárását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
+- Alkalmazás-rendszergazda: ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát. Ez a szerepkör lehetővé teszi a delegált engedélyekkel való hozzájárulást, valamint az Microsoft Graph nélküli alkalmazás-engedélyek megadását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 - Cloud Application Administrator: az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy felügyeletének képességét. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
 További információért és a szerepkörök leírásának megtekintéséhez tekintse meg a [rendelkezésre álló szerepkörök](directory-assign-admin-roles.md#available-roles)című témakört.
@@ -101,7 +101,7 @@ Tippek az alkalmazások kezelésének delegálásához egyéni szerepkörök lé
 
 Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-powershell.md)ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazás regisztrációs altípusai és engedélyei](roles-custom-available-permissions.md)
 - [Azure AD-rendszergazdai szerepkör-hivatkozás](directory-assign-admin-roles.md)

@@ -1,146 +1,146 @@
 ---
-title: A Time Series Insights integrálása távoli figyelés – Azure |} A Microsoft Docs
-description: Ebben az útmutatóban, megtudhatja, hogyan konfigurálhatja a Time Series Insights, amely már nem tartalmazza a Time Series Insights távoli figyelési megoldás.
-author: aditidugar
+title: Time Series Insights integrálása távoli figyeléssel – Azure | Microsoft Docs
+description: Ebben az útmutatóban megtudhatja, hogyan konfigurálhat Time Series Insights olyan meglévő távoli figyelési megoldáshoz, amely még nem tartalmaz Time Series Insights.
+author: Philmea
 manager: timlt
-ms.author: adugar
+ms.author: philmea
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442927"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564644"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
-Az Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel IoT-méretű idősoros adatok felhőbeli kezelését végezheti el. A Time Series Insights tárolására és idősorozat-adatok kezelése, Fedezze fel és események megjelenítése egyszerre, egyetlen elvégezheti az alapvető okok elemzése, és összehasonlíthat több helyet és eszközöket használhatja.
+A Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amellyel kezelheti a Felhőbeli IoT. A Time Series Insights az idősoros adatok tárolására és kezelésére, valamint az események egyidejű feltárására és megjelenítésére, a kiváltó okok elemzésére, valamint több hely és eszköz összehasonlítására használható.
 
-A távoli figyelési megoldásgyorsító az automatikus központi telepítési és a Time Series Insights-integráció mostantól biztosít. Ebben az útmutatóban megismerheti, hogyan konfigurálhatja a Time Series Insights, amely már nem tartalmazza a Time Series Insights távoli figyelési megoldás.
+A távoli figyelési megoldás gyorsítása mostantól lehetővé teszi az automatikus üzembe helyezést és az Time Series Insights-integrációt. Ebben a útmutatóban megtudhatja, hogyan konfigurálhat Time Series Insights olyan meglévő távoli figyelési megoldáshoz, amely még nem tartalmaz Time Series Insights.
 
 > [!NOTE]
-> A Time Series Insights jelenleg nem áll rendelkezésre az Azure China felhőben. Új távoli figyelési megoldás gyorsító üzemelő példányok az Azure China felhőben Cosmos DB összes tárolót használja.
+> Time Series Insights jelenleg nem érhető el az Azure China Cloud-ban. Az Azure China Cloud-ban az új távoli figyelési megoldás-gyorsító üzembe helyezések minden tárterülethez Cosmos DB használnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató végrehajtásához szüksége már üzembe helyezte a távoli figyelési megoldást:
+A útmutató elvégzéséhez már üzembe kell helyeznie egy távoli figyelési megoldást:
 
-* [A távoli figyelési megoldásgyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md)
+* [A távoli figyelési megoldás-gyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Hozzon létre egy fogyasztói csoportot
 
-Hozzon létre egy dedikált fogyasztói csoportot az IoT hub streamelési adatok a Time Series Insights használható.
+Hozzon létre egy dedikált fogyasztói csoportot a IoT Hub, hogy az adatátvitelhez használni lehessen a Time Series Insights.
 
 > [!NOTE]
-> Adatok lekérése az Azure IoT Hub fogyasztói csoportok alkalmazások használják. Minden felhasználói csoport legfeljebb öt kimeneti fogyasztók számára lehetővé teszi. Egy új felhasználói csoportot kell létrehozni, a minden ötödik kimeneti fogadóként és legfeljebb 32 fogyasztói csoportot is létrehozhat.
+> A fogyasztói csoportokat az alkalmazások használják az Azure-IoT Hub adatainak lekérésére. Minden fogyasztói csoport legfeljebb öt kimeneti fogyasztót tesz lehetővé. Hozzon létre egy új fogyasztói csoportot minden öt kimeneti mosogatóhoz, és legfeljebb 32 fogyasztói csoportot hozhat létre.
 
-1. Az Azure Portalon a Cloud Shell gombra.
+1. A Azure Portal kattintson a Cloud Shell gombra.
 
-1. Futtassa a következő parancsot egy új felhasználói csoport létrehozásához. A távoli figyelési környezetében az IoT hub nevére, és a távoli figyelési központi telepítés nevét használja az erőforráscsoport neve:
+1. A következő parancs végrehajtásával hozzon létre egy új fogyasztói csoportot. Használja az IoT hub nevét a távoli figyelési telepítésben, valamint a távoli figyelési telepítés nevét az erőforráscsoport neveként:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="deploy-time-series-insights"></a>A Time Series Insights üzembe helyezése
+## <a name="deploy-time-series-insights"></a>Time Series Insights üzembe helyezése
 
-Ezután helyezze üzembe a Time Series Insights további erőforrásként a távoli figyelési megoldás, és csatlakoztassa az IoT hubon.
+Ezután telepítse a Time Series Insightst további erőforrásként a távoli figyelési megoldásba, és kapcsolódjon az IoT hub-hoz.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-1. Válassza ki **erőforrás létrehozása** > **IOT-**  > **Time Series Insights**.
+1. Válassza **az erőforrás létrehozása** > **eszközök internetes hálózata** > **Time Series Insights**lehetőséget.
 
     ![Új Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
-1. A Time Series Insights-környezet létrehozásához használja az alábbi táblázatban az értékeket:
+1. Time Series Insights környezet létrehozásához használja az alábbi táblázatban szereplő értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Környezet neve | A nevet használja az alábbi képernyőképen **contorosrmtsi**. Válassza ki a saját egyedi nevet, ha e lépés elvégzése után. |
+    | Környezet neve | A következő képernyőkép a **contorosrmtsi**nevet használja. A lépés elvégzése után válassza ki a saját egyedi nevét. |
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | Erőforráscsoport | **Meglévő használata**. Válassza ki a meglévő távoli megfigyelés erőforráscsoport nevét. |
-    | Location egység | Használjuk **USA keleti Régiójában**. Ha lehetséges létrehozni a környezetet és a távoli figyelési megoldás ugyanabban a régióban. |
+    | Erőforráscsoport | **Meglévő használata**. Válassza ki a meglévő távoli figyelési erőforráscsoport nevét. |
+    | Hely | Az **USA keleti**régióját használjuk. Ha lehetséges, hozza létre a környezetet ugyanabban a régióban, mint a távoli figyelési megoldás. |
     | SKU |**S1** |
     | Kapacitás | **1** |
 
-    ![A Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra. A környezetben kell létrehozni egy kis időt is igénybe vehet.
+1. Kattintson a **Létrehozás** gombra. A környezet létrehozása eltarthat egy kis ideig.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
-Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön meg arról, hogy használja a fogyasztói csoportot az előző lépésekben létrehozott-e. A Time Series Insights igényel minden egyes szolgáltatást, hogy dedikált fogyasztói csoportot nem használatban van egy másik szolgáltatás.
+Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Győződjön meg arról, hogy az előző lépésekben létrehozott fogyasztói csoportot használja. Time Series Insights megköveteli, hogy az egyes szolgáltatások olyan dedikált fogyasztói csoportot használjanak, amelyet más szolgáltatás nem használ.
 
-1. Keresse meg az új Time Series Insights-környezethez.
+1. Navigáljon az új Time Series Insights-környezethez.
 
-1. A bal oldalon válassza ki a **eseményforrások**.
+1. A bal oldalon válassza az **eseményforrás**lehetőséget.
 
-    ![Esemény források megtekintése](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
+    ![Eseményforrás megtekintése](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Kattintson a **Hozzáadás**lehetőségre.
+1. Kattintson az **Hozzáadás** parancsra.
 
     ![Eseményforrás hozzáadása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Az IoT hub új esemény forrásként konfigurálásához használja az alábbi táblázatban az értékeket:
+1. Az IoT hub új eseményforrásként való konfigurálásához használja az alábbi táblázatban szereplő értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Eseményforrás nevének | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
-    | source | **IoT Hub** |
-    | Importálási beállítás | **Az IoT Hub használata a rendelkezésre álló előfizetések közül** |
+    | Eseményforrás neve | A következő képernyőkép a **contosorm-IOT-hub**nevet használja. A lépés elvégzéséhez használja a saját egyedi nevét. |
+    | Forrás | **IoT Hub** |
+    | Importálási beállítás | **IoT Hub használata az elérhető előfizetések közül** |
     | Előfizetés azonosítója | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | IOT hub nevét | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
-    | IOT hub házirend neve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
-    | IOT hub házirendjének kulcsa | Ez a mező automatikusan fel van töltve. |
+    | IOT hub neve | **contosorma57a6**. Használja a IoT hub nevét a távoli figyelési megoldásból. |
+    | IOT hub-házirend neve | **iothubowner** Győződjön meg arról, hogy a használt szabályzat egy tulajdonosi házirend. |
+    | IOT hub-házirend kulcsa | Ez a mező automatikusan fel van töltve. |
     | IOT hub fogyasztói csoport | **timeseriesinsights** |
     | Eseményszerializációs formátum | **JSON**     | 
     | Időbélyegző-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** gombra.
 
-## <a name="configure-the-data-access-policy"></a>Az adat-hozzáférési házirend konfigurálása
+## <a name="configure-the-data-access-policy"></a>Az adatelérési házirend konfigurálása
 
-Győződjön meg arról, hogy a távoli figyelési megoldás hozzáféréssel rendelkező felhasználók képesek adatfeltárás a Time Series Insights Explorer, az alkalmazás és az adathozzáférési házirendek a felhasználók hozzáadása az Azure Portalon. 
+Annak ellenőrzéséhez, hogy a távoli figyelési megoldáshoz hozzáféréssel rendelkező összes felhasználó képes-e az adatelemzésre a Time Series Insights Explorerben, adja hozzá az alkalmazást és a felhasználókat a Azure Portal adatelérési házirendek területén. 
 
 1. A navigációs listában válassza az **Erőforráscsoportok** lehetőséget.
 
 1. Válassza ki a **ContosoRM** erőforráscsoportot.
 
-1. Válasszon **contosormtsi** Azure-erőforrások listájában.
+1. Az Azure-erőforrások listájában válassza a **contosormtsi** lehetőséget.
 
-1. Válasszon **az adathozzáférési házirendek** szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+1. Válassza az **adatelérési házirendek** lehetőséget a szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
 
-1. Válasszon **Hozzáadás** megnyitásához a **válassza ki a felhasználói szabály** ablaktáblán.
+1. A **Hozzáadás** gombra kattintva nyissa meg a **felhasználói szabály kiválasztása** panelt.
 
-   Nem rendelkezik engedélyekkel szerepkörök hozzárendeléséhez, ha nem látja a **Hozzáadás** lehetőséget.
+   Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, nem jelenik meg a **Hozzáadás** lehetőség.
 
-1. Az a **szerepkör** legördülő listában válassza ki a megfelelő szerepkör **olvasó** és **közreműködői**.
+1. A **szerepkör** legördülő listában válasszon ki egy olyan szerepkört, mint az **olvasó** és a **közreműködő**.
 
 1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 
-1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához. Néhány pillanat múlva a rendszerbiztonsági tagot az adathozzáférési házirendek a szerepét tölti.
+1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához. Néhány pillanat elteltével a rendszerbiztonsági tag hozzá van rendelve a szerepkörhöz az adatelérési házirendekben.
 
 > [!NOTE]
-> Ha további felhasználókat a hozzáférési jogot a Time Series Insights explorer van szüksége, használhatja az alábbi lépéseket [adathozzáférés](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
+> Ha további felhasználóknak is hozzáférést kell biztosítania a Time Series Insights Intézőhöz, az alábbi lépésekkel biztosíthatja az [adathozzáférést](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
 
-## <a name="configure-azure-stream-analytics"></a>Az Azure Stream Analytics konfigurálása 
+## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics konfigurálása 
 
-A következő lépés, hogy konfigurálja az Azure Stream Analytics Manager mikroszolgáltatás lemondásához üzenetek küldése a Cosmos DB-hez, és csak a Time Series Insights tárolja őket. Hagyja ki ezt a lépést, ha az, Cosmos DB-ben az üzenetek ismétlődő szeretné.
+A következő lépés a Azure Stream Analytics Manager-szolgáltatás konfigurálása, hogy az üzenetek ne legyenek elküldve Cosmos DB és csak Time Series Insights tárolja őket. Hagyja ki ezt a lépést, ha a Cosmos DBban szeretné duplikálni az üzeneteket.
 
 1. A navigációs listában válassza az **Erőforráscsoportok** lehetőséget.
 
 1. Válassza ki a **ContosoRM** erőforráscsoportot.
 
-1. Keresse meg az Azure Stream Analytics (ASA) a streamelési feladat az erőforrások listájában. Az erőforrás neve kezdődik **streamingjobs -** .
+1. Keresse meg az Azure Stream Analytics (ASA) folyamatos átviteli feladatot az erőforrások listájában. Az erőforrás neve a **streamingjobs-** vel kezdődik.
 
-1. A képernyő felső részén a gombra kattintva állítsa le az ASA streamelési feladatok.
+1. A felső részen kattintson a gombra az ASA streaming-feladatok leállításához.
 
-1. Az ASA lekérdezés szerkesztése és eltávolítása a **kiválasztása**, **INTO**, és **FROM** , amelyek az üzenetek mutasson adatfolyam Cosmos DB-ben. Ezekkel a záradékokkal legyen alján a lekérdezést, és keresse meg az alábbi példához hasonlóan:
+1. Szerkessze az ASA-lekérdezést, és távolítsa el a **Select**, **into**és **from** záradékokat, amelyek a Cosmos db lévő üzenetek streamre mutatnak. Ezeknek a záradékoknak a lekérdezés alján kell lenniük, és az alábbi példához hasonlóan kell kinéznie:
 
     ```sql
     SELECT
@@ -159,9 +159,9 @@ A következő lépés, hogy konfigurálja az Azure Stream Analytics Manager mikr
         DeviceTelemetry T PARTITION BY PartitionId TIMESTAMP BY T.EventEnqueuedUtcTime
     ```
 
-6. Indítsa újra az Azure Stream Analytics streamelési feladatok.
+6. Indítsa újra a Azure Stream Analytics streaming-feladatokat.
 
-7. Kérje le a változásokat az Azure Stream Analytics manager mikroszolgáltatás írja be a következő parancsot a parancssorba:
+7. A következő parancs parancssorba való beírásával lekérheti a Azure Stream Analytics Manager Service legújabb módosításait:
 
 .NET: 
 
@@ -175,9 +175,9 @@ Java:
 docker pull azureiotpcs/asa-manager-java:1.0.2
 ```
 
-## <a name="configure-the-telemetry-microservice"></a>A telemetriai adatok mikroszolgáltatás konfigurálása
+## <a name="configure-the-telemetry-microservice"></a>A telemetria-szolgáltatás konfigurálása
 
-Kérje le a legújabb Telemetriai mikroszolgáltatás be a parancssorba a következő parancs beírásával:
+A legújabb telemetria-szolgáltatás lekéréséhez írja be a következő parancsot a parancssorba:
 
 .NET:
 
@@ -191,37 +191,37 @@ Java:
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
-## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Opcionális]*  Konfigurálja a webes felhasználói felület a Time Series Insights explorer összekapcsolása
+## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>*[Nem kötelező]* A webes felhasználói felület konfigurálása a Time Series Insights Explorerrel való hivatkozáshoz
 
-A Time Series Insights Explorer saját adatainak megtekintéséhez egyszerűen, javasoljuk, hogy könnyen összekapcsolása a környezet a felhasználói felület testreszabása. Ehhez kérje le a legutóbbi változtatásokat a webes felhasználói felületére, a következő paranccsal:
+A Time Series Insights Explorerben egyszerűen megtekintheti az adatait, ezért a felhasználói felület testreszabásával egyszerűen hivatkozhat a környezetre. Ehhez a következő paranccsal kérje le a webes felhasználói felület legújabb módosításait:
 
 ```cmd/sh
 docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 ```
 
-## <a name="configure-the-environment-variables"></a>A környezeti változók konfigurálása
+## <a name="configure-the-environment-variables"></a>Környezeti változók konfigurálása
 
-A Time Series Insights-integráció végrehajtásához szüksége lesz az üzembe helyezés a frissített mikroszolgáltatások a környezet beállításához.
+A Time Series Insights integráció befejezéséhez konfigurálnia kell az üzemelő példányok környezetét a frissített szolgáltatásokhoz.
 
 ### <a name="basic-deployments"></a>Alapszintű központi telepítések
 
-A környezet konfigurálása `basic` a frissített mikroszolgáltatások üzembe helyezés.
+Konfigurálja `basic` központi telepítésének környezetét a frissített Service-szolgáltatásokhoz.
 
-1. Az Azure Portalon kattintson a a **Azure Active Directory** lapra a bal oldali panelen.
+1. A Azure Portal kattintson a bal oldali panel **Azure Active Directory** fülére.
 
-1. Kattintson a **alkalmazásregisztrációk**.
+1. Kattintson **Alkalmazásregisztrációk**.
 
-1. Keresse meg és kattintson a **ContosoRM** alkalmazás.
+1. Keresse meg a **ContosoRM** alkalmazást, és kattintson rá.
 
-1. Navigáljon a **beállítások** > **kulcsok** , majd hozzon létre egy új kulcsot az alkalmazáshoz. Ellenőrizze, hogy a kulcs-érték másolja biztonságos helyre.
+1. Navigáljon a **beállítások** > a **kulcsok** elemre, majd hozzon létre egy új kulcsot az alkalmazáshoz. Ügyeljen arra, hogy a kulcs értékét a biztonságos helyre másolja.
 
-1. Kérje le a [legfrissebb docker compose yaml-fájl](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) GitHub-adattárból legújabb címke használatával. 
+1. A legfrissebb címkével lekérheti a GitHub-tárház [legújabb YAML-fájlját](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
 
-1. SSH-t a virtuális gép a című rész lépéseit követve [hogyan hozhat létre és használhat SSH-kulcsok](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+1. SSH-t a virtuális gépre az [ssh-kulcsok létrehozása és használata](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)című témakör lépéseit követve.
 
-1. A csatlakozás után írja be a `cd /app`.
+1. A csatlakozás után írja be a következőt: `cd /app`.
 
-1. Adja hozzá az alábbi környezeti változókat az egyes mikroszolgáltatások a docker compose yaml-fájlt, és a `env-setup` szkriptet a virtuális gépen:
+1. Adja hozzá az alábbi környezeti változókat a Docker-összeállítás YAML fájljában található minden egyes szolgáltatáshoz, valamint a `env-setup` parancsfájlt a virtuális gépen:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -231,24 +231,24 @@ A környezet konfigurálása `basic` a frissített mikroszolgáltatások üzembe
     PCS_AAD_APPSECRET={AAD application key}
     ```
 
-1. Keresse meg a **a telemetriai szolgáltatás** és is szerkesztése a docker compose ugyanazt a fenti környezeti változók hozzáadásával fájlt.
+1. A fenti környezeti változók hozzáadásával navigáljon a **telemetria szolgáltatáshoz** , és szerkessze a Docker-összeállítási fájlt is.
 
-1. Keresse meg a **ASA-kezelő szolgáltatás** és szerkesztése a docker compose fájl hozzáadásával `PCS_TELEMETRY_STORAGE_TYPE`.
+1. Navigáljon a **ASA Manager szolgáltatáshoz** , és szerkessze a Docker-összeállítási fájlt `PCS_TELEMETRY_STORAGE_TYPE`hozzáadásával.
 
-1. Indítsa újra a docker-tárolók használatával `sudo ./start.sh` a virtuális gépről.
+1. Indítsa újra a Docker-tárolókat a virtuális gép `sudo ./start.sh` használatával.
 
 > [!NOTE]
-> A környezeti változók a fenti konfigurációs érvényes, a távoli figyelési verziók 1.0.2-es előtt
+> A környezeti változók fenti konfigurációja a távoli figyelési verziók esetében érvényes a 1.0.2 előtt
 
-### <a name="standard-deployments"></a>Normál telepítések
+### <a name="standard-deployments"></a>Szabványos központi telepítések
 
-A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokhoz üzembe helyezése
+`standard` üzemelő példány környezetének konfigurálása a frissített Micro Services-szolgáltatásokhoz
 
-1. A parancssorban futtassa `kubectl proxy`. További információkért lásd: [fér hozzá a Kubernetes API-t](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. A parancssorban futtassa a `kubectl proxy`. További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)-hoz.
 
 1. Nyissa meg a Kubernetes felügyeleti konzolt.
 
-1. Keresse meg a konfigurációs térkép hozzáadása az alábbi új környezeti változókat a TSI:
+1. A konfigurációs Térkép megkeresésével adja hozzá a következő új környezeti változókat az ÁME-hez:
 
     ```yaml
     telemetry.storage.type: "tsi"
@@ -256,7 +256,7 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
     security.auth.serviceprincipal.secret: "{AAD application service principal secret}"
     ```
 
-4. A sablon yaml-fájl a telemetriai szolgáltatás pod szerkesztése:
+4. Szerkessze a telemetria Service Pod sablon YAML-fájlját:
 
     ```yaml
     - name: PCS_AAD_TENANT
@@ -286,7 +286,7 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
             key: telemetry.tsi.fqdn
     ```
 
-5. A sablonfájl yaml az ASA-kezelő szolgáltatás pod szerkesztése:
+5. Szerkessze az ASA Manager Service Pod sablon YAML-fájlját:
 
     ```yaml
     - name: PCS_TELEMETRY_STORAGE_TYPE
@@ -298,6 +298,6 @@ A környezet konfigurálása `standard` fenti frissített mikroszolgáltatásokh
 
 ## <a name="next-steps"></a>További lépések
 
-* Feltárhatja az adatait, és a egy riasztást a Time Series Insights Explorer diagnosztikája kapcsolatos további információkért lásd a jelen oktatóanyagban [legfelső szintű végző okok](iot-accelerators-remote-monitoring-root-cause-analysis.md).
+* Ha szeretné megtudni, hogyan vizsgálhatja meg adatait, és hogyan diagnosztizálhatja a riasztásokat a Time Series Insights Explorerben, tekintse meg a [kiváltó okok elemzését](iot-accelerators-remote-monitoring-root-cause-analysis.md)ismertető oktatóanyagot.
 
-* Ismerje meg, és kérdezhet le adatokat a Time Series Insights Explorer kapcsolatban további információt a dokumentációban a [Azure Time Series Insights explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+* Az Time Series Insights Explorerben megjelenő információk megismeréséhez és lekérdezéséhez tekintse meg a [Azure Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)dokumentációját.

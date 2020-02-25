@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 5bb02edce4a3aef30f8f9528a846c99d6d8d3b39
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b1cce6d1aafabda62b71ecd38ff5ac7df1033b26
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170863"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561986"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor View Designer csempe konverziók
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk a különböző csempék munkafüzetekbe konvertálásának részleteit ismerteti.
@@ -62,8 +62,9 @@ Eredeti lekérdezés
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type
+```
 
-Updated query
+Frissített lekérdezés
 ```KQL
 search * 
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
@@ -159,6 +160,6 @@ Az alábbi példa azt szemlélteti, hogyan lehet újraértelmezni a munkafüzete
 
 ![Idősor-lista-munkafüzetek](media/view-designer-conversion-tiles/time-workbooks.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Tervező nézetének áttekintése a munkafüzetek átváltásához](view-designer-conversion-overview.md)

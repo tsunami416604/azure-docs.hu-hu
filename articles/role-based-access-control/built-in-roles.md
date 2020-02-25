@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198666"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562020"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -115,6 +115,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Logikai alkalmazás közreműködői](#logic-app-contributor) | Lehetővé teszi a logikai alkalmazások kezelését, de nem változtatja meg a hozzájuk való hozzáférést. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logic app-operátor](#logic-app-operator) | Lehetővé teszi a logikai alkalmazások olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissíti őket. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Felügyelt alkalmazás közreműködői szerepköre](#managed-application-contributor-role) | Lehetővé teszi a felügyelt alkalmazások erőforrásainak létrehozását. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Felügyelt alkalmazás operátori szerepköre](#managed-application-operator-role) | Lehetővé teszi műveletek olvasását és végrehajtását a felügyelt alkalmazás erőforrásain | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Felügyelt alkalmazások olvasója](#managed-applications-reader) | Lehetővé teszi az erőforrások olvasását egy felügyelt alkalmazásban, valamint a JIT-hozzáférés kérését. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Felügyelt identitás közreműködői](#managed-identity-contributor) | Felhasználóhoz rendelt identitás létrehozása, olvasása, frissítése és törlése | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | [Erőforrás-házirend közreműködője](#resource-policy-contributor) | Az erőforrás-házirend létrehozásához/módosításához, támogatási jegy létrehozásához és az erőforrások/hierarchia olvasásához jogosultsággal rendelkező felhasználók. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Search Service közreműködő](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Biztonsági rendszergazda](#security-admin) | Csak Security Center esetén: megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, biztonsági házirendeket szerkeszthet, megtekintheti a riasztásokat és a javaslatokat | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [Security Manager (örökölt)](#security-manager-legacy) | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Biztonsági olvasó](#security-reader) | Csak Security Center esetén: megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Biztonsági rendszergazda](#security-admin) | Megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, szerkesztheti a biztonsági házirendeket, megtekintheti a riasztásokat és a javaslatokat, valamint | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Biztonsági értékelő közreműködő](#security-assessment-contributor) | Lehetővé teszi az értékelések leküldését Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [Security Manager (örökölt)](#security-manager-legacy) | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [Biztonsági olvasó](#security-reader) | Megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Site Recovery közreműködő](#site-recovery-contributor) | Lehetővé teszi Site Recovery szolgáltatás felügyeletét, kivéve a tár létrehozását és a szerepkör-hozzárendelést | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem hajt végre más Site Recovery felügyeleti műveleteket | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery olvasó](#site-recovery-reader) | Lehetővé teszi, hogy megtekintse Site Recovery állapotát, de ne végezzen más felügyeleti műveleteket | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | [Virtuális gép felhasználói bejelentkezés](#virtual-machine-user-login) | Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhasználóként. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Webes csomag közreműködői](#web-plan-contributor) | Lehetővé teszi a webhelyek webes csomagjainak kezelését, de azokhoz való hozzáférés nélkül. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Webhely közreműködői](#website-contributor) | Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozzájuk. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Munkafüzet közreműködője](#workbook-contributor) | Menthetők a megosztott munkafüzetek. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Munkafüzet-olvasó](#workbook-reader) | A munkafüzetek beolvasása. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>Tulajdonos
@@ -346,7 +350,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.ApiManagement/service/restore/action | API Management szolgáltatás visszaállítása a megadott tárolóból egy felhasználó által megadott Storage-fiókban |
 > | Microsoft.ApiManagement/service/updatecertificate/action | API Management szolgáltatás SSL-tanúsítványának feltöltése |
 > | Microsoft.ApiManagement/service/updatehostname/action | API Management szolgáltatás egyéni tartománynevének beállítása, frissítése vagy eltávolítása |
-> | Microsoft.ApiManagement/service/write | API Management szolgáltatás új példányának létrehozása |
+> | Microsoft.ApiManagement/service/write | API Management szolgáltatás példányának létrehozása vagy frissítése |
 > | Microsoft. Authorization/*/READ | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Riasztási szabályok létrehozása és kezelése |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
@@ -627,8 +631,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Műveletek** |  |
 > | Microsoft. HybridCompute/Machines/READ | Bármely Azure-beli ív-gép beolvasása |
 > | Microsoft. HybridCompute/gépek/írás | Azure arc-gépek írása |
-> | Microsoft. HybridCompute/Machines/delete | Azure arc-gépek törlése |
-> | Microsoft. HybridCompute/gépek/újraösszekapcsolás/művelet | Azure arc-gépek újracsatolása |
+> | Microsoft. HybridCompute/Machines/delete | Azure-beli ív-gépek törlése |
+> | Microsoft. HybridCompute/gépek/újraösszekapcsolás/művelet | Újrakapcsolódik az Azure arc-gépekhez |
 > | Microsoft. HybridCompute/*/READ |  |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
@@ -690,6 +694,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Azonosító** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Műveletek** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Felügyelt fürt clusterAdmin hitelesítő adatainak listázása |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Felügyelt fürt hozzáférési profiljának beolvasása szerepkör neve alapján a lista hitelesítő adataival |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |
@@ -1540,6 +1545,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Felsorolja a rendeléshez kapcsolódó titkosítatlan hitelesítő adatokat. |
 > | Microsoft.Databox/locations/availableSkus/action | Ez a metódus visszaadja az elérhető SKU-ket tartalmazó listát. |
+> | Microsoft. Databox/Locations/validateInputs/Action | Ez a metódus az összes érvényesítési típust támogatja. |
+> | Microsoft. Databox/Locations/regionConfiguration/Action | Ez a metódus a régió konfigurációit adja vissza. |
 > | Microsoft.Databox/locations/validateAddress/action | Ellenőrzi a szállítási címet, és alternatív címeket biztosít, ha vannak ilyenek. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
@@ -1565,6 +1572,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | Microsoft. EventGrid/eventSubscriptions/Write | EventSubscription létrehozása vagy frissítése |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |
@@ -1851,6 +1859,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft. LabServices/labAccounts/createLab/művelet | Tesztkörnyezet létrehozása labor-fiókban. |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Regionális elérhetőségi információk beolvasása a labor-fiókban konfigurált egyes méretek kategóriához |
+> | Microsoft. LabServices/labAccounts/getPricingAndAvailability/művelet | A Lab-fiókhoz tartozó méretek, földrajzi és operációs rendszerek kombinációinak díjszabása és rendelkezésre állása. |
+> | Microsoft. LabServices/labAccounts/getRestrictionsAndUsage/művelet | Az előfizetéshez tartozó alapvető korlátozások és használat beszerzése |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
 > | **Nincs tapintat** |  |
@@ -1964,6 +1974,25 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Web/connections/*/read | Olvasási kapcsolatok. |
 > | Microsoft.Web/customApis/*/read | Egyéni API olvasása. |
 > | Microsoft.Web/serverFarms/read | App Service csomag tulajdonságainak beolvasása |
+> | **Nincs tapintat** |  |
+> | *nEz egy* |  |
+> | **DataActions** |  |
+> | *nEz egy* |  |
+> | **NotDataActions** |  |
+> | *nEz egy* |  |
+
+## <a name="managed-application-contributor-role"></a>Felügyelt alkalmazás közreműködői szerepköre
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi a felügyelt alkalmazások erőforrásainak létrehozását. |
+> | **Azonosító** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **Műveletek** |  |
+> | */read | Az összes típusú erőforrás beolvasása, kivéve a titkokat. |
+> | Microsoft. Solutions/alkalmazások/* |  |
+> | Microsoft.Solutions/register/action | Regisztráljon a megoldásokra. |
+> | Microsoft. Resources/Subscriptions/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |
@@ -2337,7 +2366,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Csak Security Center esetén: megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, biztonsági házirendeket szerkeszthet, megtekintheti a riasztásokat és a javaslatokat |
+> | **Leírás** | Megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, szerkesztheti a biztonsági házirendeket, megtekintheti a riasztásokat és a javaslatokat, valamint |
 > | **Azonosító** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Műveletek** |  |
 > | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
@@ -2358,11 +2387,26 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *nEz egy* |  |
 
+## <a name="security-assessment-contributor"></a>Biztonsági értékelő közreműködő
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi az értékelések leküldését Security Center |
+> | **Azonosító** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **Műveletek** |  |
+> | Microsoft. Security/értékelések/írás | Biztonsági értékelések létrehozása vagy frissítése az előfizetésen |
+> | **Nincs tapintat** |  |
+> | *nEz egy* |  |
+> | **DataActions** |  |
+> | *nEz egy* |  |
+> | **NotDataActions** |  |
+> | *nEz egy* |  |
+
 ## <a name="security-manager-legacy"></a>Security Manager (örökölt)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát |
+> | **Leírás** | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát. |
 > | **Azonosító** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Műveletek** |  |
 > | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
@@ -2386,7 +2430,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Csak Security Center esetén: megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat |
+> | **Leírás** | Megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat. |
 > | **Azonosító** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Műveletek** |  |
 > | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
@@ -3114,6 +3158,9 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Compute/locations/* | Számítási helyszínek létrehozása és kezelése |
 > | Microsoft.Compute/virtualMachines/* | Virtuális gépek létrehozása és kezelése |
 > | Microsoft.Compute/virtualMachineScaleSets/* | Virtuálisgép-méretezési csoportok létrehozása és kezelése |
+> | Microsoft.Compute/disks/write | Új lemez létrehozása vagy egy meglévő frissítése |
+> | Microsoft.Compute/disks/read | Lemez tulajdonságainak beolvasása |
+> | Microsoft.Compute/disks/delete | A lemez törlése |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Az adatáttekintési riasztási szabályok létrehozása és kezelése |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Egy Application Gateway háttérbeli címkészlet illesztése. Nem Riasztásos. |
@@ -3221,7 +3268,39 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *nEz egy* |  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="workbook-contributor"></a>Munkafüzet közreműködője
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Menthetők a megosztott munkafüzetek. |
+> | **Azonosító** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **Műveletek** |  |
+> | Microsoft. bepillantások/munkafüzetek/írás | Munkafüzet létrehozása vagy frissítése |
+> | Microsoft. bepillantások/munkafüzetek/törlés | Munkafüzet törlése |
+> | Microsoft. bepillantások/munkafüzetek/olvasás | Munkafüzet beolvasása |
+> | **Nincs tapintat** |  |
+> | *nEz egy* |  |
+> | **DataActions** |  |
+> | *nEz egy* |  |
+> | **NotDataActions** |  |
+> | *nEz egy* |  |
+
+## <a name="workbook-reader"></a>Munkafüzet-olvasó
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | A munkafüzetek beolvasása. |
+> | **Azonosító** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **Műveletek** |  |
+> | Microsoft. bepillantások/munkafüzetek/olvasás | Munkafüzet beolvasása |
+> | **Nincs tapintat** |  |
+> | *nEz egy* |  |
+> | **DataActions** |  |
+> | *nEz egy* |  |
+> | **NotDataActions** |  |
+> | *nEz egy* |  |
+
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)

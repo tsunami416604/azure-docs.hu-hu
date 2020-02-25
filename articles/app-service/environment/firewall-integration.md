@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan integrálható a Azure Firewall a kimenő forga
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513344"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565723"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -24,7 +24,7 @@ A kihelyezett kifelé irányuló kimenő függőségek szinte teljesen meg vanna
 
 A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. A Azure Firewall a cél teljes tartományneve alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat.  
 
-## <a name="system-architecture"></a>Rendszer-architektúra
+## <a name="system-architecture"></a>Rendszerarchitektúra
 
 Egy olyan, a tűzfalon áthaladó kimenő forgalommal rendelkező bevezetéshez, amely az útvonalakat a bevezető alhálózaton át kívánja módosítani. Az útvonalak IP-szinten működnek. Ha nem érdekli az útvonalak meghatározása, a TCP-válasz forgalmát más címről is kikényszerítheti a forrásra. Ha a válasz címe eltér a címek adatforgalmával, akkor a problémát aszimmetrikus útválasztásnak nevezzük, és a rendszer megszakítja a TCP-t.
 
@@ -41,9 +41,11 @@ A befelé irányuló adatforgalomnak a következő egyezményeknek kell megfelel
 
 ## <a name="locking-down-inbound-management-traffic"></a>Bejövő felügyeleti forgalom zárolása
 
-Ha a betanító alhálózat még nincs hozzárendelve NSG, hozzon létre egyet. A NSG belül állítsa be az első szabályt, amely engedélyezi a forgalmat a AppServiceManagement nevű szolgáltatási címkétől az 454-es, 455-as porton. Ez minden, ami szükséges a nyilvános IP-címekről a bevezetésének kezeléséhez. A szolgáltatás címkéje mögött található címek csak a Azure App Service felügyeletére használhatók. Az ezeken a kapcsolatokon áthaladó felügyeleti forgalom titkosítva van, és biztonságos a hitelesítési tanúsítványokkal. Az ezen a csatornán jellemző forgalom olyan dolgokat tartalmaz, mint például az ügyfél által kezdeményezett parancsok és az állapot-mintavétel. 
+Ha a betanító alhálózat még nincs hozzárendelve NSG, hozzon létre egyet. A NSG belül állítsa be az első szabályt, hogy engedélyezze a forgalmat a AppServiceManagement nevű szolgáltatási címkétől az 454-es, 455-as porton. A AppServiceManagement címkéből való hozzáférést engedélyező szabály az egyetlen, ami szükséges a nyilvános IP-címekről a bevezetésének kezeléséhez. A szolgáltatás címkéje mögött található címek csak a Azure App Service felügyeletére használhatók. Az ezeken a kapcsolatokon áthaladó felügyeleti forgalom titkosítva van, és biztonságos a hitelesítési tanúsítványokkal. Az ezen a csatornán jellemző forgalom olyan dolgokat tartalmaz, mint például az ügyfél által kezdeményezett parancsok és az állapot-mintavétel. 
 
 A portálon egy új alhálózattal létrehozott ASE egy olyan NSG készülnek, amely tartalmazza a AppServiceManagement címke engedélyezési szabályát.  
+
+A kiegészítő szolgáltatásnak a 16001-as porton lévő Load Balancer címkén is engedélyeznie kell a bejövő kérelmeket. Az 16001-as porton lévő Load Balancertól érkező kérések életben maradnak a Load Balancer és a központba való bejáratok között. Ha a 16001-es port le van tiltva, a bevezetés nem kifogástalan állapotú lesz.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Firewall konfigurálása a beadással 
 
@@ -273,6 +275,21 @@ A Linux US Gov régióban nem érhető el, ezért nem választható konfiguráci
 | Azure SQL |
 | Azure Storage |
 | Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>IP-címek függőségei
+
+| Végpont | Részletek |
+|----------| ----- |
+| \*: 123 | NTP órajel-ellenőrzési. A forgalom a 123-es porton több végponton van bejelölve |
+| \*: 12000 | A rendszer ezt a portot használja a rendszerfigyeléshez. Ha blokkolva van, bizonyos problémák nehezebbek lesznek az osztályozáshoz, de a bevezetés továbbra is működni fog |
+| 40.77.24.27:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 40.77.24.27:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.90.249.229:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 104.45.230.69:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:80 | A kimutatott problémák monitorozásához és riasztásához szükséges |
+| 13.82.184.151:443 | A kimutatott problémák monitorozásához és riasztásához szükséges |
 
 #### <a name="dependencies"></a>Függőségek ####
 

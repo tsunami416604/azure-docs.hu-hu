@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122525"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559844"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -171,7 +171,7 @@ Time Series Insights az előnézet a hűtőházi tároló adatait az Azure Blob 
 
 ### <a name="data-availability"></a>Az adatelérhetőség
 
-Az optimális lekérdezési teljesítmény érdekében Azure Time Series Insights előnézeti partíciókat és indexeli az adataikat. A lekérdezés az indexelés után elérhetővé válik. A betöltött adatmennyiség hatással lehet erre a rendelkezésre állásra.
+Az optimális lekérdezési teljesítmény érdekében Azure Time Series Insights előnézeti partíciókat és indexeli az adataikat. Az adatok elérhetővé válnak mind a meleg (ha engedélyezve), mind a hűtőházi tároló lekérdezéséhez az indexelés után. A betöltött adatmennyiség hatással lehet erre a rendelkezésre állásra.
 
 > [!IMPORTANT]
 > Az előzetes verzió ideje alatt akár 60 másodperces időszakot is megtapasztalhat, mielőtt az adatmennyiség elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, küldjön egy támogatási jegyet a Azure Portalon keresztül.
@@ -244,7 +244,7 @@ Time Series Insights előnézeti események a következő módon vannak leképez
 * A telemetria-adatként elküldett összes többi tulajdonságot a tulajdonság típusától függően `_string` (string), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) végződésű oszlopokra kell leképezni.
 * Ez a leképezési séma a fájl formátumának első verziójára vonatkozik, amelyre a **V = 1**hivatkozik. A szolgáltatás fejlődése során előfordulhat, hogy a név növekszik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el [, hogyan formázhatja a JSON-t a bejövő és a lekérdezéshez](./time-series-insights-update-how-to-shape-events.md).
 

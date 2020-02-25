@@ -1,5 +1,5 @@
 ---
-title: SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal az Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Serveron | Microsoft Docs
+title: SAP HANA a SLES-vel való Azure NetApp Files a készenléti állapottal | Microsoft Docs
 description: Magas rendelkezésre állási útmutató az SAP NetWeaver-hez a SUSE Linux Enterprise Server Azure NetApp Files SAP-alkalmazásokhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896282"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565808"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -184,7 +184,7 @@ Az adatokhoz és a naplóhoz szükséges minimális teljesítménybeli követelm
 
 | Kötet | Méret<br>Premium Storagei szintű | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 tebibájt | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
 
@@ -192,11 +192,11 @@ A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files 
 
 | Kötet | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 tebibájt | v 4.1 |
-| /hana/log/mnt00002 | 2 tebibájt | v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 tebibájt | v3 vagy v 4.1 |
+| /hana/shared | 2 TiB | v3 vagy v 4.1 |
 
 > [!NOTE]
 > Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP által az infrastruktúra-szolgáltatók számára javasolt minimális követelményeknek. A valós ügyfelek központi telepítései és számítási feladatainak esetében ezek a méretek nem elégségesek. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  
@@ -850,7 +850,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

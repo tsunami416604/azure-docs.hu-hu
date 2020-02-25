@@ -1,5 +1,5 @@
 ---
-title: Fájlmegosztás tartalmának migrálása a SharePoint Online-ba Azure Data Box Heavy használatával | Microsoft Docs
+title: A fájlmegosztás tartalmának a SharePoint Online-ba való áthelyezéséhez Azure Data Box Heavy használata
 description: Ebből az oktatóanyagból megtudhatja, hogyan telepítheti át a fájlmegosztás tartalmát az online megosztási pontra a Azure Data Box Heavy használatával
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325274"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560048"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>A fájlmegosztás tartalmának migrálása a SharePoint Online-ba a Azure Data Box Heavy használatával
 
@@ -64,10 +64,10 @@ Az alábbi lépéseket követve másolhatja az adatait a Data Box Heavyba.
 
 1. [Rendeljen Data Box Heavy](data-box-heavy-deploy-ordered.md).
 2. Miután megkapta a Data Box Heavy, [állítsa be a Data Box Heavy](data-box-heavy-deploy-set-up.md). Az eszközön lévő csomópontokat is csatlakoztathatja és konfigurálhatja.
-3. [](data-box-heavy-deploy-copy-data.md)Adatmásolás Azure Data Box Heavyba. A másolás során ügyeljen rá, hogy:
+3. [Adatmásolás Azure Data Box Heavyba](data-box-heavy-deploy-copy-data.md). A másolás során ügyeljen rá, hogy:
 
     - Az adatmásoláshoz csak a Data Box Heavy *StorageAccountName_AzFile* mappáját használja. Ennek az az oka, hogy az adott Azure-fájlmegosztás nem blokkolja a blobokat vagy a blobokat.
-    - Fájlok másolása egy mappába a *StorageAccountName_AzFile* mappában. A *StorageAccountName_AzFile* mappában található almappa egy fájlmegosztást hoz létre. A közvetlenül a *StorageAccountName_AzFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket. Ezt a fájlmegosztást fogja csatlakoztatni a virtuális gépen a következő lépésben.
+    - Fájlok másolása *StorageAccountName_AzFile* mappában található mappába. A *StorageAccountName_AzFile* mappában található almappa egy fájlmegosztást hoz létre. A közvetlenül a *StorageAccountName_AzFile* mappába másolt fájlok sikertelenek lesznek, és a rendszer blokk blobként feltölti őket. Ezt a fájlmegosztást fogja csatlakoztatni a virtuális gépen a következő lépésben.
     - Másolja az adatait a Data Box Heavy mindkét csomópontjára.
 3. [Szállításra való előkészítés](data-box-heavy-deploy-picked-up.md#prepare-to-ship) futtatása az eszközön. A szállítás sikeres előkészítése biztosítja a fájlok sikeres feltöltését az Azure-ba.
 4. [Az eszköz visszaadása](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).
@@ -87,7 +87,7 @@ A legjobb teljesítmény és kapcsolat érdekében javasoljuk, hogy hozzon létr
 6. A többi kérést a szokásos módon követheti, beleértve a célhelyet is. További információért látogasson el [a SharePoint áttelepítési eszköz használatára](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
-> - Az adatok SharePoint Online-ba való betöltésének gyorsasága számos tényezőt érint, függetlenül attól, hogy az adatok már az Azure-ban vannak-e. Ezen tényezők megismerése segít megtervezni és maximalizálni az áttelepítés hatékonyságát.  További információért látogasson el a [SharePoint Online-ba és a OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)áttelepítési sebességre.
+> - Az adatok SharePoint Online-ba való betöltésének gyorsasága számos tényezőt érint, függetlenül attól, hogy az adatok már az Azure-ban vannak-e. Ezen tényezők megismerése segít megtervezni és maximalizálni az áttelepítés hatékonyságát.  További információért látogasson el a [SharePoint Online-ba és a OneDrive áttelepítési sebességre](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
 > - A SharePoint Online-ba való Migrálás során fennáll a veszélye, hogy a fájlokra vonatkozóan meglévő engedélyeket veszít. Előfordulhat, hogy bizonyos metaadatokat is elveszít, például a által *létrehozott* és *módosított dátummal*.
 
 ## <a name="next-steps"></a>További lépések

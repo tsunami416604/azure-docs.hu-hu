@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805943"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560933"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba
 
@@ -37,7 +37,7 @@ A [SPEECH SDK](speech-sdk.md) a Bing Speech ügyféloldali kódtárak funkcioná
 
 A beszédfelismerési szolgáltatás nagymértékben hasonló a Bing Speechhoz, a következő eltérésekkel.
 
-Szolgáltatás | Bing Speech | Beszédfelismerési szolgáltatás | Részletek
+Szolgáltatás | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek
 -|-|-|-
 C++SDK | : heavy_minus_sign: | :heavy_check_mark: | A Speech Service támogatja a Windowst és a Linuxot.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | A beszédfelismerési szolgáltatás támogatja az androidos és a beszédfelismerési eszközöket.
@@ -47,7 +47,7 @@ Részleges vagy ideiglenes eredmények | :heavy_check_mark: | :heavy_check_mark:
 Egyéni beszédfelismerési modellek | :heavy_check_mark: | :heavy_check_mark: | Bing Speech külön Custom Speech-előfizetést igényel.
 Egyéni hangbetűkészletek | :heavy_check_mark: | :heavy_check_mark: | Bing Speech külön egyéni hangalapú előfizetést igényel.
 24 KHz-es hangok | : heavy_minus_sign: | :heavy_check_mark:
-Beszéd szándékának felismerése | Külön LUIS API-hívást igényel | Integrált (SDK-val) |  A Speech Service-ben LUIS-kulcsot is használhat.
+Beszédfelismerési szándék felismerése | Külön LUIS API-hívást igényel | Integrált (SDK-val) |  A Speech Service-ben LUIS-kulcsot is használhat.
 Egyszerű szándék felismerése | : heavy_minus_sign: | :heavy_check_mark:
 Hosszú hangfájlok kötegelt átírása | : heavy_minus_sign: | :heavy_check_mark:
 Felismerési mód | Manuális végponti URI-n keresztül | Automatikus | A beszédfelismerési mód nem érhető el a Speech szolgáltatásban.
@@ -61,7 +61,7 @@ A beszédfelismerési szolgáltatás időalapú árképzési modellt használ (n
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 
-Ha Ön vagy a szervezete olyan fejlesztést vagy éles környezetben futó alkalmazásokat használ, amelyek Bing Speech API használnak, a lehető leghamarabb frissítse őket a beszédfelismerési szolgáltatás használatára. Tekintse meg a [beszédfelismerési szolgáltatás dokumentációját](index.md) , amely tartalmazza az elérhető SDK-kat, a kódot és az oktatóanyagokat.
+Ha Ön vagy a szervezete olyan fejlesztést vagy éles környezetben futó alkalmazásokat használ, amelyek Bing Speech API használnak, a lehető leghamarabb frissítse őket a beszédfelismerési szolgáltatás használatára. Tekintse meg a [beszédfelismerési szolgáltatás dokumentációját](index.yml) , amely tartalmazza az elérhető SDK-kat, a kódot és az oktatóanyagokat.
 
 A beszédfelismerési szolgáltatás [REST API](rest-apis.md) -jai kompatibilisek a Bing Speech API-kkal. Ha jelenleg a Bing Speech REST API-kat használja, csak a REST-végpontot kell módosítania, és váltania kell egy Speech Service-előfizetési kulcsra.
 
@@ -87,12 +87,12 @@ Bing Speech ügyfeleknek [támogatási jegy](https://ms.portal.azure.com/#blade/
 
 A Speech Service, az SDK és az API támogatásához látogasson el a Speech Service [támogatási oldalára](support.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Próbálja ki ingyenesen a Speech szolgáltatást](get-started.md)
 * [Gyors útmutató: beszédfelismerés felismerése UWP-alkalmazásban a Speech SDK használatával](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Beszédfelismerési szolgáltatás kibocsátási megjegyzései](releasenotes.md)
 * [Mi a beszédfelismerési szolgáltatás?](overview.md)
 * [A Speech Service és a Speech SDK dokumentációja](speech-sdk.md#get-the-sdk)

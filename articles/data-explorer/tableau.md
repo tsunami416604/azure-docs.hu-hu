@@ -1,5 +1,5 @@
 ---
-title: Az Open Database Connectivity (ODBC) kapcsolat használata az Azure Adatkezelő az adatmegjelenítéshez a Tablóval
+title: Az Azure Adatkezelő ODBC-összekötő használata a Tablói adatmegjelenítéshez
 description: Ebből a cikkből megtudhatja, hogyan használható a nyílt adatbázis-kapcsolat (ODBC) kapcsolat az Azure Adatkezelő kapcsolattal az adatmegjelenítéshez a Tablóval.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023866"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562445"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Adatok megjelenítése az Azure Adatkezelő a Tablóban
 
@@ -56,6 +56,6 @@ Miután befejezte az ODBC konfigurálását, a mintaadatok beállíthatók a Tab
 
 1. Most már létrehozhat vizualizációkat a Tablóban az Azure Adatkezelőból bevitt adatok alapján. További információ: a [tabló megismerése](https://www.tableau.com/learn).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)

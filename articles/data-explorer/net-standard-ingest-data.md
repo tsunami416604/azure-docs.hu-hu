@@ -1,5 +1,5 @@
 ---
-title: Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)
+title: Adatfeldolgozás az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)
 description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatterhelést az Azure Adatkezelőba a .NET Standard SDK használatával.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187915"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562462"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Adatbevitel az Azure Adatkezelő .NET Standard SDK-val (előzetes verzió)
 
@@ -232,6 +232,6 @@ Ha azt tervezi, hogy követi a többi cikket, tartsa meg a létrehozott erőforr
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lekérdezések írása](write-queries.md)

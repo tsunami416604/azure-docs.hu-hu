@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500411"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565786"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -111,6 +111,8 @@ Egyéni TLV-részletek:
 |Érték  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |A privát végpont LINKID-UINT32 (4 bájt). Kódolása kis endian formátumban.|
 
+ > [!NOTE]
+ > A szolgáltató feladata annak biztosítása, hogy a standard Load Balancer mögötti szolgáltatás úgy legyen konfigurálva, hogy a proxy protokoll fejlécét a [specifikáció](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) szerint elemezze, ha a proxy protokoll engedélyezve van a Private link Service-ben. A kérelem sikertelen lesz, ha a proxy protokoll beállítása engedélyezve van a Private link Service szolgáltatásban, és a szolgáltatás nincs konfigurálva a fejléc értelmezésére. Hasonlóképpen a kérés sikertelen lesz, ha a szolgáltatás proxy protokoll fejlécét várja, amíg a beállítás nincs engedélyezve a magánhálózati kapcsolat szolgáltatásban. Ha a proxy protokoll beállítása engedélyezve van, a proxy protokoll fejléce a gazdagépről a háttérbeli virtuális gépekre irányuló HTTP-/TCP-állapot-mintavételben is szerepelni fog, még akkor is, ha a fejlécben nem szerepelnek ügyfél-információ. 
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -119,6 +121,6 @@ A Private link Service használatának ismert korlátai a következők:
 - Csak az IPv4-forgalmat támogatja
 - Csak a TCP-forgalmat támogatja
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel](create-private-link-service-cli.md)

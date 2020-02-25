@@ -10,18 +10,84 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 771ae508aaa46167413c2e701d8193790198cb68
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138010"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565910"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
 Ez a cikk segít megkeresni és kijavítani a Azure Machine Learning használatakor észlelt hibákat és hibákat.
 
-## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Leállás: SR-IOV frissítés NCv3-gépekre a AmlCompute-ben
+## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
+
+**Hibaüzenet: nem távolítható el a (z) PyYAML**
+
+Az Azure Machine Learning SDK Pythonhoz készült: PyYAML egy telepített distutils projektet. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
+
+```Python
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
+
+**Hibaüzenet: `ERROR: No matching distribution found for azureml-dataprep-native`**
+
+A anaconda Python 3.7.4-eloszlása olyan hibát tartalmaz, amely megszakítja a azureml-SDK telepítését. Ezt a problémát ebben a [GitHub-probléma](https://github.com/ContinuumIO/anaconda-issues/issues/11195) tárgyalja: ezt a parancsot a következő paranccsal hozhatja létre egy új Conda-környezet használatával:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Amely a Python 3.7.3 használatával hoz létre egy Conda-környezetet, amely nem rendelkezik a 3.7.4-ben lévő telepítési hibával.
+
+## <a name="training-and-experimentation-issues"></a>Képzési és kísérletezési problémák
+
+### <a name="metric-document-is-too-large"></a>A metrikai dokumentum túl nagy
+A Azure Machine Learning belső korlátozásokkal rendelkezik azon metrikai objektumok méretétől, amelyek bejelentkezhetnek a betanítási futtatás során. Ha a "metrikus dokumentum túl nagy" hibaüzenet jelenik meg egy lista értékű metrika naplózásakor, próbálja meg a lista felosztása kisebb adattömbökre, például:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+Belsőleg az Azure ML ugyanazzal a metrikai névvel összefűzi a blokkokat egy összefüggő listához.
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors (nincs nevű modul)
+Ha a ModuleErrors-ben futtatja a kísérleteket az Azure ML-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben. 
+
+Ha a [becslések](concept-azure-machine-learning-architecture.md#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségével `conda_dependencies_file`vagy a `pip_requirements_file` paraméter használatával egy txt-fájlban lévő összes pip-követelmény felsorolásával. Ha saját Azure ML környezeti objektumával szeretné felülbírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a kalkulátor konstruktorának `environment` paraméterén keresztül.
+
+Az Azure ML a Tensorflow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy az alapvető keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
+ 
+Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
+A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)listájában találhatók meg.
+
+> [!Note]
+> Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
+ 
+### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (név nincs meghatározva), AttributeError (az objektumnak nincs attribútuma)
+Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK-ból a `run.get_details()` használatával tekintheti meg a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, és javítsa ki a hibát, mielőtt elküldené a futtatást. 
+
+### <a name="horovod-has-been-shut-down"></a>A Horovod le lett állítva
+A legtöbb esetben, ha "AbortedError: Horovod" lett leállítva, ez a kivétel azt jelenti, hogy a Horovod által leállított folyamatok egyikében egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyebben megkülönböztesse a naplókat. A Horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg a `Traceback` a driver_log fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+
+### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>SR-IOV rendelkezésre állás NCv3-gépeken a AmlCompute-ben elosztott képzéshez
+Az Azure-beli számítási szolgáltatás a NCv3 [-gépek SR-IOV frissítését](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/) végzi, amelyet az ügyfelek az Azure ml felügyelt számítási ajánlatával (AmlCompute) használhatnak fel. A frissítések lehetővé teszik a teljes MPI-verem támogatását, valamint a InfiniBand RDMA-hálózat használatát a többcsomópontos elosztott képzések teljesítményének növelése érdekében, különösen a mélyreható tanulás érdekében.
+
+Tekintse meg a [frissítési ütemtervet](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/) , és ellenőrizze, hogy az adott régióban támogatott-e a támogatás.
+
+### <a name="run-or-experiment-deletion"></a>Futtatás vagy kísérlet törlése
+A kísérletek archiválása a [Experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) metódussal vagy a Azure Machine learning Studio-ügyfél Experiment (kísérlet) lapján, az "archiválási kísérlet" gomb használatával végezhető el. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+
+Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
+
+## <a name="azure-machine-learning-compute-issues"></a>Számítási problémák Azure Machine Learning
+Ismert problémák Azure Machine Learning számítások (AmlCompute) használatával.
+
+### <a name="trouble-creating-amlcompute"></a>Hiba a AmlCompute létrehozásakor
+
+Ritkán fordul elő, hogy egyes felhasználók a Azure Machine Learning munkaterületet hoztak létre a Azure Portal, mielőtt a GA-kiadás nem tud AmlCompute létrehozni a munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
+
+### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Leállás: SR-IOV frissítés NCv3-gépekre a AmlCompute-ben
 
 Az Azure-számítás a 2019. november elején kezdődő NCv3 SKU-ket fogja frissíteni az összes MPI-implementáció és-verzió támogatásához, valamint a InfiniBand-alapú virtuális gépekhez tartozó RDMA műveletekhez. Ehhez rövid állásidőre lesz szükség – [További információ az SR-IOV frissítéséről](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
@@ -44,28 +110,6 @@ A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakít
 
 Az alábbi képen látható, hogyan: ![visulize](./media/resource-known-issues/aml-visualize-data.png)
 
-## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
-
-**Hibaüzenet: nem távolítható el a (z) PyYAML**
-
-Az Azure Machine Learning SDK Pythonhoz készült: PyYAML egy telepített distutils projektet. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
-
-```Python
-pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
-```
-
-**Hibaüzenet: `ERROR: No matching distribution found for azureml-dataprep-native`**
-
-A anaconda Python 3.7.4-eloszlása olyan hibát tartalmaz, amely megszakítja a azureml-SDK telepítését. Ezt a problémát ebben a [GitHub-probléma](https://github.com/ContinuumIO/anaconda-issues/issues/11195) tárgyalja: ezt a parancsot a következő paranccsal hozhatja létre egy új Conda-környezet használatával:
-```bash
-conda create -n <env-name> python=3.7.3
-```
-Amely a Python 3.7.3 használatával hoz létre egy Conda-környezetet, amely nem rendelkezik a 3.7.4-ben lévő telepítési hibával.
-
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt az Azure Machine Learning Compute létrehozása
-
-Nincs ritka előfordulhat, hogy néhány az általánosan elérhető kiadás előtt az Azure Portalról az Azure Machine Learning-munkaterületet létrehozó felhasználó nem feltétlenül tudja hozni az Azure Machine Learning Compute munkaterület. Emelje egy támogatási kérést a megfelelő szolgáltatás, vagy hozzon létre egy új munkaterületet a Portalon vagy az SDK azonnal feloldásának saját magának.
-
 ## <a name="image-building-failure"></a>Lemezkép létrehozása sikertelen
 
 Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő megoldás az, hogy hozzáadása "pynacl 1.2.1-es ==" Conda-fájlba a rendszerkép-konfiguráció pip függőségként.
@@ -74,7 +118,7 @@ Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő me
 
 Ha betartja `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, módosítsa az üzemelő példányban használt virtuális gépek SKU-jának méretét, amely több memóriával rendelkezik.
 
-## <a name="fpgas"></a>FPGA-k
+## <a name="fpgas"></a>FPGA-kban
 
 Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai
 
@@ -255,38 +299,6 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` 64-összetevőjét a `attach_config.enable_ssl`megadását megelőzően el kell végeznie. 
 
-## <a name="recommendations-for-error-fix"></a>Hibajavítási javaslatok
-Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori hibáinak kijavítására szolgálnak.
-
-### <a name="metric-document-is-too-large"></a>A metrikai dokumentum túl nagy
-A Azure Machine Learning belső korlátozásokkal rendelkezik azon metrikai objektumok méretétől, amelyek bejelentkezhetnek a betanítási futtatás során. Ha a "metrikus dokumentum túl nagy" hibaüzenet jelenik meg egy lista értékű metrika naplózásakor, próbálja meg a listát kisebb darabokra bontani, például:
-
-```python
-run.log_list("my metric name", my_metric[:N])
-run.log_list("my metric name", my_metric[N:])
-```
-
- Belsőleg a futtatási előzmények szolgáltatás ugyanazzal a metrikával fűzi össze a blokkokat egy összefüggő listához.
-
-### <a name="moduleerrors-no-module-named"></a>ModuleErrors (nincs nevű modul)
-Ha a ModuleErrors-ben futtatja a kísérleteket az Azure ML-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML a betanításhoz használt környezetben fogja telepíteni a csomagot. 
-
-Ha a [becslések](concept-azure-machine-learning-architecture.md#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségével `conda_dependencies_file`vagy a `pip_requirements_file` paraméter használatával egy txt-fájlban lévő összes pip-követelmény felsorolásával.
-
-Az Azure ML a Tensorflow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy a keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
- 
-Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
-A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)listájában találhatók meg.
-
-> [!Note]
-> Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
- 
- ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (név nincs meghatározva), AttributeError (az objektumnak nincs attribútuma)
-Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK-ból a `run.get_details()` használatával tekintheti meg a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, javítsa ki a hibát, és próbálkozzon újra. 
-
-### <a name="horovod-is-shut-down"></a>A Horovod leállítása
-A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod okozta leállítási folyamatokban egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg `Traceback` a driver_log fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
-
 ## <a name="labeling-projects-issues"></a>Projektek problémáinak címkézése
 
 A projektek címkézésével kapcsolatos ismert problémák.
@@ -306,12 +318,6 @@ Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.
 
 Törölje a címkét a mellette lévő kereszt jelre kattintva.
-
-## <a name="run-or-experiment-deletion"></a>Futtatás vagy kísérlet törlése
-
-A kísérletek archiválása a [Experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) metódussal vagy a Azure Machine learning Studio-ügyfél Experiment (kísérletezés) lapjának használatával végezhető el. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
-
-Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
 
 ## <a name="moving-the-workspace"></a>A munkaterület áthelyezése
 

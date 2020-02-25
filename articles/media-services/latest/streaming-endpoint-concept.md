@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206106"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562360"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -59,7 +59,7 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
-Funkció|Standard|Premium
+Szolgáltatás|Standard|Prémium
 ---|---|---
 Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
@@ -73,7 +73,7 @@ Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többs�
 
 <sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
 
-## <a name="properties"></a>Tulajdonságok
+## <a name="streaming-endpoint-properties"></a>Adatfolyam-végpont tulajdonságai
 
 Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdonságait. Az új adatfolyam-végpontok és az összes tulajdonság leírásának ismertetését példákat a [streaming Endpoint (adatfolyam-végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)) című témakörben talál.
 
@@ -130,51 +130,37 @@ Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdons�
 
 - `scaleUnits`: olyan dedikált kimenő kapacitást biztosít, amelyet 200 Mbps-os növekményekben lehet megvásárolni. Ha **prémium** típusúra szeretne lépni, módosítsa `scaleUnits`.
 
-## <a name="working-with-cdn"></a>A CDN használata
+## <a name="why-use-multiple-streaming-endpoints"></a>Miért érdemes több folyamatos átviteli végpontot használni?
 
-A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban a maximális párhuzamosságot a 500 megjelenítőnél alacsonyabbra tervezi, akkor javasoljuk, hogy tiltsa le a CDN-t, mivel a CDN a legjobb párhuzamosságot használja.
+Egyetlen Streaming végpont is képes az élő és igény szerinti videók továbbítására, és a legtöbb ügyfél csak egy folyamatos átviteli végpontot használ. Ez a szakasz példákat tartalmaz arra, hogy miért van szükség több folyamatos átviteli végpont használatára.
 
-### <a name="considerations"></a>Megfontolások
+* Minden fenntartott egység 200 Mbps sávszélességet tesz lehetővé. Ha több mint 2 000 Mbps (2 GB/s) sávszélességre van szüksége, a második adatfolyam-végpontot és a terheléselosztást használva további sávszélességet biztosíthat.
 
-* A streaming Endpoint `hostname` és a folyamatos átviteli URL-cím ugyanaz marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
-* Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, hozzon létre egy másik, CDN-t nem támogató streaming-végpontot.
+    A CDN azonban a legjobb módszer a tartalmak továbbítására, de ha olyan tartalmat hoz létre, amelyet a CDN több mint 2 GB-nál nagyobb mértékben húz, akkor további folyamatos átviteli végpontokat (Origins) adhat hozzá. Ebben az esetben olyan tartalmi URL-címeket kell kiadnia, amelyek kiegyensúlyozottak a két folyamatos átviteli végpont között. Ez a megközelítés nagyobb gyorsítótárazást tesz lehetővé, mint az egyes forrásokra irányuló kérések véletlenszerűen történő küldése (például egy Traffic Manageren keresztül). 
+    
+    > [!TIP]
+    > Általában, ha a CDN több mint 2 GB-ot húz, akkor előfordulhat, hogy valami helytelenül van konfigurálva (például nem származik a forrás elleni védelem).
+    
+* Különböző CDN-szolgáltatók terheléselosztása. Például beállíthatja az alapértelmezett folyamatos átviteli végpontot a Verizon CDN használatára, és létrehoz egy másodikat a Akamai használatához. Ezután vegyen fel némi terheléselosztást a kettő között a többszörös CDN-egyensúly eléréséhez. 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>A gyorsítótárazás működésének részletes ismertetése
+    Az ügyfél azonban gyakran végez terheléselosztást több CDN-szolgáltató között egyetlen forrás használatával.
+* Vegyes tartalom folyamatos átvitele: igény szerint élő és videó. 
 
-A CDN hozzáadásakor nincs konkrét sávszélesség-érték, mert a CDN-kompatibilis streaming-végponthoz szükséges sávszélesség mérete változó. Sok a tartalom típusától, a népszerűtől, a bitrátától és a protokolloktól függ. A CDN csak a kérések gyorsítótárazását végzi. Ez azt jelenti, hogy a népszerű tartalmak közvetlenül a CDN-ből lesznek kézbesítve – ha a videó töredékét gyorsítótárazzák. Az élő tartalom valószínűleg gyorsítótárazva lesz, mert általában sok ember nézi pontosan ugyanazt a dolgot. Az igény szerinti tartalom egy kicsit bonyolultabb lehet, mert olyan tartalmakat is használhat, amelyek népszerűek és nem. Ha több millió videós eszközt is tartalmaz, ahol egyikük sem népszerű (csak egy vagy két nézők hetente), de több ezer ember nézi a különböző videókat, a CDN sokkal kevésbé lesz hatékony. Ha ez a gyorsítótár hiányzik, növelje a streaming végpont terhelését.
+    Az élő és igény szerinti tartalmakhoz való hozzáférési minták nagyon különbözőek. Az élő tartalom általában sok igényt kap ugyanarra a tartalomra. Az igény szerinti videó (például hosszú farok archiválási tartalma) esetében a tartalom használata alacsony. Így a gyorsítótárazás nagyon jól működik az élő tartalomon, de nem a hosszú farok tartalmán is.
 
-Azt is meg kell fontolnia, hogyan működik az adaptív adatfolyam. A rendszer minden egyes videó részletét gyorsítótárazza saját entitásként. Képzelje el például, hogy az első alkalommal figyel egy bizonyos videót. Ha a megjelenítő kihagyja a körülbelül néhány másodpercet, itt és ott, csak a Képtöredékek vannak társítva a CDN-ben a megfigyelt személyhez. Az adaptív streaming esetében általában 5 – 7 különböző videó-bitrátát használhat. Ha egy személy figyeli az egyik bitrátát, és egy másik személy más bitrátát figyel, akkor a CDN-ben külön-külön vannak gyorsítótárazva. Még akkor is, ha két személy nézi ugyanazt a sávszélességet, különböző protokollokon keresztül lehet adatfolyamként szolgálni. Az egyes protokollokat (HLS, MPEG-DASH, Smooth Streaming) külön gyorsítótárazza a rendszer. Így az egyes bitráták és protokollok külön vannak gyorsítótárazva, és csak a kért videó-töredékek vannak gyorsítótárazva.
+    Vegyünk egy olyan forgatókönyvet, amelyben az ügyfelek elsősorban élő tartalmakat nézik, de csak alkalmanként figyelik az igény szerinti tartalmakat, és ugyanabból a streaming-végpontból lesznek kézbesítve. Az igény szerinti tartalom alacsony használata olyan gyorsítótár-területet foglal magában, amely jobb lesz az élő tartalomhoz. Ebben a forgatókönyvben azt javasoljuk, hogy az élő tartalmat egy streaming végpontból és egy másik adatfolyam-végpontból származó hosszú farok tartalma alapján szolgálja ki. Ez növeli az élő esemény tartalmának teljesítményét.
+    
+## <a name="scaling-streaming-with-cdn"></a>Streaming skálázás a CDN-vel
 
-### <a name="enable-azure-cdn-integration"></a>Azure CDN integráció engedélyezése
+Lásd az alábbi cikkeket:
 
-> [!IMPORTANT]
-> A CDN nem engedélyezhető próbaverziós vagy tanulói Azure-fiókokhoz.
->
-> A CDN-integráció az összes Azure-adatközpontban engedélyezve van, kivéve a szövetségi kormányzati és a kínai régiókat.
-
-Ha egy streaming-végpontot engedélyeztek a CDN szolgáltatással, akkor a Media Services várakozási idő van a DNS-frissítés végrehajtása előtt, hogy leképezje a folyamatos átviteli végpontot a CDN-végpontra.
-
-Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. Akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. Az adatfolyam-végpontot és az adatfolyamot megszakítások nélkül is elindíthatja a folyamatos átviteli végponton, és az integráció befejezése után a stream a CDN-ből lesz továbbítva. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
-
-A standard folyamatos átviteli végpont létrehozásakor a rendszer alapértelmezés szerint a standard Verizon-t konfigurálja. A Premium Verizon vagy a standard szintű Akamai-szolgáltatók a REST API-k használatával konfigurálhatók.
-
-A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming-végpontok **Azure CDNján** valósul meg. A prémium szintű streaming végpontok az összes **Azure CDN árképzési szint és szolgáltató**használatával konfigurálhatók. 
-
-> [!NOTE]
-> A Azure CDNről a [CDN áttekintése](../../cdn/cdn-overview.md)című témakörben olvashat bővebben.
-
-### <a name="determine-if-dns-change-was-made"></a>Annak megállapítása, hogy a DNS-módosítás történt-e
-
-Megadhatja, hogy a rendszer a DNS-módosítást egy streaming végponton hajtotta-e végre (a forgalom a Azure CDNra van irányítva) https://www.digwebinterface.comhasználatával. Ha az eredmények azureedge.net az eredmények között, a forgalom mostantól a CDN-re mutat.
+- [A CDN áttekintése](../../cdn/cdn-overview.md)
+- [Streaming skálázás a CDN-vel](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
-
-[A CDN áttekintése](../../cdn/cdn-overview.md)
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.
