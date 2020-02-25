@@ -353,9 +353,27 @@
             - name: Kimenet
               href: functions-bindings-event-grid-output.md
         - name: Event Hubs
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: Áttekintés
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: Eseményindító
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: Kimenet
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT Hub
-          href: functions-bindings-event-iot.md
+          items:
+            - name: Áttekintés
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: Eseményindító
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: Kimenet
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP és webhookok
           items:
             - name: Áttekintés

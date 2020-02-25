@@ -72,12 +72,12 @@
       items:
         - name: Biztonsági áttekintés
           href: overview-security.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Biztonsági világok
           href: key-vault-ovw-security-worlds.md
         - name: Kulcstartó védelme
           href: key-vault-secure-your-key-vault.md
-        - name: Beépített biztonsági vezérlők
-          href: key-vault-security-controls.md
     - name: Helyreállítható törlés
       href: key-vault-ovw-soft-delete.md
     - name: Key Vault-események monitorozása

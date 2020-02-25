@@ -8,7 +8,7 @@
       href: ./chef-habitat-overview.md
     - name: InSpec az Azure-on – Tudnivalók
       href: ./chef-inspec-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Chef
@@ -21,7 +21,7 @@
     - name: Chef
       items:
         - name: Windows rendszerű virtuális gép létrehozása
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: Referencia
   items:
     - name: Azure Chef-bővítmény

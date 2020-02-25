@@ -64,8 +64,12 @@
   items:
     - name: 'Egy alapszintű, nyilvános Load Balancer standard szintű, nyilvános Load Balancerre való frissítésének lépései'
       href: upgrade-basic-standard.md
+    - name: 'Egy alapszintű, belső Load Balancer standard szintű, belső Load Balancerre való frissítésének lépései'
+      href: upgrade-basicInternal-standard.md
     - name: Kimenő szabályok konfigurálása
       items:
+        - name: Azure Portal
+          href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
         - name: Azure PowerShell

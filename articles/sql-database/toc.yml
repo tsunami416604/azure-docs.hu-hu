@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Felügyelt példány naplózása
               href: sql-database-managed-instance-auditing.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Csatlakozás és lekérdezés
       href: sql-database-connect-query.md
       items:

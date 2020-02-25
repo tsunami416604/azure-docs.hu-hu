@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Fejlesztői funkciók
       href: batch-api-basics.md
     - name: API-k és eszközök
