@@ -1,5 +1,5 @@
 - name: A Mobile Apps dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi a Mobile Apps szolgáltatás?

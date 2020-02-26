@@ -4,20 +4,18 @@ summary: Az Azure Open Datasets válogatott és tisztított adatok – köztük 
 metadata:
   title: Az Open Datasets dokumentációja – oktatóanyagok és API-referencia – Azure
   description: Az Azure Open Datasets válogatott és tisztított adatok – köztük időjárási, népszámlálási és ünnepekre vonatkozó adatok – halmaza, amelyet minimális előkészítés után használhat a gépi tanulási modellek bővítéséhez.
-  services: machine-learning
-  ms.service: machine-learning
-  ms.subservice: data-science-vm
+  ms.service: open-datasets
   ms.topic: landing-page
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
   ms.date: 11/04/2019
-  ms.openlocfilehash: 76baa1362eb1eaa4c062fccd4eea84815cb08c50
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 2c99c349119dea148f9867817c81c22546099c13
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73603645"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77617512"
 landingContent:
 - title: Az Open Datasets bemutatása
   linkLists:
