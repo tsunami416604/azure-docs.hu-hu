@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592498"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604523"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Lemez titkosításának alkalmazása Azure Security Center
 Azure Security Center azt javasolja, hogy a lemez titkosítását akkor alkalmazza, ha olyan Windows vagy Linux rendszerű virtuálisgép-lemezekkel rendelkezik, amelyek nincsenek titkosítva Azure Disk Encryption használatával. A lemezek titkosítása lehetővé teszi a Windows-és Linux-IaaS virtuálisgép-lemezek titkosítását.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.
@@ -47,7 +47,7 @@ A Security Center által azonosított Azure-Virtual Machines titkosításhoz val
 
 Számos módszer használható az Azure Virtual Machines. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. További információ ezekről az egyéb megközelítésekről: az [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebből a dokumentumból megtudhatta, hogyan implementálhatja a "lemez titkosításának alkalmazása" Security Center javaslatot. A lemezek titkosításával kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Titkosítás és kulcskezelő Azure Key Vaultokkal](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (videó, 36 perc 39 másodperc) – megtudhatja, hogyan használhatja a IaaS-alapú virtuális gépeket és az adatvédelmet a lemezes titkosítás kezelésével az adatai védelméhez és Azure Key Vault.
@@ -59,7 +59,6 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->

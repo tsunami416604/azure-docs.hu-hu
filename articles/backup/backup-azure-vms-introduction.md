@@ -3,18 +3,18 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391894"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597252"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
 Ez a cikk azt ismerteti, hogy az [Azure Backup szolgáltatás](backup-introduction-to-azure-backup.md) hogyan készít biztonsági másolatot az Azure Virtual Machines-ről (VM).
 
-## <a name="backup-process"></a>A biztonsági mentés folyamata
+## <a name="backup-process"></a>Biztonsági mentési folyamat
 
 A Azure Backup az Azure-beli virtuális gépek biztonsági mentését hajtja végre:
 
@@ -58,12 +58,7 @@ A BEKs is biztonsági másolat készül. Tehát ha a BEKs elvesznek, a jogosult 
 
 A Azure Backup a biztonsági mentés ütemtervének megfelelően hozza a pillanatképeket.
 
-- **Windows rendszerű virtuális gépek:** Windows rendszerű virtuális gépek esetén a Backup szolgáltatás a VSS-vel koordinálja a virtuálisgép-lemezek alkalmazás-konzisztens pillanatképét.
-
-  - Alapértelmezés szerint a Azure Backup a teljes VSS-biztonsági mentést végzi. [További információk](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
-  - Ha úgy szeretné módosítani a beállítást, hogy Azure Backup a VSS-t másolja, állítsa be a következő beállításkulcsot a parancssorból:
-
-    **REG Hozzáadás "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
+- **Windows rendszerű virtuális gépek:** Windows rendszerű virtuális gépek esetén a Backup szolgáltatás a VSS-vel koordinálja a virtuálisgép-lemezek alkalmazás-konzisztens pillanatképét.  Alapértelmezés szerint a Azure Backup teljes VSS biztonsági mentést készít (a biztonsági mentéskor levágja az alkalmazás naplóit, például a SQL Servert az alkalmazás szintjének konzisztens biztonsági mentésének lekéréséhez).  Ha SQL Server-adatbázist használ az Azure-beli virtuális gép biztonsági mentésére, akkor módosíthatja a VSS-másolás biztonsági mentésének beállítását (a naplók megőrzése érdekében). További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues).
 
 - **Linux rendszerű virtuális gépek:** A Linux rendszerű virtuális gépek alkalmazás-konzisztens pillanatképének készítéséhez használja a Linux előtti és parancsfájl utáni keretrendszert a saját egyéni parancsfájljainak megírásához a konzisztencia biztosítása érdekében.
 
@@ -85,8 +80,8 @@ A következő táblázat a pillanatkép-konzisztencia különböző típusait is
 
 **Szempont** | **Részletek**
 --- | ---
-**Lemez** | A VM-lemezek biztonsági mentése párhuzamos. Ha például egy virtuális gépnek négy lemeze van, a Backup szolgáltatás mind a négy lemezről párhuzamosan kísérli meg a biztonsági mentést. A biztonsági mentés növekményes (csak módosult adatértékek).
-**Ütemezés** |  A biztonsági mentési forgalom csökkentése érdekében készítsen biztonsági másolatot a különböző virtuális gépekről a nap különböző pontjain, és győződjön meg arról, hogy az idő nem fedi át egymást. A virtuális gépek biztonsági mentése egy időben a forgalmi torlódásokat okoz.
+**Disk** | A VM-lemezek biztonsági mentése párhuzamos. Ha például egy virtuális gépnek négy lemeze van, a Backup szolgáltatás mind a négy lemezről párhuzamosan kísérli meg a biztonsági mentést. A biztonsági mentés növekményes (csak módosult adatértékek).
+**Ütemezési** |  A biztonsági mentési forgalom csökkentése érdekében készítsen biztonsági másolatot a különböző virtuális gépekről a nap különböző pontjain, és győződjön meg arról, hogy az idő nem fedi át egymást. A virtuális gépek biztonsági mentése egy időben a forgalmi torlódásokat okoz.
 **Biztonsági mentések előkészítése** | Tartsa szem előtt a biztonsági mentés előkészítéséhez szükséges időt. Az előkészítési idő magában foglalja a biztonsági mentési bővítmény telepítését vagy frissítését, valamint a pillanatkép aktiválását a biztonsági mentési ütemtervnek megfelelően.
 **Adatátvitel** | Vegye figyelembe a Azure Backup számára szükséges időt az előző biztonsági mentés növekményes változásainak azonosításához.<br/><br/> A növekményes biztonsági mentésben a Azure Backup meghatározza a módosításokat a blokk ellenőrzőösszegének kiszámításával. Ha egy blokkot módosítanak, a rendszer a tárolóba való átvitelre van megjelölve. A szolgáltatás elemzi az azonosított blokkokat, így az átvinni kívánt adatok mennyiségét tovább csökkentheti. Az összes módosult blokk kiértékelése után Azure Backup továbbítja a módosításokat a tárolóba.<br/><br/> A pillanatkép elkészítése és a tárolóba való másolása között késés lehet.<br/><br/> Csúcsidőben a biztonsági mentések feldolgozása akár nyolc órát is igénybe vehet. A virtuális gép biztonsági mentésének ideje a napi biztonsági mentésnél kevesebb, mint 24 óra lesz.
 **Kezdeti biztonsági mentés** | Bár a növekményes biztonsági mentések teljes biztonsági mentésének ideje kevesebb, mint 24 óra, előfordulhat, hogy az első biztonsági mentés nem feltétlenül igaz. A kezdeti biztonsági mentéshez szükséges idő az adatok méretétől és a biztonsági mentés feldolgozásának időpontjától függ.
@@ -125,11 +120,11 @@ Hasonlóképpen, a biztonsági mentési tár a Azure Backup tárolt adatok menny
 
 Tegyük fel például, hogy egy olyan a2-es szabványú virtuális gép, amely két további adatlemezt tartalmaz, amelyek maximális mérete 32 TB. A következő táblázat az egyes lemezeken tárolt tényleges adatokat mutatja be:
 
-**Lemez** | **Maximális méret** | **Tényleges adatok jelennek meg**
+**Disk** | **Maximális méret** | **Tényleges adatok jelennek meg**
 --- | --- | ---
 Operációsrendszer-lemez | 32 TB | 17 GB
 Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
-Adatlemez 1 | 32 TB| 30 GB
+1\. adatlemez | 32 TB| 30 GB
 2\. adatlemez | 32 TB | 0 GB
 
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.

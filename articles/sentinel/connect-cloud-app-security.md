@@ -3,7 +3,7 @@ title: Cloud App Security-adatkapcsolat összekötése az Azure Sentinel szolgá
 description: Megtudhatja, hogyan csatlakoztatható Cloud App Security-adatkapcsolat az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.author: yelevin
+ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928217"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588365"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
 
@@ -47,7 +47,7 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 
 1. Válassza ki, hogy mely naplókba kívánja továbbítani az Azure Sentinel alkalmazást, és válassza a **riasztások** és a **Cloud Discovery naplók** (előzetes verzió) lehetőséget. 
 
-1. Kattintson a **Connect** (Csatlakozás) gombra.
+1. Kattintson a **Csatlakozás** gombra.
 
 1. Ha a Log Analytics vonatkozó sémát szeretné használni a Cloud App Security riasztásokhoz, keresse meg a **SecurityAlert**.
 

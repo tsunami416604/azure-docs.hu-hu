@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996665"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603767"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>A biztonsági testhelyzet megerősítése Azure Security Center
 Ez a cikk segít megerősíteni a biztonsági helyzetét. A Azure Security Center Figyelési képességeivel gondoskodhat arról, hogy az erőforrás biztonsága minél szigorúbb legyen, és figyelje a szabályzatoknak való megfelelést.
@@ -46,10 +46,8 @@ A javaslatok alkalmazásával kapcsolatban további információkat talál a kö
 
 
 ## <a name="see-also"></a>Lásd még
-Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. A Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Biztonsági szabályzatok beállítása a Azure Security Centerban](tutorial-security-policy.md): Megtudhatja, hogyan konfigurálhatja a Azure Security Center biztonsági beállításait.
-* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
-* [Partneri megoldások monitorozása Azure Security Centerekkel](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
-* [Azure Security Center gyakori kérdések](security-center-faq.md): Gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
+* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
+* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.

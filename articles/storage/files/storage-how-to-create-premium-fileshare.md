@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209541"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598663"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
 A prémium szintű fájlmegosztás a SSD-tárolóeszközökön érhető el, és hasznos az IO-igényes számítási feladatokhoz, beleértve az üzemeltetési adatbázisokat és a nagy teljesítményű számítástechnikai (HPC) szolgáltatásokat. A prémium szintű fájlmegosztás a FileStorage-fióknak nevezett, speciális célú Storage-fiókban van tárolva. A prémium fájlmegosztás nagy teljesítményű és nagyvállalati szintű alkalmazásokhoz lett tervezve, amelyek konzisztens, alacsony késésű, magas IOPS és nagy átviteli sebességű megosztásokat biztosítanak.
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 Ebben a cikkben egy prémium szintű fájlmegosztást hozott létre. Ha többet szeretne megtudni a fiók által kínált teljesítményről, folytassa a tervezési útmutató teljesítményszint szakaszával.
 
 > [!div class="nextstepaction"]
-> [Fájlmegosztási teljesítmény szintjei](storage-files-planning.md#file-share-performance-tiers)
+> [Fájlmegosztási rétegek](storage-files-planning.md#storage-tiers)

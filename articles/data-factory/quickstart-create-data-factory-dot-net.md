@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928788"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597915"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a .NET SDK használatával
 
@@ -48,7 +48,7 @@ A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokho
 1. A [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)területen hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
 2. A beléptetési [értékek beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)területen szerezze be az **alkalmazás azonosítóját** és a **bérlő azonosítóját**, és jegyezze fel ezeket az értékeket, amelyeket az oktatóanyag későbbi részében használ. 
 3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
-4. Az [alkalmazás szerepkörhöz való hozzárendeléséhez](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás létre tudja hozni az adat-előállítókat az előfizetésben.
+4. Az [alkalmazás szerepkörhöz való hozzárendeléséhez](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás létre tudja hozni az adat-előállítókat az előfizetésben.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -61,7 +61,7 @@ Következő lépésként hozzon létre egy C# .net-konzol alkalmazást a Visual 
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **Eszközök** > **NuGet-csomagkezelő** > **Package Csomagkezelő konzol** elemet.
+1. Válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt**.
 2. A **Package Manager konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információ: [Microsoft. Azure. Management. DataFactory nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell

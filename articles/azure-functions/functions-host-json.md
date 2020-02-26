@@ -3,12 +3,12 @@ title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484434"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605135"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Host. JSON-hivatkozás Azure Functions 2. x és újabb verziókhoz 
 
@@ -208,7 +208,7 @@ A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben](functions-bindings-cosmosdb-v2.md#host-json)található.
+A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben](functions-bindings-cosmosdb-v2-output.md#host-json)található.
 
 ## <a name="durabletask"></a>durableTask
 
@@ -216,7 +216,7 @@ A konfigurációs beállítás a [Durable functions kötéseiben](durable/durabl
 
 ## <a name="eventhub"></a>eventHub
 
-A konfigurációs beállítások az [Event hub-eseményindítókban és-kötésekben](functions-bindings-event-hubs.md#host-json)találhatók. 
+A konfigurációs beállítások az [Event hub-eseményindítókban és-kötésekben](functions-bindings-event-hubs-output.md#host-json)találhatók. 
 
 ## <a name="extensions"></a>Extensions
 

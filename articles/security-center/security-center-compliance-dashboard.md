@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112315"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604453"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: a szabályozás megfelelőségének javítása
 ---
@@ -49,7 +49,7 @@ A megfelelőségi irányítópult nézete segítséget nyújt az Ön számára f
 >
 > A [dinamikus megfelelőségi csomagok (előzetes verzió)](update-regulatory-compliance-packages.md) funkció lehetővé teszi a szabályozási megfelelőségi irányítópulton látható szabványok frissítését az új *dinamikus* csomagokra. Ugyanezt az előzetes verziójú szolgáltatást használhatja új megfelelőségi csomagok hozzáadására és a megfelelőség további szabványokkal való figyelésére. 
 
-1.  A Security Center főmenüben, a **házirend & megfelelőség** területen válassza a **jogszabályi megfelelőség**lehetőséget. <br>
+1.  A Security Center főmenüben, a **házirend &AMP; megfelelőség** területen válassza a **jogszabályi megfelelőség**lehetőséget. <br>
 A képernyő felső részén megjelenik egy irányítópult, amely áttekintést nyújt a megfelelőségi állapotáról a támogatott megfelelőségi szabályozások készletével együtt. Megtekintheti a teljes megfelelőségi pontszámot, valamint az egyes standardokhoz kapcsolódó elvégzési és sikertelen értékelések számát.
 
     ![számítógép leírása – magas megbízhatóság](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -76,7 +76,7 @@ A szabályozás megfelelőségi irányítópultján található információk al
 
 1. Amikor rákattint az ajánlási információkra, és kijelöl egy nem megfelelő állapotú erőforrást, közvetlenül a Azure Portalon belül a **Biztonságos tár-átvitel** engedélyezésének élményét eredményezi.
 
-    Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
+    A javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 
     ![megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
@@ -104,5 +104,3 @@ További információ:
 -   [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
 
 -   [Javítsa a Azure Security Center biztonságos pontszámát](security-center-secure-score.md) – Ismerje meg, hogyan rangsorolhatja a biztonsági réseket és a biztonsági javaslatokat, hogy a leghatékonyabban javítsa a biztonságot.
-
--   [Azure Security Center GYIK](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

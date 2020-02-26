@@ -1,10 +1,10 @@
 ---
-title: Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és a megosztott lemez használata az SAP ASCS/SCS-hez | Microsoft Docs
+title: Azure-infrastruktúra SAP ASCS/SCS és WSFC & megosztott lemezrel | Microsoft Docs
 description: Ismerje meg, hogyan készítheti elő az Azure-infrastruktúrát az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS-példány megosztott lemezének használatával.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647645"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591931"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -223,7 +223,7 @@ _**1. ábra:** SAP magas rendelkezésre állású Azure Resource Manager paramé
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Virtuális gépek üzembe helyezése vállalati hálózati kapcsolattal (telephelyek közötti) az éles környezetben való használatra
-Az éles környezetben futó SAP-rendszerek esetében az Azure VPN Gateway vagy az Azure ExpressRoute használatával helyezzen üzembe vállalati hálózati kapcsolattal rendelkező Azure-beli virtuális gépeket [(telephelyek közötti)][planning-guide-2.2] .
+Az éles környezetben futó SAP-rendszerek esetében az Azure VPN Gateway vagy az Azure ExpressRoute használatával helyezzen üzembe vállalati hálózati kapcsolattal rendelkező Azure-beli virtuális gépeket.
 
 > [!NOTE]
 > Használhatja az Azure Virtual Network-példányát. A virtuális hálózat és az alhálózat már létrehozva és előkészített állapotban van.
@@ -297,7 +297,7 @@ A ASCS/SCS-sablon két virtuális gépet telepít, amelyek segítségével több
 A ASCS/SCS multi-SID sablon beállításához a [ASCS/SCS multi-SID sablonban][sap-templates-3-tier-multisid-xscs-marketplace-image] vagy a [ASCS/SCS multi-sid sablonban Managed Disks használatával][sap-templates-3-tier-multisid-xscs-marketplace-image-md]adja meg a következő paraméterek értékeit:
 
 - **Erőforrás-előtag**: állítsa be az erőforrás-előtagot, amely az üzembe helyezés során létrehozott összes erőforrás előállítására szolgál. Mivel az erőforrások nem csak egy SAP-rendszerhez tartoznak, az erőforrás előtagja nem egy SAP-rendszer SID-azonosítója.  Az előtagnak három és hat karakter közöttinek kell lennie.
-- **Verem típusa**: válassza ki az SAP-szolgáltatás halmozási típusát. A verem típusától függően Azure Load Balancer rendelkezik egy (ABAP vagy Java only) vagy két (ABAP + Java) magánhálózati IP-címmel SAP-rendszeren.
+- **Verem típusa**: válassza ki az SAP-szolgáltatás halmozási típusát. Depending on the stack type, Azure Load Balancer has one (ABAP or Java only) or two (ABAP+Java) private IP addresses per SAP system.
 - **Operációs rendszer típusa**: válassza ki a virtuális gépek operációs rendszerét.
 - **SAP-rendszerszám**: válassza ki a fürtben TELEPÍTENI kívánt SAP-rendszerek számát.
 - **Rendszerszintű rendelkezésre állás**: válassza a **Ha**lehetőséget.
@@ -373,7 +373,7 @@ A szükséges DNS IP-címek megadásához hajtsa végre a következő lépéseke
 
 1. A Azure Portal **DNS-kiszolgálók** ablaktáblájában győződjön meg arról, hogy a virtuális hálózati **DNS-kiszolgálók** beállítás **Egyéni DNS-** re van beállítva.
 2. Válassza ki a beállításokat a hálózat típusa alapján. További információkért lásd a következőket:
-   * [Vállalati hálózati kapcsolat (telephely)][planning-guide-2.2]: adja meg a helyszíni DNS-kiszolgálók IP-címeit.  
+   * Adja hozzá a helyszíni DNS-kiszolgálók IP-címeit.  
    A helyszíni DNS-kiszolgálókat az Azure-ban futó virtuális gépekre is kiterjesztheti. Ebben az esetben felveheti azon Azure-beli virtuális gépek IP-címeit, amelyeken a DNS szolgáltatást futtatja.
    * Az Azure-ban elkülönített virtuálisgép-példányok esetén: helyezzen üzembe egy további virtuális gépet ugyanabban a Virtual Network-példányban, amely DNS-kiszolgálóként szolgál. Adja hozzá a DNS-szolgáltatás futtatásához beállított Azure-beli virtuális gépek IP-címeit.
 
@@ -390,8 +390,8 @@ A példánkban a DNS szolgáltatás telepítve van és konfigurálva van ezeken 
 
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első DNS-kiszolgáló |domcontr – 0 |PR1-NIC-domcontr-0 |10.0.0.10 |
-| Második DNS-kiszolgáló |domcontr – 1 |PR1-NIC-domcontr-1 |10.0.0.11 |
+| Első DNS-kiszolgáló |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
+| Második DNS-kiszolgáló |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
 ## <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Az SAP ASCS/SCS fürtözött példány és az adatbázis-kezelő fürtözött példány állomásneve és statikus IP-címei
 
@@ -399,9 +399,9 @@ Helyszíni központi telepítés esetén ezekre a fenntartott állomásnévekre 
 
 | Virtuális gazdagép neve szerepkör | Virtuális gazdagép neve | Virtuális statikus IP-cím |
 | --- | --- | --- |
-| SAP ASCS/SCS első fürt virtuális gazdagépének neve (fürtözési felügyelethez) |PR1-ASCs-VIR |10.0.0.42 |
-| SAP-ASCS/SCS-példány virtuális gazdagépének neve |PR1-ASCs-SAP |10.0.0.43 |
-| SAP adatbázis-kezelő második fürt virtuális gazdagépének neve (fürtszolgáltatás) |PR1 – adatbázis-kezelő – VIR |10.0.0.32 |
+| SAP ASCS/SCS első fürt virtuális gazdagépének neve (fürtözési felügyelethez) |pr1-ascs-vir |10.0.0.42 |
+| SAP-ASCS/SCS-példány virtuális gazdagépének neve |pr1-ascs-sap |10.0.0.43 |
+| SAP adatbázis-kezelő második fürt virtuális gazdagépének neve (fürtszolgáltatás) |pr1-dbms-vir |10.0.0.32 |
 
 A fürt létrehozásakor hozza létre a PR1-ASCs-VIR és a PR1-adatbázis-VIR nevű virtuális gazdagép nevét, valamint a fürtöt kezelő társított IP-címeket. Ennek módjával kapcsolatos további információkért lásd: fürtcsomópontok [gyűjtése a fürt konfigurációjában][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config].
 
@@ -428,14 +428,14 @@ A példánkban a következő virtuális gépek és statikus IP-címek vannak:
 
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első SAP Application Server-példány |PR1-di-0 |PR1-NIC-di-0 |10.0.0.50 |
-| Második SAP Application Server-példány |PR1-di-1 |PR1-NIC-di-1 |10.0.0.51 |
+| Első SAP Application Server-példány |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
+| Második SAP Application Server-példány |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
 | ... |... |... |... |
-| Utolsó SAP Application Server-példány |PR1-di-5 |PR1-NIC-di-5 |10.0.0.55 |
-| Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |PR1-NIC-ASCs-0 |10.0.0.40 |
-| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |PR1-NIC-ASCs-1 |10.0.0.41 |
-| Első fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-0 |PR1-NIC-db-0 |10.0.0.30 |
-| Második fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-1 |PR1-NIC-db-1 |10.0.0.31 |
+| Utolsó SAP Application Server-példány |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
+| Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |pr1-nic-ascs-1 |10.0.0.41 |
+| Első fürtcsomópont az adatbázis-kezelő példányhoz |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
+| Második fürtcsomópont az adatbázis-kezelő példányhoz |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
 ## <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Statikus IP-cím beállítása az Azure belső terheléselosztó számára
 
@@ -462,7 +462,7 @@ A példánkban két Azure belső terheléselosztó van, amelyek rendelkeznek eze
 | Azure belső terheléselosztó szerepkör | Azure belső terheléselosztó neve | Statikus IP-cím |
 | --- | --- | --- |
 | SAP ASCS/SCS-példány belső terheléselosztó |PR1-LB – ASCs |10.0.0.43 |
-| SAP adatbázis-kezelő belső terheléselosztó |PR1-LB – adatbázis-kezelő |10.0.0.33 |
+| SAP adatbázis-kezelő belső terheléselosztó |pr1-lb-dbms |10.0.0.33 |
 
 
 ## <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztó számára
@@ -524,7 +524,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza ki **\<SID\>-LB-ASCs Load balancer** > terheléselosztási **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Név
+   * Name (Név)
    * Port
    * Háttérbeli port
 
@@ -554,7 +554,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
-| Value (Díj) |120000 |
+| Érték |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **3. táblázat:** Az első TCP/IP-paraméter módosítása
@@ -565,7 +565,7 @@ Ezt követően adja hozzá ezt a Windows beállításjegyzékbeli bejegyzést az
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
-| Value (Díj) |120000 |
+| Érték |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **4. táblázat:** A második TCP/IP-paraméter módosítása

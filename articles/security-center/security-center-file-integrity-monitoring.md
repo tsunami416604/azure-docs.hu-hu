@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558785"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604289"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
@@ -134,7 +134,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    A **munkaterület-konfiguráció** három lapot jelenít meg: **Windows beállításjegyzék**, **Windows-fájlok**és Linux- **fájlok**. Minden lap felsorolja az adott kategóriában szerkeszthető entitásokat. Az egyes felsorolt entitások esetében Security Center azonosítja, hogy a FIM engedélyezve van-e (true) vagy nincs engedélyezve (false).  Az entitás szerkesztése lehetővé teszi a FIM engedélyezését vagy letiltását.
 
-   ![Munkaterület konfigurációja][12]
+   ![Munkaterület-konfiguráció][12]
 
 2. Válasszon ki egy Identity Protectiont. Ebben a példában egy elemet választottunk a Windows beállításjegyzékben. Megnyílik **a Change Tracking szerkesztése** .
 
@@ -206,7 +206,6 @@ Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figy
 * [Biztonsági állapot figyelése](security-center-monitoring.md)– megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md)– útmutató a biztonsági riasztások kezeléséhez és megválaszolásához.
 * [Partneri megoldások monitorozása](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti meg a partneri megoldások állapotát.
-* [Security Center GYIK](security-center-faq.md)– gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/) – Tájékozódás az Azure biztonságával kapcsolatos legfrissebb hírekről és információkról.
 
 <!--Image references-->

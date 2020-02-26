@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544752"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587872"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
-Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény. Az Azure virtuálisgép-bővítmények az Azure CLI, a PowerShell, az Azure Resource Manager-sablonok és az Azure Portal használatával futtathatók. A bővítmények egy kötegben hajthatók végre az új virtuális gépek üzembe helyezésével, vagy meglévő rendszereken is futtathatók.
+Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha például egy virtuális gépnek szoftver telepítésére, vírusirtó elleni védelemre vagy egy parancsfájl futtatására van szüksége, a rendszer egy virtuálisgép-bővítményt is használhat. Az Azure-beli virtuálisgép-bővítmények az Azure CLI-vel, a PowerShell-lel, a Azure Resource Manager-sablonokkal és a Azure Portal is futtathatók. A bővítmények egy új virtuálisgép-telepítéssel is elhelyezhetők, vagy bármely meglévő rendszeren futtathatók.
 
 Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure virtuálisgép-bővítmények használatára vonatkozó előfeltételekről, valamint útmutatást nyújt a virtuálisgép-bővítmények észleléséhez, kezeléséhez és eltávolításához. Ez a cikk általánosított információkat nyújt, mivel számos virtuálisgép-bővítmény elérhető, amelyek mindegyike potenciálisan egyedi konfigurációval rendelkezik. A bővítményekre vonatkozó részletek az egyes bővítményekre jellemző minden dokumentumban találhatók.
 
@@ -36,7 +36,7 @@ Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelye
 
 - PowerShell kívánt állapot-konfiguráció alkalmazása egy virtuális gépre a Windows DSC bővítménnyel. További információ: az [Azure desired State Configuration bővítménye](dsc-overview.md).
 - Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](../windows/chef-automation.md).
+- Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](../../chef/chef-automation.md).
 - Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmény elindítható. További információkért lásd a [set-AzVMExtension referenciát](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
@@ -423,7 +423,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
 | Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
-| Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni szkriptbővítmények a Windowshoz](custom-script-windows.md) |
+| Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-bővítmény a Windowshoz](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

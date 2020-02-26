@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313790"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598833"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
@@ -36,19 +36,19 @@ A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse me
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Microsoft Graph Security-összekötő használatához *explicit* Azure Active Directorybeli bérlői rendszergazdai hozzájárulás szükséges, amely a [Microsoft Graph Security hitelesítési követelményei](https://aka.ms/graphsecurityauth) közé is tartozik. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
+* A Microsoft Graph biztonsági összekötő használatához *explicit módon* meg kell adnia Azure Active Directory (ad) bérlői rendszergazdai beleegyezését, amely a [Microsoft Graph biztonsági hitelesítési követelményeinek](https://aka.ms/graphsecurityauth)részét képezi. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
 
-  | Tulajdonság | Value (Díj) |
+  | Tulajdonság | Érték |
   |----------|-------|
   | **Alkalmazás neve** | `MicrosoftGraphSecurityConnector` |
-  | **Alkalmazásazonosító** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Alkalmazás azonosítója** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Az összekötő engedélyezéséhez az Azure AD-bérlő rendszergazdája a következő lépéseket hajthatja végre:
 
-  * [Adjon bérlői rendszergazdai jóváhagyást az Azure AD-alkalmazásokhoz](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Adja meg a bérlői rendszergazdai jóváhagyást az Azure ad-alkalmazásokhoz](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * A logikai alkalmazás első futtatásakor az alkalmazás az [alkalmazás-jóváhagyási felületen](../active-directory/develop/application-consent-experience.md) kérhet jóváhagyást az Azure AD bérlői rendszergazdájától.
+  * A logikai alkalmazás első futtatásakor az alkalmazás beleegyezett az Azure AD-bérlő rendszergazdájától az [alkalmazás-beleegyező felhasználói](../active-directory/develop/application-consent-experience.md)felületen keresztül.
    
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -91,7 +91,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
 1.  A triggerben adja meg a figyelni kívánt riasztásokkal kapcsolatos információkat. További tulajdonságok megjelenítéséhez nyissa meg az **új paraméter hozzáadása** listát, és válasszon egy paramétert a tulajdonság hozzáadásához az triggerhez.
 
-   | Tulajdonság | Tulajdonság (JSON) | Szükséges | Type (Típus) | Leírás |
+   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
    |----------|-----------------|----------|------|-------------|
    | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
    | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
@@ -117,9 +117,9 @@ Az összekötővel használható lekérdezésekkel kapcsolatos további informá
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások lekérése, például: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások beolvasása, például `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
 | **Riasztás beolvasása azonosító alapján** | Egy adott riasztást kap a riasztás azonosítója alapján. | 
-| **Riasztás módosítása** | Egy adott riasztás frissítése a riasztás azonosítója alapján. <p>A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [riasztások szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/alert-update). Ha például riasztást szeretne hozzárendelni egy biztonsági elemzőhöz, hogy el lehessen végezni a vizsgálatot, frissítheti a riasztáshoz **rendelt** tulajdonságot. |
+| **Riasztás frissítése** | Egy adott riasztás frissítése a riasztás azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [riasztások szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/alert-update). Ha például riasztást szeretne hozzárendelni egy biztonsági elemzőhöz, hogy el lehessen végezni a vizsgálatot, frissítheti a riasztáshoz **rendelt** tulajdonságot. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Riasztás-előfizetések kezelése
@@ -135,6 +135,27 @@ Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/gr
 | **Előfizetés frissítése** | [Előfizetés frissítése](https://docs.microsoft.com/graph/api/subscription-update) az előfizetés-azonosító megadásával. Az előfizetés kiterjesztéséhez például frissítheti az előfizetés `expirationDateTime` tulajdonságát. | 
 | **Előfizetés törlése** | [Előfizetés törlése](https://docs.microsoft.com/graph/api/subscription-delete) az előfizetés-azonosító megadásával. | 
 ||| 
+
+### <a name="manage-threat-intelligence-indicators"></a>Fenyegetési intelligencia-mutatók kezelése
+
+A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például `https://graph.microsoft.com/beta/security/tiIndicators`, vagy a `GET` vagy `PATCH` műveletet. Az alábbi példa egy olyan példát mutat be, amely a **tiIndicators beolvasása** művelet paramétereit jeleníti meg, ha olyan listát szeretne, amely rendelkezik a `DDoS` fenyegetés típusával:
+
+`Filter threat intelligence indicator value as threatType eq 'DDoS'`
+
+Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg [a "választható lekérdezési paraméterek" című részt a Microsoft Graph biztonsági fenyegetésekkel kapcsolatos intelligencia mutatójának dokumentációjában](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt a [séma tulajdonságai által támogatott veszélyforrások felderítésére szolgáló kijelzőn](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) olvashat.
+
+| Műveletek | Leírás |
+|--------|-------------|
+| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators lekérése, például `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Veszélyforrások elleni intelligencia-jelző beolvasása azonosító alapján** | Egy adott tiIndicator beszerzése a tiIndicator-azonosító alapján. | 
+| **Fenyegetési intelligencia kijelző létrehozása** | Hozzon létre egy új tiIndicator a tiIndicators gyűjteménybe való közzétételsel. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [tiIndicator létrehozásához szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http). |
+| **Több veszélyforrást érintő intelligencia-kijelző küldése** | Hozzon létre több új tiIndicators egy tiIndicators-gyűjtemény elküldésével. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators elküldéséhez szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http). |
+| **Veszélyforrások elleni intelligencia-kijelző frissítése** | Egy adott tiIndicator frissítése a tiIndicator azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [tiIndicator szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http). Ha például frissíteni szeretné az alkalmazandó műveletet, ha a kijelző a targetProduct biztonsági eszközön belül szerepel, akkor frissítheti a tiIndicator **művelet** tulajdonságát. |
+| **Több veszélyforrást érintő intelligencia-kijelző frissítése** | Több tiIndicators frissítése. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators frissítéséhez szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http). |
+| **Veszélyforrások intelligencia-mutatójának törlése azonosító alapján** | Egy adott tiIndicator törlése a tiIndicator azonosítója alapján. |
+| **Több veszélyforrást érintő intelligencia-mutató törlése azonosító alapján** | Több tiIndicators törlése az azonosítóik alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a több TiIndicators azonosító alapján történő törléséhez](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http). |
+| **Több veszélyforrást érintő intelligencia-kijelző törlése külső azonosítók alapján** | Több tiIndicators törlése a külső azonosítók alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a külső azonosítók által használt több tiIndicators törléséhez](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http). |
+|||
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

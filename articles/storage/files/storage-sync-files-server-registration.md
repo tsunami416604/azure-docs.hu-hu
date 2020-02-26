@@ -7,27 +7,25 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699273"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597643"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Regisztrált kiszolgálók kezelése Azure File Sync
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
 A következő cikk bemutatja, hogyan regisztrálhat és kezelhet egy kiszolgálót a Storage Sync szolgáltatással. A Azure File Sync végpontok üzembe helyezésével kapcsolatos információkért tekintse meg a [Azure file Sync üzembe helyezését](storage-sync-files-deployment-guide.md) ismertető témakört.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Kiszolgáló regisztrálása a Storage Sync szolgáltatással
-A Azure File Sync-kiszolgáló regisztrálása megbízhatósági kapcsolatot létesít a Windows Server és az Azure között. Ezzel a kapcsolattal *kiszolgáló* -végpontok hozhatók létre a kiszolgálón, amelyek az Azure-fájlmegosztás (más néven *Felhőbeli végpont*) által szinkronizált adott mappákat jelölik. 
+A Azure File Sync-kiszolgáló regisztrálása megbízhatósági kapcsolatot létesít a Windows Server és az Azure között. Ezzel a kapcsolattal *kiszolgáló-végpontok* hozhatók létre a kiszolgálón, amelyek az Azure-fájlmegosztás (más néven *Felhőbeli végpont*) által szinkronizált adott mappákat jelölik. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Ha Storage Sync szolgáltatással szeretne regisztrálni egy kiszolgálót, először elő kell készítenie a kiszolgálót a szükséges előfeltételekkel:
 
-* A kiszolgálónak a Windows Server támogatott verzióját kell futtatnia. További információ: [Azure file Sync rendszerkövetelmények és együttműködési képesség](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
+* A kiszolgálónak a Windows Server támogatott verzióját kell futtatnia. További információ: [Azure file Sync rendszerkövetelmények és együttműködési képesség](storage-sync-files-planning.md#windows-file-server-considerations).
 * Győződjön meg arról, hogy a Storage Sync szolgáltatás telepítve van. A Storage Sync szolgáltatás telepítésével kapcsolatos további információkért lásd: [a Azure file Sync üzembe helyezése](storage-sync-files-deployment-guide.md).
 * Ellenőrizze, hogy a kiszolgáló csatlakozik-e az internethez, és hogy az Azure elérhető-e.
 * Tiltsa le az IE fokozott biztonsági beállításait a rendszergazdák számára a Kiszolgálókezelő felhasználói felületén.
@@ -37,7 +35,7 @@ Ha Storage Sync szolgáltatással szeretne regisztrálni egy kiszolgálót, elő
 * Győződjön meg arról, hogy a Azure PowerShell modul telepítve van a kiszolgálón. Ha a kiszolgáló egy feladatátvevő fürt tagja, a fürt minden csomópontjának az az modulra lesz szüksége. Az az modul telepítésével kapcsolatos további információkért tekintse meg a [telepítési és konfigurálási Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > Javasoljuk, hogy az az PowerShell modul legújabb verzióját használja a kiszolgálók regisztrálásához/regisztrációjának megszüntetéséhez. Ha az az csomag már telepítve van ezen a kiszolgálón (és a PowerShell-verzió a kiszolgálón 5. * vagy nagyobb), a `Update-Module` parancsmag segítségével frissítheti a csomagot. 
+    > Javasoljuk, hogy az az PowerShell modul legújabb verzióját használja a kiszolgálók regisztrálásához/regisztrációjának megszüntetéséhez. Ha az az csomag már telepítve van ezen a kiszolgálón (és a PowerShell-verzió a kiszolgálón 5. * vagy nagyobb), akkor a `Update-Module` parancsmaggal frissítheti a csomagot. 
 * Ha a környezetben hálózati proxykiszolgálót használ, konfigurálja a proxy beállításait a kiszolgálón a szinkronizálási ügynök számára.
     1. A proxy IP-címének és portszámának meghatározása
     2. Szerkessze ezt a két fájlt:
@@ -81,7 +79,7 @@ Ahhoz, hogy egy kiszolgáló egy Azure File Sync *szinkronizálási csoportban* 
 > [!Important]  
 > A Cloud Solution Provider (CSP) előfizetések nem használhatják a kiszolgáló regisztrációjának felhasználói felületét. Ehelyett használja a PowerShellt (ez a szakasz alatt).
 
-1. Ha a kiszolgáló regisztrációjának felhasználói felülete nem indult el azonnal a Azure File Sync ügynök telepítésének befejezése után, akkor manuálisan is elindítható `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`a végrehajtásával.
+1. Ha a kiszolgáló regisztrációjának felhasználói felülete nem indult el azonnal a Azure File Sync ügynök telepítésének befejezése után, akkor a `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`futtatásával manuálisan is elindítható.
 2. Az Azure-előfizetés eléréséhez kattintson a *Bejelentkezés* elemre. 
 
     ![A kiszolgáló regisztrációjának felhasználói felületének megnyitása párbeszédpanel](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -119,7 +117,7 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  
-> Ha a kiszolgálói végpontot üzemeltető helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, a `Invoke-StorageSyncFileRecall` parancsmag sikertelen lesz.  
+> Ha a kiszolgálói végpontot futtató helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, akkor a `Invoke-StorageSyncFileRecall` parancsmag sikertelen lesz.  
 
 #### <a name="remove-the-server-from-all-sync-groups"></a>A kiszolgáló eltávolítása minden szinkronizálási csoportból
 Mielőtt törli a kiszolgáló regisztrációját a Storage Sync szolgáltatásban, el kell távolítani a kiszolgálón található összes kiszolgálói végpontot. Ezt a Azure Portal keresztül teheti meg:
@@ -160,7 +158,7 @@ Mivel Azure File Sync csak ritkán fut az adatközpontban, érdemes korlátozni 
 > A határértékek túl alacsonyra állítása hatással van Azure File Sync szinkronizálás és a visszahívás teljesítményére.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync hálózati korlátok megadása
-A Azure file Sync hálózati kihasználtságát a `StorageSyncNetworkLimit` parancsmagok használatával szabályozhatja.
+A Azure File Sync hálózati kihasználtságát a `StorageSyncNetworkLimit` parancsmagok segítségével szabályozhatja.
 
 > [!Note]  
 > A hálózati korlátok nem érvényesek egy többrétegű fájl elérésekor vagy a Meghívási StorageSyncFileRecall parancsmag használatakor.
@@ -178,7 +176,7 @@ A korlátot a következő parancsmaggal érheti el:
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-A hálózati korlátok eltávolításához használja `Remove-StorageSyncNetworkLimit`a következőt:. A következő parancs például eltávolítja az összes hálózati korlátot:
+A hálózati korlátok eltávolításához használja a `Remove-StorageSyncNetworkLimit`. A következő parancs például eltávolítja az összes hálózati korlátot:
 
 ```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported

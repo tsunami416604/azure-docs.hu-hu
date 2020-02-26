@@ -1,81 +1,78 @@
 ---
-title: Ajánlott eljárások az Azure Kubernetes Service (AKS)
-description: A fürt operátor és a fejlesztői gyakorlati tanácsok az Azure Kubernetes Service (AKS) alkalmazások elkészítésében és kezelésében gyűjteménye
+title: Ajánlott eljárások az Azure Kubernetes Service (ak) szolgáltatáshoz
+description: A Fürtfelügyelő és a fejlesztői ajánlott eljárások gyűjteménye alkalmazások létrehozásához és kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: mlearned
-ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615964"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596317"
 ---
-# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürt operátor és a fejlesztői ajánlott eljárások az Azure Kubernetes Service (AKS) az alkalmazások létrehozása és felügyelete
+# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Fürtözési és fejlesztői ajánlott eljárások az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások létrehozásához és kezeléséhez
 
-Hozhat létre és futtathat alkalmazásokat sikeresen Azure Kubernetes Service (AKS), a rendszer néhány fő szempontot értelmezhető és megvalósítható. Ezek a területek a következők: több-bérlős és ütemezési funkciókat, fürt és a pod biztonsági, vagy üzletmenet-folytonossági és vész-helyreállítási. Az alábbi gyakorlati tanácsokra a kezelők számára a fürt vannak csoportosítva, és a fejlesztők a következő területeken kapcsolatos szempontok megismerése és a valósít meg a megfelelő funkciókat.
+Az Azure Kubernetes Service (ak) szolgáltatásban való sikeres alkalmazások létrehozásához és futtatásához néhány fontos szempontot figyelembe kell venni. Ezek a területek a több-bérlős és a Feladatütemező funkciók, a fürt és a pod biztonság, vagy az üzletmenet folytonossága és a vész-helyreállítás. A következő ajánlott eljárások a fürtök és a fejlesztők számára vannak csoportosítva, hogy megértsék az egyes területek szempontjait, és implementálják a megfelelő szolgáltatásokat.
 
-Ezek ajánlott eljárások és elméleti cikkek írása történt az AKS termékcsoport, mérnöki csapat, és többek között a globális fekete övek (GBBs) mező csapatok együtt.
+Ezek az ajánlott eljárások és fogalmi cikkek az AK termékcsoport, a mérnöki csapatok és a terepi csapatok, köztük a globális fekete övek (GBBs) együttes használatával lettek megírva.
 
-## <a name="cluster-operator-best-practices"></a>Fürt operátor ajánlott eljárások
+## <a name="cluster-operator-best-practices"></a>A cluster operátor ajánlott eljárásai
 
-A fürt felelősnek együttműködjenek alkalmazástulajdonosok és a fejlesztők igényeiknek ismertetése. Ezután használhatja a következő gyakorlati tanácsok az AKS-fürtök konfigurálásához szükség szerint.
+A fürt operátorai együttműködnek az alkalmazás-tulajdonosokkal és a fejlesztővel, hogy megértsék az igényeiket. Ezután az alábbi ajánlott eljárásokat követve igény szerint konfigurálhatja az AK-fürtöket.
 
 **Több-bérlős rendszer**
 
 * [Ajánlott fürtelkülönítési eljárások](operator-best-practices-cluster-isolation.md)
-    * Több-bérlős és logikai elkülönítése, a névterek tartalmaz.
+    * A több-bérlős alapvető összetevőket és a névterek logikai elkülönítését foglalja magában.
 * [Ajánlott eljárások a Scheduler alapszintű funkcióihoz](operator-best-practices-scheduler.md)
-    * Tartalmazza a erőforráskvóták és pod megszakítás költségvetése használatával.
+    * Az erőforrás-kvóták és a pod-megszakítási költségvetések használatát foglalja magában.
 * [Ajánlott eljárások a Scheduler speciális funkcióihoz](operator-best-practices-advanced-scheduler.md)
-    * Tartalmazza a elkerülésére és tolerations, csomópont választók és -affinitást, és a pod közötti kapcsolat és affinitást.
+    * Magában foglalja a szennyező elemek használatát és a tolerancia, a csomópont-választókat és az affinitást, valamint a több-Pod affinitást és az affinitást.
 * [Ajánlott hitelesítési és engedélyezési eljárások](operator-best-practices-identity.md)
-    * Magában foglalja az Azure Active Directory szerepköralapú hozzáférés-vezérlést (RBAC), és a pod identitások használatával.
+    * Magában foglalja a Azure Active Directory integrációját a szerepköralapú hozzáférés-vezérlés (RBAC) és a pod-identitások használatával.
 
 **Biztonság**
 
 * [A fürtbiztonság és a frissítések ajánlott eljárásai](operator-best-practices-cluster-security.md)
-    * Magában foglalja a biztonságos hozzáférés az API-kiszolgálóhoz, a tároló hozzáférésének korlátozása és kezelése, frissítése és a csomópont újraindul.
-* [Rendszerkép kezelése és biztonsági védelmének bevált gyakorlata](operator-best-practices-container-image-management.md)
-    * Tartalmazza az lemezkép és a modulok és automatizált buildekig alaplemezkép frissítések biztonságossá tétele.
-* [Podok biztonsági védelmének bevált gyakorlata](developer-best-practices-pod-security.md)
-    * Erőforrásokhoz való hozzáférés biztonságossá tétele, a hitelesítő adatok felfedésével korlátozása és a pod identitások és a digitális kulcstartók tartalmazza.
+    * Magában foglalja az API-kiszolgáló hozzáférésének biztosítását, a tárolók hozzáférésének korlátozását, valamint a frissítések és a csomópontok újraindításának kezelését.
+* [Ajánlott eljárások a tárolók rendszerképének kezeléséhez és biztonságához](operator-best-practices-container-image-management.md)
+    * Magában foglalja a rendszerkép és a futtatókörnyezetek, valamint az automatizált buildek biztonságossá tételét az alapszintű rendszerkép frissítésein.
+* [Ajánlott eljárások a pod biztonsághoz](developer-best-practices-pod-security.md)
+    * Magában foglalja az erőforrásokhoz való hozzáférés biztosítását, a hitelesítő adatokkal való kitettség korlátozását, valamint a pod-identitások és a digitális kulcstartók használatát.
 
-**Hálózati és tárolási**
+**Hálózat és tárolás**
 
-* [Ajánlott eljárások a hálózati kapcsolat](operator-best-practices-network.md)
-    * Magában foglalja a különböző hálózati modellek esetében bejövő és a webes alkalmazás tűzfalak (WAF) használ, és a csomópont SSH-hozzáférés biztonságossá tétele.
+* [Ajánlott eljárások hálózati kapcsolathoz](operator-best-practices-network.md)
+    * A különböző hálózati modelleket tartalmaz a bejövő és a webalkalmazási tűzfalakkal (WAF), valamint a Node SSH-hozzáférés biztosításával.
 * [A tárolás és a biztonsági mentés ajánlott eljárásai](operator-best-practices-storage.md)
-    * Tartalmazza a megfelelő tárolási típusa és a csomópont méretét, dinamikus kiépítése, köteteket és biztonsági mentések kiválasztása.
+    * A tartalmazza a megfelelő tárolási típust és csomópont-méretet, a kötetek dinamikus kiosztását és az adatbiztonsági mentést.
 
-**Nagyvállalati szintű számítási feladatok futtatása**
+**Nagyvállalati használatra kész számítási feladatok futtatása**
 
-* [Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási helyreállítási](operator-best-practices-multi-region.md)
-    * Tartalmazza az Azure Traffic Manager és a tárolórendszerképek georeplikációs régiópárok, több fürt használatával.
+* [Ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás terén](operator-best-practices-multi-region.md)
+    * Többek között a régió párokat, az Azure Traffic Manager több fürtöt, valamint a tároló lemezképek földrajzi replikálását is magában foglalja.
 
 ## <a name="developer-best-practices"></a>Fejlesztői ajánlott eljárások
 
-A fejlesztők vagy az alkalmazás tulajdonosa, a fejlesztői élmény egyszerűsítése érdekében, és adja meg kell application teljesítményigényeken.
+Fejlesztőként vagy alkalmazás-tulajdonosként egyszerűsítheti a fejlesztési élményt, és meghatározhatja az alkalmazások teljesítményének megkövetelését.
 
 * [Ajánlott erőforrás-kezelési eljárások alkalmazásfejlesztők számára](developer-best-practices-resource-management.md)
-    * Magában foglalja a pod erőforrás-kérelmek és-korlátok, a fejlesztői eszközök és alkalmazások hibáinak keresése.
-* [Podok biztonsági védelmének bevált gyakorlata](developer-best-practices-pod-security.md)
-    * Erőforrásokhoz való hozzáférés biztonságossá tétele, a hitelesítő adatok felfedésével korlátozása és a pod identitások és a digitális kulcstartók tartalmazza.
+    * Magában foglalja a pod-erőforrásokra vonatkozó kérelmek és korlátok definiálását, a fejlesztői eszközök konfigurálását és az alkalmazással kapcsolatos problémák ellenőrzését.
+* [Ajánlott eljárások a pod biztonsághoz](developer-best-practices-pod-security.md)
+    * Magában foglalja az erőforrásokhoz való hozzáférés biztosítását, a hitelesítő adatokkal való kitettség korlátozását, valamint a pod-identitások és a digitális kulcstartók használatát.
 
-## <a name="kubernetes--aks-concepts"></a>Kubernetes és az AKS-fogalmak
+## <a name="kubernetes--aks-concepts"></a>Kubernetes/AK-fogalmak
 
-Az egyes szolgáltatásait és összetevőit az ajánlott eljárások megismerése érdekében fürtök az Azure Kubernetes Service (AKS) a következő elméleti cikkeket is látható:
+Az ajánlott eljárások egyes funkcióinak és összetevőinek megismeréséhez a következő fogalmi cikkek is megtekinthetők az Azure Kubernetes szolgáltatásban (ak) található fürtökhöz:
 
-* [Kubernetes alapfogalmak](concepts-clusters-workloads.md)
-* [Hozzáférési és azonosító](concepts-identity.md)
-* [Biztonsági alapelvek](concepts-security.md)
+* [A Kubernetes alapvető fogalmai](concepts-clusters-workloads.md)
+* [Hozzáférés és identitás](concepts-identity.md)
+* [Biztonsági fogalmak](concepts-security.md)
 * [Hálózati fogalmak](concepts-network.md)
 * [Tárolási lehetőségek](concepts-storage.md)
-* [Méretezési beállítások](concepts-scale.md)
+* [Skálázási beállítások](concepts-scale.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha AKS használatának megkezdéséhez szüksége, kövesse az a rövid útmutatók való üzembe helyezése az Azure Kubernetes Service (AKS) fürt segítségével a [Azure CLI-vel](kubernetes-walkthrough.md) vagy [az Azure portal](kubernetes-walkthrough-portal.md).
+Ha meg kell kezdenie az AK-t, kövesse az egyik rövid útmutatót, amely az [Azure CLI](kubernetes-walkthrough.md) vagy a [Azure Portal](kubernetes-walkthrough-portal.md)használatával helyez üzembe egy Azure KUBERNETES-szolgáltatási (ak-) fürtöt.

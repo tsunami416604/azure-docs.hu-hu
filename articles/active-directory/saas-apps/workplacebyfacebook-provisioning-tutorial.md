@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121444"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603207"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -51,7 +51,7 @@ Zárolta a meglévő munkahelyi ügyfelek rendszergazdai hitelesítő adatait ta
 
  
 #### <a name="when-will-these-changes-happen"></a>Mikor fognak történni ezek a változások?
-A munkahely összes új példánya már az új integrációs/engedélyezési módszert fogja használni. A meglévő integrációk fokozatosan, februárban lesznek áttelepítve. A Migrálás minden bérlő esetében a hónap végéig lesz végrehajtva. 
+A munkahely összes új példánya már az új integrációs/engedélyezési módszert fogja használni. A meglévő integrációk a májusi használatával fokozatosan lesznek áttelepítve. A munkahelyen a február-28 és május 1 között a határidőig meghosszabbították a bővítményt. 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]

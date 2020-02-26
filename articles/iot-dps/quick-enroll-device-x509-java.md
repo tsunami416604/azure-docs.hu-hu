@@ -9,36 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461968"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604920"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Java használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ez a rövid útmutató bemutatja, hogyan regisztrálhatja szimulált X.509-eszközök egy csoportját programozott módon az Azure IoT Hub Device Provisioning Service-be a Java használatával. Az eszközöket a kiépítésiszolgáltatás-példányokban egy [regisztrációs csoport](concepts-service.md#enrollment-group) létrehozásával vagy [egyéni regisztrációval](concepts-service.md#individual-enrollment) lehet regisztrálni. Ez a rövid útmutató bemutatja mindkét típusú regisztráció létrehozását. A regisztrációk létrehozása a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/) használatával és egy Java-mintaalkalmazás segítségével történik. 
-
-A rövid útmutató feltételezi, hogy már létrehozott egy IoT hubot és egy Device Provisioning Service-példányt. Ha ezeket az erőforrásokat még nem hozta létre, végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid útmutatót, mielőtt továbbhaladna ebben a cikkben.
-
-Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ebben a rövid útmutatóban a Java használatával programozott módon regisztrálja az X. 509 szimulált eszközök egy csoportját az Azure IoT Hub Device Provisioning Serviceba. Az eszközök regisztrálása egy kiépítési szolgáltatási példányba egy regisztrációs csoport vagy egy egyéni regisztráció létrehozásával történik. Ez a rövid útmutató bemutatja, hogyan hozhat létre mindkét típusú regisztrációt a Java Service SDK és egy minta Java-alkalmazás használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [Java SE Development Kit 8](https://aka.ms/azure-jdks)-at.
-* Telepítse a [Maven 3](https://maven.apache.org/download.cgi)-at. A jelenlegi Maven verzióját a következő parancs futtatásával ellenőrizheti:
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* Telepítse a [Git](https://git-scm.com/download/) szoftvert.
-
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ez a rövid útmutató telepíti a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) -t alább. Windows és Linux rendszereken egyaránt működik. Ez a rövid útmutató a Windowst használja.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/).
 
 <a id="javasample"></a>
 
@@ -51,7 +41,7 @@ Ez a szakasz egy önaláírt X.509-tanúsítványt használ. Fontos szem előtt 
 
 A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kiépítési adatait a mintakódhoz. 
 
-1. Nyisson meg egy parancssort. Klónozza a GitHub-adattárat az eszközregisztráció kódmintájához a Java szolgáltatásoldali SDK használatával:
+1. Nyisson meg egy parancssort. A GitHub-tárház klónozása az eszköz beléptetési kódjához a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)használatával:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -140,6 +130,13 @@ A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kié
 <a id="runjavasample"></a>
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Csoportregisztrációs minta létrehozása és futtatása
+
+Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
+
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
+
+Ez az eljárás beléptetési csoportot használ. A következő szakasz egyéni regisztrációt használ.
 
 1. Nyisson meg egy parancsablakot, és lépjen az **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** mappára.
 

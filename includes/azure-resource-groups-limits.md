@@ -2,18 +2,19 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: b4338560d515289d3e9aedfa716ec7c3ace51131
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a52e1bc2dde74289cb270fcae832be24de5a06
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392265"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592423"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Erőforrások erőforrás [-csoportonként](../articles/azure-resource-manager/management/overview.md#resource-groups), erőforrás-típus szerint |800 |Egyes erőforrástípusok túllépik a 800 korlátot. Tekintse [meg az erőforrásokat, amelyek erőforráscsoport esetén nem korlátozódnak 800 példányra](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
+| Erőforrások [erőforrás-csoportonként](../articles/azure-resource-manager/management/overview.md#resource-groups) | N/A | Az erőforrások nem korlátozódnak az erőforráscsoporthoz. Ehelyett egy erőforráscsoport erőforrástípus van korlátozva. Lásd a következő sort. | 
+| Erőforrások erőforrás-csoportonként, erőforrás-típus szerint |800 |Egyes erőforrástípusok túllépik a 800 korlátot. Tekintse [meg az erőforrásokat, amelyek erőforráscsoport esetén nem korlátozódnak 800 példányra](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
 | Üzemelő példányok erőforráscsoport szerint az üzembe helyezési előzményekben |800<sup>1</sup> |800 |
 | Erőforrások üzembe helyezése |800 |800 |
 | Felügyeleti zárolások egyedi hatókör szerint |20 |20 |
@@ -25,7 +26,7 @@ ms.locfileid: "75392265"
 
 #### <a name="template-limits"></a>Sablonok korlátai
 
-| Value (Díj) | Alapértelmezett korlát | Felső korlát |
+| Érték | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Paraméterek |256 |256 |
 | Változók |256 |256 |

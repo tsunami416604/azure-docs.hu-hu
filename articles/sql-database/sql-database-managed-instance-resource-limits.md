@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526858"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605011"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -74,7 +74,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 | Adatbázisfájlok maximális száma egy példányban | Akár 280-ig, kivéve, ha elérte a példány tárolási méretét vagy az [Azure Premium lemez tárterületének lefoglalási](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) korlátját. | 32 767 fájl/adatbázis, kivéve, ha elérte a példány tárolási méretének korlátját. |
 | Az adatfájlok maximális mérete | A jelenleg elérhető példányok tárolási mérete (max. 2 TB-8 TB) és az [Azure Premium Disk Storage kiosztási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)korlátozódik. | A jelenleg elérhető példányok tárolási méretére korlátozódik (legfeljebb 1 TB-4 TB). |
 | Naplófájl maximális mérete | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. |
-| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>\*[a fájlméret növelésével további IOPS érhet el](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
+| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>\*[a fájlméret növelésével további IOPS érhet el](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[a fájlméret növelése a jobb IO-teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
@@ -107,7 +107,7 @@ Léteznek olyan példány-szintű korlátok is, mint a maximális írási sebess
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Felügyelt példányok csak a [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha a felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](#obtaining-a-larger-quota-for-sql-managed-instance).
+Felügyelt példányok csak a [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha a felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 
@@ -122,13 +122,13 @@ A felügyelt példány jelenleg csak a következő típusú előfizetések eset�
 
 ## <a name="regional-resource-limitations"></a>Regionális erőforrásokra vonatkozó korlátozások
 
-A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez az igény szerint növelhető, ha egy speciális [támogatási kérelmet hoz létre a Azure Portal) az](#obtaining-a-larger-quota-for-sql-managed-instance)előfizetés típusától függően:
+A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez az igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](quota-increase-request.md) előfizetés típusától függően:
 
 - **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
 - **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
-> Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.
+> Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](quota-increase-request.md) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.
 
 A következő táblázat a támogatott előfizetési típusok **alapértelmezett regionális korlátait** mutatja be (az alapértelmezett határértékek az alább ismertetett támogatási kérelem használatával bővíthetők):
 
@@ -146,39 +146,9 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 \*\* nagyobb alhálózat-és virtuális mag-korlátok érhetők el a következő régiókban: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Nagyobb kvóta beszerzése a felügyelt SQL-példányhoz
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Kvóta növelésének kérése az SQL felügyelt példányához
 
-Ha az aktuális régiókban több felügyelt példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával.
-Nagyobb kvóta beszerzési folyamatának kezdeményezése:
-
-1. Nyissa meg a **Súgó + támogatás**menüpontot, és kattintson az **új támogatási kérelem**elemre.
-
-   ![Súgó és támogatás](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Az új támogatási kérelem alapjai lapon:
-   - A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-   - Az **Előfizetés** beállításnál válassza ki az előfizetését.
-   - A **kvóta típusa**beállításnál válassza **SQL Database felügyelt példány**lehetőséget.
-   - **Támogatási csomag**esetén válassza ki a támogatási csomagot.
-
-     ![Probléma típusú kvóta](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. Kattintson a **Tovább** gombra.
-4. Az új támogatási kérelem **probléma lapján** :
-   - A **Súlyosság**beállításnál válassza ki a probléma súlyossági szintjét.
-   - **Részletekért**adja meg a hibával kapcsolatos további információkat, beleértve a hibaüzeneteket is.
-   - Fájlfeltöltés **esetén**csatoljon egy fájlt további információkkal (legfeljebb 4 MB).
-
-     ![Probléma részletei](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Érvényes kérelemnek tartalmaznia kell A következőket:
-     > - Az a régió, amelyben az előfizetési korlátot növelni kell.
-     > - A kvóták növekedése után a meglévő alhálózatokban lévő virtuális mag szükséges száma (ha a meglévő alhálózatok bármelyikét ki kell bontani.
-     > - Szükséges számú új alhálózat és virtuális mag száma az új alhálózatokon belül (ha felügyelt példányokat kell központilag telepíteni az új alhálózatokban).
-
-5. Kattintson a **Tovább** gombra.
-6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Létrehozás** gombra.
+Ha az aktuális régiókban több felügyelt példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

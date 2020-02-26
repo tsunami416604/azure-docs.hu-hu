@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134826"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591982"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: Tesztkörnyezet használatának nyomon követése az Azure Lab Services szolgáltatásban
 Az oktatóanyag bemutatja, hogyan követheti nyomon a tesztkörnyezet létrehozója/tulajdonosa a tesztkörnyezet használatát.
@@ -41,7 +41,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Regisztrált felhasználók](../media/tutorial-track-usage/registered-users.png)
 
-    A tesztkörnyezet felhasználói hozzáadásával és kezelésével kapcsolatos további információkért lásd: [labor-felhasználók hozzáadása és kezelése](how-to-configure-student-usage.md).
+    A labor felhasználók hozzáadásával és kezelésével kapcsolatos további információkért lásd: [labor-felhasználók hozzáadása és kezelése](how-to-configure-student-usage.md).
 
 ## <a name="view-the-usage-of-vms"></a>Virtuális gépek használatának megtekintése
 
@@ -53,9 +53,12 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 ## <a name="manage-student-vms"></a>Diákok virtuális gépeinek felügyelete 
 Ezen az oldalon az **állapot** oszlopban vagy az eszköztáron található vezérlők használatával indíthatja el, állíthatja le vagy állíthatja alaphelyzetbe a tanulói virtuális gépeket.
 
-![Virtuális gép vezérlői](../media/tutorial-track-usage/vm-controls.png)
+![VIRTUÁLIS gépek műveletei](../media/tutorial-track-usage/vm-controls.png)
 
-A virtuálisgép-készlet tesztkörnyezetben való kezelésével kapcsolatos további információkért lásd: [virtuális gép készletének beállítása és kezelése](how-to-set-virtual-machine-passwords.md).
+A virtuálisgép-készlet tesztkörnyezetben való kezelésével kapcsolatos további információkért lásd: [virtuális gépek készletének beállítása és kezelése](how-to-set-virtual-machine-passwords.md).
+
+> [!NOTE]
+> Ha egy oktató bekapcsol egy tanulói virtuális gépet, az nem érinti a tanulóra vonatkozó kvótát. A felhasználóhoz tartozó kvóta meghatározza, hogy a felhasználó számára hány labor óra legyen elérhető az ütemezett osztály időpontján kívül. A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md?#set-quotas-for-users)számára.
 
 ## <a name="next-steps"></a>Következő lépések
 A tanterem Labs szolgáltatással kapcsolatos további tudnivalókért tekintse meg a cikkek [útmutatói](how-to-manage-lab-accounts.md)című cikket.

@@ -4,12 +4,12 @@ description: Részletes útmutató a Windows Server rendszerállapotának az Azu
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172820"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602467"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -140,7 +140,7 @@ Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerá
 
     ![Válassza ki, hogy a helyreállítás a helyi kiszolgálóról vagy más](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a **Tovább** gombra.
+7. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a **tovább**gombra.
 
     ![a megosztott fájl elérési útja](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
@@ -159,7 +159,7 @@ Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerá
 A rendszerállapot biztonsági másolata Active Directory-adattal rendelkezik. A következő lépésekkel állíthatja vissza Active Directory-tartomány szolgáltatást (AD DS) az aktuális állapotból egy korábbi állapotba.
 
 1. Indítsa újra a tartományvezérlőt a Címtárszolgáltatások helyreállító módjában.
-2. A AD DS helyreállításához kövesse az [alábbi lépéseket Windows Server biztonsági másolat](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) parancsmagok használatához.
+2. A AD DS helyreállításához kövesse az [alábbi lépéseket Windows Server biztonsági másolat](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) parancsmagok használatához.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Sikertelen rendszerállapot-visszaállítás – hibakeresés
 

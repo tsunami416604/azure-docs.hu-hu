@@ -2,17 +2,14 @@
 title: Az Azure Kubernetes szolgáltatás (ak) vezérlő naplófájljainak megtekintése
 description: Megtudhatja, hogyan engedélyezheti és tekintheti meg a Kubernetes fő csomópontjának naplóit az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812810"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592788"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>A Kubernetes fő csomópont-naplófájljainak engedélyezése és áttekintése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,12 +25,12 @@ A több forrásból származó adatok gyűjtésének és áttekintésének megk�
 
 Azure Monitor naplók engedélyezve vannak és kezelhetők a Azure Portal. Ha az AK-fürt Kubernetes fő összetevőinek naplózási gyűjteményét szeretné engedélyezni, nyissa meg a Azure Portal egy böngészőben, és végezze el a következő lépéseket:
 
-1. Válassza ki az AK-fürthöz tartozó erőforráscsoportot, például *myResourceGroup*. Ne válassza ki azt az erőforráscsoportot, amely az egyéni AK-fürterőforrás (például *MC_myResourceGroup_myAKSCluster_eastus*) tartalmazza.
+1. Válassza ki az AK-fürthöz tartozó erőforráscsoportot, például *myResourceGroup*. Ne válassza ki azt az erőforráscsoportot, amely az egyedi AK-fürterőforrás (például *MC_myResourceGroup_myAKSCluster_eastus*) tartalmazza.
 1. A bal oldali oldalon válassza a **diagnosztikai beállítások**lehetőséget.
 1. Válassza ki az AK-fürtöt, például *myAKSCluster*, majd válassza a **diagnosztikai beállítás hozzáadását**.
 1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza ki a **log Analytics küldésére szolgáló**lehetőséget.
 1. Válasszon ki egy meglévő munkaterületet, vagy hozzon létre egy újat. Ha létrehoz egy munkaterületet, adja meg a munkaterület nevét, egy erőforráscsoportot és egy helyet.
-1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. A gyakori naplók közé tartozik a *Kube-apiserver*, a *Kube-Controller-Manager*és a *Kube-Scheduler*. Engedélyezheti a további naplókat, például a *Kube-audit* és a *cluster-* autoskálázást. Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
+1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. A gyakori naplók közé tartozik a *Kube-apiserver*, a *Kube-Controller-Manager*és a *Kube-Scheduler*. Engedélyezheti a további naplókat, például a *Kube-audit* és a *cluster-autoskálázást*. Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 A következő példa-portálon a *diagnosztikai beállítások* ablak látható:
@@ -86,7 +83,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-Az API-kiszolgáló valószínűleg sok naplót ad vissza. Ha le szeretné tekinteni a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod-naplók megtekintéséhez, adjon hozzá egy további *Where* utasítást a hüvelyek */NGINX* kereséséhez az alábbi példában látható módon:
+Az API-kiszolgáló valószínűleg sok naplót ad vissza. Ha le szeretné tekinteni a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod-naplók megtekintéséhez, adjon hozzá egy további *Where* utasítást a *hüvelyek/NGINX* kereséséhez az alábbi példában látható módon:
 
 ```
 AzureDiagnostics
@@ -107,28 +104,28 @@ A naplózási adatok lekérdezésével és szűrésével kapcsolatos további in
 
 A naplózási adatok elemzéséhez a következő táblázat részletezi az egyes eseményekhez használt sémát:
 
-| Mezőnév               | Leírás |
+| Mező neve               | Leírás |
 |--------------------------|-------------|
 | *resourceId*             | A naplót előkészítő Azure-erőforrás |
 | *idő*                   | A napló feltöltésének időbélyege |
-| *kategória*               | A naplót létrehozó tároló/összetevő neve |
-| *OperationName*          | Mindig *Microsoft. tárolószolgáltatás/managedClusters/diagnosticLogs/Read* |
+| *Kategória*               | A naplót létrehozó tároló/összetevő neve |
+| *operationName*          | Mindig *Microsoft. tárolószolgáltatás/managedClusters/diagnosticLogs/Read* |
 | *Properties. log*         | Az összetevőből származó napló teljes szövege |
-| *properties.stream*      | *stderr* vagy *StdOut* |
+| *Properties. stream*      | *stderr* vagy *StdOut* |
 | *Properties. Pod*         | Az a pod-név, amelyből a napló származik |
 | *Properties. containerID* | A naplóból érkezett Docker-tároló azonosítója |
 
 ## <a name="log-roles"></a>Naplók szerepkörei
 
-| Role                     | Leírás |
+| Szerepkör                     | Leírás |
 |--------------------------|-------------|
 | *aksService*             | A vezérlő síkja művelethez tartozó megjelenített név a naplóban (a hcpService) |
 | *MasterClient*           | A MasterClientCertificate naplójának megjelenített neve, az az AK Get-hitelesítő adatokkal rendelkező tanúsítvány |
 | *nodeclient*             | Az ügynök csomópontjai által használt ClientCertificate megjelenített neve |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan engedélyezheti és tekintheti át a Kubernetes fő összetevőinek naplóit az AK-fürtben. A további figyeléshez és a hibák megoldásához tekintse meg [a Kubelet][kubelet-logs] -naplókat, és [engedélyezze az SSH][aks-ssh]-csomópontok elérését.
+Ebben a cikkben megtanulta, hogyan engedélyezheti és tekintheti át a Kubernetes fő összetevőinek naplóit az AK-fürtben. A további figyeléshez és a hibák megoldásához tekintse meg [a Kubelet-naplókat][kubelet-logs] , és [engedélyezze az SSH-csomópontok elérését][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

@@ -2,17 +2,16 @@
 title: Intelligens Útválasztás és Kanári-kiadások a Istio az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan használható a Istio az intelligens útválasztás biztosításához és a Kanári-kiadások üzembe helyezéséhez egy Azure Kubernetes Service (ak) fürtben
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530289"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594132"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
 
@@ -28,10 +27,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az alkalmazás Kanári-kiadásának kiépítése
 > * Bevezetés véglegesítése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 > [!NOTE]
-> Ezt a forgatókönyvet `1.3.2` Istio-verzióval tesztelték.
+> Ezt a forgatókönyvet `1.3.2`Istio-verzióval tesztelték.
 
 A cikkben ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Emellett a fürtben telepített Istio is szüksége lesz.
 
@@ -351,7 +350,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>Az alkalmazás Kanári-kiadásának kiépítése
 
-Most telepítse a `voting-app`, a `voting-analytics` és a `voting-storage` összetevők új verzióját `2.0`. Az új `voting-storage` összetevő a Redis helyett MySQL-t használ, és a `voting-app` és `voting-analytics` összetevők frissülnek, hogy az új `voting-storage` összetevőt használják.
+Most telepítse a `voting-app`, a `voting-analytics`és a `voting-storage` összetevők új verzióját `2.0`. Az új `voting-storage` összetevő a Redis helyett MySQL-t használ, és a `voting-app` és `voting-analytics` összetevők frissülnek, hogy az új `voting-storage` összetevőt használják.
 
 A `voting-app` összetevő mostantól támogatja a funkció-jelölő funkciót. Ez a funkció lehetővé teszi, hogy tesztelje a Istio Kanári kiadási képességeit a felhasználók egy részhalmaza számára.
 

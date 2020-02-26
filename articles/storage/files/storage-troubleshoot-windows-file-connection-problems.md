@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544973"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597966"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
 Ez a cikk a Windows-ügyfelekről való csatlakozáskor Microsoft Azure fájlokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tartalmazza. A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) is használható annak biztosítására, hogy a Windows-ügyfél környezete megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését, és segít az optimális teljesítmény érdekében a környezet beállításában. Ezeket az információkat a [Azure Files shares-hibakeresőben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) is megtalálhatja, amely segítséget nyújt a Azure Files-megosztások csatlakoztatása/leképezése/csatlakoztatása vagy csatlakoztatása terén.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>5\. hiba az Azure-fájlmegosztás csatlakoztatásakor
@@ -250,7 +247,7 @@ Használja az alábbi megoldások egyikét:
 
 -   Csatlakoztassa a meghajtót ugyanahhoz a felhasználói fiókhoz, amely tartalmazza az alkalmazást. Használhat olyan eszközt is, mint például a PsExec.
 - Adja át a Storage-fiók nevét és kulcsát a net use parancs Felhasználónév és jelszó paraméterében.
-- A cmdkey parancs használatával adja hozzá a hitelesítő adatokat a hitelesítőadat-kezelőhöz. Ezt egy interaktív bejelentkezéssel vagy a runas használatával hajtsa végre a szolgáltatásfiók környezetében.
+- A cmdkey parancs használatával adja hozzá a hitelesítő adatokat a hitelesítőadat-kezelőhöz. Ezt egy interaktív bejelentkezéssel vagy `runas`használatával hajtsa végre a szolgáltatásfiók környezetében.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Rendelje hozzá a megosztást közvetlenül a csatlakoztatott meghajtóbetűjel használata nélkül. Előfordulhat, hogy egyes alkalmazások nem csatlakoznak megfelelően a meghajtóbetűjelhez, így a teljes UNC elérési út megbízhatóbb lehet. 
@@ -272,9 +269,9 @@ Ha egy fájlt hálózaton keresztül szeretne másolni, először vissza kell fe
 
 - Használja a **copy/d** parancsot. Lehetővé teszi a titkosított fájlok mentését visszafejtett fájlként a célhelyen.
 - Állítsa be a következő beállításkulcsot:
-  - Elérési út = HKLM\Software\Policies\Microsoft\Windows\System
+  - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Értéktípus = DWORD
-  - Név = CopyFileAllowDecryptedRemoteDestination
+  - Name = CopyFileAllowDecryptedRemoteDestination
   - Érték = 1
 
 Vegye figyelembe, hogy a beállításkulcs beállítása hatással van a hálózati megosztásokon végrehajtott összes másolási műveletre.
@@ -300,7 +297,7 @@ Beállíthatja például a 0x100000, és megtekintheti, hogy a teljesítmény jo
 
 ### <a name="cause"></a>Ok
 
-Hiba történt a AadDsTenantNotFound, amikor a [Azure Active Directory tartományi szolgáltatás (HRE DS) hitelesítését](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) kísérli meg Azure Files egy olyan Storage-fiókon, ahol a [HRE tartományi szolgáltatás (HRE DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre a társított előfizetés HRE-bérlője számára.  
+Hiba történt abban az esetben, ha a [Azure Active Directory Domain Services (Azure AD DS) hitelesítését](storage-files-identity-auth-active-directory-domain-service-enable.md) olyan AadDsTenantNotFound próbálja meg engedélyezni Azure Filesn, ahol a [HRE tartományi szolgáltatás (HRE DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nem jön létre a társított előfizetés HRE-bérlője számára.  
 
 ### <a name="solution"></a>Megoldás
 
@@ -320,5 +317,5 @@ Jelenleg a HRE DS újratelepítését egy új tartományi DNS-névvel végezheti
 - A nevek nem kezdődhetnek numerikus karakterrel.
 - A névnek 3 – 63 karakter hosszúnak kell lennie.
 
-## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202061"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604000"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Incidensek és riasztások vizsgálata Azure Security Center (kivont)
 Ez a dokumentum segítséget nyújt a Azure Security Center vizsgálati funkciójának (előzetes verzió) használatában a biztonsági incidensek és riasztások kivizsgálásához.
@@ -72,11 +72,11 @@ A **Keresés** lapon az entitáshoz elérhető naplótípusok jelennek meg. Mind
 
 ### <a name="exploration"></a>Feltárás
 
-A **Feltárás** lapon a vizsgáló az entitáshoz kapcsolódó különféle hibákra vonatkozó adatokat vizsgálhatja meg. Például egy gép vizsgálatakor a rajta végrehajtott folyamatok listája jelenik meg a Feltárás lapon. Bizonyos esetekben a Feltárás lapon megjelenő adatok esetleg gyanús hibákat jelezhetnek. A vizsgáló megvizsgálhatja az adatokat a lapon, vagy megnyithatja őket a keresési képernyőn a nagyobb adatkészletek vizsgálatához, illetve a speciális keresési beállítások, például a szűrés és az Excelbe való exportálás használatához.
+A **Feltárás** lapon a vizsgáló az entitáshoz kapcsolódó különféle hibákra vonatkozó adatokat vizsgálhatja meg. Ha például egy gép vizsgálatára kerül sor, a rajta végrehajtott folyamatok listája a Felderítés lapon jelenik meg. Bizonyos esetekben a feltárás lapon olyan adatértékek jelennek meg, amelyek gyanús problémát jelezhetnek. A vizsgáló megvizsgálhatja az adatokat a lapon, vagy megnyithatja őket a keresési képernyőn a nagyobb adatkészletek vizsgálatához, illetve a speciális keresési beállítások, például a szűrés és az Excelbe való exportálás használatához.
 
 ![Feltárás](./media/security-center-investigation/security-center-investigation-fig6.png)
 
-### <a name="timeline"></a>Idősor
+### <a name="timeline"></a>Idővonal
 
 A gráfon és a különféle füleken megjelenő adatok zöme egy adott időszakra vonatkozik. Az időszak az időszakválasztón állítható be a gráf bal oldalán. Különféle módszerek állnak a vizsgáló rendelkezésére az időszak kiválasztásához.
 
@@ -118,6 +118,3 @@ Ebben a dokumentumban megismerkedhetett a Security Center vizsgálati funkcióin
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
-* [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
-* [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

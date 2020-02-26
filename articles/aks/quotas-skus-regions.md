@@ -2,17 +2,14 @@
 title: Kvóták, SKU-EK és régiók elérhetősége az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg az alapértelmezett kvótákat, a korlátozott csomópontú virtuális gépek SKU-méreteit és az Azure Kubernetes szolgáltatás (ak) régiójának rendelkezésre állását.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: mlearned
-ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469834"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594549"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, virtuális gépek méretére vonatkozó korlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (ak)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355635"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604383"
 ---
 # <a name="alert-confidence-score-preview"></a>Riasztási megbízhatósági pontszám (előzetes verzió)
 
@@ -47,14 +47,6 @@ A riasztásban Security Center megbízhatóságához hozzájáruló adatmennyis�
   ![Gyanús megbízhatósági pontszám][2]
 
 Használja Security Center megbízhatósági pontszámát, hogy rangsorolja a riasztások osztályozását a környezetben. A megbízhatósági pontszám a riasztások automatikus kivizsgálásával, az iparági ajánlott eljárások és az intelligens algoritmusok alkalmazásával, valamint virtuális elemzőként való működésével időt takaríthat meg, és meghatározza, hogy mely fenyegetések valósak, és hol kell összpontosítania a figyelmet.
-
-
-## <a name="next-steps"></a>Következő lépések
-Ez a cikk azt ismerteti, hogyan használható a megbízhatósági pontszám a riasztási vizsgálat rangsorolásához. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
-
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
-
 
 
 <!--Image references-->

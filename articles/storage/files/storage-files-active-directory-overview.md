@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565084"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598816"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-További információ az Azure-fájlmegosztás AD-hitelesítésének engedélyezéséről: [Active Directory hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás számára](storage-files-active-directory-domain-services-enable.md).
+További információ az Azure-fájlmegosztás AD-hitelesítésének engedélyezéséről: [Active Directory hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás számára](storage-files-identity-auth-active-directory-enable.md).
 
-Ha szeretné megtudni, hogyan engedélyezhető az Azure-AD DS hitelesítés az Azure-fájlmegosztás számára, tekintse meg a [Azure Active Directory tartományi szolgáltatás hitelesítésének engedélyezése SMB protokollon keresztül Azure Files](storage-files-active-directory-enable.md).
+Ha szeretné megtudni, hogyan engedélyezheti az Azure-AD DS hitelesítését az Azure-fájlmegosztás számára, tekintse [meg a Azure Active Directory Domain Services hitelesítés engedélyezése Azure Fileson](storage-files-identity-auth-active-directory-domain-service-enable.md)című részt.
 
 ## <a name="glossary"></a>Szószedet 
 Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kapcsolatos egyes kulcsfontosságú kifejezéseket az Azure-fájlmegosztás SMB szolgáltatásán keresztül:
@@ -98,7 +98,7 @@ Ha egy virtuális gépen futó alkalmazáshoz tartozó identitás megpróbál ho
 
 ### <a name="enable-identity-based-authentication"></a>Identitás-alapú hitelesítés engedélyezése
 
-Az Azure-fájlmegosztást az új és meglévő Storage-fiókok Azure AD DS (GA) vagy AD (előzetes verzió) használatával engedélyezheti. Csak egy tartományi szolgáltatás használható a fájl-hozzáférési hitelesítéshez a Storage-fiókban, amely a fiókban lévő összes fájlmegosztás esetében érvényes. Részletes útmutató a fájlmegosztás az Azure AD DS (GA) szolgáltatással való beállításához, amely [lehetővé Azure Active Directory Domain Services teszi az SMB-en keresztüli hitelesítés használatát Azure Files](storage-files-active-directory-enable.md) és útmutató az ad (előzetes verzió) számára a további cikkben, az [Azure-fájlmegosztás esetében engedélyezze a Active Directoryt az SMB protokollon](storage-files-active-directory-domain-services-enable.md)keresztül.
+Az Azure-fájlmegosztást az új és meglévő Storage-fiókok Azure AD DS (GA) vagy AD (előzetes verzió) használatával engedélyezheti. Csak egy tartományi szolgáltatás használható a fájl-hozzáférési hitelesítéshez a Storage-fiókban, amely a fiókban lévő összes fájlmegosztás esetében érvényes. Részletes útmutató a fájlmegosztás Azure AD DS (GA) szolgáltatással történő hitelesítéséhez című cikkben, amely [lehetővé teszi Azure Active Directory Domain Services hitelesítés használatát a Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) és útmutató az ad-hez (előzetes verzió) a másik cikkben, hogy az [Azure-fájlmegosztás esetében engedélyezze az SMB protokollon keresztüli Active Directory hitelesítést](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Megosztási szintű engedélyek konfigurálása Azure Fileshoz
 
@@ -122,10 +122,10 @@ Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a c
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg [Azure Files díjszabási](https://azure.microsoft.com/pricing/details/storage/files/) és [Azure ad Domain Services díjszabási](https://azure.microsoft.com/pricing/details/active-directory-ds/) oldalát, ha HRE DS-információkat keres.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-- [Az Azure-fájlmegosztás SMB-en keresztüli Active Directory hitelesítésének engedélyezése](storage-files-active-directory-domain-services-enable.md)
-- [Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files](storage-files-active-directory-enable.md)
+- [Az Azure-fájlmegosztás SMB-en keresztüli Active Directory hitelesítésének engedélyezése](storage-files-identity-auth-active-directory-enable.md)
+- [Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [GYIK](storage-files-faq.md)

@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810289"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587351"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>A Intelligent Insights Azure SQL Database teljesítmény-diagnosztikai naplójának használata
 
-Ez az oldal arról nyújt tájékoztatást, hogyan használható a [Intelligent Insights](sql-database-intelligent-insights.md)által generált Azure SQL Database Performance Diagnostics-napló, annak formátuma és az egyéni fejlesztési igényekhez tartozó adatok. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
+Ez az oldal arról nyújt tájékoztatást, hogyan használható a [Intelligent Insights](sql-database-intelligent-insights.md)által generált Azure SQL Database Performance Diagnostics-napló, annak formátuma és az egyéni fejlesztési igényekhez tartozó adatok. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
 
 ## <a name="log-header"></a>Napló fejléce
 
@@ -75,11 +75,11 @@ A category (kategória) tulajdonság a észlelhető teljesítményi minták kate
 
 Az észlelt teljesítménnyel kapcsolatos probléma függvényében a diagnosztikai naplófájlban található részletek ennek megfelelően eltérnek.
 
-| Észlelhető teljesítményi minták | További részletek |
+| Észlelhető teljesítményminták | További részletek |
 | :------------------- | ------------------- |
 | Erőforrás-korlátok elérése | <li>Érintett erőforrások</li><li>Lekérdezések kivonatai</li><li>Erőforrás-felhasználási százalék</li> |
 | Munkaterhelés növekedése | <li>A végrehajtást megnövelő lekérdezések száma</li><li>Lekérdezési kivonatok lekérése a legnagyobb mértékben hozzájárul a munkaterhelés növeléséhez</li> |
-| Memória nyomása | <li>Memória-jegyző</li> |
+| Memóriaterhelés | <li>Memória-jegyző</li> |
 | Zárolási | <li>Érintett lekérdezési kivonatok</li><li>Lekérdezési kivonatok blokkolása</li> |
 | Megnövekedett MAXDOP | <li>Lekérdezések kivonatai</li><li>CXP várakozási ideje</li><li>Várakozási idő</li> |
 | Pagelatch-tartalom | <li>A lekérdezést kiváltó lekérdezések kivonatai</li> |
@@ -136,7 +136,7 @@ A Intelligent Insights teljesítmény naplójának utolsó része az azonosítot
 
 A Intelligent Insights Teljesítménynapló [Azure monitor naplókkal]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy harmadik féltől származó megoldással az egyéni DevOps-riasztásokhoz és jelentéskészítési funkciókhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerkedjen meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakkal.
 - Ismerje meg, hogyan lehet [elhárítani a Intelligent Insightsokkal kapcsolatos teljesítményproblémák Azure SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Megtudhatja, hogyan [figyelheti Azure SQL Database a Azure SQL Analytics használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

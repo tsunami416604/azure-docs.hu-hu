@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505640"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585730"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc-jogcímek átalakítása
 
@@ -127,7 +127,7 @@ Létrehoz egy karakterlánc-jogcímet a megadott bemeneti paraméterből az áta
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | érték | sztring | A beállítani kívánt karakterlánc |
+| InputParameter | érték | sztring | A beállítani kívánt karakterlánc. Ez a bemeneti paraméter támogatja a [karakterlánc-jogcímek átalakítási kifejezéseit](string-transformations.md#string-claim-transformations-expressions). |
 | outputClaim | createdClaim | sztring | A jogcím-átalakítást követően létrehozott ClaimType a bemeneti paraméterben megadott értékkel lett meghívva. |
 
 A jogcím-átalakítás használatával ClaimType értéket állíthat be.
@@ -158,7 +158,7 @@ Annak megállapítása, hogy egy karakterlánc-jogcím egyenlő-e egy másikkal.
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | sztring | Az első jogcím típusa, amelyet össze kell hasonlítani. |
 | inputClaim | inputClaim2 | sztring | Második jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | operator | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | operátor | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | ignoreCase | logikai | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
 | outputClaim | outputClaim | logikai | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
@@ -198,7 +198,7 @@ Meghatározza, hogy a jogcím értéke megegyezik-e a bemeneti paraméter érté
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | operator | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
+| InputParameter | operátor | sztring | Lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | Compareto metódus végrehajtása | sztring | karakterlánc-összehasonlítás, az értékek egyike: sorszám, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | logikai | Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét. |
 | outputClaim | outputClaim | logikai | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
@@ -297,7 +297,7 @@ Jogcím formázása a megadott formátumú karakterláncnak megfelelően. Ez a t
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim |sztring |Az a ClaimType, amely karakterlánc-formátumot {0} paraméterként viselkedik. |
-| InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0} paramétert. |
+| InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0} paramétert. Ez a bemeneti paraméter támogatja a [karakterlánc-jogcímek átalakítási kifejezéseit](string-transformations.md#string-claim-transformations-expressions).  |
 | outputClaim | outputClaim | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
 Ezzel a jogcím-átalakítással formázhat bármely karakterláncot egy paraméterrel {0}. A következő példa egy **userPrincipalName**hoz létre. Az összes közösségi identitás-szolgáltató technikai profilja, például a `Facebook-OAUTH` meghívja a **CreateUserPrincipalName** egy **userPrincipalName**létrehozásához.
@@ -333,7 +333,7 @@ Két jogcím formázása a megadott formátumú karakterláncnak megfelelően. E
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim |sztring | Az a ClaimType, amely karakterlánc-formátumot {0} paraméterként viselkedik. |
 | inputClaim | inputClaim | sztring | Az a ClaimType, amely karakterlánc-formátumot {1} paraméterként viselkedik. |
-| InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0} és {1} paramétereket. |
+| InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0} és {1} paramétereket. Ez a bemeneti paraméter támogatja a [karakterlánc-jogcímek átalakítási kifejezéseit](string-transformations.md#string-claim-transformations-expressions).   |
 | outputClaim | outputClaim | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
 Ezzel a jogcím-átalakítással formázhat bármely karakterláncot két paraméterrel, {0} és {1}. A következő példa egy **DisplayName** paramétert hoz létre a megadott formátumban:
@@ -862,7 +862,7 @@ Egy megadott karakterlánc-gyűjteményi jogcím elemeinek összefűzése az egy
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim | StringCollection stb | Egy gyűjtemény, amely az összefűzni kívánt karakterláncokat tartalmazza. |
-| InputParameter | Elválasztó | sztring | Az elválasztóként használandó karakterlánc, például vessző `,`. |
+| InputParameter | elválasztó | sztring | Az elválasztóként használandó karakterlánc, például vessző `,`. |
 | outputClaim | outputClaim | sztring | A `inputClaim` karakterlánc-gyűjtemény tagjaiból álló karakterlánc, amelyet a `delimiter` bemeneti paraméter választ. |
   
 Az alábbi példa felhasználói szerepkörök karakterlánc-gyűjteményét veszi át, és egy vesszővel elválasztó karakterlánccá alakítja át. Ezt a módszert használhatja egy karakterlánc-gyűjtemény Azure AD-beli felhasználói fiókban való tárolására. Később, amikor beolvassa a fiókot a címtárból, a `StringSplit` használatával alakítsa át a vesszővel elválasztó sztringet karakterlánc-gyűjteményre.
@@ -898,7 +898,7 @@ Egy olyan karakterlánc-tömböt ad vissza, amely tartalmazza az ebben a példá
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim | sztring | Egy karakterlánc-jogcím típusa, amely a felosztani kívánt alkarakterláncokat tartalmazza. |
-| InputParameter | Elválasztó | sztring | Az elválasztóként használandó karakterlánc, például vessző `,`. |
+| InputParameter | elválasztó | sztring | Az elválasztóként használandó karakterlánc, például vessző `,`. |
 | outputClaim | outputClaim | StringCollection stb | Egy karakterlánc-gyűjtemény, amelynek elemei tartalmazzák az ebben a karakterláncban található azon alsztringeket, amelyeket a `delimiter` bemeneti paramétere tagol. |
   
 A következő példa a felhasználói szerepkörök vesszővel elválasztó karakterláncát veszi át, és átalakítja egy karakterlánc-gyűjteménybe.
@@ -925,3 +925,12 @@ A következő példa a felhasználói szerepkörök vesszővel elválasztó kara
   - **határolójel**: ","
 - Kimeneti jogcímek:
   - **outputClaim**: ["admin", "author", "Reader"]
+  
+## <a name="string-claim-transformations-expressions"></a>Karakterlánc-jogcím átalakítása kifejezés
+A jogcím-átalakítási kifejezések Azure AD B2C egyéni házirendekben környezeti információkat biztosítanak a bérlői AZONOSÍTÓról és a technikai profil AZONOSÍTÓról.
+
+  | Kifejezés | Leírás | Példa |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | A technikai profileId neve. | Facebook – OAUTH |
+ | `{RelyingPartyTenantId}` | A függő entitás házirendjének bérlői azonosítója. | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | A megbízhatósági keretrendszer bérlői azonosítója. | your-tenant.onmicrosoft.com |

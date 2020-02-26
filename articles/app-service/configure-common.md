@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198581"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592526"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -168,6 +168,8 @@ Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beá
     - **Bitszáma**: 32 bites vagy 64 bites.
     - **WebSocket protokoll**: [ASP.NET-jelző] vagy [socket.IO](https://socket.io/), például.
     - **Always On**: megtarthatja az alkalmazás betöltését akkor is, ha nincs forgalom. Szükség van a folyamatos webjobs-feladatokra, illetve a CRON-kifejezéssel aktivált webjobs-feladatokra.
+      > [!NOTE]
+      > Az Always On funkcióval nem vezérelheti a végpontot. Mindig kérelmet küld az alkalmazás gyökerének.
     - **Felügyelt folyamat verziója**: az IIS- [folyamat mód]. Állítsa **klasszikusra** , ha olyan örökölt alkalmazással rendelkezik, amelyhez az IIS régebbi verziója szükséges.
     - **Http-verzió**: állítsa **2,0** értékre a [https/2](https://wikipedia.org/wiki/HTTP/2) protokoll támogatásának engedélyezéséhez.
     > [!NOTE]
@@ -225,7 +227,7 @@ A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az öss
 - **Hozzáférési kulcs**: Speciális konfiguráció esetén a hozzáférési kulcs.
 - **Csatlakoztatási útvonal**: a tároló abszolút elérési útja az egyéni tároló csatlakoztatásához.
 
-További információ: [tartalom kiszolgálása az Azure Storage-ból App Service Linuxon](containers/how-to-serve-content-from-azure-storage.md).
+További információ: [Azure Storage-tartalom kiszolgálása a Linuxos App Service-ben](containers/how-to-serve-content-from-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Nyelvi verem beállításainak konfigurálása
 

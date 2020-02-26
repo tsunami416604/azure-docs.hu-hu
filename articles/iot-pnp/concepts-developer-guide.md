@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905792"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605222"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató
 
@@ -63,13 +63,13 @@ A megvalósítások szakaszban található felületek listájának minden bejegy
 
 További választható mezőket is használhat, amelyekkel további részleteket adhat hozzá a képesség modelljéhez, például a megjelenítendő név és a Leírás mezőben. A képességi modellben deklarált felületek az eszköz összetevőiként is megtekinthetők. A nyilvános előzetes verzióban az illesztőfelületek listájának sémája csak egy bejegyzéssel rendelkezhet.
 
-## <a name="interface"></a>Felület
+## <a name="interface"></a>Interfész
 
 A DTDL segítségével az eszköz képességeit a felületek használatával írhatja le. A felületek leírják, hogy a _Tulajdonságok_, a _telemetria_és a _parancsok_ hogyan implementálják az eszköz részét:
 
-- `Properties` kérdésre adott válaszban foglalt lépéseket. A tulajdonságok olyan adatmezők, amelyek az eszköz állapotát jelölik. A tulajdonságok használatával az eszköz tartós állapotát, például egy Hűtőfolyadék-szivattyú on-off állapotát jelölheti ki. A tulajdonságok az alapszintű eszköz tulajdonságait is jelezhetik, például az eszköz belső vezérlőprogram-verzióját. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja.
-- `Telemetry` kérdésre adott válaszban foglalt lépéseket. A telemetria mezők az érzékelők méréseit jelölik. Minden alkalommal, amikor az eszköz érzékelőt használ, egy telemetria eseményt kell küldenie, amely az érzékelő adatait tartalmazza.
-- `Commands` kérdésre adott válaszban foglalt lépéseket. A parancsok olyan metódusokat jelölnek, amelyeket az eszköz felhasználói futtathatnak az eszközön. Például egy alaphelyzetbe állítási parancs vagy egy, a ventilátor be-és kikapcsolására szolgáló parancs.
+- `Properties`. A tulajdonságok olyan adatmezők, amelyek az eszköz állapotát jelölik. A tulajdonságok használatával az eszköz tartós állapotát, például egy Hűtőfolyadék-szivattyú on-off állapotát jelölheti ki. A tulajdonságok az alapszintű eszköz tulajdonságait is jelezhetik, például az eszköz belső vezérlőprogram-verzióját. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja.
+- `Telemetry`. A telemetria mezők az érzékelők méréseit jelölik. Minden alkalommal, amikor az eszköz érzékelőt használ, egy telemetria eseményt kell küldenie, amely az érzékelő adatait tartalmazza.
+- `Commands`. A parancsok olyan metódusokat jelölnek, amelyeket az eszköz felhasználói futtathatnak az eszközön. Például egy alaphelyzetbe állítási parancs vagy egy, a ventilátor be-és kikapcsolására szolgáló parancs.
 
 A következő példa egy termosztátos eszköz felületét szemlélteti:
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 A IoT Plug and Play lehetővé teszi olyan eszközök használatát, amelyek regisztrálták képességeiket az IoT hub-ban. Az eszköz tulajdonságait és parancsait például közvetlenül elérheti.
 
-Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják.
+Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják. Az API jelenlegi verziója `2019-07-01-preview`. Fűzze hozzá `?api-version=2019-07-01-preview`t a REST PI-hívásokhoz.
 
 Az eszköz tulajdonságainak (például a belső vezérlőprogram verziója (`fwVersion`) a termosztátban található `DeviceInformation` felületen való beszerzéséhez használja a digitális ikrek REST API.
 
-Ha a termosztátos eszközt `t-123`nevezik, az eszköz által megvalósított összes tulajdonságot egy REST API GET hívással érheti el:
+Ha a termosztátos eszközt `t-123`nevezik, az eszközön található összes tulajdonságot egy REST API GET hívással érheti el:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Általánosságban az összes tulajdonság a REST API sablonnal érhető el, ahol `{device-id}` az eszköz azonosítója:
+Általánosságban az összes csatoló összes tulajdonsága elérhető ezzel a REST API sablonnal, ahol `{device-id}` az eszköz azonosítója:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Ha ismeri a csatoló nevét, és az adott csatoló tulajdonságait szeretné lekérni, a hatókört a megadott csatolóra szűkítheti név szerint:
+Ha ismeri az interfész nevét, például `deviceInformation`, és szeretné lekérni az adott csatoló tulajdonságait, a hatókört a megadott csatolóra kell szűkíteni név szerint:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol `device-id` az eszköz azonosítója, és `{interface-name}` a csatoló neve:
@@ -231,5 +231,5 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 Most, hogy megismerte az eszközök modellezését, íme néhány további erőforrás:
 
 - [Digital Twin Definition Language (DTDL)](https://aka.ms/DTDL)
-- [C eszköz-SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

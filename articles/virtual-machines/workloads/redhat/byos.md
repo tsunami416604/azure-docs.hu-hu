@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190504"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597694"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
 A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszámolású (TB) vagy a saját előfizetéses (Red Hat Gold image) modellen keresztül érhetők el az Azure-ban. Ez a dokumentum áttekintést nyújt az Azure Red Hat Gold images-képeiről.
+
+>[!NOTE]
+> A RHEL BYOS Gold-lemezképek az Azure nyilvános (kereskedelmi) és Azure Government felhőkben érhetők el. Nem érhetők el az Azure China-ban vagy az Azure Blackforest-felhőkben.
 
 ## <a name="important-points-to-consider"></a>Megfontolandó fontos szempontok
 

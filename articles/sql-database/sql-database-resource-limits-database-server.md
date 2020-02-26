@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638255"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587243"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Erőforrás-korlátozások és erőforrás-szabályozás SQL Database
 
@@ -32,19 +32,19 @@ Ez a cikk áttekintést nyújt az önálló adatbázisokat és rugalmas készlet
 | Adatbázisok száma kiszolgálónként | 5000 |
 | Az előfizetéshez tartozó kiszolgálók alapértelmezett száma bármely régióban | 20 |
 | Kiszolgálók/előfizetés maximális száma bármely régióban | 200 |  
-| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54 000 |  
+| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54,000 |  
 | Virtuális mag-kvóta kiszolgálónkénti/példányon | 540 |
 | Készletek maximális száma kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
 |||
-
-> [!NOTE]
-> Ha további DTU/eDTU kvótát, virtuális mag kvótát vagy több kiszolgálót szeretne beszerezni az alapértelmezett értéknél, új támogatási kérést küldhet a "kvóta" típusú előfizetéshez a Azure Portalban. A DTU/eDTU kvóta és az adatbázis-korlát kiszolgálónként korlátozza a rugalmas készletek másodpercenkénti számát.
 
 > [!IMPORTANT]
 > Mivel az adatbázisok száma SQL Database kiszolgálón megközelíti a korlátot, a következő műveletek végezhetők el:
 >
 > - Növekvő késés a főadatbázison futó lekérdezések futtatásakor.  Ide tartoznak az erőforrás-kihasználtsági statisztikák, például a sys. resource_stats nézetei.
 > - Növekvő késés a felügyeleti műveletekben és a portálon olyan nézőpontok, amelyek a kiszolgáló adatbázisainak számbavételét foglalják magukban.
+
+> [!NOTE]
+> Ha további DTU/eDTU kvótát, virtuális mag kvótát vagy több kiszolgálót szeretne beszerezni az alapértelmezett értéknél, küldjön egy új támogatási kérelmet a Azure Portal. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Tárterület mérete
 
@@ -60,7 +60,7 @@ Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehet�
 - Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).
 - A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Adattárolás
+### <a name="storage"></a>Tárterület
 
 Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek lesznek, és az ügyfelek [hibaüzenetet](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)kapnak. A SELECT és DELETE utasítások továbbra is sikeresek lesznek.
 

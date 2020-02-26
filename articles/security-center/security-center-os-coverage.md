@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294252"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603750"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -95,9 +95,9 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * MySQL
 * CosmosDB
 * Tárfiók
-* App Service
+* App Service-ben
 * Függvény
-* Felhőszolgáltatás
+* Cloud Service
 * VNet
 * Alhálózat
 * Hálózati adapter
@@ -105,8 +105,8 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * Batch-fiók
 * Service Fabric-fiók
 * Automation-fiók
-* Load Balancer
-* Search
+* Terheléselosztó
+* Keresés
 * Service Bus-névtér
 * Stream Analytics
 * Eseményközpont-névtér
@@ -127,5 +127,3 @@ A Azure Stackban található Virtual Machines védelme is támogatott. A Securit
 - Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).
 - Ismerje meg [a különböző felhőalapú környezetekhez elérhető szolgáltatásokat](security-center-services.md).
 - További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
-- [Gyakori kérdések a Azure Security Center használatáról](security-center-faq.md).
-- [Blogbejegyzések az Azure biztonsági és megfelelőségi](https://blogs.msdn.com/b/azuresecurity/)funkcióiról.

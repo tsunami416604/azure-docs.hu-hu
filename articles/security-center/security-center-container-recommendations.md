@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202392"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604266"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>A Azure Security Center-tárolóra vonatkozó javaslatok ismertetése
 
@@ -44,20 +44,18 @@ Az alábbi táblázatokat hivatkozásként használva megismerheti a IaaS Linux 
 
 | Ajánlás | Leírás | Szervizelés |
 | --- | --- | --- |
-|Biztonsági rések szervizelése a tároló biztonsági beállításaiban |A biztonsági rések javítása a tároló biztonsági konfigurációjában az ajánlott eljárások alapján.| A biztonsági rések szervizelése a tároló biztonsági konfigurációjában:<br>1. Tekintse át a sikertelen szabályok listáját.<br>2. Javítsa ki az egyes szabályokat a megadott utasítások szerint.|
+|Biztonsági rések szervizelése a tároló biztonsági beállításaiban |A biztonsági rések javítása a tároló biztonsági konfigurációjában az ajánlott eljárások alapján.| A biztonsági rések szervizelése a tároló biztonsági konfigurációjában:<br>1. tekintse át a sikertelen szabályok listáját.<br>2. javítsa ki az egyes szabályokat a megadott utasítások szerint.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-* [Identitás és hozzáférés az Azure Security Center figyelése](security-center-identity-access.md)
+* [Identitás és hozzáférés figyelése az Azure Security Centerben](security-center-identity-access.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-* [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
+* [Az Azure SQL-szolgáltatás védelme Azure Security Center](security-center-sql-service-recommendations.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939433"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604064"
 ---
-# <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
+# <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
 Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben lévő hibrid számítási feladatokhoz, akár az Azure-ban, akár nem a helyszínen.
 
@@ -97,7 +97,7 @@ A javaslatok segítségével csökkentheti a támadási felületet az egyes erő
 
 ![Példa Security Center javaslatra](media/security-center-intro/sc-recommendation-example.png)
 
-## <a name="protect-against-threats"></a>Védelem a fenyegetések ellen
+## <a name="protect-against-threats"></a>Fenyegetések elleni védelem
 
 Security Center fenyegetések elleni védelme lehetővé teszi a fenyegetések észlelését és megelőzését a szolgáltatásként (IaaS), a nem Azure-beli kiszolgálókon, valamint az Azure-ban szolgáltatásként (Pásti) elérhető platformokon.
 

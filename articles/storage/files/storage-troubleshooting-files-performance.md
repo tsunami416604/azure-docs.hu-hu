@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708257"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598085"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
 
@@ -22,11 +22,11 @@ Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problé
 
 ### <a name="cause-1-share-experiencing-throttling"></a>1\. ok: a megosztás észlelt sávszélesség szabályozása
 
-A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg a tervezési útmutató [kiépített megosztások](storage-files-planning.md#provisioned-shares) című szakaszát.
+A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg a tervezési útmutató [kiépített megosztások](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) című szakaszát.
 
 Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kihasználhatja az Azure-mérőszámokat a portálon.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Válassza a **minden szolgáltatás** lehetőséget, és keressen **mérőszámokat**.
 
@@ -102,7 +102,7 @@ Ez egy ismert probléma az SMB-ügyfél Linux rendszeren történő megvalósít
 
 - A terhelés elosztása több virtuális gép között.
 - Ugyanazon a virtuális gépen használjon több csatlakoztatási pontot a **nosharesock** kapcsolóval, majd a terhelést a csatlakoztatási pontok között.
-- Linux rendszeren próbálja meg az **nostrictsync** kapcsolóval való csatlakoztatást, hogy ne kényszerítse az SMB ürítését minden Fsync-híváson. A Azure Files esetében ez a beállítás nem zavarja az adatok consistentcy, de az elavult fájlok metaadatait is eredményezheti a címtár listázásakor (**ls-l** parancs). A fájl metaadatainak közvetlen lekérdezése (**stat** Command) a legnaprakészebb fájl-metaadatokat fogja visszaadni.
+- Linux rendszeren próbálja meg az **nostrictsync** kapcsolóval való csatlakoztatást, hogy ne kényszerítse az SMB ürítését minden **Fsync** -híváson. Azure Files esetén ez a beállítás nem zavarja az adatkonzisztenciaot, de a könyvtár listázásához (**ls-l** parancs) elavult fájl-metaadatokat is eredményezhet. A fájl metaadatainak közvetlen lekérdezése (**stat** Command) a legnaprakészebb fájl-metaadatokat fogja visszaadni.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Magas késés a metaadatok nagy számítási feladataihoz, amelyek kiterjedt nyitott/zárási műveleteket foglalnak magukban.
 
@@ -194,7 +194,7 @@ Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokho
   > [!NOTE]
   > Ha a fájlmegosztás szabványos fájlmegosztás, a dimenzióértékek legördülő lista üres lesz, mert a megosztási metrikák nem érhetők el a normál fájlmegosztás esetén. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik. 
 
-8. A metrikai riasztási szabály kiértékeléséhez használt **riasztási paraméterek** (küszöbérték, operátor, újraszámolnia részletesség és gyakoriság) meghatározása, és kattintson a **kész**gombra.
+8. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az összesítési részletességet és a gyakoriságot), amelyet a metrikai riasztási szabály kiértékeléséhez, majd kattintson a **kész**gombra
 
   > [!TIP]
   > Ha statikus küszöbértéket használ, a metrikai diagram segíthet meghatározni egy ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Dinamikus küszöbérték használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558613"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604108"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Endpoint Protection szolgáltatással kapcsolatos problémák kezelése Azure Security Center
 Azure Security Center figyeli a kártevők elleni védelem állapotát, és jelentést készít az Endpoint Protection-problémák lapon. Security Center kiemeli a problémákat, például az észlelt fenyegetéseket és a nem megfelelő védelmet, amely lehetővé teszi, hogy a virtuális gépek (VM) és a számítógépek sebezhetőek legyenek a kártevők elleni fenyegetésekkel szemben. Az **Endpoint Protection-problémák**alatt lévő információk használatával meghatározhatja az azonosított problémák megoldására szolgáló tervet.
@@ -107,9 +107,7 @@ Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő d
 * [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
 * [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ez a cikk ismerteti a partnermegoldások biztonsági állapotának figyelését.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

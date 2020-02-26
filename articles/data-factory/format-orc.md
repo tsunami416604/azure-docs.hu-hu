@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 5f83e9bbcdfffdd9b19786012295ff5643116551
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e104c4c8e976207859b75212d5406558f04c6377
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927371"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597490"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Az ork formátuma Azure Data Factory
 
@@ -26,7 +26,7 @@ Az ork formátum a következő összekötők esetében támogatott: [Amazon S3](
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az ork-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-| Tulajdonság         | Leírás                                                  | Szükséges |
+| Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Az adatkészlet Type tulajdonságát az **ork**értékre kell beállítani. | Igen      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz a saját hely típusa és a `location`alatt támogatott tulajdonságok tartozik. **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
@@ -54,7 +54,7 @@ Alább látható egy példa az Azure Blob Storage-beli ork-adatkészletre:
 }
 ```
 
-Vegye figyelembe a következő szempontokat:
+Vegye figyelembe a következő pontokat:
 
 * Az összetett adattípusok nem támogatottak (STRUCT, Térkép, lista, UNION).
 * Az oszlopnév nem támogatja az üres helyet.
@@ -68,7 +68,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság      | Leírás                                                  | Szükséges |
+| Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | A másolási tevékenység forrásának Type tulajdonságát **OrcSource**értékre kell állítani. | Igen      |
 | storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott olvasási beállításokkal a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
@@ -77,7 +77,7 @@ A másolási tevékenység ***\*forrás\**** szakaszban a következő tulajdons�
 
 A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdonságok támogatottak.
 
-| Tulajdonság      | Leírás                                                  | Szükséges |
+| Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | A másolási tevékenység forrásának Type tulajdonságát **OrcSink**értékre kell állítani. | Igen      |
 | storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. Minden fájl alapú összekötő rendelkezik a saját támogatott írási beállításaival a `storeSettings`alatt. **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
@@ -85,19 +85,20 @@ A másolási tevékenység\*a fogadó ***\**** szakaszban a következő tulajdon
 ## <a name="using-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime használata
 
 > [!IMPORTANT]
-> A saját üzemeltetésű Integration Runtime, például a helyszíni és a Felhőbeli adattárolók közötti másoláshoz, ha nem a **-ként**másolja az ork-fájlokat, telepítenie kell a **64 bites JRE 8 (Java Runtime Environment) vagy a OpenJDK** az IR-gépen. További részletekért tekintse meg a következő bekezdést.
+> A saját üzemeltetésű Integration Runtime, például a helyszíni és a Felhőbeli adattárolók közötti másoláshoz, ha nem a **-ként**másolja az ork-fájlokat, telepítenie kell a **64 bites JRE 8 (Java Runtime Environment) vagy a OpenJDK** és a **Microsoft Visual C++ 2010 újraterjeszthető csomagot** az IR-gépen. További részletekért olvassa el a következő bekezdést.
 
 A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializálásával futó másoláshoz az ADF megkeresi a Java-futtatókörnyezetet úgy, hogy először ellenőrzi a (z) JRE beállításjegyzék- *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`ét* , ha nem található, másodsorban ellenőrzi a rendszerváltozót *`JAVA_HOME`* a OpenJDK.
 
 - A **JRE használatához**: a 64 bites IR használatához 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
 - **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja a JVM. dll fájlt a OpenJDK összes többi szükséges szerelvényéhez a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
+- **A Visual C++ 2010 Újraterjeszthető csomag telepítése**: a Visual C++ 2010 újraterjeszthető csomagja nincs telepítve a saját üzemeltetésű IR-telepítésekkel. [Itt](https://www.microsoft.com/download/details.aspx?id=14632)találhatja meg.
 
 > [!TIP]
 > Ha az Adatmásolást az ork formátumba vagy a saját üzemeltetésű Integration Runtime használatával másolja, és a "hiba történt a Java, üzenet: **Java. lang. működése OutOfMemoryError: Java heap Space**" kifejezéssel, akkor hozzáadhat egy környezeti változót `_JAVA_OPTIONS` a saját üzemeltetésű integrációs modult futtató GÉPEN a JVM minimális/maximális méretének módosításához, majd a folyamat futtatásához.
 
 ![JVM-halom méretének beállítása a saját üzemeltetésű IR-ben](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Példa: állítsa be a változó `_JAVA_OPTIONS` értéket a `-Xms256m -Xmx16g`értékkel. A jelző `Xms` megadja egy Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg a `Xmx` megadja a maximális memória-kiosztási készletet. Ez azt jelenti, hogy a JVM `Xms` mennyiségű memóriával fog elindulni, és legfeljebb `Xmx` mennyiségű memóriát tud használni. Alapértelmezés szerint az ADF min 64 MB és Max 1G értéket használ.
+Példa: állítsa be a változó `_JAVA_OPTIONS` értéket a `-Xms256m -Xmx16g`értékkel. A jelző `Xms` megadja egy Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg a `Xmx` megadja a maximális memória-kiosztási készletet. Ez azt jelenti, hogy a JVM `Xms` mennyiségű memóriával fog elindulni, és legfeljebb `Xmx` mennyiségű memóriát tud használni. Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
 ## <a name="next-steps"></a>Következő lépések
 

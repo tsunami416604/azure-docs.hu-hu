@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429718"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588875"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rövid útmutató: NAT-átjáró létrehozása az Azure CLI használatával
 
@@ -33,8 +33,6 @@ Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network 
 Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a megfelelő parancsok helyi futtatásával végezheti el.  Ha még soha nem használta a Azure Cloud Shellt, [Jelentkezzen be most](https://shell.azure.com) , és folytassa a kezdeti beállítással.
 Ha a parancsok helyi futtatását választja, telepítenie kell a CLI-t.  Ehhez az oktatóanyaghoz az Azure CLI 2.0.71 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-> [!IMPORTANT]
-> Ha Virtual Network NAT [előzetes verziója engedélyezve van](./nat-overview.md#enable-preview) az előfizetésben, az https://aka.ms/natportal használatával férhet hozzá a portálhoz.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -226,7 +224,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 
