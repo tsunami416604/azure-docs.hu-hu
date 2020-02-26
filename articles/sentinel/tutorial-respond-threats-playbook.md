@@ -3,7 +3,7 @@ title: 'Oktatóanyag: forgatókönyv futtatása az Azure Sentinelben'
 description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan futtathat forgatókönyveket az Azure Sentinelben.'
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2a416fa4f9e02372e570b77b0e6fb1af2cad81fb
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500691"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585084"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Oktatóanyag: automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben
 

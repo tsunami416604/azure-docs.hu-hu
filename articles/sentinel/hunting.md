@@ -3,7 +3,7 @@ title: A vadászat lehetőségei az Azure Sentinelben | Microsoft Docs
 description: Ez a cikk az Azure Sentinel-vadászati képességeinek használatát ismerteti.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
-ms.author: rkarlin
-ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: yelevin
+ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489200"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587898"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>A fenyegetések vadászata az Azure Sentinel szolgáltatással
 
@@ -138,7 +138,7 @@ Meglévő vadászati lekérdezés klónozása és módosítása:
 
    ![egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászati vizsgálatot az Azure Sentinel használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505710"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589453"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -190,6 +190,9 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 ## <a name="error-handling-and-retries"></a>Hibakezelés és újrapróbálkozások
 
 Ha hiba történik az események Azure Functionsba való küldésekor, Stream Analytics újrapróbálkozik a legtöbb művelettel. A rendszer minden http-kivételt újrapróbálkozik, amíg a 413-es HTTP-hiba (az entitás túl nagy) kivételével sikertelen lesz. Az entitás túl nagy hibája olyan Adathiba, amely az [újrapróbálkozási vagy a eldobási szabályzat](stream-analytics-output-error-policy.md)hatálya alá esik.
+
+> [!NOTE]
+> A Stream Analytics és Azure Functions közötti HTTP-kérések időtúllépése 100 másodpercre van állítva. Ha a Azure Functions alkalmazás több mint 100 másodpercet vesz igénybe egy köteg feldolgozásához, Stream Analytics a hibák.
 
 ## <a name="known-issues"></a>Ismert problémák
 

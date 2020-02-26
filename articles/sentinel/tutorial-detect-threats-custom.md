@@ -3,7 +3,7 @@ title: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észl
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni analitikai szabályokat a gyanús fenyegetések észleléséhez az Azure Sentinel használatával.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
-ms.author: rkarlin
-ms.openlocfilehash: bdd36e2f3c2b426f4bad3e787c12be2f7d09b303
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.author: yelevin
+ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565519"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585107"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
 
@@ -105,7 +105,7 @@ Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresh
 > [!NOTE]
 > Az Azure Sentinelben létrehozott riasztások [Microsoft Graph biztonságon](https://aka.ms/securitygraphdocs)keresztül érhetők el. További információ: [Microsoft Graph Security riasztások dokumentációja](https://aka.ms/graphsecurityreferencebetadocs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával.
 

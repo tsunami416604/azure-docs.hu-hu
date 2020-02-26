@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524256"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586784"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
 
@@ -54,20 +54,23 @@ Előfordulhat, hogy meg kívánja őrizni a feladatok által létrehozott napló
 
 > [!TIP]
 > A naplók és egyéb feladatok és tevékenységek kimeneti adatainak egy másik módja a [Azure batch file Conventions](batch-task-output.md) Library használata.
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>Feladat-előkészítési feladat
-A feladat műveleteinek végrehajtása előtt a Batch végrehajtja a feladat-előkészítési feladatot minden olyan számítási csomóponton, amely a feladatok futtatására van ütemezve. Alapértelmezés szerint a Batch szolgáltatás megvárja a feladat-előkészítési feladat befejeződését, mielőtt futtatja a csomóponton végrehajtott végrehajtásra ütemezett feladatokat. Azonban beállíthatja, hogy a szolgáltatás ne várjon. Ha a csomópont újraindul, a feladat-előkészítési feladat újra lefut, de ezt a viselkedést is letilthatja. Ha a feladat egy feladat-előkészítési feladattal és egy Feladatkezelő feladattal van konfigurálva, a feladat-előkészítési feladat a Feladatkezelő feladat előtt fut, ugyanúgy, mint az összes többi feladathoz. A feladat-előkészítési feladat mindig először fut.
+
+
+A feladatok végrehajtásának megkezdése előtt a Batch végrehajtja a feladat-előkészítési feladatot a feladatok futtatására ütemezett összes számítási csomóponton. Alapértelmezés szerint a Batch megvárja a feladat-előkészítési feladat befejeződését, mielőtt futtatja a csomóponton végrehajtott végrehajtásra ütemezett feladatokat. Azonban beállíthatja, hogy a szolgáltatás ne várjon. Ha a csomópont újraindul, a feladat-előkészítési feladat újra lefut. Ezt a viselkedést is letilthatja. Ha a feladat egy feladat-előkészítési feladattal és egy Feladatkezelő feladattal van konfigurálva, a feladat-előkészítési feladat a Feladatkezelő feladat előtt fut, ugyanúgy, mint az összes többi feladathoz. A feladat-előkészítési feladat mindig először fut.
 
 A feladat-előkészítési feladat csak a feladat futtatására ütemezett csomópontokon hajtható végre. Ez megakadályozza az előkészítési feladatok szükségtelen végrehajtását abban az esetben, ha egy csomóponthoz nincs hozzárendelve feladat. Ez akkor fordulhat elő, ha egy adott feladathoz tartozó tevékenységek száma kisebb, mint a készletben lévő csomópontok száma. Ez akkor is érvényes, ha az [egyidejű feladat-végrehajtás](batch-parallel-node-tasks.md) engedélyezve van, így a csomópontok üresjáratban maradnak, ha a feladatok száma nem éri el az összes lehetséges egyidejű feladatot. Ha nem futtatja a feladat-előkészítési feladatot az üresjárati csomópontokon, kevesebb pénzt tölthet fel az adatátviteli költségekkel.
 
 > [!NOTE]
 > A [JobPreparationTask][net_job_prep_cloudjob] eltér a [CloudPool. StartTask][pool_starttask] , amely az adott JobPreparationTask az egyes feladatok elején hajtja végre, míg a StartTask csak akkor fut le, ha egy számítási csomópont először csatlakozik egy készlethez vagy újraindításhoz.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>Feladat kiadási feladata
+
+>## <a name="job-release-task"></a>Feladat kiadási feladata
+
 Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó *feladatokat, és*futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
 
 > [!NOTE]

@@ -3,14 +3,14 @@ title: Biztonságos kapcsolódás Azure Service Fabric-fürthöz
 description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés hitelesítéséhez, valamint az ügyfelek és a fürt közötti kommunikáció biztonságossá tételéhez.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458268"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587056"
 ---
-# <a name="connect-to-a-secure-cluster"></a>Kapcsolódás biztonságos fürthöz
+# <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
 Amikor az ügyfél egy Service Fabric fürthöz csatlakozik, az ügyfél hitelesíthető és biztonságossá tehető a tanúsítványalapú biztonság vagy a Azure Active Directory (HRE) használatával létesített kommunikációban. Ez a hitelesítés biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és a központilag telepített alkalmazásokhoz, valamint felügyeleti feladatokat hajtsanak végre.  A fürt létrehozásakor a tanúsítvány-vagy HRE biztonsági szolgáltatást előzőleg engedélyezni kell a fürtön.  A fürtök biztonsági forgatókönyvekkel kapcsolatos további információkért lásd: a [fürt biztonsága](service-fabric-cluster-security.md). Ha tanúsítványokkal védett fürthöz csatlakozik, [állítsa be az ügyféltanúsítványt](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) azon a számítógépen, amely a fürthöz csatlakozik. 
 
@@ -24,15 +24,15 @@ A `sfctl cluster select` parancs használatával kapcsolódhat egy fürthöz.
 
 Az ügyféltanúsítványok két különböző módon adhatók meg tanúsítványként és kulcspárként, vagy egyetlen PFX-fájlként. A jelszóval védett PEM-fájlok esetében a rendszer automatikusan kéri a jelszó megadását. Ha az ügyféltanúsítványt PFX-fájlként szerezte be, először alakítsa át a PFX-fájlt egy PEM-fájlba a következő parancs használatával. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
 Ha a. pfx fájl jelszava nem védett, használja a-passin pass: (utolsó paraméter) értékét.
 
-Az ügyféltanúsítvány PEM-fájlként való megadásához a `--pem` argumentumban meg kell adni a fájl elérési útját. Példa:
+Az ügyféltanúsítvány PEM-fájlként való megadásához a `--pem` argumentumban meg kell adni a fájl elérési útját. Például:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,22 +40,22 @@ A jelszóval védett PEM-fájlok a parancsok futtatása előtt kérik a jelszót
 
 A tanúsítvány megadásához a kulcspár a `--cert` és `--key` argumentumot használja az egyes fájlok elérési útjának megadásához.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza a `--no-verify` lehetőséget. Példa:
+Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza a `--no-verify` lehetőséget. Például:
 
 > [!WARNING]
 > Ne használja a `no-verify` kapcsolót éles Service Fabric fürtökhöz való csatlakozáskor.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához használja a `--ca` argumentumot. Példa:
+Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához használja a `--ca` argumentumot. Például:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

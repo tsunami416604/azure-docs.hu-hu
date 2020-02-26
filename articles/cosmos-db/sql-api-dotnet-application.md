@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444933"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587464"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "75444933"
 > * [Python](sql-api-python-application.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
-Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban üzemeltetett ASP.NET MVC-alkalmazás adatait a Azure Cosmos DB használatával. Ebben az oktatóanyagban a .NET SDK v3-t használja. Az alábbi képen látható, hogy milyen weboldalt fog létrehozni a cikkben szereplő minta használatával:
+Ez az oktatóanyag bemutatja, hogyan Azure Cosmos DB használatával tárolhatja és érheti el adatait üzemeltetett ASP.NET MVC alkalmazásnak az Azure-ban. Ebben az oktatóanyagban a .NET SDK v3-t használja. Az alábbi képen látható, hogy milyen weboldalt fog létrehozni a cikkben szereplő minta használatával:
 
 ![Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
@@ -34,13 +34,13 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 > [!div class="checklist"]
 >
-> * Azure Cosmos-fiók létrehozása
+> * Egy Azure Cosmos-fiók létrehozása
 > * ASP.NET Core MVC-alkalmazás létrehozása
-> * Az alkalmazás csatlakoztatása a Azure Cosmos DBhoz
+> * Az alkalmazás csatlakoztatása az Azure Cosmos DB
 > * Létrehozási, olvasási, frissítési és törlési (szifilisz) műveletek végrehajtása az adatokon
 
 > [!TIP]
-> Ez az oktatóanyag feltételezi, hogy már rendelkezik korábbi tapasztalattal a ASP.NET Core MVC és a Azure App Service használatával. Ha új ASP.NET Core vagy az [előfeltételként szükséges eszközök](#prerequisites), javasoljuk, hogy töltse le a teljes minta projektet a [githubról][GitHub], adja hozzá a szükséges NuGet-csomagokat, és futtassa azt. A projekt létrehozása után áttekintheti ezt a cikket, hogy betekintést kapjon a programkódba a projekt kontextusában.
+> Ez az oktatóanyag feltételezi, hogy már rendelkezik korábbi tapasztalattal a ASP.NET Core MVC és a Azure App Service használatával. Ha új ASP.NET Core vagy az [előfeltételként szükséges eszközök](#prerequisites), javasoljuk, hogy töltse le a teljes minta projektet a [githubról][GitHub], adja hozzá a szükséges NuGet-csomagokat, és futtassa azt. Miután a projekt buildjének elkészítéséhez, ez a cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A cikkben szereplő összes képernyőkép a Microsoft Visual Studio Community 2
 
 ## <a name="create-an-azure-cosmos-account"></a>1. lépés: Azure Cosmos-fiók létrehozása
 
-Kezdjük egy Azure Cosmos-fiók létrehozásával. Ha már rendelkezik Azure Cosmos DB SQL API-fiókkal, vagy ha a Azure Cosmos DB emulátort használja, ugorjon a [2. lépés: új ASP.net MVC-alkalmazás létrehozása](#create-a-new-mvc-application)elemre.
+Először hozzon létre egy Azure Cosmos-fiók. Ha már rendelkezik Azure Cosmos DB SQL API-fiókkal, vagy ha a Azure Cosmos DB emulátort használja, ugorjon a [2. lépés: új ASP.net MVC-alkalmazás létrehozása](#create-a-new-mvc-application)elemre.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -110,7 +110,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC-alk
 
 1. Cserélje le a *Item.cs* osztály tartalmát a következő kódra:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
 A Azure Cosmos DB JSON használatával helyezi át és tárolja az adattárolást. A `JsonProperty` attribútummal szabályozhatja, hogy a JSON hogyan szerializálja és deszerializálja az objektumokat. A `Item` osztály a `JsonProperty` attribútumot mutatja be. Ez a kód vezérli a JSON-ba kerülő tulajdonságnév formátumát. Emellett átnevezi a .NET-tulajdonságot `Completed`.
 
@@ -143,7 +143,7 @@ Ha elkészült, a Visual Studio megnyitja az általa létrehozott *cshtml* -fáj
 
 #### <a name="AddNewIndexView"></a>Új elem nézet hozzáadása
 
-Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítéséhez, hozzon létre egy új nézetet az elemek létrehozásához a következő lépések segítségével:
+Hasonló hogyan hozott létre, listaelemek nézetet is konfigurációelemek létrehozása a következő lépések segítségével új nézet létrehozása:
 
 1. **Megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a > **nézet** **hozzáadása** lehetőséget.
 
@@ -157,7 +157,7 @@ Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítésé
 
 #### <a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
 
-Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő lépésekkel:
+És végül adja hozzá egy nézetet, hogy módosítson egy elemet az alábbi lépéseket követve:
 
 1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a > **nézet** **hozzáadása** lehetőséget.
 
@@ -183,7 +183,7 @@ Miután elvégezte ezeket a lépéseket, a Visual Studióban zárjunk be minden 
 
 1. Cserélje le a *ItemController.cs* tartalmát a következő kódra:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
 A **ValidateAntiForgeryToken** attribútum itt található, amely segít megvédeni ezt az alkalmazást a helyek közötti kérelmek hamisításának elleni támadásokkal szemben. A nézeteknek ezzel a hamisítási jogkivonattal is működniük kell. További információkért és Példákért lásd: [a helyek közötti kérelmek hamisításának (CSRF) megelőzése a ASP.net MVC alkalmazásban][Preventing Cross-Site Request Forgery]. A [GitHub][GitHub] közzétett forráskódban szerepel a teljes megvalósítás.
 
@@ -203,11 +203,11 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 1. Cserélje le a *CosmosDBService.cs* tartalmát a következő kódra:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
 1. Ismételje meg az előző két lépést, de ezúttal használja a *ICosmosDBService*nevet, és használja a következő kódot:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
 1. A **ConfigureServices** -kezelőben adja hozzá a következő sort:
 
@@ -219,7 +219,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 1. Ugyanebben a fájlban adja hozzá a következő **InitializeCosmosClientInstanceAsync**metódust, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
 
-    [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
 
 1. Adja meg a konfigurációt a projekt *appSettings. JSON* fájljában. Nyissa meg a fájlt, és adjon hozzá egy **CosmosDb**nevű szakaszt:
 

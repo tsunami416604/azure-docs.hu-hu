@@ -3,7 +3,7 @@ title: Egy Identity-védelem összekötése az Azure Sentinel szolgáltatással 
 description: Ismerje meg, hogyan csatlakozhat az Azure Sentinelhez egy Identity-védelem.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610505"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588144"
 ---
 # <a name="connect-one-identity-safeguard"></a>Egy Identity-védelem összekötése
 Az egyetlen Identity védzáradék-összekötő fokozza a standard Common Event Format (CEF) összekötőt, amely védelmet biztosít a Kiemelt munkamenetek-specifikus irányítópultok számára. Ezzel az összekötővel egyszerűen megkezdheti az eszköz vizualizációk, riasztások, nyomozások és egyéb események által generált eseményeinek használatát.

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543307"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580507"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja fel [Azure Machine learning 
 
 - 2\. lehetőség: Ha strukturálatlan adatokkal rendelkezik, hozzon létre egy FileDataset, és csatlakoztassa vagy töltsön le fájlokat egy távoli számítási képzéshez.
 
-Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési termékekkel, például a [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), a [kalkulátorsal](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) és a [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py).
+Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési termékekkel, például a [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), a [kalkulátorsal](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), a [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) és a [Azure Machine learning folyamatokkal](how-to-create-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -100,11 +100,12 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>2\. lehetőség: fájlok csatlakoztatása távoli számítási célhoz
 
 Ha szeretné, hogy az adatfájlok elérhetők legyenek a számítási célra a betanításhoz, használja a [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) az általa hivatkozott fájlok csatlakoztatásához vagy letöltéséhez.
 
-### <a name="mount-vs-download"></a>Varga csatlakoztatása Letöltés
+### <a name="mount-vs-download"></a>Csatlakoztatás a letöltéshez
 Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. Ha az adatok mérete meghaladja a számítási lemez méretét, vagy csak az adatkészlet egy részét tölti be a parancsfájlba, a csatlakoztatás javasolt. Mivel a lemez méretnél nagyobb méretű adatkészletek letöltése sikertelen lesz, és a csatlakoztatás csak a parancsfájl által a feldolgozáskor használt adat részét fogja betölteni. 
 
 Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. Ha a parancsfájl az adatkészlet által hivatkozott összes fájlt feldolgozza, és a számítási lemez elfér a teljes adatkészletben, akkor a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében.
@@ -199,4 +200,4 @@ Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják �
 
 * [Képosztályozási modellek betanítása](https://aka.ms/filedataset-samplenotebook) a FileDatasets
 
-* [Környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)
+* [Betanítás adatkészletekkel a folyamatok használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444060"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586512"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -145,7 +145,7 @@ Az élő áttelepítés védelmének beállítása:
 
 3. Rendelje hozzá a MABSMachineName $ fiókot írásvédett rendszergazdai fiókként a VMM felügyeleti kiszolgálón.
 
-4. A `Set-DPMGlobalProperty` PowerShell-parancsmaggal kapcsolja össze az összes Hyper-V gazdagép-kiszolgálót az összes MABS-kiszolgálóval. A parancsmag több MABS-kiszolgáló nevét is elfogadja. Használja a formátumot: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. További információ: [set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx).
+4. A `Set-DPMGlobalProperty` PowerShell-parancsmaggal kapcsolja össze az összes Hyper-V gazdagép-kiszolgálót az összes MABS-kiszolgálóval. A parancsmag több MABS-kiszolgáló nevét is elfogadja. Használja a formátumot: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. További információ: [set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
 5. Miután a VMM-felhőkben futó Hyper-V-gazdagépeken futó összes virtuális gép fel van derítve a VMM-ben, állítson be egy védelmi csoportot, és adja hozzá a védelemmel ellátni kívánt virtuális gépeket. Az automatikus konzisztencia-ellenőrzést a védelmi csoport szintjén kell engedélyezni a virtuális gépek mobilitási forgatókönyvei alatt.
 

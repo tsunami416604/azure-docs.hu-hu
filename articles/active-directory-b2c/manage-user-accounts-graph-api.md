@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483227"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585628"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.comgraph/sdks/create-requests) Microsoft Graph információk olvasását és írását, a `$select` a visszaadott tulajdonságok szabályozását, az egyéni lekérdezési paraméterek megadását, valamint a `$filter` és `$orderBy` lekérdezési paraméterek használatát ismertetik.
+[Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph információk olvasását és írását, a `$select` a visszaadott tulajdonságok szabályozását, az egyéni lekérdezési paraméterek megadását, valamint a `$filter` és `$orderBy` lekérdezési paraméterek használatát ismertetik.
 
 ## <a name="next-steps"></a>Következő lépések
 

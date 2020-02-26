@@ -3,22 +3,22 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bdc3dd1da9d3ddc966b664f8bec479f5a8ff10f2
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501081"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584506"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
-A Azure Backup által biztosított jelentéskészítési megoldás Log Analytics (LA). Ahhoz, hogy egy adott tároló adatait el lehessen küldeni a LA-nek, az adott tár számára létre kell hozni egy [diagnosztikai beállítást](https://aka.ms/AzureBackupDiagnosticsDocs) .
+A Azure Backup által biztosított jelentéskészítési megoldás Log Analytics (LA). Ahhoz, hogy egy adott tároló adatait el lehessen küldeni a LA-nek, az adott tár számára létre kell hozni egy [diagnosztikai beállítást](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) .
 
 Gyakran előfordulhat, hogy a diagnosztikai beállítások manuális hozzáadásával a tárolóban nehézkes feladat lehet. Emellett a létrehozott új tárolónak is engedélyeznie kell a diagnosztikai beállításokat ahhoz, hogy meg tudja jeleníteni a tár jelentéseit. 
 
 A diagnosztikai beállítások méretezésének leegyszerűsítése érdekében a Azure Backup beépített [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)biztosít. Ez a házirend egy LA Diagnostics-beállítást hoz létre egy adott előfizetés vagy erőforráscsoport összes tárolóján. A következő szakasz útmutatást nyújt ennek a szabályzatnak a használatáról.
 
-## <a name="supported-scenarios"></a>Támogatott helyzetek 
+## <a name="supported-scenarios"></a>Támogatott helyzetek
 
 * A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A szabályzatot hozzárendelő felhasználónak tulajdonosi hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
@@ -49,6 +49,7 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 ![Szabályzat-hozzárendelés alapjai](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. A **Paraméterek**területen adja meg a következő adatokat:
+
 * **Profilnév** – a házirend által létrehozott diagnosztikai beállításokhoz hozzárendelni kívánt név.
 * **Log Analytics munkaterület** – az a log Analytics munkaterület, amelyhez a diagnosztikai beállítást társítani kell. A szabályzat-hozzárendelés hatókörében lévő összes tároló diagnosztikai adatait a rendszer leküldi a megadott LA munkaterületre.
 
@@ -69,7 +70,7 @@ A Szervizelési feladatot a szabályzat definíciója szerint meg nem felelő t�
 * Nem létezik diagnosztikai beállítás a tárolóhoz.
 * A rendszer diagnosztikai beállításokat tartalmaz a tárolóhoz, de egyik beállítás sem rendelkezik az **összes** olyan erőforrás-specifikus eseménysel, amely a La as célként van engedélyezve, és az **erőforrás-specifikus** elem van kiválasztva a váltásban. 
 
-Tehát akkor is, ha a felhasználó rendelkezik egy olyan tárolóval, amelyen engedélyezve van a AzureBackupReport esemény a AzureDiagnostics módban (amelyet a biztonsági mentési jelentések is támogatnak), a Szervizelési feladat továbbra is érvényes lesz erre a tárolóra, mivel az erőforrás [-specifikus](https://aka.ms/AzureBackupDiagnosticsDocs#legacy-event)mód a diagnosztikai beállítások létrehozásának ajánlott módja. 
+Tehát akkor is, ha a felhasználó rendelkezik egy olyan tárolóval, amelyen engedélyezve van a AzureBackupReport esemény a AzureDiagnostics módban (amelyet a biztonsági mentési jelentések is támogatnak), a Szervizelési feladat továbbra is érvényes lesz erre a tárolóra, mivel az erőforrás [-specifikus](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)mód a diagnosztikai beállítások létrehozásának ajánlott módja.
 
 Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-specifikus eseménynek csak egy részhalmazát engedélyezi, a Szervizelési feladat érvényes lesz erre a tárolóra, mivel a biztonsági mentési jelentések csak a várt módon fognak működni, ha az összes hat erőforrás-specifikus esemény engedélyezve van.
 
@@ -82,6 +83,7 @@ Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-sp
 > Vegye figyelembe, hogy a Szervizelési feladat **nem** fog sikerülni, ha a meglévő diagnosztikai beállítás csak az X munkaterület AzureBackupReport engedélyezett, mert ebben az esetben a meglévő beállítás által engedélyezett események és a Szervizelési feladat által létrehozott események között nem lesz átfedés.
 
 ## <a name="next-steps"></a>További lépések
-- [Tudnivalók a biztonsági mentési jelentések használatáról](https://aka.ms/AzureBackupReportDocs)
-- [További információ a Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-- [A Azure Policy használata az adott hatókörben lévő összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+
+* [Tudnivalók a biztonsági mentési jelentések használatáról](https://docs.microsoft.com/azure/backup/configure-reports)
+* [További információ a Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
+* [A Azure Policy használata az adott hatókörben lévő összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

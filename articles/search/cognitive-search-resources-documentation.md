@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f8a14c348f4f8eddcd60c6946c831c90262757b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837790"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588994"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
 
@@ -21,7 +21,7 @@ Az AI-bővítés az Azure Cognitive Search indexelésének egyik funkciója, ame
 
 A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumentációt tartalmaznak.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 + [Az AI bemutatása az Azure-ban Cognitive Search](cognitive-search-concept-intro.md)
 + [Gyors útmutató: kognitív készségkészlet létrehozása a Azure Portalban](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: bővített indexelés az AI-vel](cognitive-search-tutorial-blob.md)
@@ -36,7 +36,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
 + [Egyéni szaktudás-illesztőfelület definiálása](cognitive-search-custom-skill-interface.md)
 + [Hibaelhárítási tippek](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Leírások
+## <a name="reference"></a>Referencia
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
   + [Microsoft. Skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -63,7 +63,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)

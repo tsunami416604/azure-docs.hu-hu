@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697217"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591574"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
@@ -40,11 +40,11 @@ Ugorjon egyenesen az identitás létrehozásához. Ha probléma lép fel, ellen�
 
 Létrehozott egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet.
 
-## <a name="assign-the-application-to-a-role"></a>Az alkalmazás társítása szerepkörhöz
+## <a name="assign-a-role-to-the-application"></a>Szerepkör társítása az alkalmazáshoz
 
-Az előfizetés erőforrásainak eléréséhez hozzá kell rendelnie az alkalmazást egy szerepkörhöz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben olvashat bővebben.
+Az előfizetéshez tartozó erőforrások eléréséhez hozzá kell rendelnie egy szerepkört az alkalmazáshoz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben olvashat bővebben.
 
-Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
+Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Ha például hozzáad egy alkalmazást az erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
 
 1. A Azure Portal válassza ki azt a hatóköri szintet, amelyhez az alkalmazást hozzá szeretné rendelni. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatóköréhez, keresse meg és válassza ki az **előfizetések**elemet, vagy válassza az **előfizetések** lehetőséget a **kezdőlapon** .
 
@@ -57,12 +57,12 @@ Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforr�
    Ha nem látja a keresett előfizetést, válassza a **globális előfizetések szűrőt**. Győződjön meg arról, hogy a portálon a kívánt előfizetés van kiválasztva.
 
 1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
-1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
+1. Válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
 1. Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört. Ha például engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az **Újraindítás**, a példányok **elindítása** és **leállítása** , válassza ki a **közreműködő** szerepkört.  További információ az [elérhető szerepkörökről](../../role-based-access-control/built-in-roles.md) alapértelmezés szerint az Azure ad-alkalmazások nem jelennek meg az elérhető lehetőségek között. Az alkalmazás megkereséséhez keresse meg a nevet, és jelölje ki.
 
    ![Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört](./media/howto-create-service-principal-portal/select-role.png)
 
-1. A szerepkör hozzárendelésének befejezéséhez kattintson a **Mentés** gombra. Az alkalmazás az adott hatókörhöz tartozó szerepkörhöz rendelt felhasználók listájában jelenik meg.
+1. A szerepkör hozzárendelésének befejezéséhez kattintson a **Mentés** gombra. Az alkalmazás az adott hatókörhöz tartozó szerepkörrel rendelkező felhasználók listájában jelenik meg.
 
 Az egyszerű szolgáltatásnév be van állítva. Elkezdheti használni a parancsfájlok vagy alkalmazások futtatását. A következő szakasz bemutatja, hogyan kérheti le a programozott módon történő bejelentkezéshez szükséges értékeket.
 
@@ -112,7 +112,7 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmaz�
 1. Válassza ki az **ügyfél titkai-> új ügyfél titkát**.
 1. Adja meg a titok leírását és időtartamát. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
 
-   Az ügyfél titkos kulcsának mentése után megjelenik az ügyfél titkos kulcsának értéke. Másolja ezt az értéket, mert később nem tudja lekérni a kulcsot. Adja meg a kulcs értékét az alkalmazás-AZONOSÍTÓval, és jelentkezzen be alkalmazásként. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+   Az ügyfél titkos kulcsának mentése után megjelenik az ügyfél titkos kulcsának értéke. Másolja ezt az értéket, mert később nem fogja tudni lekérni a kulcsot. Adja meg a kulcs értékét az alkalmazás-AZONOSÍTÓval, és jelentkezzen be alkalmazásként. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
    ![Másolja a titkos értéket, mert később nem lehet beolvasni](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ Ne feledje, hogy az alkalmazáshoz hozzáférő erőforrásokhoz is konfiguráln
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Az alkalmazás Azure AD-Bérlővel való regisztrálásához és az alkalmazás az Azure-előfizetésben lévő szerepkörhöz való hozzárendeléséhez megfelelő engedélyekkel kell rendelkeznie.
+Megfelelő engedélyekkel kell rendelkeznie az alkalmazások Azure AD-Bérlővel való regisztrálásához, és az alkalmazáshoz az Azure-előfizetéshez tartozó szerepkört kell rendelni.
 
 ### <a name="check-azure-ad-permissions"></a>Azure AD-engedélyek keresése
 
@@ -138,11 +138,11 @@ Az alkalmazás Azure AD-Bérlővel való regisztrálásához és az alkalmazás 
 1. A bal oldali ablaktáblán válassza a **felhasználói beállítások**lehetőséget.
 1. Keresse meg a **Alkalmazásregisztrációk** beállítást. Ezt az értéket csak rendszergazda állíthatja be. Ha az **Igen**értékre van állítva, akkor az Azure ad-bérlő bármelyik felhasználója regisztrálhat egy alkalmazást.
 
-Ha az alkalmazás regisztrációja **nem**értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepkör-engedélyek](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, vagy engedélyezheti a felhasználók számára, hogy alkalmazások regisztrálása.
+Ha az alkalmazás regisztrációja **nem**értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepkör-engedélyek](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrációjának összes aspektusát létrehozhatja és kezelheti, illetve lehetővé teheti a felhasználók számára a regisztrálást apps.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-előfizetési engedélyek keresése
 
-Az Azure-előfizetésében a fióknak `Microsoft.Authorization/*/Write` hozzáféréssel kell rendelkeznie ahhoz, hogy egy AD-alkalmazást szerepkörhöz rendeljen. Ezt a műveletet a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkör vagy a [Felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör végezheti el. Ha a fiókja hozzá van rendelve a **közreműködő** szerepkörhöz, Önnek nincs megfelelő engedélye. Hibaüzenet jelenik meg, amikor megkísérli hozzárendelni a szolgáltatásnevet egy szerepkörhöz.
+Az Azure-előfizetésében a fióknak `Microsoft.Authorization/*/Write` hozzáféréssel kell rendelkeznie ahhoz, hogy szerepkört rendeljen egy AD-alkalmazáshoz. Ezt a műveletet a [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) szerepkör vagy a [Felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör végezheti el. Ha a fiókja hozzá van rendelve a **közreműködő** szerepkörhöz, nincs megfelelő engedélye. Hibaüzenet jelenik meg, amikor az egyszerű szolgáltatás szerepkört rendeli hozzá.
 
 Az előfizetési engedélyek ellenőrzését:
 
@@ -154,7 +154,7 @@ Az előfizetési engedélyek ellenőrzését:
 
    ![Válassza ki azt az előfizetést, amelyben létre kívánja hozni a szolgáltatásnevet a következőben:](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Válassza ki a **szerepkör-hozzárendeléseket** a hozzárendelt szerepkörök megtekintéséhez, és állapítsa meg, hogy rendelkezik-e megfelelő engedélyekkel egy ad-alkalmazás szerepkörhöz való hozzárendeléséhez. Ha nem, kérje meg az előfizetés rendszergazdáját, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdai szerepkörbe. A következő képen a felhasználó a tulajdonos szerepkörhöz lesz rendelve, ami azt jelenti, hogy a felhasználó rendelkezik a megfelelő engedélyekkel.
+1. Válassza ki a **szerepkör-hozzárendeléseket** a hozzárendelt szerepkörök megtekintéséhez, és állapítsa meg, hogy rendelkezik-e megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen egy ad-alkalmazáshoz. Ha nem, kérje meg az előfizetés rendszergazdáját, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdai szerepkörbe. A következő ábrán a felhasználó hozzárendeli a tulajdonosi szerepkört, ami azt jelenti, hogy a felhasználó rendelkezik a megfelelő engedélyekkel.
 
    ![Ez a példa azt mutatja be, hogy a felhasználó hozzá van rendelve a tulajdonosi szerepkörhöz](./media/howto-create-service-principal-portal/view-user-role.png)
 

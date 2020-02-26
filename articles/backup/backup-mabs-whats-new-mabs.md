@@ -3,12 +3,12 @@ title: Az Microsoft Azure Backup-kiszolgáló újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez. Megtudhatja, hogyan telepítheti vagy frissíthet Azure Backup Server v3-ra.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172220"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582806"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Az Microsoft Azure Backup-kiszolgáló újdonságai
 
@@ -18,7 +18,7 @@ A MABS v3 a következő funkciókat tartalmazza:
 
 ## <a name="volume-to-volume-migration"></a>Kötetről kötetre való Migrálás
 
-A MABS v2 modern biztonsági másolati tárhely (MBS)-ben bejelentettük a számítási feladatok ellátására szolgáló tárhelyet, ahol bizonyos számítási feladatokat úgy konfigurálhat, hogy a tárolási tulajdonságok alapján biztonsági mentést lehessen készíteni egy adott tárhelyre. A konfigurálást követően azonban előfordulhat, hogy bizonyos adatforrások biztonsági másolatait át kell helyeznie más tárolóba az optimalizált erőforrás-használat érdekében. A MABS v3 lehetővé teszi a biztonsági másolatok átkonfigurálását és a különböző köteteken való tárolását [három lépésben](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/).
+A MABS v2 modern biztonsági másolati tárhely (MBS)-ben bejelentettük a számítási feladatok ellátására szolgáló tárhelyet, ahol bizonyos számítási feladatokat úgy konfigurálhat, hogy a tárolási tulajdonságok alapján biztonsági mentést lehessen készíteni egy adott tárhelyre. A konfigurálást követően azonban előfordulhat, hogy bizonyos adatforrások biztonsági másolatait át kell helyeznie más tárolóba az optimalizált erőforrás-használat érdekében. A MABS v3 lehetővé teszi a biztonsági másolatok átkonfigurálását és a különböző köteteken való tárolását [három lépésben](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842).
 
 ## <a name="prevent-unexpected-data-loss"></a>Váratlan adatvesztés megakadályozása
 

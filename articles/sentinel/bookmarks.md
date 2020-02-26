@@ -1,8 +1,8 @@
 ---
 title: A vadászati könyvjelzők használata adatvizsgálatokhoz az Azure Sentinel szolgáltatásban
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Sentinel vadászati könyvjelzői az adatnyomon követéshez.
-author: cabailey
-ms.author: cabailey
+author: yelevin
+ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563734"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588688"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>A vadászat során az Azure Sentinel használatával nyomon követheti az adatgyűjtést
 
@@ -23,7 +23,7 @@ A fenyegetések vadászata jellemzően a kártékony viselkedés bizonyítékait
 
 Az Azure Sentinelben elérhető vadászati könyvjelzők segítségével elvégezheti az **Azure Sentinel-logs-naplókban**futtatott lekérdezések megőrzését, valamint a szükségesnek ítélt lekérdezési eredményeket. Feljegyzések és címkék hozzáadásával rögzítheti a kontextusbeli megjegyzéseket, és hivatkozhat az eredményekre. A könyvjelzővel ellátott adatelemek az egyszerű együttműködés érdekében láthatók Önnek és a csapattársaik számára.
 
-A beérkező könyvjelzők adatait bármikor újra felkeresheti a **vadászat** ablaktábla **könyvjelzők** lapján. A szűrési és a keresési beállítások használatával gyorsan megtalálhatja az aktuális vizsgálathoz tartozó konkrét adatait. Azt is megteheti, hogy megtekinti a könyvjelzővel ellátott adatait közvetlenül a Log Analytics munkaterület **HuntingBookmark** táblájában. Példa:
+A beérkező könyvjelzők adatait bármikor újra felkeresheti a **vadászat** ablaktábla **könyvjelzők** lapján. A szűrési és a keresési beállítások használatával gyorsan megtalálhatja az aktuális vizsgálathoz tartozó konkrét adatait. Azt is megteheti, hogy megtekinti a könyvjelzővel ellátott adatait közvetlenül a Log Analytics munkaterület **HuntingBookmark** táblájában. Például:
 
 > [!div class="mx-imgBorder"]
 > ![HuntingBookmark-tábla megtekintése](./media/bookmarks/bookmark-table.png)
@@ -40,7 +40,7 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
 2. Válassza ki az egyik vadászati lekérdezést, és a jobb oldalon, a vadászati lekérdezés részleteiben válassza a **lekérdezés futtatása**lehetőséget. 
 
-3. Válassza a **lekérdezés eredményeinek megtekintése**lehetőséget. Példa:
+3. Válassza a **lekérdezés eredményeinek megtekintése**lehetőséget. Például:
     
     > [!div class="mx-imgBorder"]
     > ![az Azure Sentinel Hunting lekérdezési eredményeinek megtekintése](./media/bookmarks/new-processes-observed-example.png)
@@ -56,7 +56,7 @@ Az előzetes verzióban is megjelenítheti a könyvjelzővel ellátott adatokat 
 
 6. A jobb oldalon a **Könyvjelző hozzáadása** panelen igény szerint frissítheti a könyvjelző nevét, címkékkel és megjegyzésekkel láthatja el, hogy milyen érdekes az elem.
 
-7. A **lekérdezési adatok** szakaszban a legördülő lista segítségével kinyerheti az adatokat a **fiók**, a **gazdagép**és az **IP-cím** típusú entitások lekérdezési eredményeiből. Ez a művelet leképezi a kiválasztott entitás típusát egy adott oszlopra a lekérdezési eredményből. Példa:
+7. A **lekérdezési adatok** szakaszban a legördülő lista segítségével kinyerheti az adatokat a **fiók**, a **gazdagép**és az **IP-cím** típusú entitások lekérdezési eredményeiből. Ez a művelet leképezi a kiválasztott entitás típusát egy adott oszlopra a lekérdezési eredményből. Például:
     
     > [!div class="mx-imgBorder"]
     > ![leképezheti az entitások típusait a vadászati könyvjelzők](./media/bookmarks/map-entity-types-bookmark.png)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896280"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587566"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag a Azure Cosmos DB .NET SDK 3.0-s [verzióját](https://www.nu
 Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 > [!div class="checklist"]
-> * Azure Cosmos-fiók létrehozása
+> * Egy Azure Cosmos-fiók létrehozása
 > * A projekt konfigurálása
 > * Csatlakozás egy tömeges támogatást engedélyező Azure Cosmos-fiókhoz
 > * Adatimportálás végrehajtása párhuzamos létrehozási műveletekkel
@@ -81,7 +81,7 @@ Miközben továbbra is az alkalmazás könyvtárában található, telepítse a 
 
 A minta alkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókban. A hitelesítéshez át kell adni az Azure Cosmos-fiók hitelesítő adatait az alkalmazásnak. Az Azure Cosmos-fiók hitelesítő adatait a következő lépésekkel szerezheti be:
 
-1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1.  Navigáljon az Azure Cosmos-fiókjához.
 1.  Nyissa meg a **kulcsok** ablaktáblát, és másolja a fiókjának **URI-JÁT** és **elsődleges kulcsát** .
 
@@ -120,13 +120,13 @@ Kezdjük azzal, hogy felülírja az alapértelmezett `Main` metódust, és defin
 
 A `Main` metóduson belül adja hozzá a következő kódot a CosmosClient objektum inicializálásához:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 A tömeges végrehajtás engedélyezése után a CosmosClient belsőleg csoportosítja egyidejű műveleteket egyetlen szolgáltatási hívásban. Így optimalizálja az átviteli sebesség kihasználtságát a szolgáltatási hívások partíciók közötti elosztásával, végül pedig az eredeti hívókhoz rendeli az eredményeket.
 
 Ezután létrehozhat egy tárolót az összes elem tárolásához.  Adja meg a `/pk`t partíciós kulcsként, 50000 RU/s-ként kiépített átviteli sebességként, valamint egy egyéni indexelési házirendet, amely kizárja az összes mezőt az írási sebesség optimalizálása érdekében. Adja hozzá a következő kódot a CosmosClient inicializálási utasítása után:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>6\. lépés: az egyidejű feladatok listájának feltöltése
 
@@ -141,22 +141,22 @@ Először adja hozzá a hamis csomagokat a megoldáshoz a DotNet-csomag hozzáad
 
 Adja meg a menteni kívánt elemek definícióját. Meg kell határoznia a `Item` osztályt a `Program.cs` fájlon belül:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 Ezután hozzon létre egy segítő funkciót a `Program` osztályban. Ez a segítő funkció beolvassa a véletlenszerű adatok beszúrásához és létrehozásához megadott elemek számát:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 Olvassa el az elemeket, és szerializálja őket adatfolyam-példányokra a `System.Text.Json` osztály használatával. Az automatikusan létrehozott adathalmazok jellegéből adódóan adatfolyamként kell szerializálni az adathalmazokat. Közvetlenül is használhatja az item-példányt, de a streamekre konvertálva kihasználhatja a stream API-k teljesítményét a CosmosClient. Az adattípust általában közvetlenül is használhatja, ha ismeri a partíciós kulcsot. 
 
 
 Az adatfolyam-példányokra való átalakításhoz a `Main` metóduson belül adja hozzá a következő kódot közvetlenül a tároló létrehozása után:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 Ezután az adatfolyamok használatával hozzon létre egyidejű feladatokat, és töltse fel a feladatlistát az elemek tárolóba való beszúrásához. A művelet végrehajtásához adja hozzá a következő kódot a `Program` osztályhoz:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 A rendszer az összes ilyen egyidejű műveletet együtt hajtja végre (ömlesztve), a bevezetés szakaszban leírtak szerint.
 
@@ -186,7 +186,7 @@ A minta a tárház könyvtárára való váltással és a `dotnet`használatáva
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Azure Cosmos-fiók létrehozása
+> * Egy Azure Cosmos-fiók létrehozása
 > * A projekt konfigurálása
 > * Csatlakozás egy tömeges támogatást engedélyező Azure Cosmos-fiókhoz
 > * Adatimportálás végrehajtása párhuzamos létrehozási műveletekkel

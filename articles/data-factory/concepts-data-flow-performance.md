@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773847"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587583"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -35,8 +35,8 @@ A leképezési adatfolyamatok tervezésekor az egyes átalakításokat egységes
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime számítási méretének növelése
 
 A több magot tartalmazó Integration Runtime növeli a Spark számítási környezetekben lévő csomópontok számát, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához.
-* Ha azt szeretné, hogy a feldolgozási sebesség magasabb legyen a bemeneti sebességnél, próbálkozzon egy **számítási optimalizált** fürttel.
-* Ha a memóriában további adatok gyorsítótárazására van szükség, próbálkozzon a **memóriával optimalizált** fürttel.
+* Ha azt szeretné, hogy a feldolgozási sebesség nagyobb legyen, mint a bemeneti sebesség, próbálkozzon egy **számítási optimalizált** fürttel.
+* Ha a memóriában további adatok gyorsítótárazására van szükség, próbálkozzon a **memóriával optimalizált** fürttel. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet eredményez.
 
 ![Új IR](media/data-flow/ir-new.png "Új IR")
 
@@ -87,17 +87,24 @@ A folyamat során adjon hozzá egy [tárolt eljárási tevékenységet](transfor
 
 Ütemezze a forrás átméretezését, és az Azure SQL DB-t és a DW-t a folyamat futtatása előtt, növelje az átviteli sebességet, és csökkentse az Azure-szabályozást a DTU korlátainak elérése után. A folyamat befejezése után méretezze át az adatbázisokat a normál futtatási sebességre.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Csak az Azure SQL DW esetében] Adatok tömeges betöltésének használata az átmeneti használatával
+* Az SQL DB forrásoldali tábla 887k-sorokkal és 74-oszlopokkal, egyetlen származtatott oszlop-átalakítással rendelkező SQL DB-táblázattal körülbelül 3 percet vesz igénybe a memória optimalizált 80-Core debug Azure IRs használatával.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Csak az Azure szinapszis SQL DW esetében] Adatok tömeges betöltésének használata az átmeneti használatával
 
 Ha el szeretné kerülni a sorok közötti beszúrást a DW-be, jelölje be az **előkészítés engedélyezése** a fogadó beállításaiban lehetőséget, hogy az ADF a következőt használja: [autobase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide). A Base lehetővé teszi az ADF számára az adatok tömeges betöltését.
 * Amikor egy folyamatból hajtja végre az adatfolyam-tevékenységet, ki kell választania egy blobot vagy ADLS Gen2 tárolóhelyet az adatoknak a tömeges betöltés során történő előkészítéséhez.
 
+* Az 74 oszlopokat tartalmazó 421Mb-fájl forrása egy szinapszis-táblához, és egy származtatott oszlop transzformációja körülbelül 4 percet vesz igénybe a memória optimalizált 80-Core debug Azure IRs használatával.
+
 ## <a name="optimizing-for-files"></a>Fájlok optimalizálása
 
-Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon.
+Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon. Célszerű először a fájl alapú mosogatókat tesztelni az alapértelmezett particionálás és optimalizálás megtartása mellett.
+
 * Kisebb fájlok esetén előfordulhat, hogy az *önálló partíciók* kiválasztásával időnként jobb és gyorsabb is működhet, mint a kis méretű fájlok particionálását kérő Spark.
 * Ha nem rendelkezik elegendő információval a forrásadatok közül, válassza a *ciklikus multiplexelés* particionálás lehetőséget, és állítsa be a partíciók számát.
 * Ha az adatai olyan oszlopokkal rendelkeznek, amelyek megfelelő kivonatoló kulcsok lehetnek, válassza a *kivonatoló particionálás*lehetőséget.
+
+* Az 74 oszlopokat tartalmazó 421Mb-fájlból és egy származtatott oszlop-átalakításból álló file Source (forrás), amely körülbelül 2 percet vesz igénybe a memória optimalizált 80-Core hibakeresés Azure IRs használatával.
 
 Ha az adatelőnézet és a folyamat hibakeresése során hibakeresést végez, a fájl alapú forrás adatkészletek korlátja és mintavételezési mérete csak a visszaadott sorok számára vonatkozik, nem pedig a sorok olvasására. Ez hatással lehet a hibakeresési végrehajtás teljesítményére, és valószínűleg a folyamat meghibásodását okozza.
 * A hibakeresési fürtök alapértelmezésben kisméretű egycsomópontos fürtök, ezért ajánlott kis méretű fájlokat használni a hibakereséshez. Nyissa meg a hibakeresési beállításokat, és mutasson az adatai egy kis részhalmazára egy ideiglenes fájl használatával.

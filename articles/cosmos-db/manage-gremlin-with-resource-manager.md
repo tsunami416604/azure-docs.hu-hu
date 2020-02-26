@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e2201eb678aafe14c86b7faedde67e6b4d92f2b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4c18d93f07cb2143dcc5bf9c93b9ac7298d2f7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980606"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587634"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Gremlin API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 
@@ -25,7 +25,7 @@ Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon haszn�
 > A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
 > Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
 
-[!code-json[create-cosmos-gremlin](~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
@@ -55,7 +55,7 @@ Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jele
 
 ## <a name="next-steps"></a>Következő lépések
 
-Néhány további információforrás:
+Íme néhány további erőforrás:
 
 - [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
 - [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)

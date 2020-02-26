@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545160"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587328"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 
@@ -28,7 +28,7 @@ A Intelligent Insights a beépített intelligenciával folyamatosan figyeli az a
 
 A Intelligent Insights az Azure beépített intelligenciának egyedülálló funkciója, amely a következő értéket biztosítja:
 
-- Proaktív monitorozás
+- Proaktív figyelés
 - Testreszabott teljesítmény-felismerés
 - Az adatbázis-teljesítmény romlásának korai észlelése
 - Az észlelt problémák kiváltó okának elemzése
@@ -50,7 +50,7 @@ Azonosított SQL Database a teljesítmény romlását a diagnosztikai naplóban 
 
 | Tulajdonság             | Részletek              |
 | :------------------- | ------------------- |
-| Adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
+| adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
 | Megfigyelt időtartam tartománya | Az észlelt elemzés időszakának kezdési és befejezési időpontja. |
 | Érintett mérőszámok | A betekintést kiváltó mérőszámok: <ul><li>A lekérdezés időtartama növekszik [másodperc].</li><li>Túlzott várakozás [másodperc].</li><li>Időtúllépési kérelmek [százalék].</li><li>Hiba miatti kérelmek [százalék].</li></ul>|
 | Hatás értéke | A mért metrika értéke. |
@@ -113,7 +113,7 @@ Ha Event Hubst szeretne használni az egyéni figyelés és a riasztások beáll
 
 ### <a name="set-up-with-azure-storage"></a>Beállítás az Azure Storage-ban
 
-Ha Intelligent Insightst szeretne használni a Storage szolgáltatással, konfigurálja Intelligent Insights naplófájlok adatfolyamként való továbbítását az [Azure Storage-ba](sql-database-metrics-diag-logging.md#stream-into-storage).
+Ha Intelligent Insightst szeretne használni a Storage szolgáltatással, konfigurálja Intelligent Insights naplófájlok adatfolyamként való továbbítását az [Azure Storage-ba](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights napló egyéni integrációja
 
@@ -164,7 +164,7 @@ A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezéseket
 - Rugalmas készlet erőforrás-korlátainak elérése
 - A munkavégző vagy a munkamenet szála túl sok
 - Túlzott adatbázis-zárolás
-- Memóriaterhelés
+- Memória nyomása
 - Egyéb várakozási statisztikák
 
 Az erőforrás-korlátok vagy a rugalmas készlet erőforrás-korlátainak elérése azt jelzi, hogy az előfizetésben vagy a rugalmas készletben elérhető erőforrások felhasználása túllépte az abszolút küszöbértékeket. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik. A munkavégző vagy a munkamenet-szálak túlzott száma azt jelzi, hogy a feldolgozói szálak vagy munkamenetek száma az abszolút küszöbértékeket eredményezte. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik.

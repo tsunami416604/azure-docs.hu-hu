@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920759"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589300"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -35,7 +35,7 @@ Emellett a támadók kifejlődték a módszereiket számos aláírás-alapú vé
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 
-A riasztások olyan értesítések, amelyeket a Security Center hoz létre, ha fenyegetést észlel egy erőforrásban. A Security Center rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is felkínál a támadás elhárítására.
+A riasztások a Security Center által generált értesítések, amikor észlelik a fenyegetéseket az erőforrásokon. A Security Center rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is tartalmaz a támadások megoldásához.
 
 ## Hogyan ismeri fel Security Center a fenyegetéseket? <a name="detect-threats"> </a>
 
@@ -63,7 +63,7 @@ A működés elemzése olyan módszer, amely megvizsgálja és összehasonlítja
 
 Ezen kívül más jelekkel is összefüggésbe kerül, hogy a széleskörű kampányt támogató bizonyítékot keressen. Az összefüggések felderítése segít azonosítani a feltörés meghatározott tüneteit mutató eseményeket. 
 
-### <a name="anomaly-detection"></a>Anomáliadetektálás
+### <a name="anomaly-detection"></a>Rendellenességek észlelése
 
 Az Azure Security Center további módszere a fenyegetések felderítésére a rendellenességek észlelése. A működés elemzésével (amely a nagy adatkészletekből kinyert ismert mintákon alapul) ellentétben a rendellenességek észlelése „testre szabottabb”, és az üzemelő példányokhoz tartozó alapkonfigurációkra összpontosít. Ez a módszer gépi tanulás alkalmazásával felméri az üzemelő példányok normál tevékenységeit, majd szabályokat hoz létre az olyan rendkívüli körülmények meghatározásához, amelyek a biztonságot érintő eseményre utalhatnak.
 
@@ -72,15 +72,15 @@ Az Azure Security Center további módszere a fenyegetések felderítésére a r
 A Security Center súlyosságot rendel a riasztásokhoz, így könnyebben rangsorolhatja az egyes riasztásokban való részvétel sorrendjét, hogy az erőforrások biztonsága esetén azonnal elérhető legyen. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
 > [!NOTE]
-> A riasztás súlyossága másképp jelenik meg a Portálon és a REST APIban, a különbségek az alábbi listában láthatók.
+> A riasztás súlyossága másképp jelenik meg a portálon, és a 01-01-2019-es dátumot tartalmazó REST API verzióiban. Ha az API egy régebbi verzióját használja, frissítsen az alább ismertetett konzisztens élményre.
 
-* **Magas:** Nagy valószínűséggel az erőforrás biztonsága sérül. Azonnal megtekintheti. Security Center a kártékony szándék és a riasztás kibocsátására szolgáló megállapítások terén is nagy megbízhatósággal rendelkezik. Például egy olyan riasztás, amely észleli egy ismert kártékony eszköz, például a Mimikatz végrehajtását, a hitelesítő adatok ellopására szolgáló közös eszköz.
-* **Közepes (alacsony a REST API)** : ez valószínűleg egy gyanús tevékenység, amely arra utalhat, hogy egy erőforrás sérült.
+- **Magas:** Nagy valószínűséggel az erőforrás biztonsága sérül. Azonnal megtekintheti. Security Center a kártékony szándék és a riasztás kibocsátására szolgáló megállapítások terén is nagy megbízhatósággal rendelkezik. Például egy olyan riasztás, amely észleli egy ismert kártékony eszköz, például a Mimikatz végrehajtását, a hitelesítő adatok ellopására szolgáló közös eszköz.
+- **Közepes:** Ez valószínűleg egy gyanús tevékenység, amely arra utalhat, hogy az erőforrás biztonsága sérül.
 Security Center az elemzésben vagy a keresésben a közepes és a rosszindulatú szándék megbízhatósága közepes és magas. Ezek általában gépi tanulás vagy anomália-alapú észlelések. Például egy rendellenes helyről érkező bejelentkezési kísérlet.
-* **Alacsony (információ a REST API)** : ez egy jóindulatú pozitív vagy letiltott támadás lehet.
+- **Alacsony:** Ez egy jóindulatú pozitív vagy tiltott támadás lehet.
    * A Security Center nem eléggé biztos abban, hogy a szándék rosszindulatú, és a tevékenység ártalmatlan lehet. A napló törlése például olyan művelet, amely akkor fordulhat elő, ha egy támadó megpróbálja elrejteni a zeneszámokat, de sok esetben a rendszergazdák által végrehajtott rutin művelet.
    * Security Center általában nem derül ki, ha a támadások blokkolva lettek, kivéve, ha azt javasoljuk, hogy tekintse át a következőt:. 
-* **Tájékoztató (csendesen a REST API)** : csak tájékoztató riasztások jelennek meg a biztonsági incidensek részletezése során, vagy ha a REST API egy adott RIASZTÁSi azonosítóval használja. Az incidensek általában számos riasztásból állnak, amelyek némelyike csak tájékoztató jelleggel jelenhet meg, de a többi riasztás kontextusában érdemes lehet alaposabban megtekinteni. 
+- **Tájékoztatás:** A biztonsági incidensek részletezése során csak tájékoztató riasztások jelennek meg, vagy ha a REST API egy adott riasztási AZONOSÍTÓval használja. Az incidensek általában számos riasztásból állnak, amelyek némelyike csak tájékoztató jelleggel jelenhet meg, de a többi riasztás kontextusában érdemes lehet alaposabban megtekinteni. 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>Folyamatos monitorozás és értékelések
@@ -119,7 +119,7 @@ Amellett, hogy a Azure Portalon vagy programozott módon elérhetővé válik, a
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információ eléréséhez lásd:
+Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 * [Azure Security Center – gyakori kérdések](https://docs.microsoft.com/azure/security-center/security-center-faq)

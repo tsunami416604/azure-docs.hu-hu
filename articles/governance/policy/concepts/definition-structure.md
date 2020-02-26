@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462002"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587124"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -328,7 +328,7 @@ A feltételek az **érték**használatával is létrehozhatók. az **érték** a
 az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 > [!WARNING]
-> Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures).
+> Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures). A [enforcementMode](./assignment-structure.md#enforcement-mode) használatával megakadályozhatja az új vagy frissített erőforrások sikertelen értékelésének hatását az új házirend-definíció tesztelése és érvényesítése során.
 
 #### <a name="value-examples"></a>Példák az értékekre
 
@@ -580,13 +580,22 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 
 A következő függvények használhatók egy házirend-szabályban, de különböznek a Azure Resource Manager sablonban lévő használattól:
 
-- addDays (dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **datetime**: [Required] String-String in the Universal ISO 8601 datetime Format éééé-hh-NNTóó: PP: SS. fffffffZ '
   - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
-- utcNow () – a Resource Manager-sablonoktól eltérően ez a defaultValue kívül is használható.
+- `utcNow()` – a Resource Manager-sablonoktól eltérően ez a defaultValue-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
 
-Emellett a `field` függvény is elérhető a szabályzati szabályokban. a `field` elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
+A következő függvények csak a házirend-szabályokban érhetők el:
+
+- `field(fieldName)`
+  - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
+  - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.
+  - a `field` elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - A házirend kiértékelését kiváltó kérelem API-verzióját adja vissza (például: `2019-09-01`). Ez lesz az az API-verzió, amelyet a PUT/PATCH kérelemben használt az erőforrás-létrehozási/frissítési kérelmekre vonatkozó értékelésekhez. A meglévő erőforrásokon a megfelelőségi értékelés során mindig a legújabb API-verziót használja a rendszer.
+  
+
 
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 

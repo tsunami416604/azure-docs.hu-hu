@@ -5,12 +5,12 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610233"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589147"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
 
@@ -47,7 +47,7 @@ Az alkalmazás létrehozása előtt töltse fel az alkalmazáscsomag a Service F
 
 Ha például az alkalmazáscsomag a `app_package_dir` könyvtárban található, akkor a következő parancsokkal töltheti fel a könyvtárat:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ Nagyméretű alkalmazáscsomag esetén megadhatja a feltöltés előrehaladásá
 
 A feltöltés befejezésekor kiépítheti az alkalmazást. Az alkalmazás üzembe helyezéséhez használja a következő parancsot:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ Javasoljuk, hogy az alkalmazás sikeres regisztrálása után távolítsa el az 
 
 Az alkalmazáscsomag rendszerkép-tárolóból való törléséhez használja a következő parancsot:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Az alkalmazás üzembe helyezése után az alábbi parancs használatával nevezze el és hozza létre az alkalmazást:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ Az alkalmazás nevének a `fabric:/`előtaggal kell kezdődnie.
 
 Miután létrehozott egy alkalmazást, hozzon létre szolgáltatásokat az alkalmazásból. Az alábbi példában egy új állapot nélküli szolgáltatást hozunk létre az alkalmazásból. Az alkalmazásból létrehozható szolgáltatások a korábban kiosztott alkalmazáscsomag szolgáltatásbeli jegyzékfájljában vannak meghatározva.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Annak ellenőrzéséhez, hogy minden kifogástalan állapotú-e, használja a következő állapotfigyelő parancsokat:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Annak ellenőrzéséhez, hogy a szolgáltatás kifogástalan-e, használja a hasonló parancsokat a szolgáltatás és az alkalmazás állapotának lekéréséhez:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ Egy alkalmazás eltávolításához hajtsa végre a következő feladatokat:
 
 Az alkalmazás törléséhez használja a következő parancsot:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Az alkalmazás törlése után kiépítheti az alkalmazás típusát, ha már nincs rá szüksége. Az alkalmazás típusának megszüntetéséhez használja a következő parancsot:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ Az alkalmazás létrehozása után megismételheti ugyanezeket a lépéseket az 
 
 A frissítés elvégzéséhez először az alábbi parancsokkal kell kiépíteni az alkalmazás következő verzióját:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Azt javasoljuk, hogy a figyelt automatikus frissítést a következő parancs futtatásával indítsa el:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

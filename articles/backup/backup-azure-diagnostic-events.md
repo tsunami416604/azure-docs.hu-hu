@@ -3,12 +3,12 @@ title: Recovery Services-tárolók diagnosztikai beállításainak használata
 description: Cikk, amely leírja, hogyan használhatja a Azure Backup korábbi és új diagnosztikai eseményeit
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281102"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583945"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnosztikai beállítások használata Recovery Services-tárolókhoz
 
@@ -21,14 +21,15 @@ A Recovery Services-tároló diagnosztikai beállításait a Azure Portal haszn�
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Azure Backup felhasználók számára elérhető diagnosztikai események
 
 Azure Backup a következő diagnosztikai eseményeket biztosítja, amelyek mindegyike részletes információt nyújt a biztonsági másolatok kapcsolódó összetevőinek egy adott készletéről:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Adatmodell a Azure Backup diagnosztikai eseményeihez](https://aka.ms/diagnosticsdatamodel)
+[Adatmodell a Azure Backup diagnosztikai eseményeihez](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Ezeknek az eseményeknek az adatküldhető egy Storage-fiókba, a LA Workspace-ba vagy egy Event hub-ba. Ha ezeket az adatokat egy LA munkaterületre küldi, ki kell választania az **erőforrás-specifikus** kapcsolót a **diagnosztika beállítása** képernyőn (lásd a további tudnivalókat az alábbi részekben).
 
@@ -37,6 +38,7 @@ Ezeknek az eseményeknek az adatküldhető egy Storage-fiókba, a LA Workspace-b
 Az Azure Log Analytics ütemtervének összehangolásával Azure Backup mostantól lehetővé teszi a tároló diagnosztikai adatainak küldését dedikált LA táblákba a biztonsági mentéshez. Ezeket [erőforrás-specifikus tábláknak](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)nevezzük.
 
 A tároló diagnosztikai adatait a következőre küldje:
+
 1.  Navigáljon a tárolóhoz, és kattintson a **diagnosztikai beállítások**elemre. Kattintson a **+ diagnosztikai beállítás hozzáadása**elemre.
 2.  Adjon nevet a diagnosztikai beállításoknak.
 3.  Jelölje be a **küldés log Analyticsre** jelölőnégyzetet, és válasszon ki egy log Analytics munkaterületet.
@@ -84,4 +86,4 @@ Az alábbi képen egy példa látható egy olyan felhasználóra, aki három dia
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A diagnosztikai események Log Analytics adatmodelljének megismerése](https://aka.ms/diagnosticsdatamodel)
+[A diagnosztikai események Log Analytics adatmodelljének megismerése](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

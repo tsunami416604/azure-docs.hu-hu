@@ -3,7 +3,7 @@ title: Symantec ICDx-adatkapcsolatok összekötése az Azure Sentinel szolgálta
 description: Ismerje meg, hogyan csatlakoztathatók a Symantec ICDx-adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 111bc7cd0439eee2026a6a980e9e126b63ac58c6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610488"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588093"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>A Symantec ICDx-berendezés összekötése 
 
@@ -50,14 +50,14 @@ A Symantec ICDx közvetlenül az Azure Sentinelbe integrálhatja és exportálha
       > [!NOTE]
       > A ICDx-fogadó archívumok külön névvel vannak felsorolva. 
  
-    - **Szűrő**: adjon hozzá egy szűrőt, amely meghatározza a továbbítandó események részhalmazát. Folytassa a következők egyikével:
+    - **Szűrő**: adjon hozzá egy szűrőt, amely meghatározza a továbbítandó események részhalmazát. Tegye a következők valamelyikét:
         - Egy szűrési feltétel kiválasztásához kattintson a típus, az attribútum, az operátor és az érték elemre. 
         - A szűrő mezőben tekintse át a szűrési feltételt. Közvetlenül a mezőben szerkesztheti, vagy szükség szerint törölheti is.
         - Kattintson a vagy a vagy a gombra a szűrési feltételhez való hozzáadáshoz.
         - Egy mentett lekérdezés alkalmazásához kattintson a mentett lekérdezések lehetőségre is.
     - **Belefoglalt attribútumok**: írja be a továbbított adatmennyiségbe felvenni kívánt attribútumok vesszővel tagolt listáját. A befoglalt attribútumok elsőbbséget élveznek a kizárt attribútumokkal szemben.
     - **Kizárt attribútumok**: írja be a továbbított adatokból kizárandó attribútumok vesszővel tagolt listáját.
-    - **Köteg mérete**: válassza ki a kötegbe küldendő események számát. A lehetőségek a következők: 10, 50, 100, 500 és 1000.<br>Az alapértelmezett érték 100. 
+    - **Köteg mérete**: válassza ki a kötegbe küldendő események számát. A lehetőségek a következők: 10, 50, 100, 500 és 1000.<br>Az alapértelmezett érték a 100. 
     - **Díjszabási korlát**: válassza ki az események továbbításának sebességét, az események másodpercenkénti számaként kifejezve. A lehetőségek korlátlanok, 500, 1000, 5000, 10000. <br> Az alapértelmezett érték a 5000. 
 7. Az **Azure-cél**területen tegye a következőket: 
     - **Munkaterület azonosítója**: illessze be a munkaterület-azonosítót az alábbi listából. A mező kitöltése kötelező.

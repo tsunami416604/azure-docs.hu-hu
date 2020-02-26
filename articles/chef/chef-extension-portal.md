@@ -2,14 +2,14 @@
 title: A Chef-ügyfél telepítése a Azure Portal
 description: Ismerje meg, hogyan helyezheti üzembe és konfigurálhatja a Chef-ügyfelet a Azure Portal
 keywords: Azure, Chef, devops, ügyfél, telepítés, portál
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158258"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586359"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef-ügyfél telepítése a Azure Portal
 A Chef-ügyfél bővítményt közvetlenül egy Linux vagy Windows rendszerű gépre is hozzáadhatja a Azure Portal. Ez a cikk végigvezeti a folyamaton egy új linuxos virtuális gép használatával.
@@ -79,24 +79,24 @@ Ebben a szakaszban először a Azure Portal fogja használni a Linux rendszerű 
 1. A **bővítmény telepítése** lapon adja meg a következő értékeket, majd kattintson az **OK gombra**.
 
     - **Chef-kiszolgáló URL-címe** – adja meg a Chef-kiszolgáló URL-címét, amely tartalmazza a szervezet nevét (például *https://api.chef.io/organization/mycompany* ).
-    - **Chef-csomópont neve** – adja meg a Chef-csomópont nevét. Ez bármilyen érték lehet.
-    - **Futtatási lista** – Itt adhatja meg a géphez hozzáadott Chef-futtatási listát. Ez maradhat üresen.
-    - **Érvényesítési ügyfél neve** – adja meg a Chef érvényesítési ügyfelének nevét. például: *tarcher-validator*.
+    - **Chef-csomópont neve** – adja meg a Chef-csomópont nevét.
+    - **Futtatási lista** – Itt adhatja meg a géphez hozzáadott Chef-futtatási listát. Ez az érték maradhat üresen.
+    - **Érvényesítési ügyfél neve** – adja meg a Chef érvényesítési ügyfelének nevét. Például `tarcher-validator`.
     - **Érvényesítési kulcs** – válasszon ki egy fájlt, amely tartalmazza a gépek indításakor használt ellenőrző kulcsot.
-    - **Ügyfél-konfigurációs fájl** – válassza ki a Chef-Client konfigurációs fájlját. Ez maradhat üresen.
-    - **Chef-ügyfélprogram verziója** – Itt adhatja meg a telepítendő Chef-ügyfél verzióját. Ez maradhat üresen. Egy üres érték telepíti a legújabb verziót.
+    - **Ügyfél-konfigurációs fájl** – válassza ki a Chef-Client konfigurációs fájlját. Ez az érték maradhat üresen.
+    - **Chef-ügyfélprogram verziója** – Itt adhatja meg a telepítendő Chef-ügyfél verzióját. Ez az érték maradhat üresen, ami telepíti a legújabb verziót.
     - **SSL-ellenőrzési mód** – válassza a **none** vagy a **társ**lehetőséget. *Nincs* kiválasztva a bemutatóhoz.
-    - **Chef Environment** – adja meg a Chef-környezetet, amelynek a csomópontnak a tagja kell lennie. Ez maradhat üresen.
-    - **Titkosított titkos Databag** – válasszon ki egy fájlt, amely tartalmazza a titkosított Databag titkos kulcsát, ennek a gépnek hozzá kell férnie. Ez maradhat üresen.
-    - **Chef-kiszolgáló SSL-tanúsítványa** – válassza ki a Chef-kiszolgálóhoz hozzárendelt SSL-tanúsítványt. Ez maradhat üresen.
+    - **Chef Environment** – adja meg a Chef-környezetet, amelynek a csomópontnak a tagja kell lennie. Ez az érték maradhat üresen.
+    - **Titkosított adattáska titkos kulcsa** – válasszon ki egy fájlt, amely tartalmazza a titkosított adattároló titkos kódját, amelyhez a gépnek hozzá kell férnie. Ez az érték maradhat üresen.
+    - **Chef-kiszolgáló SSL-tanúsítványa** – válassza ki a Chef-kiszolgálóhoz hozzárendelt SSL-tanúsítványt. Ez az érték maradhat üresen.
 
       ![A Chef-kiszolgáló telepítése Linux rendszerű virtuális gépen](./media/chef-extension-portal/install-extension.png)
 
-1. Ha visszatér a **bővítmények** lapra, kattintson **az OK gombra**.
+1. Amikor megjelenik a **bővítmények** lap, kattintson az **OK gombra**.
 
-1. Ha visszatér a **Beállítások** lapra, kattintson az **OK gombra**.
+1. Amikor megjelenik a **Beállítások** lap, kattintson az **OK gombra**.
 
-1. Amikor visszatér a **Létrehozás** lapra (ez a kiválasztott és megadott beállítások összegzését jelenti), ellenőrizze az adatokat, valamint a **használati feltételek**, és válassza a **Létrehozás**lehetőséget.
+1. Amikor megjelenik a **Létrehozás** lap, a kiválasztott és megadott beállítások összegzése látható. Ellenőrizze az adatokat, valamint a **használati feltételek**, majd válassza a **Létrehozás**lehetőséget.
 
 Ha a virtuális gép a Chef bővítménnyel való létrehozásának és üzembe helyezésének folyamata befejeződött, egy értesítés jelzi a művelet sikerességét vagy hibáját. Emellett az új virtuális gép erőforrás lapja automatikusan megnyílik a Azure Portal a létrehozása után.
 
@@ -104,4 +104,5 @@ Ha a virtuális gép a Chef bővítménnyel való létrehozásának és üzembe 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Windows rendszerű virtuális gép létrehozása az Azure-ban Chef használatával](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Windows rendszerű virtuális gép létrehozása az Azure-ban Chef használatával](chef-automation.md)

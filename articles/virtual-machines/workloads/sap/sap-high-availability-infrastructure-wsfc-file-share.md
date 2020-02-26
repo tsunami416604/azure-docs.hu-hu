@@ -1,10 +1,10 @@
 ---
-title: Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával az SAP ASCS/SCS instances szolgáltatásban | Microsoft Docs
+title: Azure-infrastruktúra SAP ASCS/SCS HA WSFC & fájlmegosztás | Microsoft Docs
 description: Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647543"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591540"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 
@@ -209,7 +209,7 @@ ms.locfileid: "75647543"
 
 Ez a cikk azokat az Azure-infrastruktúra-előkészítési lépéseket ismerteti, amelyek szükségesek a magas rendelkezésre állású SAP-rendszerek telepítéséhez és konfigurálásához egy Windows Server feladatátvételi fürtszolgáltatási fürtön (WSFC), kibővített fájlmegosztást használva az SAP ASCS/SCS-példányok fürtözéséhez.
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisite"></a>Előfeltételek
 
 A telepítés megkezdése előtt tekintse át a következő cikket:
 
@@ -222,8 +222,8 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | --- | --- | --- | --- |
 | Első fürtcsomópont-ASCS/SCS-fürt | ASCs – 1 | 10.0.6.4 | ASCs – as |
 | Második fürtcsomópont-ASCS/SCS-fürt | ASCs – 2 | 10.0.6.5 | ASCs – as |
-| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | – |
-| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | – |
+| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | n/a |
+| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | n/a |
 
 
 **1. táblázat**: ASCS/SCS-fürt
@@ -240,8 +240,8 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | Első fürtcsomópont | SOFs – 1 | 10.0.6.10 | SOFs – as |
 | Második fürtcsomópont | SOFs – 2 | 10.0.6.11 | SOFs – as |
 | Harmadik fürtcsomópont | SOFs – 3 | 10.0.6.12 | SOFs – as |
-| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | – |
-| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | – |
+| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | n/a |
+| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | n/a |
 
 **3. táblázat**: kibővíthető fájlkiszolgáló fürt
 

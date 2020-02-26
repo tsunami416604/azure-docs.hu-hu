@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való D
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173322"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586478"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -19,7 +19,7 @@ A SharePoint-farmról biztonsági mentést készíthet a System Center Data Prot
 
 A DPM Azure Backup a következő forgatókönyveket támogatja:
 
-| Számítási feladat | Verzió | SharePoint-telepítés | DPM központi telepítési típus | DPM - System Center 2012 R2 | Védelem és helyreállítás |
+| Számítási feladat | Verzió | SharePoint-telepítés | DPM-telepítés típusa | DPM - System Center 2012 R2 | Védelem és helyreállítás |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Fizikai kiszolgálóként vagy Hyper-V/VMware virtuális gépen üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn |Fizikai kiszolgáló vagy helyszíni Hyper-V virtuális gép |Támogatja az Azure-ba történő biztonsági mentést az 5. kumulatív frissítéssel |A SharePoint-farm helyreállítási lehetőségeinek biztosítása: helyreállítási Farm, adatbázis, valamint fájl-vagy listaelemek a lemezes helyreállítási pontokból.  Farm-és adatbázis-helyreállítás az Azure helyreállítási pontjairól. |
 
@@ -33,7 +33,7 @@ A folytatás előtt győződjön meg arról, hogy teljesítette az [Microsoft Az
 
 ### <a name="dpm-agent"></a>DPM-ügynök
 
-A DPM-ügynököt a SharePointot futtató kiszolgálóra, a SQL Server rendszert futtató kiszolgálókra és a SharePoint-farm részét képező összes többi kiszolgálóra kell telepíteni. A védelmi ügynök beállításával kapcsolatos további információkért lásd: a [védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)beállítása.  Az egyetlen kivétel az, hogy csak egyetlen webes előtér-(WFE-) kiszolgálón telepíti az ügynököt. A DPM csak egy WFE-kiszolgálón lévő ügynökre van szüksége, hogy a védelemhez belépési pontként szolgáljon.
+A DPM-ügynököt a SharePointot futtató kiszolgálóra, a SQL Server rendszert futtató kiszolgálókra és a SharePoint-farm részét képező összes többi kiszolgálóra kell telepíteni. A védelmi ügynök beállításával kapcsolatos további információkért lásd: a [védelmi ügynök](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)beállítása.  Az egyetlen kivétel az, hogy csak egyetlen webes előtér-(WFE-) kiszolgálón telepíti az ügynököt. A DPM csak egy WFE-kiszolgálón lévő ügynökre van szüksége, hogy a védelemhez belépési pontként szolgáljon.
 
 ### <a name="sharepoint-farm"></a>SharePoint-farm
 
@@ -59,17 +59,17 @@ További információ: a [DPM 5. kumulatív frissítését](https://blogs.techne
 * A SharePoint-farmokat védő DPM nem védik a keresési indexeket vagy az Application Service-adatbázisokat. Ezen adatbázisok védelmét külön kell konfigurálnia.
 * A DPM nem biztosít biztonsági mentést a SharePoint SQL Server-adatbázisokról, amelyek a kibővített fájlkiszolgáló (SOFS) megosztásokon futnak.
 
-## <a name="configure-sharepoint-protection"></a>A SharePoint-védelem konfigurálása
+## <a name="configure-sharepoint-protection"></a>A SharePoint-védelem beállítása
 
 Ahhoz, hogy a DPM-t a SharePoint számára is használhassa, konfigurálnia kell a SharePoint VSS-író szolgáltatást (WSS-író szolgáltatás) a **ConfigureSharePoint. exe**használatával.
 
-A **ConfigureSharePoint. exe** a [DPM telepítési útvonala] \bin mappában található az előtér-webkiszolgálón. Ez az eszköz biztosítja a védelmi ügynököt a SharePoint-farm hitelesítő adataival. Egyetlen WFE-kiszolgálón futtatja azt. Ha több WFE-kiszolgálóval rendelkezik, válassza a csak egyet a védelmi csoportok konfigurálásakor.
+A **ConfigureSharePoint. exe** a [DPM telepítési útvonala] \bin mappában található az előtér-webkiszolgálón. Ez az eszköz biztosítja a védelmi ügynököt a SharePoint-farm hitelesítő adataival. Egyetlen előtér-webkiszolgálón kell futtatnia. Ha több WFE-kiszolgálóval rendelkezik, válassza a csak egyet a védelmi csoportok konfigurálásakor.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>A SharePoint VSS-író szolgáltatás konfigurálása
 
 1. A WFE-kiszolgálón a parancssorban lépjen a [DPM telepítési hely] \bin\ mappát
 2. Adja meg a ConfigureSharePoint-EnableSharePointProtection értéket.
-3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, a következő engedélyeket kell megadnia a WFE-kiszolgálón:
+3. Adja meg a farm rendszergazdai hitelesítő adatait. Ennek a fióknak a helyi rendszergazda csoport tagjának kell lennie a WFE-kiszolgálón. Ha a farm rendszergazdája nem helyi rendszergazda, adja meg a következő engedélyeket az előtér-webkiszolgálón:
    * Adja meg az WSS_Admin_WPG csoport teljes hozzáférését a DPM mappához (% Program Files%\Microsoft adatvédelem Manager\DPM).
    * Adjon olvasási hozzáférést a WSS_Admin_WPG csoportnak a DPM beállításkulcs (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager) számára.
 
@@ -97,12 +97,12 @@ Miután a korábban ismertetett módon konfigurálta a DPM-t és a SharePoint-fa
    > Ha a DPM-ügynök telepítve van, akkor a kiszolgáló a varázslóban látható. A DPM a szerkezetét is megjeleníti. Mivel a ConfigureSharePoint. exe fájlt futtatta, a DPM kommunikál a SharePoint VSS-író szolgáltatással és a hozzá tartozó SQL Server adatbázisokkal, és felismeri a SharePoint-farm struktúráját, a társított tartalom-adatbázisokat és a hozzájuk tartozó elemeket.
    >
    >
-4. Az **adatvédelmi módszer kiválasztása** lapon adja meg a **védelmi csoport**nevét, és válassza ki az előnyben részesített *védelmi módszereket*. Kattintson a **Tovább**gombra.
+4. Az **adatvédelmi módszer kiválasztása** lapon adja meg a **védelmi csoport**nevét, és válassza ki az előnyben részesített *védelmi módszereket*. Kattintson a **Tovább** gombra.
 
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > A lemezes védelmi módszer segíti a rövid helyreállítási idejű célkitűzések teljesítését. Az Azure egy gazdaságos, hosszú távú védelmi cél a szalagokhoz képest. További információ: [a Azure Backup használata a szalagos infrastruktúra lecseréléséhez](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
+   > A lemezes védelmi módszer segíti a rövid helyreállítási idejű célkitűzések teljesítését. Az Azure egy gazdaságos, hosszú távú védelmi cél a szalagokhoz képest. További információ: [a Azure Backup használata a szalagos infrastruktúra lecseréléséhez](./backup-azure-backup-cloud-as-tape.md)
    >
    >
 5. A **rövid távú célok megadása** oldalon válassza ki az előnyben részesített **megőrzési tartományt** , és határozza meg, hogy mikor történjen a biztonsági mentés.
@@ -169,7 +169,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő**lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
 
     ![DPM SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább**gombra.
+6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
 
     ![Visszaállítási kijelölés áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább**gombra.
@@ -193,7 +193,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     A DPM csatolja a SharePoint-elemeket futtató tartalom-adatbázist az ideiglenes SQL Server példányhoz. A tartalom-adatbázisból a DPM-kiszolgáló helyreállítja az elemet, és a DPM-kiszolgálón elhelyezi az átmeneti fájl helyét. A DPM-kiszolgáló átmeneti helyén található helyreállított elemnek most exportálva kell lennie az átmeneti helyre a SharePoint-farmon.
 
     ![Előkészítési Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább**gombra.
+10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább** gombra.
 
     ![Helyreállítási beállítások](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -243,5 +243,5 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 ## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók a SharePoint DPM-védelméről – lásd: [videó sorozat – DPM védelme](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* Tekintse át [a System Center 2012 – Data Protection Manager kibocsátási megjegyzéseit](https://technet.microsoft.com/library/jj860415.aspx)
-* A [System Center 2012 SP1 Data Protection Manager kiadási megjegyzései](https://technet.microsoft.com/library/jj860394.aspx)
+* Tekintse át [a System Center 2012 – Data Protection Manager kibocsátási megjegyzéseit](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)
+* A [System Center 2012 SP1 Data Protection Manager kiadási megjegyzései](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN)

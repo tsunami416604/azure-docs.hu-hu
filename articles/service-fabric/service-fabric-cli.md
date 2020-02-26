@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904818"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587617"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -41,7 +41,7 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 A parancssori felület telepítendő célverzióját úgy is megadhatja, ha a `pip install` parancsot kiegészíti a `==<version>` kifejezéssel. Például az 1.1.0-s verzió esetén a szintaxis a következő:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ Windows 10, Windows Server 2016 és Windows Server 2012 R2 esetén használja a 
 
 Most megnyithat egy új parancsablakot, és lekérheti a Python és a pip verzióját.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Ezután futtassa a következő parancsot az Azure Service Fabric CLI (sfctl) telepítéséhez, és tekintse meg a parancssori felület súgójának oldalát:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -103,7 +103,7 @@ Ellenőrizze, hogy a `~/.local/bin` elérhető-e a `$PATH` útvonalon:
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Ha a Linux Windows alrendszerén végzett telepítés nem megfelelő mappaengedélyek miatt meghiúsul, szükség lehet a telepítés újbóli megkísérlésére emelt szintű engedélyekkel:
@@ -126,7 +126,7 @@ sudo pip3 install sfctl
 A telepítés teszteléséhez tekintse meg az **Ubuntu és a Windows alrendszerek Linux** rendszeren című szakaszban említett lépéseket.
 
 <a name = "cli-mac"></a>
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 
 MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) használja. Ha a HomeBrew még nincs telepítve, a következő parancs futtatásával telepítse:
 
@@ -148,7 +148,7 @@ A parancsok előtagja mindig a következő: `sfctl`. Az összes használható pa
 
 A parancsok ismételhető szerkezetűek, és a parancs célja mindig megelőzi a műveletet.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -161,7 +161,7 @@ A műveletek végrehajtása előtt ki kell választania egy fürtöt, amelyhez c
 > [!WARNING]
 > Éles környezetben ne használjon nem védett Service Fabric-fürtöket.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ A fürt végpontját `http` vagy `https` előtaggal kell ellátni. Tartalmaznia 
 
 A tanúsítvánnyal védett fürtök esetében megadhat egy PEM-kódolású tanúsítványt. Ez a tanúsítvány megadható egyetlen fájlként vagy egy tanúsítványból és egy kulcsból álló párként. Ha ez az önaláírt tanúsítvány nem rendelkezik hitelesítésszolgáltatói aláírással, a `--no-verify` beállítás átadásával kerülheti meg a hitelesítésszolgáltatói ellenőrzést.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ A fürt kapcsolatadatai több Service Fabric CLI-munkamenetben is megmaradnak. E
 
 A Service Fabric-fürt állapotának lekérdezéséhez például használja az alábbi parancsot:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Itt talál néhány javaslatot és tippet a gyakori problémák megoldásához.
 
 A Service Fabric parancssori felület PEM- (.pem kiterjesztésű) fájlok formájában támogatja az ügyféloldali tanúsítványokat. Ha Windows rendszerből származó PFX-fájlokat lát, át kell alakítania a tanúsítványokat PEM formátumba. A PFX-fájlok PEM-fájlokká történő konvertálásához használja a következő parancsot:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Ehhez hasonlóan a PEM-fájlok PFX-fájlokká történő konvertálásához a következő parancsot használhatja (itt nem kell jelszót megadnia):
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ A részletes naplók gyakran hasznosak a hibák javításához vagy a problémá
 
 Ha segítségre van szüksége egy bizonyos paranccsal vagy parancscsoporttal kapcsolatban, használja a `-h` jelzőt.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Egy másik példa:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 A Service Fabric parancssori felületének frissítéséhez futtassa a következő parancsokat (az eredeti telepítéskor használt paramétertől függően a `pip` helyett írjon be `pip3`-at):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

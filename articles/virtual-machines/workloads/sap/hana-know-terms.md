@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806745"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591217"
 ---
 # <a name="know-the-terms"></a>A feltételek megismerése
 
@@ -38,7 +38,7 @@ Számos gyakori definíciót széles körben használnak az architektúra és a 
    A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és futtathatnak szolgáltatásokat ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure által üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv a legtöbb SAP-eszköz üzembe helyezésének módjára jellemző. További információ: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [virtuális hálózat létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Bérlő**: a HANA nagyméretű példány bélyegén üzembe helyezett ügyfelek elkülönítettek a *bérlőhöz.* A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. A HANA nagyméretű példány Stamp szintjén azonban nincs kommunikáció a bérlők között.
 - **SKU-kategória**: a HANA Large-példány esetében az alábbi két SKU-kategóriát ajánljuk:
-    - **I. típusú osztály**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm és S224
+    - **I. típusú osztály**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 és S224m
     - **Type II osztály**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm és S960m
 - **Stamp**: a Microsoft belső telepítési méretének meghatározása a HANA nagyméretű példányain. A HANA nagyméretű példányok üzembe helyezése előtt olyan HANA nagyméretű példány bélyegzőt kell üzembe helyezni, amely a számítási, hálózati és tárolási állványokból áll. Az ilyen üzembe helyezést HANA nagyméretű példány bélyegzőnek vagy a 4. változatnak (lásd alább) a **nagyméretű példányok** időszakának helyettesítőjét használjuk.
 - **Változat**: két különböző Stamp-változat létezik a HANA nagyméretű példányainak bélyegzői esetében. Ezek különböznek az Azure-beli virtuálisgép-gazdagépek architektúrájában és közelségében

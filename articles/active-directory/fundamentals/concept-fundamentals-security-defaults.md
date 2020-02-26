@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149830"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585985"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -95,7 +95,8 @@ Miután engedélyezte a biztonsági alapértelmezett beállításokat a bérlőb
 
 Ha a felhasználó nincs regisztrálva a Multi-Factor Authenticationhoz, a folytatáshoz a Microsoft Authenticator alkalmazás használatával kell regisztrálnia a felhasználót. A rendszer nem biztosít 14 napos Multi-Factor Authentication regisztrációs időszakot.
 
-Az előzetes 2017 Exchange Online-bérlők alapértelmezés szerint le vannak tiltva modern hitelesítéssel. Ha nem szeretné, hogy a bejelentkezési hurok a fenti bérlők hitelesítése közben ne legyen engedélyezve, engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+> [!NOTE]
+> Az előzetes 2017 Exchange Online-bérlők alapértelmezés szerint le vannak tiltva modern hitelesítéssel. Ha nem szeretné, hogy a bejelentkezési hurok a fenti bérlők hitelesítése közben ne legyen engedélyezve, engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 > [!NOTE]
 > A Azure AD Connect szinkronizálási fiók ki van zárva a biztonsági alapbeállításokból, és a rendszer nem kéri a többtényezős hitelesítés regisztrálását vagy elvégzését. A szervezetek más célokra nem szabad ezt a fiókot használni.

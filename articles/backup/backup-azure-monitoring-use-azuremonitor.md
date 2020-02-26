@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500664"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583868"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -29,11 +29,11 @@ Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja l�
 > [!IMPORTANT]
 > További információ a lekérdezés létrehozásának költségéről: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
-Válassza ki bármelyik gráfot a Log Analytics munkaterület **naplók** szakaszának megnyitásához. A **naplók** szakaszban szerkessze a lekérdezéseket, és hozzon létre riasztásokat.
+Nyissa meg a Log Analytics munkaterület **naplók** szakaszát, és írja be a saját naplók lekérdezését. Ha **új riasztási szabályt**választ, megnyílik a Azure monitor riasztás létrehozása lap, ahogy az alábbi képen is látható.
 
-![Riasztás létrehozása Log Analytics munkaterületen](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![Riasztás létrehozása Log Analytics munkaterületen](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-Ha **új riasztási szabályt**választ, megnyílik a Azure monitor riasztás létrehozása lap, ahogy az alábbi képen is látható. Itt az erőforrás már meg van jelölve Log Analytics munkaterületként, és a műveleti csoport integrációja van megadva.
+Itt az erőforrás már meg van jelölve Log Analytics munkaterületként, és a műveleti csoport integrációja van megadva.
 
 ![Az Log Analytics riasztás – létrehozási oldal](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -122,6 +122,26 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     )
     on BackupItemUniqueId
     ````
+
+- Biztonsági mentési tárterületet használ a biztonsági másolati elemek esetében
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>Diagnosztikai Adatfrissítés gyakorisága
 

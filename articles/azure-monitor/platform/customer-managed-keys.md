@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048187"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592102"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor ügyfél által felügyelt kulcs konfigurálása 
 
@@ -86,8 +86,8 @@ Application Insights CMK konfigurálásához kövesse a 3. és a 6. lépésekhez
 1. Előfizetés-engedélyezési lista – ez a korai hozzáférési szolgáltatáshoz szükséges
 2. Azure Key Vault létrehozása és a kulcs tárolása
 3. *Fürterőforrás* létrehozása
-4. Engedélyek megadása a Key Vault számára
-5. Azure Monitor adattár (ADX-fürt) üzembe helyezése
+4. Azure Monitor adattár (ADX-fürt) üzembe helyezése
+5. Engedélyek megadása a Key Vault számára
 6. Log Analytics munkaterületek társítása
 
 Az eljárás jelenleg nem támogatott a felhasználói felületen, a kiépítési folyamat pedig REST APIon keresztül történik.
@@ -135,7 +135,7 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül érhetők el:
 
 ### <a name="create-cluster-resource"></a>*Fürterőforrás* létrehozása
 
-Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és a munkaterületek között. Miután megkapta a megerősítést, hogy az előfizetések engedélyezve lettek, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók. Application Insights és Log Analytics külön fürterőforrás szükséges. A fürterőforrás típusát a létrehozás ideje határozza meg, ha a "clusterType" tulajdonságot "LogAnalytics" vagy "ApplicationInsights" értékre állítja. A fürterőforrás típusa nem módosítható.
+Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és a munkaterületek között. Miután megkapta a megerősítést, hogy az előfizetések engedélyezve lettek, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók. Application Insights és Log Analytics külön fürterőforrás szükséges. A *fürterőforrás* típusát a létrehozás ideje határozza meg, ha a "clusterType" tulajdonságot "LogAnalytics" vagy "ApplicationInsights" értékre állítja. A fürterőforrás típusa nem módosítható.
 
 Application Insights CMK konfigurálásához kövesse a jelen lépés függelékének tartalmát.
 
@@ -156,67 +156,79 @@ Content-type: application/json
    }
 }
 ```
+Az identitást a rendszer a *fürt* erőforrásához rendeli hozzá a létrehozáskor.
 a "clusterType" értéke "ApplicationInsights" a következőhöz: Application Insights CMK.
 
 **Válasz**
 
-A rendszer a *fürt* erőforrásához a létrehozáskor rendeli hozzá az identitást.
+202 elfogadva. Ez egy szabványos Resource Manager-válasz az aszinkron műveletekhez.
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-a "principalId" a kezelt Identity szolgáltatás által a *fürterőforrás* számára generált GUID.
-
-> [!IMPORTANT]
-> Másolja és tartsa meg a "cluster-id" értéket, mivel a következő lépésekben szüksége lesz rá.
-
-Ha bármilyen okból törli a *fürterőforrás* -t, például egy másik névvel vagy clusterType hozza létre, használja ezt az API-hívást:
+Ha bármilyen okból törli a *fürterőforrás* -t, például egy másik névvel vagy clusterType hozza létre, használja ezt a REST API:
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor adattár (ADX-fürt) üzembe helyezése
+
+A szolgáltatás korai hozzáférési időszaka során a ADX-fürtöt manuálisan kell kiépíteni a termék csapata az előző lépések befejezését követően. Használja a Microsofttal együtt használt csatornát a *fürterőforrás* részleteinek megadásához. A JSON-válasz a GET REST API használatával kérhető le:
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Válasz**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+a "principalId" a kezelt Identity szolgáltatás által a *fürterőforrás* számára generált GUID.
+
+> [!IMPORTANT]
+> Másolja és tartsa meg a "cluster-id" értéket, mivel a következő lépésekben szüksége lesz rá.
+
+
 ### <a name="grant-key-vault-permissions"></a>Key Vault engedélyek megadása
 
-Frissítse a Key Vaultt, és adja hozzá a fürterőforrás hozzáférési szabályzatát. Ezután a rendszer a Key Vaulthoz tartozó engedélyeket propagálja az adattitkosításhoz használandó, Azure Monitor tárterületre.
+> [!IMPORTANT]
+> Ezt a lépést akkor kell végrehajtani, ha a termékcsoport megerősítését a Microsoft-csatornán keresztül kapta meg, hogy a Azure Monitor adattár (ADX-fürt) kiépítés teljesült. A kiépítés előtt a Key Vault hozzáférési szabályzat frissítése sikertelen lehet.
+
+Frissítse a Key Vault egy új hozzáférési házirenddel, amely engedélyeket biztosít a *fürterőforrás* számára. Ezeket az engedélyeket a rendszer az adattitkosításhoz tartozó Azure Monitor tárolóban használja.
 Nyissa meg a Key Vault a Azure Portalban, és kattintson a "hozzáférési szabályzatok", majd a "hozzáférési házirend hozzáadása" lehetőségre egy új szabályzat létrehozásához a következő beállításokkal:
 
 - Kulcs engedélyei: válassza a beolvasás, a betakart kulcs és a kicsomagolási kulcs engedélyeket.
-
-- Rendszerbiztonsági tag kiválasztása: adja meg a fürt azonosítóját, amely az előző lépés válaszában szereplő "clusterId" érték.
+- Rendszerbiztonsági tag kiválasztása: adja meg az előző lépésben a válaszban visszaadott fürt-azonosító értéket.
 
 ![Key Vault engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 A *Get* engedély szükséges annak ellenőrzéséhez, hogy a Key Vault helyreállítható-e a kulcs védelme érdekében, valamint a Azure monitor adataihoz való hozzáféréshez.
 
-Néhány percet vesz igénybe, amíg a *fürterőforrás* el nem terjed a Azure Resource Manager. Ha a hozzáférési házirendet közvetlenül a *fürt* erőforrásainak létrehozása után konfigurálja, átmeneti hiba léphet fel. Ebben az esetben próbálkozzon újra néhány perc múlva.
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Fürterőforrás frissítése a kulcs-azonosító részleteivel
 
-Ez a lépés a Key Vaultban a következő fontos verziószám-frissítéseket alkalmazza. Frissítse a *fürterőforrás* Key Vault kulcs- *azonosító* részleteit, hogy a Azure monitor Storage használhassa az új kulcs verzióját. Válassza ki a kulcs aktuális verzióját Azure Key Vault a kulcs azonosítójának részleteinek beszerzéséhez.
+Ez a lépés a Key Vault későbbi verziójának frissítéseire vonatkozik. Frissítse a *fürterőforrás* Key Vault kulcs- *azonosító* részleteit, hogy a Azure monitor Storage használhassa az új kulcs verzióját. Válassza ki a kulcs aktuális verzióját Azure Key Vault a kulcs azonosítójának részleteinek beszerzéséhez.
 
 ![Key Vault engedélyek megadása](media/customer-managed-keys/key-identifier-8bit.png)
 
 Frissítse a *fürterőforrás* KeyVaultProperties a kulcs-azonosító részleteivel.
 
-**Frissítés**
+**Update**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 A "KeyVaultProperties" a Key Vault kulcs azonosítójának részleteit tartalmazza.
@@ -264,44 +276,6 @@ A "KeyVaultProperties" a Key Vault kulcs azonosítójának részleteit tartalmaz
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor adattár (ADX-fürt) üzembe helyezése
-
-A szolgáltatás korai hozzáférési időszaka során a ADX-fürtöt manuálisan kell kiépíteni a termék csapata az előző lépések befejezését követően. Használja a Microsofttal együtt használt csatornát a következő részletek megadásához:
-
-- Erősítse meg, hogy a fenti lépések végrehajtása sikeres volt.
-
-- Az előző lépés JSON-válasza. A Get API-hívással bármikor kérhető le:
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **Válasz**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Munkaterület társítása a *fürt* erőforrásához
 
@@ -560,7 +534,7 @@ a "principalId" a felügyelt identitási szolgáltatás által létrehozott GUID
 > [!IMPORTANT]
 > Másolja és tartsa meg a "cluster-id" értéket, mivel a következő lépésekben szüksége lesz rá.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>Összetevő hozzárendelése *fürterőforrás* -erőforráshoz összetevők használatával [– Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Összetevő hozzárendelése *fürterőforrás* -erőforráshoz összetevők használatával [– Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 8913c956554fa7bf1d0362b44dc6f8031ffd74f9
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429704"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588739"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Gyors útmutató: NAT-átjáró létrehozása a Azure Portal használatával
 
@@ -30,11 +30,7 @@ Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-> [!IMPORTANT]
-> Ha Virtual Network NAT [előzetes verziója engedélyezve van](./nat-overview.md#enable-preview) az előfizetésben, az https://aka.ms/natportal használatával férhet hozzá a portálhoz.
-
-Jelentkezzen be az [Azure Portal](https://aka.ms/natportal).
-
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -46,9 +42,9 @@ Egy virtuális gép üzembe helyezése és a NAT-átjáró használata előtt l�
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a **myVNet** értéket. |
+    | Name (Név) | Adja meg a **myVNet** értéket. |
     | Címtér | Adja meg a **192.168.0.0/16**értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a Create New- **myResourceGroupNAT**(új létrehozása) lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
     | Alhálózat – név | Adja meg a **mySubnet**. |
@@ -104,8 +100,8 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4**elemet.
     | SKU | Válassza a **standard**lehetőséget.
-    | Név | Adja meg a **myPublicIP**. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Name (Név) | Adja meg a **myPublicIP**. |
+    | Előfizetést | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
 
@@ -174,7 +170,7 @@ Most már készen áll a NAT szolgáltatás használatára.
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965813"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588977"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
@@ -27,7 +27,7 @@ Az Azure AD-vel való engedélyezés az összes általános célú és blob Stor
 
 A blob Storage Emellett támogatja az Azure AD-beli hitelesítő adatokkal aláírt közös hozzáférésű aláírások (SAS) létrehozását. További információ: [korlátozott hozzáférés engedélyezése az adatokhoz közös hozzáférési aláírásokkal](storage-sas-overview.md).
 
-Azure Files támogatja az Azure AD-vel való engedélyezést az SMB protokollon keresztül csak a tartományhoz csatlakoztatott virtuális gépek esetében. Ha szeretné megtudni, hogyan használhatja az Azure AD-t az SMB-en keresztül a Azure Fileshoz, tekintse meg [a Azure Files SMB-Azure Active Directory engedélyezésének áttekintését](../files/storage-files-active-directory-overview.md).
+Azure Files támogatja az AD (előzetes verzió) vagy az Azure AD DS (GA) engedélyezését az SMB protokollon keresztül csak a tartományhoz csatlakoztatott virtuális gépek esetében. Az AD (előzetes verzió) vagy az Azure AD DS (GA) az SMB protokollon keresztüli Azure Files való használatának megismeréséhez tekintse meg [az SMB-hozzáférés Azure Files identitás-alapú hitelesítés támogatásának áttekintését](../files/storage-files-active-directory-overview.md).
 
 Az Azure AD-vel való engedélyezés nem támogatott az Azure Table Storage szolgáltatásban. A megosztott kulcs használatával engedélyezze a Table Storage-kérelmeket.
 

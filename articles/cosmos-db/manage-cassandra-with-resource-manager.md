@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e3dd086108ba8c518bf7caf027f149de2ab70e57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980617"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588807"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -25,7 +25,7 @@ Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon haszn�
 > A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
 > Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
@@ -56,7 +56,7 @@ Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jele
 
 ## <a name="next-steps"></a>Következő lépések
 
-Néhány további információforrás:
+Íme néhány további erőforrás:
 
 - [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
 - [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)

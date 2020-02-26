@@ -3,12 +3,12 @@ title: Sablon functions – tömbök és objektumok
 description: Leírja a Azure Resource Manager-sablonban a tömbök és objektumok kezeléséhez használt függvényeket.
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207366"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591183"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok tömb-és objektum-funkciói
 
@@ -1067,7 +1067,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="range"></a>tartomány
 
-`range(startingInteger, numberOfElements)`
+`range(startIndex, count)`
 
 Egész számok tömbjét hozza létre egy kezdő egész számból, és több elemet tartalmaz.
 
@@ -1075,8 +1075,8 @@ Egész számok tömbjét hozza létre egy kezdő egész számból, és több ele
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Igen |int |A tömb első egésze. |
-| numberofElements |Igen |int |A tömbben lévő egész számok száma. |
+| startIndex |Igen |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
+| count |Igen |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1274,7 +1274,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["egy", "Two"] |
-| stringOutput | Sztring | be |
+| stringOutput | Sztring | itt: |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

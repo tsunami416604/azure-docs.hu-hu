@@ -2,24 +2,28 @@
 title: A Data Science Virtual Machine újdonságai
 titleSuffix: Azure Data Science Virtual Machine
 description: Az Azure Data Science Virtual Machine kibocsátási megjegyzései
-author: gvashishtha
+author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.author: gopalv
-ms.date: 10/10/2019
+ms.author: laobri
+ms.date: 02/24/2020
 ms.topic: reference
-ms.openlocfilehash: 5abf1f4a232dd1100f7906d28bbc7abfe89da9e2
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d607e2a45c3a13cdb1b6e107158b04f9f10ae83a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525770"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582602"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Az Azure Data Science Virtual Machine kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Data Science Virtual Machine kiadásait. A tartalmazott eszközök teljes listáját, valamint a verziószámokat a [következő oldalon](./tools-included.md)tekintheti meg.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg az [ismert problémák listáját](reference-known-issues.md) .
+
+## <a name="2020-02-24"></a>2020-02-24
+
+Mostantól elérhetők az [Ubuntu 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) -es és a [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) -lemezképek Data Science Virtual Machine.
 
 ## <a name="2019-10-08"></a>2019-10-08
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277157"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589011"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból
 
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Nyisson meg egy Azure CLI-ablakot, és futtassa az alábbi parancsokat az Azure Spring Cloud egy példányának kiépítéséhez. Vegye figyelembe, hogy az Azure Spring Cloud egy nyilvános tartomány kiosztását is elmondja.
+Hozzon létre egy erőforráscsoportot, amely tartalmazza az Azure Spring Cloud Service-t. További információ az Azure- [erőforráscsoportok](../azure-resource-manager/management/overview.md).
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+Futtassa az alábbi parancsokat az Azure Spring Cloud egy példányának kiépítéséhez. Készítse elő az Azure Spring Cloud-szolgáltatás nevét. A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat. A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 A szolgáltatási példány körülbelül öt percet vesz igénybe.

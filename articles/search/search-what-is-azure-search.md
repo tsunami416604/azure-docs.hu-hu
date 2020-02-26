@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922484"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580651"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -41,33 +41,33 @@ Az Azure Cognitive Search kiválóan alkalmas a következő alkalmazási forgat�
 
 <a name="feature-drilldown"></a>
 
-## <a name="feature-descriptions"></a>A szolgáltatások leírása
+## <a name="feature-descriptions"></a>A szolgáltatás leírása
 
-| Core&nbsp;Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Jellemzők |
+| Core&nbsp;Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
 |-------------------|----------|
 |Szabad formátumú szöveges keresés | A [**teljes szöveges keresés**](search-lucene-query-architecture.md) elsődleges használati eset a legtöbb keresési alkalmazáshoz. A lekérdezéseket a támogatott szintaxisok segítségével állíthatja össze. <br/><br/>Az [**egyszerű lekérdezési szintaxis**](query-simple-syntax.md) logikai operátorokat, kifejezéskeresési operátorokat, utótag-operátorokat és prioritási operátorokat tartalmaz.<br/><br/>A [**Lucene lekérdezési szintaxis**](query-lucene-syntax.md) tartalmazza az egyszerű szintaxis összes operátorát, illetve támogatja emellett az intelligens keresést, a közelségi keresést, a kifejezés-kiemelést és a reguláris kifejezéseket.|
-| Találati pontosság | Az [**egyszerű pontozás**](index-add-scoring-profiles.md) az Azure Cognitive Search egyik legfőbb előnye. A pontozási profilok segítségével a relevancia magukban a dokumentumokban lévő értékeknek a függvényeként modellezhető. Beállíthatja például, hogy az újabb termékek vagy az akciós termékek magasabb prioritással jelenjenek meg a keresési eredményben. Emellett hozhat létre pontozási profilokat címkékkel, ha a külön nyomon követett és tárolt felhasználói keresési beállítások alapján személyre szabott pontozást szeretne nyújtani. |
+| Relevancia | Az [**egyszerű pontozás**](index-add-scoring-profiles.md) az Azure Cognitive Search egyik legfőbb előnye. A pontozási profilok segítségével a relevancia magukban a dokumentumokban lévő értékeknek a függvényeként modellezhető. Beállíthatja például, hogy az újabb termékek vagy az akciós termékek magasabb prioritással jelenjenek meg a keresési eredményben. Emellett hozhat létre pontozási profilokat címkékkel, ha a külön nyomon követett és tárolt felhasználói keresési beállítások alapján személyre szabott pontozást szeretne nyújtani. |
 | Földrajzi keresés | Az Azure Cognitive Search dolgozza fel, szűri és megjeleníti a földrajzi helyeit. Ez lehetővé teszi a felhasználóknak, hogy az adatokat a keresési eredménynek egy fizikai helyhez való közelsége alapján tárják fel. További információért [nézze meg ezt a videót](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) vagy [tekintse át ezt a mintát](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |
 | Szűrők és dimenziók | A [**jellemzőalapú navigáció**](search-faceted-navigation.md) egy lekérdezési paraméterrel engedélyezhető. Az Azure Cognitive Search egy sokoldalú navigációs struktúrát ad vissza, amelyet a kategóriák listájának kódolásához használhat a saját irányítású szűréshez (például a katalógus elemeinek árlista alapján történő szűréséhez). <br/><br/> A [**szűrők**](query-odata-filter-orderby-syntax.md) segítségével építhet be jellemzőalapú navigációt az alkalmazása felhasználói felületébe, továbbfejlesztheti a lekérdezésírást, valamint szűrhet felhasználó vagy fejlesztő által megadott feltételek alapján. Szűrőket OData-szintaxissal tud létrehozni. |
 | Felhasználói élményt javító szolgáltatások | Az [**automatikus kiegészítés**](search-autocomplete-tutorial.md) engedélyezhető a keresősáv típusú lekérdezésekhez. <br/><br/>A [**Keresési javaslatok**](https://docs.microsoft.com/rest/api/searchservice/suggesters) részben bevitt szövegeket is feldolgoz a keresősávban, de eredményként nem lekérdezési kifejezéseket, hanem tényleges dokumentumokat ad ki az indexben. <br/><br/>A [**Szinonimák**](search-synonyms.md) egyenértékű, a lekérdezés hatókörét implicit módon bővítő kifejezéseket társít a kereséshez, hogy ne a felhasználónak kelljen megadnia az alternatívákat. <br/><br/>A [**találatok kiemelése**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) szövegformázást alkalmaz a keresési találatok egyező kulcsszavaira. Megadhatja, hogy mely mezők adjanak vissza kiemelt részeket.<br/><br/>A [**rendezés**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) több mezőhöz is elérhető az indexsémán keresztül, majd a lekérdezéskor be- és kikapcsolható egyetlen keresési paraméter használatával.<br/><br/> A keresési eredmények [**lapozása**](search-pagination-page-layout.md) és szabályozása egyszerű, az Azure Cognitive Search által a keresési eredmények között kínált részletes szabályozással.  <br/><br/>|
 
-| AI&nbsp;dúsítás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Jellemzők |
+| AI&nbsp;dúsítás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Szolgáltatások |
 |-------------------|----------|
 |AI-feldolgozás az indexelés során | A képek és a szövegek elemzésére szolgáló [**AI**](cognitive-search-concept-intro.md) -bővítés alkalmazható egy indexelési folyamatra a szöveges információk nyers tartalomból való kinyeréséhez. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. |
 | A dúsított tartalom tárolása nem keresési helyzetekben történő elemzéshez és felhasználáshoz | A [**Knowledge Store (előzetes verzió)** ](knowledge-store-concept-intro.md) az AI-alapú indexelés kiterjesztése. Az Azure Storage háttérként mentheti az indexelés során létrehozott bővítéseket. Ezek az összetevők segítséget nyújtanak a jobb szakértelmével kialakításában, illetve az amorf vagy nem egyértelmű adatmennyiségek alakzatának és struktúrájának létrehozásában. Ezekből a struktúrákból kivetítéseket hozhat létre, amelyek konkrét számítási feladatokat vagy felhasználókat céloznak meg. Közvetlenül is elemezheti a kinyert fájlokat, vagy betöltheti azokat más alkalmazásokba.<br/><br/> |
 | Gyorsítótárazott tartalom | A [**növekményes bővítés (előzetes verzió)** ](cognitive-search-incremental-indexing-conceptual.md) korlátozza a feldolgozást csak azokra a dokumentumokra, amelyeket a folyamat adott szerkesztése módosít, a nem módosult folyamat részeihez tartozó gyorsítótárazott tartalom használatával. |
 
-| Az adat&nbsp;importálás/indexelés | Jellemzők |
+| Az adat&nbsp;importálás/indexelés | Szolgáltatások |
 |----------------------------------|----------|
 | Adatforrások | Az Azure Cognitive Search indexeli az összes forrásból érkező adatmennyiséget, feltéve, hogy azt JSON-adatstruktúraként küldi el a rendszer. <br/><br/> Az [**Indexelő**](search-indexer-overview.md) automatizálja az adatfeldolgozást a támogatott Azure-adatforrások esetében, és kezeli a JSON-szerializálást. Csatlakozhat [Azure SQL Databasehoz](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DBhoz](search-howto-index-cosmosdb.md)vagy az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) -hoz, hogy kinyerje a kereshető tartalmat az elsődleges adattárakban. Az Azure Blob-indexelők képesek *dokumentumfeltörést* végezni [szövegek kinyeréséhez a leggyakoribb fájlformátumokból](search-howto-indexing-azure-blob-storage.md), ideértve a Microsoft Office-, a PDF- és a HTML-dokumentumokat. |
 | Hierarchikus és beágyazott adatstruktúrák | Az [**összetett típusok**](search-howto-complex-data-types.md) és gyűjtemények lehetővé teszik gyakorlatilag bármilyen típusú JSON-struktúra modellezését Azure Cognitive Search indexként. Egy-a-többhöz és több-a-többhöz számos fajta lehet natív módon kifejezni gyűjtemények, összetett típusok és összetett típusú gyűjtemények formájában.|
 | Nyelvi elemzés | Az elemzők olyan összetevők, amelyekkel a rendszer szövegfeldolgozást végez az indexelési és keresési műveletek során. Két típusukat különböztetjük meg. <br/><br/>Az [**egyéni lexikai elemzőket**](index-add-custom-analyzers.md) a rendszer a fonetikus egyeztetést és reguláris kifejezéseket használó összetett keresési lekérdezésekhez alkalmazza. <br/><br/>A Lucene-tól vagy a Microsofttól származó [**nyelvi elemzők**](index-add-language-analyzers.md) a nyelvspecifikus funkcionalitást kezelik, ideértve például az igeidőt, a nemet, a szabálytalan többesszámú főneveket, a szóösszetételek lebontását és a szavakra bontást (a szóközt nem alkalmazó nyelveknél). <br/><br/>|
 
 
-| Platform&nbsp;szintű&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Jellemzők |
+| Platform&nbsp;szintű&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Szolgáltatások |
 |-------------------|----------|
 | Eszközök prototípus-készítéshez és vizsgálatokhoz | A portálon az [**Adatok importálása varázsló**](search-import-data-portal.md) segítségével konfigurálhatja az indexelőket, az indextervezővel új indexeket tervezhet, a [**Keresési ablakban**](search-explorer.md) pedig keresési kifejezéseket tesztelhet a pontozási profilok finomításához. Emellett bármelyik indexet megnyithatja a séma megtekintéséhez. |
-| Figyelés és diagnosztika | A [**figyelési funkciók lehetővé teszik**](search-monitor-usage.md) , hogy a portálon mindig megjelenjenek a metrikák – dióhéjban. Emellett a rendszer alapértelmezés szerint gyűjti a lekérdezések másodpercenkénti számának, a késésnek és a leszabályozásnak a metrikáit, melyek megtekinthetők jelentésként a portállapokon.|
+| Monitorozás és diagnosztika | A [**figyelési funkciók lehetővé teszik**](search-monitor-usage.md) , hogy a portálon mindig megjelenjenek a metrikák – dióhéjban. Emellett a rendszer alapértelmezés szerint gyűjti a lekérdezések másodpercenkénti számának, a késésnek és a leszabályozásnak a metrikáit, melyek megtekinthetők jelentésként a portállapokon.|
 | Kiszolgálóoldali titkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encrypted-transmission-and-storage) a belső tároló rétegbe van beépítve, és visszavonhatatlan. Opcionálisan az [**ügyfél által felügyelt titkosítási kulcsokkal**](search-security-manage-encryption-keys.md)kiegészítheti az alapértelmezett titkosítást is. Az Azure Key Vault-ben létrehozott és kezelt kulcsok az indexek és a szinonimák leképezésének titkosítására használhatók az Azure Cognitive Searchban. |
 | Infrastruktúra | A **nagy rendelkezésre állású platform** rendkívül megbízható keresési szolgáltatást szavatol. Ha megfelelően méretezhető, az [Azure Cognitive Search 99,9%-os SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t biztosít.<br/><br/> **Teljes körűen felügyelt és méretezhető** , az Azure Cognitive Search teljesen infrastruktúra-felügyeletet igényel. A szolgáltatást két dimenzió méretezésével szabhatja az igényeihez: konfigurálhat nagyobb méretű dokumentumtárat vagy magasabb lekérdezés-feldolgozási kapacitást, vagy mindkettőt.<br/><br/>|
 
@@ -132,14 +132,14 @@ A portálon számos feladat elvégezhető, az Azure Cognitive Search olyan fejle
 |[REST](/rest/api/searchservice/) | HTTP-parancsok, melyek használhatók bármilyen programozási platformról vagy nyelven, ideértve például a Xamarin, a Java és a JavaScript platformot|
 |[.NET SDK](search-howto-dotnet-sdk.md) | .NET-burkoló a REST API-hoz, mely hatékony fejlesztői munkát tesz lehetővé C# és más felügyelt kódú nyelveken, .NET-keretrendszerre épülő megoldások létrehozásához |
 
-## <a name="free-trial"></a>Ingyenes próbalehetőség
+## <a name="free-trial"></a>Ingyenes próbaidőszak
 Az Azure-előfizetők [üzembe helyezhetik a szolgáltatás ingyenes verzióját](search-create-service-portal.md).
 
 Ha nincs még előfizetése, [ingyen létrehozhat egy Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). A fiók létrehozásakor krediteket kap a fizetős Azure-szolgáltatások kipróbálásához. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez.
 
 Másik lehetőségként [kihasználhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat. 
 
-## <a name="how-to-get-started"></a>A szolgáltatások használatba vétele
+## <a name="how-to-get-started"></a>Első lépések
 
 1. Hozzon létre egy [ingyenes szolgáltatást](search-create-service-portal.md). Az ingyenes szolgáltatás az összes rövid útmutató és oktatóanyag elvégzését lehetővé teszi.
 

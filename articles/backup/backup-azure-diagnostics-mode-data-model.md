@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501003"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586376"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -18,7 +18,7 @@ A Log Analytics adatmodell használatával egyéni riasztásokat hozhat létre a
 
 > [!NOTE]
 >
-> Ez az adatmodell a diagnosztikai események Log Analytics (LA) való küldésének Azure Diagnostics módjára hivatkozik. Az új erőforrás-specifikus mód adatmodelljének megismeréséhez tekintse meg a következő cikket: [Azure Backup diagnosztikai események Adatmodellje](https://aka.ms/diagnosticsdatamodel)
+> Ez az adatmodell a diagnosztikai események Log Analytics (LA) való küldésének Azure Diagnostics módjára hivatkozik. Az új erőforrás-specifikus mód adatmodelljének megismeréséhez tekintse meg a következő cikket: [Azure Backup diagnosztikai események Adatmodellje](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup adatmodell használata
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049888"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586605"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -70,7 +70,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
 * A Azure NetApp Files delegált alhálózatnak képesnek kell lennie arra, hogy elérje a tartomány összes Active Directory tartományi szolgáltatások (Hozzáadás) tartományvezérlőjét, beleértve az összes helyi és távoli tartományvezérlőt is. Ellenkező esetben a szolgáltatás megszakítása is bekövetkezhet.  
 
-    Ha olyan tartományvezérlővel rendelkezik, amely nem érhető el a Azure NetApp Files delegált alhálózaton keresztül, beküldhet egy Azure-támogatási kérést, hogy a hatókört **globális** (alapértelmezett) **helyről**módosítsa.  Azure NetApp Files csak a tartományvezérlővel kell kommunikálnia azon a helyen, ahol a Azure NetApp Files delegált alhálózati címtartomány található.
+    Ha olyan tartományvezérlővel rendelkezik, amely nem érhető el a Azure NetApp Files delegált alhálózaton keresztül, megadhat egy Active Directory helyet az Active Directory-kapcsolat létrehozásakor.  Azure NetApp Files csak a tartományvezérlővel kell kommunikálnia azon a helyen, ahol a Azure NetApp Files delegált alhálózati címtartomány található.
 
     Lásd: [a hely topológiájának megtervezése az](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) ad-helyekre és-szolgáltatásokra vonatkozóan. 
     
@@ -88,8 +88,10 @@ További információ a további AD-információkról: Azure NetApp Files [SMB-g
         Ez az a DNS, amely szükséges a Active Directory tartományhoz való csatlakozáshoz és az SMB-hitelesítési műveletekhez. 
     * **Másodlagos DNS-**    
         Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
-    * **Tartományi**  
+    * **AD DNS-tartománynév**  
         Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
+    * **AD-hely neve**  
+        Ennek a helynek a neve, amelyet a tartományvezérlő felderítése korlátozni fog.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
         Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Microsoft Azure Backup Recovery Services-(MARS-) tárat.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173174"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586461"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -28,13 +28,13 @@ Nem törölhet olyan Recovery Services-tárolót, amelynek függőségei, péld�
 
   ![A védett kiszolgáló hibájának törlése.](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Ha a biztonsági másolati elemek törlésre kész állapotban vannak, a figyelmeztető üzenet jelenik meg, és meg kell várnia, amíg véglegesen törölve lettek. További információkért tekintse meg [ezt a cikket](https://aka.ms/SoftDeleteCloudWorkloads).
+- Ha a biztonsági másolati elemek törlésre kész állapotban vannak, a figyelmeztető üzenet jelenik meg, és meg kell várnia, amíg véglegesen törölve lettek. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
    ![Törölje a tár hibáját.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 A tár törléséhez válassza ki a beállításnak megfelelő forgatókönyvet, és kövesse az ajánlott lépéseket:
 
-Alkalmazási helyzet | A tár törléséhez szükséges függőségek eltávolításának lépései |
+Forgatókönyv | A tár törléséhez szükséges függőségek eltávolításának lépései |
 -- | --
 A Azure Backup-ügynökkel védett helyszíni fájlokat és mappákat használok, az Azure-ba történő biztonsági mentéssel | Hajtsa végre a [biztonsági másolati elemek törlése a Mars felügyeleti konzolról](#delete-backup-items-from-the-mars-management-console) című témakör lépéseit.
 MABS (Microsoft Azure Backup Server) vagy DPM (System Center Data Protection Manager) használatával védett helyszíni gépeket használok az Azure-ba | Hajtsa végre a [biztonsági másolati elemek törlése a MABS felügyeleti konzolról](#delete-backup-items-from-the-mabs-management-console) című témakör lépéseit.
@@ -134,7 +134,7 @@ A MABS felügyeleti konzolon két módszer használható a biztonsági mentési 
 A védelem leállításához és a biztonsági másolatok állapotának törléséhez hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a DPM Felügyeleti konzol, majd a navigációs sávon kattintson a **védelem** elemre.
-2. A Megjelenítés ablaktáblán válassza ki a védelmi csoport eltávolítani kívánt tagját. Kattintson a jobb gombbal a **csoporttagok védelmének leállítása** lehetőség kiválasztásához.
+2. A kijelzőpanelen válassza ki a védelmi csoport eltávolítani kívánt elemét. Kattintson a jobb gombbal a **csoporttagok védelmének leállítása** lehetőség kiválasztásához.
 3. A **védelem leállítása** párbeszédpanelen válassza a **védett adatok törlése**lehetőséget, majd jelölje be a **tárterület online törlése** jelölőnégyzetet. Ezután válassza a **védelem leállítása**lehetőséget.
 
     ![Válassza a védett adatok törlése lehetőséget a védelem leállítása ablaktáblán.](./media/backup-azure-delete-vault/delete-storage-online.png)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754824"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587430"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node. js-konzol alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-adat kezeléséhez
 
@@ -95,7 +95,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
 1. Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.key``` tulajdonságot. Ha már rendelkezik olyan adattal, amelyet szeretne az adatbázisban tárolni, a Azure Cosmos DB adatáttelepítési eszközét az itt megadott módon nem definiálhatja. A config. js fájlnak a következő kóddal kell rendelkeznie:
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. 
    
@@ -150,7 +150,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 
    Adatbázis hozható létre az **adatbázisok** osztály `createIfNotExists` vagy Create függvényének használatával. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
 
-2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. A **createDatabase** függvény létrehoz egy ```FamilyDatabase``` azonosítójú új adatbázist, amely a ```config``` objektumból van megadva, ha még nem létezik. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
+2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. A **createDatabase** függvény létrehoz egy ```FamilyDatabase```azonosítójú új adatbázist, amely a ```config``` objektumból van megadva, ha még nem létezik. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 
    ```javascript
    /**
@@ -602,7 +602,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 
 Összességében a kódnak így kell kinéznie:
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
 

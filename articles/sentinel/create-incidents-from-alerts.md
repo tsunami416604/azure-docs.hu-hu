@@ -3,7 +3,7 @@ title: Incidensek létrehozása a riasztásokból az Azure Sentinelben | Microso
 description: Ismerje meg, hogyan hozhat létre incidenseket a riasztásokból az Azure Sentinelben.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029761"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587974"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Incidensek automatikus létrehozása a Microsoft biztonsági értesítéseiből
 
@@ -47,7 +47,7 @@ Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hog
 
 1. Módosíthatja a szabály részleteit, és kiválaszthatja azokat a riasztásokat, amelyek a riasztás súlyossága vagy a riasztás nevében szereplő szöveg alapján hoznak létre incidenseket.  
       
-    Ha például a **Microsoft biztonsági szolgáltatás** mezőben a **Azure Security Center** lehetőséget választja, és a **szűrés súlyossága** mezőben a **magas** érték van kiválasztva, akkor csak a nagy súlyosságú Azure Security Center riasztások automatikusan hoznak létre incidenseket Az Azure Sentinelben.  
+    Ha például a **Microsoft biztonsági szolgáltatás** mezőben a **Azure Security Center** lehetőséget választja, és a **szűrés súlyossága** mezőben a **magas** érték van kiválasztva, akkor csak a nagy súlyosságú Azure Security Center riasztások automatikusan hoznak létre incidenseket az Azure sentinelben.  
 
     ![Szabály létrehozása varázsló](media/incidents-from-alerts/create-rule-wizard.png)
 
@@ -66,7 +66,7 @@ Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hog
 
 1. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

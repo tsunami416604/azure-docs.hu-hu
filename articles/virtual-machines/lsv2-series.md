@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493695"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587260"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -23,7 +23,7 @@ A Lsv2 sorozat nagy átviteli sebességű, kis késleltetésű, közvetlenül le
 >
 > A helyi lemez nagy átviteli sebessége és IOPs révén a Lsv2 sorozatú virtuális gépek ideálisak olyan NoSQL-tárolók számára, mint például az Apache Cassandra és a MongoDB, amelyek több virtuális gépen replikálják az adatmegőrzést, hogy egyetlen virtuális gép meghibásodása esetén is megmaradjon az adatok.
 >
-> További információ: [a teljesítmény optimalizálása a Lsv2-sorozatú virtuális gépeken](/linux/storage-performance.md).  
+> További információ: a teljesítmény optimalizálása a Lsv2-sorozatú virtuális gépeken [Windows](../virtual-machines/windows/storage-performance.md) vagy [Linux](../virtual-machines/linux/storage-performance.md)rendszeren.  
 
 ACU: 150-175
 

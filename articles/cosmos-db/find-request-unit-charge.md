@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 86e9854cb5a522a56cca09a6e1ea155fd8a62f14
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240791"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585900"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>A kérési egység díjszabásának megkeresése Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Ha az SQL API-t használja, több lehetősége is van arra, hogy megkeresse a m�
 
 Jelenleg a Azure Portal csak az SQL-lekérdezésekhez tartozó kérelmek díját találja.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account) , és adja meg az adatgyűjtést, vagy válasszon olyan meglévő Azure Cosmos-fiókot, amely már tartalmaz információt.
 
@@ -42,7 +42,7 @@ Jelenleg a Azure Portal csak az SQL-lekérdezésekhez tartozó kérelmek díját
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
-A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből visszaadott objektumok egy `RequestCharge` tulajdonságot tesznek elérhetővé:
+A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből visszaadott objektumok `RequestCharge` tulajdonságot tesznek elérhetővé:
 
 ```csharp
 ResourceResponse<Document> fetchDocumentResponse = await client.ReadDocumentAsync(
@@ -77,15 +77,15 @@ while (query.HasMoreResults)
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
 
-A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) által visszaadott objektumok a következő `RequestCharge` tulajdonságot teszik elérhetővé:
+A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) által visszaadott objektumok `RequestCharge` tulajdonságot tesznek elérhetővé:
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs" id="GetRequestCharge":::
 
-További információ: gyors útmutató [: Hozzon létre egy .NET-webalkalmazást egy SQL API-](create-sql-api-dotnet.md)fiók használatával Azure Cosmos DBban.
+További információ: gyors útmutató [: .net-Webalkalmazás létrehozása a Azure Cosmos db SQL API-fiók használatával](create-sql-api-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) által visszaadott objektumok egy `getRequestCharge()` metódust tesznek elérhetővé:
+A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) által visszaadott objektumok `getRequestCharge()` metódust tesznek elérhetővé:
 
 ```java
 RequestOptions requestOptions = new RequestOptions();
@@ -111,11 +111,11 @@ feedResponse.forEach(result -> {
 });
 ```
 
-További információ: gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók](create-sql-api-java.md)használatával.
+További információ: gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-fiók használatával](create-sql-api-java.md).
 
 ### <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-A [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) által visszaadott objektumok olyan `headers` alobjektumot tesznek elérhetővé, amely az alapul szolgáló http API által visszaadott összes fejlécet leképezi. A kérelem díja a `x-ms-request-charge` kulcs alatt érhető el:
+A [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) által visszaadott objektumok olyan `headers` alobjektumot tesznek elérhetővé, amely az alapul szolgáló http API által visszaadott összes fejlécet leképezi. A kérés díja a `x-ms-request-charge` kulcs alatt érhető el:
 
 ```javascript
 const item = await client
@@ -146,11 +146,11 @@ while (query.hasMoreResults()) {
 }
 ```
 
-További információ: gyors útmutató [: Node. js-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók](create-sql-api-nodejs.md)használatával. 
+További információ: gyors útmutató [: Node. js-alkalmazás létrehozása Azure Cosmos db SQL API-fiók használatával](create-sql-api-nodejs.md). 
 
 ### <a name="use-the-python-sdk"></a>A Python SDK használata
 
-A `CosmosClient` [Python SDK](https://pypi.org/project/azure-cosmos/) -ból származó objektum egy olyan `last_response_headers` szótárt tesz elérhetővé, amely leképezi a mögöttes http API által visszaadott összes fejlécet az utolsó művelet végrehajtásához. A kérelem díja a `x-ms-request-charge` kulcs alatt érhető el:
+A [PYTHON SDK](https://pypi.org/project/azure-cosmos/) `CosmosClient` objektuma egy `last_response_headers` szótárat tesz elérhetővé, amely az utolsó művelet végrehajtásakor a mögöttes http API által visszaadott összes fejlécet leképezi. A kérés díja a `x-ms-request-charge` kulcs alatt érhető el:
 
 ```python
 response = client.ReadItem(
@@ -162,17 +162,17 @@ response = client.ExecuteStoredProcedure(
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
-További információ: gyors útmutató [: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók](create-sql-api-python.md)használatával. 
+További információ: gyors útmutató [: Python-alkalmazás létrehozása Azure Cosmos db SQL API-fiók használatával](create-sql-api-python.md). 
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Az RU díját egy nevű `getLastRequestStatistics`egyéni adatbázis- [parancs](https://docs.mongodb.com/manual/reference/command/) teszi elérhetővé. A parancs egy olyan dokumentumot ad vissza, amely tartalmazza az utolsó végrehajtott művelet nevét, a kérések díját és annak időtartamát. Ha a MongoDB Azure Cosmos DB API-t használja, több lehetőség is van az RU-díj lekérésére.
+Az RU díját egy `getLastRequestStatistics`nevű egyéni [adatbázis-utasítás](https://docs.mongodb.com/manual/reference/command/) teszi elérhetővé. A parancs egy olyan dokumentumot ad vissza, amely tartalmazza az utolsó végrehajtott művelet nevét, a kérések díját és annak időtartamát. Ha a MongoDB Azure Cosmos DB API-t használja, több lehetőség is van az RU-díj lekérésére.
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
 Jelenleg a kérelmek díját a Azure Portal csak a lekérdezésekhez lehet megkeresni.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account) , és adja meg az adatgyűjtést, vagy válasszon ki egy olyan meglévő fiókot, amely már tartalmaz információt.
 
@@ -188,7 +188,7 @@ Jelenleg a kérelmek díját a Azure Portal csak a lekérdezésekhez lehet megke
 
 ### <a name="use-the-mongodb-net-driver"></a>A MongoDB .NET-illesztőprogram használata
 
-Ha a [hivatalos MongoDB .net-illesztőprogramot](https://docs.mongodb.com/ecosystem/drivers/csharp/)használja, végrehajthat parancsokat úgy, hogy meghívja a `RunCommand` metódust egy `IMongoDatabase` objektumon. Ehhez a metódushoz az `Command<>` absztrakt osztály megvalósítására van szükség:
+Ha a [hivatalos MongoDB .net-illesztőprogramot](https://docs.mongodb.com/ecosystem/drivers/csharp/)használja, végrehajthat parancsokat úgy, hogy meghívja a `RunCommand` metódust egy `IMongoDatabase` objektumon. Ehhez a metódushoz a `Command<>` absztrakt osztály megvalósítására van szükség:
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -203,23 +203,23 @@ Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatist
 double requestCharge = (double)stats["RequestCharge"];
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy .NET-webalkalmazást egy Azure Cosmos DB API](create-mongodb-dotnet.md)használatával a MongoDB.
+További információ: gyors útmutató [: .net-Webalkalmazás létrehozása Azure Cosmos db API-val a MongoDB-hez](create-mongodb-dotnet.md).
 
 ### <a name="use-the-mongodb-java-driver"></a>A MongoDB Java-illesztőprogram használata
 
 
-Ha a [hivatalos MongoDB Java-illesztőprogramot](https://mongodb.github.io/mongo-java-driver/)használja, parancsokat futtathat a `runCommand` metódus meghívásával egy `MongoDatabase` objektumon:
+Ha a [hivatalos MongoDB Java-illesztőprogramot](https://mongodb.github.io/mongo-java-driver/)használja, végrehajthatja a parancsokat úgy, hogy meghívja a `runCommand` metódust egy `MongoDatabase` objektumon:
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
 Double requestCharge = stats.getDouble("RequestCharge");
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy webalkalmazást a MongoDB-hez készült Azure Cosmos DB API-](create-mongodb-java.md)val és a Java SDK-val.
+További információ: gyors útmutató [: Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos db API-val és a Java SDK-](create-mongodb-java.md)val.
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>A MongoDB Node. js-illesztőprogram használata
 
-Ha a [hivatalos MongoDB Node. js-illesztőprogramot](https://mongodb.github.io/node-mongodb-native/)használja, parancsokat futtathat a `command` metódus meghívásával egy `db` objektumon:
+Ha a [hivatalos MongoDB Node. js-illesztőprogramot](https://mongodb.github.io/node-mongodb-native/)használja, végrehajthat parancsokat úgy, hogy meghívja a `command` metódust egy `db` objektumon:
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -228,33 +228,33 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-További információ: gyors útmutató [: Migráljon egy meglévő MongoDB Node. js-webalkalmazást Azure Cosmos DBba](create-mongodb-nodejs.md).
+További információ: gyors útmutató [: meglévő MongoDB Node. js-webalkalmazás migrálása Azure Cosmos DBra](create-mongodb-nodejs.md).
 
 ## <a name="cassandra-api"></a>Cassandra API
 
-Ha a Azure Cosmos DB Cassandra API műveleteit hajtja végre, a rendszer az RU-díjat a bejövő adattartalomban adja `RequestCharge`vissza egy nevű mezőként. Több lehetőség is van az RU-díj lekérésére.
+Ha a Azure Cosmos DB Cassandra API műveleteit hajtja végre, akkor a bejövő adattartalmat a rendszer `RequestCharge`nevű mezőként adja vissza. Többféleképpen is lekérheti a kérelemegység-költséget.
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-A [.net SDK](https://www.nuget.org/packages/CassandraCSharpDriver/)használatával lekérheti a bejövő hasznos adatokat egy `Info` `RowSet` objektum tulajdonsága alatt:
+A [.net SDK](https://www.nuget.org/packages/CassandraCSharpDriver/)használatával lekérheti a bejövő hasznos adatokat egy `RowSet` objektum `Info` tulajdonságában:
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
 double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy Cassandra-alkalmazást a .NET SDK és](create-cassandra-dotnet.md)a Azure Cosmos db használatával.
+További információ: gyors útmutató [: Cassandra-alkalmazás létrehozása a .net SDK és a Azure Cosmos db használatával](create-cassandra-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A [Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core)használatával lekérheti a bejövő hasznos adatokat, ha meghívja a `getExecutionInfo()` metódust egy `ResultSet` objektumon:
+A [Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core)használatával lekérheti a bejövő adattartalmat úgy, hogy meghívja a `getExecutionInfo()` metódust egy `ResultSet` objektumon:
 
 ```java
 ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy Cassandra-alkalmazást a Java SDK és](create-cassandra-java.md)a Azure Cosmos db használatával.
+További információ: gyors útmutató [: Cassandra-alkalmazás létrehozása a Java SDK és a Azure Cosmos db használatával](create-cassandra-java.md).
 
 ## <a name="gremlin-api"></a>Gremlin API
 
@@ -266,29 +266,29 @@ A Gremlin API által visszaadott fejlécek egyéni állapot-attribútumokra vann
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-Az [Gremlin.net SDK](https://www.nuget.org/packages/Gremlin.Net/)használatakor az állapot attribútumai az `StatusAttributes` `ResultSet<>` objektum tulajdonsága alatt érhetők el:
+Ha a [GREMLIN.net SDK](https://www.nuget.org/packages/Gremlin.Net/)-t használja, az állapot attribútumai a `ResultSet<>` objektum `StatusAttributes` tulajdonságában érhetők el:
 
 ```csharp
 ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
-További információ: gyors útmutató [: .NET-keretrendszer vagy Core-alkalmazás létrehozása egy Azure Cosmos DB Gremlin API-fiók](create-graph-dotnet.md)használatával.
+További információ: gyors útmutató [: .NET-keretrendszer vagy Core-alkalmazás létrehozása Azure Cosmos db GREMLIN API-fiók használatával](create-graph-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>A Java SDK használata
 
-Ha a [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)-t használja, az állapot attribútumait az `statusAttributes()` `ResultSet` objektum metódusának meghívásával kérheti le:
+Ha a [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)-t használja, a `ResultSet` objektum `statusAttributes()` metódusának meghívásával lekérheti az állapot-attribútumokat:
 
 ```java
 ResultSet results = client.submit("g.V().count()");
 Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy Graph-adatbázist a Azure Cosmos DBban a](create-graph-java.md)Java SDK használatával.
+További információ: gyors útmutató [: Graph-adatbázis létrehozása Azure Cosmos DBban a Java SDK használatával](create-graph-java.md).
 
 ## <a name="table-api"></a>Tábla API
 
-Jelenleg az egyetlen SDK, amely a Table Operations RU díját adja vissza, a [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). Az `TableResult` objektum egy olyan `RequestCharge` tulajdonságot tesz elérhetővé, amelyet az SDK tölt fel, amikor a Azure Cosmos db Table API használja:
+Jelenleg az egyetlen SDK, amely a Table Operations RU díját adja vissza, a [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). A `TableResult` objektum olyan `RequestCharge` tulajdonságot tesz elérhetővé, amelyet az SDK az Azure Cosmos DB Table API használatával tölt fel:
 
 ```csharp
 CloudTable tableReference = client.GetTableReference("table");
@@ -299,16 +299,16 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 }
 ```
 
-További információ: gyors útmutató [: Hozzon létre egy Table API alkalmazást a .NET SDK és a](create-table-dotnet.md)Azure Cosmos db használatával.
+További információ: gyors útmutató [: table API-alkalmazás létrehozása a .net SDK és a Azure Cosmos db használatával](create-table-dotnet.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az RU-felhasználás optimalizálásával kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
 * [A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-throughput.md)
-* [A lekérdezési díjak optimalizálása Azure Cosmos DB](optimize-cost-queries.md)
+* [A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben](optimize-cost-queries.md)
 * [Kiosztott átviteli sebesség globális skálázása](scaling-throughput.md)
-* [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+* [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md)
 * [Adatátviteli kapacitás kiépítése egy tároló számára](how-to-provision-container-throughput.md)
 * [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

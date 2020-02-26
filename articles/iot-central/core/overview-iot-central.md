@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024126"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589410"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -39,8 +39,12 @@ Ez a cikk IoT Central:
 - A feladatok nem támogatják az összetett típusokat.
 - A tömb sémájának típusai nem támogatottak.
 - A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
-- Ez csak a Egyesült Államok és Európa helyein érhető el.
+- Ez csak a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség és Ausztrália helyein érhető el.
 - Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
+- A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) támogatása előzetes verzióban érhető el, és csak a kiválasztott régiókban támogatott.
+
+    > [!NOTE]
+    > Forduljon a technikai támogatási szolgálathoz, és hozzon létre egy előnézeti alkalmazást, amely támogatja a IoT Plug and Play-eszközök használatát.
 
 ## <a name="personas"></a>Szerepek
 
@@ -124,7 +128,7 @@ A DPS használata lehetővé teszi a következőket:
 
 További információért lásd: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
 
-### <a name="azure-iot-edge-devices"></a>Eszközök Azure IoT Edge
+### <a name="azure-iot-edge-devices"></a>Az Azure IoT Edge-eszközök
 
 Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használatával létrehozott eszközökhöz [Azure IoT Edge eszközöket](../../iot-edge/about-iot-edge.md) is csatlakozhat egy IoT Central alkalmazáshoz. Azure IoT Edge lehetővé teszi, hogy közvetlenül a IoT Central által felügyelt IoT-eszközökön futtassa a felhőalapú intelligenciát és az egyéni logikát. A IoT Edge Runtime a következőket teszi lehetővé:
 
@@ -136,7 +140,7 @@ Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használ
 
 További információ: [Azure IoT Edge eszközök és IoT Central](concepts-architecture.md#azure-iot-edge-devices).
 
-## <a name="stay-connected"></a>Tartsa a kapcsolatot
+## <a name="stay-connected"></a>A kapcsolat fenntartása
 
 IoT Central alkalmazásait teljes mértékben a Microsoft üzemelteti, ami csökkenti az alkalmazások felügyeletének terhelését.
 

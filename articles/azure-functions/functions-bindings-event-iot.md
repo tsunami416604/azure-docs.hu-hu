@@ -1,41 +1,32 @@
 ---
 title: Az Azure IoT Hub-kötések Azure Functions
-description: Ismerje meg, hogyan használhatók IoT Hub kötések a Azure Functionsban.
+description: Megtudhatja, hogyan használhatja a IoT Hub triggert és a kötést Azure Functions.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/05/2019
+ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 2940f9e2adff82c100ed347431e8c1d27c30202e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c25543b16c3486a8f6a445427346382faaaa09a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924450"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586129"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>Az Azure IoT Hub-kötések Azure Functions
 
-Ez a cikk azt ismerteti, hogyan használhatók a IoT Hub Azure Functions kötései. Az IoT Hub támogatás az [Azure Event Hubs-kötésen](functions-bindings-event-hubs.md)alapul.
-
-[!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
-
-## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
-
-Az 1. x Azure Functions-es verzióban a IoT Hub kötések a [Microsoft. Azure. webjobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet csomagban találhatók, 2. x verzióban. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub-tárházban található.
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
-## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
-
-A 2. x és újabb függvények esetében használja a [Microsoft. Azure. webjobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) csomagot, 3. x verziót. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub-tárházban található.
-
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+Ez a cikk azt ismerteti, hogyan használhatók a IoT Hubhoz Azure Functions kötések. Az IoT Hub támogatás az [Azure Event Hubs-kötésen](functions-bindings-event-hubs.md)alapul.
 
 > [!IMPORTANT]
 > Míg az alábbi mintakód-minták az Event hub API-t használják, a megadott szintaxis IoT Hub függvények esetében alkalmazható.
+
+| Műveletek | Típus |
+|--------|------|
+| Válaszadás az IoT hub Event streambe küldött eseményekre. | [Eseményindító](./functions-bindings-event-iot-trigger.md) |
+| Események írása egy IoT-esemény streambe | [Kimeneti kötés](./functions-bindings-event-iot-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)
+- [Válasz az Event hub esemény-adatfolyamba küldött eseményekre (trigger)](./functions-bindings-event-iot-trigger.md)
+- [Események írása egy esemény-adatfolyamba (kimeneti kötés)](./functions-bindings-event-iot-output.md)

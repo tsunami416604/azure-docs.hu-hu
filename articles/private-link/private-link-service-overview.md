@@ -2,17 +2,17 @@
 title: Mi az az Azure Private link Service?
 description: Ismerje meg az Azure Private link Service-t.
 services: private-link
-author: malopMSFT
+author: sumeetmittal
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: allensu
-ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.author: sumi
+ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565786"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587413"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -121,6 +121,6 @@ A Private link Service használatának ismert korlátai a következők:
 - Csak az IPv4-forgalmat támogatja
 - Csak a TCP-forgalmat támogatja
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel](create-private-link-service-cli.md)

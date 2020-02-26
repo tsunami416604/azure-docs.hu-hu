@@ -11,28 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ca17bece33107de756eb221e14eaab851660a99
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992234"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588705"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Biztonsági riasztások a Azure DevTest Labs környezetekben
-Ez a cikk bemutatja, hogyan tekintheti meg Azure DevTest Labs környezetek biztonsági riasztásait. 
+Labor-felhasználóként most megtekintheti Azure Security Center riasztásokat a tesztkörnyezet környezetében. A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfalak és a végpontvédelmi megoldások naplóadatait a valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek. [További információ a Azure Security Center biztonsági értesítéseiről](../security-center//security-center-alerts-overview.md).  
+
 
 ## <a name="prerequisites"></a>Előfeltételek
-A biztonsági riasztásokat jelenleg csak a laborban üzembe helyezett környezetek esetében tekintheti meg. A szolgáltatás teszteléséhez vagy használatához telepítsen egy környezetet a laborba. 
+A biztonsági riasztásokat jelenleg csak a tesztkörnyezetben üzembe helyezett, szolgáltatásként szolgáló környezetekben lehet megtekinteni. A szolgáltatás teszteléséhez vagy használatához [telepítsen egy környezetet a laborba](devtest-lab-create-environment-from-arm.md). 
 
 ## <a name="view-security-alerts-for-an-environment"></a>Környezet biztonsági értesítéseinek megtekintése
 
-1. A labor kezdőlapján válassza a bal oldali menüben a **biztonsági riasztások** elemet. Ekkor meg kell jelennie a biztonsági riasztások számának (magas, közepes és alacsony).
+1. A labor kezdőlapján válassza a bal oldali menüben a **biztonsági riasztások** elemet. Ekkor meg kell jelennie a biztonsági riasztások számának (magas, közepes és alacsony). További információ a [riasztások besorolásáról](../security-center/security-center-alerts-overview.md#how-are-alerts-classified).
 
     ![Biztonsági riasztások – áttekintés](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. Kattintson a jobb gombbal az utolsó oszlopban található három pontra (...), majd válassza a **biztonsági riasztások megtekintése**lehetőséget. 
 
     ![Biztonsági riasztások megtekintése](./media/environment-security-alerts/view-security-alerts-menu.png)
-3. A riasztásokkal és az Advisor-javaslatokkal kapcsolatban további részleteket talál. 
+    
+3. A riasztásokkal és az Advisor-javaslatokkal kapcsolatban további részleteket talál. További információ a [Azure Security Center biztonsági riasztások kezeléséről és megválaszolásáról](../security-center/security-center-managing-and-responding-alerts.md).
 
     ![Biztonsági riasztások megtekintése](./media/environment-security-alerts/advisor-recommendations.png)
 

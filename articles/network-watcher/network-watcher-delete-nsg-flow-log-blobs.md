@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036296"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587209"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Hálózati biztonsági csoport folyamatábrájának tárolási blobjának törlése Network Watcher
 
-Jelenleg hiba történt a [hálózati biztonsági csoport (NSG)](network-watcher-nsg-flow-logging-overview.md) Network Watcher adatforgalmának naplózása során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Most futtatnia kell egy PowerShell-parancsfájlt, hogy manuálisan törölje a folyamat naplóit a Storage-fiókból a jelen cikkben leírtak szerint.
+Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Most futtatnia kell egy PowerShell-parancsfájlt, hogy manuálisan törölje a folyamat naplóit a Storage-fiókból a jelen cikkben leírtak szerint.
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>PowerShell-szkript futtatása a NSG-naplók törléséhez
  
@@ -125,16 +125,16 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. Szükség szerint adja meg a következő paramétereket a parancsfájlban:
-   - **SubscriptionId** [Kötelező]: Az az előfizetés-azonosító, amelyből törölni szeretné a NSG flow log-blobokat.
-   - **Tartózkodási hely** [Kötelező]: Annak a régiónak a NSG, amelyre vonatkozóan törölni szeretné a NSG flow log-blobokat. Ezeket az információkat a Azure Portal vagy a [githubon](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)tekintheti meg.
-   - **Megerősítés** [Nem kötelező]: Ha manuálisan szeretné megerősíteni az egyes tárolási Blobok törlését, adja meg a megerősítés jelölőjét.
+   - **SubscriptionId** [kötelező]: az előfizetés azonosítója, amelyből törölni szeretné a NSG flow log-blobokat.
+   - **Hely** [kötelező]: annak a NSG a régiójának a _helye_ , amelyhez törölni szeretné a NSG flow log blobokat. Ezeket az információkat a Azure Portal vagy a [githubon](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)tekintheti meg.
+   - **Erősítse meg** a [nem kötelező]: adja meg a megerősítés jelölőjét, ha manuálisan szeretné megerősíteni az egyes tárolási Blobok törlését.
 
 1. Futtassa a mentett parancsfájlt az alábbi példában látható módon, ahol a parancsfájlt a **delete-NsgFlowLogsBlobs. ps1**fájlba mentette:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
-## <a name="next-steps"></a>További lépések
-- Az [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) vagy a [Azure Automation](https://azure.microsoft.com/services/automation/) segítségével automatizálhatja a szkript futtatását
+## <a name="next-steps"></a>Következő lépések
+- Az ügyfelek [Azure Logic apps](../logic-apps/logic-apps-overview.md) vagy [Azure Automation](https://azure.microsoft.com/services/automation/) használatával automatizálják a szkript futtatását
 - A NSG-naplózással kapcsolatos további tudnivalókért tekintse meg [a hálózati biztonsági csoportok (NSG) naplóinak Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

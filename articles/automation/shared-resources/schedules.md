@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849462"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592203"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Runbook ütemezése az Azure Automationben
 
@@ -27,7 +27,7 @@ Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy 
 
 A következő táblázatban található parancsmagok a PowerShell-lel Azure Automation-ben történő létrehozásához és kezeléséhez használatosak. A [Azure PowerShell modul](/powershell/azure/overview)részeként szállítanak.
 
-| A  parancsmagjai | Leírás |
+| Parancsmagok | Leírás |
 |:--- |:--- |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Ütemezés lekérése. |
 | [Új – AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Új ütemtervet hoz létre. |
@@ -37,7 +37,7 @@ A következő táblázatban található parancsmagok a PowerShell-lel Azure Auto
 | [Regisztráció – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Runbook társít egy ütemtervhez. |
 | [Regisztráció törlése – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Egy runbook leválasztása az ütemtervből. |
 
-## <a name="creating-a-schedule"></a>Ütemterv létrehozása
+## <a name="creating-a-schedule"></a>Ütemezés létrehozása
 
 A runbookok új ütemtervet hozhat létre a Azure Portal vagy a PowerShell használatával.
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 A leggyakoribb intervallum egy óra Azure Automation konfigurálható. Ha az ütemtervek végrehajtásához gyakrabban kell végrehajtani a műveleteket, akkor két lehetőség közül választhat:
 
-* Hozzon létre egy [webhookot](../automation-webhooks.md) a runbook, és az [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) használatával hívja meg a webhookot. Az Azure Scheduler részletesebb részletességet biztosít az ütemezés definiálásához.
+* Hozzon létre egy [webhookot](../automation-webhooks.md) a runbook, és használja a [Azure Logic Appst](../../logic-apps/logic-apps-overview.md) a webhook meghívásához. A Azure Logic Apps az ütemterv meghatározásakor részletesebb részletességet biztosít.
 
 * Hozzon létre négy ütemezett ütemtervet, amelyek mindegyike óránként 15 percen belül elindul. Ez a forgatókönyv lehetővé teszi, hogy a runbook 15 percenként fusson a különböző ütemtervekkel.
 

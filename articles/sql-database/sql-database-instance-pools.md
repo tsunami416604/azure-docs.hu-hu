@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552780"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587396"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok a SQL Database példány-készletek (előzetes verzió)?
 
@@ -108,7 +108,7 @@ A készletben üzembe helyezett összes felügyelt példány külön SQL Agent-p
 
 Azok a választható funkciók vagy szolgáltatások, amelyekhez szükség van bizonyos értékek kiválasztására (például a példány szintű rendezés, az időzóna, a nyilvános végpont az adatforgalomhoz, a feladatátvételi csoportok) a példány szintjén vannak konfigurálva, és a készlet minden példánya esetében eltérőek lehetnek.
 
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
 Bár a készletekben lévő felügyelt példányok dedikált virtuális mag és RAM-mal rendelkeznek, a helyi lemez (tempdb-használat) és a hálózati erőforrások megoszthatók. Ez nem valószínű, de lehetséges a *zajos szomszéd* hatása, ha a készletben több példány is magas erőforrás-felhasználással rendelkezik. Ha ezt a viselkedést észleli, érdemes lehet ezeket a példányokat egy nagyobb készletbe vagy egyetlen példányként telepíteni.
 
@@ -126,7 +126,7 @@ Ha a példány-készlet üzembe helyezésével kapcsolatos problémákat tapaszt
 
 Ha egy készleten belül egy példányhoz vagy adatbázishoz kapcsolódó problémákat tapasztal, hozzon létre egy rendszeres támogatási jegyet Azure SQL Database felügyelt példányokhoz.
 
-Ha nagyobb felügyelt példányokat kíván létrehozni (példány-készletekkel vagy anélkül), előfordulhat, hogy nagyobb regionális kvótát kell megszereznie. Használja a [szabványos felügyelt példányok eljárását nagyobb kvóta kéréséhez](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), de vegye figyelembe, hogy ha példány-készleteket használ, a telepítési logika összehasonlítja a *készlet szintjének* teljes virtuális mag-felhasználását a kvóta alapján annak megállapítása érdekében, hogy engedélyezett-e új erőforrások létrehozása a kvóta további növelése nélkül.
+Ha nagyobb felügyelt példányokat kíván létrehozni (példány-készletekkel vagy anélkül), előfordulhat, hogy nagyobb regionális kvótát kell megszereznie. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md). Vegye figyelembe, hogy ha példány-készleteket használ, a telepítési logika összehasonlítja a *készlet szintjén* a teljes virtuális mag-használatot a kvóta alapján annak megállapítása érdekében, hogy engedélyezett-e új erőforrások létrehozása a kvóta további növelése nélkül.
 
 ## <a name="instance-pool-billing"></a>Példány-készlet számlázása
 

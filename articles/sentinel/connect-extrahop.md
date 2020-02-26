@@ -3,7 +3,7 @@ title: ExtraHop-Felfedés (x) összekötése az Azure Sentinel szolgáltatással
 description: Ismerje meg, hogyan csatlakoztatható a ExtraHop Reveal (x) az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 90d2a5a985e904217a461b509fb171822d266f60
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610577"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588297"
 ---
 # <a name="connect-extrahop-revealx"></a>ExtraHop Reveal(x) csatlakoztatása
 
