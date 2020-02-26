@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539433"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591523"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -58,6 +58,9 @@ A második módszer egy vagy több virtuális gép kijelölése a listában, maj
 ![Kijelölt virtuális gépek indítása](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 Hasonlóképpen leállíthat egy vagy több virtuális gépet is, ha az **állapot** oszlopban lévő gombra kattint, vagy kiválasztja az eszköztár **Leállítás** elemét. 
+
+> [!NOTE]
+> Ha egy oktató bekapcsol egy tanulói virtuális gépet, az nem érinti a tanulóra vonatkozó kvótát. A felhasználóhoz tartozó kvóta meghatározza, hogy a felhasználó számára hány labor óra legyen elérhető az ütemezett osztály időpontján kívül. A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md?#set-quotas-for-users)számára.
 
 ## <a name="reset-vms"></a>Virtuális gépek alaphelyzetbe állítása
 Egy vagy több virtuális gép alaphelyzetbe állításához jelölje ki azokat a listában, majd válassza az **Alaphelyzetbe állítás** lehetőséget az eszköztáron. 
