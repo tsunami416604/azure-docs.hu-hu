@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 01/30/2020
-ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 74f69f789ecb0d529e52054eeb1ac7ccb51bd6c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934866"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588825"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -27,7 +27,7 @@ A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükr
 
 ## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
 
-### <a name="february-2020"></a>Február 2020
+### <a name="february-2020"></a>2020. február
 
 + A személyes adatok [észlelése (előzetes verzió)](cognitive-search-skill-pii-detection.md) az indexelés során használt kognitív képesség, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon.
 

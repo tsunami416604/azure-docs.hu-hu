@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466303"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586767"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiókkal rendelkező Xamarin-alkalmazás létrehozása a használatával
 
@@ -38,7 +38,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB SQL API-f
 
 Ha Windows rendszeren fejleszt, és még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure-fejlesztési** és a **mobilalkalmazások .NET rendszerrel való fejlesztése** számítási feladatot a Visual Studio telepítése során.
 
-Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) alkalmazást.
+Ha Mac számítógépet használ, töltse le az **ingyenes** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -61,9 +61,9 @@ Mac gépek esetében letöltheti az **ingyenes** [Visual Studio for Mac](https:/
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a kódot, szerezze be az API-kulcsokat, és futtassa. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal.
+Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a kódot, szerezze be az API-kulcsokat, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -75,7 +75,7 @@ Most hozzon klónozott Xamarin SQL API-alkalmazást a GitHubról, tekintse át a
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
@@ -128,7 +128,7 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
 
 * A dokumentumok tárolójának lekérdezése során a rendszer a `DocumentClient.CreateDocumentQuery<T>` metódust használja, ahogy az a `CosmosDBService.GetToDoItems` függvényben látható:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     A `CreateDocumentQuery<T>` egy olyan URI-t vesz fel, amely az előző szakaszban létrehozott tárolóra mutat. Emellett LINQ-operátorokat is megadhat, például egy `Where` záradékot. Ebben az esetben a rendszer csak a nem elvégzett teendőket adja vissza.
 
@@ -141,13 +141,13 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
 
 * A `ComsmosDBService.InsertToDoItem` függvény azt mutatja be, hogyan szúrhat be új dokumentumot:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     Az Item URI meg van adva, valamint a beszúrandó elemet is.
 
 * A `CosmosDBService.UpdateToDoItem` függvény azt mutatja be, hogyan cserélhet le egy meglévő dokumentumot egy újat:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     Itt új URI-ra van szükség a lecserélni kívánt dokumentum egyedi azonosításához, amelyet a rendszer a `UriFactory.CreateDocumentUri` használatával szerez be, és továbbítja az adatbázist és a tároló nevét, valamint a dokumentum AZONOSÍTÓját.
 
@@ -155,13 +155,13 @@ Most tekintsük át röviden, hogyan kommunikál az alkalmazás az Azure Cosmos 
 
 * Az elemek törlését a `CosmosDBService.DeleteToDoItem` függvény mutatja be:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     Jegyezze fel újra az egyedi dokumentum-URI-t, amelyet a rendszer a `DocumentClient.DeleteDocumentAsync` függvénynek átadott.
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
+Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
 A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visual Studio for Mac hibakeresőjével.
 
@@ -200,7 +200,7 @@ A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visua
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan építhet ki és helyezhet üzembe egy Xamarin-alkalmazást. Mostantól további adatait is importálhatja az Azure Cosmos-fiókjába.
 

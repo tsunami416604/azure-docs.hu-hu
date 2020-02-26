@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790381"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587498"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
 Korábban csak a standard szinten Azure Service Bus felkínált névtereket. A névterek több-bérlős telepítések, amelyek alacsony átviteli sebességre és fejlesztői környezetekre vannak optimalizálva. A prémium szint az egyes névterekhez tartozó dedikált erőforrásokat kínálja a kiszámítható késéshez és a megnövekedett átviteli sebességhez rögzített áron. A prémium szint nagy teljesítményű és éles környezetekhez van optimalizálva, amelyek további vállalati funkciókat igényelnek.
@@ -32,9 +32,9 @@ Néhány Megjegyzés:
 - A **prémium** névtérnek **nem lehetnek entitásai** az áttelepítés sikerességéhez. 
 - A standard névtérben lévő összes **entitást** az áttelepítési folyamat során a prémium névtérre **másolja** a rendszer. 
 - A Migrálás a prémium **szinten 1 000 entitást támogat az üzenetkezelési egységenként** . Annak megállapításához, hogy hány üzenetkezelési egységre van szüksége, kezdje az aktuális standard névtérben található entitások számával. 
-- Az alapszintű **csomagról** a **Premier szintre**nem telepíthet közvetlenül áttelepítést, de az alapszintű és a standard közötti áttelepítéssel, majd a következő lépésben a standard és a prémium szintjével is megteheti.
+- Az **alapszintű csomagról** a prémium szintre való áttelepítést közvetlenül nem végezheti el, de az alapszintű és a standard közötti áttelepítéssel, majd a következő lépésben a standard és a prémium **szintről**is elvégezhető.
 
-## <a name="migration-steps"></a>Migrálási lépések
+## <a name="migration-steps"></a>A migrálás lépései
 Bizonyos feltételek az áttelepítési folyamathoz vannak társítva. Ismerkedjen meg az alábbi lépésekkel a hibák lehetőségének csökkentése érdekében. Ezek a lépések körvonalazzák az áttelepítési folyamatot, és a részletes részletek a következő szakaszokban vannak felsorolva.
 
 1. Hozzon létre egy új, prémium szintű névteret.
@@ -62,7 +62,7 @@ Ha az Azure CLI vagy a PowerShell eszköz használatával szeretné áttelepíte
    ```
 
     >[!IMPORTANT]
-    > A rendszer az áttelepítés utáni alias/név (post_migration_dns_name) használatával éri el a régi standard névteret az áttelepítés után. Ezzel a paranccsal ürítheti a várólistákat és az előfizetéseket, majd törölheti a névteret.
+    > A Migrálás utáni alias/név (post_migration_dns_name) a régi standard névtér áttelepítési utáni eléréséhez lesz használva. Ezzel a paranccsal ürítheti a várólistákat és az előfizetéseket, majd törölheti a névteret.
 
 1. Párosítsa a standard és a prémium szintű névtereket, és indítsa el a szinkronizálást a következő parancs használatával:
 
@@ -170,7 +170,7 @@ Nem, az áttelepítés elvégzéséhez nincs szükség kód-vagy konfigurációs
 ### <a name="what-happens-when-i-abort-the-migration"></a>Mi történik az áttelepítés megszakításakor?
 Az áttelepítés a `Abort` parancs vagy a Azure Portal használatával szakítható meg. 
 
-#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
@@ -190,7 +190,7 @@ Azonban nem törli az entitásokat a prémium szintű névtérből, vagy törli 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy megszakítja az áttelepítést, törölje az áttelepítés során kiépített prémium névteret, hogy ne kelljen fizetnie az erőforrásért.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nem szeretném lecsapolni az üzeneteket. Mi a teendő?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nem szeretném lecsapolni az üzeneteket. Mit tegyek?
 
 Előfordulhat, hogy a küldő alkalmazások elküldik az üzeneteket, és az áttelepítés véglegesítése előtt a standard névtérben lévő tárterületre kötelezik őket.
 

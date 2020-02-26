@@ -9,24 +9,29 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6266ef3479e74103d0989b8eb0286626da5eb28f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976791"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604893"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Python kiépítési szolgáltatási SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt TPM-eszközhöz az Azure IoT Hub Device Provisioning Service a [v1 Python kiépítési szolgáltatás SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) -val egy minta Python-alkalmazás segítségével. Bár a Python szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
+Ebben a rövid útmutatóban programozott módon hozza létre az Azure IoT Hub Device Provisioning Service TPM-eszközének egyéni regisztrációját a Python kiépítési szolgáltatás SDK-val egy minta Python-alkalmazás segítségével.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python 2. x vagy 3. x](https://www.python.org/downloads/). Ez a rövid útmutató az alábbi [Python-kiépítési szolgáltatás SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) -t telepíti.
+- [Pip](https://pip.pypa.io/en/stable/installing/), ha nem tartalmazza a Python eloszlását.
+- Ellenőrző kulcs. Hajtsa végre a [szimulált eszköz létrehozása és kiépítése](quick-create-simulated-device.md) , illetve az SDK által megadott, az alábbiakban ismertetett hátirat kulcs használatát.
 
 > [!IMPORTANT]
 > Ez a cikk csak az elavult v1 Python SDK-ra vonatkozik. Az IOT hub Device kiépítési szolgáltatáshoz tartozó eszközök és szolgáltatások ügyfelei még nem érhetők el a v2-ben. A csapat jelenleg nem működik, hogy a v2-et a szolgáltatás paritására hozza.
-
-A folytatás előtt [végezze el az IoT Hub Device Provisioning Service beállítási lépéseit az Azure Portalon](./quick-setup-auto-provision.md).
-
 
 <a id="prepareenvironment"></a>
 
@@ -34,7 +39,7 @@ A folytatás előtt [végezze el az IoT Hub Device Provisioning Service beállí
 
 1. Töltse le és telepítse a [Python 2.x-es vagy 3.x-es verzióját](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változókhoz. 
 
-1. Válasszon egyet az alábbi lehetőségek közül:
+1. A [Python kiépítési szolgáltatás SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)-hoz válassza az alábbi lehetőségek egyikét:
 
     - Hozza létre és fordítsa le az **Azure IoT Python SDK-t**. A Python-csomagok létrehozásához kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md). Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagot](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) is telepítse a Python natív DLL-jeinek használatához.
 

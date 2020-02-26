@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990589"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587532"
 ---
-# <a name="overview-of-azure-security-controls"></a>Az Azure-beli biztonsági vezérlők áttekintése
+# <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt áttekintése
 
 Az Azure biztonsági teljesítményteszt olyan javaslatokat tartalmaz, amelyek segítségével javíthatja alkalmazásai és adatai biztonságát az Azure-ban.
 
@@ -48,7 +48,7 @@ Minden javaslat a következő információkat tartalmazza:
 
 Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha a teljesítményteszt-csapat közvetlen bemenetét szeretné megadni, töltse ki az űrlapot [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)címen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az első biztonsági ellenőrzést: [hálózati biztonság](security-control-network-security.md)
 - Olvassa el az [Azure Security teljesítményteszt bevezetését](introduction.md)

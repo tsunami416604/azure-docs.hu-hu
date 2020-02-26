@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a parancssor az alkalmazások fejlesztéséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 2d3a498d72264d3084e45202b7daa99806d45ce3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538430"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602609"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése a Kubernetes-ben – Azure dev Spaces
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -30,7 +30,7 @@ Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-region
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön

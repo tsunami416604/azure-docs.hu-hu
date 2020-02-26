@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425017"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582636"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -66,6 +66,29 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 - 40.126.0.0/18
 
 A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt használja a 443-es porton.
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
+
+Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.
+
+Nyilvános társítás esetén: a következő tartományokhoz/címekhez való hozzáférés biztosítása:
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:
+
+- Azure Active Directory (12076:5060)
+- Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
+- Azure Storage (az Recovery Services-tároló helyének megfelelően)
+
+További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Az új áramkörök esetében a nyilvános társítás elavult.
 
 ### <a name="throttling-support"></a>Szabályozás támogatása
 

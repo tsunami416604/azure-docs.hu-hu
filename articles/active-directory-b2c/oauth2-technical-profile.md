@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f9db8fd0865b7dba869795526cf6b68f4ad3ffb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198020"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585781"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth2 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -97,6 +97,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | ExtraParamsInAccessTokenEndpointResponse | Nem | Azokat a felesleges paramétereket tartalmazza, amelyeket egyes identitás-szolgáltatók a **AccessTokenEndpoint** válaszában adhatnak vissza. A **AccessTokenEndpoint** válasza például egy további paramétert tartalmaz, például `openid`, amely egy kötelező paraméter, amely a access_token mellett egy **ClaimsEndpoint** kérelem lekérdezési karakterláncában szerepel. Több paraméter nevét el kell kerülni és el kell különíteni a vessző "," elválasztóval. |
 | ExtraParamsInClaimsEndpointRequest | Nem | Azokat a felesleges paramétereket tartalmazza, amelyeket egyes identitás-szolgáltatók a **ClaimsEndpoint** -kérelemben adhatnak vissza. Több paraméter nevét el kell kerülni és el kell különíteni a vessző "," elválasztóval. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true`vagy `false` (alapértelmezett). Ha a technikai profilban egy jogcímet feloldót szeretne használni, állítsa be `true`ra. |
+| ResolveJsonPathsInJsonTokens  | Nem | Azt jelzi, hogy a technikai profil feloldja-e a JSON-útvonalakat. Lehetséges értékek: `true`vagy `false` (alapértelmezett). A metaadatok használatával beolvashatja az adatokat egy beágyazott JSON-elemből. Egy [OutputClaim](technicalprofiles.md#outputclaims)állítsa a `PartnerClaimType`t a kimenetként használni kívánt JSON-útvonal elemre. Például: `firstName.localized`vagy `data.0.to.0.email`.|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 

@@ -3,12 +3,12 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173048"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586444"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -67,11 +67,11 @@ A biztonsági mentési riasztások menüt a fenti képen a szűri: állapot akt�
 
 A biztonsági mentési riasztások menü megnyitásához a Recovery Services tároló menüjében kattintson a **biztonsági mentési riasztások**elemre.
 
-![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
+![Biztonsági mentésekkel kapcsolatos riasztások](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
 A biztonsági mentési riasztások jelentés felsorolja a tár riasztásait.
 
-![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Biztonsági mentésekkel kapcsolatos riasztások](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>Riasztások
 
@@ -87,7 +87,7 @@ A biztonsági mentési riasztások listája a kiválasztott adatokat jeleníti m
 
 A biztonsági mentési riasztások jelentés az egyes riasztások nyolc részletét követi nyomon. A jelentés részleteinek szerkesztéséhez használja az **Oszlopok kiválasztása** gombot.
 
-![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Biztonsági mentésekkel kapcsolatos riasztások](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**kivételével, megjelenik a jelentésben.
 
@@ -95,7 +95,7 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 * Biztonsági másolati tétel
 * Védett kiszolgáló
 * Severity
-* Duration
+* Időtartam
 * Létrehozás ideje
 * status
 * Legutóbbi előfordulás időpontja
@@ -104,7 +104,7 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 
 1. A jelentés adatainak módosításához a **biztonsági mentési riasztások** menüben kattintson az **Oszlopok kiválasztása**elemre.
 
-   ![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+   ![Biztonsági mentésekkel kapcsolatos riasztások](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
    Megnyílik az **Oszlopok kiválasztása** menü.
 
@@ -205,7 +205,7 @@ A szűrők módosítása:
 Az elemtípus a védett példány biztonságimásolat-kezelési típusa. Négy típus létezik; Tekintse meg a következő listát. Megtekintheti az összes elemtípust, vagy egy elemtípust is. Két vagy három elemtípust nem lehet kijelölni. A rendelkezésre álló elemek típusai a következők:
 
 * Minden elemtípus
-* Azure-os virtuális gép
+* Azure-beli virtuális gép
 * Fájlok és mappák
 * Azure Storage
 * Azure-beli számítási feladatok
@@ -217,7 +217,7 @@ Megtekintheti az egyik műveletet vagy az összes műveletet. Két vagy három m
 * Minden művelet
 * Regisztráljon
 * Biztonsági mentés konfigurálása
-* Backup
+* Biztonsági mentés
 * Visszaállítás
 * Biztonsági mentés letiltása
 * Biztonsági mentési adatok törlése
@@ -272,4 +272,4 @@ Az irányítópulton található Backup Storage (biztonsági mentés) csempén a
 
 * [Windows Server-vagy Windows-ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
 * További információ a Azure Backupről: [Azure Backup áttekintése](backup-introduction-to-azure-backup.md)
-* Látogasson el a [Azure Backup fórumra](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

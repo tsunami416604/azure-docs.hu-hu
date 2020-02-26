@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f651beb181430f65d0b4c86f285e74958f8366eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077554"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588883"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 
@@ -21,23 +21,23 @@ Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepítheti
 
 A .NET v3 SDK több feltörési változást is tartalmaz, az alábbi lépésekkel telepítheti át az alkalmazást:
 
-1. Alakítsa át `DocumentCollectionInfo` a `Container` példányokat a figyelt és a bérleti tárolók hivatkozásaira.
-1. A használatban `WithProcessorOptions` lévő testreszabásokat a használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, `WithStartTime` a [Kezdési idő](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
-1. `ChangeFeedProcessorOptions.LeasePrefix` `string.Empty` A on érték`GetChangeFeedProcessorBuilder` megadásával egyeztetheti a vagy más módon konfigurált értéket. `processorName`
-1. A módosítások már nem `IReadOnlyList<Document>`kerülnek be a rendszerbe, hanem `IReadOnlyCollection<T>` az a hely, `T` ahol meg kell határozni a kívánt típust, már nincs alapelem osztálya.
+1. Alakítsa át a `DocumentCollectionInfo` példányokat a figyelt és a bérletekhez tartozó tárolók `Container` hivatkozásaiba.
+1. Az `WithProcessorOptions`t használó testreszabásokat frissíteni kell, hogy a `WithLeaseConfiguration` és a `WithPollInterval` intervallumokat, `WithStartTime` [a kezdési időt](how-to-configure-change-feed-start-time.md), és `WithMaxItems` a maximális elemek számának meghatározásához.
+1. Állítsa be a `GetChangeFeedProcessorBuilder` `processorName` a `ChangeFeedProcessorOptions.LeasePrefix`konfigurált értékének megfelelően, vagy használja a `string.Empty`.
+1. A módosítások már nem `IReadOnlyList<Document>`ként lesznek továbbítva, hanem egy `IReadOnlyCollection<T>`, ahol a `T` típusnak meg kell határoznia, nincs alapelem osztálya.
 1. A módosítások kezeléséhez már nincs szükség megvalósításra, hanem meg kell [adnia egy delegált](change-feed-processor.md#implementing-the-change-feed-processor). A delegált lehet statikus függvény, vagy ha meg kell őriznie az állapotot a végrehajtások között, létrehozhat egy saját osztályt, és delegált néven is átadhat egy példány-metódust.
 
 Ha például az eredeti kód a módosítási hírcsatorna processzorának összeállítására szolgál, a következőképpen néz ki:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorLibrary":::
 
 Az áttelepített kód a következőképpen fog kinézni:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorMigrated":::
 
 A delegált pedig statikus metódus lehet:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="Delegate":::
 
 ## <a name="state-and-lease-container"></a>Állapot-és bérlet tároló
 
@@ -57,7 +57,7 @@ A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
