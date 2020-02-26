@@ -142,6 +142,9 @@
             - name: Változók
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: Kimenetek
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: Előfizetés-szintű erőforrások
           href: deploy-to-subscription.md
         - name: Felügyeleticsoport-szintű erőforrások

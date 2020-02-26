@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure AD Connect felhőalapú jogosultságkiosztás dokumentációja
-summary: A felhőalapú jogosultságkiosztással egyszerűsítheti és automatizálhatja a helyszíni felhasználók felügyeletét, mivel mindent a felhőben tárolhat.
+summary: A felhőalapú jogosultságkiosztás révén egyszerűsítheti és automatizálhatja az Azure AD-felhasználók felügyeletét a felhasználók meglévő AD-erdőkből történő szinkronizálására szolgáló, felhőben kezelt szabályok használatával.
 metadata:
   author: billmath
   description: A felhőalapú jogosultságkiosztás révén egyszerűsítheti és automatizálhatja az Azure AD-felhasználók felügyeletét a felhasználók meglévő AD-erdőkből történő szinkronizálására szolgáló, felhőben kezelt szabályok használatával.
@@ -11,12 +11,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
-  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.openlocfilehash: 83beffa0c0eb035c9cd5e30ec4644200b940dd6c
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74795241"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77620912"
 landingContent:
 - title: A felhőalapú jogosultságkiosztás
   linkLists:

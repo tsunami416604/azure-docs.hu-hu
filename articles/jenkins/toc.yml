@@ -31,7 +31,7 @@
         - name: AKS
           items:
             - name: CI/CD–Kubernetes
-              href: /azure/aks/jenkins-continuous-deployment
+              href: jenkins-continuous-deployment.md
               maintainContext: true
             - name: Üzembe helyezés az AKS-ben kék/zöld minta használatával
               href: jenkins-aks-blue-green-deployment.md
@@ -49,7 +49,7 @@
         - name: Üzembe helyezés az Azure Functionsben
           href: jenkins-azure-functions-deploy.md
         - name: Közzététel az Azure Storage-ban
-          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          href: storage-java-jenkins-continuous-integration-solution.md
           maintainContext: true
         - name: CI/CD–Linuxos virtuális gépek
           href: tutorial-jenkins-github-docker-cicd.md
