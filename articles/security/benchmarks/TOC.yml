@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: Behatolási tesztek és Red Team-gyakorlatok
       href: security-control-penetration-tests-red-team-exercises.md
+- name: Biztonsági alapkonfigurációk
+  items:
+    - name: Az Azure biztonsági alapkonfigurációinak áttekintése
+      href: security-baselines-overview.md
+    - name: A Batch biztonsági alapkonfigurációja
+      href: ../../batch/security-baseline.md
+    - name: A Key Vault biztonsági alapkonfigurációja
+      href: ../../key-vault/security-baseline.md
+    - name: A HDInsight biztonsági alapkonfigurációja
+      href: ../../hdinsight/security-baseline.md
+    - name: Az SQL Database biztonsági alapkonfigurációja
+      href: ../../sql-database/security-baseline.md

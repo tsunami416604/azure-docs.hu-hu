@@ -122,6 +122,8 @@
       maintainContext: true
 - name: Útmutatók
   items:
+    - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Fejlesztés
       items:
         - name: Event Hubs kapcsolati sztring lekérése

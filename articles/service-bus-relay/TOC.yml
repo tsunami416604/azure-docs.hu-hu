@@ -42,6 +42,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Útmutató
   items:
+    - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Tervezés és kialakítás
       items:
         - name: Migrálás ACS-ről SAS rendszerre

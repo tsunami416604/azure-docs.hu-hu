@@ -114,6 +114,8 @@
           href: service-bus-messaging-security-controls.md
 - name: Útmutatók
   items:
+    - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
+      href: deprecate-service-bus-management.md
     - name: Névtér létrehozása
       href: service-bus-create-namespace-portal.md
     - name: Fejlesztés

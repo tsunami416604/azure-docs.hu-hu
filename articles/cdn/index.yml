@@ -1,78 +1,68 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure CDN dokumentációja
+summary: Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.
 metadata:
-  title: Az Azure CDN dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.'
-  services: cdn
-  author: twooley
-  manager: twooley
+  title: Az Azure CDN dokumentációja – oktatóanyagok és API-referencia
+  description: Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.
   ms.service: azure-cdn
   ms.topic: landing-page
-  ms.date: 06/08/2018
-  ms.author: twooley
-abstract:
-  description: 'Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati és útválasztási optimalizációk kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is.'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cdn.svg
-            text: Az Azure CDN ismertetése
-            href: /azure/cdn/cdn-overview
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megismerheti, hogyan engedélyezhető az Azure CDN egy CDN-profil és egy CDN-végpont létrehozásával.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/get-started.svg
-            text: Ismerkedés az Azure CDN használatával
-            href: /azure/cdn/cdn-create-new-endpoint
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan konfigurálhatja igény szerint az Azure CDN-t.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Egyéni tartomány hozzáadása a CDN-végponthoz</a>
-          - html: <a href="/azure/cdn/cdn-custom-ssl">HTTPS konfigurálása egyéni tartományon</a>
-          - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Gyorsítótárazási szabályok beállítása</a>
-  - title: Videók
-    items:
-      - type: paragraph
-        text: Videókat tekinthet meg az Azure CDN működéséről.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/video-library.svg
-            text: Azure CDN-videótár
-            href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Szkriptek keresése a gyakori feladatok kezeléséhez.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cdn">Kódminták</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/module/az.cdn">PowerShell</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/cdn/">REST API – referencia</a></p>
+  author: asudbring
+  ms.author: allensu
+  ms.date: 02/24/2020
+  ms.openlocfilehash: 7244b5f70468735a0dcced4d9cc9e71c1194350e
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77582568"
+landingContent:
+- title: Az Azure CDN ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mit takar a tartalomkézbesítési hálózat az Azure-on?
+      url: cdn-overview.md
+  - linkListType: video
+    links:
+    - text: Azure CDN-videótár
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CDN-profil és -végpont létrehozása
+      url: cdn-create-new-endpoint.md
+    - text: Azure Storage-fiók integrálása az Azure CDN-nel
+      url: cdn-create-a-storage-account-with-cdn.md
+  - linkListType: tutorial
+    links:
+    - text: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
+      url: cdn-map-content-to-custom-domain.md
+    - text: HTTPS konfigurálása egyéni Azure CDN-tartományon
+      url: cdn-custom-ssl.md
+    - text: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
+      url: cdn-add-to-web-app.md
+  - linkListType: learn
+    links:
+    - text: Content Delivery Network létrehozása egy webhelyhez az Azure CDN és a blobszolgáltatások használatával
+      url: https://docs.microsoft.com/learn/modules/create-cdn-static-resources-blob-storage/
+- title: Figyelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure CDN-erőforrások állapotának figyelése
+      url: cdn-resource-health.md
+    - text: Azure-beli diagnosztikai naplók – Azure CDN
+      url: cdn-azure-diagnostic-logs.md
+- title: Jelentéskészítés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure CDN használati mintáinak elemzése
+      url: cdn-log-analysis.md
+    - text: Alapvető jelentések a Verizontól
+      url: cdn-analyze-usage-patterns.md
+    - text: Egyéni jelentések a Verizontól
+      url: cdn-verizon-custom-reports.md
+    - text: Használati statisztikák elemzése az Azure CDN speciális HTTP-jelentéseivel
+      url: cdn-advanced-http-reports.md

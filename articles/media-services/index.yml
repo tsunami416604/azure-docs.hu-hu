@@ -1,49 +1,110 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Az Azure Media Services dokumentációja
+summary: Az Azure Media Services egy felhőalapú médiamunkafolyamat-platform, amelynek segítségével kódolást, csomagolást, tartalomvédelmet és élőesemény-szórást igénylő megoldásokat hozhat létre.
+brand: azure
 metadata:
-  title: Az Azure Media Services dokumentációja | Microsoft Docs
-  description: 'Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését.'
+  title: Az Azure Media Services dokumentációja
+  description: Az Azure Media Services egy felhőalapú médiamunkafolyamat-platform, amelynek segítségével kódolást, csomagolást, tartalomvédelmet és élőesemény-szórást igénylő megoldásokat hozhat létre.
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.subservice: 
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Az Azure Media Services egy felhőalapú médiamunkafolyamat-platform, amelynek segítségével kódolást, csomagolást, tartalomvédelmet és élőesemény-szórást igénylő megoldásokat hozhat létre. Az Azure Media Services zökkenőmentesen integrálható az Azure CDN-nel az Akamai és a Verizon CDN-szolgáltatásainak skálázásához, hogy az ügyfelek az igényeiknek megfelelő megoldást választhassák (például a tartalomkézbesítési hálózatok közötti terheléselosztáshoz). Az Azure Media Services Video Indexer segítségével mesterséges intelligenciával nyerhet ki metaadatokat és megállapításokat a beépített videó- és hangelemző előzetes beállításainak használatával. A Video Indexer API használatával betaníthatja a rendelkezésre álló MI-modelleket saját tartalmaival, így egyszerűen javítható a pontosság.'
-sections:
+  ms.date: 07//2020
+  ms.openlocfilehash: ff7c361b402f38160b2693f2d22670a96881045b
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77587668"
+highlightedContent:
+  items:
+  - title: Az Azure Media Services v3 ismertetése
+    itemType: overview
+    url: ./latest/media-services-overview.md
+  - title: Azure Media Services v3-alapelvek
+    itemType: concept
+    url: ./latest/concepts-overview.md
+  - title: Az Azure Media Services Video Indexer bemutatása
+    itemType: overview
+    url: ./video-indexer/video-indexer-overview.md
+  - title: A Video Indexer és a Media Services v3 előzetes beállításainak összehasonlítása
+    itemType: concept
+    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: Az Azure Media Services v2 ismertetése (örökölt)
+    itemType: overview
+    url: ./previous/media-services-overview.md
+  - title: Migrálás Media Services v2-ről v3-ra
+    itemType: concept
+    url: ./latest/migrate-from-v2-to-v3.md
+  - title: Az Azure Media Services specifikációi
+    itemType: concept
+    url: media-services-specifications-live-timed-metadata.md
+conceptualContent:
+  items:
+  - title: Fejlesztés a Media Services v3 API használatával
+    links:
+    - url: ./latest/media-services-apis-overview.md
+      itemType: concept
+      text: Fejlesztés a Media Services v3 használatával
+    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+      itemType: sample
+      text: Kódminták
+  - title: Élő stream
+    links:
+    - url: ./latest/live-streaming-overview.md
+      itemType: concept
+      text: Live streaming (Élő adatfolyam)
+    - url: ./latest/recommended-on-premises-live-encoders.md
+      itemType: concept
+      text: Ajánlott kódolók élő streameléshez
+    - url: ./latest/stream-live-tutorial-with-api.md
+      itemType: tutorial
+      text: Élő stream
+  - title: Igény szerinti streamelés
+    links:
+    - url: ./latest/assets-concept.md
+      itemType: concept
+      text: Feltöltés
+    - url: ./latest/encoding-concept.md
+      itemType: concept
+      text: Encoding
+    - url: ./latest/stream-files-tutorial-with-rest.md
+      itemType: tutorial
+      text: Távoli fájl kódolása és streamelése
+    - url: ./latest/stream-files-tutorial-with-api.md
+      itemType: tutorial
+      text: Feltöltött fájl kódolása és streamelése
+  - title: Tartalom titkosítása
+    links:
+    - url: ./latest/content-protection-overview.md
+      itemType: concept
+      text: Védelem
+    - url: ./latest/protect-with-aes128.md
+      itemType: tutorial
+      text: Dinamikus titkosítás 128 bites AES-titkosítással
+    - url: ./latest/protect-with-drm.md
+      itemType: tutorial
+      text: Dinamikus titkosítás DRM-mel
+  - title: Tartalom elemzése
+    links:
+    - url: ./latest/analyzing-video-audio-files-concept.md
+      itemType: concept
+      text: Media analytics (Médiaelemzés)
+    - url: ./latest/analyze-videos-tutorial-with-api.md
+      itemType: tutorial
+      text: Videók elemzése
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/media-services/latest/
-            html: '<p>Tartalmak kódolása, csomagolása és védelme, videók streamelése igény szerint, videók élő közvetítése, illetve elemzése a Media Services 3-as verziójával.</p>'
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-            title: Azure Media Services v3
-          - href: /azure/media-services/previous/
-            html: '<p>Kódolás, csomagolás, védelem stb. Ez egy karbantartási módban lévő, örökölt szolgáltatás. Azt javasoljuk ügyfeleinknek, hogy térjenek át a Media Services v3 használatára, ahol új és továbbfejlesztett szolgáltatások érhetők el.</p>'
-            image:
-              src: null
-            title: Azure Media Services v2 (örökölt)
-          - href: /azure/cdn/
-            html: '<p>Az Azure CDN teljesítményének kiaknázásával nagy mennyiségben streamelhet tartalmakat az Akamai és a Verizon szolgáltatásaival, illetve eloszthatja a terhelést több tartalomkézbesítési hálózat között.</p>'
-            image:
-              src: /azure/cdn/media/index/cdn.svg
-            title: Tartalomkézbesítési hálózat (CDN)
-          - href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
-            html: <p>A Microsoft Azure Media Servicesből származó médiatartalmakat számos különféle böngészőben és eszközön lejátszhatja.</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-            title: Azure Media Player
-          - href: /azure/media-services/video-indexer/
-            html: <p>Megállapítások kinyerése videó- és hangfájlokból a Video Indexerrel.</p>
-            image:
-              src: media/index/AMSIcons-media_analytics.svg
-            title: Azure Media Services Video Indexer
+    - title: Azure Storage
+      summary: Tudnivalók a blokkblobokról és a tárolókról
+      url: https://docs.microsoft.com/azure/storage/
+    - title: Tartalomkézbesítési hálózat (CDN)
+      summary: Az Azure CDN teljesítményének kiaknázásával nagy mennyiségben streamelhet tartalmakat az Akamai és a Verizon szolgáltatásaival, illetve eloszthatja a terhelést több tartalomkézbesítési hálózat között.
+      url: https://docs.microsoft.com/azure/cdn
+    - title: Event Grid
+      summary: Megtudhatja, hogyan használhatja az Azure Event Gridet arra, hogy válaszolhasson a kapcsolódó eseményekre.
+      url: https://docs.microsoft.com/azure/event-grid/

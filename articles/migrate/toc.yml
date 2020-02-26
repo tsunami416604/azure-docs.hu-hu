@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: Gépek csoportosítása felméréshez
       href: how-to-create-a-group.md
-    - name: Gépek csoportosítása a függőségek vizualizációjának használatával
+    - name: A gép függőségeinek elemzése (ügynökalapú)
       href: how-to-create-group-machine-dependencies.md
-    - name: Gépek csoportosítása ügynök nélküli függőségvizualizációval
+    - name: A gép függőségeinek elemzése (ügynök nélküli)
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: Értékelés létrehozása
       href: how-to-create-assessment.md

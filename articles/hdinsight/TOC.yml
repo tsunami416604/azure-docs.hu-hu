@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Alapelvek
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Vállalati biztonság – Általános irányelvek
           href: ./domain-joined/general-guidelines.md
         - name: ESP-fürtök tervezése
