@@ -2,7 +2,7 @@
   items:
     - name: Bevezetés az Azure használatába
       href: azure-operations-guide.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Virtuális gépek
           items:
@@ -21,7 +21,7 @@
         - name: Azure Stack
           items:
             - name: Az Azure Stack üzembe helyezésének áttekintése
-              href: ../../azure-stack/azure-stack-deploy-overview.md
+              href: /azure-stack/asdk/asdk-download
         - name: Azure Backup
           items:
             - name: Biztonsági másolat készítése egy virtuális gépről az Azure Portalon
@@ -39,7 +39,7 @@
             - name: Linux rendszerű virtuális gépek létrehozása és kezelése
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD-folyamat
-              href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Virtuális gépek terheléselosztása
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure Resource Manager-sablonok készítése

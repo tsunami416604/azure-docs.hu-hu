@@ -12,7 +12,7 @@
     - name: CI/CD a Docker Swarm és az Azure DevOps használatával
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: 'CI/CD a Docker, a Jenkins és a Linux használatával'
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
 - name: Útmutatók
   items:
     - name: Docker virtuálisgép-bővítmény

@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610452"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605574"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   
@@ -33,7 +33,7 @@ A Docker egy népszerű tárolókezelő és képalkotó platform, amely lehetőv
 <ol>
   <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Python és a PostgreSQL létrehozása Docker használatával</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">CI/CD a Docker Swarm és az Azure DevOps Services használatával</a></li>
-  <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">A Docker, a Jenkins és a Linux rendszerű virtuális gépek integrálása</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">A Docker, a Jenkins és a Linux rendszerű virtuális gépek integrálása</a></li>
 </ol>
 <h2>További források</h2>
 <p>A Docker Azure rendszeren történő használatával kapcsolatos további referenciaanyagokért és eszközökért tekintse meg a következő referenciákat.</p>
